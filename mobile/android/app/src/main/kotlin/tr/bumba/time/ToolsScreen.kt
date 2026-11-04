@@ -4,6 +4,8 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.background
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,17 +18,22 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Air
 import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Fullscreen
+import androidx.compose.material.icons.filled.FullscreenExit
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Bedtime
 import androidx.compose.material.icons.filled.EditCalendar
+import androidx.compose.material.icons.filled.EmojiNature
 import androidx.compose.material.icons.filled.HourglassBottom
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Spa
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.WbTwilight
@@ -67,41 +74,45 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "pomodoro" -> Page(L("tools.hub.cards.pomodoro.name"), onRoute) { PomodoroScreen() }
         "sleep" -> Page(L("sleep.title"), onRoute) { SleepScreen() }
         "journal" -> Page(L("journal.title"), onRoute) { JournalScreen() }
+        "breath" -> Page(L("breath.title"), onRoute) { BreathScreen() }
+        "study" -> Page(L("study.title"), onRoute) { StudyScreen() }
+        "wakeGame" -> Page(L("wakegame.title"), onRoute) { WakeGameScreen() }
         "planner" -> Page(L("planner.h1"), onRoute) { MeetingPlannerScreen() }
         "datecalc" -> Page(L("tools.hub.cards.datecalc.name"), onRoute) { DateCalcScreen() }
         "settings" -> Page(L("settings.title"), onRoute) { SettingsScreen(onRoute) }
         "color" -> Page(L("settings.color"), { onRoute("settings") }) { ColorScreen() }
-        "appearance" -> Page(L("look.title"), { onRoute("settings") }) { AppearanceScreen() }
+        "appearance" -> Page(L("look.title"), { onRoute("settings") }) { AppearanceScreen { onRoute(it) } }
+        "dials" -> Page(L("dial.title"), { onRoute("appearance") }) { DialGalleryScreen() }
+        "widgets" -> Page(L("widgets.gallery"), { onRoute("appearance") }) { WidgetGalleryScreen() }
         "homeItems" -> Page(L("home.customize"), { onRoute("settings") }) { HomeItemsEditor() }
         "features" -> Page(L("features.title"), { onRoute("settings") }) { FeaturesScreen() }
         "about" -> Page(L("settings.about"), onRoute) { AboutScreen() }
+        "shareQr" -> Page(L("support.qr"), { onRoute("settings") }) { ShareQrScreen() }
+        "language" -> Page(L("lang.title"), { onRoute("settings") }) { LanguageScreen() }
         "badges" -> Page(L("badges.h1"), onRoute) { BadgesScreen() }
         "notifications" -> Page(L("settings.notifications"), { onRoute("settings") }) { NotificationsScreen(onRoute) }
         "prayerNotify" -> {
             BackHandler { onRoute("notifications") }
             NotificationSettingsScreen { onRoute("notifications") }
         }
-        else -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-            Text(L("tab.tools"), color = Theme.c.text, fontSize = 26.sp, fontWeight = FontWeight.Bold)
-            AppCard(padding = 4) {
-                ToolRow(Icons.Filled.Alarm, L("tools.hub.cards.alarm.name")) { onRoute("alarm") }
-                ToolRow(Icons.Filled.HourglassBottom, L("tools.timer")) { onRoute("timer") }
-                ToolRow(Icons.Filled.Timer, L("tools.hub.cards.stopwatch.name")) { onRoute("stopwatch") }
-                ToolRow(Icons.Filled.Spa, L("tools.hub.cards.pomodoro.name")) { onRoute("pomodoro") }
-                ToolRow(Icons.Filled.Bedtime, L("sleep.title")) { onRoute("sleep") }
-                ToolRow(Icons.Filled.WbTwilight, L("journal.title")) { onRoute("journal") }
-                ToolRow(Icons.Filled.Groups, L("planner.h1")) { onRoute("planner") }
-                ToolRow(Icons.Filled.EditCalendar, L("tools.hub.cards.datecalc.name"), last = true) { onRoute("datecalc") }
-            }
-            // Rozetler: girişin yanında bir satırlık not (Bumba standardı madde 13)
-            AppCard(padding = 4) {
-                ToolRow(Icons.Filled.MilitaryTech, L("badges.h1"), last = true, note = L("badges.note")) { onRoute("badges") }
-            }
-            AppCard(padding = 4) {
-                ToolRow(Icons.Filled.Settings, L("settings.title")) { onRoute("settings") }
-                ToolRow(Icons.Filled.Info, L("settings.about"), last = true) { onRoute("about") }
-            }
-        }
+        // Tümü'nden açılan ibadet, Ay ve takvim yaprağı sayfaları (kendi geri düğmeleriyle)
+        "qibla" -> QiblaScreen { onRoute(null) }
+        "quran" -> QuranScreen { onRoute(null) }
+        "duas" -> DuasScreen { onRoute(null) }
+        "zikir" -> ZikirScreen { onRoute(null) }
+        "track" -> TrackerScreen { onRoute(null) }
+        "zakat" -> ZakatScreen { onRoute(null) }
+        "reldays" -> ReligiousDaysScreen { onRoute(null) }
+        "greet" -> GreetingScreen { onRoute(null) }
+        "esma" -> EsmaScreen { onRoute(null) }
+        "hadith" -> HadithScreen { onRoute(null) }
+        "guide" -> PrayerGuideScreen({ onRoute(null) }) { onRoute("duas") }
+        "leaf" -> CalendarLeafScreen { onRoute(null) }
+        "moon" -> Page(L("moon.calendarLink"), onRoute) { MoonScreen() }
+        "sky" -> Page(L("sky.h1"), onRoute) { SkyScreen() }
+        "sunpath" -> Page(L("sunpath.title"), onRoute) { SunPathScreen() }
+        else -> if (route?.startsWith("quran:") == true) QuranScreen(route.removePrefix("quran:").toIntOrNull()) { onRoute(null) }
+            else AllScreen(onRoute)
     }
 }
 
@@ -116,7 +127,7 @@ private fun Page(title: String, onRoute: (String?) -> Unit, content: @Composable
 @Composable
 private fun ToolRow(icon: ImageVector, title: String, last: Boolean = false, note: String? = null, onClick: () -> Unit) {
     Row(Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 14.dp), verticalAlignment = Alignment.CenterVertically) {
-        Icon(icon, null, tint = Theme.c.accent)
+        IconBox(icon)
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
             Text(title, color = Theme.c.text, fontSize = 16.sp)
@@ -124,7 +135,7 @@ private fun ToolRow(icon: ImageVector, title: String, last: Boolean = false, not
         }
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
     }
-    if (!last) HorizontalDivider(Modifier.padding(start = 50.dp), color = Theme.c.border.copy(alpha = 0.5f))
+    if (!last) HorizontalDivider(Modifier.padding(start = 62.dp), color = Theme.c.border.copy(alpha = 0.5f))
 }
 
 @Composable
@@ -180,41 +191,60 @@ private fun Stopwatch() {
     }
     fun fmt(ms: Long) = clock(ms / 1000) + ".%02d".format((ms / 10) % 100)
 
-    Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        Spacer(Modifier.height(24.dp))
-        BigTime(fmt(total))
-        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            if (start > 0) {
-                RoundButton(L("tools.stopwatch.lap"), false, Modifier.weight(1f)) { save(start, acc, (laps + total).joinToString(",")) }
-                RoundButton(L("tools.stopwatch.stop"), true, Modifier.weight(1f)) { save(0, total, lapsRaw) }
-            } else {
-                RoundButton(L("tools.stopwatch.reset"), false, Modifier.weight(1f)) { save(0, 0, "") }
-                RoundButton(L(if (total > 0) "tools.stopwatch.resume" else "tools.stopwatch.start"), true, Modifier.weight(1f)) {
-                    now = System.currentTimeMillis()
-                    save(now, acc, lapsRaw)
-                    BadgeStore.hit(Badge.KRONOMETRE)
-                }
-            }
-        }
-        val lapTimes = laps.mapIndexed { i, v -> v - (if (i > 0) laps[i - 1] else 0) }
-        val best = if (lapTimes.size > 1) lapTimes.min() else null
-        val worst = if (lapTimes.size > 1) lapTimes.max() else null
-        val context = androidx.compose.ui.platform.LocalContext.current
-        Column(Modifier.verticalScroll(rememberScrollState())) {
-            if (lapTimes.isEmpty()) Text(L("tools.stopwatch.empty"), color = Theme.c.muted)
+    // Tam ekran ve yatayda dev rakamlar (2. analiz #104)
+    var full by remember { mutableStateOf(false) }
+    if (full) StopwatchFullscreen({ fmt(total) }, running = start > 0, onLap = { save(start, acc, (laps + total).joinToString(",")) },
+        onToggle = { if (start > 0) save(0, total, lapsRaw) else { now = System.currentTimeMillis(); save(now, acc, lapsRaw) } }) { full = false }
+
+    // Araç kalıbı (2. analiz #200): altta tur/sıfırla (çerçeveli) ve başlat/durdur (tek dolu düğme); tam ekran, CSV ve kopyala "…" menüsünde
+    val lapTimes = laps.mapIndexed { i, v -> v - (if (i > 0) laps[i - 1] else 0) }
+    val best = if (lapTimes.size > 1) lapTimes.min() else null
+    val worst = if (lapTimes.size > 1) lapTimes.max() else null
+    // (context yukarıda)
+    val menu = buildList<Pair<String, () -> Unit>> {
+        add(L("clock.fullscreen") to { full = true })
+        if (lapTimes.isNotEmpty()) {
             // Turları CSV olarak paylaş (rakip analizi #28)
-            else androidx.compose.material3.TextButton(onClick = {
+            add(L("csv.laps") to {
                 Share.csv(context, "laps-${java.time.LocalDate.now()}.csv",
                     listOf(listOf(L("tools.stopwatch.lapNo"), L("tools.stopwatch.lapTime"), L("tools.stopwatch.total"))) +
                         lapTimes.indices.map { listOf("${it + 1}", fmt(lapTimes[it]), fmt(laps[it])) }, L("csv.laps"))
-            }) { Text(L("csv.laps"), color = Theme.c.accent) }
+            })
+            // Turları metin olarak kopyala (2. analiz #104)
+            add(L("sw.copyLaps") to {
+                val text = lapTimes.indices.joinToString("\n") { "${L("tools.stopwatch.lapNo")} ${it + 1}\t${fmt(lapTimes[it])}\t${fmt(laps[it])}" }
+                (context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager)
+                    .setPrimaryClip(android.content.ClipData.newPlainText(L("sw.copyLaps"), text))
+                android.widget.Toast.makeText(context, L("sw.copied"), android.widget.Toast.LENGTH_SHORT).show()
+            })
+        }
+    }
+    val running = start > 0
+    ToolFrame(
+        primary = L(if (running) "tools.stopwatch.stop" else if (total > 0) "tools.stopwatch.resume" else "tools.stopwatch.start"),
+        onPrimary = {
+            if (running) save(0, total, lapsRaw)
+            else {
+                now = System.currentTimeMillis()
+                save(now, acc, lapsRaw)
+                BadgeStore.hit(Badge.KRONOMETRE)
+            }
+        },
+        secondary = if (running) L("tools.stopwatch.lap") else if (total > 0) L("tools.stopwatch.reset") else null,
+        onSecondary = { if (running) save(start, acc, (laps + total).joinToString(",")) else save(0, 0, "") },
+        menu = menu,
+    ) {
+        Spacer(Modifier.height(8.dp))
+        BigTime(fmt(total))
+        Column(Modifier.fillMaxWidth()) {
+            if (lapTimes.isEmpty()) Text(L("tools.stopwatch.empty"), color = Theme.c.muted)
             for (i in lapTimes.indices.reversed()) {
                 val lap = lapTimes[i]
                 Ltr {
                     Row(Modifier.fillMaxWidth().padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
                         Text("${L("tools.stopwatch.lapNo")} ${i + 1}", color = Theme.c.text)
-                        if (lap == best) Text("  " + L("tools.stopwatch.best"), color = Color(0xFF2E7D32), fontSize = 12.sp)
-                        if (lap == worst) Text("  " + L("tools.stopwatch.worst"), color = Color(0xFFD32F2F), fontSize = 12.sp)
+                        if (lap == best) Text("  " + L("tools.stopwatch.best"), color = Theme.c.ok, fontSize = 12.sp)
+                        if (lap == worst) Text("  " + L("tools.stopwatch.worst"), color = Theme.c.err, fontSize = 12.sp)
                         Spacer(Modifier.weight(1f))
                         Text(fmt(lap), color = Theme.c.text, style = Tnum)
                         Text("   " + fmt(laps[i]), color = Theme.c.muted, style = Tnum)
@@ -255,6 +285,31 @@ private fun Stopwatch() {
             }) { Text("+ " + L("sw.multi.add"), color = Theme.c.accent) }
             Text(L("sw.multi.note"), color = Theme.c.muted, fontSize = 13.sp)
             Spacer(Modifier.height(16.dp))
+        }
+    }
+}
+
+/** Kronometre tam ekranı: siyah zemin, genişliğe sığan dev rakamlar (yatayda ekranı doldurur), tur ve dur/başlat; ekran açık kalır */
+@Composable
+private fun StopwatchFullscreen(text: () -> String, running: Boolean, onLap: () -> Unit, onToggle: () -> Unit, onClose: () -> Unit) {
+    val view = androidx.compose.ui.platform.LocalView.current
+    DisposableEffect(Unit) { view.keepScreenOn = true; onDispose { view.keepScreenOn = false } }
+    androidx.compose.ui.window.Dialog(onClose, androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth = false, decorFitsSystemWindows = false)) {
+        Column(Modifier.fillMaxSize().background(Color.Black).padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                IconButton(onClick = onClose) { Icon(Icons.Filled.FullscreenExit, L("common.done"), tint = Color.White) }
+            }
+            Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
+                Ltr {
+                    androidx.compose.foundation.text.BasicText(text(), maxLines = 1,
+                        style = Tnum.copy(color = Color.White, fontWeight = FontWeight.Light, textAlign = androidx.compose.ui.text.style.TextAlign.Center),
+                        autoSize = androidx.compose.foundation.text.TextAutoSize.StepBased(minFontSize = 24.sp, maxFontSize = 400.sp))
+                }
+            }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                if (running) RoundButton(L("tools.stopwatch.lap"), false, Modifier.weight(1f), onLap)
+                RoundButton(L(if (running) "tools.stopwatch.stop" else "tools.stopwatch.resume"), true, Modifier.weight(1f), onToggle)
+            }
         }
     }
 }

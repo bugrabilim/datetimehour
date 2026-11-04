@@ -92,14 +92,21 @@ enum AppTab: Int, CaseIterable {
         case .world: "globe.europe.africa"
         case .seasons: "leaf"
         case .prayer: "moon.stars"
-        case .tools: "timer"
+        case .tools: "square.grid.2x2"
         }
     }
+
+    /// Alt çubuktaki ad: Araçlar sekmesi "Tümü" olarak görünür (Seçenek B)
+    var barTitle: String { self == .tools ? L("tab.all") : title }
 }
 
 /// Araçlar sekmesindeki sayfalar
 enum ToolRoute: Hashable {
-    case alarm, timer, stopwatch, pomodoro, sleep, journal, planner, datecalc, settings, about, badges
+    case alarm, timer, stopwatch, pomodoro, study, wakeGame, sleep, journal, breath, planner, datecalc, settings, about, badges
+    // Tümü'nden açılan sayfalar (Seçenek B, 2. analiz #195): ibadet, Ay, takvim yaprağı ve ayar sayfaları
+    case qibla, quran, duas, zikir, track, zakat, reldays, greet, esma, hadith, guide, leaf, moon, sky, sunpath
+    case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
+    case sura(Int)
 }
 
 /// Sekme ve Araçlar gezintisi; saat ekranındaki alanlar dokununca ilgili sayfayı açar.
@@ -123,12 +130,30 @@ final class Router {
         sheet = nil
         switch url.host() ?? "" {
         case "fullscreen": openFullscreen()
-        case "timer": tab = .tools; toolsPath = [.timer]
+        case "timer":
+            // Widget'taki hazır süre (2. analiz #136): saattarih://timer?min=5
+            if let m = Self.queryInt(url, "min"), m > 0 { QuickStart.timer(minutes: m) }
+            tab = .tools; toolsPath = [.timer]
+        case "pomodoro":
+            // Odak widget'ı: saattarih://pomodoro?start=1 çalışma süresini başlatır
+            if Self.queryInt(url, "start") == 1 { QuickStart.focus() }
+            tab = .tools; toolsPath = [.pomodoro]
         case "stopwatch": tab = .tools; toolsPath = [.stopwatch]
         case "alarm": tab = .tools; toolsPath = [.alarm]
         case "prayer": tab = .prayer
+        // Widget'a dokununca açılacak ekran (2. analiz #168)
+        case "clock": tab = .clock
+        case "calendar": tab = .calendar
+        case "world": tab = .world
+        // Sitedeki "Uygulamaya ekle" ya da paylaşılan geri sayım (2. analiz #138)
+        case "countdown":
+            if CountdownItem.importURL(url) { tab = .tools; toolsPath = [.timer] }
         default: break
         }
+    }
+
+    static func queryInt(_ url: URL, _ name: String) -> Int? {
+        URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.first { $0.name == name }?.value.flatMap { Int($0) }
     }
 
     func openFullscreen() {
@@ -167,8 +192,11 @@ struct RootView: View {
     @AppStorage("appearance") private var appearance = "system"
     /// Uygulama rengi (Ayarlar); değişince sekmeler yeni renkle yeniden çizilir
     @AppStorage("accent") private var accent = AccentPalette.defaultID
+    /// Atmosfer (renk geçişli zemin; 2. analiz #78): değişince sekmeler yeniden çizilir
+    @AppStorage(Atmosphere.key) private var atmo = ""
     /// Açık özellikler: alt barda yalnız bunlar (ve geçici olarak şu anki sekme); yalnız Saat kalırsa bar yok
     @AppStorage(Features.key) private var features = ""
+    @AppStorage(Features.barKey) private var bar = ""
     @State private var router = Router.shared
     /// Klavye açıkken alt bar gizlenir (sistemin sekme çubuğu gibi; klavyenin üstüne binmez)
     @State private var keyboard = false
@@ -177,24 +205,65 @@ struct RootView: View {
     @Environment(\.verticalSizeClass) private var vsc
     @Environment(\.horizontalSizeClass) private var hsc
     private var landscape: Bool { vsc == .compact }
+    /// iPad'de (geniş pencere) kenar çubuğu; telefonda alt çubuk
+    private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad && hsc == .regular }
     /// iPad'de (geniş pencere) sayfalar okunur genişlikte ortalanır; kenarlar temanın zemin rengiyle dolar
     private var readable: CGFloat { UIDevice.current.userInterfaceIdiom == .pad && hsc == .regular ? 900 : .infinity }
     /// Alarm son iki saatte çaldıysa açılışta günaydın kartı (MorningCheck)
     @State private var morning = false
     /// Görevli alarm durduruldu: görev ekranı (çözülmeden kapanmaz; WakeTasks)
+    @State private var checking = false
+    @State private var checkUntil = Date()
     @State private var wakeTask: PendingWakeTask?
+    /// Yeni kurulumda ilk açılış sihirbazı (Onboarding; 2. analiz #4)
+    @State private var onboarding = Onboarding.pending
+    /// Alt barda olmayan bir sayfadan geri dönülecek sekme (2. analiz #203)
+    @State private var backTab: AppTab = .clock
 
     var body: some View {
         // Bar sayfanın altında ayrı bir satır: sayfanın son satırları barın altında kalmaz
         // (safeAreaInset NavigationStack içindeki listelere geçmiyordu; yazılar barın altına giriyordu)
-        VStack(spacing: 0) {
-            content
-                .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)")
-                .frame(maxWidth: readable, maxHeight: .infinity)
-                .frame(maxWidth: .infinity)
-                .background(Theme.bg.ignoresSafeArea())
-            let tabs = Features.barTabs(raw: features, current: router.tab)
-            if !keyboard && !landscape && tabs.count > 1 { TabBar(tabs: tabs, selection: $router.tab) }
+        let tabs = Features.barTabs(raw: features, bar: bar)
+        let offBar = !tabs.contains(router.tab)
+        Group {
+            if isPad {
+                // iPad ve Mac'te kenar çubuğu (Seçenek B, 2. analiz #194): alt çubuk yerine bütün açık özellikler ve
+                // Tümü'nün kategorileri bölüm olarak
+                NavigationSplitView {
+                    Sidebar()
+                } detail: {
+                    content
+                        .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)-\(atmo)")
+                        .frame(maxWidth: readable, maxHeight: .infinity)
+                        .frame(maxWidth: .infinity)
+                        .background(AppBackdrop().ignoresSafeArea())
+                }
+            } else {
+                VStack(spacing: 0) {
+                    // Alt barda olmayan sayfa (kapalı özellik): üstte döneceği sekmenin adıyla geri düğmesi (2. analiz #203)
+                    if offBar && !landscape {
+                        Button { router.tab = backTab } label: {
+                            Label(backTab.barTitle, systemImage: "chevron.backward")
+                                .font(.body)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal, 14).padding(.vertical, 8)
+                                .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .foregroundStyle(Theme.accent)
+                        .background(AppBackdrop().ignoresSafeArea())
+                    }
+                    content
+                        .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)-\(atmo)")
+                        .frame(maxWidth: readable, maxHeight: .infinity)
+                        .frame(maxWidth: .infinity)
+                        .background(AppBackdrop().ignoresSafeArea())
+                    if !keyboard && !landscape && tabs.count > 1 { TabBar(tabs: tabs, selection: $router.tab) }
+                }
+            }
+        }
+        .onChange(of: router.tab) { old, _ in
+            if Features.barTabs(raw: features, bar: bar).contains(old) { backTab = old }
         }
         .statusBarHidden(landscape)
         .persistentSystemOverlays(landscape ? .hidden : .automatic)
@@ -205,11 +274,32 @@ struct RootView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             if WakeTasks.onActive() {
                 wakeTask = WakeTasks.pending
+            } else if let end = WakeTasks.checkDeadline() {
+                // Uyanma denetimi halkası (2. analiz #45)
+                checkUntil = end
+                checking = true
             } else if MorningCheck.due() {
                 morning = true
             }
         }
+        .fullScreenCover(isPresented: $checking) {
+            WakeCheckView(deadline: checkUntil, onAwake: {
+                WakeTasks.awake()
+                checking = false
+                if MorningCheck.due() { morning = true }
+            }, onTimeout: { checking = false })
+            .preferredColorScheme(scheme)
+        }
         .sheet(isPresented: $morning) { MorningCard().preferredColorScheme(scheme) }
+        .fullScreenCover(isPresented: $onboarding) {
+            OnboardingView {
+                Onboarding.finish()
+                onboarding = false
+                Task { await PrayerNotifier.reschedule() }
+            }
+            .preferredColorScheme(scheme)
+            .appFontScale()
+        }
         .fullScreenCover(item: $wakeTask) { t in
             WakeTaskView(task: t) {
                 Task {
@@ -222,6 +312,8 @@ struct RootView: View {
         }
         .tint(Theme.accent)
         .preferredColorScheme(scheme)
+        // Uygulama içi yazı boyutu (Ayarlar; 2. analiz #77)
+        .appFontScale()
         .task {
             // CI ekran görüntüsü: -landscape ile uygulama yatay açılır
             guard ProcessInfo.processInfo.arguments.contains("-landscape"),
@@ -263,6 +355,61 @@ struct RootView: View {
     @State private var screen = UserDefaults.standard.string(forKey: "openScreen").flatMap(DebugScreen.init(rawValue:))
 }
 
+/// iPad ve Mac kenar çubuğu (Seçenek B): Saat ve açık özellikler, sonra Tümü ve kategorileri, en sonda Ayarlar
+private struct Sidebar: View {
+    @State private var router = Router.shared
+    @AppStorage(Features.key) private var features = ""
+
+    var body: some View {
+        let on = Features.parse(features)
+        List {
+            Section {
+                ForEach([AppTab.clock] + Features.barOptions.filter(on.contains), id: \.self) { t in
+                    row(t.title, t.icon, selected: router.tab == t) { router.toolsPath = []; router.tab = t }
+                }
+                if !on.isEmpty {
+                    row(L("tab.all"), AppTab.tools.icon, selected: router.tab == .tools && router.toolsPath.isEmpty) {
+                        router.toolsPath = []; router.tab = .tools
+                    }
+                }
+            }
+            if !on.isEmpty {
+                ForEach(AllCat.allCases, id: \.self) { cat in
+                    let list = AllPrefs.entries.filter { $0.cat == cat && $0.route != nil && AllPrefs.visible($0) }
+                    if !list.isEmpty {
+                        Section(cat.title) {
+                            ForEach(list) { e in entryRow(e) }
+                        }
+                    }
+                }
+            }
+            Section {
+                row(L("settings.title"), "gearshape", selected: router.tab == .tools && router.toolsPath.first == .settings) {
+                    router.tab = .tools; router.toolsPath = [.settings]
+                }
+            }
+        }
+        .listStyle(.sidebar)
+        .navigationTitle(L("app.displayName"))
+    }
+
+    private func entryRow(_ e: AllEntry) -> some View {
+        row(e.title, e.icon, selected: router.tab == .tools && router.toolsPath.first == e.route) {
+            AllPrefs.used(e.id)
+            router.tab = .tools
+            if let r = e.route { router.toolsPath = [r] }
+        }
+    }
+
+    private func row(_ title: String, _ icon: String, selected: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Label { Text(title).foregroundStyle(Theme.text) } icon: { Image(systemName: icon).foregroundStyle(Theme.accent) }
+        }
+        .listRowBackground(selected ? Theme.accentSoft : Color.clear)
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
+}
+
 /// Alt bar: açık özelliklerin düğmeleri (simge + kısa ad; seçili olan uygulama renginde)
 private struct TabBar: View {
     let tabs: [AppTab]
@@ -278,23 +425,25 @@ private struct TabBar: View {
                     selection = tab
                 } label: {
                     VStack(spacing: 3) {
+                        // Seçili sekmede simgenin arkasında ana rengin açık tonunda hap (sitedeki .nav gibi; 2. analiz #95)
                         Image(systemName: tab.icon)
                             .symbolVariant(on ? .fill : .none)
                             .font(.system(size: 19))
-                            .frame(height: 24)
-                        Text(tab.title)
-                            .font(.system(size: 10, weight: on ? .semibold : .regular))
+                            .frame(width: 56, height: 30)
+                            .background(Capsule().fill(on ? Theme.accentSoft : Color.clear))
+                        Text(tab.barTitle)
+                            .font(.system(size: 11, weight: on ? .semibold : .regular))
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(.top, 7)
+                    .padding(.top, 5)
                     .padding(.bottom, 3)
                     .contentShape(Rectangle())
                     .foregroundStyle(on ? Theme.accent : Theme.muted)
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel(tab.title)
+                .accessibilityLabel(tab.barTitle)
                 .accessibilityAddTraits(on ? [.isSelected, .isButton] : .isButton)
             }
         }
@@ -307,7 +456,8 @@ private struct TabBar: View {
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
-         wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner
+         wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet,
+         qr, colors, wall, study, wakegame, language, dials
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -325,8 +475,17 @@ enum DebugScreen: String, Identifiable {
             // Görev ekranı örneği (CI ekran görüntüsü): orta zorlukta matematik
             WakeTaskView(task: PendingWakeTask(task: "math", level: 2, code: "", wakeCheck: true, title: L("sleep.alarmLabel"),
                                                rise: false, rings: 0, repeatID: nil)) {}
+        case .wall:
+            // Alarm duvar kâğıdıyla görev ekranı (2. analiz #2): gün batımı zemini
+            WakeTaskView(task: PendingWakeTask(task: "math", level: 1, code: "", wakeCheck: false, title: L("sleep.alarmLabel"),
+                                               rise: false, rings: 0, repeatID: nil, wall: "sunset")) {}
         case .datecalc: DateCalcView()
         case .journal: JournalView()
+        case .breath: BreathView()
+        case .study: StudyView()
+        case .wakegame: WakeGameView()
+        case .language: LanguageView()
+        case .dials: DialGalleryView()
         case .planner: MeetingPlannerView()
         case .world: WorldClockView()
         case .weather: WeatherView()
@@ -355,6 +514,10 @@ enum DebugScreen: String, Identifiable {
         case .zikir: ZikirView()
         case .track: TrackerView()
         case .zakat: ZakatView()
+        case .reldays: ReligiousDaysView()
+        case .greet: GreetingView()
+        case .qr: ShareQRView()
+        case .colors: AccentPickerView()
         case .mosques: NearbyMosquesView(place: place)
         case .night: FullscreenClock() // -nightMode on ile gece modu
         case .globe:

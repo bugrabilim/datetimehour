@@ -76,7 +76,9 @@
       var stemH = o.side === "down" ? cardTop - ax : ax - stemTop;
       li.style.setProperty("--cy", cardTop + "rem"); li.style.setProperty("--sy", stemTop + "rem"); li.style.setProperty("--sh", stemH + "rem");
       var stem = el("span", "tl-stem"); stem.setAttribute("aria-hidden", "true");
-      var card = el("div", "tl-card");
+      // Gündüz/akşam/gece (2. analiz #129; şehrin saatine göre: 07–17 gündüz, 06 ve 18–19 alacakaranlık)
+      var hr = S.parts(new Date(S.nowMs()), it.tz).hour;
+      var card = el("div", "tl-card " + (hr >= 7 && hr <= 17 ? "is-day" : (hr === 6 || hr === 18 || hr === 19) ? "is-dusk" : "is-night"));
       var nm;
       if (it.path) { nm = el("a", "tl-name", it.name); nm.href = it.path; } else nm = el("span", "tl-name", it.name);
       card.appendChild(nm);
@@ -87,6 +89,8 @@
     });
     S.refreshLive();
   }
+  // Gündüz/gece renkleri güncel kalsın diye 5 dakikada bir yeniden çizilir
+  setInterval(function () { if (!doc.hidden) render(); }, 300000);
   function setSaved(list) { saved = list; S.store("sth-world", JSON.stringify(list)); render(); }
 
   /* Düzenleyici: üstte tek "şehir ekle / çıkar" düğmesi */

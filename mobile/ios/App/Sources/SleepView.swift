@@ -68,8 +68,12 @@ enum SleepSounds {
 
     @MainActor
     static func play() {
+        SleepLogStore.markBed() // uyku düzeni (2. analiz #47): yatış anı
         let d = UserDefaults.standard
-        let kind = d.string(forKey: kindKey) ?? "rain"
+        // Karışım açıksa ve en az bir ses seçiliyse (2. analiz #30)
+        let mix = d.string(forKey: "sleep.mix") ?? ""
+        let useMix = d.bool(forKey: "sleep.mixOn") && !NoiseGen.parseMix(mix).isEmpty
+        let kind = useMix ? "mix:" + mix : (d.string(forKey: kindKey) ?? "rain")
         let vol = d.object(forKey: volumeKey) as? Int ?? 35
         let minutes = d.object(forKey: timerKey) as? Int ?? 30
         NoisePlayer.shared.play(kind: kind, volume: vol, until: minutes > 0 ? Date().addingTimeInterval(Double(minutes) * 60) : nil,
@@ -148,6 +152,7 @@ struct SleepView: View {
 
             Section {
                 NoiseControls(kind: $noise, volume: $volume, allowOff: false)
+                SoundMixer()
                 Picker(L("sleep.timer"), selection: $timer) {
                     ForEach(SleepSounds.timerChoices, id: \.self) { m in
                         Text(m == 0 ? L("sleep.timerOff") : T("alarm.snoozeMin", m)).tag(m)
@@ -180,13 +185,21 @@ struct SleepView: View {
                 Text(L("alarm.sunrise"))
             }
 
+            // Uyku düzeni, enerji blokları ve kronotip (2. analiz #47, #49, #48)
+            Section {
+                SleepStatsCard().listRowInsets(EdgeInsets())
+                if on { EnergyBlocksCard().listRowInsets(EdgeInsets()) }
+                ChronotypeCard().listRowInsets(EdgeInsets())
+            }
+            .listRowBackground(Color.clear)
+
             Section {
                 Text(L("sleep.privacy")).font(.footnote).foregroundStyle(Theme.muted)
             }
         }
         .themedBackground()
         .navigationTitle(L("sleep.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onChange(of: [on, bedtimeNotify]) { reschedule() }
         .onChange(of: [wake, duration, remind]) { reschedule() }
         .onChange(of: daysRaw) { reschedule() }
@@ -234,23 +247,51 @@ struct SleepView: View {
         }
     }
 
+    /// Uyku planının kalkış alarmı: tek, plana bağlı alarm (2. analiz #52)
     private func addAlarm() {
-        var item = AlarmItem(hour: wake / 60, minute: wake % 60)
-        item.label = L("sleep.alarmLabel")
-        item.days = SleepPlan.parse(daysRaw)
-        var items = AlarmItem.load()
-        items.append(item)
-        AlarmItem.save(items)
         alarmAdded = true
-        Task { await AlarmCenter.sync(items) }
+        Task { await SleepPlanAlarm.set(wake: wake, days: SleepPlan.parse(daysRaw)) }
     }
 
     private func reschedule() {
         Task {
+            await SleepPlanAlarm.update(wake: wake, days: SleepPlan.parse(daysRaw))
             if on, bedtimeNotify, await PrayerNotifier.authorizationStatus() == .notDetermined {
                 _ = await PrayerNotifier.requestAuthorization()
             }
             await PrayerNotifier.reschedule()
+        }
+    }
+}
+
+/// Birden çok sesi karıştırma (2. analiz #30): her ses ayrı düzeyde; kayıt "sleep.mix" ("rain=60;fire=30")
+struct SoundMixer: View {
+    @AppStorage("sleep.mixOn") private var on = false
+    @AppStorage("sleep.mix") private var raw = ""
+
+    private func level(_ k: String) -> Double {
+        Double(NoiseGen.parseMix(raw).first { $0.kind == k }?.volume ?? 0)
+    }
+
+    private func set(_ k: String, _ v: Double) {
+        var parts = NoiseGen.parseMix(raw).filter { $0.kind != k }
+        if v >= 1 { parts.append((kind: k, volume: Int(v))) }
+        raw = parts.map { "\($0.kind)=\($0.volume)" }.joined(separator: ";")
+    }
+
+    var body: some View {
+        Toggle(L("sleep.mixOn"), isOn: $on)
+            .onChange(of: on) { if SleepSounds.playing { SleepSounds.play() } }
+        if on {
+            ForEach(NoiseGen.kinds, id: \.self) { k in
+                HStack {
+                    Text(noiseName(k)).frame(width: 110, alignment: .leading).lineLimit(1)
+                    Slider(value: Binding(get: { level(k) }, set: { set(k, $0) }), in: 0...100, onEditingChanged: { editing in
+                        if !editing && SleepSounds.playing { SleepSounds.play() }
+                    })
+                }
+            }
+            Text(L("sleep.mixNote")).font(.footnote).foregroundStyle(Theme.muted)
         }
     }
 }

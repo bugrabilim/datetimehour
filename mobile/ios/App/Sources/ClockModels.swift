@@ -13,9 +13,10 @@ enum ClockModel: String, CaseIterable, Identifiable {
     case hWxAnalog = "h-wx-analog", hWxStack = "h-wx-stack", hWxAnalogDate = "h-wx-analog-date", hWxFull = "h-wx-full"
     case digital, digitalDate = "digital-date", wxDigital = "wx-digital", wxDigitalCal = "wx-digital-cal"
     case flip // 20: çevirmeli saat (30 Ekim 2026, rakip analizi #5)
+    case dual // 21: ikili saat dilimi (2. analiz #12; yalnız uygulamalarda, sitede yok)
 
     var id: String { rawValue }
-    var name: String { L("stage.models.\(rawValue)") }
+    var name: String { self == .dual ? L("dual.model") : L("stage.models.\(rawValue)") }
     var number: Int { (Self.allCases.firstIndex(of: self) ?? 0) + 1 }
 }
 
@@ -34,6 +35,8 @@ struct ClockModelView: View {
                 switch model {
                 case .classic:
                     AnalogPart(now: now, size: s * 0.95)
+                case .dual:
+                    DualClockPart(now: now, width: w, height: h)
                 case .analogDate:
                     VStack(spacing: s * 0.04) {
                         AnalogPart(now: now, size: s * 0.78)
@@ -167,9 +170,20 @@ private struct AnalogPart: View {
     let now: Date
     let size: CGFloat
     @AppStorage("secA") private var seconds = true // varsayılan: analogda saniye açık (30 Ekim 2026)
+    @AppStorage(SecondsMotion.key) private var motionRaw = SecondsMotion.tick.rawValue
 
     var body: some View {
-        AnalogClock(date: now, showSeconds: seconds)
+        let motion = SecondsMotion(rawValue: motionRaw) ?? .tick
+        Group {
+            // Mekanik ve kayan saniyede ibre saniyede birden sık çizilir (2. analiz #10)
+            if seconds && motion != .tick {
+                TimelineView(.animation(minimumInterval: motion.interval)) { ctx in
+                    AnalogClock(date: ctx.date, showSeconds: true, motion: motion)
+                }
+            } else {
+                AnalogClock(date: now, showSeconds: seconds)
+            }
+        }
             .frame(width: size, height: size)
             .contentShape(Circle())
             .onTapGesture {
@@ -187,12 +201,57 @@ private struct DigitalPart: View {
     @AppStorage("h12") private var h12 = false
     @AppStorage("clockFont") private var clockFont = ClockFont.rounded.rawValue
 
+    /// Saniye küçük ve tabana hizalı (2. analiz #21)
+    @AppStorage("secSmall") private var small = false
+    /// Rakam rengi ve dış hatlı rakamlar (2. analiz #24)
+    @AppStorage(ClockDigits.colorKey) private var digitColor = "theme"
+    @AppStorage(ClockDigits.outlineKey) private var outline = false
+    /// Dijital rakam görünümü (2. analiz #9)
+    @AppStorage(DigitalStyle.key) private var style = "plain"
+
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: size * 0.08) {
-            Text(Fmt.time(now, seconds: seconds))
-                .font((ClockFont(rawValue: clockFont) ?? .rounded).font(size))
+        if style != "plain" {
+            styled
+        } else {
+            plain
+        }
+    }
+
+    private var styled: some View {
+        let ink = ClockDigits.color(digitColor)
+        let t = Fmt.time(now, seconds: seconds)
+        return HStack(alignment: .center, spacing: size * 0.08) {
+            if style == "vertical" {
+                VerticalDigits(lines: t.split(separator: ":").map(String.init), height: size * 1.6, ink: ink,
+                               font: ClockFont(rawValue: clockFont) ?? .rounded)
+            } else {
+                StyledDigits(text: t.filter { $0.isNumber || $0 == ":" }, style: style, height: size * 0.82, ink: ink)
+            }
+            if h12 { Text(Fmt.ampm(now)).font(.system(size: size * 0.3, weight: .semibold)) }
+        }
+        .environment(\.layoutDirection, .leftToRight)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            seconds.toggle()
+            BadgeStore.shared.hit(.saniye)
+        }
+    }
+
+    private var plain: some View {
+        let font = ClockFont(rawValue: clockFont) ?? .rounded
+        let ink = ClockDigits.color(digitColor)
+        return HStack(alignment: .firstTextBaseline, spacing: size * 0.08) {
+            if seconds && small {
+                HStack(alignment: .firstTextBaseline, spacing: 0) {
+                    ClockDigits.text(Fmt.time(now), font: font.font(size), color: ink, outline: outline, width: size * 0.012)
+                    ClockDigits.text(String(format: ":%02d", Calendar.current.component(.second, from: now)), font: font.font(size * 0.45),
+                                     color: ink, outline: outline, width: size * 0.008)
+                }
                 .monospacedDigit()
-                .foregroundStyle(Theme.ink)
+            } else {
+                ClockDigits.text(Fmt.time(now, seconds: seconds), font: font.font(size), color: ink, outline: outline, width: size * 0.012)
+                    .monospacedDigit()
+            }
             if h12 {
                 Text(Fmt.ampm(now)).font(.system(size: size * 0.3, weight: .semibold))
             }
@@ -210,29 +269,95 @@ private struct DigitalPart: View {
 
 /// Çevirmeli saat: her rakam bir kart, değişince kart yukarıdan aşağı döner (hareketi azalt tercihinde dönmez).
 /// Dokununca dijital saniye açılır/kapanır (sitedeki gibi dijital sayılır).
+/// Çevirmeli saatin görünümü (2. analiz #20): iki rakam tek kartta, köşede küçük saniye, kart çizgisi, kart rengi.
+/// Android'deki FlipLook ile aynı anahtarlar ve renkler.
+enum FlipLook {
+    static let pairKey = "flip.pair"
+    static let smallSecKey = "flip.smallSec"
+    static let hingeKey = "flip.hinge"
+    static let cardKey = "flip.card"
+    static let cards: [(id: String, bg: UInt32, fg: UInt32)] = [
+        ("theme", 0, 0), ("black", 0x1A1B1E, 0xF5F5F5), ("white", 0xF7F7F5, 0x1A1B1E),
+        ("red", 0xA61E1E, 0xFFFFFF), ("blue", 0x1F4E9C, 0xFFFFFF), ("green", 0x1E6B34, 0xFFFFFF),
+    ]
+    static func colors(_ id: String) -> (bg: Color, fg: Color) {
+        guard id != "theme", let c = cards.first(where: { $0.id == id }) else { return (Theme.surface2, Theme.ink) }
+        return (Color(hex: c.bg), Color(hex: c.fg))
+    }
+}
+
+/// Rakam rengi ve dış hatlı rakam (2. analiz #24; Android'deki ClockLook.digitColor/outline ile aynı)
+enum ClockDigits {
+    static let colorKey = "look.digitColor"
+    static let outlineKey = "look.outline"
+    /// Büyük rakam için iki temada da okunur orta tonlar
+    static let colors: [(id: String, rgb: UInt32)] = [
+        ("red", 0xE03131), ("orange", 0xF76707), ("amber", 0xF59F00), ("green", 0x2F9E44),
+        ("aqua", 0x1098AD), ("blue", 0x1C7ED6), ("violet", 0x7048E8), ("pink", 0xD6336C),
+    ]
+    static func color(_ id: String) -> Color {
+        colors.first { $0.id == id }.map { Color(hex: $0.rgb) } ?? Theme.ink
+    }
+
+    /// Dolu ya da dış hatlı metin: dış hat dört yöne kaydırılmış kopyalarla çizilir, iç zemin rengiyle oyulur
+    @ViewBuilder
+    static func text(_ s: String, font: Font, color: Color, outline: Bool, width: CGFloat) -> some View {
+        if outline {
+            let w = max(1, width)
+            ZStack {
+                ForEach(0..<8, id: \.self) { i in
+                    let a = Double(i) * .pi / 4
+                    Text(s).font(font).foregroundStyle(color).offset(x: cos(a) * w, y: sin(a) * w)
+                }
+                Text(s).font(font).foregroundStyle(Theme.bg).blendMode(.destinationOut)
+            }
+            .compositingGroup()
+        } else {
+            Text(s).font(font).foregroundStyle(color)
+        }
+    }
+}
+
+/// Çevirmeli saat: her rakam (ya da iki rakam) bir kart. Sahne enine göre uzunsa saat ve dakika kartları alt alta;
+/// 12 saat biçiminde ÖÖ/ÖS saat kartının köşesinde, küçük saniye seçiliyse dakika kartının köşesinde yazar.
 private struct FlipPart: View {
     let now: Date
     let width: CGFloat
     let height: CGFloat
     @AppStorage("secD") private var seconds = true
     @AppStorage("h12") private var h12 = false
+    @AppStorage(FlipLook.pairKey) private var pair = false
+    @AppStorage(FlipLook.smallSecKey) private var smallSec = false
+    @AppStorage(FlipLook.hingeKey) private var hinge = true
+    @AppStorage(FlipLook.cardKey) private var cardID = "theme"
 
     var body: some View {
         let c = Calendar.current.dateComponents([.hour, .minute, .second], from: now)
         let hour = h12 ? ((c.hour ?? 0) % 12 == 0 ? 12 : (c.hour ?? 0) % 12) : (c.hour ?? 0)
-        let groups = [hour, c.minute ?? 0] + (seconds ? [c.second ?? 0] : [])
-        // Kart boyu: genişliğe (grup aralıklarıyla) ve yüksekliğe göre
-        let n = CGFloat(groups.count * 2)
-        let cardW = min(width / (n + CGFloat(groups.count - 1) * 0.35 + n * 0.08), height / 1.4)
-        HStack(spacing: cardW * 0.35) {
-            ForEach(Array(groups.enumerated()), id: \.offset) { _, v in
-                HStack(spacing: cardW * 0.08) {
-                    FlipCard(digit: v / 10, width: cardW)
-                    FlipCard(digit: v % 10, width: cardW)
+        let small = seconds && smallSec
+        let groups = [hour, c.minute ?? 0] + (seconds && !small ? [c.second ?? 0] : [])
+        let vertical = height > width * 1.1
+        let perGroup: CGFloat = pair ? 1.7 : 2.08
+        let n = CGFloat(groups.count)
+        let cardW = vertical ? min(width / (perGroup + 0.2), height / (n * 1.4 + (n - 1) * 0.25))
+            : min(width / (n * perGroup + (n - 1) * 0.35), height / 1.4)
+        let colors = FlipLook.colors(cardID)
+        let ampm = h12 ? Fmt.ampm(now) : ""
+        let layout = vertical ? AnyLayout(VStackLayout(spacing: cardW * 0.25)) : AnyLayout(HStackLayout(spacing: cardW * 0.35))
+        layout {
+            ForEach(Array(groups.enumerated()), id: \.offset) { i, v in
+                let corner = i == 0 ? ampm : (i == 1 && small ? String(format: "%02d", c.second ?? 0) : "")
+                if pair {
+                    FlipCard(text: String(format: "%02d", v), width: cardW * 1.7, digit: cardW, colors: colors, hinge: hinge,
+                             corner: corner, cornerLeading: i == 0)
+                } else {
+                    HStack(spacing: cardW * 0.08) {
+                        FlipCard(text: "\(v / 10)", width: cardW, digit: cardW, colors: colors, hinge: hinge,
+                                 corner: i == 0 ? corner : "", cornerLeading: true)
+                        FlipCard(text: "\(v % 10)", width: cardW, digit: cardW, colors: colors, hinge: hinge,
+                                 corner: i != 0 ? corner : "", cornerLeading: false)
+                    }
                 }
-            }
-            if h12 {
-                Text(Fmt.ampm(now)).font(.system(size: cardW * 0.32, weight: .bold)).foregroundStyle(Theme.muted)
             }
         }
         .environment(\.layoutDirection, .leftToRight)
@@ -247,29 +372,42 @@ private struct FlipPart: View {
 }
 
 private struct FlipCard: View {
-    let digit: Int
+    let text: String
     let width: CGFloat
+    let digit: CGFloat
+    let colors: (bg: Color, fg: Color)
+    let hinge: Bool
+    let corner: String
+    let cornerLeading: Bool
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var angle: Double = 0
 
     var body: some View {
-        let h = width * 1.4
+        let h = digit * 1.4
         ZStack {
-            RoundedRectangle(cornerRadius: width * 0.12)
-                .fill(Theme.surface2)
-                .overlay(RoundedRectangle(cornerRadius: width * 0.12).stroke(Theme.border, lineWidth: 1))
-                .shadow(color: .black.opacity(0.12), radius: width * 0.06, y: width * 0.03)
-            Text("\(digit)")
-                .font(ClockFont.current.font(width * 1.0))
+            RoundedRectangle(cornerRadius: digit * 0.12)
+                .fill(colors.bg)
+                .overlay(RoundedRectangle(cornerRadius: digit * 0.12).stroke(Theme.border.opacity(0.6), lineWidth: 1))
+                .shadow(color: .black.opacity(0.12), radius: digit * 0.06, y: digit * 0.03)
+            Text(text)
+                .font(ClockFont.current.font(digit * 1.0))
                 .monospacedDigit()
-                .foregroundStyle(Theme.ink)
+                .lineLimit(1)
+                .foregroundStyle(colors.fg)
                 .rotation3DEffect(.degrees(angle), axis: (x: 1, y: 0, z: 0), perspective: 0.5)
                 .opacity(angle == 0 ? 1 : 0.4)
             // Ortadaki ayrım çizgisi
-            Rectangle().fill(Theme.bg).frame(height: max(1, width * 0.03))
+            if hinge { Rectangle().fill(Theme.bg).frame(height: max(1, digit * 0.03)) }
+            if !corner.isEmpty {
+                Text(corner)
+                    .font(.system(size: digit * 0.2, weight: .bold).monospacedDigit())
+                    .foregroundStyle(colors.fg.opacity(0.75))
+                    .padding(digit * 0.07)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: cornerLeading ? .topLeading : .bottomTrailing)
+            }
         }
         .frame(width: width, height: h)
-        .onChange(of: digit) {
+        .onChange(of: text) {
             guard !reduceMotion else { return }
             angle = -80
             withAnimation(.easeOut(duration: 0.3)) { angle = 0 }
@@ -357,7 +495,7 @@ private struct WeatherPart: View {
 }
 
 /// Aylık takvim (pazartesi başlar; bugün vurgulu, tatiller renkli). Güne dokununca Takvim sekmesinde açılır.
-private struct MonthPart: View {
+struct MonthPart: View {
     let now: Date
     let width: CGFloat
 

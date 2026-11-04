@@ -15,8 +15,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.Icon
+import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.foundation.text.KeyboardOptions
@@ -116,75 +118,119 @@ fun PomodoroScreen() {
         }
     }
 
-    Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-    ) {
-        Spacer(Modifier.height(16.dp))
-        Text(L("tools.pomodoro.$phase"), color = if (phase == "work") Theme.c.accent else AppData.color("religious"),
-            fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
-        BigTime(clock((remaining + 999) / 1000))
-        Text(T("tools.pomodoro.round", round, rounds), color = Theme.c.muted)
-        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            RoundButton(L("tools.pomodoro.skip"), false, Modifier.weight(1f)) { advance(completed = false) }
+    // Araç kalıbı (2. analiz #200): Sayaç / İstatistik sekmeleri, altta tek ana düğme, ikincil işler "…" menüsünde,
+    // görev ve ses ile süre ayarları alt sayfada
+    var view by androidx.compose.runtime.saveable.rememberSaveable { mutableIntStateOf(0) }
+    var sheet by remember { mutableStateOf<String?>(null) }
+    val primary = L(if (running) "tools.pomodoro.pause" else if (left > 0) "tools.pomodoro.resume" else "tools.pomodoro.start")
+    ToolFrame(
+        primary = primary,
+        onPrimary = {
             if (running) {
-                RoundButton(L("tools.pomodoro.pause"), true, Modifier.weight(1f)) {
-                    AlarmScheduler.cancel(context, AlarmScheduler.POMODORO)
-                    left = remaining
-                    end = 0
-                    persist()
+                AlarmScheduler.cancel(context, AlarmScheduler.POMODORO)
+                left = remaining
+                end = 0
+                persist()
+            } else start(if (left > 0) left else phaseMs())
+        },
+        menu = listOf(
+            L("tools.pomodoro.skip") to { advance(completed = false) },
+            L("tools.pomodoro.reset") to {
+                AlarmScheduler.cancel(context, AlarmScheduler.POMODORO)
+                end = 0; left = 0; phase = "work"; round = 1; done = 0
+                persist()
+            },
+            L("tools.pomodoro.settings") to { sheet = "settings" },
+        ),
+        center = true,
+        header = {
+            val tabs = listOf(L("tool.tab.timer"), L("tool.tab.stats"))
+            androidx.compose.material3.SingleChoiceSegmentedButtonRow(Modifier.weight(1f)) {
+                tabs.forEachIndexed { i, t ->
+                    SegmentedButton(view == i, { view = i },
+                        androidx.compose.material3.SegmentedButtonDefaults.itemShape(i, tabs.size), colors = segColors()) { Text(t, maxLines = 1) }
                 }
-            } else {
-                RoundButton(L(if (left > 0) "tools.pomodoro.resume" else "tools.pomodoro.start"), true, Modifier.weight(1f)) {
-                    start(if (left > 0) left else phaseMs())
+            }
+        },
+    ) {
+        if (view == 0) {
+            Spacer(Modifier.height(4.dp))
+            Text(L("tools.pomodoro.$phase"), color = if (phase == "work") Theme.c.accent else AppData.color("religious"),
+                fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+            // Kalan süre halkası ve tur domatesleri (2. analiz #101)
+            val pColor = if (phase == "work") Theme.c.accent else AppData.color("religious")
+            ProgressRing(remaining.toFloat() / phaseMs().coerceAtLeast(1L), pColor, Modifier.fillMaxWidth(0.8f), stroke = 12.dp) {
+                BigTime(clock((remaining + 999) / 1000))
+            }
+            RoundDots(rounds, if (phase == "long") rounds else round - 1, if (phase == "work") round else 0, T("tools.pomodoro.round", round, rounds))
+            val todayCount = log.count { it.d == java.time.LocalDate.now().toString() }
+            Text(if (todayCount >= goal) L("tools.pomodoro.goalDone") + " · " + T("tools.pomodoro.goalProgress", todayCount, goal)
+                else T("tools.pomodoro.goalProgress", todayCount, goal),
+                color = if (todayCount >= goal) Theme.c.accent else Theme.c.muted, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+            Text(T("tools.pomodoro.completed", done), color = Theme.c.muted, fontSize = 13.sp)
+            // Görev ve ses tek satır: dokununca alt sayfa
+            AppCard(Modifier.fillMaxWidth().clickable { sheet = "task" }) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text(L("tool.taskSound"), color = Theme.c.muted, fontSize = 12.sp)
+                        Text(task.ifBlank { L("tools.pomodoro.noTask") } + " · " +
+                            noiseName(noise) +
+                            (if (tag != "none") " · " + L("tools.pomodoro.tags.$tag") else ""),
+                            color = Theme.c.text, fontSize = 15.sp, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                    }
+                    Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
+                }
+            }
+            Spacer(Modifier.height(8.dp))
+        } else {
+            FocusStatsCard(log) { PomoLog.save(emptyList()); log = emptyList() }
+            FocusForest(log)
+            Spacer(Modifier.height(8.dp))
+        }
+    }
+    if (sheet != null) {
+        @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+        androidx.compose.material3.ModalBottomSheet({ sheet = null }, containerColor = Theme.c.bg) {
+            Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 24.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp)) {
+                if (sheet == "task") {
+                    OutlinedTextField(task, { task = it.take(60); ToolState.putStr("pomo.task", task) }, Modifier.fillMaxWidth(),
+                        label = { Text(L("tools.pomodoro.taskLabel")) }, placeholder = { Text(L("tools.pomodoro.taskPlaceholder")) },
+                        singleLine = true, keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done))
+                    // Etiket
+                    Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        for (k in PomoLog.TAGS) {
+                            val on = k == tag
+                            androidx.compose.foundation.layout.Box(
+                                Modifier.background(if (on) Theme.c.accent else Theme.c.surface2, androidx.compose.foundation.shape.RoundedCornerShape(50))
+                                    .clickable { tag = k; ToolState.putStr("pomo.tag", k) }.padding(horizontal = 14.dp, vertical = 8.dp),
+                            ) { Text(L("tools.pomodoro.tags.$k"), color = if (on) Theme.c.bg else Theme.c.text, fontSize = 14.sp) }
+                        }
+                    }
+                    // Tur bitince sayaçlar yeniden okunsun (geçmiş uzayınca kart yenilenir)
+                    androidx.compose.runtime.key(log.size) { PomoTodoCard(task) { task = it; ToolState.putStr("pomo.task", it) } }
+                    AppCard {
+                        SectionTitle(L("tools.pomodoro.noise"))
+                        NoiseControls(noise, volume,
+                            onKind = { noise = it; ToolState.putStr("pomo.noise", it); PomoNoise.sync(context) },
+                            onVolume = { volume = it; ToolState.putInt("pomo.vol", it); if (SoundService.source == "pomo") PomoNoise.sync(context) })
+                        Text(L("pomo.noiseNote"), color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                } else {
+                    AppCard {
+                        SectionTitle(L("tools.pomodoro.settings"))
+                        Stepper(L("tools.pomodoro.workMin"), workMin, 5..90, 5) { workMin = it; ToolState.putInt("pomo.work", it) }
+                        Stepper(L("tools.pomodoro.shortMin"), shortMin, 1..30, 1) { shortMin = it; ToolState.putInt("pomo.short", it) }
+                        Stepper(L("tools.pomodoro.longMin"), longMin, 5..60, 5) { longMin = it; ToolState.putInt("pomo.long", it) }
+                        Stepper(L("tools.pomodoro.roundsLabel"), rounds, 2..8, 1) { rounds = it; ToolState.putInt("pomo.rounds", it) }
+                        Stepper(L("tools.pomodoro.goalLabel"), goal, 1..24, 1) { goal = it; ToolState.putInt("pomo.goal", it) }
+                    }
+                    FocusBlockCard()
+                    // Telefon yüzüstüyken odak (2. analiz #29)
+                    FlipFocusCard { end = ToolState.long("pomo.end"); left = ToolState.long("pomo.left"); now = System.currentTimeMillis() }
                 }
             }
         }
-        Text(T("tools.pomodoro.completed", done), color = Theme.c.muted, fontSize = 13.sp)
-        val todayCount = log.count { it.d == java.time.LocalDate.now().toString() }
-        Text(if (todayCount >= goal) L("tools.pomodoro.goalDone") + " · " + T("tools.pomodoro.goalProgress", todayCount, goal)
-            else T("tools.pomodoro.goalProgress", todayCount, goal),
-            color = if (todayCount >= goal) Theme.c.accent else Theme.c.muted, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
-        TextButton(onClick = {
-            AlarmScheduler.cancel(context, AlarmScheduler.POMODORO)
-            end = 0; left = 0; phase = "work"; round = 1; done = 0
-            persist()
-        }) { Text(L("tools.pomodoro.reset"), color = Theme.c.accent) }
-        OutlinedTextField(task, { task = it.take(60); ToolState.putStr("pomo.task", task) }, Modifier.fillMaxWidth(),
-            label = { Text(L("tools.pomodoro.taskLabel")) }, placeholder = { Text(L("tools.pomodoro.taskPlaceholder")) },
-            singleLine = true, keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done))
-        // Etiket
-        androidx.compose.foundation.layout.Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            for (k in PomoLog.TAGS) {
-                val on = k == tag
-                androidx.compose.foundation.layout.Box(
-                    Modifier.background(if (on) Theme.c.accent else Theme.c.surface2, androidx.compose.foundation.shape.RoundedCornerShape(50))
-                        .clickable { tag = k; ToolState.putStr("pomo.tag", k) }.padding(horizontal = 14.dp, vertical = 8.dp),
-                ) { Text(L("tools.pomodoro.tags.$k"), color = if (on) Theme.c.bg else Theme.c.text, fontSize = 14.sp) }
-            }
-        }
-        // Tur bitince sayaçlar yeniden okunsun (geçmiş uzayınca kart yenilenir)
-        androidx.compose.runtime.key(log.size) { PomoTodoCard(task) { task = it; ToolState.putStr("pomo.task", it) } }
-        AppCard {
-            SectionTitle(L("tools.pomodoro.noise"))
-            NoiseControls(noise, volume,
-                onKind = { noise = it; ToolState.putStr("pomo.noise", it); PomoNoise.sync(context) },
-                onVolume = { volume = it; ToolState.putInt("pomo.vol", it); if (SoundService.source == "pomo") PomoNoise.sync(context) })
-            Text(L("pomo.noiseNote"), color = Theme.c.muted, fontSize = 12.sp)
-        }
-        FocusBlockCard()
-        FocusStatsCard(log) { PomoLog.save(emptyList()); log = emptyList() }
-        AppCard {
-            SectionTitle(L("tools.pomodoro.settings"))
-            Stepper(L("tools.pomodoro.workMin"), workMin, 5..90, 5) { workMin = it; ToolState.putInt("pomo.work", it) }
-            Stepper(L("tools.pomodoro.shortMin"), shortMin, 1..30, 1) { shortMin = it; ToolState.putInt("pomo.short", it) }
-            Stepper(L("tools.pomodoro.longMin"), longMin, 5..60, 5) { longMin = it; ToolState.putInt("pomo.long", it) }
-            Stepper(L("tools.pomodoro.roundsLabel"), rounds, 2..8, 1) { rounds = it; ToolState.putInt("pomo.rounds", it) }
-            Stepper(L("tools.pomodoro.goalLabel"), goal, 1..24, 1) { goal = it; ToolState.putInt("pomo.goal", it) }
-        }
-        Spacer(Modifier.height(8.dp))
     }
 }
 

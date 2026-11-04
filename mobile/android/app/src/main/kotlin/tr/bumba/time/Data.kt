@@ -79,8 +79,9 @@ data class City(
 }
 
 /** Takvim olayı: resmî tatil, arife, dini gün, özel gün, okul (sitedeki lib/events.mjs çıktısı) */
-data class CalEvent(val date: LocalDate, val key: String, val type: String, val end: LocalDate?) {
-    val name: String get() = L("calendar.events.$key")
+data class CalEvent(val date: LocalDate, val key: String, val type: String, val end: LocalDate?, val label: String? = null) {
+    /** Dünya tatillerinde (2. analiz #122) ad hazır gelir (`label`), diğerlerinde sitedeki etkinlik adı */
+    val name: String get() = label ?: L("calendar.events.$key")
 }
 
 object AppData {
@@ -107,7 +108,7 @@ object AppData {
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
-            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th").associateWith { o.optString(it) })
+            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi").associateWith { o.optString(it) })
         }
 
         val dj = JSONObject(read("districts.json"))

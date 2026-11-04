@@ -98,3 +98,10 @@ data class AppPlace(val id: String, val name: String, val lat: Double, val lon: 
 }
 
 val Prayer.title: String get() = L("prayer.$key")
+
+/** Ramazan'da (Diyanet hicri takvimine göre 9. ay) akşam "İftar", imsak "Sahur (imsak)" (2. analiz #55) */
+fun Prayer.ramadanTitle(at: java.time.Instant, zone: java.time.ZoneId): String {
+    if (this != Prayer.MAGHRIB && this != Prayer.FAJR) return title
+    if (Hijri.date(at.atZone(zone).toLocalDate())?.month != 9) return title
+    return L(if (this == Prayer.MAGHRIB) "live.iftar" else "live.sahur")
+}

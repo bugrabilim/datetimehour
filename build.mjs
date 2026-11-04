@@ -1,4 +1,5 @@
 // Saat Tarih statik site derleyicisi. Bağımlılık yok: `node build.mjs` → dist/
+import { otdDay as otdDaySel } from "./lib/otd.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -6,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 import { bridges } from "./lib/bridges.mjs";
 import { hijriTable } from "./lib/hijri.mjs";
+import { skyEvents } from "./lib/sky-events.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, "src");
@@ -17,11 +19,11 @@ const ORIGIN = (process.env.SITE_ORIGIN || cfg.origin).replace(/\/+$/, "");
 const HOST = new URL(ORIGIN).host;
 const UMAMI_ID = process.env.UMAMI_ID ?? cfg.umamiId ?? "";
 /* Diller: tr (varsayılan) ve en zorunlu; diğerleri src/i18n/<dil>.json varsa derlenir. */
-const ALL_LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
+const ALL_LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
 const LANGS = ALL_LANGS.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
 const I = Object.fromEntries(LANGS.map((l) => [l, readJson(`src/i18n/${l}.json`)]));
 const CITIES = readJson("src/data/cities.json");
-const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية", id: "Bahasa Indonesia", ur: "اردو", fa: "فارسی", fr: "Français", ru: "Русский", ja: "日本語", ko: "한국어", zh: "简体中文", fil: "Filipino", th: "ไทย" };
+const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية", id: "Bahasa Indonesia", ur: "اردو", fa: "فارسی", fr: "Français", ru: "Русский", ja: "日本語", ko: "한국어", zh: "简体中文", fil: "Filipino", th: "ไทย", es: "Español", pt: "Português", hi: "हिन्दी" };
 /* Ortak liste servisinin bildiği diller (bumbagroup.com/api/liste/katil); servis yeni dil eklediğinde buraya yaz */
 const LIST_LANGS = ["tr", "en"];
 /* Sağdan sola yazılan diller */
@@ -89,11 +91,14 @@ for (const [name, from] of [
   ["planner.js", "js/planner.js"],
   ["poll.js", "js/poll.js"],
   ["embed.js", "js/embed.js"],
+  ["line.js", "embed/line.js"],
   ["prayer-calc.js", "js/prayer-calc.js"],
   ["prayer.js", "js/prayer.js"],
+  ["wmm.js", "js/wmm.js"],
   ["qibla.js", "js/qibla.js"],
   ["sky-calc.js", "js/sky-calc.js"],
   ["sky.js", "js/sky.js"],
+  ["moon-render.js", "js/moon-render.js"],
   ["eclipse-map.js", "js/eclipse-map.js"],
   ["otd.js", "js/otd.js"],
   ["retire.js", "js/retire.js"],
@@ -107,6 +112,7 @@ for (const [name, from] of [
   ["nature-calc.js", "js/nature-calc.js"],
   ["nature.js", "js/nature.js"],
   ["weather-core.js", "js/weather-core.js"],
+  ["weather-fx.js", "js/weather-fx.js"],
   ["weather.js", "js/weather.js"],
   ["globe.js", "js/globe.js"],
 ]) {
@@ -114,6 +120,8 @@ for (const [name, from] of [
   write(`assets/${name}`, buf);
   ASSETS[name] = `/assets/${name}?v=${hash(buf)}`;
 }
+/* Metin satırı widget'ı (2. analiz #187): başka siteler sabit adresten yükler (/embed/line.js) */
+write("embed/line.js", fs.readFileSync(path.join(SRC, "embed/line.js")));
 /* Küre: Natural Earth kabartmalı dünya dokusu (kamu malı) ve yer adları (Natural Earth 1:10m Populated Places, kamu malı;
    src/data/places.json, saat dilimiyle birlikte). Yerler ayrıca "konumumu kullan" sonucunu en yakın şehre çevirir (place.js).
    Hepsi repodaki dosyalardan; derlemede dış veri indirilmez. Web küresi 30 Ekim'de kaldırılmış, 31 Ekim 2026'da ana sayfaya geri döndü. */
@@ -121,6 +129,8 @@ const EARTH_BUF = fs.readFileSync(path.join(SRC, "assets/earth.jpg"));
 write("assets/earth.jpg", EARTH_BUF);
 const EARTH_URL = `/assets/earth.jpg?v=${hash(EARTH_BUF)}`;
 const PLACES_SRC = readJson("src/data/places.json");
+/* Şehir nüfusu (2. analiz #180): Natural Earth pop_max (kent bölgesi, kamu malı; scripts/fetch-city-pop.mjs, cities.json "pop") */
+const CITY_POP = Object.fromEntries(CITIES.map((c) => [c.key, c.pop || 0]));
 const PLACES_JSON = JSON.stringify({ tz: PLACES_SRC.tz, p: PLACES_SRC.p.map((r) => r.slice(0, 3)) });
 write("assets/places.json", PLACES_JSON);
 const PLACES_URL = `/assets/places.json?v=${hash(PLACES_JSON)}`;
@@ -128,6 +138,16 @@ const PLACES_URL = `/assets/places.json?v=${hash(PLACES_JSON)}`;
 const LAND_JSON = JSON.stringify({ rings: JSON.parse(fs.readFileSync(path.join(SRC, "data", "land-110m.json"), "utf8")).rings });
 write("assets/land.json", LAND_JSON);
 const LAND_URL = `/assets/land.json?v=${hash(LAND_JSON)}`;
+/* Gece gökyüzü (3 Kasım 2026, 2. analiz #156): takımyıldız çizgileri ve adları (d3-celestial, BSD-3; scripts/fetch-constellations.mjs) */
+const CON_SRC = readJson("src/data/constellations.json");
+const CON_JSON = JSON.stringify(CON_SRC.con);
+write("assets/constellations.json", CON_JSON);
+const CON_URL = `/assets/constellations.json?v=${hash(CON_JSON)}`;
+/* Fotoğraf dokulu Ay (2. analiz #103): NASA SVS CGI Moon Kit (svs.gsfc.nasa.gov/4720, lroc_color_2k.jpg, kamu malı;
+   1024×512'ye küçültüldü). Her evre tarayıcıda dokudan çizilir (moon-render.js). */
+const MOON_BUF = fs.readFileSync(path.join(SRC, "assets/moon.jpg"));
+write("assets/moon.jpg", MOON_BUF);
+const MOON_URL = `/assets/moon.jpg?v=${hash(MOON_BUF)}`;
 const PLACE_NAMES_URL = {};
 for (const l of LANGS) {
   const j = JSON.stringify(PLACES_SRC.names[l] || PLACES_SRC.names.en);
@@ -142,9 +162,9 @@ for (const f of ["favicon.svg", "favicon.ico", "icon-192.png", "icon-512.png", "
 const CSP = [
   "default-src 'self'",
   "script-src 'self' https://istatistik.bumba.tr",
-  "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com https://api.open-meteo.com https://overpass-api.de",
+  "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com https://api.open-meteo.com https://air-quality-api.open-meteo.com https://overpass-api.de",
   "img-src 'self' data: https://bumbagroup.com https://tile.openstreetmap.org",
-  "frame-src https://www.youtube-nocookie.com", // alarm müziği (YouTube gelişmiş gizlilik modu; dış hizmet izniyle, 31 Ekim 2026)
+  "frame-src 'self' https://www.youtube-nocookie.com", // gömme kodu önizlemesi (kendi sitesi) ve alarm müziği (YouTube gelişmiş gizlilik modu; dış hizmet izniyle, 31 Ekim 2026)
   "style-src 'self'",
   "font-src 'self'",
   "form-action 'self' https://bumbagroup.com",
@@ -245,6 +265,10 @@ addModel("wx-digital-cal", "s-cal s-wx", (tz) => `<div class="cal-side">${pDigit
 addModel("wx-digital-cal-week", "s-cal2 s-wx", (tz) => `<div class="cal2-top">${pDigital(tz, " clock-xl")}</div><div class="cal2-body"><div class="cal-side">${pDate(tz)}${wxBlock("week")}</div>${calendarHtml(tz)}</div>`, true);
 // 20: çevirmeli saat (30 Ekim 2026, rakip analizi #5; önceden yalnız gömme widget'ındaydı)
 addModel("flip", "s-flip", (tz) => flipHtml(tz) + pDate(tz));
+// 21-23: temalı saatler (2. analiz #183, 3 Kasım 2026): hologram (CSS), Matrix (canvas yağmuru main.js'te), matematik ifadeli
+addModel("holo", "s-digital s-holo", (tz) => `<div class="holo-frame">${pDigital(tz, " clock-holo")}${pDate(tz)}</div>`);
+addModel("matrix", "s-digital s-matrix", (tz) => `<canvas class="matrix-rain" data-matrix aria-hidden="true"></canvas>${pDigital(tz, " clock-matrix")}${pDate(tz)}`);
+addModel("math", "s-digital s-math", (tz) => `<p class="math-time" aria-hidden="true" data-live="math"${tzA(tz)}>&nbsp;</p>${srTime(tz)}${pDate(tz)}`);
 // Yalnız gömme widget'ında (sahnede yok)
 addModel("minimal", "s-analog", (tz) => analogSvg({ tz, size: "lg", numerals: false, minimal: true }) + srTime(tz));
 addModel("duo", "s-duo", (tz) => analogSvg({ tz, size: "sm" }) + `<div class="duo-text">${pDigital(tz)}</div>`);
@@ -254,10 +278,12 @@ addModel("calendar-analog", "s-cal", (tz) => analogSvg({ tz, size: "xs", numeral
 addModel("words", "s-words", (tz) => `<p class="words" role="timer" data-live="words"${tzA(tz)}>&nbsp;</p>` + pDate(tz));
 addModel("rings", "s-rings", (tz) => ringsHtml(tz) + pDate(tz));
 addModel("bigdate", "s-bigdate", (tz) => `<p class="bigdate-day" data-live="day"${tzA(tz)}>–</p><p class="bigdate-month" data-live="monthyear"${tzA(tz)}>&nbsp;</p><p class="bigdate-week" data-live="weekday"${tzA(tz)}>&nbsp;</p>${pDigital(tz, " clock-sm")}`);
-const STAGE_ORDER = ["classic", "wx-digital-cal-week", "analog-date", "stack", "wx-analog", "wx-stack", "wx-analog-date", "wx-full", "h-classic", "h-analog-date", "h-stack", "h-wx-analog", "h-wx-stack", "h-wx-analog-date", "h-wx-full", "digital", "digital-date", "wx-digital", "wx-digital-cal", "flip"];
+const STAGE_ORDER = ["classic", "wx-digital-cal-week", "analog-date", "stack", "wx-analog", "wx-stack", "wx-analog-date", "wx-full", "h-classic", "h-analog-date", "h-stack", "h-wx-analog", "h-wx-stack", "h-wx-analog-date", "h-wx-full", "digital", "digital-date", "wx-digital", "wx-digital-cal", "flip", "holo", "matrix", "math"];
 const MODELS = STAGE_ORDER.map((id) => M[id]);
 const EMBED_MODELS = Object.values(M).filter((m) => !m.wx);
 
+const ICON_MINUS = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 12h12"/></svg>`;
+const ICON_PLUS = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 12h12M12 6v12"/></svg>`;
 const ICON_CLOSE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
 const ICON_INFO = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="0.6" fill="currentColor"/></svg>`;
 const ICON_GLOBE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>`;
@@ -267,7 +293,7 @@ function prefControls(t) {
   return `<button type="button" class="fmt-btn" data-fmt-toggle aria-pressed="false" aria-label="${esc(t.client.formatLabel)}" title="${esc(t.client.formatLabel)}"><span data-fmt-part="24">24</span>/<span data-fmt-part="12">12</span></button>`;
 }
 
-function clockStage(lang, { tz = "", place = null } = {}) {
+function clockStage(lang, { tz = "", place = null, pills = false } = {}) {
   const t = I[lang];
   const s = t.stage;
   const total = MODELS.length;
@@ -280,7 +306,8 @@ function clockStage(lang, { tz = "", place = null } = {}) {
     (m, i) => `<button type="button" class="dot" data-dot="${i}" aria-label="${esc(s.models[m.id])}" title="${esc(s.models[m.id])}"${i ? "" : ' aria-current="true"'}></button>`
   ).join("");
   const wxAttr = place ? ` data-wx-name="${esc(place.name)}" data-wx-lat="${place.lat}" data-wx-lon="${place.lon}"` : "";
-  return `<section class="stage" data-carousel${wxAttr} aria-roledescription="${esc(s.carousel)}" aria-labelledby="clock-h">
+  /* Sekme başlığında canlı saat (2. analiz #175): data-title-clock; şehir sayfasında o şehrin dilimi */
+  return `<section class="stage" data-carousel data-title-clock="${esc(tz)}"${wxAttr} aria-roledescription="${esc(s.carousel)}" aria-labelledby="clock-h">
   <h2 id="clock-h" class="sr-only">${esc(s.label)}</h2>
   <div class="stage-track" data-track tabindex="0" aria-label="${esc(s.hint)}">${slides}</div>
   <p class="sr-only" data-stage-name aria-live="polite">${esc(s.models[MODELS[0].id])}</p>
@@ -293,8 +320,10 @@ function clockStage(lang, { tz = "", place = null } = {}) {
       ${prefControls(t)}
       <button type="button" class="icon-btn info-btn" data-info-open="info-dialog" aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
       <button type="button" class="icon-btn" data-fullscreen aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button>
+      <div class="zoom-btns" dir="ltr"><button type="button" class="icon-btn" data-stage-zoom="-1" aria-label="${esc(s.zoomOut)}" title="${esc(s.zoomOut)}">${ICON_MINUS}</button><button type="button" class="icon-btn" data-stage-zoom="1" aria-label="${esc(s.zoomIn)}" title="${esc(s.zoomIn)}">${ICON_PLUS}</button></div>
       <div class="sr-nav" dir="ltr"><button type="button" class="icon-btn" data-nav="-1" aria-label="${esc(s.prev)}" title="${esc(s.prev)}">${ICON_PREV}</button><label class="stage-count-wrap"><span class="stage-count" data-stage-count>1/${total}</span><select class="stage-jump" data-stage-select aria-label="${esc(s.dots)}">${jumpOpts}</select></label><button type="button" class="icon-btn" data-nav="1" aria-label="${esc(s.next)}" title="${esc(s.next)}">${ICON_NEXT}</button></div>
     </div>
+    <p class="stage-meta"><span class="sync-short" data-sync-short></span>${pills ? `<span class="tz-pills" data-tz-pills></span>` : ""}</p>
   </div>
   <noscript><p class="meta stage-note">${esc(t.ui.noscript)}</p></noscript>
 </section>
@@ -305,7 +334,7 @@ function clockStage(lang, { tz = "", place = null } = {}) {
     <p class="meta source-line">${esc(s.source)}</p>
     <p class="sync-line" data-sync-status>&nbsp;</p>
     <p class="meta">${esc(s.infoSeconds)}</p>
-    <button type="button" class="btn" data-info-close>${esc(s.infoClose)}</button>
+    <p class="share-row"><button type="button" class="toggle" data-share data-done="${esc(I[lang].ui.shareCopied)}">${esc(I[lang].ui.share)}</button> <button type="button" class="btn" data-info-close>${esc(s.infoClose)}</button></p>
   </dialog>
 </div>`;
 }
@@ -321,7 +350,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -455,6 +484,8 @@ function layout(p) {
     ...(p.clientExtra && p.clientExtra.cities ? { cities: p.clientExtra.cities } : {}),
     ...(p.clientExtra && p.clientExtra.globe ? { globe: p.clientExtra.globe } : {}),
     ...(p.clientExtra && p.clientExtra.eclipses ? { eclipses: p.clientExtra.eclipses } : {}),
+    ...(p.clientExtra && p.clientExtra.moonTex ? { moonTex: p.clientExtra.moonTex } : {}),
+    ...(p.clientExtra && p.clientExtra.skyEvents ? { skyEvents: p.clientExtra.skyEvents } : {}),
     placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang] },
     ...(UMAMI_ID ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
@@ -495,6 +526,12 @@ ${(alt ? altLangs : LANGS).filter((l) => l !== lang).map((l) => `<meta property=
         <div class="set-item set-look" role="group" aria-label="${esc(u.look)}"><span class="set-look-h">${esc(u.look)}</span>
           <label class="set-look-row"><span>${esc(u.lookFont)}</span><select class="set-select" data-look="font">${["standard", "rounded", "serif", "mono", "light"].map((k) => `<option value="${k}">${esc(u.lookFonts[k])}</option>`).join("")}</select></label>
           <label class="set-look-row"><span>${esc(u.lookColor)}</span><select class="set-select" data-look="color">${["default", "ink", "blue", "green", "red", "purple"].map((k) => `<option value="${k}">${esc(u.lookColors[k])}</option>`).join("")}</select></label>
+          <label class="set-look-row"><span>${esc(u.lookSecSmall)}</span><input type="checkbox" class="set-check" data-look-bool="secSmall"></label>
+          <label class="set-look-row"><span>${esc(u.lookMs)}</span><input type="checkbox" class="set-check" data-look-bool="ms"></label>
+          <label class="set-look-row"><span>${esc(u.lookNight)}</span><input type="checkbox" class="set-check" data-look-bool="night"></label>
+          <label class="set-look-row"><span>${esc(u.lookDateFmt)}</span><select class="set-select" data-look="dateFmt">${["long", "numeric", "iso"].map((k) => `<option value="${k}">${esc(u.lookDateFmts[k])}</option>`).join("")}</select></label>
+          <label class="set-look-row"><span>${esc(u.lookSep)}</span><select class="set-select" data-look="sep">${["colon", "dot"].map((k) => `<option value="${k}">${esc(u.lookSeps[k])}</option>`).join("")}</select></label>
+          <label class="set-look-row"><span>${esc(u.lookWeekStart)}</span><select class="set-select" data-look="weekStart">${["mon", "sun", "sat"].map((k) => `<option value="${k}">${esc(u.lookWeekStarts[k])}</option>`).join("")}</select></label>
           <span class="set-sub">${esc(u.lookNote)}</span></div>
         <a class="set-item" href="${ROUTES[lang].privacy}">${ICON_LOCK}<span>${esc(t.consent.privacy)}</span></a>
         <button type="button" class="set-item" data-consent-open aria-haspopup="dialog">${ICON_COOKIE}<span>${esc(t.consent.footerLink)}</span></button>
@@ -534,7 +571,7 @@ ${ld}
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
-    <p class="top-date" data-live="date">&nbsp;</p>
+    <p class="top-date"><span data-live="date">&nbsp;</span><span class="top-week" data-live="weeklabel"></span></p>
     <div class="menu" id="site-nav">
       <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}<a class="nav-faq" href="${ROUTES[lang].faq}"${p.nav === "faq" ? ' aria-current="page"' : ""}>${esc(u.faq)}</a></nav>
       ${mobileSettings}
@@ -622,7 +659,7 @@ function buildHome(lang) {
   const body = `<section class="hero hero-clock">
   <div class="wrap">
     <h1 class="sr-only">${esc(h.h1)}</h1>
-    ${clockStage(lang)}
+    ${clockStage(lang, { pills: true })}
   </div>
 </section>
 <section class="sr-only" aria-labelledby="today-q">
@@ -736,9 +773,11 @@ function buildCity(lang, c) {
     <dl class="facts">
       <div class="fact"><dt>${esc(ct.liveOffset)}</dt><dd data-live="offset" data-tz="${c.tz}">UTC</dd></div>
       <div class="fact"><dt>${esc(ct.liveDiff)}</dt><dd data-live="diff" data-tz="${c.tz}">&nbsp;</dd></div>
-      ${["sunrise", "sunset", "daylen"].map((k) => `<div class="fact"><dt>${esc(ct[k])}</dt><dd data-live="${k}" data-tz="${c.tz}" data-lat="${c.lat}" data-lon="${c.lon}">–</dd></div>`).join("")}
+      ${["sunrise", "sunset", "daylen", "solarnoon"].map((k) => `<div class="fact"><dt>${esc(ct[k === "solarnoon" ? "solarNoon" : k])}</dt><dd data-live="${k}" data-tz="${c.tz}" data-lat="${c.lat}" data-lon="${c.lon}">–</dd></div>`).join("")}
+      ${CITY_POP[c.key] ? `<div class="fact"><dt>${esc(ct.population)}</dt><dd>${esc(new Intl.NumberFormat(lang === "fil" ? "fil" : lang === "zh" ? "zh-CN" : lang === "pt" ? "pt-BR" : lang, { notation: "compact", maximumFractionDigits: 1, numberingSystem: "latn" }).format(CITY_POP[c.key]))}</dd></div>` : ""}
     </dl>
-    <p class="meta">${esc(ct.sunNote)}</p>
+    <p class="meta"><span data-live="solaroff" data-tz="${c.tz}" data-lon="${c.lon}" data-ahead="${esc(ct.solarAhead)}" data-behind="${esc(ct.solarBehind)}" data-same="${esc(ct.solarSame)}"></span> ${esc(ct.sunNote)}</p>
+    <p class="meta"><a href="https://www.openstreetmap.org/?mlat=${c.lat}&amp;mlon=${c.lon}#map=11/${c.lat}/${c.lon}" target="_blank" rel="noopener">${esc(ct.mapLink)}</a>${CITY_POP[c.key] ? ` · ${esc(ct.populationNote)}` : ""}</p>
   </div>
 </section>
 ${addFaq(lang, "world", t.ui.world, ROUTES[lang].world, faq.slice(1))}`;
@@ -797,9 +836,14 @@ const HOL = readJson("src/data/holidays.json");
 HOL.school = readJson("src/data/school.json");
 HOL.exams = readJson("src/data/exams.json");
 const HOL_YEARS = Object.keys(HOL.years).map(Number).sort((a, b) => a - b);
+/* Gökyüzü olayları (2. analiz #154): meteor yağmuru zirveleri (IMO λ⊙), kavuşumlar, Ay–gezegen, karşı konum, uzanım; 2026–2031 */
+const SKY_EVENTS = skyEvents(ROOT, HOL_YEARS[0], HOL_YEARS[HOL_YEARS.length - 1]);
 /* Tutulmalar (NASA tablosu): en büyük tutulma anı TD → UT (ΔT 69 sn, nature-calc.js ile aynı). Mevsimler sayfası ve uygulamalar. */
 const ECLIPSES_SRC = JSON.parse(fs.readFileSync(path.join(SRC, "data", "eclipses.json"), "utf8"));
 const ECLIPSES = ["solar", "lunar"].flatMap((kind) => ECLIPSES_SRC[kind].map((e) => ({ kind, ut: Date.parse(e.td) - 69000, type: e.type, regions: e.regions, path: e.path || [] }))).sort((a, b) => a.ut - b.ut);
+/* Tutulma bölge adları derlemede (Node'un tam ICU'su): bazı tarayıcılar UN M49 sayısal kodlarına ("005") ad vermiyor (2. analiz #90). */
+const ECLIPSE_REGIONS = [...new Set(ECLIPSES.flatMap((e) => e.regions))];
+const eclipseRegionNames = (locale) => { const dn = new Intl.DisplayNames([locale], { type: "region" }); return Object.fromEntries(ECLIPSE_REGIONS.map((c) => [c, dn.of(c) || c])); };
 const BUILD_YEAR = Math.min(Math.max(new Date().getFullYear(), HOL_YEARS[0]), HOL_YEARS[HOL_YEARS.length - 1]);
 const TYPE_LABEL_KEY = { holiday: "holiday", half: "half", religious: "religious", special: "special", school: "school", exam: "exam" };
 const yearPath = (lang, y) => `${ROUTES[lang].calendar}${y}/`;
@@ -850,8 +894,8 @@ for (const lang of LANGS) {
   }
 }
 
-function monthTable(lang, year, month, cy, ev) {
-  const cal = I[lang].calendar;
+function monthTable(lang, year, month, cy, ev, calOverride, interactive = true) {
+  const cal = calOverride || I[lang].calendar;
   const days = daysInMonth(year, month);
   const lead = dowOf(iso(year, month, 1));
   const head = cal.weekdaysShort.map((w) => `<th scope="col">${esc(w)}</th>`).join("");
@@ -868,7 +912,9 @@ function monthTable(lang, year, month, cy, ev) {
       const cls = [rank && `d-${rank}`, !rank && school && "d-school", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
       const label = es.length ? `<span class="sr-only">, ${esc(es.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "))}</span>` : "";
       const title = es.length ? ` title="${esc(es.map((e) => cal.events[e.key]).join("; "))}"` : "";
-      tr += `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}${es.length ? "" : ` title="${esc(cal.dayNone)}"`} tabindex="0" role="button">${d}${label}</td>`;
+      tr += interactive
+        ? `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}${es.length ? "" : ` title="${esc(cal.dayNone)}"`} tabindex="0" role="button">${d}${label}</td>`
+        : `<td${cls ? ` class="${cls}"` : ""}${title}>${d}${label}</td>`;
     }
     rows += `<tr>${tr}</tr>`;
   }
@@ -961,6 +1007,13 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
     <p class="meta">${esc(cal.printNote)}</p>
   </div>
 </section>
+<section class="section month-origin" aria-labelledby="morigin-h">
+  <div class="wrap">
+    <h2 id="morigin-h">${esc(cal.monthOrigin.heading)}</h2>
+    <ol class="month-origin-list">${cal.monthOrigin.items.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>
+    <p class="meta">${esc(cal.monthOrigin.source)}</p>
+  </div>
+</section>
 ${addFaq(lang, "calendar", t.faqPage.calendar, yearPath(lang, BUILD_YEAR), faq)}`;
   const ld = [...baseLd(lang), webPageLd(lang, canonicalPath, title, description), breadcrumbLd(trail)];
   const key = index ? "calendar-index" : `calendar:${year}`;
@@ -1015,7 +1068,7 @@ function toolBody(lang, key, preset = {}) {
 <progress class="tool-progress" max="100" value="0" data-cd-progress aria-hidden="true"></progress>
 <p class="cd-message" role="status" data-cd-message hidden></p>
 ${preset.sec ? `<p class="meta" data-cd-endsat data-tpl="${esc(tt.presets.endsAt)}" data-tpl-run="${esc(tt.presets.endsAtRun)}">&nbsp;</p>` : ""}
-<div class="tool-actions">${btn("btn", "data-cd-start", s.start)}${btn("toggle", "data-cd-add hidden", s.addMinute)}${btn("toggle", "data-cd-reset", s.reset)}${btn("toggle", "data-cd-copy", s.copyLink)}</div>
+<div class="tool-actions">${btn("btn", "data-cd-start", s.start)}${btn("toggle", "data-cd-add hidden", s.addMinute)}${btn("toggle", "data-cd-reset", s.reset)}${btn("toggle", "data-cd-copy", s.copyLink)}${btn("toggle", `data-cd-present aria-pressed="false" title="${esc(s.presentNote)}"`, s.present)}<a class="toggle" data-cd-app hidden>${esc(s.addToApp)}</a></div>
 <p class="meta">${esc(s.shareNote)}</p>
 ${soundRow(tt)}
 ${ringBanner(tt, "countdown")}`;
@@ -1025,22 +1078,32 @@ ${ringBanner(tt, "countdown")}`;
     <div class="field"><label for="al-time">${esc(s.timeLabel)}</label><input id="al-time" type="time" value="${preset.time || "07:00"}" required data-al-time></div>
     <div class="field grow"><label for="al-label">${esc(s.labelLabel)}</label><input id="al-label" type="text" maxlength="40" placeholder="${esc(s.labelPlaceholder)}" data-al-label></div>
   </div>
+  <p class="al-recent" data-al-recent hidden><span class="meta">${esc(s.recent)}:</span></p>
   <fieldset class="days"><legend>${esc(s.repeatLabel)}</legend>
     ${s.dayNames.map((d, i) => `<label class="day"><input type="checkbox" value="${i}" data-al-day><span>${esc(d)}</span></label>`).join("")}
     <span class="presets">${btn("chip", 'data-al-preset="none"', s.once)}${btn("chip", 'data-al-preset="weekdays"', s.weekdays)}${btn("chip", 'data-al-preset="all"', s.every)}</span>
   </fieldset>
   <div class="inputs-row al-music">
     <div class="field"><label for="al-sound">${esc(s.soundLabel)}</label><select id="al-sound" data-al-sound>${ALARM_SOUNDS.map((k) => `<option value="${k}">${esc(s.sounds[k])}</option>`).join("")}</select></div>
+    <div class="field"><label for="al-snooze">${esc(s.snoozeLabel)}</label><select id="al-snooze" data-al-snooze>${[5, 10, 15, 20, 30].map((n) => `<option value="${n}">${esc(tpl(s.snoozeMin, { n }))}</option>`).join("")}</select></div>
     <div class="field grow"><label for="al-yt">${esc(s.ytLabel)}</label><input id="al-yt" type="url" inputmode="url" autocomplete="off" placeholder="https://www.youtube.com/watch?v=…" data-al-yt></div>
   </div>
   <p class="meta al-yt-note" data-al-yt-note>${esc(s.ytNote)}</p>
   <button class="btn" type="submit">${esc(s.add)}</button>
 </form>
 <h2 class="tool-h2">${esc(s.listHeading)}</h2>
+<div class="al-ring" data-al-ring hidden><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle class="alr-track" cx="60" cy="60" r="52"/><circle class="alr-fill" data-al-ring-fill cx="60" cy="60" r="52" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 60 60)"/></svg><p class="alr-text"><strong data-al-ring-time></strong><span data-al-ring-left></span></p></div>
+<progress class="al-bar" data-al-bar max="100" value="0" hidden></progress>
 <p class="meta" data-al-next>${esc(s.nextNone)}</p>
 <ul class="alarm-list" data-al-list></ul>
 <p class="meta" data-al-empty>${esc(s.none)}</p>
-<div class="tool-extra"><label class="check-inline"><input type="checkbox" data-wake> ${esc(s.wake)}</label><label class="check-inline"><input type="checkbox" data-sound checked> ${esc(tt.common.sound)}</label>${btn("toggle", "data-test-sound", tt.common.testSound)}${btn("toggle", "data-notify", tt.common.notify)}</div>
+<div class="tool-extra"><label class="check-inline"><input type="checkbox" data-wake> ${esc(s.wake)}</label><label class="check-inline"><input type="checkbox" data-sound checked> ${esc(tt.common.sound)}</label>${btn("toggle", "data-test-sound", tt.common.testSound)}${btn("toggle", "data-al-try", s.tryNow)}${btn("toggle", "data-notify", tt.common.notify)}</div>
+<div class="tool-extra"><label class="check-inline al-vol"><span>${esc(s.volume)}</span> <input type="range" min="10" max="100" step="10" value="80" data-al-vol aria-label="${esc(s.volume)}"></label></div>
+<details class="al-history" data-al-history><summary>${esc(s.history)}</summary>
+  <p class="meta" data-al-hist-empty>${esc(s.historyEmpty)}</p>
+  <div class="table-wrap" data-al-hist-wrap hidden><table class="events-table"><thead><tr><th scope="col">${esc(s.colTime)}</th><th scope="col">${esc(s.colAlarm)}</th><th scope="col">${esc(s.colAction)}</th></tr></thead><tbody data-al-hist></tbody></table></div>
+  <div class="tool-actions" data-al-hist-actions hidden>${btn("toggle", "data-al-hist-csv", s.historyCsv)}${btn("toggle", "data-al-hist-clear", s.historyClear)}</div>
+</details>
 <p class="meta">${esc(s.wakeNote)}</p>
 <p class="meta">${esc(s.note)}</p>
 ${ringBanner(tt, "alarm")}`;
@@ -1187,6 +1250,9 @@ const TOOL_ART = {
   sky: svgArt('<circle cx="48" cy="34" r="25" class="af"/><circle cx="40" cy="28" r="6"/><path d="M34 28h12"/><circle cx="60" cy="42" r="2"/><circle cx="56" cy="20" r="1.5"/><circle cx="34" cy="46" r="1.5"/>'),
   retire: svgArt('<circle cx="48" cy="30" r="20" class="af"/><path d="M48 18v12l8 6M30 62h36M36 56h24"/>'),
   otd: svgArt('<rect x="24" y="12" width="48" height="44" rx="4" class="af"/><path d="M24 24h48M36 8v8M60 8v8M34 34h28M34 42h20"/>'),
+  sleepCalc: svgArt('<path d="M58 14a20 20 0 1 0 18 28 16 16 0 0 1-18-28z" class="af"/><path d="M14 54h68M20 54V40h26v14M24 40v-4h8"/>'),
+  classroom: svgArt('<rect x="12" y="10" width="72" height="40" rx="4" class="af"/><path d="M22 22h20M22 30h28M22 38h14"/><circle cx="66" cy="28" r="7"/><path d="M28 62a8 8 0 0 1 16 0M52 62a8 8 0 0 1 16 0"/><circle cx="36" cy="52" r="0.5"/><circle cx="60" cy="52" r="0.5"/>'),
+  examTimer: svgArt('<rect x="10" y="10" width="76" height="46" rx="5" class="af"/><path d="M22 24h24M22 32h18M22 40h22"/><circle cx="66" cy="33" r="12"/><path d="M66 27v6l4 3"/>'),
   zodiac: svgArt('<circle cx="48" cy="32" r="23" class="af"/><path d="M48 17l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z"/>'),
 };
 
@@ -1200,7 +1266,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(k === "retire" ? RETIRE.cardName : h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "interval", "chess", "metronome", "talking", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "interval", "examTimer", "classroom", "chess", "metronome", "talking", "sleepCalc", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1324,6 +1390,8 @@ extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather
 extendRoutes({ tr: { sky: "/gece-gokyuzu/", otd: "/tarihte-bugun/" }, en: { sky: "/en/night-sky/", otd: "/en/on-this-day/" } });
 extendRoutes({ tr: { tzn: "/saat-dilimi-haberleri/" }, en: { tzn: "/en/time-zone-news/" } });
 extendRoutes({ tr: { poll: "/toplanti-oylamasi/" }, en: { poll: "/en/meeting-poll/" } });
+// 2. analiz #191 (uyku hesaplama), #141 (sınav salonu zamanlayıcısı)
+extendRoutes({ tr: { sleepCalc: "/uyku-hesaplama/", examTimer: "/sinav-zamanlayicisi/", classroom: "/sinif-araclari/" }, en: { sleepCalc: "/en/sleep-calculator/", examTimer: "/en/exam-timer/", classroom: "/en/classroom-tools/" } });
 ROUTES.tr.retire = "/emeklilik-hesaplama/"; // yalnız Türkçe (SGK kuralları)
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
@@ -1332,9 +1400,10 @@ const pairPath = (lang, c) => `${ROUTES[lang].diff}${HOME_CITY[lang].slug}-${c[l
 const durTxt = (lang, min) => { const t = I[lang].client; const a = Math.abs(min), h = Math.floor(a / 60), m = a % 60; return [h && `${h} ${t.hourShort}`, m && `${m} ${t.minuteShort}`].filter(Boolean).join(" "); };
 const hh = (n) => String(((n % 24) + 24) % 24).padStart(2, "0");
 /* Paylaşılabilir bağlantı ve takvime ekle (30 Ekim 2026; .ics veri adresi, Google Takvim bağlantısı) */
-const shareRow = (s) => `<div class="share-row"><button type="button" class="toggle" data-share>${esc(s.shareLink)}</button><a class="toggle" data-ics hidden download="saat-tarih.ics">${esc(s.addIcs)}</a><a class="toggle" data-gcal hidden target="_blank" rel="noopener">${esc(s.addGoogle)}</a><span class="meta" role="status" aria-live="polite" data-share-status></span></div>`;
+/* Dışa aktarma ekleri (2. analiz #185): Outlook web, Gmail taslağı, panoya metin */
+const shareRow = (s) => `<div class="share-row"><button type="button" class="toggle" data-share>${esc(s.shareLink)}</button><a class="toggle" data-ics hidden download="saat-tarih.ics">${esc(s.addIcs)}</a><a class="toggle" data-gcal hidden target="_blank" rel="noopener">${esc(s.addGoogle)}</a><a class="toggle" data-outlook hidden target="_blank" rel="noopener">${esc(s.addOutlook)}</a><a class="toggle" data-gmail hidden target="_blank" rel="noopener">${esc(s.mailGmail)}</a><button type="button" class="toggle" data-copytext hidden>${esc(s.copyText)}</button><span class="meta" role="status" aria-live="polite" data-share-status></span></div>`;
 const cityOptions = (lang, withMine) => `${withMine ? `<option value="">${esc(I[lang].converter.mine)}</option>` : ""}${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
-const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, tz: c.tz, p: cityPath(lang, c), c: c[lang].country }));
+const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, tz: c.tz, p: cityPath(lang, c), c: c[lang].country, la: c.lat, lo: c.lon }));
 const webAppLd = (lang, name, pagePath, description) => ({ "@type": "WebApplication", name, url: abs(pagePath), description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" } });
 
 function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqGroup, scripts, clientExtra, nav = "tools", searchK, extraLd = [], needsPlace = false, search = true }) {
@@ -1404,7 +1473,9 @@ function buildPairHub(lang) {
   const t = I[lang];
   const h = t.pairHub;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: h.h1, path: ROUTES[lang].diff }];
-  const list = PAIR_CITIES.map((c) => `<li class="city-card"><a href="${pairPath(lang, c)}"><span class="city-name">${esc(tpl(h.linkText, { a: HOME_CITY[lang].name, b: c[lang].name }))}</span><span class="city-diff">${esc(c[lang].country)}</span></a></li>`).join("");
+  /* Kartlarda şimdiki saat, kısa fark ve fark çubuğu (2. analiz #179); çubuk −14…+14 saat, 0 İstanbul */
+  const bar = (c) => `<svg class="diff-bar" viewBox="-14 0 28 4" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="db-track" x="-14" y="1.6" width="28" height="0.8"/><rect class="db-fill" data-live="diffbar" data-tz="${c.tz}" data-ref="${HOME_CITY.tz}" x="0" y="0.6" width="0" height="2.8"/><rect class="db-zero" x="-0.12" y="0" width="0.24" height="4"/></svg>`;
+  const list = PAIR_CITIES.map((c) => `<li class="city-card pair-card"><a href="${pairPath(lang, c)}"><span class="city-name">${esc(tpl(h.linkText, { a: HOME_CITY[lang].name, b: c[lang].name }))}</span><span class="city-diff">${esc(c[lang].country)}</span><span class="pair-now"><span class="city-time" data-live="time" data-tz="${c.tz}">--:--</span> <span class="pair-short" dir="ltr" data-live="diffshort" data-tz="${c.tz}" data-ref="${HOME_CITY.tz}"></span></span>${bar(c)}</a></li>`).join("");
   return simplePage(lang, "diff", { title: h.title, description: h.description, h1: h.h1, lead: h.lead, trail, bodyInner: { sections: `<section class="section" aria-labelledby="list-h"><div class="wrap"><h2 id="list-h">${esc(h.listHeading)}</h2><ul class="city-grid">${list}</ul></div></section>` }, nav: "world", searchK: "saat farkı time difference istanbul dünya şehirleri" });
 }
 
@@ -1415,7 +1486,7 @@ function buildConverter(lang) {
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: t.ui.tools, path: ROUTES[lang].tools }, { name: s.h1, path: ROUTES[lang].converter }];
   const inner = {
     hero: `<section class="tool" data-converter aria-labelledby="tool-h">
-      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <h2 id="tool-h" class="sr-only">${esc(s.h1)}</h2>
       <div class="inputs-row">
         <div class="field"><label for="cv-from">${esc(s.fromLabel)}</label><select id="cv-from" data-cv-from>${cityOptions(lang, true)}</select></div>
         <button type="button" class="icon-btn" data-cv-swap aria-label="${esc(s.swap)}" title="${esc(s.swap)}">⇄</button>
@@ -1440,15 +1511,15 @@ function buildPlanner(lang) {
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: t.ui.tools, path: ROUTES[lang].tools }, { name: s.h1, path: ROUTES[lang].planner }];
   const inner = {
     hero: `<section class="tool" data-planner aria-labelledby="tool-h">
-      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <h2 id="tool-h" class="sr-only">${esc(s.h1)}</h2>
       <div class="inputs-row">
         <div class="field"><label for="pl-city">${esc(s.addLabel)}</label><select id="pl-city" data-pl-city>${cityOptions(lang, false)}</select></div>
         <button type="button" class="toggle" data-pl-add>${esc(s.addBtn)}</button>
         <div class="field"><label for="pl-date">${esc(s.dateLabel)}</label><input id="pl-date" type="date" data-pl-date></div>
       </div>
       <ul class="chips-list" data-pl-chips></ul>
-      <ul class="legend" aria-label="${esc(s.tableLabel)}"><li><span class="lg lg-work" aria-hidden="true"></span>${esc(s.legendWork)}</li><li><span class="lg lg-edge" aria-hidden="true"></span>${esc(s.legendEdge)}</li><li><span class="lg lg-night" aria-hidden="true"></span>${esc(s.legendNight)}</li></ul>
       <div class="table-wrap"><table class="planner" data-pl-table><caption class="sr-only">${esc(s.tableLabel)}</caption></table></div>
+      <ul class="legend" aria-label="${esc(s.tableLabel)}"><li><span class="lg lg-work" aria-hidden="true"></span>${esc(s.legendWork)}</li><li><span class="lg lg-edge" aria-hidden="true"></span>${esc(s.legendEdge)}</li><li><span class="lg lg-night" aria-hidden="true"></span>${esc(s.legendNight)}</li><li><span class="lg lg-weekend" aria-hidden="true"></span>${esc(s.legendWeekend)}</li></ul>
       <p class="pl-common" role="status" aria-live="polite" data-pl-common>&nbsp;</p>
       <p class="meta pl-hint" data-pl-picked>${esc(s.pickHint)}</p>
       ${shareRow(s)}
@@ -1470,7 +1541,7 @@ function buildPoll(lang) {
   const durOpts = [15, 30, 45, 60, 90, 120, 180].map((m) => `<option value="${m}"${m === 60 ? " selected" : ""}>${esc(durTxt(lang, m))}</option>`).join("");
   const inner = {
     hero: `<section class="tool poll" data-poll aria-labelledby="tool-h">
-      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <h2 id="tool-h" class="sr-only">${esc(s.h1)}</h2>
       <div data-poll-create>
         <div class="inputs-row">
           <div class="field grow"><label for="po-title">${esc(s.titleLabel)}</label><input id="po-title" type="text" maxlength="80" placeholder="${esc(t.planner.meeting)}" data-po-title></div>
@@ -1632,7 +1703,7 @@ function buildEmbedGen(lang) {
   const cityOpts = `<option value="">${esc(s.cityLocal)}</option>${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
   const inner = {
     hero: `<section class="tool" data-embedgen aria-labelledby="tool-h">
-      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <h2 id="tool-h" class="sr-only">${esc(s.h1)}</h2>
       <div class="inputs-row">
         <div class="field"><label for="eg-m">${esc(s.modelLabel)}</label><select id="eg-m" data-eg-model>${modelOpts}</select></div>
         <div class="field"><label for="eg-c">${esc(s.cityLabel)}</label><select id="eg-c" data-eg-city>${cityOpts}</select></div>
@@ -1653,10 +1724,19 @@ function buildEmbedGen(lang) {
       <p class="meta" data-eg-status role="status"></p>
       <p class="meta">${esc(s.sizeNote)}</p>
       <p class="meta">${esc(s.note)}</p>
+      <h3>${esc(s.lineHeading)}</h3>
+      <p class="meta">${esc(s.lineLead)}</p>
+      <div class="inputs-row">
+        <div class="field"><label for="eg-lk">${esc(s.lineKind)}</label><select id="eg-lk" data-eg-lkind>${["time", "date", "sun"].map((k) => `<option value="${k}">${esc(s.lineKinds[k])}</option>`).join("")}</select></div>
+      </div>
+      <p><strong>${esc(s.linePreview)}:</strong> <span data-eg-lprev data-saat-tarih="time" data-lang="${lang}">–</span></p>
+      <textarea class="eg-code" readonly rows="3" aria-label="${esc(s.lineHeading)}" data-eg-lcode></textarea>
+      <div class="tool-actions">${btn("btn", "data-eg-lcopy", s.copy)}</div>
+      <p class="meta">${esc(s.lineNote)}</p>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`,
   };
-  return simplePage(lang, "embed", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqGroup: { id: "embed", title: t.tools.hub.cards.embed.name }, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { eg: { copied: s.copied, frameTitle: s.frameTitle, path: Object.fromEntries(LANGS.map((l) => [l, ROUTES[l].embedFrame])) } } }, searchK: "widget gömme kodu iframe saat embed clock site", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].embed, s.description)] });
+  return simplePage(lang, "embed", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqGroup: { id: "embed", title: t.tools.hub.cards.embed.name }, scripts: ["planner.js", "line.js"], clientExtra: { cities: clientCities(lang), t: { eg: { copied: s.copied, frameTitle: s.frameTitle, path: Object.fromEntries(LANGS.map((l) => [l, ROUTES[l].embedFrame])), lineSrc: ORIGIN + "/embed/line.js" } } }, searchK: "widget gömme kodu iframe saat embed clock site metin satırı gün doğumu", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].embed, s.description)] });
 }
 
 /* ---------- Doğa (mevsim çarkı, Güneş, Ay, gün uzunluğu) ve hava durumu ---------- */
@@ -1666,6 +1746,9 @@ function trDateTime(lang, ms) { // Türkiye saatiyle (UTC+3) "20 Mart 14:46"
   const d = new Date(ms + 3 * 3600000);
   return `${d.getUTCDate()} ${I[lang].calendar.months[d.getUTCMonth()]} ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")}`;
 }
+
+// Halk takvimi (2. analiz #60): geleneksel tarihler, kaynaklar dosyanın "_" alanında
+const FOLK = JSON.parse(fs.readFileSync(path.join(SRC, "data/folk-calendar.json"), "utf8")).items;
 
 function buildNature(lang) {
   const t = I[lang];
@@ -1699,6 +1782,13 @@ function buildNature(lang) {
     <p class="meta" data-n-left>&nbsp;</p>
     <dl class="facts light-hours">${["blueAm", "goldenAm", "goldenPm", "bluePm"].map((k) => cell(n[k], `data-n-light="${k}" dir="ltr"`)).join("")}</dl>
     <p class="meta">${esc(n.lightNote)}</p>
+    <h3>${esc(n.tw.heading)}</h3>
+    <div class="tw-row">
+      <figure class="light-ring"><svg viewBox="0 0 200 200" data-n-ring role="img" aria-label="${esc(n.tw.ring)}"></svg><figcaption class="meta">${esc(n.tw.ring)}</figcaption></figure>
+      <dl class="facts tw-facts">${cell(n.tw.firstLight, 'data-n-tw="first" dir="ltr"')}${cell(n.tw.lastLight, 'data-n-tw="last" dir="ltr"')}${["civil", "nautical", "astro"].map((k) => cell(n.tw[k], `data-n-tw="${k}" dir="ltr"`)).join("")}</dl>
+    </div>
+    <p class="tw-legend meta">${[["day", n.tw.day], ["civil", n.tw.civil], ["nautical", n.tw.nautical], ["astro", n.tw.astro], ["night", n.tw.night]].map(([k, v]) => `<span><i class="lr-${k}"></i>${esc(v)}</span>`).join("")}</p>
+    <p class="meta">${esc(n.tw.note)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="n-moon-h">
@@ -1724,6 +1814,17 @@ function buildNature(lang) {
     <p class="meta" data-n-mooncalcap>&nbsp;</p>
   </div>
 </section>
+<section class="section" aria-labelledby="n-ym-h">
+  <div class="wrap">
+    <h2 id="n-ym-h" data-n-ymh>${esc(tpl(n.ym.heading, { y: cfg.updated.slice(0, 4) }))}</h2>
+    <p data-n-ymcount>&nbsp;</p>
+    <div class="ym-row">
+      <figure class="ym-wheel"><svg viewBox="0 0 220 220" data-n-ymwheel role="img" aria-label="${esc(n.ym.wheel)}"></svg></figure>
+      <div class="table-wrap"><table class="events-table"><thead><tr><th scope="col">${esc(n.ym.colDate)}</th><th scope="col">${esc(n.ym.colName)}</th></tr></thead><tbody data-n-ym></tbody></table></div>
+    </div>
+    <p class="meta">${esc(n.ym.namesNote)}</p>
+  </div>
+</section>
 <section class="section" aria-labelledby="n-cres-h">
   <div class="wrap">
     <h2 id="n-cres-h">${esc(n.crescentHeading)}</h2>
@@ -1744,11 +1845,22 @@ function buildNature(lang) {
       <p class="meta" data-ecl-legend></p>
       <p class="meta">${esc(n.eclMapNote)}</p>
     </div>
+    <p class="meta">${esc(n.eclApprox)}</p>
     <p class="meta"><strong>${esc(n.eclipseSafety)}</strong></p>
     <p class="meta">${esc(n.eclipseSource)}</p>
     <h3>${esc(n.moonIcsHeading)}</h3>
     <p class="share-row">${(() => { const u = ICS_URL(lang, "moon"), cal = t.calendar; return `<a class="toggle" href="${u}" download>${esc(cal.icsDownload)}</a><a class="toggle" href="${ORIGIN.replace(/^https?:/, "webcal:")}${u}">${esc(cal.icsSubscribe)}</a><a class="toggle" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(ORIGIN.replace(/^https?:/, "webcal:") + u)}" target="_blank" rel="noopener">${esc(cal.icsGoogle)}</a>`; })()}</p>
     <p class="meta">${esc(n.moonIcsNote)}</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="n-folk-h">
+  <div class="wrap">
+    <h2 id="n-folk-h">${esc(n.folkHeading)}</h2>
+    <ul class="folk-list">${FOLK.map((f) => {
+      const md = (s) => { const [m, d] = s.split("-").map(Number); return tpl(t.calendar.shortFmt, { day: d, month: t.calendar.months[m - 1] }); };
+      return `<li data-folk-from="${f.from}" data-folk-to="${f.to}"><span class="folk-name">${esc(n.folkNames[f.key])}</span> <span class="folk-date">${esc(md(f.from) + " – " + md(f.to))}</span> <span class="folk-now" hidden>${esc(n.folkNow)}</span></li>`;
+    }).join("")}</ul>
+    <p class="meta">${esc(n.folkNote)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="n-chart-h">
@@ -1776,7 +1888,7 @@ function buildNature(lang) {
     <p class="meta">${esc(n.methodNote)}</p>
   </div>
 </section>`;
-  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js", "eclipse-map.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { eclMapSolar: n.eclMapSolar, eclMapLunar: n.eclMapLunar, seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday, moonNoRise: n.moonNoRise, moonNoSet: n.moonNoSet, moonCalCaption: n.moonCalCaption, eclipseLead: n.eclipseLead, eclipseTypes: n.eclipseTypes, eclipseRegions: n.eclipseRegions, eclipsePath: n.eclipsePath, eclipseHere: n.eclipseHere, eclipseNotHere: n.eclipseNotHere, crescentLead: n.crescentLead, crescentAge: n.crescentAge, crescentLag: n.crescentLag, crescentBefore: n.crescentBefore, crescentCats: n.crescentCats } }, eclipses: ECLIPSES }, nav: "nature", searchK: n.search, needsPlace: true });
+  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "moon-render.js", "nature.js", "eclipse-map.js"], clientExtra: { moonTex: MOON_URL, t: { pl: placeClient(t.prayer), nt: { eclMapSolar: n.eclMapSolar, eclMapLunar: n.eclMapLunar, seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday, moonNoRise: n.moonNoRise, moonNoSet: n.moonNoSet, moonCalCaption: n.moonCalCaption, eclipseLead: n.eclipseLead, eclipseTypes: n.eclipseTypes, eclipseRegions: n.eclipseRegions, eclipsePath: n.eclipsePath, eclipseHere: n.eclipseHere, eclipseNotHere: n.eclipseNotHere, crescentLead: n.crescentLead, crescentAge: n.crescentAge, crescentLag: n.crescentLag, crescentBefore: n.crescentBefore, crescentCats: n.crescentCats, eclLocal: n.eclLocal, eclLocalTotal: n.eclLocalTotal, eclLocalAnnular: n.eclLocalAnnular, eclLocalNone: n.eclLocalNone, eclLocalLow: n.eclLocalLow, eclContacts: n.eclContacts, eclMag: n.eclMag, tw: n.tw, ym: n.ym, regionNames: eclipseRegionNames(t.locale) } }, eclipses: ECLIPSES }, nav: "nature", searchK: n.search, needsPlace: true });
 }
 
 function buildWeather(lang) {
@@ -1784,12 +1896,14 @@ function buildWeather(lang) {
   const w = t.weather;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: w.h1, path: ROUTES[lang].weather }];
   const hero = `<section class="wx-hero" data-weather aria-labelledby="wx-h">
+      <canvas class="wx-fx" data-wx-fx aria-hidden="true"></canvas>
       <h2 id="wx-h" class="wx-place" data-wx-place>&nbsp;</h2>
       <p class="meta" data-wx-state role="status">${esc(w.loading)}</p>
       <div class="wx-now" data-wx-now hidden>
         <p class="wx-icon" data-wx-icon aria-hidden="true"></p>
         <p class="wx-temp" data-wx-temp>–</p>
         <p class="wx-cond" data-wx-cond>&nbsp;</p>
+        <p class="wx-sum" data-wx-sum></p>
         <dl class="wx-facts" data-wx-facts></dl>
       </div>
       <button type="button" class="toggle" data-wx-retry hidden>${esc(w.retry)}</button>
@@ -1798,7 +1912,17 @@ function buildWeather(lang) {
   const sections = `<section class="section" aria-labelledby="wx-hourly-h" data-wx-hourly-box hidden>
   <div class="wrap">
     <h2 id="wx-hourly-h">${esc(w.hourlyHeading)}</h2>
+    <div class="wx-chips" role="group" data-wx-chips></div>
+    <div class="wx-chart" data-wx-chart></div>
+    <p class="wx-chart-detail" data-wx-detail aria-live="polite"></p>
     <ul class="wx-hourly" data-wx-hourly></ul>
+  </div>
+</section>
+<section class="section" aria-labelledby="wx-aqi-h" data-wx-aqi-box hidden>
+  <div class="wrap">
+    <h2 id="wx-aqi-h">${esc(w.aqiTitle)}</h2>
+    <div class="wx-aqi" data-wx-aqi></div>
+    <p class="meta">${esc(w.aqiSource)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="wx-daily-h" data-wx-daily-box hidden>
@@ -1809,8 +1933,13 @@ function buildWeather(lang) {
     <p class="meta">${esc(w.locationNote)}</p>
   </div>
 </section>`;
-  const wx = { ...weatherClient(t), now: w.now, pressure: w.pressure, precipitation: w.precipitation, uv: w.uv, sunrise: w.sunrise, sunset: w.sunset, updated: w.updated, retry: w.retry };
-  return simplePage(lang, "weather", { title: w.title, description: w.description, h1: w.h1, lead: w.lead, trail, bodyInner: { hero, sections }, faq: w.faq, faqGroup: { id: "weather", title: t.ui.weather }, scripts: ["place.js", "weather-core.js", "weather.js"], clientExtra: { t: { pl: placeClient(t.prayer), wx } }, nav: "weather", searchK: w.search, needsPlace: true, extraLd: [webAppLd(lang, w.h1, ROUTES[lang].weather, w.description)] });
+  const wx = { ...weatherClient(t), now: w.now, pressure: w.pressure, precipitation: w.precipitation, uv: w.uv, sunrise: w.sunrise, sunset: w.sunset, updated: w.updated, retry: w.retry,
+    // 2. analiz #106, #108: yeni ölçümler, açıklamalar ve günlük özet
+    visibility: w.visibility, dewPoint: w.dewPoint, gusts: w.gusts, wd: w.wd, uvw: w.uvw, hw: w.hw, vw: w.vw, dw: w.dw, fw: w.fw, sum: w.sum,
+    // 2. analiz #107, #111: saatlik eğri ve hava kalitesi/polen
+    chartTemp: w.chartTemp, dayPart: w.dayPart, nightPart: w.nightPart, tapHint: w.tapHint, aqiIndex: w.aqiIndex, aqiLevels: w.aqiLevels,
+    pollen: w.pollen, pollenNames: w.pollenNames, pollenLevels: w.pollenLevels, pollenNone: w.pollenNone };
+  return simplePage(lang, "weather", { title: w.title, description: w.description, h1: w.h1, lead: w.lead, trail, bodyInner: { hero, sections }, faq: w.faq, faqGroup: { id: "weather", title: t.ui.weather }, scripts: ["place.js", "weather-core.js", "weather-fx.js", "weather.js"], clientExtra: { t: { pl: placeClient(t.prayer), wx } }, nav: "weather", searchK: w.search, needsPlace: true, extraLd: [webAppLd(lang, w.h1, ROUTES[lang].weather, w.description)] });
 }
 
 /* ---------- Namaz vakitleri: konuma göre hub + 81 il sayfası (hesap tarayıcıda, prayer-calc.js) ---------- */
@@ -1818,7 +1947,7 @@ const PROVINCES = readJson("src/data/provinces.json");
 const PRAYER_KEYS = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
 /* İl adı: Latin dışı yazılı dillerde kendi yazısıyla (provinces.json ar/ru/fa/ja/ko/zh/th); Türkçe ve Azericede Türkçe
    yazımla; diğerlerinde İ → I */
-const NATIVE_PROV = ["ar", "ru", "fa", "ja", "ko", "zh", "th"];
+const NATIVE_PROV = ["ar", "ru", "fa", "ja", "ko", "zh", "th", "hi"];
 const provName = (lang, p) => (p[lang] && NATIVE_PROV.includes(lang) ? p[lang] : lang === "tr" || lang === "az" ? p.name : p.name.replace(/İ/g, "I"));
 const prayerPath = (lang, p) => `${ROUTES[lang].prayer}${p.slug}/`;
 
@@ -1838,7 +1967,10 @@ function prayerBody(lang, prov, extra = "") {
       <div class="pr-right">
         <h3>${esc(s.todayHeading)}</h3>
         <table class="events-table pr-today"><thead class="sr-only"><tr><th scope="col">${esc(s.colPrayer)}</th><th scope="col">${esc(s.colTime)}</th></tr></thead><tbody>${rows}</tbody></table>
+        <p class="pr-bayram" data-pr-bayram hidden></p>
+        <p class="meta pr-ezani" data-pr-ezani title="${esc(s.ezaniNote)}"></p>
         <details class="pr-kerahat"><summary>${esc(s.kerahatHeading)}</summary><ul>${["israk", "istiva", "isfirar"].map((k) => `<li>${esc(s.kerahatNames[k])}: <span data-pr-kr="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.kerahatNote)}</p></details>
+        <details class="pr-kerahat pr-extra"><summary>${esc(s.extraHeading)}</summary><ul>${Object.keys(s.extraNames).map((k) => `<li>${esc(s.extraNames[k])}: <span data-pr-ex="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.extraNote)}</p></details>
         <details class="pr-kerahat pr-method"><summary>${esc(s.method.heading)}</summary>
           <p class="meta" data-pr-method-active hidden></p>
           <label class="field-label" for="pr-method">${esc(s.method.label)}</label>
@@ -1907,7 +2039,9 @@ function districtList(prov, current) {
 }
 const placeClient = (s) => ({ locating: s.locating, locationDenied: s.locationDenied, locationUnsupported: s.locationUnsupported, yourLocation: s.yourLocation });
 const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to);
-const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names, mActive: s.method.active, mNames: s.method.names, hanafi: s.method.hanafiShort }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
+// Bayramın ilk günleri (Ramazan ve Kurban; bayram namazı satırı için, 2. analiz #56)
+const BAYRAM_DAYS = HOL_YEARS.flatMap((y) => YEAR_DATA[y].events.filter((e) => e.key === "rb1" || e.key === "kb1").map((e) => e.date));
+const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names, mActive: s.method.active, mNames: s.method.names, hanafi: s.method.hanafiShort, bayram: s.bayram, bayramTomorrow: s.bayramTomorrow, bayramNote: s.bayramNote, bayramDays: BAYRAM_DAYS, ezani: s.ezani }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
 const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail, consent: t.consent.wxBlocked, allow: t.consent.allow }; };
 
 /* ---------- Saat dilimi kısaltmaları, yaz saati değişimleri, Unix zamanı (30 Ekim 2026, rakip analizi #25) ----------
@@ -2147,7 +2281,7 @@ function buildUnix(lang) {
 const WHOL = readJson("src/data/world-holidays.json");
 const HOLNAMES = readJson("src/data/holiday-names.json").names;
 const WCC = Object.keys(WHOL.countries);
-const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"] };
+const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"], es: ["ES"], pt: ["PT", "BR"] };
 const holName = (lang, cc, h) => {
   const main = lang === "en" ? h.n : (NATIVE_CC[lang] || []).includes(cc) && h.l !== h.n ? h.l : (HOLNAMES[h.n] && HOLNAMES[h.n][lang]) || h.n;
   return { main, local: h.l && h.l !== main && h.l !== h.n ? h.l : "" };
@@ -2180,23 +2314,39 @@ const EN_THE = ["GB", "US", "NL"]; // "Public holidays in the United Kingdom"
 function buildWorldHol(lang, cc) {
   const t = I[lang], s = t.worldHol, cal = t.calendar, F = makeFmt(cal);
   const country = (lang === "en" && EN_THE.includes(cc) ? "the " : "") + regionName(lang, cc);
-  const years = WHOL.years;
-  const y = BUILD_YEAR + 1 <= years[years.length - 1] ? BUILD_YEAR + 1 : years[0];
+  // Verisi eksik yıllar (scripts/fetch-world-holidays.mjs "incomplete") ülkede yoktur
+  const years = WHOL.years.filter((yy) => WHOL.countries[cc][yy]);
+  const y = years.includes(BUILD_YEAR + 1) ? BUILD_YEAR + 1 : years[years.length - 1];
   const dy = WHOL.countries[cc][y].days;
   const v = { country, from: years[0], to: years[years.length - 1], year: y, n: dy.length, w: dy.filter((h) => dowOf(h.d) < 5).length };
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.hubH1, path: ROUTES[lang].worldHol }, { name: tpl(s.pageH1, v), path: worldHolPath(lang, cc) }];
-  const sections = years.map((yy) => {
+  // Ay ızgaralı yıl takvimi (2. analiz #178): derleme yılı (yoksa ilk yıl), tatiller işaretli; diğer yıllar katlanır
+  const gy = years.includes(BUILD_YEAR) ? BUILD_YEAR : y;
+  const gEv = { byDate: {} };
+  for (const h of (WHOL.countries[cc][gy] || { days: [] }).days) (gEv.byDate[h.d] ||= []).push({ key: h.d, type: "holiday", name: holName(lang, cc, h).main });
+  const gridCal = { ...cal, events: Object.fromEntries(Object.values(gEv.byDate).flat().map((e) => [e.key, e.name])) };
+  const months = Array.from({ length: 12 }, (_, i) => `<div class="ymonth-wrap">${monthTable(lang, gy, i + 1, { schoolRanges: [], ramadans: [] }, gEv, gridCal, false)}</div>`).join("");
+  const grid = `<section class="section" aria-labelledby="wh-grid"><div class="wrap">
+    <h2 id="wh-grid">${esc(tpl(s.caption, { country, year: gy }))}</h2>
+    <div class="year-grid wh-grid">${months}</div>
+  </div></section>`;
+  const sections = grid + years.map((yy) => {
     const d = WHOL.countries[cc][yy] || { days: [], regional: 0 };
     const rows = d.days.map((h) => {
       const nm = holName(lang, cc, h);
       return `<tr data-d="${h.d}"><th scope="row">${esc(F.short(h.d))}</th><td>${esc(cal.weekdays[dowOf(h.d)])}</td><td>${esc(nm.main)}${nm.local ? `<br><span class="meta" lang="">${esc(tpl(s.localName, { name: nm.local }))}</span>` : ""}</td><td data-left></td></tr>`;
     }).join("");
     const sum = tpl(s.summary, { year: yy, n: d.days.length, w: d.days.filter((h) => dowOf(h.d) < 5).length });
-    return `<section class="section" aria-labelledby="wh-${yy}"><div class="wrap">
+    const table = `<p class="meta">${esc(sum)}${d.regional ? " " + esc(tpl(s.regional, { year: yy, n: d.regional })) : ""}</p>
+    <div class="table-wrap"><table class="events-table" ${holLeftAttrs(s)}><caption class="sr-only">${esc(tpl(s.caption, { country, year: yy }))}</caption><thead><tr><th scope="col">${esc(s.colDate)}</th><th scope="col">${esc(s.colDay)}</th><th scope="col">${esc(s.colName)}</th><th scope="col">${esc(s.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    // Derleme yılı ve ertesi yıl açık, diğer yıllar (geçmiş ve uzak yıllar) katlanır
+    if (yy === BUILD_YEAR || yy === BUILD_YEAR + 1) return `<section class="section" aria-labelledby="wh-${yy}"><div class="wrap">
     <h2 id="wh-${yy}">${yy}</h2>
-    <p class="meta">${esc(sum)}${d.regional ? " " + esc(tpl(s.regional, { year: yy, n: d.regional })) : ""}</p>
-    <div class="table-wrap"><table class="events-table" ${holLeftAttrs(s)}><caption class="sr-only">${esc(tpl(s.caption, { country, year: yy }))}</caption><thead><tr><th scope="col">${esc(s.colDate)}</th><th scope="col">${esc(s.colDay)}</th><th scope="col">${esc(s.colName)}</th><th scope="col">${esc(s.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    ${table}
   </div></section>`;
+    return `<section class="section"><div class="wrap"><details class="wh-year"><summary><h2 id="wh-${yy}">${yy}</h2></summary>
+    ${table}
+  </details></div></section>`;
   }).join("\n");
   const hero = `<p class="info-sub" data-hol-next data-label="${esc(s.nextLabel)}">&nbsp;</p>`;
   const tail = `<section class="section"><div class="wrap"><p class="meta">${esc(tpl(s.source, { date: WHOL.fetched }))}</p></div></section>`;
@@ -2305,7 +2455,7 @@ function buildZakat(lang) {
 /* ---------- Ek araçlar (30 Ekim 2026, rakip analizi K maddeleri 13, 31, 32, 36–39, 41) ----------
    Hicri takvim çevirici, saat hesaplama, kaç gün kaldı, aralık zamanlayıcı, satranç saati, metronom, konuşan saat,
    burç hesaplama. Hepsi tarayıcıda çalışır (more-tools.js), dış istek yok; ses Web Audio ve cihazdaki konuşma motoru. */
-const MORE_KEYS = ["hijriConv", "timeCalc", "daysUntil", "interval", "chess", "metronome", "talking", "zodiac"];
+const MORE_KEYS = ["hijriConv", "timeCalc", "daysUntil", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom"];
 const HIJRI_TABLE = hijriTable(HOL, readJson("src/data/hijri.json"));
 const DU_KEYS = ["newYear", "ramadanStart", "rb1", "apr23", "may1", "may19", "kb1", "jul15", "aug30", "oct29", "hijri", "ashura", "mawlid", "regaib", "mirac", "berat", "kadir", "feb14", "mothers", "fathers"];
 // Burçların yaklaşık başlangıç günleri (tropikal zodyak; Koç'tan başlayarak [ay, gün])
@@ -2327,12 +2477,13 @@ function moreBody(lang, key) {
       <p class="meta">${esc(s.todayLabel)}</p>
       <p class="big-time mt-big" data-hj-today>–</p>
       <p class="meta" data-hj-today-greg>&nbsp;</p>
+      <p class="meta" data-hj-rumi title="${esc(s.rumiNote)}">&nbsp;</p>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`;
     const sections = `<section class="section" aria-labelledby="hj-a"><div class="wrap">
       <h2 id="hj-a">${esc(s.toHijri)}</h2>
       <div class="inputs-row">${mtField("hj-g", s.gregLabel, '<input id="hj-g" type="date" min="1900-01-01" max="2100-12-31" data-hj-g>')}</div>
-      <p class="mt-result" data-hj-r1 role="status" aria-live="polite">&nbsp;</p><p class="meta" data-hj-n1 hidden></p>
+      <p class="mt-result" data-hj-r1 role="status" aria-live="polite">&nbsp;</p><p class="meta" data-hj-rumi1>&nbsp;</p><p class="meta" data-hj-n1 hidden></p>
     </div></section>
     <section class="section" aria-labelledby="hj-b"><div class="wrap">
       <h2 id="hj-b">${esc(s.toGreg)}</h2>
@@ -2342,8 +2493,9 @@ function moreBody(lang, key) {
     <section class="section" aria-labelledby="hj-c"><div class="wrap">
       <div class="table-wrap"><table class="events-table" data-hj-table><caption id="hj-c">${esc(tpl(s.yearHeading, { y: hy }))}</caption><thead><tr><th scope="col">${esc(s.colMonth)}</th><th scope="col">${esc(s.colStart)}</th><th scope="col">${esc(s.colDays)}</th></tr></thead><tbody data-hj-tbody>${rows}</tbody></table></div>
       <p class="meta">${esc(s.note)}</p>
+      <p class="meta">${esc(s.rumiNote)}</p>
     </div></section>`;
-    return { hero, sections, client: { months: s.months, fmt: s.fmt, outside: s.outside, dayMax: s.dayMax, invalid: s.invalid, yearHeading: s.yearHeading, table: HIJRI_TABLE } };
+    return { hero, sections, client: { rumi: s.rumi, months: s.months, fmt: s.fmt, outside: s.outside, dayMax: s.dayMax, invalid: s.invalid, yearHeading: s.yearHeading, table: HIJRI_TABLE } };
   }
   if (key === "timeCalc") {
     const hero = `<section class="mt" data-mt="timecalc" aria-labelledby="tc-a">
@@ -2382,6 +2534,78 @@ function moreBody(lang, key) {
       <div class="table-wrap"><table class="events-table"><caption id="du-u">${esc(s.upcomingHeading)}</caption><thead><tr><th scope="col">${esc(s.colEvent)}</th><th scope="col">${esc(s.colDate)}</th><th scope="col">${esc(s.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>
     </div></section>`;
     return { hero, sections, client: { left: s.left, left1: s.left1, passed: s.passed, passed1: s.passed1, today: s.today, weeks: s.weeks, months: s.months, workdays: s.workdays, weekday: s.weekday, daysUnit: s.daysUnit, daysUnit1: s.daysUnit1 } };
+  }
+  if (key === "sleepCalc") {
+    /* Uyku hesaplama (2. analiz #191): 90 dk döngü + 15 dk uykuya dalma; sitedeki hazır alarm sayfalarıyla aynı kural */
+    const hero = `<section class="mt" data-mt="sleep" aria-labelledby="sl-a">
+      <h2 id="sl-a">${esc(s.wakeHeading)}</h2>
+      <div class="inputs-row">${mtField("sl-w", s.wakeLabel, '<input id="sl-w" type="time" value="07:00" data-sl-wake>')}</div>
+      <ol class="sl-list" data-sl-beds aria-live="polite"></ol>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section" aria-labelledby="sl-b"><div class="wrap">
+      <h2 id="sl-b">${esc(s.bedHeading)}</h2>
+      <div class="inputs-row">${mtField("sl-t", s.bedLabel, '<input id="sl-t" type="time" value="23:00" data-sl-bed>')}<div class="field"><span class="field-gap" aria-hidden="true">&nbsp;</span><button type="button" class="toggle" data-sl-now>${esc(s.nowBtn)}</button></div></div>
+      <ol class="sl-list" data-sl-wakes aria-live="polite"></ol>
+      <p class="meta">${esc(s.note)}</p>
+    </div></section>`;
+    return { hero, sections, client: { cycles: s.cycles, best: s.best } };
+  }
+  if (key === "classroom") {
+    /* Sınıf araçları (2. analiz #142): rastgele ad seçici, takım kurucu, sayaç; sth-class (yalnız bu tarayıcı) */
+    const tab = (k, label, on) => `<button type="button" role="tab" id="cl-t-${k}" aria-controls="cl-p-${k}" aria-selected="${on}" data-cl-tab="${k}">${esc(label)}</button>`;
+    const hero = `<section class="tool mt mt-cl" data-mt="classroom" aria-labelledby="cl-h">
+      <h2 id="cl-h" class="sr-only">${esc(s.h1)}</h2>
+      <div class="mt-tools-row">${mtFsBtn(t)}</div>
+      <div class="tabs cl-tabs" role="tablist" aria-label="${esc(s.h1)}">${tab("picker", s.tabPicker, true)}${tab("teams", s.tabTeams, false)}${tab("counter", s.tabCounter, false)}</div>
+      <div class="cl-panel" role="tabpanel" id="cl-p-picker" aria-labelledby="cl-t-picker" data-cl-panel="picker">
+        <p class="meta cl-label">${esc(s.picked)}</p>
+        <p class="cl-picked" data-cl-picked aria-live="polite">–</p>
+        <p class="meta" data-cl-left>&nbsp;</p>
+        <div class="tool-actions"><button type="button" class="btn" data-cl-pick>${esc(s.pick)}</button><button type="button" class="toggle" data-cl-restore>${esc(s.restore)}</button></div>
+      </div>
+      <div class="cl-panel" role="tabpanel" id="cl-p-teams" aria-labelledby="cl-t-teams" data-cl-panel="teams" hidden>
+        <div class="inputs-row">${mtNum("cl-tn", s.teamCount, 'min="2" max="12" value="2" data-cl-teamn')}</div>
+        <div class="tool-actions"><button type="button" class="btn" data-cl-make>${esc(s.makeTeams)}</button></div>
+        <div class="cl-teams" data-cl-teams aria-live="polite"></div>
+      </div>
+      <div class="cl-panel" role="tabpanel" id="cl-p-counter" aria-labelledby="cl-t-counter" data-cl-panel="counter" hidden>
+        <ul class="cl-counters" data-cl-counters></ul>
+        <div class="inputs-row">${mtField("cl-cn", s.counterName, `<input id="cl-cn" type="text" maxlength="30" placeholder="${esc(s.counterDefault)}" data-cl-cname>`)}</div>
+        <div class="tool-actions"><button type="button" class="btn" data-cl-add>${esc(s.addCounter)}</button><button type="button" class="toggle" data-cl-zero>${esc(s.reset)}</button></div>
+      </div>
+      <p class="meta" data-cl-empty hidden>${esc(s.empty)}</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section"><div class="wrap">
+      <div class="field cl-names"><label for="cl-names">${esc(s.namesLabel)}</label><textarea id="cl-names" rows="6" maxlength="4000" placeholder="${esc(s.namesPh)}" data-cl-names></textarea></div>
+      <div class="tool-extra"><label class="check-inline"><input type="checkbox" data-cl-remove checked> ${esc(s.removePicked)}</label></div>
+      <p class="meta">${esc(s.note)}</p>
+    </div></section>`;
+    return { hero, sections, client: { left: s.left, team: s.team, counterDefault: s.counterDefault, remove: s.remove, empty: s.empty } };
+  }
+  if (key === "examTimer") {
+    /* Sınav salonu zamanlayıcısı (2. analiz #141): okuma + sınav süresi, tam ekran, son 15/5 dk uyarısı; sth-exam */
+    const hero = `<section class="tool mt mt-ex" data-mt="exam" aria-labelledby="ex-h">
+      <h2 id="ex-h" class="sr-only">${esc(s.h1)}</h2>
+      <div class="mt-tools-row">${mtFsBtn(t)}</div>
+      <p class="ex-name" data-ex-name hidden></p>
+      <p class="meta ex-room" data-ex-room hidden></p>
+      <p class="phase" data-ex-phase aria-live="polite">&nbsp;</p>
+      <p class="big-time" role="timer" data-ex-left>--:--</p>
+      <progress class="tool-progress" max="100" value="0" data-ex-progress aria-hidden="true"></progress>
+      <p class="ex-ends" data-ex-ends>&nbsp;</p>
+      <p class="ex-clock"><span data-live="time" data-sec>--:--:--</span></p>
+      <p class="ex-warn" data-ex-warn aria-live="assertive"></p>
+      <div class="tool-actions"><button type="button" class="btn" data-ex-start>${esc(s.start)}</button><button type="button" class="toggle" data-ex-pause hidden>${esc(s.pause)}</button><button type="button" class="toggle" data-ex-reset>${esc(s.reset)}</button></div>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section"><div class="wrap">
+      <div class="inputs-row">${mtField("ex-n", s.nameLabel, `<input id="ex-n" type="text" maxlength="60" placeholder="${esc(s.namePh)}" data-ex-cfg="name">`)}${mtField("ex-r", s.roomLabel, `<input id="ex-r" type="text" maxlength="20" placeholder="${esc(s.roomPh)}" data-ex-cfg="room">`)}</div>
+      <div class="inputs-row">${mtNum("ex-rd", s.readLabel, 'min="0" max="60" value="10" data-ex-cfg="read"')}${mtNum("ex-d", s.durLabel, 'min="1" max="600" value="40" data-ex-cfg="dur"')}</div>
+      <p class="meta">${esc(s.note)}</p>
+    </div></section>`;
+    return { hero, sections, client: { pause: s.pause, resume: s.resume, start: s.start, phaseRead: s.phaseRead, phaseExam: s.phaseExam, phaseDone: s.phaseDone, endsAt: s.endsAt, warn15: s.warn15, warn5: s.warn5 } };
   }
   if (key === "interval") {
     const hero = `<section class="tool mt mt-iv" data-mt="interval" aria-labelledby="iv-h">
@@ -2550,7 +2774,7 @@ function buildQibla(lang) {
   </div>
 </section>`;
   const qb = { timeNote: s.timeNote, noTime: s.noTime, aligned: s.aligned, turn: s.turn, waiting: s.waiting, noCompass: s.noCompass, denied: s.denied, atKaaba: s.atKaaba, mosquesLoading: s.mosquesLoading, mosquesNone: s.mosquesNone, mosquesError: s.mosquesError, mosqueUnnamed: s.mosqueUnnamed, mapsQuery: s.mapsQuery, km: s.km, m: s.m, blocked: t.consent.mqBlocked, allow: t.consent.allow };
-  return simplePage(lang, "qibla", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "qibla", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "qibla.js"], clientExtra: { t: { pl: placeClient(t.prayer), qb } }, nav: "prayer", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].qibla, s.description)] });
+  return simplePage(lang, "qibla", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "qibla", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "wmm.js", "qibla.js"], clientExtra: { t: { pl: placeClient(t.prayer), qb } }, nav: "prayer", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].qibla, s.description)] });
 }
 
 /* Gece gökyüzü (30 Ekim 2026, rakip analizi listesi #87): bu gece görünen gezegenler (sky-calc.js, JPL yaklaşık
@@ -2559,16 +2783,40 @@ function buildSky(lang) {
   const t = I[lang];
   const s = t.sky;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].sky }];
-  const hero = `<section class="sky" data-sky aria-labelledby="sky-h">
+  const hero = `<section class="sky" data-sky aria-labelledby="sky-h" data-con="${CON_URL}">
       <h2 id="sky-h" class="qb-place" data-sky-place>&nbsp;</h2>
       <figure class="sky-chart"><svg data-sky-chart viewBox="-200 -200 400 400" role="img" aria-labelledby="sky-cap"></svg><figcaption id="sky-cap" class="meta" data-sky-cap>&nbsp;</figcaption></figure>
-      <p class="sky-time"><label for="sky-t">${esc(s.timeLabel)}</label> <input id="sky-t" type="range" min="0" max="96" step="1" value="0" data-sky-time> <output data-sky-time-out dir="ltr">–</output> <button type="button" class="toggle" data-sky-now>${esc(s.now)}</button></p>
+      <p class="sky-time"><label for="sky-t">${esc(s.timeLabel)}</label> <input id="sky-t" type="range" min="0" max="96" step="1" value="0" data-sky-time> <output data-sky-time-out dir="ltr">–</output> <button type="button" class="toggle" data-sky-play aria-pressed="false" data-play="${esc(s.play)}" data-pause="${esc(s.pause)}">${esc(s.play)}</button> <button type="button" class="toggle" data-sky-now>${esc(s.now)}</button></p>
+      <p class="sky-time"><label for="sky-d">${esc(s.dateLabel)}</label> <input id="sky-d" type="date" data-sky-date min="${HOL_YEARS[0]}-01-01" max="${HOL_YEARS[HOL_YEARS.length - 1]}-12-31"> <label class="sky-opt"><input type="checkbox" data-sky-con checked> ${esc(s.constellations)}</label> <button type="button" class="toggle" data-sky-red aria-pressed="false">${esc(s.red)}</button></p>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`;
-  const sections = `<section class="section" aria-labelledby="sky-pl-h">
+  const icsU = ICS_URL(lang, "sky"), cal = t.calendar;
+  const icsRow = `<a class="toggle" href="${icsU}" download>${esc(cal.icsDownload)}</a><a class="toggle" href="${ORIGIN.replace(/^https?:/, "webcal:")}${icsU}">${esc(cal.icsSubscribe)}</a><a class="toggle" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(ORIGIN.replace(/^https?:/, "webcal:") + icsU)}" target="_blank" rel="noopener">${esc(cal.icsGoogle)}</a>`;
+  const sections = `<section class="section" aria-labelledby="sky-tn-h">
+  <div class="wrap">
+    <h2 id="sky-tn-h">${esc(s.tonightHeading)}</h2>
+    <p class="sky-score" data-sky-score>&nbsp;</p>
+    <dl class="facts"><div class="fact"><dt>${esc(s.darkLabel)}</dt><dd data-sky-dark>–</dd></div><div class="fact"><dt>${esc(s.moon)}</dt><dd data-sky-tmoon>–</dd></div><div class="fact"><dt>${esc(s.planetsLabel)}</dt><dd data-sky-tpl>–</dd></div><div class="fact" data-sky-cloud-row hidden><dt>${esc(s.cloudLabel)}</dt><dd data-sky-cloud>–</dd></div></dl>
+    <ul class="sky-tips" data-sky-tips></ul>
+    <h3>${esc(s.graphHeading)}</h3>
+    <figure class="sky-graph"><svg data-sky-graph viewBox="0 0 640 240" role="img" aria-labelledby="sky-g-cap"></svg><figcaption id="sky-g-cap" class="meta">${esc(s.graphCaption)}</figcaption></figure>
+    <p class="meta">${esc(s.cloudNote)}</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="sky-pl-h">
   <div class="wrap">
     <h2 id="sky-pl-h">${esc(s.tableHeading)}</h2>
     <div class="table-wrap"><table class="events-table sky-table"><thead><tr>${s.cols.map((c) => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody data-sky-planets></tbody></table></div>
+  </div>
+</section>
+<section class="section" aria-labelledby="sky-ev-h">
+  <div class="wrap">
+    <h2 id="sky-ev-h">${esc(s.eventsHeading)}</h2>
+    <p class="meta">${esc(s.eventsLead)}</p>
+    <ul class="sky-events" data-sky-events></ul>
+    <p><button type="button" class="toggle" data-sky-more>${esc(s.evMore)}</button></p>
+    <p class="share-row">${icsRow}</p>
+    <p class="meta">${esc(s.eventsNote)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="sky-moon-h">
@@ -2577,10 +2825,13 @@ function buildSky(lang) {
     <dl class="facts"><div class="fact"><dt>${esc(s.moonNow)}</dt><dd data-sky-mdist>–</dd></div><div class="fact"><dt>${esc(s.perigee)}</dt><dd data-sky-perigee>–</dd></div><div class="fact"><dt>${esc(s.apogee)}</dt><dd data-sky-apogee>–</dd></div></dl>
     <p class="meta" data-sky-super hidden></p>
     <p class="meta">${esc(s.note)}</p>
+    <p class="meta">${esc(s.conSource)}</p>
   </div>
 </section>`;
-  const sk = { planets: s.planets, moon: s.moon, sun: s.sun, chartCaption: s.chartCaption, window: s.window, tooClose: s.tooClose, below: s.below, riseSet: s.riseSet, altFmt: s.altFmt, mkm: s.mkm, km: s.km, superMoon: s.superMoon, compass: t.weather.compass, cardinals: t.qibla.cardinals };
-  return simplePage(lang, "sky", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "sky", title: s.h1 }, scripts: ["place.js", "nature-calc.js", "sky-calc.js", "sky.js"], clientExtra: { t: { pl: placeClient(t.prayer), sk } }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].sky, s.description)] });
+  const sk = { planets: s.planets, moon: s.moon, sun: s.sun, chartCaption: s.chartCaption, window: s.window, tooClose: s.tooClose, below: s.below, riseSet: s.riseSet, altFmt: s.altFmt, mkm: s.mkm, km: s.km, superMoon: s.superMoon, compass: t.weather.compass, cardinals: t.qibla.cardinals,
+    showers: s.showers, evShower: s.evShower, showerRate: s.showerRate, showerVar: s.showerVar, moonLight: s.moonLight, evOpp: s.evOpp, evElongE: s.evElongE, evElongW: s.evElongW, evConj: s.evConj, evMoon: s.evMoon,
+    darkNone: s.darkNone, moonUpDark: s.moonUpDark, moonDownDark: s.moonDownDark, planetsNone: s.planetsNone, score: s.score, tipMoon: s.tipMoon, tipDark: s.tipDark, tipCloudy: s.tipCloudy, tipBest: s.tipBest, window2: s.window };
+  return simplePage(lang, "sky", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "sky", title: s.h1 }, scripts: ["place.js", "nature-calc.js", "sky-calc.js", "weather-core.js", "moon-render.js", "sky.js"], clientExtra: { moonTex: MOON_URL, t: { pl: placeClient(t.prayer), sk }, skyEvents: SKY_EVENTS.filter((e) => e.t >= Date.UTC(BUILD_YEAR, 0, 1)).map((e) => ({ ...e })) }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].sky, s.description)] });
 }
 
 /* Tarihte bugün (30 Ekim 2026, rakip analizi listesi #89): Wikidata (CC0) verisi, scripts/fetch-on-this-day.mjs ile elle
@@ -2590,19 +2841,8 @@ function buildSky(lang) {
 const OTD_SRC = fs.existsSync(path.join(SRC, "data", "on-this-day.json")) ? readJson("src/data/on-this-day.json") : { days: {} };
 const OTD_LIMIT = { e: 8, f: 2, b: 5, d: 5 };
 const OTD_URL = {};
-/* Filipincede Wikidata etiketleri azdır (kayıtların ~%30'u); Filipinler'de yaygın olan İngilizce ad ve açıklama kullanılır */
-const OTD_FALLBACK = { fil: "en" };
-function otdDay(lang, md) {
-  const out = { e: [], f: [], b: [], d: [] }, seen = new Set(), fb = OTD_FALLBACK[lang];
-  for (const it of OTD_SRC.days[md] || []) {
-    const own = it.l && it.l[lang], name = own || (fb && it.l && it.l[fb]);
-    // Aynı öğe (ör. hem olay hem kuruluş olarak kayıtlı bir anlaşma) bir kez
-    if (!name || out[it.k].length >= OTD_LIMIT[it.k] || seen.has(it.q)) continue;
-    seen.add(it.q);
-    out[it.k].push([it.y, it.k, name, (it.s && (own ? it.s[lang] : it.s[fb])) || "", it.q]);
-  }
-  return [...out.e.sort((a, b) => a[0] - b[0]), ...out.f.sort((a, b) => a[0] - b[0]), ...out.b.sort((a, b) => a[0] - b[0]), ...out.d.sort((a, b) => a[0] - b[0])];
-}
+/* Seçim kuralı lib/otd.mjs'te (uygulamalar da kullanır); Filipincede İngilizce ada düşülür */
+const otdDay = (lang, md) => otdDaySel(OTD_SRC, lang, md, OTD_LIMIT);
 for (const lang of LANGS) {
   OTD_URL[lang] = {};
   for (let m = 1; m <= 12; m++) {
@@ -2888,6 +3128,24 @@ for (const lang of LANGS) {
   for (const e of ev) lines.push("BEGIN:VEVENT", `UID:${ut(e.at)}-${e.kind}-${lang}@time.bumba.tr`, `DTSTAMP:${stamp}`, `DTSTART:${ut(e.at)}`, `SUMMARY:${icsEsc((e.kind === "new" ? "🌑 " : e.kind === "full" ? "🌕 " : "") + e.title)}`, `URL:${abs(ROUTES[lang].nature)}`, "TRANSP:TRANSPARENT", "END:VEVENT");
   lines.push("END:VCALENDAR");
   write(ICS_URL(lang, "moon").slice(1), lines.map(icsFold).join("\r\n") + "\r\n");
+}
+
+/* Gökyüzü olayları takvimi (3 Kasım 2026, 2. analiz #154): /ics/<dil>-sky.ics, meteor yağmuru zirveleri, kavuşumlar,
+   Ay–gezegen yakınlaşmaları, karşı konum ve uzanımlar 2026–2031 (lib/sky-events.mjs); UTC anıyla zamanlı etkinlik. */
+for (const lang of LANGS) {
+  const s = I[lang].sky, P = s.planets;
+  const stamp = cfg.updated.replace(/-/g, "") + "T000000Z";
+  const ut = (ms) => new Date(ms).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+  const nf1 = new Intl.NumberFormat(RTL.includes(lang) ? "en" : I[lang].locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const title = (e) => e.k === "shower" ? tpl(s.evShower, { name: s.showers[e.id] }) : e.k === "opp" ? tpl(s.evOpp, { p: P[e.p] }) : e.k === "elong" ? tpl(e.ev ? s.evElongE : s.evElongW, { p: P[e.p], deg: nf1.format(e.deg) }) : e.k === "conj" ? tpl(s.evConj, { a: P[e.a], b: P[e.b], sep: nf1.format(e.sep) }) : tpl(s.evMoon, { p: P[e.p], sep: nf1.format(e.sep) });
+  const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", `PRODID:-//Bumba//Saat Tarih Sky//${lang.toUpperCase()}`, "CALSCALE:GREGORIAN", "METHOD:PUBLISH", `X-WR-CALNAME:${icsEsc(s.icsName)}`, "REFRESH-INTERVAL;VALUE=DURATION:P30D", "X-PUBLISHED-TTL:P30D"];
+  for (const e of SKY_EVENTS) {
+    const id = e.k + "-" + (e.id || e.p || e.a + "-" + e.b);
+    const desc = e.k === "shower" ? (e.zhr ? tpl(s.showerRate, { zhr: e.zhr }) : s.showerVar) : "";
+    lines.push("BEGIN:VEVENT", `UID:${ut(e.t)}-${id}-${lang}@time.bumba.tr`, `DTSTAMP:${stamp}`, `DTSTART:${ut(e.t)}`, `SUMMARY:${icsEsc(title(e))}`, ...(desc ? [`DESCRIPTION:${icsEsc(desc)}`] : []), `URL:${abs(ROUTES[lang].sky)}`, "TRANSP:TRANSPARENT", "END:VEVENT");
+  }
+  lines.push("END:VCALENDAR");
+  write(ICS_URL(lang, "sky").slice(1), lines.map(icsFold).join("\r\n") + "\r\n");
 }
 
 /* ---------- sitemap, robots, llms.txt, manifest ---------- */

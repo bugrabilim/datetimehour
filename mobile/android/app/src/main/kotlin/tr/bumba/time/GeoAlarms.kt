@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.material.icons.outlined.WhereToVote
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
@@ -243,7 +244,7 @@ fun GeoAlarmsScreen() {
             }
         }
         AppCard(padding = 4) {
-            if (list.isEmpty()) Text(L("geo.none"), Modifier.padding(12.dp), color = Theme.c.muted)
+            if (list.isEmpty()) EmptyState(Icons.Outlined.WhereToVote, null, L("geo.none"))
             for (g in list) {
                 Row(Modifier.fillMaxWidth().clickable { editing = g }.padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) {

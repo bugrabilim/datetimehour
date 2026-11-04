@@ -39,4 +39,19 @@ final class SunAltitudeTests: XCTestCase {
         let isfirar = try XCTUnwrap(k.isfirar)
         XCTAssertEqual((day.maghrib ?? 0) - isfirar.lowerBound, 0.75, accuracy: 1e-12)
     }
+
+    /// Bayram namazı ve ek vakitler (2. analiz #56, #59): sitedeki prayer-calc.js değerleri, İstanbul 3 Kasım 2026
+    func testExtraAndBayram() throws {
+        let day = PrayerTimes.times(year: 2026, month: 11, day: 3, latitude: 41.0082, longitude: 28.9784, utcOffset: 3)
+        let e = PrayerTimes.extraTimes(year: 2026, month: 11, day: 3, latitude: 41.0082, longitude: 28.9784, utcOffset: 3, times: day)
+        let want: [(Double?, Double)] = [
+            (e.israk, 8.17432610524963), (e.duha, 12.07736148348695), (e.isfirar, 17.405376001886776),
+            (e.istibak, 18.80257678714269), (e.isaSani, 19.60495212576094), (e.midnight, 24.07736148348695),
+            (e.tahajjud, 26.07218865697815), (e.seher, 28.067015830469348),
+        ]
+        for (got, exp) in want { XCTAssertEqual(try XCTUnwrap(got), exp, accuracy: 1e-6) }
+        XCTAssertEqual(try XCTUnwrap(PrayerTimes.bayram(day)), 8.13187983833751, accuracy: 1e-6)
+        let bursa = PrayerTimes.times(year: 2026, month: 3, day: 20, latitude: 40.1826, longitude: 29.0665, utcOffset: 3)
+        XCTAssertEqual(Int(jsRound(try XCTUnwrap(PrayerTimes.bayram(bursa)) * 60)), 7 * 60 + 38)
+    }
 }

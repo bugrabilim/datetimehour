@@ -33,6 +33,7 @@ enum HealthLog {
         let elapsed = Int((Date().timeIntervalSince1970 * 1000 - start) / 1000)
         guard cfg.phase(elapsed).kind == "done", d.double(forKey: "hiit.healthSaved") != start else { return }
         d.set(start, forKey: "hiit.healthSaved")
+        HiitLog.add(cfg, start: start)
         guard enabled, available, store.authorizationStatus(for: HKObjectType.workoutType()) == .sharingAuthorized else { return }
         let begin = Date(timeIntervalSince1970: start / 1000)
         let end = begin.addingTimeInterval(Double(cfg.totalSeconds))

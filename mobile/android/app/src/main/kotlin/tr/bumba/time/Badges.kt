@@ -308,7 +308,8 @@ private fun badgeStatus(b: Badge, day: LocalDate?): String {
     return L("badges.locked") + " · " + T("badges.progress", progress.first, progress.second)
 }
 
-internal val DangerRed = Color(0xFFD32F2F)
+/** Silme ve sıfırlama gibi geri alınamaz eylemler: sitedeki --err rengi */
+internal val DangerRed: Color @Composable get() = Theme.c.err
 
 private fun openUrl(c: Context, url: String) {
     runCatching { c.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }

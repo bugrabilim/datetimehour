@@ -13,6 +13,7 @@ struct Province: Decodable, Identifiable, Hashable {
     let ko: String?
     let zh: String?
     let th: String?
+    let hi: String?
 
     var id: String { slug }
 
@@ -26,6 +27,7 @@ struct Province: Decodable, Identifiable, Hashable {
         case "ko": ko ?? name
         case "zh": zh ?? name
         case "th": th ?? name
+        case "hi": hi ?? name
         default: name
         }
     }

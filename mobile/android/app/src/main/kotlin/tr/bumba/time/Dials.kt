@@ -1,0 +1,383 @@
+package tr.bumba.time
+
+import androidx.compose.runtime.key
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.drawscope.rotate
+import androidx.compose.ui.text.TextMeasurer
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.drawText
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
+import kotlin.math.cos
+import kotlin.math.sin
+
+/**
+ * Kadran koleksiyonu (3 Kasım 2026, 2. analiz #1; sahibin ekran görüntüleri): rakamlı analog saatlerin kadranı.
+ * 12 kadran: klasik, Roma rakamı, sade, noktalı, kronograf, çift halka, metal çerçeve, radar, Çin rakamı ve dokulu
+ * zeminler (deniz, yaprak, mermer). Görsel dosya yok, hepsi çizim. Her kadranda 5 renk (ibre ve saniye; "auto"
+ * kadranın kendi rengi). Seçim `dial.face`, `dial.color`; galeri açılınca "Yeni" işareti ve saat ekranındaki tanıtım
+ * kalkar (`dial.seen`). iOS'taki Dials.swift ile aynı adlar ve ölçüler (200 birimlik kadran).
+ */
+enum class DialFace(val id: String) {
+    CLASSIC("classic"), ROMAN("roman"), MINIMAL("minimal"), DOTS("dots"), CHRONO("chrono"), DOUBLE("double"),
+    METAL("metal"), RADAR("radar"), CHINESE("chinese"), OCEAN("ocean"), LEAF("leaf"), MARBLE("marble"),
+    /** Lüm (2. analiz #11): siyah kadranda işaretler ve ibreler seçilen renkte ışır (14 renk, `dial.lume`) */
+    LUME("lume");
+
+    val title: String get() = L("dial.$id")
+
+    enum class Numerals { ARABIC, ROMAN, CHINESE, NONE }
+    enum class Ticks { FULL, HOURS, DOTS }
+
+    val numerals: Numerals get() = when (this) {
+        CLASSIC, CHRONO, DOUBLE, OCEAN, MARBLE, LUME -> Numerals.ARABIC
+        ROMAN -> Numerals.ROMAN
+        CHINESE -> Numerals.CHINESE
+        else -> Numerals.NONE
+    }
+
+    val ticks: Ticks get() = when (this) {
+        MINIMAL, METAL, LEAF, LUME -> Ticks.HOURS
+        DOTS -> Ticks.DOTS
+        else -> Ticks.FULL
+    }
+
+    /** Kadranın renkleri: yüz, çerçeve, büyük çizgi, küçük çizgi, rakam/akrep, yelkovan, saniye */
+    data class Colors(val face: Color, val border: Color, val tick: Color, val minor: Color, val ink: Color, val hand: Color, val second: Color)
+
+    fun colors(c: AppColors): Colors {
+        fun k(v: Long) = Color(0xFF000000 or v)
+        return when (this) {
+            METAL -> Colors(k(0x1E2228), k(0xADB5BD), k(0xE9ECEF), k(0x868E96), k(0xF1F3F5), k(0xF2A65A), k(0xFF6B6B))
+            RADAR -> Colors(k(0x04140A), k(0x2B8A3E), k(0x51CF66), k(0x2B8A3E), k(0x8CE99A), k(0x51CF66), k(0xB2F2BB))
+            OCEAN -> Colors(k(0x0B3D91), k(0x74C0FC), Color.White, k(0xA5D8FF), Color.White, k(0xFFD43B), k(0xFF8787))
+            LEAF -> Colors(k(0x1E6B34), k(0x8CE99A), Color.White, k(0xB2F2BB), Color.White, k(0xFFD43B), k(0xFF8787))
+            MARBLE -> Colors(k(0xF1EEE9), k(0xBDB5A6), k(0x343A40), k(0x868E96), k(0x212529), k(0x9A3F00), k(0xC92A2A))
+            CHINESE -> Colors(c.surface2, c.border, c.text, c.muted, c.ink, c.accent, k(0xC92A2A))
+            LUME -> Lume.current.let { g -> Colors(k(0x07080B), g.copy(alpha = 0.45f), g, g.copy(alpha = 0.55f), g, g, k(0xFF6B6B)) }
+            else -> Colors(c.surface2, c.border, c.text, c.muted, c.ink, c.accent, c.accent2)
+        }
+    }
+
+    companion object {
+        const val KEY = "dial.face"
+        const val COLOR_KEY = "dial.color"
+        const val SEEN_KEY = "dial.seen"
+        val ROMAN_N = listOf("XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI")
+        val CHINESE_N = listOf("十二", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一")
+
+        fun of(id: String?): DialFace = entries.firstOrNull { it.id == id } ?: CLASSIC
+        val current: DialFace get() = of(Prefs.store.getString(KEY, null))
+    }
+}
+
+/** Lüm kadranının ışıma renkleri (2. analiz #11): siyah üstünde parlak tonlar; adları `color.<id>` */
+object Lume {
+    const val KEY = "dial.lume"
+    val COLORS = linkedMapOf(
+        "green" to 0x7CFC8AL, "mint" to 0x98F5C9L, "aqua" to 0x5CE1E6L, "blue" to 0x6FA8FFL, "ice" to 0xCDEBFFL, "white" to 0xF2F2F2L,
+        "lemon" to 0xF5F57AL, "yellow" to 0xFFD54FL, "orange" to 0xFFA94DL, "amber" to 0xFFBF47L, "red" to 0xFF6B6BL, "pink" to 0xFF8FC7L,
+        "violet" to 0xB48CFFL, "lilac" to 0xD9B8FFL,
+    )
+    fun color(id: String?): Color = Color(0xFF000000 or (COLORS[id] ?: COLORS.getValue("green")))
+    val id: String get() = Prefs.store.getString(KEY, "green")?.takeIf { it in COLORS } ?: "green"
+    val current: Color get() = color(id)
+}
+
+/** İbre rengi: "auto" kadranın kendi rengi */
+enum class DialColor(val id: String, val rgb: Long) {
+    AUTO("auto", 0), RED("red", 0xE03131), BLUE("blue", 0x1C7ED6), GREEN("green", 0x2F9E44), GOLD("gold", 0xE8A317);
+
+    val color: Color? get() = if (this == AUTO) null else Color(0xFF000000 or rgb)
+
+    fun apply(k: DialFace.Colors): DialFace.Colors = color?.let { k.copy(hand = it, second = it) } ?: k
+
+    companion object {
+        fun of(id: String?): DialColor = entries.firstOrNull { it.id == id } ?: AUTO
+        val current: DialColor get() = of(Prefs.store.getString(DialFace.COLOR_KEY, null))
+    }
+}
+
+/**
+ * Kadran (zemin, doku, çizgiler, rakamlar, süsler; ibreler hariç). `hour24` 0–24, `minute` ve `sec` kesirli.
+ * Saat ekranındaki AnalogClock ve galeri bunu çizer.
+ */
+fun DrawScope.drawDial(face: DialFace, k: DialFace.Colors, measurer: TextMeasurer, hour24: Double, minute: Double, sec: Double, fontScale: Float) {
+    val u = kotlin.math.min(size.width, size.height) / 200f
+    val center = Offset(size.width / 2, size.height / 2)
+    val r = 94 * u
+    val circle = Path().apply { addOval(androidx.compose.ui.geometry.Rect(center, r)) }
+    fun k(v: Long) = Color(0xFF000000 or v)
+    // Zemin ve doku (dairenin içine kırpılır)
+    clipPath(circle) {
+        when (face) {
+            DialFace.OCEAN -> {
+                drawRect(Brush.verticalGradient(listOf(k(0x1971C2), k(0x0B3D91)), center.y - r, center.y + r))
+                for (i in 0 until 7) {
+                    val y0 = center.y - r + 2 * r * (0.2f + 0.1f * i)
+                    val p = Path()
+                    var x = center.x - r
+                    p.moveTo(x, y0)
+                    while (x <= center.x + r) {
+                        p.lineTo(x, y0 + (sin((x - center.x + r) / (2 * r) * 12 + i) * 2 * r * 0.015f).toFloat())
+                        x += 4 * u
+                    }
+                    drawPath(p, Color.White.copy(alpha = 0.10f + 0.02f * (i % 3)), style = Stroke(2 * r * 0.008f))
+                }
+            }
+            DialFace.LEAF -> {
+                drawRect(Brush.linearGradient(listOf(k(0x2F9E44), k(0x1E6B34)), Offset(center.x - r, center.y - r), Offset(center.x + r, center.y + r)))
+                val s = 2 * r
+                val ox = center.x - r
+                val oy = center.y - r
+                val mid = Path().apply {
+                    moveTo(ox + s * 0.15f, oy + s * 0.85f)
+                    quadraticTo(ox + s * 0.4f, oy + s * 0.35f, ox + s * 0.85f, oy + s * 0.15f)
+                }
+                drawPath(mid, Color.White.copy(alpha = 0.16f), style = Stroke(s * 0.012f))
+                for (i in 1 until 7) {
+                    val t = i / 7.0
+                    val bx = ox + s * (0.15f + 0.7f * t.toFloat())
+                    val by = oy + s * (0.85f - 0.7f * t.toFloat()) - (s * 0.08f * sin(t * Math.PI)).toFloat()
+                    for (side in listOf(-1f, 1f)) {
+                        val v = Path().apply {
+                            moveTo(bx, by)
+                            quadraticTo(bx + side * s * 0.06f, by - s * 0.06f, bx + side * s * 0.16f, by - s * 0.02f - (if (side > 0) 0f else s * 0.1f))
+                        }
+                        drawPath(v, Color.White.copy(alpha = 0.10f), style = Stroke(s * 0.006f))
+                    }
+                }
+            }
+            DialFace.MARBLE -> {
+                drawRect(k.face)
+                var seed = 0x3A7B1EL
+                fun rnd(): Double { seed = seed * 6364136223846793005L + 1442695040888963407L; return (seed ushr 11).toDouble() / (1L shl 53).toDouble() }
+                val s = 2 * r
+                val ox = center.x - r
+                val oy = center.y - r
+                for (i in 0 until 9) {
+                    val p = Path()
+                    var px = ox + (rnd() * s).toFloat()
+                    var py = oy
+                    p.moveTo(px, py)
+                    repeat(6) {
+                        val nx = px + ((rnd() - 0.45) * s * 0.25).toFloat()
+                        val ny = py + s / 6
+                        p.quadraticTo(px + ((rnd() - 0.5) * s * 0.3).toFloat(), py + s / 12, nx, ny)
+                        px = nx; py = ny
+                    }
+                    drawPath(p, k(if (i % 3 == 0) 0xB8AE9C else 0xCFC8BD).copy(alpha = 0.7f), style = Stroke(s * if (i % 3 == 0) 0.008f else 0.004f))
+                }
+            }
+            else -> drawRect(k.face)
+        }
+        if (face == DialFace.RADAR) {
+            for (rr in listOf(30f, 60f, 88f)) drawCircle(k.minor.copy(alpha = 0.6f), rr * u, center, style = Stroke(1 * u))
+            drawLine(k.minor.copy(alpha = 0.5f), Offset(center.x, center.y - 88 * u), Offset(center.x, center.y + 88 * u), 1 * u)
+            drawLine(k.minor.copy(alpha = 0.5f), Offset(center.x - 88 * u, center.y), Offset(center.x + 88 * u, center.y), 1 * u)
+            // Tarayıcı: saniye ibresiyle döner
+            rotate((sec * 6 - 90).toFloat(), center) {
+                drawCircle(Brush.sweepGradient(listOf(k.tick.copy(alpha = 0f), k.tick.copy(alpha = 0f), k.tick.copy(alpha = 0.35f)), center), r, center)
+            }
+        }
+    }
+    if (face == DialFace.METAL) {
+        drawCircle(Brush.sweepGradient(listOf(k(0xF8F9FA), k(0x868E96), k(0xDEE2E6), k(0x495057), k(0xF8F9FA)), center), r, center, style = Stroke(9 * u))
+    } else {
+        drawCircle(k.border, r, center, style = Stroke(2 * u))
+    }
+    // Çizgiler
+    when (face.ticks) {
+        DialFace.Ticks.FULL -> for (i in 0 until 60) {
+            val major = i % 5 == 0
+            rotate(i * 6f, center) {
+                drawLine(if (major) k.tick else k.minor, Offset(center.x, center.y - (if (major) 88 else 86) * u),
+                    Offset(center.x, center.y - (if (major) 76 else 81) * u), (if (major) 3f else 1.4f) * u, StrokeCap.Round)
+            }
+        }
+        DialFace.Ticks.HOURS -> for (i in 0 until 12) {
+            val q = i % 3 == 0
+            rotate(i * 30f, center) {
+                drawLine(k.tick, Offset(center.x, center.y - 86 * u), Offset(center.x, center.y - (if (q) 68 else 73) * u), (if (q) 6f else 4f) * u, StrokeCap.Round)
+            }
+        }
+        DialFace.Ticks.DOTS -> for (i in 0 until 12) {
+            val a = i * 30 * Math.PI / 180
+            drawCircle(k.tick, (if (i % 3 == 0) 5.5f else 3.5f) * u, Offset(center.x + 80 * u * sin(a).toFloat(), center.y - 80 * u * cos(a).toFloat()))
+        }
+    }
+    fun text(s: String, x: Float, y: Float, size: Float, color: Color, serif: Boolean = false, weight: FontWeight = FontWeight.SemiBold) {
+        val l = measurer.measure(s, TextStyle(color = color, fontSize = (size * u / density / fontScale).sp, fontWeight = weight,
+            fontFamily = if (serif) FontFamily.Serif else FontFamily.Default))
+        drawText(l, topLeft = Offset(x - l.size.width / 2f, y - l.size.height / 2f))
+    }
+    if (face == DialFace.DOUBLE) {
+        for (n in 1..12) {
+            val a = n * 30 * Math.PI / 180
+            text(String.format(java.util.Locale.ROOT, "%02d", n * 5), center.x + 70 * u * sin(a).toFloat(), center.y - 70 * u * cos(a).toFloat(), 8f, k.minor, weight = FontWeight.Medium)
+        }
+        drawCircle(k.minor.copy(alpha = 0.5f), 62 * u, center, style = Stroke(1 * u))
+    }
+    if (face == DialFace.CHRONO) {
+        for ((x, y) in listOf(-40f to 0f, 40f to 0f, 0f to 40f)) {
+            val sc = Offset(center.x + x * u, center.y + y * u)
+            drawCircle(k.minor, 18 * u, sc, style = Stroke(1 * u))
+            for (i in 0 until 12) rotate(i * 30f, sc) { drawLine(k.minor, Offset(sc.x, sc.y - 17 * u), Offset(sc.x, sc.y - 14 * u), 1 * u) }
+            // Sol: 24 saat, sağ: dakika, alt: saniye
+            val ang = if (x < 0) hour24 * 15 else if (x > 0) minute * 6 else sec * 6
+            rotate(ang.toFloat(), sc) { drawLine(if (x == 0f) k.second else k.ink, sc, Offset(sc.x, sc.y - 14 * u), 1.6f * u, StrokeCap.Round) }
+        }
+    }
+    if (face.numerals != DialFace.Numerals.NONE) {
+        val radius = when (face) { DialFace.DOUBLE -> 46f; DialFace.CHRONO -> 70f; else -> 66f }
+        val size = when (face) { DialFace.CHRONO -> 12f; DialFace.DOUBLE -> 13f; DialFace.ROMAN, DialFace.CHINESE -> 14f; else -> 15f }
+        for (i in 0 until 12) {
+            val n = if (i == 0) 12 else i
+            if (face == DialFace.CHRONO && n in listOf(3, 6, 9)) continue
+            val a = n * 30 * Math.PI / 180
+            val s = when (face.numerals) { DialFace.Numerals.ROMAN -> DialFace.ROMAN_N[i]; DialFace.Numerals.CHINESE -> DialFace.CHINESE_N[i]; else -> n.toString() }
+            text(s, center.x + radius * u * sin(a).toFloat(), center.y - radius * u * cos(a).toFloat(), size, k.ink, serif = face.numerals == DialFace.Numerals.ROMAN)
+        }
+    }
+}
+
+/** Kadran galerisi (Saat görünümü › Kadranlar): küçük canlı kadranlar; dokununca önizleme, renk ve "Kullan" */
+@Composable
+fun DialGalleryScreen() {
+    var face by remember { mutableStateOf(DialFace.current) }
+    var color by remember { mutableStateOf(DialColor.current) }
+    val newOnOpen = remember { !Prefs.store.getBoolean(DialFace.SEEN_KEY, false) }
+    var preview by remember { mutableStateOf<DialFace?>(null) }
+    remember { Prefs.store.edit().putBoolean(DialFace.SEEN_KEY, true).apply(); 0 }
+    val now = rememberNow().atZone(java.time.ZoneId.systemDefault())
+    Column(Modifier.fillMaxSize()) {
+        LazyVerticalGrid(GridCells.Adaptive(150.dp), Modifier.weight(1f), contentPadding = androidx.compose.foundation.layout.PaddingValues(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            items(DialFace.entries) { f ->
+                Column(
+                    Modifier.clip(RoundedCornerShape(16.dp)).background(Theme.c.surface).clickable { preview = f }.padding(10.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Box {
+                        AnalogClock(now, Modifier.fillMaxWidth(), face = f, dialColor = if (f == face) color else DialColor.AUTO, tap = false)
+                        if (newOnOpen && f != DialFace.CLASSIC) {
+                            Text(L("dial.new"), Modifier.align(Alignment.TopEnd).background(Theme.c.accent, RoundedCornerShape(50)).padding(horizontal = 6.dp, vertical = 2.dp),
+                                color = Theme.c.bg, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        if (f == face) Icon(Icons.Filled.CheckCircle, null, tint = Theme.c.accent, modifier = Modifier.size(18.dp).padding(end = 4.dp))
+                        Text(f.title, color = Theme.c.text, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
+                    }
+                }
+            }
+            item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(maxLineSpan) }) {
+                Text(L("dial.note"), color = Theme.c.muted, fontSize = 12.sp)
+            }
+        }
+    }
+    preview?.let { f ->
+        var pick by remember(f) { mutableStateOf(if (f == face) color else DialColor.AUTO) }
+        Dialog(onDismissRequest = { preview = null }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+            Column(Modifier.fillMaxSize().background(Theme.c.bg).padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(20.dp)) {
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    Text(f.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    IconButton(onClick = { preview = null }) { Icon(Icons.Filled.Close, L("common.close"), tint = Theme.c.text) }
+                }
+                var lume by remember { mutableStateOf(Lume.id) }
+                key(lume) { AnalogClock(now, Modifier.widthIn(max = 340.dp).fillMaxWidth(), face = f, dialColor = pick, tap = false) }
+                // Lüm kadranında ışıma rengi (14 renk)
+                if (f == DialFace.LUME) Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Text(L("dial.lumeColor"), color = Theme.c.muted, fontSize = 13.sp)
+                    for (row in Lume.COLORS.keys.chunked(7)) Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                        for (id in row) Box(
+                            Modifier.size(34.dp).border(if (id == lume) 3.dp else 0.dp, Theme.c.text, CircleShape).padding(4.dp)
+                                .background(androidx.compose.ui.graphics.Color.Black, CircleShape).padding(3.dp)
+                                .background(Lume.color(id), CircleShape)
+                                .clickable(onClickLabel = L("color.$id")) { lume = id; Prefs.store.edit().putString(Lume.KEY, id).apply() },
+                        )
+                    }
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                    DialColor.entries.forEach { c ->
+                        Box(Modifier.size(38.dp).border(if (c == pick) 3.dp else 0.dp, Theme.c.text, CircleShape).padding(4.dp)
+                            .background(c.color ?: f.colors(Theme.c).hand, CircleShape).clickable { pick = c })
+                    }
+                }
+                val inUse = face == f && color == pick
+                RoundButton(L(if (inUse) "dial.inUse" else "dial.use"), true, Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
+                    Prefs.store.edit().putString(DialFace.KEY, f.id).putString(DialFace.COLOR_KEY, pick.id).apply()
+                    face = f; color = pick; preview = null
+                }
+                Spacer(Modifier.weight(1f))
+            }
+        }
+    }
+}
+
+/** Saat ekranında bir kez "Yeni kadranlar" tanıtımı (galeri açılınca ya da kapatılınca kalkar) */
+@Composable
+fun DialNewsCard(onOpen: () -> Unit) {
+    var seen by remember { mutableStateOf(Prefs.store.getBoolean(DialFace.SEEN_KEY, false)) }
+    if (seen) return
+    val now = rememberNow().atZone(java.time.ZoneId.systemDefault())
+    Row(
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Theme.c.surface).clickable(onClick = onOpen).padding(12.dp),
+        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        AnalogClock(now, Modifier.size(54.dp), face = DialFace.CHRONO, tap = false)
+        Column(Modifier.weight(1f)) {
+            Text(L("dial.newTitle"), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+            Text(L("dial.newText"), color = Theme.c.muted, fontSize = 12.sp, maxLines = 3)
+        }
+        IconButton(onClick = { seen = true; Prefs.store.edit().putBoolean(DialFace.SEEN_KEY, true).apply() }) {
+            Icon(Icons.Filled.Close, L("common.close"), tint = Theme.c.muted)
+        }
+    }
+}

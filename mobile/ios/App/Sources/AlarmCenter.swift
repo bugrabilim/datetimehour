@@ -54,7 +54,26 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     /// Akıllı alarm (31 Ekim 2026; Android ile aynı alan): alarmdan önceki bu kadar dakikada uyku oturumu hafif uyku
     /// (hareket) algılarsa erken çalar; 0 = kapalı (SmartSleep)
     var smart = 0
+    /// Sakin ön alarm (2. analiz #42): alarmdan bu kadar dakika önce kısık yağmur ve çan (bildirim sesi prealarm.caf; 0 = kapalı)
+    var preAlarm = 0
+    /// Uyku planının kalkış alarmı (2. analiz #52): plan değişince güncellenir, listede ayrı başlıkta
+    var sleepPlan = false
+    /// 2. analiz #2: duvar kâğıdı (AlarmWalls; boş = tema rengi). iPhone'da alarm Apple'ın ekranında çalar; zemin
+    /// kapatma görevi ekranında ve günaydın kartında görünür
+    var wall = ""
+    /// 2. analiz #40: her ertelemede yarıya inen süre; "HH:MM" sonrasında erteleme yok
+    var snoozeShrink = false
+    var snoozeEnd = ""
+    /// 2. analiz #132: bu şehrin saatiyle çalar (IANA; boş = telefonun dilimi). #153: güneşe bağlı ("rise"/"set") ± dakika,
+    /// her gün seçili yerin doğuşu/batışından hesaplanır
+    var tz = ""
+    var sun = ""
+    var sunOffset = 0
+    /// 2. analiz #34: asıl görevden sonra sırayla istenecek görevler (en çok 2; "random" her çalmada seçilir)
+    var chain: [String] = []
 
+    static let sunOffsets = [-60, -30, -15, 0, 15, 30, 60]
+    static let preAlarmChoices = [0, 10, 20, 30]
     static let snoozeChoices = [0, 5, 10, 15, 20, 30]
     static let snoozeMaxChoices = [0, 1, 2, 3, 5]
     static let sunriseChoices = [0, 10, 20, 30]
@@ -68,7 +87,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         self.minute = minute
     }
 
-    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck, preNotify, speak, date, every, anchor, until, music, musicName, smart }
+    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck, preNotify, speak, date, every, anchor, until, music, musicName, smart, preAlarm, sleepPlan, wall, snoozeShrink, snoozeEnd, tz, sun, sunOffset, chain }
     private enum LegacyKeys: String, CodingKey { case repeats }
 
     init(from decoder: Decoder) throws {
@@ -97,6 +116,15 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         music = try c.decodeIfPresent(String.self, forKey: .music) ?? ""
         musicName = try c.decodeIfPresent(String.self, forKey: .musicName) ?? ""
         smart = try c.decodeIfPresent(Int.self, forKey: .smart) ?? 0
+        preAlarm = try c.decodeIfPresent(Int.self, forKey: .preAlarm) ?? 0
+        sleepPlan = try c.decodeIfPresent(Bool.self, forKey: .sleepPlan) ?? false
+        wall = try c.decodeIfPresent(String.self, forKey: .wall) ?? ""
+        snoozeShrink = try c.decodeIfPresent(Bool.self, forKey: .snoozeShrink) ?? false
+        snoozeEnd = try c.decodeIfPresent(String.self, forKey: .snoozeEnd) ?? ""
+        tz = try c.decodeIfPresent(String.self, forKey: .tz) ?? ""
+        sun = try c.decodeIfPresent(String.self, forKey: .sun) ?? ""
+        sunOffset = try c.decodeIfPresent(Int.self, forKey: .sunOffset) ?? 0
+        chain = try c.decodeIfPresent([String].self, forKey: .chain) ?? []
         if let d = try c.decodeIfPresent([Int].self, forKey: .days) {
             days = d
         } else {
@@ -113,7 +141,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
 
     /// Kaydı eksik görev matematiğe düşer: kod okutmada kod, fotoğrafta özet ("ph:…") yoksa
     static func effectiveTask(_ task: String, code: String) -> String {
-        if task == "code" && (code.isEmpty || code.hasPrefix(PhotoHash.prefix)) { return "math" }
+        if task == "code" && (code.isEmpty || code.hasPrefix(PhotoHash.prefix) || code.hasPrefix(ObjectTarget.prefix)) { return "math" }
         if task == "photo" && !code.hasPrefix(PhotoHash.prefix) { return "math" }
         return task
     }
@@ -122,13 +150,30 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     var wakeTask: PendingWakeTask? {
         guard task != "none" || wakeCheck else { return nil }
         let t = Self.effectiveTask(task, code: code)
-        return PendingWakeTask(task: t, level: taskLevel, code: code, wakeCheck: wakeCheck, title: title, rise: rise, rings: 0, repeatID: nil)
+        return PendingWakeTask(task: t, level: taskLevel, code: code, wakeCheck: wakeCheck, title: title, rise: rise, rings: 0, repeatID: nil,
+                               wall: wall.isEmpty ? nil : wall, chain: task == "none" || chain.isEmpty ? nil : chain)
     }
     var timeText: String {
+        // Güneşe bağlı alarmda sıradaki çalmanın saati (her gün değişir)
+        if !sun.isEmpty, let n = next(after: Date()) { return Fmt.time(n) }
         var c = DateComponents()
         c.hour = hour
         c.minute = minute
         return Fmt.time(Calendar.current.date(from: c) ?? Date())
+    }
+
+    static func sunOffsetText(_ m: Int) -> String {
+        m == 0 ? L("alarm.sunExact") : (m < 0 ? T("alarm.sunBefore", -m) : T("alarm.sunAfter", m))
+    }
+
+    /// Listede saatin altına: "Gün doğumu · 15 dk önce" ya da "Londra saatiyle · burada 10:00"
+    var anchorText: String? {
+        if !sun.isEmpty { return L(sun == "rise" ? "alarm.base.rise" : "alarm.base.set") + " · " + Self.sunOffsetText(sunOffset) }
+        guard !tz.isEmpty else { return nil }
+        let city = City.all.first { $0.tz == tz }?.displayName ?? tz.split(separator: "/").last.map { $0.replacingOccurrences(of: "_", with: " ") } ?? tz
+        var text = T("alarm.tzCity", city)
+        if let n = next(after: Date()) { text += " · " + T("alarm.tzHere", Fmt.time(n)) }
+        return text
     }
 
     /// "Bir kez", "Her gün", "Hafta içi" ya da gün kısaltmaları; belirli tarih, iki haftada bir ve bitiş tarihi eklenir
@@ -156,7 +201,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         return true
     }
     /// Haftalık tekrar AlarmKit'in yinelemesiyle kurulamıyorsa (iki haftada bir ya da bitiş tarihi): tek tek kurulur
-    var needsPlan: Bool { !days.isEmpty && (every > 1 || !until.isEmpty) }
+    var needsPlan: Bool { !days.isEmpty && (every > 1 || !until.isEmpty || anchored) }
     /// Bitiş tarihi geçti ya da belirli tarih geçmişte kaldı: bir daha çalmaz
     func expired(now: Date = Date()) -> Bool { next(after: now) == nil }
 
@@ -166,31 +211,66 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         return (w + 5) % 7 + 1
     }
 
-    private func at(_ day: Date) -> Date? {
-        Calendar.current.date(bySettingHour: hour, minute: minute, second: 0, of: day)
+    /// Alarmın saat dilimi: güneşe bağlıysa seçili yerin, şehre bağlıysa o şehrin (2. analiz #132), yoksa telefonun
+    var zone: TimeZone {
+        if !sun.isEmpty { return AppPlace.stored().zone }
+        if !tz.isEmpty, let z = TimeZone(identifier: tz) { return z }
+        return .current
+    }
+
+    /// Saati telefonun saatinden farklı hesaplanan alarm (AlarmKit'in haftalık tekrarı yetmez, tek tek kurulur)
+    var anchored: Bool { !sun.isEmpty || (!tz.isEmpty && TimeZone(identifier: tz) != nil) }
+
+    /// Güneşin doğuşu ya da batışı (o yerin saatiyle gece yarısından dakika; vakit düzeltmesi yok); kutup bölgesinde nil
+    static func sunMinutes(_ day: CalendarDay, lat: Double, lon: Double, zone: TimeZone, rise: Bool) -> Int? {
+        var p = PrayerTimes.Parameters()
+        p.adjustments.sunrise = 0
+        p.adjustments.dhuhr = 0
+        p.adjustments.maghrib = 0
+        let t = PrayerTimes.times(year: day.year, month: day.month, day: day.day, latitude: lat, longitude: lon, timeZone: zone, parameters: p)
+        guard let h = rise ? t.sunrise : t.maghrib, h.isFinite else { return nil }
+        return Int((h * 60).rounded())
+    }
+
+    /// Bu günün (alarmın saat diliminde) çalma anı; güneşe bağlıysa doğuş/batış ± dakika
+    func instant(on day: CalendarDay, zone z: TimeZone) -> Date? {
+        if sun.isEmpty {
+            var cal = Calendar(identifier: .gregorian)
+            cal.timeZone = z
+            return cal.date(from: DateComponents(year: day.year, month: day.month, day: day.day, hour: hour, minute: minute))
+        }
+        let p = AppPlace.stored()
+        guard let m = Self.sunMinutes(day, lat: p.lat, lon: p.lon, zone: p.zone, rise: sun == "rise") else { return nil }
+        let midnight = day.noon(in: p.zone).addingTimeInterval(-12 * 3600)
+        return midnight.addingTimeInterval(Double(m + sunOffset) * 60)
     }
 
     /// `date` sonrasındaki ilk çalma (atlama hesaba katılmaz)
     func occurrence(after date: Date) -> Date? {
-        let cal = Calendar.current
+        let z = zone
         // Belirli tarih uzakta olabilir: o güne doğrudan bakılır
         if days.isEmpty, let d = CalendarDay(iso: self.date) {
-            guard let t = at(d.noon(in: .current)), t > date, allows(d) else { return nil }
+            guard let t = instant(on: d, zone: z), t > date, allows(d) else { return nil }
             return t
         }
-        for add in 0...15 {
-            guard let day = cal.date(byAdding: .day, value: add, to: date), let t = at(day), t > date else { continue }
-            if allows(CalendarDay(t)) { return t }
+        // Güneşe bağlı alarmda eksi kayma önceki güne taşabilir: bir gün geriden başlanır
+        let start = CalendarDay(date, timeZone: z).adding(days: -1)
+        for add in 0...16 {
+            let day = start.adding(days: add)
+            guard let t = instant(on: day, zone: z), t > date else { continue }
+            if allows(day) { return t }
         }
         return nil
     }
 
     /// `date` öncesindeki son çalma (günaydın kartı için)
     func occurrence(before date: Date) -> Date? {
-        let cal = Calendar.current
-        for back in 0...15 {
-            guard let day = cal.date(byAdding: .day, value: -back, to: date), let t = at(day), t <= date else { continue }
-            if (days.isEmpty && self.date.isEmpty) || allows(CalendarDay(t)) { return t }
+        let z = zone
+        let start = CalendarDay(date, timeZone: z).adding(days: 1)
+        for back in 0...16 {
+            let day = start.adding(days: -back)
+            guard let t = instant(on: day, zone: z), t <= date else { continue }
+            if (days.isEmpty && self.date.isEmpty) || allows(day) { return t }
         }
         return nil
     }
@@ -203,13 +283,15 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     /// Bu çalma atlanır mı: "sonraki alarmı atla" ya da (tekrarlayan alarmda) resmî tatil
     func blocked(_ t: Date, now: Date) -> Bool {
         if let s = skipUntil, s > now, t < s { return true }
+        // Tatil modu (2. analiz #44): tekrarlayan alarmlar duraklatılan günlerde çalmaz
+        if !days.isEmpty, AlarmPause.contains(t) { return true }
         return skipHolidays && !days.isEmpty && Self.isHoliday(t)
     }
 
     /// Sıradaki çalma (atlanan çalma ve tatiller geçilir)
     func next(after now: Date = Date()) -> Date? {
         var t = occurrence(after: now)
-        for _ in 0..<60 {
+        for _ in 0..<120 {
             guard let c = t else { return nil }
             if !blocked(c, now: now) { return c }
             t = occurrence(after: c)
@@ -283,6 +365,26 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         }
     }
 
+    /// Sakin ön alarmlar (2. analiz #42): her alarmın sıradaki üç çalmasından `preAlarm` dk önce, yumuşak yağmur ve çan sesli
+    /// bildirim (prealarm.caf, 28 sn); özellik bildirimleriyle aynı listede kurulur
+    @MainActor static func preAlarms(now: Date) -> [PlannedNotification] {
+        load().filter { $0.enabled && $0.preAlarm > 0 }.flatMap { item -> [PlannedNotification] in
+            var out: [PlannedNotification] = []
+            var t = item.next(after: now)
+            while let at = t, out.count < 3 {
+                let fire = at.addingTimeInterval(-Double(item.preAlarm * 60))
+                if fire > now {
+                    out.append(PlannedNotification(
+                        id: "\(FeatureNotifier.featurePrefix)prealarm-\(item.id.uuidString)-\(Int(at.timeIntervalSince1970) / 60)",
+                        fireAt: fire, title: L("alarm.preAlarmTitle"), body: T("alarm.preAlarmBody", Fmt.time(at)),
+                        thread: "alarm", sound: UNNotificationSound(named: UNNotificationSoundName("prealarm.caf"))))
+                }
+                t = item.next(after: at.addingTimeInterval(60))
+            }
+            return out
+        }
+    }
+
     static let storeKey = "alarms"
     static func load() -> [AlarmItem] {
         guard let data = UserDefaults.standard.data(forKey: storeKey) else { return [] }
@@ -344,6 +446,7 @@ enum AlarmCenter {
     /// İzin: AlarmKit ya da bildirim
     static func requestAccess() async -> Bool {
         if #available(iOS 26.0, *) { return await KitAlarms.requestAccess() }
+        if await PrayerNotifier.authorizationStatus() == .notDetermined, !(await PermissionPrimer.ask(.alarm)) { return false }
         return (try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])) ?? false
     }
 
@@ -402,7 +505,7 @@ enum AlarmCenter {
     static func refreshSkips(now: Date = Date()) async {
         var items = AlarmItem.load()
         let today = CalendarDay(now).iso
-        let holidayPlan = items.contains { $0.enabled && (($0.skipHolidays && !$0.days.isEmpty) || $0.needsPlan) }
+        let holidayPlan = items.contains { $0.enabled && (($0.skipHolidays && !$0.days.isEmpty) || $0.needsPlan || (!$0.days.isEmpty && AlarmPause.range != nil)) }
             && UserDefaults.standard.string(forKey: "alarm.planDay") != today
         guard holidayPlan || items.contains(where: { ($0.skipUntil ?? .distantFuture) <= now }) else { return }
         for i in items.indices where (items[i].skipUntil ?? .distantFuture) <= now { items[i].skipUntil = nil }
@@ -445,7 +548,10 @@ enum KitAlarms {
         switch manager.authorizationState {
         case .authorized: return true
         case .denied: return false
-        default: return ((try? await manager.requestAuthorization()) ?? .denied) == .authorized
+        default:
+            // Önce kısa açıklama (2. analiz #80)
+            guard await PermissionPrimer.ask(.alarm) else { return false }
+            return ((try? await manager.requestAuthorization()) ?? .denied) == .authorized
         }
     }
 
@@ -458,6 +564,9 @@ enum KitAlarms {
         var wake: PendingWakeTask?
         /// Saati söyleyen ses dosyası (Library/Sounds; AlarmSpeech)
         var soundName: String?
+        /// 2. analiz #40: her ertelemede yarıya iner; "HH:MM" sonrasında erteleme düğmesi yok
+        var shrink = false
+        var snoozeEnd = ""
 
         init(snooze: Int = 0, remaining: Int = -1, rise: Bool = false) {
             self.snooze = snooze
@@ -469,6 +578,16 @@ enum KitAlarms {
             self.init(snooze: item.snooze, remaining: item.snoozeMax == 0 ? -1 : item.snoozeMax, rise: item.rise)
             wake = item.wakeTask
             soundName = AlarmMusic.sound(for: item)
+            shrink = item.snoozeShrink
+            snoozeEnd = item.snoozeEnd
+            // Alarm saati son erteleme saatinden sonraysa erteleme düğmesi yok (güneşe bağlıda saat değiştiği için bakılmaz)
+            if item.sun.isEmpty, let end = Self.minutes(snoozeEnd), item.hour * 60 + item.minute >= end { remaining = 0 }
+        }
+
+        /// "HH:MM" → gece yarısından dakika
+        static func minutes(_ hm: String) -> Int? {
+            let p = hm.split(separator: ":").compactMap { Int($0) }
+            return p.count == 2 ? p[0] * 60 + p[1] : nil
         }
 
         /// Erteleme düğmesi gösterilir mi
@@ -497,7 +616,7 @@ enum KitAlarms {
             stopIntent: options.wake.map { AlarmStopIntent(alarmID: id.uuidString, wake: $0) },
             secondaryIntent: options.canSnooze
                 ? SnoozeAlarmIntent(minutes: options.snooze, label: title, remaining: options.remaining, rise: options.rise, wake: options.wake,
-                                    sound: options.soundName) : nil,
+                                    sound: options.soundName, shrink: options.shrink, end: options.snoozeEnd) : nil,
             sound: options.soundName.map { .named($0) } ?? (options.rise ? .named(AlarmItem.riseSound) : .default))
     }
 
@@ -520,7 +639,7 @@ enum KitAlarms {
             if item.days.isEmpty {
                 // Bir kez: atlandıysa sonraki gün
                 if !item.date.isEmpty && item.next(after: now) == nil { continue }
-                let schedule: Alarm.Schedule = skipping || !item.date.isEmpty
+                let schedule: Alarm.Schedule = skipping || !item.date.isEmpty || item.anchored
                     ? .fixed(item.next(after: now) ?? now)
                     : .relative(.init(time: time, repeats: .never))
                 if (try? await manager.schedule(id: item.id, configuration: config(schedule, id: item.id, title: item.title, options: options))) != nil {
@@ -571,24 +690,40 @@ struct SnoozeAlarmIntent: LiveActivityIntent {
     @Parameter(title: "Wake") var wake: String
     /// Alarmın kendi ses dosyası (müzik kesiti ya da saati söyleyen ses; yoksa nil), ertelenen alarmda da çalar
     @Parameter(title: "Sound") var sound: String?
+    /// 2. analiz #40: kısalan erteleme ve son erteleme saati ("HH:MM"; boş = yok)
+    @Parameter(title: "Shrink") var shrink: Bool?
+    @Parameter(title: "End") var end: String?
 
     init() {}
 
-    init(minutes: Int, label: String, remaining: Int, rise: Bool, wake: PendingWakeTask?, sound: String? = nil) {
+    init(minutes: Int, label: String, remaining: Int, rise: Bool, wake: PendingWakeTask?, sound: String? = nil, shrink: Bool = false, end: String = "") {
         self.minutes = minutes
         self.label = label
         self.remaining = remaining
         self.rise = rise
         self.wake = wake.flatMap { try? JSONEncoder().encode($0) }.map { String(decoding: $0, as: UTF8.self) } ?? ""
         self.sound = sound
+        self.shrink = shrink
+        self.end = end
     }
 
     func perform() async throws -> some IntentResult {
-        let left = remaining < 0 ? -1 : max(0, remaining - 1)
-        var options = KitAlarms.Options(snooze: minutes, remaining: left, rise: rise)
+        WakeGame.noteSnooze() // uyanma oyunu (2. analiz #7): erteleme sayısı
+        var left = remaining < 0 ? -1 : max(0, remaining - 1)
+        let fire = Date().addingTimeInterval(Double(max(1, minutes) * 60))
+        // Ertelenen alarm son erteleme saatinden sonra çalacaksa onda erteleme düğmesi yok
+        if let e = KitAlarms.Options.minutes(end ?? "") {
+            let c = Calendar.current.dateComponents([.hour, .minute], from: fire)
+            if (c.hour ?? 0) * 60 + (c.minute ?? 0) >= e { left = 0 }
+        }
+        // Kısalan erteleme: sıradaki erteleme süresi yarısı (en az 1 dk)
+        let nextMinutes = shrink == true ? max(1, minutes / 2) : minutes
+        var options = KitAlarms.Options(snooze: nextMinutes, remaining: left, rise: rise)
+        options.shrink = shrink ?? false
+        options.snoozeEnd = end ?? ""
         options.wake = try? JSONDecoder().decode(PendingWakeTask.self, from: Data(wake.utf8))
         options.soundName = sound
-        _ = await KitAlarms.schedule(id: UUID(), at: Date().addingTimeInterval(Double(max(1, minutes) * 60)), title: label, options: options)
+        _ = await KitAlarms.schedule(id: UUID(), at: fire, title: label, options: options)
         return .result()
     }
 }

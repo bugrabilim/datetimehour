@@ -9,10 +9,22 @@ final class PhonePlace: NSObject, ObservableObject, WCSessionDelegate {
     private let storeKey = "phone.place"
 
     @Published private(set) var place: Place?
+    /// iPhone'daki dünya saatleri (ad, saat dilimi); gelmediyse boş
+    @Published private(set) var world: [(name: String, zone: TimeZone)] = []
 
     override init() {
         super.init()
-        place = Self.decode(UserDefaults.standard.dictionary(forKey: storeKey) ?? [:])
+        let c = UserDefaults.standard.dictionary(forKey: storeKey) ?? [:]
+        place = Self.decode(c)
+        world = Self.decodeWorld(c)
+    }
+
+    private static func decodeWorld(_ c: [String: Any]) -> [(name: String, zone: TimeZone)] {
+        ((c["world"] as? [String]) ?? []).compactMap { row in
+            let parts = row.split(separator: "|", maxSplits: 1).map(String.init)
+            guard parts.count == 2, let z = TimeZone(identifier: parts[1]) else { return nil }
+            return (name: parts[0], zone: z)
+        }
     }
 
     func activate() {
@@ -30,7 +42,8 @@ final class PhonePlace: NSObject, ObservableObject, WCSessionDelegate {
     private func apply(_ c: [String: Any]) {
         guard !c.isEmpty, let p = Self.decode(c) else { return }
         UserDefaults.standard.set(c, forKey: storeKey)
-        DispatchQueue.main.async { self.place = p }
+        let w = Self.decodeWorld(c)
+        DispatchQueue.main.async { self.place = p; self.world = w }
     }
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

@@ -18,6 +18,13 @@ struct CountdownItem: Codable, Identifiable, Equatable {
     var remind = true
     /// Fotoğrafın sürümü (yoksa nil); dosya "cd-<id>.jpg"
     var photo: Double?
+    /// 2. analiz #73, #139: gösterim birimi (auto, days, weeks, hours, minutes, parts), kart rengi (0 = yok), arşiv,
+    /// etiket, yalnız iş günü say (eski kayıtlarda yok)
+    var unit: String?
+    var color: Int?
+    var archived: Bool?
+    var tag: String?
+    var workdays: Bool?
 
     static let emojis = ["⏳", "🎂", "🎉", "✈️", "🏖️", "🎓", "💍", "❤️", "🎄", "🌙", "⚽", "📚", "💼", "🏥", "👶", "🎁"]
 
@@ -99,9 +106,25 @@ func quickTargets(_ today: CalendarDay) -> [(String, CalendarDay)] {
 
 /// Geri sayımlarım: liste, + ile yeni, dokununca düzenle; altta hazır özel günler
 struct CountdownsView: View {
+    /// Alt satır: tarih, saat (gece yarısı değilse), yıllık işareti, kaçıncı yıl ve etiket (ifade tür denetimi için parçalı)
+    static func subtitle(_ c: CountdownItem, at: Date) -> String {
+        let cal = Calendar.current
+        let hasTime = cal.component(.hour, from: at) + cal.component(.minute, from: at) > 0
+        var s: String = Fmt.longDate(at)
+        if hasTime { s += " " + Fmt.time(at) }
+        if c.yearly { s += " · ↻" }
+        s += c.ordinalText(at: at)
+        let tag: String = c.tag ?? ""
+        if !tag.isEmpty { s += " · #" + tag }
+        return s
+    }
+
     @State private var items = CountdownItem.load()
     @State private var editing: CountdownItem?
     @State private var sharing: CountdownItem?
+    @State private var detail: CountdownItem?
+    @State private var tagFilter = ""
+    @State private var showArchive = false
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
@@ -119,19 +142,37 @@ struct CountdownsView: View {
                             .accessibilityLabel(L("countdowns.add"))
                             .foregroundStyle(Theme.accent)
                     }
-                    if items.isEmpty { Text(L("countdowns.empty")).font(.subheadline).foregroundStyle(Theme.muted) }
-                    ForEach(items.sorted { $0.effective(now: context.date) < $1.effective(now: context.date) }) { c in
+                    // Boş durum (2. analiz #96)
+                    if items.isEmpty {
+                        EmptyState(icon: "hourglass", title: L("empty.countdown.title"), text: L("empty.countdown.text"),
+                                   action: L("countdowns.add")) {
+                            let d = Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: Date().addingTimeInterval(7 * 86400)) ?? Date()
+                            editing = CountdownItem(target: Int64(d.timeIntervalSince1970 * 1000))
+                        }
+                    }
+                    // Etiketle süzme (2. analiz #139)
+                    let tags = Array(Set(items.compactMap { $0.tag?.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty })).sorted()
+                    if !tags.isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 6) {
+                                CountdownChip(title: L("countdowns.all"), on: tagFilter.isEmpty) { tagFilter = "" }
+                                ForEach(tags, id: \.self) { t in CountdownChip(title: "#" + t, on: tagFilter == t) { tagFilter = t } }
+                            }
+                        }
+                    }
+                    let visible = items.filter { ($0.archived ?? false) == showArchive && (tagFilter.isEmpty || $0.tag == tagFilter) }
+                    ForEach(visible.sorted { $0.effective(now: context.date) < $1.effective(now: context.date) }) { c in
                         let at = c.effective(now: context.date)
                         let photo = c.image
                         HStack(spacing: 12) {
                             Text(c.emoji).font(.system(size: 34))
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(c.title.isEmpty ? L("tools.hub.cards.countdown.name") : c.title).font(.headline).lineLimit(1)
-                                Text(countdownText(at, now: context.date))
+                                Text(countdownDisplay(c, at: at, now: context.date))
                                     .font(.title3.weight(.bold)).monospacedDigit()
-                                    .foregroundStyle(Theme.accent)
+                                    .foregroundStyle(c.tint ?? Theme.accent)
                                     .environment(\.layoutDirection, .leftToRight)
-                                Text(Fmt.longDate(at) + (Calendar.current.component(.hour, from: at) + Calendar.current.component(.minute, from: at) > 0 ? " " + Fmt.time(at) : "") + (c.yearly ? " · ↻" : ""))
+                                Text(Self.subtitle(c, at: at))
                                     .font(.caption).foregroundStyle(Theme.muted)
                             }
                             Spacer()
@@ -147,6 +188,8 @@ struct CountdownsView: View {
                             if let photo {
                                 Image(uiImage: photo).resizable().scaledToFill()
                                     .overlay(Color.black.opacity(0.45))
+                            } else if let tint = c.tint {
+                                ZStack { Theme.surface; tint.opacity(0.16) }
                             } else {
                                 Theme.surface
                             }
@@ -154,10 +197,24 @@ struct CountdownsView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 14))
                         .environment(\.colorScheme, photo != nil ? .dark : colorScheme)
                         .contentShape(Rectangle())
-                        .onTapGesture { editing = c }
-                        // Görsel kart olarak paylaş (rakip analizi #29)
+                        .onTapGesture { detail = c }
+                        // Görsel kart olarak paylaş (rakip analizi #29), düzenle, arşivle (2. analiz #73)
                         .contextMenu {
+                            Button { editing = c } label: { Label(L("countdowns.edit"), systemImage: "pencil") }
                             Button { sharing = c } label: { Label(L("share.card"), systemImage: "square.and.arrow.up") }
+                            Button {
+                                var a = c
+                                a.archived = !(c.archived ?? false)
+                                update(items.filter { $0.id != c.id } + [a])
+                            } label: { Label(L((c.archived ?? false) ? "countdowns.unarchive" : "countdowns.archive"), systemImage: "archivebox") }
+                        }
+                    }
+                    // Arşiv (2. analiz #73)
+                    let archivedCount = items.filter { $0.archived ?? false }.count
+                    if archivedCount > 0 || showArchive {
+                        Button { showArchive.toggle() } label: {
+                            Label(showArchive ? L("countdowns.heading") : T("countdowns.archiveCount", archivedCount), systemImage: showArchive ? "chevron.left" : "archivebox")
+                                .font(.subheadline)
                         }
                     }
                     SectionTitle(text: L("tools.countdown.quickHeading"))
@@ -186,6 +243,10 @@ struct CountdownsView: View {
         .sheet(item: $sharing) { item in
             ShareCardSheet(title: item.label) { CountdownShareCard(item: item, now: Date()) }
         }
+        .sheet(item: $detail) { item in
+            CountdownDetailView(item: item, onEdit: { detail = nil; editing = item })
+        }
+        .onReceive(NotificationCenter.default.publisher(for: CountdownItem.importedNote)) { _ in items = CountdownItem.load() }
         .sheet(item: $editing) { item in
             CountdownEditor(item: item, isNew: !items.contains { $0.id == item.id }) { saved in
                 update(items.filter { $0.id != saved.id } + [saved])
@@ -233,6 +294,32 @@ private struct CountdownEditor: View {
                 Button("📅 " + L("countdowns.fromCalendar")) { showCalendar = true }
                 Toggle(L("countdowns.yearly"), isOn: $item.yearly)
                 Toggle(L("countdowns.remind"), isOn: $item.remind)
+                // Gösterim birimi, renk, etiket, iş günü (2. analiz #73, #139)
+                Section {
+                    Picker(L("countdowns.unit"), selection: Binding(get: { item.unit ?? "auto" }, set: { item.unit = $0 })) {
+                        ForEach(CountdownItem.units, id: \.self) { u in Text(L("countdowns.unit.\(u)")).tag(u) }
+                    }
+                    Toggle(L("countdowns.workdays"), isOn: Binding(get: { item.workdays ?? false }, set: { item.workdays = $0 }))
+                    TextField(L("countdowns.tag"), text: Binding(get: { item.tag ?? "" }, set: { item.tag = String($0.prefix(20)) }))
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 8) {
+                            ForEach(0..<CountdownItem.palette.count, id: \.self) { i in
+                                let on = (item.color ?? 0) == i
+                                Button { item.color = i } label: {
+                                    Circle().fill(i == 0 ? Theme.surface2 : CountdownItem.palette[i])
+                                        .frame(width: 32, height: 32)
+                                        .overlay(Circle().stroke(on ? Theme.ink : .clear, lineWidth: 2))
+                                        .overlay { if i == 0 { Image(systemName: "nosign").font(.caption).foregroundStyle(Theme.muted) } }
+                                }
+                                .buttonStyle(.plain)
+                                .accessibilityLabel(L("countdowns.color") + " \(i)")
+                                .accessibilityAddTraits(on ? .isSelected : [])
+                            }
+                        }
+                    }
+                } header: {
+                    Text(L("countdowns.look"))
+                }
                 Section {
                     if let img = item.image {
                         Image(uiImage: img).resizable().scaledToFill()
@@ -262,7 +349,7 @@ private struct CountdownEditor: View {
             .tint(Theme.accent)
             .themedBackground()
             .navigationTitle(L(isNew ? "countdowns.add" : "countdowns.edit"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(L("alarm.cancel")) { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
@@ -318,7 +405,7 @@ struct CalendarEventPicker: View {
             }
             .themedBackground()
             .navigationTitle(L("countdowns.fromCalendar"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar { ToolbarItem(placement: .cancellationAction) { Button(L("alarm.cancel")) { dismiss() } } }
         }
     }

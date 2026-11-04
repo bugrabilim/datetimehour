@@ -58,6 +58,7 @@
       "light": "İnce"
     },
     "lookColor": "Saat rengi",
+    "lookSecSmall": "Dijital saatte saniye küçük",
     "lookColors": {
       "default": "Sitenin rengi",
       "ink": "Mürekkep",
@@ -66,7 +67,28 @@
       "red": "Kırmızı",
       "purple": "Mor"
     },
-    "lookNote": "Seçim yalnız bu tarayıcıda saklanır."
+    "lookNote": "Seçim yalnız bu tarayıcıda saklanır.",
+    "lookDateFmt": "Tarih biçimi",
+    "lookDateFmts": {
+      "long": "Uzun",
+      "numeric": "Sayısal",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "Saat ayırıcısı",
+    "lookSeps": {
+      "colon": "İki nokta (14:30)",
+      "dot": "Nokta (14.30)"
+    },
+    "lookWeekStart": "Haftanın ilk günü",
+    "lookWeekStarts": {
+      "mon": "Pazartesi",
+      "sun": "Pazar",
+      "sat": "Cumartesi"
+    },
+    "lookMs": "Milisaniye",
+    "lookNight": "Gece modu (ışıkları kapat)",
+    "share": "Paylaş",
+    "shareCopied": "Bağlantı kopyalandı"
   },
   "client": {
     "format24": "24 saat",
@@ -140,7 +162,13 @@
     "formatLabel": "Saat biçimi",
     "fsWeatherNeed": "Hava durumu için bir konum seçin:",
     "fsWeatherLink": "konumu seçin",
-    "fsWeatherFail": "Hava durumu alınamadı."
+    "fsWeatherFail": "Hava durumu alınamadı.",
+    "syncShortOk": "Saatiniz doğru · fark ±{ms} ms",
+    "syncShortAhead": "Saatiniz {s} sn ileride",
+    "syncShortBehind": "Saatiniz {s} sn geride",
+    "weekN": "{n}. hafta",
+    "pillDst": "Yaz saati var",
+    "pillNoDst": "Yaz saati yok"
   },
   "home": {
     "title": "Saat Kaç? Canlı Saat ve Bugünün Tarihi | Saat Tarih",
@@ -251,7 +279,14 @@
     "sunrise": "Gün doğumu",
     "sunset": "Gün batımı",
     "daylen": "Gün uzunluğu",
-    "sunNote": "Gün doğumu ve batımı, bugünün tarihi ve şehrin konumuna göre yaklaşık hesaplanır (birkaç dakika sapabilir)."
+    "sunNote": "Gün doğumu ve batımı, bugünün tarihi ve şehrin konumuna göre yaklaşık hesaplanır (birkaç dakika sapabilir).",
+    "solarNoon": "Güneş öğlesi",
+    "solarAhead": "Saat, güneş saatinden {d} ileride.",
+    "solarBehind": "Saat, güneş saatinden {d} geride.",
+    "solarSame": "Saat, güneş saatiyle neredeyse aynı.",
+    "mapLink": "Haritada gör (OpenStreetMap)",
+    "population": "Nüfus (kent bölgesi, yaklaşık)",
+    "populationNote": "Nüfus: Natural Earth (kamu malı), kent bölgesinin yaklaşık değeri."
   },
   "privacy": {
     "title": "Gizlilik ve Çerez Politikası | Saat Tarih",
@@ -272,7 +307,7 @@
         "ul": [
           "**Saat ve tarih:** Cihazınızın saati ve saat diliminiz yalnızca tarayıcınızda okunur ve hesaplanır. Sunucuya gönderilmez, kaydedilmez.",
           "**Konum (namaz vakitleri):** Namaz vakitleri sayfasında \"Konumumu kullan\" derseniz tarayıcınız konumunuzu yalnızca cihazınızda vakit hesabı için kullanır. Koordinatlar sunucuya gönderilmez ve istatistiklere girmez; son seçiminiz tarayıcınızın yerel depolamasında kalır.",
-          "**Hava durumu (dış hizmet, izinle):** Çerez tercihlerinde dış hizmetlere izin verdiyseniz hava durumu sayfasında ve hava durumlu saat modellerinde, seçtiğiniz ilin ya da konumunuzun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) veriyi sağlayan Open-Meteo'ya (api.open-meteo.com) tarayıcınızdan doğrudan gönderilir; bu sırada IP adresiniz de Open-Meteo'ya ulaşır. İzin yoksa istek yapılmaz, yerine açıklama gösterilir. Saat Tarih sunucusu bu koordinatları görmez ve saklamaz; Open-Meteo'nun kendi gizlilik koşulları geçerlidir.",
+          "**Hava durumu (dış hizmet, izinle):** Çerez tercihlerinde dış hizmetlere izin verdiyseniz hava durumu sayfasında ve hava durumlu saat modellerinde, seçtiğiniz ilin ya da konumunuzun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) veriyi sağlayan Open-Meteo'ya (api.open-meteo.com, air-quality-api.open-meteo.com) tarayıcınızdan doğrudan gönderilir; bu sırada IP adresiniz de Open-Meteo'ya ulaşır. İzin yoksa istek yapılmaz, yerine açıklama gösterilir. Saat Tarih sunucusu bu koordinatları görmez ve saklamaz; Open-Meteo'nun kendi gizlilik koşulları geçerlidir.",
           "**Harita (küre, dış hizmet, izinle):** Çerez tercihlerinde dış hizmetlere izin verdiyseniz ve ana sayfadaki küreyi belli bir düzeyin ötesine yakınlaştırırsanız harita karoları OpenStreetMap'in sunucusundan (tile.openstreetmap.org) tarayıcınıza doğrudan indirilir; bu sırada IP adresiniz ve baktığınız bölgenin karo adresleri OpenStreetMap Vakfı'na ulaşır. İzin yoksa ya da küre uzaktayken bu istek yapılmaz. Saat Tarih sunucusu bunları görmez; OpenStreetMap'in kendi gizlilik koşulları geçerlidir.",
           "**Kıble ve yakındaki camiler:** Kıble yönü, uzaklık ve kıble saati tarayıcınızda hesaplanır. Pusula için telefonunuzun yön sensörü yalnız tarayıcıda okunur (iPhone'da izin sorulur) ve hiçbir yere gönderilmez. \"Camileri göster\" derseniz ve dış hizmetlere izin verdiyseniz, seçili yerin iki ondalığa yuvarlanmış koordinatları (yaklaşık 1 km) OpenStreetMap verisini sunan Overpass hizmetine (overpass-api.de) tarayıcınızdan gönderilir; bu sırada IP adresiniz de bu hizmete ulaşır. Saat Tarih sunucusu bu koordinatları görmez.",
           "**Alarm müziği (YouTube, dış hizmet, izinle):** Alarm aracında bir alarma YouTube bağlantısı eklediyseniz ve dış hizmetlere izin verdiyseniz, alarm çaldığında video YouTube'un gelişmiş gizlilik modundaki oynatıcısıyla (youtube-nocookie.com) tarayıcınıza yüklenir; bu sırada IP adresiniz ve videonun kimliği Google'a (YouTube) ulaşır, oynatıcı da tarayıcınızda kendi verilerini saklayabilir. Bağlantı yalnız bu tarayıcıda, alarmınızla birlikte durur. İzin yoksa oynatıcı yüklenmez ve alarm kendi sesiyle çalar. Saat Tarih sunucusu bunları görmez; YouTube'un (Google) kendi gizlilik koşulları geçerlidir.",
@@ -291,22 +326,23 @@
         ],
         "ul": [
           "**Konum:** \"Konumumu kullan\" derseniz konumunuz telefonda vakit hesabı ve en yakın ili bulmak için kullanılır; yaklaşık konum (yaklaşık 1 km) yalnız telefonda saklanır. Widget'lardaki \"Otomatik\" seçeneği de konumu yalnız telefonda kullanır.",
-          "**Hava durumu:** Uygulamadaki hava durumu Apple Hava Durumu'ndan (WeatherKit) gelir; bunun için seçili il ya da konumunuzun yaklaşık koordinatları Apple'a gönderilir. Bu veriyi biz görmeyiz; Apple'ın gizlilik koşulları geçerlidir.",
+          "**Hava durumu:** Uygulamadaki hava durumu Apple Hava Durumu'ndan (WeatherKit) gelir; bunun için seçili il ya da konumunuzun yaklaşık koordinatları Apple'a gönderilir. Bu veriyi biz görmeyiz; Apple'ın gizlilik koşulları geçerlidir. Hava kalitesi, polen, model karşılaştırması ve Apple Watch'taki hava komplikasyonu ise Open-Meteo'dan (open-meteo.com) gelir; bunun için koordinatlar iki ondalığa yuvarlanarak gönderilir.",
           "**Harita:** Dünya saatlerindeki küre Apple Haritalar ile gösterilir; harita görüntüleri Apple'dan indirilir.",
           "**Takvim:** Yalnız izin verirseniz telefonunuzdaki takvim etkinlikleri uygulamada gösterilir; etkinlikler telefonda okunur, hiçbir yere gönderilmez. Etkinlik ekleme ve silme iPhone'un kendi takvim ekranıyla ve sizin onayınızla yapılır.",
           "**Bildirimler ve alarmlar:** Vakit bildirimleri; özel gün, mevsim başlangıcı, Ay evresi, gün doğumu ve batımı, sabah hava özeti, saat başı ve yaz saati bildirimleri (saat başı dışında her biri varsayılan açık; Ayarlar › Bildirimler'den değiştirilebilir); alarmlar ve zamanlayıcılar telefonda kurulur, sunucu kullanılmaz. Hava özeti için yalnız hava servisine sorulur (yukarıdaki hava durumu maddesi). Liste iOS'un arka plan yenilemesiyle güncel tutulur; sesli duyuru telefonda üretilir.",
           "**E-posta listesi:** Hakkında sayfasından listeye katılırsanız e-posta adresiniz sitedeki formla aynı biçimde ortak Bumba listesine gönderilir; e-posta listesiyle ilgili açıklamalar uygulama için de geçerlidir.",
           "**Rozetler:** Kazanım rozetleri ve ilerlemeniz (kazanılan rozet ve günü, görülen saat modelleri, üst üste kullanılan gün sayısı) yalnız telefonda saklanır, hiçbir yere gönderilmez; Araçlar › Rozetler'deki \"Rozetleri sil\" ile istediğiniz an silebilirsiniz.",
           "**Aralık antrenmanı:** Başlattığınız aralık antrenmanı sürerken uygulama, evre geçişlerini ekran kilitliyken de söyleyebilmek için iOS'un arka plan ses modunu kullanır; sesler telefonda üretilir, hiçbir veri gönderilmez.",
-          "**Fotoğraflar:** Tam ekran saat ya da geri sayımlar için seçtiğiniz fotoğraf iPhone'un fotoğraf seçicisiyle alınır (fotoğraf arşivinize erişim izni istenmez); küçültülmüş kopyası yalnız telefonda saklanır, hiçbir yere gönderilmez. Fotoğraf slaytı için seçtiğiniz fotoğraflar (en çok 10) da yalnız telefonda kalır. Vakit ve geri sayım paylaşım kartları ile CSV dosyaları telefonda üretilir ve yalnız sizin seçtiğiniz uygulamaya gönderilir.",
+          "**Fotoğraflar:** Tam ekran saat ya da geri sayımlar için seçtiğiniz fotoğraf iPhone'un fotoğraf seçicisiyle alınır (fotoğraf arşivinize erişim izni istenmez); küçültülmüş kopyası yalnız telefonda saklanır, hiçbir yere gönderilmez. Fotoğraf slaytı için seçtiğiniz fotoğraflar (en çok 10) da yalnız telefonda kalır. Vakit ve geri sayım paylaşım kartları ile CSV dosyaları telefonda üretilir ve yalnız sizin seçtiğiniz uygulamaya gönderilir. Şeffaf widget için seçtiğiniz ana ekran görüntüsü ve ondan kesilen parçalar yalnız telefonda, uygulama ile widget'ların ortak klasöründe durur; hiçbir yere gönderilmez ve iCloud ile eşitlenmez.",
           "**Tercihler:** Saat modeli, il, dünya saatleri gibi tercihler yalnız telefonda saklanır ve uygulama silinince silinir.",
-          "**Kıble ve yakındaki camiler:** Kıble yönü telefonda hesaplanır; pusula için telefonun yön sensörü kullanılır (konum izni varsa gerçek kuzey için konum da yalnız telefonda kullanılır). \"Yakındaki camiler\" ekranında arama Apple Haritalar ile yapılır: arama sözcüğü (\"cami\") ve iki ondalığa yuvarlanmış bölge merkezi Apple'a gider; Apple'ın gizlilik koşulları geçerlidir.",
+          "**Kıble ve yakındaki camiler:** Kıble yönü telefonda hesaplanır; pusula için telefonun yön sensörü kullanılır (konum izni varsa gerçek kuzey için konum da yalnız telefonda kullanılır). \"Yakındaki camiler\" ekranında arama Apple Haritalar ile yapılır: arama sözcüğü (\"cami\") ve iki ondalığa yuvarlanmış bölge merkezi Apple'a gider; Apple'ın gizlilik koşulları geçerlidir. Kıble ekranındaki haritada Kâbe'ye çizgi Apple Haritalar üzerinde gösterilir; harita görüntüleri bulunduğunuz bölge için Apple'dan indirilir.",
           "**Apple Watch, Siri ve kilit ekranı:** Apple Watch uygulaması vakitleri saatte hesaplar; \"iPhone'daki yer\" seçiliyken seçili yerin adı ve koordinatları iPhone'dan saate (Apple'ın WatchConnectivity bağlantısıyla) gönderilir, başka bir yere gitmez; saatte \"Konumum\" seçilirse konum yalnız saatte kullanılır. Siri ve Kısayollar eylemleri (zamanlayıcı, alarm, tam ekran saat, sıradaki vakit, tarih) telefonda çalışır; sesli komutları Apple işler. Kilit ekranındaki canlı etkinlikler (sayaçlar, sıradaki vakit) telefonda oluşturulur.",
-          "**Kamera, uyku ve odak:** Alarm kapatma görevindeki QR kodu ya da barkodu okumak için kamera yalnız siz kod kaydederken ve alarmı kapatırken açılır (izin ilk kullanımda sorulur); görüntü cihazda işlenir, kaydedilmez ve gönderilmez, yalnız okunan değer alarmla birlikte cihazda saklanır. Sallama ve adım görevleri hareket algılayıcısını yalnız görev ekranı açıkken kullanır; adımlar kaydedilmez. Pomodoro geçmişi (gün, dakika, görev adı) ve uyku planı yalnız cihazda durur; pomodoro gürültüsü ve uyku sesleri cihazda üretilir. Akıllı alarm: Uyku ekranında oturumu başlatırsanız alarmın akıllı alarm penceresinde hareket algılayıcısı (ivmeölçer) okunur ve hafif uyku belirtisi görülünce alarm erken çalar; hareket verisi yalnız bellekte tutulur, kaydedilmez ve gönderilmez. Uyku takibi (uyku evreleri, kayıt) yapılmaz, mikrofon kullanılmaz.",
+          "**Kamera, uyku ve odak:** Alarm kapatma görevindeki QR kodu ya da barkodu okumak için kamera yalnız siz kod kaydederken ve alarmı kapatırken açılır (izin ilk kullanımda sorulur); görüntü cihazda işlenir, kaydedilmez ve gönderilmez, yalnız okunan değer alarmla birlikte cihazda saklanır. Sallama ve adım görevleri hareket algılayıcısını yalnız görev ekranı açıkken kullanır; adımlar kaydedilmez. Pomodoro geçmişi (gün, dakika, görev adı) ve uyku planı yalnız cihazda durur; pomodoro gürültüsü ve uyku sesleri cihazda üretilir. Akıllı alarm: Uyku ekranında oturumu başlatırsanız alarmın akıllı alarm penceresinde hareket algılayıcısı (ivmeölçer) okunur ve hafif uyku belirtisi görülünce alarm erken çalar; hareket verisi yalnız bellekte tutulur, kaydedilmez ve gönderilmez. Uyku takibi (uyku evreleri, kayıt) yapılmaz, uyku için mikrofon kullanılmaz. Nesne bulma görevinde çekilen fotoğraf (Apple Vision ile), kıble kamera görünümündeki görüntü ve sesli okuma görevinde mikrofon (yalnız cihaz içi konuşma tanıma) yalnız o ekran açıkken kullanılır; hepsi cihazda işlenir, kaydedilmez ve gönderilmez. Kıble pusulası tasarımı ve favori camiler cihazda saklanır; iCloud eşitlemesi açıksa kendi cihazlarınız arasında eşitlenir.",
           "**İbadet:** Kur'an'da kaldığınız yer, yazı boyu, zikir sayıları, namaz ve oruç takibi (kılınan vakitler, kaza sayıları, tutulan oruçlar) ve zekât hesaplamasına girdiğiniz tutarlar yalnız cihazda durur; hiçbir yere gönderilmez, istatistik ya da rozet için kullanılmaz. Kur'an metni ve dualar uygulamanın içindedir. Türkçe meal için Diyanet'in meal sitesine bağlantıya dokunduğunuzda o site tarayıcıda açılır. Zekât için altın fiyatını siz yazarsınız; uygulama fiyat almaz.",
           "**iCloud eşitleme:** Ayarlar'daki \"iCloud ile eşitle\" açıksa (varsayılan) ayarlar, dünya saatleri, geri sayımlar, kayıtlı yerler, pomodoro ve uyku kayıtları ile ibadet kayıtları Apple'ın iCloud anahtar-değer deposu üzerinden aynı Apple hesabındaki iPhone, iPad ve Mac'inizle eşitlenir. Bu veri iCloud hesabınızda durur, Apple'ın koşullarına tabidir; biz erişemeyiz ve sunucumuza gelmez. Konum, alarmlar, süren sayaçlar, bildirim ayarları, rozetler ve fotoğraflar eşitlenmez. Anahtarı kapatınca bu cihaz eşitlemeyi bırakır.",
           "**Sağlık, sabah günlüğü, alarm fotoğrafı ve yüzen saat:** \"Apple Sağlık'a kaydet\"i açarsanız biten aralık antrenmanı Sağlık uygulamasına antrenman olarak (tür, başlangıç, süre) yazılır; uygulama Sağlık verilerinizi okumaz ve bu veri hiçbir sunucuya gitmez. Sabah günlüğü (ruh hâli, uyku, niyet, not) yalnız cihazlarınızda durur (iCloud eşitlemesi açıksa Apple hesabınızdaki cihazlarda). Fotoğraflı alarm görevinde fotoğraf saklanmaz; karşılaştırma için yalnız çok küçük bir özeti (72 gri ton) telefonda tutulur. Seçtiğiniz hesap yöntemi, vakitte alarmlar (iOS 26+) ve Denetim Merkezi düğmeleri telefonda kalır. Yüzen saat bir resim içinde resim penceresidir; ses çalmaz, veri göndermez.",
-          "**Müzikle alarm, konum ve takvim hatırlatıcıları, odakta engelleme, Mac, Apple TV ve Vision Pro:** Alarm sesi için Müzik arşivinden ya da Dosyalar'dan seçtiğiniz şarkının 30 saniyelik bölümü telefonda ses dosyasına yazılır; şarkı hiçbir yere gönderilmez (Müzik arşivi izni yalnız seçerken istenir). Konuma bağlı hatırlatıcılarda varış ve ayrılışı iPhone kendisi izler; hatırlatıcının yeri yalnız telefonda durur, harita Apple'dan gelir. Takvimdeki etkinliğe alarm kurarken yalnız seçtiğiniz etkinliğin adı ve saati kullanılır. Odakta engelleme Apple'ın Ekran Süresi altyapısıyla çalışır; seçtiğiniz uygulama ve siteler Apple'ın şifreli belirteçleridir, uygulama bunların ne olduğunu göremez. Mac, Apple TV ve Vision Pro uygulamaları vakitleri cihazda hesaplar; konum izni verirseniz konum yalnız en yakın ili bulmak için cihazda kullanılır."
+          "**Müzikle alarm, konum ve takvim hatırlatıcıları, odakta engelleme, Mac, Apple TV ve Vision Pro:** Alarm sesi için Müzik arşivinden ya da Dosyalar'dan seçtiğiniz şarkının 30 saniyelik bölümü telefonda ses dosyasına yazılır; şarkı hiçbir yere gönderilmez (Müzik arşivi izni yalnız seçerken istenir). Konuma bağlı hatırlatıcılarda varış ve ayrılışı iPhone kendisi izler; hatırlatıcının yeri yalnız telefonda durur, harita Apple'dan gelir. Takvimdeki etkinliğe alarm kurarken yalnız seçtiğiniz etkinliğin adı ve saati kullanılır. Odakta engelleme Apple'ın Ekran Süresi altyapısıyla çalışır; seçtiğiniz uygulama ve siteler Apple'ın şifreli belirteçleridir, uygulama bunların ne olduğunu göremez. Mac, Apple TV ve Vision Pro uygulamaları vakitleri cihazda hesaplar; konum izni verirseniz konum yalnız en yakın ili bulmak için cihazda kullanılır. Görevli bir alarm çalarken uygulamanın silinmesi de aynı altyapıyla engellenir ve görev bitince kalkar; bu yalnız Ekran Süresi iznini verdiyseniz çalışır.",
+          "**Ders çalışma ve uyanma oyunu:** Ders sayacındaki dersler ve oturumlar (süre, soru sayısı, not) ile uyanma oyununun kayıtları (gün, kalkış ve alarm saati, erteleme sayısı) yalnız cihazda tutulur; iCloud eşitleme açıksa iCloud hesabınızla eşitlenir, başka hiçbir yere gönderilmez. Uygulamanın dili ve kadran seçimi de cihazda saklanır."
         ]
       },
       {
@@ -326,10 +362,11 @@
           "**Rozetler ve tercihler:** Rozetler, saat modeli, konum, dünya saatleri gibi tercihler yalnız telefonda saklanır ve uygulama silinince silinir. Telefonunuzda Android'in yedeklemesi açıksa bu kayıtlar (ve seçtiğiniz fotoğrafların kopyası) Google hesabınızdaki cihaz yedeğine dahil edilebilir; bu yedek Google'ın koşullarına tabidir ve biz erişemeyiz.",
           "**Kıble ve yakındaki camiler:** Kıble yönü ve pusula telefonda hesaplanır. \"Yakındaki camiler\" ekranında iki ondalığa yuvarlanmış koordinat (yaklaşık 1 km) OpenStreetMap verisini sunan Overpass hizmetine (overpass-api.de) gönderilir; bu sırada IP adresiniz bu hizmete ulaşır. Bir camiye dokununca telefonunuzdaki harita uygulaması açılır.",
           "**Wear OS saati ve kısayollar:** Wear OS uygulaması vakitleri saatte hesaplar; \"Konumum\" seçilirse yaklaşık konum yalnız saatte kullanılır, hiçbir yere gönderilmez. Asistanın ya da başka uygulamaların Saat Tarih'e kurdurduğu zamanlayıcı ve alarmlar yalnız telefonda saklanır; ekran koruyucu ve süren sayaç bildirimleri telefonda oluşturulur.",
-          "**Kamera, uyku ve odak:** Alarm kapatma görevindeki QR kodu ya da barkodu Google'ın kod tarayıcısı (Google Play hizmetleri) okur: uygulama kamera izni istemez ve görüntüyü görmez, yalnız okunan değer alarmla birlikte telefonda saklanır. Sallama ve adım görevleri ivmeölçeri yalnız alarm ekranı açıkken kullanır; adımlar kaydedilmez. Pomodoro geçmişi (gün, dakika, görev adı) ve uyku planı yalnız telefonda durur; pomodoro gürültüsü ve uyku sesleri telefonda üretilir (ekran kapalıyken çalabilmesi için ön plan hizmeti, bildirimde \"Sesi durdur\"). Akıllı alarm: Uyku ekranında oturumu başlatırsanız alarmın akıllı alarm penceresinde hareket algılayıcısı (ivmeölçer) okunur ve hafif uyku belirtisi görülünce alarm erken çalar; hareket verisi yalnız bellekte tutulur, kaydedilmez ve gönderilmez. Uyku takibi (uyku evreleri, kayıt) yapılmaz, mikrofon kullanılmaz. Oturum bir ön plan hizmetiyle (bildirimde \"Durdur\") sürer. Alarma Spotify ya da YouTube bağlantısı eklerseniz alarm çalınca bağlantı o uygulamada açılır; uygulama yalnız bağlantıyı açar, müziğe erişmez.",
+          "**Kamera, uyku ve odak:** Alarm kapatma görevindeki QR kodu ya da barkodu Google'ın kod tarayıcısı (Google Play hizmetleri) okur: uygulama kamera izni istemez ve görüntüyü görmez, yalnız okunan değer alarmla birlikte telefonda saklanır. Sallama ve adım görevleri ivmeölçeri yalnız alarm ekranı açıkken kullanır; adımlar kaydedilmez. Pomodoro geçmişi (gün, dakika, görev adı) ve uyku planı yalnız telefonda durur; pomodoro gürültüsü ve uyku sesleri telefonda üretilir (ekran kapalıyken çalabilmesi için ön plan hizmeti, bildirimde \"Sesi durdur\"). Akıllı alarm: Uyku ekranında oturumu başlatırsanız alarmın akıllı alarm penceresinde hareket algılayıcısı (ivmeölçer) okunur ve hafif uyku belirtisi görülünce alarm erken çalar; hareket verisi yalnız bellekte tutulur, kaydedilmez ve gönderilmez. Uyku takibi (uyku evreleri, kayıt) yapılmaz, uyku için mikrofon kullanılmaz. Oturum bir ön plan hizmetiyle (bildirimde \"Durdur\") sürer. Alarma Spotify ya da YouTube bağlantısı eklerseniz alarm çalınca bağlantı o uygulamada açılır; uygulama yalnız bağlantıyı açar, müziğe erişmez. Nesne bulma görevinde sistem kamerasıyla çekilen küçük fotoğraf Google Play hizmetlerinin görüntü etiketleme modeliyle telefonda tanınır; sesli okuma görevinde mikrofon (izin görevde sorulur) yalnız Android'in cihaz içi konuşma tanımasıyla kullanılır, cihaz içi tanıma yoksa yazma görevine geçilir. Görüntü ve ses kaydedilmez, gönderilmez. Kıble pusulası tasarımı ve favori camiler telefonda saklanır; Android yedeği açıksa tercihlerle birlikte Google hesabınızın yedeğine girer.",
           "**İbadet:** Kur'an'da kaldığınız yer, yazı boyu, zikir sayıları, namaz ve oruç takibi (kılınan vakitler, kaza sayıları, tutulan oruçlar) ve zekât hesaplamasına girdiğiniz tutarlar yalnız telefonda durur; hiçbir yere gönderilmez, istatistik ya da rozet için kullanılmaz. Kur'an metni ve dualar uygulamanın içindedir. Türkçe meal için Diyanet'in meal sitesine bağlantıya dokunduğunuzda o site tarayıcıda açılır. Zekât için altın fiyatını siz yazarsınız; uygulama fiyat almaz.",
           "**Sağlık, sabah günlüğü, alarm fotoğrafı, sessize alma ve yüzen saat:** \"Health Connect'e kaydet\"i açarsanız yalnız egzersiz yazma izni istenir ve biten aralık antrenmanı egzersiz oturumu olarak (tür, başlangıç, süre) yazılır; uygulama sağlık verilerinizi okumaz. Sabah günlüğü yalnız telefonda (ve telefonun Google yedeğinde) durur. Fotoğraflı alarm görevinde fotoğraf telefonun kendi kamerasıyla çekilir (kamera izni istenmez) ve saklanmaz; yalnız çok küçük bir özeti tutulur. \"Vakitte sessize al\" için Rahatsız Etmeyin erişimi yalnız siz açarsanız ve telefon ayarlarından izin verirseniz kullanılır. Yüzen saat \"Diğer uygulamaların üzerinde göster\" izniyle çalışır; ekrandaki hiçbir şeyi okumaz, yalnız saati çizer. Widget'lar ve Hızlı Ayarlar kutucukları uygulamanın kendi sayaçlarını kullanır.",
-          "**Konum ve takvim hatırlatıcıları, odakta engelleme ve Android TV:** Konuma bağlı hatırlatıcı eklerseniz kesin ve \"Her zaman izin ver\" konum izni istenir; varış ve ayrılışı Google Play hizmetlerinin bölge izleme özelliği izler, hatırlatıcının yeri yalnız telefonda durur ve uygulama konumunuzu hiçbir yere göndermez. Takvimdeki etkinliğe alarm kurarken yalnız seçtiğiniz etkinliğin adı ve saati kullanılır. Odakta engelleme için kullanım erişimi verirseniz uygulama yalnız pomodoro çalışma süresinde öne gelen uygulamanın adını telefonda saniyede bir okur; bu bilgi kaydedilmez ve gönderilmez. Android TV ekranı uygulamadaki konumu kullanır."
+          "**Konum ve takvim hatırlatıcıları, odakta engelleme ve Android TV:** Konuma bağlı hatırlatıcı eklerseniz kesin ve \"Her zaman izin ver\" konum izni istenir; varış ve ayrılışı Google Play hizmetlerinin bölge izleme özelliği izler, hatırlatıcının yeri yalnız telefonda durur ve uygulama konumunuzu hiçbir yere göndermez. Takvimdeki etkinliğe alarm kurarken yalnız seçtiğiniz etkinliğin adı ve saati kullanılır. Odakta engelleme için kullanım erişimi verirseniz uygulama yalnız pomodoro çalışma süresinde öne gelen uygulamanın adını telefonda saniyede bir okur; bu bilgi kaydedilmez ve gönderilmez. Android TV ekranı uygulamadaki konumu kullanır.",
+          "**Ders çalışma ve uyanma oyunu:** Ders sayacındaki dersler ve oturumlar (süre, soru sayısı, not) ile uyanma oyununun kayıtları (gün, kalkış ve alarm saati, erteleme sayısı) yalnız telefonda tutulur ve hiçbir yere gönderilmez (telefonun Google yedeğine girer). Uygulamanın dili ve kadran seçimi de telefonda saklanır."
         ]
       },
       {
@@ -405,6 +442,21 @@
             [
               "sth-hiit",
               "Aralık zamanlayıcısının sürelerini, tur sayısını ve sesli duyuru tercihini hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
+              "sth-alarm-x",
+              "Alarm ses düzeyini, son kullanılan alarm saatlerini ve alarm geçmişini (çalma zamanı, alarm adı, nasıl kapandığı; en çok 200 kayıt) bu cihazda tutar.",
+              "Siz silene kadar"
+            ],
+            [
+              "sth-exam",
+              "Sınav zamanlayıcısındaki sınav adını, salonu, süreleri ve süren sınavın başlangıç zamanını hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
+              "sth-class",
+              "Sınıf araçlarındaki adları, seçim listesini, takımları ve sayaçları bu cihazda tutar.",
               "Siz silene kadar"
             ],
             [
@@ -522,7 +574,7 @@
     "pages": "Sayfalar",
     "cities": "Şehir sayfaları",
     "about": "Hakkında",
-    "aboutText": "Saat, sitenin sunucu saatiyle senkronize edilir (cihaz saatinden bağımsız); saat dilimi tarayıcıdan okunur ve kişisel veri gönderilmez. Türkçe, İngilizce, Almanca, Azerice, Arapça, Endonezce, Urduca, Farsça, Fransızca, Rusça, Japonca, Korece, Çince, Filipince ve Tayca olmak üzere on beş dilde sunulur. Veri sorumlusu: Bumba Teknoloji Limited Şirketi, Ataşehir / İstanbul. İletişim: bilgi@bumbagroup.com."
+    "aboutText": "Saat, sitenin sunucu saatiyle senkronize edilir (cihaz saatinden bağımsız); saat dilimi tarayıcıdan okunur ve kişisel veri gönderilmez. Türkçe, İngilizce, Almanca, Azerice, Arapça, Endonezce, Urduca, Farsça, Fransızca, Rusça, Japonca, Korece, Çince, Filipince, Tayca, İspanyolca, Portekizce ve Hintçe olmak üzere on sekiz dilde sunulur. Veri sorumlusu: Bumba Teknoloji Limited Şirketi, Ataşehir / İstanbul. İletişim: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Saat modelleri",
@@ -561,13 +613,18 @@
       "h-wx-analog-date": "Yatay analog, tarih ve hava durumu",
       "h-wx-full": "Yatay analog, dijital, tarih ve hava durumu",
       "wx-digital-cal": "Dijital, tarih, hava durumu ve aylık takvim",
-      "wx-digital-cal-week": "Dijital, tarih, hava durumu, aylık takvim ve haftalık hava"
+      "wx-digital-cal-week": "Dijital, tarih, hava durumu, aylık takvim ve haftalık hava",
+      "holo": "Hologram",
+      "matrix": "Matrix",
+      "math": "Matematik saati"
     },
     "source": "Bu saat cihazınızın saatinden bağımsızdır: Saat Tarih sunucusunun NTP ile senkronize edilen saatinden alınır ve 15 dakikada bir yeniden ölçülür.",
     "info": "Saat kaynağı hakkında bilgi",
     "infoTitle": "Bu saat nereden geliyor?",
     "infoClose": "Kapat",
-    "infoSeconds": "Saniyeleri görmek ya da gizlemek için saate dokunun. Dijital saatlerde saniye açık, analog saatlerde kapalı başlar."
+    "infoSeconds": "Saniyeleri görmek ya da gizlemek için saate dokunun. Dijital saatlerde saniye açık, analog saatlerde kapalı başlar.",
+    "zoomIn": "Saati büyüt",
+    "zoomOut": "Saati küçült"
   },
   "calendar": {
     "title": "{year} Takvimi: Resmi Tatiller, Bayram ve Ramazan | Saat Tarih",
@@ -741,7 +798,25 @@
     "icsCalDays": "Türkiye dini ve özel günler (Saat Tarih)",
     "icsHalf": "yarım gün",
     "icsProjected": "Diyanet'in uzun vadeli takvimine göre (projeksiyon)",
-    "icsCalMoon": "Ay evreleri ve tutulmalar (Saat Tarih)"
+    "icsCalMoon": "Ay evreleri ve tutulmalar (Saat Tarih)",
+    "monthOrigin": {
+      "heading": "Ayların adları nereden geliyor?",
+      "source": "Kaynak: Nişanyan Sözlük. Ocak, Ekim, Kasım ve Aralık adları 1945'te kanunla benimsendi.",
+      "items": [
+        "Ocak: \"ocak\" (sıcak tutulan ev ocağı) sözünden; kışın ortası. 1945'e kadar Kânûn-ı sânî denirdi.",
+        "Şubat: Süryanice Şəḇāṭ ay adından.",
+        "Mart: Latince Martius, Roma savaş tanrısı Mars'ın ayı.",
+        "Nisan: Süryanice ve Aramice Nīsān, eski Babil takviminin ilk ayı.",
+        "Mayıs: Latince Maius, büyüme tanrıçası Maia'nın ayı.",
+        "Haziran: Süryanice Ḥzīrān ay adından.",
+        "Temmuz: Süryanice Tammūz; Babil'deki Tammuz (Dumuzi) adından.",
+        "Ağustos: Latince Augustus, Roma imparatoru Augustus'un adı.",
+        "Eylül: Süryanice ve İbranice Elūl ay adından.",
+        "Ekim: \"ekin\" sözünden; ekim zamanı. 1945'e kadar Teşrîn-i evvel denirdi.",
+        "Kasım: Arapça qāsim, \"bölen\"; yılı yaz ve kış yarısına ayıran Kasım günü (8 Kasım). 1945'e kadar Teşrîn-i sânî.",
+        "Aralık: \"ara\" sözünden; iki yıl arasındaki ay. 1945'e kadar Kânûn-ı evvel denirdi."
+      ]
+    }
   },
   "tools": {
     "hub": {
@@ -874,6 +949,18 @@
         "tzn": {
           "name": "Saat dilimi haberleri",
           "desc": "Ülkelerin saat dilimi ve yaz saati kararları."
+        },
+        "sleepCalc": {
+          "name": "Uyku hesaplama",
+          "desc": "Uyku döngülerine göre yatma ve kalkış saatleri."
+        },
+        "examTimer": {
+          "name": "Sınav zamanlayıcısı",
+          "desc": "Salon için tam ekran sınav sayacı."
+        },
+        "classroom": {
+          "name": "Sınıf araçları",
+          "desc": "Rastgele ad, takım ve sayaç."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -979,7 +1066,10 @@
       "copyLink": "Bağlantıyı kopyala",
       "copied": "Bağlantı kopyalandı",
       "shareNote": "Seçtiğiniz tarihe ait bağlantıyı paylaşabilirsiniz; bağlantı açılınca sayım kendiliğinden başlar.",
-      "addMinute": "+1 dk"
+      "addMinute": "+1 dk",
+      "addToApp": "📲 Saat Tarih uygulamasına ekle",
+      "present": "Sunum renkleri",
+      "presentNote": "Süre yeşil; son 2 dakikada (kısa sürelerde son beşte birde) sarı; bitince kırmızı."
     },
     "alarm": {
       "title": "Online Alarm Saati: Tekrarlı ve Ertelemeli | Saat Tarih",
@@ -1043,7 +1133,24 @@
       "ytNote": "Alarm çalınca bu video oynar; 1 dakika içinde kapatmazsanız alarm sesi de çalar (tarayıcı videoyu kendiliğinden oynatmazsa da). Video YouTube'dan yüklendiği için dış hizmetlere izin gerekir.",
       "ytInvalid": "Bu bir YouTube bağlantısı değil.",
       "ytBlocked": "YouTube müziği için dış hizmetlere izin verin; izin yoksa alarm kendi sesiyle çalar.",
-      "spotifyNote": "Spotify tarayıcıda kendiliğinden çalmaz; Spotify'ı alarm müziği olarak Android uygulamasında kullanabilirsiniz."
+      "spotifyNote": "Spotify tarayıcıda kendiliğinden çalmaz; Spotify'ı alarm müziği olarak Android uygulamasında kullanabilirsiniz.",
+      "snoozeLabel": "Erteleme",
+      "snoozeMin": "{n} dk",
+      "volume": "Ses düzeyi",
+      "tryNow": "Alarmı şimdi dene",
+      "tryTitle": "Deneme alarmı",
+      "remaining": "kaldı",
+      "recent": "Son kullanılan saatler",
+      "history": "Alarm geçmişi",
+      "historyEmpty": "Henüz çalan alarm yok.",
+      "histStop": "kapatıldı",
+      "histSnooze": "ertelendi",
+      "histMissed": "kendiliğinden sustu",
+      "historyCsv": "Geçmişi CSV olarak indir",
+      "historyClear": "Geçmişi sil",
+      "colTime": "Zaman",
+      "colAlarm": "Alarm",
+      "colAction": "Durum"
     },
     "pomodoro": {
       "title": "Pomodoro Zamanlayıcı: 25 Dakika Çalış, 5 Dakika Mola | Saat Tarih",
@@ -1346,7 +1453,11 @@
     "shareLink": "Bağlantıyı kopyala",
     "linkCopied": "Bağlantı kopyalandı",
     "addIcs": "Takvime ekle (.ics)",
-    "addGoogle": "Google Takvim'e ekle"
+    "addGoogle": "Google Takvim'e ekle",
+    "addOutlook": "Outlook'a ekle",
+    "mailGmail": "Gmail ile gönder",
+    "copyText": "Metni kopyala",
+    "textCopied": "Metin kopyalandı."
   },
   "planner": {
     "title": "Toplantı Planlayıcı: Ortak Mesai Saatlerini Bulun | Saat Tarih",
@@ -1385,7 +1496,12 @@
     "addGoogle": "Google Takvim'e ekle",
     "pickHint": "Toplantı saatini seçmek için tablonun üstündeki saate dokunun; bağlantı ve takvim seçili saati içerir.",
     "meeting": "Toplantı",
-    "picked": "Seçili saat: {time} ({city} saatiyle)"
+    "picked": "Seçili saat: {time} ({city} saatiyle)",
+    "legendWeekend": "Hafta sonu",
+    "addOutlook": "Outlook'a ekle",
+    "mailGmail": "Gmail ile gönder",
+    "copyText": "Metni kopyala",
+    "textCopied": "Metin kopyalandı."
   },
   "poll": {
     "title": "Toplantı Oylaması: Uygun Saati Birlikte Seçin | Saat Tarih",
@@ -1665,7 +1781,17 @@
         "a": "Widget çerez bırakmaz ve kişisel veri toplamaz. Doğru saati göstermek için sunucuya küçük istekler gider; sayfa görüntülemeleri çerezsiz, anonim istatistiğe sayılır."
       }
     ],
-    "sizeNote": "Takvimli modeller için en az 460 px yükseklik önerilir; diğer modeller 360 px'te rahat sığar."
+    "sizeNote": "Takvimli modeller için en az 460 px yükseklik önerilir; diğer modeller 360 px'te rahat sığar.",
+    "lineHeading": "Metin satırı olarak",
+    "lineLead": "Sayfanıza tek satırlık canlı saat ya da gün doğumu/batımı yazısı ekleyin: aşağıdaki iki satırı yapıştırın, yazı sitenizin yazı tipini ve rengini alır.",
+    "lineKind": "Gösterilecek",
+    "lineKinds": {
+      "time": "Saat",
+      "date": "Tarih ve saat",
+      "sun": "Gün doğumu ve batımı"
+    },
+    "lineNote": "Betik yalnız saati çizer; çerez bırakmaz, veri göndermez. Saat dilimi şehirden gelir.",
+    "linePreview": "Önizleme"
   },
   "embed": {
     "link": "Saat Tarih"
@@ -1759,6 +1885,22 @@
       "isfirar": "Güneş batarken (isfirar)"
     },
     "kerahatNote": "Bu sürelerde nafile namaz kılınmaz. Diyanet'in yayımladığı bir dakika ölçüsü yok; takvimlerde yaygın olan yaklaşık 45 dakika kullanıldı (öğle öncesi kerahat süresi kaynaklarda 10–45 dakika arasında değişir).",
+    "extraHeading": "Ek vakitler (yaklaşık)",
+    "extraNames": {
+      "israk": "İşrak",
+      "duha": "Dahve-i kübrâ",
+      "asrSani": "Asr-ı sânî (Hanefî ikindi)",
+      "isfirar": "İsfirar (güneşin sararması)",
+      "istibak": "İştibâk-ı nücûm",
+      "isaSani": "İşâ-i sânî",
+      "midnight": "Gece yarısı",
+      "tahajjud": "Teheccüd (gecenin son üçte biri)",
+      "seher": "Seher"
+    },
+    "extraNote": "Diyanet bu vakitleri yayımlamaz. Türkiye Takvimi'nin tanımlarıyla hesaplanır: işrak ve isfirar Güneş ufkun 5° üstündeyken, iştibak 10°, işâ-i sânî 19° altındayken; dahve-i kübrâ imsak ile akşamın ortası; gece akşamdan imsaka sayılır.",
+    "bayram": "Bayram namazı",
+    "bayramTomorrow": "Yarın bayram namazı: {t}",
+    "bayramNote": "Diyanet'in yayımladığı saatlerle aynı kural (güneş vaktinden 38 dk sonra); kesin saat il müftülüğünün duyurusudur.",
     "method": {
       "heading": "Hesap yöntemi",
       "label": "Yöntem",
@@ -1784,7 +1926,9 @@
         "france": "Fransa (UOIF)",
         "russia": "Rusya Müslümanları Dinî İdaresi"
       }
-    }
+    },
+    "ezani": "Ezani saat: {t}",
+    "ezaniNote": "Ezani (alaturka) saatte akşam vakti 12.00 kabul edilir; saat oradan sayılır."
   },
   "nature": {
     "title": "Mevsimler: Mevsim Çarkı, Ekinoks ve Gündönümü | Saat Tarih",
@@ -1957,7 +2101,74 @@
     "eclMapLabel": "Tutulma",
     "eclMapSolar": "Turuncu: tutulmanın parçalı görüldüğü yerler (koyulaştıkça Güneş'in daha çok kısmı örtülür). Koyu kırmızı: tam tutulma yolu; mor: halkalı tutulma yolu. Siyah nokta: seçili yer.",
     "eclMapLunar": "Mavi: tutulmanın en büyük anında Ay'ın ufkun üstünde olduğu, yani tutulmanın görülebildiği yerler. Mavi nokta: Ay'ın tam tepede olduğu yer; siyah nokta: seçili yer.",
-    "eclMapNote": "Harita tarayıcıda Güneş ve Ay'ın konumlarından yaklaşık olarak hesaplanır (yol kenarlarında birkaç on km sapabilir). Kara sınırları: Natural Earth. Kesin yol ve saatler için NASA'nın tutulma sayfalarına bakın."
+    "eclMapNote": "Harita tarayıcıda Güneş ve Ay'ın konumlarından yaklaşık olarak hesaplanır (yol kenarlarında birkaç on km sapabilir). Kara sınırları: Natural Earth. Kesin yol ve saatler için NASA'nın tutulma sayfalarına bakın.",
+    "folkHeading": "Halk takvimi",
+    "folkNote": "Halk takvimindeki geleneksel tarihlerdir (eski Rumi takvimden); hava tahmini değildir ve kaynaklara göre birkaç gün değişebilir.",
+    "folkNow": "Şu an",
+    "folkNames": {
+      "erbain": "Erbain (zemheri; kışın en soğuk 40 günü)",
+      "hamsin": "Hamsin (kışın 50 günlük ikinci yarısı)",
+      "cemre1": "Birinci cemre (havaya)",
+      "cemre2": "İkinci cemre (suya)",
+      "cemre3": "Üçüncü cemre (toprağa)",
+      "berdulacuz": "Berdü'l-acûz (kocakarı soğukları)",
+      "eyyamibahur": "Eyyâm-ı bahûr (yazın en sıcak günleri)"
+    },
+    "tw": {
+      "heading": "Alacakaranlık ve ışık",
+      "civil": "Sivil alacakaranlık",
+      "nautical": "Denizcilik alacakaranlığı",
+      "astro": "Astronomik alacakaranlık",
+      "firstLight": "İlk ışık",
+      "lastLight": "Son ışık",
+      "ring": "24 saatlik ışık halkası",
+      "day": "Gündüz",
+      "night": "Gece",
+      "now": "Şimdi",
+      "note": "Sabah ve akşam aralıkları: Güneş ufkun 0°–6° (sivil), 6°–12° (denizcilik) ve 12°–18° (astronomik) altındayken. İlk ışık astronomik şafağın başladığı, son ışık astronomik alacakaranlığın bittiği andır. Yaklaşık hesaptır."
+    },
+    "ym": {
+      "heading": "{y} yılının dolunayları",
+      "count": "{y} yılında {n} dolunay var.",
+      "blue": "Mavi Ay: {date} (aynı takvim ayındaki ikinci dolunay).",
+      "noBlue": "Bu yıl Mavi Ay yok.",
+      "colDate": "Tarih ve saat",
+      "colName": "Geleneksel adı",
+      "namesNote": "Adlar Kuzey Amerika geleneğinden (Old Farmer's Almanac); karşılıklar çeviridir, yerleşik bir Türk geleneği değildir. Hasat Ayı, sonbahar ekinoksuna en yakın dolunaydır.",
+      "harvest": "Hasat Ayı",
+      "blueName": "Mavi Ay",
+      "wheel": "Yılın dolunay çarkı",
+      "names": [
+        "Kurt Ayı",
+        "Kar Ayı",
+        "Solucan Ayı",
+        "Pembe Ay",
+        "Çiçek Ayı",
+        "Çilek Ayı",
+        "Geyik Ayı",
+        "Mersin Balığı Ayı",
+        "Mısır Ayı",
+        "Avcı Ayı",
+        "Kunduz Ayı",
+        "Soğuk Ay"
+      ]
+    },
+    "eclLocal": "{place}: Güneş'in {obsc} kadarı örtülür; {c1}–{c4}, en çok {max}.",
+    "eclLocalTotal": "{place}: tam tutulma; {c1}–{c4}, tam evre {max} civarında.",
+    "eclLocalAnnular": "{place}: halkalı tutulma; {c1}–{c4}, halka {max} civarında.",
+    "eclLocalNone": "{place}: bu tutulma buradan görülmez.",
+    "eclLocalLow": "{place}: tutulma sırasında Güneş ufkun altında.",
+    "eclContacts": {
+      "p1": "Yarı gölgeye giriş",
+      "u1": "Gölgeye giriş",
+      "u2": "Tam evre başlar",
+      "max": "En büyük an",
+      "u3": "Tam evre biter",
+      "u4": "Gölgeden çıkış",
+      "p4": "Yarı gölgeden çıkış"
+    },
+    "eclMag": "Gölge büyüklüğü {v}",
+    "eclApprox": "Saatler yaklaşıktır (birkaç dakika); bu yerden görülmeyen anlar soluk yazılır."
   },
   "weather": {
     "title": "Hava Durumu: Güncel, Saatlik ve 14 Günlük Tahmin | Saat Tarih",
@@ -2030,7 +2241,91 @@
         "a": "Evet. Tam ekranda ekrana dokunduğunuzda beliren çubuktaki hava durumu düğmesiyle seçili konumun hava durumu saatin yanında gösterilir."
       }
     ],
-    "search": "hava durumu tahmin sıcaklık yağmur rüzgar nem uv yarın bu hafta weather forecast temperature rain wind humidity"
+    "search": "hava durumu tahmin sıcaklık yağmur rüzgar nem uv yarın bu hafta weather forecast temperature rain wind humidity",
+    "wd": {
+      "calm": "Sakin",
+      "light": "Hafif esinti",
+      "breezy": "Rüzgârlı",
+      "strong": "Kuvvetli rüzgâr",
+      "gale": "Fırtına"
+    },
+    "uvw": {
+      "low": "Düşük; güneş yanığı riski yok",
+      "moderate": "Orta; öğle saatlerinde korunun",
+      "high": "Yüksek; güneş kremi kullanın",
+      "veryHigh": "Çok yüksek; öğle güneşinden kaçının",
+      "extreme": "Aşırı; dışarıda uzun kalmayın"
+    },
+    "hw": {
+      "dry": "Kuru",
+      "comfy": "Rahat",
+      "humid": "Nemli",
+      "veryHumid": "Çok nemli"
+    },
+    "vw": {
+      "fog": "Sisli",
+      "haze": "Puslu",
+      "good": "İyi",
+      "clear": "Çok iyi"
+    },
+    "dw": {
+      "dry": "Kuru hava",
+      "comfy": "Rahat",
+      "muggy": "Biraz bunaltıcı",
+      "oppressive": "Bunaltıcı"
+    },
+    "fw": {
+      "colder": "Olduğundan daha soğuk hissettiriyor",
+      "warmer": "Olduğundan daha sıcak hissettiriyor"
+    },
+    "sum": {
+      "storm": "Saat {time} civarı gök gürültülü sağanak bekleniyor.",
+      "rain": "Saat {time} civarı yağmur bekleniyor.",
+      "snow": "Saat {time} civarı kar bekleniyor.",
+      "windyAfternoon": "Öğleden sonra rüzgârlı.",
+      "colder": "Yarın belirgin şekilde daha soğuk: en yüksek sıcaklık {n}° düşüyor.",
+      "warmer": "Yarın belirgin şekilde daha sıcak: en yüksek sıcaklık {n}° artıyor.",
+      "default": "{cond}; en yüksek {max}, en düşük {min}."
+    },
+    "alert": {
+      "colder": "Yarın bugünden belirgin şekilde soğuk: en yüksek sıcaklık {n}° düşüyor.",
+      "warmer": "Yarın bugünden belirgin şekilde sıcak: en yüksek sıcaklık {n}° artıyor.",
+      "rainSoon": "Saat {time} civarı yağmur bekleniyor; şemsiyenizi unutmayın."
+    },
+    "visibility": "Görüş",
+    "dewPoint": "Çiy noktası",
+    "gusts": "Hamle",
+    "details": "Ayrıntılar",
+    "chartTemp": "Sıcaklık",
+    "dayPart": "Gündüz",
+    "nightPart": "Gece",
+    "tapHint": "Ayrıntı için grafikte bir saate ya da listede bir güne dokunun.",
+    "aqiTitle": "Hava kalitesi",
+    "aqiIndex": "Avrupa hava kalitesi endeksi (EAQI)",
+    "aqiLevels": [
+      "İyi",
+      "Makul",
+      "Orta",
+      "Kötü",
+      "Çok kötü",
+      "Son derece kötü"
+    ],
+    "pollen": "Polen",
+    "pollenNames": {
+      "alder": "Kızılağaç",
+      "birch": "Huş",
+      "grass": "Çimen",
+      "mugwort": "Pelin",
+      "olive": "Zeytin",
+      "ragweed": "Ambrosia"
+    },
+    "pollenLevels": [
+      "Düşük",
+      "Orta",
+      "Yüksek"
+    ],
+    "pollenNone": "Şu an polen yok ya da bu konum için polen tahmini yok (yalnız Avrupa).",
+    "aqiSource": "Hava kalitesi ve polen: Open-Meteo (CAMS, Copernicus)"
   },
   "faqPage": {
     "title": "Sıkça sorulan sorular: saat, takvim, namaz vakitleri | Saat Tarih",
@@ -2045,7 +2340,7 @@
   },
   "consent": {
     "barLabel": "Çerez tercihi",
-    "barText": "Tercihlerinizi (dil, tema, saat ve araç ayarları) yalnız bu tarayıcıda tutarız. İzin verirseniz ziyaretler Umami ile sayılır; hava durumu (Open-Meteo), küredeki yakın harita ve yakındaki camiler (OpenStreetMap) ve alarm müziği (YouTube) dış hizmetlerden yüklenir.",
+    "barText": "Ayarlarınız yalnız bu tarayıcıda kalır. İzninizle ziyaretler Umami ile sayılır; hava, harita ve müzik dış hizmetlerden yüklenir.",
     "accept": "Kabul et",
     "reject": "Reddet",
     "prefs": "Tercihler",
@@ -2058,7 +2353,7 @@
     "stats": "İstatistik",
     "statsText": "Umami ile sayfa ziyaretleri ve birkaç eylem sayılır (tarayıcı, cihaz, dil ve IP adresinden çıkarılan ülke ve şehir; IP saklanmaz). Çerez kullanılmaz. Varsayılan kapalı.",
     "ext": "Dış hizmetler",
-    "extText": "Hava durumu Open-Meteo'dan (api.open-meteo.com), yakınlaştırılan küredeki harita OpenStreetMap'ten (tile.openstreetmap.org), yakındaki camiler OpenStreetMap'in Overpass hizmetinden (overpass-api.de), alarma eklediğiniz YouTube müziği YouTube'dan (youtube-nocookie.com) yüklenir; bu sırada IP adresiniz bu hizmetlere ulaşır. Varsayılan kapalı.",
+    "extText": "Hava durumu Open-Meteo'dan (api.open-meteo.com, air-quality-api.open-meteo.com), yakınlaştırılan küredeki harita OpenStreetMap'ten (tile.openstreetmap.org), yakındaki camiler OpenStreetMap'in Overpass hizmetinden (overpass-api.de), alarma eklediğiniz YouTube müziği YouTube'dan (youtube-nocookie.com) yüklenir; bu sırada IP adresiniz bu hizmetlere ulaşır. Varsayılan kapalı.",
     "save": "Seçimi kaydet",
     "footerLink": "Çerez tercihleri",
     "privacy": "Gizlilik",
@@ -2477,7 +2772,9 @@
         "q": "Hicri tarih ülkeden ülkeye neden değişir?",
         "a": "Bazı ülkeler ay başını hilalin görülmesiyle, bazıları hesapla belirler. Türkiye Diyanet'in hesaba dayalı takvimini, Suudi Arabistan Ümmü'l-Kurâ takvimini kullanır; aralarında bir gün fark olabilir."
       }
-    ]
+    ],
+    "rumi": "Rumi: {date}",
+    "rumiNote": "Rumi tarih Jülyen takvimiyle (miladiden 13 gün geri) ve 1 Mart yılbaşıyla yazılır; Türkiye Takvimi geleneği."
   },
   "timeCalc": {
     "title": "Saat Hesaplama: Toplama, Çıkarma, İki Saat Arası Süre | Saat Tarih",
@@ -2787,7 +3084,59 @@
         "q": "Süper ay nedir?",
         "a": "Dolunayın, Ay'ın Dünya'ya en yakın olduğu noktanın (perige) çevresine denk gelmesine halk arasında süper ay denir. Ay en uzak noktadaki dolunaya göre yaklaşık %14 daha büyük ve %30 daha parlak görünür; fark çıplak gözle zor seçilir."
       }
-    ]
+    ],
+    "eventsHeading": "Gökyüzü olayları",
+    "eventsLead": "Meteor yağmuru zirveleri, gezegenlerin ve Ay'ın yakınlaşmaları, karşı konumlar ve en büyük uzanımlar; saatler seçili yerin saatiyle.",
+    "showers": {
+      "qua": "Kuadrantidler",
+      "lyr": "Liridler",
+      "eta": "Eta Akuaridler",
+      "sda": "Güney Delta Akuaridler",
+      "per": "Perseidler",
+      "dra": "Drakonidler",
+      "ori": "Orionidler",
+      "leo": "Leonidler",
+      "gem": "Geminidler",
+      "urs": "Ursidler"
+    },
+    "evShower": "{name} meteor yağmuru zirvede",
+    "showerRate": "Karanlık gökte saatte ~{zhr} meteor",
+    "showerVar": "Meteor sayısı yıldan yıla değişir",
+    "moonLight": "Ay {moon} aydınlık",
+    "evOpp": "{p} karşı konumda: bütün gece görülür, yılın en parlak hâlinde",
+    "evElongE": "{p} akşam gökyüzünde Güneş'ten en uzak ({deg}°)",
+    "evElongW": "{p} sabah gökyüzünde Güneş'ten en uzak ({deg}°)",
+    "evConj": "{a} ile {b} yakın görünüyor ({sep}° arayla)",
+    "evMoon": "Ay ile {p} yakın görünüyor ({sep}° arayla)",
+    "evMore": "Daha fazla olay",
+    "eventsNote": "Meteor yağmuru zirveleri Uluslararası Meteor Örgütü'nün (IMO) Güneş boylamı değerlerinden hesaplanır; gerçek zirve birkaç saat oynayabilir. Yakınlaşma açıları Dünya'nın merkezinden; bulunduğunuz yerden bir derece kadar farklı görünebilir.",
+    "icsName": "Saat Tarih: Gökyüzü olayları",
+    "tonightHeading": "Bu gece",
+    "darkLabel": "Tam karanlık",
+    "darkNone": "Bu gece tam karanlık olmuyor (Güneş ufkun 18° altına inmiyor).",
+    "moonUpDark": "{illum} aydınlık; karanlıkta {from}–{to} arası gökte",
+    "moonDownDark": "{illum} aydınlık; karanlık saatlerde ufkun altında",
+    "planetsLabel": "Görülebilen gezegenler",
+    "planetsNone": "Yok",
+    "cloudLabel": "Bulutluluk",
+    "score": {
+      "good": "Gözlem için iyi bir gece",
+      "fair": "Gözlem için orta",
+      "poor": "Gözlem için zayıf"
+    },
+    "tipMoon": "Ay parlak: sönük yıldızlar ve meteorlar zor görülür.",
+    "tipDark": "Ay karanlıkta gökte değil: sönük yıldızlar için iyi.",
+    "tipCloudy": "Bulutlar gözlemi engelleyebilir.",
+    "tipBest": "{p} en yüksek {time} civarında ({deg}°).",
+    "graphHeading": "Bu gece gezegenlerin yüksekliği",
+    "graphCaption": "Yatay eksen saat, dikey eksen ufuktan yükseklik; koyu bölge tam karanlık.",
+    "cloudNote": "Bulutluluk Open-Meteo'dan gelir; yalnız dış hizmetlere izin verdiyseniz gösterilir.",
+    "constellations": "Takımyıldızlar",
+    "play": "Oynat",
+    "pause": "Durdur",
+    "dateLabel": "Tarih",
+    "red": "Kırmızı ışık",
+    "conSource": "Takımyıldız çizgileri ve adları: d3-celestial (© 2015 Olaf Frohn, BSD-3 lisansı)."
   },
   "otd": {
     "title": "Tarihte Bugün: Bugün Neler Oldu, Kimler Doğdu | Saat Tarih",
@@ -2840,6 +3189,102 @@
       {
         "q": "Bir ülke saatini değiştirince cihazım nasıl haberdar olur?",
         "a": "Apple, Google ve Microsoft tz veritabanının yeni sürümünü işletim sistemi güncellemeleriyle dağıtır. Cihazınızı güncel tutarsanız saat kendiliğinden doğru olur."
+      }
+    ]
+  },
+  "sleepCalc": {
+    "title": "Uyku Hesaplama: Kaçta Yatmalı, Kaçta Kalkmalı? | Saat Tarih",
+    "description": "90 dakikalık uyku döngülerine göre yatma ya da kalkış saatini hesaplayın: kalkış saatine göre ne zaman yatacağınızı, şimdi yatarsanız ne zaman kalkacağınızı görün.",
+    "h1": "Uyku hesaplama",
+    "lead": "Kalkış saatine göre yatma saatlerini ya da yatış saatine göre kalkış saatlerini 90 dakikalık uyku döngüleriyle bulun. Uykuya dalmak için 15 dakika eklenir.",
+    "search": "uyku hesaplama kaçta yatmalıyım kaçta kalkmalıyım uyku döngüsü 90 dakika sleep calculator bedtime",
+    "wakeHeading": "Kalkış saatine göre: kaçta yatmalı?",
+    "wakeLabel": "Kalkış saati",
+    "bedHeading": "Yatış saatine göre: kaçta kalkmalı?",
+    "bedLabel": "Yatış saati",
+    "nowBtn": "Şimdi yatarsam",
+    "cycles": "{n} döngü · {d} uyku",
+    "best": "önerilen",
+    "note": "Uyku döngüsü kişiden kişiye yaklaşık 70–120 dakika arasında değişir; bu saatler yaklaşık bir rehberdir, tıbbi öneri değildir. Yetişkinler için genellikle 7–9 saat uyku önerilir.",
+    "faq": [
+      {
+        "q": "Uyku döngüsü kaç dakikadır?",
+        "a": "Bir uyku döngüsü ortalama 90 dakika sürer (kişiden kişiye yaklaşık 70–120 dakika). Döngünün sonunda, hafif uykudayken uyanmak genellikle daha kolaydır; hesaplayıcı bu yüzden saatleri 90 dakikanın katlarıyla önerir."
+      },
+      {
+        "q": "Kaç döngü uyumalıyım?",
+        "a": "Yetişkinler için genellikle 7–9 saat uyku önerilir; bu 5 ya da 6 döngüye denk gelir. Hesaplayıcı 6 ve 5 döngüyü öne çıkarır, daha kısa seçenekleri de gösterir."
+      }
+    ]
+  },
+  "examTimer": {
+    "title": "Sınav Zamanlayıcısı: Salon İçin Tam Ekran Süre Sayacı | Saat Tarih",
+    "description": "Sınav adı, salon numarası, okuma ve sınav süresiyle tam ekran sınav zamanlayıcısı: kalan süre, bitiş saati ve son dakika uyarıları. Ortak yazılı ve deneme sınavları için.",
+    "h1": "Sınav zamanlayıcısı",
+    "lead": "Sınavın adını, salonu, okuma süresini ve sınav süresini girin; tahtaya yansıtılacak tam ekran sayaç kalan süreyi ve bitiş saatini gösterir.",
+    "search": "sınav zamanlayıcısı sınav sayacı kalan süre tahta tam ekran deneme sınavı ortak yazılı exam timer",
+    "nameLabel": "Sınav adı",
+    "namePh": "Örn. Matematik 1. yazılı",
+    "roomLabel": "Salon / sınıf",
+    "roomPh": "Örn. 9-A",
+    "readLabel": "Okuma süresi (dk)",
+    "durLabel": "Sınav süresi (dk)",
+    "start": "Başlat",
+    "pause": "Duraklat",
+    "resume": "Sürdür",
+    "reset": "Sıfırla",
+    "phaseRead": "Okuma süresi",
+    "phaseExam": "Sınav sürüyor",
+    "phaseDone": "Süre doldu",
+    "endsAt": "Bitiş: {time}",
+    "warn15": "Son 15 dakika",
+    "warn5": "Son 5 dakika",
+    "note": "Sayfa açık kaldığı sürece çalışır; başlangıç bu tarayıcıda saklanır, sayfayı yeniden açınca sayaç kaldığı yerden sürer. Süre sunucu saatiyle ölçülür; tam ekranda ekranın kararması engellenir.",
+    "faq": [
+      {
+        "q": "Sınav zamanlayıcısı nasıl kullanılır?",
+        "a": "Sınav adını, salonu, okuma süresini (yoksa 0) ve sınav süresini yazıp Başlat'a basın; tam ekran düğmesiyle sayacı tahtaya yansıtın. Okuma süresi bitince sınav süresi kendiliğinden başlar; son 15 ve son 5 dakikada renk değişir."
+      },
+      {
+        "q": "Sayfayı kapatırsam süre durur mu?",
+        "a": "Hayır. Başlangıç zamanı bu tarayıcıda saklanır; sayfayı yeniden açtığınızda sayaç kaldığı yerden devam eder. Duraklatma da kaydedilir."
+      }
+    ]
+  },
+  "classroom": {
+    "title": "Sınıf Araçları: Rastgele Ad Seçici, Takım Kurucu, Sayaç | Saat Tarih",
+    "description": "Sınıf için ücretsiz araçlar: listeden rastgele öğrenci seçin, adları eşit takımlara bölün, takım puanlarını sayaçla tutun. Kayıt yok, adlar yalnız tarayıcınızda kalır.",
+    "h1": "Sınıf araçları",
+    "lead": "Öğrenci adlarını bir kez yazın; rastgele bir ad seçin, sınıfı takımlara bölün ya da puanları sayaçlarla tutun. Tahtaya yansıtmak için tam ekran düğmesi var.",
+    "search": "sınıf araçları rastgele ad seçici kura çekme isim çekme takım oluşturucu grup bölme puan sayacı öğretmen",
+    "tabPicker": "Ad seçici",
+    "tabTeams": "Takım kurucu",
+    "tabCounter": "Sayaç",
+    "namesLabel": "Adlar (her satıra bir ad ya da virgülle)",
+    "namesPh": "Ayşe, Mehmet, Zeynep…",
+    "pick": "Rastgele seç",
+    "removePicked": "Seçileni listeden çıkar",
+    "picked": "Seçilen",
+    "left": "Listede kalan: {n}",
+    "restore": "Listeyi geri getir",
+    "empty": "Önce ad yazın.",
+    "teamCount": "Takım sayısı",
+    "makeTeams": "Takımları kur",
+    "team": "Takım {n}",
+    "counterName": "Sayaç adı",
+    "addCounter": "Sayaç ekle",
+    "counterDefault": "Puan",
+    "reset": "Sıfırla",
+    "remove": "Kaldır",
+    "note": "Adlar ve sayaçlar yalnız bu tarayıcıda saklanır, hiçbir yere gönderilmez. Seçim tarayıcının güvenli rastgele sayı üreticisiyle yapılır.",
+    "faq": [
+      {
+        "q": "Rastgele ad seçici nasıl çalışır?",
+        "a": "Adları her satıra bir ad ya da virgülle ayırarak yazın ve Rastgele seç'e basın. \"Seçileni listeden çıkar\" açıksa aynı ad liste bitene kadar yeniden çıkmaz; Listeyi geri getir ile baştan başlarsınız. Seçim tarayıcının güvenli rastgele sayı üreticisiyle yapılır."
+      },
+      {
+        "q": "Öğrenci adları bir yere gönderiliyor mu?",
+        "a": "Hayır. Adlar, takımlar ve sayaçlar yalnız bu tarayıcıda saklanır; sunucuya gönderilmez, istatistiğe girmez."
       }
     ]
   }

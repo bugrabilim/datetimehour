@@ -7,7 +7,7 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = path.join(ROOT, "dist");
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "site.config.json"), "utf8"));
 const ORIGIN = (process.env.SITE_ORIGIN || cfg.origin).replace(/\/+$/, "");
-const ALL = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
+const ALL = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
 const RTL = ["ar", "ur", "fa"];
 const LANGS = ALL.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
 const LG = LANGS.join("|");
@@ -82,7 +82,7 @@ for (const f of htmlFiles) {
   if (!err && !embed && (name === "/index.html" || new RegExp(`^/(${LG})/index\\.html$`).test(name))) check(/id="today-q"/.test(h) && /class="sr-only" aria-labelledby="today-q"/.test(h), `${name}: gizli "bugün ayın kaçı" bölümü eksik`);
   if (!err && !embed) {
     check(!/class="crumbs"/.test(h), `${name}: görünür ekmek kırıntısı bağlantısı olmamalı`);
-    check(/class="top-date" data-live="date"/.test(h) && /data-place-open/.test(h) && /class="settings-menu"/.test(h) && /id="place-dialog"/.test(h), `${name}: üst bar (tarih, konum, ayarlar) eksik`);
+    check(/class="top-date"><span data-live="date"/.test(h) && /data-place-open/.test(h) && /class="settings-menu"/.test(h) && /id="place-dialog"/.test(h), `${name}: üst bar (tarih, konum, ayarlar) eksik`);
     check(!/<p class="lead"[^>]*>/.test(h.replace(/<p class="lead sr-only"/g, "")), `${name}: başlık altı açıklama görünür durmamalı`);
   }
   if (/\/(takvim|calendar)\/\d{4}\/index\.html$/.test(name)) {
@@ -210,6 +210,8 @@ for (const l of LANGS.filter((x) => x !== "tr")) {
     if (Array.isArray(a) && Array.isArray(b)) check(a.length === b.length || (k === "client.words.units" && b.length === 60), `${l}.json: dizi uzunluğu farklı: ${k}`);
   }
   for (const k of dict[l].keys()) check(dict.tr.has(k) || /^(client\.words\.(hours|one|oneJoin)|calendar\.monthsTitle)$/.test(k), `tr.json'da yok: ${k} (${l})`);
+  // Rakamlar her dilde Latin (CLAUDE.md › Diller): Farsça/Urduca/Arapça rakam yazılmaz
+  for (const [k, v] of dict[l]) check(!/[\u0660-\u0669\u06F0-\u06F9]/.test(JSON.stringify(v)), `${l}.json: Latin olmayan rakam: ${k}`);
 }
 for (const l of LANGS) {
   const evs = JSON.parse(fs.readFileSync(path.join(DIST, "assets", `events-${l}.json`), "utf8"));
@@ -308,6 +310,34 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
   }
 }
 
+// Gökyüzü olayları (2. analiz #154): meteor yağmuru zirveleri IMO 2026 ve 2027 takvimindeki günlerle (Table 5) aynı;
+// bilinen karşı konumlar; Ay tutulması temas anları ve Güneş tutulması yerel görünüş (2. analiz #159)
+{
+  const { skyEvents } = await import("../lib/sky-events.mjs");
+  const ev = skyEvents(ROOT, 2026, 2027), day = (e) => new Date(e.t).toISOString().slice(0, 10);
+  const IMO = { 2026: { qua: "01-03", lyr: "04-22", eta: "05-06", sda: "07-31", per: "08-13", dra: "10-09", ori: "10-21", leo: "11-17", gem: "12-14", urs: "12-22" }, 2027: { qua: "01-04", lyr: "04-23", eta: "05-06", sda: "07-31", per: "08-13", dra: "10-09", ori: "10-22", leo: "11-18", gem: "12-14", urs: "12-23" } };
+  for (const y of [2026, 2027]) for (const [id, md] of Object.entries(IMO[y])) check(ev.some((e) => e.k === "shower" && e.id === id && day(e) === `${y}-${md}`), `gökyüzü olayları: ${id} ${y} IMO günü ${md} değil`);
+  for (const [p, d] of [["jupiter", "2026-01-10"], ["saturn", "2026-10-04"], ["mars", "2027-02-19"], ["jupiter", "2027-02-11"]]) check(ev.some((e) => e.k === "opp" && e.p === p && day(e) === d), `gökyüzü olayları: ${p} karşı konumu ${d}`);
+  check(ev.some((e) => e.k === "conj" && e.a === "venus" && e.b === "jupiter" && day(e) === "2026-06-09"), "gökyüzü olayları: Venüs–Jüpiter 9 Haziran 2026");
+  for (const l of LANGS) for (const k of ["evShower", "evOpp", "evConj", "evMoon", "showers.per", "tonightHeading", "nature.eclContacts.u2"].map((k) => k.startsWith("nature.") ? k : "sky." + k)) check(dict[l].has(k), `${l}: ${k} eksik`);
+  const ld2 = (rel) => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(ROOT, rel), "utf8"))(m, undefined); return m.exports; };
+  const N2 = ld2("src/js/nature-calc.js");
+  // NASA: 26 Haziran 2029 tam Ay tutulması, gölge büyüklüğü 1,8436 (±0,02)
+  const L = N2.lunarContacts(Date.parse("2029-06-26T03:23:22Z") - 69000);
+  check(Math.abs(L.umag - 1.8436) < 0.02 && L.u2 && L.u3 && L.u3 - L.u2 > 90 * 60000, `Ay tutulması 2029: gölge büyüklüğü ${L.umag}`);
+  const S2 = N2.solarLocal(Date.parse("2027-08-02T10:07:49Z") - 69000, 25.6872, 32.6396);
+  check(S2 && S2.central === "total" && S2.obsc > 0.99, "Güneş tutulması 2027: Luksor'dan tam görülmeli");
+}
+
+// Metin satırı widget'ı (#187), şehir nüfusu (#180), paylaş düğmesi (#188)
+{
+  check(fs.existsSync(path.join(DIST, "embed/line.js")), "embed/line.js (metin satırı widget'ı) yok");
+  const g = fs.readFileSync(path.join(DIST, "gomme/index.html"), "utf8");
+  check(/data-eg-lcode/.test(g) && /data-eg-lkind/.test(g) && /line\.js/.test(g), "gömme sayfasında metin satırı üreteci eksik");
+  const tk = fs.readFileSync(path.join(DIST, "dunya-saatleri/tokyo/index.html"), "utf8");
+  check(/Nüfus \(kent bölgesi/.test(tk) && /data-share/.test(tk), "Tokyo sayfasında nüfus ya da paylaş düğmesi eksik");
+}
+
 // kontrast (WCAG AA)
 const css = fs.readFileSync(path.join(ROOT, "src/styles.css"), "utf8");
 const block = (re) => Object.fromEntries([...css.match(re)[1].matchAll(/--([\w-]+):\s*(#[0-9a-f]{6})/g)].map((m) => [m[1], m[2]]));
@@ -329,7 +359,7 @@ const ng = fs.readFileSync(path.join(ROOT, "nginx.conf"), "utf8");
 for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Type-Options", "Referrer-Policy", "Content-Security-Policy", "https://istatistik.bumba.tr", "https://bumbagroup.com", "error_page 404", "error_page 500"]) check(ng.includes(s), `nginx.conf: ${s} yok`);
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
 check(ng.split("https://tile.openstreetmap.org").length === 3, "nginx.conf: img-src OpenStreetMap karoları iki konumda olmalı (ana sayfa küresi)");
-check(ng.split("frame-src https://www.youtube-nocookie.com").length === 3, "nginx.conf: frame-src YouTube (alarm müziği) iki konumda olmalı");
+check(ng.split("frame-src 'self' https://www.youtube-nocookie.com").length === 3, "nginx.conf: frame-src YouTube (alarm müziği) iki konumda olmalı");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
 // Dünya resmî tatilleri (30 Ekim 2026, #27)
 {
@@ -412,11 +442,21 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   new Function("module", "window", fs.readFileSync(path.join(ROOT, "src/js/prayer-calc.js"), "utf8"))(pm, undefined);
   const P = pm.exports;
   {
+    // Bayram namazı (2. analiz #56): Diyanet = güneş + 38 dk; ek vakitler (#59)
+    const hm = (h) => Math.round(h * 60), bay = (y, m, d, lat, lon) => hm(P.bayram(P.times(y, m, d, lat, lon, 3)));
+    check(Math.abs(bay(2025, 3, 30, 41.0082, 28.9784) - (7 * 60 + 22)) <= 1 && Math.abs(bay(2026, 3, 20, 40.1826, 29.0665) - (7 * 60 + 38)) <= 1, "bayram namazı vakti (İstanbul 30.3.2025 07:22, Bursa 20.3.2026 07:38) beklenen değil");
+    const r = P.times(2026, 11, 3, 41.0082, 28.9784, 3), ex = P.extraTimes(2026, 11, 3, 41.0082, 28.9784, 3, r);
+    const want = { israk: 490, duha: 725, isfirar: 1044, istibak: 1128, isaSani: 1176, midnight: 1445, tahajjud: 1564, seher: 1684 };
+    check(Object.keys(want).every((k) => Math.abs(hm(ex[k]) - want[k]) <= 1), "ek vakitler İstanbul 3.11.2026 beklenen değil");
+    check(pr.includes('data-pr-ex="isaSani"') && pr.includes("data-pr-bayram") && /"bayramDays":\["\d{4}-\d\d-\d\d"/.test(pr), "namaz il sayfasında ek vakitler ya da bayram namazı yok");
+  }
+  {
     const lh = P.lightHours(2026, 10, 30, 41.0082, 28.9784, 3), hm = (h) => Math.round(h * 60);
     check(Math.abs(hm(lh.goldenAm[1]) - (8 * 60 + 11)) <= 1 && Math.abs(hm(lh.bluePm[1]) - (18 * 60 + 31)) <= 1, "altın/mavi saat İstanbul 30.10.2026 beklenen değil");
   }
   const ns = rd("mevsimler", "index.html");
   check(["blueAm", "goldenAm", "goldenPm", "bluePm"].every((k) => ns.includes(`data-n-light="${k}"`)) && ns.includes("/ics/tr-moon.ics"), "mevsimler: altın/mavi saat ya da Ay takvimi aboneliği yok");
+  check(ns.includes('data-folk-from="03-11"') && ns.includes('data-folk-from="12-22"') && /Berdü'l-acûz|Berdü&#39;l-acûz/.test(ns), "mevsimler: halk takvimi (2. analiz #60) yok");
   const mi = rd("ics", "tr-moon.ics");
   check(/^BEGIN:VCALENDAR\r\n/.test(mi) && (mi.match(/BEGIN:VEVENT/g) || []).length > 100 && /DTSTART:\d{8}T\d{6}Z/.test(mi) && /Dolunay/.test(mi), "tr-moon.ics yapısı bozuk");
   const cd = rd("geri-sayim", "index.html"), sw = rd("kronometre", "index.html"), po = rd("pomodoro", "index.html"), al = rd("alarm", "index.html");
@@ -515,7 +555,7 @@ check(!/includeSubDomains|preload/.test(ng), "nginx.conf: includeSubDomains/prel
 // Web alarmında YouTube müziği (31 Ekim 2026; dış hizmet izniyle, youtube-nocookie.com)
 for (const f of ["alarm", "en/alarm", "ja/alarm", "alarm/07-00"]) {
   const h = fs.existsSync(path.join(DIST, f, "index.html")) ? fs.readFileSync(path.join(DIST, f, "index.html"), "utf8") : "";
-  check(/data-al-yt\b/.test(h) && /data-ring-media/.test(h) && /frame-src https:\/\/www\.youtube-nocookie\.com/.test(h), `alarm sayfasında YouTube müziği alanı ya da frame-src eksik: /${f}/`);
+  check(/data-al-yt\b/.test(h) && /data-ring-media/.test(h) && /frame-src 'self' https:\/\/www\.youtube-nocookie\.com/.test(h), `alarm sayfasında YouTube müziği alanı ya da frame-src eksik: /${f}/`);
 }
 // Toplantı oylaması (31 Ekim 2026): sunucusuz, bağlantıyla; bütün dillerde sayfa, araçlar kartı, gizlilik tablosunda sth-polls
 for (const l of LANGS) {
@@ -526,6 +566,109 @@ for (const l of LANGS) {
   check(tools.includes(`href="/${f}/"`), `araçlar merkezinde toplantı oylaması kartı yok (${l})`);
   const pv = fs.readFileSync(path.join(DIST, l === "tr" ? "gizlilik" : `${l}/privacy`, "index.html"), "utf8");
   check(/sth-polls/.test(pv) && /youtube-nocookie\.com/.test(pv) && /tile\.openstreetmap\.org/.test(pv), `gizlilik: sth-polls, YouTube ya da OSM maddesi eksik (${l})`);
+}
+
+// 2. analiz hataları (3 Kasım 2026): #87–#93, #186
+{
+  const ld = (rel) => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(ROOT, rel), "utf8"))(m, undefined); return m.exports; };
+  // #89 Ay evresi adı: ana evreler yalnız o anın ±12 saati içinde; dördün adı yarım Ay'dan uzakta çıkmamalı
+  const N = ld("src/js/nature-calc.js");
+  let bad = 0;
+  for (let d = 0; d < 730; d++) { const x = N.moon(Date.UTC(2026, 0, 1, 12) + d * 86400000), i = Math.round(x.illum * 100); if ((x.idx === 2 || x.idx === 6) && (i < 44 || i > 56)) bad++; if (x.idx === 4 && i < 97) bad++; if (x.idx === 0 && i > 3) bad++; }
+  check(bad === 0, `Ay evresi adı yüzdeyle çelişiyor (${bad} gün)`);
+  check(N.moon(Date.UTC(2026, 10, 17, 12)).idx === 3 && N.moon(Date.UTC(2026, 10, 16, 12)).idx === 2, "Ay evresi: 16 Kasım 2026 ilk dördün, 17 Kasım şişkin olmalı");
+  // #186 manyetik sapma: WMM2025 resmî test değerlerinden örnekler (±0,01°)
+  const W = ld("src/js/wmm.js");
+  for (const [y, alt, la, lo, dec] of [[2025, 28, 89, -121, -99.77], [2025, 0 + 51, -33, 109, -5.49], [2026.5, 43, 17, 52, 1.19], [2028.5, 11, 34, 0, 1.57], [2029.5, 33, 17, 5, 0.89]])
+    check(Math.abs(W.declination(la, lo, alt, y) - dec) < 0.01, `WMM2025 sapması tutmuyor: ${la},${lo} ${y}`);
+  for (const f of ["kible", "en/qibla", "ar/qibla"]) {
+    const h = fs.readFileSync(path.join(DIST, f, "index.html"), "utf8");
+    check(/wmm\.[0-9a-f]*\.?js|wmm\.js/.test(h) && h.search(/wmm[.\w]*\.js/) < h.search(/qibla[.\w]*\.js/), `kıble sayfasında wmm.js qibla.js'ten önce yüklenmeli: /${f}/`);
+  }
+  // #90 tutulma bölge adları derlemede yazılır (sayısal kod kalmamalı)
+  for (const f of ["mevsimler", "en/seasons", "ja/seasons"]) {
+    const h = fs.readFileSync(path.join(DIST, f, "index.html"), "utf8"), m = h.match(/"regionNames":(\{[^}]*\})/);
+    check(m && !/"\d{3}":"\d{3}"/.test(m[1]) && /"005":"[^"\d]/.test(m[1]), `tutulma bölge adları eksik: /${f}/`);
+  }
+  // #93 araç sayfalarında başlık iki kez görünmez
+  for (const f of ["toplanti-planlayici", "saat-cevirici", "toplanti-oylamasi", "gomme"]) {
+    const h = fs.readFileSync(path.join(DIST, f, "index.html"), "utf8");
+    check(!/class="tool-title"/.test(h) && /<h2 id="tool-h" class="sr-only">/.test(h), `başlık tekrarı: /${f}/`);
+  }
+  // #88 yüzde: site ortak yardımcıyı kullanır
+  // Hava neyse ekran öyle (2. analiz #193): sahne kuralları uygulamalardakiyle aynı (WeatherSceneTest değerleri)
+  {
+    const m = { exports: {} };
+    new Function("module", "window", fs.readFileSync(path.join(ROOT, "src/js/weather-fx.js"), "utf8"))(m, undefined);
+    const F = m.exports, sc = F.scene;
+    check(sc("clear", 0, 30).kind === "windy" && sc("cloudy", 0, 29).kind === "cloudy" && sc("rain", 0, 60).kind === "rain", "hava sahnesi: rüzgârlı türü 30 km/sa");
+    check(sc("rain").drops === 90 && sc("rain", 1).drops === 70 && sc("rain", 50).drops === 240 && sc("storm").drops === 140, "hava sahnesi: damla sayısı");
+    check(Math.abs(sc("rain").slant - 0.08) < 1e-9 && Math.abs(sc("rain", 0, 200).slant - 0.9) < 1e-9, "hava sahnesi: eğim");
+    check(sc("cloudy", 0, 0, 1).clouds === 6 && sc("clear").clouds === 0 && sc("cloudy").clouds === 4, "hava sahnesi: bulut sayısı");
+    check(sc("snow", 2).flakes === 140 && sc("clear", 0, 42).leaves === 12 && sc("rain", 0, 40).leaves === 10 && sc("rain", 0, 10).leaves === 0, "hava sahnesi: kar ve yaprak");
+    check(F.kindOf(63) === "rain" && F.kindOf(73) === "snow" && F.kindOf(95) === "storm" && F.kindOf(45) === "fog" && F.kindOf(3) === "cloudy", "hava sahnesi: WMO kodu");
+    const wh = fs.readFileSync(path.join(DIST, "hava-durumu/index.html"), "utf8");
+    check(/data-wx-fx/.test(wh) && /weather-fx\.js/.test(wh), "hava sayfasında canlandırma canvas'ı ve betiği olmalı");
+    check(/cloud_cover/.test(fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8")), "hava isteğinde bulut oranı olmalı");
+  }
+  // Hava açıklamaları ve günlük özet (2. analiz #108): eşikler Android WeatherWordsTest ve Swift WeatherWordsTests ile aynı girdiler
+  {
+    const win = { sth: { T: {} }, addEventListener() {} };
+    const docStub = { querySelectorAll: () => [], querySelector: () => null, createElement: () => ({}) };
+    new Function("window", "document", fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8"))(win, docStub);
+    const W = win.sthWeather, Wd = W.words;
+    check([3, 12, 25, 45, 80].map(Wd.wind).join() === "calm,light,breezy,strong,gale", "hava sözleri: rüzgâr");
+    check([1, 4, 7, 9.5, 12].map(Wd.uv).join() === "low,moderate,high,veryHigh,extreme", "hava sözleri: UV");
+    check([20, 45, 70, 90].map(Wd.humidity).join() === "dry,comfy,humid,veryHumid", "hava sözleri: nem");
+    check([500, 2500, 8000, 24000].map(Wd.visibility).join() === "fog,haze,good,clear", "hava sözleri: görüş");
+    check([5, 12, 18, 22].map(Wd.dew).join() === "dry,comfy,muggy,oppressive", "hava sözleri: çiy noktası");
+    check(Wd.feels(10, 6) === "colder" && Wd.feels(30, 34) === "warmer" && Wd.feels(20, 21) === null, "hava sözleri: hissedilen");
+    const hrs = (a, b, f) => Array.from({ length: b - a + 1 }, (_, i) => f({ hour: a + i, code: 1, rain: 10, wind: 10 }));
+    const calm = hrs(8, 19, (x) => x), J = (o) => JSON.stringify(o);
+    check(J(W.summary(calm, 20, 22)) === J({ key: "default" }) && J(W.summary(calm, 20, 13)) === J({ key: "colder", n: 7 }) && J(W.summary(calm, 20, 25.6)) === J({ key: "warmer", n: 6 }), "hava özeti: varsayılan, soğuk, sıcak");
+    const windy = hrs(8, 19, (x) => (x.hour === 15 ? { ...x, wind: 35 } : x));
+    const rain = windy.map((x) => (x.hour === 11 ? { ...x, code: 61, rain: 70 } : x));
+    const snow = rain.map((x) => (x.hour === 11 ? { ...x, code: 73 } : x));
+    const storm = snow.map((x) => (x.hour === 17 ? { ...x, code: 95 } : x));
+    check(W.summary(windy, 20, 13).key === "windyAfternoon" && J(W.summary(rain, 20, 13)) === J({ key: "rain", hour: 11 }) && J(W.summary(snow, 20, 13)) === J({ key: "snow", hour: 11 }) && J(W.summary(storm, 20, 13)) === J({ key: "storm", hour: 17 }), "hava özeti: öncelik");
+    const late = Array.from({ length: 16 }, (_, i) => ({ hour: 8 + i, code: 8 + i === 21 ? 95 : 1, rain: 0, wind: 0 }));
+    check(W.summary(late, 20, null).key === "default", "hava özeti: 12 saatten sonrası bakılmaz");
+    const wh = fs.readFileSync(path.join(DIST, "hava-durumu/index.html"), "utf8");
+    check(/data-wx-sum/.test(wh) && /visibility/.test(fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8")), "hava sayfası: özet satırı ve görüş isteği");
+  }
+  // K-1 site (2. analiz #174–#181, #184, #190): ilk ekran doğruluk satırı, başlıkta saat, görünüm seçenekleri, büyütme, haplar, hafta no
+  {
+    const h = fs.readFileSync(path.join(DIST, "index.html"), "utf8");
+    check(/data-sync-short/.test(h) && /data-tz-pills/.test(h) && /data-title-clock=""/.test(h), "ana sayfa: kısa doğruluk satırı, saat dilimi hapları, başlıkta saat");
+    check(/data-stage-zoom="-1"/.test(h) && /data-stage-zoom="1"/.test(h), "ana sayfa: saati büyütme/küçültme düğmeleri");
+    check(/data-look="dateFmt"/.test(h) && /data-look="sep"/.test(h) && /data-look="weekStart"/.test(h) && /data-look-bool="ms"/.test(h), "ayarlar: tarih biçimi, ayırıcı, hafta başı, milisaniye");
+    check(/class="top-week" data-live="weeklabel"/.test(h), "üst bar: hafta numarası");
+    const ch = fs.readFileSync(path.join(DIST, "dunya-saatleri/new-york/index.html"), "utf8");
+    check(/data-title-clock="America\/New_York"/.test(ch) && /data-live="solarnoon"/.test(ch) && /data-live="solaroff"/.test(ch) && /openstreetmap\.org\/\?mlat=/.test(ch) && !/data-tz-pills/.test(ch), "şehir sayfası: başlıkta saat, Güneş öğlesi, harita bağlantısı");
+    const dh = fs.readFileSync(path.join(DIST, "saat-farki/index.html"), "utf8");
+    check((dh.match(/data-live="diffbar"/g) || []).length === fs.readdirSync(path.join(DIST, "saat-farki")).filter((f) => f !== "index.html").length && /data-live="diffshort"/.test(dh), "saat farkı merkezi: kartlarda saat, fark ve çubuk");
+    check(/id="model-holo"/.test(h) && /id="model-matrix"/.test(h) && /data-matrix/.test(h) && /data-live="math"/.test(h) && /data-look-bool="night"/.test(h), "ana sayfa: temalı saatler (hologram, Matrix, matematik) ve gece modu seçeneği");
+    for (const [f, mt] of [["uyku-hesaplama", "sleep"], ["en/sleep-calculator", "sleep"], ["sinav-zamanlayicisi", "exam"], ["en/exam-timer", "exam"], ["sinif-araclari", "classroom"], ["en/classroom-tools", "classroom"], ["ja/classroom-tools", "classroom"]]) {
+      const ph = fs.readFileSync(path.join(DIST, f, "index.html"), "utf8");
+      check(new RegExp(`data-mt="${mt}"`).test(ph) && /more-tools\.js/.test(ph), `yeni araç sayfası: /${f}/`);
+    }
+    const th = fs.readFileSync(path.join(DIST, "araclar/index.html"), "utf8");
+    check(/href="\/uyku-hesaplama\/"/.test(th) && /href="\/sinav-zamanlayicisi\/"/.test(th) && /href="\/sinif-araclari\/"/.test(th), "araçlar merkezi: uyku hesaplama, sınav zamanlayıcısı ve sınıf araçları kartları");
+    const clh = fs.readFileSync(path.join(DIST, "sinif-araclari/index.html"), "utf8");
+    check(/data-cl-tab="picker"/.test(clh) && /data-cl-tab="teams"/.test(clh) && /data-cl-tab="counter"/.test(clh) && /data-cl-names/.test(clh) && /role="tablist"/.test(clh), "sınıf araçları: ad seçici, takım kurucu, sayaç sekmeleri");
+    const ph2 = fs.readFileSync(path.join(DIST, "toplanti-planlayici/index.html"), "utf8");
+    check(/data-outlook/.test(ph2) && /data-gmail/.test(ph2) && /data-copytext/.test(ph2), "toplantı planlayıcı: Outlook, Gmail ve metin kopyalama");
+    for (const l of LANGS) check(dict[l].get("consent.barText").length <= 170, `çerez bandı metni kısa olmalı (${l})`);
+    const nh = fs.readFileSync(path.join(DIST, "mevsimler/index.html"), "utf8");
+    check(/data-n-ring/.test(nh) && /data-n-tw="civil"/.test(nh) && /data-n-tw="astro"/.test(nh) && /data-n-ym\b/.test(nh) && /data-n-ymwheel/.test(nh), "mevsimler: alacakaranlık, ışık halkası, yılın dolunayları");
+    check(/data-pr-ezani/.test(fs.readFileSync(path.join(DIST, "namaz-vakitleri/istanbul/index.html"), "utf8")), "namaz il sayfası: ezani saat");
+    check(/data-hj-rumi\b/.test(fs.readFileSync(path.join(DIST, "hicri-takvim-cevirici/index.html"), "utf8")), "hicri çevirici: Rumi tarih");
+    check(/month-origin-list/.test(fs.readFileSync(path.join(DIST, "takvim/2027/index.html"), "utf8")), "takvim: ay adlarının kökeni");
+    for (const l of LANGS) check(fs.existsSync(path.join(ROOT, `mobile/android/app/src/main/assets/otd-${l}.json`)), `uygulama: tarihte bugün verisi (${l})`);
+    const ah = fs.readFileSync(path.join(DIST, "alarm/index.html"), "utf8");
+    check(/data-al-snooze/.test(ah) && /data-al-vol/.test(ah) && /data-al-try/.test(ah) && /data-al-ring/.test(ah) && /data-al-history/.test(ah) && /data-al-recent/.test(ah), "alarm: erteleme süresi, ses düzeyi, şimdi dene, halka, geçmiş, son saatler");
+  }
+  check(/S\.pct\(/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8")) && !/\+ "%"/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8").replace(/toFixed\(1\) \+ "%"/g, "")), "hava sayfasında yüzde dile göre biçimlenmeli");
 }
 
 if (fails.length) {

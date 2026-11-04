@@ -41,24 +41,50 @@ struct City: Decodable, Identifiable, Hashable {
 }
 
 struct WorldClockView: View {
+    /// Gök simgesi + saat (+ ÖÖ/ÖS); tür denetimi için parçalı
+    static func clockText(light: String, date: Date, zone: TimeZone) -> String {
+        let icon: String = light == "day" ? "☀ " : (light == "dusk" ? "◐ " : "☾ ")
+        let ampm: String = Fmt.ampm(date, tz: zone)
+        return icon + Fmt.time(date, tz: zone) + (ampm.isEmpty ? "" : " " + ampm)
+    }
+
     @AppStorage("world") private var keysRaw = City.defaultKeys
     @State private var adding = false
     @State private var shift = false
     @State private var when = Date()
     @State private var editMode = EditMode.inactive
+    /// iPad ve geniş pencerede şehirler iki sütunda (2. analiz #145; düzenlerken tek sütun)
+    @Environment(\.horizontalSizeClass) private var hsc
+    /// Şehre dokununca ayrıntı (2. analiz #129); arama metni (#128)
+    @State private var detail: WorldEntry?
+    @State private var query = ""
+    @AppStorage(WorldLabels.key) private var labelsRaw = ""
+    /// Küre / harita / 24 saat kadranı (2. analiz #129, #131) ve şehir başına hava
+    @AppStorage("world.view") private var view = "globe"
+    @ObservedObject private var weather = WorldWeather.shared
 
-    private var cities: [City] {
-        keysRaw.split(separator: ",").compactMap { k in City.all.first { $0.key == k } }
-    }
+    private var cities: [WorldEntry] { WorldEntry.list(keysRaw) }
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
             let at = shift ? when : context.date
             List {
                 Section {
-                    GlobeView()
-                        .frame(height: 340)
-                        .listRowInsets(EdgeInsets())
+                    WorldViewPicker(view: $view)
+                    switch view {
+                    case "map":
+                        WorldMapCard(entries: cities, date: at)
+                    case "dial":
+                        WorldDial(entries: cities, date: at) { d in
+                            shift = true
+                            when = d
+                        }
+                        .frame(maxWidth: .infinity)
+                    default:
+                        GlobeView()
+                            .frame(height: 340)
+                            .listRowInsets(EdgeInsets())
+                    }
                 }
                 Section {
                     LabeledContent(L("settings.location")) { PlacePicker(font: .body) }
@@ -69,8 +95,26 @@ struct WorldClockView: View {
                     }
                 }
                 Section {
+                    if hsc == .regular && !editMode.isEditing {
+                        ForEach(Array(stride(from: 0, to: cities.count, by: 2)), id: \.self) { i in
+                            HStack(alignment: .center, spacing: 16) {
+                                Button { detail = cities[i] } label: { row(cities[i], at: at) }
+                                    .buttonStyle(.plain)
+                                    .frame(maxWidth: .infinity)
+                                Divider()
+                                if i + 1 < cities.count {
+                                    Button { detail = cities[i + 1] } label: { row(cities[i + 1], at: at) }
+                                        .buttonStyle(.plain)
+                                        .frame(maxWidth: .infinity)
+                                } else {
+                                    Color.clear.frame(maxWidth: .infinity)
+                                }
+                            }
+                        }
+                    } else {
                     ForEach(cities) { city in
-                        row(city, at: at)
+                        Button { detail = city } label: { row(city, at: at) }
+                            .buttonStyle(.plain)
                     }
                     .onDelete { offsets in
                         var list = cities.map(\.key)
@@ -81,6 +125,7 @@ struct WorldClockView: View {
                         var list = cities.map(\.key)
                         list.move(fromOffsets: from, toOffset: to)
                         keysRaw = list.joined(separator: ",")
+                    }
                     }
                 } header: {
                     // Düzenle ve + şehir listesinin başında (18 Ekim 2026, sahibin isteği)
@@ -98,47 +143,69 @@ struct WorldClockView: View {
                     .foregroundStyle(Theme.accent)
                     .buttonStyle(.borderless)
                 } footer: {
-                    Button(L("world.reset")) { keysRaw = City.defaultKeys }
-                        .font(.footnote)
+                    VStack(alignment: .leading, spacing: 8) {
+                        if weather.hasAny {
+                            Text(L("world.wxNote")).font(.footnote).foregroundStyle(Theme.muted)
+                            // WeatherKit gösterimi: Apple Hava Durumu işareti ve yasal bağlantı (App Review 5.2.5)
+                            AppleWeatherMark(compact: true)
+                        }
+                        Button(L("world.reset")) { keysRaw = City.defaultKeys }
+                            .font(.footnote)
+                    }
                 }
             }
             .themedBackground()
             .environment(\.editMode, $editMode)
         }
         .navigationTitle(L("world.h1"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
+        .sheet(item: $detail) { WorldDetailView(entry: $0) }
+        .task(id: keysRaw) { weather.refresh(cities) }
         .sheet(isPresented: $adding) {
             NavigationStack {
-                List(City.all.filter { c in !cities.contains(c) }) { c in
+                // Şehir arama (2. analiz #128): 31 şehir, 1960 yer (places.json) ve kısaltmalar (EST, CET…)
+                List(WorldEntry.search(query, exclude: Set(cities.map(\.key)))) { c in
                     Button {
                         keysRaw = (cities.map(\.key) + [c.key]).joined(separator: ",")
                         adding = false
+                        query = ""
                         BadgeStore.shared.hit(.dunya)
                     } label: {
-                        VStack(alignment: .leading) {
-                            Text(c.displayName).foregroundStyle(Theme.text)
-                            Text(c.displayCountry).font(.caption).foregroundStyle(Theme.muted)
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text((c.flag.isEmpty ? "" : c.flag + " ") + c.name).foregroundStyle(Theme.text)
+                                if !c.country.isEmpty { Text(c.country).font(.caption).foregroundStyle(Theme.muted) }
+                            }
+                            Spacer()
+                            Text(Fmt.time(Date(), tz: c.zone)).font(.footnote).monospacedDigit().foregroundStyle(Theme.muted)
                         }
                     }
                 }
+                .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: L("world.searchHint"))
                 .themedBackground()
                 .navigationTitle(L("world.addCity"))
-                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarTitleDisplayMode(.large)
                 .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("world.done")) { adding = false } } }
             }
         }
     }
 
-    private func row(_ city: City, at date: Date) -> some View {
+    private func row(_ city: WorldEntry, at date: Date) -> some View {
+        _ = labelsRaw
         let diff = city.zone.secondsFromGMT(for: date) - TimeZone.current.secondsFromGMT(for: date)
         let cityDay = CalendarDay(date, timeZone: city.zone)
         let myDay = CalendarDay(date)
-        // Şehirde gün farklıysa haftanın günü gösterilir
-        let dayNote = cityDay == myDay ? "" : L("calendar.weekdaysShort.\(cityDay.weekday)")
+        // Şehirde gün farklıysa ertesi/önceki gün işareti ve haftanın günü
+        let dayNote = cityDay == myDay ? "" : (cityDay > myDay ? "+1 " : "−1 ") + L("calendar.weekdaysShort.\(cityDay.weekday)")
+        let light = city.light(date)
+        // Gök renkli saat kutusu: gündüz açık mavi, alacakaranlık kızıl, gece lacivert (2. analiz #129)
+        let bg: Color = light == "day" ? Color(red: 0.835, green: 0.91, blue: 1) : light == "dusk" ? Color(red: 0.745, green: 0.33, blue: 0.275) : Color(red: 0.106, green: 0.141, blue: 0.251)
+        let fg: Color = light == "day" ? Color(red: 0.08, green: 0.14, blue: 0.23) : .white
         return HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text(city.displayName).font(.headline)
-                Text(diff == 0 ? L("client.diffSame") : T(diff > 0 ? "client.diffAhead" : "client.diffBehind", Fmt.hm(seconds: diff)))
+                if let label = city.label { Text(label).font(.caption.weight(.semibold)).foregroundStyle(Theme.accent).lineLimit(1) }
+                Text((city.flag.isEmpty ? "" : city.flag + " ") + city.name).font(.headline).lineLimit(1)
+                Text((diff == 0 ? L("client.diffSame") : T(diff > 0 ? "client.diffAhead" : "client.diffBehind", Fmt.hm(seconds: diff))) + " · " + city.abbr(date))
                     .font(.caption)
                     .foregroundStyle(Theme.muted)
                 // Yaz saati uyarısı (rakip analizi #30): şehirde 7 gün içinde saat değişiyorsa
@@ -148,15 +215,20 @@ struct WorldClockView: View {
             }
             Spacer()
             VStack(alignment: .trailing, spacing: 2) {
-                Text(Fmt.time(date, tz: city.zone) + (Fmt.ampm(date, tz: city.zone).isEmpty ? "" : " " + Fmt.ampm(date, tz: city.zone)))
-                    .font(.system(size: 28, weight: .light, design: .rounded))
+                Text(Self.clockText(light: light, date: date, zone: city.zone))
+                    .font(.system(size: 24, weight: .light, design: .rounded))
                     .monospacedDigit()
                     .environment(\.layoutDirection, .leftToRight)
                 if !dayNote.isEmpty {
-                    Text(dayNote).font(.caption2).foregroundStyle(Theme.accent)
+                    Text(dayNote).font(.caption2.weight(.semibold))
                 }
+                WorldWeatherBadge(key: city.key, color: fg)
             }
+            .foregroundStyle(fg)
+            .padding(.horizontal, 10).padding(.vertical, 4)
+            .background(bg, in: RoundedRectangle(cornerRadius: 12))
         }
+        .contentShape(Rectangle())
     }
 }
 
@@ -167,6 +239,7 @@ struct WorldClockView: View {
 /// "kış 1 Aralık'ta mı 21 Aralık'ta mı" (gökbilim ve meteoroloji şeridi), güney yarımküre, ilginç bilgiler;
 /// en altta bugünün Güneşi, Ay ve mevsim başlangıçları.
 struct SeasonsView: View {
+    @AppStorage(LiveActivities.sunKey) private var liveSun = false
 
     static let seasonKeys = ["spring", "summer", "autumn", "winter"]
     static let seasonEmoji = ["🌸", "☀️", "🍂", "⛄"]
@@ -185,7 +258,7 @@ struct SeasonsView: View {
         ScrollView {
             VStack(spacing: 16) {
                 hero(current: current, next: next, now: now, tz: tr)
-                card(L("kids.why.title"), emoji: "🌍") {
+                card(L("kids.why.title"), emoji: "globe") {
                     OrbitDiagram().frame(height: 230)
                     Text(L("kids.why.text"))
                     Text(L("kids.why.myth"))
@@ -194,15 +267,15 @@ struct SeasonsView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(Theme.accentSoft, in: RoundedRectangle(cornerRadius: 12))
                 }
-                card(L("kids.light.title"), emoji: "🔦") {
+                card(L("kids.light.title"), emoji: "flashlight") {
                     LightAngleDiagram().frame(height: 170)
                     Text(L("kids.light.text"))
                 }
-                card(L("kids.dates.title"), emoji: "📅") {
+                card(L("kids.dates.title"), emoji: "calendar") {
                     SeasonYearBars(year: year)
                     Text(L("kids.dates.text"))
                 }
-                card(L("kids.south.title"), emoji: "🏖️") {
+                card(L("kids.south.title"), emoji: "beach") {
                     HemispheresDiagram(north: current.0).frame(height: 150)
                     Text(L("kids.south.text"))
                 }
@@ -215,16 +288,28 @@ struct SeasonsView: View {
                     }
                 }
                 sunAndMoon(place: place, now: now)
+                // Kilit ekranında Güneş sayacı (2. analiz #150): sıradaki gün doğumu ya da batımına kalan süre
+                Toggle(isOn: $liveSun) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(L("live.sun.toggle"))
+                        Text(L("live.sun.note")).font(.caption).foregroundStyle(Theme.muted)
+                    }
+                }
+                .tint(Theme.accent)
+                .padding(14)
+                .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+                .onChange(of: liveSun) { LiveActivities.sync() }
                 lightHours(place: place, now: now)
+                FolkCalendarCard(day: CalendarDay(now, timeZone: place.zone))
                 startsTable(year: year, tz: tr)
             }
             .padding(16)
             .frame(maxWidth: 640)
             .frame(maxWidth: .infinity)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("nature.h1"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     // MARK: Bölümler
@@ -237,7 +322,7 @@ struct SeasonsView: View {
         let color = Self.seasonColor[current.0]
         let nextName = L("nature.seasons.\(Self.seasonKeys[next.0])")
         return VStack(spacing: 10) {
-            Text(Self.seasonEmoji[current.0]).font(.system(size: 72))
+            LineIcon(name: LineIcons.seasons[current.0], size: 76)
             Text(T("nature.current", L("nature.seasons.\(Self.seasonKeys[current.0])")))
                 .font(.title.weight(.bold))
                 .multilineTextAlignment(.center)
@@ -275,7 +360,8 @@ struct SeasonsView: View {
     private func card<Content: View>(_ title: String, emoji: String, @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
-                Text(emoji).font(.title2)
+                // Kendi çizgi simgelerimiz (2. analiz #97)
+                LineIcon(name: emoji, size: 30)
                 Text(title).font(.title3.weight(.bold)).foregroundStyle(Theme.text)
             }
             content()
@@ -378,8 +464,19 @@ struct SeasonsView: View {
             guard let a = r.0, let b = r.1 else { return "–" }
             return place.hm(midnight.addingTimeInterval(a * 3600)) + "–" + place.hm(midnight.addingTimeInterval(b * 3600))
         }
+        // Alacakaranlık (2. analiz #151): sivil −6°, denizcilik −12°, astronomik −18°; ilk ve son ışık
+        func alt(_ a: Double) -> PrayerTimes.AltitudeTimes {
+            PrayerTimes.sunAltitudeTimes(year: d.year, month: d.month, day: d.day, latitude: place.lat, longitude: place.lon, utcOffset: off, altitude: a)
+        }
+        let s0 = alt(-0.833), c6 = alt(-6), c12 = alt(-12), c18 = alt(-18)
+        func one(_ h: Double?) -> String { guard let h else { return "–" }; return place.hm(midnight.addingTimeInterval(h * 3600)) }
+        func two(_ a: (Double?, Double?), _ b: (Double?, Double?)) -> String { span(a) + " · " + span(b) }
         let rows: [(String, String, String)] = [("nature.blueAm", "🔵", span(l.blueAm)), ("nature.goldenAm", "🟠", span(l.goldenAm)),
-                                                ("nature.goldenPm", "🟠", span(l.goldenPm)), ("nature.bluePm", "🔵", span(l.bluePm))]
+                                                ("nature.goldenPm", "🟠", span(l.goldenPm)), ("nature.bluePm", "🔵", span(l.bluePm)),
+                                                ("nature.tw.firstLight", "🌌", one(c18.rise)), ("nature.tw.lastLight", "🌌", one(c18.set)),
+                                                ("nature.tw.civil", "🌆", two((c6.rise, s0.rise), (s0.set, c6.set))),
+                                                ("nature.tw.nautical", "⚓", two((c12.rise, c6.rise), (c6.set, c12.set))),
+                                                ("nature.tw.astro", "🔭", two((c18.rise, c12.rise), (c12.set, c18.set)))]
         return VStack(alignment: .leading, spacing: 8) {
             ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
                 HStack {
@@ -389,6 +486,7 @@ struct SeasonsView: View {
                 }
             }
             Text(L("nature.lightNote")).font(.caption).foregroundStyle(Theme.muted)
+            Text(L("nature.tw.note")).font(.caption).foregroundStyle(Theme.muted)
         }
         .foregroundStyle(Theme.text)
         .padding(14)
@@ -611,5 +709,43 @@ private struct HemispheresDiagram: View {
         }
         .frame(maxWidth: .infinity)
         .accessibilityElement(children: .combine)
+    }
+}
+
+/// Halk takvimi (2. analiz #60): src/data/folk-calendar.json ile aynı geleneksel tarihler (ay, gün)
+struct FolkCalendarCard: View {
+    let day: CalendarDay
+    struct Item: Identifiable { let id: String; let fm: Int, fd: Int, tm: Int, td: Int }
+    static let items: [Item] = [
+        Item(id: "erbain", fm: 12, fd: 22, tm: 1, td: 30), Item(id: "hamsin", fm: 1, fd: 31, tm: 3, td: 21),
+        Item(id: "cemre1", fm: 2, fd: 19, tm: 2, td: 20), Item(id: "cemre2", fm: 2, fd: 26, tm: 2, td: 27),
+        Item(id: "cemre3", fm: 3, fd: 5, tm: 3, td: 6), Item(id: "berdulacuz", fm: 3, fd: 11, tm: 3, td: 17),
+        Item(id: "eyyamibahur", fm: 7, fd: 31, tm: 8, td: 7),
+    ]
+
+    var body: some View {
+        let md = day.month * 100 + day.day
+        VStack(alignment: .leading, spacing: 8) {
+            Text(L("nature.folkHeading")).font(.headline)
+            ForEach(Self.items) { it in
+                let a = it.fm * 100 + it.fd, b = it.tm * 100 + it.td
+                let now = a <= b ? (a...b).contains(md) : (md >= a || md <= b)
+                HStack(alignment: .firstTextBaseline) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(L("nature.folkNames.\(it.id)")).fontWeight(now ? .semibold : .regular)
+                            .foregroundStyle(now ? Theme.accent : Theme.text)
+                        if now { Text(L("nature.folkNow")).font(.caption.weight(.bold)).foregroundStyle(Theme.accent) }
+                    }
+                    Spacer()
+                    Text("\(it.fd) \(L("calendar.months.\(it.fm - 1)")) – \(it.td) \(L("calendar.months.\(it.tm - 1)"))")
+                        .font(.footnote).foregroundStyle(Theme.muted).multilineTextAlignment(.trailing)
+                }
+            }
+            Text(L("nature.folkNote")).font(.caption).foregroundStyle(Theme.muted)
+        }
+        .foregroundStyle(Theme.text)
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
     }
 }

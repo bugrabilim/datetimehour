@@ -35,10 +35,12 @@ class AlarmRingService : Service() {
     /** Saati sesli söyleme (rakip analizi #20): 20 sn'de bir, konuşurken zil kısılır */
     private var tts: android.speech.tts.TextToSpeech? = null
     private var rising = true
+    private var level = 1f
 
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        SoundService.stop(this, "prealarm") // sakin ön alarm (2. analiz #42) asıl alarm çalınca susar
         val id = intent?.getStringExtra(AlarmScheduler.EXTRA_ID)
         if (id == null) {
             stopSelf()
@@ -58,19 +60,11 @@ class AlarmRingService : Service() {
         val uri: Uri? = item?.sound?.takeIf { it.isNotEmpty() }?.let(Uri::parse)
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
-        player = runCatching {
-            MediaPlayer().apply {
-                setAudioAttributes(AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build())
-                setDataSource(this@AlarmRingService, uri!!)
-                setWakeMode(this@AlarmRingService, PowerManager.PARTIAL_WAKE_LOCK)
-                isLooping = true
-                rising = item?.rise == true
-                setVolume(if (rising) MIN_VOLUME else 1f, if (rising) MIN_VOLUME else 1f)
-                prepare()
-                if (delay == 0L) start()
-            }
-        }.getOrNull()
+        soundUri = uri
+        rising = item?.rise == true
+        // 2. analiz #40: alarm başına ses düzeyi (telefonun alarm ses düzeyine göre oran)
+        level = item?.volume?.takeIf { it in 1..99 }?.let { it / 100f } ?: 1f
+        player = makePlayer(uri, startNow = delay == 0L)
         started = SystemClock.elapsedRealtime() + delay
         val begin = Runnable {
             if (delay > 0) runCatching { player?.start() }
@@ -84,11 +78,28 @@ class AlarmRingService : Service() {
         return START_NOT_STICKY
     }
 
+    private var soundUri: Uri? = null
+
+    /** Alarm sesi oynatıcısı (alarm akışı; kulaklıkta çalma seçeneği 4 Kasım 2026'da sahibin kararıyla kaldırıldı, 2. analiz #79) */
+    private fun makePlayer(uri: Uri?, startNow: Boolean): MediaPlayer? = runCatching {
+        MediaPlayer().apply {
+            setAudioAttributes(AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_ALARM)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build())
+            setDataSource(this@AlarmRingService, uri!!)
+            setWakeMode(this@AlarmRingService, PowerManager.PARTIAL_WAKE_LOCK)
+            isLooping = true
+            setVolume((if (rising) MIN_VOLUME else 1f) * level, (if (rising) MIN_VOLUME else 1f) * level)
+            prepare()
+            if (startNow) start()
+        }
+    }.getOrNull()
+
     private val ramp = object : Runnable {
         override fun run() {
             val elapsed = SystemClock.elapsedRealtime() - started
             val v = volumeAt(elapsed)
-            runCatching { player?.setVolume(v, v) }
+            runCatching { player?.setVolume(v * level, v * level) }
             if (elapsed < RISE_MS) handler.postDelayed(this, 250)
         }
     }
@@ -110,12 +121,12 @@ class AlarmRingService : Service() {
         override fun run() {
             val t = tts ?: return
             val now = java.time.ZonedDateTime.now()
-            runCatching { player?.setVolume(0.15f, 0.15f) }
+            runCatching { player?.setVolume(0.15f * level, 0.15f * level) }
             t.speak(T("alarm.speakText", Fmt.time(now)), android.speech.tts.TextToSpeech.QUEUE_FLUSH, null, "say")
             // Konuşma bitince zil eski düzeyine döner
             handler.postDelayed({
                 val v = if (rising) volumeAt(SystemClock.elapsedRealtime() - started) else 1f
-                runCatching { player?.setVolume(v, v) }
+                runCatching { player?.setVolume(v * level, v * level) }
             }, 3000)
             handler.postDelayed(this, 20_000)
         }
@@ -176,3 +187,4 @@ class AlarmRingService : Service() {
         }
     }
 }
+

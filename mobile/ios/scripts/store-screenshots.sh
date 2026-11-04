@@ -1,6 +1,7 @@
 #!/bin/bash
 # App Store ekran görüntüleri: 6,9" iPhone (1320×2868) ve 13" iPad (2064×2752) simülatörlerinde, on bir mağaza dilinde.
-# fastlane deliver bu klasörü olduğu gibi yükler: <çıktı>/<mağaza dili>/NN-ad.png
+# Çıktı ham görüntülerdir (<çıktı>/<mağaza dili>/NN-ad.png); frame-screenshots.mjs bunları çerçeveleyip fastlane/screenshots'a yazar,
+# fastlane deliver o klasörü olduğu gibi yükler.
 # Kullanım: store-screenshots.sh <SaatTarih.app yolu> <çıktı klasörü>
 set -euo pipefail
 APP="$1"; OUT="$2"; BUNDLE=tr.bumba.time
@@ -24,14 +25,14 @@ xcrun simctl ui "$UDID" appearance light
 shoot() { # dil bölge klasör dosya bekleme [ek uygulama argümanları]
   mkdir -p "$OUT/$3"
   xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
-  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" \
+  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" -dial.seen "<true/>" \
     -features "weather,calendar,world,seasons,prayer,tools" "${@:6}"
   sleep "$5"
   xcrun simctl io "$UDID" screenshot "$OUT/$3/$4.png"
 }
 # App Store dilleri: "uygulama dili, bölge, fastlane klasörü" (App Store'da Azerice, Farsça ve Filipince yok; Urduca fastlane
 # listesinde yoksa deliver hata verir, yayından önce bakılır)
-STORE_LANGS="tr:tr_TR:tr en:en_US:en-US de:de_DE:de-DE ar:ar_SA:ar-SA fr:fr_FR:fr-FR ru:ru_RU:ru id:id_ID:id ja:ja_JP:ja ko:ko_KR:ko zh-Hans:zh_CN:zh-Hans th:th_TH:th"
+STORE_LANGS="tr:tr_TR:tr en:en_US:en-US de:de_DE:de-DE ar:ar_SA:ar-SA fr:fr_FR:fr-FR ru:ru_RU:ru id:id_ID:id ja:ja_JP:ja ko:ko_KR:ko zh-Hans:zh_CN:zh-Hans th:th_TH:th es:es_ES:es-ES pt:pt_BR:pt-BR hi:hi_IN:hi"
 ITEMS="-date,week,next,prayers,-upcoming,-world,-weather,-sun,-globe"
 for L in $STORE_LANGS; do
   set -- ${L//:/ }
@@ -41,6 +42,8 @@ for L in $STORE_LANGS; do
   shoot $1 $2 $3 04-dunya 15 -openScreen world
   shoot $1 $2 $3 05-araclar 6 -startTab 6
   shoot $1 $2 $3 06-imsakiye 6 -openScreen imsakiye
+  # Gece modu (frame-screenshots.mjs bunu komodin sahnesine koyar; 2. analiz #33)
+  shoot $1 $2 $3 07-gece 6 -openScreen night -nightMode on
 done
 # iPad (rakip analizi #18; uygulama iPad'i de destekleyince App Store 13" iPad görüntüsü ister). deliver cihazı
 # çözünürlükten tanır; dosya adları iPhone'unkilerle karışmasın diye "ipad-" ile başlar.

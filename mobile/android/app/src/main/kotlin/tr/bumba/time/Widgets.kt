@@ -62,14 +62,15 @@ abstract class BaseWidget : AppWidgetProvider() {
     override fun onReceive(c: Context, intent: Intent) {
         super.onReceive(c, intent)
         // Saat, saat dilimi ya da dil değişince (manifestte kayıtlı; bu yayınlar arka planda da gelir)
-        if (intent.action in setOf(Intent.ACTION_TIME_CHANGED, Intent.ACTION_TIMEZONE_CHANGED, Intent.ACTION_LOCALE_CHANGED)) {
+        if (intent.action in setOf(Intent.ACTION_TIME_CHANGED, Intent.ACTION_TIMEZONE_CHANGED, Intent.ACTION_LOCALE_CHANGED,
+                android.app.AlarmManager.ACTION_NEXT_ALARM_CLOCK_CHANGED)) {
             WidgetUpdater.updateAll(c)
         }
     }
 
     override fun onDeleted(c: Context, ids: IntArray) {
         val e = Prefs.store.edit()
-        for (id in ids) e.remove(WidgetUpdater.placeKey(id))
+        for (id in ids) { e.remove(WidgetUpdater.placeKey(id)); WidgetLook.forget(e, id) }
         e.apply()
     }
 }
@@ -81,9 +82,13 @@ class NextPrayerWidget : BaseWidget() {
         val v = RemoteViews(c.packageName, R.layout.widget_next)
         v.setTextViewText(R.id.place, "📍 " + place.name)
         place.next(now)?.let { n ->
-            v.setTextViewText(R.id.name, n.prayer.title)
+            v.setTextViewText(R.id.name, n.prayer.ramadanTitle(n.at, place.zone))
             v.setTextViewText(R.id.time, Fmt.hm(n.at, place.zone))
             WidgetUpdater.countdown(v, R.id.left, n.at, now)
+            // Önceki vakitten sıradakine geçen süre (2. analiz #162); widget yarım saatte bir de yenilenir
+            val prev = (place.entries(place.today(now).minusDays(1)) + place.entries(place.today(now))).lastOrNull { !it.at.isAfter(now) }?.at
+            val frac = if (prev != null && n.at.isAfter(prev)) (now.toEpochMilli() - prev.toEpochMilli()).toDouble() / (n.at.toEpochMilli() - prev.toEpochMilli()) else 0.0
+            v.setProgressBar(R.id.progress, 1000, (frac.coerceIn(0.0, 1.0) * 1000).toInt(), false)
         }
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.PRAYER, id))
         return v
@@ -114,6 +119,19 @@ class TodayPrayersWidget : BaseWidget() {
             v.setTextViewText(times[i], Fmt.hm(e.at, place.zone))
             v.setInt(cols[i], "setBackgroundResource", if (isNext) R.drawable.widget_soft else 0)
         }
+        // Gün ilerlemesi (2. analiz #163): imsaktan yatsıya; vakitler arası eşit parça, içinde bulunulan parça süreyle dolar
+        if (entries.size >= 2) {
+            val k = entries.indexOfLast { !it.at.isAfter(now) }
+            val frac = when {
+                k < 0 -> 0.0
+                k >= entries.lastIndex -> 1.0
+                else -> {
+                    val a = entries[k].at.toEpochMilli(); val b = entries[k + 1].at.toEpochMilli()
+                    (k + (now.toEpochMilli() - a).toDouble() / (b - a)) / entries.lastIndex
+                }
+            }
+            v.setProgressBar(R.id.progress, 1000, (frac.coerceIn(0.0, 1.0) * 1000).toInt(), false)
+        }
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.PRAYER, id))
         return v
     }
@@ -122,9 +140,10 @@ class TodayPrayersWidget : BaseWidget() {
 class AnalogClockWidget : BaseWidget() {
     override fun views(c: Context, id: Int): RemoteViews {
         val v = RemoteViews(c.packageName, R.layout.widget_analog)
-        // Android 12+: uygulamadaki gibi rakamlı kadran (daha eskide rakamsız vektör kadran)
-        if (Build.VERSION.SDK_INT >= 31) v.setIcon(R.id.analog, "setDial", Icon.createWithBitmap(WidgetUpdater.dial(c)))
-        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CLOCK, id))
+        // Android 12+: uygulamadaki gibi rakamlı kadran (daha eskide rakamsız vektör kadran); renkler seçilen görünümden
+        WidgetLook.analog(c, v, R.id.analog, id)
+        WidgetLook.apply(c, v, id, R.id.root)
+        v.setOnClickPendingIntent(R.id.root, WidgetLook.open(c, id))
         return v
     }
 }
@@ -132,7 +151,9 @@ class AnalogClockWidget : BaseWidget() {
 class DigitalClockWidget : BaseWidget() {
     override fun views(c: Context, id: Int): RemoteViews {
         val v = RemoteViews(c.packageName, R.layout.widget_digital)
-        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CLOCK, id))
+        WidgetLook.nextAlarm(c, v, R.id.alarm, id)
+        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time), muted = listOf(R.id.alarm))
+        v.setOnClickPendingIntent(R.id.root, WidgetLook.open(c, id))
         return v
     }
 }
@@ -143,7 +164,9 @@ class ClockDateWidget : BaseWidget() {
         val today = LocalDate.now()
         v.setTextViewText(R.id.date, today.dayOfMonth.toString() + " " + Fmt.month(today.monthValue) + " " + today.year)
         v.setTextViewText(R.id.weekday, L("calendar.weekdays.${today.dayOfWeek.value - 1}"))
-        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CLOCK, id))
+        WidgetLook.nextAlarm(c, v, R.id.alarm, id)
+        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time, R.id.date), muted = listOf(R.id.weekday, R.id.alarm))
+        v.setOnClickPendingIntent(R.id.root, WidgetLook.open(c, id))
         return v
     }
 }
@@ -164,7 +187,7 @@ class SecondsClockWidget : BaseWidget() {
 class WorldClockWidget : BaseWidget() {
     override fun views(c: Context, id: Int): RemoteViews {
         val v = RemoteViews(c.packageName, R.layout.widget_world)
-        val cities = Prefs.world.split(",").mapNotNull { k -> City.all.firstOrNull { it.key == k } }.take(4)
+        val cities = WorldEntry.list().take(4)
         val rows = listOf(R.id.row1, R.id.row2, R.id.row3, R.id.row4)
         val names = listOf(R.id.n1, R.id.n2, R.id.n3, R.id.n4)
         val diffs = listOf(R.id.d1, R.id.d2, R.id.d3, R.id.d4)
@@ -176,7 +199,7 @@ class WorldClockWidget : BaseWidget() {
             v.setViewVisibility(rows[i], if (city == null) android.view.View.GONE else android.view.View.VISIBLE)
             if (city == null) continue
             v.setTextViewText(names[i], city.displayName)
-            v.setString(times[i], "setTimeZone", city.tz)
+            v.setString(times[i], "setTimeZone", city.zone.id)
             // Fark gece yarısı ve saat/dilim değişince yenilenir (yaz saati geçişinde en geç ertesi gece)
             val diff = city.zone.rules.getOffset(now).totalSeconds - here
             v.setTextViewText(diffs[i], if (diff == 0) "" else (if (diff > 0) "+" else "−") + Fmt.hm(diff))
@@ -217,7 +240,7 @@ class MoonWidget : BaseWidget() {
         val v = RemoteViews(c.packageName, R.layout.widget_moon)
         val now = Instant.now()
         val m = Nature.moon(now.toEpochMilli())
-        v.setTextViewText(R.id.icon, MOON_PHASE_EMOJI[m.phaseIndex])
+        MoonTexture.bitmap(c, m.fraction, AppPlace.current().lat < 0, 160)?.let { v.setImageViewBitmap(R.id.icon, it) }
         v.setTextViewText(R.id.name, L("nature.phases.${MOON_PHASE_KEYS[m.phaseIndex]}"))
         v.setTextViewText(R.id.illum, T("nature.illumination", Math.round(m.illumination * 100)))
         val full = m.nextFullMoon < m.nextNewMoon
@@ -225,6 +248,48 @@ class MoonWidget : BaseWidget() {
         v.setTextViewText(R.id.next, (if (full) "🌕 " else "🌑 ") + Fmt.shortDate(at))
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.SEASONS, id))
         return v
+    }
+}
+
+/** Ay takvimi (2. analiz #149): bugünkü dokulu Ay ve sıradaki dört ana evre (yeni ay, ilk dördün, dolunay, son dördün) */
+class MoonCalWidget : BaseWidget() {
+    override fun views(c: Context, id: Int): RemoteViews {
+        val v = RemoteViews(c.packageName, R.layout.widget_moon_cal)
+        val now = System.currentTimeMillis()
+        val m = Nature.moon(now)
+        val south = AppPlace.current().lat < 0
+        MoonTexture.bitmap(c, m.fraction, south, 192)?.let { v.setImageViewBitmap(R.id.icon, it) }
+        v.setTextViewText(R.id.name, L("nature.phases.${MOON_PHASE_KEYS[m.phaseIndex]}"))
+        v.setTextViewText(R.id.illum, T("nature.illumination", Math.round(m.illumination * 100)))
+        val ids = listOf(Triple(R.id.p0img, R.id.p0name, R.id.p0date), Triple(R.id.p1img, R.id.p1name, R.id.p1date),
+            Triple(R.id.p2img, R.id.p2name, R.id.p2date), Triple(R.id.p3img, R.id.p3name, R.id.p3date))
+        MoonPhaseTimes.next(now, 4).forEachIndexed { i, (key, frac, at) ->
+            val (img, name, date) = ids[i]
+            MoonTexture.bitmap(c, frac, south, 54)?.let { v.setImageViewBitmap(img, it) }
+            v.setTextViewText(name, L("nature.phases.$key"))
+            v.setTextViewText(date, Fmt.shortDate(Instant.ofEpochMilli(at).atZone(ZoneId.systemDefault()).toLocalDate()))
+        }
+        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.SEASONS, id))
+        return v
+    }
+}
+
+/** Sıradaki ana evreler: evre kesrinin 0; 0,25; 0,5; 0,75'i geçtiği anlar (saatlik tarama) */
+object MoonPhaseTimes {
+    fun next(from: Long, count: Int): List<Triple<String, Double, Long>> {
+        val keys = listOf("new" to 0.0, "firstQuarter" to 0.25, "full" to 0.5, "lastQuarter" to 0.75)
+        val out = ArrayList<Triple<String, Double, Long>>()
+        var t = from; var prev = Nature.moon(t).fraction; var n = 0
+        while (out.size < count && n < 24 * 60) {
+            n++
+            val t2 = t + 3_600_000; val f = Nature.moon(t2).fraction
+            for ((k, q) in keys) {
+                val crossed = if (q == 0.0) f < prev else prev < q && f >= q
+                if (crossed) out.add(Triple(k, q, t2))
+            }
+            prev = f; t = t2
+        }
+        return out.take(count)
     }
 }
 
@@ -251,8 +316,11 @@ class WidgetRefreshReceiver : android.content.BroadcastReceiver() {
 object WidgetUpdater {
     private val providers = listOf(
         NextPrayerWidget::class.java, TodayPrayersWidget::class.java, AnalogClockWidget::class.java,
-        DigitalClockWidget::class.java, ClockDateWidget::class.java, MoonWidget::class.java,
+        DigitalClockWidget::class.java, ClockDateWidget::class.java, MoonWidget::class.java, MoonCalWidget::class.java,
         SecondsClockWidget::class.java, WorldClockWidget::class.java, CountdownWidget::class.java, HijriWidget::class.java,
+        DualClockWidget::class.java, YearWidget::class.java, WordsWidget::class.java, SunWidget::class.java,
+        DailyWidget::class.java, PhotoWidget::class.java, EventsWidget::class.java, WeatherWidget::class.java,
+        World8Widget::class.java, OverlapWidget::class.java, WorldMapWidget::class.java, SunArcWidget::class.java, TimersWidget::class.java, FocusWidget::class.java,
     )
 
     fun placeKey(id: Int) = "widget.place.$id"

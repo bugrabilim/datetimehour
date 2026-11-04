@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Açılış zemini (Android 8–11; 2. analiz #83): tema zemini ve ortada uygulama simgesi. Bekletme eklemez, yalnız
+     uygulama çizilene kadarki boş ekranın yerini alır. Android 12+ values-v31/themes.xml'deki sistem açılışını kullanır. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/splash" />
+    <item android:gravity="center" android:width="96dp" android:height="96dp" android:drawable="@mipmap/ic_launcher" />
+</layer-list>

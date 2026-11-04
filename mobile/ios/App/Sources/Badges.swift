@@ -201,7 +201,7 @@ struct BadgesView: View {
         }
         .themedBackground()
         .navigationTitle(L("badges.h1"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .alert(L("badges.deleteTitle"), isPresented: $confirming) {
             Button(L("badges.deleteYes"), role: .destructive) {
                 store.deleteAll()

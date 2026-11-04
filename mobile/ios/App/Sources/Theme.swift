@@ -6,7 +6,8 @@ import UIKit
 /// bir ikinci renk ve bir ton gücüyle gelir; zemin, kartlar, saat kadranı ve ibreler buna göre boyanır.
 /// Varsayılan temada ton yoktur (sitedeki renkler). Widget'lar varsayılanı kullanır.
 enum Theme {
-    static var bg: Color { tinted(0xF7F4EE, 0x11141A, light: 0.09, dark: 0.11) }
+    /// Zemin: atmosfer seçiliyse renk geçişinin orta tonu (düz renk isteyen yerler için; sayfa zemini AppBackdrop)
+    static var bg: Color { Atmosphere.current?.mid ?? tinted(0xF7F4EE, 0x11141A, light: 0.09, dark: 0.11) }
     static var surface: Color { tinted(0xFFFFFF, 0x1A1E26, light: 0.04, dark: 0.07) }
     /// Saat kadranı ve ikincil yüzeyler
     static var surface2: Color { tinted(0xEFEBE2, 0x232834, light: 0.18, dark: 0.20) }
@@ -19,6 +20,11 @@ enum Theme {
     static var accent2: Color { AccentPalette.current.secondColor }
     /// Saat rakamları ve akrep: yazı rengi, temanın ana rengine doğru çekilmiş
     static var ink: Color { tinted(0x1B1F27, 0xEEF0F4, light: 0.45, dark: 0.30) }
+    /// Hata ve başarı renkleri: sitedeki --err/--ok token'ları (2. analiz #100; iki temada ≥4,5:1)
+    static let err = dynamic(light: 0xA31D1D, dark: 0xFF9D9D)
+    static let errBg = dynamic(light: 0xFBE7E7, dark: 0x3A1A1A)
+    static let ok = dynamic(light: 0x176B3A, dark: 0x7FD9A1)
+    static let okBg = dynamic(light: 0xE2F3E8, dark: 0x16301F)
 
     fileprivate static func dynamic(light: UInt32, dark: UInt32) -> Color {
         Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor(rgb: dark) : UIColor(rgb: light) })
@@ -110,14 +116,56 @@ struct AccentPalette: Identifiable {
     static var current: AccentPalette { find(UserDefaults.standard.string(forKey: "accent")) }
 }
 
-/// Liste ve form sayfalarının zemini temanın zemin rengidir; tema değişince sayfa yeniden boyanır
+/// Adlı atmosfer temaları (2. analiz #78; sahibin ekran görüntüsü): bütün uygulamanın zemini yukarıdan aşağı bir renk
+/// geçişiyle boyanır (açık temada soluk, koyu temada derin tonlar; yazılar iki temada da okunur). Uygulama rengi
+/// (`accent`) ayrı seçilir. Seçim `atmo` anahtarında (boş = düz); Android'deki Atmosphere ile aynı renkler.
+struct Atmosphere: Identifiable {
+    static let key = "atmo"
+    let id: String
+    let light: (UInt32, UInt32)
+    let dark: (UInt32, UInt32)
+
+    var top: Color { Theme.dynamic(light: light.0, dark: dark.0) }
+    var bottom: Color { Theme.dynamic(light: light.1, dark: dark.1) }
+    var mid: Color { Theme.dynamic(light: Theme.mix(light.0, light.1, 0.5), dark: Theme.mix(dark.0, dark.1, 0.5)) }
+
+    static let all: [Atmosphere] = [
+        .init(id: "dawn", light: (0xFDEFE3, 0xF6D9E2), dark: (0x2B1C2F, 0x41243A)),
+        .init(id: "lavender", light: (0xF2ECFB, 0xE1D6F5), dark: (0x1F1A33, 0x31254F)),
+        .init(id: "ocean", light: (0xE5F3F8, 0xCFE5F1), dark: (0x0D1F2C, 0x113653)),
+        .init(id: "forest", light: (0xEAF5EA, 0xD5EAD8), dark: (0x0F2119, 0x1A382A)),
+        .init(id: "desert", light: (0xFCF2E2, 0xF1DBBA), dark: (0x2A2016, 0x40301B)),
+        .init(id: "aurora", light: (0xE6F7F1, 0xE3DFF8), dark: (0x0D2B2A, 0x2B1F47)),
+        .init(id: "sunset", light: (0xFEEBDD, 0xF8D3D6), dark: (0x301A11, 0x3D1729)),
+        .init(id: "night", light: (0xE7ECF7, 0xD5DCEF), dark: (0x0A0F1F, 0x1A2342)),
+    ]
+
+    static func find(_ id: String?) -> Atmosphere? { all.first { $0.id == id } }
+    static var current: Atmosphere? { find(UserDefaults.standard.string(forKey: key)) }
+}
+
+/// Sayfa zemini: atmosfer seçiliyse renk geçişi, değilse temanın zemin rengi
+struct AppBackdrop: View {
+    @AppStorage(Atmosphere.key) private var atmo = ""
+    @AppStorage("accent") private var accent = AccentPalette.defaultID
+
+    var body: some View {
+        if let a = Atmosphere.find(atmo) {
+            LinearGradient(colors: [a.top, a.bottom], startPoint: .top, endPoint: .bottom)
+        } else {
+            Theme.bg
+        }
+    }
+}
+
+/// Liste ve form sayfalarının zemini temanın zeminidir (atmosfer seçiliyse renk geçişi); tema değişince yeniden boyanır
 struct ThemedBackground: ViewModifier {
     @AppStorage("accent") private var accent = AccentPalette.defaultID
 
     func body(content: Content) -> some View {
         content
             .scrollContentBackground(.hidden)
-            .background(Theme.bg.ignoresSafeArea())
+            .background(AppBackdrop().ignoresSafeArea())
     }
 }
 

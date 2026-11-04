@@ -103,7 +103,8 @@ fun noiseName(kind: String) = when (kind) {
     "brown" -> L("tools.pomodoro.noiseBrown")
     "rain" -> L("tools.pomodoro.noiseRain")
     "waves" -> L("noise.waves")
-    else -> L("tools.pomodoro.noiseOff")
+    "stream", "wind", "fire", "crickets", "tick" -> L("noise.$kind")
+    else -> if (kind.startsWith("mix:")) L("noise.mix") else L("tools.pomodoro.noiseOff")
 }
 
 /**
@@ -131,7 +132,7 @@ class SoundService : Service() {
         until = intent.getLongExtra(EXTRA_UNTIL, 0L)
         fade = intent.getBooleanExtra(EXTRA_FADE, false)
         gain = NoiseGen.gain(intent.getIntExtra(EXTRA_VOLUME, 40))
-        if (k !in NoiseGen.KINDS || (until in 1..System.currentTimeMillis())) {
+        if ((k !in NoiseGen.KINDS && !k.startsWith("mix:")) || (until in 1..System.currentTimeMillis())) {
             finish()
             return START_NOT_STICKY
         }
@@ -153,7 +154,8 @@ class SoundService : Service() {
         kind = k
         // Arabellek (8–10 sn) arka planda üretilir, sonra ana iş parçacığında çalınır
         Thread {
-            val samples = NoiseGen.samples(k)
+            // Karışım (2. analiz #30): "mix:rain=60;fire=30"
+            val samples = if (k.startsWith("mix:")) NoiseGen.mix(k.removePrefix("mix:")) else NoiseGen.samples(k)
             val pcm = ShortArray(samples.size) { (samples[it] * 32767).toInt().toShort() }
             handler.post { if (kind == k && track == null && source.isNotEmpty()) start(pcm) }
         }.start()
@@ -248,7 +250,7 @@ class SoundService : Service() {
             channel(c)
             val sp = Prefs.store
             val title = if (source == "pomo") L("tools.pomodoro.${sp.getString("pomo.phase", "work")}") + " · " + noiseName(kind)
-            else L("sleep.sounds") + " · " + noiseName(kind)
+            else if (source == "prealarm") L("alarm.preAlarm") else L("sleep.sounds") + " · " + noiseName(kind)
             val text = if (source == "pomo") T("tools.pomodoro.round", sp.getInt("pomo.round", 1), sp.getInt("pomo.rounds", 4)) else ""
             val tool = if (source == "pomo") "pomodoro" else "sleep"
             val stop = PendingIntent.getService(c, NID, Intent(c, SoundService::class.java).setAction(ACTION_STOP),
@@ -338,23 +340,14 @@ fun FocusStatsCard(log: List<FocusLog.Entry>, onClear: () -> Unit) {
             Text(L("tools.pomodoro.empty"), color = Theme.c.muted, fontSize = 14.sp)
         } else {
             Row2(L("tools.pomodoro.today"), T("tools.pomodoro.statLine", s.today.n, s.today.m))
+            // Bugünün odak kartı (2. analiz #105)
+            if (s.today.m > 0) androidx.compose.material3.TextButton(onClick = {
+                Share.image(context, ShareCards.focus(s.today.m, s.today.n, streak, s.top.firstOrNull()?.first), "odak.png", L("share.card"))
+            }) { Text("📤 " + L("share.card"), color = Theme.c.accent) }
             Row2(L("tools.pomodoro.week"), T("tools.pomodoro.statLine", s.week.n, s.week.m))
             Row2(L("tools.pomodoro.total"), T("tools.pomodoro.statLine", s.total.n, s.total.m))
-            Text(L("tools.pomodoro.chartCaption"), color = Theme.c.muted, fontSize = 12.sp)
-            val top = maxOf(1, s.perDay.max())
-            Row(Modifier.fillMaxWidth().height(112.dp), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.Bottom) {
-                days.forEachIndexed { i, d ->
-                    val label = L("calendar.weekdaysShort.${LocalDate.parse(d).dayOfWeek.value - 1}")
-                    Column(Modifier.weight(1f).fillMaxHeight().clearAndSetSemantics { contentDescription = "$label: ${s.perDay[i]} ${L("tools.pomodoro.minUnit")}" },
-                        horizontalAlignment = Alignment.CenterHorizontally) {
-                        Spacer(Modifier.weight(1f))
-                        Box(Modifier.fillMaxWidth().height(maxOf(3f, 90f * s.perDay[i] / top).dp)
-                            .background(if (i == 6) Theme.c.accent else Theme.c.accent.copy(alpha = 0.55f), RoundedCornerShape(4.dp)))
-                        Spacer(Modifier.height(4.dp))
-                        Text(label, color = Theme.c.muted, fontSize = 11.sp)
-                    }
-                }
-            }
+            // 7 gün / 30 gün / 12 ay (2. analiz #31)
+            FocusRangeChart(log)
             if (s.top.isNotEmpty()) {
                 Text(L("tools.pomodoro.topTasks"), color = Theme.c.text, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
                 for ((name, m) in s.top) Row2(name, "$m ${L("tools.pomodoro.minUnit")}")

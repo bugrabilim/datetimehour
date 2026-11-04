@@ -53,6 +53,8 @@ struct Eclipse: Decodable, Identifiable {
 /// Ay takvimi (her gün öğle saatinde evre; yeni ay ve dolunay günleri adıyla), bugün Ay doğuşu/batışı ve yaklaşan tutulmalar
 struct MoonView: View {
     @State private var month = CalendarDay(Date())
+    /// Tarih kaydırıcı (2. analiz #146): bugünden −60…+60 gün; takvimde güne dokunmak da seçer
+    @State private var offset = 0
 
     var body: some View {
         let place = PlaceModel.shared.place
@@ -60,6 +62,7 @@ struct MoonView: View {
         let today = CalendarDay(now, timeZone: place.zone)
         let rs = place.moonRiseSet(today)
         List {
+            Section { MoonScrubber(place: place, today: today, offset: $offset) }
             Section {
                 HStack {
                     Button { month = month.adding(months: -1) } label: { Image(systemName: "chevron.left") }
@@ -72,8 +75,11 @@ struct MoonView: View {
                 }
                 .buttonStyle(.borderless)
                 .environment(\.layoutDirection, .leftToRight)
-                MoonMonthGrid(year: month.year, month: month.month, place: place, today: today)
+                MoonMonthGrid(year: month.year, month: month.month, place: place, today: today) { d in
+                    offset = max(-60, min(60, d.dayNumber - today.dayNumber))
+                }
             }
+            MoonDataSection(place: place, now: now)
             Section {
                 LabeledContent(L("nature.moonrise"), value: place.moonTime(rs.rise, none: "nature.moonNoRise"))
                 LabeledContent(L("nature.moonset"), value: place.moonTime(rs.set, none: "nature.moonNoSet"))
@@ -81,6 +87,7 @@ struct MoonView: View {
                 Text(place.name)
             }
             CrescentSection(place: place, now: now)
+            YearMoonsSection(place: place, now: now)
             Section {
                 Text(T("nature.eclipseLead", place.name)).font(.footnote).foregroundStyle(Theme.muted)
                 ForEach(Eclipse.all.filter { $0.date > now.addingTimeInterval(-6 * 3600) }.prefix(6)) { e in
@@ -92,6 +99,9 @@ struct MoonView: View {
                         if !e.path.isEmpty {
                             Text(T("nature.eclipsePath", Eclipse.names(e.path))).font(.caption).foregroundStyle(Theme.muted)
                         }
+                        // Ayrıntı (2. analiz #159): Ay tutulmasında temas anları ve çizim; Güneş tutulmasında yerel örtülme ve harita
+                        DisclosureGroup(L("moon.detail")) { EclipseDetail(e: e, place: place) }
+                            .font(.footnote)
                         if e.kind == "lunar" {
                             // Ay o anda yerin ufkunun üstündeyse tutulma buradan izlenebilir
                             let up = Nature.moonAltitude(Double(e.ut), lat: place.lat, lon: place.lon) > 0
@@ -110,11 +120,13 @@ struct MoonView: View {
                     Text(L("nature.eclipseSource"))
                 }
             }
+            KidsMoonSection()
+            Section { } footer: { Text("NASA's Scientific Visualization Studio (CGI Moon Kit)") }
         }
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("moon.calendarLink"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -124,6 +136,7 @@ private struct MoonMonthGrid: View {
     let month: Int
     let place: AppPlace
     let today: CalendarDay
+    var onPick: (CalendarDay) -> Void = { _ in }
 
     var body: some View {
         let first = CalendarDay(year, month, 1)
@@ -140,7 +153,7 @@ private struct MoonMonthGrid: View {
                     let noon = place.startOfDay(d).addingTimeInterval(12 * 3600)
                     let m = Nature.moon(at: noon)
                     VStack(spacing: 1) {
-                        Text(moonPhaseEmoji[m.phaseIndex]).font(.system(size: 20))
+                        MoonImage(fraction: m.fraction, size: 24, south: place.lat < 0)
                         Text("\(d.day)").font(.caption.weight(.semibold)).monospacedDigit()
                         Text(marks[d].map { L("nature.phases.\($0)") } ?? " ")
                             .font(.system(size: 8))
@@ -152,7 +165,10 @@ private struct MoonMonthGrid: View {
                     .frame(maxWidth: .infinity, minHeight: 58, alignment: .top)
                     .padding(.vertical, 3)
                     .background(d == today ? Theme.accentSoft : .clear, in: RoundedRectangle(cornerRadius: 8))
+                    .contentShape(Rectangle())
+                    .onTapGesture { onPick(d) }
                     .accessibilityElement(children: .combine)
+                    .accessibilityAddTraits(.isButton)
                     .accessibilityLabel("\(d.day) · \(L("nature.phases.\(moonPhaseKeys[m.phaseIndex])"))")
                 } else {
                     Color.clear.frame(height: 1)
@@ -173,5 +189,71 @@ private struct MoonMonthGrid: View {
             }
         }
         return out
+    }
+}
+
+/// Yılın dolunayları (2. analiz #148, #161): sayı, Mavi Ay (aynı takvim ayında ikinci dolunay), Kuzey Amerika adları;
+/// Hasat Ayı sonbahar ekinoksuna en yakın dolunay (sitedeki Mevsimler ile aynı kural).
+enum YearMoons {
+    struct Item: Identifiable { let id: Int64; let date: Date; let name: String; let blue: Bool }
+
+    static func list(year: Int, zone: TimeZone) -> [Item] {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = zone
+        guard let start = cal.date(from: DateComponents(year: year, month: 1, day: 1)) else { return [] }
+        let jan1 = start.timeIntervalSince1970 * 1000
+        let k0 = Int((jan1 / 86400000 + 2440587.5 - 2451550.09766) / 29.530588861) - 2
+        var times: [Int64] = []
+        var months: [Int] = []
+        for k in k0...(k0 + 16) {
+            let ms = Nature.phaseMilliseconds(k: k, full: true)
+            let c = cal.dateComponents([.year, .month], from: Date(timeIntervalSince1970: Double(ms) / 1000))
+            if c.year == year { times.append(ms); months.append(c.month ?? 1) }
+        }
+        if times.isEmpty { return [] }
+        let eq = Nature.seasons(year: year).september
+        var hv = 0
+        for i in times.indices where abs(times[i] - eq) < abs(times[hv] - eq) { hv = i }
+        var names = months.map { L("nature.ym.names.\($0 - 1)") }
+        var blue = Array(repeating: false, count: times.count)
+        for i in times.indices where i > 0 && months[i - 1] == months[i] {
+            blue[i] = true
+            names[i] = L("nature.ym.blueName")
+        }
+        names[hv] = L("nature.ym.harvest")
+        if months[hv] == 10 && hv + 1 < times.count { names[hv + 1] = L("nature.ym.names.9") }
+        return times.indices.map { Item(id: times[$0], date: Date(timeIntervalSince1970: Double(times[$0]) / 1000), name: names[$0], blue: blue[$0]) }
+    }
+}
+
+private struct YearMoonsSection: View {
+    let place: AppPlace
+    let now: Date
+
+    private var year: Int { CalendarDay(now, timeZone: place.zone).year }
+    private var items: [YearMoons.Item] { YearMoons.list(year: year, zone: place.zone) }
+    private var summary: String {
+        let list = items
+        let tail: String
+        if let b = list.first(where: { $0.blue }) { tail = T("nature.ym.blue", Fmt.dayMonth(b.date, tz: place.zone)) } else { tail = L("nature.ym.noBlue") }
+        return T("nature.ym.count", String(year), String(list.count)) + " " + tail
+    }
+
+    var body: some View {
+        Section {
+            Text(summary).font(.footnote).foregroundStyle(Theme.text)
+            ForEach(items) { m in
+                HStack {
+                    Text((m.blue ? "🔵 " : "🌕 ") + m.name)
+                        .foregroundStyle(m.date < now ? Theme.muted : Theme.text)
+                    Spacer()
+                    Text(Fmt.shortDateTime(m.date, tz: place.zone)).monospacedDigit().foregroundStyle(Theme.muted)
+                }
+            }
+        } header: {
+            Text(T("nature.ym.heading", String(year)))
+        } footer: {
+            Text(L("nature.ym.namesNote"))
+        }
     }
 }

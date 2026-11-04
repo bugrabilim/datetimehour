@@ -21,9 +21,30 @@ enum NotificationPrefs {
     static var current: PrayerAlerts.Settings {
         let d = UserDefaults.standard
         // Varsayılan açık (30 Ekim 2026, sahibin isteği: her özelliğin bildirimi açık gelir, kullanıcı kapatır)
+        var perLead: [Prayer: Int] = [:]
+        var days: [Prayer: Set<Int>] = [:]
+        for p in Prayer.allCases {
+            if let v = d.object(forKey: perLeadKey(p)) as? Int, v >= 0 { perLead[p] = v }
+            let set = daysOf(p)
+            if !set.isEmpty { days[p] = set }
+        }
         return .init(enabled: d.object(forKey: enabledKey) as? Bool ?? true,
                      prayers: decode(d.string(forKey: prayersKey) ?? defaultPrayers),
-                     leadMinutes: d.integer(forKey: leadKey))
+                     leadMinutes: d.integer(forKey: leadKey), perLead: perLead, days: days)
+    }
+
+    // Vakte göre ayar (2. analiz #54): notify.p.<vakit>.lead (-1/yok = genel), .sound ("" = genel), .days (ISO gün, virgülle)
+    static func perLeadKey(_ p: Prayer) -> String { "notify.p.\(p.rawValue).lead" }
+    static func perSoundKey(_ p: Prayer) -> String { "notify.p.\(p.rawValue).sound" }
+    static func perDaysKey(_ p: Prayer) -> String { "notify.p.\(p.rawValue).days" }
+
+    static func daysOf(_ p: Prayer) -> Set<Int> {
+        let raw = UserDefaults.standard.string(forKey: perDaysKey(p)) ?? ""
+        return Set(raw.split(separator: ",").compactMap { Int($0) }.filter { (1...7).contains($0) })
+    }
+
+    static func soundMode(_ p: Prayer) -> SoundMode {
+        SoundMode(rawValue: UserDefaults.standard.string(forKey: perSoundKey(p)) ?? "") ?? .current
     }
 }
 
@@ -50,9 +71,11 @@ enum PrayerNotifier {
     /// İlk açılışta bildirim izni bir kez sorulur (bildirimler varsayılan açık); sonra yalnız Ayarlar'dan
     static func askOnce() async {
         let d = UserDefaults.standard
-        guard !d.bool(forKey: "notify.asked") else { return }
+        // Kurulum sihirbazı sürerken sorulmaz (izin orada istenir; Onboarding)
+        guard !d.bool(forKey: "notify.asked"), !Onboarding.pending else { return }
         d.set(true, forKey: "notify.asked")
-        if await authorizationStatus() == .notDetermined { _ = await requestAuthorization() }
+        // Önce kısa açıklama (2. analiz #80); "Şimdi değil"de sistem penceresi açılmaz, Ayarlar › Bildirimler'den istenir
+        if await authorizationStatus() == .notDetermined, await PermissionPrimer.ask(.notify) { _ = await requestAuthorization() }
     }
 
     /// Bu planın kurduğu bildirimler (alarm ve zamanlayıcı bildirimleri ayrı, onlara dokunulmaz)
@@ -79,19 +102,25 @@ enum PrayerNotifier {
             let alerts = PrayerAlerts.plan(schedule: place.schedule, settings: settings, now: now)
             // Her vakit için ses bir kez üretilir (sesli duyuru vakit adını söyler)
             var sounds: [Prayer: UNNotificationSound] = [:]
-            NotificationSounds.removeStale(keeping: Set(Prayer.allCases.map { NotificationSounds.fileName($0, lead: settings.leadMinutes) }))
+            NotificationSounds.removeStale(keeping: Set(Prayer.allCases.map { NotificationSounds.fileName($0, lead: settings.lead($0)) }))
             for prayer in Set(alerts.map(\.prayer)) {
-                sounds[prayer] = await NotificationSounds.sound(for: prayer, lead: settings.leadMinutes)
+                sounds[prayer] = await NotificationSounds.sound(for: prayer, lead: settings.lead(prayer),
+                                                                mode: NotificationPrefs.soundMode(prayer))
                 guard mine == generation else { return }
             }
             planned += alerts.map { a in
                 let name = a.prayer.localizedName
+                let lead = settings.lead(a.prayer)
                 return PlannedNotification(
                     id: "prayer-\(Int(a.prayerAt.timeIntervalSince1970))-\(a.prayer.rawValue)", fireAt: a.fireAt,
-                    title: settings.leadMinutes > 0
-                        ? String(format: L("notify.title.before"), name, String(settings.leadMinutes))
+                    title: lead > 0
+                        ? String(format: L("notify.title.before"), name, String(lead))
                         : String(format: L("notify.title.now"), name),
-                    body: "\(place.name) · \(place.hm(a.prayerAt))", thread: "prayer", sound: sounds[a.prayer] ?? .default)
+                    body: "\(place.name) · \(place.hm(a.prayerAt))", thread: "prayer", sound: sounds[a.prayer] ?? .default,
+                    category: PrayerSnooze.category,
+                    // Uzun basınca açılan içerik (NotifyContent uzantısı): vakte kalan süre ve kıble yönü
+                    info: ["prayerAt": String(Int(a.prayerAt.timeIntervalSince1970)), "prayer": name,
+                           "lat": String(place.lat), "lon": String(place.lon), "place": place.name])
             }
         }
         planned += await FeatureNotifier.planned(place: place, now: now)
@@ -140,7 +169,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
-        MainActor.assumeIsolated { UNUserNotificationCenter.current().setNotificationCategories(AlarmPreNotify.categories) }
+        MainActor.assumeIsolated { UNUserNotificationCenter.current().setNotificationCategories(AlarmPreNotify.categories.union(PrayerSnooze.categories)) }
         return true
     }
 
@@ -148,6 +177,12 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         let info = response.notification.request.content.userInfo
+        // Vakit bildiriminde "5 dk sonra hatırlat" (2. analiz #164)
+        if response.actionIdentifier == PrayerSnooze.action {
+            PrayerSnooze.snooze(response.notification.request.content)
+            completionHandler()
+            return
+        }
         if response.actionIdentifier == AlarmPreNotify.skipAction, let id = info["alarm"] as? String,
            let at = (info["at"] as? String).flatMap(TimeInterval.init) {
             Task { @MainActor in
@@ -167,5 +202,24 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner, .list, .sound])
+    }
+}
+
+/// Vakit bildiriminde "5 dk sonra hatırlat" (2. analiz #164): aynı bildirim 5 dakika sonra yeniden gelir
+enum PrayerSnooze {
+    static let category = "prayer"
+    static let action = "prayer-snooze"
+
+    static var categories: Set<UNNotificationCategory> {
+        [UNNotificationCategory(identifier: category,
+                                actions: [UNNotificationAction(identifier: action, title: L("notify.snooze"), options: [])],
+                                intentIdentifiers: [])]
+    }
+
+    static func snooze(_ content: UNNotificationContent) {
+        guard let copy = content.mutableCopy() as? UNMutableNotificationContent else { return }
+        let request = UNNotificationRequest(identifier: "snooze-prayer-\(Int(Date().timeIntervalSince1970))", content: copy,
+                                            trigger: UNTimeIntervalNotificationTrigger(timeInterval: 300, repeats: false))
+        UNUserNotificationCenter.current().add(request)
     }
 }

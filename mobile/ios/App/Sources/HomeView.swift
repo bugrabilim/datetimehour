@@ -8,6 +8,8 @@ struct ClockTab: View {
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @AppStorage(Features.key) private var features = ""
     @AppStorage("fs.text") private var personalText = ""
+    @AppStorage(WeatherScene.clockKey) private var weatherBg = false
+    @Environment(\.colorScheme) private var colorScheme
     @State private var fullscreen = false
     @State private var customizing = false
     /// Yan çevirince tam ekran açılır, dikeye dönünce kapanır (düğmeyle açılan tam ekran dikeyde de kalır)
@@ -16,6 +18,8 @@ struct ClockTab: View {
 
     /// Dönen dünyanın yüksekliği: varsayılan düzende sayfa ekrana tam otursun diye kalan boşluğu doldurur
     @State private var globeHeight: CGFloat = 260
+    /// Alttaki düğme satırının yüksekliği (2. analiz #202)
+    static let actionBar: CGFloat = 52
 
     var body: some View {
         GeometryReader { geo in
@@ -23,37 +27,24 @@ struct ClockTab: View {
                 let now = context.date
                 let place = PlaceModel.shared.place
                 let items = HomeLayout(raw: homeItems).visible
+                // Düğme satırı alt çubuğun hemen üstünde, başparmak bölgesinde (2. analiz #202)
+                let viewport = geo.size.height - Self.actionBar
+                // Saat ekranında yalnız saat varsa (30 Ekim kararı) saat ve denetim satırı dikeyde ortalanır, saat genişliğe
+                // büyür (2. analiz #94)
+                let onlyClock = items.isEmpty && personalText.isEmpty
+                let stage = onlyClock ? max(280, min(viewport - 150, min(geo.size.width, 640) * 0.95)) : Self.stageHeight(viewport)
+                VStack(spacing: 0) {
                 ScrollView {
                     VStack(spacing: 16) {
-                        ClockStage(now: now, place: place, height: Self.stageHeight(geo.size.height))
+                        ClockStage(now: now, place: place, height: stage)
                         if !personalText.isEmpty {
                             Text(personalText).font(.title3.weight(.semibold)).multilineTextAlignment(.center).foregroundStyle(Theme.text)
                         }
                         ForEach(items) { item in
                             HomeItemView(item: item, now: now, place: place, globeHeight: globeHeight)
                         }
-                        HStack(spacing: 28) {
-                            Button {
-                                fullscreen = true
-                                BadgeStore.shared.hit(.tamEkran)
-                            } label: {
-                                Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
-                            }
-                            Button {
-                                customizing = true
-                            } label: {
-                                Label(L("home.edit"), systemImage: "slider.horizontal.3")
-                            }
-                            // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
-                            Button {
-                                Router.shared.sheet = .settings
-                            } label: {
-                                Image(systemName: "gearshape")
-                            }
-                            .accessibilityLabel(L("settings.title"))
-                        }
-                        .font(.headline)
-                        .foregroundStyle(Theme.accent)
+                        // Yenilikler: yeni kadranlar bir kez tanıtılır (2. analiz #1)
+                        DialNewsCard()
                         // Hiçbir özellik açık değilse (ilk açılış) özellikleri açmaya çağıran tek satır
                         if Features.parse(features).isEmpty {
                             Button {
@@ -68,18 +59,53 @@ struct ClockTab: View {
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 10)
+                    .frame(minHeight: onlyClock ? viewport - 20 : nil)
                     .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { h in
-                        globeHeight = Self.fitGlobe(contentHeight: h, viewport: geo.size.height, globe: globeHeight,
+                        globeHeight = Self.fitGlobe(contentHeight: h, viewport: viewport, globe: globeHeight,
                                                     hasGlobe: items.contains(.globe))
                     }
                     .frame(maxWidth: 640)
                     .frame(maxWidth: .infinity)
                 }
-                .background(Theme.bg.ignoresSafeArea())
+                HStack(spacing: 28) {
+                    Button {
+                        fullscreen = true
+                        BadgeStore.shared.hit(.tamEkran)
+                    } label: {
+                        Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
+                    }
+                    Button {
+                        customizing = true
+                    } label: {
+                        Label(L("home.edit"), systemImage: "slider.horizontal.3")
+                    }
+                    // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
+                    Button {
+                        Router.shared.sheet = .settings
+                    } label: {
+                        Image(systemName: "gearshape")
+                    }
+                    .accessibilityLabel(L("settings.title"))
+                }
+                .font(.headline)
+                .foregroundStyle(Theme.accent)
+                .frame(height: Self.actionBar)
+                .frame(maxWidth: .infinity)
+                }
+                // Hava neyse ekran öyle (2. analiz #193): seçilirse zemin seçili yerin havası, yazılar koyu temanın renkleri
+                .background {
+                    if weatherBg { AnimatedBackground(kind: .weather) } else { AppBackdrop().ignoresSafeArea() }
+                }
+                .environment(\.colorScheme, weatherBg ? .dark : colorScheme)
+                // Saniye tık sesi (2. analiz #10; Ayarlar › Saat görünümü)
+                .onChange(of: Int(now.timeIntervalSince1970)) { _, s in TickSound.shared.tick(s) }
             }
         }
         .onAppear { UIApplication.shared.isIdleTimerDisabled = keepAwake }
-        .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
+        .onDisappear {
+            UIApplication.shared.isIdleTimerDisabled = false
+            TickSound.shared.stop()
+        }
         .onChange(of: keepAwake) { UIApplication.shared.isIdleTimerDisabled = keepAwake }
         .onChange(of: vsc, initial: true) { _, v in
             if v == .compact, !fullscreen {
@@ -160,9 +186,12 @@ struct ClockStage: View {
                         }
                     }
                 } label: {
-                    Text("\(model.number)/\(ClockModel.allCases.count)")
-                        .font(.headline.monospacedDigit())
-                        .frame(minWidth: 60)
+                    // Model adı ve sırası (2. analiz #202): "Klasik analog · 1/20"; dokununca liste
+                    Text("\(model.name) · \(model.number)/\(ClockModel.allCases.count)")
+                        .font(.subheadline.weight(.semibold).monospacedDigit())
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                        .frame(minWidth: 60, maxWidth: 260)
                 }
                 .accessibilityLabel(model.name)
                 Button { step(1) } label: { Image(systemName: "chevron.forward") }
@@ -209,9 +238,28 @@ struct FullscreenClock: View {
     @AppStorage("fs.scale") private var scale = 1.0
     @AppStorage("fs.dim") private var dim = 0.0
     @AppStorage("fs.lock") private var locked = false
+    @AppStorage(FsDuo.key) private var duo = "off"
     @State private var dimStart: Double?
     @State private var scaleStart: Double?
     @State private var globeHeight: CGFloat = 260
+    /// Metni tabela gibi büyük gösterme (2. analiz #22)
+    @AppStorage("fs.banner") private var banner = false
+    /// Gösterilen sayfa: saat modeli ya da iki yandaki araç sayfası (2. analiz #26: ilk saatten geriye pomodoro,
+    /// son saatten sonra kronometre). Saat modeline geçilince seçim kaydedilir.
+    @State private var page = UserDefaults.standard.string(forKey: "clockModel") ?? ClockModel.classic.rawValue
+    /// Düğmeler dokununca belirir, 4 sn sonra kaybolur (sitedeki tam ekran gibi; 2. analiz #204)
+    @State private var controlsShown = true
+    @State private var hideTask: Task<Void, Never>?
+
+    private func pokeControls() {
+        controlsShown = true
+        hideTask?.cancel()
+        hideTask = Task { @MainActor in
+            try? await Task.sleep(for: .seconds(4))
+            guard !Task.isCancelled else { return }
+            withAnimation(.easeOut(duration: 0.4)) { controlsShown = false }
+        }
+    }
 
     var body: some View {
         // Arka plan: fotoğraf (koyulaştırılmış; slayt varsa sırayla) ya da hareketli; ikisinde de yazılar açık renk
@@ -229,19 +277,42 @@ struct FullscreenClock: View {
                 let night = sunrise == 0 && NightMode.active(nightRaw, place: place, at: now)
                 // Uyku zamanlayıcısı doldu: ekran kararır, telefon kendini kilitleyebilir, uyku sesleri durur
                 let asleep = sleepUntil > 0 && now.timeIntervalSince1970 >= sleepUntil
+                let showBanner = banner && !personalText.isEmpty
+                let stage = Self.stageHeight(geo.size, hasItems: !items.isEmpty)
                 ScrollView {
                     VStack(spacing: 16) {
-                        TabView(selection: $modelID) {
-                            ForEach(ClockModel.allCases) { m in
-                                ClockModelView(model: m, now: now, place: place)
-                                    .scaleEffect(scale)
-                                    .padding(.horizontal, 8)
-                                    .tag(m.rawValue)
+                        // Tabela: metin ekranın üst yarısını doldurur, saat altında küçülür
+                        if showBanner {
+                            Text(bannerLines(personalText, aspect: Double((geo.size.width - 32) / (geo.size.height * 0.5))))
+                                .font(.system(size: 400, weight: .heavy, design: .rounded))
+                                .minimumScaleFactor(0.02)
+                                .lineLimit(3)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: geo.size.height * 0.5)
+                        }
+                        // Yatayda saatin yanında ikinci alan (2. analiz #169, `fs.duo`): takvim, vakitler ya da hava
+                        let duoOn = duo != "off" && geo.size.width > geo.size.height && !showBanner
+                        HStack(spacing: 16) {
+                            TabView(selection: $page) {
+                                FullscreenToolPage(tool: .pomodoro).tag(FullscreenTool.pomodoro.rawValue)
+                                ForEach(ClockModel.allCases) { m in
+                                    ClockModelView(model: m, now: now, place: place)
+                                        .scaleEffect(scale)
+                                        .padding(.horizontal, 8)
+                                        .tag(m.rawValue)
+                                }
+                                FullscreenToolPage(tool: .stopwatch).tag(FullscreenTool.stopwatch.rawValue)
+                            }
+                            .tabViewStyle(.page(indexDisplayMode: .never))
+                            .frame(maxWidth: duoOn ? geo.size.width * 0.56 : .infinity)
+                            if duoOn {
+                                FsDuoPanel(kind: duo, now: now, place: place, height: stage) { dismiss() }
+                                    .frame(maxWidth: .infinity)
                             }
                         }
-                        .tabViewStyle(.page(indexDisplayMode: .never))
-                        .frame(height: Self.stageHeight(geo.size, hasItems: !items.isEmpty))
-                        if !personalText.isEmpty {
+                        .frame(height: showBanner ? max(180, geo.size.height * 0.4) : stage)
+                        if !personalText.isEmpty && !showBanner {
                             Text(personalText).font(.title2.weight(.semibold)).multilineTextAlignment(.center)
                         }
                         ForEach(items) { item in
@@ -279,6 +350,9 @@ struct FullscreenClock: View {
                             }
                         }
                         .foregroundStyle(Theme.muted)
+                        .opacity(controlsShown ? 1 : 0)
+                        .allowsHitTesting(controlsShown)
+                        .accessibilityHidden(!controlsShown)
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
@@ -308,7 +382,7 @@ struct FullscreenClock: View {
                     } else if bg.animated {
                         AnimatedBackground(kind: bg)
                     } else {
-                        Theme.bg.ignoresSafeArea()
+                        AppBackdrop().ignoresSafeArea()
                     }
                 }
                 // Kırmızıya çevirme: siyah zemin üstünde çarpım (beyaz → kısık kırmızı, siyah siyah kalır)
@@ -339,13 +413,16 @@ struct FullscreenClock: View {
                 .simultaneousGesture(MagnifyGesture().onChanged { v in
                     let start = scaleStart ?? scale
                     scaleStart = start
-                    scale = min(1, max(0.5, start * Double(v.magnification)))
+                    scale = min(1.3, max(0.5, start * Double(v.magnification)))
                 }.onEnded { _ in scaleStart = nil })
                 .overlay {
                     // Dokununca saat geri gelir
                     if asleep {
                         Color.black.ignoresSafeArea().onTapGesture { sleepUntil = 0 }
                     }
+                }
+                .onChange(of: Int(now.timeIntervalSince1970)) { _, s in
+                    if !asleep { TickSound.shared.tick(s) }
                 }
                 .onChange(of: asleep) { _, a in
                     UIApplication.shared.isIdleTimerDisabled = !a
@@ -356,10 +433,18 @@ struct FullscreenClock: View {
             }
         }
         .onTapGesture(count: 2) { dismiss() }
+        .simultaneousGesture(TapGesture().onEnded { pokeControls() })
+        .simultaneousGesture(DragGesture(minimumDistance: 12).onEnded { _ in pokeControls() })
+        .onAppear { pokeControls() }
+        .onDisappear { hideTask?.cancel() }
         .onChange(of: vsc) { _, v in
             if v == .regular, closeOnPortrait { dismiss() }
         }
         .overlay(alignment: .top) { BadgeToast() }
+        .onChange(of: page) { _, new in
+            guard ClockModel(rawValue: new) != nil, new != modelID else { return }
+            modelID = new
+        }
         .onChange(of: modelID) { _, new in
             if let i = ClockModel.allCases.firstIndex(where: { $0.rawValue == new }) {
                 BadgeStore.shared.sawModel(i, of: ClockModel.allCases.count)
@@ -383,5 +468,50 @@ struct FullscreenClock: View {
     static func stageHeight(_ size: CGSize, hasItems: Bool) -> CGFloat {
         if size.width > size.height { return max(220, size.height - 44) }
         return hasItems ? ClockTab.stageHeight(size.height * 1.08) : max(300, size.height - 60)
+    }
+}
+
+/// Yatay tam ekranda saatin yanındaki alan (2. analiz #169): kayıt `fs.duo` (off, calendar, prayer, weather);
+/// Android'deki FsDuo ile aynı
+enum FsDuo {
+    static let key = "fs.duo"
+    static let all = ["off", "calendar", "prayer", "weather"]
+}
+
+struct FsDuoPanel: View {
+    let kind: String
+    let now: Date
+    let place: AppPlace
+    let height: CGFloat
+    let onOpen: () -> Void
+
+    var body: some View {
+        switch kind {
+        case "calendar":
+            MonthPart(now: now, width: min(height * 0.92, 420))
+        case "prayer":
+            VStack(spacing: 12) {
+                HomeItemView(item: .next, now: now, place: place, globeHeight: 0) { onOpen() }
+                HomeItemView(item: .prayers, now: now, place: place, globeHeight: 0) { onOpen() }
+            }
+            .frame(maxWidth: 420)
+        case "weather":
+            HomeItemView(item: .weather, now: now, place: place, globeHeight: 0) { onOpen() }
+                .frame(maxWidth: 420)
+        default:
+            EmptyView()
+        }
+    }
+}
+
+/// Saat görünümü sayfasındaki seçim
+struct FsDuoPicker: View {
+    @AppStorage(FsDuo.key) private var duo = "off"
+
+    var body: some View {
+        Picker(L("fs.duo"), selection: $duo) {
+            ForEach(FsDuo.all, id: \.self) { Text(L("fs.duo.\($0)")).tag($0) }
+        }
+        Text(L("fs.duoNote")).font(.footnote).foregroundStyle(Theme.muted)
     }
 }

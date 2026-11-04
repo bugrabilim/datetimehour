@@ -84,7 +84,7 @@ private struct LiveLockScreen: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(state.title).font(.headline).foregroundStyle(Theme.text).lineLimit(1)
                     if !state.subtitle.isEmpty {
-                        Text(state.subtitle).font(.subheadline).foregroundStyle(Theme.muted).lineLimit(1)
+                        Text(state.subtitle).font(.subheadline).foregroundStyle(Theme.muted).lineLimit(2)
                     }
                 }
                 Spacer(minLength: 8)

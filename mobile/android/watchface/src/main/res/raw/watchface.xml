@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Saat Tarih Wear OS kadranı (Watch Face Format 1; rakip analizi listesi #78): rakamlı analog kadran, saniye ibresi
      (ortam modunda gizli), iki komplikasyon yeri. Üstteki yer varsayılan olarak Saat Tarih saat uygulamasının "Sıradaki
-     vakit" komplikasyonunu, alttaki tarih ve günü gösterir; ikisi de kadran düzenlenirken değiştirilebilir. -->
+     vakit" komplikasyonunu, alttaki tarih ve günü gösterir; ikisi de kadran düzenlenirken değiştirilebilir.
+     2. analiz #32: kadran düzenlenirken vurgu rengi (5 renk) ve görünüm (analog ya da dijital) seçilir. -->
 <WatchFace width="450" height="450" clipShape="CIRCLE">
     <Metadata key="CLOCK_TYPE" value="ANALOG" />
     <Metadata key="PREVIEW_TIME" value="10:08:32" />
+    <UserConfigurations>
+        <ColorConfiguration id="accent" displayName="wf_accent" defaultValue="0">
+            <ColorOption id="0" displayName="wf_color_amber" colors="#fff0a55c" />
+            <ColorOption id="1" displayName="wf_color_blue" colors="#ff5aa9ff" />
+            <ColorOption id="2" displayName="wf_color_green" colors="#ff5bd38a" />
+            <ColorOption id="3" displayName="wf_color_rose" colors="#fff48fb1" />
+            <ColorOption id="4" displayName="wf_color_white" colors="#ffeef0f4" />
+        </ColorConfiguration>
+        <ListConfiguration id="style" displayName="wf_style" defaultValue="0">
+            <ListOption id="0" displayName="wf_style_analog" />
+            <ListOption id="1" displayName="wf_style_digital" />
+        </ListConfiguration>
+    </UserConfigurations>
     <Scene backgroundColor="#ff0b1020">
         <PartImage x="0" y="0" width="450" height="450" name="dial">
             <Image resource="wf_dial" />
@@ -16,7 +30,7 @@
             <Complication type="SHORT_TEXT">
                 <PartText x="0" y="0" width="200" height="64">
                     <Text align="CENTER" ellipsis="TRUE">
-                        <Font family="SYNC_TO_DEVICE" size="26" weight="BOLD" color="#fff0a55c">
+                        <Font family="SYNC_TO_DEVICE" size="26" weight="BOLD" color="[CONFIGURATION.accent.0]">
                             <Template>%s %s<Parameter expression="[COMPLICATION.TITLE]" /><Parameter expression="[COMPLICATION.TEXT]" /></Template>
                         </Font>
                     </Text>
@@ -36,13 +50,24 @@
                 </PartText>
             </Complication>
         </ComplicationSlot>
-        <AnalogClock x="0" y="0" width="450" height="450">
-            <HourHand resource="wf_hour" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" />
-            <MinuteHand resource="wf_minute" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" />
-            <SecondHand resource="wf_second" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
-                <Variant mode="AMBIENT" target="alpha" value="0" />
-                <Sweep frequency="15" />
-            </SecondHand>
-        </AnalogClock>
+        <ListConfiguration id="style">
+            <ListOption id="0">
+                <AnalogClock x="0" y="0" width="450" height="450">
+                    <HourHand resource="wf_hour" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" />
+                    <MinuteHand resource="wf_minute" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" tintColor="[CONFIGURATION.accent.0]" />
+                    <SecondHand resource="wf_second" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
+                        <Variant mode="AMBIENT" target="alpha" value="0" />
+                        <Sweep frequency="15" />
+                    </SecondHand>
+                </AnalogClock>
+            </ListOption>
+            <ListOption id="1">
+                <DigitalClock x="75" y="180" width="300" height="96">
+                    <TimeText format="hh:mm" hourFormat="SYNC_TO_DEVICE" align="CENTER" x="0" y="0" width="300" height="96">
+                        <Font family="SYNC_TO_DEVICE" size="84" weight="BOLD" color="[CONFIGURATION.accent.0]" />
+                    </TimeText>
+                </DigitalClock>
+            </ListOption>
+        </ListConfiguration>
     </Scene>
 </WatchFace>

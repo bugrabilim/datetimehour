@@ -7,10 +7,41 @@ import kotlin.math.sqrt
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class FocusSleepWakeTest {
     /** Yeni alarm görevleri (#75): hafıza dizisi, yazma denetimi, fotoğraf özeti */
+    @Test
+    fun squatObjectSpeak() {
+        // Nesne: Vision/ML Kit etiketleri İngilizce; güven eşiği 0,3
+        assertTrue(WakeTask.objectMatch("cup", listOf("Coffee cup" to 0.8f)))
+        assertTrue(WakeTask.objectMatch("bed", listOf("bedroom" to 0.5f)))
+        assertFalse(WakeTask.objectMatch("bed", listOf("bedroom" to 0.1f)))
+        assertFalse(WakeTask.objectMatch("sky", listOf("keyboard" to 0.9f)))
+        // Tam sözcük: "street" ağaç, "flowerbed" yatak, "sunglasses" bardak değildir; çoğul kabul
+        assertFalse(WakeTask.objectMatch("plant", listOf("street" to 0.9f)))
+        assertFalse(WakeTask.objectMatch("bed", listOf("flowerbed" to 0.9f)))
+        assertFalse(WakeTask.objectMatch("cup", listOf("sunglasses" to 0.9f)))
+        assertTrue(WakeTask.objectMatch("shoe", listOf("Shoes" to 0.6f)))
+        assertTrue(WakeTask.objectMatch("cup", listOf("drinking_glass" to 0.6f)))
+        // Boşluksuz yazılar: harf düzeyinde (tanıyıcı rakam yazsa da geçer)
+        assertTrue(WakeTask.spoken("石の上にも三年", "石の上にも3年"))
+        assertTrue(WakeTask.spoken("百闻不如一见。", "百闻不如一见"))
+        assertFalse(WakeTask.spoken("石の上にも三年", "三年"))
+        // Sesli okuma: %70 sözcük sırayla
+        assertTrue(WakeTask.spoken("Sabah erken kalkan yol alır", "sabah erken kalkan yol alır"))
+        assertTrue(WakeTask.spoken("Sabah erken kalkan yol alır", "sabah erken kalkan alır"))
+        assertFalse(WakeTask.spoken("Sabah erken kalkan yol alır", "yol alır"))
+        // Squat: her çömelme bir tepe (1,3 g üstü) ve dip (0,95 g altı); 0,9 sn'den sık sayılmaz
+        val c = MotionCounter.squat()
+        var t = 0L
+        repeat(5) { c.feed(t, 0.0, 0.0, 0.8); c.feed(t + 400, 0.0, 0.0, 1.4); c.feed(t + 700, 0.0, 0.0, 1.0); t += 1500 }
+        assertEquals(5, c.count)
+        c.feed(t, 0.0, 0.0, 0.8); c.feed(t + 100, 0.0, 0.0, 1.5); c.feed(t + 200, 0.0, 0.0, 0.8); c.feed(t + 300, 0.0, 0.0, 1.5)
+        assertEquals(6, c.count)
+    }
+
     @Test
     fun moreWakeTasks() {
         val seq = WakeTask.memorySequence(2, kotlin.random.Random(7))
@@ -74,9 +105,16 @@ class FocusSleepWakeTest {
             val s = NoiseGen.samples(kind, rate = 8000)
             assertEquals(NoiseGen.seconds(kind) * 8000, s.size, kind)
             val rms = sqrt(s.sumOf { it.toDouble() * it } / s.size)
-            assertTrue(rms in 0.17..0.21, "$kind rms $rms")
+            // Darbeli sesler (cırcır, tik-tak) tepeye göre, diğerleri RMS'e göre ayarlanır
+            if (kind == "crickets" || kind == "tick") assertTrue(abs(s.maxOf { abs(it) } - 0.7f) < 0.01f, "$kind peak")
+            else assertTrue(rms in 0.17..0.21, "$kind rms $rms")
             assertTrue(s.all { it in -1f..1f }, kind)
         }
+        // Karışım (2. analiz #30): 8 sn, tepe 0,95'i geçmez, bilinmeyen tür ve 0 düzey atlanır
+        val m = NoiseGen.mix("rain=80;fire=60;crickets=40;tick=0;foo=50", rate = 8000)
+        assertEquals(8 * 8000, m.size)
+        assertTrue(m.maxOf { abs(it) } <= 0.951f)
+        assertEquals(listOf("rain" to 80, "fire" to 60, "crickets" to 40), NoiseGen.parseMix("rain=80;fire=60;crickets=40;tick=0;foo=50"))
         // Kahverengi gürültü yavaş değişir: döngü yerinde sıçrama olmamalı
         val b = NoiseGen.samples("brown", rate = 8000)
         assertTrue(abs(b.last() - b.first()) < 0.05f, "brown seam ${b.last()} ${b.first()}")

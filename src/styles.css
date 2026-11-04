@@ -9,6 +9,7 @@
   --muted: #565c68;
   --border: #d6cfbf;
   --accent: #9a3f00;
+  --present-go: #1e7a46; --present-warn: #8a5a00; --present-stop: #b3261e;
   --accent-ink: #ffffff;
   --accent-soft: #f6e5d6;
   --focus: #1a5fd0;
@@ -132,6 +133,8 @@ a:hover { text-decoration-thickness: 2px; }
 .icon-btn svg { width: 1.25rem; height: 1.25rem; }
 /* Üst bar: marka, sabit tarih, menü; sağda konum ve ayarlar. Dar ekranda menü açılır, tarih ikinci satırda */
 .top-date { margin: 0; color: var(--muted); font-size: 0.9rem; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.top-week:not(:empty)::before { content: " · "; }
+@media (max-width: 40rem) { .top-week { display: none; } }
 .top-tools { display: flex; align-items: center; gap: 0.4rem; }
 .set-sub { display: block; color: var(--muted); font-size: 0.8rem; font-weight: 400; line-height: 1.2; }
 .set-sub:empty { display: none; }
@@ -254,6 +257,18 @@ html.sec-off .hand-sec { display: none; }
 .sr-nav .icon-btn { min-width: 2.5rem; min-height: 2.5rem; border-color: transparent; background: none; }
 .stage-count { color: var(--muted); font-size: 1.05rem; font-weight: 600; font-variant-numeric: tabular-nums; }
 .stage-row > .icon-btn { min-width: 3.1rem; min-height: 3.1rem; }
+/* Saati büyütme/küçültme (2. analiz #177); telefonda gizli (parmakla yakınlaştırma var, satır sığsın) */
+.zoom-btns { display: flex; gap: 0.1rem; }
+.zoom-btns .icon-btn { min-width: 2.5rem; min-height: 2.5rem; border-color: transparent; background: none; }
+.zoom-btns .icon-btn:disabled { opacity: 0.35; cursor: default; }
+@media (max-width: 40rem) { .zoom-btns { display: none; } }
+.stage[style*="--stage-zoom"] .slide > * { zoom: var(--stage-zoom); }
+/* İlk ekranda kısa doğruluk satırı ve saat dilimi hapları (2. analiz #174, #184) */
+.stage-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.35rem 0.6rem; margin: 0 0 0.4rem; color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; min-height: 1.6em; }
+.stage-meta:not(:has(span:not(:empty))) { visibility: hidden; }
+.sync-short.is-off { color: var(--text); font-weight: 600; }
+.tz-pills { display: inline-flex; flex-wrap: wrap; gap: 0.35rem; justify-content: center; }
+.tz-pills .pill { padding: 0.1rem 0.6rem; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--muted); font-size: 0.8rem; }
 .stage-row .icon-btn svg { width: 1.5rem; height: 1.5rem; }
 .fmt-btn { min-height: 3rem; padding: 0 0.8rem; border: 0; border-radius: 8px; background: none; color: var(--text); font: inherit; font-size: 1.25rem; font-weight: 700; cursor: pointer; }
 .fmt-btn:hover { background: var(--surface-2); }
@@ -528,12 +543,14 @@ dialog.search::backdrop { background: rgb(10 12 16 / 0.55); }
 .rozet img { height: 28px; width: auto; }
 
 /* Çerez bandı ve tercihler (standart madde 14): içeriği kapatmaz, odağı tutmaz */
-.cookie-bar { position: fixed; inset-inline: 0; bottom: 0; z-index: 60; background: var(--surface); color: var(--text); border-top: 1px solid var(--border); box-shadow: var(--shadow); padding-block: 0.7rem; }
-.cookie-row { display: flex; flex-wrap: wrap; gap: 0.6rem 1.25rem; align-items: center; justify-content: space-between; }
-.cookie-row p { margin: 0; flex: 1 1 22rem; font-size: 0.9rem; }
-.cookie-btns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; flex: 0 1 26rem; }
-.cookie-btns .btn { min-height: 2.5rem; padding: 0 0.8rem; font-size: 0.9rem; }
-html.has-cookie-bar body { padding-bottom: 7rem; }
+/* Çerez bandı (2. analiz #192, 3 Kasım 2026): kısa metin, ince bant; eşit düğmeler ve politika bağlantısı korunur (standart madde 14) */
+.cookie-bar { position: fixed; inset-inline: 0; bottom: 0; z-index: 60; background: var(--surface); color: var(--text); border-top: 1px solid var(--border); box-shadow: var(--shadow); padding-block: 0.45rem; }
+.cookie-row { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; justify-content: space-between; }
+.cookie-row p { margin: 0; flex: 1 1 22rem; font-size: 0.82rem; line-height: 1.35; }
+.cookie-btns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.4rem; flex: 0 1 22rem; }
+.cookie-btns .btn { min-height: 2.25rem; padding: 0 0.6rem; font-size: 0.85rem; }
+html.has-cookie-bar body { padding-bottom: 5.5rem; }
+@media (max-width: 40rem) { .cookie-row p { flex-basis: 100%; } .cookie-btns { flex-basis: 100%; } }
 .cookie-dialog { width: min(34rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); overflow-y: auto; }
 .cg { border-top: 1px solid var(--border); padding-top: 0.7rem; margin-top: 0.7rem; }
 .cg-head { display: flex; align-items: center; gap: 0.6rem; }
@@ -571,6 +588,7 @@ html.has-cookie-bar body { padding-bottom: 7rem; }
 .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; list-style: none; margin: 0 0 1rem; padding: 0; font-size: 0.95rem; }
 .legend li { display: inline-flex; align-items: center; gap: 0.4rem; }
 .lg { display: inline-block; width: 1.1rem; height: 1.1rem; border-radius: 4px; border: 1px solid var(--border); background: var(--surface); }
+.wh-year > summary { cursor: pointer; } .wh-year > summary h2 { display: inline; }
 .year-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); }
 .ymonth { width: 100%; min-width: 0; border-collapse: separate; border-spacing: 2px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.4rem 0.5rem 0.6rem; }
 .ymonth caption { padding: 0.4rem 0.25rem; font-weight: 700; text-align: start; color: var(--text); }
@@ -599,6 +617,11 @@ html.has-cookie-bar body { padding-bottom: 7rem; }
 .tool-title { margin: 0; font-size: 1.1rem; color: var(--muted); }
 .tool-h2 { font-size: 1.2rem; margin: 0.5rem 0 0; }
 .big-time { margin: 0; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; line-height: 1.1; font-size: clamp(2.4rem, 11vw, 6.5rem); overflow-wrap: anywhere; }
+/* Sunum renkleri (geri sayım; beyaz yazıyla ≥4,5:1) */
+.big-time[data-present] { color: #fff; border-radius: 1rem; padding: 0.15em 0.35em; transition: background-color 0.4s; }
+.big-time[data-present="go"] { background: var(--present-go); }
+.big-time[data-present="warn"] { background: var(--present-warn); }
+.big-time[data-present="stop"] { background: var(--present-stop); }
 .big-time.is-empty, .tool:fullscreen .big-time.is-empty, .tool.is-full .big-time.is-empty { font-size: clamp(1.15rem, 4vw, 1.75rem); font-weight: 600; letter-spacing: 0; line-height: 1.4; }
 .tool:fullscreen .big-time, .tool.is-full .big-time { font-size: clamp(3rem, 15vw, 13rem); }
 .tool-actions, .tool-extra, .presets, .inputs-row, .tabs { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; align-items: center; }
@@ -665,6 +688,8 @@ fieldset.days legend { padding: 0 0.4rem; font-weight: 600; }
 .planner tbody th { text-align: start; padding-inline-start: 0.6rem; white-space: nowrap; background: none; font-size: 0.95rem; }
 .pl-work, .lg-work { background: var(--ok-bg); color: var(--ok); font-weight: 700; }
 .pl-edge, .lg-edge { background: var(--accent-soft); color: var(--text); }
+/* Hafta sonu (2. analiz #72): çizgili zemin, mesai rengini bastırır */
+.pl-weekend, .lg-weekend { background: repeating-linear-gradient(135deg, var(--surface-2, rgba(127, 127, 127, 0.15)) 0 4px, transparent 4px 8px); color: var(--muted); font-weight: 400; }
 .pl-night, .lg-night { background: var(--surface-2); color: var(--muted); }
 .planner sup { font-size: 0.6rem; margin-inline-start: 1px; }
 .pl-common { margin: 0; font-weight: 700; font-size: 1.15rem; text-align: center; }
@@ -799,6 +824,8 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .moon { width: 6.5rem; height: 6.5rem; flex: none; }
 .moon-dark { fill: #1c2230; stroke: var(--border); stroke-width: 1; }
 .moon-lit { fill: #f2edd6; }
+/* Dış çizgi: açık temada dolunay kâğıt zeminde kaybolmasın (2. analiz #89) */
+.moon-ring { fill: none; stroke: var(--muted); stroke-opacity: 0.55; stroke-width: 1; }
 /* Ay takvimi ve tutulmalar (Mevsimler) */
 .moon-cal { max-width: 34rem; }
 .mc-row, .mc-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.25rem; }
@@ -828,6 +855,14 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .wx-place { margin: 0; font-size: 1.15rem; color: var(--muted); }
 .wx-clear { --wx-tint: #f3b233; } .wx-cloud { --wx-tint: #8fa3b8; } .wx-fog { --wx-tint: #a9b2bb; } .wx-rain { --wx-tint: #4f8fc9; } .wx-snow { --wx-tint: #8cc4ec; } .wx-storm { --wx-tint: #7a62b8; }
 .wx-hero.is-night { --wx-tint: #2c3d7a; }
+/* Hava canlandırması (2. analiz #193): canvas kartın zemininde, yazılar beyaz (canvas üstte koyulaştırır) */
+.wx-hero { position: relative; overflow: hidden; isolation: isolate; }
+.wx-fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; display: none; pointer-events: none; }
+.wx-hero.wx-live { background: #1b2350; color: #fff; padding-inline: 1rem; }
+.wx-hero.wx-live .wx-fx { display: block; }
+.wx-live .wx-place, .wx-live .wx-facts dt, .wx-live .meta { color: rgba(255,255,255,0.86); }
+.wx-live .wx-facts .fact { background: rgba(0,0,0,0.38); border-color: rgba(255,255,255,0.22); }
+.wx-live .wx-temp, .wx-live .wx-cond { text-shadow: 0 1px 6px rgba(0,0,0,0.35); }
 .wx-now { text-align: center; margin: 0.5rem 0; }
 .wx-now[hidden], [data-wx-hourly-box][hidden], [data-wx-daily-box][hidden] { display: none; }
 .wx-icon { font-size: clamp(4rem, 16vw, 6.5rem); margin: 0; line-height: 1; }
@@ -837,7 +872,35 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .wx-facts .fact { padding: 0.45rem 0.9rem; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; display: flex; gap: 0.5rem; align-items: baseline; }
 .wx-facts dt { color: var(--muted); font-size: 0.85rem; }
 .wx-facts dd { margin: 0; font-weight: 700; }
+.wx-facts dd.fact-note { font-weight: 400; font-size: 0.85rem; color: var(--muted); }
+.wx-live .wx-facts dd.fact-note { color: rgba(255,255,255,0.86); }
+.wx-sum { margin: -0.5rem auto 1rem; max-width: 36rem; font-size: 1.05rem; padding: 0 1rem; }
+.wx-sum:empty { display: none; }
+.wx-live .wx-sum { text-shadow: 0 1px 6px rgba(0,0,0,0.35); }
 .wx-hourly { display: flex; gap: 0.5rem; overflow-x: auto; list-style: none; padding: 0 0 0.5rem; margin: 0; }
+/* Saatlik eğri ve çipler (2. analiz #107) */
+.wx-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 0.6rem; }
+.wx-chip { font: inherit; font-size: 0.9rem; padding: 0.35rem 0.85rem; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: inherit; cursor: pointer; }
+.wx-chip[aria-pressed="true"] { background: var(--accent-soft, var(--surface-2)); color: var(--accent); border-color: var(--accent); font-weight: 600; }
+.wx-chart { direction: ltr; }
+.wx-svg { width: 100%; height: auto; display: block; cursor: crosshair; touch-action: pan-y; }
+.wx-svg .wx-line { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.wx-svg .wx-area { fill: var(--accent); opacity: 0.12; }
+.wx-svg.m3 .wx-line { stroke: var(--muted); }
+.wx-svg.m3 .wx-area { fill: var(--muted); }
+.wx-svg .wx-bar { fill: #1e88e5; opacity: 0.6; }
+.wx-svg .wx-rule { stroke: var(--border); stroke-width: 1.5; }
+.wx-svg .wx-dot { fill: var(--accent); }
+.wx-axis { display: flex; justify-content: space-between; color: var(--muted); font-size: 0.8rem; font-variant-numeric: tabular-nums; margin: 0.2rem 0 0.4rem; }
+.wx-chart-detail { min-height: 1.5em; font-size: 0.95rem; margin: 0 0 0.8rem; }
+/* Hava kalitesi ve polen (2. analiz #111; renkler Avrupa Çevre Ajansı ölçeği) */
+.wx-aqi-head { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
+.wx-aqi-badge { display: inline-grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 50%; font-weight: 700; font-size: 1.15rem; color: #1a1a1a; }
+.wx-aqi-badge.l0 { background: #50f0e6; } .wx-aqi-badge.l1 { background: #50ccaa; } .wx-aqi-badge.l2 { background: #f0e641; }
+.wx-aqi-badge.l3 { background: #ff5050; } .wx-aqi-badge.l4 { background: #960032; color: #fff; } .wx-aqi-badge.l5 { background: #7d2181; color: #fff; }
+.wx-pollen { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.wx-pollen li { padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--surface-2); }
+.wx-pollen li.p1 { background: rgba(80, 204, 170, 0.35); } .wx-pollen li.p2 { background: rgba(240, 230, 65, 0.4); } .wx-pollen li.p3 { background: rgba(255, 80, 80, 0.35); }
 .wx-hour { flex: 0 0 4.6rem; text-align: center; padding: 0.6rem 0.3rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); display: grid; gap: 0.15rem; }
 .wx-h-time { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
 .wx-h-icon { font-size: 1.6rem; }
@@ -871,6 +934,11 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .tl-name { font-weight: 600; color: var(--text); text-decoration: none; }
 a.tl-name:hover { text-decoration: underline; }
 .tl-time { font-size: 1.7rem; font-weight: 700; font-variant-numeric: tabular-nums; min-height: 1.3em; }
+/* Gök renkli saat (2. analiz #129): gündüz açık mavi, alacakaranlık kızıl, gece lacivert (yazı ≥4,5:1) */
+.tl-card .tl-time { border-radius: 0.5rem; padding: 0 0.35rem; }
+.tl-card.is-day .tl-time { background: #d5e8ff; color: #14233a; }
+.tl-card.is-dusk .tl-time { background: #a8473b; color: #fff; }
+.tl-card.is-night .tl-time { background: #1b2440; color: #e8ecf8; }
 .tl-off { color: var(--muted); font-size: 0.8rem; }
 .tl-diff { color: var(--muted); font-size: 0.8rem; min-height: 1.3em; }
 @media (min-width: 48rem) {
@@ -1150,7 +1218,7 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .sky-ring { fill: none; stroke: rgba(255, 255, 255, 0.18); stroke-dasharray: 3 4; }
 .sky-card { fill: var(--muted); font-size: 13px; font-weight: 700; }
 .sky-star { fill: #fff; opacity: 0.9; }
-.sky-sname { fill: rgba(255, 255, 255, 0.65); font-size: 9px; }
+.sky-sname { fill: rgba(255, 255, 255, 0.75); font-size: 9px; paint-order: stroke; stroke: rgba(8, 14, 32, 0.85); stroke-width: 2px; }
 .sky-pname { fill: #fff; font-size: 11px; font-weight: 600; paint-order: stroke; stroke: rgba(0, 0, 0, 0.55); stroke-width: 2px; }
 .sky-moon { fill: #e9edf2; }
 .sky-sun { fill: #ffd34d; }
@@ -1159,6 +1227,56 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .sky-time input { width: min(16rem, 60vw); }
 .sky-time output { font-variant-numeric: tabular-nums; font-weight: 600; min-width: 3.5rem; }
 .sky-table td, .sky-table th { white-space: normal; }
+/* Gece gökyüzü: takımyıldızlar, bu gece, olaylar, kırmızı ışık (3 Kasım 2026, 2. analiz #154–#156) */
+.sky-cline { fill: none; stroke: rgba(150, 190, 255, 0.38); stroke-width: 1; }
+.sky-cname { fill: rgba(170, 200, 255, 0.6); font-size: 8px; letter-spacing: 0.04em; }
+.sky-opt { display: inline-flex; align-items: center; gap: 0.3rem; }
+.sky-opt input { width: auto; min-height: 0; margin: 0; }
+.sky-time input[type="date"] { width: auto; }
+.sky-score { font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem; }
+.sky-score-good { color: var(--ok); }
+.sky-score-poor { color: var(--err); }
+.sky-tips { margin: 0.5rem 0 1rem; padding-inline-start: 1.2rem; }
+.sky-graph { margin: 0; }
+.sky-graph svg { width: 100%; height: auto; }
+.skg-bg { fill: var(--surface-2); }
+.skg-dark { fill: rgba(13, 23, 48, 0.18); }
+.skg-grid { stroke: var(--border); stroke-dasharray: 3 4; }
+.skg-lab { fill: var(--muted); font-size: 11px; }
+.skg-line { fill: none; stroke-width: 2.2; }
+.skg-name { font-size: 11px; font-weight: 700; paint-order: stroke; stroke: var(--bg); stroke-width: 3px; }
+.sky-events { list-style: none; margin: 0.5rem 0; padding: 0; display: grid; gap: 0.5rem; }
+.sky-ev { display: grid; gap: 0.1rem; padding: 0.55rem 0.8rem; border: 1px solid var(--border); border-radius: 0.6rem; }
+.sky-ev time { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.sky-ev small { color: var(--muted); }
+.sky-ev-shower { border-inline-start: 4px solid #7aa7ff; }
+.sky-ev-opp, .sky-ev-elong { border-inline-start: 4px solid #e9c48f; }
+.sky-ev-conj, .sky-ev-moon { border-inline-start: 4px solid #c9d1db; }
+.moon-tex { pointer-events: none; }
+.ecl-diagram { width: min(100%, 14rem); height: auto; display: block; margin: 0.4rem 0; }
+.ecl-pen { fill: rgba(120, 120, 140, 0.18); stroke: var(--border); }
+.ecl-umb { fill: rgba(150, 40, 30, 0.35); stroke: rgba(150, 40, 30, 0.6); }
+.ecl-track { fill: none; stroke: var(--muted); stroke-dasharray: 3 3; }
+.ecl-moon { fill: rgba(233, 237, 242, 0.55); stroke: var(--muted); }
+.ecl-moon-max { fill: rgba(190, 70, 40, 0.75); }
+.ecl-times { display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 0.2rem 0.8rem; margin: 0.3rem 0; }
+.ecl-times dt { color: var(--muted); font-size: 0.85rem; }
+.ecl-times dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
+.ecl-below { opacity: 0.45; }
+/* Kırmızı ışık: göz karanlığa uyumunu korumak için sayfa koyu kırmızıya döner */
+html.red-mode { background: #000; }
+html.red-mode body { filter: grayscale(1) sepia(1) saturate(6) hue-rotate(-45deg) brightness(0.55) contrast(1.15); background: #000; }
+/* Telefonda gezegen tablosu kartlara döner (2. analiz #91) */
+@media (max-width: 40rem) {
+  .sky-table, .sky-table tbody, .sky-table tr, .sky-table th, .sky-table td { display: block; width: 100%; }
+  .sky-table { min-width: 0; }
+  .sky-table td { overflow-wrap: anywhere; }
+  .sky-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .sky-table tr { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+  .sky-table th, .sky-table td { border: 0; padding: 0.15rem 0.9rem; text-align: start; }
+  .sky-table th { font-size: 1.05rem; }
+  .sky-table td[data-l]::before { content: attr(data-l) ": "; color: var(--muted); font-size: 0.85rem; }
+}
 /* Tutulma haritası (30 Ekim 2026) */
 .ecl-map { margin-top: 1rem; }
 .ecl-map canvas { display: block; width: 100%; height: auto; margin-top: 0.6rem; border-radius: 6px; --ecl-sea: #d9e6f2; --ecl-land: #f3efe4; --ecl-coast: #9aa6b2; }
@@ -1232,3 +1350,143 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .ring-media { max-width: 32rem; margin: 0.6rem auto; }
 .ring-media iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; background: #000; }
 .ring-media[hidden] { display: none; }
+
+/* Dijital saatte küçük saniye (2. analiz #21; ayarlar › saat görünümü) */
+.sec-small { font-size: 0.45em; font-weight: inherit; }
+.set-check { inline-size: 1.15rem; block-size: 1.15rem; accent-color: var(--accent); }
+
+/* Bayram namazı satırı (2. analiz #56) */
+.pr-bayram { margin: 0.6rem 0 0; font-weight: 700; color: var(--accent); }
+
+/* Halk takvimi (2. analiz #60) */
+.folk-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
+.folk-list li { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; align-items: baseline; padding: 0.45rem 0; border-bottom: 1px solid var(--line, rgba(0, 0, 0, 0.08)); }
+.folk-name { font-weight: 600; flex: 1 1 16rem; }
+.folk-date { color: var(--muted); }
+.folk-now { font-size: 0.8rem; font-weight: 700; color: var(--accent); }
+.folk-list li.is-now .folk-name { color: var(--accent); }
+
+/* Saat farkı merkezi: şimdiki saat, kısa fark ve fark çubuğu (2. analiz #179) */
+.pair-card .pair-now { display: flex; align-items: baseline; gap: 0.5rem; margin-top: 0.35rem; }
+.pair-card .city-time { font-size: 1.35rem; display: inline; min-height: 0; }
+.pair-card .pair-short { color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+.diff-bar { display: block; width: 100%; height: 0.6rem; margin-top: 0.45rem; }
+.diff-bar .db-track { fill: var(--border); }
+.diff-bar .db-fill { fill: var(--accent); }
+.diff-bar .db-fill.is-neg { fill: var(--muted); }
+.diff-bar .db-zero { fill: var(--text); }
+html[dir="rtl"] .diff-bar { transform: scaleX(-1); }
+
+/* Site alarmı ekleri (2. analiz #181): geri sayım halkası, yüzde çubuk, son saatler, ses düzeyi, geçmiş */
+.al-ring { position: relative; width: min(16rem, 70vw); margin: 0.5rem auto 0.25rem; }
+.al-ring svg { display: block; width: 100%; height: auto; }
+.al-ring .alr-track { fill: none; stroke: var(--border); stroke-width: 7; }
+.al-ring .alr-fill { fill: none; stroke: var(--accent); stroke-width: 7; stroke-linecap: round; transition: stroke-dasharray 0.6s linear; }
+.al-ring .alr-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0; text-align: center; padding: 0 1.5rem; }
+.al-ring .alr-text strong { font-size: clamp(1.8rem, 7vw, 2.6rem); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.al-ring .alr-text span { color: var(--muted); font-size: 0.85rem; }
+.al-bar { display: block; width: min(16rem, 70vw); margin: 0 auto 0.5rem; accent-color: var(--accent); }
+.al-recent { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin: 0.25rem 0 0.75rem; }
+.al-vol { gap: 0.6rem; }
+.al-vol input[type=range] { width: 10rem; accent-color: var(--accent); }
+.al-history { margin: 1rem 0; }
+.al-history summary { cursor: pointer; font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .al-ring .alr-fill { transition: none; } }
+
+/* Gece modu / ışıkları kapat (2. analiz #182): saat sahnesi olan sayfalarda siyah zemin, kısık kırmızı (uygulamalardaki gece moduyla aynı ton) */
+html[data-cnight] body:has([data-carousel]) {
+  --bg: #000; --surface: #000; --surface-2: #0b0202; --text: #e0301e; --muted: #b82016; --border: #2c0906;
+  --accent: #b82016; --accent-ink: #000; --accent-soft: #1a0503; --focus: #e0301e; --clock-ink: #e0301e;
+  background: #000; color: var(--text); color-scheme: dark;
+}
+html[data-cnight] body:has([data-carousel]) img, html[data-cnight] body:has([data-carousel]) .globe { filter: grayscale(1) brightness(0.35) sepia(1) hue-rotate(-30deg) saturate(4); }
+
+/* Uyku hesaplama (2. analiz #191) */
+.sl-list { list-style: none; margin: 0.75rem 0 0; padding: 0; display: grid; gap: 0.5rem; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); }
+.sl-row { display: grid; gap: 0.1rem; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.sl-row strong { font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.sl-row.is-best { border-color: var(--accent); }
+.sl-best { justify-self: start; font-size: 0.75rem; font-weight: 700; color: var(--accent); }
+.field-gap { display: block; }
+/* Sınav salonu zamanlayıcısı (2. analiz #141) */
+/* Sınıf araçları (2. analiz #142) */
+.cl-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 0 0 1rem; }
+.cl-panel { display: grid; gap: 0.6rem; }
+.cl-panel[hidden] { display: none; }
+.mt-cl .cl-label { margin: 0; text-align: center; }
+.cl-picked { margin: 0; text-align: center; font-weight: 800; font-size: clamp(2.2rem, 9vw, 6rem); line-height: 1.1; overflow-wrap: anywhere; min-height: 1.2em; }
+.cl-picked.is-rolling { color: var(--muted); }
+.tool:fullscreen .cl-picked, .tool.is-full .cl-picked { font-size: clamp(3rem, 14vw, 12rem); }
+.cl-teams { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.75rem; }
+.cl-team { border: 1px solid var(--border); border-radius: 0.9rem; padding: 0.75rem 1rem; background: var(--surface); }
+.cl-team h3 { margin: 0 0 0.4rem; font-size: 1.05rem; color: var(--accent); }
+.cl-team ol { margin: 0; padding-inline-start: 1.3rem; }
+.tool:fullscreen .cl-team, .tool.is-full .cl-team { font-size: 1.35rem; }
+.cl-counters { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.75rem; }
+.cl-counter { border: 1px solid var(--border); border-radius: 0.9rem; padding: 0.6rem 0.8rem; background: var(--surface); display: grid; gap: 0.4rem; text-align: center; }
+.cl-counter .cl-cname { font-weight: 700; overflow-wrap: anywhere; }
+.cl-counter .cl-val { font-size: clamp(2.2rem, 8vw, 4rem); font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1; }
+.cl-counter .cl-btns { display: flex; justify-content: center; gap: 0.5rem; }
+.cl-counter .cl-btns button { min-width: 3rem; min-height: 3rem; font-size: 1.4rem; }
+.cl-names textarea { width: 100%; min-height: 8rem; font: inherit; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: 0.6rem; background: var(--bg); color: var(--text); resize: vertical; }
+.mt-ex .ex-name { margin: 0; font-size: clamp(1.4rem, 4vw, 2.6rem); font-weight: 700; text-align: center; }
+.mt-ex .ex-room { margin: 0; text-align: center; font-size: 1.1rem; }
+.mt-ex .ex-ends, .mt-ex .ex-clock { margin: 0.2rem 0; text-align: center; font-size: 1.15rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.mt-ex .ex-clock { color: var(--muted); }
+.mt-ex .ex-warn { margin: 0.2rem 0; min-height: 1.4em; text-align: center; font-weight: 700; }
+.mt-ex.is-warn15 .big-time, .mt-ex.is-warn15 .ex-warn { color: #b06a00; }
+.mt-ex.is-warn5 .big-time, .mt-ex.is-warn5 .ex-warn, .mt-ex.is-done .big-time { color: #c0261c; }
+@media (prefers-color-scheme: dark) { html:not([data-theme="light"]) .mt-ex.is-warn15 .big-time, html:not([data-theme="light"]) .mt-ex.is-warn15 .ex-warn { color: #ffb44d; } html:not([data-theme="light"]) .mt-ex.is-warn5 .big-time, html:not([data-theme="light"]) .mt-ex.is-warn5 .ex-warn, html:not([data-theme="light"]) .mt-ex.is-done .big-time { color: #ff7a6e; } }
+html[data-theme="dark"] .mt-ex.is-warn15 .big-time, html[data-theme="dark"] .mt-ex.is-warn15 .ex-warn { color: #ffb44d; }
+html[data-theme="dark"] .mt-ex.is-warn5 .big-time, html[data-theme="dark"] .mt-ex.is-warn5 .ex-warn, html[data-theme="dark"] .mt-ex.is-done .big-time { color: #ff7a6e; }
+.mt-ex [hidden] { display: none !important; }
+
+/* Temalı saatler (2. analiz #183): hologram, Matrix, matematik */
+.s-holo { background: radial-gradient(ellipse at center, #062a3a 0%, #020b12 70%); }
+.s-holo .holo-frame { position: relative; padding: 1.2rem 2rem; border: 1px solid rgba(64, 224, 255, 0.45); border-radius: 14px; box-shadow: 0 0 24px rgba(64, 224, 255, 0.25), inset 0 0 24px rgba(64, 224, 255, 0.15); overflow: hidden; }
+.s-holo .holo-frame::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(64, 224, 255, 0.08) 0 2px, transparent 2px 5px); animation: holo-scan 6s linear infinite; }
+.s-holo .clock, .s-holo .date { color: #6ff0ff; text-shadow: 0 0 6px #22d3ff, 0 0 18px rgba(34, 211, 255, 0.7); }
+.s-holo .clock { animation: holo-flicker 4s infinite; }
+@keyframes holo-scan { from { background-position: 0 0; } to { background-position: 0 100px; } }
+@keyframes holo-flicker { 0%, 92%, 100% { opacity: 1; } 93% { opacity: 0.75; } 95% { opacity: 0.95; } 97% { opacity: 0.8; } }
+.s-matrix { position: relative; background: #000; }
+.s-matrix .matrix-rain { position: absolute; inset: 0; width: 100%; height: 100%; }
+.s-matrix .clock, .s-matrix .date { position: relative; color: #39ff7a; text-shadow: 0 0 8px #00c853, 0 0 2px #000; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.s-matrix .clock { background: rgba(0, 0, 0, 0.55); padding: 0 0.4em; border-radius: 8px; }
+.s-math .math-time { margin: 0; font-size: clamp(2rem, 8vw, 5.5rem); font-weight: 700; font-variant-numeric: tabular-nums; white-space: pre; color: var(--clock-ink, var(--text)); }
+@media (prefers-reduced-motion: reduce) { .s-holo .holo-frame::after, .s-holo .clock { animation: none; } }
+
+/* Alacakaranlık ve 24 saatlik ışık halkası (2. analiz #151) */
+.tw-row { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; }
+.light-ring { margin: 0; width: min(15rem, 70vw); text-align: center; }
+.light-ring svg { display: block; width: 100%; height: auto; }
+.lr { fill: none; stroke-width: 22; }
+.lr-day, .tw-legend .lr-day { stroke: #f2c14e; background: #f2c14e; }
+.lr-civil, .tw-legend .lr-civil { stroke: #e98a5b; background: #e98a5b; }
+.lr-nautical, .tw-legend .lr-nautical { stroke: #6a6fb5; background: #6a6fb5; }
+.lr-astro, .tw-legend .lr-astro { stroke: #343a77; background: #343a77; }
+.lr-night, .tw-legend .lr-night { stroke: #141833; background: #141833; }
+.lr-tick { fill: var(--muted); font-size: 11px; text-anchor: middle; font-variant-numeric: tabular-nums; }
+.lr-now { stroke: var(--accent); stroke-width: 3; stroke-linecap: round; }
+.lr-center { fill: var(--text); font-size: 18px; font-weight: 700; text-anchor: middle; font-variant-numeric: tabular-nums; }
+.tw-facts { flex: 1 1 18rem; }
+.tw-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+.tw-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.tw-legend i { display: inline-block; width: 0.8rem; height: 0.8rem; border-radius: 3px; }
+/* Yılın dolunayları (2. analiz #148) */
+.ym-row { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: flex-start; }
+.ym-wheel { margin: 0; width: min(14rem, 70vw); }
+.ym-wheel svg { display: block; width: 100%; height: auto; }
+.ym-row .table-wrap { flex: 1 1 20rem; }
+.ymw-ring { fill: none; stroke: var(--border); stroke-width: 2; }
+.ymw-tick { stroke: var(--border); stroke-width: 1.5; }
+.ymw-m { fill: var(--muted); font-size: 10px; text-anchor: middle; }
+.ymw-moon { fill: #f4e8b8; stroke: #b9a35a; stroke-width: 1.2; }
+.ymw-moon.is-blue { fill: #8fb8ff; stroke: #3c6fd1; }
+.ymw-moon.is-past { opacity: 0.45; }
+.ymw-now { stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; }
+.ymw-c { fill: var(--text); font-size: 22px; font-weight: 700; text-anchor: middle; }
+tr.is-past td { color: var(--muted); }
+tr.is-next td { font-weight: 700; }
+/* Ay adlarının kökeni (2. analiz #125) */
+.month-origin-list { margin: 0.5rem 0; padding-inline-start: 1.4rem; display: grid; gap: 0.35rem; }

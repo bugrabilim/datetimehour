@@ -28,6 +28,8 @@ targets:
     dependencies:
       - package: SaatCore
       - target: SaatTarihWidget
+      # Vakit bildiriminde uzun basınca açılan içerik (2. analiz #164)
+      - target: SaatTarihNotify
       # Apple Watch uygulaması (komplikasyonlarıyla) iPhone uygulamasının Watch klasörüne gömülür
       - target: SaatTarihWatch
         embed: true
@@ -52,17 +54,21 @@ targets:
         CODE_SIGN_ENTITLEMENTS: App/SaatTarih.entitlements
         INFOPLIST_KEY_CFBundleDisplayName: Saat Tarih
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
-        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        # Açılış ekranı App/Info.plist'te (UILaunchScreen: tema zemini + simge; 2. analiz #83)
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         # Metnin diğer dilleri App/Resources/InfoPlist.xcstrings'te (gen-strings.mjs üretir)
         INFOPLIST_KEY_NSAppleMusicUsageDescription: "Alarm sesi olarak müzik arşivinizden bir şarkı seçebilmeniz için. Şarkıdan alınan kısa bölüm telefonda kalır, hiçbir yere gönderilmez."
-        INFOPLIST_KEY_NSCameraUsageDescription: "Alarm kapatma görevi için kaydettiğiniz QR kodu ya da barkodu okumak için. Görüntü telefonda işlenir, kaydedilmez ve hiçbir yere gönderilmez."
+        INFOPLIST_KEY_NSCameraUsageDescription: "Alarm kapatma görevleri (QR kod, fotoğraf, nesne bulma) ve kıble kamera görünümü için. Görüntü telefonda işlenir, kaydedilmez ve hiçbir yere gönderilmez."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Alarm kapatma görevindeki sözü sesli okuduğunuzu anlamak için. Ses yalnız telefonda tanınır, kaydedilmez ve hiçbir yere gönderilmez."
+        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "Alarm kapatma görevindeki sözü sesli okuduğunuzu anlamak için. Ses yalnız telefonda tanınır, kaydedilmez ve hiçbir yere gönderilmez."
         INFOPLIST_KEY_NSHealthUpdateUsageDescription: "Biten aralık antrenmanlarını ve rutinleri, siz açarsanız, Sağlık uygulamasına antrenman olarak yazmak için. Uygulama Sağlık verilerinizi okumaz."
         INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir. Konuma bağlı hatırlatıcılarda bir yere varışınızı ya da ayrılışınızı iPhone kendisi izler."
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        # Alternatif simgeler (2. analiz #13; üretici scripts/gen-alt-icons.py)
+        ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES: AppIcon-night AppIcon-paper AppIcon-flip AppIcon-mint
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         LOCALIZATION_PREFERS_STRING_CATALOGS: YES
     scheme:
@@ -77,13 +83,27 @@ targets:
       - path: App/Sources/Theme.swift
       - path: App/Sources/Schedule.swift
       - path: App/Sources/AnalogClock.swift
+      - path: App/Sources/Dials.swift
       - path: App/Sources/Location.swift
+      - path: App/Sources/MoonTexture.swift
       - path: App/Sources/Hijri.swift
       - path: App/Sources/LiveActivityModel.swift
+      - path: App/Sources/WorldMath.swift
+      # Şeffaf widget (2. analiz #76): App Group'tan duvar kâğıdı parçası
+      - path: App/Sources/WallpaperWidget.swift
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/provinces.json
       - path: App/Resources/cities.json
+      - path: App/Resources/moon.jpg
+      - path: App/Resources/earth.jpg
       - path: App/Resources/hijri.json
+      # Günün içeriği widget'ı (2. analiz #16)
+      - path: App/Resources/sayings.json
+      - path: App/Resources/esma.json
+      - path: App/Resources/hadith.json
+      - path: App/Resources/quran-meta.json
+      - path: App/Resources/quran-ar.txt
+      - path: App/Resources/quran-en.txt
     dependencies:
       - package: SaatCore
       - sdk: WidgetKit.framework
@@ -101,6 +121,7 @@ targets:
       base:
         PRODUCT_NAME: SaatTarihWidget
         PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.widget
+        CODE_SIGN_ENTITLEMENTS: Widget/SaatTarihWidget.entitlements
         DEVELOPMENT_TEAM: 3J9XN2P93D
         CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "5.0"
@@ -108,6 +129,40 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         SKIP_INSTALL: YES
         LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+  # Vakit bildirimi içerik uzantısı (2. analiz #164): uzun basınca kalan süre ve kıble yönü; veriler bildirimin içinden
+  SaatTarihNotify:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: NotifyContent/Sources
+    dependencies:
+      - package: SaatCore
+      - sdk: UserNotifications.framework
+      - sdk: UserNotificationsUI.framework
+      - sdk: SwiftUI.framework
+    info:
+      path: NotifyContent/Info.plist
+      properties:
+        CFBundleDisplayName: Saat Tarih
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.usernotifications.content-extension
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).NotificationViewController
+          NSExtensionAttributes:
+            UNNotificationExtensionCategory: prayer
+            UNNotificationExtensionInitialContentSizeRatio: 0.5
+            UNNotificationExtensionDefaultContentHidden: false
+    settings:
+      base:
+        PRODUCT_NAME: SaatTarihNotify
+        PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.notify
+        DEVELOPMENT_TEAM: 3J9XN2P93D
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: YES
+        SKIP_INSTALL: YES
   # Apple Watch uygulaması (rakip analizi #6): saat, tarih (miladi + hicri), sıradaki vakit, bugünün vakitleri, yer
   # seçimi (iPhone'daki yer WatchConnectivity ile gelir). Hesap SaatCore'da; ortak dosyalar App/Sources'tan.
   SaatTarihWatch:

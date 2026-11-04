@@ -130,15 +130,25 @@
       return null;
     }
     function hText(h) { return tpl(M.fmt, { d: h.d, m: M.months[h.m - 1], y: h.y }); }
+    /* Rumi tarih (2. analiz #120): Jülyen takvimi, yılbaşı 1 Mart, yıl = Jülyen yıl − 584 (Mart–Aralık) ya da − 585;
+       Türkiye Takvimi geleneği (Kasım günleri: Rumi 26 Teşrîn-i evvel = miladi 8 Kasım) */
+    var RUMI = ["Kânûn-ı sânî", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Teşrîn-i evvel", "Teşrîn-i sânî", "Kânûn-ı evvel"];
+    function rumiText(iso) {
+      var c = dnum(iso) + 2440588 + 32082, d4 = Math.floor((4 * c + 3) / 1461), e = c - Math.floor(1461 * d4 / 4), mm = Math.floor((5 * e + 2) / 153);
+      var day = e - Math.floor((153 * mm + 2) / 5) + 1, mon = mm + 3 - 12 * Math.floor(mm / 10), yr = d4 - 4800 + Math.floor(mm / 10);
+      return tpl(M.rumi, { date: day + " " + RUMI[mon - 1] + " " + (yr - (mon >= 3 ? 584 : 585)) });
+    }
     // Bugün
     var today = todayIso(), th = toH(today);
     setText(q("[data-hj-today]"), th ? hText(th) : "–");
     setText(q("[data-hj-today-greg]"), longText(today));
+    setText(q("[data-hj-rumi]"), rumiText(today));
     // Miladi → hicri
     var gIn = q("[data-hj-g]"), r1 = q("[data-hj-r1]"), n1 = q("[data-hj-n1]");
     function run1() {
       var v = gIn.value, h = /^\d{4}-\d\d-\d\d$/.test(v) ? toH(v) : null;
       setText(r1, h ? hText(h) : M.invalid);
+      setText(q("[data-hj-rumi1]"), h ? rumiText(v) : " ");
       n1.hidden = !(h && h.out); n1.textContent = M.outside;
     }
     gIn.value = today; gIn.addEventListener("input", function () { used1(); run1(); }); run1();
@@ -517,5 +527,201 @@
     run();
   }
 
-  ({ hijri: hijri, timecalc: timecalc, days: days, interval: interval, chess: chess, metronome: metronome, talking: talking, zodiac: zodiac }[kind] || function () {})();
+  /* ---------- Uyku hesaplama (2. analiz #191): 90 dk döngü, uykuya dalmak için 15 dk ---------- */
+  function sleep() {
+    var wIn = q("[data-sl-wake]"), bIn = q("[data-sl-bed]"), beds = q("[data-sl-beds]"), wakes = q("[data-sl-wakes]");
+    function toMin(v) { var m = /^(\d\d):(\d\d)/.exec(v || ""); return m ? +m[1] * 60 + +m[2] : null; }
+    function durTxt(min) { var h = Math.floor(min / 60), m = min % 60; return h + " " + S.T.hourShort + (m ? " " + m + " " + S.T.minuteShort : ""); }
+    function fill(list, base, sign, order) {
+      list.textContent = "";
+      if (base == null) return;
+      order.forEach(function (n) {
+        var li = doc.createElement("li"); li.className = "sl-row" + (n >= 5 ? " is-best" : "");
+        var tm = doc.createElement("strong"); tm.textContent = clockText(base + sign * (15 + 90 * n));
+        var tx = doc.createElement("span"); tx.className = "meta"; tx.textContent = tpl(M.cycles, { n: n, d: durTxt(90 * n) });
+        li.appendChild(tm); li.appendChild(tx);
+        if (n >= 5) { var b = doc.createElement("span"); b.className = "sl-best"; b.textContent = M.best; li.appendChild(b); }
+        list.appendChild(li);
+      });
+    }
+    function run() { fill(beds, toMin(wIn.value), -1, [6, 5, 4, 3]); fill(wakes, toMin(bIn.value), 1, [3, 4, 5, 6]); }
+    wIn.addEventListener("input", function () { used1(); run(); });
+    bIn.addEventListener("input", function () { used1(); run(); });
+    q("[data-sl-now]").addEventListener("click", function () { used1(); var d = S.nowDate(); bIn.value = pad(d.getHours()) + ":" + pad(d.getMinutes()); run(); });
+    run();
+  }
+
+  /* ---------- Sınav salonu zamanlayıcısı (2. analiz #141): okuma + sınav süresi; sth-exam (başlangıç sunucu saatiyle) ---------- */
+  function exam() {
+    var st = load("sth-exam", { name: "", room: "", read: 10, dur: 40, start: 0, pauseAt: 0 });
+    var left = q("[data-ex-left]"), phase = q("[data-ex-phase]"), ends = q("[data-ex-ends]"), warn = q("[data-ex-warn]"), prog = q("[data-ex-progress]");
+    var nameEl = q("[data-ex-name]"), roomEl = q("[data-ex-room]"), bStart = q("[data-ex-start]"), bPause = q("[data-ex-pause]"), bReset = q("[data-ex-reset]");
+    var lastPhase = "", timer = null, baseTitle = doc.title;
+    qa("[data-ex-cfg]").forEach(function (el) {
+      var k = el.getAttribute("data-ex-cfg");
+      if (st[k] != null && st[k] !== "") el.value = st[k];
+      el.addEventListener("input", function () {
+        st[k] = el.type === "number" ? Math.max(+el.min || 0, Math.min(+el.max || 600, Math.round(+el.value || 0))) : el.value.slice(0, 60);
+        save("sth-exam", st); render();
+      });
+    });
+    function mmss(ms) {
+      var s = Math.max(0, Math.ceil(ms / 1000)), h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60);
+      return (h ? h + ":" + pad(m) : String(m).padStart(2, "0")) + ":" + pad(s % 60);
+    }
+    function elapsed() { return !st.start ? 0 : (st.pauseAt || S.nowMs()) - st.start; }
+    function render() {
+      setText(nameEl, st.name || ""); nameEl.hidden = !st.name;
+      setText(roomEl, st.room || ""); roomEl.hidden = !st.room;
+      var R = (+st.read || 0) * 60000, D = Math.max(1, +st.dur || 1) * 60000, e = elapsed(), ph, rem, frac;
+      if (!st.start) { ph = ""; rem = R + D; frac = 0; }
+      else if (e < R) { ph = "read"; rem = R - e; frac = e / R; }
+      else if (e < R + D) { ph = "exam"; rem = R + D - e; frac = (e - R) / D; }
+      else { ph = "done"; rem = 0; frac = 1; }
+      setText(left, mmss(st.start ? rem : D));
+      setText(phase, ph === "read" ? M.phaseRead : ph === "exam" ? M.phaseExam : ph === "done" ? M.phaseDone : (R ? M.phaseRead : M.phaseExam));
+      prog.value = Math.round(frac * 100);
+      var w = ph === "exam" && rem <= 5 * 60000 ? 5 : ph === "exam" && rem <= 15 * 60000 ? 15 : 0;
+      root.classList.toggle("is-warn15", w === 15); root.classList.toggle("is-warn5", w === 5); root.classList.toggle("is-done", ph === "done");
+      setText(warn, w ? M["warn" + w] : "");
+      var endD = new Date(st.start + R + D);
+      setText(ends, st.start && !st.pauseAt && ph !== "done" ? tpl(M.endsAt, { time: clockText(endD.getHours() * 60 + endD.getMinutes()) }) : " ");
+      if (st.start && ph !== lastPhase && lastPhase && ph) chime();
+      lastPhase = ph;
+      bStart.textContent = st.start ? (st.pauseAt ? M.resume : M.start) : M.start;
+      bStart.hidden = !!st.start && !st.pauseAt;
+      bPause.hidden = !st.start || !!st.pauseAt || ph === "done";
+      keepAwake(!!st.start && !st.pauseAt && ph !== "done");
+      var tt = st.start && !st.pauseAt && ph !== "done" ? mmss(rem) + " · " + baseTitle : baseTitle;
+      if (doc.title !== tt) doc.title = tt;
+    }
+    function loop() { clearInterval(timer); timer = setInterval(render, 250); render(); }
+    bStart.addEventListener("click", function () {
+      used1(); ctx();
+      if (st.start && st.pauseAt) { st.start += S.nowMs() - st.pauseAt; st.pauseAt = 0; }
+      else if (!st.start) { st.start = S.nowMs(); st.pauseAt = 0; lastPhase = ""; }
+      save("sth-exam", st); loop();
+    });
+    bPause.addEventListener("click", function () { st.pauseAt = S.nowMs(); save("sth-exam", st); render(); });
+    bReset.addEventListener("click", function () { st.start = 0; st.pauseAt = 0; lastPhase = ""; save("sth-exam", st); render(); });
+    loop();
+  }
+
+  /* ---------- Sınıf araçları (2. analiz #142): ad seçici, takım kurucu, sayaç; sth-class yalnız bu tarayıcıda ---------- */
+  function classroom() {
+    var st = load("sth-class", { names: "", remove: true, pool: null, picked: "", teams: 2, teamList: [], counters: [], tab: "picker" });
+    var namesEl = q("[data-cl-names]"), removeEl = q("[data-cl-remove]"), pickedEl = q("[data-cl-picked]"), leftEl = q("[data-cl-left]");
+    var emptyEl = q("[data-cl-empty]"), teamN = q("[data-cl-teamn]"), teamsEl = q("[data-cl-teams]"), countersEl = q("[data-cl-counters]"), cname = q("[data-cl-cname]");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches, rolling = 0;
+    function rnd(n) { // güvenli ve eşit dağılımlı 0..n-1
+      if (!(n > 0)) return 0;
+      var c = window.crypto || window.msCrypto, a = new Uint32Array(1), lim = Math.floor(4294967296 / n) * n;
+      if (!c || !c.getRandomValues) return Math.floor(Math.random() * n);
+      do { c.getRandomValues(a); } while (a[0] >= lim);
+      return a[0] % n;
+    }
+    function names() {
+      var seen = {}, out = [];
+      String(st.names || "").split(/[\n,،、，;]+/).forEach(function (x) { x = x.trim().slice(0, 60); if (x && !seen[x]) { seen[x] = 1; out.push(x); } });
+      return out.slice(0, 300);
+    }
+    function pool() { var all = names(); if (!Array.isArray(st.pool)) return all; return st.pool.filter(function (x) { return all.indexOf(x) >= 0; }); }
+    function store() { save("sth-class", st); }
+    function showEmpty(on) { emptyEl.hidden = !on; }
+    function renderPicker() {
+      setText(pickedEl, st.picked || "–");
+      setText(leftEl, removeEl.checked && names().length ? tpl(M.left, { n: pool().length }) : " ");
+    }
+    function pick() {
+      used1(); var all = names();
+      if (!all.length) { showEmpty(true); namesEl.focus(); return; }
+      showEmpty(false);
+      var list = removeEl.checked ? pool() : all;
+      if (!list.length) { st.pool = null; list = all; }
+      var choice = list[rnd(list.length)];
+      if (removeEl.checked) st.pool = list.filter(function (x) { return x !== choice; });
+      st.picked = choice; store();
+      clearInterval(rolling);
+      if (reduce || all.length < 2) { renderPicker(); return; }
+      var n = 0; pickedEl.classList.add("is-rolling");
+      rolling = setInterval(function () {
+        if (++n > 12) { clearInterval(rolling); pickedEl.classList.remove("is-rolling"); renderPicker(); tone(988, 0.15, 0, 0.2); return; }
+        pickedEl.textContent = all[rnd(all.length)];
+      }, 60);
+    }
+    function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = rnd(i + 1), x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+    function renderTeams() {
+      teamsEl.textContent = "";
+      (st.teamList || []).forEach(function (tm, i) {
+        var box = doc.createElement("div"), h = doc.createElement("h3"), ol = doc.createElement("ol");
+        box.className = "cl-team"; h.textContent = tpl(M.team, { n: i + 1 });
+        tm.forEach(function (nm) { var li = doc.createElement("li"); li.textContent = nm; ol.appendChild(li); });
+        box.appendChild(h); box.appendChild(ol); teamsEl.appendChild(box);
+      });
+    }
+    function makeTeams() {
+      used1(); var all = names();
+      if (!all.length) { showEmpty(true); namesEl.focus(); return; }
+      showEmpty(false);
+      var k = Math.max(2, Math.min(12, Math.round(+teamN.value || 2), all.length)), out = [];
+      for (var i = 0; i < k; i++) out.push([]);
+      shuffle(all).forEach(function (nm, i) { out[i % k].push(nm); });
+      st.teams = k; st.teamList = out; store(); renderTeams();
+    }
+    function renderCounters() {
+      countersEl.textContent = "";
+      (st.counters || []).forEach(function (c, i) {
+        var li = doc.createElement("li"); li.className = "cl-counter";
+        var nm = doc.createElement("span"); nm.className = "cl-cname"; nm.textContent = c.n;
+        var val = doc.createElement("span"); val.className = "cl-val"; val.textContent = String(c.v); val.setAttribute("aria-live", "polite");
+        var btns = doc.createElement("div"); btns.className = "cl-btns";
+        function b(label, aria, fn, cls) { var x = doc.createElement("button"); x.type = "button"; x.className = cls || "toggle"; x.textContent = label; x.setAttribute("aria-label", aria); x.addEventListener("click", fn); btns.appendChild(x); }
+        b("−", c.n + " −1", function () { used1(); c.v--; store(); val.textContent = String(c.v); });
+        b("+", c.n + " +1", function () { used1(); c.v++; store(); val.textContent = String(c.v); }, "btn");
+        b("×", M.remove + ": " + c.n, function () { st.counters.splice(i, 1); store(); renderCounters(); });
+        li.appendChild(nm); li.appendChild(val); li.appendChild(btns); countersEl.appendChild(li);
+      });
+    }
+    function setTab(k, focus) {
+      st.tab = k; store();
+      qa("[data-cl-tab]").forEach(function (b) { var on = b.getAttribute("data-cl-tab") === k; b.setAttribute("aria-selected", String(on)); b.tabIndex = on ? 0 : -1; if (on && focus) b.focus(); });
+      qa("[data-cl-panel]").forEach(function (p) { p.hidden = p.getAttribute("data-cl-panel") !== k; });
+      showEmpty(false);
+    }
+    var tabs = qa("[data-cl-tab]");
+    tabs.forEach(function (b, i) {
+      b.addEventListener("click", function () { setTab(b.getAttribute("data-cl-tab")); });
+      b.addEventListener("keydown", function (ev) {
+        var d = ev.key === "ArrowRight" ? 1 : ev.key === "ArrowLeft" ? -1 : 0;
+        if (!d) return;
+        if (doc.documentElement.dir === "rtl") d = -d;
+        ev.preventDefault(); var nb = tabs[(i + d + tabs.length) % tabs.length]; setTab(nb.getAttribute("data-cl-tab"), true);
+      });
+    });
+    namesEl.value = st.names || "";
+    removeEl.checked = st.remove !== false;
+    teamN.value = st.teams || 2;
+    namesEl.addEventListener("input", function () { st.names = namesEl.value.slice(0, 4000); st.pool = null; store(); showEmpty(false); renderPicker(); });
+    removeEl.addEventListener("change", function () { st.remove = removeEl.checked; st.pool = null; store(); renderPicker(); });
+    teamN.addEventListener("input", function () { st.teams = Math.max(2, Math.min(12, Math.round(+teamN.value || 2))); store(); });
+    q("[data-cl-pick]").addEventListener("click", function () { ctx(); pick(); });
+    q("[data-cl-restore]").addEventListener("click", function () { st.pool = null; st.picked = ""; store(); renderPicker(); });
+    q("[data-cl-make]").addEventListener("click", makeTeams);
+    q("[data-cl-add]").addEventListener("click", function () {
+      used1(); if (!Array.isArray(st.counters)) st.counters = [];
+      if (st.counters.length >= 24) return;
+      var nm = (cname.value || "").trim().slice(0, 30) || (M.counterDefault + " " + (st.counters.length + 1));
+      st.counters.push({ n: nm, v: 0 }); cname.value = ""; store(); renderCounters();
+    });
+    cname.addEventListener("keydown", function (ev) { if (ev.key === "Enter") { ev.preventDefault(); q("[data-cl-add]").click(); } });
+    q("[data-cl-zero]").addEventListener("click", function () { (st.counters || []).forEach(function (c) { c.v = 0; }); store(); renderCounters(); });
+    doc.addEventListener("keydown", function (ev) {
+      if (typing(ev) || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+      if ((ev.key === " " || ev.key === "Enter") && st.tab === "picker" && !(ev.target && /^(BUTTON|A)$/.test(ev.target.tagName))) { ev.preventDefault(); ctx(); pick(); }
+    });
+    setTab(["picker", "teams", "counter"].indexOf(st.tab) >= 0 ? st.tab : "picker");
+    renderPicker(); renderTeams(); renderCounters();
+  }
+
+  ({ hijri: hijri, timecalc: timecalc, days: days, interval: interval, chess: chess, metronome: metronome, talking: talking, zodiac: zodiac, sleep: sleep, exam: exam, classroom: classroom }[kind] || function () {})();
 })();

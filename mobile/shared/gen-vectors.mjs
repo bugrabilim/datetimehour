@@ -18,6 +18,7 @@ function load(rel) {
 }
 const P = load("src/js/prayer-calc.js");
 const N = load("src/js/nature-calc.js");
+const K = load("src/js/sky-calc.js");
 const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces.json"), "utf8"));
 const cities = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/cities.json"), "utf8"));
 
@@ -117,6 +118,20 @@ for (let k = kFor(Date.UTC(2026, 0, 1)) + 1; k <= kFor(Date.UTC(2027, 11, 1)); k
   }
 }
 
+// Gezegenler ve tutulma ayrıntısı (2. analiz #157, #159)
+const planets = [];
+for (let ms = Date.UTC(2026, 0, 1, 5); ms < Date.UTC(2031, 0, 1); ms += Math.round(37.3 * DAY)) {
+  for (const name of K.PLANETS) { const p = K.planet(name, ms); planets.push({ ms, name, ra: p.ra, dec: p.dec, dist: p.dist, elong: p.elong, mag: p.mag }); }
+}
+const ECL = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/eclipses.json"), "utf8"));
+const ut = (td) => Date.parse(td) - 69000;
+const lunar = ECL.lunar.map((e) => { const c = N.lunarContacts(ut(e.td)); return { ut: ut(e.td), p1: c.p1, u1: c.u1, u2: c.u2, max: c.max, u3: c.u3, u4: c.u4, p4: c.p4, umag: c.umag, pmag: c.pmag }; });
+const solar = [];
+for (const e of ECL.solar) for (const [lat, lon] of [[41.01, 28.98], [25.69, 32.64], [-33.87, 151.21], [40.42, -3.7]]) {
+  const r = N.solarLocal(ut(e.td), lat, lon);
+  solar.push({ ut: ut(e.td), lat, lon, r: r ? { c1: r.c1, max: r.max, c4: r.c4, mag: r.mag, obsc: r.obsc, central: r.central } : null });
+}
+
 /* Her durum tek satır: farklar okunur kalır */
 const lines = (arr) => "[\n" + arr.map((o) => "    " + JSON.stringify(o)).join(",\n") + "\n  ]";
 const files = {
@@ -162,6 +177,14 @@ const files = {
 `,
 };
 
+files["sky.json"] = `{
+  "source": "src/js/sky-calc.js (planet), src/js/nature-calc.js (lunarContacts, solarLocal)",
+  "note": "planets: yer merkezli sağ açıklık, dik açıklık (derece), uzaklık (AB), Güneş'ten uzanım (derece), kadir. lunar: Ay tutulması temas anları (UTC ms; null = o evre yok), gölge ve yarı gölge büyüklüğü. solar: Güneş tutulmasının yerden görünüşü (null = görülmez).",
+  "planets": ${lines(planets)},
+  "lunar": ${lines(lunar)},
+  "solar": ${lines(solar)}
+}
+`;
 const check = process.argv.includes("--check");
 let stale = [];
 fs.mkdirSync(OUT, { recursive: true });

@@ -1,5 +1,13 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.TextButton
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.border
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -36,6 +44,10 @@ import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.Event
+import androidx.compose.material.icons.filled.Celebration
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -77,9 +89,13 @@ fun PrayerScreen() {
         "zikir" -> { BackHandler { page = null }; ZikirScreen { page = null }; return }
         "track" -> { BackHandler { page = null }; TrackerScreen { page = null }; return }
         "zakat" -> { BackHandler { page = null }; ZakatScreen { page = null }; return }
+        "reldays" -> { BackHandler { page = null }; ReligiousDaysScreen { page = null }; return }
+        "greet" -> { BackHandler { page = null }; GreetingScreen { page = null }; return }
         "esma" -> { BackHandler { page = null }; EsmaScreen { page = null }; return }
         "hadith" -> { BackHandler { page = null }; HadithScreen { page = null }; return }
         "guide" -> { BackHandler { page = null }; PrayerGuideScreen({ page = null }) { page = "duas" }; return }
+        // İbadet sayfası (2. analiz #199): bütün ibadet bölümleri tek listede
+        "worship" -> { BackHandler { page = null }; WorshipHub({ page = null }) { page = it }; return }
         "imsakiye" -> if (ramadan != null) {
             BackHandler { page = null }
             ImsakiyeScreen(place, ramadan) { page = null }
@@ -94,15 +110,37 @@ fun PrayerScreen() {
     Column(Modifier.fillMaxSize()) {
         val shareCtx = androidx.compose.ui.platform.LocalContext.current
         SubBar(L("tab.prayer"), actions = {
-            // Bugünün vakitlerini görsel kart olarak paylaş (rakip analizi #16)
-            IconButton(onClick = {
-                Share.image(shareCtx, ShareCards.prayer(place, java.time.Instant.now()), "vakitler-${place.today(now)}.png", L("share.prayer"))
-            }) { Icon(Icons.Filled.Share, L("share.prayer"), tint = Theme.c.accent) }
             IconButton(onClick = { page = "notify" }) {
                 Icon(
                     if (NotifyPrefs.enabled) Icons.Filled.Notifications else Icons.Outlined.Notifications,
                     L("notify.heading"), tint = Theme.c.accent,
                 )
+            }
+            // Seyrek kullanılanlar "…" menüsünde (2. analiz #199): paylaş, aylık çizelge, hesap yöntemi, imsakiye
+            Box {
+                var menu by remember { mutableStateOf(false) }
+                IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, L("common.more"), tint = Theme.c.accent) }
+                androidx.compose.material3.DropdownMenu(menu, { menu = false }) {
+                    androidx.compose.material3.DropdownMenuItem(
+                        text = { Text(L("share.prayer")) }, leadingIcon = { Icon(Icons.Filled.Share, null) },
+                        onClick = {
+                            menu = false
+                            Share.image(shareCtx, ShareCards.prayer(place, java.time.Instant.now()), "vakitler-${place.today(now)}.png", L("share.prayer"))
+                        },
+                    )
+                    androidx.compose.material3.DropdownMenuItem(
+                        text = { Text(L("prayer.monthly")) }, leadingIcon = { Icon(Icons.Filled.TableChart, null) },
+                        onClick = { menu = false; page = "monthly" },
+                    )
+                    androidx.compose.material3.DropdownMenuItem(
+                        text = { Text(L("prayer.method.app") + if (PrayerMethod.isCustom) " · " + PrayerMethod.name(PrayerMethod.id) else "") },
+                        leadingIcon = { Icon(Icons.Filled.Tune, null) }, onClick = { menu = false; page = "method" },
+                    )
+                    if (ramadan != null) androidx.compose.material3.DropdownMenuItem(
+                        text = { Text(T("imsakiye.title", ramadan.start.year)) }, leadingIcon = { Icon(Icons.Filled.NightsStay, null) },
+                        onClick = { menu = false; page = "imsakiye" },
+                    )
+                }
             }
         })
         Column(
@@ -114,13 +152,10 @@ fun PrayerScreen() {
             SavedPlaceChips()
             // Bugünün miladi ve hicri tarihi (Diyanet takvimi)
             Hijri.date(today)?.let { Text(Fmt.longDate(today) + " · " + it.text, color = Theme.c.muted, fontSize = 13.sp) }
-            if (next != null) {
-                Text(T("prayer.nextIn", next.prayer.title), color = Theme.c.muted, fontSize = 15.sp)
-                Text(
-                    Fmt.countdown(next.at.epochSecond - now.epochSecond),
-                    color = Theme.c.accent, fontSize = 52.sp, fontWeight = FontWeight.Bold, style = Tnum,
-                )
-            }
+            UpcomingReligiousLine(today) { page = "reldays" }
+            if (next != null) SkyCountdown(entries, next, now)
+            var trackV by remember { androidx.compose.runtime.mutableIntStateOf(0) }
+            val inline = TrackX.inline
             AppCard {
                 SectionTitle(L("prayer.today"))
                 for (e in entries) {
@@ -128,42 +163,73 @@ fun PrayerScreen() {
                     Row(
                         Modifier.fillMaxWidth()
                             .background(if (on) Theme.c.accentSoft else androidx.compose.ui.graphics.Color.Transparent, RoundedCornerShape(10.dp))
-                            .padding(horizontal = 10.dp, vertical = 9.dp),
+                            .padding(start = 10.dp, end = if (inline) 0.dp else 10.dp, top = 5.dp, bottom = 5.dp)
+                            .heightIn(min = 34.dp),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
+                        Icon(prayerIcon(e.prayer), null, tint = if (on) Theme.c.accent else Theme.c.muted, modifier = Modifier.padding(end = 10.dp).size(20.dp))
                         Text(e.prayer.title, Modifier.weight(1f), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp)
                         Text(Fmt.hm(e.at, place.zone), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp, style = Tnum)
+                        if (inline) PrayedMark(today, e, now, trackV) { trackV++ }
                     }
                 }
+                if (inline) PrayedSummary(today, entries, now, trackV) { trackV++ }
             }
-            SunMoonArc(now, place)
+            PrayerVisual(now, place, entries)
+            BayramRow(today, now, place)
+            EzaniRow(today, now, place)
+            RamadanCountdown(now, place)
             KerahatCard(entries, place)
-            // Bildirim alanında ve kilit ekranında sıradaki vakit (iOS'taki Live Activity karşılığı)
-            val context = androidx.compose.ui.platform.LocalContext.current
-            var liveOn by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.PRAYER_KEY, false)) }
-            AppCard {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(L("live.prayer.toggle"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    androidx.compose.material3.Switch(liveOn, { on ->
-                        liveOn = on
-                        Prefs.store.edit().putBoolean(LiveNotifications.PRAYER_KEY, on).apply()
-                        LiveNotifications.sync(context)
-                    }, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
-                }
-                Text(L("live.prayer.noteAndroid"), color = Theme.c.muted, fontSize = 12.sp)
+            ExtraTimesCard(today, place)
+            // İbadet satırı (2. analiz #199): dört kare, hepsi "İbadet" sayfasında; kilit ekranı anahtarı Bildirimler'de
+            Row(Modifier.fillMaxWidth().padding(top = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+                Text(L("worship.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+                TextButton(onClick = { page = "worship" }) { Text(L("countdowns.all") + " ›", color = Theme.c.accent) }
             }
-            LinkCard(Icons.Filled.TableChart, L("prayer.monthly")) { page = "monthly" }
-            LinkCard(Icons.Filled.Tune, L("prayer.method.app") + if (PrayerMethod.isCustom) " · " + PrayerMethod.name(PrayerMethod.id) else "") { page = "method" }
-            LinkCard(Icons.Filled.Explore, L("qibla.link")) { page = "qibla" }
-            if (ramadan != null) LinkCard(Icons.Filled.NightsStay, T("imsakiye.title", ramadan.start.year)) { page = "imsakiye" }
-            Text(L("worship.title"), Modifier.fillMaxWidth().padding(top = 6.dp), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
-            LinkCard(Icons.AutoMirrored.Filled.MenuBook, L("quran.title")) { page = "quran" }
-            LinkCard(Icons.Filled.VolunteerActivism, L("dua.title")) { page = "duas" }
-            LinkCard(Icons.Filled.AutoAwesome, L("esma.title")) { page = "esma" }
-            LinkCard(Icons.Filled.FormatQuote, L("hadith.title")) { page = "hadith" }
-            LinkCard(Icons.Filled.SelfImprovement, L("guide.title")) { page = "guide" }
-            LinkCard(Icons.Filled.TouchApp, L("zikir.title")) { page = "zikir" }
-            LinkCard(Icons.Filled.TaskAlt, L("track.title")) { page = "track" }
-            LinkCard(Icons.Filled.Calculate, L("zakat.title")) { page = "zakat" }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                WorshipTile(Icons.Filled.Explore, L("qibla.title"), Modifier.weight(1f)) { page = "qibla" }
+                WorshipTile(Icons.AutoMirrored.Filled.MenuBook, L("quran.title"), Modifier.weight(1f)) { page = "quran" }
+                WorshipTile(Icons.Filled.TouchApp, L("zikir.title"), Modifier.weight(1f)) { page = "zikir" }
+                WorshipTile(Icons.Filled.TaskAlt, L("track.title"), Modifier.weight(1f)) { page = "track" }
+            }
+        }
+    }
+}
+
+/** İbadet satırındaki kare: simge kutusu ve kısa ad */
+@Composable
+private fun WorshipTile(icon: ImageVector, title: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    Column(
+        modifier.aspectRatio(1f).clip(RoundedCornerShape(16.dp)).background(Theme.c.surface)
+            .border(1.dp, Theme.c.border.copy(alpha = 0.5f), RoundedCornerShape(16.dp)).clickable(onClick = onClick).padding(6.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        IconBox(icon)
+        Spacer(Modifier.height(6.dp))
+        Text(title, color = Theme.c.text, fontSize = 12.sp, maxLines = 2, textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+            lineHeight = 14.sp, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+    }
+}
+
+/** İbadet sayfası (2. analiz #199): Vakitler'deki dört karenin "Tümü"sü */
+@Composable
+private fun WorshipHub(onBack: () -> Unit, open: (String) -> Unit) {
+    Column(Modifier.fillMaxSize()) {
+        SubBar(L("worship.title"), onBack)
+        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            LinkCard(Icons.Filled.Explore, L("qibla.link")) { open("qibla") }
+            LinkCard(Icons.AutoMirrored.Filled.MenuBook, L("quran.title")) { open("quran") }
+            LinkCard(Icons.Filled.VolunteerActivism, L("dua.title")) { open("duas") }
+            LinkCard(Icons.Filled.AutoAwesome, L("esma.title")) { open("esma") }
+            LinkCard(Icons.Filled.FormatQuote, L("hadith.title")) { open("hadith") }
+            LinkCard(Icons.Filled.SelfImprovement, L("guide.title")) { open("guide") }
+            LinkCard(Icons.Filled.TouchApp, L("zikir.title")) { open("zikir") }
+            LinkCard(Icons.Filled.TaskAlt, L("track.title")) { open("track") }
+            LinkCard(Icons.Filled.Event, L("relday.title")) { open("reldays") }
+            LinkCard(Icons.Filled.Celebration, L("greet.title")) { open("greet") }
+            LinkCard(Icons.Filled.Calculate, L("zakat.title")) { open("zakat") }
         }
     }
 }
@@ -194,12 +260,99 @@ private fun KerahatCard(entries: List<AppPlace.Entry>, place: AppPlace) {
     }
 }
 
+/** Ezani (alaturka) saat (2. analiz #121): son akşam vakti 12.00 sayılır (sitedeki namaz sayfasıyla aynı) */
+internal fun ezaniText(today: java.time.LocalDate, now: java.time.Instant, place: AppPlace): String? {
+    fun maghrib(d: java.time.LocalDate): java.time.Instant? =
+        tr.bumba.time.core.PrayerTimes.times(d, place.lat, place.lon, place.zone).maghrib?.let { d.atStartOfDay(place.zone).toInstant().plusSeconds(Math.round(it * 60) * 60) }
+    var ref = maghrib(today)
+    if (ref != null && now.isBefore(ref)) ref = maghrib(today.minusDays(1))
+    ref ?: return null
+    val m = maxOf(0L, java.time.Duration.between(ref, now).toMinutes())
+    val h = (m / 60) % 12
+    return T("prayer.ezani", "%02d:%02d".format(java.util.Locale.ROOT, if (h == 0L) 12L else h, m % 60))
+}
+
+/** Ramazan'da ikinci sayaç (2. analiz #55): iftara ya da sahura (imsak) kalan süre */
+@Composable
+private fun RamadanCountdown(now: java.time.Instant, place: AppPlace) {
+    val today = place.today(now)
+    val next = (place.entries(today) + place.entries(today.plusDays(1)))
+        .firstOrNull { (it.prayer == Prayer.MAGHRIB || it.prayer == Prayer.FAJR) && it.at.isAfter(now) } ?: return
+    if (Hijri.date(next.at.atZone(place.zone).toLocalDate())?.month != 9) return
+    AppCard {
+        Text(T("prayer.ramadanLeft", next.prayer.ramadanTitle(next.at, place.zone), Fmt.countdown(java.time.Duration.between(now, next.at).seconds)),
+            color = Theme.c.accent, fontSize = 18.sp, fontWeight = FontWeight.Bold, style = Tnum)
+    }
+}
+
+@Composable
+private fun EzaniRow(today: java.time.LocalDate, now: java.time.Instant, place: AppPlace) {
+    val text = ezaniText(today, now, place) ?: return
+    Text(text, color = Theme.c.muted, fontSize = 13.sp)
+}
+
+/** Bayram namazı (2. analiz #56): bayramın ilk günü öğleye kadar, arefe günü "yarın"; Diyanet kuralı güneş + 38 dk */
+@Composable
+private fun BayramRow(today: java.time.LocalDate, now: java.time.Instant, place: AppPlace) {
+    fun isBayram(d: java.time.LocalDate) = AppData.events[d].orEmpty().any { (it.key == "rb1" || it.key == "kb1") && it.date == d }
+    fun at(d: java.time.LocalDate): java.time.Instant? {
+        val day = tr.bumba.time.core.PrayerTimes.times(d, place.lat, place.lon, place.zone)
+        val h = tr.bumba.time.core.PrayerTimes.bayram(day) ?: return null
+        return d.atStartOfDay(place.zone).toInstant().plusSeconds((h * 3600).toLong())
+    }
+    val text = when {
+        isBayram(today) -> {
+            val dh = tr.bumba.time.core.PrayerTimes.times(today, place.lat, place.lon, place.zone).dhuhr
+            val noon = dh?.let { today.atStartOfDay(place.zone).toInstant().plusSeconds((it * 3600).toLong()) }
+            if (noon != null && now.isBefore(noon)) at(today)?.let { L("prayer.bayram") + ": " + Fmt.hm(it, place.zone) } else null
+        }
+        isBayram(today.plusDays(1)) -> at(today.plusDays(1))?.let { T("prayer.bayramTomorrow", Fmt.hm(it, place.zone)) }
+        else -> null
+    } ?: return
+    AppCard {
+        Text(text, color = Theme.c.accent, fontWeight = FontWeight.Bold, fontSize = 17.sp)
+        Text(L("prayer.bayramNote"), color = Theme.c.muted, fontSize = 12.sp)
+    }
+}
+
+/** Ek vakitler (2. analiz #59; Türkiye Takvimi tanımlarıyla yaklaşık, sitedeki namaz sayfasıyla aynı): açılır kart */
+@Composable
+private fun ExtraTimesCard(today: java.time.LocalDate, place: AppPlace) {
+    var open by remember { mutableStateOf(false) }
+    AppCard(Modifier.clickable { open = !open }) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(L("prayer.extraHeading"), Modifier.weight(1f), color = Theme.c.text, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
+            Icon(if (open) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown, null, tint = Theme.c.muted)
+        }
+        if (open) {
+            val pt = tr.bumba.time.core.PrayerTimes
+            val noon = today.atTime(java.time.LocalTime.NOON).toInstant(java.time.ZoneOffset.UTC)
+            val off = place.zone.rules.getOffset(noon).totalSeconds / 3600.0
+            val day = pt.times(today.year, today.monthValue, today.dayOfMonth, place.lat, place.lon, off)
+            val e = pt.extraTimes(today.year, today.monthValue, today.dayOfMonth, place.lat, place.lon, off, day)
+            val asr2 = pt.times(today.year, today.monthValue, today.dayOfMonth, place.lat, place.lon, off, tr.bumba.time.core.PrayerTimes.Parameters.method("diyanet", true)).asr
+            val rows = listOf(
+                "israk" to e.israk, "duha" to e.duha, "asrSani" to asr2, "isfirar" to e.isfirar, "istibak" to e.istibak,
+                "isaSani" to e.isaSani, "midnight" to e.midnight, "tahajjud" to e.tahajjud, "seher" to e.seher,
+            )
+            val start = today.atStartOfDay(place.zone).toInstant()
+            for ((key, h) in rows) {
+                Row(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+                    Text(L("prayer.extraNames.$key"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    Text(h?.let { Fmt.hm(start.plusSeconds(Math.round(it * 60) * 60), place.zone) } ?: "–", color = Theme.c.text, fontSize = 15.sp, style = Tnum)
+                }
+            }
+            Text(L("prayer.extraNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+    }
+}
+
 @Composable
 private fun LinkCard(icon: ImageVector, title: String, onClick: () -> Unit) {
     AppCard(Modifier.clickable(onClick = onClick)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(icon, null, tint = Theme.c.accent)
-            Text("  $title", Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+            IconBox(icon)
+            Text("   $title", Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
             Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
         }
     }

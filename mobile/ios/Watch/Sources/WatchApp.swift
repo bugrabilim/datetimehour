@@ -81,6 +81,8 @@ struct WatchHome: View {
                             .foregroundStyle(e.at == next?.at ? Color.orange : Color.primary)
                         }
                     }
+                    // Zaman araçları (2. analiz #137)
+                    NavigationLink { WatchToolsList() } label: { Label(L("watch.tools"), systemImage: "timer") }
                     NavigationLink {
                         PlaceList(sel: $sel)
                     } label: {
@@ -89,6 +91,9 @@ struct WatchHome: View {
                             Text(L("wear.place")).font(.caption2).foregroundStyle(.secondary)
                         }
                     }
+                    // Hava komplikasyonunun atfı (Open-Meteo, CC BY 4.0; 2. analiz #115)
+                    Text(L("weather.attribution")).font(.system(size: 10)).foregroundStyle(.secondary)
+                        .listRowBackground(Color.clear)
                 }
             }
         }

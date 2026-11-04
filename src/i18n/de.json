@@ -58,6 +58,7 @@
       "light": "Leicht"
     },
     "lookColor": "Uhrfarbe",
+    "lookSecSmall": "Kleine Sekunden bei der Digitaluhr",
     "lookColors": {
       "default": "Seitenfarbe",
       "ink": "Tinte",
@@ -66,7 +67,28 @@
       "red": "Rot",
       "purple": "Lila"
     },
-    "lookNote": "Ihre Auswahl wird nur in diesem Browser gespeichert."
+    "lookNote": "Ihre Auswahl wird nur in diesem Browser gespeichert.",
+    "lookDateFmt": "Datumsformat",
+    "lookDateFmts": {
+      "long": "Lang",
+      "numeric": "Numerisch",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "Zeittrenner",
+    "lookSeps": {
+      "colon": "Doppelpunkt (14:30)",
+      "dot": "Punkt (14.30)"
+    },
+    "lookWeekStart": "Erster Wochentag",
+    "lookWeekStarts": {
+      "mon": "Montag",
+      "sun": "Sonntag",
+      "sat": "Samstag"
+    },
+    "lookMs": "Millisekunden",
+    "lookNight": "Nachtmodus (Licht aus)",
+    "share": "Teilen",
+    "shareCopied": "Link kopiert"
   },
   "client": {
     "format24": "24 Stunden",
@@ -167,7 +189,13 @@
     "formatLabel": "Zeitformat",
     "fsWeatherNeed": "Wählen Sie einen Standort für das Wetter:",
     "fsWeatherLink": "Standort wählen",
-    "fsWeatherFail": "Das Wetter konnte nicht abgerufen werden."
+    "fsWeatherFail": "Das Wetter konnte nicht abgerufen werden.",
+    "syncShortOk": "Ihre Uhr geht genau · ±{ms} ms",
+    "syncShortAhead": "Ihre Uhr geht {s} s vor",
+    "syncShortBehind": "Ihre Uhr geht {s} s nach",
+    "weekN": "KW {n}",
+    "pillDst": "Sommerzeit",
+    "pillNoDst": "Keine Sommerzeit"
   },
   "home": {
     "title": "Wie spät ist es? Live-Uhr und heutiges Datum | Saat Tarih",
@@ -278,7 +306,14 @@
     "sunrise": "Sonnenaufgang",
     "sunset": "Sonnenuntergang",
     "daylen": "Tageslänge",
-    "sunNote": "Sonnenauf- und -untergang sind Näherungswerte, berechnet aus dem heutigen Datum und der Lage der Stadt (sie können um einige Minuten abweichen)."
+    "sunNote": "Sonnenauf- und -untergang sind Näherungswerte, berechnet aus dem heutigen Datum und der Lage der Stadt (sie können um einige Minuten abweichen).",
+    "solarNoon": "Sonnenhöchststand",
+    "solarAhead": "Die Uhr geht hier {d} vor der Sonnenzeit.",
+    "solarBehind": "Die Uhr geht hier {d} hinter der Sonnenzeit.",
+    "solarSame": "Die Uhr entspricht hier fast der Sonnenzeit.",
+    "mapLink": "Auf der Karte ansehen (OpenStreetMap)",
+    "population": "Einwohner (Ballungsraum, ca.)",
+    "populationNote": "Einwohner: Natural Earth (gemeinfrei), ungefährer Wert für den Ballungsraum."
   },
   "privacy": {
     "title": "Datenschutzerklärung und Cookie-Richtlinie | Saat Tarih",
@@ -299,7 +334,7 @@
         "ul": [
           "**Uhrzeit und Datum:** Uhrzeit und Zeitzone Ihres Geräts werden ausschließlich in Ihrem Browser gelesen und verarbeitet. Sie werden weder an einen Server gesendet noch gespeichert.",
           "**Standort (Gebetszeiten):** Wenn Sie auf der Seite der Gebetszeiten „Meinen Standort verwenden“ wählen, nutzt Ihr Browser Ihren Standort nur auf Ihrem Gerät zur Berechnung. Die Koordinaten werden weder an den Server gesendet noch in Statistiken erfasst; Ihre letzte Auswahl bleibt im lokalen Speicher Ihres Browsers.",
-          "**Wetter (externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben, senden die Wetterseite und die Uhrstile mit Wetter die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts (auf etwa 1 km genau) direkt aus Ihrem Browser an Open-Meteo (api.open-meteo.com), das die Daten liefert; dabei erreicht auch Ihre IP-Adresse Open-Meteo. Ohne Zustimmung wird keine Anfrage gestellt, stattdessen erscheint ein Hinweis. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die Datenschutzbedingungen von Open-Meteo.",
+          "**Wetter (externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben, senden die Wetterseite und die Uhrstile mit Wetter die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts (auf etwa 1 km genau) direkt aus Ihrem Browser an Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), das die Daten liefert; dabei erreicht auch Ihre IP-Adresse Open-Meteo. Ohne Zustimmung wird keine Anfrage gestellt, stattdessen erscheint ein Hinweis. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die Datenschutzbedingungen von Open-Meteo.",
           "**Karte (Globus, externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben und den Globus auf der Startseite über eine bestimmte Stufe hinaus vergrößern, werden Kartenkacheln direkt vom Server von OpenStreetMap (tile.openstreetmap.org) in Ihren Browser geladen; dabei erreichen Ihre IP-Adresse und die Kacheladressen des betrachteten Gebiets die OpenStreetMap Foundation. Ohne Zustimmung oder bei verkleinertem Globus wird diese Anfrage nicht gestellt. Der Server von Saat Tarih sieht diese Daten nicht; es gelten die Datenschutzbedingungen von OpenStreetMap.",
           "**Qibla und Moscheen in der Nähe:** Qibla-Richtung, Entfernung und Qibla-Zeit werden in Ihrem Browser berechnet. Für den Kompass wird der Lagesensor Ihres Telefons nur im Browser gelesen (das iPhone fragt nach Erlaubnis) und nirgendwohin gesendet. Wenn Sie auf „Moscheen anzeigen“ tippen und externe Dienste erlaubt haben, werden die auf zwei Dezimalstellen gerundeten Koordinaten des gewählten Ortes (etwa 1 km) von Ihrem Browser an den Overpass-Dienst (overpass-api.de) gesendet, der OpenStreetMap-Daten bereitstellt; dabei erreicht auch Ihre IP-Adresse diesen Dienst. Der Server von Saat Tarih sieht diese Koordinaten nicht.",
           "**Weckermusik (YouTube, externer Dienst, mit Zustimmung):** Wenn Sie im Wecker-Werkzeug einem Wecker einen YouTube-Link hinzufügen und externe Dienste erlaubt haben, wird das Video beim Klingeln mit dem Player im erweiterten Datenschutzmodus von YouTube (youtube-nocookie.com) in Ihren Browser geladen; dabei erreichen Ihre IP-Adresse und die Kennung des Videos Google (YouTube), und der Player kann eigene Daten in Ihrem Browser speichern. Der Link bleibt nur in diesem Browser, zusammen mit Ihrem Wecker. Ohne Zustimmung wird der Player nicht geladen und der Wecker klingelt mit seinem eigenen Ton. Der Server von Saat Tarih sieht diese Daten nicht; es gelten die Datenschutzbestimmungen von YouTube (Google).",
@@ -318,22 +353,23 @@
         ],
         "ul": [
           "**Standort:** Wenn Sie „Meinen Standort verwenden“ wählen, wird Ihr Standort auf dem Telefon zur Berechnung der Gebetszeiten und zum Finden der nächsten Provinz verwendet; ein ungefährer Standort (etwa 1 km) wird nur auf dem Telefon gespeichert. Auch die Option „Automatisch“ in Widgets nutzt den Standort nur auf dem Telefon.",
-          "**Wetter:** Das Wetter in der App stammt von Apple Wetter (WeatherKit); dafür werden die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts an Apple gesendet. Wir sehen diese Daten nicht; es gelten die Datenschutzbedingungen von Apple.",
+          "**Wetter:** Das Wetter in der App stammt von Apple Wetter (WeatherKit); dafür werden die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts an Apple gesendet. Wir sehen diese Daten nicht; es gelten die Datenschutzbedingungen von Apple. Luftqualität, Pollen, der Modellvergleich und die Wetter-Komplikation der Apple Watch stammen von Open-Meteo (open-meteo.com); dafür werden auf zwei Nachkommastellen gerundete Koordinaten gesendet.",
           "**Karte:** Der Globus in der Weltuhr wird mit Apple Karten angezeigt; Kartenbilder werden von Apple geladen.",
           "**Kalender:** Nur mit Ihrer Erlaubnis werden Termine aus den Kalendern auf Ihrem Telefon in der App angezeigt; sie werden auf dem Telefon gelesen und nirgendwohin gesendet. Hinzufügen und Löschen erfolgt über den Kalenderbildschirm des iPhones und nur mit Ihrer Bestätigung.",
           "**Mitteilungen und Wecker:** Gebetszeit-Mitteilungen; Mitteilungen zu besonderen Tagen, Jahreszeitenbeginn, Mondphasen, Sonnenauf- und -untergang, morgendlicher Wetterübersicht, voller Stunde und Zeitumstellung (außer der vollen Stunde jeweils standardmäßig an; änderbar unter Einstellungen › Mitteilungen); Wecker und Timer werden auf dem Telefon ohne Server eingerichtet. Nur für die Wetterübersicht wird der Wetterdienst abgefragt (siehe Punkt Wetter oben). Die Liste wird per iOS-Hintergrundaktualisierung aktuell gehalten; Sprachansagen werden auf dem Telefon erzeugt.",
           "**E-Mail-Liste:** Wenn Sie auf der Seite „Über“ der Liste beitreten, wird Ihre E-Mail-Adresse genau wie beim Formular der Website an die gemeinsame Bumba-Liste gesendet; die Hinweise zur E-Mail-Liste gelten auch für die App.",
           "**Abzeichen:** Abzeichen und Ihr Fortschritt (erhaltene Abzeichen mit Datum, gesehene Uhrmodelle, Zahl der aufeinanderfolgenden Nutzungstage) werden nur auf dem Telefon gespeichert und nirgendwohin gesendet; Sie können sie jederzeit unter Werkzeuge › Abzeichen mit „Abzeichen löschen“ entfernen.",
           "**Intervalltraining:** Während eines von Ihnen gestarteten Intervalltrainings nutzt die App den Hintergrund-Audiomodus von iOS, um Phasenwechsel auch bei gesperrtem Bildschirm anzusagen; die Sprachausgabe wird auf dem Telefon erzeugt, es werden keine Daten gesendet.",
-          "**Fotos:** Ein Foto, das Sie für die Vollbilduhr oder einen Countdown wählen, wird über die Fotoauswahl des iPhones übernommen (es wird kein Zugriff auf Ihre Mediathek angefragt); eine verkleinerte Kopie wird nur auf dem Telefon gespeichert und nirgendwohin gesendet. Für die Diashow gewählte Fotos (bis zu 10) bleiben ebenfalls auf dem Telefon. Teilkarten für Gebetszeiten und Countdowns sowie CSV-Dateien entstehen auf dem Telefon und gehen nur an die App, die Sie wählen.",
+          "**Fotos:** Ein Foto, das Sie für die Vollbilduhr oder einen Countdown wählen, wird über die Fotoauswahl des iPhones übernommen (es wird kein Zugriff auf Ihre Mediathek angefragt); eine verkleinerte Kopie wird nur auf dem Telefon gespeichert und nirgendwohin gesendet. Für die Diashow gewählte Fotos (bis zu 10) bleiben ebenfalls auf dem Telefon. Teilkarten für Gebetszeiten und Countdowns sowie CSV-Dateien entstehen auf dem Telefon und gehen nur an die App, die Sie wählen. Das für das transparente Widget gewählte Bildschirmfoto des Home-Bildschirms und die daraus ausgeschnittenen Teile bleiben nur auf dem Telefon, im gemeinsamen Ordner von App und Widgets; sie werden nirgendwohin gesendet und nicht mit iCloud synchronisiert.",
           "**Einstellungen:** Einstellungen wie Uhrmodell, Provinz und Weltuhren werden nur auf dem Telefon gespeichert und beim Löschen der App entfernt.",
-          "**Qibla und Moscheen in der Nähe:** Die Qibla-Richtung wird auf dem Telefon berechnet; der Kompass nutzt den Lagesensor des Telefons (mit Standortberechtigung wird der Standort zur Bestimmung des geografischen Nordens ebenfalls nur auf dem Telefon genutzt). Auf dem Bildschirm „Moscheen in der Nähe“ erfolgt die Suche über Apple Karten: Der Suchbegriff („Moschee“) und das auf zwei Dezimalstellen gerundete Gebietszentrum gehen an Apple; es gelten Apples Datenschutzbedingungen.",
+          "**Qibla und Moscheen in der Nähe:** Die Qibla-Richtung wird auf dem Telefon berechnet; der Kompass nutzt den Lagesensor des Telefons (mit Standortberechtigung wird der Standort zur Bestimmung des geografischen Nordens ebenfalls nur auf dem Telefon genutzt). Auf dem Bildschirm „Moscheen in der Nähe“ erfolgt die Suche über Apple Karten: Der Suchbegriff („Moschee“) und das auf zwei Dezimalstellen gerundete Gebietszentrum gehen an Apple; es gelten Apples Datenschutzbedingungen. Auf dem Qibla-Bildschirm wird die Linie zur Kaaba auf Apple Karten gezeigt; Kartenbilder Ihrer Gegend werden von Apple geladen.",
           "**Apple Watch, Siri und Sperrbildschirm:** Die Apple-Watch-App berechnet die Gebetszeiten auf der Uhr; ist „Ort vom iPhone“ gewählt, werden Name und Koordinaten des gewählten Ortes vom iPhone an die Uhr gesendet (Apples WatchConnectivity) und nirgendwohin sonst; wählen Sie auf der Uhr „Mein Standort“, wird der Standort nur auf der Uhr verwendet. Aktionen für Siri und Kurzbefehle (Timer, Wecker, Vollbilduhr, nächstes Gebet, Datum) laufen auf dem Telefon; Sprachanfragen verarbeitet Apple. Live-Aktivitäten auf dem Sperrbildschirm (Zähler, nächstes Gebet) entstehen auf dem Telefon.",
-          "**Kamera, Schlaf und Fokus:** Zum Lesen des QR-Codes oder Barcodes einer Wecker-Aufgabe öffnet sich die Kamera nur, während Sie den Code speichern und den Wecker ausschalten (die Berechtigung wird beim ersten Mal erfragt); das Bild wird auf dem Gerät verarbeitet, nicht gespeichert und nicht gesendet, nur der gelesene Wert bleibt mit dem Wecker auf dem Gerät. Die Aufgaben Schütteln und Gehen nutzen den Bewegungssensor nur bei geöffnetem Aufgabenbildschirm; Schritte werden nicht gespeichert. Pomodoro-Verlauf (Tag, Minuten, Aufgabe) und Schlafplan bleiben auf dem Gerät; Pomodoro-Rauschen und Schlafgeräusche werden auf dem Gerät erzeugt. Intelligenter Wecker: Wenn Sie im Bildschirm Schlaf eine Sitzung starten, wird im Zeitfenster des intelligenten Weckers der Bewegungssensor (Beschleunigungssensor) gelesen, und der Wecker klingelt früher, sobald Anzeichen für leichten Schlaf erkennbar sind; die Bewegungsdaten bleiben nur im Speicher und werden weder gespeichert noch gesendet. Es gibt keine Schlafaufzeichnung (Schlafphasen, Aufnahmen), das Mikrofon wird nicht verwendet.",
+          "**Kamera, Schlaf und Fokus:** Zum Lesen des QR-Codes oder Barcodes einer Wecker-Aufgabe öffnet sich die Kamera nur, während Sie den Code speichern und den Wecker ausschalten (die Berechtigung wird beim ersten Mal erfragt); das Bild wird auf dem Gerät verarbeitet, nicht gespeichert und nicht gesendet, nur der gelesene Wert bleibt mit dem Wecker auf dem Gerät. Die Aufgaben Schütteln und Gehen nutzen den Bewegungssensor nur bei geöffnetem Aufgabenbildschirm; Schritte werden nicht gespeichert. Pomodoro-Verlauf (Tag, Minuten, Aufgabe) und Schlafplan bleiben auf dem Gerät; Pomodoro-Rauschen und Schlafgeräusche werden auf dem Gerät erzeugt. Intelligenter Wecker: Wenn Sie im Bildschirm Schlaf eine Sitzung starten, wird im Zeitfenster des intelligenten Weckers der Bewegungssensor (Beschleunigungssensor) gelesen, und der Wecker klingelt früher, sobald Anzeichen für leichten Schlaf erkennbar sind; die Bewegungsdaten bleiben nur im Speicher und werden weder gespeichert noch gesendet. Es gibt keine Schlafaufzeichnung (Schlafphasen, Aufnahmen), das Mikrofon wird für den Schlaf nicht verwendet. Das Foto der Aufgabe „Gegenstand finden“ (erkannt mit Apple Vision), das Bild der Qibla-Kameraansicht und das Mikrofon der Vorleseaufgabe (nur Spracherkennung auf dem Gerät) werden nur bei geöffnetem Bildschirm verwendet; alles wird auf dem Gerät verarbeitet, nicht gespeichert und nicht gesendet. Kompassdesign und Lieblingsmoscheen werden auf dem Gerät gespeichert und bei aktivem iCloud-Abgleich zwischen Ihren eigenen Geräten abgeglichen.",
           "**Glaubenspraxis:** Ihr Koran-Lesezeichen, die Schriftgröße, Dhikr-Zählungen, das Gebets- und Fastenprotokoll (verrichtete Gebete, Anzahl der Nachholungen, Fastentage) und die Beträge im Zakat-Rechner bleiben nur auf dem Gerät; sie werden nirgendwohin gesendet und nicht für Statistiken oder Abzeichen verwendet. Korantext und Bittgebete sind in der App enthalten. Tippen Sie auf den Link zur türkischen Koranübersetzung des Diyanet, öffnet sich diese Seite im Browser. Den Goldpreis für die Zakat geben Sie selbst ein; die App ruft keine Preise ab.",
           "**iCloud-Synchronisierung:** Ist „Mit iCloud synchronisieren“ in den Einstellungen aktiv (Standard), werden Einstellungen, Weltuhren, Countdowns, gespeicherte Orte, Pomodoro- und Schlafdaten sowie Einträge zur Glaubenspraxis über Apples iCloud-Schlüssel-Wert-Speicher mit iPhone, iPad und Mac desselben Apple-Accounts abgeglichen. Diese Daten liegen in Ihrem iCloud-Account und unterliegen Apples Bedingungen; wir haben keinen Zugriff, und sie erreichen unsere Server nie. Standort, Wecker, laufende Timer, Mitteilungseinstellungen, Abzeichen und Fotos werden nicht synchronisiert. Wird der Schalter ausgeschaltet, synchronisiert dieses Gerät nicht mehr.",
           "**Health, Morgentagebuch, Weckerfoto und schwebende Uhr:** Wenn Sie „In Apple Health sichern“ einschalten, wird jedes beendete Intervalltraining als Training (Art, Beginn, Dauer) in Health eingetragen; die App liest Ihre Gesundheitsdaten nicht, und diese Daten gehen an keinen Server. Das Morgentagebuch (Stimmung, Schlaf, Vorsatz, Notiz) bleibt nur auf Ihren Geräten (bei aktivierter iCloud-Synchronisierung auf den Geräten Ihres Apple-Accounts). Bei der Foto-Weckaufgabe wird das Foto nicht gespeichert; zum Vergleich wird nur eine sehr kleine Zusammenfassung (72 Grauwerte) auf dem Telefon behalten. Gewählte Berechnungsmethode, Gebetszeit-Wecker (iOS 26+) und Kontrollzentrum-Tasten bleiben auf dem Telefon. Die schwebende Uhr ist ein Bild-in-Bild-Fenster; sie gibt keinen Ton wieder und sendet keine Daten.",
-          "**Musikwecker, Orts- und Kalendererinnerungen, Fokussperre, Mac, Apple TV und Vision Pro:** Für einen Weckton wird ein 30-Sekunden-Ausschnitt des Titels, den Sie aus der Musikmediathek oder aus Dateien wählen, auf dem Telefon als Tondatei gespeichert; der Titel wird nirgendwohin gesendet (Zugriff auf die Mediathek wird nur bei der Auswahl erfragt). Bei Ortserinnerungen erkennt das iPhone selbst Ankunft und Verlassen; der Ort der Erinnerung bleibt auf dem Telefon, die Karte stammt von Apple. Beim Wecker für einen Kalendertermin werden nur Titel und Zeit dieses Termins verwendet. Die Fokussperre nutzt Apples Bildschirmzeit; die gewählten Apps und Websites sind verschlüsselte Apple-Token, die App sieht nicht, welche es sind. Die Apps für Mac, Apple TV und Vision Pro berechnen die Gebetszeiten auf dem Gerät; erlauben Sie den Standort, wird er nur auf dem Gerät verwendet, um die nächste Provinz zu finden."
+          "**Musikwecker, Orts- und Kalendererinnerungen, Fokussperre, Mac, Apple TV und Vision Pro:** Für einen Weckton wird ein 30-Sekunden-Ausschnitt des Titels, den Sie aus der Musikmediathek oder aus Dateien wählen, auf dem Telefon als Tondatei gespeichert; der Titel wird nirgendwohin gesendet (Zugriff auf die Mediathek wird nur bei der Auswahl erfragt). Bei Ortserinnerungen erkennt das iPhone selbst Ankunft und Verlassen; der Ort der Erinnerung bleibt auf dem Telefon, die Karte stammt von Apple. Beim Wecker für einen Kalendertermin werden nur Titel und Zeit dieses Termins verwendet. Die Fokussperre nutzt Apples Bildschirmzeit; die gewählten Apps und Websites sind verschlüsselte Apple-Token, die App sieht nicht, welche es sind. Die Apps für Mac, Apple TV und Vision Pro berechnen die Gebetszeiten auf dem Gerät; erlauben Sie den Standort, wird er nur auf dem Gerät verwendet, um die nächste Provinz zu finden. Während ein Wecker mit Aufgabe klingelt, wird das Löschen der App über dieselbe Schnittstelle verhindert und nach Erledigung der Aufgabe wieder erlaubt; das funktioniert nur, wenn Sie die Bildschirmzeit-Berechtigung erteilt haben.",
+          "**Lernzeit und Aufwachspiel:** Fächer und Sitzungen der Lernzeit (Dauer, Anzahl der Fragen, Notiz) sowie die Einträge des Aufwachspiels (Tag, Aufsteh- und Weckzeit, Anzahl der Schlummervorgänge) bleiben auf dem Gerät; bei aktiver iCloud-Synchronisierung werden sie mit Ihrem iCloud-Konto abgeglichen und sonst nirgendwohin gesendet. App-Sprache und Zifferblatt werden ebenfalls auf dem Gerät gespeichert."
         ]
       },
       {
@@ -353,10 +389,11 @@
           "**Abzeichen und Einstellungen:** Abzeichen und Einstellungen wie Uhrmodell, Standort und Weltuhren werden nur auf dem Telefon gespeichert und beim Löschen der App entfernt. Ist die Android-Sicherung auf Ihrem Telefon eingeschaltet, können diese Daten (und die Kopie gewählter Fotos) in die Gerätesicherung in Ihrem Google-Konto aufgenommen werden; diese Sicherung unterliegt den Bedingungen von Google, wir haben keinen Zugriff darauf.",
           "**Qibla und Moscheen in der Nähe:** Qibla-Richtung und Kompass werden auf dem Telefon berechnet. Auf dem Bildschirm „Moscheen in der Nähe“ werden die auf zwei Dezimalstellen gerundeten Koordinaten (etwa 1 km) an den Overpass-Dienst (overpass-api.de) gesendet, der OpenStreetMap-Daten bereitstellt; dabei erreicht Ihre IP-Adresse diesen Dienst. Ein Tippen auf eine Moschee öffnet Ihre Karten-App.",
           "**Wear-OS-Uhr und Verknüpfungen:** Die Wear-OS-App berechnet die Gebetszeiten auf der Uhr; ist „Mein Standort“ gewählt, wird der ungefähre Standort nur auf der Uhr verwendet und nirgendwohin gesendet. Timer und Wecker, die der Assistant oder andere Apps in Saat Tarih stellen, werden nur auf dem Telefon gespeichert; Bildschirmschoner und Mitteilungen laufender Zähler entstehen auf dem Telefon.",
-          "**Kamera, Schlaf und Fokus:** Den QR-Code oder Barcode einer Wecker-Aufgabe liest der Code-Scanner von Google (Google-Play-Dienste): Die App fragt nicht nach der Kameraberechtigung und sieht das Bild nicht; nur der gelesene Wert bleibt mit dem Wecker auf dem Telefon. Die Aufgaben Schütteln und Gehen nutzen den Beschleunigungssensor nur bei geöffnetem Weckerbildschirm; Schritte werden nicht gespeichert. Pomodoro-Verlauf (Tag, Minuten, Aufgabe) und Schlafplan bleiben auf dem Telefon; Pomodoro-Rauschen und Schlafgeräusche werden auf dem Telefon erzeugt (ein Vordergrunddienst lässt sie bei ausgeschaltetem Bildschirm weiterlaufen, mit „Ton stoppen“ in der Mitteilung). Intelligenter Wecker: Wenn Sie im Bildschirm Schlaf eine Sitzung starten, wird im Zeitfenster des intelligenten Weckers der Bewegungssensor (Beschleunigungssensor) gelesen, und der Wecker klingelt früher, sobald Anzeichen für leichten Schlaf erkennbar sind; die Bewegungsdaten bleiben nur im Speicher und werden weder gespeichert noch gesendet. Es gibt keine Schlafaufzeichnung (Schlafphasen, Aufnahmen), das Mikrofon wird nicht verwendet. Die Sitzung läuft als Vordergrunddienst (mit „Beenden“ in der Mitteilung). Wenn Sie einem Wecker einen Spotify- oder YouTube-Link hinzufügen, öffnet sich der Link beim Klingeln in dieser App; die App öffnet nur den Link und hat keinen Zugriff auf die Musik.",
+          "**Kamera, Schlaf und Fokus:** Den QR-Code oder Barcode einer Wecker-Aufgabe liest der Code-Scanner von Google (Google-Play-Dienste): Die App fragt nicht nach der Kameraberechtigung und sieht das Bild nicht; nur der gelesene Wert bleibt mit dem Wecker auf dem Telefon. Die Aufgaben Schütteln und Gehen nutzen den Beschleunigungssensor nur bei geöffnetem Weckerbildschirm; Schritte werden nicht gespeichert. Pomodoro-Verlauf (Tag, Minuten, Aufgabe) und Schlafplan bleiben auf dem Telefon; Pomodoro-Rauschen und Schlafgeräusche werden auf dem Telefon erzeugt (ein Vordergrunddienst lässt sie bei ausgeschaltetem Bildschirm weiterlaufen, mit „Ton stoppen“ in der Mitteilung). Intelligenter Wecker: Wenn Sie im Bildschirm Schlaf eine Sitzung starten, wird im Zeitfenster des intelligenten Weckers der Bewegungssensor (Beschleunigungssensor) gelesen, und der Wecker klingelt früher, sobald Anzeichen für leichten Schlaf erkennbar sind; die Bewegungsdaten bleiben nur im Speicher und werden weder gespeichert noch gesendet. Es gibt keine Schlafaufzeichnung (Schlafphasen, Aufnahmen), das Mikrofon wird für den Schlaf nicht verwendet. Die Sitzung läuft als Vordergrunddienst (mit „Beenden“ in der Mitteilung). Wenn Sie einem Wecker einen Spotify- oder YouTube-Link hinzufügen, öffnet sich der Link beim Klingeln in dieser App; die App öffnet nur den Link und hat keinen Zugriff auf die Musik. Bei „Gegenstand finden“ wird das kleine Foto der Systemkamera mit dem Bildbeschriftungsmodell der Google-Play-Dienste auf dem Telefon erkannt; bei der Vorleseaufgabe wird das Mikrofon (Berechtigung in der Aufgabe) nur mit der Spracherkennung auf dem Gerät genutzt, sonst folgt die Tippaufgabe. Bild und Ton werden weder gespeichert noch gesendet. Kompassdesign und Lieblingsmoscheen werden auf dem Telefon gespeichert und bei aktiver Android-Sicherung mit den Einstellungen in Ihrer Google-Kontosicherung gesichert.",
           "**Glaubenspraxis:** Ihr Koran-Lesezeichen, die Schriftgröße, Dhikr-Zählungen, das Gebets- und Fastenprotokoll (verrichtete Gebete, Anzahl der Nachholungen, Fastentage) und die Beträge im Zakat-Rechner bleiben nur auf dem Telefon; sie werden nirgendwohin gesendet und nicht für Statistiken oder Abzeichen verwendet. Korantext und Bittgebete sind in der App enthalten. Tippen Sie auf den Link zur türkischen Koranübersetzung des Diyanet, öffnet sich diese Seite im Browser. Den Goldpreis für die Zakat geben Sie selbst ein; die App ruft keine Preise ab.",
           "**Health, Morgentagebuch, Weckerfoto, Stummschalten und schwebende Uhr:** Wenn Sie „In Health Connect sichern“ einschalten, wird nur die Berechtigung zum Schreiben von Training angefragt, und jedes beendete Intervalltraining wird als Trainingseinheit (Art, Beginn, Dauer) eingetragen; die App liest Ihre Gesundheitsdaten nicht. Das Morgentagebuch bleibt nur auf dem Telefon (und in seiner Google-Sicherung). Bei der Foto-Weckaufgabe wird das Foto mit der Kamera des Telefons aufgenommen (keine Kameraberechtigung) und nicht gespeichert; nur eine sehr kleine Zusammenfassung bleibt. Der Zugriff auf „Bitte nicht stören“ für „Zur Gebetszeit stummschalten“ wird nur genutzt, wenn Sie es einschalten und in den Telefoneinstellungen erlauben. Die schwebende Uhr nutzt die Berechtigung „Über anderen Apps einblenden“; sie liest nichts vom Bildschirm und zeichnet nur die Uhr. Widgets und Kacheln der Schnelleinstellungen nutzen die eigenen Zähler der App.",
-          "**Orts- und Kalendererinnerungen, Fokussperre und Android TV:** Fügen Sie eine Ortserinnerung hinzu, wird der Zugriff auf den genauen Standort mit „Immer zulassen“ angefragt; das Geofencing der Google-Play-Dienste erkennt Ankunft und Verlassen, der Ort der Erinnerung bleibt auf dem Telefon und die App sendet Ihren Standort nirgendwohin. Beim Wecker für einen Kalendertermin werden nur Titel und Zeit dieses Termins verwendet. Erteilen Sie für die Fokussperre den Nutzungszugriff, liest die App nur während der Pomodoro-Arbeitszeit einmal pro Sekunde auf dem Telefon den Namen der App im Vordergrund; das wird weder gespeichert noch gesendet. Der Android-TV-Bildschirm nutzt den in der App gewählten Ort."
+          "**Orts- und Kalendererinnerungen, Fokussperre und Android TV:** Fügen Sie eine Ortserinnerung hinzu, wird der Zugriff auf den genauen Standort mit „Immer zulassen“ angefragt; das Geofencing der Google-Play-Dienste erkennt Ankunft und Verlassen, der Ort der Erinnerung bleibt auf dem Telefon und die App sendet Ihren Standort nirgendwohin. Beim Wecker für einen Kalendertermin werden nur Titel und Zeit dieses Termins verwendet. Erteilen Sie für die Fokussperre den Nutzungszugriff, liest die App nur während der Pomodoro-Arbeitszeit einmal pro Sekunde auf dem Telefon den Namen der App im Vordergrund; das wird weder gespeichert noch gesendet. Der Android-TV-Bildschirm nutzt den in der App gewählten Ort.",
+          "**Lernzeit und Aufwachspiel:** Fächer und Sitzungen der Lernzeit (Dauer, Anzahl der Fragen, Notiz) sowie die Einträge des Aufwachspiels (Tag, Aufsteh- und Weckzeit, Anzahl der Schlummervorgänge) bleiben auf dem Telefon und werden nirgendwohin gesendet (sie sind Teil der Google-Sicherung des Telefons). App-Sprache und Zifferblatt werden ebenfalls auf dem Telefon gespeichert."
         ]
       },
       {
@@ -432,6 +469,21 @@
             [
               "sth-hiit",
               "Speichert die Zeiten, die Rundenzahl und die Ansage-Einstellung des Intervall-Timers.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-alarm-x",
+              "Speichert Weckerlautstärke, zuletzt verwendete Weckzeiten und den Weckerverlauf (Zeitpunkt, Name des Weckers, wie er beendet wurde; höchstens 200 Einträge) auf diesem Gerät.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-exam",
+              "Speichert im Prüfungstimer Prüfungsname, Raum, Zeiten und den Start einer laufenden Prüfung.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-class",
+              "Speichert die Namen, die Ziehungsliste, die Teams und die Zähler der Klassenzimmer-Tools auf diesem Gerät.",
               "Bis zur Löschung durch Sie"
             ],
             [
@@ -549,7 +601,7 @@
     "pages": "Seiten",
     "cities": "Städteseiten",
     "about": "Über die Website",
-    "aboutText": "Die Uhrzeit wird mit der Serveruhr der Website synchronisiert (unabhängig von der Geräteuhr); die Zeitzone wird aus dem Browser gelesen, und es werden keine personenbezogenen Daten übermittelt. Verfügbar in fünfzehn Sprachen: Türkisch, Englisch, Deutsch, Aserbaidschanisch, Arabisch, Indonesisch, Urdu, Persisch, Französisch, Russisch, Japanisch, Koreanisch, Chinesisch, Filipino und Thailändisch. Verantwortlicher: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Kontakt: bilgi@bumbagroup.com."
+    "aboutText": "Die Uhrzeit wird mit der Serveruhr der Website synchronisiert (unabhängig von der Geräteuhr); die Zeitzone wird aus dem Browser gelesen, und es werden keine personenbezogenen Daten übermittelt. Verfügbar in achtzehn Sprachen: Türkisch, Englisch, Deutsch, Aserbaidschanisch, Arabisch, Indonesisch, Urdu, Persisch, Französisch, Russisch, Japanisch, Koreanisch, Chinesisch, Filipino, Thailändisch, Spanisch, Portugiesisch und Hindi. Verantwortlicher: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Kontakt: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Uhrenstile",
@@ -588,13 +640,18 @@
       "h-wx-analog-date": "Analog, Datum und Wetter nebeneinander",
       "h-wx-full": "Analog, digital, Datum und Wetter nebeneinander",
       "wx-digital-cal": "Digital, Datum, Wetter und Monatskalender",
-      "wx-digital-cal-week": "Digital, Datum, Wetter, Monatskalender und Wochenwetter"
+      "wx-digital-cal-week": "Digital, Datum, Wetter, Monatskalender und Wochenwetter",
+      "holo": "Hologramm",
+      "matrix": "Matrix",
+      "math": "Mathe-Uhr"
     },
     "source": "Diese Uhr ist unabhängig von Ihrem Gerät: Sie wird von der per NTP synchronisierten Uhr des Saat-Tarih-Servers abgelesen und alle 15 Minuten neu gemessen.",
     "info": "Info zur Zeitquelle",
     "infoTitle": "Woher kommt diese Uhrzeit?",
     "infoClose": "Schließen",
-    "infoSeconds": "Tippen Sie auf die Uhr, um die Sekunden ein- oder auszublenden. Bei digitalen Uhren sind die Sekunden zunächst an, bei analogen aus."
+    "infoSeconds": "Tippen Sie auf die Uhr, um die Sekunden ein- oder auszublenden. Bei digitalen Uhren sind die Sekunden zunächst an, bei analogen aus.",
+    "zoomIn": "Uhr vergrößern",
+    "zoomOut": "Uhr verkleinern"
   },
   "calendar": {
     "title": "Kalender {year}: Feiertage in der Türkei und Ramadan | Saat Tarih",
@@ -768,7 +825,25 @@
     "icsCalDays": "Religiöse und besondere Tage in der Türkei (Saat Tarih)",
     "icsHalf": "halber Tag",
     "icsProjected": "nach dem Langzeitkalender von Diyanet (Hochrechnung)",
-    "icsCalMoon": "Mondphasen und Finsternisse (Saat Tarih)"
+    "icsCalMoon": "Mondphasen und Finsternisse (Saat Tarih)",
+    "monthOrigin": {
+      "heading": "Woher kommen die Monatsnamen?",
+      "source": "Quelle: Duden, Herkunftswörterbuch.",
+      "items": [
+        "Januar: nach Janus, dem römischen Gott der Türen und des Anfangs.",
+        "Februar: nach Februa, einem römischen Reinigungsfest.",
+        "März: nach Mars, dem römischen Kriegsgott.",
+        "April: vermutlich von lateinisch aperire, „öffnen“ – die Knospen öffnen sich.",
+        "Mai: nach Maia, einer römischen Göttin des Wachstums.",
+        "Juni: nach Juno, der Königin der römischen Götter.",
+        "Juli: nach Julius Caesar.",
+        "August: nach dem römischen Kaiser Augustus.",
+        "September: von lateinisch septem, „sieben“ – der siebte Monat des alten römischen Kalenders.",
+        "Oktober: von lateinisch octo, „acht“.",
+        "November: von lateinisch novem, „neun“.",
+        "Dezember: von lateinisch decem, „zehn“."
+      ]
+    }
   },
   "tools": {
     "hub": {
@@ -901,6 +976,18 @@
         "tzn": {
           "name": "Zeitzonen-Nachrichten",
           "desc": "Entscheidungen der Länder zu Zeitzonen und Sommerzeit."
+        },
+        "sleepCalc": {
+          "name": "Schlafrechner",
+          "desc": "Schlafens- und Weckzeiten nach Schlafzyklen."
+        },
+        "examTimer": {
+          "name": "Prüfungstimer",
+          "desc": "Vollbild-Countdown für den Prüfungsraum."
+        },
+        "classroom": {
+          "name": "Klassenzimmer-Tools",
+          "desc": "Zufallsnamen, Teams und Zähler."
         }
       },
       "infoHeading": "Infoseiten"
@@ -1006,7 +1093,10 @@
       "copyLink": "Link kopieren",
       "copied": "Link kopiert",
       "shareNote": "Sie können den Link zum gewählten Datum teilen; beim Öffnen des Links startet der Countdown automatisch.",
-      "addMinute": "+1 Min."
+      "addMinute": "+1 Min.",
+      "addToApp": "📲 Zur Saat-Tarih-App hinzufügen",
+      "present": "Vortragsfarben",
+      "presentNote": "Grün; in den letzten 2 Minuten (bei kurzen Zeiten im letzten Fünftel) gelb; rot, wenn die Zeit um ist."
     },
     "alarm": {
       "title": "Online-Wecker mit Wiederholung und Schlummern | Saat Tarih",
@@ -1070,7 +1160,24 @@
       "ytNote": "Beim Klingeln läuft dieses Video; schalten Sie den Wecker nicht innerhalb von 1 Minute aus, ertönt zusätzlich der Weckton (auch wenn der Browser das Video nicht von selbst startet). Das Video wird von YouTube geladen, daher müssen externe Dienste erlaubt sein.",
       "ytInvalid": "Das ist kein YouTube-Link.",
       "ytBlocked": "Erlauben Sie externe Dienste für YouTube-Musik; ohne Zustimmung klingelt der Wecker mit seinem eigenen Ton.",
-      "spotifyNote": "Spotify startet im Browser nicht von selbst; in der Android-App können Sie Spotify als Weckermusik verwenden."
+      "spotifyNote": "Spotify startet im Browser nicht von selbst; in der Android-App können Sie Spotify als Weckermusik verwenden.",
+      "snoozeLabel": "Schlummern",
+      "snoozeMin": "{n} Min.",
+      "volume": "Lautstärke",
+      "tryNow": "Wecker jetzt testen",
+      "tryTitle": "Testwecker",
+      "remaining": "verbleibend",
+      "recent": "Zuletzt verwendet",
+      "history": "Weckerverlauf",
+      "historyEmpty": "Noch kein Wecker hat geklingelt.",
+      "histStop": "beendet",
+      "histSnooze": "geschlummert",
+      "histMissed": "von selbst beendet",
+      "historyCsv": "Verlauf als CSV herunterladen",
+      "historyClear": "Verlauf löschen",
+      "colTime": "Zeit",
+      "colAlarm": "Wecker",
+      "colAction": "Ergebnis"
     },
     "pomodoro": {
       "title": "Pomodoro-Timer: 25 Minuten Arbeit, 5 Minuten Pause | Saat Tarih",
@@ -1373,7 +1480,11 @@
     "shareLink": "Link kopieren",
     "linkCopied": "Link kopiert",
     "addIcs": "Zum Kalender hinzufügen (.ics)",
-    "addGoogle": "Zu Google Kalender hinzufügen"
+    "addGoogle": "Zu Google Kalender hinzufügen",
+    "addOutlook": "Zu Outlook hinzufügen",
+    "mailGmail": "Mit Gmail senden",
+    "copyText": "Als Text kopieren",
+    "textCopied": "Text kopiert."
   },
   "planner": {
     "title": "Meeting-Planer: gemeinsame Arbeitszeiten finden | Saat Tarih",
@@ -1412,7 +1523,12 @@
     "addGoogle": "Zu Google Kalender hinzufügen",
     "pickHint": "Tippen Sie oben in der Tabelle auf eine Stunde, um die Besprechungszeit zu wählen; Link und Kalendereintrag enthalten sie.",
     "meeting": "Besprechung",
-    "picked": "Gewählte Zeit: {time} (Ortszeit {city})"
+    "picked": "Gewählte Zeit: {time} (Ortszeit {city})",
+    "legendWeekend": "Wochenende",
+    "addOutlook": "Zu Outlook hinzufügen",
+    "mailGmail": "Mit Gmail senden",
+    "copyText": "Als Text kopieren",
+    "textCopied": "Text kopiert."
   },
   "poll": {
     "title": "Terminumfrage: Gemeinsam die beste Zeit finden | Saat Tarih",
@@ -1692,7 +1808,17 @@
         "a": "Das Widget setzt keine Cookies und erhebt keine personenbezogenen Daten. Es sendet einige kleine Anfragen an den Server, um die richtige Uhrzeit anzuzeigen; Seitenaufrufe werden in einer cookiefreien, anonymen Statistik gezählt."
       }
     ],
-    "sizeNote": "Kalenderstile benötigen mindestens 460 px Höhe; die übrigen Stile passen bequem in 360 px."
+    "sizeNote": "Kalenderstile benötigen mindestens 460 px Höhe; die übrigen Stile passen bequem in 360 px.",
+    "lineHeading": "Als Textzeile",
+    "lineLead": "Fügen Sie Ihrer Seite eine einzeilige Live-Uhr oder Sonnenauf- und -untergang hinzu: die beiden Zeilen unten einfügen; der Text übernimmt Schrift und Farbe Ihrer Seite.",
+    "lineKind": "Anzeigen",
+    "lineKinds": {
+      "time": "Uhrzeit",
+      "date": "Datum und Uhrzeit",
+      "sun": "Sonnenauf- und -untergang"
+    },
+    "lineNote": "Das Skript zeichnet nur die Zeit; es setzt keine Cookies und sendet keine Daten. Die Zeitzone kommt von der Stadt.",
+    "linePreview": "Vorschau"
   },
   "embed": {
     "link": "Saat Tarih"
@@ -1786,6 +1912,22 @@
       "isfirar": "Sonnenuntergang (Isfirar)"
     },
     "kerahatNote": "In diesen Zeiten werden keine freiwilligen Gebete verrichtet. Diyanet nennt keine genauen Minuten; verwendet wird der in Kalendern übliche Wert von etwa 45 Minuten (für die Zeit vor Mittag nennen Quellen 10–45 Minuten).",
+    "extraHeading": "Weitere Zeiten (ungefähr)",
+    "extraNames": {
+      "israk": "Ischrak",
+      "duha": "Dahwa al-kubra",
+      "asrSani": "Zweites Asr (hanafitisch)",
+      "isfirar": "Isfirar (Vergilben der Sonne)",
+      "istibak": "Ischtibak (Sterne erscheinen)",
+      "isaSani": "Zweites Ischa",
+      "midnight": "Mitte der Nacht",
+      "tahajjud": "Tahadschud (letztes Nachtdrittel)",
+      "seher": "Sahar (letztes Nachtsechstel)"
+    },
+    "extraNote": "Diyanet veröffentlicht diese Zeiten nicht. Sie folgen den Definitionen des Türkiye Takvimi: Ischrak und Isfirar bei 5° Sonnenhöhe, Ischtibak bei 10° und zweites Ischa bei 19° unter dem Horizont; Dahwa al-kubra in der Mitte zwischen Imsak und Maghrib; die Nacht reicht von Maghrib bis Imsak.",
+    "bayram": "Festgebet",
+    "bayramTomorrow": "Festgebet morgen: {t}",
+    "bayramNote": "Gleiche Regel wie die von Diyanet veröffentlichten Zeiten (38 Min. nach Sonnenaufgang); maßgeblich ist die Bekanntgabe des Provinzmuftis.",
     "method": {
       "heading": "Berechnungsmethode",
       "label": "Methode",
@@ -1811,7 +1953,9 @@
         "france": "Frankreich (UOIF)",
         "russia": "Geistliche Verwaltung der Muslime Russlands"
       }
-    }
+    },
+    "ezani": "Ezani-Zeit (alla turca): {t}",
+    "ezaniNote": "In der Ezani-Zeit (alla turca) gilt das Abendgebet (Sonnenuntergang) als 12:00; von dort wird gezählt."
   },
   "nature": {
     "title": "Jahreszeiten: Jahreskreis und Sonnenwenden | Saat Tarih",
@@ -1984,7 +2128,74 @@
     "eclMapLabel": "Finsternis",
     "eclMapSolar": "Orange: Gebiete mit partieller Finsternis (je dunkler, desto stärker ist die Sonne bedeckt). Dunkelrot: Totalitätszone; violett: Zone der ringförmigen Finsternis. Schwarzer Punkt: gewählter Ort.",
     "eclMapLunar": "Blau: Gebiete, in denen der Mond bei maximaler Finsternis über dem Horizont steht und die Finsternis sichtbar ist. Blauer Punkt: Mond im Zenit; schwarzer Punkt: gewählter Ort.",
-    "eclMapNote": "Die Karte wird im Browser näherungsweise aus den Positionen von Sonne und Mond berechnet (Ränder können um einige Dutzend km abweichen). Küstenlinien: Natural Earth. Genaue Zonen und Zeiten auf den Finsternisseiten der NASA."
+    "eclMapNote": "Die Karte wird im Browser näherungsweise aus den Positionen von Sonne und Mond berechnet (Ränder können um einige Dutzend km abweichen). Küstenlinien: Natural Earth. Genaue Zonen und Zeiten auf den Finsternisseiten der NASA.",
+    "folkHeading": "Traditioneller Volkskalender",
+    "folkNote": "Traditionelle Daten des türkischen Volkskalenders (nach dem alten Rumi-Kalender); keine Wettervorhersage, Quellen weichen um einige Tage ab.",
+    "folkNow": "Jetzt",
+    "folkNames": {
+      "erbain": "Erbain (die 40 kältesten Wintertage)",
+      "hamsin": "Hamsin (die 50-tägige zweite Winterhälfte)",
+      "cemre1": "Erste Cemre (in die Luft)",
+      "cemre2": "Zweite Cemre (ins Wasser)",
+      "cemre3": "Dritte Cemre (in die Erde)",
+      "berdulacuz": "Berd al-adschus („Altweiberkälte“)",
+      "eyyamibahur": "Eyyam-ı bahur (die heißesten Sommertage)"
+    },
+    "tw": {
+      "heading": "Dämmerung und Tageslicht",
+      "civil": "Bürgerliche Dämmerung",
+      "nautical": "Nautische Dämmerung",
+      "astro": "Astronomische Dämmerung",
+      "firstLight": "Erstes Licht",
+      "lastLight": "Letztes Licht",
+      "ring": "24-Stunden-Lichtring",
+      "day": "Tag",
+      "night": "Nacht",
+      "now": "Jetzt",
+      "note": "Morgens und abends: Die Sonne steht 0°–6° (bürgerlich), 6°–12° (nautisch) und 12°–18° (astronomisch) unter dem Horizont. Erstes Licht ist der Beginn der astronomischen Morgendämmerung, letztes Licht das Ende der astronomischen Abenddämmerung. Näherungswerte."
+    },
+    "ym": {
+      "heading": "Vollmonde {y}",
+      "count": "{y} gibt es {n} Vollmonde.",
+      "blue": "Blauer Mond: {date} (zweiter Vollmond in einem Kalendermonat).",
+      "noBlue": "In diesem Jahr gibt es keinen Blauen Mond.",
+      "colDate": "Datum und Uhrzeit",
+      "colName": "Traditioneller Name",
+      "namesNote": "Die Namen folgen der nordamerikanischen Tradition (Old Farmer's Almanac); die deutschen Formen sind Übersetzungen. Der Erntemond ist der Vollmond, der der Herbst-Tagundnachtgleiche am nächsten liegt.",
+      "harvest": "Erntemond",
+      "blueName": "Blauer Mond",
+      "wheel": "Vollmondrad des Jahres",
+      "names": [
+        "Wolfsmond",
+        "Schneemond",
+        "Wurmmond",
+        "Rosa Mond",
+        "Blumenmond",
+        "Erdbeermond",
+        "Hirschmond",
+        "Störmond",
+        "Maismond",
+        "Jägermond",
+        "Bibermond",
+        "Kalter Mond"
+      ]
+    },
+    "eclLocal": "{place}: {obsc} der Sonne werden bedeckt; {c1}–{c4}, Maximum {max}.",
+    "eclLocalTotal": "{place}: totale Finsternis; {c1}–{c4}, Totalität gegen {max}.",
+    "eclLocalAnnular": "{place}: ringförmige Finsternis; {c1}–{c4}, Ring gegen {max}.",
+    "eclLocalNone": "{place}: Diese Finsternis ist von hier nicht sichtbar.",
+    "eclLocalLow": "{place}: Die Sonne steht während der Finsternis unter dem Horizont.",
+    "eclContacts": {
+      "p1": "Halbschatten beginnt",
+      "u1": "Kernschatten beginnt",
+      "u2": "Totalität beginnt",
+      "max": "Maximum",
+      "u3": "Totalität endet",
+      "u4": "Kernschatten endet",
+      "p4": "Halbschatten endet"
+    },
+    "eclMag": "Kernschattengröße {v}",
+    "eclApprox": "Zeiten sind ungefähr (einige Minuten); von hier nicht sichtbare Momente sind blass."
   },
   "weather": {
     "title": "Wetter: aktuell, stündlich und 14-Tage-Vorhersage | Saat Tarih",
@@ -2057,7 +2268,91 @@
         "a": "Ja. Im Vollbild zeigt die Wetter-Schaltfläche in der Leiste, die beim Antippen des Bildschirms erscheint, das Wetter Ihres gewählten Standorts neben der Uhr an."
       }
     ],
-    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin wetter vorhersage temperatur regen wind luftfeuchtigkeit uv-index morgen diese woche wettervorhersage"
+    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin wetter vorhersage temperatur regen wind luftfeuchtigkeit uv-index morgen diese woche wettervorhersage",
+    "wd": {
+      "calm": "Windstill",
+      "light": "Leichte Brise",
+      "breezy": "Windig",
+      "strong": "Starker Wind",
+      "gale": "Sturm"
+    },
+    "uvw": {
+      "low": "Niedrig; kein Sonnenbrandrisiko",
+      "moderate": "Mäßig; mittags schützen",
+      "high": "Hoch; Sonnencreme verwenden",
+      "veryHigh": "Sehr hoch; Mittagssonne meiden",
+      "extreme": "Extrem; nicht lange draußen bleiben"
+    },
+    "hw": {
+      "dry": "Trocken",
+      "comfy": "Angenehm",
+      "humid": "Feucht",
+      "veryHumid": "Sehr feucht"
+    },
+    "vw": {
+      "fog": "Neblig",
+      "haze": "Diesig",
+      "good": "Gut",
+      "clear": "Sehr gut"
+    },
+    "dw": {
+      "dry": "Trockene Luft",
+      "comfy": "Angenehm",
+      "muggy": "Etwas schwül",
+      "oppressive": "Schwül"
+    },
+    "fw": {
+      "colder": "Fühlt sich kälter an",
+      "warmer": "Fühlt sich wärmer an"
+    },
+    "sum": {
+      "storm": "Gewitter gegen {time} erwartet.",
+      "rain": "Regen gegen {time} erwartet.",
+      "snow": "Schnee gegen {time} erwartet.",
+      "windyAfternoon": "Am Nachmittag windig.",
+      "colder": "Morgen deutlich kälter: Höchstwert {n}° niedriger.",
+      "warmer": "Morgen deutlich wärmer: Höchstwert {n}° höher.",
+      "default": "{cond}; Höchstwert {max}, Tiefstwert {min}."
+    },
+    "alert": {
+      "colder": "Morgen deutlich kälter als heute: Höchstwert {n}° niedriger.",
+      "warmer": "Morgen deutlich wärmer als heute: Höchstwert {n}° höher.",
+      "rainSoon": "Regen gegen {time} erwartet; Schirm nicht vergessen."
+    },
+    "visibility": "Sicht",
+    "dewPoint": "Taupunkt",
+    "gusts": "Böen",
+    "details": "Details",
+    "chartTemp": "Temperatur",
+    "dayPart": "Tag",
+    "nightPart": "Nacht",
+    "tapHint": "Tippen Sie für Details auf eine Stunde im Diagramm oder einen Tag in der Liste.",
+    "aqiTitle": "Luftqualität",
+    "aqiIndex": "Europäischer Luftqualitätsindex (EAQI)",
+    "aqiLevels": [
+      "Gut",
+      "Mäßig",
+      "Mittel",
+      "Schlecht",
+      "Sehr schlecht",
+      "Extrem schlecht"
+    ],
+    "pollen": "Pollen",
+    "pollenNames": {
+      "alder": "Erle",
+      "birch": "Birke",
+      "grass": "Gräser",
+      "mugwort": "Beifuß",
+      "olive": "Olive",
+      "ragweed": "Ambrosia"
+    },
+    "pollenLevels": [
+      "Niedrig",
+      "Mittel",
+      "Hoch"
+    ],
+    "pollenNone": "Derzeit kein Pollenflug oder keine Pollenvorhersage für diesen Ort (nur Europa).",
+    "aqiSource": "Luftqualität und Pollen: Open-Meteo (CAMS, Copernicus)"
   },
   "faqPage": {
     "title": "Häufige Fragen: Uhrzeit, Kalender, Gebetszeiten | Saat Tarih",
@@ -2072,7 +2367,7 @@
   },
   "consent": {
     "barLabel": "Cookie-Auswahl",
-    "barText": "Wir speichern Ihre Einstellungen (Sprache, Design, Uhr- und Werkzeugeinstellungen) nur in diesem Browser. Wenn Sie zustimmen, werden Besuche mit Umami gezählt, und das Wetter (Open-Meteo), die Detailkarte des Globus und Moscheen in der Nähe (OpenStreetMap) sowie Weckermusik (YouTube) werden von externen Diensten geladen.",
+    "barText": "Ihre Einstellungen bleiben in diesem Browser. Mit Ihrer Zustimmung zählt Umami Besuche; Wetter, Karten und Musik kommen von externen Diensten.",
     "accept": "Akzeptieren",
     "reject": "Ablehnen",
     "prefs": "Einstellungen",
@@ -2085,7 +2380,7 @@
     "stats": "Statistik",
     "statsText": "Umami zählt Seitenaufrufe und einige Aktionen (Browser, Gerät, Sprache sowie aus der IP-Adresse abgeleitetes Land und Stadt; die IP wird nicht gespeichert). Es werden keine Cookies verwendet. Standardmäßig aus.",
     "ext": "Externe Dienste",
-    "extText": "Das Wetter wird von Open-Meteo (api.open-meteo.com), die Karte des vergrößerten Globus von OpenStreetMap (tile.openstreetmap.org), Moscheen in der Nähe vom Overpass-Dienst von OpenStreetMap (overpass-api.de) und YouTube-Musik, die Sie einem Wecker hinzufügen, von YouTube (youtube-nocookie.com) geladen; dabei erreicht Ihre IP-Adresse diese Dienste. Standardmäßig aus.",
+    "extText": "Das Wetter wird von Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), die Karte des vergrößerten Globus von OpenStreetMap (tile.openstreetmap.org), Moscheen in der Nähe vom Overpass-Dienst von OpenStreetMap (overpass-api.de) und YouTube-Musik, die Sie einem Wecker hinzufügen, von YouTube (youtube-nocookie.com) geladen; dabei erreicht Ihre IP-Adresse diese Dienste. Standardmäßig aus.",
     "save": "Auswahl speichern",
     "footerLink": "Cookie-Einstellungen",
     "privacy": "Datenschutz",
@@ -2504,7 +2799,9 @@
         "q": "Warum unterscheiden sich Hidschri-Daten von Land zu Land?",
         "a": "Manche Länder legen den Monatsbeginn nach der Sichtung der Mondsichel fest, andere per Berechnung. Die Türkei nutzt den berechneten Diyanet-Kalender, Saudi-Arabien den Umm-al-Qura-Kalender; beide können um einen Tag voneinander abweichen."
       }
-    ]
+    ],
+    "rumi": "Rumi (osmanisch): {date}",
+    "rumiNote": "Das Rumi-Datum folgt dem julianischen Kalender (13 Tage zurück), Jahresbeginn 1. März, wie in traditionellen türkischen Almanachen."
   },
   "timeCalc": {
     "title": "Zeitrechner: Stunden addieren und Zeitdauer berechnen | Saat Tarih",
@@ -2814,7 +3111,59 @@
         "q": "Was ist ein Supermond?",
         "a": "Als Supermond bezeichnet man einen Vollmond nahe dem Perigäum, dem erdnächsten Punkt der Mondbahn. Er wirkt etwa 14 % größer und 30 % heller als ein Vollmond im Apogäum; mit bloßem Auge ist der Unterschied kaum zu erkennen."
       }
-    ]
+    ],
+    "eventsHeading": "Himmelsereignisse",
+    "eventsLead": "Maxima von Meteorströmen, Begegnungen von Planeten und Mond, Oppositionen und größte Elongationen; Zeiten in der Zeit des gewählten Ortes.",
+    "showers": {
+      "qua": "Quadrantiden",
+      "lyr": "Lyriden",
+      "eta": "Eta-Aquariiden",
+      "sda": "Südliche Delta-Aquariiden",
+      "per": "Perseiden",
+      "dra": "Draconiden",
+      "ori": "Orioniden",
+      "leo": "Leoniden",
+      "gem": "Geminiden",
+      "urs": "Ursiden"
+    },
+    "evShower": "Maximum der {name}",
+    "showerRate": "Bei dunklem Himmel bis zu ~{zhr} Meteore pro Stunde",
+    "showerVar": "Die Rate schwankt von Jahr zu Jahr",
+    "moonLight": "Mond zu {moon} beleuchtet",
+    "evOpp": "{p} in Opposition: die ganze Nacht sichtbar, so hell wie sonst nie im Jahr",
+    "evElongE": "{p} am Abendhimmel am weitesten von der Sonne entfernt ({deg}°)",
+    "evElongW": "{p} am Morgenhimmel am weitesten von der Sonne entfernt ({deg}°)",
+    "evConj": "{a} und {b} stehen dicht beieinander ({sep}° Abstand)",
+    "evMoon": "Mond und {p} stehen dicht beieinander ({sep}° Abstand)",
+    "evMore": "Weitere Ereignisse",
+    "eventsNote": "Die Maxima der Meteorströme werden aus den Sonnenlängen der International Meteor Organization (IMO) berechnet; das tatsächliche Maximum kann einige Stunden abweichen. Abstände sind geozentrisch; von Ihrem Standort aus können sie um etwa ein Grad abweichen.",
+    "icsName": "Saat Tarih: Himmelsereignisse",
+    "tonightHeading": "Heute Nacht",
+    "darkLabel": "Volle Dunkelheit",
+    "darkNone": "Heute Nacht wird es nicht ganz dunkel (die Sonne sinkt nicht 18° unter den Horizont).",
+    "moonUpDark": "zu {illum} beleuchtet; bei Dunkelheit von {from} bis {to} am Himmel",
+    "moonDownDark": "zu {illum} beleuchtet; bei Dunkelheit unter dem Horizont",
+    "planetsLabel": "Sichtbare Planeten",
+    "planetsNone": "Keine",
+    "cloudLabel": "Bewölkung",
+    "score": {
+      "good": "Eine gute Nacht zum Beobachten",
+      "fair": "Mäßig zum Beobachten",
+      "poor": "Schlecht zum Beobachten"
+    },
+    "tipMoon": "Heller Mond: schwache Sterne und Meteore sind schwer zu sehen.",
+    "tipDark": "Der Mond steht bei Dunkelheit nicht am Himmel: gut für schwache Sterne.",
+    "tipCloudy": "Wolken können die Sicht verdecken.",
+    "tipBest": "{p} steht gegen {time} am höchsten ({deg}°).",
+    "graphHeading": "Planetenhöhen heute Nacht",
+    "graphCaption": "Waagerecht die Uhrzeit, senkrecht die Höhe über dem Horizont; der dunkle Bereich ist volle Dunkelheit.",
+    "cloudNote": "Die Bewölkung stammt von Open-Meteo und wird nur angezeigt, wenn Sie externe Dienste erlaubt haben.",
+    "constellations": "Sternbilder",
+    "play": "Abspielen",
+    "pause": "Anhalten",
+    "dateLabel": "Datum",
+    "red": "Rotlicht",
+    "conSource": "Sternbildlinien und -namen: d3-celestial (© 2015 Olaf Frohn, BSD-3-Lizenz)."
   },
   "otd": {
     "title": "Heute in der Geschichte: Ereignisse und Geburtstage | Saat Tarih",
@@ -2867,6 +3216,102 @@
       {
         "q": "Wie erfährt mein Gerät, dass ein Land seine Uhrzeit ändert?",
         "a": "Apple, Google und Microsoft liefern neue Versionen der tz-Datenbank mit Betriebssystem-Updates aus. Halten Sie Ihr Gerät aktuell, stimmt die Uhrzeit von selbst."
+      }
+    ]
+  },
+  "sleepCalc": {
+    "title": "Schlafrechner: Wann ins Bett, wann aufstehen? | Saat Tarih",
+    "description": "Berechnen Sie Schlafens- oder Aufstehzeiten nach 90-minütigen Schlafzyklen: wann ins Bett für eine Weckzeit, oder wann aufstehen, wenn Sie jetzt schlafen gehen.",
+    "h1": "Schlafrechner",
+    "lead": "Finden Sie Schlafenszeiten zu einer Weckzeit oder Weckzeiten zu einer Schlafenszeit, in 90-Minuten-Zyklen. Für das Einschlafen werden 15 Minuten addiert.",
+    "search": "schlafrechner wann ins bett schlafzyklus 90 minuten aufwachen sleep calculator",
+    "wakeHeading": "Nach Weckzeit: wann ins Bett?",
+    "wakeLabel": "Weckzeit",
+    "bedHeading": "Nach Schlafenszeit: wann aufstehen?",
+    "bedLabel": "Schlafenszeit",
+    "nowBtn": "Wenn ich jetzt schlafen gehe",
+    "cycles": "{n} Zyklen · {d} Schlaf",
+    "best": "empfohlen",
+    "note": "Schlafzyklen sind individuell verschieden (etwa 70–120 Minuten); die Zeiten sind ein grober Richtwert, keine medizinische Empfehlung. Erwachsenen werden meist 7–9 Stunden Schlaf empfohlen.",
+    "faq": [
+      {
+        "q": "Wie lang ist ein Schlafzyklus?",
+        "a": "Ein Schlafzyklus dauert im Schnitt etwa 90 Minuten (je nach Person etwa 70–120). Am Ende eines Zyklus, im leichten Schlaf, wacht man meist leichter auf; deshalb schlägt der Rechner Zeiten im 90-Minuten-Takt vor."
+      },
+      {
+        "q": "Wie viele Zyklen sollte ich schlafen?",
+        "a": "Erwachsenen werden meist 7–9 Stunden Schlaf empfohlen, also 5 oder 6 Zyklen. Der Rechner hebt 6 und 5 Zyklen hervor und zeigt auch kürzere Möglichkeiten."
+      }
+    ]
+  },
+  "examTimer": {
+    "title": "Prüfungstimer: Vollbild-Countdown für den Prüfungsraum | Saat Tarih",
+    "description": "Vollbild-Prüfungstimer mit Prüfungsname, Raum, Lesezeit und Dauer: Restzeit, Endzeit und Warnungen in den letzten Minuten. Für Klassenarbeiten und Probeprüfungen.",
+    "h1": "Prüfungstimer",
+    "lead": "Geben Sie Prüfungsname, Raum, Lesezeit und Dauer ein; der Vollbild-Timer für den Beamer zeigt Restzeit und Endzeit.",
+    "search": "prüfungstimer klassenarbeit countdown vollbild beamer exam timer",
+    "nameLabel": "Prüfung",
+    "namePh": "z. B. Mathe-Klassenarbeit",
+    "roomLabel": "Raum / Klasse",
+    "roomPh": "z. B. 9a",
+    "readLabel": "Lesezeit (Min.)",
+    "durLabel": "Prüfungsdauer (Min.)",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Fortsetzen",
+    "reset": "Zurücksetzen",
+    "phaseRead": "Lesezeit",
+    "phaseExam": "Prüfung läuft",
+    "phaseDone": "Die Zeit ist um",
+    "endsAt": "Ende: {time}",
+    "warn15": "Letzte 15 Minuten",
+    "warn5": "Letzte 5 Minuten",
+    "note": "Läuft, solange die Seite offen ist; der Start wird in diesem Browser gespeichert, beim erneuten Öffnen läuft der Timer weiter. Gemessen wird mit der Serverzeit; im Vollbild bleibt der Bildschirm an.",
+    "faq": [
+      {
+        "q": "Wie benutze ich den Prüfungstimer?",
+        "a": "Prüfungsname, Raum, Lesezeit (sonst 0) und Dauer eingeben und Start drücken; mit der Vollbild-Taste an die Wand projizieren. Nach der Lesezeit beginnt die Prüfungszeit automatisch; in den letzten 15 und 5 Minuten ändert sich die Farbe."
+      },
+      {
+        "q": "Stoppt der Timer, wenn ich die Seite schließe?",
+        "a": "Nein. Die Startzeit wird in diesem Browser gespeichert; beim erneuten Öffnen läuft der Timer weiter. Auch eine Pause wird gespeichert."
+      }
+    ]
+  },
+  "classroom": {
+    "title": "Klassenzimmer-Tools: Zufallsnamen, Teams, Zähler | Saat Tarih",
+    "description": "Kostenlose Unterrichtstools: Namen zufällig ziehen, die Klasse in gleich große Teams teilen, Punkte mit Zählern festhalten. Namen bleiben in Ihrem Browser.",
+    "h1": "Klassenzimmer-Tools",
+    "lead": "Geben Sie die Namen Ihrer Schülerinnen und Schüler einmal ein und ziehen Sie dann einen Zufallsnamen, teilen Sie die Klasse in Teams auf oder zählen Sie Punkte. Über die Vollbildtaste lässt sich alles an die Tafel projizieren.",
+    "search": "Klassenzimmer Tools Zufallsname Namen ziehen Losziehung Teamgenerator Gruppen einteilen Punktezähler Lehrer",
+    "tabPicker": "Namensauswahl",
+    "tabTeams": "Teams bilden",
+    "tabCounter": "Zähler",
+    "namesLabel": "Namen (einer pro Zeile oder durch Kommas getrennt)",
+    "namesPh": "Anna, Ben, Clara…",
+    "pick": "Zufällig ziehen",
+    "removePicked": "Gezogenen Namen aus der Liste entfernen",
+    "picked": "Gezogen",
+    "left": "Noch in der Liste: {n}",
+    "restore": "Liste wiederherstellen",
+    "empty": "Geben Sie zuerst Namen ein.",
+    "teamCount": "Anzahl der Teams",
+    "makeTeams": "Teams bilden",
+    "team": "Team {n}",
+    "counterName": "Name des Zählers",
+    "addCounter": "Zähler hinzufügen",
+    "counterDefault": "Punkte",
+    "reset": "Zurücksetzen",
+    "remove": "Entfernen",
+    "note": "Namen und Zähler werden nur in diesem Browser gespeichert und nirgendwohin gesendet. Die Auswahl nutzt den sicheren Zufallszahlengenerator des Browsers.",
+    "faq": [
+      {
+        "q": "Wie funktioniert die zufällige Namensauswahl?",
+        "a": "Geben Sie die Namen zeilenweise oder durch Kommas getrennt ein und tippen Sie auf „Zufällig ziehen“. Ist „Gezogenen Namen aus der Liste entfernen“ aktiv, kommt ein Name erst wieder, wenn die Liste leer ist; „Liste wiederherstellen“ beginnt von vorn. Die Auswahl nutzt den sicheren Zufallszahlengenerator des Browsers."
+      },
+      {
+        "q": "Werden die Namen irgendwohin gesendet?",
+        "a": "Nein. Namen, Teams und Zähler werden nur in diesem Browser gespeichert; sie gehen an keinen Server und nicht in die Statistik ein."
       }
     ]
   }

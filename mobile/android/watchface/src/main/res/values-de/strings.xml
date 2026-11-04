@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="watch_face_name">Uhr &amp; Datum</string>
+    <string name="wf_accent">Akzentfarbe</string>
+    <string name="wf_color_amber">Bernstein</string>
+    <string name="wf_color_blue">Blau</string>
+    <string name="wf_color_green">Grün</string>
+    <string name="wf_color_rose">Rosé</string>
+    <string name="wf_color_white">Weiß</string>
+    <string name="wf_style">Stil</string>
+    <string name="wf_style_analog">Analog</string>
+    <string name="wf_style_digital">Digital</string>
 </resources>

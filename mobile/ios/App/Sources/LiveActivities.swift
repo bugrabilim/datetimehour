@@ -9,13 +9,17 @@ import SaatCore
 @MainActor
 enum LiveActivities {
     static let prayerKey = "live.prayer"
+    /// Dynamic Island'da canlı saat (2. analiz #19; Apple etkinliği en çok 8 saat açık tutar)
+    static let clockKey = "live.clock"
+    /// Güneş sayacı (2. analiz #150): sıradaki gün doğumu ya da batımına kalan süre
+    static let sunKey = "live.sun"
 
     private typealias Want = (attributes: SaatActivityAttributes, state: SaatActivityAttributes.ContentState, stale: Date?)
 
     static func sync(now: Date = Date()) {
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
         var wanted: [String: Want] = [:]
-        for w in timers(now) + [stopwatch(), pomodoro(now), prayer(now)].compactMap({ $0 }) { wanted[w.attributes.id] = w }
+        for w in timers(now) + [stopwatch(), pomodoro(now), prayer(now), clock(now), sun(now)].compactMap({ $0 }) { wanted[w.attributes.id] = w }
         for a in Activity<SaatActivityAttributes>.activities where a.activityState == .active || a.activityState == .stale {
             if let w = wanted.removeValue(forKey: a.attributes.id), w.attributes.kind == a.attributes.kind {
                 if a.content.state != w.state || a.activityState == .stale {
@@ -43,6 +47,16 @@ enum LiveActivities {
         }
     }
 
+    /// Canlı saat: gece yarısından geçen süre sistemin sayacıyla akar (saat:dakika:saniye); gece yarısında eskir,
+    /// uygulama açılınca yeni gün için yenilenir
+    private static func clock(_ now: Date) -> Want? {
+        guard UserDefaults.standard.bool(forKey: clockKey) else { return nil }
+        let midnight = Calendar.current.startOfDay(for: now)
+        return (SaatActivityAttributes(kind: "clock", id: "clock"),
+                .init(date: midnight, start: midnight, title: L("tab.clock"), subtitle: Fmt.longDate(now)),
+                midnight.addingTimeInterval(86_400))
+    }
+
     /// Çalışan kronometre (duraklatılınca kapanır)
     private static func stopwatch() -> Want? {
         let d = UserDefaults.standard
@@ -68,6 +82,19 @@ enum LiveActivities {
                 at)
     }
 
+    /// Sıradaki gün doğumu ya da batımı (bugün ve yarın; vakit düzeltmesi olmadan)
+    private static func sun(_ now: Date) -> Want? {
+        guard UserDefaults.standard.bool(forKey: sunKey) else { return nil }
+        let place = AppPlace.stored()
+        let days = [now, now.addingTimeInterval(86_400)].compactMap { SeasonsView.sun(place: place, now: $0) }
+        let events = days.flatMap { [($0.rise, true), ($0.set, false)] }.filter { $0.0 > now }.sorted { $0.0 < $1.0 }
+        guard let next = events.first else { return nil }
+        let prev = days.flatMap { [$0.rise, $0.set] }.filter { $0 <= now }.max() ?? now.addingTimeInterval(-3600)
+        return (SaatActivityAttributes(kind: "sun", id: "sun"),
+                .init(date: next.0, start: prev, title: L(next.1 ? "nature.sunrise" : "nature.sunset") + " " + place.hm(next.0), subtitle: place.name),
+                next.0.addingTimeInterval(60))
+    }
+
     /// Sıradaki vakit (Ayarlar: Vakitler › "Kilit ekranında sıradaki vakit"); Ramazan'da akşam iftar, imsak sahur
     private static func prayer(_ now: Date) -> Want? {
         guard UserDefaults.standard.bool(forKey: prayerKey) else { return nil }
@@ -79,8 +106,12 @@ enum LiveActivities {
         let ramadan = CalendarData.shared.isRamadan(CalendarDay(next.at, timeZone: place.zone))
         let name = ramadan && next.prayer == .maghrib ? L("live.iftar")
             : ramadan && next.prayer == .fajr ? L("live.sahur") : next.prayer.localizedName
+        // Sıradaki 3 vakit (2. analiz #86): ilki başlıkta ve sayaçta, sonraki ikisi alt satırda
+        let tomorrow = now.addingTimeInterval(86_400)
+        let after = (place.schedule.entries(on: now) + place.schedule.entries(on: tomorrow)).filter { $0.at > next.at }.prefix(2)
+        let more = after.map { "\($0.prayer.localizedName) \(place.hm($0.at))" }
         return (SaatActivityAttributes(kind: "prayer", id: "prayer"),
-                .init(date: next.at, start: prev, title: "\(name) \(place.hm(next.at))", subtitle: place.name),
+                .init(date: next.at, start: prev, title: "\(name) \(place.hm(next.at))", subtitle: ([place.name] + more).joined(separator: " · ")),
                 next.at.addingTimeInterval(60))
     }
 }

@@ -79,6 +79,16 @@
     });
   });
 
+  /* ---------- Paylaş (2. analiz #188): telefonda sistem paylaşımı, yoksa bağlantıyı panoya kopyalar ---------- */
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-share]"), function (b) {
+    b.addEventListener("click", function () {
+      var url = location.href.split("#")[0], title = doc.title;
+      var done = function () { var t = b.textContent; b.textContent = b.getAttribute("data-done") || t; setTimeout(function () { b.textContent = t; }, 2000); };
+      if (navigator.share) { navigator.share({ title: title, url: url }).catch(function () {}); return; }
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () {});
+    });
+  });
+
   /* ---------- Menü (dar ekranda açılır) ---------- */
   (function navMenu() {
     var btn = doc.querySelector("[data-nav-toggle]"), nav = doc.getElementById("site-nav");
@@ -158,7 +168,10 @@
   /* Saat görünümü (rakip analizi #40, 30 Ekim 2026): yazı tipi ve renk ayarlar menüsünde (tam ekranda düğme yok,
      9 Ekim kararı). sth-prefs.font / .color; <html data-cfont data-ccolor>, theme.js sayfa çizilmeden de uygular.
      Gömme widget'ında uygulanmaz (__sthPrefs). */
-  var LOOK = { font: ["standard", "rounded", "serif", "mono", "light"], color: ["default", "ink", "blue", "green", "red", "purple"] };
+  /* 2. analiz #176 (3 Kasım 2026): tarih biçimi, saat ayırıcısı, haftanın ilk günü (saat sahnesindeki takvim modelleri), milisaniye */
+  var LOOK = { font: ["standard", "rounded", "serif", "mono", "light"], color: ["default", "ink", "blue", "green", "red", "purple"],
+    dateFmt: ["long", "numeric", "iso"], sep: ["colon", "dot"], weekStart: ["mon", "sun", "sat"] };
+  function lookOf(k) { return !window.__sthPrefs && LOOK[k].indexOf(prefs[k]) > 0 ? prefs[k] : LOOK[k][0]; }
   function applyLook() {
     var h = doc.documentElement;
     ["font", "color"].forEach(function (k) {
@@ -168,14 +181,25 @@
     Array.prototype.forEach.call(doc.querySelectorAll("[data-look]"), function (sel) {
       var k = sel.getAttribute("data-look"); sel.value = LOOK[k].indexOf(prefs[k]) > 0 ? prefs[k] : LOOK[k][0];
     });
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-look-bool]"), function (cb) { cb.checked = !!prefs[cb.getAttribute("data-look-bool")]; });
+    // Gece modu (2. analiz #182): saatli sayfalarda siyah zemin, kırmızı yazı; theme.js de sayfa çizilmeden uygular
+    if (prefs.night && !window.__sthPrefs) h.setAttribute("data-cnight", ""); else h.removeAttribute("data-cnight");
   }
+  // Dijital saatte saniye küçük ve tabana hizalı (2. analiz #21): sth-prefs.secSmall
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-look-bool]"), function (cb) {
+    cb.addEventListener("change", function () {
+      prefs[cb.getAttribute("data-look-bool")] = cb.checked;
+      store("sth-prefs", JSON.stringify(prefs)); applyLook(); lookChanged();
+    });
+  });
   Array.prototype.forEach.call(doc.querySelectorAll("[data-look]"), function (sel) {
     sel.addEventListener("change", function () {
       prefs[sel.getAttribute("data-look")] = sel.value;
-      store("sth-prefs", JSON.stringify(prefs)); applyLook();
+      store("sth-prefs", JSON.stringify(prefs)); applyLook(); lookChanged();
     });
   });
   applyLook();
+  function lookChanged() { if (typeof render === "function" && liveEls) { render(); msLoop(); } }
 
   var localTz;
   try { localTz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) {}
@@ -224,9 +248,21 @@
     if (Math.abs(e) < 500) return tpl(T.syncOk, { ms: Math.round(sync.err / 10) * 10 || 10, device: device });
     return tpl(e > 0 ? T.syncAhead : T.syncBehind, { s: nf1.format(Math.abs(e) / 1000), device: device });
   }
+  /* İlk ekranda kısa doğruluk satırı (2. analiz #174): ayrıntı "i" penceresinde kalır */
+  var syncShortEls = Array.prototype.slice.call(doc.querySelectorAll("[data-sync-short]"));
+  function syncShortText() {
+    if (sync.state !== "ok" || !T.syncShortOk) return "";
+    var e = deviceError();
+    if (Math.abs(e) < 500) return tpl(T.syncShortOk, { ms: Math.round(sync.err / 10) * 10 || 10 });
+    return tpl(e > 0 ? T.syncShortAhead : T.syncShortBehind, { s: nf1.format(Math.abs(e) / 1000) });
+  }
   function renderSync() {
     var txt = syncText();
     syncEls.forEach(function (el) { if (el.textContent !== txt) el.textContent = txt; });
+    if (syncShortEls.length) {
+      var sh = syncShortText();
+      syncShortEls.forEach(function (el) { if (el.textContent !== sh) { el.textContent = sh; el.classList.toggle("is-off", Math.abs(deviceError()) >= 500); } });
+    }
   }
   setTimeout(measure, 400);
   setInterval(function () { if (prefs.sync) measure(); }, 15 * 60 * 1000);
@@ -269,10 +305,34 @@
     if (m) out.push(m + " " + T.minuteShort);
     return out.join(" ");
   }
+  function sepFix(str) { return lookOf("sep") === "dot" ? str.replace(/:/g, ".") : str; }
   function timeText(date, tz, withSec) {
     var o = { hour: "2-digit", minute: "2-digit", hourCycle: prefs.h12 ? "h12" : "h23" };
     if (withSec) o.second = "2-digit";
-    return fmt("time" + (prefs.h12 ? 12 : 24) + (withSec ? "s" : ""), tz, o).format(date);
+    return sepFix(fmt("time" + (prefs.h12 ? 12 : 24) + (withSec ? "s" : ""), tz, o).format(date));
+  }
+  /* Milisaniye: ondalık ayırıcı dilin yazımıyla (sağdan sola dillerde Latin nokta, Latin rakam kuralı) */
+  var msDec = ".";
+  try { if (!/^(ar|fa|ur)/.test(locale)) new Intl.NumberFormat(locale).formatToParts(1.5).forEach(function (x) { if (x.type === "decimal") msDec = x.value; }); } catch (e) {}
+  function msText(date) { return msDec + String(date.getTime() % 1000).padStart(3, "0"); }
+  /* Saniye küçük: saniye (ve önündeki ayırıcı) <small class="sec-small"> içinde; metin değişmedikçe dokunulmaz */
+  function smallSecTime(el, date, tz) {
+    var o = { hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: prefs.h12 ? "h12" : "h23" };
+    var ps = fmt("time" + (prefs.h12 ? 12 : 24) + "s", tz, o).formatToParts(date);
+    var ms = prefs.ms && !window.__sthPrefs ? msText(date) : "";
+    var full = ps.map(function (x) { return x.value; }).join("") + ms;
+    if (el.__small === full) return;
+    el.__small = full;
+    var si = -1;
+    for (var i = 0; i < ps.length; i++) if (ps[i].type === "second") si = i;
+    var from = si > 0 && ps[si - 1].type === "literal" ? si - 1 : si;
+    el.textContent = "";
+    el.appendChild(doc.createTextNode(sepFix(ps.slice(0, from).map(function (x) { return x.value; }).join(""))));
+    var sm = doc.createElement("small");
+    sm.className = "sec-small";
+    sm.textContent = sepFix(ps.slice(from, si + 1).map(function (x) { return x.value; }).join("")) + ms;
+    el.appendChild(sm);
+    el.appendChild(doc.createTextNode(sepFix(ps.slice(si + 1).map(function (x) { return x.value; }).join(""))));
   }
   function dayPeriod(date, tz) {
     var f = fmt("dp", tz, { hour: "numeric", hour12: true }).formatToParts(date);
@@ -294,6 +354,16 @@ function sunTimes(y, m, d, lat, lon) {
     var w = Math.acos(cw) / rad / 360;
     var ms = function (j) { return (j - 2440587.5) * 86400000; };
     return { rise: ms(jt - w), set: ms(jt + w) };
+  }
+  /* Güneş öğlesi (2. analiz #180): sunTimes ile aynı yaklaşık formül, kutup gecesinde de hesaplanır */
+  function solarNoonMs(y, m, d, lon) {
+    var rad = Math.PI / 180;
+    var n = Math.round(Date.UTC(y, m - 1, d, 12) / 86400000 + 2440587.5 - 2451545.0);
+    var js = n - lon / 360;
+    var M = (357.5291 + 0.98560028 * js) % 360;
+    var C = 1.9148 * Math.sin(M * rad) + 0.02 * Math.sin(2 * M * rad) + 0.0003 * Math.sin(3 * M * rad);
+    var lam = (M + C + 180 + 102.9372) % 360;
+    return (2451545.0 + js + 0.0053 * Math.sin(M * rad) - 0.0069 * Math.sin(2 * lam * rad) - 2440587.5) * 86400000;
   }
   function isoWeek(p) {
     var d = new Date(Date.UTC(p.year, p.month - 1, p.day));
@@ -338,9 +408,26 @@ function sunTimes(y, m, d, lat, lon) {
     return tpl(W.sentence, { h: hourWords(h), m: m });
   }
 
+  /* Matematik saati (2. analiz #183): her sayı dakikada bir değişen bir işlemle yazılır (dakika içinde sabit) */
+  function mathExpr(n, seed) {
+    var r = function () { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
+    var sup = function (k) { return String(k).split("").map(function (c) { return "⁰¹²³⁴⁵⁶⁷⁸⁹"[+c]; }).join(""); };
+    var opts = [];
+    if (n > 1) { var a = 1 + Math.floor(r() * (n - 1)); opts.push(a + " + " + (n - a)); }
+    var k = 1 + Math.floor(r() * 9); opts.push((n + k) + " − " + k);
+    opts.push("√" + n * n);
+    var dv = 2 + Math.floor(r() * 4); opts.push(n * dv + " ÷ " + dv);
+    for (var f = 2; f * f <= n; f++) if (n % f === 0 && n / f > 1) opts.push(f + " × " + n / f);
+    if (n >= 4) { var b = Math.floor(Math.sqrt(n)); if (b > 1) opts.push(b + "² + " + (n - b * b)); }
+    if (n > 1 && (n & (n - 1)) === 0) opts.push("2" + sup(Math.log2(n)));
+    if (n === 6 || n === 24) opts.push(n === 6 ? "3!" : "4!");
+    if (n === 0) opts.push("0 × " + k);
+    return opts[Math.floor(r() * opts.length)];
+  }
   var calCache = new WeakMap();
   function renderCalendar(el, p, tz) {
-    var key = p.year + "-" + p.month + "-" + p.day;
+    var wsOff = { mon: 0, sun: 6, sat: 5 }[lookOf("weekStart")]; // pazartesiden başlayan dizide ilk günün yeri
+    var key = p.year + "-" + p.month + "-" + p.day + "-" + wsOff;
     if (calCache.get(el) === key) return;
     calCache.set(el, key);
     var title = el.querySelector("[data-cal-title]");
@@ -354,19 +441,20 @@ function sunTimes(y, m, d, lat, lon) {
     for (var i = 0; i < 7; i++) {
       var th = doc.createElement("th");
       th.scope = "col";
-      th.textContent = useOwn && CAL.weekdaysShort ? CAL.weekdaysShort[i] : fmt("wd", "UTC", { weekday: "short" }).format(new Date(Date.UTC(2024, 0, 1 + i, 12))); // 1 Ocak 2024 pazartesi
+      var wi = (wsOff + i) % 7;
+      th.textContent = useOwn && CAL.weekdaysShort ? CAL.weekdaysShort[wi] : fmt("wd", "UTC", { weekday: "short" }).format(new Date(Date.UTC(2024, 0, 1 + wi, 12))); // 1 Ocak 2024 pazartesi
       head.appendChild(th);
     }
     body.textContent = "";
-    var first = (new Date(Date.UTC(p.year, p.month - 1, 1)).getUTCDay() + 6) % 7;
+    var first = (new Date(Date.UTC(p.year, p.month - 1, 1)).getUTCDay() + 13 - wsOff) % 7;
+    var thuCol = (10 - wsOff) % 7; // ISO hafta numarası satırın perşembesinden
     var count = new Date(Date.UTC(p.year, p.month, 0)).getUTCDate();
     var day = 1 - first;
     while (day <= count) {
       var tr = doc.createElement("tr");
       var wh = doc.createElement("th");
       wh.scope = "row";
-      var ref = Math.max(day, 1);
-      wh.textContent = String(isoWeek({ year: p.year, month: p.month, day: ref }));
+      wh.textContent = String(isoWeek({ year: p.year, month: p.month, day: day + thuCol }));
       tr.appendChild(wh);
       for (var c = 0; c < 7; c++, day++) {
         var td = doc.createElement("td");
@@ -389,17 +477,48 @@ function sunTimes(y, m, d, lat, lon) {
   var liveEls = Array.prototype.slice.call(doc.querySelectorAll("[data-live]"));
   var analogs = Array.prototype.slice.call(doc.querySelectorAll("[data-analog]"));
 
+  /* Sekme başlığında canlı saat (2. analiz #175): ana sayfa ve şehir sayfaları */
+  var titleStage = doc.querySelector("[data-title-clock]");
+  var titleBase = doc.title, titleTz = titleStage ? titleStage.getAttribute("data-title-clock") || localTz : "";
+  /* Ana sayfada saat dilimi hapları (2. analiz #184): UTC farkı, IANA adı, yaz saati var/yok */
+  var pillEls = Array.prototype.slice.call(doc.querySelectorAll("[data-tz-pills]"));
+  function renderPills(now) {
+    if (!pillEls.length || !localTz) return;
+    var off = offsetMin(now, localTz), y = parts(now, localTz).year;
+    var dst = offsetMin(new Date(Date.UTC(y, 0, 1)), localTz) !== offsetMin(new Date(Date.UTC(y, 6, 1)), localTz);
+    var a = Math.abs(off), lab = "UTC" + (off < 0 ? "−" : "+") + Math.floor(a / 60) + (a % 60 ? ":" + String(a % 60).padStart(2, "0") : "");
+    var items = [lab, localTz, dst ? T.pillDst : T.pillNoDst], key = items.join("|");
+    pillEls.forEach(function (el) {
+      if (el.__k === key) return;
+      el.__k = key; el.textContent = "";
+      items.forEach(function (x) { if (!x) return; var sp = doc.createElement("span"); sp.className = "pill"; sp.textContent = x; if (x === localTz) sp.dir = "ltr"; el.appendChild(sp); });
+    });
+  }
+
   function render() {
     var now = nowDate();
     renderSync();
+    renderPills(now);
+    if (titleStage) { var tt = timeText(now, titleTz, prefs.secD) + " · " + titleBase; if (doc.title !== tt) doc.title = tt; }
     var localOff = offsetMin(now, localTz);
     liveEls.forEach(function (el) {
       var kind = el.getAttribute("data-live");
       var tz = el.getAttribute("data-tz") || localTz;
       var out = "", p;
       switch (kind) {
-        case "time": out = timeText(now, tz, el.hasAttribute("data-sec") ? prefs.secD : false); break;
-        case "date": out = useOwn ? ownDate(parts(now, tz)) : fmt("date", tz, { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(now); break;
+        case "time":
+          var ws = el.hasAttribute("data-sec") ? prefs.secD : false;
+          if (ws && prefs.secSmall && !window.__sthPrefs) { smallSecTime(el, now, tz); return; }
+          out = timeText(now, tz, ws);
+          if (ws && prefs.ms && !window.__sthPrefs) out += msText(now);
+          break;
+        case "date":
+          var df = lookOf("dateFmt");
+          if (df === "iso") { p = parts(now, tz); out = p.year + "-" + String(p.month).padStart(2, "0") + "-" + String(p.day).padStart(2, "0"); }
+          else if (df === "numeric") out = useOwn ? (p = parts(now, tz), String(p.day).padStart(2, "0") + "." + String(p.month).padStart(2, "0") + "." + p.year) : fmt("dnw", tz, { weekday: "short", day: "2-digit", month: "2-digit", year: "numeric" }).format(now);
+          else out = useOwn ? ownDate(parts(now, tz)) : fmt("date", tz, { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(now);
+          break;
+        case "weeklabel": out = T.weekN ? tpl(T.weekN, { n: isoWeek(parts(now, tz)) }) : ""; break;
         case "day": out = String(parts(now, tz).day); break;
         case "dateiso": p = parts(now, tz); out = p.year + "-" + String(p.month).padStart(2, "0") + "-" + String(p.day).padStart(2, "0"); break;
         case "datenum": out = fmt("dn", tz, { day: "2-digit", month: "2-digit", year: "numeric" }).format(now); break;
@@ -410,7 +529,15 @@ function sunTimes(y, m, d, lat, lon) {
           var st = sunTimes(p.year, p.month, p.day, parseFloat(el.getAttribute("data-lat")), parseFloat(el.getAttribute("data-lon")));
           if (!st) { out = "–"; break; }
           if (kind === "daylen") { var mins = Math.round((st.set - st.rise) / 60000); out = Math.floor(mins / 60) + " " + T.hourShort + " " + (mins % 60) + " " + T.minuteShort; }
-          else out = fmt("sun", tz, { hour: "2-digit", minute: "2-digit", hourCycle: prefs.h12 ? "h12" : "h23" }).format(new Date(kind === "sunrise" ? st.rise : st.set));
+          else out = sepFix(fmt("sun", tz, { hour: "2-digit", minute: "2-digit", hourCycle: prefs.h12 ? "h12" : "h23" }).format(new Date(kind === "sunrise" ? st.rise : st.set)));
+          break;
+        case "solarnoon": case "solaroff":
+          p = parts(now, tz);
+          var sn = new Date(solarNoonMs(p.year, p.month, p.day, parseFloat(el.getAttribute("data-lon"))));
+          if (kind === "solarnoon") { out = sepFix(fmt("sun", tz, { hour: "2-digit", minute: "2-digit", hourCycle: prefs.h12 ? "h12" : "h23" }).format(sn)); break; }
+          var sp = parts(sn, tz), dm = Math.round(sp.hour * 60 + sp.minute + sp.second / 60 - 720);
+          if (dm > 720) dm -= 1440; else if (dm < -720) dm += 1440;
+          out = Math.abs(dm) < 2 ? el.getAttribute("data-same") : tpl(el.getAttribute(dm > 0 ? "data-ahead" : "data-behind"), { d: durLabel(dm) });
           break;
         case "monthyear": p = parts(now, tz); out = useOwn ? (CAL.monthsTitle || CAL.months)[p.month - 1] + " " + p.year : fmt("my", tz, { month: "long", year: "numeric" }).format(now); break;
         case "weekday": out = useOwn ? CAL.weekdays[dowOfParts(parts(now, tz))] : fmt("wdl", tz, { weekday: "long" }).format(now); break;
@@ -424,6 +551,16 @@ function sunTimes(y, m, d, lat, lon) {
           if (refTz) { var rn = el.getAttribute("data-ref-name"); out = d === 0 ? tpl(T.refSame, { ref: rn }) : tpl(d > 0 ? T.refAhead : T.refBehind, { d: durLabel(d), ref: rn }); }
           else out = d === 0 ? T.diffSame : tpl(d > 0 ? T.diffAhead : T.diffBehind, { d: durLabel(d) });
           break;
+        case "diffshort": case "diffbar":
+          var dd = offsetMin(now, tz) - offsetMin(now, el.getAttribute("data-ref") || localTz);
+          if (kind === "diffbar") {
+            var hx = Math.max(-14, Math.min(14, dd / 60));
+            el.setAttribute("x", String(Math.min(0, hx))); el.setAttribute("width", String(Math.abs(hx)));
+            el.classList.toggle("is-neg", dd < 0);
+            return;
+          }
+          out = dd === 0 ? "±0" : (dd > 0 ? "+" : "−") + durLabel(dd);
+          break;
         case "isoweek": out = String(isoWeek(parts(now, tz))); break;
         case "doy": out = String(dayOfYear(parts(now, tz))); break;
         case "daysleft":
@@ -436,11 +573,18 @@ function sunTimes(y, m, d, lat, lon) {
           var q = parts(now, tz);
           var pct = Math.min(100, Math.max(0, (dayOfYear(q) / daysInYear(q.year)) * 100));
           el.value = pct;
-          el.textContent = Math.floor(pct) + "%";
+          el.textContent = pctText(Math.floor(pct));
           var note = el.parentNode.querySelector("[data-progress-note]");
           if (note) note.textContent = tpl(T.yearDone, { p: Math.floor(pct) });
           return;
         case "calendar": renderCalendar(el, parts(now, tz), tz); return;
+        case "math":
+          p = parts(now, tz);
+          var mh = prefs.h12 ? (p.hour % 12 || 12) : p.hour, mk = p.year * 1e6 + p.month * 1e4 + p.day * 100 + p.minute + mh * 60;
+          if (el.__mk === mk) return;
+          el.__mk = mk;
+          out = mathExpr(mh, mk * 7 + 1) + "  :  " + mathExpr(p.minute, mk * 13 + 5);
+          break;
         case "flip":
           p = parts(now, tz);
           var hh = prefs.h12 ? (p.hour % 12 || 12) : p.hour;
@@ -464,7 +608,7 @@ function sunTimes(y, m, d, lat, lon) {
           });
           return;
       }
-      if (el.textContent !== out) el.textContent = out;
+      if (el.textContent !== out) { el.textContent = out; el.__small = ""; }
     });
     analogs.forEach(function (svg) {
       var ap = parts(now, svg.getAttribute("data-tz") || localTz);
@@ -529,6 +673,84 @@ function sunTimes(y, m, d, lat, lon) {
   if (tickBtns.length) doc.addEventListener("pointerdown", function () { if (prefs.tick && (!audio || audio.state !== "running")) ensureAudio(); }, { passive: true });
   syncButtons();
   if (liveEls.length) schedule();
+
+  /* Matrix saati (2. analiz #183): yalnız model görünürken, sekme açıkken ve hareket azaltma tercihi yokken yağar */
+  var mxCanvases = Array.prototype.slice.call(doc.querySelectorAll("[data-matrix]"));
+  if (mxCanvases.length) {
+    var mxReduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches, mxLast = 0;
+    var mxChars = "アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789:+-*=<>".split("");
+    var mxFrame = function (t) {
+      requestAnimationFrame(mxFrame);
+      if (doc.hidden || t - mxLast < 60) return;
+      mxLast = t;
+      mxCanvases.forEach(function (cv) {
+        var sl = cv.closest(".slide");
+        if (sl && sl.getAttribute("aria-hidden") === "true") return;
+        var w = cv.clientWidth, h = cv.clientHeight, dpr = Math.min(2, window.devicePixelRatio || 1), fs = 16;
+        if (!w || !h) return;
+        if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); cv.__drops = null; }
+        var g = cv.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+        var cols = Math.ceil(w / fs);
+        if (!cv.__drops || cv.__drops.length !== cols) { cv.__drops = []; for (var i = 0; i < cols; i++) cv.__drops.push(Math.random() * h / fs); g.fillStyle = "#000"; g.fillRect(0, 0, w, h); }
+        g.fillStyle = "rgba(0,0,0,0.08)"; g.fillRect(0, 0, w, h);
+        g.font = fs + "px monospace";
+        cv.__drops.forEach(function (y, i) {
+          g.fillStyle = Math.random() < 0.06 ? "#c8ffd8" : "#00c853";
+          g.fillText(mxChars[Math.floor(Math.random() * mxChars.length)], i * fs, y * fs);
+          cv.__drops[i] = y * fs > h && Math.random() > 0.97 ? 0 : y + (mxReduce ? 0 : 1);
+        });
+      });
+    };
+    if (!mxReduce) requestAnimationFrame(mxFrame);
+  }
+
+  /* Milisaniye (2. analiz #176): yalnız görünen, saniyeli dijital saatler ekran karesiyle güncellenir */
+  var msEls = liveEls.filter(function (el) { return el.getAttribute("data-live") === "time" && el.hasAttribute("data-sec"); });
+  var msRunning = false;
+  function msFrame() {
+    if (!prefs.ms || doc.hidden) { msRunning = false; return; }
+    var now = nowDate();
+    msEls.forEach(function (el) {
+      if (!prefs.secD) return;
+      var sl = el.closest(".slide");
+      if (sl && sl.getAttribute("aria-hidden") === "true") return;
+      var tz = el.getAttribute("data-tz") || localTz;
+      if (prefs.secSmall) { smallSecTime(el, now, tz); return; }
+      var out = timeText(now, tz, true) + msText(now);
+      if (el.textContent !== out) el.textContent = out;
+    });
+    requestAnimationFrame(msFrame);
+  }
+  function msLoop() { if (msRunning || !prefs.ms || window.__sthPrefs || !msEls.length || doc.hidden) return; msRunning = true; requestAnimationFrame(msFrame); }
+  doc.addEventListener("visibilitychange", msLoop);
+  msLoop();
+
+  /* Saati büyütme/küçültme (2. analiz #177): sth-prefs.zoom 0,5–1,5; tam ekranda da geçerli */
+  var zoomStages = Array.prototype.slice.call(doc.querySelectorAll("[data-carousel]"));
+  function applyZoom() {
+    var z = Math.min(1.5, Math.max(0.5, +prefs.zoom || 1));
+    zoomStages.forEach(function (st) { if (z === 1) st.style.removeProperty("--stage-zoom"); else st.style.setProperty("--stage-zoom", String(z)); });
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-stage-zoom]"), function (b) {
+      var d = +b.getAttribute("data-stage-zoom");
+      b.disabled = d < 0 ? z <= 0.5 : z >= 1.5;
+    });
+  }
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-stage-zoom]"), function (b) {
+    b.addEventListener("click", function () {
+      var z = Math.round(((+prefs.zoom || 1) + 0.1 * +b.getAttribute("data-stage-zoom")) * 10) / 10;
+      prefs.zoom = Math.min(1.5, Math.max(0.5, z));
+      store("sth-prefs", JSON.stringify(prefs)); applyZoom();
+    });
+  });
+  if (!window.__sthPrefs) applyZoom();
+  // Tam ekranda düğme yok: + ve − tuşları
+  if (zoomStages.length && !window.__sthPrefs) doc.addEventListener("keydown", function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey || (e.target && /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName))) return;
+    var d = e.key === "+" || e.key === "=" ? 1 : e.key === "-" || e.key === "_" ? -1 : 0;
+    if (!d) return;
+    prefs.zoom = Math.min(1.5, Math.max(0.5, Math.round(((+prefs.zoom || 1) + 0.1 * d) * 10) / 10));
+    store("sth-prefs", JSON.stringify(prefs)); applyZoom();
+  });
 
   /* ---------- Saat modelleri: kaydırmalı karusel ve tam ekran ---------- */
   var stage = doc.querySelector("[data-carousel]");
@@ -784,6 +1006,12 @@ function sunTimes(y, m, d, lat, lon) {
   function longDate(p) {
     return useOwn ? ownDate(p) : fmt("ld", "UTC", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(new Date(Date.UTC(p.year, p.month - 1, p.day, 12)));
   }
+  /* Yüzde: dilin kendi yazımıyla (Türkçede "%64", Almanca/Fransızca/Rusçada "64 %", diğerlerinde "64%"); rakamlar Latin. */
+  var pctFmt = null;
+  function pctText(n) {
+    try { if (!pctFmt) pctFmt = new Intl.NumberFormat(locale, { style: "percent", numberingSystem: "latn", maximumFractionDigits: 0 }); return pctFmt.format(n / 100); }
+    catch (e) { return n + "%"; }
+  }
   function refreshLive() {
     liveEls = Array.prototype.slice.call(doc.querySelectorAll("[data-live]"));
     analogs = Array.prototype.slice.call(doc.querySelectorAll("[data-analog]"));
@@ -794,6 +1022,6 @@ function sunTimes(y, m, d, lat, lon) {
     T: T, cfg: cfg, lang: lang, locale: locale, store: store, track: track, tpl: tpl, norm: norm,
     nowMs: nowMs, nowDate: nowDate, mono: mono, prefs: prefs, makeFullscreen: makeFullscreen,
     parts: parts, offsetMin: offsetMin, fmt: fmt, localTz: localTz, durLabel: durLabel,
-    syncState: function () { return sync; }, wordsText: wordsText,
+    syncState: function () { return sync; }, wordsText: wordsText, pct: pctText,
   };
 })();

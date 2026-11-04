@@ -84,7 +84,7 @@ object FocusBlock {
         Prefs.store.getString("pomo.phase", "work") == "work" && Prefs.store.getLong("pomo.end", 0) > now
 
     /** Engel şu an etkin mi (açık, uygulama seçili, çalışma süresi işliyor) */
-    fun active(now: Long = System.currentTimeMillis()) = on && apps().isNotEmpty() && working(now)
+    fun active(now: Long = System.currentTimeMillis()) = on && apps().isNotEmpty() && (working(now) || FocusScheduleStore.active())
 
     fun hasUsageAccess(c: Context): Boolean {
         val ops = c.getSystemService(AppOpsManager::class.java) ?: return false
@@ -108,6 +108,7 @@ object FocusBlock {
 
     /** Hizmeti pomodoro durumuna göre başlatır ya da durdurur */
     fun sync(c: Context) {
+        FocusScheduleStore.scheduleNext(c) // zaman çizelgeli engel (2. analiz #27): sıradaki sınırda yeniden bakılır
         if (active() && hasUsageAccess(c)) {
             runCatching { ContextCompat.startForegroundService(c, Intent(c, FocusBlockService::class.java)) }
         } else {
@@ -141,7 +142,7 @@ class FocusBlockService : Service() {
             .setContentText(T("focus.blocking", FocusBlock.apps().size))
             .setOngoing(true)
             .setSilent(true)
-            .setUsesChronometer(true)
+            .setUsesChronometer(end > System.currentTimeMillis())
             .setChronometerCountDown(true)
             .setWhen(end)
             .setContentIntent(open)
@@ -282,6 +283,7 @@ fun FocusBlockCard() {
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
                 }
             }.padding(vertical = 6.dp), color = Theme.c.accent, fontSize = 14.sp)
+            FocusScheduleSection { FocusBlock.sync(context) }
         }
         Text(L("focus.noteAndroid"), color = Theme.c.muted, fontSize = 12.sp)
     }

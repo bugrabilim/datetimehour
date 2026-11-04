@@ -7,6 +7,7 @@ class SaatTarihApp : Application() {
         super.onCreate()
         Strings.init(this)
         Prefs.init(this)
+        AccentPalette.initDynamic(this)
         AppData.init(this)
         // Araçlar: alarmlar ve süren zamanlayıcı/pomodoro yeniden kurulur (uygulama zorla durdurulmuş olabilir)
         runCatching { AlarmScheduler.restoreAll(this) }

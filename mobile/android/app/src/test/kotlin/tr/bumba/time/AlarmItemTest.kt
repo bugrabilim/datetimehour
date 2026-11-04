@@ -187,7 +187,8 @@ class AlarmRiseSnoozeTest {
     @Test fun smartFireEarly() {
         val c = org.robolectric.RuntimeEnvironment.getApplication()
         Prefs.init(c)
-        val now = System.currentTimeMillis()
+        // Sabit an (akşam): gerçek saatle 07:00–07:30 arasında 07:30'daki alarm sıradaki oluyordu (4 Kasım 2026 CI)
+        val now = ms("2026-11-04T22:00")
         val rep = AlarmItem(id = "rep", hour = 7, minute = 0, days = (1..7).toList(), smart = 30)
         val once = AlarmItem(id = "once", hour = 7, minute = 30, smart = 10)
         AlarmItem.save(listOf(rep, once))
@@ -199,5 +200,71 @@ class AlarmRiseSnoozeTest {
         org.junit.Assert.assertTrue(after.nextAt(now) > at)
         SmartSleep.fireEarly(c, SmartSleep.Session(once.id, once.nextAt(now), 10))
         assertEquals(false, AlarmItem.load().first { it.id == "once" }.enabled)
+    }
+
+    private fun ms(s: String) = LocalDateTime.parse(s).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+
+    /** 2. analiz #132: şehrin saatine bağlı alarm o şehrin 07:00'sinde çalar (telefonun dilimi ne olursa olsun) */
+    @Test fun cityTimeZone() {
+        val ny = ZoneId.of("America/New_York")
+        val a = AlarmItem(hour = 7, minute = 0, days = (1..7).toList(), tz = "America/New_York")
+        val next = a.nextAt(ms("2026-11-03T10:00"))
+        val local = java.time.Instant.ofEpochMilli(next).atZone(ny)
+        assertEquals(7, local.hour); assertEquals(0, local.minute)
+        // Bir kezlik belirli tarih de o şehrin saatiyle
+        val once = AlarmItem(hour = 9, minute = 30, date = "2026-12-01", tz = "Asia/Tokyo")
+        assertEquals(java.time.LocalDateTime.parse("2026-12-01T09:30").atZone(ZoneId.of("Asia/Tokyo")).toInstant().toEpochMilli(),
+            once.nextAt(ms("2026-11-03T10:00")))
+        assertEquals("America/New_York", AlarmItem.fromJson(a.toJson()).tz)
+    }
+
+    /** 2. analiz #153: güneşe bağlı alarm her gün seçili yerin doğuşu ± dakikada çalar */
+    @Test fun sunAnchored() {
+        Prefs.init(org.robolectric.RuntimeEnvironment.getApplication())
+        Prefs.saveProvince("istanbul")
+        val p = AppPlace.current()
+        val a = AlarmItem(hour = 0, minute = 0, days = (1..7).toList(), sun = "rise", sunOffset = -15)
+        val next = a.nextAt(java.time.LocalDateTime.parse("2026-11-03T12:00").atZone(p.zone).toInstant().toEpochMilli())
+        val d = java.time.LocalDate.parse("2026-11-04")
+        val rise = AlarmItem.sunMinutes(d, p.lat, p.lon, p.zone, true)!!
+        val local = java.time.Instant.ofEpochMilli(next).atZone(p.zone)
+        assertEquals(d, local.toLocalDate())
+        assertEquals(rise - 15, local.hour * 60 + local.minute)
+        // İstanbul'da Kasım başında gün doğumu 07:40 civarı (UTC+3 olduğu için geç)
+        org.junit.Assert.assertTrue("rise=$rise", rise in 445..470)
+        val set = a.copy(sun = "set", sunOffset = 30)
+        val n2 = java.time.Instant.ofEpochMilli(set.nextAt(java.time.LocalDateTime.parse("2026-11-03T12:00").atZone(p.zone).toInstant().toEpochMilli())).atZone(p.zone)
+        assertEquals(AlarmItem.sunMinutes(java.time.LocalDate.parse("2026-11-03"), p.lat, p.lon, p.zone, false)!! + 30, n2.hour * 60 + n2.minute)
+        val back = AlarmItem.fromJson(a.toJson())
+        assertEquals("rise", back.sun); assertEquals(-15, back.sunOffset)
+    }
+
+    /** 2. analiz #34: görev zinciri ve rastgele görev; #40: kısalan erteleme ve ses düzeyi; #39 tuşlar JSON'da */
+    @Test fun chainShrinkKeys() {
+        val a = AlarmItem(hour = 7, minute = 0, task = "math", chain = listOf("random", "code"), snoozeShrink = true, snooze = 10,
+            volume = 50, snoozeTask = "memory", keyAction = "snooze", powerAction = "dismiss")
+        val chain = a.taskChain(kotlin.random.Random(1))
+        assertEquals(3, chain.size)
+        assertEquals("math", chain[0])
+        org.junit.Assert.assertTrue(chain[1] in AlarmItem.RANDOM_TASKS)
+        assertEquals("math", chain[2]) // kod kaydedilmediyse matematik
+        val back = AlarmItem.fromJson(a.toJson())
+        assertEquals(listOf("random", "code"), back.chain)
+        assertEquals(true, back.snoozeShrink); assertEquals(50, back.volume)
+        assertEquals("memory", back.snoozeTask); assertEquals("snooze", back.keyAction); assertEquals("dismiss", back.powerAction)
+        // Kısalan erteleme: 10 → 5 → 2 → 1
+        Prefs.init(org.robolectric.RuntimeEnvironment.getApplication())
+        AlarmItem.save(listOf(a))
+        val minutes = (0..3).map { n ->
+            Prefs.store.edit().putInt("alarm.snoozed." + a.id, n).commit()
+            AlarmScheduler.snoozeMinutes(a.id, "alarm")
+        }
+        assertEquals(listOf(10, 5, 2, 1), minutes)
+        // Son erteleme saati geçtiyse erteleme yok
+        AlarmItem.save(listOf(a.copy(snoozeEnd = "00:00")))
+        assertEquals(0, AlarmScheduler.snoozeMinutes(a.id, "alarm"))
+        // Eski kayıt: alanlar yok
+        val old = AlarmItem.fromJson(JSONObject().put("id", "x").put("hour", 7).put("minute", 0))
+        assertEquals(emptyList<String>(), old.chain); assertEquals("none", old.snoozeTask); assertEquals("", old.sun)
     }
 }

@@ -121,7 +121,7 @@ struct GeoAlarmsView: View {
 
     var body: some View {
         List {
-            if list.isEmpty { Text(L("geo.none")).foregroundStyle(Theme.muted) }
+            if list.isEmpty { EmptyState(icon: "mappin.and.ellipse", text: L("geo.none")).listRowBackground(Color.clear) }
             ForEach($list) { $g in
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
@@ -140,16 +140,16 @@ struct GeoAlarmsView: View {
             Section {
                 if !permission.allowed {
                     Button(L("geo.allow")) { permission.request() }
-                    Text(L("geo.denied")).font(.footnote).foregroundStyle(.red)
+                    Text(L("geo.denied")).font(.footnote).foregroundStyle(Theme.err)
                 } else if !permission.precise {
-                    Text(L("geo.notPrecise")).font(.footnote).foregroundStyle(.red)
+                    Text(L("geo.notPrecise")).font(.footnote).foregroundStyle(Theme.err)
                 }
                 Text(L("geo.note")).font(.footnote).foregroundStyle(Theme.muted)
             }
         }
         .themedBackground()
         .navigationTitle(L("geo.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -228,7 +228,7 @@ private struct GeoAlarmEditor: View {
             }
             .themedBackground()
             .navigationTitle(L("geo.title"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(L("alarm.cancel")) { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
@@ -249,7 +249,8 @@ private struct GeoAlarmEditor: View {
     private func locate() {
         locating = true
         Task {
-            if let loc = await OneShotLocation(accuracy: kCLLocationAccuracyNearestTenMeters).fetch(requestPermission: true) {
+            if await PermissionPrimer.location(),
+               let loc = await OneShotLocation(accuracy: kCLLocationAccuracyNearestTenMeters).fetch(requestPermission: true) {
                 alarm.lat = loc.coordinate.latitude
                 alarm.lon = loc.coordinate.longitude
                 center()

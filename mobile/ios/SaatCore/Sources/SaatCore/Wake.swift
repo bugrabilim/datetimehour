@@ -3,7 +3,66 @@ import Foundation
 /// Alarm kapatma görevleri (30 Ekim 2026, rakip analizi #13): matematik, sallama, adım, kod (QR/barkod) okutma; ve
 /// uyanma denetimi. Burada yalnız hesap var; sensör ve kamera uygulamada. Android'deki WakeTask'ın aynısı.
 public enum WakeTask {
-    public static let kinds = ["none", "math", "shake", "steps", "code", "memory", "typing", "photo"]
+    public static let kinds = ["none", "math", "shake", "steps", "code", "memory", "typing", "photo", "squat", "object", "speak"]
+    /// Squat (2. analiz #36): telefon elde 15 çömelme
+    public static let squats = 15
+    /// Nesne görevi (#36): hedef ve İngilizce etiket sözcükleri (Android'deki OBJECTS ile aynı sıra)
+    public static let objectIds = ["cup", "toothbrush", "sky", "bed", "plant", "shoe"]
+    public static let objectWords: [String: [String]] = [
+        "cup": ["cup", "mug", "coffee", "tea", "drinking glass", "teapot", "tableware", "drinkware", "glass"],
+        "toothbrush": ["toothbrush", "toothpaste", "sink", "bathroom", "faucet", "tap"],
+        "sky": ["sky", "cloud", "sunrise", "sunset", "outdoor"],
+        "bed": ["bed", "bedroom", "pillow", "blanket", "duvet", "bedding", "mattress", "quilt"],
+        "plant": ["plant", "flower", "houseplant", "flowerpot", "leaf", "tree"],
+        "shoe": ["shoe", "sneaker", "footwear", "boot", "sandal", "slipper"],
+    ]
+    public static let objectMin: Float = 0.3
+
+    /// Tam sözcük eşleşmesi ("bed" "flowerbed"de, "tree" "street"te geçmez); sondaki çoğul -s kabul edilir
+    public static func objectMatch(_ target: String, _ labels: [(String, Float)]) -> Bool {
+        guard let words = objectWords[target] else { return false }
+        return labels.contains { label in
+            let cleaned = String(label.0.lowercased().map { $0.isLetter || $0.isNumber ? $0 : " " })
+            let n = " " + cleaned.split(separator: " ").joined(separator: " ") + " "
+            return label.1 >= objectMin && words.contains { w in
+                n.contains(" \(w) ") || n.contains(" \(w)s ") || n.contains(" \(w)es ")
+            }
+        }
+    }
+
+    /// Sesli okuma (#37): duyulan sözcüklerin en az %70'i hedefte sırayla geçiyorsa
+    public static func spoken(_ target: String, _ heard: String) -> Bool {
+        // Sözcükleri boşlukla ayrılmayan yazılar (Japonca, Çince, Tayca): harf düzeyinde, en uzun ortak alt dizi ≥ %70
+        let spaceless = target.unicodeScalars.contains { s in
+            (0x0E00...0x0E7F).contains(s.value) || (0x3040...0x30FF).contains(s.value) || (0x4E00...0x9FFF).contains(s.value)
+        }
+        if spaceless {
+            func chars(_ s: String) -> [Character] { Array(s.lowercased().filter { $0.isLetter || $0.isNumber }) }
+            let a = chars(target)
+            let b = chars(heard)
+            guard !a.isEmpty, !b.isEmpty else { return false }
+            var dp = Array(repeating: Array(repeating: 0, count: b.count + 1), count: a.count + 1)
+            for i in 1...a.count {
+                for j in 1...b.count {
+                    dp[i][j] = a[i - 1] == b[j - 1] ? dp[i - 1][j - 1] + 1 : max(dp[i - 1][j], dp[i][j - 1])
+                }
+            }
+            return Double(dp[a.count][b.count]) >= (Double(a.count) * 0.7).rounded(.up)
+        }
+        func words(_ s: String) -> [String] {
+            s.lowercased().filter { $0.isLetter || $0.isNumber || $0.isWhitespace }
+                .split(whereSeparator: { $0.isWhitespace }).map(String.init)
+        }
+        let t = words(target)
+        let h = words(heard)
+        guard !t.isEmpty, !h.isEmpty else { return false }
+        var i = 0
+        var hit = 0
+        for w in t {
+            if let j = h[i...].firstIndex(of: w) { hit += 1; i = j + 1 }
+        }
+        return Double(hit) >= (Double(t.count) * 0.7).rounded(.up)
+    }
     /// Matematik: üç işlem; sallama 30 kez; adım 20
     public static let mathCount = 3
     public static let shakes = 30
@@ -91,6 +150,7 @@ public struct MotionCounter: Sendable {
 
     public static func shake() -> MotionCounter { MotionCounter(high: 2.0, low: 1.3, gap: 0.15) }
     public static func steps() -> MotionCounter { MotionCounter(high: 1.18, low: 1.04, gap: 0.28) }
+    public static func squat() -> MotionCounter { MotionCounter(high: 1.3, low: 0.95, gap: 0.9) }
 
     /// x, y, z: g biriminde (yer çekimi dahil); sayıldıysa true
     @discardableResult

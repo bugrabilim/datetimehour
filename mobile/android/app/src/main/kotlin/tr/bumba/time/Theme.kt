@@ -7,8 +7,15 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.foundation.background
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 
 /**
  * Sitedeki renk token'ları (src/styles.css): açık "kâğıt" ve koyu "gece" paleti. iOS'taki Theme.swift ile aynı:
@@ -29,9 +36,52 @@ data class AppColors(
     /** Saat rakamları ve akrep */
     val ink: Color,
     val dark: Boolean,
+    /** Atmosfer (renk geçişli zemin; null = düz) */
+    val atmo: Atmosphere? = null,
 ) {
     val accentSoft: Color get() = accent.copy(alpha = 0.16f)
+    /** Hata ve başarı renkleri: sitedeki --err/--ok token'ları (2. analiz #100; iki temada ≥4,5:1) */
+    val err: Color get() = if (dark) Color(0xFFFF9D9D) else Color(0xFFA31D1D)
+    val errBg: Color get() = if (dark) Color(0xFF3A1A1A) else Color(0xFFFBE7E7)
+    val ok: Color get() = if (dark) Color(0xFF7FD9A1) else Color(0xFF176B3A)
+    val okBg: Color get() = if (dark) Color(0xFF16301F) else Color(0xFFE2F3E8)
 }
+
+/**
+ * Adlı atmosfer temaları (2. analiz #78; sahibin ekran görüntüsü): bütün uygulamanın zemini yukarıdan aşağı bir renk
+ * geçişiyle boyanır (açık temada soluk, koyu temada derin tonlar). Uygulama rengi ayrı seçilir. Seçim `atmo`
+ * anahtarında (boş = düz); iOS'taki Atmosphere ile aynı renkler.
+ */
+data class Atmosphere(val id: String, val lightTop: Long, val lightBottom: Long, val darkTop: Long, val darkBottom: Long) {
+    fun top(dark: Boolean) = rgb(if (dark) darkTop else lightTop)
+    fun bottom(dark: Boolean) = rgb(if (dark) darkBottom else lightBottom)
+    fun mid(dark: Boolean) = rgb(if (dark) mix(darkTop, darkBottom, 0.5) else mix(lightTop, lightBottom, 0.5))
+
+    companion object {
+        const val KEY = "atmo"
+        val ALL = listOf(
+            Atmosphere("dawn", 0xFDEFE3, 0xF6D9E2, 0x2B1C2F, 0x41243A),
+            Atmosphere("lavender", 0xF2ECFB, 0xE1D6F5, 0x1F1A33, 0x31254F),
+            Atmosphere("ocean", 0xE5F3F8, 0xCFE5F1, 0x0D1F2C, 0x113653),
+            Atmosphere("forest", 0xEAF5EA, 0xD5EAD8, 0x0F2119, 0x1A382A),
+            Atmosphere("desert", 0xFCF2E2, 0xF1DBBA, 0x2A2016, 0x40301B),
+            Atmosphere("aurora", 0xE6F7F1, 0xE3DFF8, 0x0D2B2A, 0x2B1F47),
+            Atmosphere("sunset", 0xFEEBDD, 0xF8D3D6, 0x301A11, 0x3D1729),
+            Atmosphere("night", 0xE7ECF7, 0xD5DCEF, 0x0A0F1F, 0x1A2342),
+        )
+        fun find(id: String?): Atmosphere? = ALL.firstOrNull { it.id == id }
+
+        var selected by mutableStateOf("")
+            private set
+        private var loaded = false
+        fun load() { if (!loaded) { loaded = true; selected = Prefs.store.getString(KEY, "") ?: "" } }
+        fun save(id: String) { selected = id; Prefs.store.edit().putString(KEY, id).apply() }
+    }
+}
+
+/** Sayfa zemini: atmosfer seçiliyse renk geçişi, değilse temanın zemin rengi */
+fun Modifier.appBackdrop(c: AppColors): Modifier =
+    c.atmo?.let { a -> background(Brush.verticalGradient(listOf(a.top(c.dark), a.bottom(c.dark)))) } ?: background(c.bg)
 
 data class AccentPalette(
     val id: String,
@@ -73,7 +123,21 @@ data class AccentPalette(
             AccentPalette("forest", "business", 0x2F5233, 0x8FC79A, 0x8A6D00, 0xE6C35C, 0.6),
         )
 
-        fun find(id: String?): AccentPalette = ALL.firstOrNull { it.id == id } ?: ALL[0]
+        /** Duvar kâğıdı renkleri (Material You; Android 12+, 2. analiz #167): sistemin dinamik paletinden */
+        const val DYNAMIC_ID = "dynamic"
+        private var dynamic: AccentPalette? = null
+
+        fun initDynamic(c: android.content.Context) {
+            if (android.os.Build.VERSION.SDK_INT < 31) return
+            val l = androidx.compose.material3.dynamicLightColorScheme(c)
+            val d = androidx.compose.material3.dynamicDarkColorScheme(c)
+            fun v(x: Color) = (x.toArgb().toLong() and 0xFFFFFF)
+            dynamic = AccentPalette(DYNAMIC_ID, "general", v(l.primary), v(d.primary), v(l.tertiary), v(d.tertiary), 0.8)
+        }
+
+        val hasDynamic: Boolean get() = dynamic != null
+
+        fun find(id: String?): AccentPalette = if (id == DYNAMIC_ID) dynamic ?: ALL[0] else ALL.firstOrNull { it.id == id } ?: ALL[0]
     }
 
     fun colors(dark: Boolean): AppColors {
@@ -122,7 +186,9 @@ fun AppTheme(content: @Composable () -> Unit) {
         "dark" -> true
         else -> isSystemInDarkTheme()
     }
-    val colors = AccentPalette.find(Prefs.accent).colors(dark)
+    Atmosphere.load()
+    val atmo = Atmosphere.find(Atmosphere.selected)
+    val colors = AccentPalette.find(Prefs.accent).colors(dark).let { if (atmo != null) it.copy(bg = atmo.mid(dark), atmo = atmo) else it }
     val scheme = if (dark) {
         darkColorScheme(
             primary = colors.accent, onPrimary = colors.bg, background = colors.bg, onBackground = colors.text,
@@ -139,6 +205,7 @@ fun AppTheme(content: @Composable () -> Unit) {
         )
     }
     CompositionLocalProvider(LocalColors provides colors) {
-        MaterialTheme(colorScheme = scheme, content = content)
+        // Uygulama içi yazı boyutu (Ayarlar; 2. analiz #77)
+        MaterialTheme(colorScheme = scheme) { ProvideFontScale(content) }
     }
 }

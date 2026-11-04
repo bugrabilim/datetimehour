@@ -37,31 +37,31 @@ private let hourMinute: DateFormatter = {
     return f
 }()
 
+// Görünüm (renk takımı, yazı tipi, çerçeve) widget ayarında seçilir (2. analiz #17; WidgetStyle.swift)
+
 struct AnalogClockWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "analog-clock", provider: ClockProvider()) { entry in
-            AnalogClock(date: entry.date)
-                .padding(4)
-                .containerBackground(for: .widget) { Theme.bg }
+        AppIntentConfiguration(kind: "analog-clock", intent: ClockStyleIntent.self, provider: StyledClockProvider()) { entry in
+            AnalogWidgetView(entry: entry)
         }
         .configurationDisplayName(L("widget.analog.name"))
         .description(L("widget.analog.desc"))
-        .supportedFamilies([.systemSmall, .systemLarge])
+        // Kilit ekranında dairesel analog saat (2. analiz #14)
+        .supportedFamilies([.systemSmall, .systemLarge, .accessoryCircular])
     }
 }
 
 struct DigitalClockWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "digital-clock", provider: ClockProvider()) { entry in
+        AppIntentConfiguration(kind: "digital-clock", intent: ClockStyleIntent.self, provider: StyledClockProvider()) { entry in
             Text(hourMinute.string(from: entry.date))
-                .font(.system(size: 44, weight: .bold, design: .rounded))
+                .font(entry.font.font(44))
                 .monospacedDigit()
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
                 .multilineTextAlignment(.center)
-                .foregroundStyle(Theme.text)
                 .environment(\.layoutDirection, .leftToRight)
-                .containerBackground(for: .widget) { Theme.bg }
+                .styledWidget(entry)
         }
         .configurationDisplayName(L("widget.digital.name"))
         .description(L("widget.digital.desc"))
@@ -71,10 +71,10 @@ struct DigitalClockWidget: Widget {
 
 struct ClockDateWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "clock-date", provider: ClockProvider()) { entry in
+        AppIntentConfiguration(kind: "clock-date", intent: ClockStyleIntent.self, provider: StyledClockProvider()) { entry in
             VStack(spacing: 6) {
                 Text(hourMinute.string(from: entry.date))
-                    .font(.system(size: 44, weight: .bold, design: .rounded))
+                    .font(entry.font.font(44))
                     .monospacedDigit()
                     .minimumScaleFactor(0.5)
                     .lineLimit(1)
@@ -86,13 +86,34 @@ struct ClockDateWidget: Widget {
                     .minimumScaleFactor(0.7)
                 Text(entry.date.formatted(gregorian(.dateTime.weekday(.wide))))
                     .font(.subheadline)
-                    .foregroundStyle(Theme.muted)
+                    .foregroundStyle(entry.muted)
             }
-            .foregroundStyle(Theme.text)
-            .containerBackground(for: .widget) { Theme.bg }
+            .styledWidget(entry)
         }
         .configurationDisplayName(L("widget.clockDate.name"))
         .description(L("widget.clockDate.desc"))
         .supportedFamilies([.systemSmall, .systemMedium])
+    }
+}
+
+struct AnalogWidgetView: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: StyledEntry
+
+    var body: some View {
+        if family == .accessoryCircular {
+            ZStack {
+                AccessoryWidgetBackground()
+                AnalogClock(date: entry.date, colors: entry.clockColors)
+                    .padding(2)
+                    .widgetAccentable()
+            }
+            .widgetURL(entry.tap.url)
+            .containerBackground(for: .widget) { Color.clear }
+        } else {
+            AnalogClock(date: entry.date, colors: entry.clockColors)
+                .padding(4)
+                .styledWidget(entry)
+        }
     }
 }

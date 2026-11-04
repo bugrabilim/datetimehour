@@ -22,6 +22,17 @@ enum FocusBlock {
     /// Bu yapıda özellik açık mı (Apple onayı gelince Info.plist'te true)
     static var available: Bool { Bundle.main.object(forInfoDictionaryKey: "SaatFamilyControls") as? Bool == true }
 
+    /// Alarm görevi sürerken uygulamanın silinmesini engeller (2. analiz #46). Yalnız FamilyControls yetkisi (Apple
+    /// onayı) ve kullanıcının Ekran Süresi izni varsa; ayrı bir ayar düğmesi yok (`wake.denyRemoval` yalnız ileride
+    /// kapatmak için okunur, varsayılan açık).
+    private static let wakeStore = ManagedSettingsStore(named: ManagedSettingsStore.Name("wake"))
+    static func denyRemoval(_ on: Bool) {
+        guard available else { return }
+        let allowed = UserDefaults.standard.object(forKey: "wake.denyRemoval") as? Bool ?? true
+        let approved = AuthorizationCenter.shared.authorizationStatus == .approved
+        wakeStore.application.denyAppRemoval = on && allowed && approved ? true : nil
+    }
+
     static var selection: FamilyActivitySelection {
         get {
             guard let data = UserDefaults.standard.data(forKey: selectionKey),
@@ -47,7 +58,7 @@ enum FocusBlock {
     static func sync() {
         guard available else { return }
         let d = UserDefaults.standard
-        guard d.bool(forKey: onKey), working, AuthorizationCenter.shared.authorizationStatus == .approved, !isEmpty else {
+        guard d.bool(forKey: onKey), working || FocusScheduleStore.active(), AuthorizationCenter.shared.authorizationStatus == .approved, !isEmpty else {
             store.clearAllSettings()
             return
         }
@@ -99,7 +110,9 @@ struct FocusBlockCard: View {
                         picking = true
                     }
                 }
-                if denied { Text(L("focus.denied")).font(.caption).foregroundStyle(.red) }
+                if denied { Text(L("focus.denied")).font(.caption).foregroundStyle(Theme.err) }
+                // Zaman çizelgeli engel (2. analiz #27)
+                if on { FocusScheduleSection() }
                 Text(L("focus.noteIOS")).font(.caption).foregroundStyle(Theme.muted)
             }
             .card()

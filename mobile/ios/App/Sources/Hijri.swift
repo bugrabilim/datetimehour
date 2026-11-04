@@ -44,6 +44,15 @@ enum Hijri {
         return nil
     }
 
+    /// Hicri ayın ilk günü (Gregoryen yıl, ay, gün) ve uzunluğu; tablo dışında nil (takvimi hicri aylarla gezmek için; 2. analiz #119)
+    static func month(year: Int, month: Int) -> (first: (Int, Int, Int), length: Int)? {
+        guard table.count >= 2 else { return nil }
+        for i in 0..<(table.count - 1) where table[i].year == year && table[i].month == month {
+            return (fromJdn(table[i].start), table[i + 1].start - table[i].start)
+        }
+        return nil
+    }
+
     /// Jülyen gün numarasından Gregoryen (yıl, ay, gün)
     static func fromJdn(_ n: Int) -> (Int, Int, Int) {
         let a = n + 32044, b = (4 * a + 3) / 146097, c = a - 146097 * b / 4

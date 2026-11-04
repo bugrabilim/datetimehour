@@ -361,7 +361,7 @@ private fun UpcomingDayCard(now: Instant, modifier: Modifier) {
 /** Dünya saatleri listesinin ilk dört şehri */
 @Composable
 private fun WorldMiniCard(now: Instant, modifier: Modifier) {
-    val cities = Prefs.world.split(",").mapNotNull { k -> City.all.firstOrNull { it.key == k } }.take(4)
+    val cities = WorldEntry.list().take(4)
     AppCard(modifier) {
         for (pair in cities.chunked(2)) {
             Row(Modifier.fillMaxWidth()) {

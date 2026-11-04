@@ -7,56 +7,12 @@ import SaatCore
 struct ToolsTab: View {
     @State private var router = Router.shared
 
+    /// Araçlar sekmesi "Tümü" sayfasıdır (Seçenek B, 2. analiz #195): kategorili ızgara, arama, sık kullanılanlar
     var body: some View {
         NavigationStack(path: $router.toolsPath) {
-            List {
-                Section {
-                    row(.alarm, L("tools.hub.cards.alarm.name"), "alarm")
-                    row(.timer, L("tools.timer"), "timer")
-                    row(.stopwatch, L("tools.hub.cards.stopwatch.name"), "stopwatch")
-                    row(.pomodoro, L("tools.hub.cards.pomodoro.name"), "leaf")
-                    row(.sleep, L("sleep.title"), "bed.double")
-                    row(.journal, L("journal.title"), "sun.horizon")
-                    row(.planner, L("planner.h1"), "person.2.wave.2")
-                    row(.datecalc, L("tools.hub.cards.datecalc.name"), "calendar.badge.clock")
-                }
-                Section {
-                    // Rozetler: girişin yanında bir satırlık not (Bumba standardı madde 13)
-                    NavigationLink(value: ToolRoute.badges) {
-                        VStack(alignment: .leading, spacing: 3) {
-                            Label(L("badges.h1"), systemImage: "rosette")
-                            Text(L("badges.note")).font(.caption).foregroundStyle(Theme.muted)
-                        }
-                    }
-                }
-                Section {
-                    row(.settings, L("settings.title"), "gearshape")
-                    row(.about, L("settings.about"), "info.circle")
-                }
-            }
-            .themedBackground()
-            .navigationTitle(L("tab.tools"))
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: ToolRoute.self) { route in
-                switch route {
-                case .alarm: AlarmsView()
-                case .timer: TimerView()
-                case .stopwatch: StopwatchView()
-                case .pomodoro: PomodoroView()
-                case .sleep: SleepView()
-                case .journal: JournalView()
-                case .planner: MeetingPlannerView()
-                case .datecalc: DateCalcView()
-                case .settings: SettingsView()
-                case .about: AboutView()
-                case .badges: BadgesView()
-                }
-            }
+            AllView()
+                .navigationDestination(for: ToolRoute.self) { route in route.view }
         }
-    }
-
-    private func row(_ route: ToolRoute, _ title: String, _ icon: String) -> some View {
-        NavigationLink(value: route) { Label(title, systemImage: icon) }
     }
 }
 
@@ -126,6 +82,9 @@ struct StopwatchView: View {
     @AppStorage("sw.acc") private var acc = 0.0
     @AppStorage("sw.laps") private var lapsRaw = ""
     @State private var extra = StopwatchItem.load()
+    /// Tam ekran ve yatayda dev rakamlar (2. analiz #104)
+    @State private var full = false
+    @State private var copied = false
 
     private var laps: [Double] { lapsRaw.split(separator: ",").compactMap { Double($0) } }
     private func elapsed(_ now: Date) -> Double { acc + (start > 0 ? now.timeIntervalSinceReferenceDate - start : 0) }
@@ -136,34 +95,95 @@ struct StopwatchView: View {
             VStack(spacing: 20) {
                 BigTime(text: format(t))
                     .padding(.top, 30)
-                HStack(spacing: 12) {
-                    if start > 0 {
-                        RoundButton(title: L("tools.stopwatch.lap")) { lapsRaw = (laps + [t]).map { String($0) }.joined(separator: ",") }
-                        RoundButton(title: L("tools.stopwatch.stop"), prominent: true) {
-                            acc = t
-                            start = 0
-                        }
-                    } else {
-                        RoundButton(title: L("tools.stopwatch.reset")) {
-                            acc = 0
-                            lapsRaw = ""
-                        }
-                        .disabled(t == 0)
-                        RoundButton(title: L(t > 0 ? "tools.stopwatch.resume" : "tools.stopwatch.start"), prominent: true) {
-                            start = Date().timeIntervalSinceReferenceDate
-                            BadgeStore.shared.hit(.kronometre)
-                        }
-                    }
-                }
                 lapList(current: t)
             }
             .padding(.horizontal, 20)
+            // Araç kalıbı (2. analiz #200): altta tur/sıfırla (soluk) ve başlat/durdur (tek dolu düğme)
+            .safeAreaInset(edge: .bottom) { controls(t) }
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         // Kilit ekranı / Dynamic Island: çalışan kronometre
         .onChange(of: start) { LiveActivities.sync() }
         .navigationTitle(L("tools.hub.cards.stopwatch.name"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                MoreMenu(items: menuItems)
+            }
+        }
+        .fullScreenCover(isPresented: $full) { fullscreen }
+    }
+
+    /// "…": tam ekran ve turları kopyala (CSV paylaşımı tur listesinin başında)
+    private var menuItems: [MoreItem] {
+        var items = [MoreItem(title: L("clock.fullscreen"), icon: "arrow.up.left.and.arrow.down.right") { full = true }]
+        if !laps.isEmpty {
+            items.append(MoreItem(title: L("sw.copyLaps"), icon: "doc.on.doc") { copyLaps() })
+        }
+        return items
+    }
+
+    private func copyLaps() {
+        let totals = laps
+        let lapTimes = totals.enumerated().map { i, v in v - (i > 0 ? totals[i - 1] : 0) }
+        let no = L("tools.stopwatch.lapNo")
+        UIPasteboard.general.string = lapTimes.enumerated()
+            .map { "\(no) \($0.offset + 1)\t\(format($0.element))\t\(format(totals[$0.offset]))" }
+            .joined(separator: "\n")
+        copied = true
+    }
+
+    private func controls(_ t: Double) -> some View {
+        Group {
+            if start > 0 {
+                ToolPrimaryBar(primary: L("tools.stopwatch.stop"), secondary: L("tools.stopwatch.lap"),
+                               onSecondary: { lapsRaw = (laps + [t]).map { String($0) }.joined(separator: ",") }) {
+                    acc = t
+                    start = 0
+                }
+            } else {
+                ToolPrimaryBar(primary: L(t > 0 ? "tools.stopwatch.resume" : "tools.stopwatch.start"),
+                               secondary: t > 0 ? L("tools.stopwatch.reset") : nil,
+                               onSecondary: { acc = 0; lapsRaw = "" }) {
+                    start = Date().timeIntervalSinceReferenceDate
+                    BadgeStore.shared.hit(.kronometre)
+                }
+            }
+        }
+    }
+
+    /// Siyah zemin, genişliğe sığan dev rakamlar (yatayda ekranı doldurur), tur ve dur/başlat; ekran açık kalır
+    private var fullscreen: some View {
+        TimelineView(.animation(minimumInterval: 0.05)) { context in
+            let t = elapsed(context.date)
+            VStack(spacing: 16) {
+                HStack {
+                    Spacer()
+                    Button { full = false } label: { Image(systemName: "arrow.down.right.and.arrow.up.left").font(.title2) }
+                        .accessibilityLabel(L("common.done"))
+                }
+                Spacer()
+                Text(format(t))
+                    .font(.system(size: 400, weight: .light, design: .rounded)).monospacedDigit()
+                    .minimumScaleFactor(0.05).lineLimit(1)
+                    .environment(\.layoutDirection, .leftToRight)
+                Spacer()
+                HStack(spacing: 16) {
+                    if start > 0 {
+                        RoundButton(title: L("tools.stopwatch.lap")) { lapsRaw = (laps + [t]).map { String($0) }.joined(separator: ",") }
+                        RoundButton(title: L("tools.stopwatch.stop"), prominent: true) { acc = t; start = 0 }
+                    } else {
+                        RoundButton(title: L("tools.stopwatch.resume"), prominent: true) { start = Date().timeIntervalSinceReferenceDate }
+                    }
+                }
+            }
+            .padding(20)
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.black.ignoresSafeArea())
+        }
+        .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
+        .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
     }
 
     private func format(_ t: Double) -> String {
@@ -190,12 +210,14 @@ struct StopwatchView: View {
                     Label(L("csv.laps"), systemImage: "square.and.arrow.up")
                 }
                 .foregroundStyle(Theme.accent)
+                // Turları metin olarak kopyalama "…" menüsünde (2. analiz #104, #200); kopyalanınca burada not
+                if copied { Label(L("sw.copied"), systemImage: "checkmark").foregroundStyle(Theme.ok) }
             }
             ForEach(Array(lapTimes.enumerated()).reversed(), id: \.offset) { i, lap in
                 HStack {
                     Text(verbatim: "\(L("tools.stopwatch.lapNo")) \(i + 1)")
-                    if lap == best { Text(L("tools.stopwatch.best")).font(.caption).foregroundStyle(.green) }
-                    if lap == worst { Text(L("tools.stopwatch.worst")).font(.caption).foregroundStyle(.red) }
+                    if lap == best { Text(L("tools.stopwatch.best")).font(.caption).foregroundStyle(Theme.ok) }
+                    if lap == worst { Text(L("tools.stopwatch.worst")).font(.caption).foregroundStyle(Theme.err) }
                     Spacer()
                     Text(format(lap)).monospacedDigit()
                     Text(format(totals[i])).monospacedDigit().foregroundStyle(Theme.muted)
@@ -287,9 +309,9 @@ struct TimerView: View {
             }
             Spacer(minLength: 0)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("tools.timer"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -297,6 +319,8 @@ struct TimerView: View {
 
 struct AlarmsView: View {
     @State private var items = AlarmItem.load()
+    /// iPad ve geniş pencerede alarmlar iki sütunda (2. analiz #145)
+    @Environment(\.horizontalSizeClass) private var hsc
     @State private var editing: AlarmItem?
     @State private var denied = false
     @State private var quickMsg = ""
@@ -305,6 +329,10 @@ struct AlarmsView: View {
 
     var body: some View {
         List {
+            // Sıradaki alarm (2. analiz #51)
+            if items.contains(where: \.enabled) {
+                Section { AlarmListHeadCard(items: items) }
+            }
             // Hızlı alarm (rakip analizi #17): şu andan X dakika sonrasına bir kezlik alarm
             Section(L("alarm.quick")) {
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -335,18 +363,85 @@ struct AlarmsView: View {
                 Text(L("alarm.fromCalendarNote"))
             }
             if items.isEmpty {
-                Text(L("tools.alarm.none")).foregroundStyle(Theme.muted)
+                // Boş durum (2. analiz #96)
+                EmptyState(icon: "alarm", title: L("tools.alarm.none").trimmingCharacters(in: CharacterSet(charactersIn: ".。۔")),
+                           text: L("empty.alarm.text"), action: L("tools.alarm.add")) {
+                    let now = Calendar.current.dateComponents([.hour, .minute], from: Date())
+                    editing = AlarmItem(hour: now.hour ?? 7, minute: now.minute ?? 0)
+                }
+                .listRowBackground(Color.clear)
             }
-            ForEach($items) { $item in
+            // Uyku planının kalkış alarmı ayrı başlıkta (2. analiz #52)
+            if items.contains(where: \.sleepPlan) {
+                Section(L("alarm.sleepSection")) {
+                    ForEach($items) { $item in
+                        if item.sleepPlan { alarmRow($item) }
+                    }
+                    .onDelete { items.remove(atOffsets: $0) }
+                }
+            }
+            Section {
+                if hsc == .regular {
+                    let idx = items.indices.filter { !items[$0].sleepPlan }
+                    ForEach(Array(stride(from: 0, to: idx.count, by: 2)), id: \.self) { k in
+                        HStack(alignment: .top, spacing: 16) {
+                            alarmRow($items[idx[k]]).frame(maxWidth: .infinity)
+                            Divider()
+                            if k + 1 < idx.count {
+                                alarmRow($items[idx[k + 1]]).frame(maxWidth: .infinity)
+                            } else {
+                                Color.clear.frame(maxWidth: .infinity)
+                            }
+                        }
+                    }
+                } else {
+                    ForEach($items) { $item in
+                        if !item.sleepPlan { alarmRow($item) }
+                    }
+                    .onDelete { items.remove(atOffsets: $0) }
+                }
+            }
+            // Tatil modu (2. analiz #44)
+            VacationSection {
+                Task { await AlarmCenter.sync(items); await PrayerNotifier.reschedule() }
+            }
+            Section {
+                if denied { Text(L("alarm.denied")).foregroundStyle(Theme.err) }
+                AlarmNote()
+            }
+        }
+        .themedBackground()
+        .navigationTitle(L("tools.hub.cards.alarm.name"))
+        .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    let now = Calendar.current.dateComponents([.hour, .minute], from: Date())
+                    editing = AlarmItem(hour: now.hour ?? 7, minute: now.minute ?? 0)
+                } label: { Image(systemName: "plus") }
+                .accessibilityLabel(L("tools.alarm.add"))
+            }
+        }
+        .modifier(AlarmSheets(items: $items, editing: $editing, pickingEvent: $pickingEvent, quickMsg: $quickMsg, calLead: calLead, denied: $denied))
+    }
+
+    @ViewBuilder private func alarmRow(_ binding: Binding<AlarmItem>) -> some View {
+        let item = binding.wrappedValue
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(item.timeText)
                             .font(.system(size: 40, weight: .light, design: .rounded))
                             .monospacedDigit()
                             .environment(\.layoutDirection, .leftToRight)
-                        Text(item.title + " · " + item.repeatText)
+                        // Görev simgesi (2. analiz #51)
+                        Text(Self.taskIcon(item) + item.title + " · " + item.repeatText + (item.preAlarm > 0 ? " · 🌧" : ""))
                             .font(.subheadline)
                             .foregroundStyle(Theme.muted)
+                        // Şehir saatine ya da güneşe bağlı alarm (2. analiz #132, #153)
+                        if let anchor = item.anchorText {
+                            Text((item.sun.isEmpty ? "🌐 " : "☀️ ") + anchor).font(.footnote).foregroundStyle(Theme.accent)
+                        }
+                        if item.sleepPlan { Text(L("alarm.sleepLinked")).font(.caption2).foregroundStyle(Theme.muted) }
                         if let skip = item.skipUntil, skip > Date(), let at = item.unskipped.next() {
                             Text(T("alarm.skipped", Fmt.longDate(at)))
                                 .font(.caption)
@@ -359,35 +454,47 @@ struct AlarmsView: View {
                         }
                     }
                     Spacer()
-                    Toggle(L("tools.alarm.enable"), isOn: $item.enabled).labelsHidden()
+                    Toggle(L("tools.alarm.enable"), isOn: binding.enabled).labelsHidden()
                 }
                 .contentShape(Rectangle())
                 .onTapGesture { editing = item }
                 .swipeActions(edge: .leading) {
-                    if item.enabled { skipButton($item) }
+                    if item.enabled { skipButton(binding) }
                 }
                 .contextMenu {
-                    if item.enabled { skipButton($item) }
+                    if item.enabled { skipButton(binding) }
                 }
-            }
-            .onDelete { items.remove(atOffsets: $0) }
-            Section {
-                if denied { Text(L("alarm.denied")).foregroundStyle(.red) }
-                AlarmNote()
-            }
+    }
+
+    static func taskIcon(_ item: AlarmItem) -> String {
+        let icon: String
+        switch AlarmItem.effectiveTask(item.task, code: item.code) {
+        case "math": icon = "🧮 "
+        case "shake": icon = "📳 "
+        case "steps": icon = "🚶 "
+        case "code": icon = "🔳 "
+        case "memory": icon = "🧠 "
+        case "typing": icon = "⌨️ "
+        case "photo": icon = "📷 "
+        case "random": icon = "🎲 "
+        default: icon = ""
         }
-        .themedBackground()
-        .navigationTitle(L("tools.hub.cards.alarm.name"))
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    let now = Calendar.current.dateComponents([.hour, .minute], from: Date())
-                    editing = AlarmItem(hour: now.hour ?? 7, minute: now.minute ?? 0)
-                } label: { Image(systemName: "plus") }
-                .accessibilityLabel(L("tools.alarm.add"))
-            }
-        }
+        return icon + (item.chain.isEmpty || item.task == "none" ? "" : "+\(item.chain.count) ")
+    }
+
+}
+
+/// Alarm listesinin sayfaları (etkinlik seçici, düzenleyici) ve kaydetme
+private struct AlarmSheets: ViewModifier {
+    @Binding var items: [AlarmItem]
+    @Binding var editing: AlarmItem?
+    @Binding var pickingEvent: Bool
+    @Binding var quickMsg: String
+    let calLead: Int
+    @Binding var denied: Bool
+
+    func body(content: Content) -> some View {
+        content
         .sheet(isPresented: $pickingEvent) {
             CalendarEventPicker { title, start, allDay in
                 if let item = CalendarAlarm.item(title: title, start: start, allDay: allDay, lead: calLead) {
@@ -417,8 +524,10 @@ struct AlarmsView: View {
             }
         }
     }
+}
 
-    private func quick(_ minutes: Int) {
+extension AlarmsView {
+    fileprivate func quick(_ minutes: Int) {
         let at = Date().addingTimeInterval(Double(minutes * 60))
         let c = Calendar.current.dateComponents([.hour, .minute], from: at)
         var item = AlarmItem(hour: c.hour ?? 0, minute: c.minute ?? 0)
@@ -451,14 +560,57 @@ private struct AlarmEditor: View {
     @State private var time = Date()
     @State private var scanning = false
     @State private var shootingRef = false
+    @State private var tryTask = false
+    @State private var tried = false
+
+    /// Saat neye göre: telefon, başka şehir, gün doğumu, gün batımı (2. analiz #132, #153)
+    private var base: Binding<String> {
+        Binding(get: { !item.sun.isEmpty ? item.sun : (item.tz.isEmpty ? "phone" : "city") }, set: { b in
+            item.sun = (b == "rise" || b == "set") ? b : ""
+            if b == "city" {
+                if item.tz.isEmpty { item.tz = City.all.first { $0.tz != TimeZone.current.identifier }?.tz ?? "Europe/London" }
+            } else {
+                item.tz = ""
+            }
+        })
+    }
+
+    private var cities: [City] {
+        var seen = Set<String>()
+        return City.all.filter { seen.insert($0.tz).inserted }.sorted { $0.displayName < $1.displayName }
+    }
+
+    /// Son erteleme saati seçenekleri: alarmdan 15 dk – 2 sa sonrası
+    private var endChoices: [String] {
+        let c = Calendar.current.dateComponents([.hour, .minute], from: time)
+        let start = (c.hour ?? 0) * 60 + (c.minute ?? 0)
+        var list = [""] + [15, 30, 45, 60, 90, 120].map { m -> String in
+            let t = (start + m) % 1440
+            return String(format: "%02d:%02d", t / 60, t % 60)
+        }
+        if !list.contains(item.snoozeEnd) { list.append(item.snoozeEnd) }
+        return list
+    }
+
+    /// Önizleme için görev (2. analiz #35): alarmın görevi ve zinciri, uyanma denetimi yok
+    private var previewTask: PendingWakeTask {
+        PendingWakeTask(task: AlarmItem.effectiveTask(item.task, code: item.code), level: item.taskLevel, code: item.code, wakeCheck: false,
+                        title: item.title, rise: false, rings: 0, repeatID: nil, wall: item.wall.isEmpty ? nil : item.wall,
+                        chain: item.chain.isEmpty ? nil : item.chain)
+    }
+
+    /// Gelişmiş bölüm (2. analiz #201): kapalı gelir
+    @State private var advanced = false
 
     var body: some View {
         NavigationStack {
             Form {
-                DatePicker(L("tools.alarm.timeLabel"), selection: $time, displayedComponents: .hourAndMinute)
-                    .datePickerStyle(.wheel)
-                    .labelsHidden()
-                    .frame(maxWidth: .infinity)
+                if item.sun.isEmpty {
+                    DatePicker(L("tools.alarm.timeLabel"), selection: $time, displayedComponents: .hourAndMinute)
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+                        .frame(maxWidth: .infinity)
+                }
                 TextField(L("tools.alarm.labelPlaceholder"), text: $item.label)
                 Section(L("alarm.days")) {
                     // Pazartesiden pazara yedi düğme; hiçbiri seçili değilse bir kez çalar
@@ -503,96 +655,6 @@ private struct AlarmEditor: View {
                     }
                     Text(item.repeatText).font(.footnote).foregroundStyle(Theme.muted)
                 }
-                Section {
-                    Picker(L("alarm.snooze"), selection: $item.snooze) {
-                        ForEach(AlarmItem.snoozeChoices, id: \.self) { m in
-                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.snoozeMin", m)).tag(m)
-                        }
-                    }
-                    if item.snooze > 0 {
-                        Picker(L("alarm.snoozeMax"), selection: $item.snoozeMax) {
-                            ForEach(AlarmItem.snoozeMaxChoices, id: \.self) { n in
-                                Text(n == 0 ? L("alarm.snoozeMax.none") : T("alarm.snoozeMax.n", n)).tag(n)
-                            }
-                        }
-                    }
-                }
-                AlarmMusicSection(item: $item)
-                Section {
-                    Toggle(L("alarm.rise"), isOn: $item.rise)
-                        .tint(Theme.accent)
-                } footer: {
-                    Text(L("alarm.riseNoteIOS"))
-                }
-                // Saati sesli söyleme (rakip analizi #20) ve yaklaşan alarm bildirimi (#19)
-                Section {
-                    Toggle(L("alarm.speak"), isOn: $item.speak)
-                        .tint(Theme.accent)
-                } footer: {
-                    Text(L("alarm.speakNoteIOS"))
-                }
-                Section {
-                    Picker(L("alarm.pre"), selection: $item.preNotify) {
-                        ForEach(AlarmItem.preNotifyChoices, id: \.self) { m in
-                            Text(m == 0 ? L("alarm.preOff") : T("alarm.preMin", m)).tag(m)
-                        }
-                    }
-                } footer: {
-                    Text(L("alarm.preNote"))
-                }
-                // Akıllı alarm (SmartSleep): Uyku ekranındaki oturum açıkken pencerede hafif uyku algılanırsa erken çalar
-                Section {
-                    Picker(L("alarm.smart"), selection: $item.smart) {
-                        ForEach(AlarmItem.smartChoices, id: \.self) { m in
-                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.smartMin", m)).tag(m)
-                        }
-                    }
-                } footer: {
-                    Text(L("alarm.smart.note"))
-                }
-                // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
-                Section {
-                    Picker(L("alarm.sunrise"), selection: $item.sunrise) {
-                        ForEach(AlarmItem.sunriseChoices, id: \.self) { m in
-                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.sunriseMin", m)).tag(m)
-                        }
-                    }
-                } footer: {
-                    Text(L("alarm.sunriseNote"))
-                }
-                // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
-                Section {
-                    Picker(L("alarm.task"), selection: $item.task) {
-                        ForEach(WakeTask.kinds, id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
-                    }
-                    if item.task == "math" || item.task == "memory" {
-                        Picker(L("alarm.task.level"), selection: $item.taskLevel) {
-                            ForEach(1...3, id: \.self) { n in Text(L("alarm.task.level.\(n)")).tag(n) }
-                        }
-                    }
-                    if item.task == "code" {
-                        if CodeScannerView.available {
-                            Button(L(item.code.isEmpty ? "alarm.code.save" : "alarm.code.change")) { scanning = true }
-                        } else {
-                            Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
-                        }
-                        Text(L(item.code.isEmpty ? "alarm.code.missing" : "alarm.code.saved")).font(.footnote).foregroundStyle(Theme.muted)
-                        Text(L("alarm.code.hint")).font(.footnote).foregroundStyle(Theme.muted)
-                    }
-                    if item.task == "photo" {
-                        if CameraShot.available {
-                            Button(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.change" : "alarm.photo.save")) { shootingRef = true }
-                        } else {
-                            Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
-                        }
-                        Text(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.saved" : "alarm.photo.missing")).font(.footnote).foregroundStyle(Theme.muted)
-                    }
-                    Toggle(L("alarm.wakeCheck"), isOn: $item.wakeCheck).tint(Theme.accent)
-                } header: {
-                    Text(L("alarm.task.heading"))
-                } footer: {
-                    Text(L(AlarmCenter.hasRealAlarms ? "alarm.task.noteIOS" : "alarm.task.oldIOS") + " " + L("alarm.wakeCheck.note"))
-                }
                 // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
                 if !item.days.isEmpty {
                     Section {
@@ -600,6 +662,180 @@ private struct AlarmEditor: View {
                             .tint(Theme.accent)
                     } footer: {
                         Text(L("alarm.skipHolidaysNote"))
+                    }
+                }
+                Section {
+                    Picker(L("alarm.snooze"), selection: $item.snooze) {
+                        ForEach(AlarmItem.snoozeChoices, id: \.self) { m in
+                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.snoozeMin", m)).tag(m)
+                        }
+                    }
+                }
+                AlarmMusicSection(item: $item)
+                // Gelişmiş (2. analiz #201): kapalı gelir; saat, günler, ses ve erteleme üstte kalır
+                Section {
+                    Button { withAnimation { advanced.toggle() } } label: {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(L("alarm.advanced")).font(.body.weight(.semibold)).foregroundStyle(Theme.text)
+                                if !advanced { Text(L("alarm.advanced.note")).font(.caption).foregroundStyle(Theme.muted) }
+                            }
+                            Spacer()
+                            Image(systemName: advanced ? "chevron.up" : "chevron.down").foregroundStyle(Theme.muted)
+                        }
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                }
+                if advanced {
+                    // Saat neye göre (2. analiz #132 şehir saati, #153 gün doğumu/batımı ± dk)
+                    Section {
+                        Picker(L("alarm.base"), selection: base) {
+                            ForEach(["phone", "city", "rise", "set"], id: \.self) { b in Text(L("alarm.base.\(b)")).tag(b) }
+                        }
+                        if !item.tz.isEmpty && item.sun.isEmpty {
+                            Picker(L("alarm.city"), selection: $item.tz) {
+                                ForEach(cities) { c in Text(c.displayName).tag(c.tz) }
+                            }
+                        }
+                        if !item.sun.isEmpty {
+                            Picker(L("alarm.sunOffset"), selection: $item.sunOffset) {
+                                ForEach(AlarmItem.sunOffsets, id: \.self) { m in Text(AlarmItem.sunOffsetText(m)).tag(m) }
+                            }
+                        }
+                    } footer: {
+                        if !item.sun.isEmpty {
+                            let next = item.next(after: Date())
+                            Text(T("alarm.sunNote", AppPlace.stored().name, next.map { Fmt.dayMonth($0) + " " + Fmt.time($0) } ?? "—"))
+                        } else if !item.tz.isEmpty {
+                            Text(L("alarm.tzNote"))
+                        }
+                    }
+                    if item.snooze > 0 {
+                        Section {
+                            Picker(L("alarm.snoozeMax"), selection: $item.snoozeMax) {
+                                ForEach(AlarmItem.snoozeMaxChoices, id: \.self) { n in
+                                    Text(n == 0 ? L("alarm.snoozeMax.none") : T("alarm.snoozeMax.n", n)).tag(n)
+                                }
+                            }
+                            // 2. analiz #40: her ertelemede kısalan süre, belli saatten sonra erteleme yok
+                            Toggle(L("alarm.snoozeShrink"), isOn: $item.snoozeShrink).tint(Theme.accent)
+                            Picker(L("alarm.snoozeEnd"), selection: $item.snoozeEnd) {
+                                ForEach(endChoices, id: \.self) { e in Text(e.isEmpty ? L("alarm.snoozeEnd.none") : e).tag(e) }
+                            }
+                        } footer: {
+                            if item.snoozeShrink { Text(L("alarm.snoozeShrinkNote")) }
+                        }
+                    }
+                    AlarmWallSection(item: $item)
+                    Section {
+                        Toggle(L("alarm.rise"), isOn: $item.rise)
+                            .tint(Theme.accent)
+                    } footer: {
+                        Text(L("alarm.riseNoteIOS"))
+                    }
+                    // Saati sesli söyleme (rakip analizi #20) ve yaklaşan alarm bildirimi (#19)
+                    Section {
+                        Toggle(L("alarm.speak"), isOn: $item.speak)
+                            .tint(Theme.accent)
+                    } footer: {
+                        Text(L("alarm.speakNoteIOS"))
+                    }
+                    Section {
+                        Picker(L("alarm.pre"), selection: $item.preNotify) {
+                            ForEach(AlarmItem.preNotifyChoices, id: \.self) { m in
+                                Text(m == 0 ? L("alarm.preOff") : T("alarm.preMin", m)).tag(m)
+                            }
+                        }
+                    } footer: {
+                        Text(L("alarm.preNote"))
+                    }
+                    // Sakin ön alarm (2. analiz #42): kısık yağmur ve çan sesli bildirim
+                    Section {
+                        Picker(L("alarm.preAlarm"), selection: $item.preAlarm) {
+                            ForEach(AlarmItem.preAlarmChoices, id: \.self) { m in
+                                Text(m == 0 ? L("alarm.preOff") : T("alarm.preMin", m)).tag(m)
+                            }
+                        }
+                    } footer: {
+                        Text(L("alarm.preAlarmNote"))
+                    }
+                    // Akıllı alarm (SmartSleep): Uyku ekranındaki oturum açıkken pencerede hafif uyku algılanırsa erken çalar
+                    Section {
+                        Picker(L("alarm.smart"), selection: $item.smart) {
+                            ForEach(AlarmItem.smartChoices, id: \.self) { m in
+                                Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.smartMin", m)).tag(m)
+                            }
+                        }
+                    } footer: {
+                        Text(L("alarm.smart.note"))
+                    }
+                    // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
+                    Section {
+                        Picker(L("alarm.sunrise"), selection: $item.sunrise) {
+                            ForEach(AlarmItem.sunriseChoices, id: \.self) { m in
+                                Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.sunriseMin", m)).tag(m)
+                            }
+                        }
+                    } footer: {
+                        Text(L("alarm.sunriseNote"))
+                    }
+                    // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
+                    Section {
+                        Picker(L("alarm.task"), selection: $item.task) {
+                            ForEach(WakeTask.kinds + ["random"], id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
+                        }
+                        // Görev zinciri (2. analiz #34): asıl görevden sonra en çok iki görev daha
+                        if item.task != "none" {
+                            ForEach(0..<min(2, item.chain.count + 1), id: \.self) { i in
+                                Picker(L("alarm.chain"), selection: Binding(get: { item.chain.indices.contains(i) ? item.chain[i] : "none" }, set: { v in
+                                    var list = item.chain
+                                    if list.indices.contains(i) { list[i] = v } else { list.append(v) }
+                                    item.chain = Array(list.prefix(i + 1).filter { $0 != "none" }) + (v == "none" ? [] : Array(list.dropFirst(i + 1)))
+                                })) {
+                                    ForEach(WakeTask.kinds + ["random"], id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
+                                }
+                            }
+                            // Önizleme (2. analiz #35): alarm çalmadan görevi dene
+                            Button { tried = false; tryTask = true } label: { Label(L("alarm.taskTry"), systemImage: "play.circle") }
+                        }
+                        if item.task == "math" || item.task == "memory" {
+                            Picker(L("alarm.task.level"), selection: $item.taskLevel) {
+                                ForEach(1...3, id: \.self) { n in Text(L("alarm.task.level.\(n)")).tag(n) }
+                            }
+                        }
+                        if item.task == "code" {
+                            if CodeScannerView.available {
+                                Button(L(item.code.isEmpty ? "alarm.code.save" : "alarm.code.change")) { scanning = true }
+                            } else {
+                                Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
+                            }
+                            Text(L(item.code.isEmpty ? "alarm.code.missing" : "alarm.code.saved")).font(.footnote).foregroundStyle(Theme.muted)
+                            Text(L("alarm.code.hint")).font(.footnote).foregroundStyle(Theme.muted)
+                        }
+                        if item.task == "photo" {
+                            if CameraShot.available {
+                                Button(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.change" : "alarm.photo.save")) { shootingRef = true }
+                            } else {
+                                Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
+                            }
+                            Text(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.saved" : "alarm.photo.missing")).font(.footnote).foregroundStyle(Theme.muted)
+                        }
+                        if item.task == "object" {
+                            Picker(L("alarm.task.objectTarget"), selection: Binding(
+                                get: { item.code.hasPrefix(ObjectTarget.prefix) ? String(item.code.dropFirst(ObjectTarget.prefix.count)) : "" },
+                                set: { item.code = $0.isEmpty ? "" : ObjectTarget.prefix + $0 }
+                            )) {
+                                Text(L("alarm.task.object.random")).tag("")
+                                ForEach(WakeTask.objectIds, id: \.self) { id in Text(L("wake.object." + id)).tag(id) }
+                            }
+                        }
+                        Toggle(L("alarm.wakeCheck"), isOn: $item.wakeCheck).tint(Theme.accent)
+                    } header: {
+                        Text(L("alarm.task.heading"))
+                    } footer: {
+                        Text(L(AlarmCenter.hasRealAlarms ? "alarm.task.noteIOS" : "alarm.task.oldIOS") + " " + L("alarm.wakeCheck.note")
+                             + (item.task != "none" ? " " + L("alarm.chainNote") : ""))
                     }
                 }
             }
@@ -618,8 +854,22 @@ private struct AlarmEditor: View {
                 }
                 .ignoresSafeArea()
             }
+            .sheet(isPresented: $tryTask) {
+                NavigationStack {
+                    Group {
+                        if tried {
+                            Text(L("alarm.taskTryDone")).font(.title3).multilineTextAlignment(.center).padding(32)
+                        } else {
+                            WakeTaskView(task: previewTask, preview: true) { tried = true }
+                        }
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) { Button(L(tried ? "common.done" : "alarm.cancel")) { tryTask = false } }
+                    }
+                }
+            }
             .navigationTitle(L("alarm.new"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(L("alarm.cancel")) { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
@@ -630,6 +880,7 @@ private struct AlarmEditor: View {
                         item.enabled = true
                         item.skipUntil = nil
                         if item.days.isEmpty { item.skipHolidays = false }
+                        if item.task == "none" { item.chain = [] }
                         onSave(item)
                         dismiss()
                     }
@@ -680,84 +931,66 @@ struct PomodoroView: View {
     private var phaseSeconds: Double { Double((phase == "work" ? workMin : phase == "short" ? shortMin : longMin) * 60) }
     private var running: Bool { end > 0 }
 
+    /// Araç kalıbı (2. analiz #200): Sayaç / İstatistik, altta tek ana düğme, ikincil işler "…" menüsünde,
+    /// görev ve ses ile süre ayarları alt sayfada
+    @State private var page = 0
+    @State private var sheet: PomoSheet?
+
+    enum PomoSheet: String, Identifiable {
+        case task, settings
+        var id: String { rawValue }
+    }
+
+    private var primaryTitle: String {
+        if running { return L("tools.pomodoro.pause") }
+        return L(left > 0 ? "tools.pomodoro.resume" : "tools.pomodoro.start")
+    }
+
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
             let remaining = running ? max(0, end - context.date.timeIntervalSinceReferenceDate) : (left > 0 ? left : phaseSeconds)
             ScrollView {
                 VStack(spacing: 18) {
-                    Text(L("tools.pomodoro.\(phase)"))
-                        .font(.title3.weight(.semibold))
-                        .foregroundStyle(phase == "work" ? Theme.accent : CalendarData.color("religious"))
-                        .padding(.top, 24)
-                    BigTime(text: clock(Int(remaining.rounded(.up))))
-                    Text(T("tools.pomodoro.round", round, rounds)).foregroundStyle(Theme.muted)
-                    HStack(spacing: 12) {
-                        RoundButton(title: L("tools.pomodoro.skip")) { advance() }
-                        if running {
-                            RoundButton(title: L("tools.pomodoro.pause"), prominent: true) {
-                                left = remaining
-                                end = 0
-                                cancelAlarm()
-                            }
-                        } else {
-                            RoundButton(title: L(left > 0 ? "tools.pomodoro.resume" : "tools.pomodoro.start"), prominent: true) {
-                                start(seconds: left > 0 ? left : phaseSeconds)
-                            }
-                        }
+                    Picker("", selection: $page) {
+                        Text(L("tool.tab.timer")).tag(0)
+                        Text(L("tool.tab.stats")).tag(1)
                     }
-                    Text(T("tools.pomodoro.completed", done)).font(.footnote).foregroundStyle(Theme.muted)
-                    let todayCount = log.filter { $0.d == BadgeStore.day(context.date) }.count
-                    Text(todayCount >= goal ? L("tools.pomodoro.goalDone") + " · " + T("tools.pomodoro.goalProgress", todayCount, goal)
-                         : T("tools.pomodoro.goalProgress", todayCount, goal))
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(todayCount >= goal ? Theme.accent : Theme.muted)
-                    Button(L("tools.pomodoro.reset")) {
-                        cancelAlarm()
-                        end = 0; left = 0; phase = "work"; round = 1; done = 0
+                    .pickerStyle(.segmented)
+                    .padding(.top, 8)
+                    if page == 0 {
+                        timerPage(remaining: remaining, now: context.date)
+                    } else {
+                        statsPage
                     }
-                    .tint(Theme.accent)
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(L("tools.pomodoro.taskLabel")).font(.subheadline).foregroundStyle(Theme.muted)
-                        TextField(L("tools.pomodoro.taskPlaceholder"), text: Binding(get: { task }, set: { task = String($0.prefix(60)) }))
-                            .textFieldStyle(.roundedBorder)
-                            .submitLabel(.done)
-                        Picker(L("tools.pomodoro.tagLabel"), selection: $tag) {
-                            ForEach(PomoLog.tags, id: \.self) { Text(L("tools.pomodoro.tags.\($0)")).tag($0) }
-                        }
-                        .pickerStyle(.segmented)
-                    }
-                    PomoTodoCard(current: $task).id(log.count) // tur bitince sayaçlar yeniden okunur
-                    VStack(alignment: .leading, spacing: 8) {
-                        SectionTitle(text: L("tools.pomodoro.noise"))
-                        NoiseControls(kind: $noise, volume: $volume)
-                        Text(L("pomo.noiseNote")).font(.caption).foregroundStyle(Theme.muted)
-                    }
-                    .card()
-                    FocusBlockCard()
-                    FocusStatsCard(log: log) {
-                        PomoLog.save([])
-                        log = []
-                    }
-                    Form {
-                        Section(L("tools.pomodoro.settings")) {
-                            Stepper("\(L("tools.pomodoro.workMin")): \(workMin)", value: $workMin, in: 5...90, step: 5)
-                            Stepper("\(L("tools.pomodoro.shortMin")): \(shortMin)", value: $shortMin, in: 1...30)
-                            Stepper("\(L("tools.pomodoro.longMin")): \(longMin)", value: $longMin, in: 5...60, step: 5)
-                            Stepper("\(L("tools.pomodoro.roundsLabel")): \(rounds)", value: $rounds, in: 2...8)
-                            Stepper("\(L("tools.pomodoro.goalLabel")): \(goal)", value: $goal, in: 1...24)
-                        }
-                    }
-                    .themedBackground()
-                    .frame(height: 330)
-                    .scrollDisabled(true)
                 }
                 .padding(.horizontal, 20)
+                .padding(.bottom, 12)
+            }
+            .safeAreaInset(edge: .bottom) {
+                ToolPrimaryBar(primary: primaryTitle) { toggle(remaining: remaining) }
             }
             .onChange(of: running && remaining <= 0) { _, finished in
                 if finished { advance(completed: true) }
             }
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                MoreMenu(items: [
+                    MoreItem(title: L("tools.pomodoro.skip"), icon: "forward.end") { advance() },
+                    MoreItem(title: L("tools.pomodoro.reset"), icon: "arrow.counterclockwise", destructive: true) { reset() },
+                    MoreItem(title: L("tools.pomodoro.settings"), icon: "slider.horizontal.3") { sheet = .settings },
+                ])
+            }
+        }
+        .sheet(item: $sheet) { s in
+            NavigationStack {
+                sheetContent(s)
+                    .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { sheet = nil } } }
+            }
+            .presentationDetents([.medium, .large])
+            .tint(Theme.accent)
+        }
         // Kilit ekranı / Dynamic Island: çalışan pomodoro aşaması; arka plan sesi çalışma süresince
         .onChange(of: end) { LiveActivities.sync(); PomoNoise.sync(); FocusBlock.sync() }
         .onChange(of: phase) { PomoNoise.sync(); FocusBlock.sync() }
@@ -765,43 +998,206 @@ struct PomodoroView: View {
         .onChange(of: volume) { if NoisePlayer.shared.source == "pomo" { NoisePlayer.shared.setVolume(volume) } }
         .onAppear { log = PomoLog.load(); PomoNoise.sync() }
         .navigationTitle(L("tools.hub.cards.pomodoro.name"))
+        .navigationBarTitleDisplayMode(.large)
+    }
+
+    private func toggle(remaining: Double) {
+        if running {
+            left = remaining
+            end = 0
+            cancelAlarm()
+        } else {
+            start(seconds: left > 0 ? left : phaseSeconds)
+        }
+    }
+
+    private func reset() {
+        cancelAlarm()
+        end = 0; left = 0; phase = "work"; round = 1; done = 0
+    }
+
+    private var phaseColor: Color { phase == "work" ? Theme.accent : CalendarData.color("religious") }
+
+    @ViewBuilder private func timerPage(remaining: Double, now: Date) -> some View {
+        Text(L("tools.pomodoro.\(phase)"))
+            .font(.title3.weight(.semibold))
+            .foregroundStyle(phaseColor)
+        // Kalan süre halkası ve tur domatesleri (2. analiz #101)
+        ProgressRing(progress: remaining / max(1, phaseSeconds), color: phaseColor) {
+            BigTime(text: clock(Int(remaining.rounded(.up))))
+        }
+        .frame(maxWidth: 320)
+        RoundDots(total: rounds, done: phase == "long" ? rounds : round - 1, current: phase == "work" ? round : 0,
+                  label: T("tools.pomodoro.round", round, rounds))
+        goalLine(now: now)
+        Text(T("tools.pomodoro.completed", done)).font(.footnote).foregroundStyle(Theme.muted)
+        // Görev ve ses tek satır: dokununca alt sayfa
+        Button { sheet = .task } label: {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(L("tool.taskSound")).font(.caption).foregroundStyle(Theme.muted)
+                    Text(taskSummary).foregroundStyle(Theme.text).lineLimit(1)
+                }
+                Spacer()
+                Image(systemName: "chevron.forward").foregroundStyle(Theme.muted)
+            }
+            .card()
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var taskSummary: String {
+        let name = task.isEmpty ? L("tools.pomodoro.noTask") : task
+        let sound = noiseName(noise)
+        let label = tag == "none" ? "" : " · " + L("tools.pomodoro.tags.\(tag)")
+        return name + " · " + sound + label
+    }
+
+    private func goalLine(now: Date) -> some View {
+        let todayCount = log.filter { $0.d == BadgeStore.day(now) }.count
+        let progress = T("tools.pomodoro.goalProgress", todayCount, goal)
+        let reached = todayCount >= goal
+        return Text(reached ? L("tools.pomodoro.goalDone") + " · " + progress : progress)
+            .font(.subheadline.weight(.semibold))
+            .foregroundStyle(reached ? Theme.accent : Theme.muted)
+    }
+
+    @ViewBuilder private var statsPage: some View {
+        FocusStatsCard(log: log) {
+            PomoLog.save([])
+            log = []
+        }
+        FocusForest(log: log)
+    }
+
+    @ViewBuilder private func sheetContent(_ s: PomoSheet) -> some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 14) {
+                switch s {
+                case .task: taskSheet
+                case .settings: settingsSheet
+                }
+            }
+            .padding(16)
+        }
+        .background(AppBackdrop().ignoresSafeArea())
+        .navigationTitle(s == .task ? L("tool.taskSound") : L("tools.pomodoro.settings"))
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private func start(seconds: Double) {
-        let id = UUID()
-        alarmID = id.uuidString
-        end = Date().timeIntervalSinceReferenceDate + seconds
-        left = 0
-        let title = T("tools.pomodoro.phaseDone", L("tools.pomodoro.\(phase)"))
-        let at = Date(timeIntervalSinceReferenceDate: end)
-        Task { await AlarmCenter.schedule(id: id, at: at, title: title) }
+    @ViewBuilder private var taskSheet: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(L("tools.pomodoro.taskLabel")).font(.subheadline).foregroundStyle(Theme.muted)
+            TextField(L("tools.pomodoro.taskPlaceholder"), text: Binding(get: { task }, set: { task = String($0.prefix(60)) }))
+                .textFieldStyle(.roundedBorder)
+                .submitLabel(.done)
+            Picker(L("tools.pomodoro.tagLabel"), selection: $tag) {
+                ForEach(PomoLog.tags, id: \.self) { Text(L("tools.pomodoro.tags.\($0)")).tag($0) }
+            }
+            .pickerStyle(.segmented)
+        }
+        PomoTodoCard(current: $task).id(log.count) // tur bitince sayaçlar yeniden okunur
+        VStack(alignment: .leading, spacing: 8) {
+            SectionTitle(text: L("tools.pomodoro.noise"))
+            NoiseControls(kind: $noise, volume: $volume)
+            Text(L("pomo.noiseNote")).font(.caption).foregroundStyle(Theme.muted)
+        }
+        .card()
     }
 
-    private func cancelAlarm() {
-        if let id = UUID(uuidString: alarmID) { AlarmCenter.cancel(id: id) }
-        alarmID = ""
+    @ViewBuilder private var settingsSheet: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Stepper("\(L("tools.pomodoro.workMin")): \(workMin)", value: $workMin, in: 5...90, step: 5)
+            Stepper("\(L("tools.pomodoro.shortMin")): \(shortMin)", value: $shortMin, in: 1...30)
+            Stepper("\(L("tools.pomodoro.longMin")): \(longMin)", value: $longMin, in: 5...60, step: 5)
+            Stepper("\(L("tools.pomodoro.roundsLabel")): \(rounds)", value: $rounds, in: 2...8)
+            Stepper("\(L("tools.pomodoro.goalLabel")): \(goal)", value: $goal, in: 1...24)
+        }
+        .card()
+        FocusBlockCard()
+        FlipFocusCard()
     }
+
+    private func start(seconds: Double) { PomoEngine.start(seconds: seconds) }
+
+    private func cancelAlarm() { PomoEngine.cancelAlarm() }
 
     /// Sonraki aşamaya geçer (duraklatılmış başlar)
     private func advance(completed: Bool = false) {
+        PomoEngine.advance(completed: completed)
+        if completed { log = PomoLog.load() }
+    }
+}
+
+/// Pomodoro durumunu değiştiren ortak işlemler: araç sayfası ve tam ekrandaki pomodoro sayfası (2. analiz #26)
+/// aynı kayıtları (`pomo.*`) kullanır
+@MainActor
+enum PomoEngine {
+    private static var d: UserDefaults { .standard }
+    private static func int(_ key: String, _ def: Int) -> Int { (d.object(forKey: key) as? Int) ?? def }
+    static var phase: String { d.string(forKey: "pomo.phase") ?? "work" }
+    static var phaseSeconds: Double {
+        let p = phase
+        return Double((p == "work" ? int("pomo.work", 25) : p == "short" ? int("pomo.short", 5) : int("pomo.long", 15)) * 60)
+    }
+
+    static func remaining(at now: Date) -> Double {
+        let end = d.double(forKey: "pomo.end"), left = d.double(forKey: "pomo.left")
+        return end > 0 ? max(0, end - now.timeIntervalSinceReferenceDate) : (left > 0 ? left : phaseSeconds)
+    }
+
+    static func start(seconds: Double) {
+        let id = UUID()
+        d.set(id.uuidString, forKey: "pomo.id")
+        let end = Date().timeIntervalSinceReferenceDate + seconds
+        d.set(end, forKey: "pomo.end")
+        d.set(0.0, forKey: "pomo.left")
+        let title = T("tools.pomodoro.phaseDone", L("tools.pomodoro.\(phase)"))
+        Task { await AlarmCenter.schedule(id: id, at: Date(timeIntervalSinceReferenceDate: end), title: title) }
+        sync()
+    }
+
+    static func pause(at now: Date) {
+        d.set(remaining(at: now), forKey: "pomo.left")
+        d.set(0.0, forKey: "pomo.end")
+        cancelAlarm()
+        sync()
+    }
+
+    static func cancelAlarm() {
+        if let id = UUID(uuidString: d.string(forKey: "pomo.id") ?? "") { AlarmCenter.cancel(id: id) }
+        d.set("", forKey: "pomo.id")
+    }
+
+    /// Sonraki aşamaya geçer (duraklatılmış başlar); tamamlanan çalışma turu geçmişe yazılır (atlanan sayılmaz)
+    static func advance(completed: Bool = false) {
         if !completed { cancelAlarm() }
+        let end = d.double(forKey: "pomo.end")
+        var round = int("pomo.round", 1)
         if phase == "work" {
             if completed {
-                done += 1
+                d.set(d.integer(forKey: "pomo.done") + 1, forKey: "pomo.done")
                 BadgeStore.shared.hit(.pomodoro) // çalışma süresi sonuna kadar tamamlandı
-                // Odak geçmişi: atlanan tur sayılmaz (sitedeki gibi)
-                PomoLog.record(minutes: workMin, task: task, tag: tag, at: end > 0 ? Date(timeIntervalSinceReferenceDate: end) : Date())
+                let task = d.string(forKey: "pomo.task") ?? ""
+                PomoLog.record(minutes: int("pomo.work", 25), task: task, tag: d.string(forKey: "pomo.tag") ?? "none",
+                               at: end > 0 ? Date(timeIntervalSinceReferenceDate: end) : Date())
                 PomoTodo.save(PomoTodo.credit(PomoTodo.load(), task: task))
-                log = PomoLog.load()
             }
-            phase = round >= rounds ? "long" : "short"
+            d.set(round >= int("pomo.rounds", 4) ? "long" : "short", forKey: "pomo.phase")
         } else {
             if phase == "long" { round = 1 } else { round += 1 }
-            phase = "work"
+            d.set(round, forKey: "pomo.round")
+            d.set("work", forKey: "pomo.phase")
         }
-        end = 0
-        left = 0
+        d.set(0.0, forKey: "pomo.end")
+        d.set(0.0, forKey: "pomo.left")
+        sync()
+    }
+
+    private static func sync() {
+        LiveActivities.sync()
+        PomoNoise.sync()
+        FocusBlock.sync()
     }
 }
 
@@ -890,7 +1286,7 @@ struct DateCalcView: View {
         }
         .themedBackground()
         .navigationTitle(L("tools.hub.cards.datecalc.name"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         // Rozet: kullanıcı bir hesap girdisini değiştirince
         .onChange(of: [start, finish, base, birth]) { BadgeStore.shared.hit(.tarihHesap) }
         .onChange(of: amount) { BadgeStore.shared.hit(.tarihHesap) }

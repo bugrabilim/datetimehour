@@ -1,0 +1,34 @@
+Hora e Data reúne o relógio, a data, os horários de oração, o calendário e o clima em um app simples. Sem conta, sem anúncios, sem rastreamento.
+
+RELÓGIO
+• 19 mostradores do nosso site: analógicos, digitais, lado a lado, com calendário e clima
+• Relógio em tela cheia que mantém a tela ligada
+• Escolha o que aparece abaixo do relógio: próxima oração, horários de hoje, próxima data especial, relógios mundiais, clima, nascer do sol
+
+HORÁRIOS DE ORAÇÃO
+• Horários diários e mensais para as 81 províncias da Turquia ou para a sua localização atual
+• Notificações na hora ou com antecedência, com aviso falado
+• Calendário do Ramadã como imagem para compartilhar
+
+CALENDÁRIO
+• Feriados, meios expedientes, datas religiosas e especiais e férias escolares na Turquia
+• As agendas do seu celular (iCloud, Google, Outlook) na mesma tela
+• Adicione e exclua eventos; adicione datas especiais à sua agenda
+
+CLIMA
+• Previsão atual, por hora e de 7 dias do Apple Weather
+
+FERRAMENTAS
+• Alarme (toca até no modo silencioso), temporizador, contagem regressiva até uma data
+• Cronômetro, pomodoro, calculadora de datas (incluindo dias úteis)
+• Relógios mundiais com um globo girando
+• Estações, equinócios e solstícios, fases da Lua
+
+WIDGETS
+• Próxima oração, horários de hoje, relógio analógico e digital, hora e data; também na Tela Bloqueada
+
+Disponível em dezoito idiomas: português, inglês, turco, alemão, azerbaijano, árabe, indonésio, urdu, persa, francês, russo, japonês, coreano, chinês, filipino, tailandês, espanhol e híndi.
+
+Sua localização é usada no celular para calcular os horários de oração; só para o clima uma localização aproximada é enviada ao serviço meteorológico da Apple. Suas agendas só são lidas se você permitir, e só no seu celular.
+
+Hora e Data é um produto Bumba Life. Web: time.bumba.tr

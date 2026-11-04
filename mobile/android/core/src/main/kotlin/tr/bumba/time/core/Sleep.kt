@@ -117,3 +117,69 @@ class SmartWake(
         const val AFTER_MS = 2 * 60_000L
     }
 }
+
+/**
+ * Uyku düzeni (2. analiz #47; uyku takibi olmadan): kalkış anları alarmın kapatıldığı ya da çaldığı andan, yatış anları
+ * uyku sesleri / akıllı alarm oturumu / tam ekran uyku zamanlayıcısının başladığı andan gelir. Kayıt `sleep.log`
+ * ([{d: kalkış günü ISO, w: kalkış dakikası, b: yatış dakikası ya da −1}], en çok 120; iOS'taki SleepStats ile aynı).
+ */
+object SleepStats {
+    data class Entry(val d: String, val w: Int, val b: Int = -1)
+    data class Summary(val weekWake: Int?, val prevWake: Int?, val spread: Int?, val debt: Int?, val nights: Int)
+
+    const val MAX = 120
+
+    /** Günün ilk kalkışı kalır (erteleme sonrası kapatma ya da ikinci alarm aynı günü bozmasın); yatış sonradan eklenebilir */
+    fun record(log: List<Entry>, e: Entry): List<Entry> {
+        val old = log.firstOrNull { it.d == e.d }
+        val merged = if (old == null) e else Entry(e.d, minOf(old.w, e.w), if (old.b >= 0) old.b else e.b)
+        return (log.filter { it.d != e.d } + merged).sortedBy { it.d }.takeLast(MAX)
+    }
+
+    /** Yatıştan kalkışa süre (dakika); yatış yoksa null */
+    fun duration(e: Entry): Int? = if (e.b < 0) null else ((e.w - e.b) % 1440 + 1440) % 1440
+
+    fun summary(log: List<Entry>, today: String, goal: Int): Summary {
+        val t = java.time.LocalDate.parse(today)
+        val w0 = t.minusDays(7).toString()
+        val w1 = t.minusDays(14).toString()
+        val week = log.filter { it.d > w0 && it.d <= today }
+        val prev = log.filter { it.d > w1 && it.d <= w0 }
+        fun avg(l: List<Entry>) = if (l.isEmpty()) null else (l.sumOf { it.w }.toDouble() / l.size).roundToInt()
+        val recent = log.filter { it.d > w1 && it.d <= today }
+        val spread = if (recent.size < 3) null else {
+            val m = recent.sumOf { it.w }.toDouble() / recent.size
+            kotlin.math.sqrt(recent.sumOf { (it.w - m) * (it.w - m) } / recent.size).roundToInt()
+        }
+        val durs = week.mapNotNull { duration(it) }
+        val debt = if (durs.isEmpty()) null else durs.sumOf { max(0, goal - it) }
+        return Summary(avg(week), avg(prev), spread, debt, week.size)
+    }
+}
+
+/**
+ * Kronotip tahmini (2. analiz #48): serbest günlerdeki uyku ortası, hafta içi uyku açığına göre düzeltilir (MCTQ'daki
+ * MSFsc fikri; anketin kendisi kullanılmaz). Dakika, gece yarısına göre −720…720; kategori 0 belirgin sabahçıl …
+ * 4 belirgin akşamcıl. Bilimsel ölçek değil, kısa bir tahmindir.
+ */
+object Chronotype {
+    private fun dur(bed: Int, wake: Int) = ((wake - bed) % 1440 + 1440) % 1440
+
+    fun msfsc(workBed: Int, workWake: Int, freeBed: Int, freeWake: Int, workDays: Int = 5): Int {
+        val sdw = dur(workBed, workWake)
+        val sdf = dur(freeBed, freeWake)
+        val msf = freeBed + sdf / 2.0
+        val week = (sdw * workDays + sdf * (7 - workDays)) / 7.0
+        val m = if (sdf > sdw) msf - (sdf - week) / 2 else msf
+        val r = ((m.roundToInt() % 1440) + 1440) % 1440
+        return if (r >= 720) r - 1440 else r
+    }
+
+    fun category(msfsc: Int): Int = when {
+        msfsc < 150 -> 0
+        msfsc < 210 -> 1
+        msfsc < 270 -> 2
+        msfsc < 330 -> 3
+        else -> 4
+    }
+}

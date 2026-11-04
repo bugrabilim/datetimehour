@@ -4,6 +4,8 @@
 
     <!-- "Konumumu kullan" (yaklaşık konum yeterli; konum telefonda kalır) -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Alarm kapatma görevi "sesli okuma" (2. analiz #37): cihaz içi konuşma tanıma; ses kaydedilmez, yalnız görev sırasında -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- Konuma bağlı hatırlatıcı (#93): bölge izleme kesin ve "her zaman" konum ister; yalnız hatırlatıcı eklenirken istenir -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
@@ -14,6 +16,10 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <!-- Araçlar: alarm, zamanlayıcı ve pomodoro (uygulama kapalıyken de tam zamanında çalar) -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Android 16 canlı güncellemeler: süren sayaç ve sıradaki vakit durum çubuğunda çip (2. analiz #170) -->
+    <uses-permission android:name="android.permission.POST_PROMOTED_NOTIFICATIONS" />
+    <!-- Ekran görüntüsü uyarısı (Android 14+): yalnız alındığını haber verir, görüntü uygulamaya gelmez. -->
+    <uses-permission android:name="android.permission.DETECT_SCREEN_CAPTURE" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -42,6 +48,10 @@
     <uses-feature android:name="android.software.leanback" android:required="false" />
 
     <queries>
+        <!-- Sesli okuma görevi: telefondaki konuşma tanıma hizmeti var mı (Android 11+ paket görünürlüğü) -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
         <package android:name="com.google.android.apps.healthdata" />
         <!-- Odakta engelleme: engellenecek uygulama seçicisi yalnız ana ekranda simgesi olan uygulamaları listeler -->
         <intent>
@@ -67,6 +77,10 @@
         android:localeConfig="@xml/locales_config"
         android:supportsRtl="true"
         android:theme="@style/Theme.SaatTarih">
+        <!-- Nesne bulma görevi (2. analiz #36): ML Kit görüntü etiketleme modeli Play hizmetleriyle kurulumda indirilsin -->
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="ica" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -74,6 +88,20 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- Paylaşılan geri sayım (2. analiz #138): sitedeki geri sayım bağlantısı ve saattarih://countdown -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="saattarih" android:host="countdown" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="time.bumba.tr" android:pathPrefix="/geri-sayim/" />
+                <data android:scheme="https" android:host="time.bumba.tr" android:pathPattern="/.*/countdown/.*" />
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
@@ -191,6 +219,7 @@
             android:exported="false"
             android:label="@string/widget_digital_name">
             <intent-filter>
+                <action android:name="android.app.action.NEXT_ALARM_CLOCK_CHANGED" />
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.intent.action.TIME_SET" />
                 <action android:name="android.intent.action.TIMEZONE_CHANGED" />
@@ -205,6 +234,7 @@
             android:exported="false"
             android:label="@string/widget_clockDate_name">
             <intent-filter>
+                <action android:name="android.app.action.NEXT_ALARM_CLOCK_CHANGED" />
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.intent.action.TIME_SET" />
                 <action android:name="android.intent.action.TIMEZONE_CHANGED" />
@@ -213,6 +243,21 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_clock_date_info" />
+        </receiver>
+        <!-- İki saat (2. analiz #12) -->
+        <receiver
+            android:name=".DualClockWidget"
+            android:exported="false"
+            android:label="@string/widget_dual_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_dual_info" />
         </receiver>
         <!-- Dokunulabilen widget'lar ve Hızlı Ayarlar kutucukları (ToolWidgets.kt) -->
         <receiver
@@ -237,6 +282,96 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_stopwatch_info" />
         </receiver>
+        <receiver
+            android:name=".World8Widget"
+            android:exported="false"
+            android:label="@string/widget_world8_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_world8_info" />
+        </receiver>
+        <receiver
+            android:name=".OverlapWidget"
+            android:exported="false"
+            android:label="@string/widget_overlap_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_overlap_info" />
+        </receiver>
+        <receiver
+            android:name=".SunArcWidget"
+            android:exported="false"
+            android:label="@string/widget_sunArc_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_sunarc_info" />
+        </receiver>
+        <receiver
+            android:name=".WorldMapWidget"
+            android:exported="false"
+            android:label="@string/widget_worldMap_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_worldmap_info" />
+        </receiver>
+        <receiver
+            android:name=".TimersWidget"
+            android:exported="false"
+            android:label="@string/widget_timers_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_timers_info" />
+        </receiver>
+        <receiver
+            android:name=".FocusWidget"
+            android:exported="false"
+            android:label="@string/widget_focus_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_focus_info" />
+        </receiver>
+        <receiver
+            android:name=".TimeWidgetReceiver"
+            android:exported="false" />
+        <receiver
+            android:name=".PrayerSnoozeReceiver"
+            android:exported="false" />
         <receiver
             android:name=".ToolWidgetReceiver"
             android:exported="false" />
@@ -276,6 +411,119 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_moon_info" />
+        </receiver>
+        <receiver
+            android:name=".MoonCalWidget"
+            android:exported="false"
+            android:label="@string/widget_moonCal_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_moon_cal_info" />
+        </receiver>
+        <receiver
+            android:name=".YearWidget"
+            android:exported="false"
+            android:label="@string/widget_year_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_year_info" />
+        </receiver>
+        <receiver
+            android:name=".WordsWidget"
+            android:exported="false"
+            android:label="@string/widget_words_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_words_info" />
+        </receiver>
+        <receiver
+            android:name=".SunWidget"
+            android:exported="false"
+            android:label="@string/widget_sun_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_sun_info" />
+        </receiver>
+        <receiver
+            android:name=".DailyWidget"
+            android:exported="false"
+            android:label="@string/widget_daily_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+                <action android:name="tr.bumba.time.DAILY_NEXT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_daily_info" />
+        </receiver>
+        <receiver
+            android:name=".PhotoWidget"
+            android:exported="false"
+            android:label="@string/widget_photo_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_photo_info" />
+        </receiver>
+        <receiver
+            android:name=".EventsWidget"
+            android:exported="false"
+            android:label="@string/widget_events_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_events_info" />
+        </receiver>
+        <receiver
+            android:name=".WeatherWidget"
+            android:exported="false"
+            android:label="@string/widget_weather_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_weather_info" />
         </receiver>
         <receiver
             android:name=".HijriWidget"
@@ -336,6 +584,16 @@
         <receiver
             android:name=".WidgetRefreshReceiver"
             android:exported="false" />
+        <!-- Saat widget'larının görünüm seçimi (2. analiz #17): eklerken ve "Widget'ı düzenle" ile -->
+        <activity
+            android:name=".WidgetStyleActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".WidgetConfigActivity"
             android:exported="true"
@@ -348,6 +606,15 @@
         <!-- Araçlar: çalan alarm ekranı (kilit ekranının üstünde) ve alarm alıcıları -->
         <activity
             android:name=".AlarmActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:taskAffinity="" />
+        <!-- Uyanma denetimi (2. analiz #45): "Uyanık mısınız?" geri sayım halkası -->
+        <activity
+            android:name=".WakeCheckActivity"
             android:exported="false"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
@@ -425,6 +692,10 @@
         <receiver android:name=".PrayerAlarmReceiver" android:exported="false" />
         <receiver android:name=".GeoAlarmReceiver" android:exported="false" />
         <receiver android:name=".FeatureAlarmReceiver" android:exported="false" />
+        <!-- Zaman çizelgeli odak engeli (2. analiz #27): başlangıç/bitişte engeli yeniden değerlendirir -->
+        <receiver android:name=".FocusScheduleReceiver" android:exported="false" />
+        <!-- Sakin ön alarm (2. analiz #42) -->
+        <receiver android:name=".PreAlarmReceiver" android:exported="false" />
         <receiver android:name=".PrayerRescheduleReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

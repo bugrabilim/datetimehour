@@ -128,7 +128,7 @@ object PrayerNotifier {
             val pi = PendingIntent.getBroadcast(
                 app, i,
                 fireIntent(app).putExtra("prayer", a.prayer.key).putExtra("at", a.prayerAt.toEpochMilli())
-                    .putExtra("lead", settings.leadMinutes),
+                    .putExtra("lead", settings.lead(a.prayer)),
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
             )
             val t = a.fireAt.toEpochMilli()
@@ -136,9 +136,10 @@ object PrayerNotifier {
             else am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, t, pi)
         }
         // Ezan seçiliyken de vakitten önceki bildirimler ve Güneş sesli duyuruyla çalar
-        if (NotifyPrefs.sound == "voice" || NotifyPrefs.sound == "adhan") {
-            val prayers = alerts.map { it.prayer }.toSet()
-            scope.launch { runCatching { NotificationSounds.prepare(app, prayers, settings.leadMinutes) } }
+        // Vakte özel süre ve ses (2. analiz #54): sesler süreye göre gruplanıp hazırlanır
+        val voiced = alerts.map { it.prayer }.toSet().filter { NotifyPrefs.soundFor(it) == "voice" || NotifyPrefs.soundFor(it) == "adhan" }
+        for ((lead, group) in voiced.groupBy { settings.lead(it) }) {
+            scope.launch { runCatching { NotificationSounds.prepare(app, group.toSet(), lead) } }
         }
     }
 
@@ -147,7 +148,7 @@ object PrayerNotifier {
     /** Bildirimi gösterir; ses ayarına göre zil/duyuru çalar (bitince PendingResult kapanır) */
     fun deliver(context: Context, prayer: Prayer, prayerAt: Instant, lead: Int, done: () -> Unit) {
         val place = AppPlace.current()
-        val mode = NotifyPrefs.sound
+        val mode = NotifyPrefs.soundFor(prayer)
         if (notificationsAllowed(context)) {
             val name = prayer.title
             val title = if (lead > 0) T("notify.title.before", name, lead) else T("notify.title.now", name)
@@ -172,6 +173,13 @@ object PrayerNotifier {
                 .setAutoCancel(true)
                 .setContentIntent(open)
                 .setGroup("prayer")
+                // "5 dk sonra hatırlat" (2. analiz #164)
+                .addAction(0, L("notify.snooze"), PendingIntent.getBroadcast(
+                    context, (prayerAt.epochSecond / 60).toInt(),
+                    Intent(context, PrayerSnoozeReceiver::class.java).putExtra("prayer", prayer.key).putExtra("at", prayerAt.toEpochMilli())
+                        .putExtra("lead", lead).putExtra("id", (prayerAt.epochSecond / 60).toInt()),
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+                ))
                 .build()
             runCatching { NotificationManagerCompat.from(context).notify("prayer", (prayerAt.epochSecond / 60).toInt(), n) }
             if (mode != "system" && !adhan && NotificationSounds.canPlayNow(context)) {
@@ -211,5 +219,20 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
 class PrayerRescheduleReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         PrayerNotifier.reschedule(context)
+    }
+}
+
+/** Vakit bildirimindeki "5 dk sonra hatırlat" (2. analiz #164): bildirim kalkar, 5 dakika sonra aynı bildirim gelir */
+class PrayerSnoozeReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        runCatching { NotificationManagerCompat.from(context).cancel("prayer", intent.getIntExtra("id", 0)) }
+        val am = context.getSystemService(android.app.AlarmManager::class.java) ?: return
+        val again = Intent(context, PrayerAlarmReceiver::class.java).putExtra("prayer", intent.getStringExtra("prayer"))
+            .putExtra("at", intent.getLongExtra("at", 0)).putExtra("lead", intent.getIntExtra("lead", 0))
+        val pi = PendingIntent.getBroadcast(context, 9300 + intent.getIntExtra("id", 0) % 1000, again,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        val at = System.currentTimeMillis() + 5 * 60_000L
+        if (android.os.Build.VERSION.SDK_INT < 31 || am.canScheduleExactAlarms()) am.setExactAndAllowWhileIdle(android.app.AlarmManager.RTC_WAKEUP, at, pi)
+        else am.setWindow(android.app.AlarmManager.RTC_WAKEUP, at, 60_000L, pi)
     }
 }

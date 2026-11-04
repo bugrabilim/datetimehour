@@ -91,12 +91,17 @@
       legend.textContent = T.eclMapLunar || "";
     } else {
       var r = solar(e.ut);
+      /* 2°'lik hücreler bir pikseli bir hücre olan küçük tuvale çizilip yumuşatılarak büyütülür: basamaklı kenar kalmaz (2. analiz #159) */
       overlay(c, function (o) {
+        var g = doc.createElement("canvas"); g.width = 180; g.height = 90;
+        var gx = g.getContext("2d");
         r.cells.forEach(function (q) {
           var m = q[3];
-          o.fillStyle = m > 0.75 ? "#c2410c" : m > 0.5 ? "#ea7a24" : m > 0.25 ? "#f4a65a" : "#f9cf9c";
-          o.fillRect(Math.floor(X(q[1] - q[2] / 2)), Math.floor(Y(q[0] + q[2] / 2)), Math.ceil(W * q[2] / 360) + 1, Math.ceil(H * q[2] / 180) + 1);
+          gx.fillStyle = m > 0.75 ? "#c2410c" : m > 0.5 ? "#ea7a24" : m > 0.25 ? "#f4a65a" : "#f9cf9c";
+          gx.fillRect(Math.floor((q[1] + 180) / 2), Math.floor((90 - q[0]) / 2), 1, 1);
         });
+        o.imageSmoothingEnabled = true; o.imageSmoothingQuality = "high";
+        o.drawImage(g, 0, 0, W, H);
       }, 0.6);
       r.path.forEach(function (q) { c.fillStyle = q[3] === "total" ? "#8b0000" : "#6a2a8a"; c.fillRect(X(q[1] - 0.125), Y(q[0] + 0.125), W / 1440 + 1, H / 720 + 1); });
       legend.textContent = T.eclMapSolar || "";
@@ -105,7 +110,7 @@
     cv.hidden = false;
   }
   function init() {
-    var now = S.nowMs(), f = S.fmt("eclmap", "UTC", { day: "numeric", month: "long", year: "numeric" });
+    var now = S.nowMs(), tz = (place && place.tz) || S.localTz(), f = S.fmt("eclmap-" + tz, tz, { day: "numeric", month: "long", year: "numeric" });
     list = (S.cfg.eclipses || []).filter(function (e) { return e.ut > now - 6 * 3600000; });
     sel.textContent = "";
     list.forEach(function (e, i) { var o = doc.createElement("option"); o.value = i; o.textContent = f.format(new Date(e.ut)) + " · " + ((T.eclipseTypes || {})[e.kind + e.type.charAt(0).toUpperCase() + e.type.slice(1)] || e.type); sel.appendChild(o); });

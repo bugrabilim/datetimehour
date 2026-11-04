@@ -24,7 +24,7 @@ ALLFEAT="weather,calendar,world,seasons,prayer,tools"
 shoot() { # dil bölge görünüm dosya [ek uygulama argümanları]
   xcrun simctl ui "$UDID" appearance "$3"
   xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
-  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" \
+  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" -dial.seen "<true/>" \
     -features "${FEAT-$ALLFEAT}" "${@:5}"
   sleep 6
   xcrun simctl io "$UDID" screenshot "$OUT/$4.png"
@@ -36,6 +36,8 @@ shoot ar ar_SA light ar-acik
 # İlk açılış: yalnız Saat (alt bar yok; dişli ve "özellikleri aç" satırı); iki özellik açıkken bar
 FEAT="" shoot tr tr_TR light tr-ilk-acilis
 FEAT="prayer,weather" shoot tr tr_TR light tr-iki-ozellik -startTab 5
+# İlk kurulum sihirbazı (2. analiz #4): yalnız yeni kurulumda açılır, burada açıkça istenir
+FEAT="" shoot tr tr_TR light tr-kurulum -onboard.pending "<true/>"
 # Saat modelleri (sitedeki 20 model; -clockModel kimlik)
 for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal flip; do
   shoot tr tr_TR light "model-$M" -clockModel "$M"
@@ -60,7 +62,7 @@ shoot tr tr_TR light tr-araclar -startTab 6
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -startTab 5 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 # Alt ekranlar (doğrudan açılır)
-for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features qibla; do
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features qibla study wakegame language dials; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
 shoot tr tr_TR dark ekran-about-koyu -openScreen about
@@ -73,11 +75,19 @@ shoot tr tr_TR light ekran-look-renk-akisi -openScreen look -fsBg flow
 shoot en en_US light ekran-world-en -openScreen world
 shoot ar ar_SA dark ekran-qibla-ar -openScreen qibla
 # İbadet: Kur'an (liste, Yâsîn; İngilizce meal açık, Arapça koyu), dualar, zikirmatik, takip, zekât
-for S in sura duas track zakat esma hadith guide leaf method journal planner; do
+for S in sura duas track zakat esma hadith guide leaf method journal planner reldays greet qr; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
+# Sahibin ekran görüntülerinden: atmosfer (renk seçici ve saat ekranı), yazı boyutu %130, ayarlar (destek bölümü)
+shoot tr tr_TR light ekran-atmosfer -openScreen colors -atmo "<string>lavender</string>"
+shoot tr tr_TR dark tr-saat-atmosfer-koyu -startTab 0 -atmo "<string>ocean</string>"
+shoot tr tr_TR light ekran-yazi-boyutu -openScreen settings -fontScale "<integer>130</integer>"
 shoot tr tr_TR light ekran-quran -openScreen quran -quran.bookmark "<string>18:10</string>"
 shoot tr tr_TR light ekran-zikir -openScreen zikir -zikir.tesbihat "<true/>" -zikir.count "<integer>41</integer>" -zikir.total "<integer>1250</integer>"
+# 1. dalga D: tesbih görünümü, Kur'an zemini (sepya) ve hatim, vakitlerde 24 saat kadranı ve sözle kalan süre
+shoot tr tr_TR light ekran-zikir-tesbih -openScreen zikir -zikir.beads "<true/>" -zikir.count "<integer>21</integer>"
+shoot tr tr_TR light ekran-sura-sepya -openScreen sura -quran.theme "<string>sepia</string>" -quran.goal "<integer>20</integer>"
+shoot tr tr_TR light tr-vakitler-kadran -startTab 5 -prayer.visual "<string>dial</string>" -prayer.words "<true/>"
 shoot en en_US light ekran-sura-en -openScreen sura
 shoot ar ar_SA dark ekran-sura-ar -openScreen sura
 shoot en en_US dark ekran-hadith-en -openScreen hadith
@@ -88,6 +98,7 @@ shoot tr tr_TR light ekran-zakat-ornek -openScreen zakat \
 shoot tr tr_TR light ekran-uyku -openScreen sleep -sleep.on "<true/>"
 # Alarm kapatma görevi (matematik)
 shoot tr tr_TR dark ekran-alarm-gorevi -openScreen wake
+shoot tr tr_TR light ekran-alarm-duvar -openScreen wall
 # Gece modu: siyah zemin, kısık kırmızı saat (yıldızlı arka plan seçili olsa da düz siyah)
 shoot tr tr_TR dark ekran-gece-modu -openScreen night -nightMode on -fsBg stars
 # Yatay (yan çevrilmiş): saat sekmesi tam ekran açılır, diğerlerinde alt bar gizli. Sona konur ki sonraki

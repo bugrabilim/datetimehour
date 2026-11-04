@@ -10,9 +10,9 @@
 	<array>
 		<string>tr.bumba.time.refresh</string>
 	</array>
-	<!-- Odakta engelleme (FamilyControls): Apple yetkiyi onaylayınca true (FocusBlock.swift) -->
+	<!-- Odakta engelleme ve alarm sürerken silme engeli (FamilyControls): Apple 4 Kasım 2026'da onayladı (FocusBlock.swift) -->
 	<key>SaatFamilyControls</key>
-	<false/>
+	<true/>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>UIBackgroundModes</key>
@@ -32,6 +32,15 @@
 			</array>
 		</dict>
 	</array>
+	<!-- Açılış ekranı (2. analiz #83): bekletme yok; boş ekran yerine sitedeki zemin rengi (açık/koyu) ve ortada simge
+	     (Assets: LaunchBackground, LaunchIcon). Markayı anlatma yeri ilk açılış sihirbazıdır (#4). -->
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchBackground</string>
+		<key>UIImageName</key>
+		<string>LaunchIcon</string>
+	</dict>
 	<key>NSCalendarsFullAccessUsageDescription</key>
 	<string>Takvimlerinizdeki etkinlikleri uygulamadaki takvimde göstermek ve silmenize izin vermek için. Etkinlikler yalnız telefonda kullanılır.</string>
 </dict>

@@ -15,4 +15,7 @@
     <locale android:name="zh-Hans" />
     <locale android:name="fil" />
     <locale android:name="th" />
+    <locale android:name="es" />
+    <locale android:name="pt" />
+    <locale android:name="hi" />
 </locale-config>

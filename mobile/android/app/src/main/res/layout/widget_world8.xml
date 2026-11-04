@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dünya saatleri, 8 şehir (2. analiz #130): kısa kod, ad, gündüz/gece işareti, TextClock -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="6dp">
+    <LinearLayout
+        android:id="@+id/row1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView android:id="@+id/c1" android:layout_width="44dp" android:layout_height="wrap_content" android:maxLines="1" android:textColor="@color/widget_accent" android:textSize="12sp" android:textStyle="bold" />
+        <TextView android:id="@+id/n1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:ellipsize="end" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="13sp" />
+        <TextView android:id="@+id/m1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:maxLines="1" android:textColor="@color/widget_muted" android:textSize="12sp" />
+        <TextClock android:id="@+id/t1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFeatureSettings="tnum" android:format12Hour="h:mm a" android:format24Hour="HH:mm" android:layoutDirection="ltr" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="14sp" android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/row2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView android:id="@+id/c2" android:layout_width="44dp" android:layout_height="wrap_content" android:maxLines="1" android:textColor="@color/widget_accent" android:textSize="12sp" android:textStyle="bold" />
+        <TextView android:id="@+id/n2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:ellipsize="end" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="13sp" />
+        <TextView android:id="@+id/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:maxLines="1" android:textColor="@color/widget_muted" android:textSize="12sp" />
+        <TextClock android:id="@+id/t2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFeatureSettings="tnum" android:format12Hour="h:mm a" android:format24Hour="HH:mm" android:layoutDirection="ltr" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="14sp" android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/row3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView android:id="@+id/c3" android:layout_width="44dp" android:layout_height="wrap_content" android:maxLines="1" android:textColor="@color/widget_accent" android:textSize="12sp" android:textStyle="bold" />
+        <TextView android:id="@+id/n3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:ellipsize="end" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="13sp" />
+        <TextView android:id="@+id/m3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:maxLines="1" android:textColor="@color/widget_muted" android:textSize="12sp" />
+        <TextClock android:id="@+id/t3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFeatureSettings="tnum" android:format12Hour="h:mm a" android:format24Hour="HH:mm" android:layoutDirection="ltr" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="14sp" android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/row4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView android:id="@+id/c4" android:layout_width="44dp" android:layout_height="wrap_content" android:maxLines="1" android:textColor="@color/widget_accent" android:textSize="12sp" android:textStyle="bold" />
+        <TextView android:id="@+id/n4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:ellipsize="end" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="13sp" />
+        <TextView android:id="@+id/m4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:maxLines="1" android:textColor="@color/widget_muted" android:textSize="12sp" />
+        <TextClock android:id="@+id/t4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFeatureSettings="tnum" android:format12Hour="h:mm a" android:format24Hour="HH:mm" android:layoutDirection="ltr" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="14sp" android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/row5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView android:id="@+id/c5" android:layout_width="44dp" android:layout_height="wrap_content" android:maxLines="1" android:textColor="@color/widget_accent" android:textSize="12sp" android:textStyle="bold" />
+        <TextView android:id="@+id/n5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:ellipsize="end" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="13sp" />
+        <TextView android:id="@+id/m5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:maxLines="1" android:textColor="@color/widget_muted" android:textSize="12sp" />
+        <TextClock android:id="@+id/t5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFeatureSettings="tnum" android:format12Hour="h:mm a" android:format24Hour="HH:mm" android:layoutDirection="ltr" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="14sp" android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/row6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView android:id="@+id/c6" android:layout_width="44dp" android:layout_height="wrap_content" android:maxLines="1" android:textColor="@color/widget_accent" android:textSize="12sp" android:textStyle="bold" />
+        <TextView android:id="@+id/n6" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:ellipsize="end" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="13sp" />
+        <TextView android:id="@+id/m6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:maxLines="1" android:textColor="@color/widget_muted" android:textSize="12sp" />
+        <TextClock android:id="@+id/t6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFeatureSettings="tnum" android:format12Hour="h:mm a" android:format24Hour="HH:mm" android:layoutDirection="ltr" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="14sp" android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/row7"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView android:id="@+id/c7" android:layout_width="44dp" android:layout_height="wrap_content" android:maxLines="1" android:textColor="@color/widget_accent" android:textSize="12sp" android:textStyle="bold" />
+        <TextView android:id="@+id/n7" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:ellipsize="end" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="13sp" />
+        <TextView android:id="@+id/m7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:maxLines="1" android:textColor="@color/widget_muted" android:textSize="12sp" />
+        <TextClock android:id="@+id/t7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFeatureSettings="tnum" android:format12Hour="h:mm a" android:format24Hour="HH:mm" android:layoutDirection="ltr" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="14sp" android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/row8"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView android:id="@+id/c8" android:layout_width="44dp" android:layout_height="wrap_content" android:maxLines="1" android:textColor="@color/widget_accent" android:textSize="12sp" android:textStyle="bold" />
+        <TextView android:id="@+id/n8" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:ellipsize="end" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="13sp" />
+        <TextView android:id="@+id/m8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:maxLines="1" android:textColor="@color/widget_muted" android:textSize="12sp" />
+        <TextClock android:id="@+id/t8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFeatureSettings="tnum" android:format12Hour="h:mm a" android:format24Hour="HH:mm" android:layoutDirection="ltr" android:maxLines="1" android:textColor="@color/widget_text" android:textSize="14sp" android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

@@ -4,6 +4,12 @@
     <uses-feature android:name="android.hardware.type.watch" />
     <!-- "Konumum": en yakın il (konum yalnız saatte hesap için kullanılır) -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Hava komplikasyonu (2. analiz #115): Open-Meteo -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Zaman araçları (2. analiz #137): süre bitince bildirim ve titreşim -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".WearApp"
@@ -28,6 +34,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".WearToolReceiver"
+            android:exported="false" />
 
         <!-- Kutucuk: sıradaki vakit ve bugünün vakitleri -->
         <service
@@ -56,7 +66,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.support.wearable.complications.SUPPORTED_TYPES"
-                android:value="SHORT_TEXT,LONG_TEXT" />
+                android:value="RANGED_VALUE,SHORT_TEXT,LONG_TEXT" />
             <meta-data
                 android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
                 android:value="300" />
@@ -76,6 +86,39 @@
             <meta-data
                 android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
                 android:value="3600" />
+        </service>
+        <service
+            android:name=".MoonComplicationService"
+            android:exported="true"
+            android:icon="@drawable/ic_stat_prayer"
+            android:label="@string/widget_moon_name"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="SHORT_TEXT,LONG_TEXT,RANGED_VALUE" />
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="3600" />
+        </service>
+        <!-- Hava komplikasyonu (2. analiz #115): seçili yerin anlık sıcaklığı ve durumu (Open-Meteo, saatte bir) -->
+        <service
+            android:name=".WeatherComplicationService"
+            android:exported="true"
+            android:icon="@drawable/ic_stat_prayer"
+            android:label="@string/widget_weather_name"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="SHORT_TEXT,LONG_TEXT" />
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="1800" />
         </service>
     </application>
 </manifest>

@@ -38,6 +38,19 @@ class PrayerAlertsTest {
         assertTrue(plan.all { it.prayerAt.epochSecond - it.fireAt.epochSecond == 600L })
     }
 
+    @Test fun perPrayerLeadAndDays() {
+        // Vakte göre ayar (2. analiz #54): öğle 15 dk önce, ikindi yalnız cuma; diğerleri genel (vaktinde, her gün)
+        val settings = PrayerAlerts.Settings(true, setOf(Prayer.DHUHR, Prayer.ASR), 0,
+            perLead = mapOf(Prayer.DHUHR to 15), days = mapOf(Prayer.ASR to setOf(5)))
+        val plan = PrayerAlerts.plan(place, settings, now, limit = 63, days = 14)
+        assertTrue(plan.filter { it.prayer == Prayer.DHUHR }.all { it.prayerAt.epochSecond - it.fireAt.epochSecond == 900L })
+        val asr = plan.filter { it.prayer == Prayer.ASR }
+        assertTrue(asr.isNotEmpty())
+        assertTrue(asr.all { it.prayerAt.atZone(zone).dayOfWeek.value == 5 && it.fireAt == it.prayerAt })
+        assertEquals(15, settings.lead(Prayer.DHUHR))
+        assertEquals(0, settings.lead(Prayer.ASR))
+    }
+
     @Test fun preferencesRoundTrip() {
         val set = setOf(Prayer.ISHA, Prayer.FAJR)
         assertEquals("fajr,isha", NotifyPrefs.encode(set))

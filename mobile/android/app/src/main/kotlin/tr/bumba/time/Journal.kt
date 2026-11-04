@@ -1,5 +1,8 @@
 package tr.bumba.time
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.EditNote
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -47,6 +50,10 @@ data class JournalEntry(val d: String, val m: Int = 0, val s: Int = 0, val i: St
 
 object Journal {
     const val KEY = "journal"
+
+    /** Nottaki etiketler (2. analiz #50): "#kahve", "#spor" (harf ve rakam; küçük harfe çevrilir) */
+    fun tags(note: String): Set<String> =
+        Regex("#([\\p{L}\\p{N}_]{1,30})").findAll(note).map { it.groupValues[1].lowercase(Strings.locale) }.toSet()
     val moods = listOf("😞", "🙁", "😐", "🙂", "😄")
 
     fun load(): List<JournalEntry> = runCatching {
@@ -72,13 +79,13 @@ fun JournalQuick(entry: JournalEntry, showSleep: Boolean = true, onChange: (Jour
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(L("journal.mood"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
         Row(Modifier.fillMaxWidth()) {
-            for (v in 1..5) Text(
-                Journal.moods[v - 1],
+            // Ruh hâli kendi çizgi yüzlerimizle (2. analiz #97)
+            for (v in 1..5) androidx.compose.foundation.layout.Box(
                 Modifier.weight(1f).alpha(if (entry.m == 0 || entry.m == v) 1f else 0.35f)
                     .clickable { onChange(entry.copy(m = if (entry.m == v) 0 else v)) }
                     .semantics { contentDescription = L("journal.level.$v"); selected = entry.m == v },
-                fontSize = 32.sp, textAlign = TextAlign.Center,
-            )
+                contentAlignment = androidx.compose.ui.Alignment.Center,
+            ) { LineIcon(LineIconSets.MOODS[v - 1], 38.dp) }
         }
         if (showSleep) {
             Text(L("journal.sleep"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
@@ -103,6 +110,7 @@ fun JournalQuick(entry: JournalEntry, showSleep: Boolean = true, onChange: (Jour
 
 @Composable
 fun JournalScreen() {
+    ScreenshotWarning()
     var entry by remember { mutableStateOf(Journal.today()) }
     var list by remember { mutableStateOf(Journal.load()) }
     var confirm by remember { mutableStateOf(false) }
@@ -132,10 +140,30 @@ fun JournalScreen() {
                 }
             }
         }
-        SectionTitle(L("journal.history"))
-        val older = list.filter { it.d != Journal.todayKey }
+        // Etiketler (2. analiz #50): son 30 gün sayılır; dokununca o günler süzülür
+        var tagFilter by remember { mutableStateOf<String?>(null) }
+        val since = LocalDate.now().minusDays(30).toString()
+        val tagCounts = list.filter { it.d >= since }.flatMap { Journal.tags(it.n) }.groupingBy { it }.eachCount()
+            .entries.sortedByDescending { it.value }.take(12)
+        SectionTitle(L("journal.tags"))
         AppCard {
-            if (older.isEmpty()) Text(L("journal.empty"), color = Theme.c.muted)
+            if (tagCounts.isNotEmpty()) {
+                Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    val chips = listOf<Pair<String?, String>>(null to L("journal.allTags")) + tagCounts.map { it.key to "#${it.key} (${it.value})" }
+                    for ((tag, text) in chips) {
+                        val sel = tagFilter == tag
+                        Text(text, Modifier.background(if (sel) Theme.c.accent else Theme.c.surface2, androidx.compose.foundation.shape.RoundedCornerShape(50))
+                            .clickable { tagFilter = tag }.padding(horizontal = 12.dp, vertical = 6.dp),
+                            color = if (sel) Theme.c.bg else Theme.c.text, fontSize = 14.sp)
+                    }
+                }
+            }
+            Text(L("journal.tagsNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+        SectionTitle(L("journal.history"))
+        val older = list.filter { it.d != Journal.todayKey && (tagFilter == null || tagFilter in Journal.tags(it.n)) }
+        AppCard {
+            if (older.isEmpty()) EmptyState(Icons.Outlined.EditNote, L("journal.empty").trimEnd('.', '。', '۔'), L("empty.journal.text"))
             older.take(60).forEachIndexed { idx, e ->
                 Row(Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
                     Text(if (e.m > 0) Journal.moods[e.m - 1] else "·", fontSize = 24.sp)
@@ -151,7 +179,7 @@ fun JournalScreen() {
             }
         }
         Text(L("journal.privacyAndroid"), color = Theme.c.muted, fontSize = 13.sp)
-        if (list.isNotEmpty()) TextButton(onClick = { confirm = true }) { Text(L("journal.clear"), color = androidx.compose.ui.graphics.Color(0xFFD32F2F)) }
+        if (list.isNotEmpty()) TextButton(onClick = { confirm = true }) { Text(L("journal.clear"), color = Theme.c.err) }
     }
     if (confirm) AlertDialog(
         onDismissRequest = { confirm = false },
@@ -160,7 +188,7 @@ fun JournalScreen() {
             TextButton(onClick = {
                 Prefs.store.edit().remove(Journal.KEY).apply()
                 list = emptyList(); entry = JournalEntry(Journal.todayKey); confirm = false
-            }) { Text(L("journal.clear"), color = androidx.compose.ui.graphics.Color(0xFFD32F2F)) }
+            }) { Text(L("journal.clear"), color = Theme.c.err) }
         },
         dismissButton = { TextButton(onClick = { confirm = false }) { Text(L("alarm.cancel")) } },
     )

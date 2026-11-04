@@ -6,14 +6,16 @@
    Kullanım: node mobile/shared/gen-strings.mjs          → dosyaları yazar
              node mobile/shared/gen-strings.mjs --check  → güncel değilse hata verir (CI) */
 import fs from "node:fs";
+import { skyEvents } from "../../lib/sky-events.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeYear } from "../../lib/events.mjs";
 import { hijriTable } from "../../lib/hijri.mjs";
+import { otdDay } from "../../lib/otd.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
-const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
 /* iOS String Catalog dil kodları: Çince Basitleştirilmiş Çince (zh-Hans); diğerleri aynı */
 const IOS_CODE = (l) => (l === "zh" ? "zh-Hans" : l);
 const I = Object.fromEntries(LANGS.map((l) => [l, JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"))]));
@@ -55,10 +57,36 @@ const SITE_PATHS = [
   "weather.h1", "weather.now", "weather.feelsLike", "weather.humidity", "weather.wind", "weather.precipitation", "weather.uv",
   "weather.hourlyHeading", "weather.dailyHeading", "weather.loading", "weather.error", "weather.retry", "weather.pressure",
   "weather.codes.*", "weather.attribution", "weather.sunrise", "weather.sunset",
+  // 2. analiz #106, #108, #110 (3 Kasım 2026): ölçüm açıklamaları, günlük özet, yarın uyarısı, yeni ölçümler
+  "weather.wd.*", "weather.uvw.*", "weather.hw.*", "weather.vw.*", "weather.dw.*", "weather.fw.*", "weather.sum.*", "weather.alert.*",
+  "weather.visibility", "weather.dewPoint", "weather.gusts", "weather.details", "weather.compass.*", "weather.windFrom",
+  // 2. analiz #147: Ay uzaklığı, yerberi/yeröte, süper Ay (sitedeki gece gökyüzü metinleri)
+  "sky.moonHeading", "sky.moonNow", "sky.perigee", "sky.apogee", "sky.km", "sky.superMoon",
+  // Gece gökyüzü uygulamada (2. analiz #154–#157, #159; 3 Kasım 2026)
+  "sky.h1", "sky.planets.*", "sky.moon", "sky.sun", "sky.chartHeading", "sky.timeLabel", "sky.now", "sky.tableHeading", "sky.window",
+  "sky.tooClose", "sky.below", "sky.riseSet", "sky.altFmt", "sky.mkm", "sky.note", "sky.eventsHeading", "sky.eventsLead", "sky.showers.*",
+  "sky.evShower", "sky.showerRate", "sky.showerVar", "sky.moonLight", "sky.evOpp", "sky.evElongE", "sky.evElongW", "sky.evConj", "sky.evMoon",
+  "sky.evMore", "sky.eventsNote", "sky.tonightHeading", "sky.darkLabel", "sky.darkNone", "sky.moonUpDark", "sky.moonDownDark", "sky.planetsLabel",
+  "sky.planetsNone", "sky.cloudLabel", "sky.score.*", "sky.tipMoon", "sky.tipDark", "sky.tipCloudy", "sky.tipBest", "sky.graphHeading",
+  "sky.graphCaption", "sky.constellations", "sky.play", "sky.pause", "sky.dateLabel", "sky.red", "sky.conSource",
+  "nature.eclLocal", "nature.eclLocalTotal", "nature.eclLocalAnnular", "nature.eclLocalNone", "nature.eclLocalLow", "nature.eclContacts.*",
+  "nature.eclMag", "nature.eclApprox", "nature.eclMapHeading", "nature.eclMapSolar", "nature.eclMapLunar", "nature.eclMapNote",
   "stage.models.*", "stage.prev", "stage.next", "stage.dots", "list.*",
   // 9. tur (30 Ekim 2026): kerahat, altın/mavi saat, fitre, hicri çevirici, pomodoro etiketleri
   "prayer.kerahatHeading", "prayer.kerahatNames.*", "prayer.kerahatNote",
+  // 2. analiz #56, #59 (3 Kasım 2026): bayram namazı, ek vakitler
+  "prayer.extraHeading", "prayer.extraNames.*", "prayer.extraNote", "prayer.bayram", "prayer.bayramTomorrow", "prayer.bayramNote",
+  // 2. analiz #60: halk takvimi
+  "nature.folkHeading", "nature.folkNote", "nature.folkNow", "nature.folkNames.*",
   "nature.goldenAm", "nature.goldenPm", "nature.blueAm", "nature.bluePm", "nature.lightNote",
+  // 2. analiz #151, #148, #161 (3 Kasım 2026): alacakaranlık, yılın dolunayları ve adları
+  "nature.tw.*", "nature.ym.*", "nature.ym.names.*",
+  // 2. analiz #121, #120: ezani saat, Rumi tarih
+  "prayer.ezani", "prayer.ezaniNote", "hijriConv.rumi", "hijriConv.rumiNote",
+  // 2. analiz #124: takvim yaprağında tarihte bugün
+  "otd.h1", "otd.foundedFmt",
+  // 2. analiz #125: ay adlarının kökeni (takvim yaprağı)
+  "calendar.monthOrigin.heading", "calendar.monthOrigin.source", "calendar.monthOrigin.items.*",
   "zakat.fitreHeading", "zakat.fitreText", "zakat.fitrePeople", "zakat.fitreTotal", "zakat.fitreNote",
   "hijriConv.h1", "hijriConv.toHijri", "hijriConv.toGreg", "hijriConv.gregLabel", "hijriConv.yearLabel", "hijriConv.monthLabel",
   "hijriConv.dayLabel", "hijriConv.dayMax",
@@ -104,7 +132,7 @@ const toIOS = (s, order) => s.replace(/%/g, "%%").replace(/\{([a-z]+)\}/gi, (_, 
 /* Endonezce Android kaynaklarında eski "in" koduyla (values-in) durur; Filipince üç harfli kod BCP 47 biçimiyle (values-b+fil);
    Çince Basitleştirilmiş (values-zh bütün Çince yerel ayarlara uyar, Geleneksel Çincede de Türkçe yerine bu gelir).
    Dil seçimi (locales_config) BCP 47 kodlarıyla: id, fil, zh-Hans. */
-const ANDROID_DIRS = { tr: "values", en: "values-en", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru", ja: "values-ja", ko: "values-ko", zh: "values-zh", fil: "values-b+fil", th: "values-th" };
+const ANDROID_DIRS = { tr: "values", en: "values-en", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru", ja: "values-ja", ko: "values-ko", zh: "values-zh", fil: "values-b+fil", th: "values-th", es: "values-es", pt: "values-pt", hi: "values-hi" };
 const LOCALE_TAG = (l) => (l === "zh" ? "zh-Hans" : l);
 const androidName = (key) => key.replace(/[^A-Za-z0-9_]/g, "_");
 const androidEscape = (s) => s
@@ -112,7 +140,7 @@ const androidEscape = (s) => s
   .replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, "\\n").replace(/^([@?])/, "\\$1");
 const androidRes = Object.fromEntries(LANGS.map((l) => [l, []]));
 /* Wear OS saati: yalnız saat ekranlarının kullandığı metinler (mobile/android/wear) */
-const WEAR_KEYS = /^(prayer\.|hijri\.|wear\.|widget\.(next|hijri)\.|widget\.province\.auto$|live\.(iftar|sahur)$|place\.myLocation$|client\.(hourShort|minuteShort)$)/;
+const WEAR_KEYS = /^(prayer\.|hijri\.|wear\.|watch\.|desk\.(pomoDone|breakDone)$|nature\.phases\.|widget\.(next|hijri|weather|moon)\.|widget\.province\.auto$|live\.(iftar|sahur)$|place\.myLocation$|client\.(hourShort|minuteShort)$|weather\.codes\.|weather\.attribution$)/;
 const wearRes = Object.fromEntries(LANGS.map((l) => [l, []]));
 const androidNames = new Map();
 
@@ -144,6 +172,8 @@ for (const [key, get] of Object.entries(KEYS)) {
   for (const l of LANGS) {
     const v = get(I[l], l);
     if (typeof v !== "string" || !v) throw new Error(`${l}: ${key} metni yok`);
+    // Rakamlar her dilde Latin (CLAUDE.md › Diller); Farsça/Urduca/Arapça rakam yazılmaz
+    if (/[\u0660-\u0669\u06F0-\u06F9]/.test(v)) throw new Error(`${l}: ${key} Latin olmayan rakam içeriyor`);
     if (names(v).sort().join() !== [...order].sort().join()) throw new Error(`${l}: ${key} yer tutucuları Türkçeyle aynı değil`);
     localizations[IOS_CODE(l)] = { stringUnit: { state: "translated", value: toIOS(v, order) } };
   }
@@ -175,7 +205,7 @@ const catalog = (s, source = "tr") => JSON.stringify({ sourceLanguage: source, s
 const xcstrings = catalog(strings);
 
 const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces.json"), "utf8"))
-  .map(({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th }) => ({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th }));
+  .map(({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }) => ({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }));
 const provincesJson = JSON.stringify(provinces) + "\n";
 
 /* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak; sınavlar takvimde yok). */
@@ -215,7 +245,57 @@ const districtsJson = JSON.stringify(JSON.parse(fs.readFileSync(path.join(ROOT, 
 const eclSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/eclipses.json"), "utf8"));
 const eclipsesJson = JSON.stringify(["solar", "lunar"].flatMap((kind) => eclSrc[kind].map((e) => ({ kind, ut: Date.parse(e.td) - 69000, type: e.type, regions: e.regions, path: e.path || [] }))).sort((a, b) => a.ut - b.ut)) + "\n";
 
+/* Tarihte bugün (2. analiz #124; Wikidata CC0, src/data/on-this-day.json; sitedeki seçim kuralı lib/otd.mjs): uygulamada
+   takvim yaprağında gösterilir; boyut için gün başına olay 5, kuruluş 1, doğum 3, ölüm 2; {"AA-GG": [[yıl, tür, ad, açıklama]]} */
+const otdSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/on-this-day.json"), "utf8"));
+const otdJson = (lang) => JSON.stringify(Object.fromEntries(Object.keys(otdSrc.days).sort()
+  .map((md) => [md, otdDay(otdSrc, lang, md, { e: 5, f: 1, b: 3, d: 2 }).map((r) => r.slice(0, 4))]))) + "\n";
+const otdFiles = Object.fromEntries(LANGS.flatMap((l) => {
+  const j = otdJson(l);
+  return [[`mobile/ios/App/Resources/otd-${l}.json`, j], [`mobile/android/app/src/main/assets/otd-${l}.json`, j]];
+}));
+
+/* Dünya resmî tatilleri (2. analiz #122; src/data/world-holidays.json, Nager.Date MIT): takvimde ülke seçimi. Ad tablosu
+   bir kez: "s" [ad], ülke → yıl → [[tarih, İngilizce ad sırası, yerel ad sırası]]; "tx" İngilizce ad sırası → {dil: çeviri}
+   (src/data/holiday-names.json); "native" sitedeki NATIVE_CC (o dilde yerel ad gösterilir) */
+const wholSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/world-holidays.json"), "utf8"));
+const holNamesSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/holiday-names.json"), "utf8")).names;
+const wholJson = (() => {
+  const strs = [], idx = new Map();
+  const id = (t) => { if (!idx.has(t)) { idx.set(t, strs.length); strs.push(t); } return idx.get(t); };
+  const countries = {};
+  for (const [cc, years] of Object.entries(wholSrc.countries)) {
+    countries[cc] = {};
+    for (const [y, v] of Object.entries(years)) countries[cc][y] = v.days.map((h) => [h.d, id(h.n), id(h.l || h.n)]);
+  }
+  const tx = {};
+  for (const [en, tr] of Object.entries(holNamesSrc)) if (idx.has(en)) tx[idx.get(en)] = tr;
+  return JSON.stringify({ s: strs, countries, tx, native: { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"] } }) + "\n";
+})();
+
+/* Gökyüzü (2. analiz #154, #157): olaylar (lib/sky-events.mjs, 2026–2031) ve takımyıldızlar (d3-celestial, BSD-3) */
+const skyEventsJson = JSON.stringify(skyEvents(ROOT, 2026, 2031)) + "\n";
+const conSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/constellations.json"), "utf8"));
+const constellationsJson = JSON.stringify(conSrc.con) + "\n";
+// Çizgi simge takımı (2. analiz #97)
+const iconsSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "mobile/shared/icons/icons.json"), "utf8"));
+delete iconsSrc._note;
+const iconsJson = JSON.stringify(iconsSrc) + "\n";
+/* NASA SVS CGI Moon Kit dokusu (kamu malı; 2. analiz #103): ikili dosya, uygulamalara kopyalanır */
+const moonJpg = fs.readFileSync(path.join(ROOT, "src/assets/moon.jpg"));
+
 const files = {
+  ...otdFiles,
+  "mobile/ios/App/Resources/sky-events.json": skyEventsJson,
+  "mobile/android/app/src/main/assets/sky-events.json": skyEventsJson,
+  "mobile/ios/App/Resources/constellations.json": constellationsJson,
+  "mobile/android/app/src/main/assets/constellations.json": constellationsJson,
+  "mobile/ios/App/Resources/icons.json": iconsJson,
+  "mobile/android/app/src/main/assets/icons.json": iconsJson,
+  "mobile/ios/App/Resources/moon.jpg": moonJpg,
+  "mobile/android/app/src/main/assets/moon.jpg": moonJpg,
+  "mobile/ios/App/Resources/world-holidays.json": wholJson,
+  "mobile/android/app/src/main/assets/world-holidays.json": wholJson,
   "mobile/ios/App/Resources/Localizable.xcstrings": xcstrings,
   "mobile/ios/App/Resources/InfoPlist.xcstrings": catalog(plistStrings),
   "mobile/ios/App/Resources/AppShortcuts.xcstrings": catalog(shortcutStrings, "en"),
@@ -248,7 +328,7 @@ const stale = [];
 for (const [rel, body] of Object.entries(files)) {
   const file = path.join(ROOT, rel);
   if (check) {
-    if (!fs.existsSync(file) || fs.readFileSync(file, "utf8") !== body) stale.push(rel);
+    if (!fs.existsSync(file) || (Buffer.isBuffer(body) ? !fs.readFileSync(file).equals(body) : fs.readFileSync(file, "utf8") !== body)) stale.push(rel);
   } else {
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, body);

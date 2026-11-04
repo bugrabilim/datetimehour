@@ -30,7 +30,7 @@ object Prefs {
         val fresh = info == null || info.firstInstallTime == info.lastUpdateTime
         if (fresh && sp.all.isNotEmpty()) {
             val e = sp.edit().remove("notify.asked")
-            sp.all.keys.filter { it.startsWith("widget.place.") || it.startsWith("alarm.snoozed.") }.forEach { e.remove(it) }
+            sp.all.keys.filter { it.startsWith("widget.") || it.startsWith("alarm.snoozed.") }.forEach { e.remove(it) }
             e.apply()
         }
         runCatching { marker.createNewFile() }
@@ -60,6 +60,7 @@ object Prefs {
         fsBg = sp.getString(FullscreenBackground.KEY, null)
         nightMode = sp.getString(NightMode.KEY, "off")!!
         FsLook.load()
+        ClockLook.load()
         world = sp.getString("world", City.DEFAULT_KEYS)!!
         units = sp.getString("units", null) ?: Units.systemDefault
         BadgeStore.load()

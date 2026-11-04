@@ -148,17 +148,100 @@ struct AppearanceView: View {
     @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
     @AppStorage(FullscreenBackground.key) private var bgRaw = ""
     @AppStorage(NightMode.key) private var nightRaw = "off"
+    @AppStorage(ClockDigits.colorKey) private var digitColor = "theme"
+    @AppStorage(ClockDigits.outlineKey) private var digitOutline = false
+    @AppStorage(FlipLook.pairKey) private var flipPair = false
+    @AppStorage(FlipLook.smallSecKey) private var flipSmallSec = false
+    @AppStorage(FlipLook.hingeKey) private var flipHinge = true
+    @AppStorage(FlipLook.cardKey) private var flipCard = "theme"
+
+    private func digitSwatch(_ id: String) -> some View {
+        let color: Color = ClockDigits.color(id)
+        return swatch(color, L("color." + id), digitColor == id) { digitColor = id }
+    }
+
+    private func cardSwatch(_ id: String) -> some View {
+        let color: Color = FlipLook.colors(id).bg
+        let label: String = id == "theme" ? L("wall.none") : L("color." + id)
+        return swatch(color, label, flipCard == id) { flipCard = id }
+    }
+
+    /// Gece yazı rengi: siyah zemin üstünde kısık renk
+    private func nightSwatch(_ id: String) -> some View {
+        let selected: Bool = id == nightColor
+        return Button { nightColor = id } label: {
+            ZStack {
+                Circle().fill(Color.black)
+                Circle().fill(NightMode.color(id)).padding(6)
+                Circle().stroke(Theme.text, lineWidth: selected ? 3 : 0)
+            }
+            .frame(width: 30, height: 30)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(L("color." + id))
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
+
+    /// Renk seçimi dairesi (seçiliyse kalın kenar)
+    private func swatch(_ color: Color, _ label: String, _ selected: Bool, _ action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Circle().fill(color).frame(width: 28, height: 28)
+                .overlay(Circle().stroke(selected ? Theme.text : Theme.border, lineWidth: selected ? 3 : 1).padding(-4))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(label)
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
+    @AppStorage(NightMode.colorKey) private var nightColor = "red"
+    @AppStorage(NightMode.fromKey) private var nightFrom = 22 * 60
+    @AppStorage(NightMode.toKey) private var nightTo = 7 * 60
+
+    /// Gece yarısından dakika → "22:00" (telefonun 12/24 ayarıyla)
+    static func hm(_ m: Int) -> String {
+        Fmt.time(Calendar.current.date(bySettingHour: m / 60, minute: m % 60, second: 0, of: Date()) ?? Date())
+    }
     @AppStorage("fs.text") private var personalText = ""
     @AppStorage("fs.scale") private var scale = 1.0
     @AppStorage(FullscreenPhoto.slidesKey) private var slideCount = 0
     @AppStorage(FullscreenPhoto.slideEveryKey) private var slideEvery = 30
     @State private var item: PhotosPickerItem?
     @State private var slideItems: [PhotosPickerItem] = []
+    // Saniye hareketi, küçük saniye, tık sesi, tabela, ikinci saat dilimi (2. analiz #10, #21, #22, #12)
+    @AppStorage(SecondsMotion.key) private var motionRaw = SecondsMotion.tick.rawValue
+    @AppStorage("secSmall") private var secSmall = false
+    @AppStorage(TickSound.key) private var tickSound = false
+    @AppStorage("fs.banner") private var banner = false
+    @AppStorage(DualZone.key) private var dualCity = ""
+    @AppStorage(WeatherScene.clockKey) private var weatherClock = false
+    @AppStorage(WeatherScene.tabKey) private var weatherTab = true
+    @AppStorage(LiveActivities.clockKey) private var liveClock = false
 
     private var background: FullscreenBackground { FullscreenBackground(rawValue: bgRaw) ?? (photoVersion > 0 ? .photo : .plain) }
 
     var body: some View {
         Form {
+            // Kadran koleksiyonu (2. analiz #1)
+            Section {
+                NavigationLink { DialGalleryView() } label: {
+                    LabeledContent {
+                        Text(DialFace.current.title)
+                    } label: {
+                        Label(L("dial.title"), systemImage: "clock")
+                    }
+                }
+                // Widget galerisi (2. analiz #166)
+                NavigationLink { WidgetGalleryView() } label: {
+                    Label(L("widgets.gallery"), systemImage: "square.grid.2x2")
+                }
+            }
+            // Dynamic Island'da canlı saat (2. analiz #19)
+            Section {
+                Toggle(L("live.clock"), isOn: $liveClock)
+                    .tint(Theme.accent)
+                    .onChange(of: liveClock) { _, _ in LiveActivities.sync() }
+            } footer: {
+                Text(L("live.clockNote"))
+            }
             Section(L("look.font")) {
                 TimelineView(.periodic(from: .now, by: 1)) { context in
                     Text(Fmt.time(context.date, seconds: true))
@@ -175,7 +258,66 @@ struct AppearanceView: View {
                 }
                 .pickerStyle(.inline)
                 .labelsHidden()
+                // Rakam rengi ve dış hatlı rakamlar (2. analiz #24): dijital saatlerde
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(L("look.digitColor")).font(.subheadline).foregroundStyle(Theme.muted)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            swatch(Theme.ink, L("wall.none"), digitColor == "theme") { digitColor = "theme" }
+                            ForEach(ClockDigits.colors.map(\.id), id: \.self) { id in digitSwatch(id) }
+                        }
+                        .padding(4)
+                    }
+                }
+                Toggle(L("look.outline"), isOn: $digitOutline)
             }
+            // Yatayda saatin yanında (2. analiz #169)
+            Section {
+                FsDuoPicker()
+            }
+            // Dijital rakam görünümü (2. analiz #9)
+            Section(L("digital.style")) {
+                DigitalStylePicker()
+            }
+            // Çevirmeli saat (2. analiz #20): iki rakam tek kart, köşede küçük saniye, kart çizgisi, kart rengi
+            Section(L("stage.models.flip")) {
+                Toggle(L("flip.pair"), isOn: $flipPair)
+                Toggle(L("flip.smallSec"), isOn: $flipSmallSec)
+                Toggle(L("flip.hinge"), isOn: $flipHinge)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(L("flip.card")).font(.subheadline).foregroundStyle(Theme.muted)
+                    HStack(spacing: 10) {
+                        ForEach(FlipLook.cards.map(\.id), id: \.self) { id in cardSwatch(id) }
+                    }
+                    .padding(4)
+                }
+            }
+            Section {
+                TimelineView(.animation(minimumInterval: (SecondsMotion(rawValue: motionRaw) ?? .tick).interval)) { context in
+                    AnalogClock(date: context.date, showSeconds: true, motion: SecondsMotion(rawValue: motionRaw) ?? .tick)
+                        .frame(height: 120)
+                        .frame(maxWidth: .infinity)
+                }
+                Picker(L("look.motion"), selection: $motionRaw) {
+                    ForEach(SecondsMotion.allCases) { m in Text(L("look.motion.\(m.rawValue)")).tag(m.rawValue) }
+                }
+                Toggle(L("look.secSmall"), isOn: $secSmall)
+                Toggle(L("look.tickSound"), isOn: $tickSound)
+            } header: {
+                Text(L("look.seconds"))
+            } footer: {
+                Text(L("look.secondsNote"))
+            }
+            Section {
+                Picker(L("dual.city"), selection: Binding(get: { DualZone.city(dualCity)?.key ?? "" }, set: { dualCity = $0 })) {
+                    ForEach(City.all) { c in Text(c.displayName).tag(c.key) }
+                }
+            } header: {
+                Text(L("dual.model"))
+            } footer: {
+                Text(L("dual.note"))
+            }
+            AppIconSection()
             Section {
                 // Canlı örnek: seçili arka plan ve saat
                 preview
@@ -228,18 +370,28 @@ struct AppearanceView: View {
             // Saatin altındaki kişisel metin ve tam ekranda saat boyutu (rakip analizi #25, #22)
             Section {
                 TextField(L("look.textPlaceholder"), text: Binding(get: { personalText }, set: { personalText = String($0.prefix(60)) }))
+                Toggle(L("look.banner"), isOn: $banner)
             } header: {
                 Text(L("look.text"))
             } footer: {
-                Text(L("look.textNote"))
+                Text(L("look.textNote") + " " + L("look.bannerNote"))
             }
             Section {
-                Slider(value: $scale, in: 0.5...1.0, step: 0.05) { Text(L("look.size")) }
-                Text("\(Int((scale * 100).rounded()))%").monospacedDigit().foregroundStyle(Theme.muted)
+                Slider(value: $scale, in: 0.5...1.3, step: 0.05) { Text(L("look.size")) }
+                Text(Fmt.percent(Int((scale * 100).rounded()))).monospacedDigit().foregroundStyle(Theme.muted)
             } header: {
                 Text(L("look.size"))
             } footer: {
-                Text(L("look.fsNote"))
+                Text(L("look.fsNote") + " " + L("fs.toolsNote"))
+            }
+            // Hava neyse ekran öyle (2. analiz #193): saat ekranının zemini ve hava sekmesinin üst kartı
+            Section {
+                Toggle(L("look.weatherClock"), isOn: $weatherClock)
+                Toggle(L("look.weatherTab"), isOn: $weatherTab)
+            } header: {
+                Text(L("look.weatherAnim"))
+            } footer: {
+                Text(L("look.weatherAnimNote"))
             }
             // Gece / yatak başı modu (tam ekran saat)
             Section {
@@ -248,6 +400,22 @@ struct AppearanceView: View {
                 }
                 .pickerStyle(.inline)
                 .labelsHidden()
+                // Belirli saatler (2. analiz #11): başlangıç ve bitiş, yarım saatlik adımlarla
+                if nightRaw == "schedule" {
+                    Picker(L("night.from"), selection: $nightFrom) {
+                        ForEach(0..<48, id: \.self) { i in Text(Self.hm(i * 30)).tag(i * 30) }
+                    }
+                    Picker(L("night.to"), selection: $nightTo) {
+                        ForEach(0..<48, id: \.self) { i in Text(Self.hm(i * 30)).tag(i * 30) }
+                    }
+                }
+                // Gece yazı rengi (2. analiz #189): 7 renk, siyah zemin üstünde kısık
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(L("night.color")).font(.subheadline).foregroundStyle(Theme.muted)
+                    HStack(spacing: 10) {
+                        ForEach(NightMode.colors.map(\.id), id: \.self) { id in nightSwatch(id) }
+                    }
+                }
             } header: {
                 Text(L("night.title"))
             } footer: {
@@ -257,7 +425,7 @@ struct AppearanceView: View {
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("look.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onChange(of: slideItems) { _, new in
             guard !new.isEmpty else { return }
             Task {
@@ -305,5 +473,50 @@ struct AppearanceView: View {
         .frame(maxWidth: .infinity)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .environment(\.colorScheme, bg == .plain || (bg == .photo && photoVersion == 0) ? colorScheme : .dark)
+    }
+}
+
+/// Alternatif uygulama simgeleri (2. analiz #13): ana ekrandaki simge seçilir (iOS onay mesajı gösterir).
+/// Simgeler `Assets.xcassets/AppIcon-<ad>` (üretici `mobile/ios/scripts/gen-alt-icons.py`).
+struct AppIconSection: View {
+    static let names = ["night", "paper", "flip", "mint"]
+    @State private var current = UIApplication.shared.alternateIconName
+
+    var body: some View {
+        if UIApplication.shared.supportsAlternateIcons {
+            Section {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 14) {
+                        option(nil, title: L("icon.default"), preview: "AppIconPreview")
+                        ForEach(Self.names, id: \.self) { n in
+                            option("AppIcon-\(n)", title: L("icon.\(n)"), preview: "AppIconPreview-\(n)")
+                        }
+                    }
+                    .padding(.vertical, 6)
+                }
+            } header: {
+                Text(L("icon.title"))
+            } footer: {
+                Text(L("icon.note"))
+            }
+        }
+    }
+
+    private func option(_ name: String?, title: String, preview: String) -> some View {
+        Button {
+            UIApplication.shared.setAlternateIconName(name) { error in
+                if error == nil { current = name }
+            }
+        } label: {
+            VStack(spacing: 6) {
+                Image(preview).resizable().frame(width: 60, height: 60)
+                    .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+                    .overlay(RoundedRectangle(cornerRadius: 13, style: .continuous)
+                        .stroke(current == name ? Theme.accent : Theme.border, lineWidth: current == name ? 3 : 1))
+                Text(title).font(.caption).foregroundStyle(current == name ? Theme.accent : Theme.text)
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(current == name ? .isSelected : [])
     }
 }

@@ -6,9 +6,9 @@
 import fs from "node:fs";
 
 const UA = "SaatTarih/1.0 (https://time.bumba.tr)";
-const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
 /* Wikidata'daki etiket dilleri: Filipincede Tagalog etiketi (tl) de; Çincede Basitleştirilmiş önce (zh-hans, zh-cn), yoksa zh */
-const WD_LANGS = { fil: ["fil", "tl"], zh: ["zh-hans", "zh-cn", "zh-sg", "zh"] };
+const WD_LANGS = { fil: ["fil", "tl"], zh: ["zh-hans", "zh-cn", "zh-sg", "zh"], pt: ["pt-br", "pt"] };
 const wdFor = (l) => WD_LANGS[l] || [l];
 /* Wikidata dil kodu → sitenin dili ve önceliği (küçük olan kazanır) */
 const WD_MAP = Object.fromEntries(LANGS.flatMap((l) => wdFor(l).map((w, i) => [w, [l, i]])));

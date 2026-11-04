@@ -18,7 +18,10 @@
     "ko": "우두(세정)",
     "zh": "小净",
     "fil": "Wudu (paghuhugas bago magdasal)",
-    "th": "วุฎูอ์ (การอาบน้ำละหมาด)"
+    "th": "วุฎูอ์ (การอาบน้ำละหมาด)",
+    "es": "Ablución (wudu)",
+    "pt": "Ablução (wudu)",
+    "hi": "वुज़ू"
    },
    "intro": {
     "tr": "Namazdan önce abdest alınır. Farzları: yüzü yıkamak, kolları dirseklerle birlikte yıkamak, başın dörtte birini mesh etmek, ayakları topuklarla birlikte yıkamak.",
@@ -35,7 +38,10 @@
     "ko": "예배 전에 우두를 합니다. 의무 사항: 얼굴 씻기, 팔꿈치까지 팔 씻기, 머리의 4분의 1 쓰다듬기, 복사뼈까지 발 씻기.",
     "zh": "礼拜前要做小净。主命部分：洗脸，连肘洗两臂，抹头的四分之一，连踝洗两脚。",
     "fil": "Ginagawa ang wudu bago magdasal. Mga obligadong bahagi: paghuhugas ng mukha, paghuhugas ng mga braso kasama ang siko, pagpahid sa ikaapat na bahagi ng ulo, paghuhugas ng mga paa kasama ang bukung-bukong.",
-    "th": "ก่อนละหมาดต้องอาบน้ำละหมาด ส่วนที่เป็นฟัรฎู: ล้างหน้า ล้างแขนรวมถึงข้อศอก เช็ดศีรษะหนึ่งในสี่ ล้างเท้ารวมถึงตาตุ่ม"
+    "th": "ก่อนละหมาดต้องอาบน้ำละหมาด ส่วนที่เป็นฟัรฎู: ล้างหน้า ล้างแขนรวมถึงข้อศอก เช็ดศีรษะหนึ่งในสี่ ล้างเท้ารวมถึงตาตุ่ม",
+    "es": "La ablución se realiza antes de la oración. Sus partes obligatorias: lavar la cara, lavar los brazos incluidos los codos, pasar las manos mojadas por una cuarta parte de la cabeza y lavar los pies incluidos los tobillos.",
+    "pt": "A ablução é feita antes da oração. Suas partes obrigatórias: lavar o rosto, lavar os braços incluindo os cotovelos, passar as mãos molhadas em um quarto da cabeça e lavar os pés incluindo os tornozelos.",
+    "hi": "नमाज़ से पहले वुज़ू किया जाता है। इसके फ़र्ज़: चेहरा धोना, कोहनियों समेत हाथ धोना, सिर के चौथाई हिस्से का मसह करना और टख़नों समेत पैर धोना।"
    },
    "steps": [
     {
@@ -53,7 +59,10 @@
      "ko": "의도를 정하고 \"비스밀라히 라흐마니 라힘\"이라고 말합니다.",
      "zh": "举意，并念“比斯米拉希·拉赫曼尼·拉希姆”。",
      "fil": "Gawin ang intensiyon at sabihin ang \"Bismillahir-rahmanir-rahim\".",
-     "th": "ตั้งเจตนาและกล่าว \"บิสมิลลาฮิรเราะห์มานิรเราะฮีม\""
+     "th": "ตั้งเจตนาและกล่าว \"บิสมิลลาฮิรเราะห์มานิรเราะฮีม\"",
+     "es": "Haga la intención y diga \"Bismillahir-rahmanir-rahim\".",
+     "pt": "Faça a intenção e diga \"Bismillahir-rahmanir-rahim\".",
+     "hi": "नीयत करें और \"बिस्मिल्लाहिर्रहमानिर्रहीम\" कहें।"
     },
     {
      "tr": "Eller bileklerle birlikte üç kez yıkanır.",
@@ -70,7 +79,10 @@
      "ko": "손목까지 두 손을 세 번 씻습니다.",
      "zh": "把双手洗到手腕，洗三次。",
      "fil": "Hugasan ang mga kamay hanggang pulso nang tatlong beses.",
-     "th": "ล้างมือถึงข้อมือสามครั้ง"
+     "th": "ล้างมือถึงข้อมือสามครั้ง",
+     "es": "Lávese las manos hasta las muñecas tres veces.",
+     "pt": "Lave as mãos até os pulsos três vezes.",
+     "hi": "हाथों को कलाइयों तक तीन बार धोएँ।"
     },
     {
      "tr": "Sağ elle ağza üç kez su alınıp çalkalanır.",
@@ -87,7 +99,10 @@
      "ko": "오른손으로 입을 세 번 헹굽니다.",
      "zh": "用右手漱口三次。",
      "fil": "Magmumog nang tatlong beses gamit ang kanang kamay.",
-     "th": "บ้วนปากสามครั้งด้วยมือขวา"
+     "th": "บ้วนปากสามครั้งด้วยมือขวา",
+     "es": "Enjuáguese la boca tres veces con la mano derecha.",
+     "pt": "Enxágue a boca três vezes com a mão direita.",
+     "hi": "दाएँ हाथ से तीन बार कुल्ली करें।"
     },
     {
      "tr": "Sağ elle burna üç kez su çekilir, sol elle temizlenir.",
@@ -104,7 +119,10 @@
      "ko": "오른손으로 코에 물을 세 번 들이마시고 왼손으로 깨끗이 합니다.",
      "zh": "用右手呛鼻三次，用左手擤净。",
      "fil": "Sumipsip ng tubig sa ilong nang tatlong beses gamit ang kanang kamay at linisin gamit ang kaliwa.",
-     "th": "สูดน้ำเข้าจมูกสามครั้งด้วยมือขวาและสั่งออกด้วยมือซ้าย"
+     "th": "สูดน้ำเข้าจมูกสามครั้งด้วยมือขวาและสั่งออกด้วยมือซ้าย",
+     "es": "Aspire agua por la nariz tres veces con la mano derecha y límpiela con la izquierda.",
+     "pt": "Aspire água pelo nariz três vezes com a mão direita e limpe-o com a esquerda.",
+     "hi": "दाएँ हाथ से तीन बार नाक में पानी डालें और बाएँ हाथ से साफ़ करें।"
     },
     {
      "tr": "Yüz, alından çene altına, bir kulaktan öbürüne kadar üç kez yıkanır.",
@@ -121,7 +139,10 @@
      "ko": "이마부터 턱 아래까지, 귀에서 귀까지 얼굴을 세 번 씻습니다.",
      "zh": "从前额到下巴下、从一耳到另一耳洗脸三次。",
      "fil": "Hugasan ang mukha nang tatlong beses, mula noo hanggang ilalim ng baba at mula tainga hanggang tainga.",
-     "th": "ล้างหน้าสามครั้ง ตั้งแต่หน้าผากถึงใต้คางและจากหูถึงหู"
+     "th": "ล้างหน้าสามครั้ง ตั้งแต่หน้าผากถึงใต้คางและจากหูถึงหู",
+     "es": "Lávese la cara tres veces, desde la frente hasta debajo de la barbilla y de oreja a oreja.",
+     "pt": "Lave o rosto três vezes, da testa até abaixo do queixo e de orelha a orelha.",
+     "hi": "चेहरा तीन बार धोएँ, माथे से ठुड्डी के नीचे तक और एक कान से दूसरे कान तक।"
     },
     {
      "tr": "Önce sağ, sonra sol kol dirseklerle birlikte üç kez yıkanır.",
@@ -138,7 +159,10 @@
      "ko": "오른팔, 다음에 왼팔을 팔꿈치까지 세 번 씻습니다.",
      "zh": "先右臂后左臂，连肘洗三次。",
      "fil": "Hugasan ang kanang braso, saka ang kaliwa, kasama ang siko, nang tatlong beses.",
-     "th": "ล้างแขนขวาแล้วแขนซ้าย รวมถึงข้อศอก สามครั้ง"
+     "th": "ล้างแขนขวาแล้วแขนซ้าย รวมถึงข้อศอก สามครั้ง",
+     "es": "Lávese el brazo derecho y luego el izquierdo, incluidos los codos, tres veces.",
+     "pt": "Lave o braço direito e depois o esquerdo, incluindo os cotovelos, três vezes.",
+     "hi": "पहले दायाँ, फिर बायाँ हाथ कोहनियों समेत तीन बार धोएँ।"
     },
     {
      "tr": "Islak elle başın en az dörtte biri mesh edilir.",
@@ -155,7 +179,10 @@
      "ko": "젖은 손으로 머리의 적어도 4분의 1을 쓰다듬습니다.",
      "zh": "用湿手至少抹头的四分之一。",
      "fil": "Ipahid ang basang kamay sa hindi bababa sa ikaapat na bahagi ng ulo.",
-     "th": "ใช้มือเปียกเช็ดศีรษะอย่างน้อยหนึ่งในสี่"
+     "th": "ใช้มือเปียกเช็ดศีรษะอย่างน้อยหนึ่งในสี่",
+     "es": "Pase las manos mojadas por al menos una cuarta parte de la cabeza.",
+     "pt": "Passe as mãos molhadas em pelo menos um quarto da cabeça.",
+     "hi": "गीले हाथों से कम से कम सिर के चौथाई हिस्से का मसह करें।"
     },
     {
      "tr": "Kulaklar ve boyun ıslak parmaklarla mesh edilir.",
@@ -172,7 +199,10 @@
      "ko": "젖은 손가락으로 귀와 목덜미를 쓰다듬습니다.",
      "zh": "用湿手指抹耳朵和后颈。",
      "fil": "Ipahid ang basang daliri sa mga tainga at sa batok.",
-     "th": "ใช้นิ้วเปียกเช็ดหูและต้นคอ"
+     "th": "ใช้นิ้วเปียกเช็ดหูและต้นคอ",
+     "es": "Pase los dedos mojados por las orejas y la nuca.",
+     "pt": "Passe os dedos molhados nas orelhas e na nuca.",
+     "hi": "गीली उँगलियों से कानों और गर्दन के पिछले हिस्से का मसह करें।"
     },
     {
      "tr": "Önce sağ, sonra sol ayak topuklarla birlikte, parmak araları da yıkanarak üç kez yıkanır.",
@@ -189,7 +219,10 @@
      "ko": "오른발, 다음에 왼발을 복사뼈와 발가락 사이까지 세 번 씻습니다.",
      "zh": "先右脚后左脚，连踝和脚趾缝洗三次。",
      "fil": "Hugasan ang kanang paa, saka ang kaliwa, kasama ang bukung-bukong at ang pagitan ng mga daliri, nang tatlong beses.",
-     "th": "ล้างเท้าขวาแล้วเท้าซ้าย รวมถึงตาตุ่มและซอกนิ้วเท้า สามครั้ง"
+     "th": "ล้างเท้าขวาแล้วเท้าซ้าย รวมถึงตาตุ่มและซอกนิ้วเท้า สามครั้ง",
+     "es": "Lávese el pie derecho y luego el izquierdo, incluidos los tobillos y entre los dedos, tres veces.",
+     "pt": "Lave o pé direito e depois o esquerdo, incluindo os tornozelos e entre os dedos, três vezes.",
+     "hi": "पहले दायाँ, फिर बायाँ पैर टख़नों समेत और उँगलियों के बीच तक तीन बार धोएँ।"
     }
    ]
   },
@@ -210,7 +243,10 @@
     "ko": "예배의 의무 사항",
     "zh": "礼拜的主命",
     "fil": "Mga obligadong bahagi ng dasal",
-    "th": "ฟัรฎูของการละหมาด"
+    "th": "ฟัรฎูของการละหมาด",
+    "es": "Partes obligatorias de la oración",
+    "pt": "Partes obrigatórias da oração",
+    "hi": "नमाज़ के फ़र्ज़"
    },
    "intro": {
     "tr": "Namazın dışındaki farzlar (şartlar): hadesten taharet (abdest ya da gusül), necasetten taharet (beden, giysi ve yerin temizliği), setr-i avret (örtünme), istikbâl-i kıble (kıbleye dönmek), vakit ve niyet. İçindeki farzlar (rükünler): iftitah tekbiri, kıyam (ayakta durmak), kıraat (Kur'an okumak), rükû, secde ve ka'de-i ahîre (son oturuş).",
@@ -227,7 +263,10 @@
     "ko": "예배 밖의 조건: 정결(우두 또는 구슬), 몸·옷·장소의 청결, 몸을 바르게 가리기, 키블라를 향하기, 예배 시간, 의도. 예배 안의 기둥: 시작 타크비르, 서기, 꾸란 낭송, 루쿠(허리 굽히기), 사즈다(엎드리기), 마지막 앉음.",
     "zh": "拜外条件：洁净（小净或大净），身体、衣服和场所洁净，适当遮盖身体，面向天房方向（基卜拉），礼拜时间，举意。拜内要素：入拜大赞、站立、诵读古兰经、鞠躬、叩头和最后的跪坐。",
     "fil": "Mga kondisyon sa labas ng dasal: kalinisang ritwal (wudu o ghusl), kalinisan ng katawan, damit at lugar, wastong pagtatakip sa katawan, pagharap sa qibla, ang oras ng dasal at ang intensiyon. Mga haligi sa loob ng dasal: ang pambungad na takbir, pagtayo, pagbigkas ng Quran, pagyuko (ruku), pagpapatirapa (sajda) at ang huling pag-upo.",
-    "th": "เงื่อนไขภายนอกละหมาด: ความสะอาดตามศาสนบัญญัติ (วุฎูอ์หรือฆุสล์) ความสะอาดของร่างกาย เสื้อผ้าและสถานที่ การปกปิดร่างกายอย่างเหมาะสม การหันไปทางกิบลัต เวลาละหมาด และการตั้งเจตนา หลักภายในละหมาด: ตักบีรเริ่มต้น การยืน การอ่านอัลกุรอาน การรุกูอ์ การสุญูด และการนั่งครั้งสุดท้าย"
+    "th": "เงื่อนไขภายนอกละหมาด: ความสะอาดตามศาสนบัญญัติ (วุฎูอ์หรือฆุสล์) ความสะอาดของร่างกาย เสื้อผ้าและสถานที่ การปกปิดร่างกายอย่างเหมาะสม การหันไปทางกิบลัต เวลาละหมาด และการตั้งเจตนา หลักภายในละหมาด: ตักบีรเริ่มต้น การยืน การอ่านอัลกุรอาน การรุกูอ์ การสุญูด และการนั่งครั้งสุดท้าย",
+    "es": "Condiciones fuera de la oración: pureza ritual (wudu o gusl), limpieza del cuerpo, la ropa y el lugar, cubrir el cuerpo debidamente, orientarse hacia la alquibla, la hora de la oración y la intención. Pilares dentro de la oración: el takbir de apertura, estar de pie, la recitación del Corán, la inclinación (ruku), la postración (sujud) y la última posición sentada.",
+    "pt": "Condições fora da oração: pureza ritual (wudu ou ghusl), limpeza do corpo, da roupa e do lugar, cobrir o corpo adequadamente, voltar-se para a qibla, o horário da oração e a intenção. Pilares dentro da oração: o takbir de abertura, ficar de pé, a recitação do Alcorão, a inclinação (ruku), a prostração (sajda) e a última posição sentada.",
+    "hi": "नमाज़ से बाहर की शर्तें: पाकी (वुज़ू या ग़ुस्ल), बदन, कपड़े और जगह का पाक होना, सतर ढकना, क़िबले की ओर मुँह करना, नमाज़ का वक़्त और नीयत। नमाज़ के अंदर के अरकान: तकबीर-ए-तहरीमा, क़ियाम (खड़ा होना), क़िरात (क़ुरआन पढ़ना), रुकू, सजदा और क़ादा-ए-आख़िरा (आख़िरी बैठक)।"
    },
    "steps": []
   },
@@ -248,7 +287,10 @@
     "ko": "각 예배의 라카트 수",
     "zh": "各番礼拜的拜数",
     "fil": "Mga yunit (rak'ah) ng bawat dasal",
-    "th": "จำนวนร็อกอะฮ์ของแต่ละเวลา"
+    "th": "จำนวนร็อกอะฮ์ของแต่ละเวลา",
+    "es": "Unidades (rakat) de cada oración",
+    "pt": "Unidades (rakat) de cada oração",
+    "hi": "हर नमाज़ की रकअतें"
    },
    "intro": {
     "tr": "Sünnet ve farzlar sırasıyla; Hanefî mezhebine göre.",
@@ -265,7 +307,10 @@
     "ko": "하나피 학파에 따른 순나와 의무(파르드) 라카트를 순서대로 보여 줍니다.",
     "zh": "按哈乃斐学派依次列出圣行拜和主命拜。",
     "fil": "Mga yunit na sunnah at obligado (fard) ayon sa pagkakasunod, ayon sa paaralang Hanafi.",
-    "th": "ร็อกอะฮ์ซุนนะฮ์และฟัรฎูตามลำดับ ตามมัซฮับฮะนะฟี"
+    "th": "ร็อกอะฮ์ซุนนะฮ์และฟัรฎูตามลำดับ ตามมัซฮับฮะนะฟี",
+    "es": "Unidades sunna y obligatorias (fard) en orden, según la escuela hanafí.",
+    "pt": "Unidades sunna e obrigatórias (fard) em ordem, segundo a escola hanafita.",
+    "hi": "हनफ़ी मसलक के अनुसार क्रम से सुन्नत और फ़र्ज़ रकअतें।"
    },
    "rows": [
     [
@@ -285,7 +330,10 @@
       "ko": "순나 2, 파르드 2",
       "zh": "圣行2拜，主命2拜",
       "fil": "2 sunnah, 2 fard",
-      "th": "ซุนนะฮ์ 2 ฟัรฎู 2"
+      "th": "ซุนนะฮ์ 2 ฟัรฎู 2",
+      "es": "2 sunna, 2 fard",
+      "pt": "2 sunna, 2 fard",
+      "hi": "2 सुन्नत, 2 फ़र्ज़"
      }
     ],
     [
@@ -305,7 +353,10 @@
       "ko": "순나 4, 파르드 4, 순나 2",
       "zh": "圣行4拜，主命4拜，圣行2拜",
       "fil": "4 sunnah, 4 fard, 2 sunnah",
-      "th": "ซุนนะฮ์ 4 ฟัรฎู 4 ซุนนะฮ์ 2"
+      "th": "ซุนนะฮ์ 4 ฟัรฎู 4 ซุนนะฮ์ 2",
+      "es": "4 sunna, 4 fard, 2 sunna",
+      "pt": "4 sunna, 4 fard, 2 sunna",
+      "hi": "4 सुन्नत, 4 फ़र्ज़, 2 सुन्नत"
      }
     ],
     [
@@ -325,7 +376,10 @@
       "ko": "순나 4, 파르드 4",
       "zh": "圣行4拜，主命4拜",
       "fil": "4 sunnah, 4 fard",
-      "th": "ซุนนะฮ์ 4 ฟัรฎู 4"
+      "th": "ซุนนะฮ์ 4 ฟัรฎู 4",
+      "es": "4 sunna, 4 fard",
+      "pt": "4 sunna, 4 fard",
+      "hi": "4 सुन्नत, 4 फ़र्ज़"
      }
     ],
     [
@@ -345,7 +399,10 @@
       "ko": "파르드 3, 순나 2",
       "zh": "主命3拜，圣行2拜",
       "fil": "3 fard, 2 sunnah",
-      "th": "ฟัรฎู 3 ซุนนะฮ์ 2"
+      "th": "ฟัรฎู 3 ซุนนะฮ์ 2",
+      "es": "3 fard, 2 sunna",
+      "pt": "3 fard, 2 sunna",
+      "hi": "3 फ़र्ज़, 2 सुन्नत"
      }
     ],
     [
@@ -365,7 +422,10 @@
       "ko": "순나 4, 파르드 4, 순나 2, 위트르 3(와집)",
       "zh": "圣行4拜，主命4拜，圣行2拜，威特尔3拜（瓦直布）",
       "fil": "4 sunnah, 4 fard, 2 sunnah, 3 witr (wajib)",
-      "th": "ซุนนะฮ์ 4 ฟัรฎู 4 ซุนนะฮ์ 2 วิติร 3 (วาญิบ)"
+      "th": "ซุนนะฮ์ 4 ฟัรฎู 4 ซุนนะฮ์ 2 วิติร 3 (วาญิบ)",
+      "es": "4 sunna, 4 fard, 2 sunna, 3 witr (wayib)",
+      "pt": "4 sunna, 4 fard, 2 sunna, 3 witr (wajib)",
+      "hi": "4 सुन्नत, 4 फ़र्ज़, 2 सुन्नत, 3 वित्र (वाजिब)"
      }
     ]
    ]
@@ -387,7 +447,10 @@
     "ko": "두 라카트 예배 드리는 법",
     "zh": "两拜礼拜的做法",
     "fil": "Paano magdasal ng dalawang yunit",
-    "th": "วิธีละหมาดสองร็อกอะฮ์"
+    "th": "วิธีละหมาดสองร็อกอะฮ์",
+    "es": "Cómo hacer una oración de dos unidades",
+    "pt": "Como fazer uma oração de duas unidades",
+    "hi": "दो रकअत नमाज़ कैसे पढ़ें"
    },
    "intro": {
     "tr": "Örnek olarak sabah namazının farzı. Okunan duaların metni ve okunuşu Dualar bölümündedir.",
@@ -404,7 +467,10 @@
     "ko": "예: 파즈르의 의무 예배. 기도문은 기도문 항목에 있습니다.",
     "zh": "例：晨礼的主命拜。祈祷词原文见“祈祷词”一节。",
     "fil": "Halimbawa: ang obligadong dasal sa madaling-araw. Nasa seksiyong Mga panalangin ang teksto ng mga panalangin.",
-    "th": "ตัวอย่าง: ละหมาดฟัรฎูซุบฮิ ตัวบทของดุอาอ์อยู่ในหมวดดุอาอ์"
+    "th": "ตัวอย่าง: ละหมาดฟัรฎูซุบฮิ ตัวบทของดุอาอ์อยู่ในหมวดดุอาอ์",
+    "es": "Ejemplo: la oración obligatoria del alba. Los textos de las súplicas están en la sección Súplicas.",
+    "pt": "Exemplo: a oração obrigatória da alvorada. Os textos das súplicas estão na seção Súplicas.",
+    "hi": "उदाहरण: फ़ज्र की फ़र्ज़ नमाज़। दुआओं के शब्द दुआएँ हिस्से में हैं।"
    },
    "steps": [
     {
@@ -422,7 +488,10 @@
      "ko": "키블라를 향하고 예배의 의도를 정합니다.",
      "zh": "面向天房方向（基卜拉），举意礼拜。",
      "fil": "Humarap sa qibla at gawin ang intensiyon para sa dasal.",
-     "th": "หันไปทางกิบลัตและตั้งเจตนาละหมาด"
+     "th": "หันไปทางกิบลัตและตั้งเจตนาละหมาด",
+     "es": "Oriéntese hacia la alquibla y haga la intención de la oración.",
+     "pt": "Volte-se para a qibla e faça a intenção da oração.",
+     "hi": "क़िबले की ओर मुँह करें और नमाज़ की नीयत करें।"
     },
     {
      "tr": "Eller kaldırılarak \"Allâhu ekber\" denir (iftitah tekbiri); eller bağlanır.",
@@ -439,7 +508,10 @@
      "ko": "두 손을 들고 \"알라후 아크바르\"(시작 타크비르)라고 말한 뒤 손을 모읍니다.",
      "zh": "抬起双手念“安拉乎艾克拜尔”（入拜大赞），然后抱手。",
      "fil": "Itaas ang mga kamay at sabihin ang \"Allahu akbar\" (pambungad na takbir), saka ipatong ang mga kamay.",
-     "th": "ยกมือขึ้นและกล่าว \"อัลลอฮุอักบัร\" (ตักบีรเริ่มต้น) แล้ววางมือขวาทับมือซ้าย"
+     "th": "ยกมือขึ้นและกล่าว \"อัลลอฮุอักบัร\" (ตักบีรเริ่มต้น) แล้ววางมือขวาทับมือซ้าย",
+     "es": "Levante las manos y diga \"Allahu akbar\" (takbir de apertura); después cruce las manos.",
+     "pt": "Levante as mãos e diga \"Allahu akbar\" (takbir de abertura); depois cruze as mãos.",
+     "hi": "हाथ उठाकर \"अल्लाहु अकबर\" (तकबीर-ए-तहरीमा) कहें, फिर हाथ बाँध लें।"
     },
     {
      "tr": "Ayakta Sübhâneke, Eûzü ve Besmele okunur; sonra Fâtiha ve bir sure ya da en az üç kısa ayet okunur.",
@@ -456,7 +528,10 @@
      "ko": "선 채로 수브하나카, 타아우즈, 바스말라를 외운 뒤 파티하와 수라 하나 또는 짧은 구절을 적어도 세 개 낭송합니다.",
      "zh": "站立时念赞主词、求护词和太斯米；然后念开端章和一章或至少三节短经文。",
      "fil": "Nakatayo, bigkasin ang Subhanaka, ang ta'awwudh at ang basmala; pagkatapos ang al-Fatiha at isang surah o hindi bababa sa tatlong maiikling talata.",
-     "th": "ขณะยืน อ่านซุบฮานะกะ อะอูซุ และบัสมะละฮ์ แล้วอ่านอัลฟาติฮะฮ์และซูเราะฮ์หนึ่งหรืออย่างน้อยสามอายะฮ์สั้น"
+     "th": "ขณะยืน อ่านซุบฮานะกะ อะอูซุ และบัสมะละฮ์ แล้วอ่านอัลฟาติฮะฮ์และซูเราะฮ์หนึ่งหรืออย่างน้อยสามอายะฮ์สั้น",
+     "es": "De pie, recite Subhanaka, el taawwudh y la basmala; luego al-Fatiha y una sura o al menos tres aleyas cortas.",
+     "pt": "De pé, recite Subhanaka, o taawwudh e a basmala; depois al-Fatiha e uma surata ou pelo menos três versículos curtos.",
+     "hi": "खड़े होकर सना (सुब्हानका), तअव्वुज़ और बिस्मिल्लाह पढ़ें; फिर सूरह फ़ातिहा और कोई सूरह या कम से कम तीन छोटी आयतें।"
     },
     {
      "tr": "\"Allâhu ekber\" diyerek rükûya varılır, üç kez \"Sübhâne rabbiye'l-azîm\" denir.",
@@ -473,7 +548,10 @@
      "ko": "\"알라후 아크바르\"라고 말하고 루쿠하며 \"수브하나 랍비얄 아짐\"을 세 번 말합니다.",
      "zh": "念“安拉乎艾克拜尔”鞠躬，念“苏布哈奈·兰比耶勒·阿齐姆”三次。",
      "fil": "Sabihin ang \"Allahu akbar\" at yumuko; sabihin ang \"Subhana rabbiyal-azim\" nang tatlong beses.",
-     "th": "กล่าว \"อัลลอฮุอักบัร\" แล้วรุกูอ์ กล่าว \"ซุบฮานะ ร็อบบิยัลอะซีม\" สามครั้ง"
+     "th": "กล่าว \"อัลลอฮุอักบัร\" แล้วรุกูอ์ กล่าว \"ซุบฮานะ ร็อบบิยัลอะซีม\" สามครั้ง",
+     "es": "Diga \"Allahu akbar\" e inclínese; diga \"Subhana rabbiyal-azim\" tres veces.",
+     "pt": "Diga \"Allahu akbar\" e incline-se; diga \"Subhana rabbiyal-azim\" três vezes.",
+     "hi": "\"अल्लाहु अकबर\" कहकर रुकू में जाएँ; तीन बार \"सुब्हाना रब्बियल अज़ीम\" कहें।"
     },
     {
      "tr": "\"Semiallâhu limen hamideh\" diyerek doğrulunur, \"Rabbenâ leke'l-hamd\" denir.",
@@ -490,7 +568,10 @@
      "ko": "\"사미알라후 리만 하미다\"라고 말하며 일어나 \"랍바나 라칼 함드\"라고 말합니다.",
      "zh": "念着“萨米阿拉乎·利曼·哈米德”起身，然后念“热般纳·莱克勒·哈姆德”。",
      "fil": "Tumayo habang sinasabi ang \"Sami'allahu liman hamidah\", saka sabihin ang \"Rabbana lakal-hamd\".",
-     "th": "ลุกขึ้นพร้อมกล่าว \"สะมิอัลลอฮุ ลิมัน ฮะมิดะฮ์\" แล้วกล่าว \"ร็อบบะนา ละกัลฮัมด์\""
+     "th": "ลุกขึ้นพร้อมกล่าว \"สะมิอัลลอฮุ ลิมัน ฮะมิดะฮ์\" แล้วกล่าว \"ร็อบบะนา ละกัลฮัมด์\"",
+     "es": "Incorpórese diciendo \"Sami'allahu liman hamidah\" y luego diga \"Rabbana lakal-hamd\".",
+     "pt": "Levante-se dizendo \"Sami'allahu liman hamidah\" e depois diga \"Rabbana lakal-hamd\".",
+     "hi": "\"समिअल्लाहु लिमन हमिदह\" कहते हुए उठें, फिर \"रब्बना लकल हम्द\" कहें।"
     },
     {
      "tr": "\"Allâhu ekber\" diyerek secdeye varılır, üç kez \"Sübhâne rabbiye'l-a'lâ\" denir; tekbirle oturulur, sonra tekbirle ikinci secdeye varılır ve yine üç kez \"Sübhâne rabbiye'l-a'lâ\" denir.",
@@ -507,7 +588,10 @@
      "ko": "\"알라후 아크바르\"라고 말하고 사즈다하며 \"수브하나 랍비얄 아을라\"를 세 번 말합니다. \"알라후 아크바르\"라고 말하며 일어나 앉은 뒤, 다시 타크비르와 함께 두 번째 사즈다를 하고 \"수브하나 랍비얄 아을라\"를 세 번 말합니다.",
      "zh": "念“安拉乎艾克拜尔”叩头，念“苏布哈奈·兰比耶勒·艾阿拉”三次；念大赞坐起，然后念大赞第二次叩头，再念“苏布哈奈·兰比耶勒·艾阿拉”三次。",
      "fil": "Sabihin ang \"Allahu akbar\" at magpatirapa; sabihin ang \"Subhana rabbiyal-a'la\" nang tatlong beses; umupo habang sinasabi ang \"Allahu akbar\", saka magpatirapa sa ikalawang pagkakataon nang may takbir at muling sabihin ang \"Subhana rabbiyal-a'la\" nang tatlong beses.",
-     "th": "กล่าว \"อัลลอฮุอักบัร\" แล้วสุญูด กล่าว \"ซุบฮานะ ร็อบบิยัลอะอ์ลา\" สามครั้ง ลุกขึ้นนั่งพร้อมกล่าว \"อัลลอฮุอักบัร\" แล้วกล่าวตักบีรและสุญูดครั้งที่สอง และกล่าว \"ซุบฮานะ ร็อบบิยัลอะอ์ลา\" อีกสามครั้ง"
+     "th": "กล่าว \"อัลลอฮุอักบัร\" แล้วสุญูด กล่าว \"ซุบฮานะ ร็อบบิยัลอะอ์ลา\" สามครั้ง ลุกขึ้นนั่งพร้อมกล่าว \"อัลลอฮุอักบัร\" แล้วกล่าวตักบีรและสุญูดครั้งที่สอง และกล่าว \"ซุบฮานะ ร็อบบิยัลอะอ์ลา\" อีกสามครั้ง",
+     "es": "Diga \"Allahu akbar\" y prostérnese; diga \"Subhana rabbiyal-a'la\" tres veces; siéntese diciendo \"Allahu akbar\" y luego prostérnese una segunda vez con takbir y diga de nuevo \"Subhana rabbiyal-a'la\" tres veces.",
+     "pt": "Diga \"Allahu akbar\" e prostre-se; diga \"Subhana rabbiyal-a'la\" três vezes; sente-se dizendo \"Allahu akbar\" e depois prostre-se uma segunda vez com takbir e diga de novo \"Subhana rabbiyal-a'la\" três vezes.",
+     "hi": "\"अल्लाहु अकबर\" कहकर सजदे में जाएँ; तीन बार \"सुब्हाना रब्बियल आला\" कहें; \"अल्लाहु अकबर\" कहते हुए बैठें, फिर तकबीर के साथ दूसरा सजदा करें और फिर तीन बार \"सुब्हाना रब्बियल आला\" कहें।"
     },
     {
      "tr": "İkinci rekâta kalkılır; Besmele, Fâtiha ve bir sure okunur; rükû ve iki secde aynı şekilde yapılır.",
@@ -524,7 +608,10 @@
      "ko": "둘째 라카트를 위해 일어나 바스말라, 파티하와 한 장을 낭송하고 같은 방식으로 루쿠와 두 번의 사즈다를 합니다.",
      "zh": "站起来做第二拜；念太斯米、开端章和一章；同样鞠躬和两次叩头。",
      "fil": "Tumayo para sa ikalawang yunit; bigkasin ang basmala, al-Fatiha at isang surah; yumuko at magpatirapa nang dalawang beses sa parehong paraan.",
-     "th": "ลุกขึ้นสำหรับร็อกอะฮ์ที่สอง อ่านบัสมะละฮ์ อัลฟาติฮะฮ์และซูเราะฮ์หนึ่ง รุกูอ์และสุญูดสองครั้งแบบเดียวกัน"
+     "th": "ลุกขึ้นสำหรับร็อกอะฮ์ที่สอง อ่านบัสมะละฮ์ อัลฟาติฮะฮ์และซูเราะฮ์หนึ่ง รุกูอ์และสุญูดสองครั้งแบบเดียวกัน",
+     "es": "Póngase de pie para la segunda unidad; recite la basmala, al-Fatiha y una sura; inclínese y prostérnese dos veces de la misma manera.",
+     "pt": "Fique de pé para a segunda unidade; recite a basmala, al-Fatiha e uma surata; incline-se e prostre-se duas vezes da mesma forma.",
+     "hi": "दूसरी रकअत के लिए खड़े हों; बिस्मिल्लाह, सूरह फ़ातिहा और कोई सूरह पढ़ें; इसी तरह रुकू और दो सजदे करें।"
     },
     {
      "tr": "Oturulur; Ettehiyyâtü, Allâhümme salli, Allâhümme bârik ve Rabbenâ duaları okunur.",
@@ -541,7 +628,10 @@
      "ko": "앉아서 타히야트, 살라와트(알라훔마 살리와 바리크), 랍바나 기도를 외웁니다.",
      "zh": "跪坐念作证词、赞圣词（安拉昏麦·沙里和巴里克）和热般纳祈祷词。",
      "fil": "Umupo at bigkasin ang at-Tahiyyat, ang salawat (Allahumma salli at barik) at ang mga panalanging Rabbana.",
-     "th": "นั่งและอ่านอัตตะฮียาต เศาะละวาต (อัลลอฮุมมะ ศ็อลลิ และบาริก) และดุอาอ์ร็อบบะนา"
+     "th": "นั่งและอ่านอัตตะฮียาต เศาะละวาต (อัลลอฮุมมะ ศ็อลลิ และบาริก) และดุอาอ์ร็อบบะนา",
+     "es": "Siéntese y recite At-Tahiyyat, las salawat (Allahumma salli y barik) y las súplicas Rabbana.",
+     "pt": "Sente-se e recite At-Tahiyyat, as salawat (Allahumma salli e barik) e as súplicas Rabbana.",
+     "hi": "बैठकर अत्तहिय्यात, दुरूद (अल्लाहुम्मा सल्लि और बारिक) और रब्बना की दुआएँ पढ़ें।"
     },
     {
      "tr": "Önce sağa, sonra sola \"Esselâmü aleyküm ve rahmetullâh\" diyerek selam verilir.",
@@ -558,7 +648,10 @@
      "ko": "\"앗살라무 알라이쿰 와 라흐마툴라\"라고 말하며 고개를 오른쪽, 다음에 왼쪽으로 돌립니다.",
      "zh": "念着“安赛俩目阿来以库目·沃拉哈麦屯拉”，先向右、再向左转头。",
      "fil": "Ibaling ang ulo sa kanan, saka sa kaliwa, habang sinasabi ang \"As-salamu alaykum wa rahmatullah\".",
-     "th": "หันศีรษะไปทางขวาแล้วทางซ้าย พร้อมกล่าว \"อัสสะลามุอะลัยกุม วะเราะห์มะตุลลอฮ์\""
+     "th": "หันศีรษะไปทางขวาแล้วทางซ้าย พร้อมกล่าว \"อัสสะลามุอะลัยกุม วะเราะห์มะตุลลอฮ์\"",
+     "es": "Gire la cabeza a la derecha y luego a la izquierda diciendo \"As-salamu alaykum wa rahmatullah\".",
+     "pt": "Vire a cabeça para a direita e depois para a esquerda dizendo \"As-salamu alaykum wa rahmatullah\".",
+     "hi": "\"अस्सलामु अलैकुम व रहमतुल्लाह\" कहते हुए पहले दाईं, फिर बाईं ओर सलाम फेरें।"
     }
    ],
    "duas": [
@@ -585,6 +678,9 @@
   "ko": "이 안내는 튀르키예 디야넷이 따르는 하나피 학파에 따른 짧은 요약입니다. 세부 사항은 학파마다 다릅니다. 더 알고 싶으면 자격 있는 학자나 지역 모스크에 문의하세요.",
   "zh": "本指南是依据土耳其迪亚内特所遵循的哈乃斐学派所作的简要总结。各学派的细节有所不同；如需了解更多，请咨询合格的学者或当地清真寺。",
   "fil": "Ang gabay na ito ay maikling buod ayon sa paaralang Hanafi na sinusunod ng Diyanet ng Türkiye. Nagkakaiba ang mga detalye sa bawat paaralan; para sa higit pa, kumonsulta sa isang kwalipikadong iskolar o sa inyong lokal na masjid.",
-  "th": "คู่มือนี้เป็นบทสรุปสั้น ๆ ตามมัซฮับฮะนะฟีที่ดียาเนตของตุรกียึดถือ รายละเอียดแตกต่างกันตามมัซฮับ หากต้องการทราบเพิ่มเติม โปรดปรึกษาผู้รู้ทางศาสนาหรือมัสยิดในท้องถิ่น"
+  "th": "คู่มือนี้เป็นบทสรุปสั้น ๆ ตามมัซฮับฮะนะฟีที่ดียาเนตของตุรกียึดถือ รายละเอียดแตกต่างกันตามมัซฮับ หากต้องการทราบเพิ่มเติม โปรดปรึกษาผู้รู้ทางศาสนาหรือมัสยิดในท้องถิ่น",
+  "es": "Esta guía es un breve resumen según la escuela hanafí que sigue la Diyanet de Turquía. Los detalles varían entre escuelas; para más información, consulte a un erudito cualificado o a su mezquita local.",
+  "pt": "Este guia é um breve resumo segundo a escola hanafita seguida pela Diyanet da Turquia. Os detalhes variam entre as escolas; para mais informações, consulte um estudioso qualificado ou a mesquita da sua região.",
+  "hi": "यह गाइड तुर्किये की दियानत द्वारा अपनाए गए हनफ़ी मसलक के अनुसार एक छोटा सार है। मसलकों में ब्योरे अलग हैं; ज़्यादा जानकारी के लिए किसी योग्य आलिम या अपनी नज़दीकी मस्जिद से पूछें।"
  }
 }

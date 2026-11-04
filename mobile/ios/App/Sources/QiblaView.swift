@@ -69,6 +69,7 @@ func distanceText(_ km: Double) -> String {
 struct QiblaView: View {
     @StateObject private var compass = Compass()
     @State private var aligned = false
+    @AppStorage(QiblaStyle.key) private var styleRaw = QiblaStyle.classic.rawValue
 
     var body: some View {
         let place = PlaceModel.shared.place
@@ -85,8 +86,29 @@ struct QiblaView: View {
                 } else {
                     dial(bearing: q.bearing)
                     status(bearing: q.bearing)
+                    QiblaStylePicker()
                 }
                 facts(place: place, q: q, atKaaba: atKaaba)
+                if !atKaaba {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(L("qibla.map")).font(.headline).foregroundStyle(Theme.text)
+                        QiblaRouteMap(place: place)
+                        Text(L("qibla.mapNoteIos")).font(.footnote).foregroundStyle(Theme.muted)
+                    }
+                    .card()
+                    if compass.available {
+                        NavigationLink {
+                            QiblaCameraView(bearing: q.bearing)
+                        } label: {
+                            HStack {
+                                Label(L("qibla.camera"), systemImage: "camera.viewfinder").foregroundStyle(Theme.text)
+                                Spacer()
+                                Image(systemName: "chevron.forward").font(.footnote.weight(.semibold)).foregroundStyle(Theme.muted)
+                            }
+                            .card()
+                        }
+                    }
+                }
                 NavigationLink {
                     NearbyMosquesView(place: place)
                 } label: {
@@ -109,9 +131,9 @@ struct QiblaView: View {
             .frame(maxWidth: 560)
             .frame(maxWidth: .infinity)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("qibla.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onAppear { compass.start() }
         .onDisappear { compass.stop() }
         .onChange(of: compass.heading) { _, h in
@@ -130,14 +152,15 @@ struct QiblaView: View {
     /// Ortadaki ok telefonun üstüne göre kıbleyi gösterir. Pusula yoksa kuzey yukarıda sabit kadran.
     private func dial(bearing: Double) -> some View {
         let heading = compass.heading ?? 0
-        let color = aligned ? Theme.accent : Theme.ink
+        let look = QiblaStyle(rawValue: styleRaw) ?? .classic
+        let color = aligned ? Theme.accent : look.needle
         return ZStack {
-            Circle().fill(Theme.surface)
-            Circle().stroke(Theme.border, lineWidth: 1)
+            Circle().fill(look.face)
+            Circle().stroke(look.ring, lineWidth: look == .gold ? 3 : 1)
             ZStack {
                 ForEach(0..<72) { i in
                     Capsule()
-                        .fill(i % 18 == 0 ? Theme.ink : Theme.muted.opacity(i % 6 == 0 ? 0.8 : 0.4))
+                        .fill(i % 18 == 0 ? look.tick : look.faceInk.opacity(i % 6 == 0 ? 0.8 : 0.4))
                         .frame(width: i % 6 == 0 ? 2 : 1, height: i % 6 == 0 ? 12 : 6)
                         .offset(y: -128)
                         .rotationEffect(.degrees(Double(i) * 5))
@@ -145,7 +168,7 @@ struct QiblaView: View {
                 ForEach(Array(L("qibla.cardinals").split(separator: " ").enumerated()), id: \.offset) { i, s in
                     Text(String(s))
                         .font(.headline.weight(i == 0 ? .bold : .semibold))
-                        .foregroundStyle(i == 0 ? Color.red : Theme.muted)
+                        .foregroundStyle(i == 0 ? look.north : look.faceInk)
                         .rotationEffect(.degrees(heading - Double(i) * 90))
                         .offset(y: -104)
                         .rotationEffect(.degrees(Double(i) * 90))
@@ -253,9 +276,29 @@ struct NearbyMosquesView: View {
     @State private var loading = true
     @State private var failed = false
     @State private var camera: MapCameraPosition = .automatic
+    @State private var favs = QiblaFavs.load()
 
     var body: some View {
         List {
+            if !favs.isEmpty {
+                Section(L("qibla.favs")) {
+                    ForEach(favs, id: \.self) { f in
+                        HStack {
+                            Button { QiblaFavs.open(f) } label: {
+                                HStack {
+                                    Text(f.n).foregroundStyle(Theme.text)
+                                    Spacer()
+                                    Text(distanceText(CLLocation(latitude: place.lat, longitude: place.lon)
+                                        .distance(from: CLLocation(latitude: f.lat, longitude: f.lon)) / 1000))
+                                        .font(.subheadline.monospacedDigit()).foregroundStyle(Theme.muted)
+                                }
+                            }
+                            .buttonStyle(.borderless)
+                            starButton(name: f.n, lat: f.lat, lon: f.lon)
+                        }
+                    }
+                }
+            }
             if let center {
                 Section {
                     Map(position: $camera) {
@@ -282,21 +325,25 @@ struct NearbyMosquesView: View {
                     Text(L("qibla.mosquesNone")).foregroundStyle(Theme.muted)
                 } else {
                     ForEach(mosques) { m in
-                        Button {
-                            m.item.openInMaps()
-                        } label: {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text(m.name).foregroundStyle(Theme.text)
-                                    if let street = m.item.placemark.thoroughfare {
-                                        Text(street).font(.caption).foregroundStyle(Theme.muted)
+                        HStack {
+                            Button {
+                                m.item.openInMaps()
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(m.name).foregroundStyle(Theme.text)
+                                        if let street = m.item.placemark.thoroughfare {
+                                            Text(street).font(.caption).foregroundStyle(Theme.muted)
+                                        }
                                     }
+                                    Spacer()
+                                    Text(distanceText(m.meters / 1000))
+                                        .font(.subheadline.monospacedDigit())
+                                        .foregroundStyle(Theme.muted)
                                 }
-                                Spacer()
-                                Text(distanceText(m.meters / 1000))
-                                    .font(.subheadline.monospacedDigit())
-                                    .foregroundStyle(Theme.muted)
                             }
+                            .buttonStyle(.borderless)
+                            starButton(name: m.name, lat: m.item.placemark.coordinate.latitude, lon: m.item.placemark.coordinate.longitude)
                         }
                     }
                 }
@@ -306,15 +353,27 @@ struct NearbyMosquesView: View {
         }
         .themedBackground()
         .navigationTitle(L("qibla.mosques"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .task { await load() }
+    }
+
+    private func starButton(name: String, lat: Double, lon: Double) -> some View {
+        let on = favs.contains { abs($0.lat - lat) < 1e-5 && abs($0.lon - lon) < 1e-5 }
+        return Button {
+            QiblaFavs.toggle(name: name, lat: lat, lon: lon)
+            favs = QiblaFavs.load()
+        } label: {
+            Image(systemName: on ? "star.fill" : "star").foregroundStyle(on ? Color.yellow : Theme.muted)
+        }
+        .buttonStyle(.borderless)
+        .accessibilityLabel(on ? L("qibla.favRemove") : L("qibla.favAdd"))
     }
 
     private func load() async {
         loading = true
         failed = false
         var coord = CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)
-        if let loc = await OneShotLocation().fetch(requestPermission: true) {
+        if await PermissionPrimer.location(), let loc = await OneShotLocation().fetch(requestPermission: true) {
             coord = loc.coordinate
             usedPlace = false
         } else {

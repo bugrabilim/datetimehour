@@ -36,4 +36,53 @@ class FeatureNotifierTest {
         assertEquals(emptyList<FeatureNotifier.Planned>(), FeatureNotifier.plan(context, now))
         NotifyFeature.entries.forEach { Prefs.store.edit().remove(it.key).commit() }
     }
+
+    /** Hava uyarıları (2. analiz #110): yarın 5° ve fazla soğuk/sıcak akşam 19.00'da, yağmurdan 15 dk önce */
+    @Test fun weatherAlerts() {
+        val zone = java.time.ZoneId.of("Europe/Istanbul")
+        val now = java.time.LocalDateTime.of(2026, 11, 3, 10, 0).atZone(zone).toInstant()
+        val day0 = java.time.LocalDate.of(2026, 11, 3)
+        val w = WeatherData(
+            zone,
+            WeatherData.Current(15.0, 14.0, 60.0, 10.0, 0.0, 1015.0, 2.0, 2, true, 0.0),
+            (0 until 24).map { WeatherData.Hour(now.plusSeconds(it * 3600L), 15.0, if (it == 5) 61 else 2, if (it == 5) 70 else 10, true) },
+            listOf(18.0, 11.0, 12.0).mapIndexed { i, mx -> WeatherData.Day(day0.plusDays(i.toLong()), 2, mx, 8.0, 10, null, null, 2.0) },
+        )
+        Prefs.saveUnits("metric")
+        val place = AppPlace.current()
+        val out = FeatureNotifier.weatherAlerts(w, place, now)
+        val colder = out.first { it.id == "weather-alert-2026-11-04" }
+        assertEquals(java.time.LocalDateTime.of(2026, 11, 3, 19, 0).atZone(place.zone).toInstant(), colder.at)
+        assertTrue(colder.body.startsWith(T("weather.alert.colder", 7)))
+        val rain = out.first { it.id.startsWith("weather-rain-") }
+        assertEquals(now.plusSeconds(5 * 3600L - 900), rain.at)
+        // 11 → 12: fark 5'ten az, uyarı yok
+        assertTrue(out.none { it.id == "weather-alert-2026-11-05" })
+    }
+
+    /** Güneş/Ay bildirimi ayrıntısı (2. analiz #152): olay seçimi, önceden haber verme, günler */
+    @Test fun sunMoonOptions() = runBlocking {
+        NotifyFeature.entries.forEach { FeaturePrefs.set(it, false) }
+        FeaturePrefs.set(NotifyFeature.SUN, true)
+        FeaturePrefs.set(NotifyFeature.MOON, true)
+        val now = Instant.parse("2026-11-03T10:00:00Z")
+        SunMoonPrefs.sunEvents = setOf("goldenPm")
+        SunMoonPrefs.sunLead = 15
+        SunMoonPrefs.sunDays = setOf(6, 7)
+        SunMoonPrefs.moonEvents = setOf("quarter", "eclipse")
+        SunMoonPrefs.moonLead = 60
+        val all = FeatureNotifier.plan(context, now)
+        val golden = all.filter { it.id.startsWith("goldenpm-") }
+        assertTrue(golden.isNotEmpty() && all.none { it.id.startsWith("sunrise-") || it.id.startsWith("sunset-") })
+        // Yalnız hafta sonu
+        val place = AppPlace.current()
+        assertTrue(golden.all { it.at.plusSeconds(900).atZone(place.zone).dayOfWeek.value in setOf(6, 7) })
+        assertTrue(all.any { it.id.startsWith("moon-fq-") } && all.any { it.id.startsWith("moon-lq-") })
+        assertTrue(all.none { it.id.startsWith("moon-full-") || it.id.startsWith("moon-new-") })
+        // Dördün 1 saat önce
+        val fq = all.first { it.id.startsWith("moon-fq-") }
+        assertEquals(fq.id.substringAfterLast('-').toLong() * 60, fq.at.epochSecond + 3600 - (fq.at.epochSecond + 3600) % 60)
+        listOf("notify.sun.events", "notify.sun.lead", "notify.sun.days", "notify.moon.events", "notify.moon.lead").forEach { Prefs.store.edit().remove(it).commit() }
+        NotifyFeature.entries.forEach { Prefs.store.edit().remove(it.key).commit() }
+    }
 }

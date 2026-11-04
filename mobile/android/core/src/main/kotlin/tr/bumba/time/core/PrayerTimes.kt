@@ -231,6 +231,32 @@ object PrayerTimes {
         )
     }
 
+    /** Bayram namazı vakti (Diyanet: güneş vaktinden 38 dk sonra; 2. analiz #56). Sitedeki `bayram` ile aynı. */
+    const val BAYRAM_MIN = 38
+    fun bayram(day: PrayerDay): Double? = day.sunrise?.let { it + BAYRAM_MIN / 60.0 }
+
+    /**
+     * Ek vakitler (Türkiye Takvimi tanımlarıyla yaklaşık; 2. analiz #59): işrak ve isfirar Güneş +5°, iştibak −10°,
+     * işa-i sani −19°, dahve-i kübra imsak ile akşamın ortası; gece akşamdan imsaka: gece yarısı ½, teheccüd ⅔, seher ⅚.
+     * Sitedeki `extraTimes` ile birebir; `day` Diyanet parametreleriyle hesaplanmış gün olmalı.
+     */
+    data class ExtraTimes(
+        val israk: Double?, val duha: Double?, val isfirar: Double?, val istibak: Double?, val isaSani: Double?,
+        val midnight: Double?, val tahajjud: Double?, val seher: Double?,
+    )
+
+    fun extraTimes(year: Int, month: Int, day: Int, latitude: Double, longitude: Double, utcOffset: Double, times: PrayerDay): ExtraTimes {
+        val up = sunAltitudeTimes(year, month, day, latitude, longitude, utcOffset, 5.0)
+        val st = sunAltitudeTimes(year, month, day, latitude, longitude, utcOffset, -10.0)
+        val is2 = sunAltitudeTimes(year, month, day, latitude, longitude, utcOffset, -19.0)
+        val f = times.fajr; val m = times.maghrib
+        val night = if (f != null && m != null) f + 24 - m else null
+        return ExtraTimes(
+            up.rise, if (f != null && m != null) (f + m) / 2 else null, up.set, st.set, is2.set,
+            night?.let { m!! + it / 2 }, night?.let { m!! + it * 2 / 3 }, night?.let { m!! + it * 5 / 6 },
+        )
+    }
+
     // Güneş konumu (PrayTimes tarzı düşük duyarlıklı formüller)
 
     internal fun julian(year: Int, month: Int, day: Int): Double {

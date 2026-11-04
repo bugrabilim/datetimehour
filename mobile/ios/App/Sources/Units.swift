@@ -17,8 +17,47 @@ enum Units {
         return T("weather.km", Int(s.converted(to: .kilometersPerHour).value.rounded()))
     }
 
+    /// Basınç birimi (2. analiz #106; Ayarlar, `units.pressure`): auto (birime göre), hPa, mmHg, inHg
+    static var pressureUnit: String { UserDefaults.standard.string(forKey: "units.pressure") ?? "auto" }
+
     static func pressure(_ p: Measurement<UnitPressure>) -> String {
-        if imperial { return String(format: "%.2f inHg", p.converted(to: .inchesOfMercury).value) }
-        return "\(Int(p.converted(to: .hectopascals).value.rounded())) hPa"
+        let u = pressureUnit == "auto" ? (imperial ? "inHg" : "hPa") : pressureUnit
+        switch u {
+        case "inHg": return String(format: "%.2f inHg", p.converted(to: .inchesOfMercury).value)
+        case "mmHg": return "\(Int(p.converted(to: .millimetersOfMercury).value.rounded())) mmHg"
+        default: return "\(Int(p.converted(to: .hectopascals).value.rounded())) hPa"
+        }
     }
+
+    private static func decimal(_ v: Double) -> String {
+        String(format: "%.1f", v).replacingOccurrences(of: ".", with: AppLocale.numberLocale.decimalSeparator ?? ".")
+    }
+
+    /// Görüş: 10 km'den uzaksa tam sayı, yakınsa bir ondalık (Amerikan biriminde mil)
+    static func distance(_ m: Measurement<UnitLength>) -> String {
+        let v = imperial ? m.converted(to: .miles).value : m.converted(to: .kilometers).value
+        return (v >= 10 ? "\(Int(v.rounded()))" : decimal(v)) + (imperial ? " mi" : " km")
+    }
+
+    /// Yağış miktarı (mm ya da inç)
+    static func precip(_ m: Measurement<UnitLength>) -> String {
+        if imperial { return String(format: "%.2f", m.converted(to: .inches).value).replacingOccurrences(of: ".", with: AppLocale.numberLocale.decimalSeparator ?? ".") + " in" }
+        return decimal(m.converted(to: .millimeters).value) + " mm"
+    }
+
+    /// Yağış miktarı mm olarak verilince
+    static func precip(_ mm: Double) -> String { precip(Measurement(value: mm, unit: UnitLength.millimeters)) }
+
+    /// Santigrat derece sayısından (Open-Meteo model karşılaştırması)
+    static func temp(celsius c: Double) -> String { temp(Measurement(value: c, unit: UnitTemperature.celsius)) }
+
+    /// Yalnız sayı (grafik ve tablolar; birim başlıkta)
+    static func tempValue(_ t: Measurement<UnitTemperature>) -> Int { Int(t.converted(to: imperial ? .fahrenheit : .celsius).value.rounded()) }
+    static func windValue(_ s: Measurement<UnitSpeed>) -> Int {
+        Int(s.converted(to: imperial ? .milesPerHour : .kilometersPerHour).value.rounded())
+    }
+    static var windUnit: String { imperial ? "mph" : T("weather.km", "").trimmingCharacters(in: .whitespaces) }
+
+    /// Derece farkı (yarın uyarısı; Amerikan biriminde °F farkı)
+    static func delta(_ c: Int) -> Int { imperial ? Int((Double(c) * 1.8).rounded()) : c }
 }

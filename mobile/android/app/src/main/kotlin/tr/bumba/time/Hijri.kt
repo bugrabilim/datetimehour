@@ -60,6 +60,15 @@ object Hijri {
         } catch (_: Exception) { Reverse.None }
     }
 
+    /** Hicri ayın ilk günü ve uzunluğu (takvimi hicri aylarla gezmek için; 2. analiz #119); tablo dışında null */
+    fun month(year: Int, month: Int): Pair<LocalDate, Int>? {
+        for (i in 0 until table.size - 1) {
+            val (start, y, m) = table[i]
+            if (y == year && m == month) return LocalDate.ofEpochDay(start) to (table[i + 1].first - start).toInt()
+        }
+        return null
+    }
+
     /** Takvim günü için hicri tarih; tablo dışında null */
     fun date(d: LocalDate): HijriDate? {
         val n = d.toEpochDay()

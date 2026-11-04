@@ -58,6 +58,7 @@
       "light": "Light"
     },
     "lookColor": "Clock colour",
+    "lookSecSmall": "Small seconds on the digital clock",
     "lookColors": {
       "default": "Site colour",
       "ink": "Ink",
@@ -66,7 +67,28 @@
       "red": "Red",
       "purple": "Purple"
     },
-    "lookNote": "Your choice is stored in this browser only."
+    "lookNote": "Your choice is stored in this browser only.",
+    "lookDateFmt": "Date format",
+    "lookDateFmts": {
+      "long": "Long",
+      "numeric": "Numeric",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "Time separator",
+    "lookSeps": {
+      "colon": "Colon (14:30)",
+      "dot": "Dot (14.30)"
+    },
+    "lookWeekStart": "First day of week",
+    "lookWeekStarts": {
+      "mon": "Monday",
+      "sun": "Sunday",
+      "sat": "Saturday"
+    },
+    "lookMs": "Milliseconds",
+    "lookNight": "Night mode (lights off)",
+    "share": "Share",
+    "shareCopied": "Link copied"
   },
   "client": {
     "format24": "24-hour",
@@ -140,7 +162,13 @@
     "formatLabel": "Time format",
     "fsWeatherNeed": "Choose a location for the weather:",
     "fsWeatherLink": "choose location",
-    "fsWeatherFail": "Could not get the weather."
+    "fsWeatherFail": "Could not get the weather.",
+    "syncShortOk": "Your clock is exact · ±{ms} ms",
+    "syncShortAhead": "Your clock is {s} s ahead",
+    "syncShortBehind": "Your clock is {s} s behind",
+    "weekN": "Week {n}",
+    "pillDst": "Daylight saving time",
+    "pillNoDst": "No daylight saving time"
   },
   "home": {
     "title": "What Time Is It? Live Clock and Today's Date | Saat Tarih",
@@ -251,7 +279,14 @@
     "sunrise": "Sunrise",
     "sunset": "Sunset",
     "daylen": "Day length",
-    "sunNote": "Sunrise and sunset are approximate, calculated from today's date and the city's location (they may be off by a few minutes)."
+    "sunNote": "Sunrise and sunset are approximate, calculated from today's date and the city's location (they may be off by a few minutes).",
+    "solarNoon": "Solar noon",
+    "solarAhead": "Clocks here run {d} ahead of solar time.",
+    "solarBehind": "Clocks here run {d} behind solar time.",
+    "solarSame": "Clocks here are almost on solar time.",
+    "mapLink": "View on map (OpenStreetMap)",
+    "population": "Population (metro area, approx.)",
+    "populationNote": "Population: Natural Earth (public domain), approximate metro-area figure."
   },
   "privacy": {
     "title": "Privacy and Cookie Policy | Saat Tarih",
@@ -272,7 +307,7 @@
         "ul": [
           "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
           "**Location (prayer times):** If you press \"Use my location\" on the prayer times page, your browser uses your location only on your device to calculate the times. The coordinates are not sent to the server or included in statistics; your last choice stays in your browser's local storage.",
-          "**Weather (external service, with permission):** If you have allowed external services in the cookie preferences, the weather page and the clock styles with weather send the approximate coordinates of the province or location you chose (to about 1 km) straight from your browser to Open-Meteo (api.open-meteo.com), which provides the data; your IP address also reaches Open-Meteo. Without permission no request is made and a short note is shown instead. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
+          "**Weather (external service, with permission):** If you have allowed external services in the cookie preferences, the weather page and the clock styles with weather send the approximate coordinates of the province or location you chose (to about 1 km) straight from your browser to Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), which provides the data; your IP address also reaches Open-Meteo. Without permission no request is made and a short note is shown instead. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
           "**Map (globe, external service, with permission):** If you have allowed external services in the cookie preferences and you zoom the globe on the home page beyond a certain level, map tiles are downloaded straight to your browser from OpenStreetMap's server (tile.openstreetmap.org); your IP address and the tile addresses of the area you are looking at then reach the OpenStreetMap Foundation. Without permission, or while the globe is zoomed out, this request is not made. The Saat Tarih server does not see them; OpenStreetMap's own privacy terms apply.",
           "**Qibla and nearby mosques:** The qibla direction, distance and qibla time are calculated in your browser. For the compass, your phone's orientation sensor is read only in the browser (iPhone asks for permission) and is never sent anywhere. If you tap \"Show mosques\" and have allowed external services, the selected place's coordinates rounded to two decimals (about 1 km) are sent from your browser to the Overpass service (overpass-api.de), which serves OpenStreetMap data; your IP address also reaches this service. The Saat Tarih server does not see these coordinates.",
           "**Alarm music (YouTube, external service, with permission):** If you add a YouTube link to an alarm in the alarm tool and have allowed external services, when the alarm rings the video is loaded into your browser with YouTube's privacy-enhanced player (youtube-nocookie.com); your IP address and the video's ID then reach Google (YouTube), and the player may store its own data in your browser. The link stays only in this browser, with your alarm. Without permission the player is not loaded and the alarm rings with its own sound. The Saat Tarih server does not see these; YouTube's (Google's) own privacy terms apply.",
@@ -291,22 +326,23 @@
         ],
         "ul": [
           "**Location:** If you tap \"Use my location\", your location is used on your phone to calculate prayer times and find the nearest province; an approximate location (about 1 km) is stored only on your phone. The \"Automatic\" option in widgets also uses your location only on your phone.",
-          "**Weather:** Weather in the app comes from Apple Weather (WeatherKit); for this, the approximate coordinates of the selected province or your location are sent to Apple. We never see this data; Apple's privacy terms apply.",
+          "**Weather:** Weather in the app comes from Apple Weather (WeatherKit); for this, the approximate coordinates of the selected province or your location are sent to Apple. We never see this data; Apple's privacy terms apply. Air quality, pollen, the model comparison and the Apple Watch weather complication come from Open-Meteo (open-meteo.com); for these, coordinates rounded to two decimals are sent.",
           "**Map:** The globe in the world clock is shown with Apple Maps; map imagery is downloaded from Apple.",
           "**Calendar:** Only if you allow it, events from the calendars on your phone are shown in the app; they are read on your phone and never sent anywhere. Adding and deleting events happens through the iPhone's own calendar screen and only with your confirmation.",
           "**Notifications and alarms:** Prayer time notifications; special day, start of season, moon phase, sunrise and sunset, morning weather summary, on-the-hour and daylight saving notifications (each on by default except on-the-hour; can be changed in Settings › Notifications); alarms and timers are scheduled on your phone without any server. Only the weather summary asks the weather service (see the weather item above). The list is kept current with iOS background refresh; spoken announcements are generated on your phone.",
           "**Email list:** If you join the list from the About page, your email address is sent to the shared Bumba list exactly like the website form; the email list notes apply to the app as well.",
           "**Badges:** Achievement badges and your progress (badges earned and the day, clock models seen, the number of consecutive days of use) are stored only on your phone and never sent anywhere; you can delete them at any time with \"Delete badges\" in Tools › Badges.",
           "**Interval workout:** While an interval workout you started is running, the app uses iOS background audio so it can announce phase changes with the screen locked; the voice is generated on your phone and no data is sent anywhere.",
-          "**Photos:** A photo you pick for the full-screen clock or a countdown is taken through the iPhone photo picker (no access to your photo library is requested); a reduced copy is stored only on your phone and never sent anywhere. Photos you choose for the slideshow (up to 10) also stay on the phone. Prayer-time and countdown share cards and CSV files are made on the phone and sent only to the app you choose.",
+          "**Photos:** A photo you pick for the full-screen clock or a countdown is taken through the iPhone photo picker (no access to your photo library is requested); a reduced copy is stored only on your phone and never sent anywhere. Photos you choose for the slideshow (up to 10) also stay on the phone. Prayer-time and countdown share cards and CSV files are made on the phone and sent only to the app you choose. The Home Screen screenshot you choose for the transparent widget and the pieces cut from it stay only on the phone, in the folder shared by the app and its widgets; they are never sent anywhere and are not synced with iCloud.",
           "**Preferences:** Preferences such as the clock model, province and world clocks are stored only on your phone and are deleted when you delete the app.",
-          "**Qibla and nearby mosques:** The qibla direction is calculated on the phone; the compass uses the phone's orientation sensor (with location permission, location is also used on the phone for true north). On the \"Nearby mosques\" screen the search uses Apple Maps: the search word and the area centre rounded to two decimals go to Apple; Apple's privacy terms apply.",
+          "**Qibla and nearby mosques:** The qibla direction is calculated on the phone; the compass uses the phone's orientation sensor (with location permission, location is also used on the phone for true north). On the \"Nearby mosques\" screen the search uses Apple Maps: the search word and the area centre rounded to two decimals go to Apple; Apple's privacy terms apply. On the qibla screen, the line to the Kaaba is shown on Apple Maps; map imagery for your area is downloaded from Apple.",
           "**Apple Watch, Siri and the Lock Screen:** The Apple Watch app calculates prayer times on the watch; when \"Place from iPhone\" is selected, the selected place's name and coordinates are sent from the iPhone to the watch (Apple's WatchConnectivity) and nowhere else; if \"My location\" is selected on the watch, the location is used only on the watch. Siri and Shortcuts actions (timer, alarm, full-screen clock, next prayer, date) run on the phone; Apple processes voice requests. Live Activities on the Lock Screen (counters, next prayer) are created on the phone.",
-          "**Camera, sleep and focus:** To read the QR code or barcode of an alarm's dismiss task, the camera opens only while you save the code and while you turn the alarm off (permission is asked the first time); the image is processed on the device, not stored and not sent, and only the value read is kept on the device with the alarm. The shake and steps tasks use the motion sensor only while the task screen is open; steps are not recorded. Pomodoro history (day, minutes, task name) and the sleep schedule stay on the device; pomodoro noise and sleep sounds are generated on the device. Smart alarm: if you start a session on the Sleep screen, the motion sensor (accelerometer) is read during the alarm's smart alarm window and the alarm rings early when signs of light sleep appear; the motion data is kept only in memory and is not saved or sent. There is no sleep tracking (sleep stages, recordings) and the microphone is not used.",
+          "**Camera, sleep and focus:** To read the QR code or barcode of an alarm's dismiss task, the camera opens only while you save the code and while you turn the alarm off (permission is asked the first time); the image is processed on the device, not stored and not sent, and only the value read is kept on the device with the alarm. The shake and steps tasks use the motion sensor only while the task screen is open; steps are not recorded. Pomodoro history (day, minutes, task name) and the sleep schedule stay on the device; pomodoro noise and sleep sounds are generated on the device. Smart alarm: if you start a session on the Sleep screen, the motion sensor (accelerometer) is read during the alarm's smart alarm window and the alarm rings early when signs of light sleep appear; the motion data is kept only in memory and is not saved or sent. There is no sleep tracking (sleep stages, recordings) and the microphone is not used for sleep. The photo taken in the find-an-object task (recognised with Apple Vision), the image in the qibla camera view and the microphone in the read-aloud task (on-device speech recognition only) are used only while that screen is open; all are processed on the device, not stored and not sent. The qibla compass design and favourite mosques are stored on the device and, if iCloud sync is on, synced between your own devices.",
           "**Worship:** Your Quran bookmark, text size, dhikr counts, prayer and fasting tracker (prayed times, make-up counts, fasted days) and the amounts you enter in the zakat calculator stay only on the device; they are not sent anywhere and are not used for statistics or badges. The Quran text and prayers are bundled in the app. When you tap the link to the Diyanet translation site, that site opens in your browser. You type the gold price for zakat yourself; the app does not fetch prices.",
           "**iCloud sync:** If \"Sync with iCloud\" in Settings is on (the default), settings, world clocks, countdowns, saved places, pomodoro and sleep records and worship records are synced through Apple's iCloud key-value storage with the iPhone, iPad and Mac signed in to the same Apple Account. This data stays in your iCloud account under Apple's terms; we cannot access it and it never reaches our servers. Location, alarms, running timers, notification settings, badges and photos are not synced. Turning the switch off stops syncing on that device.",
           "**Health, morning journal, alarm photo and floating clock:** If you turn on \"Save to Apple Health\", each finished interval workout is written to the Health app as a workout (type, start, duration); the app does not read your health data and this data goes to no server. The morning journal (mood, sleep, intention, note) stays on your devices only (on the devices of your Apple Account if iCloud sync is on). For the photo alarm task the photo is not stored; only a tiny summary (72 grey values) is kept on the phone for comparison. Your calculation method, prayer-time alarms (iOS 26+) and Control Center buttons stay on the phone. The floating clock is a picture-in-picture window; it plays no sound and sends no data.",
-          "**Music alarms, location and calendar reminders, focus blocking, Mac, Apple TV and Vision Pro:** For an alarm sound, a 30-second part of the song you choose from your music library or Files is written to a sound file on the phone; the song is not sent anywhere (music library access is asked only when you choose). For location reminders, iPhone itself detects arrivals and departures; the reminder's place stays on the phone and the map comes from Apple. When you set an alarm for a calendar event, only that event's title and time are used. Focus blocking uses Apple's Screen Time framework; the apps and websites you choose are Apple's encrypted tokens and the app cannot see what they are. The Mac, Apple TV and Vision Pro apps calculate prayer times on the device; if you allow location, it is used only on the device to find the nearest province."
+          "**Music alarms, location and calendar reminders, focus blocking, Mac, Apple TV and Vision Pro:** For an alarm sound, a 30-second part of the song you choose from your music library or Files is written to a sound file on the phone; the song is not sent anywhere (music library access is asked only when you choose). For location reminders, iPhone itself detects arrivals and departures; the reminder's place stays on the phone and the map comes from Apple. When you set an alarm for a calendar event, only that event's title and time are used. Focus blocking uses Apple's Screen Time framework; the apps and websites you choose are Apple's encrypted tokens and the app cannot see what they are. The Mac, Apple TV and Vision Pro apps calculate prayer times on the device; if you allow location, it is used only on the device to find the nearest province. While an alarm with a dismiss task is ringing, deleting the app is blocked through the same framework and allowed again once the task is done; this works only if you have granted Screen Time permission.",
+          "**Study timer and wake-up game:** Subjects and sessions in the study timer (duration, question count, note) and the wake-up game's records (day, wake-up and alarm time, number of snoozes) stay on the device; if iCloud sync is on they sync with your iCloud account and are sent nowhere else. The app language and dial choice are also stored on the device."
         ]
       },
       {
@@ -326,10 +362,11 @@
           "**Badges and preferences:** Badges and preferences such as the clock model, location and world clocks are stored only on your phone and are deleted when you delete the app. If Android backup is turned on on your phone, these records (and the copy of photos you picked) may be included in the device backup in your Google account; that backup is subject to Google's terms and we cannot access it.",
           "**Qibla and nearby mosques:** The qibla direction and compass are calculated on the phone. On the \"Nearby mosques\" screen the coordinates rounded to two decimals (about 1 km) are sent to the Overpass service (overpass-api.de), which serves OpenStreetMap data; your IP address reaches this service. Tapping a mosque opens your maps app.",
           "**Wear OS watch and shortcuts:** The Wear OS app calculates prayer times on the watch; if \"My location\" is selected, the approximate location is used only on the watch and sent nowhere. Timers and alarms that the Assistant or other apps set in Time & Date are stored only on the phone; the screen saver and running-counter notifications are created on the phone.",
-          "**Camera, sleep and focus:** The QR code or barcode of an alarm's dismiss task is read by Google's code scanner (Google Play services): the app does not ask for camera permission and never sees the image; only the value read is kept on the phone with the alarm. The shake and steps tasks use the accelerometer only while the alarm screen is open; steps are not recorded. Pomodoro history (day, minutes, task name) and the sleep schedule stay on the phone; pomodoro noise and sleep sounds are generated on the phone (a foreground service lets them play with the screen off, with \"Stop sound\" in the notification). Smart alarm: if you start a session on the Sleep screen, the motion sensor (accelerometer) is read during the alarm's smart alarm window and the alarm rings early when signs of light sleep appear; the motion data is kept only in memory and is not saved or sent. There is no sleep tracking (sleep stages, recordings) and the microphone is not used. The session runs as a foreground service (with \"Stop\" in the notification). If you add a Spotify or YouTube link to an alarm, the link opens in that app when the alarm rings; the app only opens the link and has no access to the music.",
+          "**Camera, sleep and focus:** The QR code or barcode of an alarm's dismiss task is read by Google's code scanner (Google Play services): the app does not ask for camera permission and never sees the image; only the value read is kept on the phone with the alarm. The shake and steps tasks use the accelerometer only while the alarm screen is open; steps are not recorded. Pomodoro history (day, minutes, task name) and the sleep schedule stay on the phone; pomodoro noise and sleep sounds are generated on the phone (a foreground service lets them play with the screen off, with \"Stop sound\" in the notification). Smart alarm: if you start a session on the Sleep screen, the motion sensor (accelerometer) is read during the alarm's smart alarm window and the alarm rings early when signs of light sleep appear; the motion data is kept only in memory and is not saved or sent. There is no sleep tracking (sleep stages, recordings) and the microphone is not used for sleep. The session runs as a foreground service (with \"Stop\" in the notification). If you add a Spotify or YouTube link to an alarm, the link opens in that app when the alarm rings; the app only opens the link and has no access to the music. In the find-an-object task, the small photo taken with the system camera is recognised on the phone by Google Play services' image labelling model; in the read-aloud task the microphone (permission asked in the task) is used only with Android's on-device speech recognition, and without it the typing task is used instead. Images and audio are not stored or sent. The qibla compass design and favourite mosques are stored on the phone and, if Android backup is on, included with your settings in your Google account backup.",
           "**Worship:** Your Quran bookmark, text size, dhikr counts, prayer and fasting tracker (prayed times, make-up counts, fasted days) and the amounts you enter in the zakat calculator stay only on the phone; they are not sent anywhere and are not used for statistics or badges. The Quran text and prayers are bundled in the app. When you tap the link to the Diyanet translation site, that site opens in your browser. You type the gold price for zakat yourself; the app does not fetch prices.",
           "**Health, morning journal, alarm photo, silencing and floating clock:** If you turn on \"Save to Health Connect\", only the permission to write exercise is requested and each finished interval workout is written as an exercise session (type, start, duration); the app does not read your health data. The morning journal stays on the phone only (and in the phone's Google backup). For the photo alarm task the photo is taken with the phone's own camera (no camera permission is requested) and is not stored; only a tiny summary is kept. Do Not Disturb access for \"Silence at prayer time\" is used only if you turn it on and grant it in the phone's settings. The floating clock uses the \"Display over other apps\" permission; it reads nothing on the screen and only draws the clock. Widgets and Quick Settings tiles use the app's own counters.",
-          "**Location and calendar reminders, focus blocking and Android TV:** If you add a location reminder, precise and \"Allow all the time\" location access is requested; Google Play services' geofencing detects arrivals and departures, the reminder's place stays on the phone and the app does not send your location anywhere. When you set an alarm for a calendar event, only that event's title and time are used. If you grant usage access for focus blocking, the app reads the name of the app in front once a second on the phone, only during pomodoro work time; this is not stored or sent. The Android TV screen uses the place selected in the app."
+          "**Location and calendar reminders, focus blocking and Android TV:** If you add a location reminder, precise and \"Allow all the time\" location access is requested; Google Play services' geofencing detects arrivals and departures, the reminder's place stays on the phone and the app does not send your location anywhere. When you set an alarm for a calendar event, only that event's title and time are used. If you grant usage access for focus blocking, the app reads the name of the app in front once a second on the phone, only during pomodoro work time; this is not stored or sent. The Android TV screen uses the place selected in the app.",
+          "**Study timer and wake-up game:** Subjects and sessions in the study timer (duration, question count, note) and the wake-up game's records (day, wake-up and alarm time, number of snoozes) stay on the phone and are never sent anywhere (they are included in the phone's Google backup). The app language and dial choice are also stored on the phone."
         ]
       },
       {
@@ -405,6 +442,21 @@
             [
               "sth-hiit",
               "Remembers the interval timer's periods, number of rounds and spoken-cue setting.",
+              "Until you delete it"
+            ],
+            [
+              "sth-alarm-x",
+              "Keeps the alarm volume, recently used alarm times and the alarm history (when it rang, the alarm's name, how it was stopped; at most 200 entries) on this device.",
+              "Until you delete it"
+            ],
+            [
+              "sth-exam",
+              "Remembers the exam name, room, durations and the start time of a running exam in the exam timer.",
+              "Until you delete it"
+            ],
+            [
+              "sth-class",
+              "Keeps the names, pick list, teams and counters of the classroom tools on this device.",
               "Until you delete it"
             ],
             [
@@ -522,7 +574,7 @@
     "pages": "Pages",
     "cities": "City pages",
     "about": "About",
-    "aboutText": "The time is synchronised with the site's server clock (independent of the device clock); the time zone is read from the browser and no personal data is sent. Available in fifteen languages: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French, Russian, Japanese, Korean, Chinese, Filipino and Thai. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+    "aboutText": "The time is synchronised with the site's server clock (independent of the device clock); the time zone is read from the browser and no personal data is sent. Available in eighteen languages: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French, Russian, Japanese, Korean, Chinese, Filipino, Thai, Spanish, Portuguese and Hindi. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Clock styles",
@@ -561,13 +613,18 @@
       "h-wx-analog-date": "Side-by-side analog, date and weather",
       "h-wx-full": "Side-by-side analog, digital, date and weather",
       "wx-digital-cal": "Digital, date, weather and monthly calendar",
-      "wx-digital-cal-week": "Digital, date, weather, monthly calendar and weekly forecast"
+      "wx-digital-cal-week": "Digital, date, weather, monthly calendar and weekly forecast",
+      "holo": "Hologram",
+      "matrix": "Matrix",
+      "math": "Maths clock"
     },
     "source": "This clock does not depend on your device: it is read from the Saat Tarih server's NTP-synchronised clock and measured again every 15 minutes.",
     "info": "About this clock's time source",
     "infoTitle": "Where does this time come from?",
     "infoClose": "Close",
-    "infoSeconds": "Tap the clock to show or hide the seconds. Seconds start on for digital clocks and off for analog clocks."
+    "infoSeconds": "Tap the clock to show or hide the seconds. Seconds start on for digital clocks and off for analog clocks.",
+    "zoomIn": "Larger clock",
+    "zoomOut": "Smaller clock"
   },
   "calendar": {
     "title": "{year} Calendar: Turkish Public Holidays and Ramadan | Saat Tarih",
@@ -741,7 +798,25 @@
     "icsCalDays": "Religious and special days in Turkey (Saat Tarih)",
     "icsHalf": "half day",
     "icsProjected": "based on Diyanet's long-range calendar (projection)",
-    "icsCalMoon": "Moon phases and eclipses (Saat Tarih)"
+    "icsCalMoon": "Moon phases and eclipses (Saat Tarih)",
+    "monthOrigin": {
+      "heading": "Where do the month names come from?",
+      "source": "Source: Online Etymology Dictionary.",
+      "items": [
+        "January is named after Janus, the Roman god of doors and beginnings.",
+        "February comes from Februa, a Roman festival of purification.",
+        "March is named after Mars, the Roman god of war.",
+        "April probably comes from Latin aperire, “to open”, as buds open in spring.",
+        "May is named after Maia, a Roman goddess of growth.",
+        "June is named after Juno, queen of the Roman gods.",
+        "July is named after Julius Caesar.",
+        "August is named after the Roman emperor Augustus.",
+        "September comes from Latin septem, “seven”: it was the seventh month of the old Roman calendar.",
+        "October comes from Latin octo, “eight”.",
+        "November comes from Latin novem, “nine”.",
+        "December comes from Latin decem, “ten”."
+      ]
+    }
   },
   "tools": {
     "hub": {
@@ -874,6 +949,18 @@
         "tzn": {
           "name": "Time zone news",
           "desc": "Countries' time zone and daylight saving decisions."
+        },
+        "sleepCalc": {
+          "name": "Sleep calculator",
+          "desc": "Bedtimes and wake-up times from sleep cycles."
+        },
+        "examTimer": {
+          "name": "Exam timer",
+          "desc": "Full-screen countdown for the exam room."
+        },
+        "classroom": {
+          "name": "Classroom tools",
+          "desc": "Random names, teams and counters."
         }
       },
       "infoHeading": "Information pages"
@@ -979,7 +1066,10 @@
       "copyLink": "Copy link",
       "copied": "Link copied",
       "shareNote": "You can share the link for the date you picked; the countdown starts by itself when the link is opened.",
-      "addMinute": "+1 min"
+      "addMinute": "+1 min",
+      "addToApp": "📲 Add to the Saat Tarih app",
+      "present": "Presenter colours",
+      "presentNote": "Green; amber in the last 2 minutes (the last fifth for short timers); red when time is up."
     },
     "alarm": {
       "title": "Online Alarm Clock: Repeating and Snooze | Saat Tarih",
@@ -1043,7 +1133,24 @@
       "ytNote": "When the alarm rings this video plays; if you don't turn it off within 1 minute, the alarm sound plays too (also if the browser doesn't start the video by itself). The video loads from YouTube, so external services must be allowed.",
       "ytInvalid": "This is not a YouTube link.",
       "ytBlocked": "Allow external services for YouTube music; without permission the alarm rings with its own sound.",
-      "spotifyNote": "Spotify doesn't start by itself in the browser; you can use Spotify as alarm music in the Android app."
+      "spotifyNote": "Spotify doesn't start by itself in the browser; you can use Spotify as alarm music in the Android app.",
+      "snoozeLabel": "Snooze",
+      "snoozeMin": "{n} min",
+      "volume": "Volume",
+      "tryNow": "Try the alarm now",
+      "tryTitle": "Test alarm",
+      "remaining": "left",
+      "recent": "Recently used times",
+      "history": "Alarm history",
+      "historyEmpty": "No alarms have rung yet.",
+      "histStop": "stopped",
+      "histSnooze": "snoozed",
+      "histMissed": "stopped by itself",
+      "historyCsv": "Download history as CSV",
+      "historyClear": "Clear history",
+      "colTime": "Time",
+      "colAlarm": "Alarm",
+      "colAction": "Result"
     },
     "pomodoro": {
       "title": "Pomodoro Timer: Work 25 Minutes, Break 5 | Saat Tarih",
@@ -1346,7 +1453,11 @@
     "shareLink": "Copy link",
     "linkCopied": "Link copied",
     "addIcs": "Add to calendar (.ics)",
-    "addGoogle": "Add to Google Calendar"
+    "addGoogle": "Add to Google Calendar",
+    "addOutlook": "Add to Outlook",
+    "mailGmail": "Send with Gmail",
+    "copyText": "Copy as text",
+    "textCopied": "Text copied."
   },
   "planner": {
     "title": "Meeting Planner: Find Overlapping Working Hours | Saat Tarih",
@@ -1385,7 +1496,12 @@
     "addGoogle": "Add to Google Calendar",
     "pickHint": "Tap an hour at the top of the table to pick the meeting time; the link and calendar entry include it.",
     "meeting": "Meeting",
-    "picked": "Picked time: {time} ({city} time)"
+    "picked": "Picked time: {time} ({city} time)",
+    "legendWeekend": "Weekend",
+    "addOutlook": "Add to Outlook",
+    "mailGmail": "Send with Gmail",
+    "copyText": "Copy as text",
+    "textCopied": "Text copied."
   },
   "poll": {
     "title": "Meeting Poll: Pick the Best Time Together | Saat Tarih",
@@ -1665,7 +1781,17 @@
         "a": "The widget sets no cookies and collects no personal data. It sends a few small requests to the server to show the correct time; page views are counted in cookie-free, anonymous statistics."
       }
     ],
-    "sizeNote": "Calendar styles need a height of at least 460 px; the other styles fit comfortably in 360 px."
+    "sizeNote": "Calendar styles need a height of at least 460 px; the other styles fit comfortably in 360 px.",
+    "lineHeading": "As a line of text",
+    "lineLead": "Add a one-line live clock or sunrise/sunset text to your page: paste the two lines below; the text takes your site's font and colour.",
+    "lineKind": "Show",
+    "lineKinds": {
+      "time": "Time",
+      "date": "Date and time",
+      "sun": "Sunrise and sunset"
+    },
+    "lineNote": "The script only draws the time; it sets no cookies and sends no data. The time zone comes from the city.",
+    "linePreview": "Preview"
   },
   "embed": {
     "link": "Saat Tarih"
@@ -1759,6 +1885,22 @@
       "isfirar": "Sunset (isfirar)"
     },
     "kerahatNote": "Voluntary prayers are not performed in these windows. The Diyanet publishes no exact minutes; the common calendar convention of about 45 minutes is used (sources give 10–45 minutes for the window before noon).",
+    "extraHeading": "Additional times (approximate)",
+    "extraNames": {
+      "israk": "Ishraq",
+      "duha": "Dahwa al-kubra",
+      "asrSani": "Second asr (Hanafi)",
+      "isfirar": "Isfirar (yellowing of the sun)",
+      "istibak": "Ishtibak (stars appear)",
+      "isaSani": "Second isha",
+      "midnight": "Middle of the night",
+      "tahajjud": "Tahajjud (last third of the night)",
+      "seher": "Sahar (last sixth of the night)"
+    },
+    "extraNote": "Diyanet does not publish these times. They follow the Türkiye Takvimi definitions: ishraq and isfirar with the sun 5° above the horizon, ishtibak 10° and second isha 19° below it; dahwa al-kubra halfway between imsak and maghrib; the night runs from maghrib to imsak.",
+    "bayram": "Eid prayer",
+    "bayramTomorrow": "Eid prayer tomorrow: {t}",
+    "bayramNote": "Same rule as Diyanet’s published times (38 min after sunrise); the provincial mufti’s announcement is authoritative.",
     "method": {
       "heading": "Calculation method",
       "label": "Method",
@@ -1784,7 +1926,9 @@
         "france": "France (UOIF)",
         "russia": "Spiritual Administration of Muslims of Russia"
       }
-    }
+    },
+    "ezani": "Ezani (alaturka) time: {t}",
+    "ezaniNote": "In Ezani (alla turca) time, the evening prayer (sunset) is 12:00 and hours are counted from there."
   },
   "nature": {
     "title": "Seasons: Seasons Wheel, Equinoxes and Solstices | Saat Tarih",
@@ -1957,7 +2101,74 @@
     "eclMapLabel": "Eclipse",
     "eclMapSolar": "Orange: where the eclipse is seen as partial (darker means more of the Sun is covered). Dark red: path of totality; purple: path of the annular eclipse. Black dot: selected place.",
     "eclMapLunar": "Blue: where the Moon is above the horizon at greatest eclipse, so the eclipse can be seen. Blue dot: where the Moon is overhead; black dot: selected place.",
-    "eclMapNote": "The map is calculated approximately in your browser from the positions of the Sun and Moon (path edges may be off by a few tens of km). Coastlines: Natural Earth. For exact paths and times see NASA's eclipse pages."
+    "eclMapNote": "The map is calculated approximately in your browser from the positions of the Sun and Moon (path edges may be off by a few tens of km). Coastlines: Natural Earth. For exact paths and times see NASA's eclipse pages.",
+    "folkHeading": "Traditional folk calendar",
+    "folkNote": "Traditional dates from the Turkish folk calendar (based on the old Rumi calendar); not a weather forecast, and sources may differ by a few days.",
+    "folkNow": "Now",
+    "folkNames": {
+      "erbain": "Erbain (the 40 coldest days of winter)",
+      "hamsin": "Hamsin (the 50-day second half of winter)",
+      "cemre1": "First cemre (into the air)",
+      "cemre2": "Second cemre (into the water)",
+      "cemre3": "Third cemre (into the soil)",
+      "berdulacuz": "Berd al-ajuz (the “old woman’s cold”)",
+      "eyyamibahur": "Eyyam-ı bahur (the hottest days of summer)"
+    },
+    "tw": {
+      "heading": "Twilight and daylight",
+      "civil": "Civil twilight",
+      "nautical": "Nautical twilight",
+      "astro": "Astronomical twilight",
+      "firstLight": "First light",
+      "lastLight": "Last light",
+      "ring": "24-hour light ring",
+      "day": "Daylight",
+      "night": "Night",
+      "now": "Now",
+      "note": "Morning and evening ranges: the Sun is 0°–6° (civil), 6°–12° (nautical) and 12°–18° (astronomical) below the horizon. First light is when astronomical dawn begins, last light when astronomical dusk ends. Approximate."
+    },
+    "ym": {
+      "heading": "Full moons of {y}",
+      "count": "There are {n} full moons in {y}.",
+      "blue": "Blue Moon: {date} (the second full moon in a calendar month).",
+      "noBlue": "No Blue Moon this year.",
+      "colDate": "Date and time",
+      "colName": "Traditional name",
+      "namesNote": "Names follow the North American tradition (Old Farmer's Almanac). The Harvest Moon is the full moon closest to the September equinox.",
+      "harvest": "Harvest Moon",
+      "blueName": "Blue Moon",
+      "wheel": "Full moon wheel of the year",
+      "names": [
+        "Wolf Moon",
+        "Snow Moon",
+        "Worm Moon",
+        "Pink Moon",
+        "Flower Moon",
+        "Strawberry Moon",
+        "Buck Moon",
+        "Sturgeon Moon",
+        "Corn Moon",
+        "Hunter's Moon",
+        "Beaver Moon",
+        "Cold Moon"
+      ]
+    },
+    "eclLocal": "{place}: {obsc} of the Sun is covered; {c1}–{c4}, maximum {max}.",
+    "eclLocalTotal": "{place}: total eclipse; {c1}–{c4}, totality around {max}.",
+    "eclLocalAnnular": "{place}: annular eclipse; {c1}–{c4}, ring around {max}.",
+    "eclLocalNone": "{place}: this eclipse is not visible from here.",
+    "eclLocalLow": "{place}: the Sun is below the horizon during the eclipse.",
+    "eclContacts": {
+      "p1": "Penumbra begins",
+      "u1": "Partial begins",
+      "u2": "Totality begins",
+      "max": "Maximum",
+      "u3": "Totality ends",
+      "u4": "Partial ends",
+      "p4": "Penumbra ends"
+    },
+    "eclMag": "Umbral magnitude {v}",
+    "eclApprox": "Times are approximate (a few minutes); moments not visible from this place are dimmed."
   },
   "weather": {
     "title": "Weather: Current, Hourly and 14-Day Forecast | Saat Tarih",
@@ -2030,7 +2241,91 @@
         "a": "Yes. In full screen, the weather button in the bar that appears when you tap the screen shows the weather for your chosen location beside the clock."
       }
     ],
-    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin"
+    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin",
+    "wd": {
+      "calm": "Calm",
+      "light": "Light breeze",
+      "breezy": "Breezy",
+      "strong": "Strong wind",
+      "gale": "Gale"
+    },
+    "uvw": {
+      "low": "Low; no sunburn risk",
+      "moderate": "Moderate; protect yourself around midday",
+      "high": "High; use sunscreen",
+      "veryHigh": "Very high; avoid the midday sun",
+      "extreme": "Extreme; avoid staying outside"
+    },
+    "hw": {
+      "dry": "Dry",
+      "comfy": "Comfortable",
+      "humid": "Humid",
+      "veryHumid": "Very humid"
+    },
+    "vw": {
+      "fog": "Foggy",
+      "haze": "Hazy",
+      "good": "Good",
+      "clear": "Excellent"
+    },
+    "dw": {
+      "dry": "Dry air",
+      "comfy": "Comfortable",
+      "muggy": "A bit muggy",
+      "oppressive": "Oppressive"
+    },
+    "fw": {
+      "colder": "Feels colder than it is",
+      "warmer": "Feels warmer than it is"
+    },
+    "sum": {
+      "storm": "Thunderstorms expected around {time}.",
+      "rain": "Rain expected around {time}.",
+      "snow": "Snow expected around {time}.",
+      "windyAfternoon": "Windy in the afternoon.",
+      "colder": "Noticeably colder tomorrow: the high drops by {n}°.",
+      "warmer": "Noticeably warmer tomorrow: the high rises by {n}°.",
+      "default": "{cond}; high {max}, low {min}."
+    },
+    "alert": {
+      "colder": "Tomorrow will be noticeably colder than today: the high drops by {n}°.",
+      "warmer": "Tomorrow will be noticeably warmer than today: the high rises by {n}°.",
+      "rainSoon": "Rain expected around {time}; don't forget your umbrella."
+    },
+    "visibility": "Visibility",
+    "dewPoint": "Dew point",
+    "gusts": "Gusts",
+    "details": "Details",
+    "chartTemp": "Temperature",
+    "dayPart": "Day",
+    "nightPart": "Night",
+    "tapHint": "Tap an hour on the chart or a day in the list for details.",
+    "aqiTitle": "Air quality",
+    "aqiIndex": "European Air Quality Index (EAQI)",
+    "aqiLevels": [
+      "Good",
+      "Fair",
+      "Moderate",
+      "Poor",
+      "Very poor",
+      "Extremely poor"
+    ],
+    "pollen": "Pollen",
+    "pollenNames": {
+      "alder": "Alder",
+      "birch": "Birch",
+      "grass": "Grass",
+      "mugwort": "Mugwort",
+      "olive": "Olive",
+      "ragweed": "Ragweed"
+    },
+    "pollenLevels": [
+      "Low",
+      "Moderate",
+      "High"
+    ],
+    "pollenNone": "No pollen now, or no pollen forecast for this place (Europe only).",
+    "aqiSource": "Air quality and pollen: Open-Meteo (CAMS, Copernicus)"
   },
   "faqPage": {
     "title": "Frequently asked questions: time, calendar, prayer | Saat Tarih",
@@ -2045,7 +2340,7 @@
   },
   "consent": {
     "barLabel": "Cookie choice",
-    "barText": "We keep your preferences (language, theme, clock and tool settings) only in this browser. If you allow it, visits are counted with Umami, and the weather (Open-Meteo), the close-up globe map and nearby mosques (OpenStreetMap) and alarm music (YouTube) are loaded from external services.",
+    "barText": "Your settings stay in this browser. With your consent, visits are counted with Umami, and weather, maps and music load from external services.",
     "accept": "Accept",
     "reject": "Reject",
     "prefs": "Preferences",
@@ -2058,7 +2353,7 @@
     "stats": "Statistics",
     "statsText": "Umami counts page visits and a few actions (browser, device, language, and the country and city derived from the IP address; the IP is not stored). No cookies are used. Off by default.",
     "ext": "External services",
-    "extText": "The weather is loaded from Open-Meteo (api.open-meteo.com), the map on the zoomed globe from OpenStreetMap (tile.openstreetmap.org), nearby mosques from OpenStreetMap's Overpass service (overpass-api.de) and YouTube music you add to an alarm from YouTube (youtube-nocookie.com); your IP address reaches these services. Off by default.",
+    "extText": "The weather is loaded from Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), the map on the zoomed globe from OpenStreetMap (tile.openstreetmap.org), nearby mosques from OpenStreetMap's Overpass service (overpass-api.de) and YouTube music you add to an alarm from YouTube (youtube-nocookie.com); your IP address reaches these services. Off by default.",
     "save": "Save choice",
     "footerLink": "Cookie preferences",
     "privacy": "Privacy",
@@ -2477,7 +2772,9 @@
         "q": "Why do Hijri dates differ between countries?",
         "a": "Some countries start a month by sighting the crescent, others by calculation. Turkey uses Diyanet's calculated calendar and Saudi Arabia the Umm al-Qura calendar; they can differ by a day."
       }
-    ]
+    ],
+    "rumi": "Rumi (Ottoman): {date}",
+    "rumiNote": "The Rumi date uses the Julian calendar (13 days behind) with the year starting on 1 March, as in traditional Turkish almanacs."
   },
   "timeCalc": {
     "title": "Time Calculator: Add, Subtract and Hours Between Times | Saat Tarih",
@@ -2787,7 +3084,59 @@
         "q": "What is a supermoon?",
         "a": "A supermoon is the popular name for a full moon that falls near perigee, the Moon's closest point to Earth. It looks about 14% larger and 30% brighter than a full moon at apogee; the difference is hard to notice with the naked eye."
       }
-    ]
+    ],
+    "eventsHeading": "Sky events",
+    "eventsLead": "Meteor shower peaks, close approaches of the planets and the Moon, oppositions and greatest elongations; times in the selected place's time.",
+    "showers": {
+      "qua": "Quadrantids",
+      "lyr": "Lyrids",
+      "eta": "Eta Aquariids",
+      "sda": "Southern Delta Aquariids",
+      "per": "Perseids",
+      "dra": "Draconids",
+      "ori": "Orionids",
+      "leo": "Leonids",
+      "gem": "Geminids",
+      "urs": "Ursids"
+    },
+    "evShower": "{name} meteor shower peaks",
+    "showerRate": "Up to ~{zhr} meteors an hour under dark skies",
+    "showerVar": "Rates vary from year to year",
+    "moonLight": "Moon {moon} lit",
+    "evOpp": "{p} at opposition: visible all night, at its brightest of the year",
+    "evElongE": "{p} farthest from the Sun in the evening sky ({deg}°)",
+    "evElongW": "{p} farthest from the Sun in the morning sky ({deg}°)",
+    "evConj": "{a} and {b} appear close ({sep}° apart)",
+    "evMoon": "The Moon and {p} appear close ({sep}° apart)",
+    "evMore": "More events",
+    "eventsNote": "Meteor shower peaks are calculated from the solar longitudes published by the International Meteor Organization (IMO); the actual peak may shift by a few hours. Separations are geocentric; from your location they may differ by about a degree.",
+    "icsName": "Saat Tarih: Sky events",
+    "tonightHeading": "Tonight",
+    "darkLabel": "Full darkness",
+    "darkNone": "No full darkness tonight (the Sun does not sink 18° below the horizon).",
+    "moonUpDark": "{illum} lit; up during darkness from {from} to {to}",
+    "moonDownDark": "{illum} lit; below the horizon during darkness",
+    "planetsLabel": "Visible planets",
+    "planetsNone": "None",
+    "cloudLabel": "Cloud cover",
+    "score": {
+      "good": "A good night for stargazing",
+      "fair": "Fair for stargazing",
+      "poor": "Poor for stargazing"
+    },
+    "tipMoon": "Bright Moon: faint stars and meteors are hard to see.",
+    "tipDark": "The Moon is down during darkness: good for faint stars.",
+    "tipCloudy": "Clouds may block the view.",
+    "tipBest": "{p} is highest around {time} ({deg}°).",
+    "graphHeading": "Planet altitudes tonight",
+    "graphCaption": "Horizontal axis: time; vertical axis: height above the horizon; the dark band is full darkness.",
+    "cloudNote": "Cloud cover comes from Open-Meteo and is shown only if you allowed external services.",
+    "constellations": "Constellations",
+    "play": "Play",
+    "pause": "Pause",
+    "dateLabel": "Date",
+    "red": "Red light",
+    "conSource": "Constellation lines and names: d3-celestial (© 2015 Olaf Frohn, BSD-3 licence)."
   },
   "otd": {
     "title": "On This Day in History: Events, Births and Deaths | Saat Tarih",
@@ -2840,6 +3189,102 @@
       {
         "q": "How does my device learn that a country changed its clocks?",
         "a": "Apple, Google and Microsoft ship new tz database releases with operating system updates. If you keep your device up to date, the time will be correct on its own."
+      }
+    ]
+  },
+  "sleepCalc": {
+    "title": "Sleep Calculator: When to Go to Bed and Wake Up | Saat Tarih",
+    "description": "Work out bedtimes or wake-up times from 90-minute sleep cycles: see when to go to bed for a given wake-up time, or when to wake up if you go to bed now.",
+    "h1": "Sleep calculator",
+    "lead": "Find bedtimes for a wake-up time, or wake-up times for a bedtime, using 90-minute sleep cycles. 15 minutes are added for falling asleep.",
+    "search": "sleep calculator bedtime wake up time sleep cycle 90 minutes when should I go to bed",
+    "wakeHeading": "By wake-up time: when to go to bed?",
+    "wakeLabel": "Wake-up time",
+    "bedHeading": "By bedtime: when to wake up?",
+    "bedLabel": "Bedtime",
+    "nowBtn": "If I go to bed now",
+    "cycles": "{n} cycles · {d} of sleep",
+    "best": "recommended",
+    "note": "Sleep cycles vary from person to person (roughly 70–120 minutes); these times are an approximate guide, not medical advice. Adults are generally advised to sleep 7–9 hours.",
+    "faq": [
+      {
+        "q": "How long is a sleep cycle?",
+        "a": "A sleep cycle lasts about 90 minutes on average (roughly 70–120 minutes, depending on the person). Waking at the end of a cycle, in light sleep, is usually easier, so the calculator suggests times in multiples of 90 minutes."
+      },
+      {
+        "q": "How many cycles should I sleep?",
+        "a": "Adults are generally advised to sleep 7–9 hours, which is 5 or 6 cycles. The calculator highlights 6 and 5 cycles and also shows shorter options."
+      }
+    ]
+  },
+  "examTimer": {
+    "title": "Exam Timer: Full-Screen Countdown for the Exam Room | Saat Tarih",
+    "description": "A full-screen exam timer with exam name, room, reading time and exam duration: time left, finish time and last-minute warnings. For school exams and mock tests.",
+    "h1": "Exam timer",
+    "lead": "Enter the exam name, room, reading time and exam duration; the full-screen timer for the projector shows the time left and the finish time.",
+    "search": "exam timer classroom countdown full screen test timer projector mock exam",
+    "nameLabel": "Exam name",
+    "namePh": "e.g. Maths mid-term",
+    "roomLabel": "Room / class",
+    "roomPh": "e.g. 9A",
+    "readLabel": "Reading time (min)",
+    "durLabel": "Exam duration (min)",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Resume",
+    "reset": "Reset",
+    "phaseRead": "Reading time",
+    "phaseExam": "Exam in progress",
+    "phaseDone": "Time is up",
+    "endsAt": "Ends at {time}",
+    "warn15": "Last 15 minutes",
+    "warn5": "Last 5 minutes",
+    "note": "It runs while the page is open; the start is saved in this browser, so the timer continues if you reopen the page. Time is measured against the server clock; in full screen the display is kept awake.",
+    "faq": [
+      {
+        "q": "How do I use the exam timer?",
+        "a": "Enter the exam name, room, reading time (0 if none) and exam duration, then press Start; use the full-screen button to project it. When reading time ends the exam time starts automatically, and the colour changes in the last 15 and 5 minutes."
+      },
+      {
+        "q": "Does the timer stop if I close the page?",
+        "a": "No. The start time is saved in this browser; when you reopen the page the timer carries on. Pausing is saved too."
+      }
+    ]
+  },
+  "classroom": {
+    "title": "Classroom Tools: Random Name Picker, Team Maker, Counter | Saat Tarih",
+    "description": "Free classroom tools: pick a random student from a list, split names into even teams and keep team scores with counters. No sign-up; names stay in your browser.",
+    "h1": "Classroom tools",
+    "lead": "Type your students' names once, then pick a random name, split the class into teams or keep score with counters. A full-screen button lets you project it on the board.",
+    "search": "classroom tools random name picker name generator team maker group generator score counter teacher",
+    "tabPicker": "Name picker",
+    "tabTeams": "Team maker",
+    "tabCounter": "Counter",
+    "namesLabel": "Names (one per line or comma-separated)",
+    "namesPh": "Alice, Ben, Chloe…",
+    "pick": "Pick at random",
+    "removePicked": "Remove picked name from the list",
+    "picked": "Picked",
+    "left": "Left in list: {n}",
+    "restore": "Restore list",
+    "empty": "Type some names first.",
+    "teamCount": "Number of teams",
+    "makeTeams": "Make teams",
+    "team": "Team {n}",
+    "counterName": "Counter name",
+    "addCounter": "Add counter",
+    "counterDefault": "Score",
+    "reset": "Reset",
+    "remove": "Remove",
+    "note": "Names and counters are stored only in this browser and are never sent anywhere. Picks use the browser's secure random number generator.",
+    "faq": [
+      {
+        "q": "How does the random name picker work?",
+        "a": "Type names one per line or separated by commas and press Pick at random. With \"Remove picked name from the list\" on, a name will not come up again until the list runs out; Restore list starts over. Picks use the browser's secure random number generator."
+      },
+      {
+        "q": "Are student names sent anywhere?",
+        "a": "No. Names, teams and counters are stored only in this browser; they are not sent to a server or included in statistics."
       }
     ]
   }

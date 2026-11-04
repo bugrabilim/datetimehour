@@ -133,12 +133,15 @@ struct AlarmMusicSection: View {
     @State private var pickingFile = false
     @State private var source: AlarmMusicSource?
     @State private var error: String?
+    /// Uygulamanın ses kitaplığı (AlarmTones; 2. analiz #3)
+    @State private var library = false
 
     var body: some View {
         Section {
             LabeledContent(L("alarm.music")) {
                 Text(item.music.isEmpty ? L("alarm.music.none") : item.musicName).lineLimit(1)
             }
+            Button(L("tone.library")) { library = true }
             Button(L("alarm.music.library")) { pickingLibrary = true }
             Button(L("alarm.music.files")) { pickingFile = true }
             if !item.music.isEmpty {
@@ -147,10 +150,11 @@ struct AlarmMusicSection: View {
                     item.musicName = ""
                 }
             }
-            if let error { Text(error).font(.footnote).foregroundStyle(.red) }
+            if let error { Text(error).font(.footnote).foregroundStyle(Theme.err) }
         } footer: {
             Text(L("alarm.music.note"))
         }
+        .sheet(isPresented: $library) { AlarmToneLibrary(item: $item) }
         .sheet(isPresented: $pickingLibrary) {
             MusicLibraryPicker { picked in
                 pickingLibrary = false
@@ -234,14 +238,14 @@ private struct AlarmMusicTrimSheet: View {
                         }
                     }
                     Button(L(player == nil ? "alarm.music.listen" : "alarm.music.stop")) { toggle() }
-                    if let error { Text(error).font(.footnote).foregroundStyle(.red) }
+                    if let error { Text(error).font(.footnote).foregroundStyle(Theme.err) }
                 } footer: {
                     Text(L("alarm.music.trimNote"))
                 }
             }
             .themedBackground()
             .navigationTitle(L("alarm.music"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(L("alarm.cancel")) { stop(); done(nil) }

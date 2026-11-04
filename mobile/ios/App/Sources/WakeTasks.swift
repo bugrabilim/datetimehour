@@ -19,6 +19,21 @@ struct PendingWakeTask: Codable, Equatable, Identifiable {
     var rise: Bool
     var rings: Int
     var repeatID: String?
+    /// Alarmın duvar kâğıdı (AlarmWalls; 2. analiz #2); eski kayıtlarda yok
+    var wall: String?
+    /// 2. analiz #34: asıl görevden sonra sırayla istenecek görevler ("random" görev ekranında seçilir); eski kayıtlarda yok
+    var chain: [String]?
+
+    /// Rastgele görevde seçilenler (kayıt ya da sensör gerektirmeyenler)
+    static let randomTasks = ["math", "memory", "typing", "shake"]
+
+    /// Sırayla istenecek görevler (kayıtsız kod/fotoğraf matematiğe düşer, rastgele olanlar burada seçilir)
+    var steps: [String] {
+        let all = [task] + (chain ?? [])
+        let kinds = all.filter { $0 != "none" }.map { AlarmItem.effectiveTask($0, code: code) }
+        let out = kinds.map { $0 == "random" ? (Self.randomTasks.randomElement() ?? "math") : $0 }
+        return out.isEmpty ? ["math"] : out
+    }
 }
 
 @MainActor
@@ -40,6 +55,8 @@ enum WakeTasks {
             } else {
                 UserDefaults.standard.removeObject(forKey: pendingKey)
             }
+            // Görev bitene kadar uygulama silinemesin (2. analiz #46; Ekran Süresi onayı ve Apple yetkisi gerekir)
+            FocusBlock.denyRemoval(newValue.map { $0.task != "none" } ?? false)
         }
     }
 
@@ -92,22 +109,82 @@ enum WakeTasks {
         }
     }
 
-    /// Uygulama öne geldi: denetim vakti geldiyse uyanık sayılır (yedek alarm iptal). Bekleyen görev varsa true.
+    /// Uygulama öne geldi: bekleyen görev varsa true. Uyanma denetiminin vakti geldiyse ve yedek alarma süre varsa
+    /// geri sayım halkası açılır (2. analiz #45; "Uyanığım" ile biter, `checkDeadline`); süre geçtiyse kayıt silinir.
     static func onActive(now: Date = Date()) -> Bool {
         if let d = UserDefaults.standard.data(forKey: checkKey), let c = try? JSONDecoder().decode(Check.self, from: d),
-           now.timeIntervalSince1970 >= c.at {
-            if let id = c.backupID.flatMap(UUID.init(uuidString:)) { AlarmCenter.cancel(id: id) }
-            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [checkNotification])
+           now.timeIntervalSince1970 >= c.at + Double(WakeTask.checkGraceMin * 60) {
             UserDefaults.standard.removeObject(forKey: checkKey)
         }
         return pending != nil
+    }
+
+    /// Denetim vakti geldi, yedek alarm henüz çalmadı: halkanın bitiş anı
+    static func checkDeadline(now: Date = Date()) -> Date? {
+        guard let d = UserDefaults.standard.data(forKey: checkKey), let c = try? JSONDecoder().decode(Check.self, from: d),
+              now.timeIntervalSince1970 >= c.at else { return nil }
+        let end = Date(timeIntervalSince1970: c.at + Double(WakeTask.checkGraceMin * 60))
+        return end > now ? end : nil
+    }
+
+    /// "Uyanığım": yedek alarm iptal, bildirim kalkar
+    static func awake() {
+        if let d = UserDefaults.standard.data(forKey: checkKey), let c = try? JSONDecoder().decode(Check.self, from: d),
+           let id = c.backupID.flatMap(UUID.init(uuidString:)) {
+            AlarmCenter.cancel(id: id)
+        }
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [checkNotification])
+        UserDefaults.standard.removeObject(forKey: checkKey)
+    }
+}
+
+/// Uyanma denetimi ekranı (2. analiz #45): yedek alarma kalan süre halka olarak azalır; "Uyanığım" denetimi bitirir.
+struct WakeCheckView: View {
+    let deadline: Date
+    let onAwake: () -> Void
+    let onTimeout: () -> Void
+
+    var body: some View {
+        TimelineView(.periodic(from: .now, by: 0.25)) { ctx in
+            let left = max(0, deadline.timeIntervalSince(ctx.date))
+            let total = Double(WakeTask.checkGraceMin * 60)
+            VStack(spacing: 24) {
+                Spacer()
+                Text(L("wake.checkTitle")).font(.largeTitle.bold()).foregroundStyle(Theme.text).multilineTextAlignment(.center)
+                ZStack {
+                    Circle().stroke(Theme.surface2, lineWidth: 16)
+                    Circle().trim(from: 0, to: min(1, left / total))
+                        .stroke(Theme.accent, style: StrokeStyle(lineWidth: 16, lineCap: .round))
+                        .rotationEffect(.degrees(-90))
+                    Text(verbatim: String(format: "%d:%02d", Int(left) / 60, Int(left) % 60))
+                        .font(.system(size: 44, weight: .bold, design: .rounded)).monospacedDigit()
+                        .environment(\.layoutDirection, .leftToRight)
+                        .foregroundStyle(Theme.ink)
+                }
+                .frame(width: 220, height: 220)
+                .accessibilityElement(children: .combine)
+                Text(L("wake.checkRing")).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
+                RoundButton(title: L("wake.awake"), prominent: true) { onAwake() }.frame(maxWidth: 360)
+                Spacer()
+            }
+            .padding(24)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(AppBackdrop().ignoresSafeArea())
+            .onChange(of: left == 0) { _, done in if done { onTimeout() } }
+        }
     }
 }
 
 /// Görev ekranı: çözülmeden kapanmaz. Sensör ya da kamera yoksa "Başka görev" zor matematiğe geçer.
 struct WakeTaskView: View {
     let task: PendingWakeTask
+    /// Önizleme (2. analiz #35): uyanma kaydı, rozet ve el feneri yok
+    var preview = false
+    /// Verilirse bu görevler (ertele görevi gibi); yoksa alarmın zinciri
+    var only: [String]? = nil
     let onDone: () -> Void
+    @State private var steps: [String] = []
+    @State private var step = 0
     @State private var kind = ""
     @State private var problems: [WakeTask.Problem] = []
     @State private var index = 0
@@ -117,21 +194,30 @@ struct WakeTaskView: View {
     @State private var scanning = false
     @State private var codeWrong = false
     @State private var motion = MotionReader()
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         VStack(spacing: 22) {
+            // El feneri (2. analiz #41)
+            if !preview { TorchButton() }
             Spacer(minLength: 12)
             Image(systemName: "alarm.waves.left.and.right").font(.system(size: 52)).foregroundStyle(Theme.accent)
             Text(L("wake.title")).font(.title2.weight(.semibold)).foregroundStyle(Theme.text).multilineTextAlignment(.center)
-            switch kind {
-            case "math": math
-            case "shake", "steps": moving
-            case "code": code
-            case "memory": MemoryTaskView(level: task.level) { finish() }
-            case "typing": TypingTaskView { finish() }
-            case "photo": PhotoTaskView(code: task.code) { finish() }
-            default: EmptyView()
+            if steps.count > 1 { Text(T("wake.step", step + 1, steps.count)).font(.subheadline).foregroundStyle(Theme.muted) }
+            Group {
+                switch kind {
+                case "math": math
+                case "shake", "steps", "squat": moving
+                case "object": ObjectTaskView(code: task.code) { finish() }
+                case "speak": SpeakTaskView(onSolved: { finish() }, onUnavailable: { kind = "typing" })
+                case "code": code
+                case "memory": MemoryTaskView(level: task.level) { finish() }
+                case "typing": TypingTaskView { finish() }
+                case "photo": PhotoTaskView(code: task.code) { finish() }
+                default: EmptyView()
+                }
             }
+            .id("\(step)-\(kind)")
             Spacer()
             if kind != "math" {
                 Button(L("wake.other")) { useMath() }.font(.subheadline).tint(Theme.muted)
@@ -140,12 +226,15 @@ struct WakeTaskView: View {
         .padding(24)
         .frame(maxWidth: 520)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Theme.bg.ignoresSafeArea())
+        // Duvar kâğıdı seçiliyse zemin o, yazılar koyu temanın açık renkleri (2. analiz #2)
+        .background {
+            if let w = task.wall, !w.isEmpty { AlarmWall(id: w).ignoresSafeArea() } else { AppBackdrop().ignoresSafeArea() }
+        }
+        .environment(\.colorScheme, (task.wall ?? "").isEmpty ? colorScheme : .dark)
         .interactiveDismissDisabled()
         .onAppear {
-            kind = AlarmItem.effectiveTask(task.task, code: task.code)
-            if kind == "math" { useMath(level: task.level) }
-            startMotion()
+            steps = only ?? task.steps
+            begin()
         }
         .onDisappear { motion.stop() }
         .sheet(isPresented: $scanning) {
@@ -172,15 +261,16 @@ struct WakeTaskView: View {
                 .multilineTextAlignment(.center)
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: 220)
-            if wrong { Text(L("wake.wrong")).foregroundStyle(.red).font(.subheadline) }
+            if wrong { Text(L("wake.wrong")).foregroundStyle(Theme.err).font(.subheadline) }
             RoundButton(title: L("wake.check"), prominent: true) { check() }
         }
     }
 
     private var moving: some View {
-        let total = kind == "shake" ? WakeTask.shakes : WakeTask.steps
+        let total = Self.total(kind)
+        let key = kind == "shake" ? "wake.shake" : (kind == "squat" ? "wake.squat" : "wake.steps")
         return VStack(spacing: 14) {
-            Text(T(kind == "shake" ? "wake.shake" : "wake.steps", total)).font(.headline).foregroundStyle(Theme.text)
+            Text(T(key, total)).font(.headline).foregroundStyle(Theme.text).multilineTextAlignment(.center)
             Text(T("wake.progress", min(count, total), total))
                 .font(.system(size: 48, weight: .bold, design: .rounded)).monospacedDigit()
                 .environment(\.layoutDirection, .leftToRight)
@@ -198,8 +288,15 @@ struct WakeTaskView: View {
             } else {
                 Text(L("wake.noCamera")).font(.subheadline).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
             }
-            if codeWrong { Text(L("wake.code.wrong")).foregroundStyle(.red).font(.subheadline) }
+            if codeWrong { Text(L("wake.code.wrong")).foregroundStyle(Theme.err).font(.subheadline) }
         }
+    }
+
+    private func begin() {
+        kind = steps.indices.contains(step) ? steps[step] : "math"
+        count = 0
+        if kind == "math" { useMath(level: task.level) }
+        startMotion()
     }
 
     private func useMath(level: Int = 3) {
@@ -225,16 +322,35 @@ struct WakeTaskView: View {
     }
 
     private func startMotion() {
-        guard kind == "shake" || kind == "steps" else { return }
-        let total = kind == "shake" ? WakeTask.shakes : WakeTask.steps
-        motion.start(counter: kind == "shake" ? .shake() : .steps()) { n in
+        guard kind == "shake" || kind == "steps" || kind == "squat" else { return }
+        let total = Self.total(kind)
+        let counter: MotionCounter = kind == "shake" ? .shake() : (kind == "squat" ? .squat() : .steps())
+        motion.start(counter: counter) { n in
             count = n
             if n >= total { finish() }
         }
     }
 
+    private static func total(_ kind: String) -> Int {
+        switch kind {
+        case "shake": return WakeTask.shakes
+        case "squat": return WakeTask.squats
+        default: return WakeTask.steps
+        }
+    }
+
     private func finish() {
         motion.stop()
+        // Zincir (2. analiz #34): sıradaki görev
+        if step + 1 < steps.count {
+            step += 1
+            begin()
+            return
+        }
+        if preview { onDone(); return }
+        Torch.set(false)
+        SleepLogStore.recordWake()
+        WakeGame.record(wake: Date(), alarm: nil, task: true) // uyanma oyunu (2. analiz #7)
         BadgeStore.shared.hit(.uyanik)
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         onDone()
@@ -269,7 +385,7 @@ private struct MemoryTaskView: View {
             }
             .environment(\.layoutDirection, .leftToRight)
             Text(T("wake.progress", pos, seq.count)).font(.subheadline).foregroundStyle(Theme.muted)
-            if wrong { Text(L("wake.memory.wrong")).font(.subheadline).foregroundStyle(.red) }
+            if wrong { Text(L("wake.memory.wrong")).font(.subheadline).foregroundStyle(Theme.err) }
         }
         .task(id: round) {
             var rng = SystemRandomNumberGenerator()
@@ -365,7 +481,7 @@ private struct PhotoTaskView: View {
             } else {
                 Text(L("wake.noCamera")).font(.subheadline).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
             }
-            if wrong { Text(L("wake.photo.wrong")).font(.subheadline).foregroundStyle(.red).multilineTextAlignment(.center) }
+            if wrong { Text(L("wake.photo.wrong")).font(.subheadline).foregroundStyle(Theme.err).multilineTextAlignment(.center) }
         }
         .fullScreenCover(isPresented: $shooting) {
             CameraShot { img in

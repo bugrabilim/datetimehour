@@ -67,16 +67,67 @@ data class AlarmItem(
     /** Akıllı alarm (31 Ekim 2026; iOS ile aynı alan): alarmdan önceki bu kadar dakikada uyku oturumu hafif uyku (hareket)
      *  algılarsa erken çalar; 0 = kapalı (SmartSleep) */
     val smart: Int = 0,
+    /** 2. analiz #41: çalarken sallayınca ertele; #42: sakin ön alarm (dk; 0 = kapalı); #43: kapanınca açılacak uygulama
+     *  (paket adı; yalnız Android); #52: uyku planının kalkış alarmı (plan değişince güncellenir, listede ayrı başlıkta) */
+    val shakeSnooze: Boolean = false,
+    val preAlarm: Int = 0,
+    val openApp: String = "",
+    val sleepPlan: Boolean = false,
+    /** 2. analiz #2: çalma ekranının duvar kâğıdı (AlarmWalls; boş = tema rengi); #79: kulaklık bağlıysa yalnız kulaklıkta */
+    val wall: String = "",
+    /** 2. analiz #40: her ertelemede süre yarıya iner (en az 1 dk); "HH:MM" sonrasında erteleme kapalı; ses düzeyi % (0 = telefonun) */
+    val snoozeShrink: Boolean = false,
+    val snoozeEnd: String = "",
+    val volume: Int = 0,
+    /** 2. analiz #132: bu şehrin saatiyle çalar (IANA; boş = telefonun saat dilimi) */
+    val tz: String = "",
+    /** 2. analiz #153: güneşe bağlı (rise/set) ± dakika; saat her gün seçili yerin doğuş/batışından hesaplanır */
+    val sun: String = "",
+    val sunOffset: Int = 0,
+    /** 2. analiz #34: asıl görevden sonra yapılacak görevler (en çok 2; "random" her çalmada rastgele seçilir);
+     *  #39: ertelemek için görev (none = serbest), ses tuşu ve güç tuşu ne yapsın (none, snooze, dismiss; yalnız Android) */
+    val chain: List<String> = emptyList(),
+    val snoozeTask: String = "none",
+    val keyAction: String = "none",
+    val powerAction: String = "none",
 ) {
+    /** Kapatırken sırayla istenecek görevler (asıl görev + zincir; rastgele olanlar çözülmüş) */
+    fun taskChain(random: kotlin.random.Random = kotlin.random.Random.Default): List<String> =
+        (listOf(effectiveTask) + chain.map { fix(it) }).filter { it != "none" }.map { if (it == "random") RANDOM_TASKS.random(random) else it }
+
+    private fun fix(t: String) = when {
+        t == "code" && (code.isEmpty() || code.startsWith(PhotoHash.PREFIX) || code.startsWith(ObjectTarget.PREFIX)) -> "math"
+        t == "photo" && !code.startsWith(PhotoHash.PREFIX) -> "math"
+        else -> t
+    }
+
     /** Kapatırken istenecek görev (kod kaydedilmediyse matematik); yoksa "none" */
     val effectiveTask: String get() = when {
-        task == "code" && (code.isEmpty() || code.startsWith(PhotoHash.PREFIX)) -> "math"
+        task == "code" && (code.isEmpty() || code.startsWith(PhotoHash.PREFIX) || code.startsWith(ObjectTarget.PREFIX)) -> "math"
         task == "photo" && !code.startsWith(PhotoHash.PREFIX) -> "math"
         else -> task
     }
 
     val title: String get() = label.ifEmpty { L("tools.alarm.defaultLabel") }
-    val timeText: String get() = Fmt.time(LocalDateTime.now().withHour(hour).withMinute(minute).atZone(ZoneId.systemDefault()))
+    val timeText: String get() {
+        if (sun.isNotEmpty()) {
+            val next = nextAt()
+            if (next != NEVER) return Fmt.time(java.time.Instant.ofEpochMilli(next).atZone(ZoneId.systemDefault()))
+        }
+        return Fmt.time(LocalDateTime.now().withHour(hour).withMinute(minute).atZone(ZoneId.systemDefault()))
+    }
+
+    /** Listede saatin altına: "Gün doğumu − 15 dk" ya da "Londra saatiyle · burada 10:00" */
+    val anchorText: String? get() = when {
+        sun.isNotEmpty() -> L(if (sun == "rise") "alarm.base.rise" else "alarm.base.set") + " · " + sunOffsetText(sunOffset)
+        tz.isNotEmpty() -> {
+            val city = City.all.firstOrNull { it.zone.id == tz }?.displayName ?: tz.substringAfterLast('/').replace('_', ' ')
+            val next = nextAt()
+            val local = if (next != NEVER) " · " + T("alarm.tzHere", Fmt.time(java.time.Instant.ofEpochMilli(next).atZone(ZoneId.systemDefault()))) else ""
+            T("alarm.tzCity", city) + local
+        }
+        else -> null
+    }
 
     /** "Bir kez", "Her gün", "Hafta içi" ya da gün kısaltmaları; belirli tarih, iki haftada bir ve bitiş tarihi eklenir */
     val repeatText: String get() {
@@ -104,18 +155,35 @@ data class AlarmItem(
         return true
     }
 
+    /** Alarmın saat dilimi: güneşe bağlıysa seçili yerin, şehre bağlıysa o şehrin (2. analiz #132), yoksa telefonun */
+    val zone: ZoneId get() = when {
+        sun.isNotEmpty() -> AppPlace.current().zone
+        tz.isNotEmpty() -> runCatching { ZoneId.of(tz) }.getOrNull() ?: ZoneId.systemDefault()
+        else -> ZoneId.systemDefault()
+    }
+
+    /** `d` günü (alarmın saat diliminde) çalma anı; güneşe bağlıysa doğuş/batış ± dakika, o gün güneş doğmuyor ya da
+     *  batmıyorsa (kutup bölgesi) null */
+    fun instantOn(d: LocalDate, zone: ZoneId = this.zone): Long? {
+        if (sun.isEmpty()) return d.atTime(hour, minute).atZone(zone).toInstant().toEpochMilli()
+        val p = AppPlace.current()
+        val m = sunMinutes(d, p.lat, p.lon, p.zone, sun == "rise") ?: return null
+        return d.atStartOfDay().plusMinutes((m + sunOffset).toLong()).atZone(p.zone).toInstant().toEpochMilli()
+    }
+
     /** `afterMs` sonrasındaki ilk çalma (atlama hesaba katılmaz); bir daha çalmayacaksa NEVER */
     fun occurrenceAfter(afterMs: Long): Long {
-        val zone = ZoneId.systemDefault()
+        val zone = zone
         if (days.isEmpty()) parse(date)?.let { d ->
-            val ms = d.atTime(hour, minute).atZone(zone).toInstant().toEpochMilli()
+            val ms = instantOn(d, zone) ?: return NEVER
             return if (ms > afterMs && allows(d)) ms else NEVER
         }
-        var t = java.time.Instant.ofEpochMilli(afterMs).atZone(zone).toLocalDateTime().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
-        repeat(16) {
-            val ms = t.atZone(zone).toInstant().toEpochMilli()
-            if (ms > afterMs && allows(t.toLocalDate())) return ms
-            t = t.plusDays(1)
+        // Güneşe bağlı alarmda eksi kayma önceki güne taşabilir: bir gün geriden başlanır
+        var d = java.time.Instant.ofEpochMilli(afterMs).atZone(zone).toLocalDate().minusDays(1)
+        repeat(17) {
+            val ms = instantOn(d, zone)
+            if (ms != null && ms > afterMs && allows(d)) return ms
+            d = d.plusDays(1)
         }
         return NEVER
     }
@@ -125,12 +193,12 @@ data class AlarmItem(
 
     /** `beforeMs` öncesindeki son çalma (günaydın kartı için) */
     fun occurrenceBefore(beforeMs: Long): Long? {
-        val zone = ZoneId.systemDefault()
-        var t = java.time.Instant.ofEpochMilli(beforeMs).atZone(zone).toLocalDateTime().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
-        repeat(9) {
-            val ms = t.atZone(zone).toInstant().toEpochMilli()
-            if (ms <= beforeMs && ((days.isEmpty() && date.isEmpty()) || allows(t.toLocalDate()))) return ms
-            t = t.minusDays(1)
+        val zone = zone
+        var d = java.time.Instant.ofEpochMilli(beforeMs).atZone(zone).toLocalDate().plusDays(1)
+        repeat(10) {
+            val ms = instantOn(d, zone)
+            if (ms != null && ms <= beforeMs && ((days.isEmpty() && date.isEmpty()) || allows(d))) return ms
+            d = d.minusDays(1)
         }
         return null
     }
@@ -138,11 +206,14 @@ data class AlarmItem(
     /** Sıradaki çalma (atlanan çalma ve istenirse resmî tatiller hariç) */
     fun nextAt(nowMs: Long = System.currentTimeMillis()): Long {
         var t = occurrenceAfter(maxOf(nowMs, skipUntil))
-        if (!skipHolidays || days.isEmpty()) return t
-        val zone = ZoneId.systemDefault()
-        // Bayram en çok 4,5 gün sürer; 60 deneme her durumda yeter (bütün günler tatilse ilk çalma kalır)
-        repeat(60) {
-            if (t == NEVER || !isHoliday(java.time.Instant.ofEpochMilli(t).atZone(zone).toLocalDate())) return t
+        val paused = days.isNotEmpty() && AlarmPause.range() != null
+        if ((!skipHolidays || days.isEmpty()) && !paused) return t
+        val zone = zone
+        // Bayram en çok 4,5 gün sürer; tatil modu (2. analiz #44) uzun olabilir: 120 deneme (bütün günler kapalıysa ilk çalma kalır)
+        repeat(120) {
+            if (t == NEVER) return t
+            val d = java.time.Instant.ofEpochMilli(t).atZone(zone).toLocalDate()
+            if (!(skipHolidays && days.isNotEmpty() && isHoliday(d)) && !(paused && AlarmPause.contains(d))) return t
             t = occurrenceAfter(t)
         }
         return occurrenceAfter(maxOf(nowMs, skipUntil))
@@ -159,7 +230,10 @@ data class AlarmItem(
         .put("sound", sound).put("vibrate", vibrate).put("snoozeMax", snoozeMax).put("rise", rise).put("skipHolidays", skipHolidays)
         .put("sunrise", sunrise).put("task", task).put("taskLevel", taskLevel).put("code", code).put("wakeCheck", wakeCheck)
         .put("preNotify", preNotify).put("speak", speak).put("date", date).put("every", every).put("anchor", anchor).put("until", until)
-        .put("link", link).put("smart", smart)
+        .put("link", link).put("smart", smart).put("shakeSnooze", shakeSnooze).put("preAlarm", preAlarm).put("openApp", openApp)
+        .put("sleepPlan", sleepPlan).put("wall", wall)
+        .put("snoozeShrink", snoozeShrink).put("snoozeEnd", snoozeEnd).put("volume", volume).put("tz", tz).put("sun", sun).put("sunOffset", sunOffset)
+        .put("chain", JSONArray(chain)).put("snoozeTask", snoozeTask).put("keyAction", keyAction).put("powerAction", powerAction)
 
     companion object {
         private const val KEY = "alarms"
@@ -172,6 +246,30 @@ data class AlarmItem(
         val SUNRISE_CHOICES = listOf(0, 10, 20, 30)
         val PRE_NOTIFY_CHOICES = listOf(0, 15, 30, 60)
         val SMART_CHOICES = listOf(0, 10, 20, 30)
+        val PRE_ALARM_CHOICES = listOf(0, 10, 20, 30)
+        val VOLUME_CHOICES = listOf(0, 30, 50, 70, 100)
+        fun sunOffsetText(m: Int): String = when {
+            m == 0 -> L("alarm.sunExact")
+            m < 0 -> T("alarm.sunBefore", -m)
+            else -> T("alarm.sunAfter", m)
+        }
+
+        /** Rastgele görevde seçilenler (kayıt ya da sensör gerektirmeyenler) */
+        val RANDOM_TASKS = listOf("math", "memory", "typing", "shake")
+        val KEY_ACTIONS = listOf("none", "snooze", "dismiss")
+        val SUN_OFFSETS = listOf(-60, -30, -15, 0, 15, 30, 60)
+        /** Şehre bağlı alarmda seçilebilen dilimler: dünya saatleri şehirleri */
+        val TZ_CHOICES: List<String> get() = City.all.map { it.zone.id }.distinct()
+
+        /** Güneşin doğuşu ya da batışı (o yerin saatiyle, gece yarısından dakika; vakit düzeltmeleri olmadan, Mevsimler'deki
+         *  gibi); kutup gününde/gecesinde null */
+        fun sunMinutes(d: LocalDate, lat: Double, lon: Double, zone: ZoneId, rise: Boolean): Int? {
+            val p = tr.bumba.time.core.PrayerTimes.Parameters(adjustments = tr.bumba.time.core.PrayerTimes.Adjustments(sunrise = 0.0, dhuhr = 0.0, maghrib = 0.0))
+            val t = tr.bumba.time.core.PrayerTimes.times(d, lat, lon, zone, p)
+            val h = (if (rise) t.sunrise else t.maghrib) ?: return null
+            if (h.isNaN()) return null
+            return Math.round(h * 60).toInt()
+        }
 
         /** Gün doğumu ışığı seçili sıradaki alarm (tam ekran saat için): an ve pencere (dakika). Alarmdan 15 dk sonrasına
          *  kadar ışık yanık kaldığı için biraz geriden bakılır. */
@@ -200,6 +298,13 @@ data class AlarmItem(
                 o.optInt("preNotify", 0), o.optBoolean("speak", false),
                 o.optString("date", ""), o.optInt("every", 1), o.optString("anchor", ""), o.optString("until", ""),
                 link = o.optString("link", ""), smart = o.optInt("smart", 0),
+                shakeSnooze = o.optBoolean("shakeSnooze", false), preAlarm = o.optInt("preAlarm", 0), openApp = o.optString("openApp", ""),
+                sleepPlan = o.optBoolean("sleepPlan", false), wall = o.optString("wall", ""),
+                snoozeShrink = o.optBoolean("snoozeShrink", false), snoozeEnd = o.optString("snoozeEnd", ""), volume = o.optInt("volume", 0),
+                tz = o.optString("tz", ""), sun = o.optString("sun", ""), sunOffset = o.optInt("sunOffset", 0),
+                chain = o.optJSONArray("chain")?.let { a -> (0 until a.length()).map { a.getString(it) } } ?: emptyList(),
+                snoozeTask = o.optString("snoozeTask", "none"), keyAction = o.optString("keyAction", "none"),
+                powerAction = o.optString("powerAction", "none"),
             )
         }
 
@@ -310,6 +415,7 @@ object AlarmScheduler {
     /** Zil sesinin adı (boşsa "Varsayılan alarm sesi") */
     fun soundTitle(c: Context, sound: String): String =
         if (sound.isEmpty()) L("alarm.soundDefault")
+        else if (AlarmTones.id(sound) != null) L("tone.${AlarmTones.id(sound)}")
         else runCatching { RingtoneManager.getRingtone(c, android.net.Uri.parse(sound))?.getTitle(c) }.getOrNull() ?: L("alarm.soundDefault")
 
     private fun pending(c: Context, id: String, title: String, kind: String, flags: Int): PendingIntent? =
@@ -348,6 +454,7 @@ object AlarmScheduler {
         }
         Prefs.store.edit().putStringSet("alarms.scheduled", items.filter { it.enabled }.map { it.id }.toSet()).apply()
         AlarmPre.sync(c, items, known)
+        PreAlarm.sync(c, items, known)
     }
 
     /** Tek seferlik çalma (zamanlayıcı, pomodoro, erteleme) */
@@ -363,6 +470,7 @@ object AlarmScheduler {
     /** Uygulama ya da telefon yeniden başlayınca: alarmlar ve süren zamanlayıcı/pomodoro yeniden kurulur */
     fun restoreAll(c: Context) {
         sync(c)
+        FocusBlock.sync(c)
         GeoAlarms.sync(c)
         LiveNotifications.sync(c)
         val now = System.currentTimeMillis()
@@ -385,7 +493,15 @@ object AlarmScheduler {
         val item = AlarmItem.find(id)
         val minutes = item?.snooze ?: SNOOZE_MIN
         val max = item?.snoozeMax ?: 0
-        return if (minutes > 0 && (max == 0 || Prefs.store.getInt(snoozeKey(id), 0) < max)) minutes else 0
+        val count = Prefs.store.getInt(snoozeKey(id), 0)
+        // 2. analiz #40: belli saatten sonra erteleme yok
+        item?.snoozeEnd?.takeIf { it.length == 5 }?.let { end ->
+            val now = java.time.LocalTime.now()
+            if (!now.isBefore(java.time.LocalTime.parse(end))) return 0
+        }
+        if (minutes <= 0 || (max != 0 && count >= max)) return 0
+        // Her ertelemede yarıya iner (10 → 5 → 2 → 1)
+        return if (item?.snoozeShrink == true) maxOf(1, minutes shr count) else minutes
     }
 
     /** Çalan alarmın bildirimi: alarm sesi sürekli çalar; kilit ekranında AlarmActivity açılır.
@@ -396,7 +512,8 @@ object AlarmScheduler {
         if (kind == WakeCheck.KIND) { WakeCheck.ask(c, id); return }
         val item = if (kind == "alarm") AlarmItem.find(id) else null
         // Kademeli ses, saati sesli söyleme ya da müzik bağlantısı: ses hizmette çalar
-        if ((item?.rise == true || item?.speak == true || item?.link?.isNotEmpty() == true) && AlarmRingService.start(c, id, title, kind)) return
+        // Kulaklıkta çal (2. analiz #79): kulaklık bağlıysa ses hizmette, medya akışında çalar
+        if ((item?.rise == true || item?.speak == true || item?.link?.isNotEmpty() == true || (item?.volume ?: 0) in 1..99) && AlarmRingService.start(c, id, title, kind)) return
         runCatching { NotificationManagerCompat.from(c).notify(id.hashCode(), notification(c, id, title, kind, silent = false)) }
     }
 

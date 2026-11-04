@@ -17,17 +17,26 @@ enum CloudSync {
     /// Eşitlenen anahtarlar (Android'deki yedekle aynı adlar; değer biçimleri iki platformda aynı)
     static let keys: [String] = [
         // Görünüm ve saat
-        "appearance", "accent", "h12", "units", "keepAwake", "clockModel", "clockFont", "secA", "secD", "homeItems",
-        Features.key, FullscreenBackground.key, NightMode.key, "fs.text", "fs.scale", FullscreenPhoto.slideEveryKey,
+        "appearance", "accent", "h12", "units", "keepAwake", "clockModel", "clockFont", "digital.style", "world.view", "qibla.style", "qibla.favs", "secA", "secD", "homeItems",
+        Features.key, Features.barKey, AllPrefs.favsKey, CalPrefs.modeKey, CalPrefs.hijriNavKey, CalPrefs.countryKey, CalPrefs.hiddenKey, FullscreenBackground.key, NightMode.key, "fs.text", "fs.scale", FullscreenPhoto.slideEveryKey,
         // Kişisel listeler
-        "world", SavedPlaces.key, "countdowns", "tools.voice", "hiit.cfg", "hiit.routine", "routines", "timers.history", Journal.key, "meet.cities", PrayerMethod.methodKey, PrayerMethod.hanafiKey,
+        "world", SavedPlaces.key, "countdowns", "tools.voice", "hiit.cfg", "hiit.routine", "hiit.log", "world.labels", "hiit.cue.next", "hiit.cue.half", "hiit.cue.ten", "timers.visual", "timers.keypad", "routines", "timers.history", Journal.key, "meet.cities", PrayerMethod.methodKey, PrayerMethod.hanafiKey,
         // Pomodoro ve uyku
-        PomoLog.key, PomoTodo.key, "pomo.task", "pomo.goal", "pomo.tag", "pomo.noise", "pomo.vol", "pomo.work", "pomo.short", "pomo.long", "pomo.rounds",
+        PomoLog.key, PomoTodo.key, Study.logKey, Study.subjectsKey, WakeGame.key, "pomo.task", "pomo.goal", "pomo.tag", "pomo.noise", "pomo.vol", "pomo.work", "pomo.short", "pomo.long", "pomo.rounds",
         SleepPlan.onKey, SleepPlan.wakeKey, SleepPlan.durationKey, SleepPlan.daysKey, SleepPlan.remindKey,
         SleepSounds.kindKey, SleepSounds.volumeKey, SleepSounds.timerKey,
         // İbadet
         Quran.bookmarkKey, "quran.size", "quran.en", "zikir.kind", "zikir.target", "zikir.tesbihat", "zikir.total",
         "track.prayer", "track.kaza", "track.fast", "zakat.values",
+        // 2. analiz 1. dalga D (3 Kasım 2026): takip ekleri, hatim, Kur'an zemini/hedefi, dua favorileri, kendi zikirleri, vakit görünümü
+        "track.when", "track.pauses", "track.pausedFrom", "track.kazaLog", "track.life", TrackX.inlineKey,
+        "quran.hatim", QuranPlan.goalKey, "quran.read", QuranPlan.themeKey, Duas.favsKey, ZikirCustom.key, "zikir.beads", "zikir.shake",
+        "prayer.visual", "prayer.words", "meet.h12", "meet.exchanges",
+        // Sahibin ekran görüntüleri (3 Kasım 2026): yazı boyutu
+        FontScale.key, Atmosphere.key,
+        // 2. analiz K-6 (3 Kasım 2026): gece yazı rengi ve saatleri, lüm rengi
+        NightMode.colorKey, NightMode.fromKey, NightMode.toKey, Lume.key,
+        ClockDigits.colorKey, ClockDigits.outlineKey, FlipLook.pairKey, FlipLook.smallSecKey, FlipLook.hingeKey, FlipLook.cardKey,
     ]
 
     private static let store = NSUbiquitousKeyValueStore.default

@@ -1,3 +1,4 @@
+import SwiftUI
 import Foundation
 import BackgroundTasks
 import UserNotifications
@@ -9,7 +10,7 @@ import SaatCore
 /// kurulur; yalnız hava özeti için hava servisine (WeatherKit) sorulur. iOS en çok 64 bekleyen bildirim tuttuğu için
 /// liste PrayerNotifier'da vakitlerle birlikte zamana göre sıralanıp kesilir; arka plan yenilemesi listeyi ileri taşır.
 enum NotifyFeature: String, CaseIterable, Identifiable {
-    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime
+    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, friday, daily, sky
 
     var id: String { rawValue }
     var key: String { "notify.\(rawValue)" }
@@ -26,6 +27,10 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
         case .hourly: "clock"
         case .dst: "clock.arrow.2.circlepath"
         case .bedtime: "bed.double"
+        case .habits: "cup.and.saucer"
+        case .friday: "building.columns"
+        case .daily: "quote.bubble"
+        case .sky: "sparkles"
         }
     }
 
@@ -74,7 +79,50 @@ enum FeatureNotifier {
         out += CountdownItem.reminders(now: now) // kişisel geri sayımların hatırlatmaları (her biri kendi ayarıyla)
         if NotifyFeature.bedtime.isOn { out += SleepPlan.reminders(now: now, days: days) } // uyku planı kuruluysa
         out += AlarmItem.preNotifications(now: now) // yaklaşan alarm (her alarm kendi ayarıyla)
+        out += AlarmItem.preAlarms(now: now) // sakin ön alarm (2. analiz #42)
+        if NotifyFeature.habits.isOn { out += SleepPlan.habits(now: now, days: min(days, 7)) } // uyku alışkanlıkları (#49)
+        if NotifyFeature.friday.isOn { out += friday(place: place, now: now, days: days) } // Cuma hatırlatması (#58)
+        if NotifyFeature.daily.isOn { out += daily(now: now, days: min(days, 7)) } // günün sözü (#16)
+        if NotifyFeature.sky.isOn { out += sky(place: place, now: now, days: days) } // gökyüzü olayları (#154)
         return out.filter { $0.fireAt > now }
+    }
+
+    /// Gökyüzü olayları (2. analiz #154): o gecenin akşamı 20.00'de (yerel öğleden önceki olay bir önceki akşama düşer)
+    private static func sky(place: AppPlace, now: Date, days: Int) -> [PlannedNotification] {
+        let lo = now.addingTimeInterval(-86_400), hi = now.addingTimeInterval(Double(days + 1) * 86_400)
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = place.zone
+        return SkyEvent.all.filter { $0.date > lo && $0.date < hi }.compactMap { e in
+            let hour = cal.component(.hour, from: e.date)
+            let dayStart = cal.startOfDay(for: e.date)
+            let evening = cal.date(byAdding: .hour, value: hour < 12 ? -4 : 20, to: dayStart) ?? e.date
+            let body: String = e.detail ?? Fmt.shortDateTime(e.date, tz: place.zone)
+            return PlannedNotification(id: "\(featurePrefix)sky-\(e.t)-\(e.k)", fireAt: evening, title: e.title, body: body, sound: nil, passive: true)
+        }
+    }
+
+    /// Günün sözü (2. analiz #16): her gün 08.00'de (telefonun saatiyle) takvim yaprağındaki söz
+    private static func daily(now: Date, days: Int) -> [PlannedNotification] {
+        (0..<days).compactMap { i in
+            let day = CalendarDay(now).adding(days: i)
+            guard let text = Sayings.today(day) else { return nil }
+            let at = day.noon(in: .current).addingTimeInterval(-4 * 3600)
+            return PlannedNotification(id: "\(featurePrefix)daily-\(day.iso)", fireAt: at, title: L("notify.n.daily"), body: text,
+                                       sound: nil, passive: true)
+        }
+    }
+
+    /// Cuma hatırlatması (2. analiz #58): Cuma günü öğle vaktinden 45 dakika önce
+    private static func friday(place: AppPlace, now: Date, days: Int) -> [PlannedNotification] {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = place.zone
+        return (0..<days).compactMap { i in
+            let d = now.addingTimeInterval(Double(i) * 86_400)
+            guard cal.component(.weekday, from: d) == 6,
+                  let dh = place.schedule.entries(on: d).first(where: { $0.prayer == .dhuhr }) else { return nil }
+            return PlannedNotification(id: "\(featurePrefix)fri-\(Int(dh.at.timeIntervalSince1970 / 60))", fireAt: dh.at.addingTimeInterval(-45 * 60),
+                                       title: L("notify.n.friday"), body: T("notify.n.fridayBody", place.hm(dh.at), place.name))
+        }
     }
 
     /// Özel günler: o gün sabah 09.00'da (telefonun saatiyle), günün bütün olayları tek bildirimde
@@ -104,33 +152,70 @@ enum FeatureNotifier {
     }
 
     /// Dolunay ve yeni ay anında (yaklaşık iki ay ileri)
+    /// Ay olayları (2. analiz #152; `SunMoonPrefs`): seçilen olaylar (yeni ay, dolunay, dördünler, süper Ay, tutulmalar),
+    /// istenirse olaydan önce
     private static func moon(place: AppPlace, now: Date) -> [PlannedNotification] {
+        let ev = SunMoonPrefs.moonEvents
+        let lead = Double(SunMoonPrefs.moonLead * 60)
         var out: [PlannedNotification] = []
+        func add(_ key: String, _ ms: Int64, _ title: String) {
+            let at = Date(unixMilliseconds: ms)
+            let fire = at.addingTimeInterval(-lead)
+            let id = "\(featurePrefix)moon-\(key)-\(ms / 60000)"
+            guard fire > now, !out.contains(where: { $0.id == id }) else { return }
+            out.append(PlannedNotification(id: id, fireAt: fire, title: title, body: when(at, place)))
+        }
         var t = now
         for _ in 0..<3 {
             let m = Nature.moon(at: t)
-            for (ms, key) in [(m.nextNewMoon, "new"), (m.nextFullMoon, "full")] {
-                let at = Date(unixMilliseconds: ms)
-                let id = "\(featurePrefix)moon-\(key)-\(ms / 60000)"
-                guard !out.contains(where: { $0.id == id }) else { continue }
-                out.append(PlannedNotification(id: id, fireAt: at, title: L("nature.phases.\(key)"), body: when(at, place)))
+            for (ms, key) in [(m.nextNewMoon, "new"), (m.nextFullMoon, "full")] where ev.contains(key) {
+                add(key, ms, L("nature.phases.\(key)"))
             }
             t = Date(unixMilliseconds: min(m.nextNewMoon, m.nextFullMoon)).addingTimeInterval(3600)
+        }
+        let nowMs = now.timeIntervalSince1970 * 1000
+        if ev.contains("quarter") {
+            let q = MoonDetails.quarters(nowMs)
+            add("fq", Int64(q.0), L("nature.phases.firstQuarter"))
+            add("lq", Int64(q.1), L("nature.phases.lastQuarter"))
+        }
+        if ev.contains("super"), let sup = MoonDetails.superMoon(nowMs, perigee: MoonDetails.perigeeApogee(nowMs).0) {
+            add("super", Int64(sup), L("moon.ev.super"))
+        }
+        if ev.contains("eclipse") {
+            for e in Eclipse.all where e.date > now && e.date < now.addingTimeInterval(60 * 86400) { add("ecl", e.ut, e.title) }
         }
         return out
     }
 
-    /// Her gün Güneş doğarken ve batarken (vakit düzeltmeleri olmadan; Mevsimler'deki saatler)
+    /// Güneş (2. analiz #152): seçilen olaylar (doğuş, batış, sabah ve akşam altın saat başlangıcı), seçilen günler,
+    /// istenirse olaydan önce (vakit düzeltmeleri olmadan; Mevsimler'deki saatler)
     private static func sun(place: AppPlace, now: Date, days: Int) -> [PlannedNotification] {
-        (0..<days).flatMap { i -> [PlannedNotification] in
+        let ev = SunMoonPrefs.sunEvents
+        let lead = Double(SunMoonPrefs.sunLead * 60)
+        let dayset = SunMoonPrefs.sunDays
+        return (0..<days).flatMap { i -> [PlannedNotification] in
             let date = now.addingTimeInterval(Double(i) * 86400)
-            guard let s = SeasonsView.sun(place: place, now: date) else { return [] }
-            return [
-                PlannedNotification(id: "\(featurePrefix)sunrise-\(Int(s.rise.timeIntervalSince1970) / 60)", fireAt: s.rise,
-                                    title: L("nature.sunrise"), body: "\(place.name) · \(place.hm(s.rise))"),
-                PlannedNotification(id: "\(featurePrefix)sunset-\(Int(s.set.timeIntervalSince1970) / 60)", fireAt: s.set,
-                                    title: L("nature.sunset"), body: "\(place.name) · \(place.hm(s.set))"),
-            ]
+            let d = CalendarDay(date, timeZone: place.zone)
+            guard dayset.contains(d.weekday + 1) else { return [] }
+            var items: [(String, Date, String)] = []
+            if let s = SeasonsView.sun(place: place, now: date) {
+                if ev.contains("sunrise") { items.append(("sunrise", s.rise, L("nature.sunrise"))) }
+                if ev.contains("sunset") { items.append(("sunset", s.set, L("nature.sunset"))) }
+            }
+            if ev.contains("goldenAm") || ev.contains("goldenPm") {
+                let off = Double(place.zone.secondsFromGMT(for: d.noon(in: place.zone))) / 3600
+                let l = PrayerTimes.lightHours(year: d.year, month: d.month, day: d.day, latitude: place.lat, longitude: place.lon, utcOffset: off)
+                let start = place.startOfDay(d)
+                if ev.contains("goldenAm"), let h = l.goldenAm.0 { items.append(("goldenam", start.addingTimeInterval(h * 3600), L("nature.goldenAm"))) }
+                if ev.contains("goldenPm"), let h = l.goldenPm.0 { items.append(("goldenpm", start.addingTimeInterval(h * 3600), L("nature.goldenPm"))) }
+            }
+            return items.compactMap { key, at, title in
+                let fire = at.addingTimeInterval(-lead)
+                guard fire > now else { return nil }
+                return PlannedNotification(id: "\(featurePrefix)\(key)-\(Int(at.timeIntervalSince1970) / 60)", fireAt: fire,
+                                           title: title, body: "\(place.name) · \(place.hm(at))")
+            }
         }
     }
 
@@ -155,7 +240,7 @@ enum FeatureNotifier {
         let keys = (UserDefaults.standard.string(forKey: "world") ?? City.defaultKeys).split(separator: ",").map(String.init)
         let mine = TimeZone.current.nextDaylightSavingTimeTransition(after: now)
         let cal = Calendar.current
-        return keys.compactMap { k in City.all.first { $0.key == k } }.compactMap { city in
+        return keys.compactMap { WorldEntry.of($0) }.compactMap { city in
             guard let d = city.nextDST(after: now, days: 30), d.at != mine,
                   let dayBefore = cal.date(byAdding: .day, value: -1, to: d.at),
                   let fire = cal.date(bySettingHour: 20, minute: 0, second: 0, of: dayBefore) else { return nil }
@@ -178,7 +263,31 @@ enum FeatureNotifier {
                          Units.temp(day.lowTemperature), day.precipitationChance.formatted(percent))
             return PlannedNotification(id: "\(featurePrefix)weather-\(d.iso)", fireAt: fire,
                                        title: T("notify.n.weather", place.name), body: body + "\n\u{F8FF} Weather")
+        } + (UserDefaults.standard.object(forKey: "notify.weather.alerts") as? Bool ?? true ? weatherAlerts(w, place: place, now: now) : [])
+    }
+
+    /// Hava uyarıları (2. analiz #110; Android'deki weatherAlerts ile aynı): akşam 19.00'da "yarın belirgin şekilde
+    /// soğuk/sıcak" (en yüksek 5° ve fazla fark) ve önümüzdeki 24 saatte yağış ihtimali %60'ı geçen ilk saatten 15 dk önce
+    private static func weatherAlerts(_ w: Weather, place: AppPlace, now: Date) -> [PlannedNotification] {
+        var out: [PlannedNotification] = []
+        let title = T("notify.n.weather", place.name)
+        let days = Array(w.dailyForecast.prefix(3))
+        if days.count > 1 {
+            for i in 0..<(days.count - 1) {
+                let a = days[i].highTemperature.converted(to: .celsius).value, b = days[i + 1].highTemperature.converted(to: .celsius).value
+                guard let s = WeatherWords.tomorrowAlert(todayMax: a, tomorrowMax: b) else { continue }
+                let d = CalendarDay(days[i].date, timeZone: place.zone)
+                let fire = d.noon(in: place.zone).addingTimeInterval(7 * 3600)
+                guard fire > now else { continue }
+                out.append(PlannedNotification(id: "\(featurePrefix)weather-alert-\(CalendarDay(days[i + 1].date, timeZone: place.zone).iso)", fireAt: fire,
+                                               title: title, body: T(s.key, Units.delta(s.n)) + "\n\u{F8FF} Weather"))
+            }
         }
+        if let h = w.hourlyForecast.first(where: { $0.date > now.addingTimeInterval(1800) && $0.date < now.addingTimeInterval(86_400) && $0.precipitationChance >= 0.6 }) {
+            out.append(PlannedNotification(id: "\(featurePrefix)weather-rain-\(Int(h.date.timeIntervalSince1970))", fireAt: h.date.addingTimeInterval(-900),
+                                           title: title, body: T("weather.alert.rainSoon", Fmt.time(h.date, tz: place.zone)) + "\n\u{F8FF} Weather"))
+        }
+        return out
     }
 
     /// Saat başı: her saat için günlük yinelenen tek bildirim (iOS sınırında az yer tutsun diye)
@@ -220,6 +329,107 @@ enum BackgroundRefresh {
         await PrayerNotifier.reschedule()
         await AlarmCenter.refreshSkips()
         await PrayerAlarms.sync()
-        await MainActor.run { LiveActivities.sync() }
+        await MainActor.run {
+            LiveActivities.sync()
+            FocusBlock.sync() // zaman çizelgeli odak engeli (2. analiz #27)
+        }
     }
 }
+
+/// Güneş ve Ay bildirimlerinin ayrıntısı (2. analiz #152; Android'deki SunMoonPrefs ile aynı anahtarlar)
+enum SunMoonPrefs {
+    static let moonEventsAll = ["new", "full", "quarter", "super", "eclipse"]
+    static let sunEventsAll = ["sunrise", "sunset", "goldenAm", "goldenPm"]
+    static let moonLeads = [0, 60, 180, 1440]
+    static let sunLeads = [0, 5, 10, 15, 30, 60]
+
+    private static func set(_ key: String, _ def: String) -> Set<String> {
+        Set((UserDefaults.standard.string(forKey: key) ?? def).split(separator: ",").map(String.init))
+    }
+
+    static var moonEvents: Set<String> {
+        get { set("notify.moon.events", "new,full") }
+        set { UserDefaults.standard.set(moonEventsAll.filter { newValue.contains($0) }.joined(separator: ","), forKey: "notify.moon.events") }
+    }
+    static var sunEvents: Set<String> {
+        get { set("notify.sun.events", "sunrise,sunset") }
+        set { UserDefaults.standard.set(sunEventsAll.filter { newValue.contains($0) }.joined(separator: ","), forKey: "notify.sun.events") }
+    }
+    static var moonLead: Int { UserDefaults.standard.integer(forKey: "notify.moon.lead") }
+    static var sunLead: Int { UserDefaults.standard.integer(forKey: "notify.sun.lead") }
+    /// ISO hafta günleri (1 pazartesi … 7 pazar)
+    static var sunDays: Set<Int> {
+        get { Set(set("notify.sun.days", "1,2,3,4,5,6,7").compactMap { Int($0) }) }
+        set { UserDefaults.standard.set((1...7).filter { newValue.contains($0) }.map(String.init).joined(separator: ","), forKey: "notify.sun.days") }
+    }
+
+    static func leadLabel(_ m: Int) -> String {
+        m == 0 ? L("notify.lead.now") : m % 1440 == 0 ? T("notify.lead.days", m / 1440) : m % 60 == 0 ? T("notify.lead.hours", m / 60) : T("notify.lead.minutes", m)
+    }
+
+    static func label(_ e: String) -> String {
+        switch e {
+        case "new", "full": return L("nature.phases.\(e)")
+        case "quarter": return L("moon.ev.quarters")
+        case "super": return L("moon.ev.super")
+        case "eclipse": return L("moon.ev.eclipse")
+        case "sunrise": return L("nature.sunrise")
+        case "sunset": return L("nature.sunset")
+        case "goldenAm": return L("nature.goldenAm")
+        default: return L("nature.goldenPm")
+        }
+    }
+}
+
+/// Güneş/Ay bildirimi ayrıntısı (olaylar, önceden haber verme, Güneş için günler)
+struct SunMoonOptionsView: View {
+    let moon: Bool
+    let changed: () -> Void
+    @State private var events: Set<String> = []
+    @State private var days: Set<Int> = []
+    @AppStorage("notify.moon.lead") private var moonLead = 0
+    @AppStorage("notify.sun.lead") private var sunLead = 0
+
+    var body: some View {
+        let all = moon ? SunMoonPrefs.moonEventsAll : SunMoonPrefs.sunEventsAll
+        Group {
+            ForEach(all, id: \.self) { e in
+                Toggle(SunMoonPrefs.label(e), isOn: Binding(get: { events.contains(e) }, set: { on in
+                    if on { events.insert(e) } else { events.remove(e) }
+                    if moon { SunMoonPrefs.moonEvents = events } else { SunMoonPrefs.sunEvents = events }
+                    changed()
+                }))
+                .padding(.leading, 12)
+            }
+            Picker(L("notify.lead"), selection: moon ? $moonLead : $sunLead) {
+                ForEach(moon ? SunMoonPrefs.moonLeads : SunMoonPrefs.sunLeads, id: \.self) { Text(SunMoonPrefs.leadLabel($0)).tag($0) }
+            }
+            .padding(.leading, 12)
+            .onChange(of: moon ? moonLead : sunLead) { changed() }
+            if !moon {
+                HStack(spacing: 4) {
+                    ForEach(1...7, id: \.self) { d in
+                        let on = days.contains(d)
+                        Button {
+                            if on { days.remove(d) } else { days.insert(d) }
+                            SunMoonPrefs.sunDays = days
+                            changed()
+                        } label: {
+                            Text(L("tools.alarm.dayNames.\(d - 1)")).font(.caption.weight(.semibold))
+                                .frame(maxWidth: .infinity, minHeight: 30)
+                                .background(on ? Theme.accent : Theme.surface2, in: Capsule())
+                                .foregroundStyle(on ? Color.white : Theme.text)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.leading, 12)
+            }
+        }
+        .onAppear {
+            events = moon ? SunMoonPrefs.moonEvents : SunMoonPrefs.sunEvents
+            days = SunMoonPrefs.sunDays
+        }
+    }
+}
+

@@ -98,7 +98,7 @@ struct HomeItemsView: View {
         .themedBackground()
         .environment(\.editMode, .constant(.active))
         .navigationTitle(L("home.customize"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -302,7 +302,7 @@ private struct WorldMiniCard: View {
     @AppStorage("world") private var keysRaw = City.defaultKeys
 
     var body: some View {
-        let cities = keysRaw.split(separator: ",").compactMap { k in City.all.first { $0.key == k } }.prefix(4)
+        let cities = WorldEntry.list(keysRaw).prefix(4)
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading, spacing: 10) {
             ForEach(Array(cities)) { c in
                 VStack(alignment: .leading, spacing: 0) {

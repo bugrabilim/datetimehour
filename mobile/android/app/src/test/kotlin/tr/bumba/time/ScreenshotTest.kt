@@ -28,7 +28,12 @@ class ScreenshotTest {
         model: Int = 0, items: String = HomeItem.DEFAULT_RAW, weather: Boolean = false, features: Set<Tab> = Features.OPTIONAL.toSet(),
     ) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
-        Prefs.store.edit().putBoolean("notify.asked", true).commit()
+        Prefs.store.edit().putBoolean("notify.asked", true).putBoolean(DialFace.SEEN_KEY, true).commit()
+        // Kurulum sihirbazı (yeni kurulumda açılır) bu görüntülerde geçilmiş sayılır
+        Onboarding.finish()
+        // Hareketli arka planlar durağan tek kare (hava canlandırması sonsuz kare döngüsüyle beklemesin)
+        android.provider.Settings.Global.putFloat(RuntimeEnvironment.getApplication().contentResolver,
+            android.provider.Settings.Global.ANIMATOR_DURATION_SCALE, 0f)
         // Sekme görüntüleri bütün özellikler açıkken (yeni kurulumda yalnız Saat açıktır; firstLaunch görüntüsü)
         Features.save(features)
         Prefs.saveAppearance(if (dark) "dark" else "light")
@@ -70,11 +75,35 @@ class ScreenshotTest {
     @Test fun clock() = shot("tr-saat", Tab.CLOCK)
     @Test fun clockDark() = shot("tr-saat-koyu", Tab.CLOCK, dark = true)
     @Test fun calendar() = shot("tr-takvim", Tab.CALENDAR)
+    // 2. analiz #117, #119, #123: hicri günler ve etkinlik adları açık (hafta no, Ay evreleri, saat değişimi varsayılan açık)
+    @Test fun calendarView() {
+        CalView.load(); CalView.hijri = true; CalView.names = true
+        try { shot("tr-takvim-gorunum", Tab.CALENDAR) } finally { CalView.hijri = false; CalView.names = false }
+    }
+    // 2. analiz #116, #119, #122, #126, #127: hafta, gün, ajanda, yıl (yoğunluk), hicri ay, Almanya tatilleri, bayram kartı
+    @Test fun calendarModes() {
+        CalView.load()
+        try {
+            for ((m, n) in listOf("week" to "tr-takvim-hafta", "day" to "tr-takvim-gun", "agenda" to "tr-takvim-ajanda", "year" to "tr-takvim-yil")) {
+                CalView.mode = m; CalView.save(); shot(n, Tab.CALENDAR)
+            }
+            CalView.mode = "month"; CalView.hijriNav = true; CalView.save(); shot("tr-takvim-hicri", Tab.CALENDAR)
+            CalView.hijriNav = false; CalView.country = "DE"; CalView.save(); shot("de-takvim-almanya", Tab.CALENDAR, "de")
+        } finally {
+            CalView.mode = "month"; CalView.hijriNav = false; CalView.country = "TR"; CalView.save()
+        }
+        capture("tr-bayram-karti") { BayramCard("Ramazan Bayramı 1. gün") }
+    }
     @Test fun world() = shot("tr-dunya", Tab.WORLD)
     @Test fun worldDark() = shot("tr-dunya-koyu", Tab.WORLD, dark = true)
     @Test fun seasons() = shot("tr-mevsimler", Tab.SEASONS)
     @Test fun prayer() = shot("tr-vakitler", Tab.PRAYER)
     @Test fun tools() = shot("tr-araclar", Tab.TOOLS)
+    // Seçenek B (2. analiz #195, #197): Tümü sayfasında sık kullanılanlar
+    @Test fun allFavorites() {
+        Prefs.store.edit().putString(AllPrefs.FAVS, "alarm,quran,weather,pomodoro").commit(); AllPrefs.reload()
+        try { shot("tr-tumu-sik", Tab.TOOLS, dark = true) } finally { Prefs.store.edit().remove(AllPrefs.FAVS).commit(); AllPrefs.reload() }
+    }
     @Test fun english() = shot("en-saat", Tab.CLOCK, "en")
     @Test fun arabic() = shot("ar-vakitler", Tab.PRAYER, "ar")
     // İlk dalga yeni diller (31 Ekim 2026): Endonezce (Android kaynak kodu "in"), Urduca ve Farsça (sağdan sola), Fransızca, Rusça
@@ -88,6 +117,10 @@ class ScreenshotTest {
     @Test fun chinese() = shot("zh-takvim", Tab.CALENDAR, "zh")
     @Test fun filipino() = shot("fil-araclar", Tab.TOOLS, "b+fil")
     @Test fun thai() = shot("th-takvim", Tab.CALENDAR, "th")
+    // Üçüncü dalga yeni diller (4 Kasım 2026): İspanyolca, Portekizce (Brezilya), Hintçe
+    @Test fun spanish() = shot("es-vakitler", Tab.PRAYER, "es")
+    @Test fun portuguese() = shot("pt-saat", Tab.CLOCK, "pt")
+    @Test fun hindi() = shot("hi-takvim", Tab.CALENDAR, "hi")
     // Araçlar alt sayfaları
     private fun tool(name: String, route: String) {
         RuntimeEnvironment.setQualifiers("+tr")
@@ -135,6 +168,26 @@ class ScreenshotTest {
         Prefs.store.edit().remove("hiit.start").remove("hiit.paused").commit()
         Prefs.saveAppearance("light")
     }
+    /** Aralık antrenmanı bitti: özet, yarın hatırlat; ardından geçmiş kartı (2. analiz #135) */
+    @Test fun hiitDone() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        HiitLog.clear()
+        val cfg = HiitConfig(10, 30, 15, 8)
+        Prefs.store.edit().putString("hiit.cfg", cfg.toString()).remove("hiit.routine")
+            .putLong("hiit.start", System.currentTimeMillis() - (cfg.totalSeconds + 5) * 1000L).putLong("hiit.paused", 0L).commit()
+        captureRoboImage("$dir/tr-hiit-bitti.png") { AppTheme { Box(Modifier.background(Theme.c.bg)) { HiitScreen() } } }
+        HiitLog.add(cfg, System.currentTimeMillis() - 86_400_000L)
+        Prefs.store.edit().remove("hiit.start").remove("hiit.paused").commit()
+        captureRoboImage("$dir/tr-hiit-gecmis.png") { AppTheme { Box(Modifier.background(Theme.c.bg)) { HiitScreen() } } }
+        HiitLog.clear()
+    }
+    /** Görsel zamanlayıcı: pasta ve kum saati (2. analiz #140) */
+    @Test fun visualTimer() = capture("tr-gorsel-zamanlayici") {
+        androidx.compose.foundation.layout.Row(Modifier.padding(16.dp)) {
+            VisualTimerContent(20 * 60_000L, 60 * 60_000L, "pie", Modifier.weight(1f))
+            VisualTimerContent(20 * 60_000L, 60 * 60_000L, "sand", Modifier.weight(1f))
+        }
+    }
     @Test fun routine() {
         RuntimeEnvironment.setQualifiers("+tr")
         // 7 dakika antrenmanı, 75. saniye: üçüncü hareket (şınav)
@@ -163,6 +216,7 @@ class ScreenshotTest {
         }
     }
     @Test fun dateCalc() = tool("tr-tarih-hesaplama", "datecalc")
+    @Test fun breath() = tool("tr-nefes", "breath") // 2. analiz #28
     /** Vakit bildirimleri ayarı (açık hâlde: vakitler, zaman, ses) */
     @Test fun notifySettings() {
         RuntimeEnvironment.setQualifiers("+tr")
@@ -188,6 +242,16 @@ class ScreenshotTest {
 
     @Test fun kidsColor() = shot("tr-saat-renk", Tab.CLOCK, accent = "kid-purple")
     @Test fun clockWeather() = shot("tr-saat-hava", Tab.CLOCK, weather = true)
+
+    /** Hava neyse ekran öyle (2. analiz #193): saat ekranının zemini seçili yerin havası (örnek: rüzgârlı yağmur) */
+    @Test fun clockLiveWeather() {
+        val place = AppPlace.current()
+        val base = sampleWeather()
+        WeatherCache.seed(place.lat, place.lon, base.copy(current = base.current.copy(code = 63, wind = 45.0, precipitation = 5.0, cloud = 90.0)))
+        Prefs.store.edit().putBoolean(WeatherScene.CLOCK_KEY, true).commit()
+        shot("tr-saat-canli-hava", Tab.CLOCK)
+        Prefs.store.edit().remove(WeatherScene.CLOCK_KEY).commit()
+    }
     @Test fun clockClassic() = shot("tr-saat-analog", Tab.CLOCK, model = 1)
     @Test fun clockHorizontal() = shot("tr-saat-yatay", Tab.CLOCK, model = 14, weather = true, dark = true)
     @Test fun clockWxCard() = shot("tr-saat-hava-kart", Tab.CLOCK, model = 5, weather = true)
@@ -205,4 +269,20 @@ class ScreenshotTest {
     @Test fun featuresPage() = tool("tr-ozellikler", "features")
     @Test fun homeItemsEditor() = capture("tr-saat-duzenle") { HomeItemsEditor() }
     @Test fun fullscreen() = capture("tr-saat-tam-ekran") { FullscreenClock {} }
+    // 2. analiz #169: yatayda saatin yanında takvim
+    @Test fun fullscreenDuo() {
+        FsDuo.save("calendar")
+        try { capture("tr-yatay-duo", "tr-land") { FullscreenClock {} } } finally { FsDuo.save("off") }
+    }
+    // 2. analiz #12, #21, #22: ikili saat dilimi, küçük saniye, tabela
+    @Test fun clockDual() = shot("tr-saat-ikili", Tab.CLOCK, model = ClockModel.DUAL.ordinal)
+    @Test fun clockSmallSeconds() {
+        ClockLook.saveSecSmall(true)
+        try { shot("tr-saat-kucuk-saniye", Tab.CLOCK, model = ClockModel.DIGITAL.ordinal) } finally { ClockLook.saveSecSmall(false) }
+    }
+    @Test fun fullscreenBanner() {
+        FsLook.saveText("İYİ Kİ DOĞDUN")
+        ClockLook.saveBanner(true)
+        try { capture("tr-tam-ekran-tabela") { FullscreenClock {} } } finally { ClockLook.saveBanner(false); FsLook.saveText("") }
+    }
 }

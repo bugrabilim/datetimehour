@@ -7,7 +7,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.takahirom.roborazzi.captureRoboImage
@@ -34,16 +36,28 @@ import java.time.temporal.ChronoUnit
 class MoreScreensTest {
     private val dir = System.getProperty("screens.dir") ?: "build/screens"
 
-    private fun shot(name: String, qualifiers: String = "tr", dark: Boolean = false, imperial: Boolean = false, content: @Composable () -> Unit) {
+    private fun shot(
+        name: String, qualifiers: String = "tr", dark: Boolean = false, imperial: Boolean = false,
+        atmo: String = "", fontScale: Int = 100, content: @Composable () -> Unit,
+    ) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
-        Prefs.store.edit().putBoolean("notify.asked", true).commit()
+        Prefs.store.edit().putBoolean("notify.asked", true).putBoolean(DialFace.SEEN_KEY, true).commit()
         Prefs.saveAppearance(if (dark) "dark" else "light")
         Prefs.saveAccent("amber")
+        Atmosphere.save(atmo)
+        FontScale.save(fontScale)
+        // Kurulum sihirbazı geçilmiş sayılır (yeni kurulum işareti sonraki testlere sızmasın)
+        Onboarding.finish()
+        // Hareketli arka planlar durağan tek kare çizer (sonsuz kare döngüsü ekran görüntüsünü bekletmesin)
+        android.provider.Settings.Global.putFloat(RuntimeEnvironment.getApplication().contentResolver,
+            android.provider.Settings.Global.ANIMATOR_DURATION_SCALE, 0f)
         // Robolectric'te bölge ABD: birimler açıkça metrik
         if (!imperial) Prefs.saveUnits("metric")
         captureRoboImage("$dir/$name.png") {
-            AppTheme { Column(Modifier.fillMaxSize().background(Theme.c.bg)) { content() } }
+            AppTheme { Column(Modifier.fillMaxSize().appBackdrop(Theme.c)) { content() } }
         }
+        Atmosphere.save("")
+        FontScale.save(100)
     }
 
     private fun page(name: String, title: String, dark: Boolean = false, content: @Composable () -> Unit) =
@@ -62,7 +76,7 @@ class MoreScreensTest {
     }
 
     /** İstanbul için örnek hava durumu (Open-Meteo yanıtı biçiminde) */
-    private fun seedWeather(current: Int = 2) {
+    private fun seedWeather(current: Int = 2, wind: Double = 14.0, precip: Double = 0.0, cloud: Int = 60) {
         val now = LocalDateTime.now().truncatedTo(ChronoUnit.HOURS)
         val hours = (0 until 48).map { now.plusHours(it.toLong()) }
         val days = (0 until 7).map { LocalDate.now().plusDays(it.toLong()) }
@@ -70,20 +84,29 @@ class MoreScreensTest {
         val o = JSONObject()
             .put("timezone", "Europe/Istanbul")
             .put("current", JSONObject().put("temperature_2m", 18.4).put("apparent_temperature", 17.2)
-                .put("relative_humidity_2m", 64).put("wind_speed_10m", 14.0).put("wind_direction_10m", 40)
-                .put("pressure_msl", 1016.0).put("uv_index", 3.1).put("weather_code", current).put("is_day", 1).put("precipitation", 0))
+                .put("relative_humidity_2m", 64).put("wind_speed_10m", wind).put("wind_direction_10m", 40).put("cloud_cover", cloud)
+                .put("pressure_msl", 1016.0).put("uv_index", 3.1).put("weather_code", current).put("is_day", 1).put("precipitation", precip)
+                .put("wind_gusts_10m", wind * 1.8).put("visibility", 24000).put("dew_point_2m", 11.2))
             .put("hourly", JSONObject()
                 .put("time", hours.map { it.toString() }.let { org.json.JSONArray(it) })
                 .put("temperature_2m", org.json.JSONArray(hours.indices.map { 14 + 5 * kotlin.math.sin(it / 4.0) }))
                 .put("weather_code", org.json.JSONArray(hours.indices.map { codes[it % codes.size] }))
                 .put("precipitation_probability", org.json.JSONArray(hours.indices.map { (it * 7) % 60 }))
-                .put("is_day", org.json.JSONArray(hours.map { if (it.hour in 7..18) 1 else 0 })))
+                .put("is_day", org.json.JSONArray(hours.map { if (it.hour in 7..18) 1 else 0 }))
+                .put("wind_speed_10m", org.json.JSONArray(hours.indices.map { wind + (it % 5) * 2 }))
+                .put("apparent_temperature", org.json.JSONArray(hours.indices.map { 13 + 5 * kotlin.math.sin(it / 4.0) }))
+                .put("precipitation", org.json.JSONArray(hours.indices.map { if (it % 7 == 4) 1.4 else 0.0 }))
+                .put("wind_gusts_10m", org.json.JSONArray(hours.indices.map { wind * 1.8 + it % 4 }))
+                .put("wind_direction_10m", org.json.JSONArray(hours.indices.map { (it * 25) % 360 }))
+                .put("relative_humidity_2m", org.json.JSONArray(hours.indices.map { 55 + (it % 6) * 5 }))
+                .put("uv_index", org.json.JSONArray(hours.map { if (it.hour in 10..15) 5 else 0 })))
             .put("daily", JSONObject()
                 .put("time", org.json.JSONArray(days.map { it.toString() }))
                 .put("weather_code", org.json.JSONArray(codes))
                 .put("temperature_2m_max", org.json.JSONArray(listOf(20, 21, 19, 17, 15, 18, 22)))
                 .put("temperature_2m_min", org.json.JSONArray(listOf(12, 13, 12, 10, 9, 11, 13)))
-                .put("precipitation_probability_max", org.json.JSONArray(listOf(5, 10, 20, 40, 80, 60, 10))))
+                .put("precipitation_probability_max", org.json.JSONArray(listOf(5, 10, 20, 40, 80, 60, 10)))
+                .put("precipitation_sum", org.json.JSONArray(listOf(0, 0.4, 1.2, 3.5, 12.0, 6.1, 0))))
         val place = AppPlace.current()
         WeatherCache.seed(place.lat, place.lon, WeatherCache.parse(o))
     }
@@ -92,6 +115,46 @@ class MoreScreensTest {
         Prefs.saveProvince("istanbul")
         seedWeather()
         shot("tr-hava") { WeatherScreen() }
+    }
+
+    /** 2. analiz #107, #111, #113, #114: saatlik eğri, etkinlik uygunluğu, hava kalitesi ve polen, meteogram, modeller */
+    @Test fun weatherExtras() {
+        Prefs.saveProvince("istanbul")
+        seedWeather()
+        val place = AppPlace.current()
+        AirCache.seed(place.lat, place.lon, AirData(34.0, 12.4, 21.0, 61.0, 18.0, mapOf("grass" to 32.0, "olive" to 8.0, "birch" to 0.0)))
+        val days = (0 until 7).map { LocalDate.now().plusDays(it.toLong()) }
+        ModelCache.seed(place.lat, place.lon, mapOf(
+            "ECMWF" to days.mapIndexed { i, d -> ModelDay(d, 20.0 + i % 3, 12.0, if (i == 3) 4.2 else 0.0) },
+            "GFS" to days.mapIndexed { i, d -> ModelDay(d, 21.0 + i % 2, 11.0, if (i == 3) 7.5 else 0.2) },
+            "ICON" to days.mapIndexed { i, d -> ModelDay(d, 19.0 + i % 4, 12.0, 0.0) },
+        ))
+        shot("tr-hava-grafik-uygunluk") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(16.dp), verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(12.dp)) {
+                val d = WeatherCache.cached(place.lat, place.lon)!!
+                HourlyChart(d)
+                ActivitiesCard(d)
+                AirCard(place)
+            }
+        }
+        shot("tr-hava-meteogram") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(16.dp), verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(12.dp)) {
+                val d = WeatherCache.cached(place.lat, place.lon)!!
+                ModelsCard(place)
+                MeteogramCard(d)
+            }
+        }
+    }
+
+    /** Hava neyse ekran öyle (2. analiz #193): rüzgârlı yağmur, karlı, rüzgârlı açık hava */
+    @Test fun liveWeather() {
+        Prefs.saveProvince("istanbul")
+        seedWeather(current = 63, wind = 48.0, precip = 6.0, cloud = 95)
+        shot("tr-hava-yagmur-ruzgar") { WeatherScreen() }
+        seedWeather(current = 73, wind = 12.0, precip = 2.0, cloud = 100)
+        shot("tr-hava-kar", dark = true) { WeatherScreen() }
+        seedWeather(current = 1, wind = 42.0, precip = 0.0, cloud = 10)
+        shot("tr-hava-ruzgar") { WeatherScreen() }
     }
 
     @Test fun weatherDarkImperial() {
@@ -163,6 +226,35 @@ class MoreScreensTest {
                 WakeTaskPanel(AlarmItem(id = "s", hour = 7, minute = 0, task = "shake")) {}
             }
         }
+        // Yeni görevler (2. analiz #36, #37): squat, nesne (bardak), sesli okuma
+        shot("tr-alarm-gorevi-yeni") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(24.dp), verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(28.dp)) {
+                WakeTaskPanel(AlarmItem(id = "q", hour = 7, minute = 0, task = "squat")) {}
+                WakeTaskPanel(AlarmItem(id = "o", hour = 7, minute = 0, task = "object", code = "obj:cup")) {}
+                WakeTaskPanel(AlarmItem(id = "v", hour = 7, minute = 0, task = "speak")) {}
+            }
+        }
+        // Alarm duvar kâğıdı (2. analiz #2): gün batımı zemini, yazılar koyu temanın açık renkleri
+        shot("tr-alarm-gorevi-duvar") {
+            AlarmWallScreen("sunset") {
+                androidx.compose.foundation.layout.Column(Modifier.padding(24.dp)) {
+                    WakeTaskPanel(AlarmItem(id = "w", hour = 7, minute = 0, task = "math", wall = "sunset")) {}
+                }
+            }
+        }
+    }
+
+    /** 2. analiz #34 görev zinciri (1/2), #45 uyanma denetimi halkası */
+    @Test fun wakeChainAndCheck() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        shot("tr-alarm-gorev-zinciri") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(24.dp)) {
+                WakeTaskPanel(AlarmItem(id = "c", hour = 7, minute = 0, task = "math", chain = listOf("typing"))) {}
+            }
+        }
+        shot("tr-uyanma-denetimi") {
+            WakeCheckScreen(System.currentTimeMillis() + 75_000L, {}, {})
+        }
     }
 
     /** Gün doğumu ışığı: alarmdan 8 dk önce (30 dk pencere), tam ekran saat sıcak renkle aydınlanmış */
@@ -202,6 +294,50 @@ class MoreScreensTest {
         Prefs.saveProvince("istanbul")
         page("tr-ay-takvimi", "Ay takvimi ve tutulmalar") { MoonScreen() }
     }
+    /** Gece gökyüzü (#155–#157), Güneş yolu (#158), çocuklar için Ay (#160) */
+    /** Üretken zeminler (2. analiz #23) */
+    @Test fun generativeBackgrounds() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        for (b in listOf(FullscreenBackground.TOPO, FullscreenBackground.DOTS, FullscreenBackground.GRAIN, FullscreenBackground.LIQUID)) {
+            shot("tr-zemin-${b.id}") { AnimatedBackground(b, androidx.compose.ui.Modifier.fillMaxSize()) }
+        }
+    }
+
+    /** Dijital rakam görünümleri (2. analiz #9) */
+    @Test fun digitalStyles() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        shot("tr-dijital-gorunumler") {
+            androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.padding(16.dp), verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(14.dp)) {
+                for (st in listOf("led", "lcd", "matrix", "roll")) StyledDigits("12:34:56", st, 64.dp, 380.dp, Theme.c.ink)
+                VerticalDigits("12", "34", "56", 160.dp, Theme.c.ink, null)
+            }
+        }
+    }
+
+    @Test fun worldExtras() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        Prefs.saveProvince("istanbul")
+        val now = java.time.Instant.parse("2026-11-04T09:30:00Z")
+        val list = WorldEntry.list()
+        WorldWeather.seed(list.associate { it.key to WorldWeather.Entry(18.0, 2, true) })
+        page("tr-dunya-kadran", "24 saat kadranı") { WorldDial(list, now, onShift = {}) }
+        page("tr-dunya-harita", "Harita") { WorldMapCard(list, now) }
+        val c = RuntimeEnvironment.getApplication()
+        widget("widget-dunya-8", 340, 300, World8Widget().views(c, 21))
+        widget("widget-saat-cakismasi", 360, 220, OverlapWidget().views(c, 22))
+        widget("widget-dunya-haritasi", 360, 190, WorldMapWidget().views(c, 23))
+        TimerItem.save(listOf(TimerItem(name = "Çay", total = 300_000L, end = System.currentTimeMillis() + 240_000L)))
+        widget("widget-zamanlayicilar", 340, 170, TimersWidget().views(c, 24))
+        widget("widget-odak", 170, 170, FocusWidget().views(c, 25))
+        TimerItem.save(emptyList())
+    }
+
+    @Test fun sky() {
+        Prefs.saveProvince("istanbul")
+        page("tr-gece-gokyuzu", "Gece gökyüzü") { SkyScreen() }
+        page("tr-gunes-yolu", "Güneş yolu") { SunPathScreen() }
+        shot("tr-cocuklar-ay") { androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.padding(16.dp)) { KidsMoonCard() } }
+    }
     /** Kıble (Robolectric'te pusula sensörü yok: kuzey yukarıda sabit kadran) ve örnek verili yakındaki camiler */
     /** Android TV (#95): televizyon ekranı (yatay, 1080p oranı) */
     @Test fun tv() {
@@ -226,7 +362,21 @@ class MoreScreensTest {
             Mosque("Rüstem Paşa Camii", 41.0176, 28.9688, 0.0),
             Mosque("Sultanahmet Camii", 41.0054, 28.9768, 0.0),
         ))
+        QiblaPrefs.toggle(Mosque("Süleymaniye Camii", 41.0162, 28.9640, 0.0))
         shot("tr-yakindaki-camiler") { NearbyMosquesScreen {} }
+        QiblaPrefs.saveStyle("gold")
+        shot("tr-kible-altin", dark = true) { QiblaScreen {} }
+        shot("tr-kible-harita") { androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.padding(16.dp)) { QiblaRouteMap(41.0, 29.0, "İstanbul"); QiblaRouteMap(40.7, -74.0, "New York") } }
+        QiblaPrefs.saveStyle("classic")
+        // Büyük daire: İstanbul'dan Kâbe'ye çizgi başta İstanbul'da, sonda Kâbe'de; kesit 2:1
+        val route = QiblaPrefs.route(41.0, 29.0)
+        assertEquals(41.0, route.first().first, 1e-6)
+        assertEquals(QiblaPrefs.KAABA_LON, route.last().second, 1e-6)
+        val fr = QiblaPrefs.frame(route)
+        assertTrue(fr.third in 30.0..90.0)
+        // Samoa: yol tarih değiştirme çizgisini geçiyorsa tüm dünya gösterilir, sınır dışına çıkılmaz
+        val f2 = QiblaPrefs.frame(QiblaPrefs.route(-13.8, -171.8))
+        assertTrue(f2.first >= -180.0 && f2.first + f2.third <= 180.0)
     }
     /** İbadet: Kur'an (liste, Fatiha, Arapça koyu), dualar, zikirmatik, namaz/oruç takibi, zekât */
     @Test fun worship() {
@@ -251,6 +401,35 @@ class MoreScreensTest {
         shot("tr-zekat") { ZakatScreen {} }
         Zakat.save(emptyMap())
     }
+    /** 2. analiz 1. dalga D: dini günler, tebrik kartı, ibadet istatistiği, tesbih görünümü, hatim, Kur'an zemini, 24 saat kadranı */
+    @Test fun worshipExtras() {
+        shot("tr-dini-gunler") { ReligiousDaysScreen {} }
+        shot("tr-tebrik") { GreetingScreen {} }
+        Tracker.clear()
+        val today = LocalDate.now()
+        val masks = listOf(0b11111, 0b01111, 0b10111, 0b11111, 0b00011, 0b11101, 0)
+        for (i in 0..200) Tracker.setDayMask(today.minusDays(i.toLong()), masks[i % masks.size])
+        for (i in 1..10) { TrackX.recordWhen(today.minusDays(i.toLong()), 0, 10 + i); TrackX.recordWhen(today.minusDays(i.toLong()), 1, 30 + i * 2) }
+        for (k in Tracker.KAZA) Tracker.setKaza(k, 900)
+        Tracker.setKaza("fast.illness", 2); Tracker.setKaza("fast.travel", 1)
+        repeat(60) { TrackX.logKazaPrayed(today.minusDays((it % 20).toLong())) }
+        shot("tr-ibadet-istatistik") { TrackerScreen {} }
+        Tracker.clear()
+        Prefs.store.edit().putBoolean("zikir.beads", true).putBoolean("zikir.tesbihat", false).putString("zikir.kind", "elhamdulillah")
+            .putInt("zikir.target", 33).putInt("zikir.count", 21).commit()
+        shot("tr-zikir-tesbih") { ZikirScreen {} }
+        Prefs.store.edit().remove("zikir.beads").remove("zikir.count").commit()
+        Quran.bookmark = 36 to 1
+        Prefs.store.edit().putString("quran.theme", "sepia").putInt("quran.goal", 20)
+            .putString("quran.hatim", org.json.JSONObject().put("s", today.minusDays(40).toString()).put("i", 0).put("n", 2).toString()).commit()
+        shot("tr-kuran-hatim") { QuranScreen {} }
+        shot("tr-kuran-sepya") { SuraScreen(36, 1) {} }
+        Quran.bookmark = null
+        Prefs.store.edit().remove("quran.theme").remove("quran.goal").remove("quran.hatim").commit()
+        Prefs.store.edit().putString("prayer.visual", "dial").putBoolean("prayer.words", true).commit()
+        shot("tr-vakitler-kadran") { PrayerScreen() }
+        Prefs.store.edit().remove("prayer.visual").remove("prayer.words").commit()
+    }
     @Test fun prayerExtras() {
         Prefs.store.edit().putString(PrayerMethod.METHOD, "mwl").putBoolean(PrayerMethod.HANAFI, true)
             .putInt(PrayerSilent.MINUTES, 30).putString(PrayerAlarms.KEY, "fajr,maghrib").commit()
@@ -271,9 +450,21 @@ class MoreScreensTest {
         shot("zh-hadis", "zh") { HadithScreen {} }
         shot("ko-namaz-rehberi", "ko") { PrayerGuideScreen({}) {} }
         shot("fil-hadis", "b+fil") { HadithScreen {} }
+        shot("hi-esma", "hi") { EsmaScreen {} }
+        shot("es-hadis", "es") { HadithScreen {} }
+        shot("pt-namaz-rehberi", "pt") { PrayerGuideScreen({}) {} }
         shot("tr-hadis") { HadithScreen {} }
         shot("en-hadis-koyu", "en", dark = true) { HadithScreen {} }
         shot("tr-namaz-rehberi") { PrayerGuideScreen({}) {} }
+        // Resimli rehber (2. analiz #68): bütün duruşlar, erkek ve kadın
+        shot("tr-namaz-rehberi-cizimler") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(8.dp)) {
+                for (female in listOf(false, true)) androidx.compose.foundation.layout.Row {
+                    for (id in listOf("stand", "takbir", "fold", "ruku", "sajda", "sit", "salam"))
+                        GuideFigure(id, female, Theme.c.ink, Theme.c.accent, Modifier.size(56.dp))
+                }
+            }
+        }
         shot("tr-takvim-yapragi") { CalendarLeafScreen {} }
         shot("de-takvim-yapragi", "de") { CalendarLeafScreen {} }
     }
@@ -293,10 +484,65 @@ class MoreScreensTest {
         shot("tr-sabah-gunlugu") { JournalScreen() }
         Prefs.store.edit().remove(Journal.KEY).commit()
         // Toplantı planlayıcı: Londra, New York, Tokyo
-        Prefs.store.edit().putString("meet.cities", "london,new-york,tokyo").commit()
+        Prefs.store.edit().putString("meet.cities", "london,new-york,tokyo").putBoolean("meet.exchanges", true).putString("meet.h12", "new-york").commit()
         shot("tr-toplanti-planlayici") { MeetingPlannerScreen() }
-        Prefs.store.edit().remove("meet.cities").commit()
+        Prefs.store.edit().remove("meet.cities").remove("meet.exchanges").remove("meet.h12").commit()
     }
+    /** Sahibin ekran görüntülerinden (2. analiz #6, #77, #78, #81) */
+    /** Ders çalışma sayacı (2. analiz #84): LED süre ve soru sayacı, istatistik */
+    @Test fun study() {
+        val today = LocalDate.now()
+        var log = Study.record(emptyList(), today.minusDays(2), "Fizik", 50 * 60_000L, 24, "Optik")!!
+        log = Study.record(log, today, "Matematik", 40 * 60_000L, 35, "Türev tekrarı")!!
+        log = Study.record(log, today, "", 25 * 60_000L, 12, "")!!
+        Study.save(log)
+        Study.saveSubjects(listOf("Matematik", "Fizik", "Kimya"))
+        Prefs.store.edit().putString(Study.SUBJECT, "Matematik").putString("study.mode", "timer")
+            .putLong("study.start", 0).putLong("study.acc", (1 * 3600 + 12 * 60 + 5) * 1000L).putInt("study.q", 27).commit()
+        page("tr-ders-sayaci", "Ders çalışma") { StudyScreen() }
+        page("tr-ders-sayaci-koyu", "Ders çalışma", dark = true) { StudyScreen() }
+        Study.clear(); Study.saveSubjects(emptyList())
+        Prefs.store.edit().remove("study.acc").remove("study.q").remove(Study.SUBJECT).commit()
+    }
+
+    /** Uyanma oyunu (2. analiz #7): civciv uyuyor / uyandı, rapor */
+    @Test fun wakeGame() {
+        val today = LocalDate.now()
+        val log = (12 downTo 1).map { WakeGame.Event(today.minusDays(it.toLong()).toString(), 7 * 60 + it % 4 * 5, 7 * 60, if (it % 5 == 0) 1 else 0, it % 3 == 0) }
+        WakeGame.save(log)
+        page("tr-uyanma-oyunu-uyuyor", "Uyanma oyunu") { WakeGameScreen() }
+        WakeGame.save(log + WakeGame.Event(today.toString(), 6 * 60 + 58, 7 * 60, 0, true))
+        page("tr-uyanma-oyunu", "Uyanma oyunu", dark = true) { WakeGameScreen() }
+        page("tr-uyanma-raporu", "Uyanma oyunu") { WakeGameScreen("report") }
+        page("tr-uyanma-puanlar", "Uyanma oyunu") { WakeGameScreen("points") }
+        shot("tr-gunaydin-civciv") { Column(Modifier.padding(16.dp)) { WakeGameMorningCard() } }
+        WakeGame.clear()
+    }
+
+    /** Kadran koleksiyonu (2. analiz #1): galeri ve kadranlar büyük */
+    @Test fun dials() {
+        Prefs.store.edit().putBoolean(DialFace.SEEN_KEY, false).commit()
+        val t = java.time.ZonedDateTime.of(2026, 11, 3, 10, 9, 36, 0, java.time.ZoneId.of("Europe/Istanbul"))
+        shot("tr-kadranlar") { DialGalleryScreen() }
+        shot("tr-kadranlar-koyu", dark = true) { DialGalleryScreen() }
+        listOf(DialFace.CHRONO to DialColor.AUTO, DialFace.RADAR to DialColor.AUTO, DialFace.MARBLE to DialColor.BLUE, DialFace.ROMAN to DialColor.GOLD)
+            .forEach { (f, c) -> shot("kadran-${f.id}") { AnalogClock(t, Modifier.padding(24.dp), face = f, dialColor = c, tap = false) } }
+    }
+
+    @Test fun ownerScreens() {
+        shot("tr-destek") {
+            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) { FontScaleCard(); SupportCard {} }
+        }
+        shot("tr-qr-paylas") { ShareQrScreen() }
+        shot("tr-atmosfer", atmo = "lavender") { ColorScreen() }
+        shot("tr-atmosfer-koyu", atmo = "ocean", dark = true) { SettingsScreen {} }
+        shot("tr-yazi-boyutu-130", fontScale = 130) { SettingsScreen {} }
+        shot("ar-atmosfer-gun-batimi", qualifiers = "ar", atmo = "sunset") { PrayerScreen() }
+        page("tr-dil", "Dil") { LanguageScreen() }
+        shot("tr-kurulum") { OnboardingScreen {} }
+        Onboarding.finish()
+    }
+
     @Test fun badges() {
         // Örnek ilerleme: birkaç rozet kazanılmış, 6 model görülmüş, 2 gün seri
         BadgeStore.deleteAll()
@@ -336,10 +582,20 @@ class MoreScreensTest {
         widget("widget-dijital", 170, 80, DigitalClockWidget().views(c, 4))
         widget("widget-saat-tarih", 170, 170, ClockDateWidget().views(c, 5))
         widget("widget-ay", 170, 170, MoonWidget().views(c, 6))
+        widget("widget-ay-takvimi", 340, 170, MoonCalWidget().views(c, 6))
         widget("widget-hicri", 170, 170, HijriWidget().views(c, 7))
         widget("widget-saniyeli", 170, 170, SecondsClockWidget().views(c, 7))
         widget("widget-dunya", 360, 170, WorldClockWidget().views(c, 8))
         widget("widget-geri-sayim", 170, 170, CountdownWidget().views(c, 9))
+        // Görünüm (2. analiz #17) ve iki saat (#12)
+        Prefs.store.edit().putString("widget.style.12", "ocean").putBoolean("widget.frame.12", true)
+            .putString("widget.style.13", "paper").putString("widget.city.13", "tokyo").commit()
+        widget("widget-dijital-okyanus", 170, 80, DigitalClockWidget().views(c, 12))
+        widget("widget-iki-saat", 260, 170, DualClockWidget().views(c, 13))
+        // Şeffaf ve yarı saydam (2. analiz #76): gri zemin ana ekran duvar kâğıdı yerine
+        Prefs.store.edit().putString("widget.style.14", "clear").putString("widget.style.15", "glass").putBoolean("widget.frame.15", true).commit()
+        widget("widget-analog-seffaf", 170, 170, AnalogClockWidget().views(c, 14))
+        widget("widget-saat-tarih-yari-saydam", 170, 170, ClockDateWidget().views(c, 15))
         // Dokunulabilen widget'lar: zikirmatik (uygulamadaki sayaç) ve kronometre (durmuş, 2:05)
         Prefs.store.edit().putInt("zikir.count", 21).putInt("zikir.target", 33).putLong("sw.start", 0L).putLong("sw.acc", 125_000L).commit()
         widget("widget-zikir", 170, 170, ZikirWidget().views(c, 10))
@@ -351,5 +607,32 @@ class MoreScreensTest {
         ToolActions.swReset(c)
         assertEquals(0L, ToolActions.swElapsed())
         Prefs.store.edit().remove("zikir.count").remove("zikir.target").commit()
+    }
+
+    /** 2. analiz K-4: yıl ilerlemesi, yazıyla tarih, gün doğumu, günün içeriği (dokununca tür değişir), takvim, hava,
+     *  fotoğraf; Material You görünümü ve vakit widget'larındaki ilerleme çubuğu */
+    @Test fun widgetsK4() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        Prefs.saveProvince("istanbul")
+        val c = RuntimeEnvironment.getApplication()
+        widget("widget-yil", 170, 170, YearWidget().views(c, 31))
+        widget("widget-yaziyla", 170, 170, WordsWidget().views(c, 32))
+        widget("widget-gunes", 170, 170, SunWidget().views(c, 33))
+        widget("widget-gunes-yayi", 320, 150, SunArcWidget().views(c, 41))
+        widget("widget-gunun-sozu", 260, 170, DailyWidget().views(c, 34))
+        Prefs.store.edit().putString(DailyWidget.key(35), "esma").putString(DailyWidget.key(36), "verse").commit()
+        widget("widget-esma", 260, 170, DailyWidget().views(c, 35))
+        widget("widget-ayet", 260, 170, DailyWidget().views(c, 36))
+        widget("widget-takvim", 260, 170, EventsWidget().views(c, 37))
+        widget("widget-hava", 170, 170, WeatherWidget().views(c, 38))
+        widget("widget-fotograf", 170, 170, PhotoWidget().views(c, 39))
+        Prefs.store.edit().putString("widget.style.40", "you").commit()
+        widget("widget-saat-tarih-you", 170, 170, ClockDateWidget().views(c, 40))
+        // Dokununca sıradaki tür
+        DailyWidget().onReceive(c, android.content.Intent(c, DailyWidget::class.java).setAction(DailyWidget.ACTION_NEXT)
+            .putExtra(android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_ID, 34))
+        assertEquals("verse", DailyWidget.kind(34))
+        // Yazıyla sayı (ICU)
+        assertEquals("yirmi iki", WordsWidget.spell(22).lowercase())
     }
 }

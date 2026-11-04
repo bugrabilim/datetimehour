@@ -109,6 +109,8 @@ final class PlaceModel {
 
     /// "Konumumu kullan": izin ister, konumu bulur, Otomatik'e geçer
     func useLocation() async {
+        // Konum izni ilk kez soruluyorsa önce kısa açıklama (2. analiz #80)
+        guard await PermissionPrimer.location() else { return }
         locating = true
         defer { locating = false }
         guard let loc = await OneShotLocation().fetch(requestPermission: true) else {
@@ -191,10 +193,16 @@ private struct PlaceSheet: View {
                     if !saved.isEmpty || !place.isAuto {
                         Section(L("place.saved")) {
                             ForEach(saved, id: \.self) { id in
-                                row("★ " + AppPlace.byID(id).name, selected: id == place.id) { pick(id) }
-                                    .swipeActions { Button(L("place.remove"), role: .destructive) { remove(id) } }
-                                    .contextMenu { Button(L("place.remove"), role: .destructive) { remove(id) } }
+                                HStack {
+                                    row("★ " + AppPlace.byID(id).name, selected: id == place.id) { pick(id) }
+                                    // Anlık sıcaklık (2. analiz #115; WeatherCache aynı yeri 15 dk saklar)
+                                    if Features.isOn(.weather) { SavedPlaceTemp(place: AppPlace.byID(id)) }
+                                }
+                                .swipeActions { Button(L("place.remove"), role: .destructive) { remove(id) } }
+                                .contextMenu { Button(L("place.remove"), role: .destructive) { remove(id) } }
                             }
+                            // WeatherKit şartı: hava verisinin yanında Apple Hava Durumu işareti
+                            if Features.isOn(.weather) && !saved.isEmpty { AppleWeatherMark(compact: true) }
                             if !place.isAuto && !saved.contains(place.id) {
                                 Button("☆ " + L("place.save") + " (" + place.name + ")") {
                                     saved.append(place.id)
@@ -227,7 +235,7 @@ private struct PlaceSheet: View {
             .themedBackground()
             .tint(Theme.accent)
             .navigationTitle(L("settings.location"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { dismiss() } } }
         }
     }
@@ -274,7 +282,7 @@ private struct DistrictList: View {
         }
         .themedBackground()
         .navigationTitle(province.displayName)
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -302,5 +310,19 @@ struct SavedPlaceChips: View {
                 }
             }
         }
+    }
+}
+
+/// Kayıtlı yerin anlık sıcaklığı (2. analiz #115): simge + derece; yüklenemezse boş
+struct SavedPlaceTemp: View {
+    let place: AppPlace
+    @State private var text = ""
+
+    var body: some View {
+        Text(text).font(.subheadline).monospacedDigit().foregroundStyle(Theme.text)
+            .task(id: place.id) {
+                guard let w = try? await WeatherCache.weather(lat: place.lat, lon: place.lon) else { return }
+                text = Units.temp(w.currentWeather.temperature)
+            }
     }
 }

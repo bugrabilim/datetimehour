@@ -22,6 +22,8 @@ import java.time.LocalDate
 object LiveNotifications {
     const val CHANNEL = "live"
     const val PRAYER_KEY = "live.prayer"
+    /** Güneş sayacı (2. analiz #150): sıradaki gün doğumu ya da batımına kalan süre */
+    const val SUN_KEY = "live.sun"
     private const val IDS_KEY = "live.ids"
 
     private fun nid(key: String) = ("live-$key").hashCode()
@@ -31,6 +33,8 @@ object LiveNotifications {
 
     fun sync(c: Context, now: Long = System.currentTimeMillis()) {
         val app = c.applicationContext
+        // Zamanlayıcı ve odak widget'ları da süren sayaçlarla birlikte yenilenir (2. analiz #136)
+        runCatching { TimeWidgets.refresh(app) }
         val nm = NotificationManagerCompat.from(app)
         val items = ArrayList<Item>()
         for (t in TimerItem.load()) if (t.running && t.end > now) {
@@ -52,6 +56,8 @@ object LiveNotifications {
         }
         val prayer = if (sp.getBoolean(PRAYER_KEY, false)) prayerItem(now) else null
         prayer?.let { items += it.first }
+        val sun = if (sp.getBoolean(SUN_KEY, false)) sunItem(now) else null
+        sun?.let { items += it.first }
 
         val wanted = items.map { nid(it.key) }.toSet()
         for (id in sp.getStringSet(IDS_KEY, emptySet())!!.mapNotNull { it.toIntOrNull() }) if (id !in wanted) nm.cancel(id)
@@ -62,7 +68,7 @@ object LiveNotifications {
         sp.edit().putStringSet(IDS_KEY, wanted.map { it.toString() }.toSet()).apply()
 
         // Bir sonraki değişim: en yakın bitiş ya da vakit (geçenler kalksın, vakit ileri taşınsın)
-        val next = (items.filter { it.countDown }.map { it.whenMs } + listOfNotNull(prayer?.second)).filter { it > now }.minOrNull()
+        val next = (items.filter { it.countDown }.map { it.whenMs } + listOfNotNull(prayer?.second, sun?.second)).filter { it > now }.minOrNull()
         schedule(app, next)
     }
 
@@ -80,6 +86,21 @@ object LiveNotifications {
         val at = next.at.toEpochMilli()
         return Item("prayer", name + " " + Fmt.time(next.at.atZone(place.zone)), place.name, at, true,
             Tab.PRAYER, null, R.drawable.ic_stat_prayer) to at
+    }
+
+    /** Sıradaki gün doğumu ya da batımı (vakit düzeltmesi olmadan; bugün ve yarın) */
+    private fun sunItem(now: Long): Pair<Item, Long>? {
+        val place = AppPlace.current()
+        val p = tr.bumba.time.core.PrayerTimes.Parameters(adjustments = tr.bumba.time.core.PrayerTimes.Adjustments(sunrise = 0.0, dhuhr = 0.0, maghrib = 0.0))
+        val today = place.today(Instant.ofEpochMilli(now))
+        val events = listOf(today, today.plusDays(1)).flatMap { d ->
+            val t = tr.bumba.time.core.PrayerTimes.times(d, place.lat, place.lon, place.zone, p)
+            val start = d.atStartOfDay(place.zone).toInstant().toEpochMilli()
+            listOfNotNull(t.sunrise?.let { (start + it * 3_600_000).toLong() to true }, t.maghrib?.let { (start + it * 3_600_000).toLong() to false })
+        }.filter { it.first > now }.sortedBy { it.first }
+        val (at, rise) = events.firstOrNull() ?: return null
+        val title = L(if (rise) "nature.sunrise" else "nature.sunset") + " " + Fmt.hm(Instant.ofEpochMilli(at), place.zone)
+        return Item("sun", title, place.name, at, true, Tab.SEASONS, null, R.drawable.ic_stat_prayer) to at
     }
 
     private fun channel(c: Context) {
@@ -105,6 +126,9 @@ object LiveNotifications {
         .setSilent(true)
         .setCategory(if (it.key == "prayer") NotificationCompat.CATEGORY_REMINDER else NotificationCompat.CATEGORY_STOPWATCH)
         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+        // Android 16 canlı güncelleme (2. analiz #170): durum çubuğunda çip olarak öne çıkar; vakitte çipte vaktin adı
+        .setRequestPromotedOngoing(true)
+        .apply { if (it.key == "prayer") setShortCriticalText(it.title.take(12)) }
         .setContentIntent(PendingIntent.getActivity(c, nid(it.key),
             Intent(c, MainActivity::class.java).putExtra("startTab", it.tab.ordinal).apply { it.tool?.let { t -> putExtra("tool", t) } }
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP),

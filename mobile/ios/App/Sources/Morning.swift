@@ -1,4 +1,5 @@
 import SwiftUI
+import EventKit
 import WeatherKit
 import SaatCore
 
@@ -14,6 +15,8 @@ enum MorningCheck {
         let shown = UserDefaults.standard.double(forKey: shownKey)
         guard last.timeIntervalSince1970 > shown else { return false }
         UserDefaults.standard.set(now.timeIntervalSince1970, forKey: shownKey)
+        SleepLogStore.recordWake(last) // uyku düzeni (2. analiz #47): iPhone'da kalkış = alarmın çaldığı an
+        WakeGame.record(wake: last, alarm: last, task: false) // uyanma oyunu (2. analiz #7)
         return true
     }
 
@@ -31,6 +34,7 @@ struct MorningCard: View {
     @Environment(\.dismiss) private var dismiss
     @State private var weather: Weather?
     private let now = Date()
+    private let wall = AlarmWalls.recent()
 
     var body: some View {
         let place = PlaceModel.shared.place
@@ -62,14 +66,26 @@ struct MorningCard: View {
                         Text("\(next.prayer.localizedName) \(place.hm(next.at))").font(.headline)
                     }
                 }
-                if !today.isEmpty {
+                // Bugünün özel günleri ve telefondaki takvimlerin etkinlikleri (2. analiz #144)
+                let mine = DeviceCalendar.shared.events(on: CalendarDay(now))
+                if !today.isEmpty || !mine.isEmpty {
                     Section(L("morning.today")) {
                         ForEach(today, id: \.self) { Text($0) }
+                        ForEach(mine, id: \.eventIdentifier) { e in
+                            HStack {
+                                Circle().fill(Color(cgColor: e.calendar.cgColor)).frame(width: 8, height: 8)
+                                Text(e.title ?? "")
+                                Spacer()
+                                Text(e.isAllDay ? L("calendar.allDay") : Fmt.time(e.startDate)).foregroundStyle(Theme.muted).monospacedDigit()
+                            }
+                        }
                     }
                 }
+                WakeGameMorningSection()
                 JournalMorningSection()
             }
-            .themedBackground()
+            // Alarm duvar kâğıdı (2. analiz #2): son çalan alarmınki
+            .alarmWall(wall)
             .toolbar { Button(L("common.done")) { dismiss() } }
         }
         .task { weather = try? await WeatherCache.weather(lat: place.lat, lon: place.lon) }

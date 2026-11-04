@@ -68,7 +68,8 @@ func noiseName(_ kind: String) -> String {
     case "brown": L("tools.pomodoro.noiseBrown")
     case "rain": L("tools.pomodoro.noiseRain")
     case "waves": L("noise.waves")
-    default: L("tools.pomodoro.noiseOff")
+    case "stream", "wind", "fire", "crickets", "tick": L("noise.\(kind)")
+    default: kind.hasPrefix("mix:") ? L("noise.mix") : L("tools.pomodoro.noiseOff")
     }
 }
 
@@ -104,7 +105,7 @@ final class NoisePlayer {
 
     /// Çalar ya da çalanı günceller (aynı tür yeniden başlamaz)
     func play(kind: String, volume: Int, until: Date?, source: String, fadeOut: Bool = false) {
-        guard NoiseGen.kinds.contains(kind) else { stop(); return }
+        guard NoiseGen.kinds.contains(kind) || kind.hasPrefix("mix:") else { stop(); return }
         if let until, until <= Date() { stop(source: source); return }
         self.until = until
         self.source = source
@@ -160,7 +161,8 @@ final class NoisePlayer {
 
     private func buffer(_ kind: String) -> AVAudioPCMBuffer? {
         if let b = buffers[kind] { return b }
-        let samples = NoiseGen.samples(kind)
+        // Karışım (2. analiz #30): "mix:rain=60;fire=30"
+        let samples = kind.hasPrefix("mix:") ? NoiseGen.mix(String(kind.dropFirst(4))) : NoiseGen.samples(kind)
         guard let format = AVAudioFormat(standardFormatWithSampleRate: Double(NoiseGen.rate), channels: 1),
               let b = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(samples.count)),
               let data = b.floatChannelData else { return nil }
@@ -253,6 +255,7 @@ struct FocusStatsCard: View {
     let log: [FocusLog.Entry]
     let onClear: () -> Void
     @State private var confirm = false
+    @State private var sharing = false
 
     var body: some View {
         let days = PomoLog.lastDays()
@@ -269,10 +272,18 @@ struct FocusStatsCard: View {
                 Text(L("tools.pomodoro.empty")).font(.subheadline).foregroundStyle(Theme.muted)
             } else {
                 stat(L("tools.pomodoro.today"), s.today)
+                // Bugünün odak kartı (2. analiz #105)
+                if s.today.m > 0 {
+                    Button { sharing = true } label: { Label(L("share.card"), systemImage: "square.and.arrow.up") }
+                        .font(.subheadline).tint(Theme.accent)
+                        .sheet(isPresented: $sharing) {
+                            ShareCardSheet(title: L("share.card")) { FocusShareCard(minutes: s.today.m, sessions: s.today.n, streak: streak, task: s.top.first?.0) }
+                        }
+                }
                 stat(L("tools.pomodoro.week"), s.week)
                 stat(L("tools.pomodoro.total"), s.total)
-                Text(L("tools.pomodoro.chartCaption")).font(.caption).foregroundStyle(Theme.muted)
-                bars(days, s.perDay)
+                // 7 gün / 30 gün / 12 ay (2. analiz #31)
+                FocusRangeChart(log: log)
                 if !s.top.isEmpty {
                     Text(L("tools.pomodoro.topTasks")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.text)
                     ForEach(Array(s.top.enumerated()), id: \.offset) { _, t in

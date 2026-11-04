@@ -58,6 +58,7 @@
       "light": "Manipis"
     },
     "lookColor": "Kulay ng orasan",
+    "lookSecSmall": "Maliit na segundo sa digital na orasan",
     "lookColors": {
       "default": "Kulay ng site",
       "ink": "Tinta",
@@ -66,7 +67,28 @@
       "red": "Pula",
       "purple": "Lila"
     },
-    "lookNote": "Sa browser na ito lang naka-save ang iyong pinili."
+    "lookNote": "Sa browser na ito lang naka-save ang iyong pinili.",
+    "lookDateFmt": "Format ng petsa",
+    "lookDateFmts": {
+      "long": "Mahaba",
+      "numeric": "Numero",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "Panghiwalay ng oras",
+    "lookSeps": {
+      "colon": "Tutuldok (14:30)",
+      "dot": "Tuldok (14.30)"
+    },
+    "lookWeekStart": "Unang araw ng linggo",
+    "lookWeekStarts": {
+      "mon": "Lunes",
+      "sun": "Linggo",
+      "sat": "Sabado"
+    },
+    "lookMs": "Millisecond",
+    "lookNight": "Night mode (patayin ang ilaw)",
+    "share": "Ibahagi",
+    "shareCopied": "Nakopya ang link"
   },
   "client": {
     "format24": "24 oras",
@@ -206,7 +228,13 @@
     "formatLabel": "Format ng oras",
     "fsWeatherNeed": "Pumili ng lokasyon para sa lagay ng panahon:",
     "fsWeatherLink": "pumili ng lokasyon",
-    "fsWeatherFail": "Hindi makuha ang lagay ng panahon."
+    "fsWeatherFail": "Hindi makuha ang lagay ng panahon.",
+    "syncShortOk": "Tama ang orasan mo · ±{ms} ms",
+    "syncShortAhead": "Nauuna nang {s} s ang orasan mo",
+    "syncShortBehind": "Nahuhuli nang {s} s ang orasan mo",
+    "weekN": "Linggo {n}",
+    "pillDst": "May daylight saving time",
+    "pillNoDst": "Walang daylight saving time"
   },
   "home": {
     "title": "Anong Oras Na? Live na Orasan at Petsa Ngayon | Saat Tarih",
@@ -317,7 +345,14 @@
     "sunrise": "Pagsikat ng araw",
     "sunset": "Paglubog ng araw",
     "daylen": "Haba ng araw",
-    "sunNote": "Tantiya lang ang pagsikat at paglubog ng araw, batay sa petsa ngayon at lokasyon ng lungsod (puwedeng magkamali nang ilang minuto)."
+    "sunNote": "Tantiya lang ang pagsikat at paglubog ng araw, batay sa petsa ngayon at lokasyon ng lungsod (puwedeng magkamali nang ilang minuto).",
+    "solarNoon": "Tanghaling-araw ng araw",
+    "solarAhead": "Dito, nauuna nang {d} ang orasan sa oras ng araw.",
+    "solarBehind": "Dito, nahuhuli nang {d} ang orasan sa oras ng araw.",
+    "solarSame": "Dito, halos kapareho ng oras ng araw ang orasan.",
+    "mapLink": "Tingnan sa mapa (OpenStreetMap)",
+    "population": "Populasyon (metro, tantiya)",
+    "populationNote": "Populasyon: Natural Earth (pampublikong domain), tantiyang bilang ng metro area."
   },
   "privacy": {
     "title": "Patakaran sa Privacy at Cookies | Saat Tarih",
@@ -338,7 +373,7 @@
         "ul": [
           "**Oras at petsa:** Ang oras at time zone ng iyong device ay binabasa at kinakalkula lang sa iyong browser. Hindi ito ipinapadala sa server o sine-save.",
           "**Lokasyon (oras ng pagdarasal):** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\" sa pahina ng oras ng pagdarasal, ginagamit ng browser ang iyong lokasyon sa device mo lang para kalkulahin ang mga oras. Hindi ipinapadala sa server ang coordinates at hindi isinasama sa statistics; nananatili ang huli mong pinili sa local storage ng browser.",
-          "**Lagay ng panahon (panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences, ipinapadala ng pahina ng panahon at ng mga istilo ng orasan na may panahon ang tantiyang coordinates ng napili mong lalawigan o lokasyon (mga 1 km) nang direkta mula sa browser papunta sa Open-Meteo (api.open-meteo.com), na nagbibigay ng datos; nakakarating din sa Open-Meteo ang iyong IP address. Kung walang pahintulot, walang ginagawang request at isang maikling paalala ang ipinapakita sa halip. Hindi nakikita o sine-save ng server ng Saat Tarih ang coordinates na ito; ang sariling mga tuntunin sa privacy ng Open-Meteo ang umiiral.",
+          "**Lagay ng panahon (panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences, ipinapadala ng pahina ng panahon at ng mga istilo ng orasan na may panahon ang tantiyang coordinates ng napili mong lalawigan o lokasyon (mga 1 km) nang direkta mula sa browser papunta sa Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), na nagbibigay ng datos; nakakarating din sa Open-Meteo ang iyong IP address. Kung walang pahintulot, walang ginagawang request at isang maikling paalala ang ipinapakita sa halip. Hindi nakikita o sine-save ng server ng Saat Tarih ang coordinates na ito; ang sariling mga tuntunin sa privacy ng Open-Meteo ang umiiral.",
           "**Mapa (globo, panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences at nag-zoom ka sa globo sa home page lampas sa isang antas, direktang dina-download sa iyong browser ang mga tile ng mapa mula sa server ng OpenStreetMap (tile.openstreetmap.org); kasabay nito, nakakarating sa OpenStreetMap Foundation ang iyong IP address at ang mga address ng tile ng lugar na tinitingnan mo. Kung walang pahintulot, o habang naka-zoom out ang globo, hindi ginagawa ang request na ito. Hindi ito nakikita ng server ng Saat Tarih; ang sariling mga tuntunin sa privacy ng OpenStreetMap ang umiiral.",
           "**Qibla at kalapit na mga masjid:** Kinakalkula sa iyong browser ang direksyon ng qibla, layo at oras ng qibla. Para sa compass, binabasa lang sa browser ang orientation sensor ng telepono (humihingi ng pahintulot ang iPhone) at hindi ito ipinapadala kahit saan. Kung pipindutin mo ang \"Ipakita ang mga masjid\" at pinayagan mo ang mga panlabas na serbisyo, ang coordinates ng napiling lugar na ni-round sa dalawang decimal (mga 1 km) ay ipinapadala mula sa browser sa serbisyong Overpass (overpass-api.de), na naghahatid ng datos ng OpenStreetMap; nakakarating din dito ang iyong IP address. Hindi nakikita ng server ng Saat Tarih ang coordinates na ito.",
           "**Musika ng alarma (YouTube, panlabas na serbisyo, may pahintulot):** Kung nagdagdag ka ng link sa YouTube sa isang alarma sa tool ng alarma at pinayagan mo ang mga panlabas na serbisyo, kapag tumunog ang alarma, ilo-load sa iyong browser ang video gamit ang player ng YouTube sa privacy-enhanced mode (youtube-nocookie.com); kasabay nito, nakakarating sa Google (YouTube) ang iyong IP address at ang ID ng video, at maaaring mag-imbak ang player ng sarili nitong datos sa iyong browser. Nananatili lang ang link sa browser na ito, kasama ng iyong alarma. Kung walang pahintulot, hindi ilo-load ang player at tutunog ang alarma sa sarili nitong tunog. Hindi ito nakikita ng server ng Saat Tarih; ang sariling mga tuntunin sa privacy ng YouTube (Google) ang umiiral.",
@@ -357,22 +392,23 @@
         ],
         "ul": [
           "**Lokasyon:** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\", ginagamit ang iyong lokasyon sa telepono para kalkulahin ang oras ng pagdarasal at hanapin ang pinakamalapit na lalawigan; ang tantiyang lokasyon (mga 1 km) ay sa telepono mo lang naka-save. Ang opsyong \"Awtomatiko\" sa widgets ay gumagamit din ng lokasyon sa telepono lang.",
-          "**Lagay ng panahon:** Galing sa Apple Weather (WeatherKit) ang panahon sa app; para rito, ipinapadala sa Apple ang tantiyang coordinates ng napiling lalawigan o ng iyong lokasyon. Hindi namin nakikita ang datos na ito; ang mga tuntunin sa privacy ng Apple ang umiiral.",
+          "**Lagay ng panahon:** Galing sa Apple Weather (WeatherKit) ang panahon sa app; para rito, ipinapadala sa Apple ang tantiyang coordinates ng napiling lalawigan o ng iyong lokasyon. Hindi namin nakikita ang datos na ito; ang mga tuntunin sa privacy ng Apple ang umiiral. Ang kalidad ng hangin, polen, paghahambing ng modelo at weather complication ng Apple Watch ay mula sa Open-Meteo (open-meteo.com); para rito, ipinapadala ang mga coordinate na ni-round sa dalawang decimal.",
           "**Mapa:** Ipinapakita gamit ang Apple Maps ang globo sa orasan ng mundo; dina-download mula sa Apple ang mga larawan ng mapa.",
           "**Kalendaryo:** Ipinapakita lang sa app ang mga event mula sa mga kalendaryo sa iyong telepono kung papayagan mo ito; binabasa ang mga ito sa telepono at hindi ipinapadala kahit saan. Ang pagdagdag at pagbura ng event ay ginagawa sa sariling screen ng kalendaryo ng iPhone at kapag kinumpirma mo lang.",
           "**Mga notification at alarma:** Mga notification sa oras ng pagdarasal; mga notification para sa espesyal na araw, simula ng panahon, yugto ng buwan, pagsikat at paglubog ng araw, buod ng panahon sa umaga, bawat oras at daylight saving (bawat isa ay naka-on bilang default maliban sa bawat oras; mababago sa Settings › Notifications); ang mga alarma at timer ay ini-iskedyul sa iyong telepono nang walang server. Para sa buod ng panahon, ang serbisyo ng panahon lang ang kinokontak (tingnan ang item tungkol sa panahon sa itaas). Pinananatiling updated ang listahan gamit ang background refresh ng iOS; ginagawa sa telepono ang mga pasalitang anunsyo.",
           "**Email list:** Kung sasali ka sa listahan mula sa pahinang About, ipinapadala ang iyong email address sa shared na listahan ng Bumba gaya ng sa form ng website; umiiral din sa app ang mga paliwanag tungkol sa email list.",
           "**Badges:** Ang mga achievement badge at ang iyong progreso (mga nakuhang badge at araw, mga istilo ng orasan na nakita, bilang ng magkakasunod na araw ng paggamit) ay sa telepono lang naka-save at hindi ipinapadala kahit saan; mabubura mo ang mga ito anumang oras gamit ang \"Burahin ang badges\" sa Tools › Badges.",
           "**Interval workout:** Habang tumatakbo ang interval workout na sinimulan mo, gumagamit ang app ng background audio ng iOS para maianunsyo ang mga pagpapalit ng yugto kahit naka-lock ang screen; ginagawa sa telepono ang boses at walang datos na ipinapadala.",
-          "**Mga larawan:** Ang larawang pinili mo para sa full-screen na orasan o countdown ay kinukuha gamit ang photo picker ng iPhone (walang hinihinging access sa photo library); sa telepono lang naka-save ang pinaliit na kopya at hindi ito ipinapadala kahit saan. Ang mga larawang pinili mo para sa slideshow (hanggang 10) ay nananatili rin sa telepono. Ang mga share card ng oras ng pagdarasal at countdown at mga CSV file ay ginagawa sa telepono at ipinapadala lang sa app na pipiliin mo.",
+          "**Mga larawan:** Ang larawang pinili mo para sa full-screen na orasan o countdown ay kinukuha gamit ang photo picker ng iPhone (walang hinihinging access sa photo library); sa telepono lang naka-save ang pinaliit na kopya at hindi ito ipinapadala kahit saan. Ang mga larawang pinili mo para sa slideshow (hanggang 10) ay nananatili rin sa telepono. Ang mga share card ng oras ng pagdarasal at countdown at mga CSV file ay ginagawa sa telepono at ipinapadala lang sa app na pipiliin mo. Ang screenshot ng Home Screen na pinili mo para sa transparent na widget at ang mga hiniwang bahagi nito ay nasa telepono lang, sa folder na pinagsasaluhan ng app at ng mga widget nito; hindi ipinapadala kahit saan at hindi sini-sync sa iCloud.",
           "**Mga kagustuhan:** Ang mga kagustuhan gaya ng istilo ng orasan, lalawigan at orasan ng mundo ay sa telepono lang naka-save at nabubura kapag binura mo ang app.",
-          "**Qibla at kalapit na mga masjid:** Kinakalkula sa telepono ang direksyon ng qibla; gumagamit ang compass ng orientation sensor ng telepono (kapag may pahintulot sa lokasyon, ginagamit din sa telepono ang lokasyon para sa tunay na hilaga). Sa screen na \"Kalapit na mga masjid\", gumagamit ang paghahanap ng Apple Maps: napupunta sa Apple ang salitang hinahanap at ang gitna ng lugar na ni-round sa dalawang decimal; ang mga tuntunin sa privacy ng Apple ang umiiral.",
+          "**Qibla at kalapit na mga masjid:** Kinakalkula sa telepono ang direksyon ng qibla; gumagamit ang compass ng orientation sensor ng telepono (kapag may pahintulot sa lokasyon, ginagamit din sa telepono ang lokasyon para sa tunay na hilaga). Sa screen na \"Kalapit na mga masjid\", gumagamit ang paghahanap ng Apple Maps: napupunta sa Apple ang salitang hinahanap at ang gitna ng lugar na ni-round sa dalawang decimal; ang mga tuntunin sa privacy ng Apple ang umiiral. Sa qibla screen, ipinapakita sa Apple Maps ang linya papunta sa Kaaba; dina-download mula sa Apple ang mga larawan ng mapa ng iyong lugar.",
           "**Apple Watch, Siri at Lock Screen:** Kinakalkula ng Apple Watch app ang oras ng pagdarasal sa relo; kapag napili ang \"Lugar mula sa iPhone\", ang pangalan at coordinates ng napiling lugar ay ipinapadala mula sa iPhone papunta sa relo (WatchConnectivity ng Apple) at hindi sa iba pang lugar; kung napili ang \"Aking lokasyon\" sa relo, sa relo lang ginagamit ang lokasyon. Tumatakbo sa telepono ang mga aksyon ng Siri at Shortcuts (timer, alarma, full-screen na orasan, susunod na dasal, petsa); pinoproseso ng Apple ang mga voice request. Ginagawa sa telepono ang Live Activities sa Lock Screen (mga counter, susunod na dasal).",
-          "**Camera, tulog at focus:** Para mabasa ang QR code o barcode ng gawaing pampatay ng alarma, bubukas lang ang camera habang sine-save mo ang code at habang pinapatay mo ang alarma (hihingi ng pahintulot sa unang beses); pinoproseso sa device ang larawan, hindi sine-save at hindi ipinapadala, at ang nabasang halaga lang ang itinatago sa device kasama ng alarma. Ginagamit lang ng mga gawaing pag-alog at paghakbang ang motion sensor habang bukas ang screen ng gawain; hindi itinatala ang mga hakbang. Nananatili sa device ang kasaysayan ng pomodoro (araw, minuto, pangalan ng gawain) at ang iskedyul ng tulog; ginagawa sa device ang ingay ng pomodoro at mga tunog pantulog. Matalinong alarma: kung sisimulan mo ang session sa screen ng Tulog, binabasa ang motion sensor (accelerometer) sa window ng matalinong alarma at maagang tutunog ang alarma kapag may senyales ng mababaw na tulog; nananatili lang sa memory ang data ng galaw at hindi sine-save o ipinapadala. Walang sleep tracking (mga yugto ng tulog, recording) at hindi ginagamit ang mikropono.",
+          "**Camera, tulog at focus:** Para mabasa ang QR code o barcode ng gawaing pampatay ng alarma, bubukas lang ang camera habang sine-save mo ang code at habang pinapatay mo ang alarma (hihingi ng pahintulot sa unang beses); pinoproseso sa device ang larawan, hindi sine-save at hindi ipinapadala, at ang nabasang halaga lang ang itinatago sa device kasama ng alarma. Ginagamit lang ng mga gawaing pag-alog at paghakbang ang motion sensor habang bukas ang screen ng gawain; hindi itinatala ang mga hakbang. Nananatili sa device ang kasaysayan ng pomodoro (araw, minuto, pangalan ng gawain) at ang iskedyul ng tulog; ginagawa sa device ang ingay ng pomodoro at mga tunog pantulog. Matalinong alarma: kung sisimulan mo ang session sa screen ng Tulog, binabasa ang motion sensor (accelerometer) sa window ng matalinong alarma at maagang tutunog ang alarma kapag may senyales ng mababaw na tulog; nananatili lang sa memory ang data ng galaw at hindi sine-save o ipinapadala. Walang sleep tracking (mga yugto ng tulog, recording) at hindi ginagamit ang mikropono para sa tulog. Ang larawan sa gawain na paghahanap ng bagay (kinikilala ng Apple Vision), ang larawan sa qibla camera view at ang mikropono sa gawain na pagbasa nang malakas (on-device speech recognition lang) ay ginagamit lang habang bukas ang screen na iyon; lahat ay pinoproseso sa device, hindi sine-save at hindi ipinapadala. Naka-save sa device ang disenyo ng compass at mga paboritong masjid at, kung naka-on ang iCloud sync, sini-sync sa sarili mong mga device.",
           "**Pagsamba:** Ang iyong bookmark sa Quran, laki ng teksto, bilang ng dhikr, tracker ng dasal at pag-aayuno (mga nagawang dasal, bilang ng qada (mga pambawi), mga araw na nag-ayuno) at ang mga halagang inilagay mo sa zakat calculator ay sa device lang nananatili; hindi ipinapadala kahit saan at hindi ginagamit para sa statistics o badges. Kasama na sa app ang teksto ng Quran at mga du'a. Kapag pinindot mo ang link papunta sa site ng Diyanet para sa salin sa Turkish, bubukas ang site na iyon sa iyong browser. Ikaw mismo ang naglalagay ng presyo ng ginto para sa zakat; hindi kumukuha ng presyo ang app.",
           "**iCloud sync:** Kung naka-on ang \"I-sync sa iCloud\" sa Settings (default), sini-sync sa pamamagitan ng iCloud key-value storage ng Apple ang mga setting, orasan ng mundo, countdown, naka-save na lugar, mga tala ng pomodoro at tulog at mga tala ng pagsamba sa mga iPhone, iPad at Mac na naka-sign in sa iisang Apple Account. Nananatili ang datos na ito sa iyong iCloud account sa ilalim ng mga tuntunin ng Apple; hindi namin ito ma-access at hindi ito nakakarating sa aming mga server. Hindi sini-sync ang lokasyon, alarma, tumatakbong timer, setting ng notification, badges at mga larawan. Kapag pinatay ang switch, titigil ang pag-sync sa device na iyon.",
           "**Health, journal sa umaga, larawan ng alarma at lumulutang na orasan:** Kung i-o-on mo ang \"I-save sa Apple Health\", isusulat sa Health app bilang workout (uri, simula, tagal) ang bawat natapos na interval workout; hindi binabasa ng app ang iyong health data at walang server na napupuntahan ng datos na ito. Ang journal sa umaga (mood, tulog, intensyon, tala) ay sa iyong mga device lang nananatili (sa mga device ng iyong Apple Account kung naka-on ang iCloud sync). Para sa gawaing alarma na may larawan, hindi sine-save ang larawan; isang maliit na buod lang (72 halaga ng kulay-abo) ang itinatago sa telepono para sa paghahambing. Nananatili rin sa telepono ang iyong paraan ng pagkalkula, mga alarma sa oras ng pagdarasal (iOS 26+) at mga button sa Control Center. Ang lumulutang na orasan ay isang picture-in-picture na bintana; walang tunog at walang ipinapadalang datos.",
-          "**Alarma na may musika, paalala ayon sa lokasyon at kalendaryo, focus blocking, Mac, Apple TV at Vision Pro:** Para sa tunog ng alarma, isinusulat sa sound file sa telepono ang 30-segundong bahagi ng kantang pinili mo mula sa music library o Files; hindi ipinapadala kahit saan ang kanta (hinihingi lang ang access sa music library kapag pumipili ka). Para sa mga paalala ayon sa lokasyon, ang iPhone mismo ang nakakaalam ng pagdating at pag-alis; nananatili sa telepono ang lugar ng paalala at galing sa Apple ang mapa. Kapag nagtakda ka ng alarma para sa event sa kalendaryo, ang pamagat at oras lang ng event na iyon ang ginagamit. Gumagamit ang focus blocking ng Screen Time framework ng Apple; ang mga app at website na pinili mo ay mga naka-encrypt na token ng Apple at hindi makikita ng app kung ano ang mga ito. Kinakalkula ng mga app para sa Mac, Apple TV at Vision Pro ang oras ng pagdarasal sa device; kung papayagan mo ang lokasyon, sa device lang ito ginagamit para hanapin ang pinakamalapit na lalawigan."
+          "**Alarma na may musika, paalala ayon sa lokasyon at kalendaryo, focus blocking, Mac, Apple TV at Vision Pro:** Para sa tunog ng alarma, isinusulat sa sound file sa telepono ang 30-segundong bahagi ng kantang pinili mo mula sa music library o Files; hindi ipinapadala kahit saan ang kanta (hinihingi lang ang access sa music library kapag pumipili ka). Para sa mga paalala ayon sa lokasyon, ang iPhone mismo ang nakakaalam ng pagdating at pag-alis; nananatili sa telepono ang lugar ng paalala at galing sa Apple ang mapa. Kapag nagtakda ka ng alarma para sa event sa kalendaryo, ang pamagat at oras lang ng event na iyon ang ginagamit. Gumagamit ang focus blocking ng Screen Time framework ng Apple; ang mga app at website na pinili mo ay mga naka-encrypt na token ng Apple at hindi makikita ng app kung ano ang mga ito. Kinakalkula ng mga app para sa Mac, Apple TV at Vision Pro ang oras ng pagdarasal sa device; kung papayagan mo ang lokasyon, sa device lang ito ginagamit para hanapin ang pinakamalapit na lalawigan. Habang tumutunog ang alarm na may gawain, hinaharangan ng parehong framework ang pagbura ng app at pinapayagan ulit kapag tapos na ang gawain; gumagana lang ito kung nagbigay ka ng pahintulot sa Screen Time.",
+          "**Timer sa pag-aaral at laro sa paggising:** Sa device lang naiimbak ang mga asignatura at sesyon ng timer sa pag-aaral (tagal, bilang ng tanong, tala) at ang mga tala ng laro sa paggising (araw, oras ng paggising at alarm, bilang ng snooze); kung naka-on ang iCloud sync, nasi-sync ang mga ito sa iyong iCloud account at hindi ipinapadala kahit saan pa. Sa device din naiimbak ang wika ng app at ang napiling dial."
         ]
       },
       {
@@ -392,10 +428,11 @@
           "**Badges at mga kagustuhan:** Ang badges at ang mga kagustuhan gaya ng istilo ng orasan, lokasyon at orasan ng mundo ay sa telepono lang naka-save at nabubura kapag binura mo ang app. Kung naka-on ang Android backup sa iyong telepono, puwedeng maisama ang mga talang ito (at ang kopya ng mga larawang pinili mo) sa backup ng device sa iyong Google account; sakop ng mga tuntunin ng Google ang backup na iyon at hindi namin ito ma-access.",
           "**Qibla at kalapit na mga masjid:** Kinakalkula sa telepono ang direksyon ng qibla at ang compass. Sa screen na \"Kalapit na mga masjid\", ipinapadala ang coordinates na ni-round sa dalawang decimal (mga 1 km) sa serbisyong Overpass (overpass-api.de), na naghahatid ng datos ng OpenStreetMap; nakakarating dito ang iyong IP address. Kapag pinindot ang isang masjid, bubukas ang iyong maps app.",
           "**Wear OS na relo at shortcuts:** Kinakalkula ng Wear OS app ang oras ng pagdarasal sa relo; kung napili ang \"Aking lokasyon\", sa relo lang ginagamit ang tantiyang lokasyon at hindi ipinapadala kahit saan. Ang mga timer at alarma na itinakda ng Assistant o ng ibang app sa Saat Tarih ay sa telepono lang naka-save; ginagawa sa telepono ang screen saver at mga notification ng tumatakbong counter.",
-          "**Camera, tulog at focus:** Binabasa ng code scanner ng Google (Google Play services) ang QR code o barcode ng gawaing pampatay ng alarma: hindi humihingi ng pahintulot sa camera ang app at hindi nito nakikita ang larawan; ang nabasang halaga lang ang itinatago sa telepono kasama ng alarma. Ginagamit lang ng mga gawaing pag-alog at paghakbang ang accelerometer habang bukas ang screen ng alarma; hindi itinatala ang mga hakbang. Nananatili sa telepono ang kasaysayan ng pomodoro (araw, minuto, pangalan ng gawain) at ang iskedyul ng tulog; ginagawa sa telepono ang ingay ng pomodoro at mga tunog pantulog (may foreground service para tumugtog kahit patay ang screen, at may \"Itigil ang tunog\" sa notification). Matalinong alarma: kung sisimulan mo ang session sa screen ng Tulog, binabasa ang motion sensor (accelerometer) sa window ng matalinong alarma at maagang tutunog ang alarma kapag may senyales ng mababaw na tulog; nananatili lang sa memory ang data ng galaw at hindi sine-save o ipinapadala. Walang sleep tracking (mga yugto ng tulog, recording) at hindi ginagamit ang mikropono. Tumatakbo ang session bilang foreground service (may \"Itigil\" sa notification). Kung magdaragdag ka ng link ng Spotify o YouTube sa alarma, bubukas ang link sa app na iyon kapag tumunog ang alarma; binubuksan lang ng app ang link at walang access sa musika.",
+          "**Camera, tulog at focus:** Binabasa ng code scanner ng Google (Google Play services) ang QR code o barcode ng gawaing pampatay ng alarma: hindi humihingi ng pahintulot sa camera ang app at hindi nito nakikita ang larawan; ang nabasang halaga lang ang itinatago sa telepono kasama ng alarma. Ginagamit lang ng mga gawaing pag-alog at paghakbang ang accelerometer habang bukas ang screen ng alarma; hindi itinatala ang mga hakbang. Nananatili sa telepono ang kasaysayan ng pomodoro (araw, minuto, pangalan ng gawain) at ang iskedyul ng tulog; ginagawa sa telepono ang ingay ng pomodoro at mga tunog pantulog (may foreground service para tumugtog kahit patay ang screen, at may \"Itigil ang tunog\" sa notification). Matalinong alarma: kung sisimulan mo ang session sa screen ng Tulog, binabasa ang motion sensor (accelerometer) sa window ng matalinong alarma at maagang tutunog ang alarma kapag may senyales ng mababaw na tulog; nananatili lang sa memory ang data ng galaw at hindi sine-save o ipinapadala. Walang sleep tracking (mga yugto ng tulog, recording) at hindi ginagamit ang mikropono para sa tulog. Tumatakbo ang session bilang foreground service (may \"Itigil\" sa notification). Kung magdaragdag ka ng link ng Spotify o YouTube sa alarma, bubukas ang link sa app na iyon kapag tumunog ang alarma; binubuksan lang ng app ang link at walang access sa musika. Sa gawain na paghahanap ng bagay, ang maliit na larawan mula sa system camera ay kinikilala sa telepono ng image labeling model ng Google Play services; sa gawain na pagbasa nang malakas, ang mikropono (hinihingi ang pahintulot sa gawain) ay ginagamit lang sa on-device speech recognition ng Android, at kung wala ito, typing task ang gagamitin. Hindi sine-save o ipinapadala ang larawan at tunog. Naka-save sa telepono ang disenyo ng compass at mga paboritong masjid at, kung naka-on ang Android backup, kasama ng mga setting sa backup ng iyong Google account.",
           "**Pagsamba:** Ang iyong bookmark sa Quran, laki ng teksto, bilang ng dhikr, tracker ng dasal at pag-aayuno (mga nagawang dasal, bilang ng qada (mga pambawi), mga araw na nag-ayuno) at ang mga halagang inilagay mo sa zakat calculator ay sa telepono lang nananatili; hindi ipinapadala kahit saan at hindi ginagamit para sa statistics o badges. Kasama na sa app ang teksto ng Quran at mga du'a. Kapag pinindot mo ang link papunta sa site ng Diyanet para sa salin sa Turkish, bubukas ang site na iyon sa iyong browser. Ikaw mismo ang naglalagay ng presyo ng ginto para sa zakat; hindi kumukuha ng presyo ang app.",
           "**Health, journal sa umaga, larawan ng alarma, pagpapatahimik at lumulutang na orasan:** Kung i-o-on mo ang \"I-save sa Health Connect\", pahintulot lang sa pagsulat ng ehersisyo ang hinihingi at isusulat bilang exercise session (uri, simula, tagal) ang bawat natapos na interval workout; hindi binabasa ng app ang iyong health data. Sa telepono lang (at sa Google backup ng telepono) nananatili ang journal sa umaga. Para sa gawaing alarma na may larawan, kinukunan ang larawan gamit ang sariling camera ng telepono (walang hinihinging pahintulot sa camera) at hindi ito sine-save; isang maliit na buod lang ang itinatago. Ginagamit lang ang access sa Do Not Disturb para sa \"Patahimikin sa oras ng pagdarasal\" kung i-o-on mo ito at ibibigay sa mga setting ng telepono. Gumagamit ang lumulutang na orasan ng pahintulot na \"Display over other apps\"; wala itong binabasa sa screen at orasan lang ang iginuguhit. Gumagamit ang widgets at Quick Settings tiles ng sariling mga counter ng app.",
-          "**Paalala ayon sa lokasyon at kalendaryo, focus blocking at Android TV:** Kung magdadagdag ka ng paalala ayon sa lokasyon, hinihingi ang eksaktong lokasyon at access na \"Allow all the time\"; ang geofencing ng Google Play services ang nakakaalam ng pagdating at pag-alis, nananatili sa telepono ang lugar ng paalala at hindi ipinapadala ng app ang iyong lokasyon kahit saan. Kapag nagtakda ka ng alarma para sa event sa kalendaryo, ang pamagat at oras lang ng event na iyon ang ginagamit. Kung ibibigay mo ang usage access para sa focus blocking, babasahin ng app sa telepono ang pangalan ng app na nasa harapan isang beses bawat segundo, sa oras lang ng trabaho sa pomodoro; hindi ito sine-save o ipinapadala. Ginagamit ng screen ng Android TV ang lugar na napili sa app."
+          "**Paalala ayon sa lokasyon at kalendaryo, focus blocking at Android TV:** Kung magdadagdag ka ng paalala ayon sa lokasyon, hinihingi ang eksaktong lokasyon at access na \"Allow all the time\"; ang geofencing ng Google Play services ang nakakaalam ng pagdating at pag-alis, nananatili sa telepono ang lugar ng paalala at hindi ipinapadala ng app ang iyong lokasyon kahit saan. Kapag nagtakda ka ng alarma para sa event sa kalendaryo, ang pamagat at oras lang ng event na iyon ang ginagamit. Kung ibibigay mo ang usage access para sa focus blocking, babasahin ng app sa telepono ang pangalan ng app na nasa harapan isang beses bawat segundo, sa oras lang ng trabaho sa pomodoro; hindi ito sine-save o ipinapadala. Ginagamit ng screen ng Android TV ang lugar na napili sa app.",
+          "**Timer sa pag-aaral at laro sa paggising:** Sa telepono lang naiimbak ang mga asignatura at sesyon ng timer sa pag-aaral (tagal, bilang ng tanong, tala) at ang mga tala ng laro sa paggising (araw, oras ng paggising at alarm, bilang ng snooze) at hindi ipinapadala kahit saan (kasama sa Google backup ng telepono). Sa telepono din naiimbak ang wika ng app at ang napiling dial."
         ]
       },
       {
@@ -471,6 +508,21 @@
             [
               "sth-hiit",
               "Tinatandaan ang mga yugto, bilang ng round at setting ng pasalitang hudyat ng interval timer.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-alarm-x",
+              "Itinatago sa device na ito ang lakas ng tunog ng alarm, mga kamakailang oras ng alarm at ang kasaysayan ng alarm (kailan tumunog, pangalan ng alarm, paano pinatay; hanggang 200 tala).",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-exam",
+              "Inaalala ang pangalan ng pagsusulit, silid, mga tagal at oras ng simula ng kasalukuyang pagsusulit sa exam timer.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-class",
+              "Iniimbak sa device na ito ang mga pangalan, listahan ng bunutan, grupo at counter ng mga kasangkapan sa klase.",
               "Hanggang burahin mo"
             ],
             [
@@ -588,7 +640,7 @@
     "pages": "Mga pahina",
     "cities": "Mga pahina ng lungsod",
     "about": "Tungkol sa site",
-    "aboutText": "Naka-sync ang oras sa orasan ng server ng site (hiwalay sa orasan ng device); binabasa ang time zone mula sa browser at walang personal na datos na ipinapadala. Available sa 15 wika: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French, Russian, Japanese, Korean, Chinese, Filipino at Thai. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+    "aboutText": "Naka-sync ang oras sa orasan ng server ng site (hiwalay sa orasan ng device); binabasa ang time zone mula sa browser at walang personal na datos na ipinapadala. Available sa 18 wika: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French, Russian, Japanese, Korean, Chinese, Filipino, Thai, Spanish, Portuguese at Hindi. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Mga istilo ng orasan",
@@ -627,13 +679,18 @@
       "h-wx-analog-date": "Magkatabing analog, petsa at panahon",
       "h-wx-full": "Magkatabing analog, digital, petsa at panahon",
       "wx-digital-cal": "Digital, petsa, panahon at buwanang kalendaryo",
-      "wx-digital-cal-week": "Digital, petsa, panahon, buwanang kalendaryo at lingguhang forecast"
+      "wx-digital-cal-week": "Digital, petsa, panahon, buwanang kalendaryo at lingguhang forecast",
+      "holo": "Hologram",
+      "matrix": "Matrix",
+      "math": "Orasang math"
     },
     "source": "Hindi nakadepende sa iyong device ang orasang ito: binabasa ito mula sa orasan ng server ng Saat Tarih na naka-sync sa NTP at sinusukat muli bawat 15 minuto.",
     "info": "Tungkol sa pinagmulan ng oras ng orasang ito",
     "infoTitle": "Saan galing ang oras na ito?",
     "infoClose": "Isara",
-    "infoSeconds": "I-tap ang orasan para ipakita o itago ang segundo. Nakabukas ang segundo sa simula sa digital na orasan at nakasara sa analog."
+    "infoSeconds": "I-tap ang orasan para ipakita o itago ang segundo. Nakabukas ang segundo sa simula sa digital na orasan at nakasara sa analog.",
+    "zoomIn": "Palakihin ang orasan",
+    "zoomOut": "Paliitin ang orasan"
   },
   "calendar": {
     "title": "Kalendaryo {year}: Mga Pista Opisyal sa Türkiye at Ramadan | Saat Tarih",
@@ -807,7 +864,25 @@
     "icsCalDays": "Mga panrelihiyon at espesyal na araw sa Türkiye (Saat Tarih)",
     "icsHalf": "kalahating araw",
     "icsProjected": "batay sa pangmatagalang kalendaryo ng Diyanet (projection)",
-    "icsCalMoon": "Mga yugto ng Buwan at eklipse (Saat Tarih)"
+    "icsCalMoon": "Mga yugto ng Buwan at eklipse (Saat Tarih)",
+    "monthOrigin": {
+      "heading": "Saan nagmula ang mga pangalan ng buwan?",
+      "source": "Pinagmulan: mga diksiyonaryong Latin, Online Etymology Dictionary.",
+      "items": [
+        "Ang Enero ay mula kay Janus, ang Romanong diyos ng mga pinto at simula.",
+        "Ang Pebrero ay mula sa Februa, isang Romanong pista ng paglilinis.",
+        "Ang Marso ay ipinangalan kay Mars, ang Romanong diyos ng digmaan.",
+        "Ang Abril ay malamang mula sa Latin na aperire, “magbukas”, dahil bumubuka ang mga usbong sa tagsibol.",
+        "Ang Mayo ay ipinangalan kay Maia, Romanong diyosa ng paglago.",
+        "Ang Hunyo ay ipinangalan kay Juno, reyna ng mga Romanong diyos.",
+        "Ang Hulyo ay ipinangalan kay Julius Caesar.",
+        "Ang Agosto ay ipinangalan kay Emperador Augustus ng Roma.",
+        "Ang Setyembre ay mula sa Latin na septem, “pito”: ikapitong buwan ng lumang kalendaryong Romano.",
+        "Ang Oktubre ay mula sa Latin na octo, “walo”.",
+        "Ang Nobyembre ay mula sa Latin na novem, “siyam”.",
+        "Ang Disyembre ay mula sa Latin na decem, “sampu”."
+      ]
+    }
   },
   "tools": {
     "hub": {
@@ -940,6 +1015,18 @@
         "tzn": {
           "name": "Balita sa time zone",
           "desc": "Mga desisyon ng mga bansa sa time zone at daylight saving."
+        },
+        "sleepCalc": {
+          "name": "Sleep calculator",
+          "desc": "Oras ng tulog at gising batay sa sleep cycle."
+        },
+        "examTimer": {
+          "name": "Exam timer",
+          "desc": "Full-screen na countdown para sa silid."
+        },
+        "classroom": {
+          "name": "Mga kasangkapan sa klase",
+          "desc": "Random na pangalan, grupo at counter."
         }
       },
       "infoHeading": "Mga pahina ng impormasyon"
@@ -1045,7 +1132,10 @@
       "copyLink": "Kopyahin ang link",
       "copied": "Nakopya ang link",
       "shareNote": "Maibabahagi mo ang link para sa petsang pinili mo; kusang magsisimula ang countdown kapag binuksan ang link.",
-      "addMinute": "+1 min"
+      "addMinute": "+1 min",
+      "addToApp": "📲 Idagdag sa Saat Tarih app",
+      "present": "Kulay para sa presentasyon",
+      "presentNote": "Berde; dilaw sa huling 2 minuto (sa huling ikalima para sa maiikling timer); pula kapag tapos na ang oras."
     },
     "alarm": {
       "title": "Online Alarm Clock: Paulit-ulit at Snooze | Saat Tarih",
@@ -1109,7 +1199,24 @@
       "ytNote": "Kapag tumunog ang alarma, tutugtog ang video na ito; kung hindi mo ito papatayin sa loob ng 1 minuto, tutunog din ang alarma (pati kung hindi kusang patugtugin ng browser ang video). Galing sa YouTube ang video, kaya kailangang payagan ang mga panlabas na serbisyo.",
       "ytInvalid": "Hindi ito link sa YouTube.",
       "ytBlocked": "Payagan ang mga panlabas na serbisyo para sa musika sa YouTube; kung walang pahintulot, tutunog ang alarma sa sarili nitong tunog.",
-      "spotifyNote": "Hindi kusang tumutugtog ang Spotify sa browser; magagamit mo ang Spotify bilang musika ng alarma sa Android app."
+      "spotifyNote": "Hindi kusang tumutugtog ang Spotify sa browser; magagamit mo ang Spotify bilang musika ng alarma sa Android app.",
+      "snoozeLabel": "Snooze",
+      "snoozeMin": "{n} min",
+      "volume": "Lakas ng tunog",
+      "tryNow": "Subukan ang alarm ngayon",
+      "tryTitle": "Pansubok na alarm",
+      "remaining": "natitira",
+      "recent": "Mga kamakailang oras",
+      "history": "Kasaysayan ng alarm",
+      "historyEmpty": "Wala pang tumunog na alarm.",
+      "histStop": "pinatay",
+      "histSnooze": "na-snooze",
+      "histMissed": "kusang tumigil",
+      "historyCsv": "I-download ang kasaysayan bilang CSV",
+      "historyClear": "Burahin ang kasaysayan",
+      "colTime": "Oras",
+      "colAlarm": "Alarm",
+      "colAction": "Resulta"
     },
     "pomodoro": {
       "title": "Pomodoro Timer: Trabaho 25 Minuto, Pahinga 5 | Saat Tarih",
@@ -1412,7 +1519,11 @@
     "shareLink": "Kopyahin ang link",
     "linkCopied": "Nakopya ang link",
     "addIcs": "Idagdag sa kalendaryo (.ics)",
-    "addGoogle": "Idagdag sa Google Calendar"
+    "addGoogle": "Idagdag sa Google Calendar",
+    "addOutlook": "Idagdag sa Outlook",
+    "mailGmail": "Ipadala gamit ang Gmail",
+    "copyText": "Kopyahin bilang teksto",
+    "textCopied": "Nakopya ang teksto."
   },
   "planner": {
     "title": "Meeting Planner: Hanapin ang Sabayang Oras ng Trabaho | Saat Tarih",
@@ -1451,7 +1562,12 @@
     "addGoogle": "Idagdag sa Google Calendar",
     "pickHint": "I-tap ang isang oras sa itaas ng talahanayan para piliin ang oras ng miting; kasama ito sa link at sa entry sa kalendaryo.",
     "meeting": "Miting",
-    "picked": "Napiling oras: {time} (oras ng {city})"
+    "picked": "Napiling oras: {time} (oras ng {city})",
+    "legendWeekend": "Weekend",
+    "addOutlook": "Idagdag sa Outlook",
+    "mailGmail": "Ipadala gamit ang Gmail",
+    "copyText": "Kopyahin bilang teksto",
+    "textCopied": "Nakopya ang teksto."
   },
   "poll": {
     "title": "Botohan sa Miting: Pumili ng Oras nang Sama-sama | Saat Tarih",
@@ -1731,7 +1847,17 @@
         "a": "Hindi naglalagay ng cookies ang widget at hindi kumokolekta ng personal na datos. Nagpapadala ito ng ilang maliliit na request sa server para maipakita ang tamang oras; binibilang ang page views sa anonymous na statistics na walang cookies."
       }
     ],
-    "sizeNote": "Kailangan ng hindi bababa sa 460 px na taas ang mga istilong may kalendaryo; kasya na sa 360 px ang iba."
+    "sizeNote": "Kailangan ng hindi bababa sa 460 px na taas ang mga istilong may kalendaryo; kasya na sa 360 px ang iba.",
+    "lineHeading": "Bilang isang linya ng teksto",
+    "lineLead": "Magdagdag sa iyong pahina ng live na orasan sa isang linya o teksto ng pagsikat/paglubog ng araw: i-paste ang dalawang linya sa ibaba; susunod ang teksto sa font at kulay ng iyong site.",
+    "lineKind": "Ipakita",
+    "lineKinds": {
+      "time": "Oras",
+      "date": "Petsa at oras",
+      "sun": "Pagsikat at paglubog ng araw"
+    },
+    "lineNote": "Oras lang ang ipinapakita ng script; walang cookie at walang ipinapadalang data. Mula sa lungsod ang time zone.",
+    "linePreview": "Silip"
   },
   "embed": {
     "link": "Saat Tarih"
@@ -1825,6 +1951,22 @@
       "isfirar": "Paglubog ng araw (isfirar)"
     },
     "kerahatNote": "Hindi isinasagawa ang mga boluntaryong dasal sa mga oras na ito. Walang inilalathalang eksaktong minuto ang Diyanet; ginagamit ang karaniwang kumbensyon ng kalendaryo na mga 45 minuto (10–45 minuto ang ibinibigay ng mga sanggunian para sa oras bago magtanghali).",
+    "extraHeading": "Karagdagang oras (tantiya)",
+    "extraNames": {
+      "israk": "Ishraq",
+      "duha": "Dahwa al-kubra",
+      "asrSani": "Ikalawang asr (Hanafi)",
+      "isfirar": "Isfirar (paninilaw ng araw)",
+      "istibak": "Ishtibak (paglitaw ng mga bituin)",
+      "isaSani": "Ikalawang isha",
+      "midnight": "Kalagitnaan ng gabi",
+      "tahajjud": "Tahajjud (huling ikatlo ng gabi)",
+      "seher": "Sahar (huling ikaanim ng gabi)"
+    },
+    "extraNote": "Hindi inilalathala ng Diyanet ang mga oras na ito. Ayon sa mga kahulugan ng Türkiye Takvimi: ishraq at isfirar kapag ang araw ay 5° sa itaas ng abot-tanaw, ishtibak sa 10° at ikalawang isha sa 19° sa ibaba nito; dahwa al-kubra sa gitna ng imsak at maghrib; ang gabi ay mula maghrib hanggang imsak.",
+    "bayram": "Salat al-Eid",
+    "bayramTomorrow": "Salat al-Eid bukas: {t}",
+    "bayramNote": "Kaparehong panuntunan ng mga oras ng Diyanet (38 minuto pagkatapos sumikat ang araw); ang anunsyo ng mufti ng lalawigan ang opisyal.",
     "method": {
       "heading": "Paraan ng pagkalkula",
       "label": "Paraan",
@@ -1850,7 +1992,9 @@
         "france": "France (UOIF)",
         "russia": "Spiritual Administration of Muslims of Russia"
       }
-    }
+    },
+    "ezani": "Oras na ezani (alaturka): {t}",
+    "ezaniNote": "Sa oras na ezani (alaturka), 12:00 ang oras ng dasal sa paglubog ng araw at doon nagsisimula ang bilang."
   },
   "nature": {
     "title": "Mga Panahon: Gulong ng Panahon, Equinox at Solstice | Saat Tarih",
@@ -2023,7 +2167,74 @@
     "eclMapLabel": "Eklipse",
     "eclMapSolar": "Kahel: kung saan bahagyang makikita ang eklipse (mas madilim, mas maraming natatakpan sa Araw). Madilim na pula: landas ng ganap na eklipse; lila: landas ng annular na eklipse. Itim na tuldok: napiling lugar.",
     "eclMapLunar": "Asul: kung saan nasa itaas ng horizon ang Buwan sa pinakamalaking eklipse, kaya makikita ito. Asul na tuldok: kung saan nasa itaas mismo ang Buwan; itim na tuldok: napiling lugar.",
-    "eclMapNote": "Tantiyang kinakalkula sa iyong browser ang mapa mula sa posisyon ng Araw at Buwan (puwedeng malihis nang ilang sampu-sampung km ang gilid ng landas). Mga baybayin: Natural Earth. Para sa eksaktong landas at oras, tingnan ang mga pahina ng eklipse ng NASA."
+    "eclMapNote": "Tantiyang kinakalkula sa iyong browser ang mapa mula sa posisyon ng Araw at Buwan (puwedeng malihis nang ilang sampu-sampung km ang gilid ng landas). Mga baybayin: Natural Earth. Para sa eksaktong landas at oras, tingnan ang mga pahina ng eklipse ng NASA.",
+    "folkHeading": "Kalendaryong bayan",
+    "folkNote": "Tradisyonal na petsa mula sa kalendaryong bayan ng Turkey (batay sa lumang kalendaryong Rumi); hindi ito ulat-panahon at maaaring magkaiba nang ilang araw ang mga sanggunian.",
+    "folkNow": "Ngayon",
+    "folkNames": {
+      "erbain": "Erbain (40 pinakamalamig na araw ng taglamig)",
+      "hamsin": "Hamsin (ikalawang bahagi ng taglamig, 50 araw)",
+      "cemre1": "Unang cemre (sa hangin)",
+      "cemre2": "Ikalawang cemre (sa tubig)",
+      "cemre3": "Ikatlong cemre (sa lupa)",
+      "berdulacuz": "Berd al-ajuz (“lamig ng matandang babae”)",
+      "eyyamibahur": "Eyyam-ı bahur (pinakamainit na araw ng tag-init)"
+    },
+    "tw": {
+      "heading": "Takipsilim at liwanag",
+      "civil": "Civil twilight",
+      "nautical": "Nautical twilight",
+      "astro": "Astronomical twilight",
+      "firstLight": "Unang liwanag",
+      "lastLight": "Huling liwanag",
+      "ring": "24-oras na singsing ng liwanag",
+      "day": "Araw",
+      "night": "Gabi",
+      "now": "Ngayon",
+      "note": "Mga saklaw sa umaga at gabi: ang Araw ay 0°–6° (civil), 6°–12° (nautical) at 12°–18° (astronomical) sa ilalim ng abot-tanaw. Ang unang liwanag ay simula ng astronomical dawn, ang huling liwanag ay pagtatapos ng astronomical dusk. Tantiya lamang."
+    },
+    "ym": {
+      "heading": "Mga kabilugan ng buwan sa {y}",
+      "count": "May {n} kabilugan ng buwan sa {y}.",
+      "blue": "Blue Moon: {date} (ikalawang kabilugan sa isang buwan ng kalendaryo).",
+      "noBlue": "Walang Blue Moon ngayong taon.",
+      "colDate": "Petsa at oras",
+      "colName": "Tradisyonal na pangalan",
+      "namesNote": "Ang mga pangalan ay mula sa tradisyong Hilagang Amerikano (Old Farmer's Almanac). Ang Harvest Moon ang kabilugang pinakamalapit sa equinox ng Setyembre.",
+      "harvest": "Harvest Moon",
+      "blueName": "Blue Moon",
+      "wheel": "Gulong ng kabilugan ng taon",
+      "names": [
+        "Wolf Moon",
+        "Snow Moon",
+        "Worm Moon",
+        "Pink Moon",
+        "Flower Moon",
+        "Strawberry Moon",
+        "Buck Moon",
+        "Sturgeon Moon",
+        "Corn Moon",
+        "Hunter's Moon",
+        "Beaver Moon",
+        "Cold Moon"
+      ]
+    },
+    "eclLocal": "{place}: natatakpan ang {obsc} ng Araw; {c1}–{c4}, pinakamarami {max}.",
+    "eclLocalTotal": "{place}: kabuuang eklipse; {c1}–{c4}, totality bandang {max}.",
+    "eclLocalAnnular": "{place}: annular na eklipse; {c1}–{c4}, singsing bandang {max}.",
+    "eclLocalNone": "{place}: hindi makikita mula rito ang eklipseng ito.",
+    "eclLocalLow": "{place}: nasa ilalim ng abot-tanaw ang Araw habang may eklipse.",
+    "eclContacts": {
+      "p1": "Simula ng penumbra",
+      "u1": "Simula ng anino",
+      "u2": "Simula ng totality",
+      "max": "Pinakamarami",
+      "u3": "Wakas ng totality",
+      "u4": "Wakas ng anino",
+      "p4": "Wakas ng penumbra"
+    },
+    "eclMag": "Laki ng anino {v}",
+    "eclApprox": "Tinatayang oras (ilang minuto); malabo ang mga sandaling hindi makikita mula rito."
   },
   "weather": {
     "title": "Panahon: Ngayon, Bawat Oras at 14 na Araw | Saat Tarih",
@@ -2096,7 +2307,91 @@
         "a": "Oo. Sa full screen, i-tap ang screen para lumabas ang bar; ipapakita ng button ng panahon doon ang panahon ng napili mong lokasyon sa tabi ng orasan."
       }
     ],
-    "search": "panahon forecast temperatura ulan hangin halumigmig uv bukas ngayong linggo weather hava durumu tahmin"
+    "search": "panahon forecast temperatura ulan hangin halumigmig uv bukas ngayong linggo weather hava durumu tahmin",
+    "wd": {
+      "calm": "Kalmado",
+      "light": "Mahinang simoy",
+      "breezy": "Mahangin",
+      "strong": "Malakas na hangin",
+      "gale": "Unos"
+    },
+    "uvw": {
+      "low": "Mababa; walang panganib ng sunburn",
+      "moderate": "Katamtaman; mag-ingat sa tanghali",
+      "high": "Mataas; gumamit ng sunscreen",
+      "veryHigh": "Napakataas; iwasan ang araw sa tanghali",
+      "extreme": "Matindi; iwasang manatili sa labas"
+    },
+    "hw": {
+      "dry": "Tuyo",
+      "comfy": "Komportable",
+      "humid": "Maalinsangan",
+      "veryHumid": "Napakaalinsangan"
+    },
+    "vw": {
+      "fog": "Mahamog",
+      "haze": "Malabo",
+      "good": "Maganda",
+      "clear": "Napakaganda"
+    },
+    "dw": {
+      "dry": "Tuyong hangin",
+      "comfy": "Komportable",
+      "muggy": "Medyo maalinsangan",
+      "oppressive": "Napakaalinsangan"
+    },
+    "fw": {
+      "colder": "Mas malamig ang pakiramdam",
+      "warmer": "Mas mainit ang pakiramdam"
+    },
+    "sum": {
+      "storm": "Inaasahan ang kulog at kidlat bandang {time}.",
+      "rain": "Inaasahan ang ulan bandang {time}.",
+      "snow": "Inaasahan ang niyebe bandang {time}.",
+      "windyAfternoon": "Mahangin sa hapon.",
+      "colder": "Mas malamig bukas: bababa nang {n}° ang pinakamataas.",
+      "warmer": "Mas mainit bukas: tataas nang {n}° ang pinakamataas.",
+      "default": "{cond}; pinakamataas {max}, pinakamababa {min}."
+    },
+    "alert": {
+      "colder": "Mas malamig bukas kaysa ngayon: bababa nang {n}° ang pinakamataas.",
+      "warmer": "Mas mainit bukas kaysa ngayon: tataas nang {n}° ang pinakamataas.",
+      "rainSoon": "Inaasahan ang ulan bandang {time}; huwag kalimutan ang payong."
+    },
+    "visibility": "Visibility",
+    "dewPoint": "Dew point",
+    "gusts": "Bugso",
+    "details": "Mga detalye",
+    "chartTemp": "Temperatura",
+    "dayPart": "Araw",
+    "nightPart": "Gabi",
+    "tapHint": "I-tap ang isang oras sa chart o isang araw sa listahan para sa detalye.",
+    "aqiTitle": "Kalidad ng hangin",
+    "aqiIndex": "European Air Quality Index (EAQI)",
+    "aqiLevels": [
+      "Mabuti",
+      "Katamtaman",
+      "Medyo",
+      "Masama",
+      "Napakasama",
+      "Lubhang masama"
+    ],
+    "pollen": "Polen",
+    "pollenNames": {
+      "alder": "Alder",
+      "birch": "Birch",
+      "grass": "Damo",
+      "mugwort": "Mugwort",
+      "olive": "Oliba",
+      "ragweed": "Ragweed"
+    },
+    "pollenLevels": [
+      "Mababa",
+      "Katamtaman",
+      "Mataas"
+    ],
+    "pollenNone": "Walang polen ngayon o walang taya para sa lugar na ito (Europa lamang).",
+    "aqiSource": "Kalidad ng hangin at polen: Open-Meteo (CAMS, Copernicus)"
   },
   "faqPage": {
     "title": "Mga madalas itanong: oras, kalendaryo, pagdarasal | Saat Tarih",
@@ -2111,7 +2406,7 @@
   },
   "consent": {
     "barLabel": "Pagpili sa cookies",
-    "barText": "Sa browser na ito lang namin itinatago ang iyong mga kagustuhan (wika, tema, setting ng orasan at tool). Kung papayagan mo, bibilangin ang mga pagbisita gamit ang Umami, at ilo-load ang panahon (Open-Meteo), ang malapitang mapa ng globo at kalapit na mga masjid (OpenStreetMap), at ang musika ng alarma (YouTube) mula sa mga panlabas na serbisyo.",
+    "barText": "Nananatili sa browser na ito ang mga setting mo. Kung papayag ka, binibilang ng Umami ang pagbisita, at mula sa panlabas na serbisyo ang panahon, mapa at musika.",
     "accept": "Tanggapin",
     "reject": "Tanggihan",
     "prefs": "Mga kagustuhan",
@@ -2124,7 +2419,7 @@
     "stats": "Statistics",
     "statsText": "Binibilang ng Umami ang mga pagbisita sa pahina at ilang aksyon (browser, device, wika, at ang bansa at lungsod mula sa IP address; hindi sine-save ang IP). Walang cookies na ginagamit. Naka-off bilang default.",
     "ext": "Mga panlabas na serbisyo",
-    "extText": "Ilo-load ang panahon mula sa Open-Meteo (api.open-meteo.com), ang mapa ng naka-zoom na globo mula sa OpenStreetMap (tile.openstreetmap.org), kalapit na mga masjid mula sa serbisyong Overpass ng OpenStreetMap (overpass-api.de), at ang musika sa YouTube na idinagdag mo sa alarma mula sa YouTube (youtube-nocookie.com); nakakarating sa mga serbisyong ito ang iyong IP address. Naka-off bilang default.",
+    "extText": "Ilo-load ang panahon mula sa Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), ang mapa ng naka-zoom na globo mula sa OpenStreetMap (tile.openstreetmap.org), kalapit na mga masjid mula sa serbisyong Overpass ng OpenStreetMap (overpass-api.de), at ang musika sa YouTube na idinagdag mo sa alarma mula sa YouTube (youtube-nocookie.com); nakakarating sa mga serbisyong ito ang iyong IP address. Naka-off bilang default.",
     "save": "I-save ang pinili",
     "footerLink": "Cookie preferences",
     "privacy": "Privacy",
@@ -2543,7 +2838,9 @@
         "q": "Bakit magkakaiba ang petsang Hijri sa iba't ibang bansa?",
         "a": "May mga bansang nagsisimula ng buwan sa pagkakita ng gasuklay na buwan, at ang iba ay ayon sa kuwenta. Kalendaryong kinuwenta ng Diyanet ang gamit ng Türkiye at kalendaryong Umm al-Qura naman ang sa Saudi Arabia; maaari silang magkaiba ng isang araw."
       }
-    ]
+    ],
+    "rumi": "Rumi (Ottoman): {date}",
+    "rumiNote": "Ang petsang Rumi ay sumusunod sa kalendaryong Julian (13 araw na huli) at nagsisimula ang taon sa 1 Marso, gaya ng mga tradisyonal na almanakeng Turko."
   },
   "timeCalc": {
     "title": "Time calculator: magdagdag, magbawas at oras sa pagitan | Saat Tarih",
@@ -2853,7 +3150,59 @@
         "q": "Ano ang supermoon?",
         "a": "Ang supermoon ay popular na tawag sa kabilugan ng buwan na malapit sa perigee, ang pinakamalapit na punto ng Buwan sa Daigdig. Mukha itong mga 14% na mas malaki at 30% na mas maliwanag kaysa sa kabilugan sa apogee; mahirap mapansin ang pagkakaiba sa mata lang."
       }
-    ]
+    ],
+    "eventsHeading": "Mga pangyayari sa langit",
+    "eventsLead": "Rurok ng mga meteor shower, paglapit ng mga planeta at ng Buwan, oposisyon at pinakamalaking elongasyon; oras ayon sa napiling lugar.",
+    "showers": {
+      "qua": "Quadrantids",
+      "lyr": "Lyrids",
+      "eta": "Eta Aquariids",
+      "sda": "Southern Delta Aquariids",
+      "per": "Perseids",
+      "dra": "Draconids",
+      "ori": "Orionids",
+      "leo": "Leonids",
+      "gem": "Geminids",
+      "urs": "Ursids"
+    },
+    "evShower": "Rurok ng meteor shower na {name}",
+    "showerRate": "Hanggang ~{zhr} meteor bawat oras sa madilim na langit",
+    "showerVar": "Nag-iiba ang dami taon-taon",
+    "moonLight": "Buwan {moon} maliwanag",
+    "evOpp": "{p} nasa oposisyon: kita buong gabi, pinakamaliwanag ngayong taon",
+    "evElongE": "{p} pinakamalayo sa Araw sa langit ng gabi ({deg}°)",
+    "evElongW": "{p} pinakamalayo sa Araw sa langit ng umaga ({deg}°)",
+    "evConj": "Magkalapit ang {a} at {b} ({sep}° ang layo)",
+    "evMoon": "Magkalapit ang Buwan at {p} ({sep}° ang layo)",
+    "evMore": "Higit pang pangyayari",
+    "eventsNote": "Kinukuwenta ang rurok ng mga meteor shower mula sa solar longitude na inilathala ng International Meteor Organization (IMO); maaaring maiba ng ilang oras ang tunay na rurok. Geocentric ang mga anggulo; mula sa lugar mo, maaaring maiba nang mga isang digri.",
+    "icsName": "Saat Tarih: Mga pangyayari sa langit",
+    "tonightHeading": "Ngayong gabi",
+    "darkLabel": "Ganap na dilim",
+    "darkNone": "Walang ganap na dilim ngayong gabi (hindi bumababa ang Araw nang 18° sa ilalim ng abot-tanaw).",
+    "moonUpDark": "{illum} maliwanag; nasa langit sa dilim mula {from} hanggang {to}",
+    "moonDownDark": "{illum} maliwanag; nasa ilalim ng abot-tanaw sa oras ng dilim",
+    "planetsLabel": "Mga planetang makikita",
+    "planetsNone": "Wala",
+    "cloudLabel": "Ulap",
+    "score": {
+      "good": "Magandang gabi para magmasid",
+      "fair": "Katamtaman para magmasid",
+      "poor": "Mahina para magmasid"
+    },
+    "tipMoon": "Maliwanag ang Buwan: mahirap makita ang malalabong bituin at meteor.",
+    "tipDark": "Wala ang Buwan sa langit sa dilim: maganda para sa malalabong bituin.",
+    "tipCloudy": "Maaaring takpan ng ulap ang tanawin.",
+    "tipBest": "Pinakamataas ang {p} bandang {time} ({deg}°).",
+    "graphHeading": "Taas ng mga planeta ngayong gabi",
+    "graphCaption": "Pahalang na aksis ang oras, patayo ang taas mula sa abot-tanaw; ang madilim na guhit ay ganap na dilim.",
+    "cloudNote": "Galing sa Open-Meteo ang ulap at ipinapakita lang kung pinayagan mo ang mga panlabas na serbisyo.",
+    "constellations": "Mga konstelasyon",
+    "play": "I-play",
+    "pause": "I-pause",
+    "dateLabel": "Petsa",
+    "red": "Pulang ilaw",
+    "conSource": "Mga linya at pangalan ng konstelasyon: d3-celestial (© 2015 Olaf Frohn, lisensiyang BSD-3)."
   },
   "otd": {
     "title": "Sa araw na ito sa kasaysayan | Saat Tarih",
@@ -2906,6 +3255,102 @@
       {
         "q": "Paano nalalaman ng device ko na binago ng isang bansa ang orasan nito?",
         "a": "Nagpapadala ang Apple, Google at Microsoft ng bagong release ng tz database kasama ng update ng operating system. Kung updated ang iyong device, kusang magiging tama ang oras."
+      }
+    ]
+  },
+  "sleepCalc": {
+    "title": "Sleep Calculator: Kailan Matulog at Gumising | Saat Tarih",
+    "description": "Kalkulahin ang oras ng pagtulog o paggising batay sa 90-minutong sleep cycle: kailan matulog para sa isang oras ng paggising, o kailan gumising kung matutulog ngayon.",
+    "h1": "Sleep calculator",
+    "lead": "Hanapin ang oras ng pagtulog para sa oras ng paggising, o ang oras ng paggising para sa oras ng pagtulog, gamit ang 90-minutong cycle. May dagdag na 15 minuto para makatulog.",
+    "search": "sleep calculator oras ng tulog sleep cycle 90 minuto gising",
+    "wakeHeading": "Ayon sa oras ng paggising: kailan matulog?",
+    "wakeLabel": "Oras ng paggising",
+    "bedHeading": "Ayon sa oras ng pagtulog: kailan gumising?",
+    "bedLabel": "Oras ng pagtulog",
+    "nowBtn": "Kung matutulog ngayon",
+    "cycles": "{n} cycle · {d} na tulog",
+    "best": "inirerekomenda",
+    "note": "Iba-iba ang haba ng sleep cycle sa bawat tao (mga 70–120 minuto); gabay lamang ang mga oras na ito, hindi payong medikal. Karaniwang inirerekomenda ang 7–9 oras na tulog para sa matatanda.",
+    "faq": [
+      {
+        "q": "Gaano katagal ang isang sleep cycle?",
+        "a": "Mga 90 minuto ang karaniwang haba ng isang sleep cycle (mga 70–120 minuto, depende sa tao). Mas madaling gumising sa dulo ng cycle, habang mababaw ang tulog, kaya nagmumungkahi ang calculator ng mga oras na multiple ng 90 minuto."
+      },
+      {
+        "q": "Ilang cycle ang dapat kong itulog?",
+        "a": "Karaniwang inirerekomenda sa matatanda ang 7–9 oras na tulog, o 5 hanggang 6 na cycle. Itinatampok ng calculator ang 6 at 5 cycle at ipinapakita rin ang mas maiikling opsiyon."
+      }
+    ]
+  },
+  "examTimer": {
+    "title": "Exam Timer: Full-Screen na Countdown para sa Silid | Saat Tarih",
+    "description": "Full-screen na exam timer na may pangalan ng pagsusulit, silid, oras ng pagbasa at tagal: natitirang oras, oras ng pagtatapos at babala sa huling mga minuto.",
+    "h1": "Exam timer",
+    "lead": "Ilagay ang pangalan ng pagsusulit, silid, oras ng pagbasa at tagal; ipinapakita ng full-screen na timer para sa projector ang natitirang oras at oras ng pagtatapos.",
+    "search": "exam timer countdown silid-pagsusulit full screen",
+    "nameLabel": "Pangalan ng pagsusulit",
+    "namePh": "hal. Pagsusulit sa Math",
+    "roomLabel": "Silid / klase",
+    "roomPh": "hal. 9-A",
+    "readLabel": "Oras ng pagbasa (min)",
+    "durLabel": "Tagal ng pagsusulit (min)",
+    "start": "Simulan",
+    "pause": "I-pause",
+    "resume": "Ituloy",
+    "reset": "I-reset",
+    "phaseRead": "Oras ng pagbasa",
+    "phaseExam": "Kasalukuyang pagsusulit",
+    "phaseDone": "Tapos na ang oras",
+    "endsAt": "Matatapos: {time}",
+    "warn15": "Huling 15 minuto",
+    "warn5": "Huling 5 minuto",
+    "note": "Gumagana habang bukas ang pahina; naka-save ang simula sa browser na ito, kaya magpapatuloy ang timer kapag binuksan muli. Sinusukat ang oras ayon sa orasan ng server; sa full screen, hindi namamatay ang screen.",
+    "faq": [
+      {
+        "q": "Paano gamitin ang exam timer?",
+        "a": "Ilagay ang pangalan, silid, oras ng pagbasa (0 kung wala) at tagal, saka pindutin ang Simulan; i-project gamit ang full-screen na button. Pagkatapos ng oras ng pagbasa, kusang magsisimula ang pagsusulit; nagbabago ang kulay sa huling 15 at 5 minuto."
+      },
+      {
+        "q": "Hihinto ba ang timer kapag isinara ang pahina?",
+        "a": "Hindi. Naka-save sa browser na ito ang oras ng simula; magpapatuloy ang timer kapag binuksan muli ang pahina. Naka-save din ang pag-pause."
+      }
+    ]
+  },
+  "classroom": {
+    "title": "Kasangkapan sa Klase: Pangalan, Grupo, Counter | Saat Tarih",
+    "description": "Libreng kasangkapan sa klase: random na pagpili ng estudyante, pantay na grupo at counter ng puntos. Nasa browser mo lang ang mga pangalan.",
+    "h1": "Mga kasangkapan sa klase",
+    "lead": "I-type nang isang beses ang mga pangalan ng estudyante, saka pumili ng random na pangalan, hatiin ang klase sa mga grupo, o magbilang ng puntos gamit ang mga counter. May button na full screen para maipakita sa pisara.",
+    "search": "kasangkapan sa klase random na pangalan bunutan gumawa ng grupo hatiin sa grupo counter ng puntos guro",
+    "tabPicker": "Pumili ng pangalan",
+    "tabTeams": "Gumawa ng grupo",
+    "tabCounter": "Counter",
+    "namesLabel": "Mga pangalan (isa bawat linya o hinati ng kuwit)",
+    "namesPh": "Juan, Maria, Jose…",
+    "pick": "Pumili nang random",
+    "removePicked": "Alisin sa listahan ang napili",
+    "picked": "Napili",
+    "left": "Natitira sa listahan: {n}",
+    "restore": "Ibalik ang listahan",
+    "empty": "Mag-type muna ng mga pangalan.",
+    "teamCount": "Bilang ng grupo",
+    "makeTeams": "Gumawa ng mga grupo",
+    "team": "Grupo {n}",
+    "counterName": "Pangalan ng counter",
+    "addCounter": "Magdagdag ng counter",
+    "counterDefault": "Puntos",
+    "reset": "I-reset",
+    "remove": "Alisin",
+    "note": "Ang mga pangalan at counter ay nakaimbak lang sa browser na ito at hindi ipinapadala kahit saan. Ginagamit ng pagpili ang ligtas na random number generator ng browser.",
+    "faq": [
+      {
+        "q": "Paano gumagana ang random na pagpili ng pangalan?",
+        "a": "I-type ang mga pangalan, isa bawat linya o hinati ng kuwit, at pindutin ang \"Pumili nang random\". Kapag naka-on ang \"Alisin sa listahan ang napili\", hindi na lalabas muli ang pangalan hangga't hindi naubos ang listahan; gamitin ang \"Ibalik ang listahan\" para magsimula ulit. Ginagamit ng pagpili ang ligtas na random number generator ng browser."
+      },
+      {
+        "q": "Ipinapadala ba kahit saan ang mga pangalan ng estudyante?",
+        "a": "Hindi. Ang mga pangalan, grupo at counter ay nakaimbak lang sa browser na ito; hindi ipinapadala sa server at hindi kasama sa istatistika."
       }
     ]
   }

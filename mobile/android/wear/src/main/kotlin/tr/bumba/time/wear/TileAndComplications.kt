@@ -18,6 +18,7 @@ import androidx.wear.watchface.complications.data.ComplicationType
 import androidx.wear.watchface.complications.data.CountDownTimeReference
 import androidx.wear.watchface.complications.data.LongTextComplicationData
 import androidx.wear.watchface.complications.data.PlainComplicationText
+import androidx.wear.watchface.complications.data.RangedValueComplicationData
 import androidx.wear.watchface.complications.data.ShortTextComplicationData
 import androidx.wear.watchface.complications.data.TimeDifferenceComplicationText
 import androidx.wear.watchface.complications.data.TimeDifferenceStyle
@@ -103,11 +104,21 @@ class NextPrayerComplicationService : SuspendingComplicationDataSourceService() 
 
     override suspend fun onComplicationRequest(request: ComplicationRequest): ComplicationData? {
         val place = Wear.place()
-        val next = place.next(Instant.now()) ?: return null
-        return data(request.complicationType, Wear.label(next, place.zone), place.hm(next.at), next.at)
+        val now = Instant.now()
+        val next = place.next(now) ?: return null
+        // Önceki vakitten sıradakine geçen süre (2. analiz #162): halka; komplikasyon 5 dakikada bir yenilenir
+        val day = java.time.LocalDate.now(place.zone)
+        val prev = (place.entries(day.minusDays(1)) + place.entries(day)).lastOrNull { !it.at.isAfter(now) }?.at
+        val frac = if (prev != null && next.at.isAfter(prev)) ((now.toEpochMilli() - prev.toEpochMilli()).toFloat() / (next.at.toEpochMilli() - prev.toEpochMilli())).coerceIn(0f, 1f) else 0f
+        return data(request.complicationType, Wear.label(next, place.zone), place.hm(next.at), next.at, frac)
     }
 
-    private fun data(type: ComplicationType, name: String, time: String, at: Instant?): ComplicationData? = when (type) {
+    private fun data(type: ComplicationType, name: String, time: String, at: Instant?, frac: Float = 0.6f): ComplicationData? = when (type) {
+        ComplicationType.RANGED_VALUE -> RangedValueComplicationData.Builder(frac, 0f, 1f, plain("$name $time"))
+            .setText(plain(time))
+            .setTitle(plain(name))
+            .setTapAction(ComplicationDataSourceTap(this))
+            .build()
         ComplicationType.SHORT_TEXT -> ShortTextComplicationData.Builder(plain(time), plain("$name $time"))
             .setTitle(plain(name))
             .setTapAction(ComplicationDataSourceTap(this))
@@ -150,3 +161,98 @@ class HijriComplicationService : SuspendingComplicationDataSourceService() {
         }
     }
 }
+
+/**
+ * Komplikasyon: hava (2. analiz #115). Seçili yerin anlık sıcaklığı ve durumu Open-Meteo'dan (koordinat 2 ondalık,
+ * anahtarsız; telefondaki uygulamayla aynı sağlayıcı), 30 dk önbellekte; bağlantı yoksa son değer. Atıf saat uygulamasında.
+ */
+class WeatherComplicationService : SuspendingComplicationDataSourceService() {
+    override fun getPreviewData(type: ComplicationType): ComplicationData? = data(type, 18, 2, Wear.text("widget.weather.name"))
+
+    override suspend fun onComplicationRequest(request: ComplicationRequest): ComplicationData? {
+        val place = Wear.place()
+        val w = WearWeather.current(place.lat, place.lon) ?: return null
+        return data(request.complicationType, w.first, w.second, place.name)
+    }
+
+    private fun data(type: ComplicationType, temp: Int, code: Int, place: String): ComplicationData? {
+        val icon = WearWeather.icon(code)
+        val label = Wear.text("weather.codes.${WearWeather.key(code)}")
+        return when (type) {
+            ComplicationType.SHORT_TEXT -> ShortTextComplicationData.Builder(plain("$temp°"), plain("$label $temp°"))
+                .setTitle(plain(icon))
+                .setTapAction(ComplicationDataSourceTap(this))
+                .build()
+            ComplicationType.LONG_TEXT -> LongTextComplicationData.Builder(plain("$icon $temp° $label"), plain("$place $label $temp°"))
+                .setTitle(plain(place))
+                .setTapAction(ComplicationDataSourceTap(this))
+                .build()
+            else -> null
+        }
+    }
+}
+
+/** Open-Meteo'dan anlık sıcaklık (°C, yuvarlanmış) ve WMO kodu; 30 dk önbellek (wear tercihlerinde) */
+object WearWeather {
+    suspend fun current(lat: Double, lon: Double): Pair<Int, Int>? = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+        val sp = Wear.prefs
+        val key = String.format(java.util.Locale.ROOT, "%.2f,%.2f", lat, lon)
+        val at = sp.getLong("wx.at", 0)
+        if (sp.getString("wx.key", "") == key && System.currentTimeMillis() - at < 30 * 60_000) {
+            return@withContext sp.getInt("wx.temp", 0) to sp.getInt("wx.code", 2)
+        }
+        val fresh = runCatching {
+            val (la, lo) = key.split(",")
+            val c = java.net.URL("https://api.open-meteo.com/v1/forecast?latitude=$la&longitude=$lo&current=temperature_2m,weather_code&timezone=auto")
+                .openConnection() as java.net.HttpURLConnection
+            c.connectTimeout = 10_000; c.readTimeout = 15_000
+            val body = try { c.inputStream.bufferedReader().use { it.readText() } } finally { c.disconnect() }
+            val cur = org.json.JSONObject(body).getJSONObject("current")
+            Math.round(cur.getDouble("temperature_2m")).toInt() to cur.optInt("weather_code", 2)
+        }.getOrNull()
+        if (fresh != null) {
+            sp.edit().putString("wx.key", key).putLong("wx.at", System.currentTimeMillis()).putInt("wx.temp", fresh.first).putInt("wx.code", fresh.second).apply()
+            fresh
+        } else if (sp.getString("wx.key", "") == key) sp.getInt("wx.temp", 0) to sp.getInt("wx.code", 2) else null
+    }
+
+    fun key(c: Int): String = when (c) {
+        0 -> "clear"; 1 -> "mostlyClear"; 2 -> "partly"; 3 -> "overcast"; 45, 48 -> "fog"
+        in 51..55 -> "drizzle"; 56, 57 -> "freezingDrizzle"; in 61..65 -> "rain"; 66, 67 -> "freezingRain"
+        in 71..75 -> "snow"; 77 -> "snowGrains"; in 80..82 -> "showers"; 85, 86 -> "snowShowers"; 95 -> "thunder"; 96, 99 -> "thunderHail"
+        else -> "partly"
+    }
+
+    fun icon(c: Int): String = when (key(c)) {
+        "clear" -> "☀"; "mostlyClear", "partly" -> "⛅"; "overcast" -> "☁"; "fog" -> "🌫"
+        "snow", "snowGrains", "snowShowers" -> "❄"; "thunder", "thunderHail" -> "⛈"; else -> "☔"
+    }
+}
+
+/**
+ * Komplikasyon: Ay evresi (2. analiz #149). Evre adı ve aydınlık yüzdesi; kısa metinde evre simgesi (emoji) ve yüzde,
+ * aralıkta (RANGED_VALUE) aydınlık oranı. Hesap telefondakiyle aynı (`:core` Nature), konumsuz.
+ */
+class MoonComplicationService : SuspendingComplicationDataSourceService() {
+    private val emoji = listOf("🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘")
+    private val keys = listOf("new", "waxingCrescent", "firstQuarter", "waxingGibbous", "full", "waningGibbous", "lastQuarter", "waningCrescent")
+
+    override fun getPreviewData(type: ComplicationType): ComplicationData? = data(type, System.currentTimeMillis())
+    override suspend fun onComplicationRequest(request: ComplicationRequest): ComplicationData? = data(request.complicationType, System.currentTimeMillis())
+
+    private fun data(type: ComplicationType, ms: Long): ComplicationData? {
+        val m = tr.bumba.time.core.Nature.moon(ms)
+        val pct = Math.round(m.illumination * 100).toInt()
+        val name = Wear.text("nature.phases.${keys[m.phaseIndex]}")
+        return when (type) {
+            ComplicationType.SHORT_TEXT -> ShortTextComplicationData.Builder(plain("${emoji[m.phaseIndex]}$pct"), plain(name))
+                .setTapAction(ComplicationDataSourceTap(this)).build()
+            ComplicationType.LONG_TEXT -> LongTextComplicationData.Builder(plain("${emoji[m.phaseIndex]} $name · $pct%"), plain(name))
+                .setTitle(plain(Wear.text("widget.moon.name"))).setTapAction(ComplicationDataSourceTap(this)).build()
+            ComplicationType.RANGED_VALUE -> androidx.wear.watchface.complications.data.RangedValueComplicationData.Builder(pct.toFloat(), 0f, 100f, plain(name))
+                .setText(plain(emoji[m.phaseIndex])).setTapAction(ComplicationDataSourceTap(this)).build()
+            else -> null
+        }
+    }
+}
+

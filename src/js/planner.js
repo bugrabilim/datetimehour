@@ -61,6 +61,11 @@
   }
   function shareSetup(box, T) {
     var st = box.querySelector("[data-share-status]");
+    var ct = box.querySelector("[data-copytext]");
+    if (ct) ct.addEventListener("click", function () {
+      var txt = box.__text || "", done = function () { st.textContent = T.textCopied; setTimeout(function () { st.textContent = ""; }, 2500); };
+      try { navigator.clipboard.writeText(txt).then(done, function () { window.prompt(T.copyText, txt); }); } catch (e) { window.prompt(T.copyText, txt); }
+    });
     box.querySelector("[data-share]").addEventListener("click", function () {
       var url = location.href, done = function () { st.textContent = T.linkCopied; setTimeout(function () { st.textContent = ""; }, 2500); };
       try { navigator.clipboard.writeText(url).then(done, function () { window.prompt(T.shareLink, url); }); } catch (e) { window.prompt(T.shareLink, url); }
@@ -68,8 +73,15 @@
   }
   function calLinks(box, ms, title, desc) {
     var ics = box.querySelector("[data-ics]"), g = box.querySelector("[data-gcal]");
+    var ol = box.querySelector("[data-outlook]"), gm = box.querySelector("[data-gmail]"), ct = box.querySelector("[data-copytext]");
     ics.hidden = g.hidden = ms == null;
+    [ol, gm, ct].forEach(function (x) { if (x) x.hidden = ms == null; });
+    box.__text = ms == null ? "" : title + "\n" + desc + "\n" + location.href;
     if (ms == null) return;
+    var iso = function (t) { return new Date(t).toISOString().replace(/\.\d{3}Z$/, "Z"); };
+    if (ol) ol.href = "https://outlook.live.com/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&subject=" + encodeURIComponent(title) +
+      "&startdt=" + encodeURIComponent(iso(ms)) + "&enddt=" + encodeURIComponent(iso(ms + 3600000)) + "&body=" + encodeURIComponent(desc + "\n" + location.href);
+    if (gm) gm.href = "https://mail.google.com/mail/?view=cm&fs=1&su=" + encodeURIComponent(title) + "&body=" + encodeURIComponent(box.__text);
     var end = ms + 3600000, details = desc + "\n" + location.href;
     var file = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Saat Tarih//time.bumba.tr//TR", "BEGIN:VEVENT", "UID:" + ms + "@time.bumba.tr",
       "DTSTAMP:" + icsDate(Date.now()), "DTSTART:" + icsDate(ms), "DTEND:" + icsDate(end), "SUMMARY:" + icsText(title),
@@ -174,6 +186,9 @@
         instants.forEach(function (inst, i) {
           var p = S.parts(new Date(inst), tz), td = doc.createElement("td");
           var cls = workOf(p.hour); td.className = "pl-" + cls; td.textContent = pad(p.hour);
+          // Hafta sonu (2. analiz #72): o şehirde cumartesi ya da pazar ise mesai sayılmaz
+          var wd = new Date(Date.UTC(p.year, p.month - 1, p.day)).getUTCDay();
+          if ((wd === 0 || wd === 6) && cls !== "night") { td.className += " pl-weekend"; allWork[i] = false; }
           if (cls !== "work") allWork[i] = false;
           var rp = S.parts(new Date(inst), tz);
           var shift = Date.UTC(rp.year, rp.month - 1, rp.day) - Date.UTC(+m[1], +m[2] - 1, +m[3]);
@@ -240,6 +255,31 @@
       try { navigator.clipboard.writeText(codeEl.value).then(done, function () { codeEl.select(); }); } catch (e) { codeEl.select(); }
     });
     build();
+    // Metin satırı (2. analiz #187): <span data-saat-tarih> + /embed/line.js; seçili şehrin saat dilimi ve konumu
+    var lk = g("lkind"), lprev = g("lprev"), lcode = g("lcode");
+    if (lk && lprev && lcode) {
+      var esc = function (v) { return String(v).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;"); };
+      var buildLine = function () {
+        var key = g("city").value, list = S.cfg.cities || [], c = null;
+        for (var i = 0; i < list.length; i++) if (list[i].k === key) c = list[i];
+        var kind = lk.value, lang = g("lang").value, attrs = ' data-saat-tarih="' + kind + '" data-lang="' + lang + '"';
+        if (c && c.tz) attrs += ' data-tz="' + esc(c.tz) + '"';
+        if (kind === "sun") { var la = c ? c.la : 41.01, lo = c ? c.lo : 28.98; attrs += ' data-lat="' + la + '" data-lon="' + lo + '"'; if (!c) attrs += ' data-tz="Europe/Istanbul"'; }
+        if (g("h12").checked) attrs += ' data-h12="1"';
+        lcode.value = "<span" + attrs + "></span>\n<script async src=\"" + E.lineSrc + "\"></" + "script>";
+        lprev.setAttribute("data-saat-tarih", kind); lprev.setAttribute("data-lang", lang);
+        ["data-tz", "data-lat", "data-lon", "data-h12"].forEach(function (a) { lprev.removeAttribute(a); });
+        var m = attrs.match(/data-(tz|lat|lon|h12)="[^"]*"/g) || [];
+        m.forEach(function (x) { var p = x.split("="); lprev.setAttribute(p[0], p[1].replace(/"/g, "")); });
+        if (window.saatTarihLine) window.saatTarihLine.refresh();
+      };
+      ["city", "lang", "h12"].forEach(function (n) { g(n).addEventListener("change", buildLine); });
+      lk.addEventListener("change", buildLine);
+      g("lcopy").addEventListener("click", function () {
+        try { navigator.clipboard.writeText(lcode.value).then(function () { st.textContent = E.copied; setTimeout(function () { st.textContent = ""; }, 2500); }); } catch (e) { lcode.select(); }
+      });
+      buildLine();
+    }
     S.track("arac", { arac: "embed" });
   }
 })();

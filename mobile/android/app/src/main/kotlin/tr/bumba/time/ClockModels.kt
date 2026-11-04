@@ -1,5 +1,7 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -62,9 +64,10 @@ enum class ClockModel(val id: String) {
     H_CLASSIC("h-classic"), H_ANALOG_DATE("h-analog-date"), H_STACK("h-stack"),
     H_WX_ANALOG("h-wx-analog"), H_WX_STACK("h-wx-stack"), H_WX_ANALOG_DATE("h-wx-analog-date"), H_WX_FULL("h-wx-full"),
     DIGITAL("digital"), DIGITAL_DATE("digital-date"), WX_DIGITAL("wx-digital"), WX_DIGITAL_CAL("wx-digital-cal"),
-    FLIP("flip"); // 20: çevirmeli saat (30 Ekim 2026, rakip analizi #5)
+    FLIP("flip"), // 20: çevirmeli saat (30 Ekim 2026, rakip analizi #5)
+    DUAL("dual"); // 21: ikili saat dilimi (2. analiz #12; yalnız uygulamalarda, sitede yok; sona eklendi, sıra numarası bozulmaz)
 
-    val title: String get() = L("stage.models.$id")
+    val title: String get() = if (this == DUAL) L("dual.model") else L("stage.models.$id")
     val number: Int get() = ordinal + 1
     val horizontal: Boolean get() = id.startsWith("h-")
 
@@ -92,6 +95,7 @@ fun ClockModelView(model: ClockModel, now: Instant, place: AppPlace, modifier: M
         val center = Arrangement.spacedBy(s * 0.03f, Alignment.CenterVertically)
         when (model) {
             ClockModel.CLASSIC -> AnalogPart(t, s * 0.95f)
+            ClockModel.DUAL -> DualClockPart(now, place, w, h)
             ClockModel.ANALOG_DATE -> Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(s * 0.04f)) {
                 AnalogPart(t, s * 0.78f)
                 DatePart(t, s * 0.065f)
@@ -206,15 +210,43 @@ private fun AnalogPart(t: ZonedDateTime, size: Dp) {
 @Composable
 private fun DigitalPart(t: ZonedDateTime, size: Dp, maxWidth: Dp) {
     val max = size.asSp()
+    // Dijital rakam görünümü (2. analiz #9): LED, LCD, nokta matris, silindir, dikey
+    val style = DigitalStyle.current
+    if (style != "plain") {
+        val tap = Modifier.clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecD(!Prefs.secD); BadgeStore.hit(Badge.SANIYE) }
+        Ltr {
+            Row(tap.widthIn(max = maxWidth), verticalAlignment = Alignment.CenterVertically) {
+                if (style == "vertical") {
+                    val hh = Fmt.time(t).substringBefore(':')
+                    val mm = "%02d".format(t.minute)
+                    VerticalDigits(hh, mm, if (Prefs.secD) "%02d".format(t.second) else null, size * 1.6f, ClockLook.digitInk(Theme.c), ClockFont.current.family)
+                } else {
+                    StyledDigits(Fmt.time(t, Prefs.secD).filter { it.isDigit() || it == ':' }, style, size * 0.82f, maxWidth, ClockLook.digitInk(Theme.c))
+                }
+                if (Prefs.h12) Text(" " + Fmt.ampm(t), color = Theme.c.text, fontSize = (max.value * 0.3f).sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
+            }
+        }
+        return
+    }
     Ltr {
         Row(
             Modifier.widthIn(max = maxWidth).clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecD(!Prefs.secD); BadgeStore.hit(Badge.SANIYE) },
             verticalAlignment = Alignment.Bottom,
         ) {
+            // Saniye küçük ve tabana hizalı (2. analiz #21): tek metin, saniye kısmı küçük yazı
+            val text = if (Prefs.secD && ClockLook.secSmall) androidx.compose.ui.text.buildAnnotatedString {
+                append(Fmt.time(t))
+                pushStyle(androidx.compose.ui.text.SpanStyle(fontSize = androidx.compose.ui.unit.TextUnit(0.45f, androidx.compose.ui.unit.TextUnitType.Em)))
+                append(":%02d".format(t.second))
+                pop()
+            } else androidx.compose.ui.text.AnnotatedString(Fmt.time(t, Prefs.secD))
+            // Rakam rengi ve dış hatlı rakam (2. analiz #24)
+            val stroke = with(androidx.compose.ui.platform.LocalDensity.current) { maxOf(1.5f, (size * 0.012f).toPx()) }
             Text(
-                Fmt.time(t, Prefs.secD), Modifier.weight(1f, fill = false), color = Theme.c.ink,
+                text, Modifier.weight(1f, fill = false), color = ClockLook.digitInk(Theme.c),
                 fontFamily = ClockFont.current.family, fontWeight = ClockFont.current.weight,
-                style = Tnum, maxLines = 1, softWrap = false,
+                style = if (ClockLook.outline) Tnum.copy(drawStyle = androidx.compose.ui.graphics.drawscope.Stroke(stroke)) else Tnum,
+                maxLines = 1, softWrap = false,
                 autoSize = TextAutoSize.StepBased(minFontSize = (max.value * 0.3f).sp, maxFontSize = max, stepSize = 1.sp),
             )
             if (Prefs.h12) {
@@ -225,55 +257,103 @@ private fun DigitalPart(t: ZonedDateTime, size: Dp, maxWidth: Dp) {
     }
 }
 
-/** Çevirmeli saat: her rakam bir kart, rakam değişince kart döner. Dokununca dijital saniye açılır/kapanır. */
+/**
+ * Çevirmeli saatin görünümü (2. analiz #20): iki rakam tek kartta (`flip.pair`), köşede küçük saniye (`flip.smallSec`),
+ * kart ortasındaki çizgi (`flip.hinge`, varsayılan açık), kart rengi (`flip.card`: tema, siyah, beyaz, kırmızı, mavi,
+ * yeşil). iOS'taki FlipLook ile aynı anahtarlar.
+ */
+object FlipLook {
+    const val PAIR_KEY = "flip.pair"
+    const val SMALL_SEC_KEY = "flip.smallSec"
+    const val HINGE_KEY = "flip.hinge"
+    const val CARD_KEY = "flip.card"
+    /** Kart rengi: kimlik → (kart, rakam); "theme" uygulamanın renkleri */
+    val CARDS = linkedMapOf(
+        "theme" to (0L to 0L), "black" to (0x1A1B1EL to 0xF5F5F5L), "white" to (0xF7F7F5L to 0x1A1B1EL),
+        "red" to (0xA61E1EL to 0xFFFFFFL), "blue" to (0x1F4E9CL to 0xFFFFFFL), "green" to (0x1E6B34L to 0xFFFFFFL),
+    )
+    val pair: Boolean get() = Prefs.store.getBoolean(PAIR_KEY, false)
+    val smallSec: Boolean get() = Prefs.store.getBoolean(SMALL_SEC_KEY, false)
+    val hinge: Boolean get() = Prefs.store.getBoolean(HINGE_KEY, true)
+    val card: String get() = Prefs.store.getString(CARD_KEY, "theme")?.takeIf { it in CARDS } ?: "theme"
+    fun colors(id: String, c: AppColors): Pair<androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color> =
+        if (id == "theme") c.surface2 to c.ink
+        else CARDS.getValue(id).let { (bg, fg) -> androidx.compose.ui.graphics.Color(0xFF000000 or bg) to androidx.compose.ui.graphics.Color(0xFF000000 or fg) }
+}
+
+/**
+ * Çevirmeli saat: her rakam (ya da iki rakam) bir kart, rakam değişince kart döner. Dokununca dijital saniye açılır/kapanır.
+ * Sahne enine göre uzunsa (dik tam ekran) saat ve dakika kartları alt alta dizilir; 12 saat biçiminde ÖÖ/ÖS saat kartının
+ * köşesinde, küçük saniye seçiliyse dakika kartının köşesinde yazar.
+ */
 @Composable
 private fun FlipPart(t: ZonedDateTime, width: Dp, height: Dp) {
     val secs = Prefs.secD
+    val pair = FlipLook.pair
+    val small = secs && FlipLook.smallSec
     val hour = if (Prefs.h12) (t.hour % 12).let { if (it == 0) 12 else it } else t.hour
-    val groups = listOf(hour, t.minute) + if (secs) listOf(t.second) else emptyList()
-    val n = groups.size * 2f
-    val card = minOf(width / (n + (groups.size - 1) * 0.35f + n * 0.08f), height / 1.4f)
+    val groups = listOf(hour, t.minute) + if (secs && !small) listOf(t.second) else emptyList()
+    val vertical = height > width * 1.1f
+    val perGroup = if (pair) 1.7f else 2.08f
+    val card = if (vertical) minOf(width / (perGroup + 0.2f), height / (groups.size * 1.4f + (groups.size - 1) * 0.25f))
+        else minOf(width / (groups.size * perGroup + (groups.size - 1) * 0.35f), height / 1.4f)
+    val (bg, fg) = FlipLook.colors(FlipLook.card, Theme.c)
+    val ampm = if (Prefs.h12) Fmt.ampm(t) else ""
+    @Composable
+    fun group(i: Int, v: Int) {
+        val corner = when {
+            i == 0 && ampm.isNotEmpty() -> ampm
+            i == 1 && small -> "%02d".format(java.util.Locale.ROOT, t.second)
+            else -> ""
+        }
+        if (pair) FlipCard("%02d".format(java.util.Locale.ROOT, v), card * 1.7f, card, "g$i", bg, fg, corner, i == 0)
+        else Row(horizontalArrangement = Arrangement.spacedBy(card * 0.08f)) {
+            FlipCard("${v / 10}", card, card, "g$i-0", bg, fg, if (i == 0) corner else "", true)
+            FlipCard("${v % 10}", card, card, "g$i-1", bg, fg, if (i != 0) corner else "", false)
+        }
+    }
     Ltr {
-        Row(
-            Modifier.clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecD(!secs); BadgeStore.hit(Badge.SANIYE) }
-                .semantics(mergeDescendants = true) { contentDescription = Fmt.time(t, secs) },
-            horizontalArrangement = Arrangement.spacedBy(card * 0.35f),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            for ((i, v) in groups.withIndex()) {
-                Row(horizontalArrangement = Arrangement.spacedBy(card * 0.08f)) {
-                    FlipCard(v / 10, card, "g$i-0")
-                    FlipCard(v % 10, card, "g$i-1")
-                }
-            }
-            if (Prefs.h12) Text(Fmt.ampm(t), color = Theme.c.muted, fontSize = (card * 0.32f).asSp(), fontWeight = FontWeight.Bold)
+        val mod = Modifier.clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecD(!secs); BadgeStore.hit(Badge.SANIYE) }
+            .semantics(mergeDescendants = true) { contentDescription = Fmt.time(t, secs) }
+        if (vertical) Column(mod, verticalArrangement = Arrangement.spacedBy(card * 0.25f), horizontalAlignment = Alignment.CenterHorizontally) {
+            for ((i, v) in groups.withIndex()) group(i, v)
+        } else Row(mod, horizontalArrangement = Arrangement.spacedBy(card * 0.35f), verticalAlignment = Alignment.CenterVertically) {
+            for ((i, v) in groups.withIndex()) group(i, v)
         }
     }
 }
 
+/** Tek kart: metin (bir ya da iki rakam), köşe etiketi (ÖÖ/ÖS solda üstte, küçük saniye sağda altta) */
 @Composable
-private fun FlipCard(digit: Int, width: Dp, key: String) {
+private fun FlipCard(
+    text: String, width: Dp, digit: Dp, key: String, bg: androidx.compose.ui.graphics.Color, fg: androidx.compose.ui.graphics.Color,
+    corner: String, cornerStart: Boolean,
+) {
     val angle = remember(key) { Animatable(0f) }
-    var last by remember(key) { mutableIntStateOf(digit) }
-    LaunchedEffect(digit) {
-        if (digit != last) {
-            last = digit
+    var last by remember(key) { mutableStateOf(text) }
+    LaunchedEffect(text) {
+        if (text != last) {
+            last = text
             angle.snapTo(-80f)
             angle.animateTo(0f, tween(300, easing = FastOutSlowInEasing))
         }
     }
-    val r = RoundedCornerShape(width * 0.12f)
+    val r = RoundedCornerShape(digit * 0.12f)
     Box(
-        Modifier.size(width, width * 1.4f).shadow(width * 0.05f, r).clip(r).background(Theme.c.surface2).border(1.dp, Theme.c.border, r),
+        Modifier.size(width, digit * 1.4f).shadow(digit * 0.05f, r).clip(r).background(bg).border(1.dp, Theme.c.border.copy(alpha = 0.6f), r),
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            "$digit",
+            text,
             Modifier.graphicsLayer { rotationX = angle.value; cameraDistance = 12f * density; alpha = if (angle.value == 0f) 1f else 0.4f },
-            color = Theme.c.ink, fontSize = width.asSp(), fontFamily = ClockFont.current.family, fontWeight = ClockFont.current.weight,
+            color = fg, fontSize = digit.asSp(), fontFamily = ClockFont.current.family, fontWeight = ClockFont.current.weight,
             style = Tnum, maxLines = 1,
         )
-        Box(Modifier.fillMaxWidth().height(maxOf(1.dp, width * 0.03f)).background(Theme.c.bg))
+        if (FlipLook.hinge) Box(Modifier.fillMaxWidth().height(maxOf(1.dp, digit * 0.03f)).background(Theme.c.bg))
+        if (corner.isNotEmpty()) Text(
+            corner, Modifier.align(if (cornerStart) Alignment.TopStart else Alignment.BottomEnd).padding(digit * 0.07f),
+            color = fg.copy(alpha = 0.75f), fontSize = (digit * 0.2f).asSp(), fontWeight = FontWeight.Bold, style = Tnum, maxLines = 1,
+        )
     }
 }
 
@@ -317,7 +397,7 @@ private fun WeatherPart(kind: WxKind, place: AppPlace, size: Dp, start: Boolean 
             val today = d.today
             Text(L("weather.feelsLike") + " " + Units.temp(c.feels) + (today?.let { " · " + Units.temp(it.max) + " / " + Units.temp(it.min) } ?: ""),
                 color = Theme.c.muted, fontSize = f * 0.9f, maxLines = 1)
-            Text(L("weather.humidity") + " %${Math.round(c.humidity)} · " + L("weather.wind") + " " + Units.wind(c.wind),
+            Text(L("weather.humidity") + " " + Fmt.percent(Math.round(c.humidity).toInt()) + " · " + L("weather.wind") + " " + Units.wind(c.wind),
                 color = Theme.c.muted, fontSize = f * 0.9f, maxLines = 1)
         }
         if (kind == WxKind.WEEK) {
@@ -339,7 +419,7 @@ private fun WeatherPart(kind: WxKind, place: AppPlace, size: Dp, start: Boolean 
 
 /** Aylık takvim (pazartesi başlar; bugün vurgulu, tatiller renkli). Güne dokununca Takvim sekmesinde açılır. */
 @Composable
-private fun MonthPart(today: LocalDate, width: Dp) {
+internal fun MonthPart(today: LocalDate, width: Dp) {
     val month = YearMonth.from(today)
     val lead = month.atDay(1).dayOfWeek.value - 1
     val cell = width / 7

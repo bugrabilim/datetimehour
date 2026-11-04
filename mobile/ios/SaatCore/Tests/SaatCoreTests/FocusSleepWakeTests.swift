@@ -4,6 +4,33 @@ import XCTest
 /// Android'deki core FocusSleepWakeTest ile aynı denetimler
 final class FocusSleepWakeTests: XCTestCase {
     /// Yeni alarm görevleri (#75): hafıza dizisi, yazma denetimi, fotoğraf özeti
+    func testSquatObjectSpeak() {
+        XCTAssertTrue(WakeTask.objectMatch("cup", [("Coffee cup", 0.8)]))
+        XCTAssertTrue(WakeTask.objectMatch("bed", [("bedroom", 0.5)]))
+        XCTAssertFalse(WakeTask.objectMatch("bed", [("bedroom", 0.1)]))
+        XCTAssertFalse(WakeTask.objectMatch("sky", [("keyboard", 0.9)]))
+        XCTAssertFalse(WakeTask.objectMatch("plant", [("street", 0.9)]))
+        XCTAssertFalse(WakeTask.objectMatch("bed", [("flowerbed", 0.9)]))
+        XCTAssertFalse(WakeTask.objectMatch("cup", [("sunglasses", 0.9)]))
+        XCTAssertTrue(WakeTask.objectMatch("shoe", [("Shoes", 0.6)]))
+        XCTAssertTrue(WakeTask.objectMatch("cup", [("drinking_glass", 0.6)]))
+        XCTAssertTrue(WakeTask.spoken("石の上にも三年", "石の上にも3年"))
+        XCTAssertTrue(WakeTask.spoken("百闻不如一见。", "百闻不如一见"))
+        XCTAssertFalse(WakeTask.spoken("石の上にも三年", "三年"))
+        XCTAssertTrue(WakeTask.spoken("Sabah erken kalkan yol alır", "sabah erken kalkan yol alır"))
+        XCTAssertTrue(WakeTask.spoken("Sabah erken kalkan yol alır", "sabah erken kalkan alır"))
+        XCTAssertFalse(WakeTask.spoken("Sabah erken kalkan yol alır", "yol alır"))
+        var c = MotionCounter.squat()
+        var t = 0.0
+        for _ in 0..<5 {
+            c.feed(t: t, x: 0, y: 0, z: 0.8); c.feed(t: t + 0.4, x: 0, y: 0, z: 1.4); c.feed(t: t + 0.7, x: 0, y: 0, z: 1.0)
+            t += 1.5
+        }
+        XCTAssertEqual(c.count, 5)
+        c.feed(t: t, x: 0, y: 0, z: 0.8); c.feed(t: t + 0.1, x: 0, y: 0, z: 1.5); c.feed(t: t + 0.2, x: 0, y: 0, z: 0.8); c.feed(t: t + 0.3, x: 0, y: 0, z: 1.5)
+        XCTAssertEqual(c.count, 6)
+    }
+
     func testMoreWakeTasks() {
         var rng = SplitMix64(seed: 7)
         let seq = WakeTask.memorySequence(level: 2, using: &rng)
@@ -67,9 +94,19 @@ final class FocusSleepWakeTests: XCTestCase {
             let s = NoiseGen.samples(kind, rate: 8000)
             XCTAssertEqual(s.count, NoiseGen.seconds(kind) * 8000, kind)
             let rms = (s.reduce(0.0) { $0 + Double($1) * Double($1) } / Double(s.count)).squareRoot()
-            XCTAssert((0.17...0.21).contains(rms), "\(kind) rms \(rms)")
+            if kind == "crickets" || kind == "tick" {
+                let peak = s.reduce(Float(0)) { Swift.max($0, abs($1)) }
+                XCTAssertLessThan(abs(peak - 0.7), 0.01, kind)
+            } else {
+                XCTAssert((0.17...0.21).contains(rms), "\(kind) rms \(rms)")
+            }
             XCTAssert(s.allSatisfy { (-1...1).contains($0) }, kind)
         }
+        // Karışım (2. analiz #30)
+        let m = NoiseGen.mix("rain=80;fire=60;crickets=40;tick=0;foo=50", rate: 8000)
+        XCTAssertEqual(m.count, 8 * 8000)
+        XCTAssertLessThanOrEqual(m.reduce(Float(0)) { Swift.max($0, abs($1)) }, 0.951)
+        XCTAssertEqual(NoiseGen.parseMix("rain=80;fire=60;crickets=40;tick=0;foo=50").map { $0.kind }, ["rain", "fire", "crickets"])
         let b = NoiseGen.samples("brown", rate: 8000)
         XCTAssertLessThan(abs(b.last! - b.first!), 0.05)
         XCTAssertEqual(NoiseGen.samples("pink", rate: 8000), NoiseGen.samples("pink", rate: 8000))

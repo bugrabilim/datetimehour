@@ -13,7 +13,10 @@ struct NotificationsView: View {
     @AppStorage(NotifyFeature.hourly.key) private var hourly = false
     @AppStorage(NotifyFeature.dst.key) private var dst = true
     @AppStorage(NotifyFeature.bedtime.key) private var bedtime = true
+    @AppStorage(NotifyFeature.habits.key) private var habits = true
+    @AppStorage(NotifyFeature.sky.key) private var sky = true
     @AppStorage(NotifyFeature.weatherTimeKey) private var weatherTime = 450
+    @AppStorage("notify.weather.alerts") private var weatherAlerts = true
     @AppStorage(NotifyFeature.hourlyFromKey) private var hourlyFrom = 9
     @AppStorage(NotifyFeature.hourlyToKey) private var hourlyTo = 21
     @State private var showPrayer = false
@@ -41,16 +44,29 @@ struct NotificationsView: View {
             Section {
                 row(.calendar, $calendar)
                 row(.bedtime, $bedtime)
+                row(.habits, $habits)
             }
             Section {
                 row(.seasons, $seasons)
                 row(.moon, $moon)
+                // Olay seçimi ve önceden haber verme (2. analiz #152)
+                if moon { SunMoonOptionsView(moon: true) { reschedule() } }
                 row(.sun, $sun)
+                if sun { SunMoonOptionsView(moon: false) { reschedule() } }
+                row(.sky, $sky)
             }
             Section {
                 row(.weather, $weather)
                 if weather {
                     DatePicker(L("notify.cat.weather.time"), selection: minutes($weatherTime), displayedComponents: .hourAndMinute)
+                    // Yarın belirgin soğuk/sıcak ve yağmur yaklaşıyor (2. analiz #110)
+                    Toggle(isOn: $weatherAlerts) {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(L("notify.weatherAlerts"))
+                            Text(L("notify.weatherAlerts.note")).font(.caption).foregroundStyle(Theme.muted)
+                        }
+                    }
+                    .tint(Theme.accent)
                 }
             }
             Section {
@@ -67,14 +83,15 @@ struct NotificationsView: View {
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("settings.notifications"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .sheet(isPresented: $showPrayer) { NotificationSettingsView() }
         .task { await refresh() }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             Task { await refresh() }
         }
-        .onChange(of: [prayer, calendar, seasons, moon, sun, weather, hourly, dst, bedtime]) { reschedule() }
+        .onChange(of: [prayer, calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, sky]) { reschedule() }
         .onChange(of: [weatherTime, hourlyFrom, hourlyTo]) { reschedule() }
+        .onChange(of: weatherAlerts) { reschedule() }
     }
 
     private func row(_ f: NotifyFeature, _ on: Binding<Bool>) -> some View {
@@ -84,7 +101,7 @@ struct NotificationsView: View {
     private func row(_ title: String, _ note: String, _ icon: String, _ on: Binding<Bool>) -> some View {
         Toggle(isOn: on) {
             VStack(alignment: .leading, spacing: 2) {
-                Label(title, systemImage: icon)
+                BoxLabel(title, icon: icon)
                 Text(note).font(.caption).foregroundStyle(Theme.muted)
             }
         }

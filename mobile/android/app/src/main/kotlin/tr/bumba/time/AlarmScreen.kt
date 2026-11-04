@@ -1,5 +1,9 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.outlined.Alarm
 import android.Manifest
 import android.content.Intent
 import android.net.Uri
@@ -75,17 +79,27 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
         onPauseOrDispose { }
     }
     val askNotify = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { notify = it }
+    // İzin öncesi kısa açıklama (2. analiz #80): bu ekranda bir kez
+    var primer by remember { mutableStateOf(false) }
+    var primed by remember { mutableStateOf(false) }
 
     fun update(list: List<AlarmItem>) {
         items = list.sortedWith(compareBy({ it.hour }, { it.minute }))
         AlarmItem.save(items)
         AlarmScheduler.sync(context, items)
         // Bildirim izni ilk alarm eklenirken istenir (Android 13+)
-        if (!notify && Build.VERSION.SDK_INT >= 33 && items.any { it.enabled }) askNotify.launch(Manifest.permission.POST_NOTIFICATIONS)
+        if (!notify && !primed && Build.VERSION.SDK_INT >= 33 && items.any { it.enabled }) { primed = true; primer = true }
     }
+    if (primer) PermissionPrimer(PermissionKind.ALARM, onAllow = {
+        primer = false
+        askNotify.launch(Manifest.permission.POST_NOTIFICATIONS)
+    }, onNotNow = { primer = false })
 
     var quickMsg by remember { mutableStateOf("") }
+    val nowMs = rememberNow().toEpochMilli()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        // Sıradaki alarm (2. analiz #51)
+        NextAlarmCard(items, nowMs)
         // Hızlı alarm (rakip analizi #17): şu andan X dakika sonrasına bir kezlik alarm
         Text(L("alarm.quick"), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
         Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -137,45 +151,75 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                 editing = AlarmItem(hour = now.hour, minute = now.minute)
             }) { Icon(Icons.Filled.Add, L("tools.alarm.add"), tint = Theme.c.accent) }
         }
+        // Uyku planının kalkış alarmı ayrı başlıkta (2. analiz #52)
+        val sleepItems = items.filter { it.sleepPlan }
+        val list = items.filter { !it.sleepPlan }
+        for ((heading, group) in listOf(L("alarm.sleepSection") to sleepItems, "" to list)) {
+        if (heading.isNotEmpty() && group.isEmpty()) continue
+        if (heading.isNotEmpty()) Text(heading, color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
         AppCard(padding = 4) {
-            if (items.isEmpty()) Text(L("tools.alarm.none"), Modifier.padding(12.dp), color = Theme.c.muted)
-            items.forEachIndexed { i, item ->
-                Row(
-                    Modifier.fillMaxWidth().clickable { editing = item }.padding(horizontal = 12.dp, vertical = 8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Column(Modifier.weight(1f)) {
-                        Ltr {
-                            Text(item.timeText, color = if (item.enabled) Theme.c.text else Theme.c.muted, fontSize = 40.sp,
-                                fontWeight = FontWeight.Light, style = Tnum)
-                        }
-                        Text(item.title + " · " + item.repeatText + (if (item.link.isNotEmpty()) " · ▶ " + (if (MusicLink.kind(item.link) == "spotify") "Spotify" else "YouTube") else "") +
-                            (if (item.smart > 0) " · " + L("alarm.smart") else ""), color = Theme.c.muted, fontSize = 14.sp)
-                        // Sonraki alarm atlanacaksa hangi gün; dokununca geri alınır, değilse "atla"
-                        if (item.enabled) {
-                            val skipped = item.skipping
-                            val now = System.currentTimeMillis()
-                            fun day(ms: Long) = Fmt.longDate(java.time.Instant.ofEpochMilli(ms).atZone(java.time.ZoneId.systemDefault()).toLocalDate())
-                            // Atlanacak çalma: tatiller hesaba katılmış, elle atlama hariç sıradaki
-                            val base = item.copy(skipUntil = 0).nextAt(now)
-                            if (item.holidaySkipped(now)) Text(T("alarm.holidayNext", day(item.nextAt(now))), color = Theme.c.muted, fontSize = 13.sp)
-                            Text(
-                                if (skipped) T("alarm.skipped", day(base)) + " · " + L("alarm.unskip")
-                                else L("alarm.skip"),
-                                Modifier.clickable {
-                                    val skip = if (skipped) 0L else base + 60_000L
-                                    update(items.map { if (it.id == item.id) it.copy(skipUntil = skip) else it })
-                                }.padding(vertical = 4.dp),
-                                color = if (skipped) Theme.c.muted else Theme.c.accent, fontSize = 13.sp,
-                            )
+            // Boş durum (2. analiz #96)
+            if (group.isEmpty()) EmptyState(
+                Icons.Outlined.Alarm, L("tools.alarm.none").trimEnd('.', '。', '۔'), L("empty.alarm.text"),
+                action = L("tools.alarm.add"),
+            ) { val now = LocalTime.now(); editing = AlarmItem(hour = now.hour, minute = now.minute) }
+            // Tablet ve katlanırda iki sütun (2. analiz #145)
+            val wide = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp >= 600
+            val rows = if (wide) group.chunked(2) else group.map { listOf(it) }
+            rows.forEachIndexed { i, pair ->
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
+                    for (item in pair) Box(Modifier.weight(1f)) {
+                        Row(
+                            Modifier.fillMaxWidth().clickable { editing = item }.padding(horizontal = 12.dp, vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Column(Modifier.weight(1f)) {
+                                Ltr {
+                                    Text(item.timeText, color = if (item.enabled) Theme.c.text else Theme.c.muted, fontSize = 40.sp,
+                                        fontWeight = FontWeight.Light, style = Tnum)
+                                }
+                                // Görev simgesi (2. analiz #51)
+                                val icon = when (item.effectiveTask) {
+                                    "math" -> "🧮 "; "shake" -> "📳 "; "steps" -> "🚶 "; "code" -> "🔳 "; "memory" -> "🧠 "; "typing" -> "⌨️ "; "photo" -> "📷 "; "squat" -> "🏋️ "; "object" -> "🔍 "; "speak" -> "🗣️ "
+                                    "light" -> "💡 "; "random" -> "🎲 "
+                                    else -> ""
+                                } + (if (item.chain.isNotEmpty()) "+${item.chain.size} " else "")
+                                // Şehir saatine ya da güneşe bağlı alarm (2. analiz #132, #153)
+                                item.anchorText?.let { Text((if (item.sun.isNotEmpty()) "☀️ " else "🌐 ") + it, color = Theme.c.accent, fontSize = 13.sp) }
+                                Text(icon + item.title + " · " + item.repeatText + (if (item.link.isNotEmpty()) " · ▶ " + (if (MusicLink.kind(item.link) == "spotify") "Spotify" else "YouTube") else "") +
+                                    (if (item.smart > 0) " · " + L("alarm.smart") else "") + (if (item.preAlarm > 0) " · 🌧" else ""), color = Theme.c.muted, fontSize = 14.sp)
+                                if (item.sleepPlan) Text(L("alarm.sleepLinked"), color = Theme.c.muted, fontSize = 12.sp)
+                                // Sonraki alarm atlanacaksa hangi gün; dokununca geri alınır, değilse "atla"
+                                if (item.enabled) {
+                                    val skipped = item.skipping
+                                    val now = System.currentTimeMillis()
+                                    fun day(ms: Long) = Fmt.longDate(java.time.Instant.ofEpochMilli(ms).atZone(java.time.ZoneId.systemDefault()).toLocalDate())
+                                    // Atlanacak çalma: tatiller hesaba katılmış, elle atlama hariç sıradaki
+                                    val base = item.copy(skipUntil = 0).nextAt(now)
+                                    if (item.holidaySkipped(now)) Text(T("alarm.holidayNext", day(item.nextAt(now))), color = Theme.c.muted, fontSize = 13.sp)
+                                    Text(
+                                        if (skipped) T("alarm.skipped", day(base)) + " · " + L("alarm.unskip")
+                                        else L("alarm.skip"),
+                                        Modifier.clickable {
+                                            val skip = if (skipped) 0L else base + 60_000L
+                                            update(items.map { if (it.id == item.id) it.copy(skipUntil = skip) else it })
+                                        }.padding(vertical = 4.dp),
+                                        color = if (skipped) Theme.c.muted else Theme.c.accent, fontSize = 13.sp,
+                                    )
+                                }
+                            }
+                            Switch(item.enabled, { on -> update(items.map { if (it.id == item.id) it.copy(enabled = on) else it }) },
+                                colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                         }
                     }
-                    Switch(item.enabled, { on -> update(items.map { if (it.id == item.id) it.copy(enabled = on) else it }) },
-                        colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    if (wide && pair.size == 1) Spacer(Modifier.weight(1f))
                 }
-                if (i < items.lastIndex) HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
+                if (i < rows.lastIndex) HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
             }
         }
+        }
+        // Tatil modu (2. analiz #44)
+        VacationCard()
         // İzin eksikse: dokununca ilgili ayar açılır
         if (items.any { it.enabled } && (!exact || !notify)) {
             Text(
@@ -186,7 +230,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                     else Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
                     runCatching { context.startActivity(intent) }
                 }.padding(4.dp),
-                color = Color(0xFFD32F2F), fontSize = 14.sp,
+                color = Theme.c.err, fontSize = 14.sp,
             )
         }
         Text(L("alarm.realNote"), Modifier.padding(horizontal = 4.dp), color = Theme.c.muted, fontSize = 13.sp)
@@ -239,6 +283,22 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
     // Müzik bağlantısı (Spotify/YouTube) ve akıllı alarm penceresi (31 Ekim 2026)
     var link by remember { mutableStateOf(item.link) }
     var smart by remember { mutableStateOf(item.smart) }
+    var shakeSnooze by remember { mutableStateOf(item.shakeSnooze) }
+    var preAlarm by remember { mutableStateOf(item.preAlarm) }
+    var openApp by remember { mutableStateOf(item.openApp) }
+    var wall by remember { mutableStateOf(item.wall) }
+    // 2. analiz #40, #132, #153, #34, #39
+    var snoozeShrink by remember { mutableStateOf(item.snoozeShrink) }
+    var snoozeEnd by remember { mutableStateOf(item.snoozeEnd) }
+    var volume by remember { mutableStateOf(item.volume) }
+    var tz by remember { mutableStateOf(item.tz) }
+    var sun by remember { mutableStateOf(item.sun) }
+    var sunOffset by remember { mutableStateOf(item.sunOffset) }
+    var chain by remember { mutableStateOf(item.chain) }
+    var snoozeTask by remember { mutableStateOf(item.snoozeTask) }
+    var keyAction by remember { mutableStateOf(item.keyAction) }
+    var powerAction by remember { mutableStateOf(item.powerAction) }
+    var tryTask by remember { mutableStateOf(false) }
     val linkNorm = MusicLink.normalize(link)
     // Zil sesi seçici (sistem penceresi); "Sessiz" seçilirse varsayılana dönülür
     val pickSound = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
@@ -248,12 +308,13 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
             sound = uri?.takeIf { it != RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM) }?.toString() ?: ""
         }
     }
+    var advanced by remember { mutableStateOf(false) }
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(L(if (isNew) "alarm.new" else "tools.alarm.timeLabel")) },
         text = {
             Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Ltr {
+                if (sun.isEmpty()) Ltr {
                     TimePicker(time, colors = TimePickerDefaults.colors(
                         selectorColor = Theme.c.accent,
                         timeSelectorSelectedContainerColor = Theme.c.accentSoft,
@@ -295,12 +356,20 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     }
                 }
                 Text(item.copy(days = days, date = onDate, every = every, anchor = anchor, until = until).repeatText, color = Theme.c.muted, fontSize = 13.sp)
+                // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
+                if (days.isNotEmpty()) Row(verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text(L("alarm.skipHolidays"), color = Theme.c.text, fontSize = 15.sp)
+                        Text(L("alarm.skipHolidaysNote"), color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                    Switch(skipHolidays, { skipHolidays = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                }
                 ChoiceRow(L("alarm.snooze"), if (snooze == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", snooze),
                     AlarmItem.SNOOZE_CHOICES.map { it to (if (it == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", it)) }) { snooze = it }
-                if (snooze > 0) {
-                    fun maxText(n: Int) = if (n == 0) L("alarm.snoozeMax.none") else T("alarm.snoozeMax.n", n)
-                    ChoiceRow(L("alarm.snoozeMax"), maxText(snoozeMax), AlarmItem.SNOOZE_MAX_CHOICES.map { it to maxText(it) }) { snoozeMax = it }
-                }
+                // Ses düzeyi (2. analiz #40): alarm ses düzeyinin yüzdesi
+                fun volText(v: Int) = if (v == 0) L("alarm.volume.phone") else Fmt.percent(v)
+                ChoiceRow(L("alarm.volume"), volText(volume), AlarmItem.VOLUME_CHOICES.map { it to volText(it) }) { volume = it }
+                Text(L("alarm.volumeNote"), color = Theme.c.muted, fontSize = 12.sp)
                 Row(
                     Modifier.fillMaxWidth().clickable {
                         val current = sound.takeIf { it.isNotEmpty() }?.let(Uri::parse) ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
@@ -317,97 +386,206 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     Text(L("alarm.sound"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
                     Text(AlarmScheduler.soundTitle(context, sound), color = Theme.c.accent, fontSize = 15.sp, maxLines = 1)
                 }
+                // Uygulamanın ses kitaplığı (2. analiz #3): telifsiz, kategorili sesler
+                var toneLibrary by remember { mutableStateOf(false) }
+                Row(Modifier.fillMaxWidth().clickable { toneLibrary = true }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(L("tone.library"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    Text(AlarmTones.id(sound)?.let { L("tone.$it") } ?: "›", color = Theme.c.accent, fontSize = 15.sp, maxLines = 1)
+                }
+                if (toneLibrary) AlarmToneDialog(sound, { sound = it; toneLibrary = false }, { toneLibrary = false })
+                // Alarm ekranı duvar kâğıdı (2. analiz #2)
+                var wallPicker by remember { mutableStateOf(false) }
+                Row(Modifier.fillMaxWidth().clickable { wallPicker = true }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(L("wall.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    Text(AlarmWalls.title(wall), color = Theme.c.accent, fontSize = 15.sp, maxLines = 1)
+                }
+                if (wallPicker) AlarmWallDialog(wall, time.hour, time.minute, { wall = it; wallPicker = false }, { wallPicker = false })
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("alarm.vibrate"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
                     Switch(vibrate, { vibrate = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                // Gelişmiş (2. analiz #201): kapalı gelir; saat, günler, ses ve erteleme üstte kalır
+                Row(
+                    Modifier.fillMaxWidth().clickable { advanced = !advanced }.padding(vertical = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
                     Column(Modifier.weight(1f)) {
-                        Text(L("alarm.rise"), color = Theme.c.text, fontSize = 15.sp)
-                        Text(L("alarm.riseNote"), color = Theme.c.muted, fontSize = 12.sp)
+                        Text(L("alarm.advanced"), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                        if (!advanced) Text(L("alarm.advanced.note"), color = Theme.c.muted, fontSize = 12.sp)
                     }
-                    Switch(rise, { rise = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    Icon(if (advanced) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore, null, tint = Theme.c.muted)
                 }
-                // Müzik bağlantısı: çalınca Spotify ya da YouTube'da açılır, alarm sesi 1 dk sonra (MusicLink)
-                OutlinedTextField(link, { link = it.take(300) }, Modifier.fillMaxWidth(), singleLine = true,
-                    label = { Text(L("alarm.link")) }, placeholder = { Text(L("alarm.link.placeholder")) },
-                    isError = linkNorm == null,
-                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Uri))
-                Text(L(if (linkNorm == null) "alarm.link.invalid" else "alarm.link.note"),
-                    color = if (linkNorm == null) Color(0xFFD32F2F) else Theme.c.muted, fontSize = 12.sp)
-                if (!linkNorm.isNullOrEmpty()) TextButton(onClick = { MusicLink.open(context, linkNorm) }) {
-                    Text("▶ " + L("alarm.link.try"), color = Theme.c.accent)
-                }
-                // Akıllı alarm (SmartSleep): Uyku ekranındaki oturum açıkken pencerede hafif uyku algılanırsa erken çalar
-                fun smartText(m: Int) = if (m == 0) L("alarm.snoozeOff") else T("alarm.smartMin", m)
-                ChoiceRow(L("alarm.smart"), smartText(smart), AlarmItem.SMART_CHOICES.map { it to smartText(it) }) { smart = it }
-                Text(L("alarm.smart.note"), color = Theme.c.muted, fontSize = 12.sp)
-                // Saati sesli söyleme (rakip analizi #20) ve yaklaşan alarm bildirimi (#19)
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Column(Modifier.weight(1f)) {
-                        Text(L("alarm.speak"), color = Theme.c.text, fontSize = 15.sp)
-                        Text(L("alarm.speakNote"), color = Theme.c.muted, fontSize = 12.sp)
+                if (advanced) {
+                    // Saat neye göre (2. analiz #132 şehir saati, #153 gün doğumu/batımı ± dk)
+                    val base = when { sun == "rise" -> 2; sun == "set" -> 3; tz.isNotEmpty() -> 1; else -> 0 }
+                    val baseNames = listOf("phone", "city", "rise", "set")
+                    ChoiceRow(L("alarm.base"), L("alarm.base.${baseNames[base]}"), baseNames.indices.map { it to L("alarm.base.${baseNames[it]}") }) { b ->
+                        sun = when (b) { 2 -> "rise"; 3 -> "set"; else -> "" }
+                        tz = if (b == 1) tz.ifEmpty { AlarmItem.TZ_CHOICES.firstOrNull { it != java.time.ZoneId.systemDefault().id } ?: "Europe/London" } else ""
                     }
-                    Switch(speak, { speak = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
-                }
-                fun preText(m: Int) = if (m == 0) L("alarm.preOff") else T("alarm.preMin", m)
-                ChoiceRow(L("alarm.pre"), preText(preNotify), AlarmItem.PRE_NOTIFY_CHOICES.map { it to preText(it) }) { preNotify = it }
-                Text(L("alarm.preNote"), color = Theme.c.muted, fontSize = 12.sp)
-                // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
-                fun sunriseText(m: Int) = if (m == 0) L("alarm.snoozeOff") else T("alarm.sunriseMin", m)
-                ChoiceRow(L("alarm.sunrise"), sunriseText(sunrise), AlarmItem.SUNRISE_CHOICES.map { it to sunriseText(it) }) { sunrise = it }
-                Text(L("alarm.sunriseNote"), color = Theme.c.muted, fontSize = 12.sp)
-                // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
-                val kinds = tr.bumba.time.core.WakeTask.KINDS
-                ChoiceRow(L("alarm.task"), L("alarm.task.$task"), kinds.indices.map { it to L("alarm.task.${kinds[it]}") }) { task = kinds[it] }
-                if (task == "math") {
-                    ChoiceRow(L("alarm.task.level"), L("alarm.task.level.$taskLevel"), (1..3).map { it to L("alarm.task.level.$it") }) { taskLevel = it }
-                }
-                if (task == "code") {
-                    TextButton(onClick = { CodeScan.scan(context, onCode = { code = it }, onFail = {}) }) {
-                        Text(L(if (code.isEmpty()) "alarm.code.save" else "alarm.code.change"), color = Theme.c.accent)
+                    if (base == 1) {
+                        val cities = remember { City.all.distinctBy { it.zone.id }.sortedBy { it.displayName } }
+                        val cur = cities.indexOfFirst { it.zone.id == tz }
+                        ChoiceRow(L("alarm.city"), cities.getOrNull(cur)?.displayName ?: tz, cities.indices.map { it to cities[it].displayName }) { tz = cities[it].zone.id }
+                        Text(L("alarm.tzNote"), color = Theme.c.muted, fontSize = 12.sp)
                     }
-                    Text(L(if (code.isEmpty()) "alarm.code.missing" else "alarm.code.saved"), color = Theme.c.muted, fontSize = 12.sp)
-                    Text(L("alarm.code.hint"), color = Theme.c.muted, fontSize = 12.sp)
-                }
-                if (task == "memory") {
-                    ChoiceRow(L("alarm.task.level"), L("alarm.task.level.$taskLevel"), (1..3).map { it to L("alarm.task.level.$it") }) { taskLevel = it }
-                }
-                if (task == "photo") {
-                    val hasPhoto = code.startsWith(PhotoHash.PREFIX)
-                    TextButton(onClick = { runCatching { takeRef.launch(null) } }) {
-                        Text(L(if (hasPhoto) "alarm.photo.change" else "alarm.photo.save"), color = Theme.c.accent)
+                    if (base >= 2) {
+                        ChoiceRow(L("alarm.sunOffset"), AlarmItem.sunOffsetText(sunOffset), AlarmItem.SUN_OFFSETS.map { it to AlarmItem.sunOffsetText(it) }) { sunOffset = it }
+                        val probe = item.copy(days = days, date = onDate, every = every, anchor = anchor, until = until, sun = sun, sunOffset = sunOffset, tz = "", skipUntil = 0)
+                        val next = probe.nextAt()
+                        Text(T("alarm.sunNote", AppPlace.current().name,
+                            if (next == AlarmItem.NEVER) "—" else Fmt.dayMonth(java.time.Instant.ofEpochMilli(next).atZone(java.time.ZoneId.systemDefault()).toLocalDate()) + " " +
+                                Fmt.time(java.time.Instant.ofEpochMilli(next).atZone(java.time.ZoneId.systemDefault()))),
+                            color = Theme.c.muted, fontSize = 12.sp)
                     }
-                    Text(L(if (hasPhoto) "alarm.photo.saved" else "alarm.photo.missing"), color = Theme.c.muted, fontSize = 12.sp)
-                }
-                if (task != "none") Text(L("alarm.task.note"), color = Theme.c.muted, fontSize = 12.sp)
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Column(Modifier.weight(1f)) {
-                        Text(L("alarm.wakeCheck"), color = Theme.c.text, fontSize = 15.sp)
-                        Text(L("alarm.wakeCheck.note"), color = Theme.c.muted, fontSize = 12.sp)
+                    if (snooze > 0) {
+                        fun maxText(n: Int) = if (n == 0) L("alarm.snoozeMax.none") else T("alarm.snoozeMax.n", n)
+                        ChoiceRow(L("alarm.snoozeMax"), maxText(snoozeMax), AlarmItem.SNOOZE_MAX_CHOICES.map { it to maxText(it) }) { snoozeMax = it }
+                        // 2. analiz #40: her ertelemede kısalan süre, belli saatten sonra erteleme yok
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Column(Modifier.weight(1f)) {
+                                Text(L("alarm.snoozeShrink"), color = Theme.c.text, fontSize = 15.sp)
+                                Text(L("alarm.snoozeShrinkNote"), color = Theme.c.muted, fontSize = 12.sp)
+                            }
+                            Switch(snoozeShrink, { snoozeShrink = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                        }
+                        val ends = remember(time.hour, time.minute) {
+                            listOf("") + listOf(15, 30, 45, 60, 90, 120).map {
+                                java.time.LocalTime.of(time.hour, time.minute).plusMinutes(it.toLong()).toString()
+                            }
+                        }
+                        val endChoices = (if (snoozeEnd !in ends) ends + snoozeEnd else ends)
+                        fun endText(e: String) = if (e.isEmpty()) L("alarm.snoozeEnd.none") else e
+                        ChoiceRow(L("alarm.snoozeEnd"), endText(snoozeEnd), endChoices.indices.map { it to endText(endChoices[it]) }) { snoozeEnd = endChoices[it] }
+                        // 2. analiz #39: ertelemek için görev
+                        val snoozeKinds = listOf("none", "math", "memory", "typing", "shake", "random")
+                        ChoiceRow(L("alarm.snoozeTask"), L("alarm.task.$snoozeTask"), snoozeKinds.indices.map { it to L("alarm.task.${snoozeKinds[it]}") }) { snoozeTask = snoozeKinds[it] }
                     }
-                    Switch(wakeCheck, { wakeCheck = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
-                }
-                // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
-                if (days.isNotEmpty()) Row(verticalAlignment = Alignment.CenterVertically) {
-                    Column(Modifier.weight(1f)) {
-                        Text(L("alarm.skipHolidays"), color = Theme.c.text, fontSize = 15.sp)
-                        Text(L("alarm.skipHolidaysNote"), color = Theme.c.muted, fontSize = 12.sp)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(L("alarm.rise"), color = Theme.c.text, fontSize = 15.sp)
+                            Text(L("alarm.riseNote"), color = Theme.c.muted, fontSize = 12.sp)
+                        }
+                        Switch(rise, { rise = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
-                    Switch(skipHolidays, { skipHolidays = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    // Müzik bağlantısı: çalınca Spotify ya da YouTube'da açılır, alarm sesi 1 dk sonra (MusicLink)
+                    OutlinedTextField(link, { link = it.take(300) }, Modifier.fillMaxWidth(), singleLine = true,
+                        label = { Text(L("alarm.link")) }, placeholder = { Text(L("alarm.link.placeholder")) },
+                        isError = linkNorm == null,
+                        keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Uri))
+                    Text(L(if (linkNorm == null) "alarm.link.invalid" else "alarm.link.note"),
+                        color = if (linkNorm == null) Theme.c.err else Theme.c.muted, fontSize = 12.sp)
+                    if (!linkNorm.isNullOrEmpty()) TextButton(onClick = { MusicLink.open(context, linkNorm) }) {
+                        Text("▶ " + L("alarm.link.try"), color = Theme.c.accent)
+                    }
+                    // Akıllı alarm (SmartSleep): Uyku ekranındaki oturum açıkken pencerede hafif uyku algılanırsa erken çalar
+                    fun smartText(m: Int) = if (m == 0) L("alarm.snoozeOff") else T("alarm.smartMin", m)
+                    ChoiceRow(L("alarm.smart"), smartText(smart), AlarmItem.SMART_CHOICES.map { it to smartText(it) }) { smart = it }
+                    Text(L("alarm.smart.note"), color = Theme.c.muted, fontSize = 12.sp)
+                    // Saati sesli söyleme (rakip analizi #20) ve yaklaşan alarm bildirimi (#19)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(L("alarm.speak"), color = Theme.c.text, fontSize = 15.sp)
+                            Text(L("alarm.speakNote"), color = Theme.c.muted, fontSize = 12.sp)
+                        }
+                        Switch(speak, { speak = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    }
+                    fun preText(m: Int) = if (m == 0) L("alarm.preOff") else T("alarm.preMin", m)
+                    ChoiceRow(L("alarm.pre"), preText(preNotify), AlarmItem.PRE_NOTIFY_CHOICES.map { it to preText(it) }) { preNotify = it }
+                    Text(L("alarm.preNote"), color = Theme.c.muted, fontSize = 12.sp)
+                    // Sakin ön alarm (2. analiz #42), sallayınca ertele (#41), kapanınca uygulama aç (#43)
+                    ChoiceRow(L("alarm.preAlarm"), preText(preAlarm), AlarmItem.PRE_ALARM_CHOICES.map { it to preText(it) }) { preAlarm = it }
+                    Text(L("alarm.preAlarmNote"), color = Theme.c.muted, fontSize = 12.sp)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(L("alarm.shakeSnooze"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                        Switch(shakeSnooze, { shakeSnooze = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    }
+                    // Ses tuşu ve güç tuşu (2. analiz #39)
+                    val keyNames = AlarmItem.KEY_ACTIONS
+                    ChoiceRow(L("alarm.keys"), L("alarm.key.$keyAction"), keyNames.indices.map { it to L("alarm.key.${keyNames[it]}") }) { keyAction = keyNames[it] }
+                    ChoiceRow(L("alarm.power"), L("alarm.key.$powerAction"), keyNames.indices.map { it to L("alarm.key.${keyNames[it]}") }) { powerAction = keyNames[it] }
+                    Text(L("alarm.keysNote"), color = Theme.c.muted, fontSize = 12.sp)
+                    OpenAppRow(openApp) { openApp = it }
+                    // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
+                    fun sunriseText(m: Int) = if (m == 0) L("alarm.snoozeOff") else T("alarm.sunriseMin", m)
+                    ChoiceRow(L("alarm.sunrise"), sunriseText(sunrise), AlarmItem.SUNRISE_CHOICES.map { it to sunriseText(it) }) { sunrise = it }
+                    Text(L("alarm.sunriseNote"), color = Theme.c.muted, fontSize = 12.sp)
+                    // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
+                    val hasLight = remember {
+                        (context.getSystemService(android.content.Context.SENSOR_SERVICE) as? android.hardware.SensorManager)
+                            ?.getDefaultSensor(android.hardware.Sensor.TYPE_LIGHT) != null
+                    }
+                    val kinds = tr.bumba.time.core.WakeTask.KINDS + (if (hasLight) listOf("light") else emptyList()) + "random"
+                    ChoiceRow(L("alarm.task"), L("alarm.task.$task"), kinds.indices.map { it to L("alarm.task.${kinds[it]}") }) { task = kinds[it] }
+                    // Görev zinciri (2. analiz #34): asıl görevden sonra en çok iki görev daha
+                    if (task != "none") {
+                        val chainKinds = kinds
+                        for (i in 0..1) {
+                            if (i > 0 && chain.getOrNull(0).let { it == null || it == "none" }) break
+                            val cur = chain.getOrNull(i) ?: "none"
+                            ChoiceRow(L("alarm.chain"), L("alarm.task.$cur"), chainKinds.indices.map { it to L("alarm.task.${chainKinds[it]}") }) { k ->
+                                val list = chain.toMutableList()
+                                while (list.size <= i) list += "none"
+                                list[i] = chainKinds[k]
+                                chain = list.take(if (list[0] == "none") 0 else 2).filterIndexed { j, t -> j == 0 || t != "none" }
+                            }
+                        }
+                        Text(L("alarm.chainNote"), color = Theme.c.muted, fontSize = 12.sp)
+                        // Önizleme (2. analiz #35): alarm çalmadan görevi dene
+                        TextButton(onClick = { tryTask = true }) { Text("▶ " + L("alarm.taskTry"), color = Theme.c.accent) }
+                    }
+                    if (task == "math") {
+                        ChoiceRow(L("alarm.task.level"), L("alarm.task.level.$taskLevel"), (1..3).map { it to L("alarm.task.level.$it") }) { taskLevel = it }
+                    }
+                    if (task == "code") {
+                        TextButton(onClick = { CodeScan.scan(context, onCode = { code = it }, onFail = {}) }) {
+                            Text(L(if (code.isEmpty()) "alarm.code.save" else "alarm.code.change"), color = Theme.c.accent)
+                        }
+                        Text(L(if (code.isEmpty()) "alarm.code.missing" else "alarm.code.saved"), color = Theme.c.muted, fontSize = 12.sp)
+                        Text(L("alarm.code.hint"), color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                    if (task == "memory") {
+                        ChoiceRow(L("alarm.task.level"), L("alarm.task.level.$taskLevel"), (1..3).map { it to L("alarm.task.level.$it") }) { taskLevel = it }
+                    }
+                    if (task == "photo") {
+                        val hasPhoto = code.startsWith(PhotoHash.PREFIX)
+                        TextButton(onClick = { runCatching { takeRef.launch(null) } }) {
+                            Text(L(if (hasPhoto) "alarm.photo.change" else "alarm.photo.save"), color = Theme.c.accent)
+                        }
+                        Text(L(if (hasPhoto) "alarm.photo.saved" else "alarm.photo.missing"), color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                    if (task == "object") {
+                        val ids = listOf("") + tr.bumba.time.core.WakeTask.OBJECTS.keys
+                        val cur = code.takeIf { it.startsWith(ObjectTarget.PREFIX) }?.removePrefix(ObjectTarget.PREFIX) ?: ""
+                        fun name(id: String) = if (id.isEmpty()) L("alarm.task.object.random") else L("wake.object.$id")
+                        ChoiceRow(L("alarm.task.objectTarget"), name(cur), ids.indices.map { it to name(ids[it]) }) { i ->
+                            code = if (ids[i].isEmpty()) "" else ObjectTarget.PREFIX + ids[i]
+                        }
+                    }
+                    if (task != "none") Text(L("alarm.task.note"), color = Theme.c.muted, fontSize = 12.sp)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(L("alarm.wakeCheck"), color = Theme.c.text, fontSize = 15.sp)
+                            Text(L("alarm.wakeCheck.note"), color = Theme.c.muted, fontSize = 12.sp)
+                        }
+                        Switch(wakeCheck, { wakeCheck = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    }
                 }
-                if (!isNew) TextButton(onClick = onDelete) { Text(L("tools.alarm.delete"), color = Color(0xFFD32F2F)) }
+                if (!isNew) TextButton(onClick = onDelete) { Text(L("tools.alarm.delete"), color = Theme.c.err) }
             }
         },
         confirmButton = {
             TextButton(enabled = linkNorm != null, onClick = {
                 onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), days = days, enabled = true,
-                    link = linkNorm ?: "", smart = smart,
+                    link = linkNorm ?: "", smart = smart, shakeSnooze = shakeSnooze, preAlarm = preAlarm, openApp = openApp, wall = wall,
                     snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate, snoozeMax = snoozeMax, rise = rise,
                     skipHolidays = skipHolidays && days.isNotEmpty(), sunrise = sunrise, task = task, taskLevel = taskLevel,
                     code = code, wakeCheck = wakeCheck, preNotify = preNotify, speak = speak,
                     date = if (days.isEmpty()) onDate else "", every = if (days.isEmpty()) 1 else every, anchor = anchor,
-                    until = if (days.isEmpty()) "" else until))
+                    until = if (days.isEmpty()) "" else until,
+                    snoozeShrink = snoozeShrink, snoozeEnd = snoozeEnd, volume = volume, tz = if (sun.isEmpty()) tz else "", sun = sun,
+                    sunOffset = sunOffset, chain = if (task == "none") emptyList() else chain.filter { it != "none" },
+                    snoozeTask = snoozeTask, keyAction = keyAction, powerAction = powerAction))
             }) { Text(L("alarm.save"), color = Theme.c.accent) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(L("alarm.cancel"), color = Theme.c.muted) } },
@@ -427,6 +605,22 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                 }) { Text(L("common.done"), color = Theme.c.accent) }
             },
         ) { androidx.compose.material3.DatePicker(state) }
+    }
+    // Görev önizlemesi (2. analiz #35): alarm çalmadan, ses olmadan
+    if (tryTask) {
+        var done by remember { mutableStateOf(false) }
+        val probe = item.copy(task = task, taskLevel = taskLevel, code = code, chain = chain.filter { it != "none" })
+        AlertDialog(
+            onDismissRequest = { tryTask = false },
+            title = { Text(L("alarm.taskTry")) },
+            text = {
+                Column(Modifier.verticalScroll(rememberScrollState())) {
+                    if (done) Text(L("alarm.taskTryDone"), color = Theme.c.text, fontSize = 16.sp)
+                    else WakeTaskPanel(probe) { done = true }
+                }
+            },
+            confirmButton = { TextButton(onClick = { tryTask = false }) { Text(L(if (done) "common.done" else "alarm.cancel"), color = Theme.c.accent) } },
+        )
     }
 }
 

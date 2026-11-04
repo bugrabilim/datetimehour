@@ -54,4 +54,14 @@
         android:textColor="@color/widget_accent"
         android:textSize="15sp"
         android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_marginTop="6dp"
+        android:layoutDirection="ltr"
+        android:max="1000"
+        android:progressDrawable="@drawable/widget_progress" />
 </LinearLayout>

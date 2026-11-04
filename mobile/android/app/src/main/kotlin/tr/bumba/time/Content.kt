@@ -3,6 +3,7 @@ package tr.bumba.time
 import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -73,8 +74,8 @@ object Esma {
 
     fun load(c: Context): List<Name> = runCatching {
         val a = JSONArray(asset(c, "esma.json") ?: "[]")
-        // Sütunlar: [ar, Türkçe okunuş, Latin okunuş, tr, en, de, az, id, ur, fa, fr, ru, ja, ko, zh, fil, th]; Farsça ve Urducada okunuş yok (ad Arapça yazıyla okunur)
-        val col = when (Strings.lang) { "tr" -> 3; "en" -> 4; "de" -> 5; "az" -> 6; "id" -> 7; "ur" -> 8; "fa" -> 9; "fr" -> 10; "ru" -> 11; "ja" -> 12; "ko" -> 13; "zh" -> 14; "fil" -> 15; "th" -> 16; else -> -1 }
+        // Sütunlar: [ar, Türkçe okunuş, Latin okunuş, tr, en, de, az, id, ur, fa, fr, ru, ja, ko, zh, fil, th, es, pt, hi]; Farsça ve Urducada okunuş yok (ad Arapça yazıyla okunur)
+        val col = when (Strings.lang) { "tr" -> 3; "en" -> 4; "de" -> 5; "az" -> 6; "id" -> 7; "ur" -> 8; "fa" -> 9; "fr" -> 10; "ru" -> 11; "ja" -> 12; "ko" -> 13; "zh" -> 14; "fil" -> 15; "th" -> 16; "es" -> 17; "pt" -> 18; "hi" -> 19; else -> -1 }
         (0 until a.length()).map { i ->
             val r = a.getJSONArray(i)
             val read = when (Strings.lang) { "tr", "az" -> r.getString(1); "ur", "fa" -> ""; else -> r.getString(2) }
@@ -88,13 +89,16 @@ fun EsmaScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val all = remember { Esma.load(context) }
     var q by rememberSaveable { mutableStateOf("") }
+    // Dokununca hat kartı ve sesli okuma (2. analiz #85)
+    var detail by remember { mutableStateOf<Esma.Name?>(null) }
     val list = q.trim().lowercase().let { s -> if (s.isEmpty()) all else all.filter { it.read.lowercase().contains(s) || it.meaning.lowercase().contains(s) || it.ar.contains(s) } }
+    detail?.let { n -> EsmaCard(n) { detail = null } }
     Column(Modifier.fillMaxSize()) {
         SubBar(L("esma.title"), onBack = onBack)
         OutlinedTextField(q, { q = it }, Modifier.fillMaxWidth().padding(horizontal = 16.dp), placeholder = { Text(L("esma.search")) }, singleLine = true)
         LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
             items(list, key = { it.no }) { n ->
-                Row(Modifier.fillMaxWidth().padding(vertical = 10.dp), verticalAlignment = Alignment.Top) {
+                Row(Modifier.fillMaxWidth().clickable { detail = n }.padding(vertical = 10.dp), verticalAlignment = Alignment.Top) {
                     Text("${n.no}", Modifier.width(30.dp), color = Theme.c.muted, fontSize = 12.sp, style = Tnum)
                     Column(Modifier.weight(1f)) {
                         if (Strings.lang != "ar") {
@@ -167,6 +171,7 @@ fun PrayerGuideScreen(onBack: () -> Unit, onDuas: () -> Unit) {
     Column(Modifier.fillMaxSize()) {
         SubBar(L("guide.title"), onBack = onBack)
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            GuidePictureCard(data)
             val secs = data?.optJSONArray("sections") ?: JSONArray()
             for (i in 0 until secs.length()) {
                 val s = secs.getJSONObject(i)
@@ -256,6 +261,7 @@ fun CalendarLeafScreen(onBack: () -> Unit) {
                 Text("${day.dayOfMonth}", color = Color.White, fontSize = 104.sp, fontWeight = FontWeight.Bold, style = Tnum)
                 Text(day.dayOfWeek.getDisplayName(TextStyle.FULL, locale).replaceFirstChar { it.titlecase(locale) }, color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
                 Hijri.date(day)?.let { Text("☾ " + it.text, color = Color.White.copy(alpha = 0.9f), fontSize = 14.sp) }
+                Text(Rumi.text(day), color = Color.White.copy(alpha = 0.85f), fontSize = 13.sp)
             }
             Text(T("leaf.dayOfYear", day.dayOfYear.toString(), day.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR).toString()), color = Theme.c.muted, fontSize = 14.sp)
             if (turkic) {
@@ -282,6 +288,27 @@ fun CalendarLeafScreen(onBack: () -> Unit) {
                     Text("“$s”", color = Theme.c.text, fontSize = 19.sp, fontStyle = FontStyle.Italic)
                 }
             }
+            // Günün hadisi (2. analiz #124; İbadet içeriği, Vakitler açıkken)
+            if (Features.isOn(Tab.PRAYER)) Hadiths.today(context, day)?.let { h ->
+                SectionTitle(L("hadith.today"))
+                HadithCard(h)
+            }
+            // Ayın adının kökeni (2. analiz #125)
+            AppCard {
+                SectionTitle(L("calendar.monthOrigin.heading"))
+                Text(L("calendar.monthOrigin.items.${day.monthValue - 1}"), color = Theme.c.text, fontSize = 15.sp)
+                Text(L("calendar.monthOrigin.source"), color = Theme.c.muted, fontSize = 11.sp)
+            }
+            // Tarihte bugün (2. analiz #124): Wikidata (CC0)
+            val otd = OnThisDay.items(context, day)
+            if (otd.isNotEmpty()) AppCard {
+                SectionTitle(L("otd.h1"))
+                for (it in otd) {
+                    Text("${it.icon} ${it.year} · ${it.title}", color = Theme.c.text, fontSize = 15.sp)
+                    if (it.desc.isNotEmpty()) Text(it.desc, color = Theme.c.muted, fontSize = 12.sp)
+                }
+                Text("Wikidata (CC0)", color = Theme.c.muted, fontSize = 11.sp)
+            }
             Row(Modifier.fillMaxWidth()) {
                 TextButton(onClick = { iso = day.minusDays(1).toString() }) {
                     Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, null, tint = Theme.c.accent); Text(L("leaf.prev"), color = Theme.c.accent)
@@ -293,4 +320,106 @@ fun CalendarLeafScreen(onBack: () -> Unit) {
             }
         }
     }
+}
+
+/** Rumi tarih (2. analiz #120): Jülyen takvimi, yılbaşı 1 Mart, yıl = Jülyen yıl − 584 (Mart–Aralık) ya da − 585 */
+object Rumi {
+    val months = listOf("Kânûn-ı sânî", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül",
+        "Teşrîn-i evvel", "Teşrîn-i sânî", "Kânûn-ı evvel")
+
+    /** (gün, ay, Rumi yıl) */
+    fun parts(d: LocalDate): Triple<Int, Int, Int> {
+        val jdn = d.toEpochDay() + 2440588
+        val c = jdn + 32082
+        val dd = (4 * c + 3) / 1461
+        val e = c - 1461 * dd / 4
+        val mm = (5 * e + 2) / 153
+        val day = (e - (153 * mm + 2) / 5 + 1).toInt()
+        val month = (mm + 3 - 12 * (mm / 10)).toInt()
+        val year = (dd - 4800 + mm / 10).toInt()
+        return Triple(day, month, year - if (month >= 3) 584 else 585)
+    }
+
+    fun text(d: LocalDate): String { val (dy, m, y) = parts(d); return T("hijriConv.rumi", "$dy ${months[m - 1]} $y") }
+}
+
+/** Tarihte bugün (2. analiz #124): Wikidata (CC0) kayıtları, dile göre assets/otd-<dil>.json (gen-strings.mjs) */
+object OnThisDay {
+    data class Item(val year: Int, val kind: String, val name: String, val desc: String) {
+        val icon: String get() = when (kind) { "f" -> "🏛️"; "b" -> "🎂"; "d" -> "🕯️"; else -> "📜" }
+        val title: String get() = if (kind == "f") T("otd.foundedFmt", name) else name
+    }
+    private var cache: Pair<String, Map<String, List<Item>>>? = null
+
+    fun items(c: Context, d: LocalDate): List<Item> {
+        val lang = Strings.lang
+        if (cache?.first != lang) cache = lang to load(c, lang)
+        return cache?.second?.get("%02d-%02d".format(java.util.Locale.ROOT, d.monthValue, d.dayOfMonth)).orEmpty()
+    }
+
+    private fun load(c: Context, lang: String): Map<String, List<Item>> = runCatching {
+        val text = runCatching { c.assets.open("otd-$lang.json") }.getOrElse { c.assets.open("otd-en.json") }.bufferedReader().use { it.readText() }
+        val o = org.json.JSONObject(text)
+        o.keys().asSequence().associateWith { md ->
+            val a = o.getJSONArray(md)
+            (0 until a.length()).map { i -> val r = a.getJSONArray(i); Item(r.getInt(0), r.getString(1), r.getString(2), r.optString(3)) }
+        }
+    }.getOrDefault(emptyMap())
+}
+
+/**
+ * Esma kartı (2. analiz #85): ismin Arapçası büyük, çini desenli çerçevede (telefonda çizilir; lisanslı hat görseli
+ * kullanılmaz), okunuşu ve anlamı; "Dinle" telefonun kendi Arapça konuşma sesiyle (TextToSpeech) okur.
+ */
+@Composable
+fun EsmaCard(n: Esma.Name, onClose: () -> Unit) {
+    val context = LocalContext.current
+    var tts by remember { mutableStateOf<android.speech.tts.TextToSpeech?>(null) }
+    var noVoice by remember { mutableStateOf(false) }
+    androidx.compose.runtime.DisposableEffect(Unit) {
+        var engine: android.speech.tts.TextToSpeech? = null
+        engine = android.speech.tts.TextToSpeech(context) { ok ->
+            val r = if (ok == android.speech.tts.TextToSpeech.SUCCESS) engine?.setLanguage(java.util.Locale("ar")) else android.speech.tts.TextToSpeech.LANG_NOT_SUPPORTED
+            noVoice = r == null || r < 0
+        }
+        tts = engine
+        onDispose { engine.shutdown() }
+    }
+    androidx.compose.material3.AlertDialog(
+        onDismissRequest = onClose,
+        confirmButton = { androidx.compose.material3.TextButton(onClick = onClose) { Text(L("common.done")) } },
+        text = {
+            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(10.dp)) {
+                val accent = Theme.c.accent
+                val accent2 = Theme.c.accent2
+                androidx.compose.foundation.layout.Box(Modifier.fillMaxWidth().height(170.dp), contentAlignment = Alignment.Center) {
+                    androidx.compose.foundation.Canvas(Modifier.fillMaxSize()) {
+                        // Sekiz köşeli yıldız ve çift çerçeve
+                        val c = center
+                        val r = size.minDimension / 2 - 4
+                        for (k in 0 until 2) {
+                            val path = androidx.compose.ui.graphics.Path()
+                            for (i in 0 until 16) {
+                                val a = Math.PI / 8 * i - Math.PI / 2
+                                val rr = if (i % 2 == 0) r - k * 10 else (r - k * 10) * 0.82f
+                                val x = c.x + (rr * kotlin.math.cos(a)).toFloat()
+                                val y = c.y + (rr * kotlin.math.sin(a)).toFloat()
+                                if (i == 0) path.moveTo(x, y) else path.lineTo(x, y)
+                            }
+                            path.close()
+                            drawPath(path, if (k == 0) accent else accent2, style = androidx.compose.ui.graphics.drawscope.Stroke(width = if (k == 0) 3f else 1.5f))
+                        }
+                        drawCircle(accent.copy(alpha = 0.08f), r * 0.62f, c)
+                    }
+                    Text(n.ar, color = Theme.c.ink, fontSize = 40.sp, fontWeight = FontWeight.Bold, fontFamily = androidx.compose.ui.text.font.FontFamily.Serif)
+                }
+                if (Strings.lang != "ar" && n.read.isNotEmpty()) Text(n.read, color = Theme.c.text, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+                if (Strings.lang != "ar") Text(n.meaning, color = Theme.c.muted, fontSize = 15.sp, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
+                androidx.compose.material3.TextButton(onClick = { tts?.speak(n.ar, android.speech.tts.TextToSpeech.QUEUE_FLUSH, null, "esma-${n.no}") }, enabled = !noVoice) {
+                    Text("▶ " + L("esma.listen"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
+                }
+                Text(L(if (noVoice) "esma.noVoice" else "esma.voiceNote"), color = Theme.c.muted, fontSize = 12.sp, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
+            }
+        },
+    )
 }

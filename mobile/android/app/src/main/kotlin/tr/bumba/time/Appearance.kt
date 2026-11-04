@@ -1,5 +1,8 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.border
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -36,6 +39,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material3.Icon
+import androidx.compose.material.icons.filled.Schedule
+import androidx.compose.material.icons.filled.Widgets
+import androidx.compose.material.icons.Icons
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
@@ -107,7 +116,7 @@ object FsLook {
     }
 
     fun saveText(v: String) { text = v.take(60); Prefs.store.edit().putString("fs.text", text).apply() }
-    fun saveScale(v: Float) { scale = v.coerceIn(0.5f, 1f); Prefs.store.edit().putFloat("fs.scale", scale).apply() }
+    fun saveScale(v: Float) { scale = v.coerceIn(0.5f, 1.3f); Prefs.store.edit().putFloat("fs.scale", scale).apply() }
     fun saveDim(v: Float) { dim = v.coerceIn(0f, 1f); Prefs.store.edit().putFloat("fs.dim", dim).apply() }
     fun saveLock(v: Boolean) { lock = v; Prefs.store.edit().putBoolean("fs.lock", v).apply() }
     fun saveEvery(v: Int) { slideEvery = v; Prefs.store.edit().putInt("fsSlideEvery", v).apply() }
@@ -197,7 +206,7 @@ fun PhotoBackground(img: ImageBitmap, modifier: Modifier = Modifier) {
 
 /** Ayarlar › Saat görünümü: yazı tipi (canlı örnek) ve tam ekran fotoğrafı */
 @Composable
-fun AppearanceScreen() {
+fun AppearanceScreen(onRoute: (String) -> Unit = {}) {
     val context = LocalContext.current
     val pick = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null && FullscreenPhoto.save(context, uri)) Prefs.saveFsBg(FullscreenBackground.PHOTO.id)
@@ -207,6 +216,22 @@ fun AppearanceScreen() {
     }
     val now = rememberNow()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        // Kadran koleksiyonu (2. analiz #1)
+        AppCard(padding = 4) {
+            Row(Modifier.fillMaxWidth().clickable { onRoute("dials") }.padding(horizontal = 12.dp, vertical = 14.dp), verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Filled.Schedule, null, tint = Theme.c.accent)
+                Spacer(Modifier.width(14.dp))
+                Text(L("dial.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                Text(DialFace.current.title, color = Theme.c.muted, fontSize = 14.sp)
+            }
+            // Widget galerisi (2. analiz #166)
+            Row(Modifier.fillMaxWidth().clickable { onRoute("widgets") }.padding(horizontal = 12.dp, vertical = 14.dp), verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Filled.Widgets, null, tint = Theme.c.accent)
+                Spacer(Modifier.width(14.dp))
+                Text(L("widgets.gallery"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                Text("›", color = Theme.c.muted, fontSize = 18.sp)
+            }
+        }
         AppCard {
             SectionTitle(L("look.font"))
             val f = ClockFont.current
@@ -219,6 +244,73 @@ fun AppearanceScreen() {
                 Row(Modifier.fillMaxWidth().clickable { Prefs.saveClockFont(c.id) }.padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(c == f, { Prefs.saveClockFont(c.id) }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
                     Text(c.title, color = Theme.c.text, fontSize = 16.sp, fontFamily = c.family, fontWeight = c.weight)
+                }
+            }
+            // Rakam rengi ve dış hatlı rakamlar (2. analiz #24): dijital saatlerde
+            Text(L("look.digitColor"), color = Theme.c.muted, fontSize = 13.sp)
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                Swatch(ClockLook.digitColor == "theme", Theme.c.ink, L("wall.none")) { ClockLook.saveDigitColor("theme") }
+                for ((id, rgb) in ClockLook.DIGIT_COLORS) Swatch(ClockLook.digitColor == id, androidx.compose.ui.graphics.Color(0xFF000000 or rgb), L("color.$id")) {
+                    ClockLook.saveDigitColor(id)
+                }
+            }
+            LookSwitch(L("look.outline"), ClockLook.outline) { ClockLook.saveOutline(it) }
+        }
+        // Dijital rakam görünümü (2. analiz #9): LED, LCD, nokta matris, silindir, dikey
+        AppCard {
+            SectionTitle(L("digital.style"))
+            var style by remember { mutableStateOf(DigitalStyle.current) }
+            val t = now.atZone(java.time.ZoneId.systemDefault())
+            androidx.compose.foundation.layout.Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                Ltr {
+                    if (style == "vertical") VerticalDigits(Fmt.time(t).substringBefore(':'), "%02d".format(t.minute), "%02d".format(t.second), 150.dp, ClockLook.digitInk(Theme.c), ClockFont.current.family)
+                    else if (style == "plain") Text(Fmt.time(t, true), color = ClockLook.digitInk(Theme.c), fontSize = 48.sp, style = Tnum)
+                    else StyledDigits(Fmt.time(t, true).filter { it.isDigit() || it == ':' }, style, 64.dp, 320.dp, ClockLook.digitInk(Theme.c))
+                }
+            }
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                for (id in DigitalStyle.ALL) {
+                    val on = id == style
+                    Text(L("digital.style.$id"),
+                        Modifier.background(if (on) Theme.c.accent else Theme.c.surface2, RoundedCornerShape(50)).clickable { style = id; DigitalStyle.save(id) }
+                            .padding(horizontal = 14.dp, vertical = 8.dp),
+                        color = if (on) androidx.compose.ui.graphics.Color.White else Theme.c.text, fontSize = 14.sp)
+                }
+            }
+            Text(L("digital.styleNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+        // Yatayda saatin yanında (2. analiz #169)
+        AppCard {
+            SectionTitle(L("fs.duo"))
+            var duo by remember { mutableStateOf(FsDuo.current) }
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                for (id in FsDuo.ALL) {
+                    val on = id == duo
+                    Text(L("fs.duo.$id"),
+                        Modifier.background(if (on) Theme.c.accent else Theme.c.surface2, RoundedCornerShape(50)).clickable { duo = id; FsDuo.save(id) }
+                            .padding(horizontal = 14.dp, vertical = 8.dp),
+                        color = if (on) androidx.compose.ui.graphics.Color.White else Theme.c.text, fontSize = 14.sp)
+                }
+            }
+            Text(L("fs.duoNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+        // Çevirmeli saat (2. analiz #20): iki rakam tek kart, köşede küçük saniye, kart çizgisi, kart rengi
+        AppCard {
+            SectionTitle(L("stage.models.flip"))
+            var pair by remember { mutableStateOf(FlipLook.pair) }
+            var small by remember { mutableStateOf(FlipLook.smallSec) }
+            var hinge by remember { mutableStateOf(FlipLook.hinge) }
+            var card by remember { mutableStateOf(FlipLook.card) }
+            LookSwitch(L("flip.pair"), pair) { pair = it; Prefs.store.edit().putBoolean(FlipLook.PAIR_KEY, it).apply() }
+            LookSwitch(L("flip.smallSec"), small) { small = it; Prefs.store.edit().putBoolean(FlipLook.SMALL_SEC_KEY, it).apply() }
+            LookSwitch(L("flip.hinge"), hinge) { hinge = it; Prefs.store.edit().putBoolean(FlipLook.HINGE_KEY, it).apply() }
+            Text(L("flip.card"), color = Theme.c.muted, fontSize = 13.sp)
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                for (id in FlipLook.CARDS.keys) {
+                    val (bgc, _) = FlipLook.colors(id, Theme.c)
+                    Swatch(card == id, bgc, if (id == "theme") L("wall.none") else L("color.$id")) {
+                        card = id; Prefs.store.edit().putString(FlipLook.CARD_KEY, id).apply()
+                    }
                 }
             }
         }
@@ -252,12 +344,44 @@ fun AppearanceScreen() {
                     FullscreenPhoto.remove(context)
                     if (bg == FullscreenBackground.PHOTO && FsLook.slides == 0) Prefs.saveFsBg(FullscreenBackground.PLAIN.id)
                 }) {
-                    Text(L("look.photo.remove"), color = Color(0xFFD32F2F))
+                    Text(L("look.photo.remove"), color = Theme.c.err)
                 }
             }
             Text(L("look.photo.note") + " " + L("look.bg.note") + " " + L("look.bg.weatherNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
         FloatingClockCard()
+        // Saniye: ibrenin hareketi, dijitalde küçük saniye, tık sesi (2. analiz #10, #21)
+        AppCard {
+            SectionTitle(L("look.seconds"))
+            Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                AnalogClock(now.atZone(java.time.ZoneId.systemDefault()), Modifier.height(120.dp))
+            }
+            for (m in ClockLook.MOTIONS) {
+                Row(Modifier.fillMaxWidth().clickable { ClockLook.saveMotion(m) }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(ClockLook.motion == m, { ClockLook.saveMotion(m) }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
+                    Text(L("look.motion.$m"), color = Theme.c.text, fontSize = 15.sp)
+                }
+            }
+            LookSwitch(L("look.secSmall"), ClockLook.secSmall) { ClockLook.saveSecSmall(it) }
+            LookSwitch(L("look.tickSound"), ClockLook.tickSound) { ClockLook.saveTickSound(it) }
+            Text(L("look.secondsNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+        // İkili saat dilimi (21. model) için ikinci şehir (2. analiz #12)
+        AppCard {
+            SectionTitle(L("dual.model"))
+            var open by remember { mutableStateOf(false) }
+            Box {
+                TextButton(onClick = { open = true }) {
+                    Text(L("dual.city") + ": " + (ClockLook.dual()?.displayName ?: ""), color = Theme.c.accent)
+                }
+                androidx.compose.material3.DropdownMenu(open, { open = false }) {
+                    for (c in City.all) androidx.compose.material3.DropdownMenuItem(text = { Text(c.displayName) }, onClick = {
+                        ClockLook.saveDualCity(c.key); open = false
+                    })
+                }
+            }
+            Text(L("dual.note"), color = Theme.c.muted, fontSize = 12.sp)
+        }
         // Fotoğraf slaytı: ana fotoğrafa ek en çok 10 fotoğraf sırayla
         AppCard {
             SectionTitle(L("look.slideshow"))
@@ -279,7 +403,7 @@ fun AppearanceScreen() {
                 TextButton(onClick = {
                     FsLook.clearSlides(context)
                     if (FullscreenBackground.current == FullscreenBackground.PHOTO && Prefs.fsPhoto == 0L) Prefs.saveFsBg(FullscreenBackground.PLAIN.id)
-                }) { Text(L("look.slideClear"), color = Color(0xFFD32F2F)) }
+                }) { Text(L("look.slideClear"), color = Theme.c.err) }
             }
             Text(L("look.slideNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
@@ -288,27 +412,75 @@ fun AppearanceScreen() {
             SectionTitle(L("look.text"))
             androidx.compose.material3.OutlinedTextField(FsLook.text, { FsLook.saveText(it) }, Modifier.fillMaxWidth(), singleLine = true,
                 placeholder = { Text(L("look.textPlaceholder")) })
-            Text(L("look.textNote"), color = Theme.c.muted, fontSize = 12.sp)
+            LookSwitch(L("look.banner"), ClockLook.banner) { ClockLook.saveBanner(it) }
+            Text(L("look.textNote") + " " + L("look.bannerNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
         AppCard {
             SectionTitle(L("look.size"))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                androidx.compose.material3.Slider(FsLook.scale, { FsLook.saveScale(it) }, Modifier.weight(1f), valueRange = 0.5f..1f, steps = 9,
+                androidx.compose.material3.Slider(FsLook.scale, { FsLook.saveScale(it) }, Modifier.weight(1f), valueRange = 0.5f..1.3f, steps = 15,
                     colors = androidx.compose.material3.SliderDefaults.colors(thumbColor = Theme.c.accent, activeTrackColor = Theme.c.accent))
                 Text(" " + Fmt.percent(Math.round(FsLook.scale * 100)), color = Theme.c.muted, style = Tnum)
             }
-            Text(L("look.fsNote"), color = Theme.c.muted, fontSize = 12.sp)
+            Text(L("look.fsNote") + " " + L("fs.toolsNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+        // Hava neyse ekran öyle (2. analiz #193): saat ekranının zemini ve hava sekmesinin üst kartı
+        AppCard {
+            SectionTitle(L("look.weatherAnim"))
+            var clockWx by remember { mutableStateOf(Prefs.store.getBoolean(WeatherScene.CLOCK_KEY, false)) }
+            var tabWx by remember { mutableStateOf(Prefs.store.getBoolean(WeatherScene.TAB_KEY, true)) }
+            LookSwitch(L("look.weatherClock"), clockWx) { clockWx = it; Prefs.store.edit().putBoolean(WeatherScene.CLOCK_KEY, it).apply() }
+            LookSwitch(L("look.weatherTab"), tabWx) { tabWx = it; Prefs.store.edit().putBoolean(WeatherScene.TAB_KEY, it).apply() }
+            Text(L("look.weatherAnimNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
         // Gece / yatak başı modu (tam ekran saat)
         AppCard {
             SectionTitle(L("night.title"))
-            for (m in NightMode.CHOICES) {
+            val ctx = androidx.compose.ui.platform.LocalContext.current
+            for (m in NightMode.choices(remember { hasLightSensor(ctx) })) {
                 Row(Modifier.fillMaxWidth().clickable { Prefs.saveNightMode(m) }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(Prefs.nightMode == m, { Prefs.saveNightMode(m) }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
                     Text(L("night.$m"), color = Theme.c.text, fontSize = 15.sp)
                 }
             }
+            // Belirli saatler (2. analiz #11): başlangıç ve bitiş, yarım saatlik adımlarla
+            if (Prefs.nightMode == "schedule") {
+                var from by remember { mutableStateOf(NightMode.from) }
+                var to by remember { mutableStateOf(NightMode.to) }
+                val halfHours = (0 until 48).map { it * 30 }
+                fun hm(m: Int) = Fmt.time(java.time.LocalDate.now().atTime(m / 60, m % 60).atZone(java.time.ZoneId.systemDefault()))
+                ChoiceRow(L("night.from"), hm(from), halfHours.map { it to hm(it) }) { from = it; Prefs.store.edit().putInt(NightMode.FROM_KEY, it).apply() }
+                ChoiceRow(L("night.to"), hm(to), halfHours.map { it to hm(it) }) { to = it; Prefs.store.edit().putInt(NightMode.TO_KEY, it).apply() }
+            }
+            // Gece yazı rengi (2. analiz #189): 7 renk, siyah zemin üstünde kısık
+            Text(L("night.color"), color = Theme.c.muted, fontSize = 13.sp)
+            var nc by remember { mutableStateOf(NightMode.colorId) }
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                for ((id, rgb) in NightMode.COLORS) Box(
+                    Modifier.size(34.dp).border(if (id == nc) 3.dp else 0.dp, Theme.c.text, CircleShape).padding(4.dp)
+                        .background(androidx.compose.ui.graphics.Color.Black, CircleShape).padding(5.dp)
+                        .background(androidx.compose.ui.graphics.Color(0xFF000000 or rgb), CircleShape)
+                        .clickable(onClickLabel = L("color.$id")) { nc = id; Prefs.store.edit().putString(NightMode.COLOR_KEY, id).apply() },
+                )
+            }
             Text(L("night.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
+    }
+}
+
+/** Renk seçimi dairesi (seçiliyse kalın kenar) */
+@Composable
+private fun Swatch(selected: Boolean, color: androidx.compose.ui.graphics.Color, label: String, onClick: () -> Unit) {
+    Box(
+        Modifier.size(34.dp).border(if (selected) 3.dp else 1.dp, if (selected) Theme.c.text else Theme.c.border, CircleShape).padding(5.dp)
+            .background(color, CircleShape).clickable(onClickLabel = label, onClick = onClick),
+    )
+}
+
+@Composable
+private fun LookSwitch(title: String, on: Boolean, onChange: (Boolean) -> Unit) {
+    Row(Modifier.fillMaxWidth().clickable { onChange(!on) }.padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+        androidx.compose.material3.Switch(on, onChange, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
 }

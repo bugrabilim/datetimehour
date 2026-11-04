@@ -116,20 +116,22 @@ fun Row2(title: String, value: String, modifier: Modifier = Modifier, bold: Bool
     }
 }
 
-/** Alt sayfa başlığı: geri oku ve başlık */
-@OptIn(ExperimentalMaterial3Api::class)
+/**
+ * Alt sayfa başlığı: üstte geri oku ve eylemler, altında büyük başlık (28 sp; bütün sayfalarda aynı hiyerarşi,
+ * 2. analiz #98). Zemin saydam: atmosfer temasında renk geçişi bozulmaz.
+ */
 @Composable
 fun SubBar(title: String, onBack: (() -> Unit)? = null, actions: @Composable () -> Unit = {}) {
-    TopAppBar(
-        title = { Text(title, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis) },
-        navigationIcon = {
+    Column(Modifier.fillMaxWidth()) {
+        Row(Modifier.fillMaxWidth().heightIn(min = 48.dp), verticalAlignment = Alignment.CenterVertically) {
             if (onBack != null) IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
-            }
-        },
-        actions = { actions() },
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = Theme.c.bg, titleContentColor = Theme.c.text),
-    )
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null, tint = Theme.c.accent)
+            } else Spacer(Modifier.width(4.dp))
+            Spacer(Modifier.weight(1f))
+            actions()
+        }
+        PageTitle(title, Modifier.padding(start = 16.dp, end = 16.dp, bottom = 6.dp))
+    }
 }
 
 /**
@@ -156,6 +158,11 @@ fun PlacePicker(modifier: Modifier = Modifier, size: TextUnit = 17.sp) {
     val permission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { ok ->
         if (ok) locate() else failed = true
     }
+    var locPrimer by remember { mutableStateOf(false) }
+    if (locPrimer) PermissionPrimer(PermissionKind.LOCATION, onAllow = {
+        locPrimer = false
+        permission.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+    }, onNotNow = { locPrimer = false })
 
     Row(
         modifier.clickable { open = true }.padding(vertical = 6.dp),
@@ -207,7 +214,8 @@ fun PlacePicker(modifier: Modifier = Modifier, size: TextUnit = 17.sp) {
                                             open = false
                                             val granted = ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) ==
                                                 PackageManager.PERMISSION_GRANTED
-                                            if (granted) locate() else permission.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+                                            // İlk kez soruluyorsa önce kısa açıklama (2. analiz #80)
+                                            if (granted) locate() else locPrimer = true
                                         }.padding(vertical = 12.dp),
                                         verticalAlignment = Alignment.CenterVertically,
                                     ) {
@@ -221,7 +229,12 @@ fun PlacePicker(modifier: Modifier = Modifier, size: TextUnit = 17.sp) {
                                         Text(L("place.saved"), Modifier.padding(top = 10.dp), color = Theme.c.muted, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
                                         for (id in Prefs.savedPlaces) {
                                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                                Box(Modifier.weight(1f)) { PlaceRow("★ " + AppPlace.byId(id).name, id == place.id) { pick(id) } }
+                                                val sp = AppPlace.byId(id)
+                                                Box(Modifier.weight(1f)) { PlaceRow("★ " + sp.name, id == place.id) { pick(id) } }
+                                                // Anlık sıcaklık (2. analiz #115; aynı yer 15 dk önbellekte)
+                                                if (Features.isOn(Tab.WEATHER)) rememberWeather(sp.lat, sp.lon)?.let { w ->
+                                                    Text(WeatherCode.of(w.current.code).icon(w.current.isDay) + " " + Units.temp(w.current.temp), color = Theme.c.text, fontSize = 14.sp)
+                                                }
                                                 IconButton(onClick = { Prefs.saveSavedPlaces(Prefs.savedPlaces - id) }) {
                                                     Icon(Icons.Filled.Close, L("place.remove"), tint = Theme.c.muted, modifier = Modifier.size(18.dp))
                                                 }
@@ -297,8 +310,11 @@ fun SavedPlaceChips(modifier: Modifier = Modifier) {
     Row(modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         for (id in saved) {
             val on = id == current
+            val sp = AppPlace.byId(id)
+            // Anlık sıcaklık (2. analiz #115)
+            val wx = if (Features.isOn(Tab.WEATHER)) rememberWeather(sp.lat, sp.lon) else null
             Text(
-                AppPlace.byId(id).name,
+                sp.name + (wx?.let { "  " + Units.temp(it.current.temp) } ?: ""),
                 Modifier.clip(RoundedCornerShape(50)).background(if (on) Theme.c.accentSoft else Theme.c.surface2)
                     .clickable { Prefs.saveProvince(id) }.padding(horizontal = 14.dp, vertical = 8.dp),
                 color = if (on) Theme.c.accent else Theme.c.text, fontSize = 14.sp, fontWeight = if (on) FontWeight.SemiBold else FontWeight.Normal,
