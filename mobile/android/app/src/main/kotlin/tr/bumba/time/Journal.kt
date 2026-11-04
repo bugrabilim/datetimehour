@@ -79,13 +79,13 @@ fun JournalQuick(entry: JournalEntry, showSleep: Boolean = true, onChange: (Jour
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(L("journal.mood"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
         Row(Modifier.fillMaxWidth()) {
-            for (v in 1..5) Text(
-                Journal.moods[v - 1],
+            // Ruh hâli kendi çizgi yüzlerimizle (2. analiz #97)
+            for (v in 1..5) androidx.compose.foundation.layout.Box(
                 Modifier.weight(1f).alpha(if (entry.m == 0 || entry.m == v) 1f else 0.35f)
                     .clickable { onChange(entry.copy(m = if (entry.m == v) 0 else v)) }
                     .semantics { contentDescription = L("journal.level.$v"); selected = entry.m == v },
-                fontSize = 32.sp, textAlign = TextAlign.Center,
-            )
+                contentAlignment = androidx.compose.ui.Alignment.Center,
+            ) { LineIcon(LineIconSets.MOODS[v - 1], 38.dp) }
         }
         if (showSleep) {
             Text(L("journal.sleep"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)

@@ -258,7 +258,7 @@ struct SeasonsView: View {
         ScrollView {
             VStack(spacing: 16) {
                 hero(current: current, next: next, now: now, tz: tr)
-                card(L("kids.why.title"), emoji: "🌍") {
+                card(L("kids.why.title"), emoji: "globe") {
                     OrbitDiagram().frame(height: 230)
                     Text(L("kids.why.text"))
                     Text(L("kids.why.myth"))
@@ -267,15 +267,15 @@ struct SeasonsView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(Theme.accentSoft, in: RoundedRectangle(cornerRadius: 12))
                 }
-                card(L("kids.light.title"), emoji: "🔦") {
+                card(L("kids.light.title"), emoji: "flashlight") {
                     LightAngleDiagram().frame(height: 170)
                     Text(L("kids.light.text"))
                 }
-                card(L("kids.dates.title"), emoji: "📅") {
+                card(L("kids.dates.title"), emoji: "calendar") {
                     SeasonYearBars(year: year)
                     Text(L("kids.dates.text"))
                 }
-                card(L("kids.south.title"), emoji: "🏖️") {
+                card(L("kids.south.title"), emoji: "beach") {
                     HemispheresDiagram(north: current.0).frame(height: 150)
                     Text(L("kids.south.text"))
                 }
@@ -322,7 +322,7 @@ struct SeasonsView: View {
         let color = Self.seasonColor[current.0]
         let nextName = L("nature.seasons.\(Self.seasonKeys[next.0])")
         return VStack(spacing: 10) {
-            Text(Self.seasonEmoji[current.0]).font(.system(size: 72))
+            LineIcon(name: LineIcons.seasons[current.0], size: 76)
             Text(T("nature.current", L("nature.seasons.\(Self.seasonKeys[current.0])")))
                 .font(.title.weight(.bold))
                 .multilineTextAlignment(.center)
@@ -360,7 +360,8 @@ struct SeasonsView: View {
     private func card<Content: View>(_ title: String, emoji: String, @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
-                Text(emoji).font(.title2)
+                // Kendi çizgi simgelerimiz (2. analiz #97)
+                LineIcon(name: emoji, size: 30)
                 Text(title).font(.title3.weight(.bold)).foregroundStyle(Theme.text)
             }
             content()

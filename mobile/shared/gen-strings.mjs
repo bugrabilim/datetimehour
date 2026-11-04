@@ -277,6 +277,10 @@ const wholJson = (() => {
 const skyEventsJson = JSON.stringify(skyEvents(ROOT, 2026, 2031)) + "\n";
 const conSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/constellations.json"), "utf8"));
 const constellationsJson = JSON.stringify(conSrc.con) + "\n";
+// Çizgi simge takımı (2. analiz #97)
+const iconsSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "mobile/shared/icons/icons.json"), "utf8"));
+delete iconsSrc._note;
+const iconsJson = JSON.stringify(iconsSrc) + "\n";
 /* NASA SVS CGI Moon Kit dokusu (kamu malı; 2. analiz #103): ikili dosya, uygulamalara kopyalanır */
 const moonJpg = fs.readFileSync(path.join(ROOT, "src/assets/moon.jpg"));
 
@@ -286,6 +290,8 @@ const files = {
   "mobile/android/app/src/main/assets/sky-events.json": skyEventsJson,
   "mobile/ios/App/Resources/constellations.json": constellationsJson,
   "mobile/android/app/src/main/assets/constellations.json": constellationsJson,
+  "mobile/ios/App/Resources/icons.json": iconsJson,
+  "mobile/android/app/src/main/assets/icons.json": iconsJson,
   "mobile/ios/App/Resources/moon.jpg": moonJpg,
   "mobile/android/app/src/main/assets/moon.jpg": moonJpg,
   "mobile/ios/App/Resources/world-holidays.json": wholJson,

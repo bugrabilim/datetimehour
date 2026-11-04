@@ -70,10 +70,11 @@ fun SeasonsScreen() {
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         Hero(current, next, now, place)
-        Info("🌍", "kids.why.title", "kids.why.text", "kids.why.myth")
-        Info("🔦", "kids.light.title", "kids.light.text")
-        Info("📅", "kids.dates.title", "kids.dates.text")
-        Info("🏖️", "kids.south.title", "kids.south.text")
+        // Kendi çizgi simgelerimiz (2. analiz #97)
+        Info("globe", "kids.why.title", "kids.why.text", "kids.why.myth")
+        Info("flashlight", "kids.light.title", "kids.light.text")
+        Info("calendar", "kids.dates.title", "kids.dates.text")
+        Info("beach", "kids.south.title", "kids.south.text")
         AppCard {
             Text("💡 " + L("kids.facts.title"), color = Theme.c.text, fontSize = 19.sp, fontWeight = FontWeight.Bold)
             for (i in 1..5) Text("• " + L("kids.fact$i"), color = Theme.c.text, fontSize = 15.sp)
@@ -118,7 +119,7 @@ private fun Hero(current: Pair<Int, Instant>, next: Pair<Int, Instant>, now: Ins
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        Text(SEASON_EMOJI[current.first], fontSize = 64.sp)
+        LineIcon(LineIconSets.SEASONS[current.first], 76.dp)
         Text(T("nature.current", L("nature.seasons.${SEASON_KEYS[current.first]}")), color = Theme.c.text, fontSize = 28.sp,
             fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
         Text(L("kids.progress"), color = Theme.c.muted, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
@@ -135,9 +136,12 @@ private fun Hero(current: Pair<Int, Instant>, next: Pair<Int, Instant>, now: Ins
 }
 
 @Composable
-private fun Info(emoji: String, title: String, vararg texts: String) {
+private fun Info(icon: String, title: String, vararg texts: String) {
     AppCard {
-        Text("$emoji ${L(title)}", color = Theme.c.text, fontSize = 19.sp, fontWeight = FontWeight.Bold)
+        androidx.compose.foundation.layout.Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            LineIcon(icon, 30.dp)
+            Text(L(title), color = Theme.c.text, fontSize = 19.sp, fontWeight = FontWeight.Bold)
+        }
         texts.forEachIndexed { i, t ->
             Text(
                 L(t), color = Theme.c.text, fontSize = 15.sp,

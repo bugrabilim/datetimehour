@@ -49,9 +49,11 @@ struct JournalQuick: View {
                     Button {
                         entry.m = entry.m == v ? 0 : v
                     } label: {
-                        Text(Journal.moods[v - 1]).font(.system(size: 32))
+                        // Ruh hâli kendi çizgi yüzlerimizle (2. analiz #97)
+                        LineIcon(name: LineIcons.moods[v - 1], size: 38)
                             .opacity(entry.m == 0 || entry.m == v ? 1 : 0.35)
                             .frame(maxWidth: .infinity)
+                            .accessibilityLabel(L("journal.level.\(v)"))
                     }
                     .buttonStyle(.plain)
                     .accessibilityLabel(L("journal.level.\(v)"))
