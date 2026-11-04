@@ -119,6 +119,8 @@ def resubmit(aid):
 if __name__ == "__main__":
     action = sys.argv[1] if len(sys.argv) > 1 else "durum"
     aid = app_id()
+    # Uygulamanın Apple kimliği (herkese açık; mağaza bağlantısı apps.apple.com/app/id<kimlik>)
+    print(f"Uygulama Apple kimliği: {aid} · https://apps.apple.com/app/id{aid}")
     if action == "yeniden-gonder":
         resubmit(aid)
         print("--- güncel durum ---")
