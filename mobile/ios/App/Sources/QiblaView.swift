@@ -173,6 +173,15 @@ struct QiblaView: View {
                         .offset(y: -104)
                         .rotationEffect(.degrees(Double(i) * 90))
                 }
+                // Derece rakamları (4 Kasım 2026, sahibin isteği): yön harfleri dışındaki her 30°'de küçük, Latin rakamla
+                ForEach([30, 60, 120, 150, 210, 240, 300, 330], id: \.self) { d in
+                    Text(verbatim: String(d))
+                        .font(.system(size: 10, weight: .medium).monospacedDigit())
+                        .foregroundStyle(look.faceInk.opacity(0.75))
+                        .rotationEffect(.degrees(heading - Double(d)))
+                        .offset(y: -108)
+                        .rotationEffect(.degrees(Double(d)))
+                }
                 Text("🕋")
                     .font(.system(size: 30))
                     .rotationEffect(.degrees(heading - bearing))
@@ -277,6 +286,11 @@ struct NearbyMosquesView: View {
     @State private var failed = false
     @State private var camera: MapCameraPosition = .automatic
     @State private var favs = QiblaFavs.load()
+    /// Harita tam ekran (4 Kasım 2026, sahibin isteği: büyütülebilsin)
+    @State private var bigMap = false
+    /// Not düzenlenen favori ve yazılan metin
+    @State private var noteFav: QiblaFavs.Fav?
+    @State private var noteText = ""
 
     var body: some View {
         List {
@@ -286,7 +300,12 @@ struct NearbyMosquesView: View {
                         HStack {
                             Button { QiblaFavs.open(f) } label: {
                                 HStack {
-                                    Text(f.n).foregroundStyle(Theme.text)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(f.n).foregroundStyle(Theme.text)
+                                        if let t = f.t {
+                                            Text(t).font(.caption).foregroundStyle(Theme.muted).lineLimit(3)
+                                        }
+                                    }
                                     Spacer()
                                     Text(distanceText(CLLocation(latitude: place.lat, longitude: place.lon)
                                         .distance(from: CLLocation(latitude: f.lat, longitude: f.lon)) / 1000))
@@ -294,23 +313,36 @@ struct NearbyMosquesView: View {
                                 }
                             }
                             .buttonStyle(.borderless)
+                            Button {
+                                noteText = f.t ?? ""
+                                noteFav = f
+                            } label: {
+                                Image(systemName: f.t == nil ? "square.and.pencil" : "note.text").foregroundStyle(Theme.accent)
+                            }
+                            .buttonStyle(.borderless)
+                            .accessibilityLabel(L("qibla.noteAdd"))
                             starButton(name: f.n, lat: f.lat, lon: f.lon)
                         }
                     }
+                } footer: {
+                    Text(L("qibla.noteNote"))
                 }
             }
             if let center {
                 Section {
-                    Map(position: $camera) {
-                        UserAnnotation()
-                        if usedPlace { Marker(place.name, systemImage: "mappin", coordinate: center).tint(.gray) }
-                        ForEach(mosques) { m in
-                            Marker(m.name, systemImage: "building.columns.fill", coordinate: m.item.placemark.coordinate)
-                                .tint(Theme.accent)
+                    mosqueMap(center)
+                        .frame(height: 260)
+                        .overlay(alignment: .topTrailing) {
+                            Button { bigMap = true } label: {
+                                Image(systemName: "arrow.up.left.and.arrow.down.right")
+                                    .font(.subheadline.weight(.semibold))
+                                    .padding(9)
+                                    .background(.regularMaterial, in: Circle())
+                            }
+                            .padding(10)
+                            .accessibilityLabel(L("qibla.mapLarge"))
                         }
-                    }
-                    .frame(height: 260)
-                    .listRowInsets(EdgeInsets())
+                        .listRowInsets(EdgeInsets())
                 } footer: {
                     if usedPlace { Text(T("qibla.mosquesNear", place.name)) }
                 }
@@ -355,6 +387,50 @@ struct NearbyMosquesView: View {
         .navigationTitle(L("qibla.mosques"))
         .navigationBarTitleDisplayMode(.large)
         .task { await load() }
+        .fullScreenCover(isPresented: $bigMap) {
+            if let center {
+                mosqueMap(center)
+                    .ignoresSafeArea(edges: .bottom)
+                    .overlay(alignment: .topTrailing) {
+                        Button { bigMap = false } label: {
+                            Image(systemName: "xmark")
+                                .font(.headline)
+                                .padding(12)
+                                .background(.regularMaterial, in: Circle())
+                        }
+                        .padding(16)
+                        .accessibilityLabel(L("common.close"))
+                    }
+            }
+        }
+        .alert(L("qibla.noteAdd"), isPresented: Binding(get: { noteFav != nil }, set: { if !$0 { noteFav = nil } })) {
+            TextField(L("qibla.note"), text: $noteText, axis: .vertical)
+            Button(L("common.save")) {
+                if let f = noteFav { QiblaFavs.setNote(f, noteText) }
+                favs = QiblaFavs.load()
+                noteFav = nil
+            }
+            Button(L("common.cancel"), role: .cancel) { noteFav = nil }
+        } message: {
+            Text(noteFav?.n ?? "")
+        }
+    }
+
+    /// Camiler haritası: liste içinde 260 nokta, tam ekranda bütün ekran; yakınlaştırma ve kaydırma açık
+    private func mosqueMap(_ center: CLLocationCoordinate2D) -> some View {
+        Map(position: $camera) {
+            UserAnnotation()
+            if usedPlace { Marker(place.name, systemImage: "mappin", coordinate: center).tint(.gray) }
+            ForEach(mosques) { m in
+                Marker(m.name, systemImage: "building.columns.fill", coordinate: m.item.placemark.coordinate)
+                    .tint(Theme.accent)
+            }
+            ForEach(favs, id: \.self) { f in
+                Marker(f.n, systemImage: "star.fill", coordinate: CLLocationCoordinate2D(latitude: f.lat, longitude: f.lon))
+                    .tint(.yellow)
+            }
+        }
+        .mapControls { MapCompass(); MapScaleView() }
     }
 
     private func starButton(name: String, lat: Double, lon: Double) -> some View {

@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">Вверх–вниз</string>
     <string name="wallpaper_remove">Удалить</string>
     <string name="wallpaper_privacy">Снимок экрана и вырезанные части хранятся только на этом iPhone, никуда не отправляются и не синхронизируются с iCloud.</string>
+    <string name="common_save">Сохранить</string>
+    <string name="qibla_note">Ваша заметка</string>
+    <string name="qibla_noteAdd">Добавить заметку</string>
+    <string name="qibla_noteNote">Заметки хранятся только на этом телефоне и никому не передаются.</string>
+    <string name="qibla_mapLarge">Увеличить карту</string>
+    <string name="dua_listenAr">Слушать на арабском</string>
+    <string name="dua_listenMean">Слушать перевод</string>
+    <string name="dua_stop">Остановить</string>
+    <string name="dua_voiceNote">Чтение выполняется синтезатором речи телефона, это не запись человеческого голоса. Если арабский голос не установлен, его можно загрузить в настройках телефона.</string>
     <string name="app_name">Время и дата</string>
 </resources>

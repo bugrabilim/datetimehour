@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">Cima–baixo</string>
     <string name="wallpaper_remove">Remover</string>
     <string name="wallpaper_privacy">A captura e os recortes ficam só neste iPhone, não são enviados a lugar nenhum e não são sincronizados com o iCloud.</string>
+    <string name="common_save">Salvar</string>
+    <string name="qibla_note">Sua nota</string>
+    <string name="qibla_noteAdd">Adicionar nota</string>
+    <string name="qibla_noteNote">As notas ficam apenas neste celular e não são compartilhadas com ninguém.</string>
+    <string name="qibla_mapLarge">Ampliar mapa</string>
+    <string name="dua_listenAr">Ouvir em árabe</string>
+    <string name="dua_listenMean">Ouvir o significado</string>
+    <string name="dua_stop">Parar</string>
+    <string name="dua_voiceNote">A leitura usa a voz sintética do seu celular; não é uma gravação humana. Se não houver voz em árabe instalada, você pode baixá-la nos ajustes do celular.</string>
     <string name="app_name">Hora e Data</string>
 </resources>

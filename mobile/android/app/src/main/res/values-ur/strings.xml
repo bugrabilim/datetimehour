@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">اوپر–نیچے</string>
     <string name="wallpaper_remove">ہٹائیں</string>
     <string name="wallpaper_privacy">اسکرین شاٹ اور کٹے ہوئے حصے صرف اسی فون پر رہتے ہیں، کہیں نہیں بھیجے جاتے اور iCloud سے ہم آہنگ نہیں ہوتے۔</string>
+    <string name="common_save">محفوظ کریں</string>
+    <string name="qibla_note">آپ کا نوٹ</string>
+    <string name="qibla_noteAdd">نوٹ شامل کریں</string>
+    <string name="qibla_noteNote">نوٹس صرف اسی فون میں محفوظ رہتے ہیں اور کسی کے ساتھ شیئر نہیں ہوتے۔</string>
+    <string name="qibla_mapLarge">نقشہ بڑا کریں</string>
+    <string name="dua_listenAr">عربی میں سنیں</string>
+    <string name="dua_listenMean">مطلب سنیں</string>
+    <string name="dua_stop">روکیں</string>
+    <string name="dua_voiceNote">آواز میں پڑھائی آپ کے فون کی اپنی آواز سے ہوتی ہے، یہ انسانی آواز کی ریکارڈنگ نہیں۔ اگر عربی آواز موجود نہ ہو تو فون کی سیٹنگز سے ڈاؤن لوڈ کی جا سکتی ہے۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

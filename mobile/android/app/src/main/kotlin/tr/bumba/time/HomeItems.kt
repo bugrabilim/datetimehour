@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.BatteryStd
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.DragHandle
+import androidx.compose.material.icons.filled.Umbrella
 import androidx.compose.material.icons.filled.HourglassBottom
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.NightsStay
@@ -163,6 +164,23 @@ fun HomeItemsEditor() {
     var dragging by remember { mutableStateOf<HomeItem?>(null) }
     var dragY by remember { mutableFloatStateOf(0f) }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        // Hava neyse ekran öyle: saat ekranının zemini (4 Kasım 2026, sahibin isteği: Düzenle listesinde de aç/kapa)
+        var weatherBg by remember { mutableStateOf(Prefs.store.getBoolean(WeatherScene.CLOCK_KEY, false)) }
+        AppCard(padding = 4) {
+            Row(
+                Modifier.fillMaxWidth().height(rowH).clickable {
+                    weatherBg = !weatherBg
+                    Prefs.store.edit().putBoolean(WeatherScene.CLOCK_KEY, weatherBg).apply()
+                }.padding(horizontal = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(Icons.Filled.Umbrella, null, tint = Theme.c.accent)
+                Spacer(Modifier.width(14.dp))
+                Text(L("look.weatherClock"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                Switch(weatherBg, { weatherBg = it; Prefs.store.edit().putBoolean(WeatherScene.CLOCK_KEY, it).apply() },
+                    colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+            }
+        }
         AppCard(padding = 4) {
             Column {
                 layout.order.forEachIndexed { i, item ->

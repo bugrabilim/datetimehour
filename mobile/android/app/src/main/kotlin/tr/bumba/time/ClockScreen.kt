@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
@@ -109,10 +110,15 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
     LaunchedEffect(now.epochSecond) { TickSound.tick(ctx, now.epochSecond) }
     DisposableEffect(Unit) { onDispose { TickSound.stop() } }
 
+    // Hava zemini açıkken (2. analiz #193) denetimler beyaz, atıf saatin altında akışta (4 Kasım 2026, sahibin ekran
+    // görüntüsü: atıf saatin üstüne biniyordu, tema rengindeki yazılar yağmur zemininde soluk kalıyordu)
+    val onScene = Prefs.store.getBoolean(WeatherScene.CLOCK_KEY, false)
+    val ctrl = if (onScene) androidx.compose.ui.graphics.Color.White else Theme.c.accent
     BoxWithConstraints(Modifier.fillMaxSize()) {
         // Düğme satırı alt çubuğun hemen üstünde, başparmak bölgesinde (2. analiz #202)
         val actionBar = 56.dp
-        val viewport = maxHeight - actionBar
+        val markRow = if (onScene) 30.dp else 0.dp
+        val viewport = maxHeight - actionBar - markRow
         val globeHeight = rememberGlobeHeight()
         // Saat ekranında yalnız saat varsa (30 Ekim kararı) saat ve denetim satırı dikeyde ortalanır, saat genişliğe büyür
         // (2. analiz #94)
@@ -135,7 +141,7 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
                     HorizontalPager(pager, Modifier.fillMaxWidth().height(stage)) { page ->
                         ClockModelPage(page, now, place, Modifier.padding(horizontal = 2.dp))
                     }
-                    StageControls(pager)
+                    StageControls(pager, ctrl)
                 }
                 // Saatin altındaki kişisel metin (rakip analizi #25)
                 if (FsLook.text.isNotEmpty()) Text(FsLook.text, color = Theme.c.text, fontSize = 20.sp, fontWeight = FontWeight.SemiBold,
@@ -154,15 +160,16 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
                 }
             }
         }
+        if (onScene) WeatherAttribution(Modifier.fillMaxWidth().height(markRow).wrapContentHeight())
         Row(Modifier.fillMaxWidth().height(actionBar), horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
             verticalAlignment = Alignment.CenterVertically) {
             TextButton(onClick = onFullscreen) {
-                Icon(Icons.Filled.Fullscreen, null, tint = Theme.c.accent)
-                Text(" " + L("clock.fullscreen"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
+                Icon(Icons.Filled.Fullscreen, null, tint = ctrl)
+                Text(" " + L("clock.fullscreen"), color = ctrl, fontWeight = FontWeight.SemiBold)
             }
             TextButton(onClick = { customizing = true }) {
-                Icon(Icons.Filled.Tune, null, tint = Theme.c.accent)
-                Text(" " + L("home.edit"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
+                Icon(Icons.Filled.Tune, null, tint = ctrl)
+                Text(" " + L("home.edit"), color = ctrl, fontWeight = FontWeight.SemiBold)
             }
         }
         }

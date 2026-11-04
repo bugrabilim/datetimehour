@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">أعلى–أسفل</string>
     <string name="wallpaper_remove">إزالة</string>
     <string name="wallpaper_privacy">تبقى لقطة الشاشة والأجزاء المقصوصة على هذا الـ iPhone فقط، ولا تُرسَل إلى أي مكان ولا تُزامَن مع iCloud.</string>
+    <string name="common_save">حفظ</string>
+    <string name="qibla_note">ملاحظتك</string>
+    <string name="qibla_noteAdd">إضافة ملاحظة</string>
+    <string name="qibla_noteNote">تُحفظ الملاحظات على هذا الهاتف فقط ولا تُشارك مع أحد.</string>
+    <string name="qibla_mapLarge">تكبير الخريطة</string>
+    <string name="dua_listenAr">استمع إلى النص العربي</string>
+    <string name="dua_listenMean">استمع إلى المعنى</string>
+    <string name="dua_stop">إيقاف</string>
+    <string name="dua_voiceNote">تتم القراءة بصوت النطق الخاص بهاتفك، وليست تسجيلًا لصوت بشري. إن لم يكن الصوت العربي مثبتًا فيمكن تنزيله من إعدادات الهاتف.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

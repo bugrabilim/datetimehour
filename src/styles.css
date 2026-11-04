@@ -1028,6 +1028,7 @@ html[dir="rtl"] .tl-axis, html[dir="rtl"] .tl-items { direction: ltr; }
 .qb-tick { stroke: var(--muted); stroke-opacity: 0.45; stroke-width: 1; }
 .qb-tick-m { stroke: var(--muted); stroke-width: 2; }
 .qb-tick-c { stroke: var(--text); stroke-width: 2.5; }
+.qb-deg { fill: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
 .qb-card { fill: var(--muted); font-size: 17px; font-weight: 600; }
 .qb-north { fill: #d83a3f; font-weight: 700; }
 .qb-kaaba { fill: #1b1f27; stroke: var(--surface); stroke-width: 1; }

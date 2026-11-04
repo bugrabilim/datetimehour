@@ -17,8 +17,11 @@ struct WeatherView: View {
     @State private var sharing = false
     /// Gün ayrıntısı (2. analiz #107)
     @State private var openDay: Int?
+    @Environment(\.colorScheme) private var colorScheme
 
     private var zone: TimeZone { PlaceModel.shared.place.zone }
+    /// Sayfanın zeminindeki hava sahnesi (canlandırma açık ve veri geldiyse)
+    private var pageScene: WeatherScene? { animate ? data.map { WeatherScene($0.currentWeather) } : nil }
 
     var body: some View {
         let place = PlaceModel.shared.place
@@ -60,7 +63,19 @@ struct WeatherView: View {
             .frame(maxWidth: 560)
             .frame(maxWidth: .infinity)
         }
-        .background(AppBackdrop().ignoresSafeArea())
+        // Hava neyse ekran öyle (4 Kasım 2026, sahibin isteği): canlandırma açıkken yağmur, kar, bulut bütün sayfada;
+        // okunurluk için sahnenin üstünde hafif karartma, yazılar koyu temanın açık renkleri
+        .background {
+            if let scene = pageScene {
+                ZStack {
+                    AnimatedBackground(kind: .weather, scene: scene, showMark: false)
+                    Color.black.opacity(0.22).ignoresSafeArea()
+                }
+            } else {
+                AppBackdrop().ignoresSafeArea()
+            }
+        }
+        .environment(\.colorScheme, pageScene != nil ? .dark : colorScheme)
         .navigationTitle(L("weather.h1"))
         .navigationBarTitleDisplayMode(.large)
         .task(id: place.key) { await load(place) }
@@ -351,19 +366,18 @@ struct AppleWeatherMark: View {
     }
 }
 
-/// Hava sekmesinin üst kartı: canlandırma açıksa zemin havanın kendisi (yağmur, kar, rüzgâr…), yazılar açık renk
+/// Hava sekmesinin üst kartı: canlandırma açıksa kart yok, hava sahnesi bütün sayfanın zemininde (4 Kasım 2026;
+/// önceden yalnız bu kartın içinde yağıyordu); yazılara hafif gölge
 private struct WeatherHero: ViewModifier {
     let scene: WeatherScene?
 
     @ViewBuilder
     func body(content: Content) -> some View {
-        if let scene {
+        if scene != nil {
             content
                 .padding(14)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(AnimatedBackground(kind: .weather, scene: scene, showMark: false))
-                .clipShape(RoundedRectangle(cornerRadius: 14))
-                .environment(\.colorScheme, .dark)
+                .shadow(color: .black.opacity(0.35), radius: 3, y: 1)
         } else {
             content.card()
         }

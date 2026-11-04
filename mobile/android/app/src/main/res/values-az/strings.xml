@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">Yuxarı-aşağı</string>
     <string name="wallpaper_remove">Sil</string>
     <string name="wallpaper_privacy">Ekran şəkli və kəsilmiş hissələr yalnız bu telefonda qalır, heç yerə göndərilmir və iCloud ilə sinxronlaşdırılmır.</string>
+    <string name="common_save">Yadda saxla</string>
+    <string name="qibla_note">Qeydiniz</string>
+    <string name="qibla_noteAdd">Qeyd əlavə edin</string>
+    <string name="qibla_noteNote">Qeydlər yalnız bu telefonda saxlanılır, heç kimlə paylaşılmır.</string>
+    <string name="qibla_mapLarge">Xəritəni böyüdün</string>
+    <string name="dua_listenAr">Ərəbcəsini dinləyin</string>
+    <string name="dua_listenMean">Mənasını dinləyin</string>
+    <string name="dua_stop">Dayandırın</string>
+    <string name="dua_voiceNote">Səsli oxuma telefonun öz danışıq səsi ilə edilir, insan səsi yazısı deyil. Ərəb səsi yoxdursa, telefonun ayarlarından endirə bilərsiniz.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

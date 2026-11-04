@@ -127,16 +127,12 @@ fun WeatherAttribution(modifier: Modifier = Modifier) {
     )
 }
 
-/** Üst kart: canlandırma açıksa (2. analiz #193) zemin havanın kendisi, yazılar koyu temanın açık renkleri */
+/** Üst kart: canlandırma açıksa (2. analiz #193) kart yok; hava sahnesi bütün sayfanın zemininde (MainActivity; 4 Kasım
+ *  2026, önceden yalnız bu kartın içinde yağıyordu), yazılar koyu temanın açık renkleri */
 @Composable
 private fun WeatherHero(scene: WeatherScene?, content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit) {
     if (scene == null) { AppCard(content = content); return }
-    Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp))) {
-        AnimatedBackground(FullscreenBackground.WEATHER, Modifier.matchParentSize(), scene = scene, attribution = false)
-        androidx.compose.runtime.CompositionLocalProvider(LocalColors provides AccentPalette.find(Prefs.accent).colors(true)) {
-            Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp), content = content)
-        }
-    }
+    Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp), content = content)
 }
 
 @Composable

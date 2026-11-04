@@ -63,10 +63,16 @@ struct HomeLayout {
 /// Ayarlar › Saat ekranı: alanları aç/kapat, sürükleyerek sırala
 struct HomeItemsView: View {
     @AppStorage("homeItems") private var raw = HomeItem.defaultRaw
+    /// Hava neyse ekran öyle: saat ekranının zemini (4 Kasım 2026, sahibin isteği: Düzenle listesinde de aç/kapa)
+    @AppStorage(WeatherScene.clockKey) private var weatherBg = false
 
     var body: some View {
         let layout = HomeLayout(raw: raw)
         List {
+            Section {
+                Toggle(isOn: $weatherBg) { Label(L("look.weatherClock"), systemImage: "cloud.rain") }
+                    .tint(Theme.accent)
+            }
             Section {
                 ForEach(layout.order) { item in
                     Toggle(isOn: Binding(

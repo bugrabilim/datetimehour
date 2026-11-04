@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">ขึ้น–ลง</string>
     <string name="wallpaper_remove">ลบ</string>
     <string name="wallpaper_privacy">ภาพหน้าจอและส่วนที่ตัดไว้จะอยู่ใน iPhone เครื่องนี้เท่านั้น ไม่ถูกส่งไปที่ใด และไม่ซิงค์กับ iCloud</string>
+    <string name="common_save">บันทึก</string>
+    <string name="qibla_note">บันทึกของคุณ</string>
+    <string name="qibla_noteAdd">เพิ่มบันทึก</string>
+    <string name="qibla_noteNote">บันทึกจะเก็บไว้ในโทรศัพท์เครื่องนี้เท่านั้น และไม่แชร์กับใคร</string>
+    <string name="qibla_mapLarge">ขยายแผนที่</string>
+    <string name="dua_listenAr">ฟังภาษาอาหรับ</string>
+    <string name="dua_listenMean">ฟังความหมาย</string>
+    <string name="dua_stop">หยุด</string>
+    <string name="dua_voiceNote">การอ่านออกเสียงใช้เสียงสังเคราะห์ของโทรศัพท์ ไม่ใช่เสียงคนที่บันทึกไว้ หากยังไม่มีเสียงภาษาอาหรับ ดาวน์โหลดได้จากการตั้งค่าโทรศัพท์</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

@@ -36,6 +36,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.OpenInNew
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
+import androidx.compose.material.icons.filled.StopCircle
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Remove
@@ -301,6 +303,33 @@ object Duas {
 fun DuasScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val duas = remember { Duas.load(context) }
+    // Sesle okuma (4 Kasım 2026, sahibin isteği): telefonun konuşma sesiyle Arapçası ve anlamı; insan sesi kaydı değil
+    var tts by remember { mutableStateOf<android.speech.tts.TextToSpeech?>(null) }
+    var playing by remember { mutableStateOf<String?>(null) }
+    androidx.compose.runtime.DisposableEffect(Unit) {
+        var engine: android.speech.tts.TextToSpeech? = null
+        engine = android.speech.tts.TextToSpeech(context) { ok ->
+            if (ok == android.speech.tts.TextToSpeech.SUCCESS) {
+                engine?.setOnUtteranceProgressListener(object : android.speech.tts.UtteranceProgressListener() {
+                    override fun onStart(id: String?) {}
+                    override fun onDone(id: String?) { if (playing == id) playing = null }
+                    @Deprecated("Deprecated in Java") override fun onError(id: String?) { if (playing == id) playing = null }
+                })
+                tts = engine
+            }
+        }
+        onDispose { engine?.stop(); engine?.shutdown() }
+    }
+    fun speak(key: String, text: String, arabic: Boolean) {
+        val t = tts ?: return
+        t.stop()
+        if (playing == key) { playing = null; return }
+        val r = t.setLanguage(if (arabic) java.util.Locale("ar") else Strings.locale)
+        if (!arabic && r < android.speech.tts.TextToSpeech.LANG_AVAILABLE && Strings.lang == "az") t.setLanguage(java.util.Locale("tr"))
+        t.setSpeechRate(if (arabic) 0.8f else 0.95f)
+        playing = key
+        t.speak(text, android.speech.tts.TextToSpeech.QUEUE_FLUSH, null, key)
+    }
     var query by remember { mutableStateOf("") }
     var cat by remember { mutableStateOf("all") }
     var favs by remember { mutableStateOf(Duas.favs) }
@@ -346,6 +375,18 @@ fun DuasScreen(onBack: () -> Unit) {
                 RtlText(d.ar, 22)
                 if (Strings.lang == "tr" || Strings.lang == "az") Text(d.okunus, color = Theme.c.text, fontSize = 14.sp, fontWeight = FontWeight.Medium)
                 d.mean?.let { Text(it, color = Theme.c.muted, fontSize = 14.sp) }
+                // Sesle okuma: Arapçası ve anlamı
+                Row(horizontalArrangement = Arrangement.spacedBy(14.dp), verticalAlignment = Alignment.CenterVertically) {
+                    for ((key, text, arabic) in listOfNotNull(Triple("${d.id}-ar", d.ar, true), d.mean?.let { Triple("${d.id}-mean", it, false) })) {
+                        val on = playing == key
+                        Row(Modifier.clickable(enabled = tts != null) { speak(key, text, arabic) }.padding(vertical = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically) {
+                            Icon(if (on) Icons.Filled.StopCircle else Icons.AutoMirrored.Filled.VolumeUp, null, tint = Theme.c.accent, modifier = Modifier.size(20.dp))
+                            Text(" " + if (on) L("dua.stop") else L(if (arabic) "dua.listenAr" else "dua.listenMean"),
+                                color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+                        }
+                    }
+                }
                 if (d.refs.isNotEmpty() && (Strings.lang == "tr" || Strings.lang == "az")) {
                     for (r in d.refs) {
                         val (s, a) = r.split(":").map { it.toInt() }
@@ -354,6 +395,7 @@ fun DuasScreen(onBack: () -> Unit) {
                 }
             }
             Text(L("dua.note"), color = Theme.c.muted, fontSize = 12.sp)
+            Text(L("dua.voiceNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
     }
 }

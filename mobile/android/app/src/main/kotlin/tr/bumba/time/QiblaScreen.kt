@@ -36,7 +36,10 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Mosque
+import androidx.compose.material.icons.filled.EditNote
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -317,6 +320,13 @@ private fun QiblaDial(bearing: Double, heading: Double, aligned: Boolean) {
                         )
                     }
                 }
+                // Derece rakamları (4 Kasım 2026, sahibin isteği): yön harfleri dışındaki her 30°'de küçük, Latin rakamla
+                for (d in listOf(30, 60, 120, 150, 210, 240, 300, 330)) {
+                    Box(Modifier.size(270.dp).rotate(d.toFloat()), contentAlignment = Alignment.TopCenter) {
+                        Text(d.toString(), Modifier.padding(top = 26.dp).rotate(-dial - d), color = muted.copy(alpha = 0.8f), fontSize = 10.sp,
+                            fontWeight = FontWeight.Medium)
+                    }
+                }
                 Box(Modifier.fillMaxSize().rotate(bearing.toFloat()), contentAlignment = Alignment.TopCenter) {
                     Text("🕋", Modifier.rotate(-dial - bearing.toFloat()), fontSize = 26.sp)
                 }
@@ -422,6 +432,8 @@ fun NearbyMosquesScreen(onBack: () -> Unit) {
     var list by remember { mutableStateOf(NearbyMosques.cached(place.lat, place.lon)) }
     var failed by remember { mutableStateOf(false) }
     var asked by remember { mutableStateOf(false) }
+    var noteFor by remember { mutableStateOf<Mosque?>(null) }
+    var noteText by remember { mutableStateOf("") }
 
     fun load(useLocation: Boolean) {
         scope.launch {
@@ -464,8 +476,30 @@ fun NearbyMosquesScreen(onBack: () -> Unit) {
                         MosqueRow(m, meters(place.lat, place.lon, m.lat, m.lon)) {
                             openMaps("geo:${m.lat},${m.lon}?q=${m.lat},${m.lon}(${Uri.encode(m.name)})")
                         }
+                        // Kişisel not (4 Kasım 2026, sahibin isteği)
+                        val note = QiblaPrefs.noteOf(m)
+                        Row(Modifier.fillMaxWidth().clickable { noteFor = m; noteText = note ?: "" }.padding(start = 30.dp, bottom = 6.dp),
+                            verticalAlignment = Alignment.CenterVertically) {
+                            Icon(Icons.Filled.EditNote, null, tint = Theme.c.accent, modifier = Modifier.size(18.dp))
+                            Text(" " + (note ?: L("qibla.noteAdd")), color = if (note != null) Theme.c.text else Theme.c.accent, fontSize = 13.sp)
+                        }
                     }
+                    Text(L("qibla.noteNote"), color = Theme.c.muted, fontSize = 12.sp)
                 }
+            }
+            noteFor?.let { m ->
+                AlertDialog(
+                    onDismissRequest = { noteFor = null },
+                    title = { Text(L("qibla.noteAdd")) },
+                    text = {
+                        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Text(m.name, color = Theme.c.muted, fontSize = 13.sp)
+                            OutlinedTextField(noteText, { noteText = it.take(500) }, placeholder = { Text(L("qibla.note")) }, minLines = 2)
+                        }
+                    },
+                    confirmButton = { TextButton(onClick = { QiblaPrefs.setNote(m, noteText); noteFor = null }) { Text(L("common.save")) } },
+                    dismissButton = { TextButton(onClick = { noteFor = null }) { Text(L("common.cancel")) } },
+                )
             }
             AppCard {
                 val l = list

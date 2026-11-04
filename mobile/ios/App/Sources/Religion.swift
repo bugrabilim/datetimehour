@@ -1,6 +1,7 @@
 import SwiftUI
 import UIKit
 import CoreMotion
+import AVFoundation
 import SaatCore
 
 /*
@@ -310,10 +311,57 @@ enum Duas {
     static let favsKey = "dua.favs"
 }
 
+/// Duaları sesle okuma (4 Kasım 2026, sahibin isteği): telefonun kendi konuşma sesiyle Arapçası ve anlamı (uygulamanın
+/// dili). İnsan sesi kaydı değildir (kayıtların hakları okuyanlarda; 30 Ekim araştırması). Ses telefonda üretilir.
+@MainActor
+final class DuaSpeaker: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
+    static let shared = DuaSpeaker()
+    /// Okunan parça: "<dua>-ar" ya da "<dua>-mean"
+    @Published private(set) var playing: String?
+    private let synth = AVSpeechSynthesizer()
+
+    override init() {
+        super.init()
+        synth.delegate = self
+    }
+
+    static var arabicVoice: AVSpeechSynthesisVoice? {
+        AVSpeechSynthesisVoice(language: "ar-SA") ?? AVSpeechSynthesisVoice.speechVoices().first { $0.language.hasPrefix("ar") }
+    }
+
+    func toggle(_ key: String, text: String, arabic: Bool) {
+        let was = playing
+        synth.stopSpeaking(at: .immediate)
+        playing = nil
+        if was == key { return }
+        let u = AVSpeechUtterance(string: text)
+        u.voice = arabic ? Self.arabicVoice : NotificationSounds.bestVoice
+        u.rate = AVSpeechUtteranceDefaultSpeechRate * (arabic ? 0.8 : 0.95)
+        // Sessiz düğmesi açıkken de duyulsun; çalan müzik kısılır, durmaz
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
+        playing = key
+        synth.speak(u)
+    }
+
+    func stop() {
+        synth.stopSpeaking(at: .immediate)
+        playing = nil
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        Task { @MainActor in self.playing = nil }
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        Task { @MainActor in if !self.synth.isSpeaking { self.playing = nil } }
+    }
+}
+
 struct DuasView: View {
     @AppStorage(Duas.favsKey) private var favsRaw = ""
     @State private var query = ""
     @State private var cat = "all"
+    @ObservedObject private var speaker = DuaSpeaker.shared
 
     private var favs: Set<String> { Set(favsRaw.split(separator: ",").map(String.init)) }
 
@@ -375,6 +423,13 @@ struct DuasView: View {
                             Text(d.okunus).font(.subheadline.weight(.medium)).foregroundStyle(Theme.text)
                         }
                         if let m = d.mean { Text(m).font(.subheadline).foregroundStyle(Theme.muted) }
+                        // Sesle okuma: Arapçası ve anlamı
+                        HStack(spacing: 18) {
+                            speakButton("\(d.id)-ar", text: d.ar, arabic: true, title: L("dua.listenAr"))
+                                .disabled(DuaSpeaker.arabicVoice == nil)
+                            if let m = d.mean { speakButton("\(d.id)-mean", text: m, arabic: false, title: L("dua.listenMean")) }
+                        }
+                        .font(.subheadline.weight(.medium))
                         if turkic {
                             ForEach(d.refs, id: \.self) { r in
                                 if let ref = Quran.parse(r) {
@@ -387,9 +442,12 @@ struct DuasView: View {
                 }
                 Text(L("dua.note")).font(.caption).foregroundStyle(Theme.muted)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                Text(L("dua.voiceNote")).font(.caption).foregroundStyle(Theme.muted)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(16)
         }
+        .onDisappear { speaker.stop() }
         .searchable(text: $query, prompt: L("dua.search"))
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("dua.title"))
@@ -400,6 +458,15 @@ struct DuasView: View {
         var f = favs
         if f.contains(id) { f.remove(id) } else { f.insert(id) }
         favsRaw = f.sorted().joined(separator: ",")
+    }
+
+    private func speakButton(_ key: String, text: String, arabic: Bool, title: String) -> some View {
+        let on = speaker.playing == key
+        return Button { speaker.toggle(key, text: text, arabic: arabic) } label: {
+            Label(on ? L("dua.stop") : title, systemImage: on ? "stop.circle.fill" : "speaker.wave.2")
+        }
+        .buttonStyle(.borderless)
+        .tint(Theme.accent)
     }
 }
 

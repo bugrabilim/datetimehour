@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">상하</string>
     <string name="wallpaper_remove">삭제</string>
     <string name="wallpaper_privacy">스크린샷과 잘라낸 조각은 이 iPhone에만 남으며, 어디로도 전송되지 않고 iCloud와 동기화되지 않습니다.</string>
+    <string name="common_save">저장</string>
+    <string name="qibla_note">메모</string>
+    <string name="qibla_noteAdd">메모 추가</string>
+    <string name="qibla_noteNote">메모는 이 휴대폰에만 저장되며 누구와도 공유되지 않습니다.</string>
+    <string name="qibla_mapLarge">지도 크게 보기</string>
+    <string name="dua_listenAr">아랍어로 듣기</string>
+    <string name="dua_listenMean">뜻 듣기</string>
+    <string name="dua_stop">정지</string>
+    <string name="dua_voiceNote">낭독은 휴대폰의 음성 합성으로 하며 사람 목소리 녹음이 아닙니다. 아랍어 음성이 없으면 휴대폰 설정에서 내려받을 수 있습니다.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

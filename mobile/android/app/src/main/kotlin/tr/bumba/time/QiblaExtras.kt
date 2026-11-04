@@ -101,13 +101,33 @@ object QiblaPrefs {
 
     private fun same(a: Mosque, b: Mosque) = abs(a.lat - b.lat) < 1e-5 && abs(a.lon - b.lon) < 1e-5
 
-    fun toggle(m: Mosque) {
-        val list = favs().toMutableList()
-        if (list.removeAll { same(it, m) }.not()) list.add(0, m)
+    private fun raw(): List<JSONObject> = runCatching {
+        val a = JSONArray(Prefs.store.getString(FAVS, "[]"))
+        (0 until a.length()).map { a.getJSONObject(it) }
+    }.getOrDefault(emptyList())
+
+    private fun write(list: List<JSONObject>) {
         val a = JSONArray()
-        list.take(30).forEach { a.put(JSONObject().put("n", it.name).put("lat", it.lat).put("lon", it.lon)) }
+        list.take(30).forEach { a.put(it) }
         Prefs.store.edit().putString(FAVS, a.toString()).apply()
         favVersion++
+    }
+
+    private fun JSONObject.isAt(m: Mosque) = abs(optDouble("lat") - m.lat) < 1e-5 && abs(optDouble("lon") - m.lon) < 1e-5
+
+    fun toggle(m: Mosque) {
+        val list = raw().toMutableList()
+        if (list.removeAll { it.isAt(m) }.not()) list.add(0, JSONObject().put("n", m.name).put("lat", m.lat).put("lon", m.lon))
+        write(list)
+    }
+
+    /** Favori camiye kişisel not (alan `t`; yalnız telefonda; başkalarıyla paylaşım sunucu ister, ücretli sistemle
+     *  birlikte ele alınacak, 4 Kasım 2026 sahibin kararı). Boş not silinir. */
+    fun noteOf(m: Mosque): String? = raw().firstOrNull { it.isAt(m) }?.optString("t")?.takeIf { it.isNotEmpty() }
+
+    fun setNote(m: Mosque, note: String) {
+        val t = note.trim().take(500)
+        write(raw().map { if (it.isAt(m)) it.apply { if (t.isEmpty()) remove("t") else put("t", t) } else it })
     }
 
     /** Büyük daire üzerinde n+1 nokta (enlem, boylam), boylam başlangıca göre kesintisiz */

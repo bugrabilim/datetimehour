@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">Oben–unten</string>
     <string name="wallpaper_remove">Entfernen</string>
     <string name="wallpaper_privacy">Das Bildschirmfoto und die ausgeschnittenen Teile bleiben nur auf diesem iPhone, werden nirgendwohin gesendet und nicht mit iCloud synchronisiert.</string>
+    <string name="common_save">Speichern</string>
+    <string name="qibla_note">Ihre Notiz</string>
+    <string name="qibla_noteAdd">Notiz hinzufügen</string>
+    <string name="qibla_noteNote">Notizen bleiben nur auf diesem Telefon und werden mit niemandem geteilt.</string>
+    <string name="qibla_mapLarge">Karte vergrößern</string>
+    <string name="dua_listenAr">Arabisch anhören</string>
+    <string name="dua_listenMean">Bedeutung anhören</string>
+    <string name="dua_stop">Stopp</string>
+    <string name="dua_voiceNote">Vorgelesen wird mit der Sprachausgabe Ihres Telefons, nicht mit einer menschlichen Aufnahme. Fehlt eine arabische Stimme, können Sie sie in den Einstellungen des Telefons laden.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

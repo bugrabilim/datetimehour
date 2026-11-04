@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">بالا–پایین</string>
     <string name="wallpaper_remove">حذف</string>
     <string name="wallpaper_privacy">عکس صفحه و تکه‌های بریده‌شده فقط روی همین گوشی می‌مانند، به جایی فرستاده نمی‌شوند و با iCloud همگام نمی‌شوند.</string>
+    <string name="common_save">ذخیره</string>
+    <string name="qibla_note">یادداشت شما</string>
+    <string name="qibla_noteAdd">افزودن یادداشت</string>
+    <string name="qibla_noteNote">یادداشت‌ها فقط روی همین گوشی می‌مانند و با کسی به اشتراک گذاشته نمی‌شوند.</string>
+    <string name="qibla_mapLarge">بزرگ کردن نقشه</string>
+    <string name="dua_listenAr">شنیدن متن عربی</string>
+    <string name="dua_listenMean">شنیدن معنا</string>
+    <string name="dua_stop">توقف</string>
+    <string name="dua_voiceNote">خواندن با صدای گفتار خود گوشی انجام می‌شود و ضبط صدای انسان نیست. اگر صدای عربی نصب نیست، می‌توانید آن را از تنظیمات گوشی دریافت کنید.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

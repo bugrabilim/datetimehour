@@ -20,6 +20,8 @@ struct ClockTab: View {
     @State private var globeHeight: CGFloat = 260
     /// Alttaki düğme satırının yüksekliği (2. analiz #202)
     static let actionBar: CGFloat = 52
+    /// Hava zemini açıkken Apple Hava Durumu işaretinin satırı (saatin üstüne binmesin diye akışta; 4 Kasım 2026)
+    static let markRow: CGFloat = 34
 
     var body: some View {
         GeometryReader { geo in
@@ -28,7 +30,7 @@ struct ClockTab: View {
                 let place = PlaceModel.shared.place
                 let items = HomeLayout(raw: homeItems).visible
                 // Düğme satırı alt çubuğun hemen üstünde, başparmak bölgesinde (2. analiz #202)
-                let viewport = geo.size.height - Self.actionBar
+                let viewport = geo.size.height - Self.actionBar - (weatherBg ? Self.markRow : 0)
                 // Saat ekranında yalnız saat varsa (30 Ekim kararı) saat ve denetim satırı dikeyde ortalanır, saat genişliğe
                 // büyür (2. analiz #94)
                 let onlyClock = items.isEmpty && personalText.isEmpty
@@ -66,6 +68,14 @@ struct ClockTab: View {
                     }
                     .frame(maxWidth: 640)
                     .frame(maxWidth: .infinity)
+                    // Hava zemininde yazılar okunsun diye hafif gölge
+                    .shadow(color: .black.opacity(weatherBg ? 0.35 : 0), radius: 3, y: 1)
+                }
+                // WeatherKit verisi zeminde gösterildiği için işaret ve yasal bağlantı (App Review 5.2.5); önceden zeminin
+                // sol üstündeydi ve saat kadranı üstüne biniyordu
+                if weatherBg {
+                    AppleWeatherMark(compact: true, onDark: true)
+                        .frame(height: Self.markRow)
                 }
                 HStack(spacing: 28) {
                     Button {
@@ -81,15 +91,25 @@ struct ClockTab: View {
                     }
                 }
                 .font(.headline)
-                .foregroundStyle(Theme.accent)
+                .foregroundStyle(weatherBg ? Color.white : Theme.accent)
+                .shadow(color: .black.opacity(weatherBg ? 0.35 : 0), radius: 3, y: 1)
                 .frame(height: Self.actionBar)
                 .frame(maxWidth: .infinity)
                 }
                 // Hava neyse ekran öyle (2. analiz #193): seçilirse zemin seçili yerin havası, yazılar koyu temanın renkleri
                 .background {
-                    if weatherBg { AnimatedBackground(kind: .weather) } else { AppBackdrop().ignoresSafeArea() }
+                    if weatherBg {
+                        // Hafif karartma: tema rengindeki ve soluk yazılar mavi-gri yağmur zemininde de okunur
+                        ZStack {
+                            AnimatedBackground(kind: .weather, showMark: false)
+                            Color.black.opacity(0.25).ignoresSafeArea()
+                        }
+                    } else {
+                        AppBackdrop().ignoresSafeArea()
+                    }
                 }
                 .environment(\.colorScheme, weatherBg ? .dark : colorScheme)
+                .environment(\.onScene, weatherBg)
                 // Saniye tık sesi (2. analiz #10; Ayarlar › Saat görünümü)
                 .onChange(of: Int(now.timeIntervalSince1970)) { _, s in TickSound.shared.tick(s) }
             }
@@ -155,6 +175,7 @@ struct ClockStage: View {
     let place: AppPlace
     var height: CGFloat = 380
     @AppStorage("clockModel") private var modelID = ClockModel.classic.rawValue
+    @Environment(\.onScene) private var onScene
 
     private var model: ClockModel { ClockModel(rawValue: modelID) ?? .classic }
 
@@ -191,7 +212,8 @@ struct ClockStage: View {
                     .accessibilityLabel(L("stage.next"))
             }
             .font(.headline)
-            .foregroundStyle(Theme.accent)
+            // Hava zemininde tema rengi yerine beyaz (4 Kasım 2026, sahibin ekran görüntüsü: soluk kalıyordu)
+            .foregroundStyle(onScene ? Color.white : Theme.accent)
             .environment(\.layoutDirection, .leftToRight)
         }
         .onChange(of: modelID, initial: true) { old, new in
@@ -506,5 +528,15 @@ struct FsDuoPicker: View {
             ForEach(FsDuo.all, id: \.self) { Text(L("fs.duo.\($0)")).tag($0) }
         }
         Text(L("fs.duoNote")).font(.footnote).foregroundStyle(Theme.muted)
+    }
+}
+
+/// Hareketli bir sahnenin (hava zemini) üstünde mi: denetimler tema rengi yerine beyaz çizilir
+private struct OnSceneKey: EnvironmentKey { static let defaultValue = false }
+
+extension EnvironmentValues {
+    var onScene: Bool {
+        get { self[OnSceneKey.self] }
+        set { self[OnSceneKey.self] = newValue }
     }
 }

@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">Up–down</string>
     <string name="wallpaper_remove">Remove</string>
     <string name="wallpaper_privacy">The screenshot and the cut pieces stay on this iPhone only, are never sent anywhere and are not synced with iCloud.</string>
+    <string name="common_save">Save</string>
+    <string name="qibla_note">Your note</string>
+    <string name="qibla_noteAdd">Add note</string>
+    <string name="qibla_noteNote">Notes are kept only on this phone and are not shared with anyone.</string>
+    <string name="qibla_mapLarge">Enlarge map</string>
+    <string name="dua_listenAr">Listen in Arabic</string>
+    <string name="dua_listenMean">Listen to the meaning</string>
+    <string name="dua_stop">Stop</string>
+    <string name="dua_voiceNote">Reading aloud uses your phone\'s own speech voice; it is not a human recording. If no Arabic voice is installed, you can download one in your phone\'s settings.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

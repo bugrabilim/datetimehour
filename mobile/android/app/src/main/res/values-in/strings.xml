@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">Atas–bawah</string>
     <string name="wallpaper_remove">Hapus</string>
     <string name="wallpaper_privacy">Tangkapan layar dan potongannya hanya disimpan di iPhone ini, tidak dikirim ke mana pun, dan tidak disinkronkan dengan iCloud.</string>
+    <string name="common_save">Simpan</string>
+    <string name="qibla_note">Catatan Anda</string>
+    <string name="qibla_noteAdd">Tambah catatan</string>
+    <string name="qibla_noteNote">Catatan hanya disimpan di ponsel ini dan tidak dibagikan kepada siapa pun.</string>
+    <string name="qibla_mapLarge">Perbesar peta</string>
+    <string name="dua_listenAr">Dengarkan bahasa Arab</string>
+    <string name="dua_listenMean">Dengarkan artinya</string>
+    <string name="dua_stop">Berhenti</string>
+    <string name="dua_voiceNote">Pembacaan memakai suara bawaan ponsel Anda, bukan rekaman suara manusia. Jika suara bahasa Arab belum terpasang, Anda dapat mengunduhnya di pengaturan ponsel.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

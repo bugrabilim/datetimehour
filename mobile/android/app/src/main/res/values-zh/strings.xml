@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">上下</string>
     <string name="wallpaper_remove">移除</string>
     <string name="wallpaper_privacy">截图和裁出的部分只保存在这台 iPhone 上，不会发送到任何地方，也不会与 iCloud 同步。</string>
+    <string name="common_save">保存</string>
+    <string name="qibla_note">备注</string>
+    <string name="qibla_noteAdd">添加备注</string>
+    <string name="qibla_noteNote">备注只保存在这部手机上，不会与任何人共享。</string>
+    <string name="qibla_mapLarge">放大地图</string>
+    <string name="dua_listenAr">收听阿拉伯语</string>
+    <string name="dua_listenMean">收听释义</string>
+    <string name="dua_stop">停止</string>
+    <string name="dua_voiceNote">朗读使用手机自带的语音合成，并非真人录音。如未安装阿拉伯语语音，可在手机设置中下载。</string>
     <string name="app_name">时间与日期</string>
 </resources>

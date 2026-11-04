@@ -234,9 +234,15 @@ fun Root(start: Int) {
 
     if (landscape) HideSystemBars()
     // Hava neyse ekran öyle (2. analiz #193): seçilirse saat ekranının zemini seçili yerin havası, yazılar koyu temanın renkleri
-    val clockWx = tab == Tab.CLOCK && Prefs.store.getBoolean(WeatherScene.CLOCK_KEY, false)
+    // Hava sekmesinde de canlandırma açıksa yağmur, kar, bulut bütün sayfada (4 Kasım 2026; önceden yalnız üst kartta)
+    val clockWx = (tab == Tab.CLOCK && Prefs.store.getBoolean(WeatherScene.CLOCK_KEY, false)) ||
+        (tab == Tab.WEATHER && Prefs.store.getBoolean(WeatherScene.TAB_KEY, true))
     Box(Modifier.fillMaxSize()) {
-    if (clockWx) AnimatedBackground(FullscreenBackground.WEATHER, Modifier.fillMaxSize())
+    if (clockWx) {
+        // Atıf sayfanın akışında (saat ekranında saatin altında, hava sekmesinde verinin altında); hafif karartma okunurluk için
+        AnimatedBackground(FullscreenBackground.WEATHER, Modifier.fillMaxSize(), attribution = false)
+        Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.25f)))
+    }
     CompositionLocalProvider(LocalColors provides if (clockWx) AccentPalette.find(Prefs.accent).colors(true) else Theme.c) {
     Column(Modifier.fillMaxSize().then(if (clockWx) Modifier else Modifier.appBackdrop(Theme.c))) {
         Column(Modifier.weight(1f).fillMaxWidth().statusBarsPadding().windowInsetsPadding(WindowInsets.displayCutout)) {

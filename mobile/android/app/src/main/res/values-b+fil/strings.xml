@@ -2559,5 +2559,14 @@
     <string name="wallpaper_adjustY">Itaas–ibaba</string>
     <string name="wallpaper_remove">Alisin</string>
     <string name="wallpaper_privacy">Ang screenshot at ang mga hiniwang bahagi ay nananatili lang sa iPhone na ito, hindi ipinapadala kahit saan, at hindi sini-sync sa iCloud.</string>
+    <string name="common_save">I-save</string>
+    <string name="qibla_note">Iyong tala</string>
+    <string name="qibla_noteAdd">Magdagdag ng tala</string>
+    <string name="qibla_noteNote">Sa teleponong ito lang nakatago ang mga tala at hindi ibinabahagi kaninuman.</string>
+    <string name="qibla_mapLarge">Palakihin ang mapa</string>
+    <string name="dua_listenAr">Pakinggan sa Arabe</string>
+    <string name="dua_listenMean">Pakinggan ang kahulugan</string>
+    <string name="dua_stop">Ihinto</string>
+    <string name="dua_voiceNote">Ginagamit sa pagbasa ang sariling boses ng telepono, hindi ito recording ng tao. Kung walang Arabic na boses, maaari itong i-download sa settings ng telepono.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>
