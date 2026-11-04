@@ -164,5 +164,7 @@
     <string name="watch_break">พัก</string>
     <string name="watch_minutes">%1$s นาที</string>
     <string name="watch_tap">แตะ</string>
+    <string name="desk_pomoDone">ทำงานเสร็จแล้ว ได้เวลาพัก</string>
+    <string name="desk_breakDone">หมดเวลาพัก</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

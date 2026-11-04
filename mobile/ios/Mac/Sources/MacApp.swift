@@ -2,6 +2,7 @@ import AppKit
 import ServiceManagement
 import SwiftUI
 import SaatCore
+import UserNotifications
 
 /// Mac menü çubuğu uygulaması (rakip analizi listesi #96): menü çubuğunda sıradaki vakit ve kalan süre ("Öğle 12:58 · 25 dk"),
 /// tıklayınca saat, tarih (miladi + hicri) ve bugünün vakitleri. Dock'ta simgesi yoktur (LSUIElement). Vakitte bildirim
@@ -28,8 +29,9 @@ final class MacModel: ObservableObject {
 
     init() {
         refresh()
-        timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { [weak self] _ in
-            MainActor.assumeIsolated { self?.refresh() }
+        // Pomodoro sürerken menü çubuğundaki süre saniyede bir yenilenir
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            MainActor.assumeIsolated { self?.tick() }
         }
         Task { await locate() }
     }
@@ -37,7 +39,59 @@ final class MacModel: ObservableObject {
     var selection: String { UserDefaults.standard.string(forKey: DeskPlace.key) ?? "istanbul" }
     var place: Place { DeskPlace.resolve(selection, auto: autoPlace) }
 
+    // MARK: Pomodoro (2. analiz #143): 25 dk çalışma / 5 dk mola; menü çubuğunda "🍅 24:59"; bitince bildirim
+    @Published var pomoEnd: Double = UserDefaults.standard.double(forKey: "mac.pomo.end")
+    @Published var pomoPhase: String = UserDefaults.standard.string(forKey: "mac.pomo.phase") ?? "work"
+    @Published var pomoDone: Int = UserDefaults.standard.integer(forKey: "mac.pomo.done")
+    private var lastPrayerRefresh = Date.distantPast
+
+    var pomoMinutes: Int { pomoPhase == "work" ? 25 : 5 }
+    var pomoRunning: Bool { pomoEnd > Date().timeIntervalSince1970 }
+
+    private func savePomo() {
+        let d = UserDefaults.standard
+        d.set(pomoEnd, forKey: "mac.pomo.end")
+        d.set(pomoPhase, forKey: "mac.pomo.phase")
+        d.set(pomoDone, forKey: "mac.pomo.done")
+    }
+
+    func pomoStart() {
+        if pomoEnd > 0 && !pomoRunning {
+            if pomoPhase == "work" { pomoDone += 1 }
+            pomoPhase = pomoPhase == "work" ? "break" : "work"
+        }
+        pomoEnd = Date().timeIntervalSince1970 + Double(pomoMinutes * 60)
+        savePomo()
+        let content = UNMutableNotificationContent()
+        content.title = pomoPhase == "work" ? L("desk.pomoDone") : L("desk.breakDone")
+        content.sound = .default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(pomoMinutes * 60), repeats: false)
+        let c = UNUserNotificationCenter.current()
+        c.requestAuthorization(options: [.alert, .sound]) { _, _ in }
+        c.add(UNNotificationRequest(identifier: "mac-pomo", content: content, trigger: trigger))
+        refresh()
+    }
+
+    func pomoReset() {
+        pomoEnd = 0
+        pomoPhase = "work"
+        savePomo()
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["mac-pomo"])
+        refresh()
+    }
+
+    func pomoText(_ now: Date = Date()) -> String {
+        let s = max(0, Int(pomoEnd - now.timeIntervalSince1970))
+        return String(format: "%02d:%02d", s / 60, s % 60)
+    }
+
+    func tick() {
+        if pomoRunning || Date().timeIntervalSince(lastPrayerRefresh) >= 15 { refresh() }
+    }
+
     func refresh() {
+        lastPrayerRefresh = Date()
+        if pomoRunning { title = "🍅 " + pomoText(); return }
         let now = Date()
         let p = place
         guard let next = p.schedule.next(after: now) else { title = "Saat Tarih"; return }
@@ -60,6 +114,24 @@ struct MacPanel: View {
     var body: some View {
         VStack(spacing: 14) {
             DeskClock(place: model.place, scale: 0.42)
+            Divider()
+            // Pomodoro (2. analiz #143)
+            HStack(spacing: 10) {
+                Text("🍅").font(.title2)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(model.pomoPhase == "work" ? L("watch.work") : L("watch.break")).font(.headline)
+                    Text(model.pomoRunning ? model.pomoText() : String(format: L("watch.minutes"), "\(model.pomoMinutes)"))
+                        .font(.system(.title3, design: .rounded).weight(.semibold)).monospacedDigit()
+                }
+                Spacer()
+                Text("× \(model.pomoDone)").foregroundStyle(.secondary)
+                if model.pomoRunning || model.pomoEnd > 0 {
+                    Button(L("watch.reset")) { model.pomoReset() }
+                }
+                if !model.pomoRunning {
+                    Button(L("watch.start")) { model.pomoStart() }.keyboardShortcut(.defaultAction)
+                }
+            }
             Divider()
             Picker(L("wear.place"), selection: $sel) {
                 Text(L("widget.province.auto")).tag("auto")

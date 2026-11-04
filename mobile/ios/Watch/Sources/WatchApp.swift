@@ -81,6 +81,8 @@ struct WatchHome: View {
                             .foregroundStyle(e.at == next?.at ? Color.orange : Color.primary)
                         }
                     }
+                    // Zaman araçları (2. analiz #137)
+                    NavigationLink { WatchToolsList() } label: { Label(L("watch.tools"), systemImage: "timer") }
                     NavigationLink {
                         PlaceList(sel: $sel)
                     } label: {

@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- Hava komplikasyonu (2. analiz #115): Open-Meteo -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Zaman araçları (2. analiz #137): süre bitince bildirim ve titreşim -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".WearApp"
@@ -30,6 +34,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".WearToolReceiver"
+            android:exported="false" />
 
         <!-- Kutucuk: sıradaki vakit ve bugünün vakitleri -->
         <service

@@ -164,5 +164,7 @@
     <string name="watch_break">Break</string>
     <string name="watch_minutes">%1$s min</string>
     <string name="watch_tap">Tap</string>
+    <string name="desk_pomoDone">Work session done — time for a break.</string>
+    <string name="desk_breakDone">Break is over.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

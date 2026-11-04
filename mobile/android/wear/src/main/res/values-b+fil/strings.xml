@@ -164,5 +164,7 @@
     <string name="watch_break">Pahinga</string>
     <string name="watch_minutes">%1$s min</string>
     <string name="watch_tap">I-tap</string>
+    <string name="desk_pomoDone">Tapos na ang trabaho, oras na ng pahinga.</string>
+    <string name="desk_breakDone">Tapos na ang pahinga.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

@@ -53,5 +53,8 @@ class WearTest {
         captureRoboImage("$dir/wear-saat.png") { MaterialTheme { WearRoot(initialNow = at) } }
         RuntimeEnvironment.setQualifiers("+ar")
         captureRoboImage("$dir/wear-saat-ar.png") { MaterialTheme { WearRoot(initialNow = at) } }
+        // Zaman araçları (2. analiz #137)
+        RuntimeEnvironment.setQualifiers("+tr")
+        captureRoboImage("$dir/wear-araclar.png") { MaterialTheme { WearToolsScreen {} } }
     }
 }

@@ -164,5 +164,7 @@
     <string name="watch_break">휴식</string>
     <string name="watch_minutes">%1$s분</string>
     <string name="watch_tap">탭하세요</string>
+    <string name="desk_pomoDone">작업 끝, 휴식 시간입니다.</string>
+    <string name="desk_breakDone">휴식 끝.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

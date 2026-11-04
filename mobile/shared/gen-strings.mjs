@@ -140,7 +140,7 @@ const androidEscape = (s) => s
   .replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, "\\n").replace(/^([@?])/, "\\$1");
 const androidRes = Object.fromEntries(LANGS.map((l) => [l, []]));
 /* Wear OS saati: yalnız saat ekranlarının kullandığı metinler (mobile/android/wear) */
-const WEAR_KEYS = /^(prayer\.|hijri\.|wear\.|watch\.|nature\.phases\.|widget\.(next|hijri|weather|moon)\.|widget\.province\.auto$|live\.(iftar|sahur)$|place\.myLocation$|client\.(hourShort|minuteShort)$|weather\.codes\.|weather\.attribution$)/;
+const WEAR_KEYS = /^(prayer\.|hijri\.|wear\.|watch\.|desk\.(pomoDone|breakDone)$|nature\.phases\.|widget\.(next|hijri|weather|moon)\.|widget\.province\.auto$|live\.(iftar|sahur)$|place\.myLocation$|client\.(hourShort|minuteShort)$|weather\.codes\.|weather\.attribution$)/;
 const wearRes = Object.fromEntries(LANGS.map((l) => [l, []]));
 const androidNames = new Map();
 

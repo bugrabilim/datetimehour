@@ -164,5 +164,7 @@
     <string name="watch_break">استراحة</string>
     <string name="watch_minutes">%1$s د</string>
     <string name="watch_tap">المس</string>
+    <string name="desk_pomoDone">انتهت جلسة العمل، حان وقت الاستراحة.</string>
+    <string name="desk_breakDone">انتهت الاستراحة.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

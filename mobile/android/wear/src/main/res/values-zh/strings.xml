@@ -164,5 +164,7 @@
     <string name="watch_break">休息</string>
     <string name="watch_minutes">%1$s 分钟</string>
     <string name="watch_tap">轻点</string>
+    <string name="desk_pomoDone">工作结束，该休息了。</string>
+    <string name="desk_breakDone">休息结束。</string>
     <string name="app_name">时间与日期</string>
 </resources>

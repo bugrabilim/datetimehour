@@ -164,5 +164,7 @@
     <string name="watch_break">Istirahat</string>
     <string name="watch_minutes">%1$s mnt</string>
     <string name="watch_tap">Ketuk</string>
+    <string name="desk_pomoDone">Sesi kerja selesai, saatnya istirahat.</string>
+    <string name="desk_breakDone">Istirahat selesai.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

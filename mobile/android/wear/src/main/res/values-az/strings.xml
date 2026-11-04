@@ -164,5 +164,7 @@
     <string name="watch_break">Fasilə</string>
     <string name="watch_minutes">%1$s dəq</string>
     <string name="watch_tap">Toxunun</string>
+    <string name="desk_pomoDone">İş bitdi, fasilə vaxtıdır.</string>
+    <string name="desk_breakDone">Fasilə bitdi.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

@@ -164,5 +164,7 @@
     <string name="watch_break">استراحت</string>
     <string name="watch_minutes">%1$s دقیقه</string>
     <string name="watch_tap">لمس کنید</string>
+    <string name="desk_pomoDone">کار تمام شد، وقت استراحت است.</string>
+    <string name="desk_breakDone">استراحت تمام شد.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

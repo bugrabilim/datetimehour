@@ -71,6 +71,7 @@ class WearActivity : ComponentActivity() {
 @Composable
 fun WearRoot(initialNow: Instant? = null) {
     var picking by remember { mutableStateOf(false) }
+    var tools by remember { mutableStateOf(false) }
     var version by remember { mutableLongStateOf(0L) }
     var now by remember { mutableStateOf(initialNow ?: Instant.now()) }
     if (initialNow == null) LaunchedEffect(Unit) { while (true) { now = Instant.now(); delay(1000) } }
@@ -78,9 +79,11 @@ fun WearRoot(initialNow: Instant? = null) {
         if (picking) {
             BackHandler { picking = false }
             PlacePicker { picking = false; version++ }
+        } else if (tools) {
+            WearToolsScreen { tools = false }
         } else {
             // version: yer değişince yeniden hesaplansın
-            key(version) { MainScreen(now) { picking = true } }
+            key(version) { MainScreen(now, onTools = { tools = true }) { picking = true } }
         }
     }
 }
@@ -89,7 +92,7 @@ fun WearRoot(initialNow: Instant? = null) {
 private fun key(v: Long, content: @Composable () -> Unit) = androidx.compose.runtime.key(v) { content() }
 
 @Composable
-private fun MainScreen(now: Instant, onPlace: () -> Unit) {
+private fun MainScreen(now: Instant, onTools: () -> Unit = {}, onPlace: () -> Unit) {
     val place = Wear.place()
     val state = rememberScalingLazyListState()
     val z = now.atZone(place.zone)
@@ -117,6 +120,15 @@ private fun MainScreen(now: Instant, onPlace: () -> Unit) {
                     Text(place.hm(e.at), color = if (isNext) WColors.accent else WColors.text, fontSize = 15.sp,
                         fontWeight = if (isNext) FontWeight.Bold else FontWeight.Normal)
                 }
+            }
+            // Zaman araçları (2. analiz #137)
+            item {
+                Chip(
+                    onClick = onTools,
+                    label = { Text(Wear.text("watch.tools"), maxLines = 1) },
+                    colors = ChipDefaults.primaryChipColors(backgroundColor = WColors.accent),
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                )
             }
             item {
                 Chip(

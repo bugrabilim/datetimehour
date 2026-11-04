@@ -164,5 +164,7 @@
     <string name="watch_break">休憩</string>
     <string name="watch_minutes">%1$s分</string>
     <string name="watch_tap">タップ</string>
+    <string name="desk_pomoDone">作業終了、休憩の時間です。</string>
+    <string name="desk_breakDone">休憩終了。</string>
     <string name="app_name">時刻と日付</string>
 </resources>

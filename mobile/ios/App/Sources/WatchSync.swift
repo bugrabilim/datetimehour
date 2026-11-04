@@ -17,7 +17,11 @@ final class WatchSync: NSObject, WCSessionDelegate {
         guard WCSession.isSupported() else { return }
         let s = WCSession.default
         guard s.activationState == .activated, s.isPaired, s.isWatchAppInstalled else { return }
-        try? s.updateApplicationContext(["name": place.name, "lat": place.lat, "lon": place.lon, "tz": place.zone.identifier])
+        // Dünya saatleri listesinin ilk 8 yeri ("ad|saat dilimi"; 2. analiz #137, saatteki dünya saati)
+        let world = WorldEntry.list(UserDefaults.standard.string(forKey: "world") ?? City.defaultKeys)
+            .prefix(8).map { "\($0.displayName)|\($0.zone.identifier)" }
+        try? s.updateApplicationContext(["name": place.name, "lat": place.lat, "lon": place.lon, "tz": place.zone.identifier,
+                                         "world": Array(world)])
     }
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

@@ -164,5 +164,7 @@
     <string name="watch_break">Pause</string>
     <string name="watch_minutes">%1$s min</string>
     <string name="watch_tap">Touchez</string>
+    <string name="desk_pomoDone">Séance terminée, place à la pause.</string>
+    <string name="desk_breakDone">La pause est finie.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

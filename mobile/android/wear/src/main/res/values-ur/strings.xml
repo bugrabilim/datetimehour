@@ -164,5 +164,7 @@
     <string name="watch_break">وقفہ</string>
     <string name="watch_minutes">%1$s منٹ</string>
     <string name="watch_tap">ٹیپ کریں</string>
+    <string name="desk_pomoDone">کام ختم، وقفے کا وقت۔</string>
+    <string name="desk_breakDone">وقفہ ختم۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

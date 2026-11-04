@@ -164,5 +164,7 @@
     <string name="watch_break">Mola</string>
     <string name="watch_minutes">%1$s dk</string>
     <string name="watch_tap">Dokunun</string>
+    <string name="desk_pomoDone">Çalışma bitti, mola zamanı.</string>
+    <string name="desk_breakDone">Mola bitti.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>
