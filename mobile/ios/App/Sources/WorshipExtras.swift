@@ -324,17 +324,17 @@ func prayerSymbol(_ p: Prayer) -> String {
 /// Vakte göre gökyüzü zemini (#65; doğal tasarım 4 Kasım 2026, docs/dogal-tasarim bölüm 3.1): gece, şafak, sabah,
 /// öğle, ikindi ve akşam gökleri; yazı rengi gökyüzünün parlaklığından (krem ya da mürekkep). Koyu temada gündüz gökleri
 /// karartılır, yazı krem kalır. Android'deki skyColors ile aynı renkler.
-struct Sky {
+struct PrayerSky {
     let colors: [Color]
     let text: Color
 }
 
-func skyColors(_ entries: [PrayerSchedule.Entry], _ now: Date, dark: Bool = false) -> Sky {
+func skyColors(_ entries: [PrayerSchedule.Entry], _ now: Date, dark: Bool = false) -> PrayerSky {
     func at(_ p: Prayer) -> Date? { entries.first { $0.prayer == p }?.at }
     func after(_ x: Date?) -> Bool { x.map { now >= $0 } ?? false }
     func c(_ hex: UInt32) -> Color { Color(red: Double(hex >> 16 & 0xFF) / 255, green: Double(hex >> 8 & 0xFF) / 255, blue: Double(hex & 0xFF) / 255) }
     let cream = c(0xFFF8EC), ink = c(0x2B2520)
-    func sky(_ top: UInt32, _ bottom: UInt32, _ text: Color) -> Sky { Sky(colors: [c(top), c(bottom)], text: text) }
+    func sky(_ top: UInt32, _ bottom: UInt32, _ text: Color) -> PrayerSky { PrayerSky(colors: [c(top), c(bottom)], text: text) }
     if after(at(.isha)) || !after(at(.fajr)) { return sky(0x1F2240, 0x3B3762, cream) }
     if after(at(.maghrib)) { return sky(0x46305A, 0x8E4B4E, cream) }
     if after(at(.asr)) { return dark ? sky(0x4F3A22, 0x6E5638, cream) : sky(0xE0B577, 0xF5E3BF, ink) }
