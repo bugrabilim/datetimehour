@@ -18,7 +18,7 @@ private struct RTLText: View {
     let text: String
     var size: CGFloat = 22
     var body: some View {
-        Text(text).font(.system(size: size)).lineSpacing(size * 0.4).foregroundStyle(Theme.ink)
+        Text(text).font(AppFonts.arabic(size)).lineSpacing(size * 0.4).foregroundStyle(Theme.ink)
             .frame(maxWidth: .infinity, alignment: .leading)
             .environment(\.layoutDirection, .rightToLeft)
     }
@@ -67,7 +67,7 @@ struct EsmaView: View {
                             }
                         }
                         Spacer(minLength: 8)
-                        Text(n.ar).font(.system(size: 24)).foregroundStyle(Theme.ink)
+                        Text(n.ar).font(AppFonts.arabic(26)).foregroundStyle(Theme.ink)
                     }
                     .accessibilityElement(children: .combine)
                     .contentShape(Rectangle())
@@ -425,7 +425,7 @@ struct EsmaCard: View {
                     ctx.fill(Path(ellipseIn: CGRect(x: c.x - inner, y: c.y - inner, width: 2 * inner, height: 2 * inner)), with: .color(Theme.accent.opacity(0.08)))
                 }
                 .frame(height: 200)
-                Text(name.ar).font(.system(size: 44, weight: .bold, design: .serif)).foregroundStyle(Theme.ink)
+                Text(name.ar).font(AppFonts.arabic(48)).foregroundStyle(Theme.ink)
             }
             if AppLocale.code != "ar" {
                 if !name.okunus.isEmpty { Text(name.okunus).font(.title3.weight(.semibold)) }

@@ -80,7 +80,7 @@ class NextPrayerWidget : BaseWidget() {
         val place = WidgetUpdater.place(id)
         val now = Instant.now()
         val v = RemoteViews(c.packageName, R.layout.widget_next)
-        v.setTextViewText(R.id.place, "📍 " + place.name)
+        v.setTextViewText(R.id.place, place.name); v.setTextViewCompoundDrawablesRelative(R.id.place, R.drawable.widget_pin, 0, 0, 0)
         place.next(now)?.let { n ->
             v.setTextViewText(R.id.name, n.prayer.ramadanTitle(n.at, place.zone))
             v.setTextViewText(R.id.time, Fmt.hm(n.at, place.zone))
@@ -100,7 +100,7 @@ class TodayPrayersWidget : BaseWidget() {
         val place = WidgetUpdater.place(id)
         val now = Instant.now()
         val v = RemoteViews(c.packageName, R.layout.widget_today)
-        v.setTextViewText(R.id.place, "📍 " + place.name)
+        v.setTextViewText(R.id.place, place.name); v.setTextViewCompoundDrawablesRelative(R.id.place, R.drawable.widget_pin, 0, 0, 0)
         val next = place.next(now)
         next?.let { WidgetUpdater.countdown(v, R.id.left, it.at, now) }
         val entries = place.entries(place.today(now))

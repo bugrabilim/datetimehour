@@ -107,7 +107,7 @@ private struct ArabicText: View {
     var color: Color = Theme.ink
     var body: some View {
         Text(text)
-            .font(.system(size: size))
+            .font(AppFonts.arabic(size))
             .lineSpacing(size * 0.5)
             .foregroundStyle(color)
             .multilineTextAlignment(.leading)
@@ -142,6 +142,8 @@ struct QuranView: View {
         }
         ScrollView {
             LazyVStack(spacing: 6) {
+                // Mihrap kemeri ve hatem şeridi (doğal tasarım madde 15)
+                ArchBanner().frame(height: 56).padding(.bottom, 6)
                 HatimCard().padding(.bottom, 4)
                 if let mark = Quran.parse(bookmark), mark.0 >= 1, mark.0 <= data.suras.count {
                     NavigationLink {
@@ -377,6 +379,8 @@ struct DuasView: View {
         }
         ScrollView {
             VStack(spacing: 12) {
+                // Mihrap kemeri ve hatem şeridi (doğal tasarım madde 15)
+                ArchBanner().frame(height: 50)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
                         ForEach(["all", "fav"] + Duas.cats, id: \.self) { c in

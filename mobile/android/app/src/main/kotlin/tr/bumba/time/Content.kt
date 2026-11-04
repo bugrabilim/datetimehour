@@ -61,7 +61,7 @@ private fun asset(c: Context, name: String) = runCatching { c.assets.open(name).
 
 @Composable
 private fun Rtl(text: String, size: Int) {
-    Text(text, Modifier.fillMaxWidth(), color = Theme.c.ink, fontSize = size.sp, lineHeight = (size * 1.7).sp,
+    Text(text, Modifier.fillMaxWidth(), color = Theme.c.ink, fontSize = size.sp, lineHeight = (size * 1.7).sp, fontFamily = AppFonts.arabic,
         textAlign = TextAlign.Right, style = androidx.compose.ui.text.TextStyle(textDirection = TextDirection.Rtl))
 }
 
@@ -106,7 +106,7 @@ fun EsmaScreen(onBack: () -> Unit) {
                             Text(n.meaning, color = if (n.read.isEmpty()) Theme.c.text else Theme.c.muted, fontSize = if (n.read.isEmpty()) 16.sp else 14.sp)
                         }
                     }
-                    Text(n.ar, color = Theme.c.ink, fontSize = 24.sp)
+                    Text(n.ar, color = Theme.c.ink, fontSize = 26.sp, fontFamily = AppFonts.arabic)
                 }
             }
             item { Text(L("esma.note"), Modifier.padding(vertical = 12.dp), color = Theme.c.muted, fontSize = 12.sp) }
@@ -411,7 +411,7 @@ fun EsmaCard(n: Esma.Name, onClose: () -> Unit) {
                         }
                         drawCircle(accent.copy(alpha = 0.08f), r * 0.62f, c)
                     }
-                    Text(n.ar, color = Theme.c.ink, fontSize = 40.sp, fontWeight = FontWeight.Bold, fontFamily = androidx.compose.ui.text.font.FontFamily.Serif)
+                    Text(n.ar, color = Theme.c.ink, fontSize = 44.sp, fontFamily = AppFonts.arabic)
                 }
                 if (Strings.lang != "ar" && n.read.isNotEmpty()) Text(n.read, color = Theme.c.text, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
                 if (Strings.lang != "ar") Text(n.meaning, color = Theme.c.muted, fontSize = 15.sp, textAlign = androidx.compose.ui.text.style.TextAlign.Center)

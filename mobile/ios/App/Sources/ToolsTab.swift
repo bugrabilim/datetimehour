@@ -354,7 +354,7 @@ struct AlarmsView: View {
                         Text(m == 0 ? L("alarm.calLead.zero") : T("alarm.preMin", m)).tag(m)
                     }
                 }
-                Button("📅 " + L("alarm.fromCalendar")) { pickingEvent = true }
+                Button { pickingEvent = true } label: { Label { Text(L("alarm.fromCalendar")) } icon: { LineIcon(name: "calendar", size: 20, c1: Theme.accent, c2: Theme.accent) } }
                 NavigationLink {
                     GeoAlarmsView()
                 } label: {

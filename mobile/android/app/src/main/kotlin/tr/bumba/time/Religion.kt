@@ -133,7 +133,7 @@ private fun openUrl(c: Context, url: String) {
 
 @Composable
 private fun RtlText(text: String, size: Int, modifier: Modifier = Modifier, color: Color = Theme.c.ink) {
-    Text(text, modifier.fillMaxWidth(), color = color, fontSize = size.sp, lineHeight = (size * 1.9).sp,
+    Text(text, modifier.fillMaxWidth(), color = color, fontSize = size.sp, lineHeight = (size * 1.9).sp, fontFamily = AppFonts.arabic,
         textAlign = TextAlign.Right, style = androidx.compose.ui.text.TextStyle(textDirection = TextDirection.Rtl))
 }
 
@@ -154,6 +154,8 @@ fun QuranScreen(initial: Int? = null, onBack: () -> Unit) {
         SubBar(L("quran.title"), onBack = onBack)
         LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             item {
+                // Mihrap kemeri ve hatem şeridi (doğal tasarım madde 15)
+                ArchBanner(Modifier.fillMaxWidth().height(56.dp).padding(bottom = 6.dp), Theme.c.gold, 0.22f)
                 HatimCard()
                 Spacer(Modifier.height(6.dp))
                 Quran.bookmark?.let { (s, a) ->
@@ -188,7 +190,7 @@ fun QuranScreen(initial: Int? = null, onBack: () -> Unit) {
                         Text(s.title, color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
                         Text(T("quran.suraInfo", s.ayas, L(if (s.mecca) "quran.mecca" else "quran.medina")), color = Theme.c.muted, fontSize = 12.sp)
                     }
-                    Text(s.ar, color = Theme.c.ink, fontSize = 20.sp)
+                    Text(s.ar, color = Theme.c.ink, fontSize = 22.sp, fontFamily = AppFonts.arabic)
                 }
             }
             item { QuranCredits(); Spacer(Modifier.height(12.dp)) }
@@ -340,6 +342,8 @@ fun DuasScreen(onBack: () -> Unit) {
     Column(Modifier.fillMaxSize()) {
         SubBar(L("dua.title"), onBack = onBack)
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            // Mihrap kemeri ve hatem şeridi (doğal tasarım madde 15)
+            ArchBanner(Modifier.fillMaxWidth().height(50.dp), Theme.c.gold, 0.22f)
             OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), singleLine = true, placeholder = { Text(L("dua.search")) })
             Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 for (c in listOf("all", "fav") + Duas.CATS) {

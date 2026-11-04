@@ -124,12 +124,17 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                 calLead = it
                 Prefs.store.edit().putInt(CalendarAlarm.LEAD_KEY, it).apply()
             }
-            Text("📅 " + L("alarm.fromCalendar"), Modifier.fillMaxWidth().clickable {
+            Row(Modifier.fillMaxWidth().clickable {
                 DeviceCalendar.reload(context)
                 pickingEvent = true
-            }.padding(vertical = 8.dp), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
-            Text("📍 " + L("geo.title"), Modifier.fillMaxWidth().clickable { onGeo() }.padding(vertical = 8.dp),
-                color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+            }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                LineIcon("calendar", 20.dp, c1 = Theme.c.accent, c2 = Theme.c.accent)
+                Text("  " + L("alarm.fromCalendar"), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.Medium)
+            }
+            Row(Modifier.fillMaxWidth().clickable { onGeo() }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                LineIcon("pin", 20.dp, c1 = Theme.c.accent, c2 = Theme.c.accent)
+                Text("  " + L("geo.title"), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.Medium)
+            }
             Text(L("alarm.fromCalendarNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
         if (pickingEvent) {

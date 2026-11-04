@@ -28,6 +28,10 @@ enum AppFonts {
         serif ? .custom("Literata-Medium", size: 18, relativeTo: .headline) : .headline
     }
 
+    /// Kur'an, dua, hadis ve Esma'nın Arapçası (doğal tasarım madde 16): Amiri (SIL OFL 1.1, klasik nesih; Arapça alt
+    /// kümesi). Arayüzün Arapça metinleri sistem yazısında kalır.
+    static func arabic(_ size: CGFloat) -> Font { .custom("Amiri-Regular", size: size, relativeTo: .title2) }
+
     /// Büyük sayı (tarih rakamı, sıcaklık): her dilde Latin rakamı olduğu için hep Literata
     static func numerals(_ size: CGFloat) -> Font { .custom("Literata-Medium", size: size, relativeTo: .largeTitle) }
 

@@ -58,18 +58,22 @@ struct GuideFigure: View {
                 path.addLine(to: b)
                 ctx.stroke(path, with: .color(color), style: StrokeStyle(lineWidth: w, lineCap: .round))
             }
-            line(p(12, 96.5), p(92, 96.5), Theme.accent.opacity(0.35), 5 * s)
+            // Zemin: seccade (doğal tasarım madde 17: yuvarlak köşeli halı ve saçak çizgileri)
+            let mat = CGRect(x: p(10, 93.5).x, y: p(10, 93.5).y, width: 84 * s, height: 6 * s)
+            ctx.fill(Path(roundedRect: mat, cornerRadius: 3 * s), with: .color(Theme.accent.opacity(0.16)))
+            for x in [10.0, 94.0] { line(p(x, 94.5), p(x, 98.5), Theme.accent.opacity(0.3), 1.2 * s) }
+            // Yumuşak siluet: kalın, yuvarlak uçlu uzuvlar (eklem sayısı iki platformda aynı)
             let pose = GuideFigures.pose(id, female: female)
-            for l in pose.lines { line(p(l[0], l[1]), p(l[2], l[3]), Theme.ink, 4.2 * s) }
+            for l in pose.lines { line(p(l[0], l[1]), p(l[2], l[3]), Theme.ink.opacity(0.88), 6.4 * s) }
             let h = pose.head
             if female {
                 let r = 9.5 * s
                 let c = p(h.x - 1, h.y)
                 ctx.fill(Path(ellipseIn: CGRect(x: c.x - r, y: c.y - r, width: 2 * r, height: 2 * r)), with: .color(Theme.accent.opacity(0.55)))
             }
-            let r = 6.5 * s
+            let r = 7 * s
             let c = p(h.x, h.y)
-            ctx.fill(Path(ellipseIn: CGRect(x: c.x - r, y: c.y - r, width: 2 * r, height: 2 * r)), with: .color(Theme.ink))
+            ctx.fill(Path(ellipseIn: CGRect(x: c.x - r, y: c.y - r, width: 2 * r, height: 2 * r)), with: .color(Theme.ink.opacity(0.88)))
             if id == "salam" {
                 line(p(h.x - 10, h.y - 14), p(h.x + 10, h.y - 14), Theme.accent, 2.5 * s)
                 line(p(h.x + 10, h.y - 14), p(h.x + 6, h.y - 17), Theme.accent, 2.5 * s)

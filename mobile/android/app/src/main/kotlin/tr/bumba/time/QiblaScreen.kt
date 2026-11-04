@@ -296,6 +296,8 @@ private fun QiblaDial(bearing: Double, heading: Double, aligned: Boolean) {
             contentAlignment = Alignment.Center,
         ) {
             Box(Modifier.size(270.dp).background(look.face, CircleShape).border(if (QiblaPrefs.style == "gold") 3.dp else 1.dp, look.ring, CircleShape))
+            // Kadranın zemininde soluk hatem (doğal tasarım madde 15; %6)
+            HatemMotif(Modifier.size(200.dp).rotate(dial), look.ring, 0.06f)
             Box(Modifier.fillMaxSize().rotate(dial), contentAlignment = Alignment.Center) {
                 Canvas(Modifier.size(270.dp)) {
                     val c = Offset(size.width / 2, size.height / 2)

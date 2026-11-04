@@ -1,5 +1,7 @@
 package tr.bumba.time
 
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -602,11 +604,16 @@ fun SkyCountdown(entries: List<AppPlace.Entry>, next: AppPlace.Entry, now: Insta
     var words by remember { mutableStateOf(Prefs.store.getBoolean("prayer.words", false)) }
     val left = next.at.epochSecond - now.epochSecond
     val sky = skyColors(entries, now, Theme.c.dark)
-    Column(
-        Modifier.fillMaxWidth().background(Brush.verticalGradient(sky.colors), RoundedCornerShape(22.dp))
+    // Köşede hatem, altta kubbe-minare silueti (doğal tasarım madde 15; %10 ve %12)
+    androidx.compose.foundation.layout.Box(
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp)).background(Brush.verticalGradient(sky.colors))
             .clickable { words = !words; Prefs.store.edit().putBoolean("prayer.words", words).apply() }
-            .padding(vertical = 16.dp, horizontal = 12.dp)
             .semantics { contentDescription = countdownWords(left, next.prayer.title) + ". " + L("prayer.wordsHint") },
+    ) {
+    HatemMotif(Modifier.align(Alignment.TopEnd).offset(x = 28.dp, y = (-28).dp).size(110.dp), sky.text, 0.10f)
+    SkylineMotif(Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(34.dp), sky.text, 0.12f)
+    Column(
+        Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 22.dp, start = 12.dp, end = 12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         LineIcon(LineIconMap.prayer(next.prayer), 30.dp, c1 = sky.text, c2 = sky.text)
@@ -618,5 +625,6 @@ fun SkyCountdown(entries: List<AppPlace.Entry>, next: AppPlace.Entry, now: Insta
             // Büyük sayaç: ince (300) ve tablo rakamlı (doğal tasarım bölüm 3.2)
             Text(Fmt.countdown(left), color = sky.text, fontSize = 56.sp, fontWeight = FontWeight.Light, style = Tnum)
         }
+    }
     }
 }

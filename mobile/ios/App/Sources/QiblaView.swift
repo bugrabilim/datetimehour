@@ -157,6 +157,8 @@ struct QiblaView: View {
         return ZStack {
             Circle().fill(look.face)
             Circle().stroke(look.ring, lineWidth: look == .gold ? 3 : 1)
+            // Kadranın zemininde soluk hatem (doğal tasarım madde 15; %6)
+            HatemMotif(color: look.ring, opacity: 0.06).padding(30).rotationEffect(.degrees(-heading))
             ZStack {
                 ForEach(0..<72) { i in
                     Capsule()

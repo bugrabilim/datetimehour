@@ -95,7 +95,7 @@ class SunWidget : BaseWidget() {
         val rise = AlarmItem.sunMinutes(today, place.lat, place.lon, place.zone, true)
         val set = AlarmItem.sunMinutes(today, place.lat, place.lon, place.zone, false)
         fun hm(m: Int?) = m?.let { "%02d:%02d".format(java.util.Locale.ROOT, (it / 60) % 24, it % 60) } ?: "—"
-        v.setTextViewText(R.id.place, "📍 " + place.name)
+        v.setTextViewText(R.id.place, place.name); v.setTextViewCompoundDrawablesRelative(R.id.place, R.drawable.widget_pin, 0, 0, 0)
         v.setTextViewText(R.id.riseLabel, L("nature.sunrise"))
         v.setTextViewText(R.id.rise, hm(rise))
         v.setTextViewText(R.id.setLabel, L("nature.sunset"))
@@ -243,7 +243,7 @@ class WeatherWidget : BaseWidget() {
     override fun views(c: Context, id: Int): RemoteViews {
         val v = RemoteViews(c.packageName, R.layout.widget_weather)
         val place = AppPlace.current()
-        v.setTextViewText(R.id.place, "📍 " + place.name)
+        v.setTextViewText(R.id.place, place.name); v.setTextViewCompoundDrawablesRelative(R.id.place, R.drawable.widget_pin, 0, 0, 0)
         val w = WeatherCache.cached(place.lat, place.lon)
         if (w != null) {
             val code = WeatherCode.of(w.current.code)

@@ -58,7 +58,17 @@ fun EmptyState(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        Icon(icon, null, tint = Theme.c.accent.copy(alpha = 0.6f), modifier = Modifier.size(64.dp))
+        // Küçük resim (doğal tasarım madde 18): çakıl taşı zemin, çizgi simge, köşede küçük güneş
+        Box(Modifier.size(104.dp)) {
+            Box(Modifier.align(Alignment.Center).size(88.dp).clip(PebbleShape).background(Theme.c.accentSoft))
+            Box(Modifier.align(Alignment.TopEnd).padding(top = 4.dp, end = 6.dp).size(18.dp).clip(androidx.compose.foundation.shape.CircleShape)
+                .background(Theme.c.gold.copy(alpha = 0.55f)))
+            Box(Modifier.align(Alignment.Center)) {
+                val line = LineIconMap.of(icon.name)
+                if (line != null) LineIcon(line, 48.dp, c1 = Theme.c.accent, c2 = Theme.c.sage)
+                else Icon(icon, null, tint = Theme.c.accent, modifier = Modifier.size(44.dp))
+            }
+        }
         if (!title.isNullOrBlank()) Text(title, color = Theme.c.text, fontSize = 18.sp, fontFamily = AppFonts.heading,
             fontWeight = FontWeight.Medium, textAlign = TextAlign.Center)
         if (!text.isNullOrBlank()) Text(text, color = Theme.c.muted, fontSize = 14.sp, textAlign = TextAlign.Center)

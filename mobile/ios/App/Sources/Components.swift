@@ -15,11 +15,18 @@ struct EmptyState: View {
 
     var body: some View {
         VStack(spacing: 8) {
-            Image(systemName: icon)
-                .font(.system(size: 56, weight: .light))
-                .frame(width: 64, height: 64)
-                .foregroundStyle(Theme.accent.opacity(0.6))
-                .accessibilityHidden(true)
+            // Küçük resim (doğal tasarım madde 18): çakıl taşı zemin, çizgi simge, köşede küçük güneş
+            ZStack {
+                PebbleShape().fill(Theme.accentSoft).frame(width: 88, height: 88)
+                Circle().fill(Theme.gold.opacity(0.55)).frame(width: 18, height: 18).offset(x: 40, y: -40)
+                if let line = LineIconMap.of(icon) {
+                    LineIcon(name: line, size: 48, c1: Theme.accent, c2: Theme.sage)
+                } else {
+                    Image(systemName: icon).font(.system(size: 40, weight: .light)).foregroundStyle(Theme.accent)
+                }
+            }
+            .frame(width: 104, height: 104)
+            .accessibilityHidden(true)
             if let title, !title.isEmpty {
                 Text(title).font(AppFonts.cardTitle).foregroundStyle(Theme.text)
             }

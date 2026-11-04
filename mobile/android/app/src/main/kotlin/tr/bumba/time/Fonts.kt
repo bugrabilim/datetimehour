@@ -24,4 +24,10 @@ object AppFonts {
 
     /** Tarih rakamı, sıcaklık gibi büyük sayılar (her dilde Latin rakamı olduğu için hep Literata) */
     val numerals: FontFamily get() = literata
+
+    /**
+     * Kur'an, dua, hadis ve Esma'nın Arapçası (doğal tasarım madde 16): Amiri (SIL OFL 1.1, klasik nesih; res/font,
+     * Arapça alt kümesi). Arayüzün Arapça metinleri sistem yazısında kalır.
+     */
+    val arabic: FontFamily = FontFamily(Font(R.font.amiri_regular, FontWeight.Normal))
 }

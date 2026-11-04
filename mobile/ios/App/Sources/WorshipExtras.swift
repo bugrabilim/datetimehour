@@ -381,9 +381,18 @@ struct SkyCountdown: View {
             }
             .foregroundStyle(sky.text)
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 16).padding(.horizontal, 12)
-            .background(LinearGradient(colors: sky.colors, startPoint: .top, endPoint: .bottom),
-                        in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+            .padding(.top, 16).padding(.bottom, 22).padding(.horizontal, 12)
+            .background {
+                // Köşede hatem, altta kubbe-minare silueti (doğal tasarım madde 15; %10 ve %12)
+                ZStack {
+                    LinearGradient(colors: sky.colors, startPoint: .top, endPoint: .bottom)
+                    HatemMotif(color: sky.text, opacity: 0.10).frame(width: 110, height: 110)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing).offset(x: 28, y: -28)
+                    SkylineShape().fill(sky.text.opacity(0.12)).frame(height: 34)
+                        .frame(maxHeight: .infinity, alignment: .bottom)
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+            }
         }
         .buttonStyle(.plain)
         .accessibilityLabel(countdownWords(left, next.prayer.localizedName))
