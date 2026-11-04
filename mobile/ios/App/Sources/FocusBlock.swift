@@ -23,7 +23,8 @@ enum FocusBlock {
     static var available: Bool { Bundle.main.object(forInfoDictionaryKey: "SaatFamilyControls") as? Bool == true }
 
     /// Alarm görevi sürerken uygulamanın silinmesini engeller (2. analiz #46). Yalnız FamilyControls yetkisi (Apple
-    /// onayı) ve kullanıcının Ekran Süresi izni varsa ve Ayarlar'da açıksa (`wake.denyRemoval`, varsayılan açık).
+    /// onayı) ve kullanıcının Ekran Süresi izni varsa; ayrı bir ayar düğmesi yok (`wake.denyRemoval` yalnız ileride
+    /// kapatmak için okunur, varsayılan açık).
     private static let wakeStore = ManagedSettingsStore(named: ManagedSettingsStore.Name("wake"))
     static func denyRemoval(_ on: Bool) {
         guard available else { return }

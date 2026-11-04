@@ -18,16 +18,37 @@ public enum WakeTask {
     ]
     public static let objectMin: Float = 0.3
 
+    /// Tam sözcük eşleşmesi ("bed" "flowerbed"de, "tree" "street"te geçmez); sondaki çoğul -s kabul edilir
     public static func objectMatch(_ target: String, _ labels: [(String, Float)]) -> Bool {
         guard let words = objectWords[target] else { return false }
         return labels.contains { label in
-            let n = label.0.lowercased().replacingOccurrences(of: "_", with: " ")
-            return label.1 >= objectMin && words.contains { w in n == w || n.contains(w) }
+            let cleaned = String(label.0.lowercased().map { $0.isLetter || $0.isNumber ? $0 : " " })
+            let n = " " + cleaned.split(separator: " ").joined(separator: " ") + " "
+            return label.1 >= objectMin && words.contains { w in
+                n.contains(" \(w) ") || n.contains(" \(w)s ") || n.contains(" \(w)es ")
+            }
         }
     }
 
     /// Sesli okuma (#37): duyulan sözcüklerin en az %70'i hedefte sırayla geçiyorsa
     public static func spoken(_ target: String, _ heard: String) -> Bool {
+        // Sözcükleri boşlukla ayrılmayan yazılar (Japonca, Çince, Tayca): harf düzeyinde, en uzun ortak alt dizi ≥ %70
+        let spaceless = target.unicodeScalars.contains { s in
+            (0x0E00...0x0E7F).contains(s.value) || (0x3040...0x30FF).contains(s.value) || (0x4E00...0x9FFF).contains(s.value)
+        }
+        if spaceless {
+            func chars(_ s: String) -> [Character] { Array(s.lowercased().filter { $0.isLetter || $0.isNumber }) }
+            let a = chars(target)
+            let b = chars(heard)
+            guard !a.isEmpty, !b.isEmpty else { return false }
+            var dp = Array(repeating: Array(repeating: 0, count: b.count + 1), count: a.count + 1)
+            for i in 1...a.count {
+                for j in 1...b.count {
+                    dp[i][j] = a[i - 1] == b[j - 1] ? dp[i - 1][j - 1] + 1 : max(dp[i - 1][j], dp[i][j - 1])
+                }
+            }
+            return Double(dp[a.count][b.count]) >= (Double(a.count) * 0.7).rounded(.up)
+        }
         func words(_ s: String) -> [String] {
             s.lowercased().filter { $0.isLetter || $0.isNumber || $0.isWhitespace }
                 .split(whereSeparator: { $0.isWhitespace }).map(String.init)

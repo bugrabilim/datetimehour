@@ -77,6 +77,10 @@
         android:localeConfig="@xml/locales_config"
         android:supportsRtl="true"
         android:theme="@style/Theme.SaatTarih">
+        <!-- Nesne bulma görevi (2. analiz #36): ML Kit görüntü etiketleme modeli Play hizmetleriyle kurulumda indirilsin -->
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="ica" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

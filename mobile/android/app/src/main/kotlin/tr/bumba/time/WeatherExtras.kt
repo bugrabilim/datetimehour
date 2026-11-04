@@ -268,6 +268,7 @@ fun MeteogramCard(d: WeatherData) {
 fun ModelsCard(place: AppPlace) {
     val data by produceState<Map<String, List<ModelDay>>?>(null, place.lat, place.lon) { value = ModelCache.get(place.lat, place.lon) }
     val m = data ?: return
+    if (m.isEmpty()) return
     val dates = m.values.first().map { it.date }.take(5)
     AppCard {
         SectionTitle(L("models.title"))

@@ -380,7 +380,11 @@ private fun SpeakTask(onSolved: () -> Unit, onUnavailable: () -> Unit) {
             override fun onPartialResults(partial: android.os.Bundle) {
                 partial.getStringArrayList(android.speech.SpeechRecognizer.RESULTS_RECOGNITION)?.firstOrNull()?.let { heard = it }
             }
-            override fun onError(error: Int) { listening = false }
+            override fun onError(error: Int) {
+                listening = false
+                // 12/13: telefonda bu dilin cihaz içi modeli yok → yazma görevi
+                if (error == 12 || error == 13) onUnavailable()
+            }
             override fun onReadyForSpeech(p: android.os.Bundle?) {}
             override fun onBeginningOfSpeech() {}
             override fun onRmsChanged(v: Float) {}

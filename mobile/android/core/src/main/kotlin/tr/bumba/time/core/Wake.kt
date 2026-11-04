@@ -23,16 +23,29 @@ object WakeTask {
     )
     const val OBJECT_MIN = 0.3f
 
+    /** Tam sözcük eşleşmesi ("bed" "flowerbed"de, "tree" "street"te geçmez); sondaki çoğul -s kabul edilir */
     fun objectMatch(target: String, labels: List<Pair<String, Float>>): Boolean {
         val words = OBJECTS[target] ?: return false
         return labels.any { (name, conf) ->
-            val n = name.lowercase().replace('_', ' ')
-            conf >= OBJECT_MIN && words.any { w -> n == w || n.split(' ', ',', '/').contains(w) || n.contains(w) }
+            val n = " " + name.lowercase().map { if (it.isLetterOrDigit()) it else ' ' }.joinToString("").trim().replace(Regex(" +"), " ") + " "
+            conf >= OBJECT_MIN && words.any { w -> n.contains(" $w ") || n.contains(" ${w}s ") || n.contains(" ${w}es ") }
         }
     }
 
     /** Sesli okuma (#37): duyulan sözcüklerin en az %70'i hedefte sırayla geçiyorsa (büyük/küçük harf, noktalama yok sayılır) */
     fun spoken(target: String, heard: String): Boolean {
+        // Sözcükleri boşlukla ayrılmayan yazılar (Japonca, Çince, Tayca): harf düzeyinde, en uzun ortak alt dizi ≥ %70
+        if (target.any { it in '\u0E00'..'\u0E7F' || it in '\u3040'..'\u30FF' || it in '\u4E00'..'\u9FFF' }) {
+            fun chars(s: String) = s.lowercase().filter { it.isLetterOrDigit() }
+            val a = chars(target)
+            val b = chars(heard)
+            if (a.isEmpty() || b.isEmpty()) return false
+            val dp = Array(a.length + 1) { IntArray(b.length + 1) }
+            for (i in 1..a.length) for (j in 1..b.length) {
+                dp[i][j] = if (a[i - 1] == b[j - 1]) dp[i - 1][j - 1] + 1 else maxOf(dp[i - 1][j], dp[i][j - 1])
+            }
+            return dp[a.length][b.length] >= kotlin.math.ceil(a.length * 0.7)
+        }
         fun words(s: String) = s.lowercase().filter { it.isLetterOrDigit() || it.isWhitespace() }.split(Regex("\\s+")).filter { it.isNotEmpty() }
         val t = words(target)
         val h = words(heard)

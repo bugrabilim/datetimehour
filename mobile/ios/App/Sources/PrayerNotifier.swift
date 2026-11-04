@@ -218,7 +218,7 @@ enum PrayerSnooze {
 
     static func snooze(_ content: UNNotificationContent) {
         guard let copy = content.mutableCopy() as? UNMutableNotificationContent else { return }
-        let request = UNNotificationRequest(identifier: "prayer-snooze-\(Int(Date().timeIntervalSince1970))", content: copy,
+        let request = UNNotificationRequest(identifier: "snooze-prayer-\(Int(Date().timeIntervalSince1970))", content: copy,
                                             trigger: UNTimeIntervalNotificationTrigger(timeInterval: 300, repeats: false))
         UNUserNotificationCenter.current().add(request)
     }

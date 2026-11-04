@@ -19,6 +19,16 @@ class FocusSleepWakeTest {
         assertTrue(WakeTask.objectMatch("bed", listOf("bedroom" to 0.5f)))
         assertFalse(WakeTask.objectMatch("bed", listOf("bedroom" to 0.1f)))
         assertFalse(WakeTask.objectMatch("sky", listOf("keyboard" to 0.9f)))
+        // Tam sözcük: "street" ağaç, "flowerbed" yatak, "sunglasses" bardak değildir; çoğul kabul
+        assertFalse(WakeTask.objectMatch("plant", listOf("street" to 0.9f)))
+        assertFalse(WakeTask.objectMatch("bed", listOf("flowerbed" to 0.9f)))
+        assertFalse(WakeTask.objectMatch("cup", listOf("sunglasses" to 0.9f)))
+        assertTrue(WakeTask.objectMatch("shoe", listOf("Shoes" to 0.6f)))
+        assertTrue(WakeTask.objectMatch("cup", listOf("drinking_glass" to 0.6f)))
+        // Boşluksuz yazılar: harf düzeyinde (tanıyıcı rakam yazsa da geçer)
+        assertTrue(WakeTask.spoken("石の上にも三年", "石の上にも3年"))
+        assertTrue(WakeTask.spoken("百闻不如一见。", "百闻不如一见"))
+        assertFalse(WakeTask.spoken("石の上にも三年", "三年"))
         // Sesli okuma: %70 sözcük sırayla
         assertTrue(WakeTask.spoken("Sabah erken kalkan yol alır", "sabah erken kalkan yol alır"))
         assertTrue(WakeTask.spoken("Sabah erken kalkan yol alır", "sabah erken kalkan alır"))
