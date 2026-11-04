@@ -84,10 +84,12 @@ targets:
       - path: App/Sources/MoonTexture.swift
       - path: App/Sources/Hijri.swift
       - path: App/Sources/LiveActivityModel.swift
+      - path: App/Sources/WorldMath.swift
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/provinces.json
       - path: App/Resources/cities.json
       - path: App/Resources/moon.jpg
+      - path: App/Resources/earth.jpg
       - path: App/Resources/hijri.json
       # Günün içeriği widget'ı (2. analiz #16)
       - path: App/Resources/sayings.json

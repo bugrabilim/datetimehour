@@ -70,6 +70,9 @@ struct CityEntity: AppEntity, Decodable {
     let key: String
     let tz: String
     let name: [String: String]
+    /// Harita widget'ı için (cities.json'da var)
+    var lat: Double?
+    var lon: Double?
 
     var id: String { key }
     var displayName: String { name[(Bundle.main.preferredLocalizations.first ?? "tr").hasPrefix("zh") ? "zh" : Bundle.main.preferredLocalizations.first ?? "tr"] ?? name["en"] ?? key }

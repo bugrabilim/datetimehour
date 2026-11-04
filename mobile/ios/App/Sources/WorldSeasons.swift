@@ -59,6 +59,9 @@ struct WorldClockView: View {
     @State private var detail: WorldEntry?
     @State private var query = ""
     @AppStorage(WorldLabels.key) private var labelsRaw = ""
+    /// Küre / harita / 24 saat kadranı (2. analiz #129, #131) ve şehir başına hava
+    @AppStorage("world.view") private var view = "globe"
+    @ObservedObject private var weather = WorldWeather.shared
 
     private var cities: [WorldEntry] { WorldEntry.list(keysRaw) }
 
@@ -67,9 +70,21 @@ struct WorldClockView: View {
             let at = shift ? when : context.date
             List {
                 Section {
-                    GlobeView()
-                        .frame(height: 340)
-                        .listRowInsets(EdgeInsets())
+                    WorldViewPicker(view: $view)
+                    switch view {
+                    case "map":
+                        WorldMapCard(entries: cities, date: at)
+                    case "dial":
+                        WorldDial(entries: cities, date: at) { d in
+                            shift = true
+                            when = d
+                        }
+                        .frame(maxWidth: .infinity)
+                    default:
+                        GlobeView()
+                            .frame(height: 340)
+                            .listRowInsets(EdgeInsets())
+                    }
                 }
                 Section {
                     LabeledContent(L("settings.location")) { PlacePicker(font: .body) }
@@ -128,8 +143,15 @@ struct WorldClockView: View {
                     .foregroundStyle(Theme.accent)
                     .buttonStyle(.borderless)
                 } footer: {
-                    Button(L("world.reset")) { keysRaw = City.defaultKeys }
-                        .font(.footnote)
+                    VStack(alignment: .leading, spacing: 8) {
+                        if weather.hasAny {
+                            Text(L("world.wxNote")).font(.footnote).foregroundStyle(Theme.muted)
+                            // WeatherKit gösterimi: Apple Hava Durumu işareti ve yasal bağlantı (App Review 5.2.5)
+                            AppleWeatherMark(compact: true)
+                        }
+                        Button(L("world.reset")) { keysRaw = City.defaultKeys }
+                            .font(.footnote)
+                    }
                 }
             }
             .themedBackground()
@@ -138,6 +160,7 @@ struct WorldClockView: View {
         .navigationTitle(L("world.h1"))
         .navigationBarTitleDisplayMode(.large)
         .sheet(item: $detail) { WorldDetailView(entry: $0) }
+        .task(id: keysRaw) { weather.refresh(cities) }
         .sheet(isPresented: $adding) {
             NavigationStack {
                 // Şehir arama (2. analiz #128): 31 şehir, 1960 yer (places.json) ve kısaltmalar (EST, CET…)
@@ -199,6 +222,7 @@ struct WorldClockView: View {
                 if !dayNote.isEmpty {
                     Text(dayNote).font(.caption2.weight(.semibold))
                 }
+                WorldWeatherBadge(key: city.key, color: fg)
             }
             .foregroundStyle(fg)
             .padding(.horizontal, 10).padding(.vertical, 4)

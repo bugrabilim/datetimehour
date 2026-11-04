@@ -130,7 +130,14 @@ final class Router {
         sheet = nil
         switch url.host() ?? "" {
         case "fullscreen": openFullscreen()
-        case "timer": tab = .tools; toolsPath = [.timer]
+        case "timer":
+            // Widget'taki hazır süre (2. analiz #136): saattarih://timer?min=5
+            if let m = Self.queryInt(url, "min"), m > 0 { QuickStart.timer(minutes: m) }
+            tab = .tools; toolsPath = [.timer]
+        case "pomodoro":
+            // Odak widget'ı: saattarih://pomodoro?start=1 çalışma süresini başlatır
+            if Self.queryInt(url, "start") == 1 { QuickStart.focus() }
+            tab = .tools; toolsPath = [.pomodoro]
         case "stopwatch": tab = .tools; toolsPath = [.stopwatch]
         case "alarm": tab = .tools; toolsPath = [.alarm]
         case "prayer": tab = .prayer
@@ -143,6 +150,10 @@ final class Router {
             if CountdownItem.importURL(url) { tab = .tools; toolsPath = [.timer] }
         default: break
         }
+    }
+
+    static func queryInt(_ url: URL, _ name: String) -> Int? {
+        URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.first { $0.name == name }?.value.flatMap { Int($0) }
     }
 
     func openFullscreen() {

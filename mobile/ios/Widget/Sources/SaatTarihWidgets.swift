@@ -14,6 +14,12 @@ struct SaatTarihWidgets: WidgetBundle {
         MoonWidget()
         SecondsClockWidget()
         WorldClockWidget()
+        // 2. analiz #130, #136: 8 şehir, saat çakışması, dünya haritası, hazır süreler, odak
+        World8Widget()
+        OverlapWidget()
+        WorldMapWidget()
+        TimerPresetsWidget()
+        FocusStartWidget()
         CountdownWidget()
         HijriWidget()
         ZikirWidget()
