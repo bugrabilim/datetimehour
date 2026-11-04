@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">Всё — во вкладке «Все»</string>
     <string name="onboard_all_text">Во вкладке «Все» на нижней панели — все инструменты, поиск и настройки; удерживайте избранное, чтобы закрепить его сверху. Чтобы добавить под часы дату, время намаза или погоду: Настройки › Изменить экран часов.</string>
     <string name="onboard_replay">Показать знакомство снова</string>
+    <string name="atmo_daylight">Дневной свет</string>
+    <string name="atmo_daylightNote">Дневной свет следует за солнцем в выбранном месте: тона рассвета, утра, дня, вечера или ночи.</string>
     <string name="app_name">Время и дата</string>
 </resources>

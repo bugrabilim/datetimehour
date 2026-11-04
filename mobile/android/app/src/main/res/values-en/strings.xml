@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">Everything is under All</string>
     <string name="onboard_all_text">All in the bottom bar has every tool, search and Settings; long-press your favourites to pin them at the top. To add the date, prayer times or weather under the clock: Settings › Edit clock screen.</string>
     <string name="onboard_replay">Show the intro again</string>
+    <string name="atmo_daylight">Daylight</string>
+    <string name="atmo_daylightNote">Daylight follows the sun at your chosen place: dawn, morning, afternoon, evening or night tones.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

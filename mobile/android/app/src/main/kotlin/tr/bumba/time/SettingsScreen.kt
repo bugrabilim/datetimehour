@@ -263,8 +263,10 @@ fun ColorScreen() {
             SectionTitle(L("atmo.title"))
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 AtmosphereCard(null)
+                AtmosphereCard(Atmosphere.find(Atmosphere.DAYLIGHT))
                 Atmosphere.ALL.forEach { AtmosphereCard(it) }
             }
+            Text(L("atmo.daylightNote"), color = Theme.c.muted, fontSize = 12.sp)
             Text(L("atmo.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
         // Duvar kâğıdı renkleri (Material You; Android 12+, 2. analiz #167)

@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">Tudo está em \"Tudo\"</string>
     <string name="onboard_all_text">Em \"Tudo\", na barra inferior, ficam todas as ferramentas, a busca e os Ajustes; toque e segure seus favoritos para fixá-los no topo. Para pôr a data, os horários de oração ou o clima abaixo do relógio: Ajustes › Editar tela do relógio.</string>
     <string name="onboard_replay">Ver a apresentação de novo</string>
+    <string name="atmo_daylight">Luz do dia</string>
+    <string name="atmo_daylightNote">A luz do dia acompanha o sol no lugar escolhido: tons de amanhecer, manhã, tarde, entardecer ou noite.</string>
     <string name="app_name">Hora e Data</string>
 </resources>

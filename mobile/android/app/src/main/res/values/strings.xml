@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">Her şey Tümü\'nde</string>
     <string name="onboard_all_text">Alt çubuktaki Tümü\'de bütün araçlar, arama ve Ayarlar var; sık kullandıklarınızı uzun basarak öne alın. Saatin altına tarih, vakit ya da hava eklemek için: Ayarlar › Saat ekranını düzenle.</string>
     <string name="onboard_replay">Tanıtımı yeniden göster</string>
+    <string name="atmo_daylight">Gün ışığı</string>
+    <string name="atmo_daylightNote">Gün ışığı, seçili yerde Güneş\'in konumuna göre şafak, sabah, ikindi, akşam ya da gece tonunu alır.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

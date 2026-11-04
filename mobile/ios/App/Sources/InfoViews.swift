@@ -182,6 +182,7 @@ struct AccentPickerView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         atmoCard(nil)
+                        atmoCard(Atmosphere.daylight())
                         ForEach(Atmosphere.all) { atmoCard($0) }
                     }
                     .padding(.vertical, 10)
@@ -191,7 +192,7 @@ struct AccentPickerView: View {
             } header: {
                 Text(L("atmo.title"))
             } footer: {
-                Text(L("atmo.note"))
+                Text(L("atmo.daylightNote") + " " + L("atmo.note"))
             }
             ForEach(AccentPalette.Group.allCases, id: \.self) { group in
                 Section(L("settings.color.\(group.rawValue)")) {

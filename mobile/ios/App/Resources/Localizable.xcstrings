@@ -320242,6 +320242,232 @@
           }
         }
       }
+    },
+    "atmo.daylight": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün ışığı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daylight"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tageslicht"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün işığı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضوء النهار"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cahaya hari"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دن کی روشنی"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نور روز"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lumière du jour"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дневной свет"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日の光"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "햇빛"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日光"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Liwanag ng araw"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสงตะวัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luz del día"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luz do dia"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "दिन का उजाला"
+          }
+        }
+      }
+    },
+    "atmo.daylightNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün ışığı, seçili yerde Güneş'in konumuna göre şafak, sabah, ikindi, akşam ya da gece tonunu alır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daylight follows the sun at your chosen place: dawn, morning, afternoon, evening or night tones."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tageslicht folgt der Sonne am gewählten Ort: Töne für Morgendämmerung, Vormittag, Nachmittag, Abend oder Nacht."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün işığı seçilmiş yerdə Günəşin vəziyyətinə görə şəfəq, səhər, ikindi, axşam və ya gecə çalarını alır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يتبع ضوء النهار الشمس في المكان المختار: ألوان الفجر أو الصباح أو العصر أو المساء أو الليل."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cahaya hari mengikuti matahari di tempat pilihan Anda: nuansa fajar, pagi, sore, petang, atau malam."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دن کی روشنی منتخب جگہ پر سورج کے مطابق بدلتی ہے: فجر، صبح، عصر، شام یا رات کے رنگ۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نور روز با خورشید در مکان انتخاب‌شده همراه است: رنگ‌های سپیده‌دم، صبح، عصر، شامگاه یا شب."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La lumière du jour suit le soleil à l'endroit choisi : tons d'aube, de matin, d'après-midi, de soir ou de nuit."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дневной свет следует за солнцем в выбранном месте: тона рассвета, утра, дня, вечера или ночи."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日の光は選んだ場所の太陽に合わせて、夜明け・朝・午後・夕方・夜の色合いに変わります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "햇빛은 선택한 곳의 태양을 따라 새벽, 아침, 오후, 저녁, 밤의 색으로 바뀝니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日光随所选地点的太阳变化：黎明、上午、下午、傍晚或夜晚的色调。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sumusunod ang Liwanag ng araw sa araw sa napiling lugar: kulay ng bukang-liwayway, umaga, hapon, gabi o hatinggabi."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสงตะวันเปลี่ยนตามดวงอาทิตย์ ณ สถานที่ที่เลือก: โทนรุ่งอรุณ เช้า บ่าย เย็น หรือกลางคืน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La luz del día sigue al sol en el lugar elegido: tonos de amanecer, mañana, tarde, atardecer o noche."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A luz do dia acompanha o sol no lugar escolhido: tons de amanhecer, manhã, tarde, entardecer ou noite."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "दिन का उजाला चुनी गई जगह पर सूरज के साथ बदलता है: भोर, सुबह, दोपहर बाद, शाम या रात के रंग।"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

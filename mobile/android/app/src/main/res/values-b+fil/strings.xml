@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">Nasa Lahat ang lahat</string>
     <string name="onboard_all_text">Nasa Lahat sa ibabang bar ang lahat ng tool, ang paghahanap at ang Settings; pindutin nang matagal ang mga paborito para i-pin sa itaas. Para magdagdag ng petsa, oras ng pagdarasal o panahon sa ilalim ng orasan: Settings › I-edit ang screen ng orasan.</string>
     <string name="onboard_replay">Ipakita muli ang pagpapakilala</string>
+    <string name="atmo_daylight">Liwanag ng araw</string>
+    <string name="atmo_daylightNote">Sumusunod ang Liwanag ng araw sa araw sa napiling lugar: kulay ng bukang-liwayway, umaga, hapon, gabi o hatinggabi.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

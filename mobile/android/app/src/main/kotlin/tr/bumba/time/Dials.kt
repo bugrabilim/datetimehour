@@ -176,6 +176,10 @@ fun DrawScope.drawDial(face: DialFace, k: DialFace.Colors, measurer: TextMeasure
     val r = 94 * u
     val circle = Path().apply { addOval(androidx.compose.ui.geometry.Rect(center, r)) }
     fun k(v: Long) = Color(0xFF000000 or v)
+    // Klasik kadranın altında yumuşak gölge (birkaç soluk halka; doğal tasarım madde 9)
+    if (face == DialFace.CLASSIC) for ((d, a) in listOf(6f to 0.03f, 4f to 0.04f, 2f to 0.05f)) {
+        drawCircle(Color(0xFF4A341E).copy(alpha = a), r + d * u * 0.5f, Offset(center.x, center.y + d * u))
+    }
     // Zemin ve doku (dairenin içine kırpılır)
     clipPath(circle) {
         when (face) {
@@ -271,6 +275,8 @@ fun DrawScope.drawDial(face: DialFace, k: DialFace.Colors, measurer: TextMeasure
             }
             DialFace.GEOMETRIC -> drawRect(Brush.radialGradient(listOf(k(0x145A45), k(0x0B2E24)), center, r))
             DialFace.SECTOR -> { drawRect(k.face); drawCircle(k(0xE2D9C6), 50 * u, center) }
+            // Klasik kadran (doğal tasarım madde 9): ortası hafif aydınlık radyal geçiş
+            DialFace.CLASSIC -> drawRect(Brush.radialGradient(listOf(androidx.compose.ui.graphics.lerp(k.face, Color.White, 0.22f), k.face), center, r))
             else -> drawRect(k.face)
         }
         if (face == DialFace.RADAR) {
@@ -289,12 +295,21 @@ fun DrawScope.drawDial(face: DialFace, k: DialFace.Colors, measurer: TextMeasure
         // Işıma: geniş ve soluktan ince ve parlağa
         for ((w, a) in listOf(12f to 0.10f, 7f to 0.22f, 3.5f to 0.6f, 1.5f to 1f)) drawCircle(k.border.copy(alpha = a), r - 4 * u, center, style = Stroke(w * u))
         drawCircle(k.tick.copy(alpha = 0.35f), 58 * u, center, style = Stroke(1 * u))
+    } else if (face == DialFace.CLASSIC) {
+        // İnce dış halka
+        drawCircle(k.border.copy(alpha = 0.8f), r, center, style = Stroke(1.2f * u))
     } else {
         drawCircle(k.border, r, center, style = Stroke(2 * u))
     }
     // Çizgiler
     when (face.ticks) {
-        DialFace.Ticks.FULL -> for (i in 0 until 60) {
+        // Klasik: dakikalar %40 noktalar, saatler kısa yuvarlak uçlu çizgiler
+        DialFace.Ticks.FULL -> if (face == DialFace.CLASSIC) for (i in 0 until 60) {
+            val a = Math.toRadians(i * 6.0)
+            if (i % 5 == 0) rotate(i * 6f, center) {
+                drawLine(k.tick, Offset(center.x, center.y - 87 * u), Offset(center.x, center.y - 79 * u), 3.2f * u, StrokeCap.Round)
+            } else drawCircle(k.minor.copy(alpha = 0.4f), 1.1f * u, Offset(center.x + 85 * u * sin(a).toFloat(), center.y - 85 * u * kotlin.math.cos(a).toFloat()))
+        } else for (i in 0 until 60) {
             val major = i % 5 == 0
             rotate(i * 6f, center) {
                 drawLine(if (major) k.tick else k.minor, Offset(center.x, center.y - (if (major) 88 else 86) * u),

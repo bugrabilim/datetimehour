@@ -157,22 +157,76 @@ struct Atmosphere: Identifiable {
         .init(id: "night", light: (0xE7ECF7, 0xD5DCEF), dark: (0x0A0F1F, 0x1A2342)),
     ]
 
-    static func find(_ id: String?) -> Atmosphere? { all.first { $0.id == id } }
+    /// "Gün ışığı" (doğal tasarım madde 7, 4 Kasım 2026; yeni kurulumda varsayılan): seçili yerde Güneş'in yüksekliğine
+    /// ve yükselip alçalmasına göre şafak, sabah/öğle, ikindi (altın saat), akşam ya da gece tonu; sayfanın üstünden
+    /// zemine iner. Güneş hesabı uygulamada (DaylightClock); widget'larda yoktur, orada düz zemin kalır.
+    static let daylightID = "daylight"
+    /// Uygulama açılırken kurulur: seçili yerde Güneş'in yüksekliği (derece) ve yükselip yükselmediği
+    static var sun: ((Date) -> (alt: Double, rising: Bool))?
+
+    static func daylight(at date: Date = Date()) -> Atmosphere {
+        let s = sun?(date) ?? (alt: 30, rising: true)
+        let tone: (UInt32, UInt32)
+        if s.alt < -6 { tone = (0xE3E4EE, 0x12131C) }
+        else if s.alt < 6 { tone = s.rising ? (0xF8E4D6, 0x2A1E2C) : (0xEEDDE4, 0x271B2C) }
+        else if !s.rising && s.alt < 25 { tone = (0xF6E3C4, 0x2A2118) }
+        else { tone = (0xE9EFF0, 0x172230) }
+        return Atmosphere(id: daylightID, light: (tone.0, 0xF6F0E4), dark: (tone.1, 0x14151C))
+    }
+
+    static func find(_ id: String?) -> Atmosphere? { id == daylightID ? daylight() : all.first { $0.id == id } }
     static var current: Atmosphere? { find(UserDefaults.standard.string(forKey: key)) }
 }
 
-/// Sayfa zemini: atmosfer seçiliyse renk geçişi, değilse temanın zemin rengi
+/// Sayfa zemini: atmosfer seçiliyse renk geçişi, değilse temanın zemin rengi; üstünde %4 kâğıt dokusu (doğal tasarım
+/// madde 8: kodla üretilen gri gren, tekrar eden 96 px döşeme)
 struct AppBackdrop: View {
     @AppStorage(Atmosphere.key) private var atmo = ""
     @AppStorage("accent") private var accent = AccentPalette.defaultID
+    @Environment(\.colorScheme) private var scheme
 
     var body: some View {
-        if let a = Atmosphere.find(atmo) {
+        base.overlay {
+            Image(uiImage: PaperGrain.image)
+                .resizable(resizingMode: .tile)
+                .opacity(scheme == .dark ? 0.05 : 0.04)
+                .allowsHitTesting(false)
+                .accessibilityHidden(true)
+        }
+    }
+
+    @ViewBuilder private var base: some View {
+        if atmo == Atmosphere.daylightID {
+            // Gün ışığı tonu beş dakikada bir yenilenir; geçiş 1,2 sn (hareketi azalt açıksa anında)
+            TimelineView(.periodic(from: .now, by: 300)) { ctx in
+                let a = Atmosphere.daylight(at: ctx.date)
+                LinearGradient(colors: [a.top, a.bottom], startPoint: .top, endPoint: .bottom)
+                    .animation(.easeInOut(duration: 1.2), value: a.light.0)
+            }
+        } else if let a = Atmosphere.find(atmo) {
             LinearGradient(colors: [a.top, a.bottom], startPoint: .top, endPoint: .bottom)
         } else {
             Theme.bg
         }
     }
+}
+
+/// Kâğıt dokusu: sabit tohumlu gri gürültü (her açılışta aynı; Android'deki PaperGrain ile aynı boyut)
+enum PaperGrain {
+    static let image: UIImage = {
+        let n = 96
+        var seed: UInt32 = 7
+        var bytes = [UInt8](repeating: 0, count: n * n)
+        for i in 0..<bytes.count {
+            seed = seed &* 1_664_525 &+ 1_013_904_223
+            bytes[i] = UInt8(truncatingIfNeeded: seed >> 24)
+        }
+        let image: CGImage? = bytes.withUnsafeMutableBytes { buf in
+            CGContext(data: buf.baseAddress, width: n, height: n, bitsPerComponent: 8, bytesPerRow: n,
+                      space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue)?.makeImage()
+        }
+        return image.map { UIImage(cgImage: $0) } ?? UIImage()
+    }()
 }
 
 /// Liste ve form sayfalarının zemini temanın zeminidir (atmosfer seçiliyse renk geçişi); tema değişince yeniden boyanır

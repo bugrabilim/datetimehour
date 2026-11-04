@@ -81,7 +81,9 @@ object Features {
             sp.edit().putString(BAR_KEY, b.joinToString(",") { id(it) }).apply()
         }
         bar = parseBar(sp.getString(BAR_KEY, "")!!).filter { it in enabled }
-        // Yeni kurulum: ilk açılışta kurulum sihirbazı (Onboarding; 2. analiz #4)
+        // Yeni kurulum: ilk açılışta kurulum sihirbazı (Onboarding; 2. analiz #4) ve "Gün ışığı" atmosferi (doğal tasarım
+        // madde 7; önceki kullanıcının seçimi korunur)
+        if (fresh && !sp.contains(Atmosphere.KEY)) sp.edit().putString(Atmosphere.KEY, Atmosphere.DAYLIGHT).apply()
         Onboarding.load(fresh)
     }
 

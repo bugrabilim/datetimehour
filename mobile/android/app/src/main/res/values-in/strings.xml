@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">Semuanya ada di Semua</string>
     <string name="onboard_all_text">Semua di bilah bawah berisi semua alat, pencarian, dan Pengaturan; tekan lama favorit Anda untuk menyematkannya di atas. Untuk menambahkan tanggal, waktu salat, atau cuaca di bawah jam: Pengaturan › Edit layar jam.</string>
     <string name="onboard_replay">Tampilkan pengenalan lagi</string>
+    <string name="atmo_daylight">Cahaya hari</string>
+    <string name="atmo_daylightNote">Cahaya hari mengikuti matahari di tempat pilihan Anda: nuansa fajar, pagi, sore, petang, atau malam.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

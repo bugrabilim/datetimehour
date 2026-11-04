@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">ทุกอย่างอยู่ใน \"ทั้งหมด\"</string>
     <string name="onboard_all_text">\"ทั้งหมด\" ในแถบด้านล่างมีเครื่องมือทุกอย่าง การค้นหา และการตั้งค่า กดค้างรายการที่ใช้บ่อยเพื่อปักหมุดไว้ด้านบน หากต้องการเพิ่มวันที่ เวลาละหมาด หรือสภาพอากาศใต้นาฬิกา: การตั้งค่า › แก้ไขหน้าจอนาฬิกา</string>
     <string name="onboard_replay">แสดงบทแนะนำอีกครั้ง</string>
+    <string name="atmo_daylight">แสงตะวัน</string>
+    <string name="atmo_daylightNote">แสงตะวันเปลี่ยนตามดวงอาทิตย์ ณ สถานที่ที่เลือก: โทนรุ่งอรุณ เช้า บ่าย เย็น หรือกลางคืน</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

@@ -13,6 +13,12 @@ struct SaatTarihApp: App {
         // Başlıklarda Literata (doğal tasarım; Latin ve Kiril dillerinde)
         AppFonts.applyNavigationBar()
         AppFonts.applySegmentedControls()
+        // Gün ışığı atmosferi için seçili yerde Güneş (Theme.swift widget'ta da derlendiği için hesap buradan verilir)
+        Atmosphere.sun = { date in
+            let place = PlaceModel.shared.place
+            let alt = AnimatedBackground.sunAltitude(place: place, at: date)
+            return (alt, AnimatedBackground.sunAltitude(place: place, at: date.addingTimeInterval(600)) > alt)
+        }
         // Apple Watch'a seçili yer (WatchConnectivity)
         WatchSync.shared.start()
         // iPhone, iPad ve Mac arasında ayarlar (iCloud anahtar-değer deposu; sunucu yok)

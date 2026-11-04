@@ -63,6 +63,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
+import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
@@ -242,16 +243,31 @@ fun AnalogClock(
             val cap = measurer.measure(caption, TextStyle(color = k.minor, fontSize = (13 * u / density / fontScale).sp, fontWeight = FontWeight.Bold))
             drawText(cap, topLeft = Offset(center.x - cap.size.width / 2f, center.y + 34 * u - cap.size.height / 2f))
         }
-        fun hand(angle: Double, from: Float, to: Float, width: Float, color: androidx.compose.ui.graphics.Color) {
-            rotate(angle.toFloat(), center) {
+        // Klasik kadranda ibreler sivrilir ve hafif gölgelidir, ortada altın kapak (doğal tasarım madde 9)
+        val soft = f == DialFace.CLASSIC
+        fun hand(angle: Double, from: Float, to: Float, width: Float, color: androidx.compose.ui.graphics.Color, taper: Boolean = soft) {
+            if (taper) {
+                val p = androidx.compose.ui.graphics.Path().apply {
+                    moveTo(center.x - width / 2 * u, center.y + from * u)
+                    lineTo(center.x - width * 0.16f * u, center.y - to * u)
+                    quadraticTo(center.x, center.y - (to + width * 0.4f) * u, center.x + width * 0.16f * u, center.y - to * u)
+                    lineTo(center.x + width / 2 * u, center.y + from * u)
+                    close()
+                }
+                translate(1.2f * u, 2f * u) { rotate(angle.toFloat(), center) { drawPath(p, androidx.compose.ui.graphics.Color.Black.copy(alpha = 0.13f)) } }
+                rotate(angle.toFloat(), center) { drawPath(p, color) }
+            } else rotate(angle.toFloat(), center) {
                 drawLine(color, Offset(center.x, center.y + from * u), Offset(center.x, center.y - to * u), width * u, StrokeCap.Round)
             }
         }
         // Akrep yazı renginde, yelkovan temanın ana renginde, saniye ve orta temanın ikinci renginde
-        hand(hour * 30, 4f, 44f, 6f, k.ink)
-        hand(min * 6, 6f, 66f, 4.5f, k.hand)
-        if (Prefs.secA || !tap) hand(sec * 6, 16f, 76f, 2f, k.second)
-        drawCircle(k.second, 5 * u, center)
+        hand(hour * 30, 6f, 46f, 7f, k.ink)
+        hand(min * 6, 8f, 68f, 5.5f, k.hand)
+        if (Prefs.secA || !tap) hand(sec * 6, 16f, 76f, 2f, k.second, taper = false)
+        if (soft) {
+            drawCircle(androidx.compose.ui.graphics.Color(0xFFC9A54A), 5.5f * u, center)
+            drawCircle(k.ink, 1.6f * u, center)
+        } else drawCircle(k.second, 5 * u, center)
     }
 }
 

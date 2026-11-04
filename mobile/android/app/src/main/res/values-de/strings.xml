@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">Alles unter „Alle“</string>
     <string name="onboard_all_text">Unter „Alle“ in der unteren Leiste finden Sie alle Werkzeuge, die Suche und die Einstellungen; halten Sie Favoriten gedrückt, um sie oben anzuheften. Datum, Gebetszeiten oder Wetter unter der Uhr: Einstellungen › Uhrbildschirm bearbeiten.</string>
     <string name="onboard_replay">Einführung erneut zeigen</string>
+    <string name="atmo_daylight">Tageslicht</string>
+    <string name="atmo_daylightNote">Tageslicht folgt der Sonne am gewählten Ort: Töne für Morgendämmerung, Vormittag, Nachmittag, Abend oder Nacht.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

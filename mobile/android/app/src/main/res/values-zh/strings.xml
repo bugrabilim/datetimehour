@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">一切都在“全部”里</string>
     <string name="onboard_all_text">底部栏的“全部”里有所有工具、搜索和设置；长按常用项可将其固定在顶部。要在时钟下方添加日期、礼拜时间或天气：设置 › 编辑时钟屏幕。</string>
     <string name="onboard_replay">再次查看介绍</string>
+    <string name="atmo_daylight">日光</string>
+    <string name="atmo_daylightNote">日光随所选地点的太阳变化：黎明、上午、下午、傍晚或夜晚的色调。</string>
     <string name="app_name">时间与日期</string>
 </resources>

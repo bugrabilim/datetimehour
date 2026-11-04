@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">همه‌چیز در «همه»</string>
     <string name="onboard_all_text">در «همه» در نوار پایین همهٔ ابزارها، جست‌وجو و تنظیمات هست؛ موارد پرکاربرد را با لمس طولانی به بالا سنجاق کنید. برای افزودن تاریخ، اوقات نماز یا آب‌وهوا زیر ساعت: تنظیمات › ویرایش صفحهٔ ساعت.</string>
     <string name="onboard_replay">نمایش دوبارهٔ معرفی</string>
+    <string name="atmo_daylight">نور روز</string>
+    <string name="atmo_daylightNote">نور روز با خورشید در مکان انتخاب‌شده همراه است: رنگ‌های سپیده‌دم، صبح، عصر، شامگاه یا شب.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

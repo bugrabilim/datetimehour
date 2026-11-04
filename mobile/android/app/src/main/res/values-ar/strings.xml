@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">كل شيء في «الكل»</string>
     <string name="onboard_all_text">في «الكل» بالشريط السفلي كل الأدوات والبحث والإعدادات؛ اضغط مطولًا على ما تستخدمه كثيرًا لتثبيته في الأعلى. لإضافة التاريخ أو أوقات الصلاة أو الطقس تحت الساعة: الإعدادات › تعديل شاشة الساعة.</string>
     <string name="onboard_replay">إظهار الجولة التعريفية مجددًا</string>
+    <string name="atmo_daylight">ضوء النهار</string>
+    <string name="atmo_daylightNote">يتبع ضوء النهار الشمس في المكان المختار: ألوان الفجر أو الصباح أو العصر أو المساء أو الليل.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

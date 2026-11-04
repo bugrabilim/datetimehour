@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">سب کچھ «سب» میں</string>
     <string name="onboard_all_text">نیچے کی پٹی میں «سب» میں تمام ٹولز، تلاش اور ترتیبات ہیں؛ پسندیدہ چیزوں کو اوپر رکھنے کے لیے دیر تک دبائیں۔ گھڑی کے نیچے تاریخ، نماز کے اوقات یا موسم شامل کرنے کے لیے: ترتیبات › گھڑی کی اسکرین میں ترمیم۔</string>
     <string name="onboard_replay">تعارف دوبارہ دکھائیں</string>
+    <string name="atmo_daylight">دن کی روشنی</string>
+    <string name="atmo_daylightNote">دن کی روشنی منتخب جگہ پر سورج کے مطابق بدلتی ہے: فجر، صبح، عصر، شام یا رات کے رنگ۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

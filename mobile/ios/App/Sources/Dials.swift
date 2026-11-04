@@ -241,6 +241,10 @@ struct DialFill: View {
             case .sector:
                 Circle().fill(k.face)
                 Circle().fill(dc(0xE2D9C6)).frame(width: 100 * u, height: 100 * u)
+            case .classic:
+                // Klasik kadran (doğal tasarım madde 9): ortası hafif aydınlık radyal geçiş
+                Circle().fill(k.face)
+                Circle().fill(RadialGradient(colors: [.white.opacity(0.22), .white.opacity(0)], center: .center, startRadius: 0, endRadius: 94 * u))
             default:
                 Circle().fill(k.face)
             }
@@ -270,11 +274,16 @@ struct DialFill: View {
                     }
                     Circle().stroke(k.tick.opacity(0.35), lineWidth: 1 * u).frame(width: 116 * u, height: 116 * u)
                 }
+            } else if face == .classic {
+                // İnce dış halka
+                Circle().stroke(k.border.opacity(0.8), lineWidth: 1.2 * u)
             } else {
                 Circle().stroke(k.border, lineWidth: 2 * u)
             }
         }
         .frame(width: 188 * u, height: 188 * u)
+        // Klasik kadranın altında yumuşak gölge
+        .shadow(color: face == .classic ? Color(red: 0.29, green: 0.2, blue: 0.12).opacity(0.12) : .clear, radius: 4 * u, y: 3 * u)
     }
 
     private func texture(_ draw: @escaping (inout GraphicsContext, CGSize) -> Void) -> some View {
@@ -295,12 +304,20 @@ struct DialMarks: View {
         ZStack {
             switch face.ticks {
             case .full:
+                // Klasik: dakikalar %40 noktalar, saatler kısa yuvarlak uçlu çizgiler (doğal tasarım madde 9)
                 ForEach(0..<60, id: \.self) { i in
                     let major = i % 5 == 0
-                    Capsule().fill(major ? k.tick : k.minorTick)
-                        .frame(width: (major ? 3 : 1.4) * u, height: (major ? 12 : 5) * u)
-                        .offset(y: -(major ? 82 : 83.5) * u)
-                        .rotationEffect(.degrees(Double(i) * 6))
+                    if face == .classic && !major {
+                        Circle().fill(k.minorTick.opacity(0.4))
+                            .frame(width: 2.2 * u, height: 2.2 * u)
+                            .offset(y: -85 * u)
+                            .rotationEffect(.degrees(Double(i) * 6))
+                    } else {
+                        Capsule().fill(major ? k.tick : k.minorTick)
+                            .frame(width: (major ? (face == .classic ? 3.2 : 3) : 1.4) * u, height: (major ? (face == .classic ? 8 : 12) : 5) * u)
+                            .offset(y: -(major ? (face == .classic ? 83 : 82) : 83.5) * u)
+                            .rotationEffect(.degrees(Double(i) * 6))
+                    }
                 }
             case .hours:
                 ForEach(0..<12, id: \.self) { i in

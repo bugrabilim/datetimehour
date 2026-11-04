@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">「すべて」にまとめてあります</string>
     <string name="onboard_all_text">下のバーの「すべて」に、すべてのツール、検索、設定があります。よく使うものは長押しで上に固定できます。時計の下に日付、礼拝時刻、天気を表示するには：設定 › 時計画面を編集。</string>
     <string name="onboard_replay">紹介をもう一度見る</string>
+    <string name="atmo_daylight">日の光</string>
+    <string name="atmo_daylightNote">日の光は選んだ場所の太陽に合わせて、夜明け・朝・午後・夕方・夜の色合いに変わります。</string>
     <string name="app_name">時刻と日付</string>
 </resources>

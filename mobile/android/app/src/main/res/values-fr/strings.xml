@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">Tout est dans « Tout »</string>
     <string name="onboard_all_text">« Tout », dans la barre du bas, réunit tous les outils, la recherche et les Réglages ; appuyez longuement sur vos favoris pour les épingler en haut. Pour ajouter la date, les heures de prière ou la météo sous l\'horloge : Réglages › Modifier l\'écran de l\'horloge.</string>
     <string name="onboard_replay">Revoir la présentation</string>
+    <string name="atmo_daylight">Lumière du jour</string>
+    <string name="atmo_daylightNote">La lumière du jour suit le soleil à l\'endroit choisi : tons d\'aube, de matin, d\'après-midi, de soir ou de nuit.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

@@ -76,11 +76,22 @@ struct AnalogClock: View {
                         .foregroundStyle(k.minorTick)
                         .offset(y: 34 * u)
                 }
-                // Akrep yazı renginde, yelkovan temanın ana renginde, saniye ve orta temanın ikinci renginde
-                hand(angle: hour * 30, from: 4, to: 44, width: 6, color: k.ink, u: u)
-                hand(angle: min * 6, from: 6, to: 66, width: 4.5, color: k.hand, u: u)
+                // Akrep yazı renginde, yelkovan temanın ana renginde, saniye ve orta temanın ikinci renginde.
+                // Klasik kadranda ibreler sivrilir ve hafif gölgelidir, ortada altın kapak (doğal tasarım madde 9).
+                if f == .classic {
+                    taperedHand(angle: hour * 30, from: 6, to: 46, width: 7, color: k.ink, u: u)
+                    taperedHand(angle: min * 6, from: 8, to: 68, width: 5.5, color: k.hand, u: u)
+                } else {
+                    hand(angle: hour * 30, from: 4, to: 44, width: 6, color: k.ink, u: u)
+                    hand(angle: min * 6, from: 6, to: 66, width: 4.5, color: k.hand, u: u)
+                }
                 if showSeconds { hand(angle: sec * 6, from: 16, to: 76, width: 2, color: k.second, u: u) }
-                Circle().fill(k.second).frame(width: 10 * u, height: 10 * u)
+                if f == .classic {
+                    Circle().fill(Color(red: 0.788, green: 0.647, blue: 0.29)).frame(width: 11 * u, height: 11 * u)
+                    Circle().fill(k.ink).frame(width: 3.2 * u, height: 3.2 * u)
+                } else {
+                    Circle().fill(k.second).frame(width: 10 * u, height: 10 * u)
+                }
             }
             .frame(width: 200 * u, height: 200 * u)
             .position(x: g.size.width / 2, y: g.size.height / 2)
@@ -97,6 +108,16 @@ struct AnalogClock: View {
         return cal
     }
 
+    /// Sivrilen ibre: dipte `width`, uçta onun üçte biri, ucu yuvarlak; gölgesi hep aynı yöne düşer
+    private func taperedHand(angle: Double, from: CGFloat, to: CGFloat, width: CGFloat, color: Color, u: CGFloat) -> some View {
+        TaperedHand(tip: 0.32)
+            .fill(color)
+            .frame(width: width * u, height: (from + to) * u)
+            .offset(y: (from - to) / 2 * u)
+            .rotationEffect(.degrees(angle))
+            .shadow(color: .black.opacity(0.13), radius: 1.2 * u, x: 1.2 * u, y: 2 * u)
+    }
+
     /// Merkezden geriye `from`, ileriye `to` birim uzanan ibre
     private func hand(angle: Double, from: CGFloat, to: CGFloat, width: CGFloat, color: Color, u: CGFloat) -> some View {
         Capsule()
@@ -104,6 +125,22 @@ struct AnalogClock: View {
             .frame(width: width * u, height: (from + to) * u)
             .offset(y: (from - to) / 2 * u)
             .rotationEffect(.degrees(angle))
+    }
+}
+
+/// Sivrilen ibre biçimi (dikey; üst uç dar ve yuvarlak)
+struct TaperedHand: Shape {
+    var tip: CGFloat
+
+    func path(in r: CGRect) -> Path {
+        var p = Path()
+        let half = r.width * tip / 2
+        p.move(to: CGPoint(x: r.minX, y: r.maxY))
+        p.addLine(to: CGPoint(x: r.midX - half, y: r.minY + half))
+        p.addQuadCurve(to: CGPoint(x: r.midX + half, y: r.minY + half), control: CGPoint(x: r.midX, y: r.minY - half))
+        p.addLine(to: CGPoint(x: r.maxX, y: r.maxY))
+        p.closeSubpath()
+        return p
     }
 }
 

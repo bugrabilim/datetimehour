@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">모든 기능은 \'전체\'에</string>
     <string name="onboard_all_text">아래 막대의 \'전체\'에 모든 도구, 검색, 설정이 있습니다. 자주 쓰는 것은 길게 눌러 위에 고정하세요. 시계 아래에 날짜, 예배 시간, 날씨를 넣으려면: 설정 › 시계 화면 편집.</string>
     <string name="onboard_replay">소개 다시 보기</string>
+    <string name="atmo_daylight">햇빛</string>
+    <string name="atmo_daylightNote">햇빛은 선택한 곳의 태양을 따라 새벽, 아침, 오후, 저녁, 밤의 색으로 바뀝니다.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

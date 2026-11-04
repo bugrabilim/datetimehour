@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">Hər şey \"Hamısı\" bölməsində</string>
     <string name="onboard_all_text">Alt zolaqdakı \"Hamısı\" bölməsində bütün alətlər, axtarış və Parametrlər var; tez-tez istifadə etdiklərinizi uzun basaraq önə çəkin. Saatın altına tarix, vaxt və ya hava əlavə etmək üçün: Parametrlər › Saat ekranını redaktə et.</string>
     <string name="onboard_replay">Tanıtımı yenidən göstər</string>
+    <string name="atmo_daylight">Gün işığı</string>
+    <string name="atmo_daylightNote">Gün işığı seçilmiş yerdə Günəşin vəziyyətinə görə şəfəq, səhər, ikindi, axşam və ya gecə çalarını alır.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

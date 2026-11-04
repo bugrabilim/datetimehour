@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">सब कुछ «सब» में</string>
     <string name="onboard_all_text">नीचे की पट्टी में «सब» में सारे टूल, खोज और सेटिंग्स हैं; पसंदीदा चीज़ों को ऊपर पिन करने के लिए देर तक दबाएँ। घड़ी के नीचे तारीख़, नमाज़ के समय या मौसम जोड़ने के लिए: सेटिंग्स › घड़ी स्क्रीन संपादित करें।</string>
     <string name="onboard_replay">परिचय फिर से दिखाएँ</string>
+    <string name="atmo_daylight">दिन का उजाला</string>
+    <string name="atmo_daylightNote">दिन का उजाला चुनी गई जगह पर सूरज के साथ बदलता है: भोर, सुबह, दोपहर बाद, शाम या रात के रंग।</string>
     <string name="app_name">समय और तारीख</string>
 </resources>

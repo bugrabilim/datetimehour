@@ -12,6 +12,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.foundation.background
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -84,7 +86,28 @@ data class Atmosphere(val id: String, val lightTop: Long, val lightBottom: Long,
             Atmosphere("sunset", 0xFEEBDD, 0xF8D3D6, 0x301A11, 0x3D1729),
             Atmosphere("night", 0xE7ECF7, 0xD5DCEF, 0x0A0F1F, 0x1A2342),
         )
-        fun find(id: String?): Atmosphere? = ALL.firstOrNull { it.id == id }
+        /**
+         * "Gün ışığı" (doğal tasarım madde 7, 4 Kasım 2026; yeni kurulumda varsayılan): seçili yerde Güneş'in yüksekliğine
+         * ve yükselip alçalmasına göre şafak, sabah/öğle, ikindi (altın saat), akşam ya da gece tonu; sayfanın üstünden
+         * zemine iner. Ton beş dakikada bir yeniden hesaplanır (AppTheme). iOS'taki Atmosphere.daylight ile aynı renkler.
+         */
+        const val DAYLIGHT = "daylight"
+
+        fun daylight(lat: Double, lon: Double, ms: Long): Atmosphere {
+            val alt = SkyMath.sunAltitude(lat, lon, ms)
+            val rising = SkyMath.sunAltitude(lat, lon, ms + 600_000) > alt
+            val (l, d) = when {
+                alt < -6 -> 0xE3E4EEL to 0x12131CL
+                alt < 6 -> if (rising) 0xF8E4D6L to 0x2A1E2CL else 0xEEDDE4L to 0x271B2CL
+                !rising && alt < 25 -> 0xF6E3C4L to 0x2A2118L
+                else -> 0xE9EFF0L to 0x172230L
+            }
+            return Atmosphere(DAYLIGHT, l, 0xF6F0E4, d, 0x14151C)
+        }
+
+        fun find(id: String?): Atmosphere? =
+            if (id == DAYLIGHT) AppPlace.current().let { daylight(it.lat, it.lon, System.currentTimeMillis()) }
+            else ALL.firstOrNull { it.id == id }
 
         var selected by mutableStateOf("")
             private set
@@ -94,9 +117,29 @@ data class Atmosphere(val id: String, val lightTop: Long, val lightBottom: Long,
     }
 }
 
-/** Sayfa zemini: atmosfer seçiliyse renk geçişi, değilse temanın zemin rengi */
+/**
+ * Sayfa zemini: atmosfer seçiliyse renk geçişi, değilse temanın zemin rengi; üstünde %4 kâğıt dokusu (doğal tasarım
+ * madde 8: kodla üretilen gri gren, tekrar eden 96 px döşeme; tam ekran saatte ve gece modunda bu zemin kullanılmaz)
+ */
 fun Modifier.appBackdrop(c: AppColors): Modifier =
-    c.atmo?.let { a -> background(Brush.verticalGradient(listOf(a.top(c.dark), a.bottom(c.dark)))) } ?: background(c.bg)
+    (c.atmo?.let { a -> background(Brush.verticalGradient(listOf(a.top(c.dark), a.bottom(c.dark)))) } ?: background(c.bg))
+        .drawBehind { drawRect(PaperGrain.brush, alpha = if (c.dark) 0.05f else 0.04f) }
+
+/** Kâğıt dokusu: sabit tohumlu gri gürültü (her açılışta aynı) */
+object PaperGrain {
+    val brush: androidx.compose.ui.graphics.ShaderBrush by lazy {
+        val n = 96
+        val r = java.util.Random(7)
+        val px = IntArray(n * n) { val v = r.nextInt(256); (0xFF shl 24) or (v shl 16) or (v shl 8) or v }
+        val bmp = android.graphics.Bitmap.createBitmap(px, n, n, android.graphics.Bitmap.Config.ARGB_8888)
+        androidx.compose.ui.graphics.ShaderBrush(
+            androidx.compose.ui.graphics.ImageShader(
+                bmp.asImageBitmap(),
+                androidx.compose.ui.graphics.TileMode.Repeated, androidx.compose.ui.graphics.TileMode.Repeated,
+            ),
+        )
+    }
+}
 
 data class AccentPalette(
     val id: String,
@@ -202,6 +245,12 @@ fun AppTheme(content: @Composable () -> Unit) {
         else -> isSystemInDarkTheme()
     }
     Atmosphere.load()
+    // Gün ışığı tonu beş dakikada bir yenilenir
+    var tick by androidx.compose.runtime.remember { mutableStateOf(0) }
+    if (Atmosphere.selected == Atmosphere.DAYLIGHT) androidx.compose.runtime.LaunchedEffect(Unit) {
+        while (true) { kotlinx.coroutines.delay(300_000); tick++ }
+    }
+    @Suppress("UNUSED_EXPRESSION") tick
     val atmo = Atmosphere.find(Atmosphere.selected)
     val colors = AccentPalette.find(Prefs.accent).colors(dark).let { if (atmo != null) it.copy(bg = atmo.mid(dark), atmo = atmo) else it }
     val scheme = if (dark) {

@@ -2835,5 +2835,7 @@
     <string name="onboard_all_title">Todo está en «Todo»</string>
     <string name="onboard_all_text">En «Todo», en la barra inferior, están todas las herramientas, la búsqueda y los Ajustes; mantenga pulsados sus favoritos para fijarlos arriba. Para añadir la fecha, los horarios de oración o el tiempo bajo el reloj: Ajustes › Editar pantalla del reloj.</string>
     <string name="onboard_replay">Ver la presentación de nuevo</string>
+    <string name="atmo_daylight">Luz del día</string>
+    <string name="atmo_daylightNote">La luz del día sigue al sol en el lugar elegido: tonos de amanecer, mañana, tarde, atardecer o noche.</string>
     <string name="app_name">Hora y Fecha</string>
 </resources>
