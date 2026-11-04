@@ -444,6 +444,7 @@ Sunucu, hesap ya da ödeme gerektiren işler; şimdi yapılmayacak, ücretli bö
 - **#53** Arkadaşlarla uyanma grupları, sanal para (Wayk, SleepTown).
 - **#75** Ortak zikir ve hatim, topluluk, radyo, fetva araması (Codeida, Azan Time, Muslim Pro, e-Diyanet). "ALO 190" arama düğmesi sunucu istemez; ayrı yapılabilir.
 - **#25** Bağış (bahşiş) satın alması (ClockZ, Vakit): uygulama içi satın alma ve ödeme yöntemleriyle birlikte ele alınır (3 Kasım 2026, sahibin kararı).
+- Favori camilere yazılan notların başka kullanıcılarla paylaşımı (kullanıcı izin verirse): sunucu ister; notlar şimdilik yalnız telefonda (4 Kasım 2026, sahibin kararı: "notlar telefonda, paylaşım sonra").
 
 ## Kapsam sınırı (3 Kasım 2026)
 Birinci ajan dalgası üç alana baktı: kadran/masa saati (ikinci öncelik odak ve zamanlayıcı), alarm/uyku, namaz (ikinci öncelik takvim, dünya saati, geri sayım). **Bakılmayanlar:**
