@@ -41,8 +41,13 @@ enum AppFonts {
               let large = UIFont(name: "Literata-SemiBold", size: 32),
               let inline = UIFont(name: "Literata-Medium", size: 18) else { return }
         let bar = UINavigationBar.appearance()
-        bar.largeTitleTextAttributes[.font] = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: large)
-        bar.titleTextAttributes[.font] = UIFontMetrics(forTextStyle: .headline).scaledFont(for: inline)
+        // Görünüm vekilindeki sözlükler isteğe bağlı (nil olabilir): var olanın üstüne yazı tipi eklenir
+        var largeAttrs = bar.largeTitleTextAttributes ?? [:]
+        largeAttrs[.font] = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: large)
+        bar.largeTitleTextAttributes = largeAttrs
+        var inlineAttrs = bar.titleTextAttributes ?? [:]
+        inlineAttrs[.font] = UIFontMetrics(forTextStyle: .headline).scaledFont(for: inline)
+        bar.titleTextAttributes = inlineAttrs
     }
 
     /// Yumuşak bölmeli seçici (doğal tasarım madde 5): kenarlıksız `surface2` iz, seçili parça `surface`, ayraç çizgisi
