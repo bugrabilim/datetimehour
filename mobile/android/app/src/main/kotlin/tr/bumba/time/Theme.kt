@@ -45,6 +45,12 @@ data class AppColors(
     val errBg: Color get() = if (dark) Color(0xFF3A1A1A) else Color(0xFFFBE7E7)
     val ok: Color get() = if (dark) Color(0xFF7FD9A1) else Color(0xFF176B3A)
     val okBg: Color get() = if (dark) Color(0xFF16301F) else Color(0xFFE2F3E8)
+    /** Doğa renkleri (doğal tasarım, docs/dogal-tasarim; 4 Kasım 2026): Tümü kategorileri, tanıtım çizimleri */
+    val terra: Color get() = if (dark) Color(0xFFF2A65A) else Color(0xFFB4532A)
+    val sage: Color get() = if (dark) Color(0xFF9CC294) else Color(0xFF4A6B47)
+    val sky: Color get() = if (dark) Color(0xFF8DB8DA) else Color(0xFF3A6889)
+    val gold: Color get() = if (dark) Color(0xFFE2B65C) else Color(0xFF835A0D)
+    val dusk: Color get() = if (dark) Color(0xFFD69BB5) else Color(0xFF7A4760)
 }
 
 /**

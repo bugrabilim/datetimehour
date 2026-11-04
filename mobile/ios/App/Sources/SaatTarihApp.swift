@@ -293,6 +293,11 @@ struct RootView: View {
             .preferredColorScheme(scheme)
         }
         .sheet(isPresented: $morning) { MorningCard().preferredColorScheme(scheme) }
+        // Ayarlar › Destek › Tanıtımı yeniden göster: açık sayfa kapanır, sonra sihirbaz açılır
+        .onReceive(NotificationCenter.default.publisher(for: Onboarding.replayNote)) { _ in
+            router.sheet = nil
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { onboarding = true }
+        }
         .fullScreenCover(isPresented: $onboarding) {
             OnboardingView {
                 Onboarding.finish()

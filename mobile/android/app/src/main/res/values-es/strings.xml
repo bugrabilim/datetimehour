@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">La hora de inicio se guarda en este teléfono; al volver a abrir la app, el temporizador sigue donde quedó. La pantalla no se apaga mientras corre.</string>
     <string name="tools_localOnly">Lo que introduce se calcula solo en este teléfono; no se guarda ni se envía a ningún sitio.</string>
     <string name="home_editScreen">Editar pantalla del reloj</string>
+    <string name="onboard_swipe_title">Deslice para cambiar de reloj</string>
+    <string name="onboard_swipe_text">En la pantalla del reloj, deslice a la izquierda o a la derecha; cada gesto muestra otro modelo de reloj. Toque el reloj para mostrar u ocultar los segundos.</string>
+    <string name="onboard_full_title">Pantalla completa y modo nocturno</string>
+    <string name="onboard_full_text">Toque Pantalla completa o gire el teléfono en horizontal y el reloj ocupará toda la pantalla. El modo nocturno lo vuelve de un rojo tenue que no deslumbra junto a la cama.</string>
+    <string name="onboard_all_title">Todo está en «Todo»</string>
+    <string name="onboard_all_text">En «Todo», en la barra inferior, están todas las herramientas, la búsqueda y los Ajustes; mantenga pulsados sus favoritos para fijarlos arriba. Para añadir la fecha, los horarios de oración o el tiempo bajo el reloj: Ajustes › Editar pantalla del reloj.</string>
+    <string name="onboard_replay">Ver la presentación de nuevo</string>
     <string name="app_name">Hora y Fecha</string>
 </resources>

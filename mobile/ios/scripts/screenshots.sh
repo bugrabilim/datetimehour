@@ -33,11 +33,15 @@ shoot tr tr_TR light tr-acik
 shoot tr tr_TR dark tr-koyu
 shoot en en_US light en-acik
 shoot ar ar_SA light ar-acik
-# İlk açılış: yalnız Saat (alt bar yok; dişli ve "özellikleri aç" satırı); iki özellik açıkken bar
+# İlk açılış: yalnız Saat (alt bar yok; "özellikleri aç" satırı); iki özellik açıkken bar
 FEAT="" shoot tr tr_TR light tr-ilk-acilis
 FEAT="prayer,weather" shoot tr tr_TR light tr-iki-ozellik -startTab 5
 # İlk kurulum sihirbazı (2. analiz #4): yalnız yeni kurulumda açılır, burada açıkça istenir
 FEAT="" shoot tr tr_TR light tr-kurulum -onboard.pending "<true/>"
+# Altı adımlık tanıtım (4 Kasım 2026): saati kaydırma, tam ekran ve gece, Tümü
+FEAT="" shoot tr tr_TR light tr-kurulum-kaydir -onboard.pending "<true/>" -onboardPage "<integer>1</integer>"
+FEAT="" shoot tr tr_TR dark tr-kurulum-tam-ekran -onboard.pending "<true/>" -onboardPage "<integer>2</integer>"
+FEAT="" shoot ar ar_SA light ar-kurulum-tumu -onboard.pending "<true/>" -onboardPage "<integer>4</integer>"
 # Saat modelleri (sitedeki 20 model; -clockModel kimlik)
 for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal flip; do
   shoot tr tr_TR light "model-$M" -clockModel "$M"

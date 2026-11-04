@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">開始時刻はこのスマートフォンに保存され、アプリを開き直すと続きから再開します。タイマー作動中は画面が消えません。</string>
     <string name="tools_localOnly">入力した内容はこのスマートフォンの中だけで計算され、保存も送信もされません。</string>
     <string name="home_editScreen">時計画面を編集</string>
+    <string name="onboard_swipe_title">スワイプで時計を切り替え</string>
+    <string name="onboard_swipe_text">時計画面で左右にスワイプすると、別のデザインの時計に切り替わります。時計をタップすると秒の表示をオン・オフできます。</string>
+    <string name="onboard_full_title">全画面とナイトモード</string>
+    <string name="onboard_full_text">「全画面」をタップするか、スマホを横にすると時計が画面いっぱいに表示されます。ナイトモードでは暗い赤色になり、枕元でもまぶしくありません。</string>
+    <string name="onboard_all_title">「すべて」にまとめてあります</string>
+    <string name="onboard_all_text">下のバーの「すべて」に、すべてのツール、検索、設定があります。よく使うものは長押しで上に固定できます。時計の下に日付、礼拝時刻、天気を表示するには：設定 › 時計画面を編集。</string>
+    <string name="onboard_replay">紹介をもう一度見る</string>
     <string name="app_name">時刻と日付</string>
 </resources>

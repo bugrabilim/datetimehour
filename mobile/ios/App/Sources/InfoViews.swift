@@ -31,7 +31,7 @@ struct SettingsView: View {
         let clock = ["look.title", "home.customize", "home.editScreen", "dial.title", "night.title"]
         let backup = ["sync.title", "siri.title"]
         let support = ["support.title", "support.rate", "support.share", "support.qr", "support.feedback", "support.moreApps",
-                       "support.version", "badges.h1", "settings.about"]
+                       "support.version", "badges.h1", "settings.about", "onboard.replay"]
         Form {
             if general.contains(where: { shows($0) }) {
                 Section(L("settings.color.general")) {
@@ -132,6 +132,9 @@ struct SettingsView: View {
                         NavigationLink { BadgesView() } label: { BoxLabel(L("badges.h1"), icon: "rosette") }
                     }
                     NavigationLink { AboutView() } label: { BoxLabel(L("settings.about"), icon: "info.circle") }
+                    // İlk kurulumdaki altı adımlık tanıtım (4 Kasım 2026, sahibin isteği)
+                    Button { Onboarding.replay() } label: { BoxLabel(L("onboard.replay"), icon: "graduationcap") }
+                        .foregroundStyle(Theme.text)
                 }
             }
             if ![general, look, clock, backup, support].joined().contains(where: { shows($0) }) {

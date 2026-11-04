@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">Waktu mulai disimpan di ponsel ini; saat aplikasi dibuka lagi, penghitung berlanjut dari posisi terakhir. Layar tetap menyala selama penghitung berjalan.</string>
     <string name="tools_localOnly">Data yang Anda masukkan hanya dihitung di ponsel ini; tidak disimpan dan tidak dikirim ke mana pun.</string>
     <string name="home_editScreen">Edit layar jam</string>
+    <string name="onboard_swipe_title">Geser untuk mengganti jam</string>
+    <string name="onboard_swipe_text">Di layar jam, geser ke kiri atau kanan; setiap geseran menampilkan model jam lain. Ketuk jam untuk menampilkan atau menyembunyikan detik.</string>
+    <string name="onboard_full_title">Layar penuh dan mode malam</string>
+    <string name="onboard_full_text">Ketuk Layar penuh atau putar ponsel ke samping, jam akan memenuhi layar. Mode malam membuatnya merah redup sehingga tidak menyilaukan di samping tempat tidur.</string>
+    <string name="onboard_all_title">Semuanya ada di Semua</string>
+    <string name="onboard_all_text">Semua di bilah bawah berisi semua alat, pencarian, dan Pengaturan; tekan lama favorit Anda untuk menyematkannya di atas. Untuk menambahkan tanggal, waktu salat, atau cuaca di bawah jam: Pengaturan › Edit layar jam.</string>
+    <string name="onboard_replay">Tampilkan pengenalan lagi</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

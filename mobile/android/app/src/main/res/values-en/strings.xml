@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">The start time is kept on this phone; when you reopen the app the timer continues where it left off. The screen stays on while the timer runs.</string>
     <string name="tools_localOnly">What you enter is calculated only on this phone; it is not saved or sent anywhere.</string>
     <string name="home_editScreen">Edit clock screen</string>
+    <string name="onboard_swipe_title">Swipe to change the clock</string>
+    <string name="onboard_swipe_text">On the clock screen, swipe left or right; each swipe brings another clock style. Tap the clock to show or hide the seconds.</string>
+    <string name="onboard_full_title">Full screen and night mode</string>
+    <string name="onboard_full_text">Tap Full screen or turn your phone sideways and the clock fills the screen. Night mode turns it a dim red that won\'t dazzle you at the bedside.</string>
+    <string name="onboard_all_title">Everything is under All</string>
+    <string name="onboard_all_text">All in the bottom bar has every tool, search and Settings; long-press your favourites to pin them at the top. To add the date, prayer times or weather under the clock: Settings › Edit clock screen.</string>
+    <string name="onboard_replay">Show the intro again</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

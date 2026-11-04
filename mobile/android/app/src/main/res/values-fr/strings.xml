@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">L\'heure de départ est conservée sur ce téléphone ; en rouvrant l\'app, le minuteur reprend là où il en était. L\'écran reste allumé pendant qu\'il tourne.</string>
     <string name="tools_localOnly">Vos saisies sont calculées uniquement sur ce téléphone ; elles ne sont ni enregistrées ni envoyées.</string>
     <string name="home_editScreen">Modifier l\'écran de l\'horloge</string>
+    <string name="onboard_swipe_title">Balayez pour changer d\'horloge</string>
+    <string name="onboard_swipe_text">Sur l\'écran de l\'horloge, balayez vers la gauche ou la droite : chaque geste affiche un autre modèle. Touchez l\'horloge pour afficher ou masquer les secondes.</string>
+    <string name="onboard_full_title">Plein écran et mode nuit</string>
+    <string name="onboard_full_text">Touchez Plein écran ou tournez le téléphone à l\'horizontale : l\'horloge occupe tout l\'écran. Le mode nuit la passe en rouge tamisé qui n\'éblouit pas au chevet.</string>
+    <string name="onboard_all_title">Tout est dans « Tout »</string>
+    <string name="onboard_all_text">« Tout », dans la barre du bas, réunit tous les outils, la recherche et les Réglages ; appuyez longuement sur vos favoris pour les épingler en haut. Pour ajouter la date, les heures de prière ou la météo sous l\'horloge : Réglages › Modifier l\'écran de l\'horloge.</string>
+    <string name="onboard_replay">Revoir la présentation</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

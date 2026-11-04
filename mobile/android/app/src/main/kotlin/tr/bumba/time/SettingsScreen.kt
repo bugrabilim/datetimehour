@@ -37,6 +37,7 @@ import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Palette
@@ -103,7 +104,7 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
     val clock = arrayOf("look.title", "home.customize", "home.editScreen", "dial.title", "night.title")
     val backup = arrayOf("sync.androidTitle", "android.shortcuts.title")
     val support = arrayOf("support.title", "support.rate", "support.share", "support.qr", "support.feedback", "support.moreApps",
-        "support.version", "badges.h1", "settings.about")
+        "support.version", "badges.h1", "settings.about", "onboard.replay")
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         OutlinedTextField(
             query, { query = it }, Modifier.fillMaxWidth(), singleLine = true,
@@ -222,6 +223,8 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             AppCard(padding = 4) {
                 if (Features.enabled.isEmpty()) SettingsRow(Icons.Filled.MilitaryTech, L("badges.h1")) { onRoute("badges") }
                 SettingsRow(Icons.Filled.Info, L("settings.about")) { onRoute("about") }
+                // İlk kurulumdaki altı adımlık tanıtım (4 Kasım 2026, sahibin isteği)
+                SettingsRow(Icons.Filled.School, L("onboard.replay")) { Onboarding.replay() }
             }
         }
         if (!shows(*general, *look, *clock, *backup, *support)) {

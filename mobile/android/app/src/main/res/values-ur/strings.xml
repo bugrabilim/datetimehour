@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">شروع کا وقت اسی فون میں محفوظ رہتا ہے؛ ایپ دوبارہ کھولنے پر ٹائمر وہیں سے جاری رہتا ہے۔ ٹائمر چلتے وقت اسکرین بند نہیں ہوتی۔</string>
     <string name="tools_localOnly">آپ کی درج کردہ معلومات صرف اسی فون پر حساب ہوتی ہیں؛ نہ محفوظ ہوتی ہیں نہ کہیں بھیجی جاتی ہیں۔</string>
     <string name="home_editScreen">گھڑی کی اسکرین میں ترمیم</string>
+    <string name="onboard_swipe_title">گھڑی بدلنے کے لیے سوائپ کریں</string>
+    <string name="onboard_swipe_text">گھڑی کی اسکرین پر دائیں یا بائیں سوائپ کریں؛ ہر بار گھڑی کا نیا انداز آتا ہے۔ سیکنڈ دکھانے یا چھپانے کے لیے گھڑی کو چھوئیں۔</string>
+    <string name="onboard_full_title">پوری اسکرین اور رات کا موڈ</string>
+    <string name="onboard_full_text">پوری اسکرین کو چھوئیں یا فون کو آڑا کریں، گھڑی پوری اسکرین پر آ جائے گی۔ رات کے موڈ میں رنگ مدھم سرخ ہو جاتا ہے اور بستر کے پاس آنکھوں کو نہیں چبھتا۔</string>
+    <string name="onboard_all_title">سب کچھ «سب» میں</string>
+    <string name="onboard_all_text">نیچے کی پٹی میں «سب» میں تمام ٹولز، تلاش اور ترتیبات ہیں؛ پسندیدہ چیزوں کو اوپر رکھنے کے لیے دیر تک دبائیں۔ گھڑی کے نیچے تاریخ، نماز کے اوقات یا موسم شامل کرنے کے لیے: ترتیبات › گھڑی کی اسکرین میں ترمیم۔</string>
+    <string name="onboard_replay">تعارف دوبارہ دکھائیں</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

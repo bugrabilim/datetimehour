@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">시작 시각은 이 휴대폰에 저장되며 앱을 다시 열면 이어서 진행됩니다. 타이머가 도는 동안 화면이 꺼지지 않습니다.</string>
     <string name="tools_localOnly">입력한 내용은 이 휴대폰에서만 계산되며 저장되거나 전송되지 않습니다.</string>
     <string name="home_editScreen">시계 화면 편집</string>
+    <string name="onboard_swipe_title">밀어서 시계 바꾸기</string>
+    <string name="onboard_swipe_text">시계 화면에서 왼쪽이나 오른쪽으로 밀면 다른 시계 모양이 나타납니다. 시계를 누르면 초가 켜지거나 꺼집니다.</string>
+    <string name="onboard_full_title">전체 화면과 야간 모드</string>
+    <string name="onboard_full_text">전체 화면을 누르거나 휴대폰을 가로로 돌리면 시계가 화면을 가득 채웁니다. 야간 모드에서는 은은한 빨간색으로 바뀌어 머리맡에서도 눈부시지 않습니다.</string>
+    <string name="onboard_all_title">모든 기능은 \'전체\'에</string>
+    <string name="onboard_all_text">아래 막대의 \'전체\'에 모든 도구, 검색, 설정이 있습니다. 자주 쓰는 것은 길게 눌러 위에 고정하세요. 시계 아래에 날짜, 예배 시간, 날씨를 넣으려면: 설정 › 시계 화면 편집.</string>
+    <string name="onboard_replay">소개 다시 보기</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

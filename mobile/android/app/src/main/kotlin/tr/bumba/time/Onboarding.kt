@@ -4,6 +4,31 @@ import android.Manifest
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.filled.Alarm
+import androidx.compose.material.icons.filled.Apps
+import androidx.compose.material.icons.filled.Bedtime
+import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.Explore
+import androidx.compose.material.icons.filled.MenuBook
+import androidx.compose.material.icons.filled.Public
+import androidx.compose.material.icons.filled.Schedule
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.filled.WbSunny
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.semantics.invisibleToUser
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -57,8 +82,10 @@ import kotlinx.coroutines.launch
 
 /**
  * İlk kurulum sihirbazı (3 Kasım 2026, 2. analiz #4; sahibin ekran görüntüleri): yalnız yeni kurulumda bir kez açılır
- * (önceki sürümü kullananlar görmez; Features.load işaretler). Üç sayfa: hoş geldiniz (canlı saat), özellik seçimi,
- * konum ve bildirimler. Bekletme yok; "Geç" her sayfada. iOS'taki Onboarding.swift ile aynı akış ve anahtar.
+ * (önceki sürümü kullananlar görmez; Features.load işaretler). 4 Kasım 2026'dan beri altı adımlık tanıtım (sahibin
+ * isteği): hoş geldiniz (canlı saat), saati kaydırma, tam ekran ve gece modu, özellik seçimi, Tümü ve Ayarlar, konum ve
+ * bildirimler. Çizimler kodla (telefon çerçevesi içinde kısa döngüler). Bekletme yok; "Geç" her sayfada; Ayarlar ›
+ * Destek'ten yeniden gösterilir. iOS'taki Onboarding.swift ile aynı akış ve anahtar.
  */
 object Onboarding {
     const val KEY = "onboard.pending"
@@ -71,6 +98,12 @@ object Onboarding {
         pending = Prefs.store.getBoolean(KEY, false)
     }
 
+    /** Ayarlar › Destek › Tanıtımı yeniden göster */
+    fun replay() {
+        pending = true
+        Prefs.store.edit().putBoolean(KEY, true).apply()
+    }
+
     /** Bitince: bildirim izni burada sorulduğu için açılıştaki kısa açıklama bir daha çıkmaz */
     fun finish() {
         pending = false
@@ -79,10 +112,10 @@ object Onboarding {
 }
 
 @Composable
-fun OnboardingScreen(onDone: () -> Unit) {
-    val pager = rememberPagerState { 3 }
+fun OnboardingScreen(startPage: Int = 0, onDone: () -> Unit) {
+    val last = 5
+    val pager = rememberPagerState(initialPage = startPage.coerceIn(0, last)) { last + 1 }
     val scope = rememberCoroutineScope()
-    val last = 2
     Column(Modifier.fillMaxSize().appBackdrop(Theme.c).statusBarsPadding().navigationBarsPadding()) {
         Row(Modifier.fillMaxWidth().height(48.dp).padding(horizontal = 12.dp), verticalAlignment = Alignment.CenterVertically) {
             Spacer(Modifier.weight(1f))
@@ -93,13 +126,16 @@ fun OnboardingScreen(onDone: () -> Unit) {
         HorizontalPager(pager, Modifier.weight(1f).fillMaxWidth()) { page ->
             when (page) {
                 0 -> WelcomePage()
-                1 -> FeaturesPage()
+                1 -> TipPage("onboard.swipe") { SwipeArt() }
+                2 -> TipPage("onboard.full") { FullscreenArt() }
+                3 -> FeaturesPage()
+                4 -> TipPage("onboard.all") { AllArt() }
                 else -> SetupPage()
             }
         }
         // Sayfa noktaları: seçili olan uzun çizgi
         Row(Modifier.fillMaxWidth().padding(bottom = 16.dp), horizontalArrangement = Arrangement.Center) {
-            repeat(3) { i ->
+            repeat(last + 1) { i ->
                 val on = i == pager.currentPage
                 Box(Modifier.padding(horizontal = 4.dp).size(if (on) 22.dp else 8.dp, 8.dp)
                     .background(if (on) Theme.c.accent else Theme.c.border, RoundedCornerShape(50)))
@@ -188,6 +224,127 @@ private fun SetupPage() {
             Text(L(if (notifyOn) "onboard.notifyOn" else "onboard.notify"), Modifier.weight(1f),
                 color = if (notifyOn) Theme.c.accent else Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
             if (notifyOn) Icon(Icons.Filled.CheckCircle, null, tint = Theme.c.accent)
+        }
+    }
+}
+
+/** Tanıtım adımı: üstte çizim, altında başlık ve kısa açıklama (anahtarlar `<key>.title`, `<key>.text`) */
+@Composable
+private fun TipPage(key: String, art: @Composable () -> Unit) {
+    Column(
+        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 28.dp, vertical = 12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(18.dp, Alignment.CenterVertically),
+    ) {
+        Box(Modifier.size(290.dp).semantics { invisibleToUser() }, contentAlignment = Alignment.Center) { Ltr { art() } }
+        Text(L("$key.title"), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        Text(L("$key.text"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
+    }
+}
+
+/** Telefon çerçevesi: yuvarlak köşeli ekran, üstte çentik */
+@Composable
+private fun PhoneFrame(modifier: Modifier = Modifier, screen: Color = Theme.c.surface, content: @Composable BoxScope.() -> Unit) {
+    val shape = RoundedCornerShape(28.dp)
+    Box(
+        modifier.size(150.dp, 280.dp).background(screen, shape).border(5.dp, Theme.c.text.copy(alpha = 0.82f), shape)
+            .padding(5.dp).clip(RoundedCornerShape(23.dp)),
+    ) {
+        content()
+        Box(Modifier.align(Alignment.TopCenter).padding(top = 7.dp).size(38.dp, 9.dp)
+            .background(Theme.c.text.copy(alpha = 0.82f), RoundedCornerShape(50)))
+    }
+}
+
+/** 0 → 1 → 0 döngüsü: bekle, yumuşak geç, bekle (hareketi azalt açıksa ilk karede durur) */
+@Composable
+private fun loopPhase(period: Int = 3200): Float {
+    val t = rememberInfiniteTransition(label = "tip")
+    val p by t.animateFloat(0f, 1f, infiniteRepeatable(tween(period, easing = LinearEasing), RepeatMode.Reverse), label = "p")
+    val x = ((p - 0.3f) / 0.4f).coerceIn(0f, 1f)
+    return x * x * (3 - 2 * x)
+}
+
+/** Saati kaydırma: analog saat sola kayar, dijital saat gelir; altta kayan parmak */
+@Composable
+private fun SwipeArt() {
+    val now = rememberNow().atZone(java.time.ZoneId.systemDefault())
+    val k = loopPhase()
+    PhoneFrame {
+        BoxWithConstraints(Modifier.fillMaxSize()) {
+            val w = maxWidth
+            Box(Modifier.fillMaxSize().offset(x = -w * k), contentAlignment = Alignment.Center) {
+                AnalogClock(now, Modifier.size(112.dp), tap = false)
+            }
+            Box(Modifier.fillMaxSize().offset(x = w * (1 - k)), contentAlignment = Alignment.Center) {
+                Text(String.format(java.util.Locale.ROOT, "%02d:%02d", now.hour, now.minute), color = Theme.c.ink,
+                    fontSize = 38.sp, fontWeight = FontWeight.Light, style = Tnum)
+            }
+        }
+        Box(Modifier.align(Alignment.BottomCenter).padding(bottom = 34.dp).offset(x = (28 - 56 * k).dp).size(30.dp)
+            .background(Theme.c.accent.copy(alpha = 0.25f), CircleShape).border(2.dp, Theme.c.accent, CircleShape))
+        Row(Modifier.align(Alignment.BottomCenter).padding(bottom = 14.dp), horizontalArrangement = Arrangement.spacedBy(5.dp)) {
+            repeat(2) { i ->
+                val on = if (i == 0) k < 0.5f else k >= 0.5f
+                Box(Modifier.size(if (on) 14.dp else 5.dp, 5.dp).background(if (on) Theme.c.accent else Theme.c.border, RoundedCornerShape(50)))
+            }
+        }
+    }
+}
+
+/** Tam ekran ve gece: telefon yan döner, ekran kararır, saat kısık kırmızı olur */
+@Composable
+private fun FullscreenArt() {
+    val now = rememberNow().atZone(java.time.ZoneId.systemDefault())
+    val k = loopPhase(3600)
+    val screen = androidx.compose.ui.graphics.lerp(Theme.c.surface, Color.Black, k)
+    val digits = androidx.compose.ui.graphics.lerp(Theme.c.ink, Color(0xFFE0402A), k)
+    PhoneFrame(Modifier.graphicsLayer { rotationZ = -90f * k }, screen = screen) {
+        Column(Modifier.fillMaxSize().graphicsLayer { rotationZ = 90f * k }, horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+            Text(String.format(java.util.Locale.ROOT, "%02d:%02d", now.hour, now.minute), color = digits,
+                fontSize = (34 + 14 * k).sp, fontWeight = FontWeight.Light, style = Tnum, maxLines = 1)
+            Icon(Icons.Filled.Bedtime, null, tint = digits.copy(alpha = k), modifier = Modifier.padding(top = 6.dp).size(18.dp))
+        }
+    }
+}
+
+/** Tümü: arama, renkli araç kutuları, alt çubukta vurgulanan "Tümü" ve uzun basılan kutunun halkası */
+@Composable
+private fun AllArt() {
+    val c = Theme.c
+    val k = loopPhase(2800)
+    val tiles = listOf(
+        Icons.Filled.Alarm to c.terra, Icons.Filled.Timer to c.terra, Icons.Filled.CalendarMonth to c.sage,
+        Icons.Filled.WbSunny to c.sky, Icons.Filled.Explore to c.gold, Icons.Filled.MenuBook to c.gold,
+        Icons.Filled.Public to c.sky, Icons.Filled.Bedtime to c.dusk, Icons.Filled.Settings to c.dusk,
+    )
+    PhoneFrame {
+        Column(Modifier.fillMaxSize().padding(start = 10.dp, end = 10.dp, top = 24.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(Modifier.fillMaxWidth().height(20.dp).background(c.surface2, RoundedCornerShape(50)).padding(horizontal = 7.dp),
+                verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Filled.Search, null, tint = c.muted, modifier = Modifier.size(12.dp))
+            }
+            for (r in 0 until 3) Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                for (i in 0 until 3) {
+                    val (icon, col) = tiles[r * 3 + i]
+                    val pressed = r == 0 && i == 0
+                    Box(
+                        Modifier.size(34.dp).background(col.copy(alpha = if (c.dark) 0.22f else 0.14f), RoundedCornerShape(11.dp))
+                            .then(if (pressed) Modifier.border((1 + 2 * k).dp, c.accent.copy(alpha = k), RoundedCornerShape(11.dp)) else Modifier),
+                        contentAlignment = Alignment.Center,
+                    ) { Icon(icon, null, tint = col, modifier = Modifier.size(18.dp)) }
+                }
+            }
+        }
+        Row(Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(34.dp).background(c.surface2).padding(horizontal = 12.dp),
+            horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+            Icon(Icons.Filled.Schedule, null, tint = c.muted, modifier = Modifier.size(15.dp))
+            Icon(Icons.Filled.Bedtime, null, tint = c.muted, modifier = Modifier.size(15.dp))
+            Icon(Icons.Filled.WbSunny, null, tint = c.muted, modifier = Modifier.size(15.dp))
+            Box(Modifier.background(c.accent.copy(alpha = 0.12f + 0.2f * k), RoundedCornerShape(50)).padding(horizontal = 7.dp, vertical = 3.dp)) {
+                Icon(Icons.Filled.Apps, null, tint = c.accent, modifier = Modifier.size(15.dp))
+            }
         }
     }
 }

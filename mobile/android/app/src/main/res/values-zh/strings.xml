@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">开始时间保存在本机；重新打开应用时计时从中断处继续。计时进行时屏幕保持常亮。</string>
     <string name="tools_localOnly">您输入的信息只在本机计算，不会保存，也不会发送到任何地方。</string>
     <string name="home_editScreen">编辑时钟屏幕</string>
+    <string name="onboard_swipe_title">滑动切换时钟</string>
+    <string name="onboard_swipe_text">在时钟屏幕上向左或向右滑动，每次都会换成另一种时钟样式。轻点时钟可显示或隐藏秒数。</string>
+    <string name="onboard_full_title">全屏与夜间模式</string>
+    <string name="onboard_full_text">点按“全屏”或把手机横过来，时钟就会占满屏幕。夜间模式会变成暗红色，放在床头也不刺眼。</string>
+    <string name="onboard_all_title">一切都在“全部”里</string>
+    <string name="onboard_all_text">底部栏的“全部”里有所有工具、搜索和设置；长按常用项可将其固定在顶部。要在时钟下方添加日期、礼拜时间或天气：设置 › 编辑时钟屏幕。</string>
+    <string name="onboard_replay">再次查看介绍</string>
     <string name="app_name">时间与日期</string>
 </resources>

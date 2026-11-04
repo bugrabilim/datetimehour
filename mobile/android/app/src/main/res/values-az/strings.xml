@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">Başlanğıc bu telefonda saxlanılır; tətbiqi yenidən açanda sayğac qaldığı yerdən davam edir. Sayğac işləyəndə ekran sönmür.</string>
     <string name="tools_localOnly">Daxil etdiyiniz məlumat yalnız bu telefonda hesablanır; saxlanılmır və heç yerə göndərilmir.</string>
     <string name="home_editScreen">Saat ekranını redaktə et</string>
+    <string name="onboard_swipe_title">Saatı sürüşdürərək dəyişin</string>
+    <string name="onboard_swipe_text">Saat ekranında barmağınızı sağa və ya sola sürüşdürün; hər dəfə başqa saat modeli gəlir. Saata toxunanda saniyələr açılır və ya bağlanır.</string>
+    <string name="onboard_full_title">Tam ekran və gecə rejimi</string>
+    <string name="onboard_full_text">Tam ekran düyməsinə toxunun və ya telefonu yan çevirin; saat bütün ekranı tutur. Gecə rejimində yazı sönük qırmızı olur, çarpayı başında göz qamaşdırmır.</string>
+    <string name="onboard_all_title">Hər şey \"Hamısı\" bölməsində</string>
+    <string name="onboard_all_text">Alt zolaqdakı \"Hamısı\" bölməsində bütün alətlər, axtarış və Parametrlər var; tez-tez istifadə etdiklərinizi uzun basaraq önə çəkin. Saatın altına tarix, vaxt və ya hava əlavə etmək üçün: Parametrlər › Saat ekranını redaktə et.</string>
+    <string name="onboard_replay">Tanıtımı yenidən göstər</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

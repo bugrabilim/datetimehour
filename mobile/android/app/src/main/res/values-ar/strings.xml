@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">يُحفظ وقت البدء على هذا الهاتف؛ وعند فتح التطبيق مجددًا يتابع المؤقت من حيث توقف. تبقى الشاشة مضاءة أثناء عمل المؤقت.</string>
     <string name="tools_localOnly">تُحسب البيانات التي تدخلها على هذا الهاتف فقط؛ لا تُحفظ ولا تُرسل إلى أي مكان.</string>
     <string name="home_editScreen">تعديل شاشة الساعة</string>
+    <string name="onboard_swipe_title">اسحب لتغيير الساعة</string>
+    <string name="onboard_swipe_text">اسحب يمينًا أو يسارًا على شاشة الساعة؛ كل سحبة تعرض نموذج ساعة آخر. المس الساعة لإظهار الثواني أو إخفائها.</string>
+    <string name="onboard_full_title">ملء الشاشة والوضع الليلي</string>
+    <string name="onboard_full_text">المس «ملء الشاشة» أو أدر الهاتف أفقيًا فتملأ الساعة الشاشة. في الوضع الليلي يصبح لونها أحمر خافتًا لا يزعج العين بجانب السرير.</string>
+    <string name="onboard_all_title">كل شيء في «الكل»</string>
+    <string name="onboard_all_text">في «الكل» بالشريط السفلي كل الأدوات والبحث والإعدادات؛ اضغط مطولًا على ما تستخدمه كثيرًا لتثبيته في الأعلى. لإضافة التاريخ أو أوقات الصلاة أو الطقس تحت الساعة: الإعدادات › تعديل شاشة الساعة.</string>
+    <string name="onboard_replay">إظهار الجولة التعريفية مجددًا</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

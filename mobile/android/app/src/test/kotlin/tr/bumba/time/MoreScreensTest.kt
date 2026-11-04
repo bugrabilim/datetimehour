@@ -568,6 +568,11 @@ class MoreScreensTest {
         shot("ar-atmosfer-gun-batimi", qualifiers = "ar", atmo = "sunset") { PrayerScreen() }
         page("tr-dil", "Dil") { LanguageScreen() }
         shot("tr-kurulum") { OnboardingScreen {} }
+        // Altı adımlık tanıtım (4 Kasım 2026): kaydırma, tam ekran, Tümü
+        shot("tr-kurulum-kaydir") { OnboardingScreen(1) {} }
+        shot("tr-kurulum-tam-ekran", dark = true) { OnboardingScreen(2) {} }
+        shot("tr-kurulum-tumu") { OnboardingScreen(4) {} }
+        shot("ar-kurulum-tumu", qualifiers = "ar") { OnboardingScreen(4) {} }
         Onboarding.finish()
     }
 

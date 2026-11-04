@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">زمان شروع در همین گوشی ذخیره می‌شود؛ با باز کردن دوباره برنامه، زمان‌سنج از همان‌جا ادامه می‌دهد. تا زمان‌سنج کار می‌کند صفحه خاموش نمی‌شود.</string>
     <string name="tools_localOnly">اطلاعاتی که وارد می‌کنید فقط در همین گوشی محاسبه می‌شود؛ ذخیره نمی‌شود و جایی فرستاده نمی‌شود.</string>
     <string name="home_editScreen">ویرایش صفحهٔ ساعت</string>
+    <string name="onboard_swipe_title">برای تغییر ساعت بکشید</string>
+    <string name="onboard_swipe_text">در صفحهٔ ساعت به چپ یا راست بکشید؛ هر بار مدل دیگری از ساعت می‌آید. برای نمایش یا پنهان کردن ثانیه‌ها روی ساعت بزنید.</string>
+    <string name="onboard_full_title">تمام‌صفحه و حالت شب</string>
+    <string name="onboard_full_text">روی «تمام‌صفحه» بزنید یا گوشی را افقی کنید تا ساعت کل صفحه را بگیرد. در حالت شب رنگ آن قرمز کم‌نور می‌شود و کنار تخت چشم را نمی‌زند.</string>
+    <string name="onboard_all_title">همه‌چیز در «همه»</string>
+    <string name="onboard_all_text">در «همه» در نوار پایین همهٔ ابزارها، جست‌وجو و تنظیمات هست؛ موارد پرکاربرد را با لمس طولانی به بالا سنجاق کنید. برای افزودن تاریخ، اوقات نماز یا آب‌وهوا زیر ساعت: تنظیمات › ویرایش صفحهٔ ساعت.</string>
+    <string name="onboard_replay">نمایش دوبارهٔ معرفی</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

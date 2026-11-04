@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">शुरू होने का समय इसी फ़ोन में सहेजा रहता है; ऐप दोबारा खोलने पर टाइमर वहीं से चलता है। टाइमर चलते समय स्क्रीन बंद नहीं होती।</string>
     <string name="tools_localOnly">आपकी दर्ज की गई जानकारी केवल इसी फ़ोन पर गणना होती है; न सहेजी जाती है, न कहीं भेजी जाती है।</string>
     <string name="home_editScreen">घड़ी स्क्रीन संपादित करें</string>
+    <string name="onboard_swipe_title">घड़ी बदलने के लिए स्वाइप करें</string>
+    <string name="onboard_swipe_text">घड़ी स्क्रीन पर बाएँ या दाएँ स्वाइप करें; हर बार घड़ी का नया डिज़ाइन आता है। सेकंड दिखाने या छिपाने के लिए घड़ी को छुएँ।</string>
+    <string name="onboard_full_title">फ़ुल स्क्रीन और रात्रि मोड</string>
+    <string name="onboard_full_text">फ़ुल स्क्रीन को छुएँ या फ़ोन को आड़ा करें, घड़ी पूरी स्क्रीन पर आ जाएगी। रात्रि मोड में रंग हल्का लाल हो जाता है, बिस्तर के पास आँखें नहीं चुभतीं।</string>
+    <string name="onboard_all_title">सब कुछ «सब» में</string>
+    <string name="onboard_all_text">नीचे की पट्टी में «सब» में सारे टूल, खोज और सेटिंग्स हैं; पसंदीदा चीज़ों को ऊपर पिन करने के लिए देर तक दबाएँ। घड़ी के नीचे तारीख़, नमाज़ के समय या मौसम जोड़ने के लिए: सेटिंग्स › घड़ी स्क्रीन संपादित करें।</string>
+    <string name="onboard_replay">परिचय फिर से दिखाएँ</string>
     <string name="app_name">समय और तारीख</string>
 </resources>

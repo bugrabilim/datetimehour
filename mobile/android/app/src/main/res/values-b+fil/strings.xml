@@ -2828,5 +2828,12 @@
     <string name="examTimer_appNote">Nakaimbak sa teleponong ito ang oras ng simula; pagbukas muli ng app, magpapatuloy ang timer kung saan ito huminto. Nananatiling bukas ang screen habang tumatakbo ang timer.</string>
     <string name="tools_localOnly">Ang inilagay mo ay kinukuwenta lang sa teleponong ito; hindi ito sine-save o ipinapadala kahit saan.</string>
     <string name="home_editScreen">I-edit ang screen ng orasan</string>
+    <string name="onboard_swipe_title">Mag-swipe para palitan ang orasan</string>
+    <string name="onboard_swipe_text">Sa screen ng orasan, mag-swipe pakaliwa o pakanan; bawat swipe ay ibang modelo ng orasan. I-tap ang orasan para ipakita o itago ang mga segundo.</string>
+    <string name="onboard_full_title">Full screen at night mode</string>
+    <string name="onboard_full_text">I-tap ang Full screen o ipahiga ang telepono, at sasakupin ng orasan ang buong screen. Sa night mode, nagiging malamlam na pula ito kaya hindi nakasisilaw sa tabi ng kama.</string>
+    <string name="onboard_all_title">Nasa Lahat ang lahat</string>
+    <string name="onboard_all_text">Nasa Lahat sa ibabang bar ang lahat ng tool, ang paghahanap at ang Settings; pindutin nang matagal ang mga paborito para i-pin sa itaas. Para magdagdag ng petsa, oras ng pagdarasal o panahon sa ilalim ng orasan: Settings › I-edit ang screen ng orasan.</string>
+    <string name="onboard_replay">Ipakita muli ang pagpapakilala</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

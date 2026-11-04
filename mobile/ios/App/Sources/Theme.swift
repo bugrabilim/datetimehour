@@ -25,6 +25,12 @@ enum Theme {
     static let errBg = dynamic(light: 0xFBE7E7, dark: 0x3A1A1A)
     static let ok = dynamic(light: 0x176B3A, dark: 0x7FD9A1)
     static let okBg = dynamic(light: 0xE2F3E8, dark: 0x16301F)
+    /// Doğa renkleri (doğal tasarım, docs/dogal-tasarim; 4 Kasım 2026): Tümü kategorileri, tanıtım çizimleri
+    static let terra = dynamic(light: 0xB4532A, dark: 0xF2A65A)
+    static let sage = dynamic(light: 0x4A6B47, dark: 0x9CC294)
+    static let sky = dynamic(light: 0x3A6889, dark: 0x8DB8DA)
+    static let gold = dynamic(light: 0x835A0D, dark: 0xE2B65C)
+    static let dusk = dynamic(light: 0x7A4760, dark: 0xD69BB5)
 
     fileprivate static func dynamic(light: UInt32, dark: UInt32) -> Color {
         Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor(rgb: dark) : UIColor(rgb: light) })
