@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">ได้ยิน: %1$s</string>
     <string name="wake_speak_unavailable">โทรศัพท์นี้ไม่มีการจดจำเสียงในเครื่อง จึงเปลี่ยนเป็นงานพิมพ์</string>
     <string name="wake_speak_note">เสียงถูกจดจำในโทรศัพท์เท่านั้น ไม่ถูกบันทึกและไม่ถูกส่ง</string>
+    <string name="guide_pic_title">ขั้นตอนพร้อมภาพ</string>
+    <string name="guide_pic_prayer">ละหมาด</string>
+    <string name="guide_pic_wudu">วุฎูอ์</string>
+    <string name="guide_pic_male">ชาย</string>
+    <string name="guide_pic_female">หญิง</string>
+    <string name="guide_pic_note">ภาพเป็นเพียงตัวอย่าง ความต่างเป็นไปตามมัซฮับฮะนะฟี</string>
+    <string name="guide_pic_m_1">ผู้ชายยกมือจนนิ้วโป้งแตะติ่งหู</string>
+    <string name="guide_pic_f_1">ผู้หญิงยกมือถึงระดับไหล่</string>
+    <string name="guide_pic_m_2">ผู้ชายวางมือใต้สะดือ</string>
+    <string name="guide_pic_f_2">ผู้หญิงวางมือบนหน้าอก</string>
+    <string name="guide_pic_m_3">ผู้ชายให้หลังและศีรษะตรง กางนิ้วจับเข่า</string>
+    <string name="guide_pic_f_3">ผู้หญิงก้มน้อยกว่า วางมือบนเข่าโดยชิดนิ้ว</string>
+    <string name="guide_pic_m_5">ผู้ชายกางแขนห่างลำตัว ท้องห่างจากต้นขา</string>
+    <string name="guide_pic_f_5">ผู้หญิงแนบแขนชิดลำตัว ท้องชิดต้นขา</string>
+    <string name="guide_pic_m_7">ผู้ชายนั่งบนเท้าซ้ายที่วางราบ ตั้งเท้าขวาโดยให้นิ้วหันไปทางกิบลัต</string>
+    <string name="guide_pic_f_7">ผู้หญิงนั่งบนพื้นโดยยื่นเท้าทั้งสองไปทางขวา</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">Услышано: %1$s</string>
     <string name="wake_speak_unavailable">На этом телефоне нет распознавания речи на устройстве; переход к набору текста.</string>
     <string name="wake_speak_note">Речь распознаётся только на телефоне, не записывается и никуда не отправляется.</string>
+    <string name="guide_pic_title">Шаги в картинках</string>
+    <string name="guide_pic_prayer">Намаз</string>
+    <string name="guide_pic_wudu">Омовение</string>
+    <string name="guide_pic_male">Мужчины</string>
+    <string name="guide_pic_female">Женщины</string>
+    <string name="guide_pic_note">Рисунки схематичны; различия по ханафитскому мазхабу.</string>
+    <string name="guide_pic_m_1">Мужчины поднимают руки, пока большие пальцы не коснутся мочек ушей.</string>
+    <string name="guide_pic_f_1">Женщины поднимают руки до уровня плеч.</string>
+    <string name="guide_pic_m_2">Мужчины складывают руки ниже пупка.</string>
+    <string name="guide_pic_f_2">Женщины складывают руки на груди.</string>
+    <string name="guide_pic_m_3">Мужчины держат спину и голову ровно и обхватывают колени, расставив пальцы.</string>
+    <string name="guide_pic_f_3">Женщины наклоняются меньше и кладут руки на колени, сомкнув пальцы.</string>
+    <string name="guide_pic_m_5">Мужчины держат руки в стороне от боков, а живот — от бёдер.</string>
+    <string name="guide_pic_f_5">Женщины прижимают руки к бокам, а живот — к бёдрам.</string>
+    <string name="guide_pic_m_7">Мужчины сидят на положенной левой стопе, правая стоит вертикально, пальцами к кибле.</string>
+    <string name="guide_pic_f_7">Женщины сидят на полу, выведя обе стопы вправо.</string>
     <string name="app_name">Время и дата</string>
 </resources>

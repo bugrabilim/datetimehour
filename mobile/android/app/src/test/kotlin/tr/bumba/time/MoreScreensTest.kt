@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.takahirom.roborazzi.captureRoboImage
@@ -452,6 +453,15 @@ class MoreScreensTest {
         shot("tr-hadis") { HadithScreen {} }
         shot("en-hadis-koyu", "en", dark = true) { HadithScreen {} }
         shot("tr-namaz-rehberi") { PrayerGuideScreen({}) {} }
+        // Resimli rehber (2. analiz #68): bütün duruşlar, erkek ve kadın
+        shot("tr-namaz-rehberi-cizimler") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(8.dp)) {
+                for (female in listOf(false, true)) androidx.compose.foundation.layout.Row {
+                    for (id in listOf("stand", "takbir", "fold", "ruku", "sajda", "sit", "salam"))
+                        GuideFigure(id, female, Theme.c.ink, Theme.c.accent, Modifier.size(56.dp))
+                }
+            }
+        }
         shot("tr-takvim-yapragi") { CalendarLeafScreen {} }
         shot("de-takvim-yapragi", "de") { CalendarLeafScreen {} }
     }

@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">听到: %1$s</string>
     <string name="wake_speak_unavailable">此手机不支持设备端语音识别；已切换为输入任务。</string>
     <string name="wake_speak_note">语音仅在手机上识别，不录音也不发送。</string>
+    <string name="guide_pic_title">图解步骤</string>
+    <string name="guide_pic_prayer">礼拜</string>
+    <string name="guide_pic_wudu">小净</string>
+    <string name="guide_pic_male">男性</string>
+    <string name="guide_pic_female">女性</string>
+    <string name="guide_pic_note">图示仅供参考；差异依据哈乃斐学派。</string>
+    <string name="guide_pic_m_1">男性举手至拇指触及耳垂。</string>
+    <string name="guide_pic_f_1">女性举手至肩高。</string>
+    <string name="guide_pic_m_2">男性双手置于脐下。</string>
+    <string name="guide_pic_f_2">女性双手置于胸前。</string>
+    <string name="guide_pic_m_3">男性背与头保持平直，张开手指握住膝盖。</string>
+    <string name="guide_pic_f_3">女性弯腰较浅，手指并拢放在膝上。</string>
+    <string name="guide_pic_m_5">男性手臂远离两肋，腹部离开大腿。</string>
+    <string name="guide_pic_f_5">女性手臂贴近两肋，腹部贴近大腿。</string>
+    <string name="guide_pic_m_7">男性坐在平放的左脚上，右脚竖立，脚趾朝向朝向。</string>
+    <string name="guide_pic_f_7">女性双脚移向右侧，坐于地上。</string>
     <string name="app_name">时间与日期</string>
 </resources>

@@ -239115,6 +239115,1526 @@
           }
         }
       }
+    },
+    "guide.pic.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resimli anlatım"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Illustrated steps"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bebilderte Schritte"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şəkilli izah"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خطوات مصوَّرة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Langkah bergambar"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تصویری مراحل"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مراحل تصویری"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Étapes illustrées"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шаги в картинках"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "図解"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "그림으로 보기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图解步骤"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May larawang hakbang"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขั้นตอนพร้อมภาพ"
+          }
+        }
+      }
+    },
+    "guide.pic.prayer": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Namaz"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prayer"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gebet"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Namaz"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الصلاة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salat"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نماز"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نماز"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prière"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Намаз"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "礼拝"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "예배"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "礼拜"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salah"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ละหมาด"
+          }
+        }
+      }
+    },
+    "guide.pic.wudu": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abdest"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wudu"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wudu"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dəstəmaz"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوضوء"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wudu"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وضو"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وضو"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ablutions"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Омовение"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ウドゥー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "우두"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小净"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wudu"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วุฎูอ์"
+          }
+        }
+      }
+    },
+    "guide.pic.male": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erkek"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Men"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Männer"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الرجال"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laki-laki"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مرد"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مرد"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hommes"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мужчины"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "남성"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lalaki"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ชาย"
+          }
+        }
+      }
+    },
+    "guide.pic.female": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kadın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Women"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frauen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qadın"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "النساء"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perempuan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عورت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زن"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Femmes"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Женщины"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여성"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Babae"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "หญิง"
+          }
+        }
+      }
+    },
+    "guide.pic.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çizimler temsilîdir; farklar Hanefî mezhebine göredir (Diyanet)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drawings are illustrative; differences follow the Hanafi school (Diyanet)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeichnungen sind schematisch; Unterschiede nach hanafitischer Schule (Diyanet)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çəkilişlər təmsilidir; fərqlər Hənəfi məzhəbinə görədir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الرسوم توضيحية؛ والفروق وفق المذهب الحنفي."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gambar bersifat ilustrasi; perbedaan mengikuti mazhab Hanafi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تصاویر وضاحتی ہیں؛ فرق حنفی مسلک کے مطابق ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تصاویر نمادین‌اند؛ تفاوت‌ها طبق مذهب حنفی است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dessins indicatifs ; les différences suivent l'école hanafite."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Рисунки схематичны; различия по ханафитскому мазхабу."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "図はイメージです。違いはハナフィー派によります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "그림은 예시이며 차이는 하나피 학파를 따릅니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图示仅供参考；差异依据哈乃斐学派。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paglalarawan lamang ang mga guhit; ayon sa mazhab Hanafi ang mga pagkakaiba."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ภาพเป็นเพียงตัวอย่าง ความต่างเป็นไปตามมัซฮับฮะนะฟี"
+          }
+        }
+      }
+    },
+    "guide.pic.m.1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erkekler ellerini başparmaklar kulak memelerine değecek kadar kaldırır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Men raise their hands until the thumbs touch the earlobes."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Männer heben die Hände, bis die Daumen die Ohrläppchen berühren."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişilər əllərini baş barmaqları qulaq məməsinə dəyənə qədər qaldırır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يرفع الرجال أيديهم حتى تلامس الإبهامان شحمتي الأذنين."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laki-laki mengangkat tangan hingga ibu jari menyentuh daun telinga."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مرد ہاتھ اتنے اٹھاتے ہیں کہ انگوٹھے کانوں کی لو کو چھوئیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مردان دست‌ها را تا جایی بالا می‌برند که شست‌ها به نرمه گوش برسد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les hommes lèvent les mains jusqu'à ce que les pouces touchent les lobes des oreilles."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мужчины поднимают руки, пока большие пальцы не коснутся мочек ушей."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性は親指が耳たぶに触れるまで手を上げます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "남성은 엄지가 귓불에 닿을 때까지 손을 올립니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性举手至拇指触及耳垂。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Itinataas ng lalaki ang kamay hanggang dumampi ang hinlalaki sa dulo ng tainga."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผู้ชายยกมือจนนิ้วโป้งแตะติ่งหู"
+          }
+        }
+      }
+    },
+    "guide.pic.f.1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kadınlar ellerini omuz hizasına kaldırır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Women raise their hands to shoulder height."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frauen heben die Hände bis auf Schulterhöhe."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qadınlar əllərini çiyin bərabərinə qaldırır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ترفع النساء أيديهن إلى مستوى الكتفين."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perempuan mengangkat tangan setinggi bahu."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عورتیں ہاتھ کندھوں تک اٹھاتی ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زنان دست‌ها را تا شانه بالا می‌برند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les femmes lèvent les mains à hauteur des épaules."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Женщины поднимают руки до уровня плеч."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性は肩の高さまで手を上げます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여성은 어깨 높이까지 손을 올립니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性举手至肩高。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Itinataas ng babae ang kamay hanggang balikat."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผู้หญิงยกมือถึงระดับไหล่"
+          }
+        }
+      }
+    },
+    "guide.pic.m.2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erkekler ellerini göbeğin altında bağlar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Men place their hands below the navel."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Männer legen die Hände unterhalb des Nabels zusammen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişilər əllərini göbəyin altında bağlayır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يضع الرجال أيديهم تحت السرة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laki-laki meletakkan tangan di bawah pusar."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مرد ہاتھ ناف کے نیچے باندھتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مردان دست‌ها را زیر ناف می‌گذارند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les hommes placent les mains sous le nombril."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мужчины складывают руки ниже пупка."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性はへその下で手を組みます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "남성은 배꼽 아래에 손을 모읍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性双手置于脐下。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inilalagay ng lalaki ang kamay sa ibaba ng pusod."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผู้ชายวางมือใต้สะดือ"
+          }
+        }
+      }
+    },
+    "guide.pic.f.2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kadınlar ellerini göğüs üzerinde bağlar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Women place their hands on the chest."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frauen legen die Hände auf die Brust."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qadınlar əllərini sinə üzərində bağlayır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تضع النساء أيديهن على الصدر."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perempuan meletakkan tangan di dada."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عورتیں ہاتھ سینے پر باندھتی ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زنان دست‌ها را روی سینه می‌گذارند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les femmes placent les mains sur la poitrine."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Женщины складывают руки на груди."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性は胸の上で手を組みます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여성은 가슴 위에 손을 모읍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性双手置于胸前。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inilalagay ng babae ang kamay sa dibdib."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผู้หญิงวางมือบนหน้าอก"
+          }
+        }
+      }
+    },
+    "guide.pic.m.3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erkekler sırtı ve başı düz bir çizgide tutar, parmaklarını açarak dizlerini kavrar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Men keep back and head level and grasp the knees with spread fingers."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Männer halten Rücken und Kopf gerade und umfassen die Knie mit gespreizten Fingern."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişilər beli və başı düz xətdə tutur, barmaqlarını açıb dizlərini tutur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يسوّي الرجال الظهر والرأس ويقبضون على الركبتين بأصابع مفرّجة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laki-laki meratakan punggung dan kepala serta menggenggam lutut dengan jari terbuka."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مرد کمر اور سر سیدھا رکھتے ہیں اور انگلیاں کھول کر گھٹنے پکڑتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مردان پشت و سر را صاف نگه می‌دارند و زانوها را با انگشتان باز می‌گیرند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les hommes gardent dos et tête alignés et saisissent les genoux, doigts écartés."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мужчины держат спину и голову ровно и обхватывают колени, расставив пальцы."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性は背と頭をまっすぐにし、指を開いて膝をつかみます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "남성은 등과 머리를 일직선으로 하고 손가락을 벌려 무릎을 잡습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性背与头保持平直，张开手指握住膝盖。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pinapantay ng lalaki ang likod at ulo at hinahawakan ang tuhod nang bukas ang daliri."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผู้ชายให้หลังและศีรษะตรง กางนิ้วจับเข่า"
+          }
+        }
+      }
+    },
+    "guide.pic.f.3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kadınlar daha az eğilir, ellerini parmakları bitişik olarak dizlerine koyar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Women bend less and rest their hands on the knees with fingers together."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frauen beugen sich weniger und legen die Hände mit geschlossenen Fingern auf die Knie."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qadınlar daha az əyilir, əllərini barmaqları bitişik dizlərinə qoyur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تنحني النساء أقل وتضعن أيديهن على الركبتين مضمومة الأصابع."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perempuan membungkuk lebih sedikit dan meletakkan tangan di lutut dengan jari rapat."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عورتیں کم جھکتی ہیں اور انگلیاں ملا کر ہاتھ گھٹنوں پر رکھتی ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زنان کمتر خم می‌شوند و دست‌ها را با انگشتان بسته روی زانو می‌گذارند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les femmes s'inclinent moins et posent les mains sur les genoux, doigts joints."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Женщины наклоняются меньше и кладут руки на колени, сомкнув пальцы."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性は浅めにかがみ、指をそろえて膝に手を置きます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여성은 덜 숙이고 손가락을 모아 무릎 위에 손을 놓습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性弯腰较浅，手指并拢放在膝上。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mas kaunti ang yuko ng babae at nakapatong ang kamay sa tuhod nang magkakadikit ang daliri."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผู้หญิงก้มน้อยกว่า วางมือบนเข่าโดยชิดนิ้ว"
+          }
+        }
+      }
+    },
+    "guide.pic.m.5": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erkekler kollarını yanlardan, karnını uyluklarından uzak tutar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Men keep their arms away from the sides and the belly off the thighs."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Männer halten die Arme vom Körper und den Bauch von den Oberschenkeln fern."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişilər qollarını böyürlərdən, qarnını budlarından uzaq tutur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُبعد الرجال أذرعهم عن الجنبين وبطونهم عن الفخذين."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laki-laki menjauhkan lengan dari sisi badan dan perut dari paha."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مرد بازو پہلوؤں سے اور پیٹ رانوں سے دور رکھتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مردان بازوها را از پهلو و شکم را از ران دور نگه می‌دارند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les hommes écartent les bras des flancs et le ventre des cuisses."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мужчины держат руки в стороне от боков, а живот — от бёдер."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性は腕を脇から、腹を太ももから離します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "남성은 팔을 옆구리에서, 배를 허벅지에서 띄웁니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性手臂远离两肋，腹部离开大腿。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inilalayo ng lalaki ang braso sa tagiliran at ang tiyan sa hita."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผู้ชายกางแขนห่างลำตัว ท้องห่างจากต้นขา"
+          }
+        }
+      }
+    },
+    "guide.pic.f.5": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kadınlar kollarını yanlarına, karnını uyluklarına yakın tutar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Women keep their arms close to the sides and the belly close to the thighs."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frauen halten die Arme am Körper und den Bauch nah an den Oberschenkeln."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qadınlar qollarını böyürlərinə, qarnını budlarına yaxın tutur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تضم النساء أذرعهن إلى الجنبين وبطونهن إلى الفخذين."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perempuan merapatkan lengan ke sisi badan dan perut ke paha."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عورتیں بازو پہلوؤں سے اور پیٹ رانوں سے ملا کر رکھتی ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زنان بازوها را به پهلو و شکم را به ران نزدیک نگه می‌دارند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les femmes gardent les bras près des flancs et le ventre près des cuisses."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Женщины прижимают руки к бокам, а живот — к бёдрам."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性は腕を脇に、腹を太ももに近づけます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여성은 팔을 옆구리에, 배를 허벅지에 붙입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性手臂贴近两肋，腹部贴近大腿。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idinidikit ng babae ang braso sa tagiliran at ang tiyan sa hita."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผู้หญิงแนบแขนชิดลำตัว ท้องชิดต้นขา"
+          }
+        }
+      }
+    },
+    "guide.pic.m.7": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erkekler sol ayağı yatırıp üzerine oturur, sağ ayağı parmaklar kıbleye dönük dik tutar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Men sit on the left foot laid flat, with the right foot upright, toes towards the qibla."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Männer sitzen auf dem flach gelegten linken Fuß, der rechte Fuß steht aufrecht, Zehen zur Qibla."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişilər sol ayağı yatırıb üstündə oturur, sağ ayağı barmaqları qibləyə dönük dik saxlayır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يجلس الرجال على القدم اليسرى مفروشة وينصبون اليمنى وأصابعها نحو القبلة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laki-laki duduk di atas kaki kiri yang dibentangkan, kaki kanan ditegakkan dengan jari ke arah kiblat."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مرد بایاں پاؤں بچھا کر اس پر بیٹھتے ہیں اور دایاں پاؤں انگلیاں قبلہ رخ کر کے کھڑا رکھتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مردان روی پای چپ خوابانده می‌نشینند و پای راست را با انگشتان رو به قبله عمودی نگه می‌دارند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les hommes s'assoient sur le pied gauche à plat, le pied droit dressé, orteils vers la qibla."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мужчины сидят на положенной левой стопе, правая стоит вертикально, пальцами к кибле."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性は左足を寝かせてその上に座り、右足はつま先をキブラに向けて立てます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "남성은 왼발을 눕혀 그 위에 앉고 오른발은 발가락을 키블라로 향해 세웁니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "男性坐在平放的左脚上，右脚竖立，脚趾朝向朝向。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Umuupo ang lalaki sa nakalapag na kaliwang paa; nakatayo ang kanang paa, nakaturo ang daliri sa qibla."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผู้ชายนั่งบนเท้าซ้ายที่วางราบ ตั้งเท้าขวาโดยให้นิ้วหันไปทางกิบลัต"
+          }
+        }
+      }
+    },
+    "guide.pic.f.7": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kadınlar iki ayağını sağ yana çıkarıp yere oturur."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Women sit on the floor with both feet out to the right side."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frauen sitzen auf dem Boden, beide Füße nach rechts ausgestreckt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qadınlar iki ayağını sağ tərəfə çıxarıb yerə oturur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تجلس النساء على الأرض مخرجات القدمين إلى الجانب الأيمن."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perempuan duduk di lantai dengan kedua kaki dikeluarkan ke sisi kanan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عورتیں دونوں پاؤں دائیں طرف نکال کر زمین پر بیٹھتی ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زنان هر دو پا را به سمت راست بیرون آورده روی زمین می‌نشینند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les femmes s'assoient au sol, les deux pieds sortis vers la droite."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Женщины сидят на полу, выведя обе стопы вправо."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性は両足を右側に出して床に座ります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여성은 두 발을 오른쪽으로 빼고 바닥에 앉습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女性双脚移向右侧，坐于地上。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Umuupo ang babae sa sahig nang nakalabas ang dalawang paa sa kanan."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผู้หญิงนั่งบนพื้นโดยยื่นเท้าทั้งสองไปทางขวา"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

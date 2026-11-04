@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">المسموع: %1$s</string>
     <string name="wake_speak_unavailable">لا يدعم هذا الهاتف التعرف على الكلام على الجهاز؛ تم الانتقال إلى مهمة الكتابة.</string>
     <string name="wake_speak_note">يُتعرَّف على الكلام على الهاتف فقط، ولا يُسجَّل ولا يُرسل.</string>
+    <string name="guide_pic_title">خطوات مصوَّرة</string>
+    <string name="guide_pic_prayer">الصلاة</string>
+    <string name="guide_pic_wudu">الوضوء</string>
+    <string name="guide_pic_male">الرجال</string>
+    <string name="guide_pic_female">النساء</string>
+    <string name="guide_pic_note">الرسوم توضيحية؛ والفروق وفق المذهب الحنفي.</string>
+    <string name="guide_pic_m_1">يرفع الرجال أيديهم حتى تلامس الإبهامان شحمتي الأذنين.</string>
+    <string name="guide_pic_f_1">ترفع النساء أيديهن إلى مستوى الكتفين.</string>
+    <string name="guide_pic_m_2">يضع الرجال أيديهم تحت السرة.</string>
+    <string name="guide_pic_f_2">تضع النساء أيديهن على الصدر.</string>
+    <string name="guide_pic_m_3">يسوّي الرجال الظهر والرأس ويقبضون على الركبتين بأصابع مفرّجة.</string>
+    <string name="guide_pic_f_3">تنحني النساء أقل وتضعن أيديهن على الركبتين مضمومة الأصابع.</string>
+    <string name="guide_pic_m_5">يُبعد الرجال أذرعهم عن الجنبين وبطونهم عن الفخذين.</string>
+    <string name="guide_pic_f_5">تضم النساء أذرعهن إلى الجنبين وبطونهن إلى الفخذين.</string>
+    <string name="guide_pic_m_7">يجلس الرجال على القدم اليسرى مفروشة وينصبون اليمنى وأصابعها نحو القبلة.</string>
+    <string name="guide_pic_f_7">تجلس النساء على الأرض مخرجات القدمين إلى الجانب الأيمن.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

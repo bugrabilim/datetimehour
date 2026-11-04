@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">Eşidilən: %1$s</string>
     <string name="wake_speak_unavailable">Bu telefonda cihaz daxilində nitq tanıma yoxdur; yazma tapşırığına keçildi.</string>
     <string name="wake_speak_note">Səs yalnız telefonda tanınır, yazılmır və heç yerə göndərilmir.</string>
+    <string name="guide_pic_title">Şəkilli izah</string>
+    <string name="guide_pic_prayer">Namaz</string>
+    <string name="guide_pic_wudu">Dəstəmaz</string>
+    <string name="guide_pic_male">Kişi</string>
+    <string name="guide_pic_female">Qadın</string>
+    <string name="guide_pic_note">Çəkilişlər təmsilidir; fərqlər Hənəfi məzhəbinə görədir.</string>
+    <string name="guide_pic_m_1">Kişilər əllərini baş barmaqları qulaq məməsinə dəyənə qədər qaldırır.</string>
+    <string name="guide_pic_f_1">Qadınlar əllərini çiyin bərabərinə qaldırır.</string>
+    <string name="guide_pic_m_2">Kişilər əllərini göbəyin altında bağlayır.</string>
+    <string name="guide_pic_f_2">Qadınlar əllərini sinə üzərində bağlayır.</string>
+    <string name="guide_pic_m_3">Kişilər beli və başı düz xətdə tutur, barmaqlarını açıb dizlərini tutur.</string>
+    <string name="guide_pic_f_3">Qadınlar daha az əyilir, əllərini barmaqları bitişik dizlərinə qoyur.</string>
+    <string name="guide_pic_m_5">Kişilər qollarını böyürlərdən, qarnını budlarından uzaq tutur.</string>
+    <string name="guide_pic_f_5">Qadınlar qollarını böyürlərinə, qarnını budlarına yaxın tutur.</string>
+    <string name="guide_pic_m_7">Kişilər sol ayağı yatırıb üstündə oturur, sağ ayağı barmaqları qibləyə dönük dik saxlayır.</string>
+    <string name="guide_pic_f_7">Qadınlar iki ayağını sağ tərəfə çıxarıb yerə oturur.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">聞き取り: %1$s</string>
     <string name="wake_speak_unavailable">この端末にはオンデバイス音声認識がないため、入力タスクに切り替えました。</string>
     <string name="wake_speak_note">音声は端末内でのみ認識され、録音も送信もされません。</string>
+    <string name="guide_pic_title">図解</string>
+    <string name="guide_pic_prayer">礼拝</string>
+    <string name="guide_pic_wudu">ウドゥー</string>
+    <string name="guide_pic_male">男性</string>
+    <string name="guide_pic_female">女性</string>
+    <string name="guide_pic_note">図はイメージです。違いはハナフィー派によります。</string>
+    <string name="guide_pic_m_1">男性は親指が耳たぶに触れるまで手を上げます。</string>
+    <string name="guide_pic_f_1">女性は肩の高さまで手を上げます。</string>
+    <string name="guide_pic_m_2">男性はへその下で手を組みます。</string>
+    <string name="guide_pic_f_2">女性は胸の上で手を組みます。</string>
+    <string name="guide_pic_m_3">男性は背と頭をまっすぐにし、指を開いて膝をつかみます。</string>
+    <string name="guide_pic_f_3">女性は浅めにかがみ、指をそろえて膝に手を置きます。</string>
+    <string name="guide_pic_m_5">男性は腕を脇から、腹を太ももから離します。</string>
+    <string name="guide_pic_f_5">女性は腕を脇に、腹を太ももに近づけます。</string>
+    <string name="guide_pic_m_7">男性は左足を寝かせてその上に座り、右足はつま先をキブラに向けて立てます。</string>
+    <string name="guide_pic_f_7">女性は両足を右側に出して床に座ります。</string>
     <string name="app_name">時刻と日付</string>
 </resources>

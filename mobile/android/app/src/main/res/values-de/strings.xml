@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">Gehört: %1$s</string>
     <string name="wake_speak_unavailable">Dieses Telefon hat keine Spracherkennung auf dem Gerät; zur Tippaufgabe gewechselt.</string>
     <string name="wake_speak_note">Sprache wird nur auf dem Telefon erkannt, nicht aufgezeichnet und nirgendwohin gesendet.</string>
+    <string name="guide_pic_title">Bebilderte Schritte</string>
+    <string name="guide_pic_prayer">Gebet</string>
+    <string name="guide_pic_wudu">Wudu</string>
+    <string name="guide_pic_male">Männer</string>
+    <string name="guide_pic_female">Frauen</string>
+    <string name="guide_pic_note">Zeichnungen sind schematisch; Unterschiede nach hanafitischer Schule (Diyanet).</string>
+    <string name="guide_pic_m_1">Männer heben die Hände, bis die Daumen die Ohrläppchen berühren.</string>
+    <string name="guide_pic_f_1">Frauen heben die Hände bis auf Schulterhöhe.</string>
+    <string name="guide_pic_m_2">Männer legen die Hände unterhalb des Nabels zusammen.</string>
+    <string name="guide_pic_f_2">Frauen legen die Hände auf die Brust.</string>
+    <string name="guide_pic_m_3">Männer halten Rücken und Kopf gerade und umfassen die Knie mit gespreizten Fingern.</string>
+    <string name="guide_pic_f_3">Frauen beugen sich weniger und legen die Hände mit geschlossenen Fingern auf die Knie.</string>
+    <string name="guide_pic_m_5">Männer halten die Arme vom Körper und den Bauch von den Oberschenkeln fern.</string>
+    <string name="guide_pic_f_5">Frauen halten die Arme am Körper und den Bauch nah an den Oberschenkeln.</string>
+    <string name="guide_pic_m_7">Männer sitzen auf dem flach gelegten linken Fuß, der rechte Fuß steht aufrecht, Zehen zur Qibla.</string>
+    <string name="guide_pic_f_7">Frauen sitzen auf dem Boden, beide Füße nach rechts ausgestreckt.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

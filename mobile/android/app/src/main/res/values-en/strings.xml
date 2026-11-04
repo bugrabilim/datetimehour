@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">Heard: %1$s</string>
     <string name="wake_speak_unavailable">This phone has no on-device speech recognition; switched to the typing task.</string>
     <string name="wake_speak_note">Speech is recognised only on the phone, not recorded and not sent anywhere.</string>
+    <string name="guide_pic_title">Illustrated steps</string>
+    <string name="guide_pic_prayer">Prayer</string>
+    <string name="guide_pic_wudu">Wudu</string>
+    <string name="guide_pic_male">Men</string>
+    <string name="guide_pic_female">Women</string>
+    <string name="guide_pic_note">Drawings are illustrative; differences follow the Hanafi school (Diyanet).</string>
+    <string name="guide_pic_m_1">Men raise their hands until the thumbs touch the earlobes.</string>
+    <string name="guide_pic_f_1">Women raise their hands to shoulder height.</string>
+    <string name="guide_pic_m_2">Men place their hands below the navel.</string>
+    <string name="guide_pic_f_2">Women place their hands on the chest.</string>
+    <string name="guide_pic_m_3">Men keep back and head level and grasp the knees with spread fingers.</string>
+    <string name="guide_pic_f_3">Women bend less and rest their hands on the knees with fingers together.</string>
+    <string name="guide_pic_m_5">Men keep their arms away from the sides and the belly off the thighs.</string>
+    <string name="guide_pic_f_5">Women keep their arms close to the sides and the belly close to the thighs.</string>
+    <string name="guide_pic_m_7">Men sit on the left foot laid flat, with the right foot upright, toes towards the qibla.</string>
+    <string name="guide_pic_f_7">Women sit on the floor with both feet out to the right side.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

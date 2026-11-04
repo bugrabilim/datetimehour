@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">Terdengar: %1$s</string>
     <string name="wake_speak_unavailable">Ponsel ini tidak punya pengenalan suara di perangkat; beralih ke tugas mengetik.</string>
     <string name="wake_speak_note">Suara hanya dikenali di ponsel, tidak direkam dan tidak dikirim.</string>
+    <string name="guide_pic_title">Langkah bergambar</string>
+    <string name="guide_pic_prayer">Salat</string>
+    <string name="guide_pic_wudu">Wudu</string>
+    <string name="guide_pic_male">Laki-laki</string>
+    <string name="guide_pic_female">Perempuan</string>
+    <string name="guide_pic_note">Gambar bersifat ilustrasi; perbedaan mengikuti mazhab Hanafi.</string>
+    <string name="guide_pic_m_1">Laki-laki mengangkat tangan hingga ibu jari menyentuh daun telinga.</string>
+    <string name="guide_pic_f_1">Perempuan mengangkat tangan setinggi bahu.</string>
+    <string name="guide_pic_m_2">Laki-laki meletakkan tangan di bawah pusar.</string>
+    <string name="guide_pic_f_2">Perempuan meletakkan tangan di dada.</string>
+    <string name="guide_pic_m_3">Laki-laki meratakan punggung dan kepala serta menggenggam lutut dengan jari terbuka.</string>
+    <string name="guide_pic_f_3">Perempuan membungkuk lebih sedikit dan meletakkan tangan di lutut dengan jari rapat.</string>
+    <string name="guide_pic_m_5">Laki-laki menjauhkan lengan dari sisi badan dan perut dari paha.</string>
+    <string name="guide_pic_f_5">Perempuan merapatkan lengan ke sisi badan dan perut ke paha.</string>
+    <string name="guide_pic_m_7">Laki-laki duduk di atas kaki kiri yang dibentangkan, kaki kanan ditegakkan dengan jari ke arah kiblat.</string>
+    <string name="guide_pic_f_7">Perempuan duduk di lantai dengan kedua kaki dikeluarkan ke sisi kanan.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

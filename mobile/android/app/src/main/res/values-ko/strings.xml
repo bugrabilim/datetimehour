@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">들린 말: %1$s</string>
     <string name="wake_speak_unavailable">이 휴대폰에는 기기 내 음성 인식이 없어 입력 과제로 바꿨습니다.</string>
     <string name="wake_speak_note">음성은 휴대폰에서만 인식되며 녹음되거나 전송되지 않습니다.</string>
+    <string name="guide_pic_title">그림으로 보기</string>
+    <string name="guide_pic_prayer">예배</string>
+    <string name="guide_pic_wudu">우두</string>
+    <string name="guide_pic_male">남성</string>
+    <string name="guide_pic_female">여성</string>
+    <string name="guide_pic_note">그림은 예시이며 차이는 하나피 학파를 따릅니다.</string>
+    <string name="guide_pic_m_1">남성은 엄지가 귓불에 닿을 때까지 손을 올립니다.</string>
+    <string name="guide_pic_f_1">여성은 어깨 높이까지 손을 올립니다.</string>
+    <string name="guide_pic_m_2">남성은 배꼽 아래에 손을 모읍니다.</string>
+    <string name="guide_pic_f_2">여성은 가슴 위에 손을 모읍니다.</string>
+    <string name="guide_pic_m_3">남성은 등과 머리를 일직선으로 하고 손가락을 벌려 무릎을 잡습니다.</string>
+    <string name="guide_pic_f_3">여성은 덜 숙이고 손가락을 모아 무릎 위에 손을 놓습니다.</string>
+    <string name="guide_pic_m_5">남성은 팔을 옆구리에서, 배를 허벅지에서 띄웁니다.</string>
+    <string name="guide_pic_f_5">여성은 팔을 옆구리에, 배를 허벅지에 붙입니다.</string>
+    <string name="guide_pic_m_7">남성은 왼발을 눕혀 그 위에 앉고 오른발은 발가락을 키블라로 향해 세웁니다.</string>
+    <string name="guide_pic_f_7">여성은 두 발을 오른쪽으로 빼고 바닥에 앉습니다.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

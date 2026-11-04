@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">Entendu : %1$s</string>
     <string name="wake_speak_unavailable">Ce téléphone n\'a pas de reconnaissance vocale sur l\'appareil ; passage à la saisie.</string>
     <string name="wake_speak_note">La voix est reconnue uniquement sur le téléphone, ni enregistrée ni envoyée.</string>
+    <string name="guide_pic_title">Étapes illustrées</string>
+    <string name="guide_pic_prayer">Prière</string>
+    <string name="guide_pic_wudu">Ablutions</string>
+    <string name="guide_pic_male">Hommes</string>
+    <string name="guide_pic_female">Femmes</string>
+    <string name="guide_pic_note">Dessins indicatifs ; les différences suivent l\'école hanafite.</string>
+    <string name="guide_pic_m_1">Les hommes lèvent les mains jusqu\'à ce que les pouces touchent les lobes des oreilles.</string>
+    <string name="guide_pic_f_1">Les femmes lèvent les mains à hauteur des épaules.</string>
+    <string name="guide_pic_m_2">Les hommes placent les mains sous le nombril.</string>
+    <string name="guide_pic_f_2">Les femmes placent les mains sur la poitrine.</string>
+    <string name="guide_pic_m_3">Les hommes gardent dos et tête alignés et saisissent les genoux, doigts écartés.</string>
+    <string name="guide_pic_f_3">Les femmes s\'inclinent moins et posent les mains sur les genoux, doigts joints.</string>
+    <string name="guide_pic_m_5">Les hommes écartent les bras des flancs et le ventre des cuisses.</string>
+    <string name="guide_pic_f_5">Les femmes gardent les bras près des flancs et le ventre près des cuisses.</string>
+    <string name="guide_pic_m_7">Les hommes s\'assoient sur le pied gauche à plat, le pied droit dressé, orteils vers la qibla.</string>
+    <string name="guide_pic_f_7">Les femmes s\'assoient au sol, les deux pieds sortis vers la droite.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

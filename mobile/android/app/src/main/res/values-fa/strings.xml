@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">شنیده شد: %1$s</string>
     <string name="wake_speak_unavailable">این گوشی تشخیص گفتار روی دستگاه ندارد؛ به کار تایپ رفت.</string>
     <string name="wake_speak_note">صدا فقط روی گوشی شناخته می‌شود، ضبط و ارسال نمی‌شود.</string>
+    <string name="guide_pic_title">مراحل تصویری</string>
+    <string name="guide_pic_prayer">نماز</string>
+    <string name="guide_pic_wudu">وضو</string>
+    <string name="guide_pic_male">مرد</string>
+    <string name="guide_pic_female">زن</string>
+    <string name="guide_pic_note">تصاویر نمادین‌اند؛ تفاوت‌ها طبق مذهب حنفی است.</string>
+    <string name="guide_pic_m_1">مردان دست‌ها را تا جایی بالا می‌برند که شست‌ها به نرمه گوش برسد.</string>
+    <string name="guide_pic_f_1">زنان دست‌ها را تا شانه بالا می‌برند.</string>
+    <string name="guide_pic_m_2">مردان دست‌ها را زیر ناف می‌گذارند.</string>
+    <string name="guide_pic_f_2">زنان دست‌ها را روی سینه می‌گذارند.</string>
+    <string name="guide_pic_m_3">مردان پشت و سر را صاف نگه می‌دارند و زانوها را با انگشتان باز می‌گیرند.</string>
+    <string name="guide_pic_f_3">زنان کمتر خم می‌شوند و دست‌ها را با انگشتان بسته روی زانو می‌گذارند.</string>
+    <string name="guide_pic_m_5">مردان بازوها را از پهلو و شکم را از ران دور نگه می‌دارند.</string>
+    <string name="guide_pic_f_5">زنان بازوها را به پهلو و شکم را به ران نزدیک نگه می‌دارند.</string>
+    <string name="guide_pic_m_7">مردان روی پای چپ خوابانده می‌نشینند و پای راست را با انگشتان رو به قبله عمودی نگه می‌دارند.</string>
+    <string name="guide_pic_f_7">زنان هر دو پا را به سمت راست بیرون آورده روی زمین می‌نشینند.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">Duyulan: %1$s</string>
     <string name="wake_speak_unavailable">Bu telefonda cihaz içi konuşma tanıma yok; yazma görevine geçildi.</string>
     <string name="wake_speak_note">Ses yalnız telefonda tanınır, kaydedilmez ve hiçbir yere gönderilmez.</string>
+    <string name="guide_pic_title">Resimli anlatım</string>
+    <string name="guide_pic_prayer">Namaz</string>
+    <string name="guide_pic_wudu">Abdest</string>
+    <string name="guide_pic_male">Erkek</string>
+    <string name="guide_pic_female">Kadın</string>
+    <string name="guide_pic_note">Çizimler temsilîdir; farklar Hanefî mezhebine göredir (Diyanet).</string>
+    <string name="guide_pic_m_1">Erkekler ellerini başparmaklar kulak memelerine değecek kadar kaldırır.</string>
+    <string name="guide_pic_f_1">Kadınlar ellerini omuz hizasına kaldırır.</string>
+    <string name="guide_pic_m_2">Erkekler ellerini göbeğin altında bağlar.</string>
+    <string name="guide_pic_f_2">Kadınlar ellerini göğüs üzerinde bağlar.</string>
+    <string name="guide_pic_m_3">Erkekler sırtı ve başı düz bir çizgide tutar, parmaklarını açarak dizlerini kavrar.</string>
+    <string name="guide_pic_f_3">Kadınlar daha az eğilir, ellerini parmakları bitişik olarak dizlerine koyar.</string>
+    <string name="guide_pic_m_5">Erkekler kollarını yanlardan, karnını uyluklarından uzak tutar.</string>
+    <string name="guide_pic_f_5">Kadınlar kollarını yanlarına, karnını uyluklarına yakın tutar.</string>
+    <string name="guide_pic_m_7">Erkekler sol ayağı yatırıp üzerine oturur, sağ ayağı parmaklar kıbleye dönük dik tutar.</string>
+    <string name="guide_pic_f_7">Kadınlar iki ayağını sağ yana çıkarıp yere oturur.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

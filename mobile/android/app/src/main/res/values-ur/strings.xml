@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">سنا گیا: %1$s</string>
     <string name="wake_speak_unavailable">اس فون میں آلے پر آواز کی شناخت نہیں؛ ٹائپنگ کام پر منتقل کر دیا گیا۔</string>
     <string name="wake_speak_note">آواز صرف فون پر پہچانی جاتی ہے، ریکارڈ نہیں ہوتی اور کہیں نہیں بھیجی جاتی۔</string>
+    <string name="guide_pic_title">تصویری مراحل</string>
+    <string name="guide_pic_prayer">نماز</string>
+    <string name="guide_pic_wudu">وضو</string>
+    <string name="guide_pic_male">مرد</string>
+    <string name="guide_pic_female">عورت</string>
+    <string name="guide_pic_note">تصاویر وضاحتی ہیں؛ فرق حنفی مسلک کے مطابق ہیں۔</string>
+    <string name="guide_pic_m_1">مرد ہاتھ اتنے اٹھاتے ہیں کہ انگوٹھے کانوں کی لو کو چھوئیں۔</string>
+    <string name="guide_pic_f_1">عورتیں ہاتھ کندھوں تک اٹھاتی ہیں۔</string>
+    <string name="guide_pic_m_2">مرد ہاتھ ناف کے نیچے باندھتے ہیں۔</string>
+    <string name="guide_pic_f_2">عورتیں ہاتھ سینے پر باندھتی ہیں۔</string>
+    <string name="guide_pic_m_3">مرد کمر اور سر سیدھا رکھتے ہیں اور انگلیاں کھول کر گھٹنے پکڑتے ہیں۔</string>
+    <string name="guide_pic_f_3">عورتیں کم جھکتی ہیں اور انگلیاں ملا کر ہاتھ گھٹنوں پر رکھتی ہیں۔</string>
+    <string name="guide_pic_m_5">مرد بازو پہلوؤں سے اور پیٹ رانوں سے دور رکھتے ہیں۔</string>
+    <string name="guide_pic_f_5">عورتیں بازو پہلوؤں سے اور پیٹ رانوں سے ملا کر رکھتی ہیں۔</string>
+    <string name="guide_pic_m_7">مرد بایاں پاؤں بچھا کر اس پر بیٹھتے ہیں اور دایاں پاؤں انگلیاں قبلہ رخ کر کے کھڑا رکھتے ہیں۔</string>
+    <string name="guide_pic_f_7">عورتیں دونوں پاؤں دائیں طرف نکال کر زمین پر بیٹھتی ہیں۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

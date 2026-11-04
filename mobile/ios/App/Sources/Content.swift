@@ -163,10 +163,14 @@ struct PrayerGuideView: View {
     private let data = bundleJSON("guide", Raw.self)
     private let lang = AppLocale.code
     private func tx(_ m: [String: String]) -> String { m[lang] ?? m["en"] ?? "" }
+    private func stepTexts(_ id: String) -> [String] {
+        (data?.sections.first { $0.id == id }?.steps ?? []).map { tx($0) }
+    }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
+                GuidePictureCard(howto: stepTexts("howto"), wudu: stepTexts("wudu"))
                 ForEach(data?.sections ?? [], id: \.id) { s in
                     VStack(alignment: .leading, spacing: 8) {
                         Text(tx(s.title)).font(.title3.weight(.semibold)).foregroundStyle(Theme.text)

@@ -2518,5 +2518,21 @@
     <string name="wake_speak_heard">Narinig: %1$s</string>
     <string name="wake_speak_unavailable">Walang on-device na speech recognition ang teleponong ito; lumipat sa typing task.</string>
     <string name="wake_speak_note">Kinikilala lang ang boses sa telepono, hindi nire-record at hindi ipinapadala.</string>
+    <string name="guide_pic_title">May larawang hakbang</string>
+    <string name="guide_pic_prayer">Salah</string>
+    <string name="guide_pic_wudu">Wudu</string>
+    <string name="guide_pic_male">Lalaki</string>
+    <string name="guide_pic_female">Babae</string>
+    <string name="guide_pic_note">Paglalarawan lamang ang mga guhit; ayon sa mazhab Hanafi ang mga pagkakaiba.</string>
+    <string name="guide_pic_m_1">Itinataas ng lalaki ang kamay hanggang dumampi ang hinlalaki sa dulo ng tainga.</string>
+    <string name="guide_pic_f_1">Itinataas ng babae ang kamay hanggang balikat.</string>
+    <string name="guide_pic_m_2">Inilalagay ng lalaki ang kamay sa ibaba ng pusod.</string>
+    <string name="guide_pic_f_2">Inilalagay ng babae ang kamay sa dibdib.</string>
+    <string name="guide_pic_m_3">Pinapantay ng lalaki ang likod at ulo at hinahawakan ang tuhod nang bukas ang daliri.</string>
+    <string name="guide_pic_f_3">Mas kaunti ang yuko ng babae at nakapatong ang kamay sa tuhod nang magkakadikit ang daliri.</string>
+    <string name="guide_pic_m_5">Inilalayo ng lalaki ang braso sa tagiliran at ang tiyan sa hita.</string>
+    <string name="guide_pic_f_5">Idinidikit ng babae ang braso sa tagiliran at ang tiyan sa hita.</string>
+    <string name="guide_pic_m_7">Umuupo ang lalaki sa nakalapag na kaliwang paa; nakatayo ang kanang paa, nakaturo ang daliri sa qibla.</string>
+    <string name="guide_pic_f_7">Umuupo ang babae sa sahig nang nakalabas ang dalawang paa sa kanan.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

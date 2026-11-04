@@ -171,6 +171,7 @@ fun PrayerGuideScreen(onBack: () -> Unit, onDuas: () -> Unit) {
     Column(Modifier.fillMaxSize()) {
         SubBar(L("guide.title"), onBack = onBack)
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            GuidePictureCard(data)
             val secs = data?.optJSONArray("sections") ?: JSONArray()
             for (i in 0 until secs.length()) {
                 val s = secs.getJSONObject(i)
