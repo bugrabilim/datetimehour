@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">На телефоне нет арабского голоса; его можно скачать в настройках (Универсальный доступ › Устная речь или Синтез речи).</string>
     <string name="esma_voiceNote">Читает встроенный арабский голос телефона, а не запись; произношение может быть неточным.</string>
     <string name="notify_snooze">Напомнить через 5 мин</string>
+    <string name="notify_perPrayer">Настройки для каждого намаза</string>
+    <string name="notify_perPrayer_note">Для каждого намаза можно выбрать своё время, звук и дни. Если дни не выбраны, уведомление приходит каждый день.</string>
+    <string name="notify_perPrayer_custom">Свои</string>
+    <string name="notify_perPrayer_general">Общая настройка</string>
+    <string name="notify_perPrayer_days">Дни (пусто = каждый день)</string>
     <string name="app_name">Время и дата</string>
 </resources>

@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">Keine arabische Sprachausgabe auf dem Telefon; Sie können eine in den Einstellungen laden (Bedienungshilfen › Gesprochene Inhalte bzw. Sprachausgabe).</string>
     <string name="esma_voiceNote">Es liest die arabische Sprachausgabe des Telefons, keine Aufnahme; die Aussprache kann ungenau sein.</string>
     <string name="notify_snooze">In 5 Min. erinnern</string>
+    <string name="notify_perPrayer">Einstellungen je Gebet</string>
+    <string name="notify_perPrayer_note">Für jedes Gebet eigene Vorlaufzeit, eigenen Ton und eigene Tage wählen. Ohne ausgewählten Tag wird täglich benachrichtigt.</string>
+    <string name="notify_perPrayer_custom">Eigene</string>
+    <string name="notify_perPrayer_general">Allgemeine Einstellung</string>
+    <string name="notify_perPrayer_days">Tage (leer = täglich)</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

@@ -60,4 +60,21 @@ final class PrayerAlertsTests: XCTestCase {
         XCTAssertEqual(plan.count, 29) // bugünün imsakı geçti, sonraki 29 gün
         XCTAssertTrue(plan.allSatisfy { $0.prayer == .fajr })
     }
+
+    func testPerPrayerLeadAndDays() {
+        // Vakte göre ayar (2. analiz #54): öğle 15 dk önce, ikindi yalnız cuma (ISO 5)
+        let settings = PrayerAlerts.Settings(enabled: true, prayers: [.dhuhr, .asr], leadMinutes: 0,
+                                             perLead: [.dhuhr: 15], days: [.asr: [5]])
+        let plan = PrayerAlerts.plan(schedule: istanbul, settings: settings, now: date(2026, 10, 9, 8, 0), days: 14)
+        let dhuhr = plan.filter { $0.prayer == .dhuhr }
+        XCTAssertFalse(dhuhr.isEmpty)
+        XCTAssertTrue(dhuhr.allSatisfy { $0.prayerAt.timeIntervalSince($0.fireAt) == 900 })
+        let asr = plan.filter { $0.prayer == .asr }
+        XCTAssertFalse(asr.isEmpty)
+        var cal = Calendar(identifier: .iso8601)
+        cal.timeZone = TimeZone(identifier: "Europe/Istanbul")!
+        XCTAssertTrue(asr.allSatisfy { cal.component(.weekday, from: $0.prayerAt) == 6 }) // cuma
+        XCTAssertEqual(settings.lead(.dhuhr), 15)
+        XCTAssertEqual(settings.lead(.asr), 0)
+    }
 }

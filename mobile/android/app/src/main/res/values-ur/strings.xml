@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">فون میں عربی آواز نہیں؛ فون کی ترتیبات (رسائی › بولا گیا مواد یا متن سے تقریر) سے ڈاؤن لوڈ کر سکتے ہیں۔</string>
     <string name="esma_voiceNote">پڑھنے والی آواز فون کی اپنی عربی آواز ہے، ریکارڈنگ نہیں؛ تلفظ میں خامی ہو سکتی ہے۔</string>
     <string name="notify_snooze">5 منٹ بعد یاد دلائیں</string>
+    <string name="notify_perPrayer">ہر نماز کی ترتیبات</string>
+    <string name="notify_perPrayer_note">ہر نماز کے لیے الگ وقت، آواز اور دن منتخب کریں۔ کوئی دن منتخب نہ ہو تو ہر روز اطلاع ملے گی۔</string>
+    <string name="notify_perPrayer_custom">مخصوص</string>
+    <string name="notify_perPrayer_general">عمومی ترتیب</string>
+    <string name="notify_perPrayer_days">دن (خالی = ہر روز)</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

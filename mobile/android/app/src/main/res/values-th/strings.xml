@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">โทรศัพท์ไม่มีเสียงภาษาอาหรับ ดาวน์โหลดได้ในการตั้งค่า (การช่วยการเข้าถึง › เนื้อหาที่พูด หรือแปลงข้อความเป็นเสียงพูด)</string>
     <string name="esma_voiceNote">ผู้อ่านคือเสียงภาษาอาหรับของโทรศัพท์ ไม่ใช่การบันทึก การออกเสียงอาจไม่สมบูรณ์</string>
     <string name="notify_snooze">เตือนอีก 5 นาที</string>
+    <string name="notify_perPrayer">ตั้งค่าแต่ละเวลาละหมาด</string>
+    <string name="notify_perPrayer_note">เลือกเวลาแจ้งล่วงหน้า เสียง และวันแยกกันสำหรับแต่ละเวลาละหมาด หากไม่เลือกวันจะแจ้งทุกวัน</string>
+    <string name="notify_perPrayer_custom">กำหนดเอง</string>
+    <string name="notify_perPrayer_general">การตั้งค่าทั่วไป</string>
+    <string name="notify_perPrayer_days">วัน (ว่าง = ทุกวัน)</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

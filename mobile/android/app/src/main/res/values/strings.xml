@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">Telefonda Arapça konuşma sesi yok; telefonun ayarlarından (Erişilebilirlik › Seslendirme ya da Metin okuma) indirilebilir.</string>
     <string name="esma_voiceNote">Okuyan, telefonun kendi Arapça konuşma sesidir; kayıt değildir, telaffuz kusurlu olabilir.</string>
     <string name="notify_snooze">5 dk sonra hatırlat</string>
+    <string name="notify_perPrayer">Vakte göre ayarlar</string>
+    <string name="notify_perPrayer_note">Her vakit için ayrı süre, ses ve gün seçebilirsiniz. Gün seçmezseniz her gün bildirilir.</string>
+    <string name="notify_perPrayer_custom">Özel</string>
+    <string name="notify_perPrayer_general">Genel ayar</string>
+    <string name="notify_perPrayer_days">Günler (boşsa her gün)</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

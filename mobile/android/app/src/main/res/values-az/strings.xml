@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">Telefonda ərəb danışıq səsi yoxdur; telefonun ayarlarından (Əlçatanlıq › Səsləndirmə və ya Mətni oxuma) yükləyə bilərsiniz.</string>
     <string name="esma_voiceNote">Oxuyan telefonun öz ərəb danışıq səsidir, yazı deyil; tələffüz qüsurlu ola bilər.</string>
     <string name="notify_snooze">5 dəq sonra xatırlat</string>
+    <string name="notify_perPrayer">Vaxta görə ayarlar</string>
+    <string name="notify_perPrayer_note">Hər vaxt üçün ayrıca müddət, səs və gün seçə bilərsiniz. Gün seçməsəniz hər gün bildiriləcək.</string>
+    <string name="notify_perPrayer_custom">Xüsusi</string>
+    <string name="notify_perPrayer_general">Ümumi ayar</string>
+    <string name="notify_perPrayer_days">Günlər (boşdursa hər gün)</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

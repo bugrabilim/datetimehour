@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">手机上没有阿拉伯语朗读语音；可在设置（辅助功能 › 朗读内容或文字转语音）中下载。</string>
     <string name="esma_voiceNote">朗读使用手机自带的阿拉伯语语音，并非录音，发音可能不够准确。</string>
     <string name="notify_snooze">5 分钟后提醒</string>
+    <string name="notify_perPrayer">按礼拜设置</string>
+    <string name="notify_perPrayer_note">可为每次礼拜单独选择提前时间、声音和日期。未选日期时每天提醒。</string>
+    <string name="notify_perPrayer_custom">自定义</string>
+    <string name="notify_perPrayer_general">通用设置</string>
+    <string name="notify_perPrayer_days">日期(留空=每天)</string>
     <string name="app_name">时间与日期</string>
 </resources>

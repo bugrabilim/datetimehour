@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">صدای عربی روی گوشی نیست؛ می‌توانید از تنظیمات گوشی (دسترس‌پذیری › محتوای گفتاری یا تبدیل متن به گفتار) آن را دانلود کنید.</string>
     <string name="esma_voiceNote">خواننده صدای عربی خود گوشی است، نه ضبط‌شده؛ تلفظ ممکن است کامل نباشد.</string>
     <string name="notify_snooze">5 دقیقه بعد یادآوری</string>
+    <string name="notify_perPrayer">تنظیمات هر نماز</string>
+    <string name="notify_perPrayer_note">برای هر نماز زمان، صدا و روزهای جداگانه انتخاب کنید. اگر روزی انتخاب نشود، هر روز اعلان می‌آید.</string>
+    <string name="notify_perPrayer_custom">سفارشی</string>
+    <string name="notify_perPrayer_general">تنظیم کلی</string>
+    <string name="notify_perPrayer_days">روزها (خالی = هر روز)</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

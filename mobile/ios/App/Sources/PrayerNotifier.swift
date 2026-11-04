@@ -21,9 +21,30 @@ enum NotificationPrefs {
     static var current: PrayerAlerts.Settings {
         let d = UserDefaults.standard
         // Varsayılan açık (30 Ekim 2026, sahibin isteği: her özelliğin bildirimi açık gelir, kullanıcı kapatır)
+        var perLead: [Prayer: Int] = [:]
+        var days: [Prayer: Set<Int>] = [:]
+        for p in Prayer.allCases {
+            if let v = d.object(forKey: perLeadKey(p)) as? Int, v >= 0 { perLead[p] = v }
+            let set = daysOf(p)
+            if !set.isEmpty { days[p] = set }
+        }
         return .init(enabled: d.object(forKey: enabledKey) as? Bool ?? true,
                      prayers: decode(d.string(forKey: prayersKey) ?? defaultPrayers),
-                     leadMinutes: d.integer(forKey: leadKey))
+                     leadMinutes: d.integer(forKey: leadKey), perLead: perLead, days: days)
+    }
+
+    // Vakte göre ayar (2. analiz #54): notify.p.<vakit>.lead (-1/yok = genel), .sound ("" = genel), .days (ISO gün, virgülle)
+    static func perLeadKey(_ p: Prayer) -> String { "notify.p.\(p.rawValue).lead" }
+    static func perSoundKey(_ p: Prayer) -> String { "notify.p.\(p.rawValue).sound" }
+    static func perDaysKey(_ p: Prayer) -> String { "notify.p.\(p.rawValue).days" }
+
+    static func daysOf(_ p: Prayer) -> Set<Int> {
+        let raw = UserDefaults.standard.string(forKey: perDaysKey(p)) ?? ""
+        return Set(raw.split(separator: ",").compactMap { Int($0) }.filter { (1...7).contains($0) })
+    }
+
+    static func soundMode(_ p: Prayer) -> SoundMode {
+        SoundMode(rawValue: UserDefaults.standard.string(forKey: perSoundKey(p)) ?? "") ?? .current
     }
 }
 
@@ -81,17 +102,19 @@ enum PrayerNotifier {
             let alerts = PrayerAlerts.plan(schedule: place.schedule, settings: settings, now: now)
             // Her vakit için ses bir kez üretilir (sesli duyuru vakit adını söyler)
             var sounds: [Prayer: UNNotificationSound] = [:]
-            NotificationSounds.removeStale(keeping: Set(Prayer.allCases.map { NotificationSounds.fileName($0, lead: settings.leadMinutes) }))
+            NotificationSounds.removeStale(keeping: Set(Prayer.allCases.map { NotificationSounds.fileName($0, lead: settings.lead($0)) }))
             for prayer in Set(alerts.map(\.prayer)) {
-                sounds[prayer] = await NotificationSounds.sound(for: prayer, lead: settings.leadMinutes)
+                sounds[prayer] = await NotificationSounds.sound(for: prayer, lead: settings.lead(prayer),
+                                                                mode: NotificationPrefs.soundMode(prayer))
                 guard mine == generation else { return }
             }
             planned += alerts.map { a in
                 let name = a.prayer.localizedName
+                let lead = settings.lead(a.prayer)
                 return PlannedNotification(
                     id: "prayer-\(Int(a.prayerAt.timeIntervalSince1970))-\(a.prayer.rawValue)", fireAt: a.fireAt,
-                    title: settings.leadMinutes > 0
-                        ? String(format: L("notify.title.before"), name, String(settings.leadMinutes))
+                    title: lead > 0
+                        ? String(format: L("notify.title.before"), name, String(lead))
                         : String(format: L("notify.title.now"), name),
                     body: "\(place.name) · \(place.hm(a.prayerAt))", thread: "prayer", sound: sounds[a.prayer] ?? .default,
                     category: PrayerSnooze.category)

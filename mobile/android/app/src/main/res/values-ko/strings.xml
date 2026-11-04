@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">휴대폰에 아랍어 음성이 없습니다. 설정(손쉬운 사용 › 음성 콘텐츠 또는 텍스트 음성 변환)에서 내려받을 수 있습니다.</string>
     <string name="esma_voiceNote">휴대폰 자체 아랍어 음성이 읽으며 녹음이 아닙니다. 발음이 정확하지 않을 수 있습니다.</string>
     <string name="notify_snooze">5분 후 알림</string>
+    <string name="notify_perPrayer">기도별 설정</string>
+    <string name="notify_perPrayer_note">기도마다 알림 시점, 소리, 요일을 따로 고를 수 있습니다. 요일을 고르지 않으면 매일 알립니다.</string>
+    <string name="notify_perPrayer_custom">사용자 지정</string>
+    <string name="notify_perPrayer_general">공통 설정</string>
+    <string name="notify_perPrayer_days">요일(비우면 매일)</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

@@ -158,6 +158,7 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
                         }
                     }
                 }
+                PerPrayerCard(changed = { changed() })
                 AppCard {
                     SectionTitle(L("notify.lead"))
                     for (m in PrayerAlerts.LEAD_CHOICES) {
@@ -210,3 +211,61 @@ private fun Choice(title: String, on: Boolean, onClick: () -> Unit) {
         RadioButton(on, onClick, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
     }
 }
+
+/** Vakte göre ayar (2. analiz #54): her vakit için ayrı önceden bildirim süresi, ses ve günler; boşsa genel ayar */
+@Composable
+private fun PerPrayerCard(changed: () -> Unit) {
+    @Suppress("UNUSED_VARIABLE") val v = NotifyPrefs.perVersion
+    var open by remember { mutableStateOf<Prayer?>(null) }
+    AppCard {
+        SectionTitle(L("notify.perPrayer"))
+        Text(L("notify.perPrayer.note"), color = Theme.c.muted, fontSize = 13.sp)
+        for (p in NotifyPrefs.prayers.sortedBy { it.ordinal }) {
+            val lead = NotifyPrefs.leadFor(p)
+            val snd = NotifyPrefs.rawSoundFor(p)
+            val days = NotifyPrefs.days(p)
+            val custom = lead >= 0 || snd.isNotEmpty() || days.isNotEmpty()
+            Row(Modifier.fillMaxWidth().heightIn(min = 44.dp).clickable { open = if (open == p) null else p },
+                verticalAlignment = Alignment.CenterVertically) {
+                Text(p.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                Text(if (custom) L("notify.perPrayer.custom") else L("notify.perPrayer.general"),
+                    color = if (custom) Theme.c.accent else Theme.c.muted, fontSize = 13.sp)
+            }
+            if (open == p) {
+                val leads = listOf(-1) + PrayerAlerts.LEAD_CHOICES
+                ChoiceRow(L("notify.lead"), leadLabel(lead), leads.mapIndexed { i, m -> i to leadLabel(m) }) { i ->
+                    NotifyPrefs.saveLeadFor(p, leads[i]); changed()
+                }
+                val sounds = listOf("") + NotifyPrefs.SOUNDS
+                ChoiceRow(L("notify.sound"), soundLabel(snd), sounds.mapIndexed { i, s -> i to soundLabel(s) }) { i ->
+                    NotifyPrefs.saveSoundFor(p, sounds[i]); changed()
+                }
+                Text(L("notify.perPrayer.days"), color = Theme.c.muted, fontSize = 13.sp)
+                Ltr {
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                        for (d in 1..7) {
+                            val on = d in days
+                            androidx.compose.foundation.layout.Box(
+                                Modifier.weight(1f).heightIn(min = 34.dp)
+                                    .then(Modifier.clickable { NotifyPrefs.saveDays(p, if (on) days - d else days + d); changed() })
+                                    .padding(2.dp),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                Text(L("tools.alarm.dayNames.${d - 1}"), color = if (on) Theme.c.accent else Theme.c.muted,
+                                    fontSize = 12.sp, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, maxLines = 1)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+private fun leadLabel(m: Int): String = when {
+    m < 0 -> L("notify.perPrayer.general")
+    m == 0 -> L("notify.lead.zero")
+    else -> T("notify.lead.minutes", m)
+}
+
+private fun soundLabel(s: String): String = if (s.isEmpty()) L("notify.perPrayer.general") else L("notify.sound.$s")

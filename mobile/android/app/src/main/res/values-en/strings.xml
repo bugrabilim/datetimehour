@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">No Arabic speech voice on this phone; you can download one in the phone\'s settings (Accessibility › Spoken content or Text-to-speech).</string>
     <string name="esma_voiceNote">The reader is the phone\'s own Arabic speech voice, not a recording; pronunciation may be imperfect.</string>
     <string name="notify_snooze">Remind me in 5 min</string>
+    <string name="notify_perPrayer">Per-prayer settings</string>
+    <string name="notify_perPrayer_note">Choose a separate lead time, sound and days for each prayer. With no day selected, it notifies every day.</string>
+    <string name="notify_perPrayer_custom">Custom</string>
+    <string name="notify_perPrayer_general">General setting</string>
+    <string name="notify_perPrayer_days">Days (empty = every day)</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

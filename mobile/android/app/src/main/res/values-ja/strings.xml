@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">この端末にアラビア語の音声がありません。設定（アクセシビリティ › 読み上げコンテンツ／テキスト読み上げ）からダウンロードできます。</string>
     <string name="esma_voiceNote">読み上げは端末内蔵のアラビア語音声で、録音ではありません。発音が不正確な場合があります。</string>
     <string name="notify_snooze">5分後に通知</string>
+    <string name="notify_perPrayer">礼拝ごとの設定</string>
+    <string name="notify_perPrayer_note">礼拝ごとに通知のタイミング、音、曜日を選べます。曜日を選ばない場合は毎日通知します。</string>
+    <string name="notify_perPrayer_custom">カスタム</string>
+    <string name="notify_perPrayer_general">全体の設定</string>
+    <string name="notify_perPrayer_days">曜日(空欄=毎日)</string>
     <string name="app_name">時刻と日付</string>
 </resources>

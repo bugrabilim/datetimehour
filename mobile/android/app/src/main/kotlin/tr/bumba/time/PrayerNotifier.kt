@@ -128,7 +128,7 @@ object PrayerNotifier {
             val pi = PendingIntent.getBroadcast(
                 app, i,
                 fireIntent(app).putExtra("prayer", a.prayer.key).putExtra("at", a.prayerAt.toEpochMilli())
-                    .putExtra("lead", settings.leadMinutes),
+                    .putExtra("lead", settings.lead(a.prayer)),
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
             )
             val t = a.fireAt.toEpochMilli()
@@ -136,9 +136,10 @@ object PrayerNotifier {
             else am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, t, pi)
         }
         // Ezan seçiliyken de vakitten önceki bildirimler ve Güneş sesli duyuruyla çalar
-        if (NotifyPrefs.sound == "voice" || NotifyPrefs.sound == "adhan") {
-            val prayers = alerts.map { it.prayer }.toSet()
-            scope.launch { runCatching { NotificationSounds.prepare(app, prayers, settings.leadMinutes) } }
+        // Vakte özel süre ve ses (2. analiz #54): sesler süreye göre gruplanıp hazırlanır
+        val voiced = alerts.map { it.prayer }.toSet().filter { NotifyPrefs.soundFor(it) == "voice" || NotifyPrefs.soundFor(it) == "adhan" }
+        for ((lead, group) in voiced.groupBy { settings.lead(it) }) {
+            scope.launch { runCatching { NotificationSounds.prepare(app, group.toSet(), lead) } }
         }
     }
 
@@ -147,7 +148,7 @@ object PrayerNotifier {
     /** Bildirimi gösterir; ses ayarına göre zil/duyuru çalar (bitince PendingResult kapanır) */
     fun deliver(context: Context, prayer: Prayer, prayerAt: Instant, lead: Int, done: () -> Unit) {
         val place = AppPlace.current()
-        val mode = NotifyPrefs.sound
+        val mode = NotifyPrefs.soundFor(prayer)
         if (notificationsAllowed(context)) {
             val name = prayer.title
             val title = if (lead > 0) T("notify.title.before", name, lead) else T("notify.title.now", name)

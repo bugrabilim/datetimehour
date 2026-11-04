@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">لا يوجد صوت عربي للنطق على الهاتف؛ يمكنك تنزيله من إعدادات الهاتف (تسهيلات الاستخدام › المحتوى المنطوق أو تحويل النص إلى كلام).</string>
     <string name="esma_voiceNote">القارئ هو صوت الهاتف العربي وليس تسجيلًا؛ قد لا يكون النطق دقيقًا.</string>
     <string name="notify_snooze">ذكّرني بعد 5 د</string>
+    <string name="notify_perPrayer">إعدادات كل صلاة</string>
+    <string name="notify_perPrayer_note">اختر لكل صلاة وقت تنبيه مسبق وصوتًا وأيامًا خاصة بها. إن لم تختر يومًا فسيصل التنبيه كل يوم.</string>
+    <string name="notify_perPrayer_custom">مخصص</string>
+    <string name="notify_perPrayer_general">الإعداد العام</string>
+    <string name="notify_perPrayer_days">الأيام (فارغ = كل يوم)</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

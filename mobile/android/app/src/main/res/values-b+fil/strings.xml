@@ -2477,5 +2477,10 @@
     <string name="esma_noVoice">Walang boses na Arabic sa telepono; maida-download ito sa settings (Accessibility › Spoken content o Text-to-speech).</string>
     <string name="esma_voiceNote">Ang bumabasa ay sariling Arabic na boses ng telepono, hindi recording; maaaring hindi perpekto ang bigkas.</string>
     <string name="notify_snooze">Paalalahanan sa loob ng 5 min</string>
+    <string name="notify_perPrayer">Setting bawat salah</string>
+    <string name="notify_perPrayer_note">Pumili ng hiwalay na oras ng paalala, tunog at araw para sa bawat salah. Kung walang napiling araw, aabisuhan araw-araw.</string>
+    <string name="notify_perPrayer_custom">Custom</string>
+    <string name="notify_perPrayer_general">Pangkalahatang setting</string>
+    <string name="notify_perPrayer_days">Mga araw (walang pili = araw-araw)</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

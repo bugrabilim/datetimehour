@@ -19,7 +19,13 @@ object PrayerAlerts {
         val prayers: Set<Prayer> = DEFAULT_PRAYERS,
         /** Vakitten kaç dakika önce (0 = vaktinde) */
         val leadMinutes: Int = 0,
-    )
+        /** Vakte özel "önce" süresi (2. analiz #54); yoksa genel süre */
+        val perLead: Map<Prayer, Int> = emptyMap(),
+        /** Vakte özel günler (ISO 1 pazartesi … 7 pazar); yoksa her gün */
+        val days: Map<Prayer, Set<Int>> = emptyMap(),
+    ) {
+        fun lead(p: Prayer): Int = maxOf(0, perLead[p] ?: leadMinutes)
+    }
 
     data class Alert(val prayer: Prayer, val prayerAt: Instant, val fireAt: Instant)
 
@@ -29,13 +35,15 @@ object PrayerAlerts {
 
     fun plan(place: AppPlace, settings: Settings, now: Instant, limit: Int = 63, days: Int = 30): List<Alert> {
         if (!settings.enabled || settings.prayers.isEmpty() || limit <= 0) return emptyList()
-        val lead = maxOf(0, settings.leadMinutes) * 60L
         val start: LocalDate = now.atZone(place.zone).toLocalDate()
         val out = ArrayList<Alert>()
         for (add in 0 until days) {
-            for (e in place.entries(start.plusDays(add.toLong()))) {
+            val day = start.plusDays(add.toLong())
+            for (e in place.entries(day)) {
                 if (e.prayer !in settings.prayers) continue
-                val fire = e.at.minusSeconds(lead)
+                val only = settings.days[e.prayer]
+                if (!only.isNullOrEmpty() && day.dayOfWeek.value !in only) continue
+                val fire = e.at.minusSeconds(settings.lead(e.prayer) * 60L)
                 if (!fire.isAfter(now)) continue
                 out += Alert(e.prayer, e.at, fire)
                 if (out.size == limit) return out
@@ -90,7 +98,23 @@ object NotifyPrefs {
     val prayers: Set<Prayer> get() { load(); return decode(prayersRaw) }
 
     val current: PrayerAlerts.Settings
-        get() { load(); return PrayerAlerts.Settings(enabled, decode(prayersRaw), lead) }
+        get() {
+            load()
+            return PrayerAlerts.Settings(enabled, decode(prayersRaw), lead,
+                Prayer.entries.mapNotNull { p -> sp.getInt("notify.p.${p.key}.lead", -1).takeIf { it >= 0 }?.let { p to it } }.toMap(),
+                Prayer.entries.mapNotNull { p -> days(p).takeIf { it.isNotEmpty() }?.let { p to it } }.toMap())
+        }
+
+    // Vakte özel ayarlar (2. analiz #54): "önce" süresi (-1 genel), ses ("" genel) ve günler ("" her gün)
+    var perVersion by mutableIntStateOf(0)
+        private set
+    fun leadFor(p: Prayer): Int = sp.getInt("notify.p.${p.key}.lead", -1)
+    fun saveLeadFor(p: Prayer, v: Int) { sp.edit().putInt("notify.p.${p.key}.lead", v).apply(); perVersion++ }
+    fun soundFor(p: Prayer): String = sp.getString("notify.p.${p.key}.sound", "")?.takeIf { it in SOUNDS } ?: sound
+    fun rawSoundFor(p: Prayer): String = sp.getString("notify.p.${p.key}.sound", "") ?: ""
+    fun saveSoundFor(p: Prayer, v: String) { sp.edit().putString("notify.p.${p.key}.sound", v).apply(); perVersion++ }
+    fun days(p: Prayer): Set<Int> = (sp.getString("notify.p.${p.key}.days", "") ?: "").split(",").mapNotNull { it.toIntOrNull() }.filter { it in 1..7 }.toSet()
+    fun saveDays(p: Prayer, v: Set<Int>) { sp.edit().putString("notify.p.${p.key}.days", v.sorted().joinToString(",")).apply(); perVersion++ }
 
     fun saveEnabled(v: Boolean) { load(); enabled = v; sp.edit().putBoolean(ENABLED, v).apply() }
     fun savePrayers(v: Set<Prayer>) { load(); prayersRaw = encode(v); sp.edit().putString(PRAYERS, prayersRaw).apply() }
