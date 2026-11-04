@@ -2070,7 +2070,7 @@
     <string name="dial_use">Gamitin</string>
     <string name="dial_inUse">Ginagamit</string>
     <string name="dial_newTitle">Bagong mga dial</string>
-    <string name="dial_newText">12 dial: chronograph, Romanong numero, metal na bezel, radar, dobleng singsing, numerong Tsino at mga texture ng dagat, dahon at marmol. Tig-5 kulay.</string>
+    <string name="dial_newText">25 dial: chronograph, piloto, diver, Romano at Silangang Arabong numero, tile ng İznik, heometrikong bituin, kahoy, neon, bahaghari para sa mga bata at iba pa. Tig-5 kulay.</string>
     <string name="dial_note">Ginagamit ang dial sa mga analog na orasan ng app at sa full screen; kinukulayan ng kulay ang mga kamay. Nananatili sa klasikong dial ang mga widget sa sarili nilang istilo.</string>
     <string name="dial_color_auto">Sariling kulay</string>
     <string name="dial_color_red">Pula</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">Kaaba</string>
     <string name="greet_pat_lamp">Lampara</string>
     <string name="greet_pat_stars">Mga bituin</string>
+    <string name="dial_eastern">Silangang Arabong numero</string>
+    <string name="dial_pilot">Piloto</string>
+    <string name="dial_bauhaus">Bauhaus</string>
+    <string name="dial_sunburst">Sinag ng araw</string>
+    <string name="dial_vintage">Lumang relos de bulsa</string>
+    <string name="dial_diver">Diver</string>
+    <string name="dial_rainbow">Bahaghari (mga bata)</string>
+    <string name="dial_neon">Neon</string>
+    <string name="dial_wood">Kahoy</string>
+    <string name="dial_iznik">Tile ng İznik</string>
+    <string name="dial_geometric">Heometrikong bituin</string>
+    <string name="dial_sector">Sektor</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

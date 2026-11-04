@@ -2070,7 +2070,7 @@
     <string name="dial_use">使う</string>
     <string name="dial_inUse">使用中</string>
     <string name="dial_newTitle">新しい文字盤</string>
-    <string name="dial_newText">文字盤12種: クロノグラフ、ローマ数字、メタルベゼル、レーダー、ダブルリング、漢数字、海・葉・大理石のテクスチャ。各5色。</string>
+    <string name="dial_newText">文字盤25種: クロノグラフ、パイロット、ダイバー、ローマ数字と東アラビア数字、イズニック・タイル、幾何学の星、木目、ネオン、こども向けの虹など。各5色。</string>
     <string name="dial_note">文字盤はアプリのアナログ時計と全画面で使われ、色は針に付きます。ウィジェットはそれぞれのスタイルでクラシック文字盤のままです。</string>
     <string name="dial_color_auto">文字盤の色</string>
     <string name="dial_color_red">赤</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">カアバ</string>
     <string name="greet_pat_lamp">ランプ</string>
     <string name="greet_pat_stars">星</string>
+    <string name="dial_eastern">東アラビア数字</string>
+    <string name="dial_pilot">パイロット</string>
+    <string name="dial_bauhaus">バウハウス</string>
+    <string name="dial_sunburst">サンバースト</string>
+    <string name="dial_vintage">懐中時計</string>
+    <string name="dial_diver">ダイバー</string>
+    <string name="dial_rainbow">虹（こども）</string>
+    <string name="dial_neon">ネオン</string>
+    <string name="dial_wood">木目</string>
+    <string name="dial_iznik">イズニック・タイル</string>
+    <string name="dial_geometric">幾何学の星</string>
+    <string name="dial_sector">セクター</string>
     <string name="app_name">時刻と日付</string>
 </resources>

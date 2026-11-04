@@ -2070,7 +2070,7 @@
     <string name="dial_use">Use</string>
     <string name="dial_inUse">In use</string>
     <string name="dial_newTitle">New dials</string>
-    <string name="dial_newText">12 dials: chronograph, Roman numerals, metal bezel, radar, double ring, Chinese numerals and ocean, leaf and marble textures. 5 colors each.</string>
+    <string name="dial_newText">25 dials: chronograph, pilot, diver, Roman and Eastern Arabic numerals, İznik tile, geometric star, wood, neon, a rainbow dial for kids and more. 5 colors each.</string>
     <string name="dial_note">The dial is used by the app\'s analog clocks and in full screen; the color tints the hands. Widgets keep the classic dial with their own styles.</string>
     <string name="dial_color_auto">Dial\'s own color</string>
     <string name="dial_color_red">Red</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">Kaaba</string>
     <string name="greet_pat_lamp">Oil lamp</string>
     <string name="greet_pat_stars">Stars</string>
+    <string name="dial_eastern">Eastern Arabic numerals</string>
+    <string name="dial_pilot">Pilot</string>
+    <string name="dial_bauhaus">Bauhaus</string>
+    <string name="dial_sunburst">Sunburst</string>
+    <string name="dial_vintage">Vintage pocket watch</string>
+    <string name="dial_diver">Diver</string>
+    <string name="dial_rainbow">Rainbow (kids)</string>
+    <string name="dial_neon">Neon</string>
+    <string name="dial_wood">Wood</string>
+    <string name="dial_iznik">İznik tile</string>
+    <string name="dial_geometric">Geometric star</string>
+    <string name="dial_sector">Sector</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

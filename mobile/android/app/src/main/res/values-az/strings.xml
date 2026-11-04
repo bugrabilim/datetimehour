@@ -2070,7 +2070,7 @@
     <string name="dial_use">İstifadə et</string>
     <string name="dial_inUse">İstifadədədir</string>
     <string name="dial_newTitle">Yeni siferblatlar</string>
-    <string name="dial_newText">12 siferblat: xronoqraf, Roma rəqəmləri, metal çərçivə, radar, qoşa halqa, Çin rəqəmləri və dəniz, yarpaq, mərmər teksturalı fonlar. Hər birində 5 rəng.</string>
+    <string name="dial_newText">25 siferblat: xronoqraf, pilot, dalğıc, Roma və Şərq ərəb rəqəmləri, İznik kaşısı, həndəsi ulduz, taxta, neon, uşaqlar üçün göy qurşağı və daha çoxu. Hər birində 5 rəng.</string>
     <string name="dial_note">Siferblat tətbiqdəki analoq saatlarda və tam ekranda istifadə olunur; rəng əqrəbləri boyayır. Vidcetlər öz görünüşləri ilə klassik siferblatda qalır.</string>
     <string name="dial_color_auto">Siferblatın rəngi</string>
     <string name="dial_color_red">Qırmızı</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">Kəbə</string>
     <string name="greet_pat_lamp">Qəndil</string>
     <string name="greet_pat_stars">Ulduzlar</string>
+    <string name="dial_eastern">Şərq ərəb rəqəmləri</string>
+    <string name="dial_pilot">Pilot</string>
+    <string name="dial_bauhaus">Bauhaus</string>
+    <string name="dial_sunburst">Günəş şüası</string>
+    <string name="dial_vintage">Köhnə cib saatı</string>
+    <string name="dial_diver">Dalğıc</string>
+    <string name="dial_rainbow">Göy qurşağı (uşaqlar)</string>
+    <string name="dial_neon">Neon</string>
+    <string name="dial_wood">Taxta</string>
+    <string name="dial_iznik">İznik kaşısı</string>
+    <string name="dial_geometric">Həndəsi ulduz</string>
+    <string name="dial_sector">Sektor</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

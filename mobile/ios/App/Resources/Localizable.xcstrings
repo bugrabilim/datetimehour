@@ -233804,109 +233804,109 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 kadran: kronograf, Roma rakamı, metal çerçeve, radar, çift halka, Çin rakamı ve deniz, yaprak, mermer dokulu zeminler. Her birinde 5 renk."
+            "value": "25 kadran: kronograf, pilot, dalgıç, Roma ve Doğu Arap rakamı, İznik çini, geometrik yıldız, ahşap, neon, çocuklar için gökkuşağı ve daha fazlası. Her birinde 5 renk."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 dials: chronograph, Roman numerals, metal bezel, radar, double ring, Chinese numerals and ocean, leaf and marble textures. 5 colors each."
+            "value": "25 dials: chronograph, pilot, diver, Roman and Eastern Arabic numerals, İznik tile, geometric star, wood, neon, a rainbow dial for kids and more. 5 colors each."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 Zifferblätter: Chronograph, römische Ziffern, Metallring, Radar, Doppelring, chinesische Ziffern sowie Meer-, Blatt- und Marmorstruktur. Je 5 Farben."
+            "value": "25 Zifferblätter: Chronograph, Flieger, Taucheruhr, römische und ostarabische Ziffern, İznik-Fliese, geometrischer Stern, Holz, Neon, Regenbogen für Kinder und mehr. Je 5 Farben."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 siferblat: xronoqraf, Roma rəqəmləri, metal çərçivə, radar, qoşa halqa, Çin rəqəmləri və dəniz, yarpaq, mərmər teksturalı fonlar. Hər birində 5 rəng."
+            "value": "25 siferblat: xronoqraf, pilot, dalğıc, Roma və Şərq ərəb rəqəmləri, İznik kaşısı, həndəsi ulduz, taxta, neon, uşaqlar üçün göy qurşağı və daha çoxu. Hər birində 5 rəng."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 ميناءً: كرونوغراف، أرقام رومانية، إطار معدني، رادار، حلقة مزدوجة، أرقام صينية وخلفيات بنقش البحر والورق والرخام. لكلٍّ منها 5 ألوان."
+            "value": "25 ميناءً: كرونوغراف، طيار، غواص، أرقام رومانية وعربية مشرقية، قيشاني إزنيق، نجمة هندسية، خشب، نيون، قوس قزح للأطفال والمزيد. لكلٍّ منها 5 ألوان."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 muka jam: kronograf, angka Romawi, bingkai logam, radar, cincin ganda, angka Tionghoa, serta tekstur laut, daun, dan marmer. Masing-masing 5 warna."
+            "value": "25 muka jam: kronograf, pilot, penyelam, angka Romawi dan Arab Timur, ubin İznik, bintang geometris, kayu, neon, pelangi untuk anak-anak, dan lainnya. Masing-masing 5 warna."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 ڈائلز: کرونوگراف، رومن ہندسے، دھاتی فریم، ریڈار، دوہرا حلقہ، چینی ہندسے اور سمندر، پتے، سنگ مرمر والے پس منظر۔ ہر ایک میں 5 رنگ۔"
+            "value": "25 ڈائلز: کرونوگراف، پائلٹ، غوطہ خور، رومن اور مشرقی عربی ہندسے، ازنیق ٹائل، ہندسی ستارہ، لکڑی، نیون، بچوں کے لیے قوس قزح اور مزید۔ ہر ایک میں 5 رنگ۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 صفحه ساعت: کرونوگراف، اعداد رومی، قاب فلزی، رادار، حلقه دوتایی، اعداد چینی و زمینه‌های دریا، برگ و مرمر. هر کدام 5 رنگ."
+            "value": "25 صفحه ساعت: کرونوگراف، خلبانی، غواصی، اعداد رومی و عربی شرقی، کاشی ایزنیک، ستاره هندسی، چوب، نئون، رنگین‌کمان برای کودکان و بیشتر. هر کدام 5 رنگ."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 cadrans : chronographe, chiffres romains, lunette métal, radar, double anneau, chiffres chinois et textures océan, feuille, marbre. 5 couleurs chacun."
+            "value": "25 cadrans : chronographe, aviateur, plongée, chiffres romains et arabes orientaux, céramique d'İznik, étoile géométrique, bois, néon, arc-en-ciel pour les enfants et plus. 5 couleurs chacun."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 циферблатов: хронограф, римские цифры, металлический безель, радар, двойное кольцо, китайские цифры и фактуры моря, листа и мрамора. По 5 цветов."
+            "value": "25 циферблатов: хронограф, пилот, дайверские, римские и восточноарабские цифры, изникская плитка, геометрическая звезда, дерево, неон, радуга для детей и другие. По 5 цветов."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字盤12種: クロノグラフ、ローマ数字、メタルベゼル、レーダー、ダブルリング、漢数字、海・葉・大理石のテクスチャ。各5色。"
+            "value": "文字盤25種: クロノグラフ、パイロット、ダイバー、ローマ数字と東アラビア数字、イズニック・タイル、幾何学の星、木目、ネオン、こども向けの虹など。各5色。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "시계 판 12종: 크로노그래프, 로마 숫자, 메탈 베젤, 레이더, 이중 링, 한자 숫자와 바다·나뭇잎·대리석 질감. 각 5가지 색."
+            "value": "시계 판 25종: 크로노그래프, 파일럿, 다이버, 로마·동아랍 숫자, 이즈니크 타일, 기하학 별, 나무, 네온, 어린이용 무지개 등. 각 5가지 색."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 款表盘：计时码表、罗马数字、金属表圈、雷达、双环、中文数字，以及海洋、叶子、大理石纹理。每款 5 种颜色。"
+            "value": "25 款表盘：计时码表、飞行员、潜水、罗马与东阿拉伯数字、伊兹尼克瓷砖、几何星纹、木纹、霓虹、儿童彩虹等。每款 5 种颜色。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 dial: chronograph, Romanong numero, metal na bezel, radar, dobleng singsing, numerong Tsino at mga texture ng dagat, dahon at marmol. Tig-5 kulay."
+            "value": "25 dial: chronograph, piloto, diver, Romano at Silangang Arabong numero, tile ng İznik, heometrikong bituin, kahoy, neon, bahaghari para sa mga bata at iba pa. Tig-5 kulay."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 หน้าปัด: โครโนกราฟ เลขโรมัน กรอบโลหะ เรดาร์ วงแหวนคู่ เลขจีน และพื้นลายทะเล ใบไม้ หินอ่อน แต่ละแบบมี 5 สี"
+            "value": "25 หน้าปัด: โครโนกราฟ นักบิน นักดำน้ำ เลขโรมันและเลขอารบิกตะวันออก กระเบื้องอิซนิก ดาวเรขาคณิต ไม้ นีออน สายรุ้งสำหรับเด็ก และอื่น ๆ แต่ละแบบมี 5 สี"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 esferas: cronógrafo, números romanos, bisel metálico, radar, doble anillo, números chinos y texturas de océano, hoja y mármol. 5 colores cada una."
+            "value": "25 esferas: cronógrafo, piloto, buceo, números romanos y arábigos orientales, azulejo de İznik, estrella geométrica, madera, neón, arcoíris para niños y más. 5 colores cada una."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 mostradores: cronógrafo, algarismos romanos, aro metálico, radar, anel duplo, números chineses e texturas de oceano, folha e mármore. 5 cores cada."
+            "value": "25 mostradores: cronógrafo, piloto, mergulho, algarismos romanos e arábicos orientais, azulejo de İznik, estrela geométrica, madeira, neon, arco-íris para crianças e mais. 5 cores cada."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "12 डायल: क्रोनोग्राफ़, रोमन अंक, धातु का बेज़ल, रडार, दोहरी रिंग, चीनी अंक और समुद्र, पत्ता व संगमरमर की बनावट। हर एक में 5 रंग।"
+            "value": "25 डायल: क्रोनोग्राफ़, पायलट, गोताखोर, रोमन और पूर्वी अरबी अंक, इज़्निक टाइल, ज्यामितीय तारा, लकड़ी, नियॉन, बच्चों के लिए इंद्रधनुष और भी। हर एक में 5 रंग।"
           }
         }
       }
@@ -297752,6 +297752,1362 @@
           "stringUnit": {
             "state": "translated",
             "value": "सितारे"
+          }
+        }
+      }
+    },
+    "dial.eastern": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doğu Arap rakamı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eastern Arabic numerals"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ostarabische Ziffern"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şərq ərəb rəqəmləri"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أرقام عربية مشرقية"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Angka Arab Timur"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مشرقی عربی ہندسے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اعداد عربی شرقی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chiffres arabes orientaux"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Восточноарабские цифры"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "東アラビア数字"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "동아랍 숫자"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "东阿拉伯数字"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silangang Arabong numero"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เลขอารบิกตะวันออก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Números arábigos orientales"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Números arábicos orientais"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पूर्वी अरबी अंक"
+          }
+        }
+      }
+    },
+    "dial.pilot": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilot"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilot"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flieger"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilot"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طيار"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilot"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پائلٹ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خلبانی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aviateur"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пилот"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "パイロット"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "파일럿"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "飞行员"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piloto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นักบิน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piloto"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piloto"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पायलट"
+          }
+        }
+      }
+    },
+    "dial.bauhaus": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bauhaus"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bauhaus"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bauhaus"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bauhaus"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "باوهاوس"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bauhaus"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "باؤہاؤس"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "باوهاوس"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bauhaus"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Баухаус"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "バウハウス"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "바우하우스"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "包豪斯"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bauhaus"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เบาเฮาส์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bauhaus"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bauhaus"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बाउहाउस"
+          }
+        }
+      }
+    },
+    "dial.sunburst": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş ışını"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunburst"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenschliff"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günəş şüası"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أشعة الشمس"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sinar matahari"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سورج کی کرنیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پرتو خورشید"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soleillé"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Солнечные лучи"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サンバースト"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "선버스트"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "太阳纹"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sinag ng araw"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลายรัศมี"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rayos de sol"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Raios de sol"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सूर्य किरण"
+          }
+        }
+      }
+    },
+    "dial.vintage": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eski cep saati"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vintage pocket watch"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alte Taschenuhr"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Köhnə cib saatı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعة جيب عتيقة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jam saku antik"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پرانی جیبی گھڑی"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت جیبی قدیمی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Montre à gousset"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Старинные карманные часы"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "懐中時計"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "빈티지 회중시계"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复古怀表"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lumang relos de bulsa"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นาฬิกาพกโบราณ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reloj de bolsillo antiguo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relógio de bolso antigo"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पुरानी जेब घड़ी"
+          }
+        }
+      }
+    },
+    "dial.diver": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dalgıç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diver"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taucheruhr"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dalğıc"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غواص"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Penyelam"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غوطہ خور"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غواصی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plongée"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дайверские"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ダイバー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다이버"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "潜水"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diver"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นักดำน้ำ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buceo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mergulho"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गोताखोर"
+          }
+        }
+      }
+    },
+    "dial.rainbow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gökkuşağı (çocuklar)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rainbow (kids)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenbogen (Kinder)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Göy qurşağı (uşaqlar)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قوس قزح (للأطفال)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pelangi (anak-anak)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قوس قزح (بچے)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رنگین‌کمان (کودکان)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arc-en-ciel (enfants)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Радуга (детям)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "虹（こども）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "무지개 (어린이)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "彩虹（儿童）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bahaghari (mga bata)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สายรุ้ง (เด็ก)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arcoíris (niños)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arco-íris (crianças)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इंद्रधनुष (बच्चे)"
+          }
+        }
+      }
+    },
+    "dial.neon": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neon"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neon"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neon"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neon"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نيون"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neon"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نیون"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نئون"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Néon"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неон"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ネオン"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "네온"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "霓虹"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นีออน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neón"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neon"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नियॉन"
+          }
+        }
+      }
+    },
+    "dial.wood": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ahşap"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wood"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Holz"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taxta"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خشب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayu"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لکڑی"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "چوب"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bois"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дерево"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "木目"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "나무"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "木纹"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kahoy"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ไม้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Madera"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Madeira"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "लकड़ी"
+          }
+        }
+      }
+    },
+    "dial.iznik": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İznik çini"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İznik tile"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İznik-Fliese"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İznik kaşısı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قيشاني إزنيق"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ubin İznik"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ازنیق ٹائل"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کاشی ایزنیک"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Céramique d'İznik"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изникская плитка"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "イズニック・タイル"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이즈니크 타일"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伊兹尼克瓷砖"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tile ng İznik"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กระเบื้องอิซนิก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azulejo de İznik"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azulejo de İznik"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इज़्निक टाइल"
+          }
+        }
+      }
+    },
+    "dial.geometric": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geometrik yıldız"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geometric star"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geometrischer Stern"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Həndəsi ulduz"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نجمة هندسية"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bintang geometris"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہندسی ستارہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ستاره هندسی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Étoile géométrique"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Геометрическая звезда"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "幾何学の星"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "기하학 별"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "几何星纹"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heometrikong bituin"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ดาวเรขาคณิต"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estrella geométrica"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estrela geométrica"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ज्यामितीय तारा"
+          }
+        }
+      }
+    },
+    "dial.sector": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sektör"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sector"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sektor"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sektor"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قطاعي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sektor"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سیکٹر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سکتوری"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Secteur"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Секторный"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "セクター"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "섹터"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "扇形"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sektor"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เซกเตอร์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sector"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setor"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सेक्टर"
           }
         }
       }

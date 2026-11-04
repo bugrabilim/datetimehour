@@ -2070,7 +2070,7 @@
     <string name="dial_use">Verwenden</string>
     <string name="dial_inUse">In Verwendung</string>
     <string name="dial_newTitle">Neue Zifferblätter</string>
-    <string name="dial_newText">12 Zifferblätter: Chronograph, römische Ziffern, Metallring, Radar, Doppelring, chinesische Ziffern sowie Meer-, Blatt- und Marmorstruktur. Je 5 Farben.</string>
+    <string name="dial_newText">25 Zifferblätter: Chronograph, Flieger, Taucheruhr, römische und ostarabische Ziffern, İznik-Fliese, geometrischer Stern, Holz, Neon, Regenbogen für Kinder und mehr. Je 5 Farben.</string>
     <string name="dial_note">Das Zifferblatt gilt für die analogen Uhren der App und im Vollbild; die Farbe färbt die Zeiger. Widgets behalten das klassische Zifferblatt in ihrem eigenen Stil.</string>
     <string name="dial_color_auto">Eigene Farbe</string>
     <string name="dial_color_red">Rot</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">Kaaba</string>
     <string name="greet_pat_lamp">Öllampe</string>
     <string name="greet_pat_stars">Sterne</string>
+    <string name="dial_eastern">Ostarabische Ziffern</string>
+    <string name="dial_pilot">Flieger</string>
+    <string name="dial_bauhaus">Bauhaus</string>
+    <string name="dial_sunburst">Sonnenschliff</string>
+    <string name="dial_vintage">Alte Taschenuhr</string>
+    <string name="dial_diver">Taucheruhr</string>
+    <string name="dial_rainbow">Regenbogen (Kinder)</string>
+    <string name="dial_neon">Neon</string>
+    <string name="dial_wood">Holz</string>
+    <string name="dial_iznik">İznik-Fliese</string>
+    <string name="dial_geometric">Geometrischer Stern</string>
+    <string name="dial_sector">Sektor</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

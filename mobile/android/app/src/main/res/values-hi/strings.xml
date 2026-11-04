@@ -2070,7 +2070,7 @@
     <string name="dial_use">इस्तेमाल करें</string>
     <string name="dial_inUse">इस्तेमाल में</string>
     <string name="dial_newTitle">नए डायल</string>
-    <string name="dial_newText">12 डायल: क्रोनोग्राफ़, रोमन अंक, धातु का बेज़ल, रडार, दोहरी रिंग, चीनी अंक और समुद्र, पत्ता व संगमरमर की बनावट। हर एक में 5 रंग।</string>
+    <string name="dial_newText">25 डायल: क्रोनोग्राफ़, पायलट, गोताखोर, रोमन और पूर्वी अरबी अंक, इज़्निक टाइल, ज्यामितीय तारा, लकड़ी, नियॉन, बच्चों के लिए इंद्रधनुष और भी। हर एक में 5 रंग।</string>
     <string name="dial_note">डायल ऐप की एनालॉग घड़ियों और फ़ुल स्क्रीन में इस्तेमाल होता है; रंग सुइयों को रँगता है। विजेट अपनी शैलियों के साथ क्लासिक डायल रखते हैं।</string>
     <string name="dial_color_auto">डायल का अपना रंग</string>
     <string name="dial_color_red">लाल</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">काबा</string>
     <string name="greet_pat_lamp">दीया</string>
     <string name="greet_pat_stars">सितारे</string>
+    <string name="dial_eastern">पूर्वी अरबी अंक</string>
+    <string name="dial_pilot">पायलट</string>
+    <string name="dial_bauhaus">बाउहाउस</string>
+    <string name="dial_sunburst">सूर्य किरण</string>
+    <string name="dial_vintage">पुरानी जेब घड़ी</string>
+    <string name="dial_diver">गोताखोर</string>
+    <string name="dial_rainbow">इंद्रधनुष (बच्चे)</string>
+    <string name="dial_neon">नियॉन</string>
+    <string name="dial_wood">लकड़ी</string>
+    <string name="dial_iznik">इज़्निक टाइल</string>
+    <string name="dial_geometric">ज्यामितीय तारा</string>
+    <string name="dial_sector">सेक्टर</string>
     <string name="app_name">समय और तारीख</string>
 </resources>

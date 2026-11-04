@@ -2070,7 +2070,7 @@
     <string name="dial_use">ใช้</string>
     <string name="dial_inUse">กำลังใช้</string>
     <string name="dial_newTitle">หน้าปัดใหม่</string>
-    <string name="dial_newText">12 หน้าปัด: โครโนกราฟ เลขโรมัน กรอบโลหะ เรดาร์ วงแหวนคู่ เลขจีน และพื้นลายทะเล ใบไม้ หินอ่อน แต่ละแบบมี 5 สี</string>
+    <string name="dial_newText">25 หน้าปัด: โครโนกราฟ นักบิน นักดำน้ำ เลขโรมันและเลขอารบิกตะวันออก กระเบื้องอิซนิก ดาวเรขาคณิต ไม้ นีออน สายรุ้งสำหรับเด็ก และอื่น ๆ แต่ละแบบมี 5 สี</string>
     <string name="dial_note">หน้าปัดใช้กับนาฬิกาเข็มในแอปและโหมดเต็มจอ สีจะใช้กับเข็ม วิดเจ็ตยังคงเป็นหน้าปัดคลาสสิกตามสไตล์ของตัวเอง</string>
     <string name="dial_color_auto">สีของหน้าปัด</string>
     <string name="dial_color_red">แดง</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">กะอ์บะฮ์</string>
     <string name="greet_pat_lamp">ตะเกียง</string>
     <string name="greet_pat_stars">ดวงดาว</string>
+    <string name="dial_eastern">เลขอารบิกตะวันออก</string>
+    <string name="dial_pilot">นักบิน</string>
+    <string name="dial_bauhaus">เบาเฮาส์</string>
+    <string name="dial_sunburst">ลายรัศมี</string>
+    <string name="dial_vintage">นาฬิกาพกโบราณ</string>
+    <string name="dial_diver">นักดำน้ำ</string>
+    <string name="dial_rainbow">สายรุ้ง (เด็ก)</string>
+    <string name="dial_neon">นีออน</string>
+    <string name="dial_wood">ไม้</string>
+    <string name="dial_iznik">กระเบื้องอิซนิก</string>
+    <string name="dial_geometric">ดาวเรขาคณิต</string>
+    <string name="dial_sector">เซกเตอร์</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

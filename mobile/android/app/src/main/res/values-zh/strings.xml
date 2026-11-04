@@ -2070,7 +2070,7 @@
     <string name="dial_use">使用</string>
     <string name="dial_inUse">使用中</string>
     <string name="dial_newTitle">新表盘</string>
-    <string name="dial_newText">12 款表盘：计时码表、罗马数字、金属表圈、雷达、双环、中文数字，以及海洋、叶子、大理石纹理。每款 5 种颜色。</string>
+    <string name="dial_newText">25 款表盘：计时码表、飞行员、潜水、罗马与东阿拉伯数字、伊兹尼克瓷砖、几何星纹、木纹、霓虹、儿童彩虹等。每款 5 种颜色。</string>
     <string name="dial_note">表盘用于应用内的指针时钟和全屏；颜色作用于指针。小组件保持各自样式的经典表盘。</string>
     <string name="dial_color_auto">表盘原色</string>
     <string name="dial_color_red">红色</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">克尔白</string>
     <string name="greet_pat_lamp">油灯</string>
     <string name="greet_pat_stars">星星</string>
+    <string name="dial_eastern">东阿拉伯数字</string>
+    <string name="dial_pilot">飞行员</string>
+    <string name="dial_bauhaus">包豪斯</string>
+    <string name="dial_sunburst">太阳纹</string>
+    <string name="dial_vintage">复古怀表</string>
+    <string name="dial_diver">潜水</string>
+    <string name="dial_rainbow">彩虹（儿童）</string>
+    <string name="dial_neon">霓虹</string>
+    <string name="dial_wood">木纹</string>
+    <string name="dial_iznik">伊兹尼克瓷砖</string>
+    <string name="dial_geometric">几何星纹</string>
+    <string name="dial_sector">扇形</string>
     <string name="app_name">时间与日期</string>
 </resources>

@@ -2070,7 +2070,7 @@
     <string name="dial_use">استعمال کریں</string>
     <string name="dial_inUse">زیر استعمال</string>
     <string name="dial_newTitle">نئے ڈائلز</string>
-    <string name="dial_newText">12 ڈائلز: کرونوگراف، رومن ہندسے، دھاتی فریم، ریڈار، دوہرا حلقہ، چینی ہندسے اور سمندر، پتے، سنگ مرمر والے پس منظر۔ ہر ایک میں 5 رنگ۔</string>
+    <string name="dial_newText">25 ڈائلز: کرونوگراف، پائلٹ، غوطہ خور، رومن اور مشرقی عربی ہندسے، ازنیق ٹائل، ہندسی ستارہ، لکڑی، نیون، بچوں کے لیے قوس قزح اور مزید۔ ہر ایک میں 5 رنگ۔</string>
     <string name="dial_note">ڈائل ایپ کی اینالاگ گھڑیوں اور پوری اسکرین میں استعمال ہوتا ہے؛ رنگ سوئیوں پر لگتا ہے۔ ویجیٹ اپنے انداز کے ساتھ کلاسیکی ڈائل پر رہتے ہیں۔</string>
     <string name="dial_color_auto">ڈائل کا رنگ</string>
     <string name="dial_color_red">سرخ</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">کعبہ</string>
     <string name="greet_pat_lamp">قندیل</string>
     <string name="greet_pat_stars">ستارے</string>
+    <string name="dial_eastern">مشرقی عربی ہندسے</string>
+    <string name="dial_pilot">پائلٹ</string>
+    <string name="dial_bauhaus">باؤہاؤس</string>
+    <string name="dial_sunburst">سورج کی کرنیں</string>
+    <string name="dial_vintage">پرانی جیبی گھڑی</string>
+    <string name="dial_diver">غوطہ خور</string>
+    <string name="dial_rainbow">قوس قزح (بچے)</string>
+    <string name="dial_neon">نیون</string>
+    <string name="dial_wood">لکڑی</string>
+    <string name="dial_iznik">ازنیق ٹائل</string>
+    <string name="dial_geometric">ہندسی ستارہ</string>
+    <string name="dial_sector">سیکٹر</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

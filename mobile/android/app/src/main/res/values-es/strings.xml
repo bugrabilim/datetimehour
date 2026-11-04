@@ -2070,7 +2070,7 @@
     <string name="dial_use">Usar</string>
     <string name="dial_inUse">En uso</string>
     <string name="dial_newTitle">Esferas nuevas</string>
-    <string name="dial_newText">12 esferas: cronógrafo, números romanos, bisel metálico, radar, doble anillo, números chinos y texturas de océano, hoja y mármol. 5 colores cada una.</string>
+    <string name="dial_newText">25 esferas: cronógrafo, piloto, buceo, números romanos y arábigos orientales, azulejo de İznik, estrella geométrica, madera, neón, arcoíris para niños y más. 5 colores cada una.</string>
     <string name="dial_note">La esfera la usan los relojes analógicos de la app y la pantalla completa; el color tiñe las agujas. Los widgets mantienen la esfera clásica con sus propios estilos.</string>
     <string name="dial_color_auto">Color propio de la esfera</string>
     <string name="dial_color_red">Rojo</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">Kaaba</string>
     <string name="greet_pat_lamp">Candil</string>
     <string name="greet_pat_stars">Estrellas</string>
+    <string name="dial_eastern">Números arábigos orientales</string>
+    <string name="dial_pilot">Piloto</string>
+    <string name="dial_bauhaus">Bauhaus</string>
+    <string name="dial_sunburst">Rayos de sol</string>
+    <string name="dial_vintage">Reloj de bolsillo antiguo</string>
+    <string name="dial_diver">Buceo</string>
+    <string name="dial_rainbow">Arcoíris (niños)</string>
+    <string name="dial_neon">Neón</string>
+    <string name="dial_wood">Madera</string>
+    <string name="dial_iznik">Azulejo de İznik</string>
+    <string name="dial_geometric">Estrella geométrica</string>
+    <string name="dial_sector">Sector</string>
     <string name="app_name">Hora y Fecha</string>
 </resources>

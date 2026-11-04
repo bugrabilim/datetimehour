@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.Arrangement
@@ -534,6 +535,15 @@ class MoreScreensTest {
         shot("tr-kadranlar-koyu", dark = true) { DialGalleryScreen() }
         listOf(DialFace.CHRONO to DialColor.AUTO, DialFace.RADAR to DialColor.AUTO, DialFace.MARBLE to DialColor.BLUE, DialFace.ROMAN to DialColor.GOLD)
             .forEach { (f, c) -> shot("kadran-${f.id}") { AnalogClock(t, Modifier.padding(24.dp), face = f, dialColor = c, tap = false) } }
+        // 4 Kasım 2026'da eklenen 12 kadran, üçer üçer
+        listOf(DialFace.EASTERN, DialFace.PILOT, DialFace.BAUHAUS, DialFace.SUNBURST, DialFace.VINTAGE, DialFace.DIVER,
+            DialFace.RAINBOW, DialFace.NEON, DialFace.WOOD, DialFace.IZNIK, DialFace.GEOMETRIC, DialFace.SECTOR).chunked(3).forEachIndexed { i, row ->
+            shot("kadranlar-yeni-${i + 1}") {
+                Row(Modifier.padding(8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    for (f in row) AnalogClock(t, Modifier.weight(1f), face = f, tap = false)
+                }
+            }
+        }
     }
 
     @Test fun ownerScreens() {

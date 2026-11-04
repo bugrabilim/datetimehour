@@ -2070,7 +2070,7 @@
     <string name="dial_use">Usar</string>
     <string name="dial_inUse">Em uso</string>
     <string name="dial_newTitle">Novos mostradores</string>
-    <string name="dial_newText">12 mostradores: cronógrafo, algarismos romanos, aro metálico, radar, anel duplo, números chineses e texturas de oceano, folha e mármore. 5 cores cada.</string>
+    <string name="dial_newText">25 mostradores: cronógrafo, piloto, mergulho, algarismos romanos e arábicos orientais, azulejo de İznik, estrela geométrica, madeira, neon, arco-íris para crianças e mais. 5 cores cada.</string>
     <string name="dial_note">O mostrador é usado pelos relógios analógicos do app e na tela cheia; a cor tinge os ponteiros. Os widgets mantêm o mostrador clássico com os próprios estilos.</string>
     <string name="dial_color_auto">Cor do próprio mostrador</string>
     <string name="dial_color_red">Vermelho</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">Caaba</string>
     <string name="greet_pat_lamp">Candeia</string>
     <string name="greet_pat_stars">Estrelas</string>
+    <string name="dial_eastern">Números arábicos orientais</string>
+    <string name="dial_pilot">Piloto</string>
+    <string name="dial_bauhaus">Bauhaus</string>
+    <string name="dial_sunburst">Raios de sol</string>
+    <string name="dial_vintage">Relógio de bolso antigo</string>
+    <string name="dial_diver">Mergulho</string>
+    <string name="dial_rainbow">Arco-íris (crianças)</string>
+    <string name="dial_neon">Neon</string>
+    <string name="dial_wood">Madeira</string>
+    <string name="dial_iznik">Azulejo de İznik</string>
+    <string name="dial_geometric">Estrela geométrica</string>
+    <string name="dial_sector">Setor</string>
     <string name="app_name">Hora e Data</string>
 </resources>

@@ -2070,7 +2070,7 @@
     <string name="dial_use">استفاده</string>
     <string name="dial_inUse">در حال استفاده</string>
     <string name="dial_newTitle">صفحه‌های ساعت تازه</string>
-    <string name="dial_newText">12 صفحه ساعت: کرونوگراف، اعداد رومی، قاب فلزی، رادار، حلقه دوتایی، اعداد چینی و زمینه‌های دریا، برگ و مرمر. هر کدام 5 رنگ.</string>
+    <string name="dial_newText">25 صفحه ساعت: کرونوگراف، خلبانی، غواصی، اعداد رومی و عربی شرقی، کاشی ایزنیک، ستاره هندسی، چوب، نئون، رنگین‌کمان برای کودکان و بیشتر. هر کدام 5 رنگ.</string>
     <string name="dial_note">صفحه ساعت در ساعت‌های عقربه‌ای برنامه و تمام‌صفحه به کار می‌رود؛ رنگ، عقربه‌ها را رنگ می‌کند. ابزارک‌ها با ظاهر خودشان روی صفحه کلاسیک می‌مانند.</string>
     <string name="dial_color_auto">رنگ خود صفحه</string>
     <string name="dial_color_red">قرمز</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">کعبه</string>
     <string name="greet_pat_lamp">قندیل</string>
     <string name="greet_pat_stars">ستاره‌ها</string>
+    <string name="dial_eastern">اعداد عربی شرقی</string>
+    <string name="dial_pilot">خلبانی</string>
+    <string name="dial_bauhaus">باوهاوس</string>
+    <string name="dial_sunburst">پرتو خورشید</string>
+    <string name="dial_vintage">ساعت جیبی قدیمی</string>
+    <string name="dial_diver">غواصی</string>
+    <string name="dial_rainbow">رنگین‌کمان (کودکان)</string>
+    <string name="dial_neon">نئون</string>
+    <string name="dial_wood">چوب</string>
+    <string name="dial_iznik">کاشی ایزنیک</string>
+    <string name="dial_geometric">ستاره هندسی</string>
+    <string name="dial_sector">سکتوری</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

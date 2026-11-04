@@ -2070,7 +2070,7 @@
     <string name="dial_use">استخدام</string>
     <string name="dial_inUse">قيد الاستخدام</string>
     <string name="dial_newTitle">موانئ ساعة جديدة</string>
-    <string name="dial_newText">12 ميناءً: كرونوغراف، أرقام رومانية، إطار معدني، رادار، حلقة مزدوجة، أرقام صينية وخلفيات بنقش البحر والورق والرخام. لكلٍّ منها 5 ألوان.</string>
+    <string name="dial_newText">25 ميناءً: كرونوغراف، طيار، غواص، أرقام رومانية وعربية مشرقية، قيشاني إزنيق، نجمة هندسية، خشب، نيون، قوس قزح للأطفال والمزيد. لكلٍّ منها 5 ألوان.</string>
     <string name="dial_note">يُستخدم الميناء في الساعات التناظرية داخل التطبيق وفي وضع ملء الشاشة؛ ويلوّن اللونُ العقارب. تبقى الأدوات على الميناء الكلاسيكي بأنماطها الخاصة.</string>
     <string name="dial_color_auto">لون الميناء</string>
     <string name="dial_color_red">أحمر</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">الكعبة</string>
     <string name="greet_pat_lamp">قنديل</string>
     <string name="greet_pat_stars">نجوم</string>
+    <string name="dial_eastern">أرقام عربية مشرقية</string>
+    <string name="dial_pilot">طيار</string>
+    <string name="dial_bauhaus">باوهاوس</string>
+    <string name="dial_sunburst">أشعة الشمس</string>
+    <string name="dial_vintage">ساعة جيب عتيقة</string>
+    <string name="dial_diver">غواص</string>
+    <string name="dial_rainbow">قوس قزح (للأطفال)</string>
+    <string name="dial_neon">نيون</string>
+    <string name="dial_wood">خشب</string>
+    <string name="dial_iznik">قيشاني إزنيق</string>
+    <string name="dial_geometric">نجمة هندسية</string>
+    <string name="dial_sector">قطاعي</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

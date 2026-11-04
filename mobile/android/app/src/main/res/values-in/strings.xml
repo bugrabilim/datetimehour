@@ -2070,7 +2070,7 @@
     <string name="dial_use">Gunakan</string>
     <string name="dial_inUse">Sedang dipakai</string>
     <string name="dial_newTitle">Muka jam baru</string>
-    <string name="dial_newText">12 muka jam: kronograf, angka Romawi, bingkai logam, radar, cincin ganda, angka Tionghoa, serta tekstur laut, daun, dan marmer. Masing-masing 5 warna.</string>
+    <string name="dial_newText">25 muka jam: kronograf, pilot, penyelam, angka Romawi dan Arab Timur, ubin İznik, bintang geometris, kayu, neon, pelangi untuk anak-anak, dan lainnya. Masing-masing 5 warna.</string>
     <string name="dial_note">Muka jam dipakai pada jam analog di aplikasi dan layar penuh; warnanya mewarnai jarum. Widget tetap memakai muka klasik dengan gayanya sendiri.</string>
     <string name="dial_color_auto">Warna bawaan</string>
     <string name="dial_color_red">Merah</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">Ka\'bah</string>
     <string name="greet_pat_lamp">Pelita</string>
     <string name="greet_pat_stars">Bintang</string>
+    <string name="dial_eastern">Angka Arab Timur</string>
+    <string name="dial_pilot">Pilot</string>
+    <string name="dial_bauhaus">Bauhaus</string>
+    <string name="dial_sunburst">Sinar matahari</string>
+    <string name="dial_vintage">Jam saku antik</string>
+    <string name="dial_diver">Penyelam</string>
+    <string name="dial_rainbow">Pelangi (anak-anak)</string>
+    <string name="dial_neon">Neon</string>
+    <string name="dial_wood">Kayu</string>
+    <string name="dial_iznik">Ubin İznik</string>
+    <string name="dial_geometric">Bintang geometris</string>
+    <string name="dial_sector">Sektor</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

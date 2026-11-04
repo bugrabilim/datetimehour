@@ -2070,7 +2070,7 @@
     <string name="dial_use">Utiliser</string>
     <string name="dial_inUse">Utilisé</string>
     <string name="dial_newTitle">Nouveaux cadrans</string>
-    <string name="dial_newText">12 cadrans : chronographe, chiffres romains, lunette métal, radar, double anneau, chiffres chinois et textures océan, feuille, marbre. 5 couleurs chacun.</string>
+    <string name="dial_newText">25 cadrans : chronographe, aviateur, plongée, chiffres romains et arabes orientaux, céramique d\'İznik, étoile géométrique, bois, néon, arc-en-ciel pour les enfants et plus. 5 couleurs chacun.</string>
     <string name="dial_note">Le cadran s\'applique aux horloges analogiques de l\'app et au plein écran ; la couleur teinte les aiguilles. Les widgets gardent le cadran classique avec leur propre style.</string>
     <string name="dial_color_auto">Couleur du cadran</string>
     <string name="dial_color_red">Rouge</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">Kaaba</string>
     <string name="greet_pat_lamp">Lampe à huile</string>
     <string name="greet_pat_stars">Étoiles</string>
+    <string name="dial_eastern">Chiffres arabes orientaux</string>
+    <string name="dial_pilot">Aviateur</string>
+    <string name="dial_bauhaus">Bauhaus</string>
+    <string name="dial_sunburst">Soleillé</string>
+    <string name="dial_vintage">Montre à gousset</string>
+    <string name="dial_diver">Plongée</string>
+    <string name="dial_rainbow">Arc-en-ciel (enfants)</string>
+    <string name="dial_neon">Néon</string>
+    <string name="dial_wood">Bois</string>
+    <string name="dial_iznik">Céramique d\'İznik</string>
+    <string name="dial_geometric">Étoile géométrique</string>
+    <string name="dial_sector">Secteur</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

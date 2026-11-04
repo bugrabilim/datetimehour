@@ -2070,7 +2070,7 @@
     <string name="dial_use">Выбрать</string>
     <string name="dial_inUse">Используется</string>
     <string name="dial_newTitle">Новые циферблаты</string>
-    <string name="dial_newText">12 циферблатов: хронограф, римские цифры, металлический безель, радар, двойное кольцо, китайские цифры и фактуры моря, листа и мрамора. По 5 цветов.</string>
+    <string name="dial_newText">25 циферблатов: хронограф, пилот, дайверские, римские и восточноарабские цифры, изникская плитка, геометрическая звезда, дерево, неон, радуга для детей и другие. По 5 цветов.</string>
     <string name="dial_note">Циферблат используется аналоговыми часами приложения и в полноэкранном режиме; цвет окрашивает стрелки. Виджеты сохраняют классический циферблат в своём стиле.</string>
     <string name="dial_color_auto">Цвет циферблата</string>
     <string name="dial_color_red">Красный</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">Кааба</string>
     <string name="greet_pat_lamp">Светильник</string>
     <string name="greet_pat_stars">Звёзды</string>
+    <string name="dial_eastern">Восточноарабские цифры</string>
+    <string name="dial_pilot">Пилот</string>
+    <string name="dial_bauhaus">Баухаус</string>
+    <string name="dial_sunburst">Солнечные лучи</string>
+    <string name="dial_vintage">Старинные карманные часы</string>
+    <string name="dial_diver">Дайверские</string>
+    <string name="dial_rainbow">Радуга (детям)</string>
+    <string name="dial_neon">Неон</string>
+    <string name="dial_wood">Дерево</string>
+    <string name="dial_iznik">Изникская плитка</string>
+    <string name="dial_geometric">Геометрическая звезда</string>
+    <string name="dial_sector">Секторный</string>
     <string name="app_name">Время и дата</string>
 </resources>

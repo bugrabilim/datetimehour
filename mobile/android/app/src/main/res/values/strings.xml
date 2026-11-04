@@ -2070,7 +2070,7 @@
     <string name="dial_use">Kullan</string>
     <string name="dial_inUse">Kullanımda</string>
     <string name="dial_newTitle">Yeni kadranlar</string>
-    <string name="dial_newText">12 kadran: kronograf, Roma rakamı, metal çerçeve, radar, çift halka, Çin rakamı ve deniz, yaprak, mermer dokulu zeminler. Her birinde 5 renk.</string>
+    <string name="dial_newText">25 kadran: kronograf, pilot, dalgıç, Roma ve Doğu Arap rakamı, İznik çini, geometrik yıldız, ahşap, neon, çocuklar için gökkuşağı ve daha fazlası. Her birinde 5 renk.</string>
     <string name="dial_note">Kadran, uygulamadaki rakamlı analog saatlerde ve tam ekranda kullanılır; renk ibreleri boyar. Widget\'lar kendi görünümleriyle klasik kadranda kalır.</string>
     <string name="dial_color_auto">Kadranın rengi</string>
     <string name="dial_color_red">Kırmızı</string>
@@ -2636,5 +2636,17 @@
     <string name="greet_pat_kaaba">Kâbe</string>
     <string name="greet_pat_lamp">Kandil</string>
     <string name="greet_pat_stars">Yıldızlar</string>
+    <string name="dial_eastern">Doğu Arap rakamı</string>
+    <string name="dial_pilot">Pilot</string>
+    <string name="dial_bauhaus">Bauhaus</string>
+    <string name="dial_sunburst">Güneş ışını</string>
+    <string name="dial_vintage">Eski cep saati</string>
+    <string name="dial_diver">Dalgıç</string>
+    <string name="dial_rainbow">Gökkuşağı (çocuklar)</string>
+    <string name="dial_neon">Neon</string>
+    <string name="dial_wood">Ahşap</string>
+    <string name="dial_iznik">İznik çini</string>
+    <string name="dial_geometric">Geometrik yıldız</string>
+    <string name="dial_sector">Sektör</string>
     <string name="app_name">Saat Tarih</string>
 </resources>
