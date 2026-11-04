@@ -93,6 +93,24 @@
             "state": "translated",
             "value": "เพื่อแสดงเวลาละหมาด ทิศกิบลัต มัสยิดใกล้เคียง และสภาพอากาศในที่ที่คุณอยู่ เวลาละหมาดและกิบลัตคำนวณบนโทรศัพท์ สำหรับสภาพอากาศและการค้นหามัสยิดจะส่งเพียงตำแหน่งโดยประมาณไปยังบริการของ Apple สำหรับการเตือนตามสถานที่ iPhone จะตรวจจับเองว่าคุณมาถึงหรือออกจากสถานที่"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para mostrar los horarios de oración, la dirección de la alquibla, las mezquitas cercanas y el tiempo donde está. Los horarios y la alquibla se calculan en su teléfono; para el tiempo y la búsqueda de mezquitas solo se envía una ubicación aproximada a los servicios de Apple. Para los recordatorios por ubicación, el propio iPhone detecta cuándo llega o sale de un lugar."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para mostrar os horários de oração, a direção da qibla, as mesquitas próximas e o tempo onde você está. Os horários e a qibla são calculados no seu celular; para o tempo e a busca de mesquitas só uma localização aproximada é enviada aos serviços da Apple. Nos lembretes por local, o próprio iPhone detecta quando você chega ou sai de um lugar."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आप जहाँ हैं वहाँ के नमाज़ के समय, क़िबला की दिशा, पास की मस्जिदें और मौसम दिखाने के लिए। नमाज़ के समय और क़िबला आपके फ़ोन पर निकाले जाते हैं; मौसम और मस्जिद खोज के लिए केवल अनुमानित स्थान Apple की सेवाओं को भेजा जाता है। स्थान रिमाइंडर में iPhone ख़ुद पहचानता है कि आप कब किसी जगह पहुँचे या वहाँ से निकले।"
+          }
         }
       }
     },
@@ -187,6 +205,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "เวลาและวันที่"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora y Fecha"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora e Data"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "समय और तारीख"
           }
         }
       }
@@ -283,6 +319,24 @@
             "state": "translated",
             "value": "เพื่อให้นาฬิกาปลุกและตัวจับเวลาที่คุณตั้งไว้ดังแม้ปิดเสียงโทรศัพท์"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para que las alarmas y los temporizadores que ponga suenen aunque el teléfono esté en silencio."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para que os alarmes e temporizadores que você criar toquem mesmo com o celular no silencioso."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ताकि आपके लगाए अलार्म और टाइमर फ़ोन साइलेंट होने पर भी बजें।"
+          }
         }
       }
     },
@@ -377,6 +431,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "เพื่อแสดงกิจกรรมในปฏิทินของคุณในปฏิทินของแอปและให้คุณลบได้ กิจกรรมใช้บนโทรศัพท์เท่านั้น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para mostrar los eventos de sus calendarios en el calendario de la app y permitirle borrarlos. Los eventos solo se usan en su teléfono."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para mostrar os eventos dos seus calendários no calendário do app e permitir que você os apague. Os eventos são usados só no seu celular."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपके कैलेंडरों के इवेंट ऐप के कैलेंडर में दिखाने और आपको उन्हें हटाने देने के लिए। इवेंट केवल आपके फ़ोन पर इस्तेमाल होते हैं।"
           }
         }
       }
@@ -473,6 +545,24 @@
             "state": "translated",
             "value": "สำหรับงานปิดนาฬิกาปลุก (คิวอาร์โค้ด รูปถ่าย หาสิ่งของ) และมุมมองกล้องกิบลัต ภาพถูกประมวลผลในโทรศัพท์ ไม่ถูกบันทึกและไม่ถูกส่งไปที่ใด"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para las tareas que apagan la alarma (código QR, foto, buscar un objeto) y la vista de cámara de la alquibla. La imagen se procesa en su teléfono, no se guarda ni se envía a ninguna parte."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para as tarefas que desligam o alarme (código QR, foto, encontrar um objeto) e a visão de câmera da qibla. A imagem é processada no seu celular, não é guardada nem enviada a lugar nenhum."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अलार्म बंद करने वाले कार्यों (QR कोड, फ़ोटो, चीज़ ढूँढना) और क़िबला कैमरा दृश्य के लिए। तस्वीर आपके फ़ोन पर संसाधित होती है, न सहेजी जाती है न कहीं भेजी जाती है।"
+          }
         }
       }
     },
@@ -567,6 +657,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "เพื่อบันทึกการออกกำลังกายแบบอินเทอร์วัลและชุดที่ทำเสร็จลงแอปสุขภาพเป็นการออกกำลังกาย หากคุณเปิดใช้ แอปไม่อ่านข้อมูลสุขภาพของคุณ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para escribir en la app Salud, como entrenamientos, los entrenamientos por intervalos y rutinas terminados, si lo activa. La app no lee sus datos de salud."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para registrar no app Saúde, como treinos, os treinos intervalados e rotinas concluídos, se você ativar. O app não lê seus dados de saúde."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत डेटा नहीं पढ़ता।"
           }
         }
       }
@@ -663,6 +771,24 @@
             "state": "translated",
             "value": "เพื่อให้คุณเลือกเพลงจากคลังเพลงเป็นเสียงปลุก ช่วงสั้น ๆ ที่ตัดจากเพลงอยู่บนโทรศัพท์และไม่ส่งไปที่ใด"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para que pueda elegir una canción de su biblioteca de música como sonido de alarma. El breve fragmento tomado de la canción se queda en su teléfono y no se envía a ninguna parte."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para você escolher uma música da sua biblioteca como som de alarme. O trecho curto tirado da música fica no seu celular e não é enviado a lugar nenhum."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ताकि आप अपनी संगीत लाइब्रेरी से कोई गाना अलार्म की आवाज़ के रूप में चुन सकें। गाने से लिया छोटा हिस्सा आपके फ़ोन पर रहता है और कहीं नहीं भेजा जाता।"
+          }
         }
       }
     },
@@ -758,6 +884,24 @@
             "state": "translated",
             "value": "เพื่อฟังว่าคุณอ่านประโยคออกเสียงในงานปิดนาฬิกาปลุก เสียงถูกจดจำในโทรศัพท์เท่านั้น ไม่ถูกบันทึกและไม่ถูกส่ง"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para oírle leer el refrán en voz alta en la tarea para apagar la alarma. La voz se reconoce solo en su teléfono; no se graba ni se envía a ningún sitio."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para ouvir você ler o ditado em voz alta na tarefa para desligar o alarme. A fala é reconhecida só no seu celular; não é gravada nem enviada para lugar nenhum."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अलार्म बंद करने के काम में आपको कहावत ज़ोर से पढ़ते सुनने के लिए। आवाज़ सिर्फ़ आपके फ़ोन पर पहचानी जाती है, न रिकॉर्ड होती है न कहीं भेजी जाती है।"
+          }
         }
       }
     },
@@ -852,6 +996,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "เพื่อฟังว่าคุณอ่านประโยคออกเสียงในงานปิดนาฬิกาปลุก เสียงถูกจดจำในโทรศัพท์เท่านั้น ไม่ถูกบันทึกและไม่ถูกส่ง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para oírle leer el refrán en voz alta en la tarea para apagar la alarma. La voz se reconoce solo en su teléfono; no se graba ni se envía a ningún sitio."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para ouvir você ler o ditado em voz alta na tarefa para desligar o alarme. A fala é reconhecida só no seu celular; não é gravada nem enviada para lugar nenhum."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अलार्म बंद करने के काम में आपको कहावत ज़ोर से पढ़ते सुनने के लिए। आवाज़ सिर्फ़ आपके फ़ोन पर पहचानी जाती है, न रिकॉर्ड होती है न कहीं भेजी जाती है।"
           }
         }
       }

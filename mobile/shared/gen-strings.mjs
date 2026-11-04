@@ -15,7 +15,7 @@ import { otdDay } from "../../lib/otd.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
-const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
 /* iOS String Catalog dil kodları: Çince Basitleştirilmiş Çince (zh-Hans); diğerleri aynı */
 const IOS_CODE = (l) => (l === "zh" ? "zh-Hans" : l);
 const I = Object.fromEntries(LANGS.map((l) => [l, JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"))]));
@@ -132,7 +132,7 @@ const toIOS = (s, order) => s.replace(/%/g, "%%").replace(/\{([a-z]+)\}/gi, (_, 
 /* Endonezce Android kaynaklarında eski "in" koduyla (values-in) durur; Filipince üç harfli kod BCP 47 biçimiyle (values-b+fil);
    Çince Basitleştirilmiş (values-zh bütün Çince yerel ayarlara uyar, Geleneksel Çincede de Türkçe yerine bu gelir).
    Dil seçimi (locales_config) BCP 47 kodlarıyla: id, fil, zh-Hans. */
-const ANDROID_DIRS = { tr: "values", en: "values-en", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru", ja: "values-ja", ko: "values-ko", zh: "values-zh", fil: "values-b+fil", th: "values-th" };
+const ANDROID_DIRS = { tr: "values", en: "values-en", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru", ja: "values-ja", ko: "values-ko", zh: "values-zh", fil: "values-b+fil", th: "values-th", es: "values-es", pt: "values-pt", hi: "values-hi" };
 const LOCALE_TAG = (l) => (l === "zh" ? "zh-Hans" : l);
 const androidName = (key) => key.replace(/[^A-Za-z0-9_]/g, "_");
 const androidEscape = (s) => s
@@ -205,7 +205,7 @@ const catalog = (s, source = "tr") => JSON.stringify({ sourceLanguage: source, s
 const xcstrings = catalog(strings);
 
 const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces.json"), "utf8"))
-  .map(({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th }) => ({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th }));
+  .map(({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }) => ({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }));
 const provincesJson = JSON.stringify(provinces) + "\n";
 
 /* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak; sınavlar takvimde yok). */

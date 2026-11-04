@@ -22,7 +22,7 @@ Hello, details below.
 Attached (physical iPhone, from launch). No account, user content or purchases.
 
 2. PURPOSE AND AUDIENCE
-Saat Tarih ("Time & Date") is a free clock and calendar utility: time, date, prayer times, holidays, world clocks. Audience: people who follow prayer times; 15 languages. No ads or tracking.
+Saat Tarih ("Time & Date") is a free clock and calendar utility: time, date, prayer times, holidays, world clocks. Audience: people who follow prayer times; 18 languages. No ads or tracking.
 
 3. HOW TO USE
 No login needed.

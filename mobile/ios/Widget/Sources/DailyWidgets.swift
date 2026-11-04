@@ -443,7 +443,7 @@ enum DailyContent {
             let rows = json("esma", [[String]].self) ?? []
             guard let r = pick(rows, day) else { break }
             let read = ["tr", "az"].contains(widgetLang) ? r[1] : (["ur", "fa"].contains(widgetLang) ? "" : r[2])
-            let col = ["tr": 3, "en": 4, "de": 5, "az": 6, "id": 7, "ur": 8, "fa": 9, "fr": 10, "ru": 11, "ja": 12, "ko": 13, "zh": 14, "fil": 15, "th": 16][widgetLang]
+            let col = ["tr": 3, "en": 4, "de": 5, "az": 6, "id": 7, "ur": 8, "fa": 9, "fr": 10, "ru": 11, "ja": 12, "ko": 13, "zh": 14, "fil": 15, "th": 16, "es": 17, "pt": 18, "hi": 19][widgetLang]
             let mean = col.map { $0 < r.count ? r[$0] : "" } ?? ""
             return DailyEntry(date: date, kind: kind, title: L("widget.daily.esma"), arabic: r[0], text: [read, mean].filter { !$0.isEmpty }.joined(separator: " — "), source: "")
         case .hadith:

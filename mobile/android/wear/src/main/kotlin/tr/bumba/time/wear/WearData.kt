@@ -68,7 +68,7 @@ object Wear {
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
-            WProvince(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th").associateWith { o.optString(it) })
+            WProvince(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi").associateWith { o.optString(it) })
         }.sortedWith(compareBy(java.text.Collator.getInstance(Locale.forLanguageTag("tr"))) { it.name })
         val h = JSONArray(read("hijri.json"))
         hijri = (0 until h.length()).map { i -> h.getJSONArray(i).let { Triple(LocalDate.parse(it.getString(0)).toEpochDay(), it.getInt(1), it.getInt(2)) } }
@@ -79,7 +79,7 @@ object Wear {
     val lang: String
         get() {
             val l = app.resources.configuration.locales[0].language.let { when (it) { "in" -> "id"; "tl" -> "fil"; else -> it } }
-            return if (l in listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th")) l else "tr"
+            return if (l in listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi")) l else "tr"
         }
 
     @SuppressLint("DiscouragedApi")

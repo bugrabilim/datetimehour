@@ -16,8 +16,8 @@ if (!IN || !OUT) { console.error("Kullanım: frame-screenshots.mjs <ham klasör>
 const HERE = dirname(new URL(import.meta.url).pathname);
 const CAPTIONS = JSON.parse(readFileSync(join(HERE, "../fastlane/captions.json"), "utf8"));
 // fastlane klasörü → başlık dili
-const LANG = { tr: "tr", "en-US": "en", "de-DE": "de", "ar-SA": "ar", "fr-FR": "fr", ru: "ru", id: "id", ja: "ja", ko: "ko", "zh-Hans": "zh", th: "th" };
-const HTML_LANG = { zh: "zh-Hans" };
+const LANG = { tr: "tr", "en-US": "en", "de-DE": "de", "ar-SA": "ar", "fr-FR": "fr", ru: "ru", id: "id", ja: "ja", ko: "ko", "zh-Hans": "zh", th: "th", "es-ES": "es", "pt-BR": "pt", hi: "hi" };
+const HTML_LANG = { zh: "zh-Hans", pt: "pt-BR" };
 const RTL = new Set(["ar", "ur", "fa"]);
 
 function loadPlaywright() {

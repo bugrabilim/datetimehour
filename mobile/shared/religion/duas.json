@@ -18,7 +18,10 @@
         "ko": "수브하나카",
         "zh": "赞主词（苏布哈奈克）",
         "fil": "Subhanaka",
-        "th": "ซุบฮานะกะ"
+        "th": "ซุบฮานะกะ",
+        "es": "Subhanaka",
+        "pt": "Subhanaka",
+        "hi": "सुब्हानका (सना)"
       },
       "when": {
         "tr": "Namazda, ilk rekâtta iftitah tekbirinden sonra",
@@ -35,7 +38,10 @@
         "ko": "예배에서, 첫째 라카트의 시작 타크비르 뒤에",
         "zh": "礼拜中，第一拜的入拜大赞之后",
         "fil": "Sa dasal, pagkatapos ng pambungad na takbir ng unang yunit",
-        "th": "ในละหมาด หลังตักบีรเริ่มต้นของร็อกอะฮ์แรก"
+        "th": "ในละหมาด หลังตักบีรเริ่มต้นของร็อกอะฮ์แรก",
+        "es": "En la oración, tras el takbir de apertura de la primera unidad",
+        "pt": "Na oração, após o takbir de abertura da primeira unidade",
+        "hi": "नमाज़ में, पहली रकअत में तकबीर-ए-तहरीमा के बाद"
       },
       "ar": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلَا إِلَهَ غَيْرُكَ",
       "okunus": "Sübhânekellâhümme ve bi hamdik, ve tebârakesmük, ve teâlâ ceddük, ve lâ ilâhe ğayruk.",
@@ -53,7 +59,10 @@
         "ko": "알라여, 당신께 영광과 찬미를 드립니다. 당신의 이름은 복되시고 당신의 위엄은 높으십니다. 당신 외에 신은 없습니다.",
         "zh": "安拉啊，赞你清净，赞美你。你的名字吉祥，你的尊严崇高；除你之外，绝无神灵。",
         "fil": "Luwalhati at papuri sa Iyo, O Allah. Pinagpala ang Iyong pangalan at dakila ang Iyong kamahalan; walang diyos maliban sa Iyo.",
-        "th": "มหาบริสุทธิ์และการสรรเสริญแด่พระองค์ โอ้อัลลอฮ์ พระนามของพระองค์ทรงจำเริญ ความยิ่งใหญ่ของพระองค์ทรงสูงส่ง ไม่มีพระเจ้าอื่นใดนอกจากพระองค์"
+        "th": "มหาบริสุทธิ์และการสรรเสริญแด่พระองค์ โอ้อัลลอฮ์ พระนามของพระองค์ทรงจำเริญ ความยิ่งใหญ่ของพระองค์ทรงสูงส่ง ไม่มีพระเจ้าอื่นใดนอกจากพระองค์",
+        "es": "Gloria y alabanza a Ti, oh Alá. Bendito es Tu nombre y exaltada Tu majestad; no hay más dios que Tú.",
+        "pt": "Glória e louvor a Ti, ó Alá. Bendito é o Teu nome e exaltada a Tua majestade; não há outro deus além de Ti.",
+        "hi": "ऐ अल्लाह, तू पाक है और तेरी ही तारीफ़ है। तेरा नाम बरकत वाला है और तेरी शान ऊँची है; तेरे सिवा कोई माबूद नहीं।"
       },
       "cat": [
         "prayer"
@@ -76,7 +85,10 @@
         "ko": "앗타히야트",
         "zh": "作证词（太希亚提）",
         "fil": "At-Tahiyyat",
-        "th": "อัตตะฮียาต"
+        "th": "อัตตะฮียาต",
+        "es": "At-Tahiyyat",
+        "pt": "At-Tahiyyat",
+        "hi": "अत्तहिय्यात"
       },
       "when": {
         "tr": "Namazda, her oturuşta",
@@ -93,7 +105,10 @@
         "ko": "예배에서, 앉을 때마다",
         "zh": "礼拜中，每次跪坐时",
         "fil": "Sa dasal, sa bawat pag-upo",
-        "th": "ในละหมาด ทุกครั้งที่นั่ง"
+        "th": "ในละหมาด ทุกครั้งที่นั่ง",
+        "es": "En la oración, en cada posición sentada",
+        "pt": "Na oração, em cada posição sentada",
+        "hi": "नमाज़ में, हर क़ादे (बैठक) में"
       },
       "ar": "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
       "okunus": "Ettehiyyâtü lillâhi vessalevâtü vettayyibât. Esselâmü aleyke eyyühen-Nebiyyü ve rahmetullâhi ve berakâtüh. Esselâmü aleynâ ve alâ ibâdillâhis-sâlihîn. Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve rasûlüh.",
@@ -111,7 +126,10 @@
         "ko": "모든 인사와 기도와 선행은 알라께 속합니다. 예언자여, 당신께 평화와 알라의 자비와 축복이 있기를. 우리와 알라의 의로운 종들에게 평화가 있기를. 나는 알라 외에 신이 없음을 증언하며, 무함마드가 그분의 종이요 사도임을 증언합니다.",
         "zh": "一切祝福、拜功和善行都归于安拉。先知啊，愿你平安，并蒙安拉的慈悯和吉庆。愿我们和安拉的清廉仆人平安。我作证除安拉外绝无神灵，我作证穆罕默德是他的仆人和使者。",
         "fil": "Ang lahat ng pagbati, dasal at mabubuting gawa ay para kay Allah. Sumaiyo nawa ang kapayapaan, O Propeta, at ang awa ni Allah at ang Kanyang mga pagpapala. Sumaamin nawa at sa mga matuwid na lingkod ni Allah ang kapayapaan. Sumasaksi ako na walang diyos maliban kay Allah, at sumasaksi ako na si Muhammad ay Kanyang lingkod at sugo.",
-        "th": "การคารวะ การละหมาด และความดีทั้งปวงเป็นของอัลลอฮ์ ขอความสันติจงมีแด่ท่าน โอ้ท่านนบี พร้อมความเมตตาและความจำเริญของอัลลอฮ์ ขอความสันติจงมีแด่พวกเราและแด่บ่าวผู้ทรงคุณธรรมของอัลลอฮ์ ข้าพเจ้าขอปฏิญาณว่าไม่มีพระเจ้าอื่นใดนอกจากอัลลอฮ์ และข้าพเจ้าขอปฏิญาณว่ามุฮัมมัดเป็นบ่าวและศาสนทูตของพระองค์"
+        "th": "การคารวะ การละหมาด และความดีทั้งปวงเป็นของอัลลอฮ์ ขอความสันติจงมีแด่ท่าน โอ้ท่านนบี พร้อมความเมตตาและความจำเริญของอัลลอฮ์ ขอความสันติจงมีแด่พวกเราและแด่บ่าวผู้ทรงคุณธรรมของอัลลอฮ์ ข้าพเจ้าขอปฏิญาณว่าไม่มีพระเจ้าอื่นใดนอกจากอัลลอฮ์ และข้าพเจ้าขอปฏิญาณว่ามุฮัมมัดเป็นบ่าวและศาสนทูตของพระองค์",
+        "es": "Todos los saludos, las oraciones y las buenas obras son para Alá. La paz sea contigo, oh Profeta, y la misericordia de Alá y Sus bendiciones. La paz sea con nosotros y con los siervos justos de Alá. Atestiguo que no hay más dios que Alá y atestiguo que Muhammad es Su siervo y mensajero.",
+        "pt": "Todas as saudações, orações e boas obras pertencem a Alá. Que a paz esteja contigo, ó Profeta, e a misericórdia de Alá e Suas bênçãos. Que a paz esteja conosco e com os servos justos de Alá. Testemunho que não há outro deus além de Alá e testemunho que Muhammad é Seu servo e mensageiro.",
+        "hi": "सारी तारीफ़ें, सारी इबादतें और सारी अच्छाइयाँ अल्लाह के लिए हैं। ऐ नबी, आप पर सलाम हो और अल्लाह की रहमत और उसकी बरकतें। हम पर और अल्लाह के नेक बंदों पर सलाम हो। मैं गवाही देता हूँ कि अल्लाह के सिवा कोई माबूद नहीं और मैं गवाही देता हूँ कि मुहम्मद उसके बंदे और रसूल हैं।"
       },
       "cat": [
         "prayer"
@@ -134,7 +152,10 @@
         "ko": "알라훔마 살리",
         "zh": "赞圣词（安拉昏麦·沙里）",
         "fil": "Allahumma Salli",
-        "th": "อัลลอฮุมมะ ศ็อลลิ"
+        "th": "อัลลอฮุมมะ ศ็อลลิ",
+        "es": "Allahumma Salli",
+        "pt": "Allahumma Salli",
+        "hi": "अल्लाहुम्मा सल्लि"
       },
       "when": {
         "tr": "Namazda, son oturuşta Ettehiyyâtü'den sonra",
@@ -151,7 +172,10 @@
         "ko": "예배에서, 마지막 앉음에 타히야트 뒤에",
         "zh": "礼拜中，最后跪坐时念完作证词之后",
         "fil": "Sa dasal, sa huling pag-upo pagkatapos ng At-Tahiyyat",
-        "th": "ในละหมาด ขณะนั่งครั้งสุดท้าย หลังอัตตะฮียาต"
+        "th": "ในละหมาด ขณะนั่งครั้งสุดท้าย หลังอัตตะฮียาต",
+        "es": "En la oración, en la última posición sentada tras At-Tahiyyat",
+        "pt": "Na oração, na última posição sentada após At-Tahiyyat",
+        "hi": "नमाज़ में, आख़िरी क़ादे में अत्तहिय्यात के बाद"
       },
       "ar": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
       "okunus": "Allâhümme salli alâ Muhammedin ve alâ âli Muhammed, kemâ salleyte alâ İbrâhîme ve alâ âli İbrâhîm, inneke hamîdün mecîd.",
@@ -169,7 +193,10 @@
         "ko": "알라여, 아브라함과 그 가족에게 축복을 내리셨듯이 무함마드와 그 가족에게 축복을 내리소서. 당신은 찬양받으실 분, 영광스러우신 분이십니다.",
         "zh": "安拉啊，求你赐福穆罕默德和穆罕默德的家属，如同你赐福易卜拉欣和易卜拉欣的家属。你确是可颂的、荣耀的。",
         "fil": "O Allah, igawad Mo ang Iyong awa kay Muhammad at sa angkan ni Muhammad, gaya ng paggawad Mo nito kay Ibrahim at sa angkan ni Ibrahim. Ikaw ay Karapat-dapat na Purihin, Maluwalhati.",
-        "th": "โอ้อัลลอฮ์ ขอทรงประทานพรแด่มุฮัมมัดและวงศ์วานของมุฮัมมัด ดังที่พระองค์ทรงประทานพรแด่อิบรอฮีมและวงศ์วานของอิบรอฮีม แท้จริงพระองค์ทรงควรแก่การสรรเสริญ ทรงรุ่งโรจน์"
+        "th": "โอ้อัลลอฮ์ ขอทรงประทานพรแด่มุฮัมมัดและวงศ์วานของมุฮัมมัด ดังที่พระองค์ทรงประทานพรแด่อิบรอฮีมและวงศ์วานของอิบรอฮีม แท้จริงพระองค์ทรงควรแก่การสรรเสริญ ทรงรุ่งโรจน์",
+        "es": "Oh Alá, bendice a Muhammad y a la familia de Muhammad, como bendijiste a Abraham y a la familia de Abraham. Tú eres Digno de alabanza, Glorioso.",
+        "pt": "Ó Alá, abençoa Muhammad e a família de Muhammad, como abençoaste Abraão e a família de Abraão. Tu és Digno de louvor, Glorioso.",
+        "hi": "ऐ अल्लाह, मुहम्मद और मुहम्मद के घरवालों पर रहमत नाज़िल कर, जैसे तूने इब्राहीम और इब्राहीम के घरवालों पर रहमत नाज़िल की। बेशक तू तारीफ़ के लायक़, बुज़ुर्गी वाला है।"
       },
       "cat": [
         "prayer"
@@ -192,7 +219,10 @@
         "ko": "알라훔마 바리크",
         "zh": "祈福词（安拉昏麦·巴里克）",
         "fil": "Allahumma Barik",
-        "th": "อัลลอฮุมมะ บาริก"
+        "th": "อัลลอฮุมมะ บาริก",
+        "es": "Allahumma Barik",
+        "pt": "Allahumma Barik",
+        "hi": "अल्लाहुम्मा बारिक"
       },
       "when": {
         "tr": "Namazda, son oturuşta Salli'den sonra",
@@ -209,7 +239,10 @@
         "ko": "예배에서, 마지막 앉음에 살리 뒤에",
         "zh": "礼拜中，最后跪坐时念完赞圣词之后",
         "fil": "Sa dasal, sa huling pag-upo pagkatapos ng Salli",
-        "th": "ในละหมาด ขณะนั่งครั้งสุดท้าย หลังศ็อลลิ"
+        "th": "ในละหมาด ขณะนั่งครั้งสุดท้าย หลังศ็อลลิ",
+        "es": "En la oración, en la última posición sentada tras Salli",
+        "pt": "Na oração, na última posição sentada após Salli",
+        "hi": "नमाज़ में, आख़िरी क़ादे में सल्लि के बाद"
       },
       "ar": "اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
       "okunus": "Allâhümme bârik alâ Muhammedin ve alâ âli Muhammed, kemâ bârakte alâ İbrâhîme ve alâ âli İbrâhîm, inneke hamîdün mecîd.",
@@ -227,7 +260,10 @@
         "ko": "알라여, 아브라함과 그 가족을 축복하셨듯이 무함마드와 그 가족을 축복하소서. 당신은 찬양받으실 분, 영광스러우신 분이십니다.",
         "zh": "安拉啊，求你降福穆罕默德和穆罕默德的家属，如同你降福易卜拉欣和易卜拉欣的家属。你确是可颂的、荣耀的。",
         "fil": "O Allah, pagpalain Mo si Muhammad at ang angkan ni Muhammad, gaya ng pagpapala Mo kay Ibrahim at sa angkan ni Ibrahim. Ikaw ay Karapat-dapat na Purihin, Maluwalhati.",
-        "th": "โอ้อัลลอฮ์ ขอทรงประทานความจำเริญแด่มุฮัมมัดและวงศ์วานของมุฮัมมัด ดังที่พระองค์ทรงประทานความจำเริญแด่อิบรอฮีมและวงศ์วานของอิบรอฮีม แท้จริงพระองค์ทรงควรแก่การสรรเสริญ ทรงรุ่งโรจน์"
+        "th": "โอ้อัลลอฮ์ ขอทรงประทานความจำเริญแด่มุฮัมมัดและวงศ์วานของมุฮัมมัด ดังที่พระองค์ทรงประทานความจำเริญแด่อิบรอฮีมและวงศ์วานของอิบรอฮีม แท้จริงพระองค์ทรงควรแก่การสรรเสริญ ทรงรุ่งโรจน์",
+        "es": "Oh Alá, concede Tu gracia a Muhammad y a la familia de Muhammad, como se la concediste a Abraham y a la familia de Abraham. Tú eres Digno de alabanza, Glorioso.",
+        "pt": "Ó Alá, concede Tuas graças a Muhammad e à família de Muhammad, como concedeste a Abraão e à família de Abraão. Tu és Digno de louvor, Glorioso.",
+        "hi": "ऐ अल्लाह, मुहम्मद और मुहम्मद के घरवालों पर बरकत नाज़िल कर, जैसे तूने इब्राहीम और इब्राहीम के घरवालों पर बरकत नाज़िल की। बेशक तू तारीफ़ के लायक़, बुज़ुर्गी वाला है।"
       },
       "cat": [
         "prayer"
@@ -250,7 +286,10 @@
         "ko": "랍바나",
         "zh": "热般纳",
         "fil": "Rabbana",
-        "th": "ร็อบบะนา"
+        "th": "ร็อบบะนา",
+        "es": "Rabbana",
+        "pt": "Rabbana",
+        "hi": "रब्बना"
       },
       "when": {
         "tr": "Namazda, son oturuşta Bârik'ten sonra (Bakara 201, İbrâhîm 41)",
@@ -267,7 +306,10 @@
         "ko": "예배에서, 마지막 앉음에 바리크 뒤에(꾸란 2:201, 14:41)",
         "zh": "礼拜中，最后跪坐时念完祈福词之后（古兰经2:201、14:41）",
         "fil": "Sa dasal, sa huling pag-upo pagkatapos ng Barik (Quran 2:201, 14:41)",
-        "th": "ในละหมาด ขณะนั่งครั้งสุดท้าย หลังบาริก (อัลกุรอาน 2:201, 14:41)"
+        "th": "ในละหมาด ขณะนั่งครั้งสุดท้าย หลังบาริก (อัลกุรอาน 2:201, 14:41)",
+        "es": "En la oración, en la última posición sentada tras Barik (Corán 2:201, 14:41)",
+        "pt": "Na oração, na última posição sentada após Barik (Alcorão 2:201, 14:41)",
+        "hi": "नमाज़ में, आख़िरी क़ादे में बारिक के बाद (क़ुरआन 2:201, 14:41)"
       },
       "quran": [
         [
@@ -302,7 +344,10 @@
         "ko": "쿠누트(1)",
         "zh": "古努特（一）",
         "fil": "Qunut (1)",
-        "th": "กุนูต (1)"
+        "th": "กุนูต (1)",
+        "es": "Qunut (1)",
+        "pt": "Qunut (1)",
+        "hi": "क़ुनूत (1)"
       },
       "when": {
         "tr": "Vitir namazının üçüncü rekâtında",
@@ -319,7 +364,10 @@
         "ko": "위트르 예배의 셋째 라카트에서",
         "zh": "威特尔拜的第三拜中",
         "fil": "Sa ikatlong yunit ng dasal na witr",
-        "th": "ในร็อกอะฮ์ที่สามของละหมาดวิติร"
+        "th": "ในร็อกอะฮ์ที่สามของละหมาดวิติร",
+        "es": "En la tercera unidad de la oración witr",
+        "pt": "Na terceira unidade da oração witr",
+        "hi": "वित्र नमाज़ की तीसरी रकअत में"
       },
       "ar": "اللَّهُمَّ إِنَّا نَسْتَعِينُكَ وَنَسْتَغْفِرُكَ وَنَسْتَهْدِيكَ وَنُؤْمِنُ بِكَ وَنَتُوبُ إِلَيْكَ وَنَتَوَكَّلُ عَلَيْكَ وَنُثْنِي عَلَيْكَ الْخَيْرَ كُلَّهُ نَشْكُرُكَ وَلَا نَكْفُرُكَ وَنَخْلَعُ وَنَتْرُكُ مَنْ يَفْجُرُكَ",
       "okunus": "Allâhümme innâ nesteînüke ve nestağfirüke ve nestehdîk. Ve nü'minü bike ve netûbü ileyk. Ve netevekkelü aleyke ve nüsnî aleykel-hayra külleh. Neşkürüke ve lâ nekfürük. Ve nahleu ve netrükü men yefcürük.",
@@ -337,7 +385,10 @@
         "ko": "알라여, 우리는 당신께 도움과 용서와 인도를 구합니다. 우리는 당신을 믿고 당신께 회개하며 당신께 의지합니다. 모든 선으로 당신을 찬양하고 감사하며 배은망덕하지 않습니다. 당신을 거역하는 자를 우리는 버리고 떠납니다.",
         "zh": "安拉啊，我们向你求助、求恕、求引导。我们归信你，向你忏悔，依靠你。我们以一切美好赞颂你，感谢你，不忘恩负义。违抗你的人，我们舍弃并远离他。",
         "fil": "O Allah, humihingi kami sa Iyo ng tulong, kapatawaran at patnubay. Sumasampalataya kami sa Iyo, nagsisisi sa Iyo at umaasa sa Iyo. Pinupuri Ka namin sa lahat ng kabutihan; nagpapasalamat kami sa Iyo at hindi namin ikinakaila ang Iyong mga biyaya. Iniiwan at nilalayuan namin ang sinumang sumusuway sa Iyo.",
-        "th": "โอ้อัลลอฮ์ เราขอความช่วยเหลือ การอภัย และทางนำจากพระองค์ เราศรัทธาต่อพระองค์ กลับเนื้อกลับตัวต่อพระองค์ และมอบหมายต่อพระองค์ เราสรรเสริญพระองค์ด้วยความดีทั้งปวง เราขอบคุณพระองค์และไม่เนรคุณต่อพระองค์ เราละทิ้งและออกห่างจากผู้ที่ฝ่าฝืนพระองค์"
+        "th": "โอ้อัลลอฮ์ เราขอความช่วยเหลือ การอภัย และทางนำจากพระองค์ เราศรัทธาต่อพระองค์ กลับเนื้อกลับตัวต่อพระองค์ และมอบหมายต่อพระองค์ เราสรรเสริญพระองค์ด้วยความดีทั้งปวง เราขอบคุณพระองค์และไม่เนรคุณต่อพระองค์ เราละทิ้งและออกห่างจากผู้ที่ฝ่าฝืนพระองค์",
+        "es": "Oh Alá, te pedimos ayuda, perdón y guía. Creemos en Ti, nos volvemos a Ti arrepentidos y en Ti confiamos. Te alabamos con todo bien; te damos gracias y no somos ingratos contigo. Abandonamos y dejamos a quien te desobedece.",
+        "pt": "Ó Alá, pedimos a Ti ajuda, perdão e orientação. Cremos em Ti, voltamo-nos a Ti arrependidos e em Ti confiamos. Louvamos-Te com todo o bem; agradecemos a Ti e não somos ingratos contigo. Abandonamos e deixamos quem Te desobedece.",
+        "hi": "ऐ अल्लाह, हम तुझसे मदद, माफ़ी और हिदायत माँगते हैं। हम तुझ पर ईमान लाते हैं, तेरी ओर तौबा करते हैं और तुझ पर भरोसा करते हैं। हम हर भलाई के साथ तेरी तारीफ़ करते हैं, तेरा शुक्र करते हैं और तेरी नाशुक्री नहीं करते। जो तेरी नाफ़रमानी करे, हम उसे छोड़ते और उससे अलग होते हैं।"
       },
       "cat": [
         "prayer"
@@ -360,7 +411,10 @@
         "ko": "쿠누트(2)",
         "zh": "古努特（二）",
         "fil": "Qunut (2)",
-        "th": "กุนูต (2)"
+        "th": "กุนูต (2)",
+        "es": "Qunut (2)",
+        "pt": "Qunut (2)",
+        "hi": "क़ुनूत (2)"
       },
       "when": {
         "tr": "Vitir namazında birinci Kunut'tan sonra",
@@ -377,7 +431,10 @@
         "ko": "위트르 예배에서, 첫 쿠누트 뒤에",
         "zh": "威特尔拜中，第一段古努特之后",
         "fil": "Sa dasal na witr, pagkatapos ng unang Qunut",
-        "th": "ในละหมาดวิติร หลังกุนูตแรก"
+        "th": "ในละหมาดวิติร หลังกุนูตแรก",
+        "es": "En la oración witr, tras el primer Qunut",
+        "pt": "Na oração witr, após o primeiro Qunut",
+        "hi": "वित्र नमाज़ में, पहले क़ुनूत के बाद"
       },
       "ar": "اللَّهُمَّ إِيَّاكَ نَعْبُدُ وَلَكَ نُصَلِّي وَنَسْجُدُ وَإِلَيْكَ نَسْعَى وَنَحْفِدُ نَرْجُو رَحْمَتَكَ وَنَخْشَى عَذَابَكَ إِنَّ عَذَابَكَ بِالْكُفَّارِ مُلْحِقٌ",
       "okunus": "Allâhümme iyyâke na'büdü ve leke nüsallî ve nescüdü ve ileyke nes'â ve nahfidü. Nercû rahmeteke ve nahşâ azâbeke, inne azâbeke bil-küffâri mülhık.",
@@ -395,7 +452,10 @@
         "ko": "알라여, 우리는 오직 당신만을 섬기고, 당신께 기도하며 엎드리고, 당신께로 서둘러 힘씁니다. 당신의 자비를 바라고 당신의 벌을 두려워합니다. 참으로 당신의 벌은 불신자들에게 미칩니다.",
         "zh": "安拉啊，我们只崇拜你，只为你礼拜和叩头，我们奔向你、为你努力。我们希望你的慈悯，畏惧你的惩罚。你的惩罚必定降临于不信的人。",
         "fil": "O Allah, Ikaw lamang ang aming sinasamba; sa Iyo kami nagdarasal at nagpapatirapa; sa Iyo kami nagmamadali at nagsisikap. Inaasahan namin ang Iyong awa at kinatatakutan ang Iyong parusa. Tunay na aabot sa mga hindi naniniwala ang Iyong parusa.",
-        "th": "โอ้อัลลอฮ์ เราเคารพภักดีต่อพระองค์เท่านั้น เราละหมาดและสุญูดต่อพระองค์ เรารีบเร่งและมุ่งมั่นสู่พระองค์ เราหวังในความเมตตาของพระองค์และเกรงกลัวการลงโทษของพระองค์ แท้จริงการลงโทษของพระองค์จะประสบแก่ผู้ปฏิเสธศรัทธา"
+        "th": "โอ้อัลลอฮ์ เราเคารพภักดีต่อพระองค์เท่านั้น เราละหมาดและสุญูดต่อพระองค์ เรารีบเร่งและมุ่งมั่นสู่พระองค์ เราหวังในความเมตตาของพระองค์และเกรงกลัวการลงโทษของพระองค์ แท้จริงการลงโทษของพระองค์จะประสบแก่ผู้ปฏิเสธศรัทธา",
+        "es": "Oh Alá, solo a Ti adoramos; a Ti oramos y ante Ti nos postramos; hacia Ti nos apresuramos y por Ti nos esforzamos. Esperamos Tu misericordia y tememos Tu castigo. Ciertamente Tu castigo alcanzará a los incrédulos.",
+        "pt": "Ó Alá, só a Ti adoramos; a Ti oramos e diante de Ti nos prostramos; para Ti nos apressamos e por Ti nos esforçamos. Esperamos a Tua misericórdia e tememos o Teu castigo. Certamente o Teu castigo alcançará os descrentes.",
+        "hi": "ऐ अल्लाह, हम तेरी ही इबादत करते हैं, तेरे ही लिए नमाज़ पढ़ते और सजदा करते हैं, तेरी ही ओर दौड़ते और कोशिश करते हैं। हम तेरी रहमत की उम्मीद रखते हैं और तेरे अज़ाब से डरते हैं। बेशक तेरा अज़ाब काफ़िरों को पहुँचने वाला है।"
       },
       "cat": [
         "prayer"
@@ -418,7 +478,10 @@
         "ko": "옥좌의 구절(아야트 알쿠르시)",
         "zh": "宝座经文",
         "fil": "Ayat al-Kursi",
-        "th": "อายะตุลกุรซีย์"
+        "th": "อายะตุลกุรซีย์",
+        "es": "Ayat al-Kursi",
+        "pt": "Ayat al-Kursi",
+        "hi": "आयतुल कुर्सी"
       },
       "when": {
         "tr": "Bakara 255",
@@ -435,7 +498,10 @@
         "ko": "꾸란 2:255",
         "zh": "古兰经2:255",
         "fil": "Quran 2:255",
-        "th": "อัลกุรอาน 2:255"
+        "th": "อัลกุรอาน 2:255",
+        "es": "Corán 2:255",
+        "pt": "Alcorão 2:255",
+        "hi": "क़ुरआन 2:255"
       },
       "quran": [
         [
@@ -466,7 +532,10 @@
         "ko": "아만투",
         "zh": "信仰纲要（阿曼图）",
         "fil": "Amantu",
-        "th": "อามันตุ"
+        "th": "อามันตุ",
+        "es": "Amantu",
+        "pt": "Amantu",
+        "hi": "आमन्तु (ईमान-ए-मुफ़स्सल)"
       },
       "when": {
         "tr": "İmanın esasları",
@@ -483,7 +552,10 @@
         "ko": "믿음의 조항",
         "zh": "信仰的要目",
         "fil": "Ang mga haligi ng pananampalataya",
-        "th": "หลักศรัทธา"
+        "th": "หลักศรัทธา",
+        "es": "Los artículos de fe",
+        "pt": "Os artigos de fé",
+        "hi": "ईमान के बुनियादी अक़ीदे"
       },
       "ar": "آمَنْتُ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ وَالْيَوْمِ الْآخِرِ وَبِالْقَدَرِ خَيْرِهِ وَشَرِّهِ مِنَ اللَّهِ تَعَالَى وَالْبَعْثُ بَعْدَ الْمَوْتِ حَقٌّ أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
       "okunus": "Âmentü billâhi ve melâiketihî ve kütübihî ve rusülihî vel-yevmil-âhiri ve bil-kaderi hayrihî ve şerrihî minallâhi teâlâ, vel-ba'sü ba'del-mevti hakkun. Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve rasûlüh.",
@@ -501,7 +573,10 @@
         "ko": "나는 알라와 그분의 천사들과 그분의 경전들과 그분의 사도들과 마지막 날을 믿으며, 선과 악이 지고하신 알라께로부터 온다는 정명을 믿습니다. 죽음 뒤의 부활은 참입니다. 나는 알라 외에 신이 없음을 증언하며, 무함마드가 그분의 종이요 사도임을 증언합니다.",
         "zh": "我归信安拉、他的天使、他的经典、他的使者、末日，并归信前定，好歹都来自至高的安拉；死后复活是真实的。我作证除安拉外绝无神灵，我作证穆罕默德是他的仆人和使者。",
         "fil": "Sumasampalataya ako kay Allah, sa Kanyang mga anghel, sa Kanyang mga aklat, sa Kanyang mga sugo, sa Huling Araw, at sa tadhana, na ang mabuti at masama nito ay mula kay Allah na Kataas-taasan; at totoo ang muling pagkabuhay pagkatapos ng kamatayan. Sumasaksi ako na walang diyos maliban kay Allah, at sumasaksi ako na si Muhammad ay Kanyang lingkod at sugo.",
-        "th": "ข้าพเจ้าศรัทธาต่ออัลลอฮ์ บรรดามลาอิกะฮ์ของพระองค์ บรรดาคัมภีร์ของพระองค์ บรรดาศาสนทูตของพระองค์ วันสุดท้าย และกฎกำหนด ทั้งดีและชั่วล้วนมาจากอัลลอฮ์ผู้ทรงสูงส่ง และการฟื้นคืนชีพหลังความตายเป็นความจริง ข้าพเจ้าขอปฏิญาณว่าไม่มีพระเจ้าอื่นใดนอกจากอัลลอฮ์ และข้าพเจ้าขอปฏิญาณว่ามุฮัมมัดเป็นบ่าวและศาสนทูตของพระองค์"
+        "th": "ข้าพเจ้าศรัทธาต่ออัลลอฮ์ บรรดามลาอิกะฮ์ของพระองค์ บรรดาคัมภีร์ของพระองค์ บรรดาศาสนทูตของพระองค์ วันสุดท้าย และกฎกำหนด ทั้งดีและชั่วล้วนมาจากอัลลอฮ์ผู้ทรงสูงส่ง และการฟื้นคืนชีพหลังความตายเป็นความจริง ข้าพเจ้าขอปฏิญาณว่าไม่มีพระเจ้าอื่นใดนอกจากอัลลอฮ์ และข้าพเจ้าขอปฏิญาณว่ามุฮัมมัดเป็นบ่าวและศาสนทูตของพระองค์",
+        "es": "Creo en Alá, en Sus ángeles, en Sus libros, en Sus mensajeros, en el Último Día y en el destino, cuyo bien y cuyo mal proceden de Alá el Altísimo; y la resurrección tras la muerte es verdad. Atestiguo que no hay más dios que Alá y atestiguo que Muhammad es Su siervo y mensajero.",
+        "pt": "Creio em Alá, em Seus anjos, em Seus livros, em Seus mensageiros, no Último Dia e no destino, cujo bem e cujo mal vêm de Alá, o Altíssimo; e a ressurreição após a morte é verdade. Testemunho que não há outro deus além de Alá e testemunho que Muhammad é Seu servo e mensageiro.",
+        "hi": "मैं ईमान लाया अल्लाह पर, उसके फ़रिश्तों पर, उसकी किताबों पर, उसके रसूलों पर, आख़िरत के दिन पर और तक़दीर पर कि उसकी भलाई और बुराई अल्लाह तआला की ओर से है; और मौत के बाद दोबारा उठाया जाना हक़ है। मैं गवाही देता हूँ कि अल्लाह के सिवा कोई माबूद नहीं और मैं गवाही देता हूँ कि मुहम्मद उसके बंदे और रसूल हैं।"
       },
       "cat": [
         "faith"
@@ -524,7 +599,10 @@
         "ko": "이프타르 기도문",
         "zh": "开斋祈祷词",
         "fil": "Panalangin sa iftar",
-        "th": "ดุอาอ์ละศีลอด"
+        "th": "ดุอาอ์ละศีลอด",
+        "es": "Súplica del iftar",
+        "pt": "Súplica do iftar",
+        "hi": "इफ़्तार की दुआ"
       },
       "when": {
         "tr": "Orucu açarken",
@@ -541,7 +619,10 @@
         "ko": "단식을 마칠 때",
         "zh": "开斋时",
         "fil": "Sa pagtatapos ng pag-aayuno",
-        "th": "เมื่อละศีลอด"
+        "th": "เมื่อละศีลอด",
+        "es": "Al romper el ayuno",
+        "pt": "Ao quebrar o jejum",
+        "hi": "रोज़ा खोलते समय"
       },
       "ar": "اللَّهُمَّ لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَيْكَ تَوَكَّلْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ",
       "okunus": "Allâhümme leke sumtü ve bike âmentü ve aleyke tevekkeltü ve alâ rızkıke eftartü.",
@@ -559,7 +640,10 @@
         "ko": "알라여, 당신을 위해 단식했고, 당신을 믿으며, 당신께 의지하고, 당신의 양식으로 단식을 마칩니다.",
         "zh": "安拉啊，我为你封斋，我归信你，我依靠你，我用你的给养开斋。",
         "fil": "O Allah, para sa Iyo ako nag-ayuno, sa Iyo ako sumasampalataya, sa Iyo ako umaasa, at sa Iyong biyaya ko tinatapos ang aking pag-aayuno.",
-        "th": "โอ้อัลลอฮ์ เพื่อพระองค์ข้าพเจ้าได้ถือศีลอด ข้าพเจ้าศรัทธาต่อพระองค์ มอบหมายต่อพระองค์ และด้วยปัจจัยยังชีพจากพระองค์ข้าพเจ้าละศีลอด"
+        "th": "โอ้อัลลอฮ์ เพื่อพระองค์ข้าพเจ้าได้ถือศีลอด ข้าพเจ้าศรัทธาต่อพระองค์ มอบหมายต่อพระองค์ และด้วยปัจจัยยังชีพจากพระองค์ข้าพเจ้าละศีลอด",
+        "es": "Oh Alá, por Ti he ayunado, en Ti creo, en Ti confío y con Tu sustento rompo mi ayuno.",
+        "pt": "Ó Alá, por Ti jejuei, em Ti creio, em Ti confio e com o Teu sustento quebro o meu jejum.",
+        "hi": "ऐ अल्लाह, मैंने तेरे लिए रोज़ा रखा, तुझ पर ईमान लाया, तुझ पर भरोसा किया और तेरे दिए रिज़्क़ से रोज़ा खोलता हूँ।"
       },
       "cat": [
         "ramadan"
@@ -582,7 +666,10 @@
         "ko": "샤하다",
         "zh": "清真言（作证言）",
         "fil": "Shahada",
-        "th": "ชะฮาดะฮ์"
+        "th": "ชะฮาดะฮ์",
+        "es": "Shahada",
+        "pt": "Shahada",
+        "hi": "कलिमा-ए-शहादत"
       },
       "when": {
         "tr": "İmanın dil ile ikrarı",
@@ -599,7 +686,10 @@
         "ko": "신앙 고백",
         "zh": "以言语表白信仰",
         "fil": "Ang pagpapahayag ng pananampalataya sa pamamagitan ng salita",
-        "th": "การกล่าวปฏิญาณยืนยันศรัทธาด้วยวาจา"
+        "th": "การกล่าวปฏิญาณยืนยันศรัทธาด้วยวาจา",
+        "es": "El testimonio de fe",
+        "pt": "O testemunho de fé",
+        "hi": "ईमान की गवाही"
       },
       "ar": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
       "okunus": "Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve rasûlüh.",
@@ -617,7 +707,10 @@
         "ko": "나는 알라 외에 신이 없음을 증언하며, 무함마드가 그분의 종이요 사도임을 증언합니다.",
         "zh": "我作证除安拉外绝无神灵，我作证穆罕默德是他的仆人和使者。",
         "fil": "Sumasaksi ako na walang diyos maliban kay Allah, at sumasaksi ako na si Muhammad ay Kanyang lingkod at sugo.",
-        "th": "ข้าพเจ้าขอปฏิญาณว่าไม่มีพระเจ้าอื่นใดนอกจากอัลลอฮ์ และข้าพเจ้าขอปฏิญาณว่ามุฮัมมัดเป็นบ่าวและศาสนทูตของพระองค์"
+        "th": "ข้าพเจ้าขอปฏิญาณว่าไม่มีพระเจ้าอื่นใดนอกจากอัลลอฮ์ และข้าพเจ้าขอปฏิญาณว่ามุฮัมมัดเป็นบ่าวและศาสนทูตของพระองค์",
+        "es": "Atestiguo que no hay más dios que Alá y atestiguo que Muhammad es Su siervo y mensajero.",
+        "pt": "Testemunho que não há outro deus além de Alá e testemunho que Muhammad é Seu servo e mensageiro.",
+        "hi": "मैं गवाही देता हूँ कि अल्लाह के सिवा कोई माबूद नहीं और मैं गवाही देता हूँ कि मुहम्मद उसके बंदे और रसूल हैं।"
       },
       "cat": [
         "faith"
@@ -640,7 +733,10 @@
         "ko": "랍비 지드니 일마",
         "zh": "主啊，求你增加我的知识",
         "fil": "Rabbi zidni ilma",
-        "th": "ร็อบบี ซิดนี อิลมา"
+        "th": "ร็อบบี ซิดนี อิลมา",
+        "es": "Rabbi zidni ilma",
+        "pt": "Rabbi zidni ilma",
+        "hi": "रब्बि ज़िदनी इल्मा"
       },
       "when": {
         "tr": "Tâhâ 114",
@@ -657,7 +753,10 @@
         "ko": "꾸란 20:114",
         "zh": "古兰经20:114",
         "fil": "Quran 20:114",
-        "th": "อัลกุรอาน 20:114"
+        "th": "อัลกุรอาน 20:114",
+        "es": "Corán 20:114",
+        "pt": "Alcorão 20:114",
+        "hi": "क़ुरआन 20:114"
       },
       "quran": [
         [
@@ -688,7 +787,10 @@
         "ko": "부모님을 위한 기도",
         "zh": "为父母祈祷",
         "fil": "Panalangin para sa magulang",
-        "th": "ดุอาอ์ให้พ่อแม่"
+        "th": "ดุอาอ์ให้พ่อแม่",
+        "es": "Súplica por los padres",
+        "pt": "Súplica pelos pais",
+        "hi": "माँ-बाप के लिए दुआ"
       },
       "when": {
         "tr": "İsrâ 24",
@@ -705,7 +807,10 @@
         "ko": "꾸란 17:24",
         "zh": "古兰经17:24",
         "fil": "Quran 17:24",
-        "th": "อัลกุรอาน 17:24"
+        "th": "อัลกุรอาน 17:24",
+        "es": "Corán 17:24",
+        "pt": "Alcorão 17:24",
+        "hi": "क़ुरआन 17:24"
       },
       "quran": [
         [
@@ -736,7 +841,10 @@
         "ko": "배우자와 자녀를 위한 기도",
         "zh": "为配偶和子女祈祷",
         "fil": "Panalangin para sa asawa at mga anak",
-        "th": "ดุอาอ์ให้คู่ครองและลูกหลาน"
+        "th": "ดุอาอ์ให้คู่ครองและลูกหลาน",
+        "es": "Súplica por el cónyuge y los hijos",
+        "pt": "Súplica pelo cônjuge e pelos filhos",
+        "hi": "जीवनसाथी और बच्चों के लिए दुआ"
       },
       "when": {
         "tr": "Furkân 74",
@@ -753,7 +861,10 @@
         "ko": "꾸란 25:74",
         "zh": "古兰经25:74",
         "fil": "Quran 25:74",
-        "th": "อัลกุรอาน 25:74"
+        "th": "อัลกุรอาน 25:74",
+        "es": "Corán 25:74",
+        "pt": "Alcorão 25:74",
+        "hi": "क़ुरआन 25:74"
       },
       "quran": [
         [
@@ -784,7 +895,10 @@
         "ko": "무사의 기도(쉬움)",
         "zh": "穆萨的祈祷（求容易）",
         "fil": "Panalangin ni Moises para sa kaginhawaan",
-        "th": "ดุอาอ์ของนบีมูซา (ขอความง่ายดาย)"
+        "th": "ดุอาอ์ของนบีมูซา (ขอความง่ายดาย)",
+        "es": "Súplica de Moisés para la facilidad",
+        "pt": "Súplica de Moisés por facilidade",
+        "hi": "आसानी के लिए मूसा की दुआ"
       },
       "when": {
         "tr": "Tâhâ 25–28",
@@ -801,7 +915,10 @@
         "ko": "꾸란 20:25–28",
         "zh": "古兰经20:25–28",
         "fil": "Quran 20:25–28",
-        "th": "อัลกุรอาน 20:25–28"
+        "th": "อัลกุรอาน 20:25–28",
+        "es": "Corán 20:25–28",
+        "pt": "Alcorão 20:25–28",
+        "hi": "क़ुरआन 20:25–28"
       },
       "quran": [
         [
@@ -844,7 +961,10 @@
         "ko": "아담의 회개 기도",
         "zh": "阿丹的忏悔祈祷",
         "fil": "Panalangin ng pagsisisi ni Adan",
-        "th": "ดุอาอ์ขอลุแก่โทษของนบีอาดัม"
+        "th": "ดุอาอ์ขอลุแก่โทษของนบีอาดัม",
+        "es": "Súplica de arrepentimiento de Adán",
+        "pt": "Súplica de arrependimento de Adão",
+        "hi": "आदम की तौबा की दुआ"
       },
       "when": {
         "tr": "A'râf 23",
@@ -861,7 +981,10 @@
         "ko": "꾸란 7:23",
         "zh": "古兰经7:23",
         "fil": "Quran 7:23",
-        "th": "อัลกุรอาน 7:23"
+        "th": "อัลกุรอาน 7:23",
+        "es": "Corán 7:23",
+        "pt": "Alcorão 7:23",
+        "hi": "क़ुरआन 7:23"
       },
       "quran": [
         [
@@ -892,7 +1015,10 @@
         "ko": "유누스의 기도",
         "zh": "优努斯的祈祷",
         "fil": "Panalangin ni Jonas",
-        "th": "ดุอาอ์ของนบียูนุส"
+        "th": "ดุอาอ์ของนบียูนุส",
+        "es": "Súplica de Jonás",
+        "pt": "Súplica de Jonas",
+        "hi": "यूनुस की दुआ"
       },
       "when": {
         "tr": "Enbiyâ 87",
@@ -909,7 +1035,10 @@
         "ko": "꾸란 21:87",
         "zh": "古兰经21:87",
         "fil": "Quran 21:87",
-        "th": "อัลกุรอาน 21:87"
+        "th": "อัลกุรอาน 21:87",
+        "es": "Corán 21:87",
+        "pt": "Alcorão 21:87",
+        "hi": "क़ुरआन 21:87"
       },
       "quran": [
         [
@@ -940,7 +1069,10 @@
         "ko": "마음의 굳건함을 위한 기도",
         "zh": "求心坚定的祈祷",
         "fil": "Panalangin para sa matatag na puso",
-        "th": "ดุอาอ์ขอให้หัวใจมั่นคง"
+        "th": "ดุอาอ์ขอให้หัวใจมั่นคง",
+        "es": "Súplica por la firmeza del corazón",
+        "pt": "Súplica pela firmeza do coração",
+        "hi": "दिलों की मज़बूती के लिए दुआ"
       },
       "when": {
         "tr": "Âl-i İmrân 8",
@@ -957,7 +1089,10 @@
         "ko": "꾸란 3:8",
         "zh": "古兰经3:8",
         "fil": "Quran 3:8",
-        "th": "อัลกุรอาน 3:8"
+        "th": "อัลกุรอาน 3:8",
+        "es": "Corán 3:8",
+        "pt": "Alcorão 3:8",
+        "hi": "क़ुरआन 3:8"
       },
       "quran": [
         [
@@ -988,7 +1123,10 @@
         "ko": "인내를 위한 기도",
         "zh": "求忍耐的祈祷",
         "fil": "Panalangin para sa pagtitiis",
-        "th": "ดุอาอ์ขอความอดทน"
+        "th": "ดุอาอ์ขอความอดทน",
+        "es": "Súplica por la paciencia",
+        "pt": "Súplica por paciência",
+        "hi": "सब्र के लिए दुआ"
       },
       "when": {
         "tr": "Bakara 250",
@@ -1005,7 +1143,10 @@
         "ko": "꾸란 2:250",
         "zh": "古兰经2:250",
         "fil": "Quran 2:250",
-        "th": "อัลกุรอาน 2:250"
+        "th": "อัลกุรอาน 2:250",
+        "es": "Corán 2:250",
+        "pt": "Alcorão 2:250",
+        "hi": "क़ुरआन 2:250"
       },
       "quran": [
         [
@@ -1036,7 +1177,10 @@
         "ko": "용서와 자비를 구하는 기도",
         "zh": "求恕饶与慈悯的祈祷",
         "fil": "Panalangin para sa kapatawaran at awa",
-        "th": "ดุอาอ์ขออภัยโทษและความเมตตา"
+        "th": "ดุอาอ์ขออภัยโทษและความเมตตา",
+        "es": "Súplica por el perdón y la misericordia",
+        "pt": "Súplica por perdão e misericórdia",
+        "hi": "माफ़ी और रहमत के लिए दुआ"
       },
       "when": {
         "tr": "Mü'minûn 118",
@@ -1053,7 +1197,10 @@
         "ko": "꾸란 23:118",
         "zh": "古兰经23:118",
         "fil": "Quran 23:118",
-        "th": "อัลกุรอาน 23:118"
+        "th": "อัลกุรอาน 23:118",
+        "es": "Corán 23:118",
+        "pt": "Alcorão 23:118",
+        "hi": "क़ुरआन 23:118"
       },
       "quran": [
         [
@@ -1084,7 +1231,10 @@
         "ko": "받아들여 주시기를 구하는 기도(이브라힘)",
         "zh": "求接受的祈祷（易卜拉欣）",
         "fil": "Panalangin para sa pagtanggap (Abraham)",
-        "th": "ดุอาอ์ขอการตอบรับ (นบีอิบรอฮีม)"
+        "th": "ดุอาอ์ขอการตอบรับ (นบีอิบรอฮีม)",
+        "es": "Súplica de aceptación (Abraham)",
+        "pt": "Súplica de aceitação (Abraão)",
+        "hi": "क़बूलियत की दुआ (इब्राहीम)"
       },
       "when": {
         "tr": "Bakara 127",
@@ -1101,7 +1251,10 @@
         "ko": "꾸란 2:127",
         "zh": "古兰经2:127",
         "fil": "Quran 2:127",
-        "th": "อัลกุรอาน 2:127"
+        "th": "อัลกุรอาน 2:127",
+        "es": "Corán 2:127",
+        "pt": "Alcorão 2:127",
+        "hi": "क़ुरआन 2:127"
       },
       "quran": [
         [
@@ -1132,7 +1285,10 @@
         "ko": "바까라 장의 마지막 기도",
         "zh": "黄牛章结尾祈祷",
         "fil": "Pangwakas na panalangin ng al-Baqarah",
-        "th": "ดุอาอ์ท้ายซูเราะฮ์อัลบะเกาะเราะฮ์"
+        "th": "ดุอาอ์ท้ายซูเราะฮ์อัลบะเกาะเราะฮ์",
+        "es": "Súplica final de al-Baqara",
+        "pt": "Súplica final de al-Baqara",
+        "hi": "सूरह बक़रह की आख़िरी दुआ"
       },
       "when": {
         "tr": "Bakara 286",
@@ -1149,7 +1305,10 @@
         "ko": "꾸란 2:286",
         "zh": "古兰经2:286",
         "fil": "Quran 2:286",
-        "th": "อัลกุรอาน 2:286"
+        "th": "อัลกุรอาน 2:286",
+        "es": "Corán 2:286",
+        "pt": "Alcorão 2:286",
+        "hi": "क़ुरआन 2:286"
       },
       "quran": [
         [

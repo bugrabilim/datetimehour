@@ -332,6 +332,9 @@ object Speaker {
         "zh" -> Locale.SIMPLIFIED_CHINESE
         "fil" -> Locale.forLanguageTag("fil-PH")
         "th" -> Locale.forLanguageTag("th-TH")
+        "es" -> Locale.forLanguageTag("es-ES")
+        "pt" -> Locale.forLanguageTag("pt-BR")
+        "hi" -> Locale.forLanguageTag("hi-IN")
         else -> Locale.forLanguageTag("tr-TR")
     }
 

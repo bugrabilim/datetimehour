@@ -640,7 +640,7 @@
     "pages": "Mga pahina",
     "cities": "Mga pahina ng lungsod",
     "about": "Tungkol sa site",
-    "aboutText": "Naka-sync ang oras sa orasan ng server ng site (hiwalay sa orasan ng device); binabasa ang time zone mula sa browser at walang personal na datos na ipinapadala. Available sa 15 wika: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French, Russian, Japanese, Korean, Chinese, Filipino at Thai. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+    "aboutText": "Naka-sync ang oras sa orasan ng server ng site (hiwalay sa orasan ng device); binabasa ang time zone mula sa browser at walang personal na datos na ipinapadala. Available sa 18 wika: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French, Russian, Japanese, Korean, Chinese, Filipino, Thai, Spanish, Portuguese at Hindi. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Mga istilo ng orasan",

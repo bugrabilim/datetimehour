@@ -108,7 +108,7 @@ object AppData {
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
-            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th").associateWith { o.optString(it) })
+            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi").associateWith { o.optString(it) })
         }
 
         val dj = JSONObject(read("districts.json"))

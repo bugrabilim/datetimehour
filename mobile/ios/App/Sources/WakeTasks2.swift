@@ -80,7 +80,8 @@ final class OnDeviceListener: ObservableObject {
     private var task: SFSpeechRecognitionTask?
     private static let regions = ["tr": "tr-TR", "en": "en-US", "de": "de-DE", "az": "az-AZ", "ar": "ar-SA", "id": "id-ID",
                                   "ur": "ur-PK", "fa": "fa-IR", "fr": "fr-FR", "ru": "ru-RU", "ja": "ja-JP", "ko": "ko-KR",
-                                  "zh": "zh-CN", "fil": "fil-PH", "th": "th-TH"]
+                                  "zh": "zh-CN", "fil": "fil-PH", "th": "th-TH",
+                                  "es": "es-ES", "pt": "pt-BR", "hi": "hi-IN"]
     private var recognizer: SFSpeechRecognizer? {
         SFSpeechRecognizer(locale: Locale(identifier: Self.regions[AppLocale.code] ?? AppLocale.code))
     }

@@ -23,7 +23,7 @@ object Strings {
     }
 
     /** Uygulamanın dilleri (gen-strings.mjs ile aynı); sağdan sola yazılanlar */
-    val LANGS = listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th")
+    val LANGS = listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi")
     val RTL = listOf("ar", "ur", "fa")
 
     /** Uygulamanın dili; desteklenmeyen dilde Türkçe metinler gösterilir. Java eski Endonezce ("in") ve Tagalog ("tl")
@@ -34,14 +34,14 @@ object Strings {
             return if (l in LANGS) l else "tr"
         }
 
-    val locale: Locale get() = Locale.forLanguageTag(if (lang == "zh") "zh-CN" else lang)
+    val locale: Locale get() = Locale.forLanguageTag(when (lang) { "zh" -> "zh-CN"; "pt" -> "pt-BR"; else -> lang })
     val isRtl: Boolean get() = lang in RTL
 
     /** Sayılar her dilde Latin rakamıyla: sağdan sola dillerde (Arapça/Farsça rakam vermesin diye) ABD biçimi */
     val numberLocale: Locale get() = if (isRtl) Locale.US else locale
 
     /** Ondalık ayırıcı: İngilizce, Doğu ve Güneydoğu Asya dillerinde ve sağdan sola dillerde nokta, diğerlerinde virgül */
-    val decimalPoint: String get() = if (lang in listOf("en", "ja", "ko", "zh", "fil", "th") || isRtl) "." else ","
+    val decimalPoint: String get() = if (lang in listOf("en", "ja", "ko", "zh", "fil", "th", "hi") || isRtl) "." else ","
 
     @SuppressLint("DiscouragedApi")
     fun id(key: String): Int = cache.getOrPut(key) {

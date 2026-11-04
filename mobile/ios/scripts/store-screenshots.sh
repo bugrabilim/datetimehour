@@ -32,7 +32,7 @@ shoot() { # dil bölge klasör dosya bekleme [ek uygulama argümanları]
 }
 # App Store dilleri: "uygulama dili, bölge, fastlane klasörü" (App Store'da Azerice, Farsça ve Filipince yok; Urduca fastlane
 # listesinde yoksa deliver hata verir, yayından önce bakılır)
-STORE_LANGS="tr:tr_TR:tr en:en_US:en-US de:de_DE:de-DE ar:ar_SA:ar-SA fr:fr_FR:fr-FR ru:ru_RU:ru id:id_ID:id ja:ja_JP:ja ko:ko_KR:ko zh-Hans:zh_CN:zh-Hans th:th_TH:th"
+STORE_LANGS="tr:tr_TR:tr en:en_US:en-US de:de_DE:de-DE ar:ar_SA:ar-SA fr:fr_FR:fr-FR ru:ru_RU:ru id:id_ID:id ja:ja_JP:ja ko:ko_KR:ko zh-Hans:zh_CN:zh-Hans th:th_TH:th es:es_ES:es-ES pt:pt_BR:pt-BR hi:hi_IN:hi"
 ITEMS="-date,week,next,prayers,-upcoming,-world,-weather,-sun,-globe"
 for L in $STORE_LANGS; do
   set -- ${L//:/ }

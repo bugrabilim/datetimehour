@@ -1,0 +1,34 @@
+Hora y Fecha reúne el reloj, la fecha, los horarios de oración, el calendario y el tiempo en una app sencilla. Sin cuenta, sin anuncios, sin rastreo.
+
+RELOJ
+• 19 esferas de nuestro sitio web: analógicas, digitales, lado a lado, con calendario y el tiempo
+• Reloj a pantalla completa que mantiene la pantalla encendida
+• Elija qué aparece bajo el reloj: próxima oración, horarios de hoy, próximo día especial, relojes mundiales, el tiempo, salida del sol
+
+HORARIOS DE ORACIÓN
+• Horarios diarios y mensuales para las 81 provincias de Turquía o su ubicación actual
+• Avisos a la hora o con antelación, con anuncio hablado
+• Calendario de Ramadán como imagen para compartir
+
+CALENDARIO
+• Festivos, medias jornadas, días religiosos y especiales y vacaciones escolares en Turquía
+• Los calendarios de su teléfono (iCloud, Google, Outlook) en la misma pantalla
+• Añada y elimine eventos; añada días especiales a su calendario
+
+EL TIEMPO
+• Previsión actual, por horas y de 7 días de Apple Weather
+
+HERRAMIENTAS
+• Alarma (suena incluso en modo silencio), temporizador, cuenta atrás hasta una fecha
+• Cronómetro, pomodoro, calculadora de fechas (incluidos días laborables)
+• Relojes mundiales con un globo giratorio
+• Estaciones, equinoccios y solsticios, fases de la Luna
+
+WIDGETS
+• Próxima oración, horarios de hoy, reloj analógico y digital, hora y fecha; también en la pantalla bloqueada
+
+Disponible en dieciocho idiomas: español, inglés, turco, alemán, azerbaiyano, árabe, indonesio, urdu, persa, francés, ruso, japonés, coreano, chino, filipino, tailandés, portugués e hindi.
+
+Su ubicación se usa en el teléfono para calcular los horarios de oración; solo para el tiempo se envía una ubicación aproximada al servicio meteorológico de Apple. Sus calendarios solo se leen si lo permite, y solo en su teléfono.
+
+Hora y Fecha es un producto de Bumba Life. Web: time.bumba.tr

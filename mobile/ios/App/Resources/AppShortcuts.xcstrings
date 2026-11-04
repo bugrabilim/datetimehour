@@ -93,6 +93,24 @@
             "state": "translated",
             "value": "ตัวจับเวลา"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temporizador"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temporizador"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "टाइमर"
+          }
         }
       }
     },
@@ -187,6 +205,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "นาฬิกาปลุก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarma"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarme"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अलार्म"
           }
         }
       }
@@ -283,6 +319,24 @@
             "state": "translated",
             "value": "นาฬิกาเต็มจอ"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reloj a pantalla completa"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relógio em tela cheia"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ुल स्क्रीन घड़ी"
+          }
         }
       }
     },
@@ -377,6 +431,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "ละหมาดถัดไป"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próxima oración"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próxima oração"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अगली नमाज़"
           }
         }
       }
@@ -473,6 +545,24 @@
             "state": "translated",
             "value": "วันที่วันนี้"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fecha de hoy"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data de hoje"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आज की तारीख"
+          }
         }
       }
     },
@@ -567,6 +657,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "เริ่มตัวจับเวลาใน ${applicationName}"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicia un temporizador en ${applicationName}"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iniciar um temporizador no ${applicationName}"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में टाइमर शुरू करो"
           }
         }
       }
@@ -663,6 +771,24 @@
             "state": "translated",
             "value": "ตั้งตัวจับเวลาด้วย ${applicationName}"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pon un temporizador de ${applicationName}"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Criar um temporizador no ${applicationName}"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} का टाइमर लगाओ"
+          }
         }
       }
     },
@@ -757,6 +883,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "ตั้งนาฬิกาปลุกใน ${applicationName}"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pon una alarma en ${applicationName}"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Criar um alarme no ${applicationName}"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में अलार्म लगाओ"
           }
         }
       }
@@ -853,6 +997,24 @@
             "state": "translated",
             "value": "แสดงนาฬิกาใน ${applicationName}"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Muestra el reloj en ${applicationName}"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar o relógio no ${applicationName}"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में घड़ी दिखाओ"
+          }
         }
       }
     },
@@ -947,6 +1109,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "เปิดนาฬิกาเต็มจอใน ${applicationName}"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abre el reloj a pantalla completa en ${applicationName}"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir o relógio em tela cheia no ${applicationName}"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में फ़ुल स्क्रीन घड़ी खोलो"
           }
         }
       }
@@ -1043,6 +1223,24 @@
             "state": "translated",
             "value": "ละหมาดถัดไปเมื่อไรใน ${applicationName}"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuándo es la próxima oración en ${applicationName}"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando é a próxima oração no ${applicationName}"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में अगली नमाज़ कब है"
+          }
         }
       }
     },
@@ -1137,6 +1335,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "เวลาละหมาดถัดไปใน ${applicationName}"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próxima oración en ${applicationName}"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próxima oração no ${applicationName}"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में अगली नमाज़ का समय"
           }
         }
       }
@@ -1233,6 +1449,24 @@
             "state": "translated",
             "value": "วันนี้วันที่เท่าไรใน ${applicationName}"
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qué fecha es en ${applicationName}"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que dia é hoje no ${applicationName}"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में आज की तारीख क्या है"
+          }
         }
       }
     },
@@ -1327,6 +1561,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "วันที่ฮิจเราะห์ใน ${applicationName}"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qué fecha de la Hégira es en ${applicationName}"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qual é a data da Hégira no ${applicationName}"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में हिजरी तारीख क्या है"
           }
         }
       }

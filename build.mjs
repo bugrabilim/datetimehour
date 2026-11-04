@@ -19,11 +19,11 @@ const ORIGIN = (process.env.SITE_ORIGIN || cfg.origin).replace(/\/+$/, "");
 const HOST = new URL(ORIGIN).host;
 const UMAMI_ID = process.env.UMAMI_ID ?? cfg.umamiId ?? "";
 /* Diller: tr (varsayılan) ve en zorunlu; diğerleri src/i18n/<dil>.json varsa derlenir. */
-const ALL_LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
+const ALL_LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
 const LANGS = ALL_LANGS.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
 const I = Object.fromEntries(LANGS.map((l) => [l, readJson(`src/i18n/${l}.json`)]));
 const CITIES = readJson("src/data/cities.json");
-const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية", id: "Bahasa Indonesia", ur: "اردو", fa: "فارسی", fr: "Français", ru: "Русский", ja: "日本語", ko: "한국어", zh: "简体中文", fil: "Filipino", th: "ไทย" };
+const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية", id: "Bahasa Indonesia", ur: "اردو", fa: "فارسی", fr: "Français", ru: "Русский", ja: "日本語", ko: "한국어", zh: "简体中文", fil: "Filipino", th: "ไทย", es: "Español", pt: "Português", hi: "हिन्दी" };
 /* Ortak liste servisinin bildiği diller (bumbagroup.com/api/liste/katil); servis yeni dil eklediğinde buraya yaz */
 const LIST_LANGS = ["tr", "en"];
 /* Sağdan sola yazılan diller */
@@ -774,7 +774,7 @@ function buildCity(lang, c) {
       <div class="fact"><dt>${esc(ct.liveOffset)}</dt><dd data-live="offset" data-tz="${c.tz}">UTC</dd></div>
       <div class="fact"><dt>${esc(ct.liveDiff)}</dt><dd data-live="diff" data-tz="${c.tz}">&nbsp;</dd></div>
       ${["sunrise", "sunset", "daylen", "solarnoon"].map((k) => `<div class="fact"><dt>${esc(ct[k === "solarnoon" ? "solarNoon" : k])}</dt><dd data-live="${k}" data-tz="${c.tz}" data-lat="${c.lat}" data-lon="${c.lon}">–</dd></div>`).join("")}
-      ${CITY_POP[c.key] ? `<div class="fact"><dt>${esc(ct.population)}</dt><dd>${esc(new Intl.NumberFormat(lang === "fil" ? "fil" : lang === "zh" ? "zh-CN" : lang, { notation: "compact", maximumFractionDigits: 1, numberingSystem: "latn" }).format(CITY_POP[c.key]))}</dd></div>` : ""}
+      ${CITY_POP[c.key] ? `<div class="fact"><dt>${esc(ct.population)}</dt><dd>${esc(new Intl.NumberFormat(lang === "fil" ? "fil" : lang === "zh" ? "zh-CN" : lang === "pt" ? "pt-BR" : lang, { notation: "compact", maximumFractionDigits: 1, numberingSystem: "latn" }).format(CITY_POP[c.key]))}</dd></div>` : ""}
     </dl>
     <p class="meta"><span data-live="solaroff" data-tz="${c.tz}" data-lon="${c.lon}" data-ahead="${esc(ct.solarAhead)}" data-behind="${esc(ct.solarBehind)}" data-same="${esc(ct.solarSame)}"></span> ${esc(ct.sunNote)}</p>
     <p class="meta"><a href="https://www.openstreetmap.org/?mlat=${c.lat}&amp;mlon=${c.lon}#map=11/${c.lat}/${c.lon}" target="_blank" rel="noopener">${esc(ct.mapLink)}</a>${CITY_POP[c.key] ? ` · ${esc(ct.populationNote)}` : ""}</p>
@@ -1947,7 +1947,7 @@ const PROVINCES = readJson("src/data/provinces.json");
 const PRAYER_KEYS = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
 /* İl adı: Latin dışı yazılı dillerde kendi yazısıyla (provinces.json ar/ru/fa/ja/ko/zh/th); Türkçe ve Azericede Türkçe
    yazımla; diğerlerinde İ → I */
-const NATIVE_PROV = ["ar", "ru", "fa", "ja", "ko", "zh", "th"];
+const NATIVE_PROV = ["ar", "ru", "fa", "ja", "ko", "zh", "th", "hi"];
 const provName = (lang, p) => (p[lang] && NATIVE_PROV.includes(lang) ? p[lang] : lang === "tr" || lang === "az" ? p.name : p.name.replace(/İ/g, "I"));
 const prayerPath = (lang, p) => `${ROUTES[lang].prayer}${p.slug}/`;
 
@@ -2281,7 +2281,7 @@ function buildUnix(lang) {
 const WHOL = readJson("src/data/world-holidays.json");
 const HOLNAMES = readJson("src/data/holiday-names.json").names;
 const WCC = Object.keys(WHOL.countries);
-const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"] };
+const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"], es: ["ES"], pt: ["PT", "BR"] };
 const holName = (lang, cc, h) => {
   const main = lang === "en" ? h.n : (NATIVE_CC[lang] || []).includes(cc) && h.l !== h.n ? h.l : (HOLNAMES[h.n] && HOLNAMES[h.n][lang]) || h.n;
   return { main, local: h.l && h.l !== main && h.l !== h.n ? h.l : "" };

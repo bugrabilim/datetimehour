@@ -20,6 +20,8 @@ enum AppLanguage {
         .init(code: "ja", flag: "🇯🇵", native: "日本語"), .init(code: "ko", flag: "🇰🇷", native: "한국어"),
         .init(code: "zh", flag: "🇨🇳", native: "简体中文"), .init(code: "fil", flag: "🇵🇭", native: "Filipino"),
         .init(code: "th", flag: "🇹🇭", native: "ไทย"),
+        .init(code: "es", flag: "🇪🇸", native: "Español"), .init(code: "pt", flag: "🇧🇷", native: "Português"),
+        .init(code: "hi", flag: "🇮🇳", native: "हिन्दी"),
     ]
 
     static func set(_ code: String) {
