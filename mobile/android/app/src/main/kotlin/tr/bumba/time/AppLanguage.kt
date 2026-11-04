@@ -125,8 +125,8 @@ fun LanguageSettingsRow(onClick: () -> Unit) {
     val name = AppLanguage.ALL.firstOrNull { it.code == code }?.let { "${it.flag}  ${it.native}" } ?: L("lang.system")
     AppCard(padding = 4) {
         Row(Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 14.dp), verticalAlignment = Alignment.CenterVertically) {
-            Icon(Icons.Filled.Language, null, tint = Theme.c.accent)
-            Spacer(Modifier.width(14.dp))
+            IconBox(Icons.Filled.Language)
+            Spacer(Modifier.width(12.dp))
             Text(L("lang.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
             Text(name, color = Theme.c.muted, fontSize = 14.sp)
         }
