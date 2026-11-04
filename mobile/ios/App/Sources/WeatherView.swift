@@ -283,11 +283,10 @@ struct WeatherView: View {
         .card()
     }
 
+    /// Gerçekçi 3D hava simgesi (4 Kasım 2026, sahibin seçimi)
     private func icon(_ name: String, size: CGFloat) -> some View {
-        Image(systemName: name)
-            .symbolRenderingMode(.multicolor)
-            .font(.system(size: size))
-            .frame(height: size * 1.1)
+        WeatherIcon3D(symbol: name, size: size * 1.25)
+            .frame(height: size * 1.25)
     }
 
     private func temp(_ t: Measurement<UnitTemperature>) -> String {

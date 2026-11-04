@@ -610,14 +610,11 @@ private final class PlaceLabelView: MKAnnotationView {
         text.append(NSAttributedString(string: Fmt.time(date, tz: item.zone),
                                        attributes: [.font: UIFont.monospacedDigitSystemFont(ofSize: big ? 13 : 11, weight: .bold),
                                                     .foregroundColor: UIColor.white, .paragraphStyle: p]))
-        // Saatin hemen yanında hava simgesi (bulut, güneş…) ve derece. Simge beyaza boyanmış sabit görüntüdür:
-        // şablon ve palet simgeler etikette siyah çiziliyor, koyu zeminde görünmüyordu (TestFlight geri bildirimi).
+        // Saatin hemen yanında gerçekçi 3D hava simgesi (bulut, güneş…; 4 Kasım 2026) ve derece
         if big, let w = GlobeWeather.shared.cached(item.key), Date().timeIntervalSince(w.at) < 6 * 3600 {
-            let config = UIImage.SymbolConfiguration(pointSize: 11, weight: .semibold)
-            if let img = UIImage(systemName: w.symbol, withConfiguration: config)?
-                .withTintColor(.white, renderingMode: .alwaysOriginal) {
+            if let img = UIImage(named: "e3d-" + Icons3D.weather(symbol: w.symbol)) {
                 let att = NSTextAttachment(image: img)
-                att.bounds = CGRect(x: 0, y: -2, width: img.size.width, height: img.size.height)
+                att.bounds = CGRect(x: 0, y: -4, width: 16, height: 16)
                 text.append(NSAttributedString(string: " "))
                 text.append(NSAttributedString(attachment: att))
             }

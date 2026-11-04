@@ -2842,5 +2842,7 @@
     <string name="live_weather_control">الطقس على شاشة القفل</string>
     <string name="live_weather_toggleAndroid">عرض في شريط الحالة وعلى شاشة القفل</string>
     <string name="live_weather_noteAndroid">تظهر درجة الحرارة في شريط الحالة وعلى شاشة القفل؛ أوقفها بزر الإغلاق في الإشعار أو من الإعدادات السريعة أو من هنا. تتجدد كل ساعة.</string>
+    <string name="about_credits">الرموز: Microsoft Fluent Emoji (رخصة MIT). الخطوط: Literata وAmiri (رخصة SIL Open Font License).</string>
+    <string name="about_license">نص رخصة الرموز</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

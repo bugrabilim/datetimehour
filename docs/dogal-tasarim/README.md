@@ -78,6 +78,8 @@ Saat Tarih zamanı gösterir. Zaman doğada ışıktır: şafak, öğle, ikindi,
 - **Uzun açıklama kuralı:** listede en çok 2 satırlık not, 14 pt, soluk renk. Fazlası "Nasıl çalışır?" alt sayfasına.
 
 ### İlke 5. Kendi çizgimiz: simge ve küçük resim
+
+> **Sahibin kararıyla değişti (4 Kasım 2026):** "Ben çizgi simge istemiyorum. İnsancıl, kullanıcı dostu ve göze hoş gelen tasarım istiyorum; bulut varsa gerçekçi bir bulut olsun." Örnek sayfasından seçim: hava ve uygulama simgeleri **gerçekçi 3D** (Microsoft Fluent Emoji 3D, MIT; `mobile/shared/icons3d/`). Aşağıdaki çizgi simge önerisi uygulanmadı; yalnız tarihsel kayıt.
 - **Simgeler:** mevcut `icons.json` çizgi simge takımı 24'ten yaklaşık **64**'e çıkar ve bütün arayüzde Material/SF simgelerinin yerini alır.
   - Kapsam: alt çubuk, Tümü, vakitler, ayarlar, araç düğmeleri.
   - Kurallar: 24×24 alan, **1,75** çizgi, yuvarlak uç ve birleşim, açık biçimler. Tek bir ayrıntı ikinci renkte (altın). Dolgu yalnız küçük noktalarda.

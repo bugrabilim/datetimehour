@@ -178,17 +178,19 @@ object AllPrefs {
         AllEntry("badges", "badges.h1", Icons.Filled.MilitaryTech, AllCat.MORE, null, route = "badges"),
     )
 
-    /** Girişin çizgi simgesi (aynı Material simgesini paylaşan girişler ayrışsın diye kimliğe göre) */
+    /** Girişin 3D simgesi (4 Kasım 2026; her giriş ayrı nesne, aynı Material simgesini paylaşanlar da ayrışır) */
     fun line(id: String): String? = mapOf(
-        "alarm" to "alarm", "timer" to "hourglass", "stopwatch" to "stopwatch", "pomodoro" to "tomato", "study" to "book",
-        "sleep" to "bed", "wakeGame" to "chick", "breath" to "wind", "chess" to "knight", "metronome" to "metronome",
-        "talking" to "speaker", "exam" to "paper", "classroom" to "people", "timecalc" to "calc", "calendar" to "calendar",
-        "leaf" to "leafcal", "datecalc" to "calc", "planner" to "people", "journal" to "sunrise", "bridge" to "bridge",
-        "retire" to "beach", "weather" to "sun", "world" to "globe", "seasons" to "leaf", "moon" to "moon", "sky" to "star",
-        "sunpath" to "sunset", "zodiac" to "star", "prayer" to "mosque", "qibla" to "compass", "quran" to "book",
-        "zikir" to "beads", "track" to "checklist", "duas" to "hands", "esma" to "star", "hadith" to "book", "guide" to "mosque",
-        "reldays" to "calendar", "greet" to "heart", "zakat" to "coin", "settings" to "gear", "badges" to "star",
-    )[id.removePrefix("s:")]?.takeIf { LineIcons.get(it).isNotEmpty() }
+        "alarm" to "alarm", "timer" to "hourglass", "stopwatch" to "stopwatch", "pomodoro" to "tomato",
+        "study" to "books", "sleep" to "bed", "wakeGame" to "chick", "breath" to "wind", "chess" to "knight",
+        "metronome" to "metronome", "talking" to "speaker", "exam" to "paper", "classroom" to "school",
+        "timecalc" to "calc", "calendar" to "calendar", "leaf" to "leafcal", "datecalc" to "date",
+        "planner" to "people", "journal" to "notebook", "bridge" to "bridge", "retire" to "beach",
+        "weather" to "sun_cloud", "world" to "globe", "seasons" to "leaf", "moon" to "moon", "sky" to "telescope",
+        "sunpath" to "sunset", "zodiac" to "milkyway", "prayer" to "mosque", "qibla" to "compass", "quran" to "book",
+        "zikir" to "beads", "track" to "checklist", "duas" to "hands", "esma" to "sparkles", "hadith" to "scroll",
+        "guide" to "kaaba", "reldays" to "star_crescent", "greet" to "love_letter", "zakat" to "coin",
+        "settings" to "gear", "badges" to "medal",
+    )[id.removePrefix("s:")]?.takeIf { Icons3D.res(it) != 0 || LineIcons.get(it).isNotEmpty() }
 
     /** Aramada ayar sayfaları da çıkar (Ayarlar'ın alt sayfaları) */
     val settings: List<AllEntry> = listOf(

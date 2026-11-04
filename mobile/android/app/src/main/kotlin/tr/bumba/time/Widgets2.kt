@@ -252,7 +252,7 @@ class WeatherWidget : BaseWidget() {
             v.setTextViewText(R.id.cond, code.label)
             v.setTextViewText(R.id.range, w.today?.let { "↑${Units.temp(it.max)} ↓${Units.temp(it.min)}" } ?: "")
         } else {
-            v.setImageViewResource(R.id.icon, R.drawable.wi_cloud)
+            v.setImageViewResource(R.id.icon, R.drawable.e3d_sun_cloud)
             v.setTextViewText(R.id.temp, "")
             v.setTextViewText(R.id.cond, L("weather.loading"))
             v.setTextViewText(R.id.range, "")

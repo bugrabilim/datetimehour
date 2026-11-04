@@ -303,8 +303,8 @@ private fun TabBar(tabs: List<Tab>, selected: Tab, onSelect: (Tab) -> Unit) {
                             .background(if (on) Theme.c.accentSoft else Color.Transparent),
                         contentAlignment = Alignment.Center,
                     ) {
-                        // Kendi çizgi simgelerimiz (doğal tasarım madde 4)
-                        LineIcon(LineIconMap.tab(t), 24.dp, c1 = color, c2 = color, label = Features.label(t))
+                        // 3D simgeler (4 Kasım 2026, sahibin seçimi); seçili olmayan sekme gri ve soluk
+                        LineIcon(LineIconMap.tab(t), 26.dp, c1 = color, c2 = color, label = Features.label(t), dim = !on)
                     }
                     Text(
                         Features.label(t), color = color, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,

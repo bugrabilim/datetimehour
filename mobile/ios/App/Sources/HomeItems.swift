@@ -335,9 +335,7 @@ private struct WeatherMiniCard: View {
             if let d = data {
                 let c = d.currentWeather
                 HStack(spacing: 12) {
-                    Image(systemName: c.symbolName)
-                        .symbolRenderingMode(.multicolor)
-                        .font(.system(size: 32))
+                    WeatherIcon3D(symbol: c.symbolName, size: 40)
                     Text(c.condition.description).font(.subheadline).foregroundStyle(Theme.text)
                     Spacer()
                     VStack(alignment: .trailing, spacing: 2) {

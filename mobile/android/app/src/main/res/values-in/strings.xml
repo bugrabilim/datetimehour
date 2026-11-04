@@ -2842,5 +2842,7 @@
     <string name="live_weather_control">Cuaca di Layar Terkunci</string>
     <string name="live_weather_toggleAndroid">Tampilkan di bilah status dan layar kunci</string>
     <string name="live_weather_noteAndroid">Suhu tampil di bilah status dan layar kunci; matikan dengan Tutup di notifikasi, dari Setelan Cepat, atau di sini. Diperbarui tiap jam.</string>
+    <string name="about_credits">Ikon: Microsoft Fluent Emoji (Lisensi MIT). Fon: Literata dan Amiri (SIL Open Font License).</string>
+    <string name="about_license">Teks lisensi ikon</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

@@ -302,10 +302,11 @@ private struct FullscreenArt: View {
 private struct AllArt: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.colorScheme) private var scheme
+    // 3D simgeler (4 Kasım 2026, sahibin seçimi)
     private let tiles: [(String, Color)] = [
-        ("alarm", Theme.terra), ("timer", Theme.terra), ("calendar", Theme.sage),
-        ("sun.max", Theme.sky), ("safari", Theme.gold), ("book", Theme.gold),
-        ("globe", Theme.sky), ("moon", Theme.dusk), ("gearshape", Theme.dusk),
+        ("alarm", Theme.terra), ("hourglass", Theme.terra), ("calendar", Theme.sage),
+        ("sun_cloud", Theme.sky), ("compass", Theme.gold), ("book", Theme.gold),
+        ("globe", Theme.sky), ("moon", Theme.dusk), ("gear", Theme.dusk),
     ]
 
     var body: some View {
@@ -359,7 +360,7 @@ private struct AllArt: View {
         RoundedRectangle(cornerRadius: 11)
             .fill(t.1.opacity(scheme == .dark ? 0.22 : 0.14))
             .frame(width: 34, height: 34)
-            .overlay(Image(systemName: t.0).font(.system(size: 15, weight: .medium)).foregroundStyle(t.1))
+            .overlay(Icon3D(name: t.0, size: 22))
             .overlay(RoundedRectangle(cornerRadius: 11).strokeBorder(Theme.accent.opacity(pressed ? k : 0), lineWidth: 1 + 2 * k))
     }
 }

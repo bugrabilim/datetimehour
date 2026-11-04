@@ -321033,6 +321033,232 @@
           }
         }
       }
+    },
+    "about.credits": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simgeler: Microsoft Fluent Emoji (MIT lisansı). Yazı tipleri: Literata ve Amiri (SIL Open Font License)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icons: Microsoft Fluent Emoji (MIT License). Fonts: Literata and Amiri (SIL Open Font License)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Symbole: Microsoft Fluent Emoji (MIT-Lizenz). Schriften: Literata und Amiri (SIL Open Font License)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simvollar: Microsoft Fluent Emoji (MIT lisenziyası). Şriftlər: Literata və Amiri (SIL Open Font License)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الرموز: Microsoft Fluent Emoji (رخصة MIT). الخطوط: Literata وAmiri (رخصة SIL Open Font License)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ikon: Microsoft Fluent Emoji (Lisensi MIT). Fon: Literata dan Amiri (SIL Open Font License)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آئیکن: Microsoft Fluent Emoji (MIT لائسنس)۔ فونٹ: Literata اور Amiri (SIL Open Font License)۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نمادها: Microsoft Fluent Emoji (مجوز MIT). قلم‌ها: Literata و Amiri (SIL Open Font License)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icônes : Microsoft Fluent Emoji (licence MIT). Polices : Literata et Amiri (SIL Open Font License)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Значки: Microsoft Fluent Emoji (лицензия MIT). Шрифты: Literata и Amiri (SIL Open Font License)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アイコン：Microsoft Fluent Emoji（MITライセンス）。フォント：Literata、Amiri（SIL Open Font License）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아이콘: Microsoft Fluent Emoji (MIT 라이선스). 글꼴: Literata, Amiri (SIL Open Font License)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图标：Microsoft Fluent Emoji（MIT 许可证）。字体：Literata 和 Amiri（SIL Open Font License）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga icon: Microsoft Fluent Emoji (MIT License). Mga font: Literata at Amiri (SIL Open Font License)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ไอคอน: Microsoft Fluent Emoji (สัญญาอนุญาต MIT) แบบอักษร: Literata และ Amiri (SIL Open Font License)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iconos: Microsoft Fluent Emoji (licencia MIT). Tipografías: Literata y Amiri (SIL Open Font License)."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ícones: Microsoft Fluent Emoji (licença MIT). Fontes: Literata e Amiri (SIL Open Font License)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आइकन: Microsoft Fluent Emoji (MIT लाइसेंस)। फ़ॉन्ट: Literata और Amiri (SIL Open Font License)।"
+          }
+        }
+      }
+    },
+    "about.license": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simgelerin lisans metni"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icon license text"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lizenztext der Symbole"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simvolların lisenziya mətni"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نص رخصة الرموز"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teks lisensi ikon"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آئیکن کے لائسنس کا متن"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متن مجوز نمادها"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Texte de licence des icônes"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Текст лицензии значков"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アイコンのライセンス本文"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아이콘 라이선스 전문"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图标许可证全文"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teksto ng lisensya ng mga icon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ข้อความสัญญาอนุญาตของไอคอน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Texto de la licencia de los iconos"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Texto da licença dos ícones"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आइकन लाइसेंस का पाठ"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

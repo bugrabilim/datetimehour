@@ -73,14 +73,24 @@ enum LineIcons {
     }
 }
 
-/// Çizgi simge
+/// Uygulamanın simgesi: 3D görsel (Icons3D, 4 Kasım 2026); görseli olmayan ad için eski çizgi çizimi. `c1`/`c2`
+/// yalnız çizgi çizimde kullanılır; `dim`: gri ve soluk.
 struct LineIcon: View {
     let name: String
     var size: CGFloat = 28
     var c1: Color = Theme.accent
     var c2: Color = Theme.accent2
+    var dim = false
 
     var body: some View {
+        if Icons3D.has(name) {
+            Icon3D(name: name, size: size, dim: dim)
+        } else {
+            lines
+        }
+    }
+
+    private var lines: some View {
         Canvas { ctx, sz in
             let k = min(sz.width, sz.height) / 24
             ctx.scaleBy(x: k, y: k)
@@ -109,17 +119,23 @@ enum LineIconMap {
         "pencil.and.list.clipboard": "paper", "person.3": "people", "person.2.wave.2": "people", "clock.badge.questionmark": "calc",
         "calendar": "calendar", "calendar.badge.clock": "calendar", "calendar.badge.exclamationmark": "calendar", "doc.text": "leafcal",
         "sun.horizon": "sunrise", "beach.umbrella": "beach", "cloud.sun": "sun", "sun.max": "sun", "globe.europe.africa": "globe",
-        "globe": "globe", "leaf": "leaf", "moon": "moon", "moon.stars": "night", "sparkles": "star", "rosette": "star", "gift": "heart",
+        "globe": "globe", "leaf": "leaf", "moon": "moon", "moon.stars": "night", "sparkles": "sparkles", "rosette": "medal", "gift": "gift",
         "location.north.line": "compass", "book": "book", "hand.tap": "beads", "checkmark.circle": "checklist", "hands.sparkles": "hands",
         "figure.mind.and.body": "mosque", "percent": "coin", "gearshape": "gear", "bell": "bell", "location": "pin",
         "paintpalette": "palette", "textformat.size": "textsize", "info.circle": "info", "qrcode": "qr", "slider.horizontal.3": "sliders",
         "icloud": "cloud", "square.grid.3x3": "grid", "square.grid.2x2": "grid", "clock": "clock", "magnifyingglass": "search",
         "envelope": "mail", "square.and.arrow.up": "share", "star": "star", "heart": "heart",
         "arrow.up.left.and.arrow.down.right": "fullscreen", "thermometer.medium": "thermometer",
+        // 3D simgelerle eklenenler (4 Kasım 2026)
+        "wand.and.stars": "sparkles", "textformat.123": "numbers", "textformat": "textsize", "sunrise": "sunrise",
+        "stopwatch.fill": "stopwatch", "square.and.pencil": "memo", "ruler": "ruler", "quote.opening": "speech",
+        "quote.bubble": "speech", "moon.haze": "night", "mappin.and.ellipse": "pin", "list.bullet.rectangle": "clipboard",
+        "list.bullet": "clipboard", "gauge": "chart", "doc.on.doc": "paper", "circle.lefthalf.filled": "halfmoon",
+        "cup.and.saucer": "coffee", "party.popper": "party", "lock.iphone": "qr",
     ]
 
     static func of(_ symbol: String) -> String? {
-        guard let n = bySymbol[symbol], LineIcons.all[n] != nil else { return nil }
+        guard let n = bySymbol[symbol], Icons3D.has(n) || LineIcons.all[n] != nil else { return nil }
         return n
     }
 
@@ -127,7 +143,7 @@ enum LineIconMap {
     static func tab(_ t: AppTab) -> String {
         switch t {
         case .clock: "clock"
-        case .weather: "sun"
+        case .weather: "sun_cloud"
         case .calendar: "calendar"
         case .world: "globe"
         case .seasons: "leaf"
@@ -139,17 +155,18 @@ enum LineIconMap {
     /// Tümü girişleri (aynı SF Symbol'ü paylaşan girişler ayrışsın diye kimliğe göre)
     static func entry(_ id: String) -> String? {
         let m: [String: String] = [
-            "alarm": "alarm", "timer": "hourglass", "stopwatch": "stopwatch", "pomodoro": "tomato", "study": "book",
+            "alarm": "alarm", "timer": "hourglass", "stopwatch": "stopwatch", "pomodoro": "tomato", "study": "books",
             "sleep": "bed", "wakeGame": "chick", "breath": "wind", "chess": "knight", "metronome": "metronome",
-            "talking": "speaker", "exam": "paper", "classroom": "people", "timecalc": "calc", "calendar": "calendar",
-            "leaf": "leafcal", "datecalc": "calc", "planner": "people", "journal": "sunrise", "bridge": "bridge",
-            "retire": "beach", "weather": "sun", "world": "globe", "seasons": "leaf", "moon": "moon", "sky": "star",
-            "sunpath": "sunset", "zodiac": "star", "prayer": "mosque", "qibla": "compass", "quran": "book",
-            "zikir": "beads", "track": "checklist", "duas": "hands", "esma": "star", "hadith": "book", "guide": "mosque",
-            "reldays": "calendar", "greet": "heart", "zakat": "coin", "settings": "gear", "badges": "star",
+            "talking": "speaker", "exam": "paper", "classroom": "school", "timecalc": "calc", "calendar": "calendar",
+            "leaf": "leafcal", "datecalc": "date", "planner": "people", "journal": "notebook", "bridge": "bridge",
+            "retire": "beach", "weather": "sun_cloud", "world": "globe", "seasons": "leaf", "moon": "moon",
+            "sky": "telescope", "sunpath": "sunset", "zodiac": "milkyway", "prayer": "mosque", "qibla": "compass",
+            "quran": "book", "zikir": "beads", "track": "checklist", "duas": "hands", "esma": "sparkles",
+            "hadith": "scroll", "guide": "kaaba", "reldays": "star_crescent", "greet": "love_letter", "zakat": "coin",
+            "settings": "gear", "badges": "medal",
         ]
         let key = id.hasPrefix("s:") ? String(id.dropFirst(2)) : id
-        guard let n = m[key], LineIcons.all[n] != nil else { return nil }
+        guard let n = m[key], Icons3D.has(n) || LineIcons.all[n] != nil else { return nil }
         return n
     }
 }

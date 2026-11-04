@@ -314,10 +314,11 @@ private fun FullscreenArt() {
 private fun AllArt() {
     val c = Theme.c
     val k = loopPhase(2800)
+    // 3D simgeler (4 Kasım 2026, sahibin seçimi)
     val tiles = listOf(
-        Icons.Filled.Alarm to c.terra, Icons.Filled.Timer to c.terra, Icons.Filled.CalendarMonth to c.sage,
-        Icons.Filled.WbSunny to c.sky, Icons.Filled.Explore to c.gold, Icons.Filled.MenuBook to c.gold,
-        Icons.Filled.Public to c.sky, Icons.Filled.Bedtime to c.dusk, Icons.Filled.Settings to c.dusk,
+        "alarm" to c.terra, "hourglass" to c.terra, "calendar" to c.sage,
+        "sun_cloud" to c.sky, "compass" to c.gold, "book" to c.gold,
+        "globe" to c.sky, "moon" to c.dusk, "gear" to c.dusk,
     )
     PhoneFrame {
         Column(Modifier.fillMaxSize().padding(start = 10.dp, end = 10.dp, top = 24.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -333,7 +334,7 @@ private fun AllArt() {
                         Modifier.size(34.dp).background(col.copy(alpha = if (c.dark) 0.22f else 0.14f), RoundedCornerShape(11.dp))
                             .then(if (pressed) Modifier.border((1 + 2 * k).dp, c.accent.copy(alpha = k), RoundedCornerShape(11.dp)) else Modifier),
                         contentAlignment = Alignment.Center,
-                    ) { Icon(icon, null, tint = col, modifier = Modifier.size(18.dp)) }
+                    ) { LineIcon(icon, 22.dp) }
                 }
             }
         }

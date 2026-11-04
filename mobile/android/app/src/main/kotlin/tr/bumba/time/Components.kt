@@ -86,8 +86,8 @@ fun EmptyState(
 
 /**
  * Liste satırlarındaki renkli simge kutusu (#99; doğal tasarım madde 4, 4 Kasım 2026): "çakıl taşı" biçimi (köşeler
- * hafif farklı yuvarlak), zemin simge renginin açık tonu, içinde kendi çizgi simgemiz (karşılığı yoksa Material simgesi).
- * [line] verilirse o çizgi simge çizilir.
+ * hafif farklı yuvarlak), zemin simge renginin açık tonu, içinde 3D simge (4 Kasım 2026; karşılığı yoksa Material
+ * simgesi). [line] verilirse o simge çizilir.
  */
 @Composable
 fun IconBox(icon: ImageVector, tint: Color = Theme.c.accent, modifier: Modifier = Modifier, line: String? = null) {
@@ -96,7 +96,7 @@ fun IconBox(icon: ImageVector, tint: Color = Theme.c.accent, modifier: Modifier 
         modifier.size(36.dp).clip(PebbleShape).background(tint.copy(alpha = if (Theme.c.dark) 0.20f else 0.13f)),
         contentAlignment = Alignment.Center,
     ) {
-        if (name != null) LineIcon(name, 21.dp, c1 = tint, c2 = tint.copy(alpha = 0.72f))
+        if (name != null) LineIcon(name, 25.dp, c1 = tint, c2 = tint.copy(alpha = 0.72f))
         else Icon(icon, null, tint = tint, modifier = Modifier.size(20.dp))
     }
 }

@@ -391,6 +391,10 @@ fun AboutScreen() {
             Text(L("settings.privacyNoteAndroid"), color = Theme.c.text, fontSize = 14.sp)
             Text(L("privacy.full"), Modifier.clickable { open(privacyUrl()) }, color = Theme.c.accent)
         }
+        // Açık lisanslı parçalar (3D simgeler MIT, yazı tipleri OFL; 4 Kasım 2026)
+        Text(L("about.credits"), color = Theme.c.muted, fontSize = 12.sp)
+        Text(L("about.license"), Modifier.clickable { open("https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE") },
+            color = Theme.c.accent, fontSize = 12.sp)
     }
 }
 

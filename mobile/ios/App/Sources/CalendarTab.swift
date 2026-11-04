@@ -590,7 +590,7 @@ private struct DayWeatherRow: View {
         Group {
             if let text {
                 HStack(spacing: 8) {
-                    if let symbol { Image(systemName: symbol).symbolRenderingMode(.multicolor) }
+                    if let symbol { WeatherIcon3D(symbol: symbol, size: 24) }
                     Text(T("cal.weather", text)).foregroundStyle(Theme.text)
                     Spacer()
                     AppleWeatherMark(compact: true)

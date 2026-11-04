@@ -470,9 +470,9 @@ private struct TabBar: View {
                 } label: {
                     VStack(spacing: 3) {
                         // Seçili sekmede simgenin arkasında ana rengin açık tonunda hap (sitedeki .nav gibi; 2. analiz #95)
-                        // Kendi çizgi simgelerimiz (doğal tasarım madde 4)
-                        LineIcon(name: LineIconMap.tab(tab), size: 24, c1: on ? Theme.accent : Theme.muted,
-                                 c2: on ? Theme.accent : Theme.muted)
+                        // 3D simgeler (4 Kasım 2026, sahibin seçimi); seçili olmayan sekme gri ve soluk
+                        LineIcon(name: LineIconMap.tab(tab), size: 26, c1: on ? Theme.accent : Theme.muted,
+                                 c2: on ? Theme.accent : Theme.muted, dim: !on)
                             .frame(width: 56, height: 30)
                             .background(Capsule().fill(on ? Theme.accentSoft : Color.clear))
                         Text(tab.barTitle)

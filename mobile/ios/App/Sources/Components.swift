@@ -54,8 +54,8 @@ struct EmptyState: View {
 }
 
 /// Liste satırlarındaki renkli simge kutusu (#99; doğal tasarım madde 4, 4 Kasım 2026): "çakıl taşı" biçimi (köşeler
-/// hafif farklı yuvarlak), zemin simge renginin açık tonu, içinde kendi çizgi simgemiz (karşılığı yoksa SF Symbol).
-/// `line` verilirse o çizgi simge çizilir.
+/// hafif farklı yuvarlak), zemin simge renginin açık tonu, içinde 3D simge (4 Kasım 2026; karşılığı yoksa SF Symbol).
+/// `line` verilirse o simge çizilir.
 struct IconBox: View {
     let icon: String
     var tint: Color = Theme.accent
@@ -65,7 +65,7 @@ struct IconBox: View {
     var body: some View {
         Group {
             if let name = line ?? LineIconMap.of(icon) {
-                LineIcon(name: name, size: 21, c1: tint, c2: tint.opacity(0.72))
+                LineIcon(name: name, size: 25, c1: tint, c2: tint.opacity(0.72))
             } else {
                 Image(systemName: icon)
                     .font(.system(size: 17, weight: .medium))

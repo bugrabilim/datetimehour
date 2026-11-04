@@ -68,10 +68,10 @@ struct RoundDots: View {
     var body: some View {
         HStack(spacing: 6) {
             ForEach(1...max(1, total), id: \.self) { i in
-                // Çizgi domatesler (doğal tasarım madde 11)
+                // 3D domatesler: biten ve sürmekte olan renkli (sürmekte olan büyük), kalan gri ve soluk
                 let on = i <= done || i == current
-                LineIcon(name: "tomato", size: i == current ? 26 : 22, c1: on ? Theme.terra : Theme.muted, c2: on ? Theme.sage : Theme.muted)
-                    .opacity(i <= done ? 1 : i == current ? 0.6 : 0.25)
+                LineIcon(name: "tomato", size: i == current ? 26 : 22, c1: on ? Theme.terra : Theme.muted, c2: on ? Theme.sage : Theme.muted,
+                         dim: !on)
             }
         }
         .accessibilityElement(children: .ignore)

@@ -2842,5 +2842,7 @@
     <string name="live_weather_control">Clima na tela bloqueada</string>
     <string name="live_weather_toggleAndroid">Mostrar na barra de status e na tela de bloqueio</string>
     <string name="live_weather_noteAndroid">A temperatura aparece na barra de status e na tela de bloqueio; desative com Fechar na notificação, nas Configurações rápidas ou aqui. Atualiza a cada hora.</string>
+    <string name="about_credits">Ícones: Microsoft Fluent Emoji (licença MIT). Fontes: Literata e Amiri (SIL Open Font License).</string>
+    <string name="about_license">Texto da licença dos ícones</string>
     <string name="app_name">Hora e Data</string>
 </resources>

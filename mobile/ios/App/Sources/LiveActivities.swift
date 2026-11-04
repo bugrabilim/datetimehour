@@ -67,14 +67,12 @@ enum LiveActivities {
         let place = AppPlace.stored()
         if let w = try? await WeatherCache.weather(lat: place.lat, lon: place.lon) {
             let c = w.currentWeather
-            // Çok renkli simge için dolu biçim (bulut beyaz, güneş sarı, yağmur mavi)
-            let fill = c.symbolName.hasSuffix(".fill") ? c.symbolName : c.symbolName + ".fill"
             var detail = place.name
             if let today = w.dailyForecast.first {
                 detail += " · ↑\(Units.temp(today.highTemperature)) ↓\(Units.temp(today.lowTemperature))"
             }
             LiveWeather.save(.init(value: Units.temp(c.temperature),
-                                   symbol: UIImage(systemName: fill) != nil ? fill : c.symbolName,
+                                   symbol: c.symbolName,
                                    title: c.condition.description, detail: detail, at: Date()))
         }
         sync()

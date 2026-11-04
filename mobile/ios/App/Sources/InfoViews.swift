@@ -359,6 +359,13 @@ struct AboutView: View {
                 Link(L("privacy.full"), destination: SiteLinks.privacy)
                     .tint(Theme.accent)
             }
+            // Açık lisanslı parçalar (3D simgeler MIT, yazı tipleri OFL; 4 Kasım 2026)
+            Section {
+                Text(L("about.credits")).font(.footnote).foregroundStyle(Theme.muted)
+                Link(L("about.license"), destination: URL(string: "https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE")!)
+                    .font(.footnote)
+                    .tint(Theme.accent)
+            }
         }
         .themedBackground()
         .navigationTitle(L("settings.about"))

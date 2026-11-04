@@ -112,9 +112,9 @@ enum LiveWeatherStyle {
     /// Kilit ekranındaki kartın zemini: gündüz göğü mavisi (beyaz bulut ve yazı okunur)
     static let sky = Color(red: 0.20, green: 0.42, blue: 0.68)
 
-    /// Çok renkli hava simgesi (WeatherKit'in simgesi; güneş sarı, bulut beyaz, yağmur mavi)
-    static func glyph(_ name: String?) -> some View {
-        Image(systemName: name ?? "cloud.sun.fill").symbolRenderingMode(.multicolor)
+    /// Gerçekçi 3D hava simgesi (WeatherKit'in sembol adından; Icons3D)
+    static func glyph(_ name: String?, size: CGFloat = 24) -> some View {
+        WeatherIcon3D(symbol: name ?? "cloud.sun", size: size)
     }
 
     /// Apple Hava Durumu işareti ve yasal bilgiler (WeatherKit şartı; bağlantı uygulamayı açar, uygulama Safari'ye verir)
@@ -149,8 +149,7 @@ private struct LiveWeatherLockScreen: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 12) {
-                LiveWeatherStyle.glyph(state.symbol)
-                    .font(.system(size: 38))
+                LiveWeatherStyle.glyph(state.symbol, size: 46)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(state.title).font(.headline).foregroundStyle(.white).lineLimit(1)
                     if !state.subtitle.isEmpty {

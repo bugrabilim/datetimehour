@@ -25,6 +25,8 @@ targets:
     sources:
       - path: App/Sources
       - path: App/Resources
+      # 3D simgeler (4 Kasım 2026; mobile/shared/icons3d/gen-icons3d.py üretir)
+      - path: Icons3D.xcassets
     dependencies:
       - package: SaatCore
       - target: SaatTarihWidget
@@ -92,6 +94,9 @@ targets:
       - path: App/Sources/LiveActivityModel.swift
       # Hava etkinliğinin × ve Denetim Merkezi düğmesi (LiveActivityIntent: iki hedefte de derlenir, uygulamada çalışır)
       - path: App/Sources/LiveWeather.swift
+      # 3D simgeler (4 Kasım 2026; hava etkinliği ve dünya widget'ı)
+      - path: App/Sources/Icons3D.swift
+      - path: Icons3D.xcassets
       - path: App/Sources/WorldMath.swift
       # Şeffaf widget (2. analiz #76): App Group'tan duvar kâğıdı parçası
       - path: App/Sources/WallpaperWidget.swift

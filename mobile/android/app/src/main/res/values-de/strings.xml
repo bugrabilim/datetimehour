@@ -2842,5 +2842,7 @@
     <string name="live_weather_control">Wetter auf Sperrbildschirm</string>
     <string name="live_weather_toggleAndroid">In der Statusleiste und auf dem Sperrbildschirm zeigen</string>
     <string name="live_weather_noteAndroid">Die Temperatur erscheint in der Statusleiste und auf dem Sperrbildschirm; ausschalten mit „Schließen“ in der Benachrichtigung, in den Schnelleinstellungen oder hier. Stündlich aktualisiert.</string>
+    <string name="about_credits">Symbole: Microsoft Fluent Emoji (MIT-Lizenz). Schriften: Literata und Amiri (SIL Open Font License).</string>
+    <string name="about_license">Lizenztext der Symbole</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>
