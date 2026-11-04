@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">Ipakita muli ang pagpapakilala</string>
     <string name="atmo_daylight">Liwanag ng araw</string>
     <string name="atmo_daylightNote">Sumusunod ang Liwanag ng araw sa araw sa napiling lugar: kulay ng bukang-liwayway, umaga, hapon, gabi o hatinggabi.</string>
+    <string name="common_how">Paano ito gumagana</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

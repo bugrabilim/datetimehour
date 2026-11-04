@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">紹介をもう一度見る</string>
     <string name="atmo_daylight">日の光</string>
     <string name="atmo_daylightNote">日の光は選んだ場所の太陽に合わせて、夜明け・朝・午後・夕方・夜の色合いに変わります。</string>
+    <string name="common_how">しくみ</string>
     <string name="app_name">時刻と日付</string>
 </resources>

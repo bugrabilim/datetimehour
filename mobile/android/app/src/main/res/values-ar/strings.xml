@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">إظهار الجولة التعريفية مجددًا</string>
     <string name="atmo_daylight">ضوء النهار</string>
     <string name="atmo_daylightNote">يتبع ضوء النهار الشمس في المكان المختار: ألوان الفجر أو الصباح أو العصر أو المساء أو الليل.</string>
+    <string name="common_how">كيف يعمل؟</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

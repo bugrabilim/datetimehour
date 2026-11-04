@@ -187,7 +187,8 @@ fun NextAlarmCard(items: List<AlarmItem>, nowMs: Long) {
     val next = items.filter { it.enabled }.map { it.nextAt(nowMs) }.filter { it != AlarmItem.NEVER }.minOrNull() ?: return
     AppCard {
         val mins = ((next - nowMs + 59_999) / 60_000).toInt()
-        Text(T("alarm.nextIn", Fmt.hm(mins * 60)), color = Theme.c.accent, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+        Text(T("alarm.nextIn", Fmt.hm(mins * 60)), color = Theme.c.text, fontSize = if (AppFonts.serif) 20.sp else 19.sp,
+            fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
         Text(Fmt.time(Instant.ofEpochMilli(next).atZone(ZoneId.systemDefault())) + " · " + Fmt.longDate(Instant.ofEpochMilli(next).atZone(ZoneId.systemDefault()).toLocalDate()),
             color = Theme.c.muted, fontSize = 14.sp)
     }

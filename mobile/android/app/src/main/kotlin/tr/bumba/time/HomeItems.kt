@@ -411,7 +411,7 @@ private fun WeatherMiniCard(place: AppPlace, modifier: Modifier) {
         }
         val c = d.current
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(d.condition.icon(c.isDay), fontSize = 32.sp)
+            WeatherIcon(d.condition, c.isDay, 36.dp)
             Spacer(Modifier.width(12.dp))
             Text(d.condition.label, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
             Ltr {

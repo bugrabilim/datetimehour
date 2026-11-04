@@ -3,6 +3,7 @@ package tr.bumba.time
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
+import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -77,6 +78,27 @@ enum class WeatherCode(val key: String, val day: String, val night: String) {
 
     val label: String get() = L("weather.codes.$key")
     fun icon(isDay: Boolean = true) = if (isDay) day else night
+
+    /** Kendi çizgi simgemiz (doğal tasarım madde 10 ve 19): açık gündüz güneş, gece ay; bulutlu, yağmurlu, karlı, sisli, fırtınalı */
+    fun line(isDay: Boolean = true): String = when (this) {
+        CLEAR, MOSTLY_CLEAR -> if (isDay) "sun" else "moon"
+        PARTLY, OVERCAST -> "cloud"
+        FOG -> "fog"
+        DRIZZLE, FREEZING_DRIZZLE, RAIN, FREEZING_RAIN, SHOWERS -> "rain"
+        SNOW, SNOW_GRAINS, SNOW_SHOWERS -> "snow"
+        THUNDER, THUNDER_HAIL -> "storm"
+    }
+
+    /** Widget'taki karşılığı (gen-strings icons.json'dan üretir: res/drawable/wi_*.xml) */
+    fun widgetIcon(isDay: Boolean = true): Int = when (line(isDay)) {
+        "sun" -> R.drawable.wi_sun
+        "moon" -> R.drawable.wi_moon
+        "fog" -> R.drawable.wi_fog
+        "rain" -> R.drawable.wi_rain
+        "snow" -> R.drawable.wi_snow
+        "storm" -> R.drawable.wi_storm
+        else -> R.drawable.wi_cloud
+    }
 
     companion object {
         fun of(c: Int): WeatherCode = when (c) {
@@ -374,4 +396,23 @@ object ModelCache {
             }
         }.filterValues { it.isNotEmpty() }
     }
+}
+
+/**
+ * Hava çizgi simgesi (doğal tasarım madde 10, 4 Kasım 2026): emoji yerine kendi simgemiz. Güneş ve ay altın, yağmur, kar
+ * ve sis ayrıntısı gök mavisi, gövde yazı renginde. Ekran okuyucuya durumun adı söylenir.
+ */
+@Composable
+fun WeatherIcon(code: WeatherCode, isDay: Boolean = true, size: androidx.compose.ui.unit.Dp = 28.dp,
+                color: androidx.compose.ui.graphics.Color = Theme.c.text) {
+    val name = code.line(isDay)
+    val c = Theme.c
+    val (c1, c2) = when (name) {
+        "sun" -> c.gold to c.gold
+        "moon" -> c.gold to c.gold
+        "storm" -> color to c.gold
+        "rain", "snow", "fog" -> color to c.sky
+        else -> color to color
+    }
+    LineIcon(name, size, c1 = c1, c2 = c2, label = code.label)
 }

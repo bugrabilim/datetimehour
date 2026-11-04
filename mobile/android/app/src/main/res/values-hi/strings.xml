@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">परिचय फिर से दिखाएँ</string>
     <string name="atmo_daylight">दिन का उजाला</string>
     <string name="atmo_daylightNote">दिन का उजाला चुनी गई जगह पर सूरज के साथ बदलता है: भोर, सुबह, दोपहर बाद, शाम या रात के रंग।</string>
+    <string name="common_how">यह कैसे काम करता है</string>
     <string name="app_name">समय और तारीख</string>
 </resources>

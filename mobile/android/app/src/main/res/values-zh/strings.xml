@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">再次查看介绍</string>
     <string name="atmo_daylight">日光</string>
     <string name="atmo_daylightNote">日光随所选地点的太阳变化：黎明、上午、下午、傍晚或夜晚的色调。</string>
+    <string name="common_how">工作原理</string>
     <string name="app_name">时间与日期</string>
 </resources>

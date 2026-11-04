@@ -206,6 +206,10 @@ class MoreScreensTest {
         RuntimeEnvironment.setQualifiers("+tr")
         SleepPlan.on = true
         page("tr-uyku", L("sleep.title")) { SleepScreen() }
+        // "Nasıl çalışır?" alt sayfası (doğal tasarım madde 13): uzun açıklamalar burada
+        shot("tr-nasil-calisir") {
+            HowItWorksContent(listOf(L("sleep.plan") to L("sleep.plan.note"), L("alarm.smart") to L("smart.how"), L("settings.privacy") to L("sleep.privacy")))
+        }
         SleepPlan.on = false
         // Akıllı alarm penceresi seçili alarm varken Uyku ekranındaki akıllı alarm kartı (31 Ekim 2026)
         val saved = AlarmItem.load()
@@ -657,7 +661,13 @@ class MoreScreensTest {
         widget("widget-esma", 260, 170, DailyWidget().views(c, 35))
         widget("widget-ayet", 260, 170, DailyWidget().views(c, 36))
         widget("widget-takvim", 260, 170, EventsWidget().views(c, 37))
+        seedWeather(current = 61)
         widget("widget-hava", 170, 170, WeatherWidget().views(c, 38))
+        // Gün ışığı tonu (doğal tasarım madde 19): uygulamada seçiliyken saat widget'larının zemini Güneş'e göre
+        Atmosphere.save(Atmosphere.DAYLIGHT)
+        widget("widget-analog-gun-isigi", 170, 170, AnalogClockWidget().views(c, 41))
+        widget("widget-saat-tarih-gun-isigi", 170, 170, ClockDateWidget().views(c, 42))
+        Atmosphere.save("")
         widget("widget-fotograf", 170, 170, PhotoWidget().views(c, 39))
         Prefs.store.edit().putString("widget.style.40", "you").commit()
         widget("widget-saat-tarih-you", 170, 170, ClockDateWidget().views(c, 40))

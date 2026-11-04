@@ -142,7 +142,7 @@ class AnalogClockWidget : BaseWidget() {
         val v = RemoteViews(c.packageName, R.layout.widget_analog)
         // Android 12+: uygulamadaki gibi rakamlı kadran (daha eskide rakamsız vektör kadran); renkler seçilen görünümden
         WidgetLook.analog(c, v, R.id.analog, id)
-        WidgetLook.apply(c, v, id, R.id.root)
+        WidgetLook.apply(c, v, id, R.id.root, daylight = true)
         v.setOnClickPendingIntent(R.id.root, WidgetLook.open(c, id))
         return v
     }
@@ -152,7 +152,7 @@ class DigitalClockWidget : BaseWidget() {
     override fun views(c: Context, id: Int): RemoteViews {
         val v = RemoteViews(c.packageName, R.layout.widget_digital)
         WidgetLook.nextAlarm(c, v, R.id.alarm, id)
-        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time), muted = listOf(R.id.alarm))
+        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time), muted = listOf(R.id.alarm), daylight = true)
         v.setOnClickPendingIntent(R.id.root, WidgetLook.open(c, id))
         return v
     }
@@ -165,7 +165,7 @@ class ClockDateWidget : BaseWidget() {
         v.setTextViewText(R.id.date, today.dayOfMonth.toString() + " " + Fmt.month(today.monthValue) + " " + today.year)
         v.setTextViewText(R.id.weekday, L("calendar.weekdays.${today.dayOfWeek.value - 1}"))
         WidgetLook.nextAlarm(c, v, R.id.alarm, id)
-        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time, R.id.date), muted = listOf(R.id.weekday, R.id.alarm))
+        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time, R.id.date), muted = listOf(R.id.weekday, R.id.alarm), daylight = true)
         v.setOnClickPendingIntent(R.id.root, WidgetLook.open(c, id))
         return v
     }
@@ -352,6 +352,13 @@ object WidgetUpdater {
             for (id in mgr.getAppWidgetIds(ComponentName(c, p))) {
                 place(id).next(now)?.at?.let { if (it.isBefore(next)) next = it.plusSeconds(1) }
             }
+        }
+        // Saat widget'larında gün ışığı tonu: ton değişince yenile (doğal tasarım madde 19)
+        val clocks = listOf(AnalogClockWidget::class.java, DigitalClockWidget::class.java, ClockDateWidget::class.java, DualClockWidget::class.java)
+        if (Atmosphere.daylightOn && clocks.any { mgr.getAppWidgetIds(ComponentName(c, it)).isNotEmpty() }) {
+            val p = AppPlace.current()
+            val change = Instant.ofEpochMilli(Atmosphere.nextToneChange(p.lat, p.lon, now.toEpochMilli()) + 5_000)
+            if (change.isBefore(next)) next = change
         }
         val any = providers.any { mgr.getAppWidgetIds(ComponentName(c, it)).isNotEmpty() }
         val am = c.getSystemService(AlarmManager::class.java) ?: return

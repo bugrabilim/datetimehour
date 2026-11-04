@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">Revoir la présentation</string>
     <string name="atmo_daylight">Lumière du jour</string>
     <string name="atmo_daylightNote">La lumière du jour suit le soleil à l\'endroit choisi : tons d\'aube, de matin, d\'après-midi, de soir ou de nuit.</string>
+    <string name="common_how">Comment ça marche ?</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

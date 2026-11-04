@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">Einführung erneut zeigen</string>
     <string name="atmo_daylight">Tageslicht</string>
     <string name="atmo_daylightNote">Tageslicht folgt der Sonne am gewählten Ort: Töne für Morgendämmerung, Vormittag, Nachmittag, Abend oder Nacht.</string>
+    <string name="common_how">So funktioniert es</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

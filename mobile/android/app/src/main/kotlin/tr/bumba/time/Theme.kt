@@ -93,17 +93,42 @@ data class Atmosphere(val id: String, val lightTop: Long, val lightBottom: Long,
          */
         const val DAYLIGHT = "daylight"
 
-        fun daylight(lat: Double, lon: Double, ms: Long): Atmosphere {
+        /** Gün ışığı tonu: "night", "dawn", "dusk", "golden" (ikindi) ya da "day" (widget zemini de bunu kullanır) */
+        fun daylightTone(lat: Double, lon: Double, ms: Long): String {
             val alt = SkyMath.sunAltitude(lat, lon, ms)
             val rising = SkyMath.sunAltitude(lat, lon, ms + 600_000) > alt
-            val (l, d) = when {
-                alt < -6 -> 0xE3E4EEL to 0x12131CL
-                alt < 6 -> if (rising) 0xF8E4D6L to 0x2A1E2CL else 0xEEDDE4L to 0x271B2CL
-                !rising && alt < 25 -> 0xF6E3C4L to 0x2A2118L
+            return when {
+                alt < -6 -> "night"
+                alt < 6 -> if (rising) "dawn" else "dusk"
+                !rising && alt < 25 -> "golden"
+                else -> "day"
+            }
+        }
+
+        /** Tonun değişeceği an (5 dk adımla en çok 26 saat ileri; widget yenilemesi için) */
+        fun nextToneChange(lat: Double, lon: Double, from: Long): Long {
+            val now = daylightTone(lat, lon, from)
+            var t = from
+            while (t < from + 26 * 3_600_000L) {
+                t += 300_000L
+                if (daylightTone(lat, lon, t) != now) return t
+            }
+            return t
+        }
+
+        fun daylight(lat: Double, lon: Double, ms: Long): Atmosphere {
+            val (l, d) = when (daylightTone(lat, lon, ms)) {
+                "night" -> 0xE3E4EEL to 0x12131CL
+                "dawn" -> 0xF8E4D6L to 0x2A1E2CL
+                "dusk" -> 0xEEDDE4L to 0x271B2CL
+                "golden" -> 0xF6E3C4L to 0x2A2118L
                 else -> 0xE9EFF0L to 0x172230L
             }
             return Atmosphere(DAYLIGHT, l, 0xF6F0E4, d, 0x14151C)
         }
+
+        /** Gün ışığı uygulamada seçili mi (saat widget'larının zemini de onu izler; doğal tasarım madde 19) */
+        val daylightOn: Boolean get() = (Prefs.store.getString(KEY, "") ?: "") == DAYLIGHT
 
         fun find(id: String?): Atmosphere? =
             if (id == DAYLIGHT) AppPlace.current().let { daylight(it.lat, it.lon, System.currentTimeMillis()) }
@@ -113,7 +138,11 @@ data class Atmosphere(val id: String, val lightTop: Long, val lightBottom: Long,
             private set
         private var loaded = false
         fun load() { if (!loaded) { loaded = true; selected = Prefs.store.getString(KEY, "") ?: "" } }
-        fun save(id: String) { selected = id; Prefs.store.edit().putString(KEY, id).apply() }
+        fun save(id: String) {
+            selected = id; Prefs.store.edit().putString(KEY, id).apply()
+            // Saat widget'larının gün ışığı zemini seçimi izler
+            runCatching { WidgetUpdater.updateAll(Strings.appContext) }
+        }
     }
 }
 

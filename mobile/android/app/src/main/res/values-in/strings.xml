@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">Tampilkan pengenalan lagi</string>
     <string name="atmo_daylight">Cahaya hari</string>
     <string name="atmo_daylightNote">Cahaya hari mengikuti matahari di tempat pilihan Anda: nuansa fajar, pagi, sore, petang, atau malam.</string>
+    <string name="common_how">Cara kerjanya</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

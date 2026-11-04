@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">Ver a apresentação de novo</string>
     <string name="atmo_daylight">Luz do dia</string>
     <string name="atmo_daylightNote">A luz do dia acompanha o sol no lugar escolhido: tons de amanhecer, manhã, tarde, entardecer ou noite.</string>
+    <string name="common_how">Como funciona</string>
     <string name="app_name">Hora e Data</string>
 </resources>

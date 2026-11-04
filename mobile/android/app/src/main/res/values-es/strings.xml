@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">Ver la presentación de nuevo</string>
     <string name="atmo_daylight">Luz del día</string>
     <string name="atmo_daylightNote">La luz del día sigue al sol en el lugar elegido: tonos de amanecer, mañana, tarde, atardecer o noche.</string>
+    <string name="common_how">Cómo funciona</string>
     <string name="app_name">Hora y Fecha</string>
 </resources>

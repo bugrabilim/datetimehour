@@ -124,7 +124,7 @@ fun UpcomingReligiousLine(today: LocalDate, onOpen: () -> Unit) {
     Text(
         T("relday.upcoming", e.name, RelDays.whenText(e.date, today)),
         Modifier.clickable(onClick = onOpen).padding(vertical = 2.dp),
-        color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.Medium, textAlign = TextAlign.Center,
+        color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.Medium,
     )
 }
 

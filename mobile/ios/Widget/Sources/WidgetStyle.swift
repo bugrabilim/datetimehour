@@ -139,6 +139,9 @@ private struct StyledWidget: ViewModifier {
                 ZStack {
                     if let wallpaper {
                         Image(uiImage: wallpaper).resizable().scaledToFill()
+                    } else if e.style == .app, !e.frame, let a = Atmosphere.widgetDaylight(at: e.date) {
+                        // Gün ışığı tonu (doğal tasarım madde 19): uygulamada "Gün ışığı" seçiliyken, varsayılan görünümde
+                        LinearGradient(colors: [a.top, a.bottom], startPoint: .top, endPoint: .bottom)
                     } else {
                         p?.bg ?? Theme.bg
                     }

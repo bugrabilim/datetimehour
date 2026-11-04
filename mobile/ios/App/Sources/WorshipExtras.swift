@@ -59,7 +59,7 @@ struct UpcomingReligiousLine: View {
                 Text(T("relday.upcoming", e.name, RelDays.whenText(e.day, today)))
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(Theme.accent)
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.leading)
             }
         }
     }

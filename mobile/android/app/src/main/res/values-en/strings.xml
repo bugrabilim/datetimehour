@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">Show the intro again</string>
     <string name="atmo_daylight">Daylight</string>
     <string name="atmo_daylightNote">Daylight follows the sun at your chosen place: dawn, morning, afternoon, evening or night tones.</string>
+    <string name="common_how">How it works</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

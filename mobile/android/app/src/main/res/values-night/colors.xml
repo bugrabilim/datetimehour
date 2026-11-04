@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="splash">#11141A</color>
-    <!-- Widget'lar varsayılan temada (sitedeki "kâğıt" ve "gece" renkleri; uygulama rengi seçimi widget'a geçmez) -->
-    <color name="widget_bg">#11141A</color>
-    <color name="widget_face">#232834</color>
-    <color name="widget_border">#343B49</color>
-    <color name="widget_text">#EEF0F4</color>
-    <color name="widget_muted">#A5ACB9</color>
+    <color name="splash">#14151C</color>
+    <!-- Widget'lar varsayılan temada (doğal tasarımın sıcak "kâğıt" ve "gece" renkleri, 4 Kasım 2026; uygulama rengi seçimi widget'a geçmez) -->
+    <color name="widget_bg">#14151C</color>
+    <color name="widget_face">#272834</color>
+    <color name="widget_border">#343542</color>
+    <color name="widget_text">#F1EADF</color>
+    <color name="widget_muted">#B4AA9B</color>
     <color name="widget_accent">#F2A65A</color>
     <color name="widget_soft">#29F2A65A</color>
 </resources>

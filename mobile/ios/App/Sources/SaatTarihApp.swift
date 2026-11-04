@@ -1,6 +1,7 @@
 import SwiftUI
 import Combine
 import SaatCore
+import WidgetKit
 
 @main
 struct SaatTarihApp: App {
@@ -53,13 +54,28 @@ struct SaatTarihApp: App {
                 FocusBlock.sync()
                 // Kilit ekranı / Dynamic Island etkinlikleri (sıradaki vakit ileri taşınır, bitenler kapanır)
                 LiveActivities.sync()
+                Self.publishWidgetSky()
             } else if phase == .background {
                 BackgroundRefresh.schedule()
+                Self.publishWidgetSky()
             }
         }
         .backgroundTask(.appRefresh(BackgroundRefresh.id)) {
             await BackgroundRefresh.run()
         }
+    }
+
+    /// Saat widget'larının gün ışığı zemini (doğal tasarım madde 19): atmosfer seçimi ve seçili yer App Group'a yazılır;
+    /// değiştiyse widget'lar yenilenir
+    @MainActor
+    private static func publishWidgetSky() {
+        let p = PlaceModel.shared.place
+        let atmo = UserDefaults.standard.string(forKey: Atmosphere.key) ?? ""
+        let d = UserDefaults(suiteName: Atmosphere.groupID)
+        let changed = d?.string(forKey: Atmosphere.key) != atmo || d?.double(forKey: "place.lat") != p.lat
+            || d?.double(forKey: "place.lon") != p.lon
+        Atmosphere.publish(atmo: atmo, lat: p.lat, lon: p.lon)
+        if changed { WidgetCenter.shared.reloadAllTimelines() }
     }
 }
 

@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">แสดงบทแนะนำอีกครั้ง</string>
     <string name="atmo_daylight">แสงตะวัน</string>
     <string name="atmo_daylightNote">แสงตะวันเปลี่ยนตามดวงอาทิตย์ ณ สถานที่ที่เลือก: โทนรุ่งอรุณ เช้า บ่าย เย็น หรือกลางคืน</string>
+    <string name="common_how">วิธีการทำงาน</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

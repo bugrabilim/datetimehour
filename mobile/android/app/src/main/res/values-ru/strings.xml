@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">Показать знакомство снова</string>
     <string name="atmo_daylight">Дневной свет</string>
     <string name="atmo_daylightNote">Дневной свет следует за солнцем в выбранном месте: тона рассвета, утра, дня, вечера или ночи.</string>
+    <string name="common_how">Как это работает</string>
     <string name="app_name">Время и дата</string>
 </resources>

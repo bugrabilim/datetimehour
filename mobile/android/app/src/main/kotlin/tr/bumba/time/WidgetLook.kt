@@ -113,9 +113,18 @@ object WidgetLook {
     }
 
     /** Zemin (ve çerçeve) ile yazı renklerini uygular */
-    fun apply(c: Context, v: RemoteViews, id: Int, root: Int, texts: List<Int> = emptyList(), muted: List<Int> = emptyList()) {
+    fun apply(c: Context, v: RemoteViews, id: Int, root: Int, texts: List<Int> = emptyList(), muted: List<Int> = emptyList(),
+              daylight: Boolean = false) {
         val s = WidgetStyle.of(id)
         val f = frame(id)
+        // Saat widget'larında gün ışığı tonu (doğal tasarım madde 19): uygulamada "Gün ışığı" seçiliyken, varsayılan
+        // görünümde ve çerçevesiz; ton seçili yerde Güneş'in yüksekliğinden (açık/koyu temaya göre ayrı çizim)
+        if (daylight && s == WidgetStyle.APP && !f && Atmosphere.daylightOn) {
+            val p = AppPlace.current()
+            val tone = Atmosphere.daylightTone(p.lat, p.lon, System.currentTimeMillis())
+            val res = c.resources.getIdentifier("widget_bg_daylight_$tone", "drawable", c.packageName)
+            if (res != 0) v.setInt(root, "setBackgroundResource", res)
+        }
         if (s != WidgetStyle.APP || f) {
             val res = c.resources.getIdentifier("widget_bg_${s.id}${if (f) "_frame" else ""}", "drawable", c.packageName)
             if (res != 0) v.setInt(root, "setBackgroundResource", res)
@@ -240,7 +249,7 @@ class DualClockWidget : BaseWidget() {
         }
         v.setTextViewText(R.id.label1, AppPlace.current().name.ifEmpty { L("dual.here") })
         v.setTextViewText(R.id.label2, city?.let { ZoneCaption.code(it.key) + " " + ZoneCaption.diff(zone, ZoneId.systemDefault(), now) } ?: "")
-        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.label1, R.id.label2, R.id.digital2))
+        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.label1, R.id.label2, R.id.digital2), daylight = true)
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CLOCK, id))
         return v
     }

@@ -95,6 +95,19 @@ struct SleepView: View {
 
     var body: some View {
         Form {
+            // Uzun açıklamalar ekranda değil "Nasıl çalışır?" alt sayfasında (doğal tasarım madde 13)
+            Section {
+                HowItWorks(sections: [
+                    (L("sleep.plan"), L("sleep.plan.note")),
+                    (L("sleep.cycles"), L("sleep.cycles.note")),
+                    (L("alarm.smart"), L("smart.how") + " " + L("smart.howIOS")),
+                    (L("sleep.sounds"), L("sleep.sounds.note") + " " + L("sleep.mixNote")),
+                    (L("alarm.sunrise"), L("sleep.sunriseInfo")),
+                    (L("settings.privacy"), L("sleep.privacy")),
+                ])
+            }
+            .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
             Section {
                 Toggle(L("sleep.plan.use"), isOn: $on).tint(Theme.accent)
                 if on {
@@ -110,7 +123,7 @@ struct SleepView: View {
                     HStack {
                         Text(L("sleep.bedtime")).font(.headline)
                         Spacer()
-                        Text(SleepPlan.hm(wake - duration)).font(.title3.weight(.semibold)).monospacedDigit().foregroundStyle(Theme.accent)
+                        Text(SleepPlan.hm(wake - duration)).font(.title2.weight(.medium)).monospacedDigit().foregroundStyle(Theme.text)
                     }
                     Toggle(L("sleep.remind"), isOn: $bedtimeNotify).tint(Theme.accent)
                     if bedtimeNotify {
@@ -127,8 +140,6 @@ struct SleepView: View {
                 }
             } header: {
                 Text(L("sleep.plan"))
-            } footer: {
-                Text(L("sleep.plan.note"))
             }
 
             Section {
@@ -143,8 +154,6 @@ struct SleepView: View {
                 }
             } header: {
                 Text(L("sleep.cycles"))
-            } footer: {
-                Text(L("sleep.cycles.note"))
             }
 
             // Akıllı alarm (SmartSleep): pencereli sıradaki alarm için uyku oturumu
@@ -175,14 +184,6 @@ struct SleepView: View {
                 }
             } header: {
                 Text(L("sleep.sounds"))
-            } footer: {
-                Text(L("sleep.sounds.note"))
-            }
-
-            Section {
-                Text(L("sleep.sunriseInfo")).font(.subheadline)
-            } header: {
-                Text(L("alarm.sunrise"))
             }
 
             // Uyku düzeni, enerji blokları ve kronotip (2. analiz #47, #49, #48)
@@ -193,9 +194,6 @@ struct SleepView: View {
             }
             .listRowBackground(Color.clear)
 
-            Section {
-                Text(L("sleep.privacy")).font(.footnote).foregroundStyle(Theme.muted)
-            }
         }
         .themedBackground()
         .navigationTitle(L("sleep.title"))
@@ -291,7 +289,6 @@ struct SoundMixer: View {
                     })
                 }
             }
-            Text(L("sleep.mixNote")).font(.footnote).foregroundStyle(Theme.muted)
         }
     }
 }

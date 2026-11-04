@@ -89,7 +89,7 @@ struct PrayerPanel: View {
     var body: some View {
         let schedule = place.schedule
         let next = schedule.next(after: now)
-        VStack(spacing: 16) {
+        VStack(alignment: .leading, spacing: 16) {
             PlacePicker()
             SavedPlaceChips()
             // Bugünün miladi ve hicri tarihi (Diyanet takvimi)
@@ -97,7 +97,6 @@ struct PrayerPanel: View {
                 Text(Fmt.longDate(now, tz: place.zone) + " · " + h.text)
                     .font(.footnote)
                     .foregroundStyle(Theme.muted)
-                    .multilineTextAlignment(.center)
             }
 
             UpcomingReligiousLine(today: CalendarDay(now, timeZone: place.zone))
@@ -166,7 +165,7 @@ struct KerahatBox: View {
                                 .environment(\.layoutDirection, .leftToRight)
                         }
                     }
-                    Text(L("prayer.kerahatNote")).font(.footnote).foregroundStyle(Theme.muted)
+                    HowItWorks(sections: [(L("prayer.kerahatHeading"), L("prayer.kerahatNote"))])
                 }
                 .padding(.top, 8)
             } label: {
@@ -268,8 +267,8 @@ struct BayramRow: View {
     var body: some View {
         if let text {
             VStack(alignment: .leading, spacing: 4) {
-                Text(text).font(.headline).foregroundStyle(Theme.accent)
-                Text(L("prayer.bayramNote")).font(.footnote).foregroundStyle(Theme.muted)
+                Text(text).font(.headline).foregroundStyle(Theme.text)
+                HowItWorks(sections: [(L("prayer.bayram"), L("prayer.bayramNote"))])
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .card()
@@ -295,7 +294,7 @@ struct ExtraTimesBox: View {
                             .environment(\.layoutDirection, .leftToRight)
                     }
                 }
-                Text(L("prayer.extraNote")).font(.footnote).foregroundStyle(Theme.muted)
+                HowItWorks(sections: [(L("prayer.extraHeading"), L("prayer.extraNote"))])
             }
             .padding(.top, 8)
         } label: {

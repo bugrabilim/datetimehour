@@ -140,7 +140,7 @@ private fun Current(d: WeatherData) {
     val c = d.current
     WeatherHero(if (Prefs.store.getBoolean(WeatherScene.TAB_KEY, true)) WeatherScene.of(c) else null) {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(d.condition.icon(c.isDay), fontSize = 56.sp)
+            WeatherIcon(d.condition, c.isDay, 64.dp)
             Ltr { Text(Units.temp(c.temp), color = Theme.c.text, fontSize = 56.sp, fontFamily = AppFonts.numerals, fontWeight = FontWeight.Medium) }
             Text(d.condition.label, color = Theme.c.text, fontSize = 20.sp)
             d.today?.let { Ltr { Text("↑ ${Units.temp(it.max)}   ↓ ${Units.temp(it.min)}", color = Theme.c.muted) } }
@@ -248,7 +248,7 @@ private fun Hourly(d: WeatherData) {
                 for (h in items) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text(Fmt.time(h.at, d.zone), color = Theme.c.muted, fontSize = 12.sp)
-                        Text(WeatherCode.of(h.code).icon(h.isDay), fontSize = 20.sp)
+                        WeatherIcon(WeatherCode.of(h.code), h.isDay, 24.dp)
                         Text(Units.temp(h.temp), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
                         if (h.rain >= 10) Text(Fmt.percent(h.rain), color = Color(0xFF1E88E5), fontSize = 11.sp)
                     }
@@ -272,7 +272,7 @@ private fun Daily(d: WeatherData) {
             Ltr {
                 Row(Modifier.fillMaxWidth().height(36.dp).clickable { open = day }, verticalAlignment = Alignment.CenterVertically) {
                     Text(if (i == 0) L("client.today") else Fmt.weekdayShort(day.date), Modifier.width(56.dp), color = Theme.c.text)
-                    Text(WeatherCode.of(day.code).icon(), Modifier.width(32.dp), fontSize = 18.sp)
+                    Box(Modifier.width(32.dp)) { WeatherIcon(WeatherCode.of(day.code), size = 22.dp) }
                     Text(Units.temp(day.min), Modifier.width(42.dp), color = Theme.c.muted, textAlign = TextAlign.Center)
                     BoxWithConstraints(Modifier.weight(1f).height(6.dp)) {
                         val w = maxWidth.value

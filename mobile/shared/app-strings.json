@@ -37879,5 +37879,25 @@
     "es": "La luz del día sigue al sol en el lugar elegido: tonos de amanecer, mañana, tarde, atardecer o noche.",
     "pt": "A luz do dia acompanha o sol no lugar escolhido: tons de amanhecer, manhã, tarde, entardecer ou noite.",
     "hi": "दिन का उजाला चुनी गई जगह पर सूरज के साथ बदलता है: भोर, सुबह, दोपहर बाद, शाम या रात के रंग।"
+  },
+  "common.how": {
+    "tr": "Nasıl çalışır?",
+    "en": "How it works",
+    "de": "So funktioniert es",
+    "az": "Necə işləyir?",
+    "ar": "كيف يعمل؟",
+    "id": "Cara kerjanya",
+    "ur": "یہ کیسے کام کرتا ہے؟",
+    "fa": "چگونه کار می‌کند؟",
+    "fr": "Comment ça marche ?",
+    "ru": "Как это работает",
+    "ja": "しくみ",
+    "ko": "작동 방식",
+    "zh": "工作原理",
+    "fil": "Paano ito gumagana",
+    "th": "วิธีการทำงาน",
+    "es": "Cómo funciona",
+    "pt": "Como funciona",
+    "hi": "यह कैसे काम करता है"
   }
 }

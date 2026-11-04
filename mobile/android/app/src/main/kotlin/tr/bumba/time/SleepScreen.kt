@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import tr.bumba.time.core.NoiseGen
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -33,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.material.icons.filled.UnfoldMore
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -186,13 +188,24 @@ fun SleepScreen() {
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
+        // Uzun açıklamalar ekranda değil "Nasıl çalışır?" alt sayfasında (doğal tasarım madde 13)
+        HowItWorks(listOf(
+            L("sleep.plan") to L("sleep.plan.note"),
+            L("sleep.cycles") to L("sleep.cycles.note"),
+            L("alarm.smart") to L("smart.how"),
+            L("sleep.sounds") to (L("sleep.sounds.note") + " " + L("sleep.mixNote")),
+            L("alarm.sunrise") to L("sleep.sunriseInfo"),
+            L("settings.privacy") to L("sleep.privacy"),
+        ))
         SectionTitle(L("sleep.plan"))
         AppCard {
             SwitchRow(L("sleep.plan.use"), on) { on = it; SleepPlan.on = it; if (it) ask(); changed() }
             if (on) {
                 Row(Modifier.fillMaxWidth().clickable { picking = true }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(L("sleep.wake"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    Text(SleepPlan.hm(wake), color = Theme.c.accent, fontSize = 15.sp, style = Tnum)
+                    Text(SleepPlan.hm(wake), color = Theme.c.text, fontSize = 15.sp, style = Tnum)
+                    androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Filled.UnfoldMore, null,
+                        Modifier.size(16.dp), tint = Theme.c.muted)
                 }
                 ChoiceRow(L("sleep.duration"), SleepPlan.durationText(duration),
                     (300..660 step 30).map { it to SleepPlan.durationText(it) }) {
@@ -204,12 +217,12 @@ fun SleepScreen() {
                             val sel = d in days
                             Box(
                                 Modifier.weight(1f).height(36.dp).clip(CircleShape)
-                                    .background(if (sel) Theme.c.accent else Theme.c.surface2)
+                                    .background(if (sel) Theme.c.accentSoft else Theme.c.surface2)
                                     .clickable { days = if (sel) days - d else (days + d).sorted(); SleepPlan.days = days; changed() }
                                     .semantics { selected = sel },
                                 contentAlignment = Alignment.Center,
                             ) {
-                                Text(L("tools.alarm.dayNames.${d - 1}"), color = if (sel) Color.White else Theme.c.text,
+                                Text(L("tools.alarm.dayNames.${d - 1}"), color = if (sel) Theme.c.accent else Theme.c.muted,
                                     fontSize = 11.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
                             }
                         }
@@ -217,7 +230,7 @@ fun SleepScreen() {
                 }
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                     Text(L("sleep.bedtime"), Modifier.weight(1f), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
-                    Text(SleepPlan.hm(wake - duration), color = Theme.c.accent, fontSize = 22.sp, fontWeight = FontWeight.SemiBold, style = Tnum)
+                    Text(SleepPlan.hm(wake - duration), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Medium, style = Tnum)
                 }
                 SwitchRow(L("sleep.remind"), notify) {
                     notify = it; FeaturePrefs.set(NotifyFeature.BEDTIME, it); if (it) ask(); changed()
@@ -234,7 +247,6 @@ fun SleepScreen() {
                 }) { Text(L("sleep.addAlarm"), color = Theme.c.accent) }
                 if (alarmAdded) Text(L("sleep.alarmAdded"), color = Theme.c.muted, fontSize = 13.sp)
             }
-            Text(L("sleep.plan.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
 
         SectionTitle(L("sleep.cycles"))
@@ -245,7 +257,6 @@ fun SleepScreen() {
             Spacer(Modifier.height(4.dp))
             Text(T("sleep.forWake", SleepPlan.hm(wake)), color = Theme.c.text, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
             for ((n, m) in Sleep.bedtimes(wake)) CycleRow(SleepPlan.hm(m), n)
-            Text(L("sleep.cycles.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
 
         // Uyku düzeni, enerji blokları ve kronotip (2. analiz #47, #49, #48)
@@ -269,7 +280,6 @@ fun SleepScreen() {
             } else {
                 Text(L("smart.none"), color = Theme.c.text, fontSize = 14.sp)
             }
-            Text(L("smart.how"), color = Theme.c.muted, fontSize = 12.sp)
         }
 
         SectionTitle(L("sleep.sounds"))
@@ -304,7 +314,6 @@ fun SleepScreen() {
                             colors = androidx.compose.material3.SliderDefaults.colors(thumbColor = Theme.c.accent, activeTrackColor = Theme.c.accent))
                     }
                 }
-                Text(L("sleep.mixNote"), color = Theme.c.muted, fontSize = 12.sp)
             }
             fun timerText(m: Int) = if (m == 0) L("sleep.timerOff") else T("alarm.snoozeMin", m)
             ChoiceRow(L("sleep.timer"), timerText(timer), SleepSounds.TIMER_CHOICES.map { it to timerText(it) }) {
@@ -320,12 +329,8 @@ fun SleepScreen() {
                     Text("  " + clock((SleepSounds.until - now.toEpochMilli() + 999).coerceAtLeast(0) / 1000), color = Theme.c.muted, style = Tnum)
                 }
             }
-            Text(L("sleep.sounds.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
 
-        SectionTitle(L("alarm.sunrise"))
-        AppCard { Text(L("sleep.sunriseInfo"), color = Theme.c.text, fontSize = 14.sp) }
-        Text(L("sleep.privacy"), color = Theme.c.muted, fontSize = 12.sp)
         Spacer(Modifier.height(8.dp))
     }
 

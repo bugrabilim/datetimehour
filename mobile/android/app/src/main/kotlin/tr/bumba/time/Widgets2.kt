@@ -247,12 +247,12 @@ class WeatherWidget : BaseWidget() {
         val w = WeatherCache.cached(place.lat, place.lon)
         if (w != null) {
             val code = WeatherCode.of(w.current.code)
-            v.setTextViewText(R.id.icon, code.icon(w.current.isDay))
+            v.setImageViewResource(R.id.icon, code.widgetIcon(w.current.isDay))
             v.setTextViewText(R.id.temp, Units.temp(w.current.temp))
             v.setTextViewText(R.id.cond, code.label)
             v.setTextViewText(R.id.range, w.today?.let { "↑${Units.temp(it.max)} ↓${Units.temp(it.min)}" } ?: "")
         } else {
-            v.setTextViewText(R.id.icon, "…")
+            v.setImageViewResource(R.id.icon, R.drawable.wi_cloud)
             v.setTextViewText(R.id.temp, "")
             v.setTextViewText(R.id.cond, L("weather.loading"))
             v.setTextViewText(R.id.range, "")

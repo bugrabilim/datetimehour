@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">نمایش دوبارهٔ معرفی</string>
     <string name="atmo_daylight">نور روز</string>
     <string name="atmo_daylightNote">نور روز با خورشید در مکان انتخاب‌شده همراه است: رنگ‌های سپیده‌دم، صبح، عصر، شامگاه یا شب.</string>
+    <string name="common_how">چگونه کار می‌کند؟</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

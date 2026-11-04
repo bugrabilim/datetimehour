@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">소개 다시 보기</string>
     <string name="atmo_daylight">햇빛</string>
     <string name="atmo_daylightNote">햇빛은 선택한 곳의 태양을 따라 새벽, 아침, 오후, 저녁, 밤의 색으로 바뀝니다.</string>
+    <string name="common_how">작동 방식</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

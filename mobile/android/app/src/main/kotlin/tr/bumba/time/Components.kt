@@ -255,3 +255,43 @@ fun Modifier.pressScale(interaction: androidx.compose.foundation.interaction.Mut
     )
     return graphicsLayer { scaleX = scale; scaleY = scale }
 }
+
+/**
+ * "Nasıl çalışır?" (doğal tasarım madde 13 ve ilke 4, 4 Kasım 2026): ekranda en çok iki satırlık not kalır; daha uzun
+ * açıklamalar bu bağlantının açtığı alt sayfadadır. Bölüm başlığı (isteğe bağlı) ve metin; sola hizalı, okunaklı satır
+ * aralığı. iOS'taki HowItWorks ile aynı.
+ */
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+@Composable
+fun HowItWorks(sections: List<Pair<String?, String>>, modifier: Modifier = Modifier) {
+    var open by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
+    Row(
+        modifier.clip(RoundedCornerShape(50)).clickable { open = true }.padding(vertical = 6.dp, horizontal = 2.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        LineIcon("info", 18.dp, c1 = Theme.c.accent, c2 = Theme.c.accent)
+        Spacer(Modifier.width(6.dp))
+        Text(L("common.how"), color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+    }
+    if (open) {
+        androidx.compose.material3.ModalBottomSheet(onDismissRequest = { open = false }, containerColor = Theme.c.surface) {
+            HowItWorksContent(sections)
+        }
+    }
+}
+
+/** Alt sayfanın içeriği (ekran görüntüsü testinde doğrudan çizilir) */
+@Composable
+fun HowItWorksContent(sections: List<Pair<String?, String>>) {
+    Column(
+        Modifier.fillMaxWidth().verticalScroll(androidx.compose.foundation.rememberScrollState())
+            .padding(horizontal = 24.dp).padding(top = 4.dp, bottom = 32.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        PageTitle(L("common.how"))
+        for ((title, body) in sections) {
+            if (title != null) Text(title, Modifier.padding(top = 8.dp), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+            Text(body, color = Theme.c.text, fontSize = 15.sp, lineHeight = 23.sp)
+        }
+    }
+}

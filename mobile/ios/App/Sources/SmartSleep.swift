@@ -168,8 +168,6 @@ struct SmartSleepSection: View {
             }
         } header: {
             Text(L("alarm.smart"))
-        } footer: {
-            Text(L("smart.how") + " " + L("smart.howIOS"))
         }
         .fullScreenCover(isPresented: $showing) { SmartSleepView() }
     }

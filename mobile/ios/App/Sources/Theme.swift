@@ -159,19 +159,46 @@ struct Atmosphere: Identifiable {
 
     /// "Gün ışığı" (doğal tasarım madde 7, 4 Kasım 2026; yeni kurulumda varsayılan): seçili yerde Güneş'in yüksekliğine
     /// ve yükselip alçalmasına göre şafak, sabah/öğle, ikindi (altın saat), akşam ya da gece tonu; sayfanın üstünden
-    /// zemine iner. Güneş hesabı uygulamada (DaylightClock); widget'larda yoktur, orada düz zemin kalır.
+    /// zemine iner. Uygulamada Güneş hesabı `sun` ile verilir; saat widget'ları App Group'taki konumla aynı tonu çizer
+    /// (`widgetDaylight`, doğal tasarım madde 19).
     static let daylightID = "daylight"
     /// Uygulama açılırken kurulur: seçili yerde Güneş'in yüksekliği (derece) ve yükselip yükselmediği
     static var sun: ((Date) -> (alt: Double, rising: Bool))?
 
     static func daylight(at date: Date = Date()) -> Atmosphere {
         let s = sun?(date) ?? (alt: 30, rising: true)
+        return daylightTone(alt: s.alt, rising: s.rising)
+    }
+
+    /// Güneş'in yüksekliğine (derece) ve yükselip alçalmasına göre ton (Android'deki Atmosphere.daylightTone ile aynı eşikler)
+    static func daylightTone(alt: Double, rising: Bool) -> Atmosphere {
         let tone: (UInt32, UInt32)
-        if s.alt < -6 { tone = (0xE3E4EE, 0x12131C) }
-        else if s.alt < 6 { tone = s.rising ? (0xF8E4D6, 0x2A1E2C) : (0xEEDDE4, 0x271B2C) }
-        else if !s.rising && s.alt < 25 { tone = (0xF6E3C4, 0x2A2118) }
+        if alt < -6 { tone = (0xE3E4EE, 0x12131C) }
+        else if alt < 6 { tone = rising ? (0xF8E4D6, 0x2A1E2C) : (0xEEDDE4, 0x271B2C) }
+        else if !rising && alt < 25 { tone = (0xF6E3C4, 0x2A2118) }
         else { tone = (0xE9EFF0, 0x172230) }
         return Atmosphere(id: daylightID, light: (tone.0, 0xF6F0E4), dark: (tone.1, 0x14151C))
+    }
+
+    /// App Group'taki küçük paylaşım (uygulama yazar, widget okur): atmosfer seçimi ve seçili yerin konumu
+    static let groupID = "group.tr.bumba.time"
+
+    /// Uygulama öne gelince ve arka plana geçerken yazar (saat widget'larının gün ışığı zemini için)
+    static func publish(atmo: String, lat: Double, lon: Double) {
+        guard let d = UserDefaults(suiteName: groupID) else { return }
+        d.set(atmo, forKey: key)
+        d.set(lat, forKey: "place.lat")
+        d.set(lon, forKey: "place.lon")
+    }
+
+    /// Saat widget'larında gün ışığı tonu: uygulamada "Gün ışığı" seçiliyse seçili yerde o andaki ton, değilse nil
+    static func widgetDaylight(at date: Date) -> Atmosphere? {
+        guard let d = UserDefaults(suiteName: groupID), d.string(forKey: key) == daylightID,
+              d.object(forKey: "place.lat") != nil else { return nil }
+        let lat = d.double(forKey: "place.lat"), lon = d.double(forKey: "place.lon")
+        let alt = WorldMath.sunAltitude(lat: lat, lon: lon, at: date)
+        let rising = WorldMath.sunAltitude(lat: lat, lon: lon, at: date.addingTimeInterval(600)) > alt
+        return daylightTone(alt: alt, rising: rising)
     }
 
     static func find(_ id: String?) -> Atmosphere? { id == daylightID ? daylight() : all.first { $0.id == id } }

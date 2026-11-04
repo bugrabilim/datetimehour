@@ -330,6 +330,12 @@ struct AlarmsView: View {
 
     var body: some View {
         List {
+            // Uzun açıklamalar "Nasıl çalışır?" alt sayfasında (doğal tasarım madde 13)
+            Section {
+                HowItWorks(sections: [(L("alarm.fromCalendar"), L("alarm.fromCalendarNote"))])
+            }
+            .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
             // Sıradaki alarm (2. analiz #51)
             if items.contains(where: \.enabled) {
                 Section { AlarmListHeadCard(items: items) }
@@ -345,7 +351,7 @@ struct AlarmsView: View {
                         }
                     }
                 }
-                if !quickMsg.isEmpty { Text(quickMsg).font(.footnote).foregroundStyle(Theme.accent) }
+                if !quickMsg.isEmpty { Text(quickMsg).font(.footnote).foregroundStyle(Theme.text) }
             }
             // Takvimdeki etkinliğe alarm ve konuma bağlı hatırlatıcı (rakip analizi listesi #93)
             Section {
@@ -360,8 +366,6 @@ struct AlarmsView: View {
                 } label: {
                     Label(L("geo.title"), systemImage: "mappin.and.ellipse")
                 }
-            } footer: {
-                Text(L("alarm.fromCalendarNote"))
             }
             if items.isEmpty {
                 // Boş durum (2. analiz #96)
@@ -689,6 +693,17 @@ private struct AlarmEditor: View {
                     .buttonStyle(.plain)
                 }
                 if advanced {
+                    // Gelişmiş bölümün uzun notları tek "Nasıl çalışır?" alt sayfasında (doğal tasarım madde 13)
+                    Section {
+                        HowItWorks(sections: [
+                            (L("alarm.smart"), L("alarm.smart.note")),
+                            (L("alarm.sunrise"), L("alarm.sunriseNote")),
+                            (L("alarm.task.heading"), L(AlarmCenter.hasRealAlarms ? "alarm.task.noteIOS" : "alarm.task.oldIOS") + " "
+                                + L("alarm.chainNote") + " " + L("alarm.code.hint")),
+                            (L("alarm.wakeCheck"), L("alarm.wakeCheck.note")),
+                        ])
+                    }
+                    .listRowBackground(Color.clear)
                     // Saat neye göre (2. analiz #132 şehir saati, #153 gün doğumu/batımı ± dk)
                     Section {
                         Picker(L("alarm.base"), selection: base) {
@@ -768,8 +783,6 @@ private struct AlarmEditor: View {
                                 Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.smartMin", m)).tag(m)
                             }
                         }
-                    } footer: {
-                        Text(L("alarm.smart.note"))
                     }
                     // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
                     Section {
@@ -778,8 +791,6 @@ private struct AlarmEditor: View {
                                 Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.sunriseMin", m)).tag(m)
                             }
                         }
-                    } footer: {
-                        Text(L("alarm.sunriseNote"))
                     }
                     // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
                     Section {
@@ -812,7 +823,6 @@ private struct AlarmEditor: View {
                                 Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
                             }
                             Text(L(item.code.isEmpty ? "alarm.code.missing" : "alarm.code.saved")).font(.footnote).foregroundStyle(Theme.muted)
-                            Text(L("alarm.code.hint")).font(.footnote).foregroundStyle(Theme.muted)
                         }
                         if item.task == "photo" {
                             if CameraShot.available {
@@ -834,9 +844,6 @@ private struct AlarmEditor: View {
                         Toggle(L("alarm.wakeCheck"), isOn: $item.wakeCheck).tint(Theme.accent)
                     } header: {
                         Text(L("alarm.task.heading"))
-                    } footer: {
-                        Text(L(AlarmCenter.hasRealAlarms ? "alarm.task.noteIOS" : "alarm.task.oldIOS") + " " + L("alarm.wakeCheck.note")
-                             + (item.task != "none" ? " " + L("alarm.chainNote") : ""))
                     }
                 }
             }

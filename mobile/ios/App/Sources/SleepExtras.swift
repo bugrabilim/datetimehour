@@ -288,7 +288,7 @@ struct AlarmListHeadCard: View {
             if let next = items.filter(\.enabled).compactMap({ $0.next(after: ctx.date) }).min() {
                 VStack(alignment: .leading, spacing: 4) {
                     let mins = Int((next.timeIntervalSince(ctx.date) / 60).rounded(.up))
-                    Text(T("alarm.nextIn", Fmt.hm(seconds: mins * 60))).font(.title3.weight(.bold)).foregroundStyle(Theme.accent)
+                    Text(T("alarm.nextIn", Fmt.hm(seconds: mins * 60))).font(AppFonts.cardTitle).foregroundStyle(Theme.text)
                     Text(Fmt.time(next) + " · " + Fmt.longDate(next)).font(.subheadline).foregroundStyle(Theme.muted)
                 }
             }

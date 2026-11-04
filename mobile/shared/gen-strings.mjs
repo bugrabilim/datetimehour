@@ -326,11 +326,41 @@ const constellationsJson = JSON.stringify(conSrc.con) + "\n";
 const iconsSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "mobile/shared/icons/icons.json"), "utf8"));
 delete iconsSrc._note;
 const iconsJson = JSON.stringify(iconsSrc) + "\n";
+/* Widget'lar için Android vektör çizimleri (doğal tasarım madde 19, 4 Kasım 2026): RemoteViews Compose çizemediği için
+   hava ve gök simgeleri icons.json'dan vector drawable'a çevrilir; ana renk widget yazı rengi, ikinci renk widget vurgusu.
+   Daireler ("O cx cy r") iki yarım yaya çevrilir. */
+const WIDGET_ICONS = ["sun", "moon", "cloud", "rain", "snow", "storm", "fog", "night", "sunrise", "sunset"];
+const widgetVectors = {};
+for (const name of WIDGET_ICONS) {
+  const parts = iconsSrc[name];
+  if (!parts) throw new Error("icons.json'da yok: " + name);
+  const paths = parts.map(([kind, d]) => {
+    const color = kind.startsWith("c2") ? "@color/widget_accent" : "@color/widget_text";
+    const fill = kind.endsWith("f");
+    const data = d.replace(/O((?:\s+-?[\d.]+){3,})/g, (_, nums) => {
+      const n = nums.trim().split(/\s+/).map(Number);
+      let out = "";
+      for (let i = 0; i + 2 < n.length; i += 3) {
+        const [cx, cy, r] = n.slice(i, i + 3);
+        out += ` M${+(cx - r).toFixed(3)} ${cy} a${r} ${r} 0 1 0 ${2 * r} 0 a${r} ${r} 0 1 0 ${-2 * r} 0`;
+      }
+      return out;
+    }).trim();
+    return fill
+      ? `    <path android:fillColor="${color}" android:pathData="${data}" />`
+      : `    <path android:strokeColor="${color}" android:strokeWidth="2" android:strokeLineCap="round" android:strokeLineJoin="round"\n        android:fillColor="#00000000" android:pathData="${data}" />`;
+  });
+  widgetVectors[`mobile/android/app/src/main/res/drawable/wi_${name}.xml`] =
+    `<?xml version="1.0" encoding="utf-8"?>\n<!-- Üretildi: mobile/shared/gen-strings.mjs (icons.json "${name}"); elle düzenlemeyin -->\n` +
+    `<vector xmlns:android="http://schemas.android.com/apk/res/android"\n    android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">\n` +
+    paths.join("\n") + "\n</vector>\n";
+}
 /* NASA SVS CGI Moon Kit dokusu (kamu malı; 2. analiz #103): ikili dosya, uygulamalara kopyalanır */
 const moonJpg = fs.readFileSync(path.join(ROOT, "src/assets/moon.jpg"));
 
 const files = {
   ...otdFiles,
+  ...widgetVectors,
   "mobile/ios/App/Resources/sky-events.json": skyEventsJson,
   "mobile/android/app/src/main/assets/sky-events.json": skyEventsJson,
   "mobile/ios/App/Resources/constellations.json": constellationsJson,

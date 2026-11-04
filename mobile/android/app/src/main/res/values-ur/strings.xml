@@ -2837,5 +2837,6 @@
     <string name="onboard_replay">تعارف دوبارہ دکھائیں</string>
     <string name="atmo_daylight">دن کی روشنی</string>
     <string name="atmo_daylightNote">دن کی روشنی منتخب جگہ پر سورج کے مطابق بدلتی ہے: فجر، صبح، عصر، شام یا رات کے رنگ۔</string>
+    <string name="common_how">یہ کیسے کام کرتا ہے؟</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>
