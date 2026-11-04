@@ -28,6 +28,8 @@ targets:
     dependencies:
       - package: SaatCore
       - target: SaatTarihWidget
+      # Vakit bildiriminde uzun basınca açılan içerik (2. analiz #164)
+      - target: SaatTarihNotify
       # Apple Watch uygulaması (komplikasyonlarıyla) iPhone uygulamasının Watch klasörüne gömülür
       - target: SaatTarihWatch
         embed: true
@@ -124,6 +126,40 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         SKIP_INSTALL: YES
         LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+  # Vakit bildirimi içerik uzantısı (2. analiz #164): uzun basınca kalan süre ve kıble yönü; veriler bildirimin içinden
+  SaatTarihNotify:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: NotifyContent/Sources
+    dependencies:
+      - package: SaatCore
+      - sdk: UserNotifications.framework
+      - sdk: UserNotificationsUI.framework
+      - sdk: SwiftUI.framework
+    info:
+      path: NotifyContent/Info.plist
+      properties:
+        CFBundleDisplayName: Saat Tarih
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.usernotifications.content-extension
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).NotificationViewController
+          NSExtensionAttributes:
+            UNNotificationExtensionCategory: prayer
+            UNNotificationExtensionInitialContentSizeRatio: 0.5
+            UNNotificationExtensionDefaultContentHidden: false
+    settings:
+      base:
+        PRODUCT_NAME: SaatTarihNotify
+        PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.notify
+        DEVELOPMENT_TEAM: 3J9XN2P93D
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: YES
+        SKIP_INSTALL: YES
   # Apple Watch uygulaması (rakip analizi #6): saat, tarih (miladi + hicri), sıradaki vakit, bugünün vakitleri, yer
   # seçimi (iPhone'daki yer WatchConnectivity ile gelir). Hesap SaatCore'da; ortak dosyalar App/Sources'tan.
   SaatTarihWatch:

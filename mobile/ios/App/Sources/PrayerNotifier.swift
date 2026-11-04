@@ -117,7 +117,10 @@ enum PrayerNotifier {
                         ? String(format: L("notify.title.before"), name, String(lead))
                         : String(format: L("notify.title.now"), name),
                     body: "\(place.name) · \(place.hm(a.prayerAt))", thread: "prayer", sound: sounds[a.prayer] ?? .default,
-                    category: PrayerSnooze.category)
+                    category: PrayerSnooze.category,
+                    // Uzun basınca açılan içerik (NotifyContent uzantısı): vakte kalan süre ve kıble yönü
+                    info: ["prayerAt": String(Int(a.prayerAt.timeIntervalSince1970)), "prayer": name,
+                           "lat": String(place.lat), "lon": String(place.lon), "place": place.name])
             }
         }
         planned += await FeatureNotifier.planned(place: place, now: now)
