@@ -2482,5 +2482,20 @@
     <string name="notify_perPrayer_custom">Khusus</string>
     <string name="notify_perPrayer_general">Pengaturan umum</string>
     <string name="notify_perPrayer_days">Hari (kosong = setiap hari)</string>
+    <string name="qibla_style_classic">Klasik</string>
+    <string name="qibla_style_minimal">Minimal</string>
+    <string name="qibla_style_gold">Emas</string>
+    <string name="qibla_style_night">Malam</string>
+    <string name="qibla_style_green">Hijau</string>
+    <string name="qibla_map">Kiblat di peta</string>
+    <string name="qibla_mapNote">Garis ini adalah jalur terpendek dari lokasi Anda ke Ka\'bah (lingkaran besar). Peta digambar di ponsel, tanpa menghubungi layanan apa pun.</string>
+    <string name="qibla_mapNoteIos">Garis ini adalah jalur terpendek dari lokasi Anda ke Ka\'bah (lingkaran besar). Peta berasal dari Apple Maps.</string>
+    <string name="qibla_favs">Masjid favorit</string>
+    <string name="qibla_favAdd">Tambah ke favorit</string>
+    <string name="qibla_favRemove">Hapus dari favorit</string>
+    <string name="qibla_camera">Tampilan kamera</string>
+    <string name="qibla_cameraNote">Pegang ponsel tegak lalu berputar; saat penanda Ka\'bah di tengah, kiblat ada di depan Anda. Gambar tetap di ponsel dan tidak disimpan.</string>
+    <string name="qibla_cameraDenied">Tidak ada izin kamera. Anda dapat mengizinkannya di Pengaturan.</string>
+    <string name="qibla_kaabaName">Ka\'bah</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

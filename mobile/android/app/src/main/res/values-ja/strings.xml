@@ -2482,5 +2482,20 @@
     <string name="notify_perPrayer_custom">カスタム</string>
     <string name="notify_perPrayer_general">全体の設定</string>
     <string name="notify_perPrayer_days">曜日(空欄=毎日)</string>
+    <string name="qibla_style_classic">クラシック</string>
+    <string name="qibla_style_minimal">シンプル</string>
+    <string name="qibla_style_gold">ゴールド</string>
+    <string name="qibla_style_night">夜</string>
+    <string name="qibla_style_green">グリーン</string>
+    <string name="qibla_map">地図上のキブラ</string>
+    <string name="qibla_mapNote">線は現在地からカアバまでの最短経路(大円)です。地図は端末内で描かれ、外部サービスには接続しません。</string>
+    <string name="qibla_mapNoteIos">線は現在地からカアバまでの最短経路(大円)です。地図はApple マップです。</string>
+    <string name="qibla_favs">お気に入りのモスク</string>
+    <string name="qibla_favAdd">お気に入りに追加</string>
+    <string name="qibla_favRemove">お気に入りから削除</string>
+    <string name="qibla_camera">カメラ表示</string>
+    <string name="qibla_cameraNote">端末を縦に持って向きを変え、カアバの印が中央に来たらキブラは正面です。映像は端末内にとどまり、保存されません。</string>
+    <string name="qibla_cameraDenied">カメラの許可がありません。設定で許可できます。</string>
+    <string name="qibla_kaabaName">カアバ</string>
     <string name="app_name">時刻と日付</string>
 </resources>

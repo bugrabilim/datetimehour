@@ -353,7 +353,21 @@ class MoreScreensTest {
             Mosque("Rüstem Paşa Camii", 41.0176, 28.9688, 0.0),
             Mosque("Sultanahmet Camii", 41.0054, 28.9768, 0.0),
         ))
+        QiblaPrefs.toggle(Mosque("Süleymaniye Camii", 41.0162, 28.9640, 0.0))
         shot("tr-yakindaki-camiler") { NearbyMosquesScreen {} }
+        QiblaPrefs.saveStyle("gold")
+        shot("tr-kible-altin", dark = true) { QiblaScreen {} }
+        shot("tr-kible-harita") { androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.padding(16.dp)) { QiblaRouteMap(41.0, 29.0, "İstanbul"); QiblaRouteMap(40.7, -74.0, "New York") } }
+        QiblaPrefs.saveStyle("classic")
+        // Büyük daire: İstanbul'dan Kâbe'ye çizgi başta İstanbul'da, sonda Kâbe'de; kesit 2:1
+        val route = QiblaPrefs.route(41.0, 29.0)
+        assertEquals(41.0, route.first().first, 1e-6)
+        assertEquals(QiblaPrefs.KAABA_LON, route.last().second, 1e-6)
+        val fr = QiblaPrefs.frame(route)
+        assertTrue(fr.third in 30.0..90.0)
+        // Samoa: yol tarih değiştirme çizgisini geçiyorsa tüm dünya gösterilir, sınır dışına çıkılmaz
+        val f2 = QiblaPrefs.frame(QiblaPrefs.route(-13.8, -171.8))
+        assertTrue(f2.first >= -180.0 && f2.first + f2.third <= 180.0)
     }
     /** İbadet: Kur'an (liste, Fatiha, Arapça koyu), dualar, zikirmatik, namaz/oruç takibi, zekât */
     @Test fun worship() {

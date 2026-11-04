@@ -2482,5 +2482,20 @@
     <string name="notify_perPrayer_custom">Eigene</string>
     <string name="notify_perPrayer_general">Allgemeine Einstellung</string>
     <string name="notify_perPrayer_days">Tage (leer = täglich)</string>
+    <string name="qibla_style_classic">Klassisch</string>
+    <string name="qibla_style_minimal">Schlicht</string>
+    <string name="qibla_style_gold">Gold</string>
+    <string name="qibla_style_night">Nacht</string>
+    <string name="qibla_style_green">Grün</string>
+    <string name="qibla_map">Qibla auf der Karte</string>
+    <string name="qibla_mapNote">Die Linie ist der kürzeste Weg von Ihrem Standort zur Kaaba (Großkreis). Die Karte wird auf dem Telefon gezeichnet, kein Dienst wird kontaktiert.</string>
+    <string name="qibla_mapNoteIos">Die Linie ist der kürzeste Weg von Ihrem Standort zur Kaaba (Großkreis). Die Karte stammt von Apple Karten.</string>
+    <string name="qibla_favs">Lieblingsmoscheen</string>
+    <string name="qibla_favAdd">Zu Favoriten</string>
+    <string name="qibla_favRemove">Aus Favoriten entfernen</string>
+    <string name="qibla_camera">Kameraansicht</string>
+    <string name="qibla_cameraNote">Halten Sie das Telefon aufrecht und drehen Sie sich; steht das Kaaba-Zeichen in der Mitte, liegt die Qibla vor Ihnen. Das Bild bleibt auf dem Telefon und wird nicht gespeichert.</string>
+    <string name="qibla_cameraDenied">Keine Kameraberechtigung. Sie können sie in den Einstellungen erlauben.</string>
+    <string name="qibla_kaabaName">Kaaba</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

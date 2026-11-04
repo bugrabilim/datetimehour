@@ -2482,5 +2482,20 @@
     <string name="notify_perPrayer_custom">Xüsusi</string>
     <string name="notify_perPrayer_general">Ümumi ayar</string>
     <string name="notify_perPrayer_days">Günlər (boşdursa hər gün)</string>
+    <string name="qibla_style_classic">Klassik</string>
+    <string name="qibla_style_minimal">Sadə</string>
+    <string name="qibla_style_gold">Qızıl</string>
+    <string name="qibla_style_night">Gecə</string>
+    <string name="qibla_style_green">Yaşıl</string>
+    <string name="qibla_map">Xəritədə qiblə</string>
+    <string name="qibla_mapNote">Xətt olduğunuz yerdən Kəbəyə ən qısa yoldur (böyük dairə). Xəritə telefonda çəkilir, heç bir xidmətə müraciət edilmir.</string>
+    <string name="qibla_mapNoteIos">Xətt olduğunuz yerdən Kəbəyə ən qısa yoldur (böyük dairə). Xəritə Apple Xəritələrdən gəlir.</string>
+    <string name="qibla_favs">Sevimli məscidlər</string>
+    <string name="qibla_favAdd">Sevimlilərə əlavə et</string>
+    <string name="qibla_favRemove">Sevimlilərdən çıxar</string>
+    <string name="qibla_camera">Kamera görünüşü</string>
+    <string name="qibla_cameraNote">Telefonu dik tutub dönün; Kəbə işarəsi ortaya gələndə qiblə qarşınızdadır. Görüntü telefonda qalır, yadda saxlanmır.</string>
+    <string name="qibla_cameraDenied">Kamera icazəsi yoxdur. Ayarlardan icazə verə bilərsiniz.</string>
+    <string name="qibla_kaabaName">Kəbə</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

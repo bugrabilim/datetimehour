@@ -17,7 +17,7 @@ enum CloudSync {
     /// Eşitlenen anahtarlar (Android'deki yedekle aynı adlar; değer biçimleri iki platformda aynı)
     static let keys: [String] = [
         // Görünüm ve saat
-        "appearance", "accent", "h12", "units", "keepAwake", "clockModel", "clockFont", "digital.style", "world.view", "secA", "secD", "homeItems",
+        "appearance", "accent", "h12", "units", "keepAwake", "clockModel", "clockFont", "digital.style", "world.view", "qibla.style", "qibla.favs", "secA", "secD", "homeItems",
         Features.key, Features.barKey, AllPrefs.favsKey, CalPrefs.modeKey, CalPrefs.hijriNavKey, CalPrefs.countryKey, CalPrefs.hiddenKey, FullscreenBackground.key, NightMode.key, "fs.text", "fs.scale", FullscreenPhoto.slideEveryKey,
         // Kişisel listeler
         "world", SavedPlaces.key, "countdowns", "tools.voice", "hiit.cfg", "hiit.routine", "hiit.log", "world.labels", "hiit.cue.next", "hiit.cue.half", "hiit.cue.ten", "timers.visual", "timers.keypad", "routines", "timers.history", Journal.key, "meet.cities", PrayerMethod.methodKey, PrayerMethod.hanafiKey,

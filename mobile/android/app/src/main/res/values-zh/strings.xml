@@ -2482,5 +2482,20 @@
     <string name="notify_perPrayer_custom">自定义</string>
     <string name="notify_perPrayer_general">通用设置</string>
     <string name="notify_perPrayer_days">日期(留空=每天)</string>
+    <string name="qibla_style_classic">经典</string>
+    <string name="qibla_style_minimal">简约</string>
+    <string name="qibla_style_gold">金色</string>
+    <string name="qibla_style_night">夜间</string>
+    <string name="qibla_style_green">绿色</string>
+    <string name="qibla_map">地图上的朝向</string>
+    <string name="qibla_mapNote">这条线是从您所在地到天房的最短路径(大圆)。地图在手机上绘制,不连接任何服务。</string>
+    <string name="qibla_mapNoteIos">这条线是从您所在地到天房的最短路径(大圆)。地图来自 Apple 地图。</string>
+    <string name="qibla_favs">收藏的清真寺</string>
+    <string name="qibla_favAdd">加入收藏</string>
+    <string name="qibla_favRemove">取消收藏</string>
+    <string name="qibla_camera">相机视图</string>
+    <string name="qibla_cameraNote">竖直握住手机并转身;天房标记到达中央时,朝向就在您正前方。画面只留在手机上,不会保存。</string>
+    <string name="qibla_cameraDenied">没有相机权限。可在“设置”中允许。</string>
+    <string name="qibla_kaabaName">天房</string>
     <string name="app_name">时间与日期</string>
 </resources>

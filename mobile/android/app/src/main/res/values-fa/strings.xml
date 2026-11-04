@@ -2482,5 +2482,20 @@
     <string name="notify_perPrayer_custom">سفارشی</string>
     <string name="notify_perPrayer_general">تنظیم کلی</string>
     <string name="notify_perPrayer_days">روزها (خالی = هر روز)</string>
+    <string name="qibla_style_classic">کلاسیک</string>
+    <string name="qibla_style_minimal">ساده</string>
+    <string name="qibla_style_gold">طلایی</string>
+    <string name="qibla_style_night">شب</string>
+    <string name="qibla_style_green">سبز</string>
+    <string name="qibla_map">قبله روی نقشه</string>
+    <string name="qibla_mapNote">این خط کوتاه‌ترین مسیر از مکان شما تا کعبه است (دایره عظیمه). نقشه روی گوشی کشیده می‌شود و به هیچ سرویسی وصل نمی‌شود.</string>
+    <string name="qibla_mapNoteIos">این خط کوتاه‌ترین مسیر از مکان شما تا کعبه است (دایره عظیمه). نقشه از Apple Maps است.</string>
+    <string name="qibla_favs">مساجد محبوب</string>
+    <string name="qibla_favAdd">افزودن به محبوب‌ها</string>
+    <string name="qibla_favRemove">حذف از محبوب‌ها</string>
+    <string name="qibla_camera">نمای دوربین</string>
+    <string name="qibla_cameraNote">گوشی را عمودی بگیرید و بچرخید؛ وقتی نشانه کعبه به وسط رسید، قبله روبه‌روی شماست. تصویر روی گوشی می‌ماند و ذخیره نمی‌شود.</string>
+    <string name="qibla_cameraDenied">اجازه دوربین نیست. می‌توانید از تنظیمات اجازه دهید.</string>
+    <string name="qibla_kaabaName">کعبه</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

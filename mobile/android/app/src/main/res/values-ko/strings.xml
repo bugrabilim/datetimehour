@@ -2482,5 +2482,20 @@
     <string name="notify_perPrayer_custom">사용자 지정</string>
     <string name="notify_perPrayer_general">공통 설정</string>
     <string name="notify_perPrayer_days">요일(비우면 매일)</string>
+    <string name="qibla_style_classic">클래식</string>
+    <string name="qibla_style_minimal">심플</string>
+    <string name="qibla_style_gold">골드</string>
+    <string name="qibla_style_night">밤</string>
+    <string name="qibla_style_green">초록</string>
+    <string name="qibla_map">지도에서 키블라</string>
+    <string name="qibla_mapNote">선은 현재 위치에서 카바까지의 최단 경로(대원)입니다. 지도는 휴대폰에서 그려지며 어떤 서비스에도 연결하지 않습니다.</string>
+    <string name="qibla_mapNoteIos">선은 현재 위치에서 카바까지의 최단 경로(대원)입니다. 지도는 Apple 지도입니다.</string>
+    <string name="qibla_favs">즐겨찾는 모스크</string>
+    <string name="qibla_favAdd">즐겨찾기에 추가</string>
+    <string name="qibla_favRemove">즐겨찾기에서 제거</string>
+    <string name="qibla_camera">카메라 보기</string>
+    <string name="qibla_cameraNote">휴대폰을 세워 들고 돌아보세요. 카바 표시가 가운데에 오면 키블라가 앞쪽입니다. 영상은 휴대폰에만 있고 저장되지 않습니다.</string>
+    <string name="qibla_cameraDenied">카메라 권한이 없습니다. 설정에서 허용할 수 있습니다.</string>
+    <string name="qibla_kaabaName">카바</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

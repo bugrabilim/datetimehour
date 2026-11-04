@@ -2482,5 +2482,20 @@
     <string name="notify_perPrayer_custom">Свои</string>
     <string name="notify_perPrayer_general">Общая настройка</string>
     <string name="notify_perPrayer_days">Дни (пусто = каждый день)</string>
+    <string name="qibla_style_classic">Классика</string>
+    <string name="qibla_style_minimal">Простой</string>
+    <string name="qibla_style_gold">Золото</string>
+    <string name="qibla_style_night">Ночь</string>
+    <string name="qibla_style_green">Зелёный</string>
+    <string name="qibla_map">Кибла на карте</string>
+    <string name="qibla_mapNote">Линия — кратчайший путь от вашего места до Каабы (большой круг). Карта рисуется на телефоне, ни к какому сервису обращения нет.</string>
+    <string name="qibla_mapNoteIos">Линия — кратчайший путь от вашего места до Каабы (большой круг). Карта — Apple Карты.</string>
+    <string name="qibla_favs">Избранные мечети</string>
+    <string name="qibla_favAdd">В избранное</string>
+    <string name="qibla_favRemove">Убрать из избранного</string>
+    <string name="qibla_camera">Вид с камеры</string>
+    <string name="qibla_cameraNote">Держите телефон вертикально и поворачивайтесь; когда знак Каабы окажется в центре, кибла перед вами. Изображение остаётся на телефоне и не сохраняется.</string>
+    <string name="qibla_cameraDenied">Нет доступа к камере. Его можно разрешить в настройках.</string>
+    <string name="qibla_kaabaName">Кааба</string>
     <string name="app_name">Время и дата</string>
 </resources>

@@ -2482,5 +2482,20 @@
     <string name="notify_perPrayer_custom">مخصص</string>
     <string name="notify_perPrayer_general">الإعداد العام</string>
     <string name="notify_perPrayer_days">الأيام (فارغ = كل يوم)</string>
+    <string name="qibla_style_classic">كلاسيكي</string>
+    <string name="qibla_style_minimal">بسيط</string>
+    <string name="qibla_style_gold">ذهبي</string>
+    <string name="qibla_style_night">ليلي</string>
+    <string name="qibla_style_green">أخضر</string>
+    <string name="qibla_map">القبلة على الخريطة</string>
+    <string name="qibla_mapNote">الخط هو أقصر طريق من موقعك إلى الكعبة (دائرة عظمى). تُرسم الخريطة على الهاتف دون الاتصال بأي خدمة.</string>
+    <string name="qibla_mapNoteIos">الخط هو أقصر طريق من موقعك إلى الكعبة (دائرة عظمى). الخريطة من خرائط Apple.</string>
+    <string name="qibla_favs">المساجد المفضلة</string>
+    <string name="qibla_favAdd">أضف إلى المفضلة</string>
+    <string name="qibla_favRemove">إزالة من المفضلة</string>
+    <string name="qibla_camera">عرض الكاميرا</string>
+    <string name="qibla_cameraNote">أمسك الهاتف عموديًا واستدر؛ عندما تصل علامة الكعبة إلى المنتصف تكون القبلة أمامك. تبقى الصورة على الهاتف ولا تُحفظ.</string>
+    <string name="qibla_cameraDenied">لا يوجد إذن للكاميرا. يمكنك السماح به من الإعدادات.</string>
+    <string name="qibla_kaabaName">الكعبة</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

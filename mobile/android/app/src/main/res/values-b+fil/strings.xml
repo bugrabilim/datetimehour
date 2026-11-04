@@ -2482,5 +2482,20 @@
     <string name="notify_perPrayer_custom">Custom</string>
     <string name="notify_perPrayer_general">Pangkalahatang setting</string>
     <string name="notify_perPrayer_days">Mga araw (walang pili = araw-araw)</string>
+    <string name="qibla_style_classic">Klasiko</string>
+    <string name="qibla_style_minimal">Simple</string>
+    <string name="qibla_style_gold">Ginto</string>
+    <string name="qibla_style_night">Gabi</string>
+    <string name="qibla_style_green">Berde</string>
+    <string name="qibla_map">Qibla sa mapa</string>
+    <string name="qibla_mapNote">Ang linya ang pinakamaikling daan mula sa iyong lokasyon papunta sa Kaaba (great circle). Iginuguhit ang mapa sa telepono; walang serbisyong kinokontak.</string>
+    <string name="qibla_mapNoteIos">Ang linya ang pinakamaikling daan mula sa iyong lokasyon papunta sa Kaaba (great circle). Galing sa Apple Maps ang mapa.</string>
+    <string name="qibla_favs">Mga paboritong masjid</string>
+    <string name="qibla_favAdd">Idagdag sa paborito</string>
+    <string name="qibla_favRemove">Alisin sa paborito</string>
+    <string name="qibla_camera">Camera view</string>
+    <string name="qibla_cameraNote">Hawakan nang patayo ang telepono at umikot; kapag nasa gitna na ang marka ng Kaaba, nasa harap mo ang qibla. Nananatili sa telepono ang larawan at hindi sine-save.</string>
+    <string name="qibla_cameraDenied">Walang pahintulot sa camera. Maaari mo itong payagan sa Settings.</string>
+    <string name="qibla_kaabaName">Kaaba</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

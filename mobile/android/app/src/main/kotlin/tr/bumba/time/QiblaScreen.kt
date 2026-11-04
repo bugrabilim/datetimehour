@@ -202,6 +202,7 @@ fun QiblaScreen(onBack: () -> Unit) {
                 Text(L("qibla.atKaaba"), Modifier.padding(vertical = 40.dp), color = Theme.c.accent, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
             } else {
                 QiblaDial(q.bearing, heading ?: 0.0, aligned)
+                QiblaStylePicker()
                 if (!compass.available) {
                     Note(L("qibla.noCompass"))
                 } else {
@@ -231,6 +232,13 @@ fun QiblaScreen(onBack: () -> Unit) {
                     } else {
                         Fact(L("qibla.time"), "–", L("qibla.noTime"))
                     }
+                }
+            }
+            if (!atKaaba) {
+                AppCard {
+                    SectionTitle(L("qibla.map"))
+                    QiblaRouteMap(place.lat, place.lon, place.name)
+                    Text(L("qibla.mapNote"), color = Theme.c.muted, fontSize = 13.sp)
                 }
             }
             AppCard(Modifier.clickable { page = "mosques" }) {
@@ -273,9 +281,10 @@ private fun QiblaDial(bearing: Double, heading: Double, aligned: Boolean) {
     var target by remember { mutableFloatStateOf(-heading.toFloat()) }
     target += angleDiff(-heading, target.toDouble()).toFloat()
     val dial by animateFloatAsState(target, tween(250), label = "dial")
-    val ink = Theme.c.ink
-    val muted = Theme.c.muted
-    val arrowColor = if (aligned) Theme.c.accent else ink
+    val look = QiblaPrefs.look()
+    val ink = look.tick
+    val muted = look.faceInk ?: Theme.c.muted
+    val arrowColor = if (aligned) Theme.c.accent else look.needle
     val cardinals = L("qibla.cardinals").split(" ")
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         Box(
@@ -283,7 +292,7 @@ private fun QiblaDial(bearing: Double, heading: Double, aligned: Boolean) {
                 .semantics { contentDescription = L("qibla.angle") + " " + degrees(bearing) },
             contentAlignment = Alignment.Center,
         ) {
-            Box(Modifier.size(270.dp).background(Theme.c.surface, CircleShape).border(1.dp, Theme.c.border, CircleShape))
+            Box(Modifier.size(270.dp).background(look.face, CircleShape).border(if (QiblaPrefs.style == "gold") 3.dp else 1.dp, look.ring, CircleShape))
             Box(Modifier.fillMaxSize().rotate(dial), contentAlignment = Alignment.Center) {
                 Canvas(Modifier.size(270.dp)) {
                     val c = Offset(size.width / 2, size.height / 2)
@@ -303,7 +312,7 @@ private fun QiblaDial(bearing: Double, heading: Double, aligned: Boolean) {
                     Box(Modifier.size(270.dp).rotate(i * 90f), contentAlignment = Alignment.TopCenter) {
                         Text(
                             s, Modifier.padding(top = 24.dp).rotate(-dial - i * 90f),
-                            color = if (i == 0) Color(0xFFE5484D) else muted, fontSize = 17.sp,
+                            color = if (i == 0) look.north else muted, fontSize = 17.sp,
                             fontWeight = if (i == 0) FontWeight.Bold else FontWeight.SemiBold,
                         )
                     }
@@ -333,7 +342,7 @@ private fun QiblaDial(bearing: Double, heading: Double, aligned: Boolean) {
 }
 
 /** İki nokta arası uzaklık (m; haversine) */
-private fun meters(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
+internal fun meters(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
     val r = Math.PI / 180
     val a = sin((lat2 - lat1) * r / 2).let { it * it } + cos(lat1 * r) * cos(lat2 * r) * sin((lon2 - lon1) * r / 2).let { it * it }
     return 2 * 6_371_008.8 * kotlin.math.asin(kotlin.math.sqrt(a))
@@ -445,6 +454,19 @@ fun NearbyMosquesScreen(onBack: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             if (usedPlace) Note(T("qibla.mosquesNear", place.name), TextAlign.Start)
+            @Suppress("UNUSED_VARIABLE") val fv = QiblaPrefs.favVersion
+            val favs = QiblaPrefs.favs()
+            if (favs.isNotEmpty()) {
+                AppCard {
+                    SectionTitle(L("qibla.favs"))
+                    favs.forEachIndexed { i, m ->
+                        if (i > 0) HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
+                        MosqueRow(m, meters(place.lat, place.lon, m.lat, m.lon)) {
+                            openMaps("geo:${m.lat},${m.lon}?q=${m.lat},${m.lon}(${Uri.encode(m.name)})")
+                        }
+                    }
+                }
+            }
             AppCard {
                 val l = list
                 when {
@@ -458,15 +480,8 @@ fun NearbyMosquesScreen(onBack: () -> Unit) {
                     l.isEmpty() -> Text(L("qibla.mosquesNone"), color = Theme.c.muted)
                     else -> l.forEachIndexed { i, m ->
                         if (i > 0) HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
-                        Row(
-                            Modifier.fillMaxWidth().clickable {
-                                openMaps("geo:${m.lat},${m.lon}?q=${m.lat},${m.lon}(${Uri.encode(m.name)})")
-                            }.padding(vertical = 8.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            Icon(Icons.Filled.Mosque, null, tint = Theme.c.accent, modifier = Modifier.size(20.dp))
-                            Text("  " + m.name, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                            Text(distanceText(m.meters / 1000), color = Theme.c.muted, fontSize = 14.sp, style = Tnum)
+                        MosqueRow(m, m.meters) {
+                            openMaps("geo:${m.lat},${m.lon}?q=${m.lat},${m.lon}(${Uri.encode(m.name)})")
                         }
                     }
                 }
@@ -478,5 +493,20 @@ fun NearbyMosquesScreen(onBack: () -> Unit) {
             }
             Note(L("qibla.mosquesNoteAndroid"), TextAlign.Start)
         }
+    }
+}
+
+/** Cami satırı: dokununca haritada açılır; yıldız favorilere ekler/çıkarır (yalnız telefonda) */
+@Composable
+private fun MosqueRow(m: Mosque, meters: Double, onOpen: () -> Unit) {
+    @Suppress("UNUSED_VARIABLE") val fv = QiblaPrefs.favVersion
+    val fav = QiblaPrefs.isFav(m)
+    Row(Modifier.fillMaxWidth().clickable(onClick = onOpen).padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+        Icon(Icons.Filled.Mosque, null, tint = Theme.c.accent, modifier = Modifier.size(20.dp))
+        Text("  " + m.name, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+        Text(distanceText(meters / 1000), color = Theme.c.muted, fontSize = 14.sp, style = Tnum)
+        Text(if (fav) "★" else "☆", Modifier.clickable { QiblaPrefs.toggle(m) }.padding(start = 12.dp, end = 4.dp)
+            .semantics { contentDescription = if (fav) L("qibla.favRemove") else L("qibla.favAdd") },
+            color = if (fav) Color(0xFFE8B931) else Theme.c.muted, fontSize = 22.sp)
     }
 }
