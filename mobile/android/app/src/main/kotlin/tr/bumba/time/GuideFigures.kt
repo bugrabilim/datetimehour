@@ -65,13 +65,16 @@ fun GuideFigure(id: String, female: Boolean, ink: Color, accent: Color, modifier
         val s = size.minDimension / 100f
         val ox = (size.width - 100f * s) / 2
         fun p(x: Float, y: Float) = Offset(ox + x * s, y * s)
-        // Zemin (seccade)
-        drawLine(accent.copy(alpha = 0.35f), p(12f, 96.5f), p(92f, 96.5f), strokeWidth = 5f * s, cap = StrokeCap.Round)
+        // Zemin: seccade (doğal tasarım madde 17: yuvarlak köşeli halı ve saçak çizgileri)
+        drawRoundRect(accent.copy(alpha = 0.16f), p(10f, 93.5f), androidx.compose.ui.geometry.Size(84f * s, 6f * s),
+            androidx.compose.ui.geometry.CornerRadius(3f * s))
+        for (x in listOf(10f, 94f)) drawLine(accent.copy(alpha = 0.3f), p(x, 94.5f), p(x, 98.5f), strokeWidth = 1.2f * s)
+        // Yumuşak siluet: kalın, yuvarlak uçlu uzuvlar (eklem sayısı iki platformda aynı)
         val pose = GuideFigures.pose(id, female)
-        for (l in pose.lines) drawLine(ink, p(l[0], l[1]), p(l[2], l[3]), strokeWidth = 4.2f * s, cap = StrokeCap.Round)
+        for (l in pose.lines) drawLine(ink.copy(alpha = 0.88f), p(l[0], l[1]), p(l[2], l[3]), strokeWidth = 6.4f * s, cap = StrokeCap.Round)
         val (hx, hy) = pose.head
         if (female) drawCircle(accent.copy(alpha = 0.55f), 9.5f * s, p(hx - 1f, hy))
-        drawCircle(ink, 6.5f * s, p(hx, hy))
+        drawCircle(ink.copy(alpha = 0.88f), 7f * s, p(hx, hy))
         if (id == "salam") {
             // Selam: baş önce sağa, sonra sola döner (ok)
             drawLine(accent, p(hx - 10f, hy - 14f), p(hx + 10f, hy - 14f), strokeWidth = 2.5f * s, cap = StrokeCap.Round)

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Saat widget'larında gün ışığı tonu "golden" (doğal tasarım madde 19; Theme.kt Atmosphere.daylight ile aynı renkler) -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient android:angle="270" android:startColor="#2A2118" android:endColor="#14151C" />
+    <corners android:radius="20dp" />
+</shape>

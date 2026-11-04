@@ -63,7 +63,7 @@ struct WorldWeatherBadge: View {
     var body: some View {
         if let e = store.cached(key) {
             HStack(spacing: 3) {
-                Image(systemName: e.symbol + ".fill").symbolRenderingMode(.multicolor)
+                WeatherIcon3D(symbol: e.symbol, size: 16)
                 Text(Units.temp(celsius: e.celsius))
             }
             .font(.caption2.weight(.semibold))

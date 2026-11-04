@@ -130,7 +130,7 @@ struct HourlyChartCard: View {
         let line3: String = L("weather.wind") + " " + Units.wind(h.wind.speed) + " · " + dirText + " · " + hum
         let head: String = Fmt.time(h.date, tz: zone) + " · " + h.condition.description + " · " + part
         return HStack(spacing: 10) {
-            Image(systemName: h.symbolName).symbolRenderingMode(.multicolor).font(.title2)
+            WeatherIcon3D(symbol: h.symbolName, size: 32)
             VStack(alignment: .leading, spacing: 2) {
                 Text(head).font(.subheadline.weight(.semibold))
                 Text(line2).font(.footnote).foregroundStyle(Theme.muted)
@@ -161,7 +161,7 @@ struct DayDetailSheet: View {
         NavigationStack {
             List {
                 Section {
-                    Label(day.condition.description, systemImage: day.symbolName).symbolRenderingMode(.multicolor)
+                    Label { Text(day.condition.description) } icon: { WeatherIcon3D(symbol: day.symbolName, size: 26) }
                     Text("↑ \(Units.temp(day.highTemperature))   ↓ \(Units.temp(day.lowTemperature))")
                         .environment(\.layoutDirection, .leftToRight)
                 }
@@ -311,7 +311,7 @@ struct MeteogramCard: View {
         let dir = h.wind.direction.converted(to: .degrees).value
         return HStack {
             Text(Fmt.shortDateTime(h.date, tz: zone)).font(.caption).frame(maxWidth: .infinity, alignment: .leading)
-            Image(systemName: h.symbolName).symbolRenderingMode(.multicolor).frame(width: 30)
+            WeatherIcon3D(symbol: h.symbolName, size: 24).frame(width: 30)
             Text(Units.temp(h.temperature)).font(.footnote.weight(.semibold)).frame(maxWidth: .infinity)
             Text(mm > 0 ? String(format: "%.1f", mm) : "–").font(.footnote).foregroundStyle(mm > 0 ? rainBlue : Theme.muted)
                 .frame(maxWidth: .infinity)

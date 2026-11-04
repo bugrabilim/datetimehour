@@ -36,6 +36,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.OpenInNew
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
+import androidx.compose.material.icons.filled.StopCircle
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Remove
@@ -131,7 +133,7 @@ private fun openUrl(c: Context, url: String) {
 
 @Composable
 private fun RtlText(text: String, size: Int, modifier: Modifier = Modifier, color: Color = Theme.c.ink) {
-    Text(text, modifier.fillMaxWidth(), color = color, fontSize = size.sp, lineHeight = (size * 1.9).sp,
+    Text(text, modifier.fillMaxWidth(), color = color, fontSize = size.sp, lineHeight = (size * 1.9).sp, fontFamily = AppFonts.arabic,
         textAlign = TextAlign.Right, style = androidx.compose.ui.text.TextStyle(textDirection = TextDirection.Rtl))
 }
 
@@ -152,6 +154,8 @@ fun QuranScreen(initial: Int? = null, onBack: () -> Unit) {
         SubBar(L("quran.title"), onBack = onBack)
         LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             item {
+                // Mihrap kemeri ve hatem şeridi (doğal tasarım madde 15)
+                ArchBanner(Modifier.fillMaxWidth().height(56.dp).padding(bottom = 6.dp), Theme.c.gold, 0.22f)
                 HatimCard()
                 Spacer(Modifier.height(6.dp))
                 Quran.bookmark?.let { (s, a) ->
@@ -186,7 +190,7 @@ fun QuranScreen(initial: Int? = null, onBack: () -> Unit) {
                         Text(s.title, color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
                         Text(T("quran.suraInfo", s.ayas, L(if (s.mecca) "quran.mecca" else "quran.medina")), color = Theme.c.muted, fontSize = 12.sp)
                     }
-                    Text(s.ar, color = Theme.c.ink, fontSize = 20.sp)
+                    Text(s.ar, color = Theme.c.ink, fontSize = 22.sp, fontFamily = AppFonts.arabic)
                 }
             }
             item { QuranCredits(); Spacer(Modifier.height(12.dp)) }
@@ -230,7 +234,7 @@ fun SuraScreen(sura: Int, startAya: Int, onBack: () -> Unit) {
                 QuranReadingOptions { themeId = it }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("quran.showEn"), Modifier.weight(1f), color = pal.ink, fontSize = 14.sp)
-                    Switch(showEn, { showEn = it; Prefs.store.edit().putBoolean("quran.en", it).apply() },
+                    SoftSwitch(showEn, { showEn = it; Prefs.store.edit().putBoolean("quran.en", it).apply() },
                         colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 if (Strings.lang == "tr" || Strings.lang == "az") {
@@ -301,6 +305,33 @@ object Duas {
 fun DuasScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val duas = remember { Duas.load(context) }
+    // Sesle okuma (4 Kasım 2026, sahibin isteği): telefonun konuşma sesiyle Arapçası ve anlamı; insan sesi kaydı değil
+    var tts by remember { mutableStateOf<android.speech.tts.TextToSpeech?>(null) }
+    var playing by remember { mutableStateOf<String?>(null) }
+    androidx.compose.runtime.DisposableEffect(Unit) {
+        var engine: android.speech.tts.TextToSpeech? = null
+        engine = android.speech.tts.TextToSpeech(context) { ok ->
+            if (ok == android.speech.tts.TextToSpeech.SUCCESS) {
+                engine?.setOnUtteranceProgressListener(object : android.speech.tts.UtteranceProgressListener() {
+                    override fun onStart(id: String?) {}
+                    override fun onDone(id: String?) { if (playing == id) playing = null }
+                    @Deprecated("Deprecated in Java") override fun onError(id: String?) { if (playing == id) playing = null }
+                })
+                tts = engine
+            }
+        }
+        onDispose { engine?.stop(); engine?.shutdown() }
+    }
+    fun speak(key: String, text: String, arabic: Boolean) {
+        val t = tts ?: return
+        t.stop()
+        if (playing == key) { playing = null; return }
+        val r = t.setLanguage(if (arabic) java.util.Locale("ar") else Strings.locale)
+        if (!arabic && r < android.speech.tts.TextToSpeech.LANG_AVAILABLE && Strings.lang == "az") t.setLanguage(java.util.Locale("tr"))
+        t.setSpeechRate(if (arabic) 0.8f else 0.95f)
+        playing = key
+        t.speak(text, android.speech.tts.TextToSpeech.QUEUE_FLUSH, null, key)
+    }
     var query by remember { mutableStateOf("") }
     var cat by remember { mutableStateOf("all") }
     var favs by remember { mutableStateOf(Duas.favs) }
@@ -311,6 +342,8 @@ fun DuasScreen(onBack: () -> Unit) {
     Column(Modifier.fillMaxSize()) {
         SubBar(L("dua.title"), onBack = onBack)
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            // Mihrap kemeri ve hatem şeridi (doğal tasarım madde 15)
+            ArchBanner(Modifier.fillMaxWidth().height(50.dp), Theme.c.gold, 0.22f)
             OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), singleLine = true, placeholder = { Text(L("dua.search")) })
             Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 for (c in listOf("all", "fav") + Duas.CATS) {
@@ -346,6 +379,18 @@ fun DuasScreen(onBack: () -> Unit) {
                 RtlText(d.ar, 22)
                 if (Strings.lang == "tr" || Strings.lang == "az") Text(d.okunus, color = Theme.c.text, fontSize = 14.sp, fontWeight = FontWeight.Medium)
                 d.mean?.let { Text(it, color = Theme.c.muted, fontSize = 14.sp) }
+                // Sesle okuma: Arapçası ve anlamı
+                Row(horizontalArrangement = Arrangement.spacedBy(14.dp), verticalAlignment = Alignment.CenterVertically) {
+                    for ((key, text, arabic) in listOfNotNull(Triple("${d.id}-ar", d.ar, true), d.mean?.let { Triple("${d.id}-mean", it, false) })) {
+                        val on = playing == key
+                        Row(Modifier.clickable(enabled = tts != null) { speak(key, text, arabic) }.padding(vertical = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically) {
+                            Icon(if (on) Icons.Filled.StopCircle else Icons.AutoMirrored.Filled.VolumeUp, null, tint = Theme.c.accent, modifier = Modifier.size(20.dp))
+                            Text(" " + if (on) L("dua.stop") else L(if (arabic) "dua.listenAr" else "dua.listenMean"),
+                                color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+                        }
+                    }
+                }
                 if (d.refs.isNotEmpty() && (Strings.lang == "tr" || Strings.lang == "az")) {
                     for (r in d.refs) {
                         val (s, a) = r.split(":").map { it.toInt() }
@@ -354,6 +399,7 @@ fun DuasScreen(onBack: () -> Unit) {
                 }
             }
             Text(L("dua.note"), color = Theme.c.muted, fontSize = 12.sp)
+            Text(L("dua.voiceNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
     }
 }
@@ -449,7 +495,7 @@ fun ZikirScreen(onBack: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(14.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("zikir.tesbihat"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Switch(tesbihat, { tesbihat = it; count = 0; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                SoftSwitch(tesbihat, { tesbihat = it; count = 0; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             if (!tesbihat) {
                 Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -506,7 +552,7 @@ fun ZikirScreen(onBack: () -> Unit) {
                 }
                 Ltr {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("$count", color = if (done && !beads) Color.White else Theme.c.ink, fontSize = 64.sp, fontWeight = FontWeight.Bold, style = Tnum)
+                        Text("$count", color = if (done && !beads) Color.White else Theme.c.ink, fontSize = 64.sp, fontWeight = FontWeight.Light, style = Tnum)
                         val goal = if (tesbihat) 99 else target
                         if (goal > 0) Text("/ $goal", color = if (done && !beads) Color.White else Theme.c.muted, fontSize = 16.sp, style = Tnum)
                     }
@@ -520,11 +566,11 @@ fun ZikirScreen(onBack: () -> Unit) {
             Text(L("zikir.undoHint"), color = Theme.c.muted, fontSize = 12.sp, textAlign = TextAlign.Center)
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("zikir.beads"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Switch(beads, { beads = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                SoftSwitch(beads, { beads = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("zikir.shakeUndo"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Switch(shakeUndo, { shakeUndo = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                SoftSwitch(shakeUndo, { shakeUndo = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             Row2(L("zikir.today"), "$todayCount")
             Row2(L("zikir.total"), "$total")
@@ -638,7 +684,7 @@ fun TrackerScreen(onBack: () -> Unit) {
                     PauseRow { version++ }
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(L("track.inline"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                        Switch(TrackX.inline, { TrackX.inline = it; version++ }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                        SoftSwitch(TrackX.inline, { TrackX.inline = it; version++ }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
                     Text(L("track.inlineNote"), color = Theme.c.muted, fontSize = 12.sp)
                 }

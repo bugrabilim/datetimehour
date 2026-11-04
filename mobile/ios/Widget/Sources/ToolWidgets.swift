@@ -206,3 +206,17 @@ struct PrayerControl: ControlWidget {
         appLink(kind: "tr.bumba.time.control.prayer", titleKey: "control.prayer", symbol: "moon.stars", path: "prayer")
     }
 }
+
+/// Kilit ekranında / Dynamic Island'da hava: aç/kapa (4 Kasım 2026, sahibin isteği "kolay bir yerden açma kapama").
+/// Durum App Group'tan okunur; düğme uygulamayı arka planda başlatıp güncel havayı alır (LiveWeatherToggleIntent).
+@available(iOSApplicationExtension 18.0, *)
+struct LiveWeatherControl: ControlWidget {
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: LiveWeather.controlKind) {
+            ControlWidgetToggle(L("live.weather.control"), isOn: LiveWeather.isOn, action: LiveWeatherToggleIntent()) { on in
+                Label(L(on ? "night.on" : "night.off"), systemImage: on ? "cloud.sun.fill" : "cloud.sun")
+            }
+        }
+        .displayName(LocalizedStringResource(stringLiteral: "live.weather.control"))
+    }
+}

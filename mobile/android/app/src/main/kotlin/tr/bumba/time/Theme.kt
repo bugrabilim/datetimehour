@@ -12,13 +12,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.foundation.background
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.toArgb
 
 /**
- * Sitedeki renk token'ları (src/styles.css): açık "kâğıt" ve koyu "gece" paleti. iOS'taki Theme.swift ile aynı:
+ * Sitedeki renk token'ları (src/styles.css): açık "kâğıt" ve koyu "gece" paleti. 4 Kasım 2026'dan beri doğal tasarımın
+ * sıcak taban renkleri (docs/dogal-tasarim, bölüm 3.1; sahibin onayı): krem kâğıt, sıcak gece, kahve tonlu yazı. iOS'taki Theme.swift ile aynı:
  * her tema bir ana renk, bir ikinci renk ve bir ton gücüyle gelir; zemin, kartlar, kadran ve kenarlık ana renge
  * doğru karışır. Varsayılan "amber" tonsuzdur (sitedeki renkler).
  */
@@ -39,12 +43,25 @@ data class AppColors(
     /** Atmosfer (renk geçişli zemin; null = düz) */
     val atmo: Atmosphere? = null,
 ) {
-    val accentSoft: Color get() = accent.copy(alpha = 0.16f)
+    /** Ana rengin yumuşak düz tonu (saydam değil; üstündeki yazı ≥4,5:1) */
+    val accentSoft: Color get() = accent.copy(alpha = if (dark) 0.16f else 0.15f).compositeOver(surface)
+    /** Ana renkli düğmenin yazısı */
+    val onAccent: Color get() = if (dark) Color(0xFF1A1410) else Color(0xFFFFF8EF)
+    /** İnce ayraç çizgisi (doğal tasarımdaki `line`; kartlarda kenarlık yok) */
+    val line: Color get() = border
+    /** Süs rengi (ayraç noktaları, soluk çizimler): yazıda kullanılmaz */
+    val faint: Color get() = if (dark) Color(0xFF6E675E) else Color(0xFFA89A88)
     /** Hata ve başarı renkleri: sitedeki --err/--ok token'ları (2. analiz #100; iki temada ≥4,5:1) */
-    val err: Color get() = if (dark) Color(0xFFFF9D9D) else Color(0xFFA31D1D)
+    val err: Color get() = if (dark) Color(0xFFFF9F8A) else Color(0xFFA3311B)
     val errBg: Color get() = if (dark) Color(0xFF3A1A1A) else Color(0xFFFBE7E7)
-    val ok: Color get() = if (dark) Color(0xFF7FD9A1) else Color(0xFF176B3A)
+    val ok: Color get() = if (dark) Color(0xFF8FD3A0) else Color(0xFF2E6A39)
     val okBg: Color get() = if (dark) Color(0xFF16301F) else Color(0xFFE2F3E8)
+    /** Doğa renkleri (doğal tasarım, docs/dogal-tasarim; 4 Kasım 2026): Tümü kategorileri, tanıtım çizimleri */
+    val terra: Color get() = if (dark) Color(0xFFF2A65A) else Color(0xFFB4532A)
+    val sage: Color get() = if (dark) Color(0xFF9CC294) else Color(0xFF4A6B47)
+    val sky: Color get() = if (dark) Color(0xFF8DB8DA) else Color(0xFF3A6889)
+    val gold: Color get() = if (dark) Color(0xFFE2B65C) else Color(0xFF835A0D)
+    val dusk: Color get() = if (dark) Color(0xFFD69BB5) else Color(0xFF7A4760)
 }
 
 /**
@@ -69,19 +86,89 @@ data class Atmosphere(val id: String, val lightTop: Long, val lightBottom: Long,
             Atmosphere("sunset", 0xFEEBDD, 0xF8D3D6, 0x301A11, 0x3D1729),
             Atmosphere("night", 0xE7ECF7, 0xD5DCEF, 0x0A0F1F, 0x1A2342),
         )
-        fun find(id: String?): Atmosphere? = ALL.firstOrNull { it.id == id }
+        /**
+         * "Gün ışığı" (doğal tasarım madde 7, 4 Kasım 2026; yeni kurulumda varsayılan): seçili yerde Güneş'in yüksekliğine
+         * ve yükselip alçalmasına göre şafak, sabah/öğle, ikindi (altın saat), akşam ya da gece tonu; sayfanın üstünden
+         * zemine iner. Ton beş dakikada bir yeniden hesaplanır (AppTheme). iOS'taki Atmosphere.daylight ile aynı renkler.
+         */
+        const val DAYLIGHT = "daylight"
+
+        /** Gün ışığı tonu: "night", "dawn", "dusk", "golden" (ikindi) ya da "day" (widget zemini de bunu kullanır) */
+        fun daylightTone(lat: Double, lon: Double, ms: Long): String {
+            val alt = SkyMath.sunAltitude(lat, lon, ms)
+            val rising = SkyMath.sunAltitude(lat, lon, ms + 600_000) > alt
+            return when {
+                alt < -6 -> "night"
+                alt < 6 -> if (rising) "dawn" else "dusk"
+                !rising && alt < 25 -> "golden"
+                else -> "day"
+            }
+        }
+
+        /** Tonun değişeceği an (5 dk adımla en çok 26 saat ileri; widget yenilemesi için) */
+        fun nextToneChange(lat: Double, lon: Double, from: Long): Long {
+            val now = daylightTone(lat, lon, from)
+            var t = from
+            while (t < from + 26 * 3_600_000L) {
+                t += 300_000L
+                if (daylightTone(lat, lon, t) != now) return t
+            }
+            return t
+        }
+
+        fun daylight(lat: Double, lon: Double, ms: Long): Atmosphere {
+            val (l, d) = when (daylightTone(lat, lon, ms)) {
+                "night" -> 0xE3E4EEL to 0x12131CL
+                "dawn" -> 0xF8E4D6L to 0x2A1E2CL
+                "dusk" -> 0xEEDDE4L to 0x271B2CL
+                "golden" -> 0xF6E3C4L to 0x2A2118L
+                else -> 0xE9EFF0L to 0x172230L
+            }
+            return Atmosphere(DAYLIGHT, l, 0xF6F0E4, d, 0x14151C)
+        }
+
+        /** Gün ışığı uygulamada seçili mi (saat widget'larının zemini de onu izler; doğal tasarım madde 19) */
+        val daylightOn: Boolean get() = (Prefs.store.getString(KEY, "") ?: "") == DAYLIGHT
+
+        fun find(id: String?): Atmosphere? =
+            if (id == DAYLIGHT) AppPlace.current().let { daylight(it.lat, it.lon, System.currentTimeMillis()) }
+            else ALL.firstOrNull { it.id == id }
 
         var selected by mutableStateOf("")
             private set
         private var loaded = false
         fun load() { if (!loaded) { loaded = true; selected = Prefs.store.getString(KEY, "") ?: "" } }
-        fun save(id: String) { selected = id; Prefs.store.edit().putString(KEY, id).apply() }
+        fun save(id: String) {
+            selected = id; Prefs.store.edit().putString(KEY, id).apply()
+            // Saat widget'larının gün ışığı zemini seçimi izler
+            runCatching { WidgetUpdater.updateAll(Strings.appContext) }
+        }
     }
 }
 
-/** Sayfa zemini: atmosfer seçiliyse renk geçişi, değilse temanın zemin rengi */
+/**
+ * Sayfa zemini: atmosfer seçiliyse renk geçişi, değilse temanın zemin rengi; üstünde %4 kâğıt dokusu (doğal tasarım
+ * madde 8: kodla üretilen gri gren, tekrar eden 96 px döşeme; tam ekran saatte ve gece modunda bu zemin kullanılmaz)
+ */
 fun Modifier.appBackdrop(c: AppColors): Modifier =
-    c.atmo?.let { a -> background(Brush.verticalGradient(listOf(a.top(c.dark), a.bottom(c.dark)))) } ?: background(c.bg)
+    (c.atmo?.let { a -> background(Brush.verticalGradient(listOf(a.top(c.dark), a.bottom(c.dark)))) } ?: background(c.bg))
+        .drawBehind { drawRect(PaperGrain.brush, alpha = if (c.dark) 0.05f else 0.04f) }
+
+/** Kâğıt dokusu: sabit tohumlu gri gürültü (her açılışta aynı) */
+object PaperGrain {
+    val brush: androidx.compose.ui.graphics.ShaderBrush by lazy {
+        val n = 96
+        val r = java.util.Random(7)
+        val px = IntArray(n * n) { val v = r.nextInt(256); (0xFF shl 24) or (v shl 16) or (v shl 8) or v }
+        val bmp = android.graphics.Bitmap.createBitmap(px, n, n, android.graphics.Bitmap.Config.ARGB_8888)
+        androidx.compose.ui.graphics.ShaderBrush(
+            androidx.compose.ui.graphics.ImageShader(
+                bmp.asImageBitmap(),
+                androidx.compose.ui.graphics.TileMode.Repeated, androidx.compose.ui.graphics.TileMode.Repeated,
+            ),
+        )
+    }
+}
 
 data class AccentPalette(
     val id: String,
@@ -146,22 +233,22 @@ data class AccentPalette(
         fun t(l: Long, d: Long, lt: Double, dt: Double) =
             rgb(if (dark) mix(d, a, dt * k) else mix(l, a, lt * k))
         return AppColors(
-            bg = t(0xF7F4EE, 0x11141A, 0.09, 0.11),
-            surface = t(0xFFFFFF, 0x1A1E26, 0.04, 0.07),
-            surface2 = t(0xEFEBE2, 0x232834, 0.18, 0.20),
-            text = rgb(if (dark) 0xEEF0F4 else 0x1B1F27),
-            muted = rgb(if (dark) 0xA5ACB9 else 0x565C68),
-            border = t(0xD6CFBF, 0x343B49, 0.35, 0.35),
+            bg = t(0xF6F0E4, 0x14151C, 0.09, 0.11),
+            surface = t(0xFFFBF4, 0x1D1E27, 0.04, 0.07),
+            surface2 = t(0xEDE4D3, 0x272834, 0.18, 0.20),
+            text = rgb(if (dark) 0xF1EADF else 0x2B2520),
+            muted = rgb(if (dark) 0xB4AA9B else 0x6A5F55),
+            border = t(0xE2D6C1, 0x343542, 0.35, 0.35),
             accent = rgb(a),
             accent2 = rgb(if (dark) secondDark else secondLight),
-            ink = t(0x1B1F27, 0xEEF0F4, 0.45, 0.30),
+            ink = t(0x2B2520, 0xF1EADF, 0.45, 0.30),
             dark = dark,
         )
     }
 
     /** Seçicideki örnek: kadran rengi */
     fun face(dark: Boolean): Color =
-        rgb(if (dark) mix(0x232834, this.dark, 0.20 * tint) else mix(0xEFEBE2, light, 0.18 * tint))
+        rgb(if (dark) mix(0x272834, this.dark, 0.20 * tint) else mix(0xEDE4D3, light, 0.18 * tint))
 }
 
 fun rgb(v: Long): Color = Color(0xFF000000 or v)
@@ -187,18 +274,24 @@ fun AppTheme(content: @Composable () -> Unit) {
         else -> isSystemInDarkTheme()
     }
     Atmosphere.load()
+    // Gün ışığı tonu beş dakikada bir yenilenir
+    var tick by androidx.compose.runtime.remember { mutableStateOf(0) }
+    if (Atmosphere.selected == Atmosphere.DAYLIGHT) androidx.compose.runtime.LaunchedEffect(Unit) {
+        while (true) { kotlinx.coroutines.delay(300_000); tick++ }
+    }
+    @Suppress("UNUSED_EXPRESSION") tick
     val atmo = Atmosphere.find(Atmosphere.selected)
     val colors = AccentPalette.find(Prefs.accent).colors(dark).let { if (atmo != null) it.copy(bg = atmo.mid(dark), atmo = atmo) else it }
     val scheme = if (dark) {
         darkColorScheme(
-            primary = colors.accent, onPrimary = colors.bg, background = colors.bg, onBackground = colors.text,
+            primary = colors.accent, onPrimary = colors.onAccent, background = colors.bg, onBackground = colors.text,
             surface = colors.surface, onSurface = colors.text, surfaceVariant = colors.surface2,
             onSurfaceVariant = colors.muted, outline = colors.border, secondary = colors.accent2,
             surfaceContainer = colors.surface, surfaceContainerHigh = colors.surface, surfaceContainerHighest = colors.surface2,
         )
     } else {
         lightColorScheme(
-            primary = colors.accent, onPrimary = Color.White, background = colors.bg, onBackground = colors.text,
+            primary = colors.accent, onPrimary = colors.onAccent, background = colors.bg, onBackground = colors.text,
             surface = colors.surface, onSurface = colors.text, surfaceVariant = colors.surface2,
             onSurfaceVariant = colors.muted, outline = colors.border, secondary = colors.accent2,
             surfaceContainer = colors.surface, surfaceContainerHigh = colors.surface, surfaceContainerHighest = colors.surface2,

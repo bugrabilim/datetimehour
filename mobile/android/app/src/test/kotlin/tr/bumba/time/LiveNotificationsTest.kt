@@ -37,4 +37,25 @@ class LiveNotificationsTest {
         LiveNotifications.sync(c, now + 300_000)
         assertEquals(0, active().size)
     }
+
+    /** Bildirim alanında hava (4 Kasım 2026): son özetten sayaçsız bildirim, "Kapat" düğmesi; kapatınca kalkar */
+    @Test fun weather() {
+        val now = System.currentTimeMillis()
+        Prefs.saveUnits("metric")
+        Prefs.store.edit().putBoolean(LiveNotifications.WEATHER_KEY, true)
+            .putString("live.weather.snap", """{"t":18.4,"c":2,"d":true,"p":"İstanbul","at":${now - 60_000},"hi":21,"lo":12}""").apply()
+        LiveNotifications.sync(c, now)
+        val n = active().single()
+        assertTrue(n.extras.getString("android.title")!!.startsWith("18°"))
+        assertTrue(n.extras.getString("android.text")!!.contains("Open-Meteo.com"))
+        assertEquals(1, n.actions.size)
+        // 12 saatten eski özet gösterilmez
+        LiveNotifications.sync(c, now + 13 * 3_600_000L)
+        assertEquals(0, active().size)
+        // Kapatınca kalkar
+        LiveNotifications.sync(c, now)
+        assertEquals(1, active().size)
+        LiveNotifications.setWeather(c, false)
+        assertEquals(0, active().size)
+    }
 }

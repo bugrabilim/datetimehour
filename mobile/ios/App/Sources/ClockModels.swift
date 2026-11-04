@@ -445,7 +445,7 @@ private struct WeatherPart: View {
             if let d = data {
                 let c = d.currentWeather
                 HStack(spacing: f * 0.5) {
-                    Image(systemName: c.symbolName).symbolRenderingMode(.multicolor)
+                    WeatherIcon3D(symbol: c.symbolName, size: f * 2.1)
                     Text(temp(c.temperature)).fontWeight(.semibold)
                 }
                 .font(.system(size: f * 1.7))
@@ -471,7 +471,7 @@ private struct WeatherPart: View {
                             HStack(spacing: f * 0.4) {
                                 Text(L("calendar.weekdaysShort.\(CalendarDay(day.date, timeZone: place.zone).weekday)"))
                                     .frame(width: f * 2.6, alignment: .leading)
-                                Image(systemName: day.symbolName).symbolRenderingMode(.multicolor)
+                                WeatherIcon3D(symbol: day.symbolName, size: f * 1.5)
                                     .frame(width: f * 1.6)
                                 Text(temp(day.highTemperature)).fontWeight(.semibold)
                                 Text(temp(day.lowTemperature)).foregroundStyle(Theme.muted)

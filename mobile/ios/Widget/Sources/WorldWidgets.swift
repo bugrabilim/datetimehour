@@ -82,11 +82,12 @@ struct World8View: View {
     @Environment(\.widgetFamily) private var family
     let entry: World8Entry
 
+    /// Gök işareti (3D simge, 4 Kasım 2026): gündüz güneş, alacakaranlık gün batımı, gece yıldızlı gece
     private func mark(_ c: CityEntity) -> String {
         switch WorldMath.light(lat: c.lat, lon: c.lon, zone: c.zone, at: entry.date) {
-        case "day": return "☀"
-        case "dusk": return "◐"
-        default: return "☾"
+        case "day": return "sun"
+        case "dusk": return "sunset"
+        default: return "night"
         }
     }
 
@@ -95,7 +96,7 @@ struct World8View: View {
             Text(WorldMath.code(c.displayName)).font(.caption.weight(.bold)).foregroundStyle(Theme.accent).frame(width: 34, alignment: .leading)
             Text(c.displayName).font(.caption).lineLimit(1)
             Spacer(minLength: 2)
-            Text(mark(c)).font(.caption2).foregroundStyle(Theme.muted)
+            Icon3D(name: mark(c), size: 14)
             Text(hhmm(entry.date, c.zone)).font(.system(.subheadline, design: .rounded).weight(.bold)).monospacedDigit()
                 .environment(\.layoutDirection, .leftToRight)
         }

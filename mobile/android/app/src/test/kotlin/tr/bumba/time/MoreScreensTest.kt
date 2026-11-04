@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.Arrangement
@@ -205,6 +206,10 @@ class MoreScreensTest {
         RuntimeEnvironment.setQualifiers("+tr")
         SleepPlan.on = true
         page("tr-uyku", L("sleep.title")) { SleepScreen() }
+        // "Nasıl çalışır?" alt sayfası (doğal tasarım madde 13): uzun açıklamalar burada
+        shot("tr-nasil-calisir") {
+            HowItWorksContent(listOf(L("sleep.plan") to L("sleep.plan.note"), L("alarm.smart") to L("smart.how"), L("settings.privacy") to L("sleep.privacy")))
+        }
         SleepPlan.on = false
         // Akıllı alarm penceresi seçili alarm varken Uyku ekranındaki akıllı alarm kartı (31 Ekim 2026)
         val saved = AlarmItem.load()
@@ -405,6 +410,13 @@ class MoreScreensTest {
     @Test fun worshipExtras() {
         shot("tr-dini-gunler") { ReligiousDaysScreen {} }
         shot("tr-tebrik") { GreetingScreen {} }
+        // Her vesilenin her deseni (4 Kasım 2026): kartın kendisi, söz sabit tohumla
+        val day = LocalDate.of(2026, 3, 20)
+        java.io.File(dir).mkdirs()
+        for ((occ, pats) in Greetings.PATTERNS) for ((i, pat) in pats.withIndex()) {
+            val bmp = Greetings.render(occ, Greetings.STYLES[i % 3], pat, Greetings.message(occ, 12345L + i), day, 540)
+            java.io.FileOutputStream("$dir/kart-$occ-$pat.png").use { bmp.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, it) }
+        }
         Tracker.clear()
         val today = LocalDate.now()
         val masks = listOf(0b11111, 0b01111, 0b10111, 0b11111, 0b00011, 0b11101, 0)
@@ -527,6 +539,26 @@ class MoreScreensTest {
         shot("tr-kadranlar-koyu", dark = true) { DialGalleryScreen() }
         listOf(DialFace.CHRONO to DialColor.AUTO, DialFace.RADAR to DialColor.AUTO, DialFace.MARBLE to DialColor.BLUE, DialFace.ROMAN to DialColor.GOLD)
             .forEach { (f, c) -> shot("kadran-${f.id}") { AnalogClock(t, Modifier.padding(24.dp), face = f, dialColor = c, tap = false) } }
+        // 4 Kasım 2026'da eklenen 12 kadran, üçer üçer
+        listOf(DialFace.EASTERN, DialFace.PILOT, DialFace.BAUHAUS, DialFace.SUNBURST, DialFace.VINTAGE, DialFace.DIVER,
+            DialFace.RAINBOW, DialFace.NEON, DialFace.WOOD, DialFace.IZNIK, DialFace.GEOMETRIC, DialFace.SECTOR).chunked(3).forEachIndexed { i, row ->
+            shot("kadranlar-yeni-${i + 1}") {
+                Row(Modifier.padding(8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    for (f in row) AnalogClock(t, Modifier.weight(1f), face = f, tap = false)
+                }
+            }
+        }
+    }
+
+    /** Sitedeki dokuz araç uygulamada (4 Kasım 2026) */
+    @Test fun siteTools() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        Prefs.store.edit().putString(Classroom.KEY, """{"tab":"picker","names":"Ayşe\nMehmet\nZeynep\nAli","picked":"Zeynep","remove":true}""")
+            .putString("exam", """{"name":"Matematik 1. yazılı","room":"9-A","read":10,"dur":40,"start":0}""").commit()
+        for ((r, name) in listOf("chess" to "satranc", "metronome" to "metronom", "talking" to "konusan-saat", "zodiac" to "burc",
+            "timecalc" to "saat-hesaplama", "bridge" to "kopru-tatil", "retire" to "emeklilik", "exam" to "sinav", "classroom" to "sinif"))
+            page("tr-$name", L(SITE_TOOL_TITLES.getValue(r))) { SiteToolScreen(r) }
+        Prefs.store.edit().remove(Classroom.KEY).remove("exam").commit()
     }
 
     @Test fun ownerScreens() {
@@ -540,6 +572,11 @@ class MoreScreensTest {
         shot("ar-atmosfer-gun-batimi", qualifiers = "ar", atmo = "sunset") { PrayerScreen() }
         page("tr-dil", "Dil") { LanguageScreen() }
         shot("tr-kurulum") { OnboardingScreen {} }
+        // Altı adımlık tanıtım (4 Kasım 2026): kaydırma, tam ekran, Tümü
+        shot("tr-kurulum-kaydir") { OnboardingScreen(1) {} }
+        shot("tr-kurulum-tam-ekran", dark = true) { OnboardingScreen(2) {} }
+        shot("tr-kurulum-tumu") { OnboardingScreen(4) {} }
+        shot("ar-kurulum-tumu", qualifiers = "ar") { OnboardingScreen(4) {} }
         Onboarding.finish()
     }
 
@@ -624,7 +661,13 @@ class MoreScreensTest {
         widget("widget-esma", 260, 170, DailyWidget().views(c, 35))
         widget("widget-ayet", 260, 170, DailyWidget().views(c, 36))
         widget("widget-takvim", 260, 170, EventsWidget().views(c, 37))
+        seedWeather(current = 61)
         widget("widget-hava", 170, 170, WeatherWidget().views(c, 38))
+        // Gün ışığı tonu (doğal tasarım madde 19): uygulamada seçiliyken saat widget'larının zemini Güneş'e göre
+        Atmosphere.save(Atmosphere.DAYLIGHT)
+        widget("widget-analog-gun-isigi", 170, 170, AnalogClockWidget().views(c, 41))
+        widget("widget-saat-tarih-gun-isigi", 170, 170, ClockDateWidget().views(c, 42))
+        Atmosphere.save("")
         widget("widget-fotograf", 170, 170, PhotoWidget().views(c, 39))
         Prefs.store.edit().putString("widget.style.40", "you").commit()
         widget("widget-saat-tarih-you", 170, 170, ClockDateWidget().views(c, 40))

@@ -4,13 +4,14 @@ import SwiftUI
    rakamsız pasta zamanlayıcı ve kum saati, kilit (çocuk modu). Android'deki ToolVisuals.kt ile aynı çizim. */
 
 enum PhaseColors {
-    /// Aralık antrenmanında evre rengi: çalış yeşil, dinlen kırmızı, ısın turuncu, bitti mavi
+    /// Aralık antrenmanında evre rengi (doğal tasarım 4 Kasım 2026, yumuşak doğa tonları): çalış yaprak yeşili, dinlen
+    /// kiremit, ısın hardal, bitti gök mavisi; üstündeki beyaz yazı ≥4,5:1. Android'deki PhaseColors ile aynı.
     static func of(_ kind: String) -> Color {
         switch kind {
-        case "work": return Color(red: 0.18, green: 0.62, blue: 0.36)
-        case "rest": return Color(red: 0.85, green: 0.27, blue: 0.23)
-        case "warmup": return Color(red: 0.88, green: 0.54, blue: 0.12)
-        default: return Color(red: 0.16, green: 0.47, blue: 0.85)
+        case "work": return Color(red: 0.247, green: 0.478, blue: 0.310)
+        case "rest": return Color(red: 0.706, green: 0.325, blue: 0.165)
+        case "warmup": return Color(red: 0.604, green: 0.416, blue: 0.071)
+        default: return Color(red: 0.227, green: 0.408, blue: 0.537)
         }
     }
 
@@ -28,17 +29,31 @@ enum PhaseColors {
 struct ProgressRing<Content: View>: View {
     let progress: Double
     let color: Color
-    var lineWidth: CGFloat = 12
+    var lineWidth: CGFloat = 6
     @ViewBuilder let content: () -> Content
 
+    /// Doğal tasarım madde 11: ince iz (`line`), 6 pt yay, yayın ucunda küçük ışıklı nokta
     var body: some View {
+        let p = max(0, min(1, progress))
         ZStack {
-            Circle().stroke(Theme.surface2, lineWidth: lineWidth)
-            Circle().trim(from: 0, to: max(0, min(1, progress)))
+            Circle().stroke(Theme.line, lineWidth: lineWidth * 0.5)
+            Circle().trim(from: 0, to: p)
                 .stroke(color, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                 .rotationEffect(.degrees(-90))
-            content().padding(lineWidth * 2)
+            if p > 0 {
+                GeometryReader { g in
+                    let r = min(g.size.width, g.size.height) / 2
+                    let a = (-90 + 360 * p) * .pi / 180
+                    ZStack {
+                        Circle().fill(color.opacity(0.25)).frame(width: lineWidth * 2.6, height: lineWidth * 2.6)
+                        Circle().fill(color).frame(width: lineWidth * 1.5, height: lineWidth * 1.5)
+                    }
+                    .position(x: g.size.width / 2 + r * cos(a), y: g.size.height / 2 + r * sin(a))
+                }
+            }
+            content().padding(lineWidth * 3)
         }
+        .padding(lineWidth)
         .aspectRatio(1, contentMode: .fit)
     }
 }
@@ -53,9 +68,10 @@ struct RoundDots: View {
     var body: some View {
         HStack(spacing: 6) {
             ForEach(1...max(1, total), id: \.self) { i in
-                Text("🍅")
-                    .font(.system(size: i == current ? 24 : 20))
-                    .opacity(i <= done ? 1 : i == current ? 0.6 : 0.18)
+                // 3D domatesler: biten ve sürmekte olan renkli (sürmekte olan büyük), kalan gri ve soluk
+                let on = i <= done || i == current
+                LineIcon(name: "tomato", size: i == current ? 26 : 22, c1: on ? Theme.terra : Theme.muted, c2: on ? Theme.sage : Theme.muted,
+                         dim: !on)
             }
         }
         .accessibilityElement(children: .ignore)
@@ -72,9 +88,10 @@ struct PieTimer: View {
         Canvas { g, size in
             let r = min(size.width, size.height) / 2
             let c = CGPoint(x: size.width / 2, y: size.height / 2)
-            let ink = Color(white: 0.2)
-            g.fill(Path(ellipseIn: CGRect(x: c.x - r, y: c.y - r, width: r * 2, height: r * 2)), with: .color(.white))
-            g.stroke(Path(ellipseIn: CGRect(x: c.x - r, y: c.y - r, width: r * 2, height: r * 2)), with: .color(ink), lineWidth: r * 0.03)
+            // Temaya uyan kadran (doğal tasarım madde 11): kâğıt yüz, mürekkep çentikler
+            let ink = Theme.text
+            g.fill(Path(ellipseIn: CGRect(x: c.x - r, y: c.y - r, width: r * 2, height: r * 2)), with: .color(Theme.surface))
+            g.stroke(Path(ellipseIn: CGRect(x: c.x - r, y: c.y - r, width: r * 2, height: r * 2)), with: .color(ink.opacity(0.5)), lineWidth: r * 0.02)
             let inner = r * 0.86
             var pie = Path()
             pie.move(to: c)
@@ -154,7 +171,7 @@ struct HoldToUnlock: View {
     var dark = false
 
     var body: some View {
-        Text("🔒 " + L("tools.holdToUnlock"))
+        Text(L("tools.holdToUnlock"))
             .font(.subheadline)
             .padding(.horizontal, 18).padding(.vertical, 10)
             .background(dark ? Color.white.opacity(0.2) : Theme.surface2, in: Capsule())

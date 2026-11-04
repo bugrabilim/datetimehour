@@ -136,7 +136,7 @@ struct WeatherShareCard: View {
             Text(place.name).font(.title2.weight(.bold))
             Text(Fmt.longDate(Date(), tz: place.zone)).font(.subheadline).opacity(0.85)
             HStack(spacing: 10) {
-                Image(systemName: c.symbolName).symbolRenderingMode(.multicolor).font(.system(size: 44))
+                WeatherIcon3D(symbol: c.symbolName, size: 58)
                 Text(Units.temp(c.temperature)).font(.system(size: 54, weight: .heavy, design: .rounded))
                     .foregroundStyle(Color(red: 1, green: 0.82, blue: 0.45))
             }

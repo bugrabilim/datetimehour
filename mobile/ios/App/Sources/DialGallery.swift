@@ -21,7 +21,7 @@ struct DialGalleryView: View {
                             }
                             .padding(6)
                             .overlay(alignment: .topTrailing) {
-                                if newOnOpen && f != .classic {
+                                if newOnOpen && DialFace.added.contains(f) {
                                     Text(L("dial.new")).font(.caption2.bold()).padding(.horizontal, 6).padding(.vertical, 2)
                                         .background(Theme.accent, in: Capsule()).foregroundStyle(Theme.bg)
                                 }

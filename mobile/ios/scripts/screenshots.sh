@@ -24,7 +24,7 @@ ALLFEAT="weather,calendar,world,seasons,prayer,tools"
 shoot() { # dil bölge görünüm dosya [ek uygulama argümanları]
   xcrun simctl ui "$UDID" appearance "$3"
   xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
-  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" -dial.seen "<true/>" \
+  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" -dial.seen2 "<true/>" \
     -features "${FEAT-$ALLFEAT}" "${@:5}"
   sleep 6
   xcrun simctl io "$UDID" screenshot "$OUT/$4.png"
@@ -33,11 +33,15 @@ shoot tr tr_TR light tr-acik
 shoot tr tr_TR dark tr-koyu
 shoot en en_US light en-acik
 shoot ar ar_SA light ar-acik
-# İlk açılış: yalnız Saat (alt bar yok; dişli ve "özellikleri aç" satırı); iki özellik açıkken bar
+# İlk açılış: yalnız Saat (alt bar yok; "özellikleri aç" satırı); iki özellik açıkken bar
 FEAT="" shoot tr tr_TR light tr-ilk-acilis
 FEAT="prayer,weather" shoot tr tr_TR light tr-iki-ozellik -startTab 5
 # İlk kurulum sihirbazı (2. analiz #4): yalnız yeni kurulumda açılır, burada açıkça istenir
 FEAT="" shoot tr tr_TR light tr-kurulum -onboard.pending "<true/>"
+# Altı adımlık tanıtım (4 Kasım 2026): saati kaydırma, tam ekran ve gece, Tümü
+FEAT="" shoot tr tr_TR light tr-kurulum-kaydir -onboard.pending "<true/>" -onboardPage "<integer>1</integer>"
+FEAT="" shoot tr tr_TR dark tr-kurulum-tam-ekran -onboard.pending "<true/>" -onboardPage "<integer>2</integer>"
+FEAT="" shoot ar ar_SA light ar-kurulum-tumu -onboard.pending "<true/>" -onboardPage "<integer>4</integer>"
 # Saat modelleri (sitedeki 20 model; -clockModel kimlik)
 for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal flip; do
   shoot tr tr_TR light "model-$M" -clockModel "$M"
@@ -62,7 +66,7 @@ shoot tr tr_TR light tr-araclar -startTab 6
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -startTab 5 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 # Alt ekranlar (doğrudan açılır)
-for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features qibla study wakegame language dials; do
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features qibla study wakegame language dials chess metronome talking zodiac timecalc bridge retire exam classroom; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
 shoot tr tr_TR dark ekran-about-koyu -openScreen about

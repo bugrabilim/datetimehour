@@ -111,6 +111,8 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "moon" -> Page(L("moon.calendarLink"), onRoute) { MoonScreen() }
         "sky" -> Page(L("sky.h1"), onRoute) { SkyScreen() }
         "sunpath" -> Page(L("sunpath.title"), onRoute) { SunPathScreen() }
+        // Sitedeki dokuz araç (4 Kasım 2026)
+        in SITE_TOOL_TITLES.keys -> Page(L(SITE_TOOL_TITLES.getValue(route!!)), onRoute) { SiteToolScreen(route) }
         else -> if (route?.startsWith("quran:") == true) QuranScreen(route.removePrefix("quran:").toIntOrNull()) { onRoute(null) }
             else AllScreen(onRoute)
     }
@@ -144,9 +146,9 @@ fun RoundButton(title: String, prominent: Boolean, modifier: Modifier = Modifier
         onClick = onClick, modifier = modifier.height(52.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = if (prominent) Theme.c.accent else Theme.c.surface2,
-            contentColor = if (prominent) Theme.c.bg else Theme.c.text,
+            contentColor = if (prominent) Theme.c.onAccent else Theme.c.text,
         ),
-    ) { Text(title, fontWeight = FontWeight.SemiBold) }
+    ) { Text(title, fontWeight = FontWeight.Medium, fontSize = 16.sp) }
 }
 
 /** Ek kronometreler (rakip analizi listesi #81): her biri ayrı sayar; kayıt `stopwatches` (JSON, Unix ms; iOS'la aynı) */

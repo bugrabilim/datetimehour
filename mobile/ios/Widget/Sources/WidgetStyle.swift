@@ -28,7 +28,7 @@ enum WidgetStyle: String, AppEnum {
         }
         switch self {
         case .app, .wallpaper: return nil
-        case .paper: return p(0xF7F4EE, 0x1B1F27, 0x565C68, 0xEFEBE2, 0xD6CFBF, 0x9A3F00, 0x9A3F00)
+        case .paper: return p(0xF6F0E4, 0x2B2520, 0x6A5F55, 0xEDE4D3, 0xE2D6C1, 0x9A3F00, 0x9A3F00)
         case .night: return p(0x000000, 0xEEF0F4, 0xA5ACB9, 0x15181E, 0x343B49, 0xF2A65A, 0xFF6B6B)
         case .mint: return p(0xE3F4EA, 0x12351F, 0x3F6B50, 0xCDEBD8, 0x9CCFB0, 0x1B7A43, 0xD84315)
         case .rose: return p(0xFBE9EF, 0x3A1424, 0x7A4A5C, 0xF6D3DF, 0xE6A9BF, 0xAD1457, 0x8D6E63)
@@ -139,6 +139,9 @@ private struct StyledWidget: ViewModifier {
                 ZStack {
                     if let wallpaper {
                         Image(uiImage: wallpaper).resizable().scaledToFill()
+                    } else if e.style == .app, !e.frame, let a = Atmosphere.widgetDaylight(at: e.date) {
+                        // Gün ışığı tonu (doğal tasarım madde 19): uygulamada "Gün ışığı" seçiliyken, varsayılan görünümde
+                        LinearGradient(colors: [a.top, a.bottom], startPoint: .top, endPoint: .bottom)
                     } else {
                         p?.bg ?? Theme.bg
                     }

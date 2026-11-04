@@ -50,7 +50,8 @@ class World8Widget : BaseWidget() {
             if (e == null) continue
             v.setTextViewText(codes[i], cityCode(e))
             v.setTextViewText(names[i], e.displayName)
-            v.setTextViewText(marks[i], when (e.light(now)) { "day" -> "☀"; "dusk" -> "◐"; else -> "☾" })
+            // Gök işareti çizgi simgeyle (doğal tasarım madde 19): gündüz güneş, alacakaranlık batan güneş, gece ay
+            v.setImageViewResource(marks[i], when (e.light(now)) { "day" -> R.drawable.e3d_sun; "dusk" -> R.drawable.e3d_sunset; else -> R.drawable.e3d_night })
             v.setString(times[i], "setTimeZone", e.zone.id)
         }
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.WORLD, id))

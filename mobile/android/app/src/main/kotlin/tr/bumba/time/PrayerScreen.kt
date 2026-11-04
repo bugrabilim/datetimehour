@@ -145,7 +145,7 @@ fun PrayerScreen() {
         })
         Column(
             Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             PlacePicker()
@@ -167,7 +167,10 @@ fun PrayerScreen() {
                             .heightIn(min = 34.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Icon(prayerIcon(e.prayer), null, tint = if (on) Theme.c.accent else Theme.c.muted, modifier = Modifier.padding(end = 10.dp).size(20.dp))
+                        Box(Modifier.padding(end = 10.dp)) {
+                            val ic = if (on) Theme.c.accent else Theme.c.muted
+                            LineIcon(LineIconMap.prayer(e.prayer), 22.dp, c1 = ic, c2 = ic)
+                        }
                         Text(e.prayer.title, Modifier.weight(1f), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp)
                         Text(Fmt.hm(e.at, place.zone), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp, style = Tnum)
                         if (inline) PrayedMark(today, e, now, trackV) { trackV++ }
@@ -200,8 +203,7 @@ fun PrayerScreen() {
 @Composable
 private fun WorshipTile(icon: ImageVector, title: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
     Column(
-        modifier.aspectRatio(1f).clip(RoundedCornerShape(16.dp)).background(Theme.c.surface)
-            .border(1.dp, Theme.c.border.copy(alpha = 0.5f), RoundedCornerShape(16.dp)).clickable(onClick = onClick).padding(6.dp),
+        modifier.aspectRatio(1f).paper(radius = 16).clip(RoundedCornerShape(16.dp)).clickable(onClick = onClick).padding(6.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
@@ -255,7 +257,7 @@ private fun KerahatCard(entries: List<AppPlace.Entry>, place: AppPlace) {
                     Text(Fmt.hm(a, place.zone) + "–" + Fmt.hm(b, place.zone), color = Theme.c.text, fontSize = 15.sp, style = Tnum)
                 }
             }
-            Text(L("prayer.kerahatNote"), color = Theme.c.muted, fontSize = 12.sp)
+            HowItWorks(listOf(L("prayer.kerahatHeading") to L("prayer.kerahatNote")))
         }
     }
 }
@@ -281,7 +283,7 @@ private fun RamadanCountdown(now: java.time.Instant, place: AppPlace) {
     if (Hijri.date(next.at.atZone(place.zone).toLocalDate())?.month != 9) return
     AppCard {
         Text(T("prayer.ramadanLeft", next.prayer.ramadanTitle(next.at, place.zone), Fmt.countdown(java.time.Duration.between(now, next.at).seconds)),
-            color = Theme.c.accent, fontSize = 18.sp, fontWeight = FontWeight.Bold, style = Tnum)
+            color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, style = Tnum)
     }
 }
 
@@ -310,8 +312,8 @@ private fun BayramRow(today: java.time.LocalDate, now: java.time.Instant, place:
         else -> null
     } ?: return
     AppCard {
-        Text(text, color = Theme.c.accent, fontWeight = FontWeight.Bold, fontSize = 17.sp)
-        Text(L("prayer.bayramNote"), color = Theme.c.muted, fontSize = 12.sp)
+        Text(text, color = Theme.c.text, fontWeight = FontWeight.SemiBold, fontSize = 17.sp)
+        HowItWorks(listOf(L("prayer.bayram") to L("prayer.bayramNote")))
     }
 }
 
@@ -342,7 +344,7 @@ private fun ExtraTimesCard(today: java.time.LocalDate, place: AppPlace) {
                     Text(h?.let { Fmt.hm(start.plusSeconds(Math.round(it * 60) * 60), place.zone) } ?: "–", color = Theme.c.text, fontSize = 15.sp, style = Tnum)
                 }
             }
-            Text(L("prayer.extraNote"), color = Theme.c.muted, fontSize = 12.sp)
+            HowItWorks(listOf(L("prayer.extraHeading") to L("prayer.extraNote")))
         }
     }
 }

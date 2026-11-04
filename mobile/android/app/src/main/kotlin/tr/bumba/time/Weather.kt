@@ -3,6 +3,7 @@ package tr.bumba.time
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
+import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -77,6 +78,36 @@ enum class WeatherCode(val key: String, val day: String, val night: String) {
 
     val label: String get() = L("weather.codes.$key")
     fun icon(isDay: Boolean = true) = if (isDay) day else night
+
+    /**
+     * 3D simge adı (4 Kasım 2026, sahibin seçimi: gerçekçi bulut; Icons3D): açık gündüz güneş, gece ay; az bulutlu,
+     * parçalı bulutlu ve sağanakta gündüz güneşli bulut; kapalı bulut; yağmur, kar, sis, fırtına.
+     */
+    fun line(isDay: Boolean = true): String = when (this) {
+        CLEAR -> if (isDay) "sun" else "moon"
+        MOSTLY_CLEAR -> if (isDay) "sun_small_cloud" else "moon"
+        PARTLY -> if (isDay) "sun_cloud" else "cloud"
+        OVERCAST -> "cloud"
+        FOG -> "fog"
+        SHOWERS -> if (isDay) "sun_rain" else "rain"
+        DRIZZLE, FREEZING_DRIZZLE, RAIN, FREEZING_RAIN -> "rain"
+        SNOW, SNOW_GRAINS, SNOW_SHOWERS -> "snow"
+        THUNDER, THUNDER_HAIL -> "storm"
+    }
+
+    /** Widget'taki karşılığı (aynı 3D görsel: res/drawable-nodpi/e3d_*.png) */
+    fun widgetIcon(isDay: Boolean = true): Int = when (line(isDay)) {
+        "sun" -> R.drawable.e3d_sun
+        "moon" -> R.drawable.e3d_moon
+        "sun_small_cloud" -> R.drawable.e3d_sun_small_cloud
+        "sun_cloud" -> R.drawable.e3d_sun_cloud
+        "sun_rain" -> R.drawable.e3d_sun_rain
+        "fog" -> R.drawable.e3d_fog
+        "rain" -> R.drawable.e3d_rain
+        "snow" -> R.drawable.e3d_snow
+        "storm" -> R.drawable.e3d_storm
+        else -> R.drawable.e3d_cloud
+    }
 
     companion object {
         fun of(c: Int): WeatherCode = when (c) {
@@ -374,4 +405,14 @@ object ModelCache {
             }
         }.filterValues { it.isNotEmpty() }
     }
+}
+
+/**
+ * Hava simgesi: gerçekçi 3D görsel (4 Kasım 2026, sahibin seçimi; Icons3D, Fluent Emoji 3D). Ekran okuyucuya durumun
+ * adı söylenir. `color` artık kullanılmıyor (eski çağrılar için duruyor).
+ */
+@Composable
+fun WeatherIcon(code: WeatherCode, isDay: Boolean = true, size: androidx.compose.ui.unit.Dp = 28.dp,
+                color: androidx.compose.ui.graphics.Color = Theme.c.text) {
+    LineIcon(code.line(isDay), size, c1 = color, c2 = color, label = code.label)
 }

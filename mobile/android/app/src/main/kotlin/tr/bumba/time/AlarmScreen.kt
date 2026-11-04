@@ -22,7 +22,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.UnfoldMore
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -98,10 +100,14 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
     var quickMsg by remember { mutableStateOf("") }
     val nowMs = rememberNow().toEpochMilli()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        // Uzun açıklamalar "Nasıl çalışır?" alt sayfasında (doğal tasarım madde 13)
+        HowItWorks(listOf(
+            L("alarm.fromCalendar") to L("alarm.fromCalendarNote"),
+        ))
         // Sıradaki alarm (2. analiz #51)
         NextAlarmCard(items, nowMs)
         // Hızlı alarm (rakip analizi #17): şu andan X dakika sonrasına bir kezlik alarm
-        Text(L("alarm.quick"), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+        Text(L("alarm.quick"), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
         Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             for (m in listOf(5, 10, 15, 20, 30, 45, 60)) {
                 Box(
@@ -114,7 +120,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                 ) { Text(T("alarm.quickIn", m), color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.SemiBold) }
             }
         }
-        if (quickMsg.isNotEmpty()) Text(quickMsg, color = Theme.c.accent, fontSize = 13.sp)
+        if (quickMsg.isNotEmpty()) Text(quickMsg, color = Theme.c.text, fontSize = 13.sp)
         // Takvimdeki etkinliğe alarm ve konuma bağlı hatırlatıcı (rakip analizi listesi #93)
         var calLead by remember { mutableStateOf(Prefs.store.getInt(CalendarAlarm.LEAD_KEY, 15)) }
         var pickingEvent by remember { mutableStateOf(false) }
@@ -124,13 +130,17 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                 calLead = it
                 Prefs.store.edit().putInt(CalendarAlarm.LEAD_KEY, it).apply()
             }
-            Text("📅 " + L("alarm.fromCalendar"), Modifier.fillMaxWidth().clickable {
+            Row(Modifier.fillMaxWidth().clickable {
                 DeviceCalendar.reload(context)
                 pickingEvent = true
-            }.padding(vertical = 8.dp), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
-            Text("📍 " + L("geo.title"), Modifier.fillMaxWidth().clickable { onGeo() }.padding(vertical = 8.dp),
-                color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
-            Text(L("alarm.fromCalendarNote"), color = Theme.c.muted, fontSize = 12.sp)
+            }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                LineIcon("calendar", 20.dp, c1 = Theme.c.accent, c2 = Theme.c.accent)
+                Text("  " + L("alarm.fromCalendar"), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.Medium)
+            }
+            Row(Modifier.fillMaxWidth().clickable { onGeo() }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                LineIcon("pin", 20.dp, c1 = Theme.c.accent, c2 = Theme.c.accent)
+                Text("  " + L("geo.title"), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.Medium)
+            }
         }
         if (pickingEvent) {
             CalendarEventDialog(onDismiss = { pickingEvent = false }) { title, start ->
@@ -145,7 +155,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
             }
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(L("tools.alarm.listHeading"), Modifier.weight(1f), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+            Text(L("tools.alarm.listHeading"), Modifier.weight(1f), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
             IconButton(onClick = {
                 val now = LocalTime.now()
                 editing = AlarmItem(hour = now.hour, minute = now.minute)
@@ -156,7 +166,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
         val list = items.filter { !it.sleepPlan }
         for ((heading, group) in listOf(L("alarm.sleepSection") to sleepItems, "" to list)) {
         if (heading.isNotEmpty() && group.isEmpty()) continue
-        if (heading.isNotEmpty()) Text(heading, color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+        if (heading.isNotEmpty()) Text(heading, color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
         AppCard(padding = 4) {
             // Boş durum (2. analiz #96)
             if (group.isEmpty()) EmptyState(
@@ -185,7 +195,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                                     else -> ""
                                 } + (if (item.chain.isNotEmpty()) "+${item.chain.size} " else "")
                                 // Şehir saatine ya da güneşe bağlı alarm (2. analiz #132, #153)
-                                item.anchorText?.let { Text((if (item.sun.isNotEmpty()) "☀️ " else "🌐 ") + it, color = Theme.c.accent, fontSize = 13.sp) }
+                                item.anchorText?.let { Text((if (item.sun.isNotEmpty()) "☀️ " else "🌐 ") + it, color = Theme.c.muted, fontSize = 13.sp) }
                                 Text(icon + item.title + " · " + item.repeatText + (if (item.link.isNotEmpty()) " · ▶ " + (if (MusicLink.kind(item.link) == "spotify") "Spotify" else "YouTube") else "") +
                                     (if (item.smart > 0) " · " + L("alarm.smart") else "") + (if (item.preAlarm > 0) " · 🌧" else ""), color = Theme.c.muted, fontSize = 14.sp)
                                 if (item.sleepPlan) Text(L("alarm.sleepLinked"), color = Theme.c.muted, fontSize = 12.sp)
@@ -208,7 +218,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                                     )
                                 }
                             }
-                            Switch(item.enabled, { on -> update(items.map { if (it.id == item.id) it.copy(enabled = on) else it }) },
+                            SoftSwitch(item.enabled, { on -> update(items.map { if (it.id == item.id) it.copy(enabled = on) else it }) },
                                 colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                         }
                     }
@@ -362,7 +372,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                         Text(L("alarm.skipHolidays"), color = Theme.c.text, fontSize = 15.sp)
                         Text(L("alarm.skipHolidaysNote"), color = Theme.c.muted, fontSize = 12.sp)
                     }
-                    Switch(skipHolidays, { skipHolidays = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(skipHolidays, { skipHolidays = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 ChoiceRow(L("alarm.snooze"), if (snooze == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", snooze),
                     AlarmItem.SNOOZE_CHOICES.map { it to (if (it == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", it)) }) { snooze = it }
@@ -384,25 +394,25 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(L("alarm.sound"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    Text(AlarmScheduler.soundTitle(context, sound), color = Theme.c.accent, fontSize = 15.sp, maxLines = 1)
+                    Text(AlarmScheduler.soundTitle(context, sound), color = Theme.c.text, fontSize = 15.sp, maxLines = 1)
                 }
                 // Uygulamanın ses kitaplığı (2. analiz #3): telifsiz, kategorili sesler
                 var toneLibrary by remember { mutableStateOf(false) }
                 Row(Modifier.fillMaxWidth().clickable { toneLibrary = true }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(L("tone.library"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    Text(AlarmTones.id(sound)?.let { L("tone.$it") } ?: "›", color = Theme.c.accent, fontSize = 15.sp, maxLines = 1)
+                    Text(AlarmTones.id(sound)?.let { L("tone.$it") } ?: "›", color = Theme.c.text, fontSize = 15.sp, maxLines = 1)
                 }
                 if (toneLibrary) AlarmToneDialog(sound, { sound = it; toneLibrary = false }, { toneLibrary = false })
                 // Alarm ekranı duvar kâğıdı (2. analiz #2)
                 var wallPicker by remember { mutableStateOf(false) }
                 Row(Modifier.fillMaxWidth().clickable { wallPicker = true }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(L("wall.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    Text(AlarmWalls.title(wall), color = Theme.c.accent, fontSize = 15.sp, maxLines = 1)
+                    Text(AlarmWalls.title(wall), color = Theme.c.text, fontSize = 15.sp, maxLines = 1)
                 }
                 if (wallPicker) AlarmWallDialog(wall, time.hour, time.minute, { wall = it; wallPicker = false }, { wallPicker = false })
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("alarm.vibrate"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    Switch(vibrate, { vibrate = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(vibrate, { vibrate = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 // Gelişmiş (2. analiz #201): kapalı gelir; saat, günler, ses ve erteleme üstte kalır
                 Row(
@@ -416,6 +426,13 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     Icon(if (advanced) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore, null, tint = Theme.c.muted)
                 }
                 if (advanced) {
+                    HowItWorks(listOf(
+                        L("alarm.smart") to L("alarm.smart.note"),
+                        L("alarm.sunrise") to L("alarm.sunriseNote"),
+                        L("alarm.keys") to L("alarm.keysNote"),
+                        L("alarm.task.heading") to (L("alarm.task.note") + " " + L("alarm.code.hint")),
+                        L("alarm.wakeCheck") to L("alarm.wakeCheck.note"),
+                    ))
                     // Saat neye göre (2. analiz #132 şehir saati, #153 gün doğumu/batımı ± dk)
                     val base = when { sun == "rise" -> 2; sun == "set" -> 3; tz.isNotEmpty() -> 1; else -> 0 }
                     val baseNames = listOf("phone", "city", "rise", "set")
@@ -447,7 +464,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                                 Text(L("alarm.snoozeShrink"), color = Theme.c.text, fontSize = 15.sp)
                                 Text(L("alarm.snoozeShrinkNote"), color = Theme.c.muted, fontSize = 12.sp)
                             }
-                            Switch(snoozeShrink, { snoozeShrink = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                            SoftSwitch(snoozeShrink, { snoozeShrink = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                         }
                         val ends = remember(time.hour, time.minute) {
                             listOf("") + listOf(15, 30, 45, 60, 90, 120).map {
@@ -466,7 +483,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                             Text(L("alarm.rise"), color = Theme.c.text, fontSize = 15.sp)
                             Text(L("alarm.riseNote"), color = Theme.c.muted, fontSize = 12.sp)
                         }
-                        Switch(rise, { rise = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                        SoftSwitch(rise, { rise = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
                     // Müzik bağlantısı: çalınca Spotify ya da YouTube'da açılır, alarm sesi 1 dk sonra (MusicLink)
                     OutlinedTextField(link, { link = it.take(300) }, Modifier.fillMaxWidth(), singleLine = true,
@@ -481,14 +498,13 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     // Akıllı alarm (SmartSleep): Uyku ekranındaki oturum açıkken pencerede hafif uyku algılanırsa erken çalar
                     fun smartText(m: Int) = if (m == 0) L("alarm.snoozeOff") else T("alarm.smartMin", m)
                     ChoiceRow(L("alarm.smart"), smartText(smart), AlarmItem.SMART_CHOICES.map { it to smartText(it) }) { smart = it }
-                    Text(L("alarm.smart.note"), color = Theme.c.muted, fontSize = 12.sp)
                     // Saati sesli söyleme (rakip analizi #20) ve yaklaşan alarm bildirimi (#19)
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) {
                             Text(L("alarm.speak"), color = Theme.c.text, fontSize = 15.sp)
                             Text(L("alarm.speakNote"), color = Theme.c.muted, fontSize = 12.sp)
                         }
-                        Switch(speak, { speak = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                        SoftSwitch(speak, { speak = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
                     fun preText(m: Int) = if (m == 0) L("alarm.preOff") else T("alarm.preMin", m)
                     ChoiceRow(L("alarm.pre"), preText(preNotify), AlarmItem.PRE_NOTIFY_CHOICES.map { it to preText(it) }) { preNotify = it }
@@ -498,18 +514,16 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     Text(L("alarm.preAlarmNote"), color = Theme.c.muted, fontSize = 12.sp)
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(L("alarm.shakeSnooze"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                        Switch(shakeSnooze, { shakeSnooze = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                        SoftSwitch(shakeSnooze, { shakeSnooze = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
                     // Ses tuşu ve güç tuşu (2. analiz #39)
                     val keyNames = AlarmItem.KEY_ACTIONS
                     ChoiceRow(L("alarm.keys"), L("alarm.key.$keyAction"), keyNames.indices.map { it to L("alarm.key.${keyNames[it]}") }) { keyAction = keyNames[it] }
                     ChoiceRow(L("alarm.power"), L("alarm.key.$powerAction"), keyNames.indices.map { it to L("alarm.key.${keyNames[it]}") }) { powerAction = keyNames[it] }
-                    Text(L("alarm.keysNote"), color = Theme.c.muted, fontSize = 12.sp)
                     OpenAppRow(openApp) { openApp = it }
                     // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
                     fun sunriseText(m: Int) = if (m == 0) L("alarm.snoozeOff") else T("alarm.sunriseMin", m)
                     ChoiceRow(L("alarm.sunrise"), sunriseText(sunrise), AlarmItem.SUNRISE_CHOICES.map { it to sunriseText(it) }) { sunrise = it }
-                    Text(L("alarm.sunriseNote"), color = Theme.c.muted, fontSize = 12.sp)
                     // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
                     val hasLight = remember {
                         (context.getSystemService(android.content.Context.SENSOR_SERVICE) as? android.hardware.SensorManager)
@@ -542,7 +556,6 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                             Text(L(if (code.isEmpty()) "alarm.code.save" else "alarm.code.change"), color = Theme.c.accent)
                         }
                         Text(L(if (code.isEmpty()) "alarm.code.missing" else "alarm.code.saved"), color = Theme.c.muted, fontSize = 12.sp)
-                        Text(L("alarm.code.hint"), color = Theme.c.muted, fontSize = 12.sp)
                     }
                     if (task == "memory") {
                         ChoiceRow(L("alarm.task.level"), L("alarm.task.level.$taskLevel"), (1..3).map { it to L("alarm.task.level.$it") }) { taskLevel = it }
@@ -562,13 +575,9 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                             code = if (ids[i].isEmpty()) "" else ObjectTarget.PREFIX + ids[i]
                         }
                     }
-                    if (task != "none") Text(L("alarm.task.note"), color = Theme.c.muted, fontSize = 12.sp)
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f)) {
-                            Text(L("alarm.wakeCheck"), color = Theme.c.text, fontSize = 15.sp)
-                            Text(L("alarm.wakeCheck.note"), color = Theme.c.muted, fontSize = 12.sp)
-                        }
-                        Switch(wakeCheck, { wakeCheck = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                        Text(L("alarm.wakeCheck"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                        SoftSwitch(wakeCheck, { wakeCheck = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
                 }
                 if (!isNew) TextButton(onClick = onDelete) { Text(L("tools.alarm.delete"), color = Theme.c.err) }
@@ -631,7 +640,10 @@ internal fun ChoiceRow(title: String, value: String, options: List<Pair<Int, Str
     Row(Modifier.fillMaxWidth().clickable { open = true }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
         Box {
-            Text(value, color = Theme.c.accent, fontSize = 15.sp)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(value, color = Theme.c.text, fontSize = 15.sp)
+                Icon(Icons.Filled.UnfoldMore, null, Modifier.size(16.dp), tint = Theme.c.muted)
+            }
             DropdownMenu(open, { open = false }) {
                 for ((v, label) in options) DropdownMenuItem(text = { Text(label) }, onClick = { open = false; onPick(v) })
             }
@@ -644,7 +656,7 @@ internal fun ChoiceRow(title: String, value: String, options: List<Pair<Int, Str
 private fun FlexRow(title: String, on: Boolean, value: String?, onPick: (() -> Unit)?, onToggle: (Boolean) -> Unit) {
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-        if (on && value != null && onPick != null) TextButton(onClick = onPick) { Text(value, color = Theme.c.accent, fontSize = 15.sp) }
-        androidx.compose.material3.Switch(on, onToggle, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+        if (on && value != null && onPick != null) TextButton(onClick = onPick) { Text(value, color = Theme.c.text, fontSize = 15.sp) }
+        SoftSwitch(on, onToggle, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
 }

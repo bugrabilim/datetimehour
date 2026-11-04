@@ -128,6 +128,12 @@ write("embed/line.js", fs.readFileSync(path.join(SRC, "embed/line.js")));
 const EARTH_BUF = fs.readFileSync(path.join(SRC, "assets/earth.jpg"));
 write("assets/earth.jpg", EARTH_BUF);
 const EARTH_URL = `/assets/earth.jpg?v=${hash(EARTH_BUF)}`;
+// Doğal tasarım (4 Kasım 2026): başlık yazısı Literata (SIL OFL 1.1; Latin + Kiril alt kümesi, kendi sunucumuzdan;
+// üretim mobile/shared/fonts/make-literata.py) ve %4 kâğıt dokusu; styles.css'ten göreli adresle çağrılır
+for (const f of ["literata-500.woff2", "literata-600.woff2", "OFL-Literata.txt"]) {
+  write(`assets/fonts/${f}`, fs.readFileSync(path.join(SRC, "assets/fonts", f)));
+}
+write("assets/grain.png", fs.readFileSync(path.join(SRC, "assets/grain.png")));
 const PLACES_SRC = readJson("src/data/places.json");
 /* Şehir nüfusu (2. analiz #180): Natural Earth pop_max (kent bölgesi, kamu malı; scripts/fetch-city-pop.mjs, cities.json "pop") */
 const CITY_POP = Object.fromEntries(CITIES.map((c) => [c.key, c.pop || 0]));
@@ -2410,8 +2416,10 @@ function qiblaDial(lang) {
     return `<path d="M${f(r1)}L${f(140)}" class="${i % 18 === 0 ? "qb-tick-c" : major ? "qb-tick-m" : "qb-tick"}"/>`;
   }).join("");
   const letters = s.cardinals.split(" ").map((c, i) => `<text class="qb-card${i === 0 ? " qb-north" : ""}" transform="rotate(${i * 90}) translate(0 -104) rotate(${-i * 90})" text-anchor="middle" dominant-baseline="central">${esc(c)}</text>`).join("");
+  // Derece rakamları (4 Kasım 2026, sahibin isteği): yön harfleri dışındaki her 30°'de küçük, Latin rakamla
+  const degs = [30, 60, 120, 150, 210, 240, 300, 330].map((d) => `<text class="qb-deg" data-qb-deg="${d}" transform="rotate(${d}) translate(0 -110) rotate(${-d})" text-anchor="middle" dominant-baseline="central">${d}</text>`).join("");
   return `<svg class="qb-svg" viewBox="-165 -165 330 330" role="img" aria-labelledby="qb-svg-t" focusable="false"><title id="qb-svg-t">${esc(s.angle)}</title>
-  <g data-qb-rose><circle r="141" class="qb-face"/>${ticks}${letters}
+  <g data-qb-rose><circle r="141" class="qb-face"/>${ticks}${letters}${degs}
     <g data-qb-kaaba><rect x="-9" y="-161" width="18" height="18" rx="2" class="qb-kaaba"/><rect x="-9" y="-156" width="18" height="3" class="qb-kaaba-band"/></g>
   </g>
   <g data-qb-needle><path d="M0 -112L13 0H-13Z" class="qb-head"/><path d="M-13 0H13L0 92Z" class="qb-tail"/></g>

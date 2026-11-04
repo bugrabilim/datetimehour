@@ -259,18 +259,27 @@ struct AnimatedBackground: View {
         ctx.fill(Path(CGRect(origin: .zero, size: size)), with: .color(.black.opacity(alt >= 6 ? 0.2 : 0.1)))
     }
 
-    /// Süzülen bulutlar: sayı bulut oranından, hız rüzgârdan; yağmurda koyu
+    /// Süzülen bulutlar: sayı bulut oranından, hız rüzgârdan; yağmurda koyu. Doğal tasarım madde 10 (4 Kasım 2026): her
+    /// bulut üst üste binen yumuşak dairelerden; yazı alanına girmesin diye yalnız sahnenin üst üçte birinde
+    private static let cloudPuffs: [(Double, Double, Double)] = [
+        (0.22, 0.66, 0.20), (0.42, 0.46, 0.27), (0.64, 0.52, 0.24), (0.84, 0.68, 0.16), (0.52, 0.74, 0.22),
+    ]
+
     private static func clouds(_ ctx: inout GraphicsContext, _ size: CGSize, t: Double, count: Int = 4, speed k: Double = 1, dark: Bool = false) {
+        let c = dark ? Color(white: 0.75) : .white
         for i in 0..<count {
-            let w = size.width * (0.45 + 0.1 * Double(i % 2)), h = w * 0.28
+            let w = size.width * (0.30 + 0.08 * Double(i % 3)), h = w * 0.45
             let speed = (6.0 + Double(i % 4) * 3) * k // pt/sn
             let x = (Double(i) * size.width * 0.37 + t * speed).truncatingRemainder(dividingBy: size.width + w) - w
-            let y = size.height * (0.12 + 0.17 * Double(i % 4) + 0.08 * Double(i / 4))
-            let rect = CGRect(x: x, y: y, width: w, height: h)
-            let c = dark ? Color(white: 0.75) : .white
-            ctx.fill(Path(ellipseIn: rect), with: .radialGradient(
-                Gradient(colors: [c.opacity(0.55), c.opacity(0)]),
-                center: CGPoint(x: rect.midX, y: rect.midY), startRadius: 0, endRadius: w / 2))
+            let y = size.height * (0.03 + 0.07 * Double(i % 4) + 0.025 * Double(i / 4))
+            for (px, py, pr) in cloudPuffs {
+                let center = CGPoint(x: x + w * px, y: y + h * py)
+                let r = w * pr
+                ctx.fill(Path(ellipseIn: CGRect(x: center.x - r, y: center.y - r, width: r * 2, height: r * 2)), with: .radialGradient(
+                    Gradient(stops: [.init(color: c.opacity(0.5), location: 0), .init(color: c.opacity(0.42), location: 0.55),
+                                     .init(color: c.opacity(0), location: 1)]),
+                    center: center, startRadius: 0, endRadius: r))
+            }
         }
     }
 

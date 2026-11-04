@@ -23,6 +23,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Air
+import androidx.compose.material.icons.filled.Stars
+import androidx.compose.material.icons.filled.Elderly
+import androidx.compose.material.icons.filled.BeachAccess
+import androidx.compose.material.icons.filled.MoreTime
+import androidx.compose.material.icons.filled.EmojiPeople
+import androidx.compose.material.icons.filled.Quiz
+import androidx.compose.material.icons.filled.RecordVoiceOver
+import androidx.compose.material.icons.filled.MusicNote
+import androidx.compose.material.icons.filled.Games
 import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Article
@@ -70,6 +79,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -94,7 +104,15 @@ import androidx.compose.ui.unit.sp
  * sonra kategoriler (Süre ve alarm, Gün ve plan, Gök ve dünya, İbadet), sonda Rozetler. Ayarlar sağ üstteki dişliden.
  * Yalnız açık özelliklerin girişleri görünür. Kayıt: `all.favs`, `all.recent` (virgülle kimlik).
  */
-enum class AllCat(val key: String) { TIME("all.cat.time"), PLAN("all.cat.plan"), SKY("all.cat.sky"), FAITH("worship.title"), MORE("tab.more") }
+enum class AllCat(val key: String) {
+    TIME("all.cat.time"), PLAN("all.cat.plan"), SKY("all.cat.sky"), FAITH("worship.title"), MORE("tab.more");
+
+    /** Kategori rengi (doğal tasarım madde 4): zaman kiremit, plan adaçayı, gök mavi, ibadet altın, diğer akşam moru */
+    @Composable
+    fun color(): Color = when (this) {
+        TIME -> Theme.c.terra; PLAN -> Theme.c.sage; SKY -> Theme.c.sky; FAITH -> Theme.c.gold; MORE -> Theme.c.dusk
+    }
+}
 
 /**
  * Bir giriş: [tab] doluysa o özellik sekmesi açılır (çubukta değilse geri düğmeli sayfa), değilse Araçlar yolu [route].
@@ -121,17 +139,28 @@ object AllPrefs {
         AllEntry("sleep", "sleep.title", Icons.Filled.Bedtime, AllCat.TIME, Tab.TOOLS, route = "sleep"),
         AllEntry("wakeGame", "wakegame.title", Icons.Filled.EmojiNature, AllCat.TIME, Tab.TOOLS, route = "wakeGame"),
         AllEntry("breath", "breath.title", Icons.Filled.Air, AllCat.TIME, Tab.TOOLS, route = "breath"),
+        // Sitedeki araçlar (4 Kasım 2026)
+        AllEntry("chess", "chess.h1", Icons.Filled.Games, AllCat.TIME, Tab.TOOLS, route = "chess"),
+        AllEntry("metronome", "metronome.h1", Icons.Filled.MusicNote, AllCat.TIME, Tab.TOOLS, route = "metronome", words = "metronome.bpm"),
+        AllEntry("talking", "talking.h1", Icons.Filled.RecordVoiceOver, AllCat.TIME, Tab.TOOLS, route = "talking"),
+        AllEntry("exam", "examTimer.h1", Icons.Filled.Quiz, AllCat.TIME, Tab.TOOLS, route = "exam"),
+        AllEntry("classroom", "classroom.h1", Icons.Filled.EmojiPeople, AllCat.TIME, Tab.TOOLS, route = "classroom",
+            words = "classroom.tabPicker classroom.tabTeams classroom.tabCounter"),
+        AllEntry("timecalc", "timeCalc.h1", Icons.Filled.MoreTime, AllCat.TIME, Tab.TOOLS, route = "timecalc"),
         AllEntry("calendar", "tab.calendar", Icons.Filled.CalendarMonth, AllCat.PLAN, Tab.CALENDAR, tab = Tab.CALENDAR),
         AllEntry("leaf", "leaf.title", Icons.Filled.Article, AllCat.PLAN, Tab.CALENDAR, route = "leaf"),
         AllEntry("datecalc", "tools.hub.cards.datecalc.name", Icons.Filled.EditCalendar, AllCat.PLAN, Tab.TOOLS, route = "datecalc"),
         AllEntry("planner", "planner.h1", Icons.Filled.Groups, AllCat.PLAN, Tab.TOOLS, route = "planner"),
         AllEntry("journal", "journal.title", Icons.Filled.WbTwilight, AllCat.PLAN, Tab.TOOLS, route = "journal"),
+        AllEntry("bridge", "bridge.h1", Icons.Filled.BeachAccess, AllCat.PLAN, Tab.TOOLS, route = "bridge"),
+        AllEntry("retire", "retire.h1", Icons.Filled.Elderly, AllCat.PLAN, Tab.TOOLS, route = "retire"),
         AllEntry("weather", "tab.weather", Icons.Filled.WbSunny, AllCat.SKY, Tab.WEATHER, tab = Tab.WEATHER),
         AllEntry("world", "tab.world", Icons.Filled.Public, AllCat.SKY, Tab.WORLD, tab = Tab.WORLD),
         AllEntry("seasons", "tab.seasons", Icons.Filled.Eco, AllCat.SKY, Tab.SEASONS, tab = Tab.SEASONS),
         AllEntry("moon", "moon.calendarLink", Icons.Filled.Brightness3, AllCat.SKY, Tab.SEASONS, route = "moon"),
         AllEntry("sky", "sky.h1", Icons.Filled.AutoAwesome, AllCat.SKY, Tab.SEASONS, route = "sky", words = "sky.eventsHeading sky.constellations sky.tonightHeading"),
         AllEntry("sunpath", "sunpath.title", Icons.Filled.WbTwilight, AllCat.SKY, Tab.SEASONS, route = "sunpath"),
+        AllEntry("zodiac", "zodiac.h1", Icons.Filled.Stars, AllCat.SKY, Tab.TOOLS, route = "zodiac"),
         AllEntry("prayer", "tab.prayer", Icons.Filled.DarkMode, AllCat.FAITH, Tab.PRAYER, tab = Tab.PRAYER),
         AllEntry("qibla", "qibla.title", Icons.Filled.Explore, AllCat.FAITH, Tab.PRAYER, route = "qibla"),
         AllEntry("quran", "quran.title", Icons.AutoMirrored.Filled.MenuBook, AllCat.FAITH, Tab.PRAYER, route = "quran"),
@@ -144,8 +173,24 @@ object AllPrefs {
         AllEntry("reldays", "relday.title", Icons.Filled.Event, AllCat.FAITH, Tab.PRAYER, route = "reldays"),
         AllEntry("greet", "greet.title", Icons.Filled.Celebration, AllCat.FAITH, Tab.PRAYER, route = "greet"),
         AllEntry("zakat", "zakat.title", Icons.Filled.Calculate, AllCat.FAITH, Tab.PRAYER, route = "zakat"),
+        AllEntry("settings", "settings.title", Icons.Filled.Settings, AllCat.MORE, null, route = "settings",
+            words = "settings.color lang.title settings.notifications"),
         AllEntry("badges", "badges.h1", Icons.Filled.MilitaryTech, AllCat.MORE, null, route = "badges"),
     )
+
+    /** Girişin 3D simgesi (4 Kasım 2026; her giriş ayrı nesne, aynı Material simgesini paylaşanlar da ayrışır) */
+    fun line(id: String): String? = mapOf(
+        "alarm" to "alarm", "timer" to "hourglass", "stopwatch" to "stopwatch", "pomodoro" to "tomato",
+        "study" to "books", "sleep" to "bed", "wakeGame" to "chick", "breath" to "wind", "chess" to "knight",
+        "metronome" to "metronome", "talking" to "speaker", "exam" to "paper", "classroom" to "school",
+        "timecalc" to "calc", "calendar" to "calendar", "leaf" to "leafcal", "datecalc" to "date",
+        "planner" to "people", "journal" to "notebook", "bridge" to "bridge", "retire" to "beach",
+        "weather" to "sun_cloud", "world" to "globe", "seasons" to "leaf", "moon" to "moon", "sky" to "telescope",
+        "sunpath" to "sunset", "zodiac" to "milkyway", "prayer" to "mosque", "qibla" to "compass", "quran" to "book",
+        "zikir" to "beads", "track" to "checklist", "duas" to "hands", "esma" to "sparkles", "hadith" to "scroll",
+        "guide" to "kaaba", "reldays" to "star_crescent", "greet" to "love_letter", "zakat" to "coin",
+        "settings" to "gear", "badges" to "medal",
+    )[id.removePrefix("s:")]?.takeIf { Icons3D.res(it) != 0 || LineIcons.get(it).isNotEmpty() }
 
     /** Aramada ayar sayfaları da çıkar (Ayarlar'ın alt sayfaları) */
     val settings: List<AllEntry> = listOf(
@@ -162,7 +207,8 @@ object AllPrefs {
         AllEntry("s:shareQr", "support.qr", Icons.Filled.QrCode2, AllCat.MORE, null, route = "shareQr"),
     )
 
-    fun visible(e: AllEntry) = e.feature == null || Features.isOn(e.feature)
+    /** Emeklilik hesabı yalnız Türkçe arayüzde (Türkiye mevzuatı, metni Türkçe) */
+    fun visible(e: AllEntry) = (e.feature == null || Features.isOn(e.feature)) && (e.id != "retire" || Strings.lang == "tr")
 
     fun byId(id: String) = (entries + settings).firstOrNull { it.id == id }
 
@@ -259,7 +305,7 @@ fun AllScreen(onRoute: (String?) -> Unit) {
                                 .padding(horizontal = 12.dp, vertical = 10.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
-                            IconBox(e.icon)
+                            IconBox(e.icon, tint = e.cat.color(), line = AllPrefs.line(e.id))
                             Spacer(Modifier.width(12.dp))
                             Column(Modifier.weight(1f)) {
                                 Text(if (e.route?.startsWith("quran:") == true) sub else e.title, color = Theme.c.text, fontSize = 16.sp)
@@ -307,7 +353,7 @@ fun AllScreen(onRoute: (String?) -> Unit) {
 
 @Composable
 private fun SectionTitle(text: String) {
-    Text(text, color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(top = 8.dp, bottom = 8.dp))
+    Text(text, color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium, modifier = Modifier.padding(top = 8.dp, bottom = 8.dp))
 }
 
 /** Kategorideki kareler: simge kutusu + ad; uzun basınca sık kullanılanlara eklenir/çıkar */
@@ -321,14 +367,16 @@ private fun TileGrid(list: List<AllEntry>, columns: Int, fav: Boolean, onOpen: (
             for (row in list.chunked(cols)) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     for (e in row) {
+                        val press = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }
                         Column(
-                            Modifier.weight(1f).heightIn(min = 92.dp).clip(RoundedCornerShape(14.dp)).background(Theme.c.surface)
-                                .combinedClickable(onClickLabel = e.title, onClick = { onOpen(e) }, onLongClick = { onLong(e) })
+                            Modifier.weight(1f).heightIn(min = 92.dp).pressScale(press).paper(radius = 16)
+                                .clip(RoundedCornerShape(16.dp))
+                                .combinedClickable(press, androidx.compose.material3.ripple(), onClickLabel = e.title, onClick = { onOpen(e) }, onLongClick = { onLong(e) })
                                 .padding(horizontal = 4.dp, vertical = 10.dp),
                             horizontalAlignment = Alignment.CenterHorizontally,
                         ) {
                             Box {
-                                IconBox(e.icon)
+                                IconBox(e.icon, tint = e.cat.color(), line = AllPrefs.line(e.id))
                                 if (fav) Icon(Icons.Filled.Star, null, tint = Theme.c.accent, modifier = Modifier.size(12.dp).align(Alignment.TopEnd))
                             }
                             Spacer(Modifier.height(6.dp))

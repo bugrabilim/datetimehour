@@ -385,6 +385,23 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+        <!-- Bildirim alanında ve kilit ekranında hava: aç/kapa (4 Kasım 2026) -->
+        <service
+            android:name=".WeatherTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_stat_weather"
+            android:label="@string/live_weather_control"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+        <receiver
+            android:name=".LiveWeatherOffReceiver"
+            android:exported="false" />
         <service
             android:name=".StopwatchTileService"
             android:exported="true"

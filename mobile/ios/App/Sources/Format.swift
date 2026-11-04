@@ -105,21 +105,51 @@ enum Fmt {
     static func monthTitle(_ year: Int, _ month: Int) -> String { L("calendar.months.\(month - 1)") + " " + String(year) }
 }
 
-/// Bölüm başlığı ve kart görünümü (sitedeki sade, çerçevesiz düzen)
+/// Bölüm başlığı (doğal tasarım 4 Kasım 2026): Literata 19, 500, yazı renginde
 struct SectionTitle: View {
     let text: String
     var body: some View {
         Text(text)
-            .font(.headline)
+            .font(AppFonts.section)
             .foregroundStyle(Theme.text)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
-extension View {
-    func card() -> some View {
-        padding(14)
+/// Kâğıt kart (doğal tasarım 4 Kasım 2026): kenarlık yok, köşe 22, iç boşluk 20; açık temada sıcak yumuşak gölge, koyu
+/// temada gölge yerine üst kenarda ince ışık çizgisi
+struct PaperCard: ViewModifier {
+    var padding: CGFloat = 20
+    var fill: Color = Theme.surface
+    @Environment(\.colorScheme) private var scheme
+
+    func body(content: Content) -> some View {
+        content
+            .padding(padding)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Theme.surface, in: RoundedRectangle(cornerRadius: 14))
+            .background { PaperShape(fill: fill, dark: scheme == .dark) }
     }
+}
+
+/// Kâğıt kartın zemini (başka kart biçimlerinde de kullanılır)
+struct PaperShape: View {
+    var fill: Color = Theme.surface
+    var radius: CGFloat = 22
+    var dark: Bool
+
+    var body: some View {
+        let shape = RoundedRectangle(cornerRadius: radius, style: .continuous)
+        shape.fill(fill)
+            .shadow(color: dark ? .clear : Color(red: 0.29, green: 0.2, blue: 0.12).opacity(0.08), radius: 12, y: 6)
+            .overlay {
+                if dark {
+                    shape.strokeBorder(LinearGradient(colors: [.white.opacity(0.07), .clear], startPoint: .top,
+                                                      endPoint: UnitPoint(x: 0.5, y: 0.25)), lineWidth: 1)
+                }
+            }
+    }
+}
+
+extension View {
+    func card(padding: CGFloat = 20) -> some View { modifier(PaperCard(padding: padding)) }
 }

@@ -92,7 +92,7 @@ struct LanguageRow: View {
             LabeledContent {
                 Text(AppLanguage.all.first { $0.code == selected }.map { "\($0.flag)  \($0.native)" } ?? L("lang.system"))
             } label: {
-                Label(L("lang.title"), systemImage: "globe")
+                BoxLabel(L("lang.title"), icon: "globe")
             }
         }
     }

@@ -235,7 +235,7 @@ fun GeoAlarmsScreen() {
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(L("geo.title"), Modifier.weight(1f), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+            Text(L("geo.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
             if (list.size < GeoAlarms.LIMIT) {
                 IconButton(onClick = {
                     val p = AppPlace.current()
@@ -252,7 +252,7 @@ fun GeoAlarmsScreen() {
                         Text(L(if (g.on == "leave") "geo.onLeave" else "geo.onArrive") + " · " + T("geo.radiusM", g.r) +
                             if (g.repeats) "" else " · " + L("geo.once"), color = Theme.c.muted, fontSize = 13.sp)
                     }
-                    Switch(g.enabled, { on -> update(list.map { if (it.id == g.id) it.copy(enabled = on) else it }) },
+                    SoftSwitch(g.enabled, { on -> update(list.map { if (it.id == g.id) it.copy(enabled = on) else it }) },
                         colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
             }
@@ -319,7 +319,7 @@ private fun GeoAlarmEditor(start: GeoAlarm, onDismiss: () -> Unit, onDelete: () 
                 ChoiceRow(L("geo.radius"), T("geo.radiusM", g.r), GeoAlarm.RADII.map { it to T("geo.radiusM", it) }) { g = g.copy(r = it) }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("geo.every"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    Switch(g.repeats, { g = g.copy(repeats = it) }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(g.repeats, { g = g.copy(repeats = it) }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
             }
         },

@@ -48,6 +48,7 @@ import java.time.Instant
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.layout.size
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZoneOffset
@@ -118,24 +119,22 @@ fun WorldScreen() {
                         Icon(Icons.Filled.KeyboardArrowDown, null, tint = if (i < keys.size - 1) Theme.c.accent else Theme.c.muted)
                     }
                 } else {
-                    // Gök renkli saat kutusu: gündüz açık mavi, alacakaranlık kızıl, gece lacivert (2. analiz #129)
+                    // Küçük gök penceresi + kutusuz saat (doğal tasarım 4 Kasım 2026; önceden göz alan açık mavi kutu, 2. analiz #129)
                     val light = city.light(now)
-                    val (bg, fg) = when (light) {
-                        "day" -> Color(0xFFD5E8FF) to Color(0xFF14233A)
-                        "dusk" -> Color(0xFFBE5446) to Color.White
-                        else -> Color(0xFF1B2440) to Color(0xFFE8ECF8)
-                    }
-                    Column(Modifier.clip(RoundedCornerShape(12.dp)).background(bg).padding(horizontal = 10.dp, vertical = 4.dp),
-                        horizontalAlignment = Alignment.End) {
+                    val fg = Theme.c.text
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    SkyWindow(light)
+                    Column(horizontalAlignment = Alignment.End) {
                         Ltr {
-                            Text((if (light == "day") "☀ " else if (light == "dusk") "◐ " else "☾ ") + Fmt.time(t) + (Fmt.ampm(t).let { if (it.isEmpty()) "" else " $it" }),
+                            Text(Fmt.time(t) + (Fmt.ampm(t).let { if (it.isEmpty()) "" else " $it" }),
                                 color = fg, fontSize = 26.sp, fontWeight = FontWeight.Light, style = Tnum)
                         }
-                        if (dayNote.isNotEmpty()) Text(dayNote, color = fg, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                        if (dayNote.isNotEmpty()) Text(dayNote, color = Theme.c.accent, fontSize = 12.sp, fontWeight = FontWeight.Medium)
                         wxVersion
                         WorldWeather.cached(city.key)?.let {
-                            Text(WeatherCode.of(it.code).icon(it.isDay) + " " + Units.temp(it.celsius), color = fg, fontSize = 12.sp)
+                            Text(WeatherCode.of(it.code).icon(it.isDay) + " " + Units.temp(it.celsius), color = Theme.c.muted, fontSize = 12.sp)
                         }
+                    }
                     }
                 }
             }
@@ -162,7 +161,7 @@ fun WorldScreen() {
                 HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("world.changeTime"), Modifier.weight(1f), color = Theme.c.text)
-                    Switch(shift, {
+                    SoftSwitch(shift, {
                         shift = it
                         if (it) whenMs = System.currentTimeMillis()
                     }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
@@ -314,4 +313,32 @@ private fun WorldDetailDialog(c: WorldEntry, now: Instant, onClose: () -> Unit) 
             }
         },
     )
+}
+
+/** Küçük gök penceresi (doğal tasarım 4 Kasım 2026): gündüz güneşli gök, alacakaranlıkta ufukta güneş, gecede hilal */
+@Composable
+fun SkyWindow(light: String, modifier: Modifier = Modifier) {
+    val (top, bottom) = when (light) {
+        "day" -> Color(0xFFA9C9DF) to Color(0xFFF2E6CC)
+        "dusk" -> Color(0xFF46305A) to Color(0xFFE8A27C)
+        else -> Color(0xFF1F2240) to Color(0xFF3B3762)
+    }
+    androidx.compose.foundation.Canvas(
+        modifier.size(30.dp).clip(RoundedCornerShape(10.dp))
+            .background(androidx.compose.ui.graphics.Brush.verticalGradient(listOf(top, bottom))),
+    ) {
+        val w = size.width
+        val sun = Color(0xFFF6C35B)
+        when (light) {
+            "day" -> drawCircle(sun, radius = w * 0.2f, center = androidx.compose.ui.geometry.Offset(w * 0.62f, w * 0.38f))
+            "dusk" -> drawCircle(sun, radius = w * 0.24f, center = androidx.compose.ui.geometry.Offset(w * 0.5f, w * 0.94f))
+            else -> {
+                drawCircle(Color(0xFFFFF8EC), radius = w * 0.19f, center = androidx.compose.ui.geometry.Offset(w * 0.56f, w * 0.42f))
+                drawCircle(androidx.compose.ui.graphics.lerp(top, bottom, 0.35f), radius = w * 0.17f,
+                    center = androidx.compose.ui.geometry.Offset(w * 0.65f, w * 0.35f))
+                drawCircle(Color(0xFFFFF8EC).copy(alpha = 0.7f), radius = w * 0.03f, center = androidx.compose.ui.geometry.Offset(w * 0.22f, w * 0.25f))
+                drawCircle(Color(0xFFFFF8EC).copy(alpha = 0.5f), radius = w * 0.025f, center = androidx.compose.ui.geometry.Offset(w * 0.3f, w * 0.7f))
+            }
+        }
+    }
 }

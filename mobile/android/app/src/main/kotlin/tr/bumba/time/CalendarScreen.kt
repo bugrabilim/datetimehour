@@ -127,15 +127,15 @@ fun CalendarScreen() {
         Row(verticalAlignment = Alignment.CenterVertically) {
             // Ay ve yıl alt alta (uzun ay adlı dillerde, ör. Rusça/Fransızca, düğmelerle sığsın); "Bugün" simge düğmesi
             Column(Modifier.weight(1f)) {
-                Text(Fmt.month(month.monthValue), color = Theme.c.text, fontSize = 28.sp, fontWeight = FontWeight.Bold,
-                    maxLines = 1, softWrap = false, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
-                Text("${month.year}", color = Theme.c.accent, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
+                Text(Fmt.month(month.monthValue), color = Theme.c.text, fontSize = 28.sp, fontFamily = AppFonts.heading,
+                    fontWeight = FontWeight.SemiBold, maxLines = 1, softWrap = false,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                Text("${month.year}", color = Theme.c.accent, fontSize = 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium, maxLines = 1)
             }
-            IconButton(onClick = { go(today) }) { Icon(Icons.Filled.Today, L("client.today"), tint = Theme.c.accent) }
+            // Başlıkta az simge (doğal tasarım, madde 13): Bugün ve takvim yaprağı "…" menüsünde
             IconButton(onClick = { step(-1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, L("prayer.prevMonth"), tint = Theme.c.accent) }
             IconButton(onClick = { step(1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, L("prayer.nextMonth"), tint = Theme.c.accent) }
-            IconButton(onClick = { leaf = true }) { Icon(Icons.Filled.Article, L("leaf.title"), tint = Theme.c.accent) }
-            CalViewMenu()
+            CalViewMenu(onToday = { go(today) }, onLeaf = { leaf = true })
             IconButton(onClick = { DeviceCalendar.add(context, selected) }) { Icon(Icons.Filled.Add, L("calendar.add"), tint = Theme.c.accent) }
         }
         // Görünüm: ay, hafta, gün, ajanda, yıl (2. analiz #116)
@@ -351,12 +351,23 @@ object CalView {
 }
 
 @Composable
-private fun CalViewMenu() {
+private fun CalViewMenu(onToday: () -> Unit, onLeaf: () -> Unit) {
     var open by remember { mutableStateOf(false) }
     var countryOpen by remember { mutableStateOf(false) }
     androidx.compose.foundation.layout.Box {
         IconButton(onClick = { open = true }) { Icon(androidx.compose.material.icons.Icons.Filled.MoreVert, L("cal.view"), tint = Theme.c.accent) }
         androidx.compose.material3.DropdownMenu(expanded = open, onDismissRequest = { open = false }) {
+            androidx.compose.material3.DropdownMenuItem(
+                text = { Text(L("client.today")) },
+                leadingIcon = { Icon(Icons.Filled.Today, null, tint = Theme.c.accent) },
+                onClick = { open = false; onToday() },
+            )
+            androidx.compose.material3.DropdownMenuItem(
+                text = { Text(L("leaf.title")) },
+                leadingIcon = { Icon(Icons.Filled.Article, null, tint = Theme.c.accent) },
+                onClick = { open = false; onLeaf() },
+            )
+            androidx.compose.material3.HorizontalDivider(color = Theme.c.line)
             @Composable
             fun item(key: String, on: Boolean, set: (Boolean) -> Unit) = androidx.compose.material3.DropdownMenuItem(
                 text = { Text(L(key)) },

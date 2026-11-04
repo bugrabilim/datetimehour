@@ -59,31 +59,40 @@ import kotlin.math.sin
 /**
  * Kadran koleksiyonu (3 Kasım 2026, 2. analiz #1; sahibin ekran görüntüleri): rakamlı analog saatlerin kadranı.
  * 12 kadran: klasik, Roma rakamı, sade, noktalı, kronograf, çift halka, metal çerçeve, radar, Çin rakamı ve dokulu
- * zeminler (deniz, yaprak, mermer). Görsel dosya yok, hepsi çizim. Her kadranda 5 renk (ibre ve saniye; "auto"
+ * zeminler (deniz, yaprak, mermer); lüm (2. analiz #11); 4 Kasım 2026'da sahibin isteğiyle ("yetersiz kadran var") 12 yeni:
+ * Doğu Arap rakamı, pilot, Bauhaus, güneş ışını, eski cep saati, dalgıç, gökkuşağı (çocuklar), neon, ahşap, İznik çini,
+ * geometrik (sekiz köşeli yıldız), sektör. Görsel dosya yok, hepsi çizim. Her kadranda 5 renk (ibre ve saniye; "auto"
  * kadranın kendi rengi). Seçim `dial.face`, `dial.color`; galeri açılınca "Yeni" işareti ve saat ekranındaki tanıtım
- * kalkar (`dial.seen`). iOS'taki Dials.swift ile aynı adlar ve ölçüler (200 birimlik kadran).
+ * kalkar (`dial.seen2`; yeni kadranlar için 4 Kasım 2026'da yeniden gösterilir). iOS'taki Dials.swift ile aynı adlar ve ölçüler (200 birimlik kadran).
  */
 enum class DialFace(val id: String) {
     CLASSIC("classic"), ROMAN("roman"), MINIMAL("minimal"), DOTS("dots"), CHRONO("chrono"), DOUBLE("double"),
     METAL("metal"), RADAR("radar"), CHINESE("chinese"), OCEAN("ocean"), LEAF("leaf"), MARBLE("marble"),
     /** Lüm (2. analiz #11): siyah kadranda işaretler ve ibreler seçilen renkte ışır (14 renk, `dial.lume`) */
-    LUME("lume");
+    LUME("lume"),
+    EASTERN("eastern"), PILOT("pilot"), BAUHAUS("bauhaus"), SUNBURST("sunburst"), VINTAGE("vintage"), DIVER("diver"),
+    RAINBOW("rainbow"), NEON("neon"), WOOD("wood"), IZNIK("iznik"), GEOMETRIC("geometric"), SECTOR("sector");
 
     val title: String get() = L("dial.$id")
 
-    enum class Numerals { ARABIC, ROMAN, CHINESE, NONE }
-    enum class Ticks { FULL, HOURS, DOTS }
+    /** QUARTERS: yalnız 12, 3, 6, 9 */
+    enum class Numerals { ARABIC, ROMAN, CHINESE, EASTERN, QUARTERS, NONE }
+    /** NONE: kadran kendi işaretlerini çizer (dalgıç, gökkuşağı, İznik, geometrik) */
+    enum class Ticks { FULL, HOURS, DOTS, NONE }
 
     val numerals: Numerals get() = when (this) {
-        CLASSIC, CHRONO, DOUBLE, OCEAN, MARBLE, LUME -> Numerals.ARABIC
-        ROMAN -> Numerals.ROMAN
+        CLASSIC, CHRONO, DOUBLE, OCEAN, MARBLE, LUME, PILOT, VINTAGE, RAINBOW, IZNIK, SECTOR -> Numerals.ARABIC
+        ROMAN, WOOD -> Numerals.ROMAN
         CHINESE -> Numerals.CHINESE
+        EASTERN -> Numerals.EASTERN
+        BAUHAUS -> Numerals.QUARTERS
         else -> Numerals.NONE
     }
 
     val ticks: Ticks get() = when (this) {
-        MINIMAL, METAL, LEAF, LUME -> Ticks.HOURS
+        MINIMAL, METAL, LEAF, LUME, SUNBURST, NEON, WOOD -> Ticks.HOURS
         DOTS -> Ticks.DOTS
+        RAINBOW, IZNIK, GEOMETRIC, DIVER -> Ticks.NONE
         else -> Ticks.FULL
     }
 
@@ -100,6 +109,17 @@ enum class DialFace(val id: String) {
             MARBLE -> Colors(k(0xF1EEE9), k(0xBDB5A6), k(0x343A40), k(0x868E96), k(0x212529), k(0x9A3F00), k(0xC92A2A))
             CHINESE -> Colors(c.surface2, c.border, c.text, c.muted, c.ink, c.accent, k(0xC92A2A))
             LUME -> Lume.current.let { g -> Colors(k(0x07080B), g.copy(alpha = 0.45f), g, g.copy(alpha = 0.55f), g, g, k(0xFF6B6B)) }
+            PILOT -> Colors(k(0x15171A), k(0x3A3F45), k(0xF1F3F5), k(0x8D949B), k(0xF8F9FA), k(0xF8F9FA), k(0xFF922B))
+            BAUHAUS -> Colors(k(0xF4F1EA), k(0x1A1A1A), k(0x1A1A1A), k(0x8C8C8C), k(0x1A1A1A), k(0x1A1A1A), k(0xE03131))
+            SUNBURST -> Colors(k(0x2546A8), k(0xC7D2FE), k(0xF1F3F5), k(0xA5B4FC), k(0xF8F9FA), k(0xE9ECEF), k(0xFFD43B))
+            VINTAGE -> Colors(k(0xF3E9D2), k(0x8C7A5B), k(0x3B2F1E), k(0x7A6A50), k(0x2B2116), k(0x1E3A8A), k(0x8B1E1E))
+            DIVER -> Colors(k(0x0B1220), k(0x334155), k(0xE6F4EA), k(0x94A3B8), k(0xE6F4EA), k(0xE6F4EA), k(0xFF6B6B))
+            RAINBOW -> Colors(k(0xFFFFFF), k(0x495057), k(0x343A40), k(0xADB5BD), k(0x212529), k(0x343A40), k(0xE03131))
+            NEON -> Colors(k(0x0A0A14), k(0x3BF0FF), k(0xFF4FD8), k(0x7A3E8C), k(0x3BF0FF), k(0x3BF0FF), k(0xFF4FD8))
+            WOOD -> Colors(k(0x7A4A24), k(0xE0B65A), k(0xF1D38A), k(0xC9A35A), k(0xF6E3B0), k(0xF1D38A), k(0xE8590C))
+            IZNIK -> Colors(k(0xFBFBF8), k(0x1F4E9C), k(0x1F4E9C), k(0x6C8FC9), k(0x1F4E9C), k(0x173B78), k(0xC0392B))
+            GEOMETRIC -> Colors(k(0x0F3B2E), k(0xD4AF37), k(0xD4AF37), k(0x8C7A3A), k(0xF3E3A6), k(0xD4AF37), k(0xF8F9FA))
+            SECTOR -> Colors(k(0xEEE8DA), k(0x1B3A5C), k(0x1B3A5C), k(0x6B7F95), k(0x1B3A5C), k(0x1B3A5C), k(0xD9480F))
             else -> Colors(c.surface2, c.border, c.text, c.muted, c.ink, c.accent, c.accent2)
         }
     }
@@ -107,9 +127,12 @@ enum class DialFace(val id: String) {
     companion object {
         const val KEY = "dial.face"
         const val COLOR_KEY = "dial.color"
-        const val SEEN_KEY = "dial.seen"
+        const val SEEN_KEY = "dial.seen2"
         val ROMAN_N = listOf("XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI")
         val CHINESE_N = listOf("十二", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一")
+        val EASTERN_N = listOf("١٢", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "١٠", "١١")
+        /** Gökkuşağı kadranının saat dilimleri (pastel) */
+        val RAINBOW_C = listOf(0xFFC9C9L, 0xFFD8A8L, 0xFFEC99L, 0xD8F5A2L, 0xB2F2BBL, 0x96F2D7L, 0x99E9F2L, 0xA5D8FFL, 0xBAC8FFL, 0xD0BFFFL, 0xEEBEFAL, 0xFCC2D7L)
 
         fun of(id: String?): DialFace = entries.firstOrNull { it.id == id } ?: CLASSIC
         val current: DialFace get() = of(Prefs.store.getString(KEY, null))
@@ -153,6 +176,10 @@ fun DrawScope.drawDial(face: DialFace, k: DialFace.Colors, measurer: TextMeasure
     val r = 94 * u
     val circle = Path().apply { addOval(androidx.compose.ui.geometry.Rect(center, r)) }
     fun k(v: Long) = Color(0xFF000000 or v)
+    // Klasik kadranın altında yumuşak gölge (birkaç soluk halka; doğal tasarım madde 9)
+    if (face == DialFace.CLASSIC) for ((d, a) in listOf(6f to 0.03f, 4f to 0.04f, 2f to 0.05f)) {
+        drawCircle(Color(0xFF4A341E).copy(alpha = a), r + d * u * 0.5f, Offset(center.x, center.y + d * u))
+    }
     // Zemin ve doku (dairenin içine kırpılır)
     clipPath(circle) {
         when (face) {
@@ -214,6 +241,42 @@ fun DrawScope.drawDial(face: DialFace, k: DialFace.Colors, measurer: TextMeasure
                     drawPath(p, k(if (i % 3 == 0) 0xB8AE9C else 0xCFC8BD).copy(alpha = 0.7f), style = Stroke(s * if (i % 3 == 0) 0.008f else 0.004f))
                 }
             }
+            DialFace.SUNBURST -> {
+                drawRect(Brush.radialGradient(listOf(k(0x4263EB), k(0x1C3584)), center, r))
+                for (i in 0 until 120) rotate(i * 3f, center) {
+                    drawLine(Color.White.copy(alpha = if (i % 2 == 0) 0.07f else 0.03f), Offset(center.x, center.y - 8 * u), Offset(center.x, center.y - r), 1.2f * u)
+                }
+            }
+            DialFace.VINTAGE -> drawRect(Brush.radialGradient(listOf(k(0xF7EFDC), k(0xF3E9D2), k(0xDCC9A3)), center, r))
+            DialFace.RAINBOW -> {
+                drawRect(k.face)
+                for (i in 0 until 12) drawArc(Color(0xFF000000 or DialFace.RAINBOW_C[i]), i * 30f - 105f, 30f, true,
+                    Offset(center.x - r, center.y - r), Size(2 * r, 2 * r))
+                drawCircle(Color.White, 34 * u, center)
+            }
+            DialFace.WOOD -> {
+                drawRect(Brush.linearGradient(listOf(k(0x9C6634), k(0x5C3A1E)), Offset(center.x - r, center.y - r), Offset(center.x + r, center.y + r)))
+                val s = 2 * r
+                for (i in 0 until 16) {
+                    val p = Path()
+                    val y0 = center.y - r + s * (i + 0.5f) / 16
+                    var x = center.x - r
+                    p.moveTo(x, y0)
+                    while (x <= center.x + r) {
+                        val t = (x - center.x + r) / s
+                        p.lineTo(x, y0 + (sin(t * (5 + i % 4) + i * 1.7) * s * 0.012 * (1 + i % 3)).toFloat())
+                        x += 3 * u
+                    }
+                    drawPath(p, (if (i % 2 == 0) k(0x3E2410) else k(0xC08A52)).copy(alpha = if (i % 2 == 0) 0.28f else 0.16f), style = Stroke(s * 0.005f))
+                }
+                // Budak
+                for (j in 0 until 4) drawOval(k(0x3E2410).copy(alpha = 0.25f), Offset(center.x - 52 * u - j * 4 * u, center.y + 30 * u - j * 2.5f * u),
+                    Size((14 + j * 8) * u, (7 + j * 5) * u), style = Stroke(1.2f * u))
+            }
+            DialFace.GEOMETRIC -> drawRect(Brush.radialGradient(listOf(k(0x145A45), k(0x0B2E24)), center, r))
+            DialFace.SECTOR -> { drawRect(k.face); drawCircle(k(0xE2D9C6), 50 * u, center) }
+            // Klasik kadran (doğal tasarım madde 9): ortası hafif aydınlık radyal geçiş
+            DialFace.CLASSIC -> drawRect(Brush.radialGradient(listOf(androidx.compose.ui.graphics.lerp(k.face, Color.White, 0.22f), k.face), center, r))
             else -> drawRect(k.face)
         }
         if (face == DialFace.RADAR) {
@@ -228,12 +291,25 @@ fun DrawScope.drawDial(face: DialFace, k: DialFace.Colors, measurer: TextMeasure
     }
     if (face == DialFace.METAL) {
         drawCircle(Brush.sweepGradient(listOf(k(0xF8F9FA), k(0x868E96), k(0xDEE2E6), k(0x495057), k(0xF8F9FA)), center), r, center, style = Stroke(9 * u))
+    } else if (face == DialFace.NEON) {
+        // Işıma: geniş ve soluktan ince ve parlağa
+        for ((w, a) in listOf(12f to 0.10f, 7f to 0.22f, 3.5f to 0.6f, 1.5f to 1f)) drawCircle(k.border.copy(alpha = a), r - 4 * u, center, style = Stroke(w * u))
+        drawCircle(k.tick.copy(alpha = 0.35f), 58 * u, center, style = Stroke(1 * u))
+    } else if (face == DialFace.CLASSIC) {
+        // İnce dış halka
+        drawCircle(k.border.copy(alpha = 0.8f), r, center, style = Stroke(1.2f * u))
     } else {
         drawCircle(k.border, r, center, style = Stroke(2 * u))
     }
     // Çizgiler
     when (face.ticks) {
-        DialFace.Ticks.FULL -> for (i in 0 until 60) {
+        // Klasik: dakikalar %40 noktalar, saatler kısa yuvarlak uçlu çizgiler
+        DialFace.Ticks.FULL -> if (face == DialFace.CLASSIC) for (i in 0 until 60) {
+            val a = Math.toRadians(i * 6.0)
+            if (i % 5 == 0) rotate(i * 6f, center) {
+                drawLine(k.tick, Offset(center.x, center.y - 87 * u), Offset(center.x, center.y - 79 * u), 3.2f * u, StrokeCap.Round)
+            } else drawCircle(k.minor.copy(alpha = 0.4f), 1.1f * u, Offset(center.x + 85 * u * sin(a).toFloat(), center.y - 85 * u * kotlin.math.cos(a).toFloat()))
+        } else for (i in 0 until 60) {
             val major = i % 5 == 0
             rotate(i * 6f, center) {
                 drawLine(if (major) k.tick else k.minor, Offset(center.x, center.y - (if (major) 88 else 86) * u),
@@ -250,6 +326,7 @@ fun DrawScope.drawDial(face: DialFace, k: DialFace.Colors, measurer: TextMeasure
             val a = i * 30 * Math.PI / 180
             drawCircle(k.tick, (if (i % 3 == 0) 5.5f else 3.5f) * u, Offset(center.x + 80 * u * sin(a).toFloat(), center.y - 80 * u * cos(a).toFloat()))
         }
+        DialFace.Ticks.NONE -> {}
     }
     fun text(s: String, x: Float, y: Float, size: Float, color: Color, serif: Boolean = false, weight: FontWeight = FontWeight.SemiBold) {
         val l = measurer.measure(s, TextStyle(color = color, fontSize = (size * u / density / fontScale).sp, fontWeight = weight,
@@ -273,15 +350,99 @@ fun DrawScope.drawDial(face: DialFace, k: DialFace.Colors, measurer: TextMeasure
             rotate(ang.toFloat(), sc) { drawLine(if (x == 0f) k.second else k.ink, sc, Offset(sc.x, sc.y - 14 * u), 1.6f * u, StrokeCap.Round) }
         }
     }
+    fun at(rad: Float, deg: Double) = Offset(center.x + rad * u * sin(Math.toRadians(deg)).toFloat(), center.y - rad * u * cos(Math.toRadians(deg)).toFloat())
+    when (face) {
+        DialFace.PILOT -> {
+            // 12'de üçgen ve iki nokta
+            drawPath(Path().apply { moveTo(center.x - 7 * u, center.y - 87 * u); lineTo(center.x + 7 * u, center.y - 87 * u); lineTo(center.x, center.y - 72 * u); close() }, k.tick)
+            for (dx in listOf(-11f, 11f)) drawCircle(k.tick, 1.8f * u, Offset(center.x + dx * u, center.y - 84 * u))
+        }
+        DialFace.DIVER -> {
+            // Dönen çerçeve: ilk 15 dakika renkli, 10'ar dakikada rakam, sıfırda ışıklı üçgen
+            drawCircle(k(0x1F2937), 87 * u, center, style = Stroke(14 * u))
+            drawArc(k(0x2563EB), -90f, 90f, false, Offset(center.x - 87 * u, center.y - 87 * u), Size(174 * u, 174 * u), style = Stroke(14 * u))
+            for (m in 0 until 60) if (m < 15 || m % 5 == 0) if (m % 10 != 0) rotate(m * 6f, center) {
+                drawLine(Color.White.copy(alpha = 0.7f), Offset(center.x, center.y - 90 * u), Offset(center.x, center.y - (if (m % 5 == 0) 84 else 87) * u), 1.2f * u)
+            }
+            for (n in 1..5) at(87f, n * 60.0).let { text((n * 10).toString(), it.x, it.y, 8.5f, Color.White, weight = FontWeight.Bold) }
+            drawPath(Path().apply { moveTo(center.x - 5 * u, center.y - 92 * u); lineTo(center.x + 5 * u, center.y - 92 * u); lineTo(center.x, center.y - 83 * u); close() }, k.tick)
+            drawCircle(k.minor, 79.5f * u, center, style = Stroke(1 * u))
+            // Işıklı saat işaretleri
+            for (i in 0 until 12) {
+                if (i % 3 == 0) rotate(i * 30f, center) {
+                    drawLine(k.minor, Offset(center.x, center.y - 75 * u), Offset(center.x, center.y - 60 * u), 9 * u, StrokeCap.Round)
+                    drawLine(k.tick, Offset(center.x, center.y - 75 * u), Offset(center.x, center.y - 60 * u), 6.5f * u, StrokeCap.Round)
+                } else {
+                    drawCircle(k.minor, 6 * u, at(68f, i * 30.0)); drawCircle(k.tick, 4.6f * u, at(68f, i * 30.0))
+                }
+            }
+        }
+        DialFace.IZNIK -> {
+            // Kobalt mavisi bant, beyaz lale motifleri, aralarda mercan kırmızısı noktalar
+            drawCircle(k.border, 86.5f * u, center, style = Stroke(15 * u))
+            for (i in 0 until 12) {
+                val d = i * 30.0
+                rotate(d.toFloat(), center) {
+                    val cx = center.x; val cy = center.y - 86.5f * u
+                    drawOval(Color.White, Offset(cx - 2.2f * u, cy - 4.6f * u), Size(4.4f * u, 7.4f * u))
+                    rotate(-28f, Offset(cx, cy + 2 * u)) { drawOval(Color.White, Offset(cx - 1.6f * u, cy - 3.6f * u), Size(3.2f * u, 6 * u)) }
+                    rotate(28f, Offset(cx, cy + 2 * u)) { drawOval(Color.White, Offset(cx - 1.6f * u, cy - 3.6f * u), Size(3.2f * u, 6 * u)) }
+                }
+                drawCircle(k.second, 2.2f * u, at(86.5f, d + 15))
+            }
+            drawCircle(k(0x2A9D8F), 77 * u, center, style = Stroke(1.2f * u))
+            for (i in 0 until 60) if (i % 5 != 0) drawCircle(k.minor, 0.9f * u, at(74f, i * 6.0))
+            for (i in 0 until 8) rotate(i * 45f, center) { drawOval(k(0x2A9D8F).copy(alpha = 0.3f), Offset(center.x - 3 * u, center.y - 26 * u), Size(6 * u, 12 * u)) }
+        }
+        DialFace.GEOMETRIC -> {
+            // Sekiz köşeli yıldız (iki kare) ve saatlerde küçük yıldızlar
+            fun star(c: Offset, h: Float, color: Color, stroke: Float?) {
+                for (rot in listOf(0f, 45f)) rotate(rot, c) {
+                    if (stroke == null) drawRect(color, Offset(c.x - h, c.y - h), Size(2 * h, 2 * h))
+                    else drawRect(color, Offset(c.x - h, c.y - h), Size(2 * h, 2 * h), style = Stroke(stroke))
+                }
+            }
+            star(center, 40 * u, k.tick.copy(alpha = 0.55f), 1.4f * u)
+            star(center, 27 * u, k.tick.copy(alpha = 0.3f), 1f * u)
+            drawCircle(k.tick.copy(alpha = 0.45f), 56 * u, center, style = Stroke(1 * u))
+            drawCircle(k.tick.copy(alpha = 0.45f), 88 * u, center, style = Stroke(1 * u))
+            for (i in 0 until 12) star(at(76f, i * 30.0), (if (i % 3 == 0) 5.2f else 3.6f) * u, k.tick, null)
+            for (i in 0 until 60) if (i % 5 != 0) drawCircle(k.minor, 1 * u, at(76f, i * 6.0))
+        }
+        DialFace.SECTOR -> {
+            drawCircle(k.minor, 50 * u, center, style = Stroke(1 * u))
+            drawCircle(k.minor, 74 * u, center, style = Stroke(1 * u))
+            drawCircle(k.minor, 89.5f * u, center, style = Stroke(1 * u))
+        }
+        DialFace.VINTAGE -> {
+            // Demiryolu dakika halkası
+            drawCircle(k.minor, 80 * u, center, style = Stroke(0.8f * u))
+            drawCircle(k.minor, 88 * u, center, style = Stroke(0.8f * u))
+        }
+        else -> {}
+    }
     if (face.numerals != DialFace.Numerals.NONE) {
-        val radius = when (face) { DialFace.DOUBLE -> 46f; DialFace.CHRONO -> 70f; else -> 66f }
-        val size = when (face) { DialFace.CHRONO -> 12f; DialFace.DOUBLE -> 13f; DialFace.ROMAN, DialFace.CHINESE -> 14f; else -> 15f }
+        val radius = when (face) {
+            DialFace.DOUBLE -> 46f; DialFace.CHRONO -> 70f; DialFace.RAINBOW, DialFace.SECTOR -> 62f
+            DialFace.PILOT, DialFace.BAUHAUS -> 64f; DialFace.VINTAGE, DialFace.IZNIK -> 63f; DialFace.WOOD -> 55f; else -> 66f
+        }
+        val size = when (face) {
+            DialFace.CHRONO, DialFace.SECTOR -> 12f; DialFace.DOUBLE, DialFace.WOOD -> 13f; DialFace.ROMAN, DialFace.CHINESE -> 14f
+            DialFace.EASTERN -> 16f; DialFace.PILOT, DialFace.BAUHAUS, DialFace.RAINBOW -> 18f; else -> 15f
+        }
+        val weight = when (face) { DialFace.PILOT, DialFace.RAINBOW -> FontWeight.Bold; DialFace.BAUHAUS -> FontWeight.Light; DialFace.VINTAGE -> FontWeight.Normal; else -> FontWeight.SemiBold }
         for (i in 0 until 12) {
             val n = if (i == 0) 12 else i
             if (face == DialFace.CHRONO && n in listOf(3, 6, 9)) continue
+            if (face == DialFace.PILOT && n == 12) continue
+            if (face.numerals == DialFace.Numerals.QUARTERS && n % 3 != 0) continue
             val a = n * 30 * Math.PI / 180
-            val s = when (face.numerals) { DialFace.Numerals.ROMAN -> DialFace.ROMAN_N[i]; DialFace.Numerals.CHINESE -> DialFace.CHINESE_N[i]; else -> n.toString() }
-            text(s, center.x + radius * u * sin(a).toFloat(), center.y - radius * u * cos(a).toFloat(), size, k.ink, serif = face.numerals == DialFace.Numerals.ROMAN)
+            val s = when (face.numerals) {
+                DialFace.Numerals.ROMAN -> DialFace.ROMAN_N[i]; DialFace.Numerals.CHINESE -> DialFace.CHINESE_N[i]
+                DialFace.Numerals.EASTERN -> DialFace.EASTERN_N[i]; else -> n.toString()
+            }
+            text(s, center.x + radius * u * sin(a).toFloat(), center.y - radius * u * cos(a).toFloat(), size, k.ink,
+                serif = face.numerals == DialFace.Numerals.ROMAN || face == DialFace.VINTAGE, weight = weight)
         }
     }
 }
@@ -305,7 +466,7 @@ fun DialGalleryScreen() {
                 ) {
                     Box {
                         AnalogClock(now, Modifier.fillMaxWidth(), face = f, dialColor = if (f == face) color else DialColor.AUTO, tap = false)
-                        if (newOnOpen && f != DialFace.CLASSIC) {
+                        if (newOnOpen && f.ordinal >= DialFace.EASTERN.ordinal) {
                             Text(L("dial.new"), Modifier.align(Alignment.TopEnd).background(Theme.c.accent, RoundedCornerShape(50)).padding(horizontal = 6.dp, vertical = 2.dp),
                                 color = Theme.c.bg, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         }

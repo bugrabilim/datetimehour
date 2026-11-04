@@ -242,9 +242,9 @@ fun WakeGameScreen(initialTab: String = "pet") {
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-        SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+        SoftSegmentedRow(Modifier.fillMaxWidth()) {
             listOf("pet", "points", "report").forEachIndexed { i, t ->
-                SegmentedButton(tab == t, { tab = t }, SegmentedButtonDefaults.itemShape(i, 3), colors = segColors()) {
+                SoftSegment(tab == t, { tab = t }) {
                     Text(L("wakegame.tab.$t"), fontSize = 13.sp, maxLines = 1)
                 }
             }

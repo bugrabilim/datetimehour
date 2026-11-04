@@ -20,7 +20,7 @@ class FeaturesTest {
         Features.load(sp)
         assertTrue(Features.enabled.isEmpty())
         assertEquals("", sp.getString(Features.KEY, null))
-        assertEquals(listOf(Tab.CLOCK), Features.barTabs())
+        assertEquals(listOf(Tab.CLOCK, Tab.TOOLS), Features.barTabs())
         // Kapalı bir sekme açılırsa (widget, bildirim, saat ekranındaki alan) bar değişmez, geri düğmeli sayfa açılır (#203)
         assertEquals(false, Features.isOn(Tab.PRAYER))
     }

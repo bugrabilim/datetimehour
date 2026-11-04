@@ -3,40 +3,50 @@ import SwiftUI
 /*
  * Kadran koleksiyonu (3 Kasım 2026, 2. analiz #1; sahibin ekran görüntüleri): rakamlı analog saatlerin kadranı.
  * 12 kadran: klasik, Roma rakamı, sade, noktalı, kronograf, çift halka, metal çerçeve, radar, Çin rakamı ve dokulu
- * zeminler (deniz, yaprak, mermer). Görsel dosya yok, hepsi çizim. Her kadranda 5 renk (ibre ve saniye rengi; "auto"
+ * zeminler (deniz, yaprak, mermer); lüm (2. analiz #11); 4 Kasım 2026'da sahibin isteğiyle ("yetersiz kadran var") 12 yeni:
+ * Doğu Arap rakamı, pilot, Bauhaus, güneş ışını, eski cep saati, dalgıç, gökkuşağı (çocuklar), neon, ahşap, İznik çini,
+ * geometrik (sekiz köşeli yıldız), sektör. Görsel dosya yok, hepsi çizim. Her kadranda 5 renk (ibre ve saniye rengi; "auto"
  * kadranın kendi rengi). Seçim `dial.face`, `dial.color`; galeri açılınca "Yeni" işareti ve saat ekranındaki tanıtım
- * kalkar (`dial.seen`). Widget'lar kendi görünümleriyle klasik kadranda kalır. Android'deki Dials.kt ile aynı adlar.
+ * kalkar (`dial.seen2`; yeni kadranlar için 4 Kasım 2026'da yeniden gösterilir). Widget'lar kendi görünümleriyle klasik kadranda kalır. Android'deki Dials.kt ile aynı adlar.
  */
 enum DialFace: String, CaseIterable, Identifiable {
     case classic, roman, minimal, dots, chrono, double, metal, radar, chinese, ocean, leaf, marble
     /// Lüm (2. analiz #11): siyah kadranda işaretler ve ibreler seçilen renkte ışır (14 renk, `dial.lume`)
     case lume
+    case eastern, pilot, bauhaus, sunburst, vintage, diver, rainbow, neon, wood, iznik, geometric, sector
 
     static let key = "dial.face"
     static let colorKey = "dial.color"
-    static let seenKey = "dial.seen"
+    static let seenKey = "dial.seen2"
+    /// 4 Kasım 2026'da eklenenler: galeride "Yeni" işareti bunlarda
+    static let added: Set<DialFace> = [.eastern, .pilot, .bauhaus, .sunburst, .vintage, .diver, .rainbow, .neon, .wood, .iznik, .geometric, .sector]
 
     var id: String { rawValue }
     var title: String { L("dial.\(rawValue)") }
 
     static var current: DialFace { DialFace(rawValue: UserDefaults.standard.string(forKey: key) ?? "") ?? .classic }
 
-    enum Numerals { case arabic, roman, chinese, none }
-    enum Ticks { case full, hours, dots }
+    /// quarters: yalnız 12, 3, 6, 9
+    enum Numerals { case arabic, roman, chinese, eastern, quarters, none }
+    /// none: kadran kendi işaretlerini çizer (dalgıç, gökkuşağı, İznik, geometrik)
+    enum Ticks { case full, hours, dots, none }
 
     var numerals: Numerals {
         switch self {
-        case .classic, .chrono, .double, .ocean, .marble, .lume: .arabic
-        case .roman: .roman
+        case .classic, .chrono, .double, .ocean, .marble, .lume, .pilot, .vintage, .rainbow, .iznik, .sector: .arabic
+        case .roman, .wood: .roman
         case .chinese: .chinese
+        case .eastern: .eastern
+        case .bauhaus: .quarters
         default: .none
         }
     }
 
     var ticks: Ticks {
         switch self {
-        case .minimal, .metal, .leaf, .lume: .hours
+        case .minimal, .metal, .leaf, .lume, .sunburst, .neon, .wood: .hours
         case .dots: .dots
+        case .rainbow, .iznik, .geometric, .diver: .none
         default: .full
         }
     }
@@ -54,12 +64,26 @@ enum DialFace: String, CaseIterable, Identifiable {
         case .lume:
             let g = Lume.current
             return ClockColors(face: c(0x07080B), border: g.opacity(0.45), tick: g, minorTick: g.opacity(0.55), ink: g, hand: g, second: c(0xFF6B6B))
+        case .pilot: return ClockColors(face: c(0x15171A), border: c(0x3A3F45), tick: c(0xF1F3F5), minorTick: c(0x8D949B), ink: c(0xF8F9FA), hand: c(0xF8F9FA), second: c(0xFF922B))
+        case .bauhaus: return ClockColors(face: c(0xF4F1EA), border: c(0x1A1A1A), tick: c(0x1A1A1A), minorTick: c(0x8C8C8C), ink: c(0x1A1A1A), hand: c(0x1A1A1A), second: c(0xE03131))
+        case .sunburst: return ClockColors(face: c(0x2546A8), border: c(0xC7D2FE), tick: c(0xF1F3F5), minorTick: c(0xA5B4FC), ink: c(0xF8F9FA), hand: c(0xE9ECEF), second: c(0xFFD43B))
+        case .vintage: return ClockColors(face: c(0xF3E9D2), border: c(0x8C7A5B), tick: c(0x3B2F1E), minorTick: c(0x7A6A50), ink: c(0x2B2116), hand: c(0x1E3A8A), second: c(0x8B1E1E))
+        case .diver: return ClockColors(face: c(0x0B1220), border: c(0x334155), tick: c(0xE6F4EA), minorTick: c(0x94A3B8), ink: c(0xE6F4EA), hand: c(0xE6F4EA), second: c(0xFF6B6B))
+        case .rainbow: return ClockColors(face: c(0xFFFFFF), border: c(0x495057), tick: c(0x343A40), minorTick: c(0xADB5BD), ink: c(0x212529), hand: c(0x343A40), second: c(0xE03131))
+        case .neon: return ClockColors(face: c(0x0A0A14), border: c(0x3BF0FF), tick: c(0xFF4FD8), minorTick: c(0x7A3E8C), ink: c(0x3BF0FF), hand: c(0x3BF0FF), second: c(0xFF4FD8))
+        case .wood: return ClockColors(face: c(0x7A4A24), border: c(0xE0B65A), tick: c(0xF1D38A), minorTick: c(0xC9A35A), ink: c(0xF6E3B0), hand: c(0xF1D38A), second: c(0xE8590C))
+        case .iznik: return ClockColors(face: c(0xFBFBF8), border: c(0x1F4E9C), tick: c(0x1F4E9C), minorTick: c(0x6C8FC9), ink: c(0x1F4E9C), hand: c(0x173B78), second: c(0xC0392B))
+        case .geometric: return ClockColors(face: c(0x0F3B2E), border: c(0xD4AF37), tick: c(0xD4AF37), minorTick: c(0x8C7A3A), ink: c(0xF3E3A6), hand: c(0xD4AF37), second: c(0xF8F9FA))
+        case .sector: return ClockColors(face: c(0xEEE8DA), border: c(0x1B3A5C), tick: c(0x1B3A5C), minorTick: c(0x6B7F95), ink: c(0x1B3A5C), hand: c(0x1B3A5C), second: c(0xD9480F))
         default: return theme
         }
     }
 
     static let romanNumerals = ["XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"]
     static let chineseNumerals = ["十二", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一"]
+    static let easternNumerals = ["١٢", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "١٠", "١١"]
+    /// Gökkuşağı kadranının saat dilimleri (pastel)
+    static let rainbowColors: [UInt32] = [0xFFC9C9, 0xFFD8A8, 0xFFEC99, 0xD8F5A2, 0xB2F2BB, 0x96F2D7, 0x99E9F2, 0xA5D8FF, 0xBAC8FF, 0xD0BFFF, 0xEEBEFA, 0xFCC2D7]
 }
 
 /// Lüm kadranının ışıma renkleri (2. analiz #11): siyah üstünde parlak tonlar; adları `color.<id>` (Android'deki Lume ile aynı)
@@ -164,6 +188,63 @@ struct DialFill: View {
                         ctx.stroke(p, with: .color(dc(i % 3 == 0 ? 0xB8AE9C : 0xCFC8BD).opacity(0.7)), lineWidth: s.width * (i % 3 == 0 ? 0.008 : 0.004))
                     }
                 }
+            case .sunburst:
+                Circle().fill(RadialGradient(colors: [dc(0x4263EB), dc(0x1C3584)], center: .center, startRadius: 0, endRadius: 94 * u))
+                texture { ctx, s in
+                    let c = CGPoint(x: s.width / 2, y: s.height / 2), r = s.width / 2
+                    for i in 0..<120 {
+                        let a = Double(i) * 3 * .pi / 180
+                        var p = Path()
+                        p.move(to: CGPoint(x: c.x + 8 * u * sin(a), y: c.y - 8 * u * cos(a)))
+                        p.addLine(to: CGPoint(x: c.x + r * sin(a), y: c.y - r * cos(a)))
+                        ctx.stroke(p, with: .color(.white.opacity(i % 2 == 0 ? 0.07 : 0.03)), lineWidth: 1.2 * u)
+                    }
+                }
+            case .vintage:
+                Circle().fill(RadialGradient(colors: [dc(0xF7EFDC), dc(0xF3E9D2), dc(0xDCC9A3)], center: .center, startRadius: 0, endRadius: 94 * u))
+            case .rainbow:
+                Circle().fill(k.face)
+                texture { ctx, s in
+                    let c = CGPoint(x: s.width / 2, y: s.height / 2), r = s.width / 2
+                    for i in 0..<12 {
+                        var p = Path()
+                        p.move(to: c)
+                        p.addArc(center: c, radius: r, startAngle: .degrees(Double(i) * 30 - 105), endAngle: .degrees(Double(i) * 30 - 75), clockwise: false)
+                        p.closeSubpath()
+                        ctx.fill(p, with: .color(dc(DialFace.rainbowColors[i])))
+                    }
+                    ctx.fill(Path(ellipseIn: CGRect(x: c.x - 34 * u, y: c.y - 34 * u, width: 68 * u, height: 68 * u)), with: .color(.white))
+                }
+            case .wood:
+                Circle().fill(LinearGradient(colors: [dc(0x9C6634), dc(0x5C3A1E)], startPoint: .topLeading, endPoint: .bottomTrailing))
+                texture { ctx, s in
+                    for i in 0..<16 {
+                        var p = Path()
+                        let y0 = s.height * (Double(i) + 0.5) / 16
+                        p.move(to: CGPoint(x: 0, y: y0))
+                        for x in stride(from: 0.0, through: s.width, by: 3 * u) {
+                            let t = x / s.width
+                            p.addLine(to: CGPoint(x: x, y: y0 + sin(t * Double(5 + i % 4) + Double(i) * 1.7) * s.height * 0.012 * Double(1 + i % 3)))
+                        }
+                        ctx.stroke(p, with: .color(i % 2 == 0 ? dc(0x3E2410).opacity(0.28) : dc(0xC08A52).opacity(0.16)), lineWidth: s.width * 0.005)
+                    }
+                    // Budak
+                    let cx = s.width / 2, cy = s.height / 2
+                    for j in 0..<4 {
+                        let j = Double(j)
+                        ctx.stroke(Path(ellipseIn: CGRect(x: cx - (52 + j * 4) * u, y: cy + (30 - j * 2.5) * u, width: (14 + j * 8) * u, height: (7 + j * 5) * u)),
+                                   with: .color(dc(0x3E2410).opacity(0.25)), lineWidth: 1.2 * u)
+                    }
+                }
+            case .geometric:
+                Circle().fill(RadialGradient(colors: [dc(0x145A45), dc(0x0B2E24)], center: .center, startRadius: 0, endRadius: 94 * u))
+            case .sector:
+                Circle().fill(k.face)
+                Circle().fill(dc(0xE2D9C6)).frame(width: 100 * u, height: 100 * u)
+            case .classic:
+                // Klasik kadran (doğal tasarım madde 9): ortası hafif aydınlık radyal geçiş
+                Circle().fill(k.face)
+                Circle().fill(RadialGradient(colors: [.white.opacity(0.22), .white.opacity(0)], center: .center, startRadius: 0, endRadius: 94 * u))
             default:
                 Circle().fill(k.face)
             }
@@ -185,11 +266,24 @@ struct DialFill: View {
             if face == .metal {
                 Circle().stroke(AngularGradient(colors: [dc(0xF8F9FA), dc(0x868E96), dc(0xDEE2E6), dc(0x495057), dc(0xF8F9FA)], center: .center),
                                 lineWidth: 9 * u)
+            } else if face == .neon {
+                // Işıma: geniş ve soluktan ince ve parlağa
+                ZStack {
+                    ForEach([(12.0, 0.10), (7.0, 0.22), (3.5, 0.6), (1.5, 1.0)], id: \.0) { w in
+                        Circle().stroke(k.border.opacity(w.1), lineWidth: w.0 * u).frame(width: 180 * u, height: 180 * u)
+                    }
+                    Circle().stroke(k.tick.opacity(0.35), lineWidth: 1 * u).frame(width: 116 * u, height: 116 * u)
+                }
+            } else if face == .classic {
+                // İnce dış halka
+                Circle().stroke(k.border.opacity(0.8), lineWidth: 1.2 * u)
             } else {
                 Circle().stroke(k.border, lineWidth: 2 * u)
             }
         }
         .frame(width: 188 * u, height: 188 * u)
+        // Klasik kadranın altında yumuşak gölge
+        .shadow(color: face == .classic ? Color(red: 0.29, green: 0.2, blue: 0.12).opacity(0.12) : .clear, radius: 4 * u, y: 3 * u)
     }
 
     private func texture(_ draw: @escaping (inout GraphicsContext, CGSize) -> Void) -> some View {
@@ -210,12 +304,20 @@ struct DialMarks: View {
         ZStack {
             switch face.ticks {
             case .full:
+                // Klasik: dakikalar %40 noktalar, saatler kısa yuvarlak uçlu çizgiler (doğal tasarım madde 9)
                 ForEach(0..<60, id: \.self) { i in
                     let major = i % 5 == 0
-                    Capsule().fill(major ? k.tick : k.minorTick)
-                        .frame(width: (major ? 3 : 1.4) * u, height: (major ? 12 : 5) * u)
-                        .offset(y: -(major ? 82 : 83.5) * u)
-                        .rotationEffect(.degrees(Double(i) * 6))
+                    if face == .classic && !major {
+                        Circle().fill(k.minorTick.opacity(0.4))
+                            .frame(width: 2.2 * u, height: 2.2 * u)
+                            .offset(y: -85 * u)
+                            .rotationEffect(.degrees(Double(i) * 6))
+                    } else {
+                        Capsule().fill(major ? k.tick : k.minorTick)
+                            .frame(width: (major ? (face == .classic ? 3.2 : 3) : 1.4) * u, height: (major ? (face == .classic ? 8 : 12) : 5) * u)
+                            .offset(y: -(major ? (face == .classic ? 83 : 82) : 83.5) * u)
+                            .rotationEffect(.degrees(Double(i) * 6))
+                    }
                 }
             case .hours:
                 ForEach(0..<12, id: \.self) { i in
@@ -230,6 +332,13 @@ struct DialMarks: View {
                         .offset(y: -80 * u)
                         .rotationEffect(.degrees(Double(i) * 30))
                 }
+            case .none:
+                EmptyView()
+            }
+            if DialOrnaments.faces.contains(face) {
+                Canvas { ctx, size in DialOrnaments.draw(face, &ctx, size, k: k) }
+                    .frame(width: 200 * u, height: 200 * u)
+                    .allowsHitTesting(false)
             }
             if face == .double {
                 // Dış halka dakika (05…60), iç halka saat
@@ -258,24 +367,177 @@ struct DialMarks: View {
                     .offset(x: x * u, y: y * u)
                 }
             }
-            let radius: Double = face == .double ? 46 : face == .chrono ? 70 : 66
-            let size: CGFloat = face == .chrono ? 12 : face == .double ? 13 : face == .roman || face == .chinese ? 14 : 15
+            let radius = numeralRadius
+            let size = numeralSize
+            let weight = numeralWeight
+            let serif = face.numerals == .roman || face == .vintage
             switch face.numerals {
             case .none: EmptyView()
             default:
                 ForEach(0..<12, id: \.self) { i in
                     let n = i == 0 ? 12 : i
                     let a = Double(n) * 30 * .pi / 180
-                    let text = face.numerals == .roman ? DialFace.romanNumerals[i] : face.numerals == .chinese ? DialFace.chineseNumerals[i] : String(n)
-                    // Kronografta alt kadranların üstüne düşen rakamlar (3, 6, 9) yazılmaz
-                    if !(face == .chrono && [3, 6, 9].contains(n)) {
+                    let text = numeral(i)
+                    // Kronografta alt kadranların üstüne düşen rakamlar (3, 6, 9), pilotta 12 (üçgen) yazılmaz; Bauhaus'ta yalnız 12, 3, 6, 9
+                    if !(face == .chrono && [3, 6, 9].contains(n)) && !(face == .pilot && n == 12) && !(face.numerals == .quarters && n % 3 != 0) {
                         Text(verbatim: text)
-                            .font(face.numerals == .roman ? .system(size: size * u, weight: .semibold, design: .serif) : .system(size: size * u, weight: .semibold))
+                            .font(.system(size: size * u, weight: weight, design: serif ? .serif : .default))
                             .foregroundStyle(k.ink)
                             .offset(x: radius * u * sin(a), y: -radius * u * cos(a))
                     }
                 }
             }
+        }
+    }
+}
+
+extension DialMarks {
+    var numeralRadius: Double {
+        switch face {
+        case .double: return 46
+        case .chrono: return 70
+        case .rainbow, .sector: return 62
+        case .pilot, .bauhaus: return 64
+        case .vintage, .iznik: return 63
+        case .wood: return 55
+        default: return 66
+        }
+    }
+
+    var numeralSize: CGFloat {
+        switch face {
+        case .chrono, .sector: return 12
+        case .double, .wood: return 13
+        case .roman, .chinese: return 14
+        case .eastern: return 16
+        case .pilot, .bauhaus, .rainbow: return 18
+        default: return 15
+        }
+    }
+
+    var numeralWeight: Font.Weight {
+        switch face {
+        case .pilot, .rainbow: return .bold
+        case .bauhaus: return .light
+        case .vintage: return .regular
+        default: return .semibold
+        }
+    }
+
+    func numeral(_ i: Int) -> String {
+        switch face.numerals {
+        case .roman: return DialFace.romanNumerals[i]
+        case .chinese: return DialFace.chineseNumerals[i]
+        case .eastern: return DialFace.easternNumerals[i]
+        default: return String(i == 0 ? 12 : i)
+        }
+    }
+}
+
+/// Yeni kadranların süsleri (4 Kasım 2026): 200 birimlik kadranda, Android'deki drawDial ile aynı ölçüler
+enum DialOrnaments {
+    static let faces: Set<DialFace> = [.pilot, .diver, .iznik, .geometric, .sector, .vintage]
+
+    static func draw(_ face: DialFace, _ ctx: inout GraphicsContext, _ size: CGSize, k: ClockColors) {
+        let u = min(size.width, size.height) / 200
+        let c = CGPoint(x: size.width / 2, y: size.height / 2)
+        func at(_ r: Double, _ deg: Double) -> CGPoint {
+            CGPoint(x: c.x + r * u * sin(deg * .pi / 180), y: c.y - r * u * cos(deg * .pi / 180))
+        }
+        func circle(_ p: CGPoint, _ r: Double) -> Path { Path(ellipseIn: CGRect(x: p.x - r * u, y: p.y - r * u, width: 2 * r * u, height: 2 * r * u)) }
+        func ring(_ r: Double, _ color: Color, _ w: Double) { ctx.stroke(circle(c, r), with: .color(color), lineWidth: w * u) }
+        func radial(_ deg: Double, _ r1: Double, _ r2: Double) -> Path {
+            var p = Path(); p.move(to: at(r1, deg)); p.addLine(to: at(r2, deg)); return p
+        }
+        switch face {
+        case .pilot:
+            // 12'de üçgen ve iki nokta
+            var t = Path()
+            t.move(to: CGPoint(x: c.x - 7 * u, y: c.y - 87 * u)); t.addLine(to: CGPoint(x: c.x + 7 * u, y: c.y - 87 * u))
+            t.addLine(to: CGPoint(x: c.x, y: c.y - 72 * u)); t.closeSubpath()
+            ctx.fill(t, with: .color(k.tick))
+            for dx in [-11.0, 11.0] { ctx.fill(circle(CGPoint(x: c.x + dx * u, y: c.y - 84 * u), 1.8), with: .color(k.tick)) }
+        case .diver:
+            // Dönen çerçeve: ilk 15 dakika renkli, 10'ar dakikada rakam, sıfırda ışıklı üçgen
+            ring(87, dc(0x1F2937), 14)
+            var arc = Path()
+            arc.addArc(center: c, radius: 87 * u, startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false)
+            ctx.stroke(arc, with: .color(dc(0x2563EB)), lineWidth: 14 * u)
+            for m in 0..<60 where (m < 15 || m % 5 == 0) && m % 10 != 0 {
+                ctx.stroke(radial(Double(m) * 6, 90, m % 5 == 0 ? 84 : 87), with: .color(.white.opacity(0.7)), lineWidth: 1.2 * u)
+            }
+            for n in 1...5 {
+                ctx.draw(Text(verbatim: String(n * 10)).font(.system(size: 8.5 * u, weight: .bold)).foregroundColor(.white), at: at(87, Double(n) * 60))
+            }
+            var t = Path()
+            t.move(to: CGPoint(x: c.x - 5 * u, y: c.y - 92 * u)); t.addLine(to: CGPoint(x: c.x + 5 * u, y: c.y - 92 * u))
+            t.addLine(to: CGPoint(x: c.x, y: c.y - 83 * u)); t.closeSubpath()
+            ctx.fill(t, with: .color(k.tick))
+            ring(79.5, k.minorTick, 1)
+            // Işıklı saat işaretleri
+            for i in 0..<12 {
+                let d = Double(i) * 30
+                if i % 3 == 0 {
+                    ctx.stroke(radial(d, 75, 60), with: .color(k.minorTick), style: StrokeStyle(lineWidth: 9 * u, lineCap: .round))
+                    ctx.stroke(radial(d, 75, 60), with: .color(k.tick), style: StrokeStyle(lineWidth: 6.5 * u, lineCap: .round))
+                } else {
+                    ctx.fill(circle(at(68, d), 6), with: .color(k.minorTick))
+                    ctx.fill(circle(at(68, d), 4.6), with: .color(k.tick))
+                }
+            }
+        case .iznik:
+            // Kobalt mavisi bant, beyaz lale motifleri, aralarda mercan kırmızısı noktalar
+            ring(86.5, k.border, 15)
+            for i in 0..<12 {
+                let d = Double(i) * 30
+                var g = ctx
+                let p = at(86.5, d)
+                g.translateBy(x: p.x, y: p.y)
+                g.rotate(by: .degrees(d))
+                g.fill(Path(ellipseIn: CGRect(x: -2.2 * u, y: -4.6 * u, width: 4.4 * u, height: 7.4 * u)), with: .color(.white))
+                for side in [-28.0, 28.0] {
+                    var h = g
+                    h.translateBy(x: 0, y: 2 * u)
+                    h.rotate(by: .degrees(side))
+                    h.fill(Path(ellipseIn: CGRect(x: -1.6 * u, y: -5.6 * u, width: 3.2 * u, height: 6 * u)), with: .color(.white))
+                }
+                ctx.fill(circle(at(86.5, d + 15), 2.2), with: .color(k.second))
+            }
+            ring(77, dc(0x2A9D8F), 1.2)
+            for i in 0..<60 where i % 5 != 0 { ctx.fill(circle(at(74, Double(i) * 6), 0.9), with: .color(k.minorTick)) }
+            for i in 0..<8 {
+                var g = ctx
+                g.translateBy(x: c.x, y: c.y)
+                g.rotate(by: .degrees(Double(i) * 45))
+                g.fill(Path(ellipseIn: CGRect(x: -3 * u, y: -26 * u, width: 6 * u, height: 12 * u)), with: .color(dc(0x2A9D8F).opacity(0.3)))
+            }
+        case .geometric:
+            // Sekiz köşeli yıldız (iki kare) ve saatlerde küçük yıldızlar
+            func star(_ p: CGPoint, _ h: Double, _ color: Color, stroke: Double?) {
+                for rot in [0.0, 45.0] {
+                    var g = ctx
+                    g.translateBy(x: p.x, y: p.y)
+                    g.rotate(by: .degrees(rot))
+                    let rect = Path(CGRect(x: -h * u, y: -h * u, width: 2 * h * u, height: 2 * h * u))
+                    if let stroke { g.stroke(rect, with: .color(color), lineWidth: stroke * u) } else { g.fill(rect, with: .color(color)) }
+                }
+            }
+            star(c, 40, k.tick.opacity(0.55), stroke: 1.4)
+            star(c, 27, k.tick.opacity(0.3), stroke: 1)
+            ring(56, k.tick.opacity(0.45), 1)
+            ring(88, k.tick.opacity(0.45), 1)
+            for i in 0..<12 { star(at(76, Double(i) * 30), i % 3 == 0 ? 5.2 : 3.6, k.tick, stroke: nil) }
+            for i in 0..<60 where i % 5 != 0 { ctx.fill(circle(at(76, Double(i) * 6), 1), with: .color(k.minorTick)) }
+        case .sector:
+            ring(50, k.minorTick, 1)
+            ring(74, k.minorTick, 1)
+            ring(89.5, k.minorTick, 1)
+        case .vintage:
+            // Demiryolu dakika halkası
+            ring(80, k.minorTick, 0.8)
+            ring(88, k.minorTick, 0.8)
+        default:
+            break
         }
     }
 }

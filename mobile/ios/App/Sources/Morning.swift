@@ -51,7 +51,7 @@ struct MorningCard: View {
                 if let day = weather?.dailyForecast.first {
                     Section(L("weather.h1")) {
                         HStack(spacing: 12) {
-                            Image(systemName: day.symbolName).symbolRenderingMode(.multicolor).font(.title)
+                            WeatherIcon3D(symbol: day.symbolName, size: 40)
                             VStack(alignment: .leading) {
                                 Text(day.condition.description)
                                 Text("\(Units.temp(day.highTemperature)) / \(Units.temp(day.lowTemperature))")

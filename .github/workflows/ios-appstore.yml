@@ -20,6 +20,10 @@ on:
         description: "Önizleme videosu da üret (elle yüklenir; 1.0'da kullanılmadı)"
         type: boolean
         default: false
+      only_images:
+        description: "Yalnız görselleri üret: App Store Connect'e hiçbir şey yüklenmez (görseller artifact olarak gelir)"
+        type: boolean
+        default: false
 
 concurrency:
   group: ios-appstore
@@ -35,6 +39,7 @@ jobs:
       ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
     steps:
       - name: Anahtar denetimi
+        if: ${{ !inputs.only_images }}
         run: |
           if [ -z "$ASC_KEY_ID" ] || [ -z "$ASC_ISSUER_ID" ] || [ -z "$ASC_KEY_P8" ]; then
             echo "::error::ASC_KEY_ID, ASC_ISSUER_ID ve ASC_KEY_P8 gizli değişkenleri gerekli"; exit 1
@@ -74,11 +79,14 @@ jobs:
         with:
           name: app-store-onizleme-videosu
           path: preview
+      # Yalnız görsel üretiminde (only_images) yükleme adımları atlanır: mağaza sayfası değişmez
       - name: API anahtarı
+        if: ${{ !inputs.only_images }}
         run: |
           jq -n --arg id "$ASC_KEY_ID" --arg iss "$ASC_ISSUER_ID" --arg key "$ASC_KEY_P8" \
             '{key_id: $id, issuer_id: $iss, key: $key, in_house: false}' > "$RUNNER_TEMP/asc.json"
       - name: Yükle
+        if: ${{ !inputs.only_images }}
         working-directory: mobile/ios
         env:
           SUBMIT: ${{ inputs.submit }}

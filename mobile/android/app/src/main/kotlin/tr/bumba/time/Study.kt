@@ -216,9 +216,9 @@ fun StudyScreen() {
 
     Column(Modifier.fillMaxSize()) {
         Column(Modifier.padding(start = 16.dp, end = 16.dp, top = 12.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+            SoftSegmentedRow(Modifier.fillMaxWidth()) {
                 listOf("timer", "pomo").forEachIndexed { i, m ->
-                    SegmentedButton(mode == m, { mode = m; ToolState.putStr("study.mode", m) }, SegmentedButtonDefaults.itemShape(i, 2), colors = segColors()) {
+                    SoftSegment(mode == m, { mode = m; ToolState.putStr("study.mode", m) }) {
                         Text(L(if (m == "timer") "study.modeTimer" else "study.modePomo"))
                     }
                 }

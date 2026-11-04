@@ -40,6 +40,7 @@ jobs:
       - run: node mobile/shared/gen-vectors.mjs --check
       - run: node mobile/shared/gen-strings.mjs --check
       - run: node mobile/shared/gen-religion.mjs --check
+      - run: python3 -I mobile/shared/icons3d/gen-icons3d.py --check
       - run: node mobile/ios/scripts/check-swift.mjs
 
   swift-linux:

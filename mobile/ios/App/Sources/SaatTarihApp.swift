@@ -1,6 +1,7 @@
 import SwiftUI
 import Combine
 import SaatCore
+import WidgetKit
 
 @main
 struct SaatTarihApp: App {
@@ -10,10 +11,22 @@ struct SaatTarihApp: App {
     init() {
         // Özellik aç/kapa: ilk iş, önceki kullanıcıda hepsi açık kalsın (Features.migrate)
         Features.migrate()
+        // Başlıklarda Literata (doğal tasarım; Latin ve Kiril dillerinde)
+        AppFonts.applyNavigationBar()
+        AppFonts.applySegmentedControls()
+        // Gün ışığı atmosferi için seçili yerde Güneş (Theme.swift widget'ta da derlendiği için hesap buradan verilir)
+        Atmosphere.sun = { date in
+            let place = PlaceModel.shared.place
+            let alt = AnimatedBackground.sunAltitude(place: place, at: date)
+            return (alt, AnimatedBackground.sunAltitude(place: place, at: date.addingTimeInterval(600)) > alt)
+        }
         // Apple Watch'a seçili yer (WatchConnectivity)
         WatchSync.shared.start()
         // iPhone, iPad ve Mac arasında ayarlar (iCloud anahtar-değer deposu; sunucu yok)
         CloudSync.start()
+        // Kilit ekranı / Dynamic Island hava etkinliği: Denetim Merkezi düğmesi uygulamayı arka planda başlatsa da
+        // güncel hava WeatherKit'ten alınır
+        LiveWeather.refresher = { await LiveActivities.refreshWeather() }
     }
 
     var body: some Scene {
@@ -42,15 +55,32 @@ struct SaatTarihApp: App {
                 PomoNoise.sync()
                 // Odakta engelleme: süre bittiyse kalkan kalkar (#98)
                 FocusBlock.sync()
-                // Kilit ekranı / Dynamic Island etkinlikleri (sıradaki vakit ileri taşınır, bitenler kapanır)
+                // Kilit ekranı / Dynamic Island etkinlikleri (sıradaki vakit ileri taşınır, bitenler kapanır;
+                // hava etkinliği açıksa güncel hava alınır)
                 LiveActivities.sync()
+                Task { await LiveActivities.refreshWeather() }
+                Self.publishWidgetSky()
             } else if phase == .background {
                 BackgroundRefresh.schedule()
+                Self.publishWidgetSky()
             }
         }
         .backgroundTask(.appRefresh(BackgroundRefresh.id)) {
             await BackgroundRefresh.run()
         }
+    }
+
+    /// Saat widget'larının gün ışığı zemini (doğal tasarım madde 19): atmosfer seçimi ve seçili yer App Group'a yazılır;
+    /// değiştiyse widget'lar yenilenir
+    @MainActor
+    private static func publishWidgetSky() {
+        let p = PlaceModel.shared.place
+        let atmo = UserDefaults.standard.string(forKey: Atmosphere.key) ?? ""
+        let d = UserDefaults(suiteName: Atmosphere.groupID)
+        let changed = d?.string(forKey: Atmosphere.key) != atmo || d?.double(forKey: "place.lat") != p.lat
+            || d?.double(forKey: "place.lon") != p.lon
+        Atmosphere.publish(atmo: atmo, lat: p.lat, lon: p.lon)
+        if changed { WidgetCenter.shared.reloadAllTimelines() }
     }
 }
 
@@ -106,6 +136,8 @@ enum ToolRoute: Hashable {
     // Tümü'nden açılan sayfalar (Seçenek B, 2. analiz #195): ibadet, Ay, takvim yaprağı ve ayar sayfaları
     case qibla, quran, duas, zikir, track, zakat, reldays, greet, esma, hadith, guide, leaf, moon, sky, sunpath
     case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
+    // Sitedeki dokuz araç (4 Kasım 2026)
+    case chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom
     case sura(Int)
 }
 
@@ -124,8 +156,13 @@ final class Router {
     /// Siri / Kısayollar "Tam ekran saati aç": saat sekmesi tam ekran açılır
     var wantsFullscreen = false
 
-    /// saattarih://<yol> (Denetim Merkezi düğmeleri): fullscreen, timer, stopwatch, alarm, prayer
+    /// saattarih://<yol> (Denetim Merkezi düğmeleri): fullscreen, timer, stopwatch, alarm, prayer, weather.
+    /// Widget ve kilit ekranındaki https bağlantıları (Apple Hava Durumu yasal sayfası) uygulamaya gelir, Safari'de açılır.
     func handle(_ url: URL) {
+        if url.scheme == "https" {
+            UIApplication.shared.open(url)
+            return
+        }
         guard url.scheme == "saattarih" else { return }
         sheet = nil
         switch url.host() ?? "" {
@@ -141,6 +178,8 @@ final class Router {
         case "stopwatch": tab = .tools; toolsPath = [.stopwatch]
         case "alarm": tab = .tools; toolsPath = [.alarm]
         case "prayer": tab = .prayer
+        // Kilit ekranındaki ve Dynamic Island'daki hava etkinliği
+        case "weather": tab = .weather
         // Widget'a dokununca açılacak ekran (2. analiz #168)
         case "clock": tab = .clock
         case "calendar": tab = .calendar
@@ -291,6 +330,11 @@ struct RootView: View {
             .preferredColorScheme(scheme)
         }
         .sheet(isPresented: $morning) { MorningCard().preferredColorScheme(scheme) }
+        // Ayarlar › Destek › Tanıtımı yeniden göster: açık sayfa kapanır, sonra sihirbaz açılır
+        .onReceive(NotificationCenter.default.publisher(for: Onboarding.replayNote)) { _ in
+            router.sheet = nil
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { onboarding = true }
+        }
         .fullScreenCover(isPresented: $onboarding) {
             OnboardingView {
                 Onboarding.finish()
@@ -426,13 +470,13 @@ private struct TabBar: View {
                 } label: {
                     VStack(spacing: 3) {
                         // Seçili sekmede simgenin arkasında ana rengin açık tonunda hap (sitedeki .nav gibi; 2. analiz #95)
-                        Image(systemName: tab.icon)
-                            .symbolVariant(on ? .fill : .none)
-                            .font(.system(size: 19))
+                        // 3D simgeler (4 Kasım 2026, sahibin seçimi); seçili olmayan sekme gri ve soluk
+                        LineIcon(name: LineIconMap.tab(tab), size: 26, c1: on ? Theme.accent : Theme.muted,
+                                 c2: on ? Theme.accent : Theme.muted, dim: !on)
                             .frame(width: 56, height: 30)
                             .background(Capsule().fill(on ? Theme.accentSoft : Color.clear))
                         Text(tab.barTitle)
-                            .font(.system(size: 11, weight: on ? .semibold : .regular))
+                            .font(.system(size: 11, weight: on ? .medium : .regular))
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)
                     }
@@ -457,7 +501,7 @@ enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
          wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet,
-         qr, colors, wall, study, wakegame, language, dials
+         qr, colors, wall, study, wakegame, language, dials, chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -486,6 +530,15 @@ enum DebugScreen: String, Identifiable {
         case .wakegame: WakeGameView()
         case .language: LanguageView()
         case .dials: DialGalleryView()
+        case .chess: ChessClockView()
+        case .metronome: MetronomeView()
+        case .talking: TalkingClockView()
+        case .zodiac: ZodiacView()
+        case .timecalc: TimeCalcView()
+        case .bridge: BridgeView()
+        case .retire: RetireView()
+        case .exam: ExamTimerView()
+        case .classroom: ClassroomView()
         case .planner: MeetingPlannerView()
         case .world: WorldClockView()
         case .weather: WeatherView()

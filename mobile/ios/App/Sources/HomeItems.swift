@@ -63,10 +63,16 @@ struct HomeLayout {
 /// Ayarlar › Saat ekranı: alanları aç/kapat, sürükleyerek sırala
 struct HomeItemsView: View {
     @AppStorage("homeItems") private var raw = HomeItem.defaultRaw
+    /// Hava neyse ekran öyle: saat ekranının zemini (4 Kasım 2026, sahibin isteği: Düzenle listesinde de aç/kapa)
+    @AppStorage(WeatherScene.clockKey) private var weatherBg = false
 
     var body: some View {
         let layout = HomeLayout(raw: raw)
         List {
+            Section {
+                Toggle(isOn: $weatherBg) { Label(L("look.weatherClock"), systemImage: "cloud.rain") }
+                    .tint(Theme.accent)
+            }
             Section {
                 ForEach(layout.order) { item in
                     Toggle(isOn: Binding(
@@ -329,9 +335,7 @@ private struct WeatherMiniCard: View {
             if let d = data {
                 let c = d.currentWeather
                 HStack(spacing: 12) {
-                    Image(systemName: c.symbolName)
-                        .symbolRenderingMode(.multicolor)
-                        .font(.system(size: 32))
+                    WeatherIcon3D(symbol: c.symbolName, size: 40)
                     Text(c.condition.description).font(.subheadline).foregroundStyle(Theme.text)
                     Spacer()
                     VStack(alignment: .trailing, spacing: 2) {

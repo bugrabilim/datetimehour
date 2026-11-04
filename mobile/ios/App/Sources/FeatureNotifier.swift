@@ -333,6 +333,8 @@ enum BackgroundRefresh {
             LiveActivities.sync()
             FocusBlock.sync() // zaman çizelgeli odak engeli (2. analiz #27)
         }
+        // Kilit ekranı / Dynamic Island hava etkinliği (açıksa)
+        await LiveActivities.refreshWeather()
     }
 }
 

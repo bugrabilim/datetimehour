@@ -225,7 +225,7 @@ fun MeetingPlannerScreen() {
             // Borsa saatleri (burası saatiyle, 24 hücre)
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("meet.exchanges"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                androidx.compose.material3.Switch(showEx, { showEx = it; Prefs.store.edit().putBoolean("meet.exchanges", it).apply() },
+                SoftSwitch(showEx, { showEx = it; Prefs.store.edit().putBoolean("meet.exchanges", it).apply() },
                     colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             if (showEx) Ltr {

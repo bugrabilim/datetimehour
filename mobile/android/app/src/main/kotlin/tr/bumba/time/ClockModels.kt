@@ -388,7 +388,8 @@ private fun WeatherPart(kind: WxKind, place: AppPlace, size: Dp, start: Boolean 
         val c = d.current
         Ltr {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(d.condition.icon(c.isDay) + " ", fontSize = f * 1.5f)
+                WeatherIcon(d.condition, c.isDay, (f.value * 1.6f).dp)
+                androidx.compose.foundation.layout.Spacer(Modifier.width((f.value * 0.4f).dp))
                 Text(Units.temp(c.temp), color = Theme.c.text, fontSize = f * 1.7f, fontWeight = FontWeight.SemiBold)
             }
         }
@@ -405,7 +406,7 @@ private fun WeatherPart(kind: WxKind, place: AppPlace, size: Dp, start: Boolean 
                 Ltr {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(Fmt.weekdayShort(day.date), Modifier.width(f.value.dp * 2.8f), color = Theme.c.text, fontSize = f, maxLines = 1)
-                        Text(WeatherCode.of(day.code).icon(), Modifier.width(f.value.dp * 1.9f), fontSize = f)
+                        Box(Modifier.width(f.value.dp * 1.9f)) { WeatherIcon(WeatherCode.of(day.code), size = (f.value * 1.2f).dp) }
                         Text(Units.temp(day.max) + " ", color = Theme.c.text, fontSize = f, fontWeight = FontWeight.SemiBold)
                         Text(Units.temp(day.min), color = Theme.c.muted, fontSize = f)
                     }

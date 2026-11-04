@@ -28,20 +28,17 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Fullscreen
 import androidx.compose.material.icons.filled.FullscreenExit
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -58,7 +55,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -67,6 +63,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
+import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
@@ -80,22 +77,21 @@ import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import kotlinx.coroutines.launch
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
 
 /**
- * Saat sekmesi (iOS'taki ClockTab): sitedeki 19 saat modeli (kaydırarak ya da sayaçtan seçilir), altında kullanıcının
- * seçtiği alanlar (Ayarlar › Saat ekranı ya da "Düzenle"; dokununca ilgili sayfa açılır), tam ekran ve Düzenle.
+ * Saat sekmesi (iOS'taki ClockTab): sitedeki saat modelleri (parmakla kaydırarak seçilir), altında kullanıcının
+ * seçtiği alanlar (Ayarlar › Saat ekranı; dokununca ilgili sayfa açılır) ve tam ekran düğmesi.
  * Varsayılan düzende sayfa ekrana tam oturur: dönen dünya kalan boşluğu doldurur.
  */
 @Composable
@@ -103,17 +99,21 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
     val now = rememberNow()
     val place = AppPlace.current()
     val items = HomeItems.layout.visible
-    var customizing by remember { mutableStateOf(false) }
     val pager = rememberClockPager()
     // Saniye tık sesi (2. analiz #10; Ayarlar › Saat görünümü)
     val ctx = LocalContext.current
     LaunchedEffect(now.epochSecond) { TickSound.tick(ctx, now.epochSecond) }
     DisposableEffect(Unit) { onDispose { TickSound.stop() } }
 
+    // Hava zemini açıkken (2. analiz #193) denetimler beyaz, atıf saatin altında akışta (4 Kasım 2026, sahibin ekran
+    // görüntüsü: atıf saatin üstüne biniyordu, tema rengindeki yazılar yağmur zemininde soluk kalıyordu)
+    val onScene = Prefs.store.getBoolean(WeatherScene.CLOCK_KEY, false)
+    val ctrl = if (onScene) androidx.compose.ui.graphics.Color.White else Theme.c.accent
     BoxWithConstraints(Modifier.fillMaxSize()) {
         // Düğme satırı alt çubuğun hemen üstünde, başparmak bölgesinde (2. analiz #202)
         val actionBar = 56.dp
-        val viewport = maxHeight - actionBar
+        val markRow = if (onScene) 30.dp else 0.dp
+        val viewport = maxHeight - actionBar - markRow
         val globeHeight = rememberGlobeHeight()
         // Saat ekranında yalnız saat varsa (30 Ekim kararı) saat ve denetim satırı dikeyde ortalanır, saat genişliğe büyür
         // (2. analiz #94)
@@ -132,11 +132,11 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = if (onlyClock) Arrangement.spacedBy(16.dp, Alignment.CenterVertically) else Arrangement.spacedBy(16.dp),
             ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    HorizontalPager(pager, Modifier.fillMaxWidth().height(stage)) { page ->
-                        ClockModelPage(page, now, place, Modifier.padding(horizontal = 2.dp))
-                    }
-                    StageControls(pager)
+                // Model adı ve oklar yok (4 Kasım 2026, sahibin isteği): model parmakla sağa sola kaydırılarak değişir;
+                // ekran okuyucu için sayfanın durumu model adı ve sırasıdır
+                val modelState = ClockModel.at(pager.currentPage).title + " · ${pager.currentPage + 1}/${ClockModel.count}"
+                HorizontalPager(pager, Modifier.fillMaxWidth().height(stage).semantics { stateDescription = modelState }) { page ->
+                    ClockModelPage(page, now, place, Modifier.padding(horizontal = 2.dp))
                 }
                 // Saatin altındaki kişisel metin (rakip analizi #25)
                 if (FsLook.text.isNotEmpty()) Text(FsLook.text, color = Theme.c.text, fontSize = 20.sp, fontWeight = FontWeight.SemiBold,
@@ -155,34 +155,14 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
                 }
             }
         }
+        if (onScene) WeatherAttribution(Modifier.fillMaxWidth().height(markRow).wrapContentHeight())
         Row(Modifier.fillMaxWidth().height(actionBar), horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
             verticalAlignment = Alignment.CenterVertically) {
             TextButton(onClick = onFullscreen) {
-                Icon(Icons.Filled.Fullscreen, null, tint = Theme.c.accent)
-                Text(" " + L("clock.fullscreen"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
-            }
-            TextButton(onClick = { customizing = true }) {
-                Icon(Icons.Filled.Tune, null, tint = Theme.c.accent)
-                Text(" " + L("home.edit"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
-            }
-            // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
-            IconButton(onClick = { onSettings("settings") }) {
-                Icon(Icons.Filled.Settings, L("settings.title"), tint = Theme.c.accent)
+                Icon(Icons.Filled.Fullscreen, null, tint = ctrl)
+                Text(" " + L("clock.fullscreen"), color = ctrl, fontWeight = FontWeight.SemiBold)
             }
         }
-        }
-    }
-
-    if (customizing) {
-        Dialog({ customizing = false }, DialogProperties(usePlatformDefaultWidth = false)) {
-            Surface(Modifier.fillMaxSize(), color = Theme.c.bg) {
-                Column {
-                    SubBar(L("home.customize"), actions = {
-                        TextButton(onClick = { customizing = false }) { Text(L("common.done"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold) }
-                    })
-                    Box(Modifier.weight(1f)) { HomeItemsEditor() }
-                }
-            }
         }
     }
 }
@@ -234,47 +214,6 @@ private fun Modifier.fitGlobe(viewport: Dp, globe: androidx.compose.runtime.Muta
     }
 }
 
-/** Sahnenin altında ‹ 1/20 ›: sayaca dokununca model listesi açılır */
-@Composable
-private fun StageControls(pager: PagerState, tint: androidx.compose.ui.graphics.Color = Theme.c.accent) {
-    val scope = rememberCoroutineScope()
-    var menu by remember { mutableStateOf(false) }
-    val n = ClockModel.count
-    Ltr {
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            IconButton(onClick = { scope.launch { pager.animateScrollToPage((pager.currentPage + n - 1) % n) } }) {
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, L("stage.prev"), tint = tint)
-            }
-            Box {
-                // Model adı ve sırası (2. analiz #202): "Klasik analog · 1/20"; dokununca liste
-                Text(
-                    ClockModel.at(pager.currentPage).title + " · ${pager.currentPage + 1}/$n",
-                    Modifier.widthIn(max = 260.dp).clickable { menu = true }.padding(horizontal = 8.dp, vertical = 6.dp),
-                    color = tint, fontWeight = FontWeight.SemiBold, fontSize = 15.sp, style = Tnum, maxLines = 1,
-                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
-                )
-                DropdownMenu(menu, { menu = false }) {
-                    for (m in ClockModel.entries) {
-                        DropdownMenuItem(
-                            text = {
-                                Text("${m.number}. ${m.title}", color = if (m.ordinal == pager.currentPage) Theme.c.accent else Theme.c.text,
-                                    fontWeight = if (m.ordinal == pager.currentPage) FontWeight.SemiBold else FontWeight.Normal)
-                            },
-                            onClick = {
-                                menu = false
-                                scope.launch { pager.scrollToPage(m.ordinal) }
-                            },
-                        )
-                    }
-                }
-            }
-            IconButton(onClick = { scope.launch { pager.animateScrollToPage((pager.currentPage + 1) % n) } }) {
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, L("stage.next"), tint = tint)
-            }
-        }
-    }
-}
-
 /** Rakamlı analog saat (sitedeki analogSvg ölçüleri, 200 birimlik kare); dokununca saniye */
 @Composable
 fun AnalogClock(
@@ -304,16 +243,31 @@ fun AnalogClock(
             val cap = measurer.measure(caption, TextStyle(color = k.minor, fontSize = (13 * u / density / fontScale).sp, fontWeight = FontWeight.Bold))
             drawText(cap, topLeft = Offset(center.x - cap.size.width / 2f, center.y + 34 * u - cap.size.height / 2f))
         }
-        fun hand(angle: Double, from: Float, to: Float, width: Float, color: androidx.compose.ui.graphics.Color) {
-            rotate(angle.toFloat(), center) {
+        // Klasik kadranda ibreler sivrilir ve hafif gölgelidir, ortada altın kapak (doğal tasarım madde 9)
+        val soft = f == DialFace.CLASSIC
+        fun hand(angle: Double, from: Float, to: Float, width: Float, color: androidx.compose.ui.graphics.Color, taper: Boolean = soft) {
+            if (taper) {
+                val p = androidx.compose.ui.graphics.Path().apply {
+                    moveTo(center.x - width / 2 * u, center.y + from * u)
+                    lineTo(center.x - width * 0.16f * u, center.y - to * u)
+                    quadraticTo(center.x, center.y - (to + width * 0.4f) * u, center.x + width * 0.16f * u, center.y - to * u)
+                    lineTo(center.x + width / 2 * u, center.y + from * u)
+                    close()
+                }
+                translate(1.2f * u, 2f * u) { rotate(angle.toFloat(), center) { drawPath(p, androidx.compose.ui.graphics.Color.Black.copy(alpha = 0.13f)) } }
+                rotate(angle.toFloat(), center) { drawPath(p, color) }
+            } else rotate(angle.toFloat(), center) {
                 drawLine(color, Offset(center.x, center.y + from * u), Offset(center.x, center.y - to * u), width * u, StrokeCap.Round)
             }
         }
         // Akrep yazı renginde, yelkovan temanın ana renginde, saniye ve orta temanın ikinci renginde
-        hand(hour * 30, 4f, 44f, 6f, k.ink)
-        hand(min * 6, 6f, 66f, 4.5f, k.hand)
-        if (Prefs.secA || !tap) hand(sec * 6, 16f, 76f, 2f, k.second)
-        drawCircle(k.second, 5 * u, center)
+        hand(hour * 30, 6f, 46f, 7f, k.ink)
+        hand(min * 6, 8f, 68f, 5.5f, k.hand)
+        if (Prefs.secA || !tap) hand(sec * 6, 16f, 76f, 2f, k.second, taper = false)
+        if (soft) {
+            drawCircle(androidx.compose.ui.graphics.Color(0xFFC9A54A), 5.5f * u, center)
+            drawCircle(k.ink, 1.6f * u, center)
+        } else drawCircle(k.second, 5 * u, center)
     }
 }
 

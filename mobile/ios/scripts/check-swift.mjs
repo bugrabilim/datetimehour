@@ -3,7 +3,8 @@
 // makinesinde derlenebiliyor; en sık iki derleme hatasını burada, saniyeler içinde yakalar:
 //  1) SaatCore'daki bir türü kullanıp `import SaatCore` yazmayan dosya ("cannot find 'CalendarDay' in scope"),
 //  2) aynı hedefte iki dosyada aynı adla tanımlanan üst düzey tür ("invalid redeclaration"),
-//  3) dengesiz süslü parantez ("extraneous '}' at top level", 3 Kasım 2026'da CI'da yakalandı).
+//  3) dengesiz süslü parantez ("extraneous '}' at top level", 3 Kasım 2026'da CI'da yakalandı),
+//  4) SaatCore'daki bir türle aynı adlı uygulama türü ("'Planet' is not a member type of struct 'Sky'", 4 Kasım 2026).
 // Kullanım: node mobile/ios/scripts/check-swift.mjs (hata varsa çıkış kodu 1). CI: mobile.yml "Ortak test verisi güncel".
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
@@ -104,6 +105,9 @@ for (const [target, dirs] of Object.entries(TARGETS)) {
     decls.get(m[2]).push({ file: relative(ROOT, f), priv: /\b(private|fileprivate)\b/.test(m[1]) });
   }
   for (const [name, list] of decls) {
+    // Uygulamadaki üst düzey tür SaatCore'daki aynı adlı türü gölgeler: `Sky.Planet` gibi kullanımlar bozulur
+    // (4 Kasım 2026'da WorshipExtras.swift'teki `Sky` yapısı CI'da yakalandı)
+    if (core.has(name) && list.some((x) => !x.priv)) problems.push(`${target}: '${name}' SaatCore'daki aynı adlı türü gölgeliyor: ${list.map((x) => x.file).join(", ")}`);
     const filesFor = new Set(list.map((x) => x.file));
     if (filesFor.size > 1 && list.some((x) => !x.priv)) problems.push(`${target}: '${name}' birden çok dosyada tanımlı: ${[...filesFor].join(", ")}`);
   }

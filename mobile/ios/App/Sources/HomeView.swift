@@ -1,7 +1,7 @@
 import SwiftUI
 import SaatCore
 
-/// Saat sekmesi: sitedeki 20 saat modeli (kaydırarak ya da sayaçtan seçilir), altında kullanıcının seçtiği
+/// Saat sekmesi: sitedeki saat modelleri (parmakla kaydırarak seçilir), altında kullanıcının seçtiği
 /// alanlar (Ayarlar › Saat ekranı; dokununca ilgili sayfa açılır) ve tam ekran.
 struct ClockTab: View {
     @AppStorage("keepAwake") private var keepAwake = true
@@ -11,7 +11,6 @@ struct ClockTab: View {
     @AppStorage(WeatherScene.clockKey) private var weatherBg = false
     @Environment(\.colorScheme) private var colorScheme
     @State private var fullscreen = false
-    @State private var customizing = false
     /// Yan çevirince tam ekran açılır, dikeye dönünce kapanır (düğmeyle açılan tam ekran dikeyde de kalır)
     @Environment(\.verticalSizeClass) private var vsc
     @State private var autoFull = false
@@ -20,6 +19,8 @@ struct ClockTab: View {
     @State private var globeHeight: CGFloat = 260
     /// Alttaki düğme satırının yüksekliği (2. analiz #202)
     static let actionBar: CGFloat = 52
+    /// Hava zemini açıkken Apple Hava Durumu işaretinin satırı (saatin üstüne binmesin diye akışta; 4 Kasım 2026)
+    static let markRow: CGFloat = 34
 
     var body: some View {
         GeometryReader { geo in
@@ -28,7 +29,7 @@ struct ClockTab: View {
                 let place = PlaceModel.shared.place
                 let items = HomeLayout(raw: homeItems).visible
                 // Düğme satırı alt çubuğun hemen üstünde, başparmak bölgesinde (2. analiz #202)
-                let viewport = geo.size.height - Self.actionBar
+                let viewport = geo.size.height - Self.actionBar - (weatherBg ? Self.markRow : 0)
                 // Saat ekranında yalnız saat varsa (30 Ekim kararı) saat ve denetim satırı dikeyde ortalanır, saat genişliğe
                 // büyür (2. analiz #94)
                 let onlyClock = items.isEmpty && personalText.isEmpty
@@ -66,6 +67,14 @@ struct ClockTab: View {
                     }
                     .frame(maxWidth: 640)
                     .frame(maxWidth: .infinity)
+                    // Hava zemininde yazılar okunsun diye hafif gölge
+                    .shadow(color: .black.opacity(weatherBg ? 0.35 : 0), radius: 3, y: 1)
+                }
+                // WeatherKit verisi zeminde gösterildiği için işaret ve yasal bağlantı (App Review 5.2.5); önceden zeminin
+                // sol üstündeydi ve saat kadranı üstüne biniyordu
+                if weatherBg {
+                    AppleWeatherMark(compact: true, onDark: true)
+                        .frame(height: Self.markRow)
                 }
                 HStack(spacing: 28) {
                     Button {
@@ -74,29 +83,27 @@ struct ClockTab: View {
                     } label: {
                         Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
                     }
-                    Button {
-                        customizing = true
-                    } label: {
-                        Label(L("home.edit"), systemImage: "slider.horizontal.3")
-                    }
-                    // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
-                    Button {
-                        Router.shared.sheet = .settings
-                    } label: {
-                        Image(systemName: "gearshape")
-                    }
-                    .accessibilityLabel(L("settings.title"))
                 }
                 .font(.headline)
-                .foregroundStyle(Theme.accent)
+                .foregroundStyle(weatherBg ? Color.white : Theme.accent)
+                .shadow(color: .black.opacity(weatherBg ? 0.35 : 0), radius: 3, y: 1)
                 .frame(height: Self.actionBar)
                 .frame(maxWidth: .infinity)
                 }
                 // Hava neyse ekran öyle (2. analiz #193): seçilirse zemin seçili yerin havası, yazılar koyu temanın renkleri
                 .background {
-                    if weatherBg { AnimatedBackground(kind: .weather) } else { AppBackdrop().ignoresSafeArea() }
+                    if weatherBg {
+                        // Hafif karartma: tema rengindeki ve soluk yazılar mavi-gri yağmur zemininde de okunur
+                        ZStack {
+                            AnimatedBackground(kind: .weather, showMark: false)
+                            Color.black.opacity(0.25).ignoresSafeArea()
+                        }
+                    } else {
+                        AppBackdrop().ignoresSafeArea()
+                    }
                 }
                 .environment(\.colorScheme, weatherBg ? .dark : colorScheme)
+                .environment(\.onScene, weatherBg)
                 // Saniye tık sesi (2. analiz #10; Ayarlar › Saat görünümü)
                 .onChange(of: Int(now.timeIntervalSince1970)) { _, s in TickSound.shared.tick(s) }
             }
@@ -120,12 +127,6 @@ struct ClockTab: View {
         }
         .fullScreenCover(isPresented: $fullscreen, onDismiss: { autoFull = false }) {
             FullscreenClock(closeOnPortrait: autoFull)
-        }
-        .sheet(isPresented: $customizing) {
-            NavigationStack {
-                HomeItemsView()
-                    .toolbar { Button(L("common.done")) { customizing = false } }
-            }
         }
         .task {
             // CI: bildirim seslerinin örneği üretilir, ekran görüntüleriyle birlikte dışarı alınır
@@ -154,7 +155,7 @@ extension ClockTab {
     }
 }
 
-/// Saat sahnesi: modeller yatay kaydırılır; altta (sitedeki gibi) ‹ 1/20 › — sayaca dokununca model listesi.
+/// Saat sahnesi: modeller parmakla yatay kaydırılır (altında ad ve ok yok; 4 Kasım 2026, sahibin isteği).
 /// Yükseklik sabit: model değişince alttaki alanlar oynamaz. Saate dokununca saniye açılır/kapanır
 /// (dijitalde varsayılan açık, analogda kapalı).
 struct ClockStage: View {
@@ -176,30 +177,8 @@ struct ClockStage: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .frame(height: height)
-            HStack(spacing: 22) {
-                Button { step(-1) } label: { Image(systemName: "chevron.backward") }
-                    .accessibilityLabel(L("stage.prev"))
-                Menu {
-                    Picker(L("stage.dots"), selection: $modelID) {
-                        ForEach(ClockModel.allCases) { m in
-                            Text("\(m.number). \(m.name)").tag(m.rawValue)
-                        }
-                    }
-                } label: {
-                    // Model adı ve sırası (2. analiz #202): "Klasik analog · 1/20"; dokununca liste
-                    Text("\(model.name) · \(model.number)/\(ClockModel.allCases.count)")
-                        .font(.subheadline.weight(.semibold).monospacedDigit())
-                        .lineLimit(1)
-                        .truncationMode(.middle)
-                        .frame(minWidth: 60, maxWidth: 260)
-                }
-                .accessibilityLabel(model.name)
-                Button { step(1) } label: { Image(systemName: "chevron.forward") }
-                    .accessibilityLabel(L("stage.next"))
-            }
-            .font(.headline)
-            .foregroundStyle(Theme.accent)
-            .environment(\.layoutDirection, .leftToRight)
+            // Model adı ve oklar yok (4 Kasım 2026, sahibin isteği): model parmakla sağa sola kaydırılarak değişir
+            // (VoiceOver'da üç parmakla kaydırma)
         }
         .onChange(of: modelID, initial: true) { old, new in
             // Rozetler: görülen modeller (açılıştaki dahil) ve ilk model değişimi
@@ -209,15 +188,9 @@ struct ClockStage: View {
             if old != new { BadgeStore.shared.hit(.ilkModel) }
         }
     }
-
-    private func step(_ d: Int) {
-        let all = ClockModel.allCases
-        let i = ((all.firstIndex(of: model) ?? 0) + d + all.count) % all.count
-        withAnimation { modelID = all[i].rawValue }
-    }
 }
 
-/// Tam ekran saat: 20 model yatay kaydırılır, altında saat ekranındaki alanlar (Düzenle ile seçilenler);
+/// Tam ekran saat: 20 model yatay kaydırılır, altında saat ekranındaki alanlar (Ayarlar › Saat ekranı);
 /// ekran kapanmaz, çift dokununca ya da düğmeyle çıkılır. Bir alana dokununca tam ekran kapanır, sayfası açılır.
 struct FullscreenClock: View {
     /// Yan çevirince açıldıysa telefon dik tutulunca kapanır
@@ -513,5 +486,15 @@ struct FsDuoPicker: View {
             ForEach(FsDuo.all, id: \.self) { Text(L("fs.duo.\($0)")).tag($0) }
         }
         Text(L("fs.duoNote")).font(.footnote).foregroundStyle(Theme.muted)
+    }
+}
+
+/// Hareketli bir sahnenin (hava zemini) üstünde mi: denetimler tema rengi yerine beyaz çizilir
+private struct OnSceneKey: EnvironmentKey { static let defaultValue = false }
+
+extension EnvironmentValues {
+    var onScene: Bool {
+        get { self[OnSceneKey.self] }
+        set { self[OnSceneKey.self] = newValue }
     }
 }

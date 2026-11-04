@@ -13,6 +13,7 @@
   var q = function (sel) { return doc.querySelector(sel); };
   var rose = q("[data-qb-rose]"), kaaba = q("[data-qb-kaaba]"), needle = q("[data-qb-needle]");
   var cards = Array.prototype.slice.call(doc.querySelectorAll(".qb-card"));
+  var degs = Array.prototype.slice.call(doc.querySelectorAll(".qb-deg"));
   var statusEl = q("[data-qb-status]"), startBtn = q("[data-qb-start]"), calib = q("[data-qb-calib]");
   var place = null, bearing = 0, heading = null, aligned = false, listening = false, gotAbsolute = false;
   /* Telefon pusulası manyetik kuzeyi verir (iPhone webkitCompassHeading; Android'de mutlak yön de dönme vektörüyle manyetik kuzey).
@@ -43,6 +44,7 @@
     needle.setAttribute("transform", "rotate(" + (bearing - h).toFixed(1) + ")");
     // Yön harfleri kadranla döner ama dik kalır
     cards.forEach(function (c, i) { c.setAttribute("transform", "rotate(" + i * 90 + ") translate(0 -104) rotate(" + (h - i * 90).toFixed(1) + ")"); });
+    degs.forEach(function (c) { var d = +c.getAttribute("data-qb-deg"); c.setAttribute("transform", "rotate(" + d + ") translate(0 -110) rotate(" + (h - d).toFixed(1) + ")"); });
     var now = heading != null && Math.abs(diff(bearing, heading)) < 3;
     if (now !== aligned) {
       aligned = now;

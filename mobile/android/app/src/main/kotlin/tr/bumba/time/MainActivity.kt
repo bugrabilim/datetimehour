@@ -1,5 +1,7 @@
 package tr.bumba.time
 
+import kotlinx.coroutines.launch
+
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -104,6 +106,14 @@ class MainActivity : ComponentActivity() {
         HealthLog.recordHiitIfDone(this)
         // Odakta engelleme: pomodoro sürüyorsa izleme hizmeti çalışsın, bittiyse dursun (#98)
         FocusBlock.sync(this)
+        // Bildirim alanındaki hava: açıksa ve eskidiyse yenilenir
+        if (LiveNotifications.weatherDue()) {
+            val app = applicationContext
+            kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Default).launch {
+                LiveNotifications.refreshWeather(app)
+                LiveNotifications.sync(app)
+            }
+        }
     }
 
     /** Uygulamadan çıkarken widget'lar güncel konum ve dille yeniden çizilir */
@@ -234,9 +244,15 @@ fun Root(start: Int) {
 
     if (landscape) HideSystemBars()
     // Hava neyse ekran öyle (2. analiz #193): seçilirse saat ekranının zemini seçili yerin havası, yazılar koyu temanın renkleri
-    val clockWx = tab == Tab.CLOCK && Prefs.store.getBoolean(WeatherScene.CLOCK_KEY, false)
+    // Hava sekmesinde de canlandırma açıksa yağmur, kar, bulut bütün sayfada (4 Kasım 2026; önceden yalnız üst kartta)
+    val clockWx = (tab == Tab.CLOCK && Prefs.store.getBoolean(WeatherScene.CLOCK_KEY, false)) ||
+        (tab == Tab.WEATHER && Prefs.store.getBoolean(WeatherScene.TAB_KEY, true))
     Box(Modifier.fillMaxSize()) {
-    if (clockWx) AnimatedBackground(FullscreenBackground.WEATHER, Modifier.fillMaxSize())
+    if (clockWx) {
+        // Atıf sayfanın akışında (saat ekranında saatin altında, hava sekmesinde verinin altında); hafif karartma okunurluk için
+        AnimatedBackground(FullscreenBackground.WEATHER, Modifier.fillMaxSize(), attribution = false)
+        Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.25f)))
+    }
     CompositionLocalProvider(LocalColors provides if (clockWx) AccentPalette.find(Prefs.accent).colors(true) else Theme.c) {
     Column(Modifier.fillMaxSize().then(if (clockWx) Modifier else Modifier.appBackdrop(Theme.c))) {
         Column(Modifier.weight(1f).fillMaxWidth().statusBarsPadding().windowInsetsPadding(WindowInsets.displayCutout)) {
@@ -287,11 +303,12 @@ private fun TabBar(tabs: List<Tab>, selected: Tab, onSelect: (Tab) -> Unit) {
                             .background(if (on) Theme.c.accentSoft else Color.Transparent),
                         contentAlignment = Alignment.Center,
                     ) {
-                        Icon(if (on) t.on else t.off, contentDescription = Features.label(t), tint = color, modifier = Modifier.size(24.dp))
+                        // 3D simgeler (4 Kasım 2026, sahibin seçimi); seçili olmayan sekme gri ve soluk
+                        LineIcon(LineIconMap.tab(t), 26.dp, c1 = color, c2 = color, label = Features.label(t), dim = !on)
                     }
                     Text(
                         Features.label(t), color = color, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
-                        fontWeight = if (on) FontWeight.SemiBold else FontWeight.Normal,
+                        fontWeight = if (on) FontWeight.Medium else FontWeight.Normal,
                     )
                 }
             }

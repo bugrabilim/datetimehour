@@ -127,7 +127,8 @@ struct QiblaRouteMap: View {
     }
 }
 
-/// Favori camiler (ad + koordinat, en çok 30)
+/// Favori camiler (ad + koordinat + isteğe bağlı not, en çok 30). Not yalnız bu telefonda kalır; başka kullanıcılarla
+/// paylaşımı sunucu ister, ücretli sistemle birlikte ele alınacak (4 Kasım 2026, sahibin kararı)
 enum QiblaFavs {
     static let key = "qibla.favs"
 
@@ -135,6 +136,22 @@ enum QiblaFavs {
         let n: String
         let lat: Double
         let lon: Double
+        /// Kişisel not (eski kayıtlarda yok)
+        var t: String? = nil
+    }
+
+    private static func save(_ list: [Fav]) {
+        if let data = try? JSONEncoder().encode(Array(list.prefix(30))) {
+            UserDefaults.standard.set(String(data: data, encoding: .utf8), forKey: key)
+        }
+    }
+
+    static func setNote(_ f: Fav, _ note: String) {
+        var list = load()
+        guard let i = list.firstIndex(where: { abs($0.lat - f.lat) < 1e-5 && abs($0.lon - f.lon) < 1e-5 }) else { return }
+        let t = note.trimmingCharacters(in: .whitespacesAndNewlines)
+        list[i].t = t.isEmpty ? nil : String(t.prefix(500))
+        save(list)
     }
 
     static func load() -> [Fav] {
@@ -153,9 +170,7 @@ enum QiblaFavs {
         } else {
             list.insert(Fav(n: name, lat: lat, lon: lon), at: 0)
         }
-        if let data = try? JSONEncoder().encode(Array(list.prefix(30))) {
-            UserDefaults.standard.set(String(data: data, encoding: .utf8), forKey: key)
-        }
+        save(list)
     }
 
     static func open(_ f: Fav) {

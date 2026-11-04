@@ -37,6 +37,7 @@ import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Palette
@@ -100,10 +101,10 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
     val general = arrayOf("features.title", "settings.location", "settings.notifications", "lang.title", "settings.units",
         "settings.pressureUnit", "client.formatLabel", "settings.keepAwake")
     val look = arrayOf("settings.color", "settings.appearance", "fontScale.title")
-    val clock = arrayOf("look.title", "home.customize", "dial.title", "night.title")
+    val clock = arrayOf("look.title", "home.customize", "home.editScreen", "dial.title", "night.title")
     val backup = arrayOf("sync.androidTitle", "android.shortcuts.title")
     val support = arrayOf("support.title", "support.rate", "support.share", "support.qr", "support.feedback", "support.moreApps",
-        "support.version", "badges.h1", "settings.about")
+        "support.version", "badges.h1", "settings.about", "onboard.replay")
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         OutlinedTextField(
             query, { query = it }, Modifier.fillMaxWidth(), singleLine = true,
@@ -128,7 +129,7 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                     IconBox(Icons.Filled.LightMode)
                     Spacer(Modifier.width(14.dp))
                     Text(L("settings.keepAwake"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                    Switch(Prefs.keepAwake, Prefs::saveKeepAwake, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(Prefs.keepAwake, Prefs::saveKeepAwake, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
             }
             // Dil (2. analiz #5): telefonun ayarlarına gitmeden
@@ -136,17 +137,17 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             if (shows("settings.units", "settings.pressureUnit", "client.formatLabel")) AppCard {
                 if (shows("client.formatLabel")) {
                     SectionTitle(L("client.formatLabel"))
-                    SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                        SegmentedButton(!Prefs.h12, { Prefs.saveH12(false) }, SegmentedButtonDefaults.itemShape(0, 2), colors = segColors()) { Text(L("client.format24")) }
-                        SegmentedButton(Prefs.h12, { Prefs.saveH12(true) }, SegmentedButtonDefaults.itemShape(1, 2), colors = segColors()) { Text(L("client.format12")) }
+                    SoftSegmentedRow(Modifier.fillMaxWidth()) {
+                        SoftSegment(!Prefs.h12, { Prefs.saveH12(false) }) { Text(L("client.format24")) }
+                        SoftSegment(Prefs.h12, { Prefs.saveH12(true) }) { Text(L("client.format12")) }
                     }
                 }
                 if (shows("settings.units")) {
                     SectionTitle(L("settings.units"))
                     val opts = listOf("metric", "imperial")
-                    SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                    SoftSegmentedRow(Modifier.fillMaxWidth()) {
                         opts.forEachIndexed { i, o ->
-                            SegmentedButton(Prefs.units == o, { Prefs.saveUnits(o) }, SegmentedButtonDefaults.itemShape(i, opts.size), colors = segColors()) {
+                            SoftSegment(Prefs.units == o, { Prefs.saveUnits(o) }) {
                                 Text(L("settings.units.$o"), fontSize = 13.sp, maxLines = 1)
                             }
                         }
@@ -157,10 +158,9 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                     SectionTitle(L("settings.pressureUnit"))
                     var pu by remember { mutableStateOf(Units.pressureUnit) }
                     val popts = listOf("auto", "hPa", "mmHg", "inHg")
-                    SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                    SoftSegmentedRow(Modifier.fillMaxWidth()) {
                         popts.forEachIndexed { i, o ->
-                            SegmentedButton(pu == o, { pu = o; Prefs.store.edit().putString("units.pressure", o).apply() },
-                                SegmentedButtonDefaults.itemShape(i, popts.size), colors = segColors()) {
+                            SoftSegment(pu == o, { pu = o; Prefs.store.edit().putString("units.pressure", o).apply() }) {
                                 Text(if (o == "auto") L("countdowns.unit.auto") else o, fontSize = 12.sp, maxLines = 1)
                             }
                         }
@@ -186,9 +186,9 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             if (shows("settings.appearance")) AppCard {
                 SectionTitle(L("settings.appearance"))
                 val opts = listOf("system", "light", "dark")
-                SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                SoftSegmentedRow(Modifier.fillMaxWidth()) {
                     opts.forEachIndexed { i, o ->
-                        SegmentedButton(Prefs.appearance == o, { Prefs.saveAppearance(o) }, SegmentedButtonDefaults.itemShape(i, opts.size), colors = segColors()) {
+                        SoftSegment(Prefs.appearance == o, { Prefs.saveAppearance(o) }) {
                             Text(L("settings.$o"))
                         }
                     }
@@ -202,7 +202,7 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             SectionTitle(L("tab.clock"), Modifier.padding(top = 6.dp))
             AppCard(padding = 4) {
                 if (shows("look.title", "dial.title", "night.title")) SettingsRow(Icons.Filled.TextFields, L("look.title")) { onRoute("appearance") }
-                if (shows("home.customize")) SettingsRow(Icons.Filled.Tune, L("home.customize")) { onRoute("homeItems") }
+                if (shows("home.customize", "home.editScreen")) SettingsRow(Icons.Filled.Tune, L("home.editScreen")) { onRoute("homeItems") }
             }
         }
         // Yedek ve kısayollar: açıklamalar pencerede
@@ -222,6 +222,8 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             AppCard(padding = 4) {
                 if (Features.enabled.isEmpty()) SettingsRow(Icons.Filled.MilitaryTech, L("badges.h1")) { onRoute("badges") }
                 SettingsRow(Icons.Filled.Info, L("settings.about")) { onRoute("about") }
+                // İlk kurulumdaki altı adımlık tanıtım (4 Kasım 2026, sahibin isteği)
+                SettingsRow(Icons.Filled.School, L("onboard.replay")) { Onboarding.replay() }
             }
         }
         if (!shows(*general, *look, *clock, *backup, *support)) {
@@ -261,8 +263,10 @@ fun ColorScreen() {
             SectionTitle(L("atmo.title"))
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 AtmosphereCard(null)
+                AtmosphereCard(Atmosphere.find(Atmosphere.DAYLIGHT))
                 Atmosphere.ALL.forEach { AtmosphereCard(it) }
             }
+            Text(L("atmo.daylightNote"), color = Theme.c.muted, fontSize = 12.sp)
             Text(L("atmo.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
         // Duvar kâğıdı renkleri (Material You; Android 12+, 2. analiz #167)
@@ -387,6 +391,10 @@ fun AboutScreen() {
             Text(L("settings.privacyNoteAndroid"), color = Theme.c.text, fontSize = 14.sp)
             Text(L("privacy.full"), Modifier.clickable { open(privacyUrl()) }, color = Theme.c.accent)
         }
+        // Açık lisanslı parçalar (3D simgeler MIT, yazı tipleri OFL; 4 Kasım 2026)
+        Text(L("about.credits"), color = Theme.c.muted, fontSize = 12.sp)
+        Text(L("about.license"), Modifier.clickable { open("https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE") },
+            color = Theme.c.accent, fontSize = 12.sp)
     }
 }
 
@@ -412,7 +420,7 @@ private fun ListSignup() {
             singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email))
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(L("list.consentText"), Modifier.weight(1f), color = Theme.c.text, fontSize = 13.sp)
-            Switch(consent, { consent = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+            SoftSwitch(consent, { consent = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
         }
         Text(L("list.readNote"), Modifier.clickable {
             context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://bumbagroup.com/liste/aydinlatma" + if (lang == "tr") "" else "?dil=en")))

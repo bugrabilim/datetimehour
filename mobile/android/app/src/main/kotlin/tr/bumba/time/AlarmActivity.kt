@@ -268,7 +268,7 @@ fun MorningCard(onDone: () -> Unit) {
             AppCard {
                 Text(L("weather.h1"), color = Theme.c.accent, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(code.icon(), fontSize = 36.sp)
+                    WeatherIcon(code, size = 40.dp)
                     Spacer(Modifier.width(12.dp))
                     Column {
                         Text(code.label, color = Theme.c.text, fontSize = 17.sp)

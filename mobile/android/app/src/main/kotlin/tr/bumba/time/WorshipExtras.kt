@@ -1,5 +1,7 @@
 package tr.bumba.time
 
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -122,7 +124,7 @@ fun UpcomingReligiousLine(today: LocalDate, onOpen: () -> Unit) {
     Text(
         T("relday.upcoming", e.name, RelDays.whenText(e.date, today)),
         Modifier.clickable(onClick = onOpen).padding(vertical = 2.dp),
-        color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.Medium, textAlign = TextAlign.Center,
+        color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.Medium,
     )
 }
 
@@ -313,18 +315,26 @@ fun prayerIcon(p: Prayer): ImageVector = when (p) {
     Prayer.ISHA -> Icons.Filled.NightsStay
 }
 
-/** Vakte göre gökyüzü zemini (#65): imsaktan önce/yatsıdan sonra gece, imsak–güneş şafak, öğleye kadar sabah… */
-fun skyColors(entries: List<AppPlace.Entry>, now: Instant): List<Color> {
+/**
+ * Vakte göre gökyüzü zemini (#65; doğal tasarım 4 Kasım 2026, docs/dogal-tasarim bölüm 3.1): gece, şafak, sabah, öğle,
+ * ikindi ve akşam gökleri; yazı rengi gökyüzünün parlaklığından (krem ya da mürekkep, en kötü 5,2:1). Koyu temada
+ * gündüz gökleri karartılır, yazı krem kalır.
+ */
+data class Sky(val colors: List<Color>, val text: Color)
+
+fun skyColors(entries: List<AppPlace.Entry>, now: Instant, dark: Boolean = false): Sky {
     fun at(p: Prayer) = entries.firstOrNull { it.prayer == p }?.at
     val f = at(Prayer.FAJR); val s = at(Prayer.SUNRISE); val d = at(Prayer.DHUHR); val a = at(Prayer.ASR); val m = at(Prayer.MAGHRIB); val i = at(Prayer.ISHA)
     fun after(x: Instant?) = x != null && !now.isBefore(x)
+    val cream = Color(0xFFFFF8EC); val ink = Color(0xFF2B2520)
+    fun sky(top: Long, bottom: Long, text: Color) = Sky(listOf(Color(0xFF000000 or top), Color(0xFF000000 or bottom)), text)
     return when {
-        after(i) || !after(f) -> listOf(Color(0xFF0B1636), Color(0xFF26245A))
-        after(m) -> listOf(Color(0xFF3B2459), Color(0xFFC0583F))
-        after(a) -> listOf(Color(0xFF2F6FB2), Color(0xFFE39A3B))
-        after(d) -> listOf(Color(0xFF2C7BD1), Color(0xFF6FB3EA))
-        after(s) -> listOf(Color(0xFF3D8BD6), Color(0xFF9FD0F2))
-        else -> listOf(Color(0xFF2B2C63), Color(0xFFD9785A))
+        after(i) || !after(f) -> sky(0x1F2240, 0x3B3762, cream)
+        after(m) -> sky(0x46305A, 0x8E4B4E, cream)
+        after(a) -> if (dark) sky(0x4F3A22, 0x6E5638, cream) else sky(0xE0B577, 0xF5E3BF, ink)
+        after(d) -> if (dark) sky(0x284866, 0x47627A, cream) else sky(0x9CC4E0, 0xE3EEF2, ink)
+        after(s) -> if (dark) sky(0x2D4A63, 0x4F5E6E, cream) else sky(0xA9C9DF, 0xF2E6CC, ink)
+        else -> sky(0x2E2C55, 0x8A5A78, cream)
     }
 }
 
@@ -488,7 +498,7 @@ fun LifetimeKazaCard(onApplied: () -> Unit) {
                 label = { Text(L("track.life.start")) }, singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("track.life.female"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Switch(female, { female = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                SoftSwitch(female, { female = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             if (female) ChoiceRow(L("track.life.period"), "$period", (3..10).map { it to "$it" }) { period = it; save() }
             val b = birth.toIntOrNull(); val s = start.toIntOrNull()
@@ -549,7 +559,7 @@ fun PauseRow(onChange: () -> Unit) {
     val from = TrackX.pausedFrom
     Row(verticalAlignment = Alignment.CenterVertically) {
         Text(L("track.pause"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-        Switch(from != null, { TrackX.pausedFrom = if (it) LocalDate.now() else null; onChange() },
+        SoftSwitch(from != null, { TrackX.pausedFrom = if (it) LocalDate.now() else null; onChange() },
             colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
     from?.let { Text(T("track.pausedSince", Fmt.longDate(it)), color = Theme.c.muted, fontSize = 12.sp) }
@@ -593,19 +603,28 @@ fun PrayedSummary(day: LocalDate, entries: List<AppPlace.Entry>, now: Instant, v
 fun SkyCountdown(entries: List<AppPlace.Entry>, next: AppPlace.Entry, now: Instant) {
     var words by remember { mutableStateOf(Prefs.store.getBoolean("prayer.words", false)) }
     val left = next.at.epochSecond - now.epochSecond
-    Column(
-        Modifier.fillMaxWidth().background(Brush.verticalGradient(skyColors(entries, now)), RoundedCornerShape(20.dp))
+    val sky = skyColors(entries, now, Theme.c.dark)
+    // Köşede hatem, altta kubbe-minare silueti (doğal tasarım madde 15; %10 ve %12)
+    androidx.compose.foundation.layout.Box(
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp)).background(Brush.verticalGradient(sky.colors))
             .clickable { words = !words; Prefs.store.edit().putBoolean("prayer.words", words).apply() }
-            .padding(vertical = 16.dp, horizontal = 12.dp)
             .semantics { contentDescription = countdownWords(left, next.prayer.title) + ". " + L("prayer.wordsHint") },
+    ) {
+    HatemMotif(Modifier.align(Alignment.TopEnd).offset(x = 28.dp, y = (-28).dp).size(110.dp), sky.text, 0.10f)
+    SkylineMotif(Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(34.dp), sky.text, 0.12f)
+    Column(
+        Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 22.dp, start = 12.dp, end = 12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Icon(prayerIcon(next.prayer), null, tint = Color.White, modifier = Modifier.size(28.dp))
+        LineIcon(LineIconMap.prayer(next.prayer), 30.dp, c1 = sky.text, c2 = sky.text)
         if (words) {
-            Text(countdownWords(left, next.prayer.title), color = Color.White, fontSize = 30.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+            Text(countdownWords(left, next.prayer.title), color = sky.text, fontSize = 30.sp, fontFamily = AppFonts.heading,
+                fontWeight = FontWeight.Medium, textAlign = TextAlign.Center)
         } else {
-            Text(T("prayer.nextIn", next.prayer.title), color = Color.White.copy(alpha = 0.85f), fontSize = 15.sp)
-            Text(Fmt.countdown(left), color = Color.White, fontSize = 52.sp, fontWeight = FontWeight.Bold, style = Tnum)
+            Text(T("prayer.nextIn", next.prayer.title), color = sky.text.copy(alpha = 0.88f), fontSize = 15.sp)
+            // Büyük sayaç: ince (300) ve tablo rakamlı (doğal tasarım bölüm 3.2)
+            Text(Fmt.countdown(left), color = sky.text, fontSize = 56.sp, fontWeight = FontWeight.Light, style = Tnum)
         }
+    }
     }
 }

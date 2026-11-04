@@ -36,7 +36,8 @@ enum Features {
     /// açılırsa çubuk değişmez; sayfa üstte geri düğmesiyle açılır (2. analiz #203)
     static func barTabs(raw: String, bar: String) -> [AppTab] {
         let on = parse(raw)
-        if on.isEmpty { return [.clock] }
+        // Tümü her zaman çubukta (4 Kasım 2026: Ayarlar saat ekranındaki dişliden Tümü'ye taşındı)
+        if on.isEmpty { return [.clock, .tools] }
         return [.clock] + parseBar(bar).filter(on.contains) + [.tools]
     }
 
@@ -85,6 +86,8 @@ enum Features {
             defaults.set(existing ? raw(Set(optional)) : "", forKey: key)
             // Yeni kurulum: ilk açılışta kurulum sihirbazı (Onboarding; 2. analiz #4)
             if !existing { defaults.set(true, forKey: Onboarding.key) }
+            // Yeni kurulumda "Gün ışığı" atmosferi (doğal tasarım madde 7; önceki kullanıcının seçimi korunur)
+            if !existing, defaults.object(forKey: Atmosphere.key) == nil { defaults.set(Atmosphere.daylightID, forKey: Atmosphere.key) }
         }
         // Seçenek B göçü: çubuk kaydı yoksa açık özelliklerden varsayılan sırayla en çok 3
         if defaults.object(forKey: barKey) == nil {

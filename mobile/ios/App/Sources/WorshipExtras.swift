@@ -59,7 +59,7 @@ struct UpcomingReligiousLine: View {
                 Text(T("relday.upcoming", e.name, RelDays.whenText(e.day, today)))
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(Theme.accent)
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.leading)
             }
         }
     }
@@ -297,6 +297,19 @@ struct PrayedRing: View {
 }
 
 /// Vakit simgesi (#65)
+/// Vakit satırlarındaki çizgi simge (doğal tasarım madde 4): imsak şafak, güneş doğuş, öğle tepe, ikindi alçak güneş,
+/// akşam batış, yatsı gece. Android'deki LineIconMap.prayer ile aynı.
+func prayerLineIcon(_ p: Prayer) -> String {
+    switch p {
+    case .fajr: "dawn"
+    case .sunrise: "sunrise"
+    case .dhuhr: "noon"
+    case .asr: "afternoon"
+    case .maghrib: "sunset"
+    case .isha: "night"
+    }
+}
+
 func prayerSymbol(_ p: Prayer) -> String {
     switch p {
     case .fajr: "sun.horizon"
@@ -308,17 +321,26 @@ func prayerSymbol(_ p: Prayer) -> String {
     }
 }
 
-/// Vakte göre gökyüzü zemini (#65)
-func skyColors(_ entries: [PrayerSchedule.Entry], _ now: Date) -> [Color] {
+/// Vakte göre gökyüzü zemini (#65; doğal tasarım 4 Kasım 2026, docs/dogal-tasarim bölüm 3.1): gece, şafak, sabah,
+/// öğle, ikindi ve akşam gökleri; yazı rengi gökyüzünün parlaklığından (krem ya da mürekkep). Koyu temada gündüz gökleri
+/// karartılır, yazı krem kalır. Android'deki skyColors ile aynı renkler.
+struct PrayerSky {
+    let colors: [Color]
+    let text: Color
+}
+
+func skyColors(_ entries: [PrayerSchedule.Entry], _ now: Date, dark: Bool = false) -> PrayerSky {
     func at(_ p: Prayer) -> Date? { entries.first { $0.prayer == p }?.at }
     func after(_ x: Date?) -> Bool { x.map { now >= $0 } ?? false }
     func c(_ hex: UInt32) -> Color { Color(red: Double(hex >> 16 & 0xFF) / 255, green: Double(hex >> 8 & 0xFF) / 255, blue: Double(hex & 0xFF) / 255) }
-    if after(at(.isha)) || !after(at(.fajr)) { return [c(0x0B1636), c(0x26245A)] }
-    if after(at(.maghrib)) { return [c(0x3B2459), c(0xC0583F)] }
-    if after(at(.asr)) { return [c(0x2F6FB2), c(0xE39A3B)] }
-    if after(at(.dhuhr)) { return [c(0x2C7BD1), c(0x6FB3EA)] }
-    if after(at(.sunrise)) { return [c(0x3D8BD6), c(0x9FD0F2)] }
-    return [c(0x2B2C63), c(0xD9785A)]
+    let cream = c(0xFFF8EC), ink = c(0x2B2520)
+    func sky(_ top: UInt32, _ bottom: UInt32, _ text: Color) -> PrayerSky { PrayerSky(colors: [c(top), c(bottom)], text: text) }
+    if after(at(.isha)) || !after(at(.fajr)) { return sky(0x1F2240, 0x3B3762, cream) }
+    if after(at(.maghrib)) { return sky(0x46305A, 0x8E4B4E, cream) }
+    if after(at(.asr)) { return dark ? sky(0x4F3A22, 0x6E5638, cream) : sky(0xE0B577, 0xF5E3BF, ink) }
+    if after(at(.dhuhr)) { return dark ? sky(0x284866, 0x47627A, cream) : sky(0x9CC4E0, 0xE3EEF2, ink) }
+    if after(at(.sunrise)) { return dark ? sky(0x2D4A63, 0x4F5E6E, cream) : sky(0xA9C9DF, 0xF2E6CC, ink) }
+    return sky(0x2E2C55, 0x8A5A78, cream)
 }
 
 /// Kalan süre sözle: "1 sa 42 dk sonra İkindi" (#66)
@@ -334,30 +356,43 @@ struct SkyCountdown: View {
     let next: PrayerSchedule.Entry
     let now: Date
     @AppStorage("prayer.words") private var words = false
+    @Environment(\.colorScheme) private var scheme
 
     var body: some View {
         let left = Int(next.at.timeIntervalSince(now).rounded(.up))
+        let sky = skyColors(entries, now, dark: scheme == .dark)
         Button { words.toggle() } label: {
             VStack(spacing: 6) {
-                Image(systemName: prayerSymbol(next.prayer)).font(.title2)
+                LineIcon(name: prayerLineIcon(next.prayer), size: 30, c1: sky.text, c2: sky.text)
                 if words {
                     Text(countdownWords(left, next.prayer.localizedName))
-                        .font(.system(size: 28, weight: .bold, design: .rounded))
+                        .font(AppFonts.serif ? .custom("Literata-Medium", size: 28, relativeTo: .title) : .system(size: 28, weight: .semibold))
                         .multilineTextAlignment(.center)
                 } else {
                     Text(String(format: String(localized: "prayer.nextIn"), next.prayer.localizedName))
-                        .font(.subheadline).opacity(0.85)
+                        .font(.subheadline).opacity(0.88)
+                    // Büyük sayaç: ince (300) ve tablo rakamlı (doğal tasarım bölüm 3.2)
                     Text(Fmt.countdown(left))
-                        .font(.system(size: 40, weight: .semibold, design: .rounded))
+                        .font(.system(size: 52, weight: .light))
                         .monospacedDigit()
+                        .lineLimit(1).minimumScaleFactor(0.6)
                         .environment(\.layoutDirection, .leftToRight)
                 }
             }
-            .foregroundStyle(.white)
+            .foregroundStyle(sky.text)
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 16).padding(.horizontal, 12)
-            .background(LinearGradient(colors: skyColors(entries, now), startPoint: .top, endPoint: .bottom),
-                        in: RoundedRectangle(cornerRadius: 20))
+            .padding(.top, 16).padding(.bottom, 22).padding(.horizontal, 12)
+            .background {
+                // Köşede hatem, altta kubbe-minare silueti (doğal tasarım madde 15; %10 ve %12)
+                ZStack {
+                    LinearGradient(colors: sky.colors, startPoint: .top, endPoint: .bottom)
+                    HatemMotif(color: sky.text, opacity: 0.10).frame(width: 110, height: 110)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing).offset(x: 28, y: -28)
+                    SkylineShape().fill(sky.text.opacity(0.12)).frame(height: 34)
+                        .frame(maxHeight: .infinity, alignment: .bottom)
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+            }
         }
         .buttonStyle(.plain)
         .accessibilityLabel(countdownWords(left, next.prayer.localizedName))

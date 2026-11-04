@@ -264,20 +264,35 @@ private fun DrawScope.sky(t: Double, alt: Double, drawClouds: Boolean = true) {
     drawRect(Color.Black.copy(alpha = if (alt >= 6) 0.2f else 0.1f))
 }
 
-/** Süzülen bulutlar: sayı bulut oranından, hız rüzgârdan; yağmurda koyu */
+/**
+ * Süzülen bulutlar: sayı bulut oranından, hız rüzgârdan; yağmurda koyu. Doğal tasarım madde 10 (4 Kasım 2026): her bulut
+ * üst üste binen yumuşak dairelerden; yazı alanına girmesin diye yalnız sahnenin üst üçte birinde
+ */
+private val CLOUD_PUFFS = listOf(
+    Triple(0.22f, 0.66f, 0.20f), Triple(0.42f, 0.46f, 0.27f), Triple(0.64f, 0.52f, 0.24f),
+    Triple(0.84f, 0.68f, 0.16f), Triple(0.52f, 0.74f, 0.22f),
+)
+
 private fun DrawScope.clouds(t: Double, count: Int = 4, speedK: Double = 1.0, dark: Boolean = false) {
     val dp = density
     val c = if (dark) Color(0xFFBFBFBF) else Color.White
     for (i in 0 until count) {
-        val w = size.width * (0.45f + 0.1f * (i % 2))
-        val h = w * 0.28f
+        val w = size.width * (0.30f + 0.08f * (i % 3))
+        val h = w * 0.45f
         val speed = (6.0 + (i % 4) * 3) * speedK * dp // iOS'taki pt/sn
         val x = ((i * size.width * 0.37 + t * speed) % (size.width + w) - w).toFloat()
-        val y = size.height * (0.12f + 0.17f * (i % 4) + 0.08f * (i / 4))
-        drawOval(
-            Brush.radialGradient(listOf(c.copy(alpha = 0.55f), c.copy(alpha = 0f)), Offset(x + w / 2, y + h / 2), w / 2),
-            Offset(x, y), Size(w, h),
-        )
+        val y = size.height * (0.03f + 0.07f * (i % 4) + 0.025f * (i / 4))
+        for ((px, py, pr) in CLOUD_PUFFS) {
+            val center = Offset(x + w * px, y + h * py)
+            val r = w * pr
+            drawCircle(
+                Brush.radialGradient(
+                    0f to c.copy(alpha = 0.5f), 0.55f to c.copy(alpha = 0.42f), 1f to c.copy(alpha = 0f),
+                    center = center, radius = r,
+                ),
+                r, center,
+            )
+        }
     }
 }
 

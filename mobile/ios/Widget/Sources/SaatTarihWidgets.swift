@@ -36,6 +36,7 @@ struct SaatTarihWidgets: WidgetBundle {
             ClockControl()
             TimerControl()
             PrayerControl()
+            LiveWeatherControl()
         }
     }
 }

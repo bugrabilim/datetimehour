@@ -1,5 +1,10 @@
 package tr.bumba.time
 
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.draw.shadow
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -53,8 +58,19 @@ fun EmptyState(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        Icon(icon, null, tint = Theme.c.accent.copy(alpha = 0.6f), modifier = Modifier.size(64.dp))
-        if (!title.isNullOrBlank()) Text(title, color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
+        // Küçük resim (doğal tasarım madde 18): çakıl taşı zemin, çizgi simge, köşede küçük güneş
+        Box(Modifier.size(104.dp)) {
+            Box(Modifier.align(Alignment.Center).size(88.dp).clip(PebbleShape).background(Theme.c.accentSoft))
+            Box(Modifier.align(Alignment.TopEnd).padding(top = 4.dp, end = 6.dp).size(18.dp).clip(androidx.compose.foundation.shape.CircleShape)
+                .background(Theme.c.gold.copy(alpha = 0.55f)))
+            Box(Modifier.align(Alignment.Center)) {
+                val line = LineIconMap.of(icon.name)
+                if (line != null) LineIcon(line, 48.dp, c1 = Theme.c.accent, c2 = Theme.c.sage)
+                else Icon(icon, null, tint = Theme.c.accent, modifier = Modifier.size(44.dp))
+            }
+        }
+        if (!title.isNullOrBlank()) Text(title, color = Theme.c.text, fontSize = 18.sp, fontFamily = AppFonts.heading,
+            fontWeight = FontWeight.Medium, textAlign = TextAlign.Center)
         if (!text.isNullOrBlank()) Text(text, color = Theme.c.muted, fontSize = 14.sp, textAlign = TextAlign.Center)
         if (action != null && onAction != null) {
             Spacer(Modifier.size(4.dp))
@@ -62,25 +78,44 @@ fun EmptyState(
                 action,
                 Modifier.clip(RoundedCornerShape(50)).background(Theme.c.accent).clickable(onClick = onAction)
                     .padding(horizontal = 20.dp, vertical = 10.dp),
-                color = if (Theme.c.dark) Color(0xFF11141A) else Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold,
+                color = Theme.c.onAccent, fontSize = 15.sp, fontWeight = FontWeight.Medium,
             )
         }
     }
 }
 
-/** Liste satırlarındaki renkli simge kutusu (#99): 36 dp, köşe 10 dp, zemin ana rengin açık tonu */
+/**
+ * Liste satırlarındaki renkli simge kutusu (#99; doğal tasarım madde 4, 4 Kasım 2026): "çakıl taşı" biçimi (köşeler
+ * hafif farklı yuvarlak), zemin simge renginin açık tonu, içinde 3D simge (4 Kasım 2026; karşılığı yoksa Material
+ * simgesi). [line] verilirse o simge çizilir.
+ */
 @Composable
-fun IconBox(icon: ImageVector, tint: Color = Theme.c.accent, modifier: Modifier = Modifier) {
+fun IconBox(icon: ImageVector, tint: Color = Theme.c.accent, modifier: Modifier = Modifier, line: String? = null) {
+    val name = line ?: LineIconMap.of(icon.name)
     Box(
-        modifier.size(36.dp).clip(RoundedCornerShape(10.dp)).background(tint.copy(alpha = if (Theme.c.dark) 0.22f else 0.14f)),
+        modifier.size(36.dp).clip(PebbleShape).background(tint.copy(alpha = if (Theme.c.dark) 0.20f else 0.13f)),
         contentAlignment = Alignment.Center,
-    ) { Icon(icon, null, tint = tint, modifier = Modifier.size(20.dp)) }
+    ) {
+        if (name != null) LineIcon(name, 25.dp, c1 = tint, c2 = tint.copy(alpha = 0.72f))
+        else Icon(icon, null, tint = tint, modifier = Modifier.size(20.dp))
+    }
 }
 
-/** Sekme sayfalarının büyük başlığı (#98): 28 sp kalın (Material headlineMedium) */
+/** Çakıl taşı biçimi (doğal tasarım bölüm 3.3) */
+val PebbleShape = RoundedCornerShape(topStartPercent = 44, topEndPercent = 50, bottomEndPercent = 46, bottomStartPercent = 48)
+
+/**
+ * Sekme sayfalarının büyük başlığı (#98; doğal tasarım 4 Kasım 2026): Literata 30/36, 600 (Latin ve Kiril dillerinde),
+ * diğer dillerde sistem yazısı 28/34, 600. Büyük yazı boyutunda iki satıra kırılır.
+ */
 @Composable
 fun PageTitle(text: String, modifier: Modifier = Modifier) {
-    Text(text, modifier, color = Theme.c.text, fontSize = 28.sp, fontWeight = FontWeight.Bold, maxLines = 2, overflow = TextOverflow.Ellipsis)
+    val serif = AppFonts.serif
+    Text(
+        text, modifier, color = Theme.c.text, fontFamily = AppFonts.heading, fontWeight = FontWeight.SemiBold,
+        fontSize = if (serif) 30.sp else 28.sp, lineHeight = if (serif) 36.sp else 34.sp,
+        letterSpacing = if (serif) (-0.3).sp else 0.sp, maxLines = 2, overflow = TextOverflow.Ellipsis,
+    )
 }
 
 /**
@@ -136,6 +171,127 @@ fun MoreMenu(items: List<Pair<String, () -> Unit>>) {
             for ((label, action) in items) {
                 androidx.compose.material3.DropdownMenuItem({ Text(label) }, { open = false; action() })
             }
+        }
+    }
+}
+
+/**
+ * Yumuşak bölmeli seçici (doğal tasarım madde 5, 4 Kasım 2026): onay işareti ve kenarlık yok; iz `surface2` hap, seçili
+ * parça açık temada `surface` + hafif gölge, koyu temada izden biraz açık. Material SegmentedButton yerine.
+ */
+@Composable
+fun SoftSegmentedRow(modifier: Modifier = Modifier, content: @Composable androidx.compose.foundation.layout.RowScope.() -> Unit) {
+    androidx.compose.foundation.layout.Row(
+        modifier.heightIn(min = 44.dp).clip(RoundedCornerShape(50)).background(Theme.c.surface2).padding(3.dp),
+        verticalAlignment = Alignment.CenterVertically, content = content,
+    )
+}
+
+@Composable
+fun androidx.compose.foundation.layout.RowScope.SoftSegment(selected: Boolean, onClick: () -> Unit, content: @Composable () -> Unit) {
+    val c = Theme.c
+    val shape = RoundedCornerShape(50)
+    val selBg = if (c.dark) Color.White.copy(alpha = 0.10f).compositeOver(c.surface2) else c.surface
+    Box(
+        Modifier.weight(1f).heightIn(min = 38.dp)
+            .then(
+                if (!selected) Modifier
+                else if (c.dark) Modifier.background(selBg, shape)
+                else Modifier.shadow(2.dp, shape, ambientColor = Color(0x334A341E), spotColor = Color(0x224A341E)).background(selBg, shape),
+            )
+            .clip(shape)
+            .selectable(selected, onClick = onClick, role = androidx.compose.ui.semantics.Role.Tab)
+            .padding(horizontal = 8.dp, vertical = 6.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        androidx.compose.runtime.CompositionLocalProvider(
+            androidx.compose.material3.LocalContentColor provides if (selected) c.text else c.muted,
+            androidx.compose.material3.LocalTextStyle provides androidx.compose.material3.LocalTextStyle.current.copy(
+                fontSize = 14.sp, fontWeight = if (selected) FontWeight.Medium else FontWeight.Normal,
+            ),
+        ) { content() }
+    }
+}
+
+/**
+ * Yumuşak anahtar (doğal tasarım madde 5): kenarlıksız iz; açıkken ana renk, kapalıyken `surface2` iz ve soluk düğme.
+ * Eski çağrılardaki `colors` yok sayılır (her yerde aynı görünüm).
+ */
+@Composable
+fun SoftSwitch(
+    checked: Boolean, onCheckedChange: ((Boolean) -> Unit)?, modifier: Modifier = Modifier, enabled: Boolean = true,
+    @Suppress("UNUSED_PARAMETER") colors: androidx.compose.material3.SwitchColors? = null,
+) {
+    val c = Theme.c
+    androidx.compose.material3.Switch(
+        checked, onCheckedChange, modifier, enabled = enabled,
+        colors = androidx.compose.material3.SwitchDefaults.colors(
+            checkedTrackColor = c.accent, checkedThumbColor = c.onAccent, checkedBorderColor = Color.Transparent,
+            uncheckedTrackColor = c.surface2, uncheckedThumbColor = c.muted, uncheckedBorderColor = Color.Transparent,
+            disabledCheckedTrackColor = c.accent.copy(alpha = 0.4f), disabledUncheckedTrackColor = c.surface2.copy(alpha = 0.6f),
+            disabledUncheckedBorderColor = Color.Transparent, disabledCheckedBorderColor = Color.Transparent,
+        ),
+    )
+}
+
+/**
+ * Hareket belirteçleri (doğal tasarım madde 12, 4 Kasım 2026): kısa 150, orta 250, uzun 400 ms, sahne 1200 ms; yumuşak
+ * eğri cubic-bezier(0.2, 0.8, 0.2, 1). Animasyonlar kapalıysa (sistem ayarı) Compose zaten süreyi sıfırlar.
+ */
+object Motion {
+    const val SHORT = 150
+    const val MEDIUM = 250
+    const val LONG = 400
+    const val SCENE = 1200
+    val ease = androidx.compose.animation.core.CubicBezierEasing(0.2f, 0.8f, 0.2f, 1f)
+}
+
+/** Basınca hafif küçülme (0,97): kartlar ve kareler için; etkileşim kaynağı tıklamayla paylaşılır */
+@Composable
+fun Modifier.pressScale(interaction: androidx.compose.foundation.interaction.MutableInteractionSource): Modifier {
+    val pressed by interaction.collectIsPressedAsState()
+    val scale by androidx.compose.animation.core.animateFloatAsState(
+        if (pressed) 0.97f else 1f, androidx.compose.animation.core.tween(Motion.SHORT, easing = Motion.ease), label = "press",
+    )
+    return graphicsLayer { scaleX = scale; scaleY = scale }
+}
+
+/**
+ * "Nasıl çalışır?" (doğal tasarım madde 13 ve ilke 4, 4 Kasım 2026): ekranda en çok iki satırlık not kalır; daha uzun
+ * açıklamalar bu bağlantının açtığı alt sayfadadır. Bölüm başlığı (isteğe bağlı) ve metin; sola hizalı, okunaklı satır
+ * aralığı. iOS'taki HowItWorks ile aynı.
+ */
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+@Composable
+fun HowItWorks(sections: List<Pair<String?, String>>, modifier: Modifier = Modifier) {
+    var open by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
+    Row(
+        modifier.clip(RoundedCornerShape(50)).clickable { open = true }.padding(vertical = 6.dp, horizontal = 2.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        LineIcon("info", 18.dp, c1 = Theme.c.accent, c2 = Theme.c.accent)
+        Spacer(Modifier.width(6.dp))
+        Text(L("common.how"), color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+    }
+    if (open) {
+        androidx.compose.material3.ModalBottomSheet(onDismissRequest = { open = false }, containerColor = Theme.c.surface) {
+            HowItWorksContent(sections)
+        }
+    }
+}
+
+/** Alt sayfanın içeriği (ekran görüntüsü testinde doğrudan çizilir) */
+@Composable
+fun HowItWorksContent(sections: List<Pair<String?, String>>) {
+    Column(
+        Modifier.fillMaxWidth().verticalScroll(androidx.compose.foundation.rememberScrollState())
+            .padding(horizontal = 24.dp).padding(top = 4.dp, bottom = 32.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        PageTitle(L("common.how"))
+        for ((title, body) in sections) {
+            if (title != null) Text(title, Modifier.padding(top = 8.dp), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+            Text(body, color = Theme.c.text, fontSize = 15.sp, lineHeight = 23.sp)
         }
     }
 }

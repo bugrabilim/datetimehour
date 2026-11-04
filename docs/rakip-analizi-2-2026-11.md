@@ -49,7 +49,7 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 | 16 | Günün ayeti, Esma, hadis ve sözü widget'ları; günlük söz bildirimi | Uygulama | K | yapıldı (3 Kasım 2026; günün sözü, ayeti, esması, hadisi widget'ı: iPhone'da widget ayarından, Android'de dokunarak; her sabah 08.00'de sessiz "Günün sözü" bildirimi) | Quran Widgets'ta Premium | ücretsiz | Vakit, Quran Widgets, Fazilet |
 | 17 | Widget görünüm düzenleyici (renk, yazı tipi, çerçeve, hazır galeri) | Uygulama | B | yapıldı (3 Kasım 2026) | Premium | ileride Pro adayı | Widgetsmith, Zen Flip, Quran Widgets ("Create") |
 | 18 | iOS'ta saniyeli analog ve saniyeli çevirmeli widget (bizde saniyeli widget yalnız düz metin) | Uygulama (iOS) | O | bitti (4 Kasım 2026, gece turu): iOS'ta saniyeli çevirmeli saat widget'ı (saat ve dakika kartları dakikada bir, saniye kartı sistem sayacıyla akar). Saniyeli analog widget iOS'ta yapılamaz: WidgetKit ibreyi saniyede döndürmez (Android'de var) | ücretsiz | ücretsiz | Desk Clock, Flip Clock |
-| 19 | Dynamic Island'da canlı saat (Apple'ın 8 saat sınırı var) | Uygulama (iOS) | K/O | yapıldı (3 Kasım 2026; Saat görünümü'nde "Dynamic Island'da canlı saat": gece yarısından geçen süre sistemin sayacıyla; Apple en çok 8 saat tutar) | ücretsiz | ücretsiz | Desk Clock, Clock Face, Digital Clock |
+| 19 | Dynamic Island'da canlı saat (Apple'ın 8 saat sınırı var) | Uygulama (iOS) | K/O | yapıldı (3 Kasım 2026), sonra kaldırıldı (4 Kasım 2026, sahibin kararı: saat telefonda zaten var); yerine isteğe bağlı hava etkinliği (Hava sekmesinde anahtar, etkinlikte ×, Denetim Merkezi düğmesi; Android'de bildirimde hava, Hızlı Ayarlar kutucuğu) | ücretsiz | ücretsiz | Desk Clock, Clock Face, Digital Clock |
 | 20 | Çevirmeli saat ayrıntıları: iki rakam tek kart, dikeyde kartlar alt alta, kartın köşesinde küçük saniye, "PM" etiketi, rakam/kart renk temaları, kapakları gizleme | Uygulama (+ site) | K | bitti (3 Kasım 2026, K-6) | VIP ₺49,99/kadran | ücretsiz; renk temaları ileride Pro adayı | Flip Clock, Fliqlo, Zen Flip |
 | 21 | Dijitalde saniye küçük ve tabana hizalı seçeneği (bizde saatle aynı boyda) | Uygulama (+ site) | K | yapıldı (3 Kasım 2026) | ücretsiz | ücretsiz | Digital Clock, Desk Clock |
 | 22 | Dev metin/tabela modu ("İYİ Kİ DOĞDUN") ve saat boyutu %130'a kadar (bizde fs.text küçük satır, fs.scale 0,5–1) | Uygulama | K | yapıldı (3 Kasım 2026) | VIP ₺149,99 | ücretsiz | Fullscreen Clock |
@@ -444,6 +444,7 @@ Sunucu, hesap ya da ödeme gerektiren işler; şimdi yapılmayacak, ücretli bö
 - **#53** Arkadaşlarla uyanma grupları, sanal para (Wayk, SleepTown).
 - **#75** Ortak zikir ve hatim, topluluk, radyo, fetva araması (Codeida, Azan Time, Muslim Pro, e-Diyanet). "ALO 190" arama düğmesi sunucu istemez; ayrı yapılabilir.
 - **#25** Bağış (bahşiş) satın alması (ClockZ, Vakit): uygulama içi satın alma ve ödeme yöntemleriyle birlikte ele alınır (3 Kasım 2026, sahibin kararı).
+- Favori camilere yazılan notların başka kullanıcılarla paylaşımı (kullanıcı izin verirse): sunucu ister; notlar şimdilik yalnız telefonda (4 Kasım 2026, sahibin kararı: "notlar telefonda, paylaşım sonra").
 
 ## Kapsam sınırı (3 Kasım 2026)
 Birinci ajan dalgası üç alana baktı: kadran/masa saati (ikinci öncelik odak ve zamanlayıcı), alarm/uyku, namaz (ikinci öncelik takvim, dünya saati, geri sayım). **Bakılmayanlar:**

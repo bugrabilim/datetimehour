@@ -6,6 +6,15 @@
 <dict>
 	<key>NSAlarmKitUsageDescription</key>
 	<string>Kurduğunuz alarm ve zamanlayıcıların telefon sessizdeyken de çalması için.</string>
+	<!-- Başlık yazı tipi Literata (SIL OFL 1.1; Latin + Kiril alt kümesi, 500 ve 600) ve Kur'an/dua Arapçası için Amiri
+	     (SIL OFL 1.1, Arapça alt kümesi); doğal tasarım, 4 Kasım 2026. Lisanslar App/Resources/Fonts/OFL-*.txt;
+	     üretim mobile/shared/fonts/README.md -->
+	<key>UIAppFonts</key>
+	<array>
+		<string>Literata-Medium.ttf</string>
+		<string>Literata-SemiBold.ttf</string>
+		<string>Amiri-Regular.ttf</string>
+	</array>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>tr.bumba.time.refresh</string>

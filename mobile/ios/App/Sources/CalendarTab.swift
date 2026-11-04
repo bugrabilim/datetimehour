@@ -27,6 +27,7 @@ struct CalendarTab: View {
     @AppStorage(CalPrefs.countryKey) private var country = "TR"
     @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw = ""
     @State private var countrySheet = false
+    @State private var leafOpen = false
 
     /// Yeni etkinlik: boş (seçili gün 09:00) ya da bir özel günden (tüm gün)
     struct AddRequest: Identifiable {
@@ -66,12 +67,11 @@ struct CalendarTab: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(L("client.today")) { go(to: today) }
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink { CalendarLeafView() } label: { Image(systemName: "doc.text.image") }
-                        .accessibilityLabel(L("leaf.title"))
-                }
+                // Başlıkta az simge (doğal tasarım, madde 13): takvim yaprağı "…" menüsünde
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
+                        Button { leafOpen = true } label: { Label(L("leaf.title"), systemImage: "doc.text.image") }
+                        Divider()
                         Toggle(L("cal.weekNo"), isOn: $showWeek)
                         Toggle(L("cal.moon"), isOn: $showMoon)
                         Toggle(L("cal.dst"), isOn: $showDst)
@@ -79,7 +79,7 @@ struct CalendarTab: View {
                         Toggle(L("cal.names"), isOn: $showNames)
                         Toggle(L("cal.hijriNav"), isOn: $hijriNav)
                         Button(L("cal.country") + ": " + WorldHol.countryName(country)) { countrySheet = true }
-                    } label: { Image(systemName: "slider.horizontal.3") }
+                    } label: { Image(systemName: "ellipsis.circle") }
                         .accessibilityLabel(L("cal.view"))
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -87,6 +87,7 @@ struct CalendarTab: View {
                         .accessibilityLabel(L("calendar.add"))
                 }
             }
+            .navigationDestination(isPresented: $leafOpen) { CalendarLeafView() }
             .sheet(item: $adding) { req in
                 EventEditor(configure: { e in
                     if let title = req.title {
@@ -135,7 +136,7 @@ struct CalendarTab: View {
     private var header: some View {
         HStack(alignment: .firstTextBaseline) {
             Text(L("calendar.months.\(month.month - 1)"))
-                .font(.largeTitle.weight(.bold))
+                .font(AppFonts.page)
                 .foregroundStyle(Theme.text)
                 .lineLimit(1).minimumScaleFactor(0.6)
             Text(String(month.year))
@@ -589,7 +590,7 @@ private struct DayWeatherRow: View {
         Group {
             if let text {
                 HStack(spacing: 8) {
-                    if let symbol { Image(systemName: symbol).symbolRenderingMode(.multicolor) }
+                    if let symbol { WeatherIcon3D(symbol: symbol, size: 24) }
                     Text(T("cal.weather", text)).foregroundStyle(Theme.text)
                     Spacer()
                     AppleWeatherMark(compact: true)

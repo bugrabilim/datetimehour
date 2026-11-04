@@ -94,9 +94,9 @@ fun AlarmToneDialog(current: String, onPick: (String) -> Unit, onDismiss: () -> 
         title = { Text(L("tone.library")) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                SoftSegmentedRow(Modifier.fillMaxWidth()) {
                     AlarmTones.CATEGORIES.forEachIndexed { i, c ->
-                        SegmentedButton(category == c, { category = c }, SegmentedButtonDefaults.itemShape(i, AlarmTones.CATEGORIES.size), colors = segColors()) {
+                        SoftSegment(category == c, { category = c }) {
                             Text(L("tone.cat.$c"), fontSize = 13.sp, maxLines = 1)
                         }
                     }

@@ -51,6 +51,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -77,23 +78,48 @@ fun rememberNow(): Instant {
 /** Yuvarlak köşeli kart (sitedeki kartlar gibi) */
 @Composable
 fun AppCard(
-    modifier: Modifier = Modifier, padding: Int = 16, background: androidx.compose.ui.graphics.Color = Theme.c.surface,
+    modifier: Modifier = Modifier, padding: Int = 20, background: androidx.compose.ui.graphics.Color = Theme.c.surface,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Column(
         modifier
             .fillMaxWidth()
-            .background(background, RoundedCornerShape(16.dp))
-            .border(1.dp, Theme.c.border.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
+            .paper(background)
             .padding(padding.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         content = content,
     )
 }
 
+/**
+ * Bölüm başlığı (doğal tasarım 4 Kasım 2026): eski 13 sp gri yarı kalın etiket yerine Literata 19/24, 500, yazı renginde
+ * (Latin ve Kiril dışındaki dillerde sistem yazısı 18/24, 600)
+ */
 @Composable
 fun SectionTitle(text: String, modifier: Modifier = Modifier) {
-    Text(text, modifier, fontWeight = FontWeight.SemiBold, fontSize = 13.sp, color = Theme.c.muted)
+    val serif = AppFonts.serif
+    Text(
+        text, modifier, fontFamily = AppFonts.heading, fontWeight = if (serif) FontWeight.Medium else FontWeight.SemiBold,
+        fontSize = if (serif) 19.sp else 18.sp, lineHeight = 24.sp, color = Theme.c.text,
+    )
+}
+
+/**
+ * Kâğıt kart zemini (doğal tasarım 4 Kasım 2026): kenarlık yok, köşe 22; açık temada sıcak yumuşak gölge, koyu temada
+ * gölge yerine üst kenarda ince ışık çizgisi. Saydam zeminde gölge çizilmez.
+ */
+@Composable
+fun Modifier.paper(background: androidx.compose.ui.graphics.Color = Theme.c.surface, radius: Int = 22): Modifier {
+    val shape = RoundedCornerShape(radius.dp)
+    val c = Theme.c
+    return if (background.alpha < 1f) background(background, shape)
+    else if (c.dark) background(background, shape).border(
+        1.dp, androidx.compose.ui.graphics.Brush.verticalGradient(
+            0f to androidx.compose.ui.graphics.Color.White.copy(alpha = 0.07f), 0.25f to androidx.compose.ui.graphics.Color.Transparent,
+        ), shape,
+    )
+    else shadow(6.dp, shape, ambientColor = androidx.compose.ui.graphics.Color(0x334A341E), spotColor = androidx.compose.ui.graphics.Color(0x224A341E))
+        .background(background, shape)
 }
 
 @Composable

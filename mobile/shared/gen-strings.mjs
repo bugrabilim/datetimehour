@@ -10,6 +10,7 @@ import { skyEvents } from "../../lib/sky-events.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeYear } from "../../lib/events.mjs";
+import { bridges } from "../../lib/bridges.mjs";
 import { hijriTable } from "../../lib/hijri.mjs";
 import { otdDay } from "../../lib/otd.mjs";
 
@@ -97,6 +98,28 @@ const SITE_PATHS = [
   // O maddeleri (30 Ekim 2026): hesap yöntemleri, hilal görünürlüğü
   "prayer.method.*", "prayer.method.names.*",
   "nature.crescentHeading", "nature.crescentLead", "nature.crescentAge", "nature.crescentLag", "nature.crescentBefore", "nature.crescentCats.*", "nature.crescentNote",
+  // Sitedeki dokuz araç uygulamada (4 Kasım 2026, sahibin isteği): satranç saati, metronom, konuşan saat, burç, saat hesaplama,
+  // köprü tatil, sınav zamanlayıcısı, sınıf araçları (emeklilik aşağıda, yalnız Türkçe)
+  "chess.h1", "chess.control", "chess.custom", "chess.minutes", "chess.increment", "chess.white", "chess.black", "chess.pause",
+  "chess.resume", "chess.reset", "chess.moves", "chess.flag",
+  "metronome.h1", "metronome.bpm", "metronome.beats", "metronome.sub", "metronome.subs.*", "metronome.accent", "metronome.tap",
+  "metronome.start", "metronome.stop", "metronome.slower", "metronome.faster", "metronome.volume", "metronome.tempoNote",
+  "talking.h1", "talking.say", "talking.auto", "talking.every.*", "talking.chime",
+  "zodiac.h1", "zodiac.dateLabel", "zodiac.timeLabel", "zodiac.sun", "zodiac.moon", "zodiac.noTime", "zodiac.cusp", "zodiac.tzNote",
+  "zodiac.tableHeading", "zodiac.fun",
+  "timeCalc.h1", "timeCalc.betweenHeading", "timeCalc.startLabel", "timeCalc.endLabel", "timeCalc.overnight", "timeCalc.duration",
+  "timeCalc.decimal", "timeCalc.minutesTotal", "timeCalc.addHeading", "timeCalc.timeLabel", "timeCalc.opAdd", "timeCalc.opSub",
+  "timeCalc.hoursLabel", "timeCalc.minutesLabel", "timeCalc.resultTime", "timeCalc.nextDay", "timeCalc.prevDay", "timeCalc.daysLater",
+  "timeCalc.daysEarlier", "timeCalc.sumHeading", "timeCalc.sumLabel", "timeCalc.sumHint", "timeCalc.sumResult", "timeCalc.sumBad",
+  "bridge.h1", "bridge.yearLabel", "bridge.maxLabel", "bridge.maxAll", "bridge.maxN", "bridge.noLeave", "bridge.leaveN", "bridge.totalN",
+  "bridge.halfNote", "bridge.none", "bridge.best", "bridge.groups.*", "bridge.note", "bridge.projected",
+  "examTimer.h1", "examTimer.nameLabel", "examTimer.namePh", "examTimer.roomLabel", "examTimer.roomPh", "examTimer.readLabel",
+  "examTimer.durLabel", "examTimer.start", "examTimer.pause", "examTimer.resume", "examTimer.reset", "examTimer.phaseRead",
+  "examTimer.phaseExam", "examTimer.phaseDone", "examTimer.endsAt", "examTimer.warn15", "examTimer.warn5",
+  "classroom.h1", "classroom.tabPicker", "classroom.tabTeams", "classroom.tabCounter", "classroom.namesLabel", "classroom.namesPh",
+  "classroom.pick", "classroom.removePicked", "classroom.picked", "classroom.left", "classroom.restore", "classroom.empty",
+  "classroom.teamCount", "classroom.makeTeams", "classroom.team", "classroom.counterName", "classroom.addCounter",
+  "classroom.counterDefault", "classroom.reset", "classroom.remove",
 ];
 const at = (obj, parts) => parts.reduce((o, k) => (o == null ? undefined : o[k]), obj);
 for (const spec of SITE_PATHS) {
@@ -116,6 +139,15 @@ for (const spec of SITE_PATHS) {
 /* Uygulamalarda ay adları yalnız başlıkta (takvim, aylık çizelge) kullanılır: yalın hâl (calendar.monthsTitle) varsa o
    (Rusçada calendar.months tarih içindeki tamlama hâlidir: "31 октября"; başlık "Октябрь"). */
 for (let i = 0; i < 12; i++) KEYS[`calendar.months.${i}`] = (t) => (t.calendar.monthsTitle || t.calendar.months)[i];
+for (let i = 0; i < 12; i++) KEYS[`zodiac.signs.${i}`] = (t) => t.zodiac.signs[i];
+
+/* Emeklilik hesaplama yalnız Türkçe (src/data/retire-tr.json; 4/a sigortalıları, Türkiye mevzuatı). Uygulama bu aracı yalnız
+   Türkçe arayüzde gösterir; anahtarlar her dilde aynı Türkçe metinle yazılır ki kaynak dosyaları eşit kalsın. */
+const RETIRE = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/retire-tr.json"), "utf8"));
+for (const k of ["h1", "gender", "women", "men", "birth", "start", "days", "daysHint", "rate", "rateFull", "rateHalf", "rateNone", "calc",
+  "result", "resultAge", "resultLeft", "resultPast", "resultNever", "group", "condDays", "condYears", "condAge", "condNoAge", "done",
+  "never", "years", "months", "noteScope", "noteLaw"]) KEYS[`retire.${k}`] = () => RETIRE[k];
+for (const sub of ["groups", "routes"]) for (const k of Object.keys(RETIRE[sub])) KEYS[`retire.${sub}.${k}`] = () => RETIRE[sub][k];
 
 const APP = JSON.parse(fs.readFileSync(path.join(HERE, "app-strings.json"), "utf8"));
 for (const [key, byLang] of Object.entries(APP)) {
@@ -219,6 +251,19 @@ for (const y of Object.keys(HOL.years).map(Number).sort((a, b) => a - b)) {
 }
 const calendarJson = JSON.stringify({ years, ramadans: HOL.ramadans }) + "\n";
 
+/* Köprü tatil planlayıcı (sitedeki /kopru-tatil/ ile aynı hesap, lib/bridges.mjs): yıl → dönemler; "best" en verimli dönem
+   (en az 7 günlük dönemler arasında gün/izin oranı en yüksek). Grup adları: bridge.groups.* ya da calendar.events.* */
+const bridgesJson = JSON.stringify(Object.fromEntries(Object.keys(years).map((y) => {
+  y = +y;
+  const ev = [y - 1, y, y + 1].flatMap((x) => computeYear(x, HOL).events).filter((e) => e.type === "holiday" || e.type === "half");
+  const list = bridges(y, ev);
+  const paid = list.filter((b) => b.leave > 0);
+  const pool = paid.filter((b) => b.days >= 7).length ? paid.filter((b) => b.days >= 7) : paid;
+  const best = pool.length ? pool.reduce((a, b) => (b.days / b.leave > a.days / a.leave ? b : a)) : null;
+  return [y, { projected: !!years[y].projected, list: list.map((b) => ({ g: b.groups, from: b.from, to: b.to, days: b.days, leave: b.leave,
+    leaveDays: b.leaveDays, halfDays: b.halfDays, best: b === best })) }];
+}))) + "\n";
+
 /* Hicri takvim: Diyanet'e hizalı ay başları (lib/hijri.mjs): [[ay başı, hicri yıl, ay], …]; son satır tablonun sonu */
 const hijriJson = JSON.stringify(hijriTable(HOL, JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/hijri.json"), "utf8")))) + "\n";
 
@@ -281,6 +326,8 @@ const constellationsJson = JSON.stringify(conSrc.con) + "\n";
 const iconsSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "mobile/shared/icons/icons.json"), "utf8"));
 delete iconsSrc._note;
 const iconsJson = JSON.stringify(iconsSrc) + "\n";
+/* Widget'lardaki hava ve gök simgeleri 4 Kasım 2026'dan beri 3D görsel (res/drawable-nodpi/e3d_*.png,
+   mobile/shared/icons3d/gen-icons3d.py); eski çizgi vektörleri (wi_*.xml) kaldırıldı. */
 /* NASA SVS CGI Moon Kit dokusu (kamu malı; 2. analiz #103): ikili dosya, uygulamalara kopyalanır */
 const moonJpg = fs.readFileSync(path.join(ROOT, "src/assets/moon.jpg"));
 
@@ -307,6 +354,7 @@ const files = {
   "mobile/ios/App/Resources/districts.json": districtsJson,
   "mobile/ios/App/Resources/hijri.json": hijriJson,
   "mobile/ios/App/Resources/fitre.json": fitreJson,
+  "mobile/ios/App/Resources/bridges.json": bridgesJson,
   "mobile/android/app/src/main/assets/provinces.json": provincesJson,
   "mobile/android/app/src/main/assets/calendar.json": calendarJson,
   "mobile/android/app/src/main/assets/cities.json": citiesJson,
@@ -315,6 +363,7 @@ const files = {
   "mobile/android/app/src/main/assets/districts.json": districtsJson,
   "mobile/android/app/src/main/assets/hijri.json": hijriJson,
   "mobile/android/app/src/main/assets/fitre.json": fitreJson,
+  "mobile/android/app/src/main/assets/bridges.json": bridgesJson,
   "mobile/android/app/src/main/res/xml/locales_config.xml": localesConfig,
   ...Object.fromEntries(LANGS.map((l) => [`mobile/android/app/src/main/res/${ANDROID_DIRS[l]}/strings.xml`, androidXml(l)])),
   // Wear OS saati (Wear modülü): il listesi, hicri ay başları ve saat ekranlarının metinleri

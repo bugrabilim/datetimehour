@@ -81,7 +81,9 @@ object Features {
             sp.edit().putString(BAR_KEY, b.joinToString(",") { id(it) }).apply()
         }
         bar = parseBar(sp.getString(BAR_KEY, "")!!).filter { it in enabled }
-        // Yeni kurulum: ilk açılışta kurulum sihirbazı (Onboarding; 2. analiz #4)
+        // Yeni kurulum: ilk açılışta kurulum sihirbazı (Onboarding; 2. analiz #4) ve "Gün ışığı" atmosferi (doğal tasarım
+        // madde 7; önceki kullanıcının seçimi korunur)
+        if (fresh && !sp.contains(Atmosphere.KEY)) sp.edit().putString(Atmosphere.KEY, Atmosphere.DAYLIGHT).apply()
         Onboarding.load(fresh)
     }
 
@@ -127,7 +129,8 @@ object Features {
      * Tümü'nden açılırsa çubuk değişmez; sayfa üstte geri düğmesiyle açılır (2. analiz #203).
      */
     fun barTabs(): List<Tab> =
-        if (enabled.isEmpty()) listOf(Tab.CLOCK)
+        // Tümü her zaman çubukta (4 Kasım 2026: Ayarlar saat ekranındaki dişliden Tümü'ye taşındı)
+        if (enabled.isEmpty()) listOf(Tab.CLOCK, Tab.TOOLS)
         else listOf(Tab.CLOCK) + bar.filter { isOn(it) }.take(BAR_MAX) + Tab.TOOLS
 
     /** Çubuktaki ad: Araçlar sekmesi "Tümü" olarak görünür */
@@ -140,7 +143,7 @@ fun FeaturesScreen() {
     var full by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         // Canlı alt çubuk önizlemesi ve sıra
-        Text(L("features.barTitle"), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(horizontal = 4.dp))
+        Text(L("features.barTitle"), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium, modifier = Modifier.padding(horizontal = 4.dp))
         AppCard {
             BarPreview()
             for ((i, t) in Features.bar.withIndex()) {
@@ -190,7 +193,7 @@ private fun FeatureRow(t: Tab, checked: Boolean, enabled: Boolean = true, onBar:
                 )
             }
         }
-        Switch(checked, onChange, enabled = enabled, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+        SoftSwitch(checked, onChange, enabled = enabled, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
 }
 

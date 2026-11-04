@@ -1,30 +1,47 @@
 import SwiftUI
 import UIKit
 
-/// Sitedeki renk token'ları (src/styles.css): açık "kâğıt" ve koyu "gece" paleti.
+/// Sitedeki renk token'ları (src/styles.css): açık "kâğıt" ve koyu "gece" paleti. 4 Kasım 2026'dan beri doğal tasarımın
+/// sıcak taban renkleri (docs/dogal-tasarim, bölüm 3.1; sahibin onayı): krem kâğıt, sıcak gece, kahve tonlu yazı.
 /// Uygulama teması kullanıcı seçimidir (Ayarlar › Uygulama rengi, `accent` anahtarı): her tema bir ana renk,
 /// bir ikinci renk ve bir ton gücüyle gelir; zemin, kartlar, saat kadranı ve ibreler buna göre boyanır.
 /// Varsayılan temada ton yoktur (sitedeki renkler). Widget'lar varsayılanı kullanır.
 enum Theme {
     /// Zemin: atmosfer seçiliyse renk geçişinin orta tonu (düz renk isteyen yerler için; sayfa zemini AppBackdrop)
-    static var bg: Color { Atmosphere.current?.mid ?? tinted(0xF7F4EE, 0x11141A, light: 0.09, dark: 0.11) }
-    static var surface: Color { tinted(0xFFFFFF, 0x1A1E26, light: 0.04, dark: 0.07) }
+    static var bg: Color { Atmosphere.current?.mid ?? tinted(0xF6F0E4, 0x14151C, light: 0.09, dark: 0.11) }
+    static var surface: Color { tinted(0xFFFBF4, 0x1D1E27, light: 0.04, dark: 0.07) }
     /// Saat kadranı ve ikincil yüzeyler
-    static var surface2: Color { tinted(0xEFEBE2, 0x232834, light: 0.18, dark: 0.20) }
-    static let text = dynamic(light: 0x1B1F27, dark: 0xEEF0F4)
-    static let muted = dynamic(light: 0x565C68, dark: 0xA5ACB9)
-    static var border: Color { tinted(0xD6CFBF, 0x343B49, light: 0.35, dark: 0.35) }
+    static var surface2: Color { tinted(0xEDE4D3, 0x272834, light: 0.18, dark: 0.20) }
+    static let text = dynamic(light: 0x2B2520, dark: 0xF1EADF)
+    static let muted = dynamic(light: 0x6A5F55, dark: 0xB4AA9B)
+    /// Süs rengi (ayraç noktaları, soluk çizimler): yazıda kullanılmaz
+    static let faint = dynamic(light: 0xA89A88, dark: 0x6E675E)
+    static var border: Color { tinted(0xE2D6C1, 0x343542, light: 0.35, dark: 0.35) }
+    /// İnce ayraç çizgisi (doğal tasarımdaki `line`; kartlarda kenarlık yok)
+    static var line: Color { border }
     static var accent: Color { AccentPalette.current.color }
-    static var accentSoft: Color { AccentPalette.current.color.opacity(0.16) }
+    /// Ana rengin yumuşak düz tonu (saydam değil; üstündeki yazı ≥4,5:1)
+    static var accentSoft: Color {
+        let p = AccentPalette.current
+        return dynamic(light: mix(0xFFFBF4, p.light, 0.15), dark: mix(0x1D1E27, p.dark, 0.16))
+    }
+    /// Ana renkli düğmenin yazısı
+    static let onAccent = dynamic(light: 0xFFF8EF, dark: 0x1A1410)
     /// İkinci renk: saniye ibresi, saat ortası, vurgu ayrıntıları
     static var accent2: Color { AccentPalette.current.secondColor }
     /// Saat rakamları ve akrep: yazı rengi, temanın ana rengine doğru çekilmiş
-    static var ink: Color { tinted(0x1B1F27, 0xEEF0F4, light: 0.45, dark: 0.30) }
+    static var ink: Color { tinted(0x2B2520, 0xF1EADF, light: 0.45, dark: 0.30) }
     /// Hata ve başarı renkleri: sitedeki --err/--ok token'ları (2. analiz #100; iki temada ≥4,5:1)
-    static let err = dynamic(light: 0xA31D1D, dark: 0xFF9D9D)
+    static let err = dynamic(light: 0xA3311B, dark: 0xFF9F8A)
     static let errBg = dynamic(light: 0xFBE7E7, dark: 0x3A1A1A)
-    static let ok = dynamic(light: 0x176B3A, dark: 0x7FD9A1)
+    static let ok = dynamic(light: 0x2E6A39, dark: 0x8FD3A0)
     static let okBg = dynamic(light: 0xE2F3E8, dark: 0x16301F)
+    /// Doğa renkleri (doğal tasarım, docs/dogal-tasarim; 4 Kasım 2026): Tümü kategorileri, tanıtım çizimleri
+    static let terra = dynamic(light: 0xB4532A, dark: 0xF2A65A)
+    static let sage = dynamic(light: 0x4A6B47, dark: 0x9CC294)
+    static let sky = dynamic(light: 0x3A6889, dark: 0x8DB8DA)
+    static let gold = dynamic(light: 0x835A0D, dark: 0xE2B65C)
+    static let dusk = dynamic(light: 0x7A4760, dark: 0xD69BB5)
 
     fileprivate static func dynamic(light: UInt32, dark: UInt32) -> Color {
         Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor(rgb: dark) : UIColor(rgb: light) })
@@ -64,7 +81,7 @@ struct AccentPalette: Identifiable {
     var secondColor: Color { Theme.dynamic(light: second.light, dark: second.dark) }
     /// Bu temada saat kadranının rengi (seçicideki örnek için)
     var faceColor: Color {
-        Theme.dynamic(light: Theme.mix(0xEFEBE2, light, 0.18 * tint), dark: Theme.mix(0x232834, dark, 0.20 * tint))
+        Theme.dynamic(light: Theme.mix(0xEDE4D3, light, 0.18 * tint), dark: Theme.mix(0x272834, dark, 0.20 * tint))
     }
 
     static let defaultID = "amber"
@@ -140,22 +157,103 @@ struct Atmosphere: Identifiable {
         .init(id: "night", light: (0xE7ECF7, 0xD5DCEF), dark: (0x0A0F1F, 0x1A2342)),
     ]
 
-    static func find(_ id: String?) -> Atmosphere? { all.first { $0.id == id } }
+    /// "Gün ışığı" (doğal tasarım madde 7, 4 Kasım 2026; yeni kurulumda varsayılan): seçili yerde Güneş'in yüksekliğine
+    /// ve yükselip alçalmasına göre şafak, sabah/öğle, ikindi (altın saat), akşam ya da gece tonu; sayfanın üstünden
+    /// zemine iner. Uygulamada Güneş hesabı `sun` ile verilir; saat widget'ları App Group'taki konumla aynı tonu çizer
+    /// (`widgetDaylight`, doğal tasarım madde 19).
+    static let daylightID = "daylight"
+    /// Uygulama açılırken kurulur: seçili yerde Güneş'in yüksekliği (derece) ve yükselip yükselmediği
+    static var sun: ((Date) -> (alt: Double, rising: Bool))?
+
+    static func daylight(at date: Date = Date()) -> Atmosphere {
+        let s = sun?(date) ?? (alt: 30, rising: true)
+        return daylightTone(alt: s.alt, rising: s.rising)
+    }
+
+    /// Güneş'in yüksekliğine (derece) ve yükselip alçalmasına göre ton (Android'deki Atmosphere.daylightTone ile aynı eşikler)
+    static func daylightTone(alt: Double, rising: Bool) -> Atmosphere {
+        let tone: (UInt32, UInt32)
+        if alt < -6 { tone = (0xE3E4EE, 0x12131C) }
+        else if alt < 6 { tone = rising ? (0xF8E4D6, 0x2A1E2C) : (0xEEDDE4, 0x271B2C) }
+        else if !rising && alt < 25 { tone = (0xF6E3C4, 0x2A2118) }
+        else { tone = (0xE9EFF0, 0x172230) }
+        return Atmosphere(id: daylightID, light: (tone.0, 0xF6F0E4), dark: (tone.1, 0x14151C))
+    }
+
+    /// App Group'taki küçük paylaşım (uygulama yazar, widget okur): atmosfer seçimi ve seçili yerin konumu
+    static let groupID = "group.tr.bumba.time"
+
+    /// Uygulama öne gelince ve arka plana geçerken yazar (saat widget'larının gün ışığı zemini için)
+    static func publish(atmo: String, lat: Double, lon: Double) {
+        guard let d = UserDefaults(suiteName: groupID) else { return }
+        d.set(atmo, forKey: key)
+        d.set(lat, forKey: "place.lat")
+        d.set(lon, forKey: "place.lon")
+    }
+
+    /// Saat widget'larında gün ışığı tonu: uygulamada "Gün ışığı" seçiliyse seçili yerde o andaki ton, değilse nil
+    static func widgetDaylight(at date: Date) -> Atmosphere? {
+        guard let d = UserDefaults(suiteName: groupID), d.string(forKey: key) == daylightID,
+              d.object(forKey: "place.lat") != nil else { return nil }
+        let lat = d.double(forKey: "place.lat"), lon = d.double(forKey: "place.lon")
+        let alt = WorldMath.sunAltitude(lat: lat, lon: lon, at: date)
+        let rising = WorldMath.sunAltitude(lat: lat, lon: lon, at: date.addingTimeInterval(600)) > alt
+        return daylightTone(alt: alt, rising: rising)
+    }
+
+    static func find(_ id: String?) -> Atmosphere? { id == daylightID ? daylight() : all.first { $0.id == id } }
     static var current: Atmosphere? { find(UserDefaults.standard.string(forKey: key)) }
 }
 
-/// Sayfa zemini: atmosfer seçiliyse renk geçişi, değilse temanın zemin rengi
+/// Sayfa zemini: atmosfer seçiliyse renk geçişi, değilse temanın zemin rengi; üstünde %4 kâğıt dokusu (doğal tasarım
+/// madde 8: kodla üretilen gri gren, tekrar eden 96 px döşeme)
 struct AppBackdrop: View {
     @AppStorage(Atmosphere.key) private var atmo = ""
     @AppStorage("accent") private var accent = AccentPalette.defaultID
+    @Environment(\.colorScheme) private var scheme
 
     var body: some View {
-        if let a = Atmosphere.find(atmo) {
+        base.overlay {
+            Image(uiImage: PaperGrain.image)
+                .resizable(resizingMode: .tile)
+                .opacity(scheme == .dark ? 0.05 : 0.04)
+                .allowsHitTesting(false)
+                .accessibilityHidden(true)
+        }
+    }
+
+    @ViewBuilder private var base: some View {
+        if atmo == Atmosphere.daylightID {
+            // Gün ışığı tonu beş dakikada bir yenilenir; geçiş 1,2 sn (hareketi azalt açıksa anında)
+            TimelineView(.periodic(from: .now, by: 300)) { ctx in
+                let a = Atmosphere.daylight(at: ctx.date)
+                LinearGradient(colors: [a.top, a.bottom], startPoint: .top, endPoint: .bottom)
+                    .animation(.easeInOut(duration: 1.2), value: a.light.0)
+            }
+        } else if let a = Atmosphere.find(atmo) {
             LinearGradient(colors: [a.top, a.bottom], startPoint: .top, endPoint: .bottom)
         } else {
             Theme.bg
         }
     }
+}
+
+/// Kâğıt dokusu: sabit tohumlu gri gürültü (her açılışta aynı; Android'deki PaperGrain ile aynı boyut)
+enum PaperGrain {
+    static let image: UIImage = {
+        let n = 96
+        var seed: UInt32 = 7
+        var bytes = [UInt8](repeating: 0, count: n * n)
+        for i in 0..<bytes.count {
+            seed = seed &* 1_664_525 &+ 1_013_904_223
+            bytes[i] = UInt8(truncatingIfNeeded: seed >> 24)
+        }
+        let image: CGImage? = bytes.withUnsafeMutableBytes { buf in
+            CGContext(data: buf.baseAddress, width: n, height: n, bitsPerComponent: 8, bytesPerRow: n,
+                      space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue)?.makeImage()
+        }
+        return image.map { UIImage(cgImage: $0) } ?? UIImage()
+    }()
 }
 
 /// Liste ve form sayfalarının zemini temanın zeminidir (atmosfer seçiliyse renk geçişi); tema değişince yeniden boyanır

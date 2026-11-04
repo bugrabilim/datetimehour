@@ -115,7 +115,7 @@ fun HourlyChart(d: WeatherData) {
         val compass = (0..7).map { L("weather.compass.$it") }
         AppCard(Modifier.fillMaxWidth().padding(top = 6.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(WeatherCode.of(h.code).icon(h.isDay), fontSize = 26.sp)
+                WeatherIcon(WeatherCode.of(h.code), h.isDay, 30.dp)
                 Spacer(Modifier.width(10.dp))
                 Column(Modifier.weight(1f)) {
                     Text(Fmt.time(h.at, d.zone) + " · " + WeatherCode.of(h.code).label + " · " + L(if (h.isDay) "wx.day" else "wx.night"),
@@ -247,7 +247,7 @@ fun MeteogramCard(d: WeatherData) {
                     }
                     Row(Modifier.fillMaxWidth().padding(vertical = 3.dp), verticalAlignment = Alignment.CenterVertically) {
                         Text(Fmt.time(h.at, d.zone), Modifier.weight(1.3f), color = Theme.c.text, fontSize = 13.sp)
-                        Text(WeatherCode.of(h.code).icon(h.isDay), Modifier.weight(0.8f), fontSize = 16.sp, textAlign = TextAlign.Center)
+                        Box(Modifier.weight(0.8f), contentAlignment = Alignment.Center) { WeatherIcon(WeatherCode.of(h.code), h.isDay, 18.dp) }
                         Text(Units.temp(h.temp), Modifier.weight(1f), color = Theme.c.text, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
                         Text(if (h.mm > 0) (Math.round(h.mm * 10) / 10.0).toString().replace(".", Strings.decimalPoint) else "–",
                             Modifier.weight(0.9f), color = if (h.mm > 0) RAIN_BLUE else Theme.c.muted, fontSize = 13.sp, textAlign = TextAlign.Center)
@@ -329,7 +329,7 @@ fun AirCard(place: AppPlace) {
             }
         }
         val pol = a.pollen.filterValues { Outdoor.pollenLevel(it) > 0 }
-        Text(L("aqi.pollen"), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+        Text(L("aqi.pollen"), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
         if (pol.isEmpty()) Text(L("pollen.none"), color = Theme.c.muted, fontSize = 12.sp)
         else Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             for ((k, v) in pol) {
