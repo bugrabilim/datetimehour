@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">Большой экран</string>
     <string name="badges_items_tam_ekran_how">Откройте часы во весь экран.</string>
     <string name="badges_items_duzenle_name">Мой экран</string>
-    <string name="badges_items_duzenle_how">Включите или выключите элемент кнопкой «Изменить» на вкладке «Часы».</string>
+    <string name="badges_items_duzenle_how">Включите или выключите элемент в разделе «Настройки › Изменить экран часов».</string>
     <string name="badges_items_takvim_name">Исследователь дней</string>
     <string name="badges_items_takvim_how">Нажмите на день в календаре, чтобы открыть подробности.</string>
     <string name="badges_items_kronometre_name">Марш!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">Имена и счётчики хранятся только на этом телефоне и никуда не отправляются.</string>
     <string name="examTimer_appNote">Время начала хранится на этом телефоне; при повторном открытии приложения таймер продолжает с того же места. Пока таймер идёт, экран не гаснет.</string>
     <string name="tools_localOnly">Введённые данные считаются только на этом телефоне; они не сохраняются и никуда не отправляются.</string>
+    <string name="home_editScreen">Изменить экран часов</string>
     <string name="app_name">Время и дата</string>
 </resources>

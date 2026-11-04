@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">Layar besar</string>
     <string name="badges_items_tam_ekran_how">Buka jam dalam layar penuh.</string>
     <string name="badges_items_duzenle_name">Layarku</string>
-    <string name="badges_items_duzenle_how">Nyalakan atau matikan satu item dengan \"Ubah\" di tab Jam.</string>
+    <string name="badges_items_duzenle_how">Nyalakan atau matikan satu item di Pengaturan › Edit layar jam.</string>
     <string name="badges_items_takvim_name">Penjelajah hari</string>
     <string name="badges_items_takvim_how">Ketuk sebuah hari di kalender untuk membuka rinciannya.</string>
     <string name="badges_items_kronometre_name">Mulai!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">Nama dan penghitung hanya disimpan di ponsel ini dan tidak dikirim ke mana pun.</string>
     <string name="examTimer_appNote">Waktu mulai disimpan di ponsel ini; saat aplikasi dibuka lagi, penghitung berlanjut dari posisi terakhir. Layar tetap menyala selama penghitung berjalan.</string>
     <string name="tools_localOnly">Data yang Anda masukkan hanya dihitung di ponsel ini; tidak disimpan dan tidak dikirim ke mana pun.</string>
+    <string name="home_editScreen">Edit layar jam</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

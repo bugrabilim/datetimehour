@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">बड़ी स्क्रीन</string>
     <string name="badges_items_tam_ekran_how">घड़ी को फ़ुल स्क्रीन में खोलें।</string>
     <string name="badges_items_duzenle_name">मेरी स्क्रीन</string>
-    <string name="badges_items_duzenle_how">घड़ी टैब में \"संपादित करें\" से कोई चीज़ चालू या बंद करें।</string>
+    <string name="badges_items_duzenle_how">सेटिंग्स › घड़ी स्क्रीन संपादित करें में कोई चीज़ चालू या बंद करें।</string>
     <string name="badges_items_takvim_name">दिनों का खोजी</string>
     <string name="badges_items_takvim_how">विवरण खोलने के लिए कैलेंडर में किसी दिन पर टैप करें।</string>
     <string name="badges_items_kronometre_name">चलो!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">नाम और काउंटर केवल इसी फ़ोन में सहेजे जाते हैं, कहीं नहीं भेजे जाते।</string>
     <string name="examTimer_appNote">शुरू होने का समय इसी फ़ोन में सहेजा रहता है; ऐप दोबारा खोलने पर टाइमर वहीं से चलता है। टाइमर चलते समय स्क्रीन बंद नहीं होती।</string>
     <string name="tools_localOnly">आपकी दर्ज की गई जानकारी केवल इसी फ़ोन पर गणना होती है; न सहेजी जाती है, न कहीं भेजी जाती है।</string>
+    <string name="home_editScreen">घड़ी स्क्रीन संपादित करें</string>
     <string name="app_name">समय और तारीख</string>
 </resources>

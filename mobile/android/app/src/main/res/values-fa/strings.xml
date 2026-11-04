@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">صفحهٔ بزرگ</string>
     <string name="badges_items_tam_ekran_how">ساعت را تمام‌صفحه باز کنید.</string>
     <string name="badges_items_duzenle_name">صفحهٔ من</string>
-    <string name="badges_items_duzenle_how">با «ویرایش» در زبانهٔ ساعت موردی را روشن یا خاموش کنید.</string>
+    <string name="badges_items_duzenle_how">در تنظیمات › ویرایش صفحهٔ ساعت موردی را روشن یا خاموش کنید.</string>
     <string name="badges_items_takvim_name">کاوشگر روزها</string>
     <string name="badges_items_takvim_how">روی روزی در تقویم بزنید تا جزئیاتش باز شود.</string>
     <string name="badges_items_kronometre_name">حرکت!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">نام‌ها و شمارنده‌ها فقط در همین گوشی ذخیره می‌شوند و جایی فرستاده نمی‌شوند.</string>
     <string name="examTimer_appNote">زمان شروع در همین گوشی ذخیره می‌شود؛ با باز کردن دوباره برنامه، زمان‌سنج از همان‌جا ادامه می‌دهد. تا زمان‌سنج کار می‌کند صفحه خاموش نمی‌شود.</string>
     <string name="tools_localOnly">اطلاعاتی که وارد می‌کنید فقط در همین گوشی محاسبه می‌شود؛ ذخیره نمی‌شود و جایی فرستاده نمی‌شود.</string>
+    <string name="home_editScreen">ویرایش صفحهٔ ساعت</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

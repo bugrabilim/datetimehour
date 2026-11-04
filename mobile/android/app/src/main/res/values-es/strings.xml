@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">Pantalla grande</string>
     <string name="badges_items_tam_ekran_how">Abra el reloj en pantalla completa.</string>
     <string name="badges_items_duzenle_name">Mi pantalla</string>
-    <string name="badges_items_duzenle_how">Active o desactive un elemento con \"Editar\" en la pestaña Reloj.</string>
+    <string name="badges_items_duzenle_how">Active o desactive un elemento en Ajustes › Editar pantalla del reloj.</string>
     <string name="badges_items_takvim_name">Explorador de días</string>
     <string name="badges_items_takvim_how">Toque un día del calendario para abrir sus detalles.</string>
     <string name="badges_items_kronometre_name">¡Ya!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">Los nombres y contadores se guardan solo en este teléfono y no se envían a ningún sitio.</string>
     <string name="examTimer_appNote">La hora de inicio se guarda en este teléfono; al volver a abrir la app, el temporizador sigue donde quedó. La pantalla no se apaga mientras corre.</string>
     <string name="tools_localOnly">Lo que introduce se calcula solo en este teléfono; no se guarda ni se envía a ningún sitio.</string>
+    <string name="home_editScreen">Editar pantalla del reloj</string>
     <string name="app_name">Hora y Fecha</string>
 </resources>

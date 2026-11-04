@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">Grand écran</string>
     <string name="badges_items_tam_ekran_how">Ouvrez l’horloge en plein écran.</string>
     <string name="badges_items_duzenle_name">Mon écran</string>
-    <string name="badges_items_duzenle_how">Activez ou désactivez un élément avec « Modifier » dans l’onglet Horloge.</string>
+    <string name="badges_items_duzenle_how">Activez ou désactivez un élément dans Réglages › Modifier l\'écran de l\'horloge.</string>
     <string name="badges_items_takvim_name">Explorateur de jours</string>
     <string name="badges_items_takvim_how">Touchez un jour du calendrier pour en voir les détails.</string>
     <string name="badges_items_kronometre_name">Partez !</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">Les noms et les compteurs sont enregistrés uniquement sur ce téléphone et ne sont envoyés nulle part.</string>
     <string name="examTimer_appNote">L\'heure de départ est conservée sur ce téléphone ; en rouvrant l\'app, le minuteur reprend là où il en était. L\'écran reste allumé pendant qu\'il tourne.</string>
     <string name="tools_localOnly">Vos saisies sont calculées uniquement sur ce téléphone ; elles ne sont ni enregistrées ni envoyées.</string>
+    <string name="home_editScreen">Modifier l\'écran de l\'horloge</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

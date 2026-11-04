@@ -28,7 +28,7 @@ struct SettingsView: View {
         let general = ["features.title", "settings.location", "settings.notifications", "lang.title", "settings.units",
                        "settings.pressureUnit", "client.formatLabel", "settings.keepAwake"]
         let look = ["settings.color", "settings.appearance", "fontScale.title"]
-        let clock = ["look.title", "home.customize", "dial.title", "night.title"]
+        let clock = ["look.title", "home.customize", "home.editScreen", "dial.title", "night.title"]
         let backup = ["sync.title", "siri.title"]
         let support = ["support.title", "support.rate", "support.share", "support.qr", "support.feedback", "support.moreApps",
                        "support.version", "badges.h1", "settings.about"]
@@ -96,8 +96,9 @@ struct SettingsView: View {
                     if shows("look.title", "dial.title", "night.title") {
                         NavigationLink { AppearanceView() } label: { BoxLabel(L("look.title"), icon: "textformat.size") }
                     }
-                    if shows("home.customize") {
-                        NavigationLink { HomeItemsView() } label: { BoxLabel(L("home.customize"), icon: "slider.horizontal.3") }
+                    // Saat ekranındaki "Düzenle" düğmesinin yerine (4 Kasım 2026, sahibin isteği)
+                    if shows("home.customize", "home.editScreen") {
+                        NavigationLink { HomeItemsView() } label: { BoxLabel(L("home.editScreen"), icon: "slider.horizontal.3") }
                     }
                 }
             }

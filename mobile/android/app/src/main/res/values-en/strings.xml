@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">Big screen</string>
     <string name="badges_items_tam_ekran_how">Open the clock in full screen.</string>
     <string name="badges_items_duzenle_name">My screen</string>
-    <string name="badges_items_duzenle_how">Turn an item on or off with \"Edit\" on the Clock tab.</string>
+    <string name="badges_items_duzenle_how">Turn an item on or off in Settings › Edit clock screen.</string>
     <string name="badges_items_takvim_name">Day explorer</string>
     <string name="badges_items_takvim_how">Tap a day in the calendar to open its details.</string>
     <string name="badges_items_kronometre_name">Go!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">Names and counters are stored only on this phone and are never sent anywhere.</string>
     <string name="examTimer_appNote">The start time is kept on this phone; when you reopen the app the timer continues where it left off. The screen stays on while the timer runs.</string>
     <string name="tools_localOnly">What you enter is calculated only on this phone; it is not saved or sent anywhere.</string>
+    <string name="home_editScreen">Edit clock screen</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

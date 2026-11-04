@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">بڑی اسکرین</string>
     <string name="badges_items_tam_ekran_how">گھڑی پوری اسکرین پر کھولیں۔</string>
     <string name="badges_items_duzenle_name">میری اسکرین</string>
-    <string name="badges_items_duzenle_how">گھڑی ٹیب میں «ترمیم» سے کوئی چیز آن یا آف کریں۔</string>
+    <string name="badges_items_duzenle_how">ترتیبات › گھڑی کی اسکرین میں ترمیم میں کوئی چیز آن یا آف کریں۔</string>
     <string name="badges_items_takvim_name">دنوں کا متلاشی</string>
     <string name="badges_items_takvim_how">تفصیل کھولنے کے لیے کیلنڈر میں کسی دن پر ٹیپ کریں۔</string>
     <string name="badges_items_kronometre_name">چلو!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">نام اور کاؤنٹر صرف اسی فون میں محفوظ رہتے ہیں، کہیں نہیں بھیجے جاتے۔</string>
     <string name="examTimer_appNote">شروع کا وقت اسی فون میں محفوظ رہتا ہے؛ ایپ دوبارہ کھولنے پر ٹائمر وہیں سے جاری رہتا ہے۔ ٹائمر چلتے وقت اسکرین بند نہیں ہوتی۔</string>
     <string name="tools_localOnly">آپ کی درج کردہ معلومات صرف اسی فون پر حساب ہوتی ہیں؛ نہ محفوظ ہوتی ہیں نہ کہیں بھیجی جاتی ہیں۔</string>
+    <string name="home_editScreen">گھڑی کی اسکرین میں ترمیم</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

@@ -35,13 +35,10 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Fullscreen
 import androidx.compose.material.icons.filled.FullscreenExit
-import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -58,7 +55,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -80,22 +76,21 @@ import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import kotlinx.coroutines.launch
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
 
 /**
- * Saat sekmesi (iOS'taki ClockTab): sitedeki 19 saat modeli (kaydırarak ya da sayaçtan seçilir), altında kullanıcının
- * seçtiği alanlar (Ayarlar › Saat ekranı ya da "Düzenle"; dokununca ilgili sayfa açılır), tam ekran ve Düzenle.
+ * Saat sekmesi (iOS'taki ClockTab): sitedeki saat modelleri (parmakla kaydırarak seçilir), altında kullanıcının
+ * seçtiği alanlar (Ayarlar › Saat ekranı; dokununca ilgili sayfa açılır) ve tam ekran düğmesi.
  * Varsayılan düzende sayfa ekrana tam oturur: dönen dünya kalan boşluğu doldurur.
  */
 @Composable
@@ -103,7 +98,6 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
     val now = rememberNow()
     val place = AppPlace.current()
     val items = HomeItems.layout.visible
-    var customizing by remember { mutableStateOf(false) }
     val pager = rememberClockPager()
     // Saniye tık sesi (2. analiz #10; Ayarlar › Saat görünümü)
     val ctx = LocalContext.current
@@ -137,11 +131,11 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = if (onlyClock) Arrangement.spacedBy(16.dp, Alignment.CenterVertically) else Arrangement.spacedBy(16.dp),
             ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    HorizontalPager(pager, Modifier.fillMaxWidth().height(stage)) { page ->
-                        ClockModelPage(page, now, place, Modifier.padding(horizontal = 2.dp))
-                    }
-                    StageControls(pager, ctrl)
+                // Model adı ve oklar yok (4 Kasım 2026, sahibin isteği): model parmakla sağa sola kaydırılarak değişir;
+                // ekran okuyucu için sayfanın durumu model adı ve sırasıdır
+                val modelState = ClockModel.at(pager.currentPage).title + " · ${pager.currentPage + 1}/${ClockModel.count}"
+                HorizontalPager(pager, Modifier.fillMaxWidth().height(stage).semantics { stateDescription = modelState }) { page ->
+                    ClockModelPage(page, now, place, Modifier.padding(horizontal = 2.dp))
                 }
                 // Saatin altındaki kişisel metin (rakip analizi #25)
                 if (FsLook.text.isNotEmpty()) Text(FsLook.text, color = Theme.c.text, fontSize = 20.sp, fontWeight = FontWeight.SemiBold,
@@ -167,24 +161,7 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
                 Icon(Icons.Filled.Fullscreen, null, tint = ctrl)
                 Text(" " + L("clock.fullscreen"), color = ctrl, fontWeight = FontWeight.SemiBold)
             }
-            TextButton(onClick = { customizing = true }) {
-                Icon(Icons.Filled.Tune, null, tint = ctrl)
-                Text(" " + L("home.edit"), color = ctrl, fontWeight = FontWeight.SemiBold)
-            }
         }
-        }
-    }
-
-    if (customizing) {
-        Dialog({ customizing = false }, DialogProperties(usePlatformDefaultWidth = false)) {
-            Surface(Modifier.fillMaxSize(), color = Theme.c.bg) {
-                Column {
-                    SubBar(L("home.customize"), actions = {
-                        TextButton(onClick = { customizing = false }) { Text(L("common.done"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold) }
-                    })
-                    Box(Modifier.weight(1f)) { HomeItemsEditor() }
-                }
-            }
         }
     }
 }
@@ -233,47 +210,6 @@ private fun Modifier.fitGlobe(viewport: Dp, globe: androidx.compose.runtime.Muta
         val content = with(density) { size.height.toDp() }
         val target = maxOf(170.dp, viewport - (content - globe.value))
         if (kotlin.math.abs((target - globe.value).value) > 1f) globe.value = Dp(kotlin.math.floor(target.value))
-    }
-}
-
-/** Sahnenin altında ‹ 1/20 ›: sayaca dokununca model listesi açılır */
-@Composable
-private fun StageControls(pager: PagerState, tint: androidx.compose.ui.graphics.Color = Theme.c.accent) {
-    val scope = rememberCoroutineScope()
-    var menu by remember { mutableStateOf(false) }
-    val n = ClockModel.count
-    Ltr {
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            IconButton(onClick = { scope.launch { pager.animateScrollToPage((pager.currentPage + n - 1) % n) } }) {
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, L("stage.prev"), tint = tint)
-            }
-            Box {
-                // Model adı ve sırası (2. analiz #202): "Klasik analog · 1/20"; dokununca liste
-                Text(
-                    ClockModel.at(pager.currentPage).title + " · ${pager.currentPage + 1}/$n",
-                    Modifier.widthIn(max = 260.dp).clickable { menu = true }.padding(horizontal = 8.dp, vertical = 6.dp),
-                    color = tint, fontWeight = FontWeight.SemiBold, fontSize = 15.sp, style = Tnum, maxLines = 1,
-                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
-                )
-                DropdownMenu(menu, { menu = false }) {
-                    for (m in ClockModel.entries) {
-                        DropdownMenuItem(
-                            text = {
-                                Text("${m.number}. ${m.title}", color = if (m.ordinal == pager.currentPage) Theme.c.accent else Theme.c.text,
-                                    fontWeight = if (m.ordinal == pager.currentPage) FontWeight.SemiBold else FontWeight.Normal)
-                            },
-                            onClick = {
-                                menu = false
-                                scope.launch { pager.scrollToPage(m.ordinal) }
-                            },
-                        )
-                    }
-                }
-            }
-            IconButton(onClick = { scope.launch { pager.animateScrollToPage((pager.currentPage + 1) % n) } }) {
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, L("stage.next"), tint = tint)
-            }
-        }
     }
 }
 

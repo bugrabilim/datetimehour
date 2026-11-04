@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">Großbild</string>
     <string name="badges_items_tam_ekran_how">Öffnen Sie die Uhr im Vollbild.</string>
     <string name="badges_items_duzenle_name">Mein Bildschirm</string>
-    <string name="badges_items_duzenle_how">Schalten Sie mit „Bearbeiten“ auf dem Uhr-Tab ein Element ein oder aus.</string>
+    <string name="badges_items_duzenle_how">Schalten Sie unter Einstellungen › Uhrbildschirm bearbeiten ein Element ein oder aus.</string>
     <string name="badges_items_takvim_name">Tagesforscher</string>
     <string name="badges_items_takvim_how">Tippen Sie im Kalender auf einen Tag, um die Details zu öffnen.</string>
     <string name="badges_items_kronometre_name">Los!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">Namen und Zähler werden nur auf diesem Telefon gespeichert und nirgendwohin gesendet.</string>
     <string name="examTimer_appNote">Der Startzeitpunkt bleibt auf diesem Telefon gespeichert; beim erneuten Öffnen läuft der Timer weiter. Während er läuft, bleibt der Bildschirm an.</string>
     <string name="tools_localOnly">Ihre Eingaben werden nur auf diesem Telefon berechnet; sie werden weder gespeichert noch gesendet.</string>
+    <string name="home_editScreen">Uhrbildschirm bearbeiten</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

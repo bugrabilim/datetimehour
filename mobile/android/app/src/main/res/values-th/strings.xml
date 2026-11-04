@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">จอใหญ่</string>
     <string name="badges_items_tam_ekran_how">เปิดนาฬิกาแบบเต็มจอ</string>
     <string name="badges_items_duzenle_name">หน้าจอของฉัน</string>
-    <string name="badges_items_duzenle_how">เปิดหรือปิดรายการด้วย \"แก้ไข\" ในแท็บนาฬิกา</string>
+    <string name="badges_items_duzenle_how">เปิดหรือปิดรายการใน การตั้งค่า › แก้ไขหน้าจอนาฬิกา</string>
     <string name="badges_items_takvim_name">นักสำรวจวัน</string>
     <string name="badges_items_takvim_how">แตะวันในปฏิทินเพื่อเปิดรายละเอียด</string>
     <string name="badges_items_kronometre_name">เริ่ม!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">ชื่อและตัวนับเก็บไว้ในโทรศัพท์เครื่องนี้เท่านั้น ไม่ถูกส่งไปที่ใด</string>
     <string name="examTimer_appNote">เวลาเริ่มเก็บไว้ในโทรศัพท์เครื่องนี้ เมื่อเปิดแอปอีกครั้งตัวจับเวลาจะเดินต่อจากเดิม หน้าจอจะไม่ดับขณะจับเวลา</string>
     <string name="tools_localOnly">ข้อมูลที่กรอกคำนวณในโทรศัพท์เครื่องนี้เท่านั้น ไม่ถูกบันทึกและไม่ถูกส่งไปที่ใด</string>
+    <string name="home_editScreen">แก้ไขหน้าจอนาฬิกา</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

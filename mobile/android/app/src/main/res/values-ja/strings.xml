@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">大画面</string>
     <string name="badges_items_tam_ekran_how">時計を全画面で開く。</string>
     <string name="badges_items_duzenle_name">わたしの画面</string>
-    <string name="badges_items_duzenle_how">時計タブの「編集」で項目をオン・オフする。</string>
+    <string name="badges_items_duzenle_how">設定 › 時計画面を編集 で項目をオン・オフする。</string>
     <string name="badges_items_takvim_name">日付探検家</string>
     <string name="badges_items_takvim_how">カレンダーで日をタップして詳細を開く。</string>
     <string name="badges_items_kronometre_name">スタート！</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">名前とカウンターはこのスマートフォンにだけ保存され、どこにも送信されません。</string>
     <string name="examTimer_appNote">開始時刻はこのスマートフォンに保存され、アプリを開き直すと続きから再開します。タイマー作動中は画面が消えません。</string>
     <string name="tools_localOnly">入力した内容はこのスマートフォンの中だけで計算され、保存も送信もされません。</string>
+    <string name="home_editScreen">時計画面を編集</string>
     <string name="app_name">時刻と日付</string>
 </resources>

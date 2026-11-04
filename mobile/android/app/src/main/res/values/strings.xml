@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">Büyük ekran</string>
     <string name="badges_items_tam_ekran_how">Saati tam ekranda aç.</string>
     <string name="badges_items_duzenle_name">Kendi ekranım</string>
-    <string name="badges_items_duzenle_how">Saat ekranında \"Düzenle\" ile bir alanı aç ya da kapat.</string>
+    <string name="badges_items_duzenle_how">Ayarlar › Saat ekranını düzenle\'de bir alanı açın ya da kapatın.</string>
     <string name="badges_items_takvim_name">Gün meraklısı</string>
     <string name="badges_items_takvim_how">Takvimde bir güne dokunup ayrıntısını aç.</string>
     <string name="badges_items_kronometre_name">Start!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">Adlar ve sayaçlar yalnız bu telefonda saklanır, hiçbir yere gönderilmez.</string>
     <string name="examTimer_appNote">Başlangıç bu telefonda saklanır; uygulamayı yeniden açınca sayaç kaldığı yerden sürer. Sayaç işlerken ekran kararmaz.</string>
     <string name="tools_localOnly">Girdiğiniz bilgiler yalnız bu telefonda hesaplanır; kaydedilmez ve hiçbir yere gönderilmez.</string>
+    <string name="home_editScreen">Saat ekranını düzenle</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

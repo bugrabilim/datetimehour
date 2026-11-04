@@ -100,7 +100,7 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
     val general = arrayOf("features.title", "settings.location", "settings.notifications", "lang.title", "settings.units",
         "settings.pressureUnit", "client.formatLabel", "settings.keepAwake")
     val look = arrayOf("settings.color", "settings.appearance", "fontScale.title")
-    val clock = arrayOf("look.title", "home.customize", "dial.title", "night.title")
+    val clock = arrayOf("look.title", "home.customize", "home.editScreen", "dial.title", "night.title")
     val backup = arrayOf("sync.androidTitle", "android.shortcuts.title")
     val support = arrayOf("support.title", "support.rate", "support.share", "support.qr", "support.feedback", "support.moreApps",
         "support.version", "badges.h1", "settings.about")
@@ -202,7 +202,7 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             SectionTitle(L("tab.clock"), Modifier.padding(top = 6.dp))
             AppCard(padding = 4) {
                 if (shows("look.title", "dial.title", "night.title")) SettingsRow(Icons.Filled.TextFields, L("look.title")) { onRoute("appearance") }
-                if (shows("home.customize")) SettingsRow(Icons.Filled.Tune, L("home.customize")) { onRoute("homeItems") }
+                if (shows("home.customize", "home.editScreen")) SettingsRow(Icons.Filled.Tune, L("home.editScreen")) { onRoute("homeItems") }
             }
         }
         // Yedek ve kısayollar: açıklamalar pencerede

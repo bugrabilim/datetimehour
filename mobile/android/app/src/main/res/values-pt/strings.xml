@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">Telão</string>
     <string name="badges_items_tam_ekran_how">Abra o relógio em tela cheia.</string>
     <string name="badges_items_duzenle_name">Minha tela</string>
-    <string name="badges_items_duzenle_how">Ative ou desative um item com \"Editar\" na aba Relógio.</string>
+    <string name="badges_items_duzenle_how">Ative ou desative um item em Ajustes › Editar tela do relógio.</string>
     <string name="badges_items_takvim_name">Explorador de dias</string>
     <string name="badges_items_takvim_how">Toque num dia do calendário para abrir os detalhes.</string>
     <string name="badges_items_kronometre_name">Já!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">Os nomes e contadores ficam salvos só neste celular e não são enviados para lugar nenhum.</string>
     <string name="examTimer_appNote">O horário de início fica salvo neste celular; ao reabrir o app, o timer continua de onde parou. A tela não apaga enquanto ele corre.</string>
     <string name="tools_localOnly">O que você digita é calculado só neste celular; não é salvo nem enviado para lugar nenhum.</string>
+    <string name="home_editScreen">Editar tela do relógio</string>
     <string name="app_name">Hora e Data</string>
 </resources>

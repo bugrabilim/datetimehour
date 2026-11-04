@@ -1,7 +1,7 @@
 import SwiftUI
 import SaatCore
 
-/// Saat sekmesi: sitedeki 20 saat modeli (kaydırarak ya da sayaçtan seçilir), altında kullanıcının seçtiği
+/// Saat sekmesi: sitedeki saat modelleri (parmakla kaydırarak seçilir), altında kullanıcının seçtiği
 /// alanlar (Ayarlar › Saat ekranı; dokununca ilgili sayfa açılır) ve tam ekran.
 struct ClockTab: View {
     @AppStorage("keepAwake") private var keepAwake = true
@@ -11,7 +11,6 @@ struct ClockTab: View {
     @AppStorage(WeatherScene.clockKey) private var weatherBg = false
     @Environment(\.colorScheme) private var colorScheme
     @State private var fullscreen = false
-    @State private var customizing = false
     /// Yan çevirince tam ekran açılır, dikeye dönünce kapanır (düğmeyle açılan tam ekran dikeyde de kalır)
     @Environment(\.verticalSizeClass) private var vsc
     @State private var autoFull = false
@@ -84,11 +83,6 @@ struct ClockTab: View {
                     } label: {
                         Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
                     }
-                    Button {
-                        customizing = true
-                    } label: {
-                        Label(L("home.edit"), systemImage: "slider.horizontal.3")
-                    }
                 }
                 .font(.headline)
                 .foregroundStyle(weatherBg ? Color.white : Theme.accent)
@@ -134,12 +128,6 @@ struct ClockTab: View {
         .fullScreenCover(isPresented: $fullscreen, onDismiss: { autoFull = false }) {
             FullscreenClock(closeOnPortrait: autoFull)
         }
-        .sheet(isPresented: $customizing) {
-            NavigationStack {
-                HomeItemsView()
-                    .toolbar { Button(L("common.done")) { customizing = false } }
-            }
-        }
         .task {
             // CI: bildirim seslerinin örneği üretilir, ekran görüntüleriyle birlikte dışarı alınır
             guard ProcessInfo.processInfo.arguments.contains("-makeSoundSample") else { return }
@@ -167,7 +155,7 @@ extension ClockTab {
     }
 }
 
-/// Saat sahnesi: modeller yatay kaydırılır; altta (sitedeki gibi) ‹ 1/20 › — sayaca dokununca model listesi.
+/// Saat sahnesi: modeller parmakla yatay kaydırılır (altında ad ve ok yok; 4 Kasım 2026, sahibin isteği).
 /// Yükseklik sabit: model değişince alttaki alanlar oynamaz. Saate dokununca saniye açılır/kapanır
 /// (dijitalde varsayılan açık, analogda kapalı).
 struct ClockStage: View {
@@ -175,7 +163,6 @@ struct ClockStage: View {
     let place: AppPlace
     var height: CGFloat = 380
     @AppStorage("clockModel") private var modelID = ClockModel.classic.rawValue
-    @Environment(\.onScene) private var onScene
 
     private var model: ClockModel { ClockModel(rawValue: modelID) ?? .classic }
 
@@ -190,31 +177,8 @@ struct ClockStage: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .frame(height: height)
-            HStack(spacing: 22) {
-                Button { step(-1) } label: { Image(systemName: "chevron.backward") }
-                    .accessibilityLabel(L("stage.prev"))
-                Menu {
-                    Picker(L("stage.dots"), selection: $modelID) {
-                        ForEach(ClockModel.allCases) { m in
-                            Text("\(m.number). \(m.name)").tag(m.rawValue)
-                        }
-                    }
-                } label: {
-                    // Model adı ve sırası (2. analiz #202): "Klasik analog · 1/20"; dokununca liste
-                    Text("\(model.name) · \(model.number)/\(ClockModel.allCases.count)")
-                        .font(.subheadline.weight(.semibold).monospacedDigit())
-                        .lineLimit(1)
-                        .truncationMode(.middle)
-                        .frame(minWidth: 60, maxWidth: 260)
-                }
-                .accessibilityLabel(model.name)
-                Button { step(1) } label: { Image(systemName: "chevron.forward") }
-                    .accessibilityLabel(L("stage.next"))
-            }
-            .font(.headline)
-            // Hava zemininde tema rengi yerine beyaz (4 Kasım 2026, sahibin ekran görüntüsü: soluk kalıyordu)
-            .foregroundStyle(onScene ? Color.white : Theme.accent)
-            .environment(\.layoutDirection, .leftToRight)
+            // Model adı ve oklar yok (4 Kasım 2026, sahibin isteği): model parmakla sağa sola kaydırılarak değişir
+            // (VoiceOver'da üç parmakla kaydırma)
         }
         .onChange(of: modelID, initial: true) { old, new in
             // Rozetler: görülen modeller (açılıştaki dahil) ve ilk model değişimi
@@ -224,15 +188,9 @@ struct ClockStage: View {
             if old != new { BadgeStore.shared.hit(.ilkModel) }
         }
     }
-
-    private func step(_ d: Int) {
-        let all = ClockModel.allCases
-        let i = ((all.firstIndex(of: model) ?? 0) + d + all.count) % all.count
-        withAnimation { modelID = all[i].rawValue }
-    }
 }
 
-/// Tam ekran saat: 20 model yatay kaydırılır, altında saat ekranındaki alanlar (Düzenle ile seçilenler);
+/// Tam ekran saat: 20 model yatay kaydırılır, altında saat ekranındaki alanlar (Ayarlar › Saat ekranı);
 /// ekran kapanmaz, çift dokununca ya da düğmeyle çıkılır. Bir alana dokununca tam ekran kapanır, sayfası açılır.
 struct FullscreenClock: View {
     /// Yan çevirince açıldıysa telefon dik tutulunca kapanır

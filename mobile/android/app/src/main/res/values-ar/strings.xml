@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">الشاشة الكبيرة</string>
     <string name="badges_items_tam_ekran_how">افتح الساعة بملء الشاشة.</string>
     <string name="badges_items_duzenle_name">شاشتي</string>
-    <string name="badges_items_duzenle_how">فعّل عنصرًا أو أوقفه من «تعديل» في تبويب الساعة.</string>
+    <string name="badges_items_duzenle_how">فعّل عنصرًا أو أوقفه من الإعدادات › تعديل شاشة الساعة.</string>
     <string name="badges_items_takvim_name">مستكشف الأيام</string>
     <string name="badges_items_takvim_how">المس يومًا في التقويم لفتح تفاصيله.</string>
     <string name="badges_items_kronometre_name">انطلق!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">تُحفظ الأسماء والعدادات على هذا الهاتف فقط ولا تُرسل إلى أي مكان.</string>
     <string name="examTimer_appNote">يُحفظ وقت البدء على هذا الهاتف؛ وعند فتح التطبيق مجددًا يتابع المؤقت من حيث توقف. تبقى الشاشة مضاءة أثناء عمل المؤقت.</string>
     <string name="tools_localOnly">تُحسب البيانات التي تدخلها على هذا الهاتف فقط؛ لا تُحفظ ولا تُرسل إلى أي مكان.</string>
+    <string name="home_editScreen">تعديل شاشة الساعة</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

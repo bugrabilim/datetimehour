@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">大屏幕</string>
     <string name="badges_items_tam_ekran_how">全屏打开时钟。</string>
     <string name="badges_items_duzenle_name">我的屏幕</string>
-    <string name="badges_items_duzenle_how">在时钟标签页用“编辑”打开或关闭某一项。</string>
+    <string name="badges_items_duzenle_how">在“设置 › 编辑时钟屏幕”中打开或关闭某一项。</string>
     <string name="badges_items_takvim_name">日子探索者</string>
     <string name="badges_items_takvim_how">在日历中轻点某一天查看详情。</string>
     <string name="badges_items_kronometre_name">开始！</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">名字和计数器只保存在本机，不会发送到任何地方。</string>
     <string name="examTimer_appNote">开始时间保存在本机；重新打开应用时计时从中断处继续。计时进行时屏幕保持常亮。</string>
     <string name="tools_localOnly">您输入的信息只在本机计算，不会保存，也不会发送到任何地方。</string>
+    <string name="home_editScreen">编辑时钟屏幕</string>
     <string name="app_name">时间与日期</string>
 </resources>

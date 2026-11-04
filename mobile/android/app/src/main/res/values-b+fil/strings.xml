@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">Malaking screen</string>
     <string name="badges_items_tam_ekran_how">Buksan ang orasan sa full screen.</string>
     <string name="badges_items_duzenle_name">Aking screen</string>
-    <string name="badges_items_duzenle_how">Mag-on o mag-off ng item gamit ang \"I-edit\" sa tab na Orasan.</string>
+    <string name="badges_items_duzenle_how">Mag-on o mag-off ng item sa Settings › I-edit ang screen ng orasan.</string>
     <string name="badges_items_takvim_name">Explorer ng araw</string>
     <string name="badges_items_takvim_how">Mag-tap ng araw sa kalendaryo para buksan ang detalye nito.</string>
     <string name="badges_items_kronometre_name">Takbo!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">Ang mga pangalan at counter ay nakaimbak lang sa teleponong ito at hindi ipinapadala kahit saan.</string>
     <string name="examTimer_appNote">Nakaimbak sa teleponong ito ang oras ng simula; pagbukas muli ng app, magpapatuloy ang timer kung saan ito huminto. Nananatiling bukas ang screen habang tumatakbo ang timer.</string>
     <string name="tools_localOnly">Ang inilagay mo ay kinukuwenta lang sa teleponong ito; hindi ito sine-save o ipinapadala kahit saan.</string>
+    <string name="home_editScreen">I-edit ang screen ng orasan</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

@@ -1159,7 +1159,7 @@
     <string name="badges_items_tam_ekran_name">큰 화면</string>
     <string name="badges_items_tam_ekran_how">시계를 전체 화면으로 여세요.</string>
     <string name="badges_items_duzenle_name">나만의 화면</string>
-    <string name="badges_items_duzenle_how">시계 탭의 \"편집\"으로 항목을 켜거나 끄세요.</string>
+    <string name="badges_items_duzenle_how">설정 › 시계 화면 편집에서 항목을 켜거나 끄세요.</string>
     <string name="badges_items_takvim_name">날짜 탐험가</string>
     <string name="badges_items_takvim_how">달력에서 날짜를 눌러 상세 정보를 여세요.</string>
     <string name="badges_items_kronometre_name">출발!</string>
@@ -2827,5 +2827,6 @@
     <string name="classroom_appNote">이름과 카운터는 이 휴대폰에만 저장되며 어디에도 보내지 않습니다.</string>
     <string name="examTimer_appNote">시작 시각은 이 휴대폰에 저장되며 앱을 다시 열면 이어서 진행됩니다. 타이머가 도는 동안 화면이 꺼지지 않습니다.</string>
     <string name="tools_localOnly">입력한 내용은 이 휴대폰에서만 계산되며 저장되거나 전송되지 않습니다.</string>
+    <string name="home_editScreen">시계 화면 편집</string>
     <string name="app_name">시간과 날짜</string>
 </resources>
