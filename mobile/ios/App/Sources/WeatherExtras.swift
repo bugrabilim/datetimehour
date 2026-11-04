@@ -122,15 +122,17 @@ struct HourlyChartCard: View {
         let part = L(h.isDaylight ? "wx.day" : "wx.night")
         let rain = Fmt.percent(Int((h.precipitationChance * 100).rounded()))
         let mm = h.precipitationAmount.converted(to: .millimeters).value
-        let line2 = Units.temp(h.temperature) + " · " + L("weather.feelsLike") + " " + Units.temp(h.apparentTemperature)
-            + " · " + rain + (mm > 0 ? " (" + Units.precip(mm) + ")" : "")
-        let line3 = L("weather.wind") + " " + Units.wind(h.wind.speed) + " · "
-            + T("weather.windFrom", compassName(h.wind.direction.converted(to: .degrees).value))
-            + " · " + L("weather.humidity") + " " + Fmt.percent(Int((h.humidity * 100).rounded()))
+        let mmText: String = mm > 0 ? " (" + Units.precip(mm) + ")" : ""
+        let feels: String = L("weather.feelsLike") + " " + Units.temp(h.apparentTemperature)
+        let line2: String = Units.temp(h.temperature) + " · " + feels + " · " + rain + mmText
+        let dirText: String = T("weather.windFrom", compassName(h.wind.direction.converted(to: .degrees).value))
+        let hum: String = L("weather.humidity") + " " + Fmt.percent(Int((h.humidity * 100).rounded()))
+        let line3: String = L("weather.wind") + " " + Units.wind(h.wind.speed) + " · " + dirText + " · " + hum
+        let head: String = Fmt.time(h.date, tz: zone) + " · " + h.condition.description + " · " + part
         return HStack(spacing: 10) {
             Image(systemName: h.symbolName).symbolRenderingMode(.multicolor).font(.title2)
             VStack(alignment: .leading, spacing: 2) {
-                Text(Fmt.time(h.date, tz: zone) + " · " + h.condition.description + " · " + part).font(.subheadline.weight(.semibold))
+                Text(head).font(.subheadline.weight(.semibold))
                 Text(line2).font(.footnote).foregroundStyle(Theme.muted)
                 Text(line3).font(.footnote).foregroundStyle(Theme.muted)
             }
@@ -188,19 +190,25 @@ struct DayDetailSheet: View {
 
     @ViewBuilder private var values: some View {
         let mm = day.precipitationAmount.converted(to: .millimeters).value
-        Text(L("weather.rainChanceShort") + ": " + Fmt.percent(Int((day.precipitationChance * 100).rounded()))
-             + " · " + L("weather.precipitation") + ": " + Units.precip(mm))
-        let hums = hours.map(\.humidity)
+        let chance: String = Fmt.percent(Int((day.precipitationChance * 100).rounded()))
+        let rainLine: String = L("weather.rainChanceShort") + ": " + chance + " · " + L("weather.precipitation") + ": " + Units.precip(mm)
+        Text(rainLine)
+        let hums: [Double] = hours.map(\.humidity)
         if let lo = hums.min(), let hi = hums.max() {
-            Text(L("weather.humidity") + ": " + Fmt.percent(Int((lo * 100).rounded())) + "–" + Fmt.percent(Int((hi * 100).rounded())))
+            let loS: String = Fmt.percent(Int((lo * 100).rounded()))
+            let hiS: String = Fmt.percent(Int((hi * 100).rounded()))
+            Text(L("weather.humidity") + ": " + loS + "–" + hiS)
         }
         if let strongest = hours.max(by: { kmh($0.wind.speed) < kmh($1.wind.speed) }) {
-            Text(L("wx.windMax") + ": " + Units.wind(strongest.wind.speed) + " · "
-                 + T("weather.windFrom", compassName(strongest.wind.direction.converted(to: .degrees).value)))
+            let dir: String = compassName(strongest.wind.direction.converted(to: .degrees).value)
+            let windLine: String = L("wx.windMax") + ": " + Units.wind(strongest.wind.speed) + " · " + T("weather.windFrom", dir)
+            Text(windLine)
         }
         Text(L("weather.uv") + ": \(day.uvIndex.value)")
-        Text(L("weather.sunrise") + " " + (day.sun.sunrise.map { Fmt.time($0, tz: zone) } ?? "–")
-             + " · " + L("weather.sunset") + " " + (day.sun.sunset.map { Fmt.time($0, tz: zone) } ?? "–"))
+        let rise: String = day.sun.sunrise.map { Fmt.time($0, tz: zone) } ?? "–"
+        let set: String = day.sun.sunset.map { Fmt.time($0, tz: zone) } ?? "–"
+        let sunLine: String = L("weather.sunrise") + " " + rise + " · " + L("weather.sunset") + " " + set
+        Text(sunLine)
     }
 }
 

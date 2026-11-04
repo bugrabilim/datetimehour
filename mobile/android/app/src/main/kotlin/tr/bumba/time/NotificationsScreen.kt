@@ -27,6 +27,7 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Bed
 import androidx.compose.material.icons.filled.LocalCafe
 import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Eco
 import androidx.compose.material.icons.filled.FormatQuote
@@ -121,6 +122,8 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
             RowDivider()
             val sunOn = FeatureToggle(NotifyFeature.SUN, Icons.Filled.WbTwilight, ::changed)
             if (sunOn) SunMoonOptions(moon = false, ::changed)
+            RowDivider()
+            FeatureToggle(NotifyFeature.SKY, Icons.Filled.AutoAwesome, ::changed)
         }
         AppCard(padding = 4) {
             val on = FeatureToggle(NotifyFeature.WEATHER, Icons.Filled.WbSunny, ::changed)

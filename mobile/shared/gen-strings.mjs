@@ -6,6 +6,7 @@
    Kullanım: node mobile/shared/gen-strings.mjs          → dosyaları yazar
              node mobile/shared/gen-strings.mjs --check  → güncel değilse hata verir (CI) */
 import fs from "node:fs";
+import { skyEvents } from "../../lib/sky-events.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeYear } from "../../lib/events.mjs";
@@ -61,6 +62,15 @@ const SITE_PATHS = [
   "weather.visibility", "weather.dewPoint", "weather.gusts", "weather.details", "weather.compass.*", "weather.windFrom",
   // 2. analiz #147: Ay uzaklığı, yerberi/yeröte, süper Ay (sitedeki gece gökyüzü metinleri)
   "sky.moonHeading", "sky.moonNow", "sky.perigee", "sky.apogee", "sky.km", "sky.superMoon",
+  // Gece gökyüzü uygulamada (2. analiz #154–#157, #159; 3 Kasım 2026)
+  "sky.h1", "sky.planets.*", "sky.moon", "sky.sun", "sky.chartHeading", "sky.timeLabel", "sky.now", "sky.tableHeading", "sky.window",
+  "sky.tooClose", "sky.below", "sky.riseSet", "sky.altFmt", "sky.mkm", "sky.note", "sky.eventsHeading", "sky.eventsLead", "sky.showers.*",
+  "sky.evShower", "sky.showerRate", "sky.showerVar", "sky.moonLight", "sky.evOpp", "sky.evElongE", "sky.evElongW", "sky.evConj", "sky.evMoon",
+  "sky.evMore", "sky.eventsNote", "sky.tonightHeading", "sky.darkLabel", "sky.darkNone", "sky.moonUpDark", "sky.moonDownDark", "sky.planetsLabel",
+  "sky.planetsNone", "sky.cloudLabel", "sky.score.*", "sky.tipMoon", "sky.tipDark", "sky.tipCloudy", "sky.tipBest", "sky.graphHeading",
+  "sky.graphCaption", "sky.constellations", "sky.play", "sky.pause", "sky.dateLabel", "sky.red", "sky.conSource",
+  "nature.eclLocal", "nature.eclLocalTotal", "nature.eclLocalAnnular", "nature.eclLocalNone", "nature.eclLocalLow", "nature.eclContacts.*",
+  "nature.eclMag", "nature.eclApprox", "nature.eclMapHeading", "nature.eclMapSolar", "nature.eclMapLunar", "nature.eclMapNote",
   "stage.models.*", "stage.prev", "stage.next", "stage.dots", "list.*",
   // 9. tur (30 Ekim 2026): kerahat, altın/mavi saat, fitre, hicri çevirici, pomodoro etiketleri
   "prayer.kerahatHeading", "prayer.kerahatNames.*", "prayer.kerahatNote",
@@ -263,8 +273,21 @@ const wholJson = (() => {
   return JSON.stringify({ s: strs, countries, tx, native: { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"] } }) + "\n";
 })();
 
+/* Gökyüzü (2. analiz #154, #157): olaylar (lib/sky-events.mjs, 2026–2031) ve takımyıldızlar (d3-celestial, BSD-3) */
+const skyEventsJson = JSON.stringify(skyEvents(ROOT, 2026, 2031)) + "\n";
+const conSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/constellations.json"), "utf8"));
+const constellationsJson = JSON.stringify(conSrc.con) + "\n";
+/* NASA SVS CGI Moon Kit dokusu (kamu malı; 2. analiz #103): ikili dosya, uygulamalara kopyalanır */
+const moonJpg = fs.readFileSync(path.join(ROOT, "src/assets/moon.jpg"));
+
 const files = {
   ...otdFiles,
+  "mobile/ios/App/Resources/sky-events.json": skyEventsJson,
+  "mobile/android/app/src/main/assets/sky-events.json": skyEventsJson,
+  "mobile/ios/App/Resources/constellations.json": constellationsJson,
+  "mobile/android/app/src/main/assets/constellations.json": constellationsJson,
+  "mobile/ios/App/Resources/moon.jpg": moonJpg,
+  "mobile/android/app/src/main/assets/moon.jpg": moonJpg,
   "mobile/ios/App/Resources/world-holidays.json": wholJson,
   "mobile/android/app/src/main/assets/world-holidays.json": wholJson,
   "mobile/ios/App/Resources/Localizable.xcstrings": xcstrings,
@@ -299,7 +322,7 @@ const stale = [];
 for (const [rel, body] of Object.entries(files)) {
   const file = path.join(ROOT, rel);
   if (check) {
-    if (!fs.existsSync(file) || fs.readFileSync(file, "utf8") !== body) stale.push(rel);
+    if (!fs.existsSync(file) || (Buffer.isBuffer(body) ? !fs.readFileSync(file).equals(body) : fs.readFileSync(file, "utf8") !== body)) stale.push(rel);
   } else {
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, body);

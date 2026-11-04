@@ -86,6 +86,7 @@ targets:
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/provinces.json
       - path: App/Resources/cities.json
+      - path: App/Resources/moon.jpg
       - path: App/Resources/hijri.json
       # Günün içeriği widget'ı (2. analiz #16)
       - path: App/Resources/sayings.json

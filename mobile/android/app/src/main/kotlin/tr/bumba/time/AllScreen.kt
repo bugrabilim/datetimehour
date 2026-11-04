@@ -130,6 +130,8 @@ object AllPrefs {
         AllEntry("world", "tab.world", Icons.Filled.Public, AllCat.SKY, Tab.WORLD, tab = Tab.WORLD),
         AllEntry("seasons", "tab.seasons", Icons.Filled.Eco, AllCat.SKY, Tab.SEASONS, tab = Tab.SEASONS),
         AllEntry("moon", "moon.calendarLink", Icons.Filled.Brightness3, AllCat.SKY, Tab.SEASONS, route = "moon"),
+        AllEntry("sky", "sky.h1", Icons.Filled.AutoAwesome, AllCat.SKY, Tab.SEASONS, route = "sky", words = "sky.eventsHeading sky.constellations sky.tonightHeading"),
+        AllEntry("sunpath", "sunpath.title", Icons.Filled.WbTwilight, AllCat.SKY, Tab.SEASONS, route = "sunpath"),
         AllEntry("prayer", "tab.prayer", Icons.Filled.DarkMode, AllCat.FAITH, Tab.PRAYER, tab = Tab.PRAYER),
         AllEntry("qibla", "qibla.title", Icons.Filled.Explore, AllCat.FAITH, Tab.PRAYER, route = "qibla"),
         AllEntry("quran", "quran.title", Icons.AutoMirrored.Filled.MenuBook, AllCat.FAITH, Tab.PRAYER, route = "quran"),

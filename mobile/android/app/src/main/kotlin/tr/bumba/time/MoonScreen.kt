@@ -129,6 +129,10 @@ fun MoonScreen() {
                     color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
                 Text(T("nature.eclipseRegions", Eclipse.names(e.regions)), color = Theme.c.muted, fontSize = 13.sp)
                 if (e.path.isNotEmpty()) Text(T("nature.eclipsePath", Eclipse.names(e.path)), color = Theme.c.muted, fontSize = 13.sp)
+                // Ayrıntı (2. analiz #159): Ay tutulmasında temas anları ve çizim; Güneş tutulmasında yerel örtülme ve harita
+                var open by rememberSaveable(e.ut) { mutableStateOf(false) }
+                androidx.compose.material3.TextButton(onClick = { open = !open }) { Text((if (open) "▾ " else "▸ ") + L("moon.detail"), color = Theme.c.accent) }
+                if (open) EclipseDetail(e, place)
                 if (e.kind == "lunar") {
                     // Ay o anda yerin ufkunun üstündeyse tutulma buradan izlenebilir
                     val up = Nature.moonAltitude(e.ut.toDouble(), place.lat, place.lon) > 0
@@ -139,6 +143,8 @@ fun MoonScreen() {
         }
         Text(L("nature.eclipseSafety"), color = Theme.c.text, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
         Text(L("nature.eclipseSource"), color = Theme.c.muted, fontSize = 12.sp)
+        KidsMoonCard()
+        Text("NASA's Scientific Visualization Studio (CGI Moon Kit)", color = Theme.c.muted, fontSize = 11.sp)
     }
 }
 
@@ -177,7 +183,7 @@ private fun MoonMonth(ym: YearMonth, place: AppPlace, today: LocalDate, onPick: 
                                     ).clickable { onPick(d) }.padding(top = 3.dp),
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                 ) {
-                                    Text(MOON_PHASE_EMOJI[m.phaseIndex], fontSize = 20.sp)
+                                    MoonImage(m.fraction, 24.dp, place.lat < 0)
                                     Text("${d.dayOfMonth}", color = Theme.c.text, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
                                     marks[d]?.let {
                                         Text(L("nature.phases.$it"), color = Theme.c.accent, fontSize = 9.sp, lineHeight = 10.sp,
@@ -247,7 +253,7 @@ private fun MoonScrubber(place: AppPlace, today: LocalDate, offset: Int, onChang
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = { onChange(offset - 1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, L("prayer.prevMonth"), tint = Theme.c.accent) }
             Column(Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(MOON_PHASE_EMOJI[m.phaseIndex], fontSize = 64.sp)
+                MoonImage(m.fraction, 96.dp, place.lat < 0)
                 Text(L("nature.phases.${MOON_PHASE_KEYS[m.phaseIndex]}"), color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.Bold)
                 Text(T("nature.illumination", Math.round(m.illumination * 100)), color = Theme.c.muted, fontSize = 13.sp)
                 Text(Fmt.longDate(day) + "  ·  " + when {

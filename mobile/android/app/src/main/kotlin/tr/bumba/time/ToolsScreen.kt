@@ -109,6 +109,8 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "guide" -> PrayerGuideScreen({ onRoute(null) }) { onRoute("duas") }
         "leaf" -> CalendarLeafScreen { onRoute(null) }
         "moon" -> Page(L("moon.calendarLink"), onRoute) { MoonScreen() }
+        "sky" -> Page(L("sky.h1"), onRoute) { SkyScreen() }
+        "sunpath" -> Page(L("sunpath.title"), onRoute) { SunPathScreen() }
         else -> if (route?.startsWith("quran:") == true) QuranScreen(route.removePrefix("quran:").toIntOrNull()) { onRoute(null) }
             else AllScreen(onRoute)
     }

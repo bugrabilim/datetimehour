@@ -43,7 +43,9 @@ enum class NotifyFeature(val id: String, val tab: Tab) {
     /** Cuma hatırlatması (2. analiz #58): Cuma öğleden 45 dk önce */
     FRIDAY("friday", Tab.PRAYER),
     /** Günün sözü (2. analiz #16): her sabah 08.00'de takvim yaprağındaki söz */
-    DAILY("daily", Tab.CALENDAR);
+    DAILY("daily", Tab.CALENDAR),
+    /** Gökyüzü olayları (2. analiz #154): meteor yağmuru zirveleri, kavuşumlar, karşı konumlar; o gecenin akşamı 20.00 */
+    SKY("sky", Tab.SEASONS);
 
     val key: String get() = "notify.$id"
     /** Varsayılan: saat başı kapalı, diğerleri açık (30 Ekim 2026, sahibin kararı) */
@@ -143,6 +145,7 @@ object FeatureNotifier {
         if (FeaturePrefs.isOn(NotifyFeature.HABITS)) out += SleepPlan.habits(now, days)
         if (FeaturePrefs.isOn(NotifyFeature.FRIDAY)) out += friday(place, now, days)
         if (FeaturePrefs.isOn(NotifyFeature.DAILY)) out += daily(context, now, minOf(days, 7))
+        if (FeaturePrefs.isOn(NotifyFeature.SKY)) out += sky(context, place, now, days)
         return out.filter { it.at.isAfter(now) }
     }
 
@@ -176,6 +179,15 @@ object FeatureNotifier {
     /** Dolunay ve yeni ay anında (yaklaşık iki ay ileri) */
     /** Ay olayları (2. analiz #152; `SunMoonPrefs`): seçilen olaylar (yeni ay, dolunay, dördünler, süper Ay, tutulmalar),
      *  istenirse olaydan önce (dk) */
+    /** Gökyüzü olayı o gecenin akşamı 20.00'de (yerel öğleden önceki olay bir önceki akşama düşer) */
+    private fun sky(context: Context, place: AppPlace, now: Instant, days: Int): List<Planned> =
+        SkyEvent.all(context).filter { it.t > now.toEpochMilli() - 86_400_000 && it.t < now.toEpochMilli() + (days + 1) * 86_400_000L }.mapNotNull { e ->
+            val local = Instant.ofEpochMilli(e.t).atZone(place.zone)
+            val day = if (local.hour < 12) local.toLocalDate().minusDays(1) else local.toLocalDate()
+            val at = day.atTime(20, 0).atZone(place.zone).toInstant()
+            if (!at.isAfter(now)) null else Planned("sky-${e.t}-${e.k}", at, e.title, e.detail ?: whenText(Instant.ofEpochMilli(e.t), place), NotifyFeature.SKY.tab)
+        }
+
     private fun moon(context: Context, place: AppPlace, now: Instant): List<Planned> {
         val ev = SunMoonPrefs.moonEvents
         val lead = SunMoonPrefs.moonLead * 60L
