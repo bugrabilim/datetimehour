@@ -203,7 +203,8 @@ fun BarPreview(modifier: Modifier = Modifier) {
     Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
         for (t in Features.barTabs()) {
             Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.weight(1f)) {
-                Icon(t.on, null, tint = if (t == Tab.CLOCK) Theme.c.accent else Theme.c.muted, modifier = Modifier.size(22.dp))
+                // 3D simge (alt çubuktaki gibi)
+                LineIcon(LineIconMap.tab(t), 26.dp)
                 Text(Features.label(t), color = Theme.c.text, fontSize = 11.sp, maxLines = 1)
             }
         }

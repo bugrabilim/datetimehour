@@ -84,8 +84,8 @@ enum Features {
             let system = ["Apple", "NS", "com.apple", "UI", "WebKit", "AK", "PK"]
             let existing = own.keys.contains { k in !system.contains { k.hasPrefix($0) } }
             defaults.set(existing ? raw(Set(optional)) : "", forKey: key)
-            // Yeni kurulum: ilk açılışta kurulum sihirbazı (Onboarding; 2. analiz #4)
-            if !existing { defaults.set(true, forKey: Onboarding.key) }
+            // Yeni kurulum: ilk açılışta kurulum sihirbazı (Onboarding; 2. analiz #4); sorular boş başlar
+            if !existing { defaults.set(true, forKey: Onboarding.key); defaults.set(true, forKey: Onboarding.freshKey) }
             // Yeni kurulumda "Gün ışığı" atmosferi (doğal tasarım madde 7; önceki kullanıcının seçimi korunur)
             if !existing, defaults.object(forKey: Atmosphere.key) == nil { defaults.set(Atmosphere.daylightID, forKey: Atmosphere.key) }
         }
@@ -94,6 +94,8 @@ enum Features {
             let on = parse(defaults.string(forKey: key) ?? "")
             defaults.set(barDefault.filter(on.contains).prefix(barMax).map(\.key).joined(separator: ","), forKey: barKey)
         }
+        // Tanıtımın yeni sürümü (sorulu akış, 1.1) önceki kullanıcıya da bir kez açılır
+        Onboarding.checkVersion()
     }
 }
 
@@ -204,7 +206,7 @@ struct BarPreview: View {
         HStack(spacing: 0) {
             ForEach(Features.barTabs(raw: raw, bar: bar), id: \.self) { tab in
                 VStack(spacing: 3) {
-                    Image(systemName: tab.icon).font(.system(size: 18))
+                    LineIcon(name: LineIconMap.tab(tab), size: 26)
                     Text(tab.barTitle).font(.system(size: 11)).lineLimit(1).minimumScaleFactor(0.7)
                 }
                 .foregroundStyle(tab == .clock ? Theme.accent : Theme.muted)

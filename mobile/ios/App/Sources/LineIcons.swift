@@ -120,7 +120,7 @@ enum LineIconMap {
         "calendar": "calendar", "calendar.badge.clock": "calendar", "calendar.badge.exclamationmark": "calendar", "doc.text": "leafcal",
         "sun.horizon": "sunrise", "beach.umbrella": "beach", "cloud.sun": "sun", "sun.max": "sun", "globe.europe.africa": "globe",
         "globe": "globe", "leaf": "leaf", "moon": "moon", "moon.stars": "night", "sparkles": "sparkles", "rosette": "medal", "gift": "gift",
-        "location.north.line": "compass", "book": "book", "hand.tap": "beads", "checkmark.circle": "checklist", "hands.sparkles": "hands",
+        "location.north.line": "compass", "book": "book", "hand.tap": "beads", "checkmark.circle": "checklist", "lock.shield": "checklist", "hands.sparkles": "hands",
         "figure.mind.and.body": "mosque", "percent": "coin", "gearshape": "gear", "bell": "bell", "location": "pin",
         "paintpalette": "palette", "textformat.size": "textsize", "info.circle": "info", "qrcode": "qr", "slider.horizontal.3": "sliders",
         "icloud": "cloud", "square.grid.3x3": "grid", "square.grid.2x2": "grid", "clock": "clock", "magnifyingglass": "search",

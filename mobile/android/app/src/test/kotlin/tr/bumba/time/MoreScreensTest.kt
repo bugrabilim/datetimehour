@@ -61,8 +61,8 @@ class MoreScreensTest {
         FontScale.save(100)
     }
 
-    private fun page(name: String, title: String, dark: Boolean = false, content: @Composable () -> Unit) =
-        shot(name, dark = dark) { SubBar(title, onBack = {}); content() }
+    private fun page(name: String, title: String, dark: Boolean = false, qualifiers: String = "tr", content: @Composable () -> Unit) =
+        shot(name, qualifiers = qualifiers, dark = dark) { SubBar(title, onBack = {}); content() }
 
     /** Paylaşım kartları (rakip analizi #16, #29): Canvas'la çizilen görseller doğrudan PNG olarak yazılır */
     @Test
@@ -572,11 +572,23 @@ class MoreScreensTest {
         shot("ar-atmosfer-gun-batimi", qualifiers = "ar", atmo = "sunset") { PrayerScreen() }
         page("tr-dil", "Dil") { LanguageScreen() }
         shot("tr-kurulum") { OnboardingScreen {} }
-        // Altı adımlık tanıtım (4 Kasım 2026): kaydırma, tam ekran, Tümü
-        shot("tr-kurulum-kaydir") { OnboardingScreen(1) {} }
-        shot("tr-kurulum-tam-ekran", dark = true) { OnboardingScreen(2) {} }
-        shot("tr-kurulum-tumu") { OnboardingScreen(4) {} }
-        shot("ar-kurulum-tumu", qualifiers = "ar") { OnboardingScreen(4) {} }
+        // Sorulu akış (5 Kasım 2026): 0 hoş geldiniz, 1–5 sorular, 6 özet, 7–9 ipuçları, 10 güven + konum ve bildirim
+        val before = Features.enabled
+        Features.save(setOf(Tab.PRAYER, Tab.WEATHER, Tab.CALENDAR, Tab.TOOLS))
+        shot("tr-kurulum-soru") { OnboardingScreen(1) {} }
+        shot("en-kurulum-soru-hava", qualifiers = "en") { OnboardingScreen(2) {} }
+        shot("ar-kurulum-soru", qualifiers = "ar") { OnboardingScreen(5) {} }
+        shot("tr-kurulum-ozet") { OnboardingScreen(6) {} }
+        shot("tr-kurulum-kaydir") { OnboardingScreen(7) {} }
+        shot("tr-kurulum-tam-ekran", dark = true) { OnboardingScreen(8) {} }
+        shot("tr-kurulum-tumu") { OnboardingScreen(9) {} }
+        shot("ar-kurulum-tumu", qualifiers = "ar") { OnboardingScreen(9) {} }
+        shot("tr-kurulum-guven") { OnboardingScreen(10) {} }
+        shot("ja-kurulum-guven", qualifiers = "ja") { OnboardingScreen(10) {} }
+        // Ayarlar › İzinler
+        page("tr-izinler", "İzinler") { PermissionsScreen() }
+        page("hi-izinler", "अनुमतियाँ", qualifiers = "hi") { PermissionsScreen() }
+        Features.save(before)
         Onboarding.finish()
     }
 

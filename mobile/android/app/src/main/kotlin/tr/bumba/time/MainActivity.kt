@@ -198,8 +198,8 @@ fun Root(start: Int) {
         }
     }
     // Yeni kurulumda ilk açılış sihirbazı (2. analiz #4); bitince ana ekran
+    // Geri tuşu soruları atlamaz: ilk sayfada uygulamadan çıkılır, tanıtım sonraki açılışta sürer
     if (Onboarding.pending) {
-        BackHandler { Onboarding.finish() }
         OnboardingScreen { Onboarding.finish() }
         return
     }
