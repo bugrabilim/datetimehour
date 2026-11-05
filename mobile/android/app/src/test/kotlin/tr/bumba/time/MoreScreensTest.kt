@@ -61,8 +61,8 @@ class MoreScreensTest {
         FontScale.save(100)
     }
 
-    private fun page(name: String, title: String, dark: Boolean = false, content: @Composable () -> Unit) =
-        shot(name, dark = dark) { SubBar(title, onBack = {}); content() }
+    private fun page(name: String, title: String, dark: Boolean = false, qualifiers: String = "tr", content: @Composable () -> Unit) =
+        shot(name, qualifiers = qualifiers, dark = dark) { SubBar(title, onBack = {}); content() }
 
     /** Paylaşım kartları (rakip analizi #16, #29): Canvas'la çizilen görseller doğrudan PNG olarak yazılır */
     @Test
@@ -571,12 +571,32 @@ class MoreScreensTest {
         shot("tr-yazi-boyutu-130", fontScale = 130) { SettingsScreen {} }
         shot("ar-atmosfer-gun-batimi", qualifiers = "ar", atmo = "sunset") { PrayerScreen() }
         page("tr-dil", "Dil") { LanguageScreen() }
-        shot("tr-kurulum") { OnboardingScreen {} }
-        // Altı adımlık tanıtım (4 Kasım 2026): kaydırma, tam ekran, Tümü
-        shot("tr-kurulum-kaydir") { OnboardingScreen(1) {} }
-        shot("tr-kurulum-tam-ekran", dark = true) { OnboardingScreen(2) {} }
-        shot("tr-kurulum-tumu") { OnboardingScreen(4) {} }
-        shot("ar-kurulum-tumu", qualifiers = "ar") { OnboardingScreen(4) {} }
+        shot("tr-kurulum") { OnboardingScreen(0) {} }
+        // Sorulu akış (5 Kasım 2026): 0 hoş geldiniz, 1 güven + konum ve bildirim, 2–6 sorular, 7 özet, 8 "başka neler var",
+        // 9–10 ipuçları, 11–16 özellik turu, 17 "Diğer her şey Tümü'nde"
+        shot("tr-kurulum-guven") { OnboardingScreen(1) {} }
+        shot("ja-kurulum-guven", qualifiers = "ja") { OnboardingScreen(1) {} }
+        val before = Features.enabled
+        Features.save(setOf(Tab.PRAYER, Tab.WEATHER, Tab.CALENDAR, Tab.TOOLS))
+        shot("tr-kurulum-soru") { OnboardingScreen(2) {} }
+        shot("en-kurulum-soru-hava", qualifiers = "en") { OnboardingScreen(3) {} }
+        shot("ar-kurulum-soru", qualifiers = "ar") { OnboardingScreen(6) {} }
+        shot("tr-kurulum-ozet") { OnboardingScreen(7) {} }
+        shot("tr-kurulum-daha") { OnboardingScreen(8) {} }
+        shot("tr-kurulum-kaydir") { OnboardingScreen(9) {} }
+        shot("tr-kurulum-tam-ekran", dark = true) { OnboardingScreen(10) {} }
+        shot("tr-kurulum-tur-alarm") { OnboardingScreen(11) {} }
+        shot("tr-kurulum-tur-vakit") { OnboardingScreen(12) {} }
+        shot("en-kurulum-tur-hava", qualifiers = "en") { OnboardingScreen(13) {} }
+        shot("tr-kurulum-tur-araclar") { OnboardingScreen(14) {} }
+        shot("tr-kurulum-tur-gorunum") { OnboardingScreen(15) {} }
+        shot("ar-kurulum-tur-widget", qualifiers = "ar") { OnboardingScreen(16) {} }
+        shot("tr-kurulum-tumu") { OnboardingScreen(17) {} }
+        shot("ar-kurulum-tumu", qualifiers = "ar") { OnboardingScreen(17) {} }
+        // Ayarlar › İzinler
+        page("tr-izinler", "İzinler") { PermissionsScreen() }
+        page("hi-izinler", "अनुमतियाँ", qualifiers = "hi") { PermissionsScreen() }
+        Features.save(before)
         Onboarding.finish()
     }
 

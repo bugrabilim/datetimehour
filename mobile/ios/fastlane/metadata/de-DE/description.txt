@@ -1,34 +1,40 @@
-Uhr & Datum vereint Uhr, Datum, Gebetszeiten, Kalender und Wetter in einer klaren App. Kein Konto, keine Werbung, kein Tracking.
+Uhr & Datum vereint Uhr, Gebetszeiten, Kalender, Wetter und praktische Werkzeuge in einer klaren App. Kostenlos, ohne Konto, ohne Werbung und ohne Tracking.
+
+FÜR SIE EINGERICHTET
+• Fünf kurze Fragen beim ersten Start: Gebetszeiten, Wetter, Kalender, Weltuhren, Jahreszeiten. Die Tab-Leiste entsteht aus Ihren Antworten
+• Bereiche, die Sie nicht nutzen, bleiben verborgen und senden keine Mitteilungen
 
 UHR
-• 19 Zifferblätter: analog, digital, nebeneinander, mit Kalender und Wetter
-• Vollbild-Uhr, der Bildschirm bleibt an
-• Wählen Sie, was unter der Uhr erscheint: nächstes Gebet, heutige Zeiten, nächster besonderer Tag, Weltuhren, Wetter, Sonnenaufgang
+• 21 Uhrenmodelle und 25 analoge Zifferblätter; Vollbild und gedimmter roter Nachtmodus
+• Nächstes Gebet, Wetter, Datum oder Weltuhren unter der Uhr anzeigen
+• Widgets für Home- und Sperrbildschirm, Komplikationen für die Apple Watch
 
-GEBETSZEITEN
-• Tägliche und monatliche Zeiten für 81 Provinzen der Türkei oder Ihren Standort
-• Mitteilungen pünktlich oder vorher, mit Sprachansage
-• Ramadan-Kalender als teilbares Bild
+GEBETSZEITEN UND GEBET
+• Gebetszeiten weltweit mit 14 Berechnungsmethoden (Diyanet, MWL, ISNA, Umm al-Qura u. a.) und hanafitischem Asr
+• Alle 81 Provinzen und 973 Bezirke der Türkei
+• Mitteilungen mit Adhan-Ton, Ramadan-Kalender
+• Qibla-Kompass und Moscheen in der Nähe
+• Der Koran auf Arabisch, Bittgebete, die 99 Namen Allahs, Tasbih-Zähler, Gebets- und Fastentracker, Zakat-Rechner
 
-KALENDER
-• Feiertage, halbe Tage, religiöse und besondere Tage, Schulferien in der Türkei
-• Die Kalender auf Ihrem Telefon (iCloud, Google, Outlook) auf demselben Bildschirm
-• Termine hinzufügen und löschen; besondere Tage in den Kalender übernehmen
+KALENDER UND WETTER
+• Feiertage der Türkei und 30 weiterer Länder, religiöse und besondere Tage, neben den Kalendern auf Ihrem Telefon
+• Hidschri-Kalender und Umrechner
+• Stündliche und 10-Tage-Vorhersage, Luftqualität und ein Bildschirm, der sich mit dem Wetter verändert
 
-WETTER
-• Aktuell, stündlich und 7 Tage – von Apple Wetter
+WECKER, SCHLAF UND FOKUS
+• Wecker, der auch im Stummmodus klingelt, mit Weckaufgaben wie Rechnen, Schütteln oder Code scannen
+• Schlafplan, Schlafgeräusche, smarter Wecker
+• Pomodoro, Lerntimer, App-Sperre während der Fokuszeit
 
 WERKZEUGE
-• Wecker (klingelt auch im Stummmodus), Timer, Countdown
-• Stoppuhr, Pomodoro, Datumsrechner (mit Arbeitstagen)
-• Weltuhren mit drehendem Globus
-• Jahreszeiten, Tagundnachtgleichen und Sonnenwenden, Mondphasen
+• Timer, Stoppuhr, Intervalltraining, Schachuhr, Metronom, sprechende Uhr
+• Weltuhren mit drehendem Globus, Meeting-Planer, Zeit- und Datumsrechner
+• Jahreszeiten, Mondkalender, Finsternisse, Nachthimmel, Sternzeichen
+• Grußkarten für Freitag, Ramadan, Bayram und heilige Nächte
 
-WIDGETS
-• Nächstes Gebet, heutige Zeiten, analoge und digitale Uhr, Uhr und Datum; auch auf dem Sperrbildschirm
+DATENSCHUTZ
+Kein Konto, keine Werbung, kein Tracking. Ihr Standort bleibt für die Gebetszeiten auf dem Telefon; nur für Wetter und Moscheen in der Nähe geht ein ungefährer Standort an den Dienst (Apple, Open-Meteo), nie Ihre Identität. Jede Berechtigung sehen und abschalten Sie unter Einstellungen › Berechtigungen.
 
-In achtzehn Sprachen: Deutsch, Türkisch, Englisch, Aserbaidschanisch, Arabisch, Indonesisch, Urdu, Persisch, Französisch, Russisch, Japanisch, Koreanisch, Chinesisch, Filipino, Thailändisch, Spanisch, Portugiesisch und Hindi.
-
-Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird ein ungefährer Standort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen.
+In 18 Sprachen. Für iPhone, iPad und Apple Watch.
 
 Uhr & Datum ist ein Produkt von Bumba Life. Web: time.bumba.tr

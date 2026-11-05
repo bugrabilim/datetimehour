@@ -223,6 +223,9 @@ Gizlilik politikası adresi: https://time.bumba.tr/gizlilik/ (İngilizce: https:
 
 ## 7. Konum hatırlatıcıları, odak engeli ve Android TV (31 Ekim 2026, sıradaki sürüm)
 
+- **İlk Play sürümünde YOK (5 Kasım 2026, sahibin onayı):** konuma bağlı hatırlatıcılar kapalı (`GeoAlarms.ENABLED = false`),
+  manifestte `ACCESS_BACKGROUND_LOCATION` yok, bu yüzden aşağıdaki Konum izinleri beyanı ve video **gerekmez**. Özellik açılırsa
+  izin manifeste geri eklenir ve beyan yapılır.
 - **Arka planda konum** (`ACCESS_BACKGROUND_LOCATION`, ayrıca `ACCESS_FINE_LOCATION`): yalnız "Konuma bağlı
   hatırlatıcılar" için (Google Play hizmetleri bölge izleme; Android 10+ bölge bildirimini "Her zaman izin ver" olmadan
   vermez). İzin yalnız kullanıcı hatırlatıcı eklerken istenir. Play Console › Uygulama içeriği › **Konum izinleri**

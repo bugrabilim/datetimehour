@@ -25,7 +25,7 @@ struct SettingsView: View {
     var body: some View {
         // Beş başlık (2. analiz #198): Genel, Renk ve görünüm, Saat, Yedek ve kısayollar, Destek; satırda şimdiki değer,
         // uzun açıklamalar alt sayfada, en üstte arama
-        let general = ["features.title", "settings.location", "settings.notifications", "lang.title", "settings.units",
+        let general = ["features.title", "settings.location", "settings.notifications", "perms.title", "lang.title", "settings.units",
                        "settings.pressureUnit", "client.formatLabel", "settings.keepAwake"]
         let look = ["settings.color", "settings.appearance", "fontScale.title"]
         let clock = ["look.title", "home.customize", "home.editScreen", "dial.title", "night.title"]
@@ -43,6 +43,10 @@ struct SettingsView: View {
                     }
                     if shows("settings.notifications") {
                         NavigationLink { NotificationsView() } label: { BoxLabel(L("settings.notifications"), icon: "bell") }
+                    }
+                    // İzinler (5 Kasım 2026): her iznin durumu, ne için, nereden kapatılır
+                    if shows("perms.title") {
+                        NavigationLink { PermissionsView() } label: { BoxLabel(L("perms.title"), icon: "lock.shield") }
                     }
                     if shows("lang.title") { LanguageRow() }
                     if shows("settings.units") {

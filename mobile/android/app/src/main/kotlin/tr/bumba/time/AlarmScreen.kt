@@ -137,7 +137,8 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                 LineIcon("calendar", 20.dp, c1 = Theme.c.accent, c2 = Theme.c.accent)
                 Text("  " + L("alarm.fromCalendar"), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.Medium)
             }
-            Row(Modifier.fillMaxWidth().clickable { onGeo() }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+            // Konuma bağlı hatırlatıcılar ilk Play sürümünde kapalı (GeoAlarms.ENABLED; arka planda konum izni istenmez)
+            if (GeoAlarms.ENABLED) Row(Modifier.fillMaxWidth().clickable { onGeo() }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                 LineIcon("pin", 20.dp, c1 = Theme.c.accent, c2 = Theme.c.accent)
                 Text("  " + L("geo.title"), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.Medium)
             }

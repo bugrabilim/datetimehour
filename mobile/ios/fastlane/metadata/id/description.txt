@@ -1,34 +1,40 @@
-Jam & Tanggal menyatukan jam, tanggal, jadwal salat, kalender, dan cuaca dalam satu aplikasi yang rapi. Tanpa akun, tanpa iklan, tanpa pelacakan.
+Jam & Tanggal menyatukan jam, jadwal salat, kalender, cuaca, dan alat sehari-hari dalam satu aplikasi yang rapi. Gratis, tanpa akun, tanpa iklan, dan tanpa pelacakan.
+
+DISIAPKAN UNTUK ANDA
+• Lima pertanyaan singkat saat pertama dibuka: jadwal salat, cuaca, kalender, jam dunia, musim. Bilah tab disusun dari jawaban Anda
+• Bagian yang tidak Anda pakai disembunyikan dan tidak mengirim notifikasi
 
 JAM
-• 19 tampilan jam dari situs kami: analog, digital, berdampingan, dengan kalender dan cuaca
-• Jam layar penuh yang menjaga layar tetap menyala
-• Pilih apa yang tampil di bawah jam: salat berikutnya, jadwal salat hari ini, hari istimewa berikutnya, jam dunia, cuaca, matahari terbit
+• 21 model jam dan 25 muka jam analog; layar penuh dan mode malam merah redup
+• Tampilkan salat berikutnya, cuaca, tanggal, atau jam dunia di bawah jam
+• Widget layar utama dan layar kunci, komplikasi Apple Watch
 
-JADWAL SALAT
-• Jadwal harian dan bulanan untuk 81 provinsi Turki atau lokasi Anda
-• Notifikasi tepat waktu atau sebelumnya, dengan pengumuman suara
-• Jadwal Ramadan sebagai gambar yang bisa dibagikan
+JADWAL SALAT DAN IBADAH
+• Jadwal salat di mana saja, dengan 14 metode perhitungan (Diyanet, MWL, ISNA, Umm al-Qura, dan lainnya) serta Asar Hanafi
+• Seluruh 81 provinsi dan 973 distrik di Turki
+• Notifikasi dengan suara azan, jadwal imsakiyah Ramadan
+• Kompas kiblat dan masjid terdekat
+• Al-Qur'an berbahasa Arab, doa, Asmaul Husna, penghitung tasbih, pencatat salat dan puasa, kalkulator zakat
 
-KALENDER
-• Hari libur resmi, setengah hari, hari keagamaan dan istimewa, libur sekolah di Turki
-• Kalender di ponsel Anda (iCloud, Google, Outlook) di layar yang sama
-• Tambah dan hapus acara; tambahkan hari istimewa ke kalender Anda
+KALENDER DAN CUACA
+• Hari libur Turki dan 30 negara lain, hari keagamaan dan hari istimewa, berdampingan dengan kalender di ponsel Anda
+• Kalender Hijriah dan pengonversi
+• Prakiraan per jam dan 10 hari, kualitas udara, serta layar yang berubah mengikuti cuaca
 
-CUACA
-• Cuaca saat ini, prakiraan per jam dan 7 hari dari layanan cuaca Apple
+ALARM, TIDUR, DAN FOKUS
+• Alarm yang tetap berbunyi dalam mode senyap, dengan tugas untuk mematikannya: hitungan, mengguncang ponsel, atau memindai kode
+• Rencana tidur, suara pengantar tidur, alarm pintar
+• Pomodoro, pengatur waktu belajar, pemblokiran aplikasi saat fokus
 
 ALAT
-• Alarm (berbunyi meski dalam mode senyap), pengatur waktu, hitung mundur ke suatu tanggal
-• Stopwatch, pomodoro, kalkulator tanggal (termasuk hari kerja)
-• Jam dunia dengan bola dunia berputar
-• Musim, ekuinoks dan titik balik matahari, fase Bulan
+• Timer, stopwatch, latihan interval, jam catur, metronom, jam berbicara
+• Jam dunia dengan bola dunia berputar, perencana rapat, kalkulator jam dan tanggal
+• Musim, kalender bulan, gerhana, langit malam, zodiak
+• Kartu ucapan untuk Jumat, Ramadan, Idul Fitri, Idul Adha, dan malam-malam mulia
 
-WIDGET
-• Salat berikutnya, jadwal hari ini, jam analog dan digital, jam dan tanggal; juga di Layar Terkunci
+PRIVASI
+Tanpa akun, tanpa iklan, tanpa pelacakan. Lokasi Anda tetap di ponsel untuk jadwal salat; hanya untuk cuaca dan masjid terdekat, lokasi perkiraan dikirim ke layanan terkait (Apple, Open-Meteo), tidak pernah identitas Anda. Lihat dan matikan setiap izin di Pengaturan › Izin.
 
-Tersedia dalam delapan belas bahasa: Indonesia, Inggris, Turki, Jerman, Azerbaijan, Arab, Urdu, Persia, Prancis, Rusia, Jepang, Korea, Tionghoa, Filipino, Thai, Spanyol, Portugis, dan Hindi.
-
-Lokasi Anda dipakai di ponsel untuk menghitung jadwal salat; hanya untuk cuaca, lokasi perkiraan dikirim ke layanan cuaca Apple. Kalender Anda hanya dibaca bila Anda mengizinkan, dan hanya di ponsel.
+Dalam 18 bahasa. Untuk iPhone, iPad, dan Apple Watch.
 
 Jam & Tanggal adalah produk Bumba Life. Web: time.bumba.tr

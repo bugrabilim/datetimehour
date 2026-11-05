@@ -40,6 +40,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.TextFields
 import androidx.compose.material.icons.filled.Schedule
@@ -98,7 +99,7 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
         val q = District.fold(query.trim())
         return q.isEmpty() || keys.any { District.fold(L(it)).contains(q) }
     }
-    val general = arrayOf("features.title", "settings.location", "settings.notifications", "lang.title", "settings.units",
+    val general = arrayOf("features.title", "settings.location", "settings.notifications", "perms.title", "lang.title", "settings.units",
         "settings.pressureUnit", "client.formatLabel", "settings.keepAwake")
     val look = arrayOf("settings.color", "settings.appearance", "fontScale.title")
     val clock = arrayOf("look.title", "home.customize", "home.editScreen", "dial.title", "night.title")
@@ -125,6 +126,8 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                     PlacePicker(size = 15.sp)
                 }
                 if (shows("settings.notifications")) SettingsRow(Icons.Filled.Notifications, L("settings.notifications")) { onRoute("notifications") }
+                // İzinler (5 Kasım 2026): ne istiyoruz, ne için, durumu; kapatmak için telefonun ayarı
+                if (shows("perms.title")) SettingsRow(Icons.Filled.Lock, L("perms.title"), line = "checklist") { onRoute("permissions") }
                 if (shows("settings.keepAwake")) Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                     IconBox(Icons.Filled.LightMode)
                     Spacer(Modifier.width(14.dp))
@@ -242,12 +245,12 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
 }
 
 @Composable
-private fun SettingsRow(icon: androidx.compose.ui.graphics.vector.ImageVector, title: String, onClick: () -> Unit) {
+private fun SettingsRow(icon: androidx.compose.ui.graphics.vector.ImageVector, title: String, line: String? = null, onClick: () -> Unit) {
     Row(
         Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconBox(icon)
+        IconBox(icon, line = line)
         Spacer(Modifier.width(14.dp))
         Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)

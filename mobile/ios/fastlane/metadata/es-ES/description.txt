@@ -1,34 +1,40 @@
-Hora y Fecha reúne el reloj, la fecha, los horarios de oración, el calendario y el tiempo en una app sencilla. Sin cuenta, sin anuncios, sin rastreo.
+Hora y Fecha reúne el reloj, los horarios de oración, el calendario, el tiempo y herramientas cotidianas en una app clara. Es gratuita, sin cuenta, sin anuncios y sin rastreo.
+
+PREPARADA PARA USTED
+• Cinco preguntas rápidas al abrirla por primera vez: oraciones, tiempo, calendario, relojes del mundo, estaciones. La barra de pestañas se arma con sus respuestas
+• Las secciones que no usa quedan ocultas y no envían notificaciones
 
 RELOJ
-• 19 esferas de nuestro sitio web: analógicas, digitales, lado a lado, con calendario y el tiempo
-• Reloj a pantalla completa que mantiene la pantalla encendida
-• Elija qué aparece bajo el reloj: próxima oración, horarios de hoy, próximo día especial, relojes mundiales, el tiempo, salida del sol
+• 21 modelos de reloj y 25 esferas analógicas; pantalla completa y modo noche en rojo tenue
+• Muestre bajo el reloj la próxima oración, el tiempo, la fecha o relojes del mundo
+• Widgets para la pantalla de inicio y la de bloqueo, complicaciones para Apple Watch
 
-HORARIOS DE ORACIÓN
-• Horarios diarios y mensuales para las 81 provincias de Turquía o su ubicación actual
-• Avisos a la hora o con antelación, con anuncio hablado
-• Calendario de Ramadán como imagen para compartir
+HORARIOS DE ORACIÓN Y CULTO
+• Horarios en cualquier lugar, con 14 métodos de cálculo (Diyanet, MWL, ISNA, Umm al-Qura y más) y Asr hanafí
+• Las 81 provincias y 973 distritos de Turquía
+• Notificaciones con sonido del adhan, calendario de Ramadán
+• Brújula de la qibla y mezquitas cercanas
+• El Corán en árabe, súplicas, los 99 nombres de Alá, contador de tasbih, seguimiento de oraciones y ayunos, cálculo del zakat
 
-CALENDARIO
-• Festivos, medias jornadas, días religiosos y especiales y vacaciones escolares en Turquía
-• Los calendarios de su teléfono (iCloud, Google, Outlook) en la misma pantalla
-• Añada y elimine eventos; añada días especiales a su calendario
+CALENDARIO Y TIEMPO
+• Festivos de Turquía y de otros 30 países, días religiosos y especiales, junto a los calendarios de su teléfono
+• Calendario hijri y conversor
+• Pronóstico por horas y a 10 días, calidad del aire y una pantalla que cambia con el tiempo
 
-EL TIEMPO
-• Previsión actual, por horas y de 7 días de Apple Weather
+ALARMA, SUEÑO Y CONCENTRACIÓN
+• Alarma que suena incluso en silencio, con tareas para apagarla: cálculo, agitar el teléfono o escanear un código
+• Plan de sueño, sonidos para dormir, alarma inteligente
+• Pomodoro, temporizador de estudio, bloqueo de apps mientras se concentra
 
 HERRAMIENTAS
-• Alarma (suena incluso en modo silencio), temporizador, cuenta atrás hasta una fecha
-• Cronómetro, pomodoro, calculadora de fechas (incluidos días laborables)
-• Relojes mundiales con un globo giratorio
-• Estaciones, equinoccios y solsticios, fases de la Luna
+• Temporizador, cronómetro, entrenamiento por intervalos, reloj de ajedrez, metrónomo, reloj parlante
+• Relojes del mundo con un globo que gira, planificador de reuniones, cálculo de horas y fechas
+• Estaciones, calendario lunar, eclipses, cielo nocturno, signo del zodiaco
+• Tarjetas de felicitación para el viernes, Ramadán, Eid y las noches sagradas
 
-WIDGETS
-• Próxima oración, horarios de hoy, reloj analógico y digital, hora y fecha; también en la pantalla bloqueada
+PRIVACIDAD
+Sin cuenta, sin anuncios, sin rastreo. Su ubicación se queda en el teléfono para los horarios de oración; solo para el tiempo y las mezquitas cercanas se envía una ubicación aproximada al servicio (Apple, Open-Meteo), nunca quién es usted. Vea y desactive cada permiso en Ajustes › Permisos.
 
-Disponible en dieciocho idiomas: español, inglés, turco, alemán, azerbaiyano, árabe, indonesio, urdu, persa, francés, ruso, japonés, coreano, chino, filipino, tailandés, portugués e hindi.
-
-Su ubicación se usa en el teléfono para calcular los horarios de oración; solo para el tiempo se envía una ubicación aproximada al servicio meteorológico de Apple. Sus calendarios solo se leen si lo permite, y solo en su teléfono.
+En 18 idiomas. Para iPhone, iPad y Apple Watch.
 
 Hora y Fecha es un producto de Bumba Life. Web: time.bumba.tr

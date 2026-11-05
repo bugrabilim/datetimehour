@@ -7,6 +7,7 @@ struct ClockTab: View {
     @AppStorage("keepAwake") private var keepAwake = true
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @AppStorage(Features.key) private var features = ""
+    @AppStorage(Onboarding.resumeKey) private var resume = false
     @AppStorage("fs.text") private var personalText = ""
     @AppStorage(WeatherScene.clockKey) private var weatherBg = false
     @Environment(\.colorScheme) private var colorScheme
@@ -46,8 +47,15 @@ struct ClockTab: View {
                         }
                         // Yenilikler: yeni kadranlar bir kez tanıtılır (2. analiz #1)
                         DialNewsCard()
-                        // Hiçbir özellik açık değilse (ilk açılış) özellikleri açmaya çağıran tek satır
-                        if Features.parse(features).isEmpty {
+                        // Hiçbir özellik açık değilse (ilk açılış) özellikleri açmaya çağıran tek satır; kurulum geçildiyse
+                        // telefonda alt çubuktaki "Kuruluma devam et" aynı işi görür, iPad'de (alt çubuk yok) burada
+                        if resume && UIDevice.current.userInterfaceIdiom == .pad {
+                            Button { Onboarding.resumeSetup() } label: {
+                                Label(L("onboard.resume"), systemImage: "arrow.forward.circle")
+                                    .font(.subheadline.weight(.semibold))
+                            }
+                            .foregroundStyle(Theme.accent)
+                        } else if Features.parse(features).isEmpty && !resume {
                             Button {
                                 Router.shared.sheet = .features
                             } label: {

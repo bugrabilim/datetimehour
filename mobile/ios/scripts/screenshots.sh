@@ -24,7 +24,7 @@ ALLFEAT="weather,calendar,world,seasons,prayer,tools"
 shoot() { # dil bölge görünüm dosya [ek uygulama argümanları]
   xcrun simctl ui "$UDID" appearance "$3"
   xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
-  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" -dial.seen2 "<true/>" \
+  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" -dial.seen2 "<true/>" -onboard.seen "<integer>9</integer>" \
     -features "${FEAT-$ALLFEAT}" "${@:5}"
   sleep 6
   xcrun simctl io "$UDID" screenshot "$OUT/$4.png"
@@ -36,12 +36,28 @@ shoot ar ar_SA light ar-acik
 # İlk açılış: yalnız Saat (alt bar yok; "özellikleri aç" satırı); iki özellik açıkken bar
 FEAT="" shoot tr tr_TR light tr-ilk-acilis
 FEAT="prayer,weather" shoot tr tr_TR light tr-iki-ozellik -startTab 5
-# İlk kurulum sihirbazı (2. analiz #4): yalnız yeni kurulumda açılır, burada açıkça istenir
-FEAT="" shoot tr tr_TR light tr-kurulum -onboard.pending "<true/>"
-# Altı adımlık tanıtım (4 Kasım 2026): saati kaydırma, tam ekran ve gece, Tümü
-FEAT="" shoot tr tr_TR light tr-kurulum-kaydir -onboard.pending "<true/>" -onboardPage "<integer>1</integer>"
-FEAT="" shoot tr tr_TR dark tr-kurulum-tam-ekran -onboard.pending "<true/>" -onboardPage "<integer>2</integer>"
-FEAT="" shoot ar ar_SA light ar-kurulum-tumu -onboard.pending "<true/>" -onboardPage "<integer>4</integer>"
+# İlk kurulum sihirbazı (2. analiz #4; 5 Kasım 2026'dan beri sorulu): yalnız yeni kurulumda ve tanıtımın yeni sürümünü
+# görmemiş eski kullanıcıda açılır, burada açıkça istenir. Sayfalar: 0 hoş geldiniz, 1 güven + konum ve bildirim, 2–6 sorular,
+# 7 özet, 8 "başka neler var", 9–10 ipuçları, 11–16 özellik turu, 17 "Diğer her şey Tümü'nde"
+FEAT="" shoot tr tr_TR light tr-kurulum -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>0</integer>"
+FEAT="" shoot tr tr_TR light tr-kurulum-guven -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>1</integer>"
+FEAT="" shoot tr tr_TR light tr-kurulum-soru -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>2</integer>"
+FEAT="" shoot en en_US light en-kurulum-soru-hava -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>3</integer>"
+FEAT="" shoot ar ar_SA light ar-kurulum-soru -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>6</integer>"
+FEAT="prayer,weather,calendar,tools" shoot tr tr_TR light tr-kurulum-ozet -onboard.pending "<true/>" -onboardPage "<integer>7</integer>"
+FEAT="" shoot tr tr_TR light tr-kurulum-daha -onboard.pending "<true/>" -onboardPage "<integer>8</integer>"
+FEAT="" shoot tr tr_TR light tr-kurulum-kaydir -onboard.pending "<true/>" -onboardPage "<integer>9</integer>"
+FEAT="" shoot tr tr_TR dark tr-kurulum-tam-ekran -onboard.pending "<true/>" -onboardPage "<integer>10</integer>"
+FEAT="" shoot tr tr_TR light tr-kurulum-tur-alarm -onboard.pending "<true/>" -onboardPage "<integer>11</integer>"
+FEAT="" shoot tr tr_TR light tr-kurulum-tur-vakit -onboard.pending "<true/>" -onboardPage "<integer>12</integer>"
+FEAT="" shoot ar ar_SA light ar-kurulum-tur-widget -onboard.pending "<true/>" -onboardPage "<integer>16</integer>"
+FEAT="" shoot tr tr_TR light tr-kurulum-tumu -onboard.pending "<true/>" -onboardPage "<integer>17</integer>"
+FEAT="" shoot ar ar_SA light ar-kurulum-tumu -onboard.pending "<true/>" -onboardPage "<integer>17</integer>"
+# Kurulumu geçen yeni kullanıcı: Saat, ortada "Kuruluma devam et", sağda Tümü
+FEAT="" shoot tr tr_TR light tr-kuruluma-devam -onboard.resume "<true/>"
+# İzinler sayfası (5 Kasım 2026): durum, ne için, telefonun ayarlarına bağlantı
+shoot tr tr_TR light tr-izinler -openScreen permissions
+shoot hi hi_IN dark hi-izinler -openScreen permissions
 # Saat modelleri (sitedeki 20 model; -clockModel kimlik)
 for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal flip; do
   shoot tr tr_TR light "model-$M" -clockModel "$M"

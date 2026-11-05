@@ -26,6 +26,7 @@ class ScreenshotTest {
     private fun shot(
         name: String, tab: Tab, qualifiers: String = "tr", dark: Boolean = false, accent: String = "amber",
         model: Int = 0, items: String = HomeItem.DEFAULT_RAW, weather: Boolean = false, features: Set<Tab> = Features.OPTIONAL.toSet(),
+        resume: Boolean = false,
     ) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
         Prefs.store.edit().putBoolean("notify.asked", true).putBoolean(DialFace.SEEN_KEY, true).commit()
@@ -42,6 +43,8 @@ class ScreenshotTest {
         Prefs.saveUnits("metric")
         HomeItems.raw = items
         weatherOverride = if (weather) sampleWeather() else null
+        // Geçilen kurulum: alt çubuğun ortasında "Kuruluma devam et" (ayarlar yazıldıktan sonra, yoksa kendisi kalkar)
+        if (resume) { Onboarding.load(fresh = true); Onboarding.skip() }
         captureRoboImage("$dir/$name.png") {
             AppTheme { Root(tab.ordinal) }
         }
@@ -265,6 +268,9 @@ class ScreenshotTest {
     @Test fun landscapePrayer() = shot("tr-yatay-vakitler", Tab.PRAYER, "tr-land", dark = true)
     // İlk açılış: yalnız Saat (alt bar yok; dişli ve özellikleri açma satırı); bir özellik açıkken iki sekmeli bar
     @Test fun firstLaunch() = shot("tr-ilk-acilis", Tab.CLOCK, features = emptySet())
+
+    /** Kurulumu geçen yeni kullanıcı: Saat, ortada "Kuruluma devam et", sağda Tümü */
+    @Test fun skippedSetup() = shot("tr-kuruluma-devam", Tab.CLOCK, features = emptySet(), resume = true)
     @Test fun twoFeatures() = shot("tr-iki-ozellik", Tab.PRAYER, features = setOf(Tab.PRAYER, Tab.WEATHER))
     @Test fun featuresPage() = tool("tr-ozellikler", "features")
     @Test fun homeItemsEditor() = capture("tr-saat-duzenle") { HomeItemsEditor() }
