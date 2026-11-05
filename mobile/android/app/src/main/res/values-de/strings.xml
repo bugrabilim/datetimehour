@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">Wischen Sie auf dem Uhrbildschirm nach links oder rechts; jedes Wischen zeigt ein anderes Uhrmodell. Tippen Sie auf die Uhr, um die Sekunden ein- oder auszublenden.</string>
     <string name="onboard_full_title">Vollbild und Nachtmodus</string>
     <string name="onboard_full_text">Tippen Sie auf Vollbild oder drehen Sie das Telefon quer, dann füllt die Uhr den Bildschirm. Im Nachtmodus leuchtet sie gedämpft rot und blendet am Bett nicht.</string>
-    <string name="onboard_all_title">Alles unter „Alle“</string>
+    <string name="onboard_all_title">Alles Weitere unter „Alle“</string>
     <string name="onboard_all_text">Unter „Alle“ in der unteren Leiste finden Sie alle Werkzeuge, die Suche und die Einstellungen; halten Sie Favoriten gedrückt, um sie oben anzuheften. Datum, Gebetszeiten oder Wetter unter der Uhr: Einstellungen › Uhrbildschirm bearbeiten.</string>
     <string name="onboard_replay">Einführung erneut zeigen</string>
     <string name="atmo_daylight">Tageslicht</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">Nur für die Fokussperre, um Sie zu warnen, wenn eine gewählte App geöffnet wird. Das verlässt Ihr Telefon nie.</string>
     <string name="perms_dnd_title">Zugriff auf „Bitte nicht stören“</string>
     <string name="perms_dnd_why">Nur um das Telefon zur Gebetszeit stummzuschalten. Ohne funktioniert die Stummschaltung nicht.</string>
+    <string name="onboard_more_title">Möchten Sie sehen, was es sonst noch gibt?</string>
+    <string name="onboard_more_text">Wir zeigen Ihnen die weiteren Funktionen nacheinander auf ein paar kurzen Seiten. Wenn nicht, finden Sie alles unter „Alle“.</string>
+    <string name="onboard_tour_alarm_title">Wecker und Schlaf</string>
+    <string name="onboard_tour_alarm_text">Wecker, die auch im Stummmodus klingeln, mit Aufgaben zum Ausschalten wie Rechnen, Schütteln oder Code scannen. Schlafplan, Schlafgeräusche und smarter Wecker.</string>
+    <string name="onboard_tour_prayer_title">Gebetszeiten und Gebet</string>
+    <string name="onboard_tour_prayer_text">Qibla-Kompass, Moscheen in der Nähe, der Koran, Bittgebete, die 99 Namen, Tasbih-Zähler, Gebets- und Fastentracker. 14 Berechnungsmethoden.</string>
+    <string name="onboard_tour_weather_title">Wetter und Himmel</string>
+    <string name="onboard_tour_weather_text">Stündliche und tägliche Vorhersage, Luftqualität; der Bildschirm lebt mit dem Wetter. Mondkalender, Finsternisse, Jahreszeiten und Nachthimmel.</string>
+    <string name="onboard_tour_tools_title">Fokus und Werkzeuge</string>
+    <string name="onboard_tour_tools_text">Pomodoro, Lerntimer, Timer, Stoppuhr, Intervalltraining, Metronom, Schachuhr, Meeting-Planer und mehr.</string>
+    <string name="onboard_tour_look_title">Ihr eigener Look</string>
+    <string name="onboard_tour_look_text">25 analoge Zifferblätter, 24 App-Farben, ein Hintergrund, der dem Tageslicht folgt, und Textgröße. Einstellungen › Farbe und Darstellung.</string>
+    <string name="onboard_tour_widgets_title">Widgets</string>
+    <string name="onboard_tour_widgets_text">Uhr, nächstes Gebet, Wetter, Mond und Hidschri-Datum auf Home- und Sperrbildschirm – und auch auf Ihrer Uhr.</string>
+    <string name="onboard_resume">Einrichtung fortsetzen</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

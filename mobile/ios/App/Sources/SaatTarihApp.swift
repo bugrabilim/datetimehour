@@ -236,6 +236,8 @@ struct RootView: View {
     /// Açık özellikler: alt barda yalnız bunlar (ve geçici olarak şu anki sekme); yalnız Saat kalırsa bar yok
     @AppStorage(Features.key) private var features = ""
     @AppStorage(Features.barKey) private var bar = ""
+    /// Geçilen kurulum: alt çubuğun ortasında "Kuruluma devam et" (5 Kasım 2026, sahibin isteği)
+    @AppStorage(Onboarding.resumeKey) private var resume = false
     @State private var router = Router.shared
     /// Klavye açıkken alt bar gizlenir (sistemin sekme çubuğu gibi; klavyenin üstüne binmez)
     @State private var keyboard = false
@@ -297,7 +299,9 @@ struct RootView: View {
                         .frame(maxWidth: readable, maxHeight: .infinity)
                         .frame(maxWidth: .infinity)
                         .background(AppBackdrop().ignoresSafeArea())
-                    if !keyboard && !landscape && tabs.count > 1 { TabBar(tabs: tabs, selection: $router.tab) }
+                    if !keyboard && !landscape && tabs.count > 1 {
+                        TabBar(tabs: tabs, selection: $router.tab, resume: resume && tabs.count == 2)
+                    }
                 }
             }
         }
@@ -330,14 +334,18 @@ struct RootView: View {
             .preferredColorScheme(scheme)
         }
         .sheet(isPresented: $morning) { MorningCard().preferredColorScheme(scheme) }
-        // Ayarlar › Destek › Tanıtımı yeniden göster: açık sayfa kapanır, sonra sihirbaz açılır
+        // Kişi ayarlardan bir şey değiştirirse "Kuruluma devam et" kalkar
+        .onReceive(NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification).receive(on: RunLoop.main)) { _ in
+            if !onboarding { Onboarding.checkResume() }
+        }
+        // Ayarlar › Destek › Tanıtımı yeniden göster (ve "Kuruluma devam et"): açık sayfa kapanır, sonra sihirbaz açılır
         .onReceive(NotificationCenter.default.publisher(for: Onboarding.replayNote)) { _ in
             router.sheet = nil
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { onboarding = true }
         }
         .fullScreenCover(isPresented: $onboarding) {
+            // Sihirbaz bitince ya da geçilince (Onboarding.finish/skip görünümün içinde)
             OnboardingView {
-                Onboarding.finish()
                 onboarding = false
                 Task { await PrayerNotifier.reschedule() }
             }
@@ -458,10 +466,28 @@ private struct Sidebar: View {
 private struct TabBar: View {
     let tabs: [AppTab]
     @Binding var selection: AppTab
+    /// Geçilen kurulum (yalnız Saat açık): ortada "Kuruluma devam et", Tümü sağda
+    var resume = false
 
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(tabs, id: \.self) { tab in
+            ForEach(Array(tabs.enumerated()), id: \.element) { i, tab in
+                if i == 1 && resume {
+                    Button { Onboarding.resumeSetup() } label: {
+                        Text(L("onboard.resume"))
+                            .font(.subheadline.weight(.semibold))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
+                            .foregroundStyle(Theme.onAccent)
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 11)
+                            .frame(maxWidth: .infinity)
+                            .background(Theme.accent, in: Capsule())
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.horizontal, 6)
+                    .layoutPriority(1)
+                }
                 let on = tab == selection
                 Button {
                     // Seçili sekmeye yeniden dokununca Araçlar'da açık sayfadan listeye dönülür

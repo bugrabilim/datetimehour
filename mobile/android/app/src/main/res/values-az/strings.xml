@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">Saat ekranında barmağınızı sağa və ya sola sürüşdürün; hər dəfə başqa saat modeli gəlir. Saata toxunanda saniyələr açılır və ya bağlanır.</string>
     <string name="onboard_full_title">Tam ekran və gecə rejimi</string>
     <string name="onboard_full_text">Tam ekran düyməsinə toxunun və ya telefonu yan çevirin; saat bütün ekranı tutur. Gecə rejimində yazı sönük qırmızı olur, çarpayı başında göz qamaşdırmır.</string>
-    <string name="onboard_all_title">Hər şey \"Hamısı\" bölməsində</string>
+    <string name="onboard_all_title">Qalan hər şey \"Hamısı\" bölməsində</string>
     <string name="onboard_all_text">Alt zolaqdakı \"Hamısı\" bölməsində bütün alətlər, axtarış və Parametrlər var; tez-tez istifadə etdiklərinizi uzun basaraq önə çəkin. Saatın altına tarix, vaxt və ya hava əlavə etmək üçün: Parametrlər › Saat ekranını redaktə et.</string>
     <string name="onboard_replay">Tanıtımı yenidən göstər</string>
     <string name="atmo_daylight">Gün işığı</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">Yalnız diqqət bloku üçün, seçdiyiniz tətbiq açılanda xəbərdar etməyə. Bu məlumat telefondan çıxmır.</string>
     <string name="perms_dnd_title">Narahat etməyin girişi</string>
     <string name="perms_dnd_why">Yalnız vaxt girəndə telefonu səssizə almaq üçün. Verməsəniz, səssizə alma işləmir.</string>
+    <string name="onboard_more_title">Başqa nələr var, öyrənmək istəyirsiniz?</string>
+    <string name="onboard_more_text">Digər imkanları bir neçə qısa səhifədə bir-bir göstərək. Xeyr desəniz, hamısı \"Hamısı\" bölməsində sizi gözləyir.</string>
+    <string name="onboard_tour_alarm_title">Zəngli saat və yuxu</string>
+    <string name="onboard_tour_alarm_text">Telefon səssizdə olanda da çalan zəngli saat; söndürmək üçün riyaziyyat, silkələmə ya da kod oxutma kimi tapşırıqlar. Yuxu planı, yuxu səsləri və ağıllı zəngli saat.</string>
+    <string name="onboard_tour_prayer_title">Vaxtlar və ibadət</string>
+    <string name="onboard_tour_prayer_text">Qiblə kompası, yaxındakı məscidlər, Qurani-Kərim, dualar, Əsmaül-Hüsna, zikr sayğacı, namaz və oruc izləmə. 14 hesablama üsulu.</string>
+    <string name="onboard_tour_weather_title">Hava və səma</string>
+    <string name="onboard_tour_weather_text">Saatlıq və günlük proqnoz, havanın keyfiyyəti; ekran havaya görə canlanır. Ay təqvimi, tutulmalar, fəsillər və gecə səması.</string>
+    <string name="onboard_tour_tools_title">Diqqət və alətlər</string>
+    <string name="onboard_tour_tools_text">Pomodoro, dərs sayğacı, taymer, saniyəölçən, interval məşqi, metronom, şahmat saatı, görüş planlayıcısı və daha çoxu.</string>
+    <string name="onboard_tour_look_title">Öz görünüşünüz</string>
+    <string name="onboard_tour_look_text">25 analoq siferblat, 24 tətbiq rəngi, gün işığına görə dəyişən fon və yazı ölçüsü. Parametrlər › Rəng və görünüş.</string>
+    <string name="onboard_tour_widgets_title">Vidjetlər</string>
+    <string name="onboard_tour_widgets_text">Əsas ekrana və kilid ekranına saat, növbəti vaxt, hava, Ay və hicri tarix əlavə edin; ağıllı saatınızda da görün.</string>
+    <string name="onboard_resume">Quraşdırmaya davam et</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">在时钟屏幕上向左或向右滑动，每次都会换成另一种时钟样式。轻点时钟可显示或隐藏秒数。</string>
     <string name="onboard_full_title">全屏与夜间模式</string>
     <string name="onboard_full_text">点按“全屏”或把手机横过来，时钟就会占满屏幕。夜间模式会变成暗红色，放在床头也不刺眼。</string>
-    <string name="onboard_all_title">一切都在“全部”里</string>
+    <string name="onboard_all_title">其余一切都在“全部”里</string>
     <string name="onboard_all_text">底部栏的“全部”里有所有工具、搜索和设置；长按常用项可将其固定在顶部。要在时钟下方添加日期、礼拜时间或天气：设置 › 编辑时钟屏幕。</string>
     <string name="onboard_replay">再次查看介绍</string>
     <string name="atmo_daylight">日光</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">仅用于专注拦截，在选中的应用打开时提醒您。此信息不会离开手机。</string>
     <string name="perms_dnd_title">勿扰权限</string>
     <string name="perms_dnd_why">仅用于礼拜时间到时让手机静音。不允许则自动静音无法使用。</string>
+    <string name="onboard_more_title">想了解还有哪些功能吗？</string>
+    <string name="onboard_more_text">我们会用几页简短的介绍逐一展示其他功能。如果不需要，所有功能都在“全部”里。</string>
+    <string name="onboard_tour_alarm_title">闹钟与睡眠</string>
+    <string name="onboard_tour_alarm_text">静音模式下也会响的闹钟，关闭时需完成算术、摇动手机或扫码等任务。还有睡眠计划、助眠声音和智能闹钟。</string>
+    <string name="onboard_tour_prayer_title">礼拜时间与功修</string>
+    <string name="onboard_tour_prayer_text">朝向指南针、附近的清真寺、《古兰经》、祈祷词、99 个尊名、赞念计数器、礼拜与斋戒记录。14 种计算方法。</string>
+    <string name="onboard_tour_weather_title">天气与星空</string>
+    <string name="onboard_tour_weather_text">逐小时与每日预报、空气质量，屏幕随天气而变化。还有月历、日食与月食、季节和夜空。</string>
+    <string name="onboard_tour_tools_title">专注与工具</string>
+    <string name="onboard_tour_tools_text">番茄钟、学习计时器、计时器、秒表、间歇训练、节拍器、国际象棋钟、会议规划等。</string>
+    <string name="onboard_tour_look_title">打造你的风格</string>
+    <string name="onboard_tour_look_text">25 款指针表盘、24 种应用颜色、随日光变化的背景和文字大小。设置 › 颜色与外观。</string>
+    <string name="onboard_tour_widgets_title">小组件</string>
+    <string name="onboard_tour_widgets_text">在主屏幕和锁屏上添加时钟、下一次礼拜、天气、月相和伊斯兰历日期，智能手表上也能看到。</string>
+    <string name="onboard_resume">继续设置</string>
     <string name="app_name">时间与日期</string>
 </resources>

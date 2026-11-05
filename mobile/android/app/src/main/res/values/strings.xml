@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">Saat ekranında parmağınızı sağa ya da sola kaydırın; her kaydırmada başka bir saat modeli gelir. Saate dokununca saniye açılır ya da kapanır.</string>
     <string name="onboard_full_title">Tam ekran ve gece modu</string>
     <string name="onboard_full_text">Tam ekran düğmesine dokunun ya da telefonu yan çevirin; saat bütün ekranı kaplar. Gece modunda yazı kısık kırmızıya döner, yatak başında göz almaz.</string>
-    <string name="onboard_all_title">Her şey Tümü\'nde</string>
+    <string name="onboard_all_title">Diğer her şey Tümü\'nde</string>
     <string name="onboard_all_text">Alt çubuktaki Tümü\'de bütün araçlar, arama ve Ayarlar var; sık kullandıklarınızı uzun basarak öne alın. Saatin altına tarih, vakit ya da hava eklemek için: Ayarlar › Saat ekranını düzenle.</string>
     <string name="onboard_replay">Tanıtımı yeniden göster</string>
     <string name="atmo_daylight">Gün ışığı</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">Yalnız odak engelinde, seçtiğiniz uygulama açılınca uyarmak için. Bu bilgi telefondan çıkmaz.</string>
     <string name="perms_dnd_title">Rahatsız Etmeyin erişimi</string>
     <string name="perms_dnd_why">Yalnız vakit girince telefonu sessize almak için. Vermezseniz sessize alma çalışmaz.</string>
+    <string name="onboard_more_title">Başka neler var, öğrenmek ister misiniz?</string>
+    <string name="onboard_more_text">Diğer özellikleri birkaç kısa sayfada tek tek gösterelim. Hayır derseniz hepsi Tümü\'nde sizi bekler.</string>
+    <string name="onboard_tour_alarm_title">Alarm ve uyku</string>
+    <string name="onboard_tour_alarm_text">Telefon sessizdeyken de çalan alarm; kapatmak için matematik, sallama ya da kod okutma gibi görevler. Uyku planı, uyku sesleri ve akıllı alarm.</string>
+    <string name="onboard_tour_prayer_title">Vakitler ve ibadet</string>
+    <string name="onboard_tour_prayer_text">Kıble pusulası, yakındaki camiler, Kur\'an-ı Kerim, dualar, Esmaü\'l-Hüsna, zikirmatik, namaz ve oruç takibi. 14 hesap yöntemi ve 973 ilçe.</string>
+    <string name="onboard_tour_weather_title">Hava ve gökyüzü</string>
+    <string name="onboard_tour_weather_text">Saatlik ve günlük tahmin, hava kalitesi; ekran havaya göre canlanır. Ay takvimi, tutulmalar, mevsimler ve gece gökyüzü.</string>
+    <string name="onboard_tour_tools_title">Odak ve araçlar</string>
+    <string name="onboard_tour_tools_text">Pomodoro, ders çalışma sayacı, zamanlayıcı, kronometre, aralık antrenmanı, metronom, satranç saati, toplantı planlayıcı ve daha fazlası.</string>
+    <string name="onboard_tour_look_title">Kendi görünümünüz</string>
+    <string name="onboard_tour_look_text">25 analog kadran, 24 uygulama rengi, gün ışığına göre değişen zemin ve yazı boyutu. Ayarlar › Renk ve görünüm.</string>
+    <string name="onboard_tour_widgets_title">Widget\'lar</string>
+    <string name="onboard_tour_widgets_text">Ana ekrana ve kilit ekranına saat, sıradaki vakit, hava, Ay ve hicri tarih ekleyin; akıllı saatinizde de görün.</string>
+    <string name="onboard_resume">Kuruluma devam et</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

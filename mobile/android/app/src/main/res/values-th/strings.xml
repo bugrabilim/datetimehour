@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">บนหน้าจอนาฬิกา ปัดไปทางซ้ายหรือขวา แต่ละครั้งจะได้นาฬิกาแบบใหม่ แตะที่นาฬิกาเพื่อแสดงหรือซ่อนวินาที</string>
     <string name="onboard_full_title">เต็มจอและโหมดกลางคืน</string>
     <string name="onboard_full_text">แตะเต็มจอหรือหมุนโทรศัพท์เป็นแนวนอน นาฬิกาจะเต็มหน้าจอ โหมดกลางคืนจะเป็นสีแดงสลัว ไม่แสบตาเมื่อวางข้างเตียง</string>
-    <string name="onboard_all_title">ทุกอย่างอยู่ใน \"ทั้งหมด\"</string>
+    <string name="onboard_all_title">ทุกอย่างที่เหลืออยู่ใน \"ทั้งหมด\"</string>
     <string name="onboard_all_text">\"ทั้งหมด\" ในแถบด้านล่างมีเครื่องมือทุกอย่าง การค้นหา และการตั้งค่า กดค้างรายการที่ใช้บ่อยเพื่อปักหมุดไว้ด้านบน หากต้องการเพิ่มวันที่ เวลาละหมาด หรือสภาพอากาศใต้นาฬิกา: การตั้งค่า › แก้ไขหน้าจอนาฬิกา</string>
     <string name="onboard_replay">แสดงบทแนะนำอีกครั้ง</string>
     <string name="atmo_daylight">แสงตะวัน</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">ใช้เฉพาะการบล็อกขณะโฟกัส เพื่อเตือนเมื่อแอปที่เลือกถูกเปิด ข้อมูลนี้ไม่ออกจากโทรศัพท์</string>
     <string name="perms_dnd_title">การเข้าถึงห้ามรบกวน</string>
     <string name="perms_dnd_why">ใช้เพื่อปิดเสียงโทรศัพท์เมื่อถึงเวลาละหมาดเท่านั้น ถ้าไม่อนุญาต การปิดเสียงอัตโนมัติจะใช้ไม่ได้</string>
+    <string name="onboard_more_title">อยากรู้ไหมว่ามีอะไรอีกบ้าง</string>
+    <string name="onboard_more_text">เราจะแนะนำฟีเจอร์อื่น ๆ ทีละอย่างในไม่กี่หน้า หากไม่ต้องการ ทุกอย่างรออยู่ใน \"ทั้งหมด\"</string>
+    <string name="onboard_tour_alarm_title">นาฬิกาปลุกและการนอน</string>
+    <string name="onboard_tour_alarm_text">นาฬิกาปลุกที่ดังแม้ในโหมดเงียบ พร้อมภารกิจเพื่อปิด เช่น คิดเลข เขย่าโทรศัพท์ หรือสแกนโค้ด มีแผนการนอน เสียงช่วยนอน และนาฬิกาปลุกอัจฉริยะ</string>
+    <string name="onboard_tour_prayer_title">เวลาละหมาดและการทำอิบาดะห์</string>
+    <string name="onboard_tour_prayer_text">เข็มทิศกิบลัต มัสยิดใกล้เคียง อัลกุรอาน ดุอาอ์ พระนาม 99 ประการ ที่นับตัสบีห์ บันทึกการละหมาดและการถือศีลอด วิธีคำนวณ 14 แบบ</string>
+    <string name="onboard_tour_weather_title">อากาศและท้องฟ้า</string>
+    <string name="onboard_tour_weather_text">พยากรณ์รายชั่วโมงและรายวัน คุณภาพอากาศ หน้าจอเปลี่ยนตามสภาพอากาศ ปฏิทินดวงจันทร์ สุริยุปราคาและจันทรุปราคา ฤดูกาล และท้องฟ้ายามค่ำคืน</string>
+    <string name="onboard_tour_tools_title">สมาธิและเครื่องมือ</string>
+    <string name="onboard_tour_tools_text">โพโมโดโร ตัวจับเวลาอ่านหนังสือ ตัวจับเวลา นาฬิกาจับเวลา การฝึกแบบอินเทอร์วัล เมโทรนอม นาฬิกาหมากรุก ตัววางแผนประชุม และอื่น ๆ</string>
+    <string name="onboard_tour_look_title">ปรับแต่งให้เป็นแบบของคุณ</string>
+    <string name="onboard_tour_look_text">หน้าปัดเข็ม 25 แบบ สีแอป 24 สี พื้นหลังที่เปลี่ยนตามแสงกลางวัน และขนาดตัวอักษร การตั้งค่า › สีและรูปลักษณ์</string>
+    <string name="onboard_tour_widgets_title">วิดเจ็ต</string>
+    <string name="onboard_tour_widgets_text">เพิ่มนาฬิกา ละหมาดถัดไป อากาศ ดวงจันทร์ และวันที่ฮิจเราะห์ลงในหน้าจอโฮมและหน้าจอล็อก ดูบนสมาร์ทวอทช์ได้ด้วย</string>
+    <string name="onboard_resume">ตั้งค่าต่อ</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

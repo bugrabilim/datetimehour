@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">Di layar jam, geser ke kiri atau kanan; setiap geseran menampilkan model jam lain. Ketuk jam untuk menampilkan atau menyembunyikan detik.</string>
     <string name="onboard_full_title">Layar penuh dan mode malam</string>
     <string name="onboard_full_text">Ketuk Layar penuh atau putar ponsel ke samping, jam akan memenuhi layar. Mode malam membuatnya merah redup sehingga tidak menyilaukan di samping tempat tidur.</string>
-    <string name="onboard_all_title">Semuanya ada di Semua</string>
+    <string name="onboard_all_title">Semua lainnya ada di Semua</string>
     <string name="onboard_all_text">Semua di bilah bawah berisi semua alat, pencarian, dan Pengaturan; tekan lama favorit Anda untuk menyematkannya di atas. Untuk menambahkan tanggal, waktu salat, atau cuaca di bawah jam: Pengaturan › Edit layar jam.</string>
     <string name="onboard_replay">Tampilkan pengenalan lagi</string>
     <string name="atmo_daylight">Cahaya hari</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">Hanya untuk blokir fokus, agar memperingatkan saat aplikasi pilihan Anda dibuka. Informasi ini tidak keluar dari ponsel.</string>
     <string name="perms_dnd_title">Akses Jangan Ganggu</string>
     <string name="perms_dnd_why">Hanya untuk membisukan ponsel saat waktu salat tiba. Jika tidak, bisu otomatis tidak berfungsi.</string>
+    <string name="onboard_more_title">Ingin tahu fitur apa lagi yang ada?</string>
+    <string name="onboard_more_text">Kami tunjukkan fitur lainnya satu per satu dalam beberapa halaman singkat. Jika tidak, semuanya menunggu di Semua.</string>
+    <string name="onboard_tour_alarm_title">Alarm dan tidur</string>
+    <string name="onboard_tour_alarm_text">Alarm yang tetap berbunyi dalam mode senyap, dengan tugas untuk mematikannya seperti hitungan, mengguncang, atau memindai kode. Rencana tidur, suara tidur, dan alarm pintar.</string>
+    <string name="onboard_tour_prayer_title">Jadwal salat dan ibadah</string>
+    <string name="onboard_tour_prayer_text">Kompas kiblat, masjid terdekat, Al-Qur\'an, doa, Asmaul Husna, penghitung tasbih, pencatat salat dan puasa. 14 metode perhitungan.</string>
+    <string name="onboard_tour_weather_title">Cuaca dan langit</string>
+    <string name="onboard_tour_weather_text">Prakiraan per jam dan harian, kualitas udara; layar ikut hidup sesuai cuaca. Kalender bulan, gerhana, musim, dan langit malam.</string>
+    <string name="onboard_tour_tools_title">Fokus dan alat</string>
+    <string name="onboard_tour_tools_text">Pomodoro, pengatur waktu belajar, timer, stopwatch, latihan interval, metronom, jam catur, perencana rapat, dan lainnya.</string>
+    <string name="onboard_tour_look_title">Tampilan Anda sendiri</string>
+    <string name="onboard_tour_look_text">25 muka jam analog, 24 warna aplikasi, latar yang mengikuti cahaya siang, dan ukuran teks. Pengaturan › Warna dan tampilan.</string>
+    <string name="onboard_tour_widgets_title">Widget</string>
+    <string name="onboard_tour_widgets_text">Tambahkan jam, salat berikutnya, cuaca, Bulan, dan tanggal Hijriah ke layar utama dan layar kunci, juga di jam tangan Anda.</string>
+    <string name="onboard_resume">Lanjutkan penyiapan</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

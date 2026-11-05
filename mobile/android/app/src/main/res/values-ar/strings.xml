@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">اسحب يمينًا أو يسارًا على شاشة الساعة؛ كل سحبة تعرض نموذج ساعة آخر. المس الساعة لإظهار الثواني أو إخفائها.</string>
     <string name="onboard_full_title">ملء الشاشة والوضع الليلي</string>
     <string name="onboard_full_text">المس «ملء الشاشة» أو أدر الهاتف أفقيًا فتملأ الساعة الشاشة. في الوضع الليلي يصبح لونها أحمر خافتًا لا يزعج العين بجانب السرير.</string>
-    <string name="onboard_all_title">كل شيء في «الكل»</string>
+    <string name="onboard_all_title">كل ما تبقّى في «الكل»</string>
     <string name="onboard_all_text">في «الكل» بالشريط السفلي كل الأدوات والبحث والإعدادات؛ اضغط مطولًا على ما تستخدمه كثيرًا لتثبيته في الأعلى. لإضافة التاريخ أو أوقات الصلاة أو الطقس تحت الساعة: الإعدادات › تعديل شاشة الساعة.</string>
     <string name="onboard_replay">إظهار الجولة التعريفية مجددًا</string>
     <string name="atmo_daylight">ضوء النهار</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">لحظر التركيز فقط، لتنبيهك عند فتح تطبيق اخترته. لا تغادر هذه المعلومة هاتفك.</string>
     <string name="perms_dnd_title">الوصول إلى «عدم الإزعاج»</string>
     <string name="perms_dnd_why">لكتم الهاتف عند دخول وقت الصلاة فقط. وإن لم تسمح، لا يعمل الكتم التلقائي.</string>
+    <string name="onboard_more_title">هل تريد أن تعرف ما الذي يقدّمه التطبيق أيضًا؟</string>
+    <string name="onboard_more_text">سنعرض لك بقية الميزات واحدة تلو الأخرى في صفحات قصيرة. وإن قلت لا، تجدها كلها في «الكل».</string>
+    <string name="onboard_tour_alarm_title">المنبه والنوم</string>
+    <string name="onboard_tour_alarm_text">منبه يرن حتى في الوضع الصامت، مع مهام لإيقافه مثل مسألة حسابية أو هزّ الهاتف أو مسح رمز. خطة النوم وأصوات النوم والمنبه الذكي.</string>
+    <string name="onboard_tour_prayer_title">مواقيت الصلاة والعبادة</string>
+    <string name="onboard_tour_prayer_text">بوصلة القبلة والمساجد القريبة والقرآن الكريم والأدعية والأسماء الحسنى والمسبحة ومتابعة الصلاة والصيام. 14 طريقة حساب.</string>
+    <string name="onboard_tour_weather_title">الطقس والسماء</string>
+    <string name="onboard_tour_weather_text">توقعات كل ساعة وكل يوم وجودة الهواء، وشاشة تتغير مع الطقس. التقويم القمري والكسوف والخسوف والفصول وسماء الليل.</string>
+    <string name="onboard_tour_tools_title">التركيز والأدوات</string>
+    <string name="onboard_tour_tools_text">بومودورو ومؤقت المذاكرة والمؤقت وساعة الإيقاف والتمارين المتقطعة والمترونوم وساعة الشطرنج ومخطط الاجتماعات وغيرها.</string>
+    <string name="onboard_tour_look_title">مظهرك الخاص</string>
+    <string name="onboard_tour_look_text">25 قرصًا بعقارب و24 لونًا للتطبيق وخلفية تتبع ضوء النهار وحجم الخط. الإعدادات › اللون والمظهر.</string>
+    <string name="onboard_tour_widgets_title">الأدوات المصغّرة</string>
+    <string name="onboard_tour_widgets_text">أضف الساعة والصلاة القادمة والطقس والقمر والتاريخ الهجري إلى الشاشة الرئيسية وشاشة القفل، وشاهدها على ساعتك أيضًا.</string>
+    <string name="onboard_resume">متابعة الإعداد</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

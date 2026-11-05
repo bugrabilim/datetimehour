@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">Sa screen ng orasan, mag-swipe pakaliwa o pakanan; bawat swipe ay ibang modelo ng orasan. I-tap ang orasan para ipakita o itago ang mga segundo.</string>
     <string name="onboard_full_title">Full screen at night mode</string>
     <string name="onboard_full_text">I-tap ang Full screen o ipahiga ang telepono, at sasakupin ng orasan ang buong screen. Sa night mode, nagiging malamlam na pula ito kaya hindi nakasisilaw sa tabi ng kama.</string>
-    <string name="onboard_all_title">Nasa Lahat ang lahat</string>
+    <string name="onboard_all_title">Nasa Lahat ang lahat ng iba pa</string>
     <string name="onboard_all_text">Nasa Lahat sa ibabang bar ang lahat ng tool, ang paghahanap at ang Settings; pindutin nang matagal ang mga paborito para i-pin sa itaas. Para magdagdag ng petsa, oras ng pagdarasal o panahon sa ilalim ng orasan: Settings › I-edit ang screen ng orasan.</string>
     <string name="onboard_replay">Ipakita muli ang pagpapakilala</string>
     <string name="atmo_daylight">Liwanag ng araw</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">Para lang sa focus block, para magbabala kapag nabuksan ang napiling app. Hindi ito lumalabas sa telepono.</string>
     <string name="perms_dnd_title">Access sa Huwag Istorbohin</string>
     <string name="perms_dnd_why">Para lang patahimikin ang telepono sa oras ng dasal. Kung hindi, hindi gagana ang awtomatikong pagpapatahimik.</string>
+    <string name="onboard_more_title">Gusto mo bang malaman kung ano pa ang narito?</string>
+    <string name="onboard_more_text">Ipapakita namin ang iba pang feature isa-isa sa ilang maiikling pahina. Kung hindi, naghihintay ang lahat sa Lahat.</string>
+    <string name="onboard_tour_alarm_title">Alarm at tulog</string>
+    <string name="onboard_tour_alarm_text">Alarm na tumutunog kahit naka-silent, na may gawain para patayin ito gaya ng math, pag-alog o pag-scan ng code. May plano sa pagtulog, tunog pampatulog at smart alarm.</string>
+    <string name="onboard_tour_prayer_title">Oras ng dasal at pagsamba</string>
+    <string name="onboard_tour_prayer_text">Qibla compass, kalapit na mosque, ang Quran, mga dua, ang 99 na Pangalan, tasbih counter, tala ng dasal at pag-aayuno. 14 paraan ng pagkalkula.</string>
+    <string name="onboard_tour_weather_title">Panahon at langit</string>
+    <string name="onboard_tour_weather_text">Oras-oras at araw-araw na forecast at kalidad ng hangin; sumasabay sa panahon ang screen. Kalendaryo ng buwan, eklipse, mga season at langit sa gabi.</string>
+    <string name="onboard_tour_tools_title">Pokus at mga tool</string>
+    <string name="onboard_tour_tools_text">Pomodoro, study timer, timer, stopwatch, interval training, metronome, chess clock, meeting planner at marami pa.</string>
+    <string name="onboard_tour_look_title">Gawin itong iyo</string>
+    <string name="onboard_tour_look_text">25 analog na dial, 24 kulay ng app, background na sumusunod sa liwanag ng araw, at laki ng teksto. Settings › Kulay at itsura.</string>
+    <string name="onboard_tour_widgets_title">Mga widget</string>
+    <string name="onboard_tour_widgets_text">Idagdag ang orasan, susunod na dasal, panahon, Buwan at petsang Hijri sa Home at Lock Screen, at makita rin sa relo mo.</string>
+    <string name="onboard_resume">Ituloy ang setup</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

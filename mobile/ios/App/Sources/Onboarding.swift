@@ -3,12 +3,13 @@ import UserNotifications
 
 /*
  * İlk kurulum sihirbazı (3 Kasım 2026, 2. analiz #4). 5 Kasım 2026'dan beri (sahibin isteği) sorulu akış:
- * hoş geldiniz → beş kısa soru (Vakitler, Hava, Takvim, Dünya, Mevsimler; her biri Evet/Hayır, yanıt alt çubuğu hemen
- * değiştirir) → özet (oluşan alt çubuk) → üç ipucu (kaydırma, tam ekran, Tümü; "Geç" yalnız burada) → güven kartı, konum
- * ve bildirim. Sorular atlanamaz; "Hayır" denen bölüm gizlenir ve bildirimi kapanır. Yeni kurulumda ve tanıtımın bu
- * sürümünü görmemiş eski kullanıcıda bir kez açılır (`onboard.seen` < `version`; 1.1'e güncelleyenler de görsün diye).
- * Ayarlar › Destek'ten yeniden gösterilir. Çizimler kodla (hareketi azalt açıksa durur). Markayı ve tanıtımı anlatma yeri
- * burasıdır (açılış ekranı yalnız simge, #83). Android'deki Onboarding.kt ile aynı akış ve anahtarlar.
+ * hoş geldiniz → güven kartı, konum ve bildirim → beş kısa soru (Vakitler, Hava, Takvim, Dünya, Mevsimler; her biri Evet/Hayır,
+ * yanıt alt çubuğu hemen değiştirir) → özet → "Başka neler var, öğrenmek ister misiniz?" (Evet: özellikler tek tek; Hayır:
+ * doğrudan son sayfa) → son sayfa "Diğer her şey Tümü'nde". "Geç" baştan itibaren her sayfada: soruların sonuna kadar geçilirse
+ * yeni kurulumda yalnız Saat açık kalır ve alt çubuğun ortasında "Kuruluma devam et" çıkar (Tümü sağda); kişi ayarlardan bir şey
+ * değiştirirse bu düğme kalkar. Özetten sonra "Geç" son sayfaya gider. Yeni kurulumda ve tanıtımın bu sürümünü görmemiş eski
+ * kullanıcıda bir kez açılır (`onboard.seen` < `version`). Ayarlar › Destek'ten yeniden gösterilir. Çizimler kodla (hareketi
+ * azalt açıksa durur). Android'deki Onboarding.kt ile aynı akış ve anahtarlar.
  */
 enum Onboarding {
     static let key = "onboard.pending"
@@ -16,22 +17,44 @@ enum Onboarding {
     static let seenKey = "onboard.seen"
     /// 2: sorulu akış ve güven kartı (1.1, 5 Kasım 2026)
     static let version = 2
-    /// Yeni kurulum işareti (Features.migrate yazar, finish siler): sorular boş başlar, eski kullanıcıda açık olanlar işaretli
+    /// Yeni kurulum işareti (Features.migrate yazar, bitince silinir): sorular boş başlar, geçilirse yalnız Saat açık kalır
     static let freshKey = "onboard.fresh"
+    /// Geçilen kurulum: alt çubukta "Kuruluma devam et" (yalnız yeni kurulumda)
+    static let resumeKey = "onboard.resume"
+    private static let sigKey = "onboard.resume.sig"
+    /// Bunlardan biri değişirse (kişi ayarlardan bir şey değiştirdi) "Kuruluma devam et" kalkar
+    private static let settingKeys = [Features.key, Features.barKey, "province", NotificationPrefs.enabledKey, "accent",
+                                      "appearance", Atmosphere.key, "h12", "units", "fontScale", "homeItems", "AppleLanguages"]
     /// Sorulan özellikler, sırayla (alt çubuğa giriş sırası da budur)
     static let questions: [AppTab] = [.prayer, .weather, .calendar, .world, .seasons]
-    /// Sayfa kimlikleri (CI -onboardPage N: 0 hoş geldiniz, 1–5 sorular, 6 özet, 7–9 ipuçları, 10 kurulum)
-    static let pages: [String] = ["welcome"] + questions.map { "q:" + $0.key } + ["summary", "tip:swipe", "tip:full", "tip:all", "setup"]
+    /// Özellik turu ("başka neler var" sorusuna Evet denince)
+    static let tours = ["alarm", "prayer", "weather", "tools", "look", "widgets"]
+    /// Sayfa kimlikleri (CI -onboardPage N: 0 hoş geldiniz, 1 kurulum, 2–6 sorular, 7 özet, 8 "başka neler var", 9–10 ipuçları,
+    /// 11–16 özellik turu, 17 son sayfa "Diğer her şey Tümü'nde")
+    static let pages: [String] = ["welcome", "setup"] + questions.map { "q:" + $0.key } +
+        ["summary", "more", "tip:swipe", "tip:full"] + tours.map { "tour:" + $0 } + ["tip:all"]
+    static let summary = pages.firstIndex(of: "summary")!
 
     static var pending: Bool { UserDefaults.standard.bool(forKey: key) }
     static var fresh: Bool { UserDefaults.standard.bool(forKey: freshKey) }
+    /// Sihirbazın açılacağı sayfa (kuruluma devam edilince kurulum sayfası)
+    static var startPage = 0
     /// Bu tanıtımda verilen yanıtlar
     static var answers: [AppTab: Bool] = [:]
+    /// Sihirbaz açılırken özellikler; eski kullanıcı geçerse seçimi geri gelir
+    private static var before: (String, String)?
 
-    /// Ayarlar › Destek › Tanıtımı yeniden göster: kök görünüm bu bildirimle sihirbazı açar
+    /// Ayarlar › Destek › Tanıtımı yeniden göster (ve "Kuruluma devam et"): kök görünüm bu bildirimle sihirbazı açar
     static let replayNote = Notification.Name("onboard.replay")
-    static func replay() {
+    static func replay() { open(at: 0) }
+
+    /// Alt çubuktaki "Kuruluma devam et": hoş geldiniz sayfası atlanır, kurulum sayfasından başlar
+    static func resumeSetup() { open(at: 1) }
+
+    private static func open(at page: Int) {
         answers = [:]
+        before = nil
+        startPage = page
         UserDefaults.standard.set(true, forKey: key)
         NotificationCenter.default.post(name: replayNote, object: nil)
     }
@@ -40,6 +63,12 @@ enum Onboarding {
     static func checkVersion() {
         let d = UserDefaults.standard
         if d.integer(forKey: seenKey) < version { d.set(true, forKey: key) }
+    }
+
+    /// Sihirbaz açılınca: o anki özellikler (eski kullanıcı geçerse geri yüklenir)
+    static func begin() {
+        let d = UserDefaults.standard
+        if before == nil { before = (d.string(forKey: Features.key) ?? "", d.string(forKey: Features.barKey) ?? "") }
     }
 
     /// Sorunun gösterilen yanıtı: verildiyse o, eski kullanıcıda açık/kapalı durumu, yeni kurulumda boş
@@ -62,6 +91,33 @@ enum Onboarding {
         }
     }
 
+    /// Sorular bitmeden "Geç": yeni kurulumda yalnız Saat (ve Tümü) açık kalır, soruların bölümleri bildirim göndermez ve alt
+    /// çubuğun ortasında "Kuruluma devam et" çıkar; eski kullanıcının seçimi geri gelir (onda devam düğmesi yok).
+    static func skip() {
+        let d = UserDefaults.standard
+        let isFresh = fresh
+        if isFresh {
+            Features.save([])
+            for t in questions { for k in notifyKeys(t) { d.set(false, forKey: k) } }
+        } else if let b = before {
+            d.set(b.0, forKey: Features.key)
+            d.set(b.1, forKey: Features.barKey)
+        }
+        d.set(false, forKey: key)
+        d.set(version, forKey: seenKey)
+        d.set(true, forKey: "notify.asked")
+        // Ayarların izi yukarıdaki değişikliklerden sonra alınır (yoksa kendi yazdığımız kapatır)
+        if isFresh {
+            d.set(signature(), forKey: sigKey)
+            d.set(true, forKey: resumeKey)
+        } else {
+            d.removeObject(forKey: resumeKey)
+            d.removeObject(forKey: sigKey)
+        }
+        answers = [:]
+        before = nil
+    }
+
     /// Bitince: yanıtlar kalıcı olur. "Hayır" denen bölümün bildirimi kapanır; yeni kurulumda Vakitler'e "Evet" denirse
     /// saatin altında sıradaki vakit görünür. Araçlar (Tümü'ndeki araçlar) her zaman açık kalır. Bildirim izni burada
     /// sorulduğu için açılıştaki kısa açıklama bir daha çıkmaz.
@@ -79,15 +135,36 @@ enum Onboarding {
         d.set(false, forKey: key)
         d.set(version, forKey: seenKey)
         d.set(true, forKey: "notify.asked")
-        d.removeObject(forKey: freshKey)
+        for k in [freshKey, resumeKey, sigKey] { d.removeObject(forKey: k) }
         answers = [:]
+        before = nil
     }
+
+    /// Ayarların izi: geçildiği andaki ayarlarla karşılaştırılır
+    private static func signature() -> String {
+        let d = UserDefaults.standard
+        return settingKeys.map { "\(d.object(forKey: $0) ?? "")" }.joined(separator: "|")
+    }
+
+    /// Kişi ayarlardan bir şey değiştirdiyse "Kuruluma devam et" kalkar (kök görünüm kayıt değişince çağırır)
+    static func checkResume() {
+        let d = UserDefaults.standard
+        guard !resumeChecking, d.bool(forKey: resumeKey), !pending, d.string(forKey: sigKey) != signature() else { return }
+        // Silmek de kayıt değişikliği bildirimi doğurur; aynı anda ikinci kez girilmez
+        resumeChecking = true
+        defer { resumeChecking = false }
+        for k in [resumeKey, sigKey, freshKey] { d.removeObject(forKey: k) }
+    }
+    private static var resumeChecking = false
 }
 
 struct OnboardingView: View {
     let done: () -> Void
-    /// CI ekran görüntüleri: -onboardPage N ile doğrudan bir adım
-    @State private var page = min(Onboarding.pages.count - 1, max(0, UserDefaults.standard.integer(forKey: "onboardPage")))
+    /// CI ekran görüntüleri: -onboardPage N ile doğrudan bir adım; yoksa Onboarding.startPage
+    @State private var page = min(Onboarding.pages.count - 1,
+                                  max(0, (UserDefaults.standard.object(forKey: "onboardPage") as? Int) ?? Onboarding.startPage))
+    /// Gelinen sayfalar: geri düğmesi oraya döner ("başka neler var" sorusuna Hayır denip son sayfaya atlandıysa o soruya)
+    @State private var history: [Int] = []
     /// Geçiş yönü (geri düğmesinde sayfa soldan gelir)
     @State private var forward = true
     /// Yanıtlar görünümde de tutulur ki düğmelerdeki işaret yenilensin
@@ -101,7 +178,7 @@ struct OnboardingView: View {
         VStack(spacing: 0) {
             HStack {
                 if page > 0 {
-                    Button { go(page - 1) } label: {
+                    Button { back() } label: {
                         Image(systemName: "chevron.backward").font(.title3.weight(.semibold))
                             .frame(width: 44, height: 44)
                     }
@@ -109,11 +186,19 @@ struct OnboardingView: View {
                     .accessibilityLabel(L("onboard.back"))
                 }
                 Spacer()
-                // "Geç" yalnız ipuçlarında: sorular atlanmaz, kurulum sayfasına geçilir
-                if id.hasPrefix("tip:") {
-                    Button(L("onboard.skip")) { go(last) }
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(Theme.muted)
+                // "Geç" baştan itibaren: sorular bitmeden geçilirse yalnız Saat açık kalır; özetten sonra son sayfaya gider
+                if page < last {
+                    Button(L("onboard.skip")) {
+                        if page < Onboarding.summary {
+                            Onboarding.skip()
+                            done()
+                        } else {
+                            go(last)
+                        }
+                    }
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Theme.muted)
+                    .padding(.horizontal, 8)
                 }
             }
             .padding(.horizontal, 12)
@@ -129,10 +214,10 @@ struct OnboardingView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .clipped()
             // Sayfa noktaları: seçili olan uzun çizgi
-            HStack(spacing: 6) {
+            HStack(spacing: 4) {
                 ForEach(0...last, id: \.self) { i in
                     Capsule().fill(i == page ? Theme.accent : Theme.border)
-                        .frame(width: i == page ? 18 : 6, height: 6)
+                        .frame(width: i == page ? 16 : 5, height: 5)
                 }
             }
             .padding(.bottom, 16)
@@ -142,29 +227,51 @@ struct OnboardingView: View {
                 .padding(.bottom, 24)
         }
         .background(AppBackdrop().ignoresSafeArea())
-        .task { notifyOn = PrayerNotifier.isAllowed(await PrayerNotifier.authorizationStatus()) }
+        .task {
+            Onboarding.begin()
+            notifyOn = PrayerNotifier.isAllowed(await PrayerNotifier.authorizationStatus())
+        }
     }
 
     private func go(_ to: Int) {
+        history.append(page)
+        move(to, forward: true)
+    }
+
+    private func back() {
+        move(history.popLast() ?? page - 1, forward: false)
+    }
+
+    private func move(_ to: Int, forward f: Bool) {
         let target = min(last, max(0, to))
         // Yön önce yazılır, sayfa bir sonraki turda değişir: çıkan sayfa da yeni yönle kayar
-        forward = target >= page
+        forward = f
         DispatchQueue.main.async { withAnimation(.easeInOut(duration: 0.3)) { page = target } }
     }
 
     @ViewBuilder private var bottomButtons: some View {
-        if id.hasPrefix("q:") {
+        if id.hasPrefix("q:"), let t = Onboarding.questions.first(where: { "q:" + $0.key == id }) {
             // Soru: Hayır / Evet; yanıt hemen uygulanır, sonraki soruya geçilir
-            let t = Onboarding.questions[page - 1]
             let shown = answers[t] ?? Onboarding.shown(t)
             HStack(spacing: 12) {
                 RoundButton(title: (shown == false ? "✓ " : "") + L("onboard.no")) { reply(t, false) }
                 RoundButton(title: (shown == true ? "✓ " : "") + L("onboard.yes"), prominent: true) { reply(t, true) }
             }
+        } else if id == "more" {
+            // Hayır: doğrudan son sayfa ("Diğer her şey Tümü'nde"); Evet: özellikler tek tek
+            HStack(spacing: 12) {
+                RoundButton(title: L("onboard.no")) { go(last) }
+                RoundButton(title: L("onboard.yes"), prominent: true) { go(page + 1) }
+            }
         } else {
-            let label = id == "welcome" ? "onboard.go" : id == "setup" ? "onboard.start" : "onboard.next"
+            let label = id == "welcome" ? "onboard.go" : id == "tip:all" ? "onboard.start" : "onboard.next"
             RoundButton(title: L(label), prominent: true) {
-                if page < last { go(page + 1) } else { done() }
+                if page < last {
+                    go(page + 1)
+                } else {
+                    Onboarding.finish()
+                    done()
+                }
             }
         }
     }
@@ -179,18 +286,34 @@ struct OnboardingView: View {
         let pid = Onboarding.pages[p]
         if pid == "welcome" {
             welcome
-        } else if pid.hasPrefix("q:") {
-            OnboardQuestion(tab: Onboarding.questions[p - 1], n: p, total: Onboarding.questions.count)
+        } else if pid == "setup" {
+            setup
+        } else if pid.hasPrefix("q:"), let i = Onboarding.questions.firstIndex(where: { "q:" + $0.key == pid }) {
+            OnboardQuestion(tab: Onboarding.questions[i], n: i + 1, total: Onboarding.questions.count)
         } else if pid == "summary" {
             summary
+        } else if pid == "more" {
+            OnboardFeature(icons: ["sparkles", "books", "star"], title: L("onboard.more.title"), text: L("onboard.more.text"))
         } else if pid == "tip:swipe" {
             OnboardTip(key: "onboard.swipe") { SwipeArt() }
         } else if pid == "tip:full" {
             OnboardTip(key: "onboard.full") { FullscreenArt() }
-        } else if pid == "tip:all" {
-            OnboardTip(key: "onboard.all") { AllArt() }
+        } else if pid.hasPrefix("tour:") {
+            let name = String(pid.dropFirst(5))
+            OnboardFeature(icons: tourIcons(name), title: L("onboard.tour.\(name).title"), text: L("onboard.tour.\(name).text"))
         } else {
-            setup
+            OnboardTip(key: "onboard.all") { AllArt() }
+        }
+    }
+
+    private func tourIcons(_ name: String) -> [String] {
+        switch name {
+        case "alarm": ["bed", "alarm", "moon"]
+        case "prayer": ["kaaba", "mosque", "beads"]
+        case "weather": ["telescope", "sun_cloud", "moon"]
+        case "tools": ["metronome", "tomato", "knight"]
+        case "look": ["sparkles", "palette", "clock"]
+        default: ["sun_cloud", "clock", "star_crescent"]
         }
     }
 
@@ -255,6 +378,7 @@ struct OnboardingView: View {
         }
     }
 
+    /// Güven kartı, konum ve bildirim (hoş geldiniz sayfasının hemen ardından)
     private var setup: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
@@ -297,6 +421,45 @@ struct OnboardingView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
             .padding(24)
+        }
+    }
+}
+
+/// "Başka neler var" sorusu ve özellik turu sayfaları: üç 3D simge, başlık ve kısa açıklama
+private struct OnboardFeature: View {
+    let icons: [String]
+    let title: String
+    let text: String
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 18) {
+                ZStack {
+                    Circle().fill(Theme.surface).frame(width: 190, height: 190)
+                    LineIcon(name: icons[0], size: 58)
+                        .frame(width: 84, height: 84)
+                        .background(Theme.surface2, in: Circle())
+                        .offset(x: -78, y: 44)
+                    LineIcon(name: icons[2], size: 52)
+                        .frame(width: 76, height: 76)
+                        .background(Theme.surface2, in: Circle())
+                        .offset(x: 80, y: -46)
+                    LineIcon(name: icons[1], size: 118)
+                }
+                .frame(width: 260, height: 220)
+                .environment(\.layoutDirection, .leftToRight)
+                .accessibilityHidden(true)
+                Text(title).font(.title2.weight(.bold)).foregroundStyle(Theme.text)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text(text).foregroundStyle(Theme.muted)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(3)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(.horizontal, 28)
+            .padding(.vertical, 12)
+            .frame(maxWidth: .infinity)
         }
     }
 }

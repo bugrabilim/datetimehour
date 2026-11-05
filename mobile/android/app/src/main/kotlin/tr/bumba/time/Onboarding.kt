@@ -64,6 +64,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.material3.IconButton
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.activity.compose.BackHandler
@@ -86,11 +88,13 @@ import kotlinx.coroutines.launch
 
 /**
  * İlk kurulum sihirbazı (3 Kasım 2026, 2. analiz #4). 5 Kasım 2026'dan beri (sahibin isteği) sorulu akış:
- * hoş geldiniz → beş kısa soru (Vakitler, Hava, Takvim, Dünya, Mevsimler; her biri Evet/Hayır, yanıt alt çubuğu hemen
- * değiştirir) → özet (oluşan alt çubuk) → üç ipucu (kaydırma, tam ekran, Tümü; "Geç" yalnız burada) → güven kartı, konum
- * ve bildirim. Sorular atlanamaz; "Hayır" denen bölüm gizlenir ve bildirimi kapanır. Yeni kurulumda ve tanıtımın bu
- * sürümünü görmemiş eski kullanıcıda bir kez açılır (`onboard.seen` < [VERSION]; 1.1'e güncelleyenler de görsün diye).
- * Ayarlar › Destek'ten yeniden gösterilir. iOS'taki Onboarding.swift ile aynı akış ve anahtarlar.
+ * hoş geldiniz → güven kartı, konum ve bildirim → beş kısa soru (Vakitler, Hava, Takvim, Dünya, Mevsimler; her biri Evet/Hayır,
+ * yanıt alt çubuğu hemen değiştirir) → özet → "Başka neler var, öğrenmek ister misiniz?" (Evet: özellikler tek tek; Hayır:
+ * doğrudan son sayfa) → son sayfa "Diğer her şey Tümü'nde". "Geç" baştan itibaren her sayfada: soruların sonuna kadar geçilirse
+ * yeni kurulumda yalnız Saat açık kalır ve alt çubuğun ortasında "Kuruluma devam et" çıkar (Tümü sağda); kişi ayarlardan bir şey
+ * değiştirirse bu düğme kalkar. Özetten sonra "Geç" son sayfaya gider. Yeni kurulumda ve tanıtımın bu sürümünü görmemiş eski
+ * kullanıcıda bir kez açılır (`onboard.seen` < [VERSION]). Ayarlar › Destek'ten yeniden gösterilir. iOS'taki Onboarding.swift ile
+ * aynı akış ve anahtarlar.
  */
 object Onboarding {
     const val KEY = "onboard.pending"
@@ -98,30 +102,79 @@ object Onboarding {
     const val SEEN_KEY = "onboard.seen"
     /** 2: sorulu akış ve güven kartı (1.1, 5 Kasım 2026) */
     const val VERSION = 2
+    /** Geçilen kurulum: alt çubukta "Kuruluma devam et" (yalnız yeni kurulumda) */
+    const val RESUME_KEY = "onboard.resume"
+    private const val SIG_KEY = "onboard.resume.sig"
+    /** Yeni kurulum işareti (bitince ya da eski kullanıcıda yok): sorular boş başlar, geçilirse yalnız Saat açık kalır */
+    private const val FRESH_KEY = "onboard.fresh"
+    /** Bunlardan biri değişirse (kişi ayarlardan bir şey değiştirdi) "Kuruluma devam et" kalkar */
+    private val SETTING_KEYS = listOf(
+        Features.KEY, Features.BAR_KEY, "province", NotifyPrefs.ENABLED, "accent", "appearance", Atmosphere.KEY, "h12", "units",
+        "fontScale", "homeItems", AppLanguage.KEY,
+    )
     /** Sorulan özellikler, sırayla (alt çubuğa giriş sırası da budur) */
     val QUESTIONS = listOf(Tab.PRAYER, Tab.WEATHER, Tab.CALENDAR, Tab.WORLD, Tab.SEASONS)
+    /** Özellik turu (başka neler var sorusuna Evet denince) */
+    val TOURS = listOf("alarm", "prayer", "weather", "tools", "look", "widgets")
+    /** Sayfa kimlikleri (testler ve CI başlangıç sayfasını sayıyla verir: 0 hoş geldiniz, 1 kurulum, 2–6 sorular, 7 özet,
+     *  8 "başka neler var", 9–10 ipuçları, 11–16 özellik turu, 17 son sayfa "Diğer her şey Tümü'nde") */
+    val PAGES: List<String> = listOf("welcome", "setup") + QUESTIONS.map { "q:" + Features.id(it) } +
+        listOf("summary", "more", "tip:swipe", "tip:full") + TOURS.map { "tour:$it" } + listOf("tip:all")
+    val SUMMARY = PAGES.indexOf("summary")
+    val MORE = PAGES.indexOf("more")
 
     var pending by mutableStateOf(false)
+        private set
+    /** Alt çubukta "Kuruluma devam et" */
+    var resume by mutableStateOf(false)
+        private set
+    /** Sihirbazın açılacağı sayfa (kuruluma devam edilince kurulum sayfası) */
+    var startPage = 0
         private set
     /** Yeni kurulum mu (sorular boş başlar; eski kullanıcıda açık özellikler işaretli gelir) */
     var fresh = false
         private set
     /** Bu tanıtımda verilen yanıtlar */
     val answers = mutableStateMapOf<Tab, Boolean>()
+    /** Sihirbaz açılırken özellikler; eski kullanıcı geçerse seçimi geri gelir */
+    private var before: Pair<Set<Tab>, List<Tab>>? = null
+    private val watcher = android.content.SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+        if (resume && !pending && key in SETTING_KEYS) checkResume()
+    }
 
     /** Features.load'dan: yeni kurulumsa ya da tanıtımın bu sürümü görülmediyse işaretler */
     fun load(fresh: Boolean) {
-        this.fresh = fresh
         val sp = Prefs.store
+        if (fresh) sp.edit().putBoolean(FRESH_KEY, true).apply()
+        this.fresh = sp.getBoolean(FRESH_KEY, false)
         if (fresh || sp.getInt(SEEN_KEY, 0) < VERSION) sp.edit().putBoolean(KEY, true).apply()
         pending = sp.getBoolean(KEY, false)
+        resume = sp.getBoolean(RESUME_KEY, false)
+        sp.registerOnSharedPreferenceChangeListener(watcher)
+        checkResume()
     }
 
     /** Ayarlar › Destek › Tanıtımı yeniden göster */
     fun replay() {
         answers.clear()
+        startPage = 0
+        before = null
         pending = true
         Prefs.store.edit().putBoolean(KEY, true).apply()
+    }
+
+    /** Alt çubuktaki "Kuruluma devam et": hoş geldiniz sayfası atlanır, kurulum sayfasından başlar */
+    fun resumeSetup() {
+        answers.clear()
+        startPage = 1
+        before = null
+        pending = true
+        Prefs.store.edit().putBoolean(KEY, true).apply()
+    }
+
+    /** Sihirbaz açılınca: o anki özellikler (eski kullanıcı geçerse geri yüklenir) */
+    fun begin() {
+        if (before == null) before = Features.enabled to Features.bar
     }
 
     /** Sorunun gösterilen yanıtı: verildiyse o, eski kullanıcıda açık/kapalı durumu, yeni kurulumda boş */
@@ -143,6 +196,26 @@ object Onboarding {
     }
 
     /**
+     * Sorular bitmeden "Geç": yeni kurulumda yalnız Saat (ve Tümü) açık kalır, soruların bölümleri bildirim göndermez ve alt
+     * çubuğun ortasında "Kuruluma devam et" çıkar; eski kullanıcının seçimi geri gelir (onda devam düğmesi yok).
+     */
+    fun skip() {
+        val e = Prefs.store.edit()
+        if (fresh) {
+            Features.save(emptySet())
+            for (t in QUESTIONS) for (k in notifyKeys(t)) e.putBoolean(k, false)
+        } else before?.let { (on, bar) -> Features.save(on); Features.saveBar(bar) }
+        e.putBoolean(KEY, false).putInt(SEEN_KEY, VERSION).putBoolean("notify.asked", true).remove(RESUME_KEY).remove(SIG_KEY)
+        e.apply()
+        // Ayarların izi yukarıdaki değişikliklerden sonra alınır (yoksa kendi yazdığımız kapatır)
+        if (fresh) Prefs.store.edit().putBoolean(RESUME_KEY, true).putString(SIG_KEY, signature()).apply()
+        resume = fresh
+        answers.clear()
+        before = null
+        pending = false
+    }
+
+    /**
      * Bitince: yanıtlar kalıcı olur. "Hayır" denen bölümün bildirimi kapanır; yeni kurulumda Vakitler'e "Evet" denirse
      * saatin altında sıradaki vakit görünür. Araçlar (Tümü'ndeki araçlar) her zaman açık kalır. Bildirim izni burada
      * sorulduğu için açılıştaki kısa açıklama bir daha çıkmaz.
@@ -150,7 +223,8 @@ object Onboarding {
     fun finish() {
         val e = Prefs.store.edit()
         for ((t, yes) in answers) if (!yes) for (k in notifyKeys(t)) e.putBoolean(k, false)
-        e.putBoolean(KEY, false).putInt(SEEN_KEY, VERSION).putBoolean("notify.asked", true).apply()
+        e.putBoolean(KEY, false).putInt(SEEN_KEY, VERSION).putBoolean("notify.asked", true).remove(RESUME_KEY).remove(SIG_KEY)
+            .remove(FRESH_KEY).apply()
         if (fresh && answers[Tab.PRAYER] == true && !Prefs.store.contains("homeItems")) {
             val layout = HomeLayout(HomeItem.DEFAULT_RAW)
             layout.enabled += HomeItem.NEXT
@@ -158,70 +232,107 @@ object Onboarding {
         }
         if (fresh && !Features.isOn(Tab.TOOLS)) Features.set(Tab.TOOLS, true)
         answers.clear()
+        before = null
+        resume = false
+        fresh = false
         pending = false
+    }
+
+    /** Ayarların izi: geçildiği andaki ayarlarla karşılaştırılır */
+    private fun signature(): String {
+        val all = Prefs.store.all
+        return SETTING_KEYS.joinToString("|") { "${all[it] ?: ""}" }
+    }
+
+    /** Kişi ayarlardan bir şey değiştirdiyse "Kuruluma devam et" kalkar */
+    fun checkResume() {
+        if (!resume) return
+        val sp = Prefs.store
+        if (sp.getString(SIG_KEY, null) != signature()) {
+            sp.edit().remove(RESUME_KEY).remove(SIG_KEY).remove(FRESH_KEY).apply()
+            resume = false
+            fresh = false
+        }
     }
 }
 
-/** Sayfa kimlikleri (testler ve CI başlangıç sayfasını sayıyla verir: 0 hoş geldiniz, 1–5 sorular, 6 özet, 7–9 ipuçları, 10 kurulum) */
-private val ONBOARD_PAGES: List<String> =
-    listOf("welcome") + Onboarding.QUESTIONS.map { "q:" + Features.id(it) } + listOf("summary", "tip:swipe", "tip:full", "tip:all", "setup")
-
 @Composable
-fun OnboardingScreen(startPage: Int = 0, onDone: () -> Unit) {
-    val last = ONBOARD_PAGES.size - 1
+fun OnboardingScreen(startPage: Int = Onboarding.startPage, onDone: () -> Unit) {
+    val pages = Onboarding.PAGES
+    val last = pages.size - 1
     val pager = rememberPagerState(initialPage = startPage.coerceIn(0, last)) { last + 1 }
     val scope = rememberCoroutineScope()
     val page = pager.currentPage
-    val id = ONBOARD_PAGES[page]
-    fun go(to: Int) { scope.launch { pager.animateScrollToPage(to.coerceIn(0, last)) } }
-    BackHandler(enabled = page > 0) { go(page - 1) }
+    val id = pages[page]
+    // Geri düğmesi gelinen sayfaya döner ("başka neler var" sorusuna Hayır denip son sayfaya atlandıysa oraya)
+    val history = remember { mutableStateListOf<Int>() }
+    LaunchedEffect(Unit) { Onboarding.begin() }
+    fun go(to: Int) { history.add(page); scope.launch { pager.animateScrollToPage(to.coerceIn(0, last)) } }
+    fun back() {
+        val to = history.removeLastOrNull() ?: (page - 1)
+        scope.launch { pager.animateScrollToPage(to.coerceIn(0, last)) }
+    }
+    BackHandler(enabled = page > 0) { back() }
     Column(Modifier.fillMaxSize().appBackdrop(Theme.c).statusBarsPadding().navigationBarsPadding()) {
         Row(Modifier.fillMaxWidth().height(48.dp).padding(horizontal = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-            if (page > 0) IconButton(onClick = { go(page - 1) }) {
+            if (page > 0) IconButton(onClick = { back() }) {
                 Icon(Icons.AutoMirrored.Filled.ArrowBack, L("onboard.back"), tint = Theme.c.muted)
             }
             Spacer(Modifier.weight(1f))
-            // "Geç" yalnız ipuçlarında: sorular atlanmaz, kurulum sayfasına geçilir
-            if (id.startsWith("tip:")) TextButton(onClick = { go(last) }) {
+            // "Geç" baştan itibaren: sorular bitmeden geçilirse yalnız Saat açık kalır; özetten sonra son sayfaya gider
+            if (page < last) TextButton(onClick = { if (page < Onboarding.SUMMARY) Onboarding.skip() else go(last) }) {
                 Text(L("onboard.skip"), color = Theme.c.muted, fontWeight = FontWeight.SemiBold)
             }
         }
         HorizontalPager(pager, Modifier.weight(1f).fillMaxWidth(), userScrollEnabled = false) { p ->
-            val pid = ONBOARD_PAGES[p]
+            val pid = pages[p]
             when {
                 pid == "welcome" -> WelcomePage()
-                pid.startsWith("q:") -> QuestionPage(Onboarding.QUESTIONS[p - 1], p, Onboarding.QUESTIONS.size)
+                pid == "setup" -> SetupPage()
+                pid.startsWith("q:") -> {
+                    val i = Onboarding.QUESTIONS.indexOfFirst { "q:" + Features.id(it) == pid }
+                    QuestionPage(Onboarding.QUESTIONS[i], i + 1, Onboarding.QUESTIONS.size)
+                }
                 pid == "summary" -> SummaryPage()
+                pid == "more" -> MorePage()
                 pid == "tip:swipe" -> TipPage("onboard.swipe") { SwipeArt() }
                 pid == "tip:full" -> TipPage("onboard.full") { FullscreenArt() }
-                pid == "tip:all" -> TipPage("onboard.all") { AllArt() }
-                else -> SetupPage()
+                pid.startsWith("tour:") -> TourPage(pid.removePrefix("tour:"))
+                else -> TipPage("onboard.all") { AllArt() }
             }
         }
         // Sayfa noktaları: seçili olan uzun çizgi
         Row(Modifier.fillMaxWidth().padding(bottom = 16.dp), horizontalArrangement = Arrangement.Center) {
             repeat(last + 1) { i ->
                 val on = i == page
-                Box(Modifier.padding(horizontal = 3.dp).size(if (on) 18.dp else 6.dp, 6.dp)
+                Box(Modifier.padding(horizontal = 2.dp).size(if (on) 16.dp else 5.dp, 5.dp)
                     .background(if (on) Theme.c.accent else Theme.c.border, RoundedCornerShape(50)))
             }
         }
         val bottom = Modifier.fillMaxWidth().padding(horizontal = 24.dp).padding(bottom = 24.dp)
-        if (id.startsWith("q:")) {
-            // Soru: Hayır / Evet; yanıt hemen uygulanır, sonraki soruya geçilir
-            val t = Onboarding.QUESTIONS[page - 1]
-            val shown = Onboarding.shown(t)
-            Row(bottom, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                RoundButton((if (shown == false) "✓ " else "") + L("onboard.no"), false, Modifier.weight(1f).heightIn(min = 52.dp)) {
-                    Onboarding.answer(t, false); go(page + 1)
-                }
-                RoundButton((if (shown == true) "✓ " else "") + L("onboard.yes"), true, Modifier.weight(1f).heightIn(min = 52.dp)) {
-                    Onboarding.answer(t, true); go(page + 1)
+        when {
+            id.startsWith("q:") -> {
+                // Soru: Hayır / Evet; yanıt hemen uygulanır, sonraki soruya geçilir
+                val t = Onboarding.QUESTIONS.first { "q:" + Features.id(it) == id }
+                val shown = Onboarding.shown(t)
+                Row(bottom, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    RoundButton((if (shown == false) "✓ " else "") + L("onboard.no"), false, Modifier.weight(1f).heightIn(min = 52.dp)) {
+                        Onboarding.answer(t, false); go(page + 1)
+                    }
+                    RoundButton((if (shown == true) "✓ " else "") + L("onboard.yes"), true, Modifier.weight(1f).heightIn(min = 52.dp)) {
+                        Onboarding.answer(t, true); go(page + 1)
+                    }
                 }
             }
-        } else {
-            val label = when (id) { "welcome" -> "onboard.go"; "setup" -> "onboard.start"; else -> "onboard.next" }
-            RoundButton(L(label), true, bottom.heightIn(min = 52.dp)) { if (page < last) go(page + 1) else onDone() }
+            id == "more" -> Row(bottom, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                // Hayır: doğrudan son sayfa ("Diğer her şey Tümü'nde"); Evet: özellikler tek tek
+                RoundButton(L("onboard.no"), false, Modifier.weight(1f).heightIn(min = 52.dp)) { go(last) }
+                RoundButton(L("onboard.yes"), true, Modifier.weight(1f).heightIn(min = 52.dp)) { go(page + 1) }
+            }
+            else -> {
+                val label = when (id) { "welcome" -> "onboard.go"; "tip:all" -> "onboard.start"; else -> "onboard.next" }
+                RoundButton(L(label), true, bottom.heightIn(min = 52.dp)) { if (page < last) go(page + 1) else onDone() }
+            }
         }
     }
 }
@@ -350,6 +461,58 @@ private fun TipPage(key: String, art: @Composable () -> Unit) {
         Box(Modifier.size(290.dp).semantics { invisibleToUser() }, contentAlignment = Alignment.Center) { Ltr { art() } }
         Text(L("$key.title"), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
         Text(L("$key.text"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
+    }
+}
+
+/** "Başka neler var, öğrenmek ister misiniz?": altta Hayır (son sayfaya) / Evet (özellikler tek tek) */
+@Composable
+private fun MorePage() {
+    Column(
+        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 28.dp, vertical = 12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(18.dp, Alignment.CenterVertically),
+    ) {
+        Box(Modifier.semantics { invisibleToUser() }) { IconCluster(listOf("sparkles", "books", "star")) }
+        Text(L("onboard.more.title"), color = Theme.c.text, fontSize = 25.sp, lineHeight = 31.sp, fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center)
+        Text(L("onboard.more.text"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
+    }
+}
+
+/** Özellik turu sayfası: üç 3D simge, başlık ve kısa açıklama (`onboard.tour.<ad>.title/text`) */
+@Composable
+private fun TourPage(name: String) {
+    val icons = when (name) {
+        "alarm" -> listOf("bed", "alarm", "moon")
+        "prayer" -> listOf("kaaba", "mosque", "beads")
+        "weather" -> listOf("telescope", "sun_cloud", "moon")
+        "tools" -> listOf("metronome", "tomato", "knight")
+        "look" -> listOf("sparkles", "palette", "clock")
+        else -> listOf("sun_cloud", "clock", "star_crescent")
+    }
+    Column(
+        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 28.dp, vertical = 12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(18.dp, Alignment.CenterVertically),
+    ) {
+        Box(Modifier.semantics { invisibleToUser() }) { IconCluster(icons) }
+        Text(L("onboard.tour.$name.title"), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        Text(L("onboard.tour.$name.text"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
+    }
+}
+
+/** Üç 3D simge: ortada büyük, iki yanda küçük; arkada yumuşak daire */
+@Composable
+private fun IconCluster(icons: List<String>) {
+    Box(Modifier.size(260.dp, 220.dp), contentAlignment = Alignment.Center) {
+        Box(Modifier.size(190.dp).background(Theme.c.surface, CircleShape))
+        Box(Modifier.offset(x = (-78).dp, y = 44.dp).size(84.dp).background(Theme.c.surface2, CircleShape), contentAlignment = Alignment.Center) {
+            LineIcon(icons[0], 58.dp)
+        }
+        Box(Modifier.offset(x = 80.dp, y = (-46).dp).size(76.dp).background(Theme.c.surface2, CircleShape), contentAlignment = Alignment.Center) {
+            LineIcon(icons[2], 52.dp)
+        }
+        LineIcon(icons[1], 118.dp)
     }
 }
 

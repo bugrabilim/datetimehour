@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">گھڑی کی اسکرین پر دائیں یا بائیں سوائپ کریں؛ ہر بار گھڑی کا نیا انداز آتا ہے۔ سیکنڈ دکھانے یا چھپانے کے لیے گھڑی کو چھوئیں۔</string>
     <string name="onboard_full_title">پوری اسکرین اور رات کا موڈ</string>
     <string name="onboard_full_text">پوری اسکرین کو چھوئیں یا فون کو آڑا کریں، گھڑی پوری اسکرین پر آ جائے گی۔ رات کے موڈ میں رنگ مدھم سرخ ہو جاتا ہے اور بستر کے پاس آنکھوں کو نہیں چبھتا۔</string>
-    <string name="onboard_all_title">سب کچھ «سب» میں</string>
+    <string name="onboard_all_title">باقی سب کچھ «سب» میں</string>
     <string name="onboard_all_text">نیچے کی پٹی میں «سب» میں تمام ٹولز، تلاش اور ترتیبات ہیں؛ پسندیدہ چیزوں کو اوپر رکھنے کے لیے دیر تک دبائیں۔ گھڑی کے نیچے تاریخ، نماز کے اوقات یا موسم شامل کرنے کے لیے: ترتیبات › گھڑی کی اسکرین میں ترمیم۔</string>
     <string name="onboard_replay">تعارف دوبارہ دکھائیں</string>
     <string name="atmo_daylight">دن کی روشنی</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">صرف فوکس بلاک کے لیے، چنی ہوئی ایپ کھلنے پر خبردار کرنے کو۔ یہ معلومات فون سے باہر نہیں جاتی۔</string>
     <string name="perms_dnd_title">ڈسٹرب نہ کریں تک رسائی</string>
     <string name="perms_dnd_why">صرف نماز کا وقت ہونے پر فون خاموش کرنے کے لیے۔ نہ دیں تو خودکار خاموشی کام نہیں کرے گی۔</string>
+    <string name="onboard_more_title">کیا آپ جاننا چاہیں گے کہ اور کیا کچھ ہے؟</string>
+    <string name="onboard_more_text">ہم دوسری خصوصیات چند مختصر صفحوں میں ایک ایک کر کے دکھائیں گے۔ نہیں کہیں تو سب کچھ «سب» میں آپ کا منتظر ہے۔</string>
+    <string name="onboard_tour_alarm_title">الارم اور نیند</string>
+    <string name="onboard_tour_alarm_text">فون خاموش ہو تب بھی بجنے والا الارم؛ بند کرنے کے لیے حساب، فون ہلانا یا کوڈ اسکین کرنا جیسے کام۔ نیند کا منصوبہ، نیند کی آوازیں اور اسمارٹ الارم۔</string>
+    <string name="onboard_tour_prayer_title">نماز کے اوقات اور عبادت</string>
+    <string name="onboard_tour_prayer_text">قبلہ نما، قریبی مساجد، قرآنِ کریم، دعائیں، اسمائے حسنیٰ، تسبیح شمار، نماز اور روزے کا حساب۔ 14 حسابی طریقے۔</string>
+    <string name="onboard_tour_weather_title">موسم اور آسمان</string>
+    <string name="onboard_tour_weather_text">گھنٹہ وار اور روزانہ پیش گوئی، ہوا کا معیار؛ اسکرین موسم کے ساتھ بدلتی ہے۔ چاند کا کیلنڈر، گرہن، موسم اور رات کا آسمان۔</string>
+    <string name="onboard_tour_tools_title">توجہ اور ٹولز</string>
+    <string name="onboard_tour_tools_text">پومودورو، پڑھائی کا ٹائمر، ٹائمر، اسٹاپ واچ، وقفہ وار ورزش، میٹرونوم، شطرنج گھڑی، میٹنگ پلانر اور بہت کچھ۔</string>
+    <string name="onboard_tour_look_title">اپنی مرضی کا انداز</string>
+    <string name="onboard_tour_look_text">25 اینالاگ ڈائل، ایپ کے 24 رنگ، دن کی روشنی کے ساتھ بدلتا پس منظر اور تحریر کا سائز۔ ترتیبات › رنگ اور انداز۔</string>
+    <string name="onboard_tour_widgets_title">ویجٹس</string>
+    <string name="onboard_tour_widgets_text">ہوم اور لاک اسکرین پر گھڑی، اگلی نماز، موسم، چاند اور ہجری تاریخ لگائیں؛ اپنی اسمارٹ واچ پر بھی دیکھیں۔</string>
+    <string name="onboard_resume">سیٹ اپ جاری رکھیں</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">На экране часов смахивайте влево или вправо — каждый раз появляется другой вид часов. Коснитесь часов, чтобы показать или скрыть секунды.</string>
     <string name="onboard_full_title">Во весь экран и ночной режим</string>
     <string name="onboard_full_text">Нажмите «Во весь экран» или поверните телефон горизонтально — часы займут весь экран. В ночном режиме они светятся тусклым красным и не слепят у кровати.</string>
-    <string name="onboard_all_title">Всё — во вкладке «Все»</string>
+    <string name="onboard_all_title">Всё остальное — во вкладке «Все»</string>
     <string name="onboard_all_text">Во вкладке «Все» на нижней панели — все инструменты, поиск и настройки; удерживайте избранное, чтобы закрепить его сверху. Чтобы добавить под часы дату, время намаза или погоду: Настройки › Изменить экран часов.</string>
     <string name="onboard_replay">Показать знакомство снова</string>
     <string name="atmo_daylight">Дневной свет</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">Только для блокировки во время фокуса — предупредить, когда открыто выбранное приложение. Эти данные не покидают телефон.</string>
     <string name="perms_dnd_title">Доступ к «Не беспокоить»</string>
     <string name="perms_dnd_why">Только чтобы выключать звук телефона во время намаза. Без этого автоматическое отключение звука не работает.</string>
+    <string name="onboard_more_title">Хотите узнать, что ещё есть в приложении?</string>
+    <string name="onboard_more_text">Покажем остальные возможности по одной на нескольких коротких страницах. Если нет — всё ждёт вас во вкладке «Все».</string>
+    <string name="onboard_tour_alarm_title">Будильник и сон</string>
+    <string name="onboard_tour_alarm_text">Будильник звонит даже в беззвучном режиме, а для отключения есть задания: пример, встряхивание или сканирование кода. План сна, звуки для сна и умный будильник.</string>
+    <string name="onboard_tour_prayer_title">Время намаза и поклонение</string>
+    <string name="onboard_tour_prayer_text">Компас киблы, ближайшие мечети, Коран, дуа, 99 имён, счётчик тасбиха, учёт намазов и постов. 14 методов расчёта.</string>
+    <string name="onboard_tour_weather_title">Погода и небо</string>
+    <string name="onboard_tour_weather_text">Почасовой и дневной прогноз, качество воздуха; экран оживает вместе с погодой. Лунный календарь, затмения, времена года и ночное небо.</string>
+    <string name="onboard_tour_tools_title">Концентрация и инструменты</string>
+    <string name="onboard_tour_tools_text">Помодоро, таймер учёбы, таймер, секундомер, интервальные тренировки, метроном, шахматные часы, планировщик встреч и многое другое.</string>
+    <string name="onboard_tour_look_title">Ваш собственный стиль</string>
+    <string name="onboard_tour_look_text">25 аналоговых циферблатов, 24 цвета приложения, фон, меняющийся с дневным светом, и размер текста. Настройки › Цвет и вид.</string>
+    <string name="onboard_tour_widgets_title">Виджеты</string>
+    <string name="onboard_tour_widgets_text">Добавьте часы, следующий намаз, погоду, Луну и дату по хиджре на экран «Домой» и экран блокировки — и смотрите их на часах.</string>
+    <string name="onboard_resume">Продолжить настройку</string>
     <string name="app_name">Время и дата</string>
 </resources>

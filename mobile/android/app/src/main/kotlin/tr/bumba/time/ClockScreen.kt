@@ -146,8 +146,9 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
                 }
                 // Yenilikler: yeni kadranlar bir kez tanıtılır (2. analiz #1)
                 Box(Modifier.padding(horizontal = 16.dp)) { DialNewsCard { onSettings("dials") } }
-                // Hiçbir özellik açık değilse (ilk açılış) özellikleri açmaya çağıran tek satır
-                if (Features.enabled.isEmpty()) {
+                // Hiçbir özellik açık değilse (ilk açılış) özellikleri açmaya çağıran tek satır; kurulum geçildiyse alt çubukta
+                // "Kuruluma devam et" aynı işi gördüğü için gösterilmez
+                if (Features.enabled.isEmpty() && !Onboarding.resume) {
                     TextButton(onClick = { onSettings("features") }) {
                         Icon(Icons.Filled.Apps, null, tint = Theme.c.muted, modifier = Modifier.size(18.dp))
                         Text(" " + L("features.hint"), color = Theme.c.muted, fontSize = 14.sp, textAlign = TextAlign.Center)

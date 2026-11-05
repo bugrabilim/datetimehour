@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">On the clock screen, swipe left or right; each swipe brings another clock style. Tap the clock to show or hide the seconds.</string>
     <string name="onboard_full_title">Full screen and night mode</string>
     <string name="onboard_full_text">Tap Full screen or turn your phone sideways and the clock fills the screen. Night mode turns it a dim red that won\'t dazzle you at the bedside.</string>
-    <string name="onboard_all_title">Everything is under All</string>
+    <string name="onboard_all_title">Everything else is under All</string>
     <string name="onboard_all_text">All in the bottom bar has every tool, search and Settings; long-press your favourites to pin them at the top. To add the date, prayer times or weather under the clock: Settings › Edit clock screen.</string>
     <string name="onboard_replay">Show the intro again</string>
     <string name="atmo_daylight">Daylight</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">Only for focus blocking, to warn you when a chosen app opens. This never leaves your phone.</string>
     <string name="perms_dnd_title">Do Not Disturb access</string>
     <string name="perms_dnd_why">Only to silence your phone at prayer time. If not, auto-silence doesn\'t work.</string>
+    <string name="onboard_more_title">Would you like to see what else is here?</string>
+    <string name="onboard_more_text">We\'ll show the other features one by one on a few short pages. If you say no, they\'re all waiting under All.</string>
+    <string name="onboard_tour_alarm_title">Alarms and sleep</string>
+    <string name="onboard_tour_alarm_text">Alarms that ring even in silent mode, with tasks to turn them off such as math, shaking or scanning a code. A sleep plan, sleep sounds and a smart alarm.</string>
+    <string name="onboard_tour_prayer_title">Prayer times and worship</string>
+    <string name="onboard_tour_prayer_text">Qibla compass, nearby mosques, the Quran, duas, the 99 Names, a tasbih counter, prayer and fasting tracker. 14 calculation methods and 973 districts of Türkiye.</string>
+    <string name="onboard_tour_weather_title">Weather and sky</string>
+    <string name="onboard_tour_weather_text">Hourly and daily forecasts and air quality; the screen comes alive with the weather. Moon calendar, eclipses, seasons and the night sky.</string>
+    <string name="onboard_tour_tools_title">Focus and tools</string>
+    <string name="onboard_tour_tools_text">Pomodoro, study timer, timer, stopwatch, interval training, metronome, chess clock, meeting planner and more.</string>
+    <string name="onboard_tour_look_title">Make it yours</string>
+    <string name="onboard_tour_look_text">25 analog dials, 24 app colors, a background that follows daylight, and text size. Settings › Color and appearance.</string>
+    <string name="onboard_tour_widgets_title">Widgets</string>
+    <string name="onboard_tour_widgets_text">Add the clock, next prayer, weather, the Moon and the Hijri date to your Home and Lock Screen, and see them on your watch too.</string>
+    <string name="onboard_resume">Continue setup</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">Na tela do relógio, deslize para a esquerda ou para a direita; cada gesto mostra outro modelo de relógio. Toque no relógio para mostrar ou ocultar os segundos.</string>
     <string name="onboard_full_title">Tela cheia e modo noturno</string>
     <string name="onboard_full_text">Toque em Tela cheia ou gire o celular na horizontal e o relógio ocupa a tela toda. O modo noturno deixa tudo em um vermelho suave que não ofusca ao lado da cama.</string>
-    <string name="onboard_all_title">Tudo está em \"Tudo\"</string>
+    <string name="onboard_all_title">Todo o resto está em \"Tudo\"</string>
     <string name="onboard_all_text">Em \"Tudo\", na barra inferior, ficam todas as ferramentas, a busca e os Ajustes; toque e segure seus favoritos para fixá-los no topo. Para pôr a data, os horários de oração ou o clima abaixo do relógio: Ajustes › Editar tela do relógio.</string>
     <string name="onboard_replay">Ver a apresentação de novo</string>
     <string name="atmo_daylight">Luz do dia</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">Só para o bloqueio de foco, para avisar quando um app escolhido abrir. Isso nunca sai do celular.</string>
     <string name="perms_dnd_title">Acesso ao Não perturbe</string>
     <string name="perms_dnd_why">Só para silenciar o celular na hora da oração. Se não, o silêncio automático não funciona.</string>
+    <string name="onboard_more_title">Quer conhecer o que mais o app oferece?</string>
+    <string name="onboard_more_text">Mostramos os outros recursos um a um em poucas páginas curtas. Se preferir não, tudo espera por você em \"Tudo\".</string>
+    <string name="onboard_tour_alarm_title">Alarme e sono</string>
+    <string name="onboard_tour_alarm_text">Alarmes que tocam até no modo silencioso, com tarefas para desligar como contas, sacudir o celular ou ler um código. Plano de sono, sons para dormir e alarme inteligente.</string>
+    <string name="onboard_tour_prayer_title">Orações e culto</string>
+    <string name="onboard_tour_prayer_text">Bússola da qibla, mesquitas próximas, o Alcorão, súplicas, os 99 nomes, contador de tasbih, acompanhamento de orações e jejuns. 14 métodos de cálculo.</string>
+    <string name="onboard_tour_weather_title">Clima e céu</string>
+    <string name="onboard_tour_weather_text">Previsão por hora e por dia e qualidade do ar; a tela ganha vida com o clima. Calendário lunar, eclipses, estações e céu noturno.</string>
+    <string name="onboard_tour_tools_title">Foco e ferramentas</string>
+    <string name="onboard_tour_tools_text">Pomodoro, cronômetro de estudo, timer, cronômetro, treino intervalado, metrônomo, relógio de xadrez, planejador de reuniões e mais.</string>
+    <string name="onboard_tour_look_title">Do seu jeito</string>
+    <string name="onboard_tour_look_text">25 mostradores analógicos, 24 cores do app, um fundo que acompanha a luz do dia e tamanho do texto. Ajustes › Cor e aparência.</string>
+    <string name="onboard_tour_widgets_title">Widgets</string>
+    <string name="onboard_tour_widgets_text">Adicione o relógio, a próxima oração, o clima, a Lua e a data hijri à Tela de Início e à Tela Bloqueada, e veja também no seu relógio.</string>
+    <string name="onboard_resume">Continuar configuração</string>
     <string name="app_name">Hora e Data</string>
 </resources>

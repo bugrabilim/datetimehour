@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">در صفحهٔ ساعت به چپ یا راست بکشید؛ هر بار مدل دیگری از ساعت می‌آید. برای نمایش یا پنهان کردن ثانیه‌ها روی ساعت بزنید.</string>
     <string name="onboard_full_title">تمام‌صفحه و حالت شب</string>
     <string name="onboard_full_text">روی «تمام‌صفحه» بزنید یا گوشی را افقی کنید تا ساعت کل صفحه را بگیرد. در حالت شب رنگ آن قرمز کم‌نور می‌شود و کنار تخت چشم را نمی‌زند.</string>
-    <string name="onboard_all_title">همه‌چیز در «همه»</string>
+    <string name="onboard_all_title">بقیهٔ همه‌چیز در «همه»</string>
     <string name="onboard_all_text">در «همه» در نوار پایین همهٔ ابزارها، جست‌وجو و تنظیمات هست؛ موارد پرکاربرد را با لمس طولانی به بالا سنجاق کنید. برای افزودن تاریخ، اوقات نماز یا آب‌وهوا زیر ساعت: تنظیمات › ویرایش صفحهٔ ساعت.</string>
     <string name="onboard_replay">نمایش دوبارهٔ معرفی</string>
     <string name="atmo_daylight">نور روز</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">فقط برای مسدودسازی تمرکز، تا هنگام باز شدن برنامه‌ی انتخابی هشدار دهد. این اطلاعات از گوشی بیرون نمی‌رود.</string>
     <string name="perms_dnd_title">دسترسی به «مزاحم نشوید»</string>
     <string name="perms_dnd_why">فقط برای بی‌صدا کردن گوشی هنگام رسیدن وقت نماز. اگر ندهید، بی‌صدا شدن خودکار کار نمی‌کند.</string>
+    <string name="onboard_more_title">می‌خواهید ببینید چه امکانات دیگری هست؟</string>
+    <string name="onboard_more_text">امکانات دیگر را یکی‌یکی در چند صفحهٔ کوتاه نشان می‌دهیم. اگر نه، همه در «همه» منتظر شما هستند.</string>
+    <string name="onboard_tour_alarm_title">زنگ هشدار و خواب</string>
+    <string name="onboard_tour_alarm_text">زنگی که در حالت بی‌صدا هم به صدا درمی‌آید، با کارهایی برای خاموش کردنش مثل حساب، تکان دادن یا اسکن کد. برنامهٔ خواب، صداهای خواب و زنگ هوشمند.</string>
+    <string name="onboard_tour_prayer_title">اوقات نماز و عبادت</string>
+    <string name="onboard_tour_prayer_text">قطب‌نمای قبله، مساجد نزدیک، قرآن کریم، دعاها، اسماءالحسنی، تسبیح‌شمار، پیگیری نماز و روزه. 14 روش محاسبه.</string>
+    <string name="onboard_tour_weather_title">هوا و آسمان</string>
+    <string name="onboard_tour_weather_text">پیش‌بینی ساعتی و روزانه، کیفیت هوا؛ صفحه با هوا جان می‌گیرد. تقویم ماه، گرفت‌ها، فصل‌ها و آسمان شب.</string>
+    <string name="onboard_tour_tools_title">تمرکز و ابزارها</string>
+    <string name="onboard_tour_tools_text">پومودورو، زمان‌سنج درس، تایمر، کرونومتر، تمرین تناوبی، مترونوم، ساعت شطرنج، برنامه‌ریز جلسه و بیشتر.</string>
+    <string name="onboard_tour_look_title">ظاهر دلخواه شما</string>
+    <string name="onboard_tour_look_text">25 صفحهٔ عقربه‌ای، 24 رنگ برنامه، پس‌زمینه‌ای که با نور روز تغییر می‌کند و اندازهٔ نوشته. تنظیمات › رنگ و ظاهر.</string>
+    <string name="onboard_tour_widgets_title">ابزارک‌ها</string>
+    <string name="onboard_tour_widgets_text">ساعت، نماز بعدی، هوا، ماه و تاریخ هجری را به صفحهٔ اصلی و صفحهٔ قفل بیفزایید؛ روی ساعت هوشمندتان هم ببینید.</string>
+    <string name="onboard_resume">ادامهٔ راه‌اندازی</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

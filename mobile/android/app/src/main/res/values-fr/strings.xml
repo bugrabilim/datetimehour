@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">Sur l\'écran de l\'horloge, balayez vers la gauche ou la droite : chaque geste affiche un autre modèle. Touchez l\'horloge pour afficher ou masquer les secondes.</string>
     <string name="onboard_full_title">Plein écran et mode nuit</string>
     <string name="onboard_full_text">Touchez Plein écran ou tournez le téléphone à l\'horizontale : l\'horloge occupe tout l\'écran. Le mode nuit la passe en rouge tamisé qui n\'éblouit pas au chevet.</string>
-    <string name="onboard_all_title">Tout est dans « Tout »</string>
+    <string name="onboard_all_title">Tout le reste est dans « Tout »</string>
     <string name="onboard_all_text">« Tout », dans la barre du bas, réunit tous les outils, la recherche et les Réglages ; appuyez longuement sur vos favoris pour les épingler en haut. Pour ajouter la date, les heures de prière ou la météo sous l\'horloge : Réglages › Modifier l\'écran de l\'horloge.</string>
     <string name="onboard_replay">Revoir la présentation</string>
     <string name="atmo_daylight">Lumière du jour</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">Uniquement pour le blocage de concentration, afin de vous prévenir quand une appli choisie s\'ouvre. Cela ne quitte jamais votre téléphone.</string>
     <string name="perms_dnd_title">Accès à Ne pas déranger</string>
     <string name="perms_dnd_why">Uniquement pour couper le son du téléphone à l\'heure de la prière. Sinon, la mise en silence automatique ne marche pas.</string>
+    <string name="onboard_more_title">Voulez-vous découvrir ce qu\'il y a d\'autre ?</string>
+    <string name="onboard_more_text">Nous vous présentons les autres fonctions une à une sur quelques pages courtes. Sinon, tout vous attend dans « Tout ».</string>
+    <string name="onboard_tour_alarm_title">Réveil et sommeil</string>
+    <string name="onboard_tour_alarm_text">Un réveil qui sonne même en mode silencieux, avec des tâches pour l\'arrêter : calcul, secousses ou scan d\'un code. Plan de sommeil, sons pour dormir et réveil intelligent.</string>
+    <string name="onboard_tour_prayer_title">Prières et culte</string>
+    <string name="onboard_tour_prayer_text">Boussole de la qibla, mosquées à proximité, le Coran, invocations, les 99 noms, compteur de tasbih, suivi des prières et du jeûne. 14 méthodes de calcul.</string>
+    <string name="onboard_tour_weather_title">Météo et ciel</string>
+    <string name="onboard_tour_weather_text">Prévisions heure par heure et jour par jour, qualité de l\'air ; l\'écran s\'anime avec la météo. Calendrier lunaire, éclipses, saisons et ciel nocturne.</string>
+    <string name="onboard_tour_tools_title">Concentration et outils</string>
+    <string name="onboard_tour_tools_text">Pomodoro, minuteur d\'étude, minuteur, chronomètre, entraînement fractionné, métronome, pendule d\'échecs, planificateur de réunions et plus encore.</string>
+    <string name="onboard_tour_look_title">À votre image</string>
+    <string name="onboard_tour_look_text">25 cadrans analogiques, 24 couleurs d\'appli, un fond qui suit la lumière du jour et la taille du texte. Réglages › Couleur et apparence.</string>
+    <string name="onboard_tour_widgets_title">Widgets</string>
+    <string name="onboard_tour_widgets_text">Ajoutez l\'heure, la prochaine prière, la météo, la Lune et la date hégirienne à l\'écran d\'accueil et verrouillé, et retrouvez-les sur votre montre.</string>
+    <string name="onboard_resume">Continuer la configuration</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

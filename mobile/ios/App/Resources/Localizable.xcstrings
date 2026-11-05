@@ -319684,109 +319684,109 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Her şey Tümü'nde"
+            "value": "Diğer her şey Tümü'nde"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Everything is under All"
+            "value": "Everything else is under All"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alles unter „Alle“"
+            "value": "Alles Weitere unter „Alle“"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hər şey \"Hamısı\" bölməsində"
+            "value": "Qalan hər şey \"Hamısı\" bölməsində"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "كل شيء في «الكل»"
+            "value": "كل ما تبقّى في «الكل»"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Semuanya ada di Semua"
+            "value": "Semua lainnya ada di Semua"
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "سب کچھ «سب» میں"
+            "value": "باقی سب کچھ «سب» میں"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "همه‌چیز در «همه»"
+            "value": "بقیهٔ همه‌چیز در «همه»"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tout est dans « Tout »"
+            "value": "Tout le reste est dans « Tout »"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Всё — во вкладке «Все»"
+            "value": "Всё остальное — во вкладке «Все»"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "「すべて」にまとめてあります"
+            "value": "ほかのすべては「すべて」に"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "모든 기능은 '전체'에"
+            "value": "나머지는 모두 '전체'에"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "一切都在“全部”里"
+            "value": "其余一切都在“全部”里"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nasa Lahat ang lahat"
+            "value": "Nasa Lahat ang lahat ng iba pa"
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ทุกอย่างอยู่ใน \"ทั้งหมด\""
+            "value": "ทุกอย่างที่เหลืออยู่ใน \"ทั้งหมด\""
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Todo está en «Todo»"
+            "value": "Todo lo demás está en «Todo»"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tudo está em \"Tudo\""
+            "value": "Todo o resto está em \"Tudo\""
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "सब कुछ «सब» में"
+            "value": "बाक़ी सब कुछ «सब» में"
           }
         }
       }
@@ -328714,6 +328714,1701 @@
           "stringUnit": {
             "state": "translated",
             "value": "सिर्फ़ नमाज़ का समय होने पर फ़ोन साइलेंट करने के लिए। न दें तो अपने-आप साइलेंट होना काम नहीं करेगा।"
+          }
+        }
+      }
+    },
+    "onboard.more.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başka neler var, öğrenmek ister misiniz?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Would you like to see what else is here?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Möchten Sie sehen, was es sonst noch gibt?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başqa nələr var, öyrənmək istəyirsiniz?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هل تريد أن تعرف ما الذي يقدّمه التطبيق أيضًا؟"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingin tahu fitur apa lagi yang ada?"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کیا آپ جاننا چاہیں گے کہ اور کیا کچھ ہے؟"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "می‌خواهید ببینید چه امکانات دیگری هست؟"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Voulez-vous découvrir ce qu'il y a d'autre ?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хотите узнать, что ещё есть в приложении?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ほかにどんな機能があるか見てみますか？"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "어떤 기능이 더 있는지 알아볼까요?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "想了解还有哪些功能吗？"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gusto mo bang malaman kung ano pa ang narito?"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อยากรู้ไหมว่ามีอะไรอีกบ้าง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Quiere conocer qué más ofrece la app?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quer conhecer o que mais o app oferece?"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "क्या आप जानना चाहेंगे कि और क्या-क्या है?"
+          }
+        }
+      }
+    },
+    "onboard.more.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diğer özellikleri birkaç kısa sayfada tek tek gösterelim. Hayır derseniz hepsi Tümü'nde sizi bekler."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We'll show the other features one by one on a few short pages. If you say no, they're all waiting under All."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wir zeigen Ihnen die weiteren Funktionen nacheinander auf ein paar kurzen Seiten. Wenn nicht, finden Sie alles unter „Alle“."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Digər imkanları bir neçə qısa səhifədə bir-bir göstərək. Xeyr desəniz, hamısı \"Hamısı\" bölməsində sizi gözləyir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سنعرض لك بقية الميزات واحدة تلو الأخرى في صفحات قصيرة. وإن قلت لا، تجدها كلها في «الكل»."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kami tunjukkan fitur lainnya satu per satu dalam beberapa halaman singkat. Jika tidak, semuanya menunggu di Semua."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہم دوسری خصوصیات چند مختصر صفحوں میں ایک ایک کر کے دکھائیں گے۔ نہیں کہیں تو سب کچھ «سب» میں آپ کا منتظر ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امکانات دیگر را یکی‌یکی در چند صفحهٔ کوتاه نشان می‌دهیم. اگر نه، همه در «همه» منتظر شما هستند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nous vous présentons les autres fonctions une à une sur quelques pages courtes. Sinon, tout vous attend dans « Tout »."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покажем остальные возможности по одной на нескольких коротких страницах. Если нет — всё ждёт вас во вкладке «Все»."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ほかの機能を短いページで1つずつご紹介します。「いいえ」の場合も、すべて「すべて」にあります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다른 기능을 짧은 페이지로 하나씩 보여 드릴게요. 아니요를 누르면 모든 기능은 '전체'에 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我们会用几页简短的介绍逐一展示其他功能。如果不需要，所有功能都在“全部”里。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ipapakita namin ang iba pang feature isa-isa sa ilang maiikling pahina. Kung hindi, naghihintay ang lahat sa Lahat."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เราจะแนะนำฟีเจอร์อื่น ๆ ทีละอย่างในไม่กี่หน้า หากไม่ต้องการ ทุกอย่างรออยู่ใน \"ทั้งหมด\""
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le mostramos las demás funciones una a una en unas pocas páginas breves. Si no, todo le espera en «Todo»."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostramos os outros recursos um a um em poucas páginas curtas. Se preferir não, tudo espera por você em \"Tudo\"."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हम बाक़ी सुविधाएँ कुछ छोटे पन्नों में एक-एक करके दिखाएँगे। नहीं चाहें तो सब कुछ «सब» में आपका इंतज़ार कर रहा है।"
+          }
+        }
+      }
+    },
+    "onboard.tour.alarm.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm ve uyku"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarms and sleep"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wecker und Schlaf"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saat və yuxu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المنبه والنوم"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm dan tidur"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الارم اور نیند"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زنگ هشدار و خواب"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réveil et sommeil"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Будильник и сон"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アラームと睡眠"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알람과 수면"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "闹钟与睡眠"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm at tulog"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นาฬิกาปลุกและการนอน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarma y sueño"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarme e sono"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अलार्म और नींद"
+          }
+        }
+      }
+    },
+    "onboard.tour.alarm.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefon sessizdeyken de çalan alarm; kapatmak için matematik, sallama ya da kod okutma gibi görevler. Uyku planı, uyku sesleri ve akıllı alarm."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarms that ring even in silent mode, with tasks to turn them off such as math, shaking or scanning a code. A sleep plan, sleep sounds and a smart alarm."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wecker, die auch im Stummmodus klingeln, mit Aufgaben zum Ausschalten wie Rechnen, Schütteln oder Code scannen. Schlafplan, Schlafgeräusche und smarter Wecker."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefon səssizdə olanda da çalan zəngli saat; söndürmək üçün riyaziyyat, silkələmə ya da kod oxutma kimi tapşırıqlar. Yuxu planı, yuxu səsləri və ağıllı zəngli saat."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "منبه يرن حتى في الوضع الصامت، مع مهام لإيقافه مثل مسألة حسابية أو هزّ الهاتف أو مسح رمز. خطة النوم وأصوات النوم والمنبه الذكي."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm yang tetap berbunyi dalam mode senyap, dengan tugas untuk mematikannya seperti hitungan, mengguncang, atau memindai kode. Rencana tidur, suara tidur, dan alarm pintar."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فون خاموش ہو تب بھی بجنے والا الارم؛ بند کرنے کے لیے حساب، فون ہلانا یا کوڈ اسکین کرنا جیسے کام۔ نیند کا منصوبہ، نیند کی آوازیں اور اسمارٹ الارم۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زنگی که در حالت بی‌صدا هم به صدا درمی‌آید، با کارهایی برای خاموش کردنش مثل حساب، تکان دادن یا اسکن کد. برنامهٔ خواب، صداهای خواب و زنگ هوشمند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un réveil qui sonne même en mode silencieux, avec des tâches pour l'arrêter : calcul, secousses ou scan d'un code. Plan de sommeil, sons pour dormir et réveil intelligent."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Будильник звонит даже в беззвучном режиме, а для отключения есть задания: пример, встряхивание или сканирование кода. План сна, звуки для сна и умный будильник."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "マナーモードでも鳴るアラーム。止めるには計算、振る、コードの読み取りなどのタスク。睡眠プラン、睡眠用サウンド、スマートアラームも。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "무음 모드에서도 울리는 알람, 끄려면 계산·흔들기·코드 스캔 같은 과제를 해야 해요. 수면 계획, 수면 사운드, 스마트 알람도 있어요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静音模式下也会响的闹钟，关闭时需完成算术、摇动手机或扫码等任务。还有睡眠计划、助眠声音和智能闹钟。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm na tumutunog kahit naka-silent, na may gawain para patayin ito gaya ng math, pag-alog o pag-scan ng code. May plano sa pagtulog, tunog pampatulog at smart alarm."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นาฬิกาปลุกที่ดังแม้ในโหมดเงียบ พร้อมภารกิจเพื่อปิด เช่น คิดเลข เขย่าโทรศัพท์ หรือสแกนโค้ด มีแผนการนอน เสียงช่วยนอน และนาฬิกาปลุกอัจฉริยะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarmas que suenan incluso en silencio, con tareas para apagarlas como cálculos, agitar el teléfono o escanear un código. Plan de sueño, sonidos para dormir y alarma inteligente."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarmes que tocam até no modo silencioso, com tarefas para desligar como contas, sacudir o celular ou ler um código. Plano de sono, sons para dormir e alarme inteligente."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "साइलेंट मोड में भी बजने वाला अलार्म; बंद करने के लिए गणित, फ़ोन हिलाना या कोड स्कैन करना जैसे काम। नींद की योजना, नींद की आवाज़ें और स्मार्ट अलार्म।"
+          }
+        }
+      }
+    },
+    "onboard.tour.prayer.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vakitler ve ibadet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prayer times and worship"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gebetszeiten und Gebet"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaxtlar və ibadət"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مواقيت الصلاة والعبادة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jadwal salat dan ibadah"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نماز کے اوقات اور عبادت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوقات نماز و عبادت"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prières et culte"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Время намаза и поклонение"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "礼拝時刻と礼拝"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "기도 시간과 예배"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "礼拜时间与功修"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oras ng dasal at pagsamba"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เวลาละหมาดและการทำอิบาดะห์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oraciones y culto"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orações e culto"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नमाज़ के समय और इबादत"
+          }
+        }
+      }
+    },
+    "onboard.tour.prayer.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kıble pusulası, yakındaki camiler, Kur'an-ı Kerim, dualar, Esmaü'l-Hüsna, zikirmatik, namaz ve oruç takibi. 14 hesap yöntemi ve 973 ilçe."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibla compass, nearby mosques, the Quran, duas, the 99 Names, a tasbih counter, prayer and fasting tracker. 14 calculation methods and 973 districts of Türkiye."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibla-Kompass, Moscheen in der Nähe, der Koran, Bittgebete, die 99 Namen, Tasbih-Zähler, Gebets- und Fastentracker. 14 Berechnungsmethoden."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qiblə kompası, yaxındakı məscidlər, Qurani-Kərim, dualar, Əsmaül-Hüsna, zikr sayğacı, namaz və oruc izləmə. 14 hesablama üsulu."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بوصلة القبلة والمساجد القريبة والقرآن الكريم والأدعية والأسماء الحسنى والمسبحة ومتابعة الصلاة والصيام. 14 طريقة حساب."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kompas kiblat, masjid terdekat, Al-Qur'an, doa, Asmaul Husna, penghitung tasbih, pencatat salat dan puasa. 14 metode perhitungan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قبلہ نما، قریبی مساجد، قرآنِ کریم، دعائیں، اسمائے حسنیٰ، تسبیح شمار، نماز اور روزے کا حساب۔ 14 حسابی طریقے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قطب‌نمای قبله، مساجد نزدیک، قرآن کریم، دعاها، اسماءالحسنی، تسبیح‌شمار، پیگیری نماز و روزه. 14 روش محاسبه."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boussole de la qibla, mosquées à proximité, le Coran, invocations, les 99 noms, compteur de tasbih, suivi des prières et du jeûne. 14 méthodes de calcul."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Компас киблы, ближайшие мечети, Коран, дуа, 99 имён, счётчик тасбиха, учёт намазов и постов. 14 методов расчёта."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "キブラコンパス、近くのモスク、コーラン、ドゥアー、99の御名、タスビーフカウンター、礼拝と断食の記録。14の計算方法。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "키블라 나침반, 가까운 모스크, 꾸란, 두아, 99가지 이름, 타스비흐 카운터, 기도·금식 기록. 14가지 계산 방식."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "朝向指南针、附近的清真寺、《古兰经》、祈祷词、99 个尊名、赞念计数器、礼拜与斋戒记录。14 种计算方法。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibla compass, kalapit na mosque, ang Quran, mga dua, ang 99 na Pangalan, tasbih counter, tala ng dasal at pag-aayuno. 14 paraan ng pagkalkula."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เข็มทิศกิบลัต มัสยิดใกล้เคียง อัลกุรอาน ดุอาอ์ พระนาม 99 ประการ ที่นับตัสบีห์ บันทึกการละหมาดและการถือศีลอด วิธีคำนวณ 14 แบบ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brújula de la qibla, mezquitas cercanas, el Corán, súplicas, los 99 nombres, contador de tasbih, seguimiento de oraciones y ayunos. 14 métodos de cálculo."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bússola da qibla, mesquitas próximas, o Alcorão, súplicas, os 99 nomes, contador de tasbih, acompanhamento de orações e jejuns. 14 métodos de cálculo."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "क़िबला कम्पास, पास की मस्जिदें, क़ुरआन, दुआएँ, अल्लाह के 99 नाम, तस्बीह काउंटर, नमाज़ और रोज़े का हिसाब। 14 गणना पद्धतियाँ।"
+          }
+        }
+      }
+    },
+    "onboard.tour.weather.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava ve gökyüzü"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weather and sky"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wetter und Himmel"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava və səma"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الطقس والسماء"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuaca dan langit"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "موسم اور آسمان"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هوا و آسمان"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Météo et ciel"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Погода и небо"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天気と空"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날씨와 하늘"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天气与星空"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panahon at langit"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อากาศและท้องฟ้า"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiempo y cielo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clima e céu"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मौसम और आसमान"
+          }
+        }
+      }
+    },
+    "onboard.tour.weather.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatlik ve günlük tahmin, hava kalitesi; ekran havaya göre canlanır. Ay takvimi, tutulmalar, mevsimler ve gece gökyüzü."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hourly and daily forecasts and air quality; the screen comes alive with the weather. Moon calendar, eclipses, seasons and the night sky."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stündliche und tägliche Vorhersage, Luftqualität; der Bildschirm lebt mit dem Wetter. Mondkalender, Finsternisse, Jahreszeiten und Nachthimmel."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatlıq və günlük proqnoz, havanın keyfiyyəti; ekran havaya görə canlanır. Ay təqvimi, tutulmalar, fəsillər və gecə səması."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "توقعات كل ساعة وكل يوم وجودة الهواء، وشاشة تتغير مع الطقس. التقويم القمري والكسوف والخسوف والفصول وسماء الليل."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prakiraan per jam dan harian, kualitas udara; layar ikut hidup sesuai cuaca. Kalender bulan, gerhana, musim, dan langit malam."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گھنٹہ وار اور روزانہ پیش گوئی، ہوا کا معیار؛ اسکرین موسم کے ساتھ بدلتی ہے۔ چاند کا کیلنڈر، گرہن، موسم اور رات کا آسمان۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیش‌بینی ساعتی و روزانه، کیفیت هوا؛ صفحه با هوا جان می‌گیرد. تقویم ماه، گرفت‌ها، فصل‌ها و آسمان شب."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prévisions heure par heure et jour par jour, qualité de l'air ; l'écran s'anime avec la météo. Calendrier lunaire, éclipses, saisons et ciel nocturne."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почасовой и дневной прогноз, качество воздуха; экран оживает вместе с погодой. Лунный календарь, затмения, времена года и ночное небо."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1時間ごと・毎日の予報と大気質。天気に合わせて画面が変わります。月のカレンダー、日食と月食、季節、夜空も。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시간별·일별 예보와 대기질, 날씨에 따라 화면이 살아나요. 달 달력, 일식과 월식, 계절, 밤하늘도 있어요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "逐小时与每日预报、空气质量，屏幕随天气而变化。还有月历、日食与月食、季节和夜空。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oras-oras at araw-araw na forecast at kalidad ng hangin; sumasabay sa panahon ang screen. Kalendaryo ng buwan, eklipse, mga season at langit sa gabi."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พยากรณ์รายชั่วโมงและรายวัน คุณภาพอากาศ หน้าจอเปลี่ยนตามสภาพอากาศ ปฏิทินดวงจันทร์ สุริยุปราคาและจันทรุปราคา ฤดูกาล และท้องฟ้ายามค่ำคืน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pronóstico por horas y por días y calidad del aire; la pantalla cobra vida con el tiempo. Calendario lunar, eclipses, estaciones y cielo nocturno."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previsão por hora e por dia e qualidade do ar; a tela ganha vida com o clima. Calendário lunar, eclipses, estações e céu noturno."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "घंटेवार और रोज़ाना पूर्वानुमान, हवा की गुणवत्ता; स्क्रीन मौसम के साथ बदलती है। चंद्र कैलेंडर, ग्रहण, मौसम-चक्र और रात का आसमान।"
+          }
+        }
+      }
+    },
+    "onboard.tour.tools.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odak ve araçlar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Focus and tools"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fokus und Werkzeuge"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diqqət və alətlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التركيز والأدوات"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fokus dan alat"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "توجہ اور ٹولز"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تمرکز و ابزارها"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Concentration et outils"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Концентрация и инструменты"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "集中とツール"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "집중과 도구"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "专注与工具"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokus at mga tool"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สมาธิและเครื่องมือ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Concentración y herramientas"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foco e ferramentas"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ोकस और टूल"
+          }
+        }
+      }
+    },
+    "onboard.tour.tools.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro, ders çalışma sayacı, zamanlayıcı, kronometre, aralık antrenmanı, metronom, satranç saati, toplantı planlayıcı ve daha fazlası."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro, study timer, timer, stopwatch, interval training, metronome, chess clock, meeting planner and more."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro, Lerntimer, Timer, Stoppuhr, Intervalltraining, Metronom, Schachuhr, Meeting-Planer und mehr."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro, dərs sayğacı, taymer, saniyəölçən, interval məşqi, metronom, şahmat saatı, görüş planlayıcısı və daha çoxu."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بومودورو ومؤقت المذاكرة والمؤقت وساعة الإيقاف والتمارين المتقطعة والمترونوم وساعة الشطرنج ومخطط الاجتماعات وغيرها."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro, pengatur waktu belajar, timer, stopwatch, latihan interval, metronom, jam catur, perencana rapat, dan lainnya."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پومودورو، پڑھائی کا ٹائمر، ٹائمر، اسٹاپ واچ، وقفہ وار ورزش، میٹرونوم، شطرنج گھڑی، میٹنگ پلانر اور بہت کچھ۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پومودورو، زمان‌سنج درس، تایمر، کرونومتر، تمرین تناوبی، مترونوم، ساعت شطرنج، برنامه‌ریز جلسه و بیشتر."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro, minuteur d'étude, minuteur, chronomètre, entraînement fractionné, métronome, pendule d'échecs, planificateur de réunions et plus encore."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Помодоро, таймер учёбы, таймер, секундомер, интервальные тренировки, метроном, шахматные часы, планировщик встреч и многое другое."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ポモドーロ、勉強タイマー、タイマー、ストップウォッチ、インターバルトレーニング、メトロノーム、チェスクロック、会議プランナーなど。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "뽀모도로, 공부 타이머, 타이머, 스톱워치, 인터벌 트레이닝, 메트로놈, 체스 시계, 회의 플래너 등."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "番茄钟、学习计时器、计时器、秒表、间歇训练、节拍器、国际象棋钟、会议规划等。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro, study timer, timer, stopwatch, interval training, metronome, chess clock, meeting planner at marami pa."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โพโมโดโร ตัวจับเวลาอ่านหนังสือ ตัวจับเวลา นาฬิกาจับเวลา การฝึกแบบอินเทอร์วัล เมโทรนอม นาฬิกาหมากรุก ตัววางแผนประชุม และอื่น ๆ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro, temporizador de estudio, temporizador, cronómetro, entrenamiento por intervalos, metrónomo, reloj de ajedrez, planificador de reuniones y más."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro, cronômetro de estudo, timer, cronômetro, treino intervalado, metrônomo, relógio de xadrez, planejador de reuniões e mais."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पोमोडोरो, पढ़ाई का टाइमर, टाइमर, स्टॉपवॉच, इंटरवल ट्रेनिंग, मेट्रोनोम, शतरंज घड़ी, मीटिंग प्लानर और बहुत कुछ।"
+          }
+        }
+      }
+    },
+    "onboard.tour.look.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kendi görünümünüz"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make it yours"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihr eigener Look"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öz görünüşünüz"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مظهرك الخاص"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tampilan Anda sendiri"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپنی مرضی کا انداز"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ظاهر دلخواه شما"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "À votre image"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваш собственный стиль"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自分好みの見た目に"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "나만의 모습으로"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打造你的风格"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gawin itong iyo"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปรับแต่งให้เป็นแบบของคุณ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A su manera"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Do seu jeito"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अपनी पसंद का रूप"
+          }
+        }
+      }
+    },
+    "onboard.tour.look.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 analog kadran, 24 uygulama rengi, gün ışığına göre değişen zemin ve yazı boyutu. Ayarlar › Renk ve görünüm."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 analog dials, 24 app colors, a background that follows daylight, and text size. Settings › Color and appearance."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 analoge Zifferblätter, 24 App-Farben, ein Hintergrund, der dem Tageslicht folgt, und Textgröße. Einstellungen › Farbe und Darstellung."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 analoq siferblat, 24 tətbiq rəngi, gün işığına görə dəyişən fon və yazı ölçüsü. Parametrlər › Rəng və görünüş."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 قرصًا بعقارب و24 لونًا للتطبيق وخلفية تتبع ضوء النهار وحجم الخط. الإعدادات › اللون والمظهر."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 muka jam analog, 24 warna aplikasi, latar yang mengikuti cahaya siang, dan ukuran teks. Pengaturan › Warna dan tampilan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 اینالاگ ڈائل، ایپ کے 24 رنگ، دن کی روشنی کے ساتھ بدلتا پس منظر اور تحریر کا سائز۔ ترتیبات › رنگ اور انداز۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 صفحهٔ عقربه‌ای، 24 رنگ برنامه، پس‌زمینه‌ای که با نور روز تغییر می‌کند و اندازهٔ نوشته. تنظیمات › رنگ و ظاهر."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 cadrans analogiques, 24 couleurs d'appli, un fond qui suit la lumière du jour et la taille du texte. Réglages › Couleur et apparence."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 аналоговых циферблатов, 24 цвета приложения, фон, меняющийся с дневным светом, и размер текста. Настройки › Цвет и вид."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25種類のアナログ文字盤、24色のアプリカラー、日の光に合わせて変わる背景、文字サイズ。設定 › 色と外観。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25가지 아날로그 다이얼, 24가지 앱 색상, 햇빛에 따라 바뀌는 배경, 글자 크기. 설정 › 색상 및 모양."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 款指针表盘、24 种应用颜色、随日光变化的背景和文字大小。设置 › 颜色与外观。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 analog na dial, 24 kulay ng app, background na sumusunod sa liwanag ng araw, at laki ng teksto. Settings › Kulay at itsura."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "หน้าปัดเข็ม 25 แบบ สีแอป 24 สี พื้นหลังที่เปลี่ยนตามแสงกลางวัน และขนาดตัวอักษร การตั้งค่า › สีและรูปลักษณ์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 esferas analógicas, 24 colores de app, un fondo que sigue la luz del día y tamaño de texto. Ajustes › Color y apariencia."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 mostradores analógicos, 24 cores do app, um fundo que acompanha a luz do dia e tamanho do texto. Ajustes › Cor e aparência."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "25 एनालॉग डायल, ऐप के 24 रंग, दिन की रोशनी के साथ बदलती पृष्ठभूमि और अक्षरों का आकार। सेटिंग्स › रंग और रूप।"
+          }
+        }
+      }
+    },
+    "onboard.tour.widgets.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget'lar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vidjetlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأدوات المصغّرة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ویجٹس"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابزارک‌ها"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Виджеты"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ウィジェット"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "위젯"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小组件"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga widget"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วิดเจ็ต"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "विजेट"
+          }
+        }
+      }
+    },
+    "onboard.tour.widgets.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ana ekrana ve kilit ekranına saat, sıradaki vakit, hava, Ay ve hicri tarih ekleyin; akıllı saatinizde de görün."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add the clock, next prayer, weather, the Moon and the Hijri date to your Home and Lock Screen, and see them on your watch too."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uhr, nächstes Gebet, Wetter, Mond und Hidschri-Datum auf Home- und Sperrbildschirm – und auch auf Ihrer Uhr."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Əsas ekrana və kilid ekranına saat, növbəti vaxt, hava, Ay və hicri tarix əlavə edin; ağıllı saatınızda da görün."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أضف الساعة والصلاة القادمة والطقس والقمر والتاريخ الهجري إلى الشاشة الرئيسية وشاشة القفل، وشاهدها على ساعتك أيضًا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tambahkan jam, salat berikutnya, cuaca, Bulan, dan tanggal Hijriah ke layar utama dan layar kunci, juga di jam tangan Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہوم اور لاک اسکرین پر گھڑی، اگلی نماز، موسم، چاند اور ہجری تاریخ لگائیں؛ اپنی اسمارٹ واچ پر بھی دیکھیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت، نماز بعدی، هوا، ماه و تاریخ هجری را به صفحهٔ اصلی و صفحهٔ قفل بیفزایید؛ روی ساعت هوشمندتان هم ببینید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajoutez l'heure, la prochaine prière, la météo, la Lune et la date hégirienne à l'écran d'accueil et verrouillé, et retrouvez-les sur votre montre."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавьте часы, следующий намаз, погоду, Луну и дату по хиджре на экран «Домой» и экран блокировки — и смотрите их на часах."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ホーム画面とロック画面に時計、次の礼拝、天気、月、ヒジュラ暦を追加。スマートウォッチでも見られます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "홈 화면과 잠금 화면에 시계, 다음 기도, 날씨, 달, 히즈라력을 추가하고 스마트워치에서도 보세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在主屏幕和锁屏上添加时钟、下一次礼拜、天气、月相和伊斯兰历日期，智能手表上也能看到。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idagdag ang orasan, susunod na dasal, panahon, Buwan at petsang Hijri sa Home at Lock Screen, at makita rin sa relo mo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพิ่มนาฬิกา ละหมาดถัดไป อากาศ ดวงจันทร์ และวันที่ฮิจเราะห์ลงในหน้าจอโฮมและหน้าจอล็อก ดูบนสมาร์ทวอทช์ได้ด้วย"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Añada el reloj, la próxima oración, el tiempo, la Luna y la fecha hijri a la pantalla de inicio y de bloqueo, y véalos también en su reloj."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicione o relógio, a próxima oração, o clima, a Lua e a data hijri à Tela de Início e à Tela Bloqueada, e veja também no seu relógio."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "होम और लॉक स्क्रीन पर घड़ी, अगली नमाज़, मौसम, चाँद और हिजरी तारीख़ जोड़ें; अपनी स्मार्टवॉच पर भी देखें।"
+          }
+        }
+      }
+    },
+    "onboard.resume": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kuruluma devam et"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue setup"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einrichtung fortsetzen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quraşdırmaya davam et"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متابعة الإعداد"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lanjutkan penyiapan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سیٹ اپ جاری رکھیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ادامهٔ راه‌اندازی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuer la configuration"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продолжить настройку"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定を続ける"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "설정 계속하기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续设置"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ituloy ang setup"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตั้งค่าต่อ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar configuración"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar configuração"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सेटअप जारी रखें"
           }
         }
       }

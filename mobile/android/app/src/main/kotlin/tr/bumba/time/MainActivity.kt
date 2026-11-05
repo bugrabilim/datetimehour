@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -274,7 +276,9 @@ fun Root(start: Int) {
         }
         // Yalnız Saat açıksa bar yok
         if (!landscape && tabs.size > 1) {
-            TabBar(tabs, tab) { t ->
+            // Geçilen kurulum (yalnız Saat açık): ortada "Kuruluma devam et", Tümü sağda (5 Kasım 2026, sahibin isteği)
+            val resume = if (Onboarding.resume && tabs.size == 2) ({ Onboarding.resumeSetup() }) else null
+            TabBar(tabs, tab, resume) { t ->
                 if (t == tab && t == Tab.TOOLS) Nav.toolsRoute = null
                 Nav.tab = t
             }
@@ -286,11 +290,22 @@ fun Root(start: Int) {
 }
 
 @Composable
-private fun TabBar(tabs: List<Tab>, selected: Tab, onSelect: (Tab) -> Unit) {
+private fun TabBar(tabs: List<Tab>, selected: Tab, resume: (() -> Unit)? = null, onSelect: (Tab) -> Unit) {
     Column(Modifier.fillMaxWidth().background(Theme.c.surface).navigationBarsPadding()) {
         HorizontalDivider(color = Theme.c.border.copy(alpha = 0.6f))
-        Row(Modifier.fillMaxWidth().padding(top = 6.dp, bottom = 4.dp), horizontalArrangement = Arrangement.SpaceEvenly) {
-            for (t in tabs) {
+        Row(Modifier.fillMaxWidth().padding(top = 6.dp, bottom = 4.dp), horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically) {
+            for ((i, t) in tabs.withIndex()) {
+                if (i == 1 && resume != null) {
+                    Box(Modifier.weight(2.2f).padding(horizontal = 4.dp), contentAlignment = Alignment.Center) {
+                        Text(
+                            L("onboard.resume"), color = Theme.c.onAccent, fontSize = 14.sp, fontWeight = FontWeight.SemiBold,
+                            maxLines = 1, overflow = TextOverflow.Ellipsis, textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(50)).background(Theme.c.accent)
+                                .clickable(role = Role.Button) { resume() }.padding(horizontal = 12.dp, vertical = 12.dp),
+                        )
+                    }
+                }
                 val on = t == selected
                 val color = if (on) Theme.c.accent else Theme.c.muted
                 Column(

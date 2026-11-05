@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">घड़ी स्क्रीन पर बाएँ या दाएँ स्वाइप करें; हर बार घड़ी का नया डिज़ाइन आता है। सेकंड दिखाने या छिपाने के लिए घड़ी को छुएँ।</string>
     <string name="onboard_full_title">फ़ुल स्क्रीन और रात्रि मोड</string>
     <string name="onboard_full_text">फ़ुल स्क्रीन को छुएँ या फ़ोन को आड़ा करें, घड़ी पूरी स्क्रीन पर आ जाएगी। रात्रि मोड में रंग हल्का लाल हो जाता है, बिस्तर के पास आँखें नहीं चुभतीं।</string>
-    <string name="onboard_all_title">सब कुछ «सब» में</string>
+    <string name="onboard_all_title">बाक़ी सब कुछ «सब» में</string>
     <string name="onboard_all_text">नीचे की पट्टी में «सब» में सारे टूल, खोज और सेटिंग्स हैं; पसंदीदा चीज़ों को ऊपर पिन करने के लिए देर तक दबाएँ। घड़ी के नीचे तारीख़, नमाज़ के समय या मौसम जोड़ने के लिए: सेटिंग्स › घड़ी स्क्रीन संपादित करें।</string>
     <string name="onboard_replay">परिचय फिर से दिखाएँ</string>
     <string name="atmo_daylight">दिन का उजाला</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">सिर्फ़ फ़ोकस ब्लॉक के लिए, चुना हुआ ऐप खुलने पर चेताने को। यह जानकारी फ़ोन से बाहर नहीं जाती।</string>
     <string name="perms_dnd_title">डू नॉट डिस्टर्ब तक पहुँच</string>
     <string name="perms_dnd_why">सिर्फ़ नमाज़ का समय होने पर फ़ोन साइलेंट करने के लिए। न दें तो अपने-आप साइलेंट होना काम नहीं करेगा।</string>
+    <string name="onboard_more_title">क्या आप जानना चाहेंगे कि और क्या-क्या है?</string>
+    <string name="onboard_more_text">हम बाक़ी सुविधाएँ कुछ छोटे पन्नों में एक-एक करके दिखाएँगे। नहीं चाहें तो सब कुछ «सब» में आपका इंतज़ार कर रहा है।</string>
+    <string name="onboard_tour_alarm_title">अलार्म और नींद</string>
+    <string name="onboard_tour_alarm_text">साइलेंट मोड में भी बजने वाला अलार्म; बंद करने के लिए गणित, फ़ोन हिलाना या कोड स्कैन करना जैसे काम। नींद की योजना, नींद की आवाज़ें और स्मार्ट अलार्म।</string>
+    <string name="onboard_tour_prayer_title">नमाज़ के समय और इबादत</string>
+    <string name="onboard_tour_prayer_text">क़िबला कम्पास, पास की मस्जिदें, क़ुरआन, दुआएँ, अल्लाह के 99 नाम, तस्बीह काउंटर, नमाज़ और रोज़े का हिसाब। 14 गणना पद्धतियाँ।</string>
+    <string name="onboard_tour_weather_title">मौसम और आसमान</string>
+    <string name="onboard_tour_weather_text">घंटेवार और रोज़ाना पूर्वानुमान, हवा की गुणवत्ता; स्क्रीन मौसम के साथ बदलती है। चंद्र कैलेंडर, ग्रहण, मौसम-चक्र और रात का आसमान।</string>
+    <string name="onboard_tour_tools_title">फ़ोकस और टूल</string>
+    <string name="onboard_tour_tools_text">पोमोडोरो, पढ़ाई का टाइमर, टाइमर, स्टॉपवॉच, इंटरवल ट्रेनिंग, मेट्रोनोम, शतरंज घड़ी, मीटिंग प्लानर और बहुत कुछ।</string>
+    <string name="onboard_tour_look_title">अपनी पसंद का रूप</string>
+    <string name="onboard_tour_look_text">25 एनालॉग डायल, ऐप के 24 रंग, दिन की रोशनी के साथ बदलती पृष्ठभूमि और अक्षरों का आकार। सेटिंग्स › रंग और रूप।</string>
+    <string name="onboard_tour_widgets_title">विजेट</string>
+    <string name="onboard_tour_widgets_text">होम और लॉक स्क्रीन पर घड़ी, अगली नमाज़, मौसम, चाँद और हिजरी तारीख़ जोड़ें; अपनी स्मार्टवॉच पर भी देखें।</string>
+    <string name="onboard_resume">सेटअप जारी रखें</string>
     <string name="app_name">समय और तारीख</string>
 </resources>

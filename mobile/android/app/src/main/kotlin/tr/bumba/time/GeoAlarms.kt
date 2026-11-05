@@ -99,6 +99,12 @@ data class GeoAlarm(
 }
 
 object GeoAlarms {
+    /**
+     * İlk Play sürümünde kapalı (5 Kasım 2026, sahibin onayı): arka planda konum izni Play'de video ve ayrıntılı beyan ister,
+     * sık reddedilir. Kapalıyken manifestte ACCESS_BACKGROUND_LOCATION yok, Alarm ekranında satır görünmez, bölge kurulmaz.
+     * Açmak için: true yap, manifeste izni geri ekle, PLAY_CONSOLE.md 1e beyanını yap.
+     */
+    const val ENABLED = false
     const val KEY = "geoAlarms"
     const val LIMIT = 20
     private const val CHANNEL = "geo"
@@ -130,7 +136,7 @@ object GeoAlarms {
         val pi = pending(c)
         runCatching { client.removeGeofences(pi) }
         val list = load().filter { it.enabled }
-        if (list.isEmpty() || !hasFine(c) || !hasBackground(c)) return
+        if (!ENABLED || list.isEmpty() || !hasFine(c) || !hasBackground(c)) return
         val fences = list.map { g ->
             Geofence.Builder()
                 .setRequestId(g.id)

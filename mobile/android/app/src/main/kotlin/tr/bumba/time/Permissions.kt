@@ -56,7 +56,7 @@ object AppPermissions {
 
     fun items(): List<Item> = buildList {
         add(Item("location", "pin", { has(it, Manifest.permission.ACCESS_FINE_LOCATION) || has(it, Manifest.permission.ACCESS_COARSE_LOCATION) }, ::appDetails))
-        if (Build.VERSION.SDK_INT >= 29) add(Item("locationBg", "compass", { has(it, Manifest.permission.ACCESS_BACKGROUND_LOCATION) }, ::appDetails))
+        if (GeoAlarms.ENABLED && Build.VERSION.SDK_INT >= 29) add(Item("locationBg", "compass", { has(it, Manifest.permission.ACCESS_BACKGROUND_LOCATION) }, ::appDetails))
         add(Item("notify", "bell", { NotificationManagerCompat.from(it).areNotificationsEnabled() }) { c ->
             if (Build.VERSION.SDK_INT >= 26) Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, c.packageName)
             else appDetails(c)

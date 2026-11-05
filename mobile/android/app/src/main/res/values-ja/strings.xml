@@ -2830,7 +2830,7 @@
     <string name="onboard_swipe_text">時計画面で左右にスワイプすると、別のデザインの時計に切り替わります。時計をタップすると秒の表示をオン・オフできます。</string>
     <string name="onboard_full_title">全画面とナイトモード</string>
     <string name="onboard_full_text">「全画面」をタップするか、スマホを横にすると時計が画面いっぱいに表示されます。ナイトモードでは暗い赤色になり、枕元でもまぶしくありません。</string>
-    <string name="onboard_all_title">「すべて」にまとめてあります</string>
+    <string name="onboard_all_title">ほかのすべては「すべて」に</string>
     <string name="onboard_all_text">下のバーの「すべて」に、すべてのツール、検索、設定があります。よく使うものは長押しで上に固定できます。時計の下に日付、礼拝時刻、天気を表示するには：設定 › 時計画面を編集。</string>
     <string name="onboard_replay">紹介をもう一度見る</string>
     <string name="atmo_daylight">日の光</string>
@@ -2910,5 +2910,20 @@
     <string name="perms_usage_why">集中ブロック専用で、選んだアプリが開いたときに知らせます。この情報は端末の外に出ません。</string>
     <string name="perms_dnd_title">おやすみモードへのアクセス</string>
     <string name="perms_dnd_why">礼拝時刻にスマートフォンを消音するためだけに使います。許可しないと自動消音は動きません。</string>
+    <string name="onboard_more_title">ほかにどんな機能があるか見てみますか？</string>
+    <string name="onboard_more_text">ほかの機能を短いページで1つずつご紹介します。「いいえ」の場合も、すべて「すべて」にあります。</string>
+    <string name="onboard_tour_alarm_title">アラームと睡眠</string>
+    <string name="onboard_tour_alarm_text">マナーモードでも鳴るアラーム。止めるには計算、振る、コードの読み取りなどのタスク。睡眠プラン、睡眠用サウンド、スマートアラームも。</string>
+    <string name="onboard_tour_prayer_title">礼拝時刻と礼拝</string>
+    <string name="onboard_tour_prayer_text">キブラコンパス、近くのモスク、コーラン、ドゥアー、99の御名、タスビーフカウンター、礼拝と断食の記録。14の計算方法。</string>
+    <string name="onboard_tour_weather_title">天気と空</string>
+    <string name="onboard_tour_weather_text">1時間ごと・毎日の予報と大気質。天気に合わせて画面が変わります。月のカレンダー、日食と月食、季節、夜空も。</string>
+    <string name="onboard_tour_tools_title">集中とツール</string>
+    <string name="onboard_tour_tools_text">ポモドーロ、勉強タイマー、タイマー、ストップウォッチ、インターバルトレーニング、メトロノーム、チェスクロック、会議プランナーなど。</string>
+    <string name="onboard_tour_look_title">自分好みの見た目に</string>
+    <string name="onboard_tour_look_text">25種類のアナログ文字盤、24色のアプリカラー、日の光に合わせて変わる背景、文字サイズ。設定 › 色と外観。</string>
+    <string name="onboard_tour_widgets_title">ウィジェット</string>
+    <string name="onboard_tour_widgets_text">ホーム画面とロック画面に時計、次の礼拝、天気、月、ヒジュラ暦を追加。スマートウォッチでも見られます。</string>
+    <string name="onboard_resume">設定を続ける</string>
     <string name="app_name">時刻と日付</string>
 </resources>

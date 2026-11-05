@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- Konuma bağlı hatırlatıcı (#93): bölge izleme kesin ve "her zaman" konum ister; yalnız hatırlatıcı eklenirken istenir -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <!-- ACCESS_BACKGROUND_LOCATION ilk Play sürümünde yok (konuma bağlı hatırlatıcılar kapalı, GeoAlarms.ENABLED) -->
     <!-- Hava durumu (Open-Meteo) ve e-posta listesi -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Telefondaki takvimler (Google dahil): yalnız "Telefonumdaki takvimleri göster" ile istenir; silmek için yazma -->
