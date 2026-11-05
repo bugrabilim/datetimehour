@@ -1,34 +1,40 @@
-Hora e Data reúne o relógio, a data, os horários de oração, o calendário e o clima em um app simples. Sem conta, sem anúncios, sem rastreamento.
+Hora e Data reúne relógio, horários de oração, calendário, clima e ferramentas do dia a dia em um app simples. É gratuito, sem conta, sem anúncios e sem rastreamento.
+
+FEITO PARA VOCÊ
+• Cinco perguntas rápidas na primeira abertura: orações, clima, calendário, relógios mundiais, estações. A barra de abas é montada a partir das suas respostas
+• As seções que você não usa ficam ocultas e não enviam notificações
 
 RELÓGIO
-• 19 mostradores do nosso site: analógicos, digitais, lado a lado, com calendário e clima
-• Relógio em tela cheia que mantém a tela ligada
-• Escolha o que aparece abaixo do relógio: próxima oração, horários de hoje, próxima data especial, relógios mundiais, clima, nascer do sol
+• 21 modelos de relógio e 25 mostradores analógicos; tela cheia e modo noturno em vermelho suave
+• Mostre sob o relógio a próxima oração, o clima, a data ou relógios mundiais
+• Widgets para a Tela de Início e a Tela Bloqueada, complicações para Apple Watch
 
-HORÁRIOS DE ORAÇÃO
-• Horários diários e mensais para as 81 províncias da Turquia ou para a sua localização atual
-• Notificações na hora ou com antecedência, com aviso falado
-• Calendário do Ramadã como imagem para compartilhar
+HORÁRIOS DE ORAÇÃO E CULTO
+• Horários em qualquer lugar, com 14 métodos de cálculo (Diyanet, MWL, ISNA, Umm al-Qura e outros) e Asr hanafita
+• As 81 províncias e 973 distritos da Turquia
+• Notificações com som do adhan, calendário do Ramadã
+• Bússola da qibla e mesquitas próximas
+• O Alcorão em árabe, súplicas, os 99 nomes de Alá, contador de tasbih, acompanhamento de orações e jejuns, cálculo do zakat
 
-CALENDÁRIO
-• Feriados, meios expedientes, datas religiosas e especiais e férias escolares na Turquia
-• As agendas do seu celular (iCloud, Google, Outlook) na mesma tela
-• Adicione e exclua eventos; adicione datas especiais à sua agenda
+CALENDÁRIO E CLIMA
+• Feriados da Turquia e de outros 30 países, dias religiosos e especiais, ao lado dos calendários do seu celular
+• Calendário hijri e conversor
+• Previsão por hora e para 10 dias, qualidade do ar e uma tela que muda com o clima
 
-CLIMA
-• Previsão atual, por hora e de 7 dias do Apple Weather
+ALARME, SONO E FOCO
+• Alarme que toca até no modo silencioso, com tarefas para desligar: contas, sacudir o celular ou ler um código
+• Plano de sono, sons para dormir, alarme inteligente
+• Pomodoro, cronômetro de estudo, bloqueio de apps durante o foco
 
 FERRAMENTAS
-• Alarme (toca até no modo silencioso), temporizador, contagem regressiva até uma data
-• Cronômetro, pomodoro, calculadora de datas (incluindo dias úteis)
-• Relógios mundiais com um globo girando
-• Estações, equinócios e solstícios, fases da Lua
+• Timer, cronômetro, treino intervalado, relógio de xadrez, metrônomo, relógio falante
+• Relógios mundiais com globo giratório, planejador de reuniões, cálculo de horas e datas
+• Estações, calendário lunar, eclipses, céu noturno, signo do zodíaco
+• Cartões para sexta-feira, Ramadã, Eid e noites sagradas
 
-WIDGETS
-• Próxima oração, horários de hoje, relógio analógico e digital, hora e data; também na Tela Bloqueada
+PRIVACIDADE
+Sem conta, sem anúncios, sem rastreamento. Sua localização fica no celular para os horários de oração; só para o clima e as mesquitas próximas uma localização aproximada vai ao serviço (Apple, Open-Meteo), nunca quem você é. Veja e desative cada permissão em Ajustes › Permissões.
 
-Disponível em dezoito idiomas: português, inglês, turco, alemão, azerbaijano, árabe, indonésio, urdu, persa, francês, russo, japonês, coreano, chinês, filipino, tailandês, espanhol e híndi.
-
-Sua localização é usada no celular para calcular os horários de oração; só para o clima uma localização aproximada é enviada ao serviço meteorológico da Apple. Suas agendas só são lidas se você permitir, e só no seu celular.
+Em 18 idiomas. Para iPhone, iPad e Apple Watch.
 
 Hora e Data é um produto Bumba Life. Web: time.bumba.tr

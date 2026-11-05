@@ -1,34 +1,39 @@
-Saat Tarih; saat, tarih, namaz vakitleri, takvim ve hava durumunu sade ve şık bir uygulamada toplar. Hesap istemez, reklam ve takip içermez.
+Saat Tarih; saat, namaz vakitleri, takvim, hava durumu ve günlük araçları tek, sade bir uygulamada toplar. Ücretsizdir; hesap, reklam ve takip yoktur.
+
+SİZE GÖRE HAZIRLANIR
+• İlk açılışta beş kısa soru: vakitler, hava, takvim, dünya saatleri, mevsimler. Alt çubuk yanıtlarınıza göre kendiliğinden kurulur
+• Kullanmadığınız bölüm gizlenir ve bildirim göndermez
 
 SAAT
-• Sitedeki 19 saat modeli: analog, dijital, yatay, takvimli ve hava durumlu
-• Tam ekran saat, ekran kapanmadan
-• Saatin altında görmek istediklerinizi siz seçin: sıradaki vakit, bugünün vakitleri, yaklaşan özel gün, dünya saatleri, hava, gün doğumu
+• 21 saat modeli ve 25 analog kadran; tam ekran ve kısık kırmızı gece modu
+• Saatin altına sıradaki vakit, hava, tarih ya da dünya saatlerini ekleyin
+• Ana ekran ve kilit ekranı widget'ları, Apple Watch komplikasyonları
 
-NAMAZ VAKİTLERİ
-• 81 il ya da bulunduğunuz yer için günlük ve aylık vakitler
-• Vakitte ya da önceden sesli duyurulu bildirimler ("Öğle vakti geldi")
-• Ramazan imsakiyesi, paylaşılabilir görsel olarak
+NAMAZ VAKİTLERİ VE İBADET
+• 81 il ve 973 ilçe; Diyanet yöntemi ve 13 hesap yöntemi daha, Hanefî ikindi
+• Vakit bildirimi ve ezan sesi, Ramazan imsakiyesi
+• Kıble pusulası ve yakındaki camiler
+• Kur'an-ı Kerim (Arapça), dualar, Esmaü'l-Hüsna, zikirmatik, namaz ve oruç takibi, zekât hesabı
 
-TAKVİM
-• Resmî tatiller, arifeler, dini ve özel günler, okul tatilleri
-• Telefonunuzdaki takvimler (iCloud, Google, Outlook) aynı ekranda
-• Etkinlik ekleyin, silin; özel günleri takviminize ekleyin
+TAKVİM VE HAVA
+• Resmî tatiller, arifeler, dini ve özel günler; telefonunuzdaki takvimlerle bir arada
+• Hicri takvim ve çevirici, köprü tatil planlayıcı, 30 ülkenin resmî tatilleri
+• Saatlik ve 10 günlük tahmin, hava kalitesi, havaya göre canlanan ekran
 
-HAVA DURUMU
-• Apple Hava Durumu ile anlık, saatlik ve 7 günlük tahmin
+ALARM, UYKU VE ODAK
+• Telefon sessizdeyken de çalan alarm; matematik, sallama, kod okutma gibi kapatma görevleri
+• Uyku planı, uyku sesleri, akıllı alarm
+• Pomodoro, ders çalışma sayacı, odak sırasında uygulama engelleme
 
 ARAÇLAR
-• Alarm (telefon sessizdeyken de çalar), zamanlayıcı, tarihe geri sayım
-• Kronometre, pomodoro, tarih hesaplama (iş günü dahil)
-• Dönen dünya küresiyle dünya saatleri
-• Mevsimler, ekinoks ve gündönümü, Ay'ın evreleri
+• Zamanlayıcı, kronometre, aralık antrenmanı, satranç saati, metronom, konuşan saat
+• Dönen dünyayla dünya saatleri, toplantı planlayıcı, saat ve tarih hesaplama
+• Mevsimler, Ay takvimi, tutulmalar, gece gökyüzü, burç hesaplama
+• Cuma, Ramazan, bayram ve kandiller için tebrik kartları
 
-WIDGET'LAR
-• Sıradaki vakit, bugünün vakitleri, analog ve dijital saat, saat ve tarih; kilit ekranında da
+GİZLİLİK
+Hesap yok, reklam yok, takip yok. Konumunuz vakit hesabı için telefonda kalır; yalnız hava durumu ve yakındaki camiler için yaklaşık konum ilgili servise (Apple, Open-Meteo) gider, kim olduğunuz gitmez. Her izni Ayarlar › İzinler'den görür, kapatırsınız.
 
-On sekiz dilde: Türkçe, İngilizce, Almanca, Azerice, Arapça, Endonezce, Urduca, Farsça, Fransızca, Rusça, Japonca, Korece, Çince, Filipince, Tayca, İspanyolca, Portekizce ve Hintçe.
-
-Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için yaklaşık konum Apple'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir.
+On sekiz dilde. iPhone, iPad ve Apple Watch için.
 
 Saat Tarih bir Bumba Life ürünüdür. Web: time.bumba.tr

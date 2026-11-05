@@ -1,1 +1,1 @@
-prière,salat,adhan,ramadan,réveil,chronomètre,horloge mondiale,calendrier,météo,widget
+salat,adhan,qibla,coran,tasbih,ramadan,réveil,chronomètre,horloge mondiale,calendrier,métronome

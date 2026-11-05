@@ -1,1 +1,1 @@
-oração,salat,adhan,ramadã,alarme,cronômetro,relógio mundial,calendário,feriados,clima,widget
+salat,adhan,qibla,alcorão,tasbih,ramadã,cronômetro,relógio mundial,feriados,metrônomo,xadrez
