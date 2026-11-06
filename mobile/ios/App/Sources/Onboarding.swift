@@ -158,6 +158,24 @@ enum Onboarding {
     private static var resumeChecking = false
 }
 
+/// İlk sayfadaki özellik ızgarası (sahibin isteği, 6 Kasım 2026): metin anahtarı ve 3D simge, sırası sabit (Android'deki WELCOME_FEATURES)
+private struct OnboardWelcomeFeature: Hashable {
+    let key: String
+    let icon: String
+}
+
+private let onboardWelcomeFeatures: [OnboardWelcomeFeature] = [
+    OnboardWelcomeFeature(key: "clock", icon: "clock"),
+    OnboardWelcomeFeature(key: "calendar", icon: "calendar"),
+    OnboardWelcomeFeature(key: "weather", icon: "sun_cloud"),
+    OnboardWelcomeFeature(key: "prayer", icon: "mosque"),
+    OnboardWelcomeFeature(key: "alarm", icon: "alarm"),
+    OnboardWelcomeFeature(key: "world", icon: "globe"),
+    OnboardWelcomeFeature(key: "qibla", icon: "kaaba"),
+    OnboardWelcomeFeature(key: "sky", icon: "telescope"),
+    OnboardWelcomeFeature(key: "pomodoro", icon: "tomato"),
+]
+
 struct OnboardingView: View {
     let done: () -> Void
     /// CI ekran görüntüleri: -onboardPage N ile doğrudan bir adım; yoksa Onboarding.startPage
@@ -319,14 +337,14 @@ struct OnboardingView: View {
 
     private var welcome: some View {
         ScrollView {
-            VStack(spacing: 16) {
+            VStack(spacing: 12) {
                 TimelineView(.periodic(from: .now, by: 1)) { ctx in
-                    AnalogClock(date: ctx.date, showSeconds: true).frame(width: 200, height: 200)
+                    AnalogClock(date: ctx.date, showSeconds: true).frame(width: 116, height: 116)
                 }
                 .accessibilityHidden(true)
                 Text(L("app.displayName")).font(.largeTitle.weight(.bold)).foregroundStyle(Theme.text)
                     .multilineTextAlignment(.center)
-                // Neden ücretsiz (sahibin metni, 6 Kasım 2026): vurgulu başlık, tek kısa satır, "çünkü" satırı
+                // Sahibin metni (6 Kasım 2026): vurgulu iki satırlık başlık, ne yaptık, özellikler, "Neden ücretsiz?"
                 Text(L("onboard.welcome.title"))
                     .font(AppFonts.serif ? .custom("Literata-SemiBold", size: 26, relativeTo: .title)
                                          : .system(size: 25, weight: .semibold))
@@ -338,19 +356,40 @@ struct OnboardingView: View {
                     .lineSpacing(3)
                     .foregroundStyle(Theme.muted)
                     .fixedSize(horizontal: false, vertical: true)
-                Text(L("onboard.welcome.why"))
-                    .font(.headline)
-                    .multilineTextAlignment(.center)
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
+                    ForEach(onboardWelcomeFeatures, id: \.key) { f in
+                        VStack(spacing: 6) {
+                            LineIcon(name: f.icon, size: 34)
+                            Text(L("onboard.welcome.f.\(f.key)"))
+                                .font(.footnote.weight(.medium))
+                                .foregroundStyle(Theme.text)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                                .minimumScaleFactor(0.8)
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 72)
+                        .card(padding: 8)
+                    }
+                }
+                Text(L("onboard.welcome.whyTitle"))
+                    .font(AppFonts.section)
                     .foregroundStyle(Theme.text)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 6)
+                    .accessibilityAddTraits(.isHeader)
+                Text(L("onboard.welcome.why"))
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(3)
+                    .foregroundStyle(Theme.muted)
                     .fixedSize(horizontal: false, vertical: true)
                 Text(L("onboard.welcome.hint"))
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Theme.muted)
                     .fixedSize(horizontal: false, vertical: true)
-                    .padding(.top, 8)
+                    .padding(.top, 6)
             }
-            .padding(.horizontal, 28)
+            .padding(.horizontal, 24)
             .padding(.vertical, 12)
             .frame(maxWidth: .infinity)
         }
