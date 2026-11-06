@@ -2120,8 +2120,7 @@
     <string name="atmo_aurora">Aurora</string>
     <string name="atmo_sunset">Senja</string>
     <string name="atmo_night">Biru malam</string>
-    <string name="onboard_welcome_title">Selamat datang</string>
-    <string name="onboard_welcome_text">Jam, kalender, waktu salat, cuaca, dan alat dalam satu aplikasi. Tanpa iklan, tanpa akun, gratis.</string>
+    <string name="onboard_welcome_text">Kami telah meninjau satu per satu aplikasi dan situs web jam, kalender, cuaca, dan waktu salat untuk Anda. Fitur yang di tempat lain berbayar atau gratis kami satukan dalam satu aplikasi, dan semuanya kami berikan gratis untuk Anda. Mengapa? Karena kami percaya alat-alat ini harus terbuka bagi semua orang.</string>
     <string name="onboard_features_title">Apa yang akan Anda gunakan?</string>
     <string name="onboard_features_text">Pilihan Anda muncul di bilah bawah. Jam selalu aktif; nanti bisa diubah di Pengaturan › Fitur.</string>
     <string name="onboard_setup_title">Lokasi dan notifikasi</string>

@@ -346,8 +346,7 @@ private fun WelcomePage() {
     ) {
         AnalogClock(rememberNow().atZone(java.time.ZoneId.systemDefault()), Modifier.size(200.dp))
         Text(L("app.displayName"), color = Theme.c.text, fontSize = 32.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-        Text(L("onboard.welcome.title"), color = Theme.c.accent, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
-        Text(L("onboard.welcome.text"), color = Theme.c.muted, fontSize = 16.sp, textAlign = TextAlign.Center)
+        Text(L("onboard.welcome.text"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
         Text(L("onboard.welcome.hint"), color = Theme.c.text, fontSize = 15.sp, textAlign = TextAlign.Center)
     }
 }

@@ -2120,8 +2120,7 @@
     <string name="atmo_aurora">شفق قطبی</string>
     <string name="atmo_sunset">غروب</string>
     <string name="atmo_night">آبی شب</string>
-    <string name="onboard_welcome_title">خوش آمدید</string>
-    <string name="onboard_welcome_text">ساعت، تقویم، اوقات نماز، هوا و ابزارها در یک برنامه. بدون تبلیغ، بدون حساب، رایگان.</string>
+    <string name="onboard_welcome_text">ما اپلیکیشن‌ها و وب‌سایت‌های ساعت، تقویم، هواشناسی و اوقات نماز را یکی‌یکی برای شما بررسی کردیم. امکاناتی را که جاهای دیگر رایگان یا پولی ارائه می‌شوند در یک اپلیکیشن گرد آوردیم و همه را رایگان در اختیار شما می‌گذاریم. چرا؟ چون باور داریم این ابزارها باید در دسترس همه باشند.</string>
     <string name="onboard_features_title">از چه چیزهایی استفاده می‌کنید؟</string>
     <string name="onboard_features_text">انتخاب‌های شما در نوار پایین دیده می‌شوند. ساعت همیشه روشن است؛ بعدًا می‌توانید از تنظیمات › ویژگی‌ها تغییرشان دهید.</string>
     <string name="onboard_setup_title">موقعیت و اعلان‌ها</string>

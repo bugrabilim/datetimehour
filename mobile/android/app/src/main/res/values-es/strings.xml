@@ -2120,8 +2120,7 @@
     <string name="atmo_aurora">Aurora boreal</string>
     <string name="atmo_sunset">Atardecer</string>
     <string name="atmo_night">Azul medianoche</string>
-    <string name="onboard_welcome_title">Bienvenido</string>
-    <string name="onboard_welcome_text">Reloj, calendario, horarios de oración, tiempo y herramientas en una sola app. Sin anuncios, sin cuenta, gratis.</string>
+    <string name="onboard_welcome_text">Revisamos para usted, uno por uno, las aplicaciones y los sitios web de hora, calendario, clima y horarios de oración. Reunimos en una sola aplicación las funciones que en otros lugares son de pago o gratuitas, y se las ofrecemos todas gratis. ¿Por qué? Porque creemos que estas herramientas deben estar abiertas a todos.</string>
     <string name="onboard_features_title">¿Qué va a usar?</string>
     <string name="onboard_features_text">Lo que elija aparece en la barra inferior. El reloj siempre está activado; puede cambiarlo más tarde en Ajustes › Funciones.</string>
     <string name="onboard_setup_title">Ubicación y notificaciones</string>

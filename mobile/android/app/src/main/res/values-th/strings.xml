@@ -2120,8 +2120,7 @@
     <string name="atmo_aurora">แสงเหนือ</string>
     <string name="atmo_sunset">พระอาทิตย์ตก</string>
     <string name="atmo_night">สีน้ำเงินยามค่ำ</string>
-    <string name="onboard_welcome_title">ยินดีต้อนรับ</string>
-    <string name="onboard_welcome_text">นาฬิกา ปฏิทิน เวลาละหมาด สภาพอากาศ และเครื่องมือในแอปเดียว ไม่มีโฆษณา ไม่ต้องมีบัญชี ฟรี</string>
+    <string name="onboard_welcome_text">เราได้ศึกษาแอปและเว็บไซต์ด้านเวลา ปฏิทิน สภาพอากาศ และเวลาละหมาดทีละรายการเพื่อคุณ เรารวมฟีเจอร์ที่ที่อื่นมีทั้งแบบเสียเงินและฟรีไว้ในแอปเดียว และมอบทั้งหมดให้คุณใช้ฟรี ทำไมน่ะหรือ เพราะเราเชื่อว่าเครื่องมือเหล่านี้ควรเปิดให้ทุกคนใช้ได้</string>
     <string name="onboard_features_title">คุณจะใช้อะไรบ้าง</string>
     <string name="onboard_features_text">สิ่งที่เลือกจะแสดงในแถบด้านล่าง นาฬิกาเปิดอยู่เสมอ เปลี่ยนภายหลังได้ที่ การตั้งค่า › ฟีเจอร์</string>
     <string name="onboard_setup_title">ตำแหน่งและการแจ้งเตือน</string>

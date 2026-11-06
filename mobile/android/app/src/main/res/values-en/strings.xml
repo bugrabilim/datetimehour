@@ -2120,8 +2120,7 @@
     <string name="atmo_aurora">Aurora</string>
     <string name="atmo_sunset">Sunset</string>
     <string name="atmo_night">Midnight blue</string>
-    <string name="onboard_welcome_title">Welcome</string>
-    <string name="onboard_welcome_text">Clock, calendar, prayer times, weather and tools in one app. No ads, no account, free.</string>
+    <string name="onboard_welcome_text">We looked at clock, calendar, weather and prayer-time apps and websites one by one for you. We brought together in one app the features others offer, paid or free, and we give you all of them for free. Why? Because we believe these tools should be open to everyone.</string>
     <string name="onboard_features_title">What will you use?</string>
     <string name="onboard_features_text">What you choose appears in the bottom bar. The clock is always on; you can change this later in Settings › Features.</string>
     <string name="onboard_setup_title">Location and notifications</string>

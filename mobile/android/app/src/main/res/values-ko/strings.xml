@@ -2120,8 +2120,7 @@
     <string name="atmo_aurora">오로라</string>
     <string name="atmo_sunset">노을</string>
     <string name="atmo_night">한밤의 파랑</string>
-    <string name="onboard_welcome_title">환영합니다</string>
-    <string name="onboard_welcome_text">시계, 캘린더, 기도 시간, 날씨, 도구를 하나의 앱에. 광고 없음, 계정 없음, 무료.</string>
+    <string name="onboard_welcome_text">시간, 달력, 날씨, 기도 시간 앱과 웹사이트를 여러분을 위해 하나하나 살펴봤어요. 다른 곳에서 유료나 무료로 제공되는 기능을 하나의 앱에 모았고, 모두 무료로 드려요. 왜냐고요? 이런 도구는 모두에게 열려 있어야 한다고 믿기 때문이에요.</string>
     <string name="onboard_features_title">무엇을 사용하시겠어요?</string>
     <string name="onboard_features_text">선택한 항목은 아래쪽 막대에 표시됩니다. 시계는 항상 켜져 있으며, 나중에 설정 › 기능에서 바꿀 수 있습니다.</string>
     <string name="onboard_setup_title">위치와 알림</string>

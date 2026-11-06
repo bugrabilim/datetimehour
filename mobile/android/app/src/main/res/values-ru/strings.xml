@@ -2120,8 +2120,7 @@
     <string name="atmo_aurora">Северное сияние</string>
     <string name="atmo_sunset">Закат</string>
     <string name="atmo_night">Полуночный синий</string>
-    <string name="onboard_welcome_title">Добро пожаловать</string>
-    <string name="onboard_welcome_text">Часы, календарь, время намаза, погода и инструменты в одном приложении. Без рекламы, без аккаунта, бесплатно.</string>
+    <string name="onboard_welcome_text">Мы по очереди изучили для вас приложения и сайты с часами, календарём, погодой и временем намаза. Всё, что в других местах предлагается платно или бесплатно, мы собрали в одном приложении и отдаём вам бесплатно. Почему? Потому что мы верим, что эти инструменты должны быть доступны каждому.</string>
     <string name="onboard_features_title">Чем вы будете пользоваться?</string>
     <string name="onboard_features_text">Выбранное появится в нижней панели. Часы включены всегда; позже это можно изменить в разделе «Настройки › Функции».</string>
     <string name="onboard_setup_title">Местоположение и уведомления</string>

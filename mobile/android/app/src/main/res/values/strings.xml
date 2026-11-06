@@ -2120,8 +2120,7 @@
     <string name="atmo_aurora">Kutup ışığı</string>
     <string name="atmo_sunset">Gün batımı</string>
     <string name="atmo_night">Gece mavisi</string>
-    <string name="onboard_welcome_title">Hoş geldiniz</string>
-    <string name="onboard_welcome_text">Saat, takvim, namaz vakitleri, hava durumu ve araçlar tek uygulamada. Reklam yok, hesap yok, ücretsiz.</string>
+    <string name="onboard_welcome_text">Saat, takvim, hava durumu ve namaz vakti uygulamalarını ve web sitelerini sizin için tek tek inceledik. Başka yerlerde ücretli ya da ücretsiz sunulan özellikleri tek uygulamada topladık ve hepsini size ücretsiz sunuyoruz. Neden mi? Çünkü bu araçların herkese açık olması gerektiğine inanıyoruz.</string>
     <string name="onboard_features_title">Neleri kullanacaksınız?</string>
     <string name="onboard_features_text">Seçtikleriniz alt çubukta görünür. Saat her zaman açıktır; sonra Ayarlar › Özellikler\'den değiştirebilirsiniz.</string>
     <string name="onboard_setup_title">Konum ve bildirimler</string>

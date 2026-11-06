@@ -2120,8 +2120,7 @@
     <string name="atmo_aurora">قطبی روشنی</string>
     <string name="atmo_sunset">غروب آفتاب</string>
     <string name="atmo_night">رات کا نیلا</string>
-    <string name="onboard_welcome_title">خوش آمدید</string>
-    <string name="onboard_welcome_text">گھڑی، کیلنڈر، نماز کے اوقات، موسم اور ٹولز ایک ہی ایپ میں۔ نہ اشتہار، نہ اکاؤنٹ، مفت۔</string>
+    <string name="onboard_welcome_text">ہم نے آپ کے لیے وقت، کیلنڈر، موسم اور نماز کے اوقات کی ایپس اور ویب سائٹس کا ایک ایک کر کے جائزہ لیا۔ جو خصوصیات دوسری جگہوں پر مفت یا قیمتاً ملتی ہیں، انہیں ہم نے ایک ایپ میں جمع کیا اور سب آپ کو مفت پیش کرتے ہیں۔ کیوں؟ کیونکہ ہمارا ماننا ہے کہ یہ ٹولز سب کے لیے کھلے ہونے چاہئیں۔</string>
     <string name="onboard_features_title">آپ کیا استعمال کریں گے؟</string>
     <string name="onboard_features_text">آپ کا انتخاب نیچے کی بار میں نظر آتا ہے۔ گھڑی ہمیشہ چلتی ہے؛ بعد میں ترتیبات › خصوصیات سے بدل سکتے ہیں۔</string>
     <string name="onboard_setup_title">مقام اور اطلاعات</string>

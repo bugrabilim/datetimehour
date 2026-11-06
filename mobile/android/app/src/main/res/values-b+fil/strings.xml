@@ -2120,8 +2120,7 @@
     <string name="atmo_aurora">Aurora</string>
     <string name="atmo_sunset">Paglubog ng araw</string>
     <string name="atmo_night">Asul ng hatinggabi</string>
-    <string name="onboard_welcome_title">Maligayang pagdating</string>
-    <string name="onboard_welcome_text">Orasan, kalendaryo, oras ng pagdarasal, panahon at mga tool sa iisang app. Walang ad, walang account, libre.</string>
+    <string name="onboard_welcome_text">Isa-isa naming sinuri para sa iyo ang mga app at website para sa oras, kalendaryo, panahon at oras ng pagdarasal. Pinagsama namin sa iisang app ang mga feature na may bayad o libre sa ibang lugar, at lahat ng ito ay ibinibigay namin sa iyo nang libre. Bakit? Dahil naniniwala kami na dapat bukas sa lahat ang mga kasangkapang ito.</string>
     <string name="onboard_features_title">Ano ang gagamitin mo?</string>
     <string name="onboard_features_text">Lalabas sa bar sa ibaba ang mga pipiliin mo. Laging bukas ang orasan; mababago mo ito sa Mga Setting › Mga Feature.</string>
     <string name="onboard_setup_title">Lokasyon at mga notification</string>

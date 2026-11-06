@@ -2120,8 +2120,7 @@
     <string name="atmo_aurora">الشفق القطبي</string>
     <string name="atmo_sunset">الغروب</string>
     <string name="atmo_night">أزرق الليل</string>
-    <string name="onboard_welcome_title">أهلًا بك</string>
-    <string name="onboard_welcome_text">الساعة والتقويم ومواقيت الصلاة والطقس والأدوات في تطبيق واحد. بلا إعلانات ولا حساب، ومجانًا.</string>
+    <string name="onboard_welcome_text">راجعنا لك تطبيقات ومواقع الوقت والتقويم والطقس ومواقيت الصلاة واحدًا تلو الآخر. جمعنا في تطبيق واحد الميزات التي تُقدَّم في أماكن أخرى مجانًا أو بمقابل، ونقدّمها لك كلها مجانًا. لماذا؟ لأننا نؤمن بأن هذه الأدوات يجب أن تكون متاحة للجميع.</string>
     <string name="onboard_features_title">ماذا ستستخدم؟</string>
     <string name="onboard_features_text">يظهر ما تختاره في الشريط السفلي. الساعة مفعّلة دائمًا، ويمكنك التغيير لاحقًا من الإعدادات › الميزات.</string>
     <string name="onboard_setup_title">الموقع والإشعارات</string>
