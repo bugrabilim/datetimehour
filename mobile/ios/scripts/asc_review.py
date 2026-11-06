@@ -73,6 +73,22 @@ def status(aid):
             print(f"  öğe {it['id']}: state={it['attributes'].get('state')}")
 
 
+def age_rating(aid):
+    """Yaş derecelendirmesi: her uygulama bilgisi kaydının mağaza derecesi ve beyan yanıtları (boş olanlar None)."""
+    print("--- Yaş derecelendirmesi ---")
+    for info in call("GET", f"/apps/{aid}/appInfos?limit=10")["data"]:
+        a = info["attributes"]
+        print(f"Uygulama bilgisi {info['id']}: state={a.get('state') or a.get('appStoreState')} "
+              f"appStoreAgeRating={a.get('appStoreAgeRating')}")
+        decl = call("GET", f"/appInfos/{info['id']}/ageRatingDeclaration").get("data") or {}
+        if not decl:
+            print("  beyan yok")
+            continue
+        print(f"  beyan {decl['id']}:")
+        for k, v in sorted(decl.get("attributes", {}).items()):
+            print(f"    {k} = {v}")
+
+
 def mask(email):
     if not email or "@" not in email:
         return "(e-posta yok)"
@@ -125,4 +141,5 @@ if __name__ == "__main__":
         resubmit(aid)
         print("--- güncel durum ---")
     status(aid)
+    age_rating(aid)
     beta_groups(aid)
