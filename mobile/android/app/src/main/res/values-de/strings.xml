@@ -2120,7 +2120,9 @@
     <string name="atmo_aurora">Polarlicht</string>
     <string name="atmo_sunset">Sonnenuntergang</string>
     <string name="atmo_night">Mitternachtsblau</string>
-    <string name="onboard_welcome_text">Wir haben Apps und Websites für Uhrzeit, Kalender, Wetter und Gebetszeiten für Sie einzeln geprüft. Was anderswo kostenpflichtig oder kostenlos angeboten wird, haben wir in einer App vereint, und wir bieten Ihnen alles kostenlos an. Warum? Weil wir glauben, dass diese Werkzeuge allen offenstehen sollten.</string>
+    <string name="onboard_welcome_title">Alles in einer App.\nAlles kostenlos.</string>
+    <string name="onboard_welcome_text">Wir haben Dutzende Apps und Websites für Sie geprüft und das Beste vereint.</string>
+    <string name="onboard_welcome_why">Denn diese Werkzeuge sollten allen offenstehen.</string>
     <string name="onboard_features_title">Was möchten Sie nutzen?</string>
     <string name="onboard_features_text">Ihre Auswahl erscheint in der unteren Leiste. Die Uhr ist immer an; später ändern Sie das unter Einstellungen › Funktionen.</string>
     <string name="onboard_setup_title">Standort und Mitteilungen</string>

@@ -2120,7 +2120,9 @@
     <string name="atmo_aurora">极光</string>
     <string name="atmo_sunset">日落</string>
     <string name="atmo_night">午夜蓝</string>
-    <string name="onboard_welcome_text">我们为您逐一研究了时间、日历、天气和礼拜时间相关的应用与网站。我们把别处收费或免费提供的功能汇集到一个应用中，并全部免费提供给您。为什么？因为我们相信这些工具应该向所有人开放。</string>
+    <string name="onboard_welcome_title">一个应用，应有尽有。\n全部免费。</string>
+    <string name="onboard_welcome_text">我们为您研究了数十款应用和网站，把最好的集中在一起。</string>
+    <string name="onboard_welcome_why">因为这些工具应该向所有人开放。</string>
     <string name="onboard_features_title">您会用到哪些功能？</string>
     <string name="onboard_features_text">您选择的功能会显示在底部栏。时钟始终开启；之后可在“设置 › 功能”中更改。</string>
     <string name="onboard_setup_title">位置与通知</string>

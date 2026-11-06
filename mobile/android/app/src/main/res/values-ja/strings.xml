@@ -2120,7 +2120,9 @@
     <string name="atmo_aurora">オーロラ</string>
     <string name="atmo_sunset">夕焼け</string>
     <string name="atmo_night">ミッドナイトブルー</string>
-    <string name="onboard_welcome_text">時刻・カレンダー・天気・礼拝時刻のアプリとウェブサイトを、あなたのためにひとつずつ調べました。ほかで有料または無料で提供されている機能をひとつのアプリにまとめ、すべて無料でお届けします。なぜでしょうか？これらの道具は誰にでも開かれているべきだと考えているからです。</string>
+    <string name="onboard_welcome_title">すべてをひとつのアプリに。\nすべて無料で。</string>
+    <string name="onboard_welcome_text">数十のアプリとサイトを調べ、いいところをひとつにまとめました。</string>
+    <string name="onboard_welcome_why">こうした道具は、誰にでも開かれているべきだから。</string>
     <string name="onboard_features_title">何を使いますか？</string>
     <string name="onboard_features_text">選んだものは下のバーに表示されます。時計は常にオンです。あとで 設定 › 機能 から変更できます。</string>
     <string name="onboard_setup_title">位置情報と通知</string>

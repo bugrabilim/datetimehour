@@ -2120,7 +2120,9 @@
     <string name="atmo_aurora">Qütb parıltısı</string>
     <string name="atmo_sunset">Gün batımı</string>
     <string name="atmo_night">Gecə mavisi</string>
-    <string name="onboard_welcome_text">Saat, təqvim, hava proqnozu və namaz vaxtı tətbiqlərini və veb saytlarını sizin üçün bir-bir araşdırdıq. Başqa yerlərdə pullu və ya pulsuz təqdim olunan funksiyaları bir tətbiqdə topladıq və hamısını sizə pulsuz təqdim edirik. Niyə? Çünki bu alətlərin hamı üçün açıq olmalı olduğuna inanırıq.</string>
+    <string name="onboard_welcome_title">Hamısı bir tətbiqdə.\nHamısı pulsuz.</string>
+    <string name="onboard_welcome_text">Onlarla tətbiqi və saytı sizin üçün araşdırdıq, ən yaxşısını bir yerə topladıq.</string>
+    <string name="onboard_welcome_why">Çünki bu alətlər hamıya açıq olmalıdır.</string>
     <string name="onboard_features_title">Nələrdən istifadə edəcəksiniz?</string>
     <string name="onboard_features_text">Seçdikləriniz alt paneldə görünür. Saat həmişə açıqdır; sonra Ayarlar › Xüsusiyyətlər bölməsindən dəyişə bilərsiniz.</string>
     <string name="onboard_setup_title">Məkan və bildirişlər</string>

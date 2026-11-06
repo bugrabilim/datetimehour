@@ -346,8 +346,14 @@ private fun WelcomePage() {
     ) {
         AnalogClock(rememberNow().atZone(java.time.ZoneId.systemDefault()), Modifier.size(200.dp))
         Text(L("app.displayName"), color = Theme.c.text, fontSize = 32.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        // Neden ücretsiz (sahibin metni, 6 Kasım 2026): vurgulu başlık, tek kısa satır, "çünkü" satırı
+        Text(L("onboard.welcome.title"), color = Theme.c.accent, fontSize = 26.sp, lineHeight = 32.sp,
+            fontFamily = AppFonts.heading, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
         Text(L("onboard.welcome.text"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
-        Text(L("onboard.welcome.hint"), color = Theme.c.text, fontSize = 15.sp, textAlign = TextAlign.Center)
+        Text(L("onboard.welcome.why"), color = Theme.c.text, fontSize = 17.sp, lineHeight = 24.sp,
+            fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
+        Text(L("onboard.welcome.hint"), color = Theme.c.muted, fontSize = 14.sp, lineHeight = 20.sp, textAlign = TextAlign.Center,
+            modifier = Modifier.padding(top = 8.dp))
     }
 }
 

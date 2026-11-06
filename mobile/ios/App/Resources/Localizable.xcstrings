@@ -239448,115 +239448,341 @@
         }
       }
     },
+    "onboard.welcome.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hepsi tek uygulamada.\nHepsi ücretsiz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All in one app.\nAll free."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alles in einer App.\nAlles kostenlos."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hamısı bir tətbiqdə.\nHamısı pulsuz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كل شيء في تطبيق واحد.\nوكله مجاني."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua dalam satu aplikasi.\nSemua gratis."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سب کچھ ایک ایپ میں۔\nسب کچھ مفت۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "همه در یک برنامه.\nهمه رایگان."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tout dans une seule appli.\nTout gratuit."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Всё в одном приложении.\nВсё бесплатно."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "すべてをひとつのアプリに。\nすべて無料で。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "모든 것을 한 앱에.\n모두 무료로."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一个应用，应有尽有。\n全部免费。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lahat sa iisang app.\nLahat libre."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ครบในแอปเดียว\nฟรีทั้งหมด"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todo en una sola app.\nTodo gratis."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tudo em um só app.\nTudo grátis."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सब कुछ एक ऐप में।\nसब कुछ मुफ़्त।"
+          }
+        }
+      }
+    },
     "onboard.welcome.text": {
       "extractionState": "manual",
       "localizations": {
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat, takvim, hava durumu ve namaz vakti uygulamalarını ve web sitelerini sizin için tek tek inceledik. Başka yerlerde ücretli ya da ücretsiz sunulan özellikleri tek uygulamada topladık ve hepsini size ücretsiz sunuyoruz. Neden mi? Çünkü bu araçların herkese açık olması gerektiğine inanıyoruz."
+            "value": "Onlarca uygulamayı ve siteyi sizin için inceledik, en iyisini bir araya getirdik."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "We looked at clock, calendar, weather and prayer-time apps and websites one by one for you. We brought together in one app the features others offer, paid or free, and we give you all of them for free. Why? Because we believe these tools should be open to everyone."
+            "value": "We studied dozens of apps and websites for you and brought the best together."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wir haben Apps und Websites für Uhrzeit, Kalender, Wetter und Gebetszeiten für Sie einzeln geprüft. Was anderswo kostenpflichtig oder kostenlos angeboten wird, haben wir in einer App vereint, und wir bieten Ihnen alles kostenlos an. Warum? Weil wir glauben, dass diese Werkzeuge allen offenstehen sollten."
+            "value": "Wir haben Dutzende Apps und Websites für Sie geprüft und das Beste vereint."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat, təqvim, hava proqnozu və namaz vaxtı tətbiqlərini və veb saytlarını sizin üçün bir-bir araşdırdıq. Başqa yerlərdə pullu və ya pulsuz təqdim olunan funksiyaları bir tətbiqdə topladıq və hamısını sizə pulsuz təqdim edirik. Niyə? Çünki bu alətlərin hamı üçün açıq olmalı olduğuna inanırıq."
+            "value": "Onlarla tətbiqi və saytı sizin üçün araşdırdıq, ən yaxşısını bir yerə topladıq."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "راجعنا لك تطبيقات ومواقع الوقت والتقويم والطقس ومواقيت الصلاة واحدًا تلو الآخر. جمعنا في تطبيق واحد الميزات التي تُقدَّم في أماكن أخرى مجانًا أو بمقابل، ونقدّمها لك كلها مجانًا. لماذا؟ لأننا نؤمن بأن هذه الأدوات يجب أن تكون متاحة للجميع."
+            "value": "راجعنا لك عشرات التطبيقات والمواقع، وجمعنا أفضل ما فيها."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kami telah meninjau satu per satu aplikasi dan situs web jam, kalender, cuaca, dan waktu salat untuk Anda. Fitur yang di tempat lain berbayar atau gratis kami satukan dalam satu aplikasi, dan semuanya kami berikan gratis untuk Anda. Mengapa? Karena kami percaya alat-alat ini harus terbuka bagi semua orang."
+            "value": "Kami meninjau puluhan aplikasi dan situs untuk Anda, lalu menyatukan yang terbaik."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "ہم نے آپ کے لیے وقت، کیلنڈر، موسم اور نماز کے اوقات کی ایپس اور ویب سائٹس کا ایک ایک کر کے جائزہ لیا۔ جو خصوصیات دوسری جگہوں پر مفت یا قیمتاً ملتی ہیں، انہیں ہم نے ایک ایپ میں جمع کیا اور سب آپ کو مفت پیش کرتے ہیں۔ کیوں؟ کیونکہ ہمارا ماننا ہے کہ یہ ٹولز سب کے لیے کھلے ہونے چاہئیں۔"
+            "value": "ہم نے آپ کے لیے درجنوں ایپس اور ویب سائٹس دیکھیں اور ان کی بہترین چیزیں یکجا کیں۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "ما اپلیکیشن‌ها و وب‌سایت‌های ساعت، تقویم، هواشناسی و اوقات نماز را یکی‌یکی برای شما بررسی کردیم. امکاناتی را که جاهای دیگر رایگان یا پولی ارائه می‌شوند در یک اپلیکیشن گرد آوردیم و همه را رایگان در اختیار شما می‌گذاریم. چرا؟ چون باور داریم این ابزارها باید در دسترس همه باشند."
+            "value": "ده‌ها برنامه و وب‌سایت را برایتان بررسی کردیم و بهترین‌هایشان را یکجا آوردیم."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nous avons examiné pour vous, un par un, les applications et sites d'heure, de calendrier, de météo et d'horaires de prière. Nous avons réuni dans une seule application les fonctions proposées ailleurs, payantes ou gratuites, et nous vous les offrons toutes gratuitement. Pourquoi ? Parce que nous pensons que ces outils doivent être ouverts à tous."
+            "value": "Nous avons étudié pour vous des dizaines d'applis et de sites, et réuni le meilleur."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Мы по очереди изучили для вас приложения и сайты с часами, календарём, погодой и временем намаза. Всё, что в других местах предлагается платно или бесплатно, мы собрали в одном приложении и отдаём вам бесплатно. Почему? Потому что мы верим, что эти инструменты должны быть доступны каждому."
+            "value": "Мы изучили для вас десятки приложений и сайтов и собрали лучшее."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "時刻・カレンダー・天気・礼拝時刻のアプリとウェブサイトを、あなたのためにひとつずつ調べました。ほかで有料または無料で提供されている機能をひとつのアプリにまとめ、すべて無料でお届けします。なぜでしょうか？これらの道具は誰にでも開かれているべきだと考えているからです。"
+            "value": "数十のアプリとサイトを調べ、いいところをひとつにまとめました。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "시간, 달력, 날씨, 기도 시간 앱과 웹사이트를 여러분을 위해 하나하나 살펴봤어요. 다른 곳에서 유료나 무료로 제공되는 기능을 하나의 앱에 모았고, 모두 무료로 드려요. 왜냐고요? 이런 도구는 모두에게 열려 있어야 한다고 믿기 때문이에요."
+            "value": "수십 개의 앱과 사이트를 살펴보고 가장 좋은 것만 모았어요."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "我们为您逐一研究了时间、日历、天气和礼拜时间相关的应用与网站。我们把别处收费或免费提供的功能汇集到一个应用中，并全部免费提供给您。为什么？因为我们相信这些工具应该向所有人开放。"
+            "value": "我们为您研究了数十款应用和网站，把最好的集中在一起。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Isa-isa naming sinuri para sa iyo ang mga app at website para sa oras, kalendaryo, panahon at oras ng pagdarasal. Pinagsama namin sa iisang app ang mga feature na may bayad o libre sa ibang lugar, at lahat ng ito ay ibinibigay namin sa iyo nang libre. Bakit? Dahil naniniwala kami na dapat bukas sa lahat ang mga kasangkapang ito."
+            "value": "Sinuri namin para sa iyo ang dose-dosenang app at website, at pinagsama ang pinakamahusay."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "เราได้ศึกษาแอปและเว็บไซต์ด้านเวลา ปฏิทิน สภาพอากาศ และเวลาละหมาดทีละรายการเพื่อคุณ เรารวมฟีเจอร์ที่ที่อื่นมีทั้งแบบเสียเงินและฟรีไว้ในแอปเดียว และมอบทั้งหมดให้คุณใช้ฟรี ทำไมน่ะหรือ เพราะเราเชื่อว่าเครื่องมือเหล่านี้ควรเปิดให้ทุกคนใช้ได้"
+            "value": "เราศึกษาแอปและเว็บไซต์หลายสิบแห่งเพื่อคุณ แล้วรวมสิ่งที่ดีที่สุดไว้ด้วยกัน"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Revisamos para usted, uno por uno, las aplicaciones y los sitios web de hora, calendario, clima y horarios de oración. Reunimos en una sola aplicación las funciones que en otros lugares son de pago o gratuitas, y se las ofrecemos todas gratis. ¿Por qué? Porque creemos que estas herramientas deben estar abiertas a todos."
+            "value": "Revisamos para usted decenas de apps y sitios web, y reunimos lo mejor."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Analisamos para você, um a um, os aplicativos e sites de hora, calendário, clima e horários de oração. Reunimos em um só aplicativo os recursos que em outros lugares são pagos ou gratuitos, e oferecemos todos a você de graça. Por quê? Porque acreditamos que essas ferramentas devem ser abertas a todos."
+            "value": "Analisamos para você dezenas de apps e sites e reunimos o melhor."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "हमने आपके लिए समय, कैलेंडर, मौसम और नमाज़ के समय से जुड़े ऐप्स और वेबसाइटों को एक-एक करके जाँचा। जो सुविधाएँ दूसरी जगहों पर पैसे देकर या मुफ़्त मिलती हैं, उन्हें हमने एक ही ऐप में जोड़ा है और सब आपको मुफ़्त दे रहे हैं। क्यों? क्योंकि हम मानते हैं कि ये टूल सबके लिए खुले होने चाहिए।"
+            "value": "हमने आपके लिए दर्जनों ऐप्स और वेबसाइटें जाँचीं और सबसे अच्छी चीज़ें एक जगह जुटाईं।"
+          }
+        }
+      }
+    },
+    "onboard.welcome.why": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çünkü bu araçlar herkese açık olmalı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Because these tools should be open to everyone."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Denn diese Werkzeuge sollten allen offenstehen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çünki bu alətlər hamıya açıq olmalıdır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لأن هذه الأدوات يجب أن تكون متاحة للجميع."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karena alat-alat ini harus terbuka bagi semua orang."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کیونکہ یہ ٹولز سب کے لیے کھلے ہونے چاہئیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "چون این ابزارها باید در دسترس همه باشند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parce que ces outils doivent être ouverts à tous."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Потому что эти инструменты должны быть доступны каждому."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "こうした道具は、誰にでも開かれているべきだから。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이런 도구는 모두에게 열려 있어야 하니까요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "因为这些工具应该向所有人开放。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dahil dapat bukas sa lahat ang mga kasangkapang ito."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพราะเครื่องมือเหล่านี้ควรเปิดให้ทุกคนใช้ได้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Porque estas herramientas deben estar abiertas a todos."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Porque essas ferramentas devem ser abertas a todos."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "क्योंकि ये टूल सबके लिए खुले होने चाहिए।"
           }
         }
       }
