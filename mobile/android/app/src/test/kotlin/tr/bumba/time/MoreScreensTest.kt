@@ -442,6 +442,11 @@ class MoreScreensTest {
         shot("tr-vakitler-kadran") { PrayerScreen() }
         Prefs.store.edit().remove("prayer.visual").remove("prayer.words").commit()
     }
+    /** İki tonlu simgeler (8 Kasım 2026): Vakitler'in altındaki dört ibadet karesi uzun ekranda */
+    @Test fun worshipTiles() {
+        shot("tr-vakitler-ibadet", "tr-h2400dp") { PrayerScreen() }
+        shot("tr-vakitler-ibadet-koyu", "tr-h2400dp", dark = true) { PrayerScreen() }
+    }
     @Test fun prayerExtras() {
         Prefs.store.edit().putString(PrayerMethod.METHOD, "mwl").putBoolean(PrayerMethod.HANAFI, true)
             .putInt(PrayerSilent.MINUTES, 30).putString(PrayerAlarms.KEY, "fajr,maghrib").commit()

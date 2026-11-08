@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">明日が大きく寒く・暖かくなる日は19時に、雨の15分前にも（1時間ごとの予報から）。</string>
     <string name="world_searchHint">都市・国・略称（EST、CET）</string>
     <string name="world_label">名前と絵文字（任意）</string>
-    <string name="world_labelHint">例：母 👵</string>
+    <string name="world_labelHint">例：母</string>
     <string name="moon_daysAfter">%1$s日後</string>
     <string name="moon_daysBefore">%1$s日前</string>
     <string name="moon_scrubHint">スライドで別の日の月を表示。カレンダーの日付をタップしても選べます。</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">ステータスバーとロック画面に表示</string>
     <string name="live_weather_noteAndroid">気温がステータスバーとロック画面に表示されます。通知の「閉じる」、クイック設定、またはここでオフにできます。1時間ごとに更新します。</string>
     <string name="about_credits">アイコン：Microsoft Fluent Emoji、Phosphor Icons（MITライセンス）。フォント：Literata、Amiri（SIL Open Font License）。</string>
-    <string name="about_license">アイコンのライセンス本文</string>
+    <string name="about_license">Fluent Emoji のライセンス</string>
+    <string name="about_licensePhosphor">Phosphor Icons のライセンス</string>
     <string name="onboard_go">はじめましょう</string>
     <string name="onboard_back">戻る</string>
     <string name="onboard_yes">はい</string>

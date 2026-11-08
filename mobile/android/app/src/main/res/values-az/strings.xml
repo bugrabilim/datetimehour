@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">Sabah nəzərəçarpacaq soyuq və ya isti olacaqsa axşam 19:00-da; yağışdan 15 dəqiqə əvvəl (saatlıq proqnozdan).</string>
     <string name="world_searchHint">Şəhər, ölkə və ya qısaltma (EST, CET)</string>
     <string name="world_label">Ad və emoji (istəyə bağlı)</string>
-    <string name="world_labelHint">məs. Anam 👵</string>
+    <string name="world_labelHint">məs. Anam</string>
     <string name="moon_daysAfter">%1$s gün sonra</string>
     <string name="moon_daysBefore">%1$s gün əvvəl</string>
     <string name="moon_scrubHint">Başqa günün Ayına baxmaq üçün sürüşdürün; təqvimdə günə toxunmaq da onu seçir.</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">Bildiriş sahəsində və kilid ekranında göstər</string>
     <string name="live_weather_noteAndroid">Temperatur status sətrində və kilid ekranında görünür; bildirişdəki Bağla ilə, Sürətli Ayarlardan ya da buradan bağlanır. Saatda bir yenilənir.</string>
     <string name="about_credits">Simvollar: Microsoft Fluent Emoji və Phosphor Icons (MIT lisenziyası). Şriftlər: Literata və Amiri (SIL Open Font License).</string>
-    <string name="about_license">Simvolların lisenziya mətni</string>
+    <string name="about_license">Fluent Emoji lisenziyası</string>
+    <string name="about_licensePhosphor">Phosphor Icons lisenziyası</string>
     <string name="onboard_go">Başlayaq</string>
     <string name="onboard_back">Geri</string>
     <string name="onboard_yes">Bəli</string>

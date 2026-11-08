@@ -304,7 +304,7 @@ fun CalendarLeafScreen(onBack: () -> Unit) {
             if (otd.isNotEmpty()) AppCard {
                 SectionTitle(L("otd.h1"))
                 for (it in otd) {
-                    Text("${it.icon} ${it.year} · ${it.title}", color = Theme.c.text, fontSize = 15.sp)
+                    IconText(it.icon, "${it.year} · ${it.title}", Theme.c.text, fontSize = 15.sp, iconColor = Theme.c.sage)
                     if (it.desc.isNotEmpty()) Text(it.desc, color = Theme.c.muted, fontSize = 12.sp)
                 }
                 Text("Wikidata (CC0)", color = Theme.c.muted, fontSize = 11.sp)
@@ -346,7 +346,8 @@ object Rumi {
 /** Tarihte bugün (2. analiz #124): Wikidata (CC0) kayıtları, dile göre assets/otd-<dil>.json (gen-strings.mjs) */
 object OnThisDay {
     data class Item(val year: Int, val kind: String, val name: String, val desc: String) {
-        val icon: String get() = when (kind) { "f" -> "🏛️"; "b" -> "🎂"; "d" -> "🕯️"; else -> "📜" }
+        /** İki tonlu simge (8 Kasım 2026; emoji yerine): kuruluş ışıltı, doğum hediye, ölüm yaprak, olay parşömen */
+        val icon: String get() = when (kind) { "f" -> "sparkles"; "b" -> "gift"; "d" -> "leaf"; else -> "scroll" }
         val title: String get() = if (kind == "f") T("otd.foundedFmt", name) else name
     }
     private var cache: Pair<String, Map<String, List<Item>>>? = null

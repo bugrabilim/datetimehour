@@ -272902,109 +272902,109 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "ör. Annem 👵"
+            "value": "ör. Annem"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "e.g. Mum 👵"
+            "value": "e.g. Mum"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "z. B. Mama 👵"
+            "value": "z. B. Mama"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "məs. Anam 👵"
+            "value": "məs. Anam"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "مثل: أمي 👵"
+            "value": "مثل: أمي"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "mis. Ibu 👵"
+            "value": "mis. Ibu"
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "مثلاً امی 👵"
+            "value": "مثلاً امی"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "مثلاً مادرم 👵"
+            "value": "مثلاً مادرم"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "ex. Maman 👵"
+            "value": "ex. Maman"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "напр. Мама 👵"
+            "value": "напр. Мама"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "例：母 👵"
+            "value": "例：母"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "예: 엄마 👵"
+            "value": "예: 엄마"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "例如：妈妈 👵"
+            "value": "例如：妈妈"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "hal. Nanay 👵"
+            "value": "hal. Nanay"
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "เช่น แม่ 👵"
+            "value": "เช่น แม่"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "p. ej., Mamá 👵"
+            "value": "p. ej., Mamá"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "ex.: Mãe 👵"
+            "value": "ex.: Mãe"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "जैसे, माँ 👵"
+            "value": "जैसे, माँ"
           }
         }
       }
@@ -322396,109 +322396,222 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Simgelerin lisans metni"
+            "value": "Fluent Emoji lisansı"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Icon license text"
+            "value": "Fluent Emoji license"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lizenztext der Symbole"
+            "value": "Lizenz von Fluent Emoji"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Simvolların lisenziya mətni"
+            "value": "Fluent Emoji lisenziyası"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "نص رخصة الرموز"
+            "value": "رخصة Fluent Emoji"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Teks lisensi ikon"
+            "value": "Lisensi Fluent Emoji"
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "آئیکن کے لائسنس کا متن"
+            "value": "Fluent Emoji کا لائسنس"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "متن مجوز نمادها"
+            "value": "مجوز Fluent Emoji"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Texte de licence des icônes"
+            "value": "Licence de Fluent Emoji"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Текст лицензии значков"
+            "value": "Лицензия Fluent Emoji"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "アイコンのライセンス本文"
+            "value": "Fluent Emoji のライセンス"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "아이콘 라이선스 전문"
+            "value": "Fluent Emoji 라이선스"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "图标许可证全文"
+            "value": "Fluent Emoji 许可证"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Teksto ng lisensya ng mga icon"
+            "value": "Lisensya ng Fluent Emoji"
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ข้อความสัญญาอนุญาตของไอคอน"
+            "value": "สัญญาอนุญาตของ Fluent Emoji"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Texto de la licencia de los iconos"
+            "value": "Licencia de Fluent Emoji"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Texto da licença dos ícones"
+            "value": "Licença do Fluent Emoji"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "आइकन लाइसेंस का पाठ"
+            "value": "Fluent Emoji का लाइसेंस"
+          }
+        }
+      }
+    },
+    "about.licensePhosphor": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phosphor Icons lisansı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phosphor Icons license"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lizenz von Phosphor Icons"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phosphor Icons lisenziyası"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رخصة Phosphor Icons"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lisensi Phosphor Icons"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phosphor Icons کا لائسنس"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مجوز Phosphor Icons"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Licence de Phosphor Icons"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лицензия Phosphor Icons"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phosphor Icons のライセンス"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phosphor Icons 라이선스"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phosphor Icons 许可证"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lisensya ng Phosphor Icons"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สัญญาอนุญาตของ Phosphor Icons"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Licencia de Phosphor Icons"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Licença do Phosphor Icons"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phosphor Icons का लाइसेंस"
           }
         }
       }

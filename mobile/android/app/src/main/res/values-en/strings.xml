@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">At 7 pm if tomorrow is noticeably colder or warmer; 15 minutes before rain (from the hourly forecast).</string>
     <string name="world_searchHint">City, country or abbreviation (EST, CET)</string>
     <string name="world_label">Name and emoji (optional)</string>
-    <string name="world_labelHint">e.g. Mum 👵</string>
+    <string name="world_labelHint">e.g. Mum</string>
     <string name="moon_daysAfter">in %1$s days</string>
     <string name="moon_daysBefore">%1$s days ago</string>
     <string name="moon_scrubHint">Slide to see the Moon on another day; tapping a day in the calendar also selects it.</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">Show in the status bar and on the lock screen</string>
     <string name="live_weather_noteAndroid">The temperature appears in the status bar and on the lock screen; turn it off with Close in the notification, from Quick Settings or here. It refreshes hourly.</string>
     <string name="about_credits">Icons: Microsoft Fluent Emoji and Phosphor Icons (MIT License). Fonts: Literata and Amiri (SIL Open Font License).</string>
-    <string name="about_license">Icon license text</string>
+    <string name="about_license">Fluent Emoji license</string>
+    <string name="about_licensePhosphor">Phosphor Icons license</string>
     <string name="onboard_go">Let\'s begin</string>
     <string name="onboard_back">Back</string>
     <string name="onboard_yes">Yes</string>

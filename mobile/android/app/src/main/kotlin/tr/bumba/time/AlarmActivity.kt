@@ -175,7 +175,7 @@ class AlarmActivity : ComponentActivity() {
                     // El feneri (2. analiz #41)
                     if (Torch.available(this@AlarmActivity)) {
                         Spacer(Modifier.height(12.dp))
-                        RoundButton((if (torch) "🔦 ✓ " else "🔦 ") + L("alarm.torch"), torch, Modifier.fillMaxWidth()) {
+                        RoundButton((if (torch) "✓ " else "") + L("alarm.torch"), torch, "flashlight", Modifier.fillMaxWidth()) {
                             torch = !torch
                             Torch.set(this@AlarmActivity, torch)
                         }

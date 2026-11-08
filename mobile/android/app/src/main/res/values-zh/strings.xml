@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">明天明显变冷或变暖时晚上 7 点提醒；下雨前 15 分钟提醒（依据逐小时预报）。</string>
     <string name="world_searchHint">城市、国家或缩写（EST、CET）</string>
     <string name="world_label">名称和表情（可选）</string>
-    <string name="world_labelHint">例如：妈妈 👵</string>
+    <string name="world_labelHint">例如：妈妈</string>
     <string name="moon_daysAfter">%1$s 天后</string>
     <string name="moon_daysBefore">%1$s 天前</string>
     <string name="moon_scrubHint">滑动查看其他日子的月亮；点按日历中的日期也可选择。</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">在状态栏和锁定屏幕显示</string>
     <string name="live_weather_noteAndroid">气温显示在状态栏和锁定屏幕上；可用通知中的“关闭”、快捷设置或在此处关闭。每小时更新一次。</string>
     <string name="about_credits">图标：Microsoft Fluent Emoji 和 Phosphor Icons（MIT 许可证）。字体：Literata 和 Amiri（SIL Open Font License）。</string>
-    <string name="about_license">图标许可证全文</string>
+    <string name="about_license">Fluent Emoji 许可证</string>
+    <string name="about_licensePhosphor">Phosphor Icons 许可证</string>
     <string name="onboard_go">开始吧</string>
     <string name="onboard_back">返回</string>
     <string name="onboard_yes">是</string>

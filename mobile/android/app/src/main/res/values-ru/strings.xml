@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">В 19:00, если завтра будет заметно холоднее или теплее; за 15 минут до дождя (по почасовому прогнозу).</string>
     <string name="world_searchHint">Город, страна или сокращение (EST, CET)</string>
     <string name="world_label">Имя и эмодзи (необязательно)</string>
-    <string name="world_labelHint">напр. Мама 👵</string>
+    <string name="world_labelHint">напр. Мама</string>
     <string name="moon_daysAfter">через %1$s дн.</string>
     <string name="moon_daysBefore">%1$s дн. назад</string>
     <string name="moon_scrubHint">Сдвиньте, чтобы увидеть Луну в другой день; нажатие на день в календаре тоже выбирает его.</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">Показывать в строке состояния и на экране блокировки</string>
     <string name="live_weather_noteAndroid">Температура видна в строке состояния и на экране блокировки; выключается кнопкой «Закрыть» в уведомлении, в быстрых настройках или здесь. Обновляется раз в час.</string>
     <string name="about_credits">Значки: Microsoft Fluent Emoji и Phosphor Icons (лицензия MIT). Шрифты: Literata и Amiri (SIL Open Font License).</string>
-    <string name="about_license">Текст лицензии значков</string>
+    <string name="about_license">Лицензия Fluent Emoji</string>
+    <string name="about_licensePhosphor">Лицензия Phosphor Icons</string>
     <string name="onboard_go">Начнём</string>
     <string name="onboard_back">Назад</string>
     <string name="onboard_yes">Да</string>

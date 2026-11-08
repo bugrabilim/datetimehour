@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">اگر کل واضح طور پر ٹھنڈا یا گرم ہو تو شام 7 بجے؛ بارش سے 15 منٹ پہلے (گھنٹہ وار پیش گوئی سے)۔</string>
     <string name="world_searchHint">شہر، ملک یا مخفف (EST، CET)</string>
     <string name="world_label">نام اور ایموجی (اختیاری)</string>
-    <string name="world_labelHint">مثلاً امی 👵</string>
+    <string name="world_labelHint">مثلاً امی</string>
     <string name="moon_daysAfter">%1$s دن بعد</string>
     <string name="moon_daysBefore">%1$s دن پہلے</string>
     <string name="moon_scrubHint">کسی اور دن کا چاند دیکھنے کے لیے سلائیڈ کریں؛ کیلنڈر میں دن پر ٹیپ کرنا بھی اسے منتخب کرتا ہے۔</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">اسٹیٹس بار اور لاک اسکرین پر دکھائیں</string>
     <string name="live_weather_noteAndroid">درجۂ حرارت اسٹیٹس بار اور لاک اسکرین پر دکھتا ہے؛ اطلاع میں بند کریں سے، فوری ترتیبات سے یا یہاں سے بند کریں۔ ہر گھنٹے تازہ ہوتا ہے۔</string>
     <string name="about_credits">آئیکن: Microsoft Fluent Emoji اور Phosphor Icons (MIT لائسنس)۔ فونٹ: Literata اور Amiri (SIL Open Font License)۔</string>
-    <string name="about_license">آئیکن کے لائسنس کا متن</string>
+    <string name="about_license">Fluent Emoji کا لائسنس</string>
+    <string name="about_licensePhosphor">Phosphor Icons کا لائسنس</string>
     <string name="onboard_go">شروع کرتے ہیں</string>
     <string name="onboard_back">واپس</string>
     <string name="onboard_yes">ہاں</string>

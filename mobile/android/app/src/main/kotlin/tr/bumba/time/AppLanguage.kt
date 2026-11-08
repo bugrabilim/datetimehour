@@ -19,7 +19,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Language
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -96,7 +95,7 @@ fun LanguageScreen() {
     val current = AppLanguage.current(context)
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         AppCard(padding = 4) {
-            LanguageRow("🌐", L("lang.system"), current.isEmpty()) { activity?.let { AppLanguage.set(it, "") } }
+            LanguageRow(null, L("lang.system"), current.isEmpty()) { activity?.let { AppLanguage.set(it, "") } }
             AppLanguage.ALL.forEach { o ->
                 HorizontalDivider(color = Theme.c.border.copy(alpha = 0.4f))
                 LanguageRow(o.flag, o.native, current == o.code) { activity?.let { AppLanguage.set(it, o.code) } }
@@ -107,9 +106,10 @@ fun LanguageScreen() {
 }
 
 @Composable
-private fun LanguageRow(flag: String, name: String, on: Boolean, onClick: () -> Unit) {
+private fun LanguageRow(flag: String?, name: String, on: Boolean, onClick: () -> Unit) {
     Row(Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(flag, fontSize = 22.sp)
+        // Sistem dili: bayrak yerine iki tonlu simge (8 Kasım 2026)
+        if (flag == null) DuoIcon("language", 26.dp, Theme.c.sage) else Text(flag, fontSize = 22.sp)
         Spacer(Modifier.width(14.dp))
         Text(name, Modifier.weight(1f), color = if (on) Theme.c.accent else Theme.c.text, fontSize = 16.sp,
             fontWeight = if (on) FontWeight.SemiBold else FontWeight.Normal)
@@ -125,8 +125,8 @@ fun LanguageSettingsRow(onClick: () -> Unit) {
     val name = AppLanguage.ALL.firstOrNull { it.code == code }?.let { "${it.flag}  ${it.native}" } ?: L("lang.system")
     AppCard(padding = 4) {
         Row(Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 14.dp), verticalAlignment = Alignment.CenterVertically) {
-            IconBox(Icons.Filled.Language)
-            Spacer(Modifier.width(12.dp))
+            DuoChip("language", Theme.c.sage)
+            Spacer(Modifier.width(14.dp))
             Text(L("lang.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
             Text(name, color = Theme.c.muted, fontSize = 14.sp)
         }

@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">Pukul 19.00 jika besok jauh lebih dingin atau panas; 15 menit sebelum hujan (dari prakiraan per jam).</string>
     <string name="world_searchHint">Kota, negara, atau singkatan (EST, CET)</string>
     <string name="world_label">Nama dan emoji (opsional)</string>
-    <string name="world_labelHint">mis. Ibu 👵</string>
+    <string name="world_labelHint">mis. Ibu</string>
     <string name="moon_daysAfter">%1$s hari lagi</string>
     <string name="moon_daysBefore">%1$s hari lalu</string>
     <string name="moon_scrubHint">Geser untuk melihat Bulan di hari lain; mengetuk hari di kalender juga memilihnya.</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">Tampilkan di bilah status dan layar kunci</string>
     <string name="live_weather_noteAndroid">Suhu tampil di bilah status dan layar kunci; matikan dengan Tutup di notifikasi, dari Setelan Cepat, atau di sini. Diperbarui tiap jam.</string>
     <string name="about_credits">Ikon: Microsoft Fluent Emoji dan Phosphor Icons (Lisensi MIT). Fon: Literata dan Amiri (SIL Open Font License).</string>
-    <string name="about_license">Teks lisensi ikon</string>
+    <string name="about_license">Lisensi Fluent Emoji</string>
+    <string name="about_licensePhosphor">Lisensi Phosphor Icons</string>
     <string name="onboard_go">Ayo mulai</string>
     <string name="onboard_back">Kembali</string>
     <string name="onboard_yes">Ya</string>
