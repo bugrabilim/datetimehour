@@ -338,10 +338,11 @@ struct OnboardingView: View {
     }
 
     private var welcome: some View {
+        // Sıkı düzen (8 Kasım 2026, Android'deki gibi): iki tonlu ızgarayla sayfa uzamasın diye saat 104, aralıklar 10
         ScrollView {
-            VStack(spacing: 12) {
+            VStack(spacing: 10) {
                 TimelineView(.periodic(from: .now, by: 1)) { ctx in
-                    AnalogClock(date: ctx.date, showSeconds: true).frame(width: 116, height: 116)
+                    AnalogClock(date: ctx.date, showSeconds: true).frame(width: 104, height: 104)
                 }
                 .accessibilityHidden(true)
                 Text(L("app.displayName")).font(.largeTitle.weight(.bold)).foregroundStyle(Theme.text)
@@ -358,10 +359,11 @@ struct OnboardingView: View {
                     .lineSpacing(3)
                     .foregroundStyle(Theme.muted)
                     .fixedSize(horizontal: false, vertical: true)
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
+                // Kareler arası 6, karede simge 36/21 ve yazıyla arası 4, dikey iç boşluk 8
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 3), spacing: 6) {
                     ForEach(onboardWelcomeFeatures, id: \.key) { f in
-                        VStack(spacing: 6) {
-                            DuoChip(name: f.icon, color: f.color, box: 42, glyph: 25)
+                        VStack(spacing: 4) {
+                            DuoChip(name: f.icon, color: f.color, box: 36, glyph: 21)
                             Text(L("onboard.welcome.f.\(f.key)"))
                                 .font(.footnote.weight(.medium))
                                 .foregroundStyle(Theme.text)
@@ -377,7 +379,7 @@ struct OnboardingView: View {
                     .font(AppFonts.section)
                     .foregroundStyle(Theme.text)
                     .multilineTextAlignment(.center)
-                    .padding(.top, 6)
+                    .padding(.top, 4)
                     .accessibilityAddTraits(.isHeader)
                 Text(L("onboard.welcome.why"))
                     .multilineTextAlignment(.center)
@@ -389,7 +391,7 @@ struct OnboardingView: View {
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Theme.muted)
                     .fixedSize(horizontal: false, vertical: true)
-                    .padding(.top, 6)
+                    .padding(.top, 2)
             }
             .padding(.horizontal, 24)
             .padding(.vertical, 12)
