@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">Kilid ekranında hava</string>
     <string name="live_weather_toggleAndroid">Bildiriş sahəsində və kilid ekranında göstər</string>
     <string name="live_weather_noteAndroid">Temperatur status sətrində və kilid ekranında görünür; bildirişdəki Bağla ilə, Sürətli Ayarlardan ya da buradan bağlanır. Saatda bir yenilənir.</string>
-    <string name="about_credits">Simvollar: Microsoft Fluent Emoji (MIT lisenziyası). Şriftlər: Literata və Amiri (SIL Open Font License).</string>
+    <string name="about_credits">Simvollar: Microsoft Fluent Emoji və Phosphor Icons (MIT lisenziyası). Şriftlər: Literata və Amiri (SIL Open Font License).</string>
     <string name="about_license">Simvolların lisenziya mətni</string>
     <string name="onboard_go">Başlayaq</string>
     <string name="onboard_back">Geri</string>

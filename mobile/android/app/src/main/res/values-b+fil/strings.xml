@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">Panahon sa Lock Screen</string>
     <string name="live_weather_toggleAndroid">Ipakita sa status bar at lock screen</string>
     <string name="live_weather_noteAndroid">Lumalabas ang temperatura sa status bar at lock screen; patayin gamit ang Isara sa notification, sa Quick Settings, o dito. Nire-refresh bawat oras.</string>
-    <string name="about_credits">Mga icon: Microsoft Fluent Emoji (MIT License). Mga font: Literata at Amiri (SIL Open Font License).</string>
+    <string name="about_credits">Mga icon: Microsoft Fluent Emoji at Phosphor Icons (MIT License). Mga font: Literata at Amiri (SIL Open Font License).</string>
     <string name="about_license">Teksto ng lisensya ng mga icon</string>
     <string name="onboard_go">Simulan natin</string>
     <string name="onboard_back">Bumalik</string>

@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">लॉक स्क्रीन पर मौसम</string>
     <string name="live_weather_toggleAndroid">स्टेटस बार और लॉक स्क्रीन पर दिखाएँ</string>
     <string name="live_weather_noteAndroid">तापमान स्टेटस बार और लॉक स्क्रीन पर दिखता है; सूचना में बंद करें से, क्विक सेटिंग्स से या यहाँ से बंद करें। हर घंटे ताज़ा होता है।</string>
-    <string name="about_credits">आइकन: Microsoft Fluent Emoji (MIT लाइसेंस)। फ़ॉन्ट: Literata और Amiri (SIL Open Font License)।</string>
+    <string name="about_credits">आइकन: Microsoft Fluent Emoji और Phosphor Icons (MIT लाइसेंस)। फ़ॉन्ट: Literata और Amiri (SIL Open Font License)।</string>
     <string name="about_license">आइकन लाइसेंस का पाठ</string>
     <string name="onboard_go">चलिए शुरू करें</string>
     <string name="onboard_back">वापस</string>

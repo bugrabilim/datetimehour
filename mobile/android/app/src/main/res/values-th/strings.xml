@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">สภาพอากาศบนหน้าจอล็อก</string>
     <string name="live_weather_toggleAndroid">แสดงในแถบสถานะและหน้าจอล็อก</string>
     <string name="live_weather_noteAndroid">อุณหภูมิแสดงในแถบสถานะและหน้าจอล็อก ปิดได้ด้วยปุ่มปิดในการแจ้งเตือน จากการตั้งค่าด่วน หรือที่นี่ อัปเดตทุกชั่วโมง</string>
-    <string name="about_credits">ไอคอน: Microsoft Fluent Emoji (สัญญาอนุญาต MIT) แบบอักษร: Literata และ Amiri (SIL Open Font License)</string>
+    <string name="about_credits">ไอคอน: Microsoft Fluent Emoji และ Phosphor Icons (สัญญาอนุญาต MIT) แบบอักษร: Literata และ Amiri (SIL Open Font License)</string>
     <string name="about_license">ข้อความสัญญาอนุญาตของไอคอน</string>
     <string name="onboard_go">เริ่มกันเลย</string>
     <string name="onboard_back">ย้อนกลับ</string>

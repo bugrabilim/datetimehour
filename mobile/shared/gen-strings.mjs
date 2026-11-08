@@ -326,6 +326,11 @@ const constellationsJson = JSON.stringify(conSrc.con) + "\n";
 const iconsSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "mobile/shared/icons/icons.json"), "utf8"));
 delete iconsSrc._note;
 const iconsJson = JSON.stringify(iconsSrc) + "\n";
+/* İki tonlu küçük simgeler (8 Kasım 2026, sahibin kararı "B Karma"; Phosphor Icons, MIT): liste, kare, sekme ve satır
+   simgeleri. mobile/shared/icons/gen-duotone.mjs üretir; biçim ve kurallar mobile/shared/icons/DUOTONE.md */
+const duotoneSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "mobile/shared/icons/duotone.json"), "utf8"));
+delete duotoneSrc._note;
+const duotoneJson = JSON.stringify(duotoneSrc) + "\n";
 /* Widget'lardaki hava ve gök simgeleri 4 Kasım 2026'dan beri 3D görsel (res/drawable-nodpi/e3d_*.png,
    mobile/shared/icons3d/gen-icons3d.py); eski çizgi vektörleri (wi_*.xml) kaldırıldı. */
 /* NASA SVS CGI Moon Kit dokusu (kamu malı; 2. analiz #103): ikili dosya, uygulamalara kopyalanır */
@@ -339,6 +344,8 @@ const files = {
   "mobile/android/app/src/main/assets/constellations.json": constellationsJson,
   "mobile/ios/App/Resources/icons.json": iconsJson,
   "mobile/android/app/src/main/assets/icons.json": iconsJson,
+  "mobile/ios/App/Resources/duotone.json": duotoneJson,
+  "mobile/android/app/src/main/assets/duotone.json": duotoneJson,
   "mobile/ios/App/Resources/moon.jpg": moonJpg,
   "mobile/android/app/src/main/assets/moon.jpg": moonJpg,
   "mobile/ios/App/Resources/world-holidays.json": wholJson,

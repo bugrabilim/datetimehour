@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">ロック画面に天気</string>
     <string name="live_weather_toggleAndroid">ステータスバーとロック画面に表示</string>
     <string name="live_weather_noteAndroid">気温がステータスバーとロック画面に表示されます。通知の「閉じる」、クイック設定、またはここでオフにできます。1時間ごとに更新します。</string>
-    <string name="about_credits">アイコン：Microsoft Fluent Emoji（MITライセンス）。フォント：Literata、Amiri（SIL Open Font License）。</string>
+    <string name="about_credits">アイコン：Microsoft Fluent Emoji、Phosphor Icons（MITライセンス）。フォント：Literata、Amiri（SIL Open Font License）。</string>
     <string name="about_license">アイコンのライセンス本文</string>
     <string name="onboard_go">はじめましょう</string>
     <string name="onboard_back">戻る</string>

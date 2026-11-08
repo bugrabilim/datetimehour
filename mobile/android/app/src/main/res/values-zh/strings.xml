@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">锁定屏幕天气</string>
     <string name="live_weather_toggleAndroid">在状态栏和锁定屏幕显示</string>
     <string name="live_weather_noteAndroid">气温显示在状态栏和锁定屏幕上；可用通知中的“关闭”、快捷设置或在此处关闭。每小时更新一次。</string>
-    <string name="about_credits">图标：Microsoft Fluent Emoji（MIT 许可证）。字体：Literata 和 Amiri（SIL Open Font License）。</string>
+    <string name="about_credits">图标：Microsoft Fluent Emoji 和 Phosphor Icons（MIT 许可证）。字体：Literata 和 Amiri（SIL Open Font License）。</string>
     <string name="about_license">图标许可证全文</string>
     <string name="onboard_go">开始吧</string>
     <string name="onboard_back">返回</string>

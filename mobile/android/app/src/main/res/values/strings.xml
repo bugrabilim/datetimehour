@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">Kilit ekranında hava</string>
     <string name="live_weather_toggleAndroid">Bildirim alanında ve kilit ekranında göster</string>
     <string name="live_weather_noteAndroid">Sıcaklık durum çubuğunda ve kilit ekranında görünür; bildirimdeki Kapat ile, Hızlı Ayarlar\'dan ya da buradan kapatılır. Saatte bir yenilenir.</string>
-    <string name="about_credits">Simgeler: Microsoft Fluent Emoji (MIT lisansı). Yazı tipleri: Literata ve Amiri (SIL Open Font License).</string>
+    <string name="about_credits">Simgeler: Microsoft Fluent Emoji ve Phosphor Icons (MIT lisansı). Yazı tipleri: Literata ve Amiri (SIL Open Font License).</string>
     <string name="about_license">Simgelerin lisans metni</string>
     <string name="onboard_go">Başlayalım</string>
     <string name="onboard_back">Geri</string>

@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">Weather on Lock Screen</string>
     <string name="live_weather_toggleAndroid">Show in the status bar and on the lock screen</string>
     <string name="live_weather_noteAndroid">The temperature appears in the status bar and on the lock screen; turn it off with Close in the notification, from Quick Settings or here. It refreshes hourly.</string>
-    <string name="about_credits">Icons: Microsoft Fluent Emoji (MIT License). Fonts: Literata and Amiri (SIL Open Font License).</string>
+    <string name="about_credits">Icons: Microsoft Fluent Emoji and Phosphor Icons (MIT License). Fonts: Literata and Amiri (SIL Open Font License).</string>
     <string name="about_license">Icon license text</string>
     <string name="onboard_go">Let\'s begin</string>
     <string name="onboard_back">Back</string>

@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">لاک اسکرین پر موسم</string>
     <string name="live_weather_toggleAndroid">اسٹیٹس بار اور لاک اسکرین پر دکھائیں</string>
     <string name="live_weather_noteAndroid">درجۂ حرارت اسٹیٹس بار اور لاک اسکرین پر دکھتا ہے؛ اطلاع میں بند کریں سے، فوری ترتیبات سے یا یہاں سے بند کریں۔ ہر گھنٹے تازہ ہوتا ہے۔</string>
-    <string name="about_credits">آئیکن: Microsoft Fluent Emoji (MIT لائسنس)۔ فونٹ: Literata اور Amiri (SIL Open Font License)۔</string>
+    <string name="about_credits">آئیکن: Microsoft Fluent Emoji اور Phosphor Icons (MIT لائسنس)۔ فونٹ: Literata اور Amiri (SIL Open Font License)۔</string>
     <string name="about_license">آئیکن کے لائسنس کا متن</string>
     <string name="onboard_go">شروع کرتے ہیں</string>
     <string name="onboard_back">واپس</string>

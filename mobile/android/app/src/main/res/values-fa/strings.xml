@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">آب‌وهوا روی صفحهٔ قفل</string>
     <string name="live_weather_toggleAndroid">نمایش در نوار وضعیت و صفحهٔ قفل</string>
     <string name="live_weather_noteAndroid">دما در نوار وضعیت و صفحهٔ قفل دیده می‌شود؛ با «بستن» در اعلان، از تنظیمات سریع یا همین‌جا خاموشش کنید. هر ساعت به‌روز می‌شود.</string>
-    <string name="about_credits">نمادها: Microsoft Fluent Emoji (مجوز MIT). قلم‌ها: Literata و Amiri (SIL Open Font License).</string>
+    <string name="about_credits">نمادها: Microsoft Fluent Emoji و Phosphor Icons (مجوز MIT). قلم‌ها: Literata و Amiri (SIL Open Font License).</string>
     <string name="about_license">متن مجوز نمادها</string>
     <string name="onboard_go">شروع کنیم</string>
     <string name="onboard_back">بازگشت</string>

@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">Tiempo en pantalla bloqueada</string>
     <string name="live_weather_toggleAndroid">Mostrar en la barra de estado y en la pantalla de bloqueo</string>
     <string name="live_weather_noteAndroid">La temperatura aparece en la barra de estado y en la pantalla de bloqueo; desactívala con Cerrar en la notificación, desde Ajustes rápidos o aquí. Se actualiza cada hora.</string>
-    <string name="about_credits">Iconos: Microsoft Fluent Emoji (licencia MIT). Tipografías: Literata y Amiri (SIL Open Font License).</string>
+    <string name="about_credits">Iconos: Microsoft Fluent Emoji y Phosphor Icons (licencia MIT). Tipografías: Literata y Amiri (SIL Open Font License).</string>
     <string name="about_license">Texto de la licencia de los iconos</string>
     <string name="onboard_go">Empecemos</string>
     <string name="onboard_back">Atrás</string>

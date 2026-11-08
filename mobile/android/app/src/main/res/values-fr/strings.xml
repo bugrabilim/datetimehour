@@ -2853,7 +2853,7 @@
     <string name="live_weather_control">Météo sur l\'écran verrouillé</string>
     <string name="live_weather_toggleAndroid">Afficher dans la barre d\'état et sur l\'écran de verrouillage</string>
     <string name="live_weather_noteAndroid">La température s\'affiche dans la barre d\'état et sur l\'écran de verrouillage ; désactivez-la avec Fermer dans la notification, depuis les Réglages rapides ou ici. Actualisée toutes les heures.</string>
-    <string name="about_credits">Icônes : Microsoft Fluent Emoji (licence MIT). Polices : Literata et Amiri (SIL Open Font License).</string>
+    <string name="about_credits">Icônes : Microsoft Fluent Emoji et Phosphor Icons (licence MIT). Polices : Literata et Amiri (SIL Open Font License).</string>
     <string name="about_license">Texte de licence des icônes</string>
     <string name="onboard_go">C\'est parti</string>
     <string name="onboard_back">Retour</string>
