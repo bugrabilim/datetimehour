@@ -338,9 +338,10 @@ private fun WelcomePage() {
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 24.dp, vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
+        // Sayfa kaydırmadan sığsın (8 Kasım 2026, iki tonlu ızgarayla): aralıklar 10, saat 104
+        verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
     ) {
-        AnalogClock(rememberNow().atZone(java.time.ZoneId.systemDefault()), Modifier.size(116.dp))
+        AnalogClock(rememberNow().atZone(java.time.ZoneId.systemDefault()), Modifier.size(104.dp))
         Text(L("app.displayName"), color = Theme.c.text, fontSize = 28.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
         // Sahibin metni (6 Kasım 2026): vurgulu iki satırlık başlık, ne yaptık, özellikler, "Neden ücretsiz?"
         Text(L("onboard.welcome.title"), color = Theme.c.accent, fontSize = 26.sp, lineHeight = 32.sp,
@@ -349,10 +350,10 @@ private fun WelcomePage() {
         WelcomeFeatures()
         Text(L("onboard.welcome.whyTitle"), color = Theme.c.text, fontSize = 20.sp, lineHeight = 26.sp,
             fontFamily = AppFonts.heading, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center,
-            modifier = Modifier.padding(top = 6.dp).semantics { heading() })
+            modifier = Modifier.padding(top = 4.dp).semantics { heading() })
         Text(L("onboard.welcome.why"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
         Text(L("onboard.welcome.hint"), color = Theme.c.muted, fontSize = 14.sp, lineHeight = 20.sp, textAlign = TextAlign.Center,
-            modifier = Modifier.padding(top = 6.dp))
+            modifier = Modifier.padding(top = 2.dp))
     }
 }
 
@@ -366,19 +367,22 @@ private fun welcomeColor(key: String): Color = when (key) {
     else -> Theme.c.dusk
 }
 
-/** 3 × 3 kâğıt kareler: iki tonlu simge dairede ve ad (satırdaki kareler aynı boyda) */
+/**
+ * 3 × 3 kâğıt kareler: iki tonlu simge dairede ve ad (satırdaki kareler aynı boyda). Sıkı ölçüler (8 Kasım 2026) ki
+ * sayfa kaydırmadan sığsın: daire 36, glif 21, karede dikey boşluk 8, simgeyle ad arası 4, kareler arası 6.
+ */
 @Composable
 private fun WelcomeFeatures() {
-    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
         WELCOME_FEATURES.chunked(3).forEach { row ->
-            Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 row.forEach { (key, icon) ->
                     Column(
-                        Modifier.weight(1f).fillMaxHeight().paper(Theme.c.surface, 16).padding(horizontal = 4.dp, vertical = 10.dp),
+                        Modifier.weight(1f).fillMaxHeight().paper(Theme.c.surface, 16).padding(horizontal = 4.dp, vertical = 8.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterVertically),
+                        verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
                     ) {
-                        DuoChip(icon, welcomeColor(key), box = 42.dp, glyph = 25.dp)
+                        DuoChip(icon, welcomeColor(key), box = 36.dp, glyph = 21.dp)
                         Text(L("onboard.welcome.f.$key"), color = Theme.c.text, fontSize = 13.sp, lineHeight = 16.sp,
                             fontWeight = FontWeight.Medium, textAlign = TextAlign.Center, maxLines = 2)
                     }
