@@ -86,7 +86,7 @@ fun WeatherScreen() {
                 // Paylaşım kartı (2. analiz #105)
                 val ctx = LocalContext.current
                 TextButton(onClick = { Share.image(ctx, ShareCards.weather(place, d), "hava.png", L("share.card")) }) {
-                    Text("📤 " + L("share.card"), color = Theme.c.accent)
+                    DuoIcon("share", 18.dp, Theme.c.accent); androidx.compose.foundation.layout.Spacer(Modifier.width(6.dp)); Text(L("share.card"), color = Theme.c.accent)
                 }
                 // Bildirim alanında ve kilit ekranında hava (4 Kasım 2026; iOS'taki Dynamic Island karşılığı, kolay aç/kapa)
                 var liveWeather by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.WEATHER_KEY, false)) }

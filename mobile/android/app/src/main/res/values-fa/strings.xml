@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">اگر فردا به‌طور محسوسی سردتر یا گرم‌تر باشد ساعت 19؛ و 15 دقیقه پیش از باران (از پیش‌بینی ساعتی).</string>
     <string name="world_searchHint">شهر، کشور یا اختصار (EST، CET)</string>
     <string name="world_label">نام و ایموجی (اختیاری)</string>
-    <string name="world_labelHint">مثلاً مادرم 👵</string>
+    <string name="world_labelHint">مثلاً مادرم</string>
     <string name="moon_daysAfter">%1$s روز بعد</string>
     <string name="moon_daysBefore">%1$s روز پیش</string>
     <string name="moon_scrubHint">برای دیدن ماه در روز دیگر بلغزانید؛ لمس یک روز در تقویم هم آن را انتخاب می‌کند.</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">نمایش در نوار وضعیت و صفحهٔ قفل</string>
     <string name="live_weather_noteAndroid">دما در نوار وضعیت و صفحهٔ قفل دیده می‌شود؛ با «بستن» در اعلان، از تنظیمات سریع یا همین‌جا خاموشش کنید. هر ساعت به‌روز می‌شود.</string>
     <string name="about_credits">نمادها: Microsoft Fluent Emoji و Phosphor Icons (مجوز MIT). قلم‌ها: Literata و Amiri (SIL Open Font License).</string>
-    <string name="about_license">متن مجوز نمادها</string>
+    <string name="about_license">مجوز Fluent Emoji</string>
+    <string name="about_licensePhosphor">مجوز Phosphor Icons</string>
     <string name="onboard_go">شروع کنیم</string>
     <string name="onboard_back">بازگشت</string>
     <string name="onboard_yes">بله</string>

@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">अगर कल काफ़ी ठंडा या गर्म हो तो शाम 19:00 बजे; बारिश से 15 मिनट पहले (घंटेवार पूर्वानुमान से)।</string>
     <string name="world_searchHint">शहर, देश या संक्षिप्त नाम (EST, CET)</string>
     <string name="world_label">नाम और इमोजी (वैकल्पिक)</string>
-    <string name="world_labelHint">जैसे, माँ 👵</string>
+    <string name="world_labelHint">जैसे, माँ</string>
     <string name="moon_daysAfter">%1$s दिन बाद</string>
     <string name="moon_daysBefore">%1$s दिन पहले</string>
     <string name="moon_scrubHint">किसी दूसरे दिन का चंद्रमा देखने के लिए स्लाइड करें; कैलेंडर में किसी दिन पर टैप करने से भी वह चुना जाता है।</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">स्टेटस बार और लॉक स्क्रीन पर दिखाएँ</string>
     <string name="live_weather_noteAndroid">तापमान स्टेटस बार और लॉक स्क्रीन पर दिखता है; सूचना में बंद करें से, क्विक सेटिंग्स से या यहाँ से बंद करें। हर घंटे ताज़ा होता है।</string>
     <string name="about_credits">आइकन: Microsoft Fluent Emoji और Phosphor Icons (MIT लाइसेंस)। फ़ॉन्ट: Literata और Amiri (SIL Open Font License)।</string>
-    <string name="about_license">आइकन लाइसेंस का पाठ</string>
+    <string name="about_license">Fluent Emoji का लाइसेंस</string>
+    <string name="about_licensePhosphor">Phosphor Icons का लाइसेंस</string>
     <string name="onboard_go">चलिए शुरू करें</string>
     <string name="onboard_back">वापस</string>
     <string name="onboard_yes">हाँ</string>

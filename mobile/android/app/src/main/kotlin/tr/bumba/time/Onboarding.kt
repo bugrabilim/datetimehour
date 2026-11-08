@@ -14,18 +14,8 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.filled.Alarm
-import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Bedtime
-import androidx.compose.material.icons.filled.CalendarMonth
-import androidx.compose.material.icons.filled.Explore
-import androidx.compose.material.icons.filled.MenuBook
-import androidx.compose.material.icons.filled.Public
-import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Timer
-import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.invisibleToUser
@@ -55,10 +45,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.NotificationsActive
-import androidx.compose.material.icons.outlined.Circle
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -340,7 +326,7 @@ fun OnboardingScreen(startPage: Int = Onboarding.startPage, onDone: () -> Unit) 
     }
 }
 
-/** İlk sayfadaki özellik ızgarası (sahibin isteği, 6 Kasım 2026): metin anahtarı → 3D simge, sırası sabit */
+/** İlk sayfadaki özellik ızgarası (sahibin isteği, 6 Kasım 2026): metin anahtarı → iki tonlu simge, sırası sabit */
 private val WELCOME_FEATURES = listOf(
     "clock" to "clock", "calendar" to "calendar", "weather" to "sun_cloud",
     "prayer" to "mosque", "alarm" to "alarm", "world" to "globe",
@@ -370,7 +356,17 @@ private fun WelcomePage() {
     }
 }
 
-/** 3 × 3 kâğıt kareler: 3D simge ve ad (satırdaki kareler aynı boyda) */
+/** Izgaradaki simgenin konu rengi (DUOTONE.md) */
+@Composable
+private fun welcomeColor(key: String): Color = when (key) {
+    "clock", "alarm", "pomodoro" -> Theme.c.terra
+    "calendar" -> Theme.c.sage
+    "weather", "world" -> Theme.c.sky
+    "prayer", "qibla" -> Theme.c.gold
+    else -> Theme.c.dusk
+}
+
+/** 3 × 3 kâğıt kareler: iki tonlu simge dairede ve ad (satırdaki kareler aynı boyda) */
 @Composable
 private fun WelcomeFeatures() {
     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -382,7 +378,7 @@ private fun WelcomeFeatures() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterVertically),
                     ) {
-                        LineIcon(icon, 34.dp)
+                        DuoChip(icon, welcomeColor(key), box = 42.dp, glyph = 25.dp)
                         Text(L("onboard.welcome.f.$key"), color = Theme.c.text, fontSize = 13.sp, lineHeight = 16.sp,
                             fontWeight = FontWeight.Medium, textAlign = TextAlign.Center, maxLines = 2)
                     }
@@ -424,7 +420,7 @@ private fun SummaryPage() {
         else AppCard(padding = 16) {
             Text(L("onboard.summary.on"), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
             for (t in on) Row(verticalAlignment = Alignment.CenterVertically) {
-                LineIcon(LineIconMap.tab(t), 28.dp)
+                DuoChip(LineIconMap.tab(t), LineIconMap.tabColor(t))
                 Spacer(Modifier.width(12.dp))
                 Text(L(t.key), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
                 Icon(Icons.Filled.CheckCircle, null, tint = Theme.c.accent, modifier = Modifier.size(22.dp))
@@ -439,7 +435,7 @@ private fun SummaryPage() {
 fun TrustCard() {
     AppCard(padding = 18) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            LineIcon("heart", 30.dp)
+            DuoChip("privacy", Theme.c.sage)
             Spacer(Modifier.width(10.dp))
             Text(L("onboard.trust.title"), color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.Bold)
         }
@@ -461,7 +457,7 @@ private fun SetupPage() {
         TrustCard()
         Column(Modifier.fillMaxWidth().paper(Theme.c.surface).padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                LineIcon("pin", 26.dp)
+                DuoChip("pin", Theme.c.sage)
                 Spacer(Modifier.width(10.dp))
                 Text(L("settings.location"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
                 PlacePicker(size = 16.sp)
@@ -478,7 +474,7 @@ private fun SetupPage() {
             verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                LineIcon("bell", 26.dp)
+                DuoChip("bell", Theme.c.sage)
                 Spacer(Modifier.width(10.dp))
                 Text(L(if (notifyOn) "onboard.notifyOn" else "onboard.notify"), Modifier.weight(1f),
                     color = if (notifyOn) Theme.c.accent else Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
@@ -628,7 +624,7 @@ private fun FullscreenArt() {
 private fun AllArt() {
     val c = Theme.c
     val k = loopPhase(2800)
-    // 3D simgeler (4 Kasım 2026, sahibin seçimi)
+    // İki tonlu simgeler dairede (8 Kasım 2026, sahibin seçimi "B Karma")
     val tiles = listOf(
         "alarm" to c.terra, "hourglass" to c.terra, "calendar" to c.sage,
         "sun_cloud" to c.sky, "compass" to c.gold, "book" to c.gold,
@@ -644,21 +640,18 @@ private fun AllArt() {
                 for (i in 0 until 3) {
                     val (icon, col) = tiles[r * 3 + i]
                     val pressed = r == 0 && i == 0
-                    Box(
-                        Modifier.size(34.dp).background(col.copy(alpha = if (c.dark) 0.22f else 0.14f), RoundedCornerShape(11.dp))
-                            .then(if (pressed) Modifier.border((1 + 2 * k).dp, c.accent.copy(alpha = k), RoundedCornerShape(11.dp)) else Modifier),
-                        contentAlignment = Alignment.Center,
-                    ) { LineIcon(icon, 22.dp) }
+                    DuoChip(icon, col, box = 34.dp, glyph = 20.dp,
+                        modifier = if (pressed) Modifier.border((1 + 2 * k).dp, c.accent.copy(alpha = k), CircleShape) else Modifier)
                 }
             }
         }
         Row(Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(34.dp).background(c.surface2).padding(horizontal = 12.dp),
             horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-            Icon(Icons.Filled.Schedule, null, tint = c.muted, modifier = Modifier.size(15.dp))
-            Icon(Icons.Filled.Bedtime, null, tint = c.muted, modifier = Modifier.size(15.dp))
-            Icon(Icons.Filled.WbSunny, null, tint = c.muted, modifier = Modifier.size(15.dp))
+            DuoIcon("clock", 15.dp, c.muted)
+            DuoIcon("mosque", 15.dp, c.muted)
+            DuoIcon("sun_cloud", 15.dp, c.muted)
             Box(Modifier.background(c.accent.copy(alpha = 0.12f + 0.2f * k), RoundedCornerShape(50)).padding(horizontal = 7.dp, vertical = 3.dp)) {
-                Icon(Icons.Filled.Apps, null, tint = c.accent, modifier = Modifier.size(15.dp))
+                DuoIcon("grid", 15.dp, c.accent)
             }
         }
     }

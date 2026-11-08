@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">เวลา 19:00 หากพรุ่งนี้หนาวหรือร้อนขึ้นชัดเจน และ 15 นาทีก่อนฝนตก (จากพยากรณ์รายชั่วโมง)</string>
     <string name="world_searchHint">เมือง ประเทศ หรือตัวย่อ (EST, CET)</string>
     <string name="world_label">ชื่อและอีโมจิ (ไม่บังคับ)</string>
-    <string name="world_labelHint">เช่น แม่ 👵</string>
+    <string name="world_labelHint">เช่น แม่</string>
     <string name="moon_daysAfter">อีก %1$s วัน</string>
     <string name="moon_daysBefore">%1$s วันก่อน</string>
     <string name="moon_scrubHint">เลื่อนเพื่อดูดวงจันทร์ในวันอื่น แตะวันในปฏิทินก็เลือกได้เช่นกัน</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">แสดงในแถบสถานะและหน้าจอล็อก</string>
     <string name="live_weather_noteAndroid">อุณหภูมิแสดงในแถบสถานะและหน้าจอล็อก ปิดได้ด้วยปุ่มปิดในการแจ้งเตือน จากการตั้งค่าด่วน หรือที่นี่ อัปเดตทุกชั่วโมง</string>
     <string name="about_credits">ไอคอน: Microsoft Fluent Emoji และ Phosphor Icons (สัญญาอนุญาต MIT) แบบอักษร: Literata และ Amiri (SIL Open Font License)</string>
-    <string name="about_license">ข้อความสัญญาอนุญาตของไอคอน</string>
+    <string name="about_license">สัญญาอนุญาตของ Fluent Emoji</string>
+    <string name="about_licensePhosphor">สัญญาอนุญาตของ Phosphor Icons</string>
     <string name="onboard_go">เริ่มกันเลย</string>
     <string name="onboard_back">ย้อนกลับ</string>
     <string name="onboard_yes">ใช่</string>

@@ -2,10 +2,6 @@ package tr.bumba.time
 
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material.icons.filled.Shortcut
-import androidx.compose.material.icons.filled.Backup
-import androidx.compose.material.icons.filled.LightMode
-import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import android.content.Intent
@@ -33,18 +29,9 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.School
-import androidx.compose.material.icons.filled.MilitaryTech
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Palette
-import androidx.compose.material.icons.filled.TextFields
 import androidx.compose.material.icons.filled.Schedule
-import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -118,18 +105,18 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
         if (shows(*general)) {
             SectionTitle(L("settings.color.general"), Modifier.padding(top = 6.dp))
             AppCard(padding = 4) {
-                if (shows("features.title")) SettingsRow(Icons.Filled.Apps, L("features.title")) { onRoute("features") }
+                if (shows("features.title")) SettingsRow("features", Theme.c.sage, L("features.title")) { onRoute("features") }
                 if (shows("settings.location")) Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                    IconBox(Icons.Filled.LocationOn)
+                    DuoChip("pin", Theme.c.sage)
                     Spacer(Modifier.width(14.dp))
                     Text(L("settings.location"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
                     PlacePicker(size = 15.sp)
                 }
-                if (shows("settings.notifications")) SettingsRow(Icons.Filled.Notifications, L("settings.notifications")) { onRoute("notifications") }
+                if (shows("settings.notifications")) SettingsRow("bell", Theme.c.sage, L("settings.notifications")) { onRoute("notifications") }
                 // İzinler (5 Kasım 2026): ne istiyoruz, ne için, durumu; kapatmak için telefonun ayarı
-                if (shows("perms.title")) SettingsRow(Icons.Filled.Lock, L("perms.title"), line = "checklist") { onRoute("permissions") }
+                if (shows("perms.title")) SettingsRow("privacy", Theme.c.sage, L("perms.title")) { onRoute("permissions") }
                 if (shows("settings.keepAwake")) Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                    IconBox(Icons.Filled.LightMode)
+                    DuoChip("sun", Theme.c.sage)
                     Spacer(Modifier.width(14.dp))
                     Text(L("settings.keepAwake"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
                     SoftSwitch(Prefs.keepAwake, Prefs::saveKeepAwake, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
@@ -179,7 +166,7 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                     Modifier.fillMaxWidth().clickable { onRoute("color") }.padding(horizontal = 12.dp, vertical = 10.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    IconBox(Icons.Filled.Palette)
+                    DuoChip("palette", Theme.c.dusk)
                     Spacer(Modifier.width(14.dp))
                     Text(L("settings.color"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
                     Box(Modifier.size(18.dp).background(Theme.c.accent, CircleShape))
@@ -204,8 +191,8 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
         if (shows(*clock)) {
             SectionTitle(L("tab.clock"), Modifier.padding(top = 6.dp))
             AppCard(padding = 4) {
-                if (shows("look.title", "dial.title", "night.title")) SettingsRow(Icons.Filled.TextFields, L("look.title")) { onRoute("appearance") }
-                if (shows("home.customize", "home.editScreen")) SettingsRow(Icons.Filled.Tune, L("home.editScreen")) { onRoute("homeItems") }
+                if (shows("look.title", "dial.title", "night.title")) SettingsRow("clock", Theme.c.terra, L("look.title")) { onRoute("appearance") }
+                if (shows("home.customize", "home.editScreen")) SettingsRow("homeitems", Theme.c.terra, L("home.editScreen")) { onRoute("homeItems") }
             }
         }
         // Yedek ve kısayollar: açıklamalar pencerede
@@ -213,9 +200,9 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             SectionTitle(L("settings.group.backup"), Modifier.padding(top = 6.dp))
             AppCard(padding = 4) {
                 // Sunucusuz yedek: telefonun Google yedeği (res/xml/data_extraction_rules.xml); hesap ve sunucu yok
-                if (shows("sync.androidTitle")) SettingsRow(Icons.Filled.Backup, L("sync.androidTitle")) { note = L("sync.androidTitle") to L("sync.androidNote") }
+                if (shows("sync.androidTitle")) SettingsRow("backup", Theme.c.sky, L("sync.androidTitle")) { note = L("sync.androidTitle") to L("sync.androidNote") }
                 // Simge kısayolları, asistan/uygulamalardan zamanlayıcı-alarm, şarjda ekran koruyucu (rakip analizi #7)
-                if (shows("android.shortcuts.title")) SettingsRow(Icons.Filled.Shortcut, L("android.shortcuts.title")) { note = L("android.shortcuts.title") to L("android.shortcuts.note") }
+                if (shows("android.shortcuts.title")) SettingsRow("shortcut", Theme.c.sky, L("android.shortcuts.title")) { note = L("android.shortcuts.title") to L("android.shortcuts.note") }
             }
         }
         // Destek: puanla, paylaş, QR kod, geri bildirim, Bumba'nın diğer ürünleri, sürüm (2. analiz #6, #81)
@@ -223,10 +210,10 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             SupportCard(onRoute)
             // Hakkında Ayarlar'dadır (Seçenek B); rozetler Tümü'nde, Tümü yokken (hiçbir özellik açık değil) burada
             AppCard(padding = 4) {
-                if (Features.enabled.isEmpty()) SettingsRow(Icons.Filled.MilitaryTech, L("badges.h1")) { onRoute("badges") }
-                SettingsRow(Icons.Filled.Info, L("settings.about")) { onRoute("about") }
+                if (Features.enabled.isEmpty()) SettingsRow("medal", Theme.c.gold, L("badges.h1")) { onRoute("badges") }
+                SettingsRow("info", Theme.c.gold, L("settings.about")) { onRoute("about") }
                 // İlk kurulumdaki altı adımlık tanıtım (4 Kasım 2026, sahibin isteği)
-                SettingsRow(Icons.Filled.School, L("onboard.replay")) { Onboarding.replay() }
+                SettingsRow("cap", Theme.c.gold, L("onboard.replay")) { Onboarding.replay() }
             }
         }
         if (!shows(*general, *look, *clock, *backup, *support)) {
@@ -245,12 +232,12 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
 }
 
 @Composable
-private fun SettingsRow(icon: androidx.compose.ui.graphics.vector.ImageVector, title: String, line: String? = null, onClick: () -> Unit) {
+private fun SettingsRow(icon: String, tint: Color, title: String, onClick: () -> Unit) {
     Row(
         Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconBox(icon, line = line)
+        DuoChip(icon, tint)
         Spacer(Modifier.width(14.dp))
         Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
@@ -394,9 +381,11 @@ fun AboutScreen() {
             Text(L("settings.privacyNoteAndroid"), color = Theme.c.text, fontSize = 14.sp)
             Text(L("privacy.full"), Modifier.clickable { open(privacyUrl()) }, color = Theme.c.accent)
         }
-        // Açık lisanslı parçalar (3D simgeler MIT, yazı tipleri OFL; 4 Kasım 2026)
+        // Açık lisanslı parçalar (3D simgeler MIT, yazı tipleri OFL; 4 Kasım 2026; iki tonlu simgeler Phosphor MIT, 8 Kasım 2026)
         Text(L("about.credits"), color = Theme.c.muted, fontSize = 12.sp)
         Text(L("about.license"), Modifier.clickable { open("https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE") },
+            color = Theme.c.accent, fontSize = 12.sp)
+        Text(L("about.licensePhosphor"), Modifier.clickable { open("https://github.com/phosphor-icons/core/blob/main/LICENSE") },
             color = Theme.c.accent, fontSize = 12.sp)
     }
 }

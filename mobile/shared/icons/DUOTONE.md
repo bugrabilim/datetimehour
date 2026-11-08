@@ -246,6 +246,34 @@ Not: `EmptyState` simgeyi `LineIconMap.of(icon.name)` ile buluyor; `Outlined.Ala
 `Outlined.WhereToVote`, `Filled.DateRange` eşlemede olmadığı için bugün Material simge çiziliyor. İstenirse bunlara 3D ad verilir
 (alarm, hourglass, memo, pin, calendar); iki tonluya çevrilmez.
 
+### Android'de yapılanlar ve sapmalar (8 Kasım 2026)
+
+- `DuoIcons`, `DuoIcon`, `DuoChip` `LineIcons.kt`'te, ölçüler yukarıdaki gibi. `IconBox` kaldırılmadı: içi `DuoChip` (daire; `box`/`glyph`
+  parametreli, satır 32/19, kare 42/25); adı verilmezse Material simgesinden eşler, o da yoksa Material simgesi aynı dairede.
+- Boş durumlar `LineIconMap.of3D` ile yalnız 3D görseli olan adı alır; yukarıdaki notta önerilen beş eşleme (`Outlined.Alarm` …
+  `Filled.DateRange`) eklendi, artık boş durumlarda 3D çizilir.
+- Envanterde olmayan ama aynı kurala giren yerler de iki tonlu: izin öncesi açıklama penceresi (`PermissionPrimer`, adaçayı 72/40),
+  Tümü tanıtımındaki küçük telefonun alt çubuğu, dil listesindeki "Sistem dili" satırı (`language`).
+- **Metin içindeki emoji** (sahibin "çok emoji" şikâyetiyle bu turda): yeni ortak parçalar `IconText` (simge + metin, `Components.kt`)
+  ve simgeli `RoundButton(title, prominent, icon, …)`. Alarm görev öneki `AlarmTaskIcon` (matematik `calc`, sallama `waveform`, adım
+  `gauge`, kod `qr`, hafıza `palette`, yazma `memo`, fotoğraf `camera`, çömelme `heart`, nesne `search`, konuşma `mic`, ışık `idea`,
+  rastgele `wand`; kiremit), şehir/güneş bağlı alarm `globe`/`sun`, "🌧" yerine "Sakin ön alarm" yazısı; "📤 Paylaş" `share`;
+  "🕓" bitiş `clock`; "🔒" `privacy`; "🔦" `flashlight`; "🔗"/"⏰" (geri sayım tam ekranı) `share`/`alarm`; "📅 Takvimden seç" `calendar`;
+  saat ekranı Güneş sütunu `sunrise`/`sunset`/`sun`; alacakaranlık satırları (mavi saat `sunrise`/`sunset` gök mavisi, altın saat
+  altın, ilk/son ışık `star`, sivil `halfmoon`, denizcilik `compass`, astronomik `telescope`; akşam moru); mevsim tablosu
+  `flower`/`sun`/`leaf`/`snowman`; tutulma başlığı `sun`/`moon`; tarihte bugün (kuruluş `sparkles`, doğum `gift`, ölüm `leaf`, olay
+  `scroll`); hilal görünürlüğü `sunset`/`moon`; takvim hücresinde saat değişimi `dst`; dünya saatinde Güneş `sun`; ışık görevi `sun`;
+  ekran görüntüsü uyarısı `privacy`; odak engeli ekranı (🎯) `tomato` dairede; aralık antrenmanı bitişi (🏁) `medal`. Simgesiz
+  bırakılan (yalnız yazı): odak serisi "🔥", yüzüstü odak "⚠️/📱", arşiv "🗄", çocuk modu "🧒". `world.labelHint`'teki 👵 18 dilde çıkarıldı.
+  Hava verisi metninde emoji (`WeatherCode.icon()`) olan iki yer 3D `WeatherIcon`'a geçti (hava 3D kalır): dünya saatlerindeki şehir
+  havası ve hava günü ayrıntı penceresi.
+- Kalan emoji (bilerek): geri sayım emoji seçicisi ve varsayılanları (kullanıcı içeriği), Kıble 🕋, Ay evresi emojileri (takvim,
+  Ay ekranı, hava), burç sembolleri, paylaşım kartı çizimleri, odak ormanı, abdest adımlarındaki resimler (`GuideFigures.WUDU`), dil
+  bayrakları, widget ve bildirim metinleri, küre etiketlerindeki hava emojisi (`GlobeView`, tuvale yazı olarak çiziliyor; 3D görsele
+  çevrilmesi ayrı iş); ▶ ↑ ↓ ✓ ★ ☆ ☾ ↻ ● gibi yazı işaretleri.
+- Hakkında'da ikinci lisans bağlantısı `about.licensePhosphor` (18 dil); `about.license`'ın metni de "Fluent Emoji lisansı" oldu (iki
+  bağlantı karışmasın diye; adres aynı).
+
 ## Envanter: iOS (`mobile/ios/App/Sources/`)
 
 ### İki tonlu olacaklar

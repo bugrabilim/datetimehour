@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.width
 import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -387,13 +388,22 @@ fun CrescentCard(place: AppPlace, now: Instant) {
     for (e in evenings) AppCard {
         Text(Fmt.dayMonth(java.time.Instant.ofEpochMilli(e.sunset).atZone(place.zone).toLocalDate()), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
         Text(L("nature.crescentCats.${e.category}"), color = if (e.category == "A" || e.category == "B") Theme.c.accent else Theme.c.muted, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
-        val parts = mutableListOf("☀ " + Fmt.hm(Instant.ofEpochMilli(e.sunset), place.zone))
-        e.moonset?.let { ms ->
+        // Gün batımı ve Ay batımı iki tonlu simgeyle (8 Kasım 2026; "☀"/"☾" yerine)
+        val moonPart = e.moonset?.let { ms ->
             val lag = e.lag ?: 0.0
-            parts += "☾ " + Fmt.hm(Instant.ofEpochMilli(ms), place.zone) + " (" + (if (lag > 0) T("nature.crescentLag", lag.roundToInt()) else L("nature.crescentBefore")) + ")"
+            Fmt.hm(Instant.ofEpochMilli(ms), place.zone) + " (" + (if (lag > 0) T("nature.crescentLag", lag.roundToInt()) else L("nature.crescentBefore")) + ")"
         }
-        if (e.age > 0) parts += T("nature.crescentAge", e.age.roundToInt())
-        Text(parts.joinToString(" · "), color = Theme.c.muted, fontSize = 12.sp)
+        val agePart = if (e.age > 0) T("nature.crescentAge", e.age.roundToInt()) else null
+        androidx.compose.foundation.layout.Row(verticalAlignment = Alignment.CenterVertically) {
+            DuoIcon("sunset", 14.dp, Theme.c.muted)
+            androidx.compose.foundation.layout.Spacer(Modifier.width(3.dp))
+            Text(Fmt.hm(Instant.ofEpochMilli(e.sunset), place.zone) + if (moonPart != null || agePart != null) " · " else "", color = Theme.c.muted, fontSize = 12.sp)
+            if (moonPart != null) {
+                DuoIcon("moon", 14.dp, Theme.c.muted)
+                androidx.compose.foundation.layout.Spacer(Modifier.width(3.dp))
+            }
+            Text(listOfNotNull(moonPart, agePart).joinToString(" · "), color = Theme.c.muted, fontSize = 12.sp)
+        }
     }
     Text(T("nature.crescentLead", place.name, Fmt.hm(Instant.ofEpochMilli(conj), place.zone)) + " " + L("nature.crescentNote"), color = Theme.c.muted, fontSize = 12.sp)
 }

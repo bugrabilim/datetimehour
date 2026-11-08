@@ -142,14 +142,20 @@ private fun ToolRow(icon: ImageVector, title: String, last: Boolean = false, not
 }
 
 @Composable
-fun RoundButton(title: String, prominent: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
+fun RoundButton(title: String, prominent: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) =
+    RoundButton(title, prominent, null, modifier, onClick)
+
+/** Simgeli ana/ikincil düğme: [icon] iki tonlu simgenin adı (8 Kasım 2026; metindeki emojinin yerine) */
+@Composable
+fun RoundButton(title: String, prominent: Boolean, icon: String?, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    val content = if (prominent) Theme.c.onAccent else Theme.c.text
     Button(
         onClick = onClick, modifier = modifier.height(52.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = if (prominent) Theme.c.accent else Theme.c.surface2,
-            contentColor = if (prominent) Theme.c.onAccent else Theme.c.text,
-        ),
-    ) { Text(title, fontWeight = FontWeight.Medium, fontSize = 16.sp) }
+        colors = ButtonDefaults.buttonColors(containerColor = if (prominent) Theme.c.accent else Theme.c.surface2, contentColor = content),
+    ) {
+        if (icon != null) { DuoIcon(icon, 18.dp, content); androidx.compose.foundation.layout.Spacer(Modifier.width(8.dp)) }
+        Text(title, fontWeight = FontWeight.Medium, fontSize = 16.sp)
+    }
 }
 
 /** Ek kronometreler (rakip analizi listesi #81): her biri ayrı sayar; kayıt `stopwatches` (JSON, Unix ms; iOS'la aynı) */

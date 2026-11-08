@@ -163,7 +163,7 @@ fun FeaturesScreen() {
         AppCard(padding = 4) {
             FeatureRow(Tab.CLOCK, checked = true, enabled = false) { }
             for (t in Features.OPTIONAL) {
-                HorizontalDivider(Modifier.padding(start = 50.dp), color = Theme.c.border.copy(alpha = 0.5f))
+                HorizontalDivider(Modifier.padding(start = 58.dp), color = Theme.c.border.copy(alpha = 0.5f))
                 FeatureRow(t, Features.isOn(t), onBar = if (t in Features.BAR_OPTIONS && Features.isOn(t)) {
                     { if (!Features.toggleBar(t)) full = true }
                 } else null) { Features.set(t, it) }
@@ -178,7 +178,7 @@ fun FeaturesScreen() {
 @Composable
 private fun FeatureRow(t: Tab, checked: Boolean, enabled: Boolean = true, onBar: (() -> Unit)? = null, onChange: (Boolean) -> Unit) {
     Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-        Icon(t.on, null, tint = Theme.c.accent)
+        DuoChip(LineIconMap.tab(t), LineIconMap.tabColor(t))
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
             Text(L(t.key), color = Theme.c.text, fontSize = 16.sp)
@@ -201,10 +201,10 @@ private fun FeatureRow(t: Tab, checked: Boolean, enabled: Boolean = true, onBar:
 @Composable
 fun BarPreview(modifier: Modifier = Modifier) {
     Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-        for (t in Features.barTabs()) {
+        for ((i, t) in Features.barTabs().withIndex()) {
             Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.weight(1f)) {
-                // 3D simge (alt çubuktaki gibi)
-                LineIcon(LineIconMap.tab(t), 26.dp)
+                // İki tonlu simge (alt çubuktaki gibi; ilk sekme seçili görünür)
+                DuoIcon(LineIconMap.tab(t), 24.dp, if (i == 0) Theme.c.accent else Theme.c.muted)
                 Text(Features.label(t), color = Theme.c.text, fontSize = 11.sp, maxLines = 1)
             }
         }

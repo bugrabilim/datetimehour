@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">Alas-7 ng gabi kung mas malamig o mas mainit bukas; 15 minuto bago umulan (mula sa oras-oras na forecast).</string>
     <string name="world_searchHint">Lungsod, bansa o daglat (EST, CET)</string>
     <string name="world_label">Pangalan at emoji (opsiyonal)</string>
-    <string name="world_labelHint">hal. Nanay 👵</string>
+    <string name="world_labelHint">hal. Nanay</string>
     <string name="moon_daysAfter">makalipas ang %1$s araw</string>
     <string name="moon_daysBefore">%1$s araw na ang nakalipas</string>
     <string name="moon_scrubHint">I-slide para makita ang Buwan sa ibang araw; ang pag-tap sa araw sa kalendaryo ay pumipili rin nito.</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">Ipakita sa status bar at lock screen</string>
     <string name="live_weather_noteAndroid">Lumalabas ang temperatura sa status bar at lock screen; patayin gamit ang Isara sa notification, sa Quick Settings, o dito. Nire-refresh bawat oras.</string>
     <string name="about_credits">Mga icon: Microsoft Fluent Emoji at Phosphor Icons (MIT License). Mga font: Literata at Amiri (SIL Open Font License).</string>
-    <string name="about_license">Teksto ng lisensya ng mga icon</string>
+    <string name="about_license">Lisensya ng Fluent Emoji</string>
+    <string name="about_licensePhosphor">Lisensya ng Phosphor Icons</string>
     <string name="onboard_go">Simulan natin</string>
     <string name="onboard_back">Bumalik</string>
     <string name="onboard_yes">Oo</string>

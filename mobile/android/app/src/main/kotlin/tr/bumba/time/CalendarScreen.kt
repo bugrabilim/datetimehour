@@ -284,7 +284,11 @@ private fun DayCell(d: LocalDate, isToday: Boolean, isSelected: Boolean, mine: B
     }
     // Ay evresi ve saat değişimi işareti sağ üst köşede (hücrenin yüksekliğini değiştirmez)
     if (moon != null || dst) Box(Modifier.fillMaxSize().padding(2.dp), contentAlignment = Alignment.TopEnd) {
-        Text(listOfNotNull(if (dst) "⏱" else null, moon).joinToString(""), fontSize = 10.sp)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            // Saat değişimi günü iki tonlu simgeyle (8 Kasım 2026; "⏱" yerine)
+            if (dst) DuoIcon("dst", 10.dp, Theme.c.terra)
+            if (moon != null) Text(moon, fontSize = 10.sp)
+        }
     }
 }
 

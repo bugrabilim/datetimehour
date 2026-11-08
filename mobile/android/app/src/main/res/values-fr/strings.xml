@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">À 19 h si demain est nettement plus froid ou plus chaud ; 15 minutes avant la pluie (prévision horaire).</string>
     <string name="world_searchHint">Ville, pays ou abréviation (EST, CET)</string>
     <string name="world_label">Nom et emoji (facultatif)</string>
-    <string name="world_labelHint">ex. Maman 👵</string>
+    <string name="world_labelHint">ex. Maman</string>
     <string name="moon_daysAfter">dans %1$s jours</string>
     <string name="moon_daysBefore">il y a %1$s jours</string>
     <string name="moon_scrubHint">Faites glisser pour voir la Lune un autre jour ; toucher un jour du calendrier le sélectionne aussi.</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">Afficher dans la barre d\'état et sur l\'écran de verrouillage</string>
     <string name="live_weather_noteAndroid">La température s\'affiche dans la barre d\'état et sur l\'écran de verrouillage ; désactivez-la avec Fermer dans la notification, depuis les Réglages rapides ou ici. Actualisée toutes les heures.</string>
     <string name="about_credits">Icônes : Microsoft Fluent Emoji et Phosphor Icons (licence MIT). Polices : Literata et Amiri (SIL Open Font License).</string>
-    <string name="about_license">Texte de licence des icônes</string>
+    <string name="about_license">Licence de Fluent Emoji</string>
+    <string name="about_licensePhosphor">Licence de Phosphor Icons</string>
     <string name="onboard_go">C\'est parti</string>
     <string name="onboard_back">Retour</string>
     <string name="onboard_yes">Oui</string>

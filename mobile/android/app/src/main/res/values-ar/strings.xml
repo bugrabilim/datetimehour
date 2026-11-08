@@ -2416,7 +2416,7 @@
     <string name="notify_weatherAlerts_note">في السابعة مساءً إذا كان الغد أبرد أو أدفأ بوضوح؛ وقبل المطر بربع ساعة (من التوقعات بالساعة).</string>
     <string name="world_searchHint">مدينة أو بلد أو اختصار (EST، CET)</string>
     <string name="world_label">الاسم والرمز التعبيري (اختياري)</string>
-    <string name="world_labelHint">مثل: أمي 👵</string>
+    <string name="world_labelHint">مثل: أمي</string>
     <string name="moon_daysAfter">بعد %1$s يوم</string>
     <string name="moon_daysBefore">قبل %1$s يوم</string>
     <string name="moon_scrubHint">اسحب لرؤية القمر في يوم آخر؛ النقر على يوم في التقويم يختاره أيضًا.</string>
@@ -2854,7 +2854,8 @@
     <string name="live_weather_toggleAndroid">عرض في شريط الحالة وعلى شاشة القفل</string>
     <string name="live_weather_noteAndroid">تظهر درجة الحرارة في شريط الحالة وعلى شاشة القفل؛ أوقفها بزر الإغلاق في الإشعار أو من الإعدادات السريعة أو من هنا. تتجدد كل ساعة.</string>
     <string name="about_credits">الرموز: Microsoft Fluent Emoji وPhosphor Icons (رخصة MIT). الخطوط: Literata وAmiri (رخصة SIL Open Font License).</string>
-    <string name="about_license">نص رخصة الرموز</string>
+    <string name="about_license">رخصة Fluent Emoji</string>
+    <string name="about_licensePhosphor">رخصة Phosphor Icons</string>
     <string name="onboard_go">لنبدأ</string>
     <string name="onboard_back">رجوع</string>
     <string name="onboard_yes">نعم</string>
