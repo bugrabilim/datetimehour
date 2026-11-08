@@ -14,7 +14,7 @@
     "th": ["เวลา วันที่ และเวลาละหมาด", "นาฬิกา 21 แบบ เต็มจอและโหมดกลางคืน"],
     "es": ["Reloj, fecha y horarios de oración", "21 modelos de reloj, pantalla completa y modo nocturno"],
     "pt": ["Relógio, data e horários de oração", "21 modelos de relógio, tela cheia e modo noturno"],
-    "hi": ["घड़ी, तारीख और नमाज़ के समय", "21 घड़ी डायल, फ़ुल स्क्रीन और रात मोड"]
+    "hi": ["घड़ी, तारीख और नमाज़ के समय", "21 घड़ी मॉडल, फ़ुल स्क्रीन और रात्रि मोड"]
   },
   "vakitler": {
     "tr": ["Namaz vakitleri", "Diyanet yöntemiyle 81 il ve 973 ilçe, kıble pusulası"],
@@ -30,7 +30,7 @@
     "th": ["เวลาละหมาด", "วิธีดียาเนตและอีก 13 วิธี พร้อมเข็มทิศกิบลัต"],
     "es": ["Horarios de oración", "Método Diyanet y 13 más, con brújula de la alquibla"],
     "pt": ["Horários de oração", "Método Diyanet e mais 13, com bússola da qibla"],
-    "hi": ["नमाज़ के समय", "दियानत और 13 और तरीक़े, क़िबला कम्पास के साथ"]
+    "hi": ["नमाज़ के समय", "दियानत और 13 अन्य पद्धतियाँ, क़िबला कम्पास के साथ"]
   },
   "takvim": {
     "tr": ["Tatiller ve dini günler", "Arife yarım günleri, hicri tarih ve takviminiz"],
@@ -110,6 +110,6 @@
     "th": ["โหมดกลางคืน", "นาฬิกาสีแดงสลัว สำหรับข้างเตียง"],
     "es": ["Modo nocturno", "Un reloj rojo tenue para la mesilla"],
     "pt": ["Modo noturno", "Um relógio vermelho suave para a cabeceira"],
-    "hi": ["रात मोड", "सिरहाने के लिए मद्धम लाल घड़ी"]
+    "hi": ["रात्रि मोड", "सिरहाने के लिए मद्धम लाल घड़ी"]
   }
 }

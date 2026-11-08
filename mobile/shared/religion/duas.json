@@ -129,7 +129,7 @@
         "th": "การคารวะ การละหมาด และความดีทั้งปวงเป็นของอัลลอฮ์ ขอความสันติจงมีแด่ท่าน โอ้ท่านนบี พร้อมความเมตตาและความจำเริญของอัลลอฮ์ ขอความสันติจงมีแด่พวกเราและแด่บ่าวผู้ทรงคุณธรรมของอัลลอฮ์ ข้าพเจ้าขอปฏิญาณว่าไม่มีพระเจ้าอื่นใดนอกจากอัลลอฮ์ และข้าพเจ้าขอปฏิญาณว่ามุฮัมมัดเป็นบ่าวและศาสนทูตของพระองค์",
         "es": "Todos los saludos, las oraciones y las buenas obras son para Alá. La paz sea contigo, oh Profeta, y la misericordia de Alá y Sus bendiciones. La paz sea con nosotros y con los siervos justos de Alá. Atestiguo que no hay más dios que Alá y atestiguo que Muhammad es Su siervo y mensajero.",
         "pt": "Todas as saudações, orações e boas obras pertencem a Alá. Que a paz esteja contigo, ó Profeta, e a misericórdia de Alá e Suas bênçãos. Que a paz esteja conosco e com os servos justos de Alá. Testemunho que não há outro deus além de Alá e testemunho que Muhammad é Seu servo e mensageiro.",
-        "hi": "सारी तारीफ़ें, सारी इबादतें और सारी अच्छाइयाँ अल्लाह के लिए हैं। ऐ नबी, आप पर सलाम हो और अल्लाह की रहमत और उसकी बरकतें। हम पर और अल्लाह के नेक बंदों पर सलाम हो। मैं गवाही देता हूँ कि अल्लाह के सिवा कोई माबूद नहीं और मैं गवाही देता हूँ कि मुहम्मद उसके बंदे और रसूल हैं।"
+        "hi": "सारी दुआएँ, तारीफ़ें, बदनी और माली इबादतें अल्लाह के लिए हैं। ऐ नबी, आप पर सलाम हो और अल्लाह की रहमत और उसकी बरकतें। हम पर और अल्लाह के नेक बंदों पर सलाम हो। मैं गवाही देता हूँ कि अल्लाह के सिवा कोई माबूद नहीं और मैं गवाही देता हूँ कि मुहम्मद उसके बंदे और रसूल हैं।"
       },
       "cat": [
         "prayer"
@@ -643,7 +643,7 @@
         "th": "โอ้อัลลอฮ์ เพื่อพระองค์ข้าพเจ้าได้ถือศีลอด ข้าพเจ้าศรัทธาต่อพระองค์ มอบหมายต่อพระองค์ และด้วยปัจจัยยังชีพจากพระองค์ข้าพเจ้าละศีลอด",
         "es": "Oh Alá, por Ti he ayunado, en Ti creo, en Ti confío y con Tu sustento rompo mi ayuno.",
         "pt": "Ó Alá, por Ti jejuei, em Ti creio, em Ti confio e com o Teu sustento quebro o meu jejum.",
-        "hi": "ऐ अल्लाह, मैंने तेरे लिए रोज़ा रखा, तुझ पर ईमान लाया, तुझ पर भरोसा किया और तेरे दिए रिज़्क़ से रोज़ा खोलता हूँ।"
+        "hi": "ऐ अल्लाह, मैंने तेरे लिए रोज़ा रखा, तुझ पर ईमान लाया, तुझ पर भरोसा किया और तेरे दिए रिज़्क़ से रोज़ा खोला।"
       },
       "cat": [
         "ramadan"
@@ -689,7 +689,7 @@
         "th": "การกล่าวปฏิญาณยืนยันศรัทธาด้วยวาจา",
         "es": "La declaración verbal de la fe",
         "pt": "O testemunho de fé",
-        "hi": "ईमान की गवाही"
+        "hi": "ज़बान से ईमान का इक़रार"
       },
       "ar": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
       "okunus": "Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve rasûlüh.",
@@ -898,7 +898,7 @@
         "th": "ดุอาอ์ของนบีมูซา (ขอความง่ายดาย)",
         "es": "Súplica de Moisés para pedir facilidad",
         "pt": "Súplica de Moisés por facilidade",
-        "hi": "आसानी के लिए मूसा की दुआ"
+        "hi": "आसानी के लिए हज़रत मूसा की दुआ"
       },
       "when": {
         "tr": "Tâhâ 25–28",
@@ -964,7 +964,7 @@
         "th": "ดุอาอ์ขอลุแก่โทษของนบีอาดัม",
         "es": "Súplica de arrepentimiento de Adán",
         "pt": "Súplica de arrependimento de Adão",
-        "hi": "आदम की तौबा की दुआ"
+        "hi": "हज़रत आदम की तौबा की दुआ"
       },
       "when": {
         "tr": "A'râf 23",
@@ -1018,7 +1018,7 @@
         "th": "ดุอาอ์ของนบียูนุส",
         "es": "Súplica de Jonás",
         "pt": "Súplica de Jonas",
-        "hi": "यूनुस की दुआ"
+        "hi": "हज़रत यूनुस की दुआ"
       },
       "when": {
         "tr": "Enbiyâ 87",
@@ -1234,7 +1234,7 @@
         "th": "ดุอาอ์ขอการตอบรับ (นบีอิบรอฮีม)",
         "es": "Súplica de aceptación (Abraham)",
         "pt": "Súplica pela aceitação (Abraão)",
-        "hi": "क़बूलियत की दुआ (इब्राहीम)"
+        "hi": "क़बूलियत की दुआ (हज़रत इब्राहीम)"
       },
       "when": {
         "tr": "Bakara 127",

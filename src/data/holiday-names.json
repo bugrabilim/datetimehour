@@ -303,7 +303,7 @@
    "th": "วันจันทร์หลังเพนเทคอสต์",
    "es": "Lunes de Pentecostés",
    "pt": "Segunda-feira de Pentecostes",
-   "hi": "व्हिट सोमवार"
+   "hi": "पेंटेकोस्ट सोमवार"
   },
   "Pentecost": {
    "tr": "Pentekost",
@@ -911,7 +911,7 @@
    "th": "วันประสูติท่านนบีมุฮัมมัด (วันที่ยังไม่แน่นอน)",
    "es": "Nacimiento del Profeta Mahoma (fecha provisional)",
    "pt": "Nascimento do Profeta Maomé (data provisória)",
-   "hi": "पैगंबर मुहम्मद का जन्मदिन (अस्थायी तारीख)"
+   "hi": "पैग़ंबर मुहम्मद का जन्मदिन (अनुमानित तारीख)"
   },
   "Thanksgiving Day": {
    "tr": "Şükran Günü",
@@ -1101,7 +1101,7 @@
    "th": "นาวรูซ",
    "es": "Nauryz",
    "pt": "Nauryz",
-   "hi": "नौरीज़"
+   "hi": "नौरोज़"
   },
   "Clean Monday": {
    "tr": "Temiz Pazartesi",
@@ -1272,7 +1272,7 @@
    "th": "วันจูนทีนท์ (วันเลิกทาส)",
    "es": "Juneteenth (Día de la Emancipación)",
    "pt": "Juneteenth (Dia da Emancipação)",
-   "hi": "जूनटींथ (मुक्ति दिवस)"
+   "hi": "जूनटींथ (दासता उन्मूलन दिवस)"
   },
   "Canada Day": {
    "tr": "Kanada Günü",

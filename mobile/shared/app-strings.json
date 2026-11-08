@@ -418,7 +418,7 @@
     "th": "ครบทั้งหกเวลาของวัน เน้นเวลาถัดไป",
     "es": "Los seis horarios del día, con el siguiente resaltado.",
     "pt": "Os seis horários do dia, com o próximo em destaque.",
-    "hi": "दिन के सभी छह समय, अगला उभरा हुआ।"
+    "hi": "दिन के सभी छह समय, अगला हाइलाइट किया हुआ।"
   },
   "widget.analog.name": {
     "tr": "Analog saat",
@@ -1198,7 +1198,7 @@
     "th": "ไม่มีบัญชี ไม่มีโฆษณา ไม่มีการติดตาม ตำแหน่งของคุณใช้บนโทรศัพท์เพื่อคำนวณเวลาละหมาด เฉพาะสภาพอากาศเท่านั้นที่ส่งตำแหน่งโดยประมาณของสถานที่ที่เลือกไปยังบริการสภาพอากาศของ Apple ปฏิทินของคุณจะถูกอ่านเฉพาะเมื่อคุณอนุญาตและบนโทรศัพท์เท่านั้น หากสมัครรายชื่ออีเมล ที่อยู่อีเมลของคุณจะถูกส่งไปยังรายชื่อร่วมของ Bumba เพื่อจุดประสงค์นั้นเท่านั้น เหรียญตราและความคืบหน้าเก็บไว้บนโทรศัพท์เท่านั้น ลบได้ที่ เครื่องมือ › เหรียญตรา รูปภาพที่คุณเลือก (นาฬิกาเต็มจอ นับถอยหลัง) เก็บไว้บนโทรศัพท์เท่านั้น บันทึกการทำอิบาดะฮ์ (ที่คั่นอัลกุรอาน ซิกิร บันทึกละหมาดและการถือศีลอด จำนวนซะกาต) อยู่บนโทรศัพท์ หากเปิด \"ซิงค์กับ iCloud\" การตั้งค่าและบันทึกส่วนตัวจะซิงค์เฉพาะกับอุปกรณ์ของคุณเองผ่านบัญชี iCloud คุณภาพอากาศ ละอองเกสร การเปรียบเทียบแบบจำลอง และข้อมูลสภาพอากาศบน Apple Watch มาจาก Open-Meteo โดยส่งพิกัดที่ปัดเป็นทศนิยมสองตำแหน่ง",
     "es": "Sin cuenta, sin anuncios, sin rastreo. Su ubicación se usa en el teléfono para calcular los horarios de oración; solo para el tiempo se envía la ubicación aproximada del lugar elegido al servicio meteorológico de Apple. Sus calendarios solo se leen si lo permite, y solo en el teléfono. Si se suscribe a la lista de correo, su dirección solo se envía a la lista compartida de Bumba para ese fin. Las insignias y su progreso se guardan solo en el teléfono; puede borrarlos en Herramientas › Insignias. Las fotos que elige (reloj a pantalla completa, cuentas atrás) se guardan solo en el teléfono. Los registros de culto (marcador del Corán, dhikr, registro de oraciones y ayunos, importes de zakat) se quedan solo en el teléfono. Si \"Sincronizar con iCloud\" está activado, los ajustes y los registros personales solo se sincronizan con sus propios dispositivos mediante su cuenta de iCloud. La calidad del aire, el polen, la comparación de modelos y la complicación del tiempo del Apple Watch proceden de Open-Meteo; para ellos se envían coordenadas redondeadas a dos decimales.",
     "pt": "Sem conta, sem anúncios, sem rastreamento. Sua localização é usada no celular para calcular os horários de oração; só para a previsão do tempo a localização aproximada do local escolhido é enviada ao serviço meteorológico da Apple. Seus calendários só são lidos se você permitir, e apenas no celular. Se você entrar na lista de e-mail, seu endereço é enviado só à lista compartilhada da Bumba para esse fim. As medalhas e o seu progresso ficam só no celular; você pode apagá-los em Ferramentas › Medalhas. As fotos que você escolhe (relógio em tela cheia, contagens regressivas) ficam só no celular. Os registros de culto (marcador do Alcorão, dhikr, registro de orações e jejuns, valores de zakat) ficam só no celular. Se \"Sincronizar com o iCloud\" estiver ativado, as configurações e os registros pessoais são sincronizados apenas com os seus aparelhos pela sua conta do iCloud. A qualidade do ar, o pólen, a comparação de modelos e a complicação de clima do Apple Watch vêm do Open-Meteo; para eles são enviadas coordenadas arredondadas para duas casas decimais.",
-    "hi": "न खाता, न विज्ञापन, न ट्रैकिंग। नमाज़ के समय निकालने के लिए आपका स्थान फ़ोन पर इस्तेमाल होता है; केवल मौसम के लिए चुनी जगह का अनुमानित स्थान Apple की मौसम सेवा को भेजा जाता है। आपके कैलेंडर केवल आपकी अनुमति से और केवल फ़ोन पर पढ़े जाते हैं। ईमेल सूची में जुड़ने पर आपका पता केवल उसी काम के लिए Bumba की साझा सूची को भेजा जाता है। बैज और आपकी प्रगति केवल फ़ोन पर रहती है; आप इन्हें टूल › बैज में हटा सकते हैं। आपकी चुनी फ़ोटो (फ़ुल स्क्रीन घड़ी, काउंटडाउन) केवल फ़ोन पर रहती हैं। इबादत के रिकॉर्ड (क़ुरआन बुकमार्क, ज़िक्र, नमाज़ और रोज़ा ट्रैकर, ज़कात की रकम) फ़ोन पर रहते हैं। \"iCloud से सिंक करें\" चालू होने पर सेटिंग्स और निजी रिकॉर्ड केवल आपके iCloud खाते से आपके अपने डिवाइसों के साथ सिंक होते हैं। हवा की गुणवत्ता, पराग, मॉडल तुलना और Apple Watch की मौसम कॉम्प्लिकेशन Open-Meteo से आती हैं; इनके लिए दो दशमलव तक गोल किए निर्देशांक भेजे जाते हैं।"
+    "hi": "न खाता, न विज्ञापन, न ट्रैकिंग। नमाज़ के समय निकालने के लिए आपका स्थान फ़ोन पर इस्तेमाल होता है; केवल मौसम के लिए चुनी जगह का अनुमानित स्थान Apple की मौसम सेवा को भेजा जाता है। आपके कैलेंडर केवल आपकी अनुमति से और केवल फ़ोन पर पढ़े जाते हैं। ईमेल सूची में जुड़ने पर आपका पता केवल उसी काम के लिए Bumba की साझा सूची को भेजा जाता है। बैज और आपकी प्रगति केवल फ़ोन पर रहती है; आप इन्हें टूल › बैज में हटा सकते हैं। आपकी चुनी फ़ोटो (फ़ुल स्क्रीन घड़ी, काउंटडाउन) केवल फ़ोन पर रहती हैं। इबादत के रिकॉर्ड (क़ुरआन बुकमार्क, ज़िक्र, नमाज़ और रोज़ा ट्रैकर, ज़कात की रकम) केवल फ़ोन पर रहते हैं। \"iCloud से सिंक करें\" चालू होने पर सेटिंग्स और निजी रिकॉर्ड केवल आपके iCloud खाते से आपके अपने डिवाइसों के साथ सिंक होते हैं। हवा की गुणवत्ता, पराग, मॉडल तुलना और Apple Watch की मौसम कॉम्प्लिकेशन Open-Meteo से आती हैं; इनके लिए दो दशमलव तक गोल किए निर्देशांक भेजे जाते हैं।"
   },
   "clock.fullscreen": {
     "tr": "Tam ekran",
@@ -2938,7 +2938,7 @@
     "th": "เมื่อเพิ่มกิจกรรม ให้เลือก Google ปฏิทินในตัวแก้ไข แล้วจะบันทึกลง Google ปฏิทินด้วย บัญชี Outlook และอื่น ๆ เพิ่มได้ด้วยวิธีเดียวกัน",
     "es": "Al añadir un evento, elija su calendario de Google en el editor y se guardará también en Google Calendar. Outlook y otras cuentas se añaden del mismo modo.",
     "pt": "Ao adicionar um evento, escolha seu calendário do Google no editor e ele também será salvo no Google Agenda. Outlook e outras contas são adicionados do mesmo jeito.",
-    "hi": "इवेंट जोड़ते समय एडिटर में अपना Google कैलेंडर चुनें, यह Google Calendar में भी सहेजा जाएगा। Outlook और दूसरे खाते भी इसी तरह जोड़े जाते हैं।"
+    "hi": "इवेंट जोड़ते समय एडिटर में अपना Google कैलेंडर चुनने पर वह Google Calendar में भी सहेजा जाता है। Outlook और दूसरे खाते भी इसी तरह जोड़े जा सकते हैं।"
   },
   "google.android.lead": {
     "tr": "Android telefonlarda Google hesabı genellikle zaten eklidir ve Google Takvimi'ndeki etkinlikler telefonun takvimine gelir. Uygulama Google'a doğrudan bağlanmaz ve şifrenizi görmez; etkinlikleri izninizle telefonun takviminden okur.",
@@ -3118,7 +3118,7 @@
     "th": "โลกโคจรรอบดวงอาทิตย์ปีละหนึ่งรอบ แต่โลกไม่ได้ตั้งตรง แกนของโลกเอียง 23.4 องศา และเอียงไปทางเดียวกันเสมอ ครึ่งปีซีกโลกเหนือเอียงเข้าหาดวงอาทิตย์จึงเป็นฤดูร้อน อีกครึ่งปีเอียงออกจึงเป็นฤดูหนาว",
     "es": "La Tierra da una vuelta al Sol cada año. Pero no está derecha: su eje está inclinado 23,4 grados, siempre hacia el mismo lado. Durante medio año el hemisferio norte se inclina hacia el Sol y es verano; la otra mitad del año se inclina en sentido contrario y es invierno.",
     "pt": "A Terra dá uma volta em torno do Sol a cada ano. Mas ela não fica reta: seu eixo é inclinado 23,4 graus, sempre para o mesmo lado. Durante metade do ano a metade norte se inclina para o Sol e é verão; na outra metade ela se inclina para longe do Sol e é inverno.",
-    "hi": "पृथ्वी हर साल सूरज का एक चक्कर लगाती है। लेकिन वह सीधी नहीं खड़ी: उसका अक्ष 23.4 डिग्री झुका है, हमेशा एक ही तरफ़। आधे साल उत्तरी आधा भाग सूरज की ओर झुका रहता है और गर्मी होती है; बाकी आधे साल वह दूर झुका रहता है और सर्दी होती है।"
+    "hi": "पृथ्वी हर साल सूरज का एक चक्कर लगाती है। लेकिन वह सीधी खड़ी नहीं रहती: उसका अक्ष 23.4 डिग्री झुका है, हमेशा एक ही तरफ़। आधे साल उत्तरी गोलार्ध सूरज की ओर झुका रहता है और गर्मी होती है; बाकी आधे साल वह दूर झुका रहता है और सर्दी होती है।"
   },
   "kids.why.myth": {
     "tr": "Yanlış bilinen: Mevsimler Güneş'e yaklaşıp uzaklaştığımız için olmaz. Dünya Güneş'e en çok Ocak başında yaklaşır; o sırada bizde kış vardır!",
@@ -3298,7 +3298,7 @@
     "th": "ดาราศาสตร์ (ตามดวงอาทิตย์)",
     "es": "Astronomía (según el Sol)",
     "pt": "Astronomia (pelo Sol)",
-    "hi": "खगोल विज्ञान (सूरज से)"
+    "hi": "खगोल विज्ञान (सूरज के अनुसार)"
   },
   "kids.dates.meteo": {
     "tr": "Meteoroloji (tam aylar)",
@@ -3438,7 +3438,7 @@
     "th": "21 มิถุนายนเป็นวันที่กลางวันยาวที่สุดของปี และ 21 ธันวาคมเป็นวันที่กลางคืนยาวที่สุด (ซีกโลกเหนือ)",
     "es": "El 21 de junio es el día más largo del año y el 21 de diciembre la noche más larga (en el hemisferio norte).",
     "pt": "21 de junho é o dia mais longo do ano e 21 de dezembro a noite mais longa (na metade norte).",
-    "hi": "21 जून साल का सबसे लंबा दिन और 21 दिसंबर सबसे लंबी रात है (उत्तरी आधे में)।"
+    "hi": "21 जून साल का सबसे लंबा दिन और 21 दिसंबर सबसे लंबी रात है (उत्तरी गोलार्ध में)।"
   },
   "kids.fact2": {
     "tr": "Mart ve Eylül'deki ekinoks günlerinde gece ile gündüz hemen hemen eşittir.",
@@ -3518,7 +3518,7 @@
     "th": "ในซีกโลกเหนือ ฤดูร้อนยาวกว่าฤดูหนาวไม่กี่วัน เพราะโลกเคลื่อนที่ช้าลงเล็กน้อยเมื่ออยู่ไกลดวงอาทิตย์",
     "es": "En el hemisferio norte, el verano dura unos días más que el invierno: la Tierra va un poco más despacio cuando está más lejos del Sol.",
     "pt": "Na metade norte, o verão dura alguns dias a mais que o inverno: a Terra anda um pouco mais devagar quando está mais longe do Sol.",
-    "hi": "उत्तरी आधे में गर्मी सर्दी से कुछ दिन लंबी होती है: सूरज से दूर होने पर पृथ्वी थोड़ी धीमी चलती है।"
+    "hi": "उत्तरी गोलार्ध में गर्मी सर्दी से कुछ दिन लंबी होती है: सूरज से दूर होने पर पृथ्वी थोड़ी धीमी चलती है।"
   },
   "kids.more": {
     "tr": "Sonraki yıllar",
@@ -3538,7 +3538,7 @@
     "th": "ปีต่อ ๆ ไป",
     "es": "Próximos años",
     "pt": "Próximos anos",
-    "hi": "अगले साल"
+    "hi": "आने वाले साल"
   },
   "settings.privacyNoteAndroid": {
     "tr": "Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz. Seçtiğiniz fotoğraflar (tam ekran saat, geri sayımlar) yalnız telefonda saklanır. İbadet kayıtları (Kur'an'da kaldığınız yer, zikir, namaz ve oruç takibi, zekât tutarları) yalnız telefonda durur; telefonun Google yedeği açıksa yedeğe girer.",
@@ -3558,7 +3558,7 @@
     "th": "แอปไม่ต้องใช้บัญชี ไม่มีโฆษณาหรือการติดตาม ตำแหน่งของคุณใช้บนโทรศัพท์เท่านั้นเพื่อคำนวณเวลาละหมาดและฤดูกาล สำหรับสภาพอากาศจะส่งพิกัดโดยประมาณของสถานที่ที่เลือก (ละเอียดราว 1 กม.) ไปยัง Open-Meteo ปฏิทินในโทรศัพท์จะถูกอ่านเฉพาะเมื่อคุณอนุญาตและบนโทรศัพท์เท่านั้น หากสมัครรายชื่ออีเมล ที่อยู่อีเมลของคุณจะถูกส่งไปยังรายชื่อร่วมของ Bumba เพื่อจุดประสงค์นั้นเท่านั้น เหรียญตราและความคืบหน้าเก็บไว้บนโทรศัพท์เท่านั้น ลบได้ที่ เครื่องมือ › เหรียญตรา รูปภาพที่คุณเลือก (นาฬิกาเต็มจอ นับถอยหลัง) เก็บไว้บนโทรศัพท์เท่านั้น บันทึกการทำอิบาดะฮ์ (ที่คั่นอัลกุรอาน ซิกิร บันทึกละหมาดและการถือศีลอด จำนวนซะกาต) อยู่บนโทรศัพท์ หากเปิดการสำรองข้อมูล Google ของโทรศัพท์ ข้อมูลเหล่านี้จะรวมอยู่ด้วย",
     "es": "La app no necesita cuenta y no tiene anuncios ni rastreo. Su ubicación solo se usa en el teléfono para calcular los horarios de oración y las estaciones. Para el tiempo se envían a Open-Meteo las coordenadas aproximadas del lugar elegido (1 km aprox.). Los calendarios del teléfono solo se leen si lo permite, y solo en el teléfono. Si se suscribe a la lista de correo, su dirección solo se envía a la lista compartida de Bumba para ese fin. Las insignias y su progreso se guardan solo en el teléfono; puede borrarlos en Herramientas › Insignias. Las fotos que elige (reloj a pantalla completa, cuentas atrás) se guardan solo en el teléfono. Los registros de culto (marcador del Corán, dhikr, registro de oraciones y ayunos, importes de zakat) se quedan solo en el teléfono; si la copia de seguridad de Google del teléfono está activada, se incluyen en ella.",
     "pt": "O app não precisa de conta e não tem anúncios nem rastreamento. Sua localização é usada só no celular para calcular os horários de oração e as estações. Para a previsão do tempo, as coordenadas aproximadas do local escolhido (com precisão de cerca de 1 km) são enviadas ao Open-Meteo. Os calendários do celular só são lidos se você permitir, e apenas no celular. Se você entrar na lista de e-mail, seu endereço é enviado só à lista compartilhada da Bumba para esse fim. As medalhas e o seu progresso ficam só no celular; você pode apagá-los em Ferramentas › Medalhas. As fotos que você escolhe (relógio em tela cheia, contagens regressivas) ficam só no celular. Os registros de culto (marcador do Alcorão, dhikr, registro de orações e jejuns, valores de zakat) ficam só no celular; se o backup do Google do celular estiver ativado, eles entram nele.",
-    "hi": "ऐप को खाते की ज़रूरत नहीं, और इसमें न विज्ञापन हैं न ट्रैकिंग। नमाज़ के समय और ऋतुएँ निकालने के लिए आपका स्थान केवल फ़ोन पर इस्तेमाल होता है। मौसम के लिए चुनी जगह के अनुमानित निर्देशांक (लगभग 1 km) Open-Meteo को भेजे जाते हैं। फ़ोन के कैलेंडर केवल आपकी अनुमति से और केवल फ़ोन पर पढ़े जाते हैं। ईमेल सूची में जुड़ने पर आपका पता केवल उसी काम के लिए Bumba की साझा सूची को भेजा जाता है। बैज और आपकी प्रगति केवल फ़ोन पर रहती है; आप इन्हें टूल › बैज में हटा सकते हैं। आपकी चुनी फ़ोटो (फ़ुल स्क्रीन घड़ी, काउंटडाउन) केवल फ़ोन पर रहती हैं। इबादत के रिकॉर्ड (क़ुरआन बुकमार्क, ज़िक्र, नमाज़ और रोज़ा ट्रैकर, ज़कात की रकम) फ़ोन पर रहते हैं; फ़ोन का Google बैकअप चालू होने पर वे उसमें शामिल होते हैं।"
+    "hi": "ऐप को खाते की ज़रूरत नहीं, और इसमें न विज्ञापन हैं न ट्रैकिंग। नमाज़ के समय और ऋतुएँ निकालने के लिए आपका स्थान केवल फ़ोन पर इस्तेमाल होता है। मौसम के लिए चुनी जगह के अनुमानित निर्देशांक (लगभग 1 km की सटीकता तक) Open-Meteo को भेजे जाते हैं। फ़ोन के कैलेंडर केवल आपकी अनुमति से और केवल फ़ोन पर पढ़े जाते हैं। ईमेल सूची में जुड़ने पर आपका पता केवल उसी काम के लिए Bumba की साझा सूची को भेजा जाता है। बैज और आपकी प्रगति केवल फ़ोन पर रहती है; आप इन्हें टूल › बैज में हटा सकते हैं। आपकी चुनी फ़ोटो (फ़ुल स्क्रीन घड़ी, काउंटडाउन) केवल फ़ोन पर रहती हैं। इबादत के रिकॉर्ड (क़ुरआन बुकमार्क, ज़िक्र, नमाज़ और रोज़ा ट्रैकर, ज़कात की रकम) केवल फ़ोन पर रहते हैं; फ़ोन का Google बैकअप चालू होने पर वे उसमें शामिल होते हैं।"
   },
   "badges.h1": {
     "tr": "Rozetler",
@@ -4538,7 +4538,7 @@
     "th": "ปรมาจารย์นาฬิกา",
     "es": "Maestro relojero",
     "pt": "Mestre relojoeiro",
-    "hi": "घड़ी उस्ताद"
+    "hi": "घड़ियों का उस्ताद"
   },
   "badges.items.model-hepsi.how": {
     "tr": "Saat sahnesindeki bütün modelleri gör.",
@@ -5038,7 +5038,7 @@
     "th": "{season}เริ่มแล้ว",
     "es": "Ha empezado la estación: {season}",
     "pt": "Começou a estação: {season}",
-    "hi": "{season} शुरू हो गई"
+    "hi": "{season} ऋतु शुरू हो गई"
   },
   "notify.n.weather": {
     "tr": "Hava durumu · {place}",
@@ -5758,7 +5758,7 @@
     "th": "ข้างของดวงจันทร์วันนี้ ความสว่าง และจันทร์เต็มดวงหรือจันทร์ดับครั้งถัดไป",
     "es": "La fase lunar de hoy, la iluminación y la próxima luna llena o nueva.",
     "pt": "A fase da Lua de hoje, a iluminação e a próxima lua cheia ou nova.",
-    "hi": "आज की चंद्र कला, रोशन हिस्सा और अगली पूर्णिमा या अमावस्या।"
+    "hi": "आज की चंद्र कला, रोशन हिस्से का प्रतिशत और अगली पूर्णिमा या अमावस्या।"
   },
   "widget.seconds.name": {
     "tr": "Saniyeli saat",
@@ -6278,7 +6278,7 @@
     "th": "การเปลี่ยนช่วงและ 3 วินาทีสุดท้ายจะประกาศแม้หน้าจอล็อกหรือใช้แอปอื่นอยู่ และนาฬิกาปลุกจะดังเมื่อจบ หากเปิดเพลงอยู่ เสียงประกาศจะดังทับเพลง",
     "es": "Los cambios de fase y los últimos 3 segundos se anuncian aunque la pantalla esté bloqueada o use otra app, y al final suena una alarma. Si hay música, los avisos suenan por encima.",
     "pt": "As mudanças de fase e os últimos 3 segundos são anunciados mesmo com a tela bloqueada ou usando outro app, e um alarme toca no fim. Se houver música tocando, os avisos tocam por cima.",
-    "hi": "स्क्रीन लॉक होने या दूसरा ऐप इस्तेमाल करते समय भी चरण बदलना और आख़िरी 3 सेकंड बोले जाते हैं, और अंत में अलार्म बजता है। संगीत चल रहा हो तो घोषणाएँ उसके ऊपर बजती हैं।"
+    "hi": "स्क्रीन लॉक होने या दूसरा ऐप इस्तेमाल करते समय भी चरण बदलने और आख़िरी 3 सेकंड की घोषणा होती है, और अंत में अलार्म बजता है। संगीत चल रहा हो तो घोषणाएँ उसके ऊपर बजती हैं।"
   },
   "hiit.say.warmup": {
     "tr": "Isınma",
@@ -7718,7 +7718,7 @@
     "th": "เข็มทิศใช้ทิศเหนือแม่เหล็ก อนุญาตตำแหน่งเพื่อใช้ทิศเหนือจริง",
     "es": "La brújula usa el norte magnético; permita la ubicación para usar el norte verdadero (en Turquía la diferencia es de 4–7°).",
     "pt": "A bússola usa o norte magnético; permita a localização para usar o norte verdadeiro (na Turquia, a diferença é de 4–7°).",
-    "hi": "कंपास चुंबकीय उत्तर इस्तेमाल करता है; सच्चे उत्तर के लिए स्थान की अनुमति दें।"
+    "hi": "कंपास चुंबकीय उत्तर इस्तेमाल करता है; वास्तविक उत्तर के लिए स्थान की अनुमति दें (तुर्किये में अंतर 4–7°)।"
   },
   "qibla.atKaaba": {
     "tr": "Kâbe'nin yanındasınız.",
@@ -7758,7 +7758,7 @@
     "th": "กิบลัตคือทิศของเส้นทางที่สั้นที่สุด (วงกลมใหญ่) ไปยังกะอ์บะฮ์ คำนวณบนโทรศัพท์จากพิกัดของสถานที่ที่เลือก เวลากิบลัตตรงกับเวลากิบลัตที่ดียาเนตประกาศภายใน ±1 นาที",
     "es": "La alquibla es la dirección del camino más corto (círculo máximo) hacia la Kaaba, calculada en el teléfono a partir de las coordenadas del lugar elegido. Si ha elegido una provincia, se usa su capital (dentro de la provincia la diferencia es de menos de 1°). La hora de la alquibla coincide con la que publica Diyanet con un margen de ±1 min.",
     "pt": "A qibla é a direção do caminho mais curto (círculo máximo) até a Caaba, calculada no celular a partir das coordenadas do local escolhido. Se uma província estiver selecionada, vale o centro da província (diferença de menos de 1° dentro dela). O horário da qibla coincide com o publicado pela Diyanet com margem de ±1 min.",
-    "hi": "क़िबला काबा तक के सबसे छोटे रास्ते (महावृत्त) की दिशा है, जो चुने स्थान के निर्देशांकों से फ़ोन पर निकाली जाती है। क़िबला समय दियानत के प्रकाशित क़िबला समय से ±1 मिनट के भीतर मेल खाता है।"
+    "hi": "क़िबला काबा तक के सबसे छोटे रास्ते (महावृत्त) की दिशा है, जो चुने स्थान के निर्देशांकों से फ़ोन पर निकाली जाती है। प्रांत चुना हो तो उसका केंद्र लिया जाता है (प्रांत के भीतर अंतर 1° से कम है)। क़िबला समय दियानत के प्रकाशित क़िबला समय से ±1 मिनट के भीतर मेल खाता है।"
   },
   "qibla.mosques": {
     "tr": "Yakındaki camiler",
@@ -8478,7 +8478,7 @@
     "th": "บอก Siri ว่า \"เริ่มตัวจับเวลาใน เวลาและวันที่\" \"เวลาละหมาดถัดไปใน เวลาและวันที่\" หรือ \"วันที่ฮิจเราะห์ใน เวลาและวันที่\" หรือใช้การทำงานเหล่านี้ในแอปคำสั่งลัด หากต้องการแสดงนาฬิกาขณะชาร์จ: คำสั่งลัด › อัตโนมัติ › ที่ชาร์จ › เชื่อมต่อแล้ว › \"เปิดนาฬิกาเต็มจอ\" (เลือกโหมดกลางคืนได้)",
     "es": "Pida a Siri \"Inicia un temporizador en Hora y Fecha\", \"Próxima oración en Hora y Fecha\" o \"Qué fecha de la Hégira es en Hora y Fecha\", o use estas acciones en la app Atajos. Para mostrar el reloj al cargar: Atajos › Automatización › Cargador › Está conectado › \"Abrir reloj a pantalla completa\" (opcionalmente con modo nocturno).",
     "pt": "Peça à Siri \"Iniciar um temporizador no Hora e Data\", \"Próxima oração no Hora e Data\" ou \"Qual é a data da Hégira no Hora e Data\", ou use essas ações no app Atalhos. Para mostrar o relógio ao carregar: Atalhos › Automação › Carregador › Está Conectado › \"Abrir relógio em tela cheia\" (opcionalmente com modo noturno).",
-    "hi": "Siri से कहें \"समय और तारीख में टाइमर शुरू करो\", \"समय और तारीख में अगली नमाज़\" या \"समय और तारीख में हिजरी तारीख\", या ये क्रियाएँ शॉर्टकट ऐप में इस्तेमाल करें। चार्ज करते समय घड़ी दिखाने के लिए: शॉर्टकट › ऑटोमेशन › चार्जर › जुड़ा है › \"फ़ुल स्क्रीन घड़ी खोलें\" (चाहें तो रात्रि मोड के साथ)।"
+    "hi": "Siri से कहें \"समय और तारीख में टाइमर शुरू करो\", \"समय और तारीख में अगली नमाज़ का समय\" या \"समय और तारीख में हिजरी तारीख क्या है\", या ये क्रियाएँ शॉर्टकट ऐप में इस्तेमाल करें। चार्ज करते समय घड़ी दिखाने के लिए: शॉर्टकट › ऑटोमेशन › चार्जर › जुड़ा है › \"फ़ुल स्क्रीन घड़ी खोलें\" (चाहें तो रात्रि मोड के साथ)।"
   },
   "android.shortcuts.title": {
     "tr": "Kısayollar ve ekran koruyucu",
@@ -8878,7 +8878,7 @@
     "th": "ตั้งนาฬิกาปลุกเวลา {time} แล้ว",
     "es": "Alarma puesta para las {time}.",
     "pt": "Alarme criado para {time}.",
-    "hi": "{time} का अलार्म लगा।"
+    "hi": "{time} का अलार्म लग गया।"
   },
   "intent.full.title": {
     "tr": "Tam ekran saati aç",
@@ -9258,7 +9258,7 @@
     "th": "แสดงเวลาที่เหลือก่อนละหมาดถัดไปบนหน้าจอล็อกและ Dynamic Island (ช่วงรอมฎอนแสดงเวลาละศีลอดและสะหูร) หลังผ่านเวลาละหมาด จะอัปเดตเมื่อคุณเปิดแอปหรือในเบื้องหลัง ตัวจับเวลา โพโมโดโร และนาฬิกาจับเวลาที่ทำงานอยู่ก็แสดงบนหน้าจอล็อกด้วย",
     "es": "Muestra el tiempo que falta para la próxima oración en la pantalla bloqueada y en la Dynamic Island (iftar y suhur en Ramadán). Tras cada hora de oración, se actualiza al abrir la app o en segundo plano. Los temporizadores, el pomodoro y el cronómetro en marcha también aparecen en la pantalla bloqueada.",
     "pt": "Mostra o tempo até a próxima oração na tela bloqueada e na Dynamic Island (iftar e suhur no Ramadã). Depois de um horário de oração, ele se atualiza ao abrir o app ou em segundo plano. Temporizadores, pomodoro e cronômetro em andamento também aparecem na tela bloqueada.",
-    "hi": "लॉक स्क्रीन और डायनेमिक आइलैंड पर अगली नमाज़ तक बचा समय दिखाता है (रमज़ान में इफ़्तार और सहरी)। नमाज़ का समय बीतने के बाद ऐप खोलने पर या बैकग्राउंड में अपडेट होता है। चलते टाइमर, पोमोडोरो और स्टॉपवॉच भी लॉक स्क्रीन पर दिखते हैं।"
+    "hi": "लॉक स्क्रीन और डायनेमिक आइलैंड पर अगली नमाज़ तक बचा समय दिखाता है (रमज़ान में इफ़्तार और सहरी)। नमाज़ का समय होने के बाद ऐप खोलने पर या बैकग्राउंड में अपडेट होता है। चलते टाइमर, पोमोडोरो और स्टॉपवॉच भी लॉक स्क्रीन पर दिखते हैं।"
   },
   "live.prayer.noteAndroid": {
     "tr": "Bildirim alanında ve kilit ekranında sıradaki vakte kalan süre (Ramazan'da iftar ve sahur); her vakitte kendiliğinden yenilenir. Çalışan zamanlayıcı, pomodoro ve kronometre de bildirim alanında görünür.",
@@ -9558,7 +9558,7 @@
     "th": "ขณะชาร์จโทรศัพท์และเปิดนาฬิกาเต็มจอไว้ หน้าจอจะค่อย ๆ สว่างขึ้นจากสีดำเป็นสีอุ่นแบบแสงอรุณก่อนนาฬิกาปลุกดัง โทรศัพท์เปิดหน้าจอเองไม่ได้ขณะที่แอปปิดอยู่",
     "es": "Con el teléfono cargando y el reloj a pantalla completa abierto, la pantalla pasa poco a poco del negro a un cálido color de amanecer antes de la alarma. Los teléfonos no pueden encender la pantalla solos con la app cerrada.",
     "pt": "Com o celular carregando e o relógio em tela cheia aberto, a tela clareia aos poucos do preto até uma cor quente de amanhecer antes do alarme. Os celulares não conseguem ligar a tela sozinhos com o app fechado.",
-    "hi": "फ़ोन चार्ज होते हुए फ़ुल स्क्रीन घड़ी खुली रहे, तो अलार्म से पहले स्क्रीन धीरे-धीरे काले से गर्म सूर्योदय रंग की ओर चमकती है। ऐप बंद होने पर फ़ोन ख़ुद स्क्रीन चालू नहीं कर सकते।"
+    "hi": "फ़ोन चार्ज हो रहा हो और फ़ुल स्क्रीन घड़ी खुली हो, तो अलार्म से पहले स्क्रीन काले से गर्म सूर्योदय रंग तक धीरे-धीरे रोशन होती है। ऐप बंद होने पर फ़ोन ख़ुद स्क्रीन चालू नहीं कर सकते।"
   },
   "notify.cat.bedtime": {
     "tr": "Yatma saati",
@@ -9678,7 +9678,7 @@
     "th": "คำนวณเวลานอนจากเวลาตื่นและระยะเวลาที่อยากนอน และรับการเตือนก่อนนอนได้",
     "es": "Su hora de acostarse se calcula a partir de la hora de despertar y de cuánto quiere dormir; puede recibir un aviso antes de acostarse.",
     "pt": "Seu horário de dormir é calculado a partir do horário de acordar e de quanto você quer dormir; você pode receber um lembrete antes de deitar.",
-    "hi": "सोने का समय आपके जागने के समय और कितनी देर सोना चाहते हैं, उससे निकाला जाता है; सोने से पहले आपको याद दिलाया जा सकता है।"
+    "hi": "आपके जागने के समय और आपकी चाही नींद की अवधि से सोने का समय निकाला जाता है; चाहें तो सोने से पहले आपको याद दिलाया जाएगा।"
   },
   "sleep.wake": {
     "tr": "Kalkış saati",
@@ -9878,7 +9878,7 @@
     "th": "ตั้งนาฬิกาปลุกแล้ว (เครื่องมือ › นาฬิกาปลุก)",
     "es": "Alarma puesta (Herramientas › Alarma)",
     "pt": "Alarme criado (Ferramentas › Alarme)",
-    "hi": "अलार्म लगा (टूल › अलार्म)"
+    "hi": "अलार्म लग गया (टूल › अलार्म)"
   },
   "sleep.alarmLabel": {
     "tr": "Kalkış",
@@ -9938,7 +9938,7 @@
     "th": "ถ้านอนตอนนี้ ควรตื่นเวลา",
     "es": "Si se acuesta ahora, despierte a las",
     "pt": "Se for dormir agora, acorde às",
-    "hi": "अभी सोएँ तो जागें"
+    "hi": "अभी सोएँ तो जागने के समय"
   },
   "sleep.forWake": {
     "tr": "{time} kalkış için yatma saatleri",
@@ -10038,7 +10038,7 @@
     "th": "ปิดหลังจาก",
     "es": "Apagar tras",
     "pt": "Desligar depois de",
-    "hi": "इसके बाद बंद करें"
+    "hi": "अपने-आप बंद"
   },
   "sleep.timerOff": {
     "tr": "Kapanmasın",
@@ -10458,7 +10458,7 @@
     "th": "เมื่อแตะหยุดที่นาฬิกาปลุก แอปจะเปิดขึ้นและขอให้ทำภารกิจ หากไม่ทำ นาฬิกาปลุกจะดังอีกครั้งในหนึ่งนาที (สูงสุด 10 ครั้ง) หากเซนเซอร์หรือกล้องใช้ไม่ได้ \"ภารกิจอื่น\" จะเปลี่ยนเป็นคณิตศาสตร์ระดับยาก",
     "es": "Al tocar Detener en la alarma se abre la app y pide la tarea; si no se hace, la alarma vuelve a sonar un minuto después (hasta 10 veces). Si el sensor o la cámara no funcionan, \"Otra tarea\" cambia a matemáticas difíciles.",
     "pt": "Tocar em Parar no alarme abre o app e pede a tarefa; se ela não for feita, o alarme toca de novo um minuto depois (até 10 vezes). Se o sensor ou a câmera não funcionarem, \"Outra tarefa\" muda para matemática difícil.",
-    "hi": "अलार्म पर \"रोकें\" दबाने से ऐप खुलता है और कार्य माँगता है; कार्य न हो तो एक मिनट बाद अलार्म फिर बजता है (10 बार तक)। सेंसर या कैमरा काम न करे, तो \"दूसरा कार्य\" कठिन गणित पर चला जाता है।"
+    "hi": "अलार्म पर \"बंद करें\" दबाने से ऐप खुलता है और कार्य माँगता है; कार्य न हो तो एक मिनट बाद अलार्म फिर बजता है (10 बार तक)। सेंसर या कैमरा काम न करे, तो \"दूसरा कार्य\" कठिन गणित पर चला जाता है।"
   },
   "alarm.task.oldIOS": {
     "tr": "Kapatma görevi iOS 26 ve sonrasında çalışır.",
@@ -11158,7 +11158,7 @@
     "th": "ล้างที่เสร็จแล้ว",
     "es": "Borrar completadas",
     "pt": "Limpar concluídas",
-    "hi": "पूरे हुए हटाएँ"
+    "hi": "पूरे हुए काम हटाएँ"
   },
   "pomo.todoPomos": {
     "tr": "{n} pomodoro",
@@ -11698,7 +11698,7 @@
     "th": "เศาะละวาต",
     "es": "Salawat",
     "pt": "Salawat",
-    "hi": "सलावात"
+    "hi": "दुरूद"
   },
   "zikir.kind.free": {
     "tr": "Serbest",
@@ -12638,7 +12638,7 @@
     "th": "อิงตามหลักของดียาเนต: นิศอบคือทอง 80.18 กรัม อัตรา 1 ใน 40 และทรัพย์สินต้องครอบครองครบหนึ่งปีจันทรคติ ไม่นับบ้าน รถ และของใช้ส่วนตัว เพื่อความแน่ใจโปรดสอบถามผู้รู้ จำนวนเงินอยู่ในอุปกรณ์นี้",
     "es": "Según las normas de Diyanet: el nisab es de 80,18 g de oro, la tasa es una cuadragésima parte y sobre los bienes debe haber pasado un año lunar. Su vivienda, su coche y sus objetos personales no cuentan. Para una respuesta definitiva, consulte a Diyanet. Las cantidades se quedan en este dispositivo.",
     "pt": "Com base nas regras da Diyanet: o nisab é de 80,18 g de ouro, a taxa é um quarenta avos e um ano lunar deve ter passado sobre os bens. Sua casa, seu carro e seus objetos pessoais não contam. Para ter certeza, consulte a Diyanet. Os valores que você digitar ficam só neste aparelho.",
-    "hi": "दियानत के नियमों पर आधारित: निसाब 80.18 g सोना है, दर चालीसवाँ हिस्सा है, और संपत्ति पर एक चंद्र वर्ष बीत चुका होना चाहिए। आपका घर, गाड़ी और निजी सामान नहीं गिने जाते। पक्का जानने के लिए किसी आलिम से पूछें। रकम इसी डिवाइस पर रहती है।"
+    "hi": "दियानत के नियमों पर आधारित: निसाब 80.18 g सोना है, दर चालीसवाँ हिस्सा है, और संपत्ति पर एक चंद्र वर्ष बीत चुका होना चाहिए। आपका घर, गाड़ी और निजी सामान नहीं गिने जाते। पक्का जानने के लिए दियानत से पूछें। रकम इसी डिवाइस पर रहती है।"
   },
   "sync.title": {
     "tr": "iCloud ile eşitle",
@@ -12938,7 +12938,7 @@
     "th": "เปลี่ยนทุก",
     "es": "Cambiar cada",
     "pt": "Trocar a cada",
-    "hi": "हर इतने में बदलें"
+    "hi": "बदलने का अंतराल"
   },
   "look.slideCount": {
     "tr": "{n} fotoğraf",
@@ -12978,7 +12978,7 @@
     "th": "รูปภาพสูงสุด 10 รูปจะสลับกันเป็นพื้นหลังเต็มจอ รูปภาพอยู่ในอุปกรณ์นี้",
     "es": "Hasta 10 fotos se turnan como fondo a pantalla completa; las fotos se quedan en este dispositivo.",
     "pt": "Até 10 fotos se revezam como fundo da tela cheia; as fotos ficam só neste aparelho.",
-    "hi": "10 तक फ़ोटो बारी-बारी से फ़ुल स्क्रीन पृष्ठभूमि बनती हैं; फ़ोटो इसी डिवाइस पर रहती हैं।"
+    "hi": "फ़ुल स्क्रीन पृष्ठभूमि में अधिकतम 10 फ़ोटो बारी-बारी से दिखती हैं; फ़ोटो इसी डिवाइस पर रहती हैं।"
   },
   "look.size": {
     "tr": "Saat boyutu",
@@ -13758,7 +13758,7 @@
     "th": "ปฏิทินรายวัน",
     "es": "Hoja de calendario",
     "pt": "Folha do calendário",
-    "hi": "कैलेंडर पन्ना"
+    "hi": "कैलेंडर का पन्ना"
   },
   "leaf.dayOfYear": {
     "tr": "Yılın {n}. günü · {w}. hafta",
@@ -13978,7 +13978,7 @@
     "th": "ในตุรกี เวลาทางการเป็นของดียาเนต ตัวเลือกของคุณจะเปลี่ยนเวลา การแจ้งเตือน นาฬิกาปลุก และตารางรายเดือน วิดเจ็ตบนหน้าจอโฮมและนาฬิกาข้อมือยังใช้วิธีของดียาเนต",
     "es": "En Turquía los horarios oficiales son los de Diyanet. Su elección cambia los horarios, las notificaciones, las alarmas y la tabla mensual; los widgets de la pantalla de inicio y el reloj mantienen el método de Diyanet.",
     "pt": "Na Turquia os horários oficiais são os da Diyanet. Sua escolha muda os horários, as notificações, os alarmes e a tabela mensal; os widgets da tela inicial e o relógio mantêm o método da Diyanet.",
-    "hi": "तुर्किये में आधिकारिक समय दियानत के हैं। आपकी पसंद समय, सूचनाएँ, अलार्म और मासिक तालिका बदलती है; होम स्क्रीन विजेट और घड़ी दियानत विधि ही रखते हैं।"
+    "hi": "तुर्किये में आधिकारिक समय दियानत के हैं। आपकी पसंद समय, सूचनाएँ, अलार्म और मासिक तालिका बदलती है; होम स्क्रीन विजेट और स्मार्टवॉच दियानत विधि ही रखते हैं।"
   },
   "prayer.arc.title": {
     "tr": "Güneş ve Ay",
@@ -14078,7 +14078,7 @@
     "th": "นาฬิกาปลุกจริงจะดังในเวลาละหมาดที่เลือก แม้โทรศัพท์ปิดเสียงหรืออยู่ในโหมดโฟกัส นาฬิกาปลุกตั้งไว้สำหรับวันข้างหน้าและจะอัปเดตทุกครั้งที่เปิดแอป",
     "es": "A las horas de oración elegidas suena una alarma de verdad, aunque el teléfono esté en silencio o en modo Concentración. Las alarmas se ponen para los próximos días y se renuevan cada vez que abre la app.",
     "pt": "Nos horários de oração escolhidos toca um alarme de verdade, mesmo com o celular no silencioso ou em Foco. Os alarmes são criados para os próximos dias e renovados sempre que você abre o app.",
-    "hi": "चुने नमाज़ के समय पर असली अलार्म बजता है, फ़ोन साइलेंट या फ़ोकस में हो तब भी। अलार्म अगले दिनों के लिए लगते हैं और हर बार ऐप खोलने पर नए होते हैं।"
+    "hi": "चुने नमाज़ के समय पर असली अलार्म बजता है, फ़ोन साइलेंट या फ़ोकस में हो तब भी। अलार्म अगले दिनों के लिए लगते हैं और हर बार ऐप खोलने पर फिर से लगाए जाते हैं।"
   },
   "prayer.alarm.unsupported": {
     "tr": "Vakit alarmı iOS 26 ve sonrasında kullanılabilir; bu sürümde bildirimler kullanılır.",
@@ -14278,7 +14278,7 @@
     "th": "หลังเวลาละหมาดที่เลือก โทรศัพท์จะเปลี่ยนเป็นสั่นหรือห้ามรบกวนตามระยะเวลาที่เลือก แล้วกลับเป็นสถานะเดิม โหมดห้ามรบกวนต้องอนุญาตครั้งเดียว",
     "es": "Tras las horas de oración elegidas, el teléfono pasa a vibración o No molestar durante el tiempo elegido y luego vuelve a su estado anterior. Para No molestar, Android pide permiso una sola vez.",
     "pt": "Depois dos horários de oração escolhidos, o celular passa para o modo vibrar ou Não perturbe pelo tempo escolhido e depois volta ao estado anterior. Para o Não perturbe, o Android pede permissão uma vez.",
-    "hi": "चुने नमाज़ के समय के बाद फ़ोन चुनी अवधि तक वाइब्रेट या परेशान न करें पर चला जाता है, फिर पहले जैसा हो जाता है। परेशान न करें के लिए एक बार अनुमति चाहिए।"
+    "hi": "चुने नमाज़ के समय के बाद फ़ोन चुनी अवधि तक वाइब्रेट या परेशान न करें पर चला जाता है, फिर पहले जैसा हो जाता है। परेशान न करें के लिए Android एक बार अनुमति माँगता है।"
   },
   "prayer.silent.grant": {
     "tr": "İzin ver",
@@ -14398,7 +14398,7 @@
     "th": "ทุกสองสัปดาห์",
     "es": "Cada dos semanas",
     "pt": "A cada duas semanas",
-    "hi": "हर दो सप्ताह"
+    "hi": "हर दो सप्ताह में"
   },
   "alarm.untilToggle": {
     "tr": "Bitiş tarihi",
@@ -14638,7 +14638,7 @@
     "th": "ดูช่องที่สว่างขึ้น",
     "es": "Mire cómo se iluminan los cuadrados",
     "pt": "Observe os quadrados acenderem",
-    "hi": "चौकोर डिब्बों को जलते देखें"
+    "hi": "चौकोर खानों को चमकते देखें"
   },
   "wake.memory.repeat": {
     "tr": "Aynı sırayla dokunun",
@@ -14698,7 +14698,7 @@
     "th": "พิมพ์ข้อความนี้",
     "es": "Escriba este refrán tal cual",
     "pt": "Digite este ditado",
-    "hi": "यह कहावत टाइप करें"
+    "hi": "यह कहावत हूबहू टाइप करें"
   },
   "wake.typing.field": {
     "tr": "Buraya yazın",
@@ -14818,7 +14818,7 @@
     "th": "ชุดใหม่",
     "es": "Nueva rutina",
     "pt": "Nova rotina",
-    "hi": "नई रूटीन"
+    "hi": "नया रूटीन"
   },
   "routine.name": {
     "tr": "Rutinin adı",
@@ -14858,7 +14858,7 @@
     "th": "ชุดของฉัน",
     "es": "Mi rutina",
     "pt": "Minha rotina",
-    "hi": "मेरी रूटीन"
+    "hi": "मेरा रूटीन"
   },
   "routine.seconds": {
     "tr": "Süre",
@@ -14958,7 +14958,7 @@
     "th": "Tabata (8 × 20 วินาที)",
     "es": "Tabata (8 × 20 s)",
     "pt": "Tabata (8 × 20 s)",
-    "hi": "टबाटा (8 × 20 से)"
+    "hi": "टबाटा (8 × 20 सेकंड)"
   },
   "routine.seven": {
     "tr": "7 dakika antrenman",
@@ -15338,7 +15338,7 @@
     "th": "หมุนแขน",
     "es": "Círculos con los brazos",
     "pt": "Círculos com os braços",
-    "hi": "बाँहों के घेरे"
+    "hi": "बाँहें घुमाना"
   },
   "routine.ex.hips": {
     "tr": "Bel çevirme",
@@ -15358,7 +15358,7 @@
     "th": "หมุนสะโพก",
     "es": "Círculos de cadera",
     "pt": "Círculos com o quadril",
-    "hi": "कूल्हों के घेरे"
+    "hi": "कमर घुमाना"
   },
   "routine.ex.knees": {
     "tr": "Diz kaldırma",
@@ -15498,7 +15498,7 @@
     "th": "นาฬิกาจับเวลาเพิ่มเติม",
     "es": "Más cronómetros",
     "pt": "Mais cronômetros",
-    "hi": "और स्टॉपवॉच"
+    "hi": "अन्य स्टॉपवॉच"
   },
   "sw.multi.add": {
     "tr": "Kronometre ekle",
@@ -15938,7 +15938,7 @@
     "th": "บันทึกอยู่ในอุปกรณ์ของคุณ ได้แก่ โทรศัพท์นี้ และอุปกรณ์ในบัญชี Apple ของคุณหากเปิดการซิงค์ iCloud ไว้ และจะไม่ถูกส่งไปยังเซิร์ฟเวอร์ใด ๆ",
     "es": "El diario se queda en sus dispositivos: este teléfono y, si la sincronización con iCloud está activada, los dispositivos de su cuenta de Apple. Nunca se envía a un servidor.",
     "pt": "O diário fica só nos seus aparelhos: este celular e, se a sincronização com o iCloud estiver ativada, os aparelhos da sua Conta Apple. Ele nunca é enviado a um servidor.",
-    "hi": "डायरी आपके डिवाइसों पर रहती है: यह फ़ोन और, iCloud सिंक चालू हो तो, आपके Apple खाते वाले डिवाइस। यह कभी किसी सर्वर पर नहीं भेजी जाती।"
+    "hi": "डायरी केवल आपके डिवाइसों पर रहती है: यह फ़ोन और, iCloud सिंक चालू हो तो, आपके Apple खाते वाले डिवाइस। यह कभी किसी सर्वर पर नहीं भेजी जाती।"
   },
   "journal.privacyAndroid": {
     "tr": "Günlük yalnız bu telefonda (ve telefonun Google yedeğinde) saklanır; hiçbir sunucumuza gönderilmez.",
@@ -16078,7 +16078,7 @@
     "th": "การออกกำลังกายแบบอินเทอร์วัลหรือชุดที่ทำเสร็จจะบันทึกลงแอปสุขภาพเป็นการออกกำลังกาย (ประเภท เวลาเริ่ม ระยะเวลา) แอปไม่อ่านข้อมูลสุขภาพของคุณ",
     "es": "Cada entrenamiento por intervalos o rutina terminados se escribe en la app Salud como entrenamiento (tipo, inicio y duración). La app no lee sus datos de salud.",
     "pt": "Ao terminar, cada treino intervalado ou rotina é registrado no app Saúde como treino (tipo, início e duração). O app não lê seus dados de saúde.",
-    "hi": "हर पूरा हुआ इंटरवल वर्कआउट या रूटीन Health ऐप में वर्कआउट (प्रकार, शुरुआत और अवधि) के रूप में लिखा जाता है। ऐप आपका सेहत डेटा नहीं पढ़ता।"
+    "hi": "हर पूरा हुआ इंटरवल वर्कआउट या रूटीन Health ऐप में वर्कआउट (प्रकार, शुरुआत और अवधि) के रूप में लिखा जाता है। ऐप आपका सेहत का डेटा नहीं पढ़ता।"
   },
   "health.noteAndroid": {
     "tr": "Biten aralık antrenmanı ve rutin, Health Connect'e egzersiz oturumu olarak yazılır (tür, başlangıç ve süre). Uygulama sağlık verilerinizi okumaz.",
@@ -16098,7 +16098,7 @@
     "th": "การออกกำลังกายแบบอินเทอร์วัลหรือชุดที่ทำเสร็จจะบันทึกลง Health Connect เป็นเซสชันออกกำลังกาย (ประเภท เวลาเริ่ม ระยะเวลา) แอปไม่อ่านข้อมูลสุขภาพของคุณ",
     "es": "Cada entrenamiento por intervalos o rutina terminados se escribe en Health Connect como sesión de ejercicio (tipo, inicio y duración). La app no lee sus datos de salud.",
     "pt": "Ao terminar, cada treino intervalado ou rotina é registrado no Health Connect como sessão de exercício (tipo, início e duração). O app não lê seus dados de saúde.",
-    "hi": "हर पूरा हुआ इंटरवल वर्कआउट या रूटीन Health Connect में व्यायाम सत्र (प्रकार, शुरुआत और अवधि) के रूप में लिखा जाता है। ऐप आपका सेहत डेटा नहीं पढ़ता।"
+    "hi": "हर पूरा हुआ इंटरवल वर्कआउट या रूटीन Health Connect में व्यायाम सत्र (प्रकार, शुरुआत और अवधि) के रूप में लिखा जाता है। ऐप आपका सेहत का डेटा नहीं पढ़ता।"
   },
   "health.unavailable": {
     "tr": "Bu cihazda kullanılamıyor.",
@@ -16158,7 +16158,7 @@
     "th": "เพื่อบันทึกการออกกำลังกายแบบอินเทอร์วัลและชุดที่ทำเสร็จลงแอปสุขภาพเป็นการออกกำลังกาย หากคุณเปิดใช้ แอปไม่อ่านข้อมูลสุขภาพของคุณ",
     "es": "Para escribir en la app Salud, como entrenamientos, los entrenamientos por intervalos y rutinas terminados, si lo activa. La app no lee sus datos de salud.",
     "pt": "Para registrar no app Saúde, como treinos, os treinos intervalados e rotinas concluídos, se você ativar. O app não lê seus dados de saúde.",
-    "hi": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत डेटा नहीं पढ़ता।"
+    "hi": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत का डेटा नहीं पढ़ता।"
   },
   "NSHealthShareUsageDescription": {
     "tr": "Biten aralık antrenmanlarını ve rutinleri, siz açarsanız, Sağlık uygulamasına antrenman olarak yazmak için. Uygulama Sağlık verilerinizi okumaz.",
@@ -16178,7 +16178,7 @@
     "th": "เพื่อบันทึกการออกกำลังกายแบบอินเทอร์วัลและชุดที่ทำเสร็จลงแอปสุขภาพเป็นการออกกำลังกาย หากคุณเปิดใช้ แอปไม่อ่านข้อมูลสุขภาพของคุณ",
     "es": "Para escribir en la app Salud, como entrenamientos, los entrenamientos por intervalos y rutinas terminados, si lo activa. La app no lee sus datos de salud.",
     "pt": "Para registrar no app Saúde, como treinos, os treinos intervalados e rotinas concluídos, se você ativar. O app não lê seus dados de saúde.",
-    "hi": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत डेटा नहीं पढ़ता।"
+    "hi": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत का डेटा नहीं पढ़ता।"
   },
   "look.bg.weather": {
     "tr": "Hava durumu",
@@ -16218,7 +16218,7 @@
     "th": "พื้นหลังสภาพอากาศวาดสภาพอากาศปัจจุบัน ณ ตำแหน่งที่เลือก (แจ่มใส มีเมฆ ฝน หิมะ หมอก พายุ) บนท้องฟ้า และรีเฟรชราวทุก 15 นาที",
     "es": "El fondo del tiempo dibuja sobre el cielo el tiempo actual del lugar elegido (despejado, nublado, lluvia, nieve, niebla, tormenta); se actualiza cada 15 minutos aprox.",
     "pt": "O fundo de clima desenha sobre o céu o tempo atual do local escolhido (limpo, nublado, chuva, neve, neblina, tempestade); ele se atualiza a cada 15 minutos, aproximadamente.",
-    "hi": "मौसम वाली पृष्ठभूमि चुनी जगह का मौजूदा मौसम (साफ़, बादल, बारिश, बर्फ़, कोहरा, तूफ़ान) आसमान पर बनाती है; यह लगभग हर 15 मिनट में नई होती है।"
+    "hi": "मौसम वाली पृष्ठभूमि चुनी जगह का मौजूदा मौसम (साफ़, बादल, बारिश, बर्फ़, कोहरा, तूफ़ान) आसमान पर बनाती है; मौसम लगभग हर 15 मिनट में अपडेट होता है।"
   },
   "widget.zikir.name": {
     "tr": "Zikirmatik",
@@ -16238,7 +16238,7 @@
     "th": "ที่นับตัสบีห์",
     "es": "Contador de tasbih",
     "pt": "Contador de tasbih",
-    "hi": "तस्बीह काउंटर"
+    "hi": "ज़िक्र काउंटर"
   },
   "widget.zikir.desc": {
     "tr": "Widget'a dokunarak sayın; sıfırlama düğmesiyle baştan başlayın.",
@@ -16518,7 +16518,7 @@
     "th": "นาฬิกาอยู่เหนือแอปอื่นในหน้าต่างเล็ก ลากเพื่อย้าย และปิดได้จากการแจ้งเตือน ครั้งแรกจะขอสิทธิ์ \"แสดงทับแอปอื่น\"",
     "es": "El reloj se queda sobre otras apps en una ventana pequeña; arrástrelo para moverlo y ciérrelo desde la notificación. La primera vez se pide el permiso \"Mostrar sobre otras apps\".",
     "pt": "O relógio fica por cima de outros apps numa janela pequena; arraste para mover e feche pela notificação. Na primeira vez é pedida a permissão \"Sobrepor a outros apps\".",
-    "hi": "घड़ी एक छोटी विंडो में दूसरे ऐप के ऊपर रहती है; हिलाने के लिए खींचें और सूचना से बंद करें। पहली बार \"दूसरे ऐप के ऊपर दिखाएँ\" अनुमति माँगी जाती है।"
+    "hi": "घड़ी एक छोटी विंडो में दूसरे ऐप के ऊपर रहती है; खिसकाने के लिए खींचें और सूचना से बंद करें। पहली बार \"दूसरे ऐप के ऊपर दिखाएँ\" अनुमति माँगी जाती है।"
   },
   "float.unsupported": {
     "tr": "Bu cihaz resim içinde resmi desteklemiyor.",
@@ -16598,7 +16598,7 @@
     "th": "Aaqib Azeez (5 วินาที)",
     "es": "Aaqib Azeez (5 s)",
     "pt": "Aaqib Azeez (5 s)",
-    "hi": "Aaqib Azeez (5 से)"
+    "hi": "Aaqib Azeez (5 सेकंड)"
   },
   "notify.adhan.medina": {
     "tr": "Medine, Mescid-i Nebevî (18 sn)",
@@ -16618,7 +16618,7 @@
     "th": "มะดีนะฮ์ มัสยิดท่านนบี (18 วินาที)",
     "es": "Medina, Mezquita del Profeta (18 s)",
     "pt": "Medina, Mesquita do Profeta (18 s)",
-    "hi": "मदीना, मस्जिद-ए-नबवी (18 से)"
+    "hi": "मदीना, मस्जिद-ए-नबवी (18 सेकंड)"
   },
   "notify.adhan.credit.medina": {
     "tr": "Ezan kaydı: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; ilk cümle, kısaltıldı ve ses düzeyi eşitlendi.",
@@ -16758,7 +16758,7 @@
     "th": "ช่วง 30 วินาทีของเพลงที่เลือกจะเป็นเสียงปลุก (iPhone จำกัดเสียงปลุกและเสียงแจ้งเตือนไว้ 30 วินาที) ใช้ได้เฉพาะเพลงที่ไม่ถูกป้องกันในโทรศัพท์และไฟล์เสียง เพลงที่ดาวน์โหลดจาก Apple Music ถูกป้องกัน เพลงอยู่บนโทรศัพท์ของคุณ หากเปิดการบอกเวลาไว้ จะเล่นการบอกเวลาแทน",
     "es": "Un fragmento de 30 segundos de la canción que elija se convierte en el sonido de la alarma (el iPhone limita los sonidos de alarma y notificación a 30 s). Solo se pueden usar canciones sin protección guardadas en el teléfono y archivos de audio; las canciones descargadas de Apple Music están protegidas. La canción se queda en su teléfono. Si \"Decir la hora\" está activado, suena eso en su lugar.",
     "pt": "Um trecho de 30 segundos da música que você escolher vira o som do alarme (o iPhone limita sons de alarme e notificação a 30 s). Só podem ser usadas músicas sem proteção guardadas no celular e arquivos de áudio; músicas baixadas do Apple Music são protegidas. A música fica no seu celular. Se \"Falar a hora\" estiver ativado, isso toca no lugar.",
-    "hi": "आपके चुने गाने का 30 सेकंड का हिस्सा अलार्म की आवाज़ बनता है (iPhone अलार्म और सूचना की आवाज़ 30 सेकंड तक सीमित रखता है)। केवल फ़ोन में रखे बिना सुरक्षा वाले गाने और ऑडियो फ़ाइलें इस्तेमाल हो सकती हैं; Apple Music से डाउनलोड गाने सुरक्षित होते हैं। गाना आपके फ़ोन पर ही रहता है। \"समय बोलें\" चालू हो तो उसकी जगह वह बजता है।"
+    "hi": "आपके चुने गाने का 30 सेकंड का हिस्सा अलार्म की आवाज़ बनता है (iPhone अलार्म और सूचना की आवाज़ 30 सेकंड तक सीमित रखता है)। केवल फ़ोन में रखे, बिना कॉपी-सुरक्षा वाले गाने और ऑडियो फ़ाइलें इस्तेमाल हो सकती हैं; Apple Music से डाउनलोड किए गाने कॉपी-सुरक्षित होते हैं। गाना आपके फ़ोन पर ही रहता है। \"समय बोलें\" चालू हो तो गाने की जगह समय बोला जाता है।"
   },
   "alarm.music.protected": {
     "tr": "Bu şarkı korumalı (Apple Music) ya da telefonda değil; başka bir şarkı ya da Dosyalar'dan bir ses dosyası seçin.",
@@ -16778,7 +16778,7 @@
     "th": "เพลงนี้ถูกป้องกัน (Apple Music) หรือไม่อยู่ในโทรศัพท์ โปรดเลือกเพลงอื่นหรือไฟล์เสียงจากไฟล์",
     "es": "Esta canción está protegida (Apple Music) o no está en el teléfono; elija otra canción o un archivo de audio de Archivos.",
     "pt": "Esta música é protegida (Apple Music) ou não está no celular; escolha outra música ou um arquivo de áudio em Arquivos.",
-    "hi": "यह गाना सुरक्षित है (Apple Music) या फ़ोन में नहीं है; कोई दूसरा गाना या Files से ऑडियो फ़ाइल चुनें।"
+    "hi": "यह गाना कॉपी-सुरक्षित है (Apple Music) या फ़ोन में नहीं है; कोई दूसरा गाना या Files से ऑडियो फ़ाइल चुनें।"
   },
   "alarm.music.unreadable": {
     "tr": "Bu dosya okunamadı.",
@@ -17158,7 +17158,7 @@
     "th": "รัศมี",
     "es": "Zona",
     "pt": "Área",
-    "hi": "इलाका"
+    "hi": "दायरा"
   },
   "geo.radiusM": {
     "tr": "{m} m",
@@ -17678,7 +17678,7 @@
     "th": "แอปที่จะบล็อก",
     "es": "Apps que bloquear",
     "pt": "Apps para bloquear",
-    "hi": "ब्लॉक करने वाले ऐप"
+    "hi": "ब्लॉक करने के लिए ऐप"
   },
   "focus.blocking": {
     "tr": "{n} uygulama engelli; çalışma süresinin sonuna kadar",
@@ -18158,7 +18158,7 @@
     "th": "หากเริ่ม \"นอนด้วยนาฬิกาปลุกอัจฉริยะ\" ในหน้าการนอนและวางโทรศัพท์บนเตียง นาฬิกาปลุกจะดังก่อนเมื่อตรวจพบการเคลื่อนไหว (หลับตื้น) ในช่วงเวลานี้ก่อนปลุก หากไม่พบจะดังตามเวลา",
     "es": "Si inicia \"Dormir con alarma inteligente\" en la pantalla Sueño y deja el teléfono en la cama, la alarma suena antes cuando se detecta movimiento (sueño ligero) en este margen previo; si no, suena a su hora.",
     "pt": "Se você iniciar \"Dormir com alarme inteligente\" na tela Sono e deixar o celular na cama, o alarme toca antes quando há movimento (sono leve) nesse intervalo anterior; senão toca na hora certa.",
-    "hi": "अगर आप नींद स्क्रीन पर \"स्मार्ट अलार्म के साथ सोएँ\" शुरू करके फ़ोन बिस्तर पर रखते हैं, तो इससे पहले की इस अवधि में हलचल (हल्की नींद) दिखने पर अलार्म जल्दी बजता है; वरना समय पर बजता है।"
+    "hi": "अगर आप नींद स्क्रीन पर \"स्मार्ट अलार्म के साथ सोएँ\" शुरू करके फ़ोन बिस्तर पर रखते हैं, तो अलार्म से पहले की इस अवधि में हलचल (हल्की नींद) दिखने पर अलार्म जल्दी बजता है; वरना समय पर बजता है।"
   },
   "smart.notif": {
     "tr": "Akıllı alarm açık",
@@ -18358,7 +18358,7 @@
     "th": "วางโทรศัพท์บนเตียงข้างหมอนและเสียบชาร์จ เซนเซอร์การเคลื่อนไหวจะอ่านเฉพาะในช่วงเวลานั้น ไม่มีการบันทึก ข้อมูลอยู่ในหน่วยความจำของโทรศัพท์และไม่ถูกเก็บ หากไม่พบการเคลื่อนไหว นาฬิกาปลุกจะดังตามเวลาปกติ",
     "es": "Ponga el teléfono en la cama junto a la almohada y enchúfelo. El sensor de movimiento solo se lee durante el margen; no se graba audio, los datos se quedan en la memoria del teléfono y no se guardan. Si no se detecta movimiento, la alarma suena a su hora normal.",
     "pt": "Coloque o celular na cama ao lado do travesseiro e ligue na tomada. O sensor de movimento só é lido durante o intervalo; não há gravação de áudio, os dados ficam na memória do celular e não são guardados. Se não houver movimento, o alarme toca no horário normal.",
-    "hi": "फ़ोन तकिये के पास बिस्तर पर रखें और चार्ज में लगाएँ। मोशन सेंसर केवल अवधि के दौरान पढ़ा जाता है; कुछ रिकॉर्ड नहीं होता, डेटा फ़ोन की मेमोरी में रहता है और सहेजा नहीं जाता। हलचल न दिखे तो अलार्म अपने सामान्य समय पर बजता है।"
+    "hi": "फ़ोन तकिये के पास बिस्तर पर रखें और चार्ज में लगाएँ। मोशन सेंसर केवल अवधि के दौरान पढ़ा जाता है; आवाज़ रिकॉर्ड नहीं होती, डेटा फ़ोन की मेमोरी में रहता है और सहेजा नहीं जाता। हलचल न दिखे तो अलार्म अपने सामान्य समय पर बजता है।"
   },
   "smart.howIOS": {
     "tr": "iPhone'da oturum, uygulama açıkken (ekran kararır) ya da uyku sesi çalarken sürer; uygulamadan çıkarsanız alarm normal saatinde çalar.",
@@ -19198,7 +19198,7 @@
     "th": "บน iPhone ตารางเวลาจะใช้เมื่อเปิดแอปและเมื่อรีเฟรชเบื้องหลัง จึงอาจไม่เริ่มตรงนาที",
     "es": "En el iPhone el horario se aplica al abrir la app y durante la actualización en segundo plano, así que puede no empezar en el minuto exacto.",
     "pt": "No iPhone o horário é aplicado ao abrir o app e na atualização em segundo plano, por isso pode não começar no minuto exato.",
-    "hi": "iPhone पर समय-सारणी ऐप खुलने पर और बैकग्राउंड रिफ़्रेश में लागू होती है, इसलिए ठीक उसी मिनट शुरू न हो।"
+    "hi": "iPhone पर समय-सारणी ऐप खुलने पर और बैकग्राउंड रिफ़्रेश में लागू होती है, इसलिए हो सकता है कि यह ठीक उसी मिनट शुरू न हो।"
   },
   "breath.title": {
     "tr": "Nefes egzersizi",
@@ -19658,7 +19658,7 @@
     "th": "ทุกรอบงานที่จบจะปลูกต้นไม้หนึ่งต้น: ไม่ถึง 25 นาทีเป็นต้นกล้า ไม่เกิน 50 นาทีเป็นต้นไม้ นานกว่านั้นเป็นต้นไม้ใหญ่",
     "es": "Cada sesión de trabajo terminada planta un árbol: menos de 25 minutos, un brote; hasta 50 minutos, un árbol; más, un gran árbol.",
     "pt": "Cada sessão de trabalho concluída planta uma árvore: menos de 25 minutos, uma muda; até 50 minutos, uma árvore; mais que isso, uma grande árvore.",
-    "hi": "हर पूरा काम सत्र एक पेड़ लगाता है: 25 मिनट से कम पर पौधा, 50 मिनट तक पेड़, उससे ज़्यादा पर बड़ा पेड़।"
+    "hi": "पूरा हुआ हर काम सत्र एक पेड़ लगाता है: 25 मिनट से कम पर पौधा, 50 मिनट तक पेड़, उससे ज़्यादा पर बड़ा पेड़।"
   },
   "forest.empty": {
     "tr": "Bu ay henüz ağaç yok. Bir çalışma turunu bitirince ilk fidan dikilir.",
@@ -20598,7 +20598,7 @@
     "th": "ช่วงง่วงตอนบ่าย",
     "es": "Bajón de la tarde",
     "pt": "Queda da tarde",
-    "hi": "दोपहर की ढील"
+    "hi": "दोपहर बाद की गिरावट"
   },
   "energy.evening": {
     "tr": "Akşam zirvesi",
@@ -21198,7 +21198,7 @@
     "th": "เป็นการประมาณ: นับวันตั้งแต่อายุบรรลุนิติภาวะ (มัซฮับฮะนะฟีไม่เกิน 15 ปี) จนถึงปีที่เริ่มละหมาดสม่ำเสมอ รวมวิติร หากไม่แน่ใจโปรดถามผู้รู้",
     "es": "Una estimación: cuenta los días entre la edad de madurez (como máximo 15 en la escuela hanafí) y el año en que empezó a rezar con regularidad, witr incluido. Si tiene dudas, pregunte a un erudito.",
     "pt": "Uma estimativa: conta os dias entre a idade da maturidade (no máximo 15 na escola hanafita) e o ano em que você começou a rezar regularmente, witr incluído. Em caso de dúvida, consulte um mufti.",
-    "hi": "एक अनुमान: यह बालिग़ होने की उम्र (हनफ़ी मत में अधिकतम 15) और नियमित नमाज़ शुरू करने के साल के बीच के दिन गिनता है, वित्र सहित। शक हो तो किसी आलिम से पूछें।"
+    "hi": "एक अनुमान: यह बालिग़ होने की उम्र (हनफ़ी मसलक में अधिकतम 15) और नियमित नमाज़ शुरू करने के साल के बीच के दिन गिनता है, वित्र सहित। शक हो तो किसी मुफ़्ती से पूछें।"
   },
   "track.pace": {
     "tr": "Bu hızla yaklaşık {t} içinde biter",
@@ -22518,7 +22518,7 @@
     "th": "ขอให้วันศุกร์มีความจำเริญ",
     "es": "Yumu'a Mubarak",
     "pt": "Jumu’ah Mubarak",
-    "hi": "जुम्मा मुबारक"
+    "hi": "जुमा मुबारक"
   },
   "greet.ramadan": {
     "tr": "Hayırlı Ramazanlar",
@@ -22598,7 +22598,7 @@
     "th": "ขอให้ค่ำคืนอันศักดิ์สิทธิ์มีความจำเริญ",
     "es": "Bendita noche santa",
     "pt": "Abençoada noite santa",
-    "hi": "मुबारक पाक रात"
+    "hi": "पाक रात मुबारक"
   },
   "greet.hijri": {
     "tr": "Hicri yeni yılınız hayırlı olsun",
@@ -23998,7 +23998,7 @@
     "th": "ฟัง",
     "es": "Escuchar",
     "pt": "Tocar",
-    "hi": "चलाएँ"
+    "hi": "सुनें"
   },
   "tone.stop": {
     "tr": "Durdur",
@@ -24358,7 +24358,7 @@
     "th": "เคลื่อนไหว",
     "es": "Animados",
     "pt": "Animados",
-    "hi": "चलते हुए"
+    "hi": "एनिमेटेड"
   },
   "wall.black": {
     "tr": "Siyah",
@@ -24778,7 +24778,7 @@
     "th": "ยังไม่มีบันทึก รอบที่จบแล้วจะแสดงที่นี่",
     "es": "Todavía no hay registros. Las sesiones terminadas aparecen aquí.",
     "pt": "Ainda não há registros. As sessões concluídas aparecem aqui.",
-    "hi": "अभी कोई रिकॉर्ड नहीं। पूरे सत्र यहाँ दिखते हैं।"
+    "hi": "अभी कोई रिकॉर्ड नहीं। सत्र पूरा करने पर यहाँ दिखेगा।"
   },
   "study.today": {
     "tr": "Bugün",
@@ -24998,7 +24998,7 @@
     "th": "บันทึกอยู่ในอุปกรณ์นี้ และหากเปิดการซิงค์ iCloud จะอยู่ในบัญชี iCloud ของคุณเอง",
     "es": "Los registros se quedan en este dispositivo y, si la sincronización con iCloud está activada, en su propia cuenta de iCloud.",
     "pt": "Os registros ficam neste aparelho e, se a sincronização com o iCloud estiver ativada, na sua própria conta do iCloud.",
-    "hi": "रिकॉर्ड इसी डिवाइस पर और, iCloud सिंक चालू हो तो, आपके अपने iCloud खाते में रहते हैं।"
+    "hi": "रिकॉर्ड केवल इसी डिवाइस पर और, iCloud सिंक चालू हो तो, आपके अपने iCloud खाते में रहते हैं।"
   },
   "study.pomoNote": {
     "tr": "Pomodoro turları pomodoro istatistiğinde seçili dersin adıyla görünür.",
@@ -25158,7 +25158,7 @@
     "th": "ปลุกฉันด้วย",
     "es": "Despiérteme",
     "pt": "Me acorde",
-    "hi": "मुझे जगाओ"
+    "hi": "मुझे जगाएँ"
   },
   "wakegame.sleepText": {
     "tr": "Uyuyorum. Alarmınız çalınca kalkın, beni de uyandırın.",
@@ -25178,7 +25178,7 @@
     "th": "ฉันหลับอยู่ ตื่นเมื่อนาฬิกาปลุกดังแล้วปลุกฉันด้วยนะ",
     "es": "Estoy dormido. Levántese cuando suene su alarma y despiérteme a mí también.",
     "pt": "Estou dormindo. Levante quando o alarme tocar e me acorde também.",
-    "hi": "मैं सो रहा हूँ। अलार्म बजने पर उठो और मुझे भी जगाओ।"
+    "hi": "मैं सो रहा हूँ। अलार्म बजने पर उठें और मुझे भी जगाएँ।"
   },
   "wakegame.awakeTitle": {
     "tr": "Günaydın, uyandım!",
@@ -25378,7 +25378,7 @@
     "th": "เวลาตื่นเฉลี่ย",
     "es": "Hora media de despertar",
     "pt": "Despertar médio",
-    "hi": "औसत जागना"
+    "hi": "उठने का औसत समय"
   },
   "wakegame.onTime": {
     "tr": "Ertelemeden",
@@ -25638,7 +25638,7 @@
     "th": "คะแนนและรายงานอยู่ในอุปกรณ์นี้ และหากเปิดการซิงค์ iCloud จะอยู่ในบัญชี iCloud ของคุณเอง บน iPhone การตื่นจะถูกบันทึกเมื่อคุณเปิดแอปหลังปิดนาฬิกาปลุกหรือทำภารกิจปิดปลุกเสร็จ",
     "es": "Los puntos y el informe se quedan en este dispositivo y, si la sincronización con iCloud está activada, en su propia cuenta de iCloud. En el iPhone un despertar se registra al abrir la app tras apagar la alarma o al terminar la tarea para apagarla.",
     "pt": "Os pontos e o relatório ficam neste aparelho e, se a sincronização com o iCloud estiver ativada, na sua própria conta do iCloud. No iPhone um despertar é registrado quando você abre o app depois de desligar o alarme ou conclui a tarefa para desligar.",
-    "hi": "अंक और रिपोर्ट इसी डिवाइस पर और, iCloud सिंक चालू हो तो, आपके अपने iCloud खाते में रहते हैं। iPhone पर अलार्म बंद करके ऐप खोलने या बंद करने का कार्य पूरा करने पर जागना दर्ज होता है।"
+    "hi": "अंक और रिपोर्ट केवल इसी डिवाइस पर और, iCloud सिंक चालू हो तो, आपके अपने iCloud खाते में रहते हैं। iPhone पर अलार्म बंद करके ऐप खोलने या बंद करने का कार्य पूरा करने पर जागना दर्ज होता है।"
   },
   "look.weatherAnim": {
     "tr": "Hava canlandırması",
@@ -26218,7 +26218,7 @@
     "th": "25 หน้าปัด: โครโนกราฟ นักบิน นักดำน้ำ เลขโรมันและเลขอารบิกตะวันออก กระเบื้องอิซนิก ดาวเรขาคณิต ไม้ นีออน สายรุ้งสำหรับเด็ก และอื่น ๆ แต่ละแบบมี 5 สี",
     "es": "25 esferas: cronógrafo, piloto, buceo, números romanos y arábigos orientales, azulejo de İznik, estrella geométrica, madera, neón, arcoíris para niños y más. 5 colores cada una.",
     "pt": "25 mostradores: cronógrafo, piloto, mergulho, algarismos romanos e arábicos orientais, azulejo de İznik, estrela geométrica, madeira, neon, arco-íris para crianças e mais. 5 cores cada.",
-    "hi": "25 डायल: क्रोनोग्राफ़, पायलट, गोताखोर, रोमन और पूर्वी अरबी अंक, इज़्निक टाइल, ज्यामितीय तारा, लकड़ी, नियॉन, बच्चों के लिए इंद्रधनुष और भी। हर एक में 5 रंग।"
+    "hi": "25 डायल: क्रोनोग्राफ़, पायलट, गोताखोर, रोमन और पूर्वी अरबी अंक, इज़्निक टाइल, ज्यामितीय तारा, लकड़ी, नियॉन, बच्चों के लिए इंद्रधनुष और भी बहुत कुछ। हर एक में 5 रंग।"
   },
   "dial.note": {
     "tr": "Kadran, uygulamadaki rakamlı analog saatlerde ve tam ekranda kullanılır; renk ibreleri boyar. Widget'lar kendi görünümleriyle klasik kadranda kalır.",
@@ -26578,7 +26578,7 @@
     "th": "วันศุกร์ ก่อนละหมาดเที่ยง 45 นาที",
     "es": "Los viernes, 45 minutos antes de la oración del mediodía.",
     "pt": "Às sextas-feiras, 45 minutos antes da oração do meio-dia.",
-    "hi": "शुक्रवार को दोपहर की नमाज़ से 45 मिनट पहले।"
+    "hi": "शुक्रवार को ज़ुहर के समय से 45 मिनट पहले।"
   },
   "notify.n.friday": {
     "tr": "Hayırlı Cumalar",
@@ -26598,7 +26598,7 @@
     "th": "ละหมาดวันศุกร์",
     "es": "Yumu'a Mubarak",
     "pt": "Jumu’ah Mubarak",
-    "hi": "जुमे की नमाज़"
+    "hi": "जुमा मुबारक"
   },
   "notify.n.fridayBody": {
     "tr": "Cuma namazı {t} sularında ({place}).",
@@ -27078,7 +27078,7 @@
     "th": "เทียบกับระดับเสียงปลุกของโทรศัพท์ เมื่อเสียงค่อยๆ ดังขึ้นคือระดับสูงสุด",
     "es": "Relativo al volumen de alarma del teléfono; con volumen gradual, el máximo que alcanza.",
     "pt": "Relativo ao volume de alarme do celular; com volume gradual, o máximo que ele atinge.",
-    "hi": "फ़ोन के अलार्म वॉल्यूम के सापेक्ष; धीरे-धीरे बढ़ती आवाज़ में, अधिकतम जितनी तेज़ होगी।"
+    "hi": "फ़ोन के अलार्म वॉल्यूम के अनुसार; धीरे-धीरे बढ़ती आवाज़ में यह सबसे ऊँचा स्तर है।"
   },
   "alarm.task.random": {
     "tr": "Rastgele",
@@ -27538,7 +27538,7 @@
     "th": "วัน วันที่ และเวลาเป็นตัวหนังสือขนาดใหญ่",
     "es": "Día, fecha y hora escritos en letra grande.",
     "pt": "Dia, data e hora por extenso, em letras grandes.",
-    "hi": "दिन, तारीख और समय बड़े अक्षरों में लिखे हुए।"
+    "hi": "दिन, तारीख और समय शब्दों में, बड़े अक्षरों में।"
   },
   "widget.sun.name": {
     "tr": "Gün doğumu ve batımı",
@@ -28018,7 +28018,7 @@
     "th": "รูปที่คุณเลือกไว้สำหรับนาฬิกาเต็มจอ พร้อมเวลาและวันที่",
     "es": "La foto que eligió para el reloj a pantalla completa, con la hora y la fecha encima.",
     "pt": "A foto que você escolheu para o relógio em tela cheia, com a hora e a data por cima.",
-    "hi": "फ़ुल स्क्रीन घड़ी के लिए चुनी फ़ोटो, उस पर समय और तारीख के साथ।"
+    "hi": "फ़ुल स्क्रीन घड़ी के लिए आपकी चुनी फ़ोटो, जिस पर समय और तारीख दिखती है।"
   },
   "widget.photo.none": {
     "tr": "Fotoğraf Ayarlar › Saat görünümü'nden seçilir.",
@@ -28298,7 +28298,7 @@
     "th": "{n} ว",
     "es": "{n} d",
     "pt": "{n} d",
-    "hi": "{n} दि"
+    "hi": "{n} दिन"
   },
   "countdowns.ordinal": {
     "tr": "{n}. yıl",
@@ -29538,7 +29538,7 @@
     "th": "จุดสูงสุด (ผ่านเมริเดียน)",
     "es": "Punto más alto (tránsito)",
     "pt": "Ponto mais alto (trânsito)",
-    "hi": "सबसे ऊँचा बिंदु (याम्योत्तर)"
+    "hi": "सबसे ऊँचा बिंदु (याम्योत्तर गमन)"
   },
   "moon.firstQuarter": {
     "tr": "Sıradaki ilk dördün",
@@ -30498,7 +30498,7 @@
     "th": "ตัวเลขแบบเส้นขอบ",
     "es": "Dígitos con contorno",
     "pt": "Dígitos contornados",
-    "hi": "रेखांकित अंक"
+    "hi": "आउटलाइन अंक"
   },
   "look.bg.wood": {
     "tr": "Ahşap",
@@ -31538,7 +31538,7 @@
     "th": "อุณหภูมิสูงสุด ต่ำสุด และปริมาณฝนรายวันจากแบบจำลองสภาพอากาศสามแบบสำหรับที่เดียวกัน หากต่างกันมาก พยากรณ์จะไม่แน่นอน",
     "es": "Máxima, mínima y precipitación diarias de tres modelos meteorológicos para el mismo lugar. Cuando no coinciden, la previsión es menos segura.",
     "pt": "Máxima, mínima e precipitação diárias de três modelos meteorológicos para o mesmo local. Quando os modelos divergem, a previsão é mais incerta.",
-    "hi": "एक ही जगह के लिए तीन मौसम मॉडलों का रोज़ का अधिकतम, न्यूनतम और वर्षा। जब ये असहमत हों, तो पूर्वानुमान कम पक्का होता है।"
+    "hi": "एक ही जगह के लिए तीन मौसम मॉडलों का रोज़ का अधिकतम व न्यूनतम तापमान और वर्षा का पूर्वानुमान। जब ये असहमत हों, तो पूर्वानुमान कम पक्का होता है।"
   },
   "aqi.title": {
     "tr": "Hava kalitesi",
@@ -32418,7 +32418,7 @@
     "th": "ดวงจันทร์ไม่ได้ส่องแสงเอง แต่สะท้อนแสงดวงอาทิตย์ ดวงจันทร์โคจรรอบโลกราว 29.5 วันต่อรอบ ขณะเคลื่อนที่เราจะเห็นด้านสว่างมากหรือน้อยต่างกัน ลองเลื่อนแถบเพื่อพาดวงจันทร์โคจรดูสิ",
     "es": "La Luna no brilla por sí misma; refleja la luz del Sol. Da una vuelta a la Tierra aproximadamente cada 29,5 días. Al moverse, vemos más o menos de su mitad iluminada. ¡Mueva el control para hacer girar la Luna en su órbita!",
     "pt": "A Lua não brilha sozinha; ela reflete a luz do Sol. Ela dá uma volta ao redor da Terra a cada 29,5 dias, aproximadamente. Conforme se move, vemos uma parte maior ou menor da sua metade iluminada. Mova o controle para fazer a Lua girar na órbita!",
-    "hi": "चंद्रमा ख़ुद नहीं चमकता; वह सूरज की रोशनी लौटाता है। वह लगभग हर 29.5 दिन में पृथ्वी का चक्कर लगाता है। चलते हुए हमें उसका रोशन आधा भाग कम या ज़्यादा दिखता है। स्लाइडर हिलाकर चंद्रमा को उसकी कक्षा में घुमाओ!"
+    "hi": "चंद्रमा ख़ुद नहीं चमकता; वह सूरज की रोशनी को परावर्तित करता है। वह लगभग हर 29.5 दिन में पृथ्वी का चक्कर लगाता है। चलते हुए हमें उसका रोशन आधा भाग कम या ज़्यादा दिखता है। स्लाइडर हिलाकर चंद्रमा को उसकी कक्षा में घुमाकर देखें!"
   },
   "kidsmoon.day": {
     "tr": "{n}. gün",
@@ -32478,7 +32478,7 @@
     "th": "มองจากโลก",
     "es": "Visto desde la Tierra",
     "pt": "Visto da Terra",
-    "hi": "पृथ्वी से दिखता है"
+    "hi": "पृथ्वी से दृश्य"
   },
   "kidsmoon.sunlight": {
     "tr": "Güneş ışığı",
@@ -32558,7 +32558,7 @@
     "th": "ยังไม่ถูก ลองอีกครั้ง",
     "es": "No del todo, inténtelo otra vez.",
     "pt": "Não exatamente, tente de novo.",
-    "hi": "पूरी तरह नहीं, फिर कोशिश करो।"
+    "hi": "सही नहीं, फिर से कोशिश करें।"
   },
   "kidsmoon.score": {
     "tr": "{n}/{t} doğru",
@@ -32598,7 +32598,7 @@
     "th": "เริ่มใหม่",
     "es": "Empezar de nuevo",
     "pt": "Começar de novo",
-    "hi": "फिर से शुरू करो"
+    "hi": "फिर से शुरू करें"
   },
   "kidsmoon.q1": {
     "tr": "Ay'ın ışığı nereden gelir?",
@@ -32638,7 +32638,7 @@
     "th": "จากดวงจันทร์เอง|จากดวงอาทิตย์|จากดวงดาว",
     "es": "De la propia Luna|Del Sol|De las estrellas",
     "pt": "Da própria Lua|Do Sol|Das estrelas",
-    "hi": "चंद्रमा से ख़ुद|सूरज से|तारों से"
+    "hi": "ख़ुद चंद्रमा से|सूरज से|तारों से"
   },
   "kidsmoon.q2": {
     "tr": "Ay'ın evreleri kaç günde bir tekrarlanır?",
@@ -32758,7 +32758,7 @@
     "th": "ด้านสว่างหันออกจากเรา|ดวงจันทร์หายไป|เมฆบัง",
     "es": "Su lado iluminado no mira hacia nosotros|La Luna desaparece|La tapan las nubes",
     "pt": "O lado iluminado fica de costas para nós|A Lua desaparece|As nuvens a cobrem",
-    "hi": "उसका रोशन भाग हमसे दूर होता है|चंद्रमा ग़ायब हो जाता है|बादल उसे ढक लेते हैं"
+    "hi": "उसका रोशन भाग हमारी ओर नहीं होता|चंद्रमा ग़ायब हो जाता है|बादल उसे ढक लेते हैं"
   },
   "kidsmoon.q5": {
     "tr": "Kuzey yarımkürede büyüyen hilalin hangi yanı aydınlıktır?",
@@ -33078,7 +33078,7 @@
     "th": "เวลาของ 8 เมือง พร้อมรหัสย่อและสัญลักษณ์กลางวัน/กลางคืน",
     "es": "La hora de ocho ciudades, con códigos cortos y una marca de día/noche.",
     "pt": "A hora de oito cidades, com códigos curtos e uma marca de dia/noite.",
-    "hi": "छोटे कोड और दिन/रात निशान के साथ आठ शहर।"
+    "hi": "आठ शहरों का समय, छोटे कोड और दिन/रात के निशान के साथ।"
   },
   "widget.overlap.name": {
     "tr": "Saat çakışması",
@@ -33198,7 +33198,7 @@
     "th": "ตัวจับเวลาที่กำลังทำงานและเวลาสำเร็จรูปแตะครั้งเดียว",
     "es": "Temporizadores en marcha y duraciones predefinidas con un toque.",
     "pt": "Temporizadores em andamento e durações predefinidas que começam com um toque.",
-    "hi": "चलते टाइमर और एक टैप वाली तय अवधियाँ।"
+    "hi": "चल रहे टाइमर और एक टैप से शुरू होने वाली तय अवधियाँ।"
   },
   "widget.timers.none": {
     "tr": "Süren zamanlayıcı yok",
@@ -33918,7 +33918,7 @@
     "th": "ลำธาร",
     "es": "Arroyo",
     "pt": "Riacho",
-    "hi": "झरना"
+    "hi": "जलधारा"
   },
   "noise.wind": {
     "tr": "Rüzgâr",
@@ -34178,7 +34178,7 @@
     "th": "การ์ดชั่วโมงและนาทีพร้อมวินาทีที่เดิน",
     "es": "Tarjetas de hora y minuto; en el centro corren los segundos.",
     "pt": "Cartões de hora e minuto com segundos correndo.",
-    "hi": "चलते सेकंड के साथ घंटे और मिनट के कार्ड।"
+    "hi": "घंटे और मिनट के कार्ड; बीच में सेकंड चलते हैं।"
   },
   "esma.listen": {
     "tr": "Dinle",
@@ -34238,7 +34238,7 @@
     "th": "ผู้อ่านคือเสียงภาษาอาหรับของโทรศัพท์ ไม่ใช่การบันทึก การออกเสียงอาจไม่สมบูรณ์",
     "es": "El lector es la voz árabe del propio teléfono, no una grabación; la pronunciación puede no ser perfecta.",
     "pt": "O leitor é a voz árabe do próprio celular, não uma gravação; a pronúncia pode não ser perfeita.",
-    "hi": "पढ़ने वाली आवाज़ फ़ोन की अपनी अरबी आवाज़ है, रिकॉर्डिंग नहीं; उच्चारण पूरी तरह सही न हो।"
+    "hi": "पढ़ने वाली आवाज़ फ़ोन की अपनी अरबी आवाज़ है, रिकॉर्डिंग नहीं; हो सकता है उच्चारण पूरी तरह सही न हो।"
   },
   "notify.snooze": {
     "tr": "5 dk sonra hatırlat",
@@ -35318,7 +35318,7 @@
     "th": "ผู้หญิงวางมือบนหน้าอก",
     "es": "Las mujeres colocan las manos sobre el pecho.",
     "pt": "As mulheres colocam as mãos sobre o peito.",
-    "hi": "महिलाएँ हाथ सीने पर रखती हैं।"
+    "hi": "महिलाएँ हाथ सीने पर बाँधती हैं।"
   },
   "guide.pic.m.3": {
     "tr": "Erkekler sırtı ve başı düz bir çizgide tutar, parmaklarını açarak dizlerini kavrar.",
@@ -35338,7 +35338,7 @@
     "th": "ผู้ชายให้หลังและศีรษะตรง กางนิ้วจับเข่า",
     "es": "Los hombres mantienen la espalda y la cabeza rectas y agarran las rodillas con los dedos separados.",
     "pt": "Os homens mantêm as costas e a cabeça em linha reta e seguram os joelhos com os dedos abertos.",
-    "hi": "पुरुष पीठ और सिर सीधे रखते हैं और खुली उँगलियों से घुटने पकड़ते हैं।"
+    "hi": "पुरुष पीठ और सिर एक सीध में रखते हैं और खुली उँगलियों से घुटने पकड़ते हैं।"
   },
   "guide.pic.f.3": {
     "tr": "Kadınlar daha az eğilir, ellerini parmakları bitişik olarak dizlerine koyar.",
@@ -35678,7 +35678,7 @@
     "th": "เมื่อพื้นหลังของวิดเจ็ตนาฬิกาเข็ม นาฬิกาดิจิทัล เวลาและวันที่ และนาฬิกาสองเรือน เป็นส่วนของวอลเปเปอร์ที่อยู่ด้านหลัง วิดเจ็ตจะดูโปร่งใส บนหน้าจอโฮมแบบกระจกของ iOS 26 วิดเจ็ตโปร่งใสอยู่แล้ว การตั้งค่านี้สำหรับรูปแบบอื่น",
     "es": "Cuando el fondo de los widgets de reloj analógico, reloj digital, hora y fecha y dos relojes es la parte del fondo de pantalla que hay detrás, los widgets se ven transparentes. En la pantalla de inicio de estilo cristal de iOS 26, los widgets ya son translúcidos; este ajuste es para los demás estilos de pantalla de inicio.",
     "pt": "Quando o fundo dos widgets de relógio analógico, relógio digital, hora e data e dois relógios é a parte do papel de parede atrás deles, os widgets parecem transparentes. Na Tela de Início com aparência de vidro do iOS 26, os widgets já são translúcidos; este ajuste é para as outras aparências.",
-    "hi": "जब एनालॉग, डिजिटल, समय और तारीख और दो घड़ियों वाले विजेट का पृष्ठभूमि आपके वॉलपेपर का वही हिस्सा हो जो उनके पीछे है, तो विजेट पारदर्शी दिखते हैं। iOS 26 की कांच जैसी होम स्क्रीन पर विजेट पहले से पारदर्शी होते हैं; यह सेटिंग बाकी रूपों के लिए है।"
+    "hi": "जब एनालॉग, डिजिटल, समय और तारीख और दो घड़ियों वाले विजेट की पृष्ठभूमि आपके वॉलपेपर का वही हिस्सा हो जो उनके पीछे है, तो विजेट पारदर्शी दिखते हैं। iOS 26 की कांच जैसी होम स्क्रीन पर विजेट पहले से पारदर्शी होते हैं; यह सेटिंग होम स्क्रीन के बाक़ी रूपों के लिए है।"
   },
   "wallpaper.steps": {
     "tr": "1. Ana ekranda boş bir yere uzun basın ve en sağdaki boş sayfaya kaydırın. 2. Ekran görüntüsü alın. 3. Aşağıdan bu görüntüyü seçin. 4. Widget'a uzun basın › Widget'ı Düzenle: Görünüm: Şeffaf (duvar kâğıdı); Ekrandaki yeri: widget'ın durduğu yer. Geniş widget'ta yalnız satır, büyük widget'ta üst ya da alt yarı önemlidir.",
@@ -35818,7 +35818,7 @@
     "th": "สีตัวอักษร",
     "es": "Color del texto",
     "pt": "Cor do texto",
-    "hi": "लिखावट का रंग"
+    "hi": "टेक्स्ट का रंग"
   },
   "wallpaper.text.auto": {
     "tr": "Otomatik",
@@ -36378,7 +36378,7 @@
     "th": "ขอให้การละศีลอดอุดมสมบูรณ์และซะฮูรสงบสุข",
     "es": "Que sus iftares sean abundantes y sus suhur tranquilos.",
     "pt": "Que os seus iftares sejam fartos e os seus suhur tranquilos.",
-    "hi": "आपकी इफ़्तार बरकत वाली और सहरी सुकून भरी हो।"
+    "hi": "आपका इफ़्तार बरकत वाला और सहरी सुकून भरी हो।"
   },
   "greet.m.ramadan.6": {
     "tr": "Rahmet ayı hepimize hayırlar getirsin.",
@@ -37658,7 +37658,7 @@
     "th": "สายรุ้ง (เด็ก)",
     "es": "Arcoíris (niños)",
     "pt": "Arco-íris (crianças)",
-    "hi": "इंद्रधनुष (बच्चे)"
+    "hi": "इंद्रधनुष (बच्चों के लिए)"
   },
   "dial.neon": {
     "tr": "Neon",
@@ -37858,7 +37858,7 @@
     "th": "ข้อมูลที่กรอกคำนวณในโทรศัพท์เครื่องนี้เท่านั้น ไม่ถูกบันทึกและไม่ถูกส่งไปที่ใด",
     "es": "Lo que introduce se calcula solo en este teléfono; no se guarda ni se envía a ningún sitio.",
     "pt": "O que você digita é calculado só neste celular; não é salvo nem enviado para lugar nenhum.",
-    "hi": "आपकी दर्ज की गई जानकारी केवल इसी फ़ोन पर गणना होती है; न सहेजी जाती है, न कहीं भेजी जाती है।"
+    "hi": "आप जो दर्ज करते हैं, उसकी गणना केवल इसी फ़ोन पर होती है; वह न सहेजा जाता है, न कहीं भेजा जाता है।"
   },
   "home.editScreen": {
     "tr": "Saat ekranını düzenle",
@@ -38098,7 +38098,7 @@
     "th": "แสดงบนหน้าจอล็อกและ Dynamic Island",
     "es": "Mostrar en la pantalla bloqueada y en la Dynamic Island",
     "pt": "Mostrar na tela bloqueada e na Dynamic Island",
-    "hi": "लॉक स्क्रीन और डायनेमिक आइलैंड में दिखाएँ"
+    "hi": "लॉक स्क्रीन और डायनेमिक आइलैंड पर दिखाएँ"
   },
   "live.weather.note": {
     "tr": "Kameranın yanında ve kilit ekranında görünür; × ile ya da Denetim Merkezi'nden kapatılır. iOS 8 saat sonra kaldırır; uygulamayı açınca geri gelir.",
@@ -38198,7 +38198,7 @@
     "th": "อุณหภูมิแสดงในแถบสถานะและหน้าจอล็อก ปิดได้ด้วยปุ่มปิดในการแจ้งเตือน จากการตั้งค่าด่วน หรือที่นี่ อัปเดตทุกชั่วโมง",
     "es": "La temperatura aparece en la barra de estado y en la pantalla de bloqueo; desactívela con Cerrar en la notificación, desde Ajustes rápidos o aquí. Se actualiza cada hora.",
     "pt": "A temperatura aparece na barra de status e na tela de bloqueio; desative com Fechar na notificação, nas Configurações rápidas ou aqui. Atualiza a cada hora.",
-    "hi": "तापमान स्टेटस बार और लॉक स्क्रीन पर दिखता है; सूचना में बंद करें से, क्विक सेटिंग्स से या यहाँ से बंद करें। हर घंटे ताज़ा होता है।"
+    "hi": "तापमान स्टेटस बार और लॉक स्क्रीन पर दिखता है; सूचना के \"बंद करें\" बटन से, क्विक सेटिंग्स से या यहाँ से बंद करें। हर घंटे ताज़ा होता है।"
   },
   "about.credits": {
     "tr": "Simgeler: Microsoft Fluent Emoji ve Phosphor Icons (MIT lisansı). Yazı tipleri: Literata ve Amiri (SIL Open Font License).",
@@ -38558,7 +38558,7 @@
     "th": "คุณสนใจฤดูกาล ดวงจันทร์ และท้องฟ้าไหม",
     "es": "¿Le interesan las estaciones, la Luna y el cielo?",
     "pt": "Estações, Lua e céu despertam seu interesse?",
-    "hi": "क्या मौसम, चाँद और आसमान में आपकी रुचि है?"
+    "hi": "क्या ऋतुओं, चाँद और आसमान में आपकी रुचि है?"
   },
   "onboard.q.seasons.text": {
     "tr": "Evet derseniz Ay'ın evreleri, tutulmalar, gün doğumu ve gece gökyüzü bir dokunuş uzağınızda olur.",
@@ -38638,7 +38638,7 @@
     "th": "แถบด้านล่างจัดตามคำตอบของคุณแล้ว นาฬิกาอยู่หน้าสุดเสมอ เครื่องมือทั้งหมดอยู่ใน ทั้งหมด",
     "es": "La barra inferior se ajustó según sus respuestas. El reloj va siempre primero; todas las herramientas están en Todo.",
     "pt": "A barra inferior foi montada com base nas suas respostas. O relógio vem sempre primeiro; todas as ferramentas estão em Tudo.",
-    "hi": "नीचे की पट्टी आपके जवाबों से तैयार हो गई। घड़ी हमेशा पहले; सारे टूल «सब» में हैं।"
+    "hi": "नीचे की पट्टी आपके जवाबों से तैयार हो गई। घड़ी हमेशा पहले; सारे टूल \"सब\" में हैं।"
   },
   "onboard.summary.on": {
     "tr": "Açılan bölümler",
@@ -38658,7 +38658,7 @@
     "th": "ที่เปิดไว้",
     "es": "Activadas",
     "pt": "Seções ativas",
-    "hi": "जो चालू हुए"
+    "hi": "चालू हुए हिस्से"
   },
   "onboard.summary.none": {
     "tr": "Yalnız saat ve araçlar açık. İstediğiniz an Ayarlar › Özellikler'den bölüm eklersiniz.",
@@ -38718,7 +38718,7 @@
     "th": "ไม่มีบัญชี ไม่มีโฆษณา ไม่มีการติดตาม ตำแหน่ง ข้อมูลส่วนตัว ปฏิทิน และข้อมูลสุขภาพของคุณไม่ถูกส่งมาถึงเรา และไม่ถูกเก็บบนเซิร์ฟเวอร์ใดของเรา สิทธิ์ต่าง ๆ ทำงานเฉพาะในโทรศัพท์ของคุณ",
     "es": "Sin cuenta, sin anuncios, sin rastreo. Su ubicación, sus datos personales, su calendario y sus datos de salud nunca nos llegan ni se guardan en ningún servidor nuestro. Los permisos solo funcionan dentro de su teléfono.",
     "pt": "Sem conta, sem anúncios, sem rastreamento. Sua localização, seus dados pessoais, sua agenda e seus dados de saúde nunca chegam até nós nem ficam em nenhum servidor nosso. As permissões só funcionam dentro do seu celular.",
-    "hi": "न खाता, न विज्ञापन, न ट्रैकिंग। आपकी लोकेशन, निजी जानकारी, कैलेंडर और सेहत का डेटा हम तक नहीं आता और हमारे किसी सर्वर पर नहीं रखा जाता। अनुमतियाँ सिर्फ़ आपके फ़ोन के अंदर काम करती हैं।"
+    "hi": "न खाता, न विज्ञापन, न ट्रैकिंग। आपका स्थान, निजी जानकारी, कैलेंडर और सेहत का डेटा हम तक नहीं आता और हमारे किसी सर्वर पर नहीं रखा जाता। अनुमतियाँ सिर्फ़ आपके फ़ोन के अंदर काम करती हैं।"
   },
   "onboard.trust.services": {
     "tr": "Hava durumu ve yakındaki camiler için yalnız yaklaşık konum (yaklaşık 1 km) ilgili servise gider; kim olduğunuz gitmez.",
@@ -38738,7 +38738,7 @@
     "th": "สำหรับสภาพอากาศและมัสยิดใกล้เคียง จะส่งเพียงตำแหน่งโดยประมาณ (ราว 1 กม.) ไปยังบริการนั้น ไม่เคยส่งว่าคุณเป็นใคร",
     "es": "Para el tiempo y las mezquitas cercanas solo se envía una ubicación aproximada (cerca de 1 km) a ese servicio, nunca quién es usted.",
     "pt": "Para o clima e mesquitas próximas, só uma localização aproximada (cerca de 1 km) vai para o serviço, nunca quem você é.",
-    "hi": "मौसम और पास की मस्जिदों के लिए सिर्फ़ अनुमानित लोकेशन (लगभग 1 किमी) उस सेवा को जाती है, आप कौन हैं यह कभी नहीं।"
+    "hi": "मौसम और पास की मस्जिदों के लिए सिर्फ़ अनुमानित स्थान (लगभग 1 किमी) उस सेवा को जाता है, आप कौन हैं यह कभी नहीं।"
   },
   "onboard.trust.later": {
     "tr": "Verdiğiniz izinleri istediğiniz an Ayarlar › İzinler'den görür, kapatırsınız.",
@@ -38918,7 +38918,7 @@
     "th": "รายชื่อติดต่อ คลังรูปภาพ รหัสโฆษณา (การติดตาม) บลูทูธ และตำแหน่งเบื้องหลัง เมื่อคุณเลือกรูป แอปจะได้รับเฉพาะรูปที่เลือก",
     "es": "Sus contactos, su fototeca, el identificador publicitario (rastreo), el Bluetooth y la ubicación en segundo plano. Al elegir una foto, solo esa llega a la app.",
     "pt": "Seus contatos, sua fototeca, o identificador de anúncios (rastreamento), o Bluetooth e a localização em segundo plano. Ao escolher uma foto, só ela chega ao app.",
-    "hi": "आपके संपर्क, फ़ोटो लाइब्रेरी, विज्ञापन आईडी (ट्रैकिंग), ब्लूटूथ और बैकग्राउंड लोकेशन। फ़ोटो चुनते समय सिर्फ़ चुनी हुई फ़ोटो ऐप तक आती है।"
+    "hi": "आपके संपर्क, फ़ोटो लाइब्रेरी, विज्ञापन आईडी (ट्रैकिंग), ब्लूटूथ और बैकग्राउंड में स्थान। फ़ोटो चुनते समय सिर्फ़ चुनी हुई फ़ोटो ऐप तक आती है।"
   },
   "perms.notUsed.android": {
     "tr": "Kişileriniz, fotoğraf arşiviniz, reklam kimliğiniz, kamera ve Bluetooth. Fotoğraf seçerken ve kod okuturken telefonun kendi seçicisi kullanılır; yalnız seçtiğiniz uygulamaya gelir.",
@@ -38958,7 +38958,7 @@
     "th": "ตำแหน่ง",
     "es": "Ubicación",
     "pt": "Localização",
-    "hi": "लोकेशन"
+    "hi": "स्थान"
   },
   "perms.location.why": {
     "tr": "İzin verirseniz bulunduğunuz yerin vakitleri ve havası kendiliğinden gelir, seçmekle uğraşmazsınız. Vermezseniz il ya da ilçeyi elle seçersiniz.",
@@ -38978,7 +38978,7 @@
     "th": "ถ้าอนุญาต เวลาละหมาดและสภาพอากาศของที่ที่คุณอยู่จะขึ้นเองโดยไม่ต้องเลือก ถ้าไม่อนุญาต คุณเลือกเมืองเองได้",
     "es": "Si lo permite, los horarios de oración y el tiempo de donde esté llegan solos. Si no, elige su ciudad a mano.",
     "pt": "Se permitir, os horários de oração e o clima de onde você está chegam sozinhos, sem você precisar escolher. Se não, você escolhe a província ou o distrito manualmente.",
-    "hi": "अनुमति दें तो आपकी जगह के नमाज़ के समय और मौसम अपने आप आ जाएँगे, चुनने की ज़रूरत नहीं। न दें तो शहर ख़ुद चुनें।"
+    "hi": "अनुमति दें तो आपकी जगह के नमाज़ के समय और मौसम अपने आप आ जाएँगे, चुनने की ज़रूरत नहीं। न दें तो प्रांत या ज़िला ख़ुद चुनें।"
   },
   "perms.locationBg.title": {
     "tr": "Arka planda konum",
@@ -38998,7 +38998,7 @@
     "th": "ตำแหน่งเบื้องหลัง",
     "es": "Ubicación en segundo plano",
     "pt": "Localização em segundo plano",
-    "hi": "बैकग्राउंड लोकेशन"
+    "hi": "बैकग्राउंड में स्थान"
   },
   "perms.locationBg.why": {
     "tr": "Yalnız konuma bağlı hatırlatıcılar için: bir yere varınca ya da ayrılınca haber verir. Vermezseniz bu hatırlatıcılar çalışmaz.",
@@ -39018,7 +39018,7 @@
     "th": "ใช้เฉพาะการเตือนตามสถานที่ เพื่อแจ้งเมื่อคุณไปถึงหรือออกจากสถานที่ ถ้าไม่อนุญาต การเตือนนี้จะใช้ไม่ได้",
     "es": "Solo para los recordatorios por ubicación: le avisan al llegar a un lugar o al salir de él. Si no, estos recordatorios no funcionan.",
     "pt": "Só para lembretes por local: avisam quando você chega ou sai de um lugar. Se não, esses lembretes não funcionam.",
-    "hi": "सिर्फ़ लोकेशन वाले रिमाइंडर के लिए: किसी जगह पहुँचने या निकलने पर बताते हैं। न दें तो ये रिमाइंडर काम नहीं करेंगे।"
+    "hi": "सिर्फ़ स्थान रिमाइंडर के लिए: किसी जगह पहुँचने या निकलने पर बताते हैं। न दें तो ये रिमाइंडर काम नहीं करेंगे।"
   },
   "perms.notify.title": {
     "tr": "Bildirimler",
@@ -39178,7 +39178,7 @@
     "th": "ถ้าอนุญาต หน้าจอล็อกจะสว่างเมื่อนาฬิกาปลุกดัง ถ้าไม่อนุญาตจะแสดงเพียงการแจ้งเตือน",
     "es": "Si lo permite, la pantalla bloqueada se enciende cuando suena la alarma. Si no, solo se ve un aviso.",
     "pt": "Se permitir, a tela bloqueada acende quando o alarme toca. Se não, aparece só uma notificação.",
-    "hi": "अनुमति दें तो अलार्म बजने पर लॉक स्क्रीन जल उठेगी। न दें तो सिर्फ़ सूचना दिखेगी।"
+    "hi": "अनुमति दें तो अलार्म बजने पर लॉक स्क्रीन चालू हो जाएगी। न दें तो सिर्फ़ सूचना दिखेगी।"
   },
   "perms.calendar.title": {
     "tr": "Takvim",
@@ -39258,7 +39258,7 @@
     "th": "ใช้เฉพาะภารกิจปลุก (แสดงโค้ดหรือสิ่งของ) และกล้องทิศกิบลัต ไม่มีการบันทึกและไม่ออกจากโทรศัพท์",
     "es": "Solo para las tareas de alarma (mostrar un código o un objeto) y la cámara de la alquibla. No se graba nada ni sale del teléfono.",
     "pt": "Só para tarefas de alarme (mostrar um código ou objeto) e para a visão de câmera da qibla. Nada é gravado nem sai do celular.",
-    "hi": "सिर्फ़ अलार्म के कामों (कोड या चीज़ दिखाना) और क़िबला कैमरे के लिए। कुछ रिकॉर्ड नहीं होता, फ़ोन से बाहर नहीं जाता।"
+    "hi": "सिर्फ़ अलार्म के कामों (कोड या चीज़ दिखाना) और क़िबला कैमरे के लिए। तस्वीर सहेजी नहीं जाती और फ़ोन से बाहर नहीं जाती।"
   },
   "perms.mic.title": {
     "tr": "Mikrofon",
@@ -39298,7 +39298,7 @@
     "th": "ใช้เฉพาะภารกิจปลุก \"อ่านออกเสียง\" โดยฟังภายในโทรศัพท์ ไม่มีการบันทึกเสียง",
     "es": "Solo para la tarea de alarma «leer en voz alta»; la escucha se hace en el propio teléfono. No se graba nada.",
     "pt": "Só para a tarefa de alarme \"ler em voz alta\", para ouvir você no próprio celular. O áudio não é gravado.",
-    "hi": "सिर्फ़ अलार्म के «ज़ोर से पढ़ें» काम के लिए, फ़ोन के अंदर सुनने को। आवाज़ रिकॉर्ड नहीं होती।"
+    "hi": "सिर्फ़ अलार्म के \"ज़ोर से पढ़ें\" काम के लिए, फ़ोन के अंदर सुनने को। आवाज़ रिकॉर्ड नहीं होती।"
   },
   "perms.speech.title": {
     "tr": "Konuşma tanıma",
@@ -39338,7 +39338,7 @@
     "th": "ใช้เฉพาะภารกิจ \"อ่านออกเสียง\" การรู้จำทำในโทรศัพท์และไม่ส่งไปที่ใด",
     "es": "Solo para la tarea «leer en voz alta»; el reconocimiento se hace en el teléfono y no se envía a ningún sitio.",
     "pt": "Só para a tarefa \"ler em voz alta\"; o reconhecimento é feito no celular e não é enviado a lugar nenhum.",
-    "hi": "सिर्फ़ «ज़ोर से पढ़ें» काम के लिए; पहचान फ़ोन पर होती है, कहीं भेजी नहीं जाती।"
+    "hi": "सिर्फ़ अलार्म के \"ज़ोर से पढ़ें\" काम के लिए; पहचान फ़ोन पर होती है, कहीं भेजी नहीं जाती।"
   },
   "perms.health.title": {
     "tr": "Sağlık",
@@ -39558,7 +39558,7 @@
     "th": "การเข้าถึงห้ามรบกวน",
     "es": "Acceso a No molestar",
     "pt": "Acesso ao Não perturbe",
-    "hi": "डू नॉट डिस्टर्ब तक पहुँच"
+    "hi": "\"परेशान न करें\" तक पहुँच"
   },
   "perms.dnd.why": {
     "tr": "Yalnız vakit girince telefonu sessize almak için. Vermezseniz sessize alma çalışmaz.",
@@ -39618,7 +39618,7 @@
     "th": "เราจะแนะนำฟีเจอร์อื่น ๆ ทีละอย่างในไม่กี่หน้า หากไม่ต้องการ ทุกอย่างรออยู่ใน \"ทั้งหมด\"",
     "es": "Le mostramos las demás funciones una a una en unas pocas páginas breves. Si no, todo le espera en «Todo».",
     "pt": "Vamos mostrar os outros recursos um a um, em poucas páginas curtas. Se não quiser, todos eles esperam por você em \"Tudo\".",
-    "hi": "हम बाक़ी सुविधाएँ कुछ छोटे पन्नों में एक-एक करके दिखाएँगे। नहीं चाहें तो सब कुछ «सब» में आपका इंतज़ार कर रहा है।"
+    "hi": "हम बाक़ी सुविधाएँ कुछ छोटे पन्नों में एक-एक करके दिखाएँगे। नहीं चाहें तो सब कुछ \"सब\" में आपका इंतज़ार कर रहा है।"
   },
   "onboard.tour.alarm.title": {
     "tr": "Alarm ve uyku",
@@ -39698,7 +39698,7 @@
     "th": "เข็มทิศกิบลัต มัสยิดใกล้เคียง อัลกุรอาน ดุอาอ์ พระนาม 99 ประการ ที่นับตัสบีห์ บันทึกการละหมาดและการถือศีลอด วิธีคำนวณ 14 แบบ",
     "es": "Brújula de la alquibla, mezquitas cercanas, el Corán, súplicas, los 99 nombres, contador de dhikr, registro de oraciones y ayunos. 14 métodos de cálculo y 973 distritos de Turquía.",
     "pt": "Bússola da qibla, mesquitas próximas, o Alcorão, súplicas, os 99 nomes de Alá, contador de dhikr, registro de orações e jejuns. 14 métodos de cálculo e 973 distritos da Turquia.",
-    "hi": "क़िबला कम्पास, पास की मस्जिदें, क़ुरआन, दुआएँ, अल्लाह के 99 नाम, तस्बीह काउंटर, नमाज़ और रोज़े का हिसाब। 14 गणना पद्धतियाँ।"
+    "hi": "क़िबला कंपास, पास की मस्जिदें, क़ुरआन, दुआएँ, अल्लाह के 99 नाम, तस्बीह काउंटर, नमाज़ और रोज़े का हिसाब। 14 गणना पद्धतियाँ और तुर्किये के 973 ज़िले।"
   },
   "onboard.tour.weather.title": {
     "tr": "Hava ve gökyüzü",
@@ -39738,7 +39738,7 @@
     "th": "พยากรณ์รายชั่วโมงและรายวัน คุณภาพอากาศ หน้าจอเปลี่ยนตามสภาพอากาศ ปฏิทินดวงจันทร์ สุริยุปราคาและจันทรุปราคา ฤดูกาล และท้องฟ้ายามค่ำคืน",
     "es": "Pronóstico por horas y por días y calidad del aire; la pantalla cobra vida con el tiempo. Calendario lunar, eclipses, estaciones y cielo nocturno.",
     "pt": "Previsão por hora e por dia e qualidade do ar; a tela ganha vida com o clima. Calendário lunar, eclipses, estações e céu noturno.",
-    "hi": "घंटेवार और रोज़ाना पूर्वानुमान, हवा की गुणवत्ता; स्क्रीन मौसम के साथ बदलती है। चंद्र कैलेंडर, ग्रहण, मौसम-चक्र और रात का आसमान।"
+    "hi": "घंटेवार और रोज़ाना पूर्वानुमान, हवा की गुणवत्ता; स्क्रीन मौसम के साथ बदलती है। चंद्र कैलेंडर, ग्रहण, ऋतुएँ और रात का आसमान।"
   },
   "onboard.tour.tools.title": {
     "tr": "Odak ve araçlar",
