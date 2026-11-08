@@ -97,7 +97,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Para mostrar los horarios de oración, la dirección de la alquibla, las mezquitas cercanas y el tiempo donde está. Los horarios y la alquibla se calculan en su teléfono; para el tiempo y la búsqueda de mezquitas solo se envía una ubicación aproximada a los servicios de Apple. Para los recordatorios por ubicación, el propio iPhone detecta cuándo llega o sale de un lugar."
+            "value": "Para mostrar los horarios de oración, la dirección de la alquibla, las mezquitas cercanas y el tiempo del lugar donde está. Los horarios y la alquibla se calculan en su teléfono; para el tiempo y la búsqueda de mezquitas solo se envía una ubicación aproximada a los servicios de Apple. Para los recordatorios por ubicación, el propio iPhone detecta cuándo llega a un lugar o sale de él."
           }
         },
         "pt": {

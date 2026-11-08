@@ -3261,13 +3261,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Horarios de oración de %1$@ de %2$@"
+            "value": "%1$@ de %2$@: horarios de oración"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Horários de oração de %1$@ de %2$@"
+            "value": "%1$@ de %2$@: horários de oração"
           }
         },
         "hi": {
@@ -4391,13 +4391,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Los horarios son calculados; para los horarios oficiales siga a la Presidencia de Asuntos Religiosos (Diyanet)."
+            "value": "Horarios calculados; los oficiales son los de la Presidencia de Asuntos Religiosos (Diyanet)."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Os horários são calculados; para os horários oficiais, siga a Presidência de Assuntos Religiosos (Diyanet)."
+            "value": "Os horários são calculados; o horário oficial é o da Presidência de Assuntos Religiosos (Diyanet)."
           }
         },
         "hi": {
@@ -12414,7 +12414,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Empiezan las vacaciones del primer trimestre (MEB)"
+            "value": "Empiezan las vacaciones de mitad del primer semestre (MEB)"
           }
         },
         "pt": {
@@ -12866,7 +12866,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Empiezan las vacaciones del segundo trimestre (MEB)"
+            "value": "Empiezan las vacaciones de mitad del segundo semestre (MEB)"
           }
         },
         "pt": {
@@ -13098,7 +13098,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Começa o trabalho profissional dos professores (MEB)"
+            "value": "Começa a jornada pedagógica dos professores (MEB)"
           }
         },
         "hi": {
@@ -13324,7 +13324,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Começa o trabalho profissional de fim de ano dos professores (MEB)"
+            "value": "Começa a jornada pedagógica de fim de ano dos professores (MEB)"
           }
         },
         "hi": {
@@ -14109,7 +14109,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "KPSS DHBT: prueba de servicios religiosos (ÖSYM)"
+            "value": "KPSS DHBT: prueba de conocimientos de servicios religiosos (ÖSYM)"
           }
         },
         "pt": {
@@ -15239,7 +15239,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Preferencias de colocación KPSS-2026/2 (ÖSYM)"
+            "value": "Elección de plazas KPSS-2026/2 (ÖSYM)"
           }
         },
         "pt": {
@@ -15810,7 +15810,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Período de inscrição do ensino médio aberto (AÖL) (MEB)"
+            "value": "Período de matrícula e rematrícula do ensino médio aberto (AÖL) (MEB)"
           }
         },
         "hi": {
@@ -23042,7 +23042,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Data e hora de destino"
+            "value": "Data e hora-alvo"
           }
         },
         "hi": {
@@ -23268,7 +23268,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Destinos rápidos"
+            "value": "Datas rápidas"
           }
         },
         "hi": {
@@ -24172,7 +24172,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A hora de destino chegou!"
+            "value": "Chegou a hora marcada!"
           }
         },
         "hi": {
@@ -27669,7 +27669,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Posponer 5 min"
+            "value": "Aplazar 5 min"
           }
         },
         "pt": {
@@ -34223,13 +34223,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ terminado"
+            "value": "Ha terminado: %1$@"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ concluído"
+            "value": "%1$@ terminou"
           }
         },
         "hi": {
@@ -45184,7 +45184,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ %% iluminada"
+            "value": "%1$@%% iluminada"
           }
         },
         "pt": {
@@ -45749,7 +45749,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Estaciones astronómicas, es decir, los momentos de los equinoccios y solsticios. Las horas están en hora de Turquía (UTC+3)."
+            "value": "Estaciones astronómicas, es decir, los momentos de los equinoccios y solsticios. Las horas se indican en hora de Turquía (UTC+3)."
           }
         },
         "pt": {
@@ -52196,7 +52196,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ventania leve"
+            "value": "Ventoso"
           }
         },
         "hi": {
@@ -52981,13 +52981,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Extremo; evite estar fuera"
+            "value": "Extremo; limite el tiempo al aire libre"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Extremo; evite ficar ao ar livre"
+            "value": "Extremo; não fique muito tempo ao ar livre"
           }
         },
         "hi": {
@@ -54450,7 +54450,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se siente más frío de lo que es"
+            "value": "Sensación más fría que la temperatura real"
           }
         },
         "pt": {
@@ -54563,7 +54563,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se siente más cálido de lo que es"
+            "value": "Sensación más cálida que la temperatura real"
           }
         },
         "pt": {
@@ -55021,7 +55021,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ventania à tarde."
+            "value": "Tarde ventosa."
           }
         },
         "hi": {
@@ -57501,7 +57501,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Próximo perigeo (más cerca)"
+            "value": "Próximo perigeo (más cercano)"
           }
         },
         "pt": {
@@ -57614,7 +57614,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Próximo apogeo (más lejos)"
+            "value": "Próximo apogeo (más lejano)"
           }
         },
         "pt": {
@@ -59987,7 +59987,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Las posiciones se calculan en su navegador: los planetas con los elementos orbitales aproximados del JPL (precisión de minutos de arco) y la Luna y el Sol con las fórmulas de Meeus. \"Cuándo se ve\" son las horas en que el Sol está 6° bajo el horizonte y el planeta al menos 5° sobre él. El brillo está en magnitudes (menor es más brillante); no se incluyen los anillos de Saturno. Las estrellas se dibujan en sus posiciones J2000."
+            "value": "Las posiciones se calculan en su navegador: los planetas con los elementos orbitales aproximados del JPL (precisión de minutos de arco) y la Luna y el Sol con las fórmulas de Meeus. \"Cuándo se ve\" son las horas en que el Sol está 6° bajo el horizonte y el planeta al menos 5° sobre él. El brillo se da en magnitudes (cuanto menor, más brillante); en Saturno no se tiene en cuenta el efecto de los anillos. Las estrellas se dibujan en sus posiciones J2000."
           }
         },
         "pt": {
@@ -60213,7 +60213,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Máximos de lluvias de meteoros, acercamientos de los planetas y la Luna, oposiciones y máximas elongaciones; horas en la hora del lugar elegido."
+            "value": "Máximos de lluvias de meteoros, acercamientos de los planetas y la Luna, oposiciones y máximas elongaciones; horas locales del lugar elegido."
           }
         },
         "pt": {
@@ -63157,7 +63157,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ iluminada; abaixo do horizonte durante o escuro"
+            "value": "%1$@ iluminada; abaixo do horizonte nas horas escuras"
           }
         },
         "hi": {
@@ -64061,7 +64061,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A Lua fica abaixo do horizonte durante o escuro: bom para estrelas fracas."
+            "value": "A Lua fica abaixo do horizonte nas horas escuras: bom para estrelas fracas."
           }
         },
         "hi": {
@@ -68688,7 +68688,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Analógico con el tiempo"
+            "value": "Analógico y tiempo"
           }
         },
         "pt": {
@@ -71519,7 +71519,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Participar"
+            "value": "Inscrever-se"
           }
         },
         "hi": {
@@ -73660,7 +73660,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "En estos intervalos no se hacen oraciones voluntarias. Diyanet no publica minutos exactos; se usa la convención habitual de los calendarios de unos 45 minutos (las fuentes dan 10–45 minutos para el intervalo antes del mediodía)."
+            "value": "En estos intervalos no se rezan oraciones voluntarias. Diyanet no publica minutos exactos; se usan unos 45 minutos, como es habitual en los calendarios (las fuentes dan entre 10 y 45 minutos para el intervalo antes del mediodía)."
           }
         },
         "pt": {
@@ -75474,7 +75474,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Datas tradicionais do calendário popular turco (baseado no antigo calendário rumi); não é previsão do tempo, e as fontes podem variar alguns dias."
+            "value": "Datas tradicionais do calendário popular turco (baseado no antigo calendário rumi); não é previsão do tempo, e as datas podem variar alguns dias conforme a fonte."
           }
         },
         "hi": {
@@ -78971,13 +78971,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Los nombres siguen la tradición norteamericana (Old Farmer's Almanac). La Luna de la Cosecha es la luna llena más cercana al equinoccio de septiembre."
+            "value": "Los nombres siguen la tradición norteamericana (Old Farmer's Almanac); las formas en español son traducciones. La Luna de la Cosecha es la luna llena más cercana al equinoccio de septiembre."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Os nomes seguem a tradição norte-americana (Old Farmer's Almanac). A Lua da Colheita é a lua cheia mais próxima do equinócio de setembro."
+            "value": "Os nomes seguem a tradição norte-americana (Old Farmer's Almanac); as formas em português são traduções. A Lua da Colheita é a lua cheia mais próxima do equinócio de setembro."
           }
         },
         "hi": {
@@ -80892,13 +80892,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "En la hora ezani (a la turca), la oración del atardecer (puesta del sol) son las 12:00 y las horas se cuentan desde ahí."
+            "value": "En la hora ezani (a la turca), la oración del atardecer (puesta del sol) es a las 12:00 y las horas se cuentan desde ahí."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Na hora ezani (à turca), a oração do entardecer (pôr do sol) é 12:00 e as horas são contadas a partir dela."
+            "value": "Na hora ezani (à turca), a oração do entardecer (pôr do sol) corresponde às 12:00 e as horas são contadas a partir dela."
           }
         },
         "hi": {
@@ -81124,7 +81124,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A data rumi usa o calendário juliano (13 dias atrás) com o ano começando em 1º de março, como nos almanaques turcos tradicionais."
+            "value": "A data rumi usa o calendário juliano (13 dias atrasado em relação ao gregoriano) com o ano começando em 1º de março, como nos almanaques turcos tradicionais."
           }
         },
         "hi": {
@@ -83491,13 +83491,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El importe es para Turquía y es el mínimo; quien pueda puede dar más (según el valor de los dátiles o las pasas). La fitra se da antes de la oración del Eid."
+            "value": "El importe es para Turquía y es el mínimo; quien tenga medios puede dar más (según el valor de los dátiles o las pasas). La fitra se da antes de la oración del Eid."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O valor é para a Turquia e é o mínimo; quem puder pode dar mais (pela medida de tâmaras ou passas). A fitra é dada antes da oração do Eid."
+            "value": "O valor é para a Turquia e é o mínimo; quem tiver condições pode dar mais (pela medida de tâmaras ou passas). A fitra é dada antes da oração do Eid."
           }
         },
         "hi": {
@@ -85644,7 +85644,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cedo ou tarde (07–09, 18–22)"
+            "value": "Início ou fim do dia (07–09, 18–22)"
           }
         },
         "hi": {
@@ -95130,7 +95130,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "No se escribió hora de nacimiento, así que se supuso las 12:00 del mediodía; la Luna cambia de signo cada 2,5 días aprox."
+            "value": "No se indicó la hora de nacimiento, así que se tomó el mediodía (12:00); la Luna cambia de signo aproximadamente cada 2,5 días."
           }
         },
         "pt": {
@@ -96147,13 +96147,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El fin es anterior al inicio, así que el intervalo se contó pasada la medianoche."
+            "value": "El fin es anterior al inicio, así que se considera que cruza la medianoche."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O fim é anterior ao início, por isso o intervalo foi contado passando da meia-noite."
+            "value": "O fim é anterior ao início, por isso o intervalo foi considerado como passando da meia-noite."
           }
         },
         "hi": {
@@ -98978,7 +98978,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nenhum"
+            "value": "Nenhuma"
           }
         },
         "hi": {
@@ -101684,7 +101684,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Termina a las %1$@"
+            "value": "Hora de fin: %1$@"
           }
         },
         "pt": {
@@ -111854,7 +111854,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La provincia cuyos horarios se muestran. Automática usa la provincia más cercana."
+            "value": "La provincia cuyos horarios se muestran. Automática usa la provincia más cercana a su ubicación."
           }
         },
         "pt": {
@@ -113888,13 +113888,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El aviso hablado dice la oración tras una campanilla corta, por ejemplo \"Es la hora del Dhuhr.\" Con el teléfono en silencio, las notificaciones solo vibran."
+            "value": "El aviso hablado anuncia la oración tras una campanilla corta, por ejemplo \"Es la hora de Dhuhr.\" Con el teléfono en silencio, las notificaciones solo vibran."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O aviso falado diz a oração depois de um sino curto, por exemplo \"Hora do Dhuhr.\" Com o celular no silencioso, as notificações só vibram."
+            "value": "O aviso falado anuncia a oração depois de um sino curto, por exemplo: \"Hora de Dhuhr.\" Com o celular no silencioso, as notificações só vibram."
           }
         },
         "hi": {
@@ -116374,13 +116374,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sin cuenta, sin anuncios, sin rastreo. Su ubicación se usa en el teléfono para calcular los horarios de oración; solo para el tiempo se envía la ubicación aproximada del lugar elegido al servicio meteorológico de Apple. Sus calendarios solo se leen si lo permite, y solo en el teléfono. Si se suscribe a la lista de correo, su dirección solo se envía a la lista compartida de Bumba para ese fin. Las insignias y su progreso se guardan solo en el teléfono; puede borrarlos en Herramientas › Insignias. Las fotos que elige (reloj a pantalla completa, cuentas atrás) se guardan solo en el teléfono. Los registros de culto (marcador del Corán, dhikr, registro de oraciones y ayunos, importes de zakat) se quedan en el teléfono. Si \"Sincronizar con iCloud\" está activado, los ajustes y los registros personales solo se sincronizan con sus propios dispositivos mediante su cuenta de iCloud. La calidad del aire, el polen, la comparación de modelos y la complicación del tiempo del Apple Watch proceden de Open-Meteo; para ellos se envían coordenadas redondeadas a dos decimales."
+            "value": "Sin cuenta, sin anuncios, sin rastreo. Su ubicación se usa en el teléfono para calcular los horarios de oración; solo para el tiempo se envía la ubicación aproximada del lugar elegido al servicio meteorológico de Apple. Sus calendarios solo se leen si lo permite, y solo en el teléfono. Si se suscribe a la lista de correo, su dirección solo se envía a la lista compartida de Bumba para ese fin. Las insignias y su progreso se guardan solo en el teléfono; puede borrarlos en Herramientas › Insignias. Las fotos que elige (reloj a pantalla completa, cuentas atrás) se guardan solo en el teléfono. Los registros de culto (marcador del Corán, dhikr, registro de oraciones y ayunos, importes de zakat) se quedan solo en el teléfono. Si \"Sincronizar con iCloud\" está activado, los ajustes y los registros personales solo se sincronizan con sus propios dispositivos mediante su cuenta de iCloud. La calidad del aire, el polen, la comparación de modelos y la complicación del tiempo del Apple Watch proceden de Open-Meteo; para ellos se envían coordenadas redondeadas a dos decimales."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sem conta, sem anúncios, sem rastreamento. Sua localização é usada no celular para calcular os horários de oração; só para a previsão do tempo a localização aproximada do local escolhido é enviada ao serviço meteorológico da Apple. Seus calendários só são lidos se você permitir, e apenas no celular. Se você entrar na lista de e-mail, seu endereço é enviado só à lista compartilhada da Bumba para esse fim. As medalhas e o seu progresso ficam só no celular; você pode apagá-los em Ferramentas › Medalhas. As fotos que você escolhe (relógio em tela cheia, contagens regressivas) ficam só no celular. Os registros de culto (marcador do Alcorão, dhikr, registro de orações e jejuns, valores de zakat) ficam no celular. Se \"Sincronizar com o iCloud\" estiver ativado, as configurações e os registros pessoais são sincronizados apenas com os seus aparelhos pela sua conta do iCloud. A qualidade do ar, o pólen, a comparação de modelos e a complicação de clima do Apple Watch vêm do Open-Meteo; para eles são enviadas coordenadas arredondadas para duas casas decimais."
+            "value": "Sem conta, sem anúncios, sem rastreamento. Sua localização é usada no celular para calcular os horários de oração; só para a previsão do tempo a localização aproximada do local escolhido é enviada ao serviço meteorológico da Apple. Seus calendários só são lidos se você permitir, e apenas no celular. Se você entrar na lista de e-mail, seu endereço é enviado só à lista compartilhada da Bumba para esse fim. As medalhas e o seu progresso ficam só no celular; você pode apagá-los em Ferramentas › Medalhas. As fotos que você escolhe (relógio em tela cheia, contagens regressivas) ficam só no celular. Os registros de culto (marcador do Alcorão, dhikr, registro de orações e jejuns, valores de zakat) ficam só no celular. Se \"Sincronizar com o iCloud\" estiver ativado, as configurações e os registros pessoais são sincronizados apenas com os seus aparelhos pela sua conta do iCloud. A qualidade do ar, o pólen, a comparação de modelos e a complicação de clima do Apple Watch vêm do Open-Meteo; para eles são enviadas coordenadas arredondadas para duas casas decimais."
           }
         },
         "hi": {
@@ -121120,7 +121120,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Todo el mundo"
+            "value": "Mundo entero"
           }
         },
         "pt": {
@@ -126996,13 +126996,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La Tierra da una vuelta al Sol cada año. Pero no está derecha: su eje está inclinado 23,4 grados, siempre hacia el mismo lado. Durante medio año la mitad norte se inclina hacia el Sol y es verano; la otra mitad del año se aleja y es invierno."
+            "value": "La Tierra da una vuelta al Sol cada año. Pero no está derecha: su eje está inclinado 23,4 grados, siempre hacia el mismo lado. Durante medio año el hemisferio norte se inclina hacia el Sol y es verano; la otra mitad del año se inclina en sentido contrario y es invierno."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A Terra dá uma volta em torno do Sol a cada ano. Mas ela não fica reta: seu eixo é inclinado 23,4 graus, sempre para o mesmo lado. Durante metade do ano a metade norte se inclina para o Sol e é verão; na outra metade ela se afasta e é inverno."
+            "value": "A Terra dá uma volta em torno do Sol a cada ano. Mas ela não fica reta: seu eixo é inclinado 23,4 graus, sempre para o mesmo lado. Durante metade do ano a metade norte se inclina para o Sol e é verão; na outra metade ela se inclina para longe do Sol e é inverno."
           }
         },
         "hi": {
@@ -128358,7 +128358,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quando é inverno no hemisfério norte, é verão no Brasil, na Argentina, na Austrália e na África do Sul. Muitas crianças lá comemoram o Ano-Novo na praia!"
+            "value": "Quando é inverno no hemisfério norte, é verão no Brasil, na Argentina, na Austrália e na África do Sul. Muitas crianças desses países comemoram o Ano-Novo na praia!"
           }
         },
         "hi": {
@@ -128691,7 +128691,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "¿Sabías que…?"
+            "value": "¿Sabía que…?"
           }
         },
         "pt": {
@@ -128804,7 +128804,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El 21 de junio es el día más largo del año y el 21 de diciembre la noche más larga (en la mitad norte)."
+            "value": "El 21 de junio es el día más largo del año y el 21 de diciembre la noche más larga (en el hemisferio norte)."
           }
         },
         "pt": {
@@ -129256,7 +129256,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "En la mitad norte, el verano dura unos días más que el invierno: la Tierra va un poco más despacio cuando está más lejos del Sol."
+            "value": "En el hemisferio norte, el verano dura unos días más que el invierno: la Tierra va un poco más despacio cuando está más lejos del Sol."
           }
         },
         "pt": {
@@ -129482,13 +129482,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La app no necesita cuenta y no tiene anuncios ni rastreo. Su ubicación solo se usa en el teléfono para calcular los horarios de oración y las estaciones. Para el tiempo se envían a Open-Meteo las coordenadas aproximadas del lugar elegido (1 km aprox.). Los calendarios del teléfono solo se leen si lo permite, y solo en el teléfono. Si se suscribe a la lista de correo, su dirección solo se envía a la lista compartida de Bumba para ese fin. Las insignias y su progreso se guardan solo en el teléfono; puede borrarlos en Herramientas › Insignias. Las fotos que elige (reloj a pantalla completa, cuentas atrás) se guardan solo en el teléfono. Los registros de culto (marcador del Corán, dhikr, registro de oraciones y ayunos, importes de zakat) se quedan en el teléfono; si la copia de seguridad de Google del teléfono está activada, se incluyen en ella."
+            "value": "La app no necesita cuenta y no tiene anuncios ni rastreo. Su ubicación solo se usa en el teléfono para calcular los horarios de oración y las estaciones. Para el tiempo se envían a Open-Meteo las coordenadas aproximadas del lugar elegido (1 km aprox.). Los calendarios del teléfono solo se leen si lo permite, y solo en el teléfono. Si se suscribe a la lista de correo, su dirección solo se envía a la lista compartida de Bumba para ese fin. Las insignias y su progreso se guardan solo en el teléfono; puede borrarlos en Herramientas › Insignias. Las fotos que elige (reloj a pantalla completa, cuentas atrás) se guardan solo en el teléfono. Los registros de culto (marcador del Corán, dhikr, registro de oraciones y ayunos, importes de zakat) se quedan solo en el teléfono; si la copia de seguridad de Google del teléfono está activada, se incluyen en ella."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O app não precisa de conta e não tem anúncios nem rastreamento. Sua localização é usada só no celular para calcular os horários de oração e as estações. Para a previsão do tempo, as coordenadas aproximadas do local escolhido (cerca de 1 km) são enviadas ao Open-Meteo. Os calendários do celular só são lidos se você permitir, e apenas no celular. Se você entrar na lista de e-mail, seu endereço é enviado só à lista compartilhada da Bumba para esse fim. As medalhas e o seu progresso ficam só no celular; você pode apagá-los em Ferramentas › Medalhas. As fotos que você escolhe (relógio em tela cheia, contagens regressivas) ficam só no celular. Os registros de culto (marcador do Alcorão, dhikr, registro de orações e jejuns, valores de zakat) ficam no celular; se o backup do Google do celular estiver ativado, eles entram nele."
+            "value": "O app não precisa de conta e não tem anúncios nem rastreamento. Sua localização é usada só no celular para calcular os horários de oração e as estações. Para a previsão do tempo, as coordenadas aproximadas do local escolhido (com precisão de cerca de 1 km) são enviadas ao Open-Meteo. Os calendários do celular só são lidos se você permitir, e apenas no celular. Se você entrar na lista de e-mail, seu endereço é enviado só à lista compartilhada da Bumba para esse fim. As medalhas e o seu progresso ficam só no celular; você pode apagá-los em Ferramentas › Medalhas. As fotos que você escolhe (relógio em tela cheia, contagens regressivas) ficam só no celular. Os registros de culto (marcador do Alcorão, dhikr, registro de orações e jejuns, valores de zakat) ficam só no celular; se o backup do Google do celular estiver ativado, eles entram nele."
           }
         },
         "hi": {
@@ -131748,7 +131748,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Troque para outro estilo de relógio no palco do relógio."
+            "value": "Passe para outro estilo de relógio na tela do relógio."
           }
         },
         "hi": {
@@ -135138,7 +135138,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Veja todos os estilos do palco do relógio."
+            "value": "Veja todos os estilos da tela do relógio."
           }
         },
         "hi": {
@@ -139545,7 +139545,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Desfazer o pulo"
+            "value": "Não pular"
           }
         },
         "hi": {
@@ -140104,13 +140104,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El sonido de la alarma pasa de bajo a volumen máximo durante los primeros 30 segundos."
+            "value": "El sonido de la alarma pasa de un volumen bajo al máximo durante los primeros 30 segundos."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O som do alarme vai do baixo ao volume máximo nos primeiros 30 segundos."
+            "value": "O som do alarme sobe do volume baixo ao máximo nos primeiros 30 segundos."
           }
         },
         "hi": {
@@ -140217,13 +140217,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Una melodía suave sube de bajo a volumen máximo en 20 segundos; si está activada, suena en lugar del sonido de alarma del iPhone."
+            "value": "Una melodía suave pasa de un volumen bajo al máximo en 20 segundos; con esta opción activada, suena en lugar del sonido de alarma del iPhone."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uma melodia suave vai do baixo ao volume máximo em 20 segundos; quando ativada, toca no lugar do som de alarme do iPhone."
+            "value": "Uma melodia suave sobe do volume baixo ao máximo em 20 segundos; quando ativada, toca no lugar do som de alarme do iPhone."
           }
         },
         "hi": {
@@ -140330,13 +140330,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "No en festivos"
+            "value": "No sonar en festivos"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Não nos feriados"
+            "value": "Não tocar nos feriados"
           }
         },
         "hi": {
@@ -140901,7 +140901,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ vezes"
+            "value": "%1$@x"
           }
         },
         "hi": {
@@ -145076,7 +145076,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Trabaja"
+            "value": "Trabajo"
           }
         },
         "pt": {
@@ -145189,7 +145189,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Descansa"
+            "value": "Descanso"
           }
         },
         "pt": {
@@ -152647,7 +152647,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sostenga el teléfono en horizontal y gire hacia la flecha"
+            "value": "Mantenga el teléfono plano y gire hacia la flecha"
           }
         },
         "pt": {
@@ -152986,13 +152986,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La brújula usa el norte magnético; permita la ubicación para usar el norte verdadero."
+            "value": "La brújula usa el norte magnético; permita la ubicación para usar el norte verdadero (en Turquía la diferencia es de 4–7°)."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A bússola usa o norte magnético; permita a localização para usar o norte verdadeiro."
+            "value": "A bússola usa o norte magnético; permita a localização para usar o norte verdadeiro (na Turquia, a diferença é de 4–7°)."
           }
         },
         "hi": {
@@ -153099,13 +153099,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Está en la Kaaba."
+            "value": "Está junto a la Kaaba."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Você está na Caaba."
+            "value": "Você está perto da Caaba."
           }
         },
         "hi": {
@@ -153212,13 +153212,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La alquibla es la dirección del camino más corto (círculo máximo) hacia la Kaaba, calculada en el teléfono a partir de las coordenadas del lugar elegido. La hora de la alquibla coincide con la que publica Diyanet con un margen de ±1 min."
+            "value": "La alquibla es la dirección del camino más corto (círculo máximo) hacia la Kaaba, calculada en el teléfono a partir de las coordenadas del lugar elegido. Si ha elegido una provincia, se usa su capital (dentro de la provincia la diferencia es de menos de 1°). La hora de la alquibla coincide con la que publica Diyanet con un margen de ±1 min."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A qibla é a direção do caminho mais curto (círculo máximo) até a Caaba, calculada no celular a partir das coordenadas do local escolhido. O horário da qibla coincide com o publicado pela Diyanet com margem de ±1 min."
+            "value": "A qibla é a direção do caminho mais curto (círculo máximo) até a Caaba, calculada no celular a partir das coordenadas do local escolhido. Se uma província estiver selecionada, vale o centro da província (diferença de menos de 1° dentro dela). O horário da qibla coincide com o publicado pela Diyanet com margem de ±1 min."
           }
         },
         "hi": {
@@ -154122,7 +154122,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "As mesquitas são buscadas nos dados do OpenStreetMap pelo serviço Overpass: só a área aproximada (coordenadas arredondadas para duas casas decimais) é enviada. Toque numa mesquita para abri-la no seu app de mapas. Dados © colaboradores do OpenStreetMap (ODbL)."
+            "value": "As mesquitas são buscadas nos dados do OpenStreetMap pelo serviço Overpass: só a área aproximada (coordenadas arredondadas para duas casas decimais) é enviada a esse serviço. Toque numa mesquita para abri-la no seu app de mapas. Dados © colaboradores do OpenStreetMap (ODbL)."
           }
         },
         "hi": {
@@ -157060,7 +157060,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "No relógio em tela cheia: fundo preto, texto vermelho fraco e brilho baixo (melhor para a visão noturna e o sono). O relógio se desloca alguns pontos a cada minuto para evitar marcas na tela. Você também pode alternar pelo botão da lua na tela cheia."
+            "value": "No relógio em tela cheia: fundo preto, texto vermelho fraco e brilho baixo (melhor para a visão noturna e o sono). O relógio se desloca alguns pontos a cada minuto para evitar marcas na tela. O modo também pode ser ativado e desativado pelo botão da lua na tela cheia."
           }
         },
         "hi": {
@@ -157280,13 +157280,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pida a Siri \"Inicia un temporizador en Hora y Fecha\", \"Próxima oración en Hora y Fecha\" o \"Fecha de la Hégira en Hora y Fecha\", o use estas acciones en la app Atajos. Para mostrar el reloj al cargar: Atajos › Automatización › Cargador › Está conectado › \"Abrir reloj a pantalla completa\" (opcionalmente con modo nocturno)."
+            "value": "Pida a Siri \"Inicia un temporizador en Hora y Fecha\", \"Próxima oración en Hora y Fecha\" o \"Qué fecha de la Hégira es en Hora y Fecha\", o use estas acciones en la app Atajos. Para mostrar el reloj al cargar: Atajos › Automatización › Cargador › Está conectado › \"Abrir reloj a pantalla completa\" (opcionalmente con modo nocturno)."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Peça à Siri \"Iniciar um temporizador no Hora e Data\", \"Próxima oração no Hora e Data\" ou \"Data da Hégira no Hora e Data\", ou use essas ações no app Atalhos. Para mostrar o relógio ao carregar: Atalhos › Automação › Carregador › Está Conectado › \"Abrir relógio em tela cheia\" (opcionalmente com modo noturno)."
+            "value": "Peça à Siri \"Iniciar um temporizador no Hora e Data\", \"Próxima oração no Hora e Data\" ou \"Qual é a data da Hégira no Hora e Data\", ou use essas ações no app Atalhos. Para mostrar o relógio ao carregar: Atalhos › Automação › Carregador › Está Conectado › \"Abrir relógio em tela cheia\" (opcionalmente com modo noturno)."
           }
         },
         "hi": {
@@ -158410,7 +158410,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Inicia un temporizador con nombre de los minutos indicados; al terminar suena una alarma."
+            "value": "Inicia un temporizador con nombre y la duración en minutos indicada; al terminar suena una alarma."
           }
         },
         "pt": {
@@ -160670,13 +160670,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Muestra el tiempo que falta para la próxima oración en la pantalla bloqueada y en la Dynamic Island (iftar y suhur en Ramadán). Tras una oración se actualiza al abrir la app o en segundo plano. Los temporizadores, el pomodoro y el cronómetro en marcha también aparecen en la pantalla bloqueada."
+            "value": "Muestra el tiempo que falta para la próxima oración en la pantalla bloqueada y en la Dynamic Island (iftar y suhur en Ramadán). Tras cada hora de oración, se actualiza al abrir la app o en segundo plano. Los temporizadores, el pomodoro y el cronómetro en marcha también aparecen en la pantalla bloqueada."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mostra o tempo até a próxima oração na tela bloqueada e na Dynamic Island (iftar e suhur no Ramadã). Depois de um horário de oração, ele atualiza ao abrir o app ou em segundo plano. Temporizadores, pomodoro e cronômetro em andamento também aparecem na tela bloqueada."
+            "value": "Mostra o tempo até a próxima oração na tela bloqueada e na Dynamic Island (iftar e suhur no Ramadã). Depois de um horário de oração, ele se atualiza ao abrir o app ou em segundo plano. Temporizadores, pomodoro e cronômetro em andamento também aparecem na tela bloqueada."
           }
         },
         "hi": {
@@ -165642,13 +165642,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "No hay seguimiento del sueño y no se usa el micrófono. Mientras hay una sesión de alarma inteligente, el sensor de movimiento solo se lee durante la ventana de la alarma; no se guarda nada. Su horario y sus ajustes se quedan en este teléfono."
+            "value": "No hay seguimiento del sueño y no se usa el micrófono. Mientras hay una sesión de alarma inteligente activa, el sensor de movimiento solo se lee durante la ventana de la alarma; no se guarda nada. Su horario y sus ajustes solo se guardan en este teléfono."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Não há monitoramento do sono e o microfone não é usado. Durante uma sessão de alarme inteligente, o sensor de movimento só é lido na janela do alarme; nada é guardado. Sua rotina e suas configurações ficam neste celular."
+            "value": "Não há monitoramento do sono e o microfone não é usado. Durante uma sessão de alarme inteligente, o sensor de movimento só é lido na janela do alarme; nada é guardado. Sua rotina e suas configurações ficam só neste celular."
           }
         },
         "hi": {
@@ -166772,7 +166772,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Escanear un código (QR / barras)"
+            "value": "Escanear un código (QR / de barras)"
           }
         },
         "pt": {
@@ -175592,7 +175592,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uma vibração leve a cada toque e uma forte na meta e a cada 33 no tasbih. As contagens ficam neste aparelho."
+            "value": "Uma vibração leve a cada toque e uma forte na meta e a cada 33 no tasbih. As contagens ficam só neste aparelho."
           }
         },
         "hi": {
@@ -179654,13 +179654,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Según las normas de Diyanet: el nisab es de 80,18 g de oro, la tasa es una cuadragésima parte y sobre los bienes debe haber pasado un año lunar. Su vivienda, su coche y sus objetos personales no cuentan. Para estar seguro, consulte a un erudito. Las cantidades se quedan en este dispositivo."
+            "value": "Según las normas de Diyanet: el nisab es de 80,18 g de oro, la tasa es una cuadragésima parte y sobre los bienes debe haber pasado un año lunar. Su vivienda, su coche y sus objetos personales no cuentan. Para una respuesta definitiva, consulte a Diyanet. Las cantidades se quedan en este dispositivo."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Com base nas regras da Diyanet: o nisab é de 80,18 g de ouro, a taxa é um quarenta avos e um ano lunar deve ter passado sobre os bens. Sua casa, seu carro e seus objetos pessoais não contam. Para ter certeza, consulte um estudioso. Os valores ficam neste aparelho."
+            "value": "Com base nas regras da Diyanet: o nisab é de 80,18 g de ouro, a taxa é um quarenta avos e um ano lunar deve ter passado sobre os bens. Sua casa, seu carro e seus objetos pessoais não contam. Para ter certeza, consulte a Diyanet. Os valores que você digitar ficam só neste aparelho."
           }
         },
         "hi": {
@@ -181581,7 +181581,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Até 10 fotos se revezam como fundo da tela cheia; as fotos ficam neste aparelho."
+            "value": "Até 10 fotos se revezam como fundo da tela cheia; as fotos ficam só neste aparelho."
           }
         },
         "hi": {
@@ -185191,7 +185191,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La lista habitual en Turquía (99 nombres que empiezan por Alá, según la narración de at-Tirmidhi). Los significados son explicaciones breves."
+            "value": "La lista habitual en Turquía (99 nombres, empezando por Alá, según la narración de at-Tirmidhi). Los significados son explicaciones breves."
           }
         },
         "pt": {
@@ -185310,7 +185310,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hadices"
+            "value": "Hadiths"
           }
         },
         "hi": {
@@ -185536,7 +185536,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ · %2$@ · Quarenta hadices de an-Nawawi %3$@"
+            "value": "%1$@ · %2$@ · Quarenta Hadiths de an-Nawawi %3$@"
           }
         },
         "hi": {
@@ -185649,7 +185649,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Texto árabe dos Quarenta hadices do imã an-Nawawi (dados abertos de domínio público). Os significados são tradução do Saat Tarih; para uma explicação detalhada, consulte um estudioso."
+            "value": "Texto árabe dos Quarenta Hadiths do imã an-Nawawi (dados abertos de domínio público). Os significados são tradução do Saat Tarih; para uma explicação detalhada, consulte um estudioso."
           }
         },
         "hi": {
@@ -186440,7 +186440,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nasce %1$@ · Se põe %2$@"
+            "value": "Nascer do sol %1$@ · Pôr do sol %2$@"
           }
         },
         "hi": {
@@ -188920,13 +188920,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tras las horas de oración elegidas, el teléfono pasa a vibración o No molestar durante el tiempo elegido y luego vuelve a su estado anterior. No molestar necesita un permiso único."
+            "value": "Tras las horas de oración elegidas, el teléfono pasa a vibración o No molestar durante el tiempo elegido y luego vuelve a su estado anterior. Para No molestar, Android pide permiso una sola vez."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Depois dos horários de oração escolhidos, o celular passa para vibrar ou Não perturbe pelo tempo escolhido e depois volta ao estado anterior. O Não perturbe precisa de uma permissão única."
+            "value": "Depois dos horários de oração escolhidos, o celular passa para o modo vibrar ou Não perturbe pelo tempo escolhido e depois volta ao estado anterior. Para o Não perturbe, o Android pede permissão uma vez."
           }
         },
         "hi": {
@@ -191293,7 +191293,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Escriba este refrán"
+            "value": "Escriba este refrán tal cual"
           }
         },
         "pt": {
@@ -198305,7 +198305,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O diário fica nos seus aparelhos: este celular e, se a sincronização com o iCloud estiver ativada, os aparelhos da sua Conta Apple. Ele nunca é enviado a um servidor."
+            "value": "O diário fica só nos seus aparelhos: este celular e, se a sincronização com o iCloud estiver ativada, os aparelhos da sua Conta Apple. Ele nunca é enviado a um servidor."
           }
         },
         "hi": {
@@ -198418,7 +198418,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O diário fica neste celular (e no backup do Google do celular); nunca é enviado aos nossos servidores."
+            "value": "O diário fica só neste celular (e no backup do Google do celular); nunca é enviado aos nossos servidores."
           }
         },
         "hi": {
@@ -199096,7 +199096,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cada treino intervalado ou rotina concluídos é registrado no app Saúde como treino (tipo, início e duração). O app não lê seus dados de saúde."
+            "value": "Ao terminar, cada treino intervalado ou rotina é registrado no app Saúde como treino (tipo, início e duração). O app não lê seus dados de saúde."
           }
         },
         "hi": {
@@ -199209,7 +199209,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cada treino intervalado ou rotina concluídos é registrado no Health Connect como sessão de exercício (tipo, início e duração). O app não lê seus dados de saúde."
+            "value": "Ao terminar, cada treino intervalado ou rotina é registrado no Health Connect como sessão de exercício (tipo, início e duração). O app não lê seus dados de saúde."
           }
         },
         "hi": {
@@ -201243,7 +201243,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O relógio fica por cima de outros apps numa janela de picture-in-picture; arraste, redimensione ou esconda de lado. Ele não toca som nem precisa de internet."
+            "value": "O relógio fica por cima de outros apps numa janela de picture-in-picture; arraste, redimensione ou esconda na borda da tela. Ele não toca som nem precisa de internet."
           }
         },
         "hi": {
@@ -205870,13 +205870,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un recordatorio nuevo empieza en el lugar elegido en la app; toque el botón de arriba para usar donde está."
+            "value": "Un recordatorio nuevo empieza en el lugar elegido en la app; toque el botón de arriba para usar su ubicación actual."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Um lembrete novo começa no local escolhido no app; toque no botão acima para usar onde você está."
+            "value": "Um lembrete novo começa no local escolhido no app; toque no botão acima para usar sua localização atual."
           }
         },
         "hi": {
@@ -207119,7 +207119,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O evento é escolhido nos calendários do celular; um alarme único é criado o tempo escolhido antes do início (às 09:00 daquele dia para eventos de dia inteiro). O acesso ao calendário é concedido na aba Calendário."
+            "value": "O evento é escolhido nos calendários do celular; um alarme único é criado com a antecedência escolhida em relação ao início (às 09:00 daquele dia para eventos de dia inteiro). O acesso ao calendário é concedido na aba Calendário."
           }
         },
         "hi": {
@@ -207565,7 +207565,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Elegido: %1$@ apps, %2$@ categorías, %3$@ sitios web"
+            "value": "Selección: %1$@ apps, %2$@ categorías, %3$@ sitios web"
           }
         },
         "pt": {
@@ -209825,7 +209825,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cuando suena la alarma, el enlace se abre en la app de Spotify o YouTube; si no la apaga en 1 minuto, también suena la alarma. Si el teléfono está bloqueado, la música empieza al desbloquearlo; que Spotify empiece a sonar solo depende de la app de Spotify."
+            "value": "Cuando suena la alarma, el enlace se abre en la app de Spotify o YouTube; si no la apaga en 1 minuto, también suena la alarma. Si el teléfono está bloqueado, la música empieza al desbloquearlo; que Spotify empiece a sonar automáticamente depende de la app de Spotify."
           }
         },
         "pt": {
@@ -210390,7 +210390,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "En %1$@ min"
+            "value": "Hasta %1$@ min"
           }
         },
         "pt": {
@@ -211633,13 +211633,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ponga el teléfono en la cama junto a la almohada y enchúfelo. El sensor de movimiento solo se lee durante el margen; no se graba nada, los datos se quedan en la memoria del teléfono y no se guardan. Si no se detecta movimiento, la alarma suena a su hora normal."
+            "value": "Ponga el teléfono en la cama junto a la almohada y enchúfelo. El sensor de movimiento solo se lee durante el margen; no se graba audio, los datos se quedan en la memoria del teléfono y no se guardan. Si no se detecta movimiento, la alarma suena a su hora normal."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Coloque o celular na cama ao lado do travesseiro e ligue na tomada. O sensor de movimento só é lido durante o intervalo; nada é gravado, os dados ficam na memória do celular e não são guardados. Se não houver movimento, o alarme toca no horário normal."
+            "value": "Coloque o celular na cama ao lado do travesseiro e ligue na tomada. O sensor de movimento só é lido durante o intervalo; não há gravação de áudio, os dados ficam na memória do celular e não são guardados. Se não houver movimento, o alarme toca no horário normal."
           }
         },
         "hi": {
@@ -214803,7 +214803,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Toque e segure o widget e escolha Editar para escolher estilo, fonte e moldura."
+            "value": "Toque e segure o widget e escolha Editar para definir estilo, fonte e moldura."
           }
         },
         "hi": {
@@ -218074,7 +218074,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Durante el trabajo, ponga el teléfono boca abajo; si lo coge, el temporizador se pausa. Mantenga la app abierta."
+            "value": "Durante el trabajo, ponga el teléfono boca abajo; si lo levanta, el temporizador se pausa. Mantenga la app abierta."
           }
         },
         "pt": {
@@ -218187,7 +218187,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cogió el teléfono, así que el pomodoro se pausó."
+            "value": "Levantó el teléfono, así que el pomodoro se pausó."
           }
         },
         "pt": {
@@ -219882,13 +219882,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abrir esta app tras apagarla"
+            "value": "Abrir esta app al apagar la alarma"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abrir este app depois de desligar"
+            "value": "Abrir este app ao desligar o alarme"
           }
         },
         "hi": {
@@ -220221,7 +220221,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alarmas repetidas en pausa: %1$@ – %2$@"
+            "value": "Alarmas recurrentes en pausa: %1$@ – %2$@"
           }
         },
         "pt": {
@@ -221803,7 +221803,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Todavía no hay registros. Su patrón de sueño aparece aquí cuando apague alarmas e inicie sonidos para dormir o la alarma inteligente."
+            "value": "Todavía no hay registros. Su patrón de sueño aparecerá aquí cuando apague alarmas e inicie sonidos para dormir o la alarma inteligente."
           }
         },
         "pt": {
@@ -221922,7 +221922,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sem monitoramento do sono: o horário de acordar é quando um alarme é desligado (no iPhone, quando toca) e o de dormir é quando começam os sons para dormir ou o alarme inteligente. Fica só no celular."
+            "value": "Sem monitoramento do sono: o horário de acordar é quando um alarme é desligado (no iPhone, quando toca) e o de dormir é quando começam os sons para dormir ou o alarme inteligente. Os registros ficam só no celular."
           }
         },
         "hi": {
@@ -223724,13 +223724,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Último aviso para la cafeína: a partir de ahora, agua en lugar de café o té"
+            "value": "Hora de dejar la cafeína: a partir de ahora, agua en lugar de café o té"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Última chamada para a cafeína: a partir de agora, água no lugar de café ou chá"
+            "value": "Hora de parar com a cafeína: a partir de agora, água no lugar de café ou chá"
           }
         },
         "hi": {
@@ -223843,7 +223843,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Diminua as telas: falta uma hora para dormir"
+            "value": "Diminua o brilho das telas: falta uma hora para dormir"
           }
         },
         "hi": {
@@ -225877,7 +225877,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Toque no círculo de uma linha quando o horário dela tiver começado. Fica só no celular."
+            "value": "Toque no círculo de uma linha quando o horário dela tiver começado. O registro fica só no celular."
           }
         },
         "hi": {
@@ -227685,7 +227685,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uma estimativa: conta os dias entre a idade da maturidade (no máximo 15 na escola hanafita) e o ano em que você começou a rezar regularmente, witr incluído. Em caso de dúvida, pergunte a um estudioso."
+            "value": "Uma estimativa: conta os dias entre a idade da maturidade (no máximo 15 na escola hanafita) e o ano em que você começou a rezar regularmente, witr incluído. Em caso de dúvida, consulte um mufti."
           }
         },
         "hi": {
@@ -233442,7 +233442,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Añadir a favoritas"
+            "value": "Añadir a favoritos"
           }
         },
         "pt": {
@@ -233555,7 +233555,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quitar de favoritas"
+            "value": "Quitar de favoritos"
           }
         },
         "pt": {
@@ -233787,7 +233787,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cada dia mostra, por vez, uma das súplicas do Alcorão."
+            "value": "A cada dia, uma das súplicas do Alcorão é mostrada, em sequência."
           }
         },
         "hi": {
@@ -234685,13 +234685,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vista de cuentas"
+            "value": "Vista de tasbih"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Visual de contas"
+            "value": "Visual de tasbih"
           }
         },
         "hi": {
@@ -238527,7 +238527,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hace más grande o más pequeño el texto de la app. El 100 %% es el ajuste de su teléfono."
+            "value": "Agranda o reduce el texto de la app. El 100%% es el ajuste de su teléfono."
           }
         },
         "pt": {
@@ -238985,7 +238985,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Precisamos da permissão de notificações para avisar você na hora sobre horários de oração, alarmes e lembretes. Você pode desativar as que não quiser em Configurações › Notificações."
+            "value": "Precisamos da permissão de notificações para avisar você na hora sobre horários de oração, alarmes e lembretes. Você pode desativar as que não quiser em Ajustes › Notificações."
           }
         },
         "hi": {
@@ -239431,7 +239431,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Para mostrar los horarios de oración, la alquibla y el tiempo de donde está. Su ubicación no se guarda; solo una ubicación aproximada va al servicio meteorológico."
+            "value": "Para mostrar los horarios de oración, la alquibla y el tiempo del lugar donde se encuentra. Su ubicación no se guarda; solo se envía una ubicación aproximada al servicio meteorológico."
           }
         },
         "pt": {
@@ -239889,7 +239889,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aurora"
+            "value": "Amanhecer"
           }
         },
         "hi": {
@@ -241239,7 +241239,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Clima"
+            "value": "El tiempo"
           }
         },
         "pt": {
@@ -242375,7 +242375,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O que você escolher aparece na barra inferior. O relógio fica sempre ativado; você pode mudar isso depois em Configurações › Recursos."
+            "value": "O que você escolher aparece na barra inferior. O relógio fica sempre ativado; você pode mudar isso depois em Ajustes › Recursos."
           }
         },
         "hi": {
@@ -242595,7 +242595,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Los horarios de oración, la alquibla y el tiempo se calculan para donde está. Las notificaciones le avisan a tiempo de los horarios de oración y las alarmas."
+            "value": "Los horarios de oración, la alquibla y el tiempo se calculan según el lugar donde se encuentra. Las notificaciones le avisan a tiempo de los horarios de oración y las alarmas."
           }
         },
         "pt": {
@@ -243499,7 +243499,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reproducir"
+            "value": "Escuchar"
           }
         },
         "pt": {
@@ -243957,7 +243957,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Altos"
+            "value": "Fortes"
           }
         },
         "hi": {
@@ -244070,7 +244070,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sinos de vento"
+            "value": "Mensageiro dos ventos"
           }
         },
         "hi": {
@@ -244861,7 +244861,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Campainha"
+            "value": "Zumbido"
           }
         },
         "hi": {
@@ -250053,7 +250053,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Despiértame"
+            "value": "Despiérteme"
           }
         },
         "pt": {
@@ -250166,7 +250166,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Estoy dormido. Levántate cuando suene la alarma y despiértame a mí también."
+            "value": "Estoy dormido. Levántese cuando suene su alarma y despiérteme a mí también."
           }
         },
         "pt": {
@@ -251296,7 +251296,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Despertar medio"
+            "value": "Hora media de despertar"
           }
         },
         "pt": {
@@ -252884,7 +252884,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Clima ao vivo"
+            "value": "Animação do clima"
           }
         },
         "hi": {
@@ -253223,7 +253223,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A tela mostra o tempo do local escolhido: cai chuva quando chove, as nuvens aceleram e as folhas voam com o vento, cai neve quando neva, a neblina se espalha, raios brilham nas tempestades, o sol brilha nos dias limpos e as estrelas aparecem à noite. A intensidade segue as medições (precipitação, vento, nebulosidade). Com \"Reduzir movimento\" ativado, é desenhada parada."
+            "value": "A tela mostra o tempo do local escolhido: cai chuva quando chove, as nuvens aceleram e as folhas voam com o vento, cai neve quando neva, a neblina se espalha, raios brilham nas tempestades, o sol brilha nos dias limpos e as estrelas aparecem à noite. A intensidade segue as medições (precipitação, vento, nebulosidade). Com \"Reduzir movimento\" ativado, a animação fica parada."
           }
         },
         "hi": {
@@ -258189,13 +258189,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Oración del viernes"
+            "value": "Yumu'a Mubarak"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Oração de sexta-feira"
+            "value": "Jumu’ah Mubarak"
           }
         },
         "hi": {
@@ -258421,7 +258421,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Silêncio durante a oração de sexta-feira (60 min)"
+            "value": "Silenciar durante a oração de sexta-feira (60 min)"
           }
         },
         "hi": {
@@ -262483,7 +262483,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Solo con la pantalla de la alarma abierta. Una alarma con tarea no se puede detener con un botón; si aplazar tiene tarea, primero se abre la tarea."
+            "value": "Solo con la pantalla de la alarma abierta. Una alarma con tarea no se puede detener con un botón; si hay una tarea para aplazar, primero se abre la tarea."
           }
         },
         "pt": {
@@ -263506,7 +263506,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dia, data e hora escritos em letras grandes."
+            "value": "Dia, data e hora por extenso, em letras grandes."
           }
         },
         "hi": {
@@ -264404,13 +264404,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nombre del día"
+            "value": "Nombre de Alá del día"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nome do dia"
+            "value": "Nome de Alá do dia"
           }
         },
         "hi": {
@@ -266331,7 +266331,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Escolha uma foto em Configurações › Aparência do relógio."
+            "value": "Escolha uma foto em Ajustes › Aparência do relógio."
           }
         },
         "hi": {
@@ -270280,7 +270280,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ quitado"
+            "value": "Se ha quitado %1$@"
           }
         },
         "pt": {
@@ -271523,7 +271523,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Avisar a mitad"
+            "value": "Avisar a mitad de fase"
           }
         },
         "pt": {
@@ -273896,7 +273896,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "A las 19:00 si mañana hará bastante más frío o calor; 15 minutos antes de la lluvia (según la previsión por horas)."
+            "value": "A las 19:00 si mañana va a hacer bastante más frío o calor; 15 minutos antes de la lluvia (según la previsión por horas)."
           }
         },
         "pt": {
@@ -276162,7 +276162,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Contagem do sol na tela bloqueada"
+            "value": "Contagem regressiva do sol na tela bloqueada"
           }
         },
         "hi": {
@@ -276382,13 +276382,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "%2$@ días hasta el inicio de: %1$@"
+            "value": "%1$@ en %2$@ días"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "%2$@ dias até o início de: %1$@"
+            "value": "%1$@ começa em %2$@ dias"
           }
         },
         "hi": {
@@ -277399,13 +277399,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Agua"
+            "value": "Turquesa"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Água"
+            "value": "Turquesa"
           }
         },
         "hi": {
@@ -282710,13 +282710,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El reloj siempre va primero y Todo siempre al final; usted elige hasta 3 en medio. Las funciones que no están en la barra quedan en Todo."
+            "value": "Reloj siempre es la primera pestaña y Todo, la última; usted elige hasta 3 en medio. Las funciones que no están en la barra quedan en Todo."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O relógio fica sempre primeiro e Tudo sempre por último; você escolhe até 3 no meio. Os recursos fora da barra ficam em Tudo."
+            "value": "O Relógio fica sempre em primeiro e Tudo sempre por último; você escolhe até 3 no meio. Os recursos fora da barra ficam em Tudo."
           }
         },
         "hi": {
@@ -285648,13 +285648,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Una estimación aproximada a partir de la sensación térmica, la lluvia, el viento, la oscuridad y el UV; use su propio criterio."
+            "value": "Una estimación aproximada a partir de la sensación térmica, la lluvia, el viento, la oscuridad y el índice UV; use su propio criterio."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uma estimativa aproximada a partir da sensação térmica, chuva, vento, escuridão e UV; use seu próprio julgamento."
+            "value": "Uma estimativa aproximada a partir da sensação térmica, chuva, vento, escuridão e UV; decida conforme a sua situação."
           }
         },
         "hi": {
@@ -286106,7 +286106,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Máxima, mínima e precipitação diárias de três modelos meteorológicos para o mesmo local. Quando eles discordam, a previsão é menos certa."
+            "value": "Máxima, mínima e precipitação diárias de três modelos meteorológicos para o mesmo local. Quando os modelos divergem, a previsão é mais incerta."
           }
         },
         "hi": {
@@ -290846,7 +290846,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sostenga el teléfono en horizontal: el dibujo gira con las direcciones."
+            "value": "Sostenga el teléfono plano, boca arriba: el dibujo gira con las direcciones."
           }
         },
         "pt": {
@@ -291072,13 +291072,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La Luna no brilla por sí misma; refleja la luz del Sol. Da una vuelta a la Tierra cada 29,5 días aprox. Al moverse, vemos más o menos de su mitad iluminada. ¡Mueve el control para hacer girar la Luna en su órbita!"
+            "value": "La Luna no brilla por sí misma; refleja la luz del Sol. Da una vuelta a la Tierra aproximadamente cada 29,5 días. Al moverse, vemos más o menos de su mitad iluminada. ¡Mueva el control para hacer girar la Luna en su órbita!"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A Lua não brilha sozinha; ela reflete a luz do Sol. Ela dá uma volta na Terra a cada 29,5 dias, mais ou menos. Conforme se move, vemos mais ou menos da metade iluminada. Mova o controle para fazer a Lua girar na órbita!"
+            "value": "A Lua não brilha sozinha; ela reflete a luz do Sol. Ela dá uma volta ao redor da Terra a cada 29,5 dias, aproximadamente. Conforme se move, vemos uma parte maior ou menor da sua metade iluminada. Mova o controle para fazer a Lua girar na órbita!"
           }
         },
         "hi": {
@@ -291863,7 +291863,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "No del todo, inténtalo otra vez."
+            "value": "No del todo, inténtelo otra vez."
           }
         },
         "pt": {
@@ -294010,7 +294010,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lluvias de meteoros, encuentros de planetas, oposiciones (esa tarde a las 20:00)"
+            "value": "Lluvias de meteoros, acercamientos de planetas, oposiciones (esa tarde a las 20:00)"
           }
         },
         "pt": {
@@ -294801,13 +294801,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ocho ciudades con códigos cortos y una marca de día/noche."
+            "value": "La hora de ocho ciudades, con códigos cortos y una marca de día/noche."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Oito cidades com códigos curtos e uma marca de dia/noite."
+            "value": "A hora de oito cidades, com códigos curtos e uma marca de dia/noite."
           }
         },
         "hi": {
@@ -295033,7 +295033,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quando os horários de trabalho das 9h às 18h das cidades se sobrepõem, em faixas de 24 horas."
+            "value": "As horas em que o expediente das cidades (9h–18h) se sobrepõe, em faixas de 24 horas."
           }
         },
         "hi": {
@@ -295485,7 +295485,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Temporizadores em andamento e durações prontas com um toque."
+            "value": "Temporizadores em andamento e durações predefinidas que começam com um toque."
           }
         },
         "hi": {
@@ -300338,7 +300338,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ajuste el nivel de cada sonido por separado; 0 es apagado. Los sonidos se generan en el teléfono, sin archivos ni internet."
+            "value": "Ajuste el nivel de cada sonido por separado; con 0 se apaga. Los sonidos se generan en el teléfono, sin archivos ni internet."
           }
         },
         "pt": {
@@ -301016,7 +301016,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tarjetas de hora y minuto con segundos en marcha."
+            "value": "Tarjetas de hora y minuto; en el centro corren los segundos."
           }
         },
         "pt": {
@@ -305316,7 +305316,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A foto é reconhecida no celular; não é salva nem enviada para lugar nenhum."
+            "value": "A foto é analisada no celular; não é salva nem enviada para lugar nenhum."
           }
         },
         "hi": {
@@ -307350,7 +307350,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Os homens mantêm as costas e a cabeça retas e seguram os joelhos com os dedos abertos."
+            "value": "Os homens mantêm as costas e a cabeça em linha reta e seguram os joelhos com os dedos abertos."
           }
         },
         "hi": {
@@ -307576,7 +307576,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Os homens afastam os braços das laterais e a barriga das coxas."
+            "value": "Os homens afastam os braços do corpo e a barriga das coxas."
           }
         },
         "hi": {
@@ -307689,7 +307689,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "As mulheres mantêm os braços junto às laterais e a barriga perto das coxas."
+            "value": "As mulheres mantêm os braços junto ao corpo e a barriga perto das coxas."
           }
         },
         "hi": {
@@ -307802,7 +307802,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Os homens sentam sobre o pé esquerdo deitado, com o pé direito em pé e os dedos voltados para a qibla."
+            "value": "Os homens sentam sobre o pé esquerdo deitado no chão, mantendo o pé direito erguido, com os dedos voltados para a qibla."
           }
         },
         "hi": {
@@ -309265,7 +309265,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cuando el fondo de los widgets de reloj analógico, reloj digital, hora y fecha y dos relojes es la parte del fondo de pantalla que hay detrás, los widgets se ven transparentes. En la pantalla de inicio de estilo cristal de iOS 26, los widgets ya son translúcidos; este ajuste es para los demás aspectos."
+            "value": "Cuando el fondo de los widgets de reloj analógico, reloj digital, hora y fecha y dos relojes es la parte del fondo de pantalla que hay detrás, los widgets se ven transparentes. En la pantalla de inicio de estilo cristal de iOS 26, los widgets ya son translúcidos; este ajuste es para los demás estilos de pantalla de inicio."
           }
         },
         "pt": {
@@ -316051,7 +316051,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Que o novo ano realize as boas intenções."
+            "value": "Que no novo ano as boas intenções se realizem."
           }
         },
         "hi": {
@@ -316158,13 +316158,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Que Dios acepte sus oraciones."
+            "value": "Que Alá acepte sus oraciones."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Que Deus aceite as suas orações."
+            "value": "Que Alá aceite as suas orações."
           }
         },
         "hi": {
@@ -318079,13 +318079,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un abrazo."
+            "value": "Cuídese mucho."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Um abraço."
+            "value": "Cuide-se."
           }
         },
         "hi": {
@@ -318418,7 +318418,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Escriba su propio mensaje (déjelo vacío para elegir uno automáticamente)"
+            "value": "Escriba su propio mensaje (si lo deja vacío, se elige uno automáticamente)"
           }
         },
         "pt": {
@@ -321249,7 +321249,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A fala usa o mecanismo de voz do próprio celular; nenhum texto é enviado. Os anúncios automáticos funcionam enquanto esta tela estiver aberta."
+            "value": "A fala usa o mecanismo de voz do próprio celular; nenhum texto é enviado. A fala automática funciona enquanto esta tela estiver aberta."
           }
         },
         "hi": {
@@ -321475,7 +321475,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O horário de início fica salvo neste celular; ao reabrir o app, o timer continua de onde parou. A tela não apaga enquanto ele corre."
+            "value": "O horário de início fica salvo neste celular; ao reabrir o app, o temporizador continua de onde parou. A tela não apaga enquanto ele corre."
           }
         },
         "hi": {
@@ -323051,13 +323051,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aparece junto a la cámara y en la pantalla bloqueada; desactívala con × o desde el Centro de control. iOS la quita tras 8 horas; al abrir la app vuelve."
+            "value": "Aparece junto a la cámara y en la pantalla bloqueada; desactívela con × o desde el Centro de control. iOS la quita tras 8 horas; al abrir la app vuelve."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aparece ao lado da câmera e na tela bloqueada; desative com × ou na Central de Controle. O iOS a remove após 8 horas; abrir o app a traz de volta."
+            "value": "Aparece ao lado da câmera e na tela bloqueada; desative com × ou na Central de Controle. O iOS o remove após 8 horas; ao abrir o app, ele volta."
           }
         },
         "hi": {
@@ -323503,7 +323503,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La temperatura aparece en la barra de estado y en la pantalla de bloqueo; desactívala con Cerrar en la notificación, desde Ajustes rápidos o aquí. Se actualiza cada hora."
+            "value": "La temperatura aparece en la barra de estado y en la pantalla de bloqueo; desactívela con Cerrar en la notificación, desde Ajustes rápidos o aquí. Se actualiza cada hora."
           }
         },
         "pt": {
@@ -326102,13 +326102,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Activado"
+            "value": "Activadas"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ativado"
+            "value": "Seções ativas"
           }
         },
         "hi": {
@@ -327238,7 +327238,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cada permissão só é pedida quando você usa o recurso pela primeira vez. Para desligar ou ligar, toque na linha; os ajustes do celular se abrem."
+            "value": "Cada permissão só é pedida quando você usa o recurso pela primeira vez. Para desativar ou ativar uma permissão, toque na linha dela; os ajustes do celular se abrem."
           }
         },
         "hi": {
@@ -327916,7 +327916,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se permitir, os horários de oração e o clima de onde você está chegam sozinhos. Se não, você escolhe a cidade manualmente."
+            "value": "Se permitir, os horários de oração e o clima de onde você está chegam sozinhos, sem você precisar escolher. Se não, você escolhe a província ou o distrito manualmente."
           }
         },
         "hi": {
@@ -328136,7 +328136,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Solo para recordatorios por lugar: le avisan al llegar a un sitio o al salir. Si no, estos recordatorios no funcionan."
+            "value": "Solo para los recordatorios por ubicación: le avisan al llegar a un lugar o al salir de él. Si no, estos recordatorios no funcionan."
           }
         },
         "pt": {
@@ -328594,7 +328594,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se permitir, alarmes e timers tocam na hora, mesmo no modo silencioso. Se não, não tocam."
+            "value": "Se permitir, alarmes e temporizadores tocam na hora, mesmo no modo silencioso. Se não, não tocam."
           }
         },
         "hi": {
@@ -328820,7 +328820,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se permitir, alarmes, horários de oração e timers chegam no segundo certo. Se não, podem atrasar alguns minutos."
+            "value": "Se permitir, alarmes, horários de oração e temporizadores chegam no segundo exato. Se não, podem atrasar alguns minutos."
           }
         },
         "hi": {
@@ -329498,7 +329498,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Só para tarefas de alarme (mostrar um código ou objeto) e a câmera da qibla. Nada é gravado nem sai do celular."
+            "value": "Só para tarefas de alarme (mostrar um código ou objeto) e para a visão de câmera da qibla. Nada é gravado nem sai do celular."
           }
         },
         "hi": {
@@ -329718,13 +329718,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Solo para la tarea de alarma «leer en voz alta», escuchando dentro del teléfono. No se graba nada."
+            "value": "Solo para la tarea de alarma «leer en voz alta»; la escucha se hace en el propio teléfono. No se graba nada."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Só para a tarefa de alarme \"ler em voz alta\", ouvindo dentro do celular. Nada é gravado."
+            "value": "Só para a tarefa de alarme \"ler em voz alta\", para ouvir você no próprio celular. O áudio não é gravado."
           }
         },
         "hi": {
@@ -330402,7 +330402,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Só quando você escolhe uma música como som do alarme. Um trecho curto fica guardado no celular."
+            "value": "Só quando você escolhe uma música como som do alarme. Um trecho curto da música escolhida fica guardado no celular."
           }
         },
         "hi": {
@@ -330622,7 +330622,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Solo para limitar las apps que elija durante el enfoque. No podemos ver qué apps eligió."
+            "value": "Solo para limitar las apps que elija mientras se concentra. No podemos ver qué apps eligió."
           }
         },
         "pt": {
@@ -330848,7 +330848,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Solo para el reloj flotante y la pantalla de enfoque. Si no, estas dos funciones no van."
+            "value": "Solo para el reloj flotante y la pantalla de concentración. Si no, ninguna de las dos funciona."
           }
         },
         "pt": {
@@ -331074,7 +331074,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Solo para el bloqueo de enfoque, para avisarle cuando se abre una app elegida. Esto nunca sale del teléfono."
+            "value": "Solo para el bloqueo durante la concentración, para avisarle cuando se abre una app elegida. Esta información nunca sale del teléfono."
           }
         },
         "pt": {
@@ -331532,7 +331532,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mostramos os outros recursos um a um em poucas páginas curtas. Se preferir não, tudo espera por você em \"Tudo\"."
+            "value": "Vamos mostrar os outros recursos um a um, em poucas páginas curtas. Se não quiser, todos eles esperam por você em \"Tudo\"."
           }
         },
         "hi": {
@@ -331758,7 +331758,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alarmes que tocam até no modo silencioso, com tarefas para desligar como contas, sacudir o celular ou ler um código. Plano de sono, sons para dormir e alarme inteligente."
+            "value": "Alarmes que tocam até no modo silencioso, com tarefas para desligar como fazer contas, chacoalhar o celular ou ler um código. Plano de sono, sons para dormir e alarme inteligente."
           }
         },
         "hi": {
@@ -331978,13 +331978,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Brújula de la qibla, mezquitas cercanas, el Corán, súplicas, los 99 nombres, contador de tasbih, seguimiento de oraciones y ayunos. 14 métodos de cálculo."
+            "value": "Brújula de la alquibla, mezquitas cercanas, el Corán, súplicas, los 99 nombres, contador de dhikr, registro de oraciones y ayunos. 14 métodos de cálculo y 973 distritos de Turquía."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bússola da qibla, mesquitas próximas, o Alcorão, súplicas, os 99 nomes, contador de tasbih, acompanhamento de orações e jejuns. 14 métodos de cálculo."
+            "value": "Bússola da qibla, mesquitas próximas, o Alcorão, súplicas, os 99 nomes de Alá, contador de dhikr, registro de orações e jejuns. 14 métodos de cálculo e 973 distritos da Turquia."
           }
         },
         "hi": {
@@ -332436,7 +332436,7 @@
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pomodoro, cronômetro de estudo, timer, cronômetro, treino intervalado, metrônomo, relógio de xadrez, planejador de reuniões e mais."
+            "value": "Pomodoro, temporizador de estudo, temporizador, cronômetro, treino intervalado, metrônomo, relógio de xadrez, planejador de reuniões e mais."
           }
         },
         "hi": {
@@ -332656,7 +332656,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "25 esferas analógicas, 24 colores de app, un fondo que sigue la luz del día y tamaño de texto. Ajustes › Color y apariencia."
+            "value": "25 esferas analógicas, 24 colores de app, un fondo que sigue la luz del día y tamaño de texto. Ajustes › Color y aspecto."
           }
         },
         "pt": {
@@ -332882,13 +332882,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Añada el reloj, la próxima oración, el tiempo, la Luna y la fecha hijri a la pantalla de inicio y de bloqueo, y véalos también en su reloj."
+            "value": "Añada el reloj, la próxima oración, el tiempo, la Luna y la fecha de la Hégira a la pantalla de inicio y de bloqueo, y véalos también en su reloj inteligente."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Adicione o relógio, a próxima oração, o clima, a Lua e a data hijri à Tela de Início e à Tela Bloqueada, e veja também no seu relógio."
+            "value": "Adicione o relógio, a próxima oração, o clima, a Lua e a data da Hégira à Tela de Início e à Tela Bloqueada, e veja tudo também no seu smartwatch."
           }
         },
         "hi": {
