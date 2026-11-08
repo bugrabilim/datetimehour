@@ -16749,7 +16749,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "ALES/1: magistratura qəbul imtahanı (ÖSYM)"
+            "value": "ALES/1: akademik heyət və magistratura qəbul imtahanı (ÖSYM)"
           }
         },
         "ar": {
@@ -16761,7 +16761,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "ALES/1: ujian masuk pascasarjana (ÖSYM)"
+            "value": "ALES/1: ujian masuk staf akademik dan pascasarjana (ÖSYM)"
           }
         },
         "ur": {
@@ -16862,7 +16862,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "ALES/2: magistratura qəbul imtahanı (ÖSYM)"
+            "value": "ALES/2: akademik heyət və magistratura qəbul imtahanı (ÖSYM)"
           }
         },
         "ar": {
@@ -16874,7 +16874,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "ALES/2: ujian masuk pascasarjana (ÖSYM)"
+            "value": "ALES/2: ujian masuk staf akademik dan pascasarjana (ÖSYM)"
           }
         },
         "ur": {
@@ -25444,7 +25444,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vortragsfarben"
+            "value": "Präsentationsfarben"
           }
         },
         "az": {
@@ -25569,7 +25569,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "أخضر؛ كهرماني في آخر دقيقتين (أو في الخُمس الأخير للمدد القصيرة)؛ أحمر عند انتهاء الوقت."
+            "value": "أخضر؛ أصفر في آخر دقيقتين (أو في الخُمس الأخير للمدد القصيرة)؛ أحمر عند انتهاء الوقت."
           }
         },
         "id": {
@@ -52897,7 +52897,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Extreme; avoid staying outside"
+            "value": "Extreme; don't stay outside long"
           }
         },
         "de": {
@@ -52921,7 +52921,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ekstrem; hindari berada di luar"
+            "value": "Ekstrem; jangan berlama-lama di luar"
           }
         },
         "ur": {
@@ -55056,13 +55056,13 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sabah nəzərəçarpacaq dərəcədə soyuq: ən yüksək temperatur %1$@° düşür."
+            "value": "Sabah nəzərəçarpacaq dərəcədə daha soyuq: ən yüksək temperatur %1$@° düşür."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "غدًا أبرد بوضوح: تنخفض العظمى %1$@°."
+            "value": "غدًا أبرد بوضوح: تنخفض العظمى بمقدار %1$@°."
           }
         },
         "id": {
@@ -55169,13 +55169,13 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sabah nəzərəçarpacaq dərəcədə isti: ən yüksək temperatur %1$@° artır."
+            "value": "Sabah nəzərəçarpacaq dərəcədə daha isti: ən yüksək temperatur %1$@° artır."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "غدًا أدفأ بوضوح: ترتفع العظمى %1$@°."
+            "value": "غدًا أدفأ بوضوح: ترتفع العظمى بمقدار %1$@°."
           }
         },
         "id": {
@@ -55401,7 +55401,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "سيكون الغد أبرد من اليوم بوضوح: تنخفض العظمى %1$@°."
+            "value": "سيكون الغد أبرد من اليوم بوضوح: تنخفض العظمى بمقدار %1$@°."
           }
         },
         "id": {
@@ -55514,7 +55514,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "سيكون الغد أدفأ من اليوم بوضوح: ترتفع العظمى %1$@°."
+            "value": "سيكون الغد أدفأ من اليوم بوضوح: ترتفع العظمى بمقدار %1$@°."
           }
         },
         "id": {
@@ -55972,7 +55972,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hembusan"
+            "value": "Embusan"
           }
         },
         "ur": {
@@ -60129,13 +60129,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Meteor shower peaks, close approaches of the planets and the Moon, oppositions and greatest elongations; times in the selected place's time."
+            "value": "Meteor shower peaks, close approaches of the planets and the Moon, oppositions and greatest elongations; times are local to the selected place."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Maxima von Meteorströmen, Begegnungen von Planeten und Mond, Oppositionen und größte Elongationen; Zeiten in der Zeit des gewählten Ortes."
+            "value": "Maxima von Meteorströmen, Begegnungen von Planeten und Mond, Oppositionen und größte Elongationen; Uhrzeiten in der Zeitzone des gewählten Ortes."
           }
         },
         "az": {
@@ -61378,7 +61378,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Maximum der %1$@"
+            "value": "%1$@ im Maximum"
           }
         },
         "az": {
@@ -61503,13 +61503,13 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "حتى ~%1$@ شهابًا في الساعة في سماء مظلمة"
+            "value": "معدل الشهب في سماء مظلمة: ~%1$@ في الساعة"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hingga ~%1$@ meteor per jam di langit gelap"
+            "value": "~%1$@ meteor per jam di langit gelap"
           }
         },
         "ur": {
@@ -62752,7 +62752,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gelap penuh"
+            "value": "Gelap total"
           }
         },
         "ur": {
@@ -62865,7 +62865,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Malam ini tidak gelap penuh (Matahari tidak turun 18° di bawah cakrawala)."
+            "value": "Malam ini tidak gelap total (Matahari tidak turun hingga 18° di bawah cakrawala)."
           }
         },
         "ur": {
@@ -63543,7 +63543,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Malam yang baik untuk mengamati"
+            "value": "Malam yang baik untuk mengamati langit"
           }
         },
         "ur": {
@@ -63656,7 +63656,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cukup untuk mengamati"
+            "value": "Cukup baik untuk mengamati langit"
           }
         },
         "ur": {
@@ -63769,7 +63769,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kurang baik untuk mengamati"
+            "value": "Kurang baik untuk mengamati langit"
           }
         },
         "ur": {
@@ -64215,7 +64215,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ في أعلى ارتفاع له نحو %2$@ (%3$@°)."
+            "value": "%1$@: أعلى ارتفاع نحو %2$@ (%3$@°)."
           }
         },
         "id": {
@@ -64447,7 +64447,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sumbu mendatar waktu, sumbu tegak ketinggian di atas cakrawala; pita gelap adalah gelap penuh."
+            "value": "Sumbu mendatar waktu, sumbu tegak ketinggian di atas cakrawala; pita gelap adalah gelap total."
           }
         },
         "ur": {
@@ -65345,7 +65345,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@: كسوف كلي؛ {c1}–{c4}، والكلية نحو %2$@."
+            "value": "%1$@: كسوف كلي؛ {c1}–{c4}، والمرحلة الكلية نحو %2$@."
           }
         },
         "id": {
@@ -65440,7 +65440,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@: annular eclipse; {c1}–{c4}, ring around %2$@."
+            "value": "%1$@: annular eclipse; {c1}–{c4}, annularity around %2$@."
           }
         },
         "de": {
@@ -65779,7 +65779,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Penumbra begins"
+            "value": "Penumbral phase begins"
           }
         },
         "de": {
@@ -66457,7 +66457,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Penumbra ends"
+            "value": "Penumbral phase ends"
           }
         },
         "de": {
@@ -66689,7 +66689,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zeiten sind ungefähr (einige Minuten); von hier nicht sichtbare Momente sind blass."
+            "value": "Zeiten sind Näherungswerte (einige Minuten); von hier nicht sichtbare Zeitpunkte werden blass dargestellt."
           }
         },
         "az": {
@@ -74837,7 +74837,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لا تنشر رئاسة الشؤون الدينية هذه الأوقات. تُحسب وفق تعريفات تقويم تركيا: الإشراق والاصفرار والشمس على ارتفاع 5° فوق الأفق، واشتباك النجوم عند 10° والعشاء الثاني عند 19° تحته؛ والضحوة الكبرى منتصف ما بين الإمساك والمغرب؛ والليل من المغرب إلى الإمساك."
+            "value": "لا تنشر رئاسة الشؤون الدينية هذه الأوقات. تُحسب وفق تعريفات «تقويم تركيا» (Türkiye Takvimi): الإشراق والاصفرار والشمس على ارتفاع 5° فوق الأفق، واشتباك النجوم عند 10° والعشاء الثاني عند 19° تحته؛ والضحوة الكبرى منتصف ما بين الإمساك والمغرب؛ والليل من المغرب إلى الإمساك."
           }
         },
         "id": {
@@ -75170,7 +75170,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Diyanətin dərc etdiyi saatlarla eyni qayda (günəşdən 38 dəq sonra); dəqiq saat il müftiliyinin elanıdır."
+            "value": "Diyanətin dərc etdiyi saatlarla eyni qayda (gün çıxandan 38 dəq sonra); dəqiq saat vilayət müftiliyinin elanıdır."
           }
         },
         "ar": {
@@ -75390,7 +75390,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Traditionelle Daten des türkischen Volkskalenders (nach dem alten Rumi-Kalender); keine Wettervorhersage, Quellen weichen um einige Tage ab."
+            "value": "Traditionelle Daten des türkischen Volkskalenders (nach dem alten Rumi-Kalender); keine Wettervorhersage; je nach Quelle können sie um einige Tage abweichen."
           }
         },
         "az": {
@@ -75622,7 +75622,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Erbain (zəmheri; qışın ən soyuq 40 günü)"
+            "value": "Ərbəin (zəmhərir; qışın ən soyuq 40 günü)"
           }
         },
         "ar": {
@@ -75735,7 +75735,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Həmsin (qışın 50 günlük ikinci yarısı)"
+            "value": "Xəmsin (qışın 50 günlük ikinci yarısı)"
           }
         },
         "ar": {
@@ -76306,7 +76306,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "أيام البحور (أشد أيام الصيف حرًا)"
+            "value": "أيام الباحور (أشد أيام الصيف حرًا)"
           }
         },
         "id": {
@@ -78899,19 +78899,19 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Adlar Şimali Amerika ənənəsindəndir (Old Farmer's Almanac); qarşılıqları tərcümədir. Məhsul Ayı payız bərabərliyinə ən yaxın bədirdir."
+            "value": "Adlar Şimali Amerika ənənəsindəndir (Old Farmer's Almanac); qarşılıqları tərcümədir, yerli ənənə deyil. Məhsul Ayı payız bərabərgünlüyünə ən yaxın bədirdir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الأسماء من التقليد الأمريكي الشمالي (Old Farmer's Almanac)، والمقابلات العربية ترجمة. قمر الحصاد هو البدر الأقرب إلى الاعتدال الخريفي."
+            "value": "الأسماء من تقليد أمريكا الشمالية (Old Farmer's Almanac)، والمقابلات العربية ترجمة وليست تقليدًا عربيًا راسخًا. قمر الحصاد هو البدر الأقرب إلى الاعتدال الخريفي."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nama mengikuti tradisi Amerika Utara (Old Farmer's Almanac); padanannya adalah terjemahan. Bulan Panen adalah purnama yang paling dekat dengan ekuinoks September."
+            "value": "Nama mengikuti tradisi Amerika Utara (Old Farmer's Almanac); padanannya adalah terjemahan, bukan tradisi Indonesia. Bulan Panen adalah purnama yang paling dekat dengan ekuinoks September."
           }
         },
         "ur": {
@@ -80808,7 +80808,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "In Ezani (alla turca) time, the evening prayer (sunset) is 12:00 and hours are counted from there."
+            "value": "In Ezani (alaturka) time, maghrib (sunset) is 12:00 and hours are counted from there."
           }
         },
         "de": {
@@ -81034,31 +81034,31 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The Rumi date uses the Julian calendar (13 days behind) with the year starting on 1 March, as in traditional Turkish almanacs."
+            "value": "The Rumi date uses the Julian calendar (13 days behind the Gregorian) with the year starting on 1 March, as in traditional Turkish almanacs."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Das Rumi-Datum folgt dem julianischen Kalender (13 Tage zurück), Jahresbeginn 1. März, wie in traditionellen türkischen Almanachen."
+            "value": "Das Rumi-Datum folgt dem julianischen Kalender (13 Tage hinter dem gregorianischen), Jahresbeginn 1. März, wie in traditionellen türkischen Almanachen."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rumi tarix Yulian təqvimi ilə (13 gün geri) və 1 mart il başı ilə yazılır; ənənəvi təqvimlərdəki kimi."
+            "value": "Rumi tarix Yulian təqvimi ilə (miladi təqvimdən 13 gün geri) və 1 mart il başı ilə yazılır; ənənəvi Türkiyə təqvimlərindəki kimi."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "يُكتب التاريخ الرومي بالتقويم اليولياني (متأخرًا 13 يومًا) وتبدأ السنة في 1 مارس، كما في التقاويم التركية التقليدية."
+            "value": "يُكتب التاريخ الرومي بالتقويم اليولياني (متأخرًا 13 يومًا عن الميلادي) وتبدأ السنة في 1 مارس، كما في التقاويم التركية التقليدية."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tanggal Rumi memakai kalender Julian (13 hari lebih awal) dengan tahun baru 1 Maret, seperti almanak Turki tradisional."
+            "value": "Tanggal Rumi memakai kalender Julian (tertinggal 13 hari dari Masehi) dengan tahun baru 1 Maret, seperti almanak Turki tradisional."
           }
         },
         "ur": {
@@ -100256,7 +100256,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Məs. Riyaziyyat yazılı"
+            "value": "Məs. Riyaziyyatdan yazı işi"
           }
         },
         "ar": {
@@ -116290,13 +116290,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone. Worship records (Quran bookmark, dhikr, prayer and fasting tracker, zakat amounts) stay on the phone. If \"Sync with iCloud\" is on, settings and personal records are synced only with your own devices through your iCloud account. Air quality, pollen, the model comparison and the Apple Watch weather complication come from Open-Meteo; for these, coordinates rounded to two decimals are sent."
+            "value": "No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple's weather service. Your calendars are accessed only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone. Worship records (Quran bookmark, dhikr, prayer and fasting tracker, zakat amounts) stay on the phone. If \"Sync with iCloud\" is on, settings and personal records are synced only with your own devices through your iCloud account. Air quality, pollen, the model comparison and the Apple Watch weather complication come from Open-Meteo; for these, coordinates rounded to two decimals are sent."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Standort des gewählten Ortes an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen. Von Ihnen gewählte Fotos (Vollbilduhr, Countdowns) werden nur auf dem Telefon gespeichert. Einträge zur Glaubenspraxis (Koran-Lesezeichen, Dhikr, Gebets- und Fastenprotokoll, Zakat-Beträge) bleiben auf dem Telefon. Ist „Mit iCloud synchronisieren“ aktiv, werden Einstellungen und persönliche Einträge über Ihren iCloud-Account nur mit Ihren eigenen Geräten abgeglichen. Luftqualität, Pollen, der Modellvergleich und die Wetter-Komplikation der Apple Watch stammen von Open-Meteo; dafür werden auf zwei Nachkommastellen gerundete Koordinaten gesendet."
+            "value": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Standort des gewählten Ortes an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen. Von Ihnen gewählte Fotos (Vollbilduhr, Countdowns) werden nur auf dem Telefon gespeichert. Einträge zur Glaubenspraxis (Koran-Lesezeichen, Dhikr, Gebets- und Fastenprotokoll, Zakat-Beträge) bleiben nur auf dem Telefon. Ist „Mit iCloud synchronisieren“ aktiv, werden Einstellungen und persönliche Einträge über Ihren iCloud-Account nur mit Ihren eigenen Geräten abgeglichen. Luftqualität, Pollen, der Modellvergleich und die Wetter-Komplikation der Apple Watch stammen von Open-Meteo; dafür werden auf zwei Nachkommastellen gerundete Koordinaten gesendet."
           }
         },
         "az": {
@@ -130635,7 +130635,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rozetlerin silindi."
+            "value": "Rozetleriniz silindi."
           }
         },
         "en": {
@@ -130974,7 +130974,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu cihazdaki bütün rozetlerin ve ilerlemen (gördüğün saat modelleri, kullanım serin) silinir. Geri alınamaz."
+            "value": "Bu cihazdaki bütün rozetleriniz ve ilerlemeniz (gördüğünüz saat modelleri, kullanım seriniz) silinir. Geri alınamaz."
           }
         },
         "en": {
@@ -131200,7 +131200,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ayarlar'dan uygulama rengini değiştir."
+            "value": "Ayarlar'dan uygulama rengini değiştirin."
           }
         },
         "en": {
@@ -131218,7 +131218,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Parametrlərdən tətbiqin rəngini dəyiş."
+            "value": "Parametrlərdən tətbiqin rəngini dəyişin."
           }
         },
         "ar": {
@@ -131426,7 +131426,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saate dokunarak saniyeleri aç ya da kapat."
+            "value": "Saate dokunarak saniyeleri açın ya da kapatın."
           }
         },
         "en": {
@@ -131444,7 +131444,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saata toxunaraq saniyələri aç və ya bağla."
+            "value": "Saata toxunaraq saniyələri açın və ya bağlayın."
           }
         },
         "ar": {
@@ -131652,7 +131652,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat sahnesinde başka bir saat modeline geç."
+            "value": "Saat sahnesinde başka bir saat modeline geçin."
           }
         },
         "en": {
@@ -131670,7 +131670,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat səhnəsində başqa saat modelinə keç."
+            "value": "Saat səhnəsində başqa saat modelinə keçin."
           }
         },
         "ar": {
@@ -131878,7 +131878,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saati tam ekranda aç."
+            "value": "Saati tam ekranda açın."
           }
         },
         "en": {
@@ -131896,7 +131896,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saatı tam ekranda aç."
+            "value": "Saatı tam ekranda açın."
           }
         },
         "ar": {
@@ -132330,7 +132330,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Takvimde bir güne dokunup ayrıntısını aç."
+            "value": "Takvimde bir güne dokunup ayrıntısını açın."
           }
         },
         "en": {
@@ -132348,7 +132348,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Təqvimdə bir günə toxunub təfərrüatını aç."
+            "value": "Təqvimdə bir günə toxunub təfərrüatını açın."
           }
         },
         "ar": {
@@ -132556,7 +132556,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kronometreyi başlat."
+            "value": "Kronometreyi başlatın."
           }
         },
         "en": {
@@ -132574,7 +132574,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saniyəölçəni işə sal."
+            "value": "Saniyəölçəni işə salın."
           }
         },
         "ar": {
@@ -132782,7 +132782,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bir zamanlayıcı başlat."
+            "value": "Bir zamanlayıcı başlatın."
           }
         },
         "en": {
@@ -132800,7 +132800,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bir taymer başlat."
+            "value": "Bir taymer başladın."
           }
         },
         "ar": {
@@ -133008,7 +133008,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bir alarm kur."
+            "value": "Bir alarm kurun."
           }
         },
         "en": {
@@ -133026,7 +133026,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bir zəngli saat qur."
+            "value": "Bir zəngli saat qurun."
           }
         },
         "ar": {
@@ -133234,7 +133234,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dünya saatlerinde başka bir zamana bak."
+            "value": "Dünya saatlerinde başka bir zamana bakın."
           }
         },
         "en": {
@@ -133252,7 +133252,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dünya saatlarında başqa bir vaxta bax."
+            "value": "Dünya saatlarında başqa bir vaxta baxın."
           }
         },
         "ar": {
@@ -133460,7 +133460,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tarih hesaplayıcıda bir hesap yap."
+            "value": "Tarih hesaplayıcıda bir hesap yapın."
           }
         },
         "en": {
@@ -133478,7 +133478,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tarix kalkulyatorunda bir hesablama et."
+            "value": "Tarix kalkulyatorunda bir hesablama edin."
           }
         },
         "ar": {
@@ -133686,7 +133686,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dünya saatlerine bir şehir ya da saat dilimi ekle."
+            "value": "Dünya saatlerine bir şehir ya da saat dilimi ekleyin."
           }
         },
         "en": {
@@ -133704,7 +133704,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dünya saatlarına bir şəhər və ya saat qurşağı əlavə et."
+            "value": "Dünya saatlarına bir şəhər və ya saat qurşağı əlavə edin."
           }
         },
         "ar": {
@@ -133912,7 +133912,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dünya sekmesinde dönen dünyayı yakınlaştır."
+            "value": "Dünya sekmesinde dönen dünyayı yakınlaştırın."
           }
         },
         "en": {
@@ -133930,7 +133930,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dünya bölməsində fırlanan dünyanı yaxınlaşdır."
+            "value": "Dünya bölməsində fırlanan dünyanı yaxınlaşdırın."
           }
         },
         "ar": {
@@ -134138,7 +134138,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bir pomodoro çalışma süresini sonuna kadar tamamla."
+            "value": "Bir pomodoro çalışma süresini sonuna kadar tamamlayın."
           }
         },
         "en": {
@@ -134156,7 +134156,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bir pomodoro iş müddətini sonuna qədər tamamla."
+            "value": "Bir pomodoro iş müddətini sonuna qədər tamamlayın."
           }
         },
         "ar": {
@@ -134364,7 +134364,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uygulamayı üç gün üst üste aç."
+            "value": "Uygulamayı üç gün üst üste açın."
           }
         },
         "en": {
@@ -134382,7 +134382,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tətbiqi üç gün ardıcıl aç."
+            "value": "Tətbiqi üç gün ardıcıl açın."
           }
         },
         "ar": {
@@ -134590,7 +134590,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "10 farklı saat modelini gör."
+            "value": "10 farklı saat modelini görün."
           }
         },
         "en": {
@@ -134608,7 +134608,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "10 fərqli saat modelini gör."
+            "value": "10 fərqli saat modelini görün."
           }
         },
         "ar": {
@@ -134816,7 +134816,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uygulamayı yedi gün üst üste aç."
+            "value": "Uygulamayı yedi gün üst üste açın."
           }
         },
         "en": {
@@ -134834,7 +134834,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tətbiqi yeddi gün ardıcıl aç."
+            "value": "Tətbiqi yeddi gün ardıcıl açın."
           }
         },
         "ar": {
@@ -135042,7 +135042,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat sahnesindeki bütün modelleri gör."
+            "value": "Saat sahnesindeki bütün modelleri görün."
           }
         },
         "en": {
@@ -135060,7 +135060,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat səhnəsindəki bütün modelləri gör."
+            "value": "Saat səhnəsindəki bütün modelləri görün."
           }
         },
         "ar": {
@@ -140811,7 +140811,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ times"
+            "value": "%1$@×"
           }
         },
         "de": {
@@ -150184,109 +150184,109 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat her zaman açık. Açtığınız özellikler alt çubukta görünür; hepsi kapalıysa alt çubuk gizlenir, ayarlar saat ekranındaki dişliden açılır."
+            "value": "Saat her zaman açık. Açtığınız özellikler Tümü'nde görünür; en çok üçünü alt çubuğa alabilirsiniz. Ayarlar da Tümü'ndedir."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The clock is always on. Features you turn on appear in the bottom bar; with all of them off the bar is hidden and settings open from the gear on the clock screen."
+            "value": "The clock is always on. Features you turn on appear in All; you can put up to three of them in the tab bar. Settings are in All too."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Uhr ist immer an. Eingeschaltete Funktionen erscheinen in der unteren Leiste; sind alle aus, wird die Leiste ausgeblendet und die Einstellungen öffnen sich über das Zahnrad auf dem Uhrbildschirm."
+            "value": "Die Uhr ist immer an. Eingeschaltete Funktionen erscheinen unter „Alle“; bis zu drei davon können Sie in die Tableiste legen. Auch die Einstellungen finden Sie unter „Alle“."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat həmişə açıqdır. Açdığınız xüsusiyyətlər alt zolaqda görünür; hamısı bağlı olduqda alt zolaq gizlənir, parametrlər saat ekranındakı dişli ilə açılır."
+            "value": "Saat həmişə açıqdır. Açdığınız bölmələr Hamısı səhifəsində görünür; ən çoxu üçünü alt panelə əlavə edə bilərsiniz. Parametrlər də Hamısı səhifəsindədir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الساعة مفعّلة دائمًا. تظهر الميزات التي تفعّلها في الشريط السفلي؛ وإذا عُطّلت كلها يختفي الشريط وتُفتح الإعدادات من رمز الترس في شاشة الساعة."
+            "value": "الساعة مفعّلة دائمًا. تظهر الميزات التي تفعّلها في «الكل»، ويمكنك وضع ثلاث منها على الأكثر في الشريط السفلي. والإعدادات أيضًا في «الكل»."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Jam selalu aktif. Fitur yang Anda nyalakan muncul di bilah bawah; jika semuanya mati, bilah disembunyikan dan pengaturan dibuka dari ikon roda gigi di layar jam."
+            "value": "Jam selalu aktif. Fitur yang Anda aktifkan muncul di Semua; Anda bisa menaruh hingga tiga di antaranya di bilah bawah. Pengaturan juga ada di Semua."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "گھڑی ہمیشہ آن رہتی ہے۔ آپ کی آن کی ہوئی خصوصیات نیچے کی بار میں دکھتی ہیں؛ سب بند ہوں تو بار چھپ جاتی ہے اور ترتیبات گھڑی کی اسکرین کے گیئر سے کھلتی ہیں۔"
+            "value": "گھڑی ہمیشہ آن رہتی ہے۔ آپ کی آن کی ہوئی خصوصیات «سب» میں نظر آتی ہیں؛ ان میں سے زیادہ سے زیادہ تین نیچے کی پٹی میں رکھ سکتے ہیں۔ ترتیبات بھی «سب» میں ہیں۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "ساعت همیشه روشن است. ویژگی‌هایی که روشن می‌کنید در نوار پایین ظاهر می‌شوند؛ اگر همه خاموش باشند نوار پنهان است و تنظیمات از چرخ‌دندهٔ صفحهٔ ساعت باز می‌شود."
+            "value": "ساعت همیشه روشن است. ویژگی‌هایی که روشن می‌کنید در «همه» دیده می‌شوند؛ حداکثر سه تا از آن‌ها را می‌توانید در نوار پایین بگذارید. تنظیمات هم در «همه» است."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L’horloge est toujours active. Les fonctions que vous activez apparaissent dans la barre du bas ; si elles sont toutes désactivées, la barre est masquée et les réglages s’ouvrent avec la roue dentée de l’écran de l’horloge."
+            "value": "L’horloge est toujours active. Les fonctions activées apparaissent dans Tout ; vous pouvez en placer jusqu’à trois dans la barre d’onglets. Les réglages sont aussi dans Tout."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Часы включены всегда. Включённые функции появляются в нижней панели; если все выключены, панель скрыта, а настройки открываются шестерёнкой на экране часов."
+            "value": "Часы включены всегда. Включённые функции появляются в разделе «Все»; до трёх из них можно вынести на нижнюю панель. Настройки тоже в разделе «Все»."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "時計は常にオンです。オンにした機能は下のバーに表示されます。すべてオフのときはバーが隠れ、設定は時計画面の歯車から開きます。"
+            "value": "時計は常にオンです。オンにした機能は「すべて」に表示され、そのうち3つまでをタブバーに置けます。設定も「すべて」にあります。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "시계는 항상 켜져 있습니다. 켠 기능은 하단 바에 나타나며, 모두 끄면 바가 숨겨지고 설정은 시계 화면의 톱니바퀴에서 엽니다."
+            "value": "시계는 항상 켜져 있습니다. 켠 기능은 전체에 나타나며, 그중 최대 3개를 탭 막대에 둘 수 있습니다. 설정도 전체에 있습니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "时钟始终开启。您打开的功能会出现在底部栏；全部关闭时底部栏隐藏，设置从时钟界面的齿轮打开。"
+            "value": "时钟始终开启。您开启的功能会显示在“全部”中，最多可以把其中三个放到底部标签栏。设置也在“全部”中。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Laging naka-on ang orasan. Lumalabas sa bottom bar ang mga feature na naka-on; kapag naka-off lahat, nakatago ang bar at bubukas ang settings mula sa gear sa screen ng orasan."
+            "value": "Laging bukas ang orasan. Lumalabas sa Lahat ang mga feature na binuksan mo; hanggang tatlo sa mga ito ang puwedeng ilagay sa tab bar. Nasa Lahat din ang Settings."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "นาฬิกาเปิดอยู่เสมอ ฟีเจอร์ที่คุณเปิดจะแสดงในแถบด้านล่าง หากปิดทั้งหมด แถบจะซ่อนและเปิดการตั้งค่าได้จากรูปเฟืองบนหน้าจอนาฬิกา"
+            "value": "นาฬิกาเปิดอยู่เสมอ ฟีเจอร์ที่เปิดจะแสดงในทั้งหมด และวางได้สูงสุดสามรายการบนแถบแท็บ การตั้งค่าก็อยู่ในทั้งหมด"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El reloj siempre está activado. Las funciones que active aparecen en la barra inferior; con todas desactivadas la barra se oculta y los ajustes se abren desde el engranaje de la pantalla del reloj."
+            "value": "El reloj está siempre activado. Las funciones que active aparecen en Todo; puede poner hasta tres en la barra de pestañas. Los ajustes también están en Todo."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "O relógio fica sempre ativado. Os recursos que você ativar aparecem na barra inferior; com todos desativados a barra some e as configurações abrem pela engrenagem na tela do relógio."
+            "value": "O relógio fica sempre ativado. Os recursos que você ativar aparecem em Tudo; você pode colocar até três deles na barra de abas. Os Ajustes também ficam em Tudo."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "घड़ी हमेशा चालू रहती है। आप जो सुविधाएँ चालू करते हैं वे नीचे की पट्टी में दिखती हैं; सब बंद होने पर पट्टी छिप जाती है और सेटिंग्स घड़ी स्क्रीन के गियर से खुलती हैं।"
+            "value": "घड़ी हमेशा चालू रहती है। आप जो सुविधाएँ चालू करते हैं वे सब में दिखती हैं; इनमें से अधिकतम तीन को टैब बार में रख सकते हैं। सेटिंग्स भी सब में हैं।"
           }
         }
       }
@@ -150410,109 +150410,109 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Anlık hava, saatlik ve 7 günlük tahmin"
+            "value": "Anlık hava, saatlik ve günlük tahmin"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Current conditions, hourly and 7-day forecast"
+            "value": "Current conditions, hourly and daily forecast"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aktuelles Wetter, stündliche und 7-Tage-Vorhersage"
+            "value": "Aktuelles Wetter, stündliche und tägliche Vorhersage"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cari hava, saatlıq və 7 günlük proqnoz"
+            "value": "Cari hava, saatlıq və günlük proqnoz"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الطقس الحالي والتوقعات بالساعة ولسبعة أيام"
+            "value": "الطقس الحالي والتوقعات بالساعة واليومية"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cuaca saat ini, prakiraan per jam dan 7 hari"
+            "value": "Cuaca saat ini, prakiraan per jam dan harian"
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "موجودہ حال، گھنٹہ وار اور 7 دن کی پیش گوئی"
+            "value": "موجودہ حال، گھنٹہ وار اور روزانہ پیش گوئی"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "وضع کنونی، پیش‌بینی ساعتی و 7 روزه"
+            "value": "وضع کنونی، پیش‌بینی ساعتی و روزانه"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Conditions actuelles, prévisions horaires et sur 7 jours"
+            "value": "Conditions actuelles, prévisions horaires et quotidiennes"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Текущая погода, почасовой и 7-дневный прогноз"
+            "value": "Текущая погода, прогноз по часам и по дням"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "現在の天気、1時間ごとと7日間の予報"
+            "value": "現在の天気、1時間ごとと日ごとの予報"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "현재 날씨, 시간별·7일 예보"
+            "value": "현재 날씨, 시간별·일별 예보"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "当前天气、逐小时和7天预报"
+            "value": "当前天气、逐小时和逐日预报"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kasalukuyang panahon, oras-oras at 7-araw na forecast"
+            "value": "Kasalukuyang panahon, oras-oras at araw-araw na forecast"
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "สภาพอากาศปัจจุบัน พยากรณ์รายชั่วโมงและ 7 วัน"
+            "value": "สภาพอากาศปัจจุบัน พยากรณ์รายชั่วโมงและรายวัน"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Condiciones actuales, previsión por horas y de 7 días"
+            "value": "Condiciones actuales, previsión por horas y por días"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Condições atuais, previsão por hora e para 7 dias"
+            "value": "Condições atuais, previsão por hora e por dia"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "मौजूदा मौसम, घंटेवार और 7 दिन का पूर्वानुमान"
+            "value": "मौजूदा मौसम, घंटेवार और रोज़ाना पूर्वानुमान"
           }
         }
       }
@@ -170637,7 +170637,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bir alarmı kapatma görevini yaparak kapat."
+            "value": "Bir alarmı kapatma görevini yaparak kapatın."
           }
         },
         "en": {
@@ -170655,7 +170655,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bir zəngi söndürmə tapşırığını yerinə yetirərək söndür."
+            "value": "Bir zəngi söndürmə tapşırığını yerinə yetirərək söndürün."
           }
         },
         "ar": {
@@ -179570,7 +179570,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Based on the Diyanet's rules: nisab is 80.18 g of gold, the rate is one fortieth, and a lunar year must have passed over the wealth. Your home, car and personal items are not counted. Ask a scholar for certainty. Amounts stay on this device."
+            "value": "Based on the Diyanet's rules: nisab is 80.18 g of gold, the rate is one fortieth, and a lunar year must have passed over the wealth. Your home, car and personal items are not counted. For certainty, consult the Diyanet. Amounts stay on this device."
           }
         },
         "de": {
@@ -179582,7 +179582,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hesab Diyanətin əsaslarına görədir: nisab 80,18 qram qızıl, nisbət qırxda bir; malın üzərindən bir qəməri il keçməlidir. İstifadə olunan ev, avtomobil və əşyalar daxil edilmir. Dəqiq məlumat üçün alimə müraciət edin. Məbləğlər yalnız bu cihazda qalır."
+            "value": "Hesab Diyanətin əsaslarına görədir: nisab 80,18 qram qızıl, nisbət qırxda bir; malın üzərindən bir qəməri il keçməlidir. İstifadə olunan ev, avtomobil və əşyalar daxil edilmir. Dəqiq məlumat üçün Diyanətə müraciət edin. Məbləğlər yalnız bu cihazda qalır."
           }
         },
         "ar": {
@@ -199684,7 +199684,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tasbih counter"
+            "value": "Dhikr counter"
           }
         },
         "de": {
@@ -212126,7 +212126,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tık-tık (saniyədə bir)"
+            "value": "Tıq-tıq (saniyədə bir)"
           }
         },
         "ar": {
@@ -212929,7 +212929,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dalam layar penuh teks memenuhi separuh atas dan jam mengecil di bawahnya (mis. SELAMAT ULANG TAHUN)."
+            "value": "Dalam layar penuh, teks memenuhi separuh atas layar dan jam mengecil di bawahnya (mis. SELAMAT ULANG TAHUN)."
           }
         },
         "ur": {
@@ -213357,13 +213357,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Clock model 21 has two dials: here on the left, this city on the right. You can also tap the city name to change it."
+            "value": "Clock style 21 has two dials: here on the left, this city on the right. You can also tap the city name to change it."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uhrmodell 21 hat zwei Zifferblätter: links hier, rechts diese Stadt. Tippen Sie auf den Stadtnamen, um sie zu ändern."
+            "value": "Uhrmodell 21 hat zwei Zifferblätter: links hier, rechts diese Stadt. Sie können sie auch durch Tippen auf den Stadtnamen ändern."
           }
         },
         "az": {
@@ -213375,13 +213375,13 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "في نموذج الساعة 21 ميناءان: هنا على اليسار وهذه المدينة على اليمين. يمكنك أيضًا لمس اسم المدينة لتغييرها."
+            "value": "في نموذج الساعة 21 ميناءان: هنا على اليمين وهذه المدينة على اليسار. يمكنك أيضًا لمس اسم المدينة لتغييرها."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Model jam 21 punya dua muka: di sini di kiri, kota ini di kanan. Anda juga bisa mengetuk nama kota untuk menggantinya."
+            "value": "Model jam 21 memiliki dua muka jam: lokasi Anda di kiri, kota ini di kanan. Anda juga bisa mengetuk nama kota untuk menggantinya."
           }
         },
         "ur": {
@@ -214737,7 +214737,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tekan lama widget lalu pilih Edit untuk memilih gaya, huruf, dan bingkai."
+            "value": "Tekan lama widget lalu pilih Edit untuk memilih gaya, jenis huruf, dan bingkai."
           }
         },
         "ur": {
@@ -214963,7 +214963,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Di sini dan kota pilihan Anda, pada dua jam analog."
+            "value": "Lokasi Anda dan kota pilihan, pada dua muka jam analog."
           }
         },
         "ur": {
@@ -216081,7 +216081,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bitmə"
+            "value": "Son"
           }
         },
         "ar": {
@@ -216194,7 +216194,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "İndi cədvəl daxilində: blok açıqdır"
+            "value": "İndi cədvəl daxilində: bloklama açıqdır"
           }
         },
         "ar": {
@@ -216319,7 +216319,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Di iPhone jadwal diterapkan saat aplikasi dibuka dan saat penyegaran latar belakang, jadi mungkin tidak tepat menit."
+            "value": "Di iPhone jadwal diterapkan saat aplikasi dibuka dan saat penyegaran latar belakang, jadi mungkin tidak dimulai tepat pada menitnya."
           }
         },
         "ur": {
@@ -216872,7 +216872,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "4-7-8 (rahatlama)"
+            "value": "4-7-8 (rahatlanma)"
           }
         },
         "ar": {
@@ -217990,7 +217990,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "During work, lay the phone face down; if you pick it up, the timer pauses. Keep the app open."
+            "value": "During a work session, lay the phone face down; if you pick it up, the timer pauses. Keep the app open."
           }
         },
         "de": {
@@ -219013,7 +219013,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Diesen Monat noch keine Bäume. Beende eine Arbeitsrunde für den ersten Setzling."
+            "value": "Diesen Monat noch keine Bäume. Beenden Sie eine Arbeitsrunde für den ersten Setzling."
           }
         },
         "az": {
@@ -219358,7 +219358,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sakit ön zəngli saat"
+            "value": "Sakit ilkin zəng"
           }
         },
         "ar": {
@@ -219471,7 +219471,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zəngdən əvvəl zəif yağış səsi və yüngül zəng sizi yavaş-yavaş oyatmağa başlayır."
+            "value": "Zəngdən əvvəl zəif yağış səsi və yüngül zınqırov səsi sizi yavaş-yavaş oyatmağa başlayır."
           }
         },
         "ar": {
@@ -219810,7 +219810,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bağlananda bu tətbiqi aç"
+            "value": "Söndürüləndə bu tətbiqi aç"
           }
         },
         "ar": {
@@ -220274,7 +220274,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alarm berulang tidak berbunyi di antara tanggal ini; alarm sekali tidak terpengaruh."
+            "value": "Alarm berulang tidak berbunyi di antara tanggal ini; alarm satu kali tidak terpengaruh."
           }
         },
         "ur": {
@@ -221172,7 +221172,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "أبطأ بـ %1$@ دقيقة من الأسبوع الماضي"
+            "value": "متأخر بـ %1$@ دقيقة عن الأسبوع الماضي"
           }
         },
         "id": {
@@ -221725,7 +221725,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Noch keine Einträge. Ihr Schlafmuster erscheint hier, sobald Sie Wecker beenden und Schlafgeräusche oder den smarten Wecker starten."
+            "value": "Noch keine Einträge. Ihr Schlafmuster erscheint hier, sobald Sie Wecker beenden und Schlafgeräusche oder den intelligenten Wecker starten."
           }
         },
         "az": {
@@ -221743,7 +221743,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belum ada catatan. Pola tidur Anda muncul di sini setelah mematikan alarm dan memulai suara tidur atau alarm pintar."
+            "value": "Belum ada catatan. Pola tidur Anda muncul di sini setelah Anda mematikan alarm dan memulai suara tidur atau alarm pintar."
           }
         },
         "ur": {
@@ -221838,7 +221838,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kein Schlaftracking: Aufstehen ist, wenn ein Wecker beendet wird (iPhone: wenn er klingelt), Zubettgehen der Start von Schlafgeräuschen oder smartem Wecker. Nur auf dem Telefon gespeichert."
+            "value": "Kein Schlaftracking: Aufstehen ist, wenn ein Wecker beendet wird (iPhone: wenn er klingelt), Zubettgehen der Start von Schlafgeräuschen oder intelligentem Wecker. Nur auf dem Telefon gespeichert."
           }
         },
         "az": {
@@ -221856,7 +221856,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tidak ada pelacakan tidur: bangun adalah saat alarm dimatikan (di iPhone saat berbunyi), tidur adalah saat suara tidur atau alarm pintar dimulai. Hanya disimpan di ponsel."
+            "value": "Tidak ada pelacakan tidur: waktu bangun adalah saat alarm dimatikan (di iPhone saat berbunyi), waktu tidur adalah saat suara tidur atau alarm pintar dimulai. Hanya disimpan di ponsel."
           }
         },
         "ur": {
@@ -222748,7 +222748,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Açıq-aşkar səhərçi"
+            "value": "Açıq-aşkar səhər tipi"
           }
         },
         "ar": {
@@ -222861,7 +222861,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Səhərçi"
+            "value": "Səhər tipi"
           }
         },
         "ar": {
@@ -223087,7 +223087,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Axşamçı"
+            "value": "Axşam tipi"
           }
         },
         "ar": {
@@ -223200,7 +223200,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Açıq-aşkar axşamçı"
+            "value": "Açıq-aşkar axşam tipi"
           }
         },
         "ar": {
@@ -223307,7 +223307,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Keine wissenschaftliche Skala: eine kurze Schätzung nach der korrigierten Schlafmitte aus dem Munich ChronoType Questionnaire. Eingaben werden nicht gespeichert."
+            "value": "Keine wissenschaftliche Skala: eine kurze Schätzung nach der korrigierten Schlafmitte aus dem Münchner Chronotyp-Fragebogen. Eingaben werden nicht gespeichert."
           }
         },
         "az": {
@@ -223640,7 +223640,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Last call for caffeine: water instead of coffee or tea from now"
+            "value": "Last call for caffeine: water instead of coffee or tea from now on"
           }
         },
         "de": {
@@ -223765,13 +223765,13 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ekranları azaldın: yatmağa bir saat var"
+            "value": "Ekranların parlaqlığını azaldın: yatmağa bir saat var"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "خفّف الشاشات: ساعة على موعد النوم"
+            "value": "خفّف إضاءة الشاشات: ساعة على موعد النوم"
           }
         },
         "id": {
@@ -224782,7 +224782,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qeydinizə #qəhvə, #idman kimi etiketlər yazın; son 30 gün burada sayılır, toxunanda süzülür."
+            "value": "Qeydinizə #qəhvə, #idman kimi etiketlər yazın; son 30 gün burada sayılır, birinə toxunanda həmin günlər süzülür."
           }
         },
         "ar": {
@@ -225347,13 +225347,13 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Üç aylara %1$@ gün qaldı"
+            "value": "Üç mübarək aya %1$@ gün qaldı"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "بقي %1$@ يومًا على الأشهر الثلاثة"
+            "value": "بقي %1$@ يومًا على الأشهر الثلاثة المباركة"
           }
         },
         "id": {
@@ -225454,7 +225454,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Noch %1$@ Tage bis Ramadan"
+            "value": "Noch %1$@ Tage bis zum Ramadan"
           }
         },
         "az": {
@@ -226031,7 +226031,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "صُلّي %1$@/%2$@"
+            "value": "صُلّيت %1$@/%2$@"
           }
         },
         "id": {
@@ -227595,7 +227595,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "An estimate: it counts the days between the age of maturity (at most 15 in the Hanafi school) and the year you began praying regularly, witr included. Ask a scholar if unsure."
+            "value": "An estimate: it counts the days between the age of maturity (at most 15 in the Hanafi school) and the year you began praying regularly, witr included. If unsure, consult your local mufti's office."
           }
         },
         "de": {
@@ -227607,13 +227607,13 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Təxmini hesabdır: həddi-büluğ yaşı (Hənəfi məzhəbində ən gec 15) ilə müntəzəm qılmağa başladığınız il arasındakı günlər sayılır, vitr daxil. Əmin olmadığınız məsələdə alimə müraciət edin."
+            "value": "Təxmini hesabdır: həddi-büluğ yaşı (Hənəfi məzhəbində ən gec 15) ilə müntəzəm qılmağa başladığınız il arasındakı günlər sayılır, vitr daxil. Əmin olmadığınız məsələdə müftiliyə müraciət edin."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تقدير تقريبي: تُحسب الأيام بين سن البلوغ (في المذهب الحنفي 15 على الأكثر) وسنة المواظبة على الصلاة، ومنها الوتر. استشر أهل العلم عند الشك."
+            "value": "تقدير تقريبي: تُحسب الأيام بين سن البلوغ (في المذهب الحنفي 15 سنة على الأكثر) وسنة المواظبة على الصلاة، مع احتساب الوتر. استشر أهل العلم عند الشك."
           }
         },
         "id": {
@@ -228279,7 +228279,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nachzuholendes Fasten: Grund"
+            "value": "Nachzuholendes Fasten hinzufügen: Grund"
           }
         },
         "az": {
@@ -228838,7 +228838,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pause tracking (menstruation/postnatal)"
+            "value": "Pause tracking (menstruation/postnatal bleeding)"
           }
         },
         "de": {
@@ -228963,7 +228963,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ tarixindən dayandırılıb; bu günlər statistikaya və qəzaya girmir."
+            "value": "%1$@ tarixindən bəri dayandırılıb; bu günlər statistikaya və qəzaya girmir."
           }
         },
         "ar": {
@@ -229409,7 +229409,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Letztes Jahr"
+            "value": "Das letzte Jahr"
           }
         },
         "az": {
@@ -229421,7 +229421,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "العام الماضي"
+            "value": "آخر عام"
           }
         },
         "id": {
@@ -230200,13 +230200,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ gelesen · Dschuz’ %2$@"
+            "value": "%1$@ gelesen · Dschuz %2$@"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ oxundu · %2$@-cü cüz"
+            "value": "%1$@ oxundu · %2$@. cüz"
           }
         },
         "ar": {
@@ -231437,7 +231437,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Night blue"
+            "value": "Midnight blue"
           }
         },
         "de": {
@@ -232805,7 +232805,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quran'dan"
+            "value": "Qurandan"
           }
         },
         "ar": {
@@ -233596,7 +233596,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ramazanın %1$@-ci günü duası"
+            "value": "Ramazanın %1$@. günü duası"
           }
         },
         "ar": {
@@ -235517,7 +235517,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qəndiliniz mübarək olsun"
+            "value": "Gecəniz mübarək olsun"
           }
         },
         "ar": {
@@ -237194,7 +237194,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Arkadaşlarınla paylaş"
+            "value": "Arkadaşlarınızla paylaşın"
           }
         },
         "en": {
@@ -237212,7 +237212,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dostlarınla paylaş"
+            "value": "Dostlarınızla paylaş"
           }
         },
         "ar": {
@@ -238901,13 +238901,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Damit wir Sie rechtzeitig an Gebetszeiten, Wecker und Erinnerungen erinnern können, brauchen wir die Mitteilungsberechtigung. Unerwünschte Mitteilungen schalten Sie unter Einstellungen › Mitteilungen aus."
+            "value": "Damit wir Ihnen Gebetszeiten, Wecker und Erinnerungen rechtzeitig melden können, brauchen wir die Mitteilungsberechtigung. Unerwünschte Mitteilungen schalten Sie unter Einstellungen › Benachrichtigungen aus."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Namaz vaxtlarını, zəngli saatları və xatırlatmaları vaxtında bildirə bilməyimiz üçün bildiriş icazəsi lazımdır. İstəmədiyiniz bildirişi Ayarlar › Bildirişlər bölməsindən söndürə bilərsiniz."
+            "value": "Namaz vaxtlarını, zəngli saatları və xatırlatmaları vaxtında bildirə bilməyimiz üçün bildiriş icazəsi lazımdır. İstəmədiyiniz bildirişi Parametrlər › Bildirişlər bölməsindən söndürə bilərsiniz."
           }
         },
         "ar": {
@@ -242297,7 +242297,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Seçdikləriniz alt paneldə görünür. Saat həmişə açıqdır; sonra Ayarlar › Xüsusiyyətlər bölməsindən dəyişə bilərsiniz."
+            "value": "Seçdikləriniz alt paneldə görünür. Saat həmişə açıqdır; sonra Parametrlər › Xüsusiyyətlər bölməsindən dəyişə bilərsiniz."
           }
         },
         "ar": {
@@ -243094,7 +243094,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تخطٍّ"
+            "value": "تخطَّ"
           }
         },
         "id": {
@@ -243302,7 +243302,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Royalty-free sounds that come with the app. Tap ▶ to listen and the row to choose."
+            "value": "Royalty-free sounds that come with the app. Tap ▶ to listen, or tap a row to choose it."
           }
         },
         "de": {
@@ -244783,7 +244783,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zümzümə"
+            "value": "Vızıltı"
           }
         },
         "ar": {
@@ -245235,7 +245235,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mövzu rəngi"
+            "value": "Tema rəngi"
           }
         },
         "ar": {
@@ -246026,7 +246026,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dərs vaxtı"
+            "value": "Dərs oxuma"
           }
         },
         "ar": {
@@ -247144,7 +247144,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "One question less"
+            "value": "One less question"
           }
         },
         "de": {
@@ -249065,7 +249065,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Records stay on this device and, if iCloud sync is on, in your own iCloud account."
+            "value": "Records stay only on this device and, if iCloud sync is on, in your own iCloud account."
           }
         },
         "de": {
@@ -249963,7 +249963,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Beni uyandır"
+            "value": "Beni uyandırın"
           }
         },
         "en": {
@@ -250308,7 +250308,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "We woke up together today. See you tomorrow too."
+            "value": "We woke up together today. See you again tomorrow."
           }
         },
         "de": {
@@ -250873,7 +250873,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Every wake-up is 10 points. Get up without snoozing for +10, or +3 after one snooze. Completing the dismiss task adds +5. Each day you get up without snoozing extends your streak for +2 per day (up to +10). The chick grows as your points rise."
+            "value": "Every wake-up is 10 points. Get up without snoozing for +10, or +3 after one snooze. Completing the dismiss task adds +5. Each day you get up without snoozing extends your streak, adding +2 per streak day (up to +10). The chick grows as your points rise."
           }
         },
         "de": {
@@ -250885,7 +250885,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hər oyanış 10 xaldır. Təxirə salmadan qalxsanız +10, bir dəfə təxirə salsanız +3. Söndürmə tapşırığını etsəniz +5. Təxirsiz qalxdığınız hər gün seriya uzanır, hər gün üçün +2 (ən çox +10). Xal artdıqca cücə böyüyür."
+            "value": "Hər oyanış 10 xaldır. Təxirə salmadan qalxsanız +10, bir dəfə təxirə salsanız +3. Söndürmə tapşırığını yerinə yetirsəniz +5. Təxirsiz qalxdığınız hər gün seriya uzanır, hər gün üçün +2 (ən çox +10). Xal artdıqca cücə böyüyür."
           }
         },
         "ar": {
@@ -251230,7 +251230,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "متوسط الاستيقاظ"
+            "value": "متوسط وقت الاستيقاظ"
           }
         },
         "id": {
@@ -252128,7 +252128,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "tapşırıq edildi"
+            "value": "tapşırıq tamamlandı"
           }
         },
         "ar": {
@@ -252681,7 +252681,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Points and the report stay on this device and, if iCloud sync is on, in your own iCloud account. On iPhone a wake-up is recorded when you open the app after dismissing the alarm or finish the dismiss task."
+            "value": "Points and the report stay only on this device and, if iCloud sync is on, in your own iCloud account. On iPhone a wake-up is recorded when you open the app after dismissing the alarm or when you finish the dismiss task."
           }
         },
         "de": {
@@ -252693,7 +252693,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Xallar və hesabat yalnız bu cihazda və iCloud sinxronizasiyası açıqdırsa, öz iCloud hesabınızda saxlanır. iPhone-da oyanış zəngi söndürdükdən sonra tətbiqi açanda və ya söndürmə tapşırığını bitirəndə qeyd olunur."
+            "value": "Xallar və hesabat yalnız bu cihazda və iCloud sinxronizasiyası açıqdırsa, öz iCloud hesabınızda saxlanır. iPhone-da oyanış, zəngi söndürdükdən sonra tətbiqi açanda və ya söndürmə tapşırığını bitirəndə qeyd olunur."
           }
         },
         "ar": {
@@ -252794,7 +252794,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Live weather"
+            "value": "Weather animation"
           }
         },
         "de": {
@@ -253127,7 +253127,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ekran seçili yerin havasını gösterir: yağmurda yağmur yağar, rüzgârda bulutlar hızlanır ve yapraklar savrulur, karda kar, sisde sis, fırtınada şimşek, açık gündüz Güneş parlar, gece yıldızlar çıkar. Yoğunluk ölçüme göre değişir (yağış, rüzgâr, bulut oranı). Hareketi azalt açıksa durağan çizilir."
+            "value": "Ekran seçili yerin havasını gösterir: yağmurda yağmur yağar, rüzgârda bulutlar hızlanır ve yapraklar savrulur, karda kar, siste sis, fırtınada şimşek, açık gündüz Güneş parlar, gece yıldızlar çıkar. Yoğunluk ölçüme göre değişir (yağış, rüzgâr, bulut oranı). Hareketi azalt açıksa durağan çizilir."
           }
         },
         "en": {
@@ -253704,7 +253704,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die App-Sprache kann von der Telefonsprache abweichen. Widgets und Mitteilungen verwenden ebenfalls die gewählte Sprache."
+            "value": "Die App-Sprache kann von der Telefonsprache abweichen. Widgets und Benachrichtigungen verwenden ebenfalls die gewählte Sprache."
           }
         },
         "az": {
@@ -253823,7 +253823,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tətbiqin dili telefonun dilindən fərqli seçilə bilər; yeni dil tətbiqi bağlayıb yenidən açanda istifadə olunur. Vidcetlər telefonun dilində qalır (iPhone Ayarlar › Saat Tarix › Dil ilə də dəyişmək olar)."
+            "value": "Tətbiqin dili telefonun dilindən fərqli seçilə bilər; yeni dil tətbiqi bağlayıb yenidən açanda istifadə olunur. Vidcetlər telefonun dilində qalır (iPhone Parametrləri › Saat Tarix › Dil bölməsindən də dəyişmək olar)."
           }
         },
         "ar": {
@@ -256071,7 +256071,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The dial is used by the app's analog clocks and in full screen; the color tints the hands. Widgets keep the classic dial with their own styles."
+            "value": "The dial is used by the app's analog clocks with numerals and in full screen; the color tints the hands. Widgets keep the classic dial with their own styles."
           }
         },
         "de": {
@@ -256083,13 +256083,13 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Siferblat tətbiqdəki analoq saatlarda və tam ekranda istifadə olunur; rəng əqrəbləri boyayır. Vidcetlər öz görünüşləri ilə klassik siferblatda qalır."
+            "value": "Siferblat tətbiqdəki rəqəmli analoq saatlarda və tam ekranda istifadə olunur; rəng əqrəbləri boyayır. Vidcetlər öz görünüşləri ilə klassik siferblatda qalır."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "يُستخدم الميناء في الساعات التناظرية داخل التطبيق وفي وضع ملء الشاشة؛ ويلوّن اللونُ العقارب. تبقى الأدوات على الميناء الكلاسيكي بأنماطها الخاصة."
+            "value": "يُستخدم الميناء في الساعات التناظرية ذات الأرقام داخل التطبيق وفي وضع ملء الشاشة؛ ويلوّن اللونُ العقارب. تبقى الأدوات على الميناء الكلاسيكي بأنماطها الخاصة."
           }
         },
         "id": {
@@ -257100,7 +257100,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ay fazaları (təzə ay, bədir)"
+            "value": "Ay fazaları (yeni ay, tam ay)"
           }
         },
         "ar": {
@@ -257766,7 +257766,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Time to %1$@: %2$@"
+            "value": "Time until %1$@: %2$@"
           }
         },
         "de": {
@@ -257992,19 +257992,19 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "On Fridays, 45 minutes before the noon prayer."
+            "value": "On Fridays, 45 minutes before Dhuhr."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Freitags 45 Minuten vor dem Mittagsgebet."
+            "value": "Freitags 45 Minuten vor Dhuhr."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cümə günü günorta namazından 45 dəqiqə əvvəl."
+            "value": "Cümə günü zöhr vaxtından 45 dəqiqə əvvəl."
           }
         },
         "ar": {
@@ -258105,13 +258105,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Friday prayer"
+            "value": "Jumu’ah Mubarak"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Freitagsgebet"
+            "value": "Gesegneten Freitag"
           }
         },
         "az": {
@@ -258908,7 +258908,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gün batımı"
+            "value": "Gün batışı"
           }
         },
         "ar": {
@@ -259235,7 +259235,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Exactly then"
+            "value": "At the exact time"
           }
         },
         "de": {
@@ -259687,7 +259687,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The sun does not rise or set here on some of these days; the alarm skips those days."
+            "value": "The sun does not rise or set here at this time of year; the alarm skips those days."
           }
         },
         "de": {
@@ -260383,7 +260383,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لا غفوة بعد"
+            "value": "آخر وقت للغفوة"
           }
         },
         "id": {
@@ -260484,7 +260484,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Keine Grenze"
+            "value": "Unbegrenzt"
           }
         },
         "az": {
@@ -260829,7 +260829,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Telefonun zəngli saat səsinə görə; tədricən artan səsdə ən yüksək səviyyə."
+            "value": "Telefonun zəngli saat səs səviyyəsinə görə; tədricən artan səsdə ən yüksək səviyyə."
           }
         },
         "ar": {
@@ -260948,7 +260948,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "عشوائية"
+            "value": "مهمة عشوائية"
           }
         },
         "id": {
@@ -261055,7 +261055,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "İşığı yandırmaq"
+            "value": "İşığı yandır"
           }
         },
         "ar": {
@@ -261269,7 +261269,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tasks are asked one after another; a random task changes with each alarm."
+            "value": "Tasks come one after another; a random task changes each time the alarm rings."
           }
         },
         "de": {
@@ -261733,7 +261733,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Təxir etmək üçün tapşırığı edin"
+            "value": "Təxir etmək üçün tapşırığı yerinə yetirin"
           }
         },
         "ar": {
@@ -264320,7 +264320,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Name of the day"
+            "value": "Today's Name of Allah"
           }
         },
         "de": {
@@ -264445,7 +264445,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vidjetlər"
+            "value": "Vidcetlər"
           }
         },
         "ar": {
@@ -264546,25 +264546,25 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "To add one, touch and hold an empty spot on the Home Screen, tap the + button at the top left and choose Saat Tarih. For Lock Screen widgets, touch and hold the Lock Screen and tap Customize."
+            "value": "To add one, touch and hold an empty spot on the Home Screen, tap the + button at the top left and choose Time & Date. For Lock Screen widgets, touch and hold the Lock Screen and tap Customize."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zum Hinzufügen eine leere Stelle auf dem Home-Bildschirm gedrückt halten, oben links auf + tippen und Saat Tarih wählen. Für Sperrbildschirm-Widgets den Sperrbildschirm gedrückt halten und auf Anpassen tippen."
+            "value": "Zum Hinzufügen eine leere Stelle auf dem Home-Bildschirm gedrückt halten, oben links auf + tippen und Uhr & Datum wählen. Für Sperrbildschirm-Widgets den Sperrbildschirm gedrückt halten und auf Anpassen tippen."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Əlavə etmək üçün ana ekranda boş yerə uzun basın, sol yuxarıdakı + düyməsinə toxunun və Saat Tarix-i seçin. Kilid ekranı vidjetləri üçün kilid ekranına uzun basıb Fərdiləşdir-ə toxunun."
+            "value": "Əlavə etmək üçün ana ekranda boş yerə uzun basın, sol yuxarıdakı + düyməsinə toxunun və Saat Tarix-i seçin. Kilid ekranı vidcetləri üçün kilid ekranına uzun basıb Fərdiləşdir-ə toxunun."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "للإضافة، المس مطولًا مكانًا فارغًا في الشاشة الرئيسية، ثم اضغط زر + أعلى اليسار واختر التطبيق. لأدوات شاشة القفل، المس شاشة القفل مطولًا واضغط تخصيص."
+            "value": "للإضافة، المس مطولًا مكانًا فارغًا في الشاشة الرئيسية، ثم اضغط زر + في أعلى الشاشة واختر «الوقت والتاريخ». لأدوات شاشة القفل، المس شاشة القفل مطولًا واضغط تخصيص."
           }
         },
         "id": {
@@ -264659,25 +264659,25 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tap Add to Home screen, or touch and hold an empty spot on the home screen and pick Saat Tarih from Widgets."
+            "value": "Tap Add to Home screen, or touch and hold an empty spot on the home screen and pick Time & Date from Widgets."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tippen Sie auf „Zum Startbildschirm hinzufügen“ oder halten Sie eine leere Stelle gedrückt und wählen Sie Saat Tarih unter Widgets."
+            "value": "Tippen Sie auf „Zum Startbildschirm“ oder halten Sie eine leere Stelle auf dem Startbildschirm gedrückt und wählen Sie Uhr & Datum unter Widgets."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ana ekrana əlavə et-ə toxunun və ya ana ekranda boş yerə uzun basıb Vidjetlər siyahısından Saat Tarix-i seçin."
+            "value": "Ana ekrana əlavə et-ə toxunun və ya ana ekranda boş yerə uzun basıb Vidcetlər siyahısından Saat Tarix-i seçin."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "اضغط إضافة إلى الشاشة الرئيسية، أو المس مطولًا مكانًا فارغًا واختر التطبيق من قائمة الأدوات المصغّرة."
+            "value": "اضغط «إضافة إلى الشاشة الرئيسية»، أو المس مطولًا مكانًا فارغًا فيها واختر «الوقت والتاريخ» من قائمة الأدوات المصغّرة."
           }
         },
         "id": {
@@ -265450,7 +265450,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Every morning at 08:00, the saying from the calendar leaf, silently."
+            "value": "Every morning at 08:00, the saying from the calendar page, silently."
           }
         },
         "de": {
@@ -265801,7 +265801,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Android 12 və sonrasında tətbiq və vidjetlər divar kağızınızın rənglərini alır (Material You)."
+            "value": "Android 12 və sonrasında tətbiq və vidcetlər divar kağızınızın rənglərini alır (Material You)."
           }
         },
         "ar": {
@@ -266253,7 +266253,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Foto Ayarlar › Saat görünüşü bölməsindən seçilir."
+            "value": "Foto Parametrlər › Saatın görünüşü bölməsindən seçilir."
           }
         },
         "ar": {
@@ -266693,13 +266693,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "To see your phone's calendars, tap Calendar › Show my phone's calendars in the app."
+            "value": "To see your phone's calendars, tap Calendar › Show calendars on my phone in the app."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Um die Kalender des Telefons zu sehen, in der App Kalender › Kalender meines Telefons zeigen antippen."
+            "value": "Um die Kalender Ihres Telefons zu sehen, tippen Sie in der App auf Kalender › Kalender auf meinem Telefon anzeigen."
           }
         },
         "az": {
@@ -266711,7 +266711,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لرؤية تقويمات هاتفك، اضغط في التطبيق التقويم › إظهار تقويمات هاتفي."
+            "value": "لرؤية تقويمات هاتفك، اضغط في التطبيق التقويم › «اعرض التقويمات على هاتفي»."
           }
         },
         "id": {
@@ -267835,7 +267835,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@-ci il"
+            "value": "%1$@. il"
           }
         },
         "ar": {
@@ -271231,7 +271231,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الإعلانات"
+            "value": "إعلانات صوتية"
           }
         },
         "id": {
@@ -274728,7 +274728,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ən yüksək nöqtə (keçid)"
+            "value": "Ən yüksək nöqtə (kulminasiya)"
           }
         },
         "ar": {
@@ -274841,7 +274841,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Növbəti ilk dördəbir"
+            "value": "Növbəti birinci rüb"
           }
         },
         "ar": {
@@ -274954,7 +274954,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Növbəti son dördəbir"
+            "value": "Növbəti son rüb"
           }
         },
         "ar": {
@@ -275067,7 +275067,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ayın doğuşuna %1$@"
+            "value": "Ayın çıxmasına %1$@"
           }
         },
         "ar": {
@@ -275180,7 +275180,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ayın batışına %1$@"
+            "value": "Ayın batmasına %1$@"
           }
         },
         "ar": {
@@ -275293,7 +275293,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu gün %1$@ diqqət etdim"
+            "value": "Bu gün %1$@ diqqətimi cəmlədim"
           }
         },
         "ar": {
@@ -275412,7 +275412,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "في الوقت"
+            "value": "في الموعد"
           }
         },
         "id": {
@@ -275745,7 +275745,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dördəbirlər"
+            "value": "Rüblər"
           }
         },
         "ar": {
@@ -276304,7 +276304,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Noch %2$@ Tage bis %1$@"
+            "value": "Noch %2$@ Tage bis zum %1$@"
           }
         },
         "az": {
@@ -276756,7 +276756,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Notieren Sie jeden Morgen mit wenigen Tippern Stimmung, Schlaf und Tagesvorsatz."
+            "value": "Notieren Sie jeden Morgen mit wenigen Fingertipps Stimmung, Schlaf und Tagesvorsatz."
           }
         },
         "az": {
@@ -276976,19 +276976,19 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dismiss task, gradual volume, snooze limit, music, sunrise light, smart alarm, speak time"
+            "value": "Dismiss task, gradual volume, snooze limit, music, sunrise light, smart alarm, speak the time"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aufgabe zum Beenden, ansteigende Lautstärke, Schlummerlimit, Musik, Sonnenaufgangslicht, intelligenter Wecker, Zeitansage"
+            "value": "Aufgabe zum Ausschalten, ansteigende Lautstärke, Schlummer-Limit, Musik, Sonnenaufgangslicht, intelligenter Wecker, Zeitansage"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Söndürmə tapşırığı, tədricən səs, təxirə salma həddi, musiqi, gün çıxışı işığı, ağıllı zəngli saat, vaxtı demək"
+            "value": "Söndürmə tapşırığı, tədricən yüksələn səs, təxirə salma həddi, musiqi, gün çıxışı işığı, ağıllı zəng, vaxtı demək"
           }
         },
         "ar": {
@@ -279480,7 +279480,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "عندما يحلّ الظلام (حساس الضوء)"
+            "value": "عندما يكون المكان مظلمًا (مستشعر الضوء)"
           }
         },
         "id": {
@@ -280604,7 +280604,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ayarlarda axtar"
+            "value": "Parametrlərdə axtar"
           }
         },
         "ar": {
@@ -282299,7 +282299,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Xüsusiyyətləri redaktə edin"
+            "value": "Xüsusiyyətləri redaktə et"
           }
         },
         "ar": {
@@ -282632,7 +282632,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uhr ist immer zuerst und Alle immer zuletzt; dazwischen wählen Sie bis zu 3. Funktionen außerhalb der Leiste finden Sie unter Alle."
+            "value": "„Uhr“ steht immer an erster, „Alle“ an letzter Stelle; dazwischen wählen Sie bis zu 3. Funktionen außerhalb der Leiste finden Sie unter „Alle“."
           }
         },
         "az": {
@@ -284779,7 +284779,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Spazieren"
+            "value": "Spazierengehen"
           }
         },
         "az": {
@@ -286022,7 +286022,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tageshöchst-, Tiefstwert und Niederschlag dreier Wettermodelle für denselben Ort. Weichen sie ab, ist die Vorhersage unsicherer."
+            "value": "Tageshöchst- und -tiefstwerte sowie Niederschlag dreier Wettermodelle für denselben Ort. Weichen sie voneinander ab, ist die Vorhersage unsicherer."
           }
         },
         "az": {
@@ -286254,7 +286254,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Avropa havanın keyfiyyəti indeksi (EAQI)"
+            "value": "Avropa hava keyfiyyəti indeksi (EAQI)"
           }
         },
         "ar": {
@@ -286474,7 +286474,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mäßig"
+            "value": "Akzeptabel"
           }
         },
         "az": {
@@ -287271,7 +287271,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ağcaqayın"
+            "value": "Tozağacı"
           }
         },
         "ar": {
@@ -288853,7 +288853,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gündəlik"
+            "value": "Siyahı"
           }
         },
         "ar": {
@@ -290768,13 +290768,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Halten Sie das Telefon flach: Die Zeichnung dreht sich mit."
+            "value": "Halten Sie das Telefon flach: Die Zeichnung richtet sich nach den Himmelsrichtungen aus."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Telefonu üfüqi tutun: çizim istiqamətlərə görə fırlanır."
+            "value": "Telefonu üfüqi tutun: təsvir istiqamətlərə görə fırlanır."
           }
         },
         "ar": {
@@ -290994,7 +290994,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Der Mond leuchtet nicht selbst, er spiegelt das Sonnenlicht. Er umkreist die Erde in etwa 29,5 Tagen. Dabei sehen wir mal mehr, mal weniger von seiner beleuchteten Hälfte. Probieren Sie es mit dem Schieberegler aus!"
+            "value": "Der Mond leuchtet nicht selbst, er spiegelt das Sonnenlicht. Er umkreist die Erde in etwa 29,5 Tagen. Dabei sehen wir mal mehr, mal weniger von seiner beleuchteten Hälfte. Bewegen Sie den Mond mit dem Schieberegler auf seiner Bahn und probieren Sie es aus!"
           }
         },
         "az": {
@@ -291113,7 +291113,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@-ci gün"
+            "value": "Gün %1$@"
           }
         },
         "ar": {
@@ -293926,7 +293926,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Meteor showers, planet meetups, oppositions (that evening at 20:00)"
+            "value": "Meteor showers, close approaches of planets, oppositions (that evening at 20:00)"
           }
         },
         "de": {
@@ -294717,7 +294717,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Eight cities with short codes and a day/night mark."
+            "value": "The time in eight cities, with short codes and a day/night mark."
           }
         },
         "de": {
@@ -294735,7 +294735,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "ثماني مدن برموز مختصرة وعلامة نهار/ليل."
+            "value": "الوقت في ثماني مدن برموز مختصرة وعلامة نهار/ليل."
           }
         },
         "id": {
@@ -294949,7 +294949,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wann sich die Arbeitszeiten 9–18 Uhr der Städte überschneiden, auf 24-Stunden-Streifen."
+            "value": "Wann sich die Arbeitszeiten der Städte (9–18 Uhr) überschneiden, auf 24-Stunden-Streifen."
           }
         },
         "az": {
@@ -295865,7 +295865,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ تركيز اليوم"
+            "value": "تركيز اليوم: %1$@"
           }
         },
         "id": {
@@ -296638,7 +296638,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tasbih counter"
+            "value": "Dhikr counter"
           }
         },
         "de": {
@@ -296656,7 +296656,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "المسبحة"
+            "value": "عدّاد الذكر"
           }
         },
         "id": {
@@ -296876,7 +296876,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fasilə"
+            "value": "Dayandır"
           }
         },
         "ar": {
@@ -297899,7 +297899,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "نمط الأرقام الرقمية"
+            "value": "نمط أرقام الساعة الرقمية"
           }
         },
         "id": {
@@ -298672,13 +298672,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "LED and LCD show the unlit segments too; vertical stacks hours, minutes and seconds."
+            "value": "LED and LCD show the unlit segments too; the vertical style stacks hours, minutes and seconds."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "LED und LCD zeigen auch die unbeleuchteten Segmente; vertikal stapelt Stunden, Minuten und Sekunden."
+            "value": "LED und LCD zeigen auch die unbeleuchteten Segmente; vertikal stehen Stunden, Minuten und Sekunden untereinander."
           }
         },
         "az": {
@@ -300266,7 +300266,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hər səsin səviyyəsini ayrıca tənzimləyin; 0 sönülüdür. Səslər telefonda yaradılır, fayl və ya internet lazım deyil."
+            "value": "Hər səsin səviyyəsini ayrıca tənzimləyin; 0 səsi bağlayır. Səslər telefonda yaradılır, fayl və ya internet lazım deyil."
           }
         },
         "ar": {
@@ -300831,7 +300831,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saniyəli çevrilən saat"
+            "value": "Saniyəli vərəqli saat"
           }
         },
         "ar": {
@@ -300932,7 +300932,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hour and minute cards with running seconds."
+            "value": "Hour and minute cards, with seconds running in the middle."
           }
         },
         "de": {
@@ -300944,13 +300944,13 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat və dəqiqə kartları; saniyələr axır."
+            "value": "Saat və dəqiqə kartları; ortada saniyələr axır."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "بطاقات للساعات والدقائق مع ثوانٍ جارية."
+            "value": "بطاقات للساعات والدقائق، والثواني تجري في الوسط."
           }
         },
         "id": {
@@ -301158,7 +301158,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No Arabic speech voice on this phone; you can download one in the phone's settings (Accessibility › Spoken content or Text-to-speech)."
+            "value": "No Arabic speech voice on this phone; you can download one in the phone's settings (Accessibility › Spoken Content or Text-to-speech)."
           }
         },
         "de": {
@@ -301283,7 +301283,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Oxuyan telefonun öz ərəb danışıq səsidir, yazı deyil; tələffüz qüsurlu ola bilər."
+            "value": "Oxuyan telefonun öz ərəb danışıq səsidir, səs yazısı deyil; tələffüz qüsurlu ola bilər."
           }
         },
         "ar": {
@@ -304102,7 +304102,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Was fotografieren"
+            "value": "Fotomotiv"
           }
         },
         "az": {
@@ -304435,7 +304435,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Toothbrush or sink"
+            "value": "A toothbrush or sink"
           }
         },
         "de": {
@@ -304554,7 +304554,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Den Himmel"
+            "value": "Der Himmel"
           }
         },
         "az": {
@@ -304893,7 +304893,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Einen Schuh"
+            "value": "Ein Schuh"
           }
         },
         "az": {
@@ -305131,7 +305131,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لم يُعثر عليه في الصورة؛ جرّب من أقرب أو في إضاءة أفضل."
+            "value": "لم يُعثر عليه في الصورة؛ جرّب من مسافة أقرب أو في إضاءة أفضل."
           }
         },
         "id": {
@@ -305357,7 +305357,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "قم بـ %1$@ قرفصاء والهاتف بيدك"
+            "value": "اجلس القرفصاء وانهض %1$@ مرة والهاتف بيدك"
           }
         },
         "id": {
@@ -306701,19 +306701,19 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zeichnungen sind schematisch; Unterschiede nach hanafitischer Schule (Diyanet)."
+            "value": "Die Zeichnungen sind schematisch; Unterschiede nach der hanafitischen Schule (Diyanet)."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Çəkilişlər təmsilidir; fərqlər Hənəfi məzhəbinə görədir."
+            "value": "Rəsmlər şərtidir; fərqlər Hənəfi məzhəbinə görədir (Diyanət)."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الرسوم توضيحية؛ والفروق وفق المذهب الحنفي."
+            "value": "الرسوم توضيحية؛ والفروق وفق المذهب الحنفي (ديانت)."
           }
         },
         "id": {
@@ -307260,7 +307260,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Men keep back and head level and grasp the knees with spread fingers."
+            "value": "Men keep their back and head in a straight line and grasp their knees with fingers spread."
           }
         },
         "de": {
@@ -307385,13 +307385,13 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qadınlar daha az əyilir, əllərini barmaqları bitişik dizlərinə qoyur."
+            "value": "Qadınlar daha az əyilir, barmaqları bitişik halda əllərini dizlərinə qoyur."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تنحني النساء أقل وتضعن أيديهن على الركبتين مضمومة الأصابع."
+            "value": "تنحني النساء أقل ويضعن أيديهن على الركبتين مضمومة الأصابع."
           }
         },
         "id": {
@@ -307831,7 +307831,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Frauen sitzen auf dem Boden, beide Füße nach rechts ausgestreckt."
+            "value": "Frauen sitzen auf dem Boden und schieben beide Füße zur rechten Seite heraus."
           }
         },
         "az": {
@@ -307938,7 +307938,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sun path"
+            "value": "Sun arc"
           }
         },
         "de": {
@@ -309181,7 +309181,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "When the background of the analog, digital, clock and date, and dual clock widgets is the part of your wallpaper behind them, the widgets look transparent. On iOS 26's glass-style Home Screen, widgets are already see-through; this setting is for the other Home Screen looks."
+            "value": "When the Analog clock, Digital clock, Time and date and Two clocks widgets use the part of your wallpaper behind them as their background, they look transparent. On iOS 26's glass-style Home Screen, widgets are already see-through; this setting is for the other Home Screen looks."
           }
         },
         "de": {
@@ -309312,7 +309312,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "1. المس مطولًا مكانًا فارغًا في الشاشة الرئيسية واسحب إلى الصفحة الفارغة في أقصى اليمين. 2. التقط لقطة شاشة. 3. اختر هذه اللقطة أدناه. 4. المس الأداة مطولًا › تعديل الأداة: النمط: شفاف (خلفية الشاشة)؛ الموضع على الشاشة: مكان الأداة. في الأداة المتوسطة يهم الصف فقط، وفي الكبيرة النصف العلوي أو السفلي."
+            "value": "1. المس مطولًا مكانًا فارغًا في الشاشة الرئيسية واسحب إلى الصفحة الفارغة الأخيرة. 2. التقط لقطة شاشة. 3. اختر هذه اللقطة أدناه. 4. المس الأداة مطولًا › تعديل الأداة: النمط: شفاف (خلفية الشاشة)؛ الموضع على الشاشة: مكان الأداة. في الأداة المتوسطة يهم الصف فقط، وفي الكبيرة النصف العلوي أو السفلي."
           }
         },
         "id": {
@@ -312125,7 +312125,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Möge dieser gesegnete Freitag voller Gutes sein."
+            "value": "Möge dieser gesegnete Freitag Ihnen viel Gutes bringen."
           }
         },
         "az": {
@@ -312815,7 +312815,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "أدخل الله سلطان الشهور السكينة على بيتكم."
+            "value": "جعل الله سيّد الشهور سكينةً لبيتكم."
           }
         },
         "id": {
@@ -313142,13 +313142,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mögen Ihre Iftars reichlich und Ihre Suhurs friedlich sein."
+            "value": "Mögen Ihre Iftar-Tische reich gedeckt und Ihr Sahur friedlich sein."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "İftar süfrəniz bərəkətli, səhəriniz rahat olsun."
+            "value": "İftar süfrəniz bərəkətli, sahurunuz rahat olsun."
           }
         },
         "ar": {
@@ -314611,7 +314611,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Auf viele weitere Feste in Gesundheit."
+            "value": "Auf viele weitere Feste bei guter Gesundheit."
           }
         },
         "az": {
@@ -314724,7 +314724,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gesegnete heilige Nacht."
+            "value": "Gesegnete Kandil-Nacht."
           }
         },
         "az": {
@@ -315741,7 +315741,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Möge Ihr Herz leicht und Ihr Weg offen sein."
+            "value": "Möge Ihr Herz im neuen Jahr leicht und Ihr Weg offen sein."
           }
         },
         "az": {
@@ -316532,7 +316532,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Möge Ihr Tisch reich und Ihr Zuhause fröhlich sein."
+            "value": "Möge Ihr Tisch reich gedeckt und Ihr Zuhause fröhlich sein."
           }
         },
         "az": {
@@ -317210,7 +317210,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Herzlich."
+            "value": "Alles Liebe."
           }
         },
         "az": {
@@ -317436,7 +317436,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mit Grüßen und Zuneigung."
+            "value": "Mit lieben Grüßen."
           }
         },
         "az": {
@@ -319143,7 +319143,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "خزامى"
+            "value": "توليب"
           }
         },
         "id": {
@@ -322283,7 +322283,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alt çubuktaki Tümü'de bütün araçlar, arama ve Ayarlar var; sık kullandıklarınızı uzun basarak öne alın. Saatin altına tarih, vakit ya da hava eklemek için: Ayarlar › Saat ekranını düzenle."
+            "value": "Alt çubuktaki Tümü'nde bütün araçlar, arama ve Ayarlar var; sık kullandıklarınızı uzun basarak öne alın. Saatin altına tarih, vakit ya da hava eklemek için: Ayarlar › Saat ekranını düzenle."
           }
         },
         "en": {
@@ -322301,7 +322301,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alt zolaqdakı \"Hamısı\" bölməsində bütün alətlər, axtarış və Parametrlər var; tez-tez istifadə etdiklərinizi uzun basaraq önə çəkin. Saatın altına tarix, vaxt və ya hava əlavə etmək üçün: Parametrlər › Saat ekranını redaktə et."
+            "value": "Alt paneldəki \"Hamısı\" bölməsində bütün alətlər, axtarış və Parametrlər var; tez-tez istifadə etdiklərinizi uzun basaraq önə çəkin. Saatın altına tarix, vaxt və ya hava əlavə etmək üçün: Parametrlər › Saat ekranını redaktə et."
           }
         },
         "ar": {
@@ -322414,7 +322414,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tanıtımı yenidən göstər"
+            "value": "Təqdimatı yenidən göstər"
           }
         },
         "ar": {
@@ -322973,13 +322973,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Erscheint neben der Kamera und auf dem Sperrbildschirm; mit × oder im Kontrollzentrum ausschalten. iOS entfernt sie nach 8 Stunden; beim Öffnen der App kommt sie zurück."
+            "value": "Die Anzeige erscheint neben der Kamera und auf dem Sperrbildschirm; mit × oder im Kontrollzentrum ausschalten. iOS entfernt sie nach 8 Stunden; beim Öffnen der App kommt sie zurück."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kameranın yanında və kilid ekranında görünür; × ilə ya da İdarəetmə Mərkəzindən bağlanır. iOS 8 saatdan sonra götürür; tətbiqi açanda geri gəlir."
+            "value": "Kameranın yanında və kilid ekranında görünür; × ilə ya da İdarəetmə Mərkəzindən bağlanır. iOS 8 saatdan sonra onu silir; tətbiqi açanda geri gəlir."
           }
         },
         "ar": {
@@ -323199,7 +323199,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wetter auf Sperrbildschirm"
+            "value": "Wetter auf dem Sperrbildschirm"
           }
         },
         "az": {
@@ -323306,7 +323306,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Show in the status bar and on the lock screen"
+            "value": "Show in the notification shade and on the lock screen"
           }
         },
         "de": {
@@ -323544,7 +323544,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Simvollar: Microsoft Fluent Emoji və Phosphor Icons (MIT lisenziyası). Şriftlər: Literata və Amiri (SIL Open Font License)."
+            "value": "İkonlar: Microsoft Fluent Emoji və Phosphor Icons (MIT lisenziyası). Şriftlər: Literata və Amiri (SIL Open Font License)."
           }
         },
         "ar": {
@@ -324680,7 +324680,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "إن أجبت بنعم، تنضم «الصلاة» إلى الشريط السفلي، ويظهر الوقت التالي تحت الساعة، وتُفعَّل إشعارات الصلاة."
+            "value": "إن أجبت بنعم، تنضم «الصلاة» إلى الشريط السفلي، وتظهر الصلاة التالية تحت الساعة، وتُفعَّل إشعارات الصلاة."
           }
         },
         "id": {
@@ -325578,7 +325578,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bəli desəniz, Ayın fazaları, tutulmalar, gün çıxışı və gecə səması bir toxunuş uzağınızda olar."
+            "value": "Bəli desəniz, Ayın fazaları, tutulmalar, gün çıxışı və gecə səması bir toxunuşla açılar."
           }
         },
         "ar": {
@@ -326470,13 +326470,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "For weather and nearby mosques only an approximate location (about 1 km) goes to that service, never who you are."
+            "value": "For weather and nearby mosques, only an approximate location (about 1 km) goes to the relevant service, never who you are."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Für Wetter und Moscheen in der Nähe geht nur ein ungefährer Standort (etwa 1 km) an den jeweiligen Dienst, nie wer Sie sind."
+            "value": "Für Wetter und Moscheen in der Nähe geht nur ein ungefährer Standort (etwa 1 km) an den jeweiligen Dienst, nie Ihre Identität."
           }
         },
         "az": {
@@ -327041,7 +327041,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nicht gefragt"
+            "value": "Nicht angefragt"
           }
         },
         "az": {
@@ -327148,7 +327148,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Each permission is asked only when you first use that feature. To turn one off or on, tap its row; your phone's settings open."
+            "value": "Each permission is requested only when you first use that feature. To turn one off or on, tap its row; your phone's settings open."
           }
         },
         "de": {
@@ -327826,25 +327826,25 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "If you allow it, prayer times and weather for where you are come automatically. If not, you pick your city by hand."
+            "value": "If you allow it, prayer times and weather for where you are come automatically, so you don't have to pick a place. If not, you pick your province or district by hand."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wenn Sie zustimmen, kommen Gebetszeiten und Wetter für Ihren Ort automatisch. Sonst wählen Sie Ihre Stadt von Hand."
+            "value": "Wenn Sie zustimmen, kommen Gebetszeiten und Wetter für Ihren Ort automatisch, ohne dass Sie etwas auswählen müssen. Sonst wählen Sie Provinz oder Bezirk von Hand."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "İcazə versəniz, olduğunuz yerin vaxtları və havası özü gəlir, seçməklə məşğul olmursunuz. Verməsəniz, şəhəri əl ilə seçərsiniz."
+            "value": "İcazə versəniz, olduğunuz yerin vaxtları və havası özü gəlir, seçməklə məşğul olmazsınız. Verməsəniz, vilayəti və ya rayonu əl ilə seçərsiniz."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "إن سمحت، تأتي أوقات الصلاة والطقس لمكانك تلقائيًا دون أن تختار شيئًا. وإن لم تسمح، تختار مدينتك بنفسك."
+            "value": "إن سمحت، تأتي أوقات الصلاة والطقس لمكانك تلقائيًا دون أن تختار شيئًا. وإن لم تسمح، تختار الولاية أو المنطقة بنفسك."
           }
         },
         "id": {
@@ -328052,19 +328052,19 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Only for location reminders: they alert you when you arrive at or leave a place. If not, these reminders don't work."
+            "value": "Only for location reminders: they alert you when you arrive at or leave a place. Without it, these reminders don't work."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nur für Ortserinnerungen: Sie melden sich, wenn Sie einen Ort erreichen oder verlassen. Ohne funktionieren diese Erinnerungen nicht."
+            "value": "Nur für Ortserinnerungen, die sich melden, wenn Sie einen Ort erreichen oder verlassen. Ohne diese Berechtigung funktionieren sie nicht."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yalnız məkana bağlı xatırlatmalar üçün: bir yerə çatanda və ya ayrılanda xəbər verir. Verməsəniz bu xatırlatmalar işləmir."
+            "value": "Yalnız məkana bağlı xatırladıcılar üçün: bir yerə çatanda və ya oradan ayrılanda xəbər verir. Verməsəniz, bu xatırladıcılar işləmir."
           }
         },
         "ar": {
@@ -328510,7 +328510,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wenn Sie zustimmen, klingeln Wecker und Timer pünktlich, auch im Lautlos-Modus. Sonst klingeln sie nicht."
+            "value": "Wenn Sie zustimmen, klingeln Wecker und Timer pünktlich, auch im Stummmodus. Sonst klingeln sie nicht."
           }
         },
         "az": {
@@ -328748,7 +328748,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "إن سمحت، تصل المنبّهات وأوقات الصلاة والمؤقّتات في ثانيتها. وإن لم تسمح، قد تتأخر بضع دقائق."
+            "value": "إن سمحت، تصل المنبّهات وأوقات الصلاة والمؤقّتات بدقة الثانية. وإن لم تسمح، قد تتأخر بضع دقائق."
           }
         },
         "id": {
@@ -329640,7 +329640,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nur für die Weckaufgabe „Laut vorlesen“, gehört wird im Telefon. Nichts wird aufgezeichnet."
+            "value": "Nur für die Weckaufgabe „Laut vorlesen“, um direkt auf dem Telefon zuzuhören. Nichts wird aufgezeichnet."
           }
         },
         "az": {
@@ -329652,7 +329652,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لمهمة «اقرأ بصوت عالٍ» في المنبّه فقط، والاستماع داخل هاتفك. لا يُسجَّل أي صوت."
+            "value": "لمهمة «اقرأ بصوت عالٍ» في المنبّه فقط، للاستماع داخل هاتفك. لا يُسجَّل أي صوت."
           }
         },
         "id": {
@@ -330437,7 +330437,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ekran vaxtı"
+            "value": "Ekran Vaxtı"
           }
         },
         "ar": {
@@ -330550,7 +330550,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yalnız diqqət vaxtında seçdiyiniz tətbiqləri məhdudlaşdırmaq üçün. Hansı tətbiqləri seçdiyinizi biz görə bilmirik."
+            "value": "Yalnız fokus vaxtında seçdiyiniz tətbiqləri məhdudlaşdırmaq üçün. Hansı tətbiqləri seçdiyinizi biz görə bilmirik."
           }
         },
         "ar": {
@@ -330669,7 +330669,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الظهور فوق التطبيقات"
+            "value": "الظهور فوق التطبيقات الأخرى"
           }
         },
         "id": {
@@ -330764,19 +330764,19 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Only for the floating clock and the focus screen. If not, these two don't work."
+            "value": "Only for the floating clock and the focus screen. Without it, these two don't work."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nur für die schwebende Uhr und den Fokusbildschirm. Ohne funktionieren diese beiden nicht."
+            "value": "Nur für die schwebende Uhr und den Fokusbildschirm. Ohne diese Berechtigung funktionieren beide nicht."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yalnız üzən saat və diqqət ekranı üçün. Verməsəniz, bu ikisi işləmir."
+            "value": "Yalnız üzən saat və fokus ekranı üçün. Verməsəniz, bu ikisi işləmir."
           }
         },
         "ar": {
@@ -331002,13 +331002,13 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yalnız diqqət bloku üçün, seçdiyiniz tətbiq açılanda xəbərdar etməyə. Bu məlumat telefondan çıxmır."
+            "value": "Yalnız fokusda bloklamada, seçdiyiniz tətbiq açılanda xəbərdar etmək üçün. Bu məlumat telefondan çıxmır."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لحظر التركيز فقط، لتنبيهك عند فتح تطبيق اخترته. لا تغادر هذه المعلومة هاتفك."
+            "value": "للحظر أثناء التركيز فقط، لتنبيهك عند فتح تطبيق اخترته. لا تغادر هذه المعلومة هاتفك."
           }
         },
         "id": {
@@ -331216,13 +331216,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Only to silence your phone at prayer time. If not, auto-silence doesn't work."
+            "value": "Only to silence your phone at prayer time. Without it, auto-silence doesn't work."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nur um das Telefon zur Gebetszeit stummzuschalten. Ohne funktioniert die Stummschaltung nicht."
+            "value": "Nur um das Telefon zur Gebetszeit stummzuschalten. Ohne diese Berechtigung funktioniert die Stummschaltung nicht."
           }
         },
         "az": {
@@ -331341,7 +331341,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Başqa nələr var, öyrənmək istəyirsiniz?"
+            "value": "Başqa nələr var, öyrənmək istəyirsinizmi?"
           }
         },
         "ar": {
@@ -331787,7 +331787,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gebetszeiten und Gebet"
+            "value": "Gebetszeiten und Glaubenspraxis"
           }
         },
         "az": {
@@ -331894,25 +331894,25 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qibla compass, nearby mosques, the Quran, duas, the 99 Names, a tasbih counter, prayer and fasting tracker. 14 calculation methods and 973 districts of Türkiye."
+            "value": "Qibla compass, nearby mosques, the Quran, duas, the 99 Names, a dhikr counter, prayer and fasting tracker. 14 calculation methods and 973 districts of Türkiye."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qibla-Kompass, Moscheen in der Nähe, der Koran, Bittgebete, die 99 Namen, Tasbih-Zähler, Gebets- und Fastentracker. 14 Berechnungsmethoden."
+            "value": "Qibla-Kompass, Moscheen in der Nähe, der Koran, Bittgebete, die 99 Namen, Dhikr-Zähler, Gebets- und Fastenprotokoll. 14 Berechnungsmethoden und 973 Bezirke der Türkei."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qiblə kompası, yaxındakı məscidlər, Qurani-Kərim, dualar, Əsmaül-Hüsna, zikr sayğacı, namaz və oruc izləmə. 14 hesablama üsulu."
+            "value": "Qiblə kompası, yaxınlıqdakı məscidlər, Qurani-Kərim, dualar, Əsmaül-Hüsna, zikrmatik, namaz və oruc izləmə. 14 hesablama üsulu və Türkiyənin 973 rayonu."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "بوصلة القبلة والمساجد القريبة والقرآن الكريم والأدعية والأسماء الحسنى والمسبحة ومتابعة الصلاة والصيام. 14 طريقة حساب."
+            "value": "بوصلة القبلة والمساجد القريبة والقرآن الكريم والأدعية والأسماء الحسنى والمسبحة ومتابعة الصلاة والصيام. 14 طريقة حساب و973 منطقة في تركيا."
           }
         },
         "id": {
@@ -332126,7 +332126,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Stündliche und tägliche Vorhersage, Luftqualität; der Bildschirm lebt mit dem Wetter. Mondkalender, Finsternisse, Jahreszeiten und Nachthimmel."
+            "value": "Stündliche und tägliche Vorhersage, Luftqualität; der Bildschirm verändert sich mit dem Wetter. Mondkalender, Finsternisse, Jahreszeiten und Nachthimmel."
           }
         },
         "az": {
@@ -332245,7 +332245,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Diqqət və alətlər"
+            "value": "Fokus və alətlər"
           }
         },
         "ar": {
@@ -332578,7 +332578,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "25 analoge Zifferblätter, 24 App-Farben, ein Hintergrund, der dem Tageslicht folgt, und Textgröße. Einstellungen › Farbe und Darstellung."
+            "value": "25 analoge Zifferblätter, 24 App-Farben, ein Hintergrund, der dem Tageslicht folgt, und Textgröße. Einstellungen › Farbe und Aussehen."
           }
         },
         "az": {
@@ -332590,7 +332590,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "25 قرصًا بعقارب و24 لونًا للتطبيق وخلفية تتبع ضوء النهار وحجم الخط. الإعدادات › اللون والمظهر."
+            "value": "25 ميناءً تناظريًا و24 لونًا للتطبيق وخلفية تتبع ضوء النهار وحجم الخط. الإعدادات › اللون والمظهر."
           }
         },
         "id": {
@@ -332804,7 +332804,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uhr, nächstes Gebet, Wetter, Mond und Hidschri-Datum auf Home- und Sperrbildschirm – und auch auf Ihrer Uhr."
+            "value": "Uhr, nächstes Gebet, Wetter, Mond und Hidschri-Datum auf Home- und Sperrbildschirm – und auch auf Ihrer Smartwatch."
           }
         },
         "az": {
@@ -332816,7 +332816,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "أضف الساعة والصلاة القادمة والطقس والقمر والتاريخ الهجري إلى الشاشة الرئيسية وشاشة القفل، وشاهدها على ساعتك أيضًا."
+            "value": "أضف الساعة والصلاة التالية والطقس والقمر والتاريخ الهجري إلى الشاشة الرئيسية وشاشة القفل، وشاهدها على ساعتك الذكية أيضًا."
           }
         },
         "id": {

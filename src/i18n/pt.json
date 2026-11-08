@@ -272,7 +272,7 @@
       },
       {
         "q": "Como mudo o estilo do relógio?",
-        "a": "Deslize para a esquerda ou para a direita sobre o relógio; no computador, use os pontos abaixo dele ou as setas do teclado. Há estilos analógicos clássicos e minimalistas, digitais, analógico e digital juntos, versões com ou sem data, relógios com calendário mensal, um relógio flip, um relógio por extenso, um relógio de anéis e uma data grande. Sua escolha fica salva neste aparelho."
+        "a": "Deslize para a esquerda ou para a direita sobre o relógio ou use as setas abaixo dele; você também pode tocar no número do estilo para escolher numa lista. No computador, as setas do teclado também funcionam. Além do analógico com números, do digital e do analógico com digital, há estilos com data, previsão do tempo, calendário mensal ou layout lado a lado, além de um relógio flip, um holograma, um relógio Matrix e um relógio de matemática. Sua escolha fica salva neste aparelho."
       },
       {
         "q": "Como vejo o relógio em tela cheia?",
@@ -284,7 +284,7 @@
       },
       {
         "q": "Onde posso ver os feriados da Turquia e o Ramadã?",
-        "a": "A página do calendário anual mostra num só calendário os feriados oficiais, os dias de bayram e suas vésperas, as noites de kandil e o mês do Ramadã. A seção \"Próximos dias\", no alto da página do calendário, diz quantos dias faltam para o próximo feriado."
+        "a": "A página do calendário anual mostra num só calendário os feriados oficiais, os dias de bayram e suas vésperas, as noites de kandil e o mês do Ramadã."
       }
     ],
     "upcomingHeading": "Próximos feriados e datas especiais",
@@ -542,7 +542,7 @@
             ],
             [
               "sth-place",
-              "Lembra a província ou o local que você escolheu por último para as páginas de horários de oração, natureza e previsão do tempo.",
+              "Lembra a província ou o local que você escolheu por último para as páginas de horários de oração, estações e previsão do tempo.",
               "Até você apagar"
             ],
             [
@@ -693,7 +693,7 @@
     "info": "Sobre a fonte de hora deste relógio",
     "infoTitle": "De onde vem esta hora?",
     "infoClose": "Fechar",
-    "infoSeconds": "Toque no relógio para mostrar ou ocultar os segundos. Os segundos começam ativados nos relógios digitais e desativados nos analógicos.",
+    "infoSeconds": "Toque no relógio para mostrar ou ocultar os segundos. Os segundos começam ativados nos relógios digitais e nos analógicos.",
     "zoomIn": "Relógio maior",
     "zoomOut": "Relógio menor"
   },
@@ -1844,7 +1844,7 @@
   },
   "embedgen": {
     "title": "Widget de relógio: coloque um relógio grátis no seu site | Saat Tarih",
-    "description": "Coloque um relógio grátis no seu site: 13 estilos de relógio, escolha de cidade, tema claro ou escuro. Copie o código iframe pronto e cole.",
+    "description": "Coloque um relógio grátis no seu site: 20 estilos de relógio, escolha de cidade, tema claro ou escuro. Copie o código iframe pronto e cole.",
     "h1": "Coloque um relógio no seu site",
     "lead": "Escolha o estilo, a cidade e o tema; depois copie o código iframe pronto e cole no seu site. O widget não tem anúncios, não usa cookies e funciona com o relógio sincronizado com o servidor.",
     "modelLabel": "Estilo de relógio",
@@ -1878,7 +1878,7 @@
       },
       {
         "q": "O widget coleta dados dos meus visitantes?",
-        "a": "O widget não grava cookies nem coleta dados pessoais. Ele envia algumas pequenas solicitações ao servidor para mostrar a hora certa; as visualizações são contadas em estatísticas anônimas e sem cookies."
+        "a": "O widget não grava cookies nem coleta dados pessoais. Ele envia algumas pequenas solicitações ao servidor para mostrar a hora certa; o widget não tem nenhum script de estatísticas e as visualizações não são contadas."
       }
     ],
     "sizeNote": "Para os estilos com calendário, recomenda-se pelo menos 460 px de altura; os outros cabem bem em 360 px.",
@@ -1890,7 +1890,7 @@
       "date": "Data e hora",
       "sun": "Nascer e pôr do sol"
     },
-    "lineNote": "O script só desenha a hora; ele não grava cookies nem envia dados. O fuso horário vem da cidade.",
+    "lineNote": "O script só escreve o texto escolhido (a hora, a data ou o nascer e o pôr do sol); ele não grava cookies nem envia dados. O fuso horário vem da cidade.",
     "linePreview": "Prévia"
   },
   "embed": {
@@ -2338,7 +2338,7 @@
       },
       {
         "q": "Posso ver a previsão do tempo no relógio em tela cheia?",
-        "a": "Sim. Em tela cheia, o botão da previsão do tempo na barra que aparece ao tocar na tela mostra a previsão do local escolhido ao lado do relógio."
+        "a": "Sim. Na página inicial, deslize o relógio até um estilo com a previsão do tempo e passe para tela cheia; a previsão do local escolhido aparece ao lado do relógio."
       }
     ],
     "search": "previsão do tempo clima temperatura chuva vento umidade uv amanhã esta semana hava durumu weather",
@@ -2701,7 +2701,7 @@
     ]
   },
   "worldHol": {
-    "hubTitle": "Feriados por país 2026–2028 | Saat Tarih",
+    "hubTitle": "Feriados por país 2024–2032 | Saat Tarih",
     "hubDescription": "Feriados nacionais da Alemanha, do Reino Unido, dos EUA, dos Países Baixos, da França e de mais 25 países: datas, dias da semana, o próximo feriado e os dias restantes.",
     "hubH1": "Feriados por país",
     "hubLead": "Feriados nacionais de 30 países e os dias que faltam para o próximo.",

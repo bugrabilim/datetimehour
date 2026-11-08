@@ -233,7 +233,7 @@
       },
       {
         "q": "Comment changer le style de l’horloge ?",
-        "a": "Faites glisser l’horloge vers la gauche ou la droite ; sur ordinateur, utilisez les points en dessous ou les flèches du clavier. Les styles comprennent des horloges analogiques classiques et épurées, numériques, analogiques et numériques à la fois, avec ou sans date, avec calendrier mensuel, une horloge à palettes, une horloge en toutes lettres, une horloge à anneaux et une grande date. Votre choix est mémorisé sur cet appareil."
+        "a": "Faites glisser l’horloge vers la gauche ou la droite, ou utilisez les flèches en dessous ; vous pouvez aussi toucher le numéro du style pour choisir dans une liste. Sur ordinateur, les flèches du clavier fonctionnent aussi. Outre l’horloge analogique à chiffres, l’horloge numérique et l’analogique avec numérique, il existe des styles avec date, météo, calendrier mensuel ou disposition côte à côte, ainsi qu’une horloge à palettes, un hologramme, une horloge Matrix et une horloge mathématique. Votre choix est mémorisé sur cet appareil."
       },
       {
         "q": "Comment afficher l’horloge en plein écran ?",
@@ -245,7 +245,7 @@
       },
       {
         "q": "Où voir les jours fériés turcs et le Ramadan ?",
-        "a": "La page du calendrier annuel réunit les jours fériés, les jours de bayram et leurs veilles, les nuits de kandil et le mois de Ramadan. La section « Jours à venir » en haut de la page indique combien de jours il reste avant la prochaine fête."
+        "a": "La page du calendrier annuel réunit les jours fériés, les jours de bayram et leurs veilles, les nuits de kandil et le mois de Ramadan."
       }
     ],
     "upcomingHeading": "Jours fériés et dates particulières à venir",
@@ -364,7 +364,7 @@
           "**Préférences :** les préférences comme le modèle d’horloge, la province et les horloges mondiales sont conservées uniquement sur votre téléphone et supprimées avec l’application.",
           "**Qibla et mosquées proches :** la direction de la qibla est calculée sur le téléphone ; la boussole utilise le capteur d’orientation (avec l’autorisation de localisation, la position sert aussi sur le téléphone à trouver le nord géographique). Sur l’écran « Mosquées proches », la recherche utilise Apple Plans : le mot recherché (« mosquée ») et le centre de la zone arrondi à deux décimales sont envoyés à Apple ; les conditions de confidentialité d’Apple s’appliquent. Sur l'écran qibla, la ligne vers la Kaaba s'affiche sur Apple Plans ; les images de carte de votre zone sont téléchargées depuis Apple.",
           "**Apple Watch, Siri et écran verrouillé :** l’application Apple Watch calcule les heures de prière sur la montre ; si « Lieu de l’iPhone » est choisi, le nom et les coordonnées du lieu sont envoyés de l’iPhone à la montre (WatchConnectivity d’Apple) et nulle part ailleurs ; si « Ma position » est choisi sur la montre, la position n’est utilisée que sur la montre. Les actions Siri et Raccourcis (minuteur, alarme, horloge plein écran, prochaine prière, date) s’exécutent sur le téléphone ; Apple traite les requêtes vocales. Les activités en direct de l’écran verrouillé (compteurs, prochaine prière) sont créées sur le téléphone.",
-          "**Appareil photo, sommeil et concentration :** pour lire le code QR ou le code-barres de la tâche d’arrêt d’une alarme, l’appareil photo ne s’ouvre que pendant l’enregistrement du code et l’arrêt de l’alarme (l’autorisation est demandée la première fois) ; l’image est traitée sur l’appareil, ni conservée ni envoyée, et seule la valeur lue est gardée sur l’appareil avec l’alarme. Les tâches « secouer » et « pas » utilisent le capteur de mouvement uniquement pendant que l’écran de la tâche est ouvert ; les pas ne sont pas enregistrés. L’historique pomodoro (jour, minutes, nom de tâche) et le programme de sommeil restent uniquement sur l’appareil ; les bruits pomodoro et les sons de sommeil sont produits sur l’appareil. Réveil intelligent : si vous lancez une session dans l’écran Sommeil, le capteur de mouvement (accéléromètre) est lu pendant la plage du réveil intelligent et l’alarme sonne plus tôt dès que des signes de sommeil léger apparaissent ; les données de mouvement restent uniquement en mémoire et ne sont ni conservées ni envoyées. Il n’y a pas de suivi du sommeil (phases, enregistrements) et le micro n’est pas utilisé pour le sommeil. La photo de la tâche « trouver un objet » (reconnue avec Apple Vision), l'image de la vue caméra de la qibla et le micro de la tâche de lecture à voix haute (reconnaissance vocale sur l'appareil uniquement) ne servent que lorsque cet écran est ouvert ; tout est traité sur l'appareil, ni enregistré ni envoyé. Le style de boussole et les mosquées favorites sont enregistrés sur l'appareil et, si la synchronisation iCloud est activée, synchronisés entre vos propres appareils.",
+          "**Appareil photo, sommeil et concentration :** pour lire le code QR ou le code-barres de la tâche d’arrêt d’une alarme, l’appareil photo ne s’ouvre que pendant l’enregistrement du code et l’arrêt de l’alarme (l’autorisation est demandée la première fois) ; l’image est traitée sur l’appareil, ni conservée ni envoyée, et seule la valeur lue est gardée sur l’appareil avec l’alarme. Les tâches « secouer » et « pas » utilisent le capteur de mouvement uniquement pendant que l’écran de la tâche est ouvert ; les pas ne sont pas enregistrés. L’historique pomodoro (jour, minutes, nom de tâche) et le programme de sommeil restent sur l’appareil ; les bruits pomodoro et les sons de sommeil sont produits sur l’appareil. Réveil intelligent : si vous lancez une session dans l’écran Sommeil, le capteur de mouvement (accéléromètre) est lu pendant la plage du réveil intelligent et l’alarme sonne plus tôt dès que des signes de sommeil léger apparaissent ; les données de mouvement restent uniquement en mémoire et ne sont ni conservées ni envoyées. Il n’y a pas de suivi du sommeil (phases, enregistrements) et le micro n’est pas utilisé pour le sommeil. La photo de la tâche « trouver un objet » (reconnue avec Apple Vision), l'image de la vue caméra de la qibla et le micro de la tâche de lecture à voix haute (reconnaissance vocale sur l'appareil uniquement) ne servent que lorsque cet écran est ouvert ; tout est traité sur l'appareil, ni enregistré ni envoyé. Le style de boussole et les mosquées favorites sont enregistrés sur l'appareil et, si la synchronisation iCloud est activée, synchronisés entre vos propres appareils.",
           "**Culte :** votre marque-page du Coran, la taille du texte, les compteurs de dhikr, le suivi des prières et du jeûne (prières accomplies, compteurs de rattrapage, jours jeûnés) et les montants saisis dans le calcul de la zakat restent uniquement sur l’appareil ; ils ne sont pas transmis et ne servent ni aux statistiques ni aux badges. Le texte du Coran et les invocations sont inclus dans l’application. Le lien vers le site de traduction turque du Coran de la Diyanet ouvre ce site dans votre navigateur. Vous saisissez vous-même le prix de l’or pour la zakat ; l’application ne récupère aucun prix.",
           "**Synchronisation iCloud :** si « Synchroniser avec iCloud » est activé dans les réglages (par défaut), les réglages, horloges mondiales, comptes à rebours, lieux enregistrés, données pomodoro et sommeil et données de culte sont synchronisés via le stockage clé-valeur iCloud d’Apple entre l’iPhone, l’iPad et le Mac connectés au même compte Apple. Ces données restent dans votre compte iCloud selon les conditions d’Apple ; nous n’y avons pas accès et elles n’atteignent jamais nos serveurs. Le lieu, les alarmes, les minuteurs en cours, les réglages de notification, les badges et les photos ne sont pas synchronisés. Désactiver l’option arrête la synchronisation sur cet appareil.",
           "**Santé, journal du matin, photo d’alarme et horloge flottante :** si vous activez « Enregistrer dans Santé », chaque entraînement fractionné terminé est inscrit dans l’app Santé comme entraînement (type, début, durée) ; l’application ne lit pas vos données de santé et ces données ne sont envoyées à aucun serveur. Le journal du matin (humeur, sommeil, intention, note) reste uniquement sur vos appareils (sur ceux de votre compte Apple si la synchronisation iCloud est activée). Pour la tâche photo d’une alarme, la photo n’est pas conservée ; seul un très petit résumé (72 valeurs de gris) est gardé sur le téléphone pour la comparaison. La méthode de calcul, les alarmes aux heures de prière (iOS 26+) et les boutons du Centre de contrôle restent sur le téléphone. L’horloge flottante est une fenêtre en incrustation ; elle ne joue aucun son et n’envoie aucune donnée.",
@@ -503,7 +503,7 @@
             ],
             [
               "sth-place",
-              "Mémorise la province ou le lieu choisi en dernier pour les pages heures de prière, nature et météo.",
+              "Mémorise la province ou le lieu choisi en dernier pour les pages heures de prière, saisons et météo.",
               "Jusqu’à ce que vous le supprimiez"
             ],
             [
@@ -654,7 +654,7 @@
     "info": "À propos de la source de l’heure",
     "infoTitle": "D’où vient cette heure ?",
     "infoClose": "Fermer",
-    "infoSeconds": "Touchez l’horloge pour afficher ou masquer les secondes. Les secondes sont affichées au départ sur les horloges numériques et masquées sur les horloges analogiques.",
+    "infoSeconds": "Touchez l’horloge pour afficher ou masquer les secondes. Les secondes sont affichées au départ sur les horloges numériques comme analogiques.",
     "zoomIn": "Agrandir l'horloge",
     "zoomOut": "Réduire l'horloge"
   },
@@ -1805,7 +1805,7 @@
   },
   "embedgen": {
     "title": "Widget horloge gratuit à intégrer sur votre site | Saat Tarih",
-    "description": "Intégrez gratuitement une horloge à votre site : 13 styles, choix de la ville, thème clair ou sombre. Copiez le code iframe prêt à l’emploi et collez-le.",
+    "description": "Intégrez gratuitement une horloge à votre site : 20 styles, choix de la ville, thème clair ou sombre. Copiez le code iframe prêt à l’emploi et collez-le.",
     "h1": "Intégrer une horloge à votre site",
     "lead": "Choisissez le style, la ville et le thème, puis copiez le code iframe prêt à l’emploi et collez-le dans votre site. Le widget est sans publicité, n’utilise pas de cookies et fonctionne avec l’horloge synchronisée avec le serveur.",
     "modelLabel": "Style d’horloge",
@@ -1839,7 +1839,7 @@
       },
       {
         "q": "Le widget collecte-t-il les données de mes visiteurs ?",
-        "a": "Le widget ne dépose aucun cookie et ne collecte aucune donnée personnelle. Il envoie quelques petites requêtes au serveur pour afficher l’heure exacte ; les pages vues sont comptées dans des statistiques anonymes sans cookies."
+        "a": "Le widget ne dépose aucun cookie et ne collecte aucune donnée personnelle. Il envoie quelques petites requêtes au serveur pour afficher l’heure exacte ; le widget ne contient aucun script de statistiques et les pages vues ne sont pas comptées."
       }
     ],
     "sizeNote": "Les styles avec calendrier demandent une hauteur d’au moins 460 px ; les autres tiennent à l’aise dans 360 px.",
@@ -1851,7 +1851,7 @@
       "date": "Date et heure",
       "sun": "Lever et coucher du soleil"
     },
-    "lineNote": "Le script affiche seulement l'heure ; il ne dépose aucun cookie et n'envoie aucune donnée. Le fuseau vient de la ville.",
+    "lineNote": "Le script affiche seulement le texte choisi (l'heure, la date ou le lever et le coucher du soleil) ; il ne dépose aucun cookie et n'envoie aucune donnée. Le fuseau vient de la ville.",
     "linePreview": "Aperçu"
   },
   "embed": {
@@ -2299,7 +2299,7 @@
       },
       {
         "q": "Puis-je voir la météo sur l’horloge plein écran ?",
-        "a": "Oui. En plein écran, le bouton météo de la barre qui apparaît lorsque vous touchez l’écran affiche la météo du lieu choisi à côté de l’horloge."
+        "a": "Oui. Sur la page d’accueil, faites défiler jusqu’à un style d’horloge avec la météo, puis passez en plein écran ; la météo du lieu choisi s’affiche à côté de l’horloge."
       }
     ],
     "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin météo prévisions température pluie vent humidité demain cette semaine",
@@ -2662,7 +2662,7 @@
     ]
   },
   "worldHol": {
-    "hubTitle": "Jours fériés par pays 2026–2028 | Saat Tarih",
+    "hubTitle": "Jours fériés par pays 2024–2032 | Saat Tarih",
     "hubDescription": "Jours fériés en Allemagne, au Royaume-Uni, aux États-Unis, aux Pays-Bas, en France et dans 25 autres pays : dates, prochain jour férié et jours restants.",
     "hubH1": "Jours fériés par pays",
     "hubLead": "Les jours fériés nationaux de 30 pays et les jours restants avant le prochain.",

@@ -74,7 +74,7 @@
       "numeric": "Numerisch",
       "iso": "ISO 8601"
     },
-    "lookSep": "Zeittrenner",
+    "lookSep": "Zeittrennzeichen",
     "lookSeps": {
       "colon": "Doppelpunkt (14:30)",
       "dot": "Punkt (14.30)"
@@ -233,7 +233,7 @@
       },
       {
         "q": "Wie ändere ich den Uhrenstil?",
-        "a": "Wischen Sie auf der Uhr nach links oder rechts; am Computer nutzen Sie die Punkte darunter oder die Pfeiltasten Ihrer Tastatur. Zur Auswahl stehen klassische und schlichte Analoguhren, Digitaluhren, analog und digital kombiniert, Varianten mit oder ohne Datum, Uhren mit Monatskalender, eine Klappzahluhr, eine Uhr in Worten, eine Ringuhr und ein großes Datum. Ihre Auswahl wird auf diesem Gerät gespeichert."
+        "a": "Wischen Sie auf der Uhr nach links oder rechts oder nutzen Sie die Pfeile darunter; über die Nummer des Stils können Sie auch aus einer Liste wählen. Am Computer funktionieren auch die Pfeiltasten. Neben Analoguhren mit Ziffern, Digitaluhren und analog mit digital gibt es Varianten mit Datum, Wetter, Monatskalender oder nebeneinander sowie eine Klappzahluhr, ein Hologramm, eine Matrix-Uhr und eine Mathe-Uhr. Ihre Auswahl wird auf diesem Gerät gespeichert."
       },
       {
         "q": "Wie zeige ich die Uhr im Vollbild an?",
@@ -245,7 +245,7 @@
       },
       {
         "q": "Wo sehe ich die gesetzlichen Feiertage der Türkei und den Ramadan?",
-        "a": "Die Seite mit dem Jahreskalender zeigt gesetzliche Feiertage, Bayram- und Vorabendtage, Kandil-Nächte und den Fastenmonat Ramadan in einem Kalender. Der Bereich „Bevorstehende Tage“ oben auf der Kalenderseite zeigt, wie viele Tage es noch bis zum nächsten Feiertag sind."
+        "a": "Die Seite mit dem Jahreskalender zeigt gesetzliche Feiertage, Bayram- und Vorabendtage, Kandil-Nächte und den Fastenmonat Ramadan in einem Kalender."
       }
     ],
     "upcomingHeading": "Bevorstehende Feiertage und besondere Tage",
@@ -308,8 +308,8 @@
     "daylen": "Tageslänge",
     "sunNote": "Sonnenauf- und -untergang sind Näherungswerte, berechnet aus dem heutigen Datum und der Lage der Stadt (sie können um einige Minuten abweichen).",
     "solarNoon": "Sonnenhöchststand",
-    "solarAhead": "Die Uhr geht hier {d} vor der Sonnenzeit.",
-    "solarBehind": "Die Uhr geht hier {d} hinter der Sonnenzeit.",
+    "solarAhead": "Die Uhr geht hier gegenüber der Sonnenzeit {d} vor.",
+    "solarBehind": "Die Uhr geht hier gegenüber der Sonnenzeit {d} nach.",
     "solarSame": "Die Uhr entspricht hier fast der Sonnenzeit.",
     "mapLink": "Auf der Karte ansehen (OpenStreetMap)",
     "population": "Einwohner (Ballungsraum, ca.)",
@@ -360,7 +360,7 @@
           "**E-Mail-Liste:** Wenn Sie auf der Seite „Über“ der Liste beitreten, wird Ihre E-Mail-Adresse genau wie beim Formular der Website an die gemeinsame Bumba-Liste gesendet; die Hinweise zur E-Mail-Liste gelten auch für die App.",
           "**Abzeichen:** Abzeichen und Ihr Fortschritt (erhaltene Abzeichen mit Datum, gesehene Uhrmodelle, Zahl der aufeinanderfolgenden Nutzungstage) werden nur auf dem Telefon gespeichert und nirgendwohin gesendet; Sie können sie jederzeit unter Werkzeuge › Abzeichen mit „Abzeichen löschen“ entfernen.",
           "**Intervalltraining:** Während eines von Ihnen gestarteten Intervalltrainings nutzt die App den Hintergrund-Audiomodus von iOS, um Phasenwechsel auch bei gesperrtem Bildschirm anzusagen; die Sprachausgabe wird auf dem Telefon erzeugt, es werden keine Daten gesendet.",
-          "**Fotos:** Ein Foto, das Sie für die Vollbilduhr oder einen Countdown wählen, wird über die Fotoauswahl des iPhones übernommen (es wird kein Zugriff auf Ihre Mediathek angefragt); eine verkleinerte Kopie wird nur auf dem Telefon gespeichert und nirgendwohin gesendet. Für die Diashow gewählte Fotos (bis zu 10) bleiben ebenfalls auf dem Telefon. Teilkarten für Gebetszeiten und Countdowns sowie CSV-Dateien entstehen auf dem Telefon und gehen nur an die App, die Sie wählen. Das für das transparente Widget gewählte Bildschirmfoto des Home-Bildschirms und die daraus ausgeschnittenen Teile bleiben nur auf dem Telefon, im gemeinsamen Ordner von App und Widgets; sie werden nirgendwohin gesendet und nicht mit iCloud synchronisiert.",
+          "**Fotos:** Ein Foto, das Sie für die Vollbilduhr oder einen Countdown wählen, wird über die Fotoauswahl des iPhones übernommen (es wird kein Zugriff auf Ihre Mediathek angefragt); eine verkleinerte Kopie wird nur auf dem Telefon gespeichert und nirgendwohin gesendet. Für die Diashow gewählte Fotos (bis zu 10) bleiben ebenfalls auf dem Telefon. Karten zum Teilen von Gebetszeiten und Countdowns sowie CSV-Dateien entstehen auf dem Telefon und gehen nur an die App, die Sie wählen. Das für das transparente Widget gewählte Bildschirmfoto des Home-Bildschirms und die daraus ausgeschnittenen Teile bleiben nur auf dem Telefon, im gemeinsamen Ordner von App und Widgets; sie werden nirgendwohin gesendet und nicht mit iCloud synchronisiert.",
           "**Einstellungen:** Einstellungen wie Uhrmodell, Provinz und Weltuhren werden nur auf dem Telefon gespeichert und beim Löschen der App entfernt.",
           "**Qibla und Moscheen in der Nähe:** Die Qibla-Richtung wird auf dem Telefon berechnet; der Kompass nutzt den Lagesensor des Telefons (mit Standortberechtigung wird der Standort zur Bestimmung des geografischen Nordens ebenfalls nur auf dem Telefon genutzt). Auf dem Bildschirm „Moscheen in der Nähe“ erfolgt die Suche über Apple Karten: Der Suchbegriff („Moschee“) und das auf zwei Dezimalstellen gerundete Gebietszentrum gehen an Apple; es gelten Apples Datenschutzbedingungen. Auf dem Qibla-Bildschirm wird die Linie zur Kaaba auf Apple Karten gezeigt; Kartenbilder Ihrer Gegend werden von Apple geladen.",
           "**Apple Watch, Siri und Sperrbildschirm:** Die Apple-Watch-App berechnet die Gebetszeiten auf der Uhr; ist „Ort vom iPhone“ gewählt, werden Name und Koordinaten des gewählten Ortes vom iPhone an die Uhr gesendet (Apples WatchConnectivity) und nirgendwohin sonst; wählen Sie auf der Uhr „Mein Standort“, wird der Standort nur auf der Uhr verwendet. Aktionen für Siri und Kurzbefehle (Timer, Wecker, Vollbilduhr, nächstes Gebet, Datum) laufen auf dem Telefon; Sprachanfragen verarbeitet Apple. Live-Aktivitäten auf dem Sperrbildschirm (Zähler, nächstes Gebet) entstehen auf dem Telefon.",
@@ -478,7 +478,7 @@
             ],
             [
               "sth-exam",
-              "Speichert im Prüfungstimer Prüfungsname, Raum, Zeiten und den Start einer laufenden Prüfung.",
+              "Speichert im Prüfungstimer den Prüfungsnamen, den Raum, die Zeiten und den Start einer laufenden Prüfung.",
               "Bis zur Löschung durch Sie"
             ],
             [
@@ -503,7 +503,7 @@
             ],
             [
               "sth-place",
-              "Merkt sich die zuletzt gewählte Provinz oder den zuletzt gewählten Standort für die Seiten Gebetszeiten, Natur und Wetter.",
+              "Merkt sich die zuletzt gewählte Provinz oder den zuletzt gewählten Standort für die Seiten Gebetszeiten, Jahreszeiten und Wetter.",
               "Bis zur Löschung durch Sie"
             ],
             [
@@ -654,7 +654,7 @@
     "info": "Info zur Zeitquelle",
     "infoTitle": "Woher kommt diese Uhrzeit?",
     "infoClose": "Schließen",
-    "infoSeconds": "Tippen Sie auf die Uhr, um die Sekunden ein- oder auszublenden. Bei digitalen Uhren sind die Sekunden zunächst an, bei analogen aus.",
+    "infoSeconds": "Tippen Sie auf die Uhr, um die Sekunden ein- oder auszublenden. Bei digitalen und analogen Uhren sind die Sekunden zunächst an.",
     "zoomIn": "Uhr vergrößern",
     "zoomOut": "Uhr verkleinern"
   },
@@ -1111,7 +1111,7 @@
       "shareNote": "Sie können den Link zum gewählten Datum teilen; beim Öffnen des Links startet der Countdown automatisch.",
       "addMinute": "+1 Min.",
       "addToApp": "📲 Zur Saat-Tarih-App hinzufügen",
-      "present": "Vortragsfarben",
+      "present": "Präsentationsfarben",
       "presentNote": "Grün; in den letzten 2 Minuten (bei kurzen Zeiten im letzten Fünftel) gelb; rot, wenn die Zeit um ist."
     },
     "alarm": {
@@ -1791,7 +1791,7 @@
   },
   "embedgen": {
     "title": "Uhr-Widget: kostenlose Uhr für Ihre Website | Saat Tarih",
-    "description": "Binden Sie eine kostenlose Uhr in Ihre Website ein: 13 Uhrenstile, Stadtauswahl, heller oder dunkler Modus. Fertigen iframe-Code kopieren und einfügen.",
+    "description": "Binden Sie eine kostenlose Uhr in Ihre Website ein: 20 Uhrenstile, Stadtauswahl, heller oder dunkler Modus. Fertigen iframe-Code kopieren und einfügen.",
     "h1": "Uhr in Ihre Website einbetten",
     "lead": "Wählen Sie Stil, Stadt und Farbmodus, kopieren Sie den fertigen iframe-Code und fügen Sie ihn in Ihre Website ein. Das Widget ist werbefrei, verwendet keine Cookies und läuft mit der serversynchronisierten Uhr.",
     "modelLabel": "Uhrenstil",
@@ -1825,19 +1825,19 @@
       },
       {
         "q": "Erfasst das Widget Daten meiner Besucher?",
-        "a": "Das Widget setzt keine Cookies und erhebt keine personenbezogenen Daten. Es sendet einige kleine Anfragen an den Server, um die richtige Uhrzeit anzuzeigen; Seitenaufrufe werden in einer cookiefreien, anonymen Statistik gezählt."
+        "a": "Das Widget setzt keine Cookies und erhebt keine personenbezogenen Daten. Es sendet einige kleine Anfragen an den Server, um die richtige Uhrzeit anzuzeigen; im Widget gibt es kein Statistik-Skript, Seitenaufrufe werden nicht gezählt."
       }
     ],
     "sizeNote": "Kalenderstile benötigen mindestens 460 px Höhe; die übrigen Stile passen bequem in 360 px.",
     "lineHeading": "Als Textzeile",
-    "lineLead": "Fügen Sie Ihrer Seite eine einzeilige Live-Uhr oder Sonnenauf- und -untergang hinzu: die beiden Zeilen unten einfügen; der Text übernimmt Schrift und Farbe Ihrer Seite.",
+    "lineLead": "Fügen Sie Ihrer Seite eine einzeilige Live-Uhr oder die Zeiten für Sonnenauf- und -untergang als Text hinzu: Fügen Sie die beiden Zeilen unten ein; der Text übernimmt Schrift und Farbe Ihrer Seite.",
     "lineKind": "Anzeigen",
     "lineKinds": {
       "time": "Uhrzeit",
       "date": "Datum und Uhrzeit",
       "sun": "Sonnenauf- und -untergang"
     },
-    "lineNote": "Das Skript zeichnet nur die Zeit; es setzt keine Cookies und sendet keine Daten. Die Zeitzone kommt von der Stadt.",
+    "lineNote": "Das Skript zeigt nur den gewählten Text an (Uhrzeit, Datum oder Sonnenauf- und -untergang); es setzt keine Cookies und sendet keine Daten. Die Zeitzone richtet sich nach der Stadt.",
     "linePreview": "Vorschau"
   },
   "embed": {
@@ -2150,7 +2150,7 @@
     "eclMapLunar": "Blau: Gebiete, in denen der Mond bei maximaler Finsternis über dem Horizont steht und die Finsternis sichtbar ist. Blauer Punkt: Mond im Zenit; schwarzer Punkt: gewählter Ort.",
     "eclMapNote": "Die Karte wird im Browser näherungsweise aus den Positionen von Sonne und Mond berechnet (Ränder können um einige Dutzend km abweichen). Küstenlinien: Natural Earth. Genaue Zonen und Zeiten auf den Finsternisseiten der NASA.",
     "folkHeading": "Traditioneller Volkskalender",
-    "folkNote": "Traditionelle Daten des türkischen Volkskalenders (nach dem alten Rumi-Kalender); keine Wettervorhersage, Quellen weichen um einige Tage ab.",
+    "folkNote": "Traditionelle Daten des türkischen Volkskalenders (nach dem alten Rumi-Kalender); keine Wettervorhersage; je nach Quelle können sie um einige Tage abweichen.",
     "folkNow": "Jetzt",
     "folkNames": {
       "erbain": "Erbain (die 40 kältesten Wintertage)",
@@ -2215,7 +2215,7 @@
       "p4": "Halbschatten endet"
     },
     "eclMag": "Kernschattengröße {v}",
-    "eclApprox": "Zeiten sind ungefähr (einige Minuten); von hier nicht sichtbare Momente sind blass."
+    "eclApprox": "Zeiten sind Näherungswerte (einige Minuten); von hier nicht sichtbare Zeitpunkte werden blass dargestellt."
   },
   "weather": {
     "title": "Wetter: aktuell, stündlich und 14-Tage-Vorhersage | Saat Tarih",
@@ -2285,7 +2285,7 @@
       },
       {
         "q": "Kann ich das Wetter auf der Vollbild-Uhr sehen?",
-        "a": "Ja. Im Vollbild zeigt die Wetter-Schaltfläche in der Leiste, die beim Antippen des Bildschirms erscheint, das Wetter Ihres gewählten Standorts neben der Uhr an."
+        "a": "Ja. Wischen Sie auf der Startseite zu einem Uhrenstil mit Wetter und wechseln Sie ins Vollbild; das Wetter Ihres gewählten Standorts erscheint neben der Uhr."
       }
     ],
     "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin wetter vorhersage temperatur regen wind luftfeuchtigkeit uv-index morgen diese woche wettervorhersage",
@@ -2351,7 +2351,7 @@
     "aqiIndex": "Europäischer Luftqualitätsindex (EAQI)",
     "aqiLevels": [
       "Gut",
-      "Mäßig",
+      "Akzeptabel",
       "Mittel",
       "Schlecht",
       "Sehr schlecht",
@@ -2648,7 +2648,7 @@
     ]
   },
   "worldHol": {
-    "hubTitle": "Feiertage nach Ländern 2026–2028 | Saat Tarih",
+    "hubTitle": "Feiertage nach Ländern 2024–2032 | Saat Tarih",
     "hubDescription": "Landesweite Feiertage in Deutschland, Großbritannien, den USA, den Niederlanden, Frankreich und 25 weiteren Ländern: Daten, Wochentage, nächster Feiertag.",
     "hubH1": "Feiertage nach Ländern",
     "hubLead": "Landesweite Feiertage in 30 Ländern und die Tage bis zum nächsten Feiertag.",
@@ -2821,7 +2821,7 @@
       }
     ],
     "rumi": "Rumi (osmanisch): {date}",
-    "rumiNote": "Das Rumi-Datum folgt dem julianischen Kalender (13 Tage zurück), Jahresbeginn 1. März, wie in traditionellen türkischen Almanachen."
+    "rumiNote": "Das Rumi-Datum folgt dem julianischen Kalender (13 Tage hinter dem gregorianischen), Jahresbeginn 1. März, wie in traditionellen türkischen Almanachen."
   },
   "timeCalc": {
     "title": "Zeitrechner: Stunden addieren und Zeitdauer berechnen | Saat Tarih",
@@ -3133,7 +3133,7 @@
       }
     ],
     "eventsHeading": "Himmelsereignisse",
-    "eventsLead": "Maxima von Meteorströmen, Begegnungen von Planeten und Mond, Oppositionen und größte Elongationen; Zeiten in der Zeit des gewählten Ortes.",
+    "eventsLead": "Maxima von Meteorströmen, Begegnungen von Planeten und Mond, Oppositionen und größte Elongationen; Uhrzeiten in der Zeitzone des gewählten Ortes.",
     "showers": {
       "qua": "Quadrantiden",
       "lyr": "Lyriden",
@@ -3146,7 +3146,7 @@
       "gem": "Geminiden",
       "urs": "Ursiden"
     },
-    "evShower": "Maximum der {name}",
+    "evShower": "{name} im Maximum",
     "showerRate": "Bei dunklem Himmel bis zu ~{zhr} Meteore pro Stunde",
     "showerVar": "Die Rate schwankt von Jahr zu Jahr",
     "moonLight": "Mond zu {moon} beleuchtet",
@@ -3241,7 +3241,7 @@
   },
   "sleepCalc": {
     "title": "Schlafrechner: Wann ins Bett, wann aufstehen? | Saat Tarih",
-    "description": "Berechnen Sie Schlafens- oder Aufstehzeiten nach 90-minütigen Schlafzyklen: wann ins Bett für eine Weckzeit, oder wann aufstehen, wenn Sie jetzt schlafen gehen.",
+    "description": "Berechnen Sie Schlafens- oder Aufstehzeiten nach 90-minütigen Schlafzyklen: wann ins Bett für eine Weckzeit oder wann aufstehen, wenn Sie jetzt schlafen gehen.",
     "h1": "Schlafrechner",
     "lead": "Finden Sie Schlafenszeiten zu einer Weckzeit oder Weckzeiten zu einer Schlafenszeit, in 90-Minuten-Zyklen. Für das Einschlafen werden 15 Minuten addiert.",
     "search": "schlafrechner wann ins bett schlafzyklus 90 minuten aufwachen sleep calculator",
@@ -3300,7 +3300,7 @@
   },
   "classroom": {
     "title": "Klassenzimmer-Tools: Zufallsnamen, Teams, Zähler | Saat Tarih",
-    "description": "Kostenlose Unterrichtstools: Namen zufällig ziehen, die Klasse in gleich große Teams teilen, Punkte mit Zählern festhalten. Namen bleiben in Ihrem Browser.",
+    "description": "Kostenlose Unterrichtstools: Namen zufällig ziehen, die Klasse in gleich große Teams teilen, Punkte mit Zählern festhalten. Keine Anmeldung; Namen bleiben im Browser.",
     "h1": "Klassenzimmer-Tools",
     "lead": "Geben Sie die Namen Ihrer Schülerinnen und Schüler einmal ein und ziehen Sie dann einen Zufallsnamen, teilen Sie die Klasse in Teams auf oder zählen Sie Punkte. Über die Vollbildtaste lässt sich alles an die Tafel projizieren.",
     "search": "Klassenzimmer Tools Zufallsname Namen ziehen Losziehung Teamgenerator Gruppen einteilen Punktezähler Lehrer",

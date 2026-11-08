@@ -1330,9 +1330,9 @@
     <string name="look_bg_stars">ستاره‌ها</string>
     <string name="look_bg_note">آسمان از ارتفاع خورشید در مکان انتخابی پیروی می‌کند: روز، طلوع/غروب یا شب. اگر «کاهش حرکت» روشن باشد، پس‌زمینه‌های متحرک ثابت نمایش داده می‌شوند.</string>
     <string name="features_title">ویژگی‌ها</string>
-    <string name="features_note">ساعت همیشه روشن است. ویژگی‌هایی که روشن می‌کنید در نوار پایین ظاهر می‌شوند؛ اگر همه خاموش باشند نوار پنهان است و تنظیمات از چرخ‌دندهٔ صفحهٔ ساعت باز می‌شود.</string>
+    <string name="features_note">ساعت همیشه روشن است. ویژگی‌هایی که روشن می‌کنید در «همه» دیده می‌شوند؛ حداکثر سه تا از آن‌ها را می‌توانید در نوار پایین بگذارید. تنظیمات هم در «همه» است.</string>
     <string name="features_clock_note">همیشه روشن: 21 سبک ساعت، تمام‌صفحه، موارد صفحهٔ ساعت</string>
-    <string name="features_weather_note">وضع کنونی، پیش‌بینی ساعتی و 7 روزه</string>
+    <string name="features_weather_note">وضع کنونی، پیش‌بینی ساعتی و روزانه</string>
     <string name="features_calendar_note">تعطیلات رسمی، روزهای مذهبی و ویژه، تقویم‌های گوشی شما</string>
     <string name="features_world_note">ساعت جهانی و کرهٔ چرخان</string>
     <string name="features_seasons_note">فصل‌ها، خورشید، اهلّهٔ ماه و گرفتگی‌ها</string>

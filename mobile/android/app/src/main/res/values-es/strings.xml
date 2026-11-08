@@ -1330,9 +1330,9 @@
     <string name="look_bg_stars">Estrellas</string>
     <string name="look_bg_note">El cielo sigue la altura del Sol en el lugar elegido: día, amanecer/atardecer o noche. Si \"Reducir movimiento\" está activado, los fondos animados se muestran quietos.</string>
     <string name="features_title">Funciones</string>
-    <string name="features_note">El reloj siempre está activado. Las funciones que active aparecen en la barra inferior; con todas desactivadas la barra se oculta y los ajustes se abren desde el engranaje de la pantalla del reloj.</string>
+    <string name="features_note">El reloj está siempre activado. Las funciones que active aparecen en Todo; puede poner hasta tres en la barra de pestañas. Los ajustes también están en Todo.</string>
     <string name="features_clock_note">Siempre activado: 21 estilos de reloj, pantalla completa, elementos de la pantalla del reloj</string>
-    <string name="features_weather_note">Condiciones actuales, previsión por horas y de 7 días</string>
+    <string name="features_weather_note">Condiciones actuales, previsión por horas y por días</string>
     <string name="features_calendar_note">Festivos, días religiosos y especiales, los calendarios de su teléfono</string>
     <string name="features_world_note">Relojes mundiales y el globo giratorio</string>
     <string name="features_seasons_note">Estaciones, el Sol, fases lunares y eclipses</string>

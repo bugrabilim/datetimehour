@@ -69,7 +69,7 @@
     <string name="prayer_bayramTomorrow">Eid prayer tomorrow: %1$s</string>
     <string name="prayer_bayramNote">Same rule as Diyanet’s published times (38 min after sunrise); the provincial mufti’s announcement is authoritative.</string>
     <string name="prayer_ezani">Ezani (alaturka) time: %1$s</string>
-    <string name="prayer_ezaniNote">In Ezani (alla turca) time, the evening prayer (sunset) is 12:00 and hours are counted from there.</string>
+    <string name="prayer_ezaniNote">In Ezani (alaturka) time, maghrib (sunset) is 12:00 and hours are counted from there.</string>
     <string name="prayer_method_heading">Calculation method</string>
     <string name="prayer_method_label">Method</string>
     <string name="prayer_method_asrLabel">Asr</string>
@@ -146,7 +146,7 @@
     <string name="prayer_wordsHM">%1$s h %2$s min</string>
     <string name="prayer_wordsM">%1$s min</string>
     <string name="prayer_wordsHint">Tap to switch between words and a clock.</string>
-    <string name="prayer_ramadanLeft">Time to %1$s: %2$s</string>
+    <string name="prayer_ramadanLeft">Time until %1$s: %2$s</string>
     <string name="prayer_silent_friday">Silence during Friday prayer (60 min)</string>
     <string name="widget_weather_name">Weather</string>
     <string name="widget_weather_desc">Current weather and today\'s high/low for the place set in the app.</string>
@@ -155,7 +155,7 @@
     <string name="watch_timer">Timer</string>
     <string name="watch_pomodoro">Pomodoro</string>
     <string name="watch_world">World clock</string>
-    <string name="watch_zikir">Tasbih counter</string>
+    <string name="watch_zikir">Dhikr counter</string>
     <string name="watch_start">Start</string>
     <string name="watch_pause">Pause</string>
     <string name="watch_reset">Reset</string>

@@ -2,8 +2,8 @@
   "_not": "Mağaza görsellerinin başlıkları (2. analiz #33, 3 Kasım 2026). Anahtar: ekran (dosya adındaki NN- ve ipad- önekinden sonrası), dil: [başlık, alt satır]. frame-screenshots.mjs kullanır. Rakamlar her dilde Latin.",
   "saat": {
     "tr": ["Saat, tarih ve vakit", "21 saat modeli, tam ekran ve gece modu"],
-    "en": ["Clock, date and prayer times", "21 clock faces, full screen and night mode"],
-    "de": ["Uhr, Datum und Gebetszeiten", "21 Zifferblätter, Vollbild und Nachtmodus"],
+    "en": ["Clock, date and prayer times", "21 clock styles, full screen and night mode"],
+    "de": ["Uhr, Datum und Gebetszeiten", "21 Uhrenmodelle, Vollbild und Nachtmodus"],
     "ar": ["الساعة والتاريخ ومواقيت الصلاة", "21 شكلًا للساعة، ملء الشاشة والوضع الليلي"],
     "fr": ["Heure, date et prières", "21 cadrans, plein écran et mode nuit"],
     "ru": ["Время, дата и намаз", "21 циферблат, полный экран и ночной режим"],

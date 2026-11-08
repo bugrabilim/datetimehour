@@ -1330,9 +1330,9 @@
     <string name="look_bg_stars">तारे</string>
     <string name="look_bg_note">आसमान चुनी जगह पर सूरज की ऊँचाई के साथ बदलता है: दिन, सूर्योदय/सूर्यास्त या रात। \"गति कम करें\" चालू होने पर चलती पृष्ठभूमियाँ स्थिर दिखती हैं।</string>
     <string name="features_title">सुविधाएँ</string>
-    <string name="features_note">घड़ी हमेशा चालू रहती है। आप जो सुविधाएँ चालू करते हैं वे नीचे की पट्टी में दिखती हैं; सब बंद होने पर पट्टी छिप जाती है और सेटिंग्स घड़ी स्क्रीन के गियर से खुलती हैं।</string>
+    <string name="features_note">घड़ी हमेशा चालू रहती है। आप जो सुविधाएँ चालू करते हैं वे सब में दिखती हैं; इनमें से अधिकतम तीन को टैब बार में रख सकते हैं। सेटिंग्स भी सब में हैं।</string>
     <string name="features_clock_note">हमेशा चालू: 21 घड़ी शैलियाँ, फ़ुल स्क्रीन, घड़ी स्क्रीन की चीज़ें</string>
-    <string name="features_weather_note">मौजूदा मौसम, घंटेवार और 7 दिन का पूर्वानुमान</string>
+    <string name="features_weather_note">मौजूदा मौसम, घंटेवार और रोज़ाना पूर्वानुमान</string>
     <string name="features_calendar_note">सार्वजनिक छुट्टियाँ, धार्मिक और विशेष दिन, आपके फ़ोन के कैलेंडर</string>
     <string name="features_world_note">विश्व घड़ियाँ और घूमता ग्लोब</string>
     <string name="features_seasons_note">ऋतुएँ, सूरज, चंद्र कलाएँ और ग्रहण</string>

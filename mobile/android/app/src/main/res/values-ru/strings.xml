@@ -1330,9 +1330,9 @@
     <string name="look_bg_stars">Звёзды</string>
     <string name="look_bg_note">Небо меняется в зависимости от высоты Солнца в выбранном месте: день, восход/закат или ночь. Если включено «Уменьшение движения», анимированные фоны показываются неподвижными.</string>
     <string name="features_title">Функции</string>
-    <string name="features_note">Часы включены всегда. Включённые функции появляются в нижней панели; если все выключены, панель скрыта, а настройки открываются шестерёнкой на экране часов.</string>
+    <string name="features_note">Часы включены всегда. Включённые функции появляются в разделе «Все»; до трёх из них можно вынести на нижнюю панель. Настройки тоже в разделе «Все».</string>
     <string name="features_clock_note">Всегда включено: 21 стилей часов, полный экран, элементы экрана часов</string>
-    <string name="features_weather_note">Текущая погода, почасовой и 7-дневный прогноз</string>
+    <string name="features_weather_note">Текущая погода, прогноз по часам и по дням</string>
     <string name="features_calendar_note">Праздники, религиозные и особые дни, календари телефона</string>
     <string name="features_world_note">Мировое время и вращающийся глобус</string>
     <string name="features_seasons_note">Сезоны, Солнце, фазы Луны и затмения</string>

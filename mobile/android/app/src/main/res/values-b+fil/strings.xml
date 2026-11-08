@@ -1330,9 +1330,9 @@
     <string name="look_bg_stars">Mga bituin</string>
     <string name="look_bg_note">Sumusunod ang langit sa taas ng Araw sa napiling lokasyon: araw, pagsikat/paglubog o gabi. Kung naka-on ang \"reduce motion\", hindi gumagalaw ang mga animated na background.</string>
     <string name="features_title">Mga feature</string>
-    <string name="features_note">Laging naka-on ang orasan. Lumalabas sa bottom bar ang mga feature na naka-on; kapag naka-off lahat, nakatago ang bar at bubukas ang settings mula sa gear sa screen ng orasan.</string>
+    <string name="features_note">Laging bukas ang orasan. Lumalabas sa Lahat ang mga feature na binuksan mo; hanggang tatlo sa mga ito ang puwedeng ilagay sa tab bar. Nasa Lahat din ang Settings.</string>
     <string name="features_clock_note">Laging naka-on: 21 istilo ng orasan, full screen, mga item sa screen ng orasan</string>
-    <string name="features_weather_note">Kasalukuyang panahon, oras-oras at 7-araw na forecast</string>
+    <string name="features_weather_note">Kasalukuyang panahon, oras-oras at araw-araw na forecast</string>
     <string name="features_calendar_note">Mga pampublikong holiday, relihiyoso at espesyal na araw, mga kalendaryo ng iyong telepono</string>
     <string name="features_world_note">World clock at umiikot na globo</string>
     <string name="features_seasons_note">Mga panahon, ang Araw, yugto ng Buwan at mga eklipse</string>

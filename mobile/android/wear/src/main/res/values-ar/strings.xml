@@ -64,7 +64,7 @@
     <string name="prayer_extraNames_midnight">منتصف الليل</string>
     <string name="prayer_extraNames_tahajjud">التهجد (الثلث الأخير من الليل)</string>
     <string name="prayer_extraNames_seher">السحر</string>
-    <string name="prayer_extraNote">لا تنشر رئاسة الشؤون الدينية هذه الأوقات. تُحسب وفق تعريفات تقويم تركيا: الإشراق والاصفرار والشمس على ارتفاع 5° فوق الأفق، واشتباك النجوم عند 10° والعشاء الثاني عند 19° تحته؛ والضحوة الكبرى منتصف ما بين الإمساك والمغرب؛ والليل من المغرب إلى الإمساك.</string>
+    <string name="prayer_extraNote">لا تنشر رئاسة الشؤون الدينية هذه الأوقات. تُحسب وفق تعريفات «تقويم تركيا» (Türkiye Takvimi): الإشراق والاصفرار والشمس على ارتفاع 5° فوق الأفق، واشتباك النجوم عند 10° والعشاء الثاني عند 19° تحته؛ والضحوة الكبرى منتصف ما بين الإمساك والمغرب؛ والليل من المغرب إلى الإمساك.</string>
     <string name="prayer_bayram">صلاة العيد</string>
     <string name="prayer_bayramTomorrow">صلاة العيد غدًا: %1$s</string>
     <string name="prayer_bayramNote">القاعدة نفسها في مواقيت رئاسة الشؤون الدينية (بعد الشروق بـ 38 دقيقة)؛ والمعتمد إعلان مفتي الولاية.</string>
@@ -155,7 +155,7 @@
     <string name="watch_timer">المؤقت</string>
     <string name="watch_pomodoro">بومودورو</string>
     <string name="watch_world">الساعة العالمية</string>
-    <string name="watch_zikir">المسبحة</string>
+    <string name="watch_zikir">عدّاد الذكر</string>
     <string name="watch_start">ابدأ</string>
     <string name="watch_pause">إيقاف مؤقت</string>
     <string name="watch_reset">إعادة الضبط</string>

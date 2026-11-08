@@ -1330,9 +1330,9 @@
     <string name="look_bg_stars">Étoiles</string>
     <string name="look_bg_note">Le ciel suit la hauteur du Soleil au lieu choisi : jour, lever/coucher ou nuit. Si « Réduire les animations » est activé, les arrière-plans animés restent fixes.</string>
     <string name="features_title">Fonctions</string>
-    <string name="features_note">L’horloge est toujours active. Les fonctions que vous activez apparaissent dans la barre du bas ; si elles sont toutes désactivées, la barre est masquée et les réglages s’ouvrent avec la roue dentée de l’écran de l’horloge.</string>
+    <string name="features_note">L’horloge est toujours active. Les fonctions activées apparaissent dans Tout ; vous pouvez en placer jusqu’à trois dans la barre d’onglets. Les réglages sont aussi dans Tout.</string>
     <string name="features_clock_note">Toujours active : 21 styles d’horloge, plein écran, éléments de l’écran de l’horloge</string>
-    <string name="features_weather_note">Conditions actuelles, prévisions horaires et sur 7 jours</string>
+    <string name="features_weather_note">Conditions actuelles, prévisions horaires et quotidiennes</string>
     <string name="features_calendar_note">Jours fériés, jours religieux et particuliers, calendriers du téléphone</string>
     <string name="features_world_note">Horloges mondiales et globe en rotation</string>
     <string name="features_seasons_note">Saisons, Soleil, phases de la Lune et éclipses</string>

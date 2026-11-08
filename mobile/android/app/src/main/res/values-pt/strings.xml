@@ -1330,9 +1330,9 @@
     <string name="look_bg_stars">Estrelas</string>
     <string name="look_bg_note">O céu segue a altura do Sol no local escolhido: dia, nascer/pôr do sol ou noite. Se \"Reduzir movimento\" estiver ativado, os fundos animados aparecem parados.</string>
     <string name="features_title">Recursos</string>
-    <string name="features_note">O relógio fica sempre ativado. Os recursos que você ativar aparecem na barra inferior; com todos desativados a barra some e as configurações abrem pela engrenagem na tela do relógio.</string>
+    <string name="features_note">O relógio fica sempre ativado. Os recursos que você ativar aparecem em Tudo; você pode colocar até três deles na barra de abas. Os Ajustes também ficam em Tudo.</string>
     <string name="features_clock_note">Sempre ativado: 21 estilos de relógio, tela cheia, itens da tela do relógio</string>
-    <string name="features_weather_note">Condições atuais, previsão por hora e para 7 dias</string>
+    <string name="features_weather_note">Condições atuais, previsão por hora e por dia</string>
     <string name="features_calendar_note">Feriados, datas religiosas e especiais, os calendários do seu celular</string>
     <string name="features_world_note">Relógios mundiais e o globo giratório</string>
     <string name="features_seasons_note">Estações, o Sol, fases da Lua e eclipses</string>
