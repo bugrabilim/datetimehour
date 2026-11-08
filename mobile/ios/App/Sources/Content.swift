@@ -300,9 +300,12 @@ struct CalendarLeafView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text(L("otd.h1")).font(.headline).foregroundStyle(Theme.text)
                         ForEach(otd, id: \.self) { it in
-                            VStack(alignment: .leading, spacing: 1) {
-                                Text(it.icon + " " + String(it.year) + " · " + it.title).foregroundStyle(Theme.text)
-                                if !it.desc.isEmpty { Text(it.desc).font(.caption).foregroundStyle(Theme.muted) }
+                            HStack(alignment: .top, spacing: 8) {
+                                DuoIcon(name: it.icon, size: 18, color: Theme.sage).padding(.top, 1)
+                                VStack(alignment: .leading, spacing: 1) {
+                                    Text(String(it.year) + " · " + it.title).foregroundStyle(Theme.text)
+                                    if !it.desc.isEmpty { Text(it.desc).font(.caption).foregroundStyle(Theme.muted) }
+                                }
                             }
                         }
                         Text("Wikidata (CC0)").font(.caption2).foregroundStyle(Theme.muted)
@@ -368,7 +371,8 @@ enum OnThisDay {
         let kind: String
         let name: String
         let desc: String
-        var icon: String { ["e": "📜", "f": "🏛️", "b": "🎂", "d": "🕯️"][kind] ?? "📜" }
+        /// İki tonlu simge (8 Kasım 2026, emoji yerine): olay parşömen, kuruluş topluluk, doğum hediye, ölüm yaprak
+        var icon: String { ["e": "scroll", "f": "people", "b": "gift", "d": "leaf"][kind] ?? "scroll" }
         var title: String { kind == "f" ? T("otd.foundedFmt", name) : name }
     }
 

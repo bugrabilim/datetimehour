@@ -291,7 +291,7 @@ private struct CountdownEditor: View {
                     }
                 }
                 DatePicker(L("tools.countdown.targetLabel"), selection: $item.date)
-                Button { showCalendar = true } label: { Label { Text(L("countdowns.fromCalendar")) } icon: { LineIcon(name: "calendar", size: 20, c1: Theme.accent, c2: Theme.accent) } }
+                Button { showCalendar = true } label: { Label { Text(L("countdowns.fromCalendar")) } icon: { DuoIcon(name: "calendar", size: 20, color: Theme.accent) } }
                 Toggle(L("countdowns.yearly"), isOn: $item.yearly)
                 Toggle(L("countdowns.remind"), isOn: $item.remind)
                 // Gösterim birimi, renk, etiket, iş günü (2. analiz #73, #139)

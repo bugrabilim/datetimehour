@@ -515,7 +515,8 @@ struct MonthGrid: View {
             if let moon { Text(moon).font(.system(size: 9)).padding(.trailing, 1) }
         }
         .overlay(alignment: .topLeading) {
-            if dst { Text("⏱").font(.system(size: 9)).padding(.leading, 1) }
+            // Saat değişimi günü: "⏱" emojisinin yerine iki tonlu simge (8 Kasım 2026)
+            if dst { DuoIcon(name: "dst", size: 10, color: Theme.terra).padding(.leading, 1) }
         }
         .padding(.vertical, 5)
         .frame(maxWidth: .infinity)

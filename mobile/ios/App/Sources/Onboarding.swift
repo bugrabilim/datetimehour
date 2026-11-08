@@ -158,22 +158,24 @@ enum Onboarding {
     private static var resumeChecking = false
 }
 
-/// İlk sayfadaki özellik ızgarası (sahibin isteği, 6 Kasım 2026): metin anahtarı ve 3D simge, sırası sabit (Android'deki WELCOME_FEATURES)
+/// İlk sayfadaki özellik ızgarası (sahibin isteği, 6 Kasım 2026): metin anahtarı, iki tonlu simge ve konu rengi
+/// (8 Kasım 2026, DUOTONE.md), sırası sabit (Android'deki WELCOME_FEATURES)
 private struct OnboardWelcomeFeature: Hashable {
     let key: String
     let icon: String
+    let color: Color
 }
 
 private let onboardWelcomeFeatures: [OnboardWelcomeFeature] = [
-    OnboardWelcomeFeature(key: "clock", icon: "clock"),
-    OnboardWelcomeFeature(key: "calendar", icon: "calendar"),
-    OnboardWelcomeFeature(key: "weather", icon: "sun_cloud"),
-    OnboardWelcomeFeature(key: "prayer", icon: "mosque"),
-    OnboardWelcomeFeature(key: "alarm", icon: "alarm"),
-    OnboardWelcomeFeature(key: "world", icon: "globe"),
-    OnboardWelcomeFeature(key: "qibla", icon: "kaaba"),
-    OnboardWelcomeFeature(key: "sky", icon: "telescope"),
-    OnboardWelcomeFeature(key: "pomodoro", icon: "tomato"),
+    OnboardWelcomeFeature(key: "clock", icon: "clock", color: Theme.terra),
+    OnboardWelcomeFeature(key: "calendar", icon: "calendar", color: Theme.sage),
+    OnboardWelcomeFeature(key: "weather", icon: "sun_cloud", color: Theme.sky),
+    OnboardWelcomeFeature(key: "prayer", icon: "mosque", color: Theme.gold),
+    OnboardWelcomeFeature(key: "alarm", icon: "alarm", color: Theme.terra),
+    OnboardWelcomeFeature(key: "world", icon: "globe", color: Theme.sky),
+    OnboardWelcomeFeature(key: "qibla", icon: "kaaba", color: Theme.gold),
+    OnboardWelcomeFeature(key: "sky", icon: "telescope", color: Theme.dusk),
+    OnboardWelcomeFeature(key: "pomodoro", icon: "tomato", color: Theme.terra),
 ]
 
 struct OnboardingView: View {
@@ -359,7 +361,7 @@ struct OnboardingView: View {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
                     ForEach(onboardWelcomeFeatures, id: \.key) { f in
                         VStack(spacing: 6) {
-                            LineIcon(name: f.icon, size: 34)
+                            DuoChip(name: f.icon, color: f.color, box: 42, glyph: 25)
                             Text(L("onboard.welcome.f.\(f.key)"))
                                 .font(.footnote.weight(.medium))
                                 .foregroundStyle(Theme.text)
@@ -414,7 +416,7 @@ struct OnboardingView: View {
                         Text(L("onboard.summary.on")).font(.footnote.weight(.semibold)).foregroundStyle(Theme.muted)
                         ForEach(on, id: \.self) { t in
                             HStack(spacing: 12) {
-                                LineIcon(name: LineIconMap.tab(t), size: 28)
+                                DuoChip(name: LineIconMap.tab(t), color: LineIconMap.tabColor(t))
                                 Text(t.title).font(.headline).foregroundStyle(Theme.text)
                                 Spacer()
                                 Image(systemName: "checkmark.circle.fill").foregroundStyle(Theme.accent)
@@ -439,7 +441,7 @@ struct OnboardingView: View {
                 TrustCard()
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 10) {
-                        LineIcon(name: "pin", size: 26)
+                        DuoChip(name: "pin", color: Theme.sage)
                         Text(L("settings.location")).font(.headline).foregroundStyle(Theme.text)
                         Spacer()
                         PlacePicker(font: .body)
@@ -456,7 +458,7 @@ struct OnboardingView: View {
                 } label: {
                     VStack(alignment: .leading, spacing: 6) {
                         HStack(spacing: 10) {
-                            LineIcon(name: "bell", size: 26)
+                            DuoChip(name: "bell", color: Theme.sage)
                             Text(L(notifyOn ? "onboard.notifyOn" : "onboard.notify")).font(.headline)
                                 .foregroundStyle(notifyOn ? Theme.accent : Theme.text)
                             Spacer()
@@ -554,7 +556,7 @@ struct TrustCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 10) {
-                LineIcon(name: "heart", size: 30)
+                DuoChip(name: "privacy", color: Theme.sage)
                 Text(L("onboard.trust.title")).font(.headline).foregroundStyle(Theme.text)
             }
             Text(L("onboard.trust.text")).font(.subheadline).foregroundStyle(Theme.text)
@@ -696,8 +698,7 @@ private struct FullscreenArt: View {
 /// Tümü: arama, renkli araç kutuları, alt çubukta vurgulanan "Tümü" ve uzun basılan kutunun halkası
 private struct AllArt: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.colorScheme) private var scheme
-    // 3D simgeler (4 Kasım 2026, sahibin seçimi)
+    // İki tonlu simgeler (8 Kasım 2026, DUOTONE.md: 34/20, daire)
     private let tiles: [(String, Color)] = [
         ("alarm", Theme.terra), ("hourglass", Theme.terra), ("calendar", Theme.sage),
         ("sun_cloud", Theme.sky), ("compass", Theme.gold), ("book", Theme.gold),
@@ -729,20 +730,17 @@ private struct AllArt: View {
                 .padding(.top, 24)
                 .overlay(alignment: .bottom) {
                     HStack {
-                        Image(systemName: "clock")
+                        DuoIcon(name: "clock", size: 15, color: Theme.muted)
                         Spacer()
-                        Image(systemName: "moon")
+                        DuoIcon(name: "mosque", size: 15, color: Theme.muted)
                         Spacer()
-                        Image(systemName: "sun.max")
+                        DuoIcon(name: "sun_cloud", size: 15, color: Theme.muted)
                         Spacer()
-                        Image(systemName: "square.grid.3x3.fill")
-                            .foregroundStyle(Theme.accent)
+                        DuoIcon(name: "grid", size: 15, color: Theme.accent)
                             .padding(.horizontal, 7)
                             .padding(.vertical, 3)
                             .background(Theme.accent.opacity(0.12 + 0.2 * k), in: Capsule())
                     }
-                    .font(.system(size: 13))
-                    .foregroundStyle(Theme.muted)
                     .padding(.horizontal, 12)
                     .frame(height: 34)
                     .background(Theme.surface2)
@@ -752,10 +750,7 @@ private struct AllArt: View {
     }
 
     private func tile(_ t: (String, Color), pressed: Bool, k: CGFloat) -> some View {
-        RoundedRectangle(cornerRadius: 11)
-            .fill(t.1.opacity(scheme == .dark ? 0.22 : 0.14))
-            .frame(width: 34, height: 34)
-            .overlay(Icon3D(name: t.0, size: 22))
-            .overlay(RoundedRectangle(cornerRadius: 11).strokeBorder(Theme.accent.opacity(pressed ? k : 0), lineWidth: 1 + 2 * k))
+        DuoChip(name: t.0, color: t.1, box: 34, glyph: 20)
+            .overlay(Circle().strokeBorder(Theme.accent.opacity(pressed ? k : 0), lineWidth: 1 + 2 * k))
     }
 }

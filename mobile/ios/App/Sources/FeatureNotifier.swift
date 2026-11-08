@@ -34,6 +34,34 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
         }
     }
 
+    /// İki tonlu simgenin adı (8 Kasım 2026, DUOTONE.md; Ayarlar › Bildirimler satırları)
+    var duo: String {
+        switch self {
+        case .calendar: "calendar"
+        case .seasons: "leaf"
+        case .moon: "moon"
+        case .sun: "sunrise"
+        case .weather: "sun_cloud"
+        case .hourly: "clock"
+        case .dst: "dst"
+        case .bedtime: "bed"
+        case .habits: "coffee"
+        case .friday: "mosque"
+        case .daily: "speech"
+        case .sky: "telescope"
+        }
+    }
+
+    /// Konu rengi: takvim ve günün sözü adaçayı, gök ve hava mavi, uyku/alışkanlık/saat başı/yaz saati kiremit, Cuma altın
+    var tint: Color {
+        switch self {
+        case .calendar, .daily: Theme.sage
+        case .seasons, .moon, .sun, .weather, .sky: Theme.sky
+        case .hourly, .dst, .bedtime, .habits: Theme.terra
+        case .friday: Theme.gold
+        }
+    }
+
     /// Varsayılan: saat başı kapalı, diğerleri açık (30 Ekim 2026, sahibin kararı)
     var defaultOn: Bool { self != .hourly }
     var isOn: Bool { UserDefaults.standard.object(forKey: key) as? Bool ?? defaultOn }

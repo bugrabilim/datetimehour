@@ -44,17 +44,17 @@ enum AppPermissions {
         out.append(Item(id: "calendar", icon: "calendar",
                         state: cal == .notDetermined ? nil : (cal == .fullAccess || cal == .writeOnly)))
         let cam = AVCaptureDevice.authorizationStatus(for: .video)
-        out.append(Item(id: "camera", icon: "qr", state: cam == .notDetermined ? nil : cam == .authorized))
+        out.append(Item(id: "camera", icon: "camera", state: cam == .notDetermined ? nil : cam == .authorized))
         let mic = AVAudioApplication.shared.recordPermission
-        out.append(Item(id: "mic", icon: "speech", state: mic == .undetermined ? nil : mic == .granted))
+        out.append(Item(id: "mic", icon: "mic", state: mic == .undetermined ? nil : mic == .granted))
         let sp = SFSpeechRecognizer.authorizationStatus()
-        out.append(Item(id: "speech", icon: "memo", state: sp == .notDetermined ? nil : sp == .authorized))
+        out.append(Item(id: "speech", icon: "waveform", state: sp == .notDetermined ? nil : sp == .authorized))
         if HealthLog.available {
             let h = HKHealthStore().authorizationStatus(for: HKObjectType.workoutType())
             out.append(Item(id: "health", icon: "heart", state: h == .notDetermined ? nil : h == .sharingAuthorized))
         }
         let m = MPMediaLibrary.authorizationStatus()
-        out.append(Item(id: "music", icon: "speaker", state: m == .notDetermined ? nil : m == .authorized))
+        out.append(Item(id: "music", icon: "music", state: m == .notDetermined ? nil : m == .authorized))
         if FocusBlock.available {
             let f = AuthorizationCenter.shared.authorizationStatus
             out.append(Item(id: "screenTime", icon: "hourglass", state: f == .notDetermined ? nil : f == .approved))
@@ -107,10 +107,8 @@ private struct PermissionRow: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            LineIcon(name: item.icon, size: 30)
-                .frame(width: 44, height: 44)
-                .background(Theme.surface2, in: RoundedRectangle(cornerRadius: 12))
-                .accessibilityHidden(true)
+            // İki tonlu simge (8 Kasım 2026, DUOTONE.md): İzinler sayfasında hepsi adaçayı
+            DuoChip(name: item.icon, color: Theme.sage)
             VStack(alignment: .leading, spacing: 4) {
                 HStack(alignment: .firstTextBaseline) {
                     Text(L("perms.\(item.id).title")).font(.headline).foregroundStyle(Theme.text)

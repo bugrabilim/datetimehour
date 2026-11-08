@@ -36,7 +36,7 @@ struct NotificationsView: View {
                 }
             }
             Section {
-                row(L("notify.cat.prayer"), L("notify.cat.prayer.note"), "moon.stars", $prayer)
+                row(L("notify.cat.prayer"), L("notify.cat.prayer.note"), "mosque", Theme.gold, $prayer)
                 if prayer {
                     Button(L("notify.heading")) { showPrayer = true }
                 }
@@ -95,13 +95,14 @@ struct NotificationsView: View {
     }
 
     private func row(_ f: NotifyFeature, _ on: Binding<Bool>) -> some View {
-        row(f.title, f.note, f.icon, on)
+        row(f.title, f.note, f.duo, f.tint, on)
     }
 
-    private func row(_ title: String, _ note: String, _ icon: String, _ on: Binding<Bool>) -> some View {
+    /// Satır: iki tonlu simge (ad ve konu rengi açıkça; DUOTONE.md), başlık ve not
+    private func row(_ title: String, _ note: String, _ duo: String, _ tint: Color, _ on: Binding<Bool>) -> some View {
         Toggle(isOn: on) {
             VStack(alignment: .leading, spacing: 2) {
-                BoxLabel(title, icon: icon)
+                BoxLabel(title, duo: duo, tint: tint)
                 Text(note).font(.caption).foregroundStyle(Theme.muted)
             }
         }

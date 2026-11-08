@@ -360,11 +360,11 @@ struct AlarmsView: View {
                         Text(m == 0 ? L("alarm.calLead.zero") : T("alarm.preMin", m)).tag(m)
                     }
                 }
-                Button { pickingEvent = true } label: { Label { Text(L("alarm.fromCalendar")) } icon: { LineIcon(name: "calendar", size: 20, c1: Theme.accent, c2: Theme.accent) } }
+                Button { pickingEvent = true } label: { Label { Text(L("alarm.fromCalendar")) } icon: { DuoIcon(name: "calendar", size: 20, color: Theme.accent) } }
                 NavigationLink {
                     GeoAlarmsView()
                 } label: {
-                    Label(L("geo.title"), systemImage: "mappin.and.ellipse")
+                    Label { Text(L("geo.title")) } icon: { DuoIcon(name: "pin", size: 20, color: Theme.accent) }
                 }
             }
             if items.isEmpty {
@@ -438,13 +438,26 @@ struct AlarmsView: View {
                             .font(.system(size: 40, weight: .light, design: .rounded))
                             .monospacedDigit()
                             .environment(\.layoutDirection, .leftToRight)
-                        // Görev simgesi (2. analiz #51)
-                        Text(Self.taskIcon(item) + item.title + " · " + item.repeatText + (item.preAlarm > 0 ? " · 🌧" : ""))
-                            .font(.subheadline)
-                            .foregroundStyle(Theme.muted)
+                        // Görev simgesi (2. analiz #51); emoji yerine iki tonlu simge (8 Kasım 2026, sahibin "çok emoji" notu)
+                        HStack(spacing: 4) {
+                            if let duo = Self.taskDuo(item) { DuoIcon(name: duo, size: 15, color: Theme.muted) }
+                            Text(Self.taskChain(item) + item.title + " · " + item.repeatText)
+                            // Sakin ön alarm
+                            if item.preAlarm > 0 {
+                                Text("·")
+                                DuoIcon(name: "rain", size: 15, color: Theme.muted)
+                            }
+                        }
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.muted)
                         // Şehir saatine ya da güneşe bağlı alarm (2. analiz #132, #153)
                         if let anchor = item.anchorText {
-                            Text((item.sun.isEmpty ? "🌐 " : "☀️ ") + anchor).font(.footnote).foregroundStyle(Theme.accent)
+                            HStack(spacing: 4) {
+                                DuoIcon(name: item.sun.isEmpty ? "globe" : "sun", size: 14, color: Theme.accent)
+                                Text(anchor)
+                            }
+                            .font(.footnote)
+                            .foregroundStyle(Theme.accent)
                         }
                         if item.sleepPlan { Text(L("alarm.sleepLinked")).font(.caption2).foregroundStyle(Theme.muted) }
                         if let skip = item.skipUntil, skip > Date(), let at = item.unskipped.next() {
@@ -471,20 +484,26 @@ struct AlarmsView: View {
                 }
     }
 
-    static func taskIcon(_ item: AlarmItem) -> String {
-        let icon: String
+    /// Alarm kapatma görevinin iki tonlu simgesi (görev yoksa nil; 8 Kasım 2026'ya kadar metin önekinde emoji)
+    static func taskDuo(_ item: AlarmItem) -> String? {
         switch AlarmItem.effectiveTask(item.task, code: item.code) {
-        case "math": icon = "🧮 "
-        case "shake": icon = "📳 "
-        case "steps": icon = "🚶 "
-        case "code": icon = "🔳 "
-        case "memory": icon = "🧠 "
-        case "typing": icon = "⌨️ "
-        case "photo": icon = "📷 "
-        case "random": icon = "🎲 "
-        default: icon = ""
+        case "math": "calc"
+        case "shake": "waveform"
+        case "steps": "gauge"
+        case "code": "qr"
+        case "memory": "idea"
+        case "typing": "textsize"
+        case "photo": "camera"
+        case "object": "search"
+        case "speak": "mic"
+        case "random": "sparkles"
+        default: nil
         }
-        return icon + (item.chain.isEmpty || item.task == "none" ? "" : "+\(item.chain.count) ")
+    }
+
+    /// Görev zincirindeki ek görev sayısı ("+2 ")
+    static func taskChain(_ item: AlarmItem) -> String {
+        item.chain.isEmpty || item.task == "none" ? "" : "+\(item.chain.count) "
     }
 
 }

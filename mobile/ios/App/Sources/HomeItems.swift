@@ -28,6 +28,33 @@ enum HomeItem: String, CaseIterable, Identifiable {
         }
     }
 
+    /// İki tonlu simgenin adı ve konu rengi (8 Kasım 2026, DUOTONE.md; Saat ekranını düzenle satırları)
+    var duo: String {
+        switch self {
+        case .date: return "calendar"
+        case .week: return "numbers"
+        case .hijri: return "star_crescent"
+        case .next: return "hourglass"
+        case .prayers: return "mosque"
+        case .upcoming: return "star"
+        case .world: return "globe"
+        case .weather: return "sun_cloud"
+        case .sun: return "sunrise"
+        case .globe: return "globe"
+        case .battery: return "battery"
+        case .alarm: return "alarm"
+        }
+    }
+
+    var tint: Color {
+        switch self {
+        case .date, .week, .hijri, .upcoming: return Theme.sage
+        case .next, .prayers: return Theme.gold
+        case .world, .weather, .sun, .globe: return Theme.sky
+        case .battery, .alarm: return Theme.terra
+        }
+    }
+
     /// Dönen dünya varsayılan olarak açık (18 Ekim 2026, sahibin isteği); "Düzenle" ile kapatılabilir
     static let defaultRaw = "-date,-week,-hijri,-next,-prayers,-upcoming,-world,-weather,-sun,-globe,-battery,-alarm" // varsayılan: yalnız saat (30 Ekim 2026)
 }
@@ -70,7 +97,7 @@ struct HomeItemsView: View {
         let layout = HomeLayout(raw: raw)
         List {
             Section {
-                Toggle(isOn: $weatherBg) { Label(L("look.weatherClock"), systemImage: "cloud.rain") }
+                Toggle(isOn: $weatherBg) { BoxLabel(L("look.weatherClock"), duo: "umbrella", tint: Theme.sky) }
                     .tint(Theme.accent)
             }
             Section {
@@ -84,7 +111,7 @@ struct HomeItemsView: View {
                             BadgeStore.shared.hit(.duzenle)
                         }
                     )) {
-                        Label(item.title, systemImage: item.icon)
+                        BoxLabel(item.title, duo: item.duo, tint: item.tint)
                     }
                     .tint(Theme.accent)
                 }
