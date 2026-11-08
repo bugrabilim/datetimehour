@@ -492,6 +492,11 @@
               "Bis zur Löschung durch Sie"
             ],
             [
+              "sth-cal-exams",
+              "Merkt sich, ob Prüfungstermine im Kalender angezeigt werden sollen.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
               "sth-world",
               "Merkt sich die für die Weltzeituhr gewählten Städte und ihre Reihenfolge.",
               "Bis zur Löschung durch Sie"
@@ -796,7 +801,17 @@
       "aofFinal1": "AÖF Abschlussprüfung Herbstsemester (Anadolu-Universität)",
       "aofMid2": "AÖF Zwischenprüfung Frühjahrssemester (Anadolu-Universität)",
       "aofFinal2": "AÖF Abschlussprüfung Frühjahrssemester (Anadolu-Universität)",
-      "aofSummer": "AÖF-Sommerschulprüfung (Anadolu-Universität)"
+      "aofSummer": "AÖF-Sommerschulprüfung (Anadolu-Universität)",
+      "ales1": "ALES/1: Zulassungsprüfung für Master- und Promotionsstudium (ÖSYM)",
+      "ales2": "ALES/2: Zulassungsprüfung für Master- und Promotionsstudium (ÖSYM)",
+      "yds1": "YDS/1: Fremdsprachenprüfung (ÖSYM)",
+      "msu": "MSÜ: Aufnahmeprüfung der Nationalen Verteidigungsuniversität (ÖSYM)",
+      "ags": "MEB-AGS und ÖABT: Aufnahmeprüfung der Lehrerakademie (ÖSYM)",
+      "dgs": "DGS: Prüfung für den Wechsel ins Bachelorstudium (ÖSYM)",
+      "kpssGy": "KPSS Bachelor-Niveau: Allgemeine Fähigkeiten und Allgemeinbildung (ÖSYM)",
+      "kpssAlan": "KPSS Bachelor-Niveau: Fachwissen (ÖSYM)",
+      "iokbs": "İOKBS: Stipendienprüfung (MEB)",
+      "lgs": "LGS: Aufnahmeprüfung für weiterführende Schulen (MEB)"
     },
     "hubName": "Jahreskalender",
     "hubDesc": "Gesetzliche Feiertage, Bayram- und Vorabendtage, Kandil-Nächte und der Fastenmonat Ramadan.",
@@ -843,7 +858,8 @@
         "November: von lateinisch novem, „neun“.",
         "Dezember: von lateinisch decem, „zehn“."
       ]
-    }
+    },
+    "showExams": "Prüfungstermine anzeigen"
   },
   "tools": {
     "hub": {
@@ -1711,6 +1727,10 @@
       "nov24": {
         "name": "Tag des Lehrers",
         "dat": "zum Tag des Lehrers"
+      },
+      "lgs": {
+        "name": "LGS (Aufnahmeprüfung für weiterführende Schulen)",
+        "dat": "zur LGS"
       }
     },
     "exam": "Die Prüfungstermine stammen aus Bekanntgaben von ÖSYM, MEB und der Anadolu-Universität, die sie ändern können. Noch nicht veröffentlichte Termine werden nicht geschätzt, sondern nachgetragen."

@@ -108,7 +108,8 @@ fun calEvents(d: LocalDate): List<CalEvent> {
     val base = AppData.events[d].orEmpty()
     val list = if (CalView.country == "TR") base
         else base.filter { it.type == "religious" } + WorldHol.events(CalView.country, d)
-    return list.filter { it.type !in CalView.hidden }
+    val exams = if (CalView.country == "TR" && CalView.exams) AppData.exams[d].orEmpty() else emptyList()
+    return list.filter { it.type !in CalView.hidden } + exams
 }
 
 /** Ay / hafta / gün / ajanda / yıl seçimi */
@@ -159,6 +160,15 @@ fun CalCountryDialog(onClose: () -> Unit) {
                         Checkbox(checked = t !in CalView.hidden, onCheckedChange = null)
                         Box(Modifier.size(8.dp).background(AppData.color(t), CircleShape))
                         Text("  " + calendarTypeLabel(t), color = Theme.c.text, fontSize = 14.sp)
+                    }
+                }
+                if (CalView.country == "TR") {
+                    // Sınav tarihleri (8 Kasım 2026, sahibin isteği): varsayılan kapalı
+                    Row(Modifier.fillMaxWidth().clickable { CalView.exams = !CalView.exams; CalView.save() }.padding(vertical = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically) {
+                        Checkbox(checked = CalView.exams, onCheckedChange = null)
+                        Box(Modifier.size(8.dp).background(AppData.color("exam"), CircleShape))
+                        Text("  " + L("calendar.showExams"), color = Theme.c.text, fontSize = 14.sp)
                     }
                 }
                 HorizontalDivider(Modifier.padding(vertical = 8.dp), color = Theme.c.border)
@@ -280,7 +290,7 @@ fun BayramCard(name: String) {
 /** Ajanda: seçili günden başlayarak 60 gün, özel gün ya da etkinlik olan günler */
 @Composable
 fun AgendaView(from: LocalDate, device: (LocalDate) -> List<DeviceCalendar.Event>, onPick: (LocalDate) -> Unit) {
-    val days = remember(from, CalView.country, CalView.hidden) { (0L until 60L).map { from.plusDays(it) } }
+    val days = remember(from, CalView.country, CalView.hidden, CalView.exams) { (0L until 60L).map { from.plusDays(it) } }
     val shown = days.filter { calEvents(it).isNotEmpty() || device(it).isNotEmpty() }
     if (shown.isEmpty()) { EmptyState(androidx.compose.material.icons.Icons.Filled.DateRange, L("cal.agendaEmpty"), null); return }
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {

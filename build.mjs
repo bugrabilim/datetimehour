@@ -915,11 +915,14 @@ function monthTable(lang, year, month, cy, ev, calOverride, interactive = true) 
       const es = ev.byDate[date] || [];
       const rank = ["holiday", "half", "religious", "special"].find((t) => es.some((e) => e.type === t));
       const school = es.some((e) => e.type === "school") || inRange(date, cy.schoolRanges);
-      const cls = [rank && `d-${rank}`, !rank && school && "d-school", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
-      const label = es.length ? `<span class="sr-only">, ${esc(es.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "))}</span>` : "";
-      const title = es.length ? ` title="${esc(es.map((e) => cal.events[e.key]).join("; "))}"` : "";
+      const exam = es.some((e) => e.type === "exam") || inRange(date, cy.examRanges || []);
+      const cls = [rank && `d-${rank}`, !rank && school && "d-school", exam && "x-exam", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
+      const es0 = es.filter((e) => e.type !== "exam"), esX = es.filter((e) => e.type === "exam");
+      const lab = (arr) => esc(arr.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "));
+      const label = (es0.length ? `<span class="sr-only">, ${lab(es0)}</span>` : "") + (esX.length ? `<span class="sr-only ev-exam">, ${lab(esX)}</span>` : "");
+      const title = es0.length ? ` title="${esc(es0.map((e) => cal.events[e.key]).join("; "))}"` : "";
       tr += interactive
-        ? `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}${es.length ? "" : ` title="${esc(cal.dayNone)}"`} tabindex="0" role="button">${d}${label}</td>`
+        ? `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}${es0.length ? "" : ` title="${esc(cal.dayNone)}"`} tabindex="0" role="button">${d}${label}</td>`
         : `<td${cls ? ` class="${cls}"` : ""}${title}>${d}${label}</td>`;
     }
     rows += `<tr>${tr}</tr>`;
@@ -934,8 +937,9 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
   const cy = YEAR_DATA[year];
   const counts = holidayCounts(cy.events);
   const byDate = {};
-  /* Sınav günleri takvimde gösterilmez (geri sayım sayfaları kendi verisini kullanır) */
-  const shown = cy.events.filter((e) => e.type !== "exam");
+  /* Sınav günleri de çizilir ama varsayılan gizlidir; "Sınav tarihlerini göster" seçeneği açar (8 Kasım 2026, sahibin isteği:
+     takvim boşuna kalabalık olmasın). Gizliyken html.cal-exams yoktur, .ev-exam/.x-exam CSS ile saklanır. */
+  const shown = cy.events;
   shown.forEach((e) => (byDate[e.date] ||= []).push(e));
   const date = (key, i = 0) => cy.events.filter((e) => e.key === key)[i];
   const rbDays = cy.events.filter((e) => e.key.startsWith("rb") && e.key !== "rbEve").map((e) => e.date);
@@ -967,11 +971,13 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
   ];
   const ev = { byDate };
   const months = Array.from({ length: 12 }, (_, i) => `<div class="ymonth-wrap">${monthTable(lang, year, i + 1, cy, ev)}</div>`).join("");
-  const legend = ["holiday", "half", "religious", "ramadan", "special", ...(cy.events.some((e) => e.type === "school") ? ["school"] : []), "weekend", "today"]
-    .map((k) => `<li><span class="lg lg-${k}" aria-hidden="true"></span>${esc(cal.types[k])}</li>`).join("");
+  const hasExam = cy.events.some((e) => e.type === "exam") || (cy.examRanges || []).length > 0;
+  const legend = ["holiday", "half", "religious", "ramadan", "special", ...(cy.events.some((e) => e.type === "school") ? ["school"] : []), ...(hasExam ? ["exam"] : []), "weekend", "today"]
+    .map((k) => `<li${k === "exam" ? ' class="ev-exam"' : ""}><span class="lg lg-${k}" aria-hidden="true"></span>${esc(cal.types[k])}</li>`).join("")
+    + (hasExam ? `<li class="lg-switch"><label for="cal-exams"><input type="checkbox" id="cal-exams" data-cal-exams> ${esc(cal.showExams)}</label></li>` : "");
   const seenRow = new Set();
   const rows = shown
-    .map((e) => { const first = !seenRow.has(e.date); seenRow.add(e.date); return `<tr data-d="${e.date}"${first ? ` id="e-${e.date}"` : ""}><th scope="row">${esc(f.short(e.date))}</th><td>${esc(cal.weekdays[dowOf(e.date)])}</td><td>${esc(cal.events[e.key])}</td><td>${esc(cal.types[TYPE_LABEL_KEY[e.type]])}</td><td data-left></td></tr>`; })
+    .map((e) => { const first = !seenRow.has(e.date) && e.type !== "exam"; if (first) seenRow.add(e.date); return `<tr data-d="${e.date}"${first ? ` id="e-${e.date}"` : ""}${e.type === "exam" ? ' class="ev-exam"' : ""}><th scope="row">${esc(f.short(e.date))}</th><td>${esc(cal.weekdays[dowOf(e.date)])}</td><td>${esc(cal.events[e.key])}</td><td>${esc(cal.types[TYPE_LABEL_KEY[e.type]])}</td><td data-left></td></tr>`; })
     .join("");
   const yearLinks = HOL_YEARS.map((y) => `<li><a href="${yearPath(lang, y)}"${y === year ? ' aria-current="page"' : ""}>${y}</a></li>`).join("");
   const prev = HOL_YEARS.includes(year - 1) ? `<a href="${yearPath(lang, year - 1)}" rel="prev">${esc(tpl(cal.prevYear, { year: year - 1 }))}</a>` : "";
@@ -1598,9 +1604,10 @@ const CDP = [
   { key: "schoolStart", keys: ["schoolStart"], tr: "okul-acilisi", en: "school-start", school: true },
   { key: "midterm", keys: ["midterm1", "midterm2"], tr: "ara-tatil", en: "mid-term-break", school: true },
   { key: "yks", keys: ["yksTyt"], tr: "yks", en: "yks", exam: true },
-  { key: "kpss", keys: ["kpssOrta", "kpssDhbt"], tr: "kpss", en: "kpss", exam: true },
-  { key: "ales", keys: ["ales3"], tr: "ales", en: "ales", exam: true },
-  { key: "yds", keys: ["yds2"], tr: "yds", en: "yds", exam: true },
+  { key: "lgs", keys: ["lgs"], tr: "lgs", en: "lgs", exam: true },
+  { key: "kpss", keys: ["kpssGy", "kpssOrta", "kpssDhbt"], tr: "kpss", en: "kpss", exam: true },
+  { key: "ales", keys: ["ales1", "ales2", "ales3"], tr: "ales", en: "ales", exam: true },
+  { key: "yds", keys: ["yds1", "yds2"], tr: "yds", en: "yds", exam: true },
   { key: "aof", keys: ["aofMid1", "aofFinal1", "aofMid2", "aofFinal2", "aofSummer"], tr: "aof-sinavi", en: "aof-exam", exam: true },
   { key: "aol", keys: ["aolWritten"], tr: "aol-sinavi", en: "aol-exam", exam: true },
 ];

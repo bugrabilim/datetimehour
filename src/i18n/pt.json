@@ -531,6 +531,11 @@
               "Até você apagar"
             ],
             [
+              "sth-cal-exams",
+              "Lembra se você escolheu mostrar as datas de provas no calendário.",
+              "Até você apagar"
+            ],
+            [
               "sth-world",
               "Lembra as cidades que você escolheu para o relógio mundial e a ordem delas.",
               "Até você apagar"
@@ -835,7 +840,17 @@
       "aofFinal1": "Prova final de outono do AÖF (Universidade de Anadolu)",
       "aofMid2": "Prova intermediária de primavera do AÖF (Universidade de Anadolu)",
       "aofFinal2": "Prova final de primavera do AÖF (Universidade de Anadolu)",
-      "aofSummer": "Prova do curso de verão do AÖF (Universidade de Anadolu)"
+      "aofSummer": "Prova do curso de verão do AÖF (Universidade de Anadolu)",
+      "ales1": "ALES/1: prova de acesso à pós-graduação (ÖSYM)",
+      "ales2": "ALES/2: prova de acesso à pós-graduação (ÖSYM)",
+      "yds1": "YDS/1: prova de proficiência em língua estrangeira (ÖSYM)",
+      "msu": "MSÜ: prova de ingresso na Universidade de Defesa Nacional (ÖSYM)",
+      "ags": "MEB-AGS e ÖABT: prova de ingresso na academia de professores (ÖSYM)",
+      "dgs": "DGS: prova de transferência para o bacharelado (ÖSYM)",
+      "kpssGy": "KPSS de nível superior: aptidão e conhecimentos gerais (ÖSYM)",
+      "kpssAlan": "KPSS de nível superior: conhecimentos específicos (ÖSYM)",
+      "iokbs": "İOKBS: prova de bolsas de estudo (MEB)",
+      "lgs": "LGS: prova de ingresso no ensino médio (MEB)"
     },
     "hubName": "Calendário anual",
     "hubDesc": "Feriados oficiais, dias de bayram e vésperas, noites de kandil e o mês do Ramadã.",
@@ -896,7 +911,8 @@
       "Outubro",
       "Novembro",
       "Dezembro"
-    ]
+    ],
+    "showExams": "Mostrar datas de provas"
   },
   "tools": {
     "hub": {
@@ -1764,6 +1780,10 @@
       "nov24": {
         "name": "Dia do Professor",
         "dat": "o Dia do Professor"
+      },
+      "lgs": {
+        "name": "LGS (prova de ingresso no ensino médio)",
+        "dat": "o LGS"
       }
     },
     "exam": "As datas das provas vêm dos anúncios do ÖSYM, do MEB e da Universidade de Anadolu, que podem alterá-las. Datas não anunciadas não são supostas; elas são adicionadas quando publicadas."

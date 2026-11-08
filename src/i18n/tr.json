@@ -465,6 +465,11 @@
               "Siz silene kadar"
             ],
             [
+              "sth-cal-exams",
+              "Takvimde sınav tarihlerini gösterme seçiminizi hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
               "sth-world",
               "Dünya saatleri için seçtiğiniz şehirleri ve sırasını hatırlar.",
               "Siz silene kadar"
@@ -769,7 +774,17 @@
       "aofFinal1": "AÖF güz dönemi final sınavı (Anadolu Üniversitesi)",
       "aofMid2": "AÖF bahar dönemi ara sınavı (Anadolu Üniversitesi)",
       "aofFinal2": "AÖF bahar dönemi final sınavı (Anadolu Üniversitesi)",
-      "aofSummer": "AÖF yaz okulu sınavı (Anadolu Üniversitesi)"
+      "aofSummer": "AÖF yaz okulu sınavı (Anadolu Üniversitesi)",
+      "ales1": "ALES/1: akademik personel ve lisansüstü giriş sınavı (ÖSYM)",
+      "ales2": "ALES/2: akademik personel ve lisansüstü giriş sınavı (ÖSYM)",
+      "yds1": "YDS/1: yabancı dil bilgisi seviye tespit sınavı (ÖSYM)",
+      "msu": "MSÜ: Millî Savunma Üniversitesi askerî öğrenci sınavı (ÖSYM)",
+      "ags": "MEB-AGS ve ÖABT: Millî Eğitim Akademisi giriş sınavı (ÖSYM)",
+      "dgs": "DGS: dikey geçiş sınavı (ÖSYM)",
+      "kpssGy": "KPSS Lisans: genel yetenek-genel kültür (ÖSYM)",
+      "kpssAlan": "KPSS Lisans: alan bilgisi (ÖSYM)",
+      "iokbs": "İOKBS: bursluluk sınavı (MEB)",
+      "lgs": "LGS: liselere geçiş merkezî sınavı (MEB)"
     },
     "hubName": "Yıllık takvim",
     "hubDesc": "Resmi tatiller, bayram ve arife günleri, kandiller ve Ramazan ayı.",
@@ -816,7 +831,8 @@
         "Kasım: Arapça qāsim, \"bölen\"; yılı yaz ve kış yarısına ayıran Kasım günü (8 Kasım). 1945'e kadar Teşrîn-i sânî.",
         "Aralık: \"ara\" sözünden; iki yıl arasındaki ay. 1945'e kadar Kânûn-ı evvel denirdi."
       ]
-    }
+    },
+    "showExams": "Sınav tarihlerini göster"
   },
   "tools": {
     "hub": {
@@ -1684,6 +1700,10 @@
       "nov24": {
         "name": "Öğretmenler Günü",
         "dat": "Öğretmenler Günü'ne"
+      },
+      "lgs": {
+        "name": "LGS (Liselere Geçiş Sistemi merkezî sınavı)",
+        "dat": "LGS'ye"
       }
     },
     "exam": "Sınav tarihleri ÖSYM, MEB ve Anadolu Üniversitesi duyurularından alınır; kurumlar değiştirebilir. Henüz açıklanmamış tarihler tahmin edilmez, açıklanınca eklenir."

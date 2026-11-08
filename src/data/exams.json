@@ -1,6 +1,6 @@
 {
- "source": "ÖSYM sınav takvimi (osym.gov.tr, 9 Ekim 2026'da okundu); MEB ortak yazılı sınav takvimi (ODSGM) ve AÖL duyuruları (meb.gov.tr, aol.meb.gov.tr); AÖF akademik takvimi (Anadolu Üniversitesi, 6 Ekim 2026 güncellemesi). YKS/KPSS/LGS 2027 tarihleri henüz açıklanmadı, eklenmedi.",
- "updated": "2026-10-09",
+ "source": "ÖSYM sınav takvimi (osym.gov.tr, 9 Ekim 2026'da okundu: 2026); ÖSYM 2027 yılı sınav takvimi (28 Ekim 2026'da yayımlandı; resmî PDF bu ortamdan erişime kapalı olduğu için sınav günleri iki bağımsız kaynakta aynı olanlardan: egitim.net.tr ve milligazete.com.tr, 8 Kasım 2026); MEB 2027 Yılı Sınav Uygulama Takvimi (odsgm.meb.gov.tr, 30 Ekim 2026; resmî PDF okundu: LGS 13 Haziran 2027, İOKBS 25 Nisan 2027, AÖL dönemleri, ortak yazılı sınavlar); MEB ortak yazılı sınav takvimi (ODSGM) ve AÖL duyuruları (meb.gov.tr, aol.meb.gov.tr); AÖF akademik takvimi (Anadolu Üniversitesi, 6 Ekim 2026 güncellemesi). Başvuru günleri ve kaynaklarda tutarsız olan tarihler eklenmedi.",
+ "updated": "2026-11-08",
  "events": [
   {
    "key": "yksTyt",
@@ -9,6 +9,11 @@
   {
    "key": "yksAytYdt",
    "date": "2026-06-21"
+  },
+  {
+   "key": "aolRegister",
+   "date": "2026-09-11",
+   "to": "2026-10-12"
   },
   {
    "key": "alesApply",
@@ -32,16 +37,21 @@
    "date": "2026-10-30"
   },
   {
-   "key": "kpssDhbt",
+   "key": "dus2",
    "date": "2026-11-01"
   },
   {
-   "key": "dus2",
+   "key": "kpssDhbt",
    "date": "2026-11-01"
   },
   {
    "key": "eus",
    "date": "2026-11-07"
+  },
+  {
+   "key": "common1",
+   "date": "2026-11-11",
+   "to": "2026-11-12"
   },
   {
    "key": "kpssOrtaResult",
@@ -52,63 +62,13 @@
    "date": "2026-11-22"
   },
   {
-   "key": "ales3",
-   "date": "2026-11-29"
-  },
-  {
-   "key": "ydsResult",
-   "date": "2026-12-10"
-  },
-  {
-   "key": "kpssTercih",
-   "date": "2026-12-17",
-   "to": "2026-12-24"
-  },
-  {
-   "key": "alesResult",
-   "date": "2026-12-17"
-  },
-  {
-   "key": "eyds2",
-   "date": "2026-12-19"
-  },
-  {
-   "key": "common1",
-   "date": "2026-11-11",
-   "to": "2026-11-12"
-  },
-  {
-   "key": "common2",
-   "date": "2027-01-05",
-   "to": "2027-01-06"
-  },
-  {
-   "key": "common3",
-   "date": "2027-04-06",
-   "to": "2027-04-07"
-  },
-  {
-   "key": "common4",
-   "date": "2027-06-08",
-   "to": "2027-06-09"
-  },
-  {
-   "key": "aolRegister",
-   "date": "2026-09-11",
-   "to": "2026-10-12"
-  },
-  {
    "key": "aolEsinav",
    "date": "2026-11-28",
    "to": "2027-01-18"
   },
   {
-   "key": "aolWritten",
-   "date": "2026-12-20"
-  },
-  {
-   "key": "aolResult",
-   "date": "2027-01-21"
+   "key": "ales3",
+   "date": "2026-11-29"
   },
   {
    "key": "aofMid1",
@@ -116,9 +76,61 @@
    "to": "2026-12-06"
   },
   {
+   "key": "ydsResult",
+   "date": "2026-12-10"
+  },
+  {
+   "key": "alesResult",
+   "date": "2026-12-17"
+  },
+  {
+   "key": "kpssTercih",
+   "date": "2026-12-17",
+   "to": "2026-12-24"
+  },
+  {
+   "key": "eyds2",
+   "date": "2026-12-19"
+  },
+  {
+   "key": "aolWritten",
+   "date": "2026-12-20"
+  },
+  {
+   "key": "common2",
+   "date": "2027-01-05",
+   "to": "2027-01-06"
+  },
+  {
    "key": "aofFinal1",
    "date": "2027-01-16",
    "to": "2027-01-17"
+  },
+  {
+   "key": "aolResult",
+   "date": "2027-01-21"
+  },
+  {
+   "key": "aolEsinav",
+   "date": "2027-02-27",
+   "to": "2027-04-18"
+  },
+  {
+   "key": "msu",
+   "date": "2027-03-20"
+  },
+  {
+   "key": "aolWritten",
+   "date": "2027-03-21"
+  },
+  {
+   "key": "yds1",
+   "date": "2027-03-28"
+  },
+  {
+   "key": "common3",
+   "date": "2027-04-06",
+   "to": "2027-04-07"
   },
   {
    "key": "aofMid2",
@@ -126,13 +138,106 @@
    "to": "2027-04-11"
   },
   {
+   "key": "ales1",
+   "date": "2027-04-18"
+  },
+  {
+   "key": "ydsResult",
+   "date": "2027-04-21"
+  },
+  {
+   "key": "iokbs",
+   "date": "2027-04-25"
+  },
+  {
+   "key": "alesResult",
+   "date": "2027-05-07"
+  },
+  {
+   "key": "ags",
+   "date": "2027-05-08",
+   "to": "2027-05-09"
+  },
+  {
    "key": "aofFinal2",
    "date": "2027-05-29",
    "to": "2027-05-30"
   },
   {
+   "key": "common4",
+   "date": "2027-06-08",
+   "to": "2027-06-09"
+  },
+  {
+   "key": "lgs",
+   "date": "2027-06-13"
+  },
+  {
+   "key": "yksTyt",
+   "date": "2027-06-19"
+  },
+  {
+   "key": "yksAytYdt",
+   "date": "2027-06-20"
+  },
+  {
+   "key": "aolEsinav",
+   "date": "2027-06-26",
+   "to": "2027-08-01"
+  },
+  {
+   "key": "ales2",
+   "date": "2027-07-11"
+  },
+  {
+   "key": "aolWritten",
+   "date": "2027-07-18"
+  },
+  {
+   "key": "dgs",
+   "date": "2027-07-18"
+  },
+  {
+   "key": "alesResult",
+   "date": "2027-07-30"
+  },
+  {
    "key": "aofSummer",
    "date": "2027-08-21"
+  },
+  {
+   "key": "kpssGy",
+   "date": "2027-09-12"
+  },
+  {
+   "key": "kpssAlan",
+   "date": "2027-09-18",
+   "to": "2027-09-19"
+  },
+  {
+   "key": "yds2",
+   "date": "2027-11-21"
+  },
+  {
+   "key": "aolEsinav",
+   "date": "2027-11-27",
+   "to": "2028-01-17"
+  },
+  {
+   "key": "ales3",
+   "date": "2027-11-28"
+  },
+  {
+   "key": "ydsResult",
+   "date": "2027-12-10"
+  },
+  {
+   "key": "alesResult",
+   "date": "2027-12-17"
+  },
+  {
+   "key": "aolWritten",
+   "date": "2027-12-19"
   }
  ]
 }

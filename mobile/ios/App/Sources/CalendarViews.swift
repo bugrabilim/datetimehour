@@ -11,6 +11,9 @@ enum CalPrefs {
     static let hijriNavKey = "cal.hijriNav"
     static let countryKey = "cal.country"
     static let hiddenKey = "cal.hidden"
+    /// Sınav tarihleri takvimde (varsayılan kapalı; 8 Kasım 2026, sahibin isteği: takvim boşuna kalabalık olmasın)
+    static let examsKey = "cal.exams"
+    static var examsOn: Bool { UserDefaults.standard.bool(forKey: examsKey) }
     static let modes = ["month", "week", "day", "agenda", "year"]
 
     static var country: String { UserDefaults.standard.string(forKey: countryKey) ?? "TR" }
@@ -82,7 +85,8 @@ func calEvents(_ day: CalendarDay) -> [CalendarData.Event] {
     let cc = CalPrefs.country
     let list = cc == "TR" ? base : base.filter { $0.type == "religious" } + WorldHol.events(cc, on: day)
     let hidden = CalPrefs.hidden
-    return list.filter { !hidden.contains($0.type) }
+    let exams = cc == "TR" && CalPrefs.examsOn ? CalendarData.shared.exams(on: day) : []
+    return list.filter { !hidden.contains($0.type) } + exams
 }
 
 /// Ay / hafta / gün / ajanda / yıl seçimi
@@ -403,6 +407,7 @@ struct HijriMonthGridView: View {
 struct CalCountrySheet: View {
     @AppStorage(CalPrefs.countryKey) private var country = "TR"
     @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw = ""
+    @AppStorage(CalPrefs.examsKey) private var examsOn = false
     @Environment(\.dismiss) private var dismiss
 
     private var types: [String] { country == "TR" ? ["holiday", "half", "religious", "special", "school"] : ["holiday", "religious"] }
@@ -412,6 +417,14 @@ struct CalCountrySheet: View {
             List {
                 Section(L("cal.shownTypes")) {
                     ForEach(types, id: \.self) { t in typeRow(t) }
+                    if country == "TR" {
+                        Toggle(isOn: $examsOn) {
+                            HStack(spacing: 8) {
+                                Circle().fill(CalendarData.color("exam")).frame(width: 8, height: 8)
+                                Text(L("calendar.showExams"))
+                            }
+                        }
+                    }
                 }
                 Section {
                     ForEach(["TR"] + WorldHol.countries.sorted { WorldHol.countryName($0) < WorldHol.countryName($1) }, id: \.self) { cc in

@@ -719,6 +719,11 @@ fieldset.days legend { padding: 0 0.4rem; font-weight: 600; }
 .cdp { text-align: center; }
 .cdp .tool-head { text-align: start; }
 .d-school, .lg-school { background: var(--surface-2); text-decoration: underline dotted; text-underline-offset: 3px; color: var(--text); }
+/* Sınav günleri (8 Kasım 2026): varsayılan gizli; "Sınav tarihlerini göster" açınca (html.cal-exams) halka ile işaretlenir */
+html:not(.cal-exams) .ev-exam { display: none; }
+html.cal-exams .x-exam, .lg-exam { box-shadow: inset 0 0 0 2px var(--accent); border-radius: 6px; }
+.lg-switch label { display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; font-weight: 600; }
+.lg-switch input { inline-size: 1.05rem; block-size: 1.05rem; accent-color: var(--accent); margin: 0; }
 
 /* Tarih hesaplayıcı, gömme kodu, gömülü widget */
 .dc-out { text-align: center; min-height: 3rem; }

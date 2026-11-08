@@ -94,6 +94,8 @@ object AppData {
         private set
     /** Gün → o günün olayları (birden çok güne yayılanlar her günde) */
     lateinit var events: Map<LocalDate, List<CalEvent>>
+    /** Sınavlar (ÖSYM, MEB): yalnız takvim görünümleri, "Sınav tarihlerini göster" açıkken (CalView.exams) */
+    var exams: Map<LocalDate, List<CalEvent>> = emptyMap()
         private set
     lateinit var ramadans: List<ClosedRange<LocalDate>>
         private set
@@ -132,6 +134,7 @@ object AppData {
         val byDay = HashMap<LocalDate, MutableList<CalEvent>>()
         val school = ArrayList<ClosedRange<LocalDate>>()
         val projected = HashSet<Int>()
+        val examDay = HashMap<LocalDate, MutableList<CalEvent>>()
         for (y in years.keys()) {
             val yo = years.getJSONObject(y)
             if (yo.optBoolean("projected")) projected += y.toInt()
@@ -147,6 +150,13 @@ object AppData {
                     d = d.plusDays(1)
                 }
             }
+            yo.optJSONArray("exams")?.let { ex ->
+                for (i in 0 until ex.length()) {
+                    val o = ex.getJSONObject(i)
+                    val d = LocalDate.parse(o.getString("date"))
+                    examDay.getOrPut(d) { ArrayList() }.add(CalEvent(d, o.getString("key"), "exam", null))
+                }
+            }
             val sr = yo.getJSONArray("schoolRanges")
             for (i in 0 until sr.length()) {
                 val o = sr.getJSONObject(i)
@@ -154,6 +164,7 @@ object AppData {
             }
         }
         events = byDay
+        exams = examDay
         schoolBreaks = school
         projectedYears = projected
         val r = cal.getJSONArray("ramadans")
@@ -180,6 +191,7 @@ object AppData {
         "half" -> Color(0xFFF57C00)
         "religious" -> Color(0xFF2E7D32)
         "school" -> Color(0xFF7B1FA2)
+        "exam" -> Color(0xFF6B4D38)
         else -> Color(0xFF1976D2)
     }
 }

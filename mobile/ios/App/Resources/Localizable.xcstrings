@@ -16725,6 +16725,1136 @@
         }
       }
     },
+    "calendar.events.ales1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: akademik personel ve lisansüstü giriş sınavı (ÖSYM)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: graduate studies entrance exam (ÖSYM)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: Zulassungsprüfung für Master- und Promotionsstudium (ÖSYM)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: magistratura qəbul imtahanı (ÖSYM)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: امتحان القبول للدراسات العليا (ÖSYM)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: ujian masuk pascasarjana (ÖSYM)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: پوسٹ گریجویٹ تعلیم کا داخلہ امتحان (ÖSYM)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: آزمون ورودی تحصیلات تکمیلی (ÖSYM)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1 : examen d’entrée en master et doctorat (ÖSYM)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: вступительный экзамен в магистратуру и аспирантуру (ÖSYM)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1：大学院入学試験（ÖSYM）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: 대학원 입학시험(ÖSYM)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1：研究生入学考试（ÖSYM）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: pagsusulit sa pagpasok sa graduate studies (ÖSYM)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: สอบเข้าบัณฑิตศึกษา (ÖSYM)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: examen de acceso a posgrado (ÖSYM)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: prova de acesso à pós-graduação (ÖSYM)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/1: स्नातकोत्तर प्रवेश परीक्षा (ÖSYM)"
+          }
+        }
+      }
+    },
+    "calendar.events.ales2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: akademik personel ve lisansüstü giriş sınavı (ÖSYM)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: graduate studies entrance exam (ÖSYM)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: Zulassungsprüfung für Master- und Promotionsstudium (ÖSYM)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: magistratura qəbul imtahanı (ÖSYM)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: امتحان القبول للدراسات العليا (ÖSYM)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: ujian masuk pascasarjana (ÖSYM)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: پوسٹ گریجویٹ تعلیم کا داخلہ امتحان (ÖSYM)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: آزمون ورودی تحصیلات تکمیلی (ÖSYM)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2 : examen d’entrée en master et doctorat (ÖSYM)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: вступительный экзамен в магистратуру и аспирантуру (ÖSYM)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2：大学院入学試験（ÖSYM）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: 대학원 입학시험(ÖSYM)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2：研究生入学考试（ÖSYM）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: pagsusulit sa pagpasok sa graduate studies (ÖSYM)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: สอบเข้าบัณฑิตศึกษา (ÖSYM)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: examen de acceso a posgrado (ÖSYM)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: prova de acesso à pós-graduação (ÖSYM)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ALES/2: स्नातकोत्तर प्रवेश परीक्षा (ÖSYM)"
+          }
+        }
+      }
+    },
+    "calendar.events.yds1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: yabancı dil bilgisi seviye tespit sınavı (ÖSYM)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: foreign language proficiency exam (ÖSYM)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: Fremdsprachenprüfung (ÖSYM)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: xarici dil səviyyə imtahanı (ÖSYM)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: امتحان مستوى اللغة الأجنبية (ÖSYM)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: ujian kemampuan bahasa asing (ÖSYM)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: غیر ملکی زبان کی مہارت کا امتحان (ÖSYM)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: آزمون مهارت زبان خارجی (ÖSYM)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1 : examen de langue étrangère (ÖSYM)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: экзамен по иностранному языку (ÖSYM)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1：外国語能力試験（ÖSYM）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: 외국어 능력 시험(ÖSYM)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1：外语水平考试（ÖSYM）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: pagsusulit sa kahusayan sa banyagang wika (ÖSYM)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: สอบวัดความรู้ภาษาต่างประเทศ (ÖSYM)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: examen de competencia en lengua extranjera (ÖSYM)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: prova de proficiência em língua estrangeira (ÖSYM)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YDS/1: विदेशी भाषा दक्षता परीक्षा (ÖSYM)"
+          }
+        }
+      }
+    },
+    "calendar.events.msu": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: Millî Savunma Üniversitesi askerî öğrenci sınavı (ÖSYM)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: National Defence University cadet entrance exam (ÖSYM)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: Aufnahmeprüfung der Nationalen Verteidigungsuniversität (ÖSYM)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: Milli Müdafiə Universitetinə qəbul imtahanı (ÖSYM)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: امتحان القبول في جامعة الدفاع الوطني (ÖSYM)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: ujian masuk Universitas Pertahanan Nasional (ÖSYM)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: نیشنل ڈیفنس یونیورسٹی کا داخلہ امتحان (ÖSYM)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: آزمون ورودی دانشگاه دفاع ملی (ÖSYM)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ : concours d’entrée à l’Université de la défense nationale (ÖSYM)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: вступительный экзамен в Университет национальной обороны (ÖSYM)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ：国防大学入学試験（ÖSYM）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: 국방대학교 입학시험(ÖSYM)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ：国防大学入学考试（ÖSYM）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: pagsusulit sa pagpasok sa National Defense University (ÖSYM)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: สอบเข้ามหาวิทยาลัยป้องกันประเทศ (ÖSYM)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: examen de ingreso a la Universidad de Defensa Nacional (ÖSYM)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: prova de ingresso na Universidade de Defesa Nacional (ÖSYM)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MSÜ: राष्ट्रीय रक्षा विश्वविद्यालय प्रवेश परीक्षा (ÖSYM)"
+          }
+        }
+      }
+    },
+    "calendar.events.ags": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS ve ÖABT: Millî Eğitim Akademisi giriş sınavı (ÖSYM)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS and ÖABT: teacher academy entrance exam (ÖSYM)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS und ÖABT: Aufnahmeprüfung der Lehrerakademie (ÖSYM)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS və ÖABT: müəllim akademiyasına qəbul imtahanı (ÖSYM)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS وÖABT: امتحان القبول في أكاديمية المعلمين (ÖSYM)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS dan ÖABT: ujian masuk akademi guru (ÖSYM)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS اور ÖABT: ٹیچر اکیڈمی کا داخلہ امتحان (ÖSYM)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS و ÖABT: آزمون ورودی آکادمی معلمان (ÖSYM)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS et ÖABT : concours d’entrée à l’académie des enseignants (ÖSYM)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS и ÖABT: вступительный экзамен в академию учителей (ÖSYM)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS・ÖABT：教員アカデミー入学試験（ÖSYM）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS 및 ÖABT: 교원 아카데미 입학시험(ÖSYM)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS 和 ÖABT：教师学院入学考试（ÖSYM）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS at ÖABT: pagsusulit sa pagpasok sa akademya ng mga guro (ÖSYM)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS และ ÖABT: สอบเข้าสถาบันครู (ÖSYM)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS y ÖABT: examen de ingreso a la academia docente (ÖSYM)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS e ÖABT: prova de ingresso na academia de professores (ÖSYM)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MEB-AGS और ÖABT: शिक्षक अकादमी प्रवेश परीक्षा (ÖSYM)"
+          }
+        }
+      }
+    },
+    "calendar.events.dgs": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: dikey geçiş sınavı (ÖSYM)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: vertical transfer exam (ÖSYM)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: Prüfung für den Wechsel ins Bachelorstudium (ÖSYM)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: bakalavra keçid imtahanı (ÖSYM)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: امتحان الانتقال إلى البكالوريوس (ÖSYM)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: ujian alih jenjang ke sarjana (ÖSYM)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: بیچلر میں منتقلی کا امتحان (ÖSYM)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: آزمون انتقال به کارشناسی (ÖSYM)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS : examen de passerelle vers la licence (ÖSYM)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: экзамен для перехода в бакалавриат (ÖSYM)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS：学士課程編入試験（ÖSYM）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: 학사 편입 시험(ÖSYM)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS：本科插班考试（ÖSYM）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: pagsusulit sa paglipat sa bachelor (ÖSYM)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: สอบเทียบโอนเข้าระดับปริญญาตรี (ÖSYM)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: examen de paso a la licenciatura (ÖSYM)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: prova de transferência para o bacharelado (ÖSYM)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DGS: स्नातक में प्रवेश की परीक्षा (ÖSYM)"
+          }
+        }
+      }
+    },
+    "calendar.events.kpssGy": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS Lisans: genel yetenek-genel kültür (ÖSYM)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS bachelor's level: general ability and general culture (ÖSYM)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS Bachelor-Niveau: Allgemeine Fähigkeiten und Allgemeinbildung (ÖSYM)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS bakalavr səviyyəsi: ümumi qabiliyyət və ümumi bilik (ÖSYM)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS مستوى البكالوريوس: القدرات العامة والثقافة العامة (ÖSYM)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS tingkat sarjana: kemampuan umum dan pengetahuan umum (ÖSYM)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS بیچلر سطح: عمومی صلاحیت اور عمومی معلومات (ÖSYM)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS مقطع کارشناسی: توانایی عمومی و فرهنگ عمومی (ÖSYM)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS, niveau licence : aptitudes et culture générales (ÖSYM)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS, уровень бакалавра: общие способности и общая культура (ÖSYM)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS 学士レベル：一般能力・一般教養（ÖSYM）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS 학사 수준: 일반 능력·일반 상식(ÖSYM)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS 本科层次：一般能力与常识（ÖSYM）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS antas ng bachelor: pangkalahatang kakayahan at kaalaman (ÖSYM)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS ระดับปริญญาตรี: ความสามารถทั่วไปและความรู้ทั่วไป (ÖSYM)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS de nivel de licenciatura: aptitud y cultura general (ÖSYM)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS de nível superior: aptidão e conhecimentos gerais (ÖSYM)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS स्नातक स्तर: सामान्य योग्यता और सामान्य ज्ञान (ÖSYM)"
+          }
+        }
+      }
+    },
+    "calendar.events.kpssAlan": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS Lisans: alan bilgisi (ÖSYM)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS bachelor's level: field knowledge (ÖSYM)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS Bachelor-Niveau: Fachwissen (ÖSYM)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS bakalavr səviyyəsi: ixtisas bilikləri (ÖSYM)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS مستوى البكالوريوس: المعرفة التخصصية (ÖSYM)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS tingkat sarjana: pengetahuan bidang (ÖSYM)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS بیچلر سطح: شعبہ جاتی معلومات (ÖSYM)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS مقطع کارشناسی: دانش تخصصی (ÖSYM)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS, niveau licence : connaissances du domaine (ÖSYM)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS, уровень бакалавра: профессиональные знания (ÖSYM)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS 学士レベル：専門知識（ÖSYM）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS 학사 수준: 전공 지식(ÖSYM)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS 本科层次：专业知识（ÖSYM）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS antas ng bachelor: kaalaman sa larangan (ÖSYM)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS ระดับปริญญาตรี: ความรู้เฉพาะสาขา (ÖSYM)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS de nivel de licenciatura: conocimientos del área (ÖSYM)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS de nível superior: conhecimentos específicos (ÖSYM)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KPSS स्नातक स्तर: विषय ज्ञान (ÖSYM)"
+          }
+        }
+      }
+    },
+    "calendar.events.iokbs": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: bursluluk sınavı (MEB)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: scholarship exam (MEB)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: Stipendienprüfung (MEB)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: təqaüd imtahanı (MEB)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: امتحان المنح الدراسية (MEB)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: ujian beasiswa (MEB)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: وظیفے کا امتحان (MEB)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: آزمون بورسیه (MEB)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS : examen de bourse (MEB)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: экзамен на стипендию (MEB)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS：奨学金試験（MEB）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: 장학금 시험(MEB)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS：奖学金考试（MEB）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: pagsusulit para sa iskolarship (MEB)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: สอบชิงทุนการศึกษา (MEB)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: examen de becas (MEB)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: prova de bolsas de estudo (MEB)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İOKBS: छात्रवृत्ति परीक्षा (MEB)"
+          }
+        }
+      }
+    },
+    "calendar.events.lgs": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: liselere geçiş merkezî sınavı (MEB)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: high school entrance exam (MEB)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: Aufnahmeprüfung für weiterführende Schulen (MEB)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: liseyə keçid imtahanı (MEB)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: امتحان القبول في المدارس الثانوية (MEB)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: ujian masuk SMA (MEB)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: ہائی اسکول داخلہ امتحان (MEB)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: آزمون ورود به دبیرستان (MEB)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS : examen d’entrée au lycée (MEB)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: вступительный экзамен в лицей (MEB)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS：高校入学試験（MEB）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: 고등학교 입학시험(MEB)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS：高中入学考试（MEB）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: pagsusulit sa pagpasok sa high school (MEB)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: สอบเข้ามัธยมปลาย (MEB)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: examen de acceso al bachillerato (MEB)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: prova de ingresso no ensino médio (MEB)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGS: हाई स्कूल प्रवेश परीक्षा (MEB)"
+          }
+        }
+      }
+    },
     "calendar.noYear": {
       "extractionState": "manual",
       "localizations": {
@@ -16834,6 +17964,119 @@
           "stringUnit": {
             "state": "translated",
             "value": "इस साल के लिए कोई डेटा नहीं है।"
+          }
+        }
+      }
+    },
+    "calendar.showExams": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınav tarihlerini göster"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show exam dates"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfungstermine anzeigen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İmtahan tarixlərini göstər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إظهار مواعيد الامتحانات"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tampilkan tanggal ujian"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امتحان کی تاریخیں دکھائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نمایش تاریخ آزمون‌ها"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher les dates d’examen"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать даты экзаменов"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "試験日を表示"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시험 날짜 표시"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示考试日期"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ipakita ang mga petsa ng pagsusulit"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสดงวันสอบ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar fechas de exámenes"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar datas de provas"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "परीक्षा की तारीखें दिखाएँ"
           }
         }
       }

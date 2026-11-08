@@ -492,6 +492,11 @@
               "Jusqu’à ce que vous le supprimiez"
             ],
             [
+              "sth-cal-exams",
+              "Mémorise si vous affichez les dates d’examen dans le calendrier.",
+              "Jusqu’à ce que vous le supprimiez"
+            ],
+            [
               "sth-world",
               "Mémorise les villes choisies pour l’horloge mondiale et leur ordre.",
               "Jusqu’à ce que vous le supprimiez"
@@ -796,7 +801,17 @@
       "aofFinal1": "AÖF : examen final d’automne (Université Anadolu)",
       "aofMid2": "AÖF : partiel de printemps (Université Anadolu)",
       "aofFinal2": "AÖF : examen final de printemps (Université Anadolu)",
-      "aofSummer": "AÖF : examen de l’école d’été (Université Anadolu)"
+      "aofSummer": "AÖF : examen de l’école d’été (Université Anadolu)",
+      "ales1": "ALES/1 : examen d’entrée en master et doctorat (ÖSYM)",
+      "ales2": "ALES/2 : examen d’entrée en master et doctorat (ÖSYM)",
+      "yds1": "YDS/1 : examen de langue étrangère (ÖSYM)",
+      "msu": "MSÜ : concours d’entrée à l’Université de la défense nationale (ÖSYM)",
+      "ags": "MEB-AGS et ÖABT : concours d’entrée à l’académie des enseignants (ÖSYM)",
+      "dgs": "DGS : examen de passerelle vers la licence (ÖSYM)",
+      "kpssGy": "KPSS, niveau licence : aptitudes et culture générales (ÖSYM)",
+      "kpssAlan": "KPSS, niveau licence : connaissances du domaine (ÖSYM)",
+      "iokbs": "İOKBS : examen de bourse (MEB)",
+      "lgs": "LGS : examen d’entrée au lycée (MEB)"
     },
     "hubName": "Calendrier annuel",
     "hubDesc": "Jours fériés, jours de bayram et leurs veilles, nuits de kandil et mois de Ramadan.",
@@ -857,7 +872,8 @@
         "Novembre vient du latin novem, « neuf ».",
         "Décembre vient du latin decem, « dix »."
       ]
-    }
+    },
+    "showExams": "Afficher les dates d’examen"
   },
   "tools": {
     "hub": {
@@ -1725,6 +1741,10 @@
       "nov24": {
         "name": "la Journée des enseignants",
         "dat": "la Journée des enseignants"
+      },
+      "lgs": {
+        "name": "le LGS (examen d’entrée au lycée)",
+        "dat": "le LGS"
       }
     },
     "exam": "Les dates d’examen proviennent des annonces de l’ÖSYM, du MEB et de l’Université Anadolu, qui peuvent les modifier. Les dates non annoncées ne sont pas devinées ; elles sont ajoutées dès leur publication."

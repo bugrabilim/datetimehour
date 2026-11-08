@@ -41,7 +41,7 @@ const SITE_PATHS = [
   "client.yourZone", "client.fullscreen", "client.exitFullscreen", "client.formatLabel",
   "prayer.monthHeading", "prayer.colDay", "prayer.prevMonth", "prayer.nextMonth", "prayer.useLocation",
   "prayer.imTitle", "prayer.imDay", "prayer.imDate", "prayer.imSahur", "prayer.imIftar", "prayer.imNote", "prayer.imFile", "prayer.imAlt",
-  "calendar.months.*", "calendar.weekdays.*", "calendar.weekdaysShort.*", "calendar.types.*", "calendar.events.*", "calendar.noYear",
+  "calendar.months.*", "calendar.weekdays.*", "calendar.weekdaysShort.*", "calendar.types.*", "calendar.events.*", "calendar.noYear", "calendar.showExams",
   "tools.hub.cards.stopwatch.name", "tools.hub.cards.countdown.name", "tools.hub.cards.alarm.name", "tools.hub.cards.pomodoro.name",
   "tools.hub.cards.datecalc.name", "tools.hub.cards.week.name", "tools.hub.cards.converter.name", "tools.hub.h1",
   "tools.stopwatch.*", "tools.countdown.*", "tools.alarm.*", "tools.alarm.dayNames.*", "tools.pomodoro.*",
@@ -240,14 +240,17 @@ const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces
   .map(({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }) => ({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }));
 const provincesJson = JSON.stringify(provinces) + "\n";
 
-/* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak; sınavlar takvimde yok). */
+/* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak). Sınavlar ayrı
+   `exams` alanında: yalnız takvim görünümleri, "Sınav tarihlerini göster" açıkken kullanır (8 Kasım 2026); bildirimler,
+   yaklaşan günler ve geri sayımlar onları görmez. */
 const HOL = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/holidays.json"), "utf8"));
 HOL.school = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/school.json"), "utf8"));
+HOL.exams = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/exams.json"), "utf8"));
 const years = {};
 for (const y of Object.keys(HOL.years).map(Number).sort((a, b) => a - b)) {
   const r = computeYear(y, HOL);
-  years[y] = { events: r.events.filter((e) => e.type !== "exam"), schoolRanges: r.schoolRanges, projected: r.projected };
-  for (const e of years[y].events) if (!KEYS[`calendar.events.${e.key}`]) throw new Error(`calendar.events.${e.key} metni yok`);
+  years[y] = { events: r.events.filter((e) => e.type !== "exam"), exams: r.events.filter((e) => e.type === "exam"), schoolRanges: r.schoolRanges, projected: r.projected };
+  for (const e of [...years[y].events, ...years[y].exams]) if (!KEYS[`calendar.events.${e.key}`]) throw new Error(`calendar.events.${e.key} metni yok`);
 }
 const calendarJson = JSON.stringify({ years, ramadans: HOL.ramadans }) + "\n";
 

@@ -18,6 +18,21 @@
     return S.tpl(S.T.daysLeft, { n: new Intl.NumberFormat(S.locale).format(n) });
   }
 
+  /* Sınav tarihleri (8 Kasım 2026, sahibin isteği): varsayılan gizli, seçim sth-cal-exams ("1") */
+  var exBox = doc.querySelector("[data-cal-exams]");
+  var examsOn = false;
+  try { examsOn = localStorage.getItem("sth-cal-exams") === "1"; } catch (e) {}
+  var setExams = function (on) {
+    examsOn = on;
+    doc.documentElement.classList.toggle("cal-exams", on);
+    if (exBox) exBox.checked = on;
+  };
+  setExams(examsOn);
+  if (exBox) exBox.addEventListener("change", function () {
+    setExams(exBox.checked);
+    try { if (exBox.checked) localStorage.setItem("sth-cal-exams", "1"); else localStorage.removeItem("sth-cal-exams"); } catch (e) {}
+  });
+
   /* Yıl sayfası */
   var grid = doc.querySelector("[data-year]");
   if (grid) {
@@ -48,7 +63,7 @@
       var loadEvents = function (cb) {
         if (evMap) return cb();
         fetch(S.cfg.eventsUrl, { credentials: "omit" }).then(function (r) { return r.json(); }).then(function (list) {
-          evMap = {}; list.forEach(function (e) { if (e.t === "exam") return; (evMap[e.d] = evMap[e.d] || []).push(e); }); cb();
+          evMap = {}; list.forEach(function (e) { (evMap[e.d] = evMap[e.d] || []).push(e); }); cb();
         }).catch(function () { evMap = {}; cb(); });
       };
       var closeDlg = function () { if (typeof dlg.close === "function") dlg.close(); else dlg.removeAttribute("open"); };
@@ -64,6 +79,7 @@
           var ul = dlg.querySelector("[data-day-list]"); ul.textContent = "";
           var seen = {};
           (evMap[d] || []).forEach(function (e) {
+            if (e.t === "exam" && !examsOn) return;
             var li = doc.createElement("li"); li.textContent = e.n + " (" + (C.types[e.t] || e.t) + ")"; ul.appendChild(li); seen[e.t] = 1;
           });
           [["d-ramadan", "ramadan"], ["d-school", "school"]].forEach(function (c) {

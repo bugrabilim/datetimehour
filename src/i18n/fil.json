@@ -531,6 +531,11 @@
               "Hanggang burahin mo"
             ],
             [
+              "sth-cal-exams",
+              "Tinatandaan kung pinili mong ipakita ang mga petsa ng pagsusulit sa kalendaryo.",
+              "Hanggang burahin mo"
+            ],
+            [
               "sth-world",
               "Tinatandaan ang mga lungsod na pinili mo para sa orasan ng mundo at ang pagkakasunod-sunod nila.",
               "Hanggang burahin mo"
@@ -835,7 +840,17 @@
       "aofFinal1": "Final exam ng AÖF sa taglagas (Anadolu University)",
       "aofMid2": "Midterm ng AÖF sa tagsibol (Anadolu University)",
       "aofFinal2": "Final exam ng AÖF sa tagsibol (Anadolu University)",
-      "aofSummer": "Pagsusulit ng summer school ng AÖF (Anadolu University)"
+      "aofSummer": "Pagsusulit ng summer school ng AÖF (Anadolu University)",
+      "ales1": "ALES/1: pagsusulit sa pagpasok sa graduate studies (ÖSYM)",
+      "ales2": "ALES/2: pagsusulit sa pagpasok sa graduate studies (ÖSYM)",
+      "yds1": "YDS/1: pagsusulit sa kahusayan sa banyagang wika (ÖSYM)",
+      "msu": "MSÜ: pagsusulit sa pagpasok sa National Defense University (ÖSYM)",
+      "ags": "MEB-AGS at ÖABT: pagsusulit sa pagpasok sa akademya ng mga guro (ÖSYM)",
+      "dgs": "DGS: pagsusulit sa paglipat sa bachelor (ÖSYM)",
+      "kpssGy": "KPSS antas ng bachelor: pangkalahatang kakayahan at kaalaman (ÖSYM)",
+      "kpssAlan": "KPSS antas ng bachelor: kaalaman sa larangan (ÖSYM)",
+      "iokbs": "İOKBS: pagsusulit para sa iskolarship (MEB)",
+      "lgs": "LGS: pagsusulit sa pagpasok sa high school (MEB)"
     },
     "hubName": "Taunang kalendaryo",
     "hubDesc": "Mga pista opisyal, mga araw ng bayram at bisperas, mga gabi ng kandil at buwan ng Ramadan.",
@@ -882,7 +897,8 @@
         "Ang Nobyembre ay mula sa Latin na novem, “siyam”.",
         "Ang Disyembre ay mula sa Latin na decem, “sampu”."
       ]
-    }
+    },
+    "showExams": "Ipakita ang mga petsa ng pagsusulit"
   },
   "tools": {
     "hub": {
@@ -1750,6 +1766,10 @@
       "nov24": {
         "name": "Araw ng mga Guro",
         "dat": "Araw ng mga Guro"
+      },
+      "lgs": {
+        "name": "LGS (pagsusulit sa pagpasok sa high school)",
+        "dat": "LGS"
       }
     },
     "exam": "Kinukuha ang mga petsa ng pagsusulit sa mga anunsyo ng ÖSYM, MEB at Anadolu University, at puwede nilang baguhin ang mga ito. Hindi hinuhulaan ang mga petsang hindi pa inaanunsyo; idinadagdag ang mga ito kapag nailathala na."

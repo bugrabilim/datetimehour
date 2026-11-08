@@ -465,6 +465,11 @@
               "Until you delete it"
             ],
             [
+              "sth-cal-exams",
+              "Remembers whether you chose to show exam dates on the calendar.",
+              "Until you delete it"
+            ],
+            [
               "sth-world",
               "Remembers the cities you chose for the world clock, and their order.",
               "Until you delete it"
@@ -769,7 +774,17 @@
       "aofFinal1": "AÖF autumn final exam (Anadolu University)",
       "aofMid2": "AÖF spring midterm exam (Anadolu University)",
       "aofFinal2": "AÖF spring final exam (Anadolu University)",
-      "aofSummer": "AÖF summer school exam (Anadolu University)"
+      "aofSummer": "AÖF summer school exam (Anadolu University)",
+      "ales1": "ALES/1: graduate studies entrance exam (ÖSYM)",
+      "ales2": "ALES/2: graduate studies entrance exam (ÖSYM)",
+      "yds1": "YDS/1: foreign language proficiency exam (ÖSYM)",
+      "msu": "MSÜ: National Defence University cadet entrance exam (ÖSYM)",
+      "ags": "MEB-AGS and ÖABT: teacher academy entrance exam (ÖSYM)",
+      "dgs": "DGS: vertical transfer exam (ÖSYM)",
+      "kpssGy": "KPSS bachelor's level: general ability and general culture (ÖSYM)",
+      "kpssAlan": "KPSS bachelor's level: field knowledge (ÖSYM)",
+      "iokbs": "İOKBS: scholarship exam (MEB)",
+      "lgs": "LGS: high school entrance exam (MEB)"
     },
     "hubName": "Yearly calendar",
     "hubDesc": "Public holidays, bayram and eve days, kandil nights and the month of Ramadan.",
@@ -816,7 +831,8 @@
         "November comes from Latin novem, “nine”.",
         "December comes from Latin decem, “ten”."
       ]
-    }
+    },
+    "showExams": "Show exam dates"
   },
   "tools": {
     "hub": {
@@ -1684,6 +1700,10 @@
       "nov24": {
         "name": "Teachers' Day",
         "dat": "Teachers' Day"
+      },
+      "lgs": {
+        "name": "LGS (high school entrance exam)",
+        "dat": "LGS"
       }
     },
     "exam": "Exam dates are taken from ÖSYM, MEB and Anadolu University announcements, which may change them. Dates that have not been announced are not guessed; they are added once published."

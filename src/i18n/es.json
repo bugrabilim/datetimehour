@@ -531,6 +531,11 @@
               "Hasta que lo borre"
             ],
             [
+              "sth-cal-exams",
+              "Recuerda si eligió mostrar las fechas de exámenes en el calendario.",
+              "Hasta que lo borre"
+            ],
+            [
               "sth-world",
               "Recuerda las ciudades que eligió para el reloj mundial y su orden.",
               "Hasta que lo borre"
@@ -835,7 +840,17 @@
       "aofFinal1": "Examen final de otoño de AÖF (Universidad de Anadolu)",
       "aofMid2": "Examen parcial de primavera de AÖF (Universidad de Anadolu)",
       "aofFinal2": "Examen final de primavera de AÖF (Universidad de Anadolu)",
-      "aofSummer": "Examen de la escuela de verano de AÖF (Universidad de Anadolu)"
+      "aofSummer": "Examen de la escuela de verano de AÖF (Universidad de Anadolu)",
+      "ales1": "ALES/1: examen de acceso a posgrado (ÖSYM)",
+      "ales2": "ALES/2: examen de acceso a posgrado (ÖSYM)",
+      "yds1": "YDS/1: examen de competencia en lengua extranjera (ÖSYM)",
+      "msu": "MSÜ: examen de ingreso a la Universidad de Defensa Nacional (ÖSYM)",
+      "ags": "MEB-AGS y ÖABT: examen de ingreso a la academia docente (ÖSYM)",
+      "dgs": "DGS: examen de paso a la licenciatura (ÖSYM)",
+      "kpssGy": "KPSS de nivel de licenciatura: aptitud y cultura general (ÖSYM)",
+      "kpssAlan": "KPSS de nivel de licenciatura: conocimientos del área (ÖSYM)",
+      "iokbs": "İOKBS: examen de becas (MEB)",
+      "lgs": "LGS: examen de acceso al bachillerato (MEB)"
     },
     "hubName": "Calendario anual",
     "hubDesc": "Festivos oficiales, días de bayram y vísperas, noches de kandil y el mes de Ramadán.",
@@ -896,7 +911,8 @@
       "Octubre",
       "Noviembre",
       "Diciembre"
-    ]
+    ],
+    "showExams": "Mostrar fechas de exámenes"
   },
   "tools": {
     "hub": {
@@ -1764,6 +1780,10 @@
       "nov24": {
         "name": "Día del Maestro",
         "dat": "el Día del Maestro"
+      },
+      "lgs": {
+        "name": "LGS (examen de acceso al bachillerato)",
+        "dat": "el LGS"
       }
     },
     "exam": "Las fechas de los exámenes proceden de los anuncios de ÖSYM, MEB y la Universidad de Anadolu, que pueden cambiarlas. Las fechas no anunciadas no se suponen; se añaden cuando se publican."
