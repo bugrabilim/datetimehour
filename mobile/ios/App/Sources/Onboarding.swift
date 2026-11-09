@@ -25,8 +25,13 @@ enum Onboarding {
     /// Bunlardan biri değişirse (kişi ayarlardan bir şey değiştirdi) "Kuruluma devam et" kalkar
     private static let settingKeys = [Features.key, Features.barKey, "province", NotificationPrefs.enabledKey, "accent",
                                       "appearance", Atmosphere.key, "h12", "units", "fontScale", "homeItems", "AppleLanguages"]
+    /// Vakitler sorusu dil grubuna göre (9 Kasım 2026, sahibin kararı; Müslüman olmayanlar raporu A3): bu dillerde başta,
+    /// diğerlerinde sonda. Soru herkese aynı sorulur; inanç tahmin edilmez, yalnız sorunun yeri değişir. Android ile aynı.
+    static let prayerFirstLangs: Set<String> = ["tr", "ar", "id", "ur", "fa", "bn"]
+    static var prayerFirst: Bool { prayerFirstLangs.contains(AppLocale.code) }
     /// Sorulan özellikler, sırayla (alt çubuğa giriş sırası da budur)
-    static let questions: [AppTab] = [.prayer, .weather, .calendar, .world, .seasons]
+    static let questions: [AppTab] = prayerFirst ? [.prayer, .weather, .calendar, .world, .seasons]
+        : [.weather, .calendar, .world, .seasons, .prayer]
     /// Özellik turu ("başka neler var" sorusuna Evet denince)
     static let tours = ["alarm", "prayer", "weather", "tools", "look", "widgets"]
     /// Sayfa kimlikleri (CI -onboardPage N: 0 hoş geldiniz, 1 kurulum, 2–6 sorular, 7 özet, 8 "başka neler var", 9–10 ipuçları,
@@ -159,7 +164,8 @@ enum Onboarding {
 }
 
 /// İlk sayfadaki özellik ızgarası (sahibin isteği, 6 Kasım 2026): metin anahtarı, iki tonlu simge ve konu rengi
-/// (8 Kasım 2026, DUOTONE.md), sırası sabit (Android'deki WELCOME_FEATURES)
+/// (8 Kasım 2026, DUOTONE.md), sırası sabit (Android'deki WELCOME_FEATURES). Vakitler'i başta soran dillerin dışında Kıble
+/// yerine Widget'lar (9 Kasım 2026, Müslüman olmayanlar raporu A7).
 private struct OnboardWelcomeFeature: Hashable {
     let key: String
     let icon: String
@@ -173,7 +179,8 @@ private let onboardWelcomeFeatures: [OnboardWelcomeFeature] = [
     OnboardWelcomeFeature(key: "prayer", icon: "mosque", color: Theme.gold),
     OnboardWelcomeFeature(key: "alarm", icon: "alarm", color: Theme.terra),
     OnboardWelcomeFeature(key: "world", icon: "globe", color: Theme.sky),
-    OnboardWelcomeFeature(key: "qibla", icon: "kaaba", color: Theme.gold),
+    Onboarding.prayerFirst ? OnboardWelcomeFeature(key: "qibla", icon: "kaaba", color: Theme.gold)
+        : OnboardWelcomeFeature(key: "widgets", icon: "widgets", color: Theme.dusk),
     OnboardWelcomeFeature(key: "sky", icon: "telescope", color: Theme.dusk),
     OnboardWelcomeFeature(key: "pomodoro", icon: "tomato", color: Theme.terra),
 ]
@@ -364,7 +371,7 @@ struct OnboardingView: View {
                     ForEach(onboardWelcomeFeatures, id: \.key) { f in
                         VStack(spacing: 4) {
                             DuoChip(name: f.icon, color: f.color, box: 36, glyph: 21)
-                            Text(L("onboard.welcome.f.\(f.key)"))
+                            Text(f.key == "widgets" ? L("widgets.gallery") : L("onboard.welcome.f.\(f.key)"))
                                 .font(.footnote.weight(.medium))
                                 .foregroundStyle(Theme.text)
                                 .multilineTextAlignment(.center)

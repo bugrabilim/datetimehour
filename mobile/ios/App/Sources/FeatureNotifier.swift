@@ -159,7 +159,7 @@ enum FeatureNotifier {
         return (0..<days).compactMap { i in
             let day = today.adding(days: i)
             var seen = Set<String>()
-            let names = CalendarData.shared.events(on: day).map(\.name).filter { seen.insert($0).inserted }
+            let names = calEvents(day).map(\.name).filter { seen.insert($0).inserted }
             guard !names.isEmpty else { return nil }
             let fire = day.noon(in: .current).addingTimeInterval(-3 * 3600)
             return PlannedNotification(id: "\(featurePrefix)cal-\(day.iso)", fireAt: fire,

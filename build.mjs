@@ -356,6 +356,9 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
+/* Menüde "Namaz vakitleri" bu dillerde ikinci, diğerlerinde sonda (9 Kasım 2026, sahibin kararı; Müslüman olmayanlar raporu A6).
+   Uygulamalardaki ilk kurulum soru sırasıyla aynı dil grubu. Sayfalar ve adresler aynı kalır. */
+const PRAYER_FIRST_LANGS = new Set(["tr", "ar", "id", "ur", "fa", "bn"]);
 const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
@@ -579,7 +582,7 @@ ${ld}
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
     <p class="top-date"><span data-live="date">&nbsp;</span><span class="top-week" data-live="weeklabel"></span></p>
     <div class="menu" id="site-nav">
-      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}<a class="nav-faq" href="${ROUTES[lang].faq}"${p.nav === "faq" ? ' aria-current="page"' : ""}>${esc(u.faq)}</a></nav>
+      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${PRAYER_FIRST_LANGS.has(lang) ? navLink("prayer", u.prayer) : ""}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}${PRAYER_FIRST_LANGS.has(lang) ? "" : navLink("prayer", u.prayer)}<a class="nav-faq" href="${ROUTES[lang].faq}"${p.nav === "faq" ? ' aria-current="page"' : ""}>${esc(u.faq)}</a></nav>
       ${mobileSettings}
     </div>
     <div class="top-tools">${settings}</div>

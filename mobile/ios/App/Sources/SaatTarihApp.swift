@@ -208,7 +208,7 @@ final class Router {
             tab = .calendar
         case .upcoming:
             let today = CalendarDay(Date(), timeZone: PrayerSchedule.zone)
-            calendarDay = CalendarData.shared.upcoming(from: today, limit: 1).first?.day ?? today
+            calendarDay = calUpcoming(from: today, limit: 1).first?.day ?? today
             tab = .calendar
         case .next, .prayers:
             tab = .prayer

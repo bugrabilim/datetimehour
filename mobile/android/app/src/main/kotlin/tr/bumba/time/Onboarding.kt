@@ -102,15 +102,20 @@ object Onboarding {
         "fontScale", "homeItems", AppLanguage.KEY,
     )
     /** Sorulan özellikler, sırayla (alt çubuğa giriş sırası da budur) */
-    val QUESTIONS = listOf(Tab.PRAYER, Tab.WEATHER, Tab.CALENDAR, Tab.WORLD, Tab.SEASONS)
+    /** Vakitler sorusu dil grubuna göre (9 Kasım 2026, sahibin kararı; Müslüman olmayanlar raporu A3): bu dillerde başta,
+     *  diğerlerinde sonda. Soru herkese aynı sorulur; kişinin inancı tahmin edilmez, yalnız sorunun yeri değişir. iOS ile aynı. */
+    val PRAYER_FIRST_LANGS = setOf("tr", "ar", "id", "ur", "fa", "bn")
+    val prayerFirst: Boolean get() = Strings.lang in PRAYER_FIRST_LANGS
+    val QUESTIONS: List<Tab> get() = if (prayerFirst) listOf(Tab.PRAYER, Tab.WEATHER, Tab.CALENDAR, Tab.WORLD, Tab.SEASONS)
+        else listOf(Tab.WEATHER, Tab.CALENDAR, Tab.WORLD, Tab.SEASONS, Tab.PRAYER)
     /** Özellik turu (başka neler var sorusuna Evet denince) */
     val TOURS = listOf("alarm", "prayer", "weather", "tools", "look", "widgets")
     /** Sayfa kimlikleri (testler ve CI başlangıç sayfasını sayıyla verir: 0 hoş geldiniz, 1 kurulum, 2–6 sorular, 7 özet,
      *  8 "başka neler var", 9–10 ipuçları, 11–16 özellik turu, 17 son sayfa "Diğer her şey Tümü'nde") */
-    val PAGES: List<String> = listOf("welcome", "setup") + QUESTIONS.map { "q:" + Features.id(it) } +
+    val PAGES: List<String> get() = listOf("welcome", "setup") + QUESTIONS.map { "q:" + Features.id(it) } +
         listOf("summary", "more", "tip:swipe", "tip:full") + TOURS.map { "tour:$it" } + listOf("tip:all")
-    val SUMMARY = PAGES.indexOf("summary")
-    val MORE = PAGES.indexOf("more")
+    val SUMMARY: Int get() = PAGES.indexOf("summary")
+    val MORE: Int get() = PAGES.indexOf("more")
 
     var pending by mutableStateOf(false)
         private set
@@ -326,12 +331,15 @@ fun OnboardingScreen(startPage: Int = Onboarding.startPage, onDone: () -> Unit) 
     }
 }
 
-/** İlk sayfadaki özellik ızgarası (sahibin isteği, 6 Kasım 2026): metin anahtarı → iki tonlu simge, sırası sabit */
-private val WELCOME_FEATURES = listOf(
+/** İlk sayfadaki özellik ızgarası (sahibin isteği, 6 Kasım 2026): metin anahtarı → iki tonlu simge, sırası sabit.
+ *  Vakitler'i başta soran dillerin dışında Kıble yerine Widget'lar (9 Kasım 2026, Müslüman olmayanlar raporu A7; iOS ile aynı). */
+private val WELCOME_FEATURES: List<Pair<String, String>> get() = listOf(
     "clock" to "clock", "calendar" to "calendar", "weather" to "sun_cloud",
     "prayer" to "mosque", "alarm" to "alarm", "world" to "globe",
-    "qibla" to "kaaba", "sky" to "telescope", "pomodoro" to "tomato",
+    if (Onboarding.prayerFirst) "qibla" to "kaaba" else "widgets" to "widgets", "sky" to "telescope", "pomodoro" to "tomato",
 )
+
+private fun welcomeLabel(key: String) = if (key == "widgets") L("widgets.gallery") else L("onboard.welcome.f.$key")
 
 @Composable
 private fun WelcomePage() {
@@ -383,7 +391,7 @@ private fun WelcomeFeatures() {
                         verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
                     ) {
                         DuoChip(icon, welcomeColor(key), box = 36.dp, glyph = 21.dp)
-                        Text(L("onboard.welcome.f.$key"), color = Theme.c.text, fontSize = 13.sp, lineHeight = 16.sp,
+                        Text(welcomeLabel(key), color = Theme.c.text, fontSize = 13.sp, lineHeight = 16.sp,
                             fontWeight = FontWeight.Medium, textAlign = TextAlign.Center, maxLines = 2)
                     }
                 }

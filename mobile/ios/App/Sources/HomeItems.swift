@@ -310,7 +310,7 @@ private struct UpcomingDayCard: View {
 
     var body: some View {
         let today = CalendarDay(now, timeZone: PrayerSchedule.zone)
-        if let e = CalendarData.shared.upcoming(from: today, limit: 1).first, let day = e.day {
+        if let e = calUpcoming(from: today, limit: 1).first, let day = e.day {
             HStack(spacing: 10) {
                 Circle().fill(e.color).frame(width: 10, height: 10)
                 VStack(alignment: .leading, spacing: 2) {
