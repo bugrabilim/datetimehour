@@ -138313,6 +138313,1588 @@
         }
       }
     },
+    "cals.buddhist.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Budist takvimi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhist calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhistischer Kalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddist təqvimi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التقويم البوذي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender Buddha"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بدھ کیلنڈر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقویم بودایی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendrier bouddhique"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Буддийский календарь"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仏教暦"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "불교력"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "佛教历"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalendaryong Budista"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปฏิทินพุทธ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendario budista"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendário budista"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बौद्ध पंचांग"
+          }
+        }
+      }
+    },
+    "cals.buddhist.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tayland ay takvimine göre Budist bayramları ve uposatha günleri: Magha Puja, Vesak, Asalha Puja ve Vassa."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhist holy days and uposatha days by the Thai lunar calendar: Magha Puja, Vesak, Asalha Puja and Vassa."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhistische Feiertage und Uposatha-Tage nach dem thailändischen Mondkalender: Magha Puja, Vesakh, Asalha Puja und Vassa."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailand ay təqviminə görə Buddist bayramları və uposatha günləri: Maqha Puca, Vesak, Asalha Puca və Vassa."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأعياد البوذية وأيام الأوبوساثا وفق التقويم القمري التايلندي: ماغا بوجا وفيساك وأسالها بوجا وفاسا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari raya Buddha dan hari uposatha menurut kalender lunar Thailand: Magha Puja, Waisak, Asadha, dan Vassa."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تھائی قمری کیلنڈر کے مطابق بدھ مت کے تہوار اور اپوستھ کے دن: ماگھا پوجا، ویساک، آسالھا پوجا اور وسّا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جشن‌های بودایی و روزهای اوپوساتا بر پایهٔ تقویم قمری تایلند: ماگا پوجا، ویساک، آسالها پوجا و واسا."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fêtes bouddhiques et jours d’uposatha selon le calendrier lunaire thaï : Magha Puja, Vesak, Asalha Puja et Vassa."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Буддийские праздники и дни упосатхи по тайскому лунному календарю: Магха-пуджа, Весак, Асалха-пуджа и Васса."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "タイ太陰暦による仏教の祝祭日と布薩日：マーカ・ブーチャ、ウェーサーカ祭、アーサーラハ・ブーチャ、安居。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "태국 음력에 따른 불교 명절과 포살일: 마가 푸자, 베삭, 아살하 푸자, 안거."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按泰国阴历的佛教节日和布萨日：万佛节、卫塞节、三宝节和守夏安居。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga pista at araw ng uposatha ng Budismo ayon sa lunar na kalendaryo ng Thailand: Magha Puja, Vesak, Asalha Puja at Vassa."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันสำคัญทางพระพุทธศาสนาและวันพระตามปฏิทินจันทรคติไทย: มาฆบูชา วิสาขบูชา อาสาฬหบูชา เข้าพรรษา และออกพรรษา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fiestas budistas y días de uposatha según el calendario lunar tailandés: Magha Puja, Vesak, Asalha Puja y Vassa."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Festas budistas e dias de uposatha segundo o calendário lunar tailandês: Magha Puja, Vesak, Asalha Puja e Vassa."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "थाई चंद्र पंचांग के अनुसार बौद्ध पर्व और उपोसथ के दिन: माघ पूजा, वेसाक, आषाढ़ पूजा और वर्षावास।"
+          }
+        }
+      }
+    },
+    "cals.buddhist.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarihler Tayland ay takviminin geleneksel hesabındandır (Tayland resmî tarihleri her yıl ilan eder, 2027'den sonraki yıllar hesaptır); uposatha günleri astronomik Ay evresinden bir gün farklı olabilir. Sri Lanka, Myanmar ve diğer ülkelerde bayram bir ay, Budist yılı bir yıl farklı olabilir; BM, Vesak'ı Mayıs dolunayında anar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dates follow the traditional reckoning of the Thai lunar calendar (Thailand announces the official dates each year, so years after 2027 are calculated); uposatha days may differ by a day from the astronomical moon phase. In Sri Lanka, Myanmar and elsewhere a festival may fall a month apart and the Buddhist year may differ by one; the UN marks Vesak at the full moon of May."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Daten folgen der traditionellen Berechnung des thailändischen Mondkalenders (Thailand gibt die amtlichen Daten jedes Jahr bekannt, Jahre nach 2027 sind berechnet); Uposatha-Tage können um einen Tag von der astronomischen Mondphase abweichen. In Sri Lanka, Myanmar und anderen Ländern kann ein Fest einen Monat und das buddhistische Jahr um eins abweichen; die Vereinten Nationen begehen Vesakh am Vollmond im Mai."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarixlər Tailand ay təqviminin ənənəvi hesabındandır (Tailand rəsmi tarixləri hər il elan edir, 2027-ci ildən sonrakı illər hesablamadır); uposatha günləri astronomik Ay fazasından bir gün fərqlənə bilər. Şri-Lanka, Myanma və digər ölkələrdə bayram bir ay, Buddist ili isə bir il fərqli ola bilər; BMT Vesakı may ayının bədrində qeyd edir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التواريخ مأخوذة من الحساب التقليدي للتقويم القمري التايلندي (تعلن تايلاند التواريخ الرسمية كل عام، والسنوات بعد 2027 محسوبة)، وقد تختلف أيام الأوبوساثا يومًا عن طور القمر الفلكي. وقد يختلف العيد شهرًا والسنة البوذية سنةً في سريلانكا وميانمار وغيرهما، وتحيي الأمم المتحدة يوم فيساك في بدر شهر مايو."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanggal mengikuti perhitungan tradisional kalender lunar Thailand (Thailand mengumumkan tanggal resmi setiap tahun, tahun-tahun setelah 2027 merupakan hasil hitungan); hari uposatha bisa berbeda sehari dari fase bulan astronomis. Di Sri Lanka, Myanmar, dan negara lain hari raya bisa berbeda sebulan dan tahun Buddhis berbeda satu tahun; PBB memperingati Waisak pada purnama bulan Mei."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاریخیں تھائی قمری کیلنڈر کے روایتی حساب سے ہیں (تھائی لینڈ ہر سال سرکاری تاریخوں کا اعلان کرتا ہے، 2027 کے بعد کے سال حساب پر مبنی ہیں)؛ اپوستھ کے دن فلکیاتی چاند کے مرحلے سے ایک دن مختلف ہو سکتے ہیں۔ سری لنکا، میانمار اور دوسرے ممالک میں تہوار ایک مہینہ اور بدھ سال ایک سال مختلف ہو سکتا ہے؛ اقوام متحدہ ویساک مئی کے پورے چاند پر مناتی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاریخ‌ها از محاسبهٔ سنتی تقویم قمری تایلند است (تایلند تاریخ‌های رسمی را هر سال اعلام می‌کند و سال‌های پس از 2027 محاسبه‌شده‌اند)؛ روزهای اوپوساتا ممکن است یک روز با اهلّهٔ نجومی ماه فرق داشته باشند. در سری‌لانکا، میانمار و کشورهای دیگر جشن ممکن است یک ماه و سال بودایی یک سال متفاوت باشد؛ سازمان ملل ویساک را در ماه کامل ماه مه گرامی می‌دارد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les dates suivent le calcul traditionnel du calendrier lunaire thaï (la Thaïlande annonce les dates officielles chaque année ; les années après 2027 sont calculées) ; les jours d’uposatha peuvent différer d’un jour de la phase astronomique de la Lune. Au Sri Lanka, en Birmanie et ailleurs, une fête peut tomber à un mois d’écart et l’année bouddhique différer d’un an ; l’ONU célèbre le Vesak à la pleine lune de mai."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Даты рассчитаны по традиционным правилам тайского лунного календаря (Таиланд ежегодно объявляет официальные даты, годы после 2027 рассчитаны); дни упосатхи могут на день расходиться с астрономической фазой Луны. В Шри-Ланке, Мьянме и других странах праздник может отличаться на месяц, а буддийский год — на единицу; ООН отмечает Весак в полнолуние мая."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日付はタイ太陰暦の伝統的な計算によるもので（タイは公式の日付を毎年発表し、2027年より後は計算値）、布薩日は天文学上の月相と1日ずれることがあります。スリランカやミャンマーなどでは祭日が1か月、仏暦が1年異なることがあり、国連はウェーサーカ祭を5月の満月に記念します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날짜는 태국 음력의 전통 계산을 따르며(태국은 매년 공식 날짜를 발표하고 2027년 이후는 계산값), 포살일은 천문학적 달의 위상과 하루 차이 날 수 있습니다. 스리랑카, 미얀마 등에서는 명절이 한 달, 불기가 1년 다를 수 있으며 유엔은 5월 보름에 베삭을 기념합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日期按泰国阴历的传统算法得出（泰国每年公布正式日期，2027年以后为推算），布萨日可能与天文月相相差一天。斯里兰卡、缅甸等地的节日可能相差一个月，佛历年份可能相差一年；联合国在5月满月纪念卫塞节。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang mga petsa ay mula sa tradisyonal na pagkalkula ng lunar na kalendaryo ng Thailand (taon-taong inihahayag ng Thailand ang opisyal na petsa, kaya kalkulado ang mga taon pagkaraan ng 2027); maaaring magkaiba nang isang araw ang mga araw ng uposatha sa astronomikong yugto ng buwan. Sa Sri Lanka, Myanmar at iba pang bansa, maaaring magkaiba nang isang buwan ang pista at nang isang taon ang taong Budista; ginugunita ng UN ang Vesak sa kabilugan ng buwan ng Mayo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันที่คำนวณตามหลักปฏิทินจันทรคติไทยแบบดั้งเดิม (ทางราชการประกาศวันที่เป็นทางการทุกปี ปีหลัง พ.ศ. 2570 เป็นการคำนวณ) วันพระอาจคลาดจากดิถีจันทร์จริงทางดาราศาสตร์หนึ่งวัน ศรีลังกา เมียนมา และประเทศอื่นอาจกำหนดวันสำคัญต่างไปหนึ่งเดือนและนับพุทธศักราชต่างไปหนึ่งปี ส่วนสหประชาชาติจัดวันวิสาขบูชาในวันเพ็ญเดือนพฤษภาคม"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las fechas siguen el cálculo tradicional del calendario lunar tailandés (Tailandia anuncia las fechas oficiales cada año; los años posteriores a 2027 son calculados); los días de uposatha pueden diferir un día de la fase astronómica de la Luna. En Sri Lanka, Myanmar y otros países una fiesta puede diferir un mes y el año budista uno; la ONU conmemora el Vesak en la luna llena de mayo."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As datas seguem o cálculo tradicional do calendário lunar tailandês (a Tailândia anuncia as datas oficiais a cada ano; os anos após 2027 são calculados); os dias de uposatha podem diferir um dia da fase astronômica da Lua. No Sri Lanka, em Mianmar e em outros países, uma festa pode diferir um mês e o ano budista, um ano; a ONU celebra o Vesak na lua cheia de maio."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तिथियाँ थाई चंद्र पंचांग की पारंपरिक गणना से हैं (थाईलैंड हर साल आधिकारिक तिथियाँ घोषित करता है, 2027 के बाद के वर्ष गणना हैं); उपोसथ के दिन खगोलीय चंद्र कला से एक दिन अलग हो सकते हैं। श्रीलंका, म्यांमार और अन्य देशों में पर्व एक महीना और बौद्ध वर्ष एक साल अलग हो सकता है; संयुक्त राष्ट्र वेसाक मई की पूर्णिमा को मनाता है।"
+          }
+        }
+      }
+    },
+    "cals.buddhist.ev.maghaPuja": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maqha Puca"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماغا بوجا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماگھا پوجا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماگا پوجا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Магха-пуджа"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "マーカ・ブーチャ（万仏節）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "마가 푸자"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "万佛节（摩伽普迦）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันมาฆบูชา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "माघ पूजा"
+          }
+        }
+      }
+    },
+    "cals.buddhist.ev.vesak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesakh (Visakha Puja)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puca)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فيساك (فيساكا بوجا)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waisak (Visakha Puja)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ویساک (وساکھا پوجا)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ویساک (ویساکا پوجا)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Весак (Висакха-пуджа)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ウェーサーカ祭（ヴィサカ・ブーチャ）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "베삭(위사카 푸자)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卫塞节（毗舍佉普迦）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันวิสาขบูชา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वेसाक (विशाखा पूजा)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.ev.asalhaPuja": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puca"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أسالها بوجا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asadha (Asalha Puja)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آسالھا پوجا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آسالها پوجا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Асалха-пуджа"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アーサーラハ・ブーチャ（三宝節）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아살하 푸자"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "三宝节（阿萨哈普迦）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันอาสาฬหบูชา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आषाढ़ पूजा"
+          }
+        }
+      }
+    },
+    "cals.buddhist.ev.vassaStart": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vassa'nın başlangıcı (Khao Phansa)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start of Vassa (Khao Phansa)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beginn der Vassa (Khao Phansa)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vassanın başlanğıcı (Khao Phansa)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بداية فاسا (خاو فانسا)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Awal Vassa (Khao Phansa)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وسّا کا آغاز (کھاؤ پھانسا)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آغاز واسا (خائو پانسا)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Début du Vassa (Khao Phansa)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Начало Вассы (Кхао Пханса)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安居入り（カオパンサー）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "안거 시작(카오 판사)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "入夏安居（考攀萨）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simula ng Vassa (Khao Phansa)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันเข้าพรรษา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicio del Vassa (Khao Phansa)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Início do Vassa (Khao Phansa)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वर्षावास का आरंभ (खाओ फांसा)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.ev.vassaEnd": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vassa'nın sonu (Ok Phansa)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "End of Vassa (Ok Phansa)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ende der Vassa (Ok Phansa)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vassanın sonu (Ok Phansa)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نهاية فاسا (أوك فانسا)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akhir Vassa (Ok Phansa)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وسّا کا اختتام (اوک پھانسا)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پایان واسا (اوک پانسا)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fin du Vassa (Ok Phansa)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Конец Вассы (Ок Пханса)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安居明け（オークパンサー）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "안거 해제(옥 판사)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "出夏安居（奥攀萨）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Katapusan ng Vassa (Ok Phansa)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันออกพรรษา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fin del Vassa (Ok Phansa)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fim do Vassa (Ok Phansa)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वर्षावास का समापन (ओक फांसा)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.yearFmt": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Budist çağı %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhist Era %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhistische Ära %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddist erası %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العصر البوذي %1$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Era Buddhis %1$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بدھ سن %1$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عصر بودایی %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ère bouddhique %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Буддийская эра %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仏暦%1$@年"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "태국 불기 %1$@년"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "泰国佛历%1$@年"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panahong Budista %1$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พ.ศ. %1$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Era budista %1$@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Era budista %1$@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "थाई बौद्ध संवत %1$@"
+          }
+        }
+      }
+    },
+    "cals.buddhist.daily.k8": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (ilk dördün)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (first quarter)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (zunehmender Halbmond)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (birinci rüb)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوبوساثا (التربيع الأول)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (kuartal pertama)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپوستھ (پہلی چوتھائی)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپوساتا (تربیع اول)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (premier quartier)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упосатха (первая четверть)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布薩（上弦）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "포살일(상현)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布萨日（上弦）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (unang kuwarto)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันพระ (ขึ้น 8 ค่ำ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (cuarto creciente)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (quarto crescente)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उपोसथ (शुक्ल अष्टमी)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.daily.k15": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (dolunay)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (full moon)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (Vollmond)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (bədr)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوبوساثا (البدر)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (purnama)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپوستھ (پورا چاند)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپوساتا (ماه کامل)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (pleine lune)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упосатха (полнолуние)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布薩（満月）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "포살일(보름)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布萨日（满月）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (kabilugan ng buwan)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันพระ (ขึ้น 15 ค่ำ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (luna llena)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (lua cheia)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उपोसथ (पूर्णिमा)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.daily.r8": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (son dördün)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (last quarter)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (abnehmender Halbmond)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (sonuncu rüb)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوبوساثا (التربيع الأخير)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (kuartal terakhir)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپوستھ (آخری چوتھائی)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپوساتا (تربیع آخر)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (dernier quartier)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упосатха (последняя четверть)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布薩（下弦）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "포살일(하현)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布萨日（下弦）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (huling kuwarto)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันพระ (แรม 8 ค่ำ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (cuarto menguante)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (quarto minguante)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उपोसथ (कृष्ण अष्टमी)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.daily.r14": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (yeni ay)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (new moon)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (Neumond)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (yeni Ay)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوبوساثا (المحاق)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (bulan baru)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپوستھ (نیا چاند)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپوساتا (ماه نو)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (nouvelle lune)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упосатха (новолуние)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布薩（新月）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "포살일(그믐)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布萨日（新月）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (bagong buwan)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันพระ (แรม 14 ค่ำ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (luna nueva)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (lua nova)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उपोसथ (अमावस्या)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.daily.r15": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (yeni ay)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (new moon)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (Neumond)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (yeni Ay)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوبوساثا (المحاق)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (bulan baru)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپوستھ (نیا چاند)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپوساتا (ماه نو)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (nouvelle lune)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упосатха (новолуние)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布薩（新月）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "포살일(그믐)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布萨日（新月）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (bagong buwan)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันพระ (แรม 15 ค่ำ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (luna nueva)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (lua nova)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उपोसथ (अमावस्या)"
+          }
+        }
+      }
+    },
     "common.done": {
       "extractionState": "manual",
       "localizations": {
