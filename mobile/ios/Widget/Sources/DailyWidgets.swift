@@ -8,7 +8,7 @@ import SaatCore
 
 /// Widget'ın dili (uygulamanın yerelleştirmesi; Basitleştirilmiş Çince "zh")
 private let widgetLang: String = {
-    let c = Bundle.main.preferredLocalizations.first ?? "tr"
+    let c = Bundle.main.preferredLocalizations.first ?? "en"
     return c.hasPrefix("zh") ? "zh" : c
 }()
 

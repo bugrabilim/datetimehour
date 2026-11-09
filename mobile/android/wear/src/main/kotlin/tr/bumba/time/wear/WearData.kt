@@ -78,8 +78,13 @@ object Wear {
 
     val lang: String
         get() {
-            val l = app.resources.configuration.locales[0].language.let { when (it) { "in" -> "id"; "tl" -> "fil"; else -> it } }
-            return if (l in listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi")) l else "tr"
+            // Telefonun dil listesinde desteklenen ilk dil, yoksa İngilizce (values/ İngilizce; 9 Kasım 2026)
+            val ls = app.resources.configuration.locales
+            for (i in 0 until ls.size()) {
+                val l = ls[i].language.let { when (it) { "in" -> "id"; "tl" -> "fil"; else -> it } }
+                if (l in listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi")) return l
+            }
+            return "en"
         }
 
     @SuppressLint("DiscouragedApi")

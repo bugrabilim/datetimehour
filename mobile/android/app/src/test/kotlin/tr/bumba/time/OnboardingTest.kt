@@ -120,6 +120,17 @@ class OnboardingTest {
         }
     }
 
+    /** Desteklenmeyen telefon dilinde (Malayca) uygulama İngilizce açılır (9 Kasım 2026, sahibin kararı) */
+    @Test fun unsupportedLanguageFallsBackToEnglish() {
+        org.robolectric.RuntimeEnvironment.setQualifiers("+ms")
+        assertEquals("en", Strings.lang)
+        assertEquals("Four short questions and the app is set up just for you.", L("onboard.welcome.hint4"))
+        assertFalse(Onboarding.prayerFirst)
+        org.robolectric.RuntimeEnvironment.setQualifiers("+tr")
+        assertEquals("tr", Strings.lang)
+        assertEquals("Dört kısa soruyla uygulamayı size göre hazırlayalım.", L("onboard.welcome.hint4"))
+    }
+
     /** Vakitler sorulmayan dilde yeni kurulum: Vakitler kapalı, vakit bildirimleri de kapalı başlar (bitince ve geçince) */
     @Test fun noPrayerLanguageTurnsPrayerNotificationsOff() {
         org.robolectric.RuntimeEnvironment.setQualifiers("+en")

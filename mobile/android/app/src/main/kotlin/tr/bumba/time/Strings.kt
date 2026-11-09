@@ -26,12 +26,17 @@ object Strings {
     val LANGS = listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi")
     val RTL = listOf("ar", "ur", "fa")
 
-    /** Uygulamanın dili; desteklenmeyen dilde Türkçe metinler gösterilir. Java eski Endonezce ("in") ve Tagalog ("tl")
-     *  kodlarını verebilir (Filipince "fil"). */
+    /** Uygulamanın dili: telefonun dil listesinde desteklenen ilk dil (Android'in metin seçimiyle aynı), hiçbiri yoksa
+     *  İngilizce (values/ İngilizce; 9 Kasım 2026, sahibin kararı). Java eski Endonezce ("in") ve Tagalog ("tl") kodlarını
+     *  verebilir (Filipince "fil"). */
     val lang: String
         get() {
-            val l = context.resources.configuration.locales[0].language.let { when (it) { "in" -> "id"; "tl" -> "fil"; else -> it } }
-            return if (l in LANGS) l else "tr"
+            val ls = context.resources.configuration.locales
+            for (i in 0 until ls.size()) {
+                val l = ls[i].language.let { when (it) { "in" -> "id"; "tl" -> "fil"; else -> it } }
+                if (l in LANGS) return l
+            }
+            return "en"
         }
 
     val locale: Locale get() = Locale.forLanguageTag(when (lang) { "zh" -> "zh-CN"; "pt" -> "pt-BR"; else -> lang })

@@ -5,7 +5,7 @@ import SaatCore
 /// Uygulamanın görünen dili (tarih ve sayı biçimleri bununla; cihazın bölge ayarı farklı olabilir)
 enum AppLocale {
     /// Dil kodu: veri dosyalarındaki adlarla aynı (Basitleştirilmiş Çince "zh-Hans" yerelleştirmesi "zh")
-    static let code: String = { let c = Bundle.main.preferredLocalizations.first ?? "tr"; return c.hasPrefix("zh") ? "zh" : c }()
+    static let code: String = { let c = Bundle.main.preferredLocalizations.first ?? "en"; return c.hasPrefix("zh") ? "zh" : c }()
     /// Biçim yerel ayarı: Çincede Basitleştirilmiş; Taycada Gregoryen takvim (Tay yerel ayarının varsayılanı Budist takvimi)
     static let locale = Locale(identifier: code == "zh" ? "zh-Hans" : code == "th" ? "th_TH@calendar=gregorian" : code)
     /// Sağdan sola yazılan diller

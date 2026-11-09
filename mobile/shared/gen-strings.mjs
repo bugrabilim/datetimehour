@@ -187,9 +187,10 @@ const toIOS = (s, order) => s.replace(/%/g, "%%").replace(/\{([a-z]+)\}/gi, (_, 
 
 /* Android: {ad} → %1$s; yer tutucusu olmayan metinde % olduğu gibi kalır (formatted="false") */
 /* Endonezce Android kaynaklarında eski "in" koduyla (values-in) durur; Filipince üç harfli kod BCP 47 biçimiyle (values-b+fil);
-   Çince Basitleştirilmiş (values-zh bütün Çince yerel ayarlara uyar, Geleneksel Çincede de Türkçe yerine bu gelir).
+   Çince Basitleştirilmiş (values-zh bütün Çince yerel ayarlara uyar, Geleneksel Çincede de İngilizce yerine bu gelir).
+   Varsayılan values/ İngilizcedir (desteklenmeyen telefon dillerinde İngilizce; 9 Kasım 2026, sahibin kararı), Türkçe values-tr.
    Dil seçimi (locales_config) BCP 47 kodlarıyla: id, fil, zh-Hans. */
-const ANDROID_DIRS = { tr: "values", en: "values-en", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru", ja: "values-ja", ko: "values-ko", zh: "values-zh", fil: "values-b+fil", th: "values-th", es: "values-es", pt: "values-pt", hi: "values-hi" };
+const ANDROID_DIRS = { tr: "values-tr", en: "values", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru", ja: "values-ja", ko: "values-ko", zh: "values-zh", fil: "values-b+fil", th: "values-th", es: "values-es", pt: "values-pt", hi: "values-hi" };
 const LOCALE_TAG = (l) => (l === "zh" ? "zh-Hans" : l);
 const androidName = (key) => key.replace(/[^A-Za-z0-9_]/g, "_");
 const androidEscape = (s) => s
@@ -258,7 +259,7 @@ const androidXml = (l, res = androidRes) => '<?xml version="1.0" encoding="utf-8
   res[l].join("\n") + "\n</resources>\n";
 const localesConfig = '<?xml version="1.0" encoding="utf-8"?>\n<locale-config xmlns:android="http://schemas.android.com/apk/res/android">\n' +
   LANGS.map((l) => `    <locale android:name="${LOCALE_TAG(l)}" />`).join("\n") + "\n</locale-config>\n";
-const catalog = (s, source = "tr") => JSON.stringify({ sourceLanguage: source, strings: s, version: "1.0" }, null, 2) + "\n";
+const catalog = (s, source = "en") => JSON.stringify({ sourceLanguage: source, strings: s, version: "1.0" }, null, 2) + "\n";
 const xcstrings = catalog(strings);
 
 const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces.json"), "utf8"))
