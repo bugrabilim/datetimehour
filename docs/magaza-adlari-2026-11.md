@@ -79,12 +79,35 @@ gizlilik/destek/pazarlama adresleri). Malayca (ms) ve Geleneksel Çince (zh-Hant
 
 ### Adlar tablosu
 
-> **Bu bölüm `mobile/ios/fastlane/metadata/<dil>/{name,subtitle}.txt` dosyalarından üretilir; ana oturum (sahibin
-> oturumu) metadata klasörleri birleştikten sonra doldurur.** Elle yazılmaz; ad değişirse tablo yeniden üretilir.
+> Bu tablo `mobile/ios/fastlane/metadata/<dil>/{name,subtitle}.txt` dosyalarından üretildi (9 Kasım 2026); ad değişirse
+> yeniden üretilir. "(ek)": o mağazada ek dil sürümü olarak dizinlenir, gösterim cihaz diline göre.
 
 | Dil sürümü | Ad | Alt başlık | Dizinlendiği mağazalar |
 |---|---|---|---|
-| (doldurulacak) | | | |
+| tr | Saat Tarih: Namaz Vakitleri | Ezan vakti, kıble, hava, alarm | Türkiye, Kıbrıs (ek) |
+| ar-SA | الوقت والتاريخ: مواقيت الصلاة | الأذان، القبلة، الطقس، المنبه | Arap ülkeleri, Mısır, Kuzey Afrika (ek); ABD (ek) |
+| id | Jam & Tanggal: Jadwal Sholat | Adzan, kiblat, cuaca & alarm | Endonezya (ek) |
+| ms | Masa & Tarikh: Waktu Solat | Azan, kiblat, cuaca & penggera | Malezya (ek) |
+| ur-PK | وقت اور تاریخ: نماز کے اوقات | اذان، قبلہ، موسم اور الارم | Pakistan, Hindistan (ek) |
+| en-GB | Time & Date: Clock & Widgets | Alarms, weather & prayer times | İngiltere (varsayılan); Hindistan, Pakistan, Endonezya, Malezya, Körfez, Mısır, Türkiye, Orta Asya, Afrika'nın çoğu (varsayılan); Avrupa'nın çoğunda ek |
+| bn-BD | সময় ও তারিখ: ঘড়ি ও উইজেট | অ্যালার্ম, আবহাওয়া ও নামাজ | Hindistan (ek; Bangladeş'te App Store yok) |
+| fr-FR | Heure & Date: Réveil & Widgets | Météo et horaires de prière | Fransa (varsayılan); Kuzey ve Batı Afrika, Mısır, ABD (ek) |
+| en-US | Time & Date: Clock & Widgets | Alarm, weather & calendar | ABD (varsayılan), Japonya (ek) |
+| en-AU | Time & Date: Clock & Widgets | Alarm, weather & calendar | Avustralya |
+| en-CA | Time & Date: Clock & Widgets | Alarm, weather & calendar | Kanada |
+| fr-CA | Heure & Date: Réveil & Widgets | Météo, calendrier, minuterie | Kanada (ek) |
+| de-DE | Uhr & Datum: Wecker & Widgets | Weltuhr, Kalender und Wetter | Almanya, Avusturya, İsviçre |
+| es-ES | Hora y Fecha: Reloj y Widgets | Alarma, tiempo y calendario | İspanya |
+| es-MX | Hora y Fecha: Reloj y Widgets | Alarma, clima y calendario | Meksika (varsayılan), ABD (ek) |
+| pt-BR | Hora e Data: Relógio e Widgets | Alarme, clima e calendário | Brezilya, ABD (ek) |
+| pt-PT | Hora e Data: Relógio e Widgets | Alarme, tempo e calendário | Portekiz |
+| ru | Время и дата: часы и виджеты | Будильник, погода, календарь | Rusya, ABD (ek) |
+| ja | 時刻と日付：時計とウィジェット | アラーム、天気、カレンダー、世界時計 | Japonya |
+| ko | 시간과 날짜: 시계와 위젯 | 알람, 날씨, 달력, 세계 시계 | Kore, ABD (ek) |
+| zh-Hans | 时间与日期：时钟与小组件 | 闹钟、天气、日历、世界时钟 | Çin, Singapur (ek), ABD (ek) |
+| zh-Hant | 時間與日期：時鐘與小工具 | 鬧鐘、天氣、行事曆、世界時鐘 | Tayvan, Hong Kong, ABD (ek) |
+| th | เวลาและวันที่: นาฬิกาปลุก | สภาพอากาศ ปฏิทิน นาฬิกาโลก | Tayland (ek) |
+| hi | समय और तारीख: घड़ी और विजेट | अलार्म, मौसम, कैलेंडर, टाइमर | Hindistan (ek) |
 
 ### Özel ürün sayfası "Vakitler"
 
@@ -390,7 +413,6 @@ ayrı ülke olarak görünürse. "—": Google Play yok. Sıra: sayfa, sonra Mü
 - Önce "iOS App Store" iş akışı `only_images` ile çalıştırılır (hiçbir şey yüklenmez; görseller artifact olarak gelir),
   sahip görselleri görür; yükleme yayın sayılır ve sahibin onayıyla yapılır.
 - Özel ürün sayfası "Vakitler" 1.1 onaylandıktan sonra App Store Connect'te elle açılır (yukarıda).
-- Adlar tablosu metadata klasörleri birleştikten sonra ana oturumda doldurulur.
 
 **Google Play**
 
