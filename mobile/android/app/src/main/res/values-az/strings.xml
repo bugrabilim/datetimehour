@@ -2521,6 +2521,9 @@
     <string name="cal_country">Ölkə</string>
     <string name="cal_shownTypes">Göstərilən günlər</string>
     <string name="cal_countryNote">Seçilmiş ölkənin milli rəsmi bayramları (Nager.Date, MIT); dini günlər Diyanət təqviminə görə. Məlumat 2024–2032.</string>
+    <string name="calendars_title">Təqvimlər və ölkə</string>
+    <string name="calendars_heading">Təqvimlər</string>
+    <string name="calendars_note">Açdığınız təqvimlərin xüsusi günləri və tarixləri təqviminizdə görünür. Bölgənizin təqvimləri açıq, dini təqvimlər bağlı başlayır; heç kimin inancı təxmin edilmir.</string>
     <string name="cal_agendaEmpty">Növbəti 60 gündə göstəriləcək gün yoxdur.</string>
     <string name="cal_density">Rəng nə qədər tünd olsa, o gün bir o qədər çox xüsusi gün və tədbir var.</string>
     <string name="cal_bayram">Bayramınız mübarək</string>

@@ -95,6 +95,8 @@ final class CalendarData {
     }
 
     static func color(_ type: String) -> Color {
+        // Kapsayıcı takvimlerde (`cal:<id>`) takvimin rengi
+        if type.hasPrefix("cal:") { return ExtraCals.color(String(type.dropFirst(4))) }
         switch type {
         case "holiday": return Color(red: 0.80, green: 0.20, blue: 0.18)
         case "half": return Color(red: 0.90, green: 0.50, blue: 0.10)

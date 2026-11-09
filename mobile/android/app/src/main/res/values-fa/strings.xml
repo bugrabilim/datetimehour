@@ -2521,6 +2521,9 @@
     <string name="cal_country">کشور</string>
     <string name="cal_shownTypes">روزهای نمایش‌داده‌شده</string>
     <string name="cal_countryNote">تعطیلات رسمی ملی کشور انتخاب‌شده (Nager.Date، MIT)؛ روزهای مذهبی طبق تقویم دیانت. داده‌ها 2024–2032.</string>
+    <string name="calendars_title">تقویم‌ها و کشور</string>
+    <string name="calendars_heading">تقویم‌ها</string>
+    <string name="calendars_note">روزهای ویژه و تاریخ‌های تقویم‌هایی که روشن می‌کنید در تقویم شما نمایش داده می‌شوند. تقویم‌های منطقهٔ شما روشن و تقویم‌های دینی خاموش شروع می‌شوند؛ باور هیچ‌کس حدس زده نمی‌شود.</string>
     <string name="cal_agendaEmpty">در 60 روز آینده چیزی برای نمایش نیست.</string>
     <string name="cal_density">هرچه رنگ تیره‌تر، روزهای ویژه و رویدادها بیشتر.</string>
     <string name="cal_bayram">عید مبارک</string>

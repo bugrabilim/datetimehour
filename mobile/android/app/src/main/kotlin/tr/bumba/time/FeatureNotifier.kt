@@ -158,7 +158,8 @@ object FeatureNotifier {
         val today = now.atZone(zone).toLocalDate()
         return (0 until days).mapNotNull { i ->
             val day = today.plusDays(i.toLong())
-            val names = calEvents(day).map { it.name }.distinct()
+            // Kapsayıcı takvimlerin çok günlü olayları yalnız ilk gününde (her gün yinelenmesin)
+            val names = calEvents(day).filter { !it.type.startsWith("cal:") || it.date == day }.map { it.name }.distinct()
             if (names.isEmpty()) return@mapNotNull null
             Planned("cal-$day", day.atTime(9, 0).atZone(zone).toInstant(), names.joinToString(" · "),
                 T("notify.n.today", Fmt.longDate(day)), NotifyFeature.CALENDAR.tab)

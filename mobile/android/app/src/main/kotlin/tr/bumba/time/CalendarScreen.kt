@@ -422,7 +422,7 @@ private fun CalViewMenu(onToday: () -> Unit, onLeaf: () -> Unit) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-private fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalendar.Event>) {
+internal fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalendar.Event>) {
     val context = LocalContext.current
     val ev = calEvents(d)
     var deleting by remember { mutableStateOf<DeviceCalendar.Event?>(null) }
@@ -440,6 +440,8 @@ private fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalenda
             color = Theme.c.muted, fontSize = 13.sp)
         // Hicri tarih (Diyanet takvimi); dini günler görünürken
         if (CalView.religious) Hijri.date(d)?.let { Text("☾ " + it.text, color = Theme.c.accent, fontSize = 13.sp) }
+        // Açık kapsayıcı takvimlerin ikinci tarihi (her takvim tek satır, takvimin rengiyle nokta)
+        ExtraCalDayLines(d)
         // O günün havası (2. analiz #118): Open-Meteo günlük tahmininde varsa; yalnız Hava özelliği açıkken
         if (Features.isOn(Tab.WEATHER)) {
             val place = AppPlace.current()
@@ -530,7 +532,8 @@ private fun TypeRow(type: String, text: String) {
 @Composable
 private fun Legend() {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        val legendTypes = (if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")).filter { it !in CalView.hidden }
+        val legendTypes = (if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")).filter { it !in CalView.hidden } +
+            ExtraCals.sorted().filter { ExtraCals.isOn(it.id) }.map { "cal:${it.id}" }
         for (t in legendTypes) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.size(8.dp).background(AppData.color(t), CircleShape))
@@ -545,6 +548,8 @@ private fun Legend() {
  * ("Public holiday · Türkiye"): takvimdeki tatiller Türkiye'nindir (2. analiz #92).
  */
 fun calendarTypeLabel(t: String): String {
+    // Kapsayıcı takvimlerde takvimin adı
+    if (t.startsWith("cal:")) return ExtraCals.name(t.removePrefix("cal:"))
     val base = L("calendar.types.$t")
     // Takvimde başka ülke seçiliyse (2. analiz #122) resmî tatil o ülkenindir
     val cc = if (t == "holiday" && CalView.country != "TR") CalView.country else "TR"

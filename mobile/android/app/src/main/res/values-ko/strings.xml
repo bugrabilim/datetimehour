@@ -2521,6 +2521,9 @@
     <string name="cal_country">국가</string>
     <string name="cal_shownTypes">표시할 날</string>
     <string name="cal_countryNote">선택한 국가의 공휴일(Nager.Date, MIT)이며 종교 기념일은 디야넷 달력 기준입니다. 데이터 2024–2032.</string>
+    <string name="calendars_title">달력과 국가</string>
+    <string name="calendars_heading">달력</string>
+    <string name="calendars_note">켜 둔 달력의 기념일과 날짜가 달력에 표시됩니다. 사는 지역의 달력은 처음에 켜져 있고 종교 달력은 꺼져 있으며, 누구의 신앙도 짐작하지 않습니다.</string>
     <string name="cal_agendaEmpty">앞으로 60일 동안 표시할 일정이 없습니다.</string>
     <string name="cal_density">색이 진할수록 특별한 날과 일정이 많습니다.</string>
     <string name="cal_bayram">이드 무바라크</string>

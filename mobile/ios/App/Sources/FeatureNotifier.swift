@@ -187,7 +187,8 @@ enum FeatureNotifier {
         return (0..<days).compactMap { i in
             let day = today.adding(days: i)
             var seen = Set<String>()
-            let names = calEvents(day).map(\.name).filter { seen.insert($0).inserted }
+            // Kapsayıcı takvimlerin çok günlü olayları yalnız ilk gününde (her gün yinelenmesin)
+            let names = calEvents(day).filter { !$0.type.hasPrefix("cal:") || $0.date == day.iso }.map(\.name).filter { seen.insert($0).inserted }
             guard !names.isEmpty else { return nil }
             let fire = day.noon(in: .current).addingTimeInterval(-3 * 3600)
             return PlannedNotification(id: "\(featurePrefix)cal-\(day.iso)", fireAt: fire,

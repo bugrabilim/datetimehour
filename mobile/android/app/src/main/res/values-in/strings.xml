@@ -2521,6 +2521,9 @@
     <string name="cal_country">Negara</string>
     <string name="cal_shownTypes">Hari yang ditampilkan</string>
     <string name="cal_countryNote">Hari libur nasional negara terpilih (Nager.Date, MIT); hari keagamaan mengikuti kalender Diyanet. Data 2024–2032.</string>
+    <string name="calendars_title">Kalender dan negara</string>
+    <string name="calendars_heading">Kalender</string>
+    <string name="calendars_note">Hari istimewa dan tanggal dari kalender yang Anda aktifkan muncul di kalender Anda. Kalender wilayah Anda mulanya aktif, kalender keagamaan nonaktif; keyakinan siapa pun tidak diasumsikan.</string>
     <string name="cal_agendaEmpty">Tidak ada yang ditampilkan dalam 60 hari ke depan.</string>
     <string name="cal_density">Makin gelap warnanya, makin banyak hari istimewa dan acara.</string>
     <string name="cal_bayram">Selamat Hari Raya</string>

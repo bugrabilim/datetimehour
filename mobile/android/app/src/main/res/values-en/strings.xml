@@ -2521,6 +2521,9 @@
     <string name="cal_country">Country</string>
     <string name="cal_shownTypes">Shown days</string>
     <string name="cal_countryNote">National public holidays of the selected country (Nager.Date, MIT); religious days follow the Diyanet calendar. Data 2024–2032.</string>
+    <string name="calendars_title">Calendars and country</string>
+    <string name="calendars_heading">Calendars</string>
+    <string name="calendars_note">Special days and dates from the calendars you turn on appear in your calendar. Calendars for your region start on, religious calendars start off; nobody\'s faith is assumed.</string>
     <string name="cal_agendaEmpty">Nothing to show in the next 60 days.</string>
     <string name="cal_density">The darker the colour, the more special days and events.</string>
     <string name="cal_bayram">Eid Mubarak</string>

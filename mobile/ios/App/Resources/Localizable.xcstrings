@@ -284761,6 +284761,345 @@
         }
       }
     },
+    "calendars.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvimler ve ülke"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendars and country"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender und Land"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təqvimlər və ölkə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التقاويم والدولة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender dan negara"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کیلنڈر اور ملک"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقویم‌ها و کشور"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendriers et pays"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Календари и страна"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暦と国"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "달력과 국가"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "历法与国家"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga kalendaryo at bansa"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปฏิทินและประเทศ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendarios y país"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendários e país"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कैलेंडर और देश"
+          }
+        }
+      }
+    },
+    "calendars.heading": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvimler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendars"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təqvimlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التقاويم"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کیلنڈر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقویم‌ها"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendriers"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Календари"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暦"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "달력"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "历法"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga kalendaryo"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปฏิทิน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendarios"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendários"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कैलेंडर"
+          }
+        }
+      }
+    },
+    "calendars.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açtığınız takvimlerin özel günleri ve tarihleri takviminizde görünür. Bölgenizin takvimleri açık, dinî takvimler kapalı başlar; kimsenin inancı tahmin edilmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Special days and dates from the calendars you turn on appear in your calendar. Calendars for your region start on, religious calendars start off; nobody's faith is assumed."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Besondere Tage und Daten der Kalender, die Sie einschalten, erscheinen in Ihrem Kalender. Kalender Ihrer Region sind anfangs an, religiöse Kalender aus; niemandes Glaube wird vorausgesetzt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açdığınız təqvimlərin xüsusi günləri və tarixləri təqviminizdə görünür. Bölgənizin təqvimləri açıq, dini təqvimlər bağlı başlayır; heç kimin inancı təxmin edilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تظهر المناسبات والتواريخ من التقاويم التي تفعّلها في تقويمك. تبدأ تقاويم منطقتك مفعّلة والتقاويم الدينية معطّلة؛ لا نفترض معتقد أحد."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari istimewa dan tanggal dari kalender yang Anda aktifkan muncul di kalender Anda. Kalender wilayah Anda mulanya aktif, kalender keagamaan nonaktif; keyakinan siapa pun tidak diasumsikan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جو کیلنڈر آپ آن کریں، ان کے خاص دن اور تاریخیں آپ کے کیلنڈر میں نظر آتی ہیں۔ آپ کے علاقے کے کیلنڈر آن اور مذہبی کیلنڈر بند سے شروع ہوتے ہیں؛ کسی کے عقیدے کا اندازہ نہیں لگایا جاتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزهای ویژه و تاریخ‌های تقویم‌هایی که روشن می‌کنید در تقویم شما نمایش داده می‌شوند. تقویم‌های منطقهٔ شما روشن و تقویم‌های دینی خاموش شروع می‌شوند؛ باور هیچ‌کس حدس زده نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les jours particuliers et les dates des calendriers que vous activez apparaissent dans votre calendrier. Les calendriers de votre région sont activés au départ, les calendriers religieux désactivés ; nous ne présumons la croyance de personne."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Особые дни и даты включённых вами календарей появляются в вашем календаре. Календари вашего региона сначала включены, религиозные — выключены: мы ничьих убеждений не предполагаем."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オンにした暦の記念日と日付がカレンダーに表示されます。お住まいの地域の暦は最初からオン、宗教の暦はオフです。誰の信仰も推測しません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "켜 둔 달력의 기념일과 날짜가 달력에 표시됩니다. 사는 지역의 달력은 처음에 켜져 있고 종교 달력은 꺼져 있으며, 누구의 신앙도 짐작하지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您开启的历法中的节日和日期会显示在日历中。您所在地区的历法默认开启，宗教历法默认关闭；我们不揣测任何人的信仰。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lalabas sa iyong kalendaryo ang mga espesyal na araw at petsa ng mga kalendaryong binuksan mo. Bukas sa simula ang mga kalendaryo ng iyong rehiyon at sarado ang mga panrelihiyon; walang ipinapalagay na pananampalataya."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันสำคัญและวันที่จากปฏิทินที่คุณเปิดจะแสดงในปฏิทินของคุณ ปฏิทินของภูมิภาคคุณเปิดไว้ก่อน ส่วนปฏิทินทางศาสนาปิดไว้ เราไม่คาดเดาความเชื่อของใคร"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los días especiales y las fechas de los calendarios que active aparecen en su calendario. Los calendarios de su región empiezan activados y los religiosos desactivados; no suponemos la creencia de nadie."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As datas especiais dos calendários que você ativar aparecem no seu calendário. Os calendários da sua região começam ativados e os religiosos desativados; não supomos a crença de ninguém."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आप जो कैलेंडर चालू करें, उनके विशेष दिन और तारीखें आपके कैलेंडर में दिखती हैं। आपके क्षेत्र के कैलेंडर शुरू में चालू और धार्मिक कैलेंडर बंद रहते हैं; हम किसी की आस्था का अनुमान नहीं लगाते।"
+          }
+        }
+      }
+    },
     "cal.agendaEmpty": {
       "extractionState": "manual",
       "localizations": {
