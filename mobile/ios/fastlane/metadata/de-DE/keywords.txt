@@ -1,1 +1,1 @@
-namaz,salah,adhan,qibla,koran,tasbih,ramadan,wecker,stoppuhr,feiertage,metronom,schachuhr,pomodoro
+timer,stoppuhr,schlaf,mondphase,feiertage,countdown,pomodoro,nachttischuhr,gebetszeiten,namaz,qibla

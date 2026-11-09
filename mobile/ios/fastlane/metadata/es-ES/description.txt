@@ -1,23 +1,16 @@
-Hora y Fecha reúne el reloj, los horarios de oración, el calendario, el tiempo y herramientas cotidianas en una sola app sencilla. Es gratuita, sin cuenta, sin anuncios y sin rastreo.
+Hora y Fecha reúne el reloj, los widgets, el tiempo, el calendario, las alarmas y herramientas cotidianas en una sola app sencilla. Es gratuita, sin cuenta, sin anuncios y sin rastreo.
 
 PREPARADA PARA USTED
-• Cinco preguntas rápidas al abrirla por primera vez: oraciones, tiempo, calendario, relojes del mundo, estaciones. La barra de pestañas se configura sola según sus respuestas
+• Cinco preguntas rápidas al abrirla por primera vez: tiempo, calendario, relojes del mundo, estaciones, oraciones. La barra de pestañas se configura sola según sus respuestas
 • Las secciones que no usa quedan ocultas y no envían notificaciones
 
-RELOJ
+RELOJ Y WIDGETS
 • 21 modelos de reloj y 25 esferas analógicas; pantalla completa y modo nocturno en rojo tenue
-• Muestre bajo el reloj la próxima oración, el tiempo, la fecha o relojes del mundo
-• Widgets para la pantalla de inicio y la pantalla bloqueada, complicaciones para Apple Watch
-
-HORARIOS DE ORACIÓN Y CULTO
-• Horarios en cualquier lugar, con 14 métodos de cálculo (Diyanet, MWL, ISNA, Umm al-Qura y más) y Asr hanafí
-• Las 81 provincias y 973 distritos de Turquía
-• Notificaciones con sonido del adhan, calendario de Ramadán
-• Brújula de la alquibla y mezquitas cercanas
-• El Corán en árabe, súplicas, los 99 nombres de Alá, contador de tasbih, seguimiento de oraciones y ayunos, cálculo del zakat
+• Muestre bajo el reloj el tiempo, la fecha, relojes del mundo o la próxima oración
+• Widgets para la pantalla de inicio y la pantalla bloqueada: relojes, relojes del mundo, cuentas atrás, fase lunar; complicaciones para Apple Watch
 
 CALENDARIO Y TIEMPO
-• Festivos de Turquía y de otros 30 países, días religiosos y especiales, junto a los calendarios de su teléfono
+• Festivos de España, Turquía y otros 29 países, días religiosos y especiales, junto a los calendarios de su teléfono
 • Calendario de la Hégira y conversor
 • Pronóstico por horas y a 10 días, calidad del aire y una pantalla que se anima según el tiempo que hace
 
@@ -30,6 +23,13 @@ HERRAMIENTAS
 • Temporizador, cronómetro, entrenamiento por intervalos, reloj de ajedrez, metrónomo, reloj parlante
 • Relojes del mundo con un globo que gira, planificador de reuniones, cálculo de horas y fechas
 • Estaciones, calendario lunar, eclipses, cielo nocturno, signo del zodiaco
+
+HORARIOS DE ORACIÓN Y CULTO
+• Horarios en cualquier lugar, con 14 métodos de cálculo (Diyanet, MWL, ISNA, Umm al-Qura y más) y Asr hanafí
+• Las 81 provincias y 973 distritos de Turquía
+• Notificaciones con sonido del adhan, calendario de Ramadán
+• Brújula de la alquibla y mezquitas cercanas
+• El Corán en árabe, súplicas, los 99 nombres de Alá, contador de tasbih, seguimiento de oraciones y ayunos, cálculo del zakat
 • Tarjetas de felicitación para el viernes, Ramadán, Eid y las noches sagradas
 
 PRIVACIDAD

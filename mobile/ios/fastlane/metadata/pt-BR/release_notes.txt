@@ -2,11 +2,11 @@ Novidades da 1.1
 • Cinco perguntas rápidas na primeira abertura deixam o app do seu jeito
 • Ajustes › Permissões: para que serve cada permissão e como desativá-la com um toque
 • Nova navegação: suas escolhas na barra de abas, todo o resto em Tudo
-• Bússola da qibla, mesquitas próximas, Alcorão, súplicas, os 99 nomes, contador de tasbih, registro de orações e jejuns
-• 14 métodos de cálculo e 973 distritos da Turquia
+• 25 mostradores analógicos, modo noturno e uma tela que muda com o clima
 • Plano de sono, alarme inteligente e tarefas para desligar o alarme
 • Pomodoro, cronômetro de estudo e bloqueio de apps durante o foco
 • Relógio de xadrez, metrônomo, relógio falante e muitas outras ferramentas
-• 25 mostradores analógicos, modo noturno e uma tela que muda com o clima
+• Bússola da qibla, mesquitas próximas, Alcorão, súplicas, os 99 nomes, contador de tasbih, registro de orações e jejuns
+• 14 métodos de cálculo e 973 distritos da Turquia
 • iPad e Apple Watch
 • 18 idiomas

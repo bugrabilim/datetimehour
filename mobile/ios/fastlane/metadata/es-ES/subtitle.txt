@@ -1,1 +1,1 @@
-Oración, tiempo y alarmas
+Alarma, tiempo y calendario
