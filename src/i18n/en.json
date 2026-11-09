@@ -307,7 +307,7 @@
         "ul": [
           "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
           "**Location (prayer times):** If you press \"Use my location\" on the prayer times page, your browser uses your location only on your device to calculate the times. The coordinates are not sent to the server or included in statistics; your last choice stays in your browser's local storage.",
-          "**Weather (external service, with permission):** If you have allowed external services in the cookie preferences, the weather page and the clock styles with weather send the approximate coordinates of the province or location you chose (to about 1 km) straight from your browser to Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), which provides the data; your IP address also reaches Open-Meteo. Without permission no request is made and a short note is shown instead. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
+          "**Weather (external service, with permission):** If you have allowed external services in the cookie preferences, the weather page and the clock styles with weather send the approximate coordinates of the province or location you chose (to about 1 km) straight from your browser to Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), which provides the data; your IP address also reaches Open-Meteo. Without permission no request is made and a short note is shown instead. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply. The cloud forecast on the photo light page is also loaded from Open-Meteo with the same permission and the same approximate coordinates (two decimals).",
           "**Map (globe, external service, with permission):** If you have allowed external services in the cookie preferences and you zoom the globe on the home page beyond a certain level, map tiles are downloaded straight to your browser from OpenStreetMap's server (tile.openstreetmap.org); your IP address and the tile addresses of the area you are looking at then reach the OpenStreetMap Foundation. Without permission, or while the globe is zoomed out, this request is not made. The Saat Tarih server does not see them; OpenStreetMap's own privacy terms apply.",
           "**Qibla and nearby mosques:** The qibla direction, distance and qibla time are calculated in your browser. For the compass, your phone's orientation sensor is read only in the browser (iPhone asks for permission) and is never sent anywhere. If you tap \"Show mosques\" and have allowed external services, the selected place's coordinates rounded to two decimals (about 1 km) are sent from your browser to the Overpass service (overpass-api.de), which serves OpenStreetMap data; your IP address also reaches this service. The Saat Tarih server does not see these coordinates.",
           "**Alarm music (YouTube, external service, with permission):** If you add a YouTube link to an alarm in the alarm tool and have allowed external services, when the alarm rings the video is loaded into your browser with YouTube's privacy-enhanced player (youtube-nocookie.com); your IP address and the video's ID then reach Google (YouTube), and the player may store its own data in your browser. The link stays only in this browser, with your alarm. Without permission the player is not loaded and the alarm rings with its own sound. The Saat Tarih server does not see these; YouTube's (Google's) own privacy terms apply.",
@@ -326,7 +326,7 @@
         ],
         "ul": [
           "**Location:** If you tap \"Use my location\", your location is used on your phone to calculate prayer times and find the nearest province; an approximate location (about 1 km) is stored only on your phone. The \"Automatic\" option in widgets also uses your location only on your phone.",
-          "**Weather:** Weather in the app comes from Apple Weather (WeatherKit); for this, the approximate coordinates of the selected province or your location are sent to Apple. We never see this data; Apple's privacy terms apply. Air quality, pollen, the model comparison and the Apple Watch weather complication come from Open-Meteo (open-meteo.com); for these, coordinates rounded to two decimals are sent. If weather on the Lock Screen is on, it is also fetched in the background when iOS allows.",
+          "**Weather:** Weather in the app comes from Apple Weather (WeatherKit); for this, the approximate coordinates of the selected province or your location are sent to Apple. We never see this data; Apple's privacy terms apply. Air quality, pollen, the model comparison and the Apple Watch weather complication come from Open-Meteo (open-meteo.com); for these, coordinates rounded to two decimals are sent. If weather on the Lock Screen is on, it is also fetched in the background when iOS allows. The cloud forecast on the photo light screen also comes from Open-Meteo; for it, too, the coordinates are rounded to two decimals.",
           "**Map:** The globe in the world clock is shown with Apple Maps; map imagery is downloaded from Apple.",
           "**Calendar:** Only if you allow it, events from the calendars on your phone are shown in the app; they are read on your phone and never sent anywhere. Adding and deleting events happens through the iPhone's own calendar screen and only with your confirmation.",
           "**Notifications and alarms:** Prayer time notifications; special day, start of season, moon phase, sunrise and sunset, morning weather summary, on-the-hour and daylight saving notifications (each on by default except on-the-hour; can be changed in Settings › Notifications); alarms and timers are scheduled on your phone without any server. Only the weather summary asks the weather service (see the weather item above). The list is kept current with iOS background refresh; spoken announcements are generated on your phone.",
@@ -353,7 +353,7 @@
         ],
         "ul": [
           "**Location:** If you tap \"Use my location\", only approximate location permission is requested; your location is used on your phone to calculate prayer times and find the nearest province or district, and an approximate location (about 1 km) is stored only on your phone.",
-          "**Weather:** Weather in the app comes from Open-Meteo (open-meteo.com); for this, the coordinates of the selected place, rounded to two decimals (about 1 km), are sent to Open-Meteo, and your IP address reaches Open-Meteo's server with that request. For city weather on the spinning globe only those cities' coordinates are sent. Open-Meteo's privacy terms apply; we never see this data. If weather in the status bar is on, this request is also made hourly in the background.",
+          "**Weather:** Weather in the app comes from Open-Meteo (open-meteo.com); for this, the coordinates of the selected place, rounded to two decimals (about 1 km), are sent to Open-Meteo, and your IP address reaches Open-Meteo's server with that request. For city weather on the spinning globe only those cities' coordinates are sent. Open-Meteo's privacy terms apply; we never see this data. If weather in the status bar is on, this request is also made hourly in the background. For the cloud forecast on the photo light screen, the same approximate location (two decimals) is also sent to Open-Meteo.",
           "**Globe and map:** The spinning globe is drawn from an image inside the app; no map service is contacted.",
           "**Calendar:** Calendar permission is requested only if you tap \"Show my phone's calendars\"; events are read on your phone and never sent anywhere. Events are added through your phone's own calendar app and deleted only with your confirmation.",
           "**Notifications, alarms and interval workout:** Prayer time notifications and the other notification types (special days, start of season, moon phase, sunrise and sunset, morning weather summary, on the hour, daylight saving; each on by default except on-the-hour, changeable in Settings › Notifications), alarms and timers are scheduled on your phone without any server; exact alarm permission is used so they ring on time. While an interval workout you started is running, a foreground service shown in the notification announces phase changes with your phone's text-to-speech engine. Spoken announcements are generated on your phone.",
@@ -961,6 +961,10 @@
         "classroom": {
           "name": "Classroom tools",
           "desc": "Random names, teams and counters."
+        },
+        "photo": {
+          "name": "Photo light",
+          "desc": "Golden hour, blue hour and a sunset photo forecast."
         }
       },
       "infoHeading": "Information pages"
@@ -3285,6 +3289,92 @@
       {
         "q": "Are student names sent anywhere?",
         "a": "No. Names, teams and counters are stored only in this browser; they are not sent to a server or included in statistics."
+      }
+    ]
+  },
+  "photo": {
+    "title": "Golden Hour & Blue Hour Today: Photo Light Times | Saat Tarih",
+    "description": "Golden hour and blue hour times for your location, sunrise and sunset direction, moonrise and Moon phase, and a 7-day sunrise and sunset photo forecast from clouds.",
+    "h1": "Photo light: golden hour and blue hour",
+    "lead": "Today's light for photographers on one page: morning and evening blue hour and golden hour, sunrise and sunset times and directions, the Moon, and a cloud-based photo forecast for sunrise and sunset.",
+    "search": "golden hour blue hour photo light photography sunrise sunset direction azimuth moonrise cloud forecast magic hour photographer",
+    "dateLabel": "Date",
+    "prev": "Previous day",
+    "next": "Next day",
+    "today": "Today",
+    "morning": "Morning",
+    "evening": "Evening",
+    "blue": "Blue hour",
+    "golden": "Golden hour",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "direction": "Direction",
+    "forecast": "Photo forecast",
+    "dirs": [
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSW",
+      "SW",
+      "WSW",
+      "W",
+      "WNW",
+      "NW",
+      "NNW"
+    ],
+    "moonHeading": "Moon",
+    "moonrise": "Moonrise",
+    "moonset": "Moonset",
+    "noMoonrise": "No moonrise on this day",
+    "noMoonset": "No moonset on this day",
+    "phase": "Phase",
+    "lit": "{p} lit",
+    "fcHeading": "Sunrise and sunset photo forecast",
+    "fcLead": "Today and the next 6 days, from the cloud forecast for the hour closest to sunrise and sunset.",
+    "colDay": "Day",
+    "q": {
+      "good": "Good",
+      "fair": "Fair",
+      "poor": "Poor"
+    },
+    "clouds": "Low cloud {l} · mid {m} · high {h}",
+    "rain": "Rain {p} mm",
+    "why": "Mid and high clouds catch the colours; low cloud on the horizon and rain hide the Sun; a clear sky is clean but plain. This is an estimate, not a guarantee.",
+    "loading": "Loading the cloud forecast…",
+    "error": "The cloud forecast could not be loaded. Please try again later.",
+    "blocked": "The cloud forecast is loaded from Open-Meteo; allow external services to show it.",
+    "attribution": "Cloud forecast: Open-Meteo.com (CC BY 4.0)",
+    "weekHeading": "Light for 7 days",
+    "colGoldenAm": "Morning golden hour",
+    "colGoldenPm": "Evening golden hour",
+    "colBluePm": "Evening blue hour",
+    "polarDay": "The Sun does not set on this day; there is no sunset or blue hour.",
+    "polarNight": "The Sun does not rise on this day; times marked — do not occur.",
+    "partial": "On this day the Sun does not reach some of these altitudes; times marked — do not occur.",
+    "defsHeading": "What are golden hour and blue hour?",
+    "defs": [
+      "**Golden hour:** the Sun is between 6° above and 4° below the horizon. The light is low, soft and warm, and shadows are long; it is the favourite time for portraits and landscapes.",
+      "**Blue hour:** the Sun is between 4° and 6° below the horizon. The sky turns deep blue and city lights balance with the sky; it suits cityscapes and long exposures."
+    ],
+    "note": "Times are calculated on your device for the selected place and are approximate (a few minutes); mountains and buildings on the horizon are not taken into account. Your location stays on your device; only rounded coordinates are sent to Open-Meteo for the cloud forecast.",
+    "faq": [
+      {
+        "q": "When is golden hour today?",
+        "a": "Golden hour comes twice a day, around sunrise and around sunset, while the Sun is between 6° above and 4° below the horizon. This page calculates the times for your location; it usually lasts about 40 to 90 minutes, longer in winter and at high latitudes."
+      },
+      {
+        "q": "What is blue hour and when does it happen?",
+        "a": "Blue hour is the twilight when the Sun is 4° to 6° below the horizon: before the morning golden hour and after the evening golden hour. The sky is deep blue, ideal for city lights and long exposures. It usually lasts 10 to 20 minutes."
+      },
+      {
+        "q": "How is the sunrise and sunset photo forecast made?",
+        "a": "From Open-Meteo's hourly cloud forecast for the hour closest to sunrise or sunset. Rain (0.5 mm per hour or more) or heavy low cloud (75% or more) is Poor; little low cloud (under 40%) with 20–80% mid or high cloud is Good; otherwise it is Fair while low cloud is under 60%, and Poor above that. Mid and high clouds catch the colours, while low cloud on the horizon hides the Sun."
       }
     ]
   }

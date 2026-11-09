@@ -307,7 +307,7 @@
         "ul": [
           "**Saat və tarix:** Cihazınızın saatı və saat qurşağı yalnız brauzerinizdə oxunur və hesablanır. Bu məlumatlar serverə göndərilmir və saxlanılmır.",
           "**Məkan (namaz vaxtları):** Namaz vaxtları səhifəsində “Məkanımı istifadə et” seçsəniz, brauzeriniz məkanınızı yalnız cihazınızda vaxtların hesablanması üçün istifadə edir. Koordinatlar serverə göndərilmir və statistikaya düşmür; son seçiminiz brauzerinizin yerli yaddaşında qalır.",
-          "**Hava proqnozu (xarici xidmət, icazə ilə):** Kuki seçimlərində xarici xidmətlərə icazə vermisinizsə, hava proqnozu səhifəsi və hava proqnozlu saat modelləri seçdiyiniz vilayətin və ya yerinizin təxmini koordinatlarını (təxminən 1 km dəqiqliklə) brauzerinizdən birbaşa məlumatı təqdim edən Open-Meteo-ya (api.open-meteo.com, air-quality-api.open-meteo.com) göndərir; bu zaman IP ünvanınız da Open-Meteo-ya çatır. İcazə yoxdursa sorğu edilmir, əvəzində qısa izah göstərilir. Saat Tarih serveri bu koordinatları görmür və saxlamır; Open-Meteo-nun öz məxfilik şərtləri tətbiq olunur.",
+          "**Hava proqnozu (xarici xidmət, icazə ilə):** Kuki seçimlərində xarici xidmətlərə icazə vermisinizsə, hava proqnozu səhifəsi və hava proqnozlu saat modelləri seçdiyiniz vilayətin və ya yerinizin təxmini koordinatlarını (təxminən 1 km dəqiqliklə) brauzerinizdən birbaşa məlumatı təqdim edən Open-Meteo-ya (api.open-meteo.com, air-quality-api.open-meteo.com) göndərir; bu zaman IP ünvanınız da Open-Meteo-ya çatır. İcazə yoxdursa sorğu edilmir, əvəzində qısa izah göstərilir. Saat Tarih serveri bu koordinatları görmür və saxlamır; Open-Meteo-nun öz məxfilik şərtləri tətbiq olunur. Foto işığı səhifəsindəki bulud proqnozu da eyni icazə ilə və eyni təxmini koordinatlarla (iki onluq) Open-Meteo-dan alınır.",
           "**Xəritə (kürə, xarici xidmət, icazə ilə):** Kuki seçimlərində xarici xidmətlərə icazə vermisinizsə və ana səhifədəki kürəni müəyyən səviyyədən çox yaxınlaşdırırsınızsa, xəritə kafelləri OpenStreetMap serverindən (tile.openstreetmap.org) birbaşa brauzerinizə yüklənir; bu zaman IP ünvanınız və baxdığınız ərazinin kafel ünvanları OpenStreetMap Fonduna çatır. İcazə yoxdursa və ya kürə uzaqdadırsa bu sorğu edilmir. Saat Tarih serveri bunları görmür; OpenStreetMap-in öz məxfilik şərtləri tətbiq olunur.",
           "**Qiblə və yaxınlıqdakı məscidlər:** Qiblə istiqaməti, məsafə və qiblə saatı brauzerinizdə hesablanır. Kompas üçün telefonunuzun istiqamət sensoru yalnız brauzerdə oxunur (iPhone icazə soruşur) və heç yerə göndərilmir. \"Məscidləri göstər\" desəniz və xarici xidmətlərə icazə vermisinizsə, seçilmiş yerin iki onluq rəqəmə qədər yuvarlaqlaşdırılmış koordinatları (təxminən 1 km) brauzerinizdən OpenStreetMap məlumatını təqdim edən Overpass xidmətinə (overpass-api.de) göndərilir; bu zaman IP ünvanınız da bu xidmətə çatır. Saat Tarih serveri bu koordinatları görmür.",
           "**Zəng musiqisi (YouTube, xarici xidmət, icazə ilə):** Zəngli saat alətində bir zəngə YouTube keçidi əlavə etmisinizsə və xarici xidmətlərə icazə vermisinizsə, zəng çalanda video YouTube-un genişləndirilmiş məxfilik rejimli pleyeri ilə (youtube-nocookie.com) brauzerinizə yüklənir; bu zaman IP ünvanınız və videonun identifikatoru Google-a (YouTube) çatır, pleyer də brauzerinizdə öz məlumatlarını saxlaya bilər. Keçid yalnız bu brauzerdə, zənginizlə birlikdə qalır. İcazə yoxdursa, pleyer yüklənmir və zəng öz səsi ilə çalır. Saat Tarih serveri bunları görmür; YouTube-un (Google) öz məxfilik şərtləri tətbiq olunur.",
@@ -326,7 +326,7 @@
         ],
         "ul": [
           "**Məkan:** \"Məkanımı istifadə et\" seçsəniz, məkanınız telefonda namaz vaxtlarını hesablamaq və ən yaxın vilayəti tapmaq üçün istifadə olunur; təxmini məkan (təxminən 1 km) yalnız telefonda saxlanılır. Vidcetlərdəki \"Avtomatik\" seçimi də məkanı yalnız telefonda istifadə edir.",
-          "**Hava:** Tətbiqdəki hava Apple Hava (WeatherKit) xidmətindən gəlir; bunun üçün seçilmiş vilayətin və ya məkanınızın təxmini koordinatları Apple-a göndərilir. Bu məlumatları biz görmürük; Apple-ın məxfilik şərtləri tətbiq olunur. Havanın keyfiyyəti, tozcuq, model müqayisəsi və Apple Watch-dakı hava komplikasiyası isə Open-Meteo-dan (open-meteo.com) gəlir; bunun üçün koordinatlar iki onluq rəqəmə yuvarlaqlaşdırılaraq göndərilir. Kilid ekranında hava açıqdırsa, cari hava iOS-un uyğun bildiyi vaxtlarda arxa planda da alınır.",
+          "**Hava:** Tətbiqdəki hava Apple Hava (WeatherKit) xidmətindən gəlir; bunun üçün seçilmiş vilayətin və ya məkanınızın təxmini koordinatları Apple-a göndərilir. Bu məlumatları biz görmürük; Apple-ın məxfilik şərtləri tətbiq olunur. Havanın keyfiyyəti, tozcuq, model müqayisəsi və Apple Watch-dakı hava komplikasiyası isə Open-Meteo-dan (open-meteo.com) gəlir; bunun üçün koordinatlar iki onluq rəqəmə yuvarlaqlaşdırılaraq göndərilir. Kilid ekranında hava açıqdırsa, cari hava iOS-un uyğun bildiyi vaxtlarda arxa planda da alınır. Foto işığı ekranındakı bulud proqnozu da Open-Meteo-dan gəlir; bunun üçün də koordinatlar iki onluğa qədər yuvarlaqlaşdırılaraq göndərilir.",
           "**Xəritə:** Dünya saatlarındakı kürə Apple Xəritələr ilə göstərilir; xəritə şəkilləri Apple-dan yüklənir.",
           "**Təqvim:** Yalnız icazə versəniz, telefonunuzdakı təqvim tədbirləri tətbiqdə göstərilir; tədbirlər telefonda oxunur, heç yerə göndərilmir. Tədbir əlavə etmək və silmək iPhone-un öz təqvim ekranı ilə və sizin təsdiqinizlə edilir.",
           "**Bildirişlər və zəngli saatlar:** Namaz vaxtı bildirişləri; xüsusi gün, fəslin başlanğıcı, Ay fazası, gün doğuşu və batışı, səhər hava xülasəsi, saat başı və yay vaxtı bildirişləri (saat başından başqa hər biri standart olaraq açıqdır; Ayarlar › Bildirişlər bölməsindən dəyişdirilə bilər); zəngli saatlar və taymerlər serversiz, telefonda qurulur. Yalnız hava xülasəsi üçün hava xidmətinə müraciət olunur (yuxarıdakı hava bəndi). Siyahı iOS-un arxa plan yeniləməsi ilə aktual saxlanılır; səsli elan telefonda yaradılır.",
@@ -353,7 +353,7 @@
         ],
         "ul": [
           "**Məkan:** \"Məkanımı istifadə et\" desəniz yalnız təxmini məkan icazəsi istənir; məkanınız telefonda namaz vaxtlarını hesablamaq və ən yaxın vilayəti və ya rayonu tapmaq üçün istifadə olunur, təxmini məkan (təxminən 1 km) yalnız telefonda saxlanılır.",
-          "**Hava:** Tətbiqdəki hava Open-Meteo-dan (open-meteo.com) gəlir; bunun üçün seçilmiş yerin iki onluq rəqəmə qədər yuvarlaqlaşdırılmış koordinatları (təxminən 1 km) Open-Meteo-ya göndərilir və bu sorğuda IP ünvanınız Open-Meteo serverinə çatır. Fırlanan dünyadakı şəhər havası üçün yalnız həmin şəhərlərin koordinatları göndərilir. Open-Meteo-nun məxfilik şərtləri tətbiq olunur; bu məlumatı biz görmürük. Bildiriş sahəsində hava açıqdırsa, bu sorğu saatda bir arxa planda da edilir.",
+          "**Hava:** Tətbiqdəki hava Open-Meteo-dan (open-meteo.com) gəlir; bunun üçün seçilmiş yerin iki onluq rəqəmə qədər yuvarlaqlaşdırılmış koordinatları (təxminən 1 km) Open-Meteo-ya göndərilir və bu sorğuda IP ünvanınız Open-Meteo serverinə çatır. Fırlanan dünyadakı şəhər havası üçün yalnız həmin şəhərlərin koordinatları göndərilir. Open-Meteo-nun məxfilik şərtləri tətbiq olunur; bu məlumatı biz görmürük. Bildiriş sahəsində hava açıqdırsa, bu sorğu saatda bir arxa planda da edilir. Foto işığı ekranındakı bulud proqnozu üçün də eyni təxmini məkan (iki onluq) Open-Meteo-ya göndərilir.",
           "**Dünya və xəritə:** Fırlanan dünya tətbiqin içindəki şəkillə çəkilir; xəritə üçün heç bir xidmətə qoşulmur.",
           "**Təqvim:** Təqvim icazəsi yalnız \"Telefonumdakı təqvimləri göstər\" desəniz istənir; tədbirlər telefonda oxunur, heç yerə göndərilmir. Tədbir əlavə etmək telefonun öz təqvim tətbiqi ilə, silmək isə sizin təsdiqinizlə edilir.",
           "**Bildirişlər, zəngli saatlar və interval məşqi:** Namaz vaxtı bildirişləri və digər bildiriş növləri (xüsusi gün, fəslin başlanğıcı, Ay fazası, gün doğuşu və batışı, səhər hava xülasəsi, saat başı, yay vaxtı; saat başından başqa hər biri standart olaraq açıqdır, Ayarlar › Bildirişlər bölməsindən dəyişdirilə bilər), zəngli saatlar və taymerlər telefonda qurulur, server istifadə olunmur; vaxtında çalmaları üçün dəqiq zəngli saat icazəsindən istifadə olunur. Başlatdığınız interval məşqi davam edərkən bildirişdə görünən ön plan xidməti mərhələ keçidlərini telefonun danışıq mühərriki ilə elan edir. Səsli elanlar telefonda yaradılır.",
@@ -961,6 +961,10 @@
         "classroom": {
           "name": "Sinif alətləri",
           "desc": "Təsadüfi ad, komanda və sayğac."
+        },
+        "photo": {
+          "name": "Foto işığı",
+          "desc": "Qızıl saat, mavi saat və gün batması üçün foto proqnozu."
         }
       },
       "infoHeading": "Məlumat səhifələri"
@@ -3285,6 +3289,92 @@
       {
         "q": "Şagird adları haraya isə göndərilir?",
         "a": "Xeyr. Adlar, komandalar və sayğaclar yalnız bu brauzerdə saxlanılır; serverə göndərilmir, statistikaya düşmür."
+      }
+    ]
+  },
+  "photo": {
+    "title": "Qızıl saat və mavi saat bu gün: foto işığı | Saat Tarih",
+    "description": "Məkanınıza görə qızıl saat və mavi saat, gün çıxması və batmasının istiqaməti, Ayın çıxması və fazası, buludlara görə 7 günlük foto proqnozu.",
+    "h1": "Foto işığı: qızıl saat və mavi saat",
+    "lead": "Fotoqraflar üçün günün işığı bir səhifədə: səhər və axşam mavi saat və qızıl saat, gün çıxmasının və batmasının vaxtı və istiqaməti, Ay və buludlara görə gün çıxması və batması üçün foto proqnozu.",
+    "search": "qızıl saat mavi saat foto işığı fotoqrafiya gün çıxması gün batması istiqamət azimut ayın çıxması bulud proqnozu golden hour blue hour",
+    "dateLabel": "Tarix",
+    "prev": "Əvvəlki gün",
+    "next": "Növbəti gün",
+    "today": "Bu gün",
+    "morning": "Səhər",
+    "evening": "Axşam",
+    "blue": "Mavi saat",
+    "golden": "Qızıl saat",
+    "sunrise": "Gün çıxması",
+    "sunset": "Gün batması",
+    "direction": "İstiqamət",
+    "forecast": "Foto proqnozu",
+    "dirs": [
+      "şimal",
+      "şimal-şimal-şərq",
+      "şimal-şərq",
+      "şərq-şimal-şərq",
+      "şərq",
+      "şərq-cənub-şərq",
+      "cənub-şərq",
+      "cənub-cənub-şərq",
+      "cənub",
+      "cənub-cənub-qərb",
+      "cənub-qərb",
+      "qərb-cənub-qərb",
+      "qərb",
+      "qərb-şimal-qərb",
+      "şimal-qərb",
+      "şimal-şimal-qərb"
+    ],
+    "moonHeading": "Ay",
+    "moonrise": "Ayın çıxması",
+    "moonset": "Ayın batması",
+    "noMoonrise": "Həmin gün Ay çıxmır",
+    "noMoonset": "Həmin gün Ay batmır",
+    "phase": "Faza",
+    "lit": "{p} işıqlı",
+    "fcHeading": "Gün çıxması və batması üçün foto proqnozu",
+    "fcLead": "Bu gün və növbəti 6 gün üçün, gün çıxmasına və batmasına ən yaxın saatın bulud proqnozuna görə.",
+    "colDay": "Gün",
+    "q": {
+      "good": "Yaxşı",
+      "fair": "Orta",
+      "poor": "Pis"
+    },
+    "clouds": "Alçaq bulud {l} · orta {m} · yüksək {h}",
+    "rain": "Yağış {p} mm",
+    "why": "Rəngləri orta və yüksək buludlar tutur; üfüqdəki alçaq bulud və yağış Günəşi örtür; açıq səma təmiz, amma sadə olur. Bu, zəmanət deyil, proqnozdur.",
+    "loading": "Bulud proqnozu yüklənir…",
+    "error": "Bulud proqnozu alınmadı. Zəhmət olmasa, sonra yenidən cəhd edin.",
+    "blocked": "Bulud proqnozu Open-Meteo-dan yüklənir; göstərmək üçün xarici xidmətlərə icazə verin.",
+    "attribution": "Bulud proqnozu: Open-Meteo.com (CC BY 4.0)",
+    "weekHeading": "7 günlük işıq",
+    "colGoldenAm": "Səhər qızıl saatı",
+    "colGoldenPm": "Axşam qızıl saatı",
+    "colBluePm": "Axşam mavi saatı",
+    "polarDay": "Həmin gün Günəş batmır; gün batması və mavi saat yoxdur.",
+    "polarNight": "Həmin gün Günəş çıxmır; — ilə göstərilən vaxtlar olmur.",
+    "partial": "Həmin gün Günəş bəzi hündürlüklərə çatmır; — ilə göstərilən vaxtlar olmur.",
+    "defsHeading": "Qızıl saat və mavi saat nədir?",
+    "defs": [
+      "**Qızıl saat:** Günəş üfüqün 6° üstü ilə 4° altı arasındadır. İşıq alçaq, yumşaq və istidir, kölgələr uzundur; portret və mənzərə üçün ən sevilən vaxtdır.",
+      "**Mavi saat:** Günəş üfüqün 4° ilə 6° altındadır. Səma tünd maviyə çalır, şəhər işıqları səma ilə tarazlaşır; şəhər mənzərəsi və uzun ekspozisiya üçün uyğundur."
+    ],
+    "note": "Vaxtlar seçdiyiniz yer üçün cihazınızda hesablanır və təxminidir (bir neçə dəqiqə); üfüqdəki dağlar və binalar nəzərə alınmır. Məkanınız cihazınızda qalır; yalnız bulud proqnozu üçün yuvarlaqlaşdırılmış koordinatlar Open-Meteo-ya göndərilir.",
+    "faq": [
+      {
+        "q": "Bu gün qızıl saat nə vaxtdır?",
+        "a": "Qızıl saat gündə iki dəfə, gün çıxması və gün batması ətrafında, Günəş üfüqün 6° üstü ilə 4° altı arasında olanda yaşanır. Bu səhifə vaxtları məkanınıza görə hesablayır; adətən 40–90 dəqiqə çəkir, qışda və yüksək enliklərdə daha uzundur."
+      },
+      {
+        "q": "Mavi saat nədir, nə vaxt olur?",
+        "a": "Mavi saat Günəş üfüqün 4° ilə 6° altında olanda yaşanan alatorandır: səhər qızıl saatdan əvvəl, axşam qızıl saatdan sonra. Səma tünd mavidir; şəhər işıqları və uzun ekspozisiya üçün idealdır. Adətən 10–20 dəqiqə çəkir."
+      },
+      {
+        "q": "Gün çıxması və batması üçün foto proqnozu necə hazırlanır?",
+        "a": "Open-Meteo-nun saatlıq bulud proqnozundan, gün çıxmasına ya da batmasına ən yaxın saat üçün. Yağış (saatda 0,5 mm və çox) ya da sıx alçaq bulud (75% və çox) Pis; az alçaq bulud (40%-dən az) və 20–80% orta ya da yüksək bulud Yaxşı; qalan hallarda alçaq bulud 60%-dən azdırsa Orta, çoxdursa Pis sayılır. Rəngləri orta və yüksək buludlar tutur, üfüqdəki alçaq bulud Günəşi örtür."
       }
     ]
   }

@@ -373,7 +373,7 @@
         "ul": [
           "**Oras at petsa:** Ang oras at time zone ng iyong device ay binabasa at kinakalkula lang sa iyong browser. Hindi ito ipinapadala sa server o sine-save.",
           "**Lokasyon (oras ng pagdarasal):** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\" sa pahina ng oras ng pagdarasal, ginagamit ng browser ang iyong lokasyon sa device mo lang para kalkulahin ang mga oras. Hindi ipinapadala sa server ang coordinates at hindi isinasama sa statistics; nananatili ang huli mong pinili sa local storage ng browser.",
-          "**Lagay ng panahon (panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences, ipinapadala ng pahina ng panahon at ng mga istilo ng orasan na may panahon ang tantiyang coordinates ng napili mong lalawigan o lokasyon (mga 1 km) nang direkta mula sa browser papunta sa Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), na nagbibigay ng datos; nakakarating din sa Open-Meteo ang iyong IP address. Kung walang pahintulot, walang ginagawang request at isang maikling paalala ang ipinapakita sa halip. Hindi nakikita o sine-save ng server ng Saat Tarih ang coordinates na ito; ang sariling mga tuntunin sa privacy ng Open-Meteo ang umiiral.",
+          "**Lagay ng panahon (panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences, ipinapadala ng pahina ng panahon at ng mga istilo ng orasan na may panahon ang tantiyang coordinates ng napili mong lalawigan o lokasyon (mga 1 km) nang direkta mula sa browser papunta sa Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), na nagbibigay ng datos; nakakarating din sa Open-Meteo ang iyong IP address. Kung walang pahintulot, walang ginagawang request at isang maikling paalala ang ipinapakita sa halip. Hindi nakikita o sine-save ng server ng Saat Tarih ang coordinates na ito; ang sariling mga tuntunin sa privacy ng Open-Meteo ang umiiral. Ang forecast ng ulap sa pahinang Liwanag sa litrato ay kinukuha rin sa Open-Meteo, sa parehong pahintulot at parehong tinatayang coordinates (dalawang decimal).",
           "**Mapa (globo, panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences at nag-zoom ka sa globo sa home page lampas sa isang antas, direktang dina-download sa iyong browser ang mga tile ng mapa mula sa server ng OpenStreetMap (tile.openstreetmap.org); kasabay nito, nakakarating sa OpenStreetMap Foundation ang iyong IP address at ang mga address ng tile ng lugar na tinitingnan mo. Kung walang pahintulot, o habang naka-zoom out ang globo, hindi ginagawa ang request na ito. Hindi ito nakikita ng server ng Saat Tarih; ang sariling mga tuntunin sa privacy ng OpenStreetMap ang umiiral.",
           "**Qibla at kalapit na mga masjid:** Kinakalkula sa iyong browser ang direksyon ng qibla, layo at oras ng qibla. Para sa compass, binabasa lang sa browser ang orientation sensor ng telepono (humihingi ng pahintulot ang iPhone) at hindi ito ipinapadala kahit saan. Kung pipindutin mo ang \"Ipakita ang mga masjid\" at pinayagan mo ang mga panlabas na serbisyo, ang coordinates ng napiling lugar na ni-round sa dalawang decimal (mga 1 km) ay ipinapadala mula sa browser sa serbisyong Overpass (overpass-api.de), na naghahatid ng datos ng OpenStreetMap; nakakarating din dito ang iyong IP address. Hindi nakikita ng server ng Saat Tarih ang coordinates na ito.",
           "**Musika ng alarma (YouTube, panlabas na serbisyo, may pahintulot):** Kung nagdagdag ka ng link sa YouTube sa isang alarma sa tool ng alarma at pinayagan mo ang mga panlabas na serbisyo, kapag tumunog ang alarma, ilo-load sa iyong browser ang video gamit ang player ng YouTube sa privacy-enhanced mode (youtube-nocookie.com); kasabay nito, nakakarating sa Google (YouTube) ang iyong IP address at ang ID ng video, at maaaring mag-imbak ang player ng sarili nitong datos sa iyong browser. Nananatili lang ang link sa browser na ito, kasama ng iyong alarma. Kung walang pahintulot, hindi ilo-load ang player at tutunog ang alarma sa sarili nitong tunog. Hindi ito nakikita ng server ng Saat Tarih; ang sariling mga tuntunin sa privacy ng YouTube (Google) ang umiiral.",
@@ -392,7 +392,7 @@
         ],
         "ul": [
           "**Lokasyon:** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\", ginagamit ang iyong lokasyon sa telepono para kalkulahin ang oras ng pagdarasal at hanapin ang pinakamalapit na lalawigan; ang tantiyang lokasyon (mga 1 km) ay sa telepono mo lang naka-save. Ang opsyong \"Awtomatiko\" sa widgets ay gumagamit din ng lokasyon sa telepono lang.",
-          "**Lagay ng panahon:** Galing sa Apple Weather (WeatherKit) ang panahon sa app; para rito, ipinapadala sa Apple ang tantiyang coordinates ng napiling lalawigan o ng iyong lokasyon. Hindi namin nakikita ang datos na ito; ang mga tuntunin sa privacy ng Apple ang umiiral. Ang kalidad ng hangin, polen, paghahambing ng modelo at weather complication ng Apple Watch ay mula sa Open-Meteo (open-meteo.com); para rito, ipinapadala ang mga coordinate na ni-round sa dalawang decimal. Kung naka-on ang panahon sa Lock Screen, kinukuha rin ito sa background kapag pinapayagan ng iOS.",
+          "**Lagay ng panahon:** Galing sa Apple Weather (WeatherKit) ang panahon sa app; para rito, ipinapadala sa Apple ang tantiyang coordinates ng napiling lalawigan o ng iyong lokasyon. Hindi namin nakikita ang datos na ito; ang mga tuntunin sa privacy ng Apple ang umiiral. Ang kalidad ng hangin, polen, paghahambing ng modelo at weather complication ng Apple Watch ay mula sa Open-Meteo (open-meteo.com); para rito, ipinapadala ang mga coordinate na ni-round sa dalawang decimal. Kung naka-on ang panahon sa Lock Screen, kinukuha rin ito sa background kapag pinapayagan ng iOS. Ang forecast ng ulap sa screen na Liwanag sa litrato ay galing din sa Open-Meteo; para rito, binibilog din ang coordinates sa dalawang decimal.",
           "**Mapa:** Ipinapakita gamit ang Apple Maps ang globo sa orasan ng mundo; dina-download mula sa Apple ang mga larawan ng mapa.",
           "**Kalendaryo:** Ipinapakita lang sa app ang mga event mula sa mga kalendaryo sa iyong telepono kung papayagan mo ito; binabasa ang mga ito sa telepono at hindi ipinapadala kahit saan. Ang pagdagdag at pagbura ng event ay ginagawa sa sariling screen ng kalendaryo ng iPhone at kapag kinumpirma mo lang.",
           "**Mga notification at alarma:** Mga notification sa oras ng pagdarasal; mga notification para sa espesyal na araw, simula ng panahon, yugto ng buwan, pagsikat at paglubog ng araw, buod ng panahon sa umaga, bawat oras at daylight saving (bawat isa ay naka-on bilang default maliban sa bawat oras; mababago sa Settings › Notifications); ang mga alarma at timer ay ini-iskedyul sa iyong telepono nang walang server. Para sa buod ng panahon, ang serbisyo ng panahon lang ang kinokontak (tingnan ang item tungkol sa panahon sa itaas). Pinananatiling updated ang listahan gamit ang background refresh ng iOS; ginagawa sa telepono ang mga pasalitang anunsyo.",
@@ -419,7 +419,7 @@
         ],
         "ul": [
           "**Lokasyon:** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\", pahintulot lang sa tantiyang lokasyon ang hinihingi; ginagamit ang iyong lokasyon sa telepono para kalkulahin ang oras ng pagdarasal at hanapin ang pinakamalapit na lalawigan o distrito, at ang tantiyang lokasyon (mga 1 km) ay sa telepono lang naka-save.",
-          "**Lagay ng panahon:** Galing sa Open-Meteo (open-meteo.com) ang panahon sa app; para rito, ipinapadala sa Open-Meteo ang coordinates ng napiling lugar na ni-round sa dalawang decimal (mga 1 km), at nakakarating sa server ng Open-Meteo ang iyong IP address kasama ng request na iyon. Para sa panahon ng mga lungsod sa umiikot na globo, ang coordinates lang ng mga lungsod na iyon ang ipinapadala. Ang mga tuntunin sa privacy ng Open-Meteo ang umiiral; hindi namin nakikita ang datos na ito. Kung naka-on ang panahon sa status bar, ipinapadala rin ang kahilingang ito bawat oras sa background.",
+          "**Lagay ng panahon:** Galing sa Open-Meteo (open-meteo.com) ang panahon sa app; para rito, ipinapadala sa Open-Meteo ang coordinates ng napiling lugar na ni-round sa dalawang decimal (mga 1 km), at nakakarating sa server ng Open-Meteo ang iyong IP address kasama ng request na iyon. Para sa panahon ng mga lungsod sa umiikot na globo, ang coordinates lang ng mga lungsod na iyon ang ipinapadala. Ang mga tuntunin sa privacy ng Open-Meteo ang umiiral; hindi namin nakikita ang datos na ito. Kung naka-on ang panahon sa status bar, ipinapadala rin ang kahilingang ito bawat oras sa background. Para sa forecast ng ulap sa screen na Liwanag sa litrato, ipinapadala rin sa Open-Meteo ang parehong tinatayang lokasyon (dalawang decimal).",
           "**Globo at mapa:** Iginuguhit ang umiikot na globo mula sa isang larawan sa loob ng app; walang serbisyo ng mapa na kinokontak.",
           "**Kalendaryo:** Hinihingi lang ang pahintulot sa kalendaryo kung pipindutin mo ang \"Ipakita ang mga kalendaryo ng telepono ko\"; binabasa sa telepono ang mga event at hindi ipinapadala kahit saan. Idinadagdag ang mga event gamit ang sariling calendar app ng telepono at binubura lang kapag kinumpirma mo.",
           "**Mga notification, alarma at interval workout:** Ang mga notification sa oras ng pagdarasal at ang iba pang uri ng notification (espesyal na araw, simula ng panahon, yugto ng buwan, pagsikat at paglubog ng araw, buod ng panahon sa umaga, bawat oras, daylight saving; bawat isa ay naka-on bilang default maliban sa bawat oras, mababago sa Settings › Notifications), mga alarma at timer ay ini-iskedyul sa iyong telepono nang walang server; ginagamit ang pahintulot sa eksaktong alarma para tumunog sa oras. Habang tumatakbo ang interval workout na sinimulan mo, isang foreground service na makikita sa notification ang nag-aanunsyo ng pagpapalit ng yugto gamit ang text-to-speech ng telepono. Ginagawa sa telepono ang mga pasalitang anunsyo.",
@@ -1027,6 +1027,10 @@
         "classroom": {
           "name": "Mga kasangkapan sa klase",
           "desc": "Random na pangalan, grupo at counter."
+        },
+        "photo": {
+          "name": "Liwanag sa litrato",
+          "desc": "Golden hour, blue hour at photo forecast ng paglubog."
         }
       },
       "infoHeading": "Mga pahina ng impormasyon"
@@ -3351,6 +3355,92 @@
       {
         "q": "Ipinapadala ba kahit saan ang mga pangalan ng estudyante?",
         "a": "Hindi. Ang mga pangalan, grupo at counter ay nakaimbak lang sa browser na ito; hindi ipinapadala sa server at hindi kasama sa istatistika."
+      }
+    ]
+  },
+  "photo": {
+    "title": "Golden Hour at Blue Hour Ngayon: Liwanag sa Litrato | Saat Tarih",
+    "description": "Oras ng golden hour at blue hour sa iyong lugar, direksyon ng pagsikat at paglubog ng araw, pagsikat at yugto ng Buwan, at 7-araw na photo forecast batay sa ulap.",
+    "h1": "Liwanag sa litrato: golden hour at blue hour",
+    "lead": "Ang liwanag ngayon para sa mga photographer sa iisang pahina: blue hour at golden hour sa umaga at gabi, oras at direksyon ng pagsikat at paglubog ng araw, ang Buwan, at photo forecast ng pagsikat at paglubog batay sa ulap.",
+    "search": "golden hour blue hour liwanag sa litrato potograpiya pagsikat ng araw paglubog ng araw direksyon azimuth pagsikat ng buwan ulap forecast photographer",
+    "dateLabel": "Petsa",
+    "prev": "Nakaraang araw",
+    "next": "Susunod na araw",
+    "today": "Ngayon",
+    "morning": "Umaga",
+    "evening": "Gabi",
+    "blue": "Blue hour",
+    "golden": "Golden hour",
+    "sunrise": "Pagsikat ng araw",
+    "sunset": "Paglubog ng araw",
+    "direction": "Direksyon",
+    "forecast": "Photo forecast",
+    "dirs": [
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSW",
+      "SW",
+      "WSW",
+      "W",
+      "WNW",
+      "NW",
+      "NNW"
+    ],
+    "moonHeading": "Buwan",
+    "moonrise": "Pagsikat ng Buwan",
+    "moonset": "Paglubog ng Buwan",
+    "noMoonrise": "Walang pagsikat ng Buwan sa araw na ito",
+    "noMoonset": "Walang paglubog ng Buwan sa araw na ito",
+    "phase": "Yugto",
+    "lit": "{p} naiilawan",
+    "fcHeading": "Photo forecast ng pagsikat at paglubog ng araw",
+    "fcLead": "Ngayon at sa susunod na 6 na araw, batay sa forecast ng ulap sa oras na pinakamalapit sa pagsikat at paglubog ng araw.",
+    "colDay": "Araw",
+    "q": {
+      "good": "Maganda",
+      "fair": "Katamtaman",
+      "poor": "Hindi maganda"
+    },
+    "clouds": "Mababang ulap {l} · gitna {m} · mataas {h}",
+    "rain": "Ulan {p} mm",
+    "why": "Ang mga ulap sa gitna at mataas ang humuhuli ng kulay; ang mababang ulap sa abot-tanaw at ulan ay tumatakip sa Araw; malinis pero payak ang maaliwalas na langit. Tantiya ito, hindi garantiya.",
+    "loading": "Kinukuha ang forecast ng ulap…",
+    "error": "Hindi makuha ang forecast ng ulap. Pakisubukang muli mamaya.",
+    "blocked": "Ang forecast ng ulap ay mula sa Open-Meteo; payagan ang mga panlabas na serbisyo para maipakita ito.",
+    "attribution": "Forecast ng ulap: Open-Meteo.com (CC BY 4.0)",
+    "weekHeading": "Liwanag sa loob ng 7 araw",
+    "colGoldenAm": "Golden hour sa umaga",
+    "colGoldenPm": "Golden hour sa hapon",
+    "colBluePm": "Blue hour sa gabi",
+    "polarDay": "Hindi lumulubog ang Araw sa araw na ito; walang paglubog at blue hour.",
+    "polarNight": "Hindi sumisikat ang Araw sa araw na ito; hindi nangyayari ang mga oras na may —.",
+    "partial": "Sa araw na ito, hindi naaabot ng Araw ang ilan sa mga taas na ito; hindi nangyayari ang mga oras na may —.",
+    "defsHeading": "Ano ang golden hour at blue hour?",
+    "defs": [
+      "**Golden hour:** ang Araw ay nasa pagitan ng 6° sa itaas at 4° sa ibaba ng horizon. Mababa, malambot at mainit ang liwanag, at mahahaba ang anino; paboritong oras para sa portrait at tanawin.",
+      "**Blue hour:** ang Araw ay 4° hanggang 6° sa ibaba ng horizon. Nagiging malalim na asul ang langit at nagbabalanse ang ilaw ng lungsod at ang langit; bagay sa cityscape at long exposure."
+    ],
+    "note": "Kinakalkula ang mga oras sa iyong device para sa napiling lugar at tantiya lamang (ilang minuto); hindi isinasaalang-alang ang mga bundok at gusali sa abot-tanaw. Nananatili sa iyong device ang iyong lokasyon; ang bilugang coordinates lamang ang ipinapadala sa Open-Meteo para sa forecast ng ulap.",
+    "faq": [
+      {
+        "q": "Kailan ang golden hour ngayon?",
+        "a": "Dalawang beses sa isang araw ang golden hour, sa paligid ng pagsikat at paglubog ng araw, habang nasa pagitan ng 6° sa itaas at 4° sa ibaba ng horizon ang Araw. Kinakalkula ng pahinang ito ang mga oras para sa iyong lugar; karaniwang tumatagal ito nang mga 40 hanggang 90 minuto, mas matagal sa taglamig at sa matataas na latitude."
+      },
+      {
+        "q": "Ano ang blue hour at kailan ito nangyayari?",
+        "a": "Ang blue hour ay ang takipsilim kapag 4° hanggang 6° sa ibaba ng horizon ang Araw: bago ang golden hour sa umaga at pagkatapos ng golden hour sa gabi. Malalim na asul ang langit, mainam para sa ilaw ng lungsod at long exposure. Karaniwang tumatagal ito nang 10 hanggang 20 minuto."
+      },
+      {
+        "q": "Paano ginagawa ang photo forecast ng pagsikat at paglubog ng araw?",
+        "a": "Mula sa oras-oras na forecast ng ulap ng Open-Meteo para sa oras na pinakamalapit sa pagsikat o paglubog ng araw. Ang ulan (0.5 mm bawat oras o higit pa) o makapal na mababang ulap (75% o higit pa) ay Hindi maganda; kaunting mababang ulap (wala pang 40%) na may 20–80% na ulap sa gitna o mataas ay Maganda; kung hindi, Katamtaman habang wala pang 60% ang mababang ulap, at Hindi maganda kapag lumampas. Humuhuli ng kulay ang mga ulap sa gitna at mataas, habang tinatakpan ng mababang ulap sa abot-tanaw ang Araw."
       }
     ]
   }

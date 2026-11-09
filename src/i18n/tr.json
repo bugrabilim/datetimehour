@@ -307,7 +307,7 @@
         "ul": [
           "**Saat ve tarih:** Cihazınızın saati ve saat diliminiz yalnızca tarayıcınızda okunur ve hesaplanır. Sunucuya gönderilmez, kaydedilmez.",
           "**Konum (namaz vakitleri):** Namaz vakitleri sayfasında \"Konumumu kullan\" derseniz tarayıcınız konumunuzu yalnızca cihazınızda vakit hesabı için kullanır. Koordinatlar sunucuya gönderilmez ve istatistiklere girmez; son seçiminiz tarayıcınızın yerel depolamasında kalır.",
-          "**Hava durumu (dış hizmet, izinle):** Çerez tercihlerinde dış hizmetlere izin verdiyseniz hava durumu sayfasında ve hava durumlu saat modellerinde, seçtiğiniz ilin ya da konumunuzun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) veriyi sağlayan Open-Meteo'ya (api.open-meteo.com, air-quality-api.open-meteo.com) tarayıcınızdan doğrudan gönderilir; bu sırada IP adresiniz de Open-Meteo'ya ulaşır. İzin yoksa istek yapılmaz, yerine açıklama gösterilir. Saat Tarih sunucusu bu koordinatları görmez ve saklamaz; Open-Meteo'nun kendi gizlilik koşulları geçerlidir.",
+          "**Hava durumu (dış hizmet, izinle):** Çerez tercihlerinde dış hizmetlere izin verdiyseniz hava durumu sayfasında ve hava durumlu saat modellerinde, seçtiğiniz ilin ya da konumunuzun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) veriyi sağlayan Open-Meteo'ya (api.open-meteo.com, air-quality-api.open-meteo.com) tarayıcınızdan doğrudan gönderilir; bu sırada IP adresiniz de Open-Meteo'ya ulaşır. İzin yoksa istek yapılmaz, yerine açıklama gösterilir. Saat Tarih sunucusu bu koordinatları görmez ve saklamaz; Open-Meteo'nun kendi gizlilik koşulları geçerlidir. Fotoğraf ışığı sayfasındaki bulut tahmini de aynı izinle ve aynı yaklaşık koordinatlarla (iki ondalık) Open-Meteo'dan alınır.",
           "**Harita (küre, dış hizmet, izinle):** Çerez tercihlerinde dış hizmetlere izin verdiyseniz ve ana sayfadaki küreyi belli bir düzeyin ötesine yakınlaştırırsanız harita karoları OpenStreetMap'in sunucusundan (tile.openstreetmap.org) tarayıcınıza doğrudan indirilir; bu sırada IP adresiniz ve baktığınız bölgenin karo adresleri OpenStreetMap Vakfı'na ulaşır. İzin yoksa ya da küre uzaktayken bu istek yapılmaz. Saat Tarih sunucusu bunları görmez; OpenStreetMap'in kendi gizlilik koşulları geçerlidir.",
           "**Kıble ve yakındaki camiler:** Kıble yönü, uzaklık ve kıble saati tarayıcınızda hesaplanır. Pusula için telefonunuzun yön sensörü yalnız tarayıcıda okunur (iPhone'da izin sorulur) ve hiçbir yere gönderilmez. \"Camileri göster\" derseniz ve dış hizmetlere izin verdiyseniz, seçili yerin iki ondalığa yuvarlanmış koordinatları (yaklaşık 1 km) OpenStreetMap verisini sunan Overpass hizmetine (overpass-api.de) tarayıcınızdan gönderilir; bu sırada IP adresiniz de bu hizmete ulaşır. Saat Tarih sunucusu bu koordinatları görmez.",
           "**Alarm müziği (YouTube, dış hizmet, izinle):** Alarm aracında bir alarma YouTube bağlantısı eklediyseniz ve dış hizmetlere izin verdiyseniz, alarm çaldığında video YouTube'un gelişmiş gizlilik modundaki oynatıcısıyla (youtube-nocookie.com) tarayıcınıza yüklenir; bu sırada IP adresiniz ve videonun kimliği Google'a (YouTube) ulaşır, oynatıcı da tarayıcınızda kendi verilerini saklayabilir. Bağlantı yalnız bu tarayıcıda, alarmınızla birlikte durur. İzin yoksa oynatıcı yüklenmez ve alarm kendi sesiyle çalar. Saat Tarih sunucusu bunları görmez; YouTube'un (Google) kendi gizlilik koşulları geçerlidir.",
@@ -326,7 +326,7 @@
         ],
         "ul": [
           "**Konum:** \"Konumumu kullan\" derseniz konumunuz telefonda vakit hesabı ve en yakın ili bulmak için kullanılır; yaklaşık konum (yaklaşık 1 km) yalnız telefonda saklanır. Widget'lardaki \"Otomatik\" seçeneği de konumu yalnız telefonda kullanır.",
-          "**Hava durumu:** Uygulamadaki hava durumu Apple Hava Durumu'ndan (WeatherKit) gelir; bunun için seçili il ya da konumunuzun yaklaşık koordinatları Apple'a gönderilir. Bu veriyi biz görmeyiz; Apple'ın gizlilik koşulları geçerlidir. Hava kalitesi, polen, model karşılaştırması ve Apple Watch'taki hava komplikasyonu ise Open-Meteo'dan (open-meteo.com) gelir; bunun için koordinatlar iki ondalığa yuvarlanarak gönderilir. Kilit ekranında hava açıksa güncel hava, iOS'un uygun gördüğü zamanlarda arka planda da alınır.",
+          "**Hava durumu:** Uygulamadaki hava durumu Apple Hava Durumu'ndan (WeatherKit) gelir; bunun için seçili il ya da konumunuzun yaklaşık koordinatları Apple'a gönderilir. Bu veriyi biz görmeyiz; Apple'ın gizlilik koşulları geçerlidir. Hava kalitesi, polen, model karşılaştırması ve Apple Watch'taki hava komplikasyonu ise Open-Meteo'dan (open-meteo.com) gelir; bunun için koordinatlar iki ondalığa yuvarlanarak gönderilir. Kilit ekranında hava açıksa güncel hava, iOS'un uygun gördüğü zamanlarda arka planda da alınır. Fotoğraf ışığı ekranındaki bulut tahmini de Open-Meteo'dan gelir; bunun için de koordinatlar iki ondalığa yuvarlanarak gönderilir.",
           "**Harita:** Dünya saatlerindeki küre Apple Haritalar ile gösterilir; harita görüntüleri Apple'dan indirilir.",
           "**Takvim:** Yalnız izin verirseniz telefonunuzdaki takvim etkinlikleri uygulamada gösterilir; etkinlikler telefonda okunur, hiçbir yere gönderilmez. Etkinlik ekleme ve silme iPhone'un kendi takvim ekranıyla ve sizin onayınızla yapılır.",
           "**Bildirimler ve alarmlar:** Vakit bildirimleri; özel gün, mevsim başlangıcı, Ay evresi, gün doğumu ve batımı, sabah hava özeti, saat başı ve yaz saati bildirimleri (saat başı dışında her biri varsayılan açık; Ayarlar › Bildirimler'den değiştirilebilir); alarmlar ve zamanlayıcılar telefonda kurulur, sunucu kullanılmaz. Hava özeti için yalnız hava servisine sorulur (yukarıdaki hava durumu maddesi). Liste iOS'un arka plan yenilemesiyle güncel tutulur; sesli duyuru telefonda üretilir.",
@@ -353,7 +353,7 @@
         ],
         "ul": [
           "**Konum:** \"Konumumu kullan\" derseniz yalnız yaklaşık konum izni istenir; konumunuz telefonda vakit hesabı ve en yakın ili ya da ilçeyi bulmak için kullanılır, yaklaşık konum (yaklaşık 1 km) yalnız telefonda saklanır.",
-          "**Hava durumu:** Uygulamadaki hava durumu Open-Meteo'dan (open-meteo.com) gelir; bunun için seçili yerin koordinatları iki ondalığa yuvarlanarak (yaklaşık 1 km) Open-Meteo'ya gönderilir ve bu bağlantıda IP adresiniz Open-Meteo'nun sunucusuna ulaşır. Dönen dünyadaki şehir havası için yalnız o şehirlerin koordinatları gönderilir. Open-Meteo'nun gizlilik koşulları geçerlidir; bu veriyi biz görmeyiz. Bildirim alanında hava açıksa bu istek saatte bir arka planda da yapılır.",
+          "**Hava durumu:** Uygulamadaki hava durumu Open-Meteo'dan (open-meteo.com) gelir; bunun için seçili yerin koordinatları iki ondalığa yuvarlanarak (yaklaşık 1 km) Open-Meteo'ya gönderilir ve bu bağlantıda IP adresiniz Open-Meteo'nun sunucusuna ulaşır. Dönen dünyadaki şehir havası için yalnız o şehirlerin koordinatları gönderilir. Open-Meteo'nun gizlilik koşulları geçerlidir; bu veriyi biz görmeyiz. Bildirim alanında hava açıksa bu istek saatte bir arka planda da yapılır. Fotoğraf ışığı ekranındaki bulut tahmini için de aynı yaklaşık konum (iki ondalık) Open-Meteo'ya gönderilir.",
           "**Dünya ve harita:** Dönen dünya uygulamanın içindeki görüntüyle çizilir; harita için hiçbir servise bağlanılmaz.",
           "**Takvim:** Yalnız \"Telefonumdaki takvimleri göster\" derseniz takvim izni istenir; etkinlikler telefonda okunur, hiçbir yere gönderilmez. Etkinlik ekleme telefonun kendi takvim uygulamasıyla, silme sizin onayınızla yapılır.",
           "**Bildirimler, alarmlar ve aralık antrenmanı:** Vakit bildirimleri ve diğer bildirim türleri (özel gün, mevsim başlangıcı, Ay evresi, gün doğumu ve batımı, sabah hava özeti, saat başı, yaz saati; saat başı dışında her biri varsayılan açık, Ayarlar › Bildirimler'den değiştirilebilir), alarmlar ve zamanlayıcılar telefonda kurulur, sunucu kullanılmaz; tam zamanında çalmaları için tam zamanlı alarm izni kullanılır. Başlattığınız aralık antrenmanı sürerken bildirimde görünen bir ön plan hizmeti evre geçişlerini telefonun konuşma motoruyla söyler. Sesli duyurular telefonda üretilir.",
@@ -961,6 +961,10 @@
         "classroom": {
           "name": "Sınıf araçları",
           "desc": "Rastgele ad, takım ve sayaç."
+        },
+        "photo": {
+          "name": "Fotoğraf ışığı",
+          "desc": "Altın saat, mavi saat ve gün batımı fotoğraf tahmini."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -3285,6 +3289,92 @@
       {
         "q": "Öğrenci adları bir yere gönderiliyor mu?",
         "a": "Hayır. Adlar, takımlar ve sayaçlar yalnız bu tarayıcıda saklanır; sunucuya gönderilmez, istatistiğe girmez."
+      }
+    ]
+  },
+  "photo": {
+    "title": "Altın Saat ve Mavi Saat Bugün: Fotoğraf Işığı | Saat Tarih",
+    "description": "Konumunuza göre altın saat ve mavi saat, gün doğumu ve gün batımı yönü, Ay doğuşu ve evresi, bulutlara göre 7 günlük gün doğumu ve gün batımı fotoğraf tahmini.",
+    "h1": "Fotoğraf ışığı: altın saat ve mavi saat",
+    "lead": "Fotoğrafçılar için bugünün ışığı tek sayfada: sabah ve akşam mavi saat ile altın saat, gün doğumu ve gün batımının saati ve yönü, Ay ve bulut tahminine göre gün doğumu ile gün batımı fotoğraf tahmini.",
+    "search": "altın saat mavi saat fotoğraf ışığı gün doğumu gün batımı yönü azimut ay doğuşu bulut tahmini fotoğrafçı golden hour blue hour",
+    "dateLabel": "Tarih",
+    "prev": "Önceki gün",
+    "next": "Sonraki gün",
+    "today": "Bugün",
+    "morning": "Sabah",
+    "evening": "Akşam",
+    "blue": "Mavi saat",
+    "golden": "Altın saat",
+    "sunrise": "Gün doğumu",
+    "sunset": "Gün batımı",
+    "direction": "Yön",
+    "forecast": "Fotoğraf tahmini",
+    "dirs": [
+      "K",
+      "KKD",
+      "KD",
+      "DKD",
+      "D",
+      "DGD",
+      "GD",
+      "GGD",
+      "G",
+      "GGB",
+      "GB",
+      "BGB",
+      "B",
+      "BKB",
+      "KB",
+      "KKB"
+    ],
+    "moonHeading": "Ay",
+    "moonrise": "Ay doğuşu",
+    "moonset": "Ay batışı",
+    "noMoonrise": "Bu gün Ay doğmuyor",
+    "noMoonset": "Bu gün Ay batmıyor",
+    "phase": "Evre",
+    "lit": "{p} aydınlık",
+    "fcHeading": "Gün doğumu ve gün batımı fotoğraf tahmini",
+    "fcLead": "Bugün ve sonraki 6 gün için, gün doğumuna ve gün batımına en yakın saatin bulut tahminine göre.",
+    "colDay": "Gün",
+    "q": {
+      "good": "İyi",
+      "fair": "Orta",
+      "poor": "Kötü"
+    },
+    "clouds": "Alçak bulut {l} · orta {m} · yüksek {h}",
+    "rain": "Yağış {p} mm",
+    "why": "Renkleri orta ve yüksek bulutlar yakalar; ufuktaki alçak bulut ve yağış Güneş'i kapatır; açık gökyüzü temiz ama sade olur. Bu bir tahmindir, kesin değildir.",
+    "loading": "Bulut tahmini yükleniyor…",
+    "error": "Bulut tahmini alınamadı. Lütfen daha sonra yeniden deneyin.",
+    "blocked": "Bulut tahmini Open-Meteo'dan yüklenir; göstermek için dış hizmetlere izin verin.",
+    "attribution": "Bulut tahmini: Open-Meteo.com (CC BY 4.0)",
+    "weekHeading": "7 günlük ışık",
+    "colGoldenAm": "Sabah altın saat",
+    "colGoldenPm": "Akşam altın saat",
+    "colBluePm": "Akşam mavi saat",
+    "polarDay": "Güneş bu gün batmıyor; gün batımı ve mavi saat yok.",
+    "polarNight": "Güneş bu gün doğmuyor; — ile gösterilen saatler oluşmuyor.",
+    "partial": "Güneş bu gün bazı yüksekliklere ulaşmıyor; — ile gösterilen saatler oluşmuyor.",
+    "defsHeading": "Altın saat ve mavi saat nedir?",
+    "defs": [
+      "**Altın saat:** Güneş ufkun 6° üstü ile 4° altı arasındadır. Işık alçak, yumuşak ve sıcaktır, gölgeler uzundur; portre ve manzara için en sevilen zamandır.",
+      "**Mavi saat:** Güneş ufkun 4° ile 6° altındadır. Gökyüzü koyu maviye döner, şehir ışıkları gökyüzüyle dengelenir; şehir manzarası ve uzun pozlama için uygundur."
+    ],
+    "note": "Saatler seçtiğiniz yer için cihazınızda hesaplanır ve yaklaşıktır (birkaç dakika); ufuktaki dağlar ve binalar hesaba katılmaz. Konumunuz cihazınızda kalır; yalnız bulut tahmini için yuvarlanmış koordinatlar Open-Meteo'ya gönderilir.",
+    "faq": [
+      {
+        "q": "Bugün altın saat ne zaman?",
+        "a": "Altın saat günde iki kez, gün doğumu ve gün batımı çevresinde, Güneş ufkun 6° üstü ile 4° altı arasındayken yaşanır. Bu sayfa saatleri konumunuza göre hesaplar; genellikle 40–90 dakika sürer, kışın ve yüksek enlemlerde daha uzundur."
+      },
+      {
+        "q": "Mavi saat nedir, ne zaman olur?",
+        "a": "Mavi saat, Güneş ufkun 4° ile 6° altındayken yaşanan alacakaranlıktır: sabah altın saatten önce, akşam altın saatten sonra. Gökyüzü koyu mavidir; şehir ışıkları ve uzun pozlama için idealdir. Genellikle 10–20 dakika sürer."
+      },
+      {
+        "q": "Gün doğumu ve gün batımı fotoğraf tahmini nasıl yapılır?",
+        "a": "Open-Meteo'nun saatlik bulut tahmininden, gün doğumuna ya da gün batımına en yakın saat için. Yağış (saatte 0,5 mm ve üstü) ya da yoğun alçak bulut (%75 ve üstü) Kötü; az alçak bulut (%40'ın altı) ile %20–80 orta ya da yüksek bulut İyi; diğer durumlarda alçak bulut %60'ın altındaysa Orta, üstündeyse Kötü sayılır. Renkleri orta ve yüksek bulutlar yakalar, ufuktaki alçak bulut Güneş'i kapatır."
       }
     ]
   }

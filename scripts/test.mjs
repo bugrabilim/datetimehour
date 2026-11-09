@@ -635,6 +635,35 @@ for (const l of LANGS) {
     check(W.summary(late, 20, null).key === "default", "hava özeti: 12 saatten sonrası bakılmaz");
     const wh = fs.readFileSync(path.join(DIST, "hava-durumu/index.html"), "utf8");
     check(/data-wx-sum/.test(wh) && /visibility/.test(fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8")), "hava sayfası: özet satırı ve görüş isteği");
+    // Fotoğraf ışığı (9 Kasım 2026): gün doğumu/batımı fotoğraf tahmini kuralı; aynı girdiler iOS ve Android testlerinde
+    const PHOTO_CASES = [[0, 0, 0, 0, "fair"], [10, 40, 10, 0, "good"], [10, 10, 60, 0, "good"], [30, 85, 90, 0, "fair"], [50, 50, 50, 0, "fair"], [65, 30, 30, 0, "poor"], [80, 0, 0, 0, "poor"],
+      [5, 50, 50, 0.6, "poor"], [39, 20, 0, 0, "good"], [40, 20, 0, 0, "fair"], [0, 80, 0, 0, "good"], [0, 81, 0, 0, "fair"], [74, 0, 0, 0, "poor"], [59, 0, 0, 0, "fair"]];
+    for (const [L, M, H, P, want] of PHOTO_CASES) check(W.photoSky(L, M, H, P) === want, `fotoğraf tahmini: (${L}, ${M}, ${H}, ${P}) ${want} değil (${W.photoSky(L, M, H, P)})`);
+    const wc = fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8");
+    check(/hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high,precipitation/.test(wc) && /forecast_days=7/.test(wc) && /function clouds\(lat, lon\) \{\s*if \(!allowed\(\)\)/.test(wc), "fotoğraf ışığı: bulut isteği (katmanlar, 7 gün, izin denetimi)");
+  }
+  // Fotoğraf ışığı sayfası (9 Kasım 2026): her dilde; saatler, Ay, 7 günlük tablo, izinli bulut tahmini ve atıf
+  {
+    const PH = { tr: "altin-saat", en: "en/golden-hour", ar: "ar/golden-hour", de: "de/golden-hour", ja: "ja/golden-hour", hi: "hi/golden-hour" };
+    for (const [l, f] of Object.entries(PH)) {
+      const p = path.join(DIST, f, "index.html"), h = fs.existsSync(p) ? fs.readFileSync(p, "utf8") : "";
+      check(/data-photo\b/.test(h) && /photo\.js/.test(h) && /prayer-calc\.js/.test(h) && /nature-calc\.js/.test(h) && /weather-core\.js/.test(h) && /data-needs-place/.test(h) && /"WebApplication"/.test(h), `fotoğraf ışığı sayfası eksik: /${f}/`);
+      check(["blueAm", "goldenAm", "goldenPm", "bluePm", "rise", "set", "riseAz", "setAz", "riseQ", "setQ", "moonrise", "moonset", "phase"].every((k) => h.includes(`data-ph="${k}"`)), `fotoğraf ışığı: kart alanları eksik (/${f}/)`);
+      check(/Open-Meteo\.com \(CC BY 4\.0\)/.test(h) && /<p class="meta consent-ph" data-ph-consent hidden>[^<]+<button type="button" class="btn btn-ghost btn-sm" data-consent-allow-ext>/.test(h) && /data-ph-fc-box hidden/.test(h), `fotoğraf ışığı: atıf ya da izin yer tutucusu eksik (/${f}/)`);
+      check((h.match(/<tbody data-ph-week>([\s\S]*?)<\/tbody>/) || ["", ""])[1].split("<tr>").length - 1 === 7 && /data-ph-date[^>]*value="\d{4}-\d\d-\d\d"/.test(h), `fotoğraf ışığı: 7 günlük tablo ya da tarih seçimi eksik (/${f}/)`);
+    }
+    // Derleme günü İstanbul (UTC+3): saatler Mevsimler'deki altın/mavi saat tanımıyla aynı hesaptan
+    const tr = fs.readFileSync(path.join(DIST, "altin-saat/index.html"), "utf8");
+    if (cfg.updated === "2026-10-30") check(tr.includes('data-ph="goldenAm" dir="ltr">07:15–08:11<') && tr.includes('data-ph="bluePm" dir="ltr">18:20–18:31<') && /data-ph="riseAz">10\d° DGD</.test(tr), "fotoğraf ışığı: İstanbul 30.10.2026 değerleri beklenen değil");
+    check(/href="\/altin-saat\/"/.test(fs.readFileSync(path.join(DIST, "araclar/index.html"), "utf8")) && /href="\/en\/golden-hour\/"/.test(fs.readFileSync(path.join(DIST, "en/tools/index.html"), "utf8")), "araçlar merkezi: fotoğraf ışığı kartı yok");
+    check(/id="photo"/.test(fs.readFileSync(path.join(DIST, "sss/index.html"), "utf8")), "SSS: fotoğraf ışığı grubu yok");
+    for (const l of LANGS) check(dict[l].get("photo.dirs").length === 16 && /Open-Meteo/.test(dict[l].get("photo.attribution")), `fotoğraf ışığı: ${l} yönler ya da atıf`);
+    // Gizlilik: web, iPhone ve Android maddelerinde fotoğraf ışığının bulut tahmini (Open-Meteo, yaklaşık konum)
+    for (const l of LANGS) {
+      const j = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8")), name = j.tools.hub.cards.photo.name.toLowerCase();
+      const om = j.privacy.sections.flatMap((s) => (s.ul || []).filter((u) => typeof u === "string" && /Open-Meteo/.test(u)));
+      check(om.filter((u) => u.toLowerCase().includes(name)).length >= 3, `gizlilik: fotoğraf ışığı bulut tahmini web/iPhone/Android maddelerinde yok (${l})`);
+    }
   }
   // K-1 site (2. analiz #174–#181, #184, #190): ilk ekran doğruluk satırı, başlıkta saat, görünüm seçenekleri, büyütme, haplar, hafta no
   {
