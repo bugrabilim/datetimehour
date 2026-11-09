@@ -2521,6 +2521,9 @@
     <string name="cal_country">الدولة</string>
     <string name="cal_shownTypes">الأيام المعروضة</string>
     <string name="cal_countryNote">العطلات الرسمية الوطنية للدولة المختارة (Nager.Date، MIT)؛ والأيام الدينية وفق تقويم رئاسة الشؤون الدينية. البيانات 2024–2032.</string>
+    <string name="calendars_title">التقاويم والدولة</string>
+    <string name="calendars_heading">التقاويم</string>
+    <string name="calendars_note">تظهر المناسبات والتواريخ من التقاويم التي تفعّلها في تقويمك. تبدأ تقاويم منطقتك مفعّلة والتقاويم الدينية معطّلة؛ لا نفترض معتقد أحد.</string>
     <string name="cal_agendaEmpty">لا شيء لعرضه خلال الأيام الستين القادمة.</string>
     <string name="cal_density">كلما كان اللون أغمق كثرت المناسبات والأحداث.</string>
     <string name="cal_bayram">عيد مبارك</string>

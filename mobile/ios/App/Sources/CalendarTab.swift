@@ -28,6 +28,8 @@ struct CalendarTab: View {
     @AppStorage(CalPrefs.countryKey) private var countryRaw = ""
     @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw: String?
     @AppStorage(Features.key) private var featuresRaw = ""
+    /// Kapsayıcı takvimlerin seçimi (değişince takvim yenilensin)
+    @AppStorage(ExtraCals.key) private var extraRaw: String?
     private var country: String { CalPrefs.country }
     @State private var countrySheet = false
     @State private var leafOpen = false
@@ -81,7 +83,11 @@ struct CalendarTab: View {
                         Toggle(L("cal.hijriDays"), isOn: $showHijri)
                         Toggle(L("cal.names"), isOn: $showNames)
                         Toggle(L("cal.hijriNav"), isOn: $hijriNav)
-                        Button(L("cal.country") + ": " + WorldHol.countryName(country)) { countrySheet = true }
+                        // Takvimler ve ülke (kapsayıcı takvimler, 9 Kasım 2026): altında seçili ülke
+                        Button { countrySheet = true } label: {
+                            Text(L("calendars.title"))
+                            Text(WorldHol.countryName(country))
+                        }
                     } label: { Image(systemName: "ellipsis.circle") }
                         .accessibilityLabel(L("cal.view"))
                 }
@@ -316,6 +322,8 @@ struct CalendarTab: View {
                         .font(.caption)
                         .foregroundStyle(Theme.accent)
                 }
+                // Açık kapsayıcı takvimlerin ikinci tarihi (her takvim tek satır, takvimin rengiyle nokta)
+                ExtraCalDayLines(day: selected)
             }
             .textCase(nil)
             .padding(.vertical, 4)
@@ -340,7 +348,7 @@ struct CalendarTab: View {
     }
 
     private var legend: some View {
-        let types = ["holiday", "half", "religious", "special", "school"]
+        let types = ["holiday", "half", "religious", "special", "school"] + ExtraCals.sorted().filter { ExtraCals.isOn($0.id) }.map { "cal:\($0.id)" }
         return FlowRow(items: types) { t in
             HStack(spacing: 4) {
                 Circle().fill(CalendarData.color(t)).frame(width: 8, height: 8)
@@ -410,6 +418,8 @@ struct MonthGrid: View {
     @AppStorage("cal.dst") private var showDst = true
     @AppStorage("cal.hijri") private var showHijri = false
     @AppStorage("cal.names") private var showNames = false
+    /// Kapsayıcı takvimlerin seçimi (değişince hücreler yenilensin)
+    @AppStorage(ExtraCals.key) private var extraRaw: String?
 
     /// Bu ayın yeni ay ve dolunay günleri (telefonun saat diliminde): gün numarası → emoji
     private var moonMarks: [Int: String] {
@@ -575,6 +585,8 @@ struct FlowLayout: Layout {
 /// Takvim türünün adı. Türkçe dışındaki arayüzde resmî tatil, arife ve okul türlerine ülke adı eklenir
 /// ("Public holiday · Türkiye"): takvimdeki tatiller Türkiye'nindir (2. analiz #92).
 func calendarTypeLabel(_ t: String) -> String {
+    // Kapsayıcı takvimlerde takvimin adı
+    if t.hasPrefix("cal:") { return ExtraCals.name(String(t.dropFirst(4))) }
     let base = L("calendar.types.\(t)")
     // Takvimde başka ülke seçiliyse (2. analiz #122) resmî tatil o ülkenindir
     let cc = t == "holiday" && CalPrefs.country != "TR" ? CalPrefs.country : "TR"

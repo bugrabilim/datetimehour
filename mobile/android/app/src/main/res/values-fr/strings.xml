@@ -2521,6 +2521,9 @@
     <string name="cal_country">Pays</string>
     <string name="cal_shownTypes">Jours affichés</string>
     <string name="cal_countryNote">Jours fériés nationaux du pays choisi (Nager.Date, MIT) ; jours religieux selon le calendrier de la Diyanet. Données 2024–2032.</string>
+    <string name="calendars_title">Calendriers et pays</string>
+    <string name="calendars_heading">Calendriers</string>
+    <string name="calendars_note">Les jours particuliers et les dates des calendriers que vous activez apparaissent dans votre calendrier. Les calendriers de votre région sont activés au départ, les calendriers religieux désactivés ; nous ne présumons la croyance de personne.</string>
     <string name="cal_agendaEmpty">Rien à afficher dans les 60 prochains jours.</string>
     <string name="cal_density">Plus la couleur est foncée, plus il y a de jours particuliers et d\'événements.</string>
     <string name="cal_bayram">Aïd Moubarak</string>

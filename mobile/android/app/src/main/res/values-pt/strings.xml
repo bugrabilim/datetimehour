@@ -2521,6 +2521,9 @@
     <string name="cal_country">País</string>
     <string name="cal_shownTypes">Datas exibidas</string>
     <string name="cal_countryNote">Feriados nacionais do país escolhido (Nager.Date, MIT); as datas religiosas seguem o calendário da Diyanet. Dados 2024–2032.</string>
+    <string name="calendars_title">Calendários e país</string>
+    <string name="calendars_heading">Calendários</string>
+    <string name="calendars_note">As datas especiais dos calendários que você ativar aparecem no seu calendário. Os calendários da sua região começam ativados e os religiosos desativados; não supomos a crença de ninguém.</string>
     <string name="cal_agendaEmpty">Nada a mostrar nos próximos 60 dias.</string>
     <string name="cal_density">Quanto mais escura a cor, mais datas especiais e eventos.</string>
     <string name="cal_bayram">Eid Mubarak</string>

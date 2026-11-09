@@ -2521,6 +2521,9 @@
     <string name="cal_country">国</string>
     <string name="cal_shownTypes">表示する日</string>
     <string name="cal_countryNote">選んだ国の祝日（Nager.Date、MIT）。宗教上の日はディヤーネットの暦に基づきます。データは2024〜2032年。</string>
+    <string name="calendars_title">暦と国</string>
+    <string name="calendars_heading">暦</string>
+    <string name="calendars_note">オンにした暦の記念日と日付がカレンダーに表示されます。お住まいの地域の暦は最初からオン、宗教の暦はオフです。誰の信仰も推測しません。</string>
     <string name="cal_agendaEmpty">今後60日間に表示する予定はありません。</string>
     <string name="cal_density">色が濃いほど記念日や予定が多い日です。</string>
     <string name="cal_bayram">イード・ムバラク</string>

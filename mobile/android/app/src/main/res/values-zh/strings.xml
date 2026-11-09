@@ -2521,6 +2521,9 @@
     <string name="cal_country">国家</string>
     <string name="cal_shownTypes">显示的日子</string>
     <string name="cal_countryNote">所选国家的全国法定假日（Nager.Date，MIT）；宗教节日依据迪亚内特历法。数据 2024–2032。</string>
+    <string name="calendars_title">历法与国家</string>
+    <string name="calendars_heading">历法</string>
+    <string name="calendars_note">您开启的历法中的节日和日期会显示在日历中。您所在地区的历法默认开启，宗教历法默认关闭；我们不揣测任何人的信仰。</string>
     <string name="cal_agendaEmpty">未来 60 天没有要显示的内容。</string>
     <string name="cal_density">颜色越深，节日和日程越多。</string>
     <string name="cal_bayram">节日快乐</string>

@@ -2521,6 +2521,9 @@
     <string name="cal_country">ประเทศ</string>
     <string name="cal_shownTypes">วันที่แสดง</string>
     <string name="cal_countryNote">วันหยุดราชการของประเทศที่เลือก (Nager.Date, MIT) วันทางศาสนาตามปฏิทินดียาเนต ข้อมูล 2024–2032</string>
+    <string name="calendars_title">ปฏิทินและประเทศ</string>
+    <string name="calendars_heading">ปฏิทิน</string>
+    <string name="calendars_note">วันสำคัญและวันที่จากปฏิทินที่คุณเปิดจะแสดงในปฏิทินของคุณ ปฏิทินของภูมิภาคคุณเปิดไว้ก่อน ส่วนปฏิทินทางศาสนาปิดไว้ เราไม่คาดเดาความเชื่อของใคร</string>
     <string name="cal_agendaEmpty">ไม่มีรายการใน 60 วันข้างหน้า</string>
     <string name="cal_density">สียิ่งเข้ม ยิ่งมีวันสำคัญและกิจกรรมมาก</string>
     <string name="cal_bayram">อีดมูบาร็อก</string>

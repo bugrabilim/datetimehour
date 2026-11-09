@@ -104,6 +104,7 @@ object AppData {
     fun init(c: Context) {
         fun read(name: String) = c.assets.open(name).bufferedReader().use { it.readText() }
         WorldHol.appContext = c.applicationContext
+        ExtraCals.appContext = c.applicationContext
 
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
@@ -181,8 +182,8 @@ object AppData {
         return out.take(limit)
     }
 
-    /** Olay türünün rengi (sitedeki takvim renkleri) */
-    fun color(type: String): Color = when (type) {
+    /** Olay türünün rengi (sitedeki takvim renkleri; kapsayıcı takvimlerde `cal:<id>` takvimin rengi) */
+    fun color(type: String): Color = if (type.startsWith("cal:")) ExtraCals.color(type.removePrefix("cal:")) else when (type) {
         "holiday" -> Color(0xFFD32F2F)
         "half" -> Color(0xFFF57C00)
         "religious" -> Color(0xFF2E7D32)

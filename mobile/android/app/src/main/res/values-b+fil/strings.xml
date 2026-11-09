@@ -2521,6 +2521,9 @@
     <string name="cal_country">Bansa</string>
     <string name="cal_shownTypes">Ipinapakitang araw</string>
     <string name="cal_countryNote">Mga pambansang pista opisyal ng napiling bansa (Nager.Date, MIT); ang mga araw na panrelihiyon ay ayon sa kalendaryo ng Diyanet. Datos 2024–2032.</string>
+    <string name="calendars_title">Mga kalendaryo at bansa</string>
+    <string name="calendars_heading">Mga kalendaryo</string>
+    <string name="calendars_note">Lalabas sa iyong kalendaryo ang mga espesyal na araw at petsa ng mga kalendaryong binuksan mo. Bukas sa simula ang mga kalendaryo ng iyong rehiyon at sarado ang mga panrelihiyon; walang ipinapalagay na pananampalataya.</string>
     <string name="cal_agendaEmpty">Walang maipapakita sa susunod na 60 araw.</string>
     <string name="cal_density">Kung mas madilim ang kulay, mas maraming espesyal na araw at kaganapan.</string>
     <string name="cal_bayram">Eid Mubarak</string>

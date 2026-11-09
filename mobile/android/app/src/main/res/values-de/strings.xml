@@ -2521,6 +2521,9 @@
     <string name="cal_country">Land</string>
     <string name="cal_shownTypes">Angezeigte Tage</string>
     <string name="cal_countryNote">Gesetzliche Feiertage des gewählten Landes (Nager.Date, MIT); religiöse Tage nach dem Diyanet-Kalender. Daten 2024–2032.</string>
+    <string name="calendars_title">Kalender und Land</string>
+    <string name="calendars_heading">Kalender</string>
+    <string name="calendars_note">Besondere Tage und Daten der Kalender, die Sie einschalten, erscheinen in Ihrem Kalender. Kalender Ihrer Region sind anfangs an, religiöse Kalender aus; niemandes Glaube wird vorausgesetzt.</string>
     <string name="cal_agendaEmpty">In den nächsten 60 Tagen nichts anzuzeigen.</string>
     <string name="cal_density">Je dunkler die Farbe, desto mehr besondere Tage und Termine.</string>
     <string name="cal_bayram">Gesegnetes Fest</string>

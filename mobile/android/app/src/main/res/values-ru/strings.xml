@@ -2521,6 +2521,9 @@
     <string name="cal_country">Страна</string>
     <string name="cal_shownTypes">Показываемые дни</string>
     <string name="cal_countryNote">Государственные праздники выбранной страны (Nager.Date, MIT); религиозные дни по календарю Диянета. Данные 2024–2032.</string>
+    <string name="calendars_title">Календари и страна</string>
+    <string name="calendars_heading">Календари</string>
+    <string name="calendars_note">Особые дни и даты включённых вами календарей появляются в вашем календаре. Календари вашего региона сначала включены, религиозные — выключены: мы ничьих убеждений не предполагаем.</string>
     <string name="cal_agendaEmpty">В ближайшие 60 дней показывать нечего.</string>
     <string name="cal_density">Чем темнее цвет, тем больше особых дней и событий.</string>
     <string name="cal_bayram">С праздником!</string>

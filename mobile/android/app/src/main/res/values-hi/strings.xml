@@ -2521,6 +2521,9 @@
     <string name="cal_country">देश</string>
     <string name="cal_shownTypes">दिखाए जाने वाले दिन</string>
     <string name="cal_countryNote">चुने देश की राष्ट्रीय सार्वजनिक छुट्टियाँ (Nager.Date, MIT); धार्मिक दिन दियानत कैलेंडर से। डेटा 2024–2032।</string>
+    <string name="calendars_title">कैलेंडर और देश</string>
+    <string name="calendars_heading">कैलेंडर</string>
+    <string name="calendars_note">आप जो कैलेंडर चालू करें, उनके विशेष दिन और तारीखें आपके कैलेंडर में दिखती हैं। आपके क्षेत्र के कैलेंडर शुरू में चालू और धार्मिक कैलेंडर बंद रहते हैं; हम किसी की आस्था का अनुमान नहीं लगाते।</string>
     <string name="cal_agendaEmpty">अगले 60 दिनों में दिखाने को कुछ नहीं।</string>
     <string name="cal_density">रंग जितना गहरा, उतने ज़्यादा विशेष दिन और इवेंट।</string>
     <string name="cal_bayram">ईद मुबारक</string>
