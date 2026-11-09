@@ -15,8 +15,13 @@ const [IN, OUT] = process.argv.slice(2);
 if (!IN || !OUT) { console.error("Kullanım: frame-screenshots.mjs <ham klasör> <çıktı klasörü>"); process.exit(2); }
 const HERE = dirname(new URL(import.meta.url).pathname);
 const CAPTIONS = JSON.parse(readFileSync(join(HERE, "../fastlane/captions.json"), "utf8"));
-// fastlane klasörü → başlık dili
-const LANG = { tr: "tr", "en-US": "en", "de-DE": "de", "ar-SA": "ar", "fr-FR": "fr", ru: "ru", id: "id", ja: "ja", ko: "ko", "zh-Hans": "zh", th: "th", "es-ES": "es", "pt-BR": "pt", hi: "hi" };
+// fastlane klasörü → başlık dili (captions.json'daki dil). Bölgesel sürümler ana dilin başlığını kullanır; Malayca (ms),
+// Bengalce (bn-BD) ve Geleneksel Çince (zh-Hant) görsellerinde arayüz başka dilde olsa da başlık o dilde (store-screenshots.sh)
+const LANG = {
+  tr: "tr", "en-US": "en", "en-GB": "en", "en-AU": "en", "en-CA": "en", "de-DE": "de", "ar-SA": "ar", "fr-FR": "fr", "fr-CA": "fr",
+  ru: "ru", id: "id", ja: "ja", ko: "ko", "zh-Hans": "zh", "zh-Hant": "zh-Hant", th: "th", "es-ES": "es", "es-MX": "es",
+  "pt-BR": "pt", "pt-PT": "pt", hi: "hi", ms: "ms", "ur-PK": "ur", "bn-BD": "bn",
+};
 const HTML_LANG = { zh: "zh-Hans", pt: "pt-BR" };
 const RTL = new Set(["ar", "ur", "fa"]);
 
@@ -38,7 +43,9 @@ function pngSize(file) {
 }
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-const FONTS = `-apple-system, "SF Pro Display", "Helvetica Neue", "Geeza Pro", "Hiragino Sans", "PingFang SC", "Apple SD Gothic Neo", "Thonburi", "Noto Sans", "DejaVu Sans", sans-serif`;
+const FONTS = `-apple-system, "SF Pro Display", "Helvetica Neue", "Geeza Pro", "Hiragino Sans", "PingFang SC", "Apple SD Gothic Neo", "Thonburi", "Kohinoor Bangla", "Noto Sans Bengali", "Noto Sans", "DejaVu Sans", sans-serif`;
+// Geleneksel Çince başlıklarda Geleneksel yazı biçimli yazı tipi önce gelsin
+const fontsFor = (lang) => (lang === "zh-Hant" ? FONTS.replace('"PingFang SC"', '"PingFang TC", "PingFang HK", "PingFang SC"') : FONTS);
 
 /** Bir görselin HTML'i. kind: "phone" | "tablet" | "night" */
 function page({ w, h, img, lang, title, sub, kind }) {
@@ -54,7 +61,7 @@ function page({ w, h, img, lang, title, sub, kind }) {
   :root { --base: ${base}px; --ratio: ${ratio}; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: ${w}px; height: ${h}px; overflow: hidden; }
-  body { font-family: ${FONTS}; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; align-items: center;
+  body { font-family: ${fontsFor(lang)}; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; align-items: center;
     background: ${night ? "linear-gradient(180deg, #0b0e14 0%, #141925 55%, #1a1f2b 100%)"
       : "radial-gradient(120% 60% at 50% 0%, #fdf3df 0%, rgba(253,243,223,0) 60%), #f7f4ee"}; }
   header { width: 100%; padding: calc(var(--base) * 0.085) calc(var(--base) * 0.07) 0; text-align: center; position: relative; z-index: 3; }
