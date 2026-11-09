@@ -29,7 +29,7 @@ export const meta = {
   id: "christian",          // dosya adıyla aynı, yalnız küçük harf
   group: "religious",       // "religious" | "cultural" | "civil"; religious her yerde varsayılan kapalı
   regions: [],              // varsayılan açık olduğu ülkeler (ISO 3166-1 iki harf); religious'ta etkisiz
-  color: "#7B5EA7",         // takvim rengi; iki temanın zemininde en az 3:1 (doğrulama denetler)
+  color: "#7B5EA7",         // takvim rengi; iki temanın zemininde en az 3:1, diğer takvimlerden ve Türkiye günlerinin renklerinden ΔE ≥ 20 (doğrulama denetler)
 };
 export function events(year) { return [{ date: "2027-03-28", key: "easter" }, { date: "2027-12-24", key: "x", end: "2027-12-26" }]; }
 // İsteğe bağlı:
@@ -146,7 +146,7 @@ Kurallar:
   metninde yazın. En az: her yıl için takvimin ana olayı (2025–2032) ve ay tablosu varsa her yıldan birkaç ay başı.
 - `scripts/test.mjs` her takvim için: `validateCalendars` (aşağıdaki kurallar), `<id>.test.json` durumları, uygulamalardaki
   `calendars.json`'ın ve `cals.<id>.*` Android metinlerinin güncelliği, yıl sayfasındaki seçim ve veri dosyası.
-- `validateCalendars` kuralları: modül kayıtlı ve test dosyası var; kimlik/grup/bölge/renk biçimi; renk 4 tema zemininde ≥3:1;
+- `validateCalendars` kuralları: modül kayıtlı ve test dosyası var; kimlik/grup/bölge/renk biçimi; renk 4 tema zemininde ≥3:1 ve diğer takvimlerle resmî tatil/yarım gün/dinî gün/okul renklerinden CIE76 ΔE ≥ 20 (`CAL_MIN_DE`);
   18 dilde metin eşliği, boş metin yok, Latin rakamı, yer tutucular aynı ve izinli (Türkçe `fmt` sırası); olay tarihleri geçerli ve
   yılında, `ev` metinleri var ve hepsi kullanılıyor; ay tablosu (son satır `to`'dan sonra), günlük kod (iki biçim, her kodun metni)
   ve yıl etiketi kuralları (yukarıda).
