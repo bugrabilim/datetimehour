@@ -531,11 +531,6 @@
               "Até você apagar"
             ],
             [
-              "sth-cal-exams",
-              "Lembra se você escolheu mostrar as datas de provas no calendário.",
-              "Até você apagar"
-            ],
-            [
               "sth-world",
               "Lembra as cidades que você escolheu para o relógio mundial e a ordem delas.",
               "Até você apagar"
@@ -712,8 +707,7 @@
       "special": "Data especial",
       "weekend": "Fim de semana",
       "today": "Hoje",
-      "school": "Férias ou data escolar (MEB)",
-      "exam": "Prova ou data relacionada (ÖSYM, MEB, AÖF)"
+      "school": "Férias ou data escolar (MEB)"
     },
     "eventsHeading": "Lista de datas de {year}",
     "colDate": "Data",
@@ -810,47 +804,7 @@
       "schoolEnd": "Fim do ano letivo, entrega de boletins (MEB)",
       "teacherStart": "Começa a jornada pedagógica dos professores (MEB)",
       "adaptation": "Começa a semana de adaptação da pré-escola e do 1º ano (MEB)",
-      "teacherEnd": "Começa a jornada pedagógica de fim de ano dos professores (MEB)",
-      "yksTyt": "YKS: sessão TYT (ÖSYM)",
-      "yksAytYdt": "YKS: sessões AYT e YDT (ÖSYM)",
-      "tryos": "TR-YÖS/2: prova para estudantes internacionais (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS de nível médio (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT: prova de serviços religiosos (ÖSYM)",
-      "dus2": "DUS, segunda sessão: prova de especialidade odontológica (ÖSYM)",
-      "eus": "EUS: prova de especialidade farmacêutica (ÖSYM)",
-      "yds2": "YDS/2: prova de proficiência em língua estrangeira (ÖSYM)",
-      "ales3": "ALES/3: prova de acesso à pós-graduação (ÖSYM)",
-      "alesApply": "Período de inscrição do ALES/3 (ÖSYM)",
-      "kpssOnResult": "Resultados do KPSS de nível tecnólogo (ÖSYM)",
-      "kpssOrtaResult": "Resultados do KPSS de nível médio (ÖSYM)",
-      "ydsResult": "Resultados do YDS/2 (ÖSYM)",
-      "alesResult": "Resultados do ALES/3 (ÖSYM)",
-      "kpssTercih": "Preferências de alocação KPSS-2026/2 (ÖSYM)",
-      "common1": "1º semestre, primeiras provas escritas comuns (MEB)",
-      "common2": "1º semestre, segundas provas escritas comuns (MEB)",
-      "common3": "2º semestre, primeiras provas escritas comuns (MEB)",
-      "common4": "2º semestre, segundas provas escritas comuns (MEB)",
-      "aolRegister": "Período de matrícula e rematrícula do ensino médio aberto (AÖL) (MEB)",
-      "aolEsinav": "Período de provas eletrônicas do AÖL (MEB)",
-      "aolWritten": "Prova escrita do AÖL (MEB)",
-      "aolResult": "Resultados do primeiro semestre do AÖL (MEB)",
-      "aofMid1": "Prova intermediária de outono do AÖF (Universidade de Anadolu)",
-      "aofFinal1": "Prova final de outono do AÖF (Universidade de Anadolu)",
-      "aofMid2": "Prova intermediária de primavera do AÖF (Universidade de Anadolu)",
-      "aofFinal2": "Prova final de primavera do AÖF (Universidade de Anadolu)",
-      "aofSummer": "Prova do curso de verão do AÖF (Universidade de Anadolu)",
-      "ales1": "ALES/1: prova de acesso à pós-graduação (ÖSYM)",
-      "ales2": "ALES/2: prova de acesso à pós-graduação (ÖSYM)",
-      "yds1": "YDS/1: prova de proficiência em língua estrangeira (ÖSYM)",
-      "msu": "MSÜ: prova de ingresso na Universidade de Defesa Nacional (ÖSYM)",
-      "ags": "MEB-AGS e ÖABT: prova de ingresso na academia de professores (ÖSYM)",
-      "dgs": "DGS: prova de transferência para o bacharelado (ÖSYM)",
-      "kpssGy": "KPSS de nível superior: aptidão e conhecimentos gerais (ÖSYM)",
-      "kpssAlan": "KPSS de nível superior: conhecimentos específicos (ÖSYM)",
-      "iokbs": "İOKBS: prova de bolsas de estudo (MEB)",
-      "lgs": "LGS: prova de ingresso no ensino médio (MEB)"
+      "teacherEnd": "Começa a jornada pedagógica de fim de ano dos professores (MEB)"
     },
     "hubName": "Calendário anual",
     "hubDesc": "Feriados oficiais, dias de bayram e vésperas, noites de kandil e o mês do Ramadã.",
@@ -911,8 +865,7 @@
       "Outubro",
       "Novembro",
       "Dezembro"
-    ],
-    "showExams": "Mostrar datas de provas"
+    ]
   },
   "tools": {
     "hub": {
@@ -1729,22 +1682,6 @@
         "name": "Dia da entrega de boletins",
         "dat": "o dia da entrega de boletins"
       },
-      "yks": {
-        "name": "YKS (vestibular nacional)",
-        "dat": "o YKS"
-      },
-      "kpss": {
-        "name": "KPSS (concurso para servidores públicos)",
-        "dat": "o KPSS"
-      },
-      "ales": {
-        "name": "ALES (prova de acesso à pós-graduação)",
-        "dat": "o ALES"
-      },
-      "yds": {
-        "name": "YDS (prova de proficiência em língua estrangeira)",
-        "dat": "o YDS"
-      },
       "schoolStart": {
         "name": "Início das aulas",
         "dat": "o início das aulas"
@@ -1752,14 +1689,6 @@
       "midterm": {
         "name": "Recesso escolar",
         "dat": "o recesso escolar"
-      },
-      "aof": {
-        "name": "Provas do AÖF (ensino aberto da Universidade de Anadolu)",
-        "dat": "as provas do AÖF"
-      },
-      "aol": {
-        "name": "Prova do AÖL (ensino médio aberto)",
-        "dat": "a prova do AÖL"
       },
       "feb14": {
         "name": "Dia de São Valentim",
@@ -1780,13 +1709,8 @@
       "nov24": {
         "name": "Dia do Professor",
         "dat": "o Dia do Professor"
-      },
-      "lgs": {
-        "name": "LGS (prova de ingresso no ensino médio)",
-        "dat": "o LGS"
       }
-    },
-    "exam": "As datas das provas vêm dos anúncios do ÖSYM, do MEB e da Universidade de Anadolu, que podem alterá-las. Datas ainda não anunciadas não são estimadas; são adicionadas quando publicadas."
+    }
   },
   "datecalc": {
     "title": "Calculadora de datas: dias, dias úteis, idade | Saat Tarih",

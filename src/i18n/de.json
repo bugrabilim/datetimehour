@@ -492,11 +492,6 @@
               "Bis zur Löschung durch Sie"
             ],
             [
-              "sth-cal-exams",
-              "Merkt sich, ob Prüfungstermine im Kalender angezeigt werden sollen.",
-              "Bis zur Löschung durch Sie"
-            ],
-            [
               "sth-world",
               "Merkt sich die für die Weltzeituhr gewählten Städte und ihre Reihenfolge.",
               "Bis zur Löschung durch Sie"
@@ -673,8 +668,7 @@
       "special": "Besonderer Tag",
       "weekend": "Wochenende",
       "today": "Heute",
-      "school": "Schulferien oder Schultermin (MEB)",
-      "exam": "Prüfung oder prüfungsbezogener Termin (ÖSYM, MEB, AÖF)"
+      "school": "Schulferien oder Schultermin (MEB)"
     },
     "eventsHeading": "Alle Tage {year} im Überblick",
     "colDate": "Datum",
@@ -771,47 +765,7 @@
       "schoolEnd": "Ende des Schuljahres, Zeugnistag (MEB)",
       "teacherStart": "Berufliche Arbeitstage der Lehrkräfte beginnen (MEB)",
       "adaptation": "Eingewöhnungswoche für Vorschule und 1. Klasse beginnt (MEB)",
-      "teacherEnd": "Berufliche Arbeitstage der Lehrkräfte zum Schuljahresende beginnen (MEB)",
-      "yksTyt": "YKS: TYT-Prüfung (ÖSYM)",
-      "yksAytYdt": "YKS: AYT- und YDT-Prüfung (ÖSYM)",
-      "tryos": "TR-YÖS/2: Prüfung für internationale Studierende (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS Sekundarstufe (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT: Fachtest Religionsdienste (ÖSYM)",
-      "dus2": "DUS 2. Termin: Zulassungsprüfung zur Fachzahnarztausbildung (ÖSYM)",
-      "eus": "EUS: Zulassungsprüfung zur Fachapothekerausbildung (ÖSYM)",
-      "yds2": "YDS/2: Fremdsprachenprüfung (ÖSYM)",
-      "ales3": "ALES/3: Zulassungsprüfung für Master- und Promotionsstudium (ÖSYM)",
-      "alesApply": "ALES/3-Anmeldezeitraum (ÖSYM)",
-      "kpssOnResult": "KPSS-Ergebnisse für Absolventen zweijähriger Studiengänge (ÖSYM)",
-      "kpssOrtaResult": "KPSS-Ergebnisse Sekundarstufe (ÖSYM)",
-      "ydsResult": "YDS/2-Ergebnisse (ÖSYM)",
-      "alesResult": "ALES/3-Ergebnisse (ÖSYM)",
-      "kpssTercih": "KPSS-2026/2 Platzierungswünsche (ÖSYM)",
-      "common1": "Landesweite schriftliche Prüfungen, 1. Halbjahr, 1. Runde (MEB)",
-      "common2": "Landesweite schriftliche Prüfungen, 1. Halbjahr, 2. Runde (MEB)",
-      "common3": "Landesweite schriftliche Prüfungen, 2. Halbjahr, 1. Runde (MEB)",
-      "common4": "Landesweite schriftliche Prüfungen, 2. Halbjahr, 2. Runde (MEB)",
-      "aolRegister": "Anmeldezeitraum Offenes Gymnasium (AÖL) (MEB)",
-      "aolEsinav": "AÖL-E-Prüfungszeitraum (MEB)",
-      "aolWritten": "AÖL-Klausur (MEB)",
-      "aolResult": "AÖL-Ergebnisse 1. Halbjahr (MEB)",
-      "aofMid1": "AÖF Zwischenprüfung Herbstsemester (Anadolu-Universität)",
-      "aofFinal1": "AÖF Abschlussprüfung Herbstsemester (Anadolu-Universität)",
-      "aofMid2": "AÖF Zwischenprüfung Frühjahrssemester (Anadolu-Universität)",
-      "aofFinal2": "AÖF Abschlussprüfung Frühjahrssemester (Anadolu-Universität)",
-      "aofSummer": "AÖF-Sommerschulprüfung (Anadolu-Universität)",
-      "ales1": "ALES/1: Zulassungsprüfung für Master- und Promotionsstudium (ÖSYM)",
-      "ales2": "ALES/2: Zulassungsprüfung für Master- und Promotionsstudium (ÖSYM)",
-      "yds1": "YDS/1: Fremdsprachenprüfung (ÖSYM)",
-      "msu": "MSÜ: Aufnahmeprüfung der Nationalen Verteidigungsuniversität (ÖSYM)",
-      "ags": "MEB-AGS und ÖABT: Aufnahmeprüfung der Lehrerakademie (ÖSYM)",
-      "dgs": "DGS: Prüfung für den Wechsel ins Bachelorstudium (ÖSYM)",
-      "kpssGy": "KPSS Bachelor-Niveau: Allgemeine Fähigkeiten und Allgemeinbildung (ÖSYM)",
-      "kpssAlan": "KPSS Bachelor-Niveau: Fachwissen (ÖSYM)",
-      "iokbs": "İOKBS: Stipendienprüfung (MEB)",
-      "lgs": "LGS: Aufnahmeprüfung für weiterführende Schulen (MEB)"
+      "teacherEnd": "Berufliche Arbeitstage der Lehrkräfte zum Schuljahresende beginnen (MEB)"
     },
     "hubName": "Jahreskalender",
     "hubDesc": "Gesetzliche Feiertage, Bayram- und Vorabendtage, Kandil-Nächte und der Fastenmonat Ramadan.",
@@ -858,8 +812,7 @@
         "November: von lateinisch novem, „neun“.",
         "Dezember: von lateinisch decem, „zehn“."
       ]
-    },
-    "showExams": "Prüfungstermine anzeigen"
+    }
   },
   "tools": {
     "hub": {
@@ -1676,22 +1629,6 @@
         "name": "Zeugnistag",
         "dat": "zum Zeugnistag"
       },
-      "yks": {
-        "name": "YKS (Hochschulaufnahmeprüfung)",
-        "dat": "zur YKS"
-      },
-      "kpss": {
-        "name": "KPSS (Auswahlprüfung für den öffentlichen Dienst)",
-        "dat": "zur KPSS"
-      },
-      "ales": {
-        "name": "ALES (Zulassungsprüfung für das Aufbaustudium)",
-        "dat": "zur ALES"
-      },
-      "yds": {
-        "name": "YDS (Fremdsprachenprüfung)",
-        "dat": "zur YDS"
-      },
       "schoolStart": {
         "name": "Schulbeginn",
         "dat": "zum Schulbeginn"
@@ -1699,14 +1636,6 @@
       "midterm": {
         "name": "Zwischenferien",
         "dat": "zu den Zwischenferien"
-      },
-      "aof": {
-        "name": "AÖF-Prüfungen (Fernstudium der Anadolu-Universität)",
-        "dat": "zu den AÖF-Prüfungen"
-      },
-      "aol": {
-        "name": "AÖL-Prüfung (Fern-Gymnasium)",
-        "dat": "zur AÖL-Prüfung"
       },
       "feb14": {
         "name": "Valentinstag",
@@ -1727,13 +1656,8 @@
       "nov24": {
         "name": "Tag des Lehrers",
         "dat": "zum Tag des Lehrers"
-      },
-      "lgs": {
-        "name": "LGS (Aufnahmeprüfung für weiterführende Schulen)",
-        "dat": "zur LGS"
       }
-    },
-    "exam": "Die Prüfungstermine stammen aus Bekanntgaben von ÖSYM, MEB und der Anadolu-Universität, die sie ändern können. Noch nicht veröffentlichte Termine werden nicht geschätzt, sondern nachgetragen."
+    }
   },
   "datecalc": {
     "title": "Datumsrechner: Tage, Arbeitstage, Alter | Saat Tarih",

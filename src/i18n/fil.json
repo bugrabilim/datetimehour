@@ -531,11 +531,6 @@
               "Hanggang burahin mo"
             ],
             [
-              "sth-cal-exams",
-              "Tinatandaan kung pinili mong ipakita ang mga petsa ng pagsusulit sa kalendaryo.",
-              "Hanggang burahin mo"
-            ],
-            [
               "sth-world",
               "Tinatandaan ang mga lungsod na pinili mo para sa orasan ng mundo at ang pagkakasunod-sunod nila.",
               "Hanggang burahin mo"
@@ -712,8 +707,7 @@
       "special": "Espesyal na araw",
       "weekend": "Weekend",
       "today": "Ngayon",
-      "school": "Bakasyon sa paaralan o petsa ng termino (MEB)",
-      "exam": "Pagsusulit o kaugnay na petsa (ÖSYM, MEB, AÖF)"
+      "school": "Bakasyon sa paaralan o petsa ng termino (MEB)"
     },
     "eventsHeading": "Listahan ng mga araw sa {year}",
     "colDate": "Petsa",
@@ -810,47 +804,7 @@
       "schoolEnd": "Pagtatapos ng taon ng pasukan, araw ng report card (MEB)",
       "teacherStart": "Simula ng propesyonal na gawain ng mga guro (MEB)",
       "adaptation": "Simula ng linggo ng oryentasyon sa preschool at grade 1 (MEB)",
-      "teacherEnd": "Simula ng propesyonal na gawain ng mga guro sa katapusan ng taon (MEB)",
-      "yksTyt": "YKS: sesyon ng TYT (ÖSYM)",
-      "yksAytYdt": "YKS: mga sesyon ng AYT at YDT (ÖSYM)",
-      "tryos": "TR-YÖS/2: pagsusulit para sa mga dayuhang estudyante (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS antas ng sekondarya (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT: pagsusulit sa larangan ng serbisyong panrelihiyon (ÖSYM)",
-      "dus2": "DUS ikalawang sesyon: pagsusulit sa espesyalidad sa dentistry (ÖSYM)",
-      "eus": "EUS: pagsusulit sa espesyalidad sa parmasya (ÖSYM)",
-      "yds2": "YDS/2: pagsusulit sa kahusayan sa banyagang wika (ÖSYM)",
-      "ales3": "ALES/3: pagsusulit sa pagpasok sa graduate studies (ÖSYM)",
-      "alesApply": "Panahon ng aplikasyon sa ALES/3 (ÖSYM)",
-      "kpssOnResult": "Resulta ng KPSS antas ng associate degree (ÖSYM)",
-      "kpssOrtaResult": "Resulta ng KPSS antas ng sekondarya (ÖSYM)",
-      "ydsResult": "Resulta ng YDS/2 (ÖSYM)",
-      "alesResult": "Resulta ng ALES/3 (ÖSYM)",
-      "kpssTercih": "Mga kagustuhan sa placement ng KPSS-2026/2 (ÖSYM)",
-      "common1": "Termino 1, unang sabayang nakasulat na pagsusulit (MEB)",
-      "common2": "Termino 1, ikalawang sabayang nakasulat na pagsusulit (MEB)",
-      "common3": "Termino 2, unang sabayang nakasulat na pagsusulit (MEB)",
-      "common4": "Termino 2, ikalawang sabayang nakasulat na pagsusulit (MEB)",
-      "aolRegister": "Panahon ng pagpaparehistro sa open high school (AÖL) (MEB)",
-      "aolEsinav": "Panahon ng e-exam ng AÖL (MEB)",
-      "aolWritten": "Nakasulat na pagsusulit ng AÖL (MEB)",
-      "aolResult": "Resulta ng unang termino ng AÖL (MEB)",
-      "aofMid1": "Midterm ng AÖF sa taglagas (Anadolu University)",
-      "aofFinal1": "Final exam ng AÖF sa taglagas (Anadolu University)",
-      "aofMid2": "Midterm ng AÖF sa tagsibol (Anadolu University)",
-      "aofFinal2": "Final exam ng AÖF sa tagsibol (Anadolu University)",
-      "aofSummer": "Pagsusulit ng summer school ng AÖF (Anadolu University)",
-      "ales1": "ALES/1: pagsusulit sa pagpasok sa graduate studies (ÖSYM)",
-      "ales2": "ALES/2: pagsusulit sa pagpasok sa graduate studies (ÖSYM)",
-      "yds1": "YDS/1: pagsusulit sa kahusayan sa banyagang wika (ÖSYM)",
-      "msu": "MSÜ: pagsusulit sa pagpasok sa National Defense University (ÖSYM)",
-      "ags": "MEB-AGS at ÖABT: pagsusulit sa pagpasok sa akademya ng mga guro (ÖSYM)",
-      "dgs": "DGS: pagsusulit sa paglipat sa bachelor (ÖSYM)",
-      "kpssGy": "KPSS antas ng bachelor: pangkalahatang kakayahan at kaalaman (ÖSYM)",
-      "kpssAlan": "KPSS antas ng bachelor: kaalaman sa larangan (ÖSYM)",
-      "iokbs": "İOKBS: pagsusulit para sa iskolarship (MEB)",
-      "lgs": "LGS: pagsusulit sa pagpasok sa high school (MEB)"
+      "teacherEnd": "Simula ng propesyonal na gawain ng mga guro sa katapusan ng taon (MEB)"
     },
     "hubName": "Taunang kalendaryo",
     "hubDesc": "Mga pista opisyal, mga araw ng bayram at bisperas, mga gabi ng kandil at buwan ng Ramadan.",
@@ -897,8 +851,7 @@
         "Ang Nobyembre ay mula sa Latin na novem, “siyam”.",
         "Ang Disyembre ay mula sa Latin na decem, “sampu”."
       ]
-    },
-    "showExams": "Ipakita ang mga petsa ng pagsusulit"
+    }
   },
   "tools": {
     "hub": {
@@ -1715,22 +1668,6 @@
         "name": "araw ng report card",
         "dat": "araw ng report card"
       },
-      "yks": {
-        "name": "YKS (pagsusulit sa pagpasok sa unibersidad)",
-        "dat": "YKS"
-      },
-      "kpss": {
-        "name": "KPSS (pagsusulit sa pagpili ng tauhan ng gobyerno)",
-        "dat": "KPSS"
-      },
-      "ales": {
-        "name": "ALES (pagsusulit sa pagpasok sa graduate studies)",
-        "dat": "ALES"
-      },
-      "yds": {
-        "name": "YDS (pagsusulit sa kahusayan sa banyagang wika)",
-        "dat": "YDS"
-      },
       "schoolStart": {
         "name": "Pagbubukas ng klase",
         "dat": "pagbubukas ng klase"
@@ -1738,14 +1675,6 @@
       "midterm": {
         "name": "bakasyon sa gitna ng termino",
         "dat": "bakasyon sa gitna ng termino"
-      },
-      "aof": {
-        "name": "Mga pagsusulit ng AÖF (open education ng Anadolu University)",
-        "dat": "mga pagsusulit ng AÖF"
-      },
-      "aol": {
-        "name": "Pagsusulit ng AÖL (open high school)",
-        "dat": "pagsusulit ng AÖL"
       },
       "feb14": {
         "name": "Araw ng mga Puso",
@@ -1766,13 +1695,8 @@
       "nov24": {
         "name": "Araw ng mga Guro",
         "dat": "Araw ng mga Guro"
-      },
-      "lgs": {
-        "name": "LGS (pagsusulit sa pagpasok sa high school)",
-        "dat": "LGS"
       }
-    },
-    "exam": "Kinukuha ang mga petsa ng pagsusulit sa mga anunsyo ng ÖSYM, MEB at Anadolu University, at puwede nilang baguhin ang mga ito. Hindi hinuhulaan ang mga petsang hindi pa inaanunsyo; idinadagdag ang mga ito kapag nailathala na."
+    }
   },
   "datecalc": {
     "title": "Date Calculator: Mga Araw, Araw ng Trabaho, Edad | Saat Tarih",

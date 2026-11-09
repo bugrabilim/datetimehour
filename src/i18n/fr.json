@@ -492,11 +492,6 @@
               "Jusqu’à ce que vous le supprimiez"
             ],
             [
-              "sth-cal-exams",
-              "Mémorise si vous affichez les dates d’examen dans le calendrier.",
-              "Jusqu’à ce que vous le supprimiez"
-            ],
-            [
               "sth-world",
               "Mémorise les villes choisies pour l’horloge mondiale et leur ordre.",
               "Jusqu’à ce que vous le supprimiez"
@@ -673,8 +668,7 @@
       "special": "Journée particulière",
       "weekend": "Week-end",
       "today": "Aujourd’hui",
-      "school": "Vacances ou date scolaire (MEB)",
-      "exam": "Examen ou date liée à un examen (ÖSYM, MEB, AÖF)"
+      "school": "Vacances ou date scolaire (MEB)"
     },
     "eventsHeading": "Liste des jours de {year}",
     "colDate": "Date",
@@ -771,47 +765,7 @@
       "schoolEnd": "Fin de l’année scolaire, remise des bulletins (MEB)",
       "teacherStart": "Début des activités professionnelles des enseignants (MEB)",
       "adaptation": "Début de la semaine d’adaptation en maternelle et en 1re année (MEB)",
-      "teacherEnd": "Début des activités de fin d’année des enseignants (MEB)",
-      "yksTyt": "YKS : épreuve TYT (ÖSYM)",
-      "yksAytYdt": "YKS : épreuves AYT et YDT (ÖSYM)",
-      "tryos": "TR-YÖS/2 : examen des étudiants internationaux (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS, niveau enseignement secondaire (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT : test des services religieux (ÖSYM)",
-      "dus2": "DUS, 2e session : examen de spécialité en dentisterie (ÖSYM)",
-      "eus": "EUS : examen de spécialité en pharmacie (ÖSYM)",
-      "yds2": "YDS/2 : examen de langue étrangère (ÖSYM)",
-      "ales3": "ALES/3 : examen d’entrée en master et doctorat (ÖSYM)",
-      "alesApply": "Période d’inscription à l’ALES/3 (ÖSYM)",
-      "kpssOnResult": "Résultats du KPSS niveau bac+2 (ÖSYM)",
-      "kpssOrtaResult": "Résultats du KPSS niveau secondaire (ÖSYM)",
-      "ydsResult": "Résultats du YDS/2 (ÖSYM)",
-      "alesResult": "Résultats de l’ALES/3 (ÖSYM)",
-      "kpssTercih": "Vœux d’affectation KPSS-2026/2 (ÖSYM)",
-      "common1": "1er semestre, premières épreuves écrites communes (MEB)",
-      "common2": "1er semestre, secondes épreuves écrites communes (MEB)",
-      "common3": "2d semestre, premières épreuves écrites communes (MEB)",
-      "common4": "2d semestre, secondes épreuves écrites communes (MEB)",
-      "aolRegister": "Période d’inscription au lycée ouvert (AÖL) (MEB)",
-      "aolEsinav": "Période des examens en ligne de l’AÖL (MEB)",
-      "aolWritten": "Examen écrit de l’AÖL (MEB)",
-      "aolResult": "Résultats de la 1re session de l’AÖL (MEB)",
-      "aofMid1": "AÖF : partiel d’automne (Université Anadolu)",
-      "aofFinal1": "AÖF : examen final d’automne (Université Anadolu)",
-      "aofMid2": "AÖF : partiel de printemps (Université Anadolu)",
-      "aofFinal2": "AÖF : examen final de printemps (Université Anadolu)",
-      "aofSummer": "AÖF : examen de l’école d’été (Université Anadolu)",
-      "ales1": "ALES/1 : examen d’entrée en master et doctorat (ÖSYM)",
-      "ales2": "ALES/2 : examen d’entrée en master et doctorat (ÖSYM)",
-      "yds1": "YDS/1 : examen de langue étrangère (ÖSYM)",
-      "msu": "MSÜ : concours d’entrée à l’Université de la défense nationale (ÖSYM)",
-      "ags": "MEB-AGS et ÖABT : concours d’entrée à l’académie des enseignants (ÖSYM)",
-      "dgs": "DGS : examen de passerelle vers la licence (ÖSYM)",
-      "kpssGy": "KPSS, niveau licence : aptitudes et culture générales (ÖSYM)",
-      "kpssAlan": "KPSS, niveau licence : connaissances du domaine (ÖSYM)",
-      "iokbs": "İOKBS : examen de bourse (MEB)",
-      "lgs": "LGS : examen d’entrée au lycée (MEB)"
+      "teacherEnd": "Début des activités de fin d’année des enseignants (MEB)"
     },
     "hubName": "Calendrier annuel",
     "hubDesc": "Jours fériés, jours de bayram et leurs veilles, nuits de kandil et mois de Ramadan.",
@@ -872,8 +826,7 @@
         "Novembre vient du latin novem, « neuf ».",
         "Décembre vient du latin decem, « dix »."
       ]
-    },
-    "showExams": "Afficher les dates d’examen"
+    }
   },
   "tools": {
     "hub": {
@@ -1690,22 +1643,6 @@
         "name": "la remise des bulletins",
         "dat": "la remise des bulletins"
       },
-      "yks": {
-        "name": "le YKS (examen d’entrée à l’université)",
-        "dat": "le YKS"
-      },
-      "kpss": {
-        "name": "le KPSS (examen de sélection de la fonction publique)",
-        "dat": "le KPSS"
-      },
-      "ales": {
-        "name": "l’ALES (examen d’entrée en master et doctorat)",
-        "dat": "l’ALES"
-      },
-      "yds": {
-        "name": "le YDS (examen de langue étrangère)",
-        "dat": "le YDS"
-      },
       "schoolStart": {
         "name": "la rentrée scolaire",
         "dat": "la rentrée scolaire"
@@ -1713,14 +1650,6 @@
       "midterm": {
         "name": "les vacances de mi-semestre",
         "dat": "la pause de mi-semestre"
-      },
-      "aof": {
-        "name": "les examens de l’AÖF (enseignement ouvert de l’Université Anadolu)",
-        "dat": "les examens de l’AÖF"
-      },
-      "aol": {
-        "name": "l’examen de l’AÖL (lycée ouvert)",
-        "dat": "l’examen de l’AÖL"
       },
       "feb14": {
         "name": "la Saint-Valentin",
@@ -1741,13 +1670,8 @@
       "nov24": {
         "name": "la Journée des enseignants",
         "dat": "la Journée des enseignants"
-      },
-      "lgs": {
-        "name": "le LGS (examen d’entrée au lycée)",
-        "dat": "le LGS"
       }
-    },
-    "exam": "Les dates d’examen proviennent des annonces de l’ÖSYM, du MEB et de l’Université Anadolu, qui peuvent les modifier. Les dates non annoncées ne sont pas devinées ; elles sont ajoutées dès leur publication."
+    }
   },
   "datecalc": {
     "title": "Calcul de dates : jours, jours ouvrés, âge | Saat Tarih",

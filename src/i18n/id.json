@@ -465,11 +465,6 @@
               "Sampai Anda menghapusnya"
             ],
             [
-              "sth-cal-exams",
-              "Mengingat pilihan Anda untuk menampilkan tanggal ujian di kalender.",
-              "Sampai Anda menghapusnya"
-            ],
-            [
               "sth-world",
               "Mengingat kota yang dipilih untuk jam dunia beserta urutannya.",
               "Sampai Anda menghapusnya"
@@ -646,8 +641,7 @@
       "special": "Hari istimewa",
       "weekend": "Akhir pekan",
       "today": "Hari ini",
-      "school": "Libur atau kalender sekolah (MEB)",
-      "exam": "Ujian atau tanggal terkait ujian (ÖSYM, MEB, AÖF)"
+      "school": "Libur atau kalender sekolah (MEB)"
     },
     "eventsHeading": "Daftar hari pada {year}",
     "colDate": "Tanggal",
@@ -744,47 +738,7 @@
       "schoolEnd": "Akhir tahun ajaran, hari rapor (MEB)",
       "teacherStart": "Kegiatan profesional guru dimulai (MEB)",
       "adaptation": "Pekan orientasi PAUD dan kelas 1 dimulai (MEB)",
-      "teacherEnd": "Kegiatan profesional guru akhir tahun dimulai (MEB)",
-      "yksTyt": "YKS: sesi TYT (ÖSYM)",
-      "yksAytYdt": "YKS: sesi AYT dan YDT (ÖSYM)",
-      "tryos": "TR-YÖS/2: ujian mahasiswa internasional (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS tingkat pendidikan menengah (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT: tes bidang layanan keagamaan (ÖSYM)",
-      "dus2": "DUS sesi kedua: ujian spesialis kedokteran gigi (ÖSYM)",
-      "eus": "EUS: ujian spesialis farmasi (ÖSYM)",
-      "yds2": "YDS/2: ujian kemampuan bahasa asing (ÖSYM)",
-      "ales3": "ALES/3: ujian masuk pascasarjana (ÖSYM)",
-      "alesApply": "Masa pendaftaran ALES/3 (ÖSYM)",
-      "kpssOnResult": "Hasil KPSS tingkat diploma (ÖSYM)",
-      "kpssOrtaResult": "Hasil KPSS tingkat pendidikan menengah (ÖSYM)",
-      "ydsResult": "Hasil YDS/2 (ÖSYM)",
-      "alesResult": "Hasil ALES/3 (ÖSYM)",
-      "kpssTercih": "Pemilihan penempatan KPSS-2026/2 (ÖSYM)",
-      "common1": "Semester 1, ujian tulis bersama pertama (MEB)",
-      "common2": "Semester 1, ujian tulis bersama kedua (MEB)",
-      "common3": "Semester 2, ujian tulis bersama pertama (MEB)",
-      "common4": "Semester 2, ujian tulis bersama kedua (MEB)",
-      "aolRegister": "Masa pendaftaran SMA terbuka (AÖL) (MEB)",
-      "aolEsinav": "Masa ujian elektronik AÖL (MEB)",
-      "aolWritten": "Ujian tulis AÖL (MEB)",
-      "aolResult": "Hasil semester pertama AÖL (MEB)",
-      "aofMid1": "AÖF: ujian tengah semester musim gugur (Universitas Anadolu)",
-      "aofFinal1": "AÖF: ujian akhir musim gugur (Universitas Anadolu)",
-      "aofMid2": "AÖF: ujian tengah semester musim semi (Universitas Anadolu)",
-      "aofFinal2": "AÖF: ujian akhir musim semi (Universitas Anadolu)",
-      "aofSummer": "AÖF: ujian sekolah musim panas (Universitas Anadolu)",
-      "ales1": "ALES/1: ujian masuk staf akademik dan pascasarjana (ÖSYM)",
-      "ales2": "ALES/2: ujian masuk staf akademik dan pascasarjana (ÖSYM)",
-      "yds1": "YDS/1: ujian kemampuan bahasa asing (ÖSYM)",
-      "msu": "MSÜ: ujian masuk Universitas Pertahanan Nasional (ÖSYM)",
-      "ags": "MEB-AGS dan ÖABT: ujian masuk akademi guru (ÖSYM)",
-      "dgs": "DGS: ujian alih jenjang ke sarjana (ÖSYM)",
-      "kpssGy": "KPSS tingkat sarjana: kemampuan umum dan pengetahuan umum (ÖSYM)",
-      "kpssAlan": "KPSS tingkat sarjana: pengetahuan bidang (ÖSYM)",
-      "iokbs": "İOKBS: ujian beasiswa (MEB)",
-      "lgs": "LGS: ujian masuk SMA (MEB)"
+      "teacherEnd": "Kegiatan profesional guru akhir tahun dimulai (MEB)"
     },
     "hubName": "Kalender tahunan",
     "hubDesc": "Hari libur resmi, hari bayram dan hari menjelangnya, malam kandil, serta bulan Ramadan.",
@@ -831,8 +785,7 @@
         "November berasal dari bahasa Latin novem, “sembilan”.",
         "Desember berasal dari bahasa Latin decem, “sepuluh”."
       ]
-    },
-    "showExams": "Tampilkan tanggal ujian"
+    }
   },
   "tools": {
     "hub": {
@@ -1649,22 +1602,6 @@
         "name": "pembagian rapor",
         "dat": "pembagian rapor"
       },
-      "yks": {
-        "name": "YKS (ujian masuk universitas)",
-        "dat": "YKS"
-      },
-      "kpss": {
-        "name": "KPSS (ujian seleksi pegawai negeri)",
-        "dat": "KPSS"
-      },
-      "ales": {
-        "name": "ALES (ujian masuk pascasarjana)",
-        "dat": "ALES"
-      },
-      "yds": {
-        "name": "YDS (ujian kemampuan bahasa asing)",
-        "dat": "YDS"
-      },
       "schoolStart": {
         "name": "Hari pertama sekolah",
         "dat": "hari pertama sekolah"
@@ -1672,14 +1609,6 @@
       "midterm": {
         "name": "libur tengah semester",
         "dat": "libur tengah semester"
-      },
-      "aof": {
-        "name": "ujian AÖF (pendidikan terbuka Universitas Anadolu)",
-        "dat": "ujian AÖF"
-      },
-      "aol": {
-        "name": "ujian AÖL (SMA terbuka)",
-        "dat": "ujian AÖL"
       },
       "feb14": {
         "name": "Hari Valentine",
@@ -1700,13 +1629,8 @@
       "nov24": {
         "name": "Hari Guru",
         "dat": "Hari Guru"
-      },
-      "lgs": {
-        "name": "LGS (ujian masuk SMA)",
-        "dat": "LGS"
       }
-    },
-    "exam": "Tanggal ujian diambil dari pengumuman ÖSYM, MEB, dan Universitas Anadolu, yang dapat mengubahnya. Tanggal yang belum diumumkan tidak ditebak; tanggal ditambahkan setelah diterbitkan."
+    }
   },
   "datecalc": {
     "title": "Kalkulator Tanggal: Hari, Hari Kerja, Usia | Saat Tarih",

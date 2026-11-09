@@ -26,7 +26,6 @@ struct CalendarTab: View {
     @AppStorage(CalPrefs.hijriNavKey) private var hijriNav = false
     @AppStorage(CalPrefs.countryKey) private var country = "TR"
     @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw = ""
-    @AppStorage(CalPrefs.examsKey) private var examsOn = false
     @State private var countrySheet = false
     @State private var leafOpen = false
 

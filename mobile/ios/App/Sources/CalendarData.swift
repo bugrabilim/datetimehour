@@ -25,8 +25,6 @@ final class CalendarData {
 
     struct Year: Decodable {
         let events: [Event]
-        /// Sınavlar (ÖSYM, MEB): yalnız takvim görünümleri, "Sınav tarihlerini göster" açıkken (CalPrefs.examsOn)
-        let exams: [Event]?
         let schoolRanges: [Span]
         let projected: Bool
     }
@@ -45,7 +43,6 @@ final class CalendarData {
     let years: [Int: Year]
     let ramadans: [Ramadan]
     private let byDate: [String: [Event]]
-    private let examsByDate: [String: [Event]]
 
     private init() {
         let file = Bundle.main.url(forResource: "calendar", withExtension: "json")
@@ -58,15 +55,11 @@ final class CalendarData {
             return Ramadan(from: from, to: r.to.flatMap { CalendarDay(iso: $0) } ?? from.adding(days: 29))
         }
         byDate = Dictionary(grouping: years.values.flatMap(\.events), by: \.date)
-        examsByDate = Dictionary(grouping: years.values.flatMap { $0.exams ?? [] }, by: \.date)
     }
 
     var yearRange: ClosedRange<Int> { (years.keys.min() ?? 2026)...(years.keys.max() ?? 2026) }
 
     func events(on day: CalendarDay) -> [Event] { byDate[day.iso] ?? [] }
-
-    /// O günün sınavları (takvimde varsayılan gizli)
-    func exams(on day: CalendarDay) -> [Event] { examsByDate[day.iso] ?? [] }
 
     func events(year: Int, month: Int) -> [Event] {
         (years[year]?.events ?? []).filter { $0.day?.month == month }
@@ -107,7 +100,6 @@ final class CalendarData {
         case "half": return Color(red: 0.90, green: 0.50, blue: 0.10)
         case "religious": return Color(red: 0.13, green: 0.55, blue: 0.35)
         case "school": return Color(red: 0.45, green: 0.33, blue: 0.75)
-        case "exam": return Color(red: 0.42, green: 0.30, blue: 0.22)
         default: return Color(red: 0.20, green: 0.45, blue: 0.80)
         }
     }

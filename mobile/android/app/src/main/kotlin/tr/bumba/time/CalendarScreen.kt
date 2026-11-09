@@ -304,8 +304,6 @@ object CalView {
     var hijriNav by androidx.compose.runtime.mutableStateOf(false)
     var country by androidx.compose.runtime.mutableStateOf("TR")
     var hidden by androidx.compose.runtime.mutableStateOf(emptySet<String>())
-    /** Sınav tarihleri takvimde (cal.exams; varsayılan kapalı) */
-    var exams by androidx.compose.runtime.mutableStateOf(false)
     private var loaded = false
 
     fun load() {
@@ -317,14 +315,15 @@ object CalView {
         mode = sp.getString("cal.mode", "month") ?: "month"; hijriNav = sp.getBoolean("cal.hijriNav", false)
         country = sp.getString("cal.country", "TR") ?: "TR"
         hidden = (sp.getString("cal.hidden", "") ?: "").split(",").filter { it.isNotEmpty() }.toSet()
-        exams = sp.getBoolean("cal.exams", false)
+        // Sınav tarihleri 9 Kasım 2026'da kaldırıldı (sahibin kararı); eski seçim silinir
+        if (sp.contains("cal.exams")) sp.edit().remove("cal.exams").apply()
     }
 
     fun save() {
         Prefs.store.edit().putBoolean("cal.weekNo", week).putBoolean("cal.moon", moon).putBoolean("cal.dst", dst)
             .putBoolean("cal.hijri", hijri).putBoolean("cal.names", names)
             .putString("cal.mode", mode).putBoolean("cal.hijriNav", hijriNav).putString("cal.country", country)
-            .putString("cal.hidden", hidden.joinToString(",")).putBoolean("cal.exams", exams).apply()
+            .putString("cal.hidden", hidden.joinToString(",")).apply()
     }
 
     /** Ayın yeni ay ve dolunay günleri (telefonun saat diliminde): gün → emoji */
@@ -502,8 +501,7 @@ private fun TypeRow(type: String, text: String) {
 @Composable
 private fun Legend() {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        val legendTypes = (if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")).filter { it !in CalView.hidden } +
-            (if (CalView.country == "TR" && CalView.exams) listOf("exam") else emptyList())
+        val legendTypes = (if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")).filter { it !in CalView.hidden }
         for (t in legendTypes) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.size(8.dp).background(AppData.color(t), CircleShape))

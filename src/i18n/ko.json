@@ -491,11 +491,6 @@
               "삭제할 때까지"
             ],
             [
-              "sth-cal-exams",
-              "달력에 시험 날짜를 표시할지에 대한 선택을 기억합니다.",
-              "삭제할 때까지"
-            ],
-            [
               "sth-world",
               "세계 시계에 고른 도시와 그 순서를 기억합니다.",
               "삭제할 때까지"
@@ -672,8 +667,7 @@
       "special": "특별한 날",
       "weekend": "주말",
       "today": "오늘",
-      "school": "방학 또는 학기 일정(MEB)",
-      "exam": "시험 또는 시험 관련 날짜(ÖSYM, MEB, AÖF)"
+      "school": "방학 또는 학기 일정(MEB)"
     },
     "eventsHeading": "{year}년 날짜 목록",
     "colDate": "날짜",
@@ -770,47 +764,7 @@
       "schoolEnd": "학년 종료, 성적표 받는 날(MEB)",
       "teacherStart": "교사 직무 연수 시작(MEB)",
       "adaptation": "유치원·1학년 적응 주간 시작(MEB)",
-      "teacherEnd": "교사 학년말 직무 연수 시작(MEB)",
-      "yksTyt": "YKS: TYT(ÖSYM)",
-      "yksAytYdt": "YKS: AYT와 YDT(ÖSYM)",
-      "tryos": "TR-YÖS/2: 외국인 학생 시험(ÖSYM)",
-      "eyds1": "e-YDS 2026/11(ÖSYM)",
-      "eyds2": "e-YDS 2026/12(ÖSYM)",
-      "kpssOrta": "KPSS 중등교육 수준(ÖSYM)",
-      "kpssDhbt": "KPSS DHBT: 종교 직무 분야 시험(ÖSYM)",
-      "dus2": "DUS 2차: 치과 전문의 시험(ÖSYM)",
-      "eus": "EUS: 약학 전문 시험(ÖSYM)",
-      "yds2": "YDS/2: 외국어 능력 시험(ÖSYM)",
-      "ales3": "ALES/3: 대학원 입학시험(ÖSYM)",
-      "alesApply": "ALES/3 접수 기간(ÖSYM)",
-      "kpssOnResult": "KPSS 전문대 수준 결과(ÖSYM)",
-      "kpssOrtaResult": "KPSS 중등교육 수준 결과(ÖSYM)",
-      "ydsResult": "YDS/2 결과(ÖSYM)",
-      "alesResult": "ALES/3 결과(ÖSYM)",
-      "kpssTercih": "KPSS-2026/2 배치 지망(ÖSYM)",
-      "common1": "1학기 1차 공통 필기시험(MEB)",
-      "common2": "1학기 2차 공통 필기시험(MEB)",
-      "common3": "2학기 1차 공통 필기시험(MEB)",
-      "common4": "2학기 2차 공통 필기시험(MEB)",
-      "aolRegister": "개방 고등학교(AÖL) 등록 기간(MEB)",
-      "aolEsinav": "AÖL 전자 시험 기간(MEB)",
-      "aolWritten": "AÖL 필기시험(MEB)",
-      "aolResult": "AÖL 1학기 결과(MEB)",
-      "aofMid1": "AÖF 가을 중간고사(아나돌루 대학교)",
-      "aofFinal1": "AÖF 가을 기말고사(아나돌루 대학교)",
-      "aofMid2": "AÖF 봄 중간고사(아나돌루 대학교)",
-      "aofFinal2": "AÖF 봄 기말고사(아나돌루 대학교)",
-      "aofSummer": "AÖF 여름 학기 시험(아나돌루 대학교)",
-      "ales1": "ALES/1: 대학원 입학시험(ÖSYM)",
-      "ales2": "ALES/2: 대학원 입학시험(ÖSYM)",
-      "yds1": "YDS/1: 외국어 능력 시험(ÖSYM)",
-      "msu": "MSÜ: 국방대학교 입학시험(ÖSYM)",
-      "ags": "MEB-AGS 및 ÖABT: 교원 아카데미 입학시험(ÖSYM)",
-      "dgs": "DGS: 학사 편입 시험(ÖSYM)",
-      "kpssGy": "KPSS 학사 수준: 일반 능력·일반 상식(ÖSYM)",
-      "kpssAlan": "KPSS 학사 수준: 전공 지식(ÖSYM)",
-      "iokbs": "İOKBS: 장학금 시험(MEB)",
-      "lgs": "LGS: 고등학교 입학시험(MEB)"
+      "teacherEnd": "교사 학년말 직무 연수 시작(MEB)"
     },
     "hubName": "연간 달력",
     "hubDesc": "공휴일, 바이람과 그 전날, 칸딜 밤, 라마단 달.",
@@ -857,8 +811,7 @@
         "11월(November)은 라틴어 novem(9)에서 왔습니다.",
         "12월(December)은 라틴어 decem(10)에서 왔습니다."
       ]
-    },
-    "showExams": "시험 날짜 표시"
+    }
   },
   "tools": {
     "hub": {
@@ -1675,22 +1628,6 @@
         "name": "성적표 받는 날",
         "dat": "성적표 받는 날"
       },
-      "yks": {
-        "name": "YKS(대학 입학시험)",
-        "dat": "YKS"
-      },
-      "kpss": {
-        "name": "KPSS(공무원 선발 시험)",
-        "dat": "KPSS"
-      },
-      "ales": {
-        "name": "ALES(대학원 입학시험)",
-        "dat": "ALES"
-      },
-      "yds": {
-        "name": "YDS(외국어 능력 시험)",
-        "dat": "YDS"
-      },
       "schoolStart": {
         "name": "개학일",
         "dat": "개학일"
@@ -1698,14 +1635,6 @@
       "midterm": {
         "name": "학기 중간 방학",
         "dat": "학기 중간 방학"
-      },
-      "aof": {
-        "name": "AÖF 시험(아나돌루 대학교 원격 교육)",
-        "dat": "AÖF 시험"
-      },
-      "aol": {
-        "name": "AÖL 시험(원격 교육 고등학교)",
-        "dat": "AÖL 시험"
       },
       "feb14": {
         "name": "밸런타인데이",
@@ -1726,13 +1655,8 @@
       "nov24": {
         "name": "교사의 날",
         "dat": "교사의 날"
-      },
-      "lgs": {
-        "name": "LGS(고등학교 입학시험)",
-        "dat": "LGS"
       }
-    },
-    "exam": "시험 날짜는 ÖSYM, MEB, 아나돌루 대학교 발표에서 가져오며 바뀔 수 있습니다. 발표되지 않은 날짜는 추측하지 않고 발표되면 추가합니다."
+    }
   },
   "datecalc": {
     "title": "날짜 계산기: 일수, 근무일, 나이 | Saat Tarih",

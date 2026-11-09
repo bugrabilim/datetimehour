@@ -465,11 +465,6 @@
               "Until you delete it"
             ],
             [
-              "sth-cal-exams",
-              "Remembers whether you chose to show exam dates on the calendar.",
-              "Until you delete it"
-            ],
-            [
               "sth-world",
               "Remembers the cities you chose for the world clock, and their order.",
               "Until you delete it"
@@ -646,8 +641,7 @@
       "special": "Special day",
       "weekend": "Weekend",
       "today": "Today",
-      "school": "School break or term date (MEB)",
-      "exam": "Exam or exam-related date (ÖSYM, MEB, AÖF)"
+      "school": "School break or term date (MEB)"
     },
     "eventsHeading": "List of days in {year}",
     "colDate": "Date",
@@ -744,47 +738,7 @@
       "schoolEnd": "End of school year, report card day (MEB)",
       "teacherStart": "Teachers' professional work begins (MEB)",
       "adaptation": "Orientation week for preschool and grade 1 begins (MEB)",
-      "teacherEnd": "Teachers' end-of-year professional work begins (MEB)",
-      "yksTyt": "YKS: TYT session (ÖSYM)",
-      "yksAytYdt": "YKS: AYT and YDT sessions (ÖSYM)",
-      "tryos": "TR-YÖS/2: exam for international students (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS secondary-education level (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT: religious services field test (ÖSYM)",
-      "dus2": "DUS second session: dentistry specialty exam (ÖSYM)",
-      "eus": "EUS: pharmacy specialty exam (ÖSYM)",
-      "yds2": "YDS/2: foreign language proficiency exam (ÖSYM)",
-      "ales3": "ALES/3: graduate studies entrance exam (ÖSYM)",
-      "alesApply": "ALES/3 application period (ÖSYM)",
-      "kpssOnResult": "KPSS associate-degree results (ÖSYM)",
-      "kpssOrtaResult": "KPSS secondary-education results (ÖSYM)",
-      "ydsResult": "YDS/2 results (ÖSYM)",
-      "alesResult": "ALES/3 results (ÖSYM)",
-      "kpssTercih": "KPSS-2026/2 placement preferences (ÖSYM)",
-      "common1": "Term 1, first common written exams (MEB)",
-      "common2": "Term 1, second common written exams (MEB)",
-      "common3": "Term 2, first common written exams (MEB)",
-      "common4": "Term 2, second common written exams (MEB)",
-      "aolRegister": "Open high school (AÖL) registration period (MEB)",
-      "aolEsinav": "AÖL e-exam period (MEB)",
-      "aolWritten": "AÖL written exam (MEB)",
-      "aolResult": "AÖL first-term results (MEB)",
-      "aofMid1": "AÖF autumn midterm exam (Anadolu University)",
-      "aofFinal1": "AÖF autumn final exam (Anadolu University)",
-      "aofMid2": "AÖF spring midterm exam (Anadolu University)",
-      "aofFinal2": "AÖF spring final exam (Anadolu University)",
-      "aofSummer": "AÖF summer school exam (Anadolu University)",
-      "ales1": "ALES/1: graduate studies entrance exam (ÖSYM)",
-      "ales2": "ALES/2: graduate studies entrance exam (ÖSYM)",
-      "yds1": "YDS/1: foreign language proficiency exam (ÖSYM)",
-      "msu": "MSÜ: National Defence University cadet entrance exam (ÖSYM)",
-      "ags": "MEB-AGS and ÖABT: teacher academy entrance exam (ÖSYM)",
-      "dgs": "DGS: vertical transfer exam (ÖSYM)",
-      "kpssGy": "KPSS bachelor's level: general ability and general culture (ÖSYM)",
-      "kpssAlan": "KPSS bachelor's level: field knowledge (ÖSYM)",
-      "iokbs": "İOKBS: scholarship exam (MEB)",
-      "lgs": "LGS: high school entrance exam (MEB)"
+      "teacherEnd": "Teachers' end-of-year professional work begins (MEB)"
     },
     "hubName": "Yearly calendar",
     "hubDesc": "Public holidays, bayram and eve days, kandil nights and the month of Ramadan.",
@@ -831,8 +785,7 @@
         "November comes from Latin novem, “nine”.",
         "December comes from Latin decem, “ten”."
       ]
-    },
-    "showExams": "Show exam dates"
+    }
   },
   "tools": {
     "hub": {
@@ -1649,22 +1602,6 @@
         "name": "report card day",
         "dat": "report card day"
       },
-      "yks": {
-        "name": "YKS (university entrance exam)",
-        "dat": "YKS"
-      },
-      "kpss": {
-        "name": "KPSS (public personnel selection exam)",
-        "dat": "KPSS"
-      },
-      "ales": {
-        "name": "ALES (graduate studies entrance exam)",
-        "dat": "ALES"
-      },
-      "yds": {
-        "name": "YDS (foreign language proficiency exam)",
-        "dat": "YDS"
-      },
       "schoolStart": {
         "name": "School opening day",
         "dat": "school opening day"
@@ -1672,14 +1609,6 @@
       "midterm": {
         "name": "the mid-term break",
         "dat": "the mid-term break"
-      },
-      "aof": {
-        "name": "AÖF exams (Anadolu University open education)",
-        "dat": "the AÖF exams"
-      },
-      "aol": {
-        "name": "AÖL exam (open high school)",
-        "dat": "the AÖL exam"
       },
       "feb14": {
         "name": "Valentine's Day",
@@ -1700,13 +1629,8 @@
       "nov24": {
         "name": "Teachers' Day",
         "dat": "Teachers' Day"
-      },
-      "lgs": {
-        "name": "LGS (high school entrance exam)",
-        "dat": "LGS"
       }
-    },
-    "exam": "Exam dates are taken from ÖSYM, MEB and Anadolu University announcements, which may change them. Dates that have not been announced are not guessed; they are added once published."
+    }
   },
   "datecalc": {
     "title": "Date Calculator: Days, Working Days, Age | Saat Tarih",

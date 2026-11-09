@@ -465,11 +465,6 @@
               "削除するまで"
             ],
             [
-              "sth-cal-exams",
-              "カレンダーに試験日を表示するかどうかの選択を記憶します。",
-              "削除するまで"
-            ],
-            [
               "sth-world",
               "世界時計で選んだ都市とその順番を覚えます。",
               "削除するまで"
@@ -646,8 +641,7 @@
       "special": "特別な日",
       "weekend": "週末",
       "today": "今日",
-      "school": "学校の休暇・学期の日程（MEB）",
-      "exam": "試験・試験関連の日（ÖSYM、MEB、AÖF）"
+      "school": "学校の休暇・学期の日程（MEB）"
     },
     "eventsHeading": "{year}年の祝日・特別な日の一覧",
     "colDate": "日付",
@@ -744,47 +738,7 @@
       "schoolEnd": "学年末・通知表配布日（MEB）",
       "teacherStart": "教員の職務研修開始（MEB）",
       "adaptation": "幼稚園・1年生の慣らし週間開始（MEB）",
-      "teacherEnd": "教員の学年末職務研修開始（MEB）",
-      "yksTyt": "YKS：TYT（ÖSYM）",
-      "yksAytYdt": "YKS：AYT と YDT（ÖSYM）",
-      "tryos": "TR-YÖS/2：外国人留学生試験（ÖSYM）",
-      "eyds1": "e-YDS 2026/11（ÖSYM）",
-      "eyds2": "e-YDS 2026/12（ÖSYM）",
-      "kpssOrta": "KPSS 中等教育レベル（ÖSYM）",
-      "kpssDhbt": "KPSS DHBT：宗教職分野試験（ÖSYM）",
-      "dus2": "DUS 第2回：歯科専門医試験（ÖSYM）",
-      "eus": "EUS：薬学専門試験（ÖSYM）",
-      "yds2": "YDS/2：外国語能力試験（ÖSYM）",
-      "ales3": "ALES/3：大学院入学試験（ÖSYM）",
-      "alesApply": "ALES/3 出願期間（ÖSYM）",
-      "kpssOnResult": "KPSS 短大レベルの結果（ÖSYM）",
-      "kpssOrtaResult": "KPSS 中等教育レベルの結果（ÖSYM）",
-      "ydsResult": "YDS/2 の結果（ÖSYM）",
-      "alesResult": "ALES/3 の結果（ÖSYM）",
-      "kpssTercih": "KPSS-2026/2 配属希望（ÖSYM）",
-      "common1": "1学期 第1回共通筆記試験（MEB）",
-      "common2": "1学期 第2回共通筆記試験（MEB）",
-      "common3": "2学期 第1回共通筆記試験（MEB）",
-      "common4": "2学期 第2回共通筆記試験（MEB）",
-      "aolRegister": "オープン高校（AÖL）登録期間（MEB）",
-      "aolEsinav": "AÖL 電子試験期間（MEB）",
-      "aolWritten": "AÖL 筆記試験（MEB）",
-      "aolResult": "AÖL 1学期の結果（MEB）",
-      "aofMid1": "AÖF 秋学期中間試験（アナドル大学）",
-      "aofFinal1": "AÖF 秋学期期末試験（アナドル大学）",
-      "aofMid2": "AÖF 春学期中間試験（アナドル大学）",
-      "aofFinal2": "AÖF 春学期期末試験（アナドル大学）",
-      "aofSummer": "AÖF 夏期講座試験（アナドル大学）",
-      "ales1": "ALES/1：大学院入学試験（ÖSYM）",
-      "ales2": "ALES/2：大学院入学試験（ÖSYM）",
-      "yds1": "YDS/1：外国語能力試験（ÖSYM）",
-      "msu": "MSÜ：国防大学入学試験（ÖSYM）",
-      "ags": "MEB-AGS・ÖABT：教員アカデミー入学試験（ÖSYM）",
-      "dgs": "DGS：学士課程編入試験（ÖSYM）",
-      "kpssGy": "KPSS 学士レベル：一般能力・一般教養（ÖSYM）",
-      "kpssAlan": "KPSS 学士レベル：専門知識（ÖSYM）",
-      "iokbs": "İOKBS：奨学金試験（MEB）",
-      "lgs": "LGS：高校入学試験（MEB）"
+      "teacherEnd": "教員の学年末職務研修開始（MEB）"
     },
     "hubName": "年間カレンダー",
     "hubDesc": "祝日、バイラムとその前日、カンディルの夜、ラマダン月。",
@@ -831,8 +785,7 @@
         "霜月（しもつき）：霜が降りる「霜降り月」から。",
         "師走（しわす）：年末に僧（師）が忙しく走り回る月とされます。"
       ]
-    },
-    "showExams": "試験日を表示"
+    }
   },
   "tools": {
     "hub": {
@@ -1649,22 +1602,6 @@
         "name": "通知表の日",
         "dat": "通知表の日"
       },
-      "yks": {
-        "name": "YKS（大学入試）",
-        "dat": "YKS"
-      },
-      "kpss": {
-        "name": "KPSS（公務員採用試験）",
-        "dat": "KPSS"
-      },
-      "ales": {
-        "name": "ALES（大学院入学試験）",
-        "dat": "ALES"
-      },
-      "yds": {
-        "name": "YDS（外国語能力試験）",
-        "dat": "YDS"
-      },
       "schoolStart": {
         "name": "学校の始業日",
         "dat": "学校の始業日"
@@ -1672,14 +1609,6 @@
       "midterm": {
         "name": "学期の中間休み",
         "dat": "学期の中間休み"
-      },
-      "aof": {
-        "name": "AÖF 試験（アナドル大学の通信教育）",
-        "dat": "AÖF 試験"
-      },
-      "aol": {
-        "name": "AÖL 試験（通信制高校）",
-        "dat": "AÖL 試験"
       },
       "feb14": {
         "name": "バレンタインデー",
@@ -1700,13 +1629,8 @@
       "nov24": {
         "name": "教師の日",
         "dat": "教師の日"
-      },
-      "lgs": {
-        "name": "LGS（高校入学試験）",
-        "dat": "LGS"
       }
-    },
-    "exam": "試験の日程は ÖSYM、MEB、アナドル大学の発表に基づいており、変更されることがあります。発表されていない日付は推測せず、公表され次第追加します。"
+    }
   },
   "datecalc": {
     "title": "日付計算：日数、営業日、年齢 | Saat Tarih",

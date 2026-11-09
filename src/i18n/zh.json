@@ -491,11 +491,6 @@
               "直到您删除"
             ],
             [
-              "sth-cal-exams",
-              "记住您是否选择在日历中显示考试日期。",
-              "直到您删除"
-            ],
-            [
               "sth-world",
               "记住您为世界时钟选择的城市及其顺序。",
               "直到您删除"
@@ -672,8 +667,7 @@
       "special": "特殊日子",
       "weekend": "周末",
       "today": "今天",
-      "school": "学校假期或学期日期（MEB）",
-      "exam": "考试或与考试相关的日期（ÖSYM、MEB、AÖF）"
+      "school": "学校假期或学期日期（MEB）"
     },
     "eventsHeading": "{year}年重要日期列表",
     "colDate": "日期",
@@ -770,47 +764,7 @@
       "schoolEnd": "学年结束，发成绩单（MEB）",
       "teacherStart": "教师职业研修开始（MEB）",
       "adaptation": "幼儿园和一年级适应周开始（MEB）",
-      "teacherEnd": "教师学年末职业研修开始（MEB）",
-      "yksTyt": "YKS：TYT 场次（ÖSYM）",
-      "yksAytYdt": "YKS：AYT 和 YDT 场次（ÖSYM）",
-      "tryos": "TR-YÖS/2：国际学生考试（ÖSYM）",
-      "eyds1": "e-YDS 2026/11（ÖSYM）",
-      "eyds2": "e-YDS 2026/12（ÖSYM）",
-      "kpssOrta": "KPSS 中等教育层次（ÖSYM）",
-      "kpssDhbt": "KPSS DHBT：宗教服务领域考试（ÖSYM）",
-      "dus2": "DUS 第二场：牙科专科考试（ÖSYM）",
-      "eus": "EUS：药学专科考试（ÖSYM）",
-      "yds2": "YDS/2：外语水平考试（ÖSYM）",
-      "ales3": "ALES/3：研究生入学考试（ÖSYM）",
-      "alesApply": "ALES/3 报名期（ÖSYM）",
-      "kpssOnResult": "KPSS 副学士层次成绩（ÖSYM）",
-      "kpssOrtaResult": "KPSS 中等教育层次成绩（ÖSYM）",
-      "ydsResult": "YDS/2 成绩（ÖSYM）",
-      "alesResult": "ALES/3 成绩（ÖSYM）",
-      "kpssTercih": "KPSS-2026/2 分配志愿（ÖSYM）",
-      "common1": "第一学期第一次统一笔试（MEB）",
-      "common2": "第一学期第二次统一笔试（MEB）",
-      "common3": "第二学期第一次统一笔试（MEB）",
-      "common4": "第二学期第二次统一笔试（MEB）",
-      "aolRegister": "开放高中（AÖL）注册期（MEB）",
-      "aolEsinav": "AÖL 电子考试期（MEB）",
-      "aolWritten": "AÖL 笔试（MEB）",
-      "aolResult": "AÖL 第一学期成绩（MEB）",
-      "aofMid1": "AÖF 秋季期中考试（阿纳多卢大学）",
-      "aofFinal1": "AÖF 秋季期末考试（阿纳多卢大学）",
-      "aofMid2": "AÖF 春季期中考试（阿纳多卢大学）",
-      "aofFinal2": "AÖF 春季期末考试（阿纳多卢大学）",
-      "aofSummer": "AÖF 暑期学校考试（阿纳多卢大学）",
-      "ales1": "ALES/1：研究生入学考试（ÖSYM）",
-      "ales2": "ALES/2：研究生入学考试（ÖSYM）",
-      "yds1": "YDS/1：外语水平考试（ÖSYM）",
-      "msu": "MSÜ：国防大学入学考试（ÖSYM）",
-      "ags": "MEB-AGS 和 ÖABT：教师学院入学考试（ÖSYM）",
-      "dgs": "DGS：本科插班考试（ÖSYM）",
-      "kpssGy": "KPSS 本科层次：一般能力与常识（ÖSYM）",
-      "kpssAlan": "KPSS 本科层次：专业知识（ÖSYM）",
-      "iokbs": "İOKBS：奖学金考试（MEB）",
-      "lgs": "LGS：高中入学考试（MEB）"
+      "teacherEnd": "教师学年末职业研修开始（MEB）"
     },
     "hubName": "年历",
     "hubDesc": "公共假日、节日及其前夕、坎迪尔之夜和斋月。",
@@ -857,8 +811,7 @@
         "十一月 November 源自拉丁语 novem（“九”）。",
         "十二月 December 源自拉丁语 decem（“十”）。"
       ]
-    },
-    "showExams": "显示考试日期"
+    }
   },
   "tools": {
     "hub": {
@@ -1675,22 +1628,6 @@
         "name": "成绩单发放日",
         "dat": "成绩单发放日"
       },
-      "yks": {
-        "name": "YKS（大学入学考试）",
-        "dat": "YKS"
-      },
-      "kpss": {
-        "name": "KPSS（公职人员选拔考试）",
-        "dat": "KPSS"
-      },
-      "ales": {
-        "name": "ALES（研究生入学考试）",
-        "dat": "ALES"
-      },
-      "yds": {
-        "name": "YDS（外语水平考试）",
-        "dat": "YDS"
-      },
       "schoolStart": {
         "name": "开学日",
         "dat": "开学日"
@@ -1698,14 +1635,6 @@
       "midterm": {
         "name": "期中假期",
         "dat": "期中假期"
-      },
-      "aof": {
-        "name": "AÖF 考试（阿纳多卢大学开放教育）",
-        "dat": "AÖF 考试"
-      },
-      "aol": {
-        "name": "AÖL 考试（开放高中）",
-        "dat": "AÖL 考试"
       },
       "feb14": {
         "name": "情人节",
@@ -1726,13 +1655,8 @@
       "nov24": {
         "name": "教师节",
         "dat": "教师节"
-      },
-      "lgs": {
-        "name": "LGS（高中入学考试）",
-        "dat": "LGS"
       }
-    },
-    "exam": "考试日期取自 ÖSYM、MEB 和阿纳多卢大学的公告，可能会有变化。未公布的日期不做猜测，公布后再添加。"
+    }
   },
   "datecalc": {
     "title": "日期计算器：天数、工作日、年龄 | Saat Tarih",
