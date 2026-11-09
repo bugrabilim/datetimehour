@@ -1,8 +1,8 @@
 {
   "tr": {
     "name": "Çin ay takvimi",
-    "desc": "Çin, Kore ve Vietnam'ın geleneksel ay-güneş takvimi: Çin Yeni Yılı ve diğer bayramlar, 24 güneş dönemi ve Çin burcu yılı.",
-    "note": "Ay başları ve güneş dönemleri Çin saatiyle (UTC+8) astronomik hesaptan. Seollal ve Chuseok Kore saatiyle (UTC+9) hesaplanır; Tết Vietnam'da (UTC+7) başka güne düşerse ayrıca gösterilir. Kore ve Vietnam'da bazı aylar bir gün önce ya da sonra başlar.",
+    "desc": "Çin'in geleneksel ay-güneş takvimi: Çin Yeni Yılı ve diğer bayramlar, 24 güneş dönemi ve Çin burcu yılı.",
+    "note": "Ay başları ve güneş dönemleri Çin saatiyle (UTC+8) astronomik hesaptan. Kore ve Vietnam ay takvimleri, bazı aylar bir gün farklı başladığı için ayrı takvimlerdir.",
     "ev": {
       "ny1": "Çin Yeni Yılı (Fare Yılı)",
       "ny6": "Çin Yeni Yılı (Yılan Yılı)",
@@ -19,12 +19,7 @@
       "qixi": "Qixi (Çin Sevgililer Günü)",
       "midAutumn": "Sonbahar Ortası Bayramı",
       "doubleNinth": "Çifte Dokuz Bayramı",
-      "dongzhi": "Dongzhi (Kış Gündönümü Bayramı)",
-      "seollalHol": "Seollal tatili (Kore)",
-      "seollal": "Seollal (Kore Yeni Yılı)",
-      "chuseokHol": "Chuseok tatili (Kore)",
-      "chuseok": "Chuseok (Kore hasat bayramı)",
-      "tet": "Tết (Vietnam Yeni Yılı)"
+      "dongzhi": "Dongzhi (Kış Gündönümü Bayramı)"
     },
     "month": [
       "Birinci ay",
@@ -71,8 +66,8 @@
   },
   "en": {
     "name": "Chinese lunar calendar",
-    "desc": "The traditional lunisolar calendar of China, Korea and Vietnam: Chinese New Year and other festivals, the 24 solar terms and the Chinese zodiac year.",
-    "note": "Month starts and solar terms are calculated astronomically for China time (UTC+8). Seollal and Chuseok are calculated for Korea time (UTC+9); when Tết falls on a different day in Vietnam (UTC+7), it is shown separately. In Korea and Vietnam some months begin one day earlier or later.",
+    "desc": "China’s traditional lunisolar calendar: Chinese New Year and other festivals, the 24 solar terms and the Chinese zodiac year.",
+    "note": "Month starts and solar terms are calculated astronomically for China time (UTC+8). The Korean and Vietnamese lunar calendars are separate calendars because some months begin one day earlier or later there.",
     "ev": {
       "ny1": "Chinese New Year (Year of the Rat)",
       "ny6": "Chinese New Year (Year of the Snake)",
@@ -89,12 +84,7 @@
       "qixi": "Qixi Festival",
       "midAutumn": "Mid-Autumn Festival",
       "doubleNinth": "Double Ninth Festival",
-      "dongzhi": "Dongzhi Festival (winter solstice)",
-      "seollalHol": "Seollal holiday (Korea)",
-      "seollal": "Seollal (Korean New Year)",
-      "chuseokHol": "Chuseok holiday (Korea)",
-      "chuseok": "Chuseok (Korean harvest festival)",
-      "tet": "Tết (Vietnamese New Year)"
+      "dongzhi": "Dongzhi Festival (winter solstice)"
     },
     "month": [
       "1st month",
@@ -141,8 +131,8 @@
   },
   "de": {
     "name": "Chinesischer Mondkalender",
-    "desc": "Der traditionelle Lunisolarkalender Chinas, Koreas und Vietnams: Chinesisches Neujahr und weitere Feste, die 24 Sonnenperioden und das chinesische Tierkreisjahr.",
-    "note": "Monatsanfänge und Sonnenperioden werden astronomisch für die chinesische Zeit (UTC+8) berechnet. Seollal und Chuseok gelten für die koreanische Zeit (UTC+9); fällt Tết in Vietnam (UTC+7) auf einen anderen Tag, wird es gesondert angezeigt. In Korea und Vietnam beginnen manche Monate einen Tag früher oder später.",
+    "desc": "Der traditionelle Lunisolarkalender Chinas: Chinesisches Neujahr und weitere Feste, die 24 Sonnenperioden und das chinesische Tierkreisjahr.",
+    "note": "Monatsanfänge und Sonnenperioden werden astronomisch für die chinesische Zeit (UTC+8) berechnet. Der koreanische und der vietnamesische Mondkalender sind eigene Kalender, weil dort manche Monate einen Tag früher oder später beginnen.",
     "ev": {
       "ny1": "Chinesisches Neujahr (Jahr der Ratte)",
       "ny6": "Chinesisches Neujahr (Jahr der Schlange)",
@@ -159,12 +149,7 @@
       "qixi": "Qixi-Fest",
       "midAutumn": "Mondfest (Mittherbstfest)",
       "doubleNinth": "Doppelneunfest",
-      "dongzhi": "Dongzhi-Fest (Wintersonnenwende)",
-      "seollalHol": "Seollal-Feiertag (Korea)",
-      "seollal": "Seollal (koreanisches Neujahr)",
-      "chuseokHol": "Chuseok-Feiertag (Korea)",
-      "chuseok": "Chuseok (koreanisches Erntedankfest)",
-      "tet": "Tết (vietnamesisches Neujahr)"
+      "dongzhi": "Dongzhi-Fest (Wintersonnenwende)"
     },
     "month": [
       "1. Monat",
@@ -211,8 +196,8 @@
   },
   "az": {
     "name": "Çin ay təqvimi",
-    "desc": "Çin, Koreya və Vyetnamın ənənəvi ay-günəş təqvimi: Çin Yeni ili və digər bayramlar, 24 günəş dövrü və Çin bürcü ili.",
-    "note": "Ay başlanğıcları və günəş dövrləri Çin vaxtı ilə (UTC+8) astronomik hesablanır. Seollal və Chuseok Koreya vaxtı ilə (UTC+9) hesablanır; Tết Vyetnamda (UTC+7) başqa günə düşərsə, ayrıca göstərilir. Koreya və Vyetnamda bəzi aylar bir gün tez və ya gec başlayır.",
+    "desc": "Çinin ənənəvi ay-günəş təqvimi: Çin Yeni ili və digər bayramlar, 24 günəş dövrü və Çin bürcü ili.",
+    "note": "Ay başlanğıcları və günəş dövrləri Çin vaxtı ilə (UTC+8) astronomik hesablanır. Koreya və Vyetnam ay təqvimləri ayrıca təqvimlərdir, çünki orada bəzi aylar bir gün tez və ya gec başlayır.",
     "ev": {
       "ny1": "Çin Yeni ili (Siçan ili)",
       "ny6": "Çin Yeni ili (İlan ili)",
@@ -229,12 +214,7 @@
       "qixi": "Qixi bayramı",
       "midAutumn": "Payız ortası bayramı",
       "doubleNinth": "Qoşa doqquz bayramı",
-      "dongzhi": "Dongzhi (Qış gündönümü bayramı)",
-      "seollalHol": "Seollal tətili (Koreya)",
-      "seollal": "Seollal (Koreya Yeni ili)",
-      "chuseokHol": "Chuseok tətili (Koreya)",
-      "chuseok": "Chuseok (Koreya məhsul bayramı)",
-      "tet": "Tết (Vyetnam Yeni ili)"
+      "dongzhi": "Dongzhi (Qış gündönümü bayramı)"
     },
     "month": [
       "Birinci ay",
@@ -281,8 +261,8 @@
   },
   "ar": {
     "name": "التقويم القمري الصيني",
-    "desc": "التقويم القمري الشمسي التقليدي في الصين وكوريا وفيتنام: رأس السنة الصينية والأعياد الأخرى، والفصول الشمسية الأربعة والعشرون، وسنة الأبراج الصينية.",
-    "note": "تُحسب بدايات الأشهر والفصول الشمسية فلكيًا بتوقيت الصين (UTC+8). ويُحسب سولال وتشوسوك بتوقيت كوريا (UTC+9)، وإذا وقع تيت في فيتنام (UTC+7) في يوم مختلف يُعرض منفصلًا. في كوريا وفيتنام تبدأ بعض الأشهر قبل يوم أو بعده.",
+    "desc": "التقويم القمري الشمسي التقليدي في الصين: رأس السنة الصينية والأعياد الأخرى، والفصول الشمسية الأربعة والعشرون، وسنة الأبراج الصينية.",
+    "note": "تُحسب بدايات الأشهر والفصول الشمسية فلكيًا بتوقيت الصين (UTC+8). التقويمان القمريان الكوري والفيتنامي تقويمان منفصلان، لأن بعض الأشهر تبدأ هناك قبل يوم أو بعده.",
     "ev": {
       "ny1": "رأس السنة الصينية (عام الفأر)",
       "ny6": "رأس السنة الصينية (عام الأفعى)",
@@ -299,12 +279,7 @@
       "qixi": "مهرجان تشيشي",
       "midAutumn": "مهرجان منتصف الخريف",
       "doubleNinth": "مهرجان التاسع المزدوج",
-      "dongzhi": "مهرجان دونغجي (الانقلاب الشتوي)",
-      "seollalHol": "عطلة سولال (كوريا)",
-      "seollal": "سولال (رأس السنة الكورية)",
-      "chuseokHol": "عطلة تشوسوك (كوريا)",
-      "chuseok": "تشوسوك (عيد الحصاد الكوري)",
-      "tet": "تيت (رأس السنة الفيتنامية)"
+      "dongzhi": "مهرجان دونغجي (الانقلاب الشتوي)"
     },
     "month": [
       "الشهر الأول",
@@ -351,8 +326,8 @@
   },
   "id": {
     "name": "Kalender Imlek",
-    "desc": "Kalender lunisolar tradisional Tiongkok, Korea, dan Vietnam: Tahun Baru Imlek dan perayaan lainnya, 24 periode matahari, dan tahun shio.",
-    "note": "Awal bulan dan periode matahari dihitung secara astronomis menurut waktu Tiongkok (UTC+8). Seollal dan Chuseok dihitung menurut waktu Korea (UTC+9); jika Tết di Vietnam (UTC+7) jatuh pada hari lain, ditampilkan terpisah. Di Korea dan Vietnam beberapa bulan dimulai sehari lebih awal atau lebih lambat.",
+    "desc": "Kalender lunisolar tradisional Tiongkok: Tahun Baru Imlek dan perayaan lainnya, 24 periode matahari, dan tahun shio.",
+    "note": "Awal bulan dan periode matahari dihitung secara astronomis menurut waktu Tiongkok (UTC+8). Kalender lunar Korea dan Vietnam adalah kalender tersendiri karena di sana beberapa bulan dimulai sehari lebih awal atau lebih lambat.",
     "ev": {
       "ny1": "Tahun Baru Imlek (Tahun Tikus)",
       "ny6": "Tahun Baru Imlek (Tahun Ular)",
@@ -369,12 +344,7 @@
       "qixi": "Festival Qixi",
       "midAutumn": "Festival Kue Bulan (Tiong Ciu)",
       "doubleNinth": "Festival Chongyang (Sembilan Ganda)",
-      "dongzhi": "Festival Dongzhi (titik balik musim dingin)",
-      "seollalHol": "Libur Seollal (Korea)",
-      "seollal": "Seollal (Tahun Baru Korea)",
-      "chuseokHol": "Libur Chuseok (Korea)",
-      "chuseok": "Chuseok (festival panen Korea)",
-      "tet": "Tết (Tahun Baru Vietnam)"
+      "dongzhi": "Festival Dongzhi (titik balik musim dingin)"
     },
     "month": [
       "bulan ke-1",
@@ -421,8 +391,8 @@
   },
   "ur": {
     "name": "چینی قمری کیلنڈر",
-    "desc": "چین، کوریا اور ویتنام کا روایتی قمری شمسی کیلنڈر: چینی نیا سال اور دوسرے تہوار، 24 شمسی ادوار اور چینی برج کا سال۔",
-    "note": "مہینوں کا آغاز اور شمسی ادوار چین کے وقت (UTC+8) کے مطابق فلکیاتی حساب سے ہیں۔ سیولال اور چوسوک کوریا کے وقت (UTC+9) سے حساب کیے جاتے ہیں؛ اگر ویتنام (UTC+7) میں تیت کسی اور دن ہو تو الگ دکھایا جاتا ہے۔ کوریا اور ویتنام میں کچھ مہینے ایک دن پہلے یا بعد شروع ہوتے ہیں۔",
+    "desc": "چین کا روایتی قمری شمسی کیلنڈر: چینی نیا سال اور دوسرے تہوار، 24 شمسی ادوار اور چینی برج کا سال۔",
+    "note": "مہینوں کا آغاز اور شمسی ادوار چین کے وقت (UTC+8) کے مطابق فلکیاتی حساب سے ہیں۔ کوریائی اور ویتنامی قمری کیلنڈر الگ کیلنڈر ہیں، کیونکہ وہاں کچھ مہینے ایک دن پہلے یا بعد شروع ہوتے ہیں۔",
     "ev": {
       "ny1": "چینی نیا سال (چوہے کا سال)",
       "ny6": "چینی نیا سال (سانپ کا سال)",
@@ -439,12 +409,7 @@
       "qixi": "چی شی تہوار",
       "midAutumn": "وسطِ خزاں کا تہوار",
       "doubleNinth": "دوہرا نواں تہوار",
-      "dongzhi": "دونگ ژی تہوار (سرمائی انقلاب)",
-      "seollalHol": "سیولال کی تعطیل (کوریا)",
-      "seollal": "سیولال (کوریائی نیا سال)",
-      "chuseokHol": "چوسوک کی تعطیل (کوریا)",
-      "chuseok": "چوسوک (کوریائی فصل کا تہوار)",
-      "tet": "تیت (ویتنامی نیا سال)"
+      "dongzhi": "دونگ ژی تہوار (سرمائی انقلاب)"
     },
     "month": [
       "پہلا مہینہ",
@@ -491,8 +456,8 @@
   },
   "fa": {
     "name": "گاه‌شماری قمری چینی",
-    "desc": "گاه‌شماری قمری‌خورشیدی سنتی چین، کره و ویتنام: سال نو چینی و جشن‌های دیگر، 24 دوره خورشیدی و سال حیوانی چینی.",
-    "note": "آغاز ماه‌ها و دوره‌های خورشیدی به وقت چین (UTC+8) و با محاسبه نجومی است. سولال و چوسوک به وقت کره (UTC+9) محاسبه می‌شوند؛ اگر تت در ویتنام (UTC+7) به روز دیگری بیفتد، جداگانه نشان داده می‌شود. در کره و ویتنام برخی ماه‌ها یک روز زودتر یا دیرتر آغاز می‌شوند.",
+    "desc": "گاه‌شماری قمری‌خورشیدی سنتی چین: سال نو چینی و جشن‌های دیگر، 24 دوره خورشیدی و سال حیوانی چینی.",
+    "note": "آغاز ماه‌ها و دوره‌های خورشیدی به وقت چین (UTC+8) و با محاسبه نجومی است. گاه‌شماری‌های قمری کره و ویتنام جداگانه‌اند، زیرا آنجا برخی ماه‌ها یک روز زودتر یا دیرتر آغاز می‌شوند.",
     "ev": {
       "ny1": "سال نو چینی (سال موش)",
       "ny6": "سال نو چینی (سال مار)",
@@ -509,12 +474,7 @@
       "qixi": "جشن چی‌شی",
       "midAutumn": "جشن نیمه پاییز",
       "doubleNinth": "جشن نهمِ دوگانه",
-      "dongzhi": "جشن دونگ‌جی (انقلاب زمستانی)",
-      "seollalHol": "تعطیلات سولال (کره)",
-      "seollal": "سولال (سال نو کره‌ای)",
-      "chuseokHol": "تعطیلات چوسوک (کره)",
-      "chuseok": "چوسوک (جشن برداشت کره‌ای)",
-      "tet": "تت (سال نو ویتنامی)"
+      "dongzhi": "جشن دونگ‌جی (انقلاب زمستانی)"
     },
     "month": [
       "ماه یکم",
@@ -561,8 +521,8 @@
   },
   "fr": {
     "name": "Calendrier lunaire chinois",
-    "desc": "Le calendrier luni-solaire traditionnel de la Chine, de la Corée et du Vietnam : Nouvel An chinois et autres fêtes, les 24 termes solaires et l’année du zodiaque chinois.",
-    "note": "Les débuts de mois et les termes solaires sont calculés astronomiquement pour l’heure de Chine (UTC+8). Seollal et Chuseok sont calculés pour l’heure de Corée (UTC+9) ; quand le Tết tombe un autre jour au Vietnam (UTC+7), il est affiché à part. En Corée et au Vietnam, certains mois commencent un jour plus tôt ou plus tard.",
+    "desc": "Le calendrier luni-solaire traditionnel de la Chine : Nouvel An chinois et autres fêtes, les 24 termes solaires et l’année du zodiaque chinois.",
+    "note": "Les débuts de mois et les termes solaires sont calculés astronomiquement pour l’heure de Chine (UTC+8). Les calendriers lunaires coréen et vietnamien sont des calendriers distincts, car certains mois y commencent un jour plus tôt ou plus tard.",
     "ev": {
       "ny1": "Nouvel An chinois (année du Rat)",
       "ny6": "Nouvel An chinois (année du Serpent)",
@@ -579,12 +539,7 @@
       "qixi": "Fête de Qixi",
       "midAutumn": "Fête de la mi-automne",
       "doubleNinth": "Fête du double neuf",
-      "dongzhi": "Fête de Dongzhi (solstice d’hiver)",
-      "seollalHol": "Congé de Seollal (Corée)",
-      "seollal": "Seollal (Nouvel An coréen)",
-      "chuseokHol": "Congé de Chuseok (Corée)",
-      "chuseok": "Chuseok (fête des récoltes coréenne)",
-      "tet": "Tết (Nouvel An vietnamien)"
+      "dongzhi": "Fête de Dongzhi (solstice d’hiver)"
     },
     "month": [
       "1er mois",
@@ -631,8 +586,8 @@
   },
   "ru": {
     "name": "Китайский лунный календарь",
-    "desc": "Традиционный лунно-солнечный календарь Китая, Кореи и Вьетнама: китайский Новый год и другие праздники, 24 сезона цзеци и год по китайскому зодиаку.",
-    "note": "Начала месяцев и сезоны рассчитаны астрономически по времени Китая (UTC+8). Соллаль и Чхусок рассчитаны по времени Кореи (UTC+9); если Тет во Вьетнаме (UTC+7) приходится на другой день, он показан отдельно. В Корее и Вьетнаме некоторые месяцы начинаются на день раньше или позже.",
+    "desc": "Традиционный лунно-солнечный календарь Китая: китайский Новый год и другие праздники, 24 сезона цзеци и год по китайскому зодиаку.",
+    "note": "Начала месяцев и сезоны рассчитаны астрономически по времени Китая (UTC+8). Корейский и вьетнамский лунные календари — отдельные календари, так как там некоторые месяцы начинаются на день раньше или позже.",
     "ev": {
       "ny1": "Китайский Новый год (год Крысы)",
       "ny6": "Китайский Новый год (год Змеи)",
@@ -649,12 +604,7 @@
       "qixi": "Праздник Цисицзе",
       "midAutumn": "Праздник середины осени",
       "doubleNinth": "Праздник двойной девятки",
-      "dongzhi": "Дунчжи (зимнее солнцестояние)",
-      "seollalHol": "Выходной Соллаль (Корея)",
-      "seollal": "Соллаль (корейский Новый год)",
-      "chuseokHol": "Выходной Чхусок (Корея)",
-      "chuseok": "Чхусок (корейский праздник урожая)",
-      "tet": "Тет (вьетнамский Новый год)"
+      "dongzhi": "Дунчжи (зимнее солнцестояние)"
     },
     "month": [
       "1-й месяц",
@@ -701,8 +651,8 @@
   },
   "ja": {
     "name": "中国の旧暦",
-    "desc": "中国・韓国・ベトナムの伝統的な太陰太陽暦。春節などの祝祭日、二十四節気、干支の年を表示します。",
-    "note": "月の始まりと二十四節気は中国時間（UTC+8）で天文計算しています。ソルラルとチュソクは韓国時間（UTC+9）で計算し、ベトナム（UTC+7）でテトが別の日になる年は別に表示します。韓国とベトナムでは、月の始まりが1日前後する月があります。",
+    "desc": "中国の伝統的な太陰太陽暦。春節などの祝祭日、二十四節気、干支の年を表示します。",
+    "note": "月の始まりと二十四節気は中国時間（UTC+8）で天文計算しています。韓国とベトナムの旧暦は月の始まりが1日前後する月があるため、別の暦として選べます。",
     "ev": {
       "ny1": "春節（子年）",
       "ny6": "春節（巳年）",
@@ -719,12 +669,7 @@
       "qixi": "七夕節",
       "midAutumn": "中秋節",
       "doubleNinth": "重陽節",
-      "dongzhi": "冬至節",
-      "seollalHol": "ソルラル連休（韓国）",
-      "seollal": "ソルラル（韓国の旧正月）",
-      "chuseokHol": "チュソク連休（韓国）",
-      "chuseok": "チュソク（韓国の秋夕）",
-      "tet": "テト（ベトナムの旧正月）"
+      "dongzhi": "冬至節"
     },
     "month": [
       "1月",
@@ -770,9 +715,9 @@
     }
   },
   "ko": {
-    "name": "동아시아 음력",
-    "desc": "중국, 한국, 베트남의 전통 태음태양력: 춘절과 설날 등 명절, 24절기, 띠.",
-    "note": "월의 시작과 24절기는 중국 시간(UTC+8)으로 천문 계산했습니다. 설날과 추석은 한국 시간(UTC+9)으로 계산하며, 베트남(UTC+7)의 뗏이 다른 날이면 따로 표시합니다. 한국과 베트남에서는 일부 달이 하루 일찍 또는 늦게 시작합니다.",
+    "name": "중국 음력",
+    "desc": "중국의 전통 태음태양력: 춘절 등 명절, 24절기, 띠.",
+    "note": "월의 시작과 24절기는 중국 시간(UTC+8)으로 천문 계산했습니다. 한국 음력과 베트남 음력은 일부 달이 하루 일찍 또는 늦게 시작하므로 별도의 달력으로 선택할 수 있습니다.",
     "ev": {
       "ny1": "춘절 (쥐의 해)",
       "ny6": "춘절 (뱀의 해)",
@@ -789,12 +734,7 @@
       "qixi": "칠석",
       "midAutumn": "중추절",
       "doubleNinth": "중양절",
-      "dongzhi": "동지절",
-      "seollalHol": "설날 연휴",
-      "seollal": "설날",
-      "chuseokHol": "추석 연휴",
-      "chuseok": "추석",
-      "tet": "뗏 (베트남 설)"
+      "dongzhi": "동지절"
     },
     "month": [
       "1월",
@@ -841,8 +781,8 @@
   },
   "zh": {
     "name": "农历",
-    "desc": "中国、韩国和越南的传统阴阳历：春节等传统节日、二十四节气和生肖年。",
-    "note": "月首和二十四节气按北京时间（UTC+8）天文计算。韩国春节和秋夕按韩国时间（UTC+9）计算；越南（UTC+7）的春节如在另一天，则另行显示。韩国和越南有些月份的月首早一天或晚一天。",
+    "desc": "中国的传统阴阳历：春节等传统节日、二十四节气和生肖年。",
+    "note": "月首和二十四节气按北京时间（UTC+8）天文计算。韩国和越南的阴历有些月份的月首早一天或晚一天，因此作为单独的历法提供。",
     "ev": {
       "ny1": "春节（鼠年）",
       "ny6": "春节（蛇年）",
@@ -859,12 +799,7 @@
       "qixi": "七夕节",
       "midAutumn": "中秋节",
       "doubleNinth": "重阳节",
-      "dongzhi": "冬至节",
-      "seollalHol": "韩国春节假期",
-      "seollal": "韩国春节（설날）",
-      "chuseokHol": "韩国秋夕假期",
-      "chuseok": "韩国秋夕（추석）",
-      "tet": "越南春节（Tết）"
+      "dongzhi": "冬至节"
     },
     "month": [
       "1月",
@@ -911,8 +846,8 @@
   },
   "fil": {
     "name": "Kalendaryong lunar ng Tsina",
-    "desc": "Ang tradisyonal na lunisolar na kalendaryo ng Tsina, Korea at Vietnam: Bagong Taon ng mga Tsino at iba pang pista, ang 24 na solar term at ang taon sa zodiac ng Tsina.",
-    "note": "Ang simula ng mga buwan at ang mga solar term ay kinakalkula ayon sa astronomiya sa oras ng Tsina (UTC+8). Ang Seollal at Chuseok ay kinakalkula sa oras ng Korea (UTC+9); kapag ibang araw ang Tết sa Vietnam (UTC+7), ipinapakita ito nang hiwalay. Sa Korea at Vietnam, may mga buwang nagsisimula nang isang araw na mas maaga o mas huli.",
+    "desc": "Ang tradisyonal na lunisolar na kalendaryo ng Tsina: Bagong Taon ng mga Tsino at iba pang pista, ang 24 na solar term at ang taon sa zodiac ng Tsina.",
+    "note": "Ang simula ng mga buwan at ang mga solar term ay kinakalkula ayon sa astronomiya sa oras ng Tsina (UTC+8). Hiwalay na kalendaryo ang kalendaryong lunar ng Korea at ng Vietnam dahil may mga buwang nagsisimula roon nang isang araw na mas maaga o mas huli.",
     "ev": {
       "ny1": "Bagong Taon ng mga Tsino (Taon ng Daga)",
       "ny6": "Bagong Taon ng mga Tsino (Taon ng Ahas)",
@@ -929,12 +864,7 @@
       "qixi": "Pista ng Qixi",
       "midAutumn": "Pista ng Kalagitnaan ng Taglagas",
       "doubleNinth": "Pista ng Dobleng Siyam",
-      "dongzhi": "Pista ng Dongzhi (solstisyo ng taglamig)",
-      "seollalHol": "Bakasyon ng Seollal (Korea)",
-      "seollal": "Seollal (Bagong Taon ng Korea)",
-      "chuseokHol": "Bakasyon ng Chuseok (Korea)",
-      "chuseok": "Chuseok (pista ng ani ng Korea)",
-      "tet": "Tết (Bagong Taon ng Vietnam)"
+      "dongzhi": "Pista ng Dongzhi (solstisyo ng taglamig)"
     },
     "month": [
       "ika-1 buwan",
@@ -981,8 +911,8 @@
   },
   "th": {
     "name": "ปฏิทินจันทรคติจีน",
-    "desc": "ปฏิทินสุริยจันทรคติดั้งเดิมของจีน เกาหลี และเวียดนาม: ตรุษจีนและเทศกาลอื่น ๆ 24 ช่วงฤดูกาลตามสุริยคติ และปีนักษัตรจีน",
-    "note": "วันเริ่มเดือนและฤดูกาลสุริยะคำนวณทางดาราศาสตร์ตามเวลาจีน (UTC+8) ซอลลัลและชูซอกคำนวณตามเวลาเกาหลี (UTC+9) หากเต๊ตในเวียดนาม (UTC+7) ตรงกับวันอื่นจะแสดงแยกไว้ ในเกาหลีและเวียดนามบางเดือนเริ่มเร็วหรือช้ากว่าหนึ่งวัน",
+    "desc": "ปฏิทินสุริยจันทรคติดั้งเดิมของจีน: ตรุษจีนและเทศกาลอื่น ๆ 24 ช่วงฤดูกาลตามสุริยคติ และปีนักษัตรจีน",
+    "note": "วันเริ่มเดือนและฤดูกาลสุริยะคำนวณทางดาราศาสตร์ตามเวลาจีน (UTC+8) ปฏิทินจันทรคติเกาหลีและเวียดนามแยกเป็นปฏิทินต่างหาก เพราะบางเดือนเริ่มเร็วหรือช้ากว่าหนึ่งวัน",
     "ev": {
       "ny1": "ตรุษจีน (ปีชวด)",
       "ny6": "ตรุษจีน (ปีมะเส็ง)",
@@ -999,12 +929,7 @@
       "qixi": "เทศกาลฉีซี",
       "midAutumn": "เทศกาลไหว้พระจันทร์",
       "doubleNinth": "เทศกาลฉงหยาง",
-      "dongzhi": "เทศกาลตังโจ่ย (เหมายัน)",
-      "seollalHol": "วันหยุดซอลลัล (เกาหลี)",
-      "seollal": "ซอลลัล (ปีใหม่เกาหลี)",
-      "chuseokHol": "วันหยุดชูซอก (เกาหลี)",
-      "chuseok": "ชูซอก (เทศกาลเก็บเกี่ยวเกาหลี)",
-      "tet": "เต๊ต (ปีใหม่เวียดนาม)"
+      "dongzhi": "เทศกาลตังโจ่ย (เหมายัน)"
     },
     "month": [
       "เดือน 1",
@@ -1051,8 +976,8 @@
   },
   "es": {
     "name": "Calendario lunar chino",
-    "desc": "El calendario lunisolar tradicional de China, Corea y Vietnam: Año Nuevo chino y otras fiestas, los 24 términos solares y el año del zodiaco chino.",
-    "note": "El inicio de los meses y los términos solares se calculan astronómicamente para la hora de China (UTC+8). Seollal y Chuseok se calculan para la hora de Corea (UTC+9); cuando el Tết cae otro día en Vietnam (UTC+7), se muestra aparte. En Corea y Vietnam algunos meses empiezan un día antes o después.",
+    "desc": "El calendario lunisolar tradicional de China: Año Nuevo chino y otras fiestas, los 24 términos solares y el año del zodiaco chino.",
+    "note": "El inicio de los meses y los términos solares se calculan astronómicamente para la hora de China (UTC+8). Los calendarios lunares coreano y vietnamita son calendarios aparte, porque allí algunos meses empiezan un día antes o después.",
     "ev": {
       "ny1": "Año Nuevo chino (año de la Rata)",
       "ny6": "Año Nuevo chino (año de la Serpiente)",
@@ -1069,12 +994,7 @@
       "qixi": "Festival Qixi",
       "midAutumn": "Festival del Medio Otoño",
       "doubleNinth": "Festival del Doble Nueve",
-      "dongzhi": "Festival de Dongzhi (solsticio de invierno)",
-      "seollalHol": "Día festivo de Seollal (Corea)",
-      "seollal": "Seollal (Año Nuevo coreano)",
-      "chuseokHol": "Día festivo de Chuseok (Corea)",
-      "chuseok": "Chuseok (fiesta coreana de la cosecha)",
-      "tet": "Tết (Año Nuevo vietnamita)"
+      "dongzhi": "Festival de Dongzhi (solsticio de invierno)"
     },
     "month": [
       "mes 1",
@@ -1121,8 +1041,8 @@
   },
   "pt": {
     "name": "Calendário lunar chinês",
-    "desc": "O calendário lunissolar tradicional da China, da Coreia e do Vietnã: Ano-Novo Chinês e outras festas, os 24 termos solares e o ano do zodíaco chinês.",
-    "note": "O início dos meses e os termos solares são calculados astronomicamente pelo horário da China (UTC+8). Seollal e Chuseok são calculados pelo horário da Coreia (UTC+9); quando o Tết cai em outro dia no Vietnã (UTC+7), ele aparece separado. Na Coreia e no Vietnã, alguns meses começam um dia antes ou depois.",
+    "desc": "O calendário lunissolar tradicional da China: Ano-Novo Chinês e outras festas, os 24 termos solares e o ano do zodíaco chinês.",
+    "note": "O início dos meses e os termos solares são calculados astronomicamente pelo horário da China (UTC+8). Os calendários lunares coreano e vietnamita são calendários separados, porque lá alguns meses começam um dia antes ou depois.",
     "ev": {
       "ny1": "Ano-Novo Chinês (ano do Rato)",
       "ny6": "Ano-Novo Chinês (ano da Serpente)",
@@ -1139,12 +1059,7 @@
       "qixi": "Festival Qixi",
       "midAutumn": "Festival do Meio do Outono",
       "doubleNinth": "Festival do Duplo Nove",
-      "dongzhi": "Festival Dongzhi (solstício de inverno)",
-      "seollalHol": "Feriado de Seollal (Coreia)",
-      "seollal": "Seollal (Ano-Novo Coreano)",
-      "chuseokHol": "Feriado de Chuseok (Coreia)",
-      "chuseok": "Chuseok (festa coreana da colheita)",
-      "tet": "Tết (Ano-Novo Vietnamita)"
+      "dongzhi": "Festival Dongzhi (solstício de inverno)"
     },
     "month": [
       "mês 1",
@@ -1191,8 +1106,8 @@
   },
   "hi": {
     "name": "चीनी चंद्र कैलेंडर",
-    "desc": "चीन, कोरिया और वियतनाम का पारंपरिक चंद्र-सौर कैलेंडर: चीनी नव वर्ष और दूसरे पर्व, 24 सौर अवधियाँ और चीनी राशि-चक्र का वर्ष।",
-    "note": "महीनों की शुरुआत और सौर अवधियाँ चीन के समय (UTC+8) के अनुसार खगोलीय गणना से हैं। सोलाल और चुसोक कोरिया के समय (UTC+9) से गिने जाते हैं; अगर वियतनाम (UTC+7) में तेत किसी और दिन पड़े तो अलग दिखाया जाता है। कोरिया और वियतनाम में कुछ महीने एक दिन पहले या बाद शुरू होते हैं।",
+    "desc": "चीन का पारंपरिक चंद्र-सौर कैलेंडर: चीनी नव वर्ष और दूसरे पर्व, 24 सौर अवधियाँ और चीनी राशि-चक्र का वर्ष।",
+    "note": "महीनों की शुरुआत और सौर अवधियाँ चीन के समय (UTC+8) के अनुसार खगोलीय गणना से हैं। कोरियाई और वियतनामी चंद्र कैलेंडर अलग कैलेंडर हैं, क्योंकि वहाँ कुछ महीने एक दिन पहले या बाद शुरू होते हैं।",
     "ev": {
       "ny1": "चीनी नव वर्ष (चूहे का वर्ष)",
       "ny6": "चीनी नव वर्ष (साँप का वर्ष)",
@@ -1209,12 +1124,7 @@
       "qixi": "चीशी पर्व",
       "midAutumn": "मध्य-शरद उत्सव",
       "doubleNinth": "दोहरा नौ पर्व",
-      "dongzhi": "दोंगज़ी पर्व (शीत अयनांत)",
-      "seollalHol": "सोलाल अवकाश (कोरिया)",
-      "seollal": "सोलाल (कोरियाई नव वर्ष)",
-      "chuseokHol": "चुसोक अवकाश (कोरिया)",
-      "chuseok": "चुसोक (कोरियाई फ़सल उत्सव)",
-      "tet": "तेत (वियतनामी नव वर्ष)"
+      "dongzhi": "दोंगज़ी पर्व (शीत अयनांत)"
     },
     "month": [
       "पहला महीना",
