@@ -45,13 +45,15 @@ enum class NotifyFeature(val id: String, val tab: Tab) {
     /** Günün sözü (2. analiz #16): her sabah 08.00'de takvim yaprağındaki söz */
     DAILY("daily", Tab.CALENDAR),
     /** Gökyüzü olayları (2. analiz #154): meteor yağmuru zirveleri, kavuşumlar, karşı konumlar; o gecenin akşamı 20.00 */
-    SKY("sky", Tab.SEASONS);
+    SKY("sky", Tab.SEASONS),
+    /** Fotoğraf ışığı (9 Kasım 2026): seçilen altın/mavi saatten önce; yalnız Fotoğraf ışığı bir kez açıldıysa (`photo.used`) */
+    PHOTO("photo", Tab.TOOLS);
 
     val key: String get() = "notify.$id"
     /** Varsayılan: saat başı kapalı, diğerleri açık (30 Ekim 2026, sahibin kararı) */
     val defaultOn: Boolean get() = this != HOURLY
-    val title: String get() = L("notify.cat.$id")
-    val note: String get() = L("notify.cat.$id.note")
+    val title: String get() = if (this == PHOTO) L("photoApp.title") else L("notify.cat.$id")
+    val note: String get() = if (this == PHOTO) L("photoApp.notify.note") else L("notify.cat.$id.note")
 }
 
 /** Özellik bildirimi tercihleri ("prefs" dosyasında, iOS'takiyle aynı anahtarlar) */
@@ -146,6 +148,7 @@ object FeatureNotifier {
         if (FeaturePrefs.isOn(NotifyFeature.FRIDAY)) out += friday(place, now, days)
         if (FeaturePrefs.isOn(NotifyFeature.DAILY)) out += daily(context, now, minOf(days, 7))
         if (FeaturePrefs.isOn(NotifyFeature.SKY)) out += sky(context, place, now, days)
+        if (FeaturePrefs.isOn(NotifyFeature.PHOTO) && PhotoPrefs.used) out += photo(place, now, minOf(days, 7))
         return out.filter { it.at.isAfter(now) }
     }
 
@@ -230,6 +233,29 @@ object FeatureNotifier {
             val day = today.plusDays(i.toLong())
             val text = Sayings.today(context, day) ?: return@mapNotNull null
             Planned("daily-$day", day.atTime(8, 0).atZone(zone).toInstant(), L("notify.n.daily"), text, NotifyFeature.DAILY.tab)
+        }
+    }
+
+    /**
+     * Fotoğraf ışığı (9 Kasım 2026): seçilen ışık (sabah/akşam mavi ve altın saat) başlamadan [PhotoPrefs.lead] dakika önce.
+     * Gövdede yer, başlangıç saati ve önbellekte varsa o günün gün doğumu/batımı tahmini (bildirim için ağa çıkılmaz).
+     */
+    internal fun photo(place: AppPlace, now: Instant, days: Int): List<Planned> {
+        val ev = PhotoPrefs.events
+        val leadMin = PhotoPrefs.lead
+        val samples = PhotoSky.cached(place.lat, place.lon)
+        val today = place.today(now)
+        return (0 until days).flatMap { i ->
+            val p = PhotoDay(today.plusDays(i.toLong()), place)
+            PhotoPrefs.EVENT_IDS.filter { it in ev }.mapNotNull { e ->
+                val at = p.start(e) ?: return@mapNotNull null
+                val fire = at.minusSeconds(leadMin * 60L)
+                if (!fire.isAfter(now)) return@mapNotNull null
+                val ref = if (e.startsWith("am")) p.sunrise else p.sunset
+                val q = ref?.let { t -> samples?.let { tr.bumba.time.core.PhotoLight.qualityAt(it, t.toEpochMilli()) } }
+                val body = "${place.name} · ${p.clock(at)}" + (q?.let { " · " + T("photoApp.n.q", L("photoApp.q.${it.key}")) } ?: "")
+                Planned("photo-$e-${at.epochSecond / 60}", fire, T("photoApp.n.$e", leadMin), body, NotifyFeature.PHOTO.tab)
+            }
         }
     }
 
@@ -358,9 +384,12 @@ object FeatureNotifier {
     /** Bildirimi gösterir; dokununca ilgili sekme açılır */
     fun deliver(context: Context, id: String, title: String, body: String, tab: Int) {
         if (!PrayerNotifier.notificationsAllowed(context)) return
+        // Fotoğraf ışığı bildirimi kendi ekranını açar (Tümü › Fotoğraf ışığı)
+        val photo = id.startsWith("photo-")
         val open = PendingIntent.getActivity(
-            context, 200 + tab,
+            context, if (photo) 290 else 200 + tab,
             Intent(context, MainActivity::class.java).putExtra("startTab", tab)
+                .apply { if (photo) putExtra("tool", "photo") }
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )

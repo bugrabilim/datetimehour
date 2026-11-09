@@ -111,6 +111,10 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
             if (sunOn) SunMoonOptions(moon = false, ::changed)
             RowDivider()
             FeatureToggle(NotifyFeature.SKY, "telescope", Theme.c.sky, ::changed)
+            RowDivider()
+            // Fotoğraf ışığı (9 Kasım 2026): hangi ışık ve kaç dakika önce; ekran bir kez açılınca çalışır
+            val photoOn = FeatureToggle(NotifyFeature.PHOTO, "aperture", Theme.c.sky, ::changed)
+            if (photoOn) PhotoOptions(::changed)
         }
         AppCard(padding = 4) {
             val on = FeatureToggle(NotifyFeature.WEATHER, "sun_cloud", Theme.c.sky, ::changed)
@@ -277,3 +281,32 @@ private fun SunMoonOptions(moon: Boolean, changed: () -> Unit) {
     }
 }
 
+/** Fotoğraf ışığı bildirimi ayrıntısı (9 Kasım 2026; iOS'taki PhotoOptionsView ile aynı): ışık seçimi, kaç dakika önce */
+@Composable
+private fun PhotoOptions(changed: () -> Unit) {
+    var events by remember { mutableStateOf(PhotoPrefs.events) }
+    var lead by remember { mutableIntStateOf(PhotoPrefs.lead) }
+    @Composable
+    fun chip(text: String, on: Boolean, onClick: () -> Unit) {
+        Text(text, Modifier.clip(androidx.compose.foundation.shape.RoundedCornerShape(50))
+            .background(if (on) Theme.c.accent else Theme.c.surface2).clickable(onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 6.dp), color = if (on) Theme.c.onAccent else Theme.c.text, fontSize = 13.sp)
+    }
+    Column(Modifier.fillMaxWidth().padding(start = 50.dp, end = 12.dp, bottom = 10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        androidx.compose.foundation.layout.FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            for (e in PhotoPrefs.EVENT_IDS) chip(PhotoPrefs.label(e), e in events) {
+                events = if (e in events) events - e else events + e
+                PhotoPrefs.events = events
+                changed()
+            }
+        }
+        Text(L("notify.lead"), color = Theme.c.muted, fontSize = 12.sp)
+        androidx.compose.foundation.layout.FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            for (m in PhotoPrefs.LEADS) chip(SunMoonPrefs.leadLabel(m), m == lead) {
+                lead = m
+                PhotoPrefs.lead = m
+                changed()
+            }
+        }
+    }
+}

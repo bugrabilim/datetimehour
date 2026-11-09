@@ -10,12 +10,13 @@ import SaatCore
 /// kurulur; yalnız hava özeti için hava servisine (WeatherKit) sorulur. iOS en çok 64 bekleyen bildirim tuttuğu için
 /// liste PrayerNotifier'da vakitlerle birlikte zamana göre sıralanıp kesilir; arka plan yenilemesi listeyi ileri taşır.
 enum NotifyFeature: String, CaseIterable, Identifiable {
-    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, friday, daily, sky
+    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, friday, daily, sky, photo
 
     var id: String { rawValue }
     var key: String { "notify.\(rawValue)" }
-    var title: String { L("notify.cat.\(rawValue)") }
-    var note: String { L("notify.cat.\(rawValue).note") }
+    /// Fotoğraf ışığının metinleri kendi `photoApp.*` anahtarlarında (9 Kasım 2026)
+    var title: String { self == .photo ? L("photoApp.title") : L("notify.cat.\(rawValue)") }
+    var note: String { self == .photo ? L("photoApp.notify.note") : L("notify.cat.\(rawValue).note") }
 
     var icon: String {
         switch self {
@@ -31,6 +32,7 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
         case .friday: "building.columns"
         case .daily: "quote.bubble"
         case .sky: "sparkles"
+        case .photo: "camera.aperture"
         }
     }
 
@@ -49,6 +51,7 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
         case .friday: "mosque"
         case .daily: "speech"
         case .sky: "telescope"
+        case .photo: "aperture"
         }
     }
 
@@ -56,7 +59,7 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
     var tint: Color {
         switch self {
         case .calendar, .daily: Theme.sage
-        case .seasons, .moon, .sun, .weather, .sky: Theme.sky
+        case .seasons, .moon, .sun, .weather, .sky, .photo: Theme.sky
         case .hourly, .dst, .bedtime, .habits: Theme.terra
         case .friday: Theme.gold
         }
@@ -112,7 +115,32 @@ enum FeatureNotifier {
         if NotifyFeature.friday.isOn { out += friday(place: place, now: now, days: days) } // Cuma hatırlatması (#58)
         if NotifyFeature.daily.isOn { out += daily(now: now, days: min(days, 7)) } // günün sözü (#16)
         if NotifyFeature.sky.isOn { out += sky(place: place, now: now, days: days) } // gökyüzü olayları (#154)
+        // Fotoğraf ışığı: ekran bir kez açıldıysa, en çok 7 gün (64 bekleyen bildirim sınırı)
+        if NotifyFeature.photo.isOn && PhotoPrefs.used { out += photo(place: place, now: now, days: min(days, 7)) }
         return out.filter { $0.fireAt > now }
+    }
+
+    /// Fotoğraf ışığı (9 Kasım 2026): seçilen ışığın (sabah/akşam mavi ve altın saat) başlangıcından `lead` dakika önce;
+    /// önbellekte bulut tahmini varsa o günün gün doğumu/batımı tahmini gövdede yazar (bildirim için ağa çıkılmaz)
+    static func photo(place: AppPlace, now: Date, days: Int) -> [PlannedNotification] {
+        let ev = PhotoPrefs.events, lead = PhotoPrefs.lead
+        let samples = PhotoSky.cached(lat: place.lat, lon: place.lon)
+        let today = CalendarDay(now, timeZone: place.zone)
+        return (0..<days).flatMap { i -> [PlannedNotification] in
+            let p = PhotoDay(today.adding(days: i), place)
+            return PhotoPrefs.eventIDs.filter { ev.contains($0) }.compactMap { e -> PlannedNotification? in
+                guard let at = p.start(e) else { return nil }
+                let fire = at.addingTimeInterval(Double(-lead * 60))
+                guard fire > now else { return nil }
+                let ref = e.hasPrefix("am") ? p.sunrise : p.sunset
+                var body = "\(place.name) · \(p.clock(at))"
+                if let ref, let samples, let q = PhotoLight.quality(at: Int64(ref.timeIntervalSince1970 * 1000), in: samples) {
+                    body += " · " + T("photoApp.n.q", L("photoApp.q.\(q.rawValue)"))
+                }
+                return PlannedNotification(id: "\(featurePrefix)photo-\(e)-\(Int(at.timeIntervalSince1970 / 60))", fireAt: fire,
+                                           title: T("photoApp.n.\(e)", lead), body: body)
+            }
+        }
     }
 
     /// Gökyüzü olayları (2. analiz #154): o gecenin akşamı 20.00'de (yerel öğleden önceki olay bir önceki akşama düşer)

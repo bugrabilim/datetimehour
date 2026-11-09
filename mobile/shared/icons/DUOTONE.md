@@ -18,7 +18,7 @@ Sahip "çok fazla emoji" dedi ve örnek sayfadan **B "Karma"**yı seçti:
 
 | Dosya | Ne |
 |---|---|
-| `mobile/shared/icons/duotone-map.json` | Ad → Phosphor glif adı (111 ad), paket ve sürüm (`@phosphor-icons/core@2.1.1`), bütünlük özeti (sha512) |
+| `mobile/shared/icons/duotone-map.json` | Ad → Phosphor glif adı (112 ad), paket ve sürüm (`@phosphor-icons/core@2.1.1`), bütünlük özeti (sha512) |
 | `mobile/shared/icons/gen-duotone.mjs` | Üretici (bağımlılıksız Node): `npm pack` ile paketi geçici klasöre indirir, bütünlüğü denetler, bellekte açar, yolları çevirir; `--check` CI'da |
 | `mobile/shared/icons/duotone.json` | Üretilen veri (elle düzenlenmez) |
 | `mobile/shared/icons/PHOSPHOR-LICENSE.txt` | Phosphor'un MIT lisans metni (paketten; üretici yazar ve denetler) |
@@ -154,7 +154,7 @@ Ad, uygulamadaki simge adıdır (3D adlarıyla aynı; son 20'si yalnız iki tonl
 | `camera` → camera | `mic` → microphone | `waveform` → waveform | `music` → music-notes |
 | `overlay` → stack | `battery` → battery-high | `umbrella` → umbrella | `dst` → clock-clockwise |
 | `gauge` → gauge | `guide` → book-open-user | `dial` → watch | `features` → toggle-right |
-| `widgets` → layout | `homeitems` → list-dashes | `idea` → lightbulb | |
+| `widgets` → layout | `homeitems` → list-dashes | `idea` → lightbulb | `aperture` → aperture |
 
 Phosphor'da Kâbe, teleskop, tesbih, domates, burç glifi yok: `kaaba` → pusula, `telescope` → gezegen, `beads` → dokunan el
 (zikirmatik), `tomato` → portakal (domatese benzer yuvarlak meyve), `milkyway` (burç) → kayan yıldız. Dua (`hands`) için açık avuç

@@ -114,6 +114,7 @@
     "features": "toggle-right",
     "widgets": "layout",
     "homeitems": "list-dashes",
-    "idea": "lightbulb"
+    "idea": "lightbulb",
+    "aperture": "aperture"
   }
 }
