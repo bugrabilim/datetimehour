@@ -49,7 +49,8 @@ import java.time.ZoneId
  * Takvim görünümleri ve ülke seçimi (2. analiz #116, #119, #122, #126, #127; iOS CalendarViews.swift ile aynı):
  * ay / hafta / gün (zaman çizelgesi, bayram kartı) / ajanda (60 gün) / yıl (yoğunluk ısı haritası); hicri aylarla gezme;
  * ülke seçimi (30 ülkenin ulusal tatilleri, src/data/world-holidays.json) ve gösterilen gün türleri.
- * Kayıt: `cal.mode`, `cal.hijriNav`, `cal.country` (TR varsayılan), `cal.hidden` (virgülle tür).
+ * Kayıt: `cal.mode`, `cal.hijriNav`, `cal.country` (yoksa telefonun bölgesi, 30 ülke dışında TR), `cal.hidden` (virgülle tür;
+ * yoksa Vakitler kapalıyken "religious"). İkisi yalnız kullanıcı seçince yazılır.
  */
 object WorldHol {
     private var loaded = false
@@ -59,6 +60,10 @@ object WorldHol {
     private var native: Map<String, Set<String>> = emptyMap()
     var countries: List<String> = emptyList()
         private set
+    /** Bildirim, widget ve alarm ekranı gibi takvim ekranı dışındaki yerler için (AppData.init yazar) */
+    var appContext: Context? = null
+
+    fun ensure() { if (!loaded) appContext?.let { load(it) } }
 
     fun load(c: Context) {
         if (loaded) return
@@ -105,6 +110,7 @@ object WorldHol {
 
 /** Takvimin seçili ülkesine ve türlerine göre bir günün özel günleri */
 fun calEvents(d: LocalDate): List<CalEvent> {
+    CalView.load(); WorldHol.ensure()
     val base = AppData.events[d].orEmpty()
     val list = if (CalView.country == "TR") base
         else base.filter { it.type == "religious" } + WorldHol.events(CalView.country, d)

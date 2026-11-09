@@ -12,7 +12,7 @@
     <string name="prayer_province">Provincia</string>
     <string name="client_hourShort">h</string>
     <string name="client_minuteShort">min</string>
-    <string name="prayer_monthHeading">Horarios de oración de %1$s de %2$s</string>
+    <string name="prayer_monthHeading">%1$s de %2$s: horarios de oración</string>
     <string name="prayer_colDay">Día</string>
     <string name="prayer_prevMonth">Mes anterior</string>
     <string name="prayer_nextMonth">Mes siguiente</string>
@@ -22,7 +22,7 @@
     <string name="prayer_imDate">Fecha</string>
     <string name="prayer_imSahur">suhur</string>
     <string name="prayer_imIftar">iftar</string>
-    <string name="prayer_imNote">Los horarios son calculados; para los horarios oficiales siga a la Presidencia de Asuntos Religiosos (Diyanet).</string>
+    <string name="prayer_imNote">Horarios calculados; los oficiales son los de la Presidencia de Asuntos Religiosos (Diyanet).</string>
     <string name="prayer_imFile">calendario-ramadan</string>
     <string name="prayer_imAlt">Calendario de Ramadán %2$s para %1$s</string>
     <string name="nature_phases_new">Luna nueva</string>
@@ -53,7 +53,7 @@
     <string name="prayer_kerahatNames_israk">Salida del sol (ishraq)</string>
     <string name="prayer_kerahatNames_istiva">Antes del mediodía (istiwa)</string>
     <string name="prayer_kerahatNames_isfirar">Puesta del sol (isfirar)</string>
-    <string name="prayer_kerahatNote">En estos intervalos no se hacen oraciones voluntarias. Diyanet no publica minutos exactos; se usa la convención habitual de los calendarios de unos 45 minutos (las fuentes dan 10–45 minutos para el intervalo antes del mediodía).</string>
+    <string name="prayer_kerahatNote">En estos intervalos no se rezan oraciones voluntarias. Diyanet no publica minutos exactos; se usan unos 45 minutos, como es habitual en los calendarios (las fuentes dan entre 10 y 45 minutos para el intervalo antes del mediodía).</string>
     <string name="prayer_extraHeading">Horarios adicionales (aproximados)</string>
     <string name="prayer_extraNames_israk">Ishraq</string>
     <string name="prayer_extraNames_duha">Dahwa al-kubra</string>
@@ -69,7 +69,7 @@
     <string name="prayer_bayramTomorrow">Oración del Eid mañana: %1$s</string>
     <string name="prayer_bayramNote">Misma regla que los horarios publicados por Diyanet (38 min después de la salida del sol); la referencia es el anuncio del muftí de la provincia.</string>
     <string name="prayer_ezani">Hora ezani (a la turca): %1$s</string>
-    <string name="prayer_ezaniNote">En la hora ezani (a la turca), la oración del atardecer (puesta del sol) son las 12:00 y las horas se cuentan desde ahí.</string>
+    <string name="prayer_ezaniNote">En la hora ezani (a la turca), la oración del atardecer (puesta del sol) es a las 12:00 y las horas se cuentan desde ahí.</string>
     <string name="prayer_method_heading">Método de cálculo</string>
     <string name="prayer_method_label">Método</string>
     <string name="prayer_method_asrLabel">Asr</string>
@@ -138,7 +138,7 @@
     <string name="prayer_silent_mode">Modo</string>
     <string name="prayer_silent_vibrate">Vibrar</string>
     <string name="prayer_silent_silent">No molestar</string>
-    <string name="prayer_silent_note">Tras las horas de oración elegidas, el teléfono pasa a vibración o No molestar durante el tiempo elegido y luego vuelve a su estado anterior. No molestar necesita un permiso único.</string>
+    <string name="prayer_silent_note">Tras las horas de oración elegidas, el teléfono pasa a vibración o No molestar durante el tiempo elegido y luego vuelve a su estado anterior. Para No molestar, Android pide permiso una sola vez.</string>
     <string name="prayer_silent_grant">Permitir</string>
     <string name="prayer_silent_channel">Silencio a la hora de la oración</string>
     <string name="prayer_silent_active">Teléfono silenciado hasta las %1$s</string>

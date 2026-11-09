@@ -260,11 +260,11 @@
       },
       {
         "q": "A Turquia tem horário de verão?",
-        "a": "Não. Desde 2016 a Turquia usa UTC+3 o ano inteiro, e os relógios não são adiantados nem atrasados. Muitos países europeus ainda mudam a hora, por isso a diferença de horário deles com a Turquia pode variar uma hora durante o ano."
+        "a": "Não. Desde 2016 a Turquia usa UTC+3 o ano inteiro, e os relógios não são adiantados nem atrasados. Muitos países europeus ainda mudam a hora, por isso a diferença de horário entre eles e a Turquia pode variar em uma hora durante o ano."
       },
       {
         "q": "Como é calculado o número da semana?",
-        "a": "Pela norma ISO 8601, as semanas começam na segunda-feira e a semana 1 é a que contém a primeira quinta-feira do ano. Por isso, os primeiros e os últimos dias de um ano podem pertencer a uma semana do ano vizinho."
+        "a": "Pela norma ISO 8601, as semanas começam na segunda-feira e a semana 1 é a que contém a primeira quinta-feira do ano. Por isso, os primeiros e os últimos dias de um ano podem pertencer a uma semana do ano anterior ou do seguinte."
       },
       {
         "q": "Como é calculada a diferença de horário entre cidades?",
@@ -272,7 +272,7 @@
       },
       {
         "q": "Como mudo o estilo do relógio?",
-        "a": "Deslize para a esquerda ou para a direita sobre o relógio; no computador, use os pontos abaixo dele ou as setas do teclado. Há estilos analógicos clássicos e minimalistas, digitais, analógico e digital juntos, versões com ou sem data, relógios com calendário mensal, um relógio flip, um relógio por extenso, um relógio de anel e uma data grande. Sua escolha fica lembrada neste aparelho."
+        "a": "Deslize para a esquerda ou para a direita sobre o relógio ou use as setas abaixo dele; você também pode tocar no número do estilo para escolher numa lista. No computador, as setas do teclado também funcionam. Além do analógico com números, do digital e do analógico com digital, há estilos com data, previsão do tempo, calendário mensal ou layout lado a lado, além de um relógio flip, um holograma, um relógio Matrix e um relógio de matemática. Sua escolha fica salva neste aparelho."
       },
       {
         "q": "Como vejo o relógio em tela cheia?",
@@ -280,11 +280,11 @@
       },
       {
         "q": "O relógio funciona de forma independente do relógio do meu aparelho?",
-        "a": "Sim. A hora é sincronizada com o servidor do site, então mostra o horário certo mesmo que o relógio do seu aparelho esteja errado, e informa quanto ele está desviado. O fuso horário continua sendo lido das configurações do seu aparelho."
+        "a": "Sim. A hora é sincronizada com o servidor do site, então mostra o horário certo mesmo que o relógio do seu aparelho esteja errado, e informa quanto ele está adiantado ou atrasado. O fuso horário continua sendo lido das configurações do seu aparelho."
       },
       {
         "q": "Onde posso ver os feriados da Turquia e o Ramadã?",
-        "a": "A página do calendário anual mostra num só calendário os feriados oficiais, os dias de bayram e suas vésperas, as noites de kandil e o mês do Ramadã. A seção \"Próximos dias\", no alto da página do calendário, diz quantos dias faltam para o próximo feriado."
+        "a": "A página do calendário anual mostra num só calendário os feriados oficiais, os dias de bayram e suas vésperas, as noites de kandil e o mês do Ramadã."
       }
     ],
     "upcomingHeading": "Próximos feriados e datas especiais",
@@ -349,7 +349,7 @@
     "solarNoon": "Meio-dia solar",
     "solarAhead": "Aqui os relógios estão {d} à frente da hora solar.",
     "solarBehind": "Aqui os relógios estão {d} atrás da hora solar.",
-    "solarSame": "Aqui os relógios estão quase na hora solar.",
+    "solarSame": "Aqui os relógios quase coincidem com a hora solar.",
     "mapLink": "Ver no mapa (OpenStreetMap)",
     "population": "População (região metropolitana, aprox.)",
     "populationNote": "População: Natural Earth (domínio público), número aproximado da região metropolitana."
@@ -373,10 +373,10 @@
         "ul": [
           "**Hora e data:** A hora e o fuso horário do seu aparelho são lidos e calculados apenas no seu navegador. Eles não são enviados a nenhum servidor nem guardados.",
           "**Local (horários de oração):** Se você tocar em \"Usar minha localização\" na página de horários de oração, seu navegador usa sua localização apenas no seu aparelho para calcular os horários. As coordenadas não são enviadas ao servidor nem entram nas estatísticas; sua última escolha fica no armazenamento local do navegador.",
-          "**Previsão do tempo (serviço externo, com permissão):** Se você permitiu os serviços externos nas preferências de cookies, a página da previsão do tempo e os estilos de relógio com clima enviam direto do seu navegador as coordenadas aproximadas da província ou do local escolhido (com precisão de cerca de 1 km) para o Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), que fornece os dados; seu endereço IP também chega ao Open-Meteo. Sem permissão nenhuma solicitação é feita e, no lugar, aparece uma nota curta. O servidor do Saat Tarih não vê nem guarda essas coordenadas; valem os termos de privacidade do próprio Open-Meteo.",
+          "**Previsão do tempo (serviço externo, com permissão):** Se você permitiu os serviços externos nas preferências de cookies, a página da previsão do tempo e os estilos de relógio com clima enviam direto do seu navegador as coordenadas aproximadas da província ou do local escolhido (com precisão de cerca de 1 km) para o Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), que fornece os dados; seu endereço IP também chega ao Open-Meteo. Sem permissão, nenhuma solicitação é feita e, no lugar, aparece uma nota curta. O servidor do Saat Tarih não vê nem guarda essas coordenadas; valem os termos de privacidade do próprio Open-Meteo.",
           "**Mapa (globo, serviço externo, com permissão):** Se você permitiu os serviços externos nas preferências de cookies e aproxima o globo da página inicial além de um certo nível, as peças do mapa são baixadas direto para o seu navegador a partir do servidor do OpenStreetMap (tile.openstreetmap.org); seu endereço IP e os endereços das peças da área que você está vendo chegam então à Fundação OpenStreetMap. Sem permissão, ou enquanto o globo está afastado, essa solicitação não é feita. O servidor do Saat Tarih não os vê; valem os termos de privacidade do próprio OpenStreetMap.",
           "**Qibla e mesquitas próximas:** A direção da qibla, a distância e o horário da qibla são calculados no seu navegador. Para a bússola, o sensor de orientação do seu celular é lido apenas no navegador (o iPhone pede permissão) e nunca é enviado a lugar nenhum. Se você tocar em \"Mostrar mesquitas\" e tiver permitido os serviços externos, as coordenadas do local escolhido arredondadas para duas casas decimais (cerca de 1 km) são enviadas do seu navegador ao serviço Overpass (overpass-api.de), que fornece dados do OpenStreetMap; seu endereço IP também chega a esse serviço. O servidor do Saat Tarih não vê essas coordenadas.",
-          "**Música do alarme (YouTube, serviço externo, com permissão):** Se você adicionar um link do YouTube a um alarme na ferramenta de alarme e tiver permitido os serviços externos, quando o alarme tocar o vídeo é carregado no seu navegador com o player de privacidade aprimorada do YouTube (youtube-nocookie.com); seu endereço IP e o identificador do vídeo chegam então ao Google (YouTube), e o player pode guardar dados próprios no seu navegador. O link fica só neste navegador, junto com o seu alarme. Sem permissão o player não é carregado e o alarme toca com o próprio som. O servidor do Saat Tarih não os vê; valem os termos de privacidade do YouTube (Google).",
+          "**Música do alarme (YouTube, serviço externo, com permissão):** Se você adicionar um link do YouTube a um alarme na ferramenta de alarme e tiver permitido os serviços externos, quando o alarme tocar, o vídeo é carregado no seu navegador com o player de privacidade aprimorada do YouTube (youtube-nocookie.com); seu endereço IP e o identificador do vídeo chegam então ao Google (YouTube), e o player pode guardar dados próprios no seu navegador. O link fica só neste navegador, junto com o seu alarme. Sem permissão o player não é carregado e o alarme toca com o próprio som. O servidor do Saat Tarih não os vê; valem os termos de privacidade do YouTube (Google).",
           "**Enquete de reunião:** O título da enquete, os horários propostos, os nomes do organizador e dos participantes e suas respostas ficam na parte do link depois do sinal #; os navegadores não enviam essa parte ao servidor, por isso nem o servidor do Saat Tarih nem as estatísticas a veem. Quem receber o link (por mensagem ou e-mail) pode vê-la. As enquetes e respostas que você vê ficam guardadas apenas neste navegador, na chave sth-polls.",
           "**Formulário da lista de e-mail:** O endereço de e-mail que você digita, o consentimento que dá com o botão \"Concordo\" na janela que se abre, o idioma escolhido e a página do formulário são tratados pelo serviço de listas compartilhado da Bumba Group (bumbagroup.com). A inscrição usa confirmação dupla: você só é adicionado depois de clicar no link do e-mail de confirmação, e todo e-mail traz um link para cancelar a inscrição com um clique. Veja o [aviso de privacidade compartilhado](https://bumbagroup.com/liste/aydinlatma?dil=en) para mais detalhes.",
           "**Registros do servidor:** O servidor que hospeda o site mantém um registro de acesso padrão de cada solicitação, com o endereço IP, as informações do navegador, a página solicitada e o horário. Esses registros são usados apenas para segurança e solução de problemas, não para criar perfis de pessoas.",
@@ -388,26 +388,26 @@
         "id": "ios-app",
         "h": "App para iPhone e iPad",
         "p": [
-          "O app Saat Tarih para iPhone e iPad segue os mesmos princípios: sem conta, sem anúncios, sem rastreamento e sem análises. Dados tratados no app:"
+          "O app Saat Tarih para iPhone e iPad segue os mesmos princípios: sem conta, sem anúncios, sem rastreamento e sem coleta de estatísticas. Dados tratados no app:"
         ],
         "ul": [
-          "**Local:** Se você tocar em \"Usar minha localização\", sua localização é usada no seu celular para calcular os horários de oração e encontrar a província mais próxima; só uma localização aproximada (cerca de 1 km) fica guardada no seu celular. A opção \"Automático\" dos widgets também usa sua localização apenas no celular.",
+          "**Local:** Se você tocar em \"Usar minha localização\", sua localização é usada no seu celular para calcular os horários de oração e encontrar a província mais próxima; uma localização aproximada (cerca de 1 km) fica guardada apenas no seu celular. A opção \"Automático\" dos widgets também usa sua localização apenas no celular.",
           "**Previsão do tempo:** A previsão do tempo do app vem do Apple Weather (WeatherKit); para isso, as coordenadas aproximadas da província escolhida ou da sua localização são enviadas à Apple. Nós nunca vemos esses dados; valem os termos de privacidade da Apple. A qualidade do ar, o pólen, a comparação de modelos e a complicação de clima do Apple Watch vêm do Open-Meteo (open-meteo.com); para eles são enviadas coordenadas arredondadas para duas casas decimais. Se o clima na tela bloqueada estiver ativado, ele também é obtido em segundo plano quando o iOS permite.",
           "**Mapa:** O globo do relógio mundial é exibido com o Apple Maps; as imagens do mapa são baixadas da Apple.",
           "**Calendário:** Só se você permitir, o app mostra os eventos dos calendários do seu celular; eles são lidos no celular e nunca são enviados a lugar nenhum. Adicionar e apagar eventos é feito pela própria tela de calendário do iPhone e só com a sua confirmação.",
-          "**Notificações e alarmes:** As notificações de horários de oração; de datas especiais, início de estação, fase da Lua, nascer e pôr do sol, resumo matinal do tempo, horas cheias e horário de verão (todas ativadas por padrão, exceto as horas cheias; podem ser alteradas em Configurações › Notificações); os alarmes e temporizadores são agendados no seu celular sem nenhum servidor. Só o resumo do tempo consulta o serviço meteorológico (veja o item da previsão do tempo acima). A lista é mantida atualizada com a atualização em segundo plano do iOS; os avisos falados são gerados no seu celular.",
+          "**Notificações e alarmes:** As notificações de horários de oração; de datas especiais, início de estação, fase da Lua, nascer e pôr do sol, resumo matinal do tempo, horas cheias e horário de verão (todas ativadas por padrão, exceto as horas cheias; podem ser alteradas em Ajustes › Notificações); os alarmes e temporizadores são agendados no seu celular sem nenhum servidor. Só o resumo do tempo consulta o serviço meteorológico (veja o item da previsão do tempo acima). A lista é mantida atualizada com a atualização em segundo plano do iOS; os avisos falados são gerados no seu celular.",
           "**Lista de e-mail:** Se você entrar na lista pela página Sobre, seu endereço de e-mail é enviado à lista compartilhada da Bumba exatamente como no formulário do site; as notas da lista de e-mail valem também para o app.",
           "**Medalhas:** As medalhas de conquistas e o seu progresso (medalhas obtidas e o dia, modelos de relógio vistos, número de dias seguidos de uso) ficam guardados só no seu celular e nunca são enviados a lugar nenhum; você pode apagá-los quando quiser com \"Apagar medalhas\" em Ferramentas › Medalhas.",
           "**Treino intervalado:** Enquanto um treino intervalado que você iniciou está em andamento, o app usa o áudio em segundo plano do iOS para anunciar as mudanças de fase com a tela bloqueada; a voz é gerada no seu celular e nenhum dado é enviado.",
           "**Fotos:** A foto que você escolhe para o relógio em tela cheia ou para uma contagem regressiva é obtida pelo seletor de fotos do iPhone (não é pedido acesso à sua biblioteca de fotos); uma cópia reduzida fica guardada só no seu celular e nunca é enviada a lugar nenhum. As fotos que você escolhe para a apresentação (até 10) também ficam no celular. Os cartões para compartilhar horários de oração e contagens regressivas e os arquivos CSV são criados no celular e enviados apenas ao app que você escolher. A captura da Tela de Início que você escolhe para o widget transparente e os recortes dela ficam só no celular, na pasta compartilhada pelo app e seus widgets; não são enviados a lugar nenhum nem sincronizados com o iCloud.",
           "**Preferências:** As preferências, como o modelo de relógio, a província e os relógios mundiais, ficam guardadas só no seu celular e são apagadas quando você exclui o app.",
-          "**Qibla e mesquitas próximas:** A direção da qibla é calculada no celular; a bússola usa o sensor de orientação do celular (com permissão de localização, a localização também é usada no celular para o norte verdadeiro). Na tela \"Mesquitas próximas\" a busca usa o Apple Maps: a palavra pesquisada e o centro da área arredondado para duas casas decimais vão para a Apple; valem os termos de privacidade da Apple. Na tela da qibla, a linha até a Caaba é mostrada no Apple Maps; as imagens do mapa da sua área são baixadas da Apple.",
+          "**Qibla e mesquitas próximas:** A direção da qibla é calculada no celular; a bússola usa o sensor de orientação do celular (com permissão de localização, a localização também é usada no celular para o norte verdadeiro). Na tela \"Mesquitas próximas\" a busca usa o Apple Maps: a palavra pesquisada (\"mesquita\") e o centro da área arredondado para duas casas decimais vão para a Apple; valem os termos de privacidade da Apple. Na tela da qibla, a linha até a Caaba é mostrada no Apple Maps; as imagens do mapa da sua área são baixadas da Apple.",
           "**Apple Watch, Siri e a tela bloqueada:** O app do Apple Watch calcula os horários de oração no relógio; quando \"Local do iPhone\" está selecionado, o nome e as coordenadas do local escolhido são enviados do iPhone para o relógio (WatchConnectivity da Apple) e para nenhum outro lugar; se \"Minha localização\" for escolhida no relógio, a localização é usada só no relógio. As ações da Siri e dos Atalhos (temporizador, alarme, relógio em tela cheia, próxima oração, data) rodam no celular; a Apple trata os pedidos de voz. As Atividades ao Vivo da tela bloqueada (contadores, próxima oração) são criadas no celular.",
           "**Câmera, sono e foco:** Para ler o código QR ou de barras da tarefa para desligar um alarme, a câmera abre só enquanto você salva o código e enquanto desliga o alarme (a permissão é pedida na primeira vez); a imagem é processada no aparelho, não é guardada nem enviada, e só o valor lido fica no aparelho junto com o alarme. As tarefas de chacoalhar e de passos usam o sensor de movimento só enquanto a tela da tarefa está aberta; os passos não são registrados. O histórico do pomodoro (dia, minutos, nome da tarefa) e a rotina de sono ficam no aparelho; o ruído do pomodoro e os sons para dormir são gerados no aparelho. Alarme inteligente: se você iniciar uma sessão na tela Sono, o sensor de movimento (acelerômetro) é lido durante a janela do alarme inteligente e o alarme toca antes quando surgem sinais de sono leve; os dados de movimento ficam só na memória e não são guardados nem enviados. Não há monitoramento do sono (fases, gravações) e o microfone não é usado para o sono. A foto tirada na tarefa de encontrar um objeto (reconhecida com o Apple Vision), a imagem da visão de câmera da qibla e o microfone da tarefa de ler em voz alta (só reconhecimento de fala no aparelho) são usados apenas enquanto aquela tela está aberta; tudo é processado no aparelho, não é guardado nem enviado. O estilo da bússola da qibla e as mesquitas favoritas ficam no aparelho e, se a sincronização com o iCloud estiver ativada, são sincronizados entre os seus próprios aparelhos.",
-          "**Culto:** O seu marcador do Alcorão, o tamanho do texto, as contagens de dhikr, o registro de orações e jejuns (orações feitas, contagens de reposição, dias jejuados) e os valores que você digita na calculadora de zakat ficam só no aparelho; não são enviados a lugar nenhum nem usados para estatísticas ou medalhas. O texto do Alcorão e as súplicas já vêm no app. Ao tocar no link do site de tradução da Diyanet, esse site abre no seu navegador. O preço do ouro para o zakat é você quem digita; o app não busca preços.",
-          "**Sincronização com o iCloud:** Se \"Sincronizar com o iCloud\" estiver ativado em Configurações (é o padrão), as configurações, relógios mundiais, contagens regressivas, locais salvos, registros de pomodoro e de sono e registros de culto são sincronizados pelo armazenamento chave-valor do iCloud da Apple com o iPhone, iPad e Mac conectados à mesma Conta Apple. Esses dados ficam na sua conta do iCloud sob os termos da Apple; não temos acesso a eles e eles nunca chegam aos nossos servidores. Local, alarmes, temporizadores em andamento, configurações de notificação, medalhas e fotos não são sincronizados. Desativar a chave interrompe a sincronização naquele aparelho.",
+          "**Culto:** O seu marcador do Alcorão, o tamanho do texto, as contagens de dhikr, o registro de orações e jejuns (orações feitas, contagens de reposição, dias jejuados) e os valores que você digita na calculadora de zakat ficam só no aparelho; não são enviados a lugar nenhum nem usados para estatísticas ou medalhas. O texto do Alcorão e as súplicas já vêm no app. Ao tocar no link do site da tradução turca da Diyanet, esse site abre no seu navegador. O preço do ouro para o zakat é você quem digita; o app não busca preços.",
+          "**Sincronização com o iCloud:** Se \"Sincronizar com o iCloud\" estiver ativado em Ajustes (é o padrão), as configurações, relógios mundiais, contagens regressivas, locais salvos, registros de pomodoro e de sono e registros de culto são sincronizados pelo armazenamento chave-valor do iCloud da Apple com o iPhone, iPad e Mac conectados à mesma Conta Apple. Esses dados ficam na sua conta do iCloud sob os termos da Apple; não temos acesso a eles e eles nunca chegam aos nossos servidores. Local, alarmes, temporizadores em andamento, configurações de notificação, medalhas e fotos não são sincronizados. Desativar a chave interrompe a sincronização neste aparelho.",
           "**Saúde, diário matinal, foto do alarme e relógio flutuante:** Se você ativar \"Salvar no Apple Saúde\", cada treino intervalado concluído é registrado no app Saúde como treino (tipo, início, duração); o app não lê seus dados de saúde e esses dados não vão para nenhum servidor. O diário matinal (humor, sono, intenção, nota) fica só nos seus aparelhos (nos aparelhos da sua Conta Apple, se a sincronização com o iCloud estiver ativada). Na tarefa de alarme com foto, a foto não é guardada; só um resumo minúsculo (72 valores de cinza) fica no celular para comparação. Seu método de cálculo, os alarmes nos horários de oração (iOS 26+) e os botões da Central de Controle ficam no celular. O relógio flutuante é uma janela de picture-in-picture; não toca som nem envia dados.",
-          "**Alarmes com música, lembretes por local e calendário, bloqueio de foco, Mac, Apple TV e Vision Pro:** Para o som de um alarme, um trecho de 30 segundos da música que você escolher na biblioteca de músicas ou em Arquivos é gravado num arquivo de som no celular; a música não é enviada a lugar nenhum (o acesso à biblioteca de músicas só é pedido quando você escolhe). Nos lembretes por local, o próprio iPhone detecta chegadas e saídas; o local do lembrete fica no celular e o mapa vem da Apple. Ao criar um alarme para um evento do calendário, só o título e o horário desse evento são usados. O bloqueio de foco usa o Tempo de Uso da Apple; os apps e sites que você escolhe são tokens criptografados da Apple e o app não consegue ver quais são. Os apps para Mac, Apple TV e Vision Pro calculam os horários de oração no aparelho; se você permitir a localização, ela é usada apenas no aparelho para encontrar a província mais próxima. Enquanto toca um alarme com tarefa, o mesmo mecanismo impede apagar o app e volta a permitir quando a tarefa termina; só funciona se você tiver dado a permissão de Tempo de Uso.",
+          "**Alarmes com música, lembretes por local e calendário, bloqueio de foco, Mac, Apple TV e Vision Pro:** Para o som de um alarme, um trecho de 30 segundos da música que você escolher na biblioteca de músicas ou em Arquivos é gravado num arquivo de som no celular; a música não é enviada a lugar nenhum (o acesso à biblioteca de músicas só é pedido quando você escolhe). Nos lembretes por local, o próprio iPhone detecta chegadas e saídas; o local do lembrete fica só no celular e o mapa vem da Apple. Ao criar um alarme para um evento do calendário, só o título e o horário desse evento são usados. O bloqueio de foco usa o Tempo de Uso da Apple; os apps e sites que você escolhe são tokens criptografados da Apple e o app não consegue ver quais são. Os apps para Mac, Apple TV e Vision Pro calculam os horários de oração no aparelho; se você permitir a localização, ela é usada apenas no aparelho para encontrar a província mais próxima. Enquanto toca um alarme com tarefa, o mesmo mecanismo impede apagar o app e volta a permitir quando a tarefa termina; só funciona se você tiver dado a permissão de Tempo de Uso.",
           "**Temporizador de estudo e jogo de despertar:** As matérias e sessões do temporizador de estudo (duração, número de questões, nota) e os registros do jogo de despertar (dia, hora de acordar e do alarme, número de sonecas) ficam no aparelho; se a sincronização com o iCloud estiver ativada, eles são sincronizados com a sua conta do iCloud e não são enviados a nenhum outro lugar. O idioma do app e o mostrador escolhido também ficam guardados no aparelho."
         ]
       },
@@ -415,24 +415,24 @@
         "id": "android-app",
         "h": "App para Android",
         "p": [
-          "O app Saat Tarih para Android segue os mesmos princípios: sem conta, sem anúncios, sem rastreamento e sem análises. Dados tratados no app:"
+          "O app Saat Tarih para Android segue os mesmos princípios: sem conta, sem anúncios, sem rastreamento e sem coleta de estatísticas. Dados tratados no app:"
         ],
         "ul": [
-          "**Local:** Se você tocar em \"Usar minha localização\", só é pedida a permissão de localização aproximada; sua localização é usada no celular para calcular os horários de oração e encontrar a província ou o distrito mais próximo, e só uma localização aproximada (cerca de 1 km) fica guardada no celular.",
+          "**Local:** Se você tocar em \"Usar minha localização\", só é pedida a permissão de localização aproximada; sua localização é usada no celular para calcular os horários de oração e encontrar a província ou o distrito mais próximo, e uma localização aproximada (cerca de 1 km) fica guardada apenas no celular.",
           "**Previsão do tempo:** A previsão do tempo do app vem do Open-Meteo (open-meteo.com); para isso, as coordenadas do local escolhido, arredondadas para duas casas decimais (cerca de 1 km), são enviadas ao Open-Meteo, e seu endereço IP chega ao servidor do Open-Meteo com essa solicitação. Para o clima das cidades no globo giratório, só as coordenadas dessas cidades são enviadas. Valem os termos de privacidade do Open-Meteo; nós nunca vemos esses dados. Se o clima na barra de status estiver ativado, essa solicitação também é feita a cada hora em segundo plano.",
           "**Globo e mapa:** O globo giratório é desenhado a partir de uma imagem que já vem no app; nenhum serviço de mapas é contatado.",
           "**Calendário:** A permissão de calendário só é pedida se você tocar em \"Mostrar os calendários do meu celular\"; os eventos são lidos no celular e nunca são enviados a lugar nenhum. Os eventos são adicionados pelo próprio app de calendário do celular e só são apagados com a sua confirmação.",
-          "**Notificações, alarmes e treino intervalado:** As notificações de horários de oração e os outros tipos de notificação (datas especiais, início de estação, fase da Lua, nascer e pôr do sol, resumo matinal do tempo, horas cheias, horário de verão; todas ativadas por padrão, exceto as horas cheias, e podem ser alteradas em Configurações › Notificações), os alarmes e os temporizadores são agendados no seu celular sem nenhum servidor; a permissão de alarmes exatos é usada para que toquem na hora certa. Enquanto um treino intervalado que você iniciou está em andamento, um serviço em primeiro plano exibido na notificação anuncia as mudanças de fase com o mecanismo de conversão de texto em voz do celular. Os avisos falados são gerados no seu celular.",
+          "**Notificações, alarmes e treino intervalado:** As notificações de horários de oração e os outros tipos de notificação (datas especiais, início de estação, fase da Lua, nascer e pôr do sol, resumo matinal do tempo, horas cheias, horário de verão; todas ativadas por padrão, exceto as horas cheias, e podem ser alteradas em Ajustes › Notificações), os alarmes e os temporizadores são agendados no seu celular sem nenhum servidor; a permissão de alarmes exatos é usada para que toquem na hora certa. Enquanto um treino intervalado que você iniciou está em andamento, um serviço em primeiro plano exibido na notificação anuncia as mudanças de fase com o mecanismo de conversão de texto em voz do celular. Os avisos falados são gerados no seu celular.",
           "**Fotos:** A foto que você escolhe para o relógio em tela cheia ou para uma contagem regressiva é obtida pelo seletor de fotos do Android (não é pedida permissão de galeria); uma cópia reduzida fica guardada só nos arquivos do próprio app. As fotos que você escolhe para a apresentação (até 10) também ficam no celular. Os cartões para compartilhar horários de oração e contagens regressivas e os arquivos CSV são criados no celular e enviados apenas ao app que você escolher.",
           "**Lista de e-mail:** Se você entrar na lista pela página Sobre, seu endereço de e-mail é enviado à lista compartilhada da Bumba exatamente como no formulário do site; as notas da lista de e-mail valem também para o app.",
           "**Medalhas e preferências:** As medalhas e as preferências, como o modelo de relógio, o local e os relógios mundiais, ficam guardadas só no seu celular e são apagadas quando você exclui o app. Se o backup do Android estiver ativado no seu celular, esses registros (e a cópia das fotos que você escolheu) podem entrar no backup do aparelho na sua conta do Google; esse backup está sujeito aos termos do Google e nós não temos acesso a ele.",
           "**Qibla e mesquitas próximas:** A direção da qibla e a bússola são calculadas no celular. Na tela \"Mesquitas próximas\" as coordenadas arredondadas para duas casas decimais (cerca de 1 km) são enviadas ao serviço Overpass (overpass-api.de), que fornece dados do OpenStreetMap; seu endereço IP chega a esse serviço. Tocar numa mesquita abre o seu app de mapas.",
           "**Relógio Wear OS e atalhos:** O app de Wear OS calcula os horários de oração no relógio; se \"Minha localização\" estiver selecionada, a localização aproximada é usada só no relógio e não é enviada a lugar nenhum. Os temporizadores e alarmes que o Assistente ou outros apps criam no Hora e Data ficam guardados só no celular; o protetor de tela e as notificações de contadores em andamento são criados no celular.",
-          "**Câmera, sono e foco:** O código QR ou de barras da tarefa para desligar um alarme é lido pelo leitor de códigos do Google (serviços do Google Play): o app não pede permissão de câmera e nunca vê a imagem; só o valor lido fica no celular junto com o alarme. As tarefas de chacoalhar e de passos usam o acelerômetro só enquanto a tela do alarme está aberta; os passos não são registrados. O histórico do pomodoro (dia, minutos, nome da tarefa) e a rotina de sono ficam no celular; o ruído do pomodoro e os sons para dormir são gerados no celular (um serviço em primeiro plano permite que toquem com a tela apagada, com \"Parar som\" na notificação). Alarme inteligente: se você iniciar uma sessão na tela Sono, o sensor de movimento (acelerômetro) é lido durante a janela do alarme inteligente e o alarme toca antes quando surgem sinais de sono leve; os dados de movimento ficam só na memória e não são guardados nem enviados. Não há monitoramento do sono (fases, gravações) e o microfone não é usado para o sono. A sessão funciona como um serviço em primeiro plano (com \"Parar\" na notificação). Se você adicionar um link do Spotify ou do YouTube a um alarme, o link abre nesse app quando o alarme toca; o app só abre o link e não tem acesso à música. Na tarefa de encontrar um objeto, a pequena foto tirada com a câmera do sistema é reconhecida no celular pelo modelo de rotulagem de imagens dos serviços do Google Play; na tarefa de ler em voz alta, o microfone (a permissão é pedida na tarefa) só é usado com o reconhecimento de fala no aparelho do Android e, sem ele, é usada a tarefa de digitar. Imagens e áudio não são guardados nem enviados. O estilo da bússola da qibla e as mesquitas favoritas ficam no celular e, se o backup do Android estiver ativado, entram com as suas configurações no backup da sua conta do Google.",
-          "**Culto:** O seu marcador do Alcorão, o tamanho do texto, as contagens de dhikr, o registro de orações e jejuns (orações feitas, contagens de reposição, dias jejuados) e os valores que você digita na calculadora de zakat ficam só no celular; não são enviados a lugar nenhum nem usados para estatísticas ou medalhas. O texto do Alcorão e as súplicas já vêm no app. Ao tocar no link do site de tradução da Diyanet, esse site abre no seu navegador. O preço do ouro para o zakat é você quem digita; o app não busca preços.",
+          "**Câmera, sono e foco:** O código QR ou de barras da tarefa para desligar um alarme é lido pelo leitor de códigos do Google (serviços do Google Play): o app não pede permissão de câmera e nunca vê a imagem; só o valor lido fica no celular junto com o alarme. As tarefas de chacoalhar e de passos usam o acelerômetro só enquanto a tela do alarme está aberta; os passos não são registrados. O histórico do pomodoro (dia, minutos, nome da tarefa) e a rotina de sono ficam só no celular; o ruído do pomodoro e os sons para dormir são gerados no celular (um serviço em primeiro plano permite que toquem com a tela apagada, com \"Parar som\" na notificação). Alarme inteligente: se você iniciar uma sessão na tela Sono, o sensor de movimento (acelerômetro) é lido durante a janela do alarme inteligente e o alarme toca antes quando surgem sinais de sono leve; os dados de movimento ficam só na memória e não são guardados nem enviados. Não há monitoramento do sono (fases, gravações) e o microfone não é usado para o sono. A sessão funciona como um serviço em primeiro plano (com \"Parar\" na notificação). Se você adicionar um link do Spotify ou do YouTube a um alarme, o link abre nesse app quando o alarme toca; o app só abre o link e não tem acesso à música. Na tarefa de encontrar um objeto, a pequena foto tirada com a câmera do sistema é reconhecida no celular pelo modelo de rotulagem de imagens dos serviços do Google Play; na tarefa de ler em voz alta, o microfone (a permissão é pedida na tarefa) só é usado com o reconhecimento de fala no aparelho do Android e, sem ele, é usada a tarefa de digitar. Imagens e áudio não são guardados nem enviados. O estilo da bússola da qibla e as mesquitas favoritas ficam no celular e, se o backup do Android estiver ativado, entram com as suas configurações no backup da sua conta do Google.",
+          "**Culto:** O seu marcador do Alcorão, o tamanho do texto, as contagens de dhikr, o registro de orações e jejuns (orações feitas, contagens de reposição, dias jejuados) e os valores que você digita na calculadora de zakat ficam só no celular; não são enviados a lugar nenhum nem usados para estatísticas ou medalhas. O texto do Alcorão e as súplicas já vêm no app. Ao tocar no link do site da tradução turca da Diyanet, esse site abre no seu navegador. O preço do ouro para o zakat é você quem digita; o app não busca preços.",
           "**Saúde, diário matinal, foto do alarme, silêncio e relógio flutuante:** Se você ativar \"Salvar no Health Connect\", só é pedida a permissão para gravar exercícios e cada treino intervalado concluído é gravado como sessão de exercício (tipo, início, duração); o app não lê seus dados de saúde. O diário matinal fica só no celular (e no backup do Google do celular). Na tarefa de alarme com foto, a foto é tirada com a própria câmera do celular (não é pedida permissão de câmera) e não é guardada; só um resumo minúsculo é mantido. O acesso ao Não perturbe para \"Silenciar nos horários de oração\" só é usado se você ativá-lo e concedê-lo nas configurações do celular. O relógio flutuante usa a permissão \"Sobrepor a outros apps\"; ele não lê nada da tela e só desenha o relógio. Os widgets e os blocos das Configurações rápidas usam os contadores do próprio app.",
-          "**Lembretes por local e calendário, bloqueio de foco e Android TV:** Se você adicionar um lembrete por local, é pedido acesso à localização exata e \"Permitir o tempo todo\"; o geofencing dos serviços do Google Play detecta chegadas e saídas, o local do lembrete fica no celular e o app não envia sua localização a lugar nenhum. Ao criar um alarme para um evento do calendário, só o título e o horário desse evento são usados. Se você conceder acesso de uso para o bloqueio de foco, o app lê no celular, uma vez por segundo, o nome do app que está em primeiro plano, só durante o tempo de trabalho do pomodoro; isso não é guardado nem enviado. A tela do Android TV usa o local escolhido no app.",
-          "**Temporizador de estudo e jogo de despertar:** As matérias e sessões do temporizador de estudo (duração, número de questões, nota) e os registros do jogo de despertar (dia, hora de acordar e do alarme, número de sonecas) ficam no celular e nunca são enviados a lugar nenhum (entram no backup do Google do celular). O idioma do app e o mostrador escolhido também ficam guardados no celular."
+          "**Lembretes por local e calendário, bloqueio de foco e Android TV:** Se você adicionar um lembrete por local, é pedido acesso à localização exata e \"Permitir o tempo todo\"; o geofencing dos serviços do Google Play detecta chegadas e saídas, o local do lembrete fica só no celular e o app não envia sua localização a lugar nenhum. Ao criar um alarme para um evento do calendário, só o título e o horário desse evento são usados. Se você conceder acesso de uso para o bloqueio de foco, o app lê no celular, uma vez por segundo, o nome do app que está em primeiro plano, só durante o tempo de trabalho do pomodoro; isso não é guardado nem enviado. A tela do Android TV usa o local escolhido no app.",
+          "**Temporizador de estudo e jogo de despertar:** As matérias e sessões do temporizador de estudo (duração, número de questões, nota) e os registros do jogo de despertar (dia, hora de acordar e do alarme, número de sonecas) ficam só no celular e nunca são enviados a lugar nenhum (entram no backup do Google do celular). O idioma do app e o mostrador escolhido também ficam guardados no celular."
         ]
       },
       {
@@ -446,7 +446,7 @@
         "id": "cookies",
         "h": "Cookies e armazenamento do navegador",
         "p": [
-          "O Saat Tarih não grava nenhum cookie. Na sua primeira visita, um aviso no rodapé da página pede sua permissão para as estatísticas de visitas (Umami) e os serviços externos (Open-Meteo, OpenStreetMap, YouTube); os dois ficam desativados até você permitir. Você pode mudar sua escolha a qualquer momento pelo link \"Preferências de cookies\" no menu de configurações. Para lembrar suas escolhas usamos o armazenamento local do navegador (localStorage); esses itens fazem parte do grupo necessário, ficam no seu aparelho e não são enviados a nenhum servidor. Você pode apagá-los a qualquer momento nas configurações do navegador. Política de cookies compartilhada da Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "O Saat Tarih não grava nenhum cookie. Na sua primeira visita, um aviso no rodapé da página pede sua permissão para as estatísticas de visitas (Umami) e os serviços externos (Open-Meteo, OpenStreetMap, YouTube); os dois ficam desativados até você permitir. Você pode mudar sua escolha a qualquer momento pelo link \"Preferências de cookies\" no menu de configurações. Para lembrar suas escolhas usamos o armazenamento local do navegador (localStorage); esses itens fazem parte do grupo necessário, ficam só no seu aparelho e não são enviados a nenhum servidor. Você pode apagá-los a qualquer momento nas configurações do navegador. Política de cookies compartilhada da Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -537,7 +537,7 @@
             ],
             [
               "sth-place",
-              "Lembra a província ou o local que você escolheu por último para as páginas de horários de oração, natureza e previsão do tempo.",
+              "Lembra a província ou o local que você escolheu por último para as páginas de horários de oração, estações e previsão do tempo.",
               "Até você apagar"
             ],
             [
@@ -615,7 +615,7 @@
     "heading": "Fique por dentro",
     "lead": "Quer receber novidades do Saat Tarih por e-mail? Você pode cancelar a inscrição a qualquer momento com um clique.",
     "emailLabel": "Seu endereço de e-mail",
-    "submit": "Participar",
+    "submit": "Inscrever-se",
     "ok": "Enviamos um e-mail de confirmação; clique no link na sua caixa de entrada para concluir a inscrição na lista.",
     "err": "Não conseguimos salvar sua inscrição. Confira o endereço de e-mail e a caixa de seleção e tente de novo daqui a pouco.",
     "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en",
@@ -688,7 +688,7 @@
     "info": "Sobre a fonte de hora deste relógio",
     "infoTitle": "De onde vem esta hora?",
     "infoClose": "Fechar",
-    "infoSeconds": "Toque no relógio para mostrar ou ocultar os segundos. Os segundos começam ativados nos relógios digitais e desativados nos analógicos.",
+    "infoSeconds": "Toque no relógio para mostrar ou ocultar os segundos. Os segundos começam ativados nos relógios digitais e nos analógicos.",
     "zoomIn": "Relógio maior",
     "zoomOut": "Relógio menor"
   },
@@ -707,8 +707,7 @@
       "special": "Data especial",
       "weekend": "Fim de semana",
       "today": "Hoje",
-      "school": "Férias ou data escolar (MEB)",
-      "exam": "Prova ou data relacionada (ÖSYM, MEB, AÖF)"
+      "school": "Férias ou data escolar (MEB)"
     },
     "eventsHeading": "Lista de datas de {year}",
     "colDate": "Data",
@@ -803,39 +802,9 @@
       "term2Start": "Começa o segundo semestre (MEB)",
       "midterm2": "Começa o recesso do segundo semestre (MEB)",
       "schoolEnd": "Fim do ano letivo, entrega de boletins (MEB)",
-      "teacherStart": "Começa o trabalho profissional dos professores (MEB)",
+      "teacherStart": "Começa a jornada pedagógica dos professores (MEB)",
       "adaptation": "Começa a semana de adaptação da pré-escola e do 1º ano (MEB)",
-      "teacherEnd": "Começa o trabalho profissional de fim de ano dos professores (MEB)",
-      "yksTyt": "YKS: sessão TYT (ÖSYM)",
-      "yksAytYdt": "YKS: sessões AYT e YDT (ÖSYM)",
-      "tryos": "TR-YÖS/2: prova para estudantes internacionais (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS de nível médio (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT: prova de serviços religiosos (ÖSYM)",
-      "dus2": "DUS, segunda sessão: prova de especialidade odontológica (ÖSYM)",
-      "eus": "EUS: prova de especialidade farmacêutica (ÖSYM)",
-      "yds2": "YDS/2: prova de proficiência em língua estrangeira (ÖSYM)",
-      "ales3": "ALES/3: prova de acesso à pós-graduação (ÖSYM)",
-      "alesApply": "Período de inscrição do ALES/3 (ÖSYM)",
-      "kpssOnResult": "Resultados do KPSS de nível tecnólogo (ÖSYM)",
-      "kpssOrtaResult": "Resultados do KPSS de nível médio (ÖSYM)",
-      "ydsResult": "Resultados do YDS/2 (ÖSYM)",
-      "alesResult": "Resultados do ALES/3 (ÖSYM)",
-      "kpssTercih": "Preferências de alocação KPSS-2026/2 (ÖSYM)",
-      "common1": "1º semestre, primeiras provas escritas comuns (MEB)",
-      "common2": "1º semestre, segundas provas escritas comuns (MEB)",
-      "common3": "2º semestre, primeiras provas escritas comuns (MEB)",
-      "common4": "2º semestre, segundas provas escritas comuns (MEB)",
-      "aolRegister": "Período de inscrição do ensino médio aberto (AÖL) (MEB)",
-      "aolEsinav": "Período de provas eletrônicas do AÖL (MEB)",
-      "aolWritten": "Prova escrita do AÖL (MEB)",
-      "aolResult": "Resultados do primeiro semestre do AÖL (MEB)",
-      "aofMid1": "Prova intermediária de outono do AÖF (Universidade de Anadolu)",
-      "aofFinal1": "Prova final de outono do AÖF (Universidade de Anadolu)",
-      "aofMid2": "Prova intermediária de primavera do AÖF (Universidade de Anadolu)",
-      "aofFinal2": "Prova final de primavera do AÖF (Universidade de Anadolu)",
-      "aofSummer": "Prova do curso de verão do AÖF (Universidade de Anadolu)"
+      "teacherEnd": "Começa a jornada pedagógica de fim de ano dos professores (MEB)"
     },
     "hubName": "Calendário anual",
     "hubDesc": "Feriados oficiais, dias de bayram e vésperas, noites de kandil e o mês do Ramadã.",
@@ -995,7 +964,7 @@
           "desc": "Some e subtraia horas, tempo entre dois horários."
         },
         "daysUntil": {
-          "name": "Dias até",
+          "name": "Quantos dias faltam?",
           "desc": "Dias que faltam para uma data ou que se passaram desde ela."
         },
         "interval": {
@@ -1024,7 +993,7 @@
         },
         "otd": {
           "name": "Neste dia",
-          "desc": "O que aconteceu neste dia na história."
+          "desc": "O que aconteceu na história hoje ou no dia que você escolher."
         },
         "tzn": {
           "name": "Notícias de fusos horários",
@@ -1086,7 +1055,7 @@
           "a": "O tempo é medido com o relógio de alta resolução do navegador e mostrado até o centésimo de segundo. Mudar o relógio do seu aparelho não o afeta."
         },
         {
-          "q": "Vou perder meu tempo se fechar a página?",
+          "q": "O tempo marcado se perde se eu fechar a página?",
           "a": "Não. O horário de início de um cronômetro em andamento fica guardado neste aparelho, então ao recarregar ou reabrir a página o tempo continua de onde parou. O botão Zerar o apaga."
         },
         {
@@ -1112,9 +1081,9 @@
       "pause": "Pausar",
       "resume": "Continuar",
       "reset": "Zerar",
-      "targetLabel": "Data e hora de destino",
+      "targetLabel": "Data e hora-alvo",
       "targetSet": "Começar a contar",
-      "quickHeading": "Destinos rápidos",
+      "quickHeading": "Datas rápidas",
       "quickNewYear": "Ano-Novo",
       "remaining": "Tempo restante",
       "days": "dias",
@@ -1122,7 +1091,7 @@
       "minutesShort": "min",
       "secondsShort": "s",
       "finished": "O tempo acabou!",
-      "finishedDate": "A hora de destino chegou!",
+      "finishedDate": "Chegou a hora marcada!",
       "invalid": "Digite uma duração válida ou uma data futura.",
       "panel": "Contagem regressiva",
       "timerRegion": "Temporizador",
@@ -1134,7 +1103,7 @@
         },
         {
           "q": "Como faço uma contagem regressiva até uma data específica?",
-          "a": "Na aba Até uma data, escolha a data e a hora de destino ou toque num dos destinos rápidos, como o Ano-Novo e os bayrams. Dias, horas, minutos e segundos são atualizados ao vivo."
+          "a": "Na aba Até uma data, escolha a data e a hora-alvo ou toque numa das datas rápidas, como o Ano-Novo e os bayrams. Dias, horas, minutos e segundos são atualizados ao vivo."
         },
         {
           "q": "A contagem continua se eu fechar a aba?",
@@ -1198,7 +1167,7 @@
         },
         {
           "q": "Como uso a soneca do alarme?",
-          "a": "Enquanto toca, aperte Soneca de 5 min e ele toca de novo cinco minutos depois. O botão Fechar o silencia; os alarmes repetidos tocam de novo no próximo dia escolhido."
+          "a": "Enquanto toca, aperte Soneca de 5 min e ele toca de novo cinco minutos depois. O botão Fechar o silencia; os alarmes com repetição tocam de novo no próximo dia escolhido."
         }
       ],
       "soundLabel": "Som do alarme",
@@ -1252,7 +1221,7 @@
       "roundsLabel": "Rodadas até a pausa longa",
       "round": "Rodada {n} de {total}",
       "completed": "Pomodoros concluídos: {n}",
-      "phaseDone": "{phase} concluído",
+      "phaseDone": "{phase} terminou",
       "panel": "Pomodoro",
       "phaseLabel": "Fase atual",
       "faq": [
@@ -1549,7 +1518,7 @@
     "dateLabel": "Data",
     "remove": "Remover",
     "legendWork": "Horário de trabalho (09–18)",
-    "legendEdge": "Cedo ou tarde (07–09, 18–22)",
+    "legendEdge": "Início ou fim do dia (07–09, 18–22)",
     "legendNight": "Noite",
     "common": "Horários de trabalho em comum (horário de {city}): {hours}",
     "noCommon": "As cidades escolhidas não têm horário de trabalho em comum; escolha na linha do tempo os horários menos incômodos.",
@@ -1637,7 +1606,7 @@
     "faq": [
       {
         "q": "Onde ficam os dados da enquete?",
-        "a": "Em nenhum servidor. O título, os horários possíveis, os nomes e as respostas viajam na parte do link depois do sinal #, que os navegadores não enviam ao servidor. As respostas que o organizador vê ficam só no próprio navegador dele; quem receber o link pode vê-lo."
+        "a": "Em nenhum servidor. O título, os horários possíveis, os nomes e as respostas viajam na parte do link depois do sinal #, que os navegadores não enviam ao servidor. As respostas que o organizador vê ficam só no próprio navegador dele; quem receber o link pode ver esses dados."
       },
       {
         "q": "Como os participantes me enviam as respostas?",
@@ -1651,10 +1620,10 @@
   },
   "cdp": {
     "title": "Quantos dias faltam para {dat}? | Saat Tarih",
-    "description": "Quantos dias e horas faltam para {dat}? Uma contagem regressiva ao vivo, a data de destino e as datas dos próximos anos.",
+    "description": "Quantos dias e horas faltam para {dat}? Uma contagem regressiva ao vivo, a data-alvo e as datas dos próximos anos.",
     "h1": "Quantos dias faltam para {dat}?",
     "lead": "Contagem regressiva ao vivo — {name}. O contador funciona com o relógio sincronizado com o servidor; os dias, horas, minutos e segundos restantes são atualizados a cada segundo.",
-    "target": "Data de destino",
+    "target": "Data-alvo",
     "noTarget": "Não há data próxima para este evento.",
     "today": "É hoje!",
     "yearsHeading": "{name}: datas",
@@ -1666,12 +1635,12 @@
     "customLink": "Abrir a ferramenta de contagem regressiva",
     "listHeading": "Mais contagens regressivas",
     "faqHeading": "Perguntas frequentes — {name}",
-    "faqWhen": "Quando é {name}?",
-    "faqWhenFixed": "{name} é em {date}, todo ano.",
+    "faqWhen": "{name}: quando é?",
+    "faqWhenFixed": "{name}: {date}, todo ano.",
     "faqWhenYears": "{name}: {list}.",
     "faqHow": "Como funciona a contagem regressiva?",
-    "faqHowA": "O contador compara a hora sincronizada com o servidor com o início da data de destino (00:00) e é atualizado a cada segundo. A data de destino vem dos dados das nossas páginas de calendário.",
-    "school": "O calendário escolar segue o calendário de trabalho 2026-2027 do Ministério da Educação Nacional; as diretorias provinciais podem variar localmente.",
+    "faqHowA": "O contador compara a hora sincronizada com o servidor com o início da data-alvo (00:00) e é atualizado a cada segundo. A data-alvo vem dos dados das nossas páginas de calendário.",
+    "school": "O calendário escolar segue o calendário letivo 2026-2027 do Ministério da Educação Nacional; as diretorias provinciais de educação podem fazer alterações locais.",
     "targets": {
       "newYear": {
         "name": "Ano-Novo",
@@ -1706,44 +1675,20 @@
         "dat": "o Dia da Vitória"
       },
       "semester": {
-        "name": "as férias do meio do ano letivo",
+        "name": "Férias do meio do ano letivo",
         "dat": "as férias do meio do ano letivo"
       },
       "karne": {
-        "name": "o dia da entrega de boletins",
+        "name": "Dia da entrega de boletins",
         "dat": "o dia da entrega de boletins"
-      },
-      "yks": {
-        "name": "YKS (vestibular nacional)",
-        "dat": "o YKS"
-      },
-      "kpss": {
-        "name": "KPSS (concurso para servidores públicos)",
-        "dat": "o KPSS"
-      },
-      "ales": {
-        "name": "ALES (prova de acesso à pós-graduação)",
-        "dat": "o ALES"
-      },
-      "yds": {
-        "name": "YDS (prova de proficiência em língua estrangeira)",
-        "dat": "o YDS"
       },
       "schoolStart": {
         "name": "Início das aulas",
         "dat": "o início das aulas"
       },
       "midterm": {
-        "name": "o recesso escolar",
+        "name": "Recesso escolar",
         "dat": "o recesso escolar"
-      },
-      "aof": {
-        "name": "Provas do AÖF (ensino aberto da Universidade de Anadolu)",
-        "dat": "as provas do AÖF"
-      },
-      "aol": {
-        "name": "Prova do AÖL (ensino médio aberto)",
-        "dat": "a prova do AÖL"
       },
       "feb14": {
         "name": "Dia de São Valentim",
@@ -1765,8 +1710,7 @@
         "name": "Dia do Professor",
         "dat": "o Dia do Professor"
       }
-    },
-    "exam": "As datas das provas vêm dos anúncios do ÖSYM, do MEB e da Universidade de Anadolu, que podem alterá-las. Datas não anunciadas não são supostas; elas são adicionadas quando publicadas."
+    }
   },
   "datecalc": {
     "title": "Calculadora de datas: dias, dias úteis, idade | Saat Tarih",
@@ -1824,7 +1768,7 @@
   },
   "embedgen": {
     "title": "Widget de relógio: coloque um relógio grátis no seu site | Saat Tarih",
-    "description": "Coloque um relógio grátis no seu site: 13 estilos de relógio, escolha de cidade, tema claro ou escuro. Copie o código iframe pronto e cole.",
+    "description": "Coloque um relógio grátis no seu site: 20 estilos de relógio, escolha de cidade, tema claro ou escuro. Copie o código iframe pronto e cole.",
     "h1": "Coloque um relógio no seu site",
     "lead": "Escolha o estilo, a cidade e o tema; depois copie o código iframe pronto e cole no seu site. O widget não tem anúncios, não usa cookies e funciona com o relógio sincronizado com o servidor.",
     "modelLabel": "Estilo de relógio",
@@ -1858,10 +1802,10 @@
       },
       {
         "q": "O widget coleta dados dos meus visitantes?",
-        "a": "O widget não grava cookies nem coleta dados pessoais. Ele envia algumas pequenas solicitações ao servidor para mostrar a hora certa; as visualizações são contadas em estatísticas anônimas e sem cookies."
+        "a": "O widget não grava cookies nem coleta dados pessoais. Ele envia algumas pequenas solicitações ao servidor para mostrar a hora certa; o widget não tem nenhum script de estatísticas e as visualizações não são contadas."
       }
     ],
-    "sizeNote": "Os estilos com calendário precisam de pelo menos 460 px de altura; os outros cabem bem em 360 px.",
+    "sizeNote": "Para os estilos com calendário, recomenda-se pelo menos 460 px de altura; os outros cabem bem em 360 px.",
     "lineHeading": "Como linha de texto",
     "lineLead": "Adicione à sua página um relógio ao vivo de uma linha ou o texto do nascer e pôr do sol: cole as duas linhas abaixo; o texto usa a fonte e a cor do seu site.",
     "lineKind": "Mostrar",
@@ -1870,7 +1814,7 @@
       "date": "Data e hora",
       "sun": "Nascer e pôr do sol"
     },
-    "lineNote": "O script só desenha a hora; ele não grava cookies nem envia dados. O fuso horário vem da cidade.",
+    "lineNote": "O script só escreve o texto escolhido (a hora, a data ou o nascer e o pôr do sol); ele não grava cookies nem envia dados. O fuso horário vem da cidade.",
     "linePreview": "Prévia"
   },
   "embed": {
@@ -1896,11 +1840,11 @@
     "todayHeading": "Horários de hoje",
     "colPrayer": "Oração",
     "colTime": "Hora",
-    "monthHeading": "Horários de oração de {month} de {year}",
+    "monthHeading": "{month} de {year}: horários de oração",
     "colDay": "Dia",
     "prevMonth": "Mês anterior",
     "nextMonth": "Próximo mês",
-    "tableCaption": "{place}: horários de oração de {month} de {year}",
+    "tableCaption": "{month} de {year} em {place}: horários de oração",
     "names": {
       "fajr": "Fajr",
       "sunrise": "Nascer do sol",
@@ -1915,7 +1859,7 @@
     "districtsHeading": "Distritos",
     "districtTitle": "Horários de oração em {city} | Saat Tarih",
     "provinceCentre": "{city} (capital da província)",
-    "districtSource": "As localizações dos distritos vêm do GeoNames (CC BY 4.0); os horários são calculados para o centro do distrito. A Diyanet não publica horários próprios para os distritos centrais das províncias metropolitanas e usa o horário da província; a referência é a Presidência de Assuntos Religiosos da Turquia (Diyanet).",
+    "districtSource": "As localizações dos distritos vêm do GeoNames (CC BY 4.0); os horários são calculados para o centro do distrito. A Diyanet não publica horários próprios para os distritos centrais das províncias metropolitanas e usa o horário da província; para o horário oficial, a referência é a Presidência de Assuntos Religiosos da Turquia (Diyanet).",
     "noscript": "Para ver os horários de oração, o JavaScript precisa estar ativado no seu navegador.",
     "faqHeading": "Perguntas frequentes",
     "faq": [
@@ -1929,7 +1873,7 @@
       },
       {
         "q": "Os horários são iguais aos da Diyanet?",
-        "a": "O cálculo é ajustado para coincidir com os horários da Diyanet e difere no máximo 1 minuto nas capitais das províncias. Os horários oficiais continuam sendo os publicados pela Presidência de Assuntos Religiosos da Turquia."
+        "a": "O cálculo é ajustado para coincidir com os horários da Diyanet e difere em no máximo 1 minuto nas capitais das províncias. Os horários oficiais continuam sendo os publicados pela Presidência de Assuntos Religiosos da Turquia."
       },
       {
         "q": "Quais são os horários do iftar e do suhur?",
@@ -1941,7 +1885,7 @@
       },
       {
         "q": "O que é o Asr hanafita e por que é diferente?",
-        "a": "O Asr começa quando a sombra de um objeto é igual ao seu comprimento mais a sombra do meio-dia; a Diyanet e as escolas shafi'i, maliki e hanbali usam essa regra. A escola hanafita espera a sombra ter o dobro do comprimento do objeto, então o Asr começa de 30 a 80 minutos mais tarde, conforme a estação. Você pode escolher o Asr hanafita e os métodos de cálculo de outros países em \"Método de cálculo\", na página de horários de oração."
+        "a": "O Asr começa quando a sombra de um objeto é igual ao seu comprimento mais a sombra do meio-dia; a Diyanet e as escolas shafi'i, maliki e hanbali usam essa regra. A escola hanafita espera até que a sombra tenha o dobro do comprimento do objeto, então o Asr começa cerca de 30 a 80 minutos mais tarde, conforme a estação. Você pode escolher o Asr hanafita e os métodos de cálculo de outros países em \"Método de cálculo\", na página de horários de oração."
       }
     ],
     "search": "horários de oração adhan azan fajr dhuhr asr maghrib isha iftar suhur namaz vakitleri ezan imsakiye tabela do ramadã prayer times",
@@ -1955,7 +1899,7 @@
     "imDate": "Data",
     "imSahur": "suhur",
     "imIftar": "iftar",
-    "imNote": "Os horários são calculados; para os horários oficiais, siga a Presidência de Assuntos Religiosos (Diyanet).",
+    "imNote": "Os horários são calculados; o horário oficial é o da Presidência de Assuntos Religiosos (Diyanet).",
     "imFile": "tabela-ramada",
     "imBrand": "Bumba Group · Bumba Life",
     "kerahatHeading": "Horários em que a oração é desaconselhada (aprox.)",
@@ -2008,7 +1952,7 @@
       }
     },
     "ezani": "Hora ezani (à turca): {t}",
-    "ezaniNote": "Na hora ezani (à turca), a oração do entardecer (pôr do sol) é 12:00 e as horas são contadas a partir dela."
+    "ezaniNote": "Na hora ezani (à turca), a oração do entardecer (pôr do sol) corresponde às 12:00 e as horas são contadas a partir dela."
   },
   "nature": {
     "title": "Estações: roda das estações, equinócios e solstícios | Saat Tarih",
@@ -2130,7 +2074,7 @@
       },
       {
         "q": "Como a fase da Lua é calculada?",
-        "a": "A fase vem do tempo desde a lua nova anterior como fração do ciclo lunar (cerca de 29,5 dias). Os horários da lua nova e da lua cheia são calculados com fórmulas astronômicas com margem de poucos minutos."
+        "a": "A fase da Lua é calculada pela fração do ciclo lunar (cerca de 29,5 dias) que já passou desde a lua nova anterior. Os horários da lua nova e da lua cheia são calculados com fórmulas astronômicas, com margem de poucos minutos."
       }
     ],
     "search": "estações primavera verão outono inverno equinócio solstício fase da lua lua cheia lua nova nascer do sol pôr do sol duração do dia seasons mevsimler",
@@ -2183,7 +2127,7 @@
     "eclMapLunar": "Azul: onde a Lua está acima do horizonte no máximo do eclipse, então o eclipse pode ser visto. Ponto azul: onde a Lua está no zênite; ponto preto: local escolhido.",
     "eclMapNote": "O mapa é calculado de forma aproximada no seu navegador a partir das posições do Sol e da Lua (as bordas da faixa podem errar algumas dezenas de km). Litorais: Natural Earth. Para faixas e horários exatos, veja as páginas de eclipses da NASA.",
     "folkHeading": "Calendário popular tradicional",
-    "folkNote": "Datas tradicionais do calendário popular turco (baseado no antigo calendário rumi); não é previsão do tempo, e as fontes podem variar alguns dias.",
+    "folkNote": "Datas tradicionais do calendário popular turco (baseado no antigo calendário rumi); não é previsão do tempo, e as datas podem variar alguns dias conforme a fonte.",
     "folkNow": "Agora",
     "folkNames": {
       "erbain": "Erbain (os 40 dias mais frios do inverno)",
@@ -2214,7 +2158,7 @@
       "noBlue": "Não há lua azul este ano.",
       "colDate": "Data e hora",
       "colName": "Nome tradicional",
-      "namesNote": "Os nomes seguem a tradição norte-americana (Old Farmer's Almanac). A Lua da Colheita é a lua cheia mais próxima do equinócio de setembro.",
+      "namesNote": "Os nomes seguem a tradição norte-americana (Old Farmer's Almanac); as formas em português são traduções. A Lua da Colheita é a lua cheia mais próxima do equinócio de setembro.",
       "harvest": "Lua da Colheita",
       "blueName": "Lua azul",
       "wheel": "Roda das luas cheias do ano",
@@ -2318,14 +2262,14 @@
       },
       {
         "q": "Posso ver a previsão do tempo no relógio em tela cheia?",
-        "a": "Sim. Em tela cheia, o botão do tempo na barra que aparece ao tocar na tela mostra a previsão do local escolhido ao lado do relógio."
+        "a": "Sim. Na página inicial, deslize o relógio até um estilo com a previsão do tempo e passe para tela cheia; a previsão do local escolhido aparece ao lado do relógio."
       }
     ],
     "search": "previsão do tempo clima temperatura chuva vento umidade uv amanhã esta semana hava durumu weather",
     "wd": {
       "calm": "Calmaria",
       "light": "Brisa leve",
-      "breezy": "Ventania leve",
+      "breezy": "Ventoso",
       "strong": "Vento forte",
       "gale": "Vendaval"
     },
@@ -2334,7 +2278,7 @@
       "moderate": "Moderado; proteja-se perto do meio-dia",
       "high": "Alto; use protetor solar",
       "veryHigh": "Muito alto; evite o sol do meio-dia",
-      "extreme": "Extremo; evite ficar ao ar livre"
+      "extreme": "Extremo; não fique muito tempo ao ar livre"
     },
     "hw": {
       "dry": "Seco",
@@ -2362,7 +2306,7 @@
       "storm": "Tempestades previstas por volta das {time}.",
       "rain": "Chuva prevista por volta das {time}.",
       "snow": "Neve prevista por volta das {time}.",
-      "windyAfternoon": "Ventania à tarde.",
+      "windyAfternoon": "Tarde ventosa.",
       "colder": "Amanhã bem mais frio: a máxima cai {n}°.",
       "warmer": "Amanhã bem mais quente: a máxima sobe {n}°.",
       "default": "{cond}; máxima {max}, mínima {min}."
@@ -2409,7 +2353,7 @@
   },
   "faqPage": {
     "title": "Perguntas frequentes: hora, calendário, oração | Saat Tarih",
-    "description": "Todas as perguntas frequentes do Saat Tarih numa página: hora do servidor, relógios mundiais, calendário e feriados, ferramentas, horários de oração, natureza e tempo.",
+    "description": "Todas as perguntas frequentes do Saat Tarih numa página: hora do servidor, relógios mundiais, calendário e feriados, ferramentas, horários de oração, natureza e clima.",
     "h1": "Perguntas frequentes",
     "lead": "Perguntas de todas as páginas do site, reunidas aqui por assunto. O link sob cada título abre a página relacionada.",
     "toc": "Assuntos",
@@ -2420,7 +2364,7 @@
   },
   "consent": {
     "barLabel": "Escolha de cookies",
-    "barText": "Suas configurações ficam neste navegador. Com seu consentimento, as visitas são contadas no Umami, e clima, mapas e música vêm de serviços externos.",
+    "barText": "Suas configurações ficam só neste navegador. Com seu consentimento, as visitas são contadas no Umami, e clima, mapas e música vêm de serviços externos.",
     "accept": "Aceitar",
     "reject": "Recusar",
     "prefs": "Preferências",
@@ -2433,14 +2377,14 @@
     "stats": "Estatísticas",
     "statsText": "O Umami conta as visitas às páginas e algumas ações (navegador, aparelho, idioma, e o país e a cidade obtidos a partir do endereço IP; o IP não é guardado). Nenhum cookie é usado. Desativado por padrão.",
     "ext": "Serviços externos",
-    "extText": "A previsão do tempo é carregada do Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), o mapa do globo aproximado do OpenStreetMap (tile.openstreetmap.org), as mesquitas próximas do serviço Overpass do OpenStreetMap (overpass-api.de) e a música do YouTube que você adicionar a um alarme do YouTube (youtube-nocookie.com); seu endereço IP chega a esses serviços. Desativado por padrão.",
+    "extText": "A previsão do tempo é carregada do Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), o mapa do globo ampliado, do OpenStreetMap (tile.openstreetmap.org), as mesquitas próximas, do serviço Overpass do OpenStreetMap (overpass-api.de), e a música do YouTube que você adicionar a um alarme, do próprio YouTube (youtube-nocookie.com); seu endereço IP chega a esses serviços. Desativado por padrão.",
     "save": "Salvar escolha",
     "footerLink": "Preferências de cookies",
     "privacy": "Privacidade",
     "wxBlocked": "A previsão do tempo vem do Open-Meteo; permita os serviços externos para vê-la.",
     "allow": "Permitir",
     "mqBlocked": "As mesquitas próximas são carregadas do OpenStreetMap (Overpass); permita os serviços externos para vê-las.",
-    "mapBlocked": "O mapa aproximado vem do OpenStreetMap; permita os serviços externos para vê-lo."
+    "mapBlocked": "O mapa ampliado vem do OpenStreetMap; permita os serviços externos para vê-lo."
   },
   "qibla": {
     "title": "Direção da qibla: bússola, ângulo e horário da qibla | Saat Tarih",
@@ -2448,17 +2392,17 @@
     "h1": "Direção da qibla",
     "lead": "Ângulo da qibla, distância até a Caaba e horário da qibla de hoje para o local escolhido; direção ao vivo com a bússola do seu celular.",
     "search": "qibla kibla direção bússola caaba meca horário da qibla ângulo mesquita mesquitas próximas",
-    "angle": "Direção da qibla",
+    "angle": "Ângulo da qibla",
     "angleNote": "No sentido horário a partir do norte",
     "distance": "Distância até a Caaba",
     "time": "Horário da qibla",
-    "timeNote": "Nesse horário o Sol está exatamente na direção da qibla: olhar para o Sol é olhar para a qibla.",
+    "timeNote": "Nesse horário o Sol está exatamente na direção da qibla: quem fica de frente para o Sol está de frente para a qibla.",
     "noTime": "Hoje o Sol não passa pela direção da qibla.",
     "start": "Iniciar a bússola",
     "aligned": "Você está voltado para a qibla",
-    "turn": "Segure o celular na horizontal e gire em direção à seta",
+    "turn": "Segure o celular paralelo ao chão e gire em direção à seta",
     "waiting": "Aguardando dados da bússola…",
-    "noCompass": "Este aparelho ou navegador não tem bússola. Meça o ângulo da qibla no sentido horário a partir do norte ou olhe para o Sol no horário da qibla.",
+    "noCompass": "Este aparelho ou navegador não tem bússola. Meça o ângulo da qibla no sentido horário a partir do norte ou fique de frente para o Sol no horário da qibla.",
     "denied": "A permissão da bússola não foi concedida. Recarregue a página para tentar de novo.",
     "calibrate": "A bússola pode precisar de calibração: mova o celular desenhando um 8 algumas vezes e fique longe de ímãs, metais e eletrônicos.",
     "atKaaba": "Você está na Caaba.",
@@ -2478,11 +2422,11 @@
     "faq": [
       {
         "q": "Como encontro a direção da qibla?",
-        "a": "A qibla é a direção do caminho mais curto de onde você está até a Caaba, em Meca. Esta página dá o ângulo da qibla para o local escolhido em graus no sentido horário a partir do norte; no celular, toque em \"Iniciar a bússola\" e a seta aponta direto para a qibla. Sem bússola, você também pode olhar para o Sol no horário da qibla."
+        "a": "A qibla é a direção do caminho mais curto de onde você está até a Caaba, em Meca. Esta página dá o ângulo da qibla para o local escolhido em graus no sentido horário a partir do norte; no celular, toque em \"Iniciar a bússola\" e a seta aponta direto para a qibla. Sem bússola, você também pode ficar de frente para o Sol no horário da qibla."
       },
       {
         "q": "O que é o horário da qibla?",
-        "a": "O horário da qibla é o momento em que o Sol está exatamente na direção da qibla; olhar para o Sol nesse minuto é olhar para a qibla. Ele muda alguns minutos por dia e depende do local. Em alguns lugares longe da Caaba, o Sol não chega à direção da qibla em certos dias."
+        "a": "O horário da qibla é o momento em que o Sol está exatamente na direção da qibla; quem fica de frente para o Sol nesse minuto está de frente para a qibla. Ele muda alguns minutos por dia e depende do local. Em alguns lugares longe da Caaba, o Sol não chega à direção da qibla em certos dias."
       },
       {
         "q": "Para onde fica a qibla a partir de Londres?",
@@ -2490,14 +2434,14 @@
       },
       {
         "q": "Por que a bússola do celular pode errar?",
-        "a": "A bússola do celular mede o campo magnético; ímãs, objetos de metal, carros e eletrônicos podem desviá-la. Mover o celular desenhando um 8 faz a calibração. Segure o celular na horizontal e compare o resultado com o ângulo da qibla."
+        "a": "A bússola do celular mede o campo magnético; ímãs, objetos de metal, carros e eletrônicos podem desviá-la. Mover o celular desenhando um 8 faz a calibração. Segure o celular paralelo ao chão e compare o resultado com o ângulo da qibla."
       }
     ],
     "cardinals": "N L S O"
   },
   "bridge": {
     "title": "Feriadões na Turquia: dias de folga por dias de licença | Saat Tarih",
-    "description": "Feriados, vésperas e fins de semana da Turquia combinados: para cada feriado, as folgas mais longas com 1 a 4 dias de licença e quais dias tirar.",
+    "description": "Feriados, vésperas de meio expediente e fins de semana da Turquia combinados: para cada feriado, as folgas mais longas com 1 a 4 dias de licença e quais dias tirar.",
     "h1": "Planejador de feriadões (Turquia)",
     "lead": "Que dias tirar de folga para emendar os feriados da Turquia a um fim de semana? Para cada feriado, a folga mais longa conforme o número de dias de licença.",
     "search": "feriadão emenda fim de semana prolongado dias de licença planejador turquia feriados folga bayram köprü tatil long weekend",
@@ -2510,7 +2454,7 @@
     "colLeave": "Licença",
     "colTotal": "Total",
     "colDays": "Dias a tirar",
-    "noLeave": "Nenhum",
+    "noLeave": "Nenhuma",
     "leaveN": "{n} dias",
     "totalN": "{n} dias",
     "halfNote": "{date} (meio expediente)",
@@ -2566,9 +2510,9 @@
     "hoursShort": "h",
     "minutesShort": "min",
     "ambiguous": {
-      "IST": "IST também é usado para a Hora Padrão da Irlanda (UTC+1) e de Israel (UTC+2); esta página é a Hora Padrão da Índia.",
-      "CST": "CST também é usado para a Hora Padrão da China (UTC+8) e de Cuba (UTC−5); esta página é a Hora Padrão Central da América do Norte.",
-      "GST": "GST também é usado para a Hora da Geórgia do Sul (UTC−2); esta página é a Hora Padrão do Golfo."
+      "IST": "IST também é usado para a Hora de Verão da Irlanda (UTC+1) e a Hora Padrão de Israel (UTC+2); esta página trata da Hora Padrão da Índia.",
+      "CST": "CST também é usado para a Hora Padrão da China (UTC+8) e de Cuba (UTC−5); esta página trata da Hora Padrão Central da América do Norte.",
+      "GST": "GST também é usado para a Hora da Geórgia do Sul (UTC−2); esta página trata da Hora Padrão do Golfo."
     },
     "trtName": "Hora da Turquia",
     "faq": [
@@ -2584,14 +2528,14 @@
   },
   "dst": {
     "title": "Mudanças de horário de verão: quando os relógios mudam? | Saat Tarih",
-    "description": "Quando os relógios mudam na Europa, nos EUA, no Canadá, na Austrália e em outros países nos próximos 12 meses, com horários locais. A Turquia não muda.",
+    "description": "Quando os relógios mudam na Europa, nos EUA, no Canadá, na Austrália, na Nova Zelândia e em outros países nos próximos 12 meses, com horários locais. A Turquia não muda.",
     "h1": "Mudanças de horário de verão no mundo",
     "lead": "Quando os relógios são adiantados ou atrasados nos próximos 12 meses, com horários locais e países.",
     "search": "horário de verão mudança de hora adiantar atrasar relógios horário de inverno europa eua yaz saati daylight saving",
     "colDate": "Data",
     "colWhere": "Onde",
     "colChange": "Mudança",
-    "colLeft": "Daqui a",
+    "colLeft": "Faltam",
     "forward": "Os relógios são adiantados 1 hora: {from} → {to}",
     "back": "Os relógios são atrasados 1 hora: {from} → {to}",
     "forwardN": "Os relógios são adiantados {d}: {from} → {to}",
@@ -2630,7 +2574,7 @@
   },
   "unix": {
     "title": "Timestamp Unix: hora Unix ao vivo e conversor de datas | Saat Tarih",
-    "description": "Hora Unix atual (epoch) ao vivo em segundos e milissegundos; converta timestamps em datas e datas em timestamps em UTC, hora local e ISO 8601.",
+    "description": "Hora Unix atual (epoch) ao vivo em segundos e milissegundos; converta timestamps em datas e vice-versa. UTC, hora local, ISO 8601 e o problema de 2038.",
     "h1": "Timestamp Unix",
     "lead": "O número de segundos desde 1º de janeiro de 1970 às 00:00:00 UTC: hora Unix ao vivo e um conversor nos dois sentidos.",
     "search": "timestamp unix epoch hora unix segundos milissegundos conversor 2038 zaman damgası",
@@ -2649,7 +2593,7 @@
     "resUtc": "UTC",
     "resLocal": "Hora local",
     "resIso": "ISO 8601",
-    "resRel": "A partir de agora",
+    "resRel": "Em relação a agora",
     "resSec": "Segundos",
     "resMs": "Milissegundos",
     "detectedMs": "Lido como milissegundos",
@@ -2681,7 +2625,7 @@
     ]
   },
   "worldHol": {
-    "hubTitle": "Feriados por país 2026–2028 | Saat Tarih",
+    "hubTitle": "Feriados por país 2024–2032 | Saat Tarih",
     "hubDescription": "Feriados nacionais da Alemanha, do Reino Unido, dos EUA, dos Países Baixos, da França e de mais 25 países: datas, dias da semana, o próximo feriado e os dias restantes.",
     "hubH1": "Feriados por país",
     "hubLead": "Feriados nacionais de 30 países e os dias que faltam para o próximo.",
@@ -2690,12 +2634,12 @@
     "colNext": "Próximo feriado",
     "colCount": "Feriados em {year}",
     "turkey": "Turquia",
-    "pageTitle": "Feriados em {country} {from}–{to} | Saat Tarih",
-    "pageDescription": "Feriados nacionais em {country} {from}–{to}: datas, dias da semana e dias restantes. {year} tem {n} feriados, {w} deles em dias úteis.",
-    "pageH1": "Feriados em {country}",
-    "pageLead": "Feriados nacionais em {country}, suas datas e os dias restantes.",
+    "pageTitle": "Feriados: {country} {from}–{to} | Saat Tarih",
+    "pageDescription": "{country}: feriados nacionais {from}–{to}, com datas, dias da semana e dias restantes. Em {year} há {n} feriados, {w} deles em dias úteis.",
+    "pageH1": "Feriados: {country}",
+    "pageLead": "{country}: feriados nacionais, suas datas e os dias restantes.",
     "search": "feriados dias de folga resmi tatil public holidays",
-    "caption": "Feriados em {country} em {year}",
+    "caption": "{country}: feriados em {year}",
     "colDate": "Data",
     "colDay": "Dia",
     "colName": "Feriado",
@@ -2718,7 +2662,7 @@
   },
   "zakat": {
     "title": "Calculadora de zakat: nisab e quanto zakat pagar | Saat Tarih",
-    "description": "Calcule seu zakat com dinheiro, ouro, prata, moedas, mercadorias e créditos menos dívidas: nisab de 80,18 g de ouro, taxa de 1/40 (regras da Diyanet).",
+    "description": "Calcule seu zakat com dinheiro, ouro, prata, moeda estrangeira, mercadorias e créditos menos dívidas: nisab de 80,18 g de ouro, taxa de 1/40 (regras da Diyanet).",
     "h1": "Calculadora de zakat",
     "lead": "Digite seus bens e dívidas para ver se você atinge o nisab e quanto zakat deve.",
     "search": "calculadora de zakat nisab ouro prata 2,5 por cento quanto zakat zekat hesaplama",
@@ -2741,11 +2685,11 @@
     "notDue": "Seu patrimônio está abaixo do nisab; não há zakat a pagar.",
     "amount": "Zakat (1/40)",
     "privacy": "Os valores que você digita são calculados só nesta página; não são guardados nem enviados a lugar nenhum.",
-    "note": "Com base nas regras da Presidência de Assuntos Religiosos da Turquia (Diyanet): o nisab é de 80,18 g de ouro, a taxa é um quarenta avos e um ano lunar deve ter passado sobre os bens. Sua casa, seu carro e seus objetos pessoais não contam. Para ter certeza, consulte um estudioso.",
+    "note": "Com base nas regras da Presidência de Assuntos Religiosos da Turquia (Diyanet): o nisab é de 80,18 g de ouro, a taxa é um quarenta avos e um ano lunar deve ter passado sobre os bens. Sua casa, seu carro e seus objetos pessoais não contam. Para informações precisas, consulte a Diyanet ou um líder religioso.",
     "faq": [
       {
         "q": "Qual é o nisab do zakat?",
-        "a": "Segundo a Presidência de Assuntos Religiosos da Turquia, o nisab é de 80,18 g de ouro ou dinheiro e bens de mesmo valor. Os bens que o atingem depois das necessidades básicas e das dívidas, e que foram mantidos por um ano lunar, estão sujeitos ao zakat."
+        "a": "Segundo a Presidência de Assuntos Religiosos da Turquia, o nisab é de 80,18 g de ouro ou dinheiro e bens de mesmo valor. Os bens que o atingem depois de descontadas as necessidades básicas e as dívidas, e sobre os quais passou um ano lunar, estão sujeitos ao zakat."
       },
       {
         "q": "Qual é a taxa do zakat?",
@@ -2764,11 +2708,11 @@
     "fitreText": "A Presidência de Assuntos Religiosos da Turquia (Alto Conselho de Assuntos Religiosos) fixou a fitra de {year} em {amount} TL por pessoa ({date}), válida do Ramadã de {year} até o Ramadã seguinte.",
     "fitrePeople": "Número de pessoas (incluindo seus dependentes)",
     "fitreTotal": "Fitra total",
-    "fitreNote": "O valor é para a Turquia e é o mínimo; quem puder pode dar mais (pela medida de tâmaras ou passas). A fitra é dada antes da oração do Eid."
+    "fitreNote": "O valor é para a Turquia e é o mínimo; quem tiver condições pode dar mais (pela medida de tâmaras ou passas). A fitra é dada antes da oração do Eid."
   },
   "api": {
     "title": "Dados abertos (API): feriados, horários de oração | Saat Tarih",
-    "description": "Feriados da Turquia, horários de oração de 81 províncias, calendário da Hégira da Diyanet e dados astronômicos: JSON grátis, sem chave, CORS aberto.",
+    "description": "Feriados e datas religiosas da Turquia, horários de oração de 81 províncias, calendário da Hégira da Diyanet e dados astronômicos: JSON grátis, sem chave, CORS aberto.",
     "h1": "Dados abertos (API)",
     "lead": "Os dados que o Saat Tarih calcula, como arquivos JSON públicos; não é preciso cadastro nem chave de API.",
     "search": "api dados abertos json api de feriados turquia api de horários de oração api calendário hégira desenvolvedor açık veri",
@@ -2795,7 +2739,7 @@
     "exampleNote": "Os horários de hoje em Istambul com JavaScript:",
     "termsHeading": "Termos de uso",
     "terms": [
-      "Os dados podem ser usados sob a licença Creative Commons Atribuição 4.0 (CC BY 4.0); credite \"Saat Tarih (time.bumba.tr)\" onde usá-los.",
+      "Os dados podem ser usados sob a licença Creative Commons Atribuição 4.0 (CC BY 4.0); cite \"Saat Tarih (time.bumba.tr)\" como fonte onde você os usar.",
       "Os horários de oração são calculados com o método da Diyanet e podem diferir 1–2 minutos dos oficiais; valem os horários da Diyanet.",
       "As datas religiosas a partir de 2028 são uma projeção baseada no calendário de longo prazo da Diyanet.",
       "Não há chave nem cadastro; os arquivos são estáticos e podem ficar em cache. Solicite-os com uma frequência razoável (uma vez por dia basta).",
@@ -2804,7 +2748,7 @@
   },
   "hijriConv": {
     "title": "Conversor de datas da Hégira e gregorianas | Saat Tarih",
-    "description": "Converta datas gregorianas para a Hégira e vice-versa. A data da Hégira de hoje e os inícios de mês deste ano, conforme o calendário da Diyanet.",
+    "description": "Converta datas gregorianas para a Hégira e vice-versa. A data da Hégira de hoje e os inícios de mês deste ano da Hégira, conforme o calendário da Diyanet.",
     "h1": "Conversor de datas da Hégira",
     "lead": "A data da Hégira de hoje, a conversão nos dois sentidos e os inícios de mês deste ano da Hégira. As datas seguem o calendário da Presidência de Assuntos Religiosos da Turquia (Diyanet).",
     "search": "conversor hégira calendário islâmico da hégira para gregoriano de gregoriano para hégira data hégira de hoje hijri hicri",
@@ -2838,11 +2782,11 @@
     "colMonth": "Mês",
     "colStart": "Começa em (gregoriano)",
     "colDays": "Dias",
-    "note": "Um dia da Hégira começa ao pôr do sol; nesta página a data muda à meia-noite. Os inícios de mês podem diferir em um dia em alguns países. 2026–2031 seguem as datas publicadas pela Diyanet; os outros anos usam o cálculo Umm al-Qura.",
+    "note": "Um dia da Hégira começa ao pôr do sol; nesta página a data muda à meia-noite. Os inícios de mês podem diferir em um dia em alguns países. De 2026 a 2031 valem as datas publicadas pela Diyanet; os outros anos usam o cálculo Umm al-Qura.",
     "faq": [
       {
         "q": "Que data é hoje no calendário da Hégira?",
-        "a": "A data da Hégira de hoje aparece no alto da página, conforme o calendário da Diyanet. Como o dia da Hégira começa ao pôr do sol, a data seguinte começa no fim da tarde."
+        "a": "A data da Hégira de hoje aparece no alto da página, conforme o calendário da Diyanet. Como o dia da Hégira começa ao pôr do sol, a data seguinte já começa ao anoitecer."
       },
       {
         "q": "Por que o calendário da Hégira se desloca cerca de 11 dias por ano?",
@@ -2854,7 +2798,7 @@
       }
     ],
     "rumi": "Rumi (otomano): {date}",
-    "rumiNote": "A data rumi usa o calendário juliano (13 dias atrás) com o ano começando em 1º de março, como nos almanaques turcos tradicionais."
+    "rumiNote": "A data rumi usa o calendário juliano (13 dias atrasado em relação ao gregoriano) com o ano começando em 1º de março, como nos almanaques turcos tradicionais."
   },
   "timeCalc": {
     "title": "Calculadora de horas: somar, subtrair, intervalos | Saat Tarih",
@@ -2865,7 +2809,7 @@
     "betweenHeading": "Duração entre dois horários",
     "startLabel": "Início",
     "endLabel": "Fim",
-    "overnight": "O fim é anterior ao início, por isso o intervalo foi contado passando da meia-noite.",
+    "overnight": "O fim é anterior ao início, por isso o intervalo foi considerado como passando da meia-noite.",
     "duration": "{h} h {m} min",
     "decimal": "Decimal: {x} horas",
     "minutesTotal": "{n} minutos",
@@ -2918,7 +2862,7 @@
     "workdays": "{n} dias úteis (sem fins de semana e feriados)",
     "weekday": "Dia da semana: {d}",
     "upcomingHeading": "Dias que faltam para datas importantes",
-    "colEvent": "Data",
+    "colEvent": "Nome",
     "colDate": "Data",
     "colLeft": "Faltam",
     "daysUnit": "{n} dias",
@@ -2926,17 +2870,17 @@
     "faq": [
       {
         "q": "O dia de hoje entra nos dias que faltam?",
-        "a": "Não. Aparece o número de noites até a data escolhida: amanhã é 1 dia. Se o dia escolhido for hoje, aparece “Hoje”."
+        "a": "Não. Aparece o número de noites até a data escolhida: para amanhã, falta 1 dia. Se o dia escolhido for hoje, aparece “Hoje”."
       },
       {
         "q": "Como os dias úteis são contados?",
-        "a": "Dos dias depois de hoje, excluem-se sábados, domingos e feriados de dia inteiro na Turquia; os meios expedientes antes dos Eids contam pela metade. Os dados de feriados cobrem 2026–2031."
+        "a": "Dos dias depois de hoje, excluem-se sábados, domingos e feriados de dia inteiro na Turquia; as vésperas de bayram contam como meio dia. Os dados de feriados cobrem 2026–2031."
       }
     ]
   },
   "interval": {
     "title": "Temporizador intervalado: HIIT e Tabata on-line | Saat Tarih",
-    "description": "Rodadas com aquecimento, trabalho e descanso: sino e avisos falados a cada troca e contagem dos últimos 3 segundos. Tabata, HIIT e tela cheia.",
+    "description": "Conte rodadas com aquecimento, trabalho e descanso: sino e avisos falados a cada troca e contagem dos últimos 3 segundos. Predefinições de Tabata e HIIT, tela cheia.",
     "h1": "Temporizador intervalado",
     "lead": "Escolha os períodos de aquecimento, trabalho e descanso e o número de rodadas. A cada troca toca um sino e a fase pode ser falada em voz alta.",
     "search": "temporizador intervalado timer hiit tabata temporizador de treino emom rodadas aralık zamanlayıcı",
@@ -2962,7 +2906,7 @@
     "resume": "Continuar",
     "reset": "Zerar",
     "voice": "Avisos falados",
-    "voiceNote": "Os avisos usam o mecanismo de fala do próprio aparelho do seu navegador; se não houver voz no aparelho para este idioma, só o sino toca.",
+    "voiceNote": "Os avisos usam o mecanismo de fala do navegador no seu aparelho; se não houver uma voz instalada no aparelho para este idioma, só o sino toca.",
     "note": "Funciona com a página aberta; em tela cheia a tela fica ligada.",
     "faq": [
       {
@@ -2977,7 +2921,7 @@
   },
   "chess": {
     "title": "Relógio de xadrez: on-line, com incremento e tela cheia | Saat Tarih",
-    "description": "Relógio de xadrez para dois jogadores: ritmos 1+0, 3+2, 5+0, 10+0 e 15+10, incremento Fischer, contagem de lances e aviso quando o tempo acaba.",
+    "description": "Relógio de xadrez on-line para dois jogadores: ritmos 1+0, 3+2, 5+0, 10+0 e 15+10, incremento Fischer, contagem de lances e sino no fim do tempo. Tela cheia no celular.",
     "h1": "Relógio de xadrez",
     "lead": "Escolha um ritmo de jogo e toque no seu próprio relógio depois de cada lance. O incremento Fischer e a contagem de lances são suportados.",
     "search": "relógio de xadrez on-line timer de xadrez blitz bullet incremento fischer relógio de partida satranç saati chess clock",
@@ -3056,7 +3000,7 @@
     },
     "chime": "Sino antes",
     "noVoice": "Nenhuma voz do aparelho para este idioma foi encontrada neste navegador; a hora aparece por extenso.",
-    "note": "A fala usa o mecanismo do próprio aparelho do navegador; o texto não é enviado a lugar nenhum. Funciona com a página aberta.",
+    "note": "A fala usa o mecanismo de voz do navegador no seu aparelho; o texto não é enviado a lugar nenhum. Funciona com a página aberta.",
     "faq": [
       {
         "q": "O relógio falante funciona com o celular bloqueado?",
@@ -3112,7 +3056,7 @@
   },
   "sky": {
     "title": "O céu hoje à noite: planetas visíveis e distância da Lua | Saat Tarih",
-    "description": "Quais planetas aparecem hoje à noite de onde você está, quando e em que direção; carta celeste, distância da Lua e o próximo perigeu e apogeu.",
+    "description": "Quais planetas aparecem hoje à noite de onde você está, quando e em que direção; carta celeste com estrelas brilhantes, distância da Lua e o próximo perigeu e apogeu.",
     "h1": "Céu noturno",
     "lead": "Quando Mercúrio, Vênus, Marte, Júpiter e Saturno podem ser vistos hoje à noite do local escolhido, para onde olhar e quão brilhantes estão; a distância da Lua até a Terra.",
     "search": "céu noturno hoje à noite planetas visíveis vênus júpiter marte saturno mercúrio estrelas distância lua superlua perigeu apogeu",
@@ -3126,7 +3070,7 @@
     "moon": "Lua",
     "sun": "Sol",
     "chartHeading": "Carta celeste",
-    "chartCaption": "{place}, {time}. O centro fica bem acima da sua cabeça e a borda é o horizonte; o norte fica em cima e o leste à esquerda, como se você o segurasse acima da cabeça.",
+    "chartCaption": "{place}, {time}. O centro fica bem acima da sua cabeça e a borda é o horizonte; o norte fica em cima e o leste à esquerda, como um mapa erguido acima da cabeça.",
     "timeLabel": "Hora",
     "now": "Agora",
     "tableHeading": "Planetas hoje à noite",
@@ -3195,7 +3139,7 @@
     "darkLabel": "Escuridão total",
     "darkNone": "Hoje à noite não há escuridão total (o Sol não desce 18° abaixo do horizonte).",
     "moonUpDark": "{illum} iluminada; acima do horizonte no escuro das {from} às {to}",
-    "moonDownDark": "{illum} iluminada; abaixo do horizonte durante o escuro",
+    "moonDownDark": "{illum} iluminada; abaixo do horizonte nas horas escuras",
     "planetsLabel": "Planetas visíveis",
     "planetsNone": "Nenhum",
     "cloudLabel": "Nebulosidade",
@@ -3205,7 +3149,7 @@
       "poor": "Ruim para observar as estrelas"
     },
     "tipMoon": "Lua brilhante: estrelas fracas e meteoros ficam difíceis de ver.",
-    "tipDark": "A Lua fica abaixo do horizonte durante o escuro: bom para estrelas fracas.",
+    "tipDark": "A Lua fica abaixo do horizonte nas horas escuras: bom para estrelas fracas.",
     "tipCloudy": "As nuvens podem atrapalhar a visão.",
     "tipBest": "{p} fica mais alto por volta das {time} ({deg}°).",
     "graphHeading": "Altura dos planetas hoje à noite",
@@ -3243,7 +3187,7 @@
       },
       {
         "q": "Posso ver outro dia?",
-        "a": "Sim. Use o seletor de dia da página Neste dia para escolher qualquer dia do ano, ou avance com os botões de dia anterior e seguinte; o link na barra de endereço mostra aquele dia."
+        "a": "Sim. Use o seletor de dia da página Neste dia para escolher qualquer dia do ano, ou navegue com os botões de dia anterior e seguinte; o link na barra de endereço mostra aquele dia."
       }
     ]
   },
@@ -3274,7 +3218,7 @@
   },
   "sleepCalc": {
     "title": "Calculadora de sono: quando dormir e acordar | Saat Tarih",
-    "description": "Calcule horários de dormir ou acordar com ciclos de sono de 90 minutos: quando dormir para um horário de acordar, ou quando acordar se for dormir agora.",
+    "description": "Calcule horários de dormir ou de acordar com ciclos de sono de 90 minutos: veja quando dormir para acordar em certo horário ou quando acordar se for dormir agora.",
     "h1": "Calculadora de sono",
     "lead": "Encontre horários de dormir para um horário de acordar, ou horários de acordar para um horário de dormir, com ciclos de sono de 90 minutos. Somam-se 15 minutos para pegar no sono.",
     "search": "calculadora de sono hora de dormir hora de acordar ciclo de sono 90 minutos a que horas devo dormir",
@@ -3289,7 +3233,7 @@
     "faq": [
       {
         "q": "Quanto dura um ciclo de sono?",
-        "a": "Um ciclo de sono dura em média cerca de 90 minutos (cerca de 70–120 minutos, conforme a pessoa). Acordar no fim de um ciclo, em sono leve, costuma ser mais fácil, por isso a calculadora sugere horários em múltiplos de 90 minutos."
+        "a": "Um ciclo de sono dura em média 90 minutos (cerca de 70–120 minutos, conforme a pessoa). Acordar no fim de um ciclo, em sono leve, costuma ser mais fácil, por isso a calculadora sugere horários em múltiplos de 90 minutos."
       },
       {
         "q": "Quantos ciclos devo dormir?",
@@ -3299,7 +3243,7 @@
   },
   "examTimer": {
     "title": "Temporizador de prova em tela cheia | Saat Tarih",
-    "description": "Temporizador de prova em tela cheia com nome, sala, tempo de leitura e duração: tempo restante, horário de término e avisos nos últimos minutos.",
+    "description": "Temporizador de prova em tela cheia com nome, sala, tempo de leitura e duração: tempo restante, horário de término e avisos nos últimos minutos. Para provas e simulados.",
     "h1": "Temporizador de prova",
     "lead": "Digite o nome da prova, a sala, o tempo de leitura e a duração; o temporizador em tela cheia para o projetor mostra o tempo restante e o horário de término.",
     "search": "temporizador de prova contagem regressiva sala de aula tela cheia relógio de prova projetor simulado",
@@ -3333,7 +3277,7 @@
   },
   "classroom": {
     "title": "Ferramentas de sala de aula: sorteio, equipes, contador | Saat Tarih",
-    "description": "Ferramentas de sala de aula grátis: sorteie um aluno, divida a turma em equipes e marque os pontos. Sem cadastro; os nomes ficam no seu navegador.",
+    "description": "Ferramentas de sala de aula grátis: sorteie um aluno, divida a turma em equipes iguais e marque os pontos. Sem cadastro; os nomes ficam só no seu navegador.",
     "h1": "Ferramentas de sala de aula",
     "lead": "Digite uma vez os nomes dos alunos e depois sorteie um nome, divida a turma em equipes ou marque pontos com contadores. Um botão de tela cheia permite projetar no quadro.",
     "search": "ferramentas de sala de aula sorteio de nomes gerador de nomes formar equipes gerador de grupos contador de pontos professor",
@@ -3360,7 +3304,7 @@
     "faq": [
       {
         "q": "Como funciona o sorteio de nomes?",
-        "a": "Digite os nomes um por linha ou separados por vírgula e toque em Sortear. Com \"Remover da lista o nome sorteado\" ativado, um nome não sai de novo até a lista acabar; Restaurar a lista recomeça. Os sorteios usam o gerador seguro de números aleatórios do navegador."
+        "a": "Digite os nomes um por linha ou separados por vírgula e toque em Sortear. Com \"Remover da lista o nome sorteado\" ativado, um nome não sai de novo até a lista acabar; com Restaurar a lista, você começa do zero. Os sorteios usam o gerador seguro de números aleatórios do navegador."
       },
       {
         "q": "Os nomes dos alunos são enviados para algum lugar?",

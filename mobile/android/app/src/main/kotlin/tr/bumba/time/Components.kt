@@ -64,7 +64,8 @@ fun EmptyState(
             Box(Modifier.align(Alignment.TopEnd).padding(top = 4.dp, end = 6.dp).size(18.dp).clip(androidx.compose.foundation.shape.CircleShape)
                 .background(Theme.c.gold.copy(alpha = 0.55f)))
             Box(Modifier.align(Alignment.Center)) {
-                val line = LineIconMap.of(icon.name)
+                // Boş durumlar 3D kalır (DUOTONE.md); 3D görseli yoksa Material simgesi
+                val line = LineIconMap.of3D(icon.name)
                 if (line != null) LineIcon(line, 48.dp, c1 = Theme.c.accent, c2 = Theme.c.sage)
                 else Icon(icon, null, tint = Theme.c.accent, modifier = Modifier.size(44.dp))
             }
@@ -85,19 +86,37 @@ fun EmptyState(
 }
 
 /**
- * Liste satırlarındaki renkli simge kutusu (#99; doğal tasarım madde 4, 4 Kasım 2026): "çakıl taşı" biçimi (köşeler
- * hafif farklı yuvarlak), zemin simge renginin açık tonu, içinde 3D simge (4 Kasım 2026; karşılığı yoksa Material
- * simgesi). [line] verilirse o simge çizilir.
+ * Liste satırlarındaki renkli simge (#99): 8 Kasım 2026'dan beri iki tonlu simge dairede ([DuoChip]; satır 32/19, kare
+ * 42/25). Ad [line] ile açıkça verilir; verilmezse Material simgesinden eşlenir ([LineIconMap.of]), o da yoksa Material
+ * simgesi aynı dairede çizilir.
  */
 @Composable
-fun IconBox(icon: ImageVector, tint: Color = Theme.c.accent, modifier: Modifier = Modifier, line: String? = null) {
+fun IconBox(
+    icon: ImageVector, tint: Color = Theme.c.accent, modifier: Modifier = Modifier, line: String? = null,
+    box: androidx.compose.ui.unit.Dp = 32.dp, glyph: androidx.compose.ui.unit.Dp = 19.dp,
+) {
     val name = line ?: LineIconMap.of(icon.name)
+    if (name != null) { DuoChip(name, tint, modifier, box, glyph); return }
     Box(
-        modifier.size(36.dp).clip(PebbleShape).background(tint.copy(alpha = if (Theme.c.dark) 0.20f else 0.13f)),
+        modifier.size(box).clip(androidx.compose.foundation.shape.CircleShape)
+            .background(tint.copy(alpha = if (Theme.c.dark) 0.22f else 0.14f).compositeOver(Theme.c.surface)),
         contentAlignment = Alignment.Center,
-    ) {
-        if (name != null) LineIcon(name, 25.dp, c1 = tint, c2 = tint.copy(alpha = 0.72f))
-        else Icon(icon, null, tint = tint, modifier = Modifier.size(20.dp))
+    ) { Icon(icon, null, tint = tint, modifier = Modifier.size(glyph)) }
+}
+
+/**
+ * Metin ve önünde küçük iki tonlu simge (8 Kasım 2026; metnin içindeki süs emojisinin yerine, sahibin "çok emoji"
+ * şikâyeti). Simge yazının renginde (ya da [iconColor]) ve yazı boyuna yakın.
+ */
+@Composable
+fun IconText(
+    icon: String, text: String, color: Color, modifier: Modifier = Modifier, fontSize: androidx.compose.ui.unit.TextUnit = 14.sp,
+    iconColor: Color = color, fontWeight: FontWeight? = null, iconSize: androidx.compose.ui.unit.Dp = (fontSize.value + 2).dp,
+) {
+    Row(modifier, verticalAlignment = Alignment.CenterVertically) {
+        DuoIcon(icon, iconSize, iconColor)
+        Spacer(Modifier.width(6.dp))
+        Text(text, color = color, fontSize = fontSize, fontWeight = fontWeight)
     }
 }
 
@@ -269,7 +288,7 @@ fun HowItWorks(sections: List<Pair<String?, String>>, modifier: Modifier = Modif
         modifier.clip(RoundedCornerShape(50)).clickable { open = true }.padding(vertical = 6.dp, horizontal = 2.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        LineIcon("info", 18.dp, c1 = Theme.c.accent, c2 = Theme.c.accent)
+        DuoIcon("info", 18.dp, Theme.c.accent)
         Spacer(Modifier.width(6.dp))
         Text(L("common.how"), color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.Medium)
     }

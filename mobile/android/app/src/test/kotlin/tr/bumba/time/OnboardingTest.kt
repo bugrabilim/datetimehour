@@ -100,4 +100,19 @@ class OnboardingTest {
         assertTrue(Features.isOn(Tab.PRAYER))
         assertFalse(Onboarding.resume)
     }
+
+    /** Vakitler sorusu dil grubuna göre (9 Kasım 2026, sahibin kararı): tr, ar, id, ur, fa başta, diğer dillerde sonda */
+    @Test fun prayerQuestionOrderByLanguage() {
+        for (l in listOf("tr", "ar", "in", "ur", "fa")) {
+            org.robolectric.RuntimeEnvironment.setQualifiers("+$l")
+            assertEquals(l, Tab.PRAYER, Onboarding.QUESTIONS.first())
+            assertEquals(l, "q:prayer", Onboarding.PAGES[2])
+        }
+        for (l in listOf("en", "de", "ja", "hi", "es", "ru")) {
+            org.robolectric.RuntimeEnvironment.setQualifiers("+$l")
+            assertEquals(l, Tab.PRAYER, Onboarding.QUESTIONS.last())
+            assertEquals(l, "q:weather", Onboarding.PAGES[2])
+            assertEquals(l, "summary", Onboarding.PAGES[Onboarding.SUMMARY])
+        }
+    }
 }

@@ -36,9 +36,9 @@
     "zh": "在浏览器中显示时钟、今天的日期、伊斯兰历日期和土耳其81个省的礼拜时间。可离线使用。",
     "fil": "Orasan, petsa ngayon, petsang Hijri at oras ng pagdarasal ng 81 lalawigan ng Turkey sa iyong browser. Gumagana offline.",
     "th": "นาฬิกา วันที่วันนี้ วันที่ฮิจเราะห์ และเวลาละหมาดของ 81 จังหวัดในตุรกีบนเบราว์เซอร์ ใช้งานแบบออฟไลน์ได้",
-    "es": "Reloj, fecha de hoy, fecha hégira y horarios de oración de las 81 provincias de Turquía en su navegador. Funciona sin conexión.",
-    "pt": "Relógio, data de hoje, data da Hégira e horários de oração das 81 províncias da Turquia no seu navegador. Funciona off-line.",
-    "hi": "आपके ब्राउज़र में घड़ी, आज की तारीख, हिजरी तारीख और तुर्किये के 81 प्रांतों के नमाज़ के समय। बिना इंटरनेट काम करता है।"
+    "es": "Reloj, fecha de hoy, fecha de la Hégira y horarios de oración de las 81 provincias turcas en su navegador. No se conecta a internet.",
+    "pt": "Relógio, data de hoje, data da Hégira e horários de oração das 81 províncias da Turquia no seu navegador. Não se conecta à internet.",
+    "hi": "आपके ब्राउज़र में घड़ी, आज की तारीख, हिजरी तारीख और तुर्किये के 81 प्रांतों के नमाज़ के समय। इंटरनेट से नहीं जुड़ता।"
   },
   "format": {
     "tr": "24/12 saat",

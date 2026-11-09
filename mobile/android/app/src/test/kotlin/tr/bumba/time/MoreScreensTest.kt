@@ -442,6 +442,11 @@ class MoreScreensTest {
         shot("tr-vakitler-kadran") { PrayerScreen() }
         Prefs.store.edit().remove("prayer.visual").remove("prayer.words").commit()
     }
+    /** İki tonlu simgeler (8 Kasım 2026): Vakitler'in altındaki dört ibadet karesi uzun ekranda */
+    @Test fun worshipTiles() {
+        shot("tr-vakitler-ibadet", "tr-h2400dp") { PrayerScreen() }
+        shot("tr-vakitler-ibadet-koyu", "tr-h2400dp", dark = true) { PrayerScreen() }
+    }
     @Test fun prayerExtras() {
         Prefs.store.edit().putString(PrayerMethod.METHOD, "mwl").putBoolean(PrayerMethod.HANAFI, true)
             .putInt(PrayerSilent.MINUTES, 30).putString(PrayerAlarms.KEY, "fajr,maghrib").commit()
@@ -572,6 +577,8 @@ class MoreScreensTest {
         shot("ar-atmosfer-gun-batimi", qualifiers = "ar", atmo = "sunset") { PrayerScreen() }
         page("tr-dil", "Dil") { LanguageScreen() }
         shot("tr-kurulum") { OnboardingScreen(0) {} }
+        shot("de-kurulum", qualifiers = "de") { OnboardingScreen(0) {} }
+        shot("ar-kurulum", qualifiers = "ar") { OnboardingScreen(0) {} }
         // Sorulu akış (5 Kasım 2026): 0 hoş geldiniz, 1 güven + konum ve bildirim, 2–6 sorular, 7 özet, 8 "başka neler var",
         // 9–10 ipuçları, 11–16 özellik turu, 17 "Diğer her şey Tümü'nde"
         shot("tr-kurulum-guven") { OnboardingScreen(1) {} }

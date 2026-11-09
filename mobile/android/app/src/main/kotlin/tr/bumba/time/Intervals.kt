@@ -472,8 +472,8 @@ fun TimersScreen() {
                                     color = if (done) tint else Theme.c.text, fontSize = 32.sp, fontWeight = FontWeight.Light, style = Tnum)
                             }
                             // Bitiş saati (2. analiz #133)
-                            if (t.running && !done) Text("🕓 " + Fmt.time(java.time.Instant.ofEpochMilli(t.end).atZone(java.time.ZoneId.systemDefault())),
-                                color = Theme.c.muted, fontSize = 12.sp)
+                            if (t.running && !done) IconText("clock", Fmt.time(java.time.Instant.ofEpochMilli(t.end).atZone(java.time.ZoneId.systemDefault())),
+                                Theme.c.muted, fontSize = 12.sp)
                         }
                         // ±10 dk, +1 sa, tekrar, renk (2. analiz #133)
                         Box {
@@ -615,7 +615,7 @@ private fun VisualTimerDialog(t: TimerItem, now: Long, onClose: () -> Unit) {
                     }
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    androidx.compose.material3.TextButton(onClick = { kids = true }) { Text("🧒 " + L("timers.kids"), color = Color(0xFF222222)) }
+                    androidx.compose.material3.TextButton(onClick = { kids = true }) { Text(L("timers.kids"), color = Color(0xFF222222)) }
                     androidx.compose.material3.TextButton(onClick = onClose) { Text(L("common.done"), color = Color(0xFF222222)) }
                 }
             }
@@ -732,7 +732,7 @@ fun HiitScreen() {
             // Bitiş özeti (2. analiz #135)
             PhasePanel("done", 1f, Modifier.height(220.dp)) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Text("🏁", fontSize = 44.sp)
+                    DuoIcon("medal", 48.dp, Color.White)
                     Text(L("hiit.done"), color = Color.White, fontSize = 26.sp, fontWeight = FontWeight.Bold)
                     if (cfg.isRoutine) Text(cfg.name, color = Color.White, fontSize = 16.sp)
                     Text(T("hiit.total", clock(cfg.totalSeconds.toLong())) + " · " + T("hiit.roundCount", cfg.rounds), color = Color.White, fontSize = 15.sp)
@@ -796,7 +796,7 @@ fun HiitScreen() {
                         AlarmScheduler.cancel(context, "hiit")
                         saveState(0, 0)
                     }
-                    RoundButton("🔒 " + L("tools.lock"), false, Modifier.weight(1f)) { locked = true }
+                    RoundButton(L("tools.lock"), false, "privacy", Modifier.weight(1f)) { locked = true }
                 }
             }
             // Sıradakiler ve bitiş saatleri (2. analiz #135)
@@ -811,7 +811,7 @@ fun HiitScreen() {
                     Text(clock(sg.dur.toLong()), color = Theme.c.muted, fontSize = 14.sp, style = Tnum)
                     Spacer(Modifier.width(10.dp))
                     val endAt = java.time.Instant.ofEpochMilli(ref + (sg.start + sg.dur - elapsed) * 1000L).atZone(java.time.ZoneId.systemDefault())
-                    Text("🕓 " + Fmt.time(endAt), color = Theme.c.muted, fontSize = 13.sp)
+                    IconText("clock", Fmt.time(endAt), Theme.c.muted, fontSize = 13.sp)
                 }
             }
         }

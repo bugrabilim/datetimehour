@@ -24,18 +24,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Bed
-import androidx.compose.material.icons.filled.LocalCafe
-import androidx.compose.material.icons.filled.CalendarMonth
-import androidx.compose.material.icons.filled.AutoAwesome
-import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.filled.Eco
-import androidx.compose.material.icons.filled.FormatQuote
-import androidx.compose.material.icons.filled.NightsStay
-import androidx.compose.material.icons.filled.Schedule
-import androidx.compose.material.icons.filled.Update
-import androidx.compose.material.icons.filled.WbSunny
-import androidx.compose.material.icons.filled.WbTwilight
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
@@ -53,7 +41,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -90,7 +77,7 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
             }
         }
         AppCard(padding = 4) {
-            ToggleRow(Icons.Filled.NightsStay, L("notify.cat.prayer"), L("notify.cat.prayer.note"), NotifyPrefs.enabled) {
+            ToggleRow("mosque", Theme.c.gold, L("notify.cat.prayer"), L("notify.cat.prayer.note"), NotifyPrefs.enabled) {
                 NotifyPrefs.saveEnabled(it)
                 changed()
             }
@@ -106,27 +93,27 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
             }
         }
         AppCard(padding = 4) {
-            FeatureToggle(NotifyFeature.CALENDAR, Icons.Filled.CalendarMonth, ::changed)
+            FeatureToggle(NotifyFeature.CALENDAR, "calendar", Theme.c.sage, ::changed)
             RowDivider()
-            FeatureToggle(NotifyFeature.DAILY, Icons.Filled.FormatQuote, ::changed)
+            FeatureToggle(NotifyFeature.DAILY, "speech", Theme.c.sage, ::changed)
             RowDivider()
-            FeatureToggle(NotifyFeature.BEDTIME, Icons.Filled.Bed, ::changed)
-            FeatureToggle(NotifyFeature.HABITS, Icons.Filled.LocalCafe, ::changed)
+            FeatureToggle(NotifyFeature.BEDTIME, "bed", Theme.c.terra, ::changed)
+            FeatureToggle(NotifyFeature.HABITS, "coffee", Theme.c.terra, ::changed)
         }
         AppCard(padding = 4) {
-            FeatureToggle(NotifyFeature.SEASONS, Icons.Filled.Eco, ::changed)
+            FeatureToggle(NotifyFeature.SEASONS, "leaf", Theme.c.sky, ::changed)
             RowDivider()
-            val moonOn = FeatureToggle(NotifyFeature.MOON, Icons.Filled.DarkMode, ::changed)
+            val moonOn = FeatureToggle(NotifyFeature.MOON, "moon", Theme.c.sky, ::changed)
             // Olay seçimi ve önceden haber verme (2. analiz #152)
             if (moonOn) SunMoonOptions(moon = true, ::changed)
             RowDivider()
-            val sunOn = FeatureToggle(NotifyFeature.SUN, Icons.Filled.WbTwilight, ::changed)
+            val sunOn = FeatureToggle(NotifyFeature.SUN, "sunrise", Theme.c.sky, ::changed)
             if (sunOn) SunMoonOptions(moon = false, ::changed)
             RowDivider()
-            FeatureToggle(NotifyFeature.SKY, Icons.Filled.AutoAwesome, ::changed)
+            FeatureToggle(NotifyFeature.SKY, "telescope", Theme.c.sky, ::changed)
         }
         AppCard(padding = 4) {
-            val on = FeatureToggle(NotifyFeature.WEATHER, Icons.Filled.WbSunny, ::changed)
+            val on = FeatureToggle(NotifyFeature.WEATHER, "sun_cloud", Theme.c.sky, ::changed)
             if (on) {
                 RowDivider()
                 // Sabah 05.00–11.00 arası, yarım saatte bir
@@ -137,13 +124,13 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
                 RowDivider()
                 // Yarın belirgin soğuk/sıcak ve yağmur yaklaşıyor (2. analiz #110)
                 var alerts by remember { mutableStateOf(Prefs.store.getBoolean("notify.weather.alerts", true)) }
-                ToggleRow(Icons.Filled.WbSunny, L("notify.weatherAlerts"), L("notify.weatherAlerts.note"), alerts) {
+                ToggleRow("umbrella", Theme.c.sky, L("notify.weatherAlerts"), L("notify.weatherAlerts.note"), alerts) {
                     alerts = it; Prefs.store.edit().putBoolean("notify.weather.alerts", it).apply(); changed()
                 }
             }
         }
         AppCard(padding = 4) {
-            val on = FeatureToggle(NotifyFeature.HOURLY, Icons.Filled.Schedule, ::changed)
+            val on = FeatureToggle(NotifyFeature.HOURLY, "clock", Theme.c.terra, ::changed)
             if (on) {
                 RowDivider()
                 TimeChoice(L("notify.cat.hourly.from"), FeaturePrefs.hourlyFrom, (0..23).toList(), { minutesLabel(it * 60) }) {
@@ -157,16 +144,16 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
                 }
             }
             RowDivider()
-            FeatureToggle(NotifyFeature.DST, Icons.Filled.Update, ::changed)
+            FeatureToggle(NotifyFeature.DST, "dst", Theme.c.terra, ::changed)
         }
     }
 }
 
 /** Özellik satırı; açık mı döner (alttaki ayarlar için) */
 @Composable
-private fun FeatureToggle(f: NotifyFeature, icon: ImageVector, changed: () -> Unit): Boolean {
+private fun FeatureToggle(f: NotifyFeature, icon: String, tint: Color, changed: () -> Unit): Boolean {
     var on by remember { mutableStateOf(FeaturePrefs.isOn(f)) }
-    ToggleRow(icon, f.title, f.note, on) {
+    ToggleRow(icon, tint, f.title, f.note, on) {
         on = it
         FeaturePrefs.set(f, it)
         changed()
@@ -175,12 +162,12 @@ private fun FeatureToggle(f: NotifyFeature, icon: ImageVector, changed: () -> Un
 }
 
 @Composable
-private fun ToggleRow(icon: ImageVector, title: String, note: String, on: Boolean, onChange: (Boolean) -> Unit) {
+private fun ToggleRow(icon: String, tint: Color, title: String, note: String, on: Boolean, onChange: (Boolean) -> Unit) {
     Row(
         Modifier.fillMaxWidth().clickable { onChange(!on) }.padding(horizontal = 12.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconBox(icon)
+        DuoChip(icon, tint)
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
             Text(title, color = Theme.c.text, fontSize = 16.sp)

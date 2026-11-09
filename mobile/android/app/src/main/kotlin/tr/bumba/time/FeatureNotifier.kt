@@ -155,7 +155,7 @@ object FeatureNotifier {
         val today = now.atZone(zone).toLocalDate()
         return (0 until days).mapNotNull { i ->
             val day = today.plusDays(i.toLong())
-            val names = AppData.events[day].orEmpty().map { it.name }.distinct()
+            val names = calEvents(day).map { it.name }.distinct()
             if (names.isEmpty()) return@mapNotNull null
             Planned("cal-$day", day.atTime(9, 0).atZone(zone).toInstant(), names.joinToString(" · "),
                 T("notify.n.today", Fmt.longDate(day)), NotifyFeature.CALENDAR.tab)

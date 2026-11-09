@@ -18,6 +18,9 @@
     return S.tpl(S.T.daysLeft, { n: new Intl.NumberFormat(S.locale).format(n) });
   }
 
+  /* Sınav tarihleri 9 Kasım 2026'da kaldırıldı (sahibin kararı: yalnız Türkiye'ye özgü, projenin küresel amacına aykırı); eski seçim silinir */
+  try { localStorage.removeItem("sth-cal-exams"); } catch (e) {}
+
   /* Yıl sayfası */
   var grid = doc.querySelector("[data-year]");
   if (grid) {
@@ -48,7 +51,7 @@
       var loadEvents = function (cb) {
         if (evMap) return cb();
         fetch(S.cfg.eventsUrl, { credentials: "omit" }).then(function (r) { return r.json(); }).then(function (list) {
-          evMap = {}; list.forEach(function (e) { if (e.t === "exam") return; (evMap[e.d] = evMap[e.d] || []).push(e); }); cb();
+          evMap = {}; list.forEach(function (e) { (evMap[e.d] = evMap[e.d] || []).push(e); }); cb();
         }).catch(function () { evMap = {}; cb(); });
       };
       var closeDlg = function () { if (typeof dlg.close === "function") dlg.close(); else dlg.removeAttribute("open"); };

@@ -206,7 +206,7 @@
       },
       {
         "q": "Bagaimana cara mengganti gaya jam?",
-        "a": "Geser jam ke kiri atau ke kanan; di komputer, gunakan titik-titik di bawahnya atau tombol panah pada papan ketik. Gayanya meliputi jam analog klasik dan minimalis, digital, analog dan digital sekaligus, dengan atau tanpa tanggal, jam dengan kalender bulanan, jam flip, jam dengan kata-kata, jam cincin, dan tanggal besar. Pilihan Anda diingat di perangkat ini."
+        "a": "Geser jam ke kiri atau ke kanan, atau gunakan panah di bawahnya; Anda juga bisa mengetuk nomor gaya untuk memilih dari daftar. Di komputer, tombol panah juga berfungsi. Selain jam analog berangka, digital, serta analog dan digital sekaligus, ada gaya dengan tanggal, cuaca, kalender bulanan, atau tata letak berdampingan, ditambah jam flip, hologram, jam Matrix, dan jam matematika. Pilihan Anda diingat di perangkat ini."
       },
       {
         "q": "Bagaimana melihat jam dalam layar penuh?",
@@ -218,7 +218,7 @@
       },
       {
         "q": "Di mana saya dapat melihat hari libur resmi Turki dan Ramadan?",
-        "a": "Halaman kalender tahunan menampilkan hari libur resmi, hari bayram dan hari menjelangnya, malam kandil, serta bulan Ramadan dalam satu kalender. Bagian \"Hari mendatang\" di bagian atas halaman kalender memberi tahu berapa hari lagi menuju hari libur berikutnya."
+        "a": "Halaman kalender tahunan menampilkan hari libur resmi, hari bayram dan hari menjelangnya, malam kandil, serta bulan Ramadan dalam satu kalender."
       }
     ],
     "upcomingHeading": "Hari libur resmi dan hari istimewa mendatang",
@@ -333,16 +333,16 @@
           "**Musik alarm (YouTube, layanan eksternal, dengan izin):** Jika Anda menambahkan tautan YouTube ke alarm di alat alarm dan mengizinkan layanan eksternal, saat alarm berbunyi video dimuat ke peramban Anda dengan pemutar YouTube dalam mode privasi yang ditingkatkan (youtube-nocookie.com); alamat IP Anda dan ID video sampai ke Google (YouTube), dan pemutar dapat menyimpan datanya sendiri di peramban Anda. Tautan hanya tersimpan di peramban ini, bersama alarm Anda. Tanpa izin, pemutar tidak dimuat dan alarm berbunyi dengan suaranya sendiri. Server Saat Tarih tidak melihatnya; ketentuan privasi YouTube (Google) sendiri yang berlaku.",
           "**Lencana:** Lencana pencapaian dan kemajuan Anda (lencana yang diperoleh dan tanggalnya, model jam yang telah dilihat, jumlah hari pemakaian berturut-turut) disimpan hanya di ponsel dan tidak pernah dikirim; Anda dapat menghapusnya kapan saja dengan \"Hapus lencana\" di Alat › Lencana.",
           "**Latihan interval:** Selama latihan interval yang Anda mulai berjalan, aplikasi memakai audio latar iOS agar dapat mengumumkan pergantian fase saat layar terkunci; suaranya dibuat di ponsel dan tidak ada data yang dikirim.",
-          "**Foto:** Foto yang Anda pilih untuk jam layar penuh atau hitung mundur diambil melalui pemilih foto iPhone (akses ke pustaka foto tidak diminta); salinan yang diperkecil disimpan hanya di ponsel dan tidak pernah dikirim. Foto untuk tayangan slide (hingga 10) juga tetap di ponsel. Kartu berbagi jadwal salat dan hitung mundur serta file CSV dibuat di ponsel dan hanya dikirim ke aplikasi yang Anda pilih. Tangkapan Layar Utama yang Anda pilih untuk widget transparan dan potongannya hanya disimpan di ponsel, di folder bersama aplikasi dan widgetnya; tidak dikirim ke mana pun dan tidak disinkronkan dengan iCloud.",
+          "**Foto:** Foto yang Anda pilih untuk jam layar penuh atau hitung mundur diambil melalui pemilih foto iPhone (akses ke pustaka foto tidak diminta); salinan yang diperkecil disimpan hanya di ponsel dan tidak pernah dikirim. Foto untuk tayangan slide (hingga 10) juga tetap di ponsel. Kartu berbagi jadwal salat dan hitung mundur serta file CSV dibuat di ponsel dan hanya dikirim ke aplikasi yang Anda pilih. Tangkapan layar Layar Utama yang Anda pilih untuk widget transparan dan potongannya hanya disimpan di ponsel, di folder bersama aplikasi dan widgetnya; tidak dikirim ke mana pun dan tidak disinkronkan dengan iCloud.",
           "**Preferensi:** Preferensi seperti model jam, provinsi, dan jam dunia disimpan hanya di ponsel dan terhapus saat aplikasi dihapus.",
-          "**Kiblat dan masjid terdekat:** Arah kiblat dihitung di ponsel; kompas memakai sensor orientasi ponsel (dengan izin lokasi, lokasi juga dipakai di ponsel untuk utara sejati). Di layar \"Masjid terdekat\", pencarian memakai Apple Peta: kata pencarian dan pusat area yang dibulatkan ke dua desimal dikirim ke Apple; ketentuan privasi Apple berlaku. Di layar kiblat, garis ke Ka'bah ditampilkan di Apple Maps; gambar peta untuk wilayah Anda diunduh dari Apple.",
+          "**Kiblat dan masjid terdekat:** Arah kiblat dihitung di ponsel; kompas memakai sensor orientasi ponsel (dengan izin lokasi, lokasi juga dipakai untuk utara sejati, hanya di ponsel). Di layar \"Masjid terdekat\", pencarian memakai Apple Maps: kata pencarian (\"masjid\") dan pusat area yang dibulatkan ke dua desimal dikirim ke Apple; ketentuan privasi Apple berlaku. Di layar kiblat, garis ke Ka'bah ditampilkan di Apple Maps; gambar peta untuk wilayah Anda diunduh dari Apple.",
           "**Apple Watch, Siri, dan Layar Terkunci:** Aplikasi Apple Watch menghitung jadwal salat di jam tangan; jika \"Tempat dari iPhone\" dipilih, nama dan koordinat tempat dikirim dari iPhone ke jam tangan (WatchConnectivity milik Apple) dan tidak ke tempat lain; jika \"Lokasi saya\" dipilih di jam tangan, lokasi hanya dipakai di jam tangan. Tindakan Siri dan Pintasan (pengatur waktu, alarm, jam layar penuh, salat berikutnya, tanggal) berjalan di ponsel; Apple memproses permintaan suara. Aktivitas Langsung di Layar Terkunci (penghitung, salat berikutnya) dibuat di ponsel.",
-          "**Kamera, tidur, dan fokus:** Untuk membaca kode QR atau kode batang tugas mematikan alarm, kamera hanya terbuka saat Anda menyimpan kode dan saat mematikan alarm (izin diminta saat pertama kali digunakan); gambar diproses di perangkat, tidak disimpan dan tidak dikirim, dan hanya nilai yang terbaca yang disimpan di perangkat bersama alarm. Tugas goyang dan langkah memakai sensor gerak hanya selama layar tugas terbuka; langkah tidak dicatat. Riwayat pomodoro (hari, menit, nama tugas) dan jadwal tidur hanya tersimpan di perangkat; suara latar pomodoro dan suara tidur dibuat di perangkat. Alarm pintar: jika Anda memulai sesi di layar Tidur, sensor gerak (akselerometer) dibaca selama jendela alarm pintar dan alarm berbunyi lebih awal saat ada tanda tidur ringan; data gerakan hanya ada di memori serta tidak disimpan atau dikirim. Tidak ada pelacakan tidur (tahap tidur, rekaman) dan mikrofon tidak dipakai untuk tidur. Foto pada tugas menemukan benda (dikenali dengan Apple Vision), gambar tampilan kamera kiblat, dan mikrofon pada tugas membaca keras (hanya pengenalan suara di perangkat) hanya dipakai saat layar itu terbuka; semuanya diproses di perangkat, tidak disimpan dan tidak dikirim. Desain kompas kiblat dan masjid favorit disimpan di perangkat dan, jika sinkronisasi iCloud aktif, disinkronkan antar perangkat Anda.",
+          "**Kamera, tidur, dan fokus:** Untuk membaca kode QR atau kode batang tugas mematikan alarm, kamera hanya terbuka saat Anda menyimpan kode dan saat mematikan alarm (izin diminta saat pertama kali digunakan); gambar diproses di perangkat, tidak disimpan dan tidak dikirim, dan hanya nilai yang terbaca yang disimpan di perangkat bersama alarm. Tugas goyang dan langkah memakai sensor gerak hanya selama layar tugas terbuka; langkah tidak dicatat. Riwayat pomodoro (hari, menit, nama tugas) dan jadwal tidur tersimpan di perangkat; suara latar pomodoro dan suara tidur dibuat di perangkat. Alarm pintar: jika Anda memulai sesi di layar Tidur, sensor gerak (akselerometer) dibaca selama jendela alarm pintar dan alarm berbunyi lebih awal saat ada tanda tidur ringan; data gerakan hanya ada di memori serta tidak disimpan atau dikirim. Tidak ada pelacakan tidur (tahap tidur, rekaman) dan mikrofon tidak dipakai untuk tidur. Foto pada tugas menemukan benda (dikenali dengan Apple Vision), gambar tampilan kamera kiblat, dan mikrofon pada tugas membaca keras (hanya pengenalan suara di perangkat) hanya dipakai saat layar itu terbuka; semuanya diproses di perangkat, tidak disimpan dan tidak dikirim. Desain kompas kiblat dan masjid favorit disimpan di perangkat dan, jika sinkronisasi iCloud aktif, disinkronkan antar perangkat Anda.",
           "**Ibadah:** Penanda Al-Qur'an, ukuran teks, hitungan zikir, pencatat salat dan puasa (salat yang dikerjakan, hitungan qada, hari berpuasa), dan jumlah yang Anda isi di kalkulator zakat tetap hanya di perangkat; tidak dikirim ke mana pun dan tidak dipakai untuk statistik atau lencana. Teks Al-Qur'an dan doa sudah ada di dalam aplikasi. Saat Anda mengetuk tautan ke situs terjemahan Al-Qur'an berbahasa Turki milik Diyanet, situs itu terbuka di peramban. Harga emas untuk zakat Anda ketik sendiri; aplikasi tidak mengambil harga.",
           "**Sinkronisasi iCloud:** Jika \"Sinkronkan dengan iCloud\" di Pengaturan aktif (bawaan), pengaturan, jam dunia, hitung mundur, tempat tersimpan, catatan pomodoro dan tidur, serta catatan ibadah disinkronkan melalui penyimpanan kunci-nilai iCloud milik Apple dengan iPhone, iPad, dan Mac yang masuk ke Akun Apple yang sama. Data ini tetap di akun iCloud Anda menurut ketentuan Apple; kami tidak dapat mengaksesnya dan data ini tidak pernah sampai ke server kami. Lokasi, alarm, pengatur waktu yang berjalan, pengaturan notifikasi, lencana, dan foto tidak disinkronkan. Mematikan sakelar menghentikan sinkronisasi di perangkat itu.",
           "**Kesehatan, jurnal pagi, foto alarm, dan jam mengambang:** Jika Anda mengaktifkan \"Simpan ke Apple Kesehatan\", setiap latihan interval yang selesai ditulis ke aplikasi Kesehatan sebagai latihan (jenis, waktu mulai, durasi); aplikasi tidak membaca data kesehatan Anda dan data ini tidak dikirim ke server mana pun. Jurnal pagi (suasana hati, tidur, niat, catatan) hanya tersimpan di perangkat Anda (di perangkat Akun Apple Anda jika sinkronisasi iCloud aktif). Untuk tugas alarm foto, fotonya tidak disimpan; hanya ringkasan kecil (72 nilai abu-abu) yang disimpan di ponsel untuk perbandingan. Metode perhitungan, alarm waktu salat (iOS 26+), dan tombol Pusat Kontrol tetap di ponsel. Jam mengambang adalah jendela gambar-dalam-gambar; tidak memutar suara dan tidak mengirim data.",
           "**Alarm musik, pengingat lokasi dan kalender, pemblokiran saat fokus, Mac, Apple TV, dan Vision Pro:** Untuk suara alarm, potongan 30 detik dari lagu yang Anda pilih di pustaka musik atau File ditulis ke file suara di ponsel; lagunya tidak dikirim ke mana pun (akses pustaka musik hanya diminta saat Anda memilih). Untuk pengingat lokasi, iPhone sendiri yang mendeteksi kedatangan dan kepergian; tempat pengingat tetap di ponsel dan peta berasal dari Apple. Saat Anda memasang alarm untuk acara kalender, hanya judul dan waktu acara itu yang dipakai. Pemblokiran saat fokus memakai kerangka Durasi Layar milik Apple; aplikasi dan situs yang Anda pilih adalah token terenkripsi Apple dan aplikasi tidak dapat melihat apa itu. Aplikasi Mac, Apple TV, dan Vision Pro menghitung jadwal salat di perangkat; jika Anda mengizinkan lokasi, lokasi hanya dipakai di perangkat untuk mencari provinsi terdekat. Saat alarm dengan tugas berbunyi, penghapusan aplikasi dicegah lewat kerangka yang sama dan diizinkan lagi setelah tugas selesai; ini hanya berfungsi jika Anda memberi izin Durasi Layar.",
-          "**Pengatur waktu belajar dan permainan bangun:** Mata pelajaran dan sesi di pengatur waktu belajar (durasi, jumlah soal, catatan) serta catatan permainan bangun (hari, jam bangun dan alarm, jumlah penundaan) disimpan di perangkat; jika sinkronisasi iCloud aktif, data disinkronkan dengan akun iCloud Anda dan tidak dikirim ke tempat lain. Bahasa aplikasi dan pilihan muka jam juga disimpan di perangkat."
+          "**Pengatur waktu belajar dan permainan bangun:** Mata pelajaran dan sesi di pengatur waktu belajar (durasi, jumlah soal, catatan) serta catatan permainan bangun (hari, jam bangun dan alarm, jumlah penundaan) hanya disimpan di perangkat; jika sinkronisasi iCloud aktif, data disinkronkan dengan akun iCloud Anda dan tidak dikirim ke tempat lain. Bahasa aplikasi dan pilihan muka jam juga disimpan di perangkat."
         ]
       },
       {
@@ -362,7 +362,7 @@
           "**Lencana dan preferensi:** Lencana dan preferensi seperti model jam, lokasi, dan jam dunia disimpan hanya di ponsel dan terhapus saat aplikasi dihapus. Jika pencadangan Android aktif di ponsel Anda, catatan ini (dan salinan foto yang Anda pilih) dapat masuk ke cadangan perangkat di akun Google Anda; cadangan itu tunduk pada ketentuan Google dan kami tidak dapat mengaksesnya.",
           "**Kiblat dan masjid terdekat:** Arah kiblat dan kompas dihitung di ponsel. Di layar \"Masjid terdekat\", koordinat yang dibulatkan ke dua desimal (sekitar 1 km) dikirim ke layanan Overpass (overpass-api.de) yang menyediakan data OpenStreetMap; alamat IP Anda sampai ke layanan ini. Mengetuk masjid membuka aplikasi peta Anda.",
           "**Jam tangan Wear OS dan pintasan:** Aplikasi Wear OS menghitung jadwal salat di jam tangan; jika \"Lokasi saya\" dipilih, lokasi perkiraan hanya dipakai di jam tangan dan tidak dikirim ke mana pun. Pengatur waktu dan alarm yang dipasang Asisten atau aplikasi lain di Saat Tarih disimpan hanya di ponsel; screensaver dan notifikasi penghitung yang berjalan dibuat di ponsel.",
-          "**Kamera, tidur, dan fokus:** Kode QR atau kode batang tugas mematikan alarm dibaca oleh pemindai kode Google (layanan Google Play): aplikasi tidak meminta izin kamera dan tidak pernah melihat gambarnya; hanya nilai yang terbaca yang disimpan di ponsel bersama alarm. Tugas goyang dan langkah memakai akselerometer hanya selama layar alarm terbuka; langkah tidak dicatat. Riwayat pomodoro (hari, menit, nama tugas) dan jadwal tidur hanya tersimpan di ponsel; suara latar pomodoro dan suara tidur dibuat di ponsel (layanan latar depan memungkinkan suara tetap berbunyi saat layar mati, dengan \"Hentikan suara\" di notifikasi). Alarm pintar: jika Anda memulai sesi di layar Tidur, sensor gerak (akselerometer) dibaca selama jendela alarm pintar dan alarm berbunyi lebih awal saat ada tanda tidur ringan; data gerakan hanya ada di memori serta tidak disimpan atau dikirim. Tidak ada pelacakan tidur (tahap tidur, rekaman) dan mikrofon tidak dipakai untuk tidur. Sesi berjalan sebagai layanan latar depan (dengan \"Hentikan\" di notifikasi). Jika Anda menambahkan tautan Spotify atau YouTube ke alarm, tautan dibuka di aplikasi tersebut saat alarm berbunyi; aplikasi hanya membuka tautan dan tidak mengakses musiknya. Pada tugas menemukan benda, foto kecil dari kamera sistem dikenali di ponsel oleh model pelabelan gambar layanan Google Play; pada tugas membaca keras, mikrofon (izin diminta di tugas) hanya dipakai dengan pengenalan suara di perangkat Android, jika tidak ada beralih ke tugas mengetik. Gambar dan suara tidak disimpan atau dikirim. Desain kompas kiblat dan masjid favorit disimpan di ponsel dan, jika cadangan Android aktif, ikut dalam cadangan akun Google Anda bersama pengaturan.",
+          "**Kamera, tidur, dan fokus:** Kode QR atau kode batang tugas mematikan alarm dibaca oleh pemindai kode Google (layanan Google Play): aplikasi tidak meminta izin kamera dan tidak pernah melihat gambarnya; hanya nilai yang terbaca yang disimpan di ponsel bersama alarm. Tugas goyang dan langkah memakai akselerometer hanya selama layar alarm terbuka; langkah tidak dicatat. Riwayat pomodoro (hari, menit, nama tugas) dan jadwal tidur hanya tersimpan di ponsel; suara latar pomodoro dan suara tidur dibuat di ponsel (layanan latar depan memungkinkan suara tetap berbunyi saat layar mati, dengan \"Hentikan suara\" di notifikasi). Alarm pintar: jika Anda memulai sesi di layar Tidur, sensor gerak (akselerometer) dibaca selama jendela alarm pintar dan alarm berbunyi lebih awal saat ada tanda tidur ringan; data gerakan hanya ada di memori serta tidak disimpan atau dikirim. Tidak ada pelacakan tidur (tahap tidur, rekaman) dan mikrofon tidak dipakai untuk tidur. Sesi berjalan sebagai layanan latar depan (dengan \"Hentikan\" di notifikasi). Jika Anda menambahkan tautan Spotify atau YouTube ke alarm, tautan dibuka di aplikasi tersebut saat alarm berbunyi; aplikasi hanya membuka tautan dan tidak mengakses musiknya. Pada tugas menemukan benda, foto kecil dari kamera sistem dikenali di ponsel oleh model pelabelan gambar layanan Google Play; pada tugas membaca keras, mikrofon (izin diminta di tugas) hanya dipakai dengan pengenalan suara di perangkat milik Android; jika itu tidak tersedia, tugas beralih ke tugas mengetik. Gambar dan suara tidak disimpan atau dikirim. Desain kompas kiblat dan masjid favorit disimpan di ponsel dan, jika cadangan Android aktif, ikut dalam cadangan akun Google Anda bersama pengaturan.",
           "**Ibadah:** Penanda Al-Qur'an, ukuran teks, hitungan zikir, pencatat salat dan puasa (salat yang dikerjakan, hitungan qada, hari berpuasa), dan jumlah yang Anda isi di kalkulator zakat tetap hanya di ponsel; tidak dikirim ke mana pun dan tidak dipakai untuk statistik atau lencana. Teks Al-Qur'an dan doa sudah ada di dalam aplikasi. Saat Anda mengetuk tautan ke situs terjemahan Al-Qur'an berbahasa Turki milik Diyanet, situs itu terbuka di peramban. Harga emas untuk zakat Anda ketik sendiri; aplikasi tidak mengambil harga.",
           "**Kesehatan, jurnal pagi, foto alarm, mode senyap, dan jam mengambang:** Jika Anda mengaktifkan \"Simpan ke Health Connect\", hanya izin menulis olahraga yang diminta dan setiap latihan interval yang selesai ditulis sebagai sesi olahraga (jenis, waktu mulai, durasi); aplikasi tidak membaca data kesehatan Anda. Jurnal pagi hanya tersimpan di ponsel (dan di cadangan Google ponsel). Untuk tugas alarm foto, fotonya diambil dengan kamera ponsel sendiri (izin kamera tidak diminta) dan tidak disimpan; hanya ringkasan kecil yang disimpan. Akses Jangan Ganggu untuk \"Senyapkan saat waktu salat\" hanya dipakai jika Anda mengaktifkannya dan memberikannya di pengaturan ponsel. Jam mengambang memakai izin \"Tampilkan di atas aplikasi lain\"; jam itu tidak membaca apa pun di layar dan hanya menggambar jam. Widget dan petak Setelan Cepat memakai penghitung aplikasi sendiri.",
           "**Pengingat lokasi dan kalender, pemblokiran saat fokus, dan Android TV:** Jika Anda menambahkan pengingat lokasi, akses lokasi akurat dan \"Izinkan sepanjang waktu\" diminta; geofencing layanan Google Play mendeteksi kedatangan dan kepergian, tempat pengingat tetap di ponsel, dan aplikasi tidak mengirim lokasi Anda ke mana pun. Saat Anda memasang alarm untuk acara kalender, hanya judul dan waktu acara itu yang dipakai. Jika Anda memberi akses penggunaan untuk pemblokiran saat fokus, aplikasi membaca nama aplikasi yang sedang tampil di latar depan sekali per detik di ponsel, hanya selama waktu kerja pomodoro; informasi ini tidak disimpan atau dikirim. Layar Android TV memakai tempat yang dipilih di aplikasi.",
@@ -471,7 +471,7 @@
             ],
             [
               "sth-place",
-              "Mengingat provinsi atau lokasi yang terakhir dipilih untuk halaman jadwal salat, alam, dan cuaca.",
+              "Mengingat provinsi atau lokasi yang terakhir dipilih untuk halaman jadwal salat, musim, dan cuaca.",
               "Sampai Anda menghapusnya"
             ],
             [
@@ -622,7 +622,7 @@
     "info": "Tentang sumber waktu jam ini",
     "infoTitle": "Dari mana waktu ini berasal?",
     "infoClose": "Tutup",
-    "infoSeconds": "Ketuk jam untuk menampilkan atau menyembunyikan detik. Detik awalnya tampil pada jam digital dan tersembunyi pada jam analog.",
+    "infoSeconds": "Ketuk jam untuk menampilkan atau menyembunyikan detik. Detik awalnya tampil pada jam digital maupun analog.",
     "zoomIn": "Perbesar jam",
     "zoomOut": "Perkecil jam"
   },
@@ -641,8 +641,7 @@
       "special": "Hari istimewa",
       "weekend": "Akhir pekan",
       "today": "Hari ini",
-      "school": "Libur atau kalender sekolah (MEB)",
-      "exam": "Ujian atau tanggal terkait ujian (ÖSYM, MEB, AÖF)"
+      "school": "Libur atau kalender sekolah (MEB)"
     },
     "eventsHeading": "Daftar hari pada {year}",
     "colDate": "Tanggal",
@@ -739,37 +738,7 @@
       "schoolEnd": "Akhir tahun ajaran, hari rapor (MEB)",
       "teacherStart": "Kegiatan profesional guru dimulai (MEB)",
       "adaptation": "Pekan orientasi PAUD dan kelas 1 dimulai (MEB)",
-      "teacherEnd": "Kegiatan profesional guru akhir tahun dimulai (MEB)",
-      "yksTyt": "YKS: sesi TYT (ÖSYM)",
-      "yksAytYdt": "YKS: sesi AYT dan YDT (ÖSYM)",
-      "tryos": "TR-YÖS/2: ujian mahasiswa internasional (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS tingkat pendidikan menengah (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT: tes bidang layanan keagamaan (ÖSYM)",
-      "dus2": "DUS sesi kedua: ujian spesialis kedokteran gigi (ÖSYM)",
-      "eus": "EUS: ujian spesialis farmasi (ÖSYM)",
-      "yds2": "YDS/2: ujian kemampuan bahasa asing (ÖSYM)",
-      "ales3": "ALES/3: ujian masuk pascasarjana (ÖSYM)",
-      "alesApply": "Masa pendaftaran ALES/3 (ÖSYM)",
-      "kpssOnResult": "Hasil KPSS tingkat diploma (ÖSYM)",
-      "kpssOrtaResult": "Hasil KPSS tingkat pendidikan menengah (ÖSYM)",
-      "ydsResult": "Hasil YDS/2 (ÖSYM)",
-      "alesResult": "Hasil ALES/3 (ÖSYM)",
-      "kpssTercih": "Pemilihan penempatan KPSS-2026/2 (ÖSYM)",
-      "common1": "Semester 1, ujian tulis bersama pertama (MEB)",
-      "common2": "Semester 1, ujian tulis bersama kedua (MEB)",
-      "common3": "Semester 2, ujian tulis bersama pertama (MEB)",
-      "common4": "Semester 2, ujian tulis bersama kedua (MEB)",
-      "aolRegister": "Masa pendaftaran SMA terbuka (AÖL) (MEB)",
-      "aolEsinav": "Masa ujian elektronik AÖL (MEB)",
-      "aolWritten": "Ujian tulis AÖL (MEB)",
-      "aolResult": "Hasil semester pertama AÖL (MEB)",
-      "aofMid1": "AÖF: ujian tengah semester musim gugur (Universitas Anadolu)",
-      "aofFinal1": "AÖF: ujian akhir musim gugur (Universitas Anadolu)",
-      "aofMid2": "AÖF: ujian tengah semester musim semi (Universitas Anadolu)",
-      "aofFinal2": "AÖF: ujian akhir musim semi (Universitas Anadolu)",
-      "aofSummer": "AÖF: ujian sekolah musim panas (Universitas Anadolu)"
+      "teacherEnd": "Kegiatan profesional guru akhir tahun dimulai (MEB)"
     },
     "hubName": "Kalender tahunan",
     "hubDesc": "Hari libur resmi, hari bayram dan hari menjelangnya, malam kandil, serta bulan Ramadan.",
@@ -1633,22 +1602,6 @@
         "name": "pembagian rapor",
         "dat": "pembagian rapor"
       },
-      "yks": {
-        "name": "YKS (ujian masuk universitas)",
-        "dat": "YKS"
-      },
-      "kpss": {
-        "name": "KPSS (ujian seleksi pegawai negeri)",
-        "dat": "KPSS"
-      },
-      "ales": {
-        "name": "ALES (ujian masuk pascasarjana)",
-        "dat": "ALES"
-      },
-      "yds": {
-        "name": "YDS (ujian kemampuan bahasa asing)",
-        "dat": "YDS"
-      },
       "schoolStart": {
         "name": "Hari pertama sekolah",
         "dat": "hari pertama sekolah"
@@ -1656,14 +1609,6 @@
       "midterm": {
         "name": "libur tengah semester",
         "dat": "libur tengah semester"
-      },
-      "aof": {
-        "name": "ujian AÖF (pendidikan terbuka Universitas Anadolu)",
-        "dat": "ujian AÖF"
-      },
-      "aol": {
-        "name": "ujian AÖL (SMA terbuka)",
-        "dat": "ujian AÖL"
       },
       "feb14": {
         "name": "Hari Valentine",
@@ -1685,8 +1630,7 @@
         "name": "Hari Guru",
         "dat": "Hari Guru"
       }
-    },
-    "exam": "Tanggal ujian diambil dari pengumuman ÖSYM, MEB, dan Universitas Anadolu, yang dapat mengubahnya. Tanggal yang belum diumumkan tidak ditebak; tanggal ditambahkan setelah diterbitkan."
+    }
   },
   "datecalc": {
     "title": "Kalkulator Tanggal: Hari, Hari Kerja, Usia | Saat Tarih",
@@ -1744,7 +1688,7 @@
   },
   "embedgen": {
     "title": "Widget Jam: Pasang Jam Gratis di Situs Anda | Saat Tarih",
-    "description": "Pasang jam gratis di situs Anda: 13 gaya jam, pilihan kota, tema terang atau gelap. Salin kode iframe siap pakai lalu tempelkan.",
+    "description": "Pasang jam gratis di situs Anda: 20 gaya jam, pilihan kota, tema terang atau gelap. Salin kode iframe siap pakai lalu tempelkan.",
     "h1": "Pasang jam di situs Anda",
     "lead": "Pilih gaya, kota, dan tema, lalu salin kode iframe siap pakai dan tempelkan ke situs Anda. Widget ini tanpa iklan, tanpa cookie, dan memakai jam yang disinkronkan dengan server.",
     "modelLabel": "Gaya jam",
@@ -1778,7 +1722,7 @@
       },
       {
         "q": "Apakah widget ini mengumpulkan data pengunjung saya?",
-        "a": "Widget ini tidak memasang cookie dan tidak mengumpulkan data pribadi. Widget mengirim beberapa permintaan kecil ke server untuk menampilkan waktu yang benar; tayangan halaman dihitung dalam statistik anonim tanpa cookie."
+        "a": "Widget ini tidak memasang cookie dan tidak mengumpulkan data pribadi. Widget mengirim beberapa permintaan kecil ke server untuk menampilkan waktu yang benar; tidak ada skrip statistik di widget dan tayangan halaman tidak dihitung."
       }
     ],
     "sizeNote": "Gaya dengan kalender memerlukan tinggi minimal 460 px; gaya lainnya muat dengan nyaman dalam 360 px.",
@@ -1790,7 +1734,7 @@
       "date": "Tanggal dan jam",
       "sun": "Matahari terbit dan terbenam"
     },
-    "lineNote": "Skrip hanya menampilkan waktu; tidak memasang cookie dan tidak mengirim data. Zona waktu dari kota.",
+    "lineNote": "Skrip hanya menampilkan teks yang Anda pilih (waktu, tanggal, atau matahari terbit dan terbenam); tidak memasang cookie dan tidak mengirim data. Zona waktu diambil dari kota.",
     "linePreview": "Pratinjau"
   },
   "embed": {
@@ -2134,7 +2078,7 @@
       "noBlue": "Tidak ada Bulan Biru tahun ini.",
       "colDate": "Tanggal dan jam",
       "colName": "Nama tradisional",
-      "namesNote": "Nama mengikuti tradisi Amerika Utara (Old Farmer's Almanac); padanannya adalah terjemahan. Bulan Panen adalah purnama yang paling dekat dengan ekuinoks September.",
+      "namesNote": "Nama mengikuti tradisi Amerika Utara (Old Farmer's Almanac); padanannya adalah terjemahan, bukan tradisi Indonesia. Bulan Panen adalah purnama yang paling dekat dengan ekuinoks September.",
       "harvest": "Bulan Panen",
       "blueName": "Bulan Biru",
       "wheel": "Roda purnama tahun ini",
@@ -2238,7 +2182,7 @@
       },
       {
         "q": "Dapatkah saya melihat cuaca di jam layar penuh?",
-        "a": "Ya. Dalam layar penuh, tombol cuaca di bilah yang muncul saat Anda menyentuh layar menampilkan cuaca lokasi pilihan Anda di samping jam."
+        "a": "Ya. Di beranda, geser jam ke gaya yang menampilkan cuaca lalu beralih ke layar penuh; cuaca lokasi pilihan Anda muncul di samping jam."
       }
     ],
     "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin cuaca prakiraan suhu hujan angin kelembapan besok minggu ini",
@@ -2254,7 +2198,7 @@
       "moderate": "Sedang; lindungi diri di siang hari",
       "high": "Tinggi; gunakan tabir surya",
       "veryHigh": "Sangat tinggi; hindari matahari siang",
-      "extreme": "Ekstrem; hindari berada di luar"
+      "extreme": "Ekstrem; jangan berlama-lama di luar"
     },
     "hw": {
       "dry": "Kering",
@@ -2294,7 +2238,7 @@
     },
     "visibility": "Jarak pandang",
     "dewPoint": "Titik embun",
-    "gusts": "Hembusan",
+    "gusts": "Embusan",
     "details": "Rincian",
     "chartTemp": "Suhu",
     "dayPart": "Siang",
@@ -2308,7 +2252,7 @@
       "Sedang",
       "Buruk",
       "Sangat buruk",
-      "Sangat buruk sekali"
+      "Teramat buruk"
     ],
     "pollen": "Serbuk sari",
     "pollenNames": {
@@ -2601,7 +2545,7 @@
     ]
   },
   "worldHol": {
-    "hubTitle": "Hari libur resmi menurut negara 2026–2028 | Saat Tarih",
+    "hubTitle": "Hari libur resmi menurut negara 2024–2032 | Saat Tarih",
     "hubDescription": "Hari libur nasional di Jerman, Inggris, AS, Belanda, Prancis, dan 25 negara lain: tanggal, hari, hari libur berikutnya, dan sisa harinya.",
     "hubH1": "Hari libur resmi menurut negara",
     "hubLead": "Hari libur nasional di 30 negara dan sisa hari menuju hari libur berikutnya.",
@@ -2774,7 +2718,7 @@
       }
     ],
     "rumi": "Rumi (Utsmaniyah): {date}",
-    "rumiNote": "Tanggal Rumi memakai kalender Julian (13 hari lebih awal) dengan tahun baru 1 Maret, seperti almanak Turki tradisional."
+    "rumiNote": "Tanggal Rumi memakai kalender Julian (tertinggal 13 hari dari Masehi) dengan tahun baru 1 Maret, seperti almanak Turki tradisional."
   },
   "timeCalc": {
     "title": "Kalkulator Jam: Tambah, Kurang, dan Selisih Dua Waktu | Saat Tarih",
@@ -3100,7 +3044,7 @@
       "urs": "Ursid"
     },
     "evShower": "Puncak hujan meteor {name}",
-    "showerRate": "Hingga ~{zhr} meteor per jam di langit gelap",
+    "showerRate": "~{zhr} meteor per jam di langit gelap",
     "showerVar": "Jumlahnya berubah dari tahun ke tahun",
     "moonLight": "Bulan {moon} terang",
     "evOpp": "{p} beroposisi: terlihat sepanjang malam, paling terang tahun ini",
@@ -3112,25 +3056,25 @@
     "eventsNote": "Puncak hujan meteor dihitung dari bujur Matahari yang diterbitkan International Meteor Organization (IMO); puncak sebenarnya bisa bergeser beberapa jam. Jarak sudut dihitung dari pusat Bumi; dari lokasi Anda bisa berbeda sekitar satu derajat.",
     "icsName": "Saat Tarih: Peristiwa langit",
     "tonightHeading": "Malam ini",
-    "darkLabel": "Gelap penuh",
-    "darkNone": "Malam ini tidak gelap penuh (Matahari tidak turun 18° di bawah cakrawala).",
+    "darkLabel": "Gelap total",
+    "darkNone": "Malam ini tidak gelap total (Matahari tidak turun hingga 18° di bawah cakrawala).",
     "moonUpDark": "{illum} terang; di langit saat gelap pukul {from}–{to}",
     "moonDownDark": "{illum} terang; di bawah cakrawala saat gelap",
     "planetsLabel": "Planet yang terlihat",
     "planetsNone": "Tidak ada",
     "cloudLabel": "Tutupan awan",
     "score": {
-      "good": "Malam yang baik untuk mengamati",
-      "fair": "Cukup untuk mengamati",
-      "poor": "Kurang baik untuk mengamati"
+      "good": "Malam yang baik untuk mengamati langit",
+      "fair": "Cukup baik untuk mengamati langit",
+      "poor": "Kurang baik untuk mengamati langit"
     },
     "tipMoon": "Bulan terang: bintang redup dan meteor sulit terlihat.",
     "tipDark": "Bulan tidak di langit saat gelap: baik untuk bintang redup.",
     "tipCloudy": "Awan dapat menghalangi pandangan.",
     "tipBest": "{p} paling tinggi sekitar {time} ({deg}°).",
     "graphHeading": "Ketinggian planet malam ini",
-    "graphCaption": "Sumbu mendatar waktu, sumbu tegak ketinggian di atas cakrawala; pita gelap adalah gelap penuh.",
-    "cloudNote": "Tutupan awan dari Open-Meteo, hanya ditampilkan jika Anda mengizinkan layanan eksternal.",
+    "graphCaption": "Sumbu mendatar waktu, sumbu tegak ketinggian di atas cakrawala; pita gelap adalah gelap total.",
+    "cloudNote": "Tutupan awan berasal dari Open-Meteo dan hanya ditampilkan jika Anda mengizinkan layanan eksternal.",
     "constellations": "Rasi bintang",
     "play": "Putar",
     "pause": "Jeda",
@@ -3219,7 +3163,7 @@
   },
   "examTimer": {
     "title": "Timer Ujian: Hitung Mundur Layar Penuh untuk Ruang Ujian | Saat Tarih",
-    "description": "Timer ujian layar penuh dengan nama ujian, ruang, waktu membaca, dan durasi: sisa waktu, jam selesai, dan peringatan menit terakhir.",
+    "description": "Timer ujian layar penuh dengan nama ujian, ruang, waktu membaca, dan durasi: sisa waktu, jam selesai, dan peringatan menit terakhir. Untuk ujian sekolah dan tryout.",
     "h1": "Timer ujian",
     "lead": "Masukkan nama ujian, ruang, waktu membaca, dan durasi ujian; timer layar penuh untuk proyektor menampilkan sisa waktu dan jam selesai.",
     "search": "timer ujian hitung mundur ruang ujian layar penuh exam timer",
@@ -3239,7 +3183,7 @@
     "endsAt": "Selesai: {time}",
     "warn15": "15 menit terakhir",
     "warn5": "5 menit terakhir",
-    "note": "Berjalan selama halaman terbuka; waktu mulai disimpan di peramban ini, jadi timer berlanjut jika halaman dibuka lagi. Waktu diukur dengan jam server; di layar penuh layar tetap menyala.",
+    "note": "Berjalan selama halaman terbuka; waktu mulai disimpan di peramban ini, jadi timer berlanjut jika halaman dibuka lagi. Waktu diukur dengan jam server; dalam layar penuh, layar tetap menyala.",
     "faq": [
       {
         "q": "Bagaimana cara memakai timer ujian?",
@@ -3253,7 +3197,7 @@
   },
   "classroom": {
     "title": "Alat Kelas: Pemilih Nama Acak, Pembuat Tim, Penghitung | Saat Tarih",
-    "description": "Alat kelas gratis: pilih siswa secara acak, bagi kelas menjadi tim seimbang, dan catat skor dengan penghitung. Nama hanya tersimpan di peramban Anda.",
+    "description": "Alat kelas gratis: pilih siswa secara acak, bagi kelas menjadi tim seimbang, dan catat skor dengan penghitung. Tanpa pendaftaran; nama hanya tersimpan di peramban Anda.",
     "h1": "Alat kelas",
     "lead": "Ketik nama siswa sekali, lalu pilih nama secara acak, bagi kelas menjadi tim, atau catat skor dengan penghitung. Tombol layar penuh memudahkan menampilkannya di papan.",
     "search": "alat kelas pemilih nama acak undian nama pembuat tim bagi kelompok penghitung skor guru",

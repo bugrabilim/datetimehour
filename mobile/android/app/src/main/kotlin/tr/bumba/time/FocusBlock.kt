@@ -221,7 +221,7 @@ class FocusBlockActivity : ComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically),
                 ) {
-                    Text("🎯", fontSize = 56.sp)
+                    DuoChip("tomato", Theme.c.terra, box = 96.dp, glyph = 56.dp)
                     Text(L("focus.screenTitle"), color = Theme.c.text, fontSize = 26.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
                     Ltr { Text(clock(maxOf(0, end - now) / 1000), color = Theme.c.accent, fontSize = 48.sp, fontWeight = FontWeight.Light, style = Tnum) }
                     val task = Prefs.store.getString("pomo.task", "").orEmpty()

@@ -1,4 +1,10 @@
-Saat Tarih; saat, namaz vakitleri, takvim, hava durumu ve günlük araçları tek, sade bir uygulamada toplar. Ücretsizdir; hesap, reklam ve takip yoktur.
+Saat Tarih; namaz vakitleri, kıble, saat, takvim, hava durumu ve günlük araçları tek, sade bir uygulamada toplar. Ücretsizdir; hesap, reklam ve takip yoktur.
+
+NAMAZ VAKİTLERİ VE İBADET
+• 81 il ve 973 ilçe; Diyanet yöntemi ve 13 hesap yöntemi daha, Hanefî ikindi
+• Vakit bildirimi ve ezan sesi, Ramazan imsakiyesi
+• Kıble pusulası ve yakındaki camiler
+• Kur'an-ı Kerim (Arapça), dualar, Esmaü'l-Hüsna, zikirmatik, namaz ve oruç takibi, zekât hesabı
 
 SİZE GÖRE HAZIRLANIR
 • İlk açılışta beş kısa soru: vakitler, hava, takvim, dünya saatleri, mevsimler. Alt çubuk yanıtlarınıza göre kendiliğinden kurulur
@@ -8,12 +14,6 @@ SAAT
 • 21 saat modeli ve 25 analog kadran; tam ekran ve kısık kırmızı gece modu
 • Saatin altına sıradaki vakit, hava, tarih ya da dünya saatlerini ekleyin
 • Ana ekran ve kilit ekranı widget'ları, Apple Watch komplikasyonları
-
-NAMAZ VAKİTLERİ VE İBADET
-• 81 il ve 973 ilçe; Diyanet yöntemi ve 13 hesap yöntemi daha, Hanefî ikindi
-• Vakit bildirimi ve ezan sesi, Ramazan imsakiyesi
-• Kıble pusulası ve yakındaki camiler
-• Kur'an-ı Kerim (Arapça), dualar, Esmaü'l-Hüsna, zikirmatik, namaz ve oruç takibi, zekât hesabı
 
 TAKVİM VE HAVA
 • Resmî tatiller, arifeler, dini ve özel günler; telefonunuzdaki takvimlerle bir arada

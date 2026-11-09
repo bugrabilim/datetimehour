@@ -206,7 +206,7 @@
       },
       {
         "q": "How do I change the clock style?",
-        "a": "Swipe left or right on the clock; on a computer use the dots below it or the arrow keys on your keyboard. The styles include classic and minimal analogue, digital, analogue and digital together, versions with or without the date, clocks with a monthly calendar, a flip clock, a clock in words, a ring clock and a big date. Your choice is remembered on this device."
+        "a": "Swipe left or right on the clock or use the arrows below it; you can also tap the style number to pick from a list. On a computer the arrow keys work too. Besides analogue with numbers, digital, and analogue with digital, there are styles with the date, the weather, a monthly calendar or a side-by-side layout, plus a flip clock, a hologram, a Matrix clock and a maths clock. Your choice is remembered on this device."
       },
       {
         "q": "How do I see the clock full screen?",
@@ -218,7 +218,7 @@
       },
       {
         "q": "Where can I see Turkish public holidays and Ramadan?",
-        "a": "The yearly calendar page shows public holidays, bayram and eve days, kandil nights and the month of Ramadan on one calendar. The \"Upcoming days\" section at the top of the calendar page tells you how many days are left until the next holiday."
+        "a": "The yearly calendar page shows public holidays, bayram and eve days, kandil nights and the month of Ramadan on one calendar."
       }
     ],
     "upcomingHeading": "Upcoming public holidays and special days",
@@ -335,13 +335,13 @@
           "**Interval workout:** While an interval workout you started is running, the app uses iOS background audio so it can announce phase changes with the screen locked; the voice is generated on your phone and no data is sent anywhere.",
           "**Photos:** A photo you pick for the full-screen clock or a countdown is taken through the iPhone photo picker (no access to your photo library is requested); a reduced copy is stored only on your phone and never sent anywhere. Photos you choose for the slideshow (up to 10) also stay on the phone. Prayer-time and countdown share cards and CSV files are made on the phone and sent only to the app you choose. The Home Screen screenshot you choose for the transparent widget and the pieces cut from it stay only on the phone, in the folder shared by the app and its widgets; they are never sent anywhere and are not synced with iCloud.",
           "**Preferences:** Preferences such as the clock model, province and world clocks are stored only on your phone and are deleted when you delete the app.",
-          "**Qibla and nearby mosques:** The qibla direction is calculated on the phone; the compass uses the phone's orientation sensor (with location permission, location is also used on the phone for true north). On the \"Nearby mosques\" screen the search uses Apple Maps: the search word and the area centre rounded to two decimals go to Apple; Apple's privacy terms apply. On the qibla screen, the line to the Kaaba is shown on Apple Maps; map imagery for your area is downloaded from Apple.",
+          "**Qibla and nearby mosques:** The qibla direction is calculated on the phone; the compass uses the phone's orientation sensor (with location permission, location is also used on the phone for true north). On the \"Nearby mosques\" screen the search uses Apple Maps: the search word (\"mosque\") and the area centre rounded to two decimals go to Apple; Apple's privacy terms apply. On the qibla screen, the line to the Kaaba is shown on Apple Maps; map imagery for your area is downloaded from Apple.",
           "**Apple Watch, Siri and the Lock Screen:** The Apple Watch app calculates prayer times on the watch; when \"Place from iPhone\" is selected, the selected place's name and coordinates are sent from the iPhone to the watch (Apple's WatchConnectivity) and nowhere else; if \"My location\" is selected on the watch, the location is used only on the watch. Siri and Shortcuts actions (timer, alarm, full-screen clock, next prayer, date) run on the phone; Apple processes voice requests. Live Activities on the Lock Screen (counters, next prayer) are created on the phone.",
           "**Camera, sleep and focus:** To read the QR code or barcode of an alarm's dismiss task, the camera opens only while you save the code and while you turn the alarm off (permission is asked the first time); the image is processed on the device, not stored and not sent, and only the value read is kept on the device with the alarm. The shake and steps tasks use the motion sensor only while the task screen is open; steps are not recorded. Pomodoro history (day, minutes, task name) and the sleep schedule stay on the device; pomodoro noise and sleep sounds are generated on the device. Smart alarm: if you start a session on the Sleep screen, the motion sensor (accelerometer) is read during the alarm's smart alarm window and the alarm rings early when signs of light sleep appear; the motion data is kept only in memory and is not saved or sent. There is no sleep tracking (sleep stages, recordings) and the microphone is not used for sleep. The photo taken in the find-an-object task (recognised with Apple Vision), the image in the qibla camera view and the microphone in the read-aloud task (on-device speech recognition only) are used only while that screen is open; all are processed on the device, not stored and not sent. The qibla compass design and favourite mosques are stored on the device and, if iCloud sync is on, synced between your own devices.",
           "**Worship:** Your Quran bookmark, text size, dhikr counts, prayer and fasting tracker (prayed times, make-up counts, fasted days) and the amounts you enter in the zakat calculator stay only on the device; they are not sent anywhere and are not used for statistics or badges. The Quran text and prayers are bundled in the app. When you tap the link to the Diyanet translation site, that site opens in your browser. You type the gold price for zakat yourself; the app does not fetch prices.",
           "**iCloud sync:** If \"Sync with iCloud\" in Settings is on (the default), settings, world clocks, countdowns, saved places, pomodoro and sleep records and worship records are synced through Apple's iCloud key-value storage with the iPhone, iPad and Mac signed in to the same Apple Account. This data stays in your iCloud account under Apple's terms; we cannot access it and it never reaches our servers. Location, alarms, running timers, notification settings, badges and photos are not synced. Turning the switch off stops syncing on that device.",
           "**Health, morning journal, alarm photo and floating clock:** If you turn on \"Save to Apple Health\", each finished interval workout is written to the Health app as a workout (type, start, duration); the app does not read your health data and this data goes to no server. The morning journal (mood, sleep, intention, note) stays on your devices only (on the devices of your Apple Account if iCloud sync is on). For the photo alarm task the photo is not stored; only a tiny summary (72 grey values) is kept on the phone for comparison. Your calculation method, prayer-time alarms (iOS 26+) and Control Center buttons stay on the phone. The floating clock is a picture-in-picture window; it plays no sound and sends no data.",
-          "**Music alarms, location and calendar reminders, focus blocking, Mac, Apple TV and Vision Pro:** For an alarm sound, a 30-second part of the song you choose from your music library or Files is written to a sound file on the phone; the song is not sent anywhere (music library access is asked only when you choose). For location reminders, iPhone itself detects arrivals and departures; the reminder's place stays on the phone and the map comes from Apple. When you set an alarm for a calendar event, only that event's title and time are used. Focus blocking uses Apple's Screen Time framework; the apps and websites you choose are Apple's encrypted tokens and the app cannot see what they are. The Mac, Apple TV and Vision Pro apps calculate prayer times on the device; if you allow location, it is used only on the device to find the nearest province. While an alarm with a dismiss task is ringing, deleting the app is blocked through the same framework and allowed again once the task is done; this works only if you have granted Screen Time permission.",
+          "**Music alarms, location and calendar reminders, focus blocking, Mac, Apple TV and Vision Pro:** For an alarm sound, a 30-second part of the song you choose from your music library or Files is written to a sound file on the phone; the song is not sent anywhere (access to your music library is requested only when you choose). For location reminders, iPhone itself detects arrivals and departures; the reminder's place stays on the phone and the map comes from Apple. When you set an alarm for a calendar event, only that event's title and time are used. Focus blocking uses Apple's Screen Time framework; the apps and websites you choose are Apple's encrypted tokens and the app cannot see what they are. The Mac, Apple TV and Vision Pro apps calculate prayer times on the device; if you allow location, it is used only on the device to find the nearest province. While an alarm with a dismiss task is ringing, deleting the app is blocked through the same framework and allowed again once the task is done; this works only if you have granted Screen Time permission.",
           "**Study timer and wake-up game:** Subjects and sessions in the study timer (duration, question count, note) and the wake-up game's records (day, wake-up and alarm time, number of snoozes) stay on the device; if iCloud sync is on they sync with your iCloud account and are sent nowhere else. The app language and dial choice are also stored on the device."
         ]
       },
@@ -364,7 +364,7 @@
           "**Wear OS watch and shortcuts:** The Wear OS app calculates prayer times on the watch; if \"My location\" is selected, the approximate location is used only on the watch and sent nowhere. Timers and alarms that the Assistant or other apps set in Time & Date are stored only on the phone; the screen saver and running-counter notifications are created on the phone.",
           "**Camera, sleep and focus:** The QR code or barcode of an alarm's dismiss task is read by Google's code scanner (Google Play services): the app does not ask for camera permission and never sees the image; only the value read is kept on the phone with the alarm. The shake and steps tasks use the accelerometer only while the alarm screen is open; steps are not recorded. Pomodoro history (day, minutes, task name) and the sleep schedule stay on the phone; pomodoro noise and sleep sounds are generated on the phone (a foreground service lets them play with the screen off, with \"Stop sound\" in the notification). Smart alarm: if you start a session on the Sleep screen, the motion sensor (accelerometer) is read during the alarm's smart alarm window and the alarm rings early when signs of light sleep appear; the motion data is kept only in memory and is not saved or sent. There is no sleep tracking (sleep stages, recordings) and the microphone is not used for sleep. The session runs as a foreground service (with \"Stop\" in the notification). If you add a Spotify or YouTube link to an alarm, the link opens in that app when the alarm rings; the app only opens the link and has no access to the music. In the find-an-object task, the small photo taken with the system camera is recognised on the phone by Google Play services' image labelling model; in the read-aloud task the microphone (permission asked in the task) is used only with Android's on-device speech recognition, and without it the typing task is used instead. Images and audio are not stored or sent. The qibla compass design and favourite mosques are stored on the phone and, if Android backup is on, included with your settings in your Google account backup.",
           "**Worship:** Your Quran bookmark, text size, dhikr counts, prayer and fasting tracker (prayed times, make-up counts, fasted days) and the amounts you enter in the zakat calculator stay only on the phone; they are not sent anywhere and are not used for statistics or badges. The Quran text and prayers are bundled in the app. When you tap the link to the Diyanet translation site, that site opens in your browser. You type the gold price for zakat yourself; the app does not fetch prices.",
-          "**Health, morning journal, alarm photo, silencing and floating clock:** If you turn on \"Save to Health Connect\", only the permission to write exercise is requested and each finished interval workout is written as an exercise session (type, start, duration); the app does not read your health data. The morning journal stays on the phone only (and in the phone's Google backup). For the photo alarm task the photo is taken with the phone's own camera (no camera permission is requested) and is not stored; only a tiny summary is kept. Do Not Disturb access for \"Silence at prayer time\" is used only if you turn it on and grant it in the phone's settings. The floating clock uses the \"Display over other apps\" permission; it reads nothing on the screen and only draws the clock. Widgets and Quick Settings tiles use the app's own counters.",
+          "**Health, morning journal, alarm photo, silencing and floating clock:** If you turn on \"Save to Health Connect\", only the permission to write exercise is requested and each finished interval workout is written as an exercise session (type, start, duration); the app does not read your health data. The morning journal stays on the phone only (and in the phone's Google backup). For the photo alarm task the photo is taken with the phone's own camera (no camera permission is requested) and is not stored; only a tiny summary is kept. Do Not Disturb access for \"Silence the phone at prayer time\" is used only if you turn it on and grant it in the phone's settings. The floating clock uses the \"Display over other apps\" permission; it reads nothing on the screen and only draws the clock. Widgets and Quick Settings tiles use the app's own counters.",
           "**Location and calendar reminders, focus blocking and Android TV:** If you add a location reminder, precise and \"Allow all the time\" location access is requested; Google Play services' geofencing detects arrivals and departures, the reminder's place stays on the phone and the app does not send your location anywhere. When you set an alarm for a calendar event, only that event's title and time are used. If you grant usage access for focus blocking, the app reads the name of the app in front once a second on the phone, only during pomodoro work time; this is not stored or sent. The Android TV screen uses the place selected in the app.",
           "**Study timer and wake-up game:** Subjects and sessions in the study timer (duration, question count, note) and the wake-up game's records (day, wake-up and alarm time, number of snoozes) stay on the phone and are never sent anywhere (they are included in the phone's Google backup). The app language and dial choice are also stored on the phone."
         ]
@@ -471,7 +471,7 @@
             ],
             [
               "sth-place",
-              "Remembers the province or location you chose last for the prayer times, nature and weather pages.",
+              "Remembers the province or location you chose last for the prayer times, seasons and weather pages.",
               "Until you delete it"
             ],
             [
@@ -622,7 +622,7 @@
     "info": "About this clock's time source",
     "infoTitle": "Where does this time come from?",
     "infoClose": "Close",
-    "infoSeconds": "Tap the clock to show or hide the seconds. Seconds start on for digital clocks and off for analog clocks.",
+    "infoSeconds": "Tap the clock to show or hide the seconds. Seconds start on for both digital and analog clocks.",
     "zoomIn": "Larger clock",
     "zoomOut": "Smaller clock"
   },
@@ -641,8 +641,7 @@
       "special": "Special day",
       "weekend": "Weekend",
       "today": "Today",
-      "school": "School break or term date (MEB)",
-      "exam": "Exam or exam-related date (ÖSYM, MEB, AÖF)"
+      "school": "School break or term date (MEB)"
     },
     "eventsHeading": "List of days in {year}",
     "colDate": "Date",
@@ -739,37 +738,7 @@
       "schoolEnd": "End of school year, report card day (MEB)",
       "teacherStart": "Teachers' professional work begins (MEB)",
       "adaptation": "Orientation week for preschool and grade 1 begins (MEB)",
-      "teacherEnd": "Teachers' end-of-year professional work begins (MEB)",
-      "yksTyt": "YKS: TYT session (ÖSYM)",
-      "yksAytYdt": "YKS: AYT and YDT sessions (ÖSYM)",
-      "tryos": "TR-YÖS/2: exam for international students (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS secondary-education level (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT: religious services field test (ÖSYM)",
-      "dus2": "DUS second session: dentistry specialty exam (ÖSYM)",
-      "eus": "EUS: pharmacy specialty exam (ÖSYM)",
-      "yds2": "YDS/2: foreign language proficiency exam (ÖSYM)",
-      "ales3": "ALES/3: graduate studies entrance exam (ÖSYM)",
-      "alesApply": "ALES/3 application period (ÖSYM)",
-      "kpssOnResult": "KPSS associate-degree results (ÖSYM)",
-      "kpssOrtaResult": "KPSS secondary-education results (ÖSYM)",
-      "ydsResult": "YDS/2 results (ÖSYM)",
-      "alesResult": "ALES/3 results (ÖSYM)",
-      "kpssTercih": "KPSS-2026/2 placement preferences (ÖSYM)",
-      "common1": "Term 1, first common written exams (MEB)",
-      "common2": "Term 1, second common written exams (MEB)",
-      "common3": "Term 2, first common written exams (MEB)",
-      "common4": "Term 2, second common written exams (MEB)",
-      "aolRegister": "Open high school (AÖL) registration period (MEB)",
-      "aolEsinav": "AÖL e-exam period (MEB)",
-      "aolWritten": "AÖL written exam (MEB)",
-      "aolResult": "AÖL first-term results (MEB)",
-      "aofMid1": "AÖF autumn midterm exam (Anadolu University)",
-      "aofFinal1": "AÖF autumn final exam (Anadolu University)",
-      "aofMid2": "AÖF spring midterm exam (Anadolu University)",
-      "aofFinal2": "AÖF spring final exam (Anadolu University)",
-      "aofSummer": "AÖF summer school exam (Anadolu University)"
+      "teacherEnd": "Teachers' end-of-year professional work begins (MEB)"
     },
     "hubName": "Yearly calendar",
     "hubDesc": "Public holidays, bayram and eve days, kandil nights and the month of Ramadan.",
@@ -1549,7 +1518,7 @@
     "removeAnswer": "Remove reply",
     "resultsLink": "Copy results link",
     "myPolls": "Polls in this browser",
-    "answers": "{n} replies",
+    "answers": "Replies: {n}",
     "deletePoll": "Remove poll",
     "invalid": "This poll link is broken or incomplete.",
     "newPoll": "Create a new poll",
@@ -1633,22 +1602,6 @@
         "name": "report card day",
         "dat": "report card day"
       },
-      "yks": {
-        "name": "YKS (university entrance exam)",
-        "dat": "YKS"
-      },
-      "kpss": {
-        "name": "KPSS (public personnel selection exam)",
-        "dat": "KPSS"
-      },
-      "ales": {
-        "name": "ALES (graduate studies entrance exam)",
-        "dat": "ALES"
-      },
-      "yds": {
-        "name": "YDS (foreign language proficiency exam)",
-        "dat": "YDS"
-      },
       "schoolStart": {
         "name": "School opening day",
         "dat": "school opening day"
@@ -1656,14 +1609,6 @@
       "midterm": {
         "name": "the mid-term break",
         "dat": "the mid-term break"
-      },
-      "aof": {
-        "name": "AÖF exams (Anadolu University open education)",
-        "dat": "the AÖF exams"
-      },
-      "aol": {
-        "name": "AÖL exam (open high school)",
-        "dat": "the AÖL exam"
       },
       "feb14": {
         "name": "Valentine's Day",
@@ -1685,8 +1630,7 @@
         "name": "Teachers' Day",
         "dat": "Teachers' Day"
       }
-    },
-    "exam": "Exam dates are taken from ÖSYM, MEB and Anadolu University announcements, which may change them. Dates that have not been announced are not guessed; they are added once published."
+    }
   },
   "datecalc": {
     "title": "Date Calculator: Days, Working Days, Age | Saat Tarih",
@@ -1744,7 +1688,7 @@
   },
   "embedgen": {
     "title": "Clock Widget: Embed a Free Clock on Your Site | Saat Tarih",
-    "description": "Embed a free clock on your site: 13 clock styles, city choice, light or dark theme. Copy the ready-made iframe code and paste it in.",
+    "description": "Embed a free clock on your site: 20 clock styles, city choice, light or dark theme. Copy the ready-made iframe code and paste it in.",
     "h1": "Embed a clock on your site",
     "lead": "Pick the style, city and theme, then copy the ready-made iframe code and paste it into your site. The widget has no ads, uses no cookies and runs on the server-synced clock.",
     "modelLabel": "Clock style",
@@ -1778,7 +1722,7 @@
       },
       {
         "q": "Does the widget collect my visitors' data?",
-        "a": "The widget sets no cookies and collects no personal data. It sends a few small requests to the server to show the correct time; page views are counted in cookie-free, anonymous statistics."
+        "a": "The widget sets no cookies and collects no personal data. It sends a few small requests to the server to show the correct time; the widget has no analytics script and page views are not counted."
       }
     ],
     "sizeNote": "Calendar styles need a height of at least 460 px; the other styles fit comfortably in 360 px.",
@@ -1790,7 +1734,7 @@
       "date": "Date and time",
       "sun": "Sunrise and sunset"
     },
-    "lineNote": "The script only draws the time; it sets no cookies and sends no data. The time zone comes from the city.",
+    "lineNote": "The script only writes the text you choose (the time, the date or sunrise and sunset); it sets no cookies and sends no data. The time zone comes from the city.",
     "linePreview": "Preview"
   },
   "embed": {
@@ -1928,7 +1872,7 @@
       }
     },
     "ezani": "Ezani (alaturka) time: {t}",
-    "ezaniNote": "In Ezani (alla turca) time, the evening prayer (sunset) is 12:00 and hours are counted from there."
+    "ezaniNote": "In Ezani (alaturka) time, maghrib (sunset) is 12:00 and hours are counted from there."
   },
   "nature": {
     "title": "Seasons: Seasons Wheel, Equinoxes and Solstices | Saat Tarih",
@@ -2155,17 +2099,17 @@
     },
     "eclLocal": "{place}: {obsc} of the Sun is covered; {c1}–{c4}, maximum {max}.",
     "eclLocalTotal": "{place}: total eclipse; {c1}–{c4}, totality around {max}.",
-    "eclLocalAnnular": "{place}: annular eclipse; {c1}–{c4}, ring around {max}.",
+    "eclLocalAnnular": "{place}: annular eclipse; {c1}–{c4}, annularity around {max}.",
     "eclLocalNone": "{place}: this eclipse is not visible from here.",
     "eclLocalLow": "{place}: the Sun is below the horizon during the eclipse.",
     "eclContacts": {
-      "p1": "Penumbra begins",
+      "p1": "Penumbral phase begins",
       "u1": "Partial begins",
       "u2": "Totality begins",
       "max": "Maximum",
       "u3": "Totality ends",
       "u4": "Partial ends",
-      "p4": "Penumbra ends"
+      "p4": "Penumbral phase ends"
     },
     "eclMag": "Umbral magnitude {v}",
     "eclApprox": "Times are approximate (a few minutes); moments not visible from this place are dimmed."
@@ -2238,7 +2182,7 @@
       },
       {
         "q": "Can I see the weather on the full-screen clock?",
-        "a": "Yes. In full screen, the weather button in the bar that appears when you tap the screen shows the weather for your chosen location beside the clock."
+        "a": "Yes. On the home page, swipe to a clock style with the weather and switch to full screen; the weather for your chosen location appears beside the clock."
       }
     ],
     "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin",
@@ -2254,7 +2198,7 @@
       "moderate": "Moderate; protect yourself around midday",
       "high": "High; use sunscreen",
       "veryHigh": "Very high; avoid the midday sun",
-      "extreme": "Extreme; avoid staying outside"
+      "extreme": "Extreme; don't stay outside long"
     },
     "hw": {
       "dry": "Dry",
@@ -2601,7 +2545,7 @@
     ]
   },
   "worldHol": {
-    "hubTitle": "Public holidays by country 2026–2028 | Saat Tarih",
+    "hubTitle": "Public holidays by country 2024–2032 | Saat Tarih",
     "hubDescription": "Nationwide public holidays in Germany, the UK, the US, the Netherlands, France and 25 more countries: dates, weekdays, the next holiday and days left.",
     "hubH1": "Public holidays by country",
     "hubLead": "Nationwide public holidays in 30 countries and the days left until the next one.",
@@ -2774,7 +2718,7 @@
       }
     ],
     "rumi": "Rumi (Ottoman): {date}",
-    "rumiNote": "The Rumi date uses the Julian calendar (13 days behind) with the year starting on 1 March, as in traditional Turkish almanacs."
+    "rumiNote": "The Rumi date uses the Julian calendar (13 days behind the Gregorian) with the year starting on 1 March, as in traditional Turkish almanacs."
   },
   "timeCalc": {
     "title": "Time Calculator: Add, Subtract and Hours Between Times | Saat Tarih",
@@ -3086,7 +3030,7 @@
       }
     ],
     "eventsHeading": "Sky events",
-    "eventsLead": "Meteor shower peaks, close approaches of the planets and the Moon, oppositions and greatest elongations; times in the selected place's time.",
+    "eventsLead": "Meteor shower peaks, close approaches of the planets and the Moon, oppositions and greatest elongations; times are local to the selected place.",
     "showers": {
       "qua": "Quadrantids",
       "lyr": "Lyrids",

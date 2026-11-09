@@ -170,7 +170,7 @@ private fun LightTask(onSolved: () -> Unit, onUnavailable: () -> Unit) {
         onDispose { sm?.unregisterListener(listener) }
     }
     Text(L("wake.light"), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
-    Text("☀️ " + T("wake.lux", lux.toInt()), color = Theme.c.muted, fontSize = 15.sp)
+    IconText("sun", T("wake.lux", lux.toInt()), Theme.c.muted, fontSize = 15.sp, iconColor = Theme.c.gold)
     LinearProgressIndicator(progress = { held }, modifier = Modifier.fillMaxWidth().widthIn(max = 320.dp), color = Theme.c.accent, trackColor = Theme.c.surface2)
 }
 

@@ -240,13 +240,14 @@ const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces
   .map(({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }) => ({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }));
 const provincesJson = JSON.stringify(provinces) + "\n";
 
-/* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak; sınavlar takvimde yok). */
+/* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak). Sınav takvimi
+   9 Kasım 2026'da kaldırıldı (sahibin kararı: yalnız Türkiye'ye özgü, projenin küresel amacına aykırı). */
 const HOL = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/holidays.json"), "utf8"));
 HOL.school = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/school.json"), "utf8"));
 const years = {};
 for (const y of Object.keys(HOL.years).map(Number).sort((a, b) => a - b)) {
   const r = computeYear(y, HOL);
-  years[y] = { events: r.events.filter((e) => e.type !== "exam"), schoolRanges: r.schoolRanges, projected: r.projected };
+  years[y] = { events: r.events, schoolRanges: r.schoolRanges, projected: r.projected };
   for (const e of years[y].events) if (!KEYS[`calendar.events.${e.key}`]) throw new Error(`calendar.events.${e.key} metni yok`);
 }
 const calendarJson = JSON.stringify({ years, ramadans: HOL.ramadans }) + "\n";
@@ -326,6 +327,11 @@ const constellationsJson = JSON.stringify(conSrc.con) + "\n";
 const iconsSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "mobile/shared/icons/icons.json"), "utf8"));
 delete iconsSrc._note;
 const iconsJson = JSON.stringify(iconsSrc) + "\n";
+/* İki tonlu küçük simgeler (8 Kasım 2026, sahibin kararı "B Karma"; Phosphor Icons, MIT): liste, kare, sekme ve satır
+   simgeleri. mobile/shared/icons/gen-duotone.mjs üretir; biçim ve kurallar mobile/shared/icons/DUOTONE.md */
+const duotoneSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "mobile/shared/icons/duotone.json"), "utf8"));
+delete duotoneSrc._note;
+const duotoneJson = JSON.stringify(duotoneSrc) + "\n";
 /* Widget'lardaki hava ve gök simgeleri 4 Kasım 2026'dan beri 3D görsel (res/drawable-nodpi/e3d_*.png,
    mobile/shared/icons3d/gen-icons3d.py); eski çizgi vektörleri (wi_*.xml) kaldırıldı. */
 /* NASA SVS CGI Moon Kit dokusu (kamu malı; 2. analiz #103): ikili dosya, uygulamalara kopyalanır */
@@ -339,6 +345,8 @@ const files = {
   "mobile/android/app/src/main/assets/constellations.json": constellationsJson,
   "mobile/ios/App/Resources/icons.json": iconsJson,
   "mobile/android/app/src/main/assets/icons.json": iconsJson,
+  "mobile/ios/App/Resources/duotone.json": duotoneJson,
+  "mobile/android/app/src/main/assets/duotone.json": duotoneJson,
   "mobile/ios/App/Resources/moon.jpg": moonJpg,
   "mobile/android/app/src/main/assets/moon.jpg": moonJpg,
   "mobile/ios/App/Resources/world-holidays.json": wholJson,

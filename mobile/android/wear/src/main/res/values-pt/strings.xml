@@ -12,7 +12,7 @@
     <string name="prayer_province">Província</string>
     <string name="client_hourShort">h</string>
     <string name="client_minuteShort">min</string>
-    <string name="prayer_monthHeading">Horários de oração de %1$s de %2$s</string>
+    <string name="prayer_monthHeading">%1$s de %2$s: horários de oração</string>
     <string name="prayer_colDay">Dia</string>
     <string name="prayer_prevMonth">Mês anterior</string>
     <string name="prayer_nextMonth">Próximo mês</string>
@@ -22,7 +22,7 @@
     <string name="prayer_imDate">Data</string>
     <string name="prayer_imSahur">suhur</string>
     <string name="prayer_imIftar">iftar</string>
-    <string name="prayer_imNote">Os horários são calculados; para os horários oficiais, siga a Presidência de Assuntos Religiosos (Diyanet).</string>
+    <string name="prayer_imNote">Os horários são calculados; o horário oficial é o da Presidência de Assuntos Religiosos (Diyanet).</string>
     <string name="prayer_imFile">tabela-ramada</string>
     <string name="prayer_imAlt">Tabela do Ramadã %2$s para %1$s</string>
     <string name="nature_phases_new">Lua nova</string>
@@ -69,7 +69,7 @@
     <string name="prayer_bayramTomorrow">Oração do Eid amanhã: %1$s</string>
     <string name="prayer_bayramNote">Mesma regra dos horários publicados pela Diyanet (38 min após o nascer do sol); vale o anúncio do mufti da província.</string>
     <string name="prayer_ezani">Hora ezani (à turca): %1$s</string>
-    <string name="prayer_ezaniNote">Na hora ezani (à turca), a oração do entardecer (pôr do sol) é 12:00 e as horas são contadas a partir dela.</string>
+    <string name="prayer_ezaniNote">Na hora ezani (à turca), a oração do entardecer (pôr do sol) corresponde às 12:00 e as horas são contadas a partir dela.</string>
     <string name="prayer_method_heading">Método de cálculo</string>
     <string name="prayer_method_label">Método</string>
     <string name="prayer_method_asrLabel">Asr</string>
@@ -138,7 +138,7 @@
     <string name="prayer_silent_mode">Modo</string>
     <string name="prayer_silent_vibrate">Vibrar</string>
     <string name="prayer_silent_silent">Não perturbe</string>
-    <string name="prayer_silent_note">Depois dos horários de oração escolhidos, o celular passa para vibrar ou Não perturbe pelo tempo escolhido e depois volta ao estado anterior. O Não perturbe precisa de uma permissão única.</string>
+    <string name="prayer_silent_note">Depois dos horários de oração escolhidos, o celular passa para o modo vibrar ou Não perturbe pelo tempo escolhido e depois volta ao estado anterior. Para o Não perturbe, o Android pede permissão uma vez.</string>
     <string name="prayer_silent_grant">Permitir</string>
     <string name="prayer_silent_channel">Silêncio no horário da oração</string>
     <string name="prayer_silent_active">Celular silenciado até %1$s</string>
@@ -147,7 +147,7 @@
     <string name="prayer_wordsM">%1$s min</string>
     <string name="prayer_wordsHint">Toque para alternar entre palavras e relógio.</string>
     <string name="prayer_ramadanLeft">Tempo até %1$s: %2$s</string>
-    <string name="prayer_silent_friday">Silêncio durante a oração de sexta-feira (60 min)</string>
+    <string name="prayer_silent_friday">Silenciar durante a oração de sexta-feira (60 min)</string>
     <string name="widget_weather_name">Clima</string>
     <string name="widget_weather_desc">O tempo atual e a máxima e mínima de hoje no local definido no app.</string>
     <string name="watch_tools">Ferramentas</string>

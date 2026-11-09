@@ -25,18 +25,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AutoAwesome
-import androidx.compose.material.icons.filled.Calculate
-import androidx.compose.material.icons.filled.FormatQuote
-import androidx.compose.material.icons.filled.SelfImprovement
-import androidx.compose.material.icons.filled.TaskAlt
 import androidx.compose.material.icons.filled.Tune
-import androidx.compose.material.icons.filled.TouchApp
-import androidx.compose.material.icons.filled.VolunteerActivism
-import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.NightsStay
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.TableChart
@@ -44,8 +35,6 @@ import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material.icons.filled.Event
-import androidx.compose.material.icons.filled.Celebration
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -59,7 +48,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -190,10 +178,10 @@ fun PrayerScreen() {
                 TextButton(onClick = { page = "worship" }) { Text(L("countdowns.all") + " ›", color = Theme.c.accent) }
             }
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                WorshipTile(Icons.Filled.Explore, L("qibla.title"), Modifier.weight(1f)) { page = "qibla" }
-                WorshipTile(Icons.AutoMirrored.Filled.MenuBook, L("quran.title"), Modifier.weight(1f)) { page = "quran" }
-                WorshipTile(Icons.Filled.TouchApp, L("zikir.title"), Modifier.weight(1f)) { page = "zikir" }
-                WorshipTile(Icons.Filled.TaskAlt, L("track.title"), Modifier.weight(1f)) { page = "track" }
+                WorshipTile("compass", L("qibla.title"), Modifier.weight(1f)) { page = "qibla" }
+                WorshipTile("book", L("quran.title"), Modifier.weight(1f)) { page = "quran" }
+                WorshipTile("beads", L("zikir.title"), Modifier.weight(1f)) { page = "zikir" }
+                WorshipTile("checklist", L("track.title"), Modifier.weight(1f)) { page = "track" }
             }
         }
     }
@@ -201,14 +189,14 @@ fun PrayerScreen() {
 
 /** İbadet satırındaki kare: simge kutusu ve kısa ad */
 @Composable
-private fun WorshipTile(icon: ImageVector, title: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
+private fun WorshipTile(icon: String, title: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
     Column(
         modifier.aspectRatio(1f).paper(radius = 16).clip(RoundedCornerShape(16.dp)).clickable(onClick = onClick).padding(6.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        IconBox(icon)
-        Spacer(Modifier.height(6.dp))
+        DuoChip(icon, Theme.c.gold, box = 42.dp, glyph = 25.dp)
+        Spacer(Modifier.height(5.dp))
         Text(title, color = Theme.c.text, fontSize = 12.sp, maxLines = 2, textAlign = androidx.compose.ui.text.style.TextAlign.Center,
             lineHeight = 14.sp, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
     }
@@ -221,17 +209,17 @@ private fun WorshipHub(onBack: () -> Unit, open: (String) -> Unit) {
         SubBar(L("worship.title"), onBack)
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 16.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            LinkCard(Icons.Filled.Explore, L("qibla.link")) { open("qibla") }
-            LinkCard(Icons.AutoMirrored.Filled.MenuBook, L("quran.title")) { open("quran") }
-            LinkCard(Icons.Filled.VolunteerActivism, L("dua.title")) { open("duas") }
-            LinkCard(Icons.Filled.AutoAwesome, L("esma.title")) { open("esma") }
-            LinkCard(Icons.Filled.FormatQuote, L("hadith.title")) { open("hadith") }
-            LinkCard(Icons.Filled.SelfImprovement, L("guide.title")) { open("guide") }
-            LinkCard(Icons.Filled.TouchApp, L("zikir.title")) { open("zikir") }
-            LinkCard(Icons.Filled.TaskAlt, L("track.title")) { open("track") }
-            LinkCard(Icons.Filled.Event, L("relday.title")) { open("reldays") }
-            LinkCard(Icons.Filled.Celebration, L("greet.title")) { open("greet") }
-            LinkCard(Icons.Filled.Calculate, L("zakat.title")) { open("zakat") }
+            LinkCard("compass", L("qibla.link")) { open("qibla") }
+            LinkCard("book", L("quran.title")) { open("quran") }
+            LinkCard("hands", L("dua.title")) { open("duas") }
+            LinkCard("sparkles", L("esma.title")) { open("esma") }
+            LinkCard("scroll", L("hadith.title")) { open("hadith") }
+            LinkCard("guide", L("guide.title")) { open("guide") }
+            LinkCard("beads", L("zikir.title")) { open("zikir") }
+            LinkCard("checklist", L("track.title")) { open("track") }
+            LinkCard("star_crescent", L("relday.title")) { open("reldays") }
+            LinkCard("love_letter", L("greet.title")) { open("greet") }
+            LinkCard("coin", L("zakat.title")) { open("zakat") }
         }
     }
 }
@@ -350,11 +338,12 @@ private fun ExtraTimesCard(today: java.time.LocalDate, place: AppPlace) {
 }
 
 @Composable
-private fun LinkCard(icon: ImageVector, title: String, onClick: () -> Unit) {
+private fun LinkCard(icon: String, title: String, onClick: () -> Unit) {
     AppCard(Modifier.clickable(onClick = onClick)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            IconBox(icon)
-            Text("   $title", Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+            DuoChip(icon, Theme.c.gold)
+            Spacer(Modifier.width(14.dp))
+            Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
             Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
         }
     }
