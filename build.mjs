@@ -2864,7 +2864,7 @@ function buildPhoto(lang) {
   const day = (i) => { const x = new Date(Date.UTC(y0, m0 - 1, d0 + i)); return [x.getUTCFullYear(), x.getUTCMonth() + 1, x.getUTCDate()]; };
   const wd = (y, m, d) => (new Date(Date.UTC(y, m - 1, d)).getUTCDay() + 6) % 7;
   const hm = (v) => (Number.isFinite(v) ? new Date(Math.round(v / 60000) * 60000 + tz * 3600000).toISOString().slice(11, 16) : "—");
-  const rng = (r) => (!Number.isFinite(r[0]) && !Number.isFinite(r[1]) ? "—" : `${hm(r[0])}–${hm(r[1])}`);
+  const rng = (r) => { const a = Number.isFinite(r[0]), b = Number.isFinite(r[1]); return !a && !b ? "—" : `${hm(r[0])}${a && b ? "–" : " – "}${hm(r[1])}`; };
   const dir = (a) => (Number.isFinite(a) ? `${Math.round(a) % 360}° ${s.dirs[Math.round(a / 22.5) % 16]}` : "—");
   const o = photoLight(y0, m0, d0, lat, lon, tz);
   const start = Date.UTC(y0, m0 - 1, d0) - tz * 3600000, mrs = NATURE.moonRiseSet(start, lat, lon, 86400000), mo = NATURE.moon(start + 43200000);
@@ -2872,17 +2872,17 @@ function buildPhoto(lang) {
   const row = (k, label, val, attrs = "") => `<div class="ph-row${k ? ` ph-${k}` : ""}"${attrs}><dt>${esc(label)}</dt><dd ${val}</dd></div>`;
   const hero = `<section class="ph" data-photo aria-labelledby="ph-place">
       <h2 id="ph-place" class="qb-place" data-ph-place>${esc(place)}</h2>
-      <p class="ph-nav otd-nav"><button type="button" class="toggle" data-ph-step="-1">${esc(s.prev)}</button> <label for="ph-d" class="sr-only">${esc(s.dateLabel)}</label><input id="ph-d" type="date" data-ph-date min="1900-01-01" max="2100-12-31" value="${cfg.updated}"> <button type="button" class="toggle" data-ph-step="1">${esc(s.next)}</button> <button type="button" class="toggle" data-ph-today>${esc(s.today)}</button></p>
-      <p class="ph-day" data-ph-day>${esc(tpl(cal.fullFmt, { weekday: cal.weekdays[wd(y0, m0, d0)], day: d0, month: cal.months[m0 - 1], year: y0 }))}</p>
+      <div class="ph-nav"><button type="button" class="icon-btn" data-ph-step="-1" aria-label="${esc(s.prev)}" title="${esc(s.prev)}">${ICON_PREV}</button><label for="ph-d" class="sr-only">${esc(s.dateLabel)}</label><input id="ph-d" type="date" data-ph-date min="1900-01-01" max="2100-12-31" value="${cfg.updated}"><button type="button" class="icon-btn" data-ph-step="1" aria-label="${esc(s.next)}" title="${esc(s.next)}">${ICON_NEXT}</button></div>
+      <div class="ph-dayrow"><p class="ph-day" data-ph-day>${esc(tpl(cal.fullFmt, { weekday: cal.weekdays[wd(y0, m0, d0)], day: d0, month: cal.months[m0 - 1], year: y0 }))}</p><button type="button" class="toggle" data-ph-today hidden>${esc(s.today)}</button></div>
       <p class="meta ph-polar" data-ph-polar role="status" hidden></p>
       <div class="ph-cards">
         <article class="ph-card ph-am" aria-labelledby="ph-am-h">
           <h3 id="ph-am-h">${esc(s.morning)}</h3>
-          <dl>${row("blue", s.blue, `data-ph="blueAm" dir="ltr">${rng(o.blueAm)}`)}${row("gold", s.golden, `data-ph="goldenAm" dir="ltr">${rng(o.goldenAm)}`)}${row("", s.sunrise, `data-ph="rise" dir="ltr">${hm(o.rise)}`)}${row("", s.direction, `data-ph="riseAz">${esc(dir(o.riseAz))}`)}${row("", s.forecast, 'data-ph="riseQ">', " hidden")}</dl>
+          <dl>${row("blue", s.blue, `data-ph="blueAm" dir="ltr">${rng(o.blueAm)}`)}${row("gold", s.golden, `data-ph="goldenAm" dir="ltr">${rng(o.goldenAm)}`)}${row("", s.sunrise, `data-ph="rise" dir="ltr">${hm(o.rise)}`)}${row("", s.direction, `data-ph="riseAz">${esc(dir(o.riseAz))}`)}${row("fcq", s.forecast, 'data-ph="riseQ">', " hidden")}</dl>
         </article>
         <article class="ph-card ph-pm" aria-labelledby="ph-pm-h">
           <h3 id="ph-pm-h">${esc(s.evening)}</h3>
-          <dl>${row("gold", s.golden, `data-ph="goldenPm" dir="ltr">${rng(o.goldenPm)}`)}${row("blue", s.blue, `data-ph="bluePm" dir="ltr">${rng(o.bluePm)}`)}${row("", s.sunset, `data-ph="set" dir="ltr">${hm(o.set)}`)}${row("", s.direction, `data-ph="setAz">${esc(dir(o.setAz))}`)}${row("", s.forecast, 'data-ph="setQ">', " hidden")}</dl>
+          <dl>${row("gold", s.golden, `data-ph="goldenPm" dir="ltr">${rng(o.goldenPm)}`)}${row("blue", s.blue, `data-ph="bluePm" dir="ltr">${rng(o.bluePm)}`)}${row("", s.sunset, `data-ph="set" dir="ltr">${hm(o.set)}`)}${row("", s.direction, `data-ph="setAz">${esc(dir(o.setAz))}`)}${row("fcq", s.forecast, 'data-ph="setQ">', " hidden")}</dl>
         </article>
       </div>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>

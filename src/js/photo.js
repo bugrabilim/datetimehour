@@ -43,7 +43,7 @@
     var h12 = !!(S.prefs && S.prefs.h12);
     return S.fmt("ph-hm" + (h12 ? 12 : 24), place.tz, { hour: "2-digit", minute: "2-digit", hourCycle: h12 ? "h12" : "h23" }).format(new Date(Math.round(ms / 60000) * 60000));
   }
-  function range(r) { return !isFinite(r[0]) && !isFinite(r[1]) ? DASH : hm(r[0]) + "–" + hm(r[1]); }
+  function range(r) { var a = isFinite(r[0]), b = isFinite(r[1]); return !a && !b ? DASH : hm(r[0]) + (a && b ? "–" : " – ") + hm(r[1]); }
   function dir(az) { if (!isFinite(az)) return DASH; var d = X.dirs || []; return Math.round(az) % 360 + "°" + (d.length ? " " + d[Math.round(az / 22.5) % 16] : ""); }
   function dayLabel(p) {
     var wd = (new Date(Date.UTC(p.y, p.m - 1, p.d)).getUTCDay() + 6) % 7;
@@ -97,7 +97,7 @@
     setText("[data-ph-place]", place.name || "");
     setText("[data-ph-day]", longLabel(p));
     var din = q("[data-ph-date]"); if (din) din.value = isoOf(p);
-    var tb = q("[data-ph-today]"); if (tb) tb.disabled = isoOf(p) === isoOf(t);
+    var tb = q("[data-ph-today]"); if (tb) tb.hidden = isoOf(p) === isoOf(t); // bugünde düğme gerekmez
     setText('[data-ph="blueAm"]', range(o.blueAm)); setText('[data-ph="goldenAm"]', range(o.goldenAm));
     setText('[data-ph="goldenPm"]', range(o.goldenPm)); setText('[data-ph="bluePm"]', range(o.bluePm));
     setText('[data-ph="rise"]', hm(o.rise)); setText('[data-ph="set"]', hm(o.set));
@@ -107,9 +107,11 @@
     [["riseQ", o.rise], ["setQ", o.set]].forEach(function (x) {
       var dd = q('[data-ph="' + x[0] + '"]'), r = rate(x[1]);
       if (!dd) return;
+      var dt = dd.parentNode.querySelector("dt"), old = dt && dt.querySelector(".ph-cl");
+      if (old) dt.removeChild(old);
       dd.textContent = "";
       dd.parentNode.hidden = !r;
-      if (r) { dd.appendChild(badge(r)); dd.appendChild(doc.createTextNode(" ")); dd.appendChild(detail(r)); }
+      if (r) { dd.appendChild(badge(r)); if (dt) dt.appendChild(detail(r)); } // ayrıntı etiketin altında, değerlendirme sağda
     });
     renderMoon(p, t);
     renderWeek(p, t);
