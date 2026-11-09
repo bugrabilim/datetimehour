@@ -1,0 +1,290 @@
+{
+  "tr": {
+    "name": "Kıpti takvimi",
+    "desc": "Kıpti tarihi ve Kıpti Ortodoks Kilisesi'nin bayramları: Nayruz, Noel, Epifani ve Paskalya.",
+    "note": "Kıpti yılı Şehitler çağına (MS 284) göre sayılır; aylar Etiyopya takvimiyle aynı günlerde başlar ve yıl 11 Eylül'de (Gregoryen artık yıldan önceki yılda 12 Eylül'de) başlar. Noel 29 Kiyehk'te, artık yıldan sonraki yılda 28 Kiyehk'te tutulur, yani her yıl 7 Ocak'tadır; Paskalya Ortodoks hesabıyladır.",
+    "ev": {
+      "christmas": "Kıpti Noeli",
+      "epiphany": "Kıpti Epifanisi",
+      "greatLent": "Büyük Perhiz başlangıcı",
+      "palmSunday": "Palmiye Pazarı",
+      "goodFriday": "Kutsal Cuma",
+      "easter": "Kıpti Paskalyası",
+      "nayrouz": "Nayruz (Kıpti yılbaşı)"
+    },
+    "month": ["Tût", "Bâbeh", "Hâtur", "Kiyehk", "Tûbe", "Emşîr", "Bermehât", "Bermûde", "Bişnes", "Beûne", "Ebîb", "Mesrâ", "Nesî"],
+    "fmt": "{d} {m} {y}"
+  },
+  "en": {
+    "name": "Coptic calendar",
+    "desc": "The Coptic date and the feasts of the Coptic Orthodox Church: Nayrouz, Christmas, Epiphany and Easter.",
+    "note": "Coptic years count from the Era of the Martyrs (AD 284); the months begin on the same days as in the Ethiopian calendar, and the year starts on 11 September (12 September in the year before a Gregorian leap year). Christmas is kept on 29 Koiak, or 28 Koiak in the year after a leap year, so it always falls on 7 January; Easter follows the Orthodox reckoning.",
+    "ev": {
+      "christmas": "Coptic Christmas",
+      "epiphany": "Coptic Epiphany",
+      "greatLent": "Start of Great Lent",
+      "palmSunday": "Palm Sunday",
+      "goodFriday": "Good Friday",
+      "easter": "Coptic Easter",
+      "nayrouz": "Nayrouz (Coptic New Year)"
+    },
+    "month": ["Thout", "Paopi", "Hathor", "Koiak", "Tobi", "Meshir", "Paremhat", "Parmouti", "Pashons", "Paoni", "Epip", "Mesori", "Nasie"],
+    "fmt": "{d} {m} {y}"
+  },
+  "de": {
+    "name": "Koptischer Kalender",
+    "desc": "Das koptische Datum und die Feste der Koptisch-Orthodoxen Kirche: Nairuz, Weihnachten, Epiphanias und Ostern.",
+    "note": "Die koptischen Jahre zählen ab der Ära der Märtyrer (284 n. Chr.); die Monate beginnen an denselben Tagen wie im äthiopischen Kalender, das Jahr am 11. September (im Jahr vor einem gregorianischen Schaltjahr am 12. September). Weihnachten wird am 29. Koiak gefeiert, im Jahr nach einem Schaltjahr am 28. Koiak, also stets am 7. Januar; Ostern folgt der orthodoxen Berechnung.",
+    "ev": {
+      "christmas": "Koptisches Weihnachtsfest",
+      "epiphany": "Koptisches Epiphaniasfest",
+      "greatLent": "Beginn der Großen Fastenzeit",
+      "palmSunday": "Palmsonntag",
+      "goodFriday": "Karfreitag",
+      "easter": "Koptisches Osterfest",
+      "nayrouz": "Nairuz (koptisches Neujahr)"
+    },
+    "month": ["Thout", "Paopi", "Hathor", "Koiak", "Tobi", "Meschir", "Paremhat", "Paremoude", "Paschons", "Paoni", "Epip", "Mesori", "Nasie"],
+    "fmt": "{d}. {m} {y}"
+  },
+  "az": {
+    "name": "Qibti təqvimi",
+    "desc": "Qibti tarixi və Qibti Ortodoks Kilsəsinin bayramları: Nayruz, Milad, Epifaniya və Pasxa.",
+    "note": "Qibti illəri Şəhidlər dövründən (eramızın 284-cü ili) hesablanır; aylar Efiopiya təqvimi ilə eyni günlərdə başlayır, il isə 11 sentyabrda (Qriqorian uzun ilindən əvvəlki ildə 12 sentyabrda) başlayır. Milad 29 Kiyahkda, uzun ildən sonrakı ildə isə 28 Kiyahkda qeyd olunur, yəni hər il 7 yanvardadır; Pasxa Pravoslav hesabına görədir.",
+    "ev": {
+      "christmas": "Qibti Miladı",
+      "epiphany": "Qibti Epifaniyası",
+      "greatLent": "Böyük Orucun başlanğıcı",
+      "palmSunday": "Palma bazarı",
+      "goodFriday": "Müqəddəs Cümə",
+      "easter": "Qibti Pasxası",
+      "nayrouz": "Nayruz (Qibti Yeni ili)"
+    },
+    "month": ["Tut", "Baba", "Hatur", "Kiyahk", "Tuba", "Əmşir", "Bərəmhat", "Bərəmudə", "Başans", "Bauna", "Əbib", "Misra", "Nəsi"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ar": {
+    "name": "التقويم القبطي",
+    "desc": "التاريخ القبطي وأعياد الكنيسة القبطية الأرثوذكسية: النيروز والميلاد والغطاس والقيامة.",
+    "note": "تُحسب السنوات القبطية من تقويم الشهداء (284م)، وتبدأ الشهور في الأيام نفسها التي تبدأ فيها شهور التقويم الإثيوبي، وتبدأ السنة في 11 سبتمبر (12 سبتمبر في السنة التي تسبق السنة الكبيسة الغريغورية). يُحتفل بعيد الميلاد في 29 كيهك، وفي 28 كيهك في السنة التي تلي السنة الكبيسة، فيقع دائمًا في 7 يناير؛ ويُحسب عيد القيامة بالحساب الأرثوذكسي.",
+    "ev": {
+      "christmas": "عيد الميلاد المجيد",
+      "epiphany": "عيد الغطاس المجيد",
+      "greatLent": "بداية الصوم الكبير",
+      "palmSunday": "أحد الشعانين",
+      "goodFriday": "الجمعة العظيمة",
+      "easter": "عيد القيامة المجيد",
+      "nayrouz": "عيد النيروز (رأس السنة القبطية)"
+    },
+    "month": ["توت", "بابة", "هاتور", "كيهك", "طوبة", "أمشير", "برمهات", "برمودة", "بشنس", "بؤونة", "أبيب", "مسرى", "نسيء"],
+    "fmt": "{d} {m} {y}"
+  },
+  "id": {
+    "name": "Kalender Koptik",
+    "desc": "Tanggal Koptik dan hari raya Gereja Ortodoks Koptik: Nayrouz, Natal, Epifani, dan Paskah.",
+    "note": "Tahun Koptik dihitung sejak Era Para Martir (284 M); bulan-bulannya dimulai pada hari yang sama dengan kalender Etiopia, dan tahun dimulai pada 11 September (12 September pada tahun sebelum tahun kabisat Gregorius). Natal dirayakan pada 29 Kiahk, atau 28 Kiahk pada tahun setelah tahun kabisat, sehingga selalu jatuh pada 7 Januari; Paskah mengikuti perhitungan Ortodoks.",
+    "ev": {
+      "christmas": "Natal Koptik",
+      "epiphany": "Epifani Koptik",
+      "greatLent": "Awal Masa Puasa Agung",
+      "palmSunday": "Minggu Palma",
+      "goodFriday": "Jumat Agung",
+      "easter": "Paskah Koptik",
+      "nayrouz": "Nayrouz (Tahun Baru Koptik)"
+    },
+    "month": ["Tut", "Babah", "Hatur", "Kiahk", "Tubah", "Amshir", "Baramhat", "Baramudah", "Bashans", "Ba'unah", "Abib", "Misra", "Nasi"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ur": {
+    "name": "قبطی کیلنڈر",
+    "desc": "قبطی تاریخ اور قبطی آرتھوڈوکس کلیسا کے تہوار: نیروز، کرسمس، عیدِ ظہور اور ایسٹر۔",
+    "note": "قبطی سال شہدا کے دور (284ء) سے شمار ہوتے ہیں؛ مہینے انہی دنوں شروع ہوتے ہیں جن دنوں ایتھوپیائی کیلنڈر کے مہینے شروع ہوتے ہیں، اور سال 11 ستمبر کو (گریگوری لیپ سال سے پہلے والے سال میں 12 ستمبر کو) شروع ہوتا ہے۔ کرسمس 29 کیہک کو، اور لیپ سال کے بعد والے سال میں 28 کیہک کو منائی جاتی ہے، اس لیے ہمیشہ 7 جنوری کو آتی ہے؛ ایسٹر آرتھوڈوکس حساب سے ہے۔",
+    "ev": {
+      "christmas": "قبطی کرسمس",
+      "epiphany": "قبطی عیدِ ظہور",
+      "greatLent": "بڑے روزوں کا آغاز",
+      "palmSunday": "کھجوروں کا اتوار",
+      "goodFriday": "گڈ فرائیڈے",
+      "easter": "قبطی ایسٹر",
+      "nayrouz": "نیروز (قبطی نیا سال)"
+    },
+    "month": ["توت", "بابہ", "ہاتور", "کیہک", "طوبہ", "امشیر", "برمہات", "برمودہ", "بشنس", "بؤونہ", "ابیب", "مسریٰ", "نسی"],
+    "fmt": "{d} {m} {y}"
+  },
+  "fa": {
+    "name": "گاه‌شماری قبطی",
+    "desc": "تاریخ قبطی و اعیاد کلیسای ارتدکس قبطی: نیروز، کریسمس، عید ظهور و عید پاک.",
+    "note": "سال‌های قبطی از دوران شهیدان (284 میلادی) شمرده می‌شوند؛ ماه‌ها در همان روزهای ماه‌های گاه‌شماری اتیوپیایی آغاز می‌شوند و سال در 11 سپتامبر (در سال پیش از سال کبیسهٔ میلادی در 12 سپتامبر) آغاز می‌شود. کریسمس در 29 کیهک و در سال پس از سال کبیسه در 28 کیهک برگزار می‌شود و از این رو همیشه در 7 ژانویه است؛ عید پاک به حساب ارتدکس است.",
+    "ev": {
+      "christmas": "کریسمس قبطی",
+      "epiphany": "عید ظهور قبطی",
+      "greatLent": "آغاز روزهٔ بزرگ",
+      "palmSunday": "یکشنبهٔ نخل",
+      "goodFriday": "جمعهٔ مقدس",
+      "easter": "عید پاک قبطی",
+      "nayrouz": "نیروز (سال نو قبطی)"
+    },
+    "month": ["توت", "بابه", "هاتور", "کیهک", "طوبه", "امشیر", "برمهات", "برموده", "بشنس", "بئونه", "ابیب", "مسری", "نسیء"],
+    "fmt": "{d} {m} {y}"
+  },
+  "fr": {
+    "name": "Calendrier copte",
+    "desc": "La date copte et les fêtes de l’Église copte orthodoxe : Nayrouz, Noël, Épiphanie et Pâques.",
+    "note": "Les années coptes sont comptées depuis l’ère des Martyrs (284 apr. J.-C.) ; les mois commencent les mêmes jours que dans le calendrier éthiopien et l’année débute le 11 septembre (le 12 septembre l’année qui précède une année bissextile grégorienne). Noël est célébré le 29 Khoiak, ou le 28 Khoiak l’année qui suit une année bissextile, et tombe donc toujours le 7 janvier ; Pâques suit le comput orthodoxe.",
+    "ev": {
+      "christmas": "Noël copte",
+      "epiphany": "Épiphanie copte",
+      "greatLent": "Début du Grand Carême",
+      "palmSunday": "Dimanche des Rameaux",
+      "goodFriday": "Vendredi saint",
+      "easter": "Pâques copte",
+      "nayrouz": "Nayrouz (Nouvel An copte)"
+    },
+    "month": ["Thout", "Phaophi", "Athyr", "Khoiak", "Tybi", "Méchir", "Phaminoth", "Pharmouti", "Pachon", "Payni", "Épiphi", "Mésori", "Nasi"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ru": {
+    "name": "Коптский календарь",
+    "desc": "Коптская дата и праздники Коптской православной церкви: Найруз, Рождество, Богоявление и Пасха.",
+    "note": "Коптские годы отсчитываются от эры мучеников (284 год н. э.); месяцы начинаются в те же дни, что и в эфиопском календаре, а год — 11 сентября (12 сентября в год перед григорианским високосным). Рождество празднуется 29 кийяка, а в год после високосного — 28 кийяка, поэтому всегда приходится на 7 января; Пасха — по православной пасхалии.",
+    "ev": {
+      "christmas": "Коптское Рождество",
+      "epiphany": "Коптское Богоявление",
+      "greatLent": "Начало Великого поста",
+      "palmSunday": "Вербное воскресенье",
+      "goodFriday": "Страстная пятница",
+      "easter": "Коптская Пасха",
+      "nayrouz": "Найруз (коптский Новый год)"
+    },
+    "month": ["тута", "бабы", "хатура", "кийяка", "тубы", "амшира", "барамхата", "барамуды", "башанса", "бауны", "абиба", "мисры", "наси"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ja": {
+    "name": "コプト暦",
+    "desc": "コプト暦の日付と、ナイルーズ、降誕祭、神現祭、復活祭などのコプト正教会の祝祭日。",
+    "note": "コプト暦の年は殉教者紀元（284年）から数え、月はエチオピア暦と同じ日に始まり、年は9月11日（グレゴリオ暦の閏年の前年は9月12日）に始まります。降誕祭はコイアック月29日（閏年の翌年は28日）で、常に1月7日にあたり、復活祭は正教会の計算によります。",
+    "ev": {
+      "christmas": "コプト正教会の降誕祭",
+      "epiphany": "コプト正教会の神現祭",
+      "greatLent": "大斎の始まり",
+      "palmSunday": "枝の主日",
+      "goodFriday": "聖金曜日",
+      "easter": "コプト正教会の復活祭",
+      "nayrouz": "ナイルーズ（コプト暦の新年）"
+    },
+    "month": ["トウト月", "パオペ月", "ハトール月", "コイアック月", "トーベ月", "メシル月", "パレムハート月", "パレムウデ月", "パションス月", "パオーネ月", "エペープ月", "メソレ月", "エパゴメネ"],
+    "fmt": "{y}年{m}{d}日"
+  },
+  "ko": {
+    "name": "콥트력",
+    "desc": "콥트력 날짜와 나이루즈, 성탄절, 주님 공현, 부활절 등 콥트 정교회 축일.",
+    "note": "콥트력의 해는 순교자 기원(서기 284년)부터 세며, 달은 에티오피아력과 같은 날에 시작하고 해는 9월 11일(그레고리력 윤년 전해에는 9월 12일)에 시작합니다. 성탄절은 키아크월 29일(윤년 다음 해에는 28일)로 항상 1월 7일이며, 부활절은 정교회 계산법을 따릅니다.",
+    "ev": {
+      "christmas": "콥트 성탄절",
+      "epiphany": "콥트 주님 공현",
+      "greatLent": "대사순절 시작",
+      "palmSunday": "종려 주일",
+      "goodFriday": "성금요일",
+      "easter": "콥트 부활절",
+      "nayrouz": "나이루즈(콥트력 새해)"
+    },
+    "month": ["투트월", "바바월", "하투르월", "키아크월", "투바월", "암시르월", "바람하트월", "바라무다월", "바샨스월", "바우나월", "아비브월", "메스라월", "나시월"],
+    "fmt": "{y}년 {m} {d}일"
+  },
+  "zh": {
+    "name": "科普特历",
+    "desc": "科普特历日期，以及奈鲁兹节、圣诞节、主显节和复活节等科普特正教会节日。",
+    "note": "科普特历纪年始于殉道者纪元（公元284年）；各月与埃塞俄比亚历在同一天开始，每年从9月11日开始（格里历闰年的前一年为9月12日）。圣诞节在基亚克月29日，闰年后一年为28日，因此总在1月7日；复活节按东正教算法计算。",
+    "ev": {
+      "christmas": "科普特圣诞节",
+      "epiphany": "科普特主显节",
+      "greatLent": "大斋期开始",
+      "palmSunday": "棕枝主日",
+      "goodFriday": "耶稣受难日",
+      "easter": "科普特复活节",
+      "nayrouz": "奈鲁兹节（科普特新年）"
+    },
+    "month": ["图特月", "巴巴月", "哈图尔月", "基亚克月", "图巴月", "阿姆希尔月", "巴拉姆哈特月", "巴拉穆达月", "巴尚斯月", "巴乌纳月", "阿比卜月", "迈斯拉月", "纳西月"],
+    "fmt": "{y}年{m}{d}日"
+  },
+  "fil": {
+    "name": "Kalendaryong Kopto",
+    "desc": "Ang petsang Kopto at mga pista ng Simbahang Ortodoksong Kopto: Nayrouz, Pasko, Epipanya, at Pasko ng Pagkabuhay.",
+    "note": "Binibilang ang mga taong Kopto mula sa Panahon ng mga Martir (284 AD); nagsisimula ang mga buwan sa parehong mga araw ng kalendaryo ng Etiyopiya, at nagsisimula ang taon sa 11 Setyembre (12 Setyembre sa taon bago ang leap year ng Gregoryano). Ipinagdiriwang ang Pasko sa 29 Koiak, o 28 Koiak sa taon pagkatapos ng leap year, kaya laging 7 Enero ito; sinusunod ng Pasko ng Pagkabuhay ang kalkulasyong Ortodokso.",
+    "ev": {
+      "christmas": "Pasko ng mga Kopto",
+      "epiphany": "Epipanya ng mga Kopto",
+      "greatLent": "Simula ng Dakilang Kuwaresma",
+      "palmSunday": "Linggo ng Palaspas",
+      "goodFriday": "Biyernes Santo",
+      "easter": "Pasko ng Pagkabuhay ng mga Kopto",
+      "nayrouz": "Nayrouz (Bagong Taon ng mga Kopto)"
+    },
+    "month": ["Thout", "Paopi", "Hathor", "Koiak", "Tobi", "Meshir", "Paremhat", "Parmouti", "Pashons", "Paoni", "Epip", "Mesori", "Nasie"],
+    "fmt": "{d} {m} {y}"
+  },
+  "th": {
+    "name": "ปฏิทินคอปติก",
+    "desc": "วันที่ตามปฏิทินคอปติกและเทศกาลของคริสตจักรคอปติกออร์โธดอกซ์ เช่น ไนรูซ คริสต์มาส วันพระคริสต์แสดงองค์ และอีสเตอร์",
+    "note": "ปีคอปติกนับจากศักราชมรณสักขี (ค.ศ. 284) เดือนต่าง ๆ เริ่มวันเดียวกับปฏิทินเอธิโอเปีย และปีเริ่มวันที่ 11 กันยายน (12 กันยายนในปีก่อนปีอธิกสุรทินของปฏิทินเกรกอรี) คริสต์มาสตรงกับวันที่ 29 เดือนคียัก หรือวันที่ 28 ในปีถัดจากปีอธิกสุรทิน จึงตรงกับวันที่ 7 มกราคมเสมอ ส่วนอีสเตอร์คำนวณตามแบบออร์โธดอกซ์",
+    "ev": {
+      "christmas": "คริสต์มาสคอปติก",
+      "epiphany": "วันพระคริสต์แสดงองค์ของคอปติก",
+      "greatLent": "เริ่มเทศกาลมหาพรต",
+      "palmSunday": "วันอาทิตย์ใบลาน",
+      "goodFriday": "วันศุกร์ประเสริฐ",
+      "easter": "อีสเตอร์คอปติก",
+      "nayrouz": "ไนรูซ (ปีใหม่คอปติก)"
+    },
+    "month": ["ทูต", "บาบะห์", "ฮาตูร์", "คียัก", "ทูบะห์", "อัมชีร์", "บารัมฮาต", "บารามูดะห์", "บาชานส์", "บาอูนะห์", "อาบีบ", "มิสรา", "นาซี"],
+    "fmt": "{d} {m} {y}"
+  },
+  "es": {
+    "name": "Calendario copto",
+    "desc": "La fecha copta y las fiestas de la Iglesia ortodoxa copta: Nayrouz, Navidad, Epifanía y Pascua.",
+    "note": "Los años coptos se cuentan desde la Era de los Mártires (284 d. C.); los meses empiezan los mismos días que en el calendario etíope y el año comienza el 11 de septiembre (el 12 de septiembre en el año anterior a un año bisiesto gregoriano). La Navidad se celebra el 29 de Koiak, o el 28 de Koiak en el año siguiente a un bisiesto, por lo que siempre cae el 7 de enero; la Pascua sigue el cómputo ortodoxo.",
+    "ev": {
+      "christmas": "Navidad copta",
+      "epiphany": "Epifanía copta",
+      "greatLent": "Inicio de la Gran Cuaresma",
+      "palmSunday": "Domingo de Ramos",
+      "goodFriday": "Viernes Santo",
+      "easter": "Pascua copta",
+      "nayrouz": "Nayrouz (Año Nuevo copto)"
+    },
+    "month": ["Thout", "Paopi", "Hathor", "Koiak", "Tobi", "Meshir", "Paremhat", "Parmouti", "Pashons", "Paoni", "Epip", "Mesori", "Nasie"],
+    "fmt": "{d} de {m} de {y}"
+  },
+  "pt": {
+    "name": "Calendário copta",
+    "desc": "A data copta e as festas da Igreja Ortodoxa Copta: Nayrouz, Natal, Epifania e Páscoa.",
+    "note": "Os anos coptas são contados a partir da Era dos Mártires (284 d.C.); os meses começam nos mesmos dias que no calendário etíope e o ano começa em 11 de setembro (12 de setembro no ano anterior a um ano bissexto gregoriano). O Natal é celebrado em 29 de Koiak, ou 28 de Koiak no ano seguinte a um bissexto, e por isso cai sempre em 7 de janeiro; a Páscoa segue o cálculo ortodoxo.",
+    "ev": {
+      "christmas": "Natal copta",
+      "epiphany": "Epifania copta",
+      "greatLent": "Início da Grande Quaresma",
+      "palmSunday": "Domingo de Ramos",
+      "goodFriday": "Sexta-feira Santa",
+      "easter": "Páscoa copta",
+      "nayrouz": "Nayrouz (Ano-Novo copta)"
+    },
+    "month": ["Thout", "Paopi", "Hathor", "Koiak", "Tobi", "Meshir", "Paremhat", "Parmouti", "Pashons", "Paoni", "Epip", "Mesori", "Nasie"],
+    "fmt": "{d} de {m} de {y}"
+  },
+  "hi": {
+    "name": "कॉप्टिक कैलेंडर",
+    "desc": "कॉप्टिक तारीख़ और कॉप्टिक ऑर्थोडॉक्स चर्च के त्योहार: नयरूज़, क्रिसमस, एपिफ़नी और ईस्टर।",
+    "note": "कॉप्टिक वर्ष शहीदों के युग (284 ई.) से गिने जाते हैं; महीने उन्हीं दिनों शुरू होते हैं जिन दिनों इथियोपियाई कैलेंडर के महीने शुरू होते हैं, और वर्ष 11 सितंबर को (ग्रेगोरियन लीप वर्ष से पहले वाले वर्ष में 12 सितंबर को) शुरू होता है। क्रिसमस 29 कियाक को, और लीप वर्ष के बाद वाले वर्ष में 28 कियाक को मनाया जाता है, इसलिए हमेशा 7 जनवरी को पड़ता है; ईस्टर ऑर्थोडॉक्स गणना से है।",
+    "ev": {
+      "christmas": "कॉप्टिक क्रिसमस",
+      "epiphany": "कॉप्टिक एपिफ़नी",
+      "greatLent": "महान उपवास की शुरुआत",
+      "palmSunday": "खजूर रविवार",
+      "goodFriday": "गुड फ्राइडे",
+      "easter": "कॉप्टिक ईस्टर",
+      "nayrouz": "नयरूज़ (कॉप्टिक नव वर्ष)"
+    },
+    "month": ["तूत", "बाबा", "हातूर", "कियाक", "तूबा", "अमशीर", "बरमहात", "बरमूदा", "बशंस", "बऊना", "अबीब", "मिस्रा", "नसी"],
+    "fmt": "{d} {m} {y}"
+  }
+}
