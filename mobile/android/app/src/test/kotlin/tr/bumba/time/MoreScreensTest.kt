@@ -612,11 +612,15 @@ class MoreScreensTest {
         // Sorulu akış (5 Kasım 2026): 0 hoş geldiniz, 1 güven + konum ve bildirim, 2–6 sorular, 7 özet, 8 "başka neler var",
         // 9–10 ipuçları, 11–16 özellik turu, 17 "Diğer her şey Tümü'nde"
         shot("tr-kurulum-guven") { OnboardingScreen(1) {} }
-        shot("ja-kurulum-guven", qualifiers = "ja") { OnboardingScreen(1) {} }
         val before = Features.enabled
+        // Vakitler'i sormayan dillerde (9 Kasım 2026): 4 soru, 5 tur, namaz geçmez (2–5 sorular, 6 özet, 10–14 tur, 15 son)
+        Features.save(setOf(Tab.TOOLS))
+        shot("en-kurulum", qualifiers = "en") { OnboardingScreen(0) {} }
+        shot("ja-kurulum-guven", qualifiers = "ja") { OnboardingScreen(1) {} }
+        shot("en-kurulum-soru-hava", qualifiers = "en") { OnboardingScreen(2) {} }
+        shot("en-kurulum-tur-widget", qualifiers = "en") { OnboardingScreen(14) {} }
         Features.save(setOf(Tab.PRAYER, Tab.WEATHER, Tab.CALENDAR, Tab.TOOLS))
         shot("tr-kurulum-soru") { OnboardingScreen(2) {} }
-        shot("en-kurulum-soru-hava", qualifiers = "en") { OnboardingScreen(3) {} }
         shot("ar-kurulum-soru", qualifiers = "ar") { OnboardingScreen(6) {} }
         shot("tr-kurulum-ozet") { OnboardingScreen(7) {} }
         shot("tr-kurulum-daha") { OnboardingScreen(8) {} }
@@ -624,7 +628,7 @@ class MoreScreensTest {
         shot("tr-kurulum-tam-ekran", dark = true) { OnboardingScreen(10) {} }
         shot("tr-kurulum-tur-alarm") { OnboardingScreen(11) {} }
         shot("tr-kurulum-tur-vakit") { OnboardingScreen(12) {} }
-        shot("en-kurulum-tur-hava", qualifiers = "en") { OnboardingScreen(13) {} }
+        shot("en-kurulum-tur-hava", qualifiers = "en") { OnboardingScreen(11) {} }
         shot("tr-kurulum-tur-araclar") { OnboardingScreen(14) {} }
         shot("tr-kurulum-tur-gorunum") { OnboardingScreen(15) {} }
         shot("ar-kurulum-tur-widget", qualifiers = "ar") { OnboardingScreen(16) {} }

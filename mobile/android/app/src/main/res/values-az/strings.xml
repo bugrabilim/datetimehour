@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">Tam ekran düyməsinə toxunun və ya telefonu yan çevirin; saat bütün ekranı tutur. Gecə rejimində yazı sönük qırmızı olur, çarpayı başında göz qamaşdırmır.</string>
     <string name="onboard_all_title">Qalan hər şey \"Hamısı\" bölməsində</string>
     <string name="onboard_all_text">Alt paneldəki \"Hamısı\" bölməsində bütün alətlər, axtarış və Parametrlər var; tez-tez istifadə etdiklərinizi uzun basaraq önə çəkin. Saatın altına tarix, vaxt və ya hava əlavə etmək üçün: Parametrlər › Saat ekranını redaktə et.</string>
+    <string name="onboard_all_textN">Alt paneldəki \"Hamısı\" bölməsində bütün alətlər, axtarış və Parametrlər var; tez-tez istifadə etdiklərinizi uzun basaraq önə çəkin. Saatın altına tarix və ya hava əlavə etmək üçün: Parametrlər › Saat ekranını redaktə et.</string>
     <string name="onboard_replay">Təqdimatı yenidən göstər</string>
     <string name="atmo_daylight">Gün işığı</string>
     <string name="atmo_daylightNote">Gün işığı seçilmiş yerdə Günəşin vəziyyətinə görə şəfəq, səhər, ikindi, axşam və ya gecə çalarını alır.</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">Bəli</string>
     <string name="onboard_no">Xeyr</string>
     <string name="onboard_welcome_hint">Beş qısa sualla tətbiqi sizə uyğun hazırlayaq.</string>
+    <string name="onboard_welcome_hint4">Dörd qısa sualla tətbiqi sizə uyğun hazırlayaq.</string>
     <string name="onboard_q_step">Sual %1$s/%2$s</string>
     <string name="onboard_q_prayer_title">Namaz vaxtlarını izləyirsinizmi?</string>
     <string name="onboard_q_prayer_text">Bəli desəniz, Vaxtlar alt paneldə görünər, saatın altında növbəti vaxt göstərilər və vaxt bildirişləri açılar.</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">Məlumatlarınız sizdə qalır</string>
     <string name="onboard_trust_text">Hesab yoxdur, reklam yoxdur, izləmə yoxdur. Məkanınız, şəxsi məlumatlarınız, təqviminiz və sağlamlıq məlumatlarınız bizə gəlmir, heç bir serverimizdə saxlanmır. İcazələr yalnız telefonunuzun içində işləyir.</string>
     <string name="onboard_trust_services">Hava proqnozu və yaxınlıqdakı məscidlər üçün yalnız təxmini məkan (təxminən 1 km) həmin xidmətə gedir; kim olduğunuz getmir.</string>
+    <string name="onboard_trust_servicesN">Hava proqnozu kimi məkana bağlı xidmətlərə yalnız təxmini məkan (təxminən 1 km) gedir; kim olduğunuz getmir.</string>
     <string name="onboard_trust_later">Verdiyiniz icazələri istədiyiniz an Parametrlər › İcazələr bölməsində görüb bağlayarsınız.</string>
     <string name="perms_title">İcazələr</string>
     <string name="perms_status_on">Açıq</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">Kontaktlarınız, foto arxiviniz, reklam identifikatorunuz, kamera və Bluetooth. Foto seçəndə və kod oxudanda telefonun öz seçicisi işlədilir; tətbiqə yalnız seçdiyiniz gəlir.</string>
     <string name="perms_location_title">Məkan</string>
     <string name="perms_location_why">İcazə versəniz, olduğunuz yerin vaxtları və havası özü gəlir, seçməklə məşğul olmazsınız. Verməsəniz, vilayəti və ya rayonu əl ilə seçərsiniz.</string>
+    <string name="perms_location_whyN">İcazə versəniz, olduğunuz yerin havası, gün çıxması və batması özü gəlir, seçməklə məşğul olmazsınız. Verməsəniz, yeri əl ilə seçərsiniz.</string>
     <string name="perms_locationBg_title">Arxa planda məkan</string>
     <string name="perms_locationBg_why">Yalnız məkana bağlı xatırladıcılar üçün: bir yerə çatanda və ya oradan ayrılanda xəbər verir. Verməsəniz, bu xatırladıcılar işləmir.</string>
     <string name="perms_notify_title">Bildirişlər</string>
     <string name="perms_notify_why">İcazə versəniz, vaxtlar, zəngli saatlar və xatırlatmalar vaxtında gəlir. Verməsəniz, onları yalnız tətbiqi açanda görərsiniz.</string>
+    <string name="perms_notify_whyN">İcazə versəniz, zəngli saatlar, taymerlər və xatırlatmalar vaxtında gəlir. Verməsəniz, onları yalnız tətbiqi açanda görərsiniz.</string>
     <string name="perms_alarm_title">Zəngli saatlar</string>
     <string name="perms_alarm_why">İcazə versəniz, zəngli saat və taymer telefon səssizdə olanda da vaxtında çalır. Verməsəniz, çalmır.</string>
     <string name="perms_exactAlarm_title">Dəqiq zəngli saat</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 analoq siferblat, 24 tətbiq rəngi, gün işığına görə dəyişən fon və yazı ölçüsü. Parametrlər › Rəng və görünüş.</string>
     <string name="onboard_tour_widgets_title">Vidjetlər</string>
     <string name="onboard_tour_widgets_text">Əsas ekrana və kilid ekranına saat, növbəti vaxt, hava, Ay və hicri tarix əlavə edin; ağıllı saatınızda da görün.</string>
+    <string name="onboard_tour_widgets_textN">Əsas ekrana və kilid ekranına saat, dünya saatları, hava, Ay və təqvim əlavə edin; ağıllı saatınızda da görün.</string>
     <string name="onboard_resume">Quraşdırmaya davam et</string>
     <string name="photoApp_title">Foto işığı</string>
     <string name="photoApp_subtitle">Qızıl saat və mavi saat</string>

@@ -25,17 +25,28 @@ enum Onboarding {
     /// Bunlardan biri değişirse (kişi ayarlardan bir şey değiştirdi) "Kuruluma devam et" kalkar
     private static let settingKeys = [Features.key, Features.barKey, "province", NotificationPrefs.enabledKey, "accent",
                                       "appearance", Atmosphere.key, "h12", "units", "fontScale", "homeItems", "AppleLanguages"]
-    /// Vakitler sorusu dil grubuna göre (9 Kasım 2026, sahibin kararı; Müslüman olmayanlar raporu A3): bu dillerde başta,
-    /// diğerlerinde sonda. Soru herkese aynı sorulur; inanç tahmin edilmez, yalnız sorunun yeri değişir. Android ile aynı.
+    /// Vakitler dil grubuna göre (9 Kasım 2026, sahibin kararları; Müslüman olmayanlar raporu A3): bu dillerde Vakitler ilk
+    /// soru; diğer dillerde tanıtımda vakit/namaz hiç geçmez (soru, özellik turu, ızgara ve metinler nötr). İnanç tahmin
+    /// edilmez: Vakitler Ayarlar › Özellikler'den her dilde açılır. Android ile aynı.
     static let prayerFirstLangs: Set<String> = ["tr", "ar", "id", "ur", "fa", "bn"]
     static var prayerFirst: Bool { prayerFirstLangs.contains(AppLocale.code) }
+    /// Namaz geçen metinler gösterilsin mi: bu dillerde ya da kişi Vakitler'i açmışsa
+    static var prayerShown: Bool { prayerFirst || Features.isOn(.prayer) }
+    /// Nötr eşi olan metin (`<anahtar>N`): namaz geçmeyen hâli, Vakitler gösterilmiyorsa
+    static func neutral(_ key: String) -> String { L(prayerShown ? key : key + "N") }
+    /// İzin açıklaması (`perms.<izin>.why`); konum ve bildirimde nötr eşi var
+    static func permWhy(_ id: String) -> String {
+        id == "location" || id == "notify" ? neutral("perms.\(id).why") : L("perms.\(id).why")
+    }
+    /// Sorulabilen bütün özellikler (geçilince yeni kurulumda hepsinin bildirimi kapanır)
+    private static let askable: [AppTab] = [.prayer, .weather, .calendar, .world, .seasons]
     /// Sorulan özellikler, sırayla (alt çubuğa giriş sırası da budur)
-    static let questions: [AppTab] = prayerFirst ? [.prayer, .weather, .calendar, .world, .seasons]
-        : [.weather, .calendar, .world, .seasons, .prayer]
-    /// Özellik turu ("başka neler var" sorusuna Evet denince)
-    static let tours = ["alarm", "prayer", "weather", "tools", "look", "widgets"]
-    /// Sayfa kimlikleri (CI -onboardPage N: 0 hoş geldiniz, 1 kurulum, 2–6 sorular, 7 özet, 8 "başka neler var", 9–10 ipuçları,
-    /// 11–16 özellik turu, 17 son sayfa "Diğer her şey Tümü'nde")
+    static let questions: [AppTab] = prayerFirst ? askable : askable.filter { $0 != .prayer }
+    /// Özellik turu ("başka neler var" sorusuna Evet denince); Vakitler turu yalnız bu dillerde
+    static let tours = ["alarm"] + (prayerFirst ? ["prayer"] : []) + ["weather", "tools", "look", "widgets"]
+    /// Sayfa kimlikleri (CI -onboardPage N; Vakitler'i soran dillerde: 0 hoş geldiniz, 1 kurulum, 2–6 sorular, 7 özet,
+    /// 8 "başka neler var", 9–10 ipuçları, 11–16 özellik turu, 17 son sayfa "Diğer her şey Tümü'nde"; diğer dillerde 4 soru
+    /// ve 5 tur: 2–5 sorular, 6 özet, 7 "başka neler var", 8–9 ipuçları, 10–14 tur, 15 son)
     static let pages: [String] = ["welcome", "setup"] + questions.map { "q:" + $0.key } +
         ["summary", "more", "tip:swipe", "tip:full"] + tours.map { "tour:" + $0 } + ["tip:all"]
     static let summary = pages.firstIndex(of: "summary")!
@@ -103,7 +114,7 @@ enum Onboarding {
         let isFresh = fresh
         if isFresh {
             Features.save([])
-            for t in questions { for k in notifyKeys(t) { d.set(false, forKey: k) } }
+            for t in askable { for k in notifyKeys(t) { d.set(false, forKey: k) } }
         } else if let b = before {
             d.set(b.0, forKey: Features.key)
             d.set(b.1, forKey: Features.barKey)
@@ -130,6 +141,10 @@ enum Onboarding {
         let d = UserDefaults.standard
         for (t, yes) in answers where !yes {
             for k in notifyKeys(t) { d.set(false, forKey: k) }
+        }
+        // Yeni kurulumda Vakitler kapalı kaldıysa (sorulmayan dillerde de) vakit bildirimleri kapalı başlar
+        if fresh, !Features.isOn(.prayer) {
+            for k in notifyKeys(.prayer) { d.set(false, forKey: k) }
         }
         if fresh, answers[.prayer] == true, d.object(forKey: "homeItems") == nil {
             var layout = HomeLayout(raw: HomeItem.defaultRaw)
@@ -176,7 +191,9 @@ private let onboardWelcomeFeatures: [OnboardWelcomeFeature] = [
     OnboardWelcomeFeature(key: "clock", icon: "clock", color: Theme.terra),
     OnboardWelcomeFeature(key: "calendar", icon: "calendar", color: Theme.sage),
     OnboardWelcomeFeature(key: "weather", icon: "sun_cloud", color: Theme.sky),
-    OnboardWelcomeFeature(key: "prayer", icon: "mosque", color: Theme.gold),
+    // Vakitler'i soran dillerin dışında namaz yerine Uyku, Kıble yerine Widget'lar (9 Kasım 2026, sahibin kararı)
+    Onboarding.prayerFirst ? OnboardWelcomeFeature(key: "prayer", icon: "mosque", color: Theme.gold)
+        : OnboardWelcomeFeature(key: "sleep", icon: "bed", color: Theme.dusk),
     OnboardWelcomeFeature(key: "alarm", icon: "alarm", color: Theme.terra),
     OnboardWelcomeFeature(key: "world", icon: "globe", color: Theme.sky),
     Onboarding.prayerFirst ? OnboardWelcomeFeature(key: "qibla", icon: "kaaba", color: Theme.gold)
@@ -327,7 +344,8 @@ struct OnboardingView: View {
             OnboardTip(key: "onboard.full") { FullscreenArt() }
         } else if pid.hasPrefix("tour:") {
             let name = String(pid.dropFirst(5))
-            OnboardFeature(icons: tourIcons(name), title: L("onboard.tour.\(name).title"), text: L("onboard.tour.\(name).text"))
+            OnboardFeature(icons: tourIcons(name), title: L("onboard.tour.\(name).title"),
+                           text: name == "widgets" ? Onboarding.neutral("onboard.tour.widgets.text") : L("onboard.tour.\(name).text"))
         } else {
             OnboardTip(key: "onboard.all") { AllArt() }
         }
@@ -340,7 +358,7 @@ struct OnboardingView: View {
         case "weather": ["telescope", "sun_cloud", "moon"]
         case "tools": ["metronome", "tomato", "knight"]
         case "look": ["sparkles", "palette", "clock"]
-        default: ["sun_cloud", "clock", "star_crescent"]
+        default: ["sun_cloud", "clock", Onboarding.prayerShown ? "star_crescent" : "moon"]
         }
     }
 
@@ -371,7 +389,8 @@ struct OnboardingView: View {
                     ForEach(onboardWelcomeFeatures, id: \.key) { f in
                         VStack(spacing: 4) {
                             DuoChip(name: f.icon, color: f.color, box: 36, glyph: 21)
-                            Text(f.key == "widgets" ? L("widgets.gallery") : L("onboard.welcome.f.\(f.key)"))
+                            Text(f.key == "widgets" ? L("widgets.gallery")
+                                 : f.key == "sleep" ? L("sleep.title") : L("onboard.welcome.f.\(f.key)"))
                                 .font(.footnote.weight(.medium))
                                 .foregroundStyle(Theme.text)
                                 .multilineTextAlignment(.center)
@@ -393,7 +412,7 @@ struct OnboardingView: View {
                     .lineSpacing(3)
                     .foregroundStyle(Theme.muted)
                     .fixedSize(horizontal: false, vertical: true)
-                Text(L("onboard.welcome.hint"))
+                Text(L(Onboarding.questions.count == 4 ? "onboard.welcome.hint4" : "onboard.welcome.hint"))
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Theme.muted)
@@ -455,7 +474,7 @@ struct OnboardingView: View {
                         Spacer()
                         PlacePicker(font: .body)
                     }
-                    Text(L("perms.location.why")).font(.footnote).foregroundStyle(Theme.muted)
+                    Text(Onboarding.permWhy("location")).font(.footnote).foregroundStyle(Theme.muted)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 .card(padding: 14)
@@ -473,7 +492,7 @@ struct OnboardingView: View {
                             Spacer()
                             if notifyOn { Image(systemName: "checkmark.circle.fill").foregroundStyle(Theme.accent) }
                         }
-                        Text(L("perms.notify.why")).font(.footnote).foregroundStyle(Theme.muted)
+                        Text(Onboarding.permWhy("notify")).font(.footnote).foregroundStyle(Theme.muted)
                             .multilineTextAlignment(.leading)
                             .fixedSize(horizontal: false, vertical: true)
                     }
@@ -570,7 +589,7 @@ struct TrustCard: View {
             }
             Text(L("onboard.trust.text")).font(.subheadline).foregroundStyle(Theme.text)
                 .fixedSize(horizontal: false, vertical: true)
-            Text(L("onboard.trust.services")).font(.footnote).foregroundStyle(Theme.muted)
+            Text(Onboarding.neutral("onboard.trust.services")).font(.footnote).foregroundStyle(Theme.muted)
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -592,7 +611,7 @@ private struct OnboardTip<Art: View>: View {
                     .accessibilityHidden(true)
                 Text(L("\(key).title")).font(.title2.weight(.bold)).foregroundStyle(Theme.text)
                     .multilineTextAlignment(.center)
-                Text(L("\(key).text")).font(.body).foregroundStyle(Theme.muted)
+                Text(key == "onboard.all" ? Onboarding.neutral("\(key).text") : L("\(key).text")).font(.body).foregroundStyle(Theme.muted)
                     .multilineTextAlignment(.center)
                     .lineSpacing(3)
                     .fixedSize(horizontal: false, vertical: true)

@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">Touchez Plein écran ou tournez le téléphone à l\'horizontale : l\'horloge occupe tout l\'écran. Le mode nuit la passe en rouge tamisé qui n\'éblouit pas au chevet.</string>
     <string name="onboard_all_title">Tout le reste est dans « Tout »</string>
     <string name="onboard_all_text">« Tout », dans la barre du bas, réunit tous les outils, la recherche et les Réglages ; appuyez longuement sur vos favoris pour les épingler en haut. Pour ajouter la date, les heures de prière ou la météo sous l\'horloge : Réglages › Modifier l\'écran de l\'horloge.</string>
+    <string name="onboard_all_textN">« Tout », dans la barre du bas, réunit tous les outils, la recherche et les Réglages ; appuyez longuement sur vos favoris pour les épingler en haut. Pour ajouter la date ou la météo sous l\'horloge : Réglages › Modifier l\'écran de l\'horloge.</string>
     <string name="onboard_replay">Revoir la présentation</string>
     <string name="atmo_daylight">Lumière du jour</string>
     <string name="atmo_daylightNote">La lumière du jour suit le soleil à l\'endroit choisi : tons d\'aube, de matin, d\'après-midi, de soir ou de nuit.</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">Oui</string>
     <string name="onboard_no">Non</string>
     <string name="onboard_welcome_hint">Cinq petites questions et l\'appli est prête pour vous.</string>
+    <string name="onboard_welcome_hint4">Quatre petites questions et l\'appli est prête pour vous.</string>
     <string name="onboard_q_step">Question %1$s sur %2$s</string>
     <string name="onboard_q_prayer_title">Suivez-vous les heures de prière ?</string>
     <string name="onboard_q_prayer_text">Si oui, l\'onglet Prière rejoint la barre, la prochaine prière s\'affiche sous l\'horloge et les notifications de prière s\'activent.</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">Vos données restent chez vous</string>
     <string name="onboard_trust_text">Pas de compte, pas de pub, pas de pistage. Votre position, vos données personnelles, votre calendrier et vos données de santé ne nous parviennent jamais et ne sont stockés sur aucun de nos serveurs. Les autorisations ne servent qu\'à l\'intérieur de votre téléphone.</string>
     <string name="onboard_trust_services">Pour la météo et les mosquées proches, seule une position approximative (environ 1 km) part vers le service concerné, jamais votre identité.</string>
+    <string name="onboard_trust_servicesN">Seule une position approximative (environ 1 km) part vers les services liés au lieu, comme la météo, jamais votre identité.</string>
     <string name="onboard_trust_later">Vous pouvez voir et retirer chaque autorisation à tout moment dans Réglages › Autorisations.</string>
     <string name="perms_title">Autorisations</string>
     <string name="perms_status_on">Activée</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">Vos contacts, votre galerie, l\'identifiant publicitaire, l\'appareil photo et le Bluetooth. Photos et codes passent par le sélecteur et le scanner de votre téléphone ; seul ce que vous choisissez parvient à l\'appli.</string>
     <string name="perms_location_title">Position</string>
     <string name="perms_location_why">Si vous l\'autorisez, les heures de prière et la météo de l\'endroit où vous êtes arrivent toutes seules. Sinon, vous choisissez votre ville à la main.</string>
+    <string name="perms_location_whyN">Si vous l\'autorisez, la météo et les heures de lever et de coucher du soleil de l\'endroit où vous êtes arrivent toutes seules. Sinon, vous choisissez le lieu à la main.</string>
     <string name="perms_locationBg_title">Position en arrière-plan</string>
     <string name="perms_locationBg_why">Uniquement pour les rappels de lieu : ils vous préviennent quand vous arrivez quelque part ou en partez. Sinon, ces rappels ne fonctionnent pas.</string>
     <string name="perms_notify_title">Notifications</string>
     <string name="perms_notify_why">Si vous les autorisez, heures de prière, alarmes et rappels arrivent à l\'heure. Sinon, vous ne les voyez qu\'en ouvrant l\'appli.</string>
+    <string name="perms_notify_whyN">Si vous les autorisez, alarmes, minuteurs et rappels arrivent à l\'heure. Sinon, vous ne les voyez qu\'en ouvrant l\'appli.</string>
     <string name="perms_alarm_title">Alarmes</string>
     <string name="perms_alarm_why">Si vous l\'autorisez, alarmes et minuteurs sonnent à l\'heure, même en mode silencieux. Sinon, ils ne sonnent pas.</string>
     <string name="perms_exactAlarm_title">Alarmes exactes</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 cadrans analogiques, 24 couleurs d\'appli, un fond qui suit la lumière du jour et la taille du texte. Réglages › Couleur et apparence.</string>
     <string name="onboard_tour_widgets_title">Widgets</string>
     <string name="onboard_tour_widgets_text">Ajoutez l\'heure, la prochaine prière, la météo, la Lune et la date hégirienne à l\'écran d\'accueil et verrouillé, et retrouvez-les sur votre montre.</string>
+    <string name="onboard_tour_widgets_textN">Ajoutez l\'heure, les horloges du monde, la météo, la Lune et le calendrier à l\'écran d\'accueil et verrouillé, et retrouvez-les sur votre montre.</string>
     <string name="onboard_resume">Continuer la configuration</string>
     <string name="photoApp_title">Lumière photo</string>
     <string name="photoApp_subtitle">Heure dorée et heure bleue</string>

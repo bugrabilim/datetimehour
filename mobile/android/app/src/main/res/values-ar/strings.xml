@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">المس «ملء الشاشة» أو أدر الهاتف أفقيًا فتملأ الساعة الشاشة. في الوضع الليلي يصبح لونها أحمر خافتًا لا يزعج العين بجانب السرير.</string>
     <string name="onboard_all_title">كل ما تبقّى في «الكل»</string>
     <string name="onboard_all_text">في «الكل» بالشريط السفلي كل الأدوات والبحث والإعدادات؛ اضغط مطولًا على ما تستخدمه كثيرًا لتثبيته في الأعلى. لإضافة التاريخ أو أوقات الصلاة أو الطقس تحت الساعة: الإعدادات › تعديل شاشة الساعة.</string>
+    <string name="onboard_all_textN">في «الكل» بالشريط السفلي كل الأدوات والبحث والإعدادات؛ اضغط مطولًا على ما تستخدمه كثيرًا لتثبيته في الأعلى. لإضافة التاريخ أو الطقس تحت الساعة: الإعدادات › تعديل شاشة الساعة.</string>
     <string name="onboard_replay">إظهار الجولة التعريفية مجددًا</string>
     <string name="atmo_daylight">ضوء النهار</string>
     <string name="atmo_daylightNote">يتبع ضوء النهار الشمس في المكان المختار: ألوان الفجر أو الصباح أو العصر أو المساء أو الليل.</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">نعم</string>
     <string name="onboard_no">لا</string>
     <string name="onboard_welcome_hint">خمسة أسئلة قصيرة ونجهّز التطبيق لك.</string>
+    <string name="onboard_welcome_hint4">أربعة أسئلة قصيرة ونجهّز التطبيق لك.</string>
     <string name="onboard_q_step">السؤال %1$s من %2$s</string>
     <string name="onboard_q_prayer_title">هل تتابع أوقات الصلاة؟</string>
     <string name="onboard_q_prayer_text">إن أجبت بنعم، تنضم «الصلاة» إلى الشريط السفلي، وتظهر الصلاة التالية تحت الساعة، وتُفعَّل إشعارات الصلاة.</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">بياناتك تبقى معك</string>
     <string name="onboard_trust_text">لا حساب، لا إعلانات، لا تتبّع. موقعك وبياناتك الشخصية وتقويمك وبياناتك الصحية لا تصل إلينا ولا تُخزَّن على أي خادم لنا. الأذونات تعمل داخل هاتفك فقط.</string>
     <string name="onboard_trust_services">للطقس والمساجد القريبة يُرسَل موقع تقريبي فقط (نحو 1 كم) إلى الخدمة المعنية، ولا تُرسَل هويتك أبدًا.</string>
+    <string name="onboard_trust_servicesN">لا يُرسَل إلى الخدمات المرتبطة بالموقع، مثل الطقس، إلا موقع تقريبي (نحو 1 كم)، ولا تُرسَل هويتك أبدًا.</string>
     <string name="onboard_trust_later">يمكنك رؤية أي إذن وإيقافه في أي وقت من الإعدادات › الأذونات.</string>
     <string name="perms_title">الأذونات</string>
     <string name="perms_status_on">مفعّل</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">جهات اتصالك، ومكتبة صورك، ومعرّف الإعلانات، والكاميرا، والبلوتوث. تمرّ الصور والرموز عبر أداة الاختيار والماسح في هاتفك، ولا يصل إلى التطبيق إلا ما تختاره.</string>
     <string name="perms_location_title">الموقع</string>
     <string name="perms_location_why">إن سمحت، تأتي أوقات الصلاة والطقس لمكانك تلقائيًا دون أن تختار شيئًا. وإن لم تسمح، تختار الولاية أو المنطقة بنفسك.</string>
+    <string name="perms_location_whyN">إن سمحت، يأتي الطقس وأوقات الشروق والغروب لمكانك تلقائيًا دون أن تختار شيئًا. وإن لم تسمح، تختار المكان بنفسك.</string>
     <string name="perms_locationBg_title">الموقع في الخلفية</string>
     <string name="perms_locationBg_why">لتذكيرات الموقع فقط: تنبّهك عند الوصول إلى مكان أو مغادرته. وإن لم تسمح، لا تعمل هذه التذكيرات.</string>
     <string name="perms_notify_title">الإشعارات</string>
     <string name="perms_notify_why">إن سمحت، تصلك أوقات الصلاة والمنبّهات والتذكيرات في وقتها. وإن لم تسمح، لا تراها إلا عند فتح التطبيق.</string>
+    <string name="perms_notify_whyN">إن سمحت، تصلك المنبّهات والمؤقّتات والتذكيرات في وقتها. وإن لم تسمح، لا تراها إلا عند فتح التطبيق.</string>
     <string name="perms_alarm_title">المنبّهات</string>
     <string name="perms_alarm_why">إن سمحت، يرنّ المنبّه والمؤقّت في وقتهما حتى والهاتف صامت. وإن لم تسمح، لا يرنّان.</string>
     <string name="perms_exactAlarm_title">المنبّهات الدقيقة</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 ميناءً تناظريًا و24 لونًا للتطبيق وخلفية تتبع ضوء النهار وحجم الخط. الإعدادات › اللون والمظهر.</string>
     <string name="onboard_tour_widgets_title">الأدوات المصغّرة</string>
     <string name="onboard_tour_widgets_text">أضف الساعة والصلاة التالية والطقس والقمر والتاريخ الهجري إلى الشاشة الرئيسية وشاشة القفل، وشاهدها على ساعتك الذكية أيضًا.</string>
+    <string name="onboard_tour_widgets_textN">أضف الساعة وساعات العالم والطقس والقمر والتقويم إلى الشاشة الرئيسية وشاشة القفل، وشاهدها على ساعتك الذكية أيضًا.</string>
     <string name="onboard_resume">متابعة الإعداد</string>
     <string name="photoApp_title">ضوء التصوير</string>
     <string name="photoApp_subtitle">الساعة الذهبية والساعة الزرقاء</string>

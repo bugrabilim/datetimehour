@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">แตะเต็มจอหรือหมุนโทรศัพท์เป็นแนวนอน นาฬิกาจะเต็มหน้าจอ โหมดกลางคืนจะเป็นสีแดงสลัว ไม่แสบตาเมื่อวางข้างเตียง</string>
     <string name="onboard_all_title">ทุกอย่างที่เหลืออยู่ใน \"ทั้งหมด\"</string>
     <string name="onboard_all_text">\"ทั้งหมด\" ในแถบด้านล่างมีเครื่องมือทุกอย่าง การค้นหา และการตั้งค่า กดค้างรายการที่ใช้บ่อยเพื่อปักหมุดไว้ด้านบน หากต้องการเพิ่มวันที่ เวลาละหมาด หรือสภาพอากาศใต้นาฬิกา: การตั้งค่า › แก้ไขหน้าจอนาฬิกา</string>
+    <string name="onboard_all_textN">\"ทั้งหมด\" ในแถบด้านล่างมีเครื่องมือทุกอย่าง การค้นหา และการตั้งค่า กดค้างรายการที่ใช้บ่อยเพื่อปักหมุดไว้ด้านบน หากต้องการเพิ่มวันที่หรือสภาพอากาศใต้นาฬิกา: การตั้งค่า › แก้ไขหน้าจอนาฬิกา</string>
     <string name="onboard_replay">แสดงบทแนะนำอีกครั้ง</string>
     <string name="atmo_daylight">แสงตะวัน</string>
     <string name="atmo_daylightNote">แสงตะวันเปลี่ยนตามดวงอาทิตย์ ณ สถานที่ที่เลือก: โทนรุ่งอรุณ เช้า บ่าย เย็น หรือกลางคืน</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">ใช่</string>
     <string name="onboard_no">ไม่</string>
     <string name="onboard_welcome_hint">ตอบคำถามสั้น ๆ 5 ข้อ แล้วแอปจะพร้อมสำหรับคุณ</string>
+    <string name="onboard_welcome_hint4">ตอบคำถามสั้น ๆ 4 ข้อ แล้วแอปจะพร้อมสำหรับคุณ</string>
     <string name="onboard_q_step">คำถาม %1$s/%2$s</string>
     <string name="onboard_q_prayer_title">คุณติดตามเวลาละหมาดไหม</string>
     <string name="onboard_q_prayer_text">ถ้าใช่ แท็บละหมาดจะอยู่ในแถบด้านล่าง เวลาละหมาดถัดไปจะแสดงใต้นาฬิกา และเปิดการแจ้งเตือนละหมาด</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">ข้อมูลของคุณอยู่กับคุณ</string>
     <string name="onboard_trust_text">ไม่มีบัญชี ไม่มีโฆษณา ไม่มีการติดตาม ตำแหน่ง ข้อมูลส่วนตัว ปฏิทิน และข้อมูลสุขภาพของคุณไม่ถูกส่งมาถึงเรา และไม่ถูกเก็บบนเซิร์ฟเวอร์ใดของเรา สิทธิ์ต่าง ๆ ทำงานเฉพาะในโทรศัพท์ของคุณ</string>
     <string name="onboard_trust_services">สำหรับสภาพอากาศและมัสยิดใกล้เคียง จะส่งเพียงตำแหน่งโดยประมาณ (ราว 1 กม.) ไปยังบริการนั้น ไม่เคยส่งว่าคุณเป็นใคร</string>
+    <string name="onboard_trust_servicesN">บริการที่ใช้ตำแหน่ง เช่น สภาพอากาศ จะได้รับเพียงตำแหน่งโดยประมาณ (ราว 1 กม.) ไม่เคยส่งว่าคุณเป็นใคร</string>
     <string name="onboard_trust_later">ดูและปิดสิทธิ์ใดก็ได้ทุกเมื่อที่ การตั้งค่า › สิทธิ์</string>
     <string name="perms_title">สิทธิ์</string>
     <string name="perms_status_on">เปิด</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">รายชื่อติดต่อ คลังรูปภาพ รหัสโฆษณา กล้อง และบลูทูธ รูปภาพและโค้ดจะผ่านตัวเลือกและตัวสแกนของโทรศัพท์เอง แอปได้รับเฉพาะสิ่งที่คุณเลือก</string>
     <string name="perms_location_title">ตำแหน่ง</string>
     <string name="perms_location_why">ถ้าอนุญาต เวลาละหมาดและสภาพอากาศของที่ที่คุณอยู่จะขึ้นเองโดยไม่ต้องเลือก ถ้าไม่อนุญาต คุณเลือกเมืองเองได้</string>
+    <string name="perms_location_whyN">ถ้าอนุญาต สภาพอากาศและเวลาพระอาทิตย์ขึ้นและตกของที่ที่คุณอยู่จะขึ้นเองโดยไม่ต้องเลือก ถ้าไม่อนุญาต คุณเลือกสถานที่เองได้</string>
     <string name="perms_locationBg_title">ตำแหน่งเบื้องหลัง</string>
     <string name="perms_locationBg_why">ใช้เฉพาะการเตือนตามสถานที่ เพื่อแจ้งเมื่อคุณไปถึงหรือออกจากสถานที่ ถ้าไม่อนุญาต การเตือนนี้จะใช้ไม่ได้</string>
     <string name="perms_notify_title">การแจ้งเตือน</string>
     <string name="perms_notify_why">ถ้าอนุญาต เวลาละหมาด การปลุก และการเตือนจะมาตรงเวลา ถ้าไม่อนุญาต คุณจะเห็นเมื่อเปิดแอปเท่านั้น</string>
+    <string name="perms_notify_whyN">ถ้าอนุญาต การปลุก ตัวจับเวลา และการเตือนจะมาตรงเวลา ถ้าไม่อนุญาต คุณจะเห็นเมื่อเปิดแอปเท่านั้น</string>
     <string name="perms_alarm_title">การปลุก</string>
     <string name="perms_alarm_why">ถ้าอนุญาต นาฬิกาปลุกและตัวจับเวลาจะดังตรงเวลาแม้ปิดเสียงอยู่ ถ้าไม่อนุญาตจะไม่ดัง</string>
     <string name="perms_exactAlarm_title">การปลุกตรงเวลา</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">หน้าปัดเข็ม 25 แบบ สีแอป 24 สี พื้นหลังที่เปลี่ยนตามแสงกลางวัน และขนาดตัวอักษร การตั้งค่า › สีและรูปลักษณ์</string>
     <string name="onboard_tour_widgets_title">วิดเจ็ต</string>
     <string name="onboard_tour_widgets_text">เพิ่มนาฬิกา ละหมาดถัดไป อากาศ ดวงจันทร์ และวันที่ฮิจเราะห์ลงในหน้าจอโฮมและหน้าจอล็อก ดูบนสมาร์ทวอทช์ได้ด้วย</string>
+    <string name="onboard_tour_widgets_textN">เพิ่มนาฬิกา นาฬิกาโลก อากาศ ดวงจันทร์ และปฏิทินลงในหน้าจอโฮมและหน้าจอล็อก ดูบนสมาร์ทวอทช์ได้ด้วย</string>
     <string name="onboard_resume">ตั้งค่าต่อ</string>
     <string name="photoApp_title">แสงถ่ายภาพ</string>
     <string name="photoApp_subtitle">ช่วงแสงทองและช่วงแสงสีฟ้า</string>

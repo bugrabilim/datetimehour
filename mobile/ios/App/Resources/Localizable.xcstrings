@@ -375726,6 +375726,119 @@
         }
       }
     },
+    "onboard.all.textN": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alt çubuktaki Tümü'nde bütün araçlar, arama ve Ayarlar var; sık kullandıklarınızı uzun basarak öne alın. Saatin altına tarih ya da hava eklemek için: Ayarlar › Saat ekranını düzenle."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All in the bottom bar has every tool, search and Settings; long-press your favourites to pin them at the top. To add the date or weather under the clock: Settings › Edit clock screen."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unter „Alle“ in der unteren Leiste finden Sie alle Werkzeuge, die Suche und die Einstellungen; halten Sie Favoriten gedrückt, um sie oben anzuheften. Datum oder Wetter unter der Uhr: Einstellungen › Uhrbildschirm bearbeiten."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alt paneldəki \"Hamısı\" bölməsində bütün alətlər, axtarış və Parametrlər var; tez-tez istifadə etdiklərinizi uzun basaraq önə çəkin. Saatın altına tarix və ya hava əlavə etmək üçün: Parametrlər › Saat ekranını redaktə et."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في «الكل» بالشريط السفلي كل الأدوات والبحث والإعدادات؛ اضغط مطولًا على ما تستخدمه كثيرًا لتثبيته في الأعلى. لإضافة التاريخ أو الطقس تحت الساعة: الإعدادات › تعديل شاشة الساعة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua di bilah bawah berisi semua alat, pencarian, dan Pengaturan; tekan lama favorit Anda untuk menyematkannya di atas. Untuk menambahkan tanggal atau cuaca di bawah jam: Pengaturan › Edit layar jam."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نیچے کی پٹی میں «سب» میں تمام ٹولز، تلاش اور ترتیبات ہیں؛ پسندیدہ چیزوں کو اوپر رکھنے کے لیے دیر تک دبائیں۔ گھڑی کے نیچے تاریخ یا موسم شامل کرنے کے لیے: ترتیبات › گھڑی کی اسکرین میں ترمیم۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در «همه» در نوار پایین همهٔ ابزارها، جست‌وجو و تنظیمات هست؛ موارد پرکاربرد را با لمس طولانی به بالا سنجاق کنید. برای افزودن تاریخ یا آب‌وهوا زیر ساعت: تنظیمات › ویرایش صفحهٔ ساعت."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "« Tout », dans la barre du bas, réunit tous les outils, la recherche et les Réglages ; appuyez longuement sur vos favoris pour les épingler en haut. Pour ajouter la date ou la météo sous l'horloge : Réglages › Modifier l'écran de l'horloge."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Во вкладке «Все» на нижней панели — все инструменты, поиск и настройки; удерживайте избранное, чтобы закрепить его сверху. Чтобы добавить под часы дату или погоду: Настройки › Изменить экран часов."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下のバーの「すべて」に、すべてのツール、検索、設定があります。よく使うものは長押しで上に固定できます。時計の下に日付や天気を表示するには：設定 › 時計画面を編集。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아래 막대의 '전체'에 모든 도구, 검색, 설정이 있습니다. 자주 쓰는 것은 길게 눌러 위에 고정하세요. 시계 아래에 날짜나 날씨를 넣으려면: 설정 › 시계 화면 편집."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "底部栏的“全部”里有所有工具、搜索和设置；长按常用项可将其固定在顶部。要在时钟下方添加日期或天气：设置 › 编辑时钟屏幕。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nasa Lahat sa ibabang bar ang lahat ng tool, ang paghahanap at ang Settings; pindutin nang matagal ang mga paborito para i-pin sa itaas. Para magdagdag ng petsa o panahon sa ilalim ng orasan: Settings › I-edit ang screen ng orasan."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"ทั้งหมด\" ในแถบด้านล่างมีเครื่องมือทุกอย่าง การค้นหา และการตั้งค่า กดค้างรายการที่ใช้บ่อยเพื่อปักหมุดไว้ด้านบน หากต้องการเพิ่มวันที่หรือสภาพอากาศใต้นาฬิกา: การตั้งค่า › แก้ไขหน้าจอนาฬิกา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En «Todo», en la barra inferior, están todas las herramientas, la búsqueda y los Ajustes; mantenga pulsados sus favoritos para fijarlos arriba. Para añadir la fecha o el tiempo bajo el reloj: Ajustes › Editar pantalla del reloj."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em \"Tudo\", na barra inferior, ficam todas as ferramentas, a busca e os Ajustes; toque e segure seus favoritos para fixá-los no topo. Para pôr a data ou o clima abaixo do relógio: Ajustes › Editar tela do relógio."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नीचे की पट्टी में «सब» में सारे टूल, खोज और सेटिंग्स हैं; पसंदीदा चीज़ों को ऊपर पिन करने के लिए देर तक दबाएँ। घड़ी के नीचे तारीख़ या मौसम जोड़ने के लिए: सेटिंग्स › घड़ी स्क्रीन संपादित करें।"
+          }
+        }
+      }
+    },
     "onboard.replay": {
       "extractionState": "manual",
       "localizations": {
@@ -377756,6 +377869,119 @@
           "stringUnit": {
             "state": "translated",
             "value": "पाँच छोटे सवाल, और ऐप आपके हिसाब से तैयार।"
+          }
+        }
+      }
+    },
+    "onboard.welcome.hint4": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dört kısa soruyla uygulamayı size göre hazırlayalım."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Four short questions and the app is set up just for you."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vier kurze Fragen, und die App ist für Sie eingerichtet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dörd qısa sualla tətbiqi sizə uyğun hazırlayaq."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أربعة أسئلة قصيرة ونجهّز التطبيق لك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empat pertanyaan singkat, lalu aplikasi siap untuk Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "چار مختصر سوالوں سے ایپ آپ کے مطابق تیار کرتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "با چهار پرسش کوتاه، برنامه را برای شما آماده می‌کنیم."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quatre petites questions et l'appli est prête pour vous."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Четыре коротких вопроса — и приложение настроено под вас."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4つの短い質問で、アプリをあなた向けに整えます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "짧은 질문 네 개로 앱을 맞춤 설정해 드려요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回答四个小问题，应用即按您的需要准备好。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apat na maikling tanong at handa na ang app para sa iyo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตอบคำถามสั้น ๆ 4 ข้อ แล้วแอปจะพร้อมสำหรับคุณ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuatro preguntas breves y la app queda lista para usted."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quatro perguntas rápidas e o app fica pronto para você."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "चार छोटे सवाल, और ऐप आपके हिसाब से तैयार।"
           }
         }
       }
@@ -379907,6 +380133,119 @@
         }
       }
     },
+    "onboard.trust.servicesN": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava durumu gibi konuma bağlı servislere yalnız yaklaşık konum (yaklaşık 1 km) gider; kim olduğunuz gitmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For location-based services such as weather, only an approximate location (about 1 km) is sent, never who you are."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An standortbezogene Dienste wie das Wetter geht nur ein ungefährer Standort (etwa 1 km), nie Ihre Identität."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava proqnozu kimi məkana bağlı xidmətlərə yalnız təxmini məkan (təxminən 1 km) gedir; kim olduğunuz getmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يُرسَل إلى الخدمات المرتبطة بالموقع، مثل الطقس، إلا موقع تقريبي (نحو 1 كم)، ولا تُرسَل هويتك أبدًا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ke layanan berbasis lokasi seperti cuaca, hanya perkiraan lokasi (sekitar 1 km) yang dikirim; identitas Anda tidak pernah dikirim."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "موسم جیسی مقام پر مبنی سروسز کو صرف تخمینی مقام (تقریباً 1 کلومیٹر) جاتا ہے؛ آپ کون ہیں، یہ کبھی نہیں جاتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "به سرویس‌های وابسته به مکان، مثل آب‌وهوا، فقط موقعیت تقریبی (حدود 1 کیلومتر) فرستاده می‌شود، هرگز هویت شما."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seule une position approximative (environ 1 km) part vers les services liés au lieu, comme la météo, jamais votre identité."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В сервисы, зависящие от места, например погоду, уходит только примерное местоположение (около 1 км), но не то, кто вы."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天気など位置に関わるサービスには、おおよその位置（約1km）だけが送られます。あなたが誰かは送られません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날씨처럼 위치가 필요한 서비스에는 대략적인 위치(약 1km)만 가고, 누구인지는 절대 보내지 않아요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天气等基于位置的服务只会收到大致位置（约 1 公里），绝不会发送您的身份。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa mga serbisyong nakabatay sa lokasyon gaya ng panahon, tinatayang lokasyon lang (mga 1 km) ang napupunta, hindi kung sino ka."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บริการที่ใช้ตำแหน่ง เช่น สภาพอากาศ จะได้รับเพียงตำแหน่งโดยประมาณ (ราว 1 กม.) ไม่เคยส่งว่าคุณเป็นใคร"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A los servicios que dependen del lugar, como el tiempo, solo se envía una ubicación aproximada (cerca de 1 km), nunca quién es usted."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para serviços que dependem do local, como o clima, só vai uma localização aproximada (cerca de 1 km), nunca quem você é."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मौसम जैसी स्थान पर आधारित सेवाओं को सिर्फ़ अनुमानित स्थान (लगभग 1 किमी) जाता है, आप कौन हैं यह कभी नहीं।"
+          }
+        }
+      }
+    },
     "onboard.trust.later": {
       "extractionState": "manual",
       "localizations": {
@@ -381263,6 +381602,119 @@
         }
       }
     },
+    "perms.location.whyN": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzin verirseniz bulunduğunuz yerin havası, gün doğumu ve batımı kendiliğinden gelir, seçmekle uğraşmazsınız. Vermezseniz yeri elle seçersiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If you allow it, the weather, sunrise and sunset for where you are come automatically, so you don't have to pick a place. If not, you pick it by hand."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Sie zustimmen, kommen Wetter, Sonnenaufgang und -untergang für Ihren Ort automatisch, ohne dass Sie etwas auswählen müssen. Sonst wählen Sie den Ort von Hand."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İcazə versəniz, olduğunuz yerin havası, gün çıxması və batması özü gəlir, seçməklə məşğul olmazsınız. Verməsəniz, yeri əl ilə seçərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إن سمحت، يأتي الطقس وأوقات الشروق والغروب لمكانك تلقائيًا دون أن تختار شيئًا. وإن لم تسمح، تختار المكان بنفسك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jika diizinkan, cuaca serta waktu matahari terbit dan terbenam untuk tempat Anda muncul otomatis, tanpa perlu memilih. Jika tidak, Anda memilih tempat secara manual."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اجازت دیں تو آپ کی جگہ کا موسم اور طلوع و غروبِ آفتاب خود بخود آ جائیں گے، چننے کی ضرورت نہیں۔ نہ دیں تو جگہ خود چنیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگر اجازه دهید، هوا و زمان طلوع و غروب آفتاب محل شما خودکار می‌آید و لازم نیست انتخاب کنید. اگر ندهید، مکان را دستی انتخاب می‌کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si vous l'autorisez, la météo et les heures de lever et de coucher du soleil de l'endroit où vous êtes arrivent toutes seules. Sinon, vous choisissez le lieu à la main."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если разрешите, погода, восход и закат для вашего места подставятся сами. Если нет, место выбирается вручную."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "許可すると、今いる場所の天気と日の出・日の入りが自動で表示され、選ぶ手間がありません。許可しない場合は場所を手で選びます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "허용하면 지금 있는 곳의 날씨와 일출·일몰이 자동으로 나와요. 허용하지 않으면 장소를 직접 고르면 돼요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许后，所在地的天气和日出日落时间会自动出现，无需手动选择；不允许则需自己选择地点。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kung papayagan, awtomatikong lalabas ang panahon at ang pagsikat at paglubog ng araw kung nasaan ka. Kung hindi, pipiliin mo ang lugar nang mano-mano."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ถ้าอนุญาต สภาพอากาศและเวลาพระอาทิตย์ขึ้นและตกของที่ที่คุณอยู่จะขึ้นเองโดยไม่ต้องเลือก ถ้าไม่อนุญาต คุณเลือกสถานที่เองได้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si lo permite, el tiempo y las horas de salida y puesta del sol de donde esté llegan solos. Si no, elige el lugar a mano."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se permitir, o clima e os horários do nascer e do pôr do sol de onde você está chegam sozinhos, sem você precisar escolher. Se não, você escolhe o lugar manualmente."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अनुमति दें तो आपकी जगह का मौसम और सूर्योदय-सूर्यास्त अपने आप आ जाएँगे, चुनने की ज़रूरत नहीं। न दें तो जगह ख़ुद चुनें।"
+          }
+        }
+      }
+    },
     "perms.locationBg.title": {
       "extractionState": "manual",
       "localizations": {
@@ -381711,6 +382163,119 @@
           "stringUnit": {
             "state": "translated",
             "value": "अनुमति दें तो नमाज़ के समय, अलार्म और रिमाइंडर समय पर आएँगे। न दें तो सिर्फ़ ऐप खोलने पर दिखेंगे।"
+          }
+        }
+      }
+    },
+    "perms.notify.whyN": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzin verirseniz alarmlar, zamanlayıcılar ve hatırlatmalar zamanında gelir. Vermezseniz yalnız uygulamayı açınca görürsünüz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If you allow them, alarms, timers and reminders arrive on time. If not, you only see them when you open the app."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Sie zustimmen, kommen Wecker, Timer und Erinnerungen pünktlich. Sonst sehen Sie sie nur beim Öffnen der App."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İcazə versəniz, zəngli saatlar, taymerlər və xatırlatmalar vaxtında gəlir. Verməsəniz, onları yalnız tətbiqi açanda görərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إن سمحت، تصلك المنبّهات والمؤقّتات والتذكيرات في وقتها. وإن لم تسمح، لا تراها إلا عند فتح التطبيق."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jika diizinkan, alarm, pengatur waktu, dan pengingat datang tepat waktu. Jika tidak, Anda hanya melihatnya saat membuka aplikasi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اجازت دیں تو الارم، ٹائمر اور یاد دہانیاں وقت پر آئیں گی۔ نہ دیں تو صرف ایپ کھولنے پر دکھیں گی۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگر اجازه دهید، هشدارها، زمان‌سنج‌ها و یادآورها به‌موقع می‌رسند. اگر ندهید، فقط با باز کردن برنامه آن‌ها را می‌بینید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si vous les autorisez, alarmes, minuteurs et rappels arrivent à l'heure. Sinon, vous ne les voyez qu'en ouvrant l'appli."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если разрешите, будильники, таймеры и напоминания будут приходить вовремя. Если нет, вы увидите их, только открыв приложение."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "許可すると、アラームやタイマー、リマインダーが時間どおりに届きます。許可しない場合はアプリを開いたときにだけ表示されます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "허용하면 알람, 타이머, 알림이 제때 와요. 허용하지 않으면 앱을 열었을 때만 볼 수 있어요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许后，闹钟、计时器和提醒会准时送达；不允许则只能在打开应用时看到。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kung papayagan, darating sa oras ang alarm, timer at paalala. Kung hindi, makikita mo lang ang mga ito pagbukas ng app."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ถ้าอนุญาต การปลุก ตัวจับเวลา และการเตือนจะมาตรงเวลา ถ้าไม่อนุญาต คุณจะเห็นเมื่อเปิดแอปเท่านั้น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si lo permite, las alarmas, temporizadores y recordatorios llegan a tiempo. Si no, solo los verá al abrir la app."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se permitir, alarmes, timers e lembretes chegam na hora. Se não, você só os vê ao abrir o app."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अनुमति दें तो अलार्म, टाइमर और रिमाइंडर समय पर आएँगे। न दें तो सिर्फ़ ऐप खोलने पर दिखेंगे।"
           }
         }
       }
@@ -386231,6 +386796,119 @@
           "stringUnit": {
             "state": "translated",
             "value": "होम और लॉक स्क्रीन पर घड़ी, अगली नमाज़, मौसम, चाँद और हिजरी तारीख़ जोड़ें; अपनी स्मार्टवॉच पर भी देखें।"
+          }
+        }
+      }
+    },
+    "onboard.tour.widgets.textN": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ana ekrana ve kilit ekranına saat, dünya saatleri, hava, Ay ve takvim ekleyin; akıllı saatinizde de görün."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add the clock, world clocks, weather, the Moon and your calendar to your Home and Lock Screen, and see them on your watch too."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uhr, Weltuhren, Wetter, Mond und Kalender auf Home- und Sperrbildschirm – und auch auf Ihrer Smartwatch."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Əsas ekrana və kilid ekranına saat, dünya saatları, hava, Ay və təqvim əlavə edin; ağıllı saatınızda da görün."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أضف الساعة وساعات العالم والطقس والقمر والتقويم إلى الشاشة الرئيسية وشاشة القفل، وشاهدها على ساعتك الذكية أيضًا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tambahkan jam, jam dunia, cuaca, Bulan, dan kalender ke layar utama dan layar kunci; lihat juga di jam tangan pintar Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہوم اور لاک اسکرین پر گھڑی، عالمی گھڑیاں، موسم، چاند اور کیلنڈر لگائیں؛ اپنی اسمارٹ واچ پر بھی دیکھیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت، ساعت‌های جهانی، هوا، ماه و تقویم را به صفحهٔ اصلی و صفحهٔ قفل بیفزایید؛ روی ساعت هوشمندتان هم ببینید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajoutez l'heure, les horloges du monde, la météo, la Lune et le calendrier à l'écran d'accueil et verrouillé, et retrouvez-les sur votre montre."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавьте часы, мировое время, погоду, Луну и календарь на экран «Домой» и экран блокировки — и смотрите их на часах."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ホーム画面とロック画面に時計、世界時計、天気、月、カレンダーを追加。スマートウォッチでも見られます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "홈 화면과 잠금 화면에 시계, 세계 시계, 날씨, 달, 캘린더를 추가하고 스마트워치에서도 보세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在主屏幕和锁屏上添加时钟、世界时钟、天气、月相和日历，智能手表上也能看到。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idagdag ang orasan, mga orasan sa mundo, panahon, Buwan at kalendaryo sa Home at Lock Screen, at makita rin sa relo mo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพิ่มนาฬิกา นาฬิกาโลก อากาศ ดวงจันทร์ และปฏิทินลงในหน้าจอโฮมและหน้าจอล็อก ดูบนสมาร์ทวอทช์ได้ด้วย"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Añada el reloj, relojes mundiales, el tiempo, la Luna y el calendario a la pantalla de inicio y de bloqueo, y véalos también en su reloj inteligente."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicione o relógio, relógios mundiais, o clima, a Lua e o calendário à Tela de Início e à Tela Bloqueada, e veja tudo também no seu smartwatch."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "होम और लॉक स्क्रीन पर घड़ी, विश्व घड़ियाँ, मौसम, चाँद और कैलेंडर जोड़ें; अपनी स्मार्टवॉच पर भी देखें।"
           }
         }
       }

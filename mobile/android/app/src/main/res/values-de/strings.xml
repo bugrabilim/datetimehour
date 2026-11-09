@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">Tippen Sie auf Vollbild oder drehen Sie das Telefon quer, dann füllt die Uhr den Bildschirm. Im Nachtmodus leuchtet sie gedämpft rot und blendet am Bett nicht.</string>
     <string name="onboard_all_title">Alles Weitere unter „Alle“</string>
     <string name="onboard_all_text">Unter „Alle“ in der unteren Leiste finden Sie alle Werkzeuge, die Suche und die Einstellungen; halten Sie Favoriten gedrückt, um sie oben anzuheften. Datum, Gebetszeiten oder Wetter unter der Uhr: Einstellungen › Uhrbildschirm bearbeiten.</string>
+    <string name="onboard_all_textN">Unter „Alle“ in der unteren Leiste finden Sie alle Werkzeuge, die Suche und die Einstellungen; halten Sie Favoriten gedrückt, um sie oben anzuheften. Datum oder Wetter unter der Uhr: Einstellungen › Uhrbildschirm bearbeiten.</string>
     <string name="onboard_replay">Einführung erneut zeigen</string>
     <string name="atmo_daylight">Tageslicht</string>
     <string name="atmo_daylightNote">Tageslicht folgt der Sonne am gewählten Ort: Töne für Morgendämmerung, Vormittag, Nachmittag, Abend oder Nacht.</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">Ja</string>
     <string name="onboard_no">Nein</string>
     <string name="onboard_welcome_hint">Fünf kurze Fragen, und die App ist für Sie eingerichtet.</string>
+    <string name="onboard_welcome_hint4">Vier kurze Fragen, und die App ist für Sie eingerichtet.</string>
     <string name="onboard_q_step">Frage %1$s von %2$s</string>
     <string name="onboard_q_prayer_title">Verfolgen Sie die Gebetszeiten?</string>
     <string name="onboard_q_prayer_text">Bei Ja kommt „Gebet“ in die Leiste, das nächste Gebet erscheint unter der Uhr und Gebetsbenachrichtigungen werden eingeschaltet.</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">Ihre Daten bleiben bei Ihnen</string>
     <string name="onboard_trust_text">Kein Konto, keine Werbung, kein Tracking. Ihr Standort, Ihre persönlichen Angaben, Ihr Kalender und Ihre Gesundheitsdaten erreichen uns nie und liegen auf keinem unserer Server. Berechtigungen wirken nur in Ihrem Telefon.</string>
     <string name="onboard_trust_services">Für Wetter und Moscheen in der Nähe geht nur ein ungefährer Standort (etwa 1 km) an den jeweiligen Dienst, nie Ihre Identität.</string>
+    <string name="onboard_trust_servicesN">An standortbezogene Dienste wie das Wetter geht nur ein ungefährer Standort (etwa 1 km), nie Ihre Identität.</string>
     <string name="onboard_trust_later">Erteilte Berechtigungen sehen und widerrufen Sie jederzeit unter Einstellungen › Berechtigungen.</string>
     <string name="perms_title">Berechtigungen</string>
     <string name="perms_status_on">An</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">Ihre Kontakte, Ihre Fotogalerie, die Werbe-ID, die Kamera und Bluetooth. Fotos und Codes laufen über die Auswahl und den Scanner Ihres Telefons; die App erhält nur, was Sie auswählen.</string>
     <string name="perms_location_title">Standort</string>
     <string name="perms_location_why">Wenn Sie zustimmen, kommen Gebetszeiten und Wetter für Ihren Ort automatisch, ohne dass Sie etwas auswählen müssen. Sonst wählen Sie Provinz oder Bezirk von Hand.</string>
+    <string name="perms_location_whyN">Wenn Sie zustimmen, kommen Wetter, Sonnenaufgang und -untergang für Ihren Ort automatisch, ohne dass Sie etwas auswählen müssen. Sonst wählen Sie den Ort von Hand.</string>
     <string name="perms_locationBg_title">Standort im Hintergrund</string>
     <string name="perms_locationBg_why">Nur für Ortserinnerungen, die sich melden, wenn Sie einen Ort erreichen oder verlassen. Ohne diese Berechtigung funktionieren sie nicht.</string>
     <string name="perms_notify_title">Benachrichtigungen</string>
     <string name="perms_notify_why">Wenn Sie zustimmen, kommen Gebetszeiten, Wecker und Erinnerungen pünktlich. Sonst sehen Sie sie nur beim Öffnen der App.</string>
+    <string name="perms_notify_whyN">Wenn Sie zustimmen, kommen Wecker, Timer und Erinnerungen pünktlich. Sonst sehen Sie sie nur beim Öffnen der App.</string>
     <string name="perms_alarm_title">Wecker</string>
     <string name="perms_alarm_why">Wenn Sie zustimmen, klingeln Wecker und Timer pünktlich, auch im Stummmodus. Sonst klingeln sie nicht.</string>
     <string name="perms_exactAlarm_title">Exakte Wecker</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 analoge Zifferblätter, 24 App-Farben, ein Hintergrund, der dem Tageslicht folgt, und Textgröße. Einstellungen › Farbe und Aussehen.</string>
     <string name="onboard_tour_widgets_title">Widgets</string>
     <string name="onboard_tour_widgets_text">Uhr, nächstes Gebet, Wetter, Mond und Hidschri-Datum auf Home- und Sperrbildschirm – und auch auf Ihrer Smartwatch.</string>
+    <string name="onboard_tour_widgets_textN">Uhr, Weltuhren, Wetter, Mond und Kalender auf Home- und Sperrbildschirm – und auch auf Ihrer Smartwatch.</string>
     <string name="onboard_resume">Einrichtung fortsetzen</string>
     <string name="photoApp_title">Fotolicht</string>
     <string name="photoApp_subtitle">Goldene Stunde und blaue Stunde</string>

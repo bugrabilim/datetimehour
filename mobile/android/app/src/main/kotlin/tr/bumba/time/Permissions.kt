@@ -126,7 +126,7 @@ private fun PermissionRow(id: String, icon: String, on: Boolean, onClick: () -> 
         Spacer(Modifier.width(12.dp))
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
             Text(L("perms.$id.title"), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
-            Text(L("perms.$id.why"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
+            Text(Onboarding.permWhy(id), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
         }
         Spacer(Modifier.width(10.dp))
         Text(

@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">फ़ुल स्क्रीन को छुएँ या फ़ोन को आड़ा करें, घड़ी पूरी स्क्रीन पर आ जाएगी। रात्रि मोड में रंग हल्का लाल हो जाता है, बिस्तर के पास आँखें नहीं चुभतीं।</string>
     <string name="onboard_all_title">बाक़ी सब कुछ «सब» में</string>
     <string name="onboard_all_text">नीचे की पट्टी में «सब» में सारे टूल, खोज और सेटिंग्स हैं; पसंदीदा चीज़ों को ऊपर पिन करने के लिए देर तक दबाएँ। घड़ी के नीचे तारीख़, नमाज़ के समय या मौसम जोड़ने के लिए: सेटिंग्स › घड़ी स्क्रीन संपादित करें।</string>
+    <string name="onboard_all_textN">नीचे की पट्टी में «सब» में सारे टूल, खोज और सेटिंग्स हैं; पसंदीदा चीज़ों को ऊपर पिन करने के लिए देर तक दबाएँ। घड़ी के नीचे तारीख़ या मौसम जोड़ने के लिए: सेटिंग्स › घड़ी स्क्रीन संपादित करें।</string>
     <string name="onboard_replay">परिचय फिर से दिखाएँ</string>
     <string name="atmo_daylight">दिन का उजाला</string>
     <string name="atmo_daylightNote">दिन का उजाला चुनी गई जगह पर सूरज के साथ बदलता है: भोर, सुबह, दोपहर बाद, शाम या रात के रंग।</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">हाँ</string>
     <string name="onboard_no">नहीं</string>
     <string name="onboard_welcome_hint">पाँच छोटे सवाल, और ऐप आपके हिसाब से तैयार।</string>
+    <string name="onboard_welcome_hint4">चार छोटे सवाल, और ऐप आपके हिसाब से तैयार।</string>
     <string name="onboard_q_step">सवाल %1$s/%2$s</string>
     <string name="onboard_q_prayer_title">क्या आप नमाज़ के समय देखते हैं?</string>
     <string name="onboard_q_prayer_text">हाँ कहें तो नमाज़ टैब नीचे की पट्टी में आ जाएगा, घड़ी के नीचे अगली नमाज़ दिखेगी और नमाज़ की सूचनाएँ चालू होंगी।</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">आपका डेटा आपके पास ही रहता है</string>
     <string name="onboard_trust_text">न खाता, न विज्ञापन, न ट्रैकिंग। आपका स्थान, निजी जानकारी, कैलेंडर और सेहत का डेटा हम तक नहीं आता और हमारे किसी सर्वर पर नहीं रखा जाता। अनुमतियाँ सिर्फ़ आपके फ़ोन के अंदर काम करती हैं।</string>
     <string name="onboard_trust_services">मौसम और पास की मस्जिदों के लिए सिर्फ़ अनुमानित स्थान (लगभग 1 किमी) उस सेवा को जाता है, आप कौन हैं यह कभी नहीं।</string>
+    <string name="onboard_trust_servicesN">मौसम जैसी स्थान पर आधारित सेवाओं को सिर्फ़ अनुमानित स्थान (लगभग 1 किमी) जाता है, आप कौन हैं यह कभी नहीं।</string>
     <string name="onboard_trust_later">दी गई अनुमतियाँ जब चाहें सेटिंग्स › अनुमतियाँ में देखें और बंद करें।</string>
     <string name="perms_title">अनुमतियाँ</string>
     <string name="perms_status_on">चालू</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">आपके संपर्क, फ़ोटो लाइब्रेरी, विज्ञापन आईडी, कैमरा और ब्लूटूथ। फ़ोटो और कोड फ़ोन के अपने चयनकर्ता और स्कैनर से गुज़रते हैं; ऐप तक सिर्फ़ वही आता है जो आप चुनें।</string>
     <string name="perms_location_title">स्थान</string>
     <string name="perms_location_why">अनुमति दें तो आपकी जगह के नमाज़ के समय और मौसम अपने आप आ जाएँगे, चुनने की ज़रूरत नहीं। न दें तो प्रांत या ज़िला ख़ुद चुनें।</string>
+    <string name="perms_location_whyN">अनुमति दें तो आपकी जगह का मौसम और सूर्योदय-सूर्यास्त अपने आप आ जाएँगे, चुनने की ज़रूरत नहीं। न दें तो जगह ख़ुद चुनें।</string>
     <string name="perms_locationBg_title">बैकग्राउंड में स्थान</string>
     <string name="perms_locationBg_why">सिर्फ़ स्थान रिमाइंडर के लिए: किसी जगह पहुँचने या निकलने पर बताते हैं। न दें तो ये रिमाइंडर काम नहीं करेंगे।</string>
     <string name="perms_notify_title">सूचनाएँ</string>
     <string name="perms_notify_why">अनुमति दें तो नमाज़ के समय, अलार्म और रिमाइंडर समय पर आएँगे। न दें तो सिर्फ़ ऐप खोलने पर दिखेंगे।</string>
+    <string name="perms_notify_whyN">अनुमति दें तो अलार्म, टाइमर और रिमाइंडर समय पर आएँगे। न दें तो सिर्फ़ ऐप खोलने पर दिखेंगे।</string>
     <string name="perms_alarm_title">अलार्म</string>
     <string name="perms_alarm_why">अनुमति दें तो अलार्म और टाइमर फ़ोन साइलेंट होने पर भी ठीक समय पर बजेंगे। न दें तो नहीं बजेंगे।</string>
     <string name="perms_exactAlarm_title">सटीक अलार्म</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 एनालॉग डायल, ऐप के 24 रंग, दिन की रोशनी के साथ बदलती पृष्ठभूमि और अक्षरों का आकार। सेटिंग्स › रंग और रूप।</string>
     <string name="onboard_tour_widgets_title">विजेट</string>
     <string name="onboard_tour_widgets_text">होम और लॉक स्क्रीन पर घड़ी, अगली नमाज़, मौसम, चाँद और हिजरी तारीख़ जोड़ें; अपनी स्मार्टवॉच पर भी देखें।</string>
+    <string name="onboard_tour_widgets_textN">होम और लॉक स्क्रीन पर घड़ी, विश्व घड़ियाँ, मौसम, चाँद और कैलेंडर जोड़ें; अपनी स्मार्टवॉच पर भी देखें।</string>
     <string name="onboard_resume">सेटअप जारी रखें</string>
     <string name="photoApp_title">फ़ोटो की रोशनी</string>
     <string name="photoApp_subtitle">सुनहरा घंटा और नीला घंटा</string>

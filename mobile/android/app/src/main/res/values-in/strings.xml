@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">Ketuk Layar penuh atau putar ponsel ke samping, jam akan memenuhi layar. Mode malam membuatnya merah redup sehingga tidak menyilaukan di samping tempat tidur.</string>
     <string name="onboard_all_title">Selebihnya ada di Semua</string>
     <string name="onboard_all_text">Semua di bilah bawah berisi semua alat, pencarian, dan Pengaturan; tekan lama favorit Anda untuk menyematkannya di atas. Untuk menambahkan tanggal, waktu salat, atau cuaca di bawah jam: Pengaturan › Edit layar jam.</string>
+    <string name="onboard_all_textN">Semua di bilah bawah berisi semua alat, pencarian, dan Pengaturan; tekan lama favorit Anda untuk menyematkannya di atas. Untuk menambahkan tanggal atau cuaca di bawah jam: Pengaturan › Edit layar jam.</string>
     <string name="onboard_replay">Tampilkan pengenalan lagi</string>
     <string name="atmo_daylight">Cahaya siang</string>
     <string name="atmo_daylightNote">Cahaya siang mengikuti matahari di tempat pilihan Anda: nuansa fajar, pagi, sore, petang, atau malam.</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">Ya</string>
     <string name="onboard_no">Tidak</string>
     <string name="onboard_welcome_hint">Lima pertanyaan singkat, lalu aplikasi siap untuk Anda.</string>
+    <string name="onboard_welcome_hint4">Empat pertanyaan singkat, lalu aplikasi siap untuk Anda.</string>
     <string name="onboard_q_step">Pertanyaan %1$s dari %2$s</string>
     <string name="onboard_q_prayer_title">Apakah Anda mengikuti jadwal salat?</string>
     <string name="onboard_q_prayer_text">Jika ya, tab Salat masuk ke bilah bawah, salat berikutnya tampil di bawah jam, dan notifikasi salat dinyalakan.</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">Data Anda tetap di tangan Anda</string>
     <string name="onboard_trust_text">Tanpa akun, tanpa iklan, tanpa pelacakan. Lokasi, data pribadi, kalender, dan data kesehatan Anda tidak pernah sampai ke kami dan tidak disimpan di server kami. Izin hanya bekerja di dalam ponsel Anda.</string>
     <string name="onboard_trust_services">Untuk cuaca dan masjid terdekat, hanya perkiraan lokasi (sekitar 1 km) yang dikirim ke layanan terkait; identitas Anda tidak pernah dikirim.</string>
+    <string name="onboard_trust_servicesN">Ke layanan berbasis lokasi seperti cuaca, hanya perkiraan lokasi (sekitar 1 km) yang dikirim; identitas Anda tidak pernah dikirim.</string>
     <string name="onboard_trust_later">Anda bisa melihat dan mematikan izin kapan saja di Pengaturan › Izin.</string>
     <string name="perms_title">Izin</string>
     <string name="perms_status_on">Aktif</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">Kontak, galeri foto, ID iklan, kamera, dan Bluetooth. Foto dan kode lewat pemilih dan pemindai bawaan ponsel; hanya yang Anda pilih yang sampai ke aplikasi.</string>
     <string name="perms_location_title">Lokasi</string>
     <string name="perms_location_why">Jika diizinkan, jadwal salat dan cuaca untuk tempat Anda muncul otomatis, tanpa perlu memilih. Jika tidak, Anda memilih provinsi atau distrik secara manual.</string>
+    <string name="perms_location_whyN">Jika diizinkan, cuaca serta waktu matahari terbit dan terbenam untuk tempat Anda muncul otomatis, tanpa perlu memilih. Jika tidak, Anda memilih tempat secara manual.</string>
     <string name="perms_locationBg_title">Lokasi di latar belakang</string>
     <string name="perms_locationBg_why">Hanya untuk pengingat lokasi: memberi tahu saat Anda tiba atau meninggalkan suatu tempat. Jika tidak diizinkan, pengingat ini tidak berfungsi.</string>
     <string name="perms_notify_title">Notifikasi</string>
     <string name="perms_notify_why">Jika diizinkan, waktu salat, alarm, dan pengingat datang tepat waktu. Jika tidak, Anda hanya melihatnya saat membuka aplikasi.</string>
+    <string name="perms_notify_whyN">Jika diizinkan, alarm, pengatur waktu, dan pengingat datang tepat waktu. Jika tidak, Anda hanya melihatnya saat membuka aplikasi.</string>
     <string name="perms_alarm_title">Alarm</string>
     <string name="perms_alarm_why">Jika diizinkan, alarm dan pengatur waktu berbunyi tepat waktu, bahkan saat ponsel senyap. Jika tidak, keduanya tidak berbunyi.</string>
     <string name="perms_exactAlarm_title">Alarm tepat waktu</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 muka jam analog, 24 warna aplikasi, latar yang mengikuti cahaya siang, dan ukuran teks. Pengaturan › Warna dan tampilan.</string>
     <string name="onboard_tour_widgets_title">Widget</string>
     <string name="onboard_tour_widgets_text">Tambahkan jam, salat berikutnya, cuaca, Bulan, dan tanggal Hijriah ke layar utama dan layar kunci; lihat juga di jam tangan pintar Anda.</string>
+    <string name="onboard_tour_widgets_textN">Tambahkan jam, jam dunia, cuaca, Bulan, dan kalender ke layar utama dan layar kunci; lihat juga di jam tangan pintar Anda.</string>
     <string name="onboard_resume">Lanjutkan penyiapan</string>
     <string name="photoApp_title">Cahaya foto</string>
     <string name="photoApp_subtitle">Jam emas dan jam biru</string>

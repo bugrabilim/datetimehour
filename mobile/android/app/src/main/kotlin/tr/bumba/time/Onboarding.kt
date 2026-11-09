@@ -102,16 +102,26 @@ object Onboarding {
         "fontScale", "homeItems", AppLanguage.KEY,
     )
     /** Sorulan özellikler, sırayla (alt çubuğa giriş sırası da budur) */
-    /** Vakitler sorusu dil grubuna göre (9 Kasım 2026, sahibin kararı; Müslüman olmayanlar raporu A3): bu dillerde başta,
-     *  diğerlerinde sonda. Soru herkese aynı sorulur; kişinin inancı tahmin edilmez, yalnız sorunun yeri değişir. iOS ile aynı. */
+    /** Vakitler dil grubuna göre (9 Kasım 2026, sahibin kararları; Müslüman olmayanlar raporu A3): bu dillerde Vakitler
+     *  ilk soru; diğer dillerde tanıtımda vakit/namaz hiç geçmez (soru, özellik turu, ızgara ve metinler nötr). Kişinin
+     *  inancı tahmin edilmez: Vakitler Ayarlar › Özellikler'den her dilde açılır. iOS ile aynı. */
     val PRAYER_FIRST_LANGS = setOf("tr", "ar", "id", "ur", "fa", "bn")
     val prayerFirst: Boolean get() = Strings.lang in PRAYER_FIRST_LANGS
-    val QUESTIONS: List<Tab> get() = if (prayerFirst) listOf(Tab.PRAYER, Tab.WEATHER, Tab.CALENDAR, Tab.WORLD, Tab.SEASONS)
-        else listOf(Tab.WEATHER, Tab.CALENDAR, Tab.WORLD, Tab.SEASONS, Tab.PRAYER)
-    /** Özellik turu (başka neler var sorusuna Evet denince) */
-    val TOURS = listOf("alarm", "prayer", "weather", "tools", "look", "widgets")
-    /** Sayfa kimlikleri (testler ve CI başlangıç sayfasını sayıyla verir: 0 hoş geldiniz, 1 kurulum, 2–6 sorular, 7 özet,
-     *  8 "başka neler var", 9–10 ipuçları, 11–16 özellik turu, 17 son sayfa "Diğer her şey Tümü'nde") */
+    /** Namaz geçen metinler gösterilsin mi: bu dillerde ya da kişi Vakitler'i açmışsa */
+    val prayerShown: Boolean get() = prayerFirst || Features.isOn(Tab.PRAYER)
+    /** Nötr eşi olan metin (`<anahtar>N`): namaz geçmeyen hâli, Vakitler gösterilmiyorsa */
+    fun neutral(key: String): String = L(if (prayerShown) key else key + "N")
+    /** İzin açıklaması (`perms.<izin>.why`); konum ve bildirimde nötr eşi var */
+    fun permWhy(id: String): String = if (id == "location" || id == "notify") neutral("perms.$id.why") else L("perms.$id.why")
+    /** Sorulabilen bütün özellikler (geçilince yeni kurulumda hepsinin bildirimi kapanır) */
+    private val ASKABLE = listOf(Tab.PRAYER, Tab.WEATHER, Tab.CALENDAR, Tab.WORLD, Tab.SEASONS)
+    val QUESTIONS: List<Tab> get() = if (prayerFirst) ASKABLE else ASKABLE - Tab.PRAYER
+    /** Özellik turu (başka neler var sorusuna Evet denince); Vakitler turu yalnız bu dillerde */
+    val TOURS: List<String> get() = listOf("alarm") + (if (prayerFirst) listOf("prayer") else emptyList()) +
+        listOf("weather", "tools", "look", "widgets")
+    /** Sayfa kimlikleri (testler ve CI başlangıç sayfasını sayıyla verir; Vakitler'i soran dillerde: 0 hoş geldiniz,
+     *  1 kurulum, 2–6 sorular, 7 özet, 8 "başka neler var", 9–10 ipuçları, 11–16 özellik turu, 17 son sayfa "Diğer her şey
+     *  Tümü'nde"; diğer dillerde 4 soru ve 5 tur: 2–5 sorular, 6 özet, 7 "başka neler var", 8–9 ipuçları, 10–14 tur, 15 son) */
     val PAGES: List<String> get() = listOf("welcome", "setup") + QUESTIONS.map { "q:" + Features.id(it) } +
         listOf("summary", "more", "tip:swipe", "tip:full") + TOURS.map { "tour:$it" } + listOf("tip:all")
     val SUMMARY: Int get() = PAGES.indexOf("summary")
@@ -197,7 +207,7 @@ object Onboarding {
         val e = Prefs.store.edit()
         if (fresh) {
             Features.save(emptySet())
-            for (t in QUESTIONS) for (k in notifyKeys(t)) e.putBoolean(k, false)
+            for (t in ASKABLE) for (k in notifyKeys(t)) e.putBoolean(k, false)
         } else before?.let { (on, bar) -> Features.save(on); Features.saveBar(bar) }
         e.putBoolean(KEY, false).putInt(SEEN_KEY, VERSION).putBoolean("notify.asked", true).remove(RESUME_KEY).remove(SIG_KEY)
         e.apply()
@@ -217,6 +227,8 @@ object Onboarding {
     fun finish() {
         val e = Prefs.store.edit()
         for ((t, yes) in answers) if (!yes) for (k in notifyKeys(t)) e.putBoolean(k, false)
+        // Yeni kurulumda Vakitler kapalı kaldıysa (sorulmayan dillerde de) vakit bildirimleri kapalı başlar
+        if (fresh && !Features.isOn(Tab.PRAYER)) for (k in notifyKeys(Tab.PRAYER)) e.putBoolean(k, false)
         e.putBoolean(KEY, false).putInt(SEEN_KEY, VERSION).putBoolean("notify.asked", true).remove(RESUME_KEY).remove(SIG_KEY)
             .remove(FRESH_KEY).apply()
         if (fresh && answers[Tab.PRAYER] == true && !Prefs.store.contains("homeItems")) {
@@ -332,14 +344,18 @@ fun OnboardingScreen(startPage: Int = Onboarding.startPage, onDone: () -> Unit) 
 }
 
 /** İlk sayfadaki özellik ızgarası (sahibin isteği, 6 Kasım 2026): metin anahtarı → iki tonlu simge, sırası sabit.
- *  Vakitler'i başta soran dillerin dışında Kıble yerine Widget'lar (9 Kasım 2026, Müslüman olmayanlar raporu A7; iOS ile aynı). */
+ *  Vakitler'i soran dillerin dışında namaz yerine Uyku, Kıble yerine Widget'lar (9 Kasım 2026, sahibin kararı; iOS ile aynı). */
 private val WELCOME_FEATURES: List<Pair<String, String>> get() = listOf(
     "clock" to "clock", "calendar" to "calendar", "weather" to "sun_cloud",
-    "prayer" to "mosque", "alarm" to "alarm", "world" to "globe",
+    if (Onboarding.prayerFirst) "prayer" to "mosque" else "sleep" to "bed", "alarm" to "alarm", "world" to "globe",
     if (Onboarding.prayerFirst) "qibla" to "kaaba" else "widgets" to "widgets", "sky" to "telescope", "pomodoro" to "tomato",
 )
 
-private fun welcomeLabel(key: String) = if (key == "widgets") L("widgets.gallery") else L("onboard.welcome.f.$key")
+private fun welcomeLabel(key: String) = when (key) {
+    "widgets" -> L("widgets.gallery")
+    "sleep" -> L("sleep.title")
+    else -> L("onboard.welcome.f.$key")
+}
 
 @Composable
 private fun WelcomePage() {
@@ -360,7 +376,7 @@ private fun WelcomePage() {
             fontFamily = AppFonts.heading, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 4.dp).semantics { heading() })
         Text(L("onboard.welcome.why"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
-        Text(L("onboard.welcome.hint"), color = Theme.c.muted, fontSize = 14.sp, lineHeight = 20.sp, textAlign = TextAlign.Center,
+        Text(L(if (Onboarding.QUESTIONS.size == 4) "onboard.welcome.hint4" else "onboard.welcome.hint"), color = Theme.c.muted, fontSize = 14.sp, lineHeight = 20.sp, textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 2.dp))
     }
 }
@@ -452,7 +468,7 @@ fun TrustCard() {
             Text(L("onboard.trust.title"), color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.Bold)
         }
         Text(L("onboard.trust.text"), color = Theme.c.text, fontSize = 15.sp, lineHeight = 21.sp)
-        Text(L("onboard.trust.services"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
+        Text(Onboarding.neutral("onboard.trust.services"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
     }
 }
 
@@ -474,7 +490,7 @@ private fun SetupPage() {
                 Text(L("settings.location"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
                 PlacePicker(size = 16.sp)
             }
-            Text(L("perms.location.why"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
+            Text(Onboarding.neutral("perms.location.why"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
         }
         Column(
             Modifier.fillMaxWidth().paper(Theme.c.surface)
@@ -492,7 +508,7 @@ private fun SetupPage() {
                     color = if (notifyOn) Theme.c.accent else Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
                 if (notifyOn) Icon(Icons.Filled.CheckCircle, null, tint = Theme.c.accent)
             }
-            Text(L("perms.notify.why"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
+            Text(Onboarding.neutral("perms.notify.why"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
         }
         Text(L("onboard.trust.later"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
     }
@@ -508,7 +524,8 @@ private fun TipPage(key: String, art: @Composable () -> Unit) {
     ) {
         Box(Modifier.size(290.dp).semantics { invisibleToUser() }, contentAlignment = Alignment.Center) { Ltr { art() } }
         Text(L("$key.title"), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-        Text(L("$key.text"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
+        Text(if (key == "onboard.all") Onboarding.neutral("$key.text") else L("$key.text"), color = Theme.c.muted, fontSize = 16.sp,
+            lineHeight = 23.sp, textAlign = TextAlign.Center)
     }
 }
 
@@ -536,7 +553,7 @@ private fun TourPage(name: String) {
         "weather" -> listOf("telescope", "sun_cloud", "moon")
         "tools" -> listOf("metronome", "tomato", "knight")
         "look" -> listOf("sparkles", "palette", "clock")
-        else -> listOf("sun_cloud", "clock", "star_crescent")
+        else -> listOf("sun_cloud", "clock", if (Onboarding.prayerShown) "star_crescent" else "moon")
     }
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 28.dp, vertical = 12.dp),
@@ -545,7 +562,8 @@ private fun TourPage(name: String) {
     ) {
         Box(Modifier.semantics { invisibleToUser() }) { IconCluster(icons) }
         Text(L("onboard.tour.$name.title"), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-        Text(L("onboard.tour.$name.text"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
+        Text(if (name == "widgets") Onboarding.neutral("onboard.tour.widgets.text") else L("onboard.tour.$name.text"),
+            color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
     }
 }
 

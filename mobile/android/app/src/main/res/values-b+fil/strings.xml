@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">I-tap ang Full screen o ipahiga ang telepono, at sasakupin ng orasan ang buong screen. Sa night mode, nagiging malamlam na pula ito kaya hindi nakasisilaw sa tabi ng kama.</string>
     <string name="onboard_all_title">Nasa Lahat ang lahat ng iba pa</string>
     <string name="onboard_all_text">Nasa Lahat sa ibabang bar ang lahat ng tool, ang paghahanap at ang Settings; pindutin nang matagal ang mga paborito para i-pin sa itaas. Para magdagdag ng petsa, oras ng pagdarasal o panahon sa ilalim ng orasan: Settings › I-edit ang screen ng orasan.</string>
+    <string name="onboard_all_textN">Nasa Lahat sa ibabang bar ang lahat ng tool, ang paghahanap at ang Settings; pindutin nang matagal ang mga paborito para i-pin sa itaas. Para magdagdag ng petsa o panahon sa ilalim ng orasan: Settings › I-edit ang screen ng orasan.</string>
     <string name="onboard_replay">Ipakita muli ang pagpapakilala</string>
     <string name="atmo_daylight">Liwanag ng araw</string>
     <string name="atmo_daylightNote">Sumusunod ang Liwanag ng araw sa araw sa napiling lugar: kulay ng bukang-liwayway, umaga, hapon, gabi o hatinggabi.</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">Oo</string>
     <string name="onboard_no">Hindi</string>
     <string name="onboard_welcome_hint">Limang maikling tanong at handa na ang app para sa iyo.</string>
+    <string name="onboard_welcome_hint4">Apat na maikling tanong at handa na ang app para sa iyo.</string>
     <string name="onboard_q_step">Tanong %1$s sa %2$s</string>
     <string name="onboard_q_prayer_title">Sinusunod mo ba ang oras ng dasal?</string>
     <string name="onboard_q_prayer_text">Kung oo, papasok ang Dasal sa bar sa ibaba, lalabas sa ilalim ng orasan ang susunod na dasal at bubuksan ang mga abiso ng dasal.</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">Nasa iyo lang ang data mo</string>
     <string name="onboard_trust_text">Walang account, walang ad, walang tracking. Hindi kailanman nakararating sa amin ang lokasyon, personal na impormasyon, kalendaryo at health data mo, at hindi ito iniimbak sa anumang server namin. Sa loob lang ng telepono mo gumagana ang mga pahintulot.</string>
     <string name="onboard_trust_services">Para sa panahon at kalapit na moske, tinatayang lokasyon lang (mga 1 km) ang napupunta sa serbisyo, hindi kung sino ka.</string>
+    <string name="onboard_trust_servicesN">Sa mga serbisyong nakabatay sa lokasyon gaya ng panahon, tinatayang lokasyon lang (mga 1 km) ang napupunta, hindi kung sino ka.</string>
     <string name="onboard_trust_later">Makikita at mapapatay mo ang anumang pahintulot anumang oras sa Settings › Mga pahintulot.</string>
     <string name="perms_title">Mga pahintulot</string>
     <string name="perms_status_on">Bukas</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">Ang mga contact, photo library, advertising ID, camera at Bluetooth. Dumadaan ang mga larawan at code sa sariling picker at scanner ng telepono; ang pinili mo lang ang napupunta sa app.</string>
     <string name="perms_location_title">Lokasyon</string>
     <string name="perms_location_why">Kung papayagan, awtomatikong lalabas ang oras ng dasal at panahon kung nasaan ka. Kung hindi, pipiliin mo ang lungsod nang mano-mano.</string>
+    <string name="perms_location_whyN">Kung papayagan, awtomatikong lalabas ang panahon at ang pagsikat at paglubog ng araw kung nasaan ka. Kung hindi, pipiliin mo ang lugar nang mano-mano.</string>
     <string name="perms_locationBg_title">Lokasyon sa background</string>
     <string name="perms_locationBg_why">Para lang sa mga paalala ayon sa lokasyon: aabisuhan ka pagdating o pag-alis sa isang lugar. Kung hindi, hindi gagana ang mga paalalang ito.</string>
     <string name="perms_notify_title">Mga abiso</string>
     <string name="perms_notify_why">Kung papayagan, darating sa oras ang oras ng dasal, alarm at paalala. Kung hindi, makikita mo lang ang mga ito pagbukas ng app.</string>
+    <string name="perms_notify_whyN">Kung papayagan, darating sa oras ang alarm, timer at paalala. Kung hindi, makikita mo lang ang mga ito pagbukas ng app.</string>
     <string name="perms_alarm_title">Mga alarm</string>
     <string name="perms_alarm_why">Kung papayagan, tutunog sa oras ang alarm at timer kahit naka-silent. Kung hindi, hindi sila tutunog.</string>
     <string name="perms_exactAlarm_title">Eksaktong alarm</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 analog na dial, 24 kulay ng app, background na sumusunod sa liwanag ng araw, at laki ng teksto. Settings › Kulay at itsura.</string>
     <string name="onboard_tour_widgets_title">Mga widget</string>
     <string name="onboard_tour_widgets_text">Idagdag ang orasan, susunod na dasal, panahon, Buwan at petsang Hijri sa Home at Lock Screen, at makita rin sa relo mo.</string>
+    <string name="onboard_tour_widgets_textN">Idagdag ang orasan, mga orasan sa mundo, panahon, Buwan at kalendaryo sa Home at Lock Screen, at makita rin sa relo mo.</string>
     <string name="onboard_resume">Ituloy ang setup</string>
     <string name="photoApp_title">Liwanag sa litrato</string>
     <string name="photoApp_subtitle">Golden hour at blue hour</string>

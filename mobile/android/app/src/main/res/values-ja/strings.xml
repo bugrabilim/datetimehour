@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">「全画面」をタップするか、スマホを横にすると時計が画面いっぱいに表示されます。ナイトモードでは暗い赤色になり、枕元でもまぶしくありません。</string>
     <string name="onboard_all_title">ほかのすべては「すべて」に</string>
     <string name="onboard_all_text">下のバーの「すべて」に、すべてのツール、検索、設定があります。よく使うものは長押しで上に固定できます。時計の下に日付、礼拝時刻、天気を表示するには：設定 › 時計画面を編集。</string>
+    <string name="onboard_all_textN">下のバーの「すべて」に、すべてのツール、検索、設定があります。よく使うものは長押しで上に固定できます。時計の下に日付や天気を表示するには：設定 › 時計画面を編集。</string>
     <string name="onboard_replay">紹介をもう一度見る</string>
     <string name="atmo_daylight">日の光</string>
     <string name="atmo_daylightNote">日の光は選んだ場所の太陽に合わせて、夜明け・朝・午後・夕方・夜の色合いに変わります。</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">はい</string>
     <string name="onboard_no">いいえ</string>
     <string name="onboard_welcome_hint">5つの短い質問で、アプリをあなた向けに整えます。</string>
+    <string name="onboard_welcome_hint4">4つの短い質問で、アプリをあなた向けに整えます。</string>
     <string name="onboard_q_step">質問 %1$s/%2$s</string>
     <string name="onboard_q_prayer_title">礼拝時刻を確認しますか？</string>
     <string name="onboard_q_prayer_text">「はい」なら下のバーに礼拝が加わり、時計の下に次の礼拝時刻が表示され、礼拝の通知がオンになります。</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">データはあなたの手元に</string>
     <string name="onboard_trust_text">アカウントも広告もトラッキングもありません。位置情報、個人情報、カレンダー、健康データが私たちに届くことはなく、どのサーバーにも保存されません。許可はあなたのスマートフォンの中だけで使われます。</string>
     <string name="onboard_trust_services">天気と近くのモスクの検索には、おおよその位置（約1km）だけがそのサービスに送られます。あなたが誰かは送られません。</string>
+    <string name="onboard_trust_servicesN">天気など位置に関わるサービスには、おおよその位置（約1km）だけが送られます。あなたが誰かは送られません。</string>
     <string name="onboard_trust_later">許可はいつでも 設定 › 許可 で確認し、オフにできます。</string>
     <string name="perms_title">許可</string>
     <string name="perms_status_on">オン</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">連絡先、写真ライブラリ、広告ID、カメラ、Bluetooth。写真やコードはスマートフォン標準の選択画面とスキャナーを通るので、アプリには選んだものだけが渡ります。</string>
     <string name="perms_location_title">位置情報</string>
     <string name="perms_location_why">許可すると、今いる場所の礼拝時刻と天気が自動で表示され、選ぶ手間がありません。許可しない場合は都市を手で選びます。</string>
+    <string name="perms_location_whyN">許可すると、今いる場所の天気と日の出・日の入りが自動で表示され、選ぶ手間がありません。許可しない場合は場所を手で選びます。</string>
     <string name="perms_locationBg_title">バックグラウンドの位置情報</string>
     <string name="perms_locationBg_why">場所のリマインダー専用です。ある場所に着いたときや離れたときに知らせます。許可しないとこのリマインダーは動きません。</string>
     <string name="perms_notify_title">通知</string>
     <string name="perms_notify_why">許可すると、礼拝時刻やアラーム、リマインダーが時間どおりに届きます。許可しない場合はアプリを開いたときにだけ表示されます。</string>
+    <string name="perms_notify_whyN">許可すると、アラームやタイマー、リマインダーが時間どおりに届きます。許可しない場合はアプリを開いたときにだけ表示されます。</string>
     <string name="perms_alarm_title">アラーム</string>
     <string name="perms_alarm_why">許可すると、マナーモードでもアラームとタイマーが時間どおりに鳴ります。許可しないと鳴りません。</string>
     <string name="perms_exactAlarm_title">正確なアラーム</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25種類のアナログ文字盤、24色のアプリカラー、日の光に合わせて変わる背景、文字サイズ。設定 › 色と外観。</string>
     <string name="onboard_tour_widgets_title">ウィジェット</string>
     <string name="onboard_tour_widgets_text">ホーム画面とロック画面に時計、次の礼拝、天気、月、ヒジュラ暦を追加。スマートウォッチでも見られます。</string>
+    <string name="onboard_tour_widgets_textN">ホーム画面とロック画面に時計、世界時計、天気、月、カレンダーを追加。スマートウォッチでも見られます。</string>
     <string name="onboard_resume">設定を続ける</string>
     <string name="photoApp_title">撮影の光</string>
     <string name="photoApp_subtitle">ゴールデンアワーとブルーアワー</string>

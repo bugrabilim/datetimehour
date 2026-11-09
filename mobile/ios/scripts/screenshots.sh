@@ -42,7 +42,10 @@ FEAT="prayer,weather" shoot tr tr_TR light tr-iki-ozellik -startTab 5
 FEAT="" shoot tr tr_TR light tr-kurulum -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>0</integer>"
 FEAT="" shoot tr tr_TR light tr-kurulum-guven -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>1</integer>"
 FEAT="" shoot tr tr_TR light tr-kurulum-soru -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>2</integer>"
-FEAT="" shoot en en_US light en-kurulum-soru-hava -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>3</integer>"
+# Vakitler'i sormayan dillerde (en) 4 soru ve 5 tur, namaz geçmez: 2 hava sorusu, 14 widget turu (9 Kasım 2026)
+FEAT="" shoot en en_US light en-kurulum -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>0</integer>"
+FEAT="" shoot en en_US light en-kurulum-soru-hava -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>2</integer>"
+FEAT="" shoot en en_US light en-kurulum-tur-widget -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>14</integer>"
 FEAT="" shoot ar ar_SA light ar-kurulum-soru -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>6</integer>"
 FEAT="prayer,weather,calendar,tools" shoot tr tr_TR light tr-kurulum-ozet -onboard.pending "<true/>" -onboardPage "<integer>7</integer>"
 FEAT="" shoot tr tr_TR light tr-kurulum-daha -onboard.pending "<true/>" -onboardPage "<integer>8</integer>"

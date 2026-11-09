@@ -255,8 +255,8 @@ fun PermissionPrimer(kind: PermissionKind, onAllow: () -> Unit, onNotNow: () -> 
         // "İzin verirseniz… vermezseniz…" ve nereden kapatılacağı (5 Kasım 2026, sahibin isteği)
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Text(L("perms.${kind.key}.why"), textAlign = TextAlign.Center, color = Theme.c.text, modifier = Modifier.fillMaxWidth())
-                if (kind == PermissionKind.LOCATION) Text(L("onboard.trust.services"), textAlign = TextAlign.Center,
+                Text(Onboarding.permWhy(kind.key), textAlign = TextAlign.Center, color = Theme.c.text, modifier = Modifier.fillMaxWidth())
+                if (kind == PermissionKind.LOCATION) Text(Onboarding.neutral("onboard.trust.services"), textAlign = TextAlign.Center,
                     color = Theme.c.muted, fontSize = 13.sp, modifier = Modifier.fillMaxWidth())
                 Text(L("onboard.trust.later"), textAlign = TextAlign.Center, color = Theme.c.muted, fontSize = 13.sp,
                     modifier = Modifier.fillMaxWidth())

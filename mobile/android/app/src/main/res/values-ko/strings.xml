@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">전체 화면을 누르거나 휴대폰을 가로로 돌리면 시계가 화면을 가득 채웁니다. 야간 모드에서는 은은한 빨간색으로 바뀌어 머리맡에서도 눈부시지 않습니다.</string>
     <string name="onboard_all_title">나머지는 모두 \'전체\'에</string>
     <string name="onboard_all_text">아래 막대의 \'전체\'에 모든 도구, 검색, 설정이 있습니다. 자주 쓰는 것은 길게 눌러 위에 고정하세요. 시계 아래에 날짜, 예배 시간, 날씨를 넣으려면: 설정 › 시계 화면 편집.</string>
+    <string name="onboard_all_textN">아래 막대의 \'전체\'에 모든 도구, 검색, 설정이 있습니다. 자주 쓰는 것은 길게 눌러 위에 고정하세요. 시계 아래에 날짜나 날씨를 넣으려면: 설정 › 시계 화면 편집.</string>
     <string name="onboard_replay">소개 다시 보기</string>
     <string name="atmo_daylight">햇빛</string>
     <string name="atmo_daylightNote">햇빛은 선택한 곳의 태양을 따라 새벽, 아침, 오후, 저녁, 밤의 색으로 바뀝니다.</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">예</string>
     <string name="onboard_no">아니요</string>
     <string name="onboard_welcome_hint">짧은 질문 다섯 개로 앱을 맞춤 설정해 드려요.</string>
+    <string name="onboard_welcome_hint4">짧은 질문 네 개로 앱을 맞춤 설정해 드려요.</string>
     <string name="onboard_q_step">질문 %1$s/%2$s</string>
     <string name="onboard_q_prayer_title">기도 시간을 챙기시나요?</string>
     <string name="onboard_q_prayer_text">예를 고르면 하단 막대에 기도 탭이 추가되고, 시계 아래에 다음 기도 시간이 보이며 기도 알림이 켜져요.</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">데이터는 내 폰에만</string>
     <string name="onboard_trust_text">계정도, 광고도, 추적도 없어요. 위치, 개인 정보, 일정, 건강 데이터는 저희에게 오지 않고 어떤 서버에도 저장되지 않아요. 권한은 휴대폰 안에서만 쓰여요.</string>
     <string name="onboard_trust_services">날씨와 가까운 모스크 검색에는 대략적인 위치(약 1km)만 해당 서비스로 가고, 누구인지는 절대 보내지 않아요.</string>
+    <string name="onboard_trust_servicesN">날씨처럼 위치가 필요한 서비스에는 대략적인 위치(약 1km)만 가고, 누구인지는 절대 보내지 않아요.</string>
     <string name="onboard_trust_later">허용한 권한은 언제든 설정 › 권한에서 확인하고 끌 수 있어요.</string>
     <string name="perms_title">권한</string>
     <string name="perms_status_on">켜짐</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">연락처, 사진 보관함, 광고 ID, 카메라, 블루투스. 사진과 코드는 휴대폰 기본 선택기와 스캐너를 거쳐, 고른 것만 앱에 전달돼요.</string>
     <string name="perms_location_title">위치</string>
     <string name="perms_location_why">허용하면 지금 있는 곳의 기도 시간과 날씨가 자동으로 나와요. 허용하지 않으면 도시를 직접 고르면 돼요.</string>
+    <string name="perms_location_whyN">허용하면 지금 있는 곳의 날씨와 일출·일몰이 자동으로 나와요. 허용하지 않으면 장소를 직접 고르면 돼요.</string>
     <string name="perms_locationBg_title">백그라운드 위치</string>
     <string name="perms_locationBg_why">위치 알림에만 써요. 어떤 장소에 도착하거나 떠날 때 알려 줘요. 허용하지 않으면 이 알림은 작동하지 않아요.</string>
     <string name="perms_notify_title">알림</string>
     <string name="perms_notify_why">허용하면 기도 시간, 알람, 알림이 제때 와요. 허용하지 않으면 앱을 열었을 때만 볼 수 있어요.</string>
+    <string name="perms_notify_whyN">허용하면 알람, 타이머, 알림이 제때 와요. 허용하지 않으면 앱을 열었을 때만 볼 수 있어요.</string>
     <string name="perms_alarm_title">알람</string>
     <string name="perms_alarm_why">허용하면 무음 모드에서도 알람과 타이머가 제때 울려요. 허용하지 않으면 울리지 않아요.</string>
     <string name="perms_exactAlarm_title">정확한 알람</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25가지 아날로그 다이얼, 24가지 앱 색상, 햇빛에 따라 바뀌는 배경, 글자 크기. 설정 › 색상 및 모양.</string>
     <string name="onboard_tour_widgets_title">위젯</string>
     <string name="onboard_tour_widgets_text">홈 화면과 잠금 화면에 시계, 다음 기도, 날씨, 달, 히즈라력을 추가하고 스마트워치에서도 보세요.</string>
+    <string name="onboard_tour_widgets_textN">홈 화면과 잠금 화면에 시계, 세계 시계, 날씨, 달, 캘린더를 추가하고 스마트워치에서도 보세요.</string>
     <string name="onboard_resume">설정 계속하기</string>
     <string name="photoApp_title">사진 빛</string>
     <string name="photoApp_subtitle">골든아워와 블루아워</string>

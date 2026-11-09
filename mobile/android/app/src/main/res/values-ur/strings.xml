@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">پوری اسکرین کو چھوئیں یا فون کو آڑا کریں، گھڑی پوری اسکرین پر آ جائے گی۔ رات کے موڈ میں رنگ مدھم سرخ ہو جاتا ہے اور بستر کے پاس آنکھوں کو نہیں چبھتا۔</string>
     <string name="onboard_all_title">باقی سب کچھ «سب» میں</string>
     <string name="onboard_all_text">نیچے کی پٹی میں «سب» میں تمام ٹولز، تلاش اور ترتیبات ہیں؛ پسندیدہ چیزوں کو اوپر رکھنے کے لیے دیر تک دبائیں۔ گھڑی کے نیچے تاریخ، نماز کے اوقات یا موسم شامل کرنے کے لیے: ترتیبات › گھڑی کی اسکرین میں ترمیم۔</string>
+    <string name="onboard_all_textN">نیچے کی پٹی میں «سب» میں تمام ٹولز، تلاش اور ترتیبات ہیں؛ پسندیدہ چیزوں کو اوپر رکھنے کے لیے دیر تک دبائیں۔ گھڑی کے نیچے تاریخ یا موسم شامل کرنے کے لیے: ترتیبات › گھڑی کی اسکرین میں ترمیم۔</string>
     <string name="onboard_replay">تعارف دوبارہ دکھائیں</string>
     <string name="atmo_daylight">دن کی روشنی</string>
     <string name="atmo_daylightNote">دن کی روشنی منتخب جگہ پر سورج کے مطابق بدلتی ہے: فجر، صبح، عصر، شام یا رات کے رنگ۔</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">ہاں</string>
     <string name="onboard_no">نہیں</string>
     <string name="onboard_welcome_hint">پانچ مختصر سوالوں سے ایپ آپ کے مطابق تیار کرتے ہیں۔</string>
+    <string name="onboard_welcome_hint4">چار مختصر سوالوں سے ایپ آپ کے مطابق تیار کرتے ہیں۔</string>
     <string name="onboard_q_step">سوال %1$s از %2$s</string>
     <string name="onboard_q_prayer_title">کیا آپ نماز کے اوقات کا خیال رکھتے ہیں؟</string>
     <string name="onboard_q_prayer_text">ہاں کہیں تو نماز کا ٹیب نیچے کی پٹی میں آ جائے گا، گھڑی کے نیچے اگلی نماز دکھے گی اور نماز کی اطلاعات چالو ہو جائیں گی۔</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">آپ کا ڈیٹا آپ ہی کے پاس رہتا ہے</string>
     <string name="onboard_trust_text">نہ اکاؤنٹ، نہ اشتہار، نہ ٹریکنگ۔ آپ کا مقام، ذاتی معلومات، کیلنڈر اور صحت کا ڈیٹا ہم تک نہیں آتا اور ہمارے کسی سرور پر محفوظ نہیں ہوتا۔ اجازتیں صرف آپ کے فون کے اندر کام کرتی ہیں۔</string>
     <string name="onboard_trust_services">موسم اور قریبی مساجد کے لیے صرف تخمینی مقام (تقریباً 1 کلومیٹر) متعلقہ سروس کو جاتا ہے؛ آپ کون ہیں، یہ کبھی نہیں جاتا۔</string>
+    <string name="onboard_trust_servicesN">موسم جیسی مقام پر مبنی سروسز کو صرف تخمینی مقام (تقریباً 1 کلومیٹر) جاتا ہے؛ آپ کون ہیں، یہ کبھی نہیں جاتا۔</string>
     <string name="onboard_trust_later">دی گئی اجازتیں جب چاہیں ترتیبات › اجازتیں میں دیکھیں اور بند کریں۔</string>
     <string name="perms_title">اجازتیں</string>
     <string name="perms_status_on">چالو</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">آپ کے رابطے، تصویروں کی لائبریری، اشتہاری شناخت، کیمرا اور بلوٹوتھ۔ تصویر اور کوڈ فون کے اپنے چناؤ اور اسکینر سے گزرتے ہیں؛ ایپ تک صرف وہی آتا ہے جو آپ چنیں۔</string>
     <string name="perms_location_title">مقام</string>
     <string name="perms_location_why">اجازت دیں تو آپ کی جگہ کے اوقات اور موسم خود بخود آ جائیں گے، چننے کی ضرورت نہیں۔ نہ دیں تو شہر خود چنیں۔</string>
+    <string name="perms_location_whyN">اجازت دیں تو آپ کی جگہ کا موسم اور طلوع و غروبِ آفتاب خود بخود آ جائیں گے، چننے کی ضرورت نہیں۔ نہ دیں تو جگہ خود چنیں۔</string>
     <string name="perms_locationBg_title">پس منظر میں مقام</string>
     <string name="perms_locationBg_why">صرف مقام کی یاد دہانیوں کے لیے: کسی جگہ پہنچنے یا نکلنے پر بتاتی ہیں۔ نہ دیں تو یہ یاد دہانیاں کام نہیں کریں گی۔</string>
     <string name="perms_notify_title">اطلاعات</string>
     <string name="perms_notify_why">اجازت دیں تو اوقات، الارم اور یاد دہانیاں وقت پر آئیں گی۔ نہ دیں تو صرف ایپ کھولنے پر دکھیں گی۔</string>
+    <string name="perms_notify_whyN">اجازت دیں تو الارم، ٹائمر اور یاد دہانیاں وقت پر آئیں گی۔ نہ دیں تو صرف ایپ کھولنے پر دکھیں گی۔</string>
     <string name="perms_alarm_title">الارم</string>
     <string name="perms_alarm_why">اجازت دیں تو الارم اور ٹائمر فون خاموش ہونے پر بھی ٹھیک وقت پر بجیں گے۔ نہ دیں تو نہیں بجیں گے۔</string>
     <string name="perms_exactAlarm_title">درست وقت الارم</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 اینالاگ ڈائل، ایپ کے 24 رنگ، دن کی روشنی کے ساتھ بدلتا پس منظر اور تحریر کا سائز۔ ترتیبات › رنگ اور انداز۔</string>
     <string name="onboard_tour_widgets_title">ویجٹس</string>
     <string name="onboard_tour_widgets_text">ہوم اور لاک اسکرین پر گھڑی، اگلی نماز، موسم، چاند اور ہجری تاریخ لگائیں؛ اپنی اسمارٹ واچ پر بھی دیکھیں۔</string>
+    <string name="onboard_tour_widgets_textN">ہوم اور لاک اسکرین پر گھڑی، عالمی گھڑیاں، موسم، چاند اور کیلنڈر لگائیں؛ اپنی اسمارٹ واچ پر بھی دیکھیں۔</string>
     <string name="onboard_resume">سیٹ اپ جاری رکھیں</string>
     <string name="photoApp_title">فوٹو کی روشنی</string>
     <string name="photoApp_subtitle">سنہری وقت اور نیلا وقت</string>

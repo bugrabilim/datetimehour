@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">Tap Full screen or turn your phone sideways and the clock fills the screen. Night mode turns it a dim red that won\'t dazzle you at the bedside.</string>
     <string name="onboard_all_title">Everything else is under All</string>
     <string name="onboard_all_text">All in the bottom bar has every tool, search and Settings; long-press your favourites to pin them at the top. To add the date, prayer times or weather under the clock: Settings › Edit clock screen.</string>
+    <string name="onboard_all_textN">All in the bottom bar has every tool, search and Settings; long-press your favourites to pin them at the top. To add the date or weather under the clock: Settings › Edit clock screen.</string>
     <string name="onboard_replay">Show the intro again</string>
     <string name="atmo_daylight">Daylight</string>
     <string name="atmo_daylightNote">Daylight follows the sun at your chosen place: dawn, morning, afternoon, evening or night tones.</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">Yes</string>
     <string name="onboard_no">No</string>
     <string name="onboard_welcome_hint">Five short questions and the app is set up just for you.</string>
+    <string name="onboard_welcome_hint4">Four short questions and the app is set up just for you.</string>
     <string name="onboard_q_step">Question %1$s of %2$s</string>
     <string name="onboard_q_prayer_title">Do you follow prayer times?</string>
     <string name="onboard_q_prayer_text">If yes, the Prayer tab joins the tab bar, the next prayer shows under the clock and prayer notifications turn on.</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">Your data stays with you</string>
     <string name="onboard_trust_text">No account, no ads, no tracking. Your location, personal details, calendar and health data never reach us and are not stored on any server of ours. Permissions only work inside your phone.</string>
     <string name="onboard_trust_services">For weather and nearby mosques, only an approximate location (about 1 km) goes to the relevant service, never who you are.</string>
+    <string name="onboard_trust_servicesN">For location-based services such as weather, only an approximate location (about 1 km) is sent, never who you are.</string>
     <string name="onboard_trust_later">You can see and turn off any permission at any time in Settings › Permissions.</string>
     <string name="perms_title">Permissions</string>
     <string name="perms_status_on">On</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">Your contacts, photo library, advertising ID, camera and Bluetooth. Photos and codes go through your phone\'s own picker and scanner; only what you choose reaches the app.</string>
     <string name="perms_location_title">Location</string>
     <string name="perms_location_why">If you allow it, prayer times and weather for where you are come automatically, so you don\'t have to pick a place. If not, you pick your province or district by hand.</string>
+    <string name="perms_location_whyN">If you allow it, the weather, sunrise and sunset for where you are come automatically, so you don\'t have to pick a place. If not, you pick it by hand.</string>
     <string name="perms_locationBg_title">Background location</string>
     <string name="perms_locationBg_why">Only for location reminders: they alert you when you arrive at or leave a place. Without it, these reminders don\'t work.</string>
     <string name="perms_notify_title">Notifications</string>
     <string name="perms_notify_why">If you allow them, prayer times, alarms and reminders arrive on time. If not, you only see them when you open the app.</string>
+    <string name="perms_notify_whyN">If you allow them, alarms, timers and reminders arrive on time. If not, you only see them when you open the app.</string>
     <string name="perms_alarm_title">Alarms</string>
     <string name="perms_alarm_why">If you allow it, alarms and timers ring right on time, even in silent mode. If not, they don\'t ring.</string>
     <string name="perms_exactAlarm_title">Exact alarms</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 analog dials, 24 app colors, a background that follows daylight, and text size. Settings › Color and appearance.</string>
     <string name="onboard_tour_widgets_title">Widgets</string>
     <string name="onboard_tour_widgets_text">Add the clock, next prayer, weather, the Moon and the Hijri date to your Home and Lock Screen, and see them on your watch too.</string>
+    <string name="onboard_tour_widgets_textN">Add the clock, world clocks, weather, the Moon and your calendar to your Home and Lock Screen, and see them on your watch too.</string>
     <string name="onboard_resume">Continue setup</string>
     <string name="photoApp_title">Photo light</string>
     <string name="photoApp_subtitle">Golden hour &amp; blue hour</string>

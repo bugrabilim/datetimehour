@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">Нажмите «Во весь экран» или поверните телефон горизонтально — часы займут весь экран. В ночном режиме они светятся тусклым красным и не слепят у кровати.</string>
     <string name="onboard_all_title">Всё остальное — во вкладке «Все»</string>
     <string name="onboard_all_text">Во вкладке «Все» на нижней панели — все инструменты, поиск и настройки; удерживайте избранное, чтобы закрепить его сверху. Чтобы добавить под часы дату, время намаза или погоду: Настройки › Изменить экран часов.</string>
+    <string name="onboard_all_textN">Во вкладке «Все» на нижней панели — все инструменты, поиск и настройки; удерживайте избранное, чтобы закрепить его сверху. Чтобы добавить под часы дату или погоду: Настройки › Изменить экран часов.</string>
     <string name="onboard_replay">Показать знакомство снова</string>
     <string name="atmo_daylight">Дневной свет</string>
     <string name="atmo_daylightNote">Дневной свет следует за солнцем в выбранном месте: тона рассвета, утра, дня, вечера или ночи.</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">Да</string>
     <string name="onboard_no">Нет</string>
     <string name="onboard_welcome_hint">Пять коротких вопросов — и приложение настроено под вас.</string>
+    <string name="onboard_welcome_hint4">Четыре коротких вопроса — и приложение настроено под вас.</string>
     <string name="onboard_q_step">Вопрос %1$s из %2$s</string>
     <string name="onboard_q_prayer_title">Вы следите за временем намаза?</string>
     <string name="onboard_q_prayer_text">Если да, вкладка «Намаз» появится в нижней панели, под часами будет ближайший намаз, а уведомления о намазе включатся.</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">Ваши данные остаются у вас</string>
     <string name="onboard_trust_text">Ни аккаунта, ни рекламы, ни слежки. Ваше местоположение, личные данные, календарь и данные о здоровье не попадают к нам и не хранятся на наших серверах. Разрешения работают только внутри вашего телефона.</string>
     <string name="onboard_trust_services">Для погоды и ближайших мечетей в сервис уходит только примерное местоположение (около 1 км), но не то, кто вы.</string>
+    <string name="onboard_trust_servicesN">В сервисы, зависящие от места, например погоду, уходит только примерное местоположение (около 1 км), но не то, кто вы.</string>
     <string name="onboard_trust_later">Выданные разрешения можно посмотреть и отключить в любой момент: Настройки › Разрешения.</string>
     <string name="perms_title">Разрешения</string>
     <string name="perms_status_on">Вкл.</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">Контакты, фотоархив, рекламный идентификатор, камера и Bluetooth. Фото и коды проходят через встроенные средства выбора и сканер телефона; приложение получает только выбранное.</string>
     <string name="perms_location_title">Местоположение</string>
     <string name="perms_location_why">Если разрешите, время намаза и погода для вашего места подставятся сами. Если нет, город выбирается вручную.</string>
+    <string name="perms_location_whyN">Если разрешите, погода, восход и закат для вашего места подставятся сами. Если нет, место выбирается вручную.</string>
     <string name="perms_locationBg_title">Местоположение в фоне</string>
     <string name="perms_locationBg_why">Только для напоминаний по месту: они срабатывают, когда вы приходите куда-то или уходите. Без этого такие напоминания не работают.</string>
     <string name="perms_notify_title">Уведомления</string>
     <string name="perms_notify_why">Если разрешите, время намаза, будильники и напоминания будут приходить вовремя. Если нет, вы увидите их, только открыв приложение.</string>
+    <string name="perms_notify_whyN">Если разрешите, будильники, таймеры и напоминания будут приходить вовремя. Если нет, вы увидите их, только открыв приложение.</string>
     <string name="perms_alarm_title">Будильники</string>
     <string name="perms_alarm_why">Если разрешите, будильник и таймер зазвонят вовремя даже в беззвучном режиме. Если нет, они не зазвонят.</string>
     <string name="perms_exactAlarm_title">Точные будильники</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 аналоговых циферблатов, 24 цвета приложения, фон, меняющийся с дневным светом, и размер текста. Настройки › Цвет и вид.</string>
     <string name="onboard_tour_widgets_title">Виджеты</string>
     <string name="onboard_tour_widgets_text">Добавьте часы, следующий намаз, погоду, Луну и дату по хиджре на экран «Домой» и экран блокировки — и смотрите их на часах.</string>
+    <string name="onboard_tour_widgets_textN">Добавьте часы, мировое время, погоду, Луну и календарь на экран «Домой» и экран блокировки — и смотрите их на часах.</string>
     <string name="onboard_resume">Продолжить настройку</string>
     <string name="photoApp_title">Свет для фото</string>
     <string name="photoApp_subtitle">Золотой и синий час</string>

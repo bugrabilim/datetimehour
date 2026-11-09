@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">Toque em Tela cheia ou gire o celular na horizontal e o relógio ocupa a tela toda. O modo noturno deixa tudo em um vermelho suave que não ofusca ao lado da cama.</string>
     <string name="onboard_all_title">Todo o resto está em \"Tudo\"</string>
     <string name="onboard_all_text">Em \"Tudo\", na barra inferior, ficam todas as ferramentas, a busca e os Ajustes; toque e segure seus favoritos para fixá-los no topo. Para pôr a data, os horários de oração ou o clima abaixo do relógio: Ajustes › Editar tela do relógio.</string>
+    <string name="onboard_all_textN">Em \"Tudo\", na barra inferior, ficam todas as ferramentas, a busca e os Ajustes; toque e segure seus favoritos para fixá-los no topo. Para pôr a data ou o clima abaixo do relógio: Ajustes › Editar tela do relógio.</string>
     <string name="onboard_replay">Ver a apresentação de novo</string>
     <string name="atmo_daylight">Luz do dia</string>
     <string name="atmo_daylightNote">A luz do dia acompanha o sol no lugar escolhido: tons de amanhecer, manhã, tarde, entardecer ou noite.</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">Sim</string>
     <string name="onboard_no">Não</string>
     <string name="onboard_welcome_hint">Cinco perguntas rápidas e o app fica pronto para você.</string>
+    <string name="onboard_welcome_hint4">Quatro perguntas rápidas e o app fica pronto para você.</string>
     <string name="onboard_q_step">Pergunta %1$s de %2$s</string>
     <string name="onboard_q_prayer_title">Você acompanha os horários de oração?</string>
     <string name="onboard_q_prayer_text">Se sim, Oração entra na barra inferior, a próxima oração aparece abaixo do relógio e as notificações de oração são ativadas.</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">Seus dados ficam com você</string>
     <string name="onboard_trust_text">Sem conta, sem anúncios, sem rastreamento. Sua localização, seus dados pessoais, sua agenda e seus dados de saúde nunca chegam até nós nem ficam em nenhum servidor nosso. As permissões só funcionam dentro do seu celular.</string>
     <string name="onboard_trust_services">Para o clima e mesquitas próximas, só uma localização aproximada (cerca de 1 km) vai para o serviço, nunca quem você é.</string>
+    <string name="onboard_trust_servicesN">Para serviços que dependem do local, como o clima, só vai uma localização aproximada (cerca de 1 km), nunca quem você é.</string>
     <string name="onboard_trust_later">Você pode ver e desligar qualquer permissão a qualquer momento em Ajustes › Permissões.</string>
     <string name="perms_title">Permissões</string>
     <string name="perms_status_on">Ativada</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">Seus contatos, sua galeria, o identificador de anúncios, a câmera e o Bluetooth. Fotos e códigos passam pelo seletor e pelo leitor do próprio celular; só o que você escolhe chega ao app.</string>
     <string name="perms_location_title">Localização</string>
     <string name="perms_location_why">Se permitir, os horários de oração e o clima de onde você está chegam sozinhos, sem você precisar escolher. Se não, você escolhe a província ou o distrito manualmente.</string>
+    <string name="perms_location_whyN">Se permitir, o clima e os horários do nascer e do pôr do sol de onde você está chegam sozinhos, sem você precisar escolher. Se não, você escolhe o lugar manualmente.</string>
     <string name="perms_locationBg_title">Localização em segundo plano</string>
     <string name="perms_locationBg_why">Só para lembretes por local: avisam quando você chega ou sai de um lugar. Se não, esses lembretes não funcionam.</string>
     <string name="perms_notify_title">Notificações</string>
     <string name="perms_notify_why">Se permitir, horários de oração, alarmes e lembretes chegam na hora. Se não, você só os vê ao abrir o app.</string>
+    <string name="perms_notify_whyN">Se permitir, alarmes, timers e lembretes chegam na hora. Se não, você só os vê ao abrir o app.</string>
     <string name="perms_alarm_title">Alarmes</string>
     <string name="perms_alarm_why">Se permitir, alarmes e temporizadores tocam na hora, mesmo no modo silencioso. Se não, não tocam.</string>
     <string name="perms_exactAlarm_title">Alarmes exatos</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 mostradores analógicos, 24 cores do app, um fundo que acompanha a luz do dia e tamanho do texto. Ajustes › Cor e aparência.</string>
     <string name="onboard_tour_widgets_title">Widgets</string>
     <string name="onboard_tour_widgets_text">Adicione o relógio, a próxima oração, o clima, a Lua e a data da Hégira à Tela de Início e à Tela Bloqueada, e veja tudo também no seu smartwatch.</string>
+    <string name="onboard_tour_widgets_textN">Adicione o relógio, relógios mundiais, o clima, a Lua e o calendário à Tela de Início e à Tela Bloqueada, e veja tudo também no seu smartwatch.</string>
     <string name="onboard_resume">Continuar configuração</string>
     <string name="photoApp_title">Luz para fotos</string>
     <string name="photoApp_subtitle">Hora dourada e hora azul</string>

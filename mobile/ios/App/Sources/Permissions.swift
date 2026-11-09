@@ -115,7 +115,7 @@ private struct PermissionRow: View {
                     Spacer(minLength: 8)
                     chip
                 }
-                Text(L("perms.\(item.id).why")).font(.footnote).foregroundStyle(Theme.muted)
+                Text(Onboarding.permWhy(item.id)).font(.footnote).foregroundStyle(Theme.muted)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
             }

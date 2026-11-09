@@ -3326,6 +3326,7 @@
     <string name="onboard_full_text">点按“全屏”或把手机横过来，时钟就会占满屏幕。夜间模式会变成暗红色，放在床头也不刺眼。</string>
     <string name="onboard_all_title">其余一切都在“全部”里</string>
     <string name="onboard_all_text">底部栏的“全部”里有所有工具、搜索和设置；长按常用项可将其固定在顶部。要在时钟下方添加日期、礼拜时间或天气：设置 › 编辑时钟屏幕。</string>
+    <string name="onboard_all_textN">底部栏的“全部”里有所有工具、搜索和设置；长按常用项可将其固定在顶部。要在时钟下方添加日期或天气：设置 › 编辑时钟屏幕。</string>
     <string name="onboard_replay">再次查看介绍</string>
     <string name="atmo_daylight">日光</string>
     <string name="atmo_daylightNote">日光随所选地点的太阳变化：黎明、上午、下午、傍晚或夜晚的色调。</string>
@@ -3344,6 +3345,7 @@
     <string name="onboard_yes">是</string>
     <string name="onboard_no">否</string>
     <string name="onboard_welcome_hint">回答五个小问题，应用即按您的需要准备好。</string>
+    <string name="onboard_welcome_hint4">回答四个小问题，应用即按您的需要准备好。</string>
     <string name="onboard_q_step">问题 %1$s/%2$s</string>
     <string name="onboard_q_prayer_title">您关注礼拜时间吗？</string>
     <string name="onboard_q_prayer_text">选“是”后，底栏会加入“礼拜”，时钟下方显示下一次礼拜时间，并开启礼拜通知。</string>
@@ -3363,6 +3365,7 @@
     <string name="onboard_trust_title">数据只留在您身边</string>
     <string name="onboard_trust_text">无需账户，没有广告，没有跟踪。您的位置、个人信息、日历和健康数据都不会传给我们，也不会存在我们的任何服务器上。权限只在您的手机内部使用。</string>
     <string name="onboard_trust_services">天气和附近清真寺只会把大致位置（约 1 公里）发给相应服务，绝不会发送您的身份。</string>
+    <string name="onboard_trust_servicesN">天气等基于位置的服务只会收到大致位置（约 1 公里），绝不会发送您的身份。</string>
     <string name="onboard_trust_later">随时可在 设置 › 权限 中查看并关闭任何权限。</string>
     <string name="perms_title">权限</string>
     <string name="perms_status_on">已开启</string>
@@ -3375,10 +3378,12 @@
     <string name="perms_notUsed_android">通讯录、照片图库、广告标识符、相机和蓝牙。照片和二维码都通过手机自带的选择器和扫描器，只有您选中的内容会交给应用。</string>
     <string name="perms_location_title">位置</string>
     <string name="perms_location_why">允许后，所在地的礼拜时间和天气会自动出现，无需手动选择；不允许则需自己选择城市。</string>
+    <string name="perms_location_whyN">允许后，所在地的天气和日出日落时间会自动出现，无需手动选择；不允许则需自己选择地点。</string>
     <string name="perms_locationBg_title">后台位置</string>
     <string name="perms_locationBg_why">仅用于位置提醒：到达或离开某地时提醒您。不允许则此类提醒无法使用。</string>
     <string name="perms_notify_title">通知</string>
     <string name="perms_notify_why">允许后，礼拜时间、闹钟和提醒会准时送达；不允许则只能在打开应用时看到。</string>
+    <string name="perms_notify_whyN">允许后，闹钟、计时器和提醒会准时送达；不允许则只能在打开应用时看到。</string>
     <string name="perms_alarm_title">闹钟</string>
     <string name="perms_alarm_why">允许后，即使静音，闹钟和计时器也会准时响起；不允许则不会响。</string>
     <string name="perms_exactAlarm_title">精确闹钟</string>
@@ -3419,6 +3424,7 @@
     <string name="onboard_tour_look_text">25 款指针表盘、24 种应用颜色、随日光变化的背景和文字大小。设置 › 颜色与外观。</string>
     <string name="onboard_tour_widgets_title">小组件</string>
     <string name="onboard_tour_widgets_text">在主屏幕和锁屏上添加时钟、下一次礼拜、天气、月相和伊斯兰历日期，智能手表上也能看到。</string>
+    <string name="onboard_tour_widgets_textN">在主屏幕和锁屏上添加时钟、世界时钟、天气、月相和日历，智能手表上也能看到。</string>
     <string name="onboard_resume">继续设置</string>
     <string name="photoApp_title">摄影光线</string>
     <string name="photoApp_subtitle">黄金时刻与蓝调时刻</string>
