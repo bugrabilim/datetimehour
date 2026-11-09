@@ -1,0 +1,51 @@
+Jam & Tanggal menyatukan jam, widget, alarm, cuaca, kalender, dan puluhan alat sehari-hari dalam satu aplikasi yang rapi. Tanpa akun, tanpa iklan, tanpa pelacakan.
+
+Disiapkan untuk Anda
+• Beberapa pertanyaan singkat saat pertama dibuka; bilah bawah disusun dari bagian yang Anda inginkan
+• Bagian yang tidak Anda pakai disembunyikan dan tidak mengirim notifikasi; semua yang lain ada di Semua, cukup sekali ketuk
+
+Jam dan widget
+• 21 model jam dan 25 muka jam analog; layar penuh, mode malam merah redup untuk di samping tempat tidur, dan screensaver
+• 27 widget layar utama: jam analog, digital, dan berdetik, jam dunia, cuaca, fase bulan, matahari terbit dan terbenam, hitung mundur, foto, progres tahun, dan lainnya, dengan gaya transparan dan kaca
+• Jam mengambang di atas aplikasi lain, kartu Setelan Cepat
+• Aplikasi Wear OS dengan kartu dan komplikasi, serta jam layar penuh untuk Android TV
+
+Alarm, tidur, dan fokus
+• Alarm layar penuh di layar kunci dengan volume bertahap, pustaka suara, dan latar
+• Tugas untuk mematikannya: hitungan, mengguncang ponsel, langkah, squat, memindai kode, mencari benda, mengingat, atau mengetik
+• Alarm pintar, rencana tidur dengan pengingat waktu tidur, suara pengantar tidur dan suara alam
+• Pomodoro dengan statistik dan daftar tugas, pengatur waktu belajar, pemblokiran aplikasi saat fokus
+• Latihan interval dengan panduan suara, bahkan saat layar mati; simpan latihan ke Health Connect
+
+Cuaca
+• Prakiraan per jam dan 14 hari, kualitas udara dan serbuk sari, perbandingan tiga model cuaca
+• Layar yang bergerak mengikuti cuaca: hujan, salju, awan, angin, dan petir
+• Ringkasan cuaca pagi dan notifikasi cuaca opsional
+
+Kalender
+• Tampilan bulan, minggu, hari, agenda, dan tahun berdampingan dengan kalender di ponsel Anda
+• Hari libur resmi di 31 negara dan hari istimewa
+• Kalender Hijriah dan pengonversi tanggal
+
+Alat
+• Timer bernama, beberapa stopwatch, hitung mundur dengan foto Anda sendiri
+• Jam dunia dengan bola dunia berputar, peta, dan muka jam 24 jam; perencana rapat; kalkulator jam dan tanggal
+• Jam catur, metronom, jam berbicara, jurnal pagi, alat untuk kelas, timer ujian, zodiak
+
+Langit dan musim
+• Matahari terbit dan terbenam, golden hour dan blue hour, bulan terbit dan terbenam, kalender bulan
+• Gerhana dengan peta, langit malam dengan planet dan bintang, notifikasi peristiwa langit
+• Musim dijelaskan untuk anak-anak
+
+Jadwal salat dan kiblat
+• Jadwal salat di mana saja dengan 14 metode perhitungan dan Asar Hanafi; seluruh 81 provinsi dan 973 distrik di Turki
+• Notifikasi dengan azan, alarm waktu salat, mode senyap saat waktu salat, jadwal imsakiyah Ramadan
+• Kompas kiblat dan masjid terdekat
+• Al-Qur'an berbahasa Arab, doa, Asmaul Husna, penghitung tasbih, pencatat salat dan puasa, kalkulator zakat, kartu ucapan
+
+Privasi
+Lokasi Anda tetap di ponsel. Hanya untuk cuaca dan masjid terdekat, lokasi perkiraan dikirim ke layanan terkait (Open-Meteo, OpenStreetMap), tidak pernah identitas Anda. Lihat dan matikan setiap izin di Pengaturan › Izin.
+
+Dalam 18 bahasa. Untuk ponsel dan tablet Android, Wear OS, dan Android TV.
+
+Jam & Tanggal adalah produk Bumba Life. Web: time.bumba.tr

@@ -1,0 +1,51 @@
+Uhr & Datum vereint Uhr, Widgets, Wecker, Wetter, Kalender und Dutzende praktische Werkzeuge in einer klaren App. Kein Konto, keine Werbung, kein Tracking.
+
+Für Sie eingerichtet
+• Ein paar kurze Fragen beim ersten Start; die untere Leiste entsteht aus den Bereichen, die Sie möchten
+• Bereiche, die Sie nicht nutzen, bleiben verborgen und senden keine Mitteilungen; alles andere erreichen Sie mit einem Tipp unter „Alle“
+
+Uhr und Widgets
+• 21 Uhrenmodelle und 25 analoge Zifferblätter; Vollbild, gedimmter roter Nachtmodus für den Nachttisch und Bildschirmschoner
+• 27 Widgets für den Startbildschirm: analoge, digitale und Sekundenuhren, Weltuhren, Wetter, Mondphase, Sonnenauf- und -untergang, Countdowns, Fotos, Jahresfortschritt und mehr, auch transparent oder in Glasoptik
+• Schwebende Uhr über anderen Apps, Kacheln für die Schnelleinstellungen
+• Wear-OS-App mit Kacheln und Komplikationen, Vollbilduhr für Android TV
+
+Wecker, Schlaf und Fokus
+• Vollbild-Wecker auf dem Sperrbildschirm mit ansteigender Lautstärke, Klangbibliothek und Hintergründen
+• Weckaufgaben zum Ausschalten: Rechnen, Schütteln, Schritte, Kniebeugen, Code scannen, Gegenstand finden, Merkspiel oder Abtippen
+• Smarter Wecker, Schlafplan mit Erinnerung an die Schlafenszeit, Schlaf- und Naturgeräusche
+• Pomodoro mit Statistik und Aufgabenliste, Lerntimer, App-Sperre während der Fokuszeit
+• Intervalltraining mit Sprachansagen, auch bei ausgeschaltetem Bildschirm; Trainings in Health Connect speichern
+
+Wetter
+• Stündliche und 14-Tage-Vorhersage, Luftqualität und Pollen, drei Wettermodelle im Vergleich
+• Ein Bildschirm, der sich mit dem Wetter bewegt: Regen, Schnee, Wolken, Wind und Blitze
+• Morgendliche Wetterübersicht und optionale Wettermitteilung
+
+Kalender
+• Monats-, Wochen-, Tages-, Agenda- und Jahresansicht neben den Kalendern auf Ihrem Telefon
+• Feiertage aus 31 Ländern, darunter Deutschland, Österreich und die Schweiz, und besondere Tage
+• Hidschri-Kalender und Datumsumrechner
+
+Werkzeuge
+• Benannte Timer, mehrere Stoppuhren, Countdowns mit eigenen Fotos
+• Weltuhren mit drehendem Globus, Karte und 24-Stunden-Zifferblatt; Meeting-Planer; Zeit- und Datumsrechner
+• Schachuhr, Metronom, sprechende Uhr, Morgentagebuch, Werkzeuge für den Unterricht, Prüfungstimer, Sternzeichen
+
+Himmel und Jahreszeiten
+• Sonnenauf- und -untergang, goldene und blaue Stunde, Mondauf- und -untergang, Mondkalender
+• Finsternisse mit Karten, Nachthimmel mit Planeten und Sternen, Mitteilungen zu Himmelsereignissen
+• Die Jahreszeiten kindgerecht erklärt
+
+Gebetszeiten und Qibla
+• Gebetszeiten weltweit mit 14 Berechnungsmethoden und hanafitischem Asr; alle 81 Provinzen und 973 Bezirke der Türkei
+• Mitteilungen mit Adhan, Wecker zur Gebetszeit, Stummschalten zur Gebetszeit, Ramadan-Kalender
+• Qibla-Kompass und Moscheen in der Nähe
+• Der Koran auf Arabisch, Bittgebete, die 99 Namen Allahs, Tasbih-Zähler, Gebets- und Fastentracker, Zakat-Rechner, Grußkarten
+
+Datenschutz
+Ihr Standort bleibt auf Ihrem Telefon. Nur für Wetter und Moscheen in der Nähe geht ein ungefährer Standort an den Dienst (Open-Meteo, OpenStreetMap), nie Ihre Identität. Jede Berechtigung sehen und abschalten Sie unter Einstellungen › Berechtigungen.
+
+In 18 Sprachen. Für Android-Smartphones und -Tablets, Wear OS und Android TV.
+
+Uhr & Datum ist ein Produkt von Bumba Life. Web: time.bumba.tr
