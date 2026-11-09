@@ -146788,6 +146788,3622 @@
         }
       }
     },
+    "cals.japanese.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Japon takvimi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Japanese calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Japanischer Kalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yapon təqvimi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التقويم الياباني"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender Jepang"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جاپانی کیلنڈر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقویم ژاپنی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendrier japonais"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Японский календарь"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日本の暦"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일본 달력"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日本历法"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalendaryong Hapones"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปฏิทินญี่ปุ่น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendario japonés"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendário japonês"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "जापानी कैलेंडर"
+          }
+        }
+      }
+    },
+    "cals.japanese.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Japonya'nın geleneksel günleri, rokuyō (altı günlük uğur döngüsü) ve Reiwa dönemi yılı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traditional Japanese days, rokuyō (the six-day luck cycle) and the Reiwa era year."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traditionelle japanische Tage, Rokuyō (der sechstägige Glückszyklus) und das Jahr der Reiwa-Ära."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaponiyanın ənənəvi günləri, rokuyō (altı günlük uğur dövrü) və Reiwa dövrünün ili."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأيام اليابانية التقليدية، والروكويو (دورة الحظ ذات الأيام الستة)، وسنة عصر ريوا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari-hari tradisional Jepang, rokuyō (siklus keberuntungan enam hari), dan tahun era Reiwa."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جاپان کے روایتی دن، روکویو (چھ دن کا خوش قسمتی کا چکر) اور ریوا دور کا سال۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزهای سنتی ژاپن، روکویو (چرخهٔ شش‌روزهٔ بخت) و سال دوران ریوا."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les jours traditionnels japonais, le rokuyō (cycle de chance de six jours) et l’année de l’ère Reiwa."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Традиционные японские дни, рокуё (шестидневный цикл удачи) и год эпохи Рэйва."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日本の伝統行事・雑節、六曜、令和の年を表示します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일본의 전통 행사와 절기, 로쿠요(6일 길흉 순환), 레이와 연호의 해를 보여 줍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日本传统节日与杂节、六曜（六日吉凶循环）以及令和年号纪年。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga tradisyonal na araw ng Japan, rokuyō (anim na araw na siklo ng suwerte), at taon ng panahong Reiwa."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันตามประเพณีญี่ปุ่น โระกุโย (วงจรโชคหกวัน) และปีศักราชเรวะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Días tradicionales japoneses, el rokuyō (ciclo de suerte de seis días) y el año de la era Reiwa."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dias tradicionais japoneses, o rokuyō (ciclo de sorte de seis dias) e o ano da era Reiwa."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "जापान के पारंपरिक दिन, रोकुयो (छह दिनों का शुभ-अशुभ चक्र) और रेइवा युग का वर्ष।"
+          }
+        }
+      }
+    },
+    "cals.japanese.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rokuyō, Japonya saatiyle (UTC+9) hesaplanan eski ay-güneş takviminden (kyūreki) bulunur. Obon, Tokyo'nun bazı bölgelerinde temmuzda, Okinawa'da eski takvime göre kutlanır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rokuyō comes from the old lunisolar calendar (kyūreki), calculated for Japan time (UTC+9). Obon is held in July in parts of Tokyo and by the old calendar in Okinawa."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rokuyō ergibt sich aus dem alten Lunisolarkalender (Kyūreki), berechnet nach japanischer Zeit (UTC+9). Obon wird in Teilen Tokios im Juli und auf Okinawa nach dem alten Kalender gefeiert."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rokuyō Yaponiya vaxtı ilə (UTC+9) hesablanan köhnə ay-günəş təqvimindən (kyūreki) tapılır. Obon Tokionun bəzi yerlərində iyulda, Okinavada isə köhnə təqvimlə qeyd olunur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُستخرج الروكويو من التقويم القمري الشمسي القديم (كيوريكي) محسوبًا بتوقيت اليابان (UTC+9). ويُحتفل بأوبون في يوليو في أجزاء من طوكيو، وحسب التقويم القديم في أوكيناوا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rokuyō diturunkan dari kalender lunisolar lama (kyūreki) yang dihitung dengan waktu Jepang (UTC+9). Obon dirayakan pada bulan Juli di sebagian Tokyo dan menurut kalender lama di Okinawa."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روکویو پرانے قمری شمسی کیلنڈر (کیوریکی) سے نکالا جاتا ہے جس کا حساب جاپان کے وقت (UTC+9) سے ہوتا ہے۔ اوبون ٹوکیو کے کچھ حصوں میں جولائی میں اور اوکیناوا میں پرانے کیلنڈر کے مطابق منایا جاتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روکویو از تقویم قمری‌خورشیدی قدیم (کیورکی) به وقت ژاپن (UTC+9) به دست می‌آید. اوبون در بخش‌هایی از توکیو در ژوئیه و در اوکیناوا بر پایهٔ تقویم قدیم برگزار می‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le rokuyō découle de l’ancien calendrier luni-solaire (kyūreki), calculé à l’heure du Japon (UTC+9). Obon est célébré en juillet dans une partie de Tokyo et selon l’ancien calendrier à Okinawa."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Рокуё выводится из старого лунно-солнечного календаря (кюрэки), рассчитанного по японскому времени (UTC+9). Обон в части Токио отмечают в июле, а на Окинаве — по старому календарю."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "六曜は日本時間（UTC+9）で計算した旧暦から求めています。お盆は東京の一部などでは7月、沖縄では旧暦で行われます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "로쿠요는 일본 시간(UTC+9)으로 계산한 옛 음력(규레키)에서 구합니다. 오봉은 도쿄 일부 지역에서는 7월에, 오키나와에서는 음력으로 지냅니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "六曜由以日本时间（UTC+9）计算的旧历推算。东京部分地区在7月过盂兰盆节，冲绳则按旧历。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinango ang rokuyō sa lumang kalendaryong lunisolar (kyūreki) na kinuwenta sa oras ng Japan (UTC+9). Ipinagdiriwang ang Obon tuwing Hulyo sa ilang bahagi ng Tokyo at ayon sa lumang kalendaryo sa Okinawa."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โระกุโยคำนวณจากปฏิทินจันทรคติสุริยคติแบบเก่า (คีวเรกิ) ตามเวลาญี่ปุ่น (UTC+9) ส่วนโอบ้งในบางพื้นที่ของโตเกียวจัดในเดือนกรกฎาคม และในโอกินาวะจัดตามปฏิทินเก่า"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El rokuyō se obtiene del antiguo calendario lunisolar (kyūreki), calculado en hora de Japón (UTC+9). El Obon se celebra en julio en parte de Tokio y según el antiguo calendario en Okinawa."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O rokuyō vem do antigo calendário lunissolar (kyūreki), calculado no horário do Japão (UTC+9). O Obon é celebrado em julho em parte de Tóquio e pelo calendário antigo em Okinawa."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "रोकुयो पुराने चांद्र-सौर कैलेंडर (क्यूरेकी) से निकाला जाता है, जिसकी गणना जापान के समय (UTC+9) से होती है। ओबोन टोक्यो के कुछ हिस्सों में जुलाई में और ओकिनावा में पुराने कैलेंडर के अनुसार मनाया जाता है।"
+          }
+        }
+      }
+    },
+    "cals.japanese.ev.setsubun": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setsubun (baharın arifesi)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setsubun (eve of spring)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setsubun (Vorabend des Frühlings)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setsubun (baharın ərəfəsi)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سيتسوبون (عشية الربيع)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setsubun (malam menjelang musim semi)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سیتسوبون (بہار سے پہلے کی شام)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ستسوبون (شب پیش از بهار)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setsubun (veille du printemps)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сэцубун (канун весны)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "節分"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "세쓰분(입춘 전날)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "节分（立春前一天）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setsubun (bisperas ng tagsibol)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เซ็ตสึบุง (วันก่อนเริ่มฤดูใบไม้ผลิ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setsubun (víspera de la primavera)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setsubun (véspera da primavera)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सेत्सुबुन (वसंत की पूर्व संध्या)"
+          }
+        }
+      }
+    },
+    "cals.japanese.ev.hinamatsuri": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinamatsuri (Kızlar Günü)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinamatsuri (Girls' Day)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinamatsuri (Mädchenfest)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinamatsuri (Qızlar Günü)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هينا ماتسوري (يوم الفتيات)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinamatsuri (Hari Anak Perempuan)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہینا ماتسوری (لڑکیوں کا دن)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هینا ماتسوری (روز دختران)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinamatsuri (fête des filles)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хинамацури (праздник девочек)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ひな祭り（桃の節句）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "히나마쓰리(여자아이 축제)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "女儿节（雏祭）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinamatsuri (Araw ng mga Batang Babae)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฮินะมัตสึริ (วันเด็กผู้หญิง)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinamatsuri (Día de las Niñas)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinamatsuri (Dia das Meninas)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हिनामात्सुरी (बालिका दिवस)"
+          }
+        }
+      }
+    },
+    "cals.japanese.ev.higanSpring": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bahar Higanı (ekinoks haftası)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spring Higan (equinox week)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frühlings-Higan (Woche der Tagundnachtgleiche)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaz Higanı (gecə-gündüz bərabərliyi həftəsi)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هيغان الربيع (أسبوع الاعتدال)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Higan musim semi (pekan ekuinoks)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بہار کا ہیگان (اعتدال کا ہفتہ)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هیگان بهاری (هفتهٔ اعتدال)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Higan de printemps (semaine de l’équinoxe)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Весенний Хиган (неделя равноденствия)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "春の彼岸"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "봄 히간(춘분 주간)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "春季彼岸（春分周）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Higan ng tagsibol (linggo ng ekinoksyo)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฮิงังฤดูใบไม้ผลิ (สัปดาห์วิษุวัต)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Higan de primavera (semana del equinoccio)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Higan de primavera (semana do equinócio)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वसंत हिगान (विषुव सप्ताह)"
+          }
+        }
+      }
+    },
+    "cals.japanese.ev.tanabata": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanabata (Yıldız Bayramı)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanabata (Star Festival)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanabata (Sternenfest)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanabata (Ulduz bayramı)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاناباتا (مهرجان النجوم)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanabata (Festival Bintang)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاناباتا (ستاروں کا تہوار)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاناباتا (جشن ستارگان)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanabata (fête des étoiles)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Танабата (праздник звёзд)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "七夕"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다나바타(일본 칠석)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日本七夕"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanabata (Pista ng mga Bituin)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทานาบาตะ (เทศกาลดวงดาว)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanabata (Festival de las Estrellas)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanabata (Festival das Estrelas)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तानाबाता (तारों का उत्सव)"
+          }
+        }
+      }
+    },
+    "cals.japanese.ev.doyoUshi": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doyō no Ushi no Hi (yılan balığı günü)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doyō no Ushi no Hi (eel day)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doyō no Ushi no Hi (Aal-Tag)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doyō no Ushi no Hi (ilanbalığı günü)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دويو نو أوشي نو هي (يوم الأنقليس)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doyō no Ushi no Hi (hari belut)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دویو نو اوشی نو ہی (بام مچھلی کا دن)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دویو نو اوشی نو هی (روز مارماهی)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doyō no Ushi no Hi (jour de l’anguille)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доё-но уси-но хи (день угря)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "土用の丑の日"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "도요노우시노히(장어 먹는 날)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "土用丑日"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doyō no Ushi no Hi (araw ng igat)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โดโยโนะอุชิโนะฮิ (วันกินปลาไหล)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doyō no Ushi no Hi (día de la anguila)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doyō no Ushi no Hi (dia da enguia)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "दोयो नो उशी नो ही (ईल मछली का दिन)"
+          }
+        }
+      }
+    },
+    "cals.japanese.ev.obon": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obon (ataları anma)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obon (honouring ancestors)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obon (Ahnenfest)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obon (əcdadları anma)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوبون (إحياء ذكرى الأجداد)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obon (mengenang leluhur)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوبون (آباؤ اجداد کی یاد)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوبون (یادبود نیاکان)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obon (fête des ancêtres)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обон (поминовение предков)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お盆"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오봉(조상 공양)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "盂兰盆节（日本）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obon (paggunita sa mga ninuno)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โอบ้ง (รำลึกบรรพบุรุษ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obon (fiesta de los antepasados)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obon (festa dos antepassados)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ओबोन (पूर्वजों की स्मृति)"
+          }
+        }
+      }
+    },
+    "cals.japanese.ev.higanAutumn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonbahar Higanı (ekinoks haftası)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autumn Higan (equinox week)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Herbst-Higan (Woche der Tagundnachtgleiche)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payız Higanı (gecə-gündüz bərabərliyi həftəsi)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هيغان الخريف (أسبوع الاعتدال)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Higan musim gugur (pekan ekuinoks)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خزاں کا ہیگان (اعتدال کا ہفتہ)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هیگان پاییزی (هفتهٔ اعتدال)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Higan d’automne (semaine de l’équinoxe)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Осенний Хиган (неделя равноденствия)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "秋の彼岸"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "가을 히간(추분 주간)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "秋季彼岸（秋分周）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Higan ng taglagas (linggo ng ekinoksyo)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฮิงังฤดูใบไม้ร่วง (สัปดาห์วิษุวัต)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Higan de otoño (semana del equinoccio)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Higan de outono (semana do equinócio)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शरद हिगान (विषुव सप्ताह)"
+          }
+        }
+      }
+    },
+    "cals.japanese.ev.shichiGoSan": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shichi-Go-San (7-5-3 çocuk bayramı)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shichi-Go-San (7-5-3 children's festival)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shichi-Go-San (Kinderfest 7-5-3)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shichi-Go-San (7-5-3 uşaq bayramı)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شيتشي غو سان (عيد الأطفال 7-5-3)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shichi-Go-San (perayaan anak 7-5-3)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شیچی گو سان (بچوں کا تہوار 7-5-3)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شیچی گو سان (جشن کودکان 7-5-3)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shichi-Go-San (fête des enfants 7-5-3)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сити-го-сан (детский праздник 7-5-3)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "七五三"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시치고산(7·5·3 어린이 축제)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "七五三（儿童节）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shichi-Go-San (pista ng mga bata 7-5-3)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ชิจิโกะซัง (เทศกาลเด็ก 7-5-3)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shichi-Go-San (fiesta infantil 7-5-3)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shichi-Go-San (festa infantil 7-5-3)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शिचि-गो-सान (बच्चों का उत्सव 7-5-3)"
+          }
+        }
+      }
+    },
+    "cals.japanese.yearFmt": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reiwa %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reiwa %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reiwa %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reiwa %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ريوا %1$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reiwa %1$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ریوا %1$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ریوا %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reiwa %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Рэйва %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "令和%1$@年"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "레이와 %1$@년"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "令和%1$@年"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reiwa %1$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เรวะ %1$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reiwa %1$@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reiwa %1$@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "रेइवा %1$@"
+          }
+        }
+      }
+    },
+    "cals.japanese.daily.sensho": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senshō (öğleden önce uğurlu)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senshō (lucky before noon)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senshō (Glück am Vormittag)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senshō (günortadan əvvəl uğurlu)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سينشو (حظ قبل الظهر)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senshō (beruntung sebelum tengah hari)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سینشو (دوپہر سے پہلے مبارک)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سنشو (خوش‌یُمن پیش از ظهر)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senshō (chance avant midi)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сэнсё (удача до полудня)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "先勝"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "센쇼(오전 길)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "先胜"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senshō (suwerte bago magtanghali)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เซ็นโช (โชคดีช่วงเช้า)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senshō (suerte antes del mediodía)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senshō (sorte antes do meio-dia)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सेंशो (दोपहर से पहले शुभ)"
+          }
+        }
+      }
+    },
+    "cals.japanese.daily.tomobiki": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomobiki (cenaze yapılmaz)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomobiki (no funerals)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomobiki (keine Beerdigungen)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomobiki (dəfn edilmir)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "توموبيكي (لا جنازات)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomobiki (hindari pemakaman)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "توموبیکی (جنازے سے گریز)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "توموبیکی (بدون مراسم خاکسپاری)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomobiki (pas de funérailles)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Томобики (не для похорон)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "友引"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "도모비키(장례 피함)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "友引"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomobiki (iwasan ang libing)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โทโมบิกิ (เลี่ยงงานศพ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomobiki (sin funerales)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomobiki (sem funerais)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तोमोबिकी (अंतिम संस्कार से बचें)"
+          }
+        }
+      }
+    },
+    "cals.japanese.daily.senbu": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senbu (öğleden sonra uğurlu)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senbu (lucky after noon)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senbu (Glück am Nachmittag)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senbu (günortadan sonra uğurlu)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سينبو (حظ بعد الظهر)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senbu (beruntung setelah tengah hari)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سینبو (دوپہر کے بعد مبارک)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سنبو (خوش‌یُمن پس از ظهر)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senbu (chance après midi)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сэмбу (удача после полудня)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "先負"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "센부(오후 길)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "先负"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senbu (suwerte pagkatapos ng tanghali)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เซ็มบุ (โชคดีช่วงบ่าย)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senbu (suerte después del mediodía)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senbu (sorte depois do meio-dia)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सेनबु (दोपहर के बाद शुभ)"
+          }
+        }
+      }
+    },
+    "cals.japanese.daily.butsumetsu": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Butsumetsu (uğursuz gün)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Butsumetsu (unlucky day)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Butsumetsu (Unglückstag)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Butsumetsu (uğursuz gün)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بوتسوميتسو (يوم نحس)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Butsumetsu (hari sial)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بتسومیتسو (منحوس دن)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بوتسومتسو (روز نحس)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Butsumetsu (jour néfaste)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Буцумэцу (несчастливый день)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仏滅"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "부쓰메쓰(흉일)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "佛灭"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Butsumetsu (malas na araw)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บุตสึเมตสึ (วันอัปมงคล)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Butsumetsu (día nefasto)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Butsumetsu (dia de azar)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बुत्सुमेत्सु (अशुभ दिन)"
+          }
+        }
+      }
+    },
+    "cals.japanese.daily.taian": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taian (uğurlu gün)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taian (lucky day)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taian (Glückstag)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taian (uğurlu gün)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تايان (يوم سعد)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taian (hari baik)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تائیان (مبارک دن)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تایان (روز خوش‌یُمن)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taian (jour faste)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тайан (счастливый день)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大安"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다이안(길일)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大安"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taian (masuwerteng araw)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ไทอัง (วันมงคล)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taian (día propicio)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taian (dia de sorte)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ताइआन (शुभ दिन)"
+          }
+        }
+      }
+    },
+    "cals.japanese.daily.shakko": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shakkō (yalnız öğlen uğurlu)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shakkō (lucky only at noon)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shakkō (Glück nur zur Mittagszeit)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shakkō (yalnız günorta uğurlu)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شاكو (حظ عند الظهر فقط)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shakkō (beruntung hanya tengah hari)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شاکو (صرف دوپہر کو مبارک)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شاکو (فقط ظهر خوش‌یُمن)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shakkō (chance à midi seulement)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сякко (удача только в полдень)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "赤口"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "샷코(정오만 길)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "赤口"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shakkō (suwerte sa tanghali lang)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ชักโก (โชคดีเฉพาะเที่ยง)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shakkō (suerte solo al mediodía)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shakkō (sorte só ao meio-dia)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शाक्को (केवल दोपहर में शुभ)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Budist takvimi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhist calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhistischer Kalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddist təqvimi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التقويم البوذي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender Buddha"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بدھ کیلنڈر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقویم بودایی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendrier bouddhique"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Буддийский календарь"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仏教暦"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "불교력"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "佛教历"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalendaryong Budista"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปฏิทินพุทธ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendario budista"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendário budista"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बौद्ध पंचांग"
+          }
+        }
+      }
+    },
+    "cals.buddhist.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tayland ay takvimine göre Budist bayramları ve uposatha günleri: Magha Puja, Vesak, Asalha Puja ve Vassa."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhist holy days and uposatha days by the Thai lunar calendar: Magha Puja, Vesak, Asalha Puja and Vassa."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhistische Feiertage und Uposatha-Tage nach dem thailändischen Mondkalender: Magha Puja, Vesakh, Asalha Puja und Vassa."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailand ay təqviminə görə Buddist bayramları və uposatha günləri: Maqha Puca, Vesak, Asalha Puca və Vassa."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأعياد البوذية وأيام الأوبوساثا وفق التقويم القمري التايلندي: ماغا بوجا وفيساك وأسالها بوجا وفاسا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari raya Buddha dan hari uposatha menurut kalender lunar Thailand: Magha Puja, Waisak, Asadha, dan Vassa."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تھائی قمری کیلنڈر کے مطابق بدھ مت کے تہوار اور اپوستھ کے دن: ماگھا پوجا، ویساک، آسالھا پوجا اور وسّا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جشن‌های بودایی و روزهای اوپوساتا بر پایهٔ تقویم قمری تایلند: ماگا پوجا، ویساک، آسالها پوجا و واسا."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fêtes bouddhiques et jours d’uposatha selon le calendrier lunaire thaï : Magha Puja, Vesak, Asalha Puja et Vassa."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Буддийские праздники и дни упосатхи по тайскому лунному календарю: Магха-пуджа, Весак, Асалха-пуджа и Васса."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "タイ太陰暦による仏教の祝祭日と布薩日：マーカ・ブーチャ、ウェーサーカ祭、アーサーラハ・ブーチャ、安居。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "태국 음력에 따른 불교 명절과 포살일: 마가 푸자, 베삭, 아살하 푸자, 안거."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按泰国阴历的佛教节日和布萨日：万佛节、卫塞节、三宝节和守夏安居。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga pista at araw ng uposatha ng Budismo ayon sa lunar na kalendaryo ng Thailand: Magha Puja, Vesak, Asalha Puja at Vassa."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันสำคัญทางพระพุทธศาสนาและวันพระตามปฏิทินจันทรคติไทย: มาฆบูชา วิสาขบูชา อาสาฬหบูชา เข้าพรรษา และออกพรรษา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fiestas budistas y días de uposatha según el calendario lunar tailandés: Magha Puja, Vesak, Asalha Puja y Vassa."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Festas budistas e dias de uposatha segundo o calendário lunar tailandês: Magha Puja, Vesak, Asalha Puja e Vassa."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "थाई चंद्र पंचांग के अनुसार बौद्ध पर्व और उपोसथ के दिन: माघ पूजा, वेसाक, आषाढ़ पूजा और वर्षावास।"
+          }
+        }
+      }
+    },
+    "cals.buddhist.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarihler Tayland ay takviminin geleneksel hesabındandır (Tayland resmî tarihleri her yıl ilan eder, 2027'den sonraki yıllar hesaptır); uposatha günleri astronomik Ay evresinden bir gün farklı olabilir. Sri Lanka, Myanmar ve diğer ülkelerde bayram bir ay, Budist yılı bir yıl farklı olabilir; BM, Vesak'ı Mayıs dolunayında anar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dates follow the traditional reckoning of the Thai lunar calendar (Thailand announces the official dates each year, so years after 2027 are calculated); uposatha days may differ by a day from the astronomical moon phase. In Sri Lanka, Myanmar and elsewhere a festival may fall a month apart and the Buddhist year may differ by one; the UN marks Vesak at the full moon of May."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Daten folgen der traditionellen Berechnung des thailändischen Mondkalenders (Thailand gibt die amtlichen Daten jedes Jahr bekannt, Jahre nach 2027 sind berechnet); Uposatha-Tage können um einen Tag von der astronomischen Mondphase abweichen. In Sri Lanka, Myanmar und anderen Ländern kann ein Fest einen Monat und das buddhistische Jahr um eins abweichen; die Vereinten Nationen begehen Vesakh am Vollmond im Mai."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarixlər Tailand ay təqviminin ənənəvi hesabındandır (Tailand rəsmi tarixləri hər il elan edir, 2027-ci ildən sonrakı illər hesablamadır); uposatha günləri astronomik Ay fazasından bir gün fərqlənə bilər. Şri-Lanka, Myanma və digər ölkələrdə bayram bir ay, Buddist ili isə bir il fərqli ola bilər; BMT Vesakı may ayının bədrində qeyd edir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التواريخ مأخوذة من الحساب التقليدي للتقويم القمري التايلندي (تعلن تايلاند التواريخ الرسمية كل عام، والسنوات بعد 2027 محسوبة)، وقد تختلف أيام الأوبوساثا يومًا عن طور القمر الفلكي. وقد يختلف العيد شهرًا والسنة البوذية سنةً في سريلانكا وميانمار وغيرهما، وتحيي الأمم المتحدة يوم فيساك في بدر شهر مايو."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanggal mengikuti perhitungan tradisional kalender lunar Thailand (Thailand mengumumkan tanggal resmi setiap tahun, tahun-tahun setelah 2027 merupakan hasil hitungan); hari uposatha bisa berbeda sehari dari fase bulan astronomis. Di Sri Lanka, Myanmar, dan negara lain hari raya bisa berbeda sebulan dan tahun Buddhis berbeda satu tahun; PBB memperingati Waisak pada purnama bulan Mei."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاریخیں تھائی قمری کیلنڈر کے روایتی حساب سے ہیں (تھائی لینڈ ہر سال سرکاری تاریخوں کا اعلان کرتا ہے، 2027 کے بعد کے سال حساب پر مبنی ہیں)؛ اپوستھ کے دن فلکیاتی چاند کے مرحلے سے ایک دن مختلف ہو سکتے ہیں۔ سری لنکا، میانمار اور دوسرے ممالک میں تہوار ایک مہینہ اور بدھ سال ایک سال مختلف ہو سکتا ہے؛ اقوام متحدہ ویساک مئی کے پورے چاند پر مناتی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاریخ‌ها از محاسبهٔ سنتی تقویم قمری تایلند است (تایلند تاریخ‌های رسمی را هر سال اعلام می‌کند و سال‌های پس از 2027 محاسبه‌شده‌اند)؛ روزهای اوپوساتا ممکن است یک روز با اهلّهٔ نجومی ماه فرق داشته باشند. در سری‌لانکا، میانمار و کشورهای دیگر جشن ممکن است یک ماه و سال بودایی یک سال متفاوت باشد؛ سازمان ملل ویساک را در ماه کامل ماه مه گرامی می‌دارد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les dates suivent le calcul traditionnel du calendrier lunaire thaï (la Thaïlande annonce les dates officielles chaque année ; les années après 2027 sont calculées) ; les jours d’uposatha peuvent différer d’un jour de la phase astronomique de la Lune. Au Sri Lanka, en Birmanie et ailleurs, une fête peut tomber à un mois d’écart et l’année bouddhique différer d’un an ; l’ONU célèbre le Vesak à la pleine lune de mai."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Даты рассчитаны по традиционным правилам тайского лунного календаря (Таиланд ежегодно объявляет официальные даты, годы после 2027 рассчитаны); дни упосатхи могут на день расходиться с астрономической фазой Луны. В Шри-Ланке, Мьянме и других странах праздник может отличаться на месяц, а буддийский год — на единицу; ООН отмечает Весак в полнолуние мая."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日付はタイ太陰暦の伝統的な計算によるもので（タイは公式の日付を毎年発表し、2027年より後は計算値）、布薩日は天文学上の月相と1日ずれることがあります。スリランカやミャンマーなどでは祭日が1か月、仏暦が1年異なることがあり、国連はウェーサーカ祭を5月の満月に記念します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날짜는 태국 음력의 전통 계산을 따르며(태국은 매년 공식 날짜를 발표하고 2027년 이후는 계산값), 포살일은 천문학적 달의 위상과 하루 차이 날 수 있습니다. 스리랑카, 미얀마 등에서는 명절이 한 달, 불기가 1년 다를 수 있으며 유엔은 5월 보름에 베삭을 기념합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日期按泰国阴历的传统算法得出（泰国每年公布正式日期，2027年以后为推算），布萨日可能与天文月相相差一天。斯里兰卡、缅甸等地的节日可能相差一个月，佛历年份可能相差一年；联合国在5月满月纪念卫塞节。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang mga petsa ay mula sa tradisyonal na pagkalkula ng lunar na kalendaryo ng Thailand (taon-taong inihahayag ng Thailand ang opisyal na petsa, kaya kalkulado ang mga taon pagkaraan ng 2027); maaaring magkaiba nang isang araw ang mga araw ng uposatha sa astronomikong yugto ng buwan. Sa Sri Lanka, Myanmar at iba pang bansa, maaaring magkaiba nang isang buwan ang pista at nang isang taon ang taong Budista; ginugunita ng UN ang Vesak sa kabilugan ng buwan ng Mayo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันที่คำนวณตามหลักปฏิทินจันทรคติไทยแบบดั้งเดิม (ทางราชการประกาศวันที่เป็นทางการทุกปี ปีหลัง พ.ศ. 2570 เป็นการคำนวณ) วันพระอาจคลาดจากดิถีจันทร์จริงทางดาราศาสตร์หนึ่งวัน ศรีลังกา เมียนมา และประเทศอื่นอาจกำหนดวันสำคัญต่างไปหนึ่งเดือนและนับพุทธศักราชต่างไปหนึ่งปี ส่วนสหประชาชาติจัดวันวิสาขบูชาในวันเพ็ญเดือนพฤษภาคม"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las fechas siguen el cálculo tradicional del calendario lunar tailandés (Tailandia anuncia las fechas oficiales cada año; los años posteriores a 2027 son calculados); los días de uposatha pueden diferir un día de la fase astronómica de la Luna. En Sri Lanka, Myanmar y otros países una fiesta puede diferir un mes y el año budista uno; la ONU conmemora el Vesak en la luna llena de mayo."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As datas seguem o cálculo tradicional do calendário lunar tailandês (a Tailândia anuncia as datas oficiais a cada ano; os anos após 2027 são calculados); os dias de uposatha podem diferir um dia da fase astronômica da Lua. No Sri Lanka, em Mianmar e em outros países, uma festa pode diferir um mês e o ano budista, um ano; a ONU celebra o Vesak na lua cheia de maio."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तिथियाँ थाई चंद्र पंचांग की पारंपरिक गणना से हैं (थाईलैंड हर साल आधिकारिक तिथियाँ घोषित करता है, 2027 के बाद के वर्ष गणना हैं); उपोसथ के दिन खगोलीय चंद्र कला से एक दिन अलग हो सकते हैं। श्रीलंका, म्यांमार और अन्य देशों में पर्व एक महीना और बौद्ध वर्ष एक साल अलग हो सकता है; संयुक्त राष्ट्र वेसाक मई की पूर्णिमा को मनाता है।"
+          }
+        }
+      }
+    },
+    "cals.buddhist.ev.maghaPuja": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maqha Puca"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماغا بوجا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماگھا پوجا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماگا پوجا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Магха-пуджа"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "マーカ・ブーチャ（万仏節）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "마가 푸자"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "万佛节（摩伽普迦）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันมาฆบูชา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha Puja"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "माघ पूजा"
+          }
+        }
+      }
+    },
+    "cals.buddhist.ev.vesak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesakh (Visakha Puja)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puca)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فيساك (فيساكا بوجا)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waisak (Visakha Puja)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ویساک (وساکھا پوجا)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ویساک (ویساکا پوجا)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Весак (Висакха-пуджа)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ウェーサーカ祭（ヴィサカ・ブーチャ）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "베삭(위사카 푸자)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卫塞节（毗舍佉普迦）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันวิสาขบูชา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vesak (Visakha Puja)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वेसाक (विशाखा पूजा)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.ev.asalhaPuja": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puca"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أسالها بوجا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asadha (Asalha Puja)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آسالھا پوجا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آسالها پوجا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Асалха-пуджа"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アーサーラハ・ブーチャ（三宝節）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아살하 푸자"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "三宝节（阿萨哈普迦）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันอาสาฬหบูชา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asalha Puja"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आषाढ़ पूजा"
+          }
+        }
+      }
+    },
+    "cals.buddhist.ev.vassaStart": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vassa'nın başlangıcı (Khao Phansa)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start of Vassa (Khao Phansa)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beginn der Vassa (Khao Phansa)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vassanın başlanğıcı (Khao Phansa)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بداية فاسا (خاو فانسا)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Awal Vassa (Khao Phansa)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وسّا کا آغاز (کھاؤ پھانسا)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آغاز واسا (خائو پانسا)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Début du Vassa (Khao Phansa)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Начало Вассы (Кхао Пханса)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安居入り（カオパンサー）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "안거 시작(카오 판사)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "入夏安居（考攀萨）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simula ng Vassa (Khao Phansa)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันเข้าพรรษา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicio del Vassa (Khao Phansa)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Início do Vassa (Khao Phansa)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वर्षावास का आरंभ (खाओ फांसा)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.ev.vassaEnd": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vassa'nın sonu (Ok Phansa)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "End of Vassa (Ok Phansa)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ende der Vassa (Ok Phansa)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vassanın sonu (Ok Phansa)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نهاية فاسا (أوك فانسا)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akhir Vassa (Ok Phansa)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وسّا کا اختتام (اوک پھانسا)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پایان واسا (اوک پانسا)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fin du Vassa (Ok Phansa)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Конец Вассы (Ок Пханса)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安居明け（オークパンサー）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "안거 해제(옥 판사)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "出夏安居（奥攀萨）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Katapusan ng Vassa (Ok Phansa)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันออกพรรษา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fin del Vassa (Ok Phansa)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fim do Vassa (Ok Phansa)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वर्षावास का समापन (ओक फांसा)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.yearFmt": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Budist çağı %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhist Era %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddhistische Ära %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buddist erası %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العصر البوذي %1$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Era Buddhis %1$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بدھ سن %1$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عصر بودایی %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ère bouddhique %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Буддийская эра %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仏暦%1$@年"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "태국 불기 %1$@년"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "泰国佛历%1$@年"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panahong Budista %1$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พ.ศ. %1$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Era budista %1$@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Era budista %1$@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "थाई बौद्ध संवत %1$@"
+          }
+        }
+      }
+    },
+    "cals.buddhist.daily.k8": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (ilk dördün)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (first quarter)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (zunehmender Halbmond)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (birinci rüb)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوبوساثا (التربيع الأول)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (kuartal pertama)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپوستھ (پہلی چوتھائی)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپوساتا (تربیع اول)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (premier quartier)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упосатха (первая четверть)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布薩（上弦）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "포살일(상현)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布萨日（上弦）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (unang kuwarto)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันพระ (ขึ้น 8 ค่ำ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (cuarto creciente)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (quarto crescente)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उपोसथ (शुक्ल अष्टमी)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.daily.k15": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (dolunay)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (full moon)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (Vollmond)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (bədr)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوبوساثا (البدر)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (purnama)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپوستھ (پورا چاند)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپوساتا (ماه کامل)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (pleine lune)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упосатха (полнолуние)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布薩（満月）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "포살일(보름)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布萨日（满月）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (kabilugan ng buwan)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันพระ (ขึ้น 15 ค่ำ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (luna llena)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (lua cheia)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उपोसथ (पूर्णिमा)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.daily.r8": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (son dördün)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (last quarter)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (abnehmender Halbmond)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (sonuncu rüb)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوبوساثا (التربيع الأخير)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (kuartal terakhir)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپوستھ (آخری چوتھائی)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپوساتا (تربیع آخر)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (dernier quartier)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упосатха (последняя четверть)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布薩（下弦）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "포살일(하현)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布萨日（下弦）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (huling kuwarto)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันพระ (แรม 8 ค่ำ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (cuarto menguante)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (quarto minguante)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उपोसथ (कृष्ण अष्टमी)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.daily.r14": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (yeni ay)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (new moon)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (Neumond)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (yeni Ay)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوبوساثا (المحاق)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (bulan baru)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپوستھ (نیا چاند)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپوساتا (ماه نو)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (nouvelle lune)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упосатха (новолуние)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布薩（新月）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "포살일(그믐)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布萨日（新月）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (bagong buwan)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันพระ (แรม 14 ค่ำ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (luna nueva)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (lua nova)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उपोसथ (अमावस्या)"
+          }
+        }
+      }
+    },
+    "cals.buddhist.daily.r15": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (yeni ay)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (new moon)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (Neumond)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (yeni Ay)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوبوساثا (المحاق)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (bulan baru)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپوستھ (نیا چاند)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپوساتا (ماه نو)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (nouvelle lune)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Упосатха (новолуние)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布薩（新月）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "포살일(그믐)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "布萨日（新月）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (bagong buwan)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันพระ (แรม 15 ค่ำ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (luna nueva)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uposatha (lua nova)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उपोसथ (अमावस्या)"
+          }
+        }
+      }
+    },
     "common.done": {
       "extractionState": "manual",
       "localizations": {
