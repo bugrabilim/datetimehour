@@ -1506,3 +1506,44 @@ tr.is-past td { color: var(--muted); }
 tr.is-next td { font-weight: 700; }
 /* Ay adlarının kökeni (2. analiz #125) */
 .month-origin-list { margin: 0.5rem 0; padding-inline-start: 1.4rem; display: grid; gap: 0.35rem; }
+/* Fotoğraf ışığı (9 Kasım 2026): sabah/akşam kartları, Ay, bulut tahmini ve 7 günlük ışık */
+.ph { margin-top: 1rem; }
+.ph-nav { display: flex; gap: 0.5rem; align-items: center; margin-top: 0.5rem; }
+.ph-nav input { flex: 1 1 auto; min-width: 0; }
+.ph-nav .icon-btn { flex: none; }
+html[dir="rtl"] .ph-nav svg { transform: scaleX(-1); }
+@media (min-width: 40rem) { .ph-nav input { flex: 0 0 auto; width: auto; } }
+.ph-dayrow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin-top: 0.6rem; }
+.ph-day { margin: 0; font-weight: 600; }
+@media (min-width: 40rem) { .ph-dayrow { justify-content: flex-start; } }
+.ph-polar { margin: 0.4rem 0 0; }
+.ph-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin-top: 1rem; }
+.ph-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem 1.25rem 0.6rem; }
+.ph-card h3 { margin: 0 0 0.35rem; font-size: 1.15rem; }
+.ph-card dl { margin: 0; }
+.ph-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1rem; padding: 0.55rem 0; border-top: 1px solid var(--border); }
+.ph-row:first-child { border-top: 0; }
+.ph [hidden], .ph-fc-state[hidden], [data-ph-consent][hidden], [data-ph-fc-box][hidden] { display: none; }
+.ph-row dt { color: var(--muted); }
+.ph-row dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; text-align: end; }
+.ph-blue dt::before, .ph-gold dt::before { content: ""; display: inline-block; width: 0.65rem; height: 0.65rem; border-radius: 50%; margin-inline-end: 0.45rem; vertical-align: 0.05em; }
+.ph-blue dt::before { background: var(--s-winter); }
+.ph-gold dt::before { background: var(--s-summer); }
+.ph-q { display: inline-block; padding: 0.1rem 0.65rem; border-radius: 999px; font-weight: 700; font-size: 0.9rem; background: var(--surface-2); color: var(--text); }
+.ph-q-good { background: var(--ok-bg); color: var(--ok); }
+.ph-q-poor { background: var(--err-bg); color: var(--err); }
+.ph-cl { color: var(--muted); font-size: 0.82rem; font-weight: 400; }
+.ph-row .ph-cl { display: block; margin-top: 0.15rem; }
+.ph-fcq { flex-wrap: nowrap; align-items: center; }
+.ph-fcq dt { flex: 1 1 auto; min-width: 0; }
+.ph-fcq dd { flex: none; }
+.ph-moon { width: 5rem; height: 5rem; }
+.ph-moon-row .facts { flex: 1 1 18rem; grid-template-columns: 1fr 1fr; }
+.ph-moon-row .fact:last-child { grid-column: 1 / -1; }
+.ph-moon-row .fact dd { font-size: 1.25rem; }
+.events-table.ph-fc, .events-table.ph-week { min-width: 0; }
+.ph-fc td { vertical-align: top; }
+.ph-week td { font-variant-numeric: tabular-nums; }
+@media (max-width: 40rem) {
+  .ph-week th, .ph-week td, .ph-fc th, .ph-fc td { padding: 0.6rem 0.55rem; font-size: 0.92rem; }
+}

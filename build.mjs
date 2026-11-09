@@ -114,6 +114,7 @@ for (const [name, from] of [
   ["weather-core.js", "js/weather-core.js"],
   ["weather-fx.js", "js/weather-fx.js"],
   ["weather.js", "js/weather.js"],
+  ["photo.js", "js/photo.js"],
   ["globe.js", "js/globe.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
@@ -359,7 +360,7 @@ function faqHtml(items, headingId) {
 /* Menüde "Namaz vakitleri" bu dillerde ikinci, diğerlerinde sonda (9 Kasım 2026, sahibin kararı; Müslüman olmayanlar raporu A6).
    Uygulamalardaki ilk kurulum soru sırasıyla aynı dil grubu. Sayfalar ve adresler aynı kalır. */
 const PRAYER_FIRST_LANGS = new Set(["tr", "ar", "id", "ur", "fa", "bn"]);
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "photo", "otd", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -1255,6 +1256,7 @@ const TOOL_ART = {
   chess: svgArt('<rect x="8" y="24" width="80" height="30" rx="6" class="af"/><circle cx="29" cy="39" r="9"/><circle cx="67" cy="39" r="9"/><path d="M23 24v-6h12v6M61 24v-6h12v6M29 39v-5M67 39l4-3"/>'),
   metronome: svgArt('<path d="M32 56 41 10h14l9 46z" class="af"/><path d="M48 46 66 14M28 56h40"/><circle cx="60" cy="25" r="3"/>'),
   talking: svgArt('<circle cx="36" cy="34" r="20" class="af"/><path d="M36 22v12l7 4M64 24c4 6 4 14 0 20M73 17c7 10 7 24 0 34"/>'),
+  photo: svgArt('<rect x="10" y="22" width="56" height="36" rx="6" class="af"/><path d="M24 22l5-8h18l5 8"/><circle cx="38" cy="40" r="10"/><circle cx="78" cy="22" r="7"/><path d="M78 8v3M78 33v3M64 22h3M89 22h3M68 12l2 2M86 30l2 2M68 32l2-2M86 14l2-2M70 50h20"/>'),
   sky: svgArt('<circle cx="48" cy="34" r="25" class="af"/><circle cx="40" cy="28" r="6"/><path d="M34 28h12"/><circle cx="60" cy="42" r="2"/><circle cx="56" cy="20" r="1.5"/><circle cx="34" cy="46" r="1.5"/>'),
   retire: svgArt('<circle cx="48" cy="30" r="20" class="af"/><path d="M48 18v12l8 6M30 62h36M36 56h24"/>'),
   otd: svgArt('<rect x="24" y="12" width="48" height="44" rx="4" class="af"/><path d="M24 24h48M36 8v8M60 8v8M34 34h28M34 42h20"/>'),
@@ -1274,7 +1276,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(k === "retire" ? RETIRE.cardName : h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "interval", "examTimer", "classroom", "chess", "metronome", "talking", "sleepCalc", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "interval", "examTimer", "classroom", "chess", "metronome", "talking", "sleepCalc", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "photo", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1400,6 +1402,8 @@ extendRoutes({ tr: { tzn: "/saat-dilimi-haberleri/" }, en: { tzn: "/en/time-zone
 extendRoutes({ tr: { poll: "/toplanti-oylamasi/" }, en: { poll: "/en/meeting-poll/" } });
 // 2. analiz #191 (uyku hesaplama), #141 (sınav salonu zamanlayıcısı)
 extendRoutes({ tr: { sleepCalc: "/uyku-hesaplama/", examTimer: "/sinav-zamanlayicisi/", classroom: "/sinif-araclari/" }, en: { sleepCalc: "/en/sleep-calculator/", examTimer: "/en/exam-timer/", classroom: "/en/classroom-tools/" } });
+// Fotoğraf ışığı (9 Kasım 2026, sahibin onayı): altın saat, mavi saat, gün doğumu/batımı yönü, Ay, bulut tahmini
+extendRoutes({ tr: { photo: "/altin-saat/" }, en: { photo: "/en/golden-hour/" } });
 ROUTES.tr.retire = "/emeklilik-hesaplama/"; // yalnız Türkçe (SGK kuralları)
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
@@ -2837,6 +2841,95 @@ function buildSky(lang) {
   return simplePage(lang, "sky", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "sky", title: s.h1 }, scripts: ["place.js", "nature-calc.js", "sky-calc.js", "weather-core.js", "moon-render.js", "sky.js"], clientExtra: { moonTex: MOON_URL, t: { pl: placeClient(t.prayer), sk }, skyEvents: SKY_EVENTS.filter((e) => e.t >= Date.UTC(BUILD_YEAR, 0, 1)).map((e) => ({ ...e })) }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].sky, s.description)] });
 }
 
+/* Fotoğraf ışığı (9 Kasım 2026, sahibin onayı; uygulamalarla aynı tanımlar): seçili yerde ve günde mavi saat (Güneş
+   −4°…−6°), altın saat (+6°…−4°), gün doğumu/batımı (−0,833°) saati ve azimutu, Ay; 7 günlük ışık tablosu; bugün + 6 gün
+   gün doğumu/batımı fotoğraf tahmini (Open-Meteo bulut katmanları, dış hizmet izniyle; kural weather-core.js photoSky).
+   Hesap tarayıcıda (photo.js). JS'siz okur için sayfa, öntanımlı yerin (İstanbul, UTC+3) derleme gününün değerlerini taşır;
+   photo.js seçili yerle ve bugünle (ya da ?d=YYYY-MM-DD) yeniden çizer. */
+const PRAYER_CALC = (() => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(SRC, "js/prayer-calc.js"), "utf8"))(m, undefined); return m.exports; })();
+const PH_KEYS = ["blueAm", "goldenAm", "goldenPm", "bluePm"];
+const PH_PHASES = ["new", "waxingCrescent", "firstQuarter", "waxingGibbous", "full", "waningGibbous", "lastQuarter", "waningCrescent"];
+function photoLight(y, m, d, lat, lon, tz) {
+  const P = PRAYER_CALC, base = Date.UTC(y, m - 1, d);
+  const ms = (h) => (Number.isFinite(h) ? base + (h - tz) * 3600000 : NaN);
+  const az = (h) => (Number.isFinite(h) ? P.sunAltAz(y, m, d, h - tz, lat, lon).az : NaN);
+  const lh = P.lightHours(y, m, d, lat, lon, tz), rs = P.sunAltTimes(y, m, d, lat, lon, tz, -0.833);
+  return { rise: ms(rs.rise), set: ms(rs.set), riseAz: az(rs.rise), setAz: az(rs.set), ...Object.fromEntries(PH_KEYS.map((k) => [k, [ms(lh[k][0]), ms(lh[k][1])]])) };
+}
+function buildPhoto(lang) {
+  const t = I[lang], s = t.photo, cal = t.calendar;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].photo }];
+  const prov = PROVINCES.find((p) => p.slug === "istanbul"), tz = 3, lat = prov.lat, lon = prov.lon;
+  const [y0, m0, d0] = cfg.updated.split("-").map(Number);
+  const day = (i) => { const x = new Date(Date.UTC(y0, m0 - 1, d0 + i)); return [x.getUTCFullYear(), x.getUTCMonth() + 1, x.getUTCDate()]; };
+  const wd = (y, m, d) => (new Date(Date.UTC(y, m - 1, d)).getUTCDay() + 6) % 7;
+  const hm = (v) => (Number.isFinite(v) ? new Date(Math.round(v / 60000) * 60000 + tz * 3600000).toISOString().slice(11, 16) : "—");
+  const rng = (r) => { const a = Number.isFinite(r[0]), b = Number.isFinite(r[1]); return !a && !b ? "—" : `${hm(r[0])}${a && b ? "–" : " – "}${hm(r[1])}`; };
+  const dir = (a) => (Number.isFinite(a) ? `${Math.round(a) % 360}° ${s.dirs[Math.round(a / 22.5) % 16]}` : "—");
+  const o = photoLight(y0, m0, d0, lat, lon, tz);
+  const start = Date.UTC(y0, m0 - 1, d0) - tz * 3600000, mrs = NATURE.moonRiseSet(start, lat, lon, 86400000), mo = NATURE.moon(start + 43200000);
+  const place = provName(lang, prov);
+  const row = (k, label, val, attrs = "") => `<div class="ph-row${k ? ` ph-${k}` : ""}"${attrs}><dt>${esc(label)}</dt><dd ${val}</dd></div>`;
+  const hero = `<section class="ph" data-photo aria-labelledby="ph-place">
+      <h2 id="ph-place" class="qb-place" data-ph-place>${esc(place)}</h2>
+      <div class="ph-nav"><button type="button" class="icon-btn" data-ph-step="-1" aria-label="${esc(s.prev)}" title="${esc(s.prev)}">${ICON_PREV}</button><label for="ph-d" class="sr-only">${esc(s.dateLabel)}</label><input id="ph-d" type="date" data-ph-date min="1900-01-01" max="2100-12-31" value="${cfg.updated}"><button type="button" class="icon-btn" data-ph-step="1" aria-label="${esc(s.next)}" title="${esc(s.next)}">${ICON_NEXT}</button></div>
+      <div class="ph-dayrow"><p class="ph-day" data-ph-day>${esc(tpl(cal.fullFmt, { weekday: cal.weekdays[wd(y0, m0, d0)], day: d0, month: cal.months[m0 - 1], year: y0 }))}</p><button type="button" class="toggle" data-ph-today hidden>${esc(s.today)}</button></div>
+      <p class="meta ph-polar" data-ph-polar role="status" hidden></p>
+      <div class="ph-cards">
+        <article class="ph-card ph-am" aria-labelledby="ph-am-h">
+          <h3 id="ph-am-h">${esc(s.morning)}</h3>
+          <dl>${row("blue", s.blue, `data-ph="blueAm" dir="ltr">${rng(o.blueAm)}`)}${row("gold", s.golden, `data-ph="goldenAm" dir="ltr">${rng(o.goldenAm)}`)}${row("", s.sunrise, `data-ph="rise" dir="ltr">${hm(o.rise)}`)}${row("", s.direction, `data-ph="riseAz">${esc(dir(o.riseAz))}`)}${row("fcq", s.forecast, 'data-ph="riseQ">', " hidden")}</dl>
+        </article>
+        <article class="ph-card ph-pm" aria-labelledby="ph-pm-h">
+          <h3 id="ph-pm-h">${esc(s.evening)}</h3>
+          <dl>${row("gold", s.golden, `data-ph="goldenPm" dir="ltr">${rng(o.goldenPm)}`)}${row("blue", s.blue, `data-ph="bluePm" dir="ltr">${rng(o.bluePm)}`)}${row("", s.sunset, `data-ph="set" dir="ltr">${hm(o.set)}`)}${row("", s.direction, `data-ph="setAz">${esc(dir(o.setAz))}`)}${row("fcq", s.forecast, 'data-ph="setQ">', " hidden")}</dl>
+        </article>
+      </div>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+  const weekRows = Array.from({ length: 7 }, (_, i) => {
+    const [y, m, d] = day(i), x = photoLight(y, m, d, lat, lon, tz);
+    return `<tr><th scope="row">${esc(`${cal.weekdaysShort[wd(y, m, d)]} ${tpl(cal.shortFmt, { day: d, month: cal.months[m - 1] })}`)}</th>${[x.goldenAm, x.goldenPm, x.bluePm].map((r) => `<td dir="ltr">${rng(r)}</td>`).join("")}</tr>`;
+  }).join("");
+  const fact = (label, val) => `<div class="fact"><dt>${esc(label)}</dt><dd ${val}</dd></div>`;
+  const sections = `<section class="section" aria-labelledby="ph-moon-h">
+  <div class="wrap">
+    <h2 id="ph-moon-h">${esc(s.moonHeading)}</h2>
+    <div class="moon-row ph-moon-row">
+      <svg class="moon ph-moon" data-ph-moon viewBox="0 0 80 80" aria-hidden="true" focusable="false"></svg>
+      <dl class="facts">${fact(s.moonrise, `data-ph="moonrise" dir="ltr">${mrs.rise === null ? esc(s.noMoonrise) : hm(mrs.rise)}`)}${fact(s.moonset, `data-ph="moonset" dir="ltr">${mrs.set === null ? esc(s.noMoonset) : hm(mrs.set)}`)}${fact(s.phase, `data-ph="phase">${esc(`${t.nature.phases[PH_PHASES[mo.idx]]} · ${tpl(s.lit, { p: new Intl.NumberFormat(t.locale, { style: "percent", numberingSystem: "latn", maximumFractionDigits: 0 }).format(Math.round(mo.illum * 100) / 100) })}`)}`)}</dl>
+    </div>
+  </div>
+</section>
+<section class="section" aria-labelledby="ph-fc-h">
+  <div class="wrap">
+    <h2 id="ph-fc-h">${esc(s.fcHeading)}</h2>
+    <p class="meta">${esc(s.fcLead)}</p>
+    <p class="meta ph-fc-state" data-ph-fc-state role="status" aria-live="polite" hidden></p>
+    <p class="meta consent-ph" data-ph-consent hidden>${esc(s.blocked)} <button type="button" class="btn btn-ghost btn-sm" data-consent-allow-ext>${esc(t.consent.allow)}</button></p>
+    <div class="table-wrap" data-ph-fc-box hidden><table class="events-table ph-fc"><caption class="sr-only">${esc(s.fcHeading)}</caption><thead><tr><th scope="col">${esc(s.colDay)}</th><th scope="col">${esc(s.sunrise)}</th><th scope="col">${esc(s.sunset)}</th></tr></thead><tbody data-ph-fc></tbody></table></div>
+    <p class="meta">${esc(s.why)}</p>
+    <p class="meta">${esc(s.attribution)}</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="ph-wk-h">
+  <div class="wrap">
+    <h2 id="ph-wk-h">${esc(s.weekHeading)}</h2>
+    <p class="meta" data-ph-wk-place>${esc(place)}</p>
+    <div class="table-wrap"><table class="events-table ph-week"><caption class="sr-only">${esc(s.weekHeading)}</caption><thead><tr><th scope="col">${esc(s.colDay)}</th><th scope="col">${esc(s.colGoldenAm)}</th><th scope="col">${esc(s.colGoldenPm)}</th><th scope="col">${esc(s.colBluePm)}</th></tr></thead><tbody data-ph-week>${weekRows}</tbody></table></div>
+  </div>
+</section>
+<section class="section" aria-labelledby="ph-def-h">
+  <div class="wrap">
+    <h2 id="ph-def-h">${esc(s.defsHeading)}</h2>
+    ${s.defs.map((p) => `<p>${md(p)}</p>`).join("\n    ")}
+    <p class="meta">${esc(s.note)}</p>
+  </div>
+</section>`;
+  const ph = { dirs: s.dirs, q: s.q, clouds: s.clouds, rain: s.rain, lit: s.lit, noMoonrise: s.noMoonrise, noMoonset: s.noMoonset, loading: s.loading, error: s.error, polarDay: s.polarDay, polarNight: s.polarNight, partial: s.partial, phases: t.nature.phases };
+  return simplePage(lang, "photo", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "photo", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "weather-core.js", "photo.js"], clientExtra: { t: { pl: placeClient(t.prayer), ph } }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].photo, s.description)] });
+}
+
 /* Tarihte bugün (30 Ekim 2026, rakip analizi listesi #89): Wikidata (CC0) verisi, scripts/fetch-on-this-day.mjs ile elle
    yenilenir (derleme ağa çıkmaz). Her dil için ay başına bir dosya: { "MM-DD": [[yıl, tür, ad, açıklama, Qkimlik]] };
    tür e olay, f kuruluş, b doğum, d ölüm. Adı o dilde olmayan kayıt o dilde gösterilmez (Filipincede İngilizce ad). Sayfa derleme gününün listesini
@@ -3014,7 +3107,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildPhoto(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

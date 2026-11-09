@@ -334,7 +334,7 @@
         "ul": [
           "**Heure et date :** l’heure et le fuseau horaire de votre appareil sont lus et calculés uniquement dans votre navigateur. Ils ne sont ni envoyés à un serveur ni conservés.",
           "**Lieu (heures de prière) :** si vous appuyez sur « Utiliser ma position » sur la page des heures de prière, votre navigateur utilise votre position uniquement sur votre appareil pour calculer les heures. Les coordonnées ne sont ni envoyées au serveur ni incluses dans les statistiques ; votre dernier choix reste dans le stockage local de votre navigateur.",
-          "**Météo (service externe, avec autorisation) :** si vous avez autorisé les services externes dans les préférences de cookies, la page météo et les styles d’horloge avec météo envoient les coordonnées approximatives de la province ou du lieu choisi (à environ 1 km près) directement depuis votre navigateur à Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), qui fournit les données ; votre adresse IP parvient aussi à Open-Meteo. Sans autorisation, aucune requête n’est faite et une courte note s’affiche à la place. Le serveur de Saat Tarih ne voit ni ne conserve ces coordonnées ; les conditions de confidentialité d’Open-Meteo s’appliquent.",
+          "**Météo (service externe, avec autorisation) :** si vous avez autorisé les services externes dans les préférences de cookies, la page météo et les styles d’horloge avec météo envoient les coordonnées approximatives de la province ou du lieu choisi (à environ 1 km près) directement depuis votre navigateur à Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), qui fournit les données ; votre adresse IP parvient aussi à Open-Meteo. Sans autorisation, aucune requête n’est faite et une courte note s’affiche à la place. Le serveur de Saat Tarih ne voit ni ne conserve ces coordonnées ; les conditions de confidentialité d’Open-Meteo s’appliquent. La prévision des nuages de la page Lumière photo est elle aussi chargée depuis Open-Meteo, avec la même autorisation et les mêmes coordonnées approximatives (deux décimales).",
           "**Carte (globe, service externe, avec autorisation) :** si vous avez autorisé les services externes dans les préférences de cookies et que vous zoomez sur le globe de la page d’accueil au-delà d’un certain niveau, les tuiles de la carte sont téléchargées directement dans votre navigateur depuis le serveur d’OpenStreetMap (tile.openstreetmap.org) ; votre adresse IP et les adresses des tuiles de la zone que vous regardez parviennent alors à la Fondation OpenStreetMap. Sans autorisation, ou tant que le globe est dézoomé, cette requête n’est pas faite. Le serveur de Saat Tarih ne les voit pas ; les conditions de confidentialité d’OpenStreetMap s’appliquent.",
           "**Qibla et mosquées proches :** la direction de la qibla, la distance et l’heure de la qibla sont calculées dans votre navigateur. Pour la boussole, le capteur d’orientation de votre téléphone est lu uniquement dans le navigateur (l’iPhone demande l’autorisation) et n’est jamais transmis. Si vous appuyez sur « Afficher les mosquées » et avez autorisé les services externes, les coordonnées du lieu choisi arrondies à deux décimales (environ 1 km) sont envoyées depuis votre navigateur au service Overpass (overpass-api.de), qui fournit les données OpenStreetMap ; votre adresse IP parvient aussi à ce service. Le serveur de Saat Tarih ne voit pas ces coordonnées.",
           "**Musique de réveil (YouTube, service externe, avec autorisation) :** si vous ajoutez un lien YouTube à une alarme dans l’outil de réveil et avez autorisé les services externes, la vidéo est chargée dans votre navigateur quand l’alarme sonne, avec le lecteur en mode confidentialité renforcée de YouTube (youtube-nocookie.com) ; votre adresse IP et l’identifiant de la vidéo parviennent alors à Google (YouTube), et le lecteur peut enregistrer ses propres données dans votre navigateur. Le lien reste uniquement dans ce navigateur, avec votre alarme. Sans autorisation, le lecteur n’est pas chargé et l’alarme sonne avec son propre son. Le serveur de Saat Tarih ne voit pas ces données ; les conditions de confidentialité de YouTube (Google) s’appliquent.",
@@ -353,7 +353,7 @@
         ],
         "ul": [
           "**Lieu :** si vous touchez « Utiliser ma position », votre position sert sur votre téléphone à calculer les heures de prière et à trouver la province la plus proche ; une position approximative (environ 1 km) est conservée uniquement sur votre téléphone. L’option « Automatique » des widgets utilise elle aussi votre position uniquement sur le téléphone.",
-          "**Météo :** la météo de l’application provient d’Apple Météo (WeatherKit) ; pour cela, les coordonnées approximatives de la province choisie ou de votre position sont envoyées à Apple. Nous ne voyons jamais ces données ; les conditions de confidentialité d’Apple s’appliquent. La qualité de l'air, le pollen, la comparaison des modèles et la complication météo de l'Apple Watch proviennent d'Open-Meteo (open-meteo.com) ; pour cela, des coordonnées arrondies à deux décimales sont envoyées. Si la météo sur l'écran verrouillé est activée, elle est aussi récupérée en arrière-plan quand iOS le permet.",
+          "**Météo :** la météo de l’application provient d’Apple Météo (WeatherKit) ; pour cela, les coordonnées approximatives de la province choisie ou de votre position sont envoyées à Apple. Nous ne voyons jamais ces données ; les conditions de confidentialité d’Apple s’appliquent. La qualité de l'air, le pollen, la comparaison des modèles et la complication météo de l'Apple Watch proviennent d'Open-Meteo (open-meteo.com) ; pour cela, des coordonnées arrondies à deux décimales sont envoyées. Si la météo sur l'écran verrouillé est activée, elle est aussi récupérée en arrière-plan quand iOS le permet. La prévision des nuages de l’écran Lumière photo provient elle aussi d’Open-Meteo ; là aussi, les coordonnées sont arrondies à deux décimales.",
           "**Carte :** le globe de l’horloge mondiale est affiché avec Apple Plans ; les images de carte sont téléchargées depuis Apple.",
           "**Calendrier :** uniquement si vous l’autorisez, les événements des calendriers de votre téléphone s’affichent dans l’application ; ils sont lus sur le téléphone et ne sont jamais transmis. L’ajout et la suppression d’événements passent par l’écran de calendrier de l’iPhone et uniquement avec votre confirmation.",
           "**Notifications et alarmes :** les notifications des heures de prière ; les notifications de jours particuliers, de début de saison, de phase de la Lune, de lever et coucher du soleil, de résumé météo du matin, d’heure pile et de changement d’heure (toutes activées par défaut sauf l’heure pile ; modifiables dans Réglages › Notifications) ; les alarmes et minuteurs sont programmés sur votre téléphone sans aucun serveur. Seul le résumé météo interroge le service météo (voir ci-dessus). La liste est tenue à jour grâce à l’actualisation en arrière-plan d’iOS ; les annonces vocales sont produites sur votre téléphone.",
@@ -380,7 +380,7 @@
         ],
         "ul": [
           "**Lieu :** si vous touchez « Utiliser ma position », seule l’autorisation de position approximative est demandée ; votre position sert sur le téléphone à calculer les heures de prière et à trouver la province ou le district le plus proche, et une position approximative (environ 1 km) est conservée uniquement sur le téléphone.",
-          "**Météo :** la météo de l’application provient d’Open-Meteo (open-meteo.com) ; pour cela, les coordonnées du lieu choisi, arrondies à deux décimales (environ 1 km), sont envoyées à Open-Meteo, et votre adresse IP parvient au serveur d’Open-Meteo avec la requête. Pour la météo des villes sur le globe, seules les coordonnées de ces villes sont envoyées. Les conditions de confidentialité d’Open-Meteo s’appliquent ; nous ne voyons jamais ces données. Si la météo dans la barre d'état est activée, cette requête est aussi envoyée toutes les heures en arrière-plan.",
+          "**Météo :** la météo de l’application provient d’Open-Meteo (open-meteo.com) ; pour cela, les coordonnées du lieu choisi, arrondies à deux décimales (environ 1 km), sont envoyées à Open-Meteo, et votre adresse IP parvient au serveur d’Open-Meteo avec la requête. Pour la météo des villes sur le globe, seules les coordonnées de ces villes sont envoyées. Les conditions de confidentialité d’Open-Meteo s’appliquent ; nous ne voyons jamais ces données. Si la météo dans la barre d'état est activée, cette requête est aussi envoyée toutes les heures en arrière-plan. Pour la prévision des nuages de l’écran Lumière photo, la même position approximative (deux décimales) est également envoyée à Open-Meteo.",
           "**Globe et carte :** le globe qui tourne est dessiné à partir d’une image incluse dans l’application ; aucun service de carte n’est contacté.",
           "**Calendrier :** l’autorisation d’accès au calendrier n’est demandée que si vous touchez « Afficher les calendriers de mon téléphone » ; les événements sont lus sur le téléphone et jamais transmis. Les événements sont ajoutés via l’application de calendrier du téléphone et supprimés uniquement avec votre confirmation.",
           "**Notifications, alarmes et entraînement fractionné :** les notifications des heures de prière et les autres types de notification (jours particuliers, début de saison, phase de la Lune, lever et coucher du soleil, résumé météo du matin, heure pile, changement d’heure ; toutes activées par défaut sauf l’heure pile, modifiables dans Réglages › Notifications), les alarmes et minuteurs sont programmés sur votre téléphone sans aucun serveur ; l’autorisation d’alarme exacte est utilisée pour qu’ils sonnent à l’heure. Pendant un entraînement fractionné que vous avez lancé, un service de premier plan visible dans la notification annonce les changements de phase avec la synthèse vocale du téléphone. Les annonces vocales sont produites sur votre téléphone.",
@@ -971,6 +971,10 @@
         "classroom": {
           "name": "Outils de classe",
           "desc": "Noms au hasard, équipes et compteurs."
+        },
+        "photo": {
+          "name": "Lumière photo",
+          "desc": "Heure dorée, heure bleue et prévision photo du coucher."
         }
       },
       "infoHeading": "Pages d’information"
@@ -3270,6 +3274,92 @@
       {
         "q": "Les noms des élèves sont-ils envoyés quelque part ?",
         "a": "Non. Les noms, équipes et compteurs sont enregistrés uniquement dans ce navigateur ; ils ne sont envoyés à aucun serveur et n'entrent pas dans les statistiques."
+      }
+    ]
+  },
+  "photo": {
+    "title": "Heure dorée et heure bleue aujourd’hui : lumière photo | Saat Tarih",
+    "description": "Heure dorée et heure bleue pour votre lieu, direction du lever et du coucher du soleil, lever et phase de la Lune, et prévision photo sur 7 jours selon les nuages.",
+    "h1": "Lumière photo : heure dorée et heure bleue",
+    "lead": "La lumière du jour pour les photographes sur une seule page : heure bleue et heure dorée du matin et du soir, heure et direction du lever et du coucher du soleil, la Lune et une prévision photo du lever et du coucher selon les nuages.",
+    "search": "heure dorée heure bleue lumière photo photographie lever du soleil coucher du soleil direction azimut lever de lune prévision nuages golden hour blue hour",
+    "dateLabel": "Date",
+    "prev": "Jour précédent",
+    "next": "Jour suivant",
+    "today": "Aujourd’hui",
+    "morning": "Matin",
+    "evening": "Soir",
+    "blue": "Heure bleue",
+    "golden": "Heure dorée",
+    "sunrise": "Lever du soleil",
+    "sunset": "Coucher du soleil",
+    "direction": "Direction",
+    "forecast": "Prévision photo",
+    "dirs": [
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSO",
+      "SO",
+      "OSO",
+      "O",
+      "ONO",
+      "NO",
+      "NNO"
+    ],
+    "moonHeading": "Lune",
+    "moonrise": "Lever de la Lune",
+    "moonset": "Coucher de la Lune",
+    "noMoonrise": "Pas de lever de Lune ce jour-là",
+    "noMoonset": "Pas de coucher de Lune ce jour-là",
+    "phase": "Phase",
+    "lit": "éclairée à {p}",
+    "fcHeading": "Prévision photo du lever et du coucher du soleil",
+    "fcLead": "Aujourd’hui et les 6 jours suivants, d’après la prévision de nuages pour l’heure la plus proche du lever et du coucher du soleil.",
+    "colDay": "Jour",
+    "q": {
+      "good": "Bonne",
+      "fair": "Moyenne",
+      "poor": "Mauvaise"
+    },
+    "clouds": "Nuages bas {l} · moyens {m} · hauts {h}",
+    "rain": "Pluie {p} mm",
+    "why": "Les nuages moyens et hauts captent les couleurs ; les nuages bas à l’horizon et la pluie cachent le Soleil ; un ciel dégagé est net mais sobre. C’est une estimation, pas une garantie.",
+    "loading": "Chargement de la prévision des nuages…",
+    "error": "La prévision des nuages n’a pas pu être chargée. Veuillez réessayer plus tard.",
+    "blocked": "La prévision des nuages est chargée depuis Open-Meteo ; autorisez les services externes pour l’afficher.",
+    "attribution": "Prévision des nuages : Open-Meteo.com (CC BY 4.0)",
+    "weekHeading": "Lumière sur 7 jours",
+    "colGoldenAm": "Heure dorée du matin",
+    "colGoldenPm": "Heure dorée du soir",
+    "colBluePm": "Heure bleue du soir",
+    "polarDay": "Le Soleil ne se couche pas ce jour-là ; pas de coucher ni d’heure bleue.",
+    "polarNight": "Le Soleil ne se lève pas ce jour-là ; les heures marquées — n’ont pas lieu.",
+    "partial": "Ce jour-là, le Soleil n’atteint pas certaines de ces hauteurs ; les heures marquées — n’ont pas lieu.",
+    "defsHeading": "Qu’est-ce que l’heure dorée et l’heure bleue ?",
+    "defs": [
+      "**Heure dorée :** le Soleil se trouve entre 6° au-dessus et 4° sous l’horizon. La lumière est rasante, douce et chaude, les ombres sont longues ; c’est le moment préféré pour les portraits et les paysages.",
+      "**Heure bleue :** le Soleil se trouve entre 4° et 6° sous l’horizon. Le ciel devient bleu profond et les lumières de la ville s’équilibrent avec le ciel ; idéal pour les vues urbaines et les poses longues."
+    ],
+    "note": "Les heures sont calculées sur votre appareil pour le lieu choisi et sont approximatives (quelques minutes) ; les montagnes et les bâtiments à l’horizon ne sont pas pris en compte. Votre position reste sur votre appareil ; seules des coordonnées arrondies sont envoyées à Open-Meteo pour la prévision des nuages.",
+    "faq": [
+      {
+        "q": "Quand est l’heure dorée aujourd’hui ?",
+        "a": "L’heure dorée a lieu deux fois par jour, autour du lever et du coucher du soleil, tant que le Soleil est entre 6° au-dessus et 4° sous l’horizon. Cette page calcule les heures pour votre lieu ; elle dure en général 40 à 90 minutes, davantage en hiver et aux hautes latitudes."
+      },
+      {
+        "q": "Qu’est-ce que l’heure bleue et quand a-t-elle lieu ?",
+        "a": "L’heure bleue est le crépuscule pendant lequel le Soleil est entre 4° et 6° sous l’horizon : avant l’heure dorée du matin et après celle du soir. Le ciel est d’un bleu profond, idéal pour les lumières de la ville et les poses longues. Elle dure en général 10 à 20 minutes."
+      },
+      {
+        "q": "Comment la prévision photo du lever et du coucher est-elle établie ?",
+        "a": "À partir de la prévision horaire des nuages d’Open-Meteo pour l’heure la plus proche du lever ou du coucher. La pluie (0,5 mm par heure ou plus) ou des nuages bas épais (75 % ou plus) donnent Mauvaise ; peu de nuages bas (moins de 40 %) avec 20 à 80 % de nuages moyens ou hauts donnent Bonne ; sinon Moyenne tant que les nuages bas restent sous 60 %, et Mauvaise au-delà. Les nuages moyens et hauts captent les couleurs, les nuages bas à l’horizon cachent le Soleil."
       }
     ]
   }

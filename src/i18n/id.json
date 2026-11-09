@@ -307,7 +307,7 @@
         "ul": [
           "**Waktu dan tanggal:** Waktu dan zona waktu perangkat Anda dibaca dan dihitung hanya di peramban Anda. Data ini tidak dikirim ke server dan tidak disimpan.",
           "**Lokasi (jadwal salat):** Jika Anda menekan \"Gunakan lokasi saya\" di halaman jadwal salat, peramban memakai lokasi Anda hanya di perangkat untuk menghitung waktu. Koordinat tidak dikirim ke server dan tidak masuk statistik; pilihan terakhir Anda tetap di penyimpanan lokal peramban.",
-          "**Cuaca (layanan eksternal, dengan izin):** Jika Anda mengizinkan layanan eksternal di preferensi cookie, halaman cuaca dan gaya jam dengan cuaca mengirim perkiraan koordinat provinsi atau lokasi pilihan Anda (dengan ketelitian sekitar 1 km) langsung dari peramban ke Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), penyedia datanya; alamat IP Anda juga sampai ke Open-Meteo. Tanpa izin tidak ada permintaan yang dibuat dan catatan singkat ditampilkan sebagai gantinya. Server Saat Tarih tidak melihat atau menyimpan koordinat ini; ketentuan privasi Open-Meteo sendiri yang berlaku.",
+          "**Cuaca (layanan eksternal, dengan izin):** Jika Anda mengizinkan layanan eksternal di preferensi cookie, halaman cuaca dan gaya jam dengan cuaca mengirim perkiraan koordinat provinsi atau lokasi pilihan Anda (dengan ketelitian sekitar 1 km) langsung dari peramban ke Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), penyedia datanya; alamat IP Anda juga sampai ke Open-Meteo. Tanpa izin tidak ada permintaan yang dibuat dan catatan singkat ditampilkan sebagai gantinya. Server Saat Tarih tidak melihat atau menyimpan koordinat ini; ketentuan privasi Open-Meteo sendiri yang berlaku. Prakiraan awan di halaman cahaya foto juga dimuat dari Open-Meteo dengan izin yang sama dan koordinat perkiraan yang sama (dua desimal).",
           "**Peta (bola dunia, layanan eksternal, dengan izin):** Jika Anda mengizinkan layanan eksternal di preferensi cookie dan memperbesar bola dunia di beranda melewati tingkat tertentu, ubin peta diunduh langsung ke peramban Anda dari server OpenStreetMap (tile.openstreetmap.org); alamat IP Anda dan alamat ubin wilayah yang Anda lihat sampai ke OpenStreetMap Foundation. Tanpa izin, atau selama bola dunia diperkecil, permintaan ini tidak dibuat. Server Saat Tarih tidak melihatnya; ketentuan privasi OpenStreetMap sendiri yang berlaku.",
           "**Kiblat dan masjid terdekat:** Arah kiblat, jarak, dan waktu kiblat dihitung di peramban Anda. Untuk kompas, sensor orientasi ponsel dibaca hanya di peramban (iPhone meminta izin) dan tidak pernah dikirim ke mana pun. Jika Anda menekan \"Tampilkan masjid\" dan telah mengizinkan layanan eksternal, koordinat tempat terpilih yang dibulatkan ke dua desimal (sekitar 1 km) dikirim dari peramban ke layanan Overpass (overpass-api.de) yang menyediakan data OpenStreetMap; alamat IP Anda juga sampai ke layanan ini. Server Saat Tarih tidak melihat koordinat ini.",
           "**Musik alarm (YouTube, layanan eksternal, dengan izin):** Jika Anda menambahkan tautan YouTube ke alarm di alat alarm dan mengizinkan layanan eksternal, saat alarm berbunyi video dimuat ke peramban Anda dengan pemutar mode privasi yang ditingkatkan dari YouTube (youtube-nocookie.com); alamat IP Anda dan ID video sampai ke Google (YouTube), dan pemutar dapat menyimpan datanya sendiri di peramban Anda. Tautan hanya tersimpan di peramban ini, bersama alarm Anda. Tanpa izin, pemutar tidak dimuat dan alarm berbunyi dengan suaranya sendiri. Server Saat Tarih tidak melihatnya; ketentuan privasi YouTube (Google) sendiri yang berlaku.",
@@ -326,7 +326,7 @@
         ],
         "ul": [
           "**Lokasi:** Jika Anda mengetuk \"Gunakan lokasi saya\", lokasi Anda dipakai di ponsel untuk menghitung jadwal salat dan mencari provinsi terdekat; lokasi perkiraan (sekitar 1 km) disimpan hanya di ponsel. Opsi \"Otomatis\" pada widget juga memakai lokasi Anda hanya di ponsel.",
-          "**Cuaca:** Cuaca di aplikasi berasal dari Apple Cuaca (WeatherKit); untuk itu koordinat perkiraan provinsi terpilih atau lokasi Anda dikirim ke Apple. Kami tidak pernah melihat data ini; ketentuan privasi Apple berlaku. Kualitas udara, serbuk sari, perbandingan model, dan komplikasi cuaca Apple Watch berasal dari Open-Meteo (open-meteo.com); untuk itu koordinat yang dibulatkan ke dua desimal dikirim. Jika cuaca di Layar Terkunci aktif, data juga diambil di latar belakang saat iOS mengizinkan.",
+          "**Cuaca:** Cuaca di aplikasi berasal dari Apple Cuaca (WeatherKit); untuk itu koordinat perkiraan provinsi terpilih atau lokasi Anda dikirim ke Apple. Kami tidak pernah melihat data ini; ketentuan privasi Apple berlaku. Kualitas udara, serbuk sari, perbandingan model, dan komplikasi cuaca Apple Watch berasal dari Open-Meteo (open-meteo.com); untuk itu koordinat yang dibulatkan ke dua desimal dikirim. Jika cuaca di Layar Terkunci aktif, data juga diambil di latar belakang saat iOS mengizinkan. Prakiraan awan di layar cahaya foto juga berasal dari Open-Meteo; untuk itu koordinat juga dibulatkan ke dua desimal.",
           "**Peta:** Bola dunia di jam dunia ditampilkan dengan Apple Peta; citra peta diunduh dari Apple.",
           "**Kalender:** Hanya jika Anda mengizinkannya, acara dari kalender di ponsel ditampilkan di aplikasi; acara dibaca di ponsel dan tidak pernah dikirim. Penambahan dan penghapusan acara dilakukan lewat layar kalender iPhone sendiri dan hanya dengan konfirmasi Anda.",
           "**Notifikasi dan alarm:** Notifikasi waktu salat; notifikasi hari istimewa, awal musim, fase Bulan, matahari terbit dan terbenam, ringkasan cuaca pagi, setiap jam, dan perubahan waktu musim panas (semuanya aktif secara bawaan kecuali setiap jam; dapat diubah di Pengaturan › Notifikasi); alarm dan pengatur waktu dijadwalkan di ponsel tanpa server. Hanya ringkasan cuaca yang menghubungi layanan cuaca (lihat poin cuaca di atas). Daftar tetap mutakhir berkat penyegaran latar belakang iOS; pengumuman suara dibuat di ponsel Anda.",
@@ -353,7 +353,7 @@
         ],
         "ul": [
           "**Lokasi:** Jika Anda mengetuk \"Gunakan lokasi saya\", hanya izin lokasi perkiraan yang diminta; lokasi dipakai di ponsel untuk menghitung jadwal salat dan mencari provinsi atau distrik terdekat, dan lokasi perkiraan (sekitar 1 km) disimpan hanya di ponsel.",
-          "**Cuaca:** Cuaca di aplikasi berasal dari Open-Meteo (open-meteo.com); untuk itu koordinat tempat terpilih yang dibulatkan ke dua desimal (sekitar 1 km) dikirim ke Open-Meteo, dan alamat IP Anda sampai ke server Open-Meteo bersama permintaan itu. Untuk cuaca kota di bola dunia yang berputar, hanya koordinat kota-kota itu yang dikirim. Ketentuan privasi Open-Meteo berlaku; kami tidak pernah melihat data ini. Jika cuaca di bilah status aktif, permintaan ini juga dikirim tiap jam di latar belakang.",
+          "**Cuaca:** Cuaca di aplikasi berasal dari Open-Meteo (open-meteo.com); untuk itu koordinat tempat terpilih yang dibulatkan ke dua desimal (sekitar 1 km) dikirim ke Open-Meteo, dan alamat IP Anda sampai ke server Open-Meteo bersama permintaan itu. Untuk cuaca kota di bola dunia yang berputar, hanya koordinat kota-kota itu yang dikirim. Ketentuan privasi Open-Meteo berlaku; kami tidak pernah melihat data ini. Jika cuaca di bilah status aktif, permintaan ini juga dikirim tiap jam di latar belakang. Untuk prakiraan awan di layar cahaya foto, lokasi perkiraan yang sama (dua desimal) juga dikirim ke Open-Meteo.",
           "**Bola dunia dan peta:** Bola dunia yang berputar digambar dari citra di dalam aplikasi; tidak ada layanan peta yang dihubungi.",
           "**Kalender:** Izin kalender hanya diminta jika Anda mengetuk \"Tampilkan kalender ponsel saya\"; acara dibaca di ponsel dan tidak pernah dikirim. Acara ditambahkan lewat aplikasi kalender ponsel dan dihapus hanya dengan konfirmasi Anda.",
           "**Notifikasi, alarm, dan latihan interval:** Notifikasi waktu salat dan jenis notifikasi lainnya (hari istimewa, awal musim, fase Bulan, matahari terbit dan terbenam, ringkasan cuaca pagi, setiap jam, perubahan waktu musim panas; semuanya aktif secara bawaan kecuali setiap jam, dapat diubah di Pengaturan › Notifikasi), alarm, dan pengatur waktu dijadwalkan di ponsel tanpa server; izin alarm tepat dipakai agar berbunyi tepat waktu. Selama latihan interval yang Anda mulai berjalan, layanan latar depan yang tampil di notifikasi mengumumkan pergantian fase dengan mesin teks-ke-suara ponsel. Pengumuman suara dibuat di ponsel Anda.",
@@ -930,6 +930,10 @@
         "classroom": {
           "name": "Alat kelas",
           "desc": "Nama acak, tim, dan penghitung."
+        },
+        "photo": {
+          "name": "Cahaya foto",
+          "desc": "Jam emas, jam biru, dan prakiraan foto matahari terbenam."
         }
       },
       "infoHeading": "Halaman informasi"
@@ -3229,6 +3233,92 @@
       {
         "q": "Apakah nama siswa dikirim ke suatu tempat?",
         "a": "Tidak. Nama, tim, dan penghitung hanya disimpan di peramban ini; tidak dikirim ke server dan tidak masuk statistik."
+      }
+    ]
+  },
+  "photo": {
+    "title": "Jam Emas & Jam Biru Hari Ini: Cahaya Foto | Saat Tarih",
+    "description": "Waktu jam emas (golden hour) dan jam biru untuk lokasi Anda, arah matahari terbit dan terbenam, terbit dan fase Bulan, serta prakiraan foto 7 hari dari awan.",
+    "h1": "Cahaya foto: jam emas dan jam biru",
+    "lead": "Cahaya hari ini untuk fotografer dalam satu halaman: jam biru dan jam emas pagi dan sore, waktu dan arah matahari terbit dan terbenam, Bulan, serta prakiraan foto matahari terbit dan terbenam berdasarkan awan.",
+    "search": "jam emas jam biru golden hour blue hour cahaya foto fotografi matahari terbit terbenam arah azimut bulan terbit prakiraan awan fotografer",
+    "dateLabel": "Tanggal",
+    "prev": "Hari sebelumnya",
+    "next": "Hari berikutnya",
+    "today": "Hari ini",
+    "morning": "Pagi",
+    "evening": "Sore",
+    "blue": "Jam biru",
+    "golden": "Jam emas",
+    "sunrise": "Matahari terbit",
+    "sunset": "Matahari terbenam",
+    "direction": "Arah",
+    "forecast": "Prakiraan foto",
+    "dirs": [
+      "U",
+      "UTL",
+      "TL",
+      "TTL",
+      "T",
+      "TTg",
+      "Tg",
+      "STg",
+      "S",
+      "SBD",
+      "BD",
+      "BBD",
+      "B",
+      "BBL",
+      "BL",
+      "UBL"
+    ],
+    "moonHeading": "Bulan",
+    "moonrise": "Bulan terbit",
+    "moonset": "Bulan terbenam",
+    "noMoonrise": "Bulan tidak terbit pada hari itu",
+    "noMoonset": "Bulan tidak terbenam pada hari itu",
+    "phase": "Fase",
+    "lit": "{p} tersinari",
+    "fcHeading": "Prakiraan foto matahari terbit dan terbenam",
+    "fcLead": "Hari ini dan 6 hari berikutnya, dari prakiraan awan untuk jam yang paling dekat dengan matahari terbit dan terbenam.",
+    "colDay": "Hari",
+    "q": {
+      "good": "Bagus",
+      "fair": "Sedang",
+      "poor": "Buruk"
+    },
+    "clouds": "Awan rendah {l} · menengah {m} · tinggi {h}",
+    "rain": "Hujan {p} mm",
+    "why": "Awan menengah dan tinggi menangkap warna; awan rendah di ufuk dan hujan menutupi Matahari; langit cerah bersih tetapi polos. Ini perkiraan, bukan jaminan.",
+    "loading": "Memuat prakiraan awan…",
+    "error": "Prakiraan awan tidak dapat dimuat. Silakan coba lagi nanti.",
+    "blocked": "Prakiraan awan dimuat dari Open-Meteo; izinkan layanan eksternal untuk menampilkannya.",
+    "attribution": "Prakiraan awan: Open-Meteo.com (CC BY 4.0)",
+    "weekHeading": "Cahaya 7 hari",
+    "colGoldenAm": "Jam emas pagi",
+    "colGoldenPm": "Jam emas sore",
+    "colBluePm": "Jam biru petang",
+    "polarDay": "Matahari tidak terbenam pada hari itu; tidak ada matahari terbenam maupun jam biru.",
+    "polarNight": "Matahari tidak terbit pada hari itu; waktu yang bertanda — tidak terjadi.",
+    "partial": "Pada hari itu Matahari tidak mencapai beberapa ketinggian ini; waktu yang bertanda — tidak terjadi.",
+    "defsHeading": "Apa itu jam emas dan jam biru?",
+    "defs": [
+      "**Jam emas (golden hour):** Matahari berada antara 6° di atas dan 4° di bawah ufuk. Cahayanya rendah, lembut, dan hangat, bayangan panjang; waktu favorit untuk potret dan lanskap.",
+      "**Jam biru (blue hour):** Matahari berada 4° hingga 6° di bawah ufuk. Langit menjadi biru tua dan lampu kota seimbang dengan langit; cocok untuk pemandangan kota dan pencahayaan panjang."
+    ],
+    "note": "Waktu dihitung di perangkat Anda untuk tempat yang dipilih dan bersifat perkiraan (beberapa menit); gunung dan bangunan di ufuk tidak diperhitungkan. Lokasi Anda tetap di perangkat; hanya koordinat yang dibulatkan dikirim ke Open-Meteo untuk prakiraan awan.",
+    "faq": [
+      {
+        "q": "Kapan jam emas hari ini?",
+        "a": "Jam emas terjadi dua kali sehari, sekitar matahari terbit dan terbenam, selama Matahari berada antara 6° di atas dan 4° di bawah ufuk. Halaman ini menghitung waktunya untuk lokasi Anda; biasanya berlangsung sekitar 40–90 menit, lebih lama pada musim dingin dan di lintang tinggi."
+      },
+      {
+        "q": "Apa itu jam biru dan kapan terjadi?",
+        "a": "Jam biru adalah senja saat Matahari berada 4° hingga 6° di bawah ufuk: sebelum jam emas pagi dan sesudah jam emas sore. Langit biru tua, ideal untuk lampu kota dan pencahayaan panjang. Biasanya berlangsung 10–20 menit."
+      },
+      {
+        "q": "Bagaimana prakiraan foto matahari terbit dan terbenam dibuat?",
+        "a": "Dari prakiraan awan per jam Open-Meteo untuk jam yang paling dekat dengan matahari terbit atau terbenam. Hujan (0,5 mm per jam atau lebih) atau awan rendah tebal (75% atau lebih) dinilai Buruk; sedikit awan rendah (di bawah 40%) dengan awan menengah atau tinggi 20–80% dinilai Bagus; selain itu Sedang selama awan rendah di bawah 60%, dan Buruk jika lebih. Awan menengah dan tinggi menangkap warna, sedangkan awan rendah di ufuk menutupi Matahari."
       }
     ]
   }
