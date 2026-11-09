@@ -72,15 +72,14 @@ fun ProgressRing(progress: Float, color: Color, modifier: Modifier = Modifier, s
     }
 }
 
-/** Pomodoro turları: 3D domatesler; biten ve sürmekte olan renkli (sürmekte olan büyük), kalan gri ve soluk */
+/** Pomodoro turları: iki tonlu domatesler; biten ve sürmekte olan kiremit (sürmekte olan büyük), kalan soluk renkte */
 @Composable
 fun RoundDots(total: Int, done: Int, current: Int, label: String) {
     Row(Modifier.semantics { contentDescription = label }, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
         for (i in 1..total) {
             val a = when { i <= done -> 1f; i == current -> 0.6f; else -> 0.25f }
             val col = (if (i <= done || i == current) Theme.c.terra else Theme.c.muted).copy(alpha = a)
-            LineIcon("tomato", if (i == current) 26.dp else 22.dp, c1 = col, c2 = (if (i <= done || i == current) Theme.c.sage else Theme.c.muted).copy(alpha = a),
-                dim = i > done && i != current)
+            DuoIcon("tomato", if (i == current) 26.dp else 22.dp, col)
         }
     }
 }

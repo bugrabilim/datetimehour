@@ -94,7 +94,6 @@ object AppData {
         private set
     /** Gün → o günün olayları (birden çok güne yayılanlar her günde) */
     lateinit var events: Map<LocalDate, List<CalEvent>>
-        private set
     lateinit var ramadans: List<ClosedRange<LocalDate>>
         private set
     lateinit var schoolBreaks: List<ClosedRange<LocalDate>>
@@ -104,6 +103,7 @@ object AppData {
 
     fun init(c: Context) {
         fun read(name: String) = c.assets.open(name).bufferedReader().use { it.readText() }
+        WorldHol.appContext = c.applicationContext
 
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
@@ -169,10 +169,17 @@ object AppData {
     fun isSchoolBreak(d: LocalDate) = schoolBreaks.any { d in it }
 
     /** Bugünden sonraki özel günler (okul hariç) */
-    fun upcoming(from: LocalDate, limit: Int): List<CalEvent> =
-        events.entries.filter { !it.key.isBefore(from) }.sortedBy { it.key }
-            .flatMap { e -> e.value.filter { it.type != "school" && it.date == e.key } }
-            .take(limit)
+    /** Yaklaşan özel günler, takvimin ülke ve tür seçimiyle (calEvents; 9 Kasım 2026) */
+    fun upcoming(from: LocalDate, limit: Int): List<CalEvent> {
+        val out = mutableListOf<CalEvent>()
+        val last = events.keys.maxOrNull() ?: return out
+        var d = from
+        while (!d.isAfter(last) && out.size < limit) {
+            out += calEvents(d).filter { it.type != "school" && it.date == d }
+            d = d.plusDays(1)
+        }
+        return out.take(limit)
+    }
 
     /** Olay türünün rengi (sitedeki takvim renkleri) */
     fun color(type: String): Color = when (type) {

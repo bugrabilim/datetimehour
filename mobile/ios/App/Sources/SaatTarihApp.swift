@@ -208,7 +208,7 @@ final class Router {
             tab = .calendar
         case .upcoming:
             let today = CalendarDay(Date(), timeZone: PrayerSchedule.zone)
-            calendarDay = CalendarData.shared.upcoming(from: today, limit: 1).first?.day ?? today
+            calendarDay = calUpcoming(from: today, limit: 1).first?.day ?? today
             tab = .calendar
         case .next, .prayers:
             tab = .prayer
@@ -417,10 +417,13 @@ private struct Sidebar: View {
         List {
             Section {
                 ForEach([AppTab.clock] + Features.barOptions.filter(on.contains), id: \.self) { t in
-                    row(t.title, t.icon, selected: router.tab == t) { router.toolsPath = []; router.tab = t }
+                    row(t.title, LineIconMap.tab(t), LineIconMap.tabColor(t), selected: router.tab == t) {
+                        router.toolsPath = []; router.tab = t
+                    }
                 }
                 if !on.isEmpty {
-                    row(L("tab.all"), AppTab.tools.icon, selected: router.tab == .tools && router.toolsPath.isEmpty) {
+                    row(L("tab.all"), LineIconMap.tab(.tools), LineIconMap.tabColor(.tools),
+                        selected: router.tab == .tools && router.toolsPath.isEmpty) {
                         router.toolsPath = []; router.tab = .tools
                     }
                 }
@@ -436,7 +439,7 @@ private struct Sidebar: View {
                 }
             }
             Section {
-                row(L("settings.title"), "gearshape", selected: router.tab == .tools && router.toolsPath.first == .settings) {
+                row(L("settings.title"), "gear", Theme.dusk, selected: router.tab == .tools && router.toolsPath.first == .settings) {
                     router.tab = .tools; router.toolsPath = [.settings]
                 }
             }
@@ -446,16 +449,17 @@ private struct Sidebar: View {
     }
 
     private func entryRow(_ e: AllEntry) -> some View {
-        row(e.title, e.icon, selected: router.tab == .tools && router.toolsPath.first == e.route) {
+        row(e.title, LineIconMap.entry(e.id) ?? "grid", e.cat.color, selected: router.tab == .tools && router.toolsPath.first == e.route) {
             AllPrefs.used(e.id)
             router.tab = .tools
             if let r = e.route { router.toolsPath = [r] }
         }
     }
 
-    private func row(_ title: String, _ icon: String, selected: Bool, action: @escaping () -> Void) -> some View {
+    /// Kenar çubuğu satırı: iki tonlu simge (22 pt, daire yok; DUOTONE.md), konu renginde
+    private func row(_ title: String, _ icon: String, _ color: Color, selected: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Label { Text(title).foregroundStyle(Theme.text) } icon: { Image(systemName: icon).foregroundStyle(Theme.accent) }
+            Label { Text(title).foregroundStyle(Theme.text) } icon: { DuoIcon(name: icon, size: 22, color: color) }
         }
         .listRowBackground(selected ? Theme.accentSoft : Color.clear)
         .accessibilityAddTraits(selected ? .isSelected : [])
@@ -496,9 +500,8 @@ private struct TabBar: View {
                 } label: {
                     VStack(spacing: 3) {
                         // Seçili sekmede simgenin arkasında ana rengin açık tonunda hap (sitedeki .nav gibi; 2. analiz #95)
-                        // 3D simgeler (4 Kasım 2026, sahibin seçimi); seçili olmayan sekme gri ve soluk
-                        LineIcon(name: LineIconMap.tab(tab), size: 26, c1: on ? Theme.accent : Theme.muted,
-                                 c2: on ? Theme.accent : Theme.muted, dim: !on)
+                        // İki tonlu simgeler (8 Kasım 2026, sahibin seçimi "B Karma"): seçili sekme ana renkte, diğerleri soluk
+                        DuoIcon(name: LineIconMap.tab(tab), size: 24, color: on ? Theme.accent : Theme.muted)
                             .frame(width: 56, height: 30)
                             .background(Capsule().fill(on ? Theme.accentSoft : Color.clear))
                         Text(tab.barTitle)

@@ -67,7 +67,7 @@
     <string name="prayer_extraNote">Diyanət bu vaxtları dərc etmir. Türkiye Takvimi tərifləri ilə hesablanır: işraq və isfirar Günəş üfüqdən 5° yuxarıda, iştibak 10°, işa-i sani 19° aşağıda olanda; dəhvə-i kübra imsak ilə axşamın ortası; gecə axşamdan imsaka qədər sayılır.</string>
     <string name="prayer_bayram">Bayram namazı</string>
     <string name="prayer_bayramTomorrow">Sabah bayram namazı: %1$s</string>
-    <string name="prayer_bayramNote">Diyanətin dərc etdiyi saatlarla eyni qayda (günəşdən 38 dəq sonra); dəqiq saat il müftiliyinin elanıdır.</string>
+    <string name="prayer_bayramNote">Diyanətin dərc etdiyi saatlarla eyni qayda (gün çıxandan 38 dəq sonra); dəqiq saat vilayət müftiliyinin elanıdır.</string>
     <string name="prayer_ezani">Əzani saat: %1$s</string>
     <string name="prayer_ezaniNote">Əzani (alaturka) saatda axşam vaxtı 12:00 sayılır; saat oradan hesablanır.</string>
     <string name="prayer_method_heading">Hesablama üsulu</string>
@@ -157,7 +157,7 @@
     <string name="watch_world">Dünya saatları</string>
     <string name="watch_zikir">Zikrmatik</string>
     <string name="watch_start">Başlat</string>
-    <string name="watch_pause">Fasilə</string>
+    <string name="watch_pause">Dayandır</string>
     <string name="watch_reset">Sıfırla</string>
     <string name="watch_done">Vaxt bitdi</string>
     <string name="watch_work">İş</string>

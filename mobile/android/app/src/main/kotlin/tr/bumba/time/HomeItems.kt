@@ -20,21 +20,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.BatteryChargingFull
 import androidx.compose.material.icons.filled.BatteryStd
-import androidx.compose.material.icons.filled.CalendarMonth
-import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.DragHandle
-import androidx.compose.material.icons.filled.Umbrella
-import androidx.compose.material.icons.filled.HourglassBottom
-import androidx.compose.material.icons.filled.Language
-import androidx.compose.material.icons.filled.NightsStay
-import androidx.compose.material.icons.filled.Numbers
-import androidx.compose.material.icons.filled.Public
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.filled.WbSunny
-import androidx.compose.material.icons.filled.WbTwilight
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Switch
@@ -42,6 +30,7 @@ import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -50,7 +39,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
@@ -70,19 +58,28 @@ import kotlin.math.roundToInt
  * Saat ekranında saatin altında görünebilecek alanlar (iOS'taki HomeItem). Seçim ve sıra "homeItems" anahtarında:
  * bütün alanlar sırayla, kapalı olanın başında "-" ("date,week,next,-prayers,…").
  */
-enum class HomeItem(val key: String, val icon: ImageVector) {
-    DATE("date", Icons.Filled.CalendarMonth),
-    WEEK("week", Icons.Filled.Numbers),
-    HIJRI("hijri", Icons.Filled.DarkMode),
-    NEXT("next", Icons.Filled.HourglassBottom),
-    PRAYERS("prayers", Icons.Filled.NightsStay),
-    UPCOMING("upcoming", Icons.Filled.Star),
-    WORLD("world", Icons.Filled.Language),
-    WEATHER("weather", Icons.Filled.WbSunny),
-    SUN("sun", Icons.Filled.WbTwilight),
-    GLOBE("globe", Icons.Filled.Public),
-    BATTERY("battery", Icons.Filled.BatteryStd),
-    ALARM("alarm", Icons.Filled.Alarm);
+enum class HomeItem(val key: String, val line: String) {
+    DATE("date", "calendar"),
+    WEEK("week", "numbers"),
+    HIJRI("hijri", "star_crescent"),
+    NEXT("next", "hourglass"),
+    PRAYERS("prayers", "mosque"),
+    UPCOMING("upcoming", "star"),
+    WORLD("world", "globe"),
+    WEATHER("weather", "sun_cloud"),
+    SUN("sun", "sunrise"),
+    GLOBE("globe", "globe"),
+    BATTERY("battery", "battery"),
+    ALARM("alarm", "alarm");
+
+    /** Düzenleyicideki iki tonlu simgenin konu rengi (DUOTONE.md) */
+    @Composable
+    fun color(): Color = when (this) {
+        DATE, WEEK, HIJRI, UPCOMING -> Theme.c.sage
+        NEXT, PRAYERS -> Theme.c.gold
+        WORLD, WEATHER, SUN, GLOBE -> Theme.c.sky
+        BATTERY, ALARM -> Theme.c.terra
+    }
 
     val title: String get() = L("home.item.$key")
 
@@ -174,7 +171,7 @@ fun HomeItemsEditor() {
                 }.padding(horizontal = 12.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Icon(Icons.Filled.Umbrella, null, tint = Theme.c.accent)
+                DuoChip("umbrella", Theme.c.sky)
                 Spacer(Modifier.width(14.dp))
                 Text(L("look.weatherClock"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
                 SoftSwitch(weatherBg, { weatherBg = it; Prefs.store.edit().putBoolean(WeatherScene.CLOCK_KEY, it).apply() },
@@ -193,7 +190,7 @@ fun HomeItemsEditor() {
                             .padding(horizontal = 12.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Icon(item.icon, null, tint = Theme.c.accent)
+                        DuoChip(item.line, item.color())
                         Spacer(Modifier.width(14.dp))
                         Text(item.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
                         SoftSwitch(
@@ -436,9 +433,9 @@ private fun SunCard(place: AppPlace, now: Instant, modifier: Modifier) {
     val len = ((set - rise) * 60).toInt()
     AppCard(modifier) {
         Row(Modifier.fillMaxWidth()) {
-            SunColumn(L("nature.sunrise"), hm(rise), "🌅", Modifier.weight(1f))
-            SunColumn(L("nature.sunset"), hm(set), "🌇", Modifier.weight(1f))
-            SunColumn(L("nature.dayLength"), T("seasons.dayLengthValue", len / 60, len % 60), "☀️", Modifier.weight(1f))
+            SunColumn(L("nature.sunrise"), hm(rise), "sunrise", Modifier.weight(1f))
+            SunColumn(L("nature.sunset"), hm(set), "sunset", Modifier.weight(1f))
+            SunColumn(L("nature.dayLength"), T("seasons.dayLengthValue", len / 60, len % 60), "sun", Modifier.weight(1f))
         }
     }
 }
@@ -446,7 +443,7 @@ private fun SunCard(place: AppPlace, now: Instant, modifier: Modifier) {
 @Composable
 private fun SunColumn(title: String, value: String, icon: String, modifier: Modifier) {
     Column(modifier, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(2.dp)) {
-        Text(icon, fontSize = 18.sp)
+        DuoIcon(icon, 22.dp, Theme.c.sky)
         Ltr { Text(value, color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, style = Tnum) }
         Text(title, color = Theme.c.muted, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }

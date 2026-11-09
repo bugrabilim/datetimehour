@@ -1,6 +1,7 @@
 package tr.bumba.time
 
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.outlined.Alarm
@@ -134,12 +135,12 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                 DeviceCalendar.reload(context)
                 pickingEvent = true
             }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                LineIcon("calendar", 20.dp, c1 = Theme.c.accent, c2 = Theme.c.accent)
+                DuoIcon("calendar", 20.dp, Theme.c.accent)
                 Text("  " + L("alarm.fromCalendar"), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.Medium)
             }
             // Konuma bağlı hatırlatıcılar ilk Play sürümünde kapalı (GeoAlarms.ENABLED; arka planda konum izni istenmez)
             if (GeoAlarms.ENABLED) Row(Modifier.fillMaxWidth().clickable { onGeo() }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                LineIcon("pin", 20.dp, c1 = Theme.c.accent, c2 = Theme.c.accent)
+                DuoIcon("pin", 20.dp, Theme.c.accent)
                 Text("  " + L("geo.title"), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.Medium)
             }
         }
@@ -189,16 +190,23 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                                     Text(item.timeText, color = if (item.enabled) Theme.c.text else Theme.c.muted, fontSize = 40.sp,
                                         fontWeight = FontWeight.Light, style = Tnum)
                                 }
-                                // Görev simgesi (2. analiz #51)
-                                val icon = when (item.effectiveTask) {
-                                    "math" -> "🧮 "; "shake" -> "📳 "; "steps" -> "🚶 "; "code" -> "🔳 "; "memory" -> "🧠 "; "typing" -> "⌨️ "; "photo" -> "📷 "; "squat" -> "🏋️ "; "object" -> "🔍 "; "speak" -> "🗣️ "
-                                    "light" -> "💡 "; "random" -> "🎲 "
-                                    else -> ""
-                                } + (if (item.chain.isNotEmpty()) "+${item.chain.size} " else "")
                                 // Şehir saatine ya da güneşe bağlı alarm (2. analiz #132, #153)
-                                item.anchorText?.let { Text((if (item.sun.isNotEmpty()) "☀️ " else "🌐 ") + it, color = Theme.c.muted, fontSize = 13.sp) }
-                                Text(icon + item.title + " · " + item.repeatText + (if (item.link.isNotEmpty()) " · ▶ " + (if (MusicLink.kind(item.link) == "spotify") "Spotify" else "YouTube") else "") +
-                                    (if (item.smart > 0) " · " + L("alarm.smart") else "") + (if (item.preAlarm > 0) " · 🌧" else ""), color = Theme.c.muted, fontSize = 14.sp)
+                                item.anchorText?.let {
+                                    IconText(if (item.sun.isNotEmpty()) "sun" else "globe", it, Theme.c.muted, fontSize = 13.sp,
+                                        iconColor = if (item.sun.isNotEmpty()) Theme.c.gold else Theme.c.sky)
+                                }
+                                // Görev simgesi (2. analiz #51): 8 Kasım 2026'dan beri emoji yerine iki tonlu simge
+                                val taskIcon = AlarmTaskIcon.of(item.effectiveTask)
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    if (taskIcon != null) {
+                                        DuoIcon(taskIcon, 16.dp, Theme.c.terra, label = L("alarm.task.${item.effectiveTask}"))
+                                        Spacer(Modifier.width(5.dp))
+                                    }
+                                    Text((if (item.chain.isNotEmpty()) "+${item.chain.size} " else "") + item.title + " · " + item.repeatText +
+                                        (if (item.link.isNotEmpty()) " · ▶ " + (if (MusicLink.kind(item.link) == "spotify") "Spotify" else "YouTube") else "") +
+                                        (if (item.smart > 0) " · " + L("alarm.smart") else "") + (if (item.preAlarm > 0) " · " + L("alarm.preAlarm") else ""),
+                                        color = Theme.c.muted, fontSize = 14.sp)
+                                }
                                 if (item.sleepPlan) Text(L("alarm.sleepLinked"), color = Theme.c.muted, fontSize = 12.sp)
                                 // Sonraki alarm atlanacaksa hangi gün; dokununca geri alınır, değilse "atla"
                                 if (item.enabled) {

@@ -236,7 +236,7 @@ private fun MonthGrid(
 private fun DayCell(d: LocalDate, isToday: Boolean, isSelected: Boolean, mine: Boolean, moon: String?, dst: Boolean, onClick: () -> Unit) {
     val ev = calEvents(d)
     val holiday = ev.any { it.type == "holiday" }
-    val ramadan = AppData.isRamadan(d)
+    val ramadan = CalView.religious && AppData.isRamadan(d)
     Column(
         Modifier.fillMaxSize().padding(2.dp)
             .background(if (ramadan) AppData.color("religious").copy(alpha = 0.10f) else Color.Transparent, RoundedCornerShape(8.dp))
@@ -284,7 +284,11 @@ private fun DayCell(d: LocalDate, isToday: Boolean, isSelected: Boolean, mine: B
     }
     // Ay evresi ve saat değişimi işareti sağ üst köşede (hücrenin yüksekliğini değiştirmez)
     if (moon != null || dst) Box(Modifier.fillMaxSize().padding(2.dp), contentAlignment = Alignment.TopEnd) {
-        Text(listOfNotNull(if (dst) "⏱" else null, moon).joinToString(""), fontSize = 10.sp)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            // Saat değişimi günü iki tonlu simgeyle (8 Kasım 2026; "⏱" yerine)
+            if (dst) DuoIcon("dst", 10.dp, Theme.c.terra)
+            if (moon != null) Text(moon, fontSize = 10.sp)
+        }
     }
 }
 
@@ -298,8 +302,18 @@ object CalView {
     /** 2. analiz #116, #119, #122: görünüm, hicri aylarla gezme, ülke, gizli türler */
     var mode by androidx.compose.runtime.mutableStateOf("month")
     var hijriNav by androidx.compose.runtime.mutableStateOf(false)
-    var country by androidx.compose.runtime.mutableStateOf("TR")
-    var hidden by androidx.compose.runtime.mutableStateOf(emptySet<String>())
+    /** Ülke ve gizli türler yalnız kullanıcı seçince yazılır (9 Kasım 2026, Müslüman olmayanlar raporu A4): seçim yoksa
+     *  ülke telefonun bölgesinden (`regionDefault`), dini günler/hicri tarih/Ramazan yalnız Vakitler açıkken görünür. */
+    private var countryState by androidx.compose.runtime.mutableStateOf<String?>(null)
+    var country: String
+        get() = countryState ?: regionDefault()
+        set(v) { countryState = v }
+    private var hiddenState by androidx.compose.runtime.mutableStateOf<Set<String>?>(null)
+    var hidden: Set<String>
+        get() = hiddenState ?: defaultHidden()
+        set(v) { hiddenState = v }
+    /** Dini günler, hicri tarih ve Ramazan gölgesi görünür mü */
+    val religious: Boolean get() = "religious" !in hidden
     private var loaded = false
 
     fun load() {
@@ -309,16 +323,37 @@ object CalView {
         week = sp.getBoolean("cal.weekNo", true); moon = sp.getBoolean("cal.moon", true); dst = sp.getBoolean("cal.dst", true)
         hijri = sp.getBoolean("cal.hijri", false); names = sp.getBoolean("cal.names", false)
         mode = sp.getString("cal.mode", "month") ?: "month"; hijriNav = sp.getBoolean("cal.hijriNav", false)
-        country = sp.getString("cal.country", "TR") ?: "TR"
-        hidden = (sp.getString("cal.hidden", "") ?: "").split(",").filter { it.isNotEmpty() }.toSet()
+        countryState = sp.getString("cal.country", null)
+        hiddenState = if (sp.contains("cal.hidden")) (sp.getString("cal.hidden", "") ?: "").split(",").filter { it.isNotEmpty() }.toSet() else null
+        // Sınav tarihleri 9 Kasım 2026'da kaldırıldı (sahibin kararı); eski seçim silinir
+        if (sp.contains("cal.exams")) sp.edit().remove("cal.exams").apply()
     }
 
     fun save() {
         Prefs.store.edit().putBoolean("cal.weekNo", week).putBoolean("cal.moon", moon).putBoolean("cal.dst", dst)
             .putBoolean("cal.hijri", hijri).putBoolean("cal.names", names)
-            .putString("cal.mode", mode).putBoolean("cal.hijriNav", hijriNav).putString("cal.country", country)
-            .putString("cal.hidden", hidden.joinToString(",")).apply()
+            .putString("cal.mode", mode).putBoolean("cal.hijriNav", hijriNav)
+            .also { e ->
+                countryState?.let { e.putString("cal.country", it) }
+                hiddenState?.let { e.putString("cal.hidden", it.joinToString(",")) }
+            }.apply()
     }
+
+    /** Telefonun (sistemin) bölgesi 30 ülkeden biriyse o ülke, değilse Türkiye; uygulama içi dil seçimi etkilemez */
+    fun regionDefault(): String {
+        WorldHol.ensure()
+        val r = runCatching { android.content.res.Resources.getSystem().configuration.locales.get(0).country.uppercase() }.getOrDefault("")
+        return if (r.isNotEmpty() && r in WorldHol.countries) r else "TR"
+    }
+
+    /** Seçimleri unutur (varsayılanlara döner; testler için) */
+    fun clearChoices() {
+        countryState = null; hiddenState = null
+        Prefs.store.edit().remove("cal.country").remove("cal.hidden").apply()
+    }
+
+    /** Vakitler kapalıyken dini günler varsayılan gizli */
+    fun defaultHidden(): Set<String> = if (Features.isOn(Tab.PRAYER)) emptySet() else setOf("religious")
 
     /** Ayın yeni ay ve dolunay günleri (telefonun saat diliminde): gün → emoji */
     fun moonMarks(month: YearMonth): Map<Int, String> {
@@ -403,8 +438,8 @@ private fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalenda
         }
         Text(listOf(rel, T("info.week.big", Fmt.isoWeek(d)), T("calendar.dayOfYear", d.dayOfYear)).joinToString(" · "),
             color = Theme.c.muted, fontSize = 13.sp)
-        // Hicri tarih (Diyanet takvimi)
-        Hijri.date(d)?.let { Text("☾ " + it.text, color = Theme.c.accent, fontSize = 13.sp) }
+        // Hicri tarih (Diyanet takvimi); dini günler görünürken
+        if (CalView.religious) Hijri.date(d)?.let { Text("☾ " + it.text, color = Theme.c.accent, fontSize = 13.sp) }
         // O günün havası (2. analiz #118): Open-Meteo günlük tahmininde varsa; yalnız Hava özelliği açıkken
         if (Features.isOn(Tab.WEATHER)) {
             val place = AppPlace.current()
@@ -428,7 +463,7 @@ private fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalenda
                 }
             }
         }
-        if (AppData.isRamadan(d)) TypeRow("religious", L("calendar.types.ramadan"))
+        if (CalView.religious && AppData.isRamadan(d)) TypeRow("religious", L("calendar.types.ramadan"))
         if (CalView.country == "TR" && "school" !in CalView.hidden && AppData.isSchoolBreak(d) && ev.none { it.type == "school" }) TypeRow("school", L("calendar.types.school"))
         for (e in device) {
             Row(
@@ -456,7 +491,7 @@ private fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalenda
                 }
             }
         }
-        if (ev.isEmpty() && device.isEmpty() && !AppData.isRamadan(d)) Text(L("calendar.noDayEvents"), color = Theme.c.muted)
+        if (ev.isEmpty() && device.isEmpty() && !(CalView.religious && AppData.isRamadan(d))) Text(L("calendar.noDayEvents"), color = Theme.c.muted)
         if (!DeviceCalendar.authorized) {
             Column(Modifier.fillMaxWidth().clickable(onClick = ask).padding(vertical = 6.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -495,7 +530,8 @@ private fun TypeRow(type: String, text: String) {
 @Composable
 private fun Legend() {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        for (t in (if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")).filter { it !in CalView.hidden }) {
+        val legendTypes = (if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")).filter { it !in CalView.hidden }
+        for (t in legendTypes) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.size(8.dp).background(AppData.color(t), CircleShape))
                 Text(" " + calendarTypeLabel(t), color = Theme.c.muted, fontSize = 12.sp)

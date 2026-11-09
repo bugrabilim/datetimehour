@@ -216,7 +216,7 @@ for (const l of LANGS.filter((x) => x !== "tr")) {
 for (const l of LANGS) {
   const evs = JSON.parse(fs.readFileSync(path.join(DIST, "assets", `events-${l}.json`), "utf8"));
   check(evs.length > 100 && evs.every((e) => e.n && /^\d{4}-\d\d-\d\d$/.test(e.d)), `events-${l}.json: adsız ya da hatalı etkinlik`);
-  check(evs.some((e) => e.t === "exam"), `events-${l}.json: sınav etkinliği yok`);
+  check(!evs.some((e) => e.t === "exam"), `events-${l}.json: sınav etkinliği var (9 Kasım 2026'da kaldırıldı)`);
 }
 for (const l of LANGS) check(fs.existsSync(path.join(DIST, "assets", `search-${l}.json`)), `search-${l}.json yok`);
 check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z0-9-]+\/<\/loc>|\/emeklilik-hesaplama\/<\/loc>/.test(u) ? ["tr"] : LANGS).every((l) => u.includes(`hreflang="${l}"`))), "sitemap: bir adreste hreflang eksik");
@@ -462,6 +462,10 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   const cd = rd("geri-sayim", "index.html"), sw = rd("kronometre", "index.html"), po = rd("pomodoro", "index.html"), al = rd("alarm", "index.html");
   check(/data-cd-add/.test(cd) && /data-sw-csv/.test(sw) && /data-pomo-csv/.test(po) && /data-pomo-g/.test(po) && /data-pomo-tag/.test(po) && /data-pomo-streak/.test(po) && (al.match(/<option value="(chime|bell|rise|digital|soft)"/g) || []).length === 5, "araç ekleri (+1 dk, CSV, hedef, etiket, alarm sesi) eksik");
   const home = rd("index.html");
+  // Menü sırası (9 Kasım 2026): Namaz vakitleri tr/ar/id/ur/fa'da ikinci, diğer dillerde sonda
+  const navOrder = (h) => [...(h.match(/<nav class="nav"[\s\S]*?<\/nav>/) || [""])[0].matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+  const trNav = navOrder(home), enNav = navOrder(rd("en", "index.html")), arNav = navOrder(rd("ar", "index.html"));
+  check(trNav[1] === "/namaz-vakitleri/" && arNav[1] === "/ar/prayer-times/" && enNav.indexOf("/en/prayer-times/") === enNav.length - 2, `menü sırası hatalı: ${trNav} | ${enNav}`);
   check((home.match(/data-look="font"/g) || []).length === 2 && (home.match(/data-look="color"/g) || []).length === 2, "ayarlarda saat görünümü (yazı tipi, renk) yok");
   // Ek araçlar: 8 sayfa her dilde, araçlar merkezinde kart, betik
   const more = { "hicri-takvim-cevirici": ["data-hj-g", "data-hj-y", "data-hj-tbody"], "saat-hesaplama": ["data-tc-s", "data-tc-sum"], "kac-gun-kaldi": ["data-du-d", "data-du-row"], "aralik-zamanlayici": ["data-iv-start", "data-iv-preset"], "satranc-saati": ["data-ch-side=\"white\"", "data-ch-control"], "metronom": ["data-mm-range", "data-mm-tap"], "konusan-saat": ["data-tk-say", "data-live=\"words\""], "burc-hesaplama": ["data-zo-d", "nature-calc.js"] };

@@ -272,7 +272,7 @@
       },
       {
         "q": "Paano ko papalitan ang istilo ng orasan?",
-        "a": "Mag-swipe pakaliwa o pakanan sa orasan; sa computer, gamitin ang mga tuldok sa ibaba o ang arrow keys. Kasama sa mga istilo ang klasiko at simpleng analog, digital, analog at digital nang sabay, may petsa o wala, may buwanang kalendaryo, flip clock, orasang nakasulat sa salita, ring clock at malaking petsa. Natatandaan ang iyong pinili sa device na ito."
+        "a": "Mag-swipe pakaliwa o pakanan sa orasan o gamitin ang mga arrow sa ibaba nito; puwede ring i-tap ang numero ng istilo para pumili mula sa listahan. Sa computer, gumagana rin ang arrow keys. Bukod sa analog na may numero, digital, at analog kasama ang digital, may mga istilong may petsa, panahon, buwanang kalendaryo o magkatabing ayos, pati flip clock, hologram, Matrix clock at orasang math. Natatandaan ang iyong pinili sa device na ito."
       },
       {
         "q": "Paano ko makikita ang orasan sa full screen?",
@@ -284,7 +284,7 @@
       },
       {
         "q": "Saan ko makikita ang mga pista opisyal at Ramadan sa Türkiye?",
-        "a": "Sa pahina ng taunang kalendaryo makikita sa iisang kalendaryo ang mga pista opisyal, ang mga araw ng bayram at bisperas nito, ang mga gabi ng kandil at ang buwan ng Ramadan. Ang seksyong \"Mga paparating na araw\" sa itaas ng pahina ng kalendaryo ay nagsasabi kung ilang araw pa bago ang susunod na pista opisyal."
+        "a": "Sa pahina ng taunang kalendaryo makikita sa iisang kalendaryo ang mga pista opisyal, ang mga araw ng bayram at bisperas nito, ang mga gabi ng kandil at ang buwan ng Ramadan."
       }
     ],
     "upcomingHeading": "Mga paparating na pista opisyal at espesyal na araw",
@@ -537,7 +537,7 @@
             ],
             [
               "sth-place",
-              "Tinatandaan ang huling lalawigan o lokasyong pinili mo para sa mga pahina ng oras ng pagdarasal, kalikasan at panahon.",
+              "Tinatandaan ang huling lalawigan o lokasyong pinili mo para sa mga pahina ng oras ng pagdarasal, mga panahon ng taon at panahon.",
               "Hanggang burahin mo"
             ],
             [
@@ -688,7 +688,7 @@
     "info": "Tungkol sa pinagmulan ng oras ng orasang ito",
     "infoTitle": "Saan galing ang oras na ito?",
     "infoClose": "Isara",
-    "infoSeconds": "I-tap ang orasan para ipakita o itago ang segundo. Nakabukas ang segundo sa simula sa digital na orasan at nakasara sa analog.",
+    "infoSeconds": "I-tap ang orasan para ipakita o itago ang segundo. Nakabukas ang segundo sa simula sa digital at analog na orasan.",
     "zoomIn": "Palakihin ang orasan",
     "zoomOut": "Paliitin ang orasan"
   },
@@ -707,8 +707,7 @@
       "special": "Espesyal na araw",
       "weekend": "Weekend",
       "today": "Ngayon",
-      "school": "Bakasyon sa paaralan o petsa ng termino (MEB)",
-      "exam": "Pagsusulit o kaugnay na petsa (ÖSYM, MEB, AÖF)"
+      "school": "Bakasyon sa paaralan o petsa ng termino (MEB)"
     },
     "eventsHeading": "Listahan ng mga araw sa {year}",
     "colDate": "Petsa",
@@ -805,37 +804,7 @@
       "schoolEnd": "Pagtatapos ng taon ng pasukan, araw ng report card (MEB)",
       "teacherStart": "Simula ng propesyonal na gawain ng mga guro (MEB)",
       "adaptation": "Simula ng linggo ng oryentasyon sa preschool at grade 1 (MEB)",
-      "teacherEnd": "Simula ng propesyonal na gawain ng mga guro sa katapusan ng taon (MEB)",
-      "yksTyt": "YKS: sesyon ng TYT (ÖSYM)",
-      "yksAytYdt": "YKS: mga sesyon ng AYT at YDT (ÖSYM)",
-      "tryos": "TR-YÖS/2: pagsusulit para sa mga dayuhang estudyante (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS antas ng sekondarya (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT: pagsusulit sa larangan ng serbisyong panrelihiyon (ÖSYM)",
-      "dus2": "DUS ikalawang sesyon: pagsusulit sa espesyalidad sa dentistry (ÖSYM)",
-      "eus": "EUS: pagsusulit sa espesyalidad sa parmasya (ÖSYM)",
-      "yds2": "YDS/2: pagsusulit sa kahusayan sa banyagang wika (ÖSYM)",
-      "ales3": "ALES/3: pagsusulit sa pagpasok sa graduate studies (ÖSYM)",
-      "alesApply": "Panahon ng aplikasyon sa ALES/3 (ÖSYM)",
-      "kpssOnResult": "Resulta ng KPSS antas ng associate degree (ÖSYM)",
-      "kpssOrtaResult": "Resulta ng KPSS antas ng sekondarya (ÖSYM)",
-      "ydsResult": "Resulta ng YDS/2 (ÖSYM)",
-      "alesResult": "Resulta ng ALES/3 (ÖSYM)",
-      "kpssTercih": "Mga kagustuhan sa placement ng KPSS-2026/2 (ÖSYM)",
-      "common1": "Termino 1, unang sabayang nakasulat na pagsusulit (MEB)",
-      "common2": "Termino 1, ikalawang sabayang nakasulat na pagsusulit (MEB)",
-      "common3": "Termino 2, unang sabayang nakasulat na pagsusulit (MEB)",
-      "common4": "Termino 2, ikalawang sabayang nakasulat na pagsusulit (MEB)",
-      "aolRegister": "Panahon ng pagpaparehistro sa open high school (AÖL) (MEB)",
-      "aolEsinav": "Panahon ng e-exam ng AÖL (MEB)",
-      "aolWritten": "Nakasulat na pagsusulit ng AÖL (MEB)",
-      "aolResult": "Resulta ng unang termino ng AÖL (MEB)",
-      "aofMid1": "Midterm ng AÖF sa taglagas (Anadolu University)",
-      "aofFinal1": "Final exam ng AÖF sa taglagas (Anadolu University)",
-      "aofMid2": "Midterm ng AÖF sa tagsibol (Anadolu University)",
-      "aofFinal2": "Final exam ng AÖF sa tagsibol (Anadolu University)",
-      "aofSummer": "Pagsusulit ng summer school ng AÖF (Anadolu University)"
+      "teacherEnd": "Simula ng propesyonal na gawain ng mga guro sa katapusan ng taon (MEB)"
     },
     "hubName": "Taunang kalendaryo",
     "hubDesc": "Mga pista opisyal, mga araw ng bayram at bisperas, mga gabi ng kandil at buwan ng Ramadan.",
@@ -1703,22 +1672,6 @@
         "name": "araw ng report card",
         "dat": "araw ng report card"
       },
-      "yks": {
-        "name": "YKS (pagsusulit sa pagpasok sa unibersidad)",
-        "dat": "YKS"
-      },
-      "kpss": {
-        "name": "KPSS (pagsusulit sa pagpili ng tauhan ng gobyerno)",
-        "dat": "KPSS"
-      },
-      "ales": {
-        "name": "ALES (pagsusulit sa pagpasok sa graduate studies)",
-        "dat": "ALES"
-      },
-      "yds": {
-        "name": "YDS (pagsusulit sa kahusayan sa banyagang wika)",
-        "dat": "YDS"
-      },
       "schoolStart": {
         "name": "Pagbubukas ng klase",
         "dat": "pagbubukas ng klase"
@@ -1726,14 +1679,6 @@
       "midterm": {
         "name": "bakasyon sa gitna ng termino",
         "dat": "bakasyon sa gitna ng termino"
-      },
-      "aof": {
-        "name": "Mga pagsusulit ng AÖF (open education ng Anadolu University)",
-        "dat": "mga pagsusulit ng AÖF"
-      },
-      "aol": {
-        "name": "Pagsusulit ng AÖL (open high school)",
-        "dat": "pagsusulit ng AÖL"
       },
       "feb14": {
         "name": "Araw ng mga Puso",
@@ -1755,8 +1700,7 @@
         "name": "Araw ng mga Guro",
         "dat": "Araw ng mga Guro"
       }
-    },
-    "exam": "Kinukuha ang mga petsa ng pagsusulit sa mga anunsyo ng ÖSYM, MEB at Anadolu University, at puwede nilang baguhin ang mga ito. Hindi hinuhulaan ang mga petsang hindi pa inaanunsyo; idinadagdag ang mga ito kapag nailathala na."
+    }
   },
   "datecalc": {
     "title": "Date Calculator: Mga Araw, Araw ng Trabaho, Edad | Saat Tarih",
@@ -1814,7 +1758,7 @@
   },
   "embedgen": {
     "title": "Clock Widget: Maglagay ng Libreng Orasan sa Site Mo | Saat Tarih",
-    "description": "Maglagay ng libreng orasan sa iyong site: 13 istilo, pagpili ng lungsod, maliwanag o madilim na tema. Kopyahin ang handang iframe code at i-paste.",
+    "description": "Maglagay ng libreng orasan sa iyong site: 20 istilo, pagpili ng lungsod, maliwanag o madilim na tema. Kopyahin ang handang iframe code at i-paste.",
     "h1": "Maglagay ng orasan sa iyong site",
     "lead": "Piliin ang istilo, lungsod at tema, saka kopyahin ang handang iframe code at i-paste sa iyong site. Walang ad ang widget, hindi gumagamit ng cookies at tumatakbo sa orasang naka-sync sa server.",
     "modelLabel": "Istilo ng orasan",
@@ -1848,7 +1792,7 @@
       },
       {
         "q": "Kumokolekta ba ang widget ng datos ng mga bisita ko?",
-        "a": "Hindi naglalagay ng cookies ang widget at hindi kumokolekta ng personal na datos. Nagpapadala ito ng ilang maliliit na request sa server para maipakita ang tamang oras; binibilang ang page views sa anonymous na statistics na walang cookies."
+        "a": "Hindi naglalagay ng cookies ang widget at hindi kumokolekta ng personal na datos. Nagpapadala ito ng ilang maliliit na request sa server para maipakita ang tamang oras; walang statistics script ang widget at hindi binibilang ang page views."
       }
     ],
     "sizeNote": "Kailangan ng hindi bababa sa 460 px na taas ang mga istilong may kalendaryo; kasya na sa 360 px ang iba.",
@@ -1860,7 +1804,7 @@
       "date": "Petsa at oras",
       "sun": "Pagsikat at paglubog ng araw"
     },
-    "lineNote": "Oras lang ang ipinapakita ng script; walang cookie at walang ipinapadalang data. Mula sa lungsod ang time zone.",
+    "lineNote": "Ang napili mong teksto lang (oras, petsa, o pagsikat at paglubog ng araw) ang ipinapakita ng script; walang cookie at walang ipinapadalang data. Mula sa lungsod ang time zone.",
     "linePreview": "Silip"
   },
   "embed": {
@@ -2308,7 +2252,7 @@
       },
       {
         "q": "Makikita ko ba ang panahon sa full-screen na orasan?",
-        "a": "Oo. Sa full screen, i-tap ang screen para lumabas ang bar; ipapakita ng button ng panahon doon ang panahon ng napili mong lokasyon sa tabi ng orasan."
+        "a": "Oo. Sa home page, i-swipe ang orasan sa istilong may panahon at lumipat sa full screen; lalabas sa tabi ng orasan ang panahon ng napili mong lokasyon."
       }
     ],
     "search": "panahon forecast temperatura ulan hangin halumigmig uv bukas ngayong linggo weather hava durumu tahmin",
@@ -2671,7 +2615,7 @@
     ]
   },
   "worldHol": {
-    "hubTitle": "Mga pampublikong holiday ayon sa bansa 2026–2028 | Saat Tarih",
+    "hubTitle": "Mga pampublikong holiday ayon sa bansa 2024–2032 | Saat Tarih",
     "hubDescription": "Mga pambansang holiday sa Germany, UK, US, Netherlands, France at 25 pang bansa: mga petsa, araw ng linggo, ang susunod na holiday at natitirang araw.",
     "hubH1": "Mga pampublikong holiday ayon sa bansa",
     "hubLead": "Mga pambansang holiday sa 30 bansa at ang natitirang araw bago ang susunod.",

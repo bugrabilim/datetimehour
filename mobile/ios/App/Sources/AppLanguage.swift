@@ -49,7 +49,7 @@ struct LanguageView: View {
                 }
             }
             Section {
-                row("🌐", L("lang.system"), on: selected.isEmpty) { pick("") }
+                row(nil, L("lang.system"), on: selected.isEmpty) { pick("") }
                 ForEach(AppLanguage.all) { o in
                     row(o.flag, o.native, on: selected == o.code) { pick(o.code) }
                 }
@@ -68,10 +68,18 @@ struct LanguageView: View {
         changed = true
     }
 
-    private func row(_ flag: String, _ name: String, on: Bool, action: @escaping () -> Void) -> some View {
+    /// Dil satırı: bayrak; "Sistem dili"nde bayrak yerine iki tonlu dil simgesi (8 Kasım 2026, "🌐" emojisinin yerine)
+    private func row(_ flag: String?, _ name: String, on: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             HStack(spacing: 14) {
-                Text(flag).font(.title2)
+                Group {
+                    if let flag {
+                        Text(flag).font(.title2)
+                    } else {
+                        DuoIcon(name: "language", size: 26, color: Theme.sage)
+                    }
+                }
+                .frame(width: 32)
                 Text(name).foregroundStyle(on ? Theme.accent : Theme.text).fontWeight(on ? .semibold : .regular)
                 Spacer()
                 if on { Image(systemName: "checkmark").foregroundStyle(Theme.accent) }
@@ -92,7 +100,7 @@ struct LanguageRow: View {
             LabeledContent {
                 Text(AppLanguage.all.first { $0.code == selected }.map { "\($0.flag)  \($0.native)" } ?? L("lang.system"))
             } label: {
-                BoxLabel(L("lang.title"), icon: "globe")
+                BoxLabel(L("lang.title"), duo: "language", tint: Theme.sage)
             }
         }
     }

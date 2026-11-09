@@ -2,8 +2,8 @@
   "_not": "Mağaza görsellerinin başlıkları (2. analiz #33, 3 Kasım 2026). Anahtar: ekran (dosya adındaki NN- ve ipad- önekinden sonrası), dil: [başlık, alt satır]. frame-screenshots.mjs kullanır. Rakamlar her dilde Latin.",
   "saat": {
     "tr": ["Saat, tarih ve vakit", "21 saat modeli, tam ekran ve gece modu"],
-    "en": ["Clock, date and prayer times", "21 clock faces, full screen and night mode"],
-    "de": ["Uhr, Datum und Gebetszeiten", "21 Zifferblätter, Vollbild und Nachtmodus"],
+    "en": ["Clock, date and prayer times", "21 clock styles, full screen and night mode"],
+    "de": ["Uhr, Datum und Gebetszeiten", "21 Uhrenmodelle, Vollbild und Nachtmodus"],
     "ar": ["الساعة والتاريخ ومواقيت الصلاة", "21 شكلًا للساعة، ملء الشاشة والوضع الليلي"],
     "fr": ["Heure, date et prières", "21 cadrans, plein écran et mode nuit"],
     "ru": ["Время, дата и намаз", "21 циферблат, полный экран и ночной режим"],
@@ -12,9 +12,9 @@
     "ko": ["시간, 날짜, 기도 시간", "21가지 시계, 전체 화면과 야간 모드"],
     "zh": ["时间、日期与礼拜时间", "21 种表盘，全屏与夜间模式"],
     "th": ["เวลา วันที่ และเวลาละหมาด", "นาฬิกา 21 แบบ เต็มจอและโหมดกลางคืน"],
-    "es": ["Reloj, fecha y horarios de oración", "21 esferas, pantalla completa y modo noche"],
-    "pt": ["Relógio, data e horários de oração", "21 mostradores, tela cheia e modo noturno"],
-    "hi": ["घड़ी, तारीख और नमाज़ के समय", "21 घड़ी डायल, फ़ुल स्क्रीन और रात मोड"]
+    "es": ["Reloj, fecha y horarios de oración", "21 modelos de reloj, pantalla completa y modo nocturno"],
+    "pt": ["Relógio, data e horários de oração", "21 modelos de relógio, tela cheia e modo noturno"],
+    "hi": ["घड़ी, तारीख और नमाज़ के समय", "21 घड़ी मॉडल, फ़ुल स्क्रीन और रात्रि मोड"]
   },
   "vakitler": {
     "tr": ["Namaz vakitleri", "Diyanet yöntemiyle 81 il ve 973 ilçe, kıble pusulası"],
@@ -30,7 +30,7 @@
     "th": ["เวลาละหมาด", "วิธีดียาเนตและอีก 13 วิธี พร้อมเข็มทิศกิบลัต"],
     "es": ["Horarios de oración", "Método Diyanet y 13 más, con brújula de la alquibla"],
     "pt": ["Horários de oração", "Método Diyanet e mais 13, com bússola da qibla"],
-    "hi": ["नमाज़ के समय", "दियानत और 13 और तरीक़े, क़िबला कम्पास के साथ"]
+    "hi": ["नमाज़ के समय", "दियानत और 13 अन्य पद्धतियाँ, क़िबला कम्पास के साथ"]
   },
   "takvim": {
     "tr": ["Tatiller ve dini günler", "Arife yarım günleri, hicri tarih ve takviminiz"],
@@ -44,7 +44,7 @@
     "ko": ["공휴일과 종교 기념일", "히즈라력 날짜와 내 캘린더를 한눈에"],
     "zh": ["节假日与宗教节日", "伊斯兰历日期与您的日历"],
     "th": ["วันหยุดและวันสำคัญทางศาสนา", "วันที่ฮิจเราะห์และปฏิทินของคุณ"],
-    "es": ["Festivos y días religiosos", "Fechas hégiras y su propio calendario en un solo lugar"],
+    "es": ["Festivos y días religiosos", "Fechas de la Hégira y su propio calendario en un solo lugar"],
     "pt": ["Feriados e datas religiosas", "Datas da Hégira e sua agenda em um só lugar"],
     "hi": ["छुट्टियाँ और धार्मिक दिन", "हिजरी तारीखें और आपका अपना कैलेंडर एक ही जगह"]
   },
@@ -55,7 +55,7 @@
     "ar": ["الساعة العالمية", "المدن على كرة أرضية دوّارة، ليلًا ونهارًا"],
     "fr": ["Horloge mondiale", "Les villes sur un globe qui tourne, jour et nuit"],
     "ru": ["Мировое время", "Города на вращающемся глобусе, день и ночь"],
-    "id": ["Jam dunia", "Kota-kota di bola dunia yang berputar"],
+    "id": ["Jam dunia", "Kota-kota di bola dunia berputar, siang dan malam"],
     "ja": ["世界時計", "回る地球に都市を表示、昼と夜も"],
     "ko": ["세계 시계", "회전하는 지구 위의 도시, 낮과 밤"],
     "zh": ["世界时钟", "旋转地球上的城市，昼夜一目了然"],
@@ -93,7 +93,7 @@
     "zh": ["斋月时间表", "按您的位置生成，可直接分享"],
     "th": ["ตารางเวลารอมฎอน", "ตามตำแหน่งของคุณ พร้อมแชร์"],
     "es": ["Calendario de Ramadán", "Para su ubicación, listo para compartir"],
-    "pt": ["Calendário do Ramadã", "Para a sua localização, pronto para compartilhar"],
+    "pt": ["Tabela do Ramadã", "Para a sua localização, pronto para compartilhar"],
     "hi": ["रमज़ान की समय-सारणी", "आपकी जगह के लिए, शेयर करने को तैयार"]
   },
   "gece": {
@@ -103,13 +103,13 @@
     "ar": ["الوضع الليلي", "ساعة حمراء خافتة بجانب سريرك"],
     "fr": ["Mode nuit", "Une horloge rouge tamisée pour la table de chevet"],
     "ru": ["Ночной режим", "Тусклые красные часы для прикроватной тумбы"],
-    "id": ["Mode malam", "Jam merah redup untuk samping tempat tidur"],
+    "id": ["Mode malam", "Jam merah redup untuk meja samping tempat tidur"],
     "ja": ["ナイトモード", "枕元にやさしい、暗い赤の時計"],
     "ko": ["야간 모드", "침대 옆에 두기 좋은 은은한 빨간 시계"],
     "zh": ["夜间模式", "床头柜上的暗红色时钟，不刺眼"],
     "th": ["โหมดกลางคืน", "นาฬิกาสีแดงสลัว สำหรับข้างเตียง"],
-    "es": ["Modo noche", "Un reloj rojo tenue para la mesilla"],
+    "es": ["Modo nocturno", "Un reloj rojo tenue para la mesilla"],
     "pt": ["Modo noturno", "Um relógio vermelho suave para a cabeceira"],
-    "hi": ["रात मोड", "सिरहाने के लिए मद्धम लाल घड़ी"]
+    "hi": ["रात्रि मोड", "सिरहाने के लिए मद्धम लाल घड़ी"]
   }
 }

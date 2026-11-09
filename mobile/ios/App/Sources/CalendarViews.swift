@@ -5,7 +5,8 @@ import SwiftUI
 /// Takvim görünümleri ve ülke seçimi (2. analiz #116, #119, #122, #126, #127; Android CalendarViews.kt ile aynı):
 /// ay / hafta / gün (zaman çizelgesi, bayram kartı) / ajanda (60 gün) / yıl (yoğunluk ısı haritası); hicri aylarla gezme;
 /// ülke seçimi (30 ülkenin ulusal tatilleri, world-holidays.json) ve gösterilen gün türleri.
-/// Kayıt: `cal.mode`, `cal.hijriNav`, `cal.country` (TR varsayılan), `cal.hidden` (virgülle tür).
+/// Kayıt: `cal.mode`, `cal.hijriNav`, `cal.country` (yoksa telefonun bölgesi, 30 ülke dışında TR), `cal.hidden` (virgülle tür;
+/// yoksa Vakitler kapalıyken "religious"). İkisi yalnız kullanıcı seçince yazılır (9 Kasım 2026, Müslüman olmayanlar raporu A4).
 enum CalPrefs {
     static let modeKey = "cal.mode"
     static let hijriNavKey = "cal.hijriNav"
@@ -13,10 +14,23 @@ enum CalPrefs {
     static let hiddenKey = "cal.hidden"
     static let modes = ["month", "week", "day", "agenda", "year"]
 
-    static var country: String { UserDefaults.standard.string(forKey: countryKey) ?? "TR" }
-    static var hidden: Set<String> {
-        Set((UserDefaults.standard.string(forKey: hiddenKey) ?? "").split(separator: ",").map(String.init))
+    static var country: String {
+        if let c = UserDefaults.standard.string(forKey: countryKey), !c.isEmpty { return c }
+        return regionDefault
     }
+    /// Telefonun bölgesi (Ayarlar › Dil ve Bölge) 30 ülkeden biriyse o ülke, değilse Türkiye; uygulama içi dil etkilemez
+    static var regionDefault: String {
+        let r = (Locale.current.region?.identifier ?? "").uppercased()
+        return WorldHol.countries.contains(r) ? r : "TR"
+    }
+    static var hidden: Set<String> {
+        if let raw = UserDefaults.standard.string(forKey: hiddenKey) { return Set(raw.split(separator: ",").map(String.init)) }
+        return defaultHidden
+    }
+    /// Vakitler kapalıyken dini günler varsayılan gizli
+    static var defaultHidden: Set<String> { Features.isOn(.prayer) ? [] : ["religious"] }
+    /// Dini günler, hicri tarih ve Ramazan gölgesi görünür mü
+    static var religious: Bool { !hidden.contains("religious") }
 }
 
 /// Dünya resmî tatilleri (Nager.Date, MIT; gen-strings ad tablosuyla)
@@ -83,6 +97,18 @@ func calEvents(_ day: CalendarDay) -> [CalendarData.Event] {
     let list = cc == "TR" ? base : base.filter { $0.type == "religious" } + WorldHol.events(cc, on: day)
     let hidden = CalPrefs.hidden
     return list.filter { !hidden.contains($0.type) }
+}
+
+/// Yaklaşan özel günler, takvimin ülke ve tür seçimiyle (9 Kasım 2026; saat ekranındaki "yaklaşan özel gün")
+func calUpcoming(from today: CalendarDay, limit: Int) -> [CalendarData.Event] {
+    guard let lastYear = CalendarData.shared.years.keys.max() else { return [] }
+    var out: [CalendarData.Event] = []
+    var d = today
+    while d.year <= lastYear && out.count < limit {
+        out += calEvents(d).filter { $0.type != "school" && $0.date == d.iso }
+        d = d.adding(days: 1)
+    }
+    return Array(out.prefix(limit))
 }
 
 /// Ay / hafta / gün / ajanda / yıl seçimi
@@ -401,8 +427,9 @@ struct HijriMonthGridView: View {
 
 /// Ülke ve gösterilen türler
 struct CalCountrySheet: View {
-    @AppStorage(CalPrefs.countryKey) private var country = "TR"
-    @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw = ""
+    @AppStorage(CalPrefs.countryKey) private var countryRaw = ""
+    @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw: String?
+    private var country: String { countryRaw.isEmpty ? CalPrefs.regionDefault : countryRaw }
     @Environment(\.dismiss) private var dismiss
 
     private var types: [String] { country == "TR" ? ["holiday", "half", "religious", "special", "school"] : ["holiday", "religious"] }
@@ -415,7 +442,7 @@ struct CalCountrySheet: View {
                 }
                 Section {
                     ForEach(["TR"] + WorldHol.countries.sorted { WorldHol.countryName($0) < WorldHol.countryName($1) }, id: \.self) { cc in
-                        Button { country = cc } label: {
+                        Button { countryRaw = cc } label: {
                             HStack {
                                 Text(WorldHol.countryName(cc)).foregroundStyle(Theme.text)
                                 Spacer()
@@ -438,7 +465,7 @@ struct CalCountrySheet: View {
     }
 
     private func typeRow(_ t: String) -> some View {
-        let hidden = Set(hiddenRaw.split(separator: ",").map(String.init))
+        let hidden = hiddenRaw.map { Set($0.split(separator: ",").map(String.init)) } ?? CalPrefs.defaultHidden
         return Toggle(isOn: Binding(get: { !hidden.contains(t) }, set: { on in
             var h = hidden
             if on { h.remove(t) } else { h.insert(t) }

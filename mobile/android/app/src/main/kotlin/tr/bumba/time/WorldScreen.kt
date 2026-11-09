@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.clickable
@@ -132,7 +133,12 @@ fun WorldScreen() {
                         if (dayNote.isNotEmpty()) Text(dayNote, color = Theme.c.accent, fontSize = 12.sp, fontWeight = FontWeight.Medium)
                         wxVersion
                         WorldWeather.cached(city.key)?.let {
-                            Text(WeatherCode.of(it.code).icon(it.isDay) + " " + Units.temp(it.celsius), color = Theme.c.muted, fontSize = 12.sp)
+                            // Hava verisi 3D simgeyle (8 Kasım 2026; metindeki emoji yerine)
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                WeatherIcon(WeatherCode.of(it.code), it.isDay, 16.dp)
+                                Spacer(Modifier.width(3.dp))
+                                Text(Units.temp(it.celsius), color = Theme.c.muted, fontSize = 12.sp)
+                            }
                         }
                     }
                     }
@@ -299,7 +305,11 @@ private fun WorldDetailDialog(c: WorldEntry, now: Instant, onClose: () -> Unit) 
                     val off = c.zone.rules.getOffset(d.atTime(12, 0).atZone(c.zone).toInstant()).totalSeconds / 3600.0
                     val sun = tr.bumba.time.core.PrayerTimes.sunAltitudeTimes(d.year, d.monthValue, d.dayOfMonth, c.lat, c.lon, off, -0.833)
                     fun hm(h: Double?) = h?.let { val m = Math.round(it * 60).toInt(); "%02d:%02d".format(java.util.Locale.ROOT, (m / 60 + 24) % 24, m % 60) } ?: "–"
-                    Text("☀ ↑ ${hm(sun.rise)}   ↓ ${hm(sun.set)}", color = Theme.c.text, style = Tnum)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        DuoIcon("sun", 18.dp, Theme.c.gold)
+                        Spacer(Modifier.width(6.dp))
+                        Text("↑ ${hm(sun.rise)}   ↓ ${hm(sun.set)}", color = Theme.c.text, style = Tnum)
+                    }
                     if (sun.rise != null && sun.set != null) {
                         val len = Math.round((sun.set!! - sun.rise!!) * 60).toInt()
                         Text(T("seasons.dayLengthValue", len / 60, len % 60), color = Theme.c.muted, fontSize = 13.sp)

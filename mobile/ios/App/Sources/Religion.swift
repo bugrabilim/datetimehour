@@ -1060,9 +1060,10 @@ struct WorshipRow: View {
                 Button(L("countdowns.all") + " ›", action: showAll).foregroundStyle(Theme.accent)
             }
             HStack(spacing: 10) {
-                tile(L("qibla.title"), "location.north.circle") { QiblaView() }
+                // İki tonlu simgeler (8 Kasım 2026, DUOTONE.md): kare 42/25, altın
+                tile(L("qibla.title"), "compass") { QiblaView() }
                 tile(L("quran.title"), "book") { QuranView() }
-                tile(L("zikir.title"), "hand.tap") { ZikirView() }
+                tile(L("zikir.title"), "beads") { ZikirView() }
                 tile(L("track.title"), "checklist") { TrackerView() }
             }
         }
@@ -1071,7 +1072,7 @@ struct WorshipRow: View {
     private func tile<D: View>(_ title: String, _ icon: String, @ViewBuilder _ dest: @escaping () -> D) -> some View {
         NavigationLink { dest() } label: {
             VStack(spacing: 6) {
-                IconBox(icon: icon)
+                DuoChip(name: icon, color: Theme.gold, box: 42, glyph: 25)
                 Text(title).font(.caption).foregroundStyle(Theme.text).lineLimit(2).multilineTextAlignment(.center)
                     .minimumScaleFactor(0.8)
             }
@@ -1090,17 +1091,18 @@ struct WorshipLinks: View {
     var body: some View {
         ScrollView {
         VStack(alignment: .leading, spacing: 10) {
-            link(L("qibla.link"), "location.north.circle") { QiblaView() }
+            // İki tonlu simgeler (8 Kasım 2026, DUOTONE.md): Tümü'ndeki adlarla aynı, altın
+            link(L("qibla.link"), "compass") { QiblaView() }
             link(L("quran.title"), "book") { QuranView() }
-            link(L("dua.title"), "hands.sparkles") { DuasView() }
+            link(L("dua.title"), "hands") { DuasView() }
             link(L("esma.title"), "sparkles") { EsmaView() }
-            link(L("hadith.title"), "text.quote") { HadithView() }
-            link(L("guide.title"), "figure.mind.and.body") { PrayerGuideView() }
-            link(L("zikir.title"), "hand.tap") { ZikirView() }
+            link(L("hadith.title"), "scroll") { HadithView() }
+            link(L("guide.title"), "guide") { PrayerGuideView() }
+            link(L("zikir.title"), "beads") { ZikirView() }
             link(L("track.title"), "checklist") { TrackerView() }
-            link(L("relday.title"), "calendar.badge.clock") { ReligiousDaysView() }
-            link(L("greet.title"), "gift") { GreetingView() }
-            link(L("zakat.title"), "percent") { ZakatView() }
+            link(L("relday.title"), "star_crescent") { ReligiousDaysView() }
+            link(L("greet.title"), "love_letter") { GreetingView() }
+            link(L("zakat.title"), "coin") { ZakatView() }
         }
         .padding(.vertical, 12)
         .padding(.horizontal, 20)
@@ -1115,7 +1117,7 @@ struct WorshipLinks: View {
             dest()
         } label: {
             HStack {
-                BoxLabel(title, icon: icon)
+                BoxLabel(title, duo: icon, tint: Theme.gold)
                 Spacer()
                 Image(systemName: "chevron.forward").font(.footnote.weight(.semibold)).foregroundStyle(Theme.muted)
             }

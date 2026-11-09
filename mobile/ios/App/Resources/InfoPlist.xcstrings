@@ -97,7 +97,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Para mostrar los horarios de oración, la dirección de la alquibla, las mezquitas cercanas y el tiempo donde está. Los horarios y la alquibla se calculan en su teléfono; para el tiempo y la búsqueda de mezquitas solo se envía una ubicación aproximada a los servicios de Apple. Para los recordatorios por ubicación, el propio iPhone detecta cuándo llega o sale de un lugar."
+            "value": "Para mostrar los horarios de oración, la dirección de la alquibla, las mezquitas cercanas y el tiempo del lugar donde está. Los horarios y la alquibla se calculan en su teléfono; para el tiempo y la búsqueda de mezquitas solo se envía una ubicación aproximada a los servicios de Apple. Para los recordatorios por ubicación, el propio iPhone detecta cuándo llega a un lugar o sale de él."
           }
         },
         "pt": {
@@ -674,7 +674,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत डेटा नहीं पढ़ता।"
+            "value": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत का डेटा नहीं पढ़ता।"
           }
         }
       }
@@ -787,7 +787,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत डेटा नहीं पढ़ता।"
+            "value": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत का डेटा नहीं पढ़ता।"
           }
         }
       }
@@ -929,7 +929,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zəngli saat tapşırığındakı sözü səsli oxuduğunuzu anlamaq üçün. Səs yalnız telefonda tanınır, yazılmır və heç yerə göndərilmir."
+            "value": "Zəngli saatı söndürmə tapşırığındakı sözü səsli oxuduğunuzu anlamaq üçün. Səs yalnız telefonda tanınır, yazılmır və heç yerə göndərilmir."
           }
         },
         "ar": {
@@ -1042,7 +1042,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zəngli saat tapşırığındakı sözü səsli oxuduğunuzu anlamaq üçün. Səs yalnız telefonda tanınır, yazılmır və heç yerə göndərilmir."
+            "value": "Zəngli saatı söndürmə tapşırığındakı sözü səsli oxuduğunuzu anlamaq üçün. Səs yalnız telefonda tanınır, yazılmır və heç yerə göndərilmir."
           }
         },
         "ar": {

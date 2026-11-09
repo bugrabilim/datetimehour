@@ -21,18 +21,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Alarm
-import androidx.compose.material.icons.filled.Apps
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.NotificationsActive
-import androidx.compose.material.icons.filled.QrCode2
-import androidx.compose.material.icons.filled.Share
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.TextDecrease
 import androidx.compose.material.icons.filled.TextIncrease
 import androidx.compose.material3.AlertDialog
@@ -53,7 +44,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.contentDescription
@@ -132,11 +122,11 @@ fun SupportCard(onRoute: (String) -> Unit) {
     val context = LocalContext.current
     AppCard(padding = 4) {
         SectionTitle(L("support.title"), Modifier.padding(start = 12.dp, top = 10.dp))
-        SupportRow(Icons.Filled.Star, L("support.rate")) { Support.rate(context) }
-        SupportRow(Icons.Filled.Share, L("support.share")) { Support.share(context) }
-        SupportRow(Icons.Filled.QrCode2, L("support.qr")) { onRoute("shareQr") }
-        SupportRow(Icons.Filled.Email, L("support.feedback")) { Support.feedback(context) }
-        SupportRow(Icons.Filled.Apps, L("support.moreApps")) { Support.moreApps(context) }
+        SupportRow("star", L("support.rate")) { Support.rate(context) }
+        SupportRow("share", L("support.share")) { Support.share(context) }
+        SupportRow("qr", L("support.qr")) { onRoute("shareQr") }
+        SupportRow("mail", L("support.feedback")) { Support.feedback(context) }
+        SupportRow("grid", L("support.moreApps")) { Support.moreApps(context) }
         HorizontalDivider(Modifier.padding(start = 12.dp), color = Theme.c.border.copy(alpha = 0.5f))
         Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 14.dp)) {
             Text(L("support.version"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
@@ -147,12 +137,12 @@ fun SupportCard(onRoute: (String) -> Unit) {
 }
 
 @Composable
-private fun SupportRow(icon: ImageVector, title: String, onClick: () -> Unit) {
+private fun SupportRow(icon: String, title: String, onClick: () -> Unit) {
     Row(
-        Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 14.dp),
+        Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Icon(icon, null, tint = Theme.c.accent)
+        DuoChip(icon, Theme.c.gold)
         Spacer(Modifier.width(14.dp))
         Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
     }
@@ -247,10 +237,10 @@ fun FontScaleCard() {
  * Sistemin izin penceresinden önce kısa açıklama: "Şimdi değil" ya da "İzin ver". "Şimdi değil"de sistem penceresi
  * açılmaz (izin daha sonra ilgili ayardan istenebilir).
  */
-enum class PermissionKind(val key: String, val icon: ImageVector) {
-    NOTIFY("notify", Icons.Filled.NotificationsActive),
-    ALARM("alarm", Icons.Filled.Alarm),
-    LOCATION("location", Icons.Filled.LocationOn),
+enum class PermissionKind(val key: String, val icon: String) {
+    NOTIFY("notify", "bell"),
+    ALARM("alarm", "alarm"),
+    LOCATION("location", "pin"),
 }
 
 @Composable
@@ -258,9 +248,8 @@ fun PermissionPrimer(kind: PermissionKind, onAllow: () -> Unit, onNotNow: () -> 
     AlertDialog(
         onDismissRequest = onNotNow,
         icon = {
-            Box(Modifier.size(72.dp).background(Theme.c.accent.copy(alpha = 0.16f), CircleShape), contentAlignment = Alignment.Center) {
-                Icon(kind.icon, null, tint = Theme.c.accent, modifier = Modifier.size(36.dp))
-            }
+            // İki tonlu simge dairede, İzinler sayfasındaki gibi adaçayı (8 Kasım 2026)
+            DuoChip(kind.icon, Theme.c.sage, box = 72.dp, glyph = 40.dp)
         },
         title = { Text(L("perm.${kind.key}.title"), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth()) },
         // "İzin verirseniz… vermezseniz…" ve nereden kapatılacağı (5 Kasım 2026, sahibin isteği)

@@ -357,6 +357,9 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
+/* Menüde "Namaz vakitleri" bu dillerde ikinci, diğerlerinde sonda (9 Kasım 2026, sahibin kararı; Müslüman olmayanlar raporu A6).
+   Uygulamalardaki ilk kurulum soru sırasıyla aynı dil grubu. Sayfalar ve adresler aynı kalır. */
+const PRAYER_FIRST_LANGS = new Set(["tr", "ar", "id", "ur", "fa", "bn"]);
 const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "photo", "otd", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
@@ -580,7 +583,7 @@ ${ld}
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
     <p class="top-date"><span data-live="date">&nbsp;</span><span class="top-week" data-live="weeklabel"></span></p>
     <div class="menu" id="site-nav">
-      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}<a class="nav-faq" href="${ROUTES[lang].faq}"${p.nav === "faq" ? ' aria-current="page"' : ""}>${esc(u.faq)}</a></nav>
+      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${PRAYER_FIRST_LANGS.has(lang) ? navLink("prayer", u.prayer) : ""}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}${PRAYER_FIRST_LANGS.has(lang) ? "" : navLink("prayer", u.prayer)}<a class="nav-faq" href="${ROUTES[lang].faq}"${p.nav === "faq" ? ' aria-current="page"' : ""}>${esc(u.faq)}</a></nav>
       ${mobileSettings}
     </div>
     <div class="top-tools">${settings}</div>
@@ -841,7 +844,6 @@ function buildPrivacy(lang) {
 /* ---------- Takvim: etkinlikler ve yıl sayfaları ---------- */
 const HOL = readJson("src/data/holidays.json");
 HOL.school = readJson("src/data/school.json");
-HOL.exams = readJson("src/data/exams.json");
 const HOL_YEARS = Object.keys(HOL.years).map(Number).sort((a, b) => a - b);
 /* Gökyüzü olayları (2. analiz #154): meteor yağmuru zirveleri (IMO λ⊙), kavuşumlar, Ay–gezegen, karşı konum, uzanım; 2026–2031 */
 const SKY_EVENTS = skyEvents(ROOT, HOL_YEARS[0], HOL_YEARS[HOL_YEARS.length - 1]);
@@ -852,7 +854,7 @@ const ECLIPSES = ["solar", "lunar"].flatMap((kind) => ECLIPSES_SRC[kind].map((e)
 const ECLIPSE_REGIONS = [...new Set(ECLIPSES.flatMap((e) => e.regions))];
 const eclipseRegionNames = (locale) => { const dn = new Intl.DisplayNames([locale], { type: "region" }); return Object.fromEntries(ECLIPSE_REGIONS.map((c) => [c, dn.of(c) || c])); };
 const BUILD_YEAR = Math.min(Math.max(new Date().getFullYear(), HOL_YEARS[0]), HOL_YEARS[HOL_YEARS.length - 1]);
-const TYPE_LABEL_KEY = { holiday: "holiday", half: "half", religious: "religious", special: "special", school: "school", exam: "exam" };
+const TYPE_LABEL_KEY = { holiday: "holiday", half: "half", religious: "religious", special: "special", school: "school" };
 const yearPath = (lang, y) => `${ROUTES[lang].calendar}${y}/`;
 const YEAR_DATA = Object.fromEntries(HOL_YEARS.map((y) => [y, computeYear(y, HOL)]));
 
@@ -917,7 +919,8 @@ function monthTable(lang, year, month, cy, ev, calOverride, interactive = true) 
       const rank = ["holiday", "half", "religious", "special"].find((t) => es.some((e) => e.type === t));
       const school = es.some((e) => e.type === "school") || inRange(date, cy.schoolRanges);
       const cls = [rank && `d-${rank}`, !rank && school && "d-school", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
-      const label = es.length ? `<span class="sr-only">, ${esc(es.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "))}</span>` : "";
+      const lab = (arr) => esc(arr.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "));
+      const label = es.length ? `<span class="sr-only">, ${lab(es)}</span>` : "";
       const title = es.length ? ` title="${esc(es.map((e) => cal.events[e.key]).join("; "))}"` : "";
       tr += interactive
         ? `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}${es.length ? "" : ` title="${esc(cal.dayNone)}"`} tabindex="0" role="button">${d}${label}</td>`
@@ -935,8 +938,7 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
   const cy = YEAR_DATA[year];
   const counts = holidayCounts(cy.events);
   const byDate = {};
-  /* Sınav günleri takvimde gösterilmez (geri sayım sayfaları kendi verisini kullanır) */
-  const shown = cy.events.filter((e) => e.type !== "exam");
+  const shown = cy.events;
   shown.forEach((e) => (byDate[e.date] ||= []).push(e));
   const date = (key, i = 0) => cy.events.filter((e) => e.key === key)[i];
   const rbDays = cy.events.filter((e) => e.key.startsWith("rb") && e.key !== "rbEve").map((e) => e.date);
@@ -972,7 +974,7 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
     .map((k) => `<li><span class="lg lg-${k}" aria-hidden="true"></span>${esc(cal.types[k])}</li>`).join("");
   const seenRow = new Set();
   const rows = shown
-    .map((e) => { const first = !seenRow.has(e.date); seenRow.add(e.date); return `<tr data-d="${e.date}"${first ? ` id="e-${e.date}"` : ""}><th scope="row">${esc(f.short(e.date))}</th><td>${esc(cal.weekdays[dowOf(e.date)])}</td><td>${esc(cal.events[e.key])}</td><td>${esc(cal.types[TYPE_LABEL_KEY[e.type]])}</td><td data-left></td></tr>`; })
+    .map((e) => { const first = !seenRow.has(e.date); if (first) seenRow.add(e.date); return `<tr data-d="${e.date}"${first ? ` id="e-${e.date}"` : ""}><th scope="row">${esc(f.short(e.date))}</th><td>${esc(cal.weekdays[dowOf(e.date)])}</td><td>${esc(cal.events[e.key])}</td><td>${esc(cal.types[TYPE_LABEL_KEY[e.type]])}</td><td data-left></td></tr>`; })
     .join("");
   const yearLinks = HOL_YEARS.map((y) => `<li><a href="${yearPath(lang, y)}"${y === year ? ' aria-current="page"' : ""}>${y}</a></li>`).join("");
   const prev = HOL_YEARS.includes(year - 1) ? `<a href="${yearPath(lang, year - 1)}" rel="prev">${esc(tpl(cal.prevYear, { year: year - 1 }))}</a>` : "";
@@ -1601,12 +1603,6 @@ const CDP = [
   { key: "karne", keys: ["term1End", "schoolEnd"], tr: "karne-gunu", en: "report-card-day", school: true },
   { key: "schoolStart", keys: ["schoolStart"], tr: "okul-acilisi", en: "school-start", school: true },
   { key: "midterm", keys: ["midterm1", "midterm2"], tr: "ara-tatil", en: "mid-term-break", school: true },
-  { key: "yks", keys: ["yksTyt"], tr: "yks", en: "yks", exam: true },
-  { key: "kpss", keys: ["kpssOrta", "kpssDhbt"], tr: "kpss", en: "kpss", exam: true },
-  { key: "ales", keys: ["ales3"], tr: "ales", en: "ales", exam: true },
-  { key: "yds", keys: ["yds2"], tr: "yds", en: "yds", exam: true },
-  { key: "aof", keys: ["aofMid1", "aofFinal1", "aofMid2", "aofFinal2", "aofSummer"], tr: "aof-sinavi", en: "aof-exam", exam: true },
-  { key: "aol", keys: ["aolWritten"], tr: "aol-sinavi", en: "aol-exam", exam: true },
 ];
 const cdpPath = (lang, x) => `${ROUTES[lang].countdown}${x[lang] || x.en}/`;
 
@@ -1651,7 +1647,6 @@ function buildCdp(lang, x) {
     <h2 id="years-h">${esc(tpl(s.yearsHeading, v))}</h2>
     <div class="table-wrap"><table class="events-table"><caption>${esc(tpl(s.yearsCaption, v))}</caption><thead><tr><th scope="col">${esc(s.colYear)}</th><th scope="col">${esc(s.colDate)}</th></tr></thead><tbody>${rowsHtml}</tbody></table></div>
     ${x.school ? `<p class="meta">${esc(s.school)}</p>` : ""}
-    ${x.exam ? `<p class="meta">${esc(s.exam)}</p>` : ""}
     <h2>${esc(s.customHeading)}</h2>
     <p>${esc(s.customText)}</p>
   </div>

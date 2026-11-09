@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.OutlinedTextField
@@ -133,12 +134,19 @@ fun AppText(
     Text(text, modifier, fontSize = size, fontWeight = weight, color = color)
 }
 
-/** Liste satırı: başlık solda, değer sağda */
+/**
+ * Liste satırı: başlık solda, değer sağda. Değer en çok satırın %62'sini alır, uzunsa sağa yaslı sarar (8 Kasım 2026;
+ * uzun değer başlığı harf harf alt alta kırıyordu, gece gökyüzündeki "Ay" satırı).
+ */
 @Composable
 fun Row2(title: String, value: String, modifier: Modifier = Modifier, bold: Boolean = false, color: androidx.compose.ui.graphics.Color? = null) {
-    Row(modifier.fillMaxWidth().heightIn(min = 40.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(title, Modifier.weight(1f), color = color ?: Theme.c.text, fontWeight = if (bold) FontWeight.SemiBold else FontWeight.Normal)
-        Text(value, color = color ?: Theme.c.text, fontWeight = if (bold) FontWeight.SemiBold else FontWeight.Normal)
+    androidx.compose.foundation.layout.BoxWithConstraints(modifier.fillMaxWidth()) {
+        val valueMax = maxWidth * 0.62f
+        Row(Modifier.fillMaxWidth().heightIn(min = 40.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text(title, Modifier.weight(1f), color = color ?: Theme.c.text, fontWeight = if (bold) FontWeight.SemiBold else FontWeight.Normal)
+            Text(value, Modifier.padding(start = 10.dp).widthIn(max = valueMax), color = color ?: Theme.c.text,
+                fontWeight = if (bold) FontWeight.SemiBold else FontWeight.Normal, textAlign = androidx.compose.ui.text.style.TextAlign.End)
+        }
     }
 }
 

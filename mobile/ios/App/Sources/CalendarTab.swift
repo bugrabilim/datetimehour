@@ -24,8 +24,11 @@ struct CalendarTab: View {
     /// 2. analiz #116, #119, #122: görünüm, hicri aylarla gezme, ülke
     @AppStorage(CalPrefs.modeKey) private var mode = "month"
     @AppStorage(CalPrefs.hijriNavKey) private var hijriNav = false
-    @AppStorage(CalPrefs.countryKey) private var country = "TR"
-    @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw = ""
+    // Ülke ve türler yalnız seçilince yazılır (CalPrefs: yoksa bölge ve Vakitler'e bağlı varsayılan); burada değişince yenilensin diye
+    @AppStorage(CalPrefs.countryKey) private var countryRaw = ""
+    @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw: String?
+    @AppStorage(Features.key) private var featuresRaw = ""
+    private var country: String { CalPrefs.country }
     @State private var countrySheet = false
     @State private var leafOpen = false
 
@@ -267,7 +270,7 @@ struct CalendarTab: View {
                     }
                 }
             }
-            if data.isRamadan(selected) {
+            if CalPrefs.religious && data.isRamadan(selected) {
                 Label(L("calendar.types.ramadan"), systemImage: "moon.stars")
                     .foregroundStyle(CalendarData.color("religious"))
             }
@@ -285,7 +288,7 @@ struct CalendarTab: View {
                         }
                     }
             }
-            if special.isEmpty && deviceEvents.isEmpty && !data.isRamadan(selected) {
+            if special.isEmpty && deviceEvents.isEmpty && !(CalPrefs.religious && data.isRamadan(selected)) {
                 Text(L("calendar.noDayEvents")).foregroundStyle(Theme.muted)
             }
             if !device.authorized && device.canAsk {
@@ -307,8 +310,8 @@ struct CalendarTab: View {
                         .joined(separator: " · "))
                     .font(.caption)
                     .foregroundStyle(Theme.muted)
-                // Hicri tarih (Diyanet takvimi)
-                if let h = Hijri.date(year: selected.year, month: selected.month, day: selected.day) {
+                // Hicri tarih (Diyanet takvimi); dini günler görünürken
+                if CalPrefs.religious, let h = Hijri.date(year: selected.year, month: selected.month, day: selected.day) {
                     Label(h.text, systemImage: "moon")
                         .font(.caption)
                         .foregroundStyle(Theme.accent)
@@ -330,7 +333,7 @@ struct CalendarTab: View {
                 if let y = data.years[month.year], y.projected {
                     Text(L("calendar.projected")).font(.footnote).foregroundStyle(Theme.muted)
                 }
-                Text(L("hijri.note")).font(.footnote).foregroundStyle(Theme.muted)
+                if CalPrefs.religious { Text(L("hijri.note")).font(.footnote).foregroundStyle(Theme.muted) }
             }
             .padding(.top, 8)
         }
@@ -515,11 +518,12 @@ struct MonthGrid: View {
             if let moon { Text(moon).font(.system(size: 9)).padding(.trailing, 1) }
         }
         .overlay(alignment: .topLeading) {
-            if dst { Text("⏱").font(.system(size: 9)).padding(.leading, 1) }
+            // Saat değişimi günü: "⏱" emojisinin yerine iki tonlu simge (8 Kasım 2026)
+            if dst { DuoIcon(name: "dst", size: 10, color: Theme.terra).padding(.leading, 1) }
         }
         .padding(.vertical, 5)
         .frame(maxWidth: .infinity)
-        .background(data.isRamadan(d) ? CalendarData.color("religious").opacity(0.08) : .clear)
+        .background(CalPrefs.religious && data.isRamadan(d) ? CalendarData.color("religious").opacity(0.08) : .clear)
         .contentShape(Rectangle())
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(([Fmt.day(d)] + events.map(\.name)).joined(separator: ", "))

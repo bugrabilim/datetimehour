@@ -251,6 +251,7 @@ struct AllView: View {
         let isSura: Bool = { if case .sura = e.route { return true } else { return false } }()
         return Button { open(e) } label: {
             HStack(spacing: 12) {
+                // İki tonlu simge (8 Kasım 2026, DUOTONE.md): satır 32/19, kategori renginde
                 IconBox(icon: e.icon, tint: e.cat.color, line: LineIconMap.entry(e.id))
                 VStack(alignment: .leading, spacing: 2) {
                     Text(isSura ? sub : e.title).foregroundStyle(Theme.text)
@@ -279,7 +280,8 @@ struct AllView: View {
         let isFav = AllPrefs.list(favsRaw).contains(e.id)
         return Button { open(e) } label: {
             VStack(spacing: 6) {
-                IconBox(icon: e.icon, tint: e.cat.color, line: LineIconMap.entry(e.id))
+                // İki tonlu simge (8 Kasım 2026, DUOTONE.md): kare 42/25, kategori renginde
+                IconBox(icon: e.icon, tint: e.cat.color, line: LineIconMap.entry(e.id), box: 42, glyph: 25)
                     .overlay(alignment: .topTrailing) {
                         if fav { Image(systemName: "star.fill").font(.system(size: 9)).foregroundStyle(Theme.accent).offset(x: 4, y: -4) }
                     }

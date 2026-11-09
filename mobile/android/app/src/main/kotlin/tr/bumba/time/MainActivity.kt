@@ -34,7 +34,6 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Eco
-import androidx.compose.material.icons.filled.NightsStay
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Timer
@@ -318,8 +317,8 @@ private fun TabBar(tabs: List<Tab>, selected: Tab, resume: (() -> Unit)? = null,
                             .background(if (on) Theme.c.accentSoft else Color.Transparent),
                         contentAlignment = Alignment.Center,
                     ) {
-                        // 3D simgeler (4 Kasım 2026, sahibin seçimi); seçili olmayan sekme gri ve soluk
-                        LineIcon(LineIconMap.tab(t), 26.dp, c1 = color, c2 = color, label = Features.label(t), dim = !on)
+                        // İki tonlu simgeler (8 Kasım 2026, sahibin seçimi "B Karma"); seçili sekme ana renk, diğerleri soluk renk
+                        DuoIcon(LineIconMap.tab(t), 24.dp, color)
                     }
                     Text(
                         Features.label(t), color = color, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,

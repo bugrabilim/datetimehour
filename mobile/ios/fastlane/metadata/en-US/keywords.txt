@@ -1,1 +1,1 @@
-salah,adhan,qibla,quran,tasbih,ramadan,timer,stopwatch,world clock,holidays,metronome,chess clock
+salah,adhan,qibla,quran,tasbih,ramadan,timer,stopwatch,world,holidays,metronome,chess,pomodoro,hijri
