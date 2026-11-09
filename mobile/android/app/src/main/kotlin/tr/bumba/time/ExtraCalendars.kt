@@ -96,7 +96,9 @@ object ExtraCals {
         chosen = readChosen()
     }
 
-    /** Veriyi metinden yükler (testlerde örnek dosya) */
+    /** Veriyi metinden yükler (testlerde örnek dosya). ensure() ile aynı kilitte: arka planda süren bir ensure()
+     *  (ör. bildirim planı) varlık dosyasını okuyup bu veriyi sonradan ezmesin */
+    @Synchronized
     fun loadJson(text: String) {
         loaded = true
         cals = parse(text)
@@ -104,6 +106,7 @@ object ExtraCals {
     }
 
     /** Testler için: yüklenen veriyi ve geçersiz kılmaları unutur (sonraki ensure() varlık dosyasını okur) */
+    @Synchronized
     fun reset() {
         loaded = false; cals = emptyList(); chosen = null; regionOverride = null; textOverride = null
     }
