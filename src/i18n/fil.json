@@ -536,6 +536,11 @@
               "Hanggang burahin mo"
             ],
             [
+              "sth-cals",
+              "Tinatandaan ang mga karagdagang kalendaryo (halimbawa, ang Kalendaryong Kristiyano) na pinili mong ipakita sa mga pahina ng kalendaryo.",
+              "Hanggang burahin mo"
+            ],
+            [
               "sth-place",
               "Tinatandaan ang huling lalawigan o lokasyong pinili mo para sa mga pahina ng oras ng pagdarasal, mga panahon ng taon at panahon.",
               "Hanggang burahin mo"
@@ -820,6 +825,8 @@
     "dayAgo": "{n} araw na ang nakalipas",
     "dayClose": "Isara",
     "dayToList": "Ipakita sa listahan ng mga araw",
+    "calsHeading": "Mga kalendaryo",
+    "calsLead": "Ipakita rin ang mga pista at araw ng ibang kalendaryo. Sa browser na ito lang nakatago ang iyong pinili.",
     "icsHeading": "Idagdag sa iyong kalendaryo",
     "icsHolidays": "Mga pista opisyal at bisperas",
     "icsDays": "Mga panrelihiyon at espesyal na araw",

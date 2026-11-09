@@ -536,6 +536,11 @@
               "Até você apagar"
             ],
             [
+              "sth-cals",
+              "Lembra quais calendários adicionais (por exemplo, o cristão) você escolheu mostrar nas páginas do calendário.",
+              "Até você apagar"
+            ],
+            [
               "sth-place",
               "Lembra a província ou o local que você escolheu por último para as páginas de horários de oração, estações e previsão do tempo.",
               "Até você apagar"
@@ -820,6 +825,8 @@
     "dayAgo": "Há {n} dias",
     "dayClose": "Fechar",
     "dayToList": "Mostrar na lista de datas",
+    "calsHeading": "Calendários",
+    "calsLead": "Mostre também as festas e os dias de outros calendários. Sua escolha fica salva só neste navegador.",
     "icsHeading": "Adicionar ao seu calendário",
     "icsHolidays": "Feriados oficiais e vésperas",
     "icsDays": "Datas religiosas e especiais",

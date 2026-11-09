@@ -497,6 +497,11 @@
               "Jusqu’à ce que vous le supprimiez"
             ],
             [
+              "sth-cals",
+              "Mémorise les calendriers supplémentaires (par exemple le calendrier chrétien) que vous avez choisi d’afficher sur les pages du calendrier.",
+              "Jusqu’à ce que vous le supprimiez"
+            ],
+            [
               "sth-place",
               "Mémorise la province ou le lieu choisi en dernier pour les pages heures de prière, saisons et météo.",
               "Jusqu’à ce que vous le supprimiez"
@@ -781,6 +786,8 @@
     "dayAgo": "Il y a {n} jours",
     "dayClose": "Fermer",
     "dayToList": "Voir dans la liste des jours",
+    "calsHeading": "Calendriers",
+    "calsLead": "Affichez aussi les fêtes et les jours d’autres calendriers. Votre choix reste uniquement dans ce navigateur.",
     "icsHeading": "Ajouter à votre calendrier",
     "icsHolidays": "Jours fériés et veilles",
     "icsDays": "Jours religieux et particuliers",

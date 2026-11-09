@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { CALENDARS, calendarData, calendarsJson, loadCalTexts, runCalendarTests, validateCalendars } from "../lib/calendars/index.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = path.join(ROOT, "dist");
@@ -391,6 +392,32 @@ check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-
   check(dstH.includes(`data-at="${at(2027, 3, 14, 7)}"`), "yaz saati: 14 Mart 2027 (ABD, New York 07:00 UTC) yok");
   const ux = rd("unix-zaman-damgasi");
   check(/data-unix/.test(ux) && /data-ux-ts/.test(ux) && /data-ux-date/.test(ux) && /zones\.js/.test(ux), "Unix sayfası eksik");
+}
+// Kapsayıcı takvimler (9 Kasım 2026; lib/calendars, docs/takvimler.md): modül doğrulaması (18 dilde metin eşliği, tarih, renk),
+// her modülün <id>.test.json'u, uygulamalardaki calendars.json ve cals.* metinleri güncel, takvim yıl sayfasında seçim ve veri
+{
+  const data = calendarData(), texts = loadCalTexts(ROOT);
+  for (const e of validateCalendars(data, texts, ROOT)) check(false, `takvimler: ${e}`);
+  for (const e of runCalendarTests(data, ROOT)) check(false, `takvim testi: ${e}`);
+  const body = calendarsJson(data);
+  for (const f of ["mobile/android/app/src/main/assets/calendars.json", "mobile/ios/App/Resources/calendars.json"]) {
+    const fp = path.join(ROOT, f);
+    check(fs.existsSync(fp) && fs.readFileSync(fp, "utf8") === body, `${f} güncel değil: node mobile/shared/gen-strings.mjs`);
+  }
+  const andr = fs.readFileSync(path.join(ROOT, "mobile/android/app/src/main/res/values/strings.xml"), "utf8");
+  for (const { meta } of CALENDARS) for (const k of ["name", "desc", ...Object.keys(texts[meta.id].tr.ev).map((x) => `ev_${x}`)])
+    check(andr.includes(`<string name="cals_${meta.id}_${k}">`), `uygulama metni yok: cals.${meta.id}.${k.replace(/_/g, ".")} (node mobile/shared/gen-strings.mjs)`);
+  for (const [f, l, y] of [["takvim/2027", "tr", 2027], ["en/calendar/2027", "en", 2027], ["ar/calendar/2027", "ar", 2027]]) {
+    const h = fs.readFileSync(path.join(DIST, f, "index.html"), "utf8");
+    check(/<details class="cal-pick" data-cals hidden>/.test(h) && CALENDARS.every(({ meta }) => h.includes(`data-cal="${meta.id}"`)) && /data-day-cals/.test(h) && /data-cal-notes/.test(h), `takvim seçimi eksik: /${f}/`);
+    const m = h.match(new RegExp(`"cals":\\{"url":"(/assets/cals-${l}-${y}\\.json)\\?v=[0-9a-f]+","list":\\[`));
+    check(m, `takvim verisi adresi yok: /${f}/`);
+    if (m) {
+      const j = JSON.parse(fs.readFileSync(path.join(DIST, m[1]), "utf8"));
+      check(j.christian && j.christian.events.some((e) => e[0] === "2027-03-28" && e[1] === "easter") && j.christian.ev.easter === texts.christian[l].ev.easter && j.christian.events.every((e) => e[0].startsWith(String(y)) || (e[2] || "").startsWith(String(y))), `takvim verisi hatalı: ${m[1]}`);
+    }
+  }
+  for (const l of LANGS) check(fs.readFileSync(path.join(DIST, l === "tr" ? "gizlilik" : `${l}/privacy`, "index.html"), "utf8").includes("sth-cals"), `gizlilik: çerez tablosunda sth-cals yok (${l})`);
 }
 // Takvim aboneliği (.ics) ve yazdırma (30 Ekim 2026, #21)
 for (const l of LANGS) for (const k of ["holidays", "days"]) {

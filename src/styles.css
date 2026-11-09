@@ -799,6 +799,26 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .ymonth td:focus-visible { outline: 3px solid var(--focus); outline-offset: -2px; }
 .day-dialog h2 { font-size: 1.2rem; }
 .day-list { margin: 0.5rem 0; padding-inline-start: 1.25rem; }
+/* Kapsayıcı takvimler (9 Kasım 2026): seçim, hücrede renk noktası, gün penceresinde ikinci tarih; renk takvim modülünden (--calc) */
+.cal-pick { margin: 0 0 1rem; }
+.cal-pick > summary { cursor: pointer; font-weight: 600; min-height: 2.75rem; display: inline-flex; align-items: center; color: var(--accent); }
+.cal-pick > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+.cal-pick-list { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; gap: 0.5rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+.cal-pick-item { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.6rem 0.75rem; min-height: 2.75rem; background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); cursor: pointer; }
+.cal-pick-item input { margin: 0.2rem 0 0; width: 1.15rem; height: 1.15rem; flex: none; accent-color: var(--accent); }
+.cal-pick-item .meta { display: block; margin: 0.15rem 0 0; }
+.cal-sw { flex: none; width: 0.9rem; height: 0.9rem; margin-top: 0.25rem; border-radius: 50%; background: var(--calc, var(--muted)); }
+.cal-notes { margin: -0.5rem 0 1rem; }
+.cal-notes .meta { margin: 0.25rem 0; }
+.lg.lg-cal { border-radius: 50%; border-color: transparent; background: var(--calc, var(--muted)); width: 0.8rem; height: 0.8rem; }
+.ymonth td[data-d] { position: relative; }
+.cal-dots { position: absolute; inset-inline: 0; bottom: 3px; display: flex; justify-content: center; gap: 2px; pointer-events: none; line-height: 0; }
+.cal-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--calc, var(--muted)); box-shadow: 0 0 0 1px var(--surface); }
+.day-list .cal-dot, .day-cals .cal-dot { width: 0.6rem; height: 0.6rem; margin-inline-end: 0.45rem; box-shadow: none; }
+.day-cals { list-style: none; margin: 0.25rem 0 0.5rem; padding: 0; }
+.day-dialog [data-day-link][hidden] { display: none; }
+.day-cals li { margin: 0.2rem 0; }
+.day-list li.cal-ev { list-style: none; margin-inline-start: -1.05rem; }
 .events-table tr.is-hit th, .events-table tr.is-hit td { background: var(--accent-soft); }
 .ymonth td[data-d] { cursor: pointer; }
 .cal td a { display: block; color: inherit; text-decoration: none; border-radius: 6px; }
@@ -1082,7 +1102,7 @@ html[dir="rtl"] .tl-axis, html[dir="rtl"] .tl-items { direction: ltr; }
   @page { size: A4 portrait; margin: 10mm; }
   body:has(.year-grid) .hero .lead, body:has(.year-grid) .year-nav, body:has(.year-grid) #events,
   body:has(.year-grid) .cal-export, body:has(.year-grid) .faq-block, body:has(.year-grid) .crumbs,
-  body:has(.year-grid) .sync-line { display: none !important; }
+  body:has(.year-grid) .sync-line, body:has(.year-grid) .cal-pick { display: none !important; }
   body:has(.year-grid) { background: #fff; color: #000; font-size: 9pt; }
   body:has(.year-grid) .hero, body:has(.year-grid) .section { padding: 0; margin: 0; }
   body:has(.year-grid) h1 { font-size: 16pt; margin: 0 0 2mm; }

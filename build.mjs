@@ -8,6 +8,7 @@ import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, 
 import { bridges } from "./lib/bridges.mjs";
 import { hijriTable } from "./lib/hijri.mjs";
 import { skyEvents } from "./lib/sky-events.mjs";
+import { CALENDARS, calendarData, loadCalTexts, validateCalendars, siteYearSlice } from "./lib/calendars/index.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, "src");
@@ -22,6 +23,9 @@ const UMAMI_ID = process.env.UMAMI_ID ?? cfg.umamiId ?? "";
 const ALL_LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
 const LANGS = ALL_LANGS.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
 const I = Object.fromEntries(LANGS.map((l) => [l, readJson(`src/i18n/${l}.json`)]));
+/* Kapsayıcı takvimler (9 Kasım 2026): takvim başına metin dosyası src/i18n-cal/<id>.json, burada t.cals.<id> olarak birleşir */
+const CAL_TEXTS = loadCalTexts(ROOT);
+for (const l of LANGS) I[l].cals = Object.fromEntries(CALENDARS.map(({ meta }) => [meta.id, CAL_TEXTS[meta.id][l]]));
 const CITIES = readJson("src/data/cities.json");
 const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية", id: "Bahasa Indonesia", ur: "اردو", fa: "فارسی", fr: "Français", ru: "Русский", ja: "日本語", ko: "한국어", zh: "简体中文", fil: "Filipino", th: "ไทย", es: "Español", pt: "Português", hi: "हिन्दी" };
 /* Ortak liste servisinin bildiği diller (bumbagroup.com/api/liste/katil); servis yeni dil eklediğinde buraya yaz */
@@ -869,6 +873,34 @@ for (const lang of LANGS) {
 }
 const eventsVersion = Object.fromEntries(LANGS.map((l) => [l, hash(eventsJson[l])]));
 
+/* Kapsayıcı takvimler (9 Kasım 2026; lib/calendars, docs/takvimler.md): veri yapım anında üretilir ve doğrulanır. Takvim yıl
+   sayfaları açık takvimlerin verisini assets/cals-<dil>-<yıl>.json'dan alır (yalnız bir takvim açıkken; metin + o yılın verisi). */
+const CAL_DATA = calendarData();
+{
+  const errs = validateCalendars(CAL_DATA, CAL_TEXTS, ROOT);
+  if (errs.length) throw new Error("Takvimler (lib/calendars):\n- " + errs.join("\n- "));
+}
+const CALS_URL = {};
+for (const lang of LANGS) for (const y of HOL_YEARS) {
+  if (y < CAL_DATA.from || y > CAL_DATA.to) continue;
+  const j = JSON.stringify(siteYearSlice(CAL_DATA, CAL_TEXTS, lang, y));
+  write(`assets/cals-${lang}-${y}.json`, j);
+  CALS_URL[`${lang}-${y}`] = `/assets/cals-${lang}-${y}.json?v=${hash(j)}`;
+}
+/* Takvim seçimi (onay kutuları; JS'siz gizli): ad, açıklama; renk ve varsayılan bölge sayfa yapılandırmasında */
+function calsPicker(lang, year) {
+  if (!CALS_URL[`${lang}-${year}`]) return "";
+  const cal = I[lang].calendar;
+  const items = CALENDARS.map(({ meta }) => {
+    const t = I[lang].cals[meta.id];
+    return `<li><label class="cal-pick-item"><input type="checkbox" data-cal="${meta.id}"><span class="cal-sw" data-cal-sw="${meta.id}" aria-hidden="true"></span><span class="cal-pick-text"><strong>${esc(t.name)}</strong><span class="meta">${esc(t.desc)}</span></span></label></li>`;
+  }).join("");
+  return `<details class="cal-pick" data-cals hidden><summary>${esc(cal.calsHeading)}</summary><p class="meta">${esc(cal.calsLead)}</p><ul class="cal-pick-list">${items}</ul></details>`;
+}
+const calsClient = (lang, year) => (CALS_URL[`${lang}-${year}`]
+  ? { url: CALS_URL[`${lang}-${year}`], list: CALENDARS.map(({ meta }) => ({ id: meta.id, color: meta.color, group: meta.group, regions: meta.regions })) }
+  : undefined);
+
 /* Takvim aboneliği (30 Ekim 2026, rakip analizi #21): her dilde iki .ics akışı, 2026–2031 bütün yıllar.
    /ics/<dil>-holidays.ics: resmî tatiller ve yarım gün arifeler; /ics/<dil>-days.ics: dini ve özel günler.
    Tüm gün etkinlikleri (DTSTART;VALUE=DATE), kimlik tarih+anahtar (abonelikte güncellenir), DTSTAMP site güncelleme tarihi. */
@@ -991,11 +1023,14 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
 <section class="section" aria-labelledby="legend-h">
   <div class="wrap">
     <h2 id="legend-h" class="sr-only">${esc(cal.legendLabel)}</h2>
+    ${calsPicker(lang, year)}
     <ul class="legend" aria-label="${esc(cal.legendLabel)}">${legend}</ul>
+    <div class="cal-notes" data-cal-notes hidden></div>
     <div class="year-grid" data-year="${year}">${months}</div>
     <dialog class="info-dialog day-dialog" id="day-dialog" aria-labelledby="day-title">
       <h2 id="day-title" data-day-title></h2>
       <ul class="day-list" data-day-list></ul>
+      <ul class="day-cals" data-day-cals hidden></ul>
       <p class="meta" data-day-meta></p>
       <div class="im-actions"><a class="btn" href="#events" data-day-link hidden>${esc(cal.dayToList)}</a><button type="button" class="btn btn-ghost" data-day-close>${esc(cal.dayClose)}</button></div>
     </dialog>
@@ -1034,7 +1069,7 @@ ${addFaq(lang, "calendar", t.faqPage.calendar, yearPath(lang, BUILD_YEAR), faq)}
       if (ee) e.push({ t: `${cal.events[k]} ${year}`, u: `${canonicalPath}#events`, d: f.full(ee.date), k: "takvim bayram ramazan kurban calendar eid ramadan " + year });
     }
   }
-  return { lang, key, path: pagePath, title, description, body, ld, nav: "calendar", scripts: ["calendar.js"], clientExtra: { cal: { year }, t: { cald: { none: cal.dayNone, week: cal.dayWeek, doy: cal.dayDoy, today: cal.dayToday, inDays: cal.dayIn, ago: cal.dayAgo, close: cal.dayClose, types: cal.types } } }, noindex: index, canonicalPath: index ? canonicalPath : undefined, noHreflang: index, mapKey: index ? undefined : key };
+  return { lang, key, path: pagePath, title, description, body, ld, nav: "calendar", scripts: ["calendar.js"], clientExtra: { cal: { year, cals: calsClient(lang, year) }, t: { cald: { none: cal.dayNone, week: cal.dayWeek, doy: cal.dayDoy, today: cal.dayToday, inDays: cal.dayIn, ago: cal.dayAgo, close: cal.dayClose, types: cal.types } } }, noindex: index, canonicalPath: index ? canonicalPath : undefined, noHreflang: index, mapKey: index ? undefined : key };
 }
 
 /* ---------- Araç sayfaları ---------- */

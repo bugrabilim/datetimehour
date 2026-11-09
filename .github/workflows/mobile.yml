@@ -10,6 +10,7 @@ on:
       - "src/data/**"
       - "lib/**"
       - "src/i18n/**"
+      - "src/i18n-cal/**"
       - ".github/workflows/mobile.yml"
   push:
     branches: [main]
@@ -20,6 +21,7 @@ on:
       - "src/data/**"
       - "lib/**"
       - "src/i18n/**"
+      - "src/i18n-cal/**"
       - ".github/workflows/mobile.yml"
 
 # Aynı PR'a (ya da dala) yeni commit gelince eski çalışma iptal edilir: üst üste gönderimlerde eski commit'lerin

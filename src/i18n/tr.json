@@ -470,6 +470,11 @@
               "Siz silene kadar"
             ],
             [
+              "sth-cals",
+              "Takvim sayfalarında gösterilmesini seçtiğiniz ek takvimleri (ör. Hristiyan takvimi) hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
               "sth-place",
               "Namaz vakitleri, mevsimler ve hava durumu sayfaları için son seçtiğiniz ili ya da konumu hatırlar.",
               "Siz silene kadar"
@@ -754,6 +759,8 @@
     "dayAgo": "{n} gün önce",
     "dayClose": "Kapat",
     "dayToList": "Günler listesinde göster",
+    "calsHeading": "Takvimler",
+    "calsLead": "Başka takvimlerin bayram ve günlerini de gösterin. Seçiminiz yalnız bu tarayıcıda kalır.",
     "icsHeading": "Takviminize ekleyin",
     "icsHolidays": "Resmî tatiller ve arifeler",
     "icsDays": "Dini ve özel günler",
