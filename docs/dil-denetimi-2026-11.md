@@ -57,10 +57,10 @@ Sahibin isteğiyle başladı; sahibin kararıyla ("Dil kontrollerine bu kadar ka
 | İspanyolca, Portekizce (tam) | 48 / 48 | 467 |
 | Hintçe (tam) | 30 / 30 | 270 |
 | 3 Kasım'dan sonra değişen metinler: en, de, az, ar | 23 / 23 | 299 |
-| Aynısı, Endonezce | 2 / 6 | 26 |
+| Aynısı, Endonezce (tam; 3–6. parçalar 9 Kasım 2026) | 6 / 6 | 77 |
 | Aynısı, ur, fa, fr, ru, ja, ko, zh, fil, th | 0 / 56 | — |
 
-Yapılmayan 60 parça: id 3–6, ur, fa, fr, ru, ja, ko, zh, fil, th (her dilde 6–7 parça). Bunların 8'i çalışırken durduruldu, çıktısı yok.
+Yapılmayan 56 parça: ur, fa, fr, ru, ja, ko, zh, fil, th (her dilde 6–7 parça). Endonezcenin kalan 4 parçası 9 Kasım 2026'da sahibin isteğiyle bitirildi (4 ajan, ~1,06 milyon token, ~4 dk; 51 düzeltme: Ay dördünleri "kuartir", hava kalitesi 5. düzey, çevirmeli saat adı, namaz rehberinde kulak memesi ve Diyanet atfı, güven kartı, izin gerekçeleri, mağaza anahtar kelimeleri ve görsel başlıkları). Ajan notlarındaki kaynak dil önerileri: `notify.lead.days` İngilizcede tekil, ama seçenekler en çok 1 gün olduğu için hata değil; `widget.flipSeconds.desc`/`widget.world8.desc` ve `captions.json` vakitler/takvim satırlarında tr ile en farkı bilinçli, dokunulmadı.
 
 Ajanların notlarında bulduğu eskimiş kaynak bilgiler 18 dilde elle düzeltildi (262 değişiklik): `stage.infoSeconds` (analogda da saniye açık), `home.faq.4/7` (noktalar, kaldırılan "Yaklaşan günler", yalnız widget'taki modeller), `embedgen.faq.2` (widget'ta istatistik betiği yok), `embedgen.lineNote` (tarih ve gün doğumu/batımı da), `embedgen.description` (20 model), `weather.faq.3` (tam ekran hava düğmesi yok, hava durumlu model), `worldHol.hubTitle` (2024–2032), gizlilik iPhone maddesinde pomodoro/uyku planı için "yalnız" (iCloud eşitlenir), çerez tablosunda "doğa" → Mevsimler, Android maddesinde "Vakitte telefonu sessize al"; uygulamada `features.note` (dişli yok), `features.weather.note` (gün sayısı yok), Türkçe yazım ve "siz" (`look.weatherAnimNote`, `onboard.all.text`, `support.share`, `wakegame.wakeMe`, rozetler; az rozetler), İngilizce `alarm.snoozeMax.n`, zikirmatik adı, zekât/kaza notunda Diyanet/müftülük, widget eklemede uygulamanın dile göre adı (en, de).
 

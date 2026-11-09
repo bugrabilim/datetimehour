@@ -218014,7 +218014,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sangat tipe pagi"
+            "value": "Tipe pagi kuat"
           }
         },
         "ur": {
@@ -218466,7 +218466,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sangat tipe malam"
+            "value": "Tipe malam kuat"
           }
         },
         "ur": {
@@ -238580,7 +238580,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Suara bebas royalti bawaan aplikasi. Ketuk ▶ untuk mendengar dan ketuk baris untuk memilih."
+            "value": "Suara bebas royalti bawaan aplikasi. Ketuk ▶ untuk mendengarkan dan ketuk baris untuk memilih."
           }
         },
         "ur": {
@@ -246151,7 +246151,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Setiap bangun bernilai 10 poin. Bangun tanpa menunda +10, atau +3 setelah sekali menunda. Menyelesaikan tugas mematikan alarm +5. Setiap hari bangun tanpa menunda memperpanjang rangkaian, +2 per hari (maksimal +10). Anak ayam tumbuh seiring poinmu bertambah."
+            "value": "Setiap bangun bernilai 10 poin. Bangun tanpa menunda +10, atau +3 setelah sekali menunda. Menyelesaikan tugas mematikan alarm +5. Setiap hari bangun tanpa menunda memperpanjang rangkaian, +2 per hari (maksimal +10). Anak ayam tumbuh seiring poin Anda bertambah."
           }
         },
         "ur": {
@@ -253383,7 +253383,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Salat Jumat"
+            "value": "Jumat Berkah"
           }
         },
         "ur": {
@@ -255417,7 +255417,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Makin singkat tiap tunda"
+            "value": "Makin singkat tiap kali ditunda"
           }
         },
         "ur": {
@@ -255643,7 +255643,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tidak bisa tunda setelah"
+            "value": "Jam tunda terakhir"
           }
         },
         "ur": {
@@ -258694,7 +258694,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hari, tanggal, dan jam ditulis dengan huruf besar."
+            "value": "Hari, tanggal, dan jam dalam kata-kata, dengan huruf besar."
           }
         },
         "ur": {
@@ -259598,7 +259598,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Asma hari ini"
+            "value": "Asmaul Husna hari ini"
           }
         },
         "ur": {
@@ -259937,7 +259937,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ketuk Tambahkan ke layar utama, atau sentuh lama tempat kosong lalu pilih aplikasi ini dari Widget."
+            "value": "Ketuk Tambahkan ke layar utama, atau sentuh lama tempat kosong di layar utama lalu pilih aplikasi ini dari Widget."
           }
         },
         "ur": {
@@ -267960,7 +267960,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tekan lama untuk membuka"
+            "value": "Tekan lama untuk membuka kunci"
           }
         },
         "ur": {
@@ -270107,7 +270107,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kuartal pertama berikutnya"
+            "value": "Kuartir pertama berikutnya"
           }
         },
         "ur": {
@@ -270220,7 +270220,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kuartal terakhir berikutnya"
+            "value": "Kuartir akhir berikutnya"
           }
         },
         "ur": {
@@ -271011,7 +271011,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kuartal"
+            "value": "Kuartir"
           }
         },
         "ur": {
@@ -271350,7 +271350,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hitung mundur Matahari di layar kunci"
+            "value": "Hitung mundur Matahari di Layar Terkunci"
           }
         },
         "ur": {
@@ -271463,7 +271463,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Menampilkan sisa waktu hingga matahari terbit atau terbenam berikutnya di layar kunci."
+            "value": "Menampilkan sisa waktu hingga matahari terbit atau terbenam berikutnya di Layar Terkunci."
           }
         },
         "ur": {
@@ -272254,7 +272254,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tugas mematikan, volume bertahap, batas tunda, musik, cahaya matahari terbit, alarm pintar, ucapkan waktu"
+            "value": "Tugas mematikan alarm, volume bertahap, batas tunda, musik, cahaya matahari terbit, alarm pintar, ucapkan waktu"
           }
         },
         "ur": {
@@ -278130,7 +278130,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pindah ke atas"
+            "value": "Pindahkan ke atas"
           }
         },
         "ur": {
@@ -278243,7 +278243,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pindah ke bawah"
+            "value": "Pindahkan ke bawah"
           }
         },
         "ur": {
@@ -278695,7 +278695,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Penghitung"
+            "value": "Pengatur waktu"
           }
         },
         "ur": {
@@ -282198,7 +282198,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sangat buruk sekali"
+            "value": "Teramat buruk"
           }
         },
         "ur": {
@@ -284910,7 +284910,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Makin gelap warnanya, makin banyak hari khusus dan acara."
+            "value": "Makin gelap warnanya, makin banyak hari istimewa dan acara."
           }
         },
         "ur": {
@@ -286266,7 +286266,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bulan tidak bersinar sendiri; ia memantulkan cahaya Matahari. Bulan mengitari Bumi sekitar 29,5 hari sekali. Saat bergerak, bagian terang yang kita lihat berubah. Geser penggeser untuk memutar Bulan!"
+            "value": "Bulan tidak bersinar sendiri; ia memantulkan cahaya Matahari. Bulan mengitari Bumi sekitar 29,5 hari sekali. Saat bergerak, seberapa banyak sisi terangnya yang kita lihat ikut berubah. Geser penggeser untuk menggerakkan Bulan di orbitnya!"
           }
         },
         "ur": {
@@ -295758,7 +295758,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dunia titik"
+            "value": "Dunia bertitik"
           }
         },
         "ur": {
@@ -296097,7 +296097,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Jam lipat dengan detik"
+            "value": "Jam flip dengan detik"
           }
         },
         "ur": {
@@ -296210,7 +296210,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kartu jam dan menit dengan detik berjalan."
+            "value": "Kartu jam dan menit; detik berjalan di tengah."
           }
         },
         "ur": {
@@ -299261,7 +299261,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Baca keras"
+            "value": "Baca nyaring"
           }
         },
         "ur": {
@@ -301973,7 +301973,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gambar bersifat ilustrasi; perbedaan mengikuti mazhab Hanafi."
+            "value": "Gambar bersifat ilustrasi; perbedaan mengikuti mazhab Hanafi (Diyanet)."
           }
         },
         "ur": {
@@ -302086,7 +302086,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Laki-laki mengangkat tangan hingga ibu jari menyentuh daun telinga."
+            "value": "Laki-laki mengangkat tangan hingga ibu jari menyentuh cuping telinga."
           }
         },
         "ur": {
@@ -306832,7 +306832,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dengarkan bahasa Arab"
+            "value": "Dengarkan teks Arabnya"
           }
         },
         "ur": {
@@ -310900,7 +310900,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Semoga kenangan Hijrah menjadi awal yang baru."
+            "value": "Semoga kenangan Hijrah menjadi jalan menuju awal yang baru."
           }
         },
         "ur": {
@@ -314064,7 +314064,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lengkung"
+            "value": "Lengkungan"
           }
         },
         "ur": {
@@ -317454,7 +317454,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Semua lainnya ada di Semua"
+            "value": "Selebihnya ada di Semua"
           }
         },
         "ur": {
@@ -317793,7 +317793,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cahaya hari"
+            "value": "Cahaya siang"
           }
         },
         "ur": {
@@ -317906,7 +317906,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cahaya hari mengikuti matahari di tempat pilihan Anda: nuansa fajar, pagi, sore, petang, atau malam."
+            "value": "Cahaya siang mengikuti matahari di tempat pilihan Anda: nuansa fajar, pagi, sore, petang, atau malam."
           }
         },
         "ur": {
@@ -320618,7 +320618,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Jika ya, jam dunia dan bola dunia berputar selalu siap di tangan."
+            "value": "Jika ya, jam dunia dan bola dunia yang berputar selalu siap di tangan."
           }
         },
         "ur": {
@@ -321522,7 +321522,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Data Anda tetap milik Anda"
+            "value": "Data Anda tetap di tangan Anda"
           }
         },
         "ur": {
@@ -321748,7 +321748,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Untuk cuaca dan masjid terdekat, hanya lokasi perkiraan (sekitar 1 km) yang dikirim ke layanan terkait, tidak pernah siapa Anda."
+            "value": "Untuk cuaca dan masjid terdekat, hanya perkiraan lokasi (sekitar 1 km) yang dikirim ke layanan terkait; identitas Anda tidak pernah dikirim."
           }
         },
         "ur": {
@@ -323104,7 +323104,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Jika diizinkan, jadwal salat dan cuaca untuk tempat Anda datang otomatis. Jika tidak, Anda memilih kota secara manual."
+            "value": "Jika diizinkan, jadwal salat dan cuaca untuk tempat Anda muncul otomatis, tanpa perlu memilih. Jika tidak, Anda memilih provinsi atau distrik secara manual."
           }
         },
         "ur": {
@@ -323330,7 +323330,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hanya untuk pengingat lokasi: memberi tahu saat Anda tiba atau meninggalkan suatu tempat. Jika tidak, pengingat ini tidak berfungsi."
+            "value": "Hanya untuk pengingat lokasi: memberi tahu saat Anda tiba atau meninggalkan suatu tempat. Jika tidak diizinkan, pengingat ini tidak berfungsi."
           }
         },
         "ur": {
@@ -326042,7 +326042,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hanya untuk jam melayang dan layar fokus. Jika tidak, keduanya tidak berfungsi."
+            "value": "Hanya untuk jam melayang dan layar fokus. Jika tidak diizinkan, keduanya tidak berfungsi."
           }
         },
         "ur": {
@@ -326268,7 +326268,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hanya untuk blokir fokus, agar memperingatkan saat aplikasi pilihan Anda dibuka. Informasi ini tidak keluar dari ponsel."
+            "value": "Hanya untuk blokir saat fokus, yaitu memberi peringatan ketika aplikasi pilihan Anda dibuka. Informasi ini tidak keluar dari ponsel."
           }
         },
         "ur": {
@@ -326494,7 +326494,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hanya untuk membisukan ponsel saat waktu salat tiba. Jika tidak, bisu otomatis tidak berfungsi."
+            "value": "Hanya untuk menyenyapkan ponsel saat waktu salat tiba. Jika tidak diizinkan, fitur senyap otomatis tidak berfungsi."
           }
         },
         "ur": {
@@ -327172,7 +327172,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kompas kiblat, masjid terdekat, Al-Qur'an, doa, Asmaul Husna, penghitung tasbih, pencatat salat dan puasa. 14 metode perhitungan."
+            "value": "Kompas kiblat, masjid terdekat, Al-Qur'an, doa, Asmaul Husna, penghitung tasbih, pencatat salat dan puasa. 14 metode perhitungan dan 973 distrik di Turki."
           }
         },
         "ur": {
@@ -328076,7 +328076,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tambahkan jam, salat berikutnya, cuaca, Bulan, dan tanggal Hijriah ke layar utama dan layar kunci, juga di jam tangan Anda."
+            "value": "Tambahkan jam, salat berikutnya, cuaca, Bulan, dan tanggal Hijriah ke layar utama dan layar kunci; lihat juga di jam tangan pintar Anda."
           }
         },
         "ur": {
