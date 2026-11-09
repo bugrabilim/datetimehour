@@ -1,0 +1,429 @@
+{
+  "source": [
+    "https://www.un.org/en/observances/list-days-weeks (BM uluslararası günler listesi; tarih ve karar numaraları; 9 Kasım 2026'da okundu). Adlar aynı listenin /fr/, /es/, /ru/, /ar/, /zh/ sürümlerinden ve her günün un.org sayfasının başlığından",
+    "https://www.un.org/en/observances/habitat-day (\"first Monday of October\"; 2026 küresel kutlaması 5 Ekim 2026; listede 2025 için 6 Ekim, fr/es/ru/ar/zh listelerinde 2024 için 7 Ekim)",
+    "https://www.unesco.org/en/days/philosophy (\"third Thursday of November\"; 19 Kasım 2026; listede 2024 için 21 Kasım)"
+  ],
+  "note": "Sabit günler BM listesindeki tarihten (her biri 2027 için, un.org ya da listenin bağlandığı kuruluş sayfasıyla). Dünya Habitat Günü (ekimin ilk pazartesi) ve Dünya Felsefe Günü (kasımın üçüncü perşembesi) 2025–2032 için kuraldan hesaplandı; 2024, 2025 ve 2026 tarihleri kaynaklarla eşleşiyor.",
+  "cases": [
+    {
+      "date": "2027-01-24",
+      "key": "education",
+      "url": "https://www.un.org/en/observances/education-day",
+      "res": "A/RES/73/25"
+    },
+    {
+      "date": "2027-01-27",
+      "key": "holocaust",
+      "url": "https://www.un.org/en/observances/commemoration-holocaust-victims-day",
+      "res": "A/RES/60/7"
+    },
+    {
+      "date": "2027-02-11",
+      "key": "womenScience",
+      "url": "https://www.un.org/en/observances/women-and-girls-in-science-day",
+      "res": "A/RES/70/212"
+    },
+    {
+      "date": "2027-02-21",
+      "key": "motherLanguage",
+      "url": "https://www.un.org/en/observances/mother-language-day",
+      "res": "A/RES/56/262"
+    },
+    {
+      "date": "2027-03-03",
+      "key": "wildlife",
+      "url": "https://www.un.org/en/observances/world-wildlife-day",
+      "res": "A/RES/68/205"
+    },
+    {
+      "date": "2027-03-08",
+      "key": "women",
+      "url": "https://www.un.org/en/observances/womens-day"
+    },
+    {
+      "date": "2027-03-20",
+      "key": "happiness",
+      "url": "https://www.un.org/en/observances/happiness-day",
+      "res": "A/RES/66/281"
+    },
+    {
+      "date": "2027-03-21",
+      "key": "racialDiscrimination",
+      "url": "https://www.un.org/en/observances/end-racism-day",
+      "res": "A/RES/2142 (XXI)"
+    },
+    {
+      "date": "2027-03-22",
+      "key": "water",
+      "url": "https://www.un.org/en/observances/water-day",
+      "res": "A/RES/47/193"
+    },
+    {
+      "date": "2027-03-23",
+      "key": "meteorology",
+      "url": "https://wmo.int/about-wmo/world-meteorological-day",
+      "res": "WMO/EC-XII/Res.6"
+    },
+    {
+      "date": "2027-04-02",
+      "key": "autism",
+      "url": "https://www.un.org/en/observances/autism-day",
+      "res": "A/RES/62/139"
+    },
+    {
+      "date": "2027-04-07",
+      "key": "health",
+      "url": "https://www.who.int/campaigns/world-health-day",
+      "res": "WHA/A.2/Res.35"
+    },
+    {
+      "date": "2027-04-22",
+      "key": "motherEarth",
+      "url": "https://www.un.org/en/observances/earth-day",
+      "res": "A/RES/63/278"
+    },
+    {
+      "date": "2027-04-23",
+      "key": "book",
+      "url": "https://www.unesco.org/en/days/world-book-and-copyright",
+      "res": "28 C/Resolution 3.18"
+    },
+    {
+      "date": "2027-05-03",
+      "key": "pressFreedom",
+      "url": "https://www.un.org/en/observances/press-freedom-day",
+      "res": "UNESCO 26 C/Resolution 4.3"
+    },
+    {
+      "date": "2027-05-20",
+      "key": "bees",
+      "url": "https://www.un.org/en/observances/bee-day",
+      "res": "A/RES/72/211"
+    },
+    {
+      "date": "2027-05-22",
+      "key": "biodiversity",
+      "url": "https://www.un.org/en/observances/biological-diversity-day",
+      "res": "A/RES/55/201"
+    },
+    {
+      "date": "2027-06-05",
+      "key": "environment",
+      "url": "https://www.un.org/en/observances/environment-day",
+      "res": "A/RES/2994 (XXVII)"
+    },
+    {
+      "date": "2027-06-08",
+      "key": "oceans",
+      "url": "https://www.un.org/en/observances/oceans-day",
+      "res": "A/RES/63/111"
+    },
+    {
+      "date": "2027-06-20",
+      "key": "refugees",
+      "url": "https://www.un.org/en/observances/refugee-day",
+      "res": "A/RES/55/76"
+    },
+    {
+      "date": "2027-06-21",
+      "key": "yoga",
+      "url": "https://www.un.org/en/observances/yoga-day",
+      "res": "A/RES/69/131"
+    },
+    {
+      "date": "2027-07-11",
+      "key": "population",
+      "url": "https://www.un.org/en/observances/world-population-day",
+      "res": "A/RES/45/216"
+    },
+    {
+      "date": "2027-07-20",
+      "key": "chess",
+      "url": "https://www.un.org/en/observances/world-chess-day",
+      "res": "A/RES/74/22"
+    },
+    {
+      "date": "2027-07-30",
+      "key": "friendship",
+      "url": "https://www.un.org/en/observances/friendship-day",
+      "res": "A/RES/65/275"
+    },
+    {
+      "date": "2027-08-12",
+      "key": "youth",
+      "url": "https://www.un.org/en/observances/youth-day",
+      "res": "A/RES/54/120"
+    },
+    {
+      "date": "2027-08-19",
+      "key": "humanitarian",
+      "url": "https://www.un.org/en/observances/humanitarian-day",
+      "res": "A/RES/63/139"
+    },
+    {
+      "date": "2027-09-08",
+      "key": "literacy",
+      "url": "https://www.unesco.org/en/days/literacy",
+      "res": "14 C/Resolution 1.441"
+    },
+    {
+      "date": "2027-09-21",
+      "key": "peace",
+      "url": "https://www.un.org/en/observances/international-day-peace",
+      "res": "A/RES/36/67"
+    },
+    {
+      "date": "2027-10-01",
+      "key": "olderPersons",
+      "url": "https://www.un.org/en/observances/older-persons-day",
+      "res": "A/RES/45/106"
+    },
+    {
+      "date": "2027-10-05",
+      "key": "teachers",
+      "url": "https://www.unesco.org/en/days/teachers",
+      "res": "27 C/INF.7"
+    },
+    {
+      "date": "2027-10-10",
+      "key": "mentalHealth",
+      "url": "https://www.who.int/campaigns/world-mental-health-day"
+    },
+    {
+      "date": "2027-10-11",
+      "key": "girlChild",
+      "url": "https://www.un.org/en/observances/girl-child-day",
+      "res": "A/RES/66/170"
+    },
+    {
+      "date": "2027-10-16",
+      "key": "food",
+      "url": "https://www.un.org/en/observances/world-food-day",
+      "res": "A/RES/35/70"
+    },
+    {
+      "date": "2027-10-24",
+      "key": "unDay",
+      "url": "https://www.un.org/en/observances/un-day",
+      "res": "A/RES/168 (II)"
+    },
+    {
+      "date": "2027-11-16",
+      "key": "tolerance",
+      "url": "https://www.unesco.org/en/days/tolerance",
+      "res": "28 C/Resolution 5.61"
+    },
+    {
+      "date": "2027-11-19",
+      "key": "toilet",
+      "url": "https://www.un.org/en/observances/toilet-day",
+      "res": "A/RES/67/291"
+    },
+    {
+      "date": "2027-11-20",
+      "key": "children",
+      "url": "https://www.un.org/en/observances/world-childrens-day",
+      "res": "A/RES/836(IX)"
+    },
+    {
+      "date": "2027-11-25",
+      "key": "violenceWomen",
+      "url": "https://www.un.org/en/observances/ending-violence-against-women-day",
+      "res": "A/RES/54/134"
+    },
+    {
+      "date": "2027-12-01",
+      "key": "aids",
+      "url": "https://www.un.org/en/observances/world-aids-day"
+    },
+    {
+      "date": "2027-12-03",
+      "key": "disabilities",
+      "url": "https://www.un.org/en/observances/day-of-persons-with-disabilities",
+      "res": "A/RES/47/3"
+    },
+    {
+      "date": "2027-12-05",
+      "key": "volunteers",
+      "url": "https://www.un.org/en/observances/volunteer-day",
+      "res": "A/RES/40/212"
+    },
+    {
+      "date": "2027-12-10",
+      "key": "humanRights",
+      "url": "https://www.un.org/en/observances/human-rights-day",
+      "res": "A/RES/423 (V)"
+    },
+    {
+      "date": "2027-12-18",
+      "key": "migrants",
+      "url": "https://www.un.org/en/observances/migrants-day",
+      "res": "A/RES/55/93"
+    },
+    {
+      "date": "2025-03-08",
+      "key": "women"
+    },
+    {
+      "date": "2025-06-05",
+      "key": "environment"
+    },
+    {
+      "date": "2025-12-10",
+      "key": "humanRights"
+    },
+    {
+      "date": "2025-10-06",
+      "key": "habitat"
+    },
+    {
+      "date": "2025-11-20",
+      "key": "philosophy"
+    },
+    {
+      "date": "2026-03-08",
+      "key": "women"
+    },
+    {
+      "date": "2026-06-05",
+      "key": "environment"
+    },
+    {
+      "date": "2026-12-10",
+      "key": "humanRights"
+    },
+    {
+      "date": "2026-10-05",
+      "key": "habitat",
+      "url": "https://www.un.org/en/observances/habitat-day"
+    },
+    {
+      "date": "2026-11-19",
+      "key": "philosophy",
+      "url": "https://www.unesco.org/en/days/philosophy"
+    },
+    {
+      "date": "2027-10-04",
+      "key": "habitat"
+    },
+    {
+      "date": "2027-11-18",
+      "key": "philosophy"
+    },
+    {
+      "date": "2028-03-08",
+      "key": "women"
+    },
+    {
+      "date": "2028-06-05",
+      "key": "environment"
+    },
+    {
+      "date": "2028-12-10",
+      "key": "humanRights"
+    },
+    {
+      "date": "2028-10-02",
+      "key": "habitat"
+    },
+    {
+      "date": "2028-11-16",
+      "key": "philosophy"
+    },
+    {
+      "date": "2029-03-08",
+      "key": "women"
+    },
+    {
+      "date": "2029-06-05",
+      "key": "environment"
+    },
+    {
+      "date": "2029-12-10",
+      "key": "humanRights"
+    },
+    {
+      "date": "2029-10-01",
+      "key": "habitat"
+    },
+    {
+      "date": "2029-11-15",
+      "key": "philosophy"
+    },
+    {
+      "date": "2030-03-08",
+      "key": "women"
+    },
+    {
+      "date": "2030-06-05",
+      "key": "environment"
+    },
+    {
+      "date": "2030-12-10",
+      "key": "humanRights"
+    },
+    {
+      "date": "2030-10-07",
+      "key": "habitat"
+    },
+    {
+      "date": "2030-11-21",
+      "key": "philosophy"
+    },
+    {
+      "date": "2031-03-08",
+      "key": "women"
+    },
+    {
+      "date": "2031-06-05",
+      "key": "environment"
+    },
+    {
+      "date": "2031-12-10",
+      "key": "humanRights"
+    },
+    {
+      "date": "2031-10-06",
+      "key": "habitat"
+    },
+    {
+      "date": "2031-11-20",
+      "key": "philosophy"
+    },
+    {
+      "date": "2032-03-08",
+      "key": "women"
+    },
+    {
+      "date": "2032-06-05",
+      "key": "environment"
+    },
+    {
+      "date": "2032-12-10",
+      "key": "humanRights"
+    },
+    {
+      "date": "2032-10-04",
+      "key": "habitat"
+    },
+    {
+      "date": "2032-11-18",
+      "key": "philosophy"
+    }
+  ],
+  "absent": [
+    {
+      "date": "2026-10-06",
+      "key": "habitat"
+    },
+    {
+      "date": "2026-11-21",
+      "key": "philosophy"
+    },
+    {
+      "date": "2027-09-01",
+      "key": "peace"
+    }
+  ]
+}
