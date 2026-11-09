@@ -470,6 +470,11 @@
               "Siz silənədək"
             ],
             [
+              "sth-cals",
+              "Təqvim səhifələrində göstərilməsini seçdiyiniz əlavə təqvimləri (məsələn, xristian təqvimini) yadda saxlayır.",
+              "Siz silənədək"
+            ],
+            [
               "sth-place",
               "Namaz vaxtları, fəsillər və hava səhifələri üçün sonuncu seçdiyiniz vilayəti və ya məkanı yadda saxlayır.",
               "Siz silənədək"
@@ -754,6 +759,8 @@
     "dayAgo": "{n} gün əvvəl",
     "dayClose": "Bağla",
     "dayToList": "Günlər siyahısında göstər",
+    "calsHeading": "Təqvimlər",
+    "calsLead": "Digər təqvimlərin bayram və günlərini də göstərin. Seçiminiz yalnız bu brauzerdə qalır.",
     "icsHeading": "Təqviminizə əlavə edin",
     "icsHolidays": "Rəsmi bayramlar və ərəfələr",
     "icsDays": "Dini və xüsusi günlər",

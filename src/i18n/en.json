@@ -470,6 +470,11 @@
               "Until you delete it"
             ],
             [
+              "sth-cals",
+              "Remembers which additional calendars (for example the Christian calendar) you chose to show on the calendar pages.",
+              "Until you delete it"
+            ],
+            [
               "sth-place",
               "Remembers the province or location you chose last for the prayer times, seasons and weather pages.",
               "Until you delete it"
@@ -754,6 +759,8 @@
     "dayAgo": "{n} days ago",
     "dayClose": "Close",
     "dayToList": "Show in the list of days",
+    "calsHeading": "Calendars",
+    "calsLead": "Show the feasts and days of other calendars too. Your choice stays in this browser only.",
     "icsHeading": "Add to your calendar",
     "icsHolidays": "Public holidays and eves",
     "icsDays": "Religious and special days",

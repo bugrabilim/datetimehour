@@ -470,6 +470,11 @@
               "Sampai Anda menghapusnya"
             ],
             [
+              "sth-cals",
+              "Mengingat kalender tambahan (misalnya kalender Kristen) yang Anda pilih untuk ditampilkan di halaman kalender.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
               "sth-place",
               "Mengingat provinsi atau lokasi yang terakhir dipilih untuk halaman jadwal salat, musim, dan cuaca.",
               "Sampai Anda menghapusnya"
@@ -754,6 +759,8 @@
     "dayAgo": "{n} hari yang lalu",
     "dayClose": "Tutup",
     "dayToList": "Tampilkan di daftar hari",
+    "calsHeading": "Kalender",
+    "calsLead": "Tampilkan juga hari raya dan hari penting dari kalender lain. Pilihan Anda hanya tersimpan di peramban ini.",
     "icsHeading": "Tambahkan ke kalender Anda",
     "icsHolidays": "Hari libur resmi dan hari menjelangnya",
     "icsDays": "Hari keagamaan dan hari istimewa",

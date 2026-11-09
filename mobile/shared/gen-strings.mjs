@@ -13,6 +13,7 @@ import { computeYear } from "../../lib/events.mjs";
 import { bridges } from "../../lib/bridges.mjs";
 import { hijriTable } from "../../lib/hijri.mjs";
 import { otdDay } from "../../lib/otd.mjs";
+import { CALENDARS, CAL_PLACEHOLDERS, calendarData, calendarsJson, loadCalTexts, validateCalendars } from "../../lib/calendars/index.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
@@ -149,6 +150,28 @@ for (const k of ["h1", "gender", "women", "men", "birth", "start", "days", "days
   "never", "years", "months", "noteScope", "noteLaw"]) KEYS[`retire.${k}`] = () => RETIRE[k];
 for (const sub of ["groups", "routes"]) for (const k of Object.keys(RETIRE[sub])) KEYS[`retire.${sub}.${k}`] = () => RETIRE[sub][k];
 
+/* Kapsayıcı takvimler (9 Kasım 2026; lib/calendars, docs/takvimler.md): src/i18n-cal/<id>.json → cals.<id>.<anahtar>
+   (iç içe nesneler noktayla: cals.christian.ev.easter; dizi öğeleri 1'den: cals.<id>.month.1). "cals.<id>." öneki bu metinlere
+   ayrılmıştır; uygulama arayüz metinleri app-strings.json'da başka adla durur. Yer tutucuların argüman sırası CAL_PLACEHOLDERS
+   (d, m, y; Türkçe fmt de bu sırada yazılır, doğrulama denetler), sonra diğerleri (aşağıda calOrder). */
+const CAL_TEXTS = loadCalTexts(ROOT);
+const CAL_DATA = calendarData();
+{
+  const errs = validateCalendars(CAL_DATA, CAL_TEXTS, ROOT);
+  if (errs.length) throw new Error("Takvimler (lib/calendars):\n- " + errs.join("\n- "));
+}
+for (const { meta } of CALENDARS) {
+  const walk = (o, p) => {
+    for (const [k, v] of Object.entries(o)) {
+      const q = [...p, k];
+      if (Array.isArray(v)) v.forEach((_, i) => { KEYS[`cals.${meta.id}.${q.join(".")}.${i + 1}`] = (t, l) => at(CAL_TEXTS[meta.id][l], [...q, i]); });
+      else if (v && typeof v === "object") walk(v, q);
+      else KEYS[`cals.${meta.id}.${q.join(".")}`] = (t, l) => at(CAL_TEXTS[meta.id][l], q);
+    }
+  };
+  walk(CAL_TEXTS[meta.id].tr, []);
+}
+
 const APP = JSON.parse(fs.readFileSync(path.join(HERE, "app-strings.json"), "utf8"));
 for (const [key, byLang] of Object.entries(APP)) {
   if (key === "_") continue;
@@ -158,6 +181,8 @@ for (const [key, byLang] of Object.entries(APP)) {
 
 /* {ad} → %1$@, %2$@…: sıra Türkçe metindeki ilk görünüş sırasıdır; her dil aynı adları kullanmalı. */
 const names = (s) => [...new Set([...s.matchAll(/\{([a-z]+)\}/gi)].map((m) => m[1]))];
+/* Takvim metinlerinde (cals.*) sıra sabit: d, m, y, sonra diğerleri Türkçe metindeki sırayla (iOS ve Android argümanları bu sırayla verir) */
+const calOrder = (key, s) => (key.startsWith("cals.") ? [...CAL_PLACEHOLDERS.filter((n) => names(s).includes(n)), ...names(s).filter((n) => !CAL_PLACEHOLDERS.includes(n))] : names(s));
 const toIOS = (s, order) => s.replace(/%/g, "%%").replace(/\{([a-z]+)\}/gi, (_, n) => `%${order.indexOf(n) + 1}$@`);
 
 /* Android: {ad} → %1$s; yer tutucusu olmayan metinde % olduğu gibi kalır (formatted="false") */
@@ -200,7 +225,7 @@ for (const key of Object.keys(KEYS)) if (key.startsWith("siri.phrase.")) delete 
 const strings = {}, plistStrings = {};
 for (const [key, get] of Object.entries(KEYS)) {
   const localizations = {};
-  const order = names(get(I.tr, "tr") ?? "");
+  const order = calOrder(key, get(I.tr, "tr") ?? "");
   for (const l of LANGS) {
     const v = get(I[l], l);
     if (typeof v !== "string" || !v) throw new Error(`${l}: ${key} metni yok`);
@@ -351,6 +376,9 @@ const files = {
   "mobile/android/app/src/main/assets/moon.jpg": moonJpg,
   "mobile/ios/App/Resources/world-holidays.json": wholJson,
   "mobile/android/app/src/main/assets/world-holidays.json": wholJson,
+  // Kapsayıcı takvimler (lib/calendars; biçim docs/takvimler.md)
+  "mobile/ios/App/Resources/calendars.json": calendarsJson(CAL_DATA),
+  "mobile/android/app/src/main/assets/calendars.json": calendarsJson(CAL_DATA),
   "mobile/ios/App/Resources/Localizable.xcstrings": xcstrings,
   "mobile/ios/App/Resources/InfoPlist.xcstrings": catalog(plistStrings),
   "mobile/ios/App/Resources/AppShortcuts.xcstrings": catalog(shortcutStrings, "en"),
