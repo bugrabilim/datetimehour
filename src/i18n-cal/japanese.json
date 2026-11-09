@@ -1,0 +1,434 @@
+{
+  "tr": {
+    "name": "Japon takvimi",
+    "desc": "Japonya'nın geleneksel günleri, rokuyō (altı günlük uğur döngüsü) ve Reiwa dönemi yılı.",
+    "note": "Rokuyō, Japonya saatiyle (UTC+9) hesaplanan eski ay-güneş takviminden (kyūreki) bulunur. Obon, Tokyo'nun bazı bölgelerinde temmuzda, Okinawa'da eski takvime göre kutlanır.",
+    "ev": {
+      "setsubun": "Setsubun (baharın arifesi)",
+      "hinamatsuri": "Hinamatsuri (Kızlar Günü)",
+      "higanSpring": "Bahar Higanı (ekinoks haftası)",
+      "tanabata": "Tanabata (Yıldız Bayramı)",
+      "doyoUshi": "Doyō no Ushi no Hi (yılan balığı günü)",
+      "obon": "Obon (ataları anma)",
+      "higanAutumn": "Sonbahar Higanı (ekinoks haftası)",
+      "shichiGoSan": "Shichi-Go-San (7-5-3 çocuk bayramı)"
+    },
+    "yearFmt": "Reiwa {y}",
+    "daily": {
+      "sensho": "Senshō (öğleden önce uğurlu)",
+      "tomobiki": "Tomobiki (cenaze yapılmaz)",
+      "senbu": "Senbu (öğleden sonra uğurlu)",
+      "butsumetsu": "Butsumetsu (uğursuz gün)",
+      "taian": "Taian (uğurlu gün)",
+      "shakko": "Shakkō (yalnız öğlen uğurlu)"
+    }
+  },
+  "en": {
+    "name": "Japanese calendar",
+    "desc": "Traditional Japanese days, rokuyō (the six-day luck cycle) and the Reiwa era year.",
+    "note": "Rokuyō comes from the old lunisolar calendar (kyūreki), calculated for Japan time (UTC+9). Obon is held in July in parts of Tokyo and by the old calendar in Okinawa.",
+    "ev": {
+      "setsubun": "Setsubun (eve of spring)",
+      "hinamatsuri": "Hinamatsuri (Girls' Day)",
+      "higanSpring": "Spring Higan (equinox week)",
+      "tanabata": "Tanabata (Star Festival)",
+      "doyoUshi": "Doyō no Ushi no Hi (eel day)",
+      "obon": "Obon (honouring ancestors)",
+      "higanAutumn": "Autumn Higan (equinox week)",
+      "shichiGoSan": "Shichi-Go-San (7-5-3 children's festival)"
+    },
+    "yearFmt": "Reiwa {y}",
+    "daily": {
+      "sensho": "Senshō (lucky before noon)",
+      "tomobiki": "Tomobiki (no funerals)",
+      "senbu": "Senbu (lucky after noon)",
+      "butsumetsu": "Butsumetsu (unlucky day)",
+      "taian": "Taian (lucky day)",
+      "shakko": "Shakkō (lucky only at noon)"
+    }
+  },
+  "de": {
+    "name": "Japanischer Kalender",
+    "desc": "Traditionelle japanische Tage, Rokuyō (der sechstägige Glückszyklus) und das Jahr der Reiwa-Ära.",
+    "note": "Rokuyō ergibt sich aus dem alten Lunisolarkalender (Kyūreki), berechnet nach japanischer Zeit (UTC+9). Obon wird in Teilen Tokios im Juli und auf Okinawa nach dem alten Kalender gefeiert.",
+    "ev": {
+      "setsubun": "Setsubun (Vorabend des Frühlings)",
+      "hinamatsuri": "Hinamatsuri (Mädchenfest)",
+      "higanSpring": "Frühlings-Higan (Woche der Tagundnachtgleiche)",
+      "tanabata": "Tanabata (Sternenfest)",
+      "doyoUshi": "Doyō no Ushi no Hi (Aal-Tag)",
+      "obon": "Obon (Ahnenfest)",
+      "higanAutumn": "Herbst-Higan (Woche der Tagundnachtgleiche)",
+      "shichiGoSan": "Shichi-Go-San (Kinderfest 7-5-3)"
+    },
+    "yearFmt": "Reiwa {y}",
+    "daily": {
+      "sensho": "Senshō (Glück am Vormittag)",
+      "tomobiki": "Tomobiki (keine Beerdigungen)",
+      "senbu": "Senbu (Glück am Nachmittag)",
+      "butsumetsu": "Butsumetsu (Unglückstag)",
+      "taian": "Taian (Glückstag)",
+      "shakko": "Shakkō (Glück nur zur Mittagszeit)"
+    }
+  },
+  "az": {
+    "name": "Yapon təqvimi",
+    "desc": "Yaponiyanın ənənəvi günləri, rokuyō (altı günlük uğur dövrü) və Reiwa dövrünün ili.",
+    "note": "Rokuyō Yaponiya vaxtı ilə (UTC+9) hesablanan köhnə ay-günəş təqvimindən (kyūreki) tapılır. Obon Tokionun bəzi yerlərində iyulda, Okinavada isə köhnə təqvimlə qeyd olunur.",
+    "ev": {
+      "setsubun": "Setsubun (baharın ərəfəsi)",
+      "hinamatsuri": "Hinamatsuri (Qızlar Günü)",
+      "higanSpring": "Yaz Higanı (gecə-gündüz bərabərliyi həftəsi)",
+      "tanabata": "Tanabata (Ulduz bayramı)",
+      "doyoUshi": "Doyō no Ushi no Hi (ilanbalığı günü)",
+      "obon": "Obon (əcdadları anma)",
+      "higanAutumn": "Payız Higanı (gecə-gündüz bərabərliyi həftəsi)",
+      "shichiGoSan": "Shichi-Go-San (7-5-3 uşaq bayramı)"
+    },
+    "yearFmt": "Reiwa {y}",
+    "daily": {
+      "sensho": "Senshō (günortadan əvvəl uğurlu)",
+      "tomobiki": "Tomobiki (dəfn edilmir)",
+      "senbu": "Senbu (günortadan sonra uğurlu)",
+      "butsumetsu": "Butsumetsu (uğursuz gün)",
+      "taian": "Taian (uğurlu gün)",
+      "shakko": "Shakkō (yalnız günorta uğurlu)"
+    }
+  },
+  "ar": {
+    "name": "التقويم الياباني",
+    "desc": "الأيام اليابانية التقليدية، والروكويو (دورة الحظ ذات الأيام الستة)، وسنة عصر ريوا.",
+    "note": "يُستخرج الروكويو من التقويم القمري الشمسي القديم (كيوريكي) محسوبًا بتوقيت اليابان (UTC+9). ويُحتفل بأوبون في يوليو في أجزاء من طوكيو، وحسب التقويم القديم في أوكيناوا.",
+    "ev": {
+      "setsubun": "سيتسوبون (عشية الربيع)",
+      "hinamatsuri": "هينا ماتسوري (يوم الفتيات)",
+      "higanSpring": "هيغان الربيع (أسبوع الاعتدال)",
+      "tanabata": "تاناباتا (مهرجان النجوم)",
+      "doyoUshi": "دويو نو أوشي نو هي (يوم الأنقليس)",
+      "obon": "أوبون (إحياء ذكرى الأجداد)",
+      "higanAutumn": "هيغان الخريف (أسبوع الاعتدال)",
+      "shichiGoSan": "شيتشي غو سان (عيد الأطفال 7-5-3)"
+    },
+    "yearFmt": "ريوا {y}",
+    "daily": {
+      "sensho": "سينشو (حظ قبل الظهر)",
+      "tomobiki": "توموبيكي (لا جنازات)",
+      "senbu": "سينبو (حظ بعد الظهر)",
+      "butsumetsu": "بوتسوميتسو (يوم نحس)",
+      "taian": "تايان (يوم سعد)",
+      "shakko": "شاكو (حظ عند الظهر فقط)"
+    }
+  },
+  "id": {
+    "name": "Kalender Jepang",
+    "desc": "Hari-hari tradisional Jepang, rokuyō (siklus keberuntungan enam hari), dan tahun era Reiwa.",
+    "note": "Rokuyō diturunkan dari kalender lunisolar lama (kyūreki) yang dihitung dengan waktu Jepang (UTC+9). Obon dirayakan pada bulan Juli di sebagian Tokyo dan menurut kalender lama di Okinawa.",
+    "ev": {
+      "setsubun": "Setsubun (malam menjelang musim semi)",
+      "hinamatsuri": "Hinamatsuri (Hari Anak Perempuan)",
+      "higanSpring": "Higan musim semi (pekan ekuinoks)",
+      "tanabata": "Tanabata (Festival Bintang)",
+      "doyoUshi": "Doyō no Ushi no Hi (hari belut)",
+      "obon": "Obon (mengenang leluhur)",
+      "higanAutumn": "Higan musim gugur (pekan ekuinoks)",
+      "shichiGoSan": "Shichi-Go-San (perayaan anak 7-5-3)"
+    },
+    "yearFmt": "Reiwa {y}",
+    "daily": {
+      "sensho": "Senshō (beruntung sebelum tengah hari)",
+      "tomobiki": "Tomobiki (hindari pemakaman)",
+      "senbu": "Senbu (beruntung setelah tengah hari)",
+      "butsumetsu": "Butsumetsu (hari sial)",
+      "taian": "Taian (hari baik)",
+      "shakko": "Shakkō (beruntung hanya tengah hari)"
+    }
+  },
+  "ur": {
+    "name": "جاپانی کیلنڈر",
+    "desc": "جاپان کے روایتی دن، روکویو (چھ دن کا خوش قسمتی کا چکر) اور ریوا دور کا سال۔",
+    "note": "روکویو پرانے قمری شمسی کیلنڈر (کیوریکی) سے نکالا جاتا ہے جس کا حساب جاپان کے وقت (UTC+9) سے ہوتا ہے۔ اوبون ٹوکیو کے کچھ حصوں میں جولائی میں اور اوکیناوا میں پرانے کیلنڈر کے مطابق منایا جاتا ہے۔",
+    "ev": {
+      "setsubun": "سیتسوبون (بہار سے پہلے کی شام)",
+      "hinamatsuri": "ہینا ماتسوری (لڑکیوں کا دن)",
+      "higanSpring": "بہار کا ہیگان (اعتدال کا ہفتہ)",
+      "tanabata": "تاناباتا (ستاروں کا تہوار)",
+      "doyoUshi": "دویو نو اوشی نو ہی (بام مچھلی کا دن)",
+      "obon": "اوبون (آباؤ اجداد کی یاد)",
+      "higanAutumn": "خزاں کا ہیگان (اعتدال کا ہفتہ)",
+      "shichiGoSan": "شیچی گو سان (بچوں کا تہوار 7-5-3)"
+    },
+    "yearFmt": "ریوا {y}",
+    "daily": {
+      "sensho": "سینشو (دوپہر سے پہلے مبارک)",
+      "tomobiki": "توموبیکی (جنازے سے گریز)",
+      "senbu": "سینبو (دوپہر کے بعد مبارک)",
+      "butsumetsu": "بتسومیتسو (منحوس دن)",
+      "taian": "تائیان (مبارک دن)",
+      "shakko": "شاکو (صرف دوپہر کو مبارک)"
+    }
+  },
+  "fa": {
+    "name": "تقویم ژاپنی",
+    "desc": "روزهای سنتی ژاپن، روکویو (چرخهٔ شش‌روزهٔ بخت) و سال دوران ریوا.",
+    "note": "روکویو از تقویم قمری‌خورشیدی قدیم (کیورکی) به وقت ژاپن (UTC+9) به دست می‌آید. اوبون در بخش‌هایی از توکیو در ژوئیه و در اوکیناوا بر پایهٔ تقویم قدیم برگزار می‌شود.",
+    "ev": {
+      "setsubun": "ستسوبون (شب پیش از بهار)",
+      "hinamatsuri": "هینا ماتسوری (روز دختران)",
+      "higanSpring": "هیگان بهاری (هفتهٔ اعتدال)",
+      "tanabata": "تاناباتا (جشن ستارگان)",
+      "doyoUshi": "دویو نو اوشی نو هی (روز مارماهی)",
+      "obon": "اوبون (یادبود نیاکان)",
+      "higanAutumn": "هیگان پاییزی (هفتهٔ اعتدال)",
+      "shichiGoSan": "شیچی گو سان (جشن کودکان 7-5-3)"
+    },
+    "yearFmt": "ریوا {y}",
+    "daily": {
+      "sensho": "سنشو (خوش‌یُمن پیش از ظهر)",
+      "tomobiki": "توموبیکی (بدون مراسم خاکسپاری)",
+      "senbu": "سنبو (خوش‌یُمن پس از ظهر)",
+      "butsumetsu": "بوتسومتسو (روز نحس)",
+      "taian": "تایان (روز خوش‌یُمن)",
+      "shakko": "شاکو (فقط ظهر خوش‌یُمن)"
+    }
+  },
+  "fr": {
+    "name": "Calendrier japonais",
+    "desc": "Les jours traditionnels japonais, le rokuyō (cycle de chance de six jours) et l’année de l’ère Reiwa.",
+    "note": "Le rokuyō découle de l’ancien calendrier luni-solaire (kyūreki), calculé à l’heure du Japon (UTC+9). Obon est célébré en juillet dans une partie de Tokyo et selon l’ancien calendrier à Okinawa.",
+    "ev": {
+      "setsubun": "Setsubun (veille du printemps)",
+      "hinamatsuri": "Hinamatsuri (fête des filles)",
+      "higanSpring": "Higan de printemps (semaine de l’équinoxe)",
+      "tanabata": "Tanabata (fête des étoiles)",
+      "doyoUshi": "Doyō no Ushi no Hi (jour de l’anguille)",
+      "obon": "Obon (fête des ancêtres)",
+      "higanAutumn": "Higan d’automne (semaine de l’équinoxe)",
+      "shichiGoSan": "Shichi-Go-San (fête des enfants 7-5-3)"
+    },
+    "yearFmt": "Reiwa {y}",
+    "daily": {
+      "sensho": "Senshō (chance avant midi)",
+      "tomobiki": "Tomobiki (pas de funérailles)",
+      "senbu": "Senbu (chance après midi)",
+      "butsumetsu": "Butsumetsu (jour néfaste)",
+      "taian": "Taian (jour faste)",
+      "shakko": "Shakkō (chance à midi seulement)"
+    }
+  },
+  "ru": {
+    "name": "Японский календарь",
+    "desc": "Традиционные японские дни, рокуё (шестидневный цикл удачи) и год эпохи Рэйва.",
+    "note": "Рокуё выводится из старого лунно-солнечного календаря (кюрэки), рассчитанного по японскому времени (UTC+9). Обон в части Токио отмечают в июле, а на Окинаве — по старому календарю.",
+    "ev": {
+      "setsubun": "Сэцубун (канун весны)",
+      "hinamatsuri": "Хинамацури (праздник девочек)",
+      "higanSpring": "Весенний Хиган (неделя равноденствия)",
+      "tanabata": "Танабата (праздник звёзд)",
+      "doyoUshi": "Доё-но уси-но хи (день угря)",
+      "obon": "Обон (поминовение предков)",
+      "higanAutumn": "Осенний Хиган (неделя равноденствия)",
+      "shichiGoSan": "Сити-го-сан (детский праздник 7-5-3)"
+    },
+    "yearFmt": "Рэйва {y}",
+    "daily": {
+      "sensho": "Сэнсё (удача до полудня)",
+      "tomobiki": "Томобики (не для похорон)",
+      "senbu": "Сэмбу (удача после полудня)",
+      "butsumetsu": "Буцумэцу (несчастливый день)",
+      "taian": "Тайан (счастливый день)",
+      "shakko": "Сякко (удача только в полдень)"
+    }
+  },
+  "ja": {
+    "name": "日本の暦",
+    "desc": "日本の伝統行事・雑節、六曜、令和の年を表示します。",
+    "note": "六曜は日本時間（UTC+9）で計算した旧暦から求めています。お盆は東京の一部などでは7月、沖縄では旧暦で行われます。",
+    "ev": {
+      "setsubun": "節分",
+      "hinamatsuri": "ひな祭り（桃の節句）",
+      "higanSpring": "春の彼岸",
+      "tanabata": "七夕",
+      "doyoUshi": "土用の丑の日",
+      "obon": "お盆",
+      "higanAutumn": "秋の彼岸",
+      "shichiGoSan": "七五三"
+    },
+    "yearFmt": "令和{y}年",
+    "daily": {
+      "sensho": "先勝",
+      "tomobiki": "友引",
+      "senbu": "先負",
+      "butsumetsu": "仏滅",
+      "taian": "大安",
+      "shakko": "赤口"
+    }
+  },
+  "ko": {
+    "name": "일본 달력",
+    "desc": "일본의 전통 행사와 절기, 로쿠요(6일 길흉 순환), 레이와 연호의 해를 보여 줍니다.",
+    "note": "로쿠요는 일본 시간(UTC+9)으로 계산한 옛 음력(규레키)에서 구합니다. 오봉은 도쿄 일부 지역에서는 7월에, 오키나와에서는 음력으로 지냅니다.",
+    "ev": {
+      "setsubun": "세쓰분(입춘 전날)",
+      "hinamatsuri": "히나마쓰리(여자아이 축제)",
+      "higanSpring": "봄 히간(춘분 주간)",
+      "tanabata": "다나바타(일본 칠석)",
+      "doyoUshi": "도요노우시노히(장어 먹는 날)",
+      "obon": "오봉(조상 공양)",
+      "higanAutumn": "가을 히간(추분 주간)",
+      "shichiGoSan": "시치고산(7·5·3 어린이 축제)"
+    },
+    "yearFmt": "레이와 {y}년",
+    "daily": {
+      "sensho": "센쇼(오전 길)",
+      "tomobiki": "도모비키(장례 피함)",
+      "senbu": "센부(오후 길)",
+      "butsumetsu": "부쓰메쓰(흉일)",
+      "taian": "다이안(길일)",
+      "shakko": "샷코(정오만 길)"
+    }
+  },
+  "zh": {
+    "name": "日本历法",
+    "desc": "日本传统节日与杂节、六曜（六日吉凶循环）以及令和年号纪年。",
+    "note": "六曜由以日本时间（UTC+9）计算的旧历推算。东京部分地区在7月过盂兰盆节，冲绳则按旧历。",
+    "ev": {
+      "setsubun": "节分（立春前一天）",
+      "hinamatsuri": "女儿节（雏祭）",
+      "higanSpring": "春季彼岸（春分周）",
+      "tanabata": "日本七夕",
+      "doyoUshi": "土用丑日",
+      "obon": "盂兰盆节（日本）",
+      "higanAutumn": "秋季彼岸（秋分周）",
+      "shichiGoSan": "七五三（儿童节）"
+    },
+    "yearFmt": "令和{y}年",
+    "daily": {
+      "sensho": "先胜",
+      "tomobiki": "友引",
+      "senbu": "先负",
+      "butsumetsu": "佛灭",
+      "taian": "大安",
+      "shakko": "赤口"
+    }
+  },
+  "fil": {
+    "name": "Kalendaryong Hapones",
+    "desc": "Mga tradisyonal na araw ng Japan, rokuyō (anim na araw na siklo ng suwerte), at taon ng panahong Reiwa.",
+    "note": "Hinango ang rokuyō sa lumang kalendaryong lunisolar (kyūreki) na kinuwenta sa oras ng Japan (UTC+9). Ipinagdiriwang ang Obon tuwing Hulyo sa ilang bahagi ng Tokyo at ayon sa lumang kalendaryo sa Okinawa.",
+    "ev": {
+      "setsubun": "Setsubun (bisperas ng tagsibol)",
+      "hinamatsuri": "Hinamatsuri (Araw ng mga Batang Babae)",
+      "higanSpring": "Higan ng tagsibol (linggo ng ekinoksyo)",
+      "tanabata": "Tanabata (Pista ng mga Bituin)",
+      "doyoUshi": "Doyō no Ushi no Hi (araw ng igat)",
+      "obon": "Obon (paggunita sa mga ninuno)",
+      "higanAutumn": "Higan ng taglagas (linggo ng ekinoksyo)",
+      "shichiGoSan": "Shichi-Go-San (pista ng mga bata 7-5-3)"
+    },
+    "yearFmt": "Reiwa {y}",
+    "daily": {
+      "sensho": "Senshō (suwerte bago magtanghali)",
+      "tomobiki": "Tomobiki (iwasan ang libing)",
+      "senbu": "Senbu (suwerte pagkatapos ng tanghali)",
+      "butsumetsu": "Butsumetsu (malas na araw)",
+      "taian": "Taian (masuwerteng araw)",
+      "shakko": "Shakkō (suwerte sa tanghali lang)"
+    }
+  },
+  "th": {
+    "name": "ปฏิทินญี่ปุ่น",
+    "desc": "วันตามประเพณีญี่ปุ่น โระกุโย (วงจรโชคหกวัน) และปีศักราชเรวะ",
+    "note": "โระกุโยคำนวณจากปฏิทินจันทรคติสุริยคติแบบเก่า (คีวเรกิ) ตามเวลาญี่ปุ่น (UTC+9) ส่วนโอบ้งในบางพื้นที่ของโตเกียวจัดในเดือนกรกฎาคม และในโอกินาวะจัดตามปฏิทินเก่า",
+    "ev": {
+      "setsubun": "เซ็ตสึบุง (วันก่อนเริ่มฤดูใบไม้ผลิ)",
+      "hinamatsuri": "ฮินะมัตสึริ (วันเด็กผู้หญิง)",
+      "higanSpring": "ฮิงังฤดูใบไม้ผลิ (สัปดาห์วิษุวัต)",
+      "tanabata": "ทานาบาตะ (เทศกาลดวงดาว)",
+      "doyoUshi": "โดโยโนะอุชิโนะฮิ (วันกินปลาไหล)",
+      "obon": "โอบ้ง (รำลึกบรรพบุรุษ)",
+      "higanAutumn": "ฮิงังฤดูใบไม้ร่วง (สัปดาห์วิษุวัต)",
+      "shichiGoSan": "ชิจิโกะซัง (เทศกาลเด็ก 7-5-3)"
+    },
+    "yearFmt": "เรวะ {y}",
+    "daily": {
+      "sensho": "เซ็นโช (โชคดีช่วงเช้า)",
+      "tomobiki": "โทโมบิกิ (เลี่ยงงานศพ)",
+      "senbu": "เซ็มบุ (โชคดีช่วงบ่าย)",
+      "butsumetsu": "บุตสึเมตสึ (วันอัปมงคล)",
+      "taian": "ไทอัง (วันมงคล)",
+      "shakko": "ชักโก (โชคดีเฉพาะเที่ยง)"
+    }
+  },
+  "es": {
+    "name": "Calendario japonés",
+    "desc": "Días tradicionales japoneses, el rokuyō (ciclo de suerte de seis días) y el año de la era Reiwa.",
+    "note": "El rokuyō se obtiene del antiguo calendario lunisolar (kyūreki), calculado en hora de Japón (UTC+9). El Obon se celebra en julio en parte de Tokio y según el antiguo calendario en Okinawa.",
+    "ev": {
+      "setsubun": "Setsubun (víspera de la primavera)",
+      "hinamatsuri": "Hinamatsuri (Día de las Niñas)",
+      "higanSpring": "Higan de primavera (semana del equinoccio)",
+      "tanabata": "Tanabata (Festival de las Estrellas)",
+      "doyoUshi": "Doyō no Ushi no Hi (día de la anguila)",
+      "obon": "Obon (fiesta de los antepasados)",
+      "higanAutumn": "Higan de otoño (semana del equinoccio)",
+      "shichiGoSan": "Shichi-Go-San (fiesta infantil 7-5-3)"
+    },
+    "yearFmt": "Reiwa {y}",
+    "daily": {
+      "sensho": "Senshō (suerte antes del mediodía)",
+      "tomobiki": "Tomobiki (sin funerales)",
+      "senbu": "Senbu (suerte después del mediodía)",
+      "butsumetsu": "Butsumetsu (día nefasto)",
+      "taian": "Taian (día propicio)",
+      "shakko": "Shakkō (suerte solo al mediodía)"
+    }
+  },
+  "pt": {
+    "name": "Calendário japonês",
+    "desc": "Dias tradicionais japoneses, o rokuyō (ciclo de sorte de seis dias) e o ano da era Reiwa.",
+    "note": "O rokuyō vem do antigo calendário lunissolar (kyūreki), calculado no horário do Japão (UTC+9). O Obon é celebrado em julho em parte de Tóquio e pelo calendário antigo em Okinawa.",
+    "ev": {
+      "setsubun": "Setsubun (véspera da primavera)",
+      "hinamatsuri": "Hinamatsuri (Dia das Meninas)",
+      "higanSpring": "Higan de primavera (semana do equinócio)",
+      "tanabata": "Tanabata (Festival das Estrelas)",
+      "doyoUshi": "Doyō no Ushi no Hi (dia da enguia)",
+      "obon": "Obon (festa dos antepassados)",
+      "higanAutumn": "Higan de outono (semana do equinócio)",
+      "shichiGoSan": "Shichi-Go-San (festa infantil 7-5-3)"
+    },
+    "yearFmt": "Reiwa {y}",
+    "daily": {
+      "sensho": "Senshō (sorte antes do meio-dia)",
+      "tomobiki": "Tomobiki (sem funerais)",
+      "senbu": "Senbu (sorte depois do meio-dia)",
+      "butsumetsu": "Butsumetsu (dia de azar)",
+      "taian": "Taian (dia de sorte)",
+      "shakko": "Shakkō (sorte só ao meio-dia)"
+    }
+  },
+  "hi": {
+    "name": "जापानी कैलेंडर",
+    "desc": "जापान के पारंपरिक दिन, रोकुयो (छह दिनों का शुभ-अशुभ चक्र) और रेइवा युग का वर्ष।",
+    "note": "रोकुयो पुराने चांद्र-सौर कैलेंडर (क्यूरेकी) से निकाला जाता है, जिसकी गणना जापान के समय (UTC+9) से होती है। ओबोन टोक्यो के कुछ हिस्सों में जुलाई में और ओकिनावा में पुराने कैलेंडर के अनुसार मनाया जाता है।",
+    "ev": {
+      "setsubun": "सेत्सुबुन (वसंत की पूर्व संध्या)",
+      "hinamatsuri": "हिनामात्सुरी (बालिका दिवस)",
+      "higanSpring": "वसंत हिगान (विषुव सप्ताह)",
+      "tanabata": "तानाबाता (तारों का उत्सव)",
+      "doyoUshi": "दोयो नो उशी नो ही (ईल मछली का दिन)",
+      "obon": "ओबोन (पूर्वजों की स्मृति)",
+      "higanAutumn": "शरद हिगान (विषुव सप्ताह)",
+      "shichiGoSan": "शिचि-गो-सान (बच्चों का उत्सव 7-5-3)"
+    },
+    "yearFmt": "रेइवा {y}",
+    "daily": {
+      "sensho": "सेंशो (दोपहर से पहले शुभ)",
+      "tomobiki": "तोमोबिकी (अंतिम संस्कार से बचें)",
+      "senbu": "सेनबु (दोपहर के बाद शुभ)",
+      "butsumetsu": "बुत्सुमेत्सु (अशुभ दिन)",
+      "taian": "ताइआन (शुभ दिन)",
+      "shakko": "शाक्को (केवल दोपहर में शुभ)"
+    }
+  }
+}
