@@ -82,9 +82,11 @@ shoot tr tr_TR light tr-araclar -startTab 6
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -startTab 5 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 # Alt ekranlar (doğrudan açılır)
-for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features qibla study wakegame language dials chess metronome talking zodiac timecalc bridge retire exam classroom; do
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features qibla study wakegame language dials chess metronome talking zodiac timecalc bridge retire exam classroom photo; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
+# Fotoğraf ışığı (9 Kasım 2026): Arapça, koyu (sağdan sola)
+shoot ar ar_SA dark ekran-photo-ar -openScreen photo
 shoot tr tr_TR dark ekran-about-koyu -openScreen about
 shoot tr tr_TR light ekran-renk-cocuk -openScreen settings -accent kid-purple
 shoot tr tr_TR light tr-renk-cocuk -accent kid-green

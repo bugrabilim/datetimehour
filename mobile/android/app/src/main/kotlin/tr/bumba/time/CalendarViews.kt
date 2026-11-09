@@ -108,13 +108,13 @@ object WorldHol {
     fun countryName(cc: String): String = java.util.Locale.Builder().setRegion(cc).build().getDisplayCountry(Strings.locale).ifBlank { cc }
 }
 
-/** Takvimin seçili ülkesine ve türlerine göre bir günün özel günleri */
+/** Takvimin seçili ülkesine ve türlerine göre bir günün özel günleri; açık kapsayıcı takvimlerin günleri sonda (tür `cal:<id>`) */
 fun calEvents(d: LocalDate): List<CalEvent> {
     CalView.load(); WorldHol.ensure()
     val base = AppData.events[d].orEmpty()
     val list = if (CalView.country == "TR") base
         else base.filter { it.type == "religious" } + WorldHol.events(CalView.country, d)
-    return list.filter { it.type !in CalView.hidden }
+    return list.filter { it.type !in CalView.hidden } + ExtraCals.events(d)
 }
 
 /** Ay / hafta / gün / ajanda / yıl seçimi */
@@ -140,21 +140,31 @@ fun CalExtraMenuItems(onCountry: () -> Unit) {
         trailingIcon = { Checkbox(checked = CalView.hijriNav, onCheckedChange = null) },
         onClick = { CalView.hijriNav = !CalView.hijriNav; CalView.save() },
     )
+    // Takvimler ve ülke (kapsayıcı takvimler, 9 Kasım 2026): altında seçili ülke
     DropdownMenuItem(
-        text = { Text(L("cal.country") + ": " + (if (CalView.country == "TR") WorldHol.countryName("TR") else WorldHol.countryName(CalView.country))) },
+        text = {
+            Column {
+                Text(L("calendars.title"))
+                Text(WorldHol.countryName(CalView.country), color = Theme.c.muted, fontSize = 12.sp)
+            }
+        },
         onClick = onCountry,
     )
 }
 
-/** Ülke ve tür seçim penceresi */
+/** Takvimler ve ülke penceresi: kapsayıcı takvimler (açık/kapalı), gösterilen türler ve ülke */
 @Composable
 fun CalCountryDialog(onClose: () -> Unit) {
     androidx.compose.material3.AlertDialog(
         onDismissRequest = onClose,
         confirmButton = { androidx.compose.material3.TextButton(onClick = onClose) { Text(L("common.done"), color = Theme.c.accent) } },
-        title = { Text(L("cal.country")) },
+        title = { Text(L("calendars.title")) },
         text = {
             Column(Modifier.heightIn(max = 460.dp).verticalScroll(rememberScrollState())) {
+                if (ExtraCals.all.isNotEmpty()) {
+                    ExtraCalsSection()
+                    HorizontalDivider(Modifier.padding(vertical = 8.dp), color = Theme.c.border)
+                }
                 Text(L("cal.shownTypes"), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
                 val types = if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")
                 for (t in types) {

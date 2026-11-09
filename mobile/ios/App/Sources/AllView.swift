@@ -79,6 +79,8 @@ enum AllPrefs {
         AllEntry(id: "moon", titleKey: "moon.calendarLink", icon: "moon", cat: .sky, feature: .seasons, route: .moon),
         AllEntry(id: "sky", titleKey: "sky.h1", icon: "sparkles", cat: .sky, feature: .seasons, route: .sky),
         AllEntry(id: "sunpath", titleKey: "sunpath.title", icon: "sun.horizon", cat: .sky, feature: .seasons, route: .sunpath),
+        AllEntry(id: "photo", titleKey: "photoApp.title", icon: "camera.aperture", cat: .sky, feature: .tools, route: .photo,
+                 words: ["photoApp.subtitle", "nature.goldenAm", "nature.bluePm", "photoApp.forecast"]),
         AllEntry(id: "zodiac", titleKey: "zodiac.h1", icon: "sparkles", cat: .sky, feature: .tools, route: .zodiac),
         AllEntry(id: "prayer", titleKey: "tab.prayer", icon: "moon.stars", cat: .faith, feature: .prayer, tab: .prayer),
         AllEntry(id: "qibla", titleKey: "qibla.title", icon: "location.north.line", cat: .faith, feature: .prayer, route: .qibla),
@@ -357,6 +359,7 @@ extension ToolRoute {
         case .moon: MoonView()
         case .sky: SkyView()
         case .sunpath: SunPathView()
+        case .photo: PhotoLightView()
         case .chess: ChessClockView()
         case .metronome: MetronomeView()
         case .talking: TalkingClockView()

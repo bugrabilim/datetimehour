@@ -334,7 +334,7 @@
         "ul": [
           "**Uhrzeit und Datum:** Uhrzeit und Zeitzone Ihres Geräts werden ausschließlich in Ihrem Browser gelesen und verarbeitet. Sie werden weder an einen Server gesendet noch gespeichert.",
           "**Standort (Gebetszeiten):** Wenn Sie auf der Seite der Gebetszeiten „Meinen Standort verwenden“ wählen, nutzt Ihr Browser Ihren Standort nur auf Ihrem Gerät zur Berechnung. Die Koordinaten werden weder an den Server gesendet noch in Statistiken erfasst; Ihre letzte Auswahl bleibt im lokalen Speicher Ihres Browsers.",
-          "**Wetter (externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben, senden die Wetterseite und die Uhrstile mit Wetter die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts (auf etwa 1 km genau) direkt aus Ihrem Browser an Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), das die Daten liefert; dabei erreicht auch Ihre IP-Adresse Open-Meteo. Ohne Zustimmung wird keine Anfrage gestellt, stattdessen erscheint ein Hinweis. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die Datenschutzbedingungen von Open-Meteo.",
+          "**Wetter (externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben, senden die Wetterseite und die Uhrstile mit Wetter die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts (auf etwa 1 km genau) direkt aus Ihrem Browser an Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), das die Daten liefert; dabei erreicht auch Ihre IP-Adresse Open-Meteo. Ohne Zustimmung wird keine Anfrage gestellt, stattdessen erscheint ein Hinweis. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die Datenschutzbedingungen von Open-Meteo. Auch die Wolkenvorhersage auf der Seite „Fotolicht“ wird mit derselben Erlaubnis und denselben ungefähren Koordinaten (zwei Nachkommastellen) von Open-Meteo geladen.",
           "**Karte (Globus, externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben und den Globus auf der Startseite über eine bestimmte Stufe hinaus vergrößern, werden Kartenkacheln direkt vom Server von OpenStreetMap (tile.openstreetmap.org) in Ihren Browser geladen; dabei erreichen Ihre IP-Adresse und die Kacheladressen des betrachteten Gebiets die OpenStreetMap Foundation. Ohne Zustimmung oder bei verkleinertem Globus wird diese Anfrage nicht gestellt. Der Server von Saat Tarih sieht diese Daten nicht; es gelten die Datenschutzbedingungen von OpenStreetMap.",
           "**Qibla und Moscheen in der Nähe:** Qibla-Richtung, Entfernung und Qibla-Zeit werden in Ihrem Browser berechnet. Für den Kompass wird der Lagesensor Ihres Telefons nur im Browser gelesen (das iPhone fragt nach Erlaubnis) und nirgendwohin gesendet. Wenn Sie auf „Moscheen anzeigen“ tippen und externe Dienste erlaubt haben, werden die auf zwei Dezimalstellen gerundeten Koordinaten des gewählten Ortes (etwa 1 km) von Ihrem Browser an den Overpass-Dienst (overpass-api.de) gesendet, der OpenStreetMap-Daten bereitstellt; dabei erreicht auch Ihre IP-Adresse diesen Dienst. Der Server von Saat Tarih sieht diese Koordinaten nicht.",
           "**Weckermusik (YouTube, externer Dienst, mit Zustimmung):** Wenn Sie im Wecker-Werkzeug einem Wecker einen YouTube-Link hinzufügen und externe Dienste erlaubt haben, wird das Video beim Klingeln mit dem Player im erweiterten Datenschutzmodus von YouTube (youtube-nocookie.com) in Ihren Browser geladen; dabei erreichen Ihre IP-Adresse und die Kennung des Videos Google (YouTube), und der Player kann eigene Daten in Ihrem Browser speichern. Der Link bleibt nur in diesem Browser, zusammen mit Ihrem Wecker. Ohne Zustimmung wird der Player nicht geladen und der Wecker klingelt mit seinem eigenen Ton. Der Server von Saat Tarih sieht diese Daten nicht; es gelten die Datenschutzbestimmungen von YouTube (Google).",
@@ -353,7 +353,7 @@
         ],
         "ul": [
           "**Standort:** Wenn Sie „Meinen Standort verwenden“ wählen, wird Ihr Standort auf dem Telefon zur Berechnung der Gebetszeiten und zum Finden der nächsten Provinz verwendet; ein ungefährer Standort (etwa 1 km) wird nur auf dem Telefon gespeichert. Auch die Option „Automatisch“ in Widgets nutzt den Standort nur auf dem Telefon.",
-          "**Wetter:** Das Wetter in der App stammt von Apple Wetter (WeatherKit); dafür werden die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts an Apple gesendet. Wir sehen diese Daten nicht; es gelten die Datenschutzbedingungen von Apple. Luftqualität, Pollen, der Modellvergleich und die Wetter-Komplikation der Apple Watch stammen von Open-Meteo (open-meteo.com); dafür werden auf zwei Nachkommastellen gerundete Koordinaten gesendet. Ist das Wetter auf dem Sperrbildschirm aktiviert, wird es auch im Hintergrund abgerufen, wenn iOS es zulässt.",
+          "**Wetter:** Das Wetter in der App stammt von Apple Wetter (WeatherKit); dafür werden die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts an Apple gesendet. Wir sehen diese Daten nicht; es gelten die Datenschutzbedingungen von Apple. Luftqualität, Pollen, der Modellvergleich und die Wetter-Komplikation der Apple Watch stammen von Open-Meteo (open-meteo.com); dafür werden auf zwei Nachkommastellen gerundete Koordinaten gesendet. Ist das Wetter auf dem Sperrbildschirm aktiviert, wird es auch im Hintergrund abgerufen, wenn iOS es zulässt. Auch die Wolkenvorhersage im Bildschirm „Fotolicht“ kommt von Open-Meteo; auch dafür werden die Koordinaten auf zwei Nachkommastellen gerundet.",
           "**Karte:** Der Globus in der Weltuhr wird mit Apple Karten angezeigt; Kartenbilder werden von Apple geladen.",
           "**Kalender:** Nur mit Ihrer Erlaubnis werden Termine aus den Kalendern auf Ihrem Telefon in der App angezeigt; sie werden auf dem Telefon gelesen und nirgendwohin gesendet. Hinzufügen und Löschen erfolgt über den Kalenderbildschirm des iPhones und nur mit Ihrer Bestätigung.",
           "**Mitteilungen und Wecker:** Gebetszeit-Mitteilungen; Mitteilungen zu besonderen Tagen, Jahreszeitenbeginn, Mondphasen, Sonnenauf- und -untergang, morgendlicher Wetterübersicht, voller Stunde und Zeitumstellung (außer der vollen Stunde jeweils standardmäßig an; änderbar unter Einstellungen › Mitteilungen); Wecker und Timer werden auf dem Telefon ohne Server eingerichtet. Nur für die Wetterübersicht wird der Wetterdienst abgefragt (siehe Punkt Wetter oben). Die Liste wird per iOS-Hintergrundaktualisierung aktuell gehalten; Sprachansagen werden auf dem Telefon erzeugt.",
@@ -380,7 +380,7 @@
         ],
         "ul": [
           "**Standort:** Wenn Sie auf „Meinen Standort verwenden“ tippen, wird nur die Berechtigung für den ungefähren Standort angefragt; Ihr Standort wird auf dem Telefon zur Berechnung der Gebetszeiten und zur Suche der nächsten Provinz oder des nächsten Bezirks genutzt, ein ungefährer Standort (etwa 1 km) wird nur auf dem Telefon gespeichert.",
-          "**Wetter:** Das Wetter in der App stammt von Open-Meteo (open-meteo.com); dafür werden die auf zwei Nachkommastellen gerundeten Koordinaten (etwa 1 km) des gewählten Ortes an Open-Meteo gesendet, und Ihre IP-Adresse erreicht dabei den Server von Open-Meteo. Für das Städtewetter auf dem drehenden Globus werden nur die Koordinaten dieser Städte gesendet. Es gelten die Datenschutzbedingungen von Open-Meteo; wir sehen diese Daten nicht. Ist das Wetter in der Statusleiste aktiviert, erfolgt diese Anfrage auch stündlich im Hintergrund.",
+          "**Wetter:** Das Wetter in der App stammt von Open-Meteo (open-meteo.com); dafür werden die auf zwei Nachkommastellen gerundeten Koordinaten (etwa 1 km) des gewählten Ortes an Open-Meteo gesendet, und Ihre IP-Adresse erreicht dabei den Server von Open-Meteo. Für das Städtewetter auf dem drehenden Globus werden nur die Koordinaten dieser Städte gesendet. Es gelten die Datenschutzbedingungen von Open-Meteo; wir sehen diese Daten nicht. Ist das Wetter in der Statusleiste aktiviert, erfolgt diese Anfrage auch stündlich im Hintergrund. Für die Wolkenvorhersage im Bildschirm „Fotolicht“ wird ebenfalls derselbe ungefähre Standort (zwei Nachkommastellen) an Open-Meteo gesendet.",
           "**Globus und Karte:** Der drehende Globus wird aus einem Bild in der App gezeichnet; es wird kein Kartendienst kontaktiert.",
           "**Kalender:** Die Kalenderberechtigung wird nur angefragt, wenn Sie auf „Kalender meines Telefons anzeigen“ tippen; Termine werden auf dem Telefon gelesen und nirgendwohin gesendet. Termine werden über die Kalender-App des Telefons hinzugefügt und nur mit Ihrer Bestätigung gelöscht.",
           "**Mitteilungen, Wecker und Intervalltraining:** Gebetszeit-Mitteilungen und die übrigen Mitteilungsarten (besondere Tage, Jahreszeitenbeginn, Mondphase, Sonnenauf- und -untergang, morgendliche Wetterübersicht, volle Stunde, Zeitumstellung; außer der vollen Stunde jeweils standardmäßig an, änderbar unter Einstellungen › Mitteilungen), Wecker und Timer werden auf dem Telefon geplant, ohne Server; damit sie pünktlich klingeln, wird die Berechtigung für exakte Wecker genutzt. Während eines von Ihnen gestarteten Intervalltrainings sagt ein in der Mitteilung sichtbarer Vordergrunddienst die Phasenwechsel mit der Sprachausgabe des Telefons an. Sprachansagen werden auf dem Telefon erzeugt.",
@@ -957,6 +957,10 @@
         "classroom": {
           "name": "Klassenzimmer-Tools",
           "desc": "Zufallsnamen, Teams und Zähler."
+        },
+        "photo": {
+          "name": "Fotolicht",
+          "desc": "Goldene und Blaue Stunde, Fotoprognose für den Sonnenuntergang."
         }
       },
       "infoHeading": "Infoseiten"
@@ -3256,6 +3260,92 @@
       {
         "q": "Werden die Namen irgendwohin gesendet?",
         "a": "Nein. Namen, Teams und Zähler werden nur in diesem Browser gespeichert; sie gehen an keinen Server und nicht in die Statistik ein."
+      }
+    ]
+  },
+  "photo": {
+    "title": "Goldene & Blaue Stunde heute: Fotolicht | Saat Tarih",
+    "description": "Goldene und Blaue Stunde für Ihren Ort, Richtung von Sonnenauf- und -untergang, Mondaufgang und Mondphase sowie eine 7-Tage-Fotoprognose nach der Bewölkung.",
+    "h1": "Fotolicht: Goldene Stunde und Blaue Stunde",
+    "lead": "Das Licht des Tages für Fotografen auf einen Blick: Blaue und Goldene Stunde am Morgen und Abend, Zeit und Richtung von Sonnenauf- und -untergang, der Mond und eine Fotoprognose für Sonnenauf- und -untergang nach der Bewölkung.",
+    "search": "goldene stunde blaue stunde fotolicht fotografie sonnenaufgang sonnenuntergang richtung azimut mondaufgang wolken prognose golden hour blue hour",
+    "dateLabel": "Datum",
+    "prev": "Vorheriger Tag",
+    "next": "Nächster Tag",
+    "today": "Heute",
+    "morning": "Morgen",
+    "evening": "Abend",
+    "blue": "Blaue Stunde",
+    "golden": "Goldene Stunde",
+    "sunrise": "Sonnenaufgang",
+    "sunset": "Sonnenuntergang",
+    "direction": "Richtung",
+    "forecast": "Fotoprognose",
+    "dirs": [
+      "N",
+      "NNO",
+      "NO",
+      "ONO",
+      "O",
+      "OSO",
+      "SO",
+      "SSO",
+      "S",
+      "SSW",
+      "SW",
+      "WSW",
+      "W",
+      "WNW",
+      "NW",
+      "NNW"
+    ],
+    "moonHeading": "Mond",
+    "moonrise": "Mondaufgang",
+    "moonset": "Monduntergang",
+    "noMoonrise": "An diesem Tag kein Mondaufgang",
+    "noMoonset": "An diesem Tag kein Monduntergang",
+    "phase": "Phase",
+    "lit": "{p} beleuchtet",
+    "fcHeading": "Fotoprognose für Sonnenauf- und -untergang",
+    "fcLead": "Heute und die nächsten 6 Tage, nach der Wolkenvorhersage für die Stunde, die Sonnenauf- und -untergang am nächsten liegt.",
+    "colDay": "Tag",
+    "q": {
+      "good": "Gut",
+      "fair": "Mittel",
+      "poor": "Schlecht"
+    },
+    "clouds": "Tiefe Wolken {l} · mittelhohe {m} · hohe {h}",
+    "rain": "Regen {p} mm",
+    "why": "Mittelhohe und hohe Wolken fangen die Farben ein; tiefe Wolken am Horizont und Regen verdecken die Sonne; ein klarer Himmel ist sauber, aber schlicht. Das ist eine Schätzung, keine Garantie.",
+    "loading": "Wolkenvorhersage wird geladen…",
+    "error": "Die Wolkenvorhersage konnte nicht geladen werden. Bitte versuchen Sie es später erneut.",
+    "blocked": "Die Wolkenvorhersage wird von Open-Meteo geladen; erlauben Sie externe Dienste, um sie anzuzeigen.",
+    "attribution": "Wolkenvorhersage: Open-Meteo.com (CC BY 4.0)",
+    "weekHeading": "Licht für 7 Tage",
+    "colGoldenAm": "Goldene Stunde morgens",
+    "colGoldenPm": "Goldene Stunde abends",
+    "colBluePm": "Blaue Stunde abends",
+    "polarDay": "Die Sonne geht an diesem Tag nicht unter; es gibt keinen Sonnenuntergang und keine Blaue Stunde.",
+    "polarNight": "Die Sonne geht an diesem Tag nicht auf; mit — markierte Zeiten treten nicht ein.",
+    "partial": "Die Sonne erreicht an diesem Tag einige dieser Höhen nicht; mit — markierte Zeiten treten nicht ein.",
+    "defsHeading": "Was sind die Goldene und die Blaue Stunde?",
+    "defs": [
+      "**Goldene Stunde:** Die Sonne steht zwischen 6° über und 4° unter dem Horizont. Das Licht ist flach, weich und warm, die Schatten sind lang; beliebt für Porträts und Landschaften.",
+      "**Blaue Stunde:** Die Sonne steht 4° bis 6° unter dem Horizont. Der Himmel wird tiefblau, Stadtlichter und Himmel sind im Gleichgewicht; ideal für Stadtansichten und Langzeitbelichtungen."
+    ],
+    "note": "Die Zeiten werden auf Ihrem Gerät für den gewählten Ort berechnet und sind Näherungen (wenige Minuten); Berge und Gebäude am Horizont werden nicht berücksichtigt. Ihr Standort bleibt auf Ihrem Gerät; nur für die Wolkenvorhersage werden gerundete Koordinaten an Open-Meteo gesendet.",
+    "faq": [
+      {
+        "q": "Wann ist heute die Goldene Stunde?",
+        "a": "Die Goldene Stunde gibt es zweimal am Tag, um Sonnenaufgang und um Sonnenuntergang, solange die Sonne zwischen 6° über und 4° unter dem Horizont steht. Diese Seite berechnet die Zeiten für Ihren Ort; sie dauert meist etwa 40 bis 90 Minuten, im Winter und in hohen Breiten länger."
+      },
+      {
+        "q": "Was ist die Blaue Stunde und wann ist sie?",
+        "a": "Die Blaue Stunde ist die Dämmerung, wenn die Sonne 4° bis 6° unter dem Horizont steht: vor der morgendlichen und nach der abendlichen Goldenen Stunde. Der Himmel ist tiefblau, ideal für Stadtlichter und Langzeitbelichtungen. Sie dauert meist 10 bis 20 Minuten."
+      },
+      {
+        "q": "Wie entsteht die Fotoprognose für Sonnenauf- und -untergang?",
+        "a": "Aus der stündlichen Wolkenvorhersage von Open-Meteo für die Stunde, die Sonnenauf- oder -untergang am nächsten liegt. Regen (ab 0,5 mm pro Stunde) oder dichte tiefe Wolken (ab 75 %) gelten als Schlecht; wenig tiefe Wolken (unter 40 %) mit 20–80 % mittelhohen oder hohen Wolken als Gut; sonst Mittel, solange tiefe Wolken unter 60 % liegen, darüber Schlecht. Mittelhohe und hohe Wolken fangen die Farben ein, tiefe Wolken am Horizont verdecken die Sonne."
       }
     ]
   }

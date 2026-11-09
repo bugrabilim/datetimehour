@@ -1,23 +1,16 @@
-Uhr & Datum vereint Uhr, Gebetszeiten, Kalender, Wetter und praktische Werkzeuge in einer klaren App. Kostenlos, ohne Konto, ohne Werbung und ohne Tracking.
+Uhr & Datum vereint Uhr, Widgets, Wetter, Kalender, Wecker und praktische Werkzeuge in einer klaren App. Kostenlos, ohne Konto, ohne Werbung und ohne Tracking.
 
 FÜR SIE EINGERICHTET
-• Fünf kurze Fragen beim ersten Start: Gebetszeiten, Wetter, Kalender, Weltuhren, Jahreszeiten. Die Tab-Leiste entsteht aus Ihren Antworten
+• Fünf kurze Fragen beim ersten Start: Wetter, Kalender, Weltuhren, Jahreszeiten, Gebetszeiten. Die Tab-Leiste entsteht aus Ihren Antworten
 • Bereiche, die Sie nicht nutzen, bleiben verborgen und senden keine Mitteilungen
 
-UHR
+UHR UND WIDGETS
 • 21 Uhrenmodelle und 25 analoge Zifferblätter; Vollbild und gedimmter roter Nachtmodus
-• Nächstes Gebet, Wetter, Datum oder Weltuhren unter der Uhr anzeigen
-• Widgets für Home- und Sperrbildschirm, Komplikationen für die Apple Watch
-
-GEBETSZEITEN UND GLAUBENSPRAXIS
-• Gebetszeiten weltweit mit 14 Berechnungsmethoden (Diyanet, MWL, ISNA, Umm al-Qura u. a.) und hanafitischem Asr
-• Alle 81 Provinzen und 973 Bezirke der Türkei
-• Mitteilungen mit Adhan-Ton, Ramadan-Kalender
-• Qibla-Kompass und Moscheen in der Nähe
-• Der Koran auf Arabisch, Bittgebete, die 99 Namen Allahs, Tasbih-Zähler, Gebets- und Fastentracker, Zakat-Rechner
+• Wetter, Datum, Weltuhren oder das nächste Gebet unter der Uhr anzeigen
+• Widgets für Home- und Sperrbildschirm: Uhren, Weltuhren, Countdowns, Mondphase; Komplikationen für die Apple Watch
 
 KALENDER UND WETTER
-• Feiertage der Türkei und 30 weiterer Länder, religiöse und besondere Tage, neben den Kalendern auf Ihrem Telefon
+• Feiertage für Deutschland, Österreich, die Schweiz, die Türkei und 27 weitere Länder, religiöse und besondere Tage, neben den Kalendern auf Ihrem Telefon
 • Hidschri-Kalender und Umrechner
 • Stündliche und 10-Tage-Vorhersage, Luftqualität und ein Bildschirm, der sich mit dem Wetter verändert
 
@@ -30,6 +23,13 @@ WERKZEUGE
 • Timer, Stoppuhr, Intervalltraining, Schachuhr, Metronom, sprechende Uhr
 • Weltuhren mit drehendem Globus, Meeting-Planer, Zeit- und Datumsrechner
 • Jahreszeiten, Mondkalender, Finsternisse, Nachthimmel, Sternzeichen
+
+GEBETSZEITEN UND GLAUBENSPRAXIS
+• Gebetszeiten weltweit mit 14 Berechnungsmethoden (Diyanet, MWL, ISNA, Umm al-Qura u. a.) und hanafitischem Asr
+• Alle 81 Provinzen und 973 Bezirke der Türkei
+• Mitteilungen mit Adhan-Ton, Ramadan-Kalender
+• Qibla-Kompass und Moscheen in der Nähe
+• Der Koran auf Arabisch, Bittgebete, die 99 Namen Allahs, Tasbih-Zähler, Gebets- und Fastentracker, Zakat-Rechner
 • Grußkarten für Freitag, Ramadan, Bayram und heilige Nächte
 
 DATENSCHUTZ

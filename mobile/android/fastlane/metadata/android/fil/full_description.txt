@@ -1,0 +1,51 @@
+Pinagsasama ng Oras at Petsa ang orasan, mga widget, alarm, panahon, kalendaryo at dose-dosenang pang-araw-araw na tool sa iisang malinis na app. Walang account, walang ads, walang tracking.
+
+Inihahanda para sa iyo
+• Ilang maikling tanong sa unang pagbukas; mabubuo ang bar sa ibaba mula sa mga seksiyong gusto mo
+• Nakatago ang mga seksiyong hindi mo ginagamit at hindi sila nagpapadala ng notification; nasa Lahat ang iba pa, isang tap lang
+
+Orasan at mga widget
+• 21 estilo ng orasan at 25 analog na dial; full screen, malamlam na pulang night mode para sa tabi ng kama, at screensaver
+• 27 widget sa home screen: analog, digital at may segundong orasan, world clock, panahon, yugto ng buwan, pagsikat at paglubog ng araw, countdown, larawan, progreso ng taon at iba pa, may transparent at glass na estilo
+• Lumulutang na orasan sa ibabaw ng ibang app, mga tile sa Quick Settings
+• Wear OS app na may mga tile at complication, at full-screen na orasan para sa Android TV
+
+Alarm, tulog at pokus
+• Full-screen na alarm sa lock screen, may unti-unting lumalakas na tunog, library ng tunog at mga background
+• Mga gawain para patayin ito: math, pag-alog, paglakad, squats, pag-scan ng code, paghanap ng bagay, memory game o pag-type
+• Matalinong alarma, plano sa pagtulog na may paalala sa oras ng pagtulog, tunog pampatulog at tunog ng kalikasan
+• Pomodoro na may istatistika at listahan ng gagawin, timer sa pag-aaral, pag-block ng app habang nakapokus
+• Interval training na may gabay na boses kahit patay ang screen; i-save ang mga workout sa Health Connect
+
+Panahon
+• Forecast bawat oras at para sa 14 na araw, kalidad ng hangin at pollen, paghahambing ng tatlong weather model
+• Screen na gumagalaw ayon sa panahon: ulan, niyebe, ulap, hangin at kidlat
+• Buod ng panahon tuwing umaga at opsiyonal na notification ng panahon
+
+Kalendaryo
+• View ng buwan, linggo, araw, agenda at taon, katabi ng mga kalendaryo sa iyong telepono
+• Mga pista opisyal ng 31 bansa at mga espesyal na araw
+• Kalendaryong Hijri at converter ng petsa
+
+Mga tool
+• Mga timer na may pangalan, ilang stopwatch, countdown na may sarili mong larawan
+• World clock na may umiikot na globo, mapa at 24 na oras na dial; meeting planner; kalkulasyon ng oras at petsa
+• Chess clock, metronome, nagsasalitang orasan, journal sa umaga, mga tool sa klase, exam timer, zodiac sign
+
+Langit at mga season
+• Pagsikat at paglubog ng araw, golden hour at blue hour, pagsikat at paglubog ng buwan, kalendaryo ng buwan
+• Mga eklipse na may mapa, langit sa gabi na may mga planeta at bituin, notification sa mga pangyayari sa langit
+• Mga season na ipinaliwanag para sa mga bata
+
+Oras ng dasal at Qibla
+• Oras ng dasal kahit saan, may 14 na paraan ng pagkalkula at Hanafi Asr; lahat ng 81 lalawigan at 973 distrito ng Türkiye
+• Notification na may adhan, alarm sa oras ng dasal, pag-silent ng telepono sa oras ng dasal, iskedyul ng Ramadan
+• Qibla compass at mga kalapit na mosque
+• Ang Quran sa Arabic, mga dua, ang 99 na Pangalan ng Allah, tasbih counter, tala ng dasal at pag-aayuno, zakat calculator, mga greeting card
+
+Privacy
+Nananatili sa iyong telepono ang lokasyon mo. Para lang sa panahon at mga kalapit na mosque ipinapadala ang tinatayang lokasyon sa serbisyo (Open-Meteo, OpenStreetMap), hindi kailanman kung sino ka. Tingnan at i-off ang bawat pahintulot sa Settings › Mga pahintulot.
+
+Sa 18 wika. Para sa mga Android phone at tablet, Wear OS at Android TV.
+
+Ang Oras at Petsa ay produkto ng Bumba Life. Web: time.bumba.tr

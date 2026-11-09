@@ -343,6 +343,36 @@ class MoreScreensTest {
         page("tr-gunes-yolu", "Güneş yolu") { SunPathScreen() }
         shot("tr-cocuklar-ay") { androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.padding(16.dp)) { KidsMoonCard() } }
     }
+    /** İstanbul için örnek bulut tahmini (saatlik, 7 gün): günlere göre farklı sonuçlar çıksın diye değişen alçak bulut */
+    private fun seedPhotoSky() {
+        val place = AppPlace.current()
+        val start = place.today().atStartOfDay(place.zone).toInstant().toEpochMilli()
+        val lowAm = listOf(10.0, 55.0, 80.0, 5.0, 30.0, 65.0, 20.0)
+        val lowPm = listOf(15.0, 5.0, 45.0, 90.0, 0.0, 25.0, 50.0)
+        val samples = (0 until 7 * 24).map { h ->
+            val d = h / 24
+            val pm = h % 24 >= 12
+            tr.bumba.time.core.PhotoLight.Sample(start + h * 3_600_000L, if (pm) lowPm[d] else lowAm[d],
+                if (d == 4) 0.0 else 45.0, if (d % 2 == 0) 60.0 else 10.0, if (d == 5 && pm) 1.2 else 0.0)
+        }
+        PhotoSky.seed(place.lat, place.lon, samples)
+    }
+
+    /** Fotoğraf ışığı (9 Kasım 2026): örnek bulut tahminiyle bütün sayfa (uzun ekran), Arapça koyu ve "Nasıl çalışır?" */
+    @Test fun photoLight() {
+        Prefs.saveProvince("istanbul")
+        PhotoPrefs.used = true
+        seedPhotoSky()
+        shot("tr-fotograf-isigi", "tr-h2000dp") { SubBar(L("photoApp.title"), onBack = {}); PhotoLightScreen() }
+        shot("ar-fotograf-isigi-koyu", "ar-h2000dp", dark = true) { SubBar(L("photoApp.title"), onBack = {}); PhotoLightScreen() }
+        shot("en-fotograf-isigi-nasil", "en") { HowItWorksContent(photoHowSections()) }
+        // Kutup bölgesi: Tromsø 21 Aralık kutup gecesi; altın saat başlıyor ama bitmiyor ("10:29 – —")
+        val p = PhotoDay(java.time.LocalDate.of(2026, 12, 21), AppPlace("tromso", "Tromsø", 69.65, 18.96, java.time.ZoneId.of("Europe/Oslo")))
+        assertEquals(-1, p.day.polar)
+        assertTrue(p.span(p.day.light.goldenAm).endsWith(" – —"))
+        PhotoPrefs.used = false
+    }
+
     /** Kıble (Robolectric'te pusula sensörü yok: kuzey yukarıda sabit kadran) ve örnek verili yakındaki camiler */
     /** Android TV (#95): televizyon ekranı (yatay, 1080p oranı) */
     @Test fun tv() {

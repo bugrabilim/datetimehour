@@ -1,0 +1,51 @@
+Hora y Fecha reúne el reloj, los widgets, las alarmas, el tiempo, el calendario y decenas de herramientas cotidianas en una sola app sencilla. Sin cuenta, sin anuncios y sin rastreo.
+
+Preparada para usted
+• Unas pocas preguntas rápidas al abrirla por primera vez; la barra inferior se configura con las secciones que usted quiera
+• Las secciones que no usa quedan ocultas y no envían notificaciones; todo lo demás está a un toque, en Todo
+
+Reloj y widgets
+• 21 modelos de reloj y 25 esferas analógicas; pantalla completa, modo nocturno en rojo tenue para la mesilla y salvapantallas
+• 27 widgets para la pantalla de inicio: relojes analógicos, digitales y con segundos, relojes del mundo, el tiempo, fase lunar, salida y puesta del sol, cuentas atrás, fotos, progreso del año y más, con estilo transparente o de cristal
+• Reloj flotante sobre otras apps, iconos de Ajustes rápidos
+• App para Wear OS con tarjetas y complicaciones, y un reloj a pantalla completa para Android TV
+
+Alarma, sueño y concentración
+• Alarmas a pantalla completa en la pantalla de bloqueo, con volumen progresivo, biblioteca de sonidos y fondos
+• Tareas para apagarlas: cálculo, agitar el móvil, pasos, sentadillas, escanear un código, buscar un objeto, juego de memoria o escritura
+• Alarma inteligente, plan de sueño con recordatorio para acostarse, sonidos para dormir y sonidos de la naturaleza
+• Pomodoro con estadísticas y lista de tareas, temporizador de estudio, bloqueo de apps mientras se concentra
+• Entrenamiento por intervalos con indicaciones de voz, incluso con la pantalla apagada; guarde los entrenamientos en Health Connect
+
+El tiempo
+• Previsión por horas y a 14 días, calidad del aire y polen, tres modelos meteorológicos comparados
+• Una pantalla que se anima según el tiempo que hace: lluvia, nieve, nubes, viento y relámpagos
+• Resumen del tiempo por la mañana y notificación del tiempo opcional
+
+Calendario
+• Vistas de mes, semana, día, agenda y año, junto a los calendarios de su móvil
+• Festivos de 31 países, incluida España, y días especiales
+• Calendario de la Hégira y conversor de fechas
+
+Herramientas
+• Temporizadores con nombre, varios cronómetros, cuentas atrás con sus propias fotos
+• Relojes del mundo con un globo que gira, mapa y esfera de 24 horas; planificador de reuniones; cálculo de horas y fechas
+• Reloj de ajedrez, metrónomo, reloj parlante, diario matinal, herramientas para el aula, temporizador de examen, signo del zodiaco
+
+Cielo y estaciones
+• Salida y puesta del sol, hora dorada y hora azul, salida y puesta de la luna, calendario lunar
+• Eclipses con mapas, el cielo nocturno con planetas y estrellas, avisos de fenómenos celestes
+• Las estaciones explicadas para niños
+
+Horarios de oración y alquibla
+• Horarios de oración en cualquier lugar con 14 métodos de cálculo y Asr hanafí; las 81 provincias y los 973 distritos de Turquía
+• Notificaciones con el adhan, alarmas a la hora de la oración, silencio del móvil durante la oración, calendario de Ramadán
+• Brújula de la alquibla y mezquitas cercanas
+• El Corán en árabe, súplicas, los 99 nombres de Alá, contador de tasbih, seguimiento de oraciones y ayunos, cálculo del zakat, tarjetas de felicitación
+
+Privacidad
+Su ubicación se queda en el móvil. Solo para el tiempo y las mezquitas cercanas se envía una ubicación aproximada al servicio (Open-Meteo, OpenStreetMap), nunca quién es usted. Vea y desactive cada permiso en Ajustes › Permisos.
+
+En 18 idiomas. Para móviles y tablets Android, Wear OS y Android TV.
+
+Hora y Fecha es un producto de Bumba Life. Web: time.bumba.tr

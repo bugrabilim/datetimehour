@@ -85,4 +85,35 @@ class FeatureNotifierTest {
         listOf("notify.sun.events", "notify.sun.lead", "notify.sun.days", "notify.moon.events", "notify.moon.lead").forEach { Prefs.store.edit().remove(it).commit() }
         NotifyFeature.entries.forEach { Prefs.store.edit().remove(it.key).commit() }
     }
+
+    /** Fotoğraf ışığı (9 Kasım 2026): ekran açılmadan hiç yok; açılınca varsayılan akşam altın saatten 20 dk önce, en çok 7 gün */
+    @Test fun photoLight() = runBlocking {
+        NotifyFeature.entries.forEach { FeaturePrefs.set(it, false) }
+        FeaturePrefs.set(NotifyFeature.PHOTO, true)
+        val now = Instant.parse("2026-11-09T05:00:00Z")
+        PhotoPrefs.used = false
+        assertTrue(FeatureNotifier.plan(context, now).none { it.id.startsWith("photo-") })
+        PhotoPrefs.used = true
+        val all = FeatureNotifier.plan(context, now)
+        val gold = all.filter { it.id.startsWith("photo-pmGold-") }
+        assertEquals(7, gold.size)
+        assertTrue(all.none { it.id.startsWith("photo-") && !it.id.startsWith("photo-pmGold-") })
+        val place = AppPlace.current()
+        val first = PhotoDay(place.today(now), place)
+        assertEquals(first.start("pmGold")!!.minusSeconds(20 * 60), gold.first().at)
+        assertEquals(T("photoApp.n.pmGold", 20), gold.first().title)
+        assertEquals(Tab.TOOLS, gold.first().tab)
+        // Sabah mavi saat, 60 dk önce; önbellekte tahmin varsa gövdede yazar
+        PhotoPrefs.events = setOf("amBlue")
+        PhotoPrefs.lead = 60
+        val t = PhotoDay(place.today(now).plusDays(1), place).sunrise!!.toEpochMilli()
+        PhotoSky.seed(place.lat, place.lon, listOf(tr.bumba.time.core.PhotoLight.Sample(t, 10.0, 40.0, 10.0, 0.0)))
+        val blue = FeatureNotifier.plan(context, now).filter { it.id.startsWith("photo-") }
+        assertTrue(blue.isNotEmpty() && blue.all { it.id.startsWith("photo-amBlue-") })
+        val tomorrow = PhotoDay(place.today(now).plusDays(1), place)
+        val tomorrowBlue = blue.first { it.id == "photo-amBlue-${tomorrow.start("amBlue")!!.epochSecond / 60}" }
+        assertTrue(tomorrowBlue.body.endsWith(T("photoApp.n.q", L("photoApp.q.good"))))
+        listOf(PhotoPrefs.USED, PhotoPrefs.LEAD, PhotoPrefs.EVENTS).forEach { Prefs.store.edit().remove(it).commit() }
+        NotifyFeature.entries.forEach { Prefs.store.edit().remove(it.key).commit() }
+    }
 }

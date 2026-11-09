@@ -1,23 +1,16 @@
-Time & Date brings the clock, prayer times, calendar, weather and everyday tools together in one clean app. It's free, with no account, no ads and no tracking.
+Time & Date brings the clock, widgets, weather, calendar, alarms and everyday tools together in one clean app. It's free, with no account, no ads and no tracking.
 
 SET UP FOR YOU
-• Five quick questions on first launch: prayer times, weather, calendar, world clocks, seasons. Your tab bar is built from your answers
+• Five quick questions on first launch: weather, calendar, world clocks, seasons, prayer times. Your tab bar is built from your answers
 • Sections you don't use stay hidden and send no notifications
 
-CLOCK
+CLOCK AND WIDGETS
 • 21 clock styles and 25 analog dials; full screen and a dim red night mode
-• Add the next prayer, weather, date or world clocks under the clock
-• Home Screen and Lock Screen widgets, Apple Watch complications
-
-PRAYER TIMES AND WORSHIP
-• Prayer times anywhere, with 14 calculation methods (Diyanet, MWL, ISNA, Umm al-Qura and more) and Hanafi Asr
-• All 81 provinces and 973 districts of Türkiye
-• Notifications with an adhan sound, Ramadan timetable
-• Qibla compass and nearby mosques
-• The Quran in Arabic, duas, the 99 Names of Allah, a tasbih counter, prayer and fasting tracker, zakat calculator
+• Add the weather, date, world clocks or the next prayer time under the clock
+• Home Screen and Lock Screen widgets: clocks, world clocks, countdowns, Moon phase; Apple Watch complications
 
 CALENDAR AND WEATHER
-• Public holidays for Türkiye and 30 more countries, religious and special days, next to the calendars on your phone
+• Public holidays for Türkiye and 30 more countries, including the US, plus religious and special days, next to the calendars on your phone
 • Hijri calendar and converter
 • Hourly and 10-day forecast, air quality, and a screen that changes with the weather
 
@@ -30,6 +23,13 @@ TOOLS
 • Timer, stopwatch, interval training, chess clock, metronome, talking clock
 • World clocks with a spinning globe, meeting planner, time and date calculators
 • Seasons, Moon calendar, eclipses, the night sky, zodiac sign
+
+PRAYER TIMES AND WORSHIP
+• Prayer times anywhere, with 14 calculation methods (Diyanet, MWL, ISNA, Umm al-Qura and more) and Hanafi Asr
+• All 81 provinces and 973 districts of Türkiye
+• Notifications with an adhan sound, Ramadan timetable
+• Qibla compass and nearby mosques
+• The Quran in Arabic, duas, the 99 Names of Allah, a tasbih counter, prayer and fasting tracker, zakat calculator
 • Greeting cards for Friday, Ramadan, Eid and holy nights
 
 PRIVACY

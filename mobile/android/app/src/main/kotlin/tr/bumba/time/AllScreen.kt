@@ -57,6 +57,7 @@ import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material.icons.filled.PhotoCamera
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.QrCode2
 import androidx.compose.material.icons.filled.School
@@ -160,6 +161,9 @@ object AllPrefs {
         AllEntry("moon", "moon.calendarLink", Icons.Filled.Brightness3, AllCat.SKY, Tab.SEASONS, route = "moon"),
         AllEntry("sky", "sky.h1", Icons.Filled.AutoAwesome, AllCat.SKY, Tab.SEASONS, route = "sky", words = "sky.eventsHeading sky.constellations sky.tonightHeading"),
         AllEntry("sunpath", "sunpath.title", Icons.Filled.WbTwilight, AllCat.SKY, Tab.SEASONS, route = "sunpath"),
+        // Fotoğraf ışığı (9 Kasım 2026): Araçlar açıksa görünür (Mevsimler kapalı da olsa)
+        AllEntry("photo", "photoApp.title", Icons.Filled.PhotoCamera, AllCat.SKY, Tab.TOOLS, route = "photo",
+            words = "photoApp.subtitle nature.goldenAm nature.bluePm photoApp.forecast"),
         AllEntry("zodiac", "zodiac.h1", Icons.Filled.Stars, AllCat.SKY, Tab.TOOLS, route = "zodiac"),
         AllEntry("prayer", "tab.prayer", Icons.Filled.DarkMode, AllCat.FAITH, Tab.PRAYER, tab = Tab.PRAYER),
         AllEntry("qibla", "qibla.title", Icons.Filled.Explore, AllCat.FAITH, Tab.PRAYER, route = "qibla"),
@@ -189,7 +193,7 @@ object AllPrefs {
         "timecalc" to "calc", "calendar" to "calendar", "leaf" to "leafcal", "datecalc" to "date",
         "planner" to "people", "journal" to "notebook", "bridge" to "bridge", "retire" to "beach",
         "weather" to "sun_cloud", "world" to "globe", "seasons" to "leaf", "moon" to "moon", "sky" to "telescope",
-        "sunpath" to "sunset", "zodiac" to "milkyway", "prayer" to "mosque", "qibla" to "compass", "quran" to "book",
+        "sunpath" to "sunset", "photo" to "aperture", "zodiac" to "milkyway", "prayer" to "mosque", "qibla" to "compass", "quran" to "book",
         "zikir" to "beads", "track" to "checklist", "duas" to "hands", "esma" to "sparkles", "hadith" to "scroll",
         "guide" to "guide", "reldays" to "star_crescent", "greet" to "love_letter", "zakat" to "coin",
         "settings" to "gear", "badges" to "medal",

@@ -373,7 +373,7 @@
         "ul": [
           "**Hora y fecha:** La hora y la zona horaria de su dispositivo se leen y se calculan solo en su navegador. No se envían a ningún servidor ni se guardan.",
           "**Ubicación (horarios de oración):** Si pulsa \"Usar mi ubicación\" en la página de horarios de oración, su navegador usa su ubicación solo en su dispositivo para calcular los horarios. Las coordenadas no se envían al servidor ni se incluyen en las estadísticas; su última elección se queda en el almacenamiento local de su navegador.",
-          "**El tiempo (servicio externo, con permiso):** Si ha permitido los servicios externos en las preferencias de cookies, la página del tiempo y los estilos de reloj con tiempo envían directamente desde su navegador las coordenadas aproximadas de la provincia o ubicación elegida (con una precisión de 1 km aprox.) a Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), que proporciona los datos; su dirección IP también llega a Open-Meteo. Sin permiso no se hace ninguna solicitud y en su lugar se muestra una nota breve. El servidor de Saat Tarih no ve ni guarda estas coordenadas; se aplican las condiciones de privacidad de Open-Meteo.",
+          "**El tiempo (servicio externo, con permiso):** Si ha permitido los servicios externos en las preferencias de cookies, la página del tiempo y los estilos de reloj con tiempo envían directamente desde su navegador las coordenadas aproximadas de la provincia o ubicación elegida (con una precisión de 1 km aprox.) a Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), que proporciona los datos; su dirección IP también llega a Open-Meteo. Sin permiso no se hace ninguna solicitud y en su lugar se muestra una nota breve. El servidor de Saat Tarih no ve ni guarda estas coordenadas; se aplican las condiciones de privacidad de Open-Meteo. El pronóstico de nubes de la página Luz para fotos también se carga desde Open-Meteo con el mismo permiso y las mismas coordenadas aproximadas (dos decimales).",
           "**Mapa (globo, servicio externo, con permiso):** Si ha permitido los servicios externos en las preferencias de cookies y acerca el globo de la página de inicio más allá de cierto nivel, los mosaicos del mapa se descargan directamente a su navegador desde el servidor de OpenStreetMap (tile.openstreetmap.org); su dirección IP y las direcciones de los mosaicos de la zona que mira llegan entonces a la Fundación OpenStreetMap. Sin permiso, o mientras el globo está alejado, no se hace esta solicitud. El servidor de Saat Tarih no los ve; se aplican las condiciones de privacidad de OpenStreetMap.",
           "**Alquibla y mezquitas cercanas:** La dirección de la alquibla, la distancia y la hora de la alquibla se calculan en su navegador. Para la brújula, el sensor de orientación de su teléfono se lee solo en el navegador (el iPhone pide permiso) y nunca se envía a ninguna parte. Si pulsa \"Mostrar mezquitas\" y ha permitido los servicios externos, las coordenadas del lugar elegido redondeadas a dos decimales (1 km aprox.) se envían desde su navegador al servicio Overpass (overpass-api.de), que sirve datos de OpenStreetMap; su dirección IP también llega a este servicio. El servidor de Saat Tarih no ve estas coordenadas.",
           "**Música de alarma (YouTube, servicio externo, con permiso):** Si añade un enlace de YouTube a una alarma en la herramienta de alarma y ha permitido los servicios externos, cuando suena la alarma el vídeo se carga en su navegador con el reproductor de privacidad mejorada de YouTube (youtube-nocookie.com); su dirección IP y el identificador del vídeo llegan entonces a Google (YouTube), y el reproductor puede guardar sus propios datos en su navegador. El enlace se queda solo en este navegador, junto con su alarma. Sin permiso el reproductor no se carga y la alarma suena con su propio sonido. El servidor de Saat Tarih no los ve; se aplican las condiciones de privacidad de YouTube (Google).",
@@ -392,7 +392,7 @@
         ],
         "ul": [
           "**Ubicación:** Si toca \"Usar mi ubicación\", su ubicación se usa en su teléfono para calcular los horarios de oración y encontrar la provincia más cercana; solo se guarda en su teléfono una ubicación aproximada (1 km aprox.). La opción \"Automática\" de los widgets también usa su ubicación solo en su teléfono.",
-          "**El tiempo:** El tiempo de la app procede de Apple Weather (WeatherKit); para ello se envían a Apple las coordenadas aproximadas de la provincia elegida o de su ubicación. Nosotros nunca vemos estos datos; se aplican las condiciones de privacidad de Apple. La calidad del aire, el polen, la comparación de modelos y la complicación del tiempo del Apple Watch proceden de Open-Meteo (open-meteo.com); para ellos se envían coordenadas redondeadas a dos decimales. Si el tiempo en la pantalla bloqueada está activado, también se obtiene en segundo plano cuando iOS lo permite.",
+          "**El tiempo:** El tiempo de la app procede de Apple Weather (WeatherKit); para ello se envían a Apple las coordenadas aproximadas de la provincia elegida o de su ubicación. Nosotros nunca vemos estos datos; se aplican las condiciones de privacidad de Apple. La calidad del aire, el polen, la comparación de modelos y la complicación del tiempo del Apple Watch proceden de Open-Meteo (open-meteo.com); para ellos se envían coordenadas redondeadas a dos decimales. Si el tiempo en la pantalla bloqueada está activado, también se obtiene en segundo plano cuando iOS lo permite. El pronóstico de nubes de la pantalla Luz para fotos también procede de Open-Meteo; para ello las coordenadas también se redondean a dos decimales.",
           "**Mapa:** El globo del reloj mundial se muestra con Apple Maps; las imágenes del mapa se descargan de Apple.",
           "**Calendario:** Solo si lo permite, la app muestra los eventos de los calendarios de su teléfono; se leen en su teléfono y nunca se envían a ninguna parte. Añadir y borrar eventos se hace con la pantalla de calendario del propio iPhone y solo con su confirmación.",
           "**Notificaciones y alarmas:** Las notificaciones de horarios de oración y las de días especiales, inicio de estación, fase lunar, salida y puesta del sol, resumen matinal del tiempo, horas en punto y horario de verano (todas activadas por defecto salvo las horas en punto; se cambian en Ajustes › Notificaciones), las alarmas y los temporizadores se programan en su teléfono sin ningún servidor. Para el resumen del tiempo solo se consulta el servicio meteorológico (vea el punto del tiempo más arriba). La lista se mantiene al día con la actualización en segundo plano de iOS; los avisos hablados se generan en su teléfono.",
@@ -419,7 +419,7 @@
         ],
         "ul": [
           "**Ubicación:** Si toca \"Usar mi ubicación\", solo se pide permiso de ubicación aproximada; su ubicación se usa en su teléfono para calcular los horarios de oración y encontrar la provincia o el distrito más cercano, y solo se guarda en su teléfono una ubicación aproximada (1 km aprox.).",
-          "**El tiempo:** El tiempo de la app procede de Open-Meteo (open-meteo.com); para ello se envían a Open-Meteo las coordenadas del lugar elegido, redondeadas a dos decimales (1 km aprox.), y su dirección IP llega al servidor de Open-Meteo con esa solicitud. Para el tiempo de las ciudades en el globo giratorio solo se envían las coordenadas de esas ciudades. Se aplican las condiciones de privacidad de Open-Meteo; nosotros nunca vemos estos datos. Si el tiempo en la barra de estado está activado, esta solicitud también se hace cada hora en segundo plano.",
+          "**El tiempo:** El tiempo de la app procede de Open-Meteo (open-meteo.com); para ello se envían a Open-Meteo las coordenadas del lugar elegido, redondeadas a dos decimales (1 km aprox.), y su dirección IP llega al servidor de Open-Meteo con esa solicitud. Para el tiempo de las ciudades en el globo giratorio solo se envían las coordenadas de esas ciudades. Se aplican las condiciones de privacidad de Open-Meteo; nosotros nunca vemos estos datos. Si el tiempo en la barra de estado está activado, esta solicitud también se hace cada hora en segundo plano. Para el pronóstico de nubes de la pantalla Luz para fotos también se envía a Open-Meteo la misma ubicación aproximada (dos decimales).",
           "**Globo y mapa:** El globo giratorio se dibuja a partir de una imagen incluida en la app; no se contacta con ningún servicio de mapas.",
           "**Calendario:** El permiso de calendario solo se pide si toca \"Mostrar los calendarios de mi teléfono\"; los eventos se leen en su teléfono y nunca se envían a ninguna parte. Los eventos se añaden con la propia app de calendario de su teléfono y solo se borran con su confirmación.",
           "**Notificaciones, alarmas y entrenamiento por intervalos:** Las notificaciones de horarios de oración y los demás tipos de notificación (días especiales, inicio de estación, fase lunar, salida y puesta del sol, resumen matinal del tiempo, horas en punto, horario de verano; todas activadas por defecto salvo las horas en punto, se cambian en Ajustes › Notificaciones), las alarmas y los temporizadores se programan en su teléfono sin ningún servidor; se usa el permiso de alarmas exactas para que suenen a su hora. Mientras está en marcha un entrenamiento por intervalos que ha iniciado, un servicio en primer plano que aparece en la notificación anuncia los cambios de fase con el motor de texto a voz de su teléfono. Los avisos hablados se generan en su teléfono.",
@@ -1010,6 +1010,10 @@
         "classroom": {
           "name": "Herramientas de clase",
           "desc": "Nombres al azar, equipos y contadores."
+        },
+        "photo": {
+          "name": "Luz para fotos",
+          "desc": "Hora dorada, hora azul y pronóstico fotográfico del atardecer."
         }
       },
       "infoHeading": "Páginas informativas"
@@ -3309,6 +3313,92 @@
       {
         "q": "¿Se envían los nombres de los alumnos a alguna parte?",
         "a": "No. Los nombres, los equipos y los contadores se guardan solo en este navegador; no se envían a ningún servidor ni se incluyen en las estadísticas."
+      }
+    ]
+  },
+  "photo": {
+    "title": "Hora dorada y hora azul hoy: luz para fotos | Saat Tarih",
+    "description": "Hora dorada y hora azul para su ubicación, dirección del amanecer y del atardecer, salida y fase de la Luna, y pronóstico fotográfico de 7 días según las nubes.",
+    "h1": "Luz para fotos: hora dorada y hora azul",
+    "lead": "La luz del día para fotógrafos en una sola página: hora azul y hora dorada de la mañana y de la tarde, hora y dirección de la salida y la puesta del sol, la Luna y un pronóstico fotográfico del amanecer y el atardecer según las nubes.",
+    "search": "hora dorada hora azul hora mágica luz para fotos fotografía amanecer atardecer salida del sol puesta del sol dirección azimut salida de la luna pronóstico de nubes golden hour blue hour",
+    "dateLabel": "Fecha",
+    "prev": "Día anterior",
+    "next": "Día siguiente",
+    "today": "Hoy",
+    "morning": "Mañana",
+    "evening": "Tarde",
+    "blue": "Hora azul",
+    "golden": "Hora dorada",
+    "sunrise": "Salida del sol",
+    "sunset": "Puesta del sol",
+    "direction": "Dirección",
+    "forecast": "Pronóstico fotográfico",
+    "dirs": [
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSO",
+      "SO",
+      "OSO",
+      "O",
+      "ONO",
+      "NO",
+      "NNO"
+    ],
+    "moonHeading": "Luna",
+    "moonrise": "Salida de la Luna",
+    "moonset": "Puesta de la Luna",
+    "noMoonrise": "Ese día no sale la Luna",
+    "noMoonset": "Ese día no se pone la Luna",
+    "phase": "Fase",
+    "lit": "{p} iluminada",
+    "fcHeading": "Pronóstico fotográfico del amanecer y el atardecer",
+    "fcLead": "Hoy y los 6 días siguientes, según el pronóstico de nubes para la hora más cercana a la salida y la puesta del sol.",
+    "colDay": "Día",
+    "q": {
+      "good": "Bueno",
+      "fair": "Regular",
+      "poor": "Malo"
+    },
+    "clouds": "Nubes bajas {l} · medias {m} · altas {h}",
+    "rain": "Lluvia {p} mm",
+    "why": "Las nubes medias y altas recogen los colores; las nubes bajas en el horizonte y la lluvia tapan el Sol; un cielo despejado es limpio pero sencillo. Es una estimación, no una garantía.",
+    "loading": "Cargando el pronóstico de nubes…",
+    "error": "No se pudo cargar el pronóstico de nubes. Inténtelo de nuevo más tarde.",
+    "blocked": "El pronóstico de nubes se carga desde Open-Meteo; permita los servicios externos para mostrarlo.",
+    "attribution": "Pronóstico de nubes: Open-Meteo.com (CC BY 4.0)",
+    "weekHeading": "Luz de 7 días",
+    "colGoldenAm": "Hora dorada de la mañana",
+    "colGoldenPm": "Hora dorada de la tarde",
+    "colBluePm": "Hora azul de la tarde",
+    "polarDay": "Ese día el Sol no se pone; no hay atardecer ni hora azul.",
+    "polarNight": "Ese día el Sol no sale; las horas marcadas con — no ocurren.",
+    "partial": "Ese día el Sol no alcanza algunas de estas alturas; las horas marcadas con — no ocurren.",
+    "defsHeading": "¿Qué son la hora dorada y la hora azul?",
+    "defs": [
+      "**Hora dorada:** el Sol está entre 6° sobre y 4° bajo el horizonte. La luz es baja, suave y cálida, y las sombras son largas; es el momento favorito para retratos y paisajes.",
+      "**Hora azul:** el Sol está entre 4° y 6° bajo el horizonte. El cielo se vuelve azul intenso y las luces de la ciudad se equilibran con el cielo; ideal para paisajes urbanos y largas exposiciones."
+    ],
+    "note": "Las horas se calculan en su dispositivo para el lugar elegido y son aproximadas (unos minutos); no se tienen en cuenta las montañas ni los edificios del horizonte. Su ubicación se queda en su dispositivo; solo se envían a Open-Meteo coordenadas redondeadas para el pronóstico de nubes.",
+    "faq": [
+      {
+        "q": "¿Cuándo es hoy la hora dorada?",
+        "a": "La hora dorada ocurre dos veces al día, alrededor del amanecer y del atardecer, mientras el Sol está entre 6° sobre y 4° bajo el horizonte. Esta página calcula las horas para su ubicación; suele durar entre 40 y 90 minutos, más en invierno y en latitudes altas."
+      },
+      {
+        "q": "¿Qué es la hora azul y cuándo ocurre?",
+        "a": "La hora azul es el crepúsculo en que el Sol está entre 4° y 6° bajo el horizonte: antes de la hora dorada de la mañana y después de la de la tarde. El cielo es de un azul intenso, ideal para las luces de la ciudad y las largas exposiciones. Suele durar entre 10 y 20 minutos."
+      },
+      {
+        "q": "¿Cómo se calcula el pronóstico fotográfico del amanecer y el atardecer?",
+        "a": "A partir del pronóstico horario de nubes de Open-Meteo para la hora más cercana a la salida o la puesta del sol. La lluvia (0,5 mm por hora o más) o las nubes bajas densas (75 % o más) dan Malo; pocas nubes bajas (menos del 40 %) con un 20–80 % de nubes medias o altas dan Bueno; si no, Regular mientras las nubes bajas estén por debajo del 60 %, y Malo por encima. Las nubes medias y altas recogen los colores; las bajas en el horizonte tapan el Sol."
       }
     ]
   }

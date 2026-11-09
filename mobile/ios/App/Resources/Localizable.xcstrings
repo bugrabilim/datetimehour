@@ -284761,6 +284761,345 @@
         }
       }
     },
+    "calendars.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvimler ve ülke"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendars and country"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender und Land"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təqvimlər və ölkə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التقاويم والدولة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender dan negara"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کیلنڈر اور ملک"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقویم‌ها و کشور"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendriers et pays"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Календари и страна"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暦と国"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "달력과 국가"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "历法与国家"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga kalendaryo at bansa"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปฏิทินและประเทศ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendarios y país"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendários e país"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कैलेंडर और देश"
+          }
+        }
+      }
+    },
+    "calendars.heading": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvimler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendars"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təqvimlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التقاويم"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کیلنڈر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقویم‌ها"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendriers"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Календари"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暦"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "달력"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "历法"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga kalendaryo"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปฏิทิน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendarios"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendários"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कैलेंडर"
+          }
+        }
+      }
+    },
+    "calendars.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açtığınız takvimlerin özel günleri ve tarihleri takviminizde görünür. Bölgenizin takvimleri açık, dinî takvimler kapalı başlar; kimsenin inancı tahmin edilmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Special days and dates from the calendars you turn on appear in your calendar. Calendars for your region start on, religious calendars start off; nobody's faith is assumed."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Besondere Tage und Daten der Kalender, die Sie einschalten, erscheinen in Ihrem Kalender. Kalender Ihrer Region sind anfangs an, religiöse Kalender aus; niemandes Glaube wird vorausgesetzt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açdığınız təqvimlərin xüsusi günləri və tarixləri təqviminizdə görünür. Bölgənizin təqvimləri açıq, dini təqvimlər bağlı başlayır; heç kimin inancı təxmin edilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تظهر المناسبات والتواريخ من التقاويم التي تفعّلها في تقويمك. تبدأ تقاويم منطقتك مفعّلة والتقاويم الدينية معطّلة؛ لا نفترض معتقد أحد."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari istimewa dan tanggal dari kalender yang Anda aktifkan muncul di kalender Anda. Kalender wilayah Anda mulanya aktif, kalender keagamaan nonaktif; keyakinan siapa pun tidak diasumsikan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جو کیلنڈر آپ آن کریں، ان کے خاص دن اور تاریخیں آپ کے کیلنڈر میں نظر آتی ہیں۔ آپ کے علاقے کے کیلنڈر آن اور مذہبی کیلنڈر بند سے شروع ہوتے ہیں؛ کسی کے عقیدے کا اندازہ نہیں لگایا جاتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزهای ویژه و تاریخ‌های تقویم‌هایی که روشن می‌کنید در تقویم شما نمایش داده می‌شوند. تقویم‌های منطقهٔ شما روشن و تقویم‌های دینی خاموش شروع می‌شوند؛ باور هیچ‌کس حدس زده نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les jours particuliers et les dates des calendriers que vous activez apparaissent dans votre calendrier. Les calendriers de votre région sont activés au départ, les calendriers religieux désactivés ; nous ne présumons la croyance de personne."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Особые дни и даты включённых вами календарей появляются в вашем календаре. Календари вашего региона сначала включены, религиозные — выключены: мы ничьих убеждений не предполагаем."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オンにした暦の記念日と日付がカレンダーに表示されます。お住まいの地域の暦は最初からオン、宗教の暦はオフです。誰の信仰も推測しません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "켜 둔 달력의 기념일과 날짜가 달력에 표시됩니다. 사는 지역의 달력은 처음에 켜져 있고 종교 달력은 꺼져 있으며, 누구의 신앙도 짐작하지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您开启的历法中的节日和日期会显示在日历中。您所在地区的历法默认开启，宗教历法默认关闭；我们不揣测任何人的信仰。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lalabas sa iyong kalendaryo ang mga espesyal na araw at petsa ng mga kalendaryong binuksan mo. Bukas sa simula ang mga kalendaryo ng iyong rehiyon at sarado ang mga panrelihiyon; walang ipinapalagay na pananampalataya."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันสำคัญและวันที่จากปฏิทินที่คุณเปิดจะแสดงในปฏิทินของคุณ ปฏิทินของภูมิภาคคุณเปิดไว้ก่อน ส่วนปฏิทินทางศาสนาปิดไว้ เราไม่คาดเดาความเชื่อของใคร"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los días especiales y las fechas de los calendarios que active aparecen en su calendario. Los calendarios de su región empiezan activados y los religiosos desactivados; no suponemos la creencia de nadie."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As datas especiais dos calendários que você ativar aparecem no seu calendário. Os calendários da sua região começam ativados e os religiosos desativados; não supomos a crença de ninguém."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आप जो कैलेंडर चालू करें, उनके विशेष दिन और तारीखें आपके कैलेंडर में दिखती हैं। आपके क्षेत्र के कैलेंडर शुरू में चालू और धार्मिक कैलेंडर बंद रहते हैं; हम किसी की आस्था का अनुमान नहीं लगाते।"
+          }
+        }
+      }
+    },
     "cal.agendaEmpty": {
       "extractionState": "manual",
       "localizations": {
@@ -328262,6 +328601,3735 @@
           "stringUnit": {
             "state": "translated",
             "value": "सेटअप जारी रखें"
+          }
+        }
+      }
+    },
+    "photoApp.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraf ışığı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo light"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotolicht"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto işığı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضوء التصوير"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cahaya foto"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فوٹو کی روشنی"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نور عکاسی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lumière photo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Свет для фото"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撮影の光"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사진 빛"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "摄影光线"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Liwanag sa litrato"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสงถ่ายภาพ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luz para fotos"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luz para fotos"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ोटो की रोशनी"
+          }
+        }
+      }
+    },
+    "photoApp.subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Altın saat ve mavi saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golden hour & blue hour"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goldene Stunde und blaue Stunde"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qızıl saat və mavi saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الساعة الذهبية والساعة الزرقاء"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jam emas dan jam biru"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سنہری وقت اور نیلا وقت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت طلایی و ساعت آبی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heure dorée et heure bleue"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Золотой и синий час"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ゴールデンアワーとブルーアワー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "골든아워와 블루아워"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黄金时刻与蓝调时刻"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golden hour at blue hour"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ช่วงแสงทองและช่วงแสงสีฟ้า"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora dorada y hora azul"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora dourada e hora azul"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सुनहरा घंटा और नीला घंटा"
+          }
+        }
+      }
+    },
+    "photoApp.morning": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabah"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morning"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morgen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səhər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الصباح"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pagi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صبح"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صبح"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matin"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Утро"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "朝"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아침"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "早晨"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Umaga"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยามเช้า"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mañana"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manhã"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सुबह"
+          }
+        }
+      }
+    },
+    "photoApp.evening": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akşam"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evening"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abend"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Axşam"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المساء"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sore"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شام"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عصر"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soir"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вечер"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夕方"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "저녁"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "傍晚"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยามเย็น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarde"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarde"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शाम"
+          }
+        }
+      }
+    },
+    "photoApp.golden": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Altın saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golden hour"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goldene Stunde"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qızıl saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الساعة الذهبية"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jam emas"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سنہری وقت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت طلایی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heure dorée"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Золотой час"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ゴールデンアワー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "골든아워"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黄金时刻"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golden hour"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ช่วงแสงทอง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora dorada"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora dourada"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सुनहरा घंटा"
+          }
+        }
+      }
+    },
+    "photoApp.blue": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mavi saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blue hour"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blaue Stunde"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mavi saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الساعة الزرقاء"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jam biru"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نیلا وقت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت آبی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heure bleue"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Синий час"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ブルーアワー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "블루아워"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "蓝调时刻"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blue hour"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ช่วงแสงสีฟ้า"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora azul"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hora azul"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नीला घंटा"
+          }
+        }
+      }
+    },
+    "photoApp.prevDay": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önceki gün"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous day"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorheriger Tag"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Əvvəlki gün"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اليوم السابق"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari sebelumnya"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پچھلا دن"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روز قبل"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jour précédent"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предыдущий день"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前の日"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이전 날"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前一天"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nakaraang araw"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันก่อนหน้า"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Día anterior"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dia anterior"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पिछला दिन"
+          }
+        }
+      }
+    },
+    "photoApp.nextDay": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonraki gün"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next day"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächster Tag"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Növbəti gün"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اليوم التالي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari berikutnya"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگلا دن"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روز بعد"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jour suivant"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Следующий день"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "次の日"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다음 날"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后一天"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Susunod na araw"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันถัดไป"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Día siguiente"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próximo dia"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अगला दिन"
+          }
+        }
+      }
+    },
+    "photoApp.forecast": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün doğumu ve batımı tahmini"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunrise and sunset forecast"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prognose für Sonnenauf- und -untergang"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün çıxması və batması proqnozu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "توقعات الشروق والغروب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prakiraan matahari terbit dan terbenam"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طلوع و غروبِ آفتاب کی پیش گوئی"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیش‌بینی طلوع و غروب"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prévision au lever et au coucher du soleil"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прогноз на восход и закат"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日の出・日の入りの予想"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일출·일몰 예보"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日出日落预测"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hula sa pagsikat at paglubog ng araw"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พยากรณ์ช่วงดวงอาทิตย์ขึ้นและตก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previsión para el amanecer y el atardecer"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previsão para o nascer e o pôr do sol"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सूर्योदय और सूर्यास्त का पूर्वानुमान"
+          }
+        }
+      }
+    },
+    "photoApp.q.good": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Good"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gut"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaxşı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جيد"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bagus"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اچھا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خوب"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bon"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хорошо"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "良い"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "좋음"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "好"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maganda"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ดี"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buena"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boa"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अच्छा"
+          }
+        }
+      }
+    },
+    "photoApp.q.fair": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orta"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fair"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mittel"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orta"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متوسط"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sedang"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "درمیانہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متوسط"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moyen"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Средне"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "普通"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "보통"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一般"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Katamtaman"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปานกลาง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regular"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regular"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मध्यम"
+          }
+        }
+      }
+    },
+    "photoApp.q.poor": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kötü"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poor"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlecht"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pis"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضعيف"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buruk"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خراب"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضعیف"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Faible"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Плохо"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "悪い"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "나쁨"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "差"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mahina"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ไม่ดี"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mala"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ruim"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "खराब"
+          }
+        }
+      }
+    },
+    "photoApp.forecastNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Renkleri orta ve yüksek bulutlar yakalar; ufuktaki alçak bulut ve yağış Güneş'i kapatır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mid and high clouds catch the colours; low cloud and rain on the horizon block the sun."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mittelhohe und hohe Wolken fangen die Farben ein; tiefe Wolken und Regen am Horizont verdecken die Sonne."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rəngləri orta və yüksək buludlar tutur; üfüqdəki alçaq bulud və yağış Günəşi örtür."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "السحب المتوسطة والعالية تلتقط الألوان، والسحب المنخفضة والمطر عند الأفق تحجب الشمس."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Awan menengah dan tinggi menangkap warna; awan rendah dan hujan di cakrawala menutupi matahari."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "درمیانے اور اونچے بادل رنگ پکڑتے ہیں؛ افق پر نچلے بادل اور بارش سورج کو چھپا دیتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابرهای میانی و بلند رنگ‌ها را می‌گیرند؛ ابر پایین و بارش در افق خورشید را می‌پوشانند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les nuages moyens et hauts captent les couleurs ; les nuages bas et la pluie à l'horizon masquent le soleil."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Средние и высокие облака ловят цвета; низкие облака и дождь у горизонта закрывают солнце."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中層・上層の雲は色をとらえ、地平線の低い雲や雨は太陽を隠します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "중층·상층 구름은 색을 담고, 지평선의 낮은 구름과 비는 해를 가립니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中高云能映出色彩；地平线上的低云和降雨会遮住太阳。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang katamtaman at matataas na ulap ang sumasalo ng kulay; ang mababang ulap at ulan sa abot-tanaw ay tumatakip sa araw."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เมฆระดับกลางและระดับสูงช่วยรับสีสัน ส่วนเมฆต่ำและฝนที่ขอบฟ้าจะบังดวงอาทิตย์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las nubes medias y altas recogen los colores; las nubes bajas y la lluvia en el horizonte tapan el sol."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nuvens médias e altas captam as cores; nuvens baixas e chuva no horizonte encobrem o sol."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मध्यम और ऊँचे बादल रंग पकड़ते हैं; क्षितिज पर नीचे के बादल और बारिश सूरज को ढक देते हैं।"
+          }
+        }
+      }
+    },
+    "photoApp.week": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 günlük ışık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light for 7 days"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Licht der nächsten 7 Tage"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 günlük işıq"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الضوء خلال 7 أيام"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cahaya 7 hari"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 دن کی روشنی"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نور 7 روز"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lumière sur 7 jours"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Свет на 7 дней"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7日間の光"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7일간의 빛"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7天光线"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Liwanag sa 7 araw"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสง 7 วัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luz de 7 días"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luz em 7 dias"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 दिनों की रोशनी"
+          }
+        }
+      }
+    },
+    "photoApp.colAmGold": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabah altın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AM golden"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gold morgens"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səhər qızıl"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ذهبية صباحًا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emas pagi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صبح سنہری"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طلایی صبح"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doré matin"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Золотой утром"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "朝のゴールデン"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아침 골든"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "早晨黄金"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golden sa umaga"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสงทองเช้า"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dorada mañana"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dourada manhã"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सुबह सुनहरा"
+          }
+        }
+      }
+    },
+    "photoApp.colPmGold": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akşam altın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PM golden"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gold abends"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Axşam qızıl"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ذهبية مساءً"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emas sore"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شام سنہری"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طلایی عصر"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doré soir"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Золотой вечером"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夕方のゴールデン"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "저녁 골든"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "傍晚黄金"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golden sa hapon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสงทองเย็น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dorada tarde"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dourada tarde"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शाम सुनहरा"
+          }
+        }
+      }
+    },
+    "photoApp.colPmBlue": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akşam mavi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PM blue"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blau abends"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Axşam mavi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زرقاء مساءً"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biru petang"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شام نیلا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آبی شامگاه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bleu soir"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Синий вечером"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夕方のブルー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "저녁 블루"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "傍晚蓝调"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blue sa gabi"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสงฟ้าเย็น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azul tarde"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azul tarde"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शाम नीला"
+          }
+        }
+      }
+    },
+    "photoApp.lit": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aydınlık: %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Illuminated: %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beleuchtet: %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İşıqlı hissə: %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نسبة الإضاءة: %1$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bagian terang: %1$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روشن حصہ: %1$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بخش روشن: %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Éclairée : %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Освещено: %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "輝面比：%1$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "밝은 면: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "照亮比例：%1$@"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naiilawan: %1$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ส่วนสว่าง: %1$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iluminada: %1$@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iluminada: %1$@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "प्रकाशित भाग: %1$@"
+          }
+        }
+      }
+    },
+    "photoApp.polarDay": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş bu tarihte batmıyor (gece yarısı güneşi)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The sun does not set on this date (midnight sun)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Sonne geht an diesem Tag nicht unter (Mitternachtssonne)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günəş bu tarixdə batmır (gecəyarısı günəşi)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا تغرب الشمس في هذا التاريخ (شمس منتصف الليل)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matahari tidak terbenam pada tanggal ini (matahari tengah malam)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس تاریخ کو سورج غروب نہیں ہوتا (آدھی رات کا سورج)۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در این تاریخ خورشید غروب نمی‌کند (خورشید نیمه‌شب)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le soleil ne se couche pas à cette date (soleil de minuit)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В этот день солнце не заходит (полярный день)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この日は太陽が沈みません（白夜）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이날은 해가 지지 않습니다(백야)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这一天太阳不落（极昼）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi lumulubog ang araw sa petsang ito (midnight sun)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ในวันที่เลือก ดวงอาทิตย์ไม่ตก (ดวงอาทิตย์เที่ยงคืน)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El sol no se pone en esta fecha (sol de medianoche)."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O sol não se põe nesta data (sol da meia-noite)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस तारीख को सूरज नहीं डूबता (आधी रात का सूरज)।"
+          }
+        }
+      }
+    },
+    "photoApp.polarNight": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş bu tarihte doğmuyor (kutup gecesi)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The sun does not rise on this date (polar night)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Sonne geht an diesem Tag nicht auf (Polarnacht)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günəş bu tarixdə doğmur (qütb gecəsi)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا تشرق الشمس في هذا التاريخ (الليل القطبي)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matahari tidak terbit pada tanggal ini (malam kutub)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس تاریخ کو سورج طلوع نہیں ہوتا (قطبی رات)۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در این تاریخ خورشید طلوع نمی‌کند (شب قطبی)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le soleil ne se lève pas à cette date (nuit polaire)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В этот день солнце не восходит (полярная ночь)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この日は太陽が昇りません（極夜）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이날은 해가 뜨지 않습니다(극야)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这一天太阳不升（极夜）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi sumisikat ang araw sa petsang ito (polar night)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ในวันที่เลือก ดวงอาทิตย์ไม่ขึ้น (คืนขั้วโลก)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El sol no sale en esta fecha (noche polar)."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O sol não nasce nesta data (noite polar)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस तारीख को सूरज नहीं निकलता (ध्रुवीय रात)।"
+          }
+        }
+      }
+    },
+    "photoApp.partial": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“—”: Güneş bu tarihte o yüksekliğe ulaşmıyor."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“—”: the sun does not reach that height on this date."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„—“: Die Sonne erreicht diese Höhe an diesem Tag nicht."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“—”: Günəş bu tarixdə o hündürlüyə çatmır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«—»: لا تبلغ الشمس هذا الارتفاع في هذا التاريخ."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“—”: matahari tidak mencapai ketinggian itu pada tanggal ini."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“—”: اس تاریخ کو سورج اس بلندی تک نہیں پہنچتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«—»: خورشید در این تاریخ به آن ارتفاع نمی‌رسد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "« — » : le soleil n'atteint pas cette hauteur à cette date."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«—»: в этот день солнце не достигает этой высоты."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "「—」：この日は太陽がその高度に達しません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“—”: 이날은 해가 그 고도에 이르지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“—”：这一天太阳达不到该高度。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“—”: hindi naaabot ng araw ang taas na iyon sa petsang ito."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“—”: ในวันที่เลือก ดวงอาทิตย์ไม่ถึงระดับความสูงนั้น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«—»: el sol no alcanza esa altura en esta fecha."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“—”: o sol não alcança essa altura nesta data."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“—”: इस तारीख को सूरज उस ऊँचाई तक नहीं पहुँचता।"
+          }
+        }
+      }
+    },
+    "photoApp.noForecast": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bulut tahmini bugün ve sonraki 6 gün için var."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The cloud forecast covers today and the next 6 days."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Wolkenprognose gilt für heute und die nächsten 6 Tage."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bulud proqnozu bu gün və növbəti 6 gün üçündür."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "توقعات السحب متاحة لليوم و6 أيام تالية."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prakiraan awan tersedia untuk hari ini dan 6 hari berikutnya."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بادلوں کی پیش گوئی آج اور اگلے 6 دنوں کے لیے ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیش‌بینی ابر برای امروز و 6 روز آینده است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La prévision des nuages couvre aujourd'hui et les 6 jours suivants."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прогноз облачности — на сегодня и следующие 6 дней."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雲の予報は今日から6日先までです。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "구름 예보는 오늘과 이후 6일까지입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "云量预报涵盖今天及之后6天。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang hula sa ulap ay para sa ngayon at sa susunod na 6 na araw."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พยากรณ์เมฆมีสำหรับวันนี้และอีก 6 วันถัดไป"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La previsión de nubes abarca hoy y los 6 días siguientes."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A previsão de nuvens cobre hoje e os próximos 6 dias."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बादलों का पूर्वानुमान आज और अगले 6 दिनों के लिए है।"
+          }
+        }
+      }
+    },
+    "photoApp.how.forecastTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bulut tahmini"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cloud forecast"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wolkenprognose"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bulud proqnozu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "توقعات السحب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prakiraan awan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بادلوں کی پیش گوئی"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیش‌بینی ابر"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prévision des nuages"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прогноз облачности"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雲の予報"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "구름 예보"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "云量预报"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hula sa ulap"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พยากรณ์เมฆ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previsión de nubes"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previsão de nuvens"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बादलों का पूर्वानुमान"
+          }
+        }
+      }
+    },
+    "photoApp.how.forecast": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün doğumuna ve batımına en yakın saatin alçak, orta ve yüksek bulut oranıyla yağışı kullanılır (Open-Meteo). Yağış saatte 0,5 mm ya da daha fazlaysa veya alçak bulut %1$@ ya da üstündeyse: Kötü. Alçak bulut %2$@ altında ve orta ya da yüksek bulut %3$@ ile %4$@ arasındaysa: İyi; bu bulutlar ışığın renklerini yakalar. Alçak bulut %5$@ altındaysa: Orta (açık gökyüzü de buraya girer: temiz ama sade). Diğer durumlar: Kötü. Bu bir tahmindir; bulutlar birkaç saat içinde değişebilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We use the low, mid and high cloud cover and the precipitation for the hour closest to sunrise and sunset (Open-Meteo). Rain of 0.5 mm per hour or more, or low cloud of %1$@ or more: Poor. Low cloud below %2$@ and mid or high cloud between %3$@ and %4$@: Good; these clouds catch the colours of the light. Low cloud below %5$@: Fair (a clear sky also falls here: clean but plain). Anything else: Poor. This is a forecast; clouds can change within a few hours."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verwendet werden tiefe, mittelhohe und hohe Bewölkung sowie der Niederschlag der Stunde, die dem Sonnenauf- bzw. -untergang am nächsten liegt (Open-Meteo). Niederschlag ab 0,5 mm pro Stunde oder tiefe Wolken ab %1$@: Schlecht. Tiefe Wolken unter %2$@ und mittelhohe oder hohe Wolken zwischen %3$@ und %4$@: Gut; diese Wolken fangen die Farben des Lichts ein. Tiefe Wolken unter %5$@: Mittel (auch klarer Himmel: sauber, aber schlicht). Alles andere: Schlecht. Es ist eine Prognose; Wolken können sich innerhalb weniger Stunden ändern."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün çıxmasına və batmasına ən yaxın saatın alçaq, orta və yüksək bulud payı ilə yağıntısı istifadə olunur (Open-Meteo). Yağıntı saatda 0,5 mm və ya daha çoxdursa, yaxud alçaq bulud %1$@ və ya yuxarıdırsa: Pis. Alçaq bulud %2$@ altında, orta və ya yüksək bulud %3$@ ilə %4$@ arasındadırsa: Yaxşı; bu buludlar işığın rənglərini tutur. Alçaq bulud %5$@ altındadırsa: Orta (açıq səma da buraya aiddir: təmiz, amma sadə). Qalan hallar: Pis. Bu, proqnozdur; buludlar bir neçə saat ərzində dəyişə bilər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نستخدم نسبة السحب المنخفضة والمتوسطة والعالية والهطول في الساعة الأقرب إلى الشروق والغروب (Open-Meteo). إذا بلغ الهطول 0.5 مم في الساعة أو أكثر، أو بلغت السحب المنخفضة %1$@ أو أكثر: ضعيف. إذا كانت السحب المنخفضة أقل من %2$@ والسحب المتوسطة أو العالية بين %3$@ و%4$@: جيد؛ فهذه السحب تلتقط ألوان الضوء. إذا كانت السحب المنخفضة أقل من %5$@: متوسط (وتدخل هنا السماء الصافية: نقية لكنها بسيطة). غير ذلك: ضعيف. هذا توقع؛ وقد تتغير السحب خلال ساعات قليلة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kami memakai tutupan awan rendah, menengah, dan tinggi serta curah hujan pada jam terdekat dengan matahari terbit dan terbenam (Open-Meteo). Hujan 0,5 mm per jam atau lebih, atau awan rendah %1$@ atau lebih: Buruk. Awan rendah di bawah %2$@ dan awan menengah atau tinggi antara %3$@ dan %4$@: Bagus; awan ini menangkap warna cahaya. Awan rendah di bawah %5$@: Sedang (langit cerah juga termasuk di sini: bersih tetapi polos). Selain itu: Buruk. Ini prakiraan; awan dapat berubah dalam beberapa jam."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طلوع اور غروبِ آفتاب کے قریب ترین گھنٹے کے نچلے، درمیانے اور اونچے بادلوں کا تناسب اور بارش استعمال ہوتے ہیں (Open-Meteo)۔ بارش فی گھنٹہ 0.5 ملی میٹر یا زیادہ ہو، یا نچلے بادل %1$@ یا زیادہ ہوں: خراب۔ نچلے بادل %2$@ سے کم اور درمیانے یا اونچے بادل %3$@ سے %4$@ کے درمیان ہوں: اچھا؛ یہ بادل روشنی کے رنگ پکڑتے ہیں۔ نچلے بادل %5$@ سے کم ہوں: درمیانہ (صاف آسمان بھی اسی میں آتا ہے: صاف ستھرا مگر سادہ)۔ باقی حالات: خراب۔ یہ پیش گوئی ہے؛ بادل چند گھنٹوں میں بدل سکتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پوشش ابر پایین، میانی و بلند و بارش در نزدیک‌ترین ساعت به طلوع و غروب به کار می‌رود (Open-Meteo). اگر بارش 0.5 میلی‌متر در ساعت یا بیشتر باشد، یا ابر پایین %1$@ یا بیشتر: ضعیف. اگر ابر پایین کمتر از %2$@ و ابر میانی یا بلند بین %3$@ و %4$@ باشد: خوب؛ این ابرها رنگ‌های نور را می‌گیرند. اگر ابر پایین کمتر از %5$@ باشد: متوسط (آسمان صاف هم در این دسته است: تمیز اما ساده). بقیهٔ حالت‌ها: ضعیف. این یک پیش‌بینی است؛ ابرها ممکن است در چند ساعت تغییر کنند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nous utilisons la couverture nuageuse basse, moyenne et haute ainsi que les précipitations de l'heure la plus proche du lever et du coucher du soleil (Open-Meteo). Pluie de 0,5 mm par heure ou plus, ou nuages bas à %1$@ ou plus : Faible. Nuages bas sous %2$@ et nuages moyens ou hauts entre %3$@ et %4$@ : Bon ; ces nuages captent les couleurs de la lumière. Nuages bas sous %5$@ : Moyen (un ciel dégagé entre aussi ici : net mais sobre). Sinon : Faible. C'est une prévision ; les nuages peuvent changer en quelques heures."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Используются доля низких, средних и высоких облаков и осадки за час, ближайший к восходу и закату (Open-Meteo). Осадки от 0,5 мм в час или низкие облака от %1$@: Плохо. Низкие облака меньше %2$@, а средние или высокие — от %3$@ до %4$@: Хорошо; такие облака ловят цвета света. Низкие облака меньше %5$@: Средне (сюда же относится ясное небо: чисто, но просто). Всё остальное: Плохо. Это прогноз; облачность может измениться за несколько часов."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日の出・日の入りに最も近い時刻の下層・中層・上層の雲量と降水量を使います（Open-Meteo）。降水量が1時間に0.5 mm以上、または下層雲が%1$@以上：悪い。下層雲が%2$@未満で、中層または上層の雲が%3$@〜%4$@：良い。こうした雲が光の色をとらえます。下層雲が%5$@未満：普通（快晴もここに入ります。澄んでいますが単調です）。それ以外：悪い。これは予想です。雲は数時間で変わることがあります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일출·일몰에 가장 가까운 시각의 하층·중층·상층 운량과 강수량을 사용합니다(Open-Meteo). 강수량이 시간당 0.5 mm 이상이거나 하층운이 %1$@ 이상이면: 나쁨. 하층운이 %2$@ 미만이고 중층 또는 상층 구름이 %3$@~%4$@이면: 좋음. 이런 구름이 빛의 색을 담습니다. 하층운이 %5$@ 미만이면: 보통(맑은 하늘도 여기에 해당합니다. 깨끗하지만 밋밋합니다). 그 밖에는: 나쁨. 예보이므로 구름은 몇 시간 안에 바뀔 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "采用最接近日出和日落时刻的低云、中云、高云云量和降水量（Open-Meteo）。每小时降水达0.5毫米或以上，或低云达%1$@或以上：差。低云低于%2$@，且中云或高云在%3$@至%4$@之间：好；这些云能映出光的色彩。低云低于%5$@：一般（晴空也属此类：干净但单调）。其他情况：差。这只是预测，云量可能在几小时内变化。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ginagamit namin ang dami ng mababa, katamtaman at mataas na ulap at ang ulan sa oras na pinakamalapit sa pagsikat at paglubog ng araw (Open-Meteo). Ulan na 0.5 mm kada oras o higit pa, o mababang ulap na %1$@ o higit pa: Mahina. Mababang ulap na mas mababa sa %2$@ at katamtaman o mataas na ulap na nasa pagitan ng %3$@ at %4$@: Maganda; sinasalo ng mga ulap na ito ang kulay ng liwanag. Mababang ulap na mas mababa sa %5$@: Katamtaman (kasama rito ang maaliwalas na langit: malinis pero payak). Iba pa: Mahina. Hula lang ito; maaaring magbago ang ulap sa loob ng ilang oras."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ใช้สัดส่วนเมฆระดับต่ำ กลาง สูง และปริมาณฝนของชั่วโมงที่ใกล้เวลาดวงอาทิตย์ขึ้นและตกที่สุด (Open-Meteo) ถ้าฝนตกตั้งแต่ 0.5 มม. ต่อชั่วโมง หรือเมฆต่ำตั้งแต่ %1$@: ไม่ดี ถ้าเมฆต่ำน้อยกว่า %2$@ และเมฆกลางหรือเมฆสูงอยู่ระหว่าง %3$@ ถึง %4$@: ดี เพราะเมฆเหล่านี้รับสีของแสง ถ้าเมฆต่ำน้อยกว่า %5$@: ปานกลาง (ท้องฟ้าโปร่งก็อยู่ในกลุ่มนี้: สะอาดตาแต่เรียบ ๆ) กรณีอื่น: ไม่ดี นี่เป็นเพียงการพยากรณ์ เมฆอาจเปลี่ยนได้ภายในไม่กี่ชั่วโมง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usamos la nubosidad baja, media y alta y la precipitación de la hora más cercana a la salida y la puesta del sol (Open-Meteo). Lluvia de 0,5 mm por hora o más, o nubes bajas de %1$@ o más: Mala. Nubes bajas por debajo de %2$@ y nubes medias o altas entre %3$@ y %4$@: Buena; estas nubes recogen los colores de la luz. Nubes bajas por debajo de %5$@: Regular (aquí entra también el cielo despejado: limpio pero sencillo). Lo demás: Mala. Es una previsión; las nubes pueden cambiar en pocas horas."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usamos a cobertura de nuvens baixas, médias e altas e a precipitação da hora mais próxima do nascer e do pôr do sol (Open-Meteo). Chuva de 0,5 mm por hora ou mais, ou nuvens baixas de %1$@ ou mais: Ruim. Nuvens baixas abaixo de %2$@ e nuvens médias ou altas entre %3$@ e %4$@: Boa; essas nuvens captam as cores da luz. Nuvens baixas abaixo de %5$@: Regular (o céu limpo também entra aqui: bonito, mas simples). O resto: Ruim. É uma previsão; as nuvens podem mudar em poucas horas."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सूर्योदय और सूर्यास्त के सबसे पास वाले घंटे के निचले, मध्यम और ऊँचे बादलों का अनुपात और वर्षा इस्तेमाल होते हैं (Open-Meteo)। वर्षा प्रति घंटे 0.5 मिमी या अधिक हो, या निचले बादल %1$@ या अधिक हों: खराब। निचले बादल %2$@ से कम और मध्यम या ऊँचे बादल %3$@ से %4$@ के बीच हों: अच्छा; ये बादल रोशनी के रंग पकड़ते हैं। निचले बादल %5$@ से कम हों: मध्यम (साफ़ आसमान भी इसी में आता है: साफ़-सुथरा पर सादा)। बाकी स्थितियाँ: खराब। यह पूर्वानुमान है; बादल कुछ ही घंटों में बदल सकते हैं।"
+          }
+        }
+      }
+    },
+    "photoApp.how.dirTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doğuş ve batış yönü"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunrise and sunset direction"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Richtung von Sonnenauf- und -untergang"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıxma və batma istiqaməti"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اتجاه الشروق والغروب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arah terbit dan terbenam"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طلوع اور غروب کی سمت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جهت طلوع و غروب"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direction du lever et du coucher"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Направление восхода и заката"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日の出・日の入りの方角"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일출·일몰 방향"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日出日落方向"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direksiyon ng pagsikat at paglubog"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทิศที่ดวงอาทิตย์ขึ้นและตก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dirección de la salida y la puesta"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direção do nascer e do pôr do sol"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उदय और अस्त की दिशा"
+          }
+        }
+      }
+    },
+    "photoApp.how.dir": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yön, kuzeyden saat yönünde derece olarak verilir: 90° doğu, 180° güney, 270° batı. Güneş'in doğduğu ve battığı yer mevsime göre kayar; kuzey yarımkürede yazın kuzeye, kışın güneye yaklaşır. Kadrajı ve yerinizi önceden bu yöne göre seçebilirsiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direction is given in degrees clockwise from north: 90° east, 180° south, 270° west. Where the sun rises and sets shifts with the seasons; in the northern hemisphere it moves north in summer and south in winter. You can plan your framing and spot in advance."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Richtung wird in Grad im Uhrzeigersinn ab Norden angegeben: 90° Osten, 180° Süden, 270° Westen. Der Ort von Sonnenauf- und -untergang verschiebt sich mit den Jahreszeiten; auf der Nordhalbkugel wandert er im Sommer nach Norden und im Winter nach Süden. So können Sie Bildausschnitt und Standort im Voraus planen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İstiqamət şimaldan saat əqrəbi istiqamətində dərəcə ilə verilir: 90° şərq, 180° cənub, 270° qərb. Günəşin doğduğu və batdığı yer fəsillərə görə dəyişir; şimal yarımkürəsində yayda şimala, qışda cənuba yaxınlaşır. Kadrı və yerinizi əvvəlcədən bu istiqamətə görə seçə bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُعطى الاتجاه بالدرجات باتجاه عقارب الساعة بدءًا من الشمال: 90° شرق، و180° جنوب، و270° غرب. يتغير موضع شروق الشمس وغروبها مع الفصول؛ ففي نصف الكرة الشمالي يميل شمالًا في الصيف وجنوبًا في الشتاء. يمكنك اختيار الإطار والمكان مسبقًا وفق هذا الاتجاه."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arah dinyatakan dalam derajat searah jarum jam dari utara: 90° timur, 180° selatan, 270° barat. Titik terbit dan terbenam matahari bergeser menurut musim; di belahan bumi utara bergeser ke utara saat musim panas dan ke selatan saat musim dingin. Anda dapat merencanakan bingkai dan lokasi lebih awal."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سمت شمال سے گھڑی کی سوئیوں کی سمت میں ڈگری میں دی جاتی ہے: 90° مشرق، 180° جنوب، 270° مغرب۔ سورج کے طلوع اور غروب ہونے کی جگہ موسم کے ساتھ بدلتی ہے؛ شمالی نصف کرے میں گرمیوں میں شمال اور سردیوں میں جنوب کی طرف جاتی ہے۔ آپ فریم اور جگہ پہلے سے اسی سمت کے مطابق چن سکتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جهت به درجه و در جهت عقربه‌های ساعت از شمال داده می‌شود: 90° شرق، 180° جنوب، 270° غرب. جای طلوع و غروب خورشید با فصل‌ها جابه‌جا می‌شود؛ در نیمکرهٔ شمالی تابستان به سمت شمال و زمستان به سمت جنوب می‌رود. می‌توانید قاب و مکان را از پیش بر اساس این جهت انتخاب کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La direction est donnée en degrés dans le sens horaire depuis le nord : 90° est, 180° sud, 270° ouest. Le point de lever et de coucher du soleil se déplace avec les saisons ; dans l'hémisphère nord, il remonte vers le nord en été et descend vers le sud en hiver. Vous pouvez prévoir votre cadrage et votre emplacement à l'avance."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Направление указано в градусах по часовой стрелке от севера: 90° — восток, 180° — юг, 270° — запад. Точки восхода и заката смещаются по сезонам: в Северном полушарии летом к северу, зимой к югу. Можно заранее выбрать кадр и место съёмки."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "方角は北から時計回りの角度で示します。90°が東、180°が南、270°が西です。日の出・日の入りの位置は季節によって変わり、北半球では夏は北寄り、冬は南寄りになります。構図や撮影場所を前もって決めるのに役立ちます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "방향은 북쪽에서 시계 방향으로 잰 각도입니다. 90°는 동, 180°는 남, 270°는 서입니다. 해가 뜨고 지는 위치는 계절에 따라 달라져 북반구에서는 여름에 북쪽, 겨울에 남쪽으로 치우칩니다. 구도와 촬영 장소를 미리 정할 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "方向以从正北顺时针计算的角度表示：90°为东，180°为南，270°为西。日出日落的位置随季节变化，在北半球夏季偏北、冬季偏南。可据此提前选好构图和机位。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ibinibigay ang direksiyon sa digri mula sa hilaga, pakanan: 90° silangan, 180° timog, 270° kanluran. Nagbabago ang lugar ng pagsikat at paglubog ng araw ayon sa panahon; sa hilagang hemispero, pahilaga ito sa tag-init at patimog sa taglamig. Maaari mong planuhin nang maaga ang kuha at puwesto."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทิศบอกเป็นองศาตามเข็มนาฬิกาจากทิศเหนือ: 90° ตะวันออก 180° ใต้ 270° ตะวันตก ตำแหน่งที่ดวงอาทิตย์ขึ้นและตกเปลี่ยนไปตามฤดูกาล ในซีกโลกเหนือหน้าร้อนจะค่อนไปทางเหนือ หน้าหนาวค่อนไปทางใต้ จึงวางมุมกล้องและจุดถ่ายภาพไว้ล่วงหน้าได้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La dirección se da en grados en el sentido de las agujas del reloj desde el norte: 90° este, 180° sur, 270° oeste. El punto donde sale y se pone el sol cambia con las estaciones; en el hemisferio norte se desplaza al norte en verano y al sur en invierno. Puede planificar el encuadre y el lugar con antelación."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A direção é dada em graus no sentido horário a partir do norte: 90° leste, 180° sul, 270° oeste. O ponto onde o sol nasce e se põe muda com as estações; no hemisfério norte, vai para o norte no verão e para o sul no inverno. Você pode planejar o enquadramento e o local com antecedência."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "दिशा उत्तर से घड़ी की सुई की दिशा में डिग्री में दी जाती है: 90° पूर्व, 180° दक्षिण, 270° पश्चिम। सूरज के उगने और डूबने की जगह मौसम के साथ बदलती है; उत्तरी गोलार्ध में गर्मियों में उत्तर की ओर और सर्दियों में दक्षिण की ओर खिसकती है। आप फ़्रेम और जगह पहले से तय कर सकते हैं।"
+          }
+        }
+      }
+    },
+    "photoApp.how.privacy": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatler ve yönler telefonunuzda hesaplanır. Bulut tahmini için yalnız yaklaşık konum (iki ondalık, yaklaşık 1 km) Open-Meteo'ya gönderilir; bize hiçbir şey gelmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Times and directions are calculated on your phone. For the cloud forecast only an approximate location (two decimals, about 1 km) is sent to Open-Meteo; nothing is sent to us."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeiten und Richtungen werden auf Ihrem Telefon berechnet. Für die Wolkenprognose wird nur ein ungefährer Standort (zwei Nachkommastellen, etwa 1 km) an Open-Meteo gesendet; an uns wird nichts übertragen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatlar və istiqamətlər telefonunuzda hesablanır. Bulud proqnozu üçün yalnız təxmini yer (iki onluq, təxminən 1 km) Open-Meteo-ya göndərilir; bizə heç nə gəlmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُحسب الأوقات والاتجاهات على هاتفك. ولتوقعات السحب يُرسل موقع تقريبي فقط (منزلتان عشريتان، نحو 1 كم) إلى Open-Meteo، ولا يصلنا شيء."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waktu dan arah dihitung di ponsel Anda. Untuk prakiraan awan, hanya lokasi perkiraan (dua desimal, sekitar 1 km) yang dikirim ke Open-Meteo; tidak ada yang sampai kepada kami."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوقات اور سمتیں آپ کے فون پر نکالی جاتی ہیں۔ بادلوں کی پیش گوئی کے لیے صرف تخمینی مقام (دو اعشاریہ، تقریباً 1 کلومیٹر) Open-Meteo کو بھیجا جاتا ہے؛ ہمارے پاس کچھ نہیں آتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زمان‌ها و جهت‌ها روی گوشی شما محاسبه می‌شوند. برای پیش‌بینی ابر فقط موقعیت تقریبی (دو رقم اعشار، حدود 1 کیلومتر) به Open-Meteo فرستاده می‌شود؛ چیزی به ما نمی‌رسد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les heures et les directions sont calculées sur votre téléphone. Pour la prévision des nuages, seule une position approximative (deux décimales, environ 1 km) est envoyée à Open-Meteo ; rien ne nous parvient."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Время и направления вычисляются на вашем телефоне. Для прогноза облачности в Open-Meteo отправляется только примерное местоположение (два знака после запятой, около 1 км); к нам ничего не попадает."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "時刻と方角はスマートフォンで計算します。雲の予報のため、おおよその位置（小数点以下2桁、約1 km）だけをOpen-Meteoに送ります。私たちには何も届きません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시간과 방향은 휴대폰에서 계산합니다. 구름 예보를 위해 대략적인 위치(소수점 두 자리, 약 1 km)만 Open-Meteo에 보내며, 저희에게는 아무것도 전송되지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时间和方向在您的手机上计算。为获取云量预报，只把大致位置（两位小数，约1公里）发送给 Open-Meteo；我们不会收到任何信息。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kinakalkula sa iyong telepono ang mga oras at direksiyon. Para sa hula sa ulap, tinatayang lokasyon lang (dalawang decimal, mga 1 km) ang ipinapadala sa Open-Meteo; walang nakararating sa amin."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เวลาและทิศคำนวณบนโทรศัพท์ของคุณ สำหรับพยากรณ์เมฆ จะส่งเพียงตำแหน่งโดยประมาณ (ทศนิยมสองตำแหน่ง ราว 1 กม.) ไปยัง Open-Meteo และไม่มีข้อมูลใดส่งมาถึงเรา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las horas y las direcciones se calculan en su teléfono. Para la previsión de nubes solo se envía a Open-Meteo una ubicación aproximada (dos decimales, unos 1 km); a nosotros no nos llega nada."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os horários e as direções são calculados no seu telefone. Para a previsão de nuvens, só uma localização aproximada (duas casas decimais, cerca de 1 km) é enviada ao Open-Meteo; nada chega até nós."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "समय और दिशाएँ आपके फ़ोन पर गिनी जाती हैं। बादलों के पूर्वानुमान के लिए केवल अनुमानित स्थान (दो दशमलव, लगभग 1 किमी) Open-Meteo को भेजा जाता है; हमारे पास कुछ नहीं आता।"
+          }
+        }
+      }
+    },
+    "photoApp.notify.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Altın ve mavi saatten önce hatırlatır. Fotoğraf ışığını bir kez açtıktan sonra çalışır (Tümü › Fotoğraf ışığı)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reminds you before golden and blue hour. Works once you have opened Photo light (All › Photo light)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erinnert vor der goldenen und blauen Stunde. Funktioniert, sobald Sie Fotolicht einmal geöffnet haben (Alle › Fotolicht)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qızıl və mavi saatdan əvvəl xatırladır. Foto işığını bir dəfə açdıqdan sonra işləyir (Hamısı › Foto işığı)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يذكّرك قبل الساعة الذهبية والزرقاء. يعمل بعد أن تفتح «ضوء التصوير» مرة واحدة (الكل › ضوء التصوير)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengingatkan sebelum jam emas dan jam biru. Aktif setelah Anda membuka Cahaya foto sekali (Semua › Cahaya foto)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سنہری اور نیلے وقت سے پہلے یاد دلاتا ہے۔ فوٹو کی روشنی ایک بار کھولنے کے بعد کام کرتا ہے (سب › فوٹو کی روشنی)۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیش از ساعت طلایی و آبی یادآوری می‌کند. پس از یک بار باز کردن «نور عکاسی» کار می‌کند (همه › نور عکاسی)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vous prévient avant l'heure dorée et l'heure bleue. Actif dès que vous avez ouvert Lumière photo une fois (Tout › Lumière photo)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Напоминает перед золотым и синим часом. Работает после того, как вы один раз откроете «Свет для фото» (Все › Свет для фото)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ゴールデンアワーとブルーアワーの前にお知らせします。「撮影の光」を一度開くと有効になります（すべて › 撮影の光）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "골든아워와 블루아워 전에 알려 줍니다. '사진 빛'을 한 번 열면 작동합니다(전체 › 사진 빛)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在黄金时刻和蓝调时刻之前提醒。打开一次“摄影光线”后生效（全部 › 摄影光线）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nagpapaalala bago ang golden hour at blue hour. Gagana kapag nabuksan mo na ang Liwanag sa litrato (Lahat › Liwanag sa litrato)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แจ้งเตือนก่อนช่วงแสงทองและช่วงแสงสีฟ้า ใช้งานได้หลังจากเปิดแสงถ่ายภาพหนึ่งครั้ง (ทั้งหมด › แสงถ่ายภาพ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le avisa antes de la hora dorada y la hora azul. Funciona después de abrir Luz para fotos una vez (Todo › Luz para fotos)."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avisa antes da hora dourada e da hora azul. Funciona depois que você abrir Luz para fotos uma vez (Tudo › Luz para fotos)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सुनहरे और नीले घंटे से पहले याद दिलाता है। फ़ोटो की रोशनी एक बार खोलने के बाद काम करता है (सब › फ़ोटो की रोशनी)।"
+          }
+        }
+      }
+    },
+    "photoApp.n.amBlue": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabah mavi saati %1$@ dakika sonra başlıyor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morning blue hour starts in %1$@ min"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blaue Stunde am Morgen beginnt in %1$@ Min."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səhər mavi saatı %1$@ dəqiqəyə başlayır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تبدأ الساعة الزرقاء صباحًا بعد %1$@ دقيقة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jam biru pagi dimulai %1$@ menit lagi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صبح کا نیلا وقت %1$@ منٹ میں شروع ہوگا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت آبی صبح %1$@ دقیقه دیگر شروع می‌شود"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'heure bleue du matin commence dans %1$@ min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Утренний синий час начнётся через %1$@ мин"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "朝のブルーアワーまであと%1$@分"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아침 블루아워가 %1$@분 후 시작됩니다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "早晨蓝调时刻将在%1$@分钟后开始"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magsisimula ang blue hour sa umaga sa loob ng %1$@ minuto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ช่วงแสงสีฟ้ายามเช้าจะเริ่มในอีก %1$@ นาที"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La hora azul de la mañana empieza en %1$@ min"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A hora azul da manhã começa em %1$@ min"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सुबह का नीला घंटा %1$@ मिनट में शुरू होगा"
+          }
+        }
+      }
+    },
+    "photoApp.n.amGold": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabah altın saati %1$@ dakika sonra başlıyor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morning golden hour starts in %1$@ min"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goldene Stunde am Morgen beginnt in %1$@ Min."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səhər qızıl saatı %1$@ dəqiqəyə başlayır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تبدأ الساعة الذهبية صباحًا بعد %1$@ دقيقة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jam emas pagi dimulai %1$@ menit lagi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صبح کا سنہری وقت %1$@ منٹ میں شروع ہوگا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت طلایی صبح %1$@ دقیقه دیگر شروع می‌شود"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'heure dorée du matin commence dans %1$@ min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Утренний золотой час начнётся через %1$@ мин"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "朝のゴールデンアワーまであと%1$@分"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아침 골든아워가 %1$@분 후 시작됩니다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "早晨黄金时刻将在%1$@分钟后开始"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magsisimula ang golden hour sa umaga sa loob ng %1$@ minuto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ช่วงแสงทองยามเช้าจะเริ่มในอีก %1$@ นาที"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La hora dorada de la mañana empieza en %1$@ min"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A hora dourada da manhã começa em %1$@ min"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सुबह का सुनहरा घंटा %1$@ मिनट में शुरू होगा"
+          }
+        }
+      }
+    },
+    "photoApp.n.pmGold": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akşam altın saati %1$@ dakika sonra başlıyor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evening golden hour starts in %1$@ min"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goldene Stunde am Abend beginnt in %1$@ Min."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Axşam qızıl saatı %1$@ dəqiqəyə başlayır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تبدأ الساعة الذهبية مساءً بعد %1$@ دقيقة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jam emas sore dimulai %1$@ menit lagi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شام کا سنہری وقت %1$@ منٹ میں شروع ہوگا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت طلایی عصر %1$@ دقیقه دیگر شروع می‌شود"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'heure dorée du soir commence dans %1$@ min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вечерний золотой час начнётся через %1$@ мин"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夕方のゴールデンアワーまであと%1$@分"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "저녁 골든아워가 %1$@분 후 시작됩니다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "傍晚黄金时刻将在%1$@分钟后开始"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magsisimula ang golden hour sa hapon sa loob ng %1$@ minuto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ช่วงแสงทองยามเย็นจะเริ่มในอีก %1$@ นาที"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La hora dorada de la tarde empieza en %1$@ min"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A hora dourada da tarde começa em %1$@ min"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शाम का सुनहरा घंटा %1$@ मिनट में शुरू होगा"
+          }
+        }
+      }
+    },
+    "photoApp.n.pmBlue": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akşam mavi saati %1$@ dakika sonra başlıyor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evening blue hour starts in %1$@ min"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blaue Stunde am Abend beginnt in %1$@ Min."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Axşam mavi saatı %1$@ dəqiqəyə başlayır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تبدأ الساعة الزرقاء مساءً بعد %1$@ دقيقة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jam biru petang dimulai %1$@ menit lagi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شام کا نیلا وقت %1$@ منٹ میں شروع ہوگا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت آبی شامگاه %1$@ دقیقه دیگر شروع می‌شود"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'heure bleue du soir commence dans %1$@ min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вечерний синий час начнётся через %1$@ мин"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夕方のブルーアワーまであと%1$@分"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "저녁 블루아워가 %1$@분 후 시작됩니다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "傍晚蓝调时刻将在%1$@分钟后开始"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magsisimula ang blue hour sa gabi sa loob ng %1$@ minuto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ช่วงแสงสีฟ้ายามเย็นจะเริ่มในอีก %1$@ นาที"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La hora azul de la tarde empieza en %1$@ min"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A hora azul da tarde começa em %1$@ min"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शाम का नीला घंटा %1$@ मिनट में शुरू होगा"
+          }
+        }
+      }
+    },
+    "photoApp.n.q": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahmin: %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forecast: %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prognose: %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Proqnoz: %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التوقع: %1$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prakiraan: %1$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیش گوئی: %1$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیش‌بینی: %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prévision : %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прогноз: %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "予想：%1$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "예보: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预测：%1$@"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hula: %1$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พยากรณ์: %1$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previsión: %1$@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previsão: %1$@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पूर्वानुमान: %1$@"
           }
         }
       }

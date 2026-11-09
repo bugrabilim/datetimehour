@@ -1,0 +1,40 @@
+Heure & Date réunit l'horloge, les widgets, la météo, le calendrier, le réveil et des outils du quotidien dans une appli claire. Gratuite, sans compte, sans publicité et sans suivi.
+
+RÉGLÉE POUR VOUS
+• Cinq questions rapides au premier lancement : météo, calendrier, horloges du monde, saisons, prières. La barre d'onglets se construit selon vos réponses
+• Les sections que vous n'utilisez pas restent masquées et n'envoient aucune notification
+
+HORLOGE ET WIDGETS
+• 21 modèles d'horloge et 25 cadrans analogiques ; plein écran et mode nuit rouge tamisé
+• Affichez sous l'horloge la météo, la date, des horloges du monde ou la prochaine prière
+• Widgets pour l'écran d'accueil et l'écran verrouillé : horloges, horloges du monde, comptes à rebours, phase de la lune ; complications Apple Watch
+
+CALENDRIER ET MÉTÉO
+• Jours fériés du Canada, de la Turquie et de 29 autres pays, jours religieux et particuliers, à côté des calendriers de votre téléphone
+• Calendrier hégirien et convertisseur
+• Prévisions heure par heure et sur 10 jours, qualité de l'air et un écran qui change avec le temps qu'il fait
+
+RÉVEIL, SOMMEIL ET CONCENTRATION
+• Réveil qui sonne même en mode silencieux, avec des tâches pour l'arrêter : calcul, secousses, scan d'un code
+• Plan de sommeil, sons pour dormir, réveil intelligent
+• Pomodoro, minuterie d'étude, blocage d'applis pendant la concentration
+
+OUTILS
+• Minuterie, chronomètre, entraînement par intervalles, horloge d'échecs, métronome, horloge parlante
+• Horloges du monde avec globe qui tourne, planificateur de réunions, calculs d'heures et de dates
+• Saisons, calendrier lunaire, éclipses, ciel nocturne, signe du zodiaque
+
+HORAIRES DE PRIÈRE ET CULTE
+• Horaires partout dans le monde, avec 14 méthodes de calcul (Diyanet, MWL, ISNA, Umm al-Qura…) et Asr hanafite
+• Les 81 provinces et 973 districts de Turquie
+• Notifications avec le son de l'adhan, calendrier du Ramadan
+• Boussole de la qibla et mosquées à proximité
+• Le Coran en arabe, invocations, les 99 noms d'Allah, compteur de tasbih, suivi des prières et du jeûne, calcul de la zakat
+• Cartes de vœux pour le vendredi, le Ramadan, l'Aïd et les nuits saintes
+
+CONFIDENTIALITÉ
+Sans compte, sans publicité, sans suivi. Votre position reste sur votre téléphone pour les horaires de prière ; seule une position approximative est envoyée au service (Apple, Open-Meteo) pour la météo et les mosquées à proximité, jamais votre identité. Consultez et désactivez chaque autorisation dans Réglages › Autorisations.
+
+En 18 langues. Pour iPhone, iPad et Apple Watch.
+
+Heure & Date est un produit Bumba Life. Web : time.bumba.tr

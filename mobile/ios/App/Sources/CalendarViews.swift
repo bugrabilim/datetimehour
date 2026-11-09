@@ -90,13 +90,13 @@ enum WorldHol {
     }
 }
 
-/// Seçili ülkeye ve türlere göre bir günün özel günleri
+/// Seçili ülkeye ve türlere göre bir günün özel günleri; açık kapsayıcı takvimlerin günleri sonda (tür `cal:<id>`)
 func calEvents(_ day: CalendarDay) -> [CalendarData.Event] {
     let base = CalendarData.shared.events(on: day)
     let cc = CalPrefs.country
     let list = cc == "TR" ? base : base.filter { $0.type == "religious" } + WorldHol.events(cc, on: day)
     let hidden = CalPrefs.hidden
-    return list.filter { !hidden.contains($0.type) }
+    return list.filter { !hidden.contains($0.type) } + ExtraCals.events(on: day)
 }
 
 /// Yaklaşan özel günler, takvimin ülke ve tür seçimiyle (9 Kasım 2026; saat ekranındaki "yaklaşan özel gün")
@@ -425,7 +425,7 @@ struct HijriMonthGridView: View {
     }
 }
 
-/// Ülke ve gösterilen türler
+/// Takvimler ve ülke: kapsayıcı takvimler (açık/kapalı), gösterilen türler ve ülke
 struct CalCountrySheet: View {
     @AppStorage(CalPrefs.countryKey) private var countryRaw = ""
     @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw: String?
@@ -437,6 +437,7 @@ struct CalCountrySheet: View {
     var body: some View {
         NavigationStack {
             List {
+                ExtraCalsSection()
                 Section(L("cal.shownTypes")) {
                     ForEach(types, id: \.self) { t in typeRow(t) }
                 }
@@ -457,7 +458,7 @@ struct CalCountrySheet: View {
                 }
             }
             .themedBackground()
-            .navigationTitle(L("cal.country"))
+            .navigationTitle(L("calendars.title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { dismiss() } } }
         }
