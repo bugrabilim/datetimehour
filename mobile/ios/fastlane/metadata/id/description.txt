@@ -1,4 +1,11 @@
-Jam & Tanggal menyatukan jam, jadwal salat, kalender, cuaca, dan alat sehari-hari dalam satu aplikasi yang rapi. Gratis, tanpa akun, tanpa iklan, dan tanpa pelacakan.
+Jam & Tanggal menyatukan jadwal salat, kiblat, jam, kalender, cuaca, dan alat sehari-hari dalam satu aplikasi yang rapi. Gratis, tanpa akun, tanpa iklan, dan tanpa pelacakan.
+
+JADWAL SALAT DAN IBADAH
+• Jadwal salat di mana saja, dengan 14 metode perhitungan (Diyanet, MWL, ISNA, Umm al-Qura, dan lainnya) serta Asar Hanafi
+• Seluruh 81 provinsi dan 973 distrik di Turki
+• Notifikasi dengan suara azan, jadwal imsakiyah Ramadan
+• Kompas kiblat dan masjid terdekat
+• Al-Qur'an berbahasa Arab, doa, Asmaul Husna, penghitung tasbih, pencatat salat dan puasa, kalkulator zakat
 
 DISIAPKAN UNTUK ANDA
 • Lima pertanyaan singkat saat pertama dibuka: jadwal salat, cuaca, kalender, jam dunia, musim. Bilah tab disusun dari jawaban Anda
@@ -8,13 +15,6 @@ JAM
 • 21 model jam dan 25 muka jam analog; layar penuh dan mode malam merah redup
 • Tampilkan salat berikutnya, cuaca, tanggal, atau jam dunia di bawah jam
 • Widget Layar Utama dan Layar Terkunci, komplikasi Apple Watch
-
-JADWAL SALAT DAN IBADAH
-• Jadwal salat di mana saja, dengan 14 metode perhitungan (Diyanet, MWL, ISNA, Umm al-Qura, dan lainnya) serta Asar Hanafi
-• Seluruh 81 provinsi dan 973 distrik di Turki
-• Notifikasi dengan suara azan, jadwal imsakiyah Ramadan
-• Kompas kiblat dan masjid terdekat
-• Al-Qur'an berbahasa Arab, doa, Asmaul Husna, penghitung tasbih, pencatat salat dan puasa, kalkulator zakat
 
 KALENDER DAN CUACA
 • Hari libur Turki dan 30 negara lain, hari keagamaan dan hari istimewa, berdampingan dengan kalender di ponsel Anda

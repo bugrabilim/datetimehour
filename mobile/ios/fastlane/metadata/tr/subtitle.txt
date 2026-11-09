@@ -1,1 +1,1 @@
-Saat,Takvim,Hava,Mevsim,Namaz
+Ezan vakti, kıble, hava, alarm
