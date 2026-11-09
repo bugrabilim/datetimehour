@@ -1,0 +1,33 @@
+Time & Date brings a clock, alarms, a calendar, weather and everyday tools together in one clean app, with prayer times and the Qibla when you need them. No account, no ads, no tracking.
+
+Set up for you
+• Five quick questions on first launch build your tab bar. Sections you don't use stay hidden and send no notifications
+
+Clock and widgets
+• 21 clock styles and 25 analog dials, full screen and a dim red night mode
+• Home screen widgets for clocks, world clocks, weather, the calendar, countdowns and the moon phase
+• A Wear OS app with a tile and complications, an Android TV app, a screen saver, a floating clock and Quick Settings tiles
+
+Calendar and weather
+• Public holidays for Türkiye and 30 more countries, next to the calendars on your phone (Google Calendar included)
+• Hourly and 14-day forecast, air quality and pollen, and a screen that changes with the weather
+
+Alarm, sleep and focus
+• Alarms that ring on the lock screen, with gradually rising volume and wake-up tasks such as math, shaking or scanning a code
+• Sleep plan, sleep sounds and a smart alarm
+• Pomodoro, study timer, interval training and app blocking while you focus
+
+Tools
+• Timer, stopwatch, chess clock, metronome, talking clock
+• World clocks with a spinning globe, meeting planner, time and date calculators
+• Seasons, moon calendar, eclipses and the night sky
+
+Prayer times and Qibla
+• Prayer times for anywhere, with 14 calculation methods and Hanafi Asr; notifications with the adhan
+• Qibla compass and nearby mosques, Ramadan timetable and Hijri calendar
+• The Quran in Arabic, duas, a dhikr counter and a zakat calculator
+
+Privacy
+No account, no ads, no tracking. Only for weather and nearby mosques is an approximate location sent to the service (Open-Meteo, OpenStreetMap), never who you are. You can see every permission in Settings › Permissions.
+
+In 18 languages. Time & Date is a Bumba Life product. Web: time.bumba.tr

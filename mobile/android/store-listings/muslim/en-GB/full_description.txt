@@ -1,0 +1,37 @@
+Time & Date brings prayer times, the Qibla, a clock, a calendar, weather and everyday tools together in one clean app. No account, no ads, no tracking.
+
+Prayer times and worship
+• Prayer times for anywhere in the world, with 14 calculation methods (Diyanet, MWL, ISNA, Umm al-Qura, Karachi, Singapore and more) and Hanafi Asr
+• All 81 provinces and 973 districts of Türkiye
+• Notifications at prayer time or before it: the first phrase of the adhan, a short chime or a spoken announcement
+• If you like, the phone switches to vibrate or Do Not Disturb at prayer time
+• Ramadan timetable you can share as an image, with iftar and suhoor countdowns
+• Qibla compass and nearby mosques on the map
+• The Quran in Arabic, duas, the 99 Names of Allah, hadith, a prayer guide, a dhikr counter, a prayer and fasting tracker and a zakat calculator
+• Hijri calendar and converter, religious days and holy nights, greeting cards for Friday, Ramadan and Eid
+
+Set up for you
+• Five quick questions on first launch build your tab bar. Sections you don't use stay hidden and send no notifications
+
+Clock and widgets
+• 21 clock styles and 25 analogue dials, full screen and a dim red night mode
+• Home screen widgets for the next prayer, today's prayer times, the Hijri date, clocks, world clocks, weather and the moon phase
+• A Wear OS app with a tile and complications, an Android TV app, a screen saver, a floating clock and Quick Settings tiles
+
+Calendar and weather
+• Public holidays for Türkiye and 30 more countries, next to the calendars on your phone (Google Calendar included)
+• Hourly and 14-day forecast, air quality and pollen, and a screen that changes with the weather
+
+Alarm, sleep and focus
+• Alarms that ring on the lock screen, with gradually rising volume and wake-up tasks such as maths, shaking or scanning a code
+• Sleep plan, sleep sounds and a smart alarm
+• Pomodoro, study timer, interval training and app blocking while you focus
+
+Tools
+• Timer, stopwatch, chess clock, metronome, talking clock, meeting planner, time and date calculators
+• Seasons, moon calendar, eclipses and the night sky
+
+Privacy
+No account, no ads, no tracking. Prayer times are calculated on your phone. Only for weather and nearby mosques is an approximate location sent to the service (Open-Meteo, OpenStreetMap), never who you are. You can see every permission in Settings › Permissions.
+
+In 18 languages. Time & Date is a Bumba Life product. Web: time.bumba.tr

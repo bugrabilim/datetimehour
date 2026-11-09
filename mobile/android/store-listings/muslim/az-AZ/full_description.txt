@@ -1,0 +1,37 @@
+Saat Tarix namaz vaxtlarını, qibləni, saatı, təqvimi, hava proqnozunu və gündəlik alətləri bir sadə tətbiqdə toplayır. Hesab, reklam və izləmə yoxdur.
+
+Namaz vaxtları və ibadət
+• Dünyanın istənilən yeri üçün namaz vaxtları: Diyanət, MWL, ISNA, Ümmül-Qura, Kəraçi, Tehran, Cəfəri və digərləri ilə 14 hesablama metodu, Hənəfi əsri
+• Türkiyənin 81 ili və 973 rayonu
+• Vaxtında və ya əvvəlcədən bildiriş: azanın ilk cümləsi, qısa zəng və ya səsli elan
+• İstəsəniz, namaz vaxtı telefon vibrasiya və ya "Narahat etməyin" rejiminə keçir
+• Şəkil kimi paylaşa biləcəyiniz Ramazan imsakiyyəsi, iftar və səhur sayğacı
+• Qiblə kompası və xəritədə yaxınlıqdakı məscidlər
+• Qurani-Kərim (ərəbcə), dualar, Əsmaül-Hüsna, hədislər, namaz bələdçisi, zikrmatik, namaz və oruc izləmə, zəkat hesablaması
+• Hicri təqvim və tarix çeviricisi, dini günlər və mübarək gecələr; cümə, Ramazan və bayram təbrik kartları
+
+Sizə uyğun qurulur
+• İlk açılışda beş qısa sual alt panelinizi qurur. İstifadə etmədiyiniz bölmələr gizli qalır və bildiriş göndərmir
+
+Saat və vidcetlər
+• 21 saat modeli və 25 analoq siferblat; tam ekran və zəif qırmızı gecə rejimi
+• Əsas ekran vidcetləri: növbəti namaz, bugünkü vaxtlar, hicri tarix, saatlar, dünya saatları, hava və Ayın fazası
+• Wear OS tətbiqi (plitə və komplikasiyalar), Android TV tətbiqi, ekran qoruyucu, üzən saat və Sürətli ayarlar plitələri
+
+Təqvim və hava
+• Türkiyə və daha 30 ölkənin rəsmi bayramları, telefonunuzdakı təqvimlərlə (Google Təqvim daxil) bir yerdə
+• Saatlıq və 14 günlük proqnoz, havanın keyfiyyəti və tozcuqlar, havaya görə dəyişən ekran
+
+Zəngli saat, yuxu və diqqət
+• Kilid ekranında çalan zəngli saat; tədricən güclənən səs və riyazi məsələ, silkələmə, kod oxutma kimi söndürmə tapşırıqları
+• Yuxu planı, yuxu səsləri və ağıllı zəngli saat
+• Pomodoro, dərs sayğacı, interval məşqi və diqqət zamanı tətbiqləri bloklama
+
+Alətlər
+• Taymer, saniyəölçən, şahmat saatı, metronom, danışan saat, görüş planlayıcısı, vaxt və tarix hesablama
+• Fəsillər, Ay təqvimi, tutulmalar və gecə səması
+
+Məxfilik
+Hesab yoxdur, reklam yoxdur, izləmə yoxdur. Namaz vaxtları telefonunuzda hesablanır. Yalnız hava və yaxınlıqdakı məscidlər üçün təxmini məkan müvafiq xidmətə (Open-Meteo, OpenStreetMap) göndərilir, kim olduğunuz isə heç vaxt. Hər icazəni Parametrlər › İcazələr bölməsində görürsünüz.
+
+18 dildə. Saat Tarix Bumba Life məhsuludur. Veb: time.bumba.tr

@@ -1,0 +1,36 @@
+Masa & Tarikh menghimpunkan waktu solat, arah kiblat, jam, kalendar, cuaca dan pelbagai alat harian dalam satu aplikasi yang kemas. Tanpa akaun, tanpa iklan dan tanpa penjejakan.
+
+Waktu solat dan ibadah
+• Waktu solat di mana-mana sahaja, dengan 14 kaedah pengiraan (Singapura, MWL, Umm al-Qura, Karachi, Diyanet dan lain-lain) serta Asar Hanafi
+• Pemberitahuan tepat pada waktunya atau lebih awal: ayat pertama azan, bunyi loceng ringkas atau pengumuman suara
+• Jika anda mahu, telefon bertukar ke mod getar atau Jangan Ganggu pada waktu solat
+• Jadual imsakiah Ramadan yang boleh dikongsi sebagai gambar, dengan kiraan detik berbuka dan sahur
+• Kompas kiblat dan masjid berdekatan di peta
+• Al-Quran dalam bahasa Arab, doa, Asmaul Husna, hadis, panduan solat, pembilang zikir, rekod solat dan puasa, serta kalkulator zakat
+• Kalendar Hijrah dan penukar tarikh, hari kebesaran Islam dan malam-malam mulia, kad ucapan Jumaat, Ramadan dan Hari Raya
+
+Disediakan untuk anda
+• Lima soalan ringkas semasa aplikasi dibuka kali pertama membina bar tab anda. Bahagian yang tidak anda gunakan kekal tersembunyi dan tidak menghantar pemberitahuan
+
+Jam dan widget
+• 21 gaya jam dan 25 dail analog; skrin penuh dan mod malam merah malap
+• Widget skrin utama: solat seterusnya, waktu hari ini, tarikh Hijrah, jam, jam dunia, cuaca dan fasa bulan
+• Aplikasi Wear OS dengan jubin dan komplikasi, aplikasi Android TV, penyelamat skrin, jam terapung dan jubin Tetapan Pantas
+
+Kalendar dan cuaca
+• Cuti umum Turki dan 30 negara lain, di sebelah kalendar dalam telefon anda (termasuk Kalendar Google)
+• Ramalan setiap jam dan 14 hari, kualiti udara dan debunga, serta skrin yang berubah mengikut cuaca
+
+Penggera, tidur dan fokus
+• Penggera yang berbunyi di skrin kunci, dengan bunyi yang semakin kuat dan tugasan untuk mematikannya: kira-kira, menggoncang telefon atau mengimbas kod
+• Pelan tidur, bunyi tidur dan penggera pintar
+• Pomodoro, pemasa belajar, latihan selang dan sekatan aplikasi semasa fokus
+
+Alat
+• Pemasa, jam randik, jam catur, metronom, jam bercakap, perancang mesyuarat, kalkulator masa dan tarikh
+• Musim, kalendar bulan, gerhana dan langit malam
+
+Privasi
+Tanpa akaun, tanpa iklan, tanpa penjejakan. Waktu solat dikira dalam telefon anda. Hanya untuk cuaca dan masjid berdekatan, lokasi anggaran dihantar kepada perkhidmatan berkenaan (Open-Meteo, OpenStreetMap), bukan identiti anda. Lihat setiap kebenaran di Settings › Permissions.
+
+Bahasa: antara muka aplikasi belum tersedia dalam bahasa Melayu. Ia boleh digunakan dalam bahasa Inggeris, Indonesia, Arab dan 15 bahasa lain. Masa & Tarikh ialah produk Bumba Life. Web: time.bumba.tr
