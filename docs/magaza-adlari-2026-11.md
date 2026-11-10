@@ -153,15 +153,13 @@ dilini görür. fastlane ve Play API yalnız varsayılan sayfayı yükler; özel
 | Sayfa | Hedefleme | Dosyalar |
 |---|---|---|
 | Varsayılan (nötr), 23 çeviri: tr-TR, en-US, en-GB, de-DE, az-AZ, ar, id, ur, fa, fr-FR, ru-RU, ja-JP, ko-KR, zh-CN, fil, th, es-419, es-ES, pt-BR, hi-IN, bn-BD, ms, ms-MY | Özel sayfaya atanmamış bütün ülkeler | `mobile/android/fastlane/metadata/android/` |
-| `muslim`, 14 çeviri: ar, tr-TR, az-AZ, id, ur, fa, bn-BD, ms, ms-MY, fr-FR, ru-RU, en-US, en-GB, pt-BR | Pew'e göre Müslümanların %40 ve üstü olduğu ve Play'in açık olduğu 44 ülke (aşağıdaki laik 6 ülke hariç) | `mobile/android/store-listings/muslim/` |
-| `secular`, 4 çeviri: az-AZ, ru-RU, tr-TR, en-US | Müslüman çoğunluklu laik 6 ülke: Azerbaycan, Özbekistan, Türkmenistan, Kırgızistan, Tacikistan, Kosova | `mobile/android/store-listings/secular/` |
+| `muslim`, 14 çeviri: ar, tr-TR, az-AZ, id, ur, fa, bn-BD, ms, ms-MY, fr-FR, ru-RU, en-US, en-GB, pt-BR | Pew'e göre Müslümanların %40 ve üstü olduğu ve Play'in açık olduğu 50 ülke | `mobile/android/store-listings/muslim/` |
 | `prayer-search` (muslim metinleri) | Arama kelimeleri: prayer times, namaz vakitleri, jadwal sholat, waktu solat, مواقيت الصلاة … | aynı |
 
 Özel sayfa adları: `muslim` "Saat Tarih: Namaz Vakitleri", "الوقت والتاريخ: مواقيت الصلاة", "Jam & Tanggal: Jadwal Sholat",
 "Masa & Tarikh: Waktu Solat", "وقت اور تاریخ: نماز کے اوقات", "ساعت و تاریخ: اوقات نماز", "সময় ও তারিখ: নামাজের সময়",
 "Saat Tarix: Namaz Vaxtları", "Heure & Date: Heures de prière", "Время и дата: намаз и кибла", "Time & Date: Prayer Times",
-"Hora e Data: Horário de Oração"; `secular` "Saat Tarix: Təqvim və Hava", "Время и дата: часы и календарь",
-"Saat Tarih: Alarm ve Takvim", "Time & Date: Clock & Widgets". Metinler Android'e göre yazıldı (Open-Meteo, 14 günlük
+"Hora e Data: Horário de Oração". Metinler Android'e göre yazıldı (Open-Meteo, 14 günlük
 tahmin, Wear OS, Android TV; Apple Watch ve WeatherKit yok; konuma bağlı hatırlatıcılar ilk Play sürümünde kapalı olduğu için
 anılmaz). Denetim: `node mobile/android/store-listings/check.mjs`. Ayrıntı ve Play Console adımları:
 `mobile/android/store-listings/README.md`.
@@ -170,8 +168,8 @@ anılmaz). Denetim: `node mobile/android/store-listings/check.mjs`. Ayrıntı ve
 Böylece Nijerya (%56), Lübnan (%68), Çad, Gine-Bissau ve Eritre `muslim`'de kaldı; Kazakistan (%78), Arnavutluk (%75) ve
 Bosna-Hersek (%54) `secular`'dan, Fildişi Sahili (%46) varsayılandan `muslim`'e geçti. %40'ın altındakiler (Etiyopya %36,
 Kuzey Makedonya %35, Benin %31 …) nötr varsayılan sayfada kalır; varsayılan sayfa laik sayfayla aynı nitelikte ve daha çok
-dili var. `secular`'da kalan altı ülke sınırda değildi: Müslüman oranı %90'ın üstündeki laik eski Sovyet ülkeleri ve
-Kosova.
+dili var. Aynı gün sahibin kararıyla kural laik sayfada kalan altı ülkeye de uygulandı ("uygula"): Azerbaycan,
+Kırgızistan, Tacikistan, Türkmenistan, Özbekistan ve Kosova `muslim`'e geçti, `secular` sayfası kalktı.
 
 ### Ülke tablosu
 
@@ -226,12 +224,12 @@ ayrı ülke olarak görünürse. "—": Google Play yok. Sıra: sayfa, sonra Mü
 | ER | Eritre | 51.7 | muslim | en-GB | sınırda; %40 kuralıyla yerinde; mağaza durumu doğrulanmadı; App Store yok |
 | CI | Côte d’Ivoire | 46.3 | muslim | fr-FR | %40 kuralıyla varsayılandan Müslüman sayfasına (10 Kasım 2026) |
 | YT | Mayotte | 98.8 | muslim? | fr-FR | mağaza durumu doğrulanmadı |
-| TJ | Tacikistan | 98.9 | secular | ru-RU |  |
-| UZ | Özbekistan | 95.6 | secular | ru-RU |  |
-| AZ | Azerbaycan | 94.7 | secular | az-AZ |  |
-| TM | Türkmenistan | 94.3 | secular | ru-RU |  |
-| XK | Kosova | 94.3 | secular | en-US | mağaza durumu doğrulanmadı |
-| KG | Kırgızistan | 91.7 | secular | ru-RU |  |
+| TJ | Tacikistan | 98.9 | muslim | ru-RU | %40 kuralıyla laikten Müslüman sayfasına (10 Kasım 2026) |
+| UZ | Özbekistan | 95.6 | muslim | ru-RU | %40 kuralıyla laikten Müslüman sayfasına (10 Kasım 2026) |
+| AZ | Azerbaycan | 94.7 | muslim | az-AZ | %40 kuralıyla laikten Müslüman sayfasına (10 Kasım 2026) |
+| TM | Türkmenistan | 94.3 | muslim | ru-RU | %40 kuralıyla laikten Müslüman sayfasına (10 Kasım 2026) |
+| XK | Kosova | 94.3 | muslim | en-US | mağaza durumu doğrulanmadı; %40 kuralıyla laikten Müslüman sayfasına (10 Kasım 2026) |
+| KG | Kırgızistan | 91.7 | muslim | ru-RU | %40 kuralıyla laikten Müslüman sayfasına (10 Kasım 2026) |
 | ET | Etiyopya | 36.2 | varsayılan | en-GB | App Store yok |
 | MK | Kuzey Makedonya | 34.7 | varsayılan | en-GB |  |
 | BJ | Benin | 31.4 | varsayılan | fr-FR |  |
@@ -422,7 +420,7 @@ ayrı ülke olarak görünürse. "—": Google Play yok. Sıra: sayfa, sonra Mü
 - Play geliştirici hesabı henüz yok (şahıs şirketi adına kurum hesabı, D-U-N-S bekleniyor). Özel sayfalar **ancak ilk Play
   yayınından sonra** açılabilir: özel sayfa yayımlanmış uygulama ve varsayılan mağaza sayfası ister, bir ülke ancak uygulama
   orada yayındayken hedeflenebilir.
-- Sıra: varsayılan (nötr) sayfa fastlane ile → ilk yayın (sahibin onayıyla) → Play Console'da `muslim`, `secular`,
+- Sıra: varsayılan (nötr) sayfa fastlane ile → ilk yayın (sahibin onayıyla) → Play Console'da `muslim` ve
   `prayer-search` özel sayfaları elle (`mobile/android/store-listings/README.md`) → inceleme.
 - Özel sayfanın varsayılan dili en-US seçilir (seçilebiliyorsa): Arnavutça, Boşnakça, Kazakça, Özbekçe, Tacikçe gibi
   çevirimiz olmayan dillerdeki cihazlar İngilizce görür.
