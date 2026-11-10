@@ -99,7 +99,7 @@ enum Onboarding {
     /// "Hayır" denen bölümün bildirimleri (Android'dekiyle aynı anahtarlar)
     static func notifyKeys(_ t: AppTab) -> [String] {
         switch t {
-        case .prayer: [NotificationPrefs.enabledKey, NotifyFeature.friday.key]
+        case .prayer: [NotificationPrefs.enabledKey, NotifyFeature.friday.key, NotifyFeature.qibla.key, NotifyFeature.fasting.key]
         case .weather: [NotifyFeature.weather.key]
         case .calendar: [NotifyFeature.calendar.key, NotifyFeature.daily.key]
         case .seasons: [NotifyFeature.seasons.key, NotifyFeature.moon.key, NotifyFeature.sun.key, NotifyFeature.sky.key]

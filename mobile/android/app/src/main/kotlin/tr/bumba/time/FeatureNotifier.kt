@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeoutOrNull
 import tr.bumba.time.core.Nature
 import tr.bumba.time.core.PrayerTimes
+import tr.bumba.time.core.Qibla
 import java.text.NumberFormat
 import java.time.Instant
 import java.time.LocalDate
@@ -47,12 +48,16 @@ enum class NotifyFeature(val id: String, val tab: Tab) {
     /** Gökyüzü olayları (2. analiz #154): meteor yağmuru zirveleri, kavuşumlar, karşı konumlar; o gecenin akşamı 20.00 */
     SKY("sky", Tab.SEASONS),
     /** Fotoğraf ışığı (9 Kasım 2026): seçilen altın/mavi saatten önce; yalnız Fotoğraf ışığı bir kez açıldıysa (`photo.used`) */
-    PHOTO("photo", Tab.TOOLS);
+    PHOTO("photo", Tab.TOOLS),
+    /** Rashdul Qiblat (10 Kasım 2026): Güneş Kâbe'nin üstüne gelmeden 30 dk önce, yılda iki kez; yalnız Vakitler açıkken */
+    QIBLA("qibla", Tab.PRAYER),
+    /** Sünnet oruçlar (10 Kasım 2026; varsayılan kapalı): oruçtan önceki akşam 20.00; yalnız Vakitler açıkken */
+    FASTING("fasting", Tab.PRAYER);
 
     val key: String get() = "notify.$id"
-    /** Varsayılan: saat başı kapalı, diğerleri açık (30 Ekim 2026, sahibin kararı) */
-    val defaultOn: Boolean get() = this != HOURLY
-    val title: String get() = if (this == PHOTO) L("photoApp.title") else L("notify.cat.$id")
+    /** Varsayılan: saat başı ve sünnet oruçlar kapalı, diğerleri açık (30 Ekim 2026, sahibin kararı) */
+    val defaultOn: Boolean get() = this != HOURLY && this != FASTING
+    val title: String get() = when (this) { PHOTO -> L("photoApp.title"); QIBLA -> L("qibla.rashdul"); else -> L("notify.cat.$id") }
     val note: String get() = if (this == PHOTO) L("photoApp.notify.note") else L("notify.cat.$id.note")
 }
 
@@ -149,7 +154,62 @@ object FeatureNotifier {
         if (FeaturePrefs.isOn(NotifyFeature.DAILY)) out += daily(context, now, minOf(days, 7))
         if (FeaturePrefs.isOn(NotifyFeature.SKY)) out += sky(context, place, now, days)
         if (FeaturePrefs.isOn(NotifyFeature.PHOTO) && PhotoPrefs.used) out += photo(place, now, minOf(days, 7))
+        // Vakitler'e bağlı olanlar (10 Kasım 2026): Rashdul Qiblat, sünnet oruçlar, Kemenag takviminde isbat akşamı
+        if (Features.isOn(Tab.PRAYER)) {
+            if (FeaturePrefs.isOn(NotifyFeature.QIBLA)) out += rashdul(place, now)
+            if (FeaturePrefs.isOn(NotifyFeature.FASTING)) out += fasting(place, now, days)
+            if (FeaturePrefs.isOn(NotifyFeature.CALENDAR)) out += isbat(place, now, days)
+        }
         return out.filter { it.at.isAfter(now) }
+    }
+
+    /** Rashdul Qiblat: Güneş Kâbe'nin üstüne gelmeden 30 dk önce; yalnız Güneş o anda seçili yerde ufkun üstündeyse */
+    internal fun rashdul(place: AppPlace, now: Instant): List<Planned> {
+        val y = now.atZone(place.zone).year
+        return (Qibla.rashdul(y) + Qibla.rashdul(y + 1)).mapNotNull { ms ->
+            val at = Instant.ofEpochSecond(Math.round(ms / 60000.0) * 60)
+            val u = at.atZone(java.time.ZoneOffset.UTC)
+            val sun = Qibla.sun(u.year, u.monthValue, u.dayOfMonth, u.hour + u.minute / 60.0, place.lat, place.lon)
+            val fire = at.minusSeconds(30 * 60)
+            if (sun.alt <= 0 || !fire.isAfter(now) || fire.isAfter(now.plusSeconds(400L * 86400))) null
+            else Planned("rashdul-${at.epochSecond / 60}", fire, L("qibla.rashdul"), T("notify.n.rashdul", Fmt.hm(at, place.zone)), Tab.PRAYER)
+        }
+    }
+
+    /** Sünnet oruç: oruç gününden önceki akşam 20.00'de (yerin saatiyle); gövdede hicri tarih ve sahurun bittiği vakit
+     *  (Kemenag'da ihtiyat imsakı) */
+    internal fun fasting(place: AppPlace, now: Instant, days: Int): List<Planned> {
+        val kinds = SunnahFasts.kinds(place)
+        val today = place.today(now)
+        return (0..days).mapNotNull { i ->
+            val day = today.plusDays(i.toLong())
+            val names = SunnahFasts.reasons(day, kinds)
+            if (names.isEmpty()) return@mapNotNull null
+            val fire = day.minusDays(1).atTime(20, 0).atZone(place.zone).toInstant()
+            if (!fire.isAfter(now)) return@mapNotNull null
+            val h = Hijri.date(day) ?: return@mapNotNull null
+            val imsak = place.extraRows(day)?.first
+            val fajr = place.entries(day).firstOrNull { it.prayer == tr.bumba.time.core.Prayer.FAJR } ?: return@mapNotNull null
+            val body = if (imsak != null) T("fast.n.body", h.text, L("prayer.method.rowImsak"), Fmt.hm(imsak, place.zone))
+                else T("fast.n.body", h.text, fajr.prayer.title, Fmt.hm(fajr.at, place.zone))
+            Planned("fast-$day", fire, T("fast.n.title", names.joinToString(" · ") { L(it) }), body, Tab.PRAYER)
+        }
+    }
+
+    /** Sidang isbat (Endonezya): Kemenag takvimi kullanılıyorsa Şaban, Ramazan ve Zilkade'nin 29'unda 16.00'da; gövdede
+     *  takvime göre beklenen sonuç (sıradaki ayın 1'i). Karar farklı çıkarsa hicri tarih Hesap yöntemi'nden kaydırılır. */
+    internal fun isbat(place: AppPlace, now: Instant, days: Int): List<Planned> {
+        if (Hijri.calendar != "kemenag") return emptyList()
+        val today = place.today(now)
+        return (0..days).mapNotNull { i ->
+            val day = today.plusDays(i.toLong())
+            val h = Hijri.date(day) ?: return@mapNotNull null
+            if (h.day != 29 || h.month !in setOf(8, 9, 11)) return@mapNotNull null
+            val first = Hijri.month(h.year, h.month + 1)?.first ?: return@mapNotNull null
+            val fire = day.atTime(16, 0).atZone(place.zone).toInstant()
+            if (!fire.isAfter(now)) return@mapNotNull null
+            Planned("isbat-$day", fire, L("notify.n.isbat"), T("notify.n.isbatBody", L("hijri.month.${h.month + 1}"), Fmt.longDate(first)), Tab.CALENDAR)
+        }
     }
 
     /** Özel günler: o gün sabah 09.00'da (telefonun saatiyle), günün bütün olayları tek bildirimde */
@@ -465,3 +525,42 @@ object SunMoonPrefs {
     }
 }
 
+/**
+ * Sünnet oruçlar (10 Kasım 2026, Endonezya araştırması #8): pazartesi-perşembe, eyyâm-ı bîd (13–15), arefe (9 Zilhicce),
+ * Tasua ve Aşure (9–10 Muharrem), Şevval'in altı günü (bayramın ertesi günü bir kez hatırlatılır). Hicri günler uygulamanın
+ * hicri takvimiyle (Diyanet ya da Kemenag, ±1 düzeltmeyle). Ramazan, Ramazan Bayramı, Kurban Bayramı ve teşrik günleri
+ * (10–13 Zilhicce) atlanır. Hangi oruçların hatırlatılacağı `notify.fasting.kinds` (virgülle; iOS'takiyle aynı);
+ * kayıt yoksa hepsi, Caferî ve Tahran yönteminde Aşure hariç (Şii fıkhında Aşure orucu sünnet sayılmaz).
+ */
+object SunnahFasts {
+    const val KINDS_KEY = "notify.fasting.kinds"
+    val KINDS = listOf("monthu", "bidh", "arafah", "ashura", "shawwal")
+
+    fun kinds(place: AppPlace? = null): Set<String> {
+        Prefs.store.getString(KINDS_KEY, null)?.let { s -> return s.split(",").filter { it in KINDS }.toSet() }
+        val shia = PrayerMethod.id(place ?: AppPlace.current()) in setOf("jafari", "tehran")
+        return KINDS.filter { !(shia && it == "ashura") }.toSet()
+    }
+
+    fun setKinds(k: Set<String>) = Prefs.store.edit().putString(KINDS_KEY, KINDS.filter { it in k }.joinToString(",")).apply()
+
+    /** O günün sünnet oruç adları (metin anahtarı); yasak günde ve Ramazan'da boş */
+    fun reasons(day: LocalDate, kinds: Set<String>): List<String> {
+        val h = Hijri.date(day) ?: return emptyList()
+        val m = h.month
+        val d = h.day
+        if (m == 9 || (m == 10 && d == 1) || (m == 12 && d in 10..13)) return emptyList()
+        val out = ArrayList<String>()
+        if ("arafah" in kinds && m == 12 && d == 9) out += "fast.name.arafah"
+        if ("ashura" in kinds && m == 1 && d == 9) out += "fast.name.tasua"
+        if ("ashura" in kinds && m == 1 && d == 10) out += "fast.name.ashura"
+        if ("shawwal" in kinds && m == 10 && d == 2) out += "fast.name.shawwal"
+        if ("bidh" in kinds && d in 13..15) out += "fast.name.bidh"
+        if ("monthu" in kinds) when (day.dayOfWeek) {
+            java.time.DayOfWeek.MONDAY -> out += "fast.name.monday"
+            java.time.DayOfWeek.THURSDAY -> out += "fast.name.thursday"
+            else -> {}
+        }
+        return out
+    }
+}

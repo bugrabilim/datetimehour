@@ -56,7 +56,9 @@ const SITE_PATHS = [
   "nature.nextFull", "nature.tableHeading", "nature.tableLead", "nature.colYear", "nature.hoursShort", "nature.minutesShort",
   "nature.moonrise", "nature.moonset", "nature.moonNoRise", "nature.moonNoSet", "nature.moonCalHeading", "nature.eclipseHeading",
   "nature.eclipseLead", "nature.eclipseTypes.*", "nature.eclipseRegions", "nature.eclipsePath", "nature.eclipseHere", "nature.eclipseNotHere",
-  "nature.eclipseSafety", "nature.eclipseSource",
+  "nature.eclipseSafety", "nature.eclipseSource", "nature.eclipsePrayer",
+  // Rashdul Qiblat (10 Kasım 2026): kıble ekranı ve bildirim
+  "qibla.rashdul", "qibla.rashdulNote", "qibla.rashdulNight",
   "weather.h1", "weather.now", "weather.feelsLike", "weather.humidity", "weather.wind", "weather.precipitation", "weather.uv",
   "weather.hourlyHeading", "weather.dailyHeading", "weather.loading", "weather.error", "weather.retry", "weather.pressure",
   "weather.codes.*", "weather.attribution", "weather.sunrise", "weather.sunset",

@@ -192,7 +192,7 @@ object Onboarding {
 
     /** "Hayır" denen bölümün bildirimleri (iOS'takiyle aynı anahtarlar) */
     fun notifyKeys(t: Tab): List<String> = when (t) {
-        Tab.PRAYER -> listOf(NotifyPrefs.ENABLED, "notify.friday")
+        Tab.PRAYER -> listOf(NotifyPrefs.ENABLED, "notify.friday", "notify.qibla", "notify.fasting")
         Tab.WEATHER -> listOf("notify.weather")
         Tab.CALENDAR -> listOf("notify.calendar", "notify.daily")
         Tab.SEASONS -> listOf("notify.seasons", "notify.moon", "notify.sun", "notify.sky")

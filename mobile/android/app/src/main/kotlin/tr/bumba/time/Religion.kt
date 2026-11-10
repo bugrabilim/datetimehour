@@ -122,6 +122,13 @@ object Quran {
     /** Diyanet'in meal sitesinde ayet */
     fun diyanetUrl(sura: Int, aya: Int) = "https://kuran.diyanet.gov.tr/kuran?sure=$sura&ayet=$aya&mode=kuran-meal"
 
+    /** Arayüz dilinde resmî meal sitesi (10 Kasım 2026): Türkçe ve Azerice Diyanet, Endonezce Kemenag; diğer dillerde yok */
+    val mealSite: String? get() = when (Strings.lang) { "tr", "az" -> "diyanet"; "id" -> "kemenag"; else -> null }
+
+    /** Meal sitesinde ayet aralığı (Kemenag: quran.kemenag.go.id/quran/per-ayat/surah/S?from=A&to=B) */
+    fun mealUrl(sura: Int, aya: Int, to: Int = aya) =
+        if (mealSite == "kemenag") "https://quran.kemenag.go.id/quran/per-ayat/surah/$sura?from=$aya&to=$to" else diyanetUrl(sura, aya)
+
     /** Kaldığım yer "sure:ayet" */
     var bookmark: Pair<Int, Int>?
         get() = Prefs.store.getString("quran.bookmark", null)?.split(":")?.mapNotNull { it.toIntOrNull() }
@@ -207,6 +214,10 @@ private fun QuranCredits() {
         Text(L("quran.credit"), color = Theme.c.muted, fontSize = 12.sp)
         Text("tanzil.net", Modifier.clickable { openUrl(context, "https://tanzil.net") }, color = Theme.c.accent, fontSize = 12.sp)
         Text("kuran.diyanet.gov.tr", Modifier.clickable { openUrl(context, "https://kuran.diyanet.gov.tr") }, color = Theme.c.accent, fontSize = 12.sp)
+        if (Quran.mealSite == "kemenag") {
+            Text(L("quran.creditKemenag"), color = Theme.c.muted, fontSize = 12.sp)
+            Text("quran.kemenag.go.id", Modifier.clickable { openUrl(context, "https://quran.kemenag.go.id") }, color = Theme.c.accent, fontSize = 12.sp)
+        }
     }
 }
 
@@ -239,9 +250,9 @@ fun SuraScreen(sura: Int, startAya: Int, onBack: () -> Unit) {
                     SoftSwitch(showEn, { showEn = it; Prefs.store.edit().putBoolean("quran.en", it).apply() },
                         colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
-                if (Strings.lang == "tr" || Strings.lang == "az") {
-                    TextButton(onClick = { openUrl(context, Quran.diyanetUrl(sura, 1)) }) {
-                        Text(L("quran.diyanet"), color = Theme.c.accent)
+                if (Quran.mealSite != null) {
+                    TextButton(onClick = { openUrl(context, Quran.mealUrl(sura, 1, s.ayas)) }) {
+                        Text(L(if (Quran.mealSite == "kemenag") "quran.kemenag" else "quran.diyanet"), color = Theme.c.accent)
                         Icon(Icons.AutoMirrored.Filled.OpenInNew, null, tint = Theme.c.accent, modifier = Modifier.size(16.dp))
                     }
                 }
@@ -260,8 +271,8 @@ fun SuraScreen(sura: Int, startAya: Int, onBack: () -> Unit) {
                         Ltr { Text("$sura:$a", color = Theme.c.accent, fontSize = 12.sp, fontWeight = FontWeight.SemiBold, style = Tnum) }
                         if (marked) Icon(Icons.Filled.Bookmark, L("quran.bookmark"), tint = Theme.c.accent, modifier = Modifier.padding(start = 6.dp).size(14.dp))
                         Spacer(Modifier.weight(1f))
-                        if (Strings.lang == "tr" || Strings.lang == "az") {
-                            Text(L("quran.meal"), Modifier.clickable { openUrl(context, Quran.diyanetUrl(sura, a)) }, color = Theme.c.accent, fontSize = 12.sp)
+                        if (Quran.mealSite != null) {
+                            Text(L("quran.meal"), Modifier.clickable { openUrl(context, Quran.mealUrl(sura, a)) }, color = Theme.c.accent, fontSize = 12.sp)
                         }
                     }
                     RtlText(Quran.ar(sura, a), size, color = pal.ink)
@@ -393,10 +404,10 @@ fun DuasScreen(onBack: () -> Unit) {
                         }
                     }
                 }
-                if (d.refs.isNotEmpty() && (Strings.lang == "tr" || Strings.lang == "az")) {
+                if (d.refs.isNotEmpty() && Quran.mealSite != null) {
                     for (r in d.refs) {
                         val (s, a) = r.split(":").map { it.toInt() }
-                        Text(T("dua.diyanetRef", r), Modifier.clickable { openUrl(context, Quran.diyanetUrl(s, a)) }, color = Theme.c.accent, fontSize = 13.sp)
+                        Text(T(if (Quran.mealSite == "kemenag") "dua.kemenagRef" else "dua.diyanetRef", r), Modifier.clickable { openUrl(context, Quran.mealUrl(s, a)) }, color = Theme.c.accent, fontSize = 13.sp)
                     }
                 }
             }

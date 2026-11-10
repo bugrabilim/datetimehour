@@ -52,4 +52,23 @@ public enum Qibla {
         }
         return nil
     }
+
+    /// Rashdul Qiblat (10 Kasım 2026): Güneş'in Kâbe'nin tam üstünden geçtiği iki an, [Mayıs, Temmuz] UTC ms. Mayıs 15–31 ve
+    /// Temmuz 5–31 arasında Kâbe'de öğle anında Güneş'i başucuna en yakın getiren gün; sitedeki `rashdulQiblat` ile aynı.
+    public static func rashdul(year y: Int) -> [Double] {
+        func noon(_ m: Int, _ d: Int) -> (jd: Double, t: Double, zd: Double) {
+            let jd = PrayerTimes.julian(y, m, d)
+            var t = 12 - kaabaLongitude / 15
+            for _ in 0..<3 { t = 12 - PrayerTimes.sunPosition(jd + t / 24).eqt - kaabaLongitude / 15 }
+            return (jd, t, abs(PrayerTimes.sunPosition(jd + t / 24).decl - kaabaLatitude))
+        }
+        return [(5, 15, 31), (7, 5, 31)].map { (r: (Int, Int, Int)) -> Double in
+            var best: (jd: Double, t: Double, zd: Double)?
+            for d in r.1...r.2 {
+                let n = noon(r.0, d)
+                if best == nil || n.zd < best!.zd { best = n }
+            }
+            return jsRound((best!.jd - 2440587.5) * 86400000 + best!.t * 3600000)
+        }
+    }
 }

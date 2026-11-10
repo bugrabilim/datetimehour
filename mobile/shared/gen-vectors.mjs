@@ -182,7 +182,9 @@ const files = {
   "note": "bearing: Kâbe'ye büyük daire başlangıç yönü (kuzeyden saat yönünde, derece); km: uzaklık. time: kıble saati (Güneş'in kıble yönünde olduğu an, yerel ondalık saat; null = o gün olmuyor) sırasıyla dates günlerinde, tz o günün UTC farkı.",
   "kaaba": ${JSON.stringify(P.KAABA)},
   "dates": [[2026, 3, 20], [2026, 6, 21], [2026, 10, 30], [2026, 12, 21]],
-  "cases": ${lines(qiblaCases)}
+  "cases": ${lines(qiblaCases)},
+  "rashdulNote": "rashdul: [yıl, Mayıs, Temmuz] Güneş'in Kâbe'nin üstünden geçtiği an (UTC ms, rashdulQiblat)",
+  "rashdul": ${lines(Array.from({ length: 12 }, (_, i) => [2024 + i, ...P.rashdulQiblat(2024 + i)]))}
 }
 `,
   "sun-altitude.json": `{

@@ -16,6 +16,9 @@ struct NotificationsView: View {
     @AppStorage(NotifyFeature.habits.key) private var habits = true
     @AppStorage(NotifyFeature.sky.key) private var sky = true
     @AppStorage(NotifyFeature.photo.key) private var photo = true
+    @AppStorage(NotifyFeature.friday.key) private var friday = true
+    @AppStorage(NotifyFeature.qibla.key) private var qibla = true
+    @AppStorage(NotifyFeature.fasting.key) private var fasting = false
     @AppStorage(NotifyFeature.weatherTimeKey) private var weatherTime = 450
     @AppStorage("notify.weather.alerts") private var weatherAlerts = true
     @AppStorage(NotifyFeature.hourlyFromKey) private var hourlyFrom = 9
@@ -40,6 +43,15 @@ struct NotificationsView: View {
                 row(L("notify.cat.prayer"), L("notify.cat.prayer.note"), "mosque", Theme.gold, $prayer)
                 if prayer {
                     Button(L("notify.heading")) { showPrayer = true }
+                }
+            }
+            // Vakitler'e bağlı bildirimler (10 Kasım 2026): yalnız Vakitler açıkken görünür ve gelir
+            if Features.isOn(.prayer) {
+                Section {
+                    row(.friday, $friday)
+                    row(.qibla, $qibla)
+                    row(.fasting, $fasting)
+                    if fasting { FastingOptionsView { reschedule() } }
                 }
             }
             Section {
@@ -93,7 +105,7 @@ struct NotificationsView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             Task { await refresh() }
         }
-        .onChange(of: [prayer, calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, sky, photo]) { reschedule() }
+        .onChange(of: [prayer, calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, sky, photo, friday, qibla, fasting]) { reschedule() }
         .onChange(of: [weatherTime, hourlyFrom, hourlyTo]) { reschedule() }
         .onChange(of: weatherAlerts) { reschedule() }
     }
@@ -142,5 +154,25 @@ struct NotificationsView: View {
 
     private func refresh() async {
         denied = await PrayerNotifier.authorizationStatus() == .denied
+    }
+}
+
+/// Sünnet oruç bildirimi ayrıntısı (10 Kasım 2026; Android'deki FastingOptions ile aynı): hangi oruçlar
+struct FastingOptionsView: View {
+    let changed: () -> Void
+    @State private var kinds: Set<String> = []
+
+    var body: some View {
+        Group {
+            ForEach(SunnahFasts.all, id: \.self) { k in
+                Toggle(L("fast.\(k)"), isOn: Binding(get: { kinds.contains(k) }, set: { on in
+                    if on { kinds.insert(k) } else { kinds.remove(k) }
+                    SunnahFasts.setKinds(kinds)
+                    changed()
+                }))
+                .padding(.leading, 12)
+            }
+        }
+        .onAppear { kinds = SunnahFasts.kinds(place: PlaceModel.shared.place) }
     }
 }

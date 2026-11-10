@@ -1887,7 +1887,8 @@ function buildNature(lang) {
       <p class="meta">${esc(n.eclMapNote)}</p>
     </div>
     <p class="meta">${esc(n.eclApprox)}</p>
-    <p class="meta"><strong>${esc(n.eclipseSafety)}</strong></p>
+    <p class="meta"><strong>${esc(n.eclipseSafety)}</strong></p>${PRAYER_FIRST_LANGS.has(lang) ? `
+    <p class="meta">${esc(n.eclipsePrayer)}</p>` : ""}
     <p class="meta">${esc(n.eclipseSource)}</p>
     <h3>${esc(n.moonIcsHeading)}</h3>
     <p class="share-row">${(() => { const u = ICS_URL(lang, "moon"), cal = t.calendar; return `<a class="toggle" href="${u}" download>${esc(cal.icsDownload)}</a><a class="toggle" href="${ORIGIN.replace(/^https?:/, "webcal:")}${u}">${esc(cal.icsSubscribe)}</a><a class="toggle" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(ORIGIN.replace(/^https?:/, "webcal:") + u)}" target="_blank" rel="noopener">${esc(cal.icsGoogle)}</a>`; })()}</p>
@@ -2835,6 +2836,7 @@ function buildQibla(lang) {
         <div class="fact"><dt>${esc(s.angle)}</dt><dd data-qb-angle>–</dd><dd class="meta">${esc(s.angleNote)}</dd></div>
         <div class="fact"><dt>${esc(s.distance)}</dt><dd data-qb-dist>–</dd></div>
         <div class="fact"><dt>${esc(s.time)}</dt><dd data-qb-time>–</dd><dd class="meta" data-qb-time-note>&nbsp;</dd></div>
+        <div class="fact" data-qb-rq-row><dt>${esc(s.rashdul)}</dt><dd data-qb-rq>–</dd><dd class="meta" data-qb-rq-note>${esc(s.rashdulNote)}</dd></div>
       </dl>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`;
@@ -2850,7 +2852,7 @@ function buildQibla(lang) {
     <p class="meta">${esc(s.method)}</p>
   </div>
 </section>`;
-  const qb = { timeNote: s.timeNote, noTime: s.noTime, aligned: s.aligned, turn: s.turn, waiting: s.waiting, noCompass: s.noCompass, denied: s.denied, atKaaba: s.atKaaba, mosquesLoading: s.mosquesLoading, mosquesNone: s.mosquesNone, mosquesError: s.mosquesError, mosqueUnnamed: s.mosqueUnnamed, mapsQuery: s.mapsQuery, km: s.km, m: s.m, blocked: t.consent.mqBlocked, allow: t.consent.allow };
+  const qb = { timeNote: s.timeNote, noTime: s.noTime, rashdulNote: s.rashdulNote, rashdulNight: s.rashdulNight, aligned: s.aligned, turn: s.turn, waiting: s.waiting, noCompass: s.noCompass, denied: s.denied, atKaaba: s.atKaaba, mosquesLoading: s.mosquesLoading, mosquesNone: s.mosquesNone, mosquesError: s.mosquesError, mosqueUnnamed: s.mosqueUnnamed, mapsQuery: s.mapsQuery, km: s.km, m: s.m, blocked: t.consent.mqBlocked, allow: t.consent.allow };
   return simplePage(lang, "qibla", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "qibla", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "wmm.js", "qibla.js"], clientExtra: { t: { pl: placeClient(t.prayer), qb } }, nav: "prayer", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].qibla, s.description)] });
 }
 

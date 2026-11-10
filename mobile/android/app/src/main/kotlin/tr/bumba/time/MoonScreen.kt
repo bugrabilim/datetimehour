@@ -144,6 +144,8 @@ fun MoonScreen() {
             }
         }
         Text(L("nature.eclipseSafety"), color = Theme.c.text, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+        // Tutulma namazı (10 Kasım 2026, Endonezya araştırması #7): yalnız Vakitler açıkken
+        if (Features.isOn(Tab.PRAYER)) Text(L("nature.eclipsePrayer"), color = Theme.c.muted, fontSize = 13.sp)
         Text(L("nature.eclipseSource"), color = Theme.c.muted, fontSize = 12.sp)
         KidsMoonCard()
         Text("NASA's Scientific Visualization Studio (CGI Moon Kit)", color = Theme.c.muted, fontSize = 11.sp)

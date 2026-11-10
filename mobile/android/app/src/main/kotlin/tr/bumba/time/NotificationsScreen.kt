@@ -92,6 +92,17 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
                 }
             }
         }
+        // Vakitler'e bağlı bildirimler (10 Kasım 2026): yalnız Vakitler açıkken görünür ve gelir
+        if (Features.isOn(Tab.PRAYER)) {
+            AppCard(padding = 4) {
+                FeatureToggle(NotifyFeature.FRIDAY, "mosque", Theme.c.gold, ::changed)
+                RowDivider()
+                FeatureToggle(NotifyFeature.QIBLA, "kaaba", Theme.c.gold, ::changed)
+                RowDivider()
+                val fastOn = FeatureToggle(NotifyFeature.FASTING, "star_crescent", Theme.c.gold, ::changed)
+                if (fastOn) FastingOptions(::changed)
+            }
+        }
         AppCard(padding = 4) {
             FeatureToggle(NotifyFeature.CALENDAR, "calendar", Theme.c.sage, ::changed)
             RowDivider()
@@ -307,6 +318,24 @@ private fun PhotoOptions(changed: () -> Unit) {
                 PhotoPrefs.lead = m
                 changed()
             }
+        }
+    }
+}
+
+/** Sünnet oruç bildirimi ayrıntısı (10 Kasım 2026; iOS'taki FastingOptionsView ile aynı): hangi oruçlar */
+@Composable
+private fun FastingOptions(changed: () -> Unit) {
+    var kinds by remember { mutableStateOf(SunnahFasts.kinds()) }
+    androidx.compose.foundation.layout.FlowRow(
+        Modifier.fillMaxWidth().padding(start = 50.dp, end = 12.dp, bottom = 10.dp),
+        horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        for (k in SunnahFasts.KINDS) {
+            val on = k in kinds
+            Text(L("fast.$k"), Modifier.clip(androidx.compose.foundation.shape.RoundedCornerShape(50))
+                .background(if (on) Theme.c.accent else Theme.c.surface2)
+                .clickable { kinds = if (on) kinds - k else kinds + k; SunnahFasts.setKinds(kinds); changed() }
+                .padding(horizontal = 12.dp, vertical = 6.dp), color = if (on) Theme.c.onAccent else Theme.c.text, fontSize = 13.sp)
         }
     }
 }

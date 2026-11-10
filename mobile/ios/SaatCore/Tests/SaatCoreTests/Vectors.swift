@@ -67,6 +67,7 @@ struct QiblaVectors: Decodable {
     }
     let dates: [[Int]]
     let cases: [Case]
+    let rashdul: [[Double]]
 }
 
 struct SunAltitudeVectors: Decodable {

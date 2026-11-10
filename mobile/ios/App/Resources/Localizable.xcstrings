@@ -46054,6 +46054,482 @@
         }
       }
     },
+    "nature.eclipsePrayer": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş tutulmasında küsûf, Ay tutulmasında husûf namazı kılınır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The eclipse prayer is offered during eclipses: salat al-kusuf for a solar eclipse, salat al-khusuf for a lunar eclipse."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bei Finsternissen wird das Finsternisgebet verrichtet: Salat al-Kusuf bei einer Sonnen-, Salat al-Chusuf bei einer Mondfinsternis."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günəş tutulmasında küsuf, Ay tutulmasında xusuf namazı qılınır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُصلّى صلاة الكسوف عند كسوف الشمس، وصلاة الخسوف عند خسوف القمر."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat gerhana matahari dilaksanakan salat kusuf, dan saat gerhana bulan salat khusuf."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سورج گرہن میں نمازِ کسوف اور چاند گرہن میں نمازِ خسوف پڑھی جاتی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هنگام خورشیدگرفتگی و ماه‌گرفتگی نماز آیات (کسوف و خسوف) خوانده می‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pendant les éclipses, on accomplit la prière de l’éclipse : salat al-kusuf pour le Soleil, salat al-khusuf pour la Lune."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Во время затмений совершают молитву затмения: салят аль-кусуф при солнечном, салят аль-хусуф при лунном затмении."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日食・月食の際には食の礼拝を行います（日食はサラート・アル＝クスーフ、月食はサラート・アル＝フスーフ）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일식과 월식 때에는 식 예배를 드립니다. 일식에는 살라트 알쿠수프, 월식에는 살라트 알후수프입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日食、月食时礼日食拜（Kusuf）和月食拜（Khusuf）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa panahon ng eklipse, isinasagawa ang salat al-kusuf (eklipse ng Araw) at salat al-khusuf (eklipse ng Buwan)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เมื่อเกิดสุริยุปราคาและจันทรุปราคาจะมีการละหมาดกุซูฟและละหมาดคุซูฟ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durante los eclipses se realiza la oración del eclipse: salat al-kusuf en el de Sol y salat al-jusuf en el de Luna."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durante os eclipses faz-se a oração do eclipse: salat al-kusuf no eclipse do Sol e salat al-khusuf no da Lua."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ग्रहण के समय ग्रहण की नमाज़ पढ़ी जाती है: सूर्य ग्रहण में नमाज़-ए-कुसूफ़ और चंद्र ग्रहण में नमाज़-ए-ख़ुसूफ़।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "গ্রহণের সময় গ্রহণের নামাজ পড়া হয়: সূর্যগ্রহণে সালাতুল কুসুফ, চন্দ্রগ্রহণে সালাতুল খুসুফ।"
+          }
+        }
+      }
+    },
+    "qibla.rashdul": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş Kâbe'nin üstünde"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sun over the Kaaba"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonne über der Kaaba"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günəş Kəbənin üstündə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الشمس فوق الكعبة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matahari di atas Ka'bah (Rashdul Kiblat)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سورج خانۂ کعبہ کے اوپر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خورشید بالای کعبه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le Soleil au-dessus de la Kaaba"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Солнце над Каабой"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カアバの真上の太陽"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "카바 바로 위의 태양"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "太阳位于克尔白正上方"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Araw sa ibabaw ng Kaaba"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ดวงอาทิตย์อยู่เหนือกะอ์บะฮ์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El Sol sobre la Kaaba"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Sol sobre a Caaba"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "काबा के ठीक ऊपर सूरज"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কাবার ঠিক ওপরে সূর্য"
+          }
+        }
+      }
+    },
+    "qibla.rashdulNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yılda iki kez Güneş Kâbe'nin tam üstünden geçer. O anda Güneş'in göründüğü her yerde güneşe dönen kıbleye dönmüş olur; dik duran bir çubuğun gölgesi kıblenin tam tersini gösterir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Twice a year the Sun passes directly over the Kaaba. At that moment, wherever the Sun is visible, facing the Sun means facing the qibla; the shadow of an upright stick points exactly away from the qibla."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zweimal im Jahr steht die Sonne genau über der Kaaba. In diesem Moment blickt überall, wo die Sonne zu sehen ist, wer sich zur Sonne wendet, zur Qibla; der Schatten eines senkrechten Stabes zeigt genau von der Qibla weg."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İldə iki dəfə Günəş Kəbənin düz üstündən keçir. O anda Günəşin göründüyü hər yerdə Günəşə dönən qibləyə dönmüş olur; şaquli dayanan çubuğun kölgəsi qiblənin tam əksini göstərir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تمرّ الشمس مرتين في السنة فوق الكعبة تمامًا. في تلك اللحظة، في كل مكان تُرى فيه الشمس، من يتّجه إلى الشمس يتّجه إلى القبلة، وظلّ العصا القائمة يشير إلى عكس القبلة تمامًا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dua kali setahun Matahari tepat berada di atas Ka'bah. Pada saat itu, di mana pun Matahari terlihat, menghadap Matahari berarti menghadap kiblat; bayangan tongkat yang berdiri tegak menunjuk tepat ke arah sebaliknya dari kiblat."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سال میں دو بار سورج عین خانۂ کعبہ کے اوپر سے گزرتا ہے۔ اس لمحے جہاں بھی سورج نظر آئے، سورج کی طرف رخ کرنا قبلے کی طرف رخ کرنا ہے؛ سیدھی کھڑی چھڑی کا سایہ قبلے کی بالکل مخالف سمت دکھاتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خورشید سالی دو بار درست از بالای کعبه می‌گذرد. در آن لحظه، هر جا خورشید دیده شود، رو به خورشید ایستادن یعنی رو به قبله ایستادن؛ سایهٔ چوبی که راست ایستاده درست خلاف قبله را نشان می‌دهد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deux fois par an, le Soleil passe exactement au-dessus de la Kaaba. À cet instant, partout où le Soleil est visible, se tourner vers le Soleil revient à se tourner vers la qibla ; l’ombre d’un bâton vertical pointe exactement à l’opposé de la qibla."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дважды в год Солнце проходит точно над Каабой. В этот момент везде, где видно Солнце, повернуться к Солнцу значит повернуться к кибле; тень вертикального шеста указывает прямо от киблы."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "太陽は年に2回、カアバの真上を通ります。その瞬間、太陽が見える場所ならどこでも、太陽の方を向けばキブラを向いたことになり、垂直に立てた棒の影はキブラのちょうど反対側を指します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "태양은 1년에 두 번 카바 바로 위를 지납니다. 그 순간 태양이 보이는 곳 어디서나 태양을 향하면 키블라를 향하게 되며, 똑바로 세운 막대의 그림자는 키블라의 정반대를 가리킵니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "太阳每年两次正好经过克尔白上空。此时，凡能看到太阳的地方，面向太阳即面向朝向；直立木杆的影子正好指向朝向的反方向。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dalawang beses sa isang taon, dumaraan ang Araw nang eksakto sa ibabaw ng Kaaba. Sa sandaling iyon, saanman nakikita ang Araw, ang pagharap sa Araw ay pagharap sa qibla; ang anino ng patayong patpat ay nakaturo nang eksakto palayo sa qibla."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปีละสองครั้งดวงอาทิตย์จะผ่านตรงเหนือกะอ์บะฮ์พอดี ในขณะนั้น ทุกที่ที่มองเห็นดวงอาทิตย์ การหันหน้าไปทางดวงอาทิตย์คือการหันไปทางกิบลัต และเงาของไม้ที่ปักตั้งตรงจะชี้ไปทางตรงข้ามกับกิบลัตพอดี"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dos veces al año el Sol pasa exactamente sobre la Kaaba. En ese momento, en cualquier lugar donde se vea el Sol, mirar hacia el Sol es mirar hacia la alquibla; la sombra de un palo vertical señala justo en dirección contraria a la alquibla."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duas vezes por ano o Sol passa exatamente sobre a Caaba. Nesse momento, em qualquer lugar onde o Sol esteja visível, virar-se para o Sol é virar-se para a qibla; a sombra de uma vara vertical aponta exatamente para o lado oposto da qibla."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "साल में दो बार सूरज ठीक काबा के ऊपर से गुज़रता है। उस पल जहाँ भी सूरज दिखे, सूरज की ओर मुँह करना क़िबला की ओर मुँह करना है; सीधी खड़ी छड़ी की परछाईं क़िबला की ठीक उलटी दिशा दिखाती है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "বছরে দুবার সূর্য ঠিক কাবার ওপর দিয়ে যায়। সেই মুহূর্তে যেখানেই সূর্য দেখা যায়, সূর্যের দিকে মুখ করা মানেই কিবলার দিকে মুখ করা; খাড়া করে রাখা লাঠির ছায়া কিবলার ঠিক উল্টো দিক দেখায়।"
+          }
+        }
+      }
+    },
+    "qibla.rashdulNight": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu anda seçili yerde Güneş ufkun altında; kıble saatini kullanabilirsiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At this moment the Sun is below the horizon at the selected place; you can use the daily qibla time instead."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In diesem Moment steht die Sonne am gewählten Ort unter dem Horizont; nutzen Sie stattdessen die tägliche Qibla-Zeit."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu anda seçilmiş yerdə Günəş üfüqün altındadır; gündəlik qiblə saatından istifadə edə bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الشمس في هذه اللحظة تحت الأفق في المكان المحدد؛ يمكنك استخدام وقت القبلة اليومي."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat ini Matahari berada di bawah ufuk di lokasi yang dipilih; Anda dapat memakai waktu kiblat harian."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس لمحے منتخب مقام پر سورج افق سے نیچے ہے؛ آپ روزانہ کا قبلے کا وقت استعمال کر سکتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در این لحظه خورشید در مکان انتخاب‌شده زیر افق است؛ می‌توانید از وقت قبلهٔ روزانه استفاده کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "À cet instant, le Soleil est sous l’horizon au lieu choisi ; vous pouvez utiliser l’heure de la qibla du jour."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сейчас в выбранном месте Солнце под горизонтом; можно воспользоваться ежедневным временем киблы."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この瞬間、選択した場所では太陽が地平線の下にあります。毎日のキブラの時刻を使えます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지금 선택한 곳에서는 태양이 지평선 아래에 있습니다. 매일의 키블라 시각을 이용할 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此刻所选地点的太阳在地平线以下；可以使用每天的朝向时刻。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa sandaling ito, nasa ilalim ng abot-tanaw ang Araw sa napiling lugar; maaari mong gamitin ang araw-araw na oras ng qibla."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขณะนี้ดวงอาทิตย์อยู่ใต้ขอบฟ้าที่ตำแหน่งที่เลือก คุณใช้เวลากิบลัตประจำวันแทนได้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En este momento el Sol está bajo el horizonte en el lugar elegido; puede usar la hora de la alquibla del día."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neste momento o Sol está abaixo do horizonte no local escolhido; você pode usar o horário da qibla do dia."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस समय चुनी गई जगह पर सूरज क्षितिज के नीचे है; आप रोज़ का क़िबला समय इस्तेमाल कर सकते हैं।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই মুহূর্তে নির্বাচিত স্থানে সূর্য দিগন্তের নিচে; আপনি প্রতিদিনের কিবলার সময় ব্যবহার করতে পারেন।"
+          }
+        }
+      }
+    },
     "weather.h1": {
       "extractionState": "manual",
       "localizations": {
@@ -447199,6 +447675,2743 @@
           "stringUnit": {
             "state": "translated",
             "value": "হিজরি মাসের শুরু দেশভেদে এক দিন আলাদা হতে পারে। ইন্দোনেশিয়ার ক্যালেন্ডার কেমেনাগের ঘোষিত তারিখ অনুসরণ করে, আর যে মাসগুলো এখনো ঘোষণা হয়নি সেগুলো MABIMS মানদণ্ডে হিসাব করা হয়। যেখানে চাঁদ সাধারণত এক দিন পরে দেখা যায়, যেমন ভারত বা পাকিস্তান, সেখানে আপনি \"1 দিন পরে\" বেছে নিতে পারেন। ধর্মীয় দিন ও রমজানও এই অনুযায়ী বদলায়।"
+          }
+        }
+      }
+    },
+    "notify.cat.qibla.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yılda iki kez, Güneş Kâbe'nin üstüne gelmeden 30 dakika önce; yalnız Güneş o anda yerinizde ufkun üstündeyse."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Twice a year, 30 minutes before the Sun is over the Kaaba; only if the Sun is above the horizon where you are at that moment."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zweimal im Jahr, 30 Minuten bevor die Sonne über der Kaaba steht; nur wenn die Sonne dann bei Ihnen über dem Horizont ist."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İldə iki dəfə, Günəş Kəbənin üstünə gəlməmişdən 30 dəqiqə əvvəl; yalnız Günəş o anda olduğunuz yerdə üfüqün üstündədirsə."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مرتين في السنة، قبل مرور الشمس فوق الكعبة بـ 30 دقيقة؛ فقط إذا كانت الشمس فوق الأفق عندك في تلك اللحظة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dua kali setahun, 30 menit sebelum Matahari tepat di atas Ka'bah; hanya jika saat itu Matahari berada di atas ufuk di tempat Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سال میں دو بار، سورج کے کعبہ کے اوپر آنے سے 30 منٹ پہلے؛ صرف اس صورت میں جب اس وقت آپ کے مقام پر سورج افق سے اوپر ہو۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سالی دو بار، 30 دقیقه پیش از رسیدن خورشید به بالای کعبه؛ فقط اگر در آن لحظه خورشید در محل شما بالای افق باشد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deux fois par an, 30 minutes avant que le Soleil passe au-dessus de la Kaaba ; seulement si le Soleil est alors au-dessus de l’horizon chez vous."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дважды в год, за 30 минут до прохождения Солнца над Каабой; только если в этот момент Солнце у вас над горизонтом."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "年2回、太陽がカアバの真上に来る30分前。その時刻にあなたの場所で太陽が地平線より上にある場合のみ。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1년에 두 번, 태양이 카바 위에 오기 30분 전. 그때 계신 곳에서 태양이 지평선 위에 있을 때만."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每年两次，在太阳到达克尔白正上方前30分钟；仅当届时您所在地的太阳位于地平线以上。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dalawang beses sa isang taon, 30 minuto bago dumaan ang Araw sa ibabaw ng Kaaba; kung nasa itaas lang ng abot-tanaw ang Araw sa lugar mo sa sandaling iyon."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปีละสองครั้ง 30 นาทีก่อนดวงอาทิตย์ผ่านเหนือกะอ์บะฮ์ เฉพาะเมื่อขณะนั้นดวงอาทิตย์อยู่เหนือขอบฟ้าที่ตำแหน่งของคุณ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dos veces al año, 30 minutos antes de que el Sol pase sobre la Kaaba; solo si en ese momento el Sol está sobre el horizonte donde usted está."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duas vezes por ano, 30 minutos antes de o Sol passar sobre a Caaba; só se nesse momento o Sol estiver acima do horizonte onde você está."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "साल में दो बार, सूरज के काबा के ऊपर आने से 30 मिनट पहले; सिर्फ़ तब जब उस समय आपकी जगह पर सूरज क्षितिज के ऊपर हो।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "বছরে দুবার, সূর্য কাবার ওপরে আসার 30 মিনিট আগে; শুধু তখনই যদি সেই মুহূর্তে আপনার স্থানে সূর্য দিগন্তের ওপরে থাকে।"
+          }
+        }
+      }
+    },
+    "notify.n.rashdul": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: güneşe dönen kıbleye döner; gölgeler kıblenin tersini gösterir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: facing the Sun means facing the qibla; shadows point away from it."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: Wer sich zur Sonne wendet, blickt zur Qibla; Schatten zeigen von ihr weg."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: Günəşə dönən qibləyə dönür; kölgələr qiblənin əksini göstərir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: من يتّجه إلى الشمس يتّجه إلى القبلة، والظلال تشير إلى عكسها."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: menghadap Matahari berarti menghadap kiblat; bayangan menunjuk ke arah sebaliknya."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: سورج کی طرف رخ کرنا قبلے کی طرف رخ کرنا ہے؛ سائے قبلے کی مخالف سمت دکھاتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: رو به خورشید یعنی رو به قبله؛ سایه‌ها خلاف قبله را نشان می‌دهند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ : se tourner vers le Soleil, c’est se tourner vers la qibla ; les ombres pointent à l’opposé."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: повернувшись к Солнцу, вы обращены к кибле; тени указывают в противоположную сторону."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@：太陽の方向がキブラです。影はキブラの反対側を指します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: 태양을 향하면 키블라를 향합니다. 그림자는 그 반대를 가리킵니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@：面向太阳即面向朝向；影子指向其反方向。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: ang pagharap sa Araw ay pagharap sa qibla; ang mga anino ay nakaturo palayo rito."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: หันไปทางดวงอาทิตย์คือหันไปทางกิบลัต เงาจะชี้ไปทางตรงข้าม"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: mirar hacia el Sol es mirar hacia la alquibla; las sombras apuntan en sentido contrario."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: virar-se para o Sol é virar-se para a qibla; as sombras apontam para o lado oposto."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: सूरज की ओर मुँह करना क़िबला की ओर मुँह करना है; परछाइयाँ उसकी उलटी दिशा दिखाती हैं।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: সূর্যের দিকে মুখ করা মানেই কিবলার দিকে মুখ করা; ছায়া উল্টো দিক দেখায়।"
+          }
+        }
+      }
+    },
+    "notify.cat.fasting": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sünnet oruçlar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunnah fasts"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunna-Fasten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sünnət oruclar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الصيام المسنون"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puasa sunah"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مسنون روزے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزه‌های مستحب"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeûnes de la sunna"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Посты сунны"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スンナの断食"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "순나 단식"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "圣行斋戒"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunnah na pag-aayuno"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การถือศีลอดซุนนะฮ์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayunos de la sunna"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jejuns da sunna"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सुन्नत रोज़े"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সুন্নত রোজা"
+          }
+        }
+      }
+    },
+    "notify.cat.fasting.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oruçtan önceki akşam 20.00'de. Bayram ve teşrik günleri ile Ramazan atlanır; hicri günler uygulamadaki hicri takvime göredir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At 20:00 the evening before. Eid days, the days of tashriq and Ramadan are skipped; Hijri dates follow the app's Hijri calendar."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Am Vorabend um 20:00. Festtage, die Taschriq-Tage und der Ramadan werden übersprungen; die Hidschri-Daten folgen dem Hidschri-Kalender der App."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orucdan əvvəlki axşam saat 20:00-da. Bayram və təşriq günləri və Ramazan buraxılır; hicri tarixlər tətbiqdəki hicri təqvimə görədir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في الساعة 20:00 مساء اليوم السابق. تُستثنى أيام العيد وأيام التشريق ورمضان؛ والتواريخ الهجرية حسب التقويم الهجري في التطبيق."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pukul 20.00 malam sebelumnya. Hari raya, hari tasyrik, dan Ramadan dilewati; tanggal Hijriah mengikuti kalender Hijriah di aplikasi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزے سے پہلی شام 20:00 بجے۔ عید کے دن، ایامِ تشریق اور رمضان چھوڑ دیے جاتے ہیں؛ ہجری تاریخیں ایپ کے ہجری کیلنڈر کے مطابق ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت 20:00 شب قبل. روزهای عید، ایام تشریق و رمضان کنار گذاشته می‌شوند؛ تاریخ‌های قمری طبق تقویم هجری برنامه است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "À 20 h la veille. Les jours de fête, les jours de tachriq et le ramadan sont exclus ; les dates hégiriennes suivent le calendrier hégirien de l’app."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В 20:00 накануне. Дни праздников, дни ташрик и Рамадан пропускаются; даты по хиджре — по календарю хиджры в приложении."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前日の夜20:00。祭日、タシュリークの日、ラマダーンは除きます。ヒジュラ暦の日付はアプリのヒジュラ暦によります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "전날 저녁 20:00. 명절, 타슈리크 날, 라마단은 건너뜁니다. 히즈라력 날짜는 앱의 히즈라력을 따릅니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前一天晚上20:00。节日、晒肉日和斋月不提醒；伊斯兰历日期以应用中的伊斯兰历为准。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alas-20:00 ng gabi bago nito. Nilalaktawan ang mga araw ng Eid, ang mga araw ng tashriq at ang Ramadan; ang mga petsang Hijri ay ayon sa kalendaryong Hijri ng app."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เวลา 20:00 ของคืนก่อนหน้า ข้ามวันอีด วันตัชรีก และเดือนรอมฎอน วันที่ฮิจเราะห์ตามปฏิทินฮิจเราะห์ในแอป"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A las 20:00 de la víspera. Se omiten los días de Eid, los días de tashriq y el ramadán; las fechas hégiras siguen el calendario hégira de la app."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Às 20:00 da véspera. Os dias de Eid, os dias de tashriq e o Ramadã são pulados; as datas hijri seguem o calendário hijri do app."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पिछली शाम 20:00 बजे। ईद के दिन, तशरीक़ के दिन और रमज़ान छोड़ दिए जाते हैं; हिजरी तारीख़ें ऐप के हिजरी कैलेंडर के अनुसार हैं।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আগের সন্ধ্যা 20:00-এ। ঈদের দিন, তাশরিকের দিন ও রমজান বাদ যায়; হিজরি তারিখ অ্যাপের হিজরি ক্যালেন্ডার অনুযায়ী।"
+          }
+        }
+      }
+    },
+    "fast.monthu": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pazartesi ve perşembe"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mondays and Thursdays"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Montags und donnerstags"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bazar ertəsi və cümə axşamı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الاثنين والخميس"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senin dan Kamis"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیر اور جمعرات"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دوشنبه و پنجشنبه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lundis et jeudis"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Понедельники и четверги"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "月曜日と木曜日"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "월요일과 목요일"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "周一和周四"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lunes at Huwebes"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันจันทร์และวันพฤหัสบดี"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lunes y jueves"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Segundas e quintas"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सोमवार और गुरुवार"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সোমবার ও বৃহস্পতিবার"
+          }
+        }
+      }
+    },
+    "fast.bidh": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eyyâm-ı bîd (hicri ayın 13, 14 ve 15'i)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "White days (13th, 14th and 15th of each Hijri month)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weiße Tage (13., 14. und 15. jedes Hidschri-Monats)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Əyyami-biz (hicri ayın 13, 14 və 15-i)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأيام البيض (13 و14 و15 من كل شهر هجري)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayyamul Bidh (tanggal 13, 14, dan 15 setiap bulan Hijriah)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ایامِ بیض (ہر ہجری مہینے کی 13، 14 اور 15 تاریخ)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ایام البیض (13، 14 و 15 هر ماه قمری)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jours blancs (13, 14 et 15 de chaque mois hégirien)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Белые дни (13, 14 и 15 числа каждого месяца хиджры)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "白い日々（ヒジュラ暦の各月13・14・15日）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "하얀 날(히즈라력 매월 13, 14, 15일)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "白日（每个伊斯兰历月的13、14、15日）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga puting araw (ika-13, 14 at 15 ng bawat buwang Hijri)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันขาว (วันที่ 13, 14 และ 15 ของทุกเดือนฮิจเราะห์)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Días blancos (13, 14 y 15 de cada mes hégira)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dias brancos (13, 14 e 15 de cada mês hijri)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अय्याम-ए-बीज़ (हर हिजरी महीने की 13, 14 और 15 तारीख़)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আইয়ামে বিজ (প্রতি হিজরি মাসের 13, 14 ও 15 তারিখ)"
+          }
+        }
+      }
+    },
+    "fast.arafah": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arefe günü (9 Zilhicce)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Day of Arafah (9 Dhu al-Hijjah)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tag von Arafat (9. Dhu l-Hiddscha)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ərəfə günü (9 Zilhiccə)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يوم عرفة (9 ذو الحجة)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari Arafah (9 Zulhijah)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یومِ عرفہ (9 ذوالحجہ)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روز عرفه (9 ذی‌الحجه)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jour d’Arafat (9 dhou al-hijja)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "День Арафа (9 зуль-хиджа)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アラファの日（ズー・アル＝ヒッジャ月9日）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아라파의 날(둘히자 9일)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阿拉法特日（都尔黑哲月9日）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Araw ng Arafah (9 Dhu al-Hijjah)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันอะเราะฟะฮ์ (9 ซุลฮิจญะฮ์)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Día de Arafat (9 de dulhiyya)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dia de Arafat (9 de Dhu al-Hijjah)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अरफ़ा का दिन (9 ज़ुल-हिज्जा)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আরাফার দিন (9 জিলহজ)"
+          }
+        }
+      }
+    },
+    "fast.ashura": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua ve Aşure (9 ve 10 Muharrem)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua and Ashura (9 and 10 Muharram)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua und Aschura (9. und 10. Muharram)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua və Aşura (9 və 10 Məhərrəm)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاسوعاء وعاشوراء (9 و10 محرم)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua dan Asyura (9 dan 10 Muharam)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاسوعا اور عاشورا (9 اور 10 محرم)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاسوعا و عاشورا (9 و 10 محرم)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasu’a et Achoura (9 et 10 mouharram)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тасуа и Ашура (9 и 10 мухаррама)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "タースーアーとアーシューラー（ムハッラム月9日と10日）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "타수아와 아슈라(무하람 9일과 10일)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "塔苏阿和阿舒拉（穆哈兰月9日和10日）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua at Ashura (9 at 10 Muharram)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตาซูอาและอาชูรออ์ (9 และ 10 มุฮัรรอม)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua y Ashura (9 y 10 de muharram)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua e Ashura (9 e 10 de Muharram)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तासूआ और आशूरा (9 और 10 मुहर्रम)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "তাসুয়া ও আশুরা (9 ও 10 মহররম)"
+          }
+        }
+      }
+    },
+    "fast.shawwal": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şevval'in altı günü"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Six days of Shawwal"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sechs Tage im Schawwal"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şəvvalın altı günü"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ستة أيام من شوال"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enam hari di bulan Syawal"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شوال کے چھ روزے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شش روز از ماه شوال"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Six jours de chawwal"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шесть дней шавваля"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "シャウワール月の6日間"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "샤왈월의 6일"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "闪瓦鲁月的六天"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anim na araw ng Shawwal"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "หกวันในเดือนเชาวาล"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seis días de shawwal"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seis dias de Shawwal"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शव्वाल के छह दिन"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "শাওয়ালের ছয় দিন"
+          }
+        }
+      }
+    },
+    "fast.n.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yarın: %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomorrow: %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morgen: %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabah: %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غدًا: %1$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Besok: %1$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کل: %1$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فردا: %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demain : %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Завтра: %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明日：%1$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "내일: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明天：%1$@"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bukas: %1$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พรุ่งนี้: %1$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mañana: %1$@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amanhã: %1$@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कल: %1$@"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আগামীকাল: %1$@"
+          }
+        }
+      }
+    },
+    "fast.n.body": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@ %3$@"
+          }
+        }
+      }
+    },
+    "fast.name.monday": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pazartesi orucu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monday fast"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Montagsfasten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bazar ertəsi orucu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صيام الاثنين"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puasa Senin"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیر کا روزہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزهٔ دوشنبه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeûne du lundi"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пост в понедельник"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "月曜日の断食"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "월요일 단식"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "周一斋"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pag-aayuno sa Lunes"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ถือศีลอดวันจันทร์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayuno del lunes"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jejum de segunda-feira"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सोमवार का रोज़ा"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সোমবারের রোজা"
+          }
+        }
+      }
+    },
+    "fast.name.thursday": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perşembe orucu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thursday fast"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Donnerstagsfasten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cümə axşamı orucu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صيام الخميس"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puasa Kamis"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جمعرات کا روزہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزهٔ پنجشنبه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeûne du jeudi"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пост в четверг"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "木曜日の断食"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "목요일 단식"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "周四斋"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pag-aayuno sa Huwebes"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ถือศีลอดวันพฤหัสบดี"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayuno del jueves"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jejum de quinta-feira"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गुरुवार का रोज़ा"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "বৃহস্পতিবারের রোজা"
+          }
+        }
+      }
+    },
+    "fast.name.bidh": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eyyâm-ı bîd orucu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "White days fast"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fasten der weißen Tage"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Əyyami-biz orucu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صيام الأيام البيض"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puasa Ayyamul Bidh"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ایامِ بیض کا روزہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزهٔ ایام البیض"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeûne des jours blancs"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пост белых дней"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "白い日々の断食"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "하얀 날 단식"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "白日斋"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pag-aayuno sa mga puting araw"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ถือศีลอดวันขาว"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayuno de los días blancos"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jejum dos dias brancos"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अय्याम-ए-बीज़ का रोज़ा"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আইয়ামে বিজের রোজা"
+          }
+        }
+      }
+    },
+    "fast.name.arafah": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arefe orucu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arafah fast"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arafat-Fasten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ərəfə orucu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صيام يوم عرفة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puasa Arafah"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یومِ عرفہ کا روزہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزهٔ روز عرفه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeûne d’Arafat"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пост дня Арафа"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アラファの日の断食"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아라파의 날 단식"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阿拉法特日斋"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pag-aayuno sa Arafah"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ถือศีลอดวันอะเราะฟะฮ์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayuno de Arafat"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jejum de Arafat"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अरफ़ा का रोज़ा"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আরাফার রোজা"
+          }
+        }
+      }
+    },
+    "fast.name.tasua": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua orucu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua fast"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua-Fasten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasua orucu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صيام تاسوعاء"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puasa Tasua"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاسوعا کا روزہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزهٔ تاسوعا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeûne de Tasu’a"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пост Тасуа"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "タースーアーの断食"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "타수아 단식"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "塔苏阿斋"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pag-aayuno sa Tasua"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ถือศีลอดตาซูอา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayuno de Tasua"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jejum de Tasua"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तासूआ का रोज़ा"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "তাসুয়ার রোজা"
+          }
+        }
+      }
+    },
+    "fast.name.ashura": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aşure orucu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashura fast"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aschura-Fasten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aşura orucu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صيام عاشوراء"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puasa Asyura"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عاشورا کا روزہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزهٔ عاشورا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeûne d’Achoura"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пост Ашуры"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アーシューラーの断食"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아슈라 단식"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阿舒拉斋"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pag-aayuno sa Ashura"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ถือศีลอดอาชูรออ์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayuno de Ashura"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jejum de Ashura"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आशूरा का रोज़ा"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আশুরার রোজা"
+          }
+        }
+      }
+    },
+    "fast.name.shawwal": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şevval orucu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shawwal fast"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schawwal-Fasten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şəvval orucu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صيام الست من شوال"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puasa Syawal"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شوال کا روزہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزهٔ شوال"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeûne de chawwal"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пост в шаввале"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "シャウワール月の断食"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "샤왈 단식"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "闪瓦鲁月斋"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pag-aayuno sa Shawwal"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ถือศีลอดเดือนเชาวาล"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayuno de shawwal"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jejum de Shawwal"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शव्वाल का रोज़ा"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "শাওয়ালের রোজা"
+          }
+        }
+      }
+    },
+    "notify.n.isbat": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu akşam sidang isbat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sidang isbat this evening"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute Abend Sidang Isbat"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu axşam sidang isbat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جلسة الإثبات (سيدانغ إثبات) هذا المساء"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sidang isbat malam ini"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آج شام سیدانگ اثبات (رویتِ ہلال کا اجلاس)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امشب جلسهٔ رؤیت هلال (سیدانگ ایثبات)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sidang isbat ce soir"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сегодня вечером сиданг исбат"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今夜はスィダン・イスバット"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘 저녁 시당 이스밧"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今晚召开见月会议（Sidang Isbat）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sidang isbat ngayong gabi"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คืนนี้มีการประชุมซีดังอิซบัต"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sidang isbat esta noche"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sidang isbat esta noite"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आज शाम सिदांग इस्बात"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আজ সন্ধ্যায় সিদাং ইসবাত"
+          }
+        }
+      }
+    },
+    "notify.n.isbatBody": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ başı açıklanacak. Kemenag takvimine göre 1 %1$@: %2$@."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The start of %1$@ will be announced. By the Kemenag calendar, 1 %1$@ is %2$@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Beginn des %1$@ wird bekannt gegeben. Nach dem Kemenag-Kalender ist der 1. %1$@ am %2$@."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ ayının başlanğıcı elan olunacaq. Kemenag təqviminə görə 1 %1$@: %2$@."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سيُعلَن بدء شهر %1$@. وفق تقويم وزارة الشؤون الدينية الإندونيسية (كيميناغ) يوافق 1 %1$@: %2$@."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Awal %1$@ akan diumumkan. Menurut kalender Kemenag, 1 %1$@ jatuh pada %2$@."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ کے آغاز کا اعلان ہوگا۔ کیمیناگ کیلنڈر کے مطابق 1 %1$@: %2$@۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آغاز ماه %1$@ اعلام می‌شود. طبق تقویم وزارت امور دینی اندونزی (کمناگ)، 1 %1$@: %2$@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le début de %1$@ sera annoncé. Selon le calendrier du Kemenag, le 1er %1$@ tombe le %2$@."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Будет объявлено начало месяца %1$@. По календарю Kemenag первый день месяца %1$@: %2$@."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@の始まりが発表されます。ケメナグの暦では%1$@の1日は%2$@です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 시작일이 발표됩니다. 케메낙 달력으로는 %1$@ 1일이 %2$@입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将宣布%1$@的开始。按印尼宗教部（Kemenag）历法，%1$@1日为%2$@。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iaanunsyo ang simula ng %1$@. Ayon sa kalendaryo ng Kemenag, ang 1 %1$@ ay sa %2$@."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "จะมีการประกาศวันเริ่มเดือน%1$@ ตามปฏิทินของ Kemenag วันที่ 1 %1$@ คือ %2$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se anunciará el comienzo de %1$@. Según el calendario del Kemenag, el 1 de %1$@ es el %2$@."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O início de %1$@ será anunciado. Pelo calendário do Kemenag, 1 de %1$@ cai em %2$@."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ की शुरुआत की घोषणा होगी। केमेनाग कैलेंडर के अनुसार 1 %1$@: %2$@।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ মাসের শুরু ঘোষণা করা হবে। কেমেনাগ ক্যালেন্ডার অনুযায়ী 1 %1$@: %2$@।"
+          }
+        }
+      }
+    },
+    "quran.kemenag": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu surenin Endonezce meali (Kemenag)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indonesian translation (Kemenag)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indonesische Übersetzung (Kemenag)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu surənin indoneziyaca məalı (Kemenag)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الترجمة الإندونيسية (كيميناغ)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terjemahan Kemenag surah ini"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انڈونیشی ترجمہ (کیمیناگ)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ترجمهٔ اندونزیایی (کمناگ)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traduction indonésienne (Kemenag)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Индонезийский перевод (Kemenag)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "インドネシア語訳（ケメナグ）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "인도네시아어 번역(케메낙)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "印尼文译本（Kemenag）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salin sa Indonesian (Kemenag)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คำแปลภาษาอินโดนีเซีย (Kemenag)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traducción indonesia (Kemenag)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tradução indonésia (Kemenag)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इंडोनेशियाई अनुवाद (केमेनाग)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ইন্দোনেশীয় অনুবাদ (কেমেনাগ)"
+          }
+        }
+      }
+    },
+    "dua.kemenagRef": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meali: %1$@ (Kemenag)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Translation: %1$@ (Kemenag)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Übersetzung: %1$@ (Kemenag)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məalı: %1$@ (Kemenag)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الترجمة: %1$@ (كيميناغ)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terjemahan: %1$@ (Kemenag)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ترجمہ: %1$@ (کیمیناگ)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ترجمه: %1$@ (کمناگ)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traduction : %1$@ (Kemenag)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перевод: %1$@ (Kemenag)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "訳：%1$@（ケメナグ）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "번역: %1$@(케메낙)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "译文：%1$@（Kemenag）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salin: %1$@ (Kemenag)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คำแปล: %1$@ (Kemenag)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traducción: %1$@ (Kemenag)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tradução: %1$@ (Kemenag)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अनुवाद: %1$@ (केमेनाग)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "অনুবাদ: %1$@ (কেমেনাগ)"
+          }
+        }
+      }
+    },
+    "quran.creditKemenag": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Endonezce meal için Endonezya Din İşleri Bakanlığı'nın (Kemenag) Kur'an sitesine bağlantı verilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For an Indonesian translation the app links to the Quran site of Indonesia's Ministry of Religious Affairs (Kemenag)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für eine indonesische Übersetzung verweist die App auf die Koran-Website des indonesischen Religionsministeriums (Kemenag)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İndoneziyaca məal üçün İndoneziya Din İşləri Nazirliyinin (Kemenag) Quran saytına keçid verilir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "للترجمة الإندونيسية يحيل التطبيق إلى موقع القرآن الكريم التابع لوزارة الشؤون الدينية الإندونيسية (كيميناغ)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk terjemahan bahasa Indonesia, aplikasi menautkan ke situs Qur'an Kementerian Agama RI (Kemenag)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انڈونیشی ترجمے کے لیے ایپ انڈونیشیا کی وزارتِ مذہبی امور (کیمیناگ) کی قرآن ویب سائٹ کا لنک دیتی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای ترجمهٔ اندونزیایی، برنامه به وب‌سایت قرآن وزارت امور دینی اندونزی (کمناگ) پیوند می‌دهد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour une traduction indonésienne, l’app renvoie au site du Coran du ministère indonésien des Affaires religieuses (Kemenag)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для индонезийского перевода приложение ведёт на сайт Корана Министерства по делам религий Индонезии (Kemenag)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "インドネシア語訳については、アプリはインドネシア宗教省（ケメナグ）のクルアーンサイトにリンクしています。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "인도네시아어 번역은 앱에서 인도네시아 종교부(케메낙)의 꾸란 사이트로 연결합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "印尼文译本方面，应用链接到印尼宗教部（Kemenag）的古兰经网站。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para sa salin sa Indonesian, naka-link ang app sa Quran site ng Ministry of Religious Affairs ng Indonesia (Kemenag)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สำหรับคำแปลภาษาอินโดนีเซีย แอปลิงก์ไปยังเว็บไซต์อัลกุรอานของกระทรวงการศาสนาอินโดนีเซีย (Kemenag)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para una traducción al indonesio, la app enlaza al sitio del Corán del Ministerio de Asuntos Religiosos de Indonesia (Kemenag)."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para uma tradução indonésia, o app leva ao site do Alcorão do Ministério de Assuntos Religiosos da Indonésia (Kemenag)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इंडोनेशियाई अनुवाद के लिए ऐप इंडोनेशिया के धार्मिक मामलों के मंत्रालय (केमेनाग) की क़ुरआन साइट का लिंक देता है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ইন্দোনেশীয় অনুবাদের জন্য অ্যাপটি ইন্দোনেশিয়ার ধর্ম মন্ত্রণালয়ের (কেমেনাগ) কুরআন সাইটের লিংক দেয়।"
           }
         }
       }

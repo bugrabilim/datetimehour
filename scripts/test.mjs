@@ -110,8 +110,11 @@ for (const f of htmlFiles) {
     if (hub) check((h.match(/<option value="[a-z]+" data-lat=/g) || []).length === 81 && /data-place-geo/.test(h), `${name}: hub il listesi/konum düğmesi eksik`);
     else check(/data-mode="city"/.test(h) && /data-lat="[\d.]+" data-lon="[\d.]+"/.test(h), `${name}: il sayfası verisi eksik`);
   }
+  if (/^\/((en|de|az|ar)\/qibla|kible)\/index\.html$/.test(name)) check(/data-qb-rq\b/.test(h), `${name}: Rashdul Qiblat satırı yok`);
   if (/^\/((en|de|az|ar)\/qibla|kible)\/index\.html$/.test(name)) check(/data-qibla\b/.test(h) && /data-qb-rose/.test(h) && /data-qb-needle/.test(h) && /qibla\.js/.test(h) && /prayer-calc\.js/.test(h) && /data-qb-mq-show/.test(h) && /data-needs-place/.test(h), `${name}: kıble sayfası yapısı eksik`);
   if (/\/(mevsimler|seasons)\/index\.html$/.test(name)) {
+    // Tutulma namazı notu yalnız Vakitler'i başta soran dillerde (10 Kasım 2026)
+    check(/class="meta">[^<]*(küsûf|kusuf|الكسوف|کسوف|কুসুফ)/.test(h) === /^\/((ar|id|ur|fa|bn)\/seasons|mevsimler)\//.test(name), `${name}: tutulma namazı notu yalnız Vakitler'i başta soran dillerde`);
     check(/data-wheel/.test(h) && /data-n-chart/.test(h) && /data-moon/.test(h) && (h.match(/class="season-card /g) || []).length === 4 && /nature\.js/.test(h) && /nature-calc\.js/.test(h) && /data-n-turns/.test(h) && /data-n-moon="rise"/.test(h) && /data-n-mooncal/.test(h) && /data-n-eclipses/.test(h) && !/data-place-city="/.test(h.replace(/<dialog[\s\S]*?<\/dialog>/g, "")) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: doğa sayfası yapısı eksik`);
     check(h.indexOf("<h1") < h.indexOf("data-nature"), `${name}: başlık çarkın üstünde olmalı`);
   }
@@ -253,6 +256,11 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
     check(Number.isFinite(t) && Math.abs(Math.round(t * 60) - (hh * 60 + mm)) <= 1, `kıble saati ${d}.10.2026: ${t} ≠ ${v}`);
   }
   check(!Number.isFinite(m.exports.qiblaTime(2026, 10, 30, 40.71, -74.01, -4)), "kıble saati: New York'ta olmamalı");
+  // Rashdul Qiblat (10 Kasım 2026): Kemenag 2025–2027 duyurularıyla aynı dakika (WIB, UTC+7)
+  for (const [y, want] of [[2025, ["2025-05-27 16:18", "2025-07-15 16:27"]], [2026, ["2026-05-28 16:18", "2026-07-15 16:27"]], [2027, ["2027-05-28 16:18", "2027-07-16 16:27"]]]) {
+    const got = m.exports.rashdulQiblat(y).map((ms) => new Date(Math.round(ms / 60000) * 60000 + 7 * 3600000).toISOString().slice(0, 16).replace("T", " "));
+    check(got.join() === want.join(), `Rashdul Qiblat ${y}: ${got} ≠ ${want}`);
+  }
   // İlçe merkezleri (src/data/districts.json, GeoNames): Yüksekova ve Datça 30 Ekim 2026, Diyanet vakitleriyle (±1 dk)
   const DS = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/districts.json"), "utf8"));
   check(DS.count === 973 && Object.keys(DS.provinces).length === 81, `ilçe verisi: ${DS.count} ilçe`);

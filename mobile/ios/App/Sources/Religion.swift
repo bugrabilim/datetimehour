@@ -92,6 +92,21 @@ enum Quran {
         URL(string: "https://kuran.diyanet.gov.tr/kuran?sure=\(sura)&ayet=\(aya)&mode=kuran-meal")!
     }
 
+    /// Arayüz dilinde resmî meal sitesi (10 Kasım 2026): Türkçe ve Azerice Diyanet, Endonezce Kemenag; diğer dillerde yok
+    static var mealSite: String? {
+        switch AppLocale.code {
+        case "tr", "az": return "diyanet"
+        case "id": return "kemenag"
+        default: return nil
+        }
+    }
+
+    /// Meal sitesinde ayet aralığı (Kemenag: quran.kemenag.go.id/quran/per-ayat/surah/S?from=A&to=B)
+    static func mealURL(_ sura: Int, _ aya: Int, to: Int? = nil) -> URL {
+        guard mealSite == "kemenag" else { return diyanetURL(sura, aya) }
+        return URL(string: "https://quran.kemenag.go.id/quran/per-ayat/surah/\(sura)?from=\(aya)&to=\(to ?? aya)")!
+    }
+
     static let bookmarkKey = "quran.bookmark"
     /// Kaldığım yer "sure:ayet"
     static func parse(_ s: String) -> (Int, Int)? {
@@ -122,6 +137,10 @@ private struct QuranCredits: View {
             Text(L("quran.credit")).font(.caption).foregroundStyle(Theme.muted)
             Link("tanzil.net", destination: URL(string: "https://tanzil.net")!).font(.caption)
             Link("kuran.diyanet.gov.tr", destination: URL(string: "https://kuran.diyanet.gov.tr")!).font(.caption)
+            if Quran.mealSite == "kemenag" {
+                Text(L("quran.creditKemenag")).font(.caption).foregroundStyle(Theme.muted)
+                Link("quran.kemenag.go.id", destination: URL(string: "https://quran.kemenag.go.id")!).font(.caption)
+            }
         }
         .tint(Theme.accent)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -220,9 +239,9 @@ struct SuraView: View {
                 LazyVStack(spacing: 10) {
                     QuranReadingOptions()
                     Toggle(L("quran.showEn"), isOn: $showEn).tint(Theme.accent).font(.subheadline).foregroundStyle(pal.ink)
-                    if turkic {
-                        Link(destination: Quran.diyanetURL(sura, 1)) {
-                            Label(L("quran.diyanet"), systemImage: "arrow.up.right.square")
+                    if let site = Quran.mealSite {
+                        Link(destination: Quran.mealURL(sura, 1, to: s.ayas)) {
+                            Label(L(site == "kemenag" ? "quran.kemenag" : "quran.diyanet"), systemImage: "arrow.up.right.square")
                         }
                         .tint(Theme.accent)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -238,8 +257,8 @@ struct SuraView: View {
                                         .accessibilityLabel(L("quran.bookmark"))
                                 }
                                 Spacer()
-                                if turkic {
-                                    Link(L("quran.meal"), destination: Quran.diyanetURL(sura, a)).font(.caption).tint(Theme.accent)
+                                if Quran.mealSite != nil {
+                                    Link(L("quran.meal"), destination: Quran.mealURL(sura, a)).font(.caption).tint(Theme.accent)
                                 }
                             }
                             ArabicText(text: Quran.ar(sura, a), size: CGFloat(size), color: pal.ink)
@@ -434,10 +453,10 @@ struct DuasView: View {
                             if let m = d.mean { speakButton("\(d.id)-mean", text: m, arabic: false, title: L("dua.listenMean")) }
                         }
                         .font(.subheadline.weight(.medium))
-                        if turkic {
+                        if let site = Quran.mealSite {
                             ForEach(d.refs, id: \.self) { r in
                                 if let ref = Quran.parse(r) {
-                                    Link(T("dua.diyanetRef", r), destination: Quran.diyanetURL(ref.0, ref.1)).font(.footnote).tint(Theme.accent)
+                                    Link(T(site == "kemenag" ? "dua.kemenagRef" : "dua.diyanetRef", r), destination: Quran.mealURL(ref.0, ref.1)).font(.footnote).tint(Theme.accent)
                                 }
                             }
                         }

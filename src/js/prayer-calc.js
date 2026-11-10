@@ -115,6 +115,22 @@
     return NaN;
   }
 
+  /* Rashdul Qiblat (10 Kasım 2026, Endonezya araştırması): Güneş'in Kâbe'nin tam üstünden geçtiği iki an (Mayıs ve Temmuz).
+     O anda Güneş'in göründüğü her yerde güneşe dönen kıbleye döner. Mayıs 15–31 ve Temmuz 5–31 arasında Kâbe'de öğle
+     anında Güneş'i başucuna en yakın getiren gün seçilir; dönüş [Mayıs, Temmuz] UTC ms. Kemenag 2025–2027 ile aynı dakika. */
+  function rashdulQiblat(y) {
+    var noon = function (m, d) {
+      var jd = julian(y, m, d), t = 12 - KAABA.lon / 15;
+      for (var i = 0; i < 3; i++) t = 12 - sunPos(jd + t / 24).eqt - KAABA.lon / 15;
+      return { jd: jd, t: t, zd: Math.abs(sunPos(jd + t / 24).decl - KAABA.lat) };
+    };
+    return [[5, 15, 31], [7, 5, 31]].map(function (r) {
+      var best = null;
+      for (var d = r[1]; d <= r[2]; d++) { var n = noon(r[0], d); if (!best || n.zd < best.zd) best = n; }
+      return Math.round((best.jd - 2440587.5) * 86400000 + best.t * 3600000);
+    });
+  }
+
   /* Güneşin belli bir yüksekliğe (derece, ufkun üstü pozitif) sabah çıktığı ve akşam indiği an; yerel ondalık saat,
      o gün oluşmuyorsa NaN. Vakitlerdeki gibi düzeltmesiz, ikinci yaklaşımla (30 Ekim 2026: altın ve mavi saat). */
   function sunAltTimes(y, m, d, lat, lon, tz, alt) {
@@ -248,7 +264,7 @@
     return { m: "diyanet", h: 0 };
   }
 
-  var api = { times: times, PARAMS: PARAMS, METHODS: METHODS, METHOD_IDS: METHOD_IDS, methodParams: methodParams, toMin: toMin, methodRows: methodRows, regionOf: regionOf, defaultMethod: defaultMethod, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, sunAltAz: sunAltAz, KAABA: KAABA, sunAltTimes: sunAltTimes, lightHours: lightHours, LIGHT: LIGHT, kerahat: kerahat, KERAHAT_MIN: KERAHAT_MIN, bayram: bayram, BAYRAM_MIN: BAYRAM_MIN, extraTimes: extraTimes, EXTRA: EXTRA };
+  var api = { times: times, PARAMS: PARAMS, METHODS: METHODS, METHOD_IDS: METHOD_IDS, methodParams: methodParams, toMin: toMin, methodRows: methodRows, regionOf: regionOf, defaultMethod: defaultMethod, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, rashdulQiblat: rashdulQiblat, sunAltAz: sunAltAz, KAABA: KAABA, sunAltTimes: sunAltTimes, lightHours: lightHours, LIGHT: LIGHT, kerahat: kerahat, KERAHAT_MIN: KERAHAT_MIN, bayram: bayram, BAYRAM_MIN: BAYRAM_MIN, extraTimes: extraTimes, EXTRA: EXTRA };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.sthPrayer = api;
 })(typeof window !== "undefined" ? window : globalThis);

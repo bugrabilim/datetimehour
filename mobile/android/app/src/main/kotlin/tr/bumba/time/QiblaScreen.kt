@@ -235,6 +235,16 @@ fun QiblaScreen(onBack: () -> Unit) {
                     } else {
                         Fact(L("qibla.time"), "–", L("qibla.noTime"))
                     }
+                    // Rashdul Qiblat (10 Kasım 2026): Güneş'in Kâbe'nin üstünden geçtiği sıradaki an, yerin saatiyle
+                    val now = java.time.Instant.now()
+                    val rq = (Qibla.rashdul(today.year) + Qibla.rashdul(today.year + 1))
+                        .map { java.time.Instant.ofEpochSecond(Math.round(it / 60000.0) * 60) }
+                        .first { it.isAfter(now.minusSeconds(3600)) }
+                    val u = rq.atZone(java.time.ZoneOffset.UTC)
+                    val up = Qibla.sun(u.year, u.monthValue, u.dayOfMonth, u.hour + u.minute / 60.0, place.lat, place.lon).alt > 0
+                    HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
+                    Fact(L("qibla.rashdul"), Fmt.shortDateTime(rq, place.zone),
+                        L(if (up) "qibla.rashdulNote" else "qibla.rashdulNight"))
                 }
             }
             if (!atKaaba) {
