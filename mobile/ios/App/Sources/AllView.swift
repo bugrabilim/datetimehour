@@ -71,6 +71,9 @@ enum AllPrefs {
         AllEntry(id: "datecalc", titleKey: "tools.hub.cards.datecalc.name", icon: "calendar.badge.clock", cat: .plan, feature: .tools, route: .datecalc),
         AllEntry(id: "planner", titleKey: "planner.h1", icon: "person.2.wave.2", cat: .plan, feature: .tools, route: .planner),
         AllEntry(id: "journal", titleKey: "journal.title", icon: "sun.horizon", cat: .plan, feature: .tools, route: .journal),
+        // Kutlama kartları (10 Kasım 2026): doğum günü, yılbaşı, yıl dönümü, mezuniyet, yeni iş; dini vesileler İbadet'te
+        AllEntry(id: "greetN", titleKey: "greet.titleN", icon: "gift", cat: .plan, feature: .tools, route: .greetN,
+                 words: ["greet.birthday", "greet.newyear", "greet.anniversary", "greet.graduation", "greet.newjob"]),
         AllEntry(id: "bridge", titleKey: "bridge.h1", icon: "beach.umbrella", cat: .plan, feature: .tools, route: .bridge),
         AllEntry(id: "retire", titleKey: "retire.h1", icon: "calendar.badge.clock", cat: .plan, feature: .tools, route: .retire),
         AllEntry(id: "weather", titleKey: "tab.weather", icon: "cloud.sun", cat: .sky, feature: .weather, tab: .weather),
@@ -364,6 +367,7 @@ extension ToolRoute {
         case .sunpath: SunPathView()
         case .photo: PhotoLightView()
         case .panchang: PanchangView()
+        case .greetN: GreetingView(neutral: true)
         case .chess: ChessClockView()
         case .metronome: MetronomeView()
         case .talking: TalkingClockView()

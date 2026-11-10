@@ -456,6 +456,12 @@ class MoreScreensTest {
     @Test fun worshipExtras() {
         shot("tr-dini-gunler") { ReligiousDaysScreen {} }
         shot("tr-tebrik") { GreetingScreen {} }
+        // Kutlama kartları (10 Kasım 2026): yalnız nötr vesileler; sözde dua ya da "dualarımla" kapanışı yok
+        shot("en-kutlama-karti", "en") { GreetingScreen(neutral = true) {} }
+        for (occ in Greetings.NEUTRAL) for (seed in 0L..200L) {
+            val m = Greetings.message(occ, seed)
+            assertTrue(m, (1..10).none { m.contains(L("greet.bless.$it")) } && !m.contains(L("greet.close.2")))
+        }
         // Her vesilenin her deseni (4 Kasım 2026): kartın kendisi, söz sabit tohumla
         val day = LocalDate.of(2026, 3, 20)
         java.io.File(dir).mkdirs()

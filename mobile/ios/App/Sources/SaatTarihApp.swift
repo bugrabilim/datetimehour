@@ -140,8 +140,8 @@ enum ToolRoute: Hashable {
     case alarm, timer, stopwatch, pomodoro, study, wakeGame, sleep, journal, breath, planner, datecalc, settings, about, badges
     // Tümü'nden açılan sayfalar (Seçenek B, 2. analiz #195): ibadet, Ay, takvim yaprağı ve ayar sayfaları
     case qibla, quran, duas, zikir, track, zakat, reldays, greet, esma, hadith, guide, leaf, moon, sky, sunpath, photo
-    // Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9)
-    case panchang
+    // Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9); kutlama kartları (nötr vesileler)
+    case panchang, greetN
     case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
     // Sitedeki dokuz araç (4 Kasım 2026)
     case chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom

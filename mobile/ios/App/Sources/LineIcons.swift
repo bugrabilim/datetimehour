@@ -256,7 +256,7 @@ enum LineIconMap {
             "talking": "speaker", "exam": "paper", "classroom": "school", "timecalc": "calc", "calendar": "calendar",
             "leaf": "leafcal", "datecalc": "date", "planner": "people", "journal": "notebook", "bridge": "bridge",
             "retire": "beach", "weather": "sun_cloud", "world": "globe", "seasons": "leaf", "moon": "moon",
-            "sky": "telescope", "sunpath": "sunset", "photo": "aperture", "panchang": "sunrise", "zodiac": "milkyway", "prayer": "mosque", "qibla": "compass",
+            "sky": "telescope", "sunpath": "sunset", "photo": "aperture", "panchang": "sunrise", "greetN": "party", "zodiac": "milkyway", "prayer": "mosque", "qibla": "compass",
             "quran": "book", "zikir": "beads", "track": "checklist", "duas": "hands", "esma": "sparkles",
             "hadith": "scroll", "guide": "guide", "reldays": "star_crescent", "greet": "love_letter", "zakat": "coin",
             "settings": "gear", "badges": "medal",

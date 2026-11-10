@@ -105,6 +105,8 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "zakat" -> ZakatScreen { onRoute(null) }
         "reldays" -> ReligiousDaysScreen { onRoute(null) }
         "greet" -> GreetingScreen { onRoute(null) }
+        // Kutlama kartları (nötr vesileler; 10 Kasım 2026)
+        "greetN" -> GreetingScreen(neutral = true) { onRoute(null) }
         "esma" -> EsmaScreen { onRoute(null) }
         "hadith" -> HadithScreen { onRoute(null) }
         "guide" -> PrayerGuideScreen({ onRoute(null) }) { onRoute("duas") }

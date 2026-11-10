@@ -40,6 +40,7 @@ import androidx.compose.material.icons.filled.Bedtime
 import androidx.compose.material.icons.filled.Brightness3
 import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.Cake
 import androidx.compose.material.icons.filled.Celebration
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.ColorLens
@@ -153,6 +154,9 @@ object AllPrefs {
         AllEntry("datecalc", "tools.hub.cards.datecalc.name", Icons.Filled.EditCalendar, AllCat.PLAN, Tab.TOOLS, route = "datecalc"),
         AllEntry("planner", "planner.h1", Icons.Filled.Groups, AllCat.PLAN, Tab.TOOLS, route = "planner"),
         AllEntry("journal", "journal.title", Icons.Filled.WbTwilight, AllCat.PLAN, Tab.TOOLS, route = "journal"),
+        // Kutlama kartları (10 Kasım 2026): doğum günü, yılbaşı, yıl dönümü, mezuniyet, yeni iş; dini vesileler İbadet'te
+        AllEntry("greetN", "greet.titleN", Icons.Filled.Cake, AllCat.PLAN, Tab.TOOLS, route = "greetN",
+            words = "greet.birthday greet.newyear greet.anniversary greet.graduation greet.newjob"),
         AllEntry("bridge", "bridge.h1", Icons.Filled.BeachAccess, AllCat.PLAN, Tab.TOOLS, route = "bridge"),
         AllEntry("retire", "retire.h1", Icons.Filled.Elderly, AllCat.PLAN, Tab.TOOLS, route = "retire"),
         AllEntry("weather", "tab.weather", Icons.Filled.WbSunny, AllCat.SKY, Tab.WEATHER, tab = Tab.WEATHER),
@@ -198,7 +202,7 @@ object AllPrefs {
         "weather" to "sun_cloud", "world" to "globe", "seasons" to "leaf", "moon" to "moon", "sky" to "telescope",
         "sunpath" to "sunset", "photo" to "aperture", "panchang" to "sunrise", "zodiac" to "milkyway", "prayer" to "mosque", "qibla" to "compass", "quran" to "book",
         "zikir" to "beads", "track" to "checklist", "duas" to "hands", "esma" to "sparkles", "hadith" to "scroll",
-        "guide" to "guide", "reldays" to "star_crescent", "greet" to "love_letter", "zakat" to "coin",
+        "guide" to "guide", "reldays" to "star_crescent", "greet" to "love_letter", "greetN" to "party", "zakat" to "coin",
         "settings" to "gear", "badges" to "medal",
         "appearance" to "clock", "color" to "palette", "dials" to "dial", "widgets" to "widgets", "homeItems" to "homeitems",
         "features" to "features", "notifications" to "bell", "language" to "language", "about" to "info", "shareQr" to "qr",
