@@ -115,6 +115,7 @@
     "widgets": "layout",
     "homeitems": "list-dashes",
     "idea": "lightbulb",
-    "aperture": "aperture"
+    "aperture": "aperture",
+    "account": "user-circle"
   }
 }

@@ -101,6 +101,8 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             trailingIcon = { if (query.isNotEmpty()) IconButton(onClick = { query = "" }) { Icon(Icons.Filled.Close, L("common.done"), tint = Theme.c.muted) } },
             shape = RoundedCornerShape(14.dp),
         )
+        // Hesap (üyelik aşama 1, 10 Kasım 2026): isteğe bağlı; satırda e-posta ya da "Giriş yapılmadı"
+        if (shows("account.title", "account.signIn", "account.signUp", "account.delete", "account.download")) AccountSettingsRow { onRoute("account") }
         // Genel
         if (shows(*general)) {
             SectionTitle(L("settings.color.general"), Modifier.padding(top = 6.dp))

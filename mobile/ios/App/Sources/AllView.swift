@@ -119,6 +119,8 @@ enum AllPrefs {
         AllEntry(id: "s:language", titleKey: "lang.title", icon: "globe", cat: .more, feature: nil, route: .language),
         AllEntry(id: "s:about", titleKey: "settings.about", icon: "info.circle", cat: .more, feature: nil, route: .about),
         AllEntry(id: "s:shareQr", titleKey: "support.qr", icon: "qrcode", cat: .more, feature: nil, route: .shareQr),
+        AllEntry(id: "s:account", titleKey: "account.title", icon: "person.crop.circle", cat: .more, feature: nil, route: .account,
+                 words: ["account.signIn"]),
     ]
 
     /// Emeklilik hesabı yalnız Türkçe arayüzde (Türkiye mevzuatı, metni Türkçe)
@@ -386,6 +388,7 @@ extension ToolRoute {
         case .notifications: NotificationsView()
         case .language: LanguageView()
         case .shareQr: ShareQRView()
+        case .account: AccountView()
         }
     }
 }

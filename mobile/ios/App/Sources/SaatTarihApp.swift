@@ -143,6 +143,8 @@ enum ToolRoute: Hashable {
     // Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9); kutlama kartları (nötr vesileler)
     case panchang, greetN
     case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
+    // Hesap (üyelik aşama 1, 10 Kasım 2026)
+    case account
     // Sitedeki dokuz araç (4 Kasım 2026)
     case chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom
     case sura(Int)
@@ -541,7 +543,7 @@ enum DebugScreen: String, Identifiable {
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
          wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet,
          qr, colors, wall, study, wakegame, language, dials, chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom, permissions,
-         photo
+         photo, account
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -580,6 +582,7 @@ enum DebugScreen: String, Identifiable {
         case .exam: ExamTimerView()
         case .classroom: ClassroomView()
         case .permissions: PermissionsView()
+        case .account: AccountView()
         case .photo: PhotoLightView()
         case .planner: MeetingPlannerView()
         case .world: WorldClockView()

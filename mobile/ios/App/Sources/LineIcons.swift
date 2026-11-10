@@ -263,6 +263,7 @@ enum LineIconMap {
             // Ayar arama girdileri (`s:` öneki atılır)
             "appearance": "clock", "color": "palette", "dials": "dial", "widgets": "widgets", "homeItems": "homeitems",
             "features": "features", "notifications": "bell", "language": "language", "about": "info", "shareQr": "qr",
+            "account": "account",
         ]
         let key = id.hasPrefix("s:") ? String(id.dropFirst(2)) : id
         guard let n = m[key], Icons3D.has(n) || LineIcons.all[n] != nil || DuoIcons.has(n) else { return nil }

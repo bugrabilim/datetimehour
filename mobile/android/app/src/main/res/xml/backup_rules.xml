@@ -2,4 +2,5 @@
 <!-- Android 11 ve öncesi yedek kuralları (data_extraction_rules.xml ile aynı) -->
 <full-backup-content>
     <exclude domain="file" path="sounds" />
+    <exclude domain="sharedpref" path="account.xml" />
 </full-backup-content>

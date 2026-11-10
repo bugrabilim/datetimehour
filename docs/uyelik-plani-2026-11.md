@@ -73,9 +73,9 @@ konumunun sunucuya gitmesi (bunlar telefonda kalır).
   iletişim (1.2): grup adı, görünen ad ve cami notu bunun içinde; şikâyetlere sahip bakar. Apple ile giriş zorunlu
   değil (yalnız kendi hesabımız var, 4.8). Gizlilik etiketleri değişir (e-posta, kullanıcı kimliği, diğer kullanıcı
   içeriği; kimlikle bağlantılı, izleme yok). Yaş derecelendirme soruları (kullanıcı içeriği) yeniden yanıtlanır,
-  derece değişebilir. `APP_REVIEW_NOTES.md`'ye inceleme için deneme hesabı (e-posta ve şifre) yazılır; hesabın
-  şifresi depoya değil App Store Connect'in inceleme bilgisine girer.
-- **Google Play:** hesabı silme için web adresi şart: sitede statik, noindex `/hesap-silme/` sayfası (uygulamadan
+  derece değişebilir. İnceleme için deneme hesabı App Store Connect › App Review Information › Sign-In Information'a
+  girilir; e-posta ve şifre depoya yazılmaz (`APP_REVIEW_NOTES.md`'de yalnız "demo account in the sign-in fields").
+- **Google Play:** hesabı silme için web adresi şart: sitede statik `/hesap-silme/` sayfası (indekslenir, Play'in istediği herkese açık adres) (uygulamadan
   nasıl silinir; uygulamaya erişemeyen hesabın e-postasından bilgi@bumbagroup.com'a yazar). Veri güvenliği formu
   güncellenir.
 - **KVKK:** veri sorumlusu Bumba Teknoloji Ltd. Şti.; gizlilik sayfasına 19 dilde "Hesap" bölümü; e-posta
@@ -131,7 +131,25 @@ hesabı açılana kadar yalnız kodda.
 - **Aşama 1a, sunucu (10 Kasım 2026, yapıldı, yayında değil):** `server/` (ayrıntı `server/README.md`): Better
   Auth ile kayıt, doğrulama, giriş (taşıyıcı belirteç), dil, şifre değiştirme ve sıfırlama (sitedeki formdan),
   e-posta değiştirme (önce eski adrese onay), verilerimi indir (`/v1/verilerim`), hesabı silme (şifreyle), saklama
-  süreleri, yönetim paneli (tr/en, iki tema), sağlık ucu; 25 test gerçek PostgreSQL'le (`npm test`), CI işi
-  `server-test`. Sunucunun ilk yayını ana altyapı oturumundan, sahibin onayıyla.
-- **Sırada:** 1b iOS ve Android hesap ekranları; 1c sitedeki şifre/doğrulama sayfaları, CSP, aydınlatma metni,
-  gizlilikte "Hesap" bölümü, `/hesap-silme/` (19 dil); sonra ana altyapı isteği.
+  süreleri (zamanlanmış görev ucu `POST /gorev/temizlik`, `CRON_SECRET`), yönetim paneli (tr/en, iki tema), sağlık
+  ucu; 26 test gerçek PostgreSQL'le (`npm test`), CI işi `server-test`. Sunucunun ilk yayını ana altyapı
+  oturumundan, sahibin onayıyla.
+- **Aşama 1c, site (10 Kasım 2026, yapıldı, yayında değil):** şifre sıfırlama `/hesap/sifre/`, doğrulama sonucu
+  `/hesap/dogrulandi/` (noindex, Umami yok, belirteç adresten silinir), hesap silme `/hesap-silme/`, gizlilikte
+  "Uygulamalardaki hesap" aydınlatma bölümü, CSP `form-action`; 19 dil.
+- **Aşama 1b, uygulamalar (10 Kasım 2026, yapıldı, yayında değil):** Ayarlar'ın en üstünde "Hesap" satırı (e-posta
+  ya da "Giriş yapılmadı"), Tümü aramasında. Girişsiz: Giriş / Kayıt ol (görünen ad isteğe bağlı), şifremi unuttum,
+  doğrulama e-postasını yeniden gönder, aydınlatma metni bağlantısı. Girişli: görünen ad, dil/renk/e-posta listesi
+  bağlantıları (uygulamanın ayarları; hesap e-postaları uygulamanın dilinde, dil değişince sunucuya yazılır),
+  e-postayı değiştir, şifreyi değiştir (diğer oturumlar kapanır), verilerimi indir (JSON, paylaşım penceresi),
+  çıkış, hesabı sil (şifre + onay). Belirteç Android'de Keystore anahtarıyla AES-GCM şifreli ve yedeğe girmeyen
+  `account` dosyasında, iOS'ta Anahtar Zinciri'nde "yalnız bu cihaz" (iCloud eşitlemesi ve yedekten başka cihaza
+  geçmez). Kod: Android `Account.kt`, `AccountScreen.kt` (test `AccountTest`, `MoreScreensTest.account`), iOS
+  `Account.swift`, `AccountView.swift` (CI `-openScreen account`); metinler `account.*` (19 dil); uygulama içi gizlilik
+  notlarında hesap cümlesi; `APP_REVIEW_NOTES.md` ve `PLAY_CONSOLE.md` güncel.
+- **Yayından önce (sahibin onayıyla):** sunucu canlıda ve site sayfaları (aydınlatma) canlıda olmalı (madde 11);
+  App Store Connect'te Uygulama Gizliliği'ne "E-posta adresi", "Ad" ve "Kullanıcı kimliği" (hesap yönetimi ve
+  uygulama işlevi, kimlikle bağlantılı, izleme yok) eklenir, App Review › Sign-In Information'a deneme hesabı
+  girilir (depoya yazılmaz); Play'de veri güvenliği formu ve hesap silme adresi (`PLAY_CONSOLE.md` 4).
+- **Sırada:** ana altyapı oturumunun yanıtı (R2 yedek süresi ve bölgesi; gelince gizlilik metni gerekirse
+  düzeltilir) ve kurulum; sonra aşama 2 (ortak zikir ve hatim).

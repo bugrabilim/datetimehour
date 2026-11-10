@@ -665,6 +665,22 @@ class MoreScreensTest {
         Onboarding.finish()
     }
 
+    /** Ayarlar › Hesap (üyelik aşama 1): girişsiz ve sahte sunucuyla girişli hâl */
+    @Test fun account() {
+        Account.resetForTest()
+        Account.init(RuntimeEnvironment.getApplication())
+        kotlinx.coroutines.runBlocking { Account.signOut() }
+        page("tr-hesap", "Hesap") { AccountScreen {} }
+        page("ar-hesap", "الحساب", qualifiers = "ar") { AccountScreen {} }
+        // Giriş ve oturum yenileme aynı kullanıcıyı döner (ekran açılınca refresh çağrılır)
+        val user = org.json.JSONObject().put("id", "u1").put("email", "ayse@example.com").put("name", "Ayşe").put("lang", "tr")
+        Account.transport = { _, _, _, _ -> Account.Resp(200, org.json.JSONObject().put("token", "t").put("user", user).toString(), null) }
+        kotlinx.coroutines.runBlocking { Account.signIn("ayse@example.com", "guclu-sifre-1") }
+        page("tr-hesap-girisli", "Hesap") { AccountScreen {} }
+        page("tr-ayarlar-hesap", "Ayarlar") { SettingsScreen {} }
+        Account.resetForTest()
+    }
+
     @Test fun badges() {
         // Örnek ilerleme: birkaç rozet kazanılmış, 6 model görülmüş, 2 gün seri
         BadgeStore.deleteAll()

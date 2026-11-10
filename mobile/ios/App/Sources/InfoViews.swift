@@ -33,6 +33,10 @@ struct SettingsView: View {
         let support = ["support.title", "support.rate", "support.share", "support.qr", "support.feedback", "support.moreApps",
                        "support.version", "badges.h1", "settings.about", "onboard.replay"]
         Form {
+            // Hesap (üyelik aşama 1, 10 Kasım 2026): isteğe bağlı; satırda e-posta ya da "Giriş yapılmadı"
+            if shows("account.title", "account.signIn", "account.signUp", "account.delete", "account.download") {
+                Section { AccountRow() }
+            }
             if general.contains(where: { shows($0) }) {
                 Section(L("settings.color.general")) {
                     if shows("features.title") {

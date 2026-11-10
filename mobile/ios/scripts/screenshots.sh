@@ -61,6 +61,8 @@ FEAT="" shoot tr tr_TR light tr-kuruluma-devam -onboard.resume "<true/>"
 # İzinler sayfası (5 Kasım 2026): durum, ne için, telefonun ayarlarına bağlantı
 shoot tr tr_TR light tr-izinler -openScreen permissions
 shoot hi hi_IN dark hi-izinler -openScreen permissions
+# Ayarlar › Hesap (üyelik aşama 1): girişsiz hâl
+shoot tr tr_TR light tr-hesap -openScreen account
 # Saat modelleri (sitedeki 20 model; -clockModel kimlik)
 for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal flip; do
   shoot tr tr_TR light "model-$M" -clockModel "$M"

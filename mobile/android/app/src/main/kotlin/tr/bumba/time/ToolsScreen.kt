@@ -87,6 +87,8 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "homeItems" -> Page(L("home.customize"), { onRoute("settings") }) { HomeItemsEditor() }
         "features" -> Page(L("features.title"), { onRoute("settings") }) { FeaturesScreen() }
         "permissions" -> Page(L("perms.title"), { onRoute("settings") }) { PermissionsScreen() }
+        // Hesap (üyelik aşama 1, 10 Kasım 2026): isteğe bağlı, e-posta + şifre
+        "account" -> Page(L("account.title"), { onRoute("settings") }) { AccountScreen { onRoute(it) } }
         "about" -> Page(L("settings.about"), onRoute) { AboutScreen() }
         "shareQr" -> Page(L("support.qr"), { onRoute("settings") }) { ShareQrScreen() }
         "language" -> Page(L("lang.title"), { onRoute("settings") }) { LanguageScreen() }
