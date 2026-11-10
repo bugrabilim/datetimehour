@@ -91,6 +91,8 @@ const SITE_PATHS = [
   // 2. analiz #125: ay adlarının kökeni (takvim yaprağı)
   "calendar.monthOrigin.heading", "calendar.monthOrigin.source", "calendar.monthOrigin.items.*",
   "zakat.fitreHeading", "zakat.fitreText", "zakat.fitrePeople", "zakat.fitreTotal", "zakat.fitreNote",
+  // Endonezya zekâtı (BAZNAS; 10 Kasım 2026)
+  "zakat.stdLabel", "zakat.stdDiyanet", "zakat.stdBaznas", "zakat.noteBaznas", "zakat.fitrahHeading", "zakat.fitrahText", "zakat.fidyahText",
   "hijriConv.h1", "hijriConv.toHijri", "hijriConv.toGreg", "hijriConv.gregLabel", "hijriConv.yearLabel", "hijriConv.monthLabel",
   "hijriConv.dayLabel", "hijriConv.dayMax",
   "tools.pomodoro.tags.*",
@@ -302,7 +304,11 @@ const hijriIdJson = JSON.stringify([...hijriIdTable]) + "\n";
 /* Fitre (src/data/fitre.json): en son açıklanan yıl, tutar (TL) ve açıklama tarihi */
 const fitreSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/fitre.json"), "utf8")).years;
 const fitreYear = Object.keys(fitreSrc).sort().pop();
-const fitreJson = JSON.stringify({ year: +fitreYear, amount: fitreSrc[fitreYear].amount, date: fitreSrc[fitreYear].date }) + "\n";
+// "id": Endonezya (BAZNAS) en son yıl, fitrah ve fidye (rupiah), nisab gramı (src/data/zakat-id.json)
+const zakatIdSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/zakat-id.json"), "utf8"));
+const zakatIdYear = Object.keys(zakatIdSrc.years).sort().pop();
+const fitreJson = JSON.stringify({ year: +fitreYear, amount: fitreSrc[fitreYear].amount, date: fitreSrc[fitreYear].date,
+  id: { year: +zakatIdYear, fitrah: zakatIdSrc.years[zakatIdYear].fitrah, fidyah: zakatIdSrc.years[zakatIdYear].fidyah, nisab: zakatIdSrc.nisabGrams } }) + "\n";
 
 /* Dünya saatleri için şehirler: ad ve ülke beş dilde, IANA saat dilimi, koordinat */
 const cities = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/cities.json"), "utf8")).map((c) => ({

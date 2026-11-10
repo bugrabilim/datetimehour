@@ -2107,6 +2107,10 @@ const TZ_ABBRS = [
   { a: "GST", tz: "Asia/Dubai", m: 1, off: 240, live: "Asia/Dubai", regions: ["AE", "OM"] },
   { a: "PKT", tz: "Asia/Karachi", m: 1, off: 300, live: "Asia/Karachi", regions: ["PK"] },
   { a: "IST", tz: "Asia/Kolkata", m: 1, off: 330, live: "Asia/Kolkata", regions: ["IN", "LK"] },
+  // Endonezya'nın üç saat dilimi (10 Kasım 2026): Batı, Orta, Doğu
+  { a: "WIB", tz: "Asia/Jakarta", m: 1, off: 420, live: "Asia/Jakarta", regions: ["ID"] },
+  { a: "WITA", tz: "Asia/Makassar", m: 1, off: 480, live: "Asia/Makassar", regions: ["ID"] },
+  { a: "WIT", tz: "Asia/Jayapura", m: 1, off: 540, live: "Asia/Jayapura", regions: ["ID"] },
   { a: "SGT", tz: "Asia/Singapore", m: 1, off: 480, live: "Asia/Singapore", regions: ["SG"] },
   { a: "JST", tz: "Asia/Tokyo", m: 1, off: 540, live: "Asia/Tokyo", regions: ["JP"] },
   { a: "KST", tz: "Asia/Seoul", m: 1, off: 540, live: "Asia/Seoul", regions: ["KR"] },
@@ -2476,15 +2480,22 @@ function qiblaDial(lang) {
    (Diyanet), oran 1/40, altın fiyatını kullanıcı yazar; tutarlar kaydedilmez, gönderilmez. Betik zakat.js. */
 const ZAKAT_FIELDS = ["cash", "goldGrams", "goldPrice", "silverValue", "foreign", "trade", "receivable", "debt"];
 const FITRE = readJson("src/data/fitre.json");
+// Endonezya (BAZNAS; 10 Kasım 2026): nisab 85 g, fitrah ve fidye; "Hesap esası" seçimi (Endonezce sayfada ve saat dilimi Endonezya'daysa BAZNAS)
+const ZAKAT_ID = readJson("src/data/zakat-id.json");
+const rupiah = (n) => "Rp " + new Intl.NumberFormat("id-ID").format(n);
 function buildZakat(lang) {
   const t = I[lang], s = t.zakat;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].zakat }];
   const field = (k) => `<div class="field"><label for="zk-${k}">${esc(s.fields[k])}</label><input id="zk-${k}" type="text" inputmode="decimal" autocomplete="off" dir="ltr" data-zk="${k}"></div>`;
   const res = (k, label) => `<div class="fact"><dt${k === "nisab" ? " data-zk-nisab-label" : ""}>${esc(label)}</dt><dd data-zk-${k} dir="ltr">–</dd></div>`;
-  const nisabLabel = tpl(s.nisab, { g: new Intl.NumberFormat(RTL.includes(lang) ? "en" : I[lang].locale, { maximumFractionDigits: 2 }).format(80.18) });
+  const gFmt = (g) => tpl(s.nisab, { g: new Intl.NumberFormat(RTL.includes(lang) ? "en" : I[lang].locale, { maximumFractionDigits: 2 }).format(g) });
+  const baznasFirst = lang === "id";
+  const nisabLabel = gFmt(baznasFirst ? ZAKAT_ID.nisabGrams : 80.18);
+  const std = `<div class="zk-grid"><div class="field"><label for="zk-std">${esc(s.stdLabel)}</label><select id="zk-std" data-zk-std data-nisab-diyanet="${esc(gFmt(80.18))}" data-nisab-baznas="${esc(gFmt(ZAKAT_ID.nisabGrams))}" data-grams-baznas="${ZAKAT_ID.nisabGrams}"><option value="diyanet"${baznasFirst ? "" : " selected"}>${esc(s.stdDiyanet)}</option><option value="baznas"${baznasFirst ? " selected" : ""}>${esc(s.stdBaznas)}</option></select></div></div>`;
   const hero = `<section class="zk" data-zakat aria-labelledby="zk-h">
       <h2 id="zk-h" class="sr-only">${esc(s.h1)}</h2>
       <p class="meta">${esc(s.intro)}</p>
+      ${std}
       <div class="zk-grid">${ZAKAT_FIELDS.map(field).join("")}</div>
       <h2 class="zk-res-h">${esc(s.resultHeading)}</h2>
       <dl class="facts zk-res">${res("net", s.net)}${res("nisab", nisabLabel)}<div class="fact" data-zk-amount-box hidden><dt>${esc(s.amount)}</dt><dd data-zk-amount dir="ltr">–</dd></div></dl>
@@ -2493,14 +2504,23 @@ function buildZakat(lang) {
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`;
   const fy = Object.keys(FITRE.years).sort().pop(), fv = FITRE.years[fy];
-  const fitre = `<section class="zk-fitre" data-fitre="${fv.amount}" aria-labelledby="zk-f-h">
+  const iy = Object.keys(ZAKAT_ID.years).sort().pop(), iv = ZAKAT_ID.years[iy];
+  const only = (std, on) => ` data-zk-only="${std}"${on ? "" : " hidden"}`;
+  const fitrah = `<section class="zk-fitre" data-fitrah="${iv.fitrah}"${only("baznas", baznasFirst)} aria-labelledby="zk-fi-h">
+      <h2 id="zk-fi-h" class="zk-res-h">${esc(s.fitrahHeading)}</h2>
+      <p>${esc(tpl(s.fitrahText, { year: iy, amount: rupiah(iv.fitrah) }))}</p>
+      <div class="zk-grid"><div class="field"><label for="zk-people-id">${esc(s.fitrePeople)}</label><input id="zk-people-id" type="number" inputmode="numeric" min="1" max="99" value="1" data-fitrah-people></div></div>
+      <dl class="facts zk-res"><div class="fact"><dt>${esc(s.fitreTotal)}</dt><dd data-fitrah-total dir="ltr">${esc(rupiah(iv.fitrah))}</dd></div></dl>
+      <p class="meta">${esc(tpl(s.fidyahText, { year: iy, amount: rupiah(iv.fidyah) }))}</p>
+    </section>`;
+  const fitre = `<section class="zk-fitre" data-fitre="${fv.amount}"${only("diyanet", !baznasFirst)} aria-labelledby="zk-f-h">
       <h2 id="zk-f-h" class="zk-res-h">${esc(s.fitreHeading)}</h2>
       <p>${esc(tpl(s.fitreText, { year: fy, amount: fv.amount, date: fmtDate(lang, fv.date) }))}</p>
       <div class="zk-grid"><div class="field"><label for="zk-people">${esc(s.fitrePeople)}</label><input id="zk-people" type="number" inputmode="numeric" min="1" max="99" value="1" data-fitre-people></div></div>
       <dl class="facts zk-res"><div class="fact"><dt>${esc(s.fitreTotal)}</dt><dd data-fitre-total dir="ltr">${fv.amount} TL</dd></div></dl>
       <p class="meta">${esc(s.fitreNote)}</p>
     </section>`;
-  const sections = `<section class="section"><div class="wrap">${fitre}<p class="meta">${esc(s.note)}</p></div></section>`;
+  const sections = `<section class="section"><div class="wrap">${fitre}${fitrah}<p class="meta"${only("diyanet", !baznasFirst)}>${esc(s.note)}</p><p class="meta"${only("baznas", baznasFirst)}>${esc(s.noteBaznas)}</p></div></section>`;
   const zk = { needGold: s.needGold, due: s.due, notDue: s.notDue };
   return simplePage(lang, "zakat", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "zakat", title: s.h1 }, scripts: ["zakat.js"], clientExtra: { t: { zk } }, nav: "prayer", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].zakat, s.description)] });
 }

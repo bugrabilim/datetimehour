@@ -2649,7 +2649,14 @@
     "fitreText": "Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu {year} yılı için fitreyi kişi başı {amount} TL olarak açıkladı ({date}). Geçerlilik: {year} Ramazan ayından bir sonraki Ramazan'a kadar.",
     "fitrePeople": "Kişi sayısı (bakmakla yükümlü olduklarınız dahil)",
     "fitreTotal": "Toplam fitre",
-    "fitreNote": "Tutar Türkiye için ve en düşük ölçüdür; imkânı olan hurma, üzüm gibi daha yüksek ölçüyle verebilir. Fitre bayram namazından önce verilir."
+    "fitreNote": "Tutar Türkiye için ve en düşük ölçüdür; imkânı olan hurma, üzüm gibi daha yüksek ölçüyle verebilir. Fitre bayram namazından önce verilir.",
+    "stdLabel": "Hesap esası",
+    "stdDiyanet": "Diyanet (Türkiye): nisab 80,18 g altın",
+    "stdBaznas": "BAZNAS (Endonezya): nisab 85 g altın",
+    "noteBaznas": "Hesap BAZNAS'ın esaslarına göredir: nisab 85 gram altın, oran %2,5 (kırkta bir); malın üzerinden bir kamerî yıl geçmiş olmalıdır. Kesin bilgi için BAZNAS'a ya da bir din görevlisine danışın.",
+    "fitrahHeading": "Zekât fitrah (BAZNAS)",
+    "fitrahText": "BAZNAS {year} yılı için zekât fitrahı kişi başı {amount} olarak belirledi; bu yaklaşık 2,5 kg ya da 3,5 litre pirince denktir. İl ve ilçe BAZNAS'ları yerel pirinç fiyatına göre farklı tutar belirleyebilir.",
+    "fidyahText": "Oruç tutamayanlar için fidye (BAZNAS {year}): günlük kişi başı {amount}."
   },
   "api": {
     "title": "Açık veri (API): tatil, namaz vakti, hicri takvim | Saat Tarih",

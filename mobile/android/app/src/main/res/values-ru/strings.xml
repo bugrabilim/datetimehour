@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">Число человек (включая иждивенцев)</string>
     <string name="zakat_fitreTotal">Сумма фитра</string>
     <string name="zakat_fitreNote">Сумма указана для Турции и является минимальной; кто может, даёт больше (исходя из стоимости фиников или изюма). Фитр отдают до праздничного намаза.</string>
+    <string name="zakat_stdLabel">Основа расчёта</string>
+    <string name="zakat_stdDiyanet">Диянет (Турция): нисаб 80,18 г золота</string>
+    <string name="zakat_stdBaznas">BAZNAS (Индонезия): нисаб 85 г золота</string>
+    <string name="zakat_noteBaznas" formatted="false">Расчёт по правилам BAZNAS: нисаб 85 граммов золота, ставка 2,5 % (одна сороковая); имущество должно находиться во владении один лунный год. За точным ответом обратитесь в BAZNAS или к знатоку религии.</string>
+    <string name="zakat_fitrahHeading">Закят аль-фитр (BAZNAS)</string>
+    <string name="zakat_fitrahText">BAZNAS установил закят аль-фитр на %1$s год в размере %2$s на человека — примерно 2,5 кг или 3,5 литра риса. Провинциальные и районные отделения BAZNAS могут установить другую сумму с учётом местной цены риса.</string>
+    <string name="zakat_fidyahText">Фидья для тех, кто не может поститься (BAZNAS, %1$s): %2$s на человека в день.</string>
     <string name="hijriConv_h1">Конвертер дат хиджры</string>
     <string name="hijriConv_toHijri">Григорианская → хиджра</string>
     <string name="hijriConv_toGreg">Хиджра → григорианская</string>

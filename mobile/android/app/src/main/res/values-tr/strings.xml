@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">Kişi sayısı (bakmakla yükümlü olduklarınız dahil)</string>
     <string name="zakat_fitreTotal">Toplam fitre</string>
     <string name="zakat_fitreNote">Tutar Türkiye için ve en düşük ölçüdür; imkânı olan hurma, üzüm gibi daha yüksek ölçüyle verebilir. Fitre bayram namazından önce verilir.</string>
+    <string name="zakat_stdLabel">Hesap esası</string>
+    <string name="zakat_stdDiyanet">Diyanet (Türkiye): nisab 80,18 g altın</string>
+    <string name="zakat_stdBaznas">BAZNAS (Endonezya): nisab 85 g altın</string>
+    <string name="zakat_noteBaznas" formatted="false">Hesap BAZNAS\'ın esaslarına göredir: nisab 85 gram altın, oran %2,5 (kırkta bir); malın üzerinden bir kamerî yıl geçmiş olmalıdır. Kesin bilgi için BAZNAS\'a ya da bir din görevlisine danışın.</string>
+    <string name="zakat_fitrahHeading">Zekât fitrah (BAZNAS)</string>
+    <string name="zakat_fitrahText">BAZNAS %1$s yılı için zekât fitrahı kişi başı %2$s olarak belirledi; bu yaklaşık 2,5 kg ya da 3,5 litre pirince denktir. İl ve ilçe BAZNAS\'ları yerel pirinç fiyatına göre farklı tutar belirleyebilir.</string>
+    <string name="zakat_fidyahText">Oruç tutamayanlar için fidye (BAZNAS %1$s): günlük kişi başı %2$s.</string>
     <string name="hijriConv_h1">Hicri takvim çevirici</string>
     <string name="hijriConv_toHijri">Miladi tarihten hicri tarihe</string>
     <string name="hijriConv_toGreg">Hicri tarihten miladi tarihe</string>

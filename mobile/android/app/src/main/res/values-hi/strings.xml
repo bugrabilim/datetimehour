@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">लोगों की संख्या (आपके आश्रितों सहित)</string>
     <string name="zakat_fitreTotal">कुल फ़ित्रा</string>
     <string name="zakat_fitreNote">यह रकम तुर्किये के लिए है और न्यूनतम है; जो सक्षम हों वे ज़्यादा दे सकते हैं (खजूर या किशमिश के हिसाब से)। फ़ित्रा ईद की नमाज़ से पहले दिया जाता है।</string>
+    <string name="zakat_stdLabel">गणना का आधार</string>
+    <string name="zakat_stdDiyanet">दियानत (तुर्किये): निसाब 80.18 ग्राम सोना</string>
+    <string name="zakat_stdBaznas">BAZNAS (इंडोनेशिया): निसाब 85 ग्राम सोना</string>
+    <string name="zakat_noteBaznas" formatted="false">यह गणना BAZNAS के नियमों के अनुसार है: निसाब 85 ग्राम सोना, दर 2.5% (चालीसवाँ भाग); माल पर एक चांद्र वर्ष बीतना ज़रूरी है। पक्की जानकारी के लिए BAZNAS या किसी आलिम से पूछें।</string>
+    <string name="zakat_fitrahHeading">सदक़ा-ए-फ़ित्र (BAZNAS)</string>
+    <string name="zakat_fitrahText">BAZNAS ने %1$s के लिए सदक़ा-ए-फ़ित्र प्रति व्यक्ति %2$s तय किया है, जो लगभग 2.5 किलो या 3.5 लीटर चावल के बराबर है। प्रांतीय और ज़िला BAZNAS स्थानीय चावल के दाम के अनुसार अलग राशि तय कर सकते हैं।</string>
+    <string name="zakat_fidyahText">रोज़ा न रख सकने वालों के लिए फ़िद्या (BAZNAS %1$s): प्रति व्यक्ति प्रतिदिन %2$s।</string>
     <string name="hijriConv_h1">हिजरी तारीख परिवर्तक</string>
     <string name="hijriConv_toHijri">ग्रेगोरियन से हिजरी</string>
     <string name="hijriConv_toGreg">हिजरी से ग्रेगोरियन</string>

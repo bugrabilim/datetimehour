@@ -480,6 +480,9 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   const zk = fs.readFileSync(path.join(DIST, "zekat-hesaplama", "index.html"), "utf8");
   check(/data-zakat\b/.test(zk) && (zk.match(/data-zk="/g) || []).length === 8 && /zakat\.js/.test(zk) && /data-zk-verdict/.test(zk), "zekât sayfası eksik");
   check(/data-fitre="\d+"/.test(zk) && /data-fitre-people/.test(zk) && /data-fitre-total/.test(zk), "zekât sayfasında fitre bölümü yok");
+  // BAZNAS (Endonezya; 10 Kasım 2026): esas seçimi, fitrah Rp 50.000; Endonezce sayfada BAZNAS seçili
+  const zkId = fs.readFileSync(path.join(DIST, "id", "zakat-calculator", "index.html"), "utf8");
+  check(/data-zk-std/.test(zk) && /data-fitrah="50000"/.test(zk) && /Rp 50\.000/.test(zk) && /<option value="baznas" selected>/.test(zkId), "zekât: BAZNAS esası eksik");
 }
 // 9. tur (30 Ekim 2026, rakip analizi K maddeleri): kerahat, altın/mavi saat, Ay .ics, araç ekleri, saat görünümü
 {

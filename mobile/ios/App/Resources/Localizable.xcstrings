@@ -10033,7 +10033,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Awal Tiga Bulan Suci"
+            "value": "Awal Rajab (tiga bulan suci)"
           }
         },
         "ur": {
@@ -10152,7 +10152,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Malam Ragaib (Regaib Kandili)"
+            "value": "Malam Ragaib"
           }
         },
         "ur": {
@@ -10271,7 +10271,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Malam Isra Mikraj (Miraç Kandili)"
+            "value": "Malam Isra Mikraj"
           }
         },
         "ur": {
@@ -10390,7 +10390,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Malam Nisfu Syakban (Berat Kandili)"
+            "value": "Malam Nisfu Syakban"
           }
         },
         "ur": {
@@ -10509,7 +10509,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hari pertama Ramadan"
+            "value": "Awal Ramadan"
           }
         },
         "ur": {
@@ -10628,7 +10628,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lailatulkadar (Kadir Gecesi)"
+            "value": "Malam Lailatulkadar"
           }
         },
         "ur": {
@@ -10747,7 +10747,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hari menjelang Ramazan Bayramı"
+            "value": "Hari menjelang Idulfitri"
           }
         },
         "ur": {
@@ -10866,7 +10866,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ramazan Bayramı, hari ke-1"
+            "value": "Idulfitri, hari ke-1"
           }
         },
         "ur": {
@@ -10985,7 +10985,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ramazan Bayramı, hari ke-2"
+            "value": "Idulfitri, hari ke-2"
           }
         },
         "ur": {
@@ -11104,7 +11104,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ramazan Bayramı, hari ke-3"
+            "value": "Idulfitri, hari ke-3"
           }
         },
         "ur": {
@@ -11223,7 +11223,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hari menjelang Kurban Bayramı"
+            "value": "Hari Arafah (menjelang Iduladha)"
           }
         },
         "ur": {
@@ -11342,7 +11342,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kurban Bayramı, hari ke-1"
+            "value": "Iduladha, hari ke-1"
           }
         },
         "ur": {
@@ -11461,7 +11461,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kurban Bayramı, hari ke-2"
+            "value": "Iduladha, hari ke-2"
           }
         },
         "ur": {
@@ -11580,7 +11580,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kurban Bayramı, hari ke-3"
+            "value": "Iduladha, hari ke-3"
           }
         },
         "ur": {
@@ -11699,7 +11699,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kurban Bayramı, hari ke-4"
+            "value": "Iduladha, hari ke-4"
           }
         },
         "ur": {
@@ -12056,7 +12056,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Malam Maulid Nabi (Mevlid Kandili)"
+            "value": "Malam Maulid Nabi"
           }
         },
         "ur": {
@@ -83059,6 +83059,839 @@
           "stringUnit": {
             "state": "translated",
             "value": "পরিমাণটি তুরস্কের জন্য এবং এটি সর্বনিম্ন; যারা পারেন বেশি দিতে পারেন (খেজুর বা কিশমিশের মাপে)। ফিতরা ঈদের নামাজের আগে দেওয়া হয়।"
+          }
+        }
+      }
+    },
+    "zakat.stdLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap esası"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Basis of calculation"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berechnungsgrundlage"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesablama əsası"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أساس الحساب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dasar perhitungan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حساب کی بنیاد"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مبنای محاسبه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Base de calcul"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Основа расчёта"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "計算の基準"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "계산 기준"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "计算依据"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batayan ng pagkalkula"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เกณฑ์การคำนวณ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Base del cálculo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Base do cálculo"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गणना का आधार"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "হিসাবের ভিত্তি"
+          }
+        }
+      }
+    },
+    "zakat.stdDiyanet": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Türkiye): nisab 80,18 g altın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Türkiye): nisab 80.18 g of gold"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Türkei): Nisab 80,18 g Gold"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanət (Türkiyə): nisab 80,18 q qızıl"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رئاسة الشؤون الدينية (تركيا): النصاب 80.18 غ من الذهب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Turki): nisab 80,18 g emas"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دیانت (ترکی): نصاب 80.18 گرام سونا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دیانت (ترکیه): نصاب 80.18 گرم طلا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Turquie) : nisab de 80,18 g d’or"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Диянет (Турция): нисаб 80,18 г золота"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ディヤーネット（トルコ）：ニサーブは金80.18 g"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "디야넷(튀르키예): 니삽 금 80.18 g"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "迪亚内特（土耳其）：起征点为黄金 80.18 克"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Turkey): nisab na 80.18 g na ginto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ดียาเนต (ตุรกี): นิศอบทองคำ 80.18 กรัม"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Turquía): nisab de 80,18 g de oro"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Turquia): nisab de 80,18 g de ouro"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "दियानत (तुर्किये): निसाब 80.18 ग्राम सोना"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "দিয়ানেত (তুরস্ক): নিসাব 80.18 গ্রাম সোনা"
+          }
+        }
+      }
+    },
+    "zakat.stdBaznas": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (Endonezya): nisab 85 g altın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (Indonesia): nisab 85 g of gold"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (Indonesien): Nisab 85 g Gold"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (İndoneziya): nisab 85 q qızıl"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (إندونيسيا): النصاب 85 غ من الذهب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (Indonesia): nisab 85 g emas"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (انڈونیشیا): نصاب 85 گرام سونا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (اندونزی): نصاب 85 گرم طلا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (Indonésie) : nisab de 85 g d’or"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (Индонезия): нисаб 85 г золота"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS（インドネシア）：ニサーブは金85 g"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS(인도네시아): 니삽 금 85 g"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS（印度尼西亚）：起征点为黄金 85 克"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (Indonesia): nisab na 85 g na ginto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (อินโดนีเซีย): นิศอบทองคำ 85 กรัม"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (Indonesia): nisab de 85 g de oro"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (Indonésia): nisab de 85 g de ouro"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (इंडोनेशिया): निसाब 85 ग्राम सोना"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS (ইন্দোনেশিয়া): নিসাব 85 গ্রাম সোনা"
+          }
+        }
+      }
+    },
+    "zakat.noteBaznas": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap BAZNAS'ın esaslarına göredir: nisab 85 gram altın, oran %%2,5 (kırkta bir); malın üzerinden bir kamerî yıl geçmiş olmalıdır. Kesin bilgi için BAZNAS'a ya da bir din görevlisine danışın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This calculation follows BAZNAS: nisab is 85 grams of gold and the rate is 2.5%% (one fortieth); one lunar year must have passed over the wealth. For a definitive answer, ask BAZNAS or a religious scholar."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Berechnung folgt BAZNAS: Nisab 85 Gramm Gold, Satz 2,5 %% (ein Vierzigstel); über das Vermögen muss ein Mondjahr vergangen sein. Verbindliche Auskunft gibt BAZNAS oder ein Religionsgelehrter."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesablama BAZNAS-ın əsaslarına görədir: nisab 85 qram qızıl, dərəcə 2,5%% (qırxda bir); malın üzərindən bir qəməri il keçməlidir. Dəqiq məlumat üçün BAZNAS-a və ya din xadiminə müraciət edin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يتبع الحساب أسس BAZNAS: النصاب 85 غرامًا من الذهب، والنسبة 2.5%% (ربع العشر)، ويجب أن يحول الحول القمري على المال. للفتوى الدقيقة راجع BAZNAS أو أحد العلماء."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perhitungan mengikuti ketentuan BAZNAS: nisab 85 gram emas, kadar 2,5%%; harta sudah dimiliki selama satu tahun hijriah (haul). Untuk kepastian, tanyakan kepada BAZNAS atau ustaz."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یہ حساب BAZNAS کے اصولوں کے مطابق ہے: نصاب 85 گرام سونا، شرح 2.5%% (چالیسواں حصہ)؛ مال پر ایک قمری سال گزرنا ضروری ہے۔ حتمی رہنمائی کے لیے BAZNAS یا کسی عالم سے رجوع کریں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "این محاسبه بر پایهٔ ضوابط BAZNAS است: نصاب 85 گرم طلا، نرخ 2.5%% (یک‌چهلم)؛ باید یک سال قمری بر مال گذشته باشد. برای پاسخ قطعی از BAZNAS یا یک عالم دینی بپرسید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le calcul suit les règles de BAZNAS : nisab de 85 grammes d’or, taux de 2,5 %% (un quarantième) ; une année lunaire doit s’être écoulée sur les biens. Pour un avis certain, consultez BAZNAS ou un savant."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Расчёт по правилам BAZNAS: нисаб 85 граммов золота, ставка 2,5 %% (одна сороковая); имущество должно находиться во владении один лунный год. За точным ответом обратитесь в BAZNAS или к знатоку религии."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この計算はBAZNASの基準によります。ニサーブは金85グラム、率は2.5%%（40分の1）で、財産を太陰暦で1年保有していることが条件です。確かな判断はBAZNASまたは宗教学者にお尋ねください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 계산은 BAZNAS 기준을 따릅니다. 니삽은 금 85그램, 비율은 2.5%%(40분의 1)이며, 재산을 음력으로 1년 동안 보유해야 합니다. 정확한 판단은 BAZNAS나 종교 학자에게 문의하세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本计算依据 BAZNAS 的规定：起征点为黄金 85 克，比例为 2.5%%（四十分之一），财产须满一个太阴年。如需确切答复，请咨询 BAZNAS 或宗教学者。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sinusunod ng kalkulasyong ito ang BAZNAS: nisab na 85 gramo ng ginto, 2.5%% (isang ika-40); dapat lumipas ang isang taong lunar sa yaman. Para sa tiyak na sagot, magtanong sa BAZNAS o sa isang iskolar ng relihiyon."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การคำนวณนี้ตามเกณฑ์ของ BAZNAS: นิศอบทองคำ 85 กรัม อัตรา 2.5%% (หนึ่งในสี่สิบ) และทรัพย์สินต้องครบรอบหนึ่งปีจันทรคติ หากต้องการคำตอบที่แน่นอน โปรดสอบถาม BAZNAS หรือผู้รู้ทางศาสนา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El cálculo sigue las normas de BAZNAS: nisab de 85 gramos de oro, tasa del 2,5 %% (una cuadragésima parte); sobre los bienes debe haber pasado un año lunar. Para una respuesta segura, consulte a BAZNAS o a un sabio religioso."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O cálculo segue as regras do BAZNAS: nisab de 85 gramas de ouro, taxa de 2,5%% (um quadragésimo); deve ter passado um ano lunar sobre os bens. Para uma resposta segura, consulte o BAZNAS ou um estudioso religioso."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "यह गणना BAZNAS के नियमों के अनुसार है: निसाब 85 ग्राम सोना, दर 2.5%% (चालीसवाँ भाग); माल पर एक चांद्र वर्ष बीतना ज़रूरी है। पक्की जानकारी के लिए BAZNAS या किसी आलिम से पूछें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই হিসাব BAZNAS-এর নিয়ম অনুযায়ী: নিসাব 85 গ্রাম সোনা, হার 2.5%% (চল্লিশ ভাগের এক ভাগ); সম্পদের ওপর এক চান্দ্র বছর পূর্ণ হতে হবে। নিশ্চিত জানতে BAZNAS বা কোনো আলেমের কাছে জিজ্ঞেস করুন।"
+          }
+        }
+      }
+    },
+    "zakat.fitrahHeading": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zekât fitrah (BAZNAS)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zakat al-fitr (BAZNAS)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zakat al-Fitr (BAZNAS)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fitrə zəkatı (BAZNAS)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زكاة الفطر (BAZNAS)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zakat fitrah (BAZNAS)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صدقۂ فطر (BAZNAS)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زکات فطره (BAZNAS)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zakat al-fitr (BAZNAS)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Закят аль-фитр (BAZNAS)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ザカート・アル＝フィトル（BAZNAS）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "자카트 알피트르(BAZNAS)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开斋捐（BAZNAS）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zakat al-fitr (BAZNAS)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ซะกาตฟิฏเราะฮ์ (BAZNAS)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zakat al-fitr (BAZNAS)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zakat al-fitr (BAZNAS)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सदक़ा-ए-फ़ित्र (BAZNAS)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সদকাতুল ফিতর (BAZNAS)"
+          }
+        }
+      }
+    },
+    "zakat.fitrahText": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS %1$@ yılı için zekât fitrahı kişi başı %2$@ olarak belirledi; bu yaklaşık 2,5 kg ya da 3,5 litre pirince denktir. İl ve ilçe BAZNAS'ları yerel pirinç fiyatına göre farklı tutar belirleyebilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS set zakat al-fitr for %1$@ at %2$@ per person, roughly 2.5 kg or 3.5 litres of rice. Provincial and district BAZNAS offices may set a different amount based on local rice prices."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS hat die Zakat al-Fitr für %1$@ auf %2$@ pro Person festgelegt, etwa 2,5 kg oder 3,5 Liter Reis. Provinz- und Bezirksstellen von BAZNAS können je nach örtlichem Reispreis einen anderen Betrag festlegen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS %1$@ ili üçün fitrə zəkatını adambaşına %2$@ müəyyən edib; bu, təxminən 2,5 kq və ya 3,5 litr düyüyə bərabərdir. Əyalət və rayon BAZNAS-ları yerli düyü qiymətinə görə fərqli məbləğ müəyyən edə bilər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حددت BAZNAS زكاة الفطر لعام %1$@ بمبلغ %2$@ للفرد، أي نحو 2.5 كغ أو 3.5 لترات من الأرز. وقد تحدد مكاتب BAZNAS في المحافظات والمناطق مبلغًا مختلفًا حسب سعر الأرز المحلي."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS menetapkan zakat fitrah %1$@ sebesar %2$@ per jiwa, setara sekitar 2,5 kg atau 3,5 liter beras. BAZNAS provinsi dan kabupaten/kota dapat menetapkan nilai berbeda sesuai harga beras setempat."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS نے %1$@ کے لیے صدقۂ فطر فی کس %2$@ مقرر کیا ہے، جو تقریباً 2.5 کلو یا 3.5 لیٹر چاول کے برابر ہے۔ صوبائی اور ضلعی BAZNAS مقامی چاول کی قیمت کے مطابق مختلف رقم مقرر کر سکتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS زکات فطرهٔ سال %1$@ را برای هر نفر %2$@ تعیین کرده است که تقریباً برابر 2.5 کیلوگرم یا 3.5 لیتر برنج است. دفترهای استانی و شهرستانی BAZNAS ممکن است بسته به قیمت محلی برنج مبلغ دیگری تعیین کنند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS a fixé la zakat al-fitr %1$@ à %2$@ par personne, soit environ 2,5 kg ou 3,5 litres de riz. Les bureaux provinciaux et de district de BAZNAS peuvent fixer un autre montant selon le prix local du riz."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS установил закят аль-фитр на %1$@ год в размере %2$@ на человека — примерно 2,5 кг или 3,5 литра риса. Провинциальные и районные отделения BAZNAS могут установить другую сумму с учётом местной цены риса."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNASは%1$@年のザカート・アル＝フィトルを1人あたり%2$@と定めました。これは米約2.5 kgまたは3.5リットルに相当します。州や県のBAZNASは地元の米価に応じて別の額を定めることがあります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS는 %1$@년 자카트 알피트르를 1인당 %2$@(으)로 정했습니다. 이는 쌀 약 2.5kg 또는 3.5리터에 해당합니다. 주와 군의 BAZNAS는 지역 쌀값에 따라 다른 금액을 정할 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS 将 %1$@ 年开斋捐定为每人 %2$@，约合大米 2.5 公斤或 3.5 升。省级和县级 BAZNAS 可根据当地米价规定不同金额。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Itinakda ng BAZNAS ang zakat al-fitr para sa %1$@ sa %2$@ bawat tao, katumbas ng mga 2.5 kg o 3.5 litro ng bigas. Maaaring magtakda ng ibang halaga ang mga BAZNAS ng lalawigan at distrito ayon sa lokal na presyo ng bigas."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS กำหนดซะกาตฟิฏเราะฮ์ปี %1$@ ไว้ที่คนละ %2$@ เท่ากับข้าวประมาณ 2.5 กก. หรือ 3.5 ลิตร สำนักงาน BAZNAS ระดับจังหวัดและอำเภออาจกำหนดจำนวนต่างกันตามราคาข้าวในท้องถิ่น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS fijó el zakat al-fitr de %1$@ en %2$@ por persona, unos 2,5 kg o 3,5 litros de arroz. Las oficinas provinciales y de distrito de BAZNAS pueden fijar otra cantidad según el precio local del arroz."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O BAZNAS fixou o zakat al-fitr de %1$@ em %2$@ por pessoa, cerca de 2,5 kg ou 3,5 litros de arroz. Os escritórios provinciais e distritais do BAZNAS podem fixar outro valor conforme o preço local do arroz."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS ने %1$@ के लिए सदक़ा-ए-फ़ित्र प्रति व्यक्ति %2$@ तय किया है, जो लगभग 2.5 किलो या 3.5 लीटर चावल के बराबर है। प्रांतीय और ज़िला BAZNAS स्थानीय चावल के दाम के अनुसार अलग राशि तय कर सकते हैं।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BAZNAS %1$@ সালের সদকাতুল ফিতর মাথাপিছু %2$@ নির্ধারণ করেছে, যা প্রায় 2.5 কেজি বা 3.5 লিটার চালের সমান। প্রাদেশিক ও জেলা BAZNAS স্থানীয় চালের দাম অনুযায়ী ভিন্ন পরিমাণ নির্ধারণ করতে পারে।"
+          }
+        }
+      }
+    },
+    "zakat.fidyahText": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oruç tutamayanlar için fidye (BAZNAS %1$@): günlük kişi başı %2$@."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fidyah for those unable to fast (BAZNAS %1$@): %2$@ per person per day."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fidya für Menschen, die nicht fasten können (BAZNAS %1$@): %2$@ pro Person und Tag."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oruc tuta bilməyənlər üçün fidyə (BAZNAS %1$@): adambaşına gündə %2$@."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الفدية لمن لا يستطيع الصيام (BAZNAS %1$@): %2$@ للفرد عن كل يوم."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fidyah bagi yang tidak mampu berpuasa (BAZNAS %1$@): %2$@ per jiwa per hari."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزہ نہ رکھ سکنے والوں کے لیے فدیہ (BAZNAS %1$@): فی کس روزانہ %2$@۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فدیه برای کسانی که نمی‌توانند روزه بگیرند (BAZNAS %1$@): روزانه برای هر نفر %2$@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fidya pour les personnes qui ne peuvent pas jeûner (BAZNAS %1$@) : %2$@ par personne et par jour."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фидья для тех, кто не может поститься (BAZNAS, %1$@): %2$@ на человека в день."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "断食できない人のフィドヤ（BAZNAS %1$@年）：1人1日あたり%2$@。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "단식할 수 없는 사람을 위한 피드야(BAZNAS %1$@년): 1인당 하루 %2$@."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法斋戒者的罚赎（BAZNAS %1$@ 年）：每人每天 %2$@。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fidyah para sa hindi makapag-ayuno (BAZNAS %1$@): %2$@ bawat tao bawat araw."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฟิดยะฮ์สำหรับผู้ที่ถือศีลอดไม่ได้ (BAZNAS %1$@): คนละ %2$@ ต่อวัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fidya para quienes no pueden ayunar (BAZNAS %1$@): %2$@ por persona y día."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fidya para quem não pode jejuar (BAZNAS %1$@): %2$@ por pessoa por dia."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "रोज़ा न रख सकने वालों के लिए फ़िद्या (BAZNAS %1$@): प्रति व्यक्ति प्रतिदिन %2$@।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "রোজা রাখতে অক্ষমদের জন্য ফিদিয়া (BAZNAS %1$@): মাথাপিছু দৈনিক %2$@।"
           }
         }
       }

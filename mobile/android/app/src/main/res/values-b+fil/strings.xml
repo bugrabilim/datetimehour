@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">Bilang ng tao (kasama ang iyong mga dependent)</string>
     <string name="zakat_fitreTotal">Kabuuang fitra</string>
     <string name="zakat_fitreNote">Para sa Türkiye ang halagang ito at ito ang pinakamababa; maaaring magbigay nang higit ang may kaya (ayon sa sukat ng datiles o pasas). Ibinibigay ang fitra bago ang dasal ng Eid.</string>
+    <string name="zakat_stdLabel">Batayan ng pagkalkula</string>
+    <string name="zakat_stdDiyanet">Diyanet (Turkey): nisab na 80.18 g na ginto</string>
+    <string name="zakat_stdBaznas">BAZNAS (Indonesia): nisab na 85 g na ginto</string>
+    <string name="zakat_noteBaznas" formatted="false">Sinusunod ng kalkulasyong ito ang BAZNAS: nisab na 85 gramo ng ginto, 2.5% (isang ika-40); dapat lumipas ang isang taong lunar sa yaman. Para sa tiyak na sagot, magtanong sa BAZNAS o sa isang iskolar ng relihiyon.</string>
+    <string name="zakat_fitrahHeading">Zakat al-fitr (BAZNAS)</string>
+    <string name="zakat_fitrahText">Itinakda ng BAZNAS ang zakat al-fitr para sa %1$s sa %2$s bawat tao, katumbas ng mga 2.5 kg o 3.5 litro ng bigas. Maaaring magtakda ng ibang halaga ang mga BAZNAS ng lalawigan at distrito ayon sa lokal na presyo ng bigas.</string>
+    <string name="zakat_fidyahText">Fidyah para sa hindi makapag-ayuno (BAZNAS %1$s): %2$s bawat tao bawat araw.</string>
     <string name="hijriConv_h1">Hijri date converter</string>
     <string name="hijriConv_toHijri">Gregorian papuntang Hijri</string>
     <string name="hijriConv_toGreg">Hijri papuntang Gregorian</string>

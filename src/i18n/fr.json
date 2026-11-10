@@ -2690,7 +2690,14 @@
     "fitreText": "La Présidence des affaires religieuses de Turquie (Haut Conseil des affaires religieuses) a fixé la fitra {year} à {amount} TL par personne ({date}), valable du Ramadan {year} jusqu’au Ramadan suivant.",
     "fitrePeople": "Nombre de personnes (y compris les personnes à charge)",
     "fitreTotal": "Fitra totale",
-    "fitreNote": "Le montant vaut pour la Turquie et constitue un minimum ; ceux qui en ont les moyens peuvent donner davantage (selon la mesure de dattes ou de raisins secs). La fitra se donne avant la prière de l’Aïd."
+    "fitreNote": "Le montant vaut pour la Turquie et constitue un minimum ; ceux qui en ont les moyens peuvent donner davantage (selon la mesure de dattes ou de raisins secs). La fitra se donne avant la prière de l’Aïd.",
+    "stdLabel": "Base de calcul",
+    "stdDiyanet": "Diyanet (Turquie) : nisab de 80,18 g d’or",
+    "stdBaznas": "BAZNAS (Indonésie) : nisab de 85 g d’or",
+    "noteBaznas": "Le calcul suit les règles de BAZNAS : nisab de 85 grammes d’or, taux de 2,5 % (un quarantième) ; une année lunaire doit s’être écoulée sur les biens. Pour un avis certain, consultez BAZNAS ou un savant.",
+    "fitrahHeading": "Zakat al-fitr (BAZNAS)",
+    "fitrahText": "BAZNAS a fixé la zakat al-fitr {year} à {amount} par personne, soit environ 2,5 kg ou 3,5 litres de riz. Les bureaux provinciaux et de district de BAZNAS peuvent fixer un autre montant selon le prix local du riz.",
+    "fidyahText": "Fidya pour les personnes qui ne peuvent pas jeûner (BAZNAS {year}) : {amount} par personne et par jour."
   },
   "api": {
     "title": "API ouverte : jours fériés, heures de prière, hégire | Saat Tarih",

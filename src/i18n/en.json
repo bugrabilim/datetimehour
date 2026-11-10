@@ -2649,7 +2649,14 @@
     "fitreText": "Turkey's Presidency of Religious Affairs (High Board of Religious Affairs) set the {year} fitra at {amount} TL per person ({date}), valid from Ramadan {year} until the next Ramadan.",
     "fitrePeople": "Number of people (including your dependants)",
     "fitreTotal": "Total fitra",
-    "fitreNote": "The amount is for Turkey and is the minimum; those who can may give more (by the measure of dates or raisins). Fitra is given before the Eid prayer."
+    "fitreNote": "The amount is for Turkey and is the minimum; those who can may give more (by the measure of dates or raisins). Fitra is given before the Eid prayer.",
+    "stdLabel": "Basis of calculation",
+    "stdDiyanet": "Diyanet (Türkiye): nisab 80.18 g of gold",
+    "stdBaznas": "BAZNAS (Indonesia): nisab 85 g of gold",
+    "noteBaznas": "This calculation follows BAZNAS: nisab is 85 grams of gold and the rate is 2.5% (one fortieth); one lunar year must have passed over the wealth. For a definitive answer, ask BAZNAS or a religious scholar.",
+    "fitrahHeading": "Zakat al-fitr (BAZNAS)",
+    "fitrahText": "BAZNAS set zakat al-fitr for {year} at {amount} per person, roughly 2.5 kg or 3.5 litres of rice. Provincial and district BAZNAS offices may set a different amount based on local rice prices.",
+    "fidyahText": "Fidyah for those unable to fast (BAZNAS {year}): {amount} per person per day."
   },
   "api": {
     "title": "Open data (API): holidays, prayer times, Hijri calendar | Saat Tarih",

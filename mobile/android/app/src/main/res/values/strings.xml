@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">Number of people (including your dependants)</string>
     <string name="zakat_fitreTotal">Total fitra</string>
     <string name="zakat_fitreNote">The amount is for Turkey and is the minimum; those who can may give more (by the measure of dates or raisins). Fitra is given before the Eid prayer.</string>
+    <string name="zakat_stdLabel">Basis of calculation</string>
+    <string name="zakat_stdDiyanet">Diyanet (Türkiye): nisab 80.18 g of gold</string>
+    <string name="zakat_stdBaznas">BAZNAS (Indonesia): nisab 85 g of gold</string>
+    <string name="zakat_noteBaznas" formatted="false">This calculation follows BAZNAS: nisab is 85 grams of gold and the rate is 2.5% (one fortieth); one lunar year must have passed over the wealth. For a definitive answer, ask BAZNAS or a religious scholar.</string>
+    <string name="zakat_fitrahHeading">Zakat al-fitr (BAZNAS)</string>
+    <string name="zakat_fitrahText">BAZNAS set zakat al-fitr for %1$s at %2$s per person, roughly 2.5 kg or 3.5 litres of rice. Provincial and district BAZNAS offices may set a different amount based on local rice prices.</string>
+    <string name="zakat_fidyahText">Fidyah for those unable to fast (BAZNAS %1$s): %2$s per person per day.</string>
     <string name="hijriConv_h1">Hijri date converter</string>
     <string name="hijriConv_toHijri">Gregorian to Hijri</string>
     <string name="hijriConv_toGreg">Hijri to Gregorian</string>

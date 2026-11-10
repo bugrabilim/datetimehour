@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">عدد الأشخاص (بمن فيهم من تعولهم)</string>
     <string name="zakat_fitreTotal">إجمالي زكاة الفطر</string>
     <string name="zakat_fitreNote">المبلغ خاص بتركيا وهو الحد الأدنى؛ ومن استطاع أن يعطي أكثر (بمقدار التمر أو الزبيب) فله ذلك. تُخرج زكاة الفطر قبل صلاة العيد.</string>
+    <string name="zakat_stdLabel">أساس الحساب</string>
+    <string name="zakat_stdDiyanet">رئاسة الشؤون الدينية (تركيا): النصاب 80.18 غ من الذهب</string>
+    <string name="zakat_stdBaznas">BAZNAS (إندونيسيا): النصاب 85 غ من الذهب</string>
+    <string name="zakat_noteBaznas" formatted="false">يتبع الحساب أسس BAZNAS: النصاب 85 غرامًا من الذهب، والنسبة 2.5% (ربع العشر)، ويجب أن يحول الحول القمري على المال. للفتوى الدقيقة راجع BAZNAS أو أحد العلماء.</string>
+    <string name="zakat_fitrahHeading">زكاة الفطر (BAZNAS)</string>
+    <string name="zakat_fitrahText">حددت BAZNAS زكاة الفطر لعام %1$s بمبلغ %2$s للفرد، أي نحو 2.5 كغ أو 3.5 لترات من الأرز. وقد تحدد مكاتب BAZNAS في المحافظات والمناطق مبلغًا مختلفًا حسب سعر الأرز المحلي.</string>
+    <string name="zakat_fidyahText">الفدية لمن لا يستطيع الصيام (BAZNAS %1$s): %2$s للفرد عن كل يوم.</string>
     <string name="hijriConv_h1">محول التاريخ الهجري</string>
     <string name="hijriConv_toHijri">من الميلادي إلى الهجري</string>
     <string name="hijriConv_toGreg">من الهجري إلى الميلادي</string>

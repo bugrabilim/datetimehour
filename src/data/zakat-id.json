@@ -1,0 +1,11 @@
+{
+  "_": "Endonezya zekât esasları (BAZNAS, devletin zekât kurumu; 10 Kasım 2026'da denetlendi). Yıllık görev: BAZNAS her yıl Ramazan'dan önce fitrah ve fidye tutarını, Şubat'ta gelir zekâtı nisabını açıklar; yeni yılı ekle. İl ve ilçe BAZNAS'ları fitrahı yerel pirinç fiyatına göre farklı belirleyebilir.",
+  "nisabGrams": 85,
+  "years": {
+    "2026": { "fitrah": 50000, "fidyah": 65000, "rice": "2,5 kg / 3,5 L", "decree": "Keputusan Ketua BAZNAS 14/2026 (fitrah, fidyah); 15/2026 (nisab)" }
+  },
+  "sources": [
+    "https://www.jawapos.com/nasional/2602100086/baznas-tetapkan-zakat-fitrah-2026-sebesar-rp-50000-dan-fidyah-rp-65000-per-jiwa",
+    "https://wartaekonomi.co.id/read602278/baznas-tetapkan-nisab-zakat-2026-naik-7-sesuai-kenaikan-upah-nasional-gaji-764-juta-wajib-zakat"
+  ]
+}

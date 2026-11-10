@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">人数（扶養家族を含む）</string>
     <string name="zakat_fitreTotal">フィトラ合計</string>
     <string name="zakat_fitreNote">金額はトルコ向けの最低額です。余裕のある人はそれ以上（ナツメヤシや干しぶどうの量を目安に）支払うことができます。フィトラはイードの礼拝の前に支払います。</string>
+    <string name="zakat_stdLabel">計算の基準</string>
+    <string name="zakat_stdDiyanet">ディヤーネット（トルコ）：ニサーブは金80.18 g</string>
+    <string name="zakat_stdBaznas">BAZNAS（インドネシア）：ニサーブは金85 g</string>
+    <string name="zakat_noteBaznas" formatted="false">この計算はBAZNASの基準によります。ニサーブは金85グラム、率は2.5%（40分の1）で、財産を太陰暦で1年保有していることが条件です。確かな判断はBAZNASまたは宗教学者にお尋ねください。</string>
+    <string name="zakat_fitrahHeading">ザカート・アル＝フィトル（BAZNAS）</string>
+    <string name="zakat_fitrahText">BAZNASは%1$s年のザカート・アル＝フィトルを1人あたり%2$sと定めました。これは米約2.5 kgまたは3.5リットルに相当します。州や県のBAZNASは地元の米価に応じて別の額を定めることがあります。</string>
+    <string name="zakat_fidyahText">断食できない人のフィドヤ（BAZNAS %1$s年）：1人1日あたり%2$s。</string>
     <string name="hijriConv_h1">ヒジュラ暦変換</string>
     <string name="hijriConv_toHijri">西暦 → ヒジュラ暦</string>
     <string name="hijriConv_toGreg">ヒジュラ暦 → 西暦</string>

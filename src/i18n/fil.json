@@ -2715,7 +2715,14 @@
     "fitreText": "Itinakda ng Presidency of Religious Affairs ng Türkiye (High Board of Religious Affairs) ang fitra ng {year} sa {amount} TL bawat tao ({date}), may bisa mula Ramadan {year} hanggang sa susunod na Ramadan.",
     "fitrePeople": "Bilang ng tao (kasama ang iyong mga dependent)",
     "fitreTotal": "Kabuuang fitra",
-    "fitreNote": "Para sa Türkiye ang halagang ito at ito ang pinakamababa; maaaring magbigay nang higit ang may kaya (ayon sa sukat ng datiles o pasas). Ibinibigay ang fitra bago ang dasal ng Eid."
+    "fitreNote": "Para sa Türkiye ang halagang ito at ito ang pinakamababa; maaaring magbigay nang higit ang may kaya (ayon sa sukat ng datiles o pasas). Ibinibigay ang fitra bago ang dasal ng Eid.",
+    "stdLabel": "Batayan ng pagkalkula",
+    "stdDiyanet": "Diyanet (Turkey): nisab na 80.18 g na ginto",
+    "stdBaznas": "BAZNAS (Indonesia): nisab na 85 g na ginto",
+    "noteBaznas": "Sinusunod ng kalkulasyong ito ang BAZNAS: nisab na 85 gramo ng ginto, 2.5% (isang ika-40); dapat lumipas ang isang taong lunar sa yaman. Para sa tiyak na sagot, magtanong sa BAZNAS o sa isang iskolar ng relihiyon.",
+    "fitrahHeading": "Zakat al-fitr (BAZNAS)",
+    "fitrahText": "Itinakda ng BAZNAS ang zakat al-fitr para sa {year} sa {amount} bawat tao, katumbas ng mga 2.5 kg o 3.5 litro ng bigas. Maaaring magtakda ng ibang halaga ang mga BAZNAS ng lalawigan at distrito ayon sa lokal na presyo ng bigas.",
+    "fidyahText": "Fidyah para sa hindi makapag-ayuno (BAZNAS {year}): {amount} bawat tao bawat araw."
   },
   "api": {
     "title": "Open data (API): holiday, oras ng dasal, Hijri | Saat Tarih",

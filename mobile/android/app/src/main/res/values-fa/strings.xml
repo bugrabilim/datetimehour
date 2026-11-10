@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">شمار افراد (با افراد تحت تکفل)</string>
     <string name="zakat_fitreTotal">کل فطریه</string>
     <string name="zakat_fitreNote">این مبلغ برای ترکیه و حداقل است؛ کسانی که توانایی دارند می‌توانند بیشتر بدهند (بر پایهٔ بهای خرما یا کشمش). فطریه پیش از نماز عید پرداخت می‌شود.</string>
+    <string name="zakat_stdLabel">مبنای محاسبه</string>
+    <string name="zakat_stdDiyanet">دیانت (ترکیه): نصاب 80.18 گرم طلا</string>
+    <string name="zakat_stdBaznas">BAZNAS (اندونزی): نصاب 85 گرم طلا</string>
+    <string name="zakat_noteBaznas" formatted="false">این محاسبه بر پایهٔ ضوابط BAZNAS است: نصاب 85 گرم طلا، نرخ 2.5% (یک‌چهلم)؛ باید یک سال قمری بر مال گذشته باشد. برای پاسخ قطعی از BAZNAS یا یک عالم دینی بپرسید.</string>
+    <string name="zakat_fitrahHeading">زکات فطره (BAZNAS)</string>
+    <string name="zakat_fitrahText">BAZNAS زکات فطرهٔ سال %1$s را برای هر نفر %2$s تعیین کرده است که تقریباً برابر 2.5 کیلوگرم یا 3.5 لیتر برنج است. دفترهای استانی و شهرستانی BAZNAS ممکن است بسته به قیمت محلی برنج مبلغ دیگری تعیین کنند.</string>
+    <string name="zakat_fidyahText">فدیه برای کسانی که نمی‌توانند روزه بگیرند (BAZNAS %1$s): روزانه برای هر نفر %2$s.</string>
     <string name="hijriConv_h1">مبدل تاریخ هجری قمری</string>
     <string name="hijriConv_toHijri">میلادی به قمری</string>
     <string name="hijriConv_toGreg">قمری به میلادی</string>

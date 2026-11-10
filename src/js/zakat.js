@@ -1,5 +1,7 @@
 /* Zekât hesaplama (30 Ekim 2026): Diyanet esasları, nisab 80,18 g altın, oran kırkta bir. Uygulamalardaki Zakat.calc ile
-   aynı hesap. Tutarlar yalnız bu sayfada hesaplanır; kaydedilmez ve gönderilmez. */
+   aynı hesap. Tutarlar yalnız bu sayfada hesaplanır; kaydedilmez ve gönderilmez.
+   10 Kasım 2026: "Hesap esası" seçimi; BAZNAS (Endonezya) nisabı 85 g, fitrah ve fidye. Tarayıcının saat dilimi
+   Endonezya'daysa BAZNAS seçilir; seçim kaydedilmez. */
 (function () {
   "use strict";
   var S = window.sth;
@@ -7,6 +9,20 @@
   if (!S || !root) return;
   var Z = S.T.zk || {};
   var NISAB_GRAMS = 80.18;
+  var stdSel = document.querySelector("[data-zk-std]");
+  var ID_TZ = ["Asia/Jakarta", "Asia/Pontianak", "Asia/Makassar", "Asia/Jayapura", "Asia/Ujung_Pandang"];
+  if (stdSel) {
+    var tz = ""; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+    if (ID_TZ.indexOf(tz) >= 0) stdSel.value = "baznas";
+  }
+  function applyStd() {
+    if (!stdSel) return;
+    var b = stdSel.value === "baznas";
+    NISAB_GRAMS = b ? parseFloat(stdSel.getAttribute("data-grams-baznas")) || 85 : 80.18;
+    var lab = document.querySelector("[data-zk-nisab-label]");
+    if (lab) lab.textContent = stdSel.getAttribute(b ? "data-nisab-baznas" : "data-nisab-diyanet");
+    Array.prototype.forEach.call(document.querySelectorAll("[data-zk-only]"), function (el) { el.hidden = el.getAttribute("data-zk-only") !== stdSel.value; });
+  }
   var inputs = Array.prototype.slice.call(root.querySelectorAll("[data-zk]"));
   var q = function (sel) { return root.querySelector(sel); };
   var netEl = q("[data-zk-net]"), nisabEl = q("[data-zk-nisab]"), amountEl = q("[data-zk-amount]");
@@ -57,6 +73,17 @@
     fIn.addEventListener("input", fRender);
     fRender();
   }
+
+  // Zekât fitrah (BAZNAS): kişi sayısı × tutar (rupiah)
+  var iBox = document.querySelector("[data-fitrah]"), iIn = document.querySelector("[data-fitrah-people]"), iOut = document.querySelector("[data-fitrah-total]");
+  if (iBox && iIn && iOut) {
+    var iAmount = parseFloat(iBox.getAttribute("data-fitrah")) || 0, idf = new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 });
+    var iRender = function () { var n = Math.max(1, Math.min(99, parseInt(iIn.value, 10) || 1)); iOut.textContent = "Rp " + idf.format(n * iAmount); };
+    iIn.addEventListener("input", iRender);
+    iRender();
+  }
+  if (stdSel) stdSel.addEventListener("change", function () { applyStd(); render(); });
+  applyStd();
 
   inputs.forEach(function (i) {
     i.addEventListener("input", function () {

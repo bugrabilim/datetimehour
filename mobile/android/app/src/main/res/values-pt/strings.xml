@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">Número de pessoas (incluindo seus dependentes)</string>
     <string name="zakat_fitreTotal">Fitra total</string>
     <string name="zakat_fitreNote">O valor é para a Turquia e é o mínimo; quem tiver condições pode dar mais (pela medida de tâmaras ou passas). A fitra é dada antes da oração do Eid.</string>
+    <string name="zakat_stdLabel">Base do cálculo</string>
+    <string name="zakat_stdDiyanet">Diyanet (Turquia): nisab de 80,18 g de ouro</string>
+    <string name="zakat_stdBaznas">BAZNAS (Indonésia): nisab de 85 g de ouro</string>
+    <string name="zakat_noteBaznas" formatted="false">O cálculo segue as regras do BAZNAS: nisab de 85 gramas de ouro, taxa de 2,5% (um quadragésimo); deve ter passado um ano lunar sobre os bens. Para uma resposta segura, consulte o BAZNAS ou um estudioso religioso.</string>
+    <string name="zakat_fitrahHeading">Zakat al-fitr (BAZNAS)</string>
+    <string name="zakat_fitrahText">O BAZNAS fixou o zakat al-fitr de %1$s em %2$s por pessoa, cerca de 2,5 kg ou 3,5 litros de arroz. Os escritórios provinciais e distritais do BAZNAS podem fixar outro valor conforme o preço local do arroz.</string>
+    <string name="zakat_fidyahText">Fidya para quem não pode jejuar (BAZNAS %1$s): %2$s por pessoa por dia.</string>
     <string name="hijriConv_h1">Conversor de datas da Hégira</string>
     <string name="hijriConv_toHijri">De gregoriano para Hégira</string>
     <string name="hijriConv_toGreg">Da Hégira para gregoriano</string>

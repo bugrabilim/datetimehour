@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">人数（包括您供养的人）</string>
     <string name="zakat_fitreTotal">开斋捐合计</string>
     <string name="zakat_fitreNote">该金额适用于土耳其，为最低标准；有能力者可多给（按椰枣或葡萄干的量计）。开斋捐应在会礼之前交付。</string>
+    <string name="zakat_stdLabel">计算依据</string>
+    <string name="zakat_stdDiyanet">迪亚内特（土耳其）：起征点为黄金 80.18 克</string>
+    <string name="zakat_stdBaznas">BAZNAS（印度尼西亚）：起征点为黄金 85 克</string>
+    <string name="zakat_noteBaznas" formatted="false">本计算依据 BAZNAS 的规定：起征点为黄金 85 克，比例为 2.5%（四十分之一），财产须满一个太阴年。如需确切答复，请咨询 BAZNAS 或宗教学者。</string>
+    <string name="zakat_fitrahHeading">开斋捐（BAZNAS）</string>
+    <string name="zakat_fitrahText">BAZNAS 将 %1$s 年开斋捐定为每人 %2$s，约合大米 2.5 公斤或 3.5 升。省级和县级 BAZNAS 可根据当地米价规定不同金额。</string>
+    <string name="zakat_fidyahText">无法斋戒者的罚赎（BAZNAS %1$s 年）：每人每天 %2$s。</string>
     <string name="hijriConv_h1">伊斯兰历转换器</string>
     <string name="hijriConv_toHijri">公历转伊斯兰历</string>
     <string name="hijriConv_toGreg">伊斯兰历转公历</string>

@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">จำนวนคน (รวมผู้อยู่ในอุปการะ)</string>
     <string name="zakat_fitreTotal">ซะกาตฟิฏเราะฮ์รวม</string>
     <string name="zakat_fitreNote">จำนวนนี้สำหรับตุรกีและเป็นขั้นต่ำ ผู้ที่มีความสามารถจ่ายมากกว่าได้ (ตามปริมาณอินทผลัมหรือลูกเกด) ซะกาตฟิฏเราะฮ์ต้องจ่ายก่อนละหมาดอีด</string>
+    <string name="zakat_stdLabel">เกณฑ์การคำนวณ</string>
+    <string name="zakat_stdDiyanet">ดียาเนต (ตุรกี): นิศอบทองคำ 80.18 กรัม</string>
+    <string name="zakat_stdBaznas">BAZNAS (อินโดนีเซีย): นิศอบทองคำ 85 กรัม</string>
+    <string name="zakat_noteBaznas" formatted="false">การคำนวณนี้ตามเกณฑ์ของ BAZNAS: นิศอบทองคำ 85 กรัม อัตรา 2.5% (หนึ่งในสี่สิบ) และทรัพย์สินต้องครบรอบหนึ่งปีจันทรคติ หากต้องการคำตอบที่แน่นอน โปรดสอบถาม BAZNAS หรือผู้รู้ทางศาสนา</string>
+    <string name="zakat_fitrahHeading">ซะกาตฟิฏเราะฮ์ (BAZNAS)</string>
+    <string name="zakat_fitrahText">BAZNAS กำหนดซะกาตฟิฏเราะฮ์ปี %1$s ไว้ที่คนละ %2$s เท่ากับข้าวประมาณ 2.5 กก. หรือ 3.5 ลิตร สำนักงาน BAZNAS ระดับจังหวัดและอำเภออาจกำหนดจำนวนต่างกันตามราคาข้าวในท้องถิ่น</string>
+    <string name="zakat_fidyahText">ฟิดยะฮ์สำหรับผู้ที่ถือศีลอดไม่ได้ (BAZNAS %1$s): คนละ %2$s ต่อวัน</string>
     <string name="hijriConv_h1">แปลงวันที่ฮิจเราะห์</string>
     <string name="hijriConv_toHijri">สากลเป็นฮิจเราะห์</string>
     <string name="hijriConv_toGreg">ฮิจเราะห์เป็นสากล</string>

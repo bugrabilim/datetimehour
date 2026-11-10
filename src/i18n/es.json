@@ -2729,7 +2729,14 @@
     "fitreText": "La Presidencia de Asuntos Religiosos de Turquía (Alto Consejo de Asuntos Religiosos) fijó la fitra de {year} en {amount} TL por persona ({date}), válida desde el Ramadán de {year} hasta el siguiente Ramadán.",
     "fitrePeople": "Número de personas (incluidas las que dependen de usted)",
     "fitreTotal": "Fitra total",
-    "fitreNote": "El importe es para Turquía y es el mínimo; quien tenga medios puede dar más (según el valor de los dátiles o las pasas). La fitra se da antes de la oración del Eid."
+    "fitreNote": "El importe es para Turquía y es el mínimo; quien tenga medios puede dar más (según el valor de los dátiles o las pasas). La fitra se da antes de la oración del Eid.",
+    "stdLabel": "Base del cálculo",
+    "stdDiyanet": "Diyanet (Turquía): nisab de 80,18 g de oro",
+    "stdBaznas": "BAZNAS (Indonesia): nisab de 85 g de oro",
+    "noteBaznas": "El cálculo sigue las normas de BAZNAS: nisab de 85 gramos de oro, tasa del 2,5 % (una cuadragésima parte); sobre los bienes debe haber pasado un año lunar. Para una respuesta segura, consulte a BAZNAS o a un sabio religioso.",
+    "fitrahHeading": "Zakat al-fitr (BAZNAS)",
+    "fitrahText": "BAZNAS fijó el zakat al-fitr de {year} en {amount} por persona, unos 2,5 kg o 3,5 litros de arroz. Las oficinas provinciales y de distrito de BAZNAS pueden fijar otra cantidad según el precio local del arroz.",
+    "fidyahText": "Fidya para quienes no pueden ayunar (BAZNAS {year}): {amount} por persona y día."
   },
   "api": {
     "title": "Datos abiertos (API): festivos, horarios de oración | Saat Tarih",

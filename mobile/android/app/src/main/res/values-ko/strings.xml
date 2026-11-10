@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">인원(부양가족 포함)</string>
     <string name="zakat_fitreTotal">피트라 합계</string>
     <string name="zakat_fitreNote">이 금액은 튀르키예 기준 최소액입니다. 여유가 있는 사람은 더 낼 수 있습니다(대추야자나 건포도 기준). 피트라는 이드 예배 전에 냅니다.</string>
+    <string name="zakat_stdLabel">계산 기준</string>
+    <string name="zakat_stdDiyanet">디야넷(튀르키예): 니삽 금 80.18 g</string>
+    <string name="zakat_stdBaznas">BAZNAS(인도네시아): 니삽 금 85 g</string>
+    <string name="zakat_noteBaznas" formatted="false">이 계산은 BAZNAS 기준을 따릅니다. 니삽은 금 85그램, 비율은 2.5%(40분의 1)이며, 재산을 음력으로 1년 동안 보유해야 합니다. 정확한 판단은 BAZNAS나 종교 학자에게 문의하세요.</string>
+    <string name="zakat_fitrahHeading">자카트 알피트르(BAZNAS)</string>
+    <string name="zakat_fitrahText">BAZNAS는 %1$s년 자카트 알피트르를 1인당 %2$s(으)로 정했습니다. 이는 쌀 약 2.5kg 또는 3.5리터에 해당합니다. 주와 군의 BAZNAS는 지역 쌀값에 따라 다른 금액을 정할 수 있습니다.</string>
+    <string name="zakat_fidyahText">단식할 수 없는 사람을 위한 피드야(BAZNAS %1$s년): 1인당 하루 %2$s.</string>
     <string name="hijriConv_h1">히즈라력 변환기</string>
     <string name="hijriConv_toHijri">양력 → 히즈라력</string>
     <string name="hijriConv_toGreg">히즈라력 → 양력</string>

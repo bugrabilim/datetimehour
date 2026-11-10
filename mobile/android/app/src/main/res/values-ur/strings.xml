@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">افراد کی تعداد (زیرِ کفالت افراد سمیت)</string>
     <string name="zakat_fitreTotal">کل فطرانہ</string>
     <string name="zakat_fitreNote">یہ رقم ترکی کے لیے ہے اور کم از کم ہے؛ جو استطاعت رکھتے ہیں زیادہ دیں (کھجور یا کشمش کے پیمانے سے)۔ فطرانہ عید کی نماز سے پہلے دیا جاتا ہے۔</string>
+    <string name="zakat_stdLabel">حساب کی بنیاد</string>
+    <string name="zakat_stdDiyanet">دیانت (ترکی): نصاب 80.18 گرام سونا</string>
+    <string name="zakat_stdBaznas">BAZNAS (انڈونیشیا): نصاب 85 گرام سونا</string>
+    <string name="zakat_noteBaznas" formatted="false">یہ حساب BAZNAS کے اصولوں کے مطابق ہے: نصاب 85 گرام سونا، شرح 2.5% (چالیسواں حصہ)؛ مال پر ایک قمری سال گزرنا ضروری ہے۔ حتمی رہنمائی کے لیے BAZNAS یا کسی عالم سے رجوع کریں۔</string>
+    <string name="zakat_fitrahHeading">صدقۂ فطر (BAZNAS)</string>
+    <string name="zakat_fitrahText">BAZNAS نے %1$s کے لیے صدقۂ فطر فی کس %2$s مقرر کیا ہے، جو تقریباً 2.5 کلو یا 3.5 لیٹر چاول کے برابر ہے۔ صوبائی اور ضلعی BAZNAS مقامی چاول کی قیمت کے مطابق مختلف رقم مقرر کر سکتے ہیں۔</string>
+    <string name="zakat_fidyahText">روزہ نہ رکھ سکنے والوں کے لیے فدیہ (BAZNAS %1$s): فی کس روزانہ %2$s۔</string>
     <string name="hijriConv_h1">ہجری تاریخ کنورٹر</string>
     <string name="hijriConv_toHijri">عیسوی سے ہجری</string>
     <string name="hijriConv_toGreg">ہجری سے عیسوی</string>

@@ -2676,7 +2676,14 @@
     "fitreText": "Der Hohe Rat für Religionsangelegenheiten des Diyanet hat die Fitra für {year} auf {amount} TL pro Person festgelegt ({date}); gültig ab Ramadan {year} bis zum nächsten Ramadan.",
     "fitrePeople": "Anzahl der Personen (einschließlich Unterhaltsberechtigter)",
     "fitreTotal": "Fitra gesamt",
-    "fitreNote": "Der Betrag gilt für die Türkei und ist das Minimum; wer kann, gibt mehr (nach dem Maß von Datteln oder Rosinen). Die Fitra wird vor dem Festgebet gegeben."
+    "fitreNote": "Der Betrag gilt für die Türkei und ist das Minimum; wer kann, gibt mehr (nach dem Maß von Datteln oder Rosinen). Die Fitra wird vor dem Festgebet gegeben.",
+    "stdLabel": "Berechnungsgrundlage",
+    "stdDiyanet": "Diyanet (Türkei): Nisab 80,18 g Gold",
+    "stdBaznas": "BAZNAS (Indonesien): Nisab 85 g Gold",
+    "noteBaznas": "Die Berechnung folgt BAZNAS: Nisab 85 Gramm Gold, Satz 2,5 % (ein Vierzigstel); über das Vermögen muss ein Mondjahr vergangen sein. Verbindliche Auskunft gibt BAZNAS oder ein Religionsgelehrter.",
+    "fitrahHeading": "Zakat al-Fitr (BAZNAS)",
+    "fitrahText": "BAZNAS hat die Zakat al-Fitr für {year} auf {amount} pro Person festgelegt, etwa 2,5 kg oder 3,5 Liter Reis. Provinz- und Bezirksstellen von BAZNAS können je nach örtlichem Reispreis einen anderen Betrag festlegen.",
+    "fidyahText": "Fidya für Menschen, die nicht fasten können (BAZNAS {year}): {amount} pro Person und Tag."
   },
   "api": {
     "title": "Offene Daten (API): Feiertage und Gebetszeiten | Saat Tarih",

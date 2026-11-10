@@ -2649,7 +2649,14 @@
     "fitreText": "Türkiyə Diyanət İşləri Başqanlığının Din İşləri Ali Şurası {year} ili üçün fitrəni adambaşına {amount} TL müəyyən edib ({date}). Məbləğ {year} Ramazanından növbəti Ramazana qədər qüvvədədir.",
     "fitrePeople": "Adam sayı (himayənizdəkilər daxil)",
     "fitreTotal": "Cəmi fitrə",
-    "fitreNote": "Məbləğ Türkiyə üçündür və ən aşağı ölçüdür; imkanı olan xurma, kişmiş kimi daha yüksək ölçü ilə verə bilər. Fitrə bayram namazından əvvəl verilir."
+    "fitreNote": "Məbləğ Türkiyə üçündür və ən aşağı ölçüdür; imkanı olan xurma, kişmiş kimi daha yüksək ölçü ilə verə bilər. Fitrə bayram namazından əvvəl verilir.",
+    "stdLabel": "Hesablama əsası",
+    "stdDiyanet": "Diyanət (Türkiyə): nisab 80,18 q qızıl",
+    "stdBaznas": "BAZNAS (İndoneziya): nisab 85 q qızıl",
+    "noteBaznas": "Hesablama BAZNAS-ın əsaslarına görədir: nisab 85 qram qızıl, dərəcə 2,5% (qırxda bir); malın üzərindən bir qəməri il keçməlidir. Dəqiq məlumat üçün BAZNAS-a və ya din xadiminə müraciət edin.",
+    "fitrahHeading": "Fitrə zəkatı (BAZNAS)",
+    "fitrahText": "BAZNAS {year} ili üçün fitrə zəkatını adambaşına {amount} müəyyən edib; bu, təxminən 2,5 kq və ya 3,5 litr düyüyə bərabərdir. Əyalət və rayon BAZNAS-ları yerli düyü qiymətinə görə fərqli məbləğ müəyyən edə bilər.",
+    "fidyahText": "Oruc tuta bilməyənlər üçün fidyə (BAZNAS {year}): adambaşına gündə {amount}."
   },
   "api": {
     "title": "Açıq məlumat (API): bayramlar və namaz vaxtları | Saat Tarih",

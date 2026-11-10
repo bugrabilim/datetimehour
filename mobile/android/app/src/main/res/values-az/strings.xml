@@ -699,6 +699,13 @@
     <string name="zakat_fitrePeople">Adam sayı (himayənizdəkilər daxil)</string>
     <string name="zakat_fitreTotal">Cəmi fitrə</string>
     <string name="zakat_fitreNote">Məbləğ Türkiyə üçündür və ən aşağı ölçüdür; imkanı olan xurma, kişmiş kimi daha yüksək ölçü ilə verə bilər. Fitrə bayram namazından əvvəl verilir.</string>
+    <string name="zakat_stdLabel">Hesablama əsası</string>
+    <string name="zakat_stdDiyanet">Diyanət (Türkiyə): nisab 80,18 q qızıl</string>
+    <string name="zakat_stdBaznas">BAZNAS (İndoneziya): nisab 85 q qızıl</string>
+    <string name="zakat_noteBaznas" formatted="false">Hesablama BAZNAS-ın əsaslarına görədir: nisab 85 qram qızıl, dərəcə 2,5% (qırxda bir); malın üzərindən bir qəməri il keçməlidir. Dəqiq məlumat üçün BAZNAS-a və ya din xadiminə müraciət edin.</string>
+    <string name="zakat_fitrahHeading">Fitrə zəkatı (BAZNAS)</string>
+    <string name="zakat_fitrahText">BAZNAS %1$s ili üçün fitrə zəkatını adambaşına %2$s müəyyən edib; bu, təxminən 2,5 kq və ya 3,5 litr düyüyə bərabərdir. Əyalət və rayon BAZNAS-ları yerli düyü qiymətinə görə fərqli məbləğ müəyyən edə bilər.</string>
+    <string name="zakat_fidyahText">Oruc tuta bilməyənlər üçün fidyə (BAZNAS %1$s): adambaşına gündə %2$s.</string>
     <string name="hijriConv_h1">Hicri təqvim çeviricisi</string>
     <string name="hijriConv_toHijri">Miladidən hicriyə</string>
     <string name="hijriConv_toGreg">Hicridən miladiyə</string>
