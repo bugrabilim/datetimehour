@@ -3002,7 +3002,7 @@
     "tableHeading": "Date ranges of the signs",
     "colSign": "Sign",
     "colDates": "Dates (approximate)",
-    "fun": "Astrology is for entertainment and has no scientific basis. The calculation itself is astronomical: the ecliptic longitude of the Sun and the Moon (tropical zodiac).",
+    "fun": "Astrology is for entertainment and has no scientific basis. The calculation itself is astronomical: the ecliptic longitude of the Sun and the Moon (tropical zodiac). The sidereal (nirayana) signs of Indian tradition lie about 24° behind, so they are often one sign earlier.",
     "faq": [
       {
         "q": "Why do the sign boundaries shift a little each year?",

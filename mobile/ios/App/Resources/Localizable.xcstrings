@@ -97587,115 +97587,115 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Burçlar eğlence amaçlıdır, bilimsel bir dayanağı yoktur. Hesap gökbilimseldir: Güneş'in ve Ay'ın tutulum boylamı (tropikal zodyak)."
+            "value": "Burçlar eğlence amaçlıdır, bilimsel bir dayanağı yoktur. Hesap gökbilimseldir: Güneş'in ve Ay'ın tutulum boylamı (tropikal zodyak). Hint geleneğindeki yıldızsal (nirayana) burçlar yaklaşık 24° geride olduğundan çoğu zaman bir önceki burçtur."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Astrology is for entertainment and has no scientific basis. The calculation itself is astronomical: the ecliptic longitude of the Sun and the Moon (tropical zodiac)."
+            "value": "Astrology is for entertainment and has no scientific basis. The calculation itself is astronomical: the ecliptic longitude of the Sun and the Moon (tropical zodiac). The sidereal (nirayana) signs of Indian tradition lie about 24° behind, so they are often one sign earlier."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Astrologie dient der Unterhaltung und hat keine wissenschaftliche Grundlage. Die Berechnung selbst ist astronomisch: ekliptikale Länge von Sonne und Mond (tropischer Tierkreis)."
+            "value": "Astrologie dient der Unterhaltung und hat keine wissenschaftliche Grundlage. Die Berechnung selbst ist astronomisch: ekliptikale Länge von Sonne und Mond (tropischer Tierkreis). Die siderischen (Nirayana-)Zeichen der indischen Tradition liegen etwa 24° zurück und sind daher oft ein Zeichen früher."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bürclər əyləncə məqsədlidir, elmi əsası yoxdur. Hesab astronomikdir: Günəşin və Ayın ekliptik uzunluğu (tropik zodiak)."
+            "value": "Bürclər əyləncə məqsədlidir, elmi əsası yoxdur. Hesab astronomikdir: Günəşin və Ayın ekliptik uzunluğu (tropik zodiak). Hind ənənəsindəki ulduz (nirayana) bürcləri təxminən 24° geridə olduğundan çox vaxt bir əvvəlki bürcdür."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الأبراج للتسلية ولا أساس علميًا لها. أما الحساب نفسه ففلكي: الطول البروجي للشمس والقمر (البروج المدارية)."
+            "value": "الأبراج للتسلية ولا أساس علميًا لها. أما الحساب نفسه ففلكي: الطول البروجي للشمس والقمر (البروج المدارية). أما الأبراج النجمية (نيرايانا) في التقليد الهندي فتتأخر نحو 24°، ولذلك تكون غالبًا البرج السابق."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Astrologi adalah hiburan dan tidak memiliki dasar ilmiah. Perhitungannya sendiri bersifat astronomis: bujur ekliptika Matahari dan Bulan (zodiak tropis)."
+            "value": "Astrologi adalah hiburan dan tidak memiliki dasar ilmiah. Perhitungannya sendiri bersifat astronomis: bujur ekliptika Matahari dan Bulan (zodiak tropis). Zodiak sideris (nirayana) dalam tradisi India tertinggal sekitar 24°, sehingga sering kali jatuh pada rasi sebelumnya."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "علمِ نجوم صرف تفریح کے لیے ہے اور اس کی کوئی سائنسی بنیاد نہیں۔ البتہ حساب خود فلکیاتی ہے: سورج اور چاند کا بروجی طول (ٹراپیکل منطقۃ البروج)۔"
+            "value": "علمِ نجوم صرف تفریح کے لیے ہے اور اس کی کوئی سائنسی بنیاد نہیں۔ البتہ حساب خود فلکیاتی ہے: سورج اور چاند کا بروجی طول (ٹراپیکل منطقۃ البروج)۔ ہندوستانی روایت کے نِرایَن برج تقریباً 24° پیچھے ہوتے ہیں، اس لیے اکثر ایک برج پہلے آتے ہیں۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "طالع‌بینی سرگرمی است و پایهٔ علمی ندارد. خود محاسبه نجومی است: طول دایرةالبروجی خورشید و ماه (منطقةالبروج حاره‌ای)."
+            "value": "طالع‌بینی سرگرمی است و پایهٔ علمی ندارد. خود محاسبه نجومی است: طول دایرةالبروجی خورشید و ماه (منطقةالبروج حاره‌ای). برج‌های ستاره‌ای (نیراینه) در سنت هندی حدود 24° عقب‌ترند و از این رو اغلب یک برج قبل‌تر می‌افتند."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L’astrologie est un divertissement sans fondement scientifique. Le calcul, lui, est astronomique : la longitude écliptique du Soleil et de la Lune (zodiaque tropical)."
+            "value": "L’astrologie est un divertissement sans fondement scientifique. Le calcul, lui, est astronomique : la longitude écliptique du Soleil et de la Lune (zodiaque tropical). Les signes sidéraux (nirayana) de la tradition indienne sont décalés d’environ 24° et tombent donc souvent un signe plus tôt."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Астрология — развлечение без научной основы. Сам расчёт астрономический: эклиптическая долгота Солнца и Луны (тропический зодиак)."
+            "value": "Астрология — развлечение без научной основы. Сам расчёт астрономический: эклиптическая долгота Солнца и Луны (тропический зодиак). Сидерические (нираяна) знаки индийской традиции отстают примерно на 24°, поэтому часто приходятся на предыдущий знак."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "占星術は娯楽であり、科学的根拠はありません。計算自体は天文学的なもので、太陽と月の黄経（トロピカル方式）によります。"
+            "value": "占星術は娯楽であり、科学的根拠はありません。計算自体は天文学的なもので、太陽と月の黄経（トロピカル方式）によります。インドの伝統で使われるサイデリアル方式（ニラヤナ）の星座は約24°ずれており、多くの場合一つ前の星座になります。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "점성술은 오락이며 과학적 근거가 없습니다. 계산 자체는 천문학적이며 태양과 달의 황경(회귀 황도대)을 씁니다."
+            "value": "점성술은 오락이며 과학적 근거가 없습니다. 계산 자체는 천문학적이며 태양과 달의 황경(회귀 황도대)을 씁니다. 인도 전통의 항성 황도대(니라야나) 별자리는 약 24° 뒤에 있어 흔히 한 별자리 앞의 것이 됩니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "占星仅供娱乐，没有科学依据。计算本身是天文计算：太阳和月亮的黄经（回归黄道带）。"
+            "value": "占星仅供娱乐，没有科学依据。计算本身是天文计算：太阳和月亮的黄经（回归黄道带）。印度传统使用的恒星黄道带（尼罗衍那）落后约24°，因此常常是前一个星座。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Para sa libangan ang astrolohiya at walang batayang siyentipiko. Astronomiko ang mismong kuwenta: ang ecliptic longitude ng Araw at Buwan (tropical zodiac)."
+            "value": "Para sa libangan ang astrolohiya at walang batayang siyentipiko. Astronomiko ang mismong kuwenta: ang ecliptic longitude ng Araw at Buwan (tropical zodiac). Ang mga sidereal (nirayana) na tanda sa tradisyong Indian ay mga 24° na nasa likod, kaya kadalasang isang tanda ang mas maaga."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "โหราศาสตร์มีไว้เพื่อความบันเทิงและไม่มีหลักฐานทางวิทยาศาสตร์ ส่วนการคำนวณเป็นแบบดาราศาสตร์: ลองจิจูดสุริยวิถีของดวงอาทิตย์และดวงจันทร์ (จักรราศีแบบสายนะ)"
+            "value": "โหราศาสตร์มีไว้เพื่อความบันเทิงและไม่มีหลักฐานทางวิทยาศาสตร์ ส่วนการคำนวณเป็นแบบดาราศาสตร์: ลองจิจูดสุริยวิถีของดวงอาทิตย์และดวงจันทร์ (จักรราศีแบบสายนะ) ราศีแบบนิรายนะตามประเพณีอินเดียช้ากว่าประมาณ 24° จึงมักเป็นราศีก่อนหน้าหนึ่งราศี"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La astrología es un entretenimiento y no tiene base científica. El cálculo en sí es astronómico: la longitud eclíptica del Sol y de la Luna (zodiaco tropical)."
+            "value": "La astrología es un entretenimiento y no tiene base científica. El cálculo en sí es astronómico: la longitud eclíptica del Sol y de la Luna (zodiaco tropical). Los signos siderales (nirayana) de la tradición india están unos 24° atrás, por lo que suelen ser el signo anterior."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A astrologia é entretenimento e não tem base científica. O cálculo em si é astronômico: a longitude eclíptica do Sol e da Lua (zodíaco tropical)."
+            "value": "A astrologia é entretenimento e não tem base científica. O cálculo em si é astronômico: a longitude eclíptica do Sol e da Lua (zodíaco tropical). Os signos siderais (nirayana) da tradição indiana ficam cerca de 24° atrás, por isso costumam ser o signo anterior."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "ज्योतिष मनोरंजन है और इसका कोई वैज्ञानिक आधार नहीं है। गणना ख़ुद खगोलीय है: सूरज और चंद्रमा का क्रांतिवृत्त देशांतर (सायन राशिचक्र)।"
+            "value": "ज्योतिष मनोरंजन है और इसका कोई वैज्ञानिक आधार नहीं है। गणना ख़ुद खगोलीय है: सूरज और चंद्रमा का क्रांतिवृत्त देशांतर (सायन राशिचक्र)। भारतीय परंपरा की निरयन राशियाँ लगभग 24° पीछे होती हैं, इसलिए अक्सर एक राशि पहले पड़ती हैं।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "জ্যোতিষ বিনোদনের জন্য এবং এর কোনো বৈজ্ঞানিক ভিত্তি নেই। হিসাবটি নিজে জ্যোতির্বিজ্ঞানের: সূর্য ও চাঁদের ক্রান্তিবৃত্তীয় দ্রাঘিমা (সায়ন রাশিচক্র)।"
+            "value": "জ্যোতিষ বিনোদনের জন্য এবং এর কোনো বৈজ্ঞানিক ভিত্তি নেই। হিসাবটি নিজে জ্যোতির্বিজ্ঞানের: সূর্য ও চাঁদের ক্রান্তিবৃত্তীয় দ্রাঘিমা (সায়ন রাশিচক্র)। ভারতীয় ঐতিহ্যের নিরয়ণ রাশি প্রায় 24° পিছিয়ে থাকে, তাই প্রায়ই এক রাশি আগে পড়ে।"
           }
         }
       }

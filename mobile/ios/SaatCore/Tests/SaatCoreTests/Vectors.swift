@@ -100,3 +100,13 @@ struct KemenagVectors: Decodable {
     let cases: [Case]
     let region: [Region]
 }
+
+struct KaalVectors: Decodable {
+    struct Case: Decodable {
+        let id: String
+        let y: Int, m: Int, d: Int
+        let lat: Double, lon: Double, tz: Double
+        let t: [Double]?
+    }
+    let cases: [Case]
+}

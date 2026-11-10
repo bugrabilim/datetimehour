@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">この日は太陽が星座を移る日です。出生時刻によって結果が変わることがあります。</string>
     <string name="zodiac_tzNote">時刻はこの端末のタイムゾーンで読み取ります。</string>
     <string name="zodiac_tableHeading">星座の期間</string>
-    <string name="zodiac_fun">占星術は娯楽であり、科学的根拠はありません。計算自体は天文学的なもので、太陽と月の黄経（トロピカル方式）によります。</string>
+    <string name="zodiac_fun">占星術は娯楽であり、科学的根拠はありません。計算自体は天文学的なもので、太陽と月の黄経（トロピカル方式）によります。インドの伝統で使われるサイデリアル方式（ニラヤナ）の星座は約24°ずれており、多くの場合一つ前の星座になります。</string>
     <string name="timeCalc_h1">時間計算</string>
     <string name="timeCalc_betweenHeading">2つの時刻の間の時間</string>
     <string name="timeCalc_startLabel">開始</string>

@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">The Sun changes sign on this day; the birth time can change the result.</string>
     <string name="zodiac_tzNote">The time is read in this device\'s time zone.</string>
     <string name="zodiac_tableHeading">Date ranges of the signs</string>
-    <string name="zodiac_fun">Astrology is for entertainment and has no scientific basis. The calculation itself is astronomical: the ecliptic longitude of the Sun and the Moon (tropical zodiac).</string>
+    <string name="zodiac_fun">Astrology is for entertainment and has no scientific basis. The calculation itself is astronomical: the ecliptic longitude of the Sun and the Moon (tropical zodiac). The sidereal (nirayana) signs of Indian tradition lie about 24° behind, so they are often one sign earlier.</string>
     <string name="timeCalc_h1">Time calculator</string>
     <string name="timeCalc_betweenHeading">Duration between two times</string>
     <string name="timeCalc_startLabel">Start</string>

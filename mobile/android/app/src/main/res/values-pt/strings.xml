@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">O Sol muda de signo neste dia; a hora de nascimento pode mudar o resultado.</string>
     <string name="zodiac_tzNote">A hora é lida no fuso horário deste aparelho.</string>
     <string name="zodiac_tableHeading">Datas dos signos</string>
-    <string name="zodiac_fun">A astrologia é entretenimento e não tem base científica. O cálculo em si é astronômico: a longitude eclíptica do Sol e da Lua (zodíaco tropical).</string>
+    <string name="zodiac_fun">A astrologia é entretenimento e não tem base científica. O cálculo em si é astronômico: a longitude eclíptica do Sol e da Lua (zodíaco tropical). Os signos siderais (nirayana) da tradição indiana ficam cerca de 24° atrás, por isso costumam ser o signo anterior.</string>
     <string name="timeCalc_h1">Calculadora de horas</string>
     <string name="timeCalc_betweenHeading">Duração entre dois horários</string>
     <string name="timeCalc_startLabel">Início</string>

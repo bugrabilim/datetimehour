@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">이날 태양의 별자리가 바뀝니다. 태어난 시간에 따라 결과가 달라질 수 있습니다.</string>
     <string name="zodiac_tzNote">시간은 이 기기의 시간대 기준으로 해석합니다.</string>
     <string name="zodiac_tableHeading">별자리별 날짜 범위</string>
-    <string name="zodiac_fun">점성술은 오락이며 과학적 근거가 없습니다. 계산 자체는 천문학적이며 태양과 달의 황경(회귀 황도대)을 씁니다.</string>
+    <string name="zodiac_fun">점성술은 오락이며 과학적 근거가 없습니다. 계산 자체는 천문학적이며 태양과 달의 황경(회귀 황도대)을 씁니다. 인도 전통의 항성 황도대(니라야나) 별자리는 약 24° 뒤에 있어 흔히 한 별자리 앞의 것이 됩니다.</string>
     <string name="timeCalc_h1">시간 계산기</string>
     <string name="timeCalc_betweenHeading">두 시각 사이의 시간</string>
     <string name="timeCalc_startLabel">시작</string>

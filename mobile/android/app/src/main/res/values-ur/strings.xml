@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">اس دن سورج برج بدلتا ہے؛ وقتِ پیدائش نتیجہ بدل سکتا ہے۔</string>
     <string name="zodiac_tzNote">وقت اس آلے کے ٹائم زون میں پڑھا جاتا ہے۔</string>
     <string name="zodiac_tableHeading">برجوں کی تاریخیں</string>
-    <string name="zodiac_fun">علمِ نجوم صرف تفریح کے لیے ہے اور اس کی کوئی سائنسی بنیاد نہیں۔ البتہ حساب خود فلکیاتی ہے: سورج اور چاند کا بروجی طول (ٹراپیکل منطقۃ البروج)۔</string>
+    <string name="zodiac_fun">علمِ نجوم صرف تفریح کے لیے ہے اور اس کی کوئی سائنسی بنیاد نہیں۔ البتہ حساب خود فلکیاتی ہے: سورج اور چاند کا بروجی طول (ٹراپیکل منطقۃ البروج)۔ ہندوستانی روایت کے نِرایَن برج تقریباً 24° پیچھے ہوتے ہیں، اس لیے اکثر ایک برج پہلے آتے ہیں۔</string>
     <string name="timeCalc_h1">وقت کیلکولیٹر</string>
     <string name="timeCalc_betweenHeading">دو اوقات کے درمیان دورانیہ</string>
     <string name="timeCalc_startLabel">آغاز</string>

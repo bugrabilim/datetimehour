@@ -42,7 +42,8 @@ object Prefs {
         Features.load(sp) // ilk iş: önceki kullanıcı mı diye dosyanın boş olup olmadığına bakar
         accent = sp.getString("accent", AccentPalette.DEFAULT_ID)!!
         appearance = sp.getString("appearance", "system")!!
-        h12 = sp.getBoolean("h12", false)
+        // 12/24 (10 Kasım 2026, Hindistan araştırması #3): kayıtlı seçim yoksa telefonun ayarına göre
+        h12 = sp.getBoolean("h12", !android.text.format.DateFormat.is24HourFormat(c))
         keepAwake = sp.getBoolean("keepAwake", true)
         secD = sp.getBoolean("secD", true)
         secA = sp.getBoolean("secA", true) // varsayılan: analogda saniye açık (30 Ekim 2026)

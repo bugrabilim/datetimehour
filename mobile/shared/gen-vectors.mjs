@@ -102,6 +102,16 @@ for (const pl of places) {
   }
 }
 
+/* Geleneksel Hint zaman dilimleri (10 Kasım 2026, hinduKaal): gün doğumu, batımı ve beş dilim, dört tarih + 8 Kasım 2026 */
+const kaalCases = [];
+for (const pl of places) {
+  for (const [y, m, d] of [...LIGHT_DATES, [2026, 11, 8]]) {
+    const tz = tzOffset(pl.tz, y, m, d);
+    const k = P.hinduKaal(y, m, d, pl.lat, pl.lon, tz);
+    kaalCases.push({ id: pl.id, y, m, d, lat: pl.lat, lon: pl.lon, tz, t: k && [k.sunrise, k.sunset, ...k.rahu, ...k.yamaganda, ...k.gulika, ...k.abhijit, ...k.brahma] });
+  }
+}
+
 /* Doğa: 2000–2050 mevsim anları, 2020–2035 yeni ay/dolunay anları, 2026–2028 Ay durumu örnekleri */
 const DAY = 86400000;
 const kFor = (ms) => Math.floor((ms / DAY + 2440587.5 - 2451550.09766) / 29.530588861);
@@ -192,6 +202,12 @@ const files = {
   "note": "t: Güneş'in +6°, −4°, −6° yüksekliğe sabah çıktığı ve akşam indiği an sırasıyla [+6 sabah, +6 akşam, −4 sabah, −4 akşam, −6 sabah, −6 akşam]; yerel ondalık saat, null = o gün oluşmuyor. tz: o gün UTC farkı.",
   "altitudes": [6, -4, -6],
   "cases": ${lines(lightCases)}
+}
+`,
+  "kaal.json": `{
+  "source": "src/js/prayer-calc.js (hinduKaal)",
+  "note": "t: [gün doğumu, gün batımı, Rahu Kaal başı, sonu, Yamaganda başı, sonu, Gulika başı, sonu, Abhijit başı, sonu, Brahma muhurta başı, sonu]; yerel ondalık saat, null = Güneş doğmuyor ya da batmıyor. tz: o gün UTC farkı.",
+  "cases": ${lines(kaalCases)}
 }
 `,
   "nature.json": `{

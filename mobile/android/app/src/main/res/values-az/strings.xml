@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">Günəş bu tarixdə bürcünü dəyişir; doğum saatı nəticəni dəyişə bilər.</string>
     <string name="zodiac_tzNote">Saat bu cihazın saat qurşağına görə oxunur.</string>
     <string name="zodiac_tableHeading">Bürclərin tarix aralıqları</string>
-    <string name="zodiac_fun">Bürclər əyləncə məqsədlidir, elmi əsası yoxdur. Hesab astronomikdir: Günəşin və Ayın ekliptik uzunluğu (tropik zodiak).</string>
+    <string name="zodiac_fun">Bürclər əyləncə məqsədlidir, elmi əsası yoxdur. Hesab astronomikdir: Günəşin və Ayın ekliptik uzunluğu (tropik zodiak). Hind ənənəsindəki ulduz (nirayana) bürcləri təxminən 24° geridə olduğundan çox vaxt bir əvvəlki bürcdür.</string>
     <string name="timeCalc_h1">Saat hesablama</string>
     <string name="timeCalc_betweenHeading">İki saat arasındakı müddət</string>
     <string name="timeCalc_startLabel">Başlanğıc</string>

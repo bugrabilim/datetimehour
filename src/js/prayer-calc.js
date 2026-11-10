@@ -148,6 +148,23 @@
     return { rise: rise + off, set: set + off };
   }
 
+  /* Geleneksel Hint zaman dilimleri (10 Kasım 2026, Hindistan araştırması §2.2; Drik Panchang Delhi 8 Kasım 2026 ile ±1 dk).
+     Gün doğumu ve batımı Güneş −0,833° (düzeltmesiz). Gündüz 8 parçaya bölünür; Rahu Kaal, Yamaganda ve Gulika haftanın
+     gününe göre birer parçadır. Abhijit gündüzün 15 muhurtasının 8.si, Brahma muhurta önceki gecenin (batış–doğuş) 15
+     muhurtasının 14.sü. Dönüş yerel ondalık saat [başlangıç, bitiş] çiftleri; Güneş doğmuyor ya da batmıyorsa null. */
+  var KAAL = { rahu: [8, 2, 7, 5, 6, 4, 3], yamaganda: [5, 4, 3, 2, 1, 7, 6], gulika: [7, 6, 5, 4, 3, 2, 1] };
+  function hinduKaal(y, m, d, lat, lon, tz) {
+    var t = sunAltTimes(y, m, d, lat, lon, tz, -0.833);
+    var p = new Date(Date.UTC(y, m - 1, d - 1));
+    var prev = sunAltTimes(p.getUTCFullYear(), p.getUTCMonth() + 1, p.getUTCDate(), lat, lon, tz, -0.833);
+    if (!isFinite(t.rise) || !isFinite(t.set) || !isFinite(prev.set)) return null;
+    var dow = Math.floor(julian(y, m, d) + 1.5) % 7; // 0 = pazar
+    var part = (t.set - t.rise) / 8, mu = (t.set - t.rise) / 15, nmu = (t.rise + 24 - prev.set) / 15;
+    var seg = function (n) { return [t.rise + (n - 1) * part, t.rise + n * part]; };
+    return { sunrise: t.rise, sunset: t.set, rahu: seg(KAAL.rahu[dow]), yamaganda: seg(KAAL.yamaganda[dow]), gulika: seg(KAAL.gulika[dow]),
+      abhijit: [t.rise + 7 * mu, t.rise + 8 * mu], brahma: [t.rise - 2 * nmu, t.rise - nmu] };
+  }
+
   /* Altın saat (Güneş +6° ile −4° arası) ve mavi saat (−4° ile −6° arası); sabah ve akşam [başlangıç, bitiş] */
   var LIGHT = { golden: 6, edge: -4, blue: -6 };
   function lightHours(y, m, d, lat, lon, tz) {
@@ -264,7 +281,7 @@
     return { m: "diyanet", h: 0 };
   }
 
-  var api = { times: times, PARAMS: PARAMS, METHODS: METHODS, METHOD_IDS: METHOD_IDS, methodParams: methodParams, toMin: toMin, methodRows: methodRows, regionOf: regionOf, defaultMethod: defaultMethod, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, rashdulQiblat: rashdulQiblat, sunAltAz: sunAltAz, KAABA: KAABA, sunAltTimes: sunAltTimes, lightHours: lightHours, LIGHT: LIGHT, kerahat: kerahat, KERAHAT_MIN: KERAHAT_MIN, bayram: bayram, BAYRAM_MIN: BAYRAM_MIN, extraTimes: extraTimes, EXTRA: EXTRA };
+  var api = { times: times, PARAMS: PARAMS, METHODS: METHODS, METHOD_IDS: METHOD_IDS, methodParams: methodParams, toMin: toMin, methodRows: methodRows, regionOf: regionOf, defaultMethod: defaultMethod, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, rashdulQiblat: rashdulQiblat, sunAltAz: sunAltAz, KAABA: KAABA, sunAltTimes: sunAltTimes, lightHours: lightHours, LIGHT: LIGHT, hinduKaal: hinduKaal, KAAL: KAAL, kerahat: kerahat, KERAHAT_MIN: KERAHAT_MIN, bayram: bayram, BAYRAM_MIN: BAYRAM_MIN, extraTimes: extraTimes, EXTRA: EXTRA };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.sthPrayer = api;
 })(typeof window !== "undefined" ? window : globalThis);

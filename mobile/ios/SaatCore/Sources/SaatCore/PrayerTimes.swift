@@ -265,6 +265,37 @@ public enum PrayerTimes {
         return AltitudeTimes(rise: rise.isNaN ? nil : rise + off, set: set.isNaN ? nil : set + off)
     }
 
+    /// Geleneksel Hint zaman dilimleri (10 Kasım 2026, Hindistan araştırması): yerel ondalık saat (başlangıç, bitiş).
+    public struct HinduKaal: Sendable {
+        public var sunrise: Double
+        public var sunset: Double
+        public var rahu: (Double, Double)
+        public var yamaganda: (Double, Double)
+        public var gulika: (Double, Double)
+        public var abhijit: (Double, Double)
+        public var brahma: (Double, Double)
+    }
+    /// Gündüzün 8 parçasından hangisi (pazar 0 … cumartesi 6)
+    public static let kaalRahu = [8, 2, 7, 5, 6, 4, 3]
+    public static let kaalYamaganda = [5, 4, 3, 2, 1, 7, 6]
+    public static let kaalGulika = [7, 6, 5, 4, 3, 2, 1]
+
+    /// Gün doğumu ve batımı Güneş −0,833° (düzeltmesiz); gündüz 8 parça (Rahu Kaal, Yamaganda, Gulika), Abhijit gündüzün
+    /// 15 muhurtasının 8.si, Brahma muhurta önceki gecenin 15 muhurtasının 14.sü. Sitedeki `hinduKaal` ile birebir
+    /// (test verisi `kaal.json`); Güneş doğmuyor ya da batmıyorsa nil.
+    public static func hinduKaal(year: Int, month: Int, day: Int, latitude lat: Double, longitude lon: Double,
+                                 utcOffset tz: Double) -> HinduKaal? {
+        let t = sunAltitudeTimes(year: year, month: month, day: day, latitude: lat, longitude: lon, utcOffset: tz, altitude: -0.833)
+        let p = CalendarDay(year, month, day).adding(days: -1)
+        let prev = sunAltitudeTimes(year: p.year, month: p.month, day: p.day, latitude: lat, longitude: lon, utcOffset: tz, altitude: -0.833)
+        guard let rise = t.rise, let set = t.set, let pset = prev.set else { return nil }
+        let dow = Int((julian(year, month, day) + 1.5).rounded(.down)) % 7
+        let part = (set - rise) / 8, mu = (set - rise) / 15, nmu = (rise + 24 - pset) / 15
+        func seg(_ n: Int) -> (Double, Double) { (rise + Double(n - 1) * part, rise + Double(n) * part) }
+        return HinduKaal(sunrise: rise, sunset: set, rahu: seg(kaalRahu[dow]), yamaganda: seg(kaalYamaganda[dow]),
+                         gulika: seg(kaalGulika[dow]), abhijit: (rise + 7 * mu, rise + 8 * mu), brahma: (rise - 2 * nmu, rise - nmu))
+    }
+
     /// Altın saat (Güneş +6° ile −4° arası) ve mavi saat (−4° ile −6° arası), sabah ve akşam (başlangıç, bitiş).
     public struct LightHours: Sendable, Equatable {
         public var blueAm: (Double?, Double?)

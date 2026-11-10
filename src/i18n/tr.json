@@ -3002,7 +3002,7 @@
     "tableHeading": "Burçların tarih aralıkları",
     "colSign": "Burç",
     "colDates": "Tarihler (yaklaşık)",
-    "fun": "Burçlar eğlence amaçlıdır, bilimsel bir dayanağı yoktur. Hesap gökbilimseldir: Güneş'in ve Ay'ın tutulum boylamı (tropikal zodyak).",
+    "fun": "Burçlar eğlence amaçlıdır, bilimsel bir dayanağı yoktur. Hesap gökbilimseldir: Güneş'in ve Ay'ın tutulum boylamı (tropikal zodyak). Hint geleneğindeki yıldızsal (nirayana) burçlar yaklaşık 24° geride olduğundan çoğu zaman bir önceki burçtur.",
     "faq": [
       {
         "q": "Burç sınırları neden her yıl biraz değişir?",

@@ -270,6 +270,37 @@ object PrayerTimes {
         return AltitudeTimes(if (rise.isNaN()) null else rise + off, if (set.isNaN()) null else set + off)
     }
 
+    /** Geleneksel Hint zaman dilimleri (10 Kasım 2026, Hindistan araştırması): yerel ondalık saat (başlangıç, bitiş). */
+    data class HinduKaal(
+        val sunrise: Double, val sunset: Double, val rahu: Pair<Double, Double>, val yamaganda: Pair<Double, Double>,
+        val gulika: Pair<Double, Double>, val abhijit: Pair<Double, Double>, val brahma: Pair<Double, Double>,
+    )
+    /** Gündüzün 8 parçasından hangisi (pazar 0 … cumartesi 6) */
+    val KAAL_RAHU = intArrayOf(8, 2, 7, 5, 6, 4, 3)
+    val KAAL_YAMAGANDA = intArrayOf(5, 4, 3, 2, 1, 7, 6)
+    val KAAL_GULIKA = intArrayOf(7, 6, 5, 4, 3, 2, 1)
+
+    /**
+     * Gün doğumu ve batımı Güneş −0,833° (düzeltmesiz); gündüz 8 parça (Rahu Kaal, Yamaganda, Gulika), Abhijit gündüzün
+     * 15 muhurtasının 8.si, Brahma muhurta önceki gecenin 15 muhurtasının 14.sü. Sitedeki `hinduKaal` ile birebir
+     * (test verisi `kaal.json`); Güneş doğmuyor ya da batmıyorsa null.
+     */
+    fun hinduKaal(year: Int, month: Int, day: Int, latitude: Double, longitude: Double, utcOffset: Double): HinduKaal? {
+        val t = sunAltitudeTimes(year, month, day, latitude, longitude, utcOffset, -0.833)
+        val p = java.time.LocalDate.of(year, month, day).minusDays(1)
+        val prev = sunAltitudeTimes(p.year, p.monthValue, p.dayOfMonth, latitude, longitude, utcOffset, -0.833)
+        val rise = t.rise ?: return null
+        val set = t.set ?: return null
+        val pset = prev.set ?: return null
+        val dow = kotlin.math.floor(julian(year, month, day) + 1.5).toInt() % 7
+        val part = (set - rise) / 8
+        val mu = (set - rise) / 15
+        val nmu = (rise + 24 - pset) / 15
+        fun seg(n: Int) = Pair(rise + (n - 1) * part, rise + n * part)
+        return HinduKaal(rise, set, seg(KAAL_RAHU[dow]), seg(KAAL_YAMAGANDA[dow]), seg(KAAL_GULIKA[dow]),
+            Pair(rise + 7 * mu, rise + 8 * mu), Pair(rise - 2 * nmu, rise - nmu))
+    }
+
     /** Altın saat (Güneş +6° ile −4° arası) ve mavi saat (−4° ile −6° arası), sabah ve akşam [başlangıç, bitiş]. */
     data class LightHours(
         val blueAm: Pair<Double?, Double?>, val goldenAm: Pair<Double?, Double?>,

@@ -3082,7 +3082,7 @@
     "tableHeading": "Fechas de los signos",
     "colSign": "Signo",
     "colDates": "Fechas (aproximadas)",
-    "fun": "La astrología es un entretenimiento y no tiene base científica. El cálculo en sí es astronómico: la longitud eclíptica del Sol y de la Luna (zodiaco tropical).",
+    "fun": "La astrología es un entretenimiento y no tiene base científica. El cálculo en sí es astronómico: la longitud eclíptica del Sol y de la Luna (zodiaco tropical). Los signos siderales (nirayana) de la tradición india están unos 24° atrás, por lo que suelen ser el signo anterior.",
     "faq": [
       {
         "q": "¿Por qué los límites de los signos se mueven un poco cada año?",

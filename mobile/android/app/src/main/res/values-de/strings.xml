@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">Die Sonne wechselt an diesem Tag das Zeichen; die Geburtszeit kann das Ergebnis ändern.</string>
     <string name="zodiac_tzNote">Die eingegebene Uhrzeit bezieht sich auf die Zeitzone dieses Geräts.</string>
     <string name="zodiac_tableHeading">Zeiträume der Sternzeichen</string>
-    <string name="zodiac_fun">Astrologie dient der Unterhaltung und hat keine wissenschaftliche Grundlage. Die Berechnung selbst ist astronomisch: ekliptikale Länge von Sonne und Mond (tropischer Tierkreis).</string>
+    <string name="zodiac_fun">Astrologie dient der Unterhaltung und hat keine wissenschaftliche Grundlage. Die Berechnung selbst ist astronomisch: ekliptikale Länge von Sonne und Mond (tropischer Tierkreis). Die siderischen (Nirayana-)Zeichen der indischen Tradition liegen etwa 24° zurück und sind daher oft ein Zeichen früher.</string>
     <string name="timeCalc_h1">Zeitrechner</string>
     <string name="timeCalc_betweenHeading">Dauer zwischen zwei Uhrzeiten</string>
     <string name="timeCalc_startLabel">Beginn</string>

@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">خورشید در این روز برج عوض می‌کند؛ ساعت تولد ممکن است نتیجه را تغییر دهد.</string>
     <string name="zodiac_tzNote">ساعت در منطقهٔ زمانی این دستگاه خوانده می‌شود.</string>
     <string name="zodiac_tableHeading">بازه‌های تاریخ برج‌ها</string>
-    <string name="zodiac_fun">طالع‌بینی سرگرمی است و پایهٔ علمی ندارد. خود محاسبه نجومی است: طول دایرةالبروجی خورشید و ماه (منطقةالبروج حاره‌ای).</string>
+    <string name="zodiac_fun">طالع‌بینی سرگرمی است و پایهٔ علمی ندارد. خود محاسبه نجومی است: طول دایرةالبروجی خورشید و ماه (منطقةالبروج حاره‌ای). برج‌های ستاره‌ای (نیراینه) در سنت هندی حدود 24° عقب‌ترند و از این رو اغلب یک برج قبل‌تر می‌افتند.</string>
     <string name="timeCalc_h1">محاسبهٔ ساعت</string>
     <string name="timeCalc_betweenHeading">مدت میان دو زمان</string>
     <string name="timeCalc_startLabel">آغاز</string>

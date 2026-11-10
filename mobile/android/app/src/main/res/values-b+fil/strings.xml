@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">Nagpapalit ng sign ang Araw sa araw na ito; maaaring baguhin ng oras ng kapanganakan ang resulta.</string>
     <string name="zodiac_tzNote">Binabasa ang oras sa time zone ng device na ito.</string>
     <string name="zodiac_tableHeading">Mga petsa ng bawat sign</string>
-    <string name="zodiac_fun">Para sa libangan ang astrolohiya at walang batayang siyentipiko. Astronomiko ang mismong kuwenta: ang ecliptic longitude ng Araw at Buwan (tropical zodiac).</string>
+    <string name="zodiac_fun">Para sa libangan ang astrolohiya at walang batayang siyentipiko. Astronomiko ang mismong kuwenta: ang ecliptic longitude ng Araw at Buwan (tropical zodiac). Ang mga sidereal (nirayana) na tanda sa tradisyong Indian ay mga 24° na nasa likod, kaya kadalasang isang tanda ang mas maaga.</string>
     <string name="timeCalc_h1">Time calculator</string>
     <string name="timeCalc_betweenHeading">Tagal sa pagitan ng dalawang oras</string>
     <string name="timeCalc_startLabel">Simula</string>

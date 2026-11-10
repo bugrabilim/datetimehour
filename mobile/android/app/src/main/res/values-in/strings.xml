@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">Matahari berganti zodiak pada hari ini; jam lahir dapat mengubah hasilnya.</string>
     <string name="zodiac_tzNote">Jam dibaca dalam zona waktu perangkat ini.</string>
     <string name="zodiac_tableHeading">Rentang tanggal zodiak</string>
-    <string name="zodiac_fun">Astrologi adalah hiburan dan tidak memiliki dasar ilmiah. Perhitungannya sendiri bersifat astronomis: bujur ekliptika Matahari dan Bulan (zodiak tropis).</string>
+    <string name="zodiac_fun">Astrologi adalah hiburan dan tidak memiliki dasar ilmiah. Perhitungannya sendiri bersifat astronomis: bujur ekliptika Matahari dan Bulan (zodiak tropis). Zodiak sideris (nirayana) dalam tradisi India tertinggal sekitar 24°, sehingga sering kali jatuh pada rasi sebelumnya.</string>
     <string name="timeCalc_h1">Kalkulator jam</string>
     <string name="timeCalc_betweenHeading">Durasi antara dua waktu</string>
     <string name="timeCalc_startLabel">Mulai</string>

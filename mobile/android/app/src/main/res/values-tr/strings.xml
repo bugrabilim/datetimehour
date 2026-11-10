@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">Güneş bu gün burç değiştiriyor; doğum saati sonucu değiştirebilir.</string>
     <string name="zodiac_tzNote">Saat, bu cihazın saat dilimine göre okunur.</string>
     <string name="zodiac_tableHeading">Burçların tarih aralıkları</string>
-    <string name="zodiac_fun">Burçlar eğlence amaçlıdır, bilimsel bir dayanağı yoktur. Hesap gökbilimseldir: Güneş\'in ve Ay\'ın tutulum boylamı (tropikal zodyak).</string>
+    <string name="zodiac_fun">Burçlar eğlence amaçlıdır, bilimsel bir dayanağı yoktur. Hesap gökbilimseldir: Güneş\'in ve Ay\'ın tutulum boylamı (tropikal zodyak). Hint geleneğindeki yıldızsal (nirayana) burçlar yaklaşık 24° geride olduğundan çoğu zaman bir önceki burçtur.</string>
     <string name="timeCalc_h1">Saat hesaplama</string>
     <string name="timeCalc_betweenHeading">İki saat arasındaki süre</string>
     <string name="timeCalc_startLabel">Başlangıç</string>

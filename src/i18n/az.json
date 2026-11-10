@@ -3002,7 +3002,7 @@
     "tableHeading": "Bürclərin tarix aralıqları",
     "colSign": "Bürc",
     "colDates": "Tarixlər (təxmini)",
-    "fun": "Bürclər əyləncə məqsədlidir, elmi əsası yoxdur. Hesab astronomikdir: Günəşin və Ayın ekliptik uzunluğu (tropik zodiak).",
+    "fun": "Bürclər əyləncə məqsədlidir, elmi əsası yoxdur. Hesab astronomikdir: Günəşin və Ayın ekliptik uzunluğu (tropik zodiak). Hind ənənəsindəki ulduz (nirayana) bürcləri təxminən 24° geridə olduğundan çox vaxt bir əvvəlki bürcdür.",
     "faq": [
       {
         "q": "Bürc sərhədləri niyə hər il bir az dəyişir?",

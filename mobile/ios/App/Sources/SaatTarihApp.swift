@@ -11,6 +11,9 @@ struct SaatTarihApp: App {
     init() {
         // Özellik aç/kapa: ilk iş, önceki kullanıcıda hepsi açık kalsın (Features.migrate)
         Features.migrate()
+        // 12/24 (10 Kasım 2026, Hindistan araştırması #3): kayıtlı seçim yoksa telefonun ayarına göre (kayda yazılmaz)
+        let h12 = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: .current)?.contains("a") ?? false
+        UserDefaults.standard.register(defaults: ["h12": h12])
         // Başlıklarda Literata (doğal tasarım; Latin ve Kiril dillerinde)
         AppFonts.applyNavigationBar()
         AppFonts.applySegmentedControls()

@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">Le Soleil change de signe ce jour-là ; l’heure de naissance peut modifier le résultat.</string>
     <string name="zodiac_tzNote">L’heure est lue dans le fuseau horaire de cet appareil.</string>
     <string name="zodiac_tableHeading">Dates des signes</string>
-    <string name="zodiac_fun">L’astrologie est un divertissement sans fondement scientifique. Le calcul, lui, est astronomique : la longitude écliptique du Soleil et de la Lune (zodiaque tropical).</string>
+    <string name="zodiac_fun">L’astrologie est un divertissement sans fondement scientifique. Le calcul, lui, est astronomique : la longitude écliptique du Soleil et de la Lune (zodiaque tropical). Les signes sidéraux (nirayana) de la tradition indienne sont décalés d’environ 24° et tombent donc souvent un signe plus tôt.</string>
     <string name="timeCalc_h1">Calcul d’heures</string>
     <string name="timeCalc_betweenHeading">Durée entre deux heures</string>
     <string name="timeCalc_startLabel">Début</string>

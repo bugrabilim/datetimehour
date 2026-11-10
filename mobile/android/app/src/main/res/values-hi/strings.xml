@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">इस दिन सूरज राशि बदलता है; जन्म का समय परिणाम बदल सकता है।</string>
     <string name="zodiac_tzNote">समय इस डिवाइस के समय क्षेत्र के अनुसार माना जाता है।</string>
     <string name="zodiac_tableHeading">राशियों की तारीखें</string>
-    <string name="zodiac_fun">ज्योतिष मनोरंजन है और इसका कोई वैज्ञानिक आधार नहीं है। गणना ख़ुद खगोलीय है: सूरज और चंद्रमा का क्रांतिवृत्त देशांतर (सायन राशिचक्र)।</string>
+    <string name="zodiac_fun">ज्योतिष मनोरंजन है और इसका कोई वैज्ञानिक आधार नहीं है। गणना ख़ुद खगोलीय है: सूरज और चंद्रमा का क्रांतिवृत्त देशांतर (सायन राशिचक्र)। भारतीय परंपरा की निरयन राशियाँ लगभग 24° पीछे होती हैं, इसलिए अक्सर एक राशि पहले पड़ती हैं।</string>
     <string name="timeCalc_h1">समय कैलकुलेटर</string>
     <string name="timeCalc_betweenHeading">दो समयों के बीच की अवधि</string>
     <string name="timeCalc_startLabel">शुरुआत</string>

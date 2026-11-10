@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">这一天太阳更换星座；出生时间可能改变结果。</string>
     <string name="zodiac_tzNote">时间按本设备的时区读取。</string>
     <string name="zodiac_tableHeading">各星座的日期范围</string>
-    <string name="zodiac_fun">占星仅供娱乐，没有科学依据。计算本身是天文计算：太阳和月亮的黄经（回归黄道带）。</string>
+    <string name="zodiac_fun">占星仅供娱乐，没有科学依据。计算本身是天文计算：太阳和月亮的黄经（回归黄道带）。印度传统使用的恒星黄道带（尼罗衍那）落后约24°，因此常常是前一个星座。</string>
     <string name="timeCalc_h1">时间计算器</string>
     <string name="timeCalc_betweenHeading">两个时刻之间的时长</string>
     <string name="timeCalc_startLabel">开始</string>

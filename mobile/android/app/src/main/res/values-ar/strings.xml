@@ -821,7 +821,7 @@
     <string name="zodiac_cusp">تنتقل الشمس إلى برج آخر في هذا اليوم، وقد يغيّر وقت الميلاد النتيجة.</string>
     <string name="zodiac_tzNote">يُقرأ الوقت حسب المنطقة الزمنية لهذا الجهاز.</string>
     <string name="zodiac_tableHeading">الفترات الزمنية للأبراج</string>
-    <string name="zodiac_fun">الأبراج للتسلية ولا أساس علميًا لها. أما الحساب نفسه ففلكي: الطول البروجي للشمس والقمر (البروج المدارية).</string>
+    <string name="zodiac_fun">الأبراج للتسلية ولا أساس علميًا لها. أما الحساب نفسه ففلكي: الطول البروجي للشمس والقمر (البروج المدارية). أما الأبراج النجمية (نيرايانا) في التقليد الهندي فتتأخر نحو 24°، ولذلك تكون غالبًا البرج السابق.</string>
     <string name="timeCalc_h1">حاسبة الوقت</string>
     <string name="timeCalc_betweenHeading">المدة بين وقتين</string>
     <string name="timeCalc_startLabel">البداية</string>

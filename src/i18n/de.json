@@ -3029,7 +3029,7 @@
     "tableHeading": "Zeiträume der Sternzeichen",
     "colSign": "Zeichen",
     "colDates": "Zeitraum (ungefähr)",
-    "fun": "Astrologie dient der Unterhaltung und hat keine wissenschaftliche Grundlage. Die Berechnung selbst ist astronomisch: ekliptikale Länge von Sonne und Mond (tropischer Tierkreis).",
+    "fun": "Astrologie dient der Unterhaltung und hat keine wissenschaftliche Grundlage. Die Berechnung selbst ist astronomisch: ekliptikale Länge von Sonne und Mond (tropischer Tierkreis). Die siderischen (Nirayana-)Zeichen der indischen Tradition liegen etwa 24° zurück und sind daher oft ein Zeichen früher.",
     "faq": [
       {
         "q": "Warum verschieben sich die Grenzen der Sternzeichen jedes Jahr etwas?",
