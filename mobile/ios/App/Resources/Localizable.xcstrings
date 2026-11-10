@@ -162834,6 +162834,3170 @@
         }
       }
     },
+    "cals.sikh.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sih takvimi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sikh calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sikh-Kalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sikh təqvimi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التقويم السيخي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender Sikh"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سکھ کیلنڈر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقویم سیک"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendrier sikh"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сикхский календарь"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "シク教の暦"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시크교 달력"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "锡克教历"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalendaryong Sikh"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปฏิทินซิกข์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendario sij"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendário sikh"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सिख कैलेंडर"
+          }
+        }
+      }
+    },
+    "cals.sikh.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurablar ve Sih kutsal günleri: Guru Nanak ve Guru Gobind Singh'in doğum günleri, Vaisakhi, Hola Mohalla ve Bandi Chhor Divas."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurabs and Sikh holy days: the births of Guru Nanak and Guru Gobind Singh, Vaisakhi, Hola Mohalla and Bandi Chhor Divas."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurabs und heilige Tage der Sikhs: die Geburtstage von Guru Nanak und Guru Gobind Singh, Vaisakhi, Hola Mohalla und Bandi Chhor Divas."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qurpurablar və sikhlərin müqəddəs günləri: Quru Nanak və Quru Qobind Sinqhin doğum günləri, Vaysaxi, Hola Mohalla və Bandi Çhor Divas."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أعياد الغوربوراب وأيام السيخ المقدسة: مولد غورو ناناك وغورو غوبيند سينغ، وفايساخي، وهولا موهالا، وباندي تشور ديفاس."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurab dan hari suci Sikh: kelahiran Guru Nanak dan Guru Gobind Singh, Vaisakhi, Hola Mohalla, dan Bandi Chhor Divas."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گرپرب اور سکھوں کے مقدس دن: گرو نانک اور گرو گوبند سنگھ کا یومِ پیدائش، ویساکھی، ہولا محلہ اور بندی چھوڑ دیوس۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گورپوراب‌ها و روزهای مقدس سیک‌ها: زادروز گورو نانک و گورو گوبیند سینگ، ویساکی، هولا موهالا و باندی چور دیواس."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurabs et jours saints sikhs : naissances de Guru Nanak et de Guru Gobind Singh, Vaisakhi, Hola Mohalla et Bandi Chhor Divas."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гурпурабы и священные дни сикхов: дни рождения Гуру Нанака и Гуру Гобинда Сингха, Вайсакхи, Хола Мохалла и Банди Чхор Дивас."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "グルプラブとシク教の聖日：グル・ナーナクとグル・ゴービンド・シングの生誕祭、ヴァイサーキー、ホーラー・モハッラー、バンディ・チョール・ディワス。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "구르푸라브와 시크교 성일: 구루 나나크와 구루 고빈드 싱의 탄신일, 바이사키, 홀라 모할라, 반디 초르 디와스."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "锡克教的古尔普拉布与圣日：古鲁那纳克和古鲁戈宾德·辛格诞辰、维萨奇节、霍拉·莫哈拉节和班迪·乔尔节。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga Gurpurab at banal na araw ng mga Sikh: kapanganakan nina Guru Nanak at Guru Gobind Singh, Vaisakhi, Hola Mohalla, at Bandi Chhor Divas."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คุรุปุรับและวันศักดิ์สิทธิ์ของชาวซิกข์ ได้แก่ วันประสูติของคุรุนานักและคุรุโควินท์ สิงห์ ไวสาขี โหลา โมหัลลา และบันดี ฉอร์ ดิวัส"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurabs y días sagrados sijs: los nacimientos de Guru Nanak y Guru Gobind Singh, Vaisakhi, Hola Mohalla y Bandi Chhor Divas."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurabs e dias sagrados sikhs: os nascimentos de Guru Nanak e Guru Gobind Singh, Vaisakhi, Hola Mohalla e Bandi Chhor Divas."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गुरपुरब और सिखों के पवित्र दिन: गुरु नानक और गुरु गोबिंद सिंह का प्रकाश पर्व, वैसाखी, होला मोहल्ला और बंदी छोड़ दिवस।"
+          }
+        }
+      }
+    },
+    "cals.sikh.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarihler Hindistan'da yaygın izlenen SGPC takvimine göredir (çoğu ay takviminden, Yeni Delhi'de gün doğumuna göre hesaplanır). 2003 tarihli asıl Nanakşahi takvimini izleyen gurdwaralarda (ör. Pakistan) bazı günler başka tarihlerdedir; kendi gurdwaranızın takvimine bakın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dates follow the SGPC calendar widely observed in India (mostly lunar, calculated for sunrise in New Delhi). Gurdwaras that follow the original 2003 Nanakshahi calendar (for example in Pakistan) mark some days on other dates; check your gurdwara's calendar."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Daten folgen dem in Indien verbreiteten SGPC-Kalender (meist nach dem Mondkalender, berechnet für den Sonnenaufgang in Neu-Delhi). Gurdwaras, die dem ursprünglichen Nanakshahi-Kalender von 2003 folgen (etwa in Pakistan), begehen manche Tage an anderen Daten; fragen Sie in Ihrem Gurdwara nach."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarixlər Hindistanda geniş izlənən SGPC təqviminə görədir (əsasən ay təqvimindən, Yeni Dehlidə gündoğana görə hesablanır). 2003-cü ilin əsl Nanakşahi təqvimini izləyən qurdvaralarda (məs., Pakistanda) bəzi günlər başqa tarixlərdədir; öz qurdvaranızın təqviminə baxın."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تتبع التواريخ تقويم لجنة SGPC المتّبع على نطاق واسع في الهند (قمري في معظمه، ومحسوب لشروق الشمس في نيودلهي). تحتفل المعابد (الغوردوارا) التي تتبع تقويم ناناكشاهي الأصلي لعام 2003، كما في باكستان، ببعض الأيام في تواريخ أخرى؛ راجع تقويم معبدك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanggal mengikuti kalender SGPC yang banyak dipakai di India (sebagian besar kalender bulan, dihitung untuk matahari terbit di New Delhi). Gurdwara yang mengikuti kalender Nanakshahi asli tahun 2003 (misalnya di Pakistan) merayakan beberapa hari pada tanggal lain; periksa kalender gurdwara Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاریخیں ہندوستان میں عام طور پر مانے جانے والے ایس جی پی سی کیلنڈر کے مطابق ہیں (زیادہ تر قمری، نئی دہلی کے طلوعِ آفتاب کے حساب سے)۔ 2003 کے اصل نانک شاہی کیلنڈر پر چلنے والے گوردواروں میں، جیسے پاکستان میں، کچھ دن دوسری تاریخوں پر منائے جاتے ہیں؛ اپنے گوردوارے کا کیلنڈر دیکھیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاریخ‌ها بر پایهٔ تقویم SGPC است که در هند به‌طور گسترده رعایت می‌شود (بیشتر قمری و محاسبه‌شده برای طلوع خورشید در دهلی نو). گوردواراهایی که از تقویم اصلی ناناکشاهی سال 2003 پیروی می‌کنند، مانند پاکستان، برخی روزها را در تاریخ‌های دیگری برگزار می‌کنند؛ تقویم گوردوارای خود را ببینید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les dates suivent le calendrier du SGPC, largement suivi en Inde (surtout lunaire, calculé pour le lever du soleil à New Delhi). Les gurdwaras qui suivent le calendrier Nanakshahi d’origine de 2003 (par exemple au Pakistan) célèbrent certains jours à d’autres dates ; consultez le calendrier de votre gurdwara."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Даты по календарю SGPC, распространённому в Индии (в основном лунному, с расчётом на восход солнца в Нью-Дели). В гурдварах, которые следуют исходному календарю Нанакшахи 2003 года (например, в Пакистане), некоторые дни отмечают в другие даты; уточните календарь своей гурдвары."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日付はインドで広く用いられるSGPCの暦によります（主に太陰暦で、ニューデリーの日の出で計算）。2003年制定の元のナーナクシャーヒー暦に従うグルドワーラー（パキスタンなど）では一部の日が異なります。所属のグルドワーラーの暦をご確認ください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날짜는 인도에서 널리 따르는 SGPC 달력 기준입니다(대부분 음력, 뉴델리 일출 기준 계산). 2003년 원래 나낙샤히 달력을 따르는 구르드와라(예: 파키스탄)에서는 일부 날짜가 다릅니다. 다니는 구르드와라의 달력을 확인하세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日期依据印度普遍遵循的SGPC历（多为阴历，按新德里日出计算）。遵循2003年原版纳纳克沙希历的谒师所（如巴基斯坦）部分节日日期不同，请以所在谒师所的日历为准。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sumusunod ang mga petsa sa kalendaryo ng SGPC na malawak na sinusunod sa India (karaniwang lunar, kinakalkula para sa pagsikat ng araw sa New Delhi). Sa mga gurdwara na sumusunod sa orihinal na kalendaryong Nanakshahi ng 2003 (halimbawa sa Pakistan), iba ang petsa ng ilang araw; tingnan ang kalendaryo ng inyong gurdwara."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันที่เป็นไปตามปฏิทินของ SGPC ที่ใช้แพร่หลายในอินเดีย (ส่วนใหญ่เป็นจันทรคติ คำนวณตามเวลาดวงอาทิตย์ขึ้นที่นิวเดลี) คุรุทวาราที่ใช้ปฏิทินนานักศาหีฉบับดั้งเดิมปี ค.ศ. 2003 (เช่น ในปากีสถาน) จัดบางวันในวันที่ต่างออกไป โปรดตรวจสอบปฏิทินของคุรุทวาราของท่าน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las fechas siguen el calendario del SGPC, muy seguido en la India (mayormente lunar, calculado para la salida del sol en Nueva Delhi). Los gurdwaras que siguen el calendario Nanakshahi original de 2003 (por ejemplo, en Pakistán) celebran algunos días en otras fechas; consulte el calendario de su gurdwara."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As datas seguem o calendário do SGPC, amplamente seguido na Índia (em grande parte lunar, calculado para o nascer do sol em Nova Délhi). Os gurdwaras que seguem o calendário Nanakshahi original de 2003 (por exemplo, no Paquistão) celebram alguns dias em outras datas; confira o calendário do seu gurdwara."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तारीखें भारत में व्यापक रूप से माने जाने वाले एसजीपीसी कैलेंडर के अनुसार हैं (अधिकतर चांद्र, नई दिल्ली के सूर्योदय के अनुसार गणना)। 2003 के मूल नानकशाही कैलेंडर को मानने वाले गुरुद्वारों में (जैसे पाकिस्तान में) कुछ दिन अलग तारीखों पर मनाए जाते हैं; अपने गुरुद्वारे का कैलेंडर देखें।"
+          }
+        }
+      }
+    },
+    "cals.sikh.ev.gurpurabGobind": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guru Gobind Singh Gurpurab (doğum günü)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guru Gobind Singh Gurpurab (birth)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guru Gobind Singh Gurpurab (Geburt)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quru Qobind Sinqh Qurpurabı (doğum günü)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غوربوراب غورو غوبيند سينغ (مولده)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurab Guru Gobind Singh (kelahiran)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گرپرب گرو گوبند سنگھ (یومِ پیدائش)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گورپوراب گورو گوبیند سینگ (زادروز)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurab de Guru Gobind Singh (naissance)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гурпураб Гуру Гобинда Сингха (рождение)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "グル・ゴービンド・シング生誕祭"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "구루 고빈드 싱 구르푸라브(탄신일)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "古鲁戈宾德·辛格诞辰"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurab ni Guru Gobind Singh (kapanganakan)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คุรุปุรับคุรุโควินท์ สิงห์ (วันประสูติ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurab de Guru Gobind Singh (nacimiento)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurab de Guru Gobind Singh (nascimento)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गुरु गोबिंद सिंह प्रकाश पर्व (गुरपुरब)"
+          }
+        }
+      }
+    },
+    "cals.sikh.ev.holaMohalla": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hola Mohalla"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hola Mohalla"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hola Mohalla"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hola Mohalla"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هولا موهالا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hola Mohalla"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہولا محلہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هولا موهالا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hola Mohalla"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хола Мохалла"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ホーラー・モハッラー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "홀라 모할라"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "霍拉·莫哈拉节"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hola Mohalla"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โหลา โมหัลลา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hola Mohalla"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hola Mohalla"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "होला मोहल्ला"
+          }
+        }
+      }
+    },
+    "cals.sikh.ev.vaisakhi": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaisakhi (Khalsa'nın kuruluşu)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaisakhi (founding of the Khalsa)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaisakhi (Gründung der Khalsa)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaysaxi (Xalsanın qurulması)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فايساخي (تأسيس الخالصة)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaisakhi (berdirinya Khalsa)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ویساکھی (خالصہ کا قیام)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ویساکی (بنیان‌گذاری خالصه)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaisakhi (fondation du Khalsa)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вайсакхи (основание Хальсы)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ヴァイサーキー（カールサー創設の日）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "바이사키(칼사 창설일)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "维萨奇节（卡尔萨创立日）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaisakhi (pagkatatag ng Khalsa)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ไวสาขี (วันสถาปนาขาลสา)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaisakhi (fundación del Khalsa)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaisakhi (fundação do Khalsa)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वैसाखी (खालसा स्थापना दिवस)"
+          }
+        }
+      }
+    },
+    "cals.sikh.ev.bandiChhor": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bandi Chhor Divas"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bandi Chhor Divas"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bandi Chhor Divas"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bandi Çhor Divas"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "باندي تشور ديفاس"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bandi Chhor Divas"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بندی چھوڑ دیوس"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "باندی چور دیواس"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bandi Chhor Divas"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Банди Чхор Дивас"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "バンディ・チョール・ディワス"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "반디 초르 디와스"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "班迪·乔尔节"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bandi Chhor Divas"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บันดี ฉอร์ ดิวัส"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bandi Chhor Divas"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bandi Chhor Divas"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बंदी छोड़ दिवस"
+          }
+        }
+      }
+    },
+    "cals.sikh.ev.gurpurabNanak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guru Nanak Gurpurab (Guru Nanak'ın doğum günü)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guru Nanak Gurpurab (birth of Guru Nanak)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guru Nanak Gurpurab (Geburt Guru Nanaks)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quru Nanak Qurpurabı (Quru Nanakın doğum günü)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غوربوراب غورو ناناك (مولد غورو ناناك)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurab Guru Nanak (kelahiran Guru Nanak)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گرپرب گرو نانک (گرو نانک کا یومِ پیدائش)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گورپوراب گورو نانک (زادروز گورو نانک)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurab de Guru Nanak (naissance de Guru Nanak)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гурпураб Гуру Нанака (рождение Гуру Нанака)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "グル・ナーナク生誕祭"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "구루 나나크 구르푸라브(구루 나나크 탄신일)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "古鲁那纳克诞辰"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurab ni Guru Nanak (kapanganakan ni Guru Nanak)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คุรุปุรับคุรุนานัก (วันประสูติคุรุนานัก)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurab de Guru Nanak (nacimiento de Guru Nanak)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurpurab de Guru Nanak (nascimento de Guru Nanak)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गुरु नानक प्रकाश पर्व (गुरपुरब)"
+          }
+        }
+      }
+    },
+    "cals.sikh.ev.martyrdomTeghBahadur": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guru Tegh Bahadur'un şehadet günü"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Martyrdom of Guru Tegh Bahadur"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Märtyrertod von Guru Tegh Bahadur"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quru Teq Bahadurun şəhadət günü"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "استشهاد غورو تيغ بهادور"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemartiran Guru Tegh Bahadur"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گرو تیغ بہادر کی شہادت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شهادت گورو تگ بهادر"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Martyre de Guru Tegh Bahadur"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мученичество Гуру Тегх Бахадура"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "グル・テーグ・バハードゥル殉教の日"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "구루 테그 바하두르 순교일"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "古鲁德格·巴哈杜尔殉道日"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pagkamartir ni Guru Tegh Bahadur"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันพลีชีพของคุรุเตฆ บหาทุร"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Martirio de Guru Tegh Bahadur"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Martírio de Guru Tegh Bahadur"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गुरु तेग बहादुर शहीदी दिवस"
+          }
+        }
+      }
+    },
+    "cals.indian.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hint ulusal takvimi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indian national calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indischer Nationalkalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindistan milli təqvimi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التقويم الوطني الهندي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender nasional India"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بھارت کا قومی کیلنڈر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقویم ملی هند"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendrier national indien"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Индийский национальный календарь"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "インド国定暦"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "인도 국정력"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "印度国定历"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pambansang kalendaryo ng India"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปฏิทินแห่งชาติอินเดีย"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendario nacional indio"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendário nacional indiano"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "भारतीय राष्ट्रीय पंचांग"
+          }
+        }
+      }
+    },
+    "cals.indian.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindistan'ın resmî Saka takvimine göre tarih, Saka yılbaşı ile Bengal ve Tamil yılbaşları."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The date in India's official Saka calendar, the Saka New Year and the Bengali and Tamil New Years."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Datum im amtlichen Saka-Kalender Indiens, das Saka-Neujahr sowie das bengalische und das tamilische Neujahr."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindistanın rəsmi Saka təqviminə görə tarix, Saka ilbaşı, Benqal və Tamil ilbaşıları."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التاريخ بحسب تقويم ساكا الرسمي في الهند، ورأس السنة الساكية، ورأسا السنة البنغالية والتاميلية."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanggal menurut kalender Saka resmi India, Tahun Baru Saka, serta Tahun Baru Bengali dan Tamil."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بھارت کے سرکاری شک کیلنڈر کے مطابق تاریخ، شک نیا سال، اور بنگالی و تمل نیا سال۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاریخ بر پایهٔ تقویم رسمی ساکای هند، آغاز سال ساکا و سال نو بنگالی و تامیلی."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La date dans le calendrier saka officiel de l’Inde, le Nouvel An saka et les Nouvel An bengali et tamoul."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дата по официальному календарю Шака в Индии, Новый год Шака, бенгальский и тамильский Новый год."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "インドの公式なサカ暦による日付、サカ暦の新年、ベンガルとタミルの新年。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "인도의 공식 사카력 날짜, 사카력 새해, 벵골과 타밀의 새해."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "印度官方萨卡历的日期、萨卡历新年以及孟加拉新年和泰米尔新年。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang petsa sa opisyal na kalendaryong Saka ng India, ang Bagong Taon ng Saka, at ang Bagong Taon ng mga Bengali at Tamil."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันที่ตามปฏิทินศกอย่างเป็นทางการของอินเดีย วันขึ้นปีใหม่ศก และวันขึ้นปีใหม่เบงกอลและทมิฬ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La fecha en el calendario saka oficial de la India, el Año Nuevo saka y los años nuevos bengalí y tamil."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A data no calendário saka oficial da Índia, o Ano-Novo saka e os anos-novos bengali e tâmil."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "भारत के आधिकारिक शक संवत के अनुसार तारीख, शक नव वर्ष तथा बंगाली और तमिल नव वर्ष।"
+          }
+        }
+      }
+    },
+    "cals.indian.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saka takvimi Hindistan'ın resmî sivil takvimidir: 1 Çaitra 22 Mart'a düşer (artık yılda 21 Mart), yıl Gregoryen yılın 78 yıl gerisindedir. Bengal yılbaşı (Pohela Boişakh) Hindistan'daki kurala göredir; Bangladeş her yıl 14 Nisan'da kutlar. Tamil yılbaşı (Puthandu) Güneş'in yıldızıl Koç burcuna girişine göredir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Saka calendar is India's official civil calendar: 1 Chaitra falls on 22 March (21 March in leap years) and the year runs 78 years behind the Gregorian year. Bengali New Year (Pohela Boishakh) follows the rule used in India; Bangladesh celebrates it on 14 April every year. Tamil New Year (Puthandu) follows the Sun's entry into sidereal Aries."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Saka-Kalender ist der amtliche zivile Kalender Indiens: Der 1. Chaitra fällt auf den 22. März (in Schaltjahren auf den 21. März), die Jahreszahl liegt 78 Jahre hinter der gregorianischen. Das bengalische Neujahr (Pohela Boishakh) folgt der in Indien üblichen Regel; Bangladesch feiert es jedes Jahr am 14. April. Das tamilische Neujahr (Puthandu) richtet sich nach dem Eintritt der Sonne in den siderischen Widder."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saka təqvimi Hindistanın rəsmi mülki təqvimidir: 1 Çaitra 22 marta düşür (uzun ildə 21 marta), il Qriqori ilindən 78 il geridədir. Benqal ilbaşı (Pohela Boyşax) Hindistandakı qaydaya görədir; Banqladeş onu hər il 14 apreldə qeyd edir. Tamil ilbaşı (Puthandu) Günəşin siderik Qoç bürcünə girməsinə görədir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقويم ساكا هو التقويم المدني الرسمي للهند: يوافق 1 تشايترا يوم 22 مارس (21 مارس في السنة الكبيسة)، وتتأخر سنته 78 عامًا عن السنة الميلادية. يتبع رأس السنة البنغالية (بوهيلا بويشاخ) القاعدة المعمول بها في الهند، أما بنغلاديش فتحتفل به في 14 أبريل كل عام. ويتبع رأس السنة التاميلية (بوثاندو) دخول الشمس برج الحمل النجمي."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender Saka adalah kalender sipil resmi India (berbeda dari kalender Saka Bali): 1 Chaitra jatuh pada 22 Maret (21 Maret pada tahun kabisat), dan tahunnya 78 tahun di belakang tahun Masehi. Tahun Baru Bengali (Pohela Boishakh) mengikuti aturan yang dipakai di India; Bangladesh merayakannya setiap 14 April. Tahun Baru Tamil (Puthandu) mengikuti masuknya Matahari ke rasi Aries sideris."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شک کیلنڈر بھارت کا سرکاری شہری کیلنڈر ہے: یکم چیت 22 مارچ کو ہوتی ہے (لیپ کے سال میں 21 مارچ)، اور اس کا سال عیسوی سال سے 78 سال پیچھے ہے۔ بنگالی نیا سال (پوہیلا بوئیشاکھ) بھارت میں رائج قاعدے کے مطابق ہے؛ بنگلہ دیش اسے ہر سال 14 اپریل کو مناتا ہے۔ تمل نیا سال (پتھانڈو) سورج کے نجومی برجِ حمل میں داخلے کے مطابق ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقویم ساکا تقویم رسمی مدنی هند است: 1 چیترا برابر با 22 مارس است (در سال کبیسه 21 مارس) و سال آن 78 سال از سال میلادی عقب‌تر است. سال نو بنگالی (پوهلا بویشاخ) طبق قاعدهٔ رایج در هند است؛ بنگلادش هر سال آن را در 14 آوریل جشن می‌گیرد. سال نو تامیلی (پوتاندو) بر پایهٔ ورود خورشید به برج حمل نجومی است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le calendrier saka est le calendrier civil officiel de l’Inde : le 1er Chaitra tombe le 22 mars (le 21 mars les années bissextiles) et l’année a 78 ans de retard sur l’année grégorienne. Le Nouvel An bengali (Pohela Boishakh) suit la règle en usage en Inde ; le Bangladesh le fête chaque année le 14 avril. Le Nouvel An tamoul (Puthandu) suit l’entrée du Soleil dans le Bélier sidéral."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Календарь Шака — официальный гражданский календарь Индии: 1 чайтры приходится на 22 марта (в високосный год — на 21 марта), а год отстаёт от григорианского на 78 лет. Бенгальский Новый год (Похела Бойшакх) — по правилу, принятому в Индии; Бангладеш отмечает его каждый год 14 апреля. Тамильский Новый год (Путханду) — по вступлению Солнца в сидерический Овен."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サカ暦はインドの公式な市民暦です。チャイトラ月1日は3月22日（閏年は3月21日）で、年はグレゴリオ暦より78年遅れています。ベンガル新年（ポヘラ・ボイシャク）はインドで用いられる規則により、バングラデシュでは毎年4月14日です。タミル新年（プッタンドゥ）は太陽が恒星黄道の白羊宮に入る日によります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사카력은 인도의 공식 민간 달력입니다. 차이트라월 1일은 3월 22일(윤년에는 3월 21일)이며, 연도는 그레고리력보다 78년 늦습니다. 벵골 새해(포헬라 보이샤크)는 인도에서 쓰는 규칙을 따르며, 방글라데시는 매년 4월 14일에 지냅니다. 타밀 새해(푸탄두)는 태양이 항성 황도의 양자리에 들어가는 날을 따릅니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "萨卡历是印度官方的民用历法：制呾罗月1日为3月22日（闰年为3月21日），纪年比公历晚78年。孟加拉新年（博伊沙克节）按印度通行的规则计算，孟加拉国则每年于4月14日庆祝。泰米尔新年（普坦杜节）以太阳进入恒星白羊宫为准。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang kalendaryong Saka ang opisyal na sibil na kalendaryo ng India: pumapatak ang 1 Chaitra sa Marso 22 (Marso 21 sa leap year), at 78 taon itong nahuhuli sa taong Gregoryano. Sumusunod ang Bagong Taon ng Bengali (Pohela Boishakh) sa tuntuning gamit sa India; sa Bangladesh, ipinagdiriwang ito tuwing Abril 14. Sumusunod ang Bagong Taon ng Tamil (Puthandu) sa pagpasok ng Araw sa sidereal na Aries."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปฏิทินศกเป็นปฏิทินทางราชการของอินเดีย วันที่ 1 เดือนไจตระตรงกับ 22 มีนาคม (21 มีนาคมในปีอธิกสุรทิน) และปีศกช้ากว่าปีคริสต์ศักราช 78 ปี ปีใหม่เบงกอล (โปเหลา ไบศาข) ใช้หลักที่ถือกันในอินเดีย ส่วนบังกลาเทศฉลองทุกวันที่ 14 เมษายน ปีใหม่ทมิฬ (ปุตตาณฑุ) ถือตามวันที่ดวงอาทิตย์เข้าสู่ราศีเมษแบบนิรายนะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El calendario saka es el calendario civil oficial de la India: el 1 de Chaitra cae el 22 de marzo (el 21 de marzo en años bisiestos) y su año va 78 años por detrás del gregoriano. El Año Nuevo bengalí (Pohela Boishakh) sigue la regla usada en la India; Bangladés lo celebra cada año el 14 de abril. El Año Nuevo tamil (Puthandu) sigue la entrada del Sol en Aries sideral."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O calendário saka é o calendário civil oficial da Índia: o 1º de Chaitra cai em 22 de março (21 de março em anos bissextos), e o ano fica 78 anos atrás do gregoriano. O Ano-Novo bengali (Pohela Boishakh) segue a regra usada na Índia; Bangladesh o celebra todo ano em 14 de abril. O Ano-Novo tâmil (Puthandu) segue a entrada do Sol em Áries sideral."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शक संवत भारत का आधिकारिक नागरिक कैलेंडर है: 1 चैत्र 22 मार्च को पड़ता है (लीप वर्ष में 21 मार्च), और इसका वर्ष ग्रेगोरियन वर्ष से 78 वर्ष पीछे है। बंगाली नव वर्ष (पोहेला बोइशाख) भारत में प्रचलित नियम से है; बांग्लादेश इसे हर वर्ष 14 अप्रैल को मनाता है। तमिल नव वर्ष (पुथांडु) सूर्य के निरयण मेष राशि में प्रवेश के अनुसार है।"
+          }
+        }
+      }
+    },
+    "cals.indian.ev.sakaNewYear": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saka yılbaşı (1 Çaitra)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saka New Year (1 Chaitra)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saka-Neujahr (1. Chaitra)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saka ilbaşı (1 Çaitra)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رأس السنة الساكية (1 تشايترا)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahun Baru Saka (1 Chaitra)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شک نیا سال (یکم چیت)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آغاز سال ساکا (1 چیترا)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nouvel An saka (1er Chaitra)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Новый год Шака (1 чайтры)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サカ暦新年（チャイトラ月1日）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사카력 새해(차이트라월 1일)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "萨卡历新年（制呾罗月1日）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bagong Taon ng Saka (1 Chaitra)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันขึ้นปีใหม่ศก (1 เดือนไจตระ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Año Nuevo saka (1 de Chaitra)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ano-Novo saka (1º de Chaitra)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शक नव वर्ष (1 चैत्र)"
+          }
+        }
+      }
+    },
+    "cals.indian.ev.bengaliNewYear": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pohela Boişakh (Bengal yılbaşı)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pohela Boishakh (Bengali New Year)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pohela Boishakh (bengalisches Neujahr)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pohela Boyşax (Benqal ilbaşı)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بوهيلا بويشاخ (رأس السنة البنغالية)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pohela Boishakh (Tahun Baru Bengali)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پوہیلا بوئیشاکھ (بنگالی نیا سال)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پوهلا بویشاخ (سال نو بنگالی)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pohela Boishakh (Nouvel An bengali)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Похела Бойшакх (бенгальский Новый год)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ポヘラ・ボイシャク（ベンガル新年）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "포헬라 보이샤크(벵골 새해)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "博伊沙克节（孟加拉新年）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pohela Boishakh (Bagong Taon ng Bengali)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โปเหลา ไบศาข (ปีใหม่เบงกอล)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pohela Boishakh (Año Nuevo bengalí)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pohela Boishakh (Ano-Novo bengali)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पोहेला बोइशाख (बंगाली नव वर्ष)"
+          }
+        }
+      }
+    },
+    "cals.indian.ev.tamilNewYear": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puthandu (Tamil yılbaşı)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puthandu (Tamil New Year)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puthandu (tamilisches Neujahr)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puthandu (Tamil ilbaşı)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بوثاندو (رأس السنة التاميلية)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puthandu (Tahun Baru Tamil)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پتھانڈو (تمل نیا سال)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پوتاندو (سال نو تامیلی)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puthandu (Nouvel An tamoul)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Путханду (тамильский Новый год)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プッタンドゥ（タミル新年）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "푸탄두(타밀 새해)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "普坦杜节（泰米尔新年）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puthandu (Bagong Taon ng Tamil)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปุตตาณฑุ (ปีใหม่ทมิฬ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puthandu (Año Nuevo tamil)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puthandu (Ano-Novo tâmil)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पुथांडु (तमिल नव वर्ष)"
+          }
+        }
+      }
+    },
+    "cals.indian.month.1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çaitra"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chaitra"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chaitra"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çaitra"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تشايترا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chaitra"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "چیت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "چیترا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chaitra"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чайтра"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "チャイトラ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "차이트라월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "制呾罗月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chaitra"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนไจตระ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chaitra"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chaitra"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "चैत्र"
+          }
+        }
+      }
+    },
+    "cals.indian.month.2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaişakha"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaishakha"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaishakha"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaişakha"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فايشاكا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaishakha"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بیساکھ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ویشاکا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaishakha"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вайшакха"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ヴァイシャーカ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "바이샤카월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "吠舍佉月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaishakha"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนไวศาขะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaishakha"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaishakha"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वैशाख"
+          }
+        }
+      }
+    },
+    "cals.indian.month.3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jyeştha"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jyeshtha"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jyeshtha"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jyeştha"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جييشثا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jyeshtha"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جیٹھ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جیشتا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jyeshtha"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Джьештха"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ジェーシュタ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "제슈타월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "逝瑟吒月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jyeshtha"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนเชษฐะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jyeshtha"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jyeshtha"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ज्येष्ठ"
+          }
+        }
+      }
+    },
+    "cals.indian.month.4": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aşadha"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashadha"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashadha"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aşadha"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أشادها"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashadha"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اساڑھ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آشادا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashadha"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ашадха"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アーシャーダ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아샤다월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "頞沙荼月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashadha"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนอาษาฒะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashadha"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashadha"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आषाढ़"
+          }
+        }
+      }
+    },
+    "cals.indian.month.5": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şravana"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shravana"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shravana"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şravana"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شرافانا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shravana"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساون"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شراونا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shravana"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шравана"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "シュラーヴァナ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "슈라바나월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "室罗伐拏月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shravana"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนศราวณะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shravana"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shravana"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "श्रावण"
+          }
+        }
+      }
+    },
+    "cals.indian.month.6": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bhadra"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bhadra"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bhadra"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bhadra"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بهادرا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bhadra"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بھادوں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بهادرا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bhadra"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Бхадра"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "バードラ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "바드라월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "婆达罗钵陀月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bhadra"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนภาทรปทะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bhadra"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bhadra"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "भाद्र"
+          }
+        }
+      }
+    },
+    "cals.indian.month.7": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aşvin"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashwin"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashwin"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aşvin"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أشوين"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashwin"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کنوار"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آشوین"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashwin"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ашвин"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アーシュヴィナ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아슈빈월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "頞湿缚庾阇月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashwin"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนอาศวินะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashwin"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ashwin"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आश्विन"
+          }
+        }
+      }
+    },
+    "cals.indian.month.8": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartika"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartika"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartika"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartika"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كارتيكا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartika"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کاتک"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کارتیکا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartika"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Картика"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カールッティカ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "카르티카월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "迦剌底迦月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartika"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนการติกะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartika"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartika"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कार्तिक"
+          }
+        }
+      }
+    },
+    "cals.indian.month.9": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agrahayana"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agrahayana"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agrahayana"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aqrahayana"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أغراهايانا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agrahayana"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگہن"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آگراهایانا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agrahayana"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аграхаяна"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アグラハーヤナ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아그라하야나월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "末伽始罗月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agrahayana"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนมารคศีรษะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agrahayana"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agrahayana"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अग्रहायण"
+          }
+        }
+      }
+    },
+    "cals.indian.month.10": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pauşa"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausha"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausha"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pauşa"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "باوشا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausha"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پوس"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پاوشا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausha"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пауша"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "パウシャ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "파우샤월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "报沙月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausha"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนเปาษะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausha"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausha"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पौष"
+          }
+        }
+      }
+    },
+    "cals.indian.month.11": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماغا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماگھ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماگا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Магха"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "マーガ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "마가월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "磨袪月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนมาฆะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magha"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "माघ"
+          }
+        }
+      }
+    },
+    "cals.indian.month.12": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phalguna"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phalguna"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phalguna"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phalguna"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فالغونا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phalguna"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پھاگن"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فالگونا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phalguna"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пхалгуна"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "パールグナ月"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "팔구나월"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "颇勒窭拏月"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phalguna"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เดือนผาลคุนะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phalguna"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phalguna"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फाल्गुन"
+          }
+        }
+      }
+    },
+    "cals.indian.fmt": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@ %3$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%3$@年%2$@%1$@日"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%3$@년 %2$@ %1$@일"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%3$@年%2$@%1$@日"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ de %2$@ de %3$@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ de %2$@ de %3$@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@ %3$@"
+          }
+        }
+      }
+    },
     "common.done": {
       "extractionState": "manual",
       "localizations": {
