@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">Həftə sonu</string>
     <string name="calendar_types_today">Bu gün</string>
     <string name="calendar_types_school">Məktəb tətili və ya tədris tarixi (MEB)</string>
+    <string name="calendar_types_leave">Ümumi məzuniyyət günü</string>
     <string name="calendar_events_newYear">Yeni il</string>
     <string name="calendar_events_apr23">Milli Suverenlik və Uşaqlar Bayramı</string>
     <string name="calendar_events_may1">Əmək və Həmrəylik Günü</string>

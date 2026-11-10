@@ -646,7 +646,8 @@
       "special": "Special day",
       "weekend": "Weekend",
       "today": "Today",
-      "school": "School break or term date (MEB)"
+      "school": "School break or term date (MEB)",
+      "leave": "Collective leave day"
     },
     "eventsHeading": "List of days in {year}",
     "colDate": "Date",
@@ -2564,7 +2565,7 @@
     "hubTitle": "Public holidays by country 2024–2032 | Saat Tarih",
     "hubDescription": "Nationwide public holidays in Germany, the UK, the US, the Netherlands, France and 25 more countries: dates, weekdays, the next holiday and days left.",
     "hubH1": "Public holidays by country",
-    "hubLead": "Nationwide public holidays in 30 countries and the days left until the next one.",
+    "hubLead": "Nationwide public holidays in 32 countries and the days left until the next one.",
     "hubSearch": "public holidays country germany uk us netherlands france bank holidays calendar resmi tatil",
     "colCountry": "Country",
     "colNext": "Next holiday",
@@ -2592,9 +2593,13 @@
     "faq": [
       {
         "q": "Which countries' public holidays are listed?",
-        "a": "This section lists nationwide public holidays in 30 countries: Germany, the UK, France, the Netherlands, Belgium, Austria, Switzerland and more in Europe, plus the US, Canada, Brazil, Australia, Japan, China, Russia, Georgia, Singapore and South Africa. Turkey's holidays are on the yearly calendar pages."
+        "a": "This section lists nationwide public holidays in 32 countries: Germany, the UK, France, the Netherlands, Belgium, Austria, Switzerland and more in Europe, plus the US, Canada, Brazil, Australia, Japan, China, Russia, Georgia, Singapore and South Africa. Turkey's holidays are on the yearly calendar pages. Holidays for Indonesia and India come from the governments' official lists (SKB 3 Menteri and DoPT)."
       }
-    ]
+    ],
+    "leaveNote": "Collective leave days (cuti bersama) are days off for civil servants; in the private sector they are deducted from annual leave and depend on the employer. They are not counted as public holidays.",
+    "inNote": "Closed holidays of central government offices in Delhi and New Delhi (DoPT). State holidays differ; Islamic holidays can move by a day depending on the moon sighting.",
+    "officialSource": "Source: {source}, checked on {date}. Dates may change; follow the official announcement.",
+    "officialNote": "Holidays for Indonesia and India come from the governments' official lists (SKB 3 Menteri and DoPT)."
   },
   "zakat": {
     "title": "Zakat calculator: nisab and how much zakat to pay | Saat Tarih",

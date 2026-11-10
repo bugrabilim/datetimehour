@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">주말</string>
     <string name="calendar_types_today">오늘</string>
     <string name="calendar_types_school">방학 또는 학기 일정(MEB)</string>
+    <string name="calendar_types_leave">공동 휴가일</string>
     <string name="calendar_events_newYear">새해 첫날</string>
     <string name="calendar_events_apr23">국가 주권과 어린이의 날</string>
     <string name="calendar_events_may1">노동과 연대의 날</string>

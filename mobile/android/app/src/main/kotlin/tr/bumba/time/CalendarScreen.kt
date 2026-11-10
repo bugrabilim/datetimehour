@@ -339,7 +339,7 @@ object CalView {
             }.apply()
     }
 
-    /** Telefonun (sistemin) bölgesi 30 ülkeden biriyse o ülke, değilse Türkiye; uygulama içi dil seçimi etkilemez */
+    /** Telefonun (sistemin) bölgesi 32 ülkeden biriyse o ülke, değilse Türkiye; uygulama içi dil seçimi etkilemez */
     fun regionDefault(): String {
         WorldHol.ensure()
         val r = runCatching { android.content.res.Resources.getSystem().configuration.locales.get(0).country.uppercase() }.getOrDefault("")
@@ -351,6 +351,10 @@ object CalView {
         countryState = null; hiddenState = null
         Prefs.store.edit().remove("cal.country").remove("cal.hidden").apply()
     }
+
+    /** Takvimde gösterilebilen türler: Türkiye'de beşi; başka ülkede resmî tatil, varsa ortak izin günü (Endonezya) ve dini günler */
+    fun types(): List<String> = if (country == "TR") listOf("holiday", "half", "religious", "special", "school")
+        else listOfNotNull("holiday", "leave".takeIf { WorldHol.hasLeave(country) }, "religious")
 
     /** Vakitler kapalıyken dini günler varsayılan gizli */
     fun defaultHidden(): Set<String> = if (Features.isOn(Tab.PRAYER)) emptySet() else setOf("religious")
@@ -532,7 +536,7 @@ private fun TypeRow(type: String, text: String) {
 @Composable
 private fun Legend() {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        val legendTypes = (if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")).filter { it !in CalView.hidden } +
+        val legendTypes = CalView.types().filter { it !in CalView.hidden } +
             ExtraCals.sorted().filter { ExtraCals.isOn(it.id) }.map { "cal:${it.id}" }
         for (t in legendTypes) {
             Row(verticalAlignment = Alignment.CenterVertically) {

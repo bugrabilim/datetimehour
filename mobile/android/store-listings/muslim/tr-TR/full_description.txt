@@ -19,7 +19,7 @@ Saat ve widget'lar
 • Wear OS uygulaması (kutucuk ve komplikasyonlar), Android TV uygulaması, ekran koruyucu, yüzen saat ve Hızlı Ayarlar kutucukları
 
 Takvim ve hava
-• Türkiye ve 30 ülkenin resmî tatilleri, arifeler; telefonunuzdaki takvimlerle (Google Takvim dahil) bir arada
+• Türkiye ve 32 ülkenin resmî tatilleri, arifeler; telefonunuzdaki takvimlerle (Google Takvim dahil) bir arada
 • Saatlik ve 14 günlük tahmin, hava kalitesi ve polen, havaya göre canlanan ekran
 
 Alarm, uyku ve odak

@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">Wochenende</string>
     <string name="calendar_types_today">Heute</string>
     <string name="calendar_types_school">Schulferien oder Schultermin (MEB)</string>
+    <string name="calendar_types_leave">Gemeinsamer Urlaubstag</string>
     <string name="calendar_events_newYear">Neujahr</string>
     <string name="calendar_events_apr23">Tag der nationalen Souveränität und des Kindes</string>
     <string name="calendar_events_may1">Tag der Arbeit und der Solidarität</string>

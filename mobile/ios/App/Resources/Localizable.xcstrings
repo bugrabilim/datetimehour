@@ -8926,6 +8926,125 @@
         }
       }
     },
+    "calendar.types.leave": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ortak izin günü"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collective leave day"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemeinsamer Urlaubstag"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ümumi məzuniyyət günü"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يوم إجازة جماعية"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuti bersama"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اجتماعی چھٹی کا دن"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روز مرخصی همگانی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jour de congé collectif"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "День общего отпуска"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一斉休暇日"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "공동 휴가일"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "集体休假日"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Araw ng sama-samang leave"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันลาพร้อมกัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Día de permiso colectivo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dia de folga coletiva"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सामूहिक अवकाश दिवस"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "যৌথ ছুটির দিন"
+          }
+        }
+      }
+    },
     "calendar.events.newYear": {
       "extractionState": "manual",
       "localizations": {

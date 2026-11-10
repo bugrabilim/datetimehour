@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">সাপ্তাহিক ছুটি</string>
     <string name="calendar_types_today">আজ</string>
     <string name="calendar_types_school">স্কুলের ছুটি বা সেমিস্টারের তারিখ (MEB)</string>
+    <string name="calendar_types_leave">যৌথ ছুটির দিন</string>
     <string name="calendar_events_newYear">নববর্ষ</string>
     <string name="calendar_events_apr23">জাতীয় সার্বভৌমত্ব ও শিশু দিবস</string>
     <string name="calendar_events_may1">শ্রম ও সংহতি দিবস</string>

@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">週末</string>
     <string name="calendar_types_today">今日</string>
     <string name="calendar_types_school">学校の休暇・学期の日程（MEB）</string>
+    <string name="calendar_types_leave">一斉休暇日</string>
     <string name="calendar_events_newYear">元日</string>
     <string name="calendar_events_apr23">国民主権とこどもの日</string>
     <string name="calendar_events_may1">労働と連帯の日</string>

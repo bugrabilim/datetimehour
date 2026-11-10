@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">วันหยุดสุดสัปดาห์</string>
     <string name="calendar_types_today">วันนี้</string>
     <string name="calendar_types_school">ปิดภาคเรียนหรือวันสำคัญของภาคเรียน (MEB)</string>
+    <string name="calendar_types_leave">วันลาพร้อมกัน</string>
     <string name="calendar_events_newYear">วันขึ้นปีใหม่</string>
     <string name="calendar_events_apr23">วันอธิปไตยแห่งชาติและวันเด็ก</string>
     <string name="calendar_events_may1">วันแรงงานและความสามัคคี</string>

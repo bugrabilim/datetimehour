@@ -10,7 +10,7 @@ CLOCK AND WIDGETS
 • Home Screen and Lock Screen widgets: clocks, world clocks, countdowns, Moon phase; Apple Watch complications
 
 CALENDAR AND WEATHER
-• Public holidays for Türkiye and 30 more countries, including Canada, plus religious and special days, next to the calendars on your phone
+• Public holidays for Türkiye and 32 more countries, including Canada, plus religious and special days, next to the calendars on your phone
 • Hijri calendar and converter
 • Hourly and 10-day forecast, air quality, and a screen that changes with the weather
 

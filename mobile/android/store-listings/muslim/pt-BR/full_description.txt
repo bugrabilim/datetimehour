@@ -19,7 +19,7 @@ Relógio e widgets
 • App para Wear OS com bloco e complicações, app para Android TV, protetor de tela, relógio flutuante e blocos de Configurações rápidas
 
 Calendário e clima
-• Feriados da Turquia e de outros 30 países, ao lado das agendas do seu celular (incluindo o Google Agenda)
+• Feriados da Turquia e de outros 32 países, ao lado das agendas do seu celular (incluindo o Google Agenda)
 • Previsão por hora e para 14 dias, qualidade do ar e pólen, e uma tela que muda com o clima
 
 Alarme, sono e foco

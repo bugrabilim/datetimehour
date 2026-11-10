@@ -712,7 +712,8 @@
       "special": "Data especial",
       "weekend": "Fim de semana",
       "today": "Hoje",
-      "school": "Férias ou data escolar (MEB)"
+      "school": "Férias ou data escolar (MEB)",
+      "leave": "Dia de folga coletiva"
     },
     "eventsHeading": "Lista de datas de {year}",
     "colDate": "Data",
@@ -2644,7 +2645,7 @@
     "hubTitle": "Feriados por país 2024–2032 | Saat Tarih",
     "hubDescription": "Feriados nacionais da Alemanha, do Reino Unido, dos EUA, dos Países Baixos, da França e de mais 25 países: datas, dias da semana, o próximo feriado e os dias restantes.",
     "hubH1": "Feriados por país",
-    "hubLead": "Feriados nacionais de 30 países e os dias que faltam para o próximo.",
+    "hubLead": "Feriados nacionais de 32 países e os dias que faltam para o próximo.",
     "hubSearch": "feriados país alemanha reino unido eua países baixos frança calendário resmi tatil public holidays",
     "colCountry": "País",
     "colNext": "Próximo feriado",
@@ -2672,9 +2673,13 @@
     "faq": [
       {
         "q": "Os feriados de quais países aparecem?",
-        "a": "Esta seção mostra os feriados nacionais de 30 países: Alemanha, Reino Unido, França, Países Baixos, Bélgica, Áustria, Suíça e outros da Europa, além de EUA, Canadá, Brasil, Austrália, Japão, China, Rússia, Geórgia, Singapura e África do Sul. Os feriados da Turquia estão nas páginas do calendário anual."
+        "a": "Esta seção mostra os feriados nacionais de 32 países: Alemanha, Reino Unido, França, Países Baixos, Bélgica, Áustria, Suíça e outros da Europa, além de EUA, Canadá, Brasil, Austrália, Japão, China, Rússia, Geórgia, Singapura e África do Sul. Os feriados da Turquia estão nas páginas do calendário anual. Os feriados da Indonésia e da Índia vêm das listas oficiais dos governos (SKB 3 Menteri e DoPT)."
       }
-    ]
+    ],
+    "leaveNote": "Os dias de folga coletiva (cuti bersama) são livres para servidores públicos; no setor privado, são descontados das férias anuais e dependem do empregador. Não contam como feriados.",
+    "inNote": "Dias de fechamento das repartições do governo central em Délhi e Nova Délhi (DoPT). Os feriados dos estados são diferentes; as festas islâmicas podem mudar um dia conforme o avistamento da lua.",
+    "officialSource": "Fonte: {source}, verificado em {date}. As datas podem mudar; siga o anúncio oficial.",
+    "officialNote": "Os feriados da Indonésia e da Índia vêm das listas oficiais dos governos (SKB 3 Menteri e DoPT)."
   },
   "zakat": {
     "title": "Calculadora de zakat: nisab e quanto zakat pagar | Saat Tarih",

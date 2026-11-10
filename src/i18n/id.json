@@ -646,7 +646,8 @@
       "special": "Hari istimewa",
       "weekend": "Akhir pekan",
       "today": "Hari ini",
-      "school": "Libur atau kalender sekolah (MEB)"
+      "school": "Libur atau kalender sekolah (MEB)",
+      "leave": "Cuti bersama"
     },
     "eventsHeading": "Daftar hari pada {year}",
     "colDate": "Tanggal",
@@ -2564,7 +2565,7 @@
     "hubTitle": "Hari libur resmi menurut negara 2024–2032 | Saat Tarih",
     "hubDescription": "Hari libur nasional di Jerman, Inggris, AS, Belanda, Prancis, dan 25 negara lain: tanggal, hari, hari libur berikutnya, dan sisa harinya.",
     "hubH1": "Hari libur resmi menurut negara",
-    "hubLead": "Hari libur nasional di 30 negara dan sisa hari menuju hari libur berikutnya.",
+    "hubLead": "Hari libur nasional di 32 negara dan sisa hari menuju hari libur berikutnya.",
     "hubSearch": "public holidays country germany uk us netherlands france bank holidays calendar resmi tatil hari libur nasional negara kalender",
     "colCountry": "Negara",
     "colNext": "Hari libur berikutnya",
@@ -2592,9 +2593,13 @@
     "faq": [
       {
         "q": "Hari libur negara mana saja yang tercantum?",
-        "a": "Bagian ini mencantumkan hari libur nasional di 30 negara: Jerman, Inggris, Prancis, Belanda, Belgia, Austria, Swiss, dan lainnya di Eropa, serta AS, Kanada, Brasil, Australia, Jepang, Tiongkok, Rusia, Georgia, Singapura, dan Afrika Selatan. Hari libur Turki ada di halaman kalender tahunan."
+        "a": "Bagian ini mencantumkan hari libur nasional di 32 negara: Jerman, Inggris, Prancis, Belanda, Belgia, Austria, Swiss, dan lainnya di Eropa, serta AS, Kanada, Brasil, Australia, Jepang, Tiongkok, Rusia, Georgia, Singapura, dan Afrika Selatan. Hari libur Turki ada di halaman kalender tahunan. Hari libur Indonesia dan India diambil dari daftar resmi pemerintah (SKB 3 Menteri dan DoPT)."
       }
-    ]
+    ],
+    "leaveNote": "Cuti bersama adalah hari libur bagi ASN; di sektor swasta mengurangi hak cuti tahunan dan diatur oleh pimpinan masing-masing. Tidak dihitung sebagai hari libur nasional.",
+    "inNote": "Hari libur kantor pemerintah pusat di Delhi dan New Delhi (DoPT). Hari libur negara bagian berbeda; hari raya Islam bisa bergeser sehari tergantung rukyat hilal.",
+    "officialSource": "Sumber: {source}, diperiksa pada {date}. Tanggal dapat berubah; ikuti pengumuman resmi.",
+    "officialNote": "Hari libur Indonesia dan India diambil dari daftar resmi pemerintah (SKB 3 Menteri dan DoPT)."
   },
   "zakat": {
     "title": "Kalkulator zakat: nisab dan jumlah zakat | Saat Tarih",

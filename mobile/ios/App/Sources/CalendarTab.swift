@@ -348,7 +348,8 @@ struct CalendarTab: View {
     }
 
     private var legend: some View {
-        let types = ["holiday", "half", "religious", "special", "school"] + ExtraCals.sorted().filter { ExtraCals.isOn($0.id) }.map { "cal:\($0.id)" }
+        let hidden = CalPrefs.hidden
+        let types = WorldHol.types(CalPrefs.country).filter { !hidden.contains($0) } + ExtraCals.sorted().filter { ExtraCals.isOn($0.id) }.map { "cal:\($0.id)" }
         return FlowRow(items: types) { t in
             HStack(spacing: 4) {
                 Circle().fill(CalendarData.color(t)).frame(width: 8, height: 8)

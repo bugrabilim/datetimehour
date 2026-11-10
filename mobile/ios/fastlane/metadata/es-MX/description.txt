@@ -10,7 +10,7 @@ RELOJ Y WIDGETS
 • Widgets para la pantalla de inicio y la pantalla bloqueada: relojes, relojes del mundo, cuentas regresivas, fase lunar; complicaciones para el Apple Watch
 
 CALENDARIO Y CLIMA
-• Días festivos de Turquía y de otros 30 países, días religiosos y especiales, junto a los calendarios de su celular
+• Días festivos de Turquía y de otros 32 países, días religiosos y especiales, junto a los calendarios de su celular
 • Calendario de la Hégira y convertidor
 • Pronóstico por hora y a 10 días, calidad del aire y una pantalla que se anima según el clima
 

@@ -19,7 +19,7 @@ Clock and widgets
 • A Wear OS app with a tile and complications, an Android TV app, a screen saver, a floating clock and Quick Settings tiles
 
 Calendar and weather
-• Public holidays for Türkiye and 30 more countries, next to the calendars on your phone (Google Calendar included)
+• Public holidays for Türkiye and 32 more countries, next to the calendars on your phone (Google Calendar included)
 • Hourly and 14-day forecast, air quality and pollen, and a screen that changes with the weather
 
 Alarm, sleep and focus

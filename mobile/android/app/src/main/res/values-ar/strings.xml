@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">عطلة نهاية الأسبوع</string>
     <string name="calendar_types_today">اليوم</string>
     <string name="calendar_types_school">عطلة أو موعد دراسي (وزارة التربية الوطنية، MEB)</string>
+    <string name="calendar_types_leave">يوم إجازة جماعية</string>
     <string name="calendar_events_newYear">رأس السنة الميلادية</string>
     <string name="calendar_events_apr23">عيد السيادة الوطنية والطفل</string>
     <string name="calendar_events_may1">عيد العمل والتضامن</string>

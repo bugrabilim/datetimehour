@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">Weekend</string>
     <string name="calendar_types_today">Ngayon</string>
     <string name="calendar_types_school">Bakasyon sa paaralan o petsa ng termino (MEB)</string>
+    <string name="calendar_types_leave">Araw ng sama-samang leave</string>
     <string name="calendar_events_newYear">Araw ng Bagong Taon</string>
     <string name="calendar_events_apr23">Araw ng Pambansang Soberanya at ng mga Bata</string>
     <string name="calendar_events_may1">Araw ng Paggawa at Pagkakaisa</string>

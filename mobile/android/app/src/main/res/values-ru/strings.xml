@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">Выходные</string>
     <string name="calendar_types_today">Сегодня</string>
     <string name="calendar_types_school">Школьные каникулы и учебный календарь (MEB)</string>
+    <string name="calendar_types_leave">День общего отпуска</string>
     <string name="calendar_events_newYear">Новый год</string>
     <string name="calendar_events_apr23">День национального суверенитета и детей</string>
     <string name="calendar_events_may1">День труда и солидарности</string>

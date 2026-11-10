@@ -56,17 +56,25 @@ enum WorldHol {
         .flatMap { try? Data(contentsOf: $0) }
         .flatMap { try? JSONDecoder().decode(File.self, from: $0) }
 
-    /// ülke → iso tarih → [(İngilizce ad sırası, yerel ad sırası)]
-    private static let byDate: [String: [String: [(Int, Int)]]] = {
+    /// ülke → iso tarih → [(İngilizce ad sırası, yerel ad sırası, ortak izin günü mü)]; dördüncü öğe 1: Endonezya cuti bersama
+    private static let byDate: [String: [String: [(Int, Int, Bool)]]] = {
         guard let f = file else { return [:] }
-        var out: [String: [String: [(Int, Int)]]] = [:]
+        var out: [String: [String: [(Int, Int, Bool)]]] = [:]
         for (cc, years) in f.countries {
-            var m: [String: [(Int, Int)]] = [:]
-            for (_, rows) in years { for r in rows where r.count == 3 { m[r[0].str, default: []].append((r[1].int, r[2].int)) } }
+            var m: [String: [(Int, Int, Bool)]] = [:]
+            for (_, rows) in years { for r in rows where r.count >= 3 { m[r[0].str, default: []].append((r[1].int, r[2].int, r.count > 3 && r[3].int == 1)) } }
             out[cc] = m
         }
         return out
     }()
+
+    /// Ülkenin verisinde ortak izin günü var mı (takvimdeki tür listesi için)
+    static func hasLeave(_ cc: String) -> Bool { byDate[cc]?.values.contains { $0.contains { $0.2 } } ?? false }
+
+    /// Takvimde gösterilebilen türler: Türkiye'de beşi; başka ülkede resmî tatil, varsa ortak izin günü ve dini günler
+    static func types(_ cc: String) -> [String] {
+        cc == "TR" ? ["holiday", "half", "religious", "special", "school"] : ["holiday"] + (hasLeave(cc) ? ["leave"] : []) + ["religious"]
+    }
 
     static var countries: [String] { Array((file?.countries ?? [:]).keys) }
 
@@ -85,7 +93,7 @@ enum WorldHol {
 
     static func events(_ cc: String, on day: CalendarDay) -> [CalendarData.Event] {
         (byDate[cc]?[day.iso] ?? []).enumerated().map { i, p in
-            CalendarData.Event(date: day.iso, key: "w:\(cc):\(p.0):\(i)", type: "holiday", label: name(cc, p.0, p.1))
+            CalendarData.Event(date: day.iso, key: "w:\(cc):\(p.0):\(i)", type: p.2 ? "leave" : "holiday", label: name(cc, p.0, p.1))
         }
     }
 }
@@ -432,7 +440,7 @@ struct CalCountrySheet: View {
     private var country: String { countryRaw.isEmpty ? CalPrefs.regionDefault : countryRaw }
     @Environment(\.dismiss) private var dismiss
 
-    private var types: [String] { country == "TR" ? ["holiday", "half", "religious", "special", "school"] : ["holiday", "religious"] }
+    private var types: [String] { WorldHol.types(country) }
 
     var body: some View {
         NavigationStack {

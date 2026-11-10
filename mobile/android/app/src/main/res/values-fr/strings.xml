@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">Week-end</string>
     <string name="calendar_types_today">Aujourd’hui</string>
     <string name="calendar_types_school">Vacances ou date scolaire (MEB)</string>
+    <string name="calendar_types_leave">Jour de congé collectif</string>
     <string name="calendar_events_newYear">Jour de l’An</string>
     <string name="calendar_events_apr23">Fête de la souveraineté nationale et des enfants</string>
     <string name="calendar_events_may1">Fête du Travail et de la Solidarité</string>

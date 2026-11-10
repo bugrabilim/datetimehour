@@ -646,7 +646,8 @@
       "special": "Özel gün",
       "weekend": "Hafta sonu",
       "today": "Bugün",
-      "school": "Okul tatili ve takvimi (MEB)"
+      "school": "Okul tatili ve takvimi (MEB)",
+      "leave": "Ortak izin günü"
     },
     "eventsHeading": "{year} günleri listesi",
     "colDate": "Tarih",
@@ -2564,7 +2565,7 @@
     "hubTitle": "Ülkelere göre resmî tatiller 2024–2032 | Saat Tarih",
     "hubDescription": "Almanya, İngiltere, ABD, Hollanda, Fransa ve 25 ülkenin daha ülke genelindeki resmî tatilleri: tarihler, haftanın günleri, sıradaki tatil ve kalan gün.",
     "hubH1": "Ülkelere göre resmî tatiller",
-    "hubLead": "30 ülkenin ülke genelindeki resmî tatilleri ve sıradaki tatile kalan gün.",
+    "hubLead": "32 ülkenin ülke genelindeki resmî tatilleri ve sıradaki tatile kalan gün.",
     "hubSearch": "resmi tatiller ülkeler almanya ingiltere abd hollanda fransa tatil takvimi public holidays",
     "colCountry": "Ülke",
     "colNext": "Sıradaki tatil",
@@ -2592,9 +2593,13 @@
     "faq": [
       {
         "q": "Hangi ülkelerin resmî tatilleri var?",
-        "a": "Bu bölümde Avrupa'dan Almanya, İngiltere, Fransa, Hollanda, Belçika, Avusturya, İsviçre ve diğerleri; ayrıca ABD, Kanada, Brezilya, Avustralya, Japonya, Çin, Rusya, Gürcistan, Singapur ve Güney Afrika olmak üzere 30 ülkenin ülke genelindeki resmî tatilleri vardır. Türkiye'nin tatilleri yıllık takvim sayfalarındadır."
+        "a": "Bu bölümde Avrupa'dan Almanya, İngiltere, Fransa, Hollanda, Belçika, Avusturya, İsviçre ve diğerleri; ayrıca ABD, Kanada, Brezilya, Avustralya, Japonya, Çin, Rusya, Gürcistan, Singapur ve Güney Afrika olmak üzere 32 ülkenin ülke genelindeki resmî tatilleri vardır. Türkiye'nin tatilleri yıllık takvim sayfalarındadır. Endonezya ve Hindistan'ın tatilleri hükümetlerin resmî listelerinden (SKB 3 Menteri ve DoPT) alınır."
       }
-    ]
+    ],
+    "leaveNote": "Ortak izin günleri (cuti bersama) kamu çalışanları için izin günüdür; özel sektörde yıllık izinden düşülür ve işverene bağlıdır. Tatil sayısına katılmaz.",
+    "inNote": "Delhi ve Yeni Delhi'deki merkezî hükümet ofislerinin kapalı günleri (DoPT). Eyaletlerin tatilleri farklıdır; İslami bayramlar hilalin görülmesine göre bir gün kayabilir.",
+    "officialSource": "Kaynak: {source}, {date} tarihinde denetlendi. Tarihler değişebilir, resmî duyuruyu esas alın.",
+    "officialNote": "Endonezya ve Hindistan'ın tatilleri hükümetlerin resmî listelerinden (SKB 3 Menteri ve DoPT) alınır."
   },
   "zakat": {
     "title": "Zekât hesaplama: nisab ve verilecek zekât miktarı | Saat Tarih",

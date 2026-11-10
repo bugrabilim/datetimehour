@@ -712,7 +712,8 @@
       "special": "Espesyal na araw",
       "weekend": "Weekend",
       "today": "Ngayon",
-      "school": "Bakasyon sa paaralan o petsa ng termino (MEB)"
+      "school": "Bakasyon sa paaralan o petsa ng termino (MEB)",
+      "leave": "Araw ng sama-samang leave"
     },
     "eventsHeading": "Listahan ng mga araw sa {year}",
     "colDate": "Petsa",
@@ -2630,7 +2631,7 @@
     "hubTitle": "Mga pampublikong holiday ayon sa bansa 2024–2032 | Saat Tarih",
     "hubDescription": "Mga pambansang holiday sa Germany, UK, US, Netherlands, France at 25 pang bansa: mga petsa, araw ng linggo, ang susunod na holiday at natitirang araw.",
     "hubH1": "Mga pampublikong holiday ayon sa bansa",
-    "hubLead": "Mga pambansang holiday sa 30 bansa at ang natitirang araw bago ang susunod.",
+    "hubLead": "Mga pambansang holiday sa 32 bansa at ang natitirang araw bago ang susunod.",
     "hubSearch": "public holidays holiday bansa germany uk us netherlands france bank holiday kalendaryo resmi tatil",
     "colCountry": "Bansa",
     "colNext": "Susunod na holiday",
@@ -2658,9 +2659,13 @@
     "faq": [
       {
         "q": "Aling mga bansa ang may nakalistang holiday?",
-        "a": "Nakalista rito ang mga pambansang holiday sa 30 bansa: Germany, UK, France, Netherlands, Belgium, Austria, Switzerland at iba pa sa Europa, pati na ang US, Canada, Brazil, Australia, Japan, China, Russia, Georgia, Singapore at South Africa. Nasa mga pahina ng taunang kalendaryo ang mga holiday ng Türkiye."
+        "a": "Nakalista rito ang mga pambansang holiday sa 32 bansa: Germany, UK, France, Netherlands, Belgium, Austria, Switzerland at iba pa sa Europa, pati na ang US, Canada, Brazil, Australia, Japan, China, Russia, Georgia, Singapore at South Africa. Nasa mga pahina ng taunang kalendaryo ang mga holiday ng Türkiye. Ang mga holiday ng Indonesia at India ay mula sa opisyal na listahan ng mga pamahalaan (SKB 3 Menteri at DoPT)."
       }
-    ]
+    ],
+    "leaveNote": "Ang mga araw ng sama-samang leave (cuti bersama) ay walang pasok para sa mga kawani ng gobyerno; sa pribadong sektor, ibinabawas ito sa taunang leave at nakadepende sa employer. Hindi ito binibilang na pista opisyal.",
+    "inNote": "Mga araw na sarado ang mga tanggapan ng pamahalaang sentral sa Delhi at New Delhi (DoPT). Iba ang mga holiday ng bawat estado; maaaring maurong nang isang araw ang mga pistang Islamiko depende sa pagkakita sa bagong buwan.",
+    "officialSource": "Pinagmulan: {source}, sinuri noong {date}. Maaaring magbago ang mga petsa; sundin ang opisyal na anunsyo.",
+    "officialNote": "Ang mga holiday ng Indonesia at India ay mula sa opisyal na listahan ng mga pamahalaan (SKB 3 Menteri at DoPT)."
   },
   "zakat": {
     "title": "Zakat calculator: nisab at magkano ang zakat | Saat Tarih",

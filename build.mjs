@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 import { bridges } from "./lib/bridges.mjs";
 import { hijriTable, hijriTableId } from "./lib/hijri.mjs";
+import { loadWorldHolidays, publicDays } from "./lib/world-holidays.mjs";
 import { skyEvents } from "./lib/sky-events.mjs";
 import { CALENDARS, calendarData, loadCalTexts, validateCalendars, siteYearSlice } from "./lib/calendars/index.mjs";
 
@@ -2322,10 +2323,10 @@ function buildUnix(lang) {
    Veri src/data/world-holidays.json (Nager.Date, MIT; scripts/fetch-world-holidays.mjs ile elle güncellenir), yalnız
    ülke genelindeki resmî tatiller. Ad: İngilizce sayfada İngilizce; ülkenin dilindeki sayfada (de: DE/AT/CH, ar: EG, fr: FR, ru: RU, ja: JP, zh: CN)
    yerel ad; diğerlerinde src/data/holiday-names.json çevirisi, yoksa İngilizce. Yerel ad ayrıca gösterilir. */
-const WHOL = readJson("src/data/world-holidays.json");
+const WHOL = loadWorldHolidays(ROOT);
 const HOLNAMES = readJson("src/data/holiday-names.json").names;
 const WCC = Object.keys(WHOL.countries);
-const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"], es: ["ES"], pt: ["PT", "BR"] };
+const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"], es: ["ES"], pt: ["PT", "BR"], id: ["ID"], hi: ["IN"] };
 const holName = (lang, cc, h) => {
   const main = lang === "en" ? h.n : (NATIVE_CC[lang] || []).includes(cc) && h.l !== h.n ? h.l : (HOLNAMES[h.n] && HOLNAMES[h.n][lang]) || h.n;
   return { main, local: h.l && h.l !== main && h.l !== h.n ? h.l : "" };
@@ -2345,12 +2346,12 @@ function buildWorldHolHub(lang) {
         const next = HOL_YEARS.flatMap((yy) => YEAR_DATA[yy].events).find((e) => e.type === "holiday" && e.date >= from);
         return `<tr data-d="${next ? next.date : ""}"><th scope="row"><a href="${yearPath(lang, y)}">${esc(name)}</a></th><td>${next ? `${esc(t.calendar.events[next.key])} <span class="meta">${esc(F.short(next.date))}</span>` : "–"}</td><td data-left></td><td>${holidayCounts(YEAR_DATA[y].events).n}</td></tr>`;
       }
-      const all = WHOL.years.flatMap((yy) => (WHOL.countries[cc][yy] || { days: [] }).days);
+      const all = publicDays(WHOL.years.flatMap((yy) => (WHOL.countries[cc][yy] || { days: [] }).days));
       const next = all.find((h) => h.d >= from);
-      return `<tr data-d="${next ? next.d : ""}"><th scope="row"><a href="${worldHolPath(lang, cc)}">${esc(name)}</a></th><td>${next ? `${esc(holName(lang, cc, next).main)} <span class="meta">${esc(F.short(next.d))}</span>` : "–"}</td><td data-left></td><td>${(WHOL.countries[cc][y] || { days: [] }).days.length}</td></tr>`;
+      return `<tr data-d="${next ? next.d : ""}"><th scope="row"><a href="${worldHolPath(lang, cc)}">${esc(name)}</a></th><td>${next ? `${esc(holName(lang, cc, next).main)} <span class="meta">${esc(F.short(next.d))}</span>` : "–"}</td><td data-left></td><td>${publicDays((WHOL.countries[cc][y] || { days: [] }).days).length}</td></tr>`;
     }).join("");
   const hero = `<div class="table-wrap"><table class="events-table" ${holLeftAttrs(s)}><thead><tr><th scope="col">${esc(s.colCountry)}</th><th scope="col">${esc(s.colNext)}</th><th scope="col">${esc(s.colLeft)}</th><th scope="col">${esc(tpl(s.colCount, { year: y }))}</th></tr></thead><tbody>${rows}</tbody></table></div>
-    <p class="meta">${esc(tpl(s.source, { date: WHOL.fetched }))}</p>`;
+    <p class="meta">${esc(tpl(s.source, { date: WHOL.fetched }))} ${esc(s.officialNote)}</p>`;
   return simplePage(lang, "worldHol", { title: s.hubTitle, description: s.hubDescription, h1: s.hubH1, lead: s.hubLead, trail, bodyInner: { hero }, faq: s.faq, faqGroup: { id: "worldHol", title: s.hubH1 }, scripts: ["zones.js"], nav: "calendar", searchK: s.hubSearch });
 }
 
@@ -2361,13 +2362,13 @@ function buildWorldHol(lang, cc) {
   // Verisi eksik yıllar (scripts/fetch-world-holidays.mjs "incomplete") ülkede yoktur
   const years = WHOL.years.filter((yy) => WHOL.countries[cc][yy]);
   const y = years.includes(BUILD_YEAR + 1) ? BUILD_YEAR + 1 : years[years.length - 1];
-  const dy = WHOL.countries[cc][y].days;
+  const dy = publicDays(WHOL.countries[cc][y].days);
   const v = { country, from: years[0], to: years[years.length - 1], year: y, n: dy.length, w: dy.filter((h) => dowOf(h.d) < 5).length };
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.hubH1, path: ROUTES[lang].worldHol }, { name: tpl(s.pageH1, v), path: worldHolPath(lang, cc) }];
   // Ay ızgaralı yıl takvimi (2. analiz #178): derleme yılı (yoksa ilk yıl), tatiller işaretli; diğer yıllar katlanır
   const gy = years.includes(BUILD_YEAR) ? BUILD_YEAR : y;
   const gEv = { byDate: {} };
-  for (const h of (WHOL.countries[cc][gy] || { days: [] }).days) (gEv.byDate[h.d] ||= []).push({ key: h.d, type: "holiday", name: holName(lang, cc, h).main });
+  for (const h of (WHOL.countries[cc][gy] || { days: [] }).days) (gEv.byDate[h.d] ||= []).push({ key: h.d, type: h.k === "leave" ? "half" : "holiday", name: holName(lang, cc, h).main + (h.k === "leave" ? ` (${cal.types.leave})` : "") });
   const gridCal = { ...cal, events: Object.fromEntries(Object.values(gEv.byDate).flat().map((e) => [e.key, e.name])) };
   const months = Array.from({ length: 12 }, (_, i) => `<div class="ymonth-wrap">${monthTable(lang, gy, i + 1, { schoolRanges: [], ramadans: [] }, gEv, gridCal, false)}</div>`).join("");
   const grid = `<section class="section" aria-labelledby="wh-grid"><div class="wrap">
@@ -2378,9 +2379,11 @@ function buildWorldHol(lang, cc) {
     const d = WHOL.countries[cc][yy] || { days: [], regional: 0 };
     const rows = d.days.map((h) => {
       const nm = holName(lang, cc, h);
-      return `<tr data-d="${h.d}"><th scope="row">${esc(F.short(h.d))}</th><td>${esc(cal.weekdays[dowOf(h.d)])}</td><td>${esc(nm.main)}${nm.local ? `<br><span class="meta" lang="">${esc(tpl(s.localName, { name: nm.local }))}</span>` : ""}</td><td data-left></td></tr>`;
+      const leave = h.k === "leave" ? ` <span class="meta">· ${esc(cal.types.leave)}</span>` : "";
+      return `<tr data-d="${h.d}"${h.k === "leave" ? ' class="wh-leave"' : ""}><th scope="row">${esc(F.short(h.d))}</th><td>${esc(cal.weekdays[dowOf(h.d)])}</td><td>${esc(nm.main)}${leave}${nm.local ? `<br><span class="meta" lang="">${esc(tpl(s.localName, { name: nm.local }))}</span>` : ""}</td><td data-left></td></tr>`;
     }).join("");
-    const sum = tpl(s.summary, { year: yy, n: d.days.length, w: d.days.filter((h) => dowOf(h.d) < 5).length });
+    const pub = publicDays(d.days);
+    const sum = tpl(s.summary, { year: yy, n: pub.length, w: pub.filter((h) => dowOf(h.d) < 5).length });
     const table = `<p class="meta">${esc(sum)}${d.regional ? " " + esc(tpl(s.regional, { year: yy, n: d.regional })) : ""}</p>
     <div class="table-wrap"><table class="events-table" ${holLeftAttrs(s)}><caption class="sr-only">${esc(tpl(s.caption, { country, year: yy }))}</caption><thead><tr><th scope="col">${esc(s.colDate)}</th><th scope="col">${esc(s.colDay)}</th><th scope="col">${esc(s.colName)}</th><th scope="col">${esc(s.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     // Derleme yılı ve ertesi yıl açık, diğer yıllar (geçmiş ve uzak yıllar) katlanır
@@ -2393,7 +2396,11 @@ function buildWorldHol(lang, cc) {
   </details></div></section>`;
   }).join("\n");
   const hero = `<p class="info-sub" data-hol-next data-label="${esc(s.nextLabel)}">&nbsp;</p>`;
-  const tail = `<section class="section"><div class="wrap"><p class="meta">${esc(tpl(s.source, { date: WHOL.fetched }))}</p></div></section>`;
+  // Resmî listeden gelen ülkelerde (Endonezya, Hindistan) kaynak, ortak izin ve Hindistan notu
+  const off = WHOL.official[cc];
+  const notes = [cc === "IN" ? s.inNote : "", Object.values(WHOL.countries[cc]).some((v) => v.days.some((h) => h.k === "leave")) ? s.leaveNote : "",
+    off ? tpl(s.officialSource, { source: off.name, date: off.checked }) : tpl(s.source, { date: WHOL.fetched })].filter(Boolean);
+  const tail = `<section class="section"><div class="wrap">${notes.map((n) => `<p class="meta">${esc(n)}</p>`).join("")}</div></section>`;
   // Uzun ülke adında açıklamanın ikinci cümlesi atlanır (170 karakter sınırı)
   let description = tpl(s.pageDescription, v);
   if (description.length > 170) description = description.slice(0, description.indexOf(". ") + 1);

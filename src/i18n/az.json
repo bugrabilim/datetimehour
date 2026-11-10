@@ -646,7 +646,8 @@
       "special": "Xüsusi gün",
       "weekend": "Həftə sonu",
       "today": "Bu gün",
-      "school": "Məktəb tətili və ya tədris tarixi (MEB)"
+      "school": "Məktəb tətili və ya tədris tarixi (MEB)",
+      "leave": "Ümumi məzuniyyət günü"
     },
     "eventsHeading": "{year} ilinin günləri",
     "colDate": "Tarix",
@@ -2564,7 +2565,7 @@
     "hubTitle": "Ölkələrə görə rəsmi bayramlar 2024–2032 | Saat Tarih",
     "hubDescription": "Almaniya, Britaniya, ABŞ, Niderland, Fransa və daha 25 ölkənin ümummilli rəsmi bayramları: tarixlər, həftənin günləri, növbəti bayram və qalan günlər.",
     "hubH1": "Ölkələrə görə rəsmi bayramlar",
-    "hubLead": "30 ölkənin ümummilli rəsmi bayramları və növbəti bayrama qalan günlər.",
+    "hubLead": "32 ölkənin ümummilli rəsmi bayramları və növbəti bayrama qalan günlər.",
     "hubSearch": "rəsmi bayramlar ölkələr almaniya britaniya abş bayram təqvimi public holidays",
     "colCountry": "Ölkə",
     "colNext": "Növbəti bayram",
@@ -2592,9 +2593,13 @@
     "faq": [
       {
         "q": "Hansı ölkələrin rəsmi bayramları göstərilir?",
-        "a": "Bu bölmədə 30 ölkənin ümummilli rəsmi bayramları var: Avropadan Almaniya, Britaniya, Fransa, Niderland, Belçika, Avstriya, İsveçrə və digərləri, həmçinin ABŞ, Kanada, Braziliya, Avstraliya, Yaponiya, Çin, Rusiya, Gürcüstan, Sinqapur və Cənubi Afrika. Türkiyənin bayramları illik təqvim səhifələrindədir."
+        "a": "Bu bölmədə 32 ölkənin ümummilli rəsmi bayramları var: Avropadan Almaniya, Britaniya, Fransa, Niderland, Belçika, Avstriya, İsveçrə və digərləri, həmçinin ABŞ, Kanada, Braziliya, Avstraliya, Yaponiya, Çin, Rusiya, Gürcüstan, Sinqapur və Cənubi Afrika. Türkiyənin bayramları illik təqvim səhifələrindədir. İndoneziya və Hindistanın bayramları hökumətlərin rəsmi siyahılarından (SKB 3 Menteri və DoPT) götürülür."
       }
-    ]
+    ],
+    "leaveNote": "Ümumi məzuniyyət günləri (cuti bersama) dövlət qulluqçuları üçün istirahət günüdür; özəl sektorda illik məzuniyyətdən çıxılır və işəgötürəndən asılıdır. Bayram sayına daxil edilmir.",
+    "inNote": "Dehli və Yeni Dehlidəki mərkəzi hökumət idarələrinin qeyri-iş günləri (DoPT). Ştatların bayramları fərqlidir; İslam bayramları hilalın görünməsinə görə bir gün sürüşə bilər.",
+    "officialSource": "Mənbə: {source}, {date} tarixində yoxlanılıb. Tarixlər dəyişə bilər, rəsmi elanı əsas götürün.",
+    "officialNote": "İndoneziya və Hindistanın bayramları hökumətlərin rəsmi siyahılarından (SKB 3 Menteri və DoPT) götürülür."
   },
   "zakat": {
     "title": "Zəkat hesablama: nisab və veriləcək zəkat məbləği | Saat Tarih",

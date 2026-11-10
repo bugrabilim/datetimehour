@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">آخر هفته</string>
     <string name="calendar_types_today">امروز</string>
     <string name="calendar_types_school">تعطیلات مدرسه یا تاریخ‌های ترم تحصیلی (MEB)</string>
+    <string name="calendar_types_leave">روز مرخصی همگانی</string>
     <string name="calendar_events_newYear">آغاز سال نو میلادی</string>
     <string name="calendar_events_apr23">روز حاکمیت ملی و کودکان</string>
     <string name="calendar_events_may1">روز کار و همبستگی</string>

@@ -12,6 +12,7 @@ import { fileURLToPath } from "node:url";
 import { computeYear } from "../../lib/events.mjs";
 import { bridges } from "../../lib/bridges.mjs";
 import { hijriTable, hijriTableId } from "../../lib/hijri.mjs";
+import { loadWorldHolidays } from "../../lib/world-holidays.mjs";
 import { otdDay } from "../../lib/otd.mjs";
 import { CALENDARS, CAL_PLACEHOLDERS, calendarData, calendarsJson, loadCalTexts, validateCalendars } from "../../lib/calendars/index.mjs";
 
@@ -334,7 +335,7 @@ const otdFiles = Object.fromEntries(LANGS.flatMap((l) => {
 /* Dünya resmî tatilleri (2. analiz #122; src/data/world-holidays.json, Nager.Date MIT): takvimde ülke seçimi. Ad tablosu
    bir kez: "s" [ad], ülke → yıl → [[tarih, İngilizce ad sırası, yerel ad sırası]]; "tx" İngilizce ad sırası → {dil: çeviri}
    (src/data/holiday-names.json); "native" sitedeki NATIVE_CC (o dilde yerel ad gösterilir) */
-const wholSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/world-holidays.json"), "utf8"));
+const wholSrc = loadWorldHolidays(ROOT);
 const holNamesSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/holiday-names.json"), "utf8")).names;
 const wholJson = (() => {
   const strs = [], idx = new Map();
@@ -342,11 +343,12 @@ const wholJson = (() => {
   const countries = {};
   for (const [cc, years] of Object.entries(wholSrc.countries)) {
     countries[cc] = {};
-    for (const [y, v] of Object.entries(years)) countries[cc][y] = v.days.map((h) => [h.d, id(h.n), id(h.l || h.n)]);
+    // Dördüncü öğe 1: ortak izin günü (Endonezya cuti bersama; 10 Kasım 2026)
+    for (const [y, v] of Object.entries(years)) countries[cc][y] = v.days.map((h) => h.k === "leave" ? [h.d, id(h.n), id(h.l || h.n), 1] : [h.d, id(h.n), id(h.l || h.n)]);
   }
   const tx = {};
   for (const [en, tr] of Object.entries(holNamesSrc)) if (idx.has(en)) tx[idx.get(en)] = tr;
-  return JSON.stringify({ s: strs, countries, tx, native: { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"] } }) + "\n";
+  return JSON.stringify({ s: strs, countries, tx, native: { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"], es: ["ES"], pt: ["PT", "BR"], id: ["ID"], hi: ["IN"] } }) + "\n";
 })();
 
 /* Gökyüzü (2. analiz #154, #157): olaylar (lib/sky-events.mjs, 2026–2031) ve takımyıldızlar (d3-celestial, BSD-3) */

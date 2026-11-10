@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">Hafta sonu</string>
     <string name="calendar_types_today">Bugün</string>
     <string name="calendar_types_school">Okul tatili ve takvimi (MEB)</string>
+    <string name="calendar_types_leave">Ortak izin günü</string>
     <string name="calendar_events_newYear">Yılbaşı</string>
     <string name="calendar_events_apr23">Ulusal Egemenlik ve Çocuk Bayramı</string>
     <string name="calendar_events_may1">Emek ve Dayanışma Günü</string>

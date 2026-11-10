@@ -673,7 +673,8 @@
       "special": "Journée particulière",
       "weekend": "Week-end",
       "today": "Aujourd’hui",
-      "school": "Vacances ou date scolaire (MEB)"
+      "school": "Vacances ou date scolaire (MEB)",
+      "leave": "Jour de congé collectif"
     },
     "eventsHeading": "Liste des jours de {year}",
     "colDate": "Date",
@@ -2605,7 +2606,7 @@
     "hubTitle": "Jours fériés par pays 2024–2032 | Saat Tarih",
     "hubDescription": "Jours fériés en Allemagne, au Royaume-Uni, aux États-Unis, aux Pays-Bas, en France et dans 25 autres pays : dates, prochain jour férié et jours restants.",
     "hubH1": "Jours fériés par pays",
-    "hubLead": "Les jours fériés nationaux de 30 pays et les jours restants avant le prochain.",
+    "hubLead": "Les jours fériés nationaux de 32 pays et les jours restants avant le prochain.",
     "hubSearch": "public holidays country germany uk us netherlands france bank holidays calendar resmi tatil jours fériés pays calendrier",
     "colCountry": "Pays",
     "colNext": "Prochain jour férié",
@@ -2633,9 +2634,13 @@
     "faq": [
       {
         "q": "Pour quels pays les jours fériés sont-ils indiqués ?",
-        "a": "Cette section liste les jours fériés nationaux de 30 pays : l’Allemagne, le Royaume-Uni, la France, les Pays-Bas, la Belgique, l’Autriche, la Suisse et d’autres en Europe, ainsi que les États-Unis, le Canada, le Brésil, l’Australie, le Japon, la Chine, la Russie, la Géorgie, Singapour et l’Afrique du Sud. Les jours fériés turcs figurent sur les pages du calendrier annuel."
+        "a": "Cette section liste les jours fériés nationaux de 32 pays : l’Allemagne, le Royaume-Uni, la France, les Pays-Bas, la Belgique, l’Autriche, la Suisse et d’autres en Europe, ainsi que les États-Unis, le Canada, le Brésil, l’Australie, le Japon, la Chine, la Russie, la Géorgie, Singapour et l’Afrique du Sud. Les jours fériés turcs figurent sur les pages du calendrier annuel. Les jours fériés de l’Indonésie et de l’Inde proviennent des listes officielles des gouvernements (SKB 3 Menteri et DoPT)."
       }
-    ]
+    ],
+    "leaveNote": "Les jours de congé collectif (cuti bersama) sont chômés pour les fonctionnaires ; dans le privé, ils sont déduits des congés annuels et dépendent de l’employeur. Ils ne comptent pas comme jours fériés.",
+    "inNote": "Jours de fermeture des administrations centrales à Delhi et New Delhi (DoPT). Les jours fériés des États diffèrent ; les fêtes islamiques peuvent se décaler d’un jour selon l’observation du croissant.",
+    "officialSource": "Source : {source}, vérifiée le {date}. Les dates peuvent changer ; seule l’annonce officielle fait foi.",
+    "officialNote": "Les jours fériés de l’Indonésie et de l’Inde proviennent des listes officielles des gouvernements (SKB 3 Menteri et DoPT)."
   },
   "zakat": {
     "title": "Calcul de la zakat : nisab et montant à payer | Saat Tarih",

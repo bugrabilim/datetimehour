@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">सप्ताहांत</string>
     <string name="calendar_types_today">आज</string>
     <string name="calendar_types_school">स्कूल की छुट्टी या सत्र की तारीख (MEB)</string>
+    <string name="calendar_types_leave">सामूहिक अवकाश दिवस</string>
     <string name="calendar_events_newYear">नव वर्ष</string>
     <string name="calendar_events_apr23">राष्ट्रीय संप्रभुता और बाल दिवस</string>
     <string name="calendar_events_may1">श्रम और एकजुटता दिवस</string>

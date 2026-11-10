@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">周末</string>
     <string name="calendar_types_today">今天</string>
     <string name="calendar_types_school">学校假期或学期日期（MEB）</string>
+    <string name="calendar_types_leave">集体休假日</string>
     <string name="calendar_events_newYear">元旦</string>
     <string name="calendar_events_apr23">国家主权和儿童节</string>
     <string name="calendar_events_may1">劳动与团结日</string>

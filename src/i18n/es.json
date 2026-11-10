@@ -712,7 +712,8 @@
       "special": "Día especial",
       "weekend": "Fin de semana",
       "today": "Hoy",
-      "school": "Vacaciones o fecha escolar (MEB)"
+      "school": "Vacaciones o fecha escolar (MEB)",
+      "leave": "Día de permiso colectivo"
     },
     "eventsHeading": "Lista de días de {year}",
     "colDate": "Fecha",
@@ -2644,7 +2645,7 @@
     "hubTitle": "Festivos por país 2024–2032 | Saat Tarih",
     "hubDescription": "Festivos nacionales de Alemania, el Reino Unido, EE. UU., los Países Bajos, Francia y 25 países más: fechas, días de la semana, el próximo festivo y los días que faltan.",
     "hubH1": "Festivos por país",
-    "hubLead": "Festivos nacionales de 30 países y los días que faltan para el siguiente.",
+    "hubLead": "Festivos nacionales de 32 países y los días que faltan para el siguiente.",
     "hubSearch": "festivos país alemania reino unido ee uu países bajos francia días feriados calendario resmi tatil public holidays",
     "colCountry": "País",
     "colNext": "Próximo festivo",
@@ -2672,9 +2673,13 @@
     "faq": [
       {
         "q": "¿De qué países se muestran los festivos?",
-        "a": "Esta sección muestra los festivos nacionales de 30 países: Alemania, el Reino Unido, Francia, los Países Bajos, Bélgica, Austria, Suiza y otros de Europa, además de EE. UU., Canadá, Brasil, Australia, Japón, China, Rusia, Georgia, Singapur y Sudáfrica. Los festivos de Turquía están en las páginas del calendario anual."
+        "a": "Esta sección muestra los festivos nacionales de 32 países: Alemania, el Reino Unido, Francia, los Países Bajos, Bélgica, Austria, Suiza y otros de Europa, además de EE. UU., Canadá, Brasil, Australia, Japón, China, Rusia, Georgia, Singapur y Sudáfrica. Los festivos de Turquía están en las páginas del calendario anual. Los festivos de Indonesia e India proceden de las listas oficiales de sus gobiernos (SKB 3 Menteri y DoPT)."
       }
-    ]
+    ],
+    "leaveNote": "Los días de permiso colectivo (cuti bersama) son libres para los funcionarios; en el sector privado se descuentan de las vacaciones anuales y dependen del empleador. No se cuentan como festivos.",
+    "inNote": "Días de cierre de las oficinas del Gobierno central en Delhi y Nueva Delhi (DoPT). Los festivos de los estados son distintos; las fiestas islámicas pueden moverse un día según el avistamiento de la luna.",
+    "officialSource": "Fuente: {source}, comprobado el {date}. Las fechas pueden cambiar; atienda al anuncio oficial.",
+    "officialNote": "Los festivos de Indonesia e India proceden de las listas oficiales de sus gobiernos (SKB 3 Menteri y DoPT)."
   },
   "zakat": {
     "title": "Calculadora de zakat: nisab y cuánto zakat pagar | Saat Tarih",

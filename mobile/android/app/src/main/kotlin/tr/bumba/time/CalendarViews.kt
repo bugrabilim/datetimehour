@@ -55,7 +55,8 @@ import java.time.ZoneId
 object WorldHol {
     private var loaded = false
     private var strs: List<String> = emptyList()
-    private val days = HashMap<String, HashMap<LocalDate, MutableList<Pair<Int, Int>>>>()
+    /** Ülke → gün → (İngilizce ad, yerel ad, ortak izin günü mü) */
+    private val days = HashMap<String, HashMap<LocalDate, MutableList<Triple<Int, Int, Boolean>>>>()
     private var tx: Map<Int, Map<String, String>> = emptyMap()
     private var native: Map<String, Set<String>> = emptyMap()
     var countries: List<String> = emptyList()
@@ -74,13 +75,13 @@ object WorldHol {
         val cs = o.getJSONObject("countries")
         countries = cs.keys().asSequence().toList()
         for (cc in countries) {
-            val map = HashMap<LocalDate, MutableList<Pair<Int, Int>>>()
+            val map = HashMap<LocalDate, MutableList<Triple<Int, Int, Boolean>>>()
             val ys = cs.getJSONObject(cc)
             for (y in ys.keys()) {
                 val arr = ys.getJSONArray(y)
                 for (i in 0 until arr.length()) {
                     val r = arr.getJSONArray(i)
-                    map.getOrPut(LocalDate.parse(r.getString(0))) { mutableListOf() }.add(r.getInt(1) to r.getInt(2))
+                    map.getOrPut(LocalDate.parse(r.getString(0))) { mutableListOf() }.add(Triple(r.getInt(1), r.getInt(2), r.optInt(3) == 1))
                 }
             }
             days[cc] = map
@@ -101,8 +102,12 @@ object WorldHol {
         }
     }
 
+    /** Ortak izin günleri (Endonezya cuti bersama) tür "leave" ile gelir; tatil sayısına girmez */
     fun events(cc: String, d: LocalDate): List<CalEvent> =
-        days[cc]?.get(d).orEmpty().mapIndexed { i, (en, lo) -> CalEvent(d, "w:$cc:$en:$i", "holiday", null, name(cc, en, lo)) }
+        days[cc]?.get(d).orEmpty().mapIndexed { i, (en, lo, leave) -> CalEvent(d, "w:$cc:$en:$i", if (leave) "leave" else "holiday", null, name(cc, en, lo)) }
+
+    /** Ülkenin verisinde ortak izin günü var mı (takvimdeki tür listesi için) */
+    fun hasLeave(cc: String): Boolean { ensure(); return days[cc]?.values?.any { l -> l.any { it.third } } == true }
 
     /** Ülke adı (telefonun dil verisinden) */
     fun countryName(cc: String): String = java.util.Locale.Builder().setRegion(cc).build().getDisplayCountry(Strings.locale).ifBlank { cc }
@@ -166,7 +171,7 @@ fun CalCountryDialog(onClose: () -> Unit) {
                     HorizontalDivider(Modifier.padding(vertical = 8.dp), color = Theme.c.border)
                 }
                 Text(L("cal.shownTypes"), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
-                val types = if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")
+                val types = CalView.types()
                 for (t in types) {
                     Row(Modifier.fillMaxWidth().clickable {
                         CalView.hidden = if (t in CalView.hidden) CalView.hidden - t else CalView.hidden + t

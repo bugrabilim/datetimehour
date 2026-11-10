@@ -673,7 +673,8 @@
       "special": "Besonderer Tag",
       "weekend": "Wochenende",
       "today": "Heute",
-      "school": "Schulferien oder Schultermin (MEB)"
+      "school": "Schulferien oder Schultermin (MEB)",
+      "leave": "Gemeinsamer Urlaubstag"
     },
     "eventsHeading": "Alle Tage {year} im Überblick",
     "colDate": "Datum",
@@ -2591,7 +2592,7 @@
     "hubTitle": "Feiertage nach Ländern 2024–2032 | Saat Tarih",
     "hubDescription": "Landesweite Feiertage in Deutschland, Großbritannien, den USA, den Niederlanden, Frankreich und 25 weiteren Ländern: Daten, Wochentage, nächster Feiertag.",
     "hubH1": "Feiertage nach Ländern",
-    "hubLead": "Landesweite Feiertage in 30 Ländern und die Tage bis zum nächsten Feiertag.",
+    "hubLead": "Landesweite Feiertage in 32 Ländern und die Tage bis zum nächsten Feiertag.",
     "hubSearch": "feiertage länder deutschland österreich schweiz großbritannien usa niederlande frankreich public holidays",
     "colCountry": "Land",
     "colNext": "Nächster Feiertag",
@@ -2619,9 +2620,13 @@
     "faq": [
       {
         "q": "Für welche Länder sind Feiertage aufgeführt?",
-        "a": "Hier stehen die landesweiten Feiertage von 30 Ländern: Deutschland, Österreich, die Schweiz, Großbritannien, Frankreich, die Niederlande, Belgien und weitere in Europa sowie die USA, Kanada, Brasilien, Australien, Japan, China, Russland, Georgien, Singapur und Südafrika. Die Feiertage der Türkei stehen auf den Jahreskalender-Seiten."
+        "a": "Hier stehen die landesweiten Feiertage von 32 Ländern: Deutschland, Österreich, die Schweiz, Großbritannien, Frankreich, die Niederlande, Belgien und weitere in Europa sowie die USA, Kanada, Brasilien, Australien, Japan, China, Russland, Georgien, Singapur und Südafrika. Die Feiertage der Türkei stehen auf den Jahreskalender-Seiten. Die Feiertage Indonesiens und Indiens stammen aus den amtlichen Listen der Regierungen (SKB 3 Menteri und DoPT)."
       }
-    ]
+    ],
+    "leaveNote": "Gemeinsame Urlaubstage (cuti bersama) sind für Beamte frei; in der Privatwirtschaft werden sie vom Jahresurlaub abgezogen und hängen vom Arbeitgeber ab. Sie zählen nicht als Feiertage.",
+    "inNote": "Geschlossene Feiertage der Zentralregierungsbehörden in Delhi und Neu-Delhi (DoPT). Die Feiertage der Bundesstaaten weichen ab; islamische Feiertage können sich je nach Mondsichtung um einen Tag verschieben.",
+    "officialSource": "Quelle: {source}, geprüft am {date}. Termine können sich ändern; maßgeblich ist die amtliche Bekanntmachung.",
+    "officialNote": "Die Feiertage Indonesiens und Indiens stammen aus den amtlichen Listen der Regierungen (SKB 3 Menteri und DoPT)."
   },
   "zakat": {
     "title": "Zakat-Rechner: Nisab und Höhe der Zakat | Saat Tarih",

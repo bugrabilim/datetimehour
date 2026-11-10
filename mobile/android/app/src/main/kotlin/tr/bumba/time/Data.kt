@@ -224,7 +224,7 @@ object AppData {
     /** Olay türünün rengi (sitedeki takvim renkleri; kapsayıcı takvimlerde `cal:<id>` takvimin rengi) */
     fun color(type: String): Color = if (type.startsWith("cal:")) ExtraCals.color(type.removePrefix("cal:")) else when (type) {
         "holiday" -> Color(0xFFD32F2F)
-        "half" -> Color(0xFFF57C00)
+        "half", "leave" -> Color(0xFFF57C00)
         "religious" -> Color(0xFF2E7D32)
         "school" -> Color(0xFF7B1FA2)
         else -> Color(0xFF1976D2)

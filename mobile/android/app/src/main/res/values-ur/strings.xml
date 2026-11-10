@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">ہفتہ وار تعطیل</string>
     <string name="calendar_types_today">آج</string>
     <string name="calendar_types_school">اسکول کی چھٹی یا ٹرم کی تاریخ (MEB)</string>
+    <string name="calendar_types_leave">اجتماعی چھٹی کا دن</string>
     <string name="calendar_events_newYear">نئے سال کا دن</string>
     <string name="calendar_events_apr23">قومی خود مختاری اور بچوں کا دن</string>
     <string name="calendar_events_may1">محنت اور یکجہتی کا دن</string>

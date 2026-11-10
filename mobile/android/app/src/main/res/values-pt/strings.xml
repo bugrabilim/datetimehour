@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">Fim de semana</string>
     <string name="calendar_types_today">Hoje</string>
     <string name="calendar_types_school">Férias ou data escolar (MEB)</string>
+    <string name="calendar_types_leave">Dia de folga coletiva</string>
     <string name="calendar_events_newYear">Ano-Novo</string>
     <string name="calendar_events_apr23">Dia da Soberania Nacional e das Crianças</string>
     <string name="calendar_events_may1">Dia do Trabalho e da Solidariedade</string>

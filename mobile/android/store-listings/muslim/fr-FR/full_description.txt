@@ -19,7 +19,7 @@ Horloge et widgets
 • Application Wear OS avec tuile et complications, application Android TV, économiseur d'écran, horloge flottante et blocs Réglages rapides
 
 Calendrier et météo
-• Jours fériés de la Turquie et de 30 autres pays, à côté des agendas de votre téléphone (Google Agenda compris)
+• Jours fériés de la Turquie et de 32 autres pays, à côté des agendas de votre téléphone (Google Agenda compris)
 • Prévisions heure par heure et sur 14 jours, qualité de l'air et pollens, et un écran qui change avec le temps
 
 Réveil, sommeil et concentration

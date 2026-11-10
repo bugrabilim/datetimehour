@@ -384,7 +384,12 @@ check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-
   const W = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/world-holidays.json"), "utf8"));
   check(Object.keys(W.countries).length === 30 && !W.countries.EG && !W.countries.UA, "dünya tatilleri: 30 ülke olmalı (EG, KZ, UA yok)");
   const hub = rd("resmi-tatiller");
-  check((hub.match(/<tr data-d=/g) || []).length === 31 && /href="\/takvim\/\d{4}\/"/.test(hub), "dünya tatilleri merkezi: 30 ülke + Türkiye satırı yok");
+  check((hub.match(/<tr data-d=/g) || []).length === 33 && /href="\/takvim\/\d{4}\/"/.test(hub), "dünya tatilleri merkezi: 32 ülke + Türkiye satırı yok");
+  // Endonezya (SKB 3 Menteri) ve Hindistan (DoPT) resmî listelerden (10 Kasım 2026); cuti bersama tatil sayısına girmez
+  const idp = rd("en/public-holidays/indonesia"), inp = rd("en/public-holidays/india"), idl = rd("id/public-holidays/indonesia");
+  check(/data-d="2027-03-10"/.test(idp) && /class="wh-leave"/.test(idp) && /2027: 18 public holidays/.test(idp) && /SKB 3 Menteri/.test(idp), "Endonezya tatil sayfası eksik");
+  check(/Idulfitri/.test(idl) && /Cuti bersama/.test(idl), "Endonezce Endonezya sayfasında yerel adlar yok");
+  check(/data-d="2026-05-28"/.test(inp) && !/data-d="2026-05-27"/.test(inp) && /2027: 17 public holidays/.test(inp) && /DoP&amp;T/.test(inp), "Hindistan tatil sayfası eksik (Bakrid 2026 28 Mayıs)");
   const de = rd("de/public-holidays/germany"), tr = rd("resmi-tatiller/almanya");
   check(/data-d="2027-10-03"/.test(de) && /Tag der Deutschen Einheit/.test(de) && /Alman Birliği Günü/.test(tr) && /Yerel adı: Tag der Deutschen Einheit/.test(tr), "Almanya tatil sayfası eksik");
   check(/Public holidays in the United Kingdom/.test(rd("en/public-holidays/united-kingdom")), "EN: the United Kingdom");

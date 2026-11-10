@@ -11,7 +11,7 @@ CLOCK AND WIDGETS
 
 WEATHER AND CALENDAR
 • Hourly and 10-day forecast, air quality, and a screen that changes with the weather
-• Public holidays for Türkiye and 30 more countries, including the UK, plus religious and special days, next to the calendars on your phone
+• Public holidays for Türkiye and 32 more countries, including the UK, plus religious and special days, next to the calendars on your phone
 • Hijri calendar and converter
 
 ALARM, SLEEP AND FOCUS

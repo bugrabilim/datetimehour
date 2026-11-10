@@ -76,6 +76,7 @@
     <string name="calendar_types_weekend">Akhir pekan</string>
     <string name="calendar_types_today">Hari ini</string>
     <string name="calendar_types_school">Libur atau kalender sekolah (MEB)</string>
+    <string name="calendar_types_leave">Cuti bersama</string>
     <string name="calendar_events_newYear">Tahun Baru</string>
     <string name="calendar_events_apr23">Hari Kedaulatan Nasional dan Hari Anak</string>
     <string name="calendar_events_may1">Hari Buruh dan Solidaritas</string>

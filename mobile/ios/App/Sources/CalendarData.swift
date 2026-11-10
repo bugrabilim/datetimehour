@@ -151,7 +151,7 @@ final class CalendarData {
         if type.hasPrefix("cal:") { return ExtraCals.color(String(type.dropFirst(4))) }
         switch type {
         case "holiday": return Color(red: 0.80, green: 0.20, blue: 0.18)
-        case "half": return Color(red: 0.90, green: 0.50, blue: 0.10)
+        case "half", "leave": return Color(red: 0.90, green: 0.50, blue: 0.10)
         case "religious": return Color(red: 0.13, green: 0.55, blue: 0.35)
         case "school": return Color(red: 0.45, green: 0.33, blue: 0.75)
         default: return Color(red: 0.20, green: 0.45, blue: 0.80)

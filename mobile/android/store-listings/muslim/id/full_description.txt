@@ -19,7 +19,7 @@ Jam dan widget
 • Aplikasi Wear OS dengan tile dan komplikasi, aplikasi Android TV, screensaver, jam mengambang, dan tile Setelan Cepat
 
 Kalender dan cuaca
-• Hari libur resmi Turki dan 30 negara lain, berdampingan dengan kalender di ponsel Anda (termasuk Google Kalender)
+• Hari libur resmi Turki dan 32 negara lain, berdampingan dengan kalender di ponsel Anda (termasuk Google Kalender)
 • Prakiraan per jam dan 14 hari, kualitas udara dan serbuk sari, serta layar yang berubah mengikuti cuaca
 
 Alarm, tidur, dan fokus
