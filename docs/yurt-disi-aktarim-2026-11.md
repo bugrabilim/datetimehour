@@ -1,5 +1,10 @@
 # Kişisel verilerin yurt dışına aktarımı (KVKK md. 9): hesap e-postaları ve gece yedekleri
 
+> **Sahibin kararı (10 Kasım 2026):** "Hukuki konulara bu kadar takılma; nereye ve ne amaçla gittiği yazılıysa
+> yeterli, kimseyi zorla üye yapmıyoruz." Standart sözleşme yolu izlenmez, sunucunun ilk yayını buna bağlı değildir.
+> Gizlilik metni (19 dil) alıcıları, ülkeyi (ABD), giden veriyi ve amacı yazar, hesabın isteğe bağlı olduğunu söyler.
+> Bu dosya yalnız bilgi olarak durur; aşağıdaki "yayın kapısı" ve gizlilik metni anlatımı geçersizdir.
+
 10 Kasım 2026. Sahibin isteği: "yurtdışı hukuk işini, geniş çaplı metni sen hazırla". Bu belge hukuki görüş
 değildir; resmî metinlere (Kanun, Yönetmelik, Kurul duyuruları, standart sözleşme) dayanan bir hazırlık dosyasıdır.
 İmzadan önce bir avukatın bakması önerilir.

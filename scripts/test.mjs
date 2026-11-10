@@ -752,7 +752,7 @@ for (const l of LANGS) {
       check(/name="robots" content="index/.test(del) && /bilgi@bumbagroup\.com/.test(del) && /<ol>/.test(del), `hesap silme sayfası eksik (${l})`);
       const j = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"));
       const sec = j.privacy.sections.find((x) => x.id === (l === "tr" ? "hesap" : "account"));
-      check(sec && sec.ul.length === 8 && /\{deleteUrl\}/.test(sec.ul.join(" ")) && /Resend/.test(sec.ul.join(" ")) && /R2/.test(sec.ul.join(" ")) && /KVKK/.test(sec.ul.join(" ")), `gizlilik: hesap bölümü eksik (${l})`);
+      check(sec && sec.ul.length === 8 && /\{deleteUrl\}/.test(sec.ul.join(" ")) && /Resend/.test(sec.ul.join(" ")) && /R2/.test(sec.ul.join(" ")), `gizlilik: hesap bölümü eksik (${l})`);
       const priv = read(l === "tr" ? "gizlilik" : `${base}privacy`);
       check(priv.includes(`href="${l === "tr" ? "/hesap-silme/" : `/${l}/account-deletion/`}"`) && !priv.includes("{deleteUrl}"), `gizlilik: hesap silme bağlantısı yok (${l})`);
     }
