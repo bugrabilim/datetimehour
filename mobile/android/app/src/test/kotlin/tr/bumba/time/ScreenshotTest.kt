@@ -124,6 +124,8 @@ class ScreenshotTest {
     @Test fun spanish() = shot("es-vakitler", Tab.PRAYER, "es")
     @Test fun portuguese() = shot("pt-saat", Tab.CLOCK, "pt")
     @Test fun hindi() = shot("hi-takvim", Tab.CALENDAR, "hi")
+    // Dördüncü dalga (10 Kasım 2026): Bengalce
+    @Test fun bengali() = shot("bn-vakitler", Tab.PRAYER, "bn")
     // Araçlar alt sayfaları
     private fun tool(name: String, route: String) {
         RuntimeEnvironment.setQualifiers("+tr")

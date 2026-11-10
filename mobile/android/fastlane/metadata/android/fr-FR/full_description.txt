@@ -46,6 +46,6 @@ Horaires de prière et qibla
 Confidentialité
 Votre position reste sur votre téléphone. Seule une position approximative est envoyée au service (Open-Meteo, OpenStreetMap), pour la météo et les mosquées à proximité, jamais votre identité. Consultez et désactivez chaque autorisation dans Réglages › Autorisations.
 
-En 18 langues. Pour téléphones et tablettes Android, Wear OS et Android TV.
+En 19 langues. Pour téléphones et tablettes Android, Wear OS et Android TV.
 
 Heure & Date est un produit Bumba Life. Web : time.bumba.tr

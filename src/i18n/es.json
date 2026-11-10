@@ -645,7 +645,7 @@
     "pages": "Páginas",
     "cities": "Páginas de ciudades",
     "about": "Acerca de",
-    "aboutText": "La hora se sincroniza con el reloj del servidor del sitio (con independencia del reloj del dispositivo); la zona horaria se lee del navegador y no se envía ningún dato personal. Disponible en dieciocho idiomas: turco, inglés, alemán, azerí, árabe, indonesio, urdu, persa, francés, ruso, japonés, coreano, chino, filipino, tailandés, español, portugués e hindi. Responsable del tratamiento: Bumba Teknoloji Limited Şirketi, Ataşehir / Estambul. Contacto: bilgi@bumbagroup.com."
+    "aboutText": "La hora se sincroniza con el reloj del servidor del sitio (con independencia del reloj del dispositivo); la zona horaria se lee del navegador y no se envía ningún dato personal. Disponible en diecinueve idiomas: turco, inglés, alemán, azerí, árabe, indonesio, urdu, persa, francés, ruso, japonés, coreano, chino, filipino, tailandés, español, portugués, hindi y bengalí. Responsable del tratamiento: Bumba Teknoloji Limited Şirketi, Ataşehir / Estambul. Contacto: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Estilos de reloj",

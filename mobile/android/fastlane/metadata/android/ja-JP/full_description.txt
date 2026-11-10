@@ -46,6 +46,6 @@
 プライバシー
 現在地はスマホの中にとどまります。天気と近くのモスクの検索のときだけ、おおよその位置が各サービス（Open-Meteo、OpenStreetMap）に送られ、あなたが誰かは送られません。すべての許可は設定 › 許可で確認してオフにできます。
 
-18言語に対応。Androidのスマホとタブレット、Wear OS、Android TVで使えます。
+19言語に対応。Androidのスマホとタブレット、Wear OS、Android TVで使えます。
 
 時刻と日付はBumba Lifeの製品です。ウェブ：time.bumba.tr

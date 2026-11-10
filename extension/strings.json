@@ -18,7 +18,8 @@
     "th": "Saat Tarih: นาฬิกา วันที่ และเวลาละหมาด",
     "es": "Saat Tarih: reloj, fecha y horarios de oración",
     "pt": "Saat Tarih: relógio, data e horários de oração",
-    "hi": "Saat Tarih: घड़ी, तारीख और नमाज़ के समय"
+    "hi": "Saat Tarih: घड़ी, तारीख और नमाज़ के समय",
+    "bn": "Saat Tarih: ঘড়ি, তারিখ ও নামাজের সময়"
   },
   "description": {
     "tr": "Tarayıcınızda saat, bugünün tarihi, hicri tarih ve 81 il için namaz vakitleri. İnternete bağlanmaz.",
@@ -38,7 +39,8 @@
     "th": "นาฬิกา วันที่วันนี้ วันที่ฮิจเราะห์ และเวลาละหมาดของ 81 จังหวัดในตุรกีบนเบราว์เซอร์ ใช้งานแบบออฟไลน์ได้",
     "es": "Reloj, fecha de hoy, fecha de la Hégira y horarios de oración de las 81 provincias turcas en su navegador. No se conecta a internet.",
     "pt": "Relógio, data de hoje, data da Hégira e horários de oração das 81 províncias da Turquia no seu navegador. Não se conecta à internet.",
-    "hi": "आपके ब्राउज़र में घड़ी, आज की तारीख, हिजरी तारीख और तुर्किये के 81 प्रांतों के नमाज़ के समय। इंटरनेट से नहीं जुड़ता।"
+    "hi": "आपके ब्राउज़र में घड़ी, आज की तारीख, हिजरी तारीख और तुर्किये के 81 प्रांतों के नमाज़ के समय। इंटरनेट से नहीं जुड़ता।",
+    "bn": "ব্রাউজারে ঘড়ি, আজকের তারিখ, হিজরি তারিখ ও তুরস্কের 81টি প্রদেশের নামাজের সময়। অফলাইনে কাজ করে।"
   },
   "format": {
     "tr": "24/12 saat",
@@ -58,7 +60,8 @@
     "th": "24/12 ชั่วโมง",
     "es": "24/12 horas",
     "pt": "24/12 horas",
-    "hi": "24/12 घंटे"
+    "hi": "24/12 घंटे",
+    "bn": "24/12 ঘণ্টা"
   },
   "open": {
     "tr": "time.bumba.tr'de aç",
@@ -78,7 +81,8 @@
     "th": "เปิด time.bumba.tr",
     "es": "Abrir time.bumba.tr",
     "pt": "Abrir time.bumba.tr",
-    "hi": "time.bumba.tr खोलें"
+    "hi": "time.bumba.tr खोलें",
+    "bn": "time.bumba.tr খুলুন"
   },
   "note": {
     "tr": "Vakitler Diyanet yöntemiyle cihazda hesaplanır ve Türkiye saatiyle gösterilir; resmî vakit için Diyanet esastır. Eklenti internete bağlanmaz; yalnız seçtiğiniz il tarayıcıda saklanır.",
@@ -98,6 +102,7 @@
     "th": "เวลาคำนวณบนอุปกรณ์ของคุณตามวิธีของดียาเนต (กรมกิจการศาสนาตุรกี) และแสดงตามเวลาตุรกี ให้ยึดเวลาอย่างเป็นทางการของดียาเนต ส่วนขยายนี้ไม่เชื่อมต่ออินเทอร์เน็ต และเก็บเฉพาะจังหวัดที่คุณเลือกไว้ในเบราว์เซอร์",
     "es": "Los horarios se calculan en su dispositivo con el método de Diyanet y se muestran en hora de Turquía; prevalecen los horarios oficiales de Diyanet. La extensión nunca se conecta a internet; solo la provincia elegida se guarda en el navegador.",
     "pt": "Os horários são calculados no seu aparelho pelo método da Diyanet e mostrados na hora da Turquia; valem os horários oficiais da Diyanet. A extensão nunca se conecta à internet; só a província escolhida fica salva no navegador.",
-    "hi": "समय आपके डिवाइस पर दियानत विधि से निकाले जाते हैं और तुर्किये समय में दिखाए जाते हैं; दियानत के आधिकारिक समय ही मान्य हैं। एक्सटेंशन कभी इंटरनेट से नहीं जुड़ता; केवल आपका चुना प्रांत ब्राउज़र में सहेजा जाता है।"
+    "hi": "समय आपके डिवाइस पर दियानत विधि से निकाले जाते हैं और तुर्किये समय में दिखाए जाते हैं; दियानत के आधिकारिक समय ही मान्य हैं। एक्सटेंशन कभी इंटरनेट से नहीं जुड़ता; केवल आपका चुना प्रांत ब्राउज़र में सहेजा जाता है।",
+    "bn": "সময় আপনার ডিভাইসে দিয়ানেত পদ্ধতিতে হিসাব করা হয় এবং তুরস্কের সময়ে দেখানো হয়; দিয়ানেতের সরকারি সময়ই চূড়ান্ত। এক্সটেনশনটি কখনো অনলাইনে যায় না; শুধু আপনার বাছা প্রদেশ ব্রাউজারে সংরক্ষিত থাকে।"
   }
 }

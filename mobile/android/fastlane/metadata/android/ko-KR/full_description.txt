@@ -46,6 +46,6 @@
 개인정보
 위치는 휴대폰에만 머뭅니다. 날씨와 가까운 모스크 검색에만 대략적인 위치가 해당 서비스(Open-Meteo, OpenStreetMap)로 전송되며, 누구인지는 전송되지 않습니다. 모든 권한은 설정 › 권한에서 확인하고 끌 수 있습니다.
 
-18개 언어 지원. Android 휴대폰과 태블릿, Wear OS, Android TV용.
+19개 언어 지원. Android 휴대폰과 태블릿, Wear OS, Android TV용.
 
 시간과 날짜는 Bumba Life 제품입니다. 웹: time.bumba.tr

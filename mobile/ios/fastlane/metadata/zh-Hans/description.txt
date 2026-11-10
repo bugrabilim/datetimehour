@@ -35,6 +35,6 @@
 隐私
 无需账户，无广告，无追踪。你的位置留在手机上用于计算礼拜时间；只有在查询天气和附近清真寺时，才会把大致位置发送给相关服务（Apple、Open-Meteo），绝不发送你的身份。所有权限都可在 设置 › 权限 中查看并关闭。
 
-支持 18 种语言。适用于 iPhone、iPad 和 Apple Watch。
+支持 19 种语言。适用于 iPhone、iPad 和 Apple Watch。
 
 时间与日期是 Bumba Life 的产品。网站：time.bumba.tr

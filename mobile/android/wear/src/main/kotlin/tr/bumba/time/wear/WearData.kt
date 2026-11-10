@@ -68,7 +68,7 @@ object Wear {
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
-            WProvince(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi").associateWith { o.optString(it) })
+            WProvince(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi", "bn").associateWith { o.optString(it) })
         }.sortedWith(compareBy(java.text.Collator.getInstance(Locale.forLanguageTag("tr"))) { it.name })
         val h = JSONArray(read("hijri.json"))
         hijri = (0 until h.length()).map { i -> h.getJSONArray(i).let { Triple(LocalDate.parse(it.getString(0)).toEpochDay(), it.getInt(1), it.getInt(2)) } }
@@ -82,7 +82,7 @@ object Wear {
             val ls = app.resources.configuration.locales
             for (i in 0 until ls.size()) {
                 val l = ls[i].language.let { when (it) { "in" -> "id"; "tl" -> "fil"; else -> it } }
-                if (l in listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi")) return l
+                if (l in listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn")) return l
             }
             return "en"
         }

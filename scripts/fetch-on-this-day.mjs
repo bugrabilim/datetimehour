@@ -6,7 +6,7 @@
 import fs from "node:fs";
 
 const UA = "SaatTarih/1.0 (https://time.bumba.tr)";
-const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn"];
 /* Wikidata'daki etiket dilleri: Filipincede Tagalog etiketi (tl) de; Çincede Basitleştirilmiş önce (zh-hans, zh-cn), yoksa zh */
 const WD_LANGS = { fil: ["fil", "tl"], zh: ["zh-hans", "zh-cn", "zh-sg", "zh"], pt: ["pt-br", "pt"] };
 const wdFor = (l) => WD_LANGS[l] || [l];

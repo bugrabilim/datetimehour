@@ -103,7 +103,7 @@ class OnboardingTest {
 
     /** Vakitler sorusu dil grubuna göre (9 Kasım 2026, sahibin kararı): tr, ar, id, ur, fa başta, diğer dillerde sonda */
     @Test fun prayerQuestionOrderByLanguage() {
-        for (l in listOf("tr", "ar", "in", "ur", "fa")) {
+        for (l in listOf("tr", "ar", "in", "ur", "fa", "bn")) {
             org.robolectric.RuntimeEnvironment.setQualifiers("+$l")
             assertEquals(l, Tab.PRAYER, Onboarding.QUESTIONS.first())
             assertEquals(l, "q:prayer", Onboarding.PAGES[2])

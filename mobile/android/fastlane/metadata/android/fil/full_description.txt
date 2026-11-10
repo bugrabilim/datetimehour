@@ -46,6 +46,6 @@ Oras ng dasal at Qibla
 Privacy
 Nananatili sa iyong telepono ang lokasyon mo. Para lang sa panahon at mga kalapit na mosque ipinapadala ang tinatayang lokasyon sa serbisyo (Open-Meteo, OpenStreetMap), hindi kailanman kung sino ka. Tingnan at i-off ang bawat pahintulot sa Settings › Mga pahintulot.
 
-Sa 18 wika. Para sa mga Android phone at tablet, Wear OS at Android TV.
+Sa 19 wika. Para sa mga Android phone at tablet, Wear OS at Android TV.
 
 Ang Oras at Petsa ay produkto ng Bumba Life. Web: time.bumba.tr

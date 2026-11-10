@@ -46,6 +46,6 @@ Horarios de oración y alquibla
 Privacidad
 Su ubicación se queda en el móvil. Solo para el tiempo y las mezquitas cercanas se envía una ubicación aproximada al servicio (Open-Meteo, OpenStreetMap), nunca quién es usted. Vea y desactive cada permiso en Ajustes › Permisos.
 
-En 18 idiomas. Para móviles y tablets Android, Wear OS y Android TV.
+En 19 idiomas. Para móviles y tablets Android, Wear OS y Android TV.
 
 Hora y Fecha es un producto de Bumba Life. Web: time.bumba.tr

@@ -14,7 +14,7 @@ import kotlin.math.sqrt
 /** 81 il (sitedeki src/data/provinces.json) */
 data class Province(val slug: String, val name: String, val lat: Double, val lon: Double, val ar: String, val local: Map<String, String> = emptyMap()) {
     /** Arapça, Rusça ve Farsçada kendi yazısıyla; diğer dillerde Türkçe yazım */
-    /** Arapçada Arapça ad; Rusça, Farsça, Japonca, Korece, Çince ve Taycada o dildeki ad (provinces.json), diğerlerinde Türkçe ad */
+    /** Arapçada Arapça ad; Rusça, Farsça, Japonca, Korece, Çince, Tayca, Hintçe ve Bengalcede o dildeki ad (provinces.json), diğerlerinde Türkçe ad */
     val displayName: String get() = if (Strings.lang == "ar") ar else local[Strings.lang]?.ifEmpty { null } ?: name
 
     companion object {
@@ -109,7 +109,7 @@ object AppData {
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
-            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi").associateWith { o.optString(it) })
+            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi", "bn").associateWith { o.optString(it) })
         }
 
         val dj = JSONObject(read("districts.json"))

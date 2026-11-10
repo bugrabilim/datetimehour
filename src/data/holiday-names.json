@@ -1,5 +1,5 @@
 {
- "_": "Dünya resmî tatil adlarının çevirileri (İngilizce ad → tr, de, az, ar, fr, ru, id, fa, ur, ja, ko, zh, fil, th, es, pt, hi); listede olmayan adlar İngilizce ve yerel adıyla gösterilir.",
+ "_": "Dünya resmî tatil adlarının çevirileri (İngilizce ad → tr, de, az, ar, fr, ru, id, fa, ur, ja, ko, zh, fil, th, es, pt, hi, bn); listede olmayan adlar İngilizce ve yerel adıyla gösterilir.",
  "names": {
   "New Year's Day": {
    "tr": "Yılbaşı",
@@ -18,7 +18,8 @@
    "th": "วันขึ้นปีใหม่",
    "es": "Año Nuevo",
    "pt": "Dia de Ano-Novo",
-   "hi": "नव वर्ष दिवस"
+   "hi": "नव वर्ष दिवस",
+   "bn": "নববর্ষ দিবস"
   },
   "New Year holiday": {
    "tr": "Yılbaşı tatili",
@@ -37,7 +38,8 @@
    "th": "วันหยุดปีใหม่",
    "es": "Festivo de Año Nuevo",
    "pt": "Feriado de Ano-Novo",
-   "hi": "नव वर्ष की छुट्टी"
+   "hi": "नव वर्ष की छुट्टी",
+   "bn": "নববর্ষের ছুটি"
   },
   "Christmas Day": {
    "tr": "Noel",
@@ -56,7 +58,8 @@
    "th": "วันคริสต์มาส",
    "es": "Navidad",
    "pt": "Natal",
-   "hi": "क्रिसमस"
+   "hi": "क्रिसमस",
+   "bn": "বড়দিন"
   },
   "Christmas Eve": {
    "tr": "Noel arifesi",
@@ -75,7 +78,8 @@
    "th": "วันคริสต์มาสอีฟ",
    "es": "Nochebuena",
    "pt": "Véspera de Natal",
-   "hi": "क्रिसमस की पूर्व संध्या"
+   "hi": "क्रिसमस की पूर्व संध्या",
+   "bn": "বড়দিনের আগের সন্ধ্যা"
   },
   "Christmas Day (Orthodox)": {
    "tr": "Ortodoks Noeli",
@@ -94,7 +98,8 @@
    "th": "วันคริสต์มาส (ออร์โธดอกซ์)",
    "es": "Navidad (ortodoxa)",
    "pt": "Natal (ortodoxo)",
-   "hi": "क्रिसमस (ऑर्थोडॉक्स)"
+   "hi": "क्रिसमस (ऑर्थोडॉक्स)",
+   "bn": "বড়দিন (অর্থোডক্স)"
   },
   "St. Stephen's Day": {
    "tr": "Noel'in ikinci günü (Aziz Stefanos Günü)",
@@ -113,7 +118,8 @@
    "th": "วันนักบุญสเทเฟน",
    "es": "San Esteban",
    "pt": "Dia de Santo Estêvão",
-   "hi": "संत स्टीफ़न दिवस"
+   "hi": "संत स्टीफ़न दिवस",
+   "bn": "সেন্ট স্টিফেন দিবস"
   },
   "Easter Monday": {
    "tr": "Paskalya Pazartesisi",
@@ -132,7 +138,8 @@
    "th": "วันจันทร์อีสเตอร์",
    "es": "Lunes de Pascua",
    "pt": "Segunda-feira de Páscoa",
-   "hi": "ईस्टर सोमवार"
+   "hi": "ईस्टर सोमवार",
+   "bn": "ইস্টার সোমবার"
   },
   "Easter Sunday": {
    "tr": "Paskalya",
@@ -151,7 +158,8 @@
    "th": "วันอาทิตย์อีสเตอร์",
    "es": "Domingo de Pascua",
    "pt": "Domingo de Páscoa",
-   "hi": "ईस्टर रविवार"
+   "hi": "ईस्टर रविवार",
+   "bn": "ইস্টার সানডে"
   },
   "Good Friday": {
    "tr": "Kutsal Cuma",
@@ -170,7 +178,8 @@
    "th": "วันศุกร์ประเสริฐ",
    "es": "Viernes Santo",
    "pt": "Sexta-feira Santa",
-   "hi": "गुड फ़्राइडे"
+   "hi": "गुड फ़्राइडे",
+   "bn": "গুড ফ্রাইডে"
   },
   "Holy Saturday": {
    "tr": "Kutsal Cumartesi",
@@ -189,7 +198,8 @@
    "th": "วันเสาร์ศักดิ์สิทธิ์",
    "es": "Sábado Santo",
    "pt": "Sábado de Aleluia",
-   "hi": "पवित्र शनिवार"
+   "hi": "पवित्र शनिवार",
+   "bn": "পবিত্র শনিবার"
   },
   "Maundy Thursday": {
    "tr": "Kutsal Perşembe",
@@ -208,7 +218,8 @@
    "th": "วันพฤหัสบดีศักดิ์สิทธิ์",
    "es": "Jueves Santo",
    "pt": "Quinta-feira Santa",
-   "hi": "पवित्र गुरुवार"
+   "hi": "पवित्र गुरुवार",
+   "bn": "পবিত্র বৃহস্পতিবার"
   },
   "Labour Day": {
    "tr": "Emek ve Dayanışma Günü",
@@ -227,7 +238,8 @@
    "th": "วันแรงงาน",
    "es": "Día del Trabajo",
    "pt": "Dia do Trabalho",
-   "hi": "श्रमिक दिवस"
+   "hi": "श्रमिक दिवस",
+   "bn": "শ্রমিক দিবস"
   },
   "International Workers' Day": {
    "tr": "Emek ve Dayanışma Günü",
@@ -246,7 +258,8 @@
    "th": "วันแรงงานสากล",
    "es": "Día Internacional de los Trabajadores",
    "pt": "Dia Internacional dos Trabalhadores",
-   "hi": "अंतरराष्ट्रीय श्रमिक दिवस"
+   "hi": "अंतरराष्ट्रीय श्रमिक दिवस",
+   "bn": "আন্তর্জাতিক শ্রমিক দিবস"
   },
   "International Workers Day": {
    "tr": "Emek ve Dayanışma Günü",
@@ -265,7 +278,8 @@
    "th": "วันแรงงานสากล",
    "es": "Día Internacional de los Trabajadores",
    "pt": "Dia Internacional dos Trabalhadores",
-   "hi": "अंतरराष्ट्रीय श्रमिक दिवस"
+   "hi": "अंतरराष्ट्रीय श्रमिक दिवस",
+   "bn": "আন্তর্জাতিক শ্রমিক দিবস"
   },
   "May Day": {
    "tr": "1 Mayıs",
@@ -284,7 +298,8 @@
    "th": "วันเมย์เดย์",
    "es": "Primero de Mayo",
    "pt": "Primeiro de Maio",
-   "hi": "मई दिवस"
+   "hi": "मई दिवस",
+   "bn": "মে দিবস"
   },
   "Whit Monday": {
    "tr": "Pentekost Pazartesisi",
@@ -303,7 +318,8 @@
    "th": "วันจันทร์หลังเพนเทคอสต์",
    "es": "Lunes de Pentecostés",
    "pt": "Segunda-feira de Pentecostes",
-   "hi": "पेंटेकोस्ट सोमवार"
+   "hi": "पेंटेकोस्ट सोमवार",
+   "bn": "পেন্টেকস্ট সোমবার"
   },
   "Pentecost": {
    "tr": "Pentekost",
@@ -322,7 +338,8 @@
    "th": "วันเพนเทคอสต์",
    "es": "Pentecostés",
    "pt": "Pentecostes",
-   "hi": "पेंटेकोस्ट"
+   "hi": "पेंटेकोस्ट",
+   "bn": "পেন্টেকস্ট"
   },
   "Ascension Day": {
    "tr": "Göğe Yükseliş Günü",
@@ -341,7 +358,8 @@
    "th": "วันเสด็จขึ้นสวรรค์",
    "es": "Día de la Ascensión",
    "pt": "Dia da Ascensão",
-   "hi": "स्वर्गारोहण दिवस"
+   "hi": "स्वर्गारोहण दिवस",
+   "bn": "স্বর্গারোহণ দিবস"
   },
   "Epiphany": {
    "tr": "Epifani",
@@ -360,7 +378,8 @@
    "th": "วันสมโภชพระคริสต์แสดงองค์",
    "es": "Epifanía",
    "pt": "Epifania",
-   "hi": "एपिफ़नी"
+   "hi": "एपिफ़नी",
+   "bn": "এপিফানি"
   },
   "Independence Day": {
    "tr": "Bağımsızlık Günü",
@@ -379,7 +398,8 @@
    "th": "วันประกาศอิสรภาพ",
    "es": "Día de la Independencia",
    "pt": "Dia da Independência",
-   "hi": "स्वतंत्रता दिवस"
+   "hi": "स्वतंत्रता दिवस",
+   "bn": "স্বাধীনতা দিবস"
   },
   "Assumption Day": {
    "tr": "Meryem'in Göğe Kabulü",
@@ -398,7 +418,8 @@
    "th": "วันแม่พระรับเกียรติยกขึ้นสวรรค์",
    "es": "Día de la Asunción",
    "pt": "Dia da Assunção",
-   "hi": "स्वर्गारोपण दिवस"
+   "hi": "स्वर्गारोपण दिवस",
+   "bn": "মেরির স্বর্গারোপণ দিবস"
   },
   "Assumption": {
    "tr": "Meryem'in Göğe Kabulü",
@@ -417,7 +438,8 @@
    "th": "วันแม่พระรับเกียรติยกขึ้นสวรรค์",
    "es": "Asunción",
    "pt": "Assunção",
-   "hi": "स्वर्गारोपण"
+   "hi": "स्वर्गारोपण",
+   "bn": "মেরির স্বর্গারোপণ"
   },
   "Assumption of the Virgin Mary": {
    "tr": "Meryem'in Göğe Kabulü",
@@ -436,7 +458,8 @@
    "th": "วันแม่พระรับเกียรติยกขึ้นสวรรค์",
    "es": "Asunción de la Virgen María",
    "pt": "Assunção de Nossa Senhora",
-   "hi": "कुँवारी मरियम का स्वर्गारोपण"
+   "hi": "कुँवारी मरियम का स्वर्गारोपण",
+   "bn": "কুমারী মেরির স্বর্গারোপণ"
   },
   "All Saints' Day": {
    "tr": "Azizler Günü",
@@ -455,7 +478,8 @@
    "th": "วันสมโภชนักบุญทั้งหลาย",
    "es": "Día de Todos los Santos",
    "pt": "Dia de Todos os Santos",
-   "hi": "सर्व संत दिवस"
+   "hi": "सर्व संत दिवस",
+   "bn": "সকল সাধু দিবস"
   },
   "All Saints Day": {
    "tr": "Azizler Günü",
@@ -474,7 +498,8 @@
    "th": "วันสมโภชนักบุญทั้งหลาย",
    "es": "Día de Todos los Santos",
    "pt": "Dia de Todos os Santos",
-   "hi": "सर्व संत दिवस"
+   "hi": "सर्व संत दिवस",
+   "bn": "সকল সাধু দিবস"
   },
   "Constitution Day": {
    "tr": "Anayasa Günü",
@@ -493,7 +518,8 @@
    "th": "วันรัฐธรรมนูญ",
    "es": "Día de la Constitución",
    "pt": "Dia da Constituição",
-   "hi": "संविधान दिवस"
+   "hi": "संविधान दिवस",
+   "bn": "সংবিধান দিবস"
   },
   "Corpus Christi": {
    "tr": "Corpus Christi",
@@ -512,7 +538,8 @@
    "th": "วันสมโภชพระวรกายพระคริสต์",
    "es": "Corpus Christi",
    "pt": "Corpus Christi",
-   "hi": "कॉर्पस क्रिस्टी"
+   "hi": "कॉर्पस क्रिस्टी",
+   "bn": "কর্পাস ক্রিস্টি"
   },
   "Immaculate Conception": {
    "tr": "Lekesiz Gebelik Bayramı",
@@ -531,7 +558,8 @@
    "th": "วันสมโภชแม่พระผู้ปฏิสนธินิรมล",
    "es": "Inmaculada Concepción",
    "pt": "Imaculada Conceição",
-   "hi": "निष्कलंक गर्भाधान"
+   "hi": "निष्कलंक गर्भाधान",
+   "bn": "নিষ্কলঙ্ক গর্ভধারণ"
   },
   "National Day": {
    "tr": "Ulusal Gün",
@@ -550,7 +578,8 @@
    "th": "วันชาติ",
    "es": "Fiesta Nacional",
    "pt": "Dia Nacional",
-   "hi": "राष्ट्रीय दिवस"
+   "hi": "राष्ट्रीय दिवस",
+   "bn": "জাতীয় দিবস"
   },
   "National Holiday": {
    "tr": "Ulusal Bayram",
@@ -569,7 +598,8 @@
    "th": "วันหยุดประจำชาติ",
    "es": "Fiesta Nacional",
    "pt": "Feriado Nacional",
-   "hi": "राष्ट्रीय अवकाश"
+   "hi": "राष्ट्रीय अवकाश",
+   "bn": "জাতীয় ছুটি"
   },
   "International Women's Day": {
    "tr": "Dünya Kadınlar Günü",
@@ -588,7 +618,8 @@
    "th": "วันสตรีสากล",
    "es": "Día Internacional de la Mujer",
    "pt": "Dia Internacional da Mulher",
-   "hi": "अंतरराष्ट्रीय महिला दिवस"
+   "hi": "अंतरराष्ट्रीय महिला दिवस",
+   "bn": "আন্তর্জাতিক নারী দিবস"
   },
   "Republic Day": {
    "tr": "Cumhuriyet Günü",
@@ -607,7 +638,8 @@
    "th": "วันสาธารณรัฐ",
    "es": "Día de la República",
    "pt": "Dia da República",
-   "hi": "गणतंत्र दिवस"
+   "hi": "गणतंत्र दिवस",
+   "bn": "প্রজাতন্ত্র দিবস"
   },
   "Armistice Day": {
    "tr": "Ateşkes Günü",
@@ -626,7 +658,8 @@
    "th": "วันสงบศึก",
    "es": "Día del Armisticio",
    "pt": "Dia do Armistício",
-   "hi": "युद्धविराम दिवस"
+   "hi": "युद्धविराम दिवस",
+   "bn": "যুদ্ধবিরতি দিবস"
   },
   "Liberation Day": {
    "tr": "Kurtuluş Günü",
@@ -645,7 +678,8 @@
    "th": "วันปลดปล่อย",
    "es": "Día de la Liberación",
    "pt": "Dia da Libertação",
-   "hi": "मुक्ति दिवस"
+   "hi": "मुक्ति दिवस",
+   "bn": "মুক্তি দিবস"
   },
   "Freedom Day": {
    "tr": "Özgürlük Günü",
@@ -664,7 +698,8 @@
    "th": "วันเสรีภาพ",
    "es": "Día de la Libertad",
    "pt": "Dia da Liberdade",
-   "hi": "आज़ादी दिवस"
+   "hi": "आज़ादी दिवस",
+   "bn": "স্বাধীনতা দিবস"
   },
   "Victory Day": {
    "tr": "Zafer Günü",
@@ -683,7 +718,8 @@
    "th": "วันแห่งชัยชนะ",
    "es": "Día de la Victoria",
    "pt": "Dia da Vitória",
-   "hi": "विजय दिवस"
+   "hi": "विजय दिवस",
+   "bn": "বিজয় দিবস"
   },
   "Victory in Europe Day": {
    "tr": "Avrupa'da Zafer Günü",
@@ -702,7 +738,8 @@
    "th": "วันแห่งชัยชนะในยุโรป",
    "es": "Día de la Victoria en Europa",
    "pt": "Dia da Vitória na Europa",
-   "hi": "यूरोप में विजय दिवस"
+   "hi": "यूरोप में विजय दिवस",
+   "bn": "ইউরোপে বিজয় দিবস"
   },
   "Children's Day": {
    "tr": "Çocuk Bayramı",
@@ -721,7 +758,8 @@
    "th": "วันเด็ก",
    "es": "Día del Niño",
    "pt": "Dia das Crianças",
-   "hi": "बाल दिवस"
+   "hi": "बाल दिवस",
+   "bn": "শিশু দিবস"
   },
   "Saint George's Day": {
    "tr": "Aziz Yorgi Günü",
@@ -740,7 +778,8 @@
    "th": "วันนักบุญจอร์จ",
    "es": "Día de San Jorge",
    "pt": "Dia de São Jorge",
-   "hi": "संत जॉर्ज दिवस"
+   "hi": "संत जॉर्ज दिवस",
+   "bn": "সেন্ট জর্জ দিবস"
   },
   "Defender of the Fatherland Day": {
    "tr": "Vatan Savunucuları Günü",
@@ -759,7 +798,8 @@
    "th": "วันผู้พิทักษ์มาตุภูมิ",
    "es": "Día del Defensor de la Patria",
    "pt": "Dia do Defensor da Pátria",
-   "hi": "पितृभूमि रक्षक दिवस"
+   "hi": "पितृभूमि रक्षक दिवस",
+   "bn": "পিতৃভূমি রক্ষক দিবস"
   },
   "Chinese New Year": {
    "tr": "Çin Yeni Yılı",
@@ -778,7 +818,8 @@
    "th": "วันตรุษจีน",
    "es": "Año Nuevo chino",
    "pt": "Ano-Novo chinês",
-   "hi": "चीनी नव वर्ष"
+   "hi": "चीनी नव वर्ष",
+   "bn": "চীনা নববর্ষ"
   },
   "Dragon Boat Festival": {
    "tr": "Ejderha Teknesi Festivali",
@@ -797,7 +838,8 @@
    "th": "เทศกาลไหว้บ๊ะจ่าง",
    "es": "Festival del Bote del Dragón",
    "pt": "Festival do Barco do Dragão",
-   "hi": "ड्रैगन बोट उत्सव"
+   "hi": "ड्रैगन बोट उत्सव",
+   "bn": "ড্রাগন বোট উৎসব"
   },
   "Eid Al-Adha": {
    "tr": "Kurban Bayramı",
@@ -816,7 +858,8 @@
    "th": "วันอีดิ้ลอัฎฮา",
    "es": "Eid al-Adha",
    "pt": "Eid al-Adha",
-   "hi": "ईद उल-अज़हा"
+   "hi": "ईद उल-अज़हा",
+   "bn": "ঈদুল আজহা"
   },
   "Eid al-Adha": {
    "tr": "Kurban Bayramı",
@@ -835,7 +878,8 @@
    "th": "วันอีดิ้ลอัฎฮา",
    "es": "Eid al-Adha",
    "pt": "Eid al-Adha",
-   "hi": "ईद उल-अज़हा"
+   "hi": "ईद उल-अज़हा",
+   "bn": "ঈদুল আজহা"
   },
   "Eid al-Fitr": {
    "tr": "Ramazan Bayramı",
@@ -854,7 +898,8 @@
    "th": "วันอีดิ้ลฟิฏรี",
    "es": "Eid al-Fitr",
    "pt": "Eid al-Fitr",
-   "hi": "ईद उल-फ़ित्र"
+   "hi": "ईद उल-फ़ित्र",
+   "bn": "ঈদুল ফিতর"
   },
   "Eid Al-Fitr": {
    "tr": "Ramazan Bayramı",
@@ -873,7 +918,8 @@
    "th": "วันอีดิ้ลฟิฏรี",
    "es": "Eid al-Fitr",
    "pt": "Eid al-Fitr",
-   "hi": "ईद उल-फ़ित्र"
+   "hi": "ईद उल-फ़ित्र",
+   "bn": "ঈদুল ফিতর"
   },
   "Islamic New Year": {
    "tr": "Hicri Yılbaşı",
@@ -892,7 +938,8 @@
    "th": "วันขึ้นปีใหม่อิสลาม",
    "es": "Año Nuevo islámico",
    "pt": "Ano-Novo islâmico",
-   "hi": "इस्लामी नव वर्ष"
+   "hi": "इस्लामी नव वर्ष",
+   "bn": "ইসলামি নববর্ষ"
   },
   "Prophet Muhammad's Birthday (Tentative Date)": {
    "tr": "Mevlid Kandili (yaklaşık tarih)",
@@ -911,7 +958,8 @@
    "th": "วันประสูติท่านนบีมุฮัมมัด (วันที่ยังไม่แน่นอน)",
    "es": "Nacimiento del Profeta Mahoma (fecha provisional)",
    "pt": "Nascimento do Profeta Maomé (data provisória)",
-   "hi": "पैग़ंबर मुहम्मद का जन्मदिन (अनुमानित तारीख)"
+   "hi": "पैग़ंबर मुहम्मद का जन्मदिन (अनुमानित तारीख)",
+   "bn": "ঈদে মিলাদুন্নবী (আনুমানিক তারিখ)"
   },
   "Thanksgiving Day": {
    "tr": "Şükran Günü",
@@ -930,7 +978,8 @@
    "th": "วันขอบคุณพระเจ้า",
    "es": "Día de Acción de Gracias",
    "pt": "Dia de Ação de Graças",
-   "hi": "थैंक्सगिविंग डे"
+   "hi": "थैंक्सगिविंग डे",
+   "bn": "থ্যাংকসগিভিং ডে"
   },
   "Thanksgiving": {
    "tr": "Şükran Günü",
@@ -949,7 +998,8 @@
    "th": "วันขอบคุณพระเจ้า",
    "es": "Acción de Gracias",
    "pt": "Ação de Graças",
-   "hi": "थैंक्सगिविंग"
+   "hi": "थैंक्सगिविंग",
+   "bn": "থ্যাংকসগিভিং"
   },
   "Memorial Day": {
    "tr": "Anma Günü",
@@ -968,7 +1018,8 @@
    "th": "วันรำลึกทหารผู้เสียชีวิต",
    "es": "Día de los Caídos",
    "pt": "Dia da Memória",
-   "hi": "मेमोरियल डे"
+   "hi": "मेमोरियल डे",
+   "bn": "মেমোরিয়াল ডে"
   },
   "Labor Day": {
    "tr": "İşçi Bayramı (ABD)",
@@ -987,7 +1038,8 @@
    "th": "วันแรงงาน",
    "es": "Día del Trabajo",
    "pt": "Dia do Trabalho (EUA)",
-   "hi": "श्रमिक दिवस"
+   "hi": "श्रमिक दिवस",
+   "bn": "শ্রমিক দিবস"
   },
   "Early May Bank Holiday": {
    "tr": "Mayıs başı resmî tatili",
@@ -1006,7 +1058,8 @@
    "th": "วันหยุดธนาคารต้นเดือนพฤษภาคม",
    "es": "Festivo bancario de principios de mayo",
    "pt": "Feriado bancário do início de maio",
-   "hi": "मई की शुरुआत का बैंक अवकाश"
+   "hi": "मई की शुरुआत का बैंक अवकाश",
+   "bn": "মে মাসের প্রথম ব্যাংক ছুটি"
   },
   "Spring Bank Holiday": {
    "tr": "Bahar resmî tatili",
@@ -1025,7 +1078,8 @@
    "th": "วันหยุดธนาคารฤดูใบไม้ผลิ",
    "es": "Festivo bancario de primavera",
    "pt": "Feriado bancário da primavera",
-   "hi": "वसंत बैंक अवकाश"
+   "hi": "वसंत बैंक अवकाश",
+   "bn": "বসন্তের ব্যাংক ছুটি"
   },
   "German Unity Day": {
    "tr": "Alman Birliği Günü",
@@ -1044,7 +1098,8 @@
    "th": "วันเอกภาพเยอรมัน",
    "es": "Día de la Unidad Alemana",
    "pt": "Dia da Unidade Alemã",
-   "hi": "जर्मन एकता दिवस"
+   "hi": "जर्मन एकता दिवस",
+   "bn": "জার্মান ঐক্য দিবস"
   },
   "Bastille Day": {
    "tr": "Bastille Günü (Fransa Ulusal Bayramı)",
@@ -1063,7 +1118,8 @@
    "th": "วันบัสตีย์",
    "es": "Día de la Bastilla",
    "pt": "Dia da Bastilha",
-   "hi": "बैस्टिल दिवस"
+   "hi": "बैस्टिल दिवस",
+   "bn": "বাস্তিল দিবস"
   },
   "King's Day": {
    "tr": "Kral Günü",
@@ -1082,7 +1138,8 @@
    "th": "วันพระราชา",
    "es": "Día del Rey",
    "pt": "Dia do Rei",
-   "hi": "राजा दिवस"
+   "hi": "राजा दिवस",
+   "bn": "রাজা দিবস"
   },
   "Nauryz Meyramy": {
    "tr": "Nevruz",
@@ -1101,7 +1158,8 @@
    "th": "นาวรูซ",
    "es": "Nauryz",
    "pt": "Nauryz",
-   "hi": "नौरोज़"
+   "hi": "नौरोज़",
+   "bn": "নওরোজ"
   },
   "Clean Monday": {
    "tr": "Temiz Pazartesi",
@@ -1120,7 +1178,8 @@
    "th": "วันจันทร์บริสุทธิ์",
    "es": "Lunes Limpio",
    "pt": "Segunda-feira Limpa",
-   "hi": "स्वच्छ सोमवार"
+   "hi": "स्वच्छ सोमवार",
+   "bn": "শুদ্ধ সোমবার"
   },
   "Annunciation": {
    "tr": "Meryem'e Müjde",
@@ -1139,7 +1198,8 @@
    "th": "วันแม่พระรับสาร",
    "es": "Anunciación",
    "pt": "Anunciação",
-   "hi": "उद्घोषणा पर्व"
+   "hi": "उद्घोषणा पर्व",
+   "bn": "শুভবার্তা পর্ব"
   },
   "Greek Independence Day": {
    "tr": "Yunanistan Bağımsızlık Günü",
@@ -1158,7 +1218,8 @@
    "th": "วันประกาศอิสรภาพกรีซ",
    "es": "Día de la Independencia de Grecia",
    "pt": "Dia da Independência da Grécia",
-   "hi": "यूनान स्वतंत्रता दिवस"
+   "hi": "यूनान स्वतंत्रता दिवस",
+   "bn": "গ্রিসের স্বাধীনতা দিবস"
   },
   "Ochi Day": {
    "tr": "Ohi Günü",
@@ -1177,7 +1238,8 @@
    "th": "วันโอฮี",
    "es": "Día del No (Ochi)",
    "pt": "Dia do Não (Ochi)",
-   "hi": "ओखी दिवस"
+   "hi": "ओखी दिवस",
+   "bn": "ওখি দিবস"
   },
   "Labour Day (Orthodox)": {
    "tr": "Emek ve Dayanışma Günü",
@@ -1196,7 +1258,8 @@
    "th": "วันแรงงาน (ออร์โธดอกซ์)",
    "es": "Día del Trabajo (ortodoxo)",
    "pt": "Dia do Trabalho (ortodoxo)",
-   "hi": "श्रमिक दिवस (ऑर्थोडॉक्स)"
+   "hi": "श्रमिक दिवस (ऑर्थोडॉक्स)",
+   "bn": "শ্রমিক দিবস (অর্থোডক্স)"
   },
   "Veterans Day": {
    "tr": "Gaziler Günü",
@@ -1215,7 +1278,8 @@
    "th": "วันทหารผ่านศึก",
    "es": "Día de los Veteranos",
    "pt": "Dia dos Veteranos",
-   "hi": "वेटरन्स डे"
+   "hi": "वेटरन्स डे",
+   "bn": "ভেটেরান্স ডে"
   },
   "Martin Luther King, Jr. Day": {
    "tr": "Martin Luther King Günü",
@@ -1234,7 +1298,8 @@
    "th": "วันมาร์ติน ลูเธอร์ คิง จูเนียร์",
    "es": "Día de Martin Luther King Jr.",
    "pt": "Dia de Martin Luther King Jr.",
-   "hi": "मार्टिन लूथर किंग जूनियर दिवस"
+   "hi": "मार्टिन लूथर किंग जूनियर दिवस",
+   "bn": "মার্টিন লুথার কিং জুনিয়র দিবস"
   },
   "Presidents Day": {
    "tr": "Başkanlar Günü",
@@ -1253,7 +1318,8 @@
    "th": "วันประธานาธิบดี",
    "es": "Día de los Presidentes",
    "pt": "Dia dos Presidentes",
-   "hi": "राष्ट्रपति दिवस"
+   "hi": "राष्ट्रपति दिवस",
+   "bn": "প্রেসিডেন্টস ডে"
   },
   "Juneteenth National Independence Day": {
    "tr": "Juneteenth (Köleliğin Sonu Günü)",
@@ -1272,7 +1338,8 @@
    "th": "วันจูนทีนท์ (วันเลิกทาส)",
    "es": "Juneteenth (Día de la Emancipación)",
    "pt": "Juneteenth (Dia da Emancipação)",
-   "hi": "जूनटींथ (दासता उन्मूलन दिवस)"
+   "hi": "जूनटींथ (दासता उन्मूलन दिवस)",
+   "bn": "জুনটিন্থ (দাসপ্রথা অবসান দিবস)"
   },
   "Canada Day": {
    "tr": "Kanada Günü",
@@ -1291,7 +1358,8 @@
    "th": "วันแคนาดา",
    "es": "Día de Canadá",
    "pt": "Dia do Canadá",
-   "hi": "कनाडा दिवस"
+   "hi": "कनाडा दिवस",
+   "bn": "কানাডা দিবস"
   },
   "Victoria Day": {
    "tr": "Victoria Günü",
@@ -1310,7 +1378,8 @@
    "th": "วันวิกตอเรีย",
    "es": "Día de la Reina Victoria",
    "pt": "Dia da Rainha Vitória",
-   "hi": "विक्टोरिया दिवस"
+   "hi": "विक्टोरिया दिवस",
+   "bn": "ভিক্টোরিয়া দিবস"
   },
   "Australia Day": {
    "tr": "Avustralya Günü",
@@ -1329,7 +1398,8 @@
    "th": "วันชาติออสเตรเลีย",
    "es": "Día de Australia",
    "pt": "Dia da Austrália",
-   "hi": "ऑस्ट्रेलिया दिवस"
+   "hi": "ऑस्ट्रेलिया दिवस",
+   "bn": "অস্ট্রেলিয়া দিবস"
   },
   "Anzac Day": {
    "tr": "Anzak Günü",
@@ -1348,7 +1418,8 @@
    "th": "วันแอนแซก",
    "es": "Día de Anzac",
    "pt": "Dia Anzac",
-   "hi": "एंज़ैक दिवस"
+   "hi": "एंज़ैक दिवस",
+   "bn": "আনজাক দিবস"
   },
   "Saint Patrick's Day": {
    "tr": "Aziz Patrick Günü",
@@ -1367,7 +1438,8 @@
    "th": "วันนักบุญแพทริก",
    "es": "Día de San Patricio",
    "pt": "Dia de São Patrício",
-   "hi": "संत पैट्रिक दिवस"
+   "hi": "संत पैट्रिक दिवस",
+   "bn": "সেন্ট প্যাট্রিক দিবস"
   },
   "Mother's Day": {
    "tr": "Anneler Günü",
@@ -1386,7 +1458,8 @@
    "th": "วันแม่",
    "es": "Día de la Madre",
    "pt": "Dia das Mães",
-   "hi": "मातृ दिवस"
+   "hi": "मातृ दिवस",
+   "bn": "মা দিবস"
   },
   "Mid-Autumn Festival": {
    "tr": "Sonbahar Ortası Festivali",
@@ -1405,7 +1478,8 @@
    "th": "เทศกาลไหว้พระจันทร์",
    "es": "Festival de Medio Otoño",
    "pt": "Festival do Meio do Outono",
-   "hi": "मध्य-शरद उत्सव"
+   "hi": "मध्य-शरद उत्सव",
+   "bn": "মধ্য-শরৎ উৎসব"
   },
   "Lunar New Year": {
    "tr": "Ay Yeni Yılı",
@@ -1424,7 +1498,8 @@
    "th": "วันขึ้นปีใหม่ตามจันทรคติ",
    "es": "Año Nuevo lunar",
    "pt": "Ano-Novo lunar",
-   "hi": "चंद्र नव वर्ष"
+   "hi": "चंद्र नव वर्ष",
+   "bn": "চান্দ্র নববর্ষ"
   },
   "Chinese New Year (Spring Festival)": {
    "tr": "Çin Yeni Yılı (Bahar Bayramı)",
@@ -1443,7 +1518,8 @@
    "th": "วันตรุษจีน",
    "es": "Año Nuevo chino (Fiesta de la Primavera)",
    "pt": "Ano-Novo chinês (Festa da Primavera)",
-   "hi": "चीनी नव वर्ष (वसंत उत्सव)"
+   "hi": "चीनी नव वर्ष (वसंत उत्सव)",
+   "bn": "চীনা নববর্ষ (বসন্ত উৎসব)"
   },
   "Good Friday (Orthodox)": {
    "tr": "Ortodoks Kutsal Cuma",
@@ -1462,7 +1538,8 @@
    "th": "วันศุกร์ประเสริฐ (ออร์โธดอกซ์)",
    "es": "Viernes Santo (ortodoxo)",
    "pt": "Sexta-feira Santa (ortodoxa)",
-   "hi": "गुड फ़्राइडे (ऑर्थोडॉक्स)"
+   "hi": "गुड फ़्राइडे (ऑर्थोडॉक्स)",
+   "bn": "গুড ফ্রাইডে (অর্থোডক্স)"
   },
   "Easter Monday (Orthodox)": {
    "tr": "Ortodoks Paskalya Pazartesisi",
@@ -1481,7 +1558,8 @@
    "th": "วันจันทร์อีสเตอร์ (ออร์โธดอกซ์)",
    "es": "Lunes de Pascua (ortodoxo)",
    "pt": "Segunda-feira de Páscoa (ortodoxa)",
-   "hi": "ईस्टर सोमवार (ऑर्थोडॉक्स)"
+   "hi": "ईस्टर सोमवार (ऑर्थोडॉक्स)",
+   "bn": "ইস্টার সোমবার (অর্থোডক্স)"
   },
   "Unity Day": {
    "tr": "Birlik Günü",
@@ -1500,7 +1578,8 @@
    "th": "วันเอกภาพ",
    "es": "Día de la Unidad",
    "pt": "Dia da Unidade",
-   "hi": "एकता दिवस"
+   "hi": "एकता दिवस",
+   "bn": "ঐক্য দিবস"
   },
   "Russia Day": {
    "tr": "Rusya Günü",
@@ -1519,7 +1598,8 @@
    "th": "วันรัสเซีย",
    "es": "Día de Rusia",
    "pt": "Dia da Rússia",
-   "hi": "रूस दिवस"
+   "hi": "रूस दिवस",
+   "bn": "রাশিয়া দিবস"
   },
   "Workers' Day": {
    "tr": "İşçi Bayramı",
@@ -1538,7 +1618,8 @@
    "th": "วันแรงงาน",
    "es": "Día de los Trabajadores",
    "pt": "Dia dos Trabalhadores",
-   "hi": "श्रमिक दिवस"
+   "hi": "श्रमिक दिवस",
+   "bn": "শ্রমিক দিবস"
   },
   "Youth Day": {
    "tr": "Gençlik Günü",
@@ -1557,7 +1638,8 @@
    "th": "วันเยาวชน",
    "es": "Día de la Juventud",
    "pt": "Dia da Juventude",
-   "hi": "युवा दिवस"
+   "hi": "युवा दिवस",
+   "bn": "যুব দিবস"
   },
   "Heritage Day": {
    "tr": "Miras Günü",
@@ -1576,7 +1658,8 @@
    "th": "วันมรดก",
    "es": "Día del Patrimonio",
    "pt": "Dia do Patrimônio",
-   "hi": "विरासत दिवस"
+   "hi": "विरासत दिवस",
+   "bn": "ঐতিহ্য দিবস"
   },
   "Human Rights Day": {
    "tr": "İnsan Hakları Günü",
@@ -1595,7 +1678,8 @@
    "th": "วันสิทธิมนุษยชน",
    "es": "Día de los Derechos Humanos",
    "pt": "Dia dos Direitos Humanos",
-   "hi": "मानवाधिकार दिवस"
+   "hi": "मानवाधिकार दिवस",
+   "bn": "মানবাধিকার দিবস"
   }
  }
 }

@@ -46,6 +46,6 @@ Jadwal salat dan kiblat
 Privasi
 Lokasi Anda tetap di ponsel. Hanya untuk cuaca dan masjid terdekat, lokasi perkiraan dikirim ke layanan terkait (Open-Meteo, OpenStreetMap), tidak pernah identitas Anda. Lihat dan matikan setiap izin di Pengaturan › Izin.
 
-Dalam 18 bahasa. Untuk ponsel dan tablet Android, Wear OS, dan Android TV.
+Dalam 19 bahasa. Untuk ponsel dan tablet Android, Wear OS, dan Android TV.
 
 Jam & Tanggal adalah produk Bumba Life. Web: time.bumba.tr

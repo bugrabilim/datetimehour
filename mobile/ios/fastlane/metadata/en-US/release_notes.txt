@@ -9,4 +9,4 @@ What's new in 1.1
 • Qibla compass, nearby mosques, the Quran, duas, the 99 Names, tasbih counter, prayer and fasting tracker
 • 14 calculation methods and 973 districts of Türkiye
 • iPad and Apple Watch
-• 18 languages
+• 19 languages

@@ -50,6 +50,7 @@ object AppLanguage {
         Option("ru", "🇷🇺", "Русский"), Option("ja", "🇯🇵", "日本語"), Option("ko", "🇰🇷", "한국어"),
         Option("zh", "🇨🇳", "简体中文"), Option("fil", "🇵🇭", "Filipino"), Option("th", "🇹🇭", "ไทย"),
         Option("es", "🇪🇸", "Español"), Option("pt", "🇧🇷", "Português"), Option("hi", "🇮🇳", "हिन्दी"),
+        Option("bn", "🇧🇩", "বাংলা"),
     )
 
     private fun tag(code: String) = if (code == "zh") "zh-Hans" else code

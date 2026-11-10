@@ -46,6 +46,6 @@ Namaz vaxtları və qiblə
 Məxfilik
 Məkanınız telefonunuzda qalır. Yalnız hava və yaxındakı məscidlər üçün təxmini məkan aidiyyəti xidmətə (Open-Meteo, OpenStreetMap) göndərilir, kim olduğunuz isə heç vaxt. Hər icazəni Parametrlər › İcazələr bölməsində görüb söndürə bilərsiniz.
 
-18 dildə. Android telefon və planşetləri, Wear OS və Android TV üçün.
+19 dildə. Android telefon və planşetləri, Wear OS və Android TV üçün.
 
 Saat Tarix Bumba Life məhsuludur. Veb: time.bumba.tr

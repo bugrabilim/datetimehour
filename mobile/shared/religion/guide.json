@@ -21,7 +21,8 @@
     "th": "วุฎูอ์ (การอาบน้ำละหมาด)",
     "es": "Ablución (wudu)",
     "pt": "Ablução (wudu)",
-    "hi": "वुज़ू"
+    "hi": "वुज़ू",
+    "bn": "অজু"
    },
    "intro": {
     "tr": "Namazdan önce abdest alınır. Farzları: yüzü yıkamak, kolları dirseklerle birlikte yıkamak, başın dörtte birini mesh etmek, ayakları topuklarla birlikte yıkamak.",
@@ -41,7 +42,8 @@
     "th": "ก่อนละหมาดต้องอาบน้ำละหมาด ส่วนที่เป็นฟัรฎู: ล้างหน้า ล้างแขนรวมถึงข้อศอก เช็ดศีรษะหนึ่งในสี่ ล้างเท้ารวมถึงตาตุ่ม",
     "es": "La ablución se realiza antes de la oración. Sus partes obligatorias: lavar la cara, lavar los brazos incluidos los codos, pasar las manos mojadas por una cuarta parte de la cabeza y lavar los pies incluidos los tobillos.",
     "pt": "A ablução é feita antes da oração. Suas partes obrigatórias: lavar o rosto, lavar os braços incluindo os cotovelos, passar as mãos molhadas em um quarto da cabeça e lavar os pés incluindo os tornozelos.",
-    "hi": "नमाज़ से पहले वुज़ू किया जाता है। इसके फ़र्ज़: चेहरा धोना, कोहनियों समेत हाथ धोना, सिर के चौथाई हिस्से का मसह करना और टख़नों समेत पैर धोना।"
+    "hi": "नमाज़ से पहले वुज़ू किया जाता है। इसके फ़र्ज़: चेहरा धोना, कोहनियों समेत हाथ धोना, सिर के चौथाई हिस्से का मसह करना और टख़नों समेत पैर धोना।",
+    "bn": "নামাজের আগে অজু করা হয়। এর ফরজগুলো: মুখ ধোয়া, কনুইসহ দুই হাত ধোয়া, মাথার এক-চতুর্থাংশ মাসেহ করা, টাখনুসহ দুই পা ধোয়া।"
    },
    "steps": [
     {
@@ -62,7 +64,8 @@
      "th": "ตั้งเจตนาและกล่าว \"บิสมิลลาฮิรเราะห์มานิรเราะฮีม\"",
      "es": "Haga la intención y diga \"Bismillahir-rahmanir-rahim\".",
      "pt": "Faça a intenção e diga \"Bismillahir-rahmanir-rahim\".",
-     "hi": "नीयत करें और \"बिस्मिल्लाहिर्रहमानिर्रहीम\" कहें।"
+     "hi": "नीयत करें और \"बिस्मिल्लाहिर्रहमानिर्रहीम\" कहें।",
+     "bn": "নিয়ত করুন এবং \"বিসমিল্লাহির রাহমানির রাহিম\" বলুন।"
     },
     {
      "tr": "Eller bileklerle birlikte üç kez yıkanır.",
@@ -82,7 +85,8 @@
      "th": "ล้างมือถึงข้อมือสามครั้ง",
      "es": "Lávese las manos hasta las muñecas tres veces.",
      "pt": "Lave as mãos até os pulsos três vezes.",
-     "hi": "हाथों को कलाइयों तक तीन बार धोएँ।"
+     "hi": "हाथों को कलाइयों तक तीन बार धोएँ।",
+     "bn": "দুই হাত কবজি পর্যন্ত তিনবার ধুয়ে নিন।"
     },
     {
      "tr": "Sağ elle ağza üç kez su alınıp çalkalanır.",
@@ -102,7 +106,8 @@
      "th": "บ้วนปากสามครั้งด้วยมือขวา",
      "es": "Enjuáguese la boca tres veces con la mano derecha.",
      "pt": "Enxágue a boca três vezes com a mão direita.",
-     "hi": "दाएँ हाथ से तीन बार कुल्ली करें।"
+     "hi": "दाएँ हाथ से तीन बार कुल्ली करें।",
+     "bn": "ডান হাতে তিনবার কুলি করুন।"
     },
     {
      "tr": "Sağ elle burna üç kez su çekilir, sol elle temizlenir.",
@@ -122,7 +127,8 @@
      "th": "สูดน้ำเข้าจมูกสามครั้งด้วยมือขวาและสั่งออกด้วยมือซ้าย",
      "es": "Aspire agua por la nariz tres veces con la mano derecha y límpiela con la izquierda.",
      "pt": "Aspire água pelo nariz três vezes com a mão direita e limpe-o com a esquerda.",
-     "hi": "दाएँ हाथ से तीन बार नाक में पानी डालें और बाएँ हाथ से साफ़ करें।"
+     "hi": "दाएँ हाथ से तीन बार नाक में पानी डालें और बाएँ हाथ से साफ़ करें।",
+     "bn": "ডান হাতে তিনবার নাকে পানি দিন এবং বাঁ হাতে পরিষ্কার করুন।"
     },
     {
      "tr": "Yüz, alından çene altına, bir kulaktan öbürüne kadar üç kez yıkanır.",
@@ -142,7 +148,8 @@
      "th": "ล้างหน้าสามครั้ง ตั้งแต่หน้าผากถึงใต้คางและจากหูถึงหู",
      "es": "Lávese la cara tres veces, desde la frente hasta debajo de la barbilla y de oreja a oreja.",
      "pt": "Lave o rosto três vezes, da testa até abaixo do queixo e de orelha a orelha.",
-     "hi": "चेहरा तीन बार धोएँ, माथे से ठुड्डी के नीचे तक और एक कान से दूसरे कान तक।"
+     "hi": "चेहरा तीन बार धोएँ, माथे से ठुड्डी के नीचे तक और एक कान से दूसरे कान तक।",
+     "bn": "কপাল থেকে থুতনির নিচ পর্যন্ত এবং এক কান থেকে অন্য কান পর্যন্ত মুখ তিনবার ধুয়ে নিন।"
     },
     {
      "tr": "Önce sağ, sonra sol kol dirseklerle birlikte üç kez yıkanır.",
@@ -162,7 +169,8 @@
      "th": "ล้างแขนขวาแล้วแขนซ้าย รวมถึงข้อศอก สามครั้ง",
      "es": "Lávese el brazo derecho y luego el izquierdo, incluidos los codos, tres veces.",
      "pt": "Lave o braço direito e depois o esquerdo, incluindo os cotovelos, três vezes.",
-     "hi": "पहले दायाँ, फिर बायाँ हाथ कोहनियों समेत तीन बार धोएँ।"
+     "hi": "पहले दायाँ, फिर बायाँ हाथ कोहनियों समेत तीन बार धोएँ।",
+     "bn": "প্রথমে ডান হাত, পরে বাঁ হাত কনুইসহ তিনবার ধুয়ে নিন।"
     },
     {
      "tr": "Islak elle başın en az dörtte biri mesh edilir.",
@@ -182,7 +190,8 @@
      "th": "ใช้มือเปียกเช็ดศีรษะอย่างน้อยหนึ่งในสี่",
      "es": "Pase las manos mojadas por al menos una cuarta parte de la cabeza.",
      "pt": "Passe as mãos molhadas em pelo menos um quarto da cabeça.",
-     "hi": "गीले हाथों से कम से कम सिर के चौथाई हिस्से का मसह करें।"
+     "hi": "गीले हाथों से कम से कम सिर के चौथाई हिस्से का मसह करें।",
+     "bn": "ভেজা হাতে মাথার অন্তত এক-চতুর্থাংশ মাসেহ করুন।"
     },
     {
      "tr": "Kulaklar ve boyun ıslak parmaklarla mesh edilir.",
@@ -202,7 +211,8 @@
      "th": "ใช้นิ้วเปียกเช็ดหูและต้นคอ",
      "es": "Pase los dedos mojados por las orejas y la nuca.",
      "pt": "Passe os dedos molhados nas orelhas e na nuca.",
-     "hi": "गीली उँगलियों से कानों और गर्दन के पिछले हिस्से का मसह करें।"
+     "hi": "गीली उँगलियों से कानों और गर्दन के पिछले हिस्से का मसह करें।",
+     "bn": "ভেজা আঙুলে দুই কান ও ঘাড়ের পেছন মাসেহ করুন।"
     },
     {
      "tr": "Önce sağ, sonra sol ayak topuklarla birlikte, parmak araları da yıkanarak üç kez yıkanır.",
@@ -222,7 +232,8 @@
      "th": "ล้างเท้าขวาแล้วเท้าซ้าย รวมถึงตาตุ่มและซอกนิ้วเท้า สามครั้ง",
      "es": "Lávese el pie derecho y luego el izquierdo, incluidos los tobillos y entre los dedos, tres veces.",
      "pt": "Lave o pé direito e depois o esquerdo, incluindo os tornozelos e entre os dedos, três vezes.",
-     "hi": "पहले दायाँ, फिर बायाँ पैर टख़नों समेत तीन बार धोएँ और उँगलियों के बीच भी धोएँ।"
+     "hi": "पहले दायाँ, फिर बायाँ पैर टख़नों समेत तीन बार धोएँ और उँगलियों के बीच भी धोएँ।",
+     "bn": "প্রথমে ডান পা, পরে বাঁ পা টাখনুসহ ও আঙুলের ফাঁকসহ তিনবার ধুয়ে নিন।"
     }
    ]
   },
@@ -246,7 +257,8 @@
     "th": "ฟัรฎูของการละหมาด",
     "es": "Partes obligatorias de la oración",
     "pt": "Partes obrigatórias da oração",
-    "hi": "नमाज़ के फ़र्ज़"
+    "hi": "नमाज़ के फ़र्ज़",
+    "bn": "নামাজের ফরজসমূহ"
    },
    "intro": {
     "tr": "Namazın dışındaki farzlar (şartlar): hadesten taharet (abdest ya da gusül), necasetten taharet (beden, giysi ve yerin temizliği), setr-i avret (örtünme), istikbâl-i kıble (kıbleye dönmek), vakit ve niyet. İçindeki farzlar (rükünler): iftitah tekbiri, kıyam (ayakta durmak), kıraat (Kur'an okumak), rükû, secde ve ka'de-i ahîre (son oturuş).",
@@ -266,7 +278,8 @@
     "th": "เงื่อนไขภายนอกละหมาด: ความสะอาดตามศาสนบัญญัติ (วุฎูอ์หรือฆุสล์) ความสะอาดของร่างกาย เสื้อผ้าและสถานที่ การปกปิดร่างกายอย่างเหมาะสม การหันไปทางกิบลัต เวลาละหมาด และการตั้งเจตนา หลักภายในละหมาด: ตักบีรเริ่มต้น การยืน การอ่านอัลกุรอาน การรุกูอ์ การสุญูด และการนั่งครั้งสุดท้าย",
     "es": "Condiciones fuera de la oración: pureza ritual (wudu o gusl), limpieza del cuerpo, la ropa y el lugar, cubrir el cuerpo debidamente, orientarse hacia la alquibla, la hora de la oración y la intención. Pilares dentro de la oración: el takbir de apertura, estar de pie, la recitación del Corán, la inclinación (ruku), la postración (sujud) y la última posición sentada.",
     "pt": "Condições fora da oração: pureza ritual (wudu ou ghusl), limpeza do corpo, da roupa e do lugar, cobrir o corpo adequadamente, voltar-se para a qibla, o horário da oração e a intenção. Pilares dentro da oração: o takbir de abertura, ficar de pé, a recitação do Alcorão, a inclinação (ruku), a prostração (sajda) e a última posição sentada.",
-    "hi": "नमाज़ से बाहर की शर्तें: पाकी (वुज़ू या ग़ुस्ल), बदन, कपड़े और जगह का पाक होना, सतर ढकना, क़िबले की ओर मुँह करना, नमाज़ का वक़्त और नीयत। नमाज़ के अंदर के अरकान: तकबीर-ए-तहरीमा, क़ियाम (खड़ा होना), क़िरात (क़ुरआन पढ़ना), रुकू, सजदा और क़ादा-ए-आख़िरा (आख़िरी बैठक)।"
+    "hi": "नमाज़ से बाहर की शर्तें: पाकी (वुज़ू या ग़ुस्ल), बदन, कपड़े और जगह का पाक होना, सतर ढकना, क़िबले की ओर मुँह करना, नमाज़ का वक़्त और नीयत। नमाज़ के अंदर के अरकान: तकबीर-ए-तहरीमा, क़ियाम (खड़ा होना), क़िरात (क़ुरआन पढ़ना), रुकू, सजदा और क़ादा-ए-आख़िरा (आख़िरी बैठक)।",
+    "bn": "নামাজের বাইরের শর্ত: পবিত্রতা (অজু বা গোসল), শরীর, কাপড় ও জায়গা পাক হওয়া, সতর ঢাকা, কিবলামুখী হওয়া, নামাজের সময় ও নিয়ত। নামাজের ভেতরের রুকনসমূহ: তাকবিরে তাহরিমা, কিয়াম (দাঁড়ানো), কিরাত (কুরআন পড়া), রুকু, সিজদা ও শেষ বৈঠক।"
    },
    "steps": []
   },
@@ -290,7 +303,8 @@
     "th": "จำนวนร็อกอะฮ์ของแต่ละเวลา",
     "es": "Unidades (rakat) de cada oración",
     "pt": "Unidades (rakat) de cada oração",
-    "hi": "हर नमाज़ की रकअतें"
+    "hi": "हर नमाज़ की रकअतें",
+    "bn": "প্রতি ওয়াক্তের রাকাত"
    },
    "intro": {
     "tr": "Sünnet ve farzlar sırasıyla; Hanefî mezhebine göre.",
@@ -310,7 +324,8 @@
     "th": "ร็อกอะฮ์ซุนนะฮ์และฟัรฎูตามลำดับ ตามมัซฮับฮะนะฟี",
     "es": "Unidades sunna y obligatorias (fard) en orden, según la escuela hanafí.",
     "pt": "Unidades sunna e obrigatórias (fard) em ordem, segundo a escola hanafita.",
-    "hi": "हनफ़ी मसलक के अनुसार क्रम से सुन्नत और फ़र्ज़ रकअतें।"
+    "hi": "हनफ़ी मसलक के अनुसार क्रम से सुन्नत और फ़र्ज़ रकअतें।",
+    "bn": "হানাফি মাজহাব অনুযায়ী ক্রমানুসারে সুন্নত ও ফরজ রাকাত।"
    },
    "rows": [
     [
@@ -333,7 +348,8 @@
       "th": "ซุนนะฮ์ 2 ฟัรฎู 2",
       "es": "2 sunna, 2 fard",
       "pt": "2 sunna, 2 fard",
-      "hi": "2 सुन्नत, 2 फ़र्ज़"
+      "hi": "2 सुन्नत, 2 फ़र्ज़",
+      "bn": "2 রাকাত সুন্নত, 2 রাকাত ফরজ"
      }
     ],
     [
@@ -356,7 +372,8 @@
       "th": "ซุนนะฮ์ 4 ฟัรฎู 4 ซุนนะฮ์ 2",
       "es": "4 sunna, 4 fard, 2 sunna",
       "pt": "4 sunna, 4 fard, 2 sunna",
-      "hi": "4 सुन्नत, 4 फ़र्ज़, 2 सुन्नत"
+      "hi": "4 सुन्नत, 4 फ़र्ज़, 2 सुन्नत",
+      "bn": "4 রাকাত সুন্নত, 4 রাকাত ফরজ, 2 রাকাত সুন্নত"
      }
     ],
     [
@@ -379,7 +396,8 @@
       "th": "ซุนนะฮ์ 4 ฟัรฎู 4",
       "es": "4 sunna, 4 fard",
       "pt": "4 sunna, 4 fard",
-      "hi": "4 सुन्नत, 4 फ़र्ज़"
+      "hi": "4 सुन्नत, 4 फ़र्ज़",
+      "bn": "4 রাকাত সুন্নত, 4 রাকাত ফরজ"
      }
     ],
     [
@@ -402,7 +420,8 @@
       "th": "ฟัรฎู 3 ซุนนะฮ์ 2",
       "es": "3 fard, 2 sunna",
       "pt": "3 fard, 2 sunna",
-      "hi": "3 फ़र्ज़, 2 सुन्नत"
+      "hi": "3 फ़र्ज़, 2 सुन्नत",
+      "bn": "3 রাকাত ফরজ, 2 রাকাত সুন্নত"
      }
     ],
     [
@@ -425,7 +444,8 @@
       "th": "ซุนนะฮ์ 4 ฟัรฎู 4 ซุนนะฮ์ 2 วิติร 3 (วาญิบ)",
       "es": "4 sunna, 4 fard, 2 sunna, 3 witr (wayib)",
       "pt": "4 sunna, 4 fard, 2 sunna, 3 witr (wajib)",
-      "hi": "4 सुन्नत, 4 फ़र्ज़, 2 सुन्नत, 3 वित्र (वाजिब)"
+      "hi": "4 सुन्नत, 4 फ़र्ज़, 2 सुन्नत, 3 वित्र (वाजिब)",
+      "bn": "4 রাকাত সুন্নত, 4 রাকাত ফরজ, 2 রাকাত সুন্নত, 3 রাকাত বিতর (ওয়াজিব)"
      }
     ]
    ]
@@ -450,7 +470,8 @@
     "th": "วิธีละหมาดสองร็อกอะฮ์",
     "es": "Cómo hacer una oración de dos unidades",
     "pt": "Como fazer uma oração de duas unidades",
-    "hi": "दो रकअत नमाज़ कैसे पढ़ें"
+    "hi": "दो रकअत नमाज़ कैसे पढ़ें",
+    "bn": "দুই রাকাত নামাজ কীভাবে পড়বেন"
    },
    "intro": {
     "tr": "Örnek olarak sabah namazının farzı. Okunan duaların metni ve okunuşu Dualar bölümündedir.",
@@ -470,7 +491,8 @@
     "th": "ตัวอย่าง: ละหมาดฟัรฎูซุบฮิ ตัวบทของดุอาอ์อยู่ในหมวดดุอาอ์",
     "es": "Ejemplo: la oración obligatoria del alba. Los textos de las súplicas están en la sección Súplicas.",
     "pt": "Exemplo: a oração obrigatória da alvorada. Os textos das súplicas estão na seção Súplicas.",
-    "hi": "उदाहरण: फ़ज्र की फ़र्ज़ नमाज़। दुआओं के शब्द दुआएँ हिस्से में हैं।"
+    "hi": "उदाहरण: फ़ज्र की फ़र्ज़ नमाज़। दुआओं के शब्द दुआएँ हिस्से में हैं।",
+    "bn": "উদাহরণ: ফজরের ফরজ নামাজ। দোয়াগুলোর পাঠ দোয়া অংশে আছে।"
    },
    "steps": [
     {
@@ -491,7 +513,8 @@
      "th": "หันไปทางกิบลัตและตั้งเจตนาละหมาด",
      "es": "Oriéntese hacia la alquibla y haga la intención de la oración.",
      "pt": "Volte-se para a qibla e faça a intenção da oração.",
-     "hi": "क़िबले की ओर मुँह करें और नमाज़ की नीयत करें।"
+     "hi": "क़िबले की ओर मुँह करें और नमाज़ की नीयत करें।",
+     "bn": "কিবলামুখী হয়ে নামাজের নিয়ত করুন।"
     },
     {
      "tr": "Eller kaldırılarak \"Allâhu ekber\" denir (iftitah tekbiri); eller bağlanır.",
@@ -511,7 +534,8 @@
      "th": "ยกมือขึ้นและกล่าว \"อัลลอฮุอักบัร\" (ตักบีรเริ่มต้น) แล้ววางมือขวาทับมือซ้าย",
      "es": "Levante las manos y diga \"Allahu akbar\" (takbir de apertura); después cruce las manos.",
      "pt": "Levante as mãos e diga \"Allahu akbar\" (takbir de abertura); depois cruze as mãos.",
-     "hi": "हाथ उठाकर \"अल्लाहु अकबर\" (तकबीर-ए-तहरीमा) कहें, फिर हाथ बाँध लें।"
+     "hi": "हाथ उठाकर \"अल्लाहु अकबर\" (तकबीर-ए-तहरीमा) कहें, फिर हाथ बाँध लें।",
+     "bn": "দুই হাত তুলে \"আল্লাহু আকবার\" বলুন (তাকবিরে তাহরিমা), তারপর হাত বাঁধুন।"
     },
     {
      "tr": "Ayakta Sübhâneke, Eûzü ve Besmele okunur; sonra Fâtiha ve bir sure ya da en az üç kısa ayet okunur.",
@@ -531,7 +555,8 @@
      "th": "ขณะยืน อ่านซุบฮานะกะ อะอูซุ และบัสมะละฮ์ แล้วอ่านอัลฟาติฮะฮ์และซูเราะฮ์หนึ่งหรืออย่างน้อยสามอายะฮ์สั้น",
      "es": "De pie, recite Subhanaka, el taawwudh y la basmala; luego al-Fatiha y una sura o al menos tres aleyas cortas.",
      "pt": "De pé, recite Subhanaka, o taawwudh e a basmala; depois al-Fatiha e uma surata ou pelo menos três versículos curtos.",
-     "hi": "खड़े होकर सना (सुब्हानका), तअव्वुज़ और बिस्मिल्लाह पढ़ें; फिर सूरह फ़ातिहा और कोई सूरह या कम से कम तीन छोटी आयतें।"
+     "hi": "खड़े होकर सना (सुब्हानका), तअव्वुज़ और बिस्मिल्लाह पढ़ें; फिर सूरह फ़ातिहा और कोई सूरह या कम से कम तीन छोटी आयतें।",
+     "bn": "দাঁড়িয়ে সানা (সুবহানাকা), আউজুবিল্লাহ ও বিসমিল্লাহ পড়ুন; তারপর সূরা ফাতিহা এবং একটি সূরা বা অন্তত ছোট তিনটি আয়াত পড়ুন।"
     },
     {
      "tr": "\"Allâhu ekber\" diyerek rükûya varılır, üç kez \"Sübhâne rabbiye'l-azîm\" denir.",
@@ -551,7 +576,8 @@
      "th": "กล่าว \"อัลลอฮุอักบัร\" แล้วรุกูอ์ กล่าว \"ซุบฮานะ ร็อบบิยัลอะซีม\" สามครั้ง",
      "es": "Diga \"Allahu akbar\" e inclínese; diga \"Subhana rabbiyal-azim\" tres veces.",
      "pt": "Diga \"Allahu akbar\" e incline-se; diga \"Subhana rabbiyal-azim\" três vezes.",
-     "hi": "\"अल्लाहु अकबर\" कहकर रुकू में जाएँ; तीन बार \"सुब्हाना रब्बियल अज़ीम\" कहें।"
+     "hi": "\"अल्लाहु अकबर\" कहकर रुकू में जाएँ; तीन बार \"सुब्हाना रब्बियल अज़ीम\" कहें।",
+     "bn": "\"আল্লাহু আকবার\" বলে রুকুতে যান; তিনবার \"সুবহানা রাব্বিয়াল আজিম\" বলুন।"
     },
     {
      "tr": "\"Semiallâhu limen hamideh\" diyerek doğrulunur, \"Rabbenâ leke'l-hamd\" denir.",
@@ -571,7 +597,8 @@
      "th": "ลุกขึ้นพร้อมกล่าว \"สะมิอัลลอฮุ ลิมัน ฮะมิดะฮ์\" แล้วกล่าว \"ร็อบบะนา ละกัลฮัมด์\"",
      "es": "Incorpórese diciendo \"Sami'allahu liman hamidah\" y luego diga \"Rabbana lakal-hamd\".",
      "pt": "Levante-se dizendo \"Sami'allahu liman hamidah\" e depois diga \"Rabbana lakal-hamd\".",
-     "hi": "\"समिअल्लाहु लिमन हमिदह\" कहते हुए उठें, फिर \"रब्बना लकल हम्द\" कहें।"
+     "hi": "\"समिअल्लाहु लिमन हमिदह\" कहते हुए उठें, फिर \"रब्बना लकल हम्द\" कहें।",
+     "bn": "\"সামিআল্লাহু লিমান হামিদাহ\" বলে উঠুন, তারপর \"রাব্বানা লাকাল হামদ\" বলুন।"
     },
     {
      "tr": "\"Allâhu ekber\" diyerek secdeye varılır, üç kez \"Sübhâne rabbiye'l-a'lâ\" denir; tekbirle oturulur, sonra tekbirle ikinci secdeye varılır ve yine üç kez \"Sübhâne rabbiye'l-a'lâ\" denir.",
@@ -591,7 +618,8 @@
      "th": "กล่าว \"อัลลอฮุอักบัร\" แล้วสุญูด กล่าว \"ซุบฮานะ ร็อบบิยัลอะอ์ลา\" สามครั้ง ลุกขึ้นนั่งพร้อมกล่าว \"อัลลอฮุอักบัร\" แล้วกล่าวตักบีรและสุญูดครั้งที่สอง และกล่าว \"ซุบฮานะ ร็อบบิยัลอะอ์ลา\" อีกสามครั้ง",
      "es": "Diga \"Allahu akbar\" y prostérnese; diga \"Subhana rabbiyal-a'la\" tres veces; siéntese diciendo \"Allahu akbar\" y luego prostérnese una segunda vez con takbir y diga de nuevo \"Subhana rabbiyal-a'la\" tres veces.",
      "pt": "Diga \"Allahu akbar\" e prostre-se; diga \"Subhana rabbiyal-a'la\" três vezes; sente-se dizendo \"Allahu akbar\" e depois prostre-se uma segunda vez com takbir e diga de novo \"Subhana rabbiyal-a'la\" três vezes.",
-     "hi": "\"अल्लाहु अकबर\" कहकर सजदे में जाएँ; तीन बार \"सुब्हाना रब्बियल आला\" कहें; \"अल्लाहु अकबर\" कहते हुए बैठें, फिर तकबीर के साथ दूसरा सजदा करें और फिर तीन बार \"सुब्हाना रब्बियल आला\" कहें।"
+     "hi": "\"अल्लाहु अकबर\" कहकर सजदे में जाएँ; तीन बार \"सुब्हाना रब्बियल आला\" कहें; \"अल्लाहु अकबर\" कहते हुए बैठें, फिर तकबीर के साथ दूसरा सजदा करें और फिर तीन बार \"सुब्हाना रब्बियल आला\" कहें।",
+     "bn": "\"আল্লাহু আকবার\" বলে সিজদায় যান; তিনবার \"সুবহানা রাব্বিয়াল আলা\" বলুন; \"আল্লাহু আকবার\" বলে উঠে বসুন, তারপর তাকবির বলে দ্বিতীয় সিজদা করুন এবং আবার তিনবার \"সুবহানা রাব্বিয়াল আলা\" বলুন।"
     },
     {
      "tr": "İkinci rekâta kalkılır; Besmele, Fâtiha ve bir sure okunur; rükû ve iki secde aynı şekilde yapılır.",
@@ -611,7 +639,8 @@
      "th": "ลุกขึ้นสำหรับร็อกอะฮ์ที่สอง อ่านบัสมะละฮ์ อัลฟาติฮะฮ์และซูเราะฮ์หนึ่ง รุกูอ์และสุญูดสองครั้งแบบเดียวกัน",
      "es": "Póngase de pie para la segunda unidad; recite la basmala, al-Fatiha y una sura; inclínese y prostérnese dos veces de la misma manera.",
      "pt": "Fique de pé para a segunda unidade; recite a basmala, al-Fatiha e uma surata; incline-se e prostre-se duas vezes da mesma forma.",
-     "hi": "दूसरी रकअत के लिए खड़े हों; बिस्मिल्लाह, सूरह फ़ातिहा और कोई सूरह पढ़ें; इसी तरह रुकू और दो सजदे करें।"
+     "hi": "दूसरी रकअत के लिए खड़े हों; बिस्मिल्लाह, सूरह फ़ातिहा और कोई सूरह पढ़ें; इसी तरह रुकू और दो सजदे करें।",
+     "bn": "দ্বিতীয় রাকাতের জন্য দাঁড়ান; বিসমিল্লাহ, সূরা ফাতিহা ও একটি সূরা পড়ুন; একইভাবে রুকু ও দুটি সিজদা করুন।"
     },
     {
      "tr": "Oturulur; Ettehiyyâtü, Allâhümme salli, Allâhümme bârik ve Rabbenâ duaları okunur.",
@@ -631,7 +660,8 @@
      "th": "นั่งและอ่านอัตตะฮียาต เศาะละวาต (อัลลอฮุมมะ ศ็อลลิ และบาริก) และดุอาอ์ร็อบบะนา",
      "es": "Siéntese y recite At-Tahiyyat, las salawat (Allahumma salli y barik) y las súplicas Rabbana.",
      "pt": "Sente-se e recite At-Tahiyyat, as salawat (Allahumma salli e barik) e as súplicas Rabbana.",
-     "hi": "बैठकर अत्तहिय्यात, दुरूद (अल्लाहुम्मा सल्लि और बारिक) और रब्बना की दुआएँ पढ़ें।"
+     "hi": "बैठकर अत्तहिय्यात, दुरूद (अल्लाहुम्मा सल्लि और बारिक) और रब्बना की दुआएँ पढ़ें।",
+     "bn": "বসে আত্তাহিয়্যাতু, দরুদ (আল্লাহুম্মা সাল্লি ও বারিক) এবং রাব্বানা দোয়াগুলো পড়ুন।"
     },
     {
      "tr": "Önce sağa, sonra sola \"Esselâmü aleyküm ve rahmetullâh\" diyerek selam verilir.",
@@ -651,7 +681,8 @@
      "th": "หันศีรษะไปทางขวาแล้วทางซ้าย พร้อมกล่าว \"อัสสะลามุอะลัยกุม วะเราะห์มะตุลลอฮ์\"",
      "es": "Gire la cabeza a la derecha y luego a la izquierda diciendo \"As-salamu alaykum wa rahmatullah\".",
      "pt": "Vire a cabeça para a direita e depois para a esquerda dizendo \"As-salamu alaykum wa rahmatullah\".",
-     "hi": "\"अस्सलामु अलैकुम व रहमतुल्लाह\" कहते हुए पहले दाईं, फिर बाईं ओर सलाम फेरें।"
+     "hi": "\"अस्सलामु अलैकुम व रहमतुल्लाह\" कहते हुए पहले दाईं, फिर बाईं ओर सलाम फेरें।",
+     "bn": "\"আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহ\" বলে প্রথমে ডানে, পরে বাঁয়ে মাথা ঘোরান।"
     }
    ],
    "duas": [
@@ -681,6 +712,7 @@
   "th": "คู่มือนี้เป็นบทสรุปสั้น ๆ ตามมัซฮับฮะนะฟีที่ดียาเนตของตุรกียึดถือ รายละเอียดแตกต่างกันตามมัซฮับ หากต้องการทราบเพิ่มเติม โปรดปรึกษาผู้รู้ทางศาสนาหรือมัสยิดในท้องถิ่น",
   "es": "Esta guía es un breve resumen según la escuela hanafí que sigue la Diyanet de Turquía. Los detalles varían entre escuelas; para más información, consulte a un erudito cualificado o a su mezquita local.",
   "pt": "Este guia é um breve resumo segundo a escola hanafita seguida pela Diyanet da Turquia. Os detalhes variam entre as escolas; para mais informações, consulte um estudioso qualificado ou a mesquita da sua região.",
-  "hi": "यह गाइड तुर्किये की दियानत द्वारा अपनाए गए हनफ़ी मसलक के अनुसार एक छोटा सार है। मसलकों में ब्योरे अलग हैं; ज़्यादा जानकारी के लिए किसी योग्य आलिम या अपनी नज़दीकी मस्जिद से पूछें।"
+  "hi": "यह गाइड तुर्किये की दियानत द्वारा अपनाए गए हनफ़ी मसलक के अनुसार एक छोटा सार है। मसलकों में ब्योरे अलग हैं; ज़्यादा जानकारी के लिए किसी योग्य आलिम या अपनी नज़दीकी मस्जिद से पूछें।",
+  "bn": "এই নির্দেশিকাটি তুরস্কের দিয়ানেত অনুসৃত হানাফি মাজহাব অনুযায়ী একটি সংক্ষিপ্ত সারাংশ। মাজহাবভেদে বিস্তারিত বিষয় আলাদা হয়; আরও জানতে একজন যোগ্য আলেম বা আপনার স্থানীয় মসজিদের সঙ্গে পরামর্শ করুন।"
  }
 }

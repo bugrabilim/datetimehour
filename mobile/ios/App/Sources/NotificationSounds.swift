@@ -50,7 +50,7 @@ enum NotificationSounds {
         ["tr": "tr-TR", "en": "en-US", "de": "de-DE", "az": "tr-TR", "ar": "ar-SA",
          "id": "id-ID", "ur": "ur-PK", "fa": "fa-IR", "fr": "fr-FR", "ru": "ru-RU",
          "ja": "ja-JP", "ko": "ko-KR", "zh": "zh-CN", "fil": "fil-PH", "th": "th-TH",
-         "es": "es-ES", "pt": "pt-BR", "hi": "hi-IN"][language] ?? "tr-TR"
+         "es": "es-ES", "pt": "pt-BR", "hi": "hi-IN", "bn": "bn-BD"][language] ?? "tr-TR"
     }
 
     /// Kurulu en iyi ses: önce "Premium", sonra "Gelişmiş", yoksa standart ses.

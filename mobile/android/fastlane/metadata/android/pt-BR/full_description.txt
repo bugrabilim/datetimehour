@@ -46,6 +46,6 @@ Horários de oração e qibla
 Privacidade
 Sua localização fica no celular. Só para o clima e as mesquitas próximas uma localização aproximada é enviada ao serviço correspondente (Open-Meteo, OpenStreetMap), nunca a sua identidade. Veja e desative cada permissão em Ajustes › Permissões.
 
-Em 18 idiomas. Para celulares e tablets Android, Wear OS e Android TV.
+Em 19 idiomas. Para celulares e tablets Android, Wear OS e Android TV.
 
 Hora e Data é um produto Bumba Life. Web: time.bumba.tr

@@ -6,8 +6,9 @@ import SaatCore
 enum AppLocale {
     /// Dil kodu: veri dosyalarındaki adlarla aynı (Basitleştirilmiş Çince "zh-Hans" yerelleştirmesi "zh")
     static let code: String = { let c = Bundle.main.preferredLocalizations.first ?? "en"; return c.hasPrefix("zh") ? "zh" : c }()
-    /// Biçim yerel ayarı: Çincede Basitleştirilmiş; Taycada Gregoryen takvim (Tay yerel ayarının varsayılanı Budist takvimi)
-    static let locale = Locale(identifier: code == "zh" ? "zh-Hans" : code == "th" ? "th_TH@calendar=gregorian" : code)
+    /// Biçim yerel ayarı: Çincede Basitleştirilmiş; Taycada Gregoryen takvim (Tay yerel ayarının varsayılanı Budist takvimi);
+    /// Bengalcede Latin rakamı (Bengalce yerel ayarının varsayılanı Bengal rakamları)
+    static let locale = Locale(identifier: code == "zh" ? "zh-Hans" : code == "th" ? "th_TH@calendar=gregorian" : code == "bn" ? "bn@numbers=latn" : code)
     /// Sağdan sola yazılan diller
     static var isRTL: Bool { ["ar", "ur", "fa"].contains(code) }
     /// Sayı biçimi: sağdan sola dillerde (Arapça/Farsça rakam yerine) Latin rakamı için ABD biçimi

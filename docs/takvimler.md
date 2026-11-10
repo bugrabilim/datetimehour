@@ -69,7 +69,7 @@ Kurallar:
   "en": { … }, … }
 ```
 
-- 18 dil: tr, en, de, az, ar, id, ur, fa, fr, ru, ja, ko, zh, fil, th, es, pt, hi (Bengalce gelince bn). Her dilde **aynı
+- 19 dil: tr, en, de, az, ar, id, ur, fa, fr, ru, ja, ko, zh, fil, th, es, pt, hi, bn (Bengalce 10 Kasım 2026). Her dilde **aynı
   anahtarlar**, diziler aynı uzunlukta, metin boş olmaz.
 - Zorunlu: `name`, `desc`, `ev.<anahtar>` (kullanılan her olay için; kullanılmayan `ev` anahtarı da hata). Ay tablosu varsa `month`
   (artık ay bayrağı varsa `leapFmt`); `fmt` isteğe bağlı (yoksa site ve uygulamalar "{d} {m} {y}" kullanır). Günlük kod varsa
@@ -148,7 +148,7 @@ Kurallar:
 - `scripts/test.mjs` her takvim için: `validateCalendars` (aşağıdaki kurallar), `<id>.test.json` durumları, uygulamalardaki
   `calendars.json`'ın ve `cals.<id>.*` Android metinlerinin güncelliği, yıl sayfasındaki seçim ve veri dosyası.
 - `validateCalendars` kuralları: modül kayıtlı ve test dosyası var; kimlik/grup/bölge/renk biçimi; renk 4 tema zemininde ≥3:1 ve diğer takvimlerle resmî tatil/yarım gün/dinî gün/okul renklerinden CIE76 ΔE ≥ 20 (`CAL_MIN_DE`);
-  18 dilde metin eşliği, boş metin yok, Latin rakamı, yer tutucular aynı ve izinli (Türkçe `fmt` sırası); olay tarihleri geçerli ve
+  19 dilde metin eşliği, boş metin yok, Latin rakamı, yer tutucular aynı ve izinli (Türkçe `fmt` sırası); olay tarihleri geçerli ve
   yılında, `ev` metinleri var ve hepsi kullanılıyor; ay tablosu (son satır `to`'dan sonra), günlük kod (iki biçim, her kodun metni)
   ve yıl etiketi kuralları (yukarıda).
 
@@ -156,7 +156,7 @@ Kurallar:
 
 1. **Modül:** `lib/calendars/<id>.mjs` (`meta`, `events`; gerekiyorsa `months`, `daily`, `yearLabel`). Kimlik yukarıdaki listeden.
 2. **Kayıt:** `lib/calendars/index.mjs`'te `import * as <id> from "./<id>.mjs";` ve `CALENDARS` dizisine `<id>,` satırı.
-3. **Metinler:** `src/i18n-cal/<id>.json`, 18 dil, aynı anahtarlar (yukarıdaki kurallar). `src/i18n/*.json`'a dokunmayın.
+3. **Metinler:** `src/i18n-cal/<id>.json`, 19 dil, aynı anahtarlar (yukarıdaki kurallar). `src/i18n/*.json`'a dokunmayın.
 4. **Doğrulama:** `lib/calendars/<id>.test.json`, kaynak adresiyle.
 5. **Üret:** `node mobile/shared/gen-strings.mjs` (calendars.json ve uygulama metinleri; ikisi de commit'lenir).
 6. **Denetle:** `npm test` (sonra `rm -rf dist`), `node mobile/shared/gen-strings.mjs --check`,

@@ -46,6 +46,6 @@ Gebetszeiten und Qibla
 Datenschutz
 Ihr Standort bleibt auf Ihrem Telefon. Nur für Wetter und Moscheen in der Nähe geht ein ungefährer Standort an den Dienst (Open-Meteo, OpenStreetMap), nie Ihre Identität. Jede Berechtigung sehen und abschalten Sie unter Einstellungen › Berechtigungen.
 
-In 18 Sprachen. Für Android-Smartphones und -Tablets, Wear OS und Android TV.
+In 19 Sprachen. Für Android-Smartphones und -Tablets, Wear OS und Android TV.
 
 Uhr & Datum ist ein Produkt von Bumba Life. Web: time.bumba.tr

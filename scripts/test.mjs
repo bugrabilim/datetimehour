@@ -8,7 +8,7 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = path.join(ROOT, "dist");
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "site.config.json"), "utf8"));
 const ORIGIN = (process.env.SITE_ORIGIN || cfg.origin).replace(/\/+$/, "");
-const ALL = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
+const ALL = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn"];
 const RTL = ["ar", "ur", "fa"];
 const LANGS = ALL.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
 const LG = LANGS.join("|");
@@ -393,7 +393,7 @@ check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-
   const ux = rd("unix-zaman-damgasi");
   check(/data-unix/.test(ux) && /data-ux-ts/.test(ux) && /data-ux-date/.test(ux) && /zones\.js/.test(ux), "Unix sayfası eksik");
 }
-// Kapsayıcı takvimler (9 Kasım 2026; lib/calendars, docs/takvimler.md): modül doğrulaması (18 dilde metin eşliği, tarih, renk),
+// Kapsayıcı takvimler (9 Kasım 2026; lib/calendars, docs/takvimler.md): modül doğrulaması (19 dilde metin eşliği, tarih, renk),
 // her modülün <id>.test.json'u, uygulamalardaki calendars.json ve cals.* metinleri güncel, takvim yıl sayfasında seçim ve veri
 {
   const data = calendarData(), texts = loadCalTexts(ROOT);
@@ -675,7 +675,7 @@ for (const l of LANGS) {
   }
   // Fotoğraf ışığı sayfası (9 Kasım 2026): her dilde; saatler, Ay, 7 günlük tablo, izinli bulut tahmini ve atıf
   {
-    const PH = { tr: "altin-saat", en: "en/golden-hour", ar: "ar/golden-hour", de: "de/golden-hour", ja: "ja/golden-hour", hi: "hi/golden-hour" };
+    const PH = { tr: "altin-saat", en: "en/golden-hour", ar: "ar/golden-hour", de: "de/golden-hour", ja: "ja/golden-hour", hi: "hi/golden-hour", bn: "bn/golden-hour" };
     for (const [l, f] of Object.entries(PH)) {
       const p = path.join(DIST, f, "index.html"), h = fs.existsSync(p) ? fs.readFileSync(p, "utf8") : "";
       check(/data-photo\b/.test(h) && /photo\.js/.test(h) && /prayer-calc\.js/.test(h) && /nature-calc\.js/.test(h) && /weather-core\.js/.test(h) && /data-needs-place/.test(h) && /"WebApplication"/.test(h), `fotoğraf ışığı sayfası eksik: /${f}/`);

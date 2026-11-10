@@ -46,6 +46,6 @@ Prayer times and Qibla
 Privacy
 Your location stays on your phone. Only for weather and nearby mosques is an approximate location sent to the service (Open-Meteo, OpenStreetMap), never who you are. See and turn off every permission in Settings › Permissions.
 
-In 18 languages. For Android phones and tablets, Wear OS and Android TV.
+In 19 languages. For Android phones and tablets, Wear OS and Android TV.
 
 Time & Date is a Bumba Life product. Web: time.bumba.tr

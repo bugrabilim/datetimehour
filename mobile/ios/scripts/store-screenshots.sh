@@ -47,14 +47,13 @@ shoot() { # dil bölge klasör dosya bekleme [ek uygulama argümanları]; BAR=�
 #   "-": ülkenin verisi yok, takvim özel günsüz çekilir. m klasörlerinde takvim 1.0'daki gibidir (Türkiye, dini günler açık).
 #  ek klasörler: aynı uygulama dilinde bir kez çekilen görüntüler bunlara kopyalanır ("klasör/takvim ülkesi", virgülle; "-" yok).
 #   Ek klasörün ülkesi farklıysa yalnız takvim görseli o klasör için yeniden çekilir.
-# App Store'da Azerice, Farsça ve Filipince dil sürümü yok. Malayca ve Bengalce arayüz yok: ms İngilizce arayüzle (Müslüman sırası,
-# başlıklar Malayca), bn-BD şimdilik en-US'nin kopyası (nötr sıra, başlıklar Bengalce). Bengalce arayüz gelince bn-BD en satırından
-# çıkarılıp kendi satırına taşınır: bn:bn_BD:bn-BD:n:-:-
+# App Store'da Azerice, Farsça ve Filipince dil sürümü yok. Malayca arayüz yok: ms İngilizce arayüzle (Müslüman sırası,
+# başlıklar Malayca). Bengalce arayüz 10 Kasım 2026'dan beri var: bn-BD kendi satırında (nötr sıra; bn-BD yalnız Hindistan'da dizinlenir).
 # ur-PK ve bn-BD için fastlane 2.234.0 ya da sonrası gerekir (iş akışı Homebrew'dan en yenisini kurar).
 STORE_LANGS="tr:tr_TR:tr:m:-:- ar:ar_SA:ar-SA:m:-:- id:id_ID:id:m:-:- en:en_MY:ms:m:-:- ur:ur_PK:ur-PK:m:-:-
-en:en_US:en-US:n:US:en-GB/GB,en-AU/AU,en-CA/CA,bn-BD/- de:de_DE:de-DE:n:DE:- fr:fr_FR:fr-FR:n:FR:fr-CA/CA ru:ru_RU:ru:n:RU:-
+en:en_US:en-US:n:US:en-GB/GB,en-AU/AU,en-CA/CA de:de_DE:de-DE:n:DE:- fr:fr_FR:fr-FR:n:FR:fr-CA/CA ru:ru_RU:ru:n:RU:-
 ja:ja_JP:ja:n:JP:- ko:ko_KR:ko:n:-:- zh-Hans:zh_CN:zh-Hans:n:CN:zh-Hant/HK th:th_TH:th:n:-:- es:es_ES:es-ES:n:ES:es-MX/-
-pt:pt_BR:pt-BR:n:BR:pt-PT/PT hi:hi_IN:hi:n:-:-"
+pt:pt_BR:pt-BR:n:BR:pt-PT/PT hi:hi_IN:hi:n:-:- bn:bn_BD:bn-BD:n:-:-"
 # Saatin altındaki alanlar: Müslüman vitrininde sıradaki vakit ve bugünün vakitleri, nötr vitrinde dünya saatleri ve gün doğumu/batımı
 ITEMS="-date,week,next,prayers,-upcoming,-world,-weather,-sun,-globe"
 ITEMS_N="-date,week,world,sun,-next,-prayers,-upcoming,-weather,-globe"

@@ -35,6 +35,6 @@ ALAT
 PRIVASI
 Tanpa akun, tanpa iklan, tanpa pelacakan. Lokasi Anda tetap di ponsel untuk jadwal salat; hanya untuk cuaca dan masjid terdekat, lokasi perkiraan dikirim ke layanan terkait (Apple, Open-Meteo), tidak pernah identitas Anda. Lihat dan matikan setiap izin di Pengaturan › Izin.
 
-Dalam 18 bahasa. Untuk iPhone, iPad, dan Apple Watch.
+Dalam 19 bahasa. Untuk iPhone, iPad, dan Apple Watch.
 
 Jam & Tanggal adalah produk Bumba Life. Web: time.bumba.tr

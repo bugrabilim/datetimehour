@@ -498,6 +498,8 @@ class MoreScreensTest {
         shot("ko-namaz-rehberi", "ko") { PrayerGuideScreen({}) {} }
         shot("fil-hadis", "b+fil") { HadithScreen {} }
         shot("hi-esma", "hi") { EsmaScreen {} }
+        shot("bn-esma", "bn") { EsmaScreen {} }
+        shot("bn-dualar", "bn") { DuasScreen {} }
         shot("es-hadis", "es") { HadithScreen {} }
         shot("pt-namaz-rehberi", "pt") { PrayerGuideScreen({}) {} }
         shot("tr-hadis") { HadithScreen {} }

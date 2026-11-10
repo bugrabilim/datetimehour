@@ -335,6 +335,7 @@ object Speaker {
         "es" -> Locale.forLanguageTag("es-ES")
         "pt" -> Locale.forLanguageTag("pt-BR")
         "hi" -> Locale.forLanguageTag("hi-IN")
+        "bn" -> Locale.forLanguageTag("bn-BD")
         else -> Locale.forLanguageTag("tr-TR")
     }
 

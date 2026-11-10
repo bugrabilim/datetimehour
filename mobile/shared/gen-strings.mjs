@@ -17,7 +17,7 @@ import { CALENDARS, CAL_PLACEHOLDERS, calendarData, calendarsJson, loadCalTexts,
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
-const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn"];
 /* iOS String Catalog dil kodları: Çince Basitleştirilmiş Çince (zh-Hans); diğerleri aynı */
 const IOS_CODE = (l) => (l === "zh" ? "zh-Hans" : l);
 const I = Object.fromEntries(LANGS.map((l) => [l, JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"))]));
@@ -190,7 +190,7 @@ const toIOS = (s, order) => s.replace(/%/g, "%%").replace(/\{([a-z]+)\}/gi, (_, 
    Çince Basitleştirilmiş (values-zh bütün Çince yerel ayarlara uyar, Geleneksel Çincede de İngilizce yerine bu gelir).
    Varsayılan values/ İngilizcedir (desteklenmeyen telefon dillerinde İngilizce; 9 Kasım 2026, sahibin kararı), Türkçe values-tr.
    Dil seçimi (locales_config) BCP 47 kodlarıyla: id, fil, zh-Hans. */
-const ANDROID_DIRS = { tr: "values-tr", en: "values", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru", ja: "values-ja", ko: "values-ko", zh: "values-zh", fil: "values-b+fil", th: "values-th", es: "values-es", pt: "values-pt", hi: "values-hi" };
+const ANDROID_DIRS = { tr: "values-tr", en: "values", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru", ja: "values-ja", ko: "values-ko", zh: "values-zh", fil: "values-b+fil", th: "values-th", es: "values-es", pt: "values-pt", hi: "values-hi", bn: "values-bn" };
 const LOCALE_TAG = (l) => (l === "zh" ? "zh-Hans" : l);
 const androidName = (key) => key.replace(/[^A-Za-z0-9_]/g, "_");
 const androidEscape = (s) => s
@@ -263,7 +263,7 @@ const catalog = (s, source = "en") => JSON.stringify({ sourceLanguage: source, s
 const xcstrings = catalog(strings);
 
 const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces.json"), "utf8"))
-  .map(({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }) => ({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }));
+  .map(({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi, bn }) => ({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi, bn }));
 const provincesJson = JSON.stringify(provinces) + "\n";
 
 /* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak). Sınav takvimi
