@@ -100,7 +100,7 @@ hesabı açılana kadar yalnız kodda.
 - Resend anahtarı ve rastgele gizliler: ana altyapı oturumu (standart "Ana altyapı istekleri").
 - Aşama 3'te APNs anahtarı.
 
-## Ana altyapı isteği (kod hazır olunca gönderilecek)
+## Ana altyapı isteği (10 Kasım 2026'da ana altyapı oturumuna gönderildi; yanıt bekleniyor)
 - Yeni sunuculu uygulama: ad `saat-hesap`, depo `bugrabilim/datetimehour`, dal `main`, temel klasör `server/`,
   `server/Dockerfile`, port 8080, sağlık `/saglik`, izleme yolları `server/**`, adres `hesap.time.bumba.tr`
   (DNS + HTTPS).
