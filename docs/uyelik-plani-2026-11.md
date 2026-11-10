@@ -171,6 +171,8 @@ hesabı açılana kadar yalnız kodda.
   uygulama işlevi, kimlikle bağlantılı, izleme yok) eklenir, App Review › Sign-In Information'a deneme hesabı
   girilir (depoya yazılmaz); Play'de veri güvenliği formu ve hesap silme adresi (`PLAY_CONSOLE.md` 4).
 - **Sırada:** kurulum yapıldı (yukarıda, ana altyapı oturumunun yanıtı), yedek bilgisi gizlilik metnine yazıldı.
-  İlk yayın sırası: sahip `RESEND_API_KEY`'i girer → PR #60 main'e (site sayfaları canlıya, sahibin onayıyla) →
-  sahip ana altyapı oturumunda sunucunun ilk yayınını onaylar → hesap ekranlı uygulama sürümü. Sonra aşama 2
-  (ortak zikir ve hatim).
+  Sahip `RESEND_API_KEY`'i girdi (10 Kasım 2026). İlk yayın sırası: PR #60 main'e (site sayfaları canlıya,
+  sahibin onayıyla) → **yurt dışı aktarım için standart sözleşmeler (Resend, Cloudflare) imzalanıp 5 iş günü
+  içinde Kurum'a bildirilir** (`docs/yurt-disi-aktarim-2026-11.md`; sağlayıcı imzalamazsa oradaki B planı ve
+  gizlilik metni yeniden yazılır) → sahip ana altyapı oturumunda sunucunun ilk yayınını onaylar → hesap ekranlı
+  uygulama sürümü. Sonra aşama 2 (ortak zikir ve hatim; din verisi olabileceği için sözleşme ekleri güncellenir).
