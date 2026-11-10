@@ -380,8 +380,8 @@
           "**Data yang diproses:** alamat email; nama tampilan (boleh nama samaran); bahasa aplikasi; ringkasan kata sandi yang tidak dapat dikembalikan (kata sandinya sendiri tidak disimpan); tanggal akun dibuat dan terakhir dipakai; sesi Anda (kunci sesi, alamat IP, identitas aplikasi [user agent], waktu mulai dan berakhir); penghitung percobaan berjangka pendek untuk masuk dan tindakan akun lainnya (beserta alamat IP).",
           "**Tujuan dan dasar hukum:** membuat akun, memasukkan Anda, dan mengirim email akun (verifikasi, atur ulang kata sandi, perubahan alamat, peringatan sebelum akun yang tidak dipakai dihapus, konfirmasi penghapusan) diperlukan untuk membuat dan melaksanakan perjanjian di antara kita (KVKK, Pasal 5(2)(c)). Keamanan akun dan pencegahan penyalahgunaan (alamat IP, penghitung percobaan) didasarkan pada kepentingan sah kami (Pasal 5(2)(f)). Kami tidak mengirim email promosi; membuat akun tidak berarti bergabung dengan milis.",
           "**Cara pengumpulan:** secara elektronik, melalui formulir daftar dan masuk di aplikasi serta permintaan aplikasi ke server akun kami (hesap.time.bumba.tr).",
-          "**Tempat penyimpanan dan pengiriman:** data disimpan di server kami di Istanbul. Cadangan basis data harian disimpan di layanan penyimpanan R2 milik Cloudflare. Email akun dikirim melalui Resend (AS); untuk itu alamat email Anda dan isi email dikirim ke luar negeri. Kami tidak membagikan data Anda kepada pihak lain dan tidak menjualnya.",
-          "**Masa simpan:** sampai Anda menghapus akun. Akun yang tidak diverifikasi dalam 7 hari dihapus. Akun yang tidak dipakai selama 2 tahun dihapus; kami mengirim email kepada Anda 30 hari sebelumnya. Sesi dihapus saat berakhir (paling lama 90 hari), penghitung percobaan dalam satu hari; salinan di cadangan dihapus ketika masa cadangan habis.",
+          "**Tempat penyimpanan dan pengiriman:** data disimpan di server kami di Istanbul. Cadangan basis data harian disimpan di layanan penyimpanan R2 milik Cloudflare di AS; artinya cadangan data akun Anda dikirim ke luar negeri. Email akun dikirim melalui Resend (AS); untuk itu alamat email Anda dan isi email dikirim ke luar negeri. Kami tidak membagikan data Anda kepada pihak lain dan tidak menjualnya.",
+          "**Masa simpan:** sampai Anda menghapus akun. Akun yang tidak diverifikasi dalam 7 hari dihapus. Akun yang tidak dipakai selama 2 tahun dihapus; kami mengirim email kepada Anda 30 hari sebelumnya. Sesi dihapus saat berakhir (paling lama 90 hari), penghitung percobaan dalam satu hari; salinan di cadangan dihapus paling lama dalam 30 hari (cadangan disimpan 30 hari).",
           "**Di ponsel Anda:** kunci sesi disimpan di penyimpanan aman ponsel (Keychain di iPhone, penyimpanan terenkripsi di Android) dan dihapus saat Anda keluar.",
           "**Hak Anda:** Anda dapat melihat dan mengunduh data Anda di aplikasi (Pengaturan › Akun › Unduh data saya), memperbaikinya (nama, bahasa, email), dan menghapus akun ([Menghapus akun Anda]({deleteUrl})). Untuk hak lain menurut Pasal 11 KVKK: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
         ]
@@ -3460,7 +3460,7 @@
           "Alamat email, nama tampilan, bahasa, dan ringkasan kata sandi Anda yang tidak dapat dikembalikan.",
           "Sesi Anda (beserta alamat IP dan informasi aplikasi) dan catatan kapan akun terakhir dipakai.",
           "Saat fitur grup hadir: keanggotaan Anda di grup dan apa yang Anda tambahkan ke sana.",
-          "Salinan di cadangan basis data harian otomatis terhapus ketika masa simpan cadangan itu habis."
+          "Salinan di cadangan basis data harian otomatis terhapus paling lama dalam 30 hari (cadangan disimpan 30 hari)."
         ]
       },
       {

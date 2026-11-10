@@ -380,8 +380,8 @@
           "**Emal olunan məlumatlar:** e-poçt ünvanınız; görünən adınız (ləqəb ola bilər); tətbiqin dili; şifrənizin geri qaytarılmayan xülasəsi (şifrənin özü saxlanmır); hesabın açılış və son istifadə tarixi; sessiyalarınız (sessiya açarı, IP ünvanı, tətbiqin identifikasiya məlumatı [user agent], başlanğıc və bitmə vaxtı); giriş və digər hesab əməliyyatları üçün qısamüddətli cəhd sayğacları (IP ünvanı ilə).",
           "**Məqsəd və hüquqi əsas:** hesabı açmaq, girişinizi təmin etmək və hesabla bağlı e-poçtları (təsdiq, şifrə sıfırlama, ünvan dəyişikliyi, istifadə olunmayan hesabı silməzdən əvvəl xəbərdarlıq, silmə bildirişi) göndərmək aramızdakı müqavilənin bağlanması və icrası üçün lazımdır (KVKK, 5/2-c). Hesabın təhlükəsizliyi və sui-istifadənin qarşısının alınması (IP ünvanları, cəhd sayğacları) qanuni marağımıza əsaslanır (5/2-f). Reklam e-poçtu göndərmirik; hesab açmaq e-poçt siyahısına qoşulmaq demək deyil.",
           "**Toplama üsulu:** elektron şəkildə, tətbiqdəki qeydiyyat və giriş formaları və tətbiqin hesab serverimizə (hesap.time.bumba.tr) etdiyi sorğularla.",
-          "**Saxlama yeri və ötürmə:** məlumatlar İstanbuldakı serverimizdə saxlanır. Verilənlər bazasının gecə ehtiyat nüsxələri Cloudflare-in R2 saxlama xidmətində saxlanır. Hesab e-poçtları Resend (ABŞ) vasitəsilə göndərilir; bunun üçün e-poçt ünvanınız və e-poçtun məzmunu xaricə ötürülür. Məlumatlarınızı başqa heç kimlə paylaşmır və satmırıq.",
-          "**Saxlama müddəti:** hesabınızı silənə qədər. 7 gün ərzində təsdiqlənməyən hesab silinir. 2 il istifadə olunmayan hesab silinir; silməzdən 30 gün əvvəl sizə e-poçt göndəririk. Sessiyalar müddəti bitəndə (ən gec 90 gün), cəhd sayğacları bir gün ərzində silinir; ehtiyat nüsxələrdəki kopyalar ehtiyat nüsxələrin müddəti bitəndə silinir.",
+          "**Saxlama yeri və ötürmə:** məlumatlar İstanbuldakı serverimizdə saxlanır. Verilənlər bazasının gecə ehtiyat nüsxələri Cloudflare-in R2 saxlama xidmətində ABŞ-da saxlanır; yəni hesab məlumatlarınızın ehtiyat nüsxəsi xaricə ötürülür. Hesab e-poçtları Resend (ABŞ) vasitəsilə göndərilir; bunun üçün e-poçt ünvanınız və e-poçtun məzmunu xaricə ötürülür. Məlumatlarınızı başqa heç kimlə paylaşmır və satmırıq.",
+          "**Saxlama müddəti:** hesabınızı silənə qədər. 7 gün ərzində təsdiqlənməyən hesab silinir. 2 il istifadə olunmayan hesab silinir; silməzdən 30 gün əvvəl sizə e-poçt göndəririk. Sessiyalar müddəti bitəndə (ən gec 90 gün), cəhd sayğacları bir gün ərzində silinir; ehtiyat nüsxələrdəki kopyalar ən gec 30 gün ərzində silinir (ehtiyat nüsxələr 30 gün saxlanır).",
           "**Telefonunuzda:** sessiya açarı telefonun təhlükəsiz yaddaşında (iPhone-da Açar Zənciri, Android-də şifrələnmiş yaddaş) saxlanır və çıxış edəndə silinir.",
           "**Hüquqlarınız:** məlumatlarınızı tətbiqdə görə və yükləyə (Parametrlər › Hesab › Məlumatlarımı yüklə), düzəldə (ad, dil, e-poçt) və hesabınızı silə bilərsiniz ([Hesabınızı silmək]({deleteUrl})). KVKK-nın 11-ci maddəsindəki digər hüquqlarınız üçün: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
         ]
@@ -3460,7 +3460,7 @@
           "E-poçt ünvanınız, görünən adınız, diliniz və şifrənizin geri qaytarılmayan xülasəsi.",
           "Sessiyalarınız (IP ünvanları və tətbiq məlumatı ilə) və hesabın son istifadə qeydi.",
           "Qrup funksiyaları gələndə: qruplardakı üzvlükləriniz və qruplara əlavə etdiyiniz məlumatlar.",
-          "Gecə alınan verilənlər bazası ehtiyat nüsxələrindəki kopyalar ehtiyat nüsxələrin saxlama müddəti bitəndə avtomatik silinir."
+          "Gecə alınan verilənlər bazası ehtiyat nüsxələrindəki kopyalar ən gec 30 gün ərzində avtomatik silinir (ehtiyat nüsxələr 30 gün saxlanır)."
         ]
       },
       {

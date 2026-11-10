@@ -59,7 +59,7 @@ konumunun sunucuya gitmesi (bunlar telefonda kalır).
 - Uyanma grubu: üyenin o sabahki uyanma saati (yerel, dakika), 30 gün tutulur, sonra silinir.
 - Cami notu: not metni, caminin kimliği (OSM ya da Apple Haritalar) ve yuvarlatılmış konumu; yazarın görünen adı
   isteğe bağlı.
-- **Silme:** hesabı silince her şey hemen silinir (yedeklerde en geç yedek döngüsü kadar kalır, gizlilikte
+- **Silme:** hesabı silince her şey hemen silinir (gece yedeklerinde en geç 30 gün kalır, gizlilikte
   yazar). 7 gün içinde doğrulanmayan hesap silinir. 24 ay kullanılmayan hesaba silmeden 30 gün önce e-posta
   gider; o sürede giriş yapılmazsa silinir (`server/src/cleanup.mjs`; Coolify zamanlanmış görevi 6 saatte bir,
   `CRON_SECRET`'la korunan `POST /gorev/temizlik`).
@@ -79,7 +79,8 @@ konumunun sunucuya gitmesi (bunlar telefonda kalır).
   nasıl silinir; uygulamaya erişemeyen hesabın e-postasından bilgi@bumbagroup.com'a yazar). Veri güvenliği formu
   güncellenir.
 - **KVKK:** veri sorumlusu Bumba Teknoloji Ltd. Şti.; gizlilik sayfasına 19 dilde "Hesap" bölümü; e-posta
-  gönderimi (Resend) ve sunucunun yeri nedeniyle yurt dışına aktarım cümlesi hukukçuya gösterilir.
+  gönderimi (Resend, ABD) ve gece yedekleri (Cloudflare R2, ABD) nedeniyle yurt dışına aktarım cümlesi hukukçuya
+  gösterilir (aktarımın KVKK md. 9'daki dayanağı, ör. standart sözleşme, sahibin ve hukukçunun işi).
 - **Moderasyon:** şikâyet edilen içerik panelde bir kuyruğa düşer; üç ayrı şikâyette içerik kendiliğinden gizlenir.
   Madde 10 panelde tek kullanıcının içeriğini göstermeyi yasaklar; şikâyet edilen içeriği (yazarın kimliği
   olmadan) görmek için aşama 4'te istisna talebi gerekir.
@@ -100,7 +101,7 @@ hesabı açılana kadar yalnız kodda.
 - Resend anahtarı ve rastgele gizliler: ana altyapı oturumu (standart "Ana altyapı istekleri").
 - Aşama 3'te APNs anahtarı.
 
-## Ana altyapı isteği (10 Kasım 2026'da ana altyapı oturumuna gönderildi; yanıt bekleniyor)
+## Ana altyapı isteği (10 Kasım 2026'da ana altyapı oturumuna gönderildi; yanıt aşağıda)
 - Yeni sunuculu uygulama: ad `saat-hesap`, depo `bugrabilim/datetimehour`, dal `main`, temel klasör `server/`,
   `server/Dockerfile`, port 8080, sağlık `/saglik`, izleme yolları `server/**`, adres `hesap.time.bumba.tr`
   (DNS + HTTPS).
@@ -115,6 +116,24 @@ hesabı açılana kadar yalnız kodda.
 - Node derleme sürümü 22.23.4; durum.bumba.tr izlemesine ekleme (ilk yayından sonra).
 - Site (`saat`): yalnız normal site yayını (hesap sayfaları, `/hesap-silme/`, CSP `form-action`; aşama 2'de
   `/davet/` ve `.well-known`). Site imajı `server/`'ı içermez (`.dockerignore`).
+
+**Ana altyapı oturumunun yanıtı (10 Kasım 2026; sahip kurulumu onayladı, yayın yapılmadı):**
+- Coolify uygulaması `saat-hesap` (proje `saat`): dal `main`, temel dizin `/server`, Dockerfile, port 8080, sağlık
+  `GET /saglik`, izleme yolu `server/**`, https://hesap.time.bumba.tr (DNS ek kayıt istemedi, `*.bumba.tr`).
+- **Otomatik yayın şimdilik kapalı:** PR #60 main'e girince sunucu kendiliğinden yayına çıkmaz. İlk yayını sahibin
+  onayıyla ana altyapı oturumu yapar, sonra otomatik yayını açar; sonraki yayınlar bu oturumda (main'e birleştirme).
+- Ortam: `NODE_ENV`, `DATABASE_URL`, `BETTER_AUTH_SECRET`, `CRON_SECRET`, `UMAMI_SHARE_ID` girildi.
+  **`RESEND_API_KEY`'i sahip girecek; o girilmeden sunucu açılmaz** (ilk yayından önce sahibe hatırlatılır).
+- Temizlik görevi (6 saatte bir) eklendi, ilk yayına kadar kapalı. Veritabanı `saat_hesap` (rol hazır) yedek
+  uygulamasının yeniden başlatılmasını bekliyor; gece yedeği görevi (00:50 UTC) kapalı eklendi. durum.bumba.tr
+  izlemesi ilk yayında.
+- **Yedekler:** Cloudflare R2'de **30 gün** tutulur, sonra silinir; kova konumu **ENAM (ABD, Kuzey Amerika
+  doğusu)**, AB yargı alanında değil. Sahibin kararı: yedekler ABD'de kalır, metinde yurt dışında (ABD,
+  Cloudflare) tutulduğu yazılır. Cloudflare nesneleri kendi tarafında şifreler; dökümler ayrıca bizim
+  parolamızla şifrelenmez. Gizlilik ("Saklama yeri ve aktarım", "Saklama süresi") ve `/hesap-silme/`
+  ("Neler silinir?") metinleri 19 dilde buna göre yazıldı.
+- **Bizden beklenen:** PR #60 birleşip uygulama ekranları hazır olunca, ilk yayın için sahibe ana altyapı
+  oturumundan onay vermesini hatırlatmak.
 
 ## Sahibin yanıtları (10 Kasım 2026)
 1. Sıra (hesap → ortak zikir ve hatim → uyanma grupları → cami notları): **uygun**.
@@ -151,5 +170,7 @@ hesabı açılana kadar yalnız kodda.
   App Store Connect'te Uygulama Gizliliği'ne "E-posta adresi", "Ad" ve "Kullanıcı kimliği" (hesap yönetimi ve
   uygulama işlevi, kimlikle bağlantılı, izleme yok) eklenir, App Review › Sign-In Information'a deneme hesabı
   girilir (depoya yazılmaz); Play'de veri güvenliği formu ve hesap silme adresi (`PLAY_CONSOLE.md` 4).
-- **Sırada:** ana altyapı oturumunun yanıtı (R2 yedek süresi ve bölgesi; gelince gizlilik metni gerekirse
-  düzeltilir) ve kurulum; sonra aşama 2 (ortak zikir ve hatim).
+- **Sırada:** kurulum yapıldı (yukarıda, ana altyapı oturumunun yanıtı), yedek bilgisi gizlilik metnine yazıldı.
+  İlk yayın sırası: sahip `RESEND_API_KEY`'i girer → PR #60 main'e (site sayfaları canlıya, sahibin onayıyla) →
+  sahip ana altyapı oturumunda sunucunun ilk yayınını onaylar → hesap ekranlı uygulama sürümü. Sonra aşama 2
+  (ortak zikir ve hatim).

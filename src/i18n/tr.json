@@ -380,8 +380,8 @@
           "**İşlenen veriler:** e-posta adresiniz; görünen adınız (takma ad olabilir); uygulamanın dili; şifrenizin geri çevrilemez özeti (şifrenin kendisi saklanmaz); hesabın açılış ve son kullanım tarihi; oturumlarınız (oturum anahtarı, IP adresi, uygulamanın kimlik bilgisi [user agent], başlangıç ve bitiş zamanı); giriş ve diğer hesap işlemleri için kısa süreli deneme sayaçları (IP adresiyle).",
           "**Amaç ve hukuki sebep:** hesabı açmak, girişinizi sağlamak ve hesapla ilgili e-postaları (doğrulama, şifre sıfırlama, adres değişikliği, kullanılmayan hesabı silmeden önce uyarı, silme bildirimi) göndermek aramızdaki sözleşmenin kurulması ve ifası için gereklidir (KVKK md. 5/2-c). Hesabın güvenliği ve kötüye kullanımın önlenmesi (IP adresleri, deneme sayaçları) meşru menfaatimize dayanır (md. 5/2-f). Tanıtım e-postası göndermeyiz; hesap açmak e-posta listesine katılmak değildir.",
           "**Toplama yöntemi:** uygulamadaki kayıt ve giriş formlarıyla ve uygulamanın hesap sunucumuza (hesap.time.bumba.tr) yaptığı isteklerle, elektronik ortamda.",
-          "**Saklama yeri ve aktarım:** veriler İstanbul'daki sunucumuzda tutulur. Veritabanının gece yedekleri Cloudflare'in R2 depolama hizmetinde saklanır. Hesap e-postaları Resend (ABD) üzerinden gönderilir; bunun için e-posta adresiniz ve e-postanın içeriği yurt dışına aktarılır. Verilerinizi başka kimseyle paylaşmaz, satmayız.",
-          "**Saklama süresi:** hesabınızı silene kadar. 7 gün içinde doğrulanmayan hesap silinir. 2 yıl kullanılmayan hesap silinir; silmeden 30 gün önce size e-posta göndeririz. Oturumlar süresi dolunca (en geç 90 gün), deneme sayaçları bir gün içinde silinir; yedeklerdeki kopyalar yedeklerin süresi dolunca silinir.",
+          "**Saklama yeri ve aktarım:** veriler İstanbul'daki sunucumuzda tutulur. Veritabanının gece yedekleri Cloudflare'in R2 depolama hizmetinde ABD'de saklanır; yani hesap verilerinizin yedeği yurt dışına aktarılır. Hesap e-postaları Resend (ABD) üzerinden gönderilir; bunun için e-posta adresiniz ve e-postanın içeriği yurt dışına aktarılır. Verilerinizi başka kimseyle paylaşmaz, satmayız.",
+          "**Saklama süresi:** hesabınızı silene kadar. 7 gün içinde doğrulanmayan hesap silinir. 2 yıl kullanılmayan hesap silinir; silmeden 30 gün önce size e-posta göndeririz. Oturumlar süresi dolunca (en geç 90 gün), deneme sayaçları bir gün içinde silinir; yedeklerdeki kopyalar en geç 30 gün içinde silinir (yedekler 30 gün tutulur).",
           "**Telefonunuzda:** oturum anahtarı telefonun güvenli deposunda (iPhone'da Anahtar Zinciri, Android'de şifreli depo) tutulur ve çıkış yapınca silinir.",
           "**Haklarınız:** bilgilerinizi uygulamada görebilir ve indirebilir (Ayarlar › Hesap › Verilerimi indir), düzeltebilir (ad, dil, e-posta) ve hesabınızı silebilirsiniz ([Hesabınızı silme]({deleteUrl})). KVKK md. 11'deki diğer haklarınız için: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
         ]
@@ -3460,7 +3460,7 @@
           "E-posta adresiniz, görünen adınız, diliniz ve şifrenizin geri çevrilemez özeti.",
           "Oturumlarınız (IP adresleri ve uygulama bilgisiyle) ve hesabın son kullanım kaydı.",
           "Grup özellikleri geldiğinde: gruplardaki üyelikleriniz ve gruplara eklediğiniz bilgiler.",
-          "Gece alınan veritabanı yedeklerindeki kopyalar, yedeklerin saklama süresi dolunca kendiliğinden silinir."
+          "Gece alınan veritabanı yedeklerindeki kopyalar en geç 30 gün içinde kendiliğinden silinir (yedekler 30 gün tutulur)."
         ]
       },
       {
