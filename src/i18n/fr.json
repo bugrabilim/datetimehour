@@ -45,6 +45,7 @@
     "settings": "Paramètres",
     "theme": "Thème clair / sombre",
     "placeChange": "Changer de lieu",
+    "placeSearch": "Rechercher une ville",
     "placeTitle": "Votre lieu",
     "placeNote": "Votre lieu reste sur votre appareil et est utilisé sur toutes les pages pour les heures de prière, les saisons et la météo ; il n’est pas envoyé au serveur.",
     "placeClose": "Fermer",
@@ -3396,6 +3397,43 @@
       {
         "q": "Comment la prévision photo du lever et du coucher est-elle établie ?",
         "a": "À partir de la prévision horaire des nuages d’Open-Meteo pour l’heure la plus proche du lever ou du coucher. La pluie (0,5 mm par heure ou plus) ou des nuages bas épais (75 % ou plus) donnent Mauvaise ; peu de nuages bas (moins de 40 %) avec 20 à 80 % de nuages moyens ou hauts donnent Bonne ; sinon Moyenne tant que les nuages bas restent sous 60 %, et Mauvaise au-delà. Les nuages moyens et hauts captent les couleurs, les nuages bas à l’horizon cachent le Soleil."
+      }
+    ]
+  },
+  "panchang": {
+    "title": "Panchang et horaires du Rahu Kaal",
+    "description": "Les horaires du jour du Rahu Kaal, du Yamaganda, du Gulika, de l'Abhijit et du Brahma muhurta pour votre lieu, avec tithi et nakshatra du calendrier hindou.",
+    "h1": "Panchang et Rahu Kaal",
+    "lead": "Les périodes quotidiennes de la tradition hindoue, calculées sur votre appareil d'après le lever et le coucher du soleil du lieu choisi.",
+    "search": "panchang rahu kaal rahu kalam yamaganda gulika abhijit brahma muhurta tithi nakshatra calendrier hindou",
+    "hindu": "Dans le calendrier hindou",
+    "hinduNote": "Le tithi, le nakshatra et le mois correspondent au lever du soleil à New Delhi ; ailleurs, ils peuvent différer d'un jour.",
+    "hinduNone": "Pas de données du calendrier hindou pour cette date (2025–2032).",
+    "avoid": "Traditionnellement évité",
+    "good": "Traditionnellement jugé favorable",
+    "rahu": "Rahu Kaal",
+    "yama": "Yamaganda",
+    "gulika": "Gulika Kaal",
+    "abhijit": "Abhijit muhurta",
+    "brahma": "Brahma muhurta",
+    "wed": "Certaines traditions ne le jugent pas favorable le mercredi.",
+    "polar": "Le soleil ne se lève pas ou ne se couche pas ici ce jour-là ; les périodes ne peuvent pas être calculées.",
+    "week": "Rahu Kaal des sept prochains jours",
+    "defsHeading": "Comment est-ce calculé ?",
+    "defs": [
+      "La journée, du lever au coucher du soleil, est divisée en huit parts égales. Le Rahu Kaal, le Yamaganda et le Gulika correspondent chacun à l'une de ces parts selon le jour de la semaine ; par exemple, le Rahu Kaal est la deuxième part le lundi et la huitième le dimanche.",
+      "L'Abhijit muhurta est la huitième des quinze parts égales de la journée et tombe vers midi. Le Brahma muhurta est la deuxième des quinze parts de la nuit, en comptant à rebours depuis le lever du soleil (environ 96 à 48 minutes avant le lever).",
+      "Le lever et le coucher du soleil sont les instants où le bord supérieur du Soleil apparaît à l'horizon (réfraction comprise), comme pour les horaires de prière."
+    ],
+    "note": "Ces périodes relèvent de la tradition ; Saat Tarih n'en fait aucune interprétation astrologique. Les horaires sont arrondis à la minute.",
+    "faq": [
+      {
+        "q": "Qu'est-ce que le Rahu Kaal ?",
+        "a": "Dans la tradition hindoue, c'est une période quotidienne d'environ une heure et demie pendant laquelle on évite de commencer quelque chose de nouveau. La journée est divisée en huit parts égales, et le Rahu Kaal est l'une d'elles selon le jour de la semaine."
+      },
+      {
+        "q": "Le Rahu Kaal a-t-il lieu à la même heure partout ?",
+        "a": "Non. Il est calculé à partir du lever et du coucher du soleil locaux ; il change donc d'une ville à l'autre et selon les saisons. Cette page le calcule pour le lieu que vous choisissez."
       }
     ]
   }

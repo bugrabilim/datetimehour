@@ -176,6 +176,10 @@ a:hover { text-decoration-thickness: 2px; }
 .place-dialog .field { margin-bottom: 0.75rem; }
 .place-dialog .btn { margin-top: 0; }
 .place-dialog .btn-ghost { margin-top: 0.5rem; }
+.place-results { list-style: none; margin: 0.4rem 0 0; padding: 0; max-height: 15rem; overflow-y: auto; }
+.place-hit { display: block; width: 100%; text-align: start; padding: 0.5rem 0.6rem; border: 0; border-radius: 10px; background: none; color: var(--text); font: inherit; cursor: pointer; }
+.place-hit:hover, .place-hit:focus-visible { background: var(--accent-soft); }
+.place-hit .meta { display: block; font-size: 0.85rem; }
 @media (max-width: 74.99rem) {
   /* Tek satır: marka, tarih, menü düğmesi. Menü sayfayı itmez, başlığın altında açılan paneldir. */
   .site-header { position: sticky; top: 0; z-index: 50; }
@@ -1541,6 +1545,7 @@ html[dir="rtl"] .ph-nav svg { transform: scaleX(-1); }
 @media (min-width: 40rem) { .ph-dayrow { justify-content: flex-start; } }
 .ph-polar { margin: 0.4rem 0 0; }
 .ph-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin-top: 1rem; }
+.pc-line { font-weight: 600; margin: 0 0 0.6rem; }
 .ph-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem 1.25rem 0.6rem; }
 .ph-card h3 { margin: 0 0 0.35rem; font-size: 1.15rem; }
 .ph-card dl { margin: 0; }

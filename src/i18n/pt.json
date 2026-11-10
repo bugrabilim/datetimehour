@@ -45,6 +45,7 @@
     "settings": "Configurações",
     "theme": "Tema claro / escuro",
     "placeChange": "Alterar local",
+    "placeSearch": "Buscar uma cidade",
     "placeTitle": "Seu local",
     "placeNote": "Seu local fica no seu aparelho e é usado em todas as páginas para os horários de oração, as estações e a previsão do tempo; ele não é enviado ao servidor.",
     "placeClose": "Fechar",
@@ -3435,6 +3436,43 @@
       {
         "q": "Como é feita a previsão fotográfica do nascer e do pôr do sol?",
         "a": "A partir da previsão horária de nuvens do Open-Meteo para a hora mais próxima do nascer ou do pôr do sol. Chuva (0,5 mm por hora ou mais) ou nuvens baixas densas (75% ou mais) resultam em Ruim; poucas nuvens baixas (menos de 40%) com 20–80% de nuvens médias ou altas resultam em Boa; caso contrário, Regular enquanto as nuvens baixas ficam abaixo de 60%, e Ruim acima disso. Nuvens médias e altas captam as cores; nuvens baixas no horizonte escondem o Sol."
+      }
+    ]
+  },
+  "panchang": {
+    "title": "Panchang e horários do Rahu Kaal",
+    "description": "Os horários de hoje do Rahu Kaal, Yamaganda, Gulika, Abhijit e Brahma muhurta no lugar que você escolher, com tithi e nakshatra do calendário hindu.",
+    "h1": "Panchang e Rahu Kaal",
+    "lead": "Os períodos diários da tradição hindu, calculados no seu aparelho a partir do nascer e do pôr do sol do lugar escolhido.",
+    "search": "panchang rahu kaal rahu kalam yamaganda gulika abhijit brahma muhurta tithi nakshatra calendário hindu",
+    "hindu": "No calendário hindu",
+    "hinduNote": "O tithi, o nakshatra e o mês são do nascer do sol em Nova Délhi; em outros lugares podem diferir em um dia.",
+    "hinduNone": "Não há dados do calendário hindu para esta data (2025–2032).",
+    "avoid": "Tradicionalmente evitado",
+    "good": "Tradicionalmente considerado favorável",
+    "rahu": "Rahu Kaal",
+    "yama": "Yamaganda",
+    "gulika": "Gulika Kaal",
+    "abhijit": "Abhijit muhurta",
+    "brahma": "Brahma muhurta",
+    "wed": "Algumas tradições não o consideram favorável na quarta-feira.",
+    "polar": "Aqui o sol não nasce ou não se põe nesse dia, então os períodos não podem ser calculados.",
+    "week": "Rahu Kaal dos próximos sete dias",
+    "defsHeading": "Como é calculado?",
+    "defs": [
+      "O dia, do nascer ao pôr do sol, é dividido em oito partes iguais. Rahu Kaal, Yamaganda e Gulika são cada um uma dessas partes conforme o dia da semana; por exemplo, o Rahu Kaal é a segunda parte na segunda-feira e a oitava no domingo.",
+      "O Abhijit muhurta é a oitava de quinze partes iguais do dia e cai por volta do meio-dia. O Brahma muhurta é a segunda das quinze partes da noite contando para trás a partir do nascer do sol (cerca de 96 a 48 minutos antes).",
+      "O nascer e o pôr do sol são os momentos em que a borda superior do Sol aparece no horizonte (com refração), a mesma definição usada nos horários de oração."
+    ],
+    "note": "Esses períodos são tradição; o Saat Tarih não faz interpretações astrológicas. Os horários são arredondados para o minuto.",
+    "faq": [
+      {
+        "q": "O que é o Rahu Kaal?",
+        "a": "Na tradição hindu, é um período diário de cerca de uma hora e meia em que se evita começar algo novo. O dia é dividido em oito partes iguais, e o Rahu Kaal é uma delas conforme o dia da semana."
+      },
+      {
+        "q": "O Rahu Kaal acontece no mesmo horário em todo lugar?",
+        "a": "Não. Ele é calculado pelo nascer e pôr do sol locais, então muda de cidade para cidade e com as estações. Esta página o calcula para o lugar que você escolher."
       }
     ]
   }

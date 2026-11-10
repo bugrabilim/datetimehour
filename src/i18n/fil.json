@@ -45,6 +45,7 @@
     "settings": "Mga setting",
     "theme": "Maliwanag / madilim na tema",
     "placeChange": "Palitan ang lokasyon",
+    "placeSearch": "Maghanap ng lungsod",
     "placeTitle": "Iyong lokasyon",
     "placeNote": "Nananatili ang iyong lokasyon sa iyong device at ginagamit sa bawat pahina para sa oras ng pagdarasal, mga panahon at lagay ng panahon; hindi ito ipinapadala sa server.",
     "placeClose": "Isara",
@@ -3421,6 +3422,43 @@
       {
         "q": "Paano ginagawa ang photo forecast ng pagsikat at paglubog ng araw?",
         "a": "Mula sa oras-oras na forecast ng ulap ng Open-Meteo para sa oras na pinakamalapit sa pagsikat o paglubog ng araw. Ang ulan (0.5 mm bawat oras o higit pa) o makapal na mababang ulap (75% o higit pa) ay Hindi maganda; kaunting mababang ulap (wala pang 40%) na may 20–80% na ulap sa gitna o mataas ay Maganda; kung hindi, Katamtaman habang wala pang 60% ang mababang ulap, at Hindi maganda kapag lumampas. Humuhuli ng kulay ang mga ulap sa gitna at mataas, habang tinatakpan ng mababang ulap sa abot-tanaw ang Araw."
+      }
+    ]
+  },
+  "panchang": {
+    "title": "Panchang at oras ng Rahu Kaal",
+    "description": "Ang oras ng Rahu Kaal, Yamaganda, Gulika, Abhijit at Brahma muhurta ngayon sa lugar na pinili mo, kasama ang tithi at nakshatra mula sa kalendaryong Hindu.",
+    "h1": "Panchang at Rahu Kaal",
+    "lead": "Ang mga pang-araw-araw na yugto sa tradisyong Hindu, kinakalkula sa iyong device mula sa pagsikat at paglubog ng araw sa lugar na pinili mo.",
+    "search": "panchang rahu kaal rahu kalam yamaganda gulika abhijit brahma muhurta tithi nakshatra kalendaryong hindu",
+    "hindu": "Sa kalendaryong Hindu",
+    "hinduNote": "Ang tithi, nakshatra at buwan ay ayon sa pagsikat ng araw sa New Delhi; sa ibang lugar maaaring magkaiba nang isang araw.",
+    "hinduNone": "Walang datos ng kalendaryong Hindu para sa petsang ito (2025–2032).",
+    "avoid": "Iniiwasan ayon sa tradisyon",
+    "good": "Itinuturing na mabuti ayon sa tradisyon",
+    "rahu": "Rahu Kaal",
+    "yama": "Yamaganda",
+    "gulika": "Gulika Kaal",
+    "abhijit": "Abhijit muhurta",
+    "brahma": "Brahma muhurta",
+    "wed": "Sa ilang tradisyon, hindi ito itinuturing na mabuti tuwing Miyerkules.",
+    "polar": "Hindi sumisikat o lumulubog ang araw dito sa araw na ito, kaya hindi makalkula ang mga yugto.",
+    "week": "Rahu Kaal sa susunod na pitong araw",
+    "defsHeading": "Paano ito kinakalkula?",
+    "defs": [
+      "Hinahati sa walong pantay na bahagi ang araw mula pagsikat hanggang paglubog. Ang Rahu Kaal, Yamaganda at Gulika ay isa sa mga bahaging ito depende sa araw ng linggo; halimbawa, ang Rahu Kaal ay ikalawang bahagi tuwing Lunes at ikawalo tuwing Linggo.",
+      "Ang Abhijit muhurta ay ikawalo sa labinlimang pantay na bahagi ng araw at tumatapat sa bandang tanghali. Ang Brahma muhurta ay ikalawa sa labinlimang bahagi ng gabi kung bibilang pabalik mula sa pagsikat (mga 96 hanggang 48 minuto bago sumikat ang araw).",
+      "Ang pagsikat at paglubog ay ang sandaling lumitaw sa abot-tanaw ang itaas na gilid ng Araw (kasama ang repraksiyon), katulad ng depinisyon sa oras ng pagdarasal."
+    ],
+    "note": "Tradisyon ang mga yugtong ito; walang astrolohikong interpretasyon ang Saat Tarih. Ini-round sa minuto ang mga oras.",
+    "faq": [
+      {
+        "q": "Ano ang Rahu Kaal?",
+        "a": "Sa tradisyong Hindu, ito ay pang-araw-araw na yugto na mga isa't kalahating oras kung kailan iniiwasang magsimula ng bagong gawain. Hinahati sa walong pantay na bahagi ang araw, at isa rito ang Rahu Kaal depende sa araw ng linggo."
+      },
+      {
+        "q": "Pare-pareho ba ang oras ng Rahu Kaal saanman?",
+        "a": "Hindi. Kinakalkula ito mula sa lokal na pagsikat at paglubog ng araw, kaya nagbabago ito ayon sa lungsod at panahon. Kinakalkula ito ng pahinang ito para sa lugar na pinili mo."
       }
     ]
   }

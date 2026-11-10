@@ -45,6 +45,7 @@
     "settings": "Settings",
     "theme": "Light / dark theme",
     "placeChange": "Change location",
+    "placeSearch": "Search for a city",
     "placeTitle": "Your location",
     "placeNote": "Your location stays on your device and is used on every page for prayer times, seasons and weather; it is not sent to the server.",
     "placeClose": "Close",
@@ -3355,6 +3356,43 @@
       {
         "q": "How is the sunrise and sunset photo forecast made?",
         "a": "From Open-Meteo's hourly cloud forecast for the hour closest to sunrise or sunset. Rain (0.5 mm per hour or more) or heavy low cloud (75% or more) is Poor; little low cloud (under 40%) with 20–80% mid or high cloud is Good; otherwise it is Fair while low cloud is under 60%, and Poor above that. Mid and high clouds catch the colours, while low cloud on the horizon hides the Sun."
+      }
+    ]
+  },
+  "panchang": {
+    "title": "Panchang and Rahu Kaal times",
+    "description": "Today's Rahu Kaal, Yamaganda, Gulika, Abhijit and Brahma muhurta times for your place, with tithi and nakshatra from the Hindu calendar.",
+    "h1": "Panchang and Rahu Kaal",
+    "lead": "The daily periods of Hindu tradition, calculated on your device from the sunrise and sunset of the place you choose.",
+    "search": "panchang rahu kaal rahu kalam yamaganda gulika abhijit brahma muhurta tithi nakshatra hindu calendar",
+    "hindu": "In the Hindu calendar",
+    "hinduNote": "Tithi, nakshatra and month are for sunrise in New Delhi; elsewhere they can differ by a day.",
+    "hinduNone": "No Hindu calendar data for this date (2025–2032).",
+    "avoid": "Traditionally avoided",
+    "good": "Traditionally favourable",
+    "rahu": "Rahu Kaal",
+    "yama": "Yamaganda",
+    "gulika": "Gulika Kaal",
+    "abhijit": "Abhijit muhurta",
+    "brahma": "Brahma muhurta",
+    "wed": "Some traditions do not consider it favourable on Wednesday.",
+    "polar": "The Sun does not rise or set here on this day, so the periods cannot be calculated.",
+    "week": "Rahu Kaal for the next seven days",
+    "defsHeading": "How is it calculated?",
+    "defs": [
+      "The daytime from sunrise to sunset is divided into eight equal parts. Rahu Kaal, Yamaganda and Gulika are each one of these parts, depending on the weekday; for example, Rahu Kaal is the second part on Monday and the eighth on Sunday.",
+      "Abhijit muhurta is the eighth of fifteen equal parts of the daytime and falls around midday. Brahma muhurta is the second of the fifteen parts of the night counting back from sunrise (roughly 96 to 48 minutes before sunrise).",
+      "Sunrise and sunset are the moments the upper edge of the Sun appears at the horizon (refraction included), the same definition as for prayer times."
+    ],
+    "note": "These periods are tradition; Saat Tarih makes no astrological interpretation. Times are rounded to the minute.",
+    "faq": [
+      {
+        "q": "What is Rahu Kaal?",
+        "a": "In Hindu tradition it is a daily period of about an hour and a half in which people avoid starting something new. The daytime is divided into eight equal parts, and Rahu Kaal is one of them depending on the weekday."
+      },
+      {
+        "q": "Is Rahu Kaal at the same time everywhere?",
+        "a": "No. It is calculated from the local sunrise and sunset, so it changes from city to city and with the seasons. This page calculates it for the place you choose."
       }
     ]
   }

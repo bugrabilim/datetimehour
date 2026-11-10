@@ -46530,6 +46530,1910 @@
         }
       }
     },
+    "panchang.h1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panchang ve Rahu Kaal"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panchang and Rahu Kaal"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panchang und Rahu Kaal"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panchang və Rahu Kaal"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "البانشانغ وراهو كال"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panchang dan Rahu Kaal"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پنچانگ اور راہو کال"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پانچانگ و راهو کال"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panchang et Rahu Kaal"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Панчанг и Раху-кала"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "パンチャーングとラーフ・カーラ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "판창과 라후 칼라"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "潘查格与罗睺时段"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panchang at Rahu Kaal"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปัญจางคะและราหูกาล"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panchang y Rahu Kaal"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panchang e Rahu Kaal"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पंचांग और राहु काल"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "পঞ্জিকা ও রাহুকাল"
+          }
+        }
+      }
+    },
+    "panchang.hindu": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindu takviminde"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In the Hindu calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Hindu-Kalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindu təqvimində"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في التقويم الهندوسي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dalam kalender Hindu"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہندو کیلنڈر میں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در تقویم هندو"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dans le calendrier hindou"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "По индуистскому календарю"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ヒンドゥー暦では"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "힌두력으로"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "印度历"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa kalendaryong Hindu"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตามปฏิทินฮินดู"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En el calendario hindú"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No calendário hindu"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हिंदू पंचांग में"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "হিন্দু পঞ্জিকায়"
+          }
+        }
+      }
+    },
+    "panchang.hinduNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tithi, nakşatra ve ay Yeni Delhi'deki gün doğumuna göredir; başka yerlerde bir gün farklı olabilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tithi, nakshatra and month are for sunrise in New Delhi; elsewhere they can differ by a day."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tithi, Nakshatra und Monat gelten für den Sonnenaufgang in Neu-Delhi; anderswo können sie um einen Tag abweichen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tithi, nakşatra və ay Yeni Dehlidəki gün çıxmasına görədir; başqa yerlərdə bir gün fərqli ola bilər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التيثي والنكشاترا والشهر بحسب شروق الشمس في نيودلهي؛ وقد تختلف بيوم في أماكن أخرى."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tithi, nakshatra, dan bulan mengikuti matahari terbit di New Delhi; di tempat lain bisa berbeda satu hari."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تتھی، نکشتر اور مہینہ نئی دہلی کے طلوعِ آفتاب کے مطابق ہیں؛ دوسری جگہوں پر ایک دن کا فرق ہو سکتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تیتی، نکشترا و ماه بر پایهٔ طلوع خورشید در دهلی نو است؛ در جاهای دیگر ممکن است یک روز فرق کند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le tithi, le nakshatra et le mois correspondent au lever du soleil à New Delhi ; ailleurs, ils peuvent différer d'un jour."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Титхи, накшатра и месяц даны для восхода Солнца в Нью-Дели; в других местах они могут отличаться на день."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ティティ、ナクシャトラ、月はニューデリーの日の出時点のものです。ほかの場所では1日ずれることがあります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "티티, 낙샤트라, 달은 뉴델리 일출 기준입니다. 다른 곳에서는 하루 차이가 날 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "太阴日、星宿和月份以新德里日出为准；在其他地方可能相差一天。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang tithi, nakshatra at buwan ay ayon sa pagsikat ng araw sa New Delhi; sa ibang lugar maaaring magkaiba nang isang araw."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ดิถี นักษัตร และเดือน อิงเวลาพระอาทิตย์ขึ้นที่นิวเดลี ที่อื่นอาจต่างกันหนึ่งวัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El tithi, el nakshatra y el mes corresponden a la salida del sol en Nueva Delhi; en otros lugares pueden diferir en un día."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O tithi, o nakshatra e o mês são do nascer do sol em Nova Délhi; em outros lugares podem diferir em um dia."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तिथि, नक्षत्र और मास नई दिल्ली के सूर्योदय के अनुसार हैं; दूसरी जगहों पर एक दिन का अंतर हो सकता है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "তিথি, নক্ষত্র ও মাস নয়াদিল্লির সূর্যোদয় অনুযায়ী; অন্য জায়গায় এক দিনের পার্থক্য হতে পারে।"
+          }
+        }
+      }
+    },
+    "panchang.hinduNone": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu tarih için Hindu takvimi verisi yok (2025–2032)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Hindu calendar data for this date (2025–2032)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für dieses Datum gibt es keine Hindu-Kalenderdaten (2025–2032)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu tarix üçün Hindu təqvimi məlumatı yoxdur (2025–2032)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا توجد بيانات للتقويم الهندوسي لهذا التاريخ (2025–2032)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada data kalender Hindu untuk tanggal ini (2025–2032)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس تاریخ کے لیے ہندو کیلنڈر کا ڈیٹا موجود نہیں (2025–2032)۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای این تاریخ دادهٔ تقویم هندو وجود ندارد (2025–2032)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas de données du calendrier hindou pour cette date (2025–2032)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для этой даты нет данных индуистского календаря (2025–2032)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この日付のヒンドゥー暦データはありません（2025〜2032年）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 날짜의 힌두력 데이터가 없습니다(2025~2032년)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此日期没有印度历数据（2025—2032年）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Walang datos ng kalendaryong Hindu para sa petsang ito (2025–2032)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ไม่มีข้อมูลปฏิทินฮินดูสำหรับวันที่นี้ (2025–2032)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No hay datos del calendario hindú para esta fecha (2025–2032)."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não há dados do calendário hindu para esta data (2025–2032)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस तारीख के लिए हिंदू पंचांग का डेटा नहीं है (2025–2032)।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই তারিখের জন্য হিন্দু পঞ্জিকার তথ্য নেই (2025–2032)।"
+          }
+        }
+      }
+    },
+    "panchang.avoid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geleneksel olarak kaçınılan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traditionally avoided"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traditionell gemieden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ənənəvi olaraq çəkinilən"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُتجنَّب تقليديًا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Secara tradisi dihindari"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روایتی طور پر پرہیز کیا جاتا ہے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "به‌طور سنتی پرهیز می‌شود"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traditionnellement évité"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Традиционно избегают"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伝統的に避けられる時間"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "전통적으로 피하는 시간"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "传统上避开的时段"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iniiwasan ayon sa tradisyon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตามประเพณีมักหลีกเลี่ยง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tradicionalmente evitado"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tradicionalmente evitado"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "परंपरागत रूप से वर्जित"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ঐতিহ্যগতভাবে বর্জনীয়"
+          }
+        }
+      }
+    },
+    "panchang.good": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geleneksel olarak uygun sayılan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traditionally favourable"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traditionell als günstig angesehen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ənənəvi olaraq əlverişli sayılan"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُعدّ مناسبًا تقليديًا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Secara tradisi dianggap baik"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روایتی طور پر موزوں سمجھا جاتا ہے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "به‌طور سنتی مناسب شمرده می‌شود"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Traditionnellement jugé favorable"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Традиционно считается благоприятным"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伝統的に吉とされる時間"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "전통적으로 길하다고 여기는 시간"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "传统上视为吉利的时段"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Itinuturing na mabuti ayon sa tradisyon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตามประเพณีถือว่าเป็นมงคล"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tradicionalmente considerado favorable"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tradicionalmente considerado favorável"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "परंपरागत रूप से शुभ माने जाने वाले"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ঐতিহ্যগতভাবে শুভ বলে গণ্য"
+          }
+        }
+      }
+    },
+    "panchang.rahu": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "راهو كال"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "راہو کال"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "راهو کال"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Раху-кала"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ラーフ・カーラ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "라후 칼라"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "罗睺时段"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ราหูกาล"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "राहु काल"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "রাহুকাল"
+          }
+        }
+      }
+    },
+    "panchang.yama": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yamaganda"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yamaganda"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yamaganda"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yamaqanda"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ياماغاندا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yamaganda"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یم گنڈ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یاماگاندا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yamaganda"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ямаганда"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ヤマガンダ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "야마간다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阎魔时段"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yamaganda"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยมคัณฑะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yamaganda"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yamaganda"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "यमगण्ड"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "যমগণ্ড"
+          }
+        }
+      }
+    },
+    "panchang.gulika": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gulika Kaal"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gulika Kaal"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gulika Kaal"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qulika Kaal"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غوليكا كال"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gulika Kaal"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گلیک کال"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گولیکا کال"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gulika Kaal"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гулика-кала"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "グリカ・カーラ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "굴리카 칼라"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "古利卡时段"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gulika Kaal"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คุลิกะกาล"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gulika Kaal"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gulika Kaal"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गुलिक काल"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "গুলিক কাল"
+          }
+        }
+      }
+    },
+    "panchang.abhijit": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit muhurta"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit muhurta"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit Muhurta"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhicit muhurta"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أبهيجيت موهورتا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit muhurta"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابھیجت مہورت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابهیجیت موهورتا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit muhurta"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Абхиджит-мухурта"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アビジット・ムフールタ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아비지트 무후르타"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阿毗吉特吉时"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit muhurta"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อภิชิตมุหูรตะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit muhurta"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit muhurta"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अभिजित मुहूर्त"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "অভিজিৎ মুহূর্ত"
+          }
+        }
+      }
+    },
+    "panchang.brahma": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brahma muhurta"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brahma muhurta"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brahma Muhurta"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brahma muhurta"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "براهما موهورتا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brahma muhurta"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برہم مہورت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برهما موهورتا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brahma muhurta"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Брахма-мухурта"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ブラフマ・ムフールタ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "브라마 무후르타"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "梵天吉时"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brahma muhurta"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พรหมมุหูรตะ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brahma muhurta"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brahma muhurta"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ब्रह्म मुहूर्त"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ব্রহ্ম মুহূর্ত"
+          }
+        }
+      }
+    },
+    "panchang.wed": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bazı geleneklerde çarşamba günü uygun sayılmaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some traditions do not consider it favourable on Wednesday."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In manchen Traditionen gilt er am Mittwoch nicht als günstig."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bəzi ənənələrdə çərşənbə günü əlverişli sayılmır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في بعض التقاليد لا يُعدّ مناسبًا يوم الأربعاء."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sebagian tradisi tidak menganggapnya baik pada hari Rabu."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بعض روایات میں بدھ کے دن اسے موزوں نہیں سمجھا جاتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در برخی سنت‌ها روز چهارشنبه مناسب شمرده نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Certaines traditions ne le jugent pas favorable le mercredi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В некоторых традициях в среду не считается благоприятной."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伝統によっては水曜日には吉とされません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일부 전통에서는 수요일에 길하다고 보지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有些传统认为星期三不吉利。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa ilang tradisyon, hindi ito itinuturing na mabuti tuwing Miyerkules."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บางประเพณีไม่ถือว่าเป็นมงคลในวันพุธ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Algunas tradiciones no lo consideran favorable el miércoles."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Algumas tradições não o consideram favorável na quarta-feira."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कुछ परंपराओं में बुधवार को इसे शुभ नहीं माना जाता।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কোনো কোনো ঐতিহ্যে বুধবার একে শুভ বলে ধরা হয় না।"
+          }
+        }
+      }
+    },
+    "panchang.polar": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu yerde bu gün Güneş doğmuyor ya da batmıyor; dilimler hesaplanamıyor."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Sun does not rise or set here on this day, so the periods cannot be calculated."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Sonne geht an diesem Ort an diesem Tag nicht auf oder unter; die Abschnitte lassen sich nicht berechnen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu yerdə bu gün Günəş doğmur və ya batmır; dilimlər hesablana bilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا تشرق الشمس أو لا تغرب هنا في هذا اليوم، فلا يمكن حساب الفترات."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matahari tidak terbit atau tidak terbenam di sini pada hari ini, jadi periode tidak dapat dihitung."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس جگہ آج سورج طلوع یا غروب نہیں ہوتا، اس لیے اوقات کا حساب نہیں ہو سکتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در این مکان امروز خورشید طلوع یا غروب نمی‌کند، پس بازه‌ها حساب نمی‌شوند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le soleil ne se lève pas ou ne se couche pas ici ce jour-là ; les périodes ne peuvent pas être calculées."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В этом месте в этот день Солнце не восходит или не заходит, поэтому периоды рассчитать нельзя."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この場所ではこの日、太陽が昇らないか沈まないため、時間帯を計算できません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이곳에서는 이날 해가 뜨거나 지지 않아 시간대를 계산할 수 없습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此地这一天太阳不升起或不落下，无法计算时段。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi sumisikat o lumulubog ang araw dito sa araw na ito, kaya hindi makalkula ang mga yugto."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ที่นี่ในวันนี้พระอาทิตย์ไม่ขึ้นหรือไม่ตก จึงคำนวณช่วงเวลาไม่ได้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aquí el sol no sale o no se pone ese día, así que no se pueden calcular los periodos."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aqui o sol não nasce ou não se põe nesse dia, então os períodos não podem ser calculados."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस स्थान पर इस दिन सूर्य उदय या अस्त नहीं होता, इसलिए काल की गणना नहीं हो सकती।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই স্থানে এই দিনে সূর্য ওঠে না বা অস্ত যায় না, তাই কালগুলোর হিসাব করা যায় না।"
+          }
+        }
+      }
+    },
+    "panchang.week": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yedi günün Rahu Kaal saatleri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal for the next seven days"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal für die nächsten sieben Tage"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeddi günün Rahu Kaal saatları"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "راهو كال للأيام السبعة القادمة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal untuk tujuh hari ke depan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگلے سات دنوں کا راہو کال"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "راهو کال هفت روز آینده"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal des sept prochains jours"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Раху-кала на ближайшие семь дней"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今後7日間のラーフ・カーラ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "앞으로 7일의 라후 칼라"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未来七天的罗睺时段"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal sa susunod na pitong araw"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ราหูกาลในเจ็ดวันข้างหน้า"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal de los próximos siete días"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rahu Kaal dos próximos sete dias"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अगले सात दिनों का राहु काल"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আগামী সাত দিনের রাহুকাল"
+          }
+        }
+      }
+    },
+    "panchang.defsHeading": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nasıl hesaplanır?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How is it calculated?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wie wird gerechnet?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Necə hesablanır?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كيف يُحسب؟"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bagaimana cara menghitungnya?"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حساب کیسے ہوتا ہے؟"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "چگونه حساب می‌شود؟"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comment est-ce calculé ?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Как это рассчитывается?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "計算方法"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "어떻게 계산하나요?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如何计算？"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paano ito kinakalkula?"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คำนวณอย่างไร"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Cómo se calcula?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Como é calculado?"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गणना कैसे होती है?"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কীভাবে হিসাব হয়?"
+          }
+        }
+      }
+    },
+    "panchang.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu dilimler gelenektir; Saat Tarih astrolojik yorum yapmaz. Saatler dakikaya yuvarlanır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These periods are tradition; Saat Tarih makes no astrological interpretation. Times are rounded to the minute."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Zeitabschnitte sind Tradition; Saat Tarih deutet sie nicht astrologisch. Die Zeiten sind auf die Minute gerundet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu dilimlər ənənədir; Saat Tarih astroloji şərh vermir. Saatlar dəqiqəyə yuvarlaqlaşdırılır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذه الفترات تقليد؛ ولا يقدّم «Saat Tarih» تفسيرًا تنجيميًا. الأوقات مقرّبة إلى الدقيقة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Periode ini adalah tradisi; Saat Tarih tidak memberikan tafsiran astrologi. Waktu dibulatkan ke menit."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یہ اوقات روایت ہیں؛ Saat Tarih کوئی نجومی تعبیر نہیں کرتا۔ اوقات منٹ تک گول کیے جاتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "این بازه‌ها سنت‌اند؛ Saat Tarih تفسیر طالع‌بینی نمی‌کند. زمان‌ها به دقیقه گرد می‌شوند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ces périodes relèvent de la tradition ; Saat Tarih n'en fait aucune interprétation astrologique. Les horaires sont arrondis à la minute."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Эти периоды — традиция; Saat Tarih не даёт астрологических толкований. Время округляется до минуты."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "これらの時間帯は伝統によるもので、Saat Tarih は占星術的な解釈をしません。時刻は分単位に丸めています。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 시간대는 전통이며 Saat Tarih는 점성술적 해석을 하지 않습니다. 시간은 분 단위로 반올림합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这些时段属于传统；Saat Tarih 不作任何占星解读。时间四舍五入到分钟。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tradisyon ang mga yugtong ito; walang astrolohikong interpretasyon ang Saat Tarih. Ini-round sa minuto ang mga oras."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ช่วงเวลาเหล่านี้เป็นประเพณี Saat Tarih ไม่ตีความทางโหราศาสตร์ เวลาปัดเป็นนาที"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estos periodos son tradición; Saat Tarih no hace interpretaciones astrológicas. Los horarios se redondean al minuto."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esses períodos são tradição; o Saat Tarih não faz interpretações astrológicas. Os horários são arredondados para o minuto."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ये काल परंपरा हैं; Saat Tarih कोई ज्योतिषीय व्याख्या नहीं करता। समय मिनट तक पूर्णांकित है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই কালগুলো ঐতিহ্য; Saat Tarih কোনো জ্যোতিষ ব্যাখ্যা দেয় না। সময় মিনিট পর্যন্ত পূর্ণ করা হয়।"
+          }
+        }
+      }
+    },
     "weather.h1": {
       "extractionState": "manual",
       "localizations": {
@@ -108168,6 +110072,363 @@
           "stringUnit": {
             "state": "translated",
             "value": "মীন"
+          }
+        }
+      }
+    },
+    "panchang.defs.0": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün doğumundan gün batımına kadarki gündüz sekiz eşit parçaya bölünür. Rahu Kaal, Yamaganda ve Gulika haftanın gününe göre bu parçalardan biridir; örneğin Rahu Kaal pazartesi ikinci, pazar sekizinci parçadır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The daytime from sunrise to sunset is divided into eight equal parts. Rahu Kaal, Yamaganda and Gulika are each one of these parts, depending on the weekday; for example, Rahu Kaal is the second part on Monday and the eighth on Sunday."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Tag von Sonnenaufgang bis Sonnenuntergang wird in acht gleiche Teile geteilt. Rahu Kaal, Yamaganda und Gulika sind je nach Wochentag einer dieser Teile; Rahu Kaal ist zum Beispiel am Montag der zweite und am Sonntag der achte Teil."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün çıxmasından gün batmasına qədər olan gündüz səkkiz bərabər hissəyə bölünür. Rahu Kaal, Yamaqanda və Qulika həftənin gününə görə bu hissələrdən biridir; məsələn, Rahu Kaal bazar ertəsi ikinci, bazar günü səkkizinci hissədir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُقسَم النهار من الشروق إلى الغروب ثمانية أجزاء متساوية. راهو كال وياماغاندا وغوليكا كلٌّ منها جزء من هذه الأجزاء بحسب يوم الأسبوع؛ فمثلًا راهو كال هو الجزء الثاني يوم الاثنين والثامن يوم الأحد."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siang hari dari matahari terbit hingga terbenam dibagi menjadi delapan bagian sama panjang. Rahu Kaal, Yamaganda, dan Gulika masing-masing adalah salah satu bagian itu menurut hari dalam pekan; misalnya Rahu Kaal adalah bagian kedua pada hari Senin dan kedelapan pada hari Minggu."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طلوع سے غروبِ آفتاب تک کے دن کو آٹھ برابر حصوں میں بانٹا جاتا ہے۔ راہو کال، یم گنڈ اور گلیک ہفتے کے دن کے لحاظ سے ان میں سے ایک ایک حصہ ہیں؛ مثلاً راہو کال پیر کو دوسرا اور اتوار کو آٹھواں حصہ ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روز از طلوع تا غروب خورشید به هشت بخش برابر تقسیم می‌شود. راهو کال، یاماگاندا و گولیکا بسته به روز هفته هر کدام یکی از این بخش‌ها هستند؛ مثلاً راهو کال در دوشنبه بخش دوم و در یکشنبه بخش هشتم است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La journée, du lever au coucher du soleil, est divisée en huit parts égales. Le Rahu Kaal, le Yamaganda et le Gulika correspondent chacun à l'une de ces parts selon le jour de la semaine ; par exemple, le Rahu Kaal est la deuxième part le lundi et la huitième le dimanche."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Светлое время от восхода до захода Солнца делится на восемь равных частей. Раху-кала, Ямаганда и Гулика — каждая одна из этих частей в зависимости от дня недели; например, Раху-кала — вторая часть в понедельник и восьмая в воскресенье."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日の出から日の入りまでの昼間を8等分します。ラーフ・カーラ、ヤマガンダ、グリカは曜日によってそのうちの1つになります。たとえばラーフ・カーラは月曜日は2番目、日曜日は8番目です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일출부터 일몰까지의 낮을 여덟 등분합니다. 라후 칼라, 야마간다, 굴리카는 요일에 따라 그중 하나입니다. 예를 들어 라후 칼라는 월요일에는 두 번째, 일요일에는 여덟 번째 부분입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从日出到日落的白天平分为八段。罗睺时段、阎魔时段和古利卡时段按星期几各为其中一段；例如罗睺时段在星期一为第二段，在星期日为第八段。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinahati sa walong pantay na bahagi ang araw mula pagsikat hanggang paglubog. Ang Rahu Kaal, Yamaganda at Gulika ay isa sa mga bahaging ito depende sa araw ng linggo; halimbawa, ang Rahu Kaal ay ikalawang bahagi tuwing Lunes at ikawalo tuwing Linggo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ช่วงกลางวันตั้งแต่พระอาทิตย์ขึ้นถึงตกแบ่งเป็นแปดส่วนเท่ากัน ราหูกาล ยมคัณฑะ และคุลิกะ แต่ละช่วงคือส่วนหนึ่งตามวันในสัปดาห์ เช่น ราหูกาลเป็นส่วนที่สองในวันจันทร์และส่วนที่แปดในวันอาทิตย์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El día, de la salida a la puesta del sol, se divide en ocho partes iguales. Rahu Kaal, Yamaganda y Gulika son cada uno una de esas partes según el día de la semana; por ejemplo, Rahu Kaal es la segunda parte el lunes y la octava el domingo."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O dia, do nascer ao pôr do sol, é dividido em oito partes iguais. Rahu Kaal, Yamaganda e Gulika são cada um uma dessas partes conforme o dia da semana; por exemplo, o Rahu Kaal é a segunda parte na segunda-feira e a oitava no domingo."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सूर्योदय से सूर्यास्त तक के दिन को आठ बराबर भागों में बाँटा जाता है। राहु काल, यमगण्ड और गुलिक काल सप्ताह के दिन के अनुसार इनमें से एक-एक भाग हैं; जैसे राहु काल सोमवार को दूसरा और रविवार को आठवाँ भाग होता है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সূর্যোদয় থেকে সূর্যাস্ত পর্যন্ত দিনকে আটটি সমান ভাগে ভাগ করা হয়। রাহুকাল, যমগণ্ড ও গুলিক কাল সপ্তাহের দিন অনুযায়ী এর একেকটি ভাগ; যেমন রাহুকাল সোমবার দ্বিতীয় আর রবিবার অষ্টম ভাগ।"
+          }
+        }
+      }
+    },
+    "panchang.defs.1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit muhurta, gündüzün on beş eşit parçasından sekizincisidir ve öğleye denk gelir. Brahma muhurta, gün doğumundan önceki gecenin on beş parçasından doğuştan önceki ikincisidir (yaklaşık 96 ile 48 dakika önce)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit muhurta is the eighth of fifteen equal parts of the daytime and falls around midday. Brahma muhurta is the second of the fifteen parts of the night counting back from sunrise (roughly 96 to 48 minutes before sunrise)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit Muhurta ist der achte von fünfzehn gleichen Teilen des Tages und liegt um die Mittagszeit. Brahma Muhurta ist der zweite der fünfzehn Teile der Nacht, vom Sonnenaufgang aus zurückgezählt (etwa 96 bis 48 Minuten vor Sonnenaufgang)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhicit muhurta gündüzün on beş bərabər hissəsindən səkkizincisidir və günortaya düşür. Brahma muhurta gün çıxmasından əvvəlki gecənin on beş hissəsindən doğuşdan əvvəlki ikincisidir (təxminən 96 ilə 48 dəqiqə əvvəl)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أبهيجيت موهورتا هو الجزء الثامن من خمسة عشر جزءًا متساويًا من النهار ويقع قرب الظهر. وبراهما موهورتا هو الجزء الثاني من أجزاء الليل الخمسة عشر عدًّا إلى الوراء من الشروق (نحو 96 إلى 48 دقيقة قبل الشروق)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit muhurta adalah bagian kedelapan dari lima belas bagian sama panjang siang hari dan jatuh sekitar tengah hari. Brahma muhurta adalah bagian kedua dari lima belas bagian malam, dihitung mundur dari matahari terbit (sekitar 96 hingga 48 menit sebelum terbit)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابھیجت مہورت دن کے پندرہ برابر حصوں میں آٹھواں ہے اور دوپہر کے قریب آتا ہے۔ برہم مہورت رات کے پندرہ حصوں میں، طلوع سے پیچھے گنتے ہوئے، دوسرا حصہ ہے (طلوع سے تقریباً 96 سے 48 منٹ پہلے)۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابهیجیت موهورتا بخش هشتم از پانزده بخش برابر روز است و نزدیک ظهر می‌افتد. برهما موهورتا بخش دوم از پانزده بخش شب است که از طلوع به عقب شمرده می‌شود (حدود 96 تا 48 دقیقه پیش از طلوع)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'Abhijit muhurta est la huitième des quinze parts égales de la journée et tombe vers midi. Le Brahma muhurta est la deuxième des quinze parts de la nuit, en comptant à rebours depuis le lever du soleil (environ 96 à 48 minutes avant le lever)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Абхиджит-мухурта — восьмая из пятнадцати равных частей дня, она приходится на полдень. Брахма-мухурта — вторая из пятнадцати частей ночи, если считать назад от восхода (примерно за 96–48 минут до восхода)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アビジット・ムフールタは昼間を15等分した8番目で、正午ごろに当たります。ブラフマ・ムフールタは夜を15等分し、日の出からさかのぼって2番目の区分です（日の出のおよそ96〜48分前）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아비지트 무후르타는 낮을 열다섯 등분한 것 중 여덟 번째로, 정오 무렵입니다. 브라마 무후르타는 밤을 열다섯 등분해 일출에서 거꾸로 센 두 번째 부분입니다(일출 약 96~48분 전)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阿毗吉特吉时是白天十五等分中的第八段，在正午前后。梵天吉时是夜晚十五等分中从日出往前数的第二段（约在日出前96至48分钟）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Abhijit muhurta ay ikawalo sa labinlimang pantay na bahagi ng araw at tumatapat sa bandang tanghali. Ang Brahma muhurta ay ikalawa sa labinlimang bahagi ng gabi kung bibilang pabalik mula sa pagsikat (mga 96 hanggang 48 minuto bago sumikat ang araw)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อภิชิตมุหูรตะคือส่วนที่แปดจากสิบห้าส่วนเท่ากันของกลางวัน ตรงกับช่วงเที่ยง พรหมมุหูรตะคือส่วนที่สองจากสิบห้าส่วนของกลางคืนเมื่อนับย้อนจากพระอาทิตย์ขึ้น (ประมาณ 96 ถึง 48 นาทีก่อนพระอาทิตย์ขึ้น)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abhijit muhurta es la octava de quince partes iguales del día y cae hacia el mediodía. Brahma muhurta es la segunda de las quince partes de la noche contando hacia atrás desde la salida del sol (unos 96 a 48 minutos antes)."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Abhijit muhurta é a oitava de quinze partes iguais do dia e cai por volta do meio-dia. O Brahma muhurta é a segunda das quinze partes da noite contando para trás a partir do nascer do sol (cerca de 96 a 48 minutos antes)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अभिजित मुहूर्त दिन के पंद्रह बराबर भागों में आठवाँ है और दोपहर के आसपास आता है। ब्रह्म मुहूर्त रात के पंद्रह भागों में, सूर्योदय से पीछे गिनने पर दूसरा भाग है (सूर्योदय से लगभग 96 से 48 मिनट पहले)।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "অভিজিৎ মুহূর্ত দিনের পনেরোটি সমান ভাগের অষ্টম এবং দুপুরের কাছাকাছি পড়ে। ব্রহ্ম মুহূর্ত রাতের পনেরো ভাগের মধ্যে সূর্যোদয় থেকে পেছন দিকে গুনলে দ্বিতীয় ভাগ (সূর্যোদয়ের প্রায় 96 থেকে 48 মিনিট আগে)।"
+          }
+        }
+      }
+    },
+    "panchang.defs.2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün doğumu ve batımı, Güneş'in üst kenarının ufukta göründüğü andır (kırılma dahil); namaz vakitlerindeki tanımla aynıdır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunrise and sunset are the moments the upper edge of the Sun appears at the horizon (refraction included), the same definition as for prayer times."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenauf- und -untergang sind die Momente, in denen der obere Sonnenrand am Horizont erscheint (mit Refraktion), wie bei den Gebetszeiten."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün çıxması və batması Günəşin üst kənarının üfüqdə göründüyü andır (refraksiya daxil); namaz vaxtlarındakı təriflə eynidir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الشروق والغروب هما لحظة ظهور الحافة العليا للشمس عند الأفق (مع الانكسار)، وهو التعريف نفسه المستخدم في أوقات الصلاة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matahari terbit dan terbenam adalah saat tepi atas Matahari tampak di cakrawala (termasuk refraksi), sama dengan definisi untuk waktu salat."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طلوع اور غروب وہ لمحے ہیں جب سورج کا اوپری کنارہ افق پر نظر آتا ہے (انعطاف سمیت)؛ نماز کے اوقات والی تعریف ہی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طلوع و غروب لحظه‌ای است که لبهٔ بالایی خورشید در افق دیده می‌شود (با شکست نور)؛ همان تعریفی که در اوقات نماز به کار می‌رود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le lever et le coucher du soleil sont les instants où le bord supérieur du Soleil apparaît à l'horizon (réfraction comprise), comme pour les horaires de prière."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Восход и заход — моменты, когда верхний край Солнца появляется на горизонте (с учётом рефракции); то же определение, что и для времени намаза."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日の出と日の入りは、太陽の上端が地平線に見える瞬間（大気差を含む）で、礼拝時刻と同じ定義です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일출과 일몰은 태양의 위쪽 가장자리가 지평선에 보이는 순간(대기 굴절 포함)이며, 기도 시간과 같은 정의입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日出和日落是太阳上缘出现在地平线的时刻（含大气折射），与礼拜时间的定义相同。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang pagsikat at paglubog ay ang sandaling lumitaw sa abot-tanaw ang itaas na gilid ng Araw (kasama ang repraksiyon), katulad ng depinisyon sa oras ng pagdarasal."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พระอาทิตย์ขึ้นและตกคือขณะที่ขอบบนของดวงอาทิตย์ปรากฏที่ขอบฟ้า (รวมการหักเหของแสง) ใช้นิยามเดียวกับเวลาละหมาด"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La salida y la puesta del sol son los momentos en que el borde superior del Sol aparece en el horizonte (con refracción), la misma definición que para los horarios de oración."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O nascer e o pôr do sol são os momentos em que a borda superior do Sol aparece no horizonte (com refração), a mesma definição usada nos horários de oração."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सूर्योदय और सूर्यास्त वे क्षण हैं जब सूर्य का ऊपरी किनारा क्षितिज पर दिखता है (अपवर्तन सहित); यही परिभाषा नमाज़ के समय में भी है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সূর্যোদয় ও সূর্যাস্ত হলো সেই মুহূর্ত যখন সূর্যের ওপরের প্রান্ত দিগন্তে দেখা যায় (প্রতিসরণসহ); নামাজের সময়ের সংজ্ঞাও একই।"
           }
         }
       }
@@ -246694,115 +248955,234 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "İl ya da ilçe ara"
+            "value": "Şehir, il ya da ilçe ara"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Search province or district"
+            "value": "Search city, province or district"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Provinz oder Landkreis suchen"
+            "value": "Stadt, Provinz oder Landkreis suchen"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vilayət və ya rayon axtar"
+            "value": "Şəhər, vilayət və ya rayon axtar"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "ابحث عن ولاية أو منطقة"
+            "value": "ابحث عن مدينة أو ولاية أو منطقة"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cari provinsi atau distrik"
+            "value": "Cari kota, provinsi, atau distrik"
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "صوبہ یا ضلع تلاش کریں"
+            "value": "شہر، صوبہ یا ضلع تلاش کریں"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "جست‌وجوی استان یا شهرستان"
+            "value": "جست‌وجوی شهر، استان یا شهرستان"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rechercher une province ou un district"
+            "value": "Rechercher une ville, une province ou un district"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Поиск провинции или района"
+            "value": "Поиск города, провинции или района"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "県または地区を検索"
+            "value": "都市・県・地区を検索"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "주 또는 구·군 검색"
+            "value": "도시, 주 또는 구·군 검색"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "搜索省份或区县"
+            "value": "搜索城市、省份或区县"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Maghanap ng lalawigan o distrito"
+            "value": "Maghanap ng lungsod, lalawigan o distrito"
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ค้นหาจังหวัดหรืออำเภอ"
+            "value": "ค้นหาเมือง จังหวัด หรืออำเภอ"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Buscar provincia o distrito"
+            "value": "Buscar ciudad, provincia o distrito"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Buscar província ou distrito"
+            "value": "Buscar cidade, província ou distrito"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "प्रांत या ज़िला खोजें"
+            "value": "शहर, प्रांत या ज़िला खोजें"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "প্রদেশ বা জেলা খুঁজুন"
+            "value": "শহর, প্রদেশ বা জেলা খুঁজুন"
+          }
+        }
+      }
+    },
+    "place.world": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "World"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العالم"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dunia"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دنیا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جهان"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monde"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мир"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "世界"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "세계"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "世界"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mundo"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทั่วโลก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mundo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mundo"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "दुनिया"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "বিশ্ব"
           }
         }
       }
@@ -427921,6 +430301,3219 @@
           "stringUnit": {
             "state": "translated",
             "value": "তারা"
+          }
+        }
+      }
+    },
+    "greet.titleN": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kutlama kartları"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Celebration cards"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glückwunschkarten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təbrik kartları"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بطاقات التهنئة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartu ucapan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مبارک باد کارڈ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کارت‌های تبریک"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cartes de vœux"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поздравительные открытки"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お祝いカード"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "축하 카드"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "祝福卡片"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga kard ng pagbati"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การ์ดอวยพร"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarjetas de felicitación"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cartões de felicitação"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शुभकामना कार्ड"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "শুভেচ্ছা কার্ড"
+          }
+        }
+      }
+    },
+    "greet.birthday": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyi ki doğdunuz"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Happy birthday"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alles Gute zum Geburtstag"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad gününüz mübarək"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عيد ميلاد سعيد"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selamat ulang tahun"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سالگرہ مبارک"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تولدت مبارک"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Joyeux anniversaire"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "С днём рождения"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お誕生日おめでとうございます"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "생일 축하합니다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "生日快乐"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maligayang kaarawan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สุขสันต์วันเกิด"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feliz cumpleaños"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feliz aniversário"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "जन्मदिन की शुभकामनाएँ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "শুভ জন্মদিন"
+          }
+        }
+      }
+    },
+    "greet.newyear": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mutlu yıllar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Happy New Year"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frohes neues Jahr"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni iliniz mübarək"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سنة جديدة سعيدة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selamat Tahun Baru"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نیا سال مبارک"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سال نو مبارک"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bonne année"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "С Новым годом"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明けましておめでとうございます"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새해 복 많이 받으세요"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新年快乐"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manigong Bagong Taon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สวัสดีปีใหม่"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feliz año nuevo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feliz Ano-Novo"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नव वर्ष की शुभकामनाएँ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "শুভ নববর্ষ"
+          }
+        }
+      }
+    },
+    "greet.anniversary": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yıl dönümünüz kutlu olsun"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Happy anniversary"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alles Gute zum Jahrestag"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İldönümünüz mübarək"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ذكرى سعيدة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selamat hari jadi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شادی کی سالگرہ مبارک"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سالگرد مبارک"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Joyeux anniversaire de mariage"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "С годовщиной"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "記念日おめでとうございます"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "기념일 축하합니다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "纪念日快乐"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maligayang anibersaryo"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สุขสันต์วันครบรอบ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feliz aniversario"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feliz aniversário de casamento"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सालगिरह की शुभकामनाएँ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "শুভ বিবাহবার্ষিকী"
+          }
+        }
+      }
+    },
+    "greet.graduation": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mezuniyetiniz kutlu olsun"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Congratulations, graduate"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Herzlichen Glückwunsch zum Abschluss"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məzuniyyətiniz mübarək"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مبارك التخرج"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selamat atas kelulusan Anda"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گریجویشن مبارک"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فارغ‌التحصیلی مبارک"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Félicitations pour votre diplôme"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "С окончанием учёбы"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ご卒業おめでとうございます"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "졸업을 축하합니다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "毕业快乐"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Binabati kita sa iyong pagtatapos"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยินดีกับการสำเร็จการศึกษา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Felicidades por su graduación"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parabéns pela formatura"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "स्नातक होने पर बधाई"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "স্নাতক হওয়ায় অভিনন্দন"
+          }
+        }
+      }
+    },
+    "greet.newjob": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni işinizde başarılar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Good luck in your new job"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Viel Erfolg im neuen Job"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni işinizdə uğurlar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بالتوفيق في عملك الجديد"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sukses di pekerjaan baru"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نئی ملازمت مبارک"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در کار جدید موفق باشید"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bonne chance dans votre nouveau poste"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удачи на новой работе"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新しいお仕事でのご活躍を"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새 직장에서의 성공을 빕니다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "祝新工作顺利"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Good luck sa bagong trabaho"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้โชคดีกับงานใหม่"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mucho éxito en su nuevo trabajo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boa sorte no novo emprego"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नई नौकरी के लिए शुभकामनाएँ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "নতুন চাকরির জন্য শুভকামনা"
+          }
+        }
+      }
+    },
+    "greet.m.birthday.1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni yaşınız size güzellikler getirsin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May your new year of life bring you lovely things."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Möge Ihr neues Lebensjahr Ihnen viel Schönes bringen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni yaşınız sizə gözəlliklər gətirsin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عسى أن تحمل لك سنتك الجديدة كل جميل."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga usia baru Anda membawa banyak kebaikan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کا نیا سال آپ کے لیے خوشیاں لائے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سال تازهٔ زندگی‌تان پر از زیبایی باشد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que votre nouvelle année de vie vous apporte de belles choses."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пусть новый год жизни принесёт вам много хорошего."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新しい一年が素敵なものになりますように。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새로운 한 해가 좋은 일로 가득하길 바랍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愿新的一岁为您带来美好。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nawa'y maghatid ng magagandang bagay ang bago mong taon."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้ปีใหม่ของชีวิตนำแต่สิ่งดีๆ มาให้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que su nuevo año de vida le traiga cosas bonitas."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que seu novo ano de vida traga coisas lindas."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका नया साल ढेर सारी ख़ुशियाँ लाए।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার নতুন বছর সুন্দর সব কিছু নিয়ে আসুক।"
+          }
+        }
+      }
+    },
+    "greet.m.birthday.2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nice mutlu, sağlıklı yaşlara."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Here's to many more happy, healthy years."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf viele weitere glückliche, gesunde Jahre."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neçə-neçə xoşbəxt, sağlam illərə."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إلى سنوات كثيرة سعيدة وصحية."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga panjang umur, sehat, dan bahagia."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بہت سے خوش اور صحت مند سال۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "به امید سال‌های شاد و سالم بسیار."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "À de nombreuses années heureuses et en bonne santé."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Долгих счастливых и здоровых лет."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "これからも幸せで健康な毎日を。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "앞으로도 행복하고 건강한 날들 되세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "祝您年年幸福健康。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa marami pang masaya at malusog na taon."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้มีความสุขและสุขภาพดีไปอีกนานแสนนาน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por muchos años más, felices y con salud."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Muitos anos de vida, com saúde e felicidade."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आप बरसों जिएँ, स्वस्थ और ख़ुश रहें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আরও অনেক সুখী ও সুস্থ বছর কাটুক।"
+          }
+        }
+      }
+    },
+    "greet.m.birthday.3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün sizin gününüz; tadını çıkarın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today is your day; enjoy every moment."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute ist Ihr Tag – genießen Sie ihn."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu gün sizin gününüzdür; ləzzətini çıxarın."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اليوم يومك؛ استمتع بكل لحظة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari ini hari Anda; nikmati setiap momennya."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آج آپ کا دن ہے؛ ہر لمحے کا لطف اٹھائیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امروز روز شماست؛ از هر لحظه‌اش لذت ببرید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "C'est votre jour : profitez-en."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сегодня ваш день — наслаждайтесь им."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日はあなたの日。存分に楽しんでください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘은 당신의 날, 마음껏 즐기세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天是您的日子，尽情享受吧。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Araw mo ngayon; sulitin mo ito."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันนี้เป็นวันของคุณ ขอให้สนุกทุกช่วงเวลา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hoy es su día; disfrútelo."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hoje é o seu dia; aproveite cada momento."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आज आपका दिन है; हर पल का आनंद लें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আজ আপনার দিন; প্রতিটি মুহূর্ত উপভোগ করুন।"
+          }
+        }
+      }
+    },
+    "greet.m.newyear.1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni yıl size umut ve neşe getirsin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May the new year bring you hope and joy."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Möge das neue Jahr Ihnen Hoffnung und Freude bringen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni il sizə ümid və sevinc gətirsin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عسى أن يحمل لك العام الجديد الأمل والفرح."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga tahun baru membawa harapan dan kebahagiaan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نیا سال آپ کے لیے امید اور خوشی لائے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سال نو برایتان امید و شادی بیاورد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que la nouvelle année vous apporte espoir et joie."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пусть новый год принесёт надежду и радость."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新しい年が希望と喜びに満ちたものになりますように。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새해에 희망과 기쁨이 가득하길 바랍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愿新的一年带给您希望和欢乐。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nawa'y maghatid ng pag-asa at saya ang bagong taon."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้ปีใหม่นำความหวังและความสุขมาให้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que el nuevo año le traiga esperanza y alegría."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que o novo ano traga esperança e alegria."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नया साल आपके लिए उम्मीद और ख़ुशी लाए।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "নতুন বছর আশা আর আনন্দ নিয়ে আসুক।"
+          }
+        }
+      }
+    },
+    "greet.m.newyear.2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni yılda bütün dilekleriniz gerçekleşsin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May all your wishes come true this year."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mögen sich in diesem Jahr all Ihre Wünsche erfüllen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni ildə bütün arzularınız çin olsun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عسى أن تتحقق أمنياتك كلها هذا العام."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga semua keinginan Anda terwujud tahun ini."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس سال آپ کی ساری خواہشیں پوری ہوں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امسال همهٔ آرزوهایتان برآورده شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que tous vos vœux se réalisent cette année."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пусть в этом году сбудутся все ваши желания."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今年、すべての願いがかないますように。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "올해 모든 소망이 이루어지길 바랍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愿今年所有心愿都能实现。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nawa'y matupad ang lahat ng hiling mo ngayong taon."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้ทุกความปรารถนาเป็นจริงในปีนี้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que este año se cumplan todos sus deseos."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que todos os seus desejos se realizem este ano."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस साल आपकी सारी इच्छाएँ पूरी हों।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এ বছর আপনার সব ইচ্ছা পূরণ হোক।"
+          }
+        }
+      }
+    },
+    "greet.m.newyear.3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yepyeni bir yıl, yepyeni başlangıçlar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A brand-new year, brand-new beginnings."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein ganz neues Jahr, ganz neue Anfänge."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamamilə yeni il, tamamilə yeni başlanğıclar."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عام جديد وبدايات جديدة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahun yang baru, awal yang baru."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نیا سال، نئی شروعات۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سالی تازه، آغازهایی تازه."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une toute nouvelle année, de tout nouveaux départs."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Совсем новый год — совсем новые начинания."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新しい年、新しい始まり。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새로운 해, 새로운 시작."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全新的一年，全新的开始。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bagong taon, bagong simula."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปีใหม่ เริ่มต้นใหม่"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un año nuevo, nuevos comienzos."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um ano novinho, novos começos."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नया साल, नई शुरुआत।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "নতুন বছর, নতুন শুরু।"
+          }
+        }
+      }
+    },
+    "greet.m.anniversary.1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birlikte nice mutlu yıllara."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Here's to many more happy years together."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf viele weitere glückliche gemeinsame Jahre."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birlikdə neçə-neçə xoşbəxt illərə."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إلى سنوات كثيرة سعيدة معًا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga bahagia bersama bertahun-tahun lagi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساتھ ساتھ بہت سے خوش سال۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "به امید سال‌های شاد بسیار در کنار هم."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "À de nombreuses années heureuses ensemble."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ещё много счастливых лет вместе."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "これからも二人で幸せな年月を。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "함께하는 행복한 날들이 계속되길 바랍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愿你们携手走过更多幸福岁月。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa marami pang masasayang taon na magkasama."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้มีความสุขด้วยกันไปอีกหลายปี"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por muchos años más de felicidad juntos."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A muitos anos mais de felicidade juntos."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "साथ-साथ ढेरों ख़ुशहाल साल।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "একসাথে আরও অনেক সুখের বছর।"
+          }
+        }
+      }
+    },
+    "greet.m.anniversary.2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaştığınız her gün daha da güzelleşsin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May every day you share grow even sweeter."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Möge jeder gemeinsame Tag noch schöner werden."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaşdığınız hər gün daha da gözəlləşsin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عسى أن يزداد كل يوم تتشاركانه جمالًا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga setiap hari yang dilalui bersama makin indah."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہر وہ دن جو آپ ساتھ گزاریں اور خوبصورت ہو۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هر روزی که با هم می‌گذرانید زیباتر شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que chaque jour partagé soit encore plus beau."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пусть каждый общий день будет ещё прекраснее."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "共に過ごす毎日がもっと素敵になりますように。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "함께하는 하루하루가 더 아름다워지길."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愿共度的每一天都更加美好。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nawa'y lalong gumanda ang bawat araw na magkasama kayo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้ทุกวันที่อยู่ด้วยกันงดงามยิ่งขึ้น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que cada día compartido sea aún más bonito."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que cada dia compartilhado fique ainda mais bonito."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "साथ बिताया हर दिन और भी सुंदर हो।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "একসাথে কাটানো প্রতিটি দিন আরও সুন্দর হোক।"
+          }
+        }
+      }
+    },
+    "greet.m.anniversary.3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sevginiz hep böyle taze kalsın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May your love always stay this fresh."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Möge Ihre Liebe immer so frisch bleiben."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sevginiz həmişə belə təzə qalsın."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عسى أن يبقى حبكما متجددًا دائمًا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga cinta Anda selalu segar seperti ini."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کی محبت ہمیشہ یوں ہی تازہ رہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عشقتان همیشه همین‌قدر تازه بماند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que votre amour reste toujours aussi frais."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пусть ваша любовь всегда остаётся такой же свежей."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "いつまでも変わらない愛を。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "두 분의 사랑이 늘 지금처럼 새롭기를."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愿你们的爱永远如初。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nawa'y manatiling sariwa ang inyong pagmamahalan."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้ความรักสดใสเช่นนี้ตลอดไป"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que su amor siga siempre así de fresco."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que o amor de vocês continue sempre assim."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका प्यार हमेशा यूँ ही ताज़ा रहे।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনাদের ভালোবাসা সবসময় এমন সতেজ থাকুক।"
+          }
+        }
+      }
+    },
+    "greet.m.graduation.1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emeğinizin karşılığını aldınız; tebrikler."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your hard work has paid off; congratulations."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihre Mühe hat sich gelohnt – herzlichen Glückwunsch."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Əməyinizin bəhrəsini gördünüz; təbriklər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أثمر تعبك؛ مبارك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kerja keras Anda membuahkan hasil; selamat."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کی محنت رنگ لائی؛ مبارک ہو۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زحماتتان به ثمر نشست؛ تبریک."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vos efforts ont payé : félicitations."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваш труд принёс плоды — поздравляю."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "努力が実りましたね。おめでとうございます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "노력의 결실을 맺었네요. 축하합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "努力终有回报，恭喜！"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nagbunga ang iyong pagsisikap; binabati kita."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ความพยายามของคุณสัมฤทธิ์ผลแล้ว ขอแสดงความยินดี"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Su esfuerzo dio frutos; felicidades."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seu esforço valeu a pena; parabéns."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपकी मेहनत रंग लाई; बधाई हो।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার পরিশ্রম সফল হয়েছে; অভিনন্দন।"
+          }
+        }
+      }
+    },
+    "greet.m.graduation.2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu başarı yeni kapılar açsın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May this achievement open new doors."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Möge dieser Erfolg neue Türen öffnen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu uğur yeni qapılar açsın."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عسى أن يفتح لك هذا النجاح أبوابًا جديدة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga keberhasilan ini membuka pintu-pintu baru."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یہ کامیابی نئے دروازے کھولے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "این موفقیت درهای تازه‌ای بگشاید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que cette réussite vous ouvre de nouvelles portes."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пусть этот успех откроет новые двери."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この成果が新しい扉を開きますように。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 성과가 새로운 문을 열어 주길 바랍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愿这份成就为您打开新的大门。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nawa'y magbukas ng bagong pinto ang tagumpay na ito."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้ความสำเร็จนี้เปิดประตูใหม่ๆ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que este logro le abra nuevas puertas."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que essa conquista abra novas portas."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "यह सफलता नए दरवाज़े खोले।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই সাফল্য নতুন দরজা খুলে দিক।"
+          }
+        }
+      }
+    },
+    "greet.m.graduation.3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurur duyulacak bir gün; kutlarım."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A day to be proud of; well done."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein Tag, auf den Sie stolz sein können."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fəxr ediləcək bir gün; təbrik edirəm."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يوم يدعو إلى الفخر؛ أحسنت."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari yang membanggakan; selamat."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فخر کا دن؛ شاباش۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزی برای افتخار؛ آفرین."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un jour dont vous pouvez être fier : bravo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "День, которым можно гордиться, — браво."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "誇らしい一日です。おめでとう。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "자랑스러운 날입니다. 축하해요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "值得骄傲的一天，祝贺您。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isang araw na dapat ipagmalaki; mahusay."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันแห่งความภาคภูมิใจ ยอดเยี่ยมมาก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un día para sentirse orgulloso; enhorabuena."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um dia para se orgulhar; parabéns."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गर्व का दिन; शाबाश।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "গর্বের একটি দিন; সাবাশ।"
+          }
+        }
+      }
+    },
+    "greet.m.newjob.1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni işiniz size mutluluk ve başarı getirsin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May your new job bring you happiness and success."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Möge Ihnen die neue Stelle Freude und Erfolg bringen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni işiniz sizə xoşbəxtlik və uğur gətirsin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عسى أن يجلب لك عملك الجديد السعادة والنجاح."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga pekerjaan baru membawa kebahagiaan dan kesuksesan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نئی ملازمت آپ کے لیے خوشی اور کامیابی لائے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کار جدید برایتان شادی و موفقیت بیاورد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que ce nouveau poste vous apporte bonheur et réussite."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пусть новая работа принесёт радость и успех."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新しいお仕事が喜びと成功をもたらしますように。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새 직장에서 행복과 성공을 누리길 바랍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愿新工作为您带来快乐和成功。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nawa'y maghatid ng saya at tagumpay ang bago mong trabaho."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้งานใหม่นำความสุขและความสำเร็จมาให้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que su nuevo trabajo le traiga felicidad y éxito."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que o novo emprego traga felicidade e sucesso."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नई नौकरी आपके लिए ख़ुशी और सफलता लाए।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "নতুন চাকরি আপনার জন্য সুখ আর সাফল্য বয়ে আনুক।"
+          }
+        }
+      }
+    },
+    "greet.m.newjob.2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni yolculuğunuzda bol şans."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Best of luck on your new journey."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Viel Glück auf Ihrem neuen Weg."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni yolunuzda bol şans."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كل التوفيق في طريقك الجديد."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga sukses di perjalanan baru Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نئے سفر میں بہت سی نیک تمنائیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در مسیر تازه‌تان موفق باشید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bonne chance pour cette nouvelle aventure."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удачи на новом пути."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新しい道でのご幸運を。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새로운 길에 행운이 함께하길."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "祝您在新的道路上好运。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Good luck sa bago mong paglalakbay."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้โชคดีกับเส้นทางใหม่"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mucha suerte en este nuevo camino."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boa sorte nesse novo caminho."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नए सफ़र के लिए शुभकामनाएँ।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "নতুন পথচলায় শুভকামনা।"
+          }
+        }
+      }
+    },
+    "greet.m.newjob.3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hak ettiğiniz bir başlangıç; tebrikler."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A well-deserved new start; congratulations."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein verdienter Neuanfang – herzlichen Glückwunsch."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Layiq olduğunuz bir başlanğıc; təbriklər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بداية جديدة تستحقها؛ مبارك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Awal baru yang pantas Anda dapatkan; selamat."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ایک نئی شروعات جس کے آپ حق دار تھے؛ مبارک ہو۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آغازی که شایسته‌اش بودید؛ تبریک."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un nouveau départ bien mérité : félicitations."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Заслуженное новое начало — поздравляю."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ふさわしい新たな門出です。おめでとうございます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "충분히 자격 있는 새 출발, 축하합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当之无愧的新起点，恭喜！"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isang bagong simula na nararapat sa iyo; binabati kita."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การเริ่มต้นใหม่ที่คุณสมควรได้รับ ขอแสดงความยินดี"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un nuevo comienzo bien merecido; felicidades."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um recomeço merecido; parabéns."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "एक नई शुरुआत जिसके आप हक़दार थे; बधाई हो।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "প্রাপ্য একটি নতুন শুরু; অভিনন্দন।"
+          }
+        }
+      }
+    },
+    "greet.wish.1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sağlık ve mutluluk hep yanınızda olsun."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wishing you health and happiness always."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gesundheit und Glück mögen Sie stets begleiten."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sağlıq və xoşbəxtlik həmişə yanınızda olsun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دمت بصحة وسعادة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga selalu sehat dan bahagia."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صحت اور خوشی ہمیشہ آپ کے ساتھ رہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سلامتی و شادی همیشه همراهتان باشد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Santé et bonheur pour toujours."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Здоровья и счастья всегда."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "いつも健康で幸せでありますように。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "늘 건강하고 행복하세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "祝您永远健康快乐。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nawa'y lagi kang malusog at masaya."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้มีสุขภาพดีและมีความสุขเสมอ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salud y felicidad siempre."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saúde e felicidade sempre."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आप हमेशा स्वस्थ और ख़ुश रहें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সবসময় সুস্থ ও সুখী থাকুন।"
+          }
+        }
+      }
+    },
+    "greet.wish.2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüzünüz hep gülsün."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep smiling."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bleiben Sie fröhlich."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üzünüz həmişə gülsün."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دامت الابتسامة على وجهك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tetaplah tersenyum."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مسکراتے رہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "همیشه لبخند بزنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gardez le sourire."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Улыбайтесь чаще."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "笑顔の毎日を。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "늘 웃는 날 되세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愿您笑口常开。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laging ngumiti."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยิ้มเข้าไว้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siga sonriendo."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue sorrindo."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मुस्कुराते रहिए।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "হাসিখুশি থাকুন।"
+          }
+        }
+      }
+    },
+    "greet.wish.3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sevdiklerinizle nice güzel günler geçirin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enjoy many lovely days with the people you love."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Viele schöne Tage mit Ihren Liebsten."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sevdiklərinizlə neçə-neçə gözəl günlər keçirin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أيام جميلة كثيرة مع من تحب."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga banyak hari indah bersama orang-orang tercinta."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپنے پیاروں کے ساتھ بہت سے خوبصورت دن۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روزهای خوش بسیار با عزیزانتان."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De beaux jours avec ceux que vous aimez."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Много прекрасных дней с близкими."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大切な人と素敵な日々を。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사랑하는 사람들과 좋은 날 많이 보내세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "与所爱的人共度美好时光。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maraming magagandang araw kasama ang mga mahal mo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้มีวันดีๆ กับคนที่คุณรัก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Muchos días bonitos con sus seres queridos."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Muitos dias lindos com quem você ama."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अपनों के साथ ढेरों सुंदर दिन।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "প্রিয়জনদের সাথে অনেক সুন্দর দিন কাটুক।"
+          }
+        }
+      }
+    },
+    "greet.wish.4": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hayalleriniz bir bir gerçekleşsin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May your dreams come true one by one."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mögen Ihre Träume einer nach dem anderen wahr werden."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arzularınız bir-bir çin olsun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عسى أن تتحقق أحلامك واحدًا تلو الآخر."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga mimpi-mimpi Anda terwujud satu per satu."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کے خواب ایک ایک کر کے پورے ہوں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آرزوهایتان یکی‌یکی برآورده شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que vos rêves se réalisent un à un."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пусть мечты сбываются одна за другой."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夢が一つずつかないますように。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "꿈이 하나씩 이루어지길 바랍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愿您的梦想一个个实现。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nawa'y matupad ang mga pangarap mo isa-isa."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้ความฝันเป็นจริงทีละข้อ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que sus sueños se cumplan uno a uno."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que seus sonhos se realizem um a um."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपके सपने एक-एक कर पूरे हों।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার স্বপ্নগুলো একে একে পূরণ হোক।"
+          }
+        }
+      }
+    },
+    "greet.wish.5": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her gününüz aydınlık olsun."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May every day be bright for you."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Möge jeder Ihrer Tage hell sein."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hər gününüz işıqlı olsun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عسى أن تكون أيامك كلها مشرقة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga setiap hari Anda cerah."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کا ہر دن روشن ہو۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هر روزتان روشن باشد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que chacun de vos jours soit lumineux."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пусть каждый ваш день будет светлым."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "毎日が明るい日でありますように。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "매일이 밝은 날이길 바랍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "愿您每天都阳光明媚。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nawa'y maliwanag ang bawat araw mo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้ทุกวันสดใส"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que cada uno de sus días sea luminoso."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que todos os seus dias sejam luminosos."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका हर दिन रोशन हो।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার প্রতিটি দিন উজ্জ্বল হোক।"
+          }
+        }
+      }
+    },
+    "greet.wish.6": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başarılarınızın devamını dilerim."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wishing you continued success."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weiterhin viel Erfolg."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uğurlarınızın davamını arzulayıram."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أتمنى لك مزيدًا من النجاح."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semoga sukses selalu."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مزید کامیابیوں کی دعا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "موفقیت‌های بیشتری برایتان آرزو می‌کنم."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je vous souhaite encore beaucoup de succès."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Желаю дальнейших успехов."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "これからのご活躍をお祈りしています。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "앞으로의 성공을 응원합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "祝您事业更上一层楼。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hangad ko ang patuloy mong tagumpay."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอให้ประสบความสำเร็จยิ่งขึ้นไป"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le deseo mucho más éxito."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Desejo muito mais sucesso."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आगे भी सफलता मिलती रहे।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আরও সাফল্য কামনা করি।"
           }
         }
       }

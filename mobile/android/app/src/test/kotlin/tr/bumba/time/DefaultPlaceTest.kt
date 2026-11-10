@@ -35,4 +35,20 @@ class DefaultPlaceTest {
         assertEquals("America/Indiana/Knox", knox!!.zone.id)
         assertTrue(knox.lon < -30)
     }
+
+    /** Konum penceresinde dünya yeri araması (Hindistan araştırması #4): 31 şehir + places.json, Türkiye hariç */
+    @Test fun worldPlaceSearch() {
+        val hits = WorldPlace.search("Mumbai")
+        assertTrue(hits.isNotEmpty())
+        assertEquals("Asia/Kolkata", hits.first().zone.id)
+        // Türkiye'deki yerler aramada yok (il ve ilçe listesi)
+        assertTrue(WorldPlace.search("Istanbul").none { it.zone.id == "Europe/Istanbul" })
+        // İngilizce adla ve yerel adla arama, kimlikten geri okuma
+        val lucknow = WorldPlace.search("lucknow").first()
+        val back = AppPlace.byId(lucknow.id)
+        assertEquals(lucknow.id, back.id)
+        assertEquals("Asia/Kolkata", back.zone.id)
+        assertEquals(lucknow.lat, back.lat, 0.01)
+        assertTrue(WorldPlace.search("a").isEmpty())
+    }
 }

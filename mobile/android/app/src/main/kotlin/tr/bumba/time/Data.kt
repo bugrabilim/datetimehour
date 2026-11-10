@@ -54,6 +54,7 @@ data class City(
     private val countries: Map<String, String>,
 ) {
     val displayName: String get() = names[Strings.lang] ?: names["en"] ?: key
+    val englishName: String get() = names["en"] ?: key
     val displayCountry: String get() = countries[Strings.lang] ?: countries["en"] ?: ""
     val zone: ZoneId get() = ZoneId.of(tz)
 

@@ -714,6 +714,28 @@ for (const l of LANGS) {
     const wc = fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8");
     check(/hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high,precipitation/.test(wc) && /forecast_days=7/.test(wc) && /function clouds\(lat, lon\) \{\s*if \(!allowed\(\)\)/.test(wc), "fotoğraf ışığı: bulut isteği (katmanlar, 7 gün, izin denetimi)");
   }
+  // Panchang ve Rahu Kaal (10 Kasım 2026): her dilde; hinduKaal Drik Panchang'la (Delhi 8.11.2026, research doc §2.2)
+  {
+    const pm = { exports: {} };
+    new Function("module", "window", fs.readFileSync(path.join(ROOT, "src/js/prayer-calc.js"), "utf8"))(pm, undefined);
+    const k = pm.exports.hinduKaal(2026, 11, 8, 28.61, 77.21, 5.5);
+    const hm = (h) => { const m = Math.round(h * 60); return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); };
+    check(k && hm(k.sunrise) === "06:38" && hm(k.sunset) === "17:31" && hm(k.rahu[0]) === "16:10" && hm(k.rahu[1]) === "17:31", `panchang: Delhi 8.11.2026 gün doğumu/Rahu Kaal Drik'le aynı değil (${k && [hm(k.sunrise), hm(k.sunset), hm(k.rahu[0]), hm(k.rahu[1])]})`);
+    check(pm.exports.hinduKaal(2026, 12, 21, 78.2, 15.6, 1) === null, "panchang: kutup gecesinde dilim olmamalı");
+    const PC = { tr: "panchang", en: "en/panchang", hi: "hi/panchang", bn: "bn/panchang", ar: "ar/panchang", ja: "ja/panchang" };
+    for (const [l, f] of Object.entries(PC)) {
+      const p = path.join(DIST, f, "index.html"), h = fs.existsSync(p) ? fs.readFileSync(p, "utf8") : "";
+      check(/data-panchang\b/.test(h) && /panchang\.js/.test(h) && /prayer-calc\.js/.test(h) && /data-needs-place/.test(h) && /"WebApplication"/.test(h) && /panchang-days\.json/.test(h), `panchang sayfası eksik: /${f}/`);
+      check(["sunrise", "sunset", "rahu", "yamaganda", "gulika", "abhijit", "brahma"].every((x) => h.includes(`data-pc="${x}"`)) && (h.match(/<tbody data-pc-week>([\s\S]*?)<\/tbody>/) || ["", ""])[1].split("<tr>").length - 1 === 7, `panchang: alanlar ya da 7 günlük tablo eksik (/${f}/)`);
+      check(/data-pc-hindu>[^<]*20\d\d/.test(h), `panchang: Hindu takvimi satırı yok (/${f}/)`);
+    }
+    check(/href="\/panchang\/"/.test(fs.readFileSync(path.join(DIST, "araclar/index.html"), "utf8")) && /id="panchang"/.test(fs.readFileSync(path.join(DIST, "sss/index.html"), "utf8")), "panchang: araçlar kartı ya da SSS grubu yok");
+    // Konum penceresinde dünya araması: alan, 31 şehir verisi
+    const home = fs.readFileSync(path.join(DIST, "en/index.html"), "utf8");
+    check(/data-place-q/.test(home) && /data-place-results/.test(home) && /place-cities-en\.json/.test(home), "konum penceresi: dünya araması eksik");
+    const pc = JSON.parse(fs.readFileSync(path.join(DIST, "assets/place-cities-hi.json"), "utf8"));
+    check(pc.length === 31 && pc.some((c) => c[1] === "Mumbai" && c[4] === "Asia/Kolkata"), "konum penceresi: 31 şehir verisi eksik");
+  }
   // Fotoğraf ışığı sayfası (9 Kasım 2026): her dilde; saatler, Ay, 7 günlük tablo, izinli bulut tahmini ve atıf
   {
     const PH = { tr: "altin-saat", en: "en/golden-hour", ar: "ar/golden-hour", de: "de/golden-hour", ja: "ja/golden-hour", hi: "hi/golden-hour", bn: "bn/golden-hour" };

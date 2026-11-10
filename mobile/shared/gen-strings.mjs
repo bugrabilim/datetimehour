@@ -59,6 +59,10 @@ const SITE_PATHS = [
   "nature.eclipseSafety", "nature.eclipseSource", "nature.eclipsePrayer",
   // Rashdul Qiblat (10 Kasım 2026): kıble ekranı ve bildirim
   "qibla.rashdul", "qibla.rashdulNote", "qibla.rashdulNight",
+  // Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9): uygulamadaki panchang ekranı
+  "panchang.h1", "panchang.hindu", "panchang.hinduNote", "panchang.hinduNone", "panchang.avoid", "panchang.good", "panchang.rahu",
+  "panchang.yama", "panchang.gulika", "panchang.abhijit", "panchang.brahma", "panchang.wed", "panchang.polar", "panchang.week",
+  "panchang.defsHeading", "panchang.note",
   "weather.h1", "weather.now", "weather.feelsLike", "weather.humidity", "weather.wind", "weather.precipitation", "weather.uv",
   "weather.hourlyHeading", "weather.dailyHeading", "weather.loading", "weather.error", "weather.retry", "weather.pressure",
   "weather.codes.*", "weather.attribution", "weather.sunrise", "weather.sunset",
@@ -146,6 +150,7 @@ for (const spec of SITE_PATHS) {
    (Rusçada calendar.months tarih içindeki tamlama hâlidir: "31 октября"; başlık "Октябрь"). */
 for (let i = 0; i < 12; i++) KEYS[`calendar.months.${i}`] = (t) => (t.calendar.monthsTitle || t.calendar.months)[i];
 for (let i = 0; i < 12; i++) KEYS[`zodiac.signs.${i}`] = (t) => t.zodiac.signs[i];
+for (let i = 0; i < 3; i++) KEYS[`panchang.defs.${i}`] = (t) => t.panchang.defs[i];
 
 /* Emeklilik hesaplama yalnız Türkçe (src/data/retire-tr.json; 4/a sigortalıları, Türkiye mevzuatı). Uygulama bu aracı yalnız
    Türkçe arayüzde gösterir; anahtarlar her dilde aynı Türkçe metinle yazılır ki kaynak dosyaları eşit kalsın. */

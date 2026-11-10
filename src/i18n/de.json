@@ -45,6 +45,7 @@
     "settings": "Einstellungen",
     "theme": "Helles / dunkles Design",
     "placeChange": "Standort ändern",
+    "placeSearch": "Stadt suchen",
     "placeTitle": "Ihr Standort",
     "placeNote": "Ihr Standort bleibt auf Ihrem Gerät und wird auf allen Seiten für Gebetszeiten, Jahreszeiten und Wetter verwendet; er wird nicht an den Server gesendet.",
     "placeClose": "Schließen",
@@ -3382,6 +3383,43 @@
       {
         "q": "Wie entsteht die Fotoprognose für Sonnenauf- und -untergang?",
         "a": "Aus der stündlichen Wolkenvorhersage von Open-Meteo für die Stunde, die Sonnenauf- oder -untergang am nächsten liegt. Regen (ab 0,5 mm pro Stunde) oder dichte tiefe Wolken (ab 75 %) gelten als Schlecht; wenig tiefe Wolken (unter 40 %) mit 20–80 % mittelhohen oder hohen Wolken als Gut; sonst Mittel, solange tiefe Wolken unter 60 % liegen, darüber Schlecht. Mittelhohe und hohe Wolken fangen die Farben ein, tiefe Wolken am Horizont verdecken die Sonne."
+      }
+    ]
+  },
+  "panchang": {
+    "title": "Panchang und Rahu-Kaal-Zeiten",
+    "description": "Die heutigen Zeiten von Rahu Kaal, Yamaganda, Gulika, Abhijit und Brahma Muhurta für Ihren Ort, mit Tithi und Nakshatra aus dem Hindu-Kalender.",
+    "h1": "Panchang und Rahu Kaal",
+    "lead": "Die täglichen Zeitabschnitte der Hindu-Tradition, auf Ihrem Gerät aus Sonnenauf- und -untergang des gewählten Ortes berechnet.",
+    "search": "panchang rahu kaal rahu kalam yamaganda gulika abhijit brahma muhurta tithi nakshatra hindu kalender",
+    "hindu": "Im Hindu-Kalender",
+    "hinduNote": "Tithi, Nakshatra und Monat gelten für den Sonnenaufgang in Neu-Delhi; anderswo können sie um einen Tag abweichen.",
+    "hinduNone": "Für dieses Datum gibt es keine Hindu-Kalenderdaten (2025–2032).",
+    "avoid": "Traditionell gemieden",
+    "good": "Traditionell als günstig angesehen",
+    "rahu": "Rahu Kaal",
+    "yama": "Yamaganda",
+    "gulika": "Gulika Kaal",
+    "abhijit": "Abhijit Muhurta",
+    "brahma": "Brahma Muhurta",
+    "wed": "In manchen Traditionen gilt er am Mittwoch nicht als günstig.",
+    "polar": "Die Sonne geht an diesem Ort an diesem Tag nicht auf oder unter; die Abschnitte lassen sich nicht berechnen.",
+    "week": "Rahu Kaal für die nächsten sieben Tage",
+    "defsHeading": "Wie wird gerechnet?",
+    "defs": [
+      "Der Tag von Sonnenaufgang bis Sonnenuntergang wird in acht gleiche Teile geteilt. Rahu Kaal, Yamaganda und Gulika sind je nach Wochentag einer dieser Teile; Rahu Kaal ist zum Beispiel am Montag der zweite und am Sonntag der achte Teil.",
+      "Abhijit Muhurta ist der achte von fünfzehn gleichen Teilen des Tages und liegt um die Mittagszeit. Brahma Muhurta ist der zweite der fünfzehn Teile der Nacht, vom Sonnenaufgang aus zurückgezählt (etwa 96 bis 48 Minuten vor Sonnenaufgang).",
+      "Sonnenauf- und -untergang sind die Momente, in denen der obere Sonnenrand am Horizont erscheint (mit Refraktion), wie bei den Gebetszeiten."
+    ],
+    "note": "Diese Zeitabschnitte sind Tradition; Saat Tarih deutet sie nicht astrologisch. Die Zeiten sind auf die Minute gerundet.",
+    "faq": [
+      {
+        "q": "Was ist Rahu Kaal?",
+        "a": "In der Hindu-Tradition ist es ein täglicher Abschnitt von etwa anderthalb Stunden, in dem man nichts Neues beginnt. Der Tag wird in acht gleiche Teile geteilt; Rahu Kaal ist je nach Wochentag einer davon."
+      },
+      {
+        "q": "Ist Rahu Kaal überall zur selben Zeit?",
+        "a": "Nein. Er wird aus dem örtlichen Sonnenauf- und -untergang berechnet und ändert sich daher von Stadt zu Stadt und mit den Jahreszeiten. Diese Seite rechnet für den gewählten Ort."
       }
     ]
   }

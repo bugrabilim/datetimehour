@@ -9,7 +9,7 @@ import { bridges } from "./lib/bridges.mjs";
 import { hijriTable, hijriTableId } from "./lib/hijri.mjs";
 import { loadWorldHolidays, publicDays } from "./lib/world-holidays.mjs";
 import { skyEvents } from "./lib/sky-events.mjs";
-import { CALENDARS, calendarData, loadCalTexts, validateCalendars, siteYearSlice } from "./lib/calendars/index.mjs";
+import { CALENDARS, calendarData, loadCalTexts, validateCalendars, siteYearSlice, dailyMap as dailyMapOf } from "./lib/calendars/index.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, "src");
@@ -120,6 +120,7 @@ for (const [name, from] of [
   ["weather-fx.js", "js/weather-fx.js"],
   ["weather.js", "js/weather.js"],
   ["photo.js", "js/photo.js"],
+  ["panchang.js", "js/panchang.js"],
   ["globe.js", "js/globe.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
@@ -165,6 +166,13 @@ for (const l of LANGS) {
   const j = JSON.stringify(PLACES_SRC.names[l] || PLACES_SRC.names.en);
   write(`assets/places-${l}.json`, j);
   PLACE_NAMES_URL[l] = `/assets/places-${l}.json?v=${hash(j)}`;
+}
+/* Konum penceresindeki dünya araması için 31 şehir (places.json'da yoklar): [ad, İngilizce ad, enlem, boylam, saat dilimi] */
+const PLACE_CITIES_URL = {};
+for (const l of LANGS) {
+  const j = JSON.stringify(CITIES.map((c) => [(c[l] || c.en).name, c.en.name, c.lat, c.lon, c.tz]));
+  write(`assets/place-cities-${l}.json`, j);
+  PLACE_CITIES_URL[l] = `/assets/place-cities-${l}.json?v=${hash(j)}`;
 }
 for (const f of ["favicon.svg", "favicon.ico", "icon-192.png", "icon-512.png", "apple-touch-icon.png", "og.png"]) {
   fs.copyFileSync(path.join(SRC, "assets", f), path.join(OUT, f));
@@ -365,7 +373,7 @@ function faqHtml(items, headingId) {
 /* Menüde "Namaz vakitleri" bu dillerde ikinci, diğerlerinde sonda (9 Kasım 2026, sahibin kararı; Müslüman olmayanlar raporu A6).
    Uygulamalardaki ilk kurulum soru sırasıyla aynı dil grubu. Sayfalar ve adresler aynı kalır. */
 const PRAYER_FIRST_LANGS = new Set(["tr", "ar", "id", "ur", "fa", "bn"]);
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "photo", "otd", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "photo", "panchang", "otd", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -463,6 +471,7 @@ function placeDialog(lang) {
   const opts = PROVINCES.map((pr) => `<option value="${pr.slug}" data-lat="${pr.lat}" data-lon="${pr.lon}"${pr.slug === "istanbul" ? " selected" : ""}>${esc(provName(lang, pr))}</option>`).join("");
   return `<dialog class="info-dialog place-dialog" id="place-dialog" aria-labelledby="place-title">
   <h2 id="place-title">${esc(u.placeTitle)}</h2>
+  <div class="field"><label for="place-q">${esc(u.placeSearch)}</label><input id="place-q" type="search" autocomplete="off" spellcheck="false" data-place-q><ul class="place-results" data-place-results hidden></ul></div>
   <div class="field"><label for="place-city">${esc(s.chooseLabel)}</label><select id="place-city" data-place-city>${opts}</select></div>
   <button type="button" class="btn" data-place-geo>${esc(s.useLocation)}</button>
   <p class="meta" data-place-status role="status">&nbsp;</p>
@@ -501,7 +510,8 @@ function layout(p) {
     ...(p.clientExtra && p.clientExtra.eclipses ? { eclipses: p.clientExtra.eclipses } : {}),
     ...(p.clientExtra && p.clientExtra.moonTex ? { moonTex: p.clientExtra.moonTex } : {}),
     ...(p.clientExtra && p.clientExtra.skyEvents ? { skyEvents: p.clientExtra.skyEvents } : {}),
-    placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang] },
+    ...(p.clientExtra && p.clientExtra.pc ? { pc: p.clientExtra.pc } : {}),
+    placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang], namesEn: PLACE_NAMES_URL.en, cities: PLACE_CITIES_URL[lang] },
     ...(UMAMI_ID ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
     eventsUrl: `/assets/events-${lang}.json?v=${eventsVersion[lang]}`,
@@ -1299,6 +1309,7 @@ const TOOL_ART = {
   sleepCalc: svgArt('<path d="M58 14a20 20 0 1 0 18 28 16 16 0 0 1-18-28z" class="af"/><path d="M14 54h68M20 54V40h26v14M24 40v-4h8"/>'),
   classroom: svgArt('<rect x="12" y="10" width="72" height="40" rx="4" class="af"/><path d="M22 22h20M22 30h28M22 38h14"/><circle cx="66" cy="28" r="7"/><path d="M28 62a8 8 0 0 1 16 0M52 62a8 8 0 0 1 16 0"/><circle cx="36" cy="52" r="0.5"/><circle cx="60" cy="52" r="0.5"/>'),
   examTimer: svgArt('<rect x="10" y="10" width="76" height="46" rx="5" class="af"/><path d="M22 24h24M22 32h18M22 40h22"/><circle cx="66" cy="33" r="12"/><path d="M66 27v6l4 3"/>'),
+  panchang: svgArt('<circle cx="48" cy="34" r="22" class="af"/><path d="M48 12v44M26 34h44M32.4 18.4l31.2 31.2M63.6 18.4 32.4 49.6"/><circle cx="48" cy="34" r="8"/><path d="M14 62h68"/>'),
   zodiac: svgArt('<circle cx="48" cy="32" r="23" class="af"/><path d="M48 17l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z"/>'),
 };
 
@@ -1311,8 +1322,8 @@ function buildToolsHub(lang) {
     { name: h.h1, path: pagePath },
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
-  const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(k === "retire" ? RETIRE.cardName : h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "interval", "examTimer", "classroom", "chess", "metronome", "talking", "sleepCalc", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "photo", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
+  const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(k === "retire" ? RETIRE.cardName : k === "panchang" ? t.panchang.h1 : h.cards[k].name)}</span></a></li>`;
+  const cards = [...TOOL_KEYS, "interval", "examTimer", "classroom", "chess", "metronome", "talking", "sleepCalc", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "photo", "panchang", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1440,6 +1451,8 @@ extendRoutes({ tr: { poll: "/toplanti-oylamasi/" }, en: { poll: "/en/meeting-pol
 extendRoutes({ tr: { sleepCalc: "/uyku-hesaplama/", examTimer: "/sinav-zamanlayicisi/", classroom: "/sinif-araclari/" }, en: { sleepCalc: "/en/sleep-calculator/", examTimer: "/en/exam-timer/", classroom: "/en/classroom-tools/" } });
 // Fotoğraf ışığı (9 Kasım 2026, sahibin onayı): altın saat, mavi saat, gün doğumu/batımı yönü, Ay, bulut tahmini
 extendRoutes({ tr: { photo: "/altin-saat/" }, en: { photo: "/en/golden-hour/" } });
+// Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9)
+extendRoutes({ tr: { panchang: "/panchang/" }, en: { panchang: "/en/panchang/" } });
 ROUTES.tr.retire = "/emeklilik-hesaplama/"; // yalnız Türkçe (SGK kuralları)
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
@@ -3002,6 +3015,76 @@ function buildPhoto(lang) {
   return simplePage(lang, "photo", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "photo", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "weather-core.js", "photo.js"], clientExtra: { t: { pl: placeClient(t.prayer), ph } }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].photo, s.description)] });
 }
 
+/* Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9; uygulamalarla aynı tanımlar): seçili yerde gün doğumu ve
+   batımı, geleneksel olarak kaçınılan (Rahu Kaal, Yamaganda, Gulika) ve uygun sayılan (Abhijit, Brahma muhurta) dilimler,
+   yedi günün Rahu Kaal tablosu (prayer-calc.js hinduKaal). Hindu takviminin günlük satırı Yeni Delhi gün doğumuna göre
+   (lib/calendars/hindu.mjs günlük kodları, assets/panchang-days.json; adlar src/i18n-cal/hindu.json). JS'siz okur için
+   sayfa öntanımlı yerin (Delhi, UTC+5:30) derleme gününün değerlerini taşır; panchang.js seçili yerle yeniden çizer. */
+const PANCHANG_DAYS_JSON = JSON.stringify(CAL_DATA.cals.hindu.daily || {});
+write("assets/panchang-days.json", PANCHANG_DAYS_JSON);
+const PANCHANG_DAYS_URL = `/assets/panchang-days.json?v=${hash(PANCHANG_DAYS_JSON)}`;
+const PC_KEYS = ["rahu", "yamaganda", "gulika", "abhijit", "brahma"];
+function buildPanchang(lang) {
+  const t = I[lang], s = t.panchang, ph = t.photo, cal = t.calendar;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].panchang }];
+  const di = PLACES_SRC.names.en.indexOf("Delhi"), dRow = PLACES_SRC.p[di] || [28.67, 77.23];
+  const lat = dRow[0], lon = dRow[1], tz = 5.5;
+  const [y0, m0, d0] = cfg.updated.split("-").map(Number);
+  const day = (i) => { const x = new Date(Date.UTC(y0, m0 - 1, d0 + i)); return [x.getUTCFullYear(), x.getUTCMonth() + 1, x.getUTCDate()]; };
+  const wd = (y, m, d) => (new Date(Date.UTC(y, m - 1, d)).getUTCDay() + 6) % 7;
+  const hm = (h) => { if (!Number.isFinite(h)) return "—"; const mm = Math.round(h * 60); return `${String(Math.floor((((mm / 60) % 24) + 24) % 24)).padStart(2, "0")}:${String(((mm % 60) + 60) % 60).padStart(2, "0")}`; };
+  const rng = (r) => (r ? `${hm(r[0])}–${hm(r[1])}` : "—");
+  const k0 = PRAYER_CALC.hinduKaal(y0, m0, d0, lat, lon, tz);
+  const names = (CAL_TEXTS.hindu[lang] || CAL_TEXTS.hindu.en).daily || {};
+  const code = (dailyMapOf(CAL_DATA.cals.hindu.daily))[cfg.updated] || "";
+  const hinduLine = code ? (code.match(/[a-z]+[0-9]+/gi) || []).map((k) => names[k] || k).join(" · ") : s.hinduNone;
+  const place = (PLACES_SRC.names[lang] || [])[di] || "Delhi";
+  const row = (label, key, val, extra = "") => `<div class="ph-row"><dt>${esc(label)}</dt><dd data-pc="${key}" dir="ltr">${val}</dd>${extra}</div>`;
+  const hero = `<section class="ph pc" data-panchang aria-labelledby="pc-place">
+      <h2 id="pc-place" class="qb-place" data-pc-place>${esc(place)}</h2>
+      <div class="ph-nav"><button type="button" class="icon-btn" data-pc-step="-1" aria-label="${esc(ph.prev)}" title="${esc(ph.prev)}">${ICON_PREV}</button><label for="pc-d" class="sr-only">${esc(ph.dateLabel)}</label><input id="pc-d" type="date" data-pc-date min="1900-01-01" max="2100-12-31" value="${cfg.updated}"><button type="button" class="icon-btn" data-pc-step="1" aria-label="${esc(ph.next)}" title="${esc(ph.next)}">${ICON_NEXT}</button></div>
+      <div class="ph-dayrow"><p class="ph-day" data-pc-day>${esc(tpl(cal.fullFmt, { weekday: cal.weekdays[wd(y0, m0, d0)], day: d0, month: cal.months[m0 - 1], year: y0 }))}</p><button type="button" class="toggle" data-pc-today hidden>${esc(ph.today)}</button></div>
+      <p class="meta ph-polar" data-pc-polar role="status"${k0 ? " hidden" : ""}>${esc(s.polar)}</p>
+      <div class="ph-cards pc-cards">
+        <article class="ph-card pc-hindu" aria-labelledby="pc-hindu-h">
+          <h3 id="pc-hindu-h">${esc(s.hindu)}</h3>
+          <p class="pc-line" data-pc-hindu>${esc(hinduLine)}</p>
+          <dl>${row(ph.sunrise, "sunrise", hm(k0 && k0.sunrise))}${row(ph.sunset, "sunset", hm(k0 && k0.sunset))}</dl>
+          <p class="meta">${esc(s.hinduNote)}</p>
+        </article>
+        <article class="ph-card pc-avoid" aria-labelledby="pc-avoid-h">
+          <h3 id="pc-avoid-h">${esc(s.avoid)}</h3>
+          <dl>${row(s.rahu, "rahu", rng(k0 && k0.rahu))}${row(s.yama, "yamaganda", rng(k0 && k0.yamaganda))}${row(s.gulika, "gulika", rng(k0 && k0.gulika))}</dl>
+        </article>
+        <article class="ph-card pc-good" aria-labelledby="pc-good-h">
+          <h3 id="pc-good-h">${esc(s.good)}</h3>
+          <dl>${row(s.abhijit, "abhijit", rng(k0 && k0.abhijit))}${row(s.brahma, "brahma", rng(k0 && k0.brahma))}</dl>
+          <p class="meta" data-pc-wed${new Date(Date.UTC(y0, m0 - 1, d0)).getUTCDay() === 3 ? "" : " hidden"}>${esc(s.abhijit)}: ${esc(s.wed)}</p>
+        </article>
+      </div>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+  const weekRows = Array.from({ length: 7 }, (_, i) => {
+    const [y, m, d] = day(i), k = PRAYER_CALC.hinduKaal(y, m, d, lat, lon, tz);
+    return `<tr><th scope="row">${esc(`${cal.weekdaysShort[wd(y, m, d)]} ${tpl(cal.shortFmt, { day: d, month: cal.months[m - 1] })}`)}</th><td dir="ltr">${rng(k && k.rahu)}</td></tr>`;
+  }).join("");
+  const sections = `<section class="section" aria-labelledby="pc-wk-h">
+  <div class="wrap">
+    <h2 id="pc-wk-h">${esc(s.week)}</h2>
+    <div class="table-wrap"><table class="events-table pc-week"><caption class="sr-only">${esc(s.week)}</caption><thead><tr><th scope="col">${esc(ph.colDay)}</th><th scope="col">${esc(s.rahu)}</th></tr></thead><tbody data-pc-week>${weekRows}</tbody></table></div>
+  </div>
+</section>
+<section class="section" aria-labelledby="pc-def-h">
+  <div class="wrap">
+    <h2 id="pc-def-h">${esc(s.defsHeading)}</h2>
+    ${s.defs.map((p) => `<p>${md(p)}</p>`).join("\n    ")}
+    <p class="meta">${esc(s.note)}</p>
+  </div>
+</section>`;
+  const pc = { hinduNone: s.hinduNone };
+  return simplePage(lang, "panchang", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "panchang", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "panchang.js"], clientExtra: { t: { pl: placeClient(t.prayer), pc }, pc: { days: PANCHANG_DAYS_URL, names } }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].panchang, s.description)] });
+}
+
 /* Tarihte bugün (30 Ekim 2026, rakip analizi listesi #89): Wikidata (CC0) verisi, scripts/fetch-on-this-day.mjs ile elle
    yenilenir (derleme ağa çıkmaz). Her dil için ay başına bir dosya: { "MM-DD": [[yıl, tür, ad, açıklama, Qkimlik]] };
    tür e olay, f kuruluş, b doğum, d ölüm. Adı o dilde olmayan kayıt o dilde gösterilmez (Filipincede İngilizce ad). Sayfa derleme gününün listesini
@@ -3179,7 +3262,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildPhoto(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildPhoto(lang), buildPanchang(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

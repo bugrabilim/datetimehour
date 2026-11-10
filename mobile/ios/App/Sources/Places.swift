@@ -55,9 +55,10 @@ struct AppPlace: Equatable {
         self.init(id: district.id, name: district.label, lat: district.lat, lon: district.lon, zone: PrayerSchedule.zone)
     }
 
-    /// Kayıtlı kimlikten yer: il, ilçe ("d:il:ilçe") ya da otomatik
+    /// Kayıtlı kimlikten yer: il, ilçe ("d:il:ilçe"), dünya yeri ("w:enlem:boylam") ya da otomatik
     static func byID(_ id: String) -> AppPlace {
         if id == autoID { return stored() }
+        if id.hasPrefix("w:") { return WorldPlace.find(id) ?? AppPlace(province: Province.find("istanbul")) }
         if let d = District.find(id) { return AppPlace(district: d) }
         return AppPlace(province: Province.find(id.hasPrefix("d:") ? String(id.split(separator: ":")[1]) : id))
     }
@@ -77,6 +78,7 @@ struct AppPlace: Equatable {
         if d.string(forKey: "province") == nil, let p = DefaultPlace.place() { return p }
         let slug = d.string(forKey: "province") ?? "istanbul"
         if slug.hasPrefix("d:"), let district = District.find(slug) { return AppPlace(district: district) }
+        if slug.hasPrefix("w:") { return WorldPlace.find(slug) ?? AppPlace(province: Province.find("istanbul")) }
         guard slug == autoID else { return AppPlace(province: Province.find(slug.hasPrefix("d:") ? String(slug.split(separator: ":")[1]) : slug)) }
         guard d.object(forKey: "auto.lat") != nil else { return AppPlace(province: Province.find("istanbul"), id: autoID) }
         let lat = d.double(forKey: "auto.lat"), lon = d.double(forKey: "auto.lon")
@@ -109,6 +111,90 @@ struct AppPlace: Equatable {
 
     private static func distance(_ aLat: Double, _ aLon: Double, _ bLat: Double, _ bLon: Double) -> Double {
         CLLocation(latitude: aLat, longitude: aLon).distance(from: CLLocation(latitude: bLat, longitude: bLon)) / 1000
+    }
+}
+
+/// Dünya yeri (10 Kasım 2026, Hindistan araştırması #4): konum penceresinde aranır; kimlik "w:<enlem>:<boylam>" (2 ondalık),
+/// ad ve saat dilimi places.json (Natural Earth, 1960 yer) ve cities.json'dan. Türkiye'deki yerler aramada çıkmaz (il ve
+/// ilçe listesi, Diyanet vakitleri). Ad uygulamanın dilinde ya da İngilizce aranır. Android'deki WorldPlace ile aynı kural.
+enum WorldPlace {
+    struct Hit: Identifiable {
+        let id: String
+        let name: String
+        let zone: TimeZone
+        let lat: Double
+        let lon: Double
+        let key: String
+        let keyEn: String
+    }
+
+    private static let turkey: Set<String> = ["Europe/Istanbul", "Asia/Istanbul", "Turkey"]
+
+    private struct File: Decodable {
+        let tz: [String]
+        let p: [[Double]]
+        let names: [String: [String]]
+    }
+
+    static func id(_ lat: Double, _ lon: Double) -> String {
+        String(format: "w:%.2f:%.2f", locale: Locale(identifier: "en_US_POSIX"), lat, lon)
+    }
+
+    /// Bütün dünya yerleri (31 şehir önce, sonra nüfusa göre yerler)
+    static let all: [Hit] = {
+        var out: [Hit] = []
+        var seen = Set<String>()
+        func add(_ name: String, _ en: String, _ zone: TimeZone, _ lat: Double, _ lon: Double) {
+            guard !turkey.contains(zone.identifier) else { return }
+            let i = id(lat, lon)
+            guard seen.insert(i).inserted else { return }
+            out.append(Hit(id: i, name: name, zone: zone, lat: lat, lon: lon, key: District.fold(name), keyEn: District.fold(en)))
+        }
+        let cities = City.all
+        for c in cities { add(c.displayName, c.name["en"] ?? c.key, c.zone, c.lat, c.lon) }
+        if let url = Bundle.main.url(forResource: "places", withExtension: "json"),
+           let data = try? Data(contentsOf: url),
+           let f = try? JSONDecoder().decode(File.self, from: data) {
+            let en = f.names["en"] ?? []
+            let local = f.names[AppLocale.code] ?? en
+            let zones = f.tz.map { TimeZone(identifier: $0) }
+            for (i, row) in f.p.enumerated() where row.count >= 3 {
+                guard let zone = zones[Int(row[2])] else { continue }
+                let e = i < en.count ? en[i] : ""
+                let n = i < local.count && !local[i].isEmpty ? local[i] : e
+                guard !n.isEmpty else { continue }
+                // Büyük şehrin kendisi (31 şehirde varsa) ikinci kez eklenmez
+                if cities.contains(where: { abs($0.lat - row[0]) < 0.2 && abs($0.lon - row[1]) < 0.2 && District.fold($0.name["en"] ?? "") == District.fold(e) }) { continue }
+                add(n, e, zone, row[0], row[1])
+            }
+        }
+        return out
+    }()
+
+    /// Kimlikten yer; veri değiştiyse en yakın yerin adı ve saat dilimi
+    static func find(_ id: String) -> AppPlace? {
+        let parts = id.dropFirst(2).split(separator: ":")
+        guard parts.count == 2, let lat = Double(parts[0]), let lon = Double(parts[1]) else { return nil }
+        let hit = all.first { $0.id == id } ?? all.min { abs($0.lat - lat) + abs($0.lon - lon) < abs($1.lat - lat) + abs($1.lon - lon) }
+        guard let hit else { return nil }
+        return AppPlace(id: id, name: hit.name, lat: lat, lon: lon, zone: hit.zone)
+    }
+
+    /// Aramada başta eşleşenler önce, sonra içinde geçenler (en çok `limit`)
+    static func search(_ query: String, limit: Int = 20) -> [Hit] {
+        let q = District.fold(query.trimmingCharacters(in: .whitespaces))
+        guard q.count >= 2 else { return [] }
+        var starts: [Hit] = [], inside: [Hit] = []
+        for h in all {
+            let a = h.key.range(of: q)?.lowerBound, b = h.keyEn.range(of: q)?.lowerBound
+            if a == h.key.startIndex || b == h.keyEn.startIndex { starts.append(h) } else if a != nil || b != nil { inside.append(h) }
+        }
+        return Array((starts + inside).prefix(limit))
+    }
+
+    /// Saat diliminin dildeki adı ("Hindistan Standart Saati"); aynı adlı yerleri ayırt etmek için
+    static func zoneName(_ zone: TimeZone) -> String {
+        zone.localizedName(for: .generic, locale: AppLocale.locale) ?? zone.identifier
     }
 }
 
@@ -210,7 +296,8 @@ final class PlaceModel {
     }
 }
 
-/// Konum seçici: "Konumumu kullan (otomatik)", kayıtlı yerler, 81 il ve 973 ilçe (arama ya da ile dokunup ilçeler).
+/// Konum seçici: "Konumumu kullan (otomatik)", kayıtlı yerler, 81 il ve 973 ilçe (arama ya da ile dokunup ilçeler),
+/// aramada dünya şehirleri.
 /// Vakitler, hava, dünya saatleri ve ayarlarda.
 struct PlacePicker: View {
     var font: Font = .headline
@@ -294,8 +381,26 @@ private struct PlaceSheet: View {
                     ForEach(Province.all.filter { District.fold($0.displayName).contains(q) || District.fold($0.name).contains(q) }) { p in
                         row(p.displayName, selected: place.id == p.slug) { pick(p.slug) }
                     }
-                    ForEach(Province.all.flatMap { District.all($0.slug) }.filter { !$0.isCentre && District.fold($0.name).contains(q) }.prefix(60)) { d in
+                    // Dünya yerleri (Hindistan araştırması #4): Türkiye dışındaki şehirler, saat diliminin adıyla
+                    let world = WorldPlace.search(query)
+                    ForEach(Province.all.flatMap { District.all($0.slug) }.filter { !$0.isCentre && District.fold($0.name).contains(q) }.prefix(world.isEmpty ? 60 : 20)) { d in
                         row(d.label, selected: d.id == place.id) { pick(d.id) }
+                    }
+                    if !world.isEmpty {
+                        Section(L("place.world")) {
+                            ForEach(world) { w in
+                                Button { pick(w.id) } label: {
+                                    HStack {
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text(w.name).foregroundStyle(w.id == place.id ? Theme.accent : Theme.text)
+                                            Text(WorldPlace.zoneName(w.zone)).font(.caption).foregroundStyle(Theme.muted)
+                                        }
+                                        Spacer()
+                                        if w.id == place.id { Image(systemName: "checkmark").foregroundStyle(Theme.accent) }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 Text(L("place.districtSource")).font(.caption2).foregroundStyle(Theme.muted)

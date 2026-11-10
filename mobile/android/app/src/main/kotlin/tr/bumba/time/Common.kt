@@ -229,8 +229,14 @@ fun PlacePicker(modifier: Modifier = Modifier, size: TextUnit = 17.sp) {
                             q.isNotEmpty() -> {
                                 val provinces = Province.all.filter { District.fold(it.displayName).contains(q) || District.fold(it.name).contains(q) }
                                 val districts = Province.all.flatMap { District.all(it.slug) }.filter { !it.isCentre && District.fold(it.name).contains(q) }
+                                // Dünya yerleri (Hindistan araştırması #4): Türkiye dışındaki şehirler, saat diliminin adıyla
+                                val world = WorldPlace.search(query)
                                 items(provinces) { p -> PlaceRow(p.displayName, p.slug == place.id) { pick(p.slug) } }
-                                items(districts.take(60)) { d -> PlaceRow(d.label, d.id == place.id) { pick(d.id) } }
+                                items(districts.take(if (world.isEmpty()) 60 else 20)) { d -> PlaceRow(d.label, d.id == place.id) { pick(d.id) } }
+                                if (world.isNotEmpty()) item {
+                                    Text(L("place.world"), Modifier.padding(top = 10.dp), color = Theme.c.muted, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                                }
+                                items(world) { w -> PlaceRow(w.name, w.id == place.id, sub = WorldPlace.zoneName(w.zone)) { pick(w.id) } }
                             }
                             expanded != null -> {
                                 val slug = expanded!!
@@ -326,13 +332,15 @@ fun RefreshAutoPlace() {
 val Tnum = androidx.compose.ui.text.TextStyle(fontFeatureSettings = "tnum")
 
 @Composable
-private fun PlaceRow(text: String, selected: Boolean, accent: Boolean = false, onClick: () -> Unit) {
-    Text(
-        text,
-        Modifier.fillMaxWidth().clickable(onClick = onClick).padding(vertical = 10.dp),
-        color = if (selected || accent) Theme.c.accent else Theme.c.text,
-        fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
-    )
+private fun PlaceRow(text: String, selected: Boolean, accent: Boolean = false, sub: String? = null, onClick: () -> Unit) {
+    Column(Modifier.fillMaxWidth().clickable(onClick = onClick).padding(vertical = if (sub == null) 10.dp else 7.dp)) {
+        Text(
+            text,
+            color = if (selected || accent) Theme.c.accent else Theme.c.text,
+            fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+        )
+        if (sub != null) Text(sub, color = Theme.c.muted, fontSize = 12.sp)
+    }
 }
 
 /** Kayıtlı yerler arasında hızlı geçiş (Vakitler); kayıtlı yer yoksa görünmez */

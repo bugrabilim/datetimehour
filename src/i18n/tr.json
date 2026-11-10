@@ -45,6 +45,7 @@
     "settings": "Ayarlar",
     "theme": "Açık / koyu tema",
     "placeChange": "Konumu değiştir",
+    "placeSearch": "Şehir ara",
     "placeTitle": "Konumunuz",
     "placeNote": "Konumunuz yalnızca cihazınızda kalır; namaz vakitleri, mevsimler ve hava durumu için tüm sayfalarda kullanılır, sunucuya gönderilmez.",
     "placeClose": "Kapat",
@@ -3355,6 +3356,43 @@
       {
         "q": "Gün doğumu ve gün batımı fotoğraf tahmini nasıl yapılır?",
         "a": "Open-Meteo'nun saatlik bulut tahmininden, gün doğumuna ya da gün batımına en yakın saat için. Yağış (saatte 0,5 mm ve üstü) ya da yoğun alçak bulut (%75 ve üstü) Kötü; az alçak bulut (%40'ın altı) ile %20–80 orta ya da yüksek bulut İyi; diğer durumlarda alçak bulut %60'ın altındaysa Orta, üstündeyse Kötü sayılır. Renkleri orta ve yüksek bulutlar yakalar, ufuktaki alçak bulut Güneş'i kapatır."
+      }
+    ]
+  },
+  "panchang": {
+    "title": "Panchang ve Rahu Kaal saatleri",
+    "description": "Seçtiğiniz yerde bugünün Rahu Kaal, Yamaganda, Gulika, Abhijit ve Brahma muhurta saatleri; Hindu takvimine göre tithi ve nakşatra.",
+    "h1": "Panchang ve Rahu Kaal",
+    "lead": "Hindu geleneğindeki günlük dilimler, seçtiğiniz yerin gün doğumu ve batımına göre cihazınızda hesaplanır.",
+    "search": "panchang rahu kaal rahu kalam yamaganda gulika abhijit brahma muhurta tithi nakşatra hindu takvimi",
+    "hindu": "Hindu takviminde",
+    "hinduNote": "Tithi, nakşatra ve ay Yeni Delhi'deki gün doğumuna göredir; başka yerlerde bir gün farklı olabilir.",
+    "hinduNone": "Bu tarih için Hindu takvimi verisi yok (2025–2032).",
+    "avoid": "Geleneksel olarak kaçınılan",
+    "good": "Geleneksel olarak uygun sayılan",
+    "rahu": "Rahu Kaal",
+    "yama": "Yamaganda",
+    "gulika": "Gulika Kaal",
+    "abhijit": "Abhijit muhurta",
+    "brahma": "Brahma muhurta",
+    "wed": "Bazı geleneklerde çarşamba günü uygun sayılmaz.",
+    "polar": "Bu yerde bu gün Güneş doğmuyor ya da batmıyor; dilimler hesaplanamıyor.",
+    "week": "Yedi günün Rahu Kaal saatleri",
+    "defsHeading": "Nasıl hesaplanır?",
+    "defs": [
+      "Gün doğumundan gün batımına kadarki gündüz sekiz eşit parçaya bölünür. Rahu Kaal, Yamaganda ve Gulika haftanın gününe göre bu parçalardan biridir; örneğin Rahu Kaal pazartesi ikinci, pazar sekizinci parçadır.",
+      "Abhijit muhurta, gündüzün on beş eşit parçasından sekizincisidir ve öğleye denk gelir. Brahma muhurta, gün doğumundan önceki gecenin on beş parçasından doğuştan önceki ikincisidir (yaklaşık 96 ile 48 dakika önce).",
+      "Gün doğumu ve batımı, Güneş'in üst kenarının ufukta göründüğü andır (kırılma dahil); namaz vakitlerindeki tanımla aynıdır."
+    ],
+    "note": "Bu dilimler gelenektir; Saat Tarih astrolojik yorum yapmaz. Saatler dakikaya yuvarlanır.",
+    "faq": [
+      {
+        "q": "Rahu Kaal nedir?",
+        "a": "Hindu geleneğinde yeni bir işe başlamaktan kaçınılan, yaklaşık bir buçuk saatlik günlük dilimdir. Gündüz sekiz eşit parçaya bölünür; Rahu Kaal haftanın gününe göre bu parçalardan biridir."
+      },
+      {
+        "q": "Rahu Kaal her yerde aynı saatte mi?",
+        "a": "Hayır. Dilim yerin gün doğumu ve batımına göre hesaplandığı için şehirden şehre ve mevsime göre değişir. Bu sayfa seçtiğiniz yere göre hesaplar."
       }
     ]
   }

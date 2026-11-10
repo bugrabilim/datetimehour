@@ -149,6 +149,7 @@ class ExtraCalendarsTest {
 
     @Test fun locationHook() {
         // Konuma bağlı ekleme yalnız metni varsa: Yahudi takviminde cuma mum saati (gün batımı − 18 dk)
+        Prefs.saveH12(false) // Robolectric'in yerel ayarı en-US: kayıt yoksa 12 saat olurdu
         load(fixture.replace("\"fixture\"", "\"jewish\""), region = "TR",
             texts = mapOf("cals.jewish.candles" to "Mum %1\$s", "cals.jewish.havdalah" to "Havdala %1\$s"))
         ExtraCals.set("jewish", true)

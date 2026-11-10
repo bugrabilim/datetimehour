@@ -45,6 +45,7 @@
     "settings": "Pengaturan",
     "theme": "Tema terang / gelap",
     "placeChange": "Ganti lokasi",
+    "placeSearch": "Cari kota",
     "placeTitle": "Lokasi Anda",
     "placeNote": "Lokasi Anda tetap berada di perangkat dan dipakai di semua halaman untuk jadwal salat, musim, dan cuaca; lokasi tidak dikirim ke server.",
     "placeClose": "Tutup",
@@ -3355,6 +3356,43 @@
       {
         "q": "Bagaimana prakiraan foto matahari terbit dan terbenam dibuat?",
         "a": "Dari prakiraan awan per jam Open-Meteo untuk jam yang paling dekat dengan matahari terbit atau terbenam. Hujan (0,5 mm per jam atau lebih) atau awan rendah tebal (75% atau lebih) dinilai Buruk; sedikit awan rendah (di bawah 40%) dengan awan menengah atau tinggi 20–80% dinilai Bagus; selain itu Sedang selama awan rendah di bawah 60%, dan Buruk jika lebih. Awan menengah dan tinggi menangkap warna, sedangkan awan rendah di ufuk menutupi Matahari."
+      }
+    ]
+  },
+  "panchang": {
+    "title": "Panchang dan waktu Rahu Kaal",
+    "description": "Waktu Rahu Kaal, Yamaganda, Gulika, Abhijit, dan Brahma muhurta hari ini di tempat pilihan Anda, dengan tithi dan nakshatra dari kalender Hindu.",
+    "h1": "Panchang dan Rahu Kaal",
+    "lead": "Periode harian dalam tradisi Hindu, dihitung di perangkat Anda dari matahari terbit dan terbenam di tempat yang Anda pilih.",
+    "search": "panchang rahu kaal rahu kalam yamaganda gulika abhijit brahma muhurta tithi nakshatra kalender hindu",
+    "hindu": "Dalam kalender Hindu",
+    "hinduNote": "Tithi, nakshatra, dan bulan mengikuti matahari terbit di New Delhi; di tempat lain bisa berbeda satu hari.",
+    "hinduNone": "Tidak ada data kalender Hindu untuk tanggal ini (2025–2032).",
+    "avoid": "Secara tradisi dihindari",
+    "good": "Secara tradisi dianggap baik",
+    "rahu": "Rahu Kaal",
+    "yama": "Yamaganda",
+    "gulika": "Gulika Kaal",
+    "abhijit": "Abhijit muhurta",
+    "brahma": "Brahma muhurta",
+    "wed": "Sebagian tradisi tidak menganggapnya baik pada hari Rabu.",
+    "polar": "Matahari tidak terbit atau tidak terbenam di sini pada hari ini, jadi periode tidak dapat dihitung.",
+    "week": "Rahu Kaal untuk tujuh hari ke depan",
+    "defsHeading": "Bagaimana cara menghitungnya?",
+    "defs": [
+      "Siang hari dari matahari terbit hingga terbenam dibagi menjadi delapan bagian sama panjang. Rahu Kaal, Yamaganda, dan Gulika masing-masing adalah salah satu bagian itu menurut hari dalam pekan; misalnya Rahu Kaal adalah bagian kedua pada hari Senin dan kedelapan pada hari Minggu.",
+      "Abhijit muhurta adalah bagian kedelapan dari lima belas bagian sama panjang siang hari dan jatuh sekitar tengah hari. Brahma muhurta adalah bagian kedua dari lima belas bagian malam, dihitung mundur dari matahari terbit (sekitar 96 hingga 48 menit sebelum terbit).",
+      "Matahari terbit dan terbenam adalah saat tepi atas Matahari tampak di cakrawala (termasuk refraksi), sama dengan definisi untuk waktu salat."
+    ],
+    "note": "Periode ini adalah tradisi; Saat Tarih tidak memberikan tafsiran astrologi. Waktu dibulatkan ke menit.",
+    "faq": [
+      {
+        "q": "Apa itu Rahu Kaal?",
+        "a": "Dalam tradisi Hindu, ini adalah periode harian sekitar satu setengah jam ketika orang menghindari memulai sesuatu yang baru. Siang hari dibagi delapan bagian sama panjang, dan Rahu Kaal adalah salah satunya menurut hari dalam pekan."
+      },
+      {
+        "q": "Apakah Rahu Kaal sama waktunya di semua tempat?",
+        "a": "Tidak. Rahu Kaal dihitung dari matahari terbit dan terbenam setempat, jadi berubah dari kota ke kota dan menurut musim. Halaman ini menghitungnya untuk tempat yang Anda pilih."
       }
     ]
   }

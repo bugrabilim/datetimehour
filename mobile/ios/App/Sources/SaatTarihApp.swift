@@ -140,6 +140,8 @@ enum ToolRoute: Hashable {
     case alarm, timer, stopwatch, pomodoro, study, wakeGame, sleep, journal, breath, planner, datecalc, settings, about, badges
     // Tümü'nden açılan sayfalar (Seçenek B, 2. analiz #195): ibadet, Ay, takvim yaprağı ve ayar sayfaları
     case qibla, quran, duas, zikir, track, zakat, reldays, greet, esma, hadith, guide, leaf, moon, sky, sunpath, photo
+    // Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9)
+    case panchang
     case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
     // Sitedeki dokuz araç (4 Kasım 2026)
     case chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom
@@ -183,6 +185,7 @@ final class Router {
         case "stopwatch": tab = .tools; toolsPath = [.stopwatch]
         // Fotoğraf ışığı bildirimi (9 Kasım 2026)
         case "photo": tab = .tools; toolsPath = [.photo]
+        case "panchang": tab = .tools; toolsPath = [.panchang]
         case "alarm": tab = .tools; toolsPath = [.alarm]
         case "prayer": tab = .prayer
         // Kilit ekranındaki ve Dynamic Island'daki hava etkinliği

@@ -81,6 +81,9 @@ enum AllPrefs {
         AllEntry(id: "sunpath", titleKey: "sunpath.title", icon: "sun.horizon", cat: .sky, feature: .seasons, route: .sunpath),
         AllEntry(id: "photo", titleKey: "photoApp.title", icon: "camera.aperture", cat: .sky, feature: .tools, route: .photo,
                  words: ["photoApp.subtitle", "nature.goldenAm", "nature.bluePm", "photoApp.forecast"]),
+        // Panchang ve Rahu Kaal (10 Kasım 2026): Araçlar açıksa görünür
+        AllEntry(id: "panchang", titleKey: "panchang.h1", icon: "sun.max", cat: .sky, feature: .tools, route: .panchang,
+                 words: ["panchang.rahu", "panchang.yama", "panchang.gulika", "panchang.abhijit", "panchang.brahma", "panchang.hindu"]),
         AllEntry(id: "zodiac", titleKey: "zodiac.h1", icon: "sparkles", cat: .sky, feature: .tools, route: .zodiac),
         AllEntry(id: "prayer", titleKey: "tab.prayer", icon: "moon.stars", cat: .faith, feature: .prayer, tab: .prayer),
         AllEntry(id: "qibla", titleKey: "qibla.title", icon: "location.north.line", cat: .faith, feature: .prayer, route: .qibla),
@@ -360,6 +363,7 @@ extension ToolRoute {
         case .sky: SkyView()
         case .sunpath: SunPathView()
         case .photo: PhotoLightView()
+        case .panchang: PanchangView()
         case .chess: ChessClockView()
         case .metronome: MetronomeView()
         case .talking: TalkingClockView()

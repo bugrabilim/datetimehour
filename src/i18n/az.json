@@ -45,6 +45,7 @@
     "settings": "Parametrlər",
     "theme": "Açıq / tünd tema",
     "placeChange": "Məkanı dəyişin",
+    "placeSearch": "Şəhər axtar",
     "placeTitle": "Məkanınız",
     "placeNote": "Məkanınız yalnız cihazınızda qalır, namaz vaxtları, fəsillər və hava üçün bütün səhifələrdə istifadə olunur və serverə göndərilmir.",
     "placeClose": "Bağla",
@@ -3355,6 +3356,43 @@
       {
         "q": "Gün çıxması və batması üçün foto proqnozu necə hazırlanır?",
         "a": "Open-Meteo-nun saatlıq bulud proqnozundan, gün çıxmasına ya da batmasına ən yaxın saat üçün. Yağış (saatda 0,5 mm və çox) ya da sıx alçaq bulud (75% və çox) Pis; az alçaq bulud (40%-dən az) və 20–80% orta ya da yüksək bulud Yaxşı; qalan hallarda alçaq bulud 60%-dən azdırsa Orta, çoxdursa Pis sayılır. Rəngləri orta və yüksək buludlar tutur, üfüqdəki alçaq bulud Günəşi örtür."
+      }
+    ]
+  },
+  "panchang": {
+    "title": "Panchang və Rahu Kaal saatları",
+    "description": "Seçdiyiniz yerdə bu günün Rahu Kaal, Yamaqanda, Qulika, Abhicit və Brahma muhurta saatları; Hindu təqviminə görə tithi və nakşatra.",
+    "h1": "Panchang və Rahu Kaal",
+    "lead": "Hindu ənənəsindəki gündəlik dilimlər seçdiyiniz yerin gün çıxması və batmasına görə cihazınızda hesablanır.",
+    "search": "panchang rahu kaal rahu kalam yamaganda gulika abhijit brahma muhurta tithi nakşatra hindu təqvimi",
+    "hindu": "Hindu təqvimində",
+    "hinduNote": "Tithi, nakşatra və ay Yeni Dehlidəki gün çıxmasına görədir; başqa yerlərdə bir gün fərqli ola bilər.",
+    "hinduNone": "Bu tarix üçün Hindu təqvimi məlumatı yoxdur (2025–2032).",
+    "avoid": "Ənənəvi olaraq çəkinilən",
+    "good": "Ənənəvi olaraq əlverişli sayılan",
+    "rahu": "Rahu Kaal",
+    "yama": "Yamaqanda",
+    "gulika": "Qulika Kaal",
+    "abhijit": "Abhicit muhurta",
+    "brahma": "Brahma muhurta",
+    "wed": "Bəzi ənənələrdə çərşənbə günü əlverişli sayılmır.",
+    "polar": "Bu yerdə bu gün Günəş doğmur və ya batmır; dilimlər hesablana bilmir.",
+    "week": "Yeddi günün Rahu Kaal saatları",
+    "defsHeading": "Necə hesablanır?",
+    "defs": [
+      "Gün çıxmasından gün batmasına qədər olan gündüz səkkiz bərabər hissəyə bölünür. Rahu Kaal, Yamaqanda və Qulika həftənin gününə görə bu hissələrdən biridir; məsələn, Rahu Kaal bazar ertəsi ikinci, bazar günü səkkizinci hissədir.",
+      "Abhicit muhurta gündüzün on beş bərabər hissəsindən səkkizincisidir və günortaya düşür. Brahma muhurta gün çıxmasından əvvəlki gecənin on beş hissəsindən doğuşdan əvvəlki ikincisidir (təxminən 96 ilə 48 dəqiqə əvvəl).",
+      "Gün çıxması və batması Günəşin üst kənarının üfüqdə göründüyü andır (refraksiya daxil); namaz vaxtlarındakı təriflə eynidir."
+    ],
+    "note": "Bu dilimlər ənənədir; Saat Tarih astroloji şərh vermir. Saatlar dəqiqəyə yuvarlaqlaşdırılır.",
+    "faq": [
+      {
+        "q": "Rahu Kaal nədir?",
+        "a": "Hindu ənənəsində yeni işə başlamaqdan çəkinilən, təxminən bir saat yarımlıq gündəlik dilimdir. Gündüz səkkiz bərabər hissəyə bölünür; Rahu Kaal həftənin gününə görə bu hissələrdən biridir."
+      },
+      {
+        "q": "Rahu Kaal hər yerdə eyni saatda olur?",
+        "a": "Xeyr. Dilim yerin gün çıxması və batmasına görə hesablandığı üçün şəhərdən şəhərə və fəsillərə görə dəyişir. Bu səhifə seçdiyiniz yerə görə hesablayır."
       }
     ]
   }

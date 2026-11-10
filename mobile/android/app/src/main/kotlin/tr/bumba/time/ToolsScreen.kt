@@ -114,6 +114,8 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "sunpath" -> Page(L("sunpath.title"), onRoute) { SunPathScreen() }
         // Fotoğraf ışığı (9 Kasım 2026): altın/mavi saat, gün doğumu ve batımı tahmini
         "photo" -> Page(L("photoApp.title"), onRoute) { PhotoLightScreen() }
+        // Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9)
+        "panchang" -> Page(L("panchang.h1"), onRoute) { PanchangScreen() }
         // Sitedeki dokuz araç (4 Kasım 2026)
         in SITE_TOOL_TITLES.keys -> Page(L(SITE_TOOL_TITLES.getValue(route!!)), onRoute) { SiteToolScreen(route) }
         else -> if (route?.startsWith("quran:") == true) QuranScreen(route.removePrefix("quran:").toIntOrNull()) { onRoute(null) }

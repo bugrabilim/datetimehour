@@ -373,6 +373,22 @@ class MoreScreensTest {
         PhotoPrefs.used = false
     }
 
+    /** Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9): dünya yeri (Mumbai) seçili, Hintçe */
+    @Test fun panchang() {
+        val mumbai = WorldPlace.search("Mumbai").first()
+        assertEquals("Asia/Kolkata", mumbai.zone.id)
+        Prefs.saveProvince(mumbai.id)
+        assertEquals("Asia/Kolkata", AppPlace.current().zone.id)
+        shot("hi-panchang", "hi-h2000dp") { SubBar(L("panchang.h1"), onBack = {}); PanchangScreen() }
+        shot("en-panchang-nasil", "en") { HowItWorksContent(panchangHowSections()) }
+        // Delhi 8 Kasım 2026: Rahu Kaal Drik Panchang'la aynı (16:10–17:31)
+        val d = PanchangDay(java.time.LocalDate.of(2026, 11, 8), AppPlace("w:28.61:77.21", "Delhi", 28.61, 77.21, java.time.ZoneId.of("Asia/Kolkata")))
+        val fmt = java.time.format.DateTimeFormatter.ofPattern("HH:mm").withZone(d.place.zone)
+        assertEquals("16:10", fmt.format(d.at(d.kaal!!.rahu.first)))
+        assertEquals("17:31", fmt.format(d.at(d.kaal.rahu.second)))
+        Prefs.saveProvince("istanbul")
+    }
+
     /** Kıble (Robolectric'te pusula sensörü yok: kuzey yukarıda sabit kadran) ve örnek verili yakındaki camiler */
     /** Android TV (#95): televizyon ekranı (yatay, 1080p oranı) */
     @Test fun tv() {

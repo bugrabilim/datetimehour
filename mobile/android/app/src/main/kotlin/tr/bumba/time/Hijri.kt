@@ -47,6 +47,7 @@ object Hijri {
     private fun placeZone(): String = when {
         !Prefs.ready || !Prefs.provinceChosen -> java.time.ZoneId.systemDefault().id
         Prefs.province == AppPlace.AUTO -> Prefs.autoZone()
+        Prefs.province.startsWith("w:") -> WorldPlace.find(Prefs.province)?.zone?.id ?: "Europe/Istanbul"
         else -> "Europe/Istanbul"
     }
 
