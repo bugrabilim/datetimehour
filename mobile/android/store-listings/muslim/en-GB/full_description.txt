@@ -34,4 +34,4 @@ Tools
 Privacy
 No account, no ads, no tracking. Prayer times are calculated on your phone. Only for weather and nearby mosques is an approximate location sent to the service (Open-Meteo, OpenStreetMap), never who you are. You can see every permission in Settings › Permissions.
 
-In 18 languages. Time & Date is a Bumba Life product. Web: time.bumba.tr
+In 19 languages. Time & Date is a Bumba Life product. Web: time.bumba.tr

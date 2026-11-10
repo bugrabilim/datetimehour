@@ -30,4 +30,4 @@ Namaz vaxtları və qiblə
 Məxfilik
 Hesab yoxdur, reklam yoxdur, izləmə yoxdur. Yalnız hava və yaxınlıqdakı məscidlər üçün təxmini məkan müvafiq xidmətə (Open-Meteo, OpenStreetMap) göndərilir, kim olduğunuz isə heç vaxt. Hər icazəni Parametrlər › İcazələr bölməsində görürsünüz.
 
-18 dildə. Saat Tarix Bumba Life məhsuludur. Veb: time.bumba.tr
+19 dildə. Saat Tarix Bumba Life məhsuludur. Veb: time.bumba.tr

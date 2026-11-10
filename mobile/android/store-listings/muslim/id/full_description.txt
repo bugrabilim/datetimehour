@@ -34,4 +34,4 @@ Alat
 Privasi
 Tanpa akun, tanpa iklan, tanpa pelacakan. Jadwal sholat dihitung di ponsel Anda. Hanya untuk cuaca dan masjid terdekat, lokasi perkiraan dikirim ke layanan terkait (Open-Meteo, OpenStreetMap), tidak pernah identitas Anda. Lihat setiap izin di Pengaturan › Izin.
 
-Dalam 18 bahasa. Jam & Tanggal adalah produk Bumba Life. Web: time.bumba.tr
+Dalam 19 bahasa. Jam & Tanggal adalah produk Bumba Life. Web: time.bumba.tr

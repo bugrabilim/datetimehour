@@ -9,7 +9,7 @@ varsayılan mağaza sayfasını ve onun çevirilerini yükleyebilir (`mobile/and
 | Sayfa | Ne gösterir | Hedefleme | Metinler |
 |---|---|---|---|
 | Varsayılan (nötr) | Saat, alarm, widget, hava, takvim önde; namaz vakitleri açıklamanın ilerisinde | Aşağıda adı geçmeyen bütün ülkeler | `mobile/android/fastlane/metadata/android/` (bu klasörde değil) |
-| `muslim` | Namaz vakitleri, ezan ve kıble önde; ad "…: Namaz Vakitleri" | Müslümanların çoğunlukta olduğu ülkeler (aşağıda) | `muslim/<kod>/` |
+| `muslim` | Namaz vakitleri, ezan ve kıble önde; ad "…: Namaz Vakitleri" | Müslümanların %40 ve üstü olduğu ülkeler (aşağıda) | `muslim/<kod>/` |
 | `secular` | Ad nötr ("Saat Tarix: Təqvim və Hava" gibi), kısa açıklamada namaz vakitleri geçer, açıklamada vakitler sonda | Müslüman çoğunluklu ama laik eski Sovyet ve Balkan ülkeleri (aşağıda) | `secular/<kod>/` |
 | `prayer-search` | `muslim` ile aynı metinler ve görseller | Arama kelimeleri (aşağıda): hangi ülkede olursa olsun "prayer times", "namaz", "jadwal sholat" … arayan | `muslim/<kod>/` (ayrı dosya yok) |
 
@@ -26,27 +26,28 @@ gibi Play'in yasakladığı fiyat, sıralama ve tanıtım sözcükleri, Latin ra
 İçerik kuralları (Android'e göre doğru olsun diye): hava Open-Meteo'dan ve 14 günlük; Wear OS uygulaması (kutucuk,
 komplikasyonlar), Android TV, ekran koruyucu, yüzen saat, Hızlı Ayarlar kutucukları, vakitte titreşim/Rahatsız Etmeyin var;
 Apple Watch, WeatherKit, AlarmKit yok; **konuma bağlı hatırlatıcılar ilk Play sürümünde kapalı olduğu için hiçbir metinde
-geçmez** (`GeoAlarms.ENABLED = false`, `PLAY_CONSOLE.md` 7). Bengalce ve Malayca metinler uygulamanın arayüzünün bu dillerde
-olmadığını açıkça yazar. Saat kadranı (Wear OS watch face) ayrı paket olduğu için bu sayfalarda anılmaz.
+geçmez** (`GeoAlarms.ENABLED = false`, `PLAY_CONSOLE.md` 7). Malayca metinler uygulamanın arayüzünün Malayca
+olmadığını açıkça yazar (Bengalce arayüz 10 Kasım 2026'da geldi). Saat kadranı (Wear OS watch face) ayrı paket olduğu için bu sayfalarda anılmaz.
 
 ## Hedefleme
 
 Kaynak: Pew 2020 Müslüman oranları ve mağaza bilgisi (`countries.csv`, oturum çalışma dosyası; tablo
-`docs/magaza-adlari-2026-11.md`'de). Kural: Pew'e göre Müslümanların %50'den fazla olduğu ve Google Play'in açık olduğu
-ülkeler `muslim`; bunlardan laik eski Sovyet ve Balkan ülkeleri `secular`. Bir ülke yalnız bir özel sayfada olabilir.
+`docs/magaza-adlari-2026-11.md`'de). Kural (10 Kasım 2026, sahibin kararı): Pew'e göre Müslümanların %40 ve üstü olduğu
+ve Google Play'in açık olduğu ülkeler `muslim`; Müslüman oranı %90'ın üstündeki laik eski Sovyet ülkeleri ve Kosova `secular`;
+%40'ın altındakiler nötr varsayılan sayfada. Bir ülke yalnız bir özel sayfada olabilir.
 
-**`muslim` (40 ülke):** AE, BD, BF, BH, BN, DJ, DZ, EG, GM, GN, GW, ID, IQ, JO, KM, KW, LB, LY, MA, ML, MR, MV, MY, NE, NG,
+**`muslim` (44 ülke):** AE, AL, BA, BD, BF, BH, BN, CI, DJ, DZ, EG, GM, GN, GW, ID, IQ, JO, KM, KW, KZ, LB, LY, MA, ML, MR, MV, MY, NE, NG,
 OM, PK, QA, SA, SD, SL, SN, SO, TD, TN, TR; Play Console'un ülke listesinde varsa (mağaza durumu doğrulanmadı): AF, ER, PS, YE.
 Mayotte (YT) Play'de ayrı ülke olarak görünürse buraya eklenir.
 
-**`secular` (9 ülke):** AL, AZ, BA, KG, KZ, TJ, TM, UZ; listede varsa XK (Kosova).
+**`secular` (6 ülke):** AZ, KG, TJ, TM, UZ; listede varsa XK (Kosova).
 
-**Sınırda olanlar** (Pew %50–70 ya da başka kaynaklarda yarı yarıya; sahip isterse varsayılana alınır): Nijerya (NG),
-Lübnan (LB), Çad (TD), Gine-Bissau (GW), Eritre (ER) `muslim`'de; Bosna-Hersek (BA), Arnavutluk (AL), Kazakistan (KZ)
-`secular`'da.
+**Sınırda olanlar** (10 Kasım 2026, sahibin kararı: Müslüman oranı %40 ve üstüyse `muslim`, değilse laik/nötr sayfa):
+Nijerya (NG), Lübnan (LB), Çad (TD), Gine-Bissau (GW), Eritre (ER) `muslim`'de kaldı; Bosna-Hersek (BA), Arnavutluk (AL),
+Kazakistan (KZ) `secular`'dan, Fildişi Sahili (CI, %46) varsayılandan `muslim`'e geçti.
 
 **Hedeflenmeyenler:** İran (IR; Play resmî olarak yok), Suriye (SY; mağaza durumu belirsiz, açılırsa `muslim`), Batı Sahra
-(EH; Fas üzerinden), Çin, Küba, Kuzey Kore. Müslümanların büyük azınlık olduğu ülkeler (Fildişi Sahili, Etiyopya, Kuzey
+(EH; Fas üzerinden), Çin, Küba, Kuzey Kore. Müslümanların %40'ın altında olduğu ülkeler (Etiyopya, Kuzey
 Makedonya, Benin, Tanzanya, Kamerun, Kıbrıs, Karadağ; Hindistan, Rusya, Birleşik Krallık…) varsayılan sayfada kalır;
 oradaki kullanıcı namaz vakti arayınca `prayer-search` sayfasını görür.
 

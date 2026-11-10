@@ -34,4 +34,4 @@ Ferramentas
 Privacidade
 Sem conta, sem anúncios, sem rastreamento. Os horários de oração são calculados no seu celular. Só para o clima e as mesquitas próximas uma localização aproximada vai ao serviço (Open-Meteo, OpenStreetMap), nunca quem você é. Veja cada permissão em Ajustes › Permissões.
 
-Em 18 idiomas. Hora e Data é um produto Bumba Life. Web: time.bumba.tr
+Em 19 idiomas. Hora e Data é um produto Bumba Life. Web: time.bumba.tr

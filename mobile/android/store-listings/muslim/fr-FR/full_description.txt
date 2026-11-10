@@ -34,4 +34,4 @@ Outils
 Confidentialité
 Sans compte, sans publicité, sans suivi. Les horaires de prière sont calculés sur votre téléphone. Seule une position approximative est envoyée au service concerné (Open-Meteo, OpenStreetMap) pour la météo et les mosquées à proximité, jamais votre identité. Retrouvez chaque autorisation dans Réglages › Autorisations.
 
-En 18 langues. Heure & Date est un produit Bumba Life. Web : time.bumba.tr
+En 19 langues. Heure & Date est un produit Bumba Life. Web : time.bumba.tr

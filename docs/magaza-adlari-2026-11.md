@@ -8,7 +8,7 @@ Google Play'deki karşılığını, görsel sırasını ve elle yapılacakları 
 
 - **Uygulama herkese aynıdır; yalnız vitrin değişir:** ad, alt başlık, anahtar kelimeler, tanıtım metni, açıklamanın başı ve
   görsel sırası.
-- **Müslümanların çoğunlukta olduğu pazarların vitrini namaz vakitlerini öne çıkarır;** diğerleri nötrdür (saat, alarm,
+- **Müslümanların çoğunlukta olduğu pazarların (Google Play'de oran %40 ve üstü) vitrini namaz vakitlerini öne çıkarır;** diğerleri nötrdür (saat, alarm,
   widget, hava, takvim, dünya saatleri, uyku ve odak, gökyüzü). Nötr vitrinde de dini özellikler açıklamanın ilerisinde ve
   birkaç anahtar kelimede kalır; namaz vakti arayan yine bulur.
 - **Kimsenin inancı tahmin edilmez;** yalnız pazarın vitrini seçilir. Pazarın grubu Pew 2020 Müslüman oranından gelir
@@ -153,8 +153,8 @@ dilini görür. fastlane ve Play API yalnız varsayılan sayfayı yükler; özel
 | Sayfa | Hedefleme | Dosyalar |
 |---|---|---|
 | Varsayılan (nötr), 23 çeviri: tr-TR, en-US, en-GB, de-DE, az-AZ, ar, id, ur, fa, fr-FR, ru-RU, ja-JP, ko-KR, zh-CN, fil, th, es-419, es-ES, pt-BR, hi-IN, bn-BD, ms, ms-MY | Özel sayfaya atanmamış bütün ülkeler | `mobile/android/fastlane/metadata/android/` |
-| `muslim`, 14 çeviri: ar, tr-TR, az-AZ, id, ur, fa, bn-BD, ms, ms-MY, fr-FR, ru-RU, en-US, en-GB, pt-BR | Pew'e göre Müslümanların çoğunlukta olduğu ve Play'in açık olduğu 40 ülke | `mobile/android/store-listings/muslim/` |
-| `secular`, 4 çeviri: az-AZ, ru-RU, tr-TR, en-US | Müslüman çoğunluklu laik 9 ülke: Azerbaycan, Kazakistan, Özbekistan, Türkmenistan, Kırgızistan, Tacikistan, Arnavutluk, Kosova, Bosna-Hersek | `mobile/android/store-listings/secular/` |
+| `muslim`, 14 çeviri: ar, tr-TR, az-AZ, id, ur, fa, bn-BD, ms, ms-MY, fr-FR, ru-RU, en-US, en-GB, pt-BR | Pew'e göre Müslümanların %40 ve üstü olduğu ve Play'in açık olduğu 44 ülke (aşağıdaki laik 6 ülke hariç) | `mobile/android/store-listings/muslim/` |
+| `secular`, 4 çeviri: az-AZ, ru-RU, tr-TR, en-US | Müslüman çoğunluklu laik 6 ülke: Azerbaycan, Özbekistan, Türkmenistan, Kırgızistan, Tacikistan, Kosova | `mobile/android/store-listings/secular/` |
 | `prayer-search` (muslim metinleri) | Arama kelimeleri: prayer times, namaz vakitleri, jadwal sholat, waktu solat, مواقيت الصلاة … | aynı |
 
 Özel sayfa adları: `muslim` "Saat Tarih: Namaz Vakitleri", "الوقت والتاريخ: مواقيت الصلاة", "Jam & Tanggal: Jadwal Sholat",
@@ -166,9 +166,12 @@ tahmin, Wear OS, Android TV; Apple Watch ve WeatherKit yok; konuma bağlı hatı
 anılmaz). Denetim: `node mobile/android/store-listings/check.mjs`. Ayrıntı ve Play Console adımları:
 `mobile/android/store-listings/README.md`.
 
-**Sınırda olanlar:** Nijerya (%56, birçok ankette yarı yarıya; Hristiyan güney), Lübnan (%68, üçte biri Hristiyan), Çad,
-Gine-Bissau ve Eritre `muslim`'de; Bosna-Hersek, Arnavutluk ve Kazakistan `secular`'da. Kurala göre yerleştirildiler; sahip
-isterse varsayılana alınır.
+**Sınırda olanlar (10 Kasım 2026, sahibin kararı):** Müslüman oranı %40 ve üstüyse `muslim`, değilse laik (nötr) sayfa.
+Böylece Nijerya (%56), Lübnan (%68), Çad, Gine-Bissau ve Eritre `muslim`'de kaldı; Kazakistan (%78), Arnavutluk (%75) ve
+Bosna-Hersek (%54) `secular`'dan, Fildişi Sahili (%46) varsayılandan `muslim`'e geçti. %40'ın altındakiler (Etiyopya %36,
+Kuzey Makedonya %35, Benin %31 …) nötr varsayılan sayfada kalır; varsayılan sayfa laik sayfayla aynı nitelikte ve daha çok
+dili var. `secular`'da kalan altı ülke sınırda değildi: Müslüman oranı %90'ın üstündeki laik eski Sovyet ülkeleri ve
+Kosova.
 
 ### Ülke tablosu
 
@@ -208,16 +211,20 @@ ayrı ülke olarak görünürse. "—": Google Play yok. Sıra: sayfa, sonra Mü
 | OM | Umman | 81.8 | muslim | ar |  |
 | KW | Kuveyt | 80.2 | muslim | ar |  |
 | SL | Sierra Leone | 80.1 | muslim | en-GB |  |
+| KZ | Kazakistan | 77.9 | muslim | ru-RU | sınırda; %40 kuralıyla laikten Müslüman sayfasına (10 Kasım 2026) |
 | QA | Katar | 75.9 | muslim | ar |  |
+| AL | Arnavutluk | 74.5 | muslim | en-US | sınırda; %40 kuralıyla laikten Müslüman sayfasına (10 Kasım 2026) |
 | BH | Bahreyn | 74.0 | muslim | ar |  |
 | AE | Birleşik Arap Emirlikleri | 72.9 | muslim | ar |  |
-| LB | Lübnan | 67.8 | muslim | ar | sınırda |
+| LB | Lübnan | 67.8 | muslim | ar | sınırda; %40 kuralıyla yerinde |
 | BF | Burkina Faso | 67.4 | muslim | fr-FR |  |
 | MY | Malezya | 64.1 | muslim | ms-MY |  |
-| TD | Çad | 56.4 | muslim | fr-FR | sınırda |
-| NG | Nijerya | 56.1 | muslim | en-GB | sınırda |
-| GW | Gine-Bissau | 56.0 | muslim | pt-BR | sınırda |
-| ER | Eritre | 51.7 | muslim | en-GB | sınırda; mağaza durumu doğrulanmadı; App Store yok |
+| TD | Çad | 56.4 | muslim | fr-FR | sınırda; %40 kuralıyla yerinde |
+| NG | Nijerya | 56.1 | muslim | en-GB | sınırda; %40 kuralıyla yerinde |
+| GW | Gine-Bissau | 56.0 | muslim | pt-BR | sınırda; %40 kuralıyla yerinde |
+| BA | Bosna-Hersek | 53.6 | muslim | en-US | sınırda; %40 kuralıyla laikten Müslüman sayfasına (10 Kasım 2026) |
+| ER | Eritre | 51.7 | muslim | en-GB | sınırda; %40 kuralıyla yerinde; mağaza durumu doğrulanmadı; App Store yok |
+| CI | Côte d’Ivoire | 46.3 | muslim | fr-FR | %40 kuralıyla varsayılandan Müslüman sayfasına (10 Kasım 2026) |
 | YT | Mayotte | 98.8 | muslim? | fr-FR | mağaza durumu doğrulanmadı |
 | TJ | Tacikistan | 98.9 | secular | ru-RU |  |
 | UZ | Özbekistan | 95.6 | secular | ru-RU |  |
@@ -225,10 +232,6 @@ ayrı ülke olarak görünürse. "—": Google Play yok. Sıra: sayfa, sonra Mü
 | TM | Türkmenistan | 94.3 | secular | ru-RU |  |
 | XK | Kosova | 94.3 | secular | en-US | mağaza durumu doğrulanmadı |
 | KG | Kırgızistan | 91.7 | secular | ru-RU |  |
-| KZ | Kazakistan | 77.9 | secular | ru-RU | sınırda |
-| AL | Arnavutluk | 74.5 | secular | en-US | sınırda |
-| BA | Bosna-Hersek | 53.6 | secular | en-US | sınırda |
-| CI | Côte d’Ivoire | 46.3 | varsayılan | fr-FR |  |
 | ET | Etiyopya | 36.2 | varsayılan | en-GB | App Store yok |
 | MK | Kuzey Makedonya | 34.7 | varsayılan | en-GB |  |
 | BJ | Benin | 31.4 | varsayılan | fr-FR |  |

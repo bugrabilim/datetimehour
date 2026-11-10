@@ -30,4 +30,4 @@ Namaz vakitleri ve kıble
 Gizlilik
 Hesap yok, reklam yok, takip yok. Yalnız hava durumu ve yakındaki camiler için yaklaşık konum ilgili servise (Open-Meteo, OpenStreetMap) gider, kim olduğunuz gitmez. Her izni Ayarlar › İzinler'de görürsünüz.
 
-On sekiz dilde. Saat Tarih bir Bumba Life ürünüdür. Web: time.bumba.tr
+On dokuz dilde. Saat Tarih bir Bumba Life ürünüdür. Web: time.bumba.tr

@@ -33,4 +33,4 @@ Alat
 Privasi
 Tanpa akaun, tanpa iklan, tanpa penjejakan. Waktu solat dikira dalam telefon anda. Hanya untuk cuaca dan masjid berdekatan, lokasi anggaran dihantar kepada perkhidmatan berkenaan (Open-Meteo, OpenStreetMap), bukan identiti anda. Lihat setiap kebenaran di Settings › Permissions.
 
-Bahasa: antara muka aplikasi belum tersedia dalam bahasa Melayu. Ia boleh digunakan dalam bahasa Inggeris, Indonesia, Arab dan 15 bahasa lain. Masa & Tarikh ialah produk Bumba Life. Web: time.bumba.tr
+Bahasa: antara muka aplikasi belum tersedia dalam bahasa Melayu. Ia boleh digunakan dalam bahasa Inggeris, Indonesia, Arab dan 16 bahasa lain. Masa & Tarikh ialah produk Bumba Life. Web: time.bumba.tr
