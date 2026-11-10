@@ -185,6 +185,11 @@
     kuwait: { fajr: 18, isha: 17.5 },
     qatar: { fajr: 18, ishaMin: 90 },
     singapore: { fajr: 20, isha: 18 },
+    /* Kemenag (Endonezya, 10 Kasım 2026; docs/arastirma-endonezya-2026-11.md 1.1): imsak 20°, yatsı 18°, güneş ve akşamda
+       ufuk 1° altı (alçak yerler; yaylada Kemenag 2° alıyor, eşik bilinmediği için uygulanmaz), ihtiyat dakikaları,
+       başlangıçlar yukarı, güneş aşağı yuvarlanır; ayrıca imsak uyarısı (sabahtan 10 dk önce) ve duha (Güneş +4,5°,
+       +2 dk) satırları. Kemenag'ın SIHAT tablolarıyla 7 şehirde 213 günün %97'si birebir, hepsi ±1 dk. */
+    kemenag: { fajr: 20, isha: 18, sunrise: 1, maghrib: 1, adj: { fajr: 2, sunrise: -2, dhuhr: 3, asr: 2, maghrib: 2, isha: 2 }, round: "ceil", imsakMin: 10, duhaAlt: 4.5, duhaMin: 2 },
     france: { fajr: 12, isha: 12 },
     russia: { fajr: 16, isha: 15 }
   };
@@ -195,12 +200,55 @@
     if (id === "diyanet" || !METHODS[id]) { if (!hanafi) return PARAMS; id = "diyanet"; }
     var m = METHODS[id];
     return {
-      fajr: m.fajr, isha: m.isha || 0, ishaMin: m.ishaMin || 0, sunrise: 0.833, sunset: m.maghrib || 0.833,
-      asrFactor: hanafi ? 2 : 1, adj: m.adj || ZERO_ADJ
+      fajr: m.fajr, isha: m.isha || 0, ishaMin: m.ishaMin || 0, sunrise: m.sunrise || 0.833, sunset: m.maghrib || 0.833,
+      asrFactor: hanafi ? 2 : 1, adj: m.adj || ZERO_ADJ, round: m.round || "", imsakMin: m.imsakMin || 0,
+      duhaAlt: m.duhaAlt || 0, duhaMin: m.duhaMin || 0
     };
   }
 
-  var api = { times: times, PARAMS: PARAMS, METHODS: METHODS, METHOD_IDS: METHOD_IDS, methodParams: methodParams, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, sunAltAz: sunAltAz, KAABA: KAABA, sunAltTimes: sunAltTimes, lightHours: lightHours, LIGHT: LIGHT, kerahat: kerahat, KERAHAT_MIN: KERAHAT_MIN, bayram: bayram, BAYRAM_MIN: BAYRAM_MIN, extraTimes: extraTimes, EXTRA: EXTRA };
+  /* Ondalık saati gece yarısından dakikaya çevirir: "ceil" yönteminde (Kemenag) başlangıçlar yukarı, güneş aşağı
+     yuvarlanır (milyonda bir dakikalık kayan nokta payıyla); diğerlerinde en yakın dakika. */
+  var EPS_MIN = 1e-6;
+  function toMin(v, P, key) {
+    if (v == null || !isFinite(v)) return null;
+    var x = v * 60;
+    if (P && P.round === "ceil") return key === "sunrise" ? Math.floor(x + EPS_MIN) : Math.ceil(x - EPS_MIN);
+    return Math.round(x);
+  }
+  /* Yöntemin ek satırları (yalnız Kemenag): imsak uyarısı = sabah − imsakMin, duha = Güneş duhaAlt° + duhaMin dk;
+     dakika olarak, yoksa null. fajrMin: toMin ile yuvarlanmış sabah. */
+  function methodRows(y, m, d, lat, lon, tz, P, fajrMin) {
+    if (!P || !P.imsakMin) return null;
+    var du = sunAltTimes(y, m, d, lat, lon, tz, P.duhaAlt).rise;
+    return {
+      imsak: fajrMin == null ? null : fajrMin - P.imsakMin,
+      duha: isFinite(du) ? toMin(du + P.duhaMin / 60, P, "duha") : null
+    };
+  }
+
+  /* Bölgeye göre varsayılan yöntem (10 Kasım 2026): kullanıcı yöntem seçmediyse yerin saat dilimine (ve Kerala için
+     koordinata) bakılır. Endonezya: Kemenag; Malezya, Singapur, Brunei: Singapur (20°/18°); Pakistan, Hindistan,
+     Bangladeş, Afganistan: Karaçi + Hanefî ikindi (Kerala ve Lakşadvip'te Şâfiî, standart ikindi); diğer her yer
+     Diyanet (değişmedi). Kimsenin mezhebi sorulmaz; seçim her zaman değiştirilebilir. */
+  var REGION_TZ = {
+    "Asia/Jakarta": "ID", "Asia/Pontianak": "ID", "Asia/Makassar": "ID", "Asia/Jayapura": "ID", "Asia/Ujung_Pandang": "ID",
+    "Asia/Kuala_Lumpur": "MY", "Asia/Kuching": "MY", "Asia/Singapore": "SG", "Singapore": "SG", "Asia/Brunei": "BN",
+    "Asia/Karachi": "PK", "Asia/Kolkata": "IN", "Asia/Calcutta": "IN", "Asia/Dhaka": "BD", "Asia/Dacca": "BD", "Asia/Kabul": "AF",
+    "Europe/Istanbul": "TR", "Asia/Istanbul": "TR", "Turkey": "TR"
+  };
+  function regionOf(tz) { return REGION_TZ[tz] || ""; }
+  function defaultMethod(tz, lat, lon) {
+    var r = regionOf(tz);
+    if (r === "ID") return { m: "kemenag", h: 0 };
+    if (r === "MY" || r === "SG" || r === "BN") return { m: "singapore", h: 0 };
+    if (r === "PK" || r === "IN" || r === "BD" || r === "AF") {
+      var shafii = r === "IN" && lat >= 8 && lat <= 12.8 && lon >= 71.5 && lon <= 77.4; // Kerala ve Lakşadvip
+      return { m: "karachi", h: shafii ? 0 : 1 };
+    }
+    return { m: "diyanet", h: 0 };
+  }
+
+  var api = { times: times, PARAMS: PARAMS, METHODS: METHODS, METHOD_IDS: METHOD_IDS, methodParams: methodParams, toMin: toMin, methodRows: methodRows, regionOf: regionOf, defaultMethod: defaultMethod, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, sunAltAz: sunAltAz, KAABA: KAABA, sunAltTimes: sunAltTimes, lightHours: lightHours, LIGHT: LIGHT, kerahat: kerahat, KERAHAT_MIN: KERAHAT_MIN, bayram: bayram, BAYRAM_MIN: BAYRAM_MIN, extraTimes: extraTimes, EXTRA: EXTRA };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.sthPrayer = api;
 })(typeof window !== "undefined" ? window : globalThis);

@@ -60,6 +60,7 @@ struct PrayerTab: View {
                         Button { sharing = true } label: { Label(L("share.prayer"), systemImage: "square.and.arrow.up") }
                         Button { route = .monthly } label: { Label(L("prayer.monthly"), systemImage: "tablecells") }
                         Button { route = .method } label: {
+                            let place = PlaceModel.shared.place
                             Label(L("prayer.method.app") + (PrayerMethod.id(for: place) != "diyanet" || PrayerMethod.hanafi(for: place) ? " · " + PrayerMethod.name(PrayerMethod.id(for: place)) : ""),
                                   systemImage: "slider.horizontal.3")
                         }
