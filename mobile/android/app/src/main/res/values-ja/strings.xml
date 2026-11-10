@@ -1320,7 +1320,7 @@
     <string name="cals_japanese_daily_shakko">赤口</string>
     <string name="cals_buddhist_name">仏教暦</string>
     <string name="cals_buddhist_desc">タイ太陰暦による仏教の祝祭日と布薩日：マーカ・ブーチャ、ウェーサーカ祭、アーサーラハ・ブーチャ、安居。</string>
-    <string name="cals_buddhist_note">日付はタイ太陰暦の伝統的な計算によるもので（タイは公式の日付を毎年発表し、2027年より後は計算値）、布薩日は天文学上の月相と1日ずれることがあります。スリランカやミャンマーなどでは祭日が1か月、仏暦が1年異なることがあり、国連はウェーサーカ祭を5月の満月に記念します。</string>
+    <string name="cals_buddhist_note">日付はタイ太陰暦の伝統的な計算によるもので（タイは公式の日付を毎年発表し、2027年より後は計算値）、布薩日は天文学上の月相と1日ずれることがあります。スリランカやミャンマーなどでは祭日が1か月、仏暦が1年異なることがあり、国連はウェーサーカ祭を5月の満月に記念します。2030年7月から2032年7月までの日付は、追加の1日をどの年に入れるかによって1日早くなる場合があります。</string>
     <string name="cals_buddhist_ev_maghaPuja">マーカ・ブーチャ（万仏節）</string>
     <string name="cals_buddhist_ev_vesak">ウェーサーカ祭（ヴィサカ・ブーチャ）</string>
     <string name="cals_buddhist_ev_asalhaPuja">アーサーラハ・ブーチャ（三宝節）</string>

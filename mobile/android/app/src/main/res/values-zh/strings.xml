@@ -1320,7 +1320,7 @@
     <string name="cals_japanese_daily_shakko">赤口</string>
     <string name="cals_buddhist_name">佛教历</string>
     <string name="cals_buddhist_desc">按泰国阴历的佛教节日和布萨日：万佛节、卫塞节、三宝节和守夏安居。</string>
-    <string name="cals_buddhist_note">日期按泰国阴历的传统算法得出（泰国每年公布正式日期，2027年以后为推算），布萨日可能与天文月相相差一天。斯里兰卡、缅甸等地的节日可能相差一个月，佛历年份可能相差一年；联合国在5月满月纪念卫塞节。</string>
+    <string name="cals_buddhist_note">日期按泰国阴历的传统算法得出（泰国每年公布正式日期，2027年以后为推算），布萨日可能与天文月相相差一天。斯里兰卡、缅甸等地的节日可能相差一个月，佛历年份可能相差一年；联合国在5月满月纪念卫塞节。2030年7月至2032年7月的日期可能因增加一天的年份不同而提前一天。</string>
     <string name="cals_buddhist_ev_maghaPuja">万佛节（摩伽普迦）</string>
     <string name="cals_buddhist_ev_vesak">卫塞节（毗舍佉普迦）</string>
     <string name="cals_buddhist_ev_asalhaPuja">三宝节（阿萨哈普迦）</string>

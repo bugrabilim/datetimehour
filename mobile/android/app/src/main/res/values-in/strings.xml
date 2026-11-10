@@ -1320,7 +1320,7 @@
     <string name="cals_japanese_daily_shakko">Shakkō (beruntung hanya tengah hari)</string>
     <string name="cals_buddhist_name">Kalender Buddha</string>
     <string name="cals_buddhist_desc">Hari raya Buddha dan hari uposatha menurut kalender lunar Thailand: Magha Puja, Waisak, Asadha, dan Vassa.</string>
-    <string name="cals_buddhist_note">Tanggal mengikuti perhitungan tradisional kalender lunar Thailand (Thailand mengumumkan tanggal resmi setiap tahun, tahun-tahun setelah 2027 merupakan hasil hitungan); hari uposatha bisa berbeda sehari dari fase bulan astronomis. Di Sri Lanka, Myanmar, dan negara lain hari raya bisa berbeda sebulan dan tahun Buddhis berbeda satu tahun; PBB memperingati Waisak pada purnama bulan Mei.</string>
+    <string name="cals_buddhist_note">Tanggal mengikuti perhitungan tradisional kalender lunar Thailand (Thailand mengumumkan tanggal resmi setiap tahun, tahun-tahun setelah 2027 merupakan hasil hitungan); hari uposatha bisa berbeda sehari dari fase bulan astronomis. Di Sri Lanka, Myanmar, dan negara lain hari raya bisa berbeda sebulan dan tahun Buddhis berbeda satu tahun; PBB memperingati Waisak pada purnama bulan Mei. Tanggal antara Juli 2030 dan Juli 2032 bisa satu hari lebih awal, tergantung pada tahun penambahan hari tambahan.</string>
     <string name="cals_buddhist_ev_maghaPuja">Magha Puja</string>
     <string name="cals_buddhist_ev_vesak">Waisak (Visakha Puja)</string>
     <string name="cals_buddhist_ev_asalhaPuja">Asadha (Asalha Puja)</string>

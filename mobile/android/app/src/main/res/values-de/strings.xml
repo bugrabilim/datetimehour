@@ -1320,7 +1320,7 @@
     <string name="cals_japanese_daily_shakko">Shakkō (Glück nur zur Mittagszeit)</string>
     <string name="cals_buddhist_name">Buddhistischer Kalender</string>
     <string name="cals_buddhist_desc">Buddhistische Feiertage und Uposatha-Tage nach dem thailändischen Mondkalender: Magha Puja, Vesakh, Asalha Puja und Vassa.</string>
-    <string name="cals_buddhist_note">Die Daten folgen der traditionellen Berechnung des thailändischen Mondkalenders (Thailand gibt die amtlichen Daten jedes Jahr bekannt, Jahre nach 2027 sind berechnet); Uposatha-Tage können um einen Tag von der astronomischen Mondphase abweichen. In Sri Lanka, Myanmar und anderen Ländern kann ein Fest einen Monat und das buddhistische Jahr um eins abweichen; die Vereinten Nationen begehen Vesakh am Vollmond im Mai.</string>
+    <string name="cals_buddhist_note">Die Daten folgen der traditionellen Berechnung des thailändischen Mondkalenders (Thailand gibt die amtlichen Daten jedes Jahr bekannt, Jahre nach 2027 sind berechnet); Uposatha-Tage können um einen Tag von der astronomischen Mondphase abweichen. In Sri Lanka, Myanmar und anderen Ländern kann ein Fest einen Monat und das buddhistische Jahr um eins abweichen; die Vereinten Nationen begehen Vesakh am Vollmond im Mai. Zwischen Juli 2030 und Juli 2032 können die Daten einen Tag früher liegen, je nachdem, in welchem Jahr der zusätzliche Tag eingefügt wird.</string>
     <string name="cals_buddhist_ev_maghaPuja">Magha Puja</string>
     <string name="cals_buddhist_ev_vesak">Vesakh (Visakha Puja)</string>
     <string name="cals_buddhist_ev_asalhaPuja">Asalha Puja</string>

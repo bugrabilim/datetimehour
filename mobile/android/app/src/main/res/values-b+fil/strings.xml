@@ -1320,7 +1320,7 @@
     <string name="cals_japanese_daily_shakko">Shakkō (suwerte sa tanghali lang)</string>
     <string name="cals_buddhist_name">Kalendaryong Budista</string>
     <string name="cals_buddhist_desc">Mga pista at araw ng uposatha ng Budismo ayon sa lunar na kalendaryo ng Thailand: Magha Puja, Vesak, Asalha Puja at Vassa.</string>
-    <string name="cals_buddhist_note">Ang mga petsa ay mula sa tradisyonal na pagkalkula ng lunar na kalendaryo ng Thailand (taon-taong inihahayag ng Thailand ang opisyal na petsa, kaya kalkulado ang mga taon pagkaraan ng 2027); maaaring magkaiba nang isang araw ang mga araw ng uposatha sa astronomikong yugto ng buwan. Sa Sri Lanka, Myanmar at iba pang bansa, maaaring magkaiba nang isang buwan ang pista at nang isang taon ang taong Budista; ginugunita ng UN ang Vesak sa kabilugan ng buwan ng Mayo.</string>
+    <string name="cals_buddhist_note">Ang mga petsa ay mula sa tradisyonal na pagkalkula ng lunar na kalendaryo ng Thailand (taon-taong inihahayag ng Thailand ang opisyal na petsa, kaya kalkulado ang mga taon pagkaraan ng 2027); maaaring magkaiba nang isang araw ang mga araw ng uposatha sa astronomikong yugto ng buwan. Sa Sri Lanka, Myanmar at iba pang bansa, maaaring magkaiba nang isang buwan ang pista at nang isang taon ang taong Budista; ginugunita ng UN ang Vesak sa kabilugan ng buwan ng Mayo. Ang mga petsa mula Hulyo 2030 hanggang Hulyo 2032 ay maaaring mas maaga nang isang araw, depende kung anong taon idaragdag ang dagdag na araw.</string>
     <string name="cals_buddhist_ev_maghaPuja">Magha Puja</string>
     <string name="cals_buddhist_ev_vesak">Vesak (Visakha Puja)</string>
     <string name="cals_buddhist_ev_asalhaPuja">Asalha Puja</string>

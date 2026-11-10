@@ -1320,7 +1320,7 @@
     <string name="cals_japanese_daily_shakko">샷코(정오만 길)</string>
     <string name="cals_buddhist_name">불교력</string>
     <string name="cals_buddhist_desc">태국 음력에 따른 불교 명절과 포살일: 마가 푸자, 베삭, 아살하 푸자, 안거.</string>
-    <string name="cals_buddhist_note">날짜는 태국 음력의 전통 계산을 따르며(태국은 매년 공식 날짜를 발표하고 2027년 이후는 계산값), 포살일은 천문학적 달의 위상과 하루 차이 날 수 있습니다. 스리랑카, 미얀마 등에서는 명절이 한 달, 불기가 1년 다를 수 있으며 유엔은 5월 보름에 베삭을 기념합니다.</string>
+    <string name="cals_buddhist_note">날짜는 태국 음력의 전통 계산을 따르며(태국은 매년 공식 날짜를 발표하고 2027년 이후는 계산값), 포살일은 천문학적 달의 위상과 하루 차이 날 수 있습니다. 스리랑카, 미얀마 등에서는 명절이 한 달, 불기가 1년 다를 수 있으며 유엔은 5월 보름에 베삭을 기념합니다. 2030년 7월부터 2032년 7월까지의 날짜는 추가되는 하루를 어느 해에 넣느냐에 따라 하루 빠를 수 있습니다.</string>
     <string name="cals_buddhist_ev_maghaPuja">마가 푸자</string>
     <string name="cals_buddhist_ev_vesak">베삭(위사카 푸자)</string>
     <string name="cals_buddhist_ev_asalhaPuja">아살하 푸자</string>

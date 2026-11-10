@@ -1320,7 +1320,7 @@
     <string name="cals_japanese_daily_shakko">Shakkō (lucky only at noon)</string>
     <string name="cals_buddhist_name">Buddhist calendar</string>
     <string name="cals_buddhist_desc">Buddhist holy days and uposatha days by the Thai lunar calendar: Magha Puja, Vesak, Asalha Puja and Vassa.</string>
-    <string name="cals_buddhist_note">Dates follow the traditional reckoning of the Thai lunar calendar (Thailand announces the official dates each year, so years after 2027 are calculated); uposatha days may differ by a day from the astronomical moon phase. In Sri Lanka, Myanmar and elsewhere a festival may fall a month apart and the Buddhist year may differ by one; the UN marks Vesak at the full moon of May.</string>
+    <string name="cals_buddhist_note">Dates follow the traditional reckoning of the Thai lunar calendar (Thailand announces the official dates each year, so years after 2027 are calculated); uposatha days may differ by a day from the astronomical moon phase. In Sri Lanka, Myanmar and elsewhere a festival may fall a month apart and the Buddhist year may differ by one; the UN marks Vesak at the full moon of May. Between July 2030 and July 2032 the dates may be one day earlier, depending on the year the extra day is added.</string>
     <string name="cals_buddhist_ev_maghaPuja">Magha Puja</string>
     <string name="cals_buddhist_ev_vesak">Vesak (Visakha Puja)</string>
     <string name="cals_buddhist_ev_asalhaPuja">Asalha Puja</string>

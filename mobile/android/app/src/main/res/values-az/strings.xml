@@ -1320,7 +1320,7 @@
     <string name="cals_japanese_daily_shakko">Shakkō (yalnız günorta uğurlu)</string>
     <string name="cals_buddhist_name">Buddist təqvimi</string>
     <string name="cals_buddhist_desc">Tailand ay təqviminə görə Buddist bayramları və uposatha günləri: Maqha Puca, Vesak, Asalha Puca və Vassa.</string>
-    <string name="cals_buddhist_note">Tarixlər Tailand ay təqviminin ənənəvi hesabındandır (Tailand rəsmi tarixləri hər il elan edir, 2027-ci ildən sonrakı illər hesablamadır); uposatha günləri astronomik Ay fazasından bir gün fərqlənə bilər. Şri-Lanka, Myanma və digər ölkələrdə bayram bir ay, Buddist ili isə bir il fərqli ola bilər; BMT Vesakı may ayının bədrində qeyd edir.</string>
+    <string name="cals_buddhist_note">Tarixlər Tailand ay təqviminin ənənəvi hesabındandır (Tailand rəsmi tarixləri hər il elan edir, 2027-ci ildən sonrakı illər hesablamadır); uposatha günləri astronomik Ay fazasından bir gün fərqlənə bilər. Şri-Lanka, Myanma və digər ölkələrdə bayram bir ay, Buddist ili isə bir il fərqli ola bilər; BMT Vesakı may ayının bədrində qeyd edir. 2030-cu ilin iyulu ilə 2032-ci ilin iyulu arasındakı tarixlər əlavə günün hansı ilə qoyulmasından asılı olaraq bir gün tez ola bilər.</string>
     <string name="cals_buddhist_ev_maghaPuja">Maqha Puca</string>
     <string name="cals_buddhist_ev_vesak">Vesak (Visakha Puca)</string>
     <string name="cals_buddhist_ev_asalhaPuja">Asalha Puca</string>

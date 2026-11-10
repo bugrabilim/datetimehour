@@ -1320,7 +1320,7 @@
     <string name="cals_japanese_daily_shakko">Shakkō (suerte solo al mediodía)</string>
     <string name="cals_buddhist_name">Calendario budista</string>
     <string name="cals_buddhist_desc">Fiestas budistas y días de uposatha según el calendario lunar tailandés: Magha Puja, Vesak, Asalha Puja y Vassa.</string>
-    <string name="cals_buddhist_note">Las fechas siguen el cálculo tradicional del calendario lunar tailandés (Tailandia anuncia las fechas oficiales cada año; los años posteriores a 2027 son calculados); los días de uposatha pueden diferir un día de la fase astronómica de la Luna. En Sri Lanka, Myanmar y otros países una fiesta puede diferir un mes y el año budista uno; la ONU conmemora el Vesak en la luna llena de mayo.</string>
+    <string name="cals_buddhist_note">Las fechas siguen el cálculo tradicional del calendario lunar tailandés (Tailandia anuncia las fechas oficiales cada año; los años posteriores a 2027 son calculados); los días de uposatha pueden diferir un día de la fase astronómica de la Luna. En Sri Lanka, Myanmar y otros países una fiesta puede diferir un mes y el año budista uno; la ONU conmemora el Vesak en la luna llena de mayo. Entre julio de 2030 y julio de 2032 las fechas pueden adelantarse un día, según el año en que se añada el día adicional.</string>
     <string name="cals_buddhist_ev_maghaPuja">Magha Puja</string>
     <string name="cals_buddhist_ev_vesak">Vesak (Visakha Puja)</string>
     <string name="cals_buddhist_ev_asalhaPuja">Asalha Puja</string>

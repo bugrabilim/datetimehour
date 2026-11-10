@@ -1320,7 +1320,7 @@
     <string name="cals_japanese_daily_shakko">Shakkō (yalnız öğlen uğurlu)</string>
     <string name="cals_buddhist_name">Budist takvimi</string>
     <string name="cals_buddhist_desc">Tayland ay takvimine göre Budist bayramları ve uposatha günleri: Magha Puja, Vesak, Asalha Puja ve Vassa.</string>
-    <string name="cals_buddhist_note">Tarihler Tayland ay takviminin geleneksel hesabındandır (Tayland resmî tarihleri her yıl ilan eder, 2027\'den sonraki yıllar hesaptır); uposatha günleri astronomik Ay evresinden bir gün farklı olabilir. Sri Lanka, Myanmar ve diğer ülkelerde bayram bir ay, Budist yılı bir yıl farklı olabilir; BM, Vesak\'ı Mayıs dolunayında anar.</string>
+    <string name="cals_buddhist_note">Tarihler Tayland ay takviminin geleneksel hesabındandır (Tayland resmî tarihleri her yıl ilan eder, 2027\'den sonraki yıllar hesaptır); uposatha günleri astronomik Ay evresinden bir gün farklı olabilir. Sri Lanka, Myanmar ve diğer ülkelerde bayram bir ay, Budist yılı bir yıl farklı olabilir; BM, Vesak\'ı Mayıs dolunayında anar. Temmuz 2030 ile Temmuz 2032 arasındaki tarihler, artık günün hangi yıla konacağına göre bir gün erken olabilir.</string>
     <string name="cals_buddhist_ev_maghaPuja">Magha Puja</string>
     <string name="cals_buddhist_ev_vesak">Vesak (Visakha Puja)</string>
     <string name="cals_buddhist_ev_asalhaPuja">Asalha Puja</string>
