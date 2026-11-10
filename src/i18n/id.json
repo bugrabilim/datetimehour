@@ -2734,7 +2734,15 @@
       }
     ],
     "rumi": "Rumi (Utsmaniyah): {date}",
-    "rumiNote": "Tanggal Rumi memakai kalender Julian (tertinggal 13 hari dari Masehi) dengan tahun baru 1 Maret, seperti almanak Turki tradisional."
+    "rumiNote": "Tanggal Rumi memakai kalender Julian (tertinggal 13 hari dari Masehi) dengan tahun baru 1 Maret, seperti almanak Turki tradisional.",
+    "calLabel": "Kalender Hijriah",
+    "calDiyanet": "Diyanet (Turki)",
+    "calKemenag": "Kemenag (Indonesia)",
+    "offLabel": "Penyesuaian awal bulan",
+    "offM1": "1 hari lebih awal",
+    "off0": "Tanpa penyesuaian",
+    "offP1": "1 hari lebih lambat",
+    "calNote": "Awal bulan Hijriah bisa berbeda satu hari antarnegara. Kalender Indonesia mengikuti tanggal yang diumumkan Kemenag, dan untuk bulan yang belum diumumkan dihitung dengan kriteria MABIMS. Di tempat yang hilalnya biasanya terlihat sehari kemudian, seperti India atau Pakistan, Anda dapat memilih \"1 hari lebih lambat\"."
   },
   "timeCalc": {
     "title": "Kalkulator Jam: Tambah, Kurang, dan Selisih Dua Waktu | Saat Tarih",

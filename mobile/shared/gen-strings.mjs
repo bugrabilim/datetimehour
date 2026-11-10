@@ -11,7 +11,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeYear } from "../../lib/events.mjs";
 import { bridges } from "../../lib/bridges.mjs";
-import { hijriTable } from "../../lib/hijri.mjs";
+import { hijriTable, hijriTableId } from "../../lib/hijri.mjs";
 import { otdDay } from "../../lib/otd.mjs";
 import { CALENDARS, CAL_PLACEHOLDERS, calendarData, calendarsJson, loadCalTexts, validateCalendars } from "../../lib/calendars/index.mjs";
 
@@ -293,6 +293,10 @@ const bridgesJson = JSON.stringify(Object.fromEntries(Object.keys(years).map((y)
 
 /* Hicri takvim: Diyanet'e hizalı ay başları (lib/hijri.mjs): [[ay başı, hicri yıl, ay], …]; son satır tablonun sonu */
 const hijriJson = JSON.stringify(hijriTable(HOL, JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/hijri.json"), "utf8")))) + "\n";
+/* Endonezya hicri takvimi (10 Kasım 2026): Kemenag takvimi, isbat kararları ve MABIMS hesabı, Diyanet tablosuyla aynı aralıkta */
+const hijriIdTable = hijriTableId(JSON.parse(hijriJson), JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/hijri-id.json"), "utf8")));
+if (hijriIdTable.mismatch.length) console.warn("Not: Endonezya hicri dayanakları MABIMS hesabından ayrılıyor (dayanak kullanıldı): " + hijriIdTable.mismatch.join(", "));
+const hijriIdJson = JSON.stringify([...hijriIdTable]) + "\n";
 
 /* Fitre (src/data/fitre.json): en son açıklanan yıl, tutar (TL) ve açıklama tarihi */
 const fitreSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/fitre.json"), "utf8")).years;
@@ -390,6 +394,7 @@ const files = {
   "mobile/ios/App/Resources/eclipses.json": eclipsesJson,
   "mobile/ios/App/Resources/districts.json": districtsJson,
   "mobile/ios/App/Resources/hijri.json": hijriJson,
+  "mobile/ios/App/Resources/hijri-id.json": hijriIdJson,
   "mobile/ios/App/Resources/fitre.json": fitreJson,
   "mobile/ios/App/Resources/bridges.json": bridgesJson,
   "mobile/android/app/src/main/assets/provinces.json": provincesJson,
@@ -399,6 +404,7 @@ const files = {
   "mobile/android/app/src/main/assets/eclipses.json": eclipsesJson,
   "mobile/android/app/src/main/assets/districts.json": districtsJson,
   "mobile/android/app/src/main/assets/hijri.json": hijriJson,
+  "mobile/android/app/src/main/assets/hijri-id.json": hijriIdJson,
   "mobile/android/app/src/main/assets/fitre.json": fitreJson,
   "mobile/android/app/src/main/assets/bridges.json": bridgesJson,
   "mobile/android/app/src/main/res/xml/locales_config.xml": localesConfig,
@@ -406,6 +412,7 @@ const files = {
   // Wear OS saati (Wear modülü): il listesi, hicri ay başları ve saat ekranlarının metinleri
   "mobile/android/wear/src/main/assets/provinces.json": provincesJson,
   "mobile/android/wear/src/main/assets/hijri.json": hijriJson,
+  "mobile/android/wear/src/main/assets/hijri-id.json": hijriIdJson,
   "mobile/android/wear/src/main/res/xml/locales_config.xml": localesConfig,
   ...Object.fromEntries(LANGS.map((l) => [`mobile/android/wear/src/main/res/${ANDROID_DIRS[l]}/strings.xml`, androidXml(l, wearRes)])),
 };

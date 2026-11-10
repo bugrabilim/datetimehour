@@ -2814,7 +2814,15 @@
       }
     ],
     "rumi": "Rumi (otomano): {date}",
-    "rumiNote": "A data rumi usa o calendário juliano (13 dias atrasado em relação ao gregoriano) com o ano começando em 1º de março, como nos almanaques turcos tradicionais."
+    "rumiNote": "A data rumi usa o calendário juliano (13 dias atrasado em relação ao gregoriano) com o ano começando em 1º de março, como nos almanaques turcos tradicionais.",
+    "calLabel": "Calendário hijri",
+    "calDiyanet": "Diyanet (Turquia)",
+    "calKemenag": "Kemenag (Indonésia)",
+    "offLabel": "Ajuste do início do mês",
+    "offM1": "1 dia antes",
+    "off0": "Sem ajuste",
+    "offP1": "1 dia depois",
+    "calNote": "O início de um mês hijri pode variar um dia de um país para outro. O calendário indonésio segue as datas anunciadas pelo Kemenag e, nos meses ainda não anunciados, um cálculo pelo critério MABIMS. Onde a lua crescente costuma ser vista um dia depois, como na Índia ou no Paquistão, você pode escolher \"1 dia depois\"."
   },
   "timeCalc": {
     "title": "Calculadora de horas: somar, subtrair, intervalos | Saat Tarih",

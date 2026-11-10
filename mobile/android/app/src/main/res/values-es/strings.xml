@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">La hora dorada de la tarde empieza en %1$s min</string>
     <string name="photoApp_n_pmBlue">La hora azul de la tarde empieza en %1$s min</string>
     <string name="photoApp_n_q">Previsión: %1$s</string>
+    <string name="hijriCal_title">Calendario hégira</string>
+    <string name="hijriCal_auto">Automático (según su ubicación)</string>
+    <string name="hijriCal_diyanet">Diyanet (Turquía)</string>
+    <string name="hijriCal_kemenag">Kemenag (Indonesia)</string>
+    <string name="hijriCal_offset">Ajuste del inicio del mes</string>
+    <string name="hijriCal_offsetM1">1 día antes</string>
+    <string name="hijriCal_offset0">Sin ajuste</string>
+    <string name="hijriCal_offsetP1">1 día después</string>
+    <string name="hijriCal_note">El inicio de un mes de la hégira puede variar un día de un país a otro. El calendario indonesio sigue las fechas anunciadas por Kemenag y, en los meses aún no anunciados, un cálculo con el criterio MABIMS. Donde la luna creciente suele verse un día después, como en la India o Pakistán, puede elegir «1 día después». Los días religiosos y el Ramadán siguen este ajuste.</string>
     <string name="app_name">Hora y Fecha</string>
 </resources>

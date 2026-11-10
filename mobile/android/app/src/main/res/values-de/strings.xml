@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">Goldene Stunde am Abend beginnt in %1$s Min.</string>
     <string name="photoApp_n_pmBlue">Blaue Stunde am Abend beginnt in %1$s Min.</string>
     <string name="photoApp_n_q">Prognose: %1$s</string>
+    <string name="hijriCal_title">Hidschri-Kalender</string>
+    <string name="hijriCal_auto">Automatisch (nach Ihrem Ort)</string>
+    <string name="hijriCal_diyanet">Diyanet (Türkei)</string>
+    <string name="hijriCal_kemenag">Kemenag (Indonesien)</string>
+    <string name="hijriCal_offset">Monatsbeginn anpassen</string>
+    <string name="hijriCal_offsetM1">1 Tag früher</string>
+    <string name="hijriCal_offset0">Keine Anpassung</string>
+    <string name="hijriCal_offsetP1">1 Tag später</string>
+    <string name="hijriCal_note">Der Beginn eines Hidschri-Monats kann sich von Land zu Land um einen Tag unterscheiden. Der indonesische Kalender folgt den von Kemenag bekannt gegebenen Daten, für noch nicht bekannt gegebene Monate einer Berechnung nach dem MABIMS-Kriterium. Wo die Mondsichel meist einen Tag später gesehen wird, etwa in Indien oder Pakistan, können Sie „1 Tag später“ wählen. Religiöse Tage und Ramadan richten sich danach.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

@@ -2761,7 +2761,15 @@
       }
     ],
     "rumi": "Rumi (osmanisch): {date}",
-    "rumiNote": "Das Rumi-Datum folgt dem julianischen Kalender (13 Tage hinter dem gregorianischen), Jahresbeginn 1. März, wie in traditionellen türkischen Almanachen."
+    "rumiNote": "Das Rumi-Datum folgt dem julianischen Kalender (13 Tage hinter dem gregorianischen), Jahresbeginn 1. März, wie in traditionellen türkischen Almanachen.",
+    "calLabel": "Hidschri-Kalender",
+    "calDiyanet": "Diyanet (Türkei)",
+    "calKemenag": "Kemenag (Indonesien)",
+    "offLabel": "Monatsbeginn anpassen",
+    "offM1": "1 Tag früher",
+    "off0": "Keine Anpassung",
+    "offP1": "1 Tag später",
+    "calNote": "Der Beginn eines Hidschri-Monats kann sich von Land zu Land um einen Tag unterscheiden. Der indonesische Kalender folgt den von Kemenag bekannt gegebenen Daten, für noch nicht bekannt gegebene Monate einer Berechnung nach dem MABIMS-Kriterium. Wo die Mondsichel meist einen Tag später gesehen wird, etwa in Indien oder Pakistan, können Sie „1 Tag später“ wählen."
   },
   "timeCalc": {
     "title": "Zeitrechner: Stunden addieren und Zeitdauer berechnen | Saat Tarih",

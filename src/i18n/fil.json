@@ -2800,7 +2800,15 @@
       }
     ],
     "rumi": "Rumi (Ottoman): {date}",
-    "rumiNote": "Ang petsang Rumi ay sumusunod sa kalendaryong Julian (13 araw na huli) at nagsisimula ang taon sa 1 Marso, gaya ng mga tradisyonal na almanakeng Turko."
+    "rumiNote": "Ang petsang Rumi ay sumusunod sa kalendaryong Julian (13 araw na huli) at nagsisimula ang taon sa 1 Marso, gaya ng mga tradisyonal na almanakeng Turko.",
+    "calLabel": "Kalendaryong Hijri",
+    "calDiyanet": "Diyanet (Turkey)",
+    "calKemenag": "Kemenag (Indonesia)",
+    "offLabel": "Pag-adjust sa simula ng buwan",
+    "offM1": "1 araw na mas maaga",
+    "off0": "Walang pag-adjust",
+    "offP1": "1 araw na mas huli",
+    "calNote": "Ang simula ng buwang Hijri ay maaaring magkaiba nang isang araw sa bawat bansa. Sinusunod ng kalendaryong Indonesian ang mga petsang inanunsyo ng Kemenag, at sa mga buwang hindi pa inaanunsyo, kinakalkula ito ayon sa pamantayang MABIMS. Kung saan karaniwang nakikita ang hilal nang isang araw na mas huli, gaya ng India o Pakistan, maaari mong piliin ang \"1 araw na mas huli\"."
   },
   "timeCalc": {
     "title": "Time calculator: magdagdag, magbawas at oras sa pagitan | Saat Tarih",

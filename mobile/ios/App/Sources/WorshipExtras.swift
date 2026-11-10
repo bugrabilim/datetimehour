@@ -23,10 +23,17 @@ enum RelDays {
         e.type == "religious" || ["rb1", "kb1", "rbEve", "kbEve"].contains(e.key)
     }
 
-    static let all: [RelDay] = CalendarData.shared.years.values.flatMap(\.events)
-        .filter(isReligious)
-        .compactMap { e in CalendarDay(iso: e.date).map { RelDay(day: $0, key: e.key) } }
-        .sorted { $0.day < $1.day }
+    /// Bayramlar ve arifeleri de seçili hicri takvime göre (Endonezya takvimi ya da ±1 gün; Türkiye'nin tatil günleri değişmez)
+    static var all: [RelDay] {
+        if cache.key != Hijri.key {
+            cache = (Hijri.key, CalendarData.shared.allEvents.filter(isReligious)
+                .map { $0.type == "religious" ? $0 : CalendarData.shiftReligious($0) }
+                .compactMap { e in CalendarDay(iso: e.date).map { RelDay(day: $0, key: e.key) } }
+                .sorted { $0.day < $1.day })
+        }
+        return cache.list
+    }
+    private static var cache: (key: String, list: [RelDay]) = ("", [])
 
     static func next(_ today: CalendarDay) -> RelDay? { all.first { $0.day >= today } }
     static func nextOf(_ key: String, _ today: CalendarDay) -> RelDay? { all.first { $0.key == key && $0.day >= today } }

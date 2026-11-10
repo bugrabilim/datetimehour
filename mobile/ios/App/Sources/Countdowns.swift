@@ -94,7 +94,7 @@ func countdownText(_ at: Date, now: Date) -> String {
 /// Yeni yıl, Ramazan, bayramlar, 23 Nisan, 19 Mayıs, 30 Ağustos, 29 Ekim: her birinin sıradaki tarihi
 func quickTargets(_ today: CalendarDay) -> [(String, CalendarDay)] {
     let keys = ["newYear", "ramadanStart", "rb1", "kb1", "apr23", "may19", "aug30", "oct29"]
-    let events = CalendarData.shared.years.keys.sorted().flatMap { CalendarData.shared.years[$0]!.events }
+    let events = CalendarData.shared.allEvents
     var out: [(String, CalendarDay)] = []
     for key in keys {
         if let e = events.first(where: { $0.key == key && ($0.day ?? today) > today }), let d = e.day {

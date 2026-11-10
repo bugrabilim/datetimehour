@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">Axşam qızıl saatı %1$s dəqiqəyə başlayır</string>
     <string name="photoApp_n_pmBlue">Axşam mavi saatı %1$s dəqiqəyə başlayır</string>
     <string name="photoApp_n_q">Proqnoz: %1$s</string>
+    <string name="hijriCal_title">Hicri təqvim</string>
+    <string name="hijriCal_auto">Avtomatik (yerinizə görə)</string>
+    <string name="hijriCal_diyanet">Diyanət (Türkiyə)</string>
+    <string name="hijriCal_kemenag">Kemenag (İndoneziya)</string>
+    <string name="hijriCal_offset">Ay başı düzəlişi</string>
+    <string name="hijriCal_offsetM1">1 gün əvvəl</string>
+    <string name="hijriCal_offset0">Düzəliş yoxdur</string>
+    <string name="hijriCal_offsetP1">1 gün sonra</string>
+    <string name="hijriCal_note">Hicri ayın başlanğıcı ölkədən ölkəyə bir gün dəyişə bilər. İndoneziya təqvimi Kemenag-ın elan etdiyi tarixlərdən, elan edilməyən aylarda isə MABIMS meyarı ilə hesablamadan gəlir. Hindistan, Pakistan kimi hilalın adətən bir gün gec görüldüyü yerlərdə \"1 gün sonra\"nı seçə bilərsiniz. Dini günlər və Ramazan da buna görə dəyişir.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

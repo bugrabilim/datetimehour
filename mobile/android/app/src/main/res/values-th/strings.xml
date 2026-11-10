@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">ช่วงแสงทองยามเย็นจะเริ่มในอีก %1$s นาที</string>
     <string name="photoApp_n_pmBlue">ช่วงแสงสีฟ้ายามเย็นจะเริ่มในอีก %1$s นาที</string>
     <string name="photoApp_n_q">พยากรณ์: %1$s</string>
+    <string name="hijriCal_title">ปฏิทินฮิจเราะห์</string>
+    <string name="hijriCal_auto">อัตโนมัติ (ตามตำแหน่งของคุณ)</string>
+    <string name="hijriCal_diyanet">ดียาเนต (ตุรกี)</string>
+    <string name="hijriCal_kemenag">เกอเมอนัก (อินโดนีเซีย)</string>
+    <string name="hijriCal_offset">ปรับวันต้นเดือน</string>
+    <string name="hijriCal_offsetM1">เร็วขึ้น 1 วัน</string>
+    <string name="hijriCal_offset0">ไม่ปรับ</string>
+    <string name="hijriCal_offsetP1">ช้าลง 1 วัน</string>
+    <string name="hijriCal_note">วันต้นเดือนฮิจเราะห์อาจต่างกันหนึ่งวันในแต่ละประเทศ ปฏิทินอินโดนีเซียใช้วันที่ที่เกอเมอนัก (กระทรวงศาสนา) ประกาศ และเดือนที่ยังไม่ประกาศจะคำนวณตามเกณฑ์ MABIMS ในที่ที่มักเห็นจันทร์เสี้ยวช้ากว่าหนึ่งวัน เช่น อินเดียหรือปากีสถาน คุณเลือก \"ช้าลง 1 วัน\" ได้ วันสำคัญทางศาสนาและรอมฎอนจะเปลี่ยนตามการตั้งค่านี้</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

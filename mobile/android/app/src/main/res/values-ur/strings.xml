@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">شام کا سنہری وقت %1$s منٹ میں شروع ہوگا</string>
     <string name="photoApp_n_pmBlue">شام کا نیلا وقت %1$s منٹ میں شروع ہوگا</string>
     <string name="photoApp_n_q">پیش گوئی: %1$s</string>
+    <string name="hijriCal_title">ہجری کیلنڈر</string>
+    <string name="hijriCal_auto">خودکار (آپ کے مقام کے مطابق)</string>
+    <string name="hijriCal_diyanet">دیانت (ترکی)</string>
+    <string name="hijriCal_kemenag">کیمیناگ (انڈونیشیا)</string>
+    <string name="hijriCal_offset">مہینے کے آغاز میں تبدیلی</string>
+    <string name="hijriCal_offsetM1">1 دن پہلے</string>
+    <string name="hijriCal_offset0">کوئی تبدیلی نہیں</string>
+    <string name="hijriCal_offsetP1">1 دن بعد</string>
+    <string name="hijriCal_note">ہجری مہینے کا آغاز ایک ملک سے دوسرے ملک میں ایک دن مختلف ہو سکتا ہے۔ انڈونیشیائی کیلنڈر کیمیناگ کی اعلان کردہ تاریخوں پر چلتا ہے، اور جن مہینوں کا اعلان نہیں ہوا ان میں MABIMS معیار سے حساب کیا جاتا ہے۔ جہاں چاند عموماً ایک دن بعد نظر آتا ہے، جیسے بھارت یا پاکستان، آپ \"1 دن بعد\" منتخب کر سکتے ہیں۔ مذہبی دن اور رمضان بھی اسی کے مطابق بدلتے ہیں۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

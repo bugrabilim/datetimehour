@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">ساعت طلایی عصر %1$s دقیقه دیگر شروع می‌شود</string>
     <string name="photoApp_n_pmBlue">ساعت آبی شامگاه %1$s دقیقه دیگر شروع می‌شود</string>
     <string name="photoApp_n_q">پیش‌بینی: %1$s</string>
+    <string name="hijriCal_title">تقویم هجری قمری</string>
+    <string name="hijriCal_auto">خودکار (بر اساس مکان شما)</string>
+    <string name="hijriCal_diyanet">دیانت (ترکیه)</string>
+    <string name="hijriCal_kemenag">کمناگ (اندونزی)</string>
+    <string name="hijriCal_offset">تنظیم آغاز ماه</string>
+    <string name="hijriCal_offsetM1">1 روز زودتر</string>
+    <string name="hijriCal_offset0">بدون تنظیم</string>
+    <string name="hijriCal_offsetP1">1 روز دیرتر</string>
+    <string name="hijriCal_note">آغاز ماه هجری قمری ممکن است از کشوری به کشور دیگر یک روز فرق کند. تقویم اندونزی از تاریخ‌های اعلام‌شدهٔ کمناگ پیروی می‌کند و در ماه‌هایی که هنوز اعلام نشده با معیار MABIMS محاسبه می‌شود. در جاهایی که هلال معمولاً یک روز دیرتر دیده می‌شود، مانند هند یا پاکستان، می‌توانید «1 روز دیرتر» را انتخاب کنید. مناسبت‌های دینی و رمضان هم بر همین اساس تغییر می‌کنند.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

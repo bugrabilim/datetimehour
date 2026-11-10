@@ -103,6 +103,14 @@ fun PrayerMethodScreen(onBack: () -> Unit) {
     var method by remember { mutableStateOf(PrayerMethod.id(place)) }
     var hanafi by remember { mutableStateOf(PrayerMethod.hanafi(place)) }
     var regional by remember { mutableStateOf(PrayerMethod.fromRegion(place)) }
+    var hijriCal by remember { mutableStateOf(Hijri.setting) }
+    var hijriOff by remember { mutableStateOf(Hijri.offset) }
+    val todayHijri = remember(hijriCal, hijriOff) { Hijri.date(java.time.LocalDate.now()) }
+    fun saveHijri() {
+        Prefs.store.edit().putString(Hijri.CAL, hijriCal).putInt(Hijri.OFFSET, hijriOff).apply()
+        WidgetUpdater.updateAll(context)
+        PrayerNotifier.reschedule(context)
+    }
     fun save() {
         Prefs.store.edit().putString(PrayerMethod.METHOD, method).putBoolean(PrayerMethod.HANAFI, hanafi).apply()
         regional = false
@@ -128,6 +136,22 @@ fun PrayerMethodScreen(onBack: () -> Unit) {
             if (regional) Text(PrayerMethod.label(place), color = Theme.c.muted, fontSize = 12.sp)
             if (method == "kemenag") Text(L("prayer.method.kemenagNote"), color = Theme.c.muted, fontSize = 12.sp)
             Text(L("prayer.method.appNote"), color = Theme.c.muted, fontSize = 12.sp)
+            // Hicri takvim: Diyanet, Endonezya (Kemenag) ya da yere göre; ay başı ±1 gün (10 Kasım 2026)
+            AppCard {
+                SectionTitle(L("hijriCal.title"))
+                for (c in listOf("auto", "diyanet", "kemenag")) Row(Modifier.fillMaxWidth().clickable { hijriCal = c; saveHijri() }, verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(hijriCal == c, { hijriCal = c; saveHijri() }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
+                    Text(L("hijriCal.$c"), color = Theme.c.text, fontSize = 15.sp)
+                }
+            }
+            AppCard {
+                SectionTitle(L("hijriCal.offset"))
+                for (o in listOf(-1, 0, 1)) Row(Modifier.fillMaxWidth().clickable { hijriOff = o; saveHijri() }, verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(hijriOff == o, { hijriOff = o; saveHijri() }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
+                    Text(L(when (o) { -1 -> "hijriCal.offsetM1"; 1 -> "hijriCal.offsetP1"; else -> "hijriCal.offset0" }), color = Theme.c.text, fontSize = 15.sp)
+                }
+            }
+            Text((todayHijri?.text?.let { "☾ $it · " } ?: "") + L("hijriCal.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
     }
 }

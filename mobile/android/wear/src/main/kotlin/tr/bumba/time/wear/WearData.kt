@@ -62,6 +62,8 @@ object Wear {
     lateinit var provinces: List<WProvince>
         private set
     private var hijri: List<Triple<Long, Int, Int>> = emptyList()
+    /** Endonezya hicri takvimi (hijri-id.json; 10 Kasım 2026): yer Endonezya'daysa bu tablo */
+    private var hijriId: List<Triple<Long, Int, Int>> = emptyList()
     val turkey: ZoneId = ZoneId.of("Europe/Istanbul")
 
     fun init(c: Context) {
@@ -72,8 +74,9 @@ object Wear {
             val o = p.getJSONObject(i)
             WProvince(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi", "bn").associateWith { o.optString(it) })
         }.sortedWith(compareBy(java.text.Collator.getInstance(Locale.forLanguageTag("tr"))) { it.name })
-        val h = JSONArray(read("hijri.json"))
-        hijri = (0 until h.length()).map { i -> h.getJSONArray(i).let { Triple(LocalDate.parse(it.getString(0)).toEpochDay(), it.getInt(1), it.getInt(2)) } }
+        fun table(n: String) = JSONArray(read(n)).let { h -> (0 until h.length()).map { i -> h.getJSONArray(i).let { Triple(LocalDate.parse(it.getString(0)).toEpochDay(), it.getInt(1), it.getInt(2)) } } }
+        hijri = table("hijri.json")
+        hijriId = runCatching { table("hijri-id.json") }.getOrDefault(emptyList())
     }
 
     val prefs: SharedPreferences get() = app.getSharedPreferences("wear", Context.MODE_PRIVATE)
@@ -144,9 +147,10 @@ object Wear {
     /** Hicri tarih: (yıl, ay, gün); tablo dışında null */
     fun hijri(d: LocalDate): Triple<Int, Int, Int>? {
         val n = d.toEpochDay()
-        for (i in hijri.size - 2 downTo 0) {
-            val (start, y, m) = hijri[i]
-            if (n >= start) return if (n < hijri[i + 1].first) Triple(y, m, (n - start + 1).toInt()) else null
+        val t = if (hijriId.isNotEmpty() && runCatching { PrayerTimes.region(place().zone.id) == "ID" }.getOrDefault(false)) hijriId else hijri
+        for (i in t.size - 2 downTo 0) {
+            val (start, y, m) = t[i]
+            if (n >= start) return if (n < t[i + 1].first) Triple(y, m, (n - start + 1).toInt()) else null
         }
         return null
     }

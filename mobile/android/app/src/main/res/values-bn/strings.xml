@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">সন্ধ্যার সোনালি সময় %1$s মিনিট পরে শুরু</string>
     <string name="photoApp_n_pmBlue">সন্ধ্যার নীল সময় %1$s মিনিট পরে শুরু</string>
     <string name="photoApp_n_q">পূর্বাভাস: %1$s</string>
+    <string name="hijriCal_title">হিজরি ক্যালেন্ডার</string>
+    <string name="hijriCal_auto">স্বয়ংক্রিয় (আপনার স্থান অনুযায়ী)</string>
+    <string name="hijriCal_diyanet">দিয়ানেত (তুরস্ক)</string>
+    <string name="hijriCal_kemenag">কেমেনাগ (ইন্দোনেশিয়া)</string>
+    <string name="hijriCal_offset">মাসের শুরু সমন্বয়</string>
+    <string name="hijriCal_offsetM1">1 দিন আগে</string>
+    <string name="hijriCal_offset0">কোনো সমন্বয় নেই</string>
+    <string name="hijriCal_offsetP1">1 দিন পরে</string>
+    <string name="hijriCal_note">হিজরি মাসের শুরু দেশভেদে এক দিন আলাদা হতে পারে। ইন্দোনেশিয়ার ক্যালেন্ডার কেমেনাগের ঘোষিত তারিখ অনুসরণ করে, আর যে মাসগুলো এখনো ঘোষণা হয়নি সেগুলো MABIMS মানদণ্ডে হিসাব করা হয়। যেখানে চাঁদ সাধারণত এক দিন পরে দেখা যায়, যেমন ভারত বা পাকিস্তান, সেখানে আপনি \"1 দিন পরে\" বেছে নিতে পারেন। ধর্মীয় দিন ও রমজানও এই অনুযায়ী বদলায়।</string>
     <string name="app_name">সময় ও তারিখ</string>
 </resources>

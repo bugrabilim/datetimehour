@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">Evening golden hour starts in %1$s min</string>
     <string name="photoApp_n_pmBlue">Evening blue hour starts in %1$s min</string>
     <string name="photoApp_n_q">Forecast: %1$s</string>
+    <string name="hijriCal_title">Hijri calendar</string>
+    <string name="hijriCal_auto">Automatic (by your location)</string>
+    <string name="hijriCal_diyanet">Diyanet (Türkiye)</string>
+    <string name="hijriCal_kemenag">Kemenag (Indonesia)</string>
+    <string name="hijriCal_offset">Month start adjustment</string>
+    <string name="hijriCal_offsetM1">1 day earlier</string>
+    <string name="hijriCal_offset0">No adjustment</string>
+    <string name="hijriCal_offsetP1">1 day later</string>
+    <string name="hijriCal_note">The start of a Hijri month can differ by a day from country to country. The Indonesian calendar follows the dates announced by Kemenag and, for months not yet announced, a calculation with the MABIMS criterion. Where the crescent is usually seen a day later, such as India or Pakistan, you can choose \"1 day later\". Religious days and Ramadan follow this setting.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

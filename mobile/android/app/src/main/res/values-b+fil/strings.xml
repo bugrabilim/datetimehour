@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">Magsisimula ang golden hour sa hapon sa loob ng %1$s minuto</string>
     <string name="photoApp_n_pmBlue">Magsisimula ang blue hour sa gabi sa loob ng %1$s minuto</string>
     <string name="photoApp_n_q">Hula: %1$s</string>
+    <string name="hijriCal_title">Kalendaryong Hijri</string>
+    <string name="hijriCal_auto">Awtomatiko (ayon sa lokasyon mo)</string>
+    <string name="hijriCal_diyanet">Diyanet (Turkey)</string>
+    <string name="hijriCal_kemenag">Kemenag (Indonesia)</string>
+    <string name="hijriCal_offset">Pag-adjust sa simula ng buwan</string>
+    <string name="hijriCal_offsetM1">1 araw na mas maaga</string>
+    <string name="hijriCal_offset0">Walang pag-adjust</string>
+    <string name="hijriCal_offsetP1">1 araw na mas huli</string>
+    <string name="hijriCal_note">Ang simula ng buwang Hijri ay maaaring magkaiba nang isang araw sa bawat bansa. Sinusunod ng kalendaryong Indonesian ang mga petsang inanunsyo ng Kemenag, at sa mga buwang hindi pa inaanunsyo, kinakalkula ito ayon sa pamantayang MABIMS. Kung saan karaniwang nakikita ang hilal nang isang araw na mas huli, gaya ng India o Pakistan, maaari mong piliin ang \"1 araw na mas huli\". Sumusunod din dito ang mga araw na panrelihiyon at ang Ramadan.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

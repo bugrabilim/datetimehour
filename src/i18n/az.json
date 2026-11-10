@@ -2734,7 +2734,15 @@
       }
     ],
     "rumi": "Rumi: {date}",
-    "rumiNote": "Rumi tarix Yulian təqvimi ilə (miladi təqvimdən 13 gün geri) və 1 mart il başı ilə yazılır; ənənəvi Türkiyə təqvimlərindəki kimi."
+    "rumiNote": "Rumi tarix Yulian təqvimi ilə (miladi təqvimdən 13 gün geri) və 1 mart il başı ilə yazılır; ənənəvi Türkiyə təqvimlərindəki kimi.",
+    "calLabel": "Hicri təqvim",
+    "calDiyanet": "Diyanət (Türkiyə)",
+    "calKemenag": "Kemenag (İndoneziya)",
+    "offLabel": "Ay başı düzəlişi",
+    "offM1": "1 gün əvvəl",
+    "off0": "Düzəliş yoxdur",
+    "offP1": "1 gün sonra",
+    "calNote": "Hicri ayın başlanğıcı ölkədən ölkəyə bir gün dəyişə bilər. İndoneziya təqvimi Kemenag-ın elan etdiyi tarixlərdən, elan edilməyən aylarda isə MABIMS meyarı ilə hesablamadan gəlir. Hindistan, Pakistan kimi hilalın adətən bir gün gec görüldüyü yerlərdə \"1 gün sonra\"nı seçə bilərsiniz."
   },
   "timeCalc": {
     "title": "Saat Hesablama: Toplama, Çıxma və İki Saat Arası Müddət | Saat Tarih",

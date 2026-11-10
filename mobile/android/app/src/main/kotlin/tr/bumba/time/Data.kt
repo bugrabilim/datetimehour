@@ -92,10 +92,53 @@ object AppData {
     /** İl → ilçeleri (ada göre sıralı) */
     lateinit var districts: Map<String, List<District>>
         private set
-    /** Gün → o günün olayları (birden çok güne yayılanlar her günde) */
-    lateinit var events: Map<LocalDate, List<CalEvent>>
-    lateinit var ramadans: List<ClosedRange<LocalDate>>
-        private set
+    /** calendar.json'daki olaylar dosya sırasıyla ve Ramazanlar (Diyanet'e göre) */
+    private var baseEvents: List<CalEvent> = emptyList()
+    private var baseRamadans: List<ClosedRange<LocalDate>> = emptyList()
+    private var shiftKey = ""
+    private var shiftedEvents: Map<LocalDate, List<CalEvent>> = emptyMap()
+    private var shiftedRamadans: List<ClosedRange<LocalDate>> = emptyList()
+
+    /**
+     * Gün → o günün olayları (birden çok güne yayılanlar her günde). Dini günler (tür "religious") ve Ramazan seçili hicri
+     * takvime göredir (Hijri.shift: Endonezya takvimi ya da ±1 gün; 10 Kasım 2026); Türkiye'nin resmî tatilleri değişmez.
+     */
+    val events: Map<LocalDate, List<CalEvent>> get() { refreshShift(); return shiftedEvents }
+    val ramadans: List<ClosedRange<LocalDate>> get() { refreshShift(); return shiftedRamadans }
+
+    /** Diyanet'e göre bir dini günün seçili takvimdeki günü (Regaib: Recep'in ilk cumasından önceki perşembe) */
+    fun shiftReligious(e: CalEvent): CalEvent {
+        if (Hijri.isDefault) return e
+        val date = when (e.key) {
+            "regaib" -> Hijri.baseDate(e.date.plusDays(1))?.let { h -> Hijri.month(h.year, 7)?.first }
+                ?.let { first -> first.with(java.time.temporal.TemporalAdjusters.nextOrSame(java.time.DayOfWeek.FRIDAY)).minusDays(1) }
+                ?: e.date
+            // Arife: bayramın birinci gününden önceki gün (Ramazan 29 ya da 30 gün olabilir)
+            "rbEve", "kbEve" -> Hijri.shift(e.date.plusDays(1)).minusDays(1)
+            else -> Hijri.shift(e.date)
+        }
+        return if (date == e.date) e else e.copy(date = date, end = e.end?.let { it.plusDays(java.time.temporal.ChronoUnit.DAYS.between(e.date, date)) })
+    }
+
+    private fun refreshShift() {
+        val k = Hijri.key
+        if (k == shiftKey) return
+        val m = LinkedHashMap<LocalDate, MutableList<CalEvent>>()
+        for (e0 in baseEvents) {
+            val e = if (e0.type == "religious") shiftReligious(e0) else e0
+            var d = e.date
+            while (!d.isAfter(e.end ?: e.date)) {
+                m.getOrPut(d) { ArrayList() }.add(e)
+                d = d.plusDays(1)
+            }
+        }
+        shiftedEvents = m
+        shiftedRamadans = if (Hijri.isDefault) baseRamadans else baseRamadans.map { r ->
+            Hijri.shift(r.start)..Hijri.shift(r.endInclusive.plusDays(1)).minusDays(1)
+        }
+        shiftKey = k
+    }
+
     lateinit var schoolBreaks: List<ClosedRange<LocalDate>>
         private set
     lateinit var projectedYears: Set<Int>
@@ -125,12 +168,12 @@ object AppData {
                  o.getJSONObject("name").toMap(), o.getJSONObject("country").toMap())
         }
 
-        Hijri.load(read("hijri.json"))
+        Hijri.load(read("hijri.json"), runCatching { read("hijri-id.json") }.getOrNull())
         Fitre.load(read("fitre.json"))
 
         val cal = JSONObject(read("calendar.json"))
         val years = cal.getJSONObject("years")
-        val byDay = HashMap<LocalDate, MutableList<CalEvent>>()
+        val all = ArrayList<CalEvent>()
         val school = ArrayList<ClosedRange<LocalDate>>()
         val projected = HashSet<Int>()
         for (y in years.keys()) {
@@ -141,12 +184,7 @@ object AppData {
                 val o = ev.getJSONObject(i)
                 val start = LocalDate.parse(o.getString("date"))
                 val end = if (o.has("end") && !o.isNull("end")) LocalDate.parse(o.getString("end")) else null
-                val e = CalEvent(start, o.getString("key"), o.getString("type"), end)
-                var d = start
-                while (!d.isAfter(end ?: start)) {
-                    byDay.getOrPut(d) { ArrayList() }.add(e)
-                    d = d.plusDays(1)
-                }
+                all += CalEvent(start, o.getString("key"), o.getString("type"), end)
             }
             val sr = yo.getJSONArray("schoolRanges")
             for (i in 0 until sr.length()) {
@@ -154,16 +192,17 @@ object AppData {
                 school += LocalDate.parse(o.getString("from"))..LocalDate.parse(o.getString("to"))
             }
         }
-        events = byDay
+        baseEvents = all
         schoolBreaks = school
         projectedYears = projected
         val r = cal.getJSONArray("ramadans")
         // Son Ramazan'ın bitişi henüz belli olmayabilir (veride null): 29 gün sayılır
-        ramadans = (0 until r.length()).map { i ->
+        baseRamadans = (0 until r.length()).map { i ->
             val o = r.getJSONObject(i)
             val from = LocalDate.parse(o.getString("from"))
             from..(if (o.isNull("to")) from.plusDays(29) else LocalDate.parse(o.getString("to")))
         }
+        shiftKey = ""
     }
 
     fun isRamadan(d: LocalDate) = ramadans.any { d in it }

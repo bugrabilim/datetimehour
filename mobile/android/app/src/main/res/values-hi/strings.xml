@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">शाम का सुनहरा घंटा %1$s मिनट में शुरू होगा</string>
     <string name="photoApp_n_pmBlue">शाम का नीला घंटा %1$s मिनट में शुरू होगा</string>
     <string name="photoApp_n_q">पूर्वानुमान: %1$s</string>
+    <string name="hijriCal_title">हिजरी कैलेंडर</string>
+    <string name="hijriCal_auto">स्वचालित (आपकी जगह के अनुसार)</string>
+    <string name="hijriCal_diyanet">दियानत (तुर्किये)</string>
+    <string name="hijriCal_kemenag">केमेनाग (इंडोनेशिया)</string>
+    <string name="hijriCal_offset">महीने की शुरुआत में बदलाव</string>
+    <string name="hijriCal_offsetM1">1 दिन पहले</string>
+    <string name="hijriCal_offset0">कोई बदलाव नहीं</string>
+    <string name="hijriCal_offsetP1">1 दिन बाद</string>
+    <string name="hijriCal_note">हिजरी महीने की शुरुआत एक देश से दूसरे देश में एक दिन अलग हो सकती है। इंडोनेशियाई कैलेंडर केमेनाग की घोषित तारीख़ों पर चलता है और जिन महीनों की घोषणा नहीं हुई, उनमें MABIMS मानदंड से गणना होती है। जहाँ चाँद अक्सर एक दिन बाद दिखता है, जैसे भारत या पाकिस्तान, वहाँ आप \"1 दिन बाद\" चुन सकते हैं। धार्मिक दिन और रमज़ान भी इसी के अनुसार बदलते हैं।</string>
     <string name="app_name">समय और तारीख</string>
 </resources>

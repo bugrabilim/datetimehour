@@ -161,6 +161,9 @@ final class PlaceModel {
     static let shared = PlaceModel()
 
     private(set) var place = AppPlace.stored()
+
+    // Hicri takvimin otomatik seçimi yerin saat dilimine bakar (Endonezya; 10 Kasım 2026)
+    private init() { Hijri.publish(zone: place.zone) }
     private(set) var locating = false
     /// Konum izni verilmedi ya da konum alınamadı
     var failed = false
@@ -198,6 +201,7 @@ final class PlaceModel {
         let new = AppPlace.stored()
         guard new != place else { return }
         place = new
+        Hijri.publish(zone: new.zone)
         Task { await PrayerNotifier.reschedule(); await PrayerAlarms.sync() }
         WidgetCenter.shared.reloadAllTimelines()
         // Apple Watch "iPhone'daki yer" ve kilit ekranındaki sıradaki vakit

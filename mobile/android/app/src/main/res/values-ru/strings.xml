@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">Вечерний золотой час начнётся через %1$s мин</string>
     <string name="photoApp_n_pmBlue">Вечерний синий час начнётся через %1$s мин</string>
     <string name="photoApp_n_q">Прогноз: %1$s</string>
+    <string name="hijriCal_title">Календарь хиджры</string>
+    <string name="hijriCal_auto">Автоматически (по вашему месту)</string>
+    <string name="hijriCal_diyanet">Диянет (Турция)</string>
+    <string name="hijriCal_kemenag">Кеменаг (Индонезия)</string>
+    <string name="hijriCal_offset">Сдвиг начала месяца</string>
+    <string name="hijriCal_offsetM1">На 1 день раньше</string>
+    <string name="hijriCal_offset0">Без сдвига</string>
+    <string name="hijriCal_offsetP1">На 1 день позже</string>
+    <string name="hijriCal_note">Начало месяца по хиджре может отличаться на день в разных странах. Индонезийский календарь следует датам, объявленным Кеменагом, а для ещё не объявленных месяцев — расчёту по критерию MABIMS. Там, где молодой месяц обычно виден на день позже, например в Индии или Пакистане, можно выбрать «На 1 день позже». Религиозные дни и Рамадан меняются вместе с этой настройкой.</string>
     <string name="app_name">Время и дата</string>
 </resources>

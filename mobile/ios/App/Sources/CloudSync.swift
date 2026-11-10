@@ -33,7 +33,7 @@ enum CloudSync {
         // 2. analiz 1. dalga D (3 Kasım 2026): takip ekleri, hatim, Kur'an zemini/hedefi, dua favorileri, kendi zikirleri, vakit görünümü
         "track.when", "track.pauses", "track.pausedFrom", "track.kazaLog", "track.life", TrackX.inlineKey,
         "quran.hatim", QuranPlan.goalKey, "quran.read", QuranPlan.themeKey, Duas.favsKey, ZikirCustom.key, "zikir.beads", "zikir.shake",
-        "prayer.visual", "prayer.words", "meet.h12", "meet.exchanges",
+        "prayer.visual", "hijri.cal", "hijri.offset", "prayer.words", "meet.h12", "meet.exchanges",
         // Sahibin ekran görüntüleri (3 Kasım 2026): yazı boyutu
         FontScale.key, Atmosphere.key,
         // 2. analiz K-6 (3 Kasım 2026): gece yazı rengi ve saatleri, lüm rengi

@@ -2734,7 +2734,15 @@
       }
     ],
     "rumi": "Rumi: {date}",
-    "rumiNote": "Rumi tarih Jülyen takvimiyle (miladiden 13 gün geri) ve 1 Mart yılbaşıyla yazılır; Türkiye Takvimi geleneği."
+    "rumiNote": "Rumi tarih Jülyen takvimiyle (miladiden 13 gün geri) ve 1 Mart yılbaşıyla yazılır; Türkiye Takvimi geleneği.",
+    "calLabel": "Hicri takvim",
+    "calDiyanet": "Diyanet (Türkiye)",
+    "calKemenag": "Kemenag (Endonezya)",
+    "offLabel": "Ay başı düzeltmesi",
+    "offM1": "1 gün önce",
+    "off0": "Düzeltme yok",
+    "offP1": "1 gün sonra",
+    "calNote": "Hicri ay başı ülkeden ülkeye bir gün değişebilir. Endonezya takvimi Kemenag'ın açıkladığı tarihlerden, açıklanmayan aylarda MABIMS ölçütüyle hesaptan gelir. Hindistan, Pakistan gibi hilalin genellikle bir gün geç görüldüğü yerlerde \"1 gün sonra\"yı seçebilirsiniz."
   },
   "timeCalc": {
     "title": "Saat Hesaplama: Toplama, Çıkarma, İki Saat Arası Süre | Saat Tarih",

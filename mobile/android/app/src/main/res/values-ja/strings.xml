@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">夕方のゴールデンアワーまであと%1$s分</string>
     <string name="photoApp_n_pmBlue">夕方のブルーアワーまであと%1$s分</string>
     <string name="photoApp_n_q">予想：%1$s</string>
+    <string name="hijriCal_title">ヒジュラ暦</string>
+    <string name="hijriCal_auto">自動（現在地に合わせる）</string>
+    <string name="hijriCal_diyanet">ディヤーネット（トルコ）</string>
+    <string name="hijriCal_kemenag">ケメナグ（インドネシア）</string>
+    <string name="hijriCal_offset">月初めの調整</string>
+    <string name="hijriCal_offsetM1">1日早く</string>
+    <string name="hijriCal_offset0">調整しない</string>
+    <string name="hijriCal_offsetP1">1日遅く</string>
+    <string name="hijriCal_note">ヒジュラ暦の月初めは国によって1日ずれることがあります。インドネシアの暦はケメナグ（宗教省）が発表した日付に従い、未発表の月はMABIMS基準で計算します。インドやパキスタンなど新月が1日遅れて見えることの多い地域では「1日遅く」を選べます。宗教上の祝日とラマダンもこの設定に従います。</string>
     <string name="app_name">時刻と日付</string>
 </resources>

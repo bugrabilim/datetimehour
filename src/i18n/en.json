@@ -2734,7 +2734,15 @@
       }
     ],
     "rumi": "Rumi (Ottoman): {date}",
-    "rumiNote": "The Rumi date uses the Julian calendar (13 days behind the Gregorian) with the year starting on 1 March, as in traditional Turkish almanacs."
+    "rumiNote": "The Rumi date uses the Julian calendar (13 days behind the Gregorian) with the year starting on 1 March, as in traditional Turkish almanacs.",
+    "calLabel": "Hijri calendar",
+    "calDiyanet": "Diyanet (Türkiye)",
+    "calKemenag": "Kemenag (Indonesia)",
+    "offLabel": "Month start adjustment",
+    "offM1": "1 day earlier",
+    "off0": "No adjustment",
+    "offP1": "1 day later",
+    "calNote": "The start of a Hijri month can differ by a day from country to country. The Indonesian calendar follows the dates announced by Kemenag and, for months not yet announced, a calculation with the MABIMS criterion. Where the crescent is usually seen a day later, such as India or Pakistan, you can choose \"1 day later\"."
   },
   "timeCalc": {
     "title": "Time Calculator: Add, Subtract and Hours Between Times | Saat Tarih",

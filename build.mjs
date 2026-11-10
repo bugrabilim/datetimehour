@@ -6,7 +6,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 import { bridges } from "./lib/bridges.mjs";
-import { hijriTable } from "./lib/hijri.mjs";
+import { hijriTable, hijriTableId } from "./lib/hijri.mjs";
 import { skyEvents } from "./lib/sky-events.mjs";
 import { CALENDARS, calendarData, loadCalTexts, validateCalendars, siteYearSlice } from "./lib/calendars/index.mjs";
 
@@ -2503,6 +2503,8 @@ function buildZakat(lang) {
    burç hesaplama. Hepsi tarayıcıda çalışır (more-tools.js), dış istek yok; ses Web Audio ve cihazdaki konuşma motoru. */
 const MORE_KEYS = ["hijriConv", "timeCalc", "daysUntil", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom"];
 const HIJRI_TABLE = hijriTable(HOL, readJson("src/data/hijri.json"));
+// Endonezya hicri takvimi (10 Kasım 2026): Kemenag takvimi, isbat kararları, dışında MABIMS hesabı; Diyanet tablosuyla aynı aralıkta
+const HIJRI_TABLE_ID = [...hijriTableId(HIJRI_TABLE, readJson("src/data/hijri-id.json"))];
 const DU_KEYS = ["newYear", "ramadanStart", "rb1", "apr23", "may1", "may19", "kb1", "jul15", "aug30", "oct29", "hijri", "ashura", "mawlid", "regaib", "mirac", "berat", "kadir", "feb14", "mothers", "fathers"];
 // Burçların yaklaşık başlangıç günleri (tropikal zodyak; Koç'tan başlayarak [ay, gün])
 const ZODIAC_START = [[3, 21], [4, 20], [5, 21], [6, 21], [7, 23], [8, 23], [9, 23], [10, 23], [11, 22], [12, 22], [1, 20], [2, 19]];
@@ -2524,6 +2526,7 @@ function moreBody(lang, key) {
       <p class="big-time mt-big" data-hj-today>–</p>
       <p class="meta" data-hj-today-greg>&nbsp;</p>
       <p class="meta" data-hj-rumi title="${esc(s.rumiNote)}">&nbsp;</p>
+      <div class="inputs-row hj-opts" data-hj-opts hidden>${mtField("hj-cal", s.calLabel, `<select id="hj-cal" data-hj-cal><option value="diyanet">${esc(s.calDiyanet)}</option><option value="kemenag">${esc(s.calKemenag)}</option></select>`)}${mtField("hj-off", s.offLabel, `<select id="hj-off" data-hj-off><option value="-1">${esc(s.offM1)}</option><option value="0" selected>${esc(s.off0)}</option><option value="1">${esc(s.offP1)}</option></select>`)}</div>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`;
     const sections = `<section class="section" aria-labelledby="hj-a"><div class="wrap">
@@ -2539,9 +2542,10 @@ function moreBody(lang, key) {
     <section class="section" aria-labelledby="hj-c"><div class="wrap">
       <div class="table-wrap"><table class="events-table" data-hj-table><caption id="hj-c">${esc(tpl(s.yearHeading, { y: hy }))}</caption><thead><tr><th scope="col">${esc(s.colMonth)}</th><th scope="col">${esc(s.colStart)}</th><th scope="col">${esc(s.colDays)}</th></tr></thead><tbody data-hj-tbody>${rows}</tbody></table></div>
       <p class="meta">${esc(s.note)}</p>
+      <p class="meta">${esc(s.calNote)}</p>
       <p class="meta">${esc(s.rumiNote)}</p>
     </div></section>`;
-    return { hero, sections, client: { rumi: s.rumi, months: s.months, fmt: s.fmt, outside: s.outside, dayMax: s.dayMax, invalid: s.invalid, yearHeading: s.yearHeading, table: HIJRI_TABLE } };
+    return { hero, sections, client: { rumi: s.rumi, months: s.months, fmt: s.fmt, outside: s.outside, dayMax: s.dayMax, invalid: s.invalid, yearHeading: s.yearHeading, table: HIJRI_TABLE, tableId: HIJRI_TABLE_ID } };
   }
   if (key === "timeCalc") {
     const hero = `<section class="mt" data-mt="timecalc" aria-labelledby="tc-a">

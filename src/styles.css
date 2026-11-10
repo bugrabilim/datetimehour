@@ -644,6 +644,8 @@ html.has-cookie-bar body { padding-bottom: 5.5rem; }
 .inputs-row { align-items: flex-end; }
 .inputs-row .field { min-width: 6rem; margin: 0; }
 .inputs-row .field.grow { flex: 1; min-width: 12rem; }
+.hj-opts { justify-content: center; margin-top: 0.75rem; }
+.hj-opts[hidden] { display: none; }
 .check-inline { display: inline-flex; align-items: center; gap: 0.5rem; }
 .check-inline input { width: 1.25rem; height: 1.25rem; accent-color: var(--accent); }
 .chip, .tabs [role="tab"] { min-height: 2.75rem; padding: 0 1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; }

@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">A hora dourada da tarde começa em %1$s min</string>
     <string name="photoApp_n_pmBlue">A hora azul da tarde começa em %1$s min</string>
     <string name="photoApp_n_q">Previsão: %1$s</string>
+    <string name="hijriCal_title">Calendário hijri</string>
+    <string name="hijriCal_auto">Automático (conforme sua localização)</string>
+    <string name="hijriCal_diyanet">Diyanet (Turquia)</string>
+    <string name="hijriCal_kemenag">Kemenag (Indonésia)</string>
+    <string name="hijriCal_offset">Ajuste do início do mês</string>
+    <string name="hijriCal_offsetM1">1 dia antes</string>
+    <string name="hijriCal_offset0">Sem ajuste</string>
+    <string name="hijriCal_offsetP1">1 dia depois</string>
+    <string name="hijriCal_note">O início de um mês hijri pode variar um dia de um país para outro. O calendário indonésio segue as datas anunciadas pelo Kemenag e, nos meses ainda não anunciados, um cálculo pelo critério MABIMS. Onde a lua crescente costuma ser vista um dia depois, como na Índia ou no Paquistão, você pode escolher \"1 dia depois\". Os dias religiosos e o Ramadã seguem esse ajuste.</string>
     <string name="app_name">Hora e Data</string>
 </resources>

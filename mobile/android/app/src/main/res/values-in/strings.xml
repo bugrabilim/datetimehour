@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">Jam emas sore dimulai %1$s menit lagi</string>
     <string name="photoApp_n_pmBlue">Jam biru petang dimulai %1$s menit lagi</string>
     <string name="photoApp_n_q">Prakiraan: %1$s</string>
+    <string name="hijriCal_title">Kalender Hijriah</string>
+    <string name="hijriCal_auto">Otomatis (sesuai lokasi Anda)</string>
+    <string name="hijriCal_diyanet">Diyanet (Turki)</string>
+    <string name="hijriCal_kemenag">Kemenag (Indonesia)</string>
+    <string name="hijriCal_offset">Penyesuaian awal bulan</string>
+    <string name="hijriCal_offsetM1">1 hari lebih awal</string>
+    <string name="hijriCal_offset0">Tanpa penyesuaian</string>
+    <string name="hijriCal_offsetP1">1 hari lebih lambat</string>
+    <string name="hijriCal_note">Awal bulan Hijriah bisa berbeda satu hari antarnegara. Kalender Indonesia mengikuti tanggal yang diumumkan Kemenag, dan untuk bulan yang belum diumumkan dihitung dengan kriteria MABIMS. Di tempat yang hilalnya biasanya terlihat sehari kemudian, seperti India atau Pakistan, Anda dapat memilih \"1 hari lebih lambat\". Hari besar Islam dan Ramadan mengikuti pengaturan ini.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

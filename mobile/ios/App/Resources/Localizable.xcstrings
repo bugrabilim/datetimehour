@@ -445179,6 +445179,1077 @@
           }
         }
       }
+    },
+    "hijriCal.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hicri takvim"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hijri calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidschri-Kalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hicri təqvim"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التقويم الهجري"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalender Hijriah"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہجری کیلنڈر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقویم هجری قمری"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendrier hégirien"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Календарь хиджры"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ヒジュラ暦"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "히즈라력"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伊斯兰历"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalendaryong Hijri"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปฏิทินฮิจเราะห์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendario hégira"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendário hijri"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हिजरी कैलेंडर"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "হিজরি ক্যালেন্ডার"
+          }
+        }
+      }
+    },
+    "hijriCal.auto": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otomatik (yerinize göre)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic (by your location)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatisch (nach Ihrem Ort)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avtomatik (yerinizə görə)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تلقائي (حسب موقعك)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otomatis (sesuai lokasi Anda)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خودکار (آپ کے مقام کے مطابق)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خودکار (بر اساس مکان شما)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatique (selon votre lieu)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автоматически (по вашему месту)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動（現在地に合わせる）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "자동 (위치에 따라)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动（按您的位置）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Awtomatiko (ayon sa lokasyon mo)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อัตโนมัติ (ตามตำแหน่งของคุณ)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automático (según su ubicación)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automático (conforme sua localização)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "स्वचालित (आपकी जगह के अनुसार)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "স্বয়ংক্রিয় (আপনার স্থান অনুযায়ী)"
+          }
+        }
+      }
+    },
+    "hijriCal.diyanet": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Türkiye)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Türkiye)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Türkei)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanət (Türkiyə)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رئاسة الشؤون الدينية (تركيا)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Turki)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دیانت (ترکی)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دیانت (ترکیه)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Turquie)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Диянет (Турция)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ディヤーネット（トルコ）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "디야넷 (튀르키예)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "迪亚内特（土耳其）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Turkey)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ดียาเนต (ตุรกี)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Turquía)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet (Turquia)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "दियानत (तुर्किये)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "দিয়ানেত (তুরস্ক)"
+          }
+        }
+      }
+    },
+    "hijriCal.kemenag": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Endonezya)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Indonesia)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Indonesien)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (İndoneziya)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وزارة الشؤون الدينية (إندونيسيا)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Indonesia)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کیمیناگ (انڈونیشیا)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کمناگ (اندونزی)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Indonésie)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кеменаг (Индонезия)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ケメナグ（インドネシア）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "케메낙 (인도네시아)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "印尼宗教部（印度尼西亚）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Indonesia)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เกอเมอนัก (อินโดนีเซีย)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Indonesia)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Indonésia)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "केमेनाग (इंडोनेशिया)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কেমেনাগ (ইন্দোনেশিয়া)"
+          }
+        }
+      }
+    },
+    "hijriCal.offset": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay başı düzeltmesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Month start adjustment"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monatsbeginn anpassen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay başı düzəlişi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعديل بداية الشهر"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Penyesuaian awal bulan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مہینے کے آغاز میں تبدیلی"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تنظیم آغاز ماه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajustement du début du mois"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сдвиг начала месяца"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "月初めの調整"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "월초 조정"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "月初调整"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pag-adjust sa simula ng buwan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปรับวันต้นเดือน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajuste del inicio del mes"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajuste do início do mês"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "महीने की शुरुआत में बदलाव"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "মাসের শুরু সমন্বয়"
+          }
+        }
+      }
+    },
+    "hijriCal.offsetM1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 gün önce"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 day earlier"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 Tag früher"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 gün əvvəl"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قبل يوم واحد"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hari lebih awal"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 دن پہلے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 روز زودتر"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 jour plus tôt"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На 1 день раньше"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1日早く"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1일 일찍"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提前 1 天"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 araw na mas maaga"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เร็วขึ้น 1 วัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 día antes"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 dia antes"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 दिन पहले"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 দিন আগে"
+          }
+        }
+      }
+    },
+    "hijriCal.offset0": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzeltme yok"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No adjustment"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Anpassung"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzəliş yoxdur"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بدون تعديل"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanpa penyesuaian"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کوئی تبدیلی نہیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بدون تنظیم"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucun ajustement"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без сдвига"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "調整しない"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "조정 없음"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不调整"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Walang pag-adjust"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ไม่ปรับ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sin ajuste"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sem ajuste"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कोई बदलाव नहीं"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কোনো সমন্বয় নেই"
+          }
+        }
+      }
+    },
+    "hijriCal.offsetP1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 gün sonra"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 day later"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 Tag später"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 gün sonra"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بعد يوم واحد"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hari lebih lambat"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 دن بعد"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 روز دیرتر"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 jour plus tard"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На 1 день позже"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1日遅く"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1일 늦게"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "推迟 1 天"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 araw na mas huli"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ช้าลง 1 วัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 día después"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 dia depois"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 दिन बाद"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 দিন পরে"
+          }
+        }
+      }
+    },
+    "hijriCal.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hicri ay başı ülkeden ülkeye bir gün değişebilir. Endonezya takvimi Kemenag'ın açıkladığı tarihlerden, açıklanmayan aylarda MABIMS ölçütüyle hesaptan gelir. Hindistan, Pakistan gibi hilalin genellikle bir gün geç görüldüğü yerlerde \"1 gün sonra\"yı seçebilirsiniz. Dini günler ve Ramazan da buna göre değişir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The start of a Hijri month can differ by a day from country to country. The Indonesian calendar follows the dates announced by Kemenag and, for months not yet announced, a calculation with the MABIMS criterion. Where the crescent is usually seen a day later, such as India or Pakistan, you can choose \"1 day later\". Religious days and Ramadan follow this setting."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Beginn eines Hidschri-Monats kann sich von Land zu Land um einen Tag unterscheiden. Der indonesische Kalender folgt den von Kemenag bekannt gegebenen Daten, für noch nicht bekannt gegebene Monate einer Berechnung nach dem MABIMS-Kriterium. Wo die Mondsichel meist einen Tag später gesehen wird, etwa in Indien oder Pakistan, können Sie „1 Tag später“ wählen. Religiöse Tage und Ramadan richten sich danach."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hicri ayın başlanğıcı ölkədən ölkəyə bir gün dəyişə bilər. İndoneziya təqvimi Kemenag-ın elan etdiyi tarixlərdən, elan edilməyən aylarda isə MABIMS meyarı ilə hesablamadan gəlir. Hindistan, Pakistan kimi hilalın adətən bir gün gec görüldüyü yerlərdə \"1 gün sonra\"nı seçə bilərsiniz. Dini günlər və Ramazan da buna görə dəyişir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قد تختلف بداية الشهر الهجري يومًا واحدًا من بلد إلى آخر. يتبع التقويم الإندونيسي التواريخ التي تعلنها وزارة الشؤون الدينية الإندونيسية، وفي الأشهر غير المعلنة يُحسب بمعيار MABIMS. في الأماكن التي يُرى فيها الهلال عادةً بعد يوم، مثل الهند وباكستان، يمكنك اختيار «بعد يوم واحد». وتتغير المناسبات الدينية ورمضان تبعًا لذلك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Awal bulan Hijriah bisa berbeda satu hari antarnegara. Kalender Indonesia mengikuti tanggal yang diumumkan Kemenag, dan untuk bulan yang belum diumumkan dihitung dengan kriteria MABIMS. Di tempat yang hilalnya biasanya terlihat sehari kemudian, seperti India atau Pakistan, Anda dapat memilih \"1 hari lebih lambat\". Hari besar Islam dan Ramadan mengikuti pengaturan ini."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہجری مہینے کا آغاز ایک ملک سے دوسرے ملک میں ایک دن مختلف ہو سکتا ہے۔ انڈونیشیائی کیلنڈر کیمیناگ کی اعلان کردہ تاریخوں پر چلتا ہے، اور جن مہینوں کا اعلان نہیں ہوا ان میں MABIMS معیار سے حساب کیا جاتا ہے۔ جہاں چاند عموماً ایک دن بعد نظر آتا ہے، جیسے بھارت یا پاکستان، آپ \"1 دن بعد\" منتخب کر سکتے ہیں۔ مذہبی دن اور رمضان بھی اسی کے مطابق بدلتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آغاز ماه هجری قمری ممکن است از کشوری به کشور دیگر یک روز فرق کند. تقویم اندونزی از تاریخ‌های اعلام‌شدهٔ کمناگ پیروی می‌کند و در ماه‌هایی که هنوز اعلام نشده با معیار MABIMS محاسبه می‌شود. در جاهایی که هلال معمولاً یک روز دیرتر دیده می‌شود، مانند هند یا پاکستان، می‌توانید «1 روز دیرتر» را انتخاب کنید. مناسبت‌های دینی و رمضان هم بر همین اساس تغییر می‌کنند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le début d'un mois hégirien peut varier d'un jour selon les pays. Le calendrier indonésien suit les dates annoncées par Kemenag et, pour les mois pas encore annoncés, un calcul selon le critère MABIMS. Là où le croissant est généralement vu un jour plus tard, comme en Inde ou au Pakistan, vous pouvez choisir « 1 jour plus tard ». Les fêtes religieuses et le ramadan suivent ce réglage."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Начало месяца по хиджре может отличаться на день в разных странах. Индонезийский календарь следует датам, объявленным Кеменагом, а для ещё не объявленных месяцев — расчёту по критерию MABIMS. Там, где молодой месяц обычно виден на день позже, например в Индии или Пакистане, можно выбрать «На 1 день позже». Религиозные дни и Рамадан меняются вместе с этой настройкой."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ヒジュラ暦の月初めは国によって1日ずれることがあります。インドネシアの暦はケメナグ（宗教省）が発表した日付に従い、未発表の月はMABIMS基準で計算します。インドやパキスタンなど新月が1日遅れて見えることの多い地域では「1日遅く」を選べます。宗教上の祝日とラマダンもこの設定に従います。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "히즈라력의 월초는 나라마다 하루 차이가 날 수 있습니다. 인도네시아 달력은 케메낙(종교부)이 발표한 날짜를 따르고, 발표되지 않은 달은 MABIMS 기준으로 계산합니다. 인도나 파키스탄처럼 초승달이 보통 하루 늦게 보이는 곳에서는 \"1일 늦게\"를 선택할 수 있습니다. 종교 기념일과 라마단도 이 설정을 따릅니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伊斯兰历的月初在不同国家可能相差一天。印度尼西亚历法采用印尼宗教部公布的日期，尚未公布的月份按 MABIMS 标准计算。在印度、巴基斯坦等新月通常晚一天才看到的地方，您可以选择“推迟 1 天”。宗教节日和斋月也随此设置变化。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang simula ng buwang Hijri ay maaaring magkaiba nang isang araw sa bawat bansa. Sinusunod ng kalendaryong Indonesian ang mga petsang inanunsyo ng Kemenag, at sa mga buwang hindi pa inaanunsyo, kinakalkula ito ayon sa pamantayang MABIMS. Kung saan karaniwang nakikita ang hilal nang isang araw na mas huli, gaya ng India o Pakistan, maaari mong piliin ang \"1 araw na mas huli\". Sumusunod din dito ang mga araw na panrelihiyon at ang Ramadan."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันต้นเดือนฮิจเราะห์อาจต่างกันหนึ่งวันในแต่ละประเทศ ปฏิทินอินโดนีเซียใช้วันที่ที่เกอเมอนัก (กระทรวงศาสนา) ประกาศ และเดือนที่ยังไม่ประกาศจะคำนวณตามเกณฑ์ MABIMS ในที่ที่มักเห็นจันทร์เสี้ยวช้ากว่าหนึ่งวัน เช่น อินเดียหรือปากีสถาน คุณเลือก \"ช้าลง 1 วัน\" ได้ วันสำคัญทางศาสนาและรอมฎอนจะเปลี่ยนตามการตั้งค่านี้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El inicio de un mes de la hégira puede variar un día de un país a otro. El calendario indonesio sigue las fechas anunciadas por Kemenag y, en los meses aún no anunciados, un cálculo con el criterio MABIMS. Donde la luna creciente suele verse un día después, como en la India o Pakistán, puede elegir «1 día después». Los días religiosos y el Ramadán siguen este ajuste."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O início de um mês hijri pode variar um dia de um país para outro. O calendário indonésio segue as datas anunciadas pelo Kemenag e, nos meses ainda não anunciados, um cálculo pelo critério MABIMS. Onde a lua crescente costuma ser vista um dia depois, como na Índia ou no Paquistão, você pode escolher \"1 dia depois\". Os dias religiosos e o Ramadã seguem esse ajuste."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हिजरी महीने की शुरुआत एक देश से दूसरे देश में एक दिन अलग हो सकती है। इंडोनेशियाई कैलेंडर केमेनाग की घोषित तारीख़ों पर चलता है और जिन महीनों की घोषणा नहीं हुई, उनमें MABIMS मानदंड से गणना होती है। जहाँ चाँद अक्सर एक दिन बाद दिखता है, जैसे भारत या पाकिस्तान, वहाँ आप \"1 दिन बाद\" चुन सकते हैं। धार्मिक दिन और रमज़ान भी इसी के अनुसार बदलते हैं।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "হিজরি মাসের শুরু দেশভেদে এক দিন আলাদা হতে পারে। ইন্দোনেশিয়ার ক্যালেন্ডার কেমেনাগের ঘোষিত তারিখ অনুসরণ করে, আর যে মাসগুলো এখনো ঘোষণা হয়নি সেগুলো MABIMS মানদণ্ডে হিসাব করা হয়। যেখানে চাঁদ সাধারণত এক দিন পরে দেখা যায়, যেমন ভারত বা পাকিস্তান, সেখানে আপনি \"1 দিন পরে\" বেছে নিতে পারেন। ধর্মীয় দিন ও রমজানও এই অনুযায়ী বদলায়।"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -546,6 +546,15 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
     check((hijriDate(t, d) || []).join("/") === want, `hicri tarih: ${d} ${want} değil (${hijriDate(t, d)})`);
   }
   check(hijriDate(t, "2025-12-20") === null && hijriDate(t, "2031-12-31") !== null, "hicri tarih: tablo aralığı");
+  // Endonezya takvimi (10 Kasım 2026): Kemenag 2026 takvimi, SKB 2026/2027 ve isbat; MABIMS hesabı dayanakların hepsini tutturmalı
+  const { hijriTableId } = await import("../lib/hijri.mjs");
+  const ti = hijriTableId(t, JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/hijri-id.json"), "utf8")));
+  check(ti.mismatch.length === 0, `Endonezya hicri: MABIMS hesabı dayanaklardan ayrılıyor: ${ti.mismatch.join(", ")}`);
+  check(ti[0][1] === t[0][1] && ti[0][2] === t[0][2] && ti.length === t.length, "Endonezya hicri: Diyanet tablosuyla aynı aralıkta değil");
+  for (const [d, want] of [["2026-11-10", "1448/5/30"], ["2026-11-11", "1448/6/1"], ["2026-03-21", "1447/10/1"], ["2026-03-20", "1447/9/30"], ["2027-03-10", "1448/10/1"], ["2027-05-17", "1448/12/10"]]) {
+    check((hijriDate(ti, d) || []).join("/") === want, `Endonezya hicri tarih: ${d} ${want} değil (${hijriDate(ti, d)})`);
+  }
+  check(/data-hj-cal\b/.test(fs.readFileSync(path.join(DIST, "hicri-takvim-cevirici/index.html"), "utf8")), "hicri çevirici: takvim seçimi yok");
 }
 // O maddeleri (30 Ekim 2026): hesap yöntemleri, hilal, gece gökyüzü, tutulma haritası, tarihte bugün, emeklilik
 {

@@ -107,6 +107,7 @@ targets:
       - path: App/Resources/moon.jpg
       - path: App/Resources/earth.jpg
       - path: App/Resources/hijri.json
+      - path: App/Resources/hijri-id.json
       # Günün içeriği widget'ı (2. analiz #16)
       - path: App/Resources/sayings.json
       - path: App/Resources/esma.json
@@ -192,6 +193,7 @@ targets:
       - path: App/Resources/InfoPlist.xcstrings
       - path: App/Resources/provinces.json
       - path: App/Resources/hijri.json
+      - path: App/Resources/hijri-id.json
     dependencies:
       - package: SaatCore
       - target: SaatTarihWatchWidget
@@ -231,6 +233,7 @@ targets:
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/provinces.json
       - path: App/Resources/hijri.json
+      - path: App/Resources/hijri-id.json
     dependencies:
       - package: SaatCore
       - sdk: WidgetKit.framework
@@ -275,6 +278,7 @@ targets:
       - path: App/Resources/InfoPlist.xcstrings
       - path: App/Resources/provinces.json
       - path: App/Resources/hijri.json
+      - path: App/Resources/hijri-id.json
     dependencies:
       - package: SaatCore
     info:
@@ -322,6 +326,7 @@ targets:
       - path: App/Resources/InfoPlist.xcstrings
       - path: App/Resources/provinces.json
       - path: App/Resources/hijri.json
+      - path: App/Resources/hijri-id.json
     dependencies:
       - package: SaatCore
     info:
@@ -362,6 +367,7 @@ targets:
       - path: App/Resources/InfoPlist.xcstrings
       - path: App/Resources/provinces.json
       - path: App/Resources/hijri.json
+      - path: App/Resources/hijri-id.json
     dependencies:
       - package: SaatCore
     info:

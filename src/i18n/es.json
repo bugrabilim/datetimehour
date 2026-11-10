@@ -2814,7 +2814,15 @@
       }
     ],
     "rumi": "Rumí (otomano): {date}",
-    "rumiNote": "La fecha rumí usa el calendario juliano (13 días por detrás) con el año empezando el 1 de marzo, como en los almanaques turcos tradicionales."
+    "rumiNote": "La fecha rumí usa el calendario juliano (13 días por detrás) con el año empezando el 1 de marzo, como en los almanaques turcos tradicionales.",
+    "calLabel": "Calendario hégira",
+    "calDiyanet": "Diyanet (Turquía)",
+    "calKemenag": "Kemenag (Indonesia)",
+    "offLabel": "Ajuste del inicio del mes",
+    "offM1": "1 día antes",
+    "off0": "Sin ajuste",
+    "offP1": "1 día después",
+    "calNote": "El inicio de un mes de la hégira puede variar un día de un país a otro. El calendario indonesio sigue las fechas anunciadas por Kemenag y, en los meses aún no anunciados, un cálculo con el criterio MABIMS. Donde la luna creciente suele verse un día después, como en la India o Pakistán, puede elegir «1 día después»."
   },
   "timeCalc": {
     "title": "Calculadora de horas: sumar, restar, entre dos horas | Saat Tarih",

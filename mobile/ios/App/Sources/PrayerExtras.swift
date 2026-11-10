@@ -66,6 +66,8 @@ struct PrayerMethodView: View {
     @State private var method = PrayerMethod.id
     @State private var hanafi = PrayerMethod.hanafi
     @State private var regional = PrayerMethod.fromRegion(AppPlace.stored())
+    @State private var hijriCal = Hijri.setting
+    @State private var hijriOffset = Hijri.offset
 
     var body: some View {
         Form {
@@ -90,6 +92,26 @@ struct PrayerMethodView: View {
                     Text(L("prayer.method.appNote"))
                 }
             }
+            // Hicri takvim: Diyanet, Endonezya (Kemenag) ya da yere göre; ay başı ±1 gün (10 Kasım 2026)
+            Section {
+                Picker(L("hijriCal.title"), selection: $hijriCal) {
+                    ForEach(["auto", "diyanet", "kemenag"], id: \.self) { Text(L("hijriCal.\($0)")).tag($0) }
+                }
+                .pickerStyle(.inline)
+                .labelsHidden()
+            } header: { Text(L("hijriCal.title")) }
+            Section {
+                Picker(L("hijriCal.offset"), selection: $hijriOffset) {
+                    Text(L("hijriCal.offsetM1")).tag(-1)
+                    Text(L("hijriCal.offset0")).tag(0)
+                    Text(L("hijriCal.offsetP1")).tag(1)
+                }
+                .pickerStyle(.inline)
+                .labelsHidden()
+            } header: { Text(L("hijriCal.offset")) } footer: {
+                let today = Hijri.date(Date()).map { "☾ \($0.text) · " } ?? ""
+                Text(today + L("hijriCal.note")).id("\(hijriCal):\(hijriOffset)")
+            }
         }
         .themedBackground()
         .tint(Theme.accent)
@@ -97,6 +119,16 @@ struct PrayerMethodView: View {
         .navigationBarTitleDisplayMode(.large)
         .onChange(of: method) { save() }
         .onChange(of: hanafi) { save() }
+        .onChange(of: hijriCal) { saveHijri() }
+        .onChange(of: hijriOffset) { saveHijri() }
+    }
+
+    private func saveHijri() {
+        UserDefaults.standard.set(hijriCal, forKey: Hijri.calKey)
+        UserDefaults.standard.set(hijriOffset, forKey: Hijri.offsetKey)
+        Hijri.publish(zone: PlaceModel.shared.place.zone)
+        WidgetCenter.shared.reloadAllTimelines()
+        refresh()
     }
 
     /// Seçim (Diyanet dahil) saklanır; bundan sonra bölge varsayılanı kullanılmaz

@@ -81,6 +81,7 @@ struct SaatTarihApp: App {
             || d?.double(forKey: "place.lon") != p.lon
         Atmosphere.publish(atmo: atmo, lat: p.lat, lon: p.lon)
         PrayerMethod.publish()
+        Hijri.publish(zone: p.zone)
         if changed { WidgetCenter.shared.reloadAllTimelines() }
     }
 }

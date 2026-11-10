@@ -3742,5 +3742,14 @@
     <string name="photoApp_n_pmGold">Akşam altın saati %1$s dakika sonra başlıyor</string>
     <string name="photoApp_n_pmBlue">Akşam mavi saati %1$s dakika sonra başlıyor</string>
     <string name="photoApp_n_q">Tahmin: %1$s</string>
+    <string name="hijriCal_title">Hicri takvim</string>
+    <string name="hijriCal_auto">Otomatik (yerinize göre)</string>
+    <string name="hijriCal_diyanet">Diyanet (Türkiye)</string>
+    <string name="hijriCal_kemenag">Kemenag (Endonezya)</string>
+    <string name="hijriCal_offset">Ay başı düzeltmesi</string>
+    <string name="hijriCal_offsetM1">1 gün önce</string>
+    <string name="hijriCal_offset0">Düzeltme yok</string>
+    <string name="hijriCal_offsetP1">1 gün sonra</string>
+    <string name="hijriCal_note">Hicri ay başı ülkeden ülkeye bir gün değişebilir. Endonezya takvimi Kemenag\'ın açıkladığı tarihlerden, açıklanmayan aylarda MABIMS ölçütüyle hesaptan gelir. Hindistan, Pakistan gibi hilalin genellikle bir gün geç görüldüğü yerlerde \"1 gün sonra\"yı seçebilirsiniz. Dini günler ve Ramazan da buna göre değişir.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

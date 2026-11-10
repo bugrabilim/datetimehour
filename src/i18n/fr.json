@@ -2775,7 +2775,15 @@
       }
     ],
     "rumi": "Rumi (ottoman) : {date}",
-    "rumiNote": "La date rumi suit le calendrier julien (13 jours de retard) avec une année commençant le 1er mars, comme dans les almanachs turcs traditionnels."
+    "rumiNote": "La date rumi suit le calendrier julien (13 jours de retard) avec une année commençant le 1er mars, comme dans les almanachs turcs traditionnels.",
+    "calLabel": "Calendrier hégirien",
+    "calDiyanet": "Diyanet (Turquie)",
+    "calKemenag": "Kemenag (Indonésie)",
+    "offLabel": "Ajustement du début du mois",
+    "offM1": "1 jour plus tôt",
+    "off0": "Aucun ajustement",
+    "offP1": "1 jour plus tard",
+    "calNote": "Le début d'un mois hégirien peut varier d'un jour selon les pays. Le calendrier indonésien suit les dates annoncées par Kemenag et, pour les mois pas encore annoncés, un calcul selon le critère MABIMS. Là où le croissant est généralement vu un jour plus tard, comme en Inde ou au Pakistan, vous pouvez choisir « 1 jour plus tard »."
   },
   "timeCalc": {
     "title": "Calcul d’heures : addition, soustraction, durée | Saat Tarih",
