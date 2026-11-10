@@ -53,8 +53,9 @@ struct AppPlace: Equatable {
         return f.string(from: date)
     }
 
-    /// Kayıtlı seçim
+    /// Kayıtlı seçim (hiç seçilmediyse telefonun saat diliminden, DefaultPlace)
     static func stored(_ d: UserDefaults = .standard) -> AppPlace {
+        if d.string(forKey: "province") == nil, let p = DefaultPlace.place() { return p }
         let slug = d.string(forKey: "province") ?? "istanbul"
         if slug.hasPrefix("d:"), let district = District.find(slug) { return AppPlace(district: district) }
         guard slug == autoID else { return AppPlace(province: Province.find(slug.hasPrefix("d:") ? String(slug.split(separator: ":")[1]) : slug)) }
@@ -92,6 +93,49 @@ struct AppPlace: Equatable {
     }
 }
 
+/// Konum hiç seçilmediyse varsayılan yer (10 Kasım 2026, sahibin onayı; önceden her yerde İstanbul'du): telefonun saat
+/// dilimi Türkiye'ninse İstanbul (il, Diyanet vakitleri; nil döner), değilse o saat dilimindeki dünya şehri (cities.json)
+/// ya da en kalabalık yer (places.json); dilim listede yoksa aynı bölge önekli ve şu an aynı UTC farkındaki en kalabalık
+/// yer. Saat telefonun saat diliminden. Kaydedilmez: kişi bir yer seçene kadar geçerlidir. Android'deki DefaultPlace ile aynı.
+enum DefaultPlace {
+    private static let turkey: Set<String> = ["Europe/Istanbul", "Asia/Istanbul", "Turkey"]
+    /// Verideki eski adlar (telefon yeni adı verebilir)
+    private static let aliases = [
+        "Europe/Kyiv": "Europe/Kiev", "Asia/Calcutta": "Asia/Kolkata", "Asia/Saigon": "Asia/Ho_Chi_Minh",
+        "Asia/Katmandu": "Asia/Kathmandu", "Asia/Rangoon": "Asia/Yangon", "Asia/Yangon": "Asia/Rangoon",
+        "America/Buenos_Aires": "America/Argentina/Buenos_Aires", "Asia/Dacca": "Asia/Dhaka",
+    ]
+    private static var cache: (zone: String, place: AppPlace?)?
+
+    static func inTurkey(_ zone: TimeZone = .current) -> Bool { turkey.contains(zone.identifier) }
+
+    static func place(_ zone: TimeZone = .current) -> AppPlace? {
+        if let c = cache, c.zone == zone.identifier { return c.place }
+        let p = inTurkey(zone) ? nil : find(zone)
+        cache = (zone.identifier, p)
+        return p
+    }
+
+    private static func find(_ zone: TimeZone) -> AppPlace? {
+        let ids = Set([zone.identifier, aliases[zone.identifier]].compactMap { $0 })
+        func mk(_ name: String, _ lat: Double, _ lon: Double) -> AppPlace {
+            AppPlace(id: AppPlace.autoID, name: name, lat: lat, lon: lon, zone: zone)
+        }
+        if let c = City.all.first(where: { ids.contains($0.tz) }) { return mk(c.displayName, c.lat, c.lon) }
+        let places = GlobePlace.all
+        if let p = places.filter({ ids.contains($0.zone.identifier) }).max(by: { $0.population < $1.population }) {
+            return mk(p.name, p.lat, p.lon)
+        }
+        // Dilim verimizde yoksa: aynı bölgede (Europe/, America/…) şu an aynı UTC farkındaki en kalabalık yer
+        let now = Date()
+        let off = zone.secondsFromGMT(for: now)
+        guard let slash = zone.identifier.firstIndex(of: "/") else { return nil }
+        let region = zone.identifier[..<slash]
+        return places.filter { $0.zone.identifier.hasPrefix(region + "/") && $0.zone.secondsFromGMT(for: now) == off }
+            .max(by: { $0.population < $1.population }).map { mk($0.name, $0.lat, $0.lon) }
+    }
+}
+
 /// Seçili konum; değişince vakit bildirimleri ve widget'lar yenilenir.
 @MainActor @Observable
 final class PlaceModel {
@@ -124,7 +168,9 @@ final class PlaceModel {
 
     /// Uygulama öne gelince: Otomatik'teyse konum sessizce yenilenir (izin sorulmaz)
     func refresh() async {
-        guard place.isAuto, let loc = await OneShotLocation().fetch(requestPermission: false) else { return }
+        // Saat diliminden gelen varsayılan yer (DefaultPlace) de "auto" kimliklidir; o kişi seçmeden konuma çevrilmez
+        guard place.isAuto, UserDefaults.standard.string(forKey: "province") == AppPlace.autoID,
+              let loc = await OneShotLocation().fetch(requestPermission: false) else { return }
         AppPlace.save(loc)
         if AppPlace.stored() != place { apply() }
     }

@@ -54,6 +54,7 @@ data class AppPlace(val id: String, val name: String, val lat: Double, val lon: 
 
         /** Kayıtlı seçim (Prefs.province okunur; Compose'da değişince yeniden hesaplanır) */
         fun current(): AppPlace {
+            if (!Prefs.provinceChosen) DefaultPlace.place()?.let { return it }
             val slug = Prefs.province
             if (slug.startsWith("d:")) District.find(slug)?.let { return of(it) }
             if (slug != AUTO) return of(Province.find(slug.removePrefix("d:").substringBefore(":")))
@@ -94,6 +95,48 @@ data class AppPlace(val id: String, val name: String, val lat: Double, val lon: 
             }
             return lm.getLastKnownLocation(provider)
         }
+    }
+}
+
+/**
+ * Konum hiç seçilmediyse varsayılan yer (10 Kasım 2026, sahibin onayı; önceden her yerde İstanbul'du): telefonun saat
+ * dilimi Türkiye'ninse İstanbul (il, Diyanet vakitleri; null döner), değilse o saat dilimindeki dünya şehri (cities.json)
+ * ya da en kalabalık yer (places.json); dilim listede yoksa aynı bölge önekli ve şu an aynı UTC farkındaki en kalabalık yer.
+ * Saat telefonun saat diliminden. Kaydedilmez: kişi bir yer seçene kadar geçerlidir. iOS'taki DefaultPlace ile aynı kural.
+ */
+object DefaultPlace {
+    private val TURKEY = setOf("Europe/Istanbul", "Asia/Istanbul", "Turkey")
+    /** Verideki eski adlar (telefon yeni adı verebilir) */
+    private val ALIASES = mapOf(
+        "Europe/Kyiv" to "Europe/Kiev", "Asia/Calcutta" to "Asia/Kolkata", "Asia/Saigon" to "Asia/Ho_Chi_Minh",
+        "Asia/Katmandu" to "Asia/Kathmandu", "Asia/Rangoon" to "Asia/Yangon", "Asia/Yangon" to "Asia/Rangoon",
+        "America/Buenos_Aires" to "America/Argentina/Buenos_Aires", "Asia/Dacca" to "Asia/Dhaka",
+    )
+    @Volatile private var cache: Triple<String, String, AppPlace?>? = null
+
+    fun inTurkey(zone: ZoneId = ZoneId.systemDefault()) = zone.id in TURKEY
+
+    fun place(zone: ZoneId = ZoneId.systemDefault()): AppPlace? {
+        val lang = Strings.lang
+        cache?.let { if (it.first == zone.id && it.second == lang) return it.third }
+        val p = if (inTurkey(zone)) null else runCatching { find(zone) }.getOrNull()
+        cache = Triple(zone.id, lang, p)
+        return p
+    }
+
+    private fun find(zone: ZoneId): AppPlace? {
+        val ids = setOfNotNull(zone.id, ALIASES[zone.id])
+        fun mk(name: String, lat: Double, lon: Double) = AppPlace(AppPlace.AUTO, name, lat, lon, zone)
+        City.all.firstOrNull { it.tz in ids }?.let { return mk(it.displayName, it.lat, it.lon) }
+        val places = GlobePlace.all(Strings.appContext)
+        places.filter { it.zone.id in ids }.maxByOrNull { it.population }?.let { return mk(it.name, it.lat, it.lon) }
+        // Dilim verimizde yoksa: aynı bölgede (Europe/, America/…) şu an aynı UTC farkındaki en kalabalık yer
+        val now = Instant.now()
+        val off = zone.rules.getOffset(now)
+        val region = zone.id.substringBefore('/')
+        if (region == zone.id) return null
+        return places.filter { it.zone.id.substringBefore('/') == region && it.zone.rules.getOffset(now) == off }
+            .maxByOrNull { it.population }?.let { mk(it.name, it.lat, it.lon) }
     }
 }
 

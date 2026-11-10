@@ -340,7 +340,8 @@ private fun PlaceRow(text: String, selected: Boolean, accent: Boolean = false, o
 fun SavedPlaceChips(modifier: Modifier = Modifier) {
     val saved = Prefs.savedPlaces
     if (saved.isEmpty()) return
-    val current = Prefs.province
+    // Hiç yer seçilmediyse "istanbul" kaydı yoktur; seçili yer saat diliminden gelir (DefaultPlace)
+    val current = if (Prefs.provinceChosen) Prefs.province else AppPlace.current().id
     Row(modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         for (id in saved) {
             val on = id == current

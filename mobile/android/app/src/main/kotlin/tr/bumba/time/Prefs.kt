@@ -54,6 +54,7 @@ object Prefs {
             sp.edit().putInt("clockModel", clockModel).putInt("clockModelOrder", 2).apply()
         }
         province = sp.getString("province", "istanbul")!!
+        provinceChosen = sp.contains("province")
         savedPlaces = sp.getString("places.saved", "")!!.split("|").filter { it.isNotEmpty() }
         clockFont = sp.getString("clockFont", "rounded")!!
         fsPhoto = sp.getLong("fsPhoto", 0L)
@@ -116,7 +117,10 @@ object Prefs {
     fun saveSecD(v: Boolean) { secD = v; sp.edit().putBoolean("secD", v).apply() }
     fun saveSecA(v: Boolean) { secA = v; sp.edit().putBoolean("secA", v).apply() }
     fun saveClockModel(v: Int) { clockModel = v; sp.edit().putInt("clockModel", v).apply() }
-    fun saveProvince(v: String) { province = v; sp.edit().putString("province", v).apply() }
+    fun saveProvince(v: String) { province = v; provinceChosen = true; sp.edit().putString("province", v).apply() }
+    /** Kişi bir yer seçti mi; seçmediyse yer telefonun saat diliminden (DefaultPlace) */
+    var provinceChosen by mutableStateOf(false)
+        private set
 
     /** Kayıtlı yerler (il ya da ilçe kimlikleri, en çok 8; "|" ile ayrılır) */
     var savedPlaces by mutableStateOf(emptyList<String>())
