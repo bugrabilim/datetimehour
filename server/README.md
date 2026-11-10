@@ -12,7 +12,7 @@ paneli sunar. Plan ve sahibin kararları: `docs/uyelik-plani-2026-11.md`.
 - E-postalar Resend ile, 19 dilde (`i18n/mail.json`). E-postadaki bağlantılar sitedeki statik sayfalarda açılır:
   şifre sıfırlama formu `time.bumba.tr/hesap/sifre/` (diğer dillerde `/<dil>/account/password/`), doğrulama sonucu
   `/hesap/dogrulandi/` (`/<dil>/account/verified/`).
-- **Saklama süreleri** (`src/cleanup.mjs`, 6 saatte bir): süresi geçen oturum/doğrulama/sınır kayıtları; 7 gün
+- **Saklama süreleri** (`src/cleanup.mjs`; Coolify'daki zamanlanmış görev 6 saatte bir `POST /gorev/temizlik`): süresi geçen oturum/doğrulama/sınır kayıtları; 7 gün
   doğrulanmayan hesap; 2 yıl kullanılmayan hesaba 30 gün önce uyarı, sonra silme ve haber.
 - **Yönetim paneli (madde 10):** `/panel`, yalnız yönetici rolü (`ADMIN_EMAIL`, varsayılan bilgi@bumbagroup.com;
   hesap uygulamadan açılıp doğrulanınca yönetici olur). İstek, yanıt süresi, hata oranı, veritabanı boyutu, üye
@@ -22,9 +22,10 @@ paneli sunar. Plan ve sahibin kararları: `docs/uyelik-plani-2026-11.md`.
 | Yol | Ne |
 |---|---|
 | `/api/auth/*` | Better Auth: `sign-up/email`, `sign-in/email`, `sign-out`, `get-session`, `update-user`, `change-password`, `request-password-reset`, `reset-password`, `verify-email`, `send-verification-email`, `change-email`, `delete-user` |
-| `POST /sifre` | Sitedeki şifre sıfırlama formu (betiksiz): `token`, `sifre`, `sifre2`, `dil` → siteye `?durum=tamam` ya da `?durum=hata&neden=eslesme\|uzunluk\|baglanti` |
+| `POST /sifre` | Sitedeki şifre sıfırlama formu (betiksiz): `token`, `sifre`, `sifre2`, `dil` → siteye `?durum=tamam` ya da `?durum=hata&neden=eslesme\|uzunluk\|baglanti` (ilk ikisinde `token` da geri gelir, form yeniden açılır) |
 | `GET /v1/verilerim` | Oturumdaki hesabın bilgileri (JSON indirme; KVKK md. 11) |
 | `GET /saglik` | Sağlık denetimi (veritabanı) |
+| `POST /gorev/temizlik` | Zamanlanmış görev: saklama süreleri (`Authorization: Bearer $CRON_SECRET`) |
 | `/panel`, `/panel/giris`, `/panel/cikis` | Yönetim paneli |
 
 Uygulamalar `sign-up/email` gövdesinde `lang` (arayüz dili) gönderir; e-postalar o dilde gider. Bilinmeyen dil
@@ -38,6 +39,7 @@ Gizli değerler koda ve depoya yazılmaz; Coolify'da ana altyapı oturumu girer.
 | `DATABASE_URL` | evet | Merkezi PostgreSQL 18, ayrı veritabanı ve rol |
 | `BETTER_AUTH_SECRET` | evet | En az 32 karakter, rastgele |
 | `RESEND_API_KEY` | canlıda evet | `NODE_ENV=production` iken yoksa sunucu başlamaz |
+| `CRON_SECRET` | canlıda evet | En az 32 karakter; zamanlanmış görev ucu için |
 | `NODE_ENV` | canlıda `production` | Güvenli çerezler |
 | `UMAMI_SHARE_ID` | hayır | Sitenin Umami paylaşım kimliği (panel); yoksa panelde "bu ortamda ölçülemiyor" |
 | `PUBLIC_URL`, `SITE_URL`, `MAIL_FROM`, `ADMIN_EMAIL`, `UMAMI_URL`, `PORT` | hayır | Varsayılanlar `src/config.mjs` |
@@ -55,5 +57,6 @@ Yerel test veritabanı yoksa: `TEST_DATABASE_URL=postgres://postgres@127.0.0.1:5
 
 ## Yayın
 Ayrı Coolify uygulaması (`saat-hesap`): temel dizin `server/`, bu klasördeki `Dockerfile`, port 8080, sağlık
-`/saglik`, izleme yolları `server/**`. İlk yayın ana altyapı oturumundan, sonraki her yayın sahibin onayıyla
+`/saglik`, izleme yolları `server/**`. Zamanlanmış görev (Coolify › Scheduled Tasks, konteynerde, 6 saatte bir:
+`0 */6 * * *`): `wget -qO- --post-data= --header="Authorization: Bearer $CRON_SECRET" http://127.0.0.1:8080/gorev/temizlik`. İlk yayın ana altyapı oturumundan, sonraki her yayın sahibin onayıyla
 (main'e birleştirme yayındır). Bağımlılık sürümleri sabittir; güncellerken en az 14 günlük sürüm seçilir.

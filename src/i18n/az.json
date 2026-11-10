@@ -371,6 +371,22 @@
         ]
       },
       {
+        "id": "account",
+        "h": "Tətbiqlərdəki hesab (üzvlük)",
+        "p": [
+          "Saat Tarih-dən istifadə üçün hesab lazım deyil; bu saytda üzvlük yoxdur. iPhone və Android tətbiqlərində e-poçt ünvanınız və şifrə ilə könüllü hesab aça bilərsiniz; gələcəkdə qrupla işləyən funksiyalar bu hesabdan istifadə edəcək. Bu bölmə həmin hesab üçün məlumatlandırma mətnidir (KVKK, 10-cu maddə)."
+        ],
+        "ul": [
+          "**Emal olunan məlumatlar:** e-poçt ünvanınız; görünən adınız (ləqəb ola bilər); tətbiqin dili; şifrənizin geri qaytarılmayan xülasəsi (şifrənin özü saxlanmır); hesabın açılış və son istifadə tarixi; sessiyalarınız (sessiya açarı, IP ünvanı, tətbiqin identifikasiya məlumatı [user agent], başlanğıc və bitmə vaxtı); giriş və digər hesab əməliyyatları üçün qısamüddətli cəhd sayğacları (IP ünvanı ilə).",
+          "**Məqsəd və hüquqi əsas:** hesabı açmaq, girişinizi təmin etmək və hesabla bağlı e-poçtları (təsdiq, şifrə sıfırlama, ünvan dəyişikliyi, istifadə olunmayan hesabı silməzdən əvvəl xəbərdarlıq, silmə bildirişi) göndərmək aramızdakı müqavilənin bağlanması və icrası üçün lazımdır (KVKK, 5/2-c). Hesabın təhlükəsizliyi və sui-istifadənin qarşısının alınması (IP ünvanları, cəhd sayğacları) qanuni marağımıza əsaslanır (5/2-f). Reklam e-poçtu göndərmirik; hesab açmaq e-poçt siyahısına qoşulmaq demək deyil.",
+          "**Toplama üsulu:** elektron şəkildə, tətbiqdəki qeydiyyat və giriş formaları və tətbiqin hesab serverimizə (hesap.time.bumba.tr) etdiyi sorğularla.",
+          "**Saxlama yeri və ötürmə:** məlumatlar İstanbuldakı serverimizdə saxlanır. Verilənlər bazasının gecə ehtiyat nüsxələri Cloudflare-in R2 saxlama xidmətində saxlanır. Hesab e-poçtları Resend (ABŞ) vasitəsilə göndərilir; bunun üçün e-poçt ünvanınız və e-poçtun məzmunu xaricə ötürülür. Məlumatlarınızı başqa heç kimlə paylaşmır və satmırıq.",
+          "**Saxlama müddəti:** hesabınızı silənə qədər. 7 gün ərzində təsdiqlənməyən hesab silinir. 2 il istifadə olunmayan hesab silinir; silməzdən 30 gün əvvəl sizə e-poçt göndəririk. Sessiyalar müddəti bitəndə (ən gec 90 gün), cəhd sayğacları bir gün ərzində silinir; ehtiyat nüsxələrdəki kopyalar ehtiyat nüsxələrin müddəti bitəndə silinir.",
+          "**Telefonunuzda:** sessiya açarı telefonun təhlükəsiz yaddaşında (iPhone-da Açar Zənciri, Android-də şifrələnmiş yaddaş) saxlanır və çıxış edəndə silinir.",
+          "**Hüquqlarınız:** məlumatlarınızı tətbiqdə görə və yükləyə (Parametrlər › Hesab › Məlumatlarımı yüklə), düzəldə (ad, dil, e-poçt) və hesabınızı silə bilərsiniz ([Hesabınızı silmək]({deleteUrl})). KVKK-nın 11-ci maddəsindəki digər hüquqlarınız üçün: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Brauzer əlavəsi",
         "p": [
@@ -3393,6 +3409,71 @@
       {
         "q": "Rahu Kaal hər yerdə eyni saatda olur?",
         "a": "Xeyr. Dilim yerin gün çıxması və batmasına görə hesablandığı üçün şəhərdən şəhərə və fəsillərə görə dəyişir. Bu səhifə seçdiyiniz yerə görə hesablayır."
+      }
+    ]
+  },
+  "account": {
+    "pwTitle": "Yeni şifrə | Saat Tarih",
+    "pwDesc": "Saat Tarih tətbiqlərindəki hesabınız üçün yeni şifrə təyin edin.",
+    "pwH1": "Yeni şifrə təyin edin",
+    "pwNew": "Yeni şifrə",
+    "pwRepeat": "Yeni şifrə (təkrar)",
+    "pwHint": "Ən azı 8 simvol.",
+    "pwShow": "Şifrəni göstər",
+    "pwSave": "Şifrəni yadda saxla",
+    "pwOk": "Şifrəniz dəyişdi. Tətbiqdə yeni şifrənizlə giriş edin; digər cihazlarınızdakı sessiyalar bağlandı.",
+    "pwErrMatch": "İki şifrə eyni deyil.",
+    "pwErrLength": "Şifrə 8 ilə 128 simvol arasında olmalıdır.",
+    "pwErrLink": "Bu keçidin müddəti bitib və ya artıq istifadə olunub. Tətbiqdə Giriş › Şifrəni unutmuşam ilə yeni keçid istəyin.",
+    "pwNoToken": "Bu səhifə şifrə sıfırlama e-poçtundakı keçidlə açılır. Keçid üçün tətbiqdə Giriş › Şifrəni unutmuşam bölməsindən istifadə edin.",
+    "vTitle": "E-poçt təsdiqi | Saat Tarih",
+    "vDesc": "Saat Tarih tətbiqlərindəki hesabınızın e-poçt təsdiqinin nəticəsi.",
+    "vH1": "E-poçt təsdiqi",
+    "vOk": "E-poçt ünvanınız təsdiqləndi. Tətbiqə qayıdıb hesabınıza giriş edə bilərsiniz.",
+    "vStep": "Dəyişikliyi təsdiqlədiniz. İndi yeni ünvanınıza göndərdiyimiz keçidi açaraq təsdiqi tamamlayın.",
+    "vChanged": "Yeni e-poçt ünvanınız təsdiqləndi. Tətbiqdə artıq bu ünvanla giriş edə bilərsiniz.",
+    "vErr": "Bu keçidin müddəti bitib və ya artıq istifadə olunub. Tətbiqdən yeni keçid istəyin.",
+    "noJs": "Bu səhifə üçün JavaScript lazımdır.",
+    "delTitle": "Hesabı silmək | Saat Tarih",
+    "delDesc": "Saat Tarih-in iPhone və Android tətbiqlərindəki hesabınızı necə silərsiniz və nələr silinir.",
+    "delH1": "Hesabınızı silmək",
+    "delLead": "Saat Tarih tətbiqlərində hesab könüllüdür və istədiyiniz vaxt silinə bilər. Hesabı silsəniz, hesab məlumatlarınız serverimizdən dərhal silinir.",
+    "delSections": [
+      {
+        "h": "Tətbiqdən silmək",
+        "ul": [
+          "Tətbiqdə **Parametrlər › Hesab** bölməsini açın.",
+          "**Hesabı sil** düyməsinə toxunun və şifrənizi daxil edin.",
+          "Hesabınız dərhal silinir və e-poçt ünvanınıza məlumat gedir. Tətbiqdən hesabsız istifadə etməyə davam edə bilərsiniz."
+        ]
+      },
+      {
+        "h": "Tətbiqdən istifadə edə bilmirsinizsə",
+        "p": [
+          "Şifrənizi unutmusunuzsa, tətbiqdə **Giriş › Şifrəni unutmuşam** ilə yeni şifrə təyin edib hesabı silə bilərsiniz.",
+          "Tətbiqə və ya telefona artıq çıxışınız yoxdursa, **hesabınızın e-poçt ünvanından** [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) ünvanına yazıb hesabın silinməsini istəyin. Ünvanın sizə aid olduğunu təsdiqlədikdən sonra hesabı ən gec 30 gün ərzində silib sizə xəbər veririk."
+        ]
+      },
+      {
+        "h": "Nələr silinir?",
+        "ul": [
+          "E-poçt ünvanınız, görünən adınız, diliniz və şifrənizin geri qaytarılmayan xülasəsi.",
+          "Sessiyalarınız (IP ünvanları və tətbiq məlumatı ilə) və hesabın son istifadə qeydi.",
+          "Qrup funksiyaları gələndə: qruplardakı üzvlükləriniz və qruplara əlavə etdiyiniz məlumatlar.",
+          "Gecə alınan verilənlər bazası ehtiyat nüsxələrindəki kopyalar ehtiyat nüsxələrin saxlama müddəti bitəndə avtomatik silinir."
+        ]
+      },
+      {
+        "h": "Telefonunuzda qalanlar",
+        "p": [
+          "Parametrləriniz, zəngli saatlarınız, namaz və oruc qeydləriniz, qeydləriniz və tətbiqdəki digər məlumatlar hesabın hissəsi deyil: telefonunuzda (iCloud sinxronizasiyası açıqdırsa, iCloud-unuzda) qalır. Tətbiqi telefondan silsəniz, onlar da silinir."
+        ]
+      },
+      {
+        "h": "İstifadə olunmayan hesablar",
+        "p": [
+          "2 il istifadə olunmayan hesab avtomatik silinir; silməzdən 30 gün əvvəl e-poçt göndəririk. E-poçt ünvanı 7 gün ərzində təsdiqlənməyən hesab silinir."
+        ]
       }
     ]
   }

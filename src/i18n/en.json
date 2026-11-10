@@ -371,6 +371,22 @@
         ]
       },
       {
+        "id": "account",
+        "h": "Account in the apps (membership)",
+        "p": [
+          "You do not need an account to use Saat Tarih, and this website has no membership. In the iPhone and Android apps you can open an optional account with your email address and a password; features that work with groups will use it in the future. This section is the information notice for that account (KVKK, Article 10)."
+        ],
+        "ul": [
+          "**Data processed:** your email address; your display name (it can be a nickname); the app's language; an irreversible summary of your password (the password itself is not stored); the dates the account was opened and last used; your sessions (session key, IP address, the app's identification [user agent], start and end time); short-lived attempt counters for signing in and other account actions (with the IP address).",
+          "**Purposes and legal basis:** opening the account, signing you in and sending account emails (verification, password reset, change of address, a warning before an unused account is deleted, confirmation of deletion) are necessary to set up and perform the contract between us (KVKK, Art. 5(2)(c)). Keeping the account secure and preventing misuse (IP addresses, attempt counters) rests on our legitimate interest (Art. 5(2)(f)). We do not send promotional email; opening an account does not add you to the email list.",
+          "**How it is collected:** electronically, through the sign-up and sign-in forms in the app and the requests the app makes to our account server (hesap.time.bumba.tr).",
+          "**Where it is kept and transfers:** the data is kept on our server in Istanbul. Nightly database backups are stored in Cloudflare's R2 storage service. Account emails are sent through Resend (USA); for this, your email address and the content of the email are transferred abroad. We do not share your data with anyone else and we do not sell it.",
+          "**Retention:** until you delete your account. An account not verified within 7 days is deleted. An account unused for 2 years is deleted; we email you 30 days before. Sessions are deleted when they expire (90 days at most), attempt counters within a day; copies in backups are deleted when the backups expire.",
+          "**On your phone:** the session key is kept in the phone's secure storage (Keychain on iPhone, encrypted storage on Android) and is deleted when you sign out.",
+          "**Your rights:** you can see and download your data in the app (Settings › Account › Download my data), correct it (name, language, email) and delete your account ([Deleting your account]({deleteUrl})). For your other rights under Article 11 of the KVKK: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Browser extension",
         "p": [
@@ -3393,6 +3409,71 @@
       {
         "q": "Is Rahu Kaal at the same time everywhere?",
         "a": "No. It is calculated from the local sunrise and sunset, so it changes from city to city and with the seasons. This page calculates it for the place you choose."
+      }
+    ]
+  },
+  "account": {
+    "pwTitle": "New password | Saat Tarih",
+    "pwDesc": "Set a new password for your account in the Saat Tarih apps.",
+    "pwH1": "Set a new password",
+    "pwNew": "New password",
+    "pwRepeat": "New password again",
+    "pwHint": "At least 8 characters.",
+    "pwShow": "Show password",
+    "pwSave": "Save password",
+    "pwOk": "Your password has been changed. Sign in with your new password in the app; you have been signed out on your other devices.",
+    "pwErrMatch": "The two passwords are not the same.",
+    "pwErrLength": "The password must be 8 to 128 characters long.",
+    "pwErrLink": "This link has expired or has already been used. Request a new one in the app: Sign in › Forgot password.",
+    "pwNoToken": "This page opens from the link in the password reset email. To get one, use Sign in › Forgot password in the app.",
+    "vTitle": "Email verification | Saat Tarih",
+    "vDesc": "The result of verifying the email address of your account in the Saat Tarih apps.",
+    "vH1": "Email verification",
+    "vOk": "Your email address is verified. Go back to the app and sign in to your account.",
+    "vStep": "You approved the change. Now finish by opening the link we sent to your new address.",
+    "vChanged": "Your new email address is verified. From now on, sign in with this address in the app.",
+    "vErr": "This link has expired or has already been used. Request a new link in the app.",
+    "noJs": "This page needs JavaScript.",
+    "delTitle": "Delete your account | Saat Tarih",
+    "delDesc": "How to delete your account in the Saat Tarih apps for iPhone and Android, and what is deleted.",
+    "delH1": "Deleting your account",
+    "delLead": "An account is optional in the Saat Tarih apps and you can delete it at any time. When you delete it, your account information is removed from our server immediately.",
+    "delSections": [
+      {
+        "h": "Delete it in the app",
+        "ul": [
+          "Open **Settings › Account** in the app.",
+          "Tap **Delete account** and enter your password.",
+          "Your account is deleted at once and we send a confirmation to your email address. You can keep using the app without an account."
+        ]
+      },
+      {
+        "h": "If you cannot use the app",
+        "p": [
+          "If you forgot your password, set a new one with **Sign in › Forgot password** in the app, then delete the account.",
+          "If you no longer have the app or the phone, write to [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) **from the email address of your account** and ask us to delete it. After we confirm that the address is yours, we delete the account within 30 days at the latest and let you know."
+        ]
+      },
+      {
+        "h": "What is deleted?",
+        "ul": [
+          "Your email address, display name, language and the irreversible summary of your password.",
+          "Your sessions (with their IP addresses and app information) and the record of when the account was last used.",
+          "When group features arrive: your memberships in groups and what you added to them.",
+          "Copies in the nightly database backups are deleted automatically when those backups expire."
+        ]
+      },
+      {
+        "h": "What stays on your phone",
+        "p": [
+          "Your settings, alarms, prayer and fasting records, notes and the other information in the app are not part of the account: they stay on your phone (and in your iCloud if iCloud sync is on). Deleting the app from your phone deletes them too."
+        ]
+      },
+      {
+        "h": "Unused accounts",
+        "p": [
+          "An account that has not been used for 2 years is deleted automatically; we send an email 30 days before. An account whose email address is not verified within 7 days is deleted."
+        ]
       }
     ]
   }

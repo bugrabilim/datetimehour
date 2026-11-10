@@ -371,6 +371,22 @@
         ]
       },
       {
+        "id": "account",
+        "h": "Akun di aplikasi (keanggotaan)",
+        "p": [
+          "Anda tidak memerlukan akun untuk memakai Saat Tarih, dan situs web ini tidak memiliki keanggotaan. Di aplikasi iPhone dan Android Anda dapat membuat akun opsional dengan alamat email dan kata sandi; fitur yang bekerja dengan grup akan memakainya di masa mendatang. Bagian ini adalah pemberitahuan informasi untuk akun tersebut (KVKK, Pasal 10)."
+        ],
+        "ul": [
+          "**Data yang diproses:** alamat email; nama tampilan (boleh nama samaran); bahasa aplikasi; ringkasan kata sandi yang tidak dapat dikembalikan (kata sandinya sendiri tidak disimpan); tanggal akun dibuat dan terakhir dipakai; sesi Anda (kunci sesi, alamat IP, identitas aplikasi [user agent], waktu mulai dan berakhir); penghitung percobaan berjangka pendek untuk masuk dan tindakan akun lainnya (beserta alamat IP).",
+          "**Tujuan dan dasar hukum:** membuat akun, memasukkan Anda, dan mengirim email akun (verifikasi, atur ulang kata sandi, perubahan alamat, peringatan sebelum akun yang tidak dipakai dihapus, konfirmasi penghapusan) diperlukan untuk membuat dan melaksanakan perjanjian di antara kita (KVKK, Pasal 5(2)(c)). Keamanan akun dan pencegahan penyalahgunaan (alamat IP, penghitung percobaan) didasarkan pada kepentingan sah kami (Pasal 5(2)(f)). Kami tidak mengirim email promosi; membuat akun tidak berarti bergabung dengan milis.",
+          "**Cara pengumpulan:** secara elektronik, melalui formulir daftar dan masuk di aplikasi serta permintaan aplikasi ke server akun kami (hesap.time.bumba.tr).",
+          "**Tempat penyimpanan dan pengiriman:** data disimpan di server kami di Istanbul. Cadangan basis data harian disimpan di layanan penyimpanan R2 milik Cloudflare. Email akun dikirim melalui Resend (AS); untuk itu alamat email Anda dan isi email dikirim ke luar negeri. Kami tidak membagikan data Anda kepada pihak lain dan tidak menjualnya.",
+          "**Masa simpan:** sampai Anda menghapus akun. Akun yang tidak diverifikasi dalam 7 hari dihapus. Akun yang tidak dipakai selama 2 tahun dihapus; kami mengirim email kepada Anda 30 hari sebelumnya. Sesi dihapus saat berakhir (paling lama 90 hari), penghitung percobaan dalam satu hari; salinan di cadangan dihapus ketika masa cadangan habis.",
+          "**Di ponsel Anda:** kunci sesi disimpan di penyimpanan aman ponsel (Keychain di iPhone, penyimpanan terenkripsi di Android) dan dihapus saat Anda keluar.",
+          "**Hak Anda:** Anda dapat melihat dan mengunduh data Anda di aplikasi (Pengaturan › Akun › Unduh data saya), memperbaikinya (nama, bahasa, email), dan menghapus akun ([Menghapus akun Anda]({deleteUrl})). Untuk hak lain menurut Pasal 11 KVKK: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Ekstensi peramban",
         "p": [
@@ -3393,6 +3409,71 @@
       {
         "q": "Apakah Rahu Kaal sama waktunya di semua tempat?",
         "a": "Tidak. Rahu Kaal dihitung dari matahari terbit dan terbenam setempat, jadi berubah dari kota ke kota dan menurut musim. Halaman ini menghitungnya untuk tempat yang Anda pilih."
+      }
+    ]
+  },
+  "account": {
+    "pwTitle": "Kata sandi baru | Saat Tarih",
+    "pwDesc": "Buat kata sandi baru untuk akun Anda di aplikasi Saat Tarih.",
+    "pwH1": "Buat kata sandi baru",
+    "pwNew": "Kata sandi baru",
+    "pwRepeat": "Ulangi kata sandi baru",
+    "pwHint": "Minimal 8 karakter.",
+    "pwShow": "Tampilkan kata sandi",
+    "pwSave": "Simpan kata sandi",
+    "pwOk": "Kata sandi Anda sudah diganti. Masuk dengan kata sandi baru di aplikasi; sesi di perangkat Anda yang lain sudah ditutup.",
+    "pwErrMatch": "Kedua kata sandi tidak sama.",
+    "pwErrLength": "Kata sandi harus 8 sampai 128 karakter.",
+    "pwErrLink": "Tautan ini sudah kedaluwarsa atau sudah dipakai. Minta tautan baru di aplikasi: Masuk › Lupa kata sandi.",
+    "pwNoToken": "Halaman ini dibuka dari tautan di email pengaturan ulang kata sandi. Untuk mendapatkannya, gunakan Masuk › Lupa kata sandi di aplikasi.",
+    "vTitle": "Verifikasi email | Saat Tarih",
+    "vDesc": "Hasil verifikasi alamat email akun Anda di aplikasi Saat Tarih.",
+    "vH1": "Verifikasi email",
+    "vOk": "Alamat email Anda sudah terverifikasi. Kembali ke aplikasi dan masuk ke akun Anda.",
+    "vStep": "Anda sudah menyetujui perubahan. Sekarang selesaikan verifikasi dengan membuka tautan yang kami kirim ke alamat baru Anda.",
+    "vChanged": "Alamat email baru Anda sudah terverifikasi. Mulai sekarang masuk dengan alamat ini di aplikasi.",
+    "vErr": "Tautan ini sudah kedaluwarsa atau sudah dipakai. Minta tautan baru di aplikasi.",
+    "noJs": "Halaman ini memerlukan JavaScript.",
+    "delTitle": "Hapus akun | Saat Tarih",
+    "delDesc": "Cara menghapus akun Anda di aplikasi Saat Tarih untuk iPhone dan Android, dan apa saja yang dihapus.",
+    "delH1": "Menghapus akun Anda",
+    "delLead": "Akun di aplikasi Saat Tarih bersifat opsional dan dapat dihapus kapan saja. Saat dihapus, informasi akun Anda langsung dihapus dari server kami.",
+    "delSections": [
+      {
+        "h": "Hapus di aplikasi",
+        "ul": [
+          "Buka **Pengaturan › Akun** di aplikasi.",
+          "Ketuk **Hapus akun** lalu masukkan kata sandi Anda.",
+          "Akun Anda langsung dihapus dan kami mengirim pemberitahuan ke alamat email Anda. Anda tetap dapat memakai aplikasi tanpa akun."
+        ]
+      },
+      {
+        "h": "Jika Anda tidak dapat memakai aplikasi",
+        "p": [
+          "Jika lupa kata sandi, buat kata sandi baru lewat **Masuk › Lupa kata sandi** di aplikasi, lalu hapus akun.",
+          "Jika Anda sudah tidak punya aplikasi atau ponselnya, kirim email ke [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) **dari alamat email akun Anda** dan minta akun dihapus. Setelah kami memastikan alamat itu milik Anda, akun kami hapus paling lambat dalam 30 hari dan kami beri tahu Anda."
+        ]
+      },
+      {
+        "h": "Apa saja yang dihapus?",
+        "ul": [
+          "Alamat email, nama tampilan, bahasa, dan ringkasan kata sandi Anda yang tidak dapat dikembalikan.",
+          "Sesi Anda (beserta alamat IP dan informasi aplikasi) dan catatan kapan akun terakhir dipakai.",
+          "Saat fitur grup hadir: keanggotaan Anda di grup dan apa yang Anda tambahkan ke sana.",
+          "Salinan di cadangan basis data harian otomatis terhapus ketika masa simpan cadangan itu habis."
+        ]
+      },
+      {
+        "h": "Yang tetap ada di ponsel Anda",
+        "p": [
+          "Pengaturan, alarm, catatan salat dan puasa, catatan, dan informasi lain di aplikasi bukan bagian dari akun: semuanya tetap di ponsel Anda (dan di iCloud jika sinkronisasi iCloud aktif). Jika aplikasi dihapus dari ponsel, semuanya ikut terhapus."
+        ]
+      },
+      {
+        "h": "Akun yang tidak dipakai",
+        "p": [
+          "Akun yang tidak dipakai selama 2 tahun dihapus otomatis; kami mengirim email 30 hari sebelumnya. Akun yang alamat emailnya tidak diverifikasi dalam 7 hari dihapus."
+        ]
       }
     ]
   }

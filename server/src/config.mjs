@@ -31,11 +31,13 @@ export function loadConfig(env = process.env) {
     umamiShareId: env.UMAMI_SHARE_ID || "",
     commit: env.SOURCE_COMMIT || env.COMMIT || "",
     rateLimit: env.RATE_LIMIT !== "off",
+    cronSecret: env.CRON_SECRET && env.CRON_SECRET.length >= 32 ? env.CRON_SECRET : "",
   };
   const missing = [];
   if (!cfg.databaseUrl) missing.push("DATABASE_URL");
   if (cfg.secret.length < 32) missing.push("BETTER_AUTH_SECRET (en az 32 karakter)");
   if (production && cfg.mailDriver !== "resend") missing.push("RESEND_API_KEY");
+  if (production && !cfg.cronSecret) missing.push("CRON_SECRET (en az 32 karakter)");
   if (missing.length) throw new Error("Eksik ortam değişkeni: " + missing.join(", "));
   return cfg;
 }

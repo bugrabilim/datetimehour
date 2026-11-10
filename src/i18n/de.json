@@ -398,6 +398,22 @@
         ]
       },
       {
+        "id": "account",
+        "h": "Konto in den Apps (Mitgliedschaft)",
+        "p": [
+          "Für Saat Tarih brauchen Sie kein Konto, und auf dieser Website gibt es keine Mitgliedschaft. In den Apps für iPhone und Android können Sie mit Ihrer E-Mail-Adresse und einem Passwort ein freiwilliges Konto eröffnen; Funktionen für Gruppen werden es künftig nutzen. Dieser Abschnitt ist die Datenschutzinformation zu diesem Konto (KVKK, Art. 10)."
+        ],
+        "ul": [
+          "**Verarbeitete Daten:** Ihre E-Mail-Adresse; Ihr Anzeigename (auch ein Spitzname); die Sprache der App; eine nicht umkehrbare Prüfsumme Ihres Passworts (das Passwort selbst wird nicht gespeichert); Eröffnungs- und letztes Nutzungsdatum des Kontos; Ihre Sitzungen (Sitzungsschlüssel, IP-Adresse, Kennung der App [User-Agent], Beginn und Ende); kurzlebige Zähler für Anmeldeversuche und andere Kontoaktionen (mit der IP-Adresse).",
+          "**Zwecke und Rechtsgrundlage:** Das Eröffnen des Kontos, Ihre Anmeldung und das Senden von Konto-E-Mails (Bestätigung, Zurücksetzen des Passworts, Adressänderung, Hinweis vor dem Löschen eines ungenutzten Kontos, Bestätigung der Löschung) sind für den Abschluss und die Erfüllung des Vertrags zwischen uns erforderlich (KVKK, Art. 5 Abs. 2 Buchst. c). Die Sicherheit des Kontos und die Verhinderung von Missbrauch (IP-Adressen, Versuchszähler) beruhen auf unserem berechtigten Interesse (Art. 5 Abs. 2 Buchst. f). Wir senden keine Werbe-E-Mails; mit einem Konto treten Sie nicht der E-Mail-Liste bei.",
+          "**Erhebung:** elektronisch, über die Registrierungs- und Anmeldeformulare der App und die Anfragen der App an unseren Kontoserver (hesap.time.bumba.tr).",
+          "**Speicherort und Übermittlung:** Die Daten liegen auf unserem Server in Istanbul. Die nächtlichen Datenbanksicherungen werden im Speicherdienst R2 von Cloudflare aufbewahrt. Konto-E-Mails werden über Resend (USA) versendet; dafür werden Ihre E-Mail-Adresse und der Inhalt der E-Mail ins Ausland übermittelt. Wir geben Ihre Daten an niemanden sonst weiter und verkaufen sie nicht.",
+          "**Speicherdauer:** bis Sie Ihr Konto löschen. Ein Konto, das nicht innerhalb von 7 Tagen bestätigt wird, wird gelöscht. Ein Konto, das 2 Jahre ungenutzt bleibt, wird gelöscht; 30 Tage vorher schicken wir Ihnen eine E-Mail. Sitzungen werden bei Ablauf gelöscht (spätestens nach 90 Tagen), Versuchszähler innerhalb eines Tages; Kopien in Sicherungen werden gelöscht, wenn die Sicherungen ablaufen.",
+          "**Auf Ihrem Telefon:** Der Sitzungsschlüssel liegt im sicheren Speicher des Telefons (Schlüsselbund auf dem iPhone, verschlüsselter Speicher unter Android) und wird bei der Abmeldung gelöscht.",
+          "**Ihre Rechte:** Sie können Ihre Daten in der App einsehen und herunterladen (Einstellungen › Konto › Meine Daten herunterladen), berichtigen (Name, Sprache, E-Mail) und Ihr Konto löschen ([Ihr Konto löschen]({deleteUrl})). Für Ihre weiteren Rechte nach Art. 11 KVKK: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Browser-Erweiterung",
         "p": [
@@ -3420,6 +3436,71 @@
       {
         "q": "Ist Rahu Kaal überall zur selben Zeit?",
         "a": "Nein. Er wird aus dem örtlichen Sonnenauf- und -untergang berechnet und ändert sich daher von Stadt zu Stadt und mit den Jahreszeiten. Diese Seite rechnet für den gewählten Ort."
+      }
+    ]
+  },
+  "account": {
+    "pwTitle": "Neues Passwort | Saat Tarih",
+    "pwDesc": "Legen Sie ein neues Passwort für Ihr Konto in den Saat-Tarih-Apps fest.",
+    "pwH1": "Neues Passwort festlegen",
+    "pwNew": "Neues Passwort",
+    "pwRepeat": "Neues Passwort wiederholen",
+    "pwHint": "Mindestens 8 Zeichen.",
+    "pwShow": "Passwort anzeigen",
+    "pwSave": "Passwort speichern",
+    "pwOk": "Ihr Passwort wurde geändert. Melden Sie sich in der App mit dem neuen Passwort an; auf Ihren anderen Geräten wurden Sie abgemeldet.",
+    "pwErrMatch": "Die beiden Passwörter stimmen nicht überein.",
+    "pwErrLength": "Das Passwort muss 8 bis 128 Zeichen lang sein.",
+    "pwErrLink": "Dieser Link ist abgelaufen oder wurde bereits verwendet. Fordern Sie in der App einen neuen an: Anmelden › Passwort vergessen.",
+    "pwNoToken": "Diese Seite öffnet sich über den Link in der E-Mail zum Zurücksetzen des Passworts. Einen Link erhalten Sie in der App über Anmelden › Passwort vergessen.",
+    "vTitle": "E-Mail-Bestätigung | Saat Tarih",
+    "vDesc": "Ergebnis der Bestätigung der E-Mail-Adresse Ihres Kontos in den Saat-Tarih-Apps.",
+    "vH1": "E-Mail-Bestätigung",
+    "vOk": "Ihre E-Mail-Adresse ist bestätigt. Kehren Sie zur App zurück und melden Sie sich mit Ihrem Konto an.",
+    "vStep": "Sie haben die Änderung bestätigt. Öffnen Sie nun den Link, den wir an Ihre neue Adresse geschickt haben, um die Bestätigung abzuschließen.",
+    "vChanged": "Ihre neue E-Mail-Adresse ist bestätigt. Melden Sie sich in der App ab jetzt mit dieser Adresse an.",
+    "vErr": "Dieser Link ist abgelaufen oder wurde bereits verwendet. Fordern Sie in der App einen neuen Link an.",
+    "noJs": "Diese Seite benötigt JavaScript.",
+    "delTitle": "Konto löschen | Saat Tarih",
+    "delDesc": "So löschen Sie Ihr Konto in den Saat-Tarih-Apps für iPhone und Android, und was dabei gelöscht wird.",
+    "delH1": "Ihr Konto löschen",
+    "delLead": "Ein Konto ist in den Saat-Tarih-Apps freiwillig und kann jederzeit gelöscht werden. Wenn Sie es löschen, werden Ihre Kontodaten sofort von unserem Server entfernt.",
+    "delSections": [
+      {
+        "h": "In der App löschen",
+        "ul": [
+          "Öffnen Sie in der App **Einstellungen › Konto**.",
+          "Tippen Sie auf **Konto löschen** und geben Sie Ihr Passwort ein.",
+          "Ihr Konto wird sofort gelöscht, und Sie erhalten eine Bestätigung per E-Mail. Sie können die App weiterhin ohne Konto nutzen."
+        ]
+      },
+      {
+        "h": "Wenn Sie die App nicht nutzen können",
+        "p": [
+          "Wenn Sie Ihr Passwort vergessen haben, legen Sie in der App über **Anmelden › Passwort vergessen** ein neues fest und löschen Sie dann das Konto.",
+          "Wenn Sie die App oder das Telefon nicht mehr haben, schreiben Sie **von der E-Mail-Adresse Ihres Kontos** an [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) und bitten Sie um die Löschung. Sobald wir bestätigt haben, dass die Adresse Ihnen gehört, löschen wir das Konto spätestens innerhalb von 30 Tagen und geben Ihnen Bescheid."
+        ]
+      },
+      {
+        "h": "Was wird gelöscht?",
+        "ul": [
+          "Ihre E-Mail-Adresse, Ihr Anzeigename, Ihre Sprache und die nicht umkehrbare Prüfsumme Ihres Passworts.",
+          "Ihre Sitzungen (mit IP-Adressen und App-Angaben) und der Eintrag, wann das Konto zuletzt genutzt wurde.",
+          "Sobald es Gruppenfunktionen gibt: Ihre Mitgliedschaften in Gruppen und was Sie dort hinzugefügt haben.",
+          "Kopien in den nächtlichen Datenbanksicherungen werden automatisch gelöscht, wenn diese Sicherungen ablaufen."
+        ]
+      },
+      {
+        "h": "Was auf Ihrem Telefon bleibt",
+        "p": [
+          "Ihre Einstellungen, Wecker, Gebets- und Fastenaufzeichnungen, Notizen und die übrigen Daten in der App gehören nicht zum Konto: Sie bleiben auf Ihrem Telefon (und in Ihrer iCloud, wenn die iCloud-Synchronisierung an ist). Wenn Sie die App vom Telefon löschen, werden auch sie gelöscht."
+        ]
+      },
+      {
+        "h": "Ungenutzte Konten",
+        "p": [
+          "Ein Konto, das 2 Jahre lang nicht genutzt wurde, wird automatisch gelöscht; 30 Tage vorher schicken wir eine E-Mail. Ein Konto, dessen E-Mail-Adresse nicht innerhalb von 7 Tagen bestätigt wird, wird gelöscht."
+        ]
       }
     ]
   }

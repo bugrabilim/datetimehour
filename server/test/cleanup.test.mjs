@@ -91,3 +91,12 @@ test("tarih Latin rakamla, dilin biçiminde", () => {
   assert.match(fmtDate("bn", d), /15/);
   assert.match(fmtDate("fa", d), /2027|1405/);
 });
+
+test("zamanlanmış görev ucu yalnız CRON_SECRET'la çalışır", async () => {
+  assert.equal((await t.req("/gorev/temizlik", { method: "POST" })).status, 401);
+  assert.equal((await t.req("/gorev/temizlik", { method: "POST", headers: { authorization: "Bearer yanlis" } })).status, 401);
+  assert.equal((await t.req("/gorev/temizlik", { method: "GET", headers: { authorization: `Bearer ${t.cfg.cronSecret}` } })).status, 404);
+  const r = await t.req("/gorev/temizlik", { method: "POST", headers: { authorization: `Bearer ${t.cfg.cronSecret}` } });
+  assert.equal(r.status, 200);
+  assert.equal(typeof r.json.unverified, "number");
+});

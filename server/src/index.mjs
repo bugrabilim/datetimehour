@@ -10,7 +10,8 @@ import { authOptions } from "./auth.mjs";
 import { migrate } from "./migrate.mjs";
 import { createMetrics } from "./metrics.mjs";
 import { panelRoutes } from "./panel.mjs";
-import { scheduleCleanup } from "./cleanup.mjs";
+import crypto from "node:crypto";
+import { runCleanup } from "./cleanup.mjs";
 import { readForm } from "./http.mjs";
 
 const SEC_HEADERS = {
@@ -38,7 +39,6 @@ export async function createApp(cfg, { pool, mailer } = {}) {
   const metrics = createMetrics(pool);
   const authHandler = toNodeHandler(auth);
   const panel = panelRoutes({ cfg, pool, auth, mailer, metrics });
-  const stopCleanup = cfg.cleanup === false ? () => {} : scheduleCleanup({ pool, mailer });
 
   const session = (req) => auth.api.getSession({ headers: fromNodeHeaders(req.headers) }).catch(() => null);
 
@@ -68,14 +68,24 @@ export async function createApp(cfg, { pool, mailer } = {}) {
       const lang = normLang(f.get("dil"));
       const back = siteLink(cfg, lang, "password");
       const pw = f.get("sifre") || "";
-      if (pw !== (f.get("sifre2") || "")) return redirect(res, `${back}?durum=hata&neden=eslesme`);
-      if (pw.length < 8 || pw.length > 128) return redirect(res, `${back}?durum=hata&neden=uzunluk`);
+      // Eşleşme ve uzunluk hatasında anahtar henüz kullanılmadı: form yeniden gösterilsin diye adrese geri konur
+      const again = `&token=${encodeURIComponent(f.get("token") || "")}`;
+      if (pw !== (f.get("sifre2") || "")) return redirect(res, `${back}?durum=hata&neden=eslesme${again}`);
+      if (pw.length < 8 || pw.length > 128) return redirect(res, `${back}?durum=hata&neden=uzunluk${again}`);
       try {
         await auth.api.resetPassword({ body: { newPassword: pw, token: f.get("token") || "" }, headers: fromNodeHeaders(req.headers) });
         return redirect(res, `${back}?durum=tamam`);
       } catch {
         return redirect(res, `${back}?durum=hata&neden=baglanti`);
       }
+    }
+
+    // Zamanlanmış görev (Coolify, 6 saatte bir): saklama süreleri. CRON_SECRET yoksa uç kapalı.
+    if (p === "/gorev/temizlik" && req.method === "POST") {
+      const got = Buffer.from(String(req.headers.authorization || ""));
+      const want = Buffer.from(`Bearer ${cfg.cronSecret}`);
+      if (!cfg.cronSecret || got.length !== want.length || !crypto.timingSafeEqual(got, want)) return json(res, 401, { hata: "yetki" });
+      return json(res, 200, await runCleanup({ pool, mailer }));
     }
 
     if (p === "/robots.txt") return send(res, 200, "User-agent: *\nDisallow: /\n");
@@ -100,7 +110,6 @@ export async function createApp(cfg, { pool, mailer } = {}) {
   });
 
   async function close() {
-    stopCleanup();
     await new Promise((r) => server.close(r));
     await metrics.flush();
     metrics.stop();

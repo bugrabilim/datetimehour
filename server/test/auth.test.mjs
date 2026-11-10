@@ -89,9 +89,9 @@ test("şifre sıfırlama sitedeki formdan", async () => {
   const back = "https://time.bumba.tr/de/account/password/";
   let p = await t.req("/sifre", { method: "POST", form: { token, sifre: "yeni-sifre-3", sifre2: "farkli", dil: "de" } });
   assert.equal(p.status, 303);
-  assert.equal(p.headers.get("location"), back + "?durum=hata&neden=eslesme");
+  assert.equal(p.headers.get("location"), back + "?durum=hata&neden=eslesme&token=" + encodeURIComponent(token), "anahtar formun yeniden açılması için geri gelir");
   p = await t.req("/sifre", { method: "POST", form: { token, sifre: "kisa", sifre2: "kisa", dil: "de" } });
-  assert.equal(p.headers.get("location"), back + "?durum=hata&neden=uzunluk");
+  assert.equal(p.headers.get("location"), back + "?durum=hata&neden=uzunluk&token=" + encodeURIComponent(token));
   p = await t.req("/sifre", { method: "POST", form: { token: "yanlis", sifre: "yeni-sifre-3", sifre2: "yeni-sifre-3", dil: "de" } });
   assert.equal(p.headers.get("location"), back + "?durum=hata&neden=baglanti");
   p = await t.req("/sifre", { method: "POST", form: { token, sifre: "yeni-sifre-3", sifre2: "yeni-sifre-3", dil: "de" } });

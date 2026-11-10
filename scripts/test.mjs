@@ -136,7 +136,9 @@ for (const f of htmlFiles) {
       if (trOnly) check(!LANGS.some((l) => l !== "tr" && h.includes(`<link rel="alternate" hreflang="${l}"`)), `${name}: ilçe sayfasında başka dil hreflang'ı olmamalı`);
       check(/og:image/.test(h) && /twitter:card/.test(h), `${name}: OG/Twitter yok`);
     } else {
-      check(/rel="alternate" hreflang/.test(h) === false && /rel="canonical" href="https:\/\/[^"]+\/\d{4}\/"/.test(h), `${name}: noindex giriş sayfası yıl sayfasına canonical vermeli`);
+      // Hesap sayfaları (e-postadaki bağlantılar; 10 Kasım 2026) kendine canonical verir; takvimin giriş sayfaları yıl sayfasına
+      const acct = /^\/(hesap\/(sifre|dogrulandi)|[a-z]+\/account\/(password|verified))\/index\.html$/.test(name);
+      check(/rel="alternate" hreflang/.test(h) === false && (acct ? h.includes(`rel="canonical" href="${ORIGIN}${name.replace(/index\.html$/, "")}"`) : /rel="canonical" href="https:\/\/[^"]+\/\d{4}\/"/.test(h)), `${name}: noindex giriş sayfası yıl sayfasına canonical vermeli`);
     }
     check(/action="https:\/\/bumbagroup\.com\/api\/liste\/katil"/.test(h) && /name="riza" value="on" required/.test(h) && !/name="riza"[^>]*checked/.test(h), `${name}: liste formu hatalı`);
     // madde 6: Katıl penceresi ortak aydınlatma metnini yükler; rıza yalnız "Kabul ediyorum" (submit, riza=on, başta pasif)
@@ -735,6 +737,27 @@ for (const l of LANGS) {
     check(/data-place-q/.test(home) && /data-place-results/.test(home) && /place-cities-en\.json/.test(home), "konum penceresi: dünya araması eksik");
     const pc = JSON.parse(fs.readFileSync(path.join(DIST, "assets/place-cities-hi.json"), "utf8"));
     check(pc.length === 31 && pc.some((c) => c[1] === "Mumbai" && c[4] === "Asia/Kolkata"), "konum penceresi: 31 şehir verisi eksik");
+  }
+  // Uygulamalardaki hesap (üyelik, 10 Kasım 2026): e-postadaki bağlantıların açtığı statik sayfalar ve hesap silme
+  {
+    const read = (f) => { const p = path.join(DIST, f, "index.html"); return fs.existsSync(p) ? fs.readFileSync(p, "utf8") : ""; };
+    const cfgOf = (h) => JSON.parse(((h.match(/<script type="application\/json" id="page-config">([\s\S]*?)<\/script>/) || [])[1] || "{}").replace(/\\u003c/g, "<"));
+    for (const l of LANGS) {
+      const base = l === "tr" ? "" : `${l}/`;
+      const pw = read(l === "tr" ? "hesap/sifre" : `${base}account/password`), vf = read(l === "tr" ? "hesap/dogrulandi" : `${base}account/verified`);
+      const del = read(l === "tr" ? "hesap-silme" : `${base}account-deletion`);
+      check(/<form class="acct-form" action="https:\/\/hesap\.time\.bumba\.tr\/sifre" method="post"/.test(pw) && new RegExp(`name="dil" value="${l}"`).test(pw) && /name="token" value=""/.test(pw) && /type="password"[^>]*name="sifre"|name="sifre"[^>]*type="password"/.test(pw) && /name="sifre2"/.test(pw), `hesap: şifre formu eksik (${l})`);
+      check(["ok", "err-baglanti", "none", "form"].every((k) => pw.includes(`data-state="${k}"`)) && ["ok", "step", "changed", "err"].every((k) => vf.includes(`data-state="${k}"`)) && /account\.js/.test(pw) && /account\.js/.test(vf), `hesap: sayfa durumları eksik (${l})`);
+      check(/name="robots" content="noindex/.test(pw) && /name="robots" content="noindex/.test(vf) && !cfgOf(pw).umami && !cfgOf(vf).umami, `hesap: şifre/doğrulama sayfası noindex değil ya da Umami var (${l})`);
+      check(/name="robots" content="index/.test(del) && /bilgi@bumbagroup\.com/.test(del) && /<ol>/.test(del), `hesap silme sayfası eksik (${l})`);
+      const j = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"));
+      const sec = j.privacy.sections.find((x) => x.id === (l === "tr" ? "hesap" : "account"));
+      check(sec && sec.ul.length === 7 && /\{deleteUrl\}/.test(sec.ul.join(" ")) && /Resend/.test(sec.ul.join(" ")) && /R2/.test(sec.ul.join(" ")), `gizlilik: hesap bölümü eksik (${l})`);
+      const priv = read(l === "tr" ? "gizlilik" : `${base}privacy`);
+      check(priv.includes(`href="${l === "tr" ? "/hesap-silme/" : `/${l}/account-deletion/`}"`) && !priv.includes("{deleteUrl}"), `gizlilik: hesap silme bağlantısı yok (${l})`);
+    }
+    check(!sm.includes("/hesap/sifre/") && !sm.includes("/account/password/") && !sm.includes("/account/verified/") && sm.includes("/hesap-silme/</loc>") && sm.includes("/en/account-deletion/</loc>"), "sitemap: hesap sayfaları yanlış");
+    check(/form-action 'self' https:\/\/bumbagroup\.com https:\/\/hesap\.time\.bumba\.tr/.test(read("hesap/sifre")) && (ng.match(/form-action 'self' https:\/\/bumbagroup\.com https:\/\/hesap\.time\.bumba\.tr;/g) || []).length === 2, "CSP: form-action'da hesap sunucusu yok (meta ya da nginx iki konum)");
   }
   // Fotoğraf ışığı sayfası (9 Kasım 2026): her dilde; saatler, Ay, 7 günlük tablo, izinli bulut tahmini ve atıf
   {

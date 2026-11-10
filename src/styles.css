@@ -517,7 +517,7 @@ tbody th a { color: var(--text); }
 .list-dialog p { margin: 0 0 0.6rem; }
 .field { display: grid; gap: 0.35rem; margin-bottom: 0.9rem; }
 .field label { font-weight: 600; }
-input[type="email"], input[type="search"], input[type="url"], input[type="number"], input[type="time"], input[type="text"], input[type="datetime-local"], input[type="date"], select {
+input[type="email"], input[type="search"], input[type="url"], input[type="number"], input[type="time"], input[type="text"], input[type="password"], input[type="datetime-local"], input[type="date"], select {
   width: 100%; min-height: 2.9rem; padding: 0 0.9rem; font: inherit; color: var(--text);
   background: var(--bg); border: 1px solid var(--muted); border-radius: 10px;
 }
@@ -1575,3 +1575,11 @@ html[dir="rtl"] .ph-nav svg { transform: scaleX(-1); }
 @media (max-width: 40rem) {
   .ph-week th, .ph-week td, .ph-fc th, .ph-fc td { padding: 0.6rem 0.55rem; font-size: 0.92rem; }
 }
+
+/* Uygulamalardaki hesap: şifre sıfırlama ve doğrulama sonucu sayfaları (10 Kasım 2026) */
+.acct-wrap { max-width: 30rem; }
+.acct [hidden] { display: none !important; }
+.acct h1 { margin-bottom: 1.2rem; }
+.acct .form-msg { font-weight: 600; line-height: 1.5; }
+.acct-form .btn { width: 100%; }
+.acct-hint { margin: -0.4rem 0 0.8rem; font-size: 0.9rem; color: var(--muted); }

@@ -2,6 +2,7 @@
    - süresi geçmiş oturum, doğrulama ve hız sınırı kayıtları silinir;
    - 7 gün içinde doğrulanmayan hesap silinir (e-posta gönderilmez; adresin sahibi olduğu bilinmiyor);
    - 2 yıl kullanılmayan hesaba 30 gün önce haber verilir, o sürede giriş yapılmazsa hesap silinir ve haber gider.
+   Çalıştıran: Coolify'daki zamanlanmış görev (standart, Altyapı kuralı), CRON_SECRET'la korunan POST /gorev/temizlik.
    Kullanım: oturum açılınca ve günde bir yenilenince user_activity.last_seen yazılır (auth.mjs). */
 export const RETENTION = { unverifiedDays: 7, inactiveMonths: 24, warnDays: 30 };
 
@@ -58,16 +59,4 @@ export async function runCleanup({ pool, mailer, now = new Date() }) {
     out.deleted++;
   }
   return out;
-}
-
-export function scheduleCleanup(ctx, everyMs = 6 * 3600_000) {
-  const run = () => runCleanup(ctx).then(
-    (r) => { if (r.unverified || r.warned || r.deleted) console.log(`[temizlik] doğrulanmamış ${r.unverified}, uyarı ${r.warned}, silinen ${r.deleted}`); },
-    (e) => console.error("[temizlik] hata", e?.message || e),
-  );
-  const first = setTimeout(run, 60_000);
-  const timer = setInterval(run, everyMs);
-  first.unref();
-  timer.unref();
-  return () => { clearTimeout(first); clearInterval(timer); };
 }

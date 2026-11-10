@@ -61,7 +61,8 @@ konumunun sunucuya gitmesi (bunlar telefonda kalır).
   isteğe bağlı.
 - **Silme:** hesabı silince her şey hemen silinir (yedeklerde en geç yedek döngüsü kadar kalır, gizlilikte
   yazar). 7 gün içinde doğrulanmayan hesap silinir. 24 ay kullanılmayan hesaba silmeden 30 gün önce e-posta
-  gider; o sürede giriş yapılmazsa silinir (`server/src/cleanup.mjs`, 6 saatte bir).
+  gider; o sürede giriş yapılmazsa silinir (`server/src/cleanup.mjs`; Coolify zamanlanmış görevi 6 saatte bir,
+  `CRON_SECRET`'la korunan `POST /gorev/temizlik`).
 - **Din verisi:** zikir/hatim halkasına katılmak KVKK'da özel nitelikli kişisel veri (din ve inanç) sayılabilir.
   Önerim: halkaya ilk katılışta ayrı ve açık bir onay ("Bu halkaya katılmanız inancınızla ilgili bilgi
   sayılabilir; …"), takma ad kullanılabilmesi, halka listelerinin herkese açık olmaması, sunucuda şifreli disk.
@@ -104,10 +105,13 @@ hesabı açılana kadar yalnız kodda.
   `server/Dockerfile`, port 8080, sağlık `/saglik`, izleme yolları `server/**`, adres `hesap.time.bumba.tr`
   (DNS + HTTPS).
 - Merkezi PostgreSQL 18'de veritabanı ve rol `saat_hesap`, `DATABASE_URL`; gece R2 yedeği.
-- Ortam: `NODE_ENV=production`, `DATABASE_URL`, `BETTER_AUTH_SECRET` (en az 32 karakter, ana oturum üretir),
+- Ortam: `NODE_ENV=production`, `DATABASE_URL`, `BETTER_AUTH_SECRET` ve `CRON_SECRET` (en az 32 karakter, ana
+  oturum üretir),
   `RESEND_API_KEY` (ana oturum), `UMAMI_SHARE_ID` (sitenin Umami paylaşım kimliği; panel için, sunucuda kalır;
   yoksa panelde "bu ortamda ölçülemiyor"). Varsayılanı uygun olanlar: `PUBLIC_URL`, `SITE_URL`, `MAIL_FROM`,
   `ADMIN_EMAIL`, `UMAMI_URL`. Coolify'ın `SOURCE_COMMIT`'i panelde son yayın olarak görünür.
+- Zamanlanmış görev (6 saatte bir, konteynerde): `wget -qO- --post-data= --header="Authorization: Bearer
+  $CRON_SECRET" http://127.0.0.1:8080/gorev/temizlik`.
 - Node derleme sürümü 22.23.4; durum.bumba.tr izlemesine ekleme (ilk yayından sonra).
 - Site (`saat`): yalnız normal site yayını (hesap sayfaları, `/hesap-silme/`, CSP `form-action`; aşama 2'de
   `/davet/` ve `.well-known`). Site imajı `server/`'ı içermez (`.dockerignore`).

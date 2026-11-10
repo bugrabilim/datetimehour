@@ -122,6 +122,7 @@ for (const [name, from] of [
   ["photo.js", "js/photo.js"],
   ["panchang.js", "js/panchang.js"],
   ["globe.js", "js/globe.js"],
+  ["account.js", "js/account.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
@@ -179,6 +180,8 @@ for (const f of ["favicon.svg", "favicon.ico", "icon-192.png", "icon-512.png", "
 }
 
 /* ---------- parçalar ---------- */
+/* Uygulamaların hesap sunucusu (server/): e-postadaki şifre sıfırlama bağlantısı sitedeki formu açar, form oraya gönderilir */
+const HESAP_ORIGIN = "https://hesap.time.bumba.tr";
 const CSP = [
   "default-src 'self'",
   "script-src 'self' https://istatistik.bumba.tr",
@@ -187,7 +190,7 @@ const CSP = [
   "frame-src 'self' https://www.youtube-nocookie.com", // gömme kodu önizlemesi (kendi sitesi) ve alarm müziği (YouTube gelişmiş gizlilik modu; dış hizmet izniyle, 31 Ekim 2026)
   "style-src 'self'",
   "font-src 'self'",
-  "form-action 'self' https://bumbagroup.com",
+  `form-action 'self' https://bumbagroup.com ${HESAP_ORIGIN}`, // hesap: sitedeki şifre sıfırlama formu hesap sunucusuna gider (üyelik, 10 Kasım 2026)
   "base-uri 'self'",
   "object-src 'none'",
 ].join("; ");
@@ -512,7 +515,7 @@ function layout(p) {
     ...(p.clientExtra && p.clientExtra.skyEvents ? { skyEvents: p.clientExtra.skyEvents } : {}),
     ...(p.clientExtra && p.clientExtra.pc ? { pc: p.clientExtra.pc } : {}),
     placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang], namesEn: PLACE_NAMES_URL.en, cities: PLACE_CITIES_URL[lang] },
-    ...(UMAMI_ID ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler
+    ...(UMAMI_ID && !p.noStats ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler; hesap sayfalarında yok (adreste tek kullanımlık anahtar var)
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
     eventsUrl: `/assets/events-${lang}.json?v=${eventsVersion[lang]}`,
     cal: { ...((p.clientExtra && p.clientExtra.cal) || {}), months: t.calendar.months, monthsTitle: t.calendar.monthsTitle, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt, calBase: ROUTES[lang].calendar, calMin: HOL_YEARS[0], calMax: HOL_YEARS[HOL_YEARS.length - 1] },
@@ -822,8 +825,9 @@ function buildPrivacy(lang) {
   const pagePath = ROUTES[lang].privacy;
   const sections = pr.sections
     .map((s) => {
-      const ps = (s.p || []).map((x) => `<p>${md(x)}</p>`).join("");
-      const ul = s.ul ? `<ul>${s.ul.map((x) => `<li>${md(x)}</li>`).join("")}</ul>` : "";
+      const fill = (x) => x.replaceAll("{deleteUrl}", ROUTES[lang].accountDelete);
+      const ps = (s.p || []).map((x) => `<p>${md(fill(x))}</p>`).join("");
+      const ul = s.ul ? `<ul>${s.ul.map((x) => `<li>${md(fill(x))}</li>`).join("")}</ul>` : "";
       const table = s.table
         ? `<div class="table-wrap"><table><thead><tr>${s.table.head.map((x) => `<th scope="col">${esc(x)}</th>`).join("")}</tr></thead><tbody>${s.table.rows
             .map((r) => `<tr><th scope="row"><code>${esc(r[0])}</code></th>${r.slice(1).map((x) => `<td>${esc(x)}</td>`).join("")}</tr>`)
@@ -851,9 +855,76 @@ function buildPrivacy(lang) {
   const e = searchEntries[lang];
   e.push({ t: pr.h1, u: pagePath, d: pr.description, k: "kvkk çerez cookie gizlilik privacy umami localstorage" });
   pr.sections.forEach((s) =>
-    e.push({ t: s.h, u: `${pagePath}#${s.id}`, d: (s.p && s.p[0] ? s.p[0] : s.ul ? s.ul[0] : "").replace(/\*\*|\[([^\]]+)\]\([^)]+\)/g, "$1"), k: pr.h1 })
+    e.push({ t: s.h, u: `${pagePath}#${s.id}`, d: (s.p && s.p[0] ? s.p[0] : s.ul ? s.ul[0] : "").replaceAll("{deleteUrl}", ROUTES[lang].accountDelete).replace(/\*\*|\[([^\]]+)\]\([^)]+\)/g, "$1"), k: pr.h1 })
   );
   return { lang, key: "privacy", path: pagePath, title: pr.title, description: pr.description, body, ld, nav: "privacy" };
+}
+
+/* ---------- Uygulamalardaki hesap (üyelik, 10 Kasım 2026; server/, docs/uyelik-plani-2026-11.md) ----------
+   Sunucu kullanıcıya sayfa göstermez; e-postadaki bağlantılar bu statik sayfalarda açılır. Şifre ve doğrulama sayfaları
+   noindex, sitemap/llms/aramada yok, Umami yok (adreste tek kullanımlık anahtar). Hesap silme sayfası herkese açık (Google
+   Play hesap silme adresi ister). Durumu adresten account.js okur; betiksiz tarayıcıda <noscript> notu. */
+extendRoutes({
+  tr: { accountPw: "/hesap/sifre/", accountVerified: "/hesap/dogrulandi/", accountDelete: "/hesap-silme/" },
+  en: { accountPw: "/en/account/password/", accountVerified: "/en/account/verified/", accountDelete: "/en/account-deletion/" },
+});
+function accountShell(lang, h1, inner) {
+  const a = I[lang].account;
+  return `<section class="section acct">
+  <div class="wrap acct-wrap">
+    <h1>${esc(h1)}</h1>
+    ${inner}
+    <noscript><p class="form-msg err is-shown">${esc(a.noJs)}</p></noscript>
+  </div>
+</section>`;
+}
+function buildAccountPassword(lang) {
+  const a = I[lang].account;
+  const msg = (state, cls, text) => `<p class="form-msg ${cls} is-shown" data-state="${state}" role="status" hidden>${esc(text)}</p>`;
+  const inner = `<div data-account="password">
+    ${msg("ok", "ok", a.pwOk)}${msg("err-baglanti", "err", a.pwErrLink)}${msg("none", "err", a.pwNoToken)}
+    <div data-state="form" hidden>
+      <p class="form-msg err is-shown" data-form-err role="alert" hidden></p>
+      <form class="acct-form" action="${HESAP_ORIGIN}/sifre" method="post" data-pw-form data-err-match="${esc(a.pwErrMatch)}" data-err-length="${esc(a.pwErrLength)}">
+        <input type="hidden" name="token" value="">
+        <input type="hidden" name="dil" value="${lang}">
+        <div class="field"><label for="pw-new">${esc(a.pwNew)}</label><input id="pw-new" name="sifre" type="password" autocomplete="new-password" minlength="8" maxlength="128" required aria-describedby="pw-hint"></div>
+        <div class="field"><label for="pw-again">${esc(a.pwRepeat)}</label><input id="pw-again" name="sifre2" type="password" autocomplete="new-password" minlength="8" maxlength="128" required></div>
+        <p class="acct-hint" id="pw-hint">${esc(a.pwHint)}</p>
+        <label class="check"><input type="checkbox" data-pw-show><span>${esc(a.pwShow)}</span></label>
+        <button class="btn" type="submit">${esc(a.pwSave)}</button>
+      </form>
+    </div>
+  </div>`;
+  return { lang, key: "accountPw", path: ROUTES[lang].accountPw, title: a.pwTitle, description: a.pwDesc, body: accountShell(lang, a.pwH1, inner), ld: baseLd(lang), noindex: true, noStats: true, noHreflang: true, scripts: ["account.js"] };
+}
+function buildAccountVerified(lang) {
+  const a = I[lang].account;
+  const msg = (state, cls, text) => `<p class="form-msg ${cls} is-shown" data-state="${state}" role="status" hidden>${esc(text)}</p>`;
+  const inner = `<div data-account="verified">${msg("ok", "ok", a.vOk)}${msg("step", "ok", a.vStep)}${msg("changed", "ok", a.vChanged)}${msg("err", "err", a.vErr)}</div>`;
+  return { lang, key: "accountVerified", path: ROUTES[lang].accountVerified, title: a.vTitle, description: a.vDesc, body: accountShell(lang, a.vH1, inner), ld: baseLd(lang), noindex: true, noStats: true, noHreflang: true, scripts: ["account.js"] };
+}
+function buildAccountDelete(lang) {
+  const t = I[lang];
+  const a = t.account;
+  const pagePath = ROUTES[lang].accountDelete;
+  const sections = a.delSections
+    .map((s) => `<h2>${esc(s.h)}</h2>${(s.p || []).map((x) => `<p>${md(x)}</p>`).join("")}${s.ul ? `<${s === a.delSections[0] ? "ol" : "ul"}>${s.ul.map((x) => `<li>${md(x)}</li>`).join("")}</${s === a.delSections[0] ? "ol" : "ul"}>` : ""}`)
+    .join("");
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: a.delH1, path: pagePath }];
+  const body = `<section class="hero">
+  <div class="wrap">
+    ${crumbs(lang, trail)}
+    <h1>${esc(a.delH1)}</h1>
+    <p class="lead">${esc(a.delLead)}</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap prose">${sections}</div>
+</section>`;
+  const ld = [...baseLd(lang), webPageLd(lang, pagePath, a.delTitle, a.delDesc), breadcrumbLd(trail)];
+  searchEntries[lang].push({ t: a.delH1, u: pagePath, d: a.delDesc, k: "hesap account silme delete" });
+  return { lang, key: "accountDelete", path: pagePath, title: a.delTitle, description: a.delDesc, body, ld };
 }
 
 /* ---------- Takvim: etkinlikler ve yıl sayfaları ---------- */
@@ -3262,7 +3333,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildPhoto(lang), buildPanchang(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildPhoto(lang), buildPanchang(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), buildAccountPassword(lang), buildAccountVerified(lang), buildAccountDelete(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur
