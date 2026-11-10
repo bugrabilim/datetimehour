@@ -4,9 +4,11 @@
 kimsenin inancı tahmin edilmez.** Dini takvimler (`group: "religious"`) her yerde kapalı başlar; kültürel ve resmî takvimler
 yalnız kendi bölgelerinde varsayılan açıktır.
 
-Takvimler (kimlikler sabit; 10 Kasım 2026'da 15'i yapıldı): `christian`, `jewish`, `persian`, `chinese`, `korean`, `vietnamese`,
+Takvimler (kimlikler sabit; 10 Kasım 2026'da 22'si yapıldı): `christian`, `jewish`, `persian`, `chinese`, `korean`, `vietnamese`,
 `un`, `bahai`, `ethiopian`, `coptic`, `japanese`, `buddhist`, `hindu`, `sikh`, `indian` (listedeki `eastern` Etiyopya, Kıpti ve
-Bahai olarak üç modüle, `chinese` Kore ve Vietnam'la üçe ayrıldı). 11 takvimlik liste bitti; yeni takvim ancak sahibin isteğiyle.
+Bahai olarak üç modüle, `chinese` Kore ve Vietnam'la üçe ayrıldı); 11 takvimlik liste bitince sahibin isteğiyle ("ermeni hariç,
+diğer önerdiğin takvimleri ajansız yap") `tibetan`, `mongolian`, `myanmar`, `nepali`, `javanese`, `zoroastrian`, `syriac`.
+Ermeni takvimi bilerek yok (sahibin kararı). Yeni takvim ancak sahibin isteğiyle.
 Mevcut İslami günler (Türkiye verisi, `lib/events.mjs`, tür `religious`) ve ülke tatilleri (`src/data/world-holidays.json`) bu sistemin dışındadır, olduğu gibi çalışır.
 
 ## Nasıl çalışır

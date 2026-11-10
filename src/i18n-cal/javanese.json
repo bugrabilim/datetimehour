@@ -1,0 +1,591 @@
+{
+ "tr": {
+  "name": "Cava takvimi",
+  "desc": "Cava takvimine (Anno Javanico, AJ) göre tarih, beş günlük pasaran haftası ve Cava yılbaşı 1 Suro.",
+  "note": "Sultan Agung'un 1633'te kurduğu aritmetik ay takvimidir; 8 yıllık windu ve 120 yıllık kurup döngüleriyle işler. 1 Suro, Endonezya hükümetinin 1 Muharrem'inden bir gün ayrılabilir; Yogyakarta ve Surakarta sarayları zaman zaman kendi tarihlerini ilan eder.",
+  "ev": {
+   "suro": "1 Suro (Cava yılbaşı)",
+   "grebegMulud": "Grebeg Mulud (Yogyakarta ve Surakarta sarayları)"
+  },
+  "month": [
+   "Sura",
+   "Sapar",
+   "Mulud",
+   "Bakda Mulud",
+   "Jumadilawal",
+   "Jumadilakir",
+   "Rejeb",
+   "Ruwah",
+   "Pasa",
+   "Sawal",
+   "Sela",
+   "Besar"
+  ],
+  "fmt": "{d} {m} {y}",
+  "daily": {
+   "p1": "Pasaran: Legi",
+   "p2": "Pasaran: Pahing",
+   "p3": "Pasaran: Pon",
+   "p4": "Pasaran: Wage",
+   "p5": "Pasaran: Kliwon"
+  }
+ },
+ "en": {
+  "name": "Javanese calendar",
+  "desc": "The date in the Javanese calendar (Anno Javanico, AJ), the five-day pasaran week and the Javanese New Year, 1 Suro.",
+  "note": "An arithmetic lunar calendar founded by Sultan Agung in 1633, running on 8-year windu and 120-year kurup cycles. 1 Suro can differ by a day from the Indonesian government's 1 Muharram; the Yogyakarta and Surakarta palaces sometimes announce their own dates.",
+  "ev": {
+   "suro": "1 Suro (Javanese New Year)",
+   "grebegMulud": "Grebeg Mulud (Yogyakarta and Surakarta palaces)"
+  },
+  "month": [
+   "Sura",
+   "Sapar",
+   "Mulud",
+   "Bakda Mulud",
+   "Jumadilawal",
+   "Jumadilakir",
+   "Rejeb",
+   "Ruwah",
+   "Pasa",
+   "Sawal",
+   "Sela",
+   "Besar"
+  ],
+  "fmt": "{d} {m} {y} AJ",
+  "daily": {
+   "p1": "Pasaran: Legi",
+   "p2": "Pasaran: Pahing",
+   "p3": "Pasaran: Pon",
+   "p4": "Pasaran: Wage",
+   "p5": "Pasaran: Kliwon"
+  }
+ },
+ "de": {
+  "name": "Javanischer Kalender",
+  "desc": "Das Datum im javanischen Kalender (Anno Javanico, AJ), die fünftägige Pasaran-Woche und das javanische Neujahr 1 Suro.",
+  "note": "Ein arithmetischer Mondkalender, 1633 von Sultan Agung eingeführt, mit achtjährigen Windu- und 120-jährigen Kurup-Zyklen. 1 Suro kann um einen Tag vom 1. Muharram der indonesischen Regierung abweichen; die Paläste von Yogyakarta und Surakarta geben mitunter eigene Daten bekannt.",
+  "ev": {
+   "suro": "1 Suro (javanisches Neujahr)",
+   "grebegMulud": "Grebeg Mulud (Paläste von Yogyakarta und Surakarta)"
+  },
+  "month": [
+   "Sura",
+   "Sapar",
+   "Mulud",
+   "Bakda Mulud",
+   "Jumadilawal",
+   "Jumadilakir",
+   "Rejeb",
+   "Ruwah",
+   "Pasa",
+   "Sawal",
+   "Sela",
+   "Besar"
+  ],
+  "fmt": "{d}. {m} {y} AJ",
+  "daily": {
+   "p1": "Pasaran: Legi",
+   "p2": "Pasaran: Pahing",
+   "p3": "Pasaran: Pon",
+   "p4": "Pasaran: Wage",
+   "p5": "Pasaran: Kliwon"
+  }
+ },
+ "az": {
+  "name": "Yava təqvimi",
+  "desc": "Yava təqviminə (Anno Javanico, AJ) görə tarix, beş günlük pasaran həftəsi və Yava yeni ili 1 Suro.",
+  "note": "Sultan Aqunqun 1633-cü ildə qurduğu hesablı ay təqvimidir; 8 illik vindu və 120 illik kurup dövrləri ilə işləyir. 1 Suro İndoneziya hökumətinin 1 Məhərrəmindən bir gün fərqlənə bilər; Yoqyakarta və Surakarta sarayları bəzən öz tarixlərini elan edir.",
+  "ev": {
+   "suro": "1 Suro (Yava yeni ili)",
+   "grebegMulud": "Qrebeq Mulud (Yoqyakarta və Surakarta sarayları)"
+  },
+  "month": [
+   "Sura",
+   "Sapar",
+   "Mulud",
+   "Bakda Mulud",
+   "Jumadilawal",
+   "Jumadilakir",
+   "Rejeb",
+   "Ruwah",
+   "Pasa",
+   "Sawal",
+   "Sela",
+   "Besar"
+  ],
+  "fmt": "{d} {m} {y}",
+  "daily": {
+   "p1": "Pasaran: Legi",
+   "p2": "Pasaran: Pahing",
+   "p3": "Pasaran: Pon",
+   "p4": "Pasaran: Wage",
+   "p5": "Pasaran: Kliwon"
+  }
+ },
+ "ar": {
+  "name": "التقويم الجاوي",
+  "desc": "التاريخ في التقويم الجاوي (السنة الجاوية)، وأسبوع الباساران ذو الأيام الخمسة، ورأس السنة الجاوية 1 سورا.",
+  "note": "تقويم قمري حسابي أنشأه السلطان أغونغ سنة 1633، ويسير بدورات الويندو (8 سنوات) والكوروب (120 سنة). قد يختلف 1 سورا بيوم عن 1 محرم لدى الحكومة الإندونيسية، وقد يعلن قصرا يوغياكارتا وسوراكارتا مواعيدهما الخاصة.",
+  "ev": {
+   "suro": "1 سورا (رأس السنة الجاوية)",
+   "grebegMulud": "غريبغ مولود (قصرا يوغياكارتا وسوراكارتا)"
+  },
+  "month": [
+   "سورا",
+   "سفر",
+   "مولود",
+   "بعد مولود",
+   "جمادى الأول",
+   "جمادى الآخر",
+   "رجب",
+   "روح",
+   "فسا",
+   "شوال",
+   "سيلا",
+   "بسار"
+  ],
+  "fmt": "{d} {m} {y}",
+  "daily": {
+   "p1": "باساران: ليغي",
+   "p2": "باساران: باهينغ",
+   "p3": "باساران: بون",
+   "p4": "باساران: واغي",
+   "p5": "باساران: كليوون"
+  }
+ },
+ "id": {
+  "name": "Kalender Jawa",
+  "desc": "Tanggal menurut kalender Jawa (Anno Javanico, AJ), pekan pasaran lima hari, dan Tahun Baru Jawa 1 Suro.",
+  "note": "Kalender bulan aritmetis yang ditetapkan Sultan Agung pada 1633, berjalan dengan siklus windu 8 tahun dan kurup 120 tahun. 1 Suro bisa berselisih sehari dengan 1 Muharam pemerintah; Keraton Yogyakarta dan Surakarta kadang mengumumkan tanggalnya sendiri.",
+  "ev": {
+   "suro": "1 Suro (Tahun Baru Jawa)",
+   "grebegMulud": "Grebeg Mulud (Keraton Yogyakarta dan Surakarta)"
+  },
+  "month": [
+   "Sura",
+   "Sapar",
+   "Mulud",
+   "Bakda Mulud",
+   "Jumadilawal",
+   "Jumadilakir",
+   "Rejeb",
+   "Ruwah",
+   "Pasa",
+   "Sawal",
+   "Sela",
+   "Besar"
+  ],
+  "fmt": "{d} {m} {y} AJ",
+  "daily": {
+   "p1": "Pasaran Legi",
+   "p2": "Pasaran Pahing",
+   "p3": "Pasaran Pon",
+   "p4": "Pasaran Wage",
+   "p5": "Pasaran Kliwon"
+  }
+ },
+ "ur": {
+  "name": "جاوی کیلنڈر",
+  "desc": "جاوی کیلنڈر (انو جاوانیکو) کے مطابق تاریخ، پانچ دن کا پاسارن ہفتہ اور جاوی نیا سال 1 سورا۔",
+  "note": "سلطان آگونگ کا 1633 میں قائم کیا ہوا حسابی قمری کیلنڈر، جو 8 سالہ وندو اور 120 سالہ کوروپ کے چکروں پر چلتا ہے۔ 1 سورا انڈونیشیا کی حکومت کی 1 محرم سے ایک دن مختلف ہو سکتا ہے؛ یوگیاکارتا اور سوراکارتا کے محل کبھی کبھی اپنی تاریخیں اعلان کرتے ہیں۔",
+  "ev": {
+   "suro": "1 سورا (جاوی نیا سال)",
+   "grebegMulud": "گریبیگ مولود (یوگیاکارتا اور سوراکارتا کے محل)"
+  },
+  "month": [
+   "سورا",
+   "سپر",
+   "مولود",
+   "بکدا مولود",
+   "جمادی الاول",
+   "جمادی الآخر",
+   "رجب",
+   "روواہ",
+   "پاسا",
+   "ساوال",
+   "سیلا",
+   "بیسار"
+  ],
+  "fmt": "{d} {m} {y}",
+  "daily": {
+   "p1": "پاسارن: لیگی",
+   "p2": "پاسارن: پاہنگ",
+   "p3": "پاسارن: پون",
+   "p4": "پاسارن: واگے",
+   "p5": "پاسارن: کلیون"
+  }
+ },
+ "fa": {
+  "name": "گاه‌شماری جاوه‌ای",
+  "desc": "تاریخ در گاه‌شماری جاوه‌ای (سال جاوه‌ای)، هفتهٔ پنج‌روزهٔ پاساران و سال نو جاوه‌ای، 1 سورا.",
+  "note": "گاه‌شماری قمری حسابی که سلطان آگونگ در 1633 بنیان گذاشت و با دوره‌های ویندو (8 ساله) و کوروپ (120 ساله) پیش می‌رود. 1 سورا ممکن است یک روز با 1 محرم دولت اندونزی فرق کند؛ کاخ‌های یوگیاکارتا و سوراکارتا گاهی تاریخ خود را اعلام می‌کنند.",
+  "ev": {
+   "suro": "1 سورا (سال نو جاوه‌ای)",
+   "grebegMulud": "گربگ مولود (کاخ‌های یوگیاکارتا و سوراکارتا)"
+  },
+  "month": [
+   "سورا",
+   "سپر",
+   "مولود",
+   "بکدا مولود",
+   "جمادی‌الاول",
+   "جمادی‌الآخر",
+   "رجب",
+   "روواه",
+   "پاسا",
+   "ساوال",
+   "سلا",
+   "بسار"
+  ],
+  "fmt": "{d} {m} {y}",
+  "daily": {
+   "p1": "پاساران: لگی",
+   "p2": "پاساران: پاهینگ",
+   "p3": "پاساران: پون",
+   "p4": "پاساران: واگه",
+   "p5": "پاساران: کلیوون"
+  }
+ },
+ "fr": {
+  "name": "Calendrier javanais",
+  "desc": "La date du calendrier javanais (Anno Javanico, AJ), la semaine pasaran de cinq jours et le Nouvel An javanais, 1 Suro.",
+  "note": "Calendrier lunaire arithmétique fondé par le sultan Agung en 1633, rythmé par des cycles windu de 8 ans et kurup de 120 ans. Le 1 Suro peut différer d’un jour du 1er mouharram du gouvernement indonésien ; les palais de Yogyakarta et de Surakarta annoncent parfois leurs propres dates.",
+  "ev": {
+   "suro": "1 Suro (Nouvel An javanais)",
+   "grebegMulud": "Grebeg Mulud (palais de Yogyakarta et de Surakarta)"
+  },
+  "month": [
+   "Sura",
+   "Sapar",
+   "Mulud",
+   "Bakda Mulud",
+   "Jumadilawal",
+   "Jumadilakir",
+   "Rejeb",
+   "Ruwah",
+   "Pasa",
+   "Sawal",
+   "Sela",
+   "Besar"
+  ],
+  "fmt": "{d} {m} {y} AJ",
+  "daily": {
+   "p1": "Pasaran : Legi",
+   "p2": "Pasaran : Pahing",
+   "p3": "Pasaran : Pon",
+   "p4": "Pasaran : Wage",
+   "p5": "Pasaran : Kliwon"
+  }
+ },
+ "ru": {
+  "name": "Яванский календарь",
+  "desc": "Дата по яванскому календарю (Anno Javanico, AJ), пятидневная неделя пасаран и яванский Новый год 1 Суро.",
+  "note": "Арифметический лунный календарь, введённый султаном Агунгом в 1633 году, с циклами винду (8 лет) и куруп (120 лет). 1 Суро может на день расходиться с 1 мухаррама индонезийского правительства; дворцы Джокьякарты и Суракарты иногда объявляют свои даты.",
+  "ev": {
+   "suro": "1 Суро (яванский Новый год)",
+   "grebegMulud": "Гребег Мулуд (дворцы Джокьякарты и Суракарты)"
+  },
+  "month": [
+   "Сура",
+   "Сапар",
+   "Мулуд",
+   "Бакда Мулуд",
+   "Джумадилавал",
+   "Джумадилакир",
+   "Реджеб",
+   "Рувах",
+   "Паса",
+   "Савал",
+   "Села",
+   "Бесар"
+  ],
+  "fmt": "{d} {m} {y} AJ",
+  "daily": {
+   "p1": "Пасаран: Леги",
+   "p2": "Пасаран: Пахинг",
+   "p3": "Пасаран: Пон",
+   "p4": "Пасаран: Ваге",
+   "p5": "Пасаран: Кливон"
+  }
+ },
+ "ja": {
+  "name": "ジャワ暦",
+  "desc": "ジャワ暦（ジャワ紀元、AJ）の日付、5日周期のパサラン、ジャワ正月（スロ月1日）。",
+  "note": "1633年にスルタン・アグンが定めた算術的な太陰暦で、8年周期のウィンドゥと120年周期のクルプで運用されます。スロ月1日はインドネシア政府のムハッラム月1日と1日ずれることがあり、ジョグジャカルタとスラカルタの王宮が独自の日付を発表することもあります。",
+  "ev": {
+   "suro": "スロ月1日（ジャワ正月）",
+   "grebegMulud": "グルブグ・ムルッド（ジョグジャカルタ・スラカルタ王宮）"
+  },
+  "month": [
+   "スラ月",
+   "サパル月",
+   "ムルッド月",
+   "バクダムルッド月",
+   "ジュマディラワル月",
+   "ジュマディラキル月",
+   "ルジュブ月",
+   "ルワ月",
+   "パサ月",
+   "サワル月",
+   "セラ月",
+   "ブサル月"
+  ],
+  "fmt": "ジャワ暦{y}年{m}{d}日",
+  "daily": {
+   "p1": "パサラン：レギ",
+   "p2": "パサラン：パヒン",
+   "p3": "パサラン：ポン",
+   "p4": "パサラン：ワゲ",
+   "p5": "パサラン：クリウォン"
+  }
+ },
+ "ko": {
+  "name": "자와력",
+  "desc": "자와력(자와 기원, AJ)의 날짜, 닷새 주기의 파사란, 자와 새해(수라월 1일).",
+  "note": "1633년 술탄 아궁이 정한 산술 태음력으로, 8년 주기의 윈두와 120년 주기의 쿠룹으로 운영됩니다. 수라월 1일은 인도네시아 정부의 무하람월 1일과 하루 다를 수 있으며, 족자카르타와 수라카르타 왕궁이 따로 날짜를 발표하기도 합니다.",
+  "ev": {
+   "suro": "수라월 1일(자와 새해)",
+   "grebegMulud": "그레벡 물룻(족자카르타·수라카르타 왕궁)"
+  },
+  "month": [
+   "수라월",
+   "사파르월",
+   "물룻월",
+   "박다물룻월",
+   "주마딜라왈월",
+   "주마딜라키르월",
+   "르젭월",
+   "루와월",
+   "파사월",
+   "사왈월",
+   "슬라월",
+   "브사르월"
+  ],
+  "fmt": "자와력 {y}년 {m} {d}일",
+  "daily": {
+   "p1": "파사란: 레기",
+   "p2": "파사란: 파힝",
+   "p3": "파사란: 폰",
+   "p4": "파사란: 와게",
+   "p5": "파사란: 클리원"
+  }
+ },
+ "zh": {
+  "name": "爪哇历",
+  "desc": "爪哇历（爪哇纪元，AJ）的日期、五日一周的帕萨兰和爪哇新年（苏拉月1日）。",
+  "note": "1633年苏丹阿贡创立的算术太阴历，按8年一周期的温都和120年一周期的库鲁普运行。苏拉月1日可能与印度尼西亚政府的穆哈兰月1日相差一天；日惹和梭罗王宫有时会公布各自的日期。",
+  "ev": {
+   "suro": "苏拉月1日（爪哇新年）",
+   "grebegMulud": "格雷贝格穆卢德节（日惹和梭罗王宫）"
+  },
+  "month": [
+   "苏拉月",
+   "萨帕尔月",
+   "穆卢德月",
+   "巴克达穆卢德月",
+   "朱马迪拉瓦尔月",
+   "朱马迪拉基尔月",
+   "勒杰布月",
+   "鲁瓦月",
+   "帕萨月",
+   "萨瓦尔月",
+   "塞拉月",
+   "贝萨尔月"
+  ],
+  "fmt": "爪哇历{y}年{m}{d}日",
+  "daily": {
+   "p1": "帕萨兰：勒吉",
+   "p2": "帕萨兰：帕兴",
+   "p3": "帕萨兰：蓬",
+   "p4": "帕萨兰：瓦格",
+   "p5": "帕萨兰：克利旺"
+  }
+ },
+ "fil": {
+  "name": "Kalendaryong Javanese",
+  "desc": "Ang petsa sa kalendaryong Javanese (Anno Javanico, AJ), ang limang-araw na linggong pasaran at ang Bagong Taon ng Java, 1 Suro.",
+  "note": "Isang aritmetikong kalendaryong lunar na itinatag ni Sultan Agung noong 1633, na tumatakbo sa 8-taong windu at 120-taong kurup. Maaaring maiba nang isang araw ang 1 Suro sa 1 Muharram ng pamahalaan ng Indonesia; paminsan-minsan naglalabas ng sariling petsa ang mga palasyo ng Yogyakarta at Surakarta.",
+  "ev": {
+   "suro": "1 Suro (Bagong Taon ng Java)",
+   "grebegMulud": "Grebeg Mulud (mga palasyo ng Yogyakarta at Surakarta)"
+  },
+  "month": [
+   "Sura",
+   "Sapar",
+   "Mulud",
+   "Bakda Mulud",
+   "Jumadilawal",
+   "Jumadilakir",
+   "Rejeb",
+   "Ruwah",
+   "Pasa",
+   "Sawal",
+   "Sela",
+   "Besar"
+  ],
+  "fmt": "{d} {m} {y} AJ",
+  "daily": {
+   "p1": "Pasaran: Legi",
+   "p2": "Pasaran: Pahing",
+   "p3": "Pasaran: Pon",
+   "p4": "Pasaran: Wage",
+   "p5": "Pasaran: Kliwon"
+  }
+ },
+ "th": {
+  "name": "ปฏิทินชวา",
+  "desc": "วันที่ตามปฏิทินชวา (ศักราชชวา, AJ) สัปดาห์ปาซารันห้าวัน และวันขึ้นปีใหม่ชวา 1 ซูรา",
+  "note": "ปฏิทินจันทรคติแบบคำนวณที่สุลต่านอากุงตั้งขึ้นในปี 1633 ใช้รอบวินดู 8 ปีและกูรุป 120 ปี วันที่ 1 ซูราอาจต่างจากวันที่ 1 มุฮัรรอมของรัฐบาลอินโดนีเซียหนึ่งวัน วังยอกยาการ์ตาและสุราการ์ตาบางครั้งประกาศวันของตนเอง",
+  "ev": {
+   "suro": "1 ซูรา (ปีใหม่ชวา)",
+   "grebegMulud": "เกรเบ็กมูลุด (วังยอกยาการ์ตาและสุราการ์ตา)"
+  },
+  "month": [
+   "ซูรา",
+   "ซาปาร์",
+   "มูลุด",
+   "บักดามูลุด",
+   "จูมาดิลาวัล",
+   "จูมาดิลากีร์",
+   "เรเจ็บ",
+   "รูวะฮ์",
+   "ปาซา",
+   "ซาวัล",
+   "เซลา",
+   "เบซาร์"
+  ],
+  "fmt": "{d} {m} {y}",
+  "daily": {
+   "p1": "ปาซารัน: เลกี",
+   "p2": "ปาซารัน: ปาฮิง",
+   "p3": "ปาซารัน: ปน",
+   "p4": "ปาซารัน: วาเก",
+   "p5": "ปาซารัน: กลีวน"
+  }
+ },
+ "es": {
+  "name": "Calendario javanés",
+  "desc": "La fecha del calendario javanés (Anno Javanico, AJ), la semana pasaran de cinco días y el Año Nuevo javanés, 1 Suro.",
+  "note": "Calendario lunar aritmético fundado por el sultán Agung en 1633, con ciclos windu de 8 años y kurup de 120 años. El 1 Suro puede diferir un día del 1 de muharram del gobierno indonesio; los palacios de Yogyakarta y Surakarta a veces anuncian sus propias fechas.",
+  "ev": {
+   "suro": "1 Suro (Año Nuevo javanés)",
+   "grebegMulud": "Grebeg Mulud (palacios de Yogyakarta y Surakarta)"
+  },
+  "month": [
+   "Sura",
+   "Sapar",
+   "Mulud",
+   "Bakda Mulud",
+   "Jumadilawal",
+   "Jumadilakir",
+   "Rejeb",
+   "Ruwah",
+   "Pasa",
+   "Sawal",
+   "Sela",
+   "Besar"
+  ],
+  "fmt": "{d} de {m} de {y} AJ",
+  "daily": {
+   "p1": "Pasaran: Legi",
+   "p2": "Pasaran: Pahing",
+   "p3": "Pasaran: Pon",
+   "p4": "Pasaran: Wage",
+   "p5": "Pasaran: Kliwon"
+  }
+ },
+ "pt": {
+  "name": "Calendário javanês",
+  "desc": "A data no calendário javanês (Anno Javanico, AJ), a semana pasaran de cinco dias e o Ano-Novo javanês, 1 Suro.",
+  "note": "Calendário lunar aritmético criado pelo sultão Agung em 1633, com ciclos windu de 8 anos e kurup de 120 anos. O 1 Suro pode diferir um dia do 1º de muharram do governo indonésio; os palácios de Yogyakarta e Surakarta às vezes anunciam as próprias datas.",
+  "ev": {
+   "suro": "1 Suro (Ano-Novo javanês)",
+   "grebegMulud": "Grebeg Mulud (palácios de Yogyakarta e Surakarta)"
+  },
+  "month": [
+   "Sura",
+   "Sapar",
+   "Mulud",
+   "Bakda Mulud",
+   "Jumadilawal",
+   "Jumadilakir",
+   "Rejeb",
+   "Ruwah",
+   "Pasa",
+   "Sawal",
+   "Sela",
+   "Besar"
+  ],
+  "fmt": "{d} de {m} de {y} AJ",
+  "daily": {
+   "p1": "Pasaran: Legi",
+   "p2": "Pasaran: Pahing",
+   "p3": "Pasaran: Pon",
+   "p4": "Pasaran: Wage",
+   "p5": "Pasaran: Kliwon"
+  }
+ },
+ "hi": {
+  "name": "जावाई पंचांग",
+  "desc": "जावाई पंचांग (जावाई संवत, AJ) के अनुसार तिथि, पाँच दिन का पासारन सप्ताह और जावाई नववर्ष 1 सुरा।",
+  "note": "सुल्तान अगुंग द्वारा 1633 में स्थापित गणितीय चांद्र पंचांग, जो 8 वर्ष के विंदु और 120 वर्ष के कुरुप चक्रों पर चलता है। 1 सुरा इंडोनेशिया सरकार की 1 मुहर्रम से एक दिन अलग हो सकता है; योग्यकार्ता और सुराकार्ता के महल कभी-कभी अपनी तिथियाँ घोषित करते हैं।",
+  "ev": {
+   "suro": "1 सुरा (जावाई नववर्ष)",
+   "grebegMulud": "ग्रेबेग मुलुद (योग्यकार्ता और सुराकार्ता के महल)"
+  },
+  "month": [
+   "सुरा",
+   "सपर",
+   "मुलुद",
+   "बकदा मुलुद",
+   "जुमादिलावल",
+   "जुमादिलाकिर",
+   "रजब",
+   "रुवाह",
+   "पासा",
+   "सावल",
+   "सेला",
+   "बेसार"
+  ],
+  "fmt": "{d} {m} {y}",
+  "daily": {
+   "p1": "पासारन: लेगी",
+   "p2": "पासारन: पाहिंग",
+   "p3": "पासारन: पोन",
+   "p4": "पासारन: वागे",
+   "p5": "पासारन: क्लिवोन"
+  }
+ },
+ "bn": {
+  "name": "জাভানিজ পঞ্জিকা",
+  "desc": "জাভানিজ পঞ্জিকা (জাভানিজ অব্দ, AJ) অনুযায়ী তারিখ, পাঁচ দিনের পাসারান সপ্তাহ এবং জাভানিজ নববর্ষ 1 সুরা।",
+  "note": "সুলতান আগুং 1633 সালে প্রতিষ্ঠিত গাণিতিক চান্দ্র পঞ্জিকা, যা 8 বছরের উইন্দু ও 120 বছরের কুরুপ চক্রে চলে। 1 সুরা ইন্দোনেশিয়া সরকারের 1 মহররম থেকে এক দিন আলাদা হতে পারে; যোগ্যকার্তা ও সুরাকার্তার প্রাসাদ মাঝে মাঝে নিজস্ব তারিখ ঘোষণা করে।",
+  "ev": {
+   "suro": "1 সুরা (জাভানিজ নববর্ষ)",
+   "grebegMulud": "গ্রেবেগ মুলুদ (যোগ্যকার্তা ও সুরাকার্তার প্রাসাদ)"
+  },
+  "month": [
+   "সুরা",
+   "সাপার",
+   "মুলুদ",
+   "বাকদা মুলুদ",
+   "জুমাদিলাওয়াল",
+   "জুমাদিলাকির",
+   "রেজেব",
+   "রুওয়াহ",
+   "পাসা",
+   "সাওয়াল",
+   "সেলা",
+   "বেসার"
+  ],
+  "fmt": "{d} {m} {y}",
+  "daily": {
+   "p1": "পাসারান: লেগি",
+   "p2": "পাসারান: পাহিং",
+   "p3": "পাসারান: পোন",
+   "p4": "পাসারান: ওয়াগে",
+   "p5": "পাসারান: ক্লিওন"
+  }
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "source": [
+  "https://arxiv.org/abs/1401.6285 (S. Janson, Tibetan calendar mathematics, 2014: Phugpa sabitleri, artık ay, takvim günü ve bayram kuralları)",
+  "https://gototibet.com/tibetan-festivals/ (Losar 18.02.2026, Saga Dawa 31.05.2026)",
+  "https://jamyangleeds.co.uk/whats-on/chokhor-duchen-2025 ve /chokhor-duchen-2026, https://nalanda-monastery.eu/chokor-duchen-2025/ (Chokhor Düchen 28.07.2025 ve 18.07.2026)",
+  "https://holidayapi.com/holidays/bt/lhabab-duchen ve Sikkim tatil listesi (Lhabab Düchen 01.11.2026)",
+  "https://www.greattibettour.com/festivals/tibetan-festivals-calendar ve https://www.drophenling.com/events/ (Ganden Ngamchö 03.12.2026)",
+  "https://www.mindrolling.org/2021/, https://tushita.info/2021/10/ (Lhabab Düchen 27.10.2021) ve https://tushita.info/?p=65967 (Chokhor Düchen 09.07.2024): çift ayda bayramın birinci ayda olduğu, aralık dışı"
+ ],
+ "note": "Losar 28.02.2025 Ağaç Yılan yılıdır. Lhabab Düchen 2026 için bir tur sitesi 3 Kasım yazar (absent); Drophenling (Singapur) bazı yıllarda Çin ay takvimine göre tarih verir, yalnız Ganden Ngamchö 2026 için kullanıldı. Çift ay kuralı: 2021'de 9. ay, 2024'te 6. ay çiftti; bayramlar birinci ayda (27.10.2021, 09.07.2024) tutuldu, ikinci ayda olsaydı 26.11.2021 ve 08.08.2024 olurdu.",
+ "cases": [
+  {
+   "date": "2025-02-28",
+   "key": "losar"
+  },
+  {
+   "date": "2025-07-28",
+   "key": "chokhor"
+  },
+  {
+   "date": "2026-02-18",
+   "key": "losar"
+  },
+  {
+   "date": "2026-05-31",
+   "key": "sagaDawa"
+  },
+  {
+   "date": "2026-07-18",
+   "key": "chokhor"
+  },
+  {
+   "date": "2026-11-01",
+   "key": "lhabab"
+  },
+  {
+   "date": "2026-12-03",
+   "key": "ganden"
+  }
+ ],
+ "absent": [
+  {
+   "date": "2026-11-03",
+   "key": "lhabab"
+  }
+ ],
+ "daily": [
+  {
+   "date": "2025-02-28",
+   "code": "m1d1y2152"
+  },
+  {
+   "date": "2026-02-18",
+   "code": "m1d1y2153"
+  },
+  {
+   "date": "2026-05-31",
+   "code": "m4d15y2153"
+  }
+ ]
+}
