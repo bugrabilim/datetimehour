@@ -1,0 +1,591 @@
+{
+  "tr": {
+    "verify": {
+      "subject": "E-posta adresinizi doğrulayın",
+      "body": "Saat Tarih hesabınızı açmak için aşağıdaki düğmeye dokunun. Bağlantı 24 saat geçerlidir.",
+      "button": "Adresimi doğrula"
+    },
+    "reset": {
+      "subject": "Şifre sıfırlama",
+      "body": "Saat Tarih hesabınız için şifre sıfırlama istendi. Yeni şifrenizi belirlemek için aşağıdaki düğmeye dokunun. Bağlantı 1 saat geçerlidir.",
+      "button": "Yeni şifre belirle"
+    },
+    "exists": {
+      "subject": "Bu adresle zaten bir hesabınız var",
+      "body": "Biri bu e-posta adresiyle yeni bir Saat Tarih hesabı açmayı denedi, ama bu adresle zaten bir hesabınız var. Şifrenizi hatırlamıyorsanız uygulamada Giriş › Şifremi unuttum'u kullanın."
+    },
+    "changeOld": {
+      "subject": "E-posta adresiniz değişiyor",
+      "body": "Saat Tarih hesabınızın e-posta adresini {email} olarak değiştirme isteği geldi. Bu isteği siz yaptıysanız aşağıdaki düğmeyle onaylayın.",
+      "button": "Değişikliği onayla"
+    },
+    "deleted": {
+      "subject": "Hesabınız silindi",
+      "body": "Saat Tarih hesabınız ve hesabınıza bağlı bütün bilgiler silindi. Uygulamayı hesapsız kullanmaya devam edebilirsiniz."
+    },
+    "inactive": {
+      "subject": "Hesabınız 30 gün sonra silinecek",
+      "body": "Saat Tarih hesabınızla iki yıldır giriş yapılmadı. Bilgilerinizi gereğinden uzun saklamamak için hesabınız {date} tarihinde silinecek. Hesabınızın kalmasını istiyorsanız bu tarihten önce uygulamada hesabınızla giriş yapmanız yeterlidir."
+    },
+    "ignore": "Bu isteği siz yapmadıysanız bu e-postayı yok sayabilirsiniz; hesabınızda bir şey değişmez.",
+    "footer": "Bu e-postayı Saat Tarih hesabınızla ilgili bir işlem nedeniyle aldınız. Saat Tarih bir Bumba Life ürünüdür."
+  },
+  "en": {
+    "verify": {
+      "subject": "Verify your email address",
+      "body": "Tap the button below to finish creating your Time & Date account. The link is valid for 24 hours.",
+      "button": "Verify my address"
+    },
+    "reset": {
+      "subject": "Reset your password",
+      "body": "A password reset was requested for your Time & Date account. Tap the button below to choose a new password. The link is valid for 1 hour.",
+      "button": "Choose a new password"
+    },
+    "exists": {
+      "subject": "You already have an account with this address",
+      "body": "Someone tried to create a new Time & Date account with this email address, but you already have an account with it. If you don't remember your password, use Sign in › Forgot password in the app."
+    },
+    "changeOld": {
+      "subject": "Your email address is changing",
+      "body": "We received a request to change the email address of your Time & Date account to {email}. If you made this request, confirm it with the button below.",
+      "button": "Confirm the change"
+    },
+    "deleted": {
+      "subject": "Your account has been deleted",
+      "body": "Your Time & Date account and all information linked to it have been deleted. You can keep using the app without an account."
+    },
+    "inactive": {
+      "subject": "Your account will be deleted in 30 days",
+      "body": "No one has signed in to your Time & Date account for two years. So that we do not keep your information longer than needed, your account will be deleted on {date}. To keep it, just sign in to your account in the app before that date."
+    },
+    "ignore": "If you didn't make this request, you can ignore this email; nothing changes in your account.",
+    "footer": "You received this email because of an action on your Time & Date account. Time & Date is a Bumba Life product."
+  },
+  "de": {
+    "verify": {
+      "subject": "Bestätigen Sie Ihre E-Mail-Adresse",
+      "body": "Tippen Sie auf die Schaltfläche unten, um Ihr Uhr-&-Datum-Konto fertig einzurichten. Der Link ist 24 Stunden gültig.",
+      "button": "Adresse bestätigen"
+    },
+    "reset": {
+      "subject": "Passwort zurücksetzen",
+      "body": "Für Ihr Uhr-&-Datum-Konto wurde das Zurücksetzen des Passworts angefordert. Tippen Sie auf die Schaltfläche unten, um ein neues Passwort festzulegen. Der Link ist 1 Stunde gültig.",
+      "button": "Neues Passwort festlegen"
+    },
+    "exists": {
+      "subject": "Sie haben mit dieser Adresse bereits ein Konto",
+      "body": "Jemand hat versucht, mit dieser E-Mail-Adresse ein neues Uhr-&-Datum-Konto anzulegen, aber Sie haben damit bereits ein Konto. Wenn Sie Ihr Passwort vergessen haben, nutzen Sie in der App Anmelden › Passwort vergessen."
+    },
+    "changeOld": {
+      "subject": "Ihre E-Mail-Adresse wird geändert",
+      "body": "Wir haben eine Anfrage erhalten, die E-Mail-Adresse Ihres Uhr-&-Datum-Kontos in {email} zu ändern. Wenn die Anfrage von Ihnen stammt, bestätigen Sie sie mit der Schaltfläche unten.",
+      "button": "Änderung bestätigen"
+    },
+    "deleted": {
+      "subject": "Ihr Konto wurde gelöscht",
+      "body": "Ihr Uhr-&-Datum-Konto und alle damit verbundenen Daten wurden gelöscht. Sie können die App weiterhin ohne Konto nutzen."
+    },
+    "inactive": {
+      "subject": "Ihr Konto wird in 30 Tagen gelöscht",
+      "body": "Bei Ihrem Uhr-&-Datum-Konto hat sich seit zwei Jahren niemand angemeldet. Damit wir Ihre Daten nicht länger als nötig speichern, wird Ihr Konto am {date} gelöscht. Wenn Sie es behalten möchten, melden Sie sich vor diesem Datum einfach in der App mit Ihrem Konto an."
+    },
+    "ignore": "Wenn die Anfrage nicht von Ihnen stammt, können Sie diese E-Mail ignorieren; an Ihrem Konto ändert sich nichts.",
+    "footer": "Sie erhalten diese E-Mail wegen einer Aktion in Ihrem Uhr-&-Datum-Konto. Uhr & Datum ist ein Produkt von Bumba Life."
+  },
+  "az": {
+    "verify": {
+      "subject": "E-poçt ünvanınızı təsdiqləyin",
+      "body": "Saat Tarix hesabınızı yaratmağı tamamlamaq üçün aşağıdakı düyməyə toxunun. Keçid 24 saat etibarlıdır.",
+      "button": "Ünvanımı təsdiqlə"
+    },
+    "reset": {
+      "subject": "Şifrənin sıfırlanması",
+      "body": "Saat Tarix hesabınız üçün şifrənin sıfırlanması istəndi. Yeni şifrə təyin etmək üçün aşağıdakı düyməyə toxunun. Keçid 1 saat etibarlıdır.",
+      "button": "Yeni şifrə təyin et"
+    },
+    "exists": {
+      "subject": "Bu ünvanla artıq hesabınız var",
+      "body": "Kimsə bu e-poçt ünvanı ilə yeni Saat Tarix hesabı açmağa çalışdı, lakin bu ünvanla artıq hesabınız var. Şifrənizi xatırlamırsınızsa, tətbiqdə Giriş › Şifrəmi unutdum bölməsindən istifadə edin."
+    },
+    "changeOld": {
+      "subject": "E-poçt ünvanınız dəyişir",
+      "body": "Saat Tarix hesabınızın e-poçt ünvanını {email} ilə dəyişmək istəyi gəldi. Bu istəyi siz etmisinizsə, aşağıdakı düymə ilə təsdiqləyin.",
+      "button": "Dəyişikliyi təsdiqlə"
+    },
+    "deleted": {
+      "subject": "Hesabınız silindi",
+      "body": "Saat Tarix hesabınız və ona bağlı bütün məlumatlar silindi. Tətbiqdən hesabsız istifadə etməyə davam edə bilərsiniz."
+    },
+    "inactive": {
+      "subject": "Hesabınız 30 gün sonra silinəcək",
+      "body": "Saat Tarix hesabınıza iki ildir giriş edilməyib. Məlumatlarınızı lazım olduğundan çox saxlamamaq üçün hesabınız {date} tarixində silinəcək. Hesabınızın qalmasını istəyirsinizsə, bu tarixdən əvvəl tətbiqdə hesabınıza giriş etməyiniz kifayətdir."
+    },
+    "ignore": "Bu istəyi siz etməmisinizsə, bu e-poçtu nəzərə almaya bilərsiniz; hesabınızda heç nə dəyişmir.",
+    "footer": "Bu e-poçtu Saat Tarix hesabınızla bağlı bir əməliyyat səbəbindən aldınız. Saat Tarix Bumba Life məhsuludur."
+  },
+  "ar": {
+    "verify": {
+      "subject": "أكِّد عنوان بريدك الإلكتروني",
+      "body": "اضغط الزر أدناه لإكمال إنشاء حسابك في «الوقت والتاريخ». الرابط صالح لمدة 24 ساعة.",
+      "button": "تأكيد عنواني"
+    },
+    "reset": {
+      "subject": "إعادة تعيين كلمة المرور",
+      "body": "طُلبت إعادة تعيين كلمة المرور لحسابك في «الوقت والتاريخ». اضغط الزر أدناه لاختيار كلمة مرور جديدة. الرابط صالح لمدة ساعة واحدة.",
+      "button": "اختيار كلمة مرور جديدة"
+    },
+    "exists": {
+      "subject": "لديك حساب بهذا العنوان بالفعل",
+      "body": "حاول أحدهم إنشاء حساب جديد في «الوقت والتاريخ» بهذا البريد الإلكتروني، لكن لديك حسابًا به بالفعل. إذا نسيت كلمة المرور فاستخدم في التطبيق: تسجيل الدخول › نسيت كلمة المرور."
+    },
+    "changeOld": {
+      "subject": "عنوان بريدك الإلكتروني يتغيّر",
+      "body": "تلقّينا طلبًا لتغيير البريد الإلكتروني لحسابك في «الوقت والتاريخ» إلى {email}. إذا كنت صاحب الطلب فأكّده بالزر أدناه.",
+      "button": "تأكيد التغيير"
+    },
+    "deleted": {
+      "subject": "حُذف حسابك",
+      "body": "حُذف حسابك في «الوقت والتاريخ» وكل المعلومات المرتبطة به. يمكنك متابعة استخدام التطبيق دون حساب."
+    },
+    "inactive": {
+      "subject": "سيُحذف حسابك بعد 30 يومًا",
+      "body": "لم يُسجَّل الدخول إلى حسابك في «الوقت والتاريخ» منذ سنتين. حتى لا نحتفظ بمعلوماتك أطول مما يلزم، سيُحذف حسابك في {date}. إن أردت الإبقاء عليه فيكفي أن تسجّل الدخول إلى حسابك في التطبيق قبل هذا التاريخ."
+    },
+    "ignore": "إذا لم تطلب ذلك فيمكنك تجاهل هذه الرسالة؛ لن يتغيّر شيء في حسابك.",
+    "footer": "وصلتك هذه الرسالة بسبب إجراء على حسابك في «الوقت والتاريخ». «الوقت والتاريخ» منتج من Bumba Life."
+  },
+  "id": {
+    "verify": {
+      "subject": "Verifikasi alamat email Anda",
+      "body": "Ketuk tombol di bawah untuk menyelesaikan pembuatan akun Jam & Tanggal Anda. Tautan berlaku selama 24 jam.",
+      "button": "Verifikasi alamat saya"
+    },
+    "reset": {
+      "subject": "Atur ulang kata sandi",
+      "body": "Ada permintaan untuk mengatur ulang kata sandi akun Jam & Tanggal Anda. Ketuk tombol di bawah untuk membuat kata sandi baru. Tautan berlaku selama 1 jam.",
+      "button": "Buat kata sandi baru"
+    },
+    "exists": {
+      "subject": "Anda sudah punya akun dengan alamat ini",
+      "body": "Seseorang mencoba membuat akun Jam & Tanggal baru dengan alamat email ini, tetapi Anda sudah punya akun dengan alamat ini. Jika Anda lupa kata sandi, gunakan Masuk › Lupa kata sandi di aplikasi."
+    },
+    "changeOld": {
+      "subject": "Alamat email Anda akan berubah",
+      "body": "Kami menerima permintaan untuk mengubah alamat email akun Jam & Tanggal Anda menjadi {email}. Jika permintaan ini dari Anda, konfirmasikan dengan tombol di bawah.",
+      "button": "Konfirmasi perubahan"
+    },
+    "deleted": {
+      "subject": "Akun Anda telah dihapus",
+      "body": "Akun Jam & Tanggal Anda dan semua informasi yang terkait dengannya telah dihapus. Anda tetap dapat memakai aplikasi tanpa akun."
+    },
+    "inactive": {
+      "subject": "Akun Anda akan dihapus dalam 30 hari",
+      "body": "Akun Jam & Tanggal Anda tidak pernah dipakai masuk selama dua tahun. Agar informasi Anda tidak kami simpan lebih lama dari yang diperlukan, akun Anda akan dihapus pada {date}. Jika ingin mempertahankannya, cukup masuk ke akun Anda di aplikasi sebelum tanggal itu."
+    },
+    "ignore": "Jika Anda tidak membuat permintaan ini, abaikan email ini; tidak ada yang berubah di akun Anda.",
+    "footer": "Anda menerima email ini karena ada tindakan pada akun Jam & Tanggal Anda. Jam & Tanggal adalah produk Bumba Life."
+  },
+  "ur": {
+    "verify": {
+      "subject": "اپنا ای میل پتہ تصدیق کریں",
+      "body": "اپنا وقت اور تاریخ اکاؤنٹ بنانا مکمل کرنے کے لیے نیچے دیے گئے بٹن کو دبائیں۔ یہ لنک 24 گھنٹے تک کارآمد ہے۔",
+      "button": "میرا پتہ تصدیق کریں"
+    },
+    "reset": {
+      "subject": "پاس ورڈ دوبارہ ترتیب دیں",
+      "body": "آپ کے وقت اور تاریخ اکاؤنٹ کا پاس ورڈ دوبارہ ترتیب دینے کی درخواست کی گئی ہے۔ نیا پاس ورڈ منتخب کرنے کے لیے نیچے دیے گئے بٹن کو دبائیں۔ یہ لنک 1 گھنٹے تک کارآمد ہے۔",
+      "button": "نیا پاس ورڈ منتخب کریں"
+    },
+    "exists": {
+      "subject": "اس پتے سے آپ کا اکاؤنٹ پہلے سے موجود ہے",
+      "body": "کسی نے اس ای میل پتے سے نیا وقت اور تاریخ اکاؤنٹ بنانے کی کوشش کی، لیکن اس پتے سے آپ کا اکاؤنٹ پہلے سے موجود ہے۔ اگر پاس ورڈ یاد نہیں تو ایپ میں سائن اِن › پاس ورڈ بھول گئے استعمال کریں۔"
+    },
+    "changeOld": {
+      "subject": "آپ کا ای میل پتہ بدل رہا ہے",
+      "body": "ہمیں آپ کے وقت اور تاریخ اکاؤنٹ کا ای میل پتہ {email} میں بدلنے کی درخواست ملی ہے۔ اگر یہ درخواست آپ نے کی ہے تو نیچے دیے گئے بٹن سے تصدیق کریں۔",
+      "button": "تبدیلی کی تصدیق کریں"
+    },
+    "deleted": {
+      "subject": "آپ کا اکاؤنٹ حذف کر دیا گیا",
+      "body": "آپ کا وقت اور تاریخ اکاؤنٹ اور اس سے منسلک تمام معلومات حذف کر دی گئی ہیں۔ آپ اکاؤنٹ کے بغیر ایپ استعمال کرتے رہ سکتے ہیں۔"
+    },
+    "inactive": {
+      "subject": "آپ کا اکاؤنٹ 30 دن بعد حذف ہو جائے گا",
+      "body": "آپ کے وقت اور تاریخ اکاؤنٹ میں دو سال سے کسی نے سائن ان نہیں کیا۔ آپ کی معلومات ضرورت سے زیادہ دیر تک نہ رکھنے کے لیے آپ کا اکاؤنٹ {date} کو حذف کر دیا جائے گا۔ اگر آپ اسے رکھنا چاہتے ہیں تو اس تاریخ سے پہلے ایپ میں اپنے اکاؤنٹ سے سائن ان کر لینا کافی ہے۔"
+    },
+    "ignore": "اگر یہ درخواست آپ نے نہیں کی تو اس ای میل کو نظر انداز کر دیں؛ آپ کے اکاؤنٹ میں کچھ نہیں بدلے گا۔",
+    "footer": "یہ ای میل آپ کو آپ کے وقت اور تاریخ اکاؤنٹ پر کسی کارروائی کی وجہ سے ملی ہے۔ وقت اور تاریخ Bumba Life کی پیشکش ہے۔"
+  },
+  "fa": {
+    "verify": {
+      "subject": "نشانی ایمیل خود را تأیید کنید",
+      "body": "برای پایان ساخت حساب «ساعت و تاریخ» روی دکمهٔ زیر بزنید. این پیوند ۲۴ ساعت معتبر است.",
+      "button": "تأیید نشانی من"
+    },
+    "reset": {
+      "subject": "بازنشانی گذرواژه",
+      "body": "برای حساب «ساعت و تاریخ» شما درخواست بازنشانی گذرواژه شده است. برای انتخاب گذرواژهٔ تازه روی دکمهٔ زیر بزنید. این پیوند ۱ ساعت معتبر است.",
+      "button": "انتخاب گذرواژهٔ تازه"
+    },
+    "exists": {
+      "subject": "با این نشانی از قبل حساب دارید",
+      "body": "کسی کوشید با این نشانی ایمیل حساب تازه‌ای در «ساعت و تاریخ» بسازد، اما شما با این نشانی از قبل حساب دارید. اگر گذرواژه را به یاد نمی‌آورید، در برنامه از ورود › فراموشی گذرواژه استفاده کنید."
+    },
+    "changeOld": {
+      "subject": "نشانی ایمیل شما در حال تغییر است",
+      "body": "درخواستی برای تغییر نشانی ایمیل حساب «ساعت و تاریخ» شما به {email} دریافت کردیم. اگر این درخواست از شماست، با دکمهٔ زیر تأییدش کنید.",
+      "button": "تأیید تغییر"
+    },
+    "deleted": {
+      "subject": "حساب شما حذف شد",
+      "body": "حساب «ساعت و تاریخ» شما و همهٔ اطلاعات وابسته به آن حذف شد. می‌توانید بدون حساب از برنامه استفاده کنید."
+    },
+    "inactive": {
+      "subject": "حساب شما 30 روز دیگر حذف می‌شود",
+      "body": "دو سال است که کسی به حساب «ساعت و تاریخ» شما وارد نشده است. برای اینکه اطلاعات شما را بیش از اندازهٔ لازم نگه نداریم، حساب شما در تاریخ {date} حذف می‌شود. اگر می‌خواهید حساب بماند، کافی است پیش از این تاریخ در برنامه وارد حساب خود شوید."
+    },
+    "ignore": "اگر این درخواست از شما نبوده، این ایمیل را نادیده بگیرید؛ چیزی در حساب شما تغییر نمی‌کند.",
+    "footer": "این ایمیل به‌سبب کاری روی حساب «ساعت و تاریخ» شما فرستاده شد. «ساعت و تاریخ» محصولی از Bumba Life است."
+  },
+  "fr": {
+    "verify": {
+      "subject": "Confirmez votre adresse e-mail",
+      "body": "Touchez le bouton ci-dessous pour terminer la création de votre compte Heure & Date. Le lien est valable 24 heures.",
+      "button": "Confirmer mon adresse"
+    },
+    "reset": {
+      "subject": "Réinitialiser votre mot de passe",
+      "body": "Une réinitialisation du mot de passe a été demandée pour votre compte Heure & Date. Touchez le bouton ci-dessous pour choisir un nouveau mot de passe. Le lien est valable 1 heure.",
+      "button": "Choisir un nouveau mot de passe"
+    },
+    "exists": {
+      "subject": "Vous avez déjà un compte avec cette adresse",
+      "body": "Quelqu'un a essayé de créer un nouveau compte Heure & Date avec cette adresse e-mail, mais vous avez déjà un compte avec elle. Si vous avez oublié votre mot de passe, utilisez Se connecter › Mot de passe oublié dans l'application."
+    },
+    "changeOld": {
+      "subject": "Votre adresse e-mail va changer",
+      "body": "Nous avons reçu une demande pour remplacer l'adresse e-mail de votre compte Heure & Date par {email}. Si cette demande vient de vous, confirmez-la avec le bouton ci-dessous.",
+      "button": "Confirmer le changement"
+    },
+    "deleted": {
+      "subject": "Votre compte a été supprimé",
+      "body": "Votre compte Heure & Date et toutes les informations qui y sont liées ont été supprimés. Vous pouvez continuer à utiliser l'application sans compte."
+    },
+    "inactive": {
+      "subject": "Votre compte sera supprimé dans 30 jours",
+      "body": "Personne ne s'est connecté à votre compte Heure & Date depuis deux ans. Pour ne pas conserver vos informations plus longtemps que nécessaire, votre compte sera supprimé le {date}. Pour le garder, il suffit de vous connecter à votre compte dans l'application avant cette date."
+    },
+    "ignore": "Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail ; rien ne change dans votre compte.",
+    "footer": "Vous recevez cet e-mail à la suite d'une action sur votre compte Heure & Date. Heure & Date est un produit Bumba Life."
+  },
+  "ru": {
+    "verify": {
+      "subject": "Подтвердите адрес электронной почты",
+      "body": "Нажмите кнопку ниже, чтобы завершить создание аккаунта «Время и дата». Ссылка действует 24 часа.",
+      "button": "Подтвердить адрес"
+    },
+    "reset": {
+      "subject": "Сброс пароля",
+      "body": "Для вашего аккаунта «Время и дата» запрошен сброс пароля. Нажмите кнопку ниже, чтобы задать новый пароль. Ссылка действует 1 час.",
+      "button": "Задать новый пароль"
+    },
+    "exists": {
+      "subject": "У вас уже есть аккаунт с этим адресом",
+      "body": "Кто-то попытался создать новый аккаунт «Время и дата» с этим адресом электронной почты, но у вас уже есть аккаунт с ним. Если вы не помните пароль, в приложении выберите Вход › Забыли пароль."
+    },
+    "changeOld": {
+      "subject": "Адрес электронной почты меняется",
+      "body": "Мы получили запрос на смену адреса электронной почты аккаунта «Время и дата» на {email}. Если это ваш запрос, подтвердите его кнопкой ниже.",
+      "button": "Подтвердить смену"
+    },
+    "deleted": {
+      "subject": "Ваш аккаунт удалён",
+      "body": "Ваш аккаунт «Время и дата» и все связанные с ним данные удалены. Вы можете и дальше пользоваться приложением без аккаунта."
+    },
+    "inactive": {
+      "subject": "Ваш аккаунт будет удалён через 30 дней",
+      "body": "В ваш аккаунт «Время и дата» никто не входил два года. Чтобы не хранить ваши данные дольше, чем нужно, аккаунт будет удалён {date}. Если хотите его сохранить, просто войдите в аккаунт в приложении до этой даты."
+    },
+    "ignore": "Если вы этого не запрашивали, просто проигнорируйте письмо: в аккаунте ничего не изменится.",
+    "footer": "Вы получили это письмо из-за действия в вашем аккаунте «Время и дата». «Время и дата» — продукт Bumba Life."
+  },
+  "ja": {
+    "verify": {
+      "subject": "メールアドレスを確認してください",
+      "body": "下のボタンをタップして「時刻と日付」アカウントの作成を完了してください。リンクの有効期限は24時間です。",
+      "button": "アドレスを確認"
+    },
+    "reset": {
+      "subject": "パスワードの再設定",
+      "body": "「時刻と日付」アカウントのパスワード再設定が要求されました。下のボタンをタップして新しいパスワードを設定してください。リンクの有効期限は1時間です。",
+      "button": "新しいパスワードを設定"
+    },
+    "exists": {
+      "subject": "このアドレスのアカウントは既にあります",
+      "body": "誰かがこのメールアドレスで「時刻と日付」の新しいアカウントを作成しようとしましたが、このアドレスのアカウントは既にあります。パスワードを忘れた場合は、アプリの「ログイン › パスワードを忘れた」を使ってください。"
+    },
+    "changeOld": {
+      "subject": "メールアドレスの変更",
+      "body": "「時刻と日付」アカウントのメールアドレスを {email} に変更する依頼がありました。ご自身による依頼であれば、下のボタンで確認してください。",
+      "button": "変更を確認"
+    },
+    "deleted": {
+      "subject": "アカウントを削除しました",
+      "body": "「時刻と日付」アカウントと、それに関連するすべての情報を削除しました。アプリはアカウントなしで引き続き使えます。"
+    },
+    "inactive": {
+      "subject": "30日後にアカウントが削除されます",
+      "body": "「時刻と日付」アカウントへのログインが2年間ありません。情報を必要以上に長く保管しないため、アカウントは{date}に削除されます。残したい場合は、その日までにアプリでアカウントにログインするだけで結構です。"
+    },
+    "ignore": "この操作に心当たりがない場合は、このメールを無視してください。アカウントは変更されません。",
+    "footer": "このメールは「時刻と日付」アカウントでの操作により送信されました。「時刻と日付」は Bumba Life の製品です。"
+  },
+  "ko": {
+    "verify": {
+      "subject": "이메일 주소를 인증하세요",
+      "body": "아래 버튼을 눌러 '시간과 날짜' 계정 만들기를 마치세요. 링크는 24시간 동안 유효합니다.",
+      "button": "주소 인증"
+    },
+    "reset": {
+      "subject": "비밀번호 재설정",
+      "body": "'시간과 날짜' 계정의 비밀번호 재설정이 요청되었습니다. 아래 버튼을 눌러 새 비밀번호를 정하세요. 링크는 1시간 동안 유효합니다.",
+      "button": "새 비밀번호 정하기"
+    },
+    "exists": {
+      "subject": "이 주소로 된 계정이 이미 있습니다",
+      "body": "누군가 이 이메일 주소로 새 '시간과 날짜' 계정을 만들려고 했지만, 이 주소로 된 계정이 이미 있습니다. 비밀번호가 기억나지 않으면 앱에서 로그인 › 비밀번호 찾기를 사용하세요."
+    },
+    "changeOld": {
+      "subject": "이메일 주소가 변경됩니다",
+      "body": "'시간과 날짜' 계정의 이메일 주소를 {email}(으)로 바꾸는 요청을 받았습니다. 직접 요청하셨다면 아래 버튼으로 확인하세요.",
+      "button": "변경 확인"
+    },
+    "deleted": {
+      "subject": "계정이 삭제되었습니다",
+      "body": "'시간과 날짜' 계정과 연결된 모든 정보가 삭제되었습니다. 앱은 계정 없이 계속 사용할 수 있습니다."
+    },
+    "inactive": {
+      "subject": "30일 후 계정이 삭제됩니다",
+      "body": "'시간과 날짜' 계정에 2년 동안 로그인한 기록이 없습니다. 정보를 필요 이상으로 오래 보관하지 않기 위해 계정은 {date}에 삭제됩니다. 계정을 유지하려면 그 전에 앱에서 계정으로 로그인하기만 하면 됩니다."
+    },
+    "ignore": "요청하지 않으셨다면 이 메일을 무시하세요. 계정에는 아무 변화가 없습니다.",
+    "footer": "'시간과 날짜' 계정에서 일어난 작업 때문에 이 메일을 받으셨습니다. '시간과 날짜'는 Bumba Life의 제품입니다."
+  },
+  "zh": {
+    "verify": {
+      "subject": "验证你的电子邮件地址",
+      "body": "轻点下方按钮，完成“时间与日期”账户的创建。链接 24 小时内有效。",
+      "button": "验证我的地址"
+    },
+    "reset": {
+      "subject": "重置密码",
+      "body": "有人请求重置你的“时间与日期”账户密码。轻点下方按钮设置新密码。链接 1 小时内有效。",
+      "button": "设置新密码"
+    },
+    "exists": {
+      "subject": "此地址已有账户",
+      "body": "有人尝试用此电子邮件地址创建新的“时间与日期”账户，但此地址已有账户。如果忘记了密码，请在应用中使用“登录 › 忘记密码”。"
+    },
+    "changeOld": {
+      "subject": "你的电子邮件地址即将更改",
+      "body": "我们收到将你的“时间与日期”账户电子邮件地址更改为 {email} 的请求。如果这是你本人的请求，请用下方按钮确认。",
+      "button": "确认更改"
+    },
+    "deleted": {
+      "subject": "你的账户已删除",
+      "body": "你的“时间与日期”账户及其关联的所有信息均已删除。你可以继续不登录使用应用。"
+    },
+    "inactive": {
+      "subject": "你的账户将在 30 天后删除",
+      "body": "你的“时间与日期”账户已有两年未登录。为了不把你的信息保存得过久，账户将于 {date} 删除。如果想保留账户，只需在此日期前在应用中登录即可。"
+    },
+    "ignore": "如果这不是你发出的请求，请忽略此邮件；你的账户不会有任何变化。",
+    "footer": "你收到此邮件是因为你的“时间与日期”账户有操作。“时间与日期”是 Bumba Life 的产品。"
+  },
+  "fil": {
+    "verify": {
+      "subject": "I-verify ang iyong email address",
+      "body": "I-tap ang button sa ibaba para tapusin ang paggawa ng iyong Oras at Petsa account. May bisa ang link nang 24 na oras.",
+      "button": "I-verify ang address ko"
+    },
+    "reset": {
+      "subject": "I-reset ang password",
+      "body": "May humiling na i-reset ang password ng iyong Oras at Petsa account. I-tap ang button sa ibaba para pumili ng bagong password. May bisa ang link nang 1 oras.",
+      "button": "Pumili ng bagong password"
+    },
+    "exists": {
+      "subject": "May account ka na sa address na ito",
+      "body": "May sumubok gumawa ng bagong Oras at Petsa account gamit ang email address na ito, pero may account ka na rito. Kung hindi mo maalala ang password, gamitin ang Mag-sign in › Nakalimutan ang password sa app."
+    },
+    "changeOld": {
+      "subject": "Nagbabago ang iyong email address",
+      "body": "May natanggap kaming kahilingang palitan ng {email} ang email address ng iyong Oras at Petsa account. Kung ikaw ang humiling, kumpirmahin ito gamit ang button sa ibaba.",
+      "button": "Kumpirmahin ang pagbabago"
+    },
+    "deleted": {
+      "subject": "Nabura na ang iyong account",
+      "body": "Nabura na ang iyong Oras at Petsa account at lahat ng impormasyong nakaugnay rito. Puwede mo pa ring gamitin ang app nang walang account."
+    },
+    "inactive": {
+      "subject": "Mabubura ang iyong account sa loob ng 30 araw",
+      "body": "Dalawang taon nang walang nag-sign in sa iyong Oras at Petsa account. Para hindi namin maitago ang iyong impormasyon nang mas matagal kaysa kailangan, mabubura ang iyong account sa {date}. Kung gusto mo itong panatilihin, mag-sign in lang sa iyong account sa app bago ang petsang iyon."
+    },
+    "ignore": "Kung hindi ikaw ang humiling nito, huwag pansinin ang email na ito; walang magbabago sa iyong account.",
+    "footer": "Natanggap mo ang email na ito dahil sa isang aksyon sa iyong Oras at Petsa account. Ang Oras at Petsa ay produkto ng Bumba Life."
+  },
+  "th": {
+    "verify": {
+      "subject": "ยืนยันที่อยู่อีเมลของคุณ",
+      "body": "แตะปุ่มด้านล่างเพื่อสร้างบัญชี เวลาและวันที่ ให้เสร็จ ลิงก์ใช้ได้ 24 ชั่วโมง",
+      "button": "ยืนยันที่อยู่ของฉัน"
+    },
+    "reset": {
+      "subject": "รีเซ็ตรหัสผ่าน",
+      "body": "มีคำขอรีเซ็ตรหัสผ่านของบัญชี เวลาและวันที่ ของคุณ แตะปุ่มด้านล่างเพื่อตั้งรหัสผ่านใหม่ ลิงก์ใช้ได้ 1 ชั่วโมง",
+      "button": "ตั้งรหัสผ่านใหม่"
+    },
+    "exists": {
+      "subject": "คุณมีบัญชีที่ใช้อีเมลนี้อยู่แล้ว",
+      "body": "มีผู้พยายามสร้างบัญชี เวลาและวันที่ ใหม่ด้วยอีเมลนี้ แต่คุณมีบัญชีที่ใช้อีเมลนี้อยู่แล้ว หากจำรหัสผ่านไม่ได้ ให้ใช้ เข้าสู่ระบบ › ลืมรหัสผ่าน ในแอป"
+    },
+    "changeOld": {
+      "subject": "ที่อยู่อีเมลของคุณกำลังเปลี่ยน",
+      "body": "เราได้รับคำขอให้เปลี่ยนอีเมลของบัญชี เวลาและวันที่ ของคุณเป็น {email} หากคุณเป็นผู้ขอ โปรดยืนยันด้วยปุ่มด้านล่าง",
+      "button": "ยืนยันการเปลี่ยน"
+    },
+    "deleted": {
+      "subject": "ลบบัญชีของคุณแล้ว",
+      "body": "ลบบัญชี เวลาและวันที่ ของคุณและข้อมูลทั้งหมดที่เชื่อมโยงอยู่แล้ว คุณยังใช้แอปต่อได้โดยไม่ต้องมีบัญชี"
+    },
+    "inactive": {
+      "subject": "บัญชีของคุณจะถูกลบในอีก 30 วัน",
+      "body": "ไม่มีการลงชื่อเข้าใช้บัญชี เวลาและวันที่ ของคุณมาสองปีแล้ว เพื่อไม่ให้เก็บข้อมูลของคุณไว้นานเกินจำเป็น บัญชีของคุณจะถูกลบในวันที่ {date} หากต้องการเก็บบัญชีไว้ เพียงลงชื่อเข้าใช้บัญชีในแอปก่อนวันดังกล่าว"
+    },
+    "ignore": "หากคุณไม่ได้ขอ ไม่ต้องสนใจอีเมลนี้ บัญชีของคุณจะไม่เปลี่ยนแปลง",
+    "footer": "คุณได้รับอีเมลนี้เพราะมีการดำเนินการกับบัญชี เวลาและวันที่ ของคุณ เวลาและวันที่ เป็นผลิตภัณฑ์ของ Bumba Life"
+  },
+  "es": {
+    "verify": {
+      "subject": "Confirme su dirección de correo",
+      "body": "Toque el botón de abajo para terminar de crear su cuenta de Hora y Fecha. El enlace es válido durante 24 horas.",
+      "button": "Confirmar mi dirección"
+    },
+    "reset": {
+      "subject": "Restablecer la contraseña",
+      "body": "Se solicitó restablecer la contraseña de su cuenta de Hora y Fecha. Toque el botón de abajo para elegir una contraseña nueva. El enlace es válido durante 1 hora.",
+      "button": "Elegir una contraseña nueva"
+    },
+    "exists": {
+      "subject": "Ya tiene una cuenta con esta dirección",
+      "body": "Alguien intentó crear una cuenta nueva de Hora y Fecha con esta dirección de correo, pero usted ya tiene una cuenta con ella. Si no recuerda su contraseña, use Iniciar sesión › Olvidé mi contraseña en la aplicación."
+    },
+    "changeOld": {
+      "subject": "Su dirección de correo va a cambiar",
+      "body": "Recibimos una solicitud para cambiar la dirección de correo de su cuenta de Hora y Fecha a {email}. Si la solicitud es suya, confírmela con el botón de abajo.",
+      "button": "Confirmar el cambio"
+    },
+    "deleted": {
+      "subject": "Su cuenta fue eliminada",
+      "body": "Su cuenta de Hora y Fecha y toda la información vinculada a ella se eliminaron. Puede seguir usando la aplicación sin cuenta."
+    },
+    "inactive": {
+      "subject": "Su cuenta se eliminará en 30 días",
+      "body": "Nadie ha iniciado sesión en su cuenta de Hora y Fecha desde hace dos años. Para no guardar su información más tiempo del necesario, su cuenta se eliminará el {date}. Si quiere conservarla, basta con que inicie sesión con su cuenta en la aplicación antes de esa fecha."
+    },
+    "ignore": "Si usted no hizo esta solicitud, ignore este correo; no cambia nada en su cuenta.",
+    "footer": "Recibió este correo por una acción en su cuenta de Hora y Fecha. Hora y Fecha es un producto de Bumba Life."
+  },
+  "pt": {
+    "verify": {
+      "subject": "Confirme seu endereço de e-mail",
+      "body": "Toque no botão abaixo para terminar de criar sua conta no Hora e Data. O link vale por 24 horas.",
+      "button": "Confirmar meu endereço"
+    },
+    "reset": {
+      "subject": "Redefinir a senha",
+      "body": "Foi pedida a redefinição da senha da sua conta no Hora e Data. Toque no botão abaixo para escolher uma senha nova. O link vale por 1 hora.",
+      "button": "Escolher uma senha nova"
+    },
+    "exists": {
+      "subject": "Você já tem uma conta com este endereço",
+      "body": "Alguém tentou criar uma conta nova no Hora e Data com este endereço de e-mail, mas você já tem uma conta com ele. Se não se lembra da senha, use Entrar › Esqueci a senha no aplicativo."
+    },
+    "changeOld": {
+      "subject": "Seu endereço de e-mail vai mudar",
+      "body": "Recebemos um pedido para mudar o endereço de e-mail da sua conta no Hora e Data para {email}. Se o pedido foi seu, confirme com o botão abaixo.",
+      "button": "Confirmar a mudança"
+    },
+    "deleted": {
+      "subject": "Sua conta foi excluída",
+      "body": "Sua conta no Hora e Data e todas as informações ligadas a ela foram excluídas. Você pode continuar usando o aplicativo sem conta."
+    },
+    "inactive": {
+      "subject": "Sua conta será excluída em 30 dias",
+      "body": "Ninguém entra na sua conta no Hora e Data há dois anos. Para não guardarmos suas informações por mais tempo do que o necessário, sua conta será excluída em {date}. Se quiser mantê-la, basta entrar na sua conta no aplicativo antes dessa data."
+    },
+    "ignore": "Se você não fez este pedido, ignore este e-mail; nada muda na sua conta.",
+    "footer": "Você recebeu este e-mail por causa de uma ação na sua conta do Hora e Data. Hora e Data é um produto da Bumba Life."
+  },
+  "hi": {
+    "verify": {
+      "subject": "अपना ईमेल पता सत्यापित करें",
+      "body": "अपना समय और तारीख खाता बनाना पूरा करने के लिए नीचे दिया बटन दबाएँ। लिंक 24 घंटे तक मान्य है।",
+      "button": "मेरा पता सत्यापित करें"
+    },
+    "reset": {
+      "subject": "पासवर्ड रीसेट करें",
+      "body": "आपके समय और तारीख खाते का पासवर्ड रीसेट करने का अनुरोध किया गया है। नया पासवर्ड चुनने के लिए नीचे दिया बटन दबाएँ। लिंक 1 घंटे तक मान्य है।",
+      "button": "नया पासवर्ड चुनें"
+    },
+    "exists": {
+      "subject": "इस पते से आपका खाता पहले से है",
+      "body": "किसी ने इस ईमेल पते से समय और तारीख का नया खाता बनाने की कोशिश की, लेकिन इस पते से आपका खाता पहले से है। अगर पासवर्ड याद नहीं है, तो ऐप में साइन इन › पासवर्ड भूल गए का उपयोग करें।"
+    },
+    "changeOld": {
+      "subject": "आपका ईमेल पता बदल रहा है",
+      "body": "हमें आपके समय और तारीख खाते का ईमेल पता {email} में बदलने का अनुरोध मिला है। अगर यह अनुरोध आपने किया है, तो नीचे दिए बटन से पुष्टि करें।",
+      "button": "बदलाव की पुष्टि करें"
+    },
+    "deleted": {
+      "subject": "आपका खाता हटा दिया गया",
+      "body": "आपका समय और तारीख खाता और उससे जुड़ी सारी जानकारी हटा दी गई है। आप बिना खाते के ऐप का उपयोग जारी रख सकते हैं।"
+    },
+    "inactive": {
+      "subject": "आपका खाता 30 दिन बाद हटा दिया जाएगा",
+      "body": "आपके समय और तारीख खाते में दो साल से किसी ने साइन इन नहीं किया है। आपकी जानकारी ज़रूरत से ज़्यादा समय तक न रखने के लिए आपका खाता {date} को हटा दिया जाएगा। अगर आप इसे रखना चाहते हैं, तो बस इस तारीख से पहले ऐप में अपने खाते से साइन इन कर लें।"
+    },
+    "ignore": "अगर यह अनुरोध आपने नहीं किया, तो इस ईमेल को अनदेखा करें; आपके खाते में कुछ नहीं बदलेगा।",
+    "footer": "आपको यह ईमेल आपके समय और तारीख खाते पर हुई किसी कार्रवाई की वजह से मिला है। समय और तारीख Bumba Life का उत्पाद है।"
+  },
+  "bn": {
+    "verify": {
+      "subject": "আপনার ইমেইল ঠিকানা যাচাই করুন",
+      "body": "আপনার সময় ও তারিখ অ্যাকাউন্ট তৈরি শেষ করতে নিচের বোতামে চাপুন। লিংকটি 24 ঘণ্টা কার্যকর থাকবে।",
+      "button": "আমার ঠিকানা যাচাই করুন"
+    },
+    "reset": {
+      "subject": "পাসওয়ার্ড রিসেট",
+      "body": "আপনার সময় ও তারিখ অ্যাকাউন্টের পাসওয়ার্ড রিসেটের অনুরোধ এসেছে। নতুন পাসওয়ার্ড ঠিক করতে নিচের বোতামে চাপুন। লিংকটি 1 ঘণ্টা কার্যকর থাকবে।",
+      "button": "নতুন পাসওয়ার্ড ঠিক করুন"
+    },
+    "exists": {
+      "subject": "এই ঠিকানায় আপনার অ্যাকাউন্ট আগে থেকেই আছে",
+      "body": "কেউ এই ইমেইল ঠিকানা দিয়ে নতুন সময় ও তারিখ অ্যাকাউন্ট খোলার চেষ্টা করেছে, কিন্তু এই ঠিকানায় আপনার অ্যাকাউন্ট আগে থেকেই আছে। পাসওয়ার্ড মনে না থাকলে অ্যাপে সাইন ইন › পাসওয়ার্ড ভুলে গেছি ব্যবহার করুন।"
+    },
+    "changeOld": {
+      "subject": "আপনার ইমেইল ঠিকানা বদলাচ্ছে",
+      "body": "আপনার সময় ও তারিখ অ্যাকাউন্টের ইমেইল ঠিকানা {email} করার অনুরোধ পেয়েছি। অনুরোধটি আপনার হলে নিচের বোতাম দিয়ে নিশ্চিত করুন।",
+      "button": "পরিবর্তন নিশ্চিত করুন"
+    },
+    "deleted": {
+      "subject": "আপনার অ্যাকাউন্ট মুছে ফেলা হয়েছে",
+      "body": "আপনার সময় ও তারিখ অ্যাকাউন্ট এবং এর সঙ্গে যুক্ত সব তথ্য মুছে ফেলা হয়েছে। অ্যাকাউন্ট ছাড়াই অ্যাপটি ব্যবহার করতে পারবেন।"
+    },
+    "inactive": {
+      "subject": "30 দিন পরে আপনার অ্যাকাউন্ট মুছে ফেলা হবে",
+      "body": "দুই বছর ধরে আপনার সময় ও তারিখ অ্যাকাউন্টে কেউ সাইন ইন করেনি। আপনার তথ্য প্রয়োজনের চেয়ে বেশি দিন না রাখতে আপনার অ্যাকাউন্ট {date} তারিখে মুছে ফেলা হবে। অ্যাকাউন্টটি রাখতে চাইলে এই তারিখের আগে অ্যাপে আপনার অ্যাকাউন্টে সাইন ইন করলেই হবে।"
+    },
+    "ignore": "অনুরোধটি আপনি না করে থাকলে এই ইমেইল উপেক্ষা করুন; আপনার অ্যাকাউন্টে কিছুই বদলাবে না।",
+    "footer": "আপনার সময় ও তারিখ অ্যাকাউন্টে একটি কাজের কারণে আপনি এই ইমেইল পেয়েছেন। সময় ও তারিখ Bumba Life-এর একটি পণ্য।"
+  }
+}
