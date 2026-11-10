@@ -1958,9 +1958,14 @@
         "kuwait": "Kuwait",
         "qatar": "Catar",
         "singapore": "Singapur",
+        "kemenag": "Kemenag (Ministerio de Asuntos Religiosos de Indonesia)",
         "france": "Francia (UOIF)",
         "russia": "Administración Espiritual de los Musulmanes de Rusia"
-      }
+      },
+      "region": "según su región",
+      "kemenagNote": "El método Kemenag es para lugares bajos: en zonas altas (por encima de unos 600 m), Kemenag publica la salida del sol y el magrib con 4–5 minutos de diferencia. El imsak es 10 minutos antes del fayr, por precaución.",
+      "rowImsak": "Imsak",
+      "rowDuha": "Duha"
     },
     "ezani": "Hora ezani (a la turca): {t}",
     "ezaniNote": "En la hora ezani (a la turca), la oración del atardecer (puesta del sol) es a las 12:00 y las horas se cuentan desde ahí."

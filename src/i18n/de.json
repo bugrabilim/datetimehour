@@ -1905,9 +1905,14 @@
         "kuwait": "Kuwait",
         "qatar": "Katar",
         "singapore": "Singapur",
+        "kemenag": "Kemenag (Religionsministerium Indonesien)",
         "france": "Frankreich (UOIF)",
         "russia": "Geistliche Verwaltung der Muslime Russlands"
-      }
+      },
+      "region": "für Ihre Region",
+      "kemenagNote": "Die Kemenag-Methode gilt für tief gelegene Orte: im Hochland (über etwa 600 m) veröffentlicht Kemenag Sonnenaufgang und Maghrib um 4–5 Minuten anders. Imsak liegt zur Vorsicht 10 Minuten vor Fadschr.",
+      "rowImsak": "Imsak",
+      "rowDuha": "Duha"
     },
     "ezani": "Ezani-Zeit (alla turca): {t}",
     "ezaniNote": "In der Ezani-Zeit (alla turca) gilt das Abendgebet (Sonnenuntergang) als 12:00; von dort wird gezählt."

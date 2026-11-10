@@ -1878,9 +1878,14 @@
         "kuwait": "Küveyt",
         "qatar": "Qətər",
         "singapore": "Sinqapur",
+        "kemenag": "Kemenag (İndoneziya Din İşləri Nazirliyi)",
         "france": "Fransa (UOIF)",
         "russia": "Rusiya Müsəlmanları Dini İdarəsi"
-      }
+      },
+      "region": "bölgənizə görə",
+      "kemenagNote": "Kemenag üsulu alçaq yerlər üçündür: yaylada (təxminən 600 metrdən yuxarı) Kemenag gün çıxanı və axşam vaxtını 4–5 dəqiqə fərqli dərc edir. İhtiyat imsakı sübhdən 10 dəqiqə əvvəldir.",
+      "rowImsak": "İhtiyat imsakı",
+      "rowDuha": "Çaşt (duha)"
     },
     "ezani": "Əzani saat: {t}",
     "ezaniNote": "Əzani (alaturka) saatda axşam vaxtı 12:00 sayılır; saat oradan hesablanır."

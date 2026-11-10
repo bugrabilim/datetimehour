@@ -1904,9 +1904,14 @@
         "kuwait": "科威特",
         "qatar": "卡塔尔",
         "singapore": "新加坡",
+        "kemenag": "Kemenag（印度尼西亚宗教部）",
         "france": "法国（UOIF）",
         "russia": "俄罗斯穆斯林宗教管理局"
-      }
+      },
+      "region": "按您所在地区",
+      "kemenagNote": "Kemenag 方法适用于低地：在高地（海拔约 600 米以上），Kemenag 公布的日出和昏礼时间相差 4–5 分钟。为谨慎起见，伊姆萨克在晨礼前 10 分钟。",
+      "rowImsak": "伊姆萨克",
+      "rowDuha": "上午礼"
     },
     "ezani": "埃扎尼（日落）时间：{t}",
     "ezaniNote": "在埃扎尼（日落）计时中，昏礼（日落）时刻记为 12:00，并由此计时。"

@@ -23,6 +23,8 @@ data class PrayerDay(
     val asr: Double?,
     val maghrib: Double?,
     val isha: Double?,
+    /** Dakikaya yuvarlama (Kemenag: başlangıçlar yukarı, güneş aşağı; diğerleri en yakın dakika) */
+    val rounding: PrayerTimes.Rounding = PrayerTimes.Rounding.NEAREST,
 ) {
     operator fun get(prayer: Prayer): Double? = when (prayer) {
         Prayer.FAJR -> fajr
@@ -33,8 +35,8 @@ data class PrayerDay(
         Prayer.ISHA -> isha
     }
 
-    /** Gece yarısından itibaren dakika; sitedeki gibi yuvarlanır (Math.round(saat × 60)). */
-    fun minutes(prayer: Prayer): Int? = get(prayer)?.let { jsRound(it * 60).toInt() }
+    /** Gece yarısından itibaren dakika; sitedeki `toMin` gibi yuvarlanır (çoğu yöntemde Math.round(saat × 60)). */
+    fun minutes(prayer: Prayer): Int? = get(prayer)?.let { PrayerTimes.toMinutes(it, rounding, sunrise = prayer == Prayer.SUNRISE) }
 }
 
 /**
@@ -58,6 +60,18 @@ object PrayerTimes {
         }
     }
 
+    /** Dakikaya yuvarlama: en yakın dakika ya da (Kemenag) başlangıçlar yukarı, güneş aşağı. */
+    enum class Rounding { NEAREST, CEIL }
+
+    /** Ondalık saati gece yarısından dakikaya çevirir (sitedeki `toMin`; yukarı/aşağı yuvarlamada 1e-6 dk pay). */
+    fun toMinutes(hours: Double, rounding: Rounding, sunrise: Boolean = false): Int {
+        val x = hours * 60
+        return when (rounding) {
+            Rounding.NEAREST -> jsRound(x).toInt()
+            Rounding.CEIL -> (if (sunrise) floor(x + 1e-6) else kotlin.math.ceil(x - 1e-6)).toInt()
+        }
+    }
+
     data class Parameters(
         val fajrAngle: Double = 18.0,
         val ishaAngle: Double = 17.0,
@@ -67,6 +81,11 @@ object PrayerTimes {
         /** Yatsı akşamdan bu kadar dakika sonra (0 = açıyla; Ümmü'l-Kura, Körfez, Katar) */
         val ishaMinutes: Double = 0.0,
         val adjustments: Adjustments = Adjustments(),
+        val rounding: Rounding = Rounding.NEAREST,
+        /** Ek satırlar (yalnız Kemenag): imsak uyarısı sabahtan bu kadar dakika önce (0 = yok), duha Güneş bu yükseklikteyken + bu kadar dakika. */
+        val imsakMinutes: Double = 0.0,
+        val duhaAltitude: Double = 0.0,
+        val duhaMinutes: Double = 0.0,
     ) {
         companion object {
             /** Diyanet ile uyumlu varsayılanlar. */
@@ -77,17 +96,22 @@ object PrayerTimes {
                 val m = METHODS[id]
                 if (m == null || id == "diyanet") return if (hanafi) Parameters(asrFactor = 2.0) else DIYANET
                 return Parameters(
-                    fajrAngle = m.fajr, ishaAngle = m.isha, sunsetAngle = m.maghrib, ishaMinutes = m.ishaMinutes,
-                    asrFactor = if (hanafi) 2.0 else 1.0, adjustments = Adjustments.ZERO,
+                    fajrAngle = m.fajr, ishaAngle = m.isha, sunriseAngle = m.sunrise, sunsetAngle = m.maghrib, ishaMinutes = m.ishaMinutes,
+                    asrFactor = if (hanafi) 2.0 else 1.0, adjustments = m.adjustments ?: Adjustments.ZERO, rounding = m.rounding,
+                    imsakMinutes = m.imsakMinutes, duhaAltitude = m.duhaAltitude, duhaMinutes = m.duhaMinutes,
                 )
             }
         }
     }
 
     /** Hesap yöntemleri (sitedeki METHODS ile aynı sıra ve değerler). Diyanet varsayılandır; Türkiye'de resmî vakit odur. */
-    data class Method(val fajr: Double, val isha: Double, val ishaMinutes: Double = 0.0, val maghrib: Double = 0.833)
+    data class Method(
+        val fajr: Double, val isha: Double, val ishaMinutes: Double = 0.0, val maghrib: Double = 0.833,
+        val sunrise: Double = 0.833, val adjustments: Adjustments? = null, val rounding: Rounding = Rounding.NEAREST,
+        val imsakMinutes: Double = 0.0, val duhaAltitude: Double = 0.0, val duhaMinutes: Double = 0.0,
+    )
 
-    val METHOD_IDS = listOf("diyanet", "mwl", "isna", "egypt", "makkah", "karachi", "tehran", "jafari", "gulf", "kuwait", "qatar", "singapore", "france", "russia")
+    val METHOD_IDS = listOf("diyanet", "mwl", "isna", "egypt", "makkah", "karachi", "tehran", "jafari", "gulf", "kuwait", "qatar", "singapore", "kemenag", "france", "russia")
     val METHODS: Map<String, Method> = mapOf(
         "diyanet" to Method(18.0, 17.0),
         "mwl" to Method(18.0, 17.0),
@@ -101,6 +125,12 @@ object PrayerTimes {
         "kuwait" to Method(18.0, 17.5),
         "qatar" to Method(18.0, 0.0, ishaMinutes = 90.0),
         "singapore" to Method(20.0, 18.0),
+        // Kemenag (Endonezya; sitedeki METHODS.kemenag): 20°/18°, ufuk 1° altı, ihtiyat dakikaları, yukarı yuvarlama,
+        // imsak uyarısı (−10 dk) ve duha (+4,5°, +2 dk)
+        "kemenag" to Method(
+            20.0, 18.0, maghrib = 1.0, sunrise = 1.0, adjustments = Adjustments(2.0, -2.0, 3.0, 2.0, 2.0, 2.0),
+            rounding = Rounding.CEIL, imsakMinutes = 10.0, duhaAltitude = 4.5, duhaMinutes = 2.0,
+        ),
         "france" to Method(12.0, 12.0),
         "russia" to Method(16.0, 15.0),
     )
@@ -163,7 +193,45 @@ object PrayerTimes {
         asr += a.asr / 60; maghrib += a.maghrib / 60; isha += a.isha / 60
 
         fun value(x: Double): Double? = if (x.isNaN()) null else x
-        return PrayerDay(value(fajr), value(sunrise), value(dhuhr), value(asr), value(maghrib), value(isha))
+        return PrayerDay(value(fajr), value(sunrise), value(dhuhr), value(asr), value(maghrib), value(isha), p.rounding)
+    }
+
+    /** Yöntemin ek satırları (yalnız Kemenag; sitedeki `methodRows`): dakika olarak imsak uyarısı ve duha. */
+    data class MethodRows(val imsak: Int?, val duha: Int?)
+
+    fun methodRows(year: Int, month: Int, day: Int, latitude: Double, longitude: Double, utcOffset: Double, parameters: Parameters, times: PrayerDay): MethodRows? {
+        if (parameters.imsakMinutes == 0.0) return null
+        val du = sunAltitudeTimes(year, month, day, latitude, longitude, utcOffset, parameters.duhaAltitude).rise
+        return MethodRows(
+            imsak = times.minutes(Prayer.FAJR)?.let { it - parameters.imsakMinutes.toInt() },
+            duha = du?.let { toMinutes(it + parameters.duhaMinutes / 60, parameters.rounding) },
+        )
+    }
+
+    /** Bir gün için ek satırlar; saat dilimi farkı o günün UTC öğlesindeki farktır. */
+    fun methodRows(date: LocalDate, latitude: Double, longitude: Double, zone: ZoneId, parameters: Parameters, times: PrayerDay): MethodRows? {
+        val off = zone.rules.getOffset(date.atTime(12, 0).toInstant(ZoneOffset.UTC)).totalSeconds / 3600.0
+        return methodRows(date.year, date.monthValue, date.dayOfMonth, latitude, longitude, off, parameters, times)
+    }
+
+    /**
+     * Bölgeye göre varsayılan yöntem (sitedeki `defaultMethod`): kullanıcı seçmediyse yerin saat dilimine (Kerala için
+     * koordinata) bakılır. Endonezya Kemenag; Malezya, Singapur, Brunei Singapur; Pakistan, Hindistan, Bangladeş,
+     * Afganistan Karaçi + Hanefî (Kerala ve Lakşadvip'te standart ikindi); diğer her yer Diyanet.
+     */
+    private val REGION_TZ = mapOf(
+        "Asia/Jakarta" to "ID", "Asia/Pontianak" to "ID", "Asia/Makassar" to "ID", "Asia/Jayapura" to "ID", "Asia/Ujung_Pandang" to "ID",
+        "Asia/Kuala_Lumpur" to "MY", "Asia/Kuching" to "MY", "Asia/Singapore" to "SG", "Singapore" to "SG", "Asia/Brunei" to "BN",
+        "Asia/Karachi" to "PK", "Asia/Kolkata" to "IN", "Asia/Calcutta" to "IN", "Asia/Dhaka" to "BD", "Asia/Dacca" to "BD", "Asia/Kabul" to "AF",
+        "Europe/Istanbul" to "TR", "Asia/Istanbul" to "TR", "Turkey" to "TR",
+    )
+    fun region(zoneId: String): String = REGION_TZ[zoneId] ?: ""
+    data class DefaultMethod(val id: String, val hanafi: Boolean)
+    fun defaultMethod(zoneId: String, lat: Double, lon: Double): DefaultMethod = when (val r = region(zoneId)) {
+        "ID" -> DefaultMethod("kemenag", false)
+        "MY", "SG", "BN" -> DefaultMethod("singapore", false)
+        "PK", "IN", "BD", "AF" -> DefaultMethod("karachi", !(r == "IN" && lat >= 8 && lat <= 12.8 && lon >= 71.5 && lon <= 77.4))
+        else -> DefaultMethod("diyanet", false)
     }
 
     /** Bir gün için vakitler; saat dilimi farkı sitedeki gibi o günün UTC öğlesindeki farktır. */

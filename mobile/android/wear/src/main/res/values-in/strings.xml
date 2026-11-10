@@ -78,6 +78,10 @@
     <string name="prayer_method_note">Di Turki, waktu resmi adalah waktu Kepresidenan Urusan Agama (Diyanet). Jika Anda memilih metode lain, waktu, tabel bulanan, dan jadwal imsakiyah di halaman ini dihitung dengan metode itu; pilihan Anda hanya disimpan di peramban ini.</string>
     <string name="prayer_method_active">Metode: %1$s</string>
     <string name="prayer_method_hanafiShort">Asar Hanafi</string>
+    <string name="prayer_method_region">sesuai wilayah Anda</string>
+    <string name="prayer_method_kemenagNote">Metode Kemenag berlaku untuk dataran rendah: di dataran tinggi (di atas sekitar 600 m) Kemenag menerbitkan waktu terbit dan magrib berbeda 4–5 menit. Imsak 10 menit sebelum subuh sebagai kehati-hatian.</string>
+    <string name="prayer_method_rowImsak">Imsak</string>
+    <string name="prayer_method_rowDuha">Dhuha</string>
     <string name="prayer_method_names_diyanet">Diyanet (Turki)</string>
     <string name="prayer_method_names_mwl">Liga Muslim Dunia</string>
     <string name="prayer_method_names_isna">Islamic Society of North America (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">Kuwait</string>
     <string name="prayer_method_names_qatar">Qatar</string>
     <string name="prayer_method_names_singapore">Singapura</string>
+    <string name="prayer_method_names_kemenag">Kemenag RI (Kementerian Agama)</string>
     <string name="prayer_method_names_france">Prancis (UOIF)</string>
     <string name="prayer_method_names_russia">Dewan Spiritual Muslim Rusia</string>
     <string name="place_myLocation">Lokasi saya</string>

@@ -731,6 +731,10 @@
     <string name="prayer_method_note">Türkiye\'de resmî vakitler Diyanet\'in vakitleridir. Başka bir yöntem seçerseniz bu sayfadaki vakitler, aylık çizelge ve imsakiye o yönteme göre hesaplanır; seçim yalnız bu tarayıcıda saklanır.</string>
     <string name="prayer_method_active">Yöntem: %1$s</string>
     <string name="prayer_method_hanafiShort">Hanefî ikindisi</string>
+    <string name="prayer_method_region">bölgenize göre</string>
+    <string name="prayer_method_kemenagNote">Kemenag yöntemi alçak yerler içindir: yaylada (yaklaşık 600 metrenin üstünde) Kemenag güneş ve akşam vakitlerini 4–5 dakika farklı yayımlar. İhtiyat imsakı sabahtan 10 dakika öncedir.</string>
+    <string name="prayer_method_rowImsak">İhtiyat imsakı</string>
+    <string name="prayer_method_rowDuha">Kuşluk (duha)</string>
     <string name="prayer_method_names_diyanet">Diyanet İşleri Başkanlığı (Türkiye)</string>
     <string name="prayer_method_names_mwl">Müslüman Dünya Birliği</string>
     <string name="prayer_method_names_isna">Kuzey Amerika İslam Birliği (ISNA)</string>
@@ -743,6 +747,7 @@
     <string name="prayer_method_names_kuwait">Kuveyt</string>
     <string name="prayer_method_names_qatar">Katar</string>
     <string name="prayer_method_names_singapore">Singapur</string>
+    <string name="prayer_method_names_kemenag">Kemenag (Endonezya Din İşleri Bakanlığı)</string>
     <string name="prayer_method_names_france">Fransa (UOIF)</string>
     <string name="prayer_method_names_russia">Rusya Müslümanları Dinî İdaresi</string>
     <string name="nature_crescentHeading">Hilal görünürlüğü</string>

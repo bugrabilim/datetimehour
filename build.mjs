@@ -1994,7 +1994,9 @@ const prayerPath = (lang, p) => `${ROUTES[lang].prayer}${p.slug}/`;
 function prayerBody(lang, prov, extra = "") {
   const t = I[lang];
   const s = t.prayer;
-  const rows = PRAYER_KEYS.map((k) => `<tr data-pr="${k}"><th scope="row">${esc(s.names[k])}</th><td data-pr-time>--:--</td></tr>`).join("");
+  /* Kemenag'ın ek satırları (ihtiyat imsakı, duha) yalnız o yöntemde görünür */
+  const extraRow = (k, label) => `<tr data-pr="${k}" class="pr-sub" hidden><th scope="row">${esc(label)}</th><td data-pr-time>--:--</td></tr>`;
+  const rows = PRAYER_KEYS.map((k) => (k === "fajr" ? extraRow("imsak", s.method.rowImsak) : "") + `<tr data-pr="${k}"><th scope="row">${esc(s.names[k])}</th><td data-pr-time>--:--</td></tr>` + (k === "sunrise" ? extraRow("duha", s.method.rowDuha) : "")).join("");
   const shown = prov ? prov.display || provName(lang, prov) : "";
   const attrs = prov ? ` data-mode="city" data-city="${prov.slug}" data-name="${esc(shown)}" data-lat="${prov.lat}" data-lon="${prov.lon}"` : ` data-mode="hub"`;
   /* Solda geri sayım saati, sağda bugünün vakitleri; çerçeve yok. Konum üst bardaki ortak düğmeyle seçilir. */
@@ -2008,11 +2010,12 @@ function prayerBody(lang, prov, extra = "") {
         <h3>${esc(s.todayHeading)}</h3>
         <table class="events-table pr-today"><thead class="sr-only"><tr><th scope="col">${esc(s.colPrayer)}</th><th scope="col">${esc(s.colTime)}</th></tr></thead><tbody>${rows}</tbody></table>
         <p class="pr-bayram" data-pr-bayram hidden></p>
-        <p class="meta pr-ezani" data-pr-ezani title="${esc(s.ezaniNote)}"></p>
+        <p class="meta pr-ezani" data-pr-ezani data-pr-tr title="${esc(s.ezaniNote)}"></p>
         <details class="pr-kerahat"><summary>${esc(s.kerahatHeading)}</summary><ul>${["israk", "istiva", "isfirar"].map((k) => `<li>${esc(s.kerahatNames[k])}: <span data-pr-kr="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.kerahatNote)}</p></details>
-        <details class="pr-kerahat pr-extra"><summary>${esc(s.extraHeading)}</summary><ul>${Object.keys(s.extraNames).map((k) => `<li>${esc(s.extraNames[k])}: <span data-pr-ex="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.extraNote)}</p></details>
+        <details class="pr-kerahat pr-extra" data-pr-tr><summary>${esc(s.extraHeading)}</summary><ul>${Object.keys(s.extraNames).map((k) => `<li>${esc(s.extraNames[k])}: <span data-pr-ex="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.extraNote)}</p></details>
         <details class="pr-kerahat pr-method"><summary>${esc(s.method.heading)}</summary>
           <p class="meta" data-pr-method-active hidden></p>
+          <p class="meta" data-pr-kemenag hidden>${esc(s.method.kemenagNote)}</p>
           <label class="field-label" for="pr-method">${esc(s.method.label)}</label>
           <select id="pr-method" data-pr-method>${Object.keys(s.method.names).map((k) => `<option value="${k}">${esc(s.method.names[k])}</option>`).join("")}</select>
           <label class="field-label" for="pr-asr">${esc(s.method.asrLabel)}</label>
@@ -2022,7 +2025,8 @@ function prayerBody(lang, prov, extra = "") {
       </div>
       <noscript><p class="meta">${esc(s.noscript)}</p></noscript>
     </section>`;
-  const head = PRAYER_KEYS.map((k) => `<th scope="col">${esc(s.names[k])}</th>`).join("");
+  const subCol = (k, label) => `<th scope="col" data-pr-col="${k}" hidden>${esc(label)}</th>`;
+  const head = PRAYER_KEYS.map((k) => (k === "fajr" ? subCol("imsak", s.method.rowImsak) : "") + `<th scope="col">${esc(s.names[k])}</th>` + (k === "sunrise" ? subCol("duha", s.method.rowDuha) : "")).join("");
   const im = `<section class="section" data-imsakiye aria-labelledby="im-h" hidden>
   <div class="wrap">
     <h2 id="im-h" data-im-heading>${esc(s.imHeading)}</h2>
@@ -2081,7 +2085,7 @@ const placeClient = (s) => ({ locating: s.locating, locationDenied: s.locationDe
 const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to);
 // Bayramın ilk günleri (Ramazan ve Kurban; bayram namazı satırı için, 2. analiz #56)
 const BAYRAM_DAYS = HOL_YEARS.flatMap((y) => YEAR_DATA[y].events.filter((e) => e.key === "rb1" || e.key === "kb1").map((e) => e.date));
-const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names, mActive: s.method.active, mNames: s.method.names, hanafi: s.method.hanafiShort, bayram: s.bayram, bayramTomorrow: s.bayramTomorrow, bayramNote: s.bayramNote, bayramDays: BAYRAM_DAYS, ezani: s.ezani }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
+const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names, mActive: s.method.active, mNames: s.method.names, mRegion: s.method.region, hanafi: s.method.hanafiShort, bayram: s.bayram, bayramTomorrow: s.bayramTomorrow, bayramNote: s.bayramNote, bayramDays: BAYRAM_DAYS, ezani: s.ezani }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names, rowImsak: s.method.rowImsak } });
 const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail, consent: t.consent.wxBlocked, allow: t.consent.allow }; };
 
 /* ---------- Saat dilimi kısaltmaları, yaz saati değişimleri, Unix zamanı (30 Ekim 2026, rakip analizi #25) ----------

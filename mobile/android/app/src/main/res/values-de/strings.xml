@@ -731,6 +731,10 @@
     <string name="prayer_method_note">In der Türkei gelten offiziell die Zeiten des Präsidiums für Religionsangelegenheiten (Diyanet). Wählen Sie eine andere Methode, werden die Zeiten, die Monatstabelle und der Ramadan-Zeitplan auf dieser Seite danach berechnet; die Auswahl wird nur in diesem Browser gespeichert.</string>
     <string name="prayer_method_active">Methode: %1$s</string>
     <string name="prayer_method_hanafiShort">Hanafitischer Asr</string>
+    <string name="prayer_method_region">für Ihre Region</string>
+    <string name="prayer_method_kemenagNote">Die Kemenag-Methode gilt für tief gelegene Orte: im Hochland (über etwa 600 m) veröffentlicht Kemenag Sonnenaufgang und Maghrib um 4–5 Minuten anders. Imsak liegt zur Vorsicht 10 Minuten vor Fadschr.</string>
+    <string name="prayer_method_rowImsak">Imsak</string>
+    <string name="prayer_method_rowDuha">Duha</string>
     <string name="prayer_method_names_diyanet">Diyanet (Türkei)</string>
     <string name="prayer_method_names_mwl">Islamische Weltliga</string>
     <string name="prayer_method_names_isna">Islamic Society of North America (ISNA)</string>
@@ -743,6 +747,7 @@
     <string name="prayer_method_names_kuwait">Kuwait</string>
     <string name="prayer_method_names_qatar">Katar</string>
     <string name="prayer_method_names_singapore">Singapur</string>
+    <string name="prayer_method_names_kemenag">Kemenag (Religionsministerium Indonesien)</string>
     <string name="prayer_method_names_france">Frankreich (UOIF)</string>
     <string name="prayer_method_names_russia">Geistliche Verwaltung der Muslime Russlands</string>
     <string name="nature_crescentHeading">Sichtbarkeit der Mondsichel</string>

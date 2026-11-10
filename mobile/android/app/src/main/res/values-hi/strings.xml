@@ -731,6 +731,10 @@
     <string name="prayer_method_note">तुर्किये में आधिकारिक समय धार्मिक मामलों के निदेशालय (दियानत) के हैं। कोई दूसरी विधि चुनने पर इस पेज के समय, मासिक तालिका और रमज़ान समय-सारणी उसी से निकाली जाती हैं; आपकी पसंद केवल इसी ब्राउज़र में सहेजी जाती है।</string>
     <string name="prayer_method_active">विधि: %1$s</string>
     <string name="prayer_method_hanafiShort">हनफ़ी अस्र</string>
+    <string name="prayer_method_region">आपके क्षेत्र के अनुसार</string>
+    <string name="prayer_method_kemenagNote">केमेनाग विधि निचले इलाक़ों के लिए है: ऊँचे इलाक़ों (लगभग 600 मीटर से ऊपर) में केमेनाग सूर्योदय और मग़रिब के समय 4–5 मिनट अलग प्रकाशित करता है। एहतियात के तौर पर इमसाक फ़ज्र से 10 मिनट पहले है।</string>
+    <string name="prayer_method_rowImsak">इमसाक</string>
+    <string name="prayer_method_rowDuha">चाश्त (ज़ुहा)</string>
     <string name="prayer_method_names_diyanet">दियानत (तुर्किये)</string>
     <string name="prayer_method_names_mwl">मुस्लिम वर्ल्ड लीग</string>
     <string name="prayer_method_names_isna">इस्लामिक सोसाइटी ऑफ़ नॉर्थ अमेरिका (ISNA)</string>
@@ -743,6 +747,7 @@
     <string name="prayer_method_names_kuwait">कुवैत</string>
     <string name="prayer_method_names_qatar">क़तर</string>
     <string name="prayer_method_names_singapore">सिंगापुर</string>
+    <string name="prayer_method_names_kemenag">केमेनाग (इंडोनेशिया का धार्मिक मामलों का मंत्रालय)</string>
     <string name="prayer_method_names_france">फ़्रांस (UOIF)</string>
     <string name="prayer_method_names_russia">रूस के मुसलमानों का आध्यात्मिक प्रशासन</string>
     <string name="nature_crescentHeading">नए चाँद (हिलाल) की दृश्यता</string>

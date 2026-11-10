@@ -78,6 +78,10 @@
     <string name="prayer_method_note">তুরস্কে সরকারি সময় হলো ধর্ম বিষয়ক অধিদপ্তরের (দিয়ানেত) সময়। অন্য পদ্ধতি বেছে নিলে এই পাতার সময়, মাসিক সারণি ও রমজানের সময়সূচি সেই পদ্ধতিতে হিসাব হয়; আপনার পছন্দ শুধু এই ব্রাউজারে সংরক্ষিত থাকে।</string>
     <string name="prayer_method_active">পদ্ধতি: %1$s</string>
     <string name="prayer_method_hanafiShort">হানাফি আসর</string>
+    <string name="prayer_method_region">আপনার অঞ্চল অনুযায়ী</string>
+    <string name="prayer_method_kemenagNote">কেমেনাগ পদ্ধতি নিচু এলাকার জন্য: উঁচু এলাকায় (প্রায় 600 মিটারের ওপরে) কেমেনাগ সূর্যোদয় ও মাগরিবের সময় 4–5 মিনিট আলাদা প্রকাশ করে। সতর্কতা হিসেবে ইমসাক ফজরের 10 মিনিট আগে।</string>
+    <string name="prayer_method_rowImsak">ইমসাক</string>
+    <string name="prayer_method_rowDuha">চাশত (দুহা)</string>
     <string name="prayer_method_names_diyanet">দিয়ানেত (তুরস্ক)</string>
     <string name="prayer_method_names_mwl">মুসলিম ওয়ার্ল্ড লীগ</string>
     <string name="prayer_method_names_isna">ইসলামিক সোসাইটি অব নর্থ আমেরিকা (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">কুয়েত</string>
     <string name="prayer_method_names_qatar">কাতার</string>
     <string name="prayer_method_names_singapore">সিঙ্গাপুর</string>
+    <string name="prayer_method_names_kemenag">কেমেনাগ (ইন্দোনেশিয়ার ধর্ম মন্ত্রণালয়)</string>
     <string name="prayer_method_names_france">ফ্রান্স (UOIF)</string>
     <string name="prayer_method_names_russia">রাশিয়ার মুসলিমদের আধ্যাত্মিক প্রশাসন</string>
     <string name="place_myLocation">আমার অবস্থান</string>

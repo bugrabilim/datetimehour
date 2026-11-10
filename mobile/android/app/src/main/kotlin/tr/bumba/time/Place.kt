@@ -25,9 +25,18 @@ data class AppPlace(val id: String, val name: String, val lat: Double, val lon: 
 
     /** Günün vakitleri, sırayla (oluşmayan vakit yok); sitedeki gibi dakikaya yuvarlanır */
     fun entries(day: LocalDate): List<Entry> {
-        val t = PrayerTimes.times(day, lat, lon, zone, PrayerMethod.params())
+        val t = PrayerTimes.times(day, lat, lon, zone, PrayerMethod.params(this))
         val start = day.atStartOfDay(zone).toInstant()
         return Prayer.entries.mapNotNull { p -> t.minutes(p)?.let { Entry(p, start.plusSeconds(it * 60L)) } }
+    }
+
+    /** Yöntemin ek satırları (Kemenag: ihtiyat imsakı ve duha) an olarak; diğer yöntemlerde null */
+    fun extraRows(day: LocalDate): Pair<Instant?, Instant?>? {
+        val p = PrayerMethod.params(this)
+        if (p.imsakMinutes == 0.0) return null
+        val r = PrayerTimes.methodRows(day, lat, lon, zone, p, PrayerTimes.times(day, lat, lon, zone, p)) ?: return null
+        val start = day.atStartOfDay(zone).toInstant()
+        return r.imsak?.let { start.plusSeconds(it * 60L) } to r.duha?.let { start.plusSeconds(it * 60L) }
     }
 
     /** Şu andan sonraki ilk vakit (bugün kalmadıysa yarının ilki) */

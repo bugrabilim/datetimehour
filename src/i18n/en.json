@@ -1878,9 +1878,14 @@
         "kuwait": "Kuwait",
         "qatar": "Qatar",
         "singapore": "Singapore",
+        "kemenag": "Kemenag (Ministry of Religious Affairs, Indonesia)",
         "france": "France (UOIF)",
         "russia": "Spiritual Administration of Muslims of Russia"
-      }
+      },
+      "region": "for your region",
+      "kemenagNote": "The Kemenag method is for low-lying places: in highlands (above about 600 m) Kemenag publishes sunrise and maghrib 4–5 minutes differently. Imsak is 10 minutes before fajr as a precaution.",
+      "rowImsak": "Imsak",
+      "rowDuha": "Duha"
     },
     "ezani": "Ezani (alaturka) time: {t}",
     "ezaniNote": "In Ezani (alaturka) time, maghrib (sunset) is 12:00 and hours are counted from there."

@@ -731,6 +731,10 @@
     <string name="prayer_method_note">Türkiyədə rəsmi vaxtlar Diyanət İşləri Başqanlığının vaxtlarıdır. Başqa üsul seçsəniz, bu səhifədəki vaxtlar, aylıq cədvəl və imsakiyyə həmin üsulla hesablanır; seçim yalnız bu brauzerdə saxlanılır.</string>
     <string name="prayer_method_active">Üsul: %1$s</string>
     <string name="prayer_method_hanafiShort">Hənəfi əsr vaxtı</string>
+    <string name="prayer_method_region">bölgənizə görə</string>
+    <string name="prayer_method_kemenagNote">Kemenag üsulu alçaq yerlər üçündür: yaylada (təxminən 600 metrdən yuxarı) Kemenag gün çıxanı və axşam vaxtını 4–5 dəqiqə fərqli dərc edir. İhtiyat imsakı sübhdən 10 dəqiqə əvvəldir.</string>
+    <string name="prayer_method_rowImsak">İhtiyat imsakı</string>
+    <string name="prayer_method_rowDuha">Çaşt (duha)</string>
     <string name="prayer_method_names_diyanet">Diyanət (Türkiyə)</string>
     <string name="prayer_method_names_mwl">Müsəlman Dünya Liqası</string>
     <string name="prayer_method_names_isna">Şimali Amerika İslam Cəmiyyəti (ISNA)</string>
@@ -743,6 +747,7 @@
     <string name="prayer_method_names_kuwait">Küveyt</string>
     <string name="prayer_method_names_qatar">Qətər</string>
     <string name="prayer_method_names_singapore">Sinqapur</string>
+    <string name="prayer_method_names_kemenag">Kemenag (İndoneziya Din İşləri Nazirliyi)</string>
     <string name="prayer_method_names_france">Fransa (UOIF)</string>
     <string name="prayer_method_names_russia">Rusiya Müsəlmanları Dini İdarəsi</string>
     <string name="nature_crescentHeading">Hilalın görünməsi</string>

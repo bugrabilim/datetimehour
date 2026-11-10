@@ -1919,9 +1919,14 @@
         "kuwait": "Koweït",
         "qatar": "Qatar",
         "singapore": "Singapour",
+        "kemenag": "Kemenag (ministère des Affaires religieuses, Indonésie)",
         "france": "France (UOIF)",
         "russia": "Direction spirituelle des musulmans de Russie"
-      }
+      },
+      "region": "selon votre région",
+      "kemenagNote": "La méthode Kemenag vaut pour les lieux de faible altitude : en altitude (au-dessus d’environ 600 m), Kemenag publie le lever du soleil et le maghrib avec 4 à 5 minutes d’écart. L’imsak est 10 minutes avant le fajr, par précaution.",
+      "rowImsak": "Imsak",
+      "rowDuha": "Duha"
     },
     "ezani": "Heure ezani (alla turca) : {t}",
     "ezaniNote": "Dans l'heure ezani (alla turca), la prière du soir (coucher du soleil) vaut 12 h 00 ; on compte à partir de là."

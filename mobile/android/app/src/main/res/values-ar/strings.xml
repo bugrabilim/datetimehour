@@ -731,6 +731,10 @@
     <string name="prayer_method_note">المواقيت الرسمية في تركيا هي مواقيت رئاسة الشؤون الدينية. إذا اخترت طريقة أخرى فستُحسب بها المواقيت والجدول الشهري وإمساكية رمضان في هذه الصفحة؛ ويُحفظ اختيارك في هذا المتصفح فقط.</string>
     <string name="prayer_method_active">الطريقة: %1$s</string>
     <string name="prayer_method_hanafiShort">العصر الحنفي</string>
+    <string name="prayer_method_region">حسب منطقتك</string>
+    <string name="prayer_method_kemenagNote">طريقة وزارة الشؤون الدينية الإندونيسية للأماكن المنخفضة: في المرتفعات (فوق نحو 600 متر) تنشر الوزارة الشروق والمغرب بفارق 4–5 دقائق. والإمساك قبل الفجر بعشر دقائق احتياطًا.</string>
+    <string name="prayer_method_rowImsak">الإمساك</string>
+    <string name="prayer_method_rowDuha">الضحى</string>
     <string name="prayer_method_names_diyanet">ديانت (تركيا)</string>
     <string name="prayer_method_names_mwl">رابطة العالم الإسلامي</string>
     <string name="prayer_method_names_isna">الجمعية الإسلامية لأمريكا الشمالية (ISNA)</string>
@@ -743,6 +747,7 @@
     <string name="prayer_method_names_kuwait">الكويت</string>
     <string name="prayer_method_names_qatar">قطر</string>
     <string name="prayer_method_names_singapore">سنغافورة</string>
+    <string name="prayer_method_names_kemenag">وزارة الشؤون الدينية الإندونيسية (Kemenag)</string>
     <string name="prayer_method_names_france">فرنسا (UOIF)</string>
     <string name="prayer_method_names_russia">الإدارة الدينية لمسلمي روسيا</string>
     <string name="nature_crescentHeading">رؤية الهلال</string>

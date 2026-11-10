@@ -63,6 +63,26 @@ for (const pl of places.filter((p) => ["istanbul", "erzurum", "london", "new-yor
   }
 }
 
+/* Kemenag yuvarlaması ve ek satırları (10 Kasım 2026): dakika olarak imsak uyarısı, sabah, güneş, duha, öğle, ikindi,
+   akşam, yatsı; bölgeye göre varsayılan yöntem */
+const KEM_KEYS = ["imsak", "fajr", "sunrise", "duha", "dhuhr", "asr", "maghrib", "isha"];
+const kemenagCases = [];
+for (const pl of [{ id: "jakarta", lat: -6.17, lon: 106.83, tz: 7 }, { id: "makassar", lat: -5.14, lon: 119.42, tz: 8 }, { id: "jayapura", lat: -2.53, lon: 140.72, tz: 9 }, { id: "medan", lat: 3.59, lon: 98.67, tz: 7 }, { id: "istanbul", lat: 41.01, lon: 28.98, tz: 3 }]) {
+  for (const [y, m, d] of [[2026, 3, 20], [2026, 6, 21], [2026, 11, 10], [2026, 12, 21], [2027, 2, 8]]) {
+    for (const id of ["kemenag", "diyanet", "karachi"]) {
+      const Pm = P.methodParams(id, false), r = P.times(y, m, d, pl.lat, pl.lon, pl.tz, Pm), mn = {};
+      for (const k of KEYS) mn[k] = P.toMin(r[k], Pm, k);
+      Object.assign(mn, P.methodRows(y, m, d, pl.lat, pl.lon, pl.tz, Pm, mn.fajr) || { imsak: null, duha: null });
+      kemenagCases.push({ id: pl.id, method: id, y, m, d, lat: pl.lat, lon: pl.lon, tz: pl.tz, min: KEM_KEYS.map((k) => mn[k]) });
+    }
+  }
+}
+const regionCases = [["Asia/Jakarta", -6.17, 106.83], ["Asia/Makassar", -5.14, 119.42], ["Asia/Jayapura", -2.53, 140.72], ["Asia/Pontianak", -0.03, 109.33],
+  ["Asia/Kuala_Lumpur", 3.14, 101.69], ["Asia/Singapore", 1.29, 103.85], ["Asia/Brunei", 4.89, 114.94], ["Asia/Karachi", 24.86, 67.0],
+  ["Asia/Kolkata", 28.61, 77.21], ["Asia/Calcutta", 9.93, 76.27], ["Asia/Kolkata", 10.57, 72.64], ["Asia/Kolkata", 8.08, 77.55], ["Asia/Dhaka", 23.81, 90.41],
+  ["Asia/Kabul", 34.53, 69.17], ["Europe/Istanbul", 41.01, 28.98], ["Europe/Berlin", 52.52, 13.4], ["America/New_York", 40.71, -74.0]]
+  .map(([tz, lat, lon]) => { const d = P.defaultMethod(tz, lat, lon); return { tz, lat, lon, method: d.m, hanafi: !!d.h }; });
+
 /* Kıble: yön (derece) ve uzaklık (km) her yer için; kıble saati (yerel ondalık saat) dört tarihte */
 const qiblaCases = [];
 for (const pl of places) {
@@ -149,6 +169,14 @@ const files = {
   "cases": ${lines(methodCases)}
 }
 `,
+  "kemenag.json": `{
+  "source": "src/js/prayer-calc.js (toMin, methodRows, defaultMethod)",
+  "note": "min: gece yarısından dakika, sırasıyla ${KEM_KEYS.join(", ")}; imsak ve duha yalnız Kemenag'da (diğerlerinde null). Kemenag'da başlangıçlar yukarı, güneş aşağı yuvarlanır (1e-6 dk payla), diğerlerinde en yakın dakika. tz sabit UTC farkı. region: kullanıcı seçmediyse yerin saat dilimine göre varsayılan yöntem.",
+  "keys": ${JSON.stringify(KEM_KEYS)},
+  "cases": ${lines(kemenagCases)},
+  "region": ${lines(regionCases)}
+}
+`,
   "qibla.json": `{
   "source": "src/js/prayer-calc.js",
   "note": "bearing: Kâbe'ye büyük daire başlangıç yönü (kuzeyden saat yönünde, derece); km: uzaklık. time: kıble saati (Güneş'in kıble yönünde olduğu an, yerel ondalık saat; null = o gün olmuyor) sırasıyla dates günlerinde, tz o günün UTC farkı.",
@@ -198,4 +226,4 @@ if (stale.length) {
   console.error(`Güncel değil: ${stale.join(", ")}. Çalıştırın: node mobile/shared/gen-vectors.mjs`);
   process.exit(1);
 }
-console.log(check ? "Test verisi güncel." : `Yazıldı: ${Object.keys(files).join(", ")} (${prayerCases.length} namaz, ${methodCases.length} yöntem, ${crescent.length} hilal, ${qiblaCases.length} kıble, ${lightCases.length} Güneş yüksekliği, ${seasons.length} yıl, ${phases.length} ay evresi, ${moon.length} Ay örneği, ${moonRise.length} Ay doğuş/batış)`);
+console.log(check ? "Test verisi güncel." : `Yazıldı: ${Object.keys(files).join(", ")} (${prayerCases.length} namaz, ${methodCases.length} yöntem, ${kemenagCases.length} Kemenag, ${crescent.length} hilal, ${qiblaCases.length} kıble, ${lightCases.length} Güneş yüksekliği, ${seasons.length} yıl, ${phases.length} ay evresi, ${moon.length} Ay örneği, ${moonRise.length} Ay doğuş/batış)`);

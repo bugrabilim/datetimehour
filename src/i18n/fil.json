@@ -1944,9 +1944,14 @@
         "kuwait": "Kuwait",
         "qatar": "Qatar",
         "singapore": "Singapore",
+        "kemenag": "Kemenag (Ministri ng Ugnayang Panrelihiyon, Indonesia)",
         "france": "France (UOIF)",
         "russia": "Spiritual Administration of Muslims of Russia"
-      }
+      },
+      "region": "ayon sa inyong rehiyon",
+      "kemenagNote": "Para sa mabababang lugar ang paraang Kemenag: sa kabundukan (higit sa mga 600 m), iba nang 4–5 minuto ang inilalathalang pagsikat ng araw at maghrib ng Kemenag. Ang imsak ay 10 minuto bago ang fajr bilang pag-iingat.",
+      "rowImsak": "Imsak",
+      "rowDuha": "Duha"
     },
     "ezani": "Oras na ezani (alaturka): {t}",
     "ezaniNote": "Sa oras na ezani (alaturka), 12:00 ang oras ng dasal sa paglubog ng araw at doon nagsisimula ang bilang."

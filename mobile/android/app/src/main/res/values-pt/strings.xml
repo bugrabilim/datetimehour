@@ -731,6 +731,10 @@
     <string name="prayer_method_note">Na Turquia os horários oficiais são os da Presidência de Assuntos Religiosos (Diyanet). Se você escolher outro método, os horários, a tabela mensal e a tabela do Ramadã desta página são calculados com ele; sua escolha fica guardada só neste navegador.</string>
     <string name="prayer_method_active">Método: %1$s</string>
     <string name="prayer_method_hanafiShort">Asr hanafita</string>
+    <string name="prayer_method_region">conforme sua região</string>
+    <string name="prayer_method_kemenagNote">O método Kemenag vale para lugares baixos: em áreas altas (acima de cerca de 600 m), o Kemenag publica o nascer do sol e o maghrib com 4–5 minutos de diferença. O imsak é 10 minutos antes do fajr, por precaução.</string>
+    <string name="prayer_method_rowImsak">Imsak</string>
+    <string name="prayer_method_rowDuha">Duha</string>
     <string name="prayer_method_names_diyanet">Diyanet (Turquia)</string>
     <string name="prayer_method_names_mwl">Liga Mundial Muçulmana</string>
     <string name="prayer_method_names_isna">Sociedade Islâmica da América do Norte (ISNA)</string>
@@ -743,6 +747,7 @@
     <string name="prayer_method_names_kuwait">Kuwait</string>
     <string name="prayer_method_names_qatar">Catar</string>
     <string name="prayer_method_names_singapore">Singapura</string>
+    <string name="prayer_method_names_kemenag">Kemenag (Ministério de Assuntos Religiosos da Indonésia)</string>
     <string name="prayer_method_names_france">França (UOIF)</string>
     <string name="prayer_method_names_russia">Administração Espiritual dos Muçulmanos da Rússia</string>
     <string name="nature_crescentHeading">Visibilidade da lua crescente</string>

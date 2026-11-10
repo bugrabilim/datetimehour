@@ -106,7 +106,7 @@ for (const f of htmlFiles) {
   if (!timerPreset && /\/(geri-sayim|countdown)\/[a-z0-9-]+\/index\.html$/.test(name)) check(/data-cdp-keys/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h) && /events-table/.test(h), `${name}: geri sayım sayfası eksik`);
   if (/\/(namaz-vakitleri|prayer-times)\/([a-z]+\/)?index\.html$/.test(name)) {
     const hub = /\/(namaz-vakitleri|prayer-times)\/index\.html$/.test(name);
-    check(/data-prayer\b/.test(h) && (h.match(/data-pr="/g) || []).length === 6 && /prayer-calc\.js/.test(h) && /prayer\.js/.test(h) && /data-pr-month/.test(h) && /data-imsakiye/.test(h) && /imsakiye\.js/.test(h) && !/class="tool prayer"/.test(h) && !/pr-method-h/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: namaz vakitleri yapısı eksik`);
+    check(/data-prayer\b/.test(h) && (h.match(/data-pr="/g) || []).length === 8 && /prayer-calc\.js/.test(h) && /prayer\.js/.test(h) && /data-pr-month/.test(h) && /data-imsakiye/.test(h) && /imsakiye\.js/.test(h) && !/class="tool prayer"/.test(h) && !/pr-method-h/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: namaz vakitleri yapısı eksik`);
     if (hub) check((h.match(/<option value="[a-z]+" data-lat=/g) || []).length === 81 && /data-place-geo/.test(h), `${name}: hub il listesi/konum düğmesi eksik`);
     else check(/data-mode="city"/.test(h) && /data-lat="[\d.]+" data-lon="[\d.]+"/.test(h), `${name}: il sayfası verisi eksik`);
   }
@@ -265,6 +265,22 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
       const k = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"][i], [hh, mm] = v.split(":").map(Number);
       check(Math.abs(Math.round(r[k] * 60) - (hh * 60 + mm)) <= 1, `ilçe vakti ${name} ${k}: ${r[k].toFixed(3)} ≠ ${v}`);
     });
+  }
+  // Kemenag (10 Kasım 2026): Jakarta 10 Kasım 2026, Kemenag'ın SIHAT tablosundaki 8 satır (Liputan6 aynası) birebir;
+  // bölgeye göre varsayılan yöntem
+  {
+    const P = m.exports, Pm = P.methodParams("kemenag", false), r = P.times(2026, 11, 10, -6.17, 106.83, 7, Pm), mn = {};
+    for (const k of ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"]) mn[k] = P.toMin(r[k], Pm, k);
+    Object.assign(mn, P.methodRows(2026, 11, 10, -6.17, 106.83, 7, Pm, mn.fajr));
+    const want = { imsak: "03:56", fajr: "04:06", sunrise: "05:22", duha: "05:50", dhuhr: "11:40", asr: "14:59", maghrib: "17:51", isha: "19:03" };
+    for (const [k, v] of Object.entries(want)) {
+      const [hh, mm] = v.split(":").map(Number);
+      check(mn[k] === hh * 60 + mm, `Kemenag Jakarta 10.11.2026 ${k}: ${mn[k]} ≠ ${v}`);
+    }
+    const dm = (tz, lat, lon) => { const d = P.defaultMethod(tz, lat, lon); return d.m + (d.h ? "+h" : ""); };
+    check(dm("Asia/Jakarta", -6.2, 106.8) === "kemenag" && dm("Asia/Makassar", -5.1, 119.4) === "kemenag" && dm("Asia/Kolkata", 28.6, 77.2) === "karachi+h"
+      && dm("Asia/Kolkata", 9.9, 76.3) === "karachi" && dm("Asia/Karachi", 24.9, 67) === "karachi+h" && dm("Asia/Singapore", 1.3, 103.8) === "singapore"
+      && dm("Europe/Istanbul", 41, 29) === "diyanet" && dm("Europe/Berlin", 52.5, 13.4) === "diyanet", "bölgeye göre varsayılan yöntem");
   }
   const hl = m.exports.times(2027, 6, 21, 64.1, -21.9, 0); // Reykjavik: imsak/yatsı açısı oluşmaz, yedide bir kuralı
   check(Object.values(hl).every((x) => Number.isFinite(x)), "namaz hesabı: yüksek enlemde NaN");
@@ -538,11 +554,11 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   const hm = (h) => Math.round(h * 60);
   const d0 = P.times(2026, 10, 30, 41.01, 28.98, 3), dh = P.times(2026, 10, 30, 41.01, 28.98, 3, P.methodParams("diyanet", true));
   check(hm(d0.fajr) === hm(dh.fajr) && hm(dh.asr) - hm(d0.asr) > 30, "Hanefî ikindisi: yalnız ikindi ve daha geç olmalı");
-  check(P.METHOD_IDS.length === 14 && P.methodParams("bilinmeyen", false) === P.PARAMS, "hesap yöntemleri: 14 yöntem, bilinmeyen Diyanet");
+  check(P.METHOD_IDS.length === 15 && P.methodParams("bilinmeyen", false) === P.PARAMS, "hesap yöntemleri: 15 yöntem, bilinmeyen Diyanet");
   const mk = P.times(2026, 10, 30, 21.42, 39.83, 3, P.methodParams("makkah", false));
   check(Math.abs((mk.isha - mk.maghrib) * 60 - 90) < 0.01, "Ümmü'l-Kura: yatsı akşamdan 90 dk sonra olmalı");
   const pr = fs.readFileSync(path.join(DIST, "namaz-vakitleri", "istanbul", "index.html"), "utf8");
-  check((pr.match(/<select id="pr-method"[^]*?<\/select>/) || [""])[0].split("<option").length - 1 === 14 && /data-pr-asr/.test(pr), "namaz sayfasında yöntem seçimi yok");
+  check((pr.match(/<select id="pr-method"[^]*?<\/select>/) || [""])[0].split("<option").length - 1 === 15 && /data-pr-asr/.test(pr), "namaz sayfasında yöntem seçimi yok");
   // Hilal (Yallop): Ramazan 1447 kavuşumu 17 Şubat 2026; İstanbul'da ilk akşam görülmez, ikinci akşam görülür
   const conj = N.phaseMs(Math.floor((Date.UTC(2026, 1, 17) / 86400000 + 2440587.5 - 2451550.09766) / 29.530588861), false);
   const cr = N.crescent(conj, 41.01, 28.98, 3);

@@ -36,7 +36,12 @@ final class PhonePlace: NSObject, ObservableObject, WCSessionDelegate {
     private static func decode(_ c: [String: Any]) -> Place? {
         guard let name = c["name"] as? String, let lat = c["lat"] as? Double, let lon = c["lon"] as? Double else { return nil }
         let zone = (c["tz"] as? String).flatMap(TimeZone.init(identifier:)) ?? .current
-        return Place(name: name, schedule: PrayerSchedule(latitude: lat, longitude: lon, timeZone: zone))
+        // Telefondaki vakit yöntemi; eski bağlamda yoksa yere göre varsayılan
+        if let m = c["method"] as? String {
+            return Place(name: name, schedule: PrayerSchedule(latitude: lat, longitude: lon, timeZone: zone,
+                                                               parameters: .method(m, hanafi: c["hanafi"] as? Bool ?? false)))
+        }
+        return Place(name: name, schedule: SharedPrayerMethod.schedule(latitude: lat, longitude: lon, timeZone: zone))
     }
 
     private func apply(_ c: [String: Any]) {

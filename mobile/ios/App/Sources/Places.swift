@@ -17,7 +17,26 @@ struct AppPlace: Equatable {
     var isAuto: Bool { id == Self.autoID }
     /// Konum değişince yeniden yükleme için (hava durumu)
     var key: String { String(format: "%.2f,%.2f", lat, lon) }
-    var schedule: PrayerSchedule { PrayerSchedule(latitude: lat, longitude: lon, timeZone: zone, parameters: PrayerMethod.parameters) }
+    var schedule: PrayerSchedule { PrayerSchedule(latitude: lat, longitude: lon, timeZone: zone, parameters: PrayerMethod.parameters(for: self)) }
+
+    /// Yöntemin ek satırları (Kemenag: ihtiyat imsakı ve duha) an olarak; diğer yöntemlerde nil
+    func extraRows(on date: Date) -> (imsak: Date?, duha: Date?)? {
+        let p = PrayerMethod.parameters(for: self)
+        guard p.imsakMinutes != 0 else { return nil }
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = zone
+        let c = cal.dateComponents([.year, .month, .day], from: date)
+        guard let y = c.year, let m = c.month, let d = c.day else { return nil }
+        var utc = Calendar(identifier: .gregorian)
+        utc.timeZone = TimeZone(secondsFromGMT: 0)!
+        let noon = utc.date(from: DateComponents(year: y, month: m, day: d, hour: 12)) ?? date
+        let off = Double(zone.secondsFromGMT(for: noon)) / 3600
+        let day = PrayerTimes.times(year: y, month: m, day: d, latitude: lat, longitude: lon, utcOffset: off, parameters: p)
+        guard let r = PrayerTimes.methodRows(year: y, month: m, day: d, latitude: lat, longitude: lon, utcOffset: off,
+                                             parameters: p, times: day) else { return nil }
+        let start = cal.startOfDay(for: date)
+        return (r.imsak.map { start.addingTimeInterval(TimeInterval($0 * 60)) }, r.duha.map { start.addingTimeInterval(TimeInterval($0 * 60)) })
+    }
     var today: CalendarDay { CalendarDay(Date(), timeZone: zone) }
 
     init(id: String, name: String, lat: Double, lon: Double, zone: TimeZone) {

@@ -78,6 +78,10 @@
     <string name="prayer_method_note">在土耳其，官方时间以土耳其宗教事务局（迪亚内特）为准。如果选择其他方法，本页的时间、月度表和斋月时间表将按该方法计算；您的选择只保存在此浏览器中。</string>
     <string name="prayer_method_active">方法：%1$s</string>
     <string name="prayer_method_hanafiShort">哈乃斐派晡礼</string>
+    <string name="prayer_method_region">按您所在地区</string>
+    <string name="prayer_method_kemenagNote">Kemenag 方法适用于低地：在高地（海拔约 600 米以上），Kemenag 公布的日出和昏礼时间相差 4–5 分钟。为谨慎起见，伊姆萨克在晨礼前 10 分钟。</string>
+    <string name="prayer_method_rowImsak">伊姆萨克</string>
+    <string name="prayer_method_rowDuha">上午礼</string>
     <string name="prayer_method_names_diyanet">迪亚内特（土耳其）</string>
     <string name="prayer_method_names_mwl">世界穆斯林联盟</string>
     <string name="prayer_method_names_isna">北美伊斯兰协会（ISNA）</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">科威特</string>
     <string name="prayer_method_names_qatar">卡塔尔</string>
     <string name="prayer_method_names_singapore">新加坡</string>
+    <string name="prayer_method_names_kemenag">Kemenag（印度尼西亚宗教部）</string>
     <string name="prayer_method_names_france">法国（UOIF）</string>
     <string name="prayer_method_names_russia">俄罗斯穆斯林宗教管理局</string>
     <string name="place_myLocation">我的位置</string>

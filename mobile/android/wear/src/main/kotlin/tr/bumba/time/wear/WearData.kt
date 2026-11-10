@@ -33,7 +33,9 @@ data class WPlace(val id: String, val name: String, val lat: Double, val lon: Do
     data class Entry(val prayer: Prayer, val at: Instant)
 
     fun entries(day: LocalDate): List<Entry> {
-        val t = PrayerTimes.times(day, lat, lon, zone)
+        // Saatte yöntem ayarı yok: yerin saat dilimine göre varsayılan (Endonezya Kemenag, Güney Asya Karaçi + Hanefî, diğerleri Diyanet)
+        val m = PrayerTimes.defaultMethod(zone.id, lat, lon)
+        val t = PrayerTimes.times(day, lat, lon, zone, PrayerTimes.Parameters.method(m.id, m.hanafi))
         val start = day.atStartOfDay(zone).toInstant()
         return Prayer.entries.mapNotNull { p -> t.minutes(p)?.let { Entry(p, start.plusSeconds(it * 60L)) } }
     }

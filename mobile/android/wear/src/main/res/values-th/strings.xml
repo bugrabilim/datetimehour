@@ -78,6 +78,10 @@
     <string name="prayer_method_note">ในตุรกี เวลาอย่างเป็นทางการเป็นของสำนักงานกิจการศาสนา (ดียาเนต) หากเลือกวิธีอื่น เวลา ตารางรายเดือน และตารางเวลารอมฎอนในหน้านี้จะคำนวณด้วยวิธีนั้น ตัวเลือกของคุณเก็บไว้ในเบราว์เซอร์นี้เท่านั้น</string>
     <string name="prayer_method_active">วิธี: %1$s</string>
     <string name="prayer_method_hanafiShort">อัสริแบบฮะนะฟี</string>
+    <string name="prayer_method_region">ตามภูมิภาคของคุณ</string>
+    <string name="prayer_method_kemenagNote">วิธี Kemenag ใช้กับพื้นที่ราบต่ำ: ในพื้นที่สูง (สูงกว่าราว 600 เมตร) Kemenag ประกาศเวลาดวงอาทิตย์ขึ้นและมัฆริบต่างไป 4–5 นาที เวลาอิมซากคือ 10 นาทีก่อนฟัจร์เพื่อความรอบคอบ</string>
+    <string name="prayer_method_rowImsak">อิมซาก</string>
+    <string name="prayer_method_rowDuha">ฎุฮา</string>
     <string name="prayer_method_names_diyanet">ดียาเนต (ตุรกี)</string>
     <string name="prayer_method_names_mwl">สันนิบาตมุสลิมโลก</string>
     <string name="prayer_method_names_isna">สมาคมอิสลามแห่งอเมริกาเหนือ (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">คูเวต</string>
     <string name="prayer_method_names_qatar">กาตาร์</string>
     <string name="prayer_method_names_singapore">สิงคโปร์</string>
+    <string name="prayer_method_names_kemenag">Kemenag (กระทรวงการศาสนาอินโดนีเซีย)</string>
     <string name="prayer_method_names_france">ฝรั่งเศส (UOIF)</string>
     <string name="prayer_method_names_russia">สำนักบริหารกิจการศาสนาของชาวมุสลิมแห่งรัสเซีย</string>
     <string name="place_myLocation">ตำแหน่งของฉัน</string>

@@ -80,6 +80,7 @@ struct SaatTarihApp: App {
         let changed = d?.string(forKey: Atmosphere.key) != atmo || d?.double(forKey: "place.lat") != p.lat
             || d?.double(forKey: "place.lon") != p.lon
         Atmosphere.publish(atmo: atmo, lat: p.lat, lon: p.lon)
+        PrayerMethod.publish()
         if changed { WidgetCenter.shared.reloadAllTimelines() }
     }
 }

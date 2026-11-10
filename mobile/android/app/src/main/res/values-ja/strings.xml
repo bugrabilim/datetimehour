@@ -731,6 +731,10 @@
     <string name="prayer_method_note">トルコでの正式な時刻はトルコ宗務庁（ディヤーネット）のものです。別の方法を選ぶと、このページの時刻、月間表、ラマダン時刻表はその方法で計算されます。選択はこのブラウザにだけ保存されます。</string>
     <string name="prayer_method_active">方法：%1$s</string>
     <string name="prayer_method_hanafiShort">ハナフィー派のアスル</string>
+    <string name="prayer_method_region">地域に合わせて</string>
+    <string name="prayer_method_kemenagNote">Kemenag方式は低地向けです。高地（標高約600 m以上）ではKemenagの日の出とマグリブの時刻が4〜5分異なります。イムサークは用心のためファジュルの10分前です。</string>
+    <string name="prayer_method_rowImsak">イムサーク</string>
+    <string name="prayer_method_rowDuha">ドゥハー</string>
     <string name="prayer_method_names_diyanet">ディヤーネット（トルコ）</string>
     <string name="prayer_method_names_mwl">ムスリム世界連盟</string>
     <string name="prayer_method_names_isna">北米イスラム協会（ISNA）</string>
@@ -743,6 +747,7 @@
     <string name="prayer_method_names_kuwait">クウェート</string>
     <string name="prayer_method_names_qatar">カタール</string>
     <string name="prayer_method_names_singapore">シンガポール</string>
+    <string name="prayer_method_names_kemenag">Kemenag(インドネシア宗教省)</string>
     <string name="prayer_method_names_france">フランス（UOIF）</string>
     <string name="prayer_method_names_russia">ロシア・ムスリム宗務局</string>
     <string name="nature_crescentHeading">新月後の月の見え方</string>

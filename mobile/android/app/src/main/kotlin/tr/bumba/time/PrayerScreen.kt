@@ -121,7 +121,7 @@ fun PrayerScreen() {
                         onClick = { menu = false; page = "monthly" },
                     )
                     androidx.compose.material3.DropdownMenuItem(
-                        text = { Text(L("prayer.method.app") + if (PrayerMethod.isCustom) " · " + PrayerMethod.name(PrayerMethod.id) else "") },
+                        text = { Text(L("prayer.method.app") + if (PrayerMethod.id(place) != "diyanet" || PrayerMethod.hanafi(place)) " · " + PrayerMethod.name(PrayerMethod.id(place)) else "") },
                         leadingIcon = { Icon(Icons.Filled.Tune, null) }, onClick = { menu = false; page = "method" },
                     )
                     if (ramadan != null) androidx.compose.material3.DropdownMenuItem(
@@ -146,7 +146,17 @@ fun PrayerScreen() {
             val inline = TrackX.inline
             AppCard {
                 SectionTitle(L("prayer.today"))
+                // Kemenag'ın ek satırları: ihtiyat imsakı sabahtan önce, duha güneşten sonra (yalnız o yöntemde)
+                val extraRows = remember(today, place) { place.extraRows(today) }
+                @Composable fun SubRow(label: String, at: java.time.Instant?) {
+                    if (at == null) return
+                    Row(Modifier.fillMaxWidth().padding(start = 42.dp, end = 10.dp, top = 2.dp, bottom = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Text(label, Modifier.weight(1f), color = Theme.c.muted, fontSize = 15.sp)
+                        Text(Fmt.hm(at, place.zone), color = Theme.c.muted, fontSize = 15.sp, style = Tnum)
+                    }
+                }
                 for (e in entries) {
+                    if (e.prayer == Prayer.FAJR) SubRow(L("prayer.method.rowImsak"), extraRows?.first)
                     val on = next?.prayer == e.prayer && next.at == e.at
                     Row(
                         Modifier.fillMaxWidth()
@@ -163,15 +173,18 @@ fun PrayerScreen() {
                         Text(Fmt.hm(e.at, place.zone), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp, style = Tnum)
                         if (inline) PrayedMark(today, e, now, trackV) { trackV++ }
                     }
+                    if (e.prayer == Prayer.SUNRISE) SubRow(L("prayer.method.rowDuha"), extraRows?.second)
                 }
                 if (inline) PrayedSummary(today, entries, now, trackV) { trackV++ }
             }
             PrayerVisual(now, place, entries)
-            BayramRow(today, now, place)
-            EzaniRow(today, now, place)
+            // Bayram namazı (Diyanet: güneş + 38 dk), ezani saat ve Türkiye Takvimi ek vakitleri yalnız Diyanet yönteminde
+            val diyanet = PrayerMethod.isDiyanet(place)
+            if (diyanet) BayramRow(today, now, place)
+            if (diyanet) EzaniRow(today, now, place)
             RamadanCountdown(now, place)
             KerahatCard(entries, place)
-            ExtraTimesCard(today, place)
+            if (diyanet) ExtraTimesCard(today, place)
             // İbadet satırı (2. analiz #199): dört kare, hepsi "İbadet" sayfasında; kilit ekranı anahtarı Bildirimler'de
             Row(Modifier.fillMaxWidth().padding(top = 6.dp), verticalAlignment = Alignment.CenterVertically) {
                 Text(L("worship.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
@@ -368,15 +381,31 @@ fun MonthlyPrayers(onBack: () -> Unit) {
                 Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, L("prayer.nextMonth"), tint = Theme.c.accent)
             }
         }
-        val cols = listOf(L("prayer.colDay")) + Prayer.entries.map { it.title }
+        // Kemenag'da ihtiyat imsakı ve duha sütunları da var
+        val sub = place.extraRows(today) != null
+        val cols = listOf(L("prayer.colDay")) + Prayer.entries.flatMap {
+            when {
+                sub && it == Prayer.FAJR -> listOf(L("prayer.method.rowImsak"), it.title)
+                sub && it == Prayer.SUNRISE -> listOf(it.title, L("prayer.method.rowDuha"))
+                else -> listOf(it.title)
+            }
+        }
         val scroll = rememberScrollState()
         LazyColumn(Modifier.fillMaxSize().horizontalScroll(scroll).padding(horizontal = 12.dp)) {
             item { TableRow(cols, header = true, highlight = false) }
             items((1..month.lengthOfMonth()).toList()) { d ->
                 val day = LocalDate.of(month.year, month.monthValue, d)
                 val e = place.entries(day).associate { it.prayer to Fmt.hm(it.at, place.zone) }
+                val x = if (sub) place.extraRows(day) else null
+                fun hm(at: java.time.Instant?) = at?.let { Fmt.hm(it, place.zone) } ?: "–"
                 TableRow(
-                    listOf("$d ${Fmt.weekdayShort(day)}") + Prayer.entries.map { e[it] ?: "–" },
+                    listOf("$d ${Fmt.weekdayShort(day)}") + Prayer.entries.flatMap {
+                        when {
+                            sub && it == Prayer.FAJR -> listOf(hm(x?.first), e[it] ?: "–")
+                            sub && it == Prayer.SUNRISE -> listOf(e[it] ?: "–", hm(x?.second))
+                            else -> listOf(e[it] ?: "–")
+                        }
+                    },
                     header = false, highlight = day == today,
                 )
             }

@@ -86871,6 +86871,482 @@
         }
       }
     },
+    "prayer.method.region": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bölgenize göre"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "for your region"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "für Ihre Region"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bölgənizə görə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حسب منطقتك"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sesuai wilayah Anda"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کے علاقے کے مطابق"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بر اساس منطقه شما"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "selon votre région"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "по вашему региону"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "地域に合わせて"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지역에 맞춤"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按您所在地区"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ayon sa inyong rehiyon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตามภูมิภาคของคุณ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "según su región"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "conforme sua região"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपके क्षेत्र के अनुसार"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার অঞ্চল অনুযায়ী"
+          }
+        }
+      }
+    },
+    "prayer.method.kemenagNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag yöntemi alçak yerler içindir: yaylada (yaklaşık 600 metrenin üstünde) Kemenag güneş ve akşam vakitlerini 4–5 dakika farklı yayımlar. İhtiyat imsakı sabahtan 10 dakika öncedir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Kemenag method is for low-lying places: in highlands (above about 600 m) Kemenag publishes sunrise and maghrib 4–5 minutes differently. Imsak is 10 minutes before fajr as a precaution."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Kemenag-Methode gilt für tief gelegene Orte: im Hochland (über etwa 600 m) veröffentlicht Kemenag Sonnenaufgang und Maghrib um 4–5 Minuten anders. Imsak liegt zur Vorsicht 10 Minuten vor Fadschr."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag üsulu alçaq yerlər üçündür: yaylada (təxminən 600 metrdən yuxarı) Kemenag gün çıxanı və axşam vaxtını 4–5 dəqiqə fərqli dərc edir. İhtiyat imsakı sübhdən 10 dəqiqə əvvəldir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طريقة وزارة الشؤون الدينية الإندونيسية للأماكن المنخفضة: في المرتفعات (فوق نحو 600 متر) تنشر الوزارة الشروق والمغرب بفارق 4–5 دقائق. والإمساك قبل الفجر بعشر دقائق احتياطًا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Metode Kemenag berlaku untuk dataran rendah: di dataran tinggi (di atas sekitar 600 m) Kemenag menerbitkan waktu terbit dan magrib berbeda 4–5 menit. Imsak 10 menit sebelum subuh sebagai kehati-hatian."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کیمیناگ کا طریقہ نشیبی علاقوں کے لیے ہے: پہاڑی علاقوں میں (تقریباً 600 میٹر سے اوپر) کیمیناگ طلوع اور مغرب کے اوقات 4–5 منٹ مختلف شائع کرتا ہے۔ احتیاطاً امساک فجر سے 10 منٹ پہلے ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روش کمناگ برای مناطق کم‌ارتفاع است: در مناطق مرتفع (بالای حدود 600 متر) کمناگ طلوع و مغرب را 4 تا 5 دقیقه متفاوت منتشر می‌کند. امساک از روی احتیاط 10 دقیقه پیش از صبح است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La méthode Kemenag vaut pour les lieux de faible altitude : en altitude (au-dessus d’environ 600 m), Kemenag publie le lever du soleil et le maghrib avec 4 à 5 minutes d’écart. L’imsak est 10 minutes avant le fajr, par précaution."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Метод Kemenag рассчитан на низменности: в высокогорье (выше примерно 600 м) Kemenag публикует восход и магриб с разницей в 4–5 минут. Имсак — за 10 минут до фаджра, для предосторожности."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag方式は低地向けです。高地（標高約600 m以上）ではKemenagの日の出とマグリブの時刻が4〜5分異なります。イムサークは用心のためファジュルの10分前です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag 방식은 저지대 기준입니다. 고지대(해발 약 600m 이상)에서는 Kemenag의 일출과 마그립 시각이 4~5분 다릅니다. 임삭은 예방 차원에서 파즈르 10분 전입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag 方法适用于低地：在高地（海拔约 600 米以上），Kemenag 公布的日出和昏礼时间相差 4–5 分钟。为谨慎起见，伊姆萨克在晨礼前 10 分钟。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para sa mabababang lugar ang paraang Kemenag: sa kabundukan (higit sa mga 600 m), iba nang 4–5 minuto ang inilalathalang pagsikat ng araw at maghrib ng Kemenag. Ang imsak ay 10 minuto bago ang fajr bilang pag-iingat."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วิธี Kemenag ใช้กับพื้นที่ราบต่ำ: ในพื้นที่สูง (สูงกว่าราว 600 เมตร) Kemenag ประกาศเวลาดวงอาทิตย์ขึ้นและมัฆริบต่างไป 4–5 นาที เวลาอิมซากคือ 10 นาทีก่อนฟัจร์เพื่อความรอบคอบ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El método Kemenag es para lugares bajos: en zonas altas (por encima de unos 600 m), Kemenag publica la salida del sol y el magrib con 4–5 minutos de diferencia. El imsak es 10 minutos antes del fayr, por precaución."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O método Kemenag vale para lugares baixos: em áreas altas (acima de cerca de 600 m), o Kemenag publica o nascer do sol e o maghrib com 4–5 minutos de diferença. O imsak é 10 minutos antes do fajr, por precaução."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "केमेनाग विधि निचले इलाक़ों के लिए है: ऊँचे इलाक़ों (लगभग 600 मीटर से ऊपर) में केमेनाग सूर्योदय और मग़रिब के समय 4–5 मिनट अलग प्रकाशित करता है। एहतियात के तौर पर इमसाक फ़ज्र से 10 मिनट पहले है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কেমেনাগ পদ্ধতি নিচু এলাকার জন্য: উঁচু এলাকায় (প্রায় 600 মিটারের ওপরে) কেমেনাগ সূর্যোদয় ও মাগরিবের সময় 4–5 মিনিট আলাদা প্রকাশ করে। সতর্কতা হিসেবে ইমসাক ফজরের 10 মিনিট আগে।"
+          }
+        }
+      }
+    },
+    "prayer.method.rowImsak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İhtiyat imsakı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imsak"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imsak"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İhtiyat imsakı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الإمساك"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imsak"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امساک"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امساک"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imsak"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Имсак"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "イムサーク"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "임삭"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伊姆萨克"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imsak"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อิมซาก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imsak"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imsak"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इमसाक"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ইমসাক"
+          }
+        }
+      }
+    },
+    "prayer.method.rowDuha": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kuşluk (duha)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duha"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duha"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çaşt (duha)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الضحى"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dhuha"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "چاشت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضحی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duha"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Духа"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ドゥハー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "두하"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上午礼"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duha"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฎุฮา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duha"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duha"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "चाश्त (ज़ुहा)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "চাশত (দুহা)"
+          }
+        }
+      }
+    },
     "prayer.method.names.diyanet": {
       "extractionState": "manual",
       "localizations": {
@@ -88295,6 +88771,125 @@
           "stringUnit": {
             "state": "translated",
             "value": "সিঙ্গাপুর"
+          }
+        }
+      }
+    },
+    "prayer.method.names.kemenag": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Endonezya Din İşleri Bakanlığı)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Ministry of Religious Affairs, Indonesia)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Religionsministerium Indonesien)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (İndoneziya Din İşləri Nazirliyi)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وزارة الشؤون الدينية الإندونيسية (Kemenag)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag RI (Kementerian Agama)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کیمیناگ (انڈونیشیا کی وزارتِ مذہبی امور)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کمناگ (وزارت امور دینی اندونزی)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (ministère des Affaires religieuses, Indonésie)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Министерство по делам религий Индонезии)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag(インドネシア宗教省)"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (인도네시아 종교부)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag（印度尼西亚宗教部）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Ministri ng Ugnayang Panrelihiyon, Indonesia)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (กระทรวงการศาสนาอินโดนีเซีย)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Ministerio de Asuntos Religiosos de Indonesia)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemenag (Ministério de Assuntos Religiosos da Indonésia)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "केमेनाग (इंडोनेशिया का धार्मिक मामलों का मंत्रालय)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কেমেনাগ (ইন্দোনেশিয়ার ধর্ম মন্ত্রণালয়)"
           }
         }
       }

@@ -71,20 +71,41 @@ import kotlin.math.sin
 object PrayerMethod {
     const val METHOD = "prayer.method"
     const val HANAFI = "prayer.hanafi"
-    val id: String get() = if (Prefs.ready) Prefs.store.getString(METHOD, "diyanet") ?: "diyanet" else "diyanet"
-    val hanafi: Boolean get() = Prefs.ready && Prefs.store.getBoolean(HANAFI, false)
-    fun params(): PrayerTimes.Parameters = PrayerTimes.Parameters.method(id, hanafi)
+    /** Kullanıcı yöntem seçti mi (seçmediyse yerin saat dilimine göre varsayılan; 10 Kasım 2026, sitedeki defaultMethod) */
+    val chosen: Boolean get() = Prefs.ready && Prefs.store.contains(METHOD)
+    private fun place(): AppPlace? = if (Prefs.ready) runCatching { AppPlace.current() }.getOrNull() else null
+    fun regionDefault(place: AppPlace?): PrayerTimes.DefaultMethod =
+        place?.let { PrayerTimes.defaultMethod(it.zone.id, it.lat, it.lon) } ?: PrayerTimes.DefaultMethod("diyanet", false)
+    fun id(place: AppPlace?): String = if (chosen) Prefs.store.getString(METHOD, "diyanet") ?: "diyanet" else regionDefault(place).id
+    fun hanafi(place: AppPlace?): Boolean = if (chosen) Prefs.store.getBoolean(HANAFI, false) else regionDefault(place).hanafi
+    fun params(place: AppPlace? = place()): PrayerTimes.Parameters = PrayerTimes.Parameters.method(id(place), hanafi(place))
+    /** Yöntem bölgeden mi geldi (Diyanet dışı bir varsayılan) */
+    fun fromRegion(place: AppPlace?): Boolean = !chosen && regionDefault(place).let { it.id != "diyanet" || it.hanafi }
+    val id: String get() = id(place())
+    val hanafi: Boolean get() = hanafi(place())
     val isCustom: Boolean get() = id != "diyanet" || hanafi
+    /** Türkiye'ye özgü ekler (bayram namazı, ezani saat, Türkiye Takvimi ek vakitleri) yalnız Diyanet'te */
+    fun isDiyanet(place: AppPlace?): Boolean = id(place) == "diyanet"
     fun name(id: String) = L("prayer.method.names.$id")
+    /** "…" menüsündeki ve ayardaki kısa açıklama: yöntem adı, Hanefî, bölgenize göre */
+    fun label(place: AppPlace?): String {
+        val parts = mutableListOf(name(id(place)))
+        if (hanafi(place)) parts += L("prayer.method.hanafiShort")
+        if (fromRegion(place)) parts += L("prayer.method.region")
+        return parts.joinToString(" · ")
+    }
 }
 
 @Composable
 fun PrayerMethodScreen(onBack: () -> Unit) {
     val context = LocalContext.current
-    var method by remember { mutableStateOf(PrayerMethod.id) }
-    var hanafi by remember { mutableStateOf(PrayerMethod.hanafi) }
+    val place = remember { AppPlace.current() }
+    var method by remember { mutableStateOf(PrayerMethod.id(place)) }
+    var hanafi by remember { mutableStateOf(PrayerMethod.hanafi(place)) }
+    var regional by remember { mutableStateOf(PrayerMethod.fromRegion(place)) }
     fun save() {
         Prefs.store.edit().putString(PrayerMethod.METHOD, method).putBoolean(PrayerMethod.HANAFI, hanafi).apply()
+        regional = false
         PrayerNotifier.reschedule(context)
     }
     Column(Modifier.fillMaxSize()) {
@@ -104,6 +125,8 @@ fun PrayerMethodScreen(onBack: () -> Unit) {
                     Text(L(if (h) "prayer.method.asrHanafi" else "prayer.method.asrStd"), color = Theme.c.text, fontSize = 15.sp)
                 }
             }
+            if (regional) Text(PrayerMethod.label(place), color = Theme.c.muted, fontSize = 12.sp)
+            if (method == "kemenag") Text(L("prayer.method.kemenagNote"), color = Theme.c.muted, fontSize = 12.sp)
             Text(L("prayer.method.appNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
     }

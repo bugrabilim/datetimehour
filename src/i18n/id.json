@@ -1878,9 +1878,14 @@
         "kuwait": "Kuwait",
         "qatar": "Qatar",
         "singapore": "Singapura",
+        "kemenag": "Kemenag RI (Kementerian Agama)",
         "france": "Prancis (UOIF)",
         "russia": "Dewan Spiritual Muslim Rusia"
-      }
+      },
+      "region": "sesuai wilayah Anda",
+      "kemenagNote": "Metode Kemenag berlaku untuk dataran rendah: di dataran tinggi (di atas sekitar 600 m) Kemenag menerbitkan waktu terbit dan magrib berbeda 4–5 menit. Imsak 10 menit sebelum subuh sebagai kehati-hatian.",
+      "rowImsak": "Imsak",
+      "rowDuha": "Dhuha"
     },
     "ezani": "Waktu ezani (alaturka): {t}",
     "ezaniNote": "Pada waktu ezani (alaturka), waktu magrib dianggap pukul 12.00 dan jam dihitung dari sana."

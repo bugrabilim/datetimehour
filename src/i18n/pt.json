@@ -1958,9 +1958,14 @@
         "kuwait": "Kuwait",
         "qatar": "Catar",
         "singapore": "Singapura",
+        "kemenag": "Kemenag (Ministério de Assuntos Religiosos da Indonésia)",
         "france": "França (UOIF)",
         "russia": "Administração Espiritual dos Muçulmanos da Rússia"
-      }
+      },
+      "region": "conforme sua região",
+      "kemenagNote": "O método Kemenag vale para lugares baixos: em áreas altas (acima de cerca de 600 m), o Kemenag publica o nascer do sol e o maghrib com 4–5 minutos de diferença. O imsak é 10 minutos antes do fajr, por precaução.",
+      "rowImsak": "Imsak",
+      "rowDuha": "Duha"
     },
     "ezani": "Hora ezani (à turca): {t}",
     "ezaniNote": "Na hora ezani (à turca), a oração do entardecer (pôr do sol) corresponde às 12:00 e as horas são contadas a partir dela."

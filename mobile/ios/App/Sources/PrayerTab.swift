@@ -60,7 +60,7 @@ struct PrayerTab: View {
                         Button { sharing = true } label: { Label(L("share.prayer"), systemImage: "square.and.arrow.up") }
                         Button { route = .monthly } label: { Label(L("prayer.monthly"), systemImage: "tablecells") }
                         Button { route = .method } label: {
-                            Label(L("prayer.method.app") + (PrayerMethod.isCustom ? " · " + PrayerMethod.name(PrayerMethod.id) : ""),
+                            Label(L("prayer.method.app") + (PrayerMethod.id(for: place) != "diyanet" || PrayerMethod.hanafi(for: place) ? " · " + PrayerMethod.name(PrayerMethod.id(for: place)) : ""),
                                   systemImage: "slider.horizontal.3")
                         }
                         if let ramadan = CalendarData.shared.nextRamadan(from: CalendarDay(Date())) {
@@ -107,8 +107,11 @@ struct PrayerPanel: View {
             VStack(spacing: 0) {
                 SectionTitle(text: String(localized: "prayer.today"))
                     .padding(.bottom, 8)
+                // Kemenag'ın ek satırları: ihtiyat imsakı sabahtan önce, duha güneşten sonra (yalnız o yöntemde)
+                let extra = place.extraRows(on: now)
                 ForEach(schedule.entries(on: now)) { entry in
                     let isNext = entry.at == next?.at
+                    if entry.prayer == .fajr, let at = extra?.imsak { PrayerSubRow(label: L("prayer.method.rowImsak"), time: place.hm(at)) }
                     HStack(spacing: 10) {
                         LineIcon(name: prayerLineIcon(entry.prayer), size: 22,
                                  c1: isNext ? Theme.accent : Theme.muted, c2: isNext ? Theme.accent : Theme.muted)
@@ -127,18 +130,39 @@ struct PrayerPanel: View {
                     .padding(.vertical, inline ? 7 : 12)
                     .padding(.horizontal, 14)
                     .background(isNext ? Theme.accentSoft : .clear, in: RoundedRectangle(cornerRadius: 10))
+                    if entry.prayer == .sunrise, let at = extra?.duha { PrayerSubRow(label: L("prayer.method.rowDuha"), time: place.hm(at)) }
                 }
                 if inline {
                     PrayedSummary(day: CalendarDay(now, timeZone: place.zone), entries: schedule.entries(on: now), now: now, version: $trackVersion)
                         .padding(.horizontal, 14)
                 }
             }
-            BayramRow(place: place, now: now)
-            EzaniRow(place: place, now: now)
+            // Bayram namazı (Diyanet: güneş + 38 dk), ezani saat ve Türkiye Takvimi ek vakitleri yalnız Diyanet yönteminde
+            let diyanet = PrayerMethod.isDiyanet(place)
+            if diyanet { BayramRow(place: place, now: now) }
+            if diyanet { EzaniRow(place: place, now: now) }
             RamadanCountdown(place: place)
             KerahatBox(entries: schedule.entries(on: now), place: place)
-            ExtraTimesBox(place: place, day: place.today)
+            if diyanet { ExtraTimesBox(place: place, day: place.today) }
         }
+    }
+}
+
+/// Vakit listesinde ikincil satır (Kemenag'ın ihtiyat imsakı ve duhası)
+struct PrayerSubRow: View {
+    let label: String
+    let time: String
+    var body: some View {
+        HStack {
+            Text(label)
+            Spacer()
+            Text(time).monospacedDigit().environment(\.layoutDirection, .leftToRight)
+        }
+        .font(.subheadline)
+        .foregroundStyle(Theme.muted)
+        .padding(.vertical, 4)
+        .padding(.leading, 46)
+        .padding(.trailing, 14)
     }
 }
 
@@ -343,11 +367,15 @@ struct MonthlyPrayerView: View {
                 Text(place.name)
                     .font(.subheadline)
                     .foregroundStyle(Theme.muted)
+                // Kemenag'da ihtiyat imsakı ve duha sütunları da var
+                let sub = place.extraRows(on: Date()) != nil
                 Grid(horizontalSpacing: 6, verticalSpacing: 0) {
                     GridRow {
                         Text(L("prayer.colDay")).gridColumnAlignment(.leading)
                         ForEach(Prayer.allCases, id: \.self) { p in
+                            if sub && p == .fajr { Text(L("prayer.method.rowImsak")).lineLimit(1).minimumScaleFactor(0.6) }
                             Text(p.localizedName).lineLimit(1).minimumScaleFactor(0.6)
+                            if sub && p == .sunrise { Text(L("prayer.method.rowDuha")).lineLimit(1).minimumScaleFactor(0.6) }
                         }
                     }
                     .font(.caption2.weight(.semibold))
@@ -356,11 +384,14 @@ struct MonthlyPrayerView: View {
                     ForEach(days, id: \.self) { d in
                         let entries = schedule.entries(on: d.noon(in: place.zone))
                         let isToday = d == today
+                        let x = sub ? place.extraRows(on: d.noon(in: place.zone)) : nil
                         GridRow {
                             Text("\(d.day) " + L("calendar.weekdaysShort.\(d.weekday)"))
                                 .gridColumnAlignment(.leading)
                             ForEach(Prayer.allCases, id: \.self) { p in
+                                if sub && p == .fajr { Text(x?.imsak.map { place.hm($0) } ?? "–") }
                                 Text(entries.first { $0.prayer == p }.map { place.hm($0.at) } ?? "–")
+                                if sub && p == .sunrise { Text(x?.duha.map { place.hm($0) } ?? "–") }
                             }
                         }
                         .font(.caption.weight(isToday ? .bold : .regular).monospacedDigit())
@@ -433,7 +464,7 @@ struct ImsakiyeCard: View {
                 GridRow {
                     Text(L("prayer.colDay")).gridColumnAlignment(.leading)
                     Text("").gridColumnAlignment(.leading)
-                    Text(Prayer.fajr.localizedName)
+                    Text(place.extraRows(on: Date()) != nil ? L("prayer.method.rowImsak") : Prayer.fajr.localizedName)
                     Text(L("imsakiye.iftar"))
                 }
                 .font(.caption.weight(.semibold))
@@ -444,7 +475,8 @@ struct ImsakiyeCard: View {
                     GridRow {
                         Text(T("imsakiye.day", i + 1))
                         Text(Fmt.dayMonth(d.noon(in: place.zone), tz: place.zone) + " " + L("calendar.weekdaysShort.\(d.weekday)"))
-                        Text(entries.first { $0.prayer == .fajr }.map { place.hm($0.at) } ?? "–")
+                        Text(place.extraRows(on: d.noon(in: place.zone))?.imsak.map { place.hm($0) }
+                             ?? entries.first { $0.prayer == .fajr }.map { place.hm($0.at) } ?? "–")
                         Text(entries.first { $0.prayer == .maghrib }.map { place.hm($0.at) } ?? "–")
                     }
                     .font(.footnote.weight(d == today ? .bold : .regular).monospacedDigit())

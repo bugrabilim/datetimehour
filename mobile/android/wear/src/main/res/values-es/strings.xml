@@ -78,6 +78,10 @@
     <string name="prayer_method_note">En Turquía los horarios oficiales son los de la Presidencia de Asuntos Religiosos (Diyanet). Si elige otro método, los horarios, la tabla mensual y el calendario de Ramadán de esta página se calculan con él; su elección solo se guarda en este navegador.</string>
     <string name="prayer_method_active">Método: %1$s</string>
     <string name="prayer_method_hanafiShort">Asr hanafí</string>
+    <string name="prayer_method_region">según su región</string>
+    <string name="prayer_method_kemenagNote">El método Kemenag es para lugares bajos: en zonas altas (por encima de unos 600 m), Kemenag publica la salida del sol y el magrib con 4–5 minutos de diferencia. El imsak es 10 minutos antes del fayr, por precaución.</string>
+    <string name="prayer_method_rowImsak">Imsak</string>
+    <string name="prayer_method_rowDuha">Duha</string>
     <string name="prayer_method_names_diyanet">Diyanet (Turquía)</string>
     <string name="prayer_method_names_mwl">Liga Mundial Musulmana</string>
     <string name="prayer_method_names_isna">Sociedad Islámica de Norteamérica (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">Kuwait</string>
     <string name="prayer_method_names_qatar">Catar</string>
     <string name="prayer_method_names_singapore">Singapur</string>
+    <string name="prayer_method_names_kemenag">Kemenag (Ministerio de Asuntos Religiosos de Indonesia)</string>
     <string name="prayer_method_names_france">Francia (UOIF)</string>
     <string name="prayer_method_names_russia">Administración Espiritual de los Musulmanes de Rusia</string>
     <string name="place_myLocation">Mi ubicación</string>

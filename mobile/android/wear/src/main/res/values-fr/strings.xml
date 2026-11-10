@@ -78,6 +78,10 @@
     <string name="prayer_method_note">En Turquie, les heures officielles sont celles de la Présidence des affaires religieuses (Diyanet). Si vous choisissez une autre méthode, les heures, le tableau mensuel et le calendrier du Ramadan de cette page sont calculés avec elle ; votre choix est enregistré uniquement dans ce navigateur.</string>
     <string name="prayer_method_active">Méthode : %1$s</string>
     <string name="prayer_method_hanafiShort">Asr hanafite</string>
+    <string name="prayer_method_region">selon votre région</string>
+    <string name="prayer_method_kemenagNote">La méthode Kemenag vaut pour les lieux de faible altitude : en altitude (au-dessus d’environ 600 m), Kemenag publie le lever du soleil et le maghrib avec 4 à 5 minutes d’écart. L’imsak est 10 minutes avant le fajr, par précaution.</string>
+    <string name="prayer_method_rowImsak">Imsak</string>
+    <string name="prayer_method_rowDuha">Duha</string>
     <string name="prayer_method_names_diyanet">Diyanet (Turquie)</string>
     <string name="prayer_method_names_mwl">Ligue islamique mondiale</string>
     <string name="prayer_method_names_isna">Islamic Society of North America (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">Koweït</string>
     <string name="prayer_method_names_qatar">Qatar</string>
     <string name="prayer_method_names_singapore">Singapour</string>
+    <string name="prayer_method_names_kemenag">Kemenag (ministère des Affaires religieuses, Indonésie)</string>
     <string name="prayer_method_names_france">France (UOIF)</string>
     <string name="prayer_method_names_russia">Direction spirituelle des musulmans de Russie</string>
     <string name="place_myLocation">Ma position</string>
