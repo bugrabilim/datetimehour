@@ -19,7 +19,7 @@ konumunun sunucuya gitmesi (bunlar telefonda kalır).
 
 ## Mimari
 - **Yeni sunuculu uygulama** (Coolify, ana altyapının kurduğu): aynı depoda `server/` klasörü, Node 22.23.4,
-  çerçevesiz `node:http` ve **Better Auth** 1.7.14 (MIT; e-posta + şifre, e-posta doğrulama, şifre sıfırlama,
+  çerçevesiz `node:http` ve **Better Auth** 1.7.20 (MIT; e-posta + şifre, e-posta doğrulama, şifre sıfırlama,
   mobil için taşıyıcı belirteç, giriş denemesi sınırı; şifre özeti ve oturum mantığı elle yazılmaz, standart
   madde 7) ve `pg` 8.23.1; iki bağımlılık, sürümler sabit.
   Adres önerisi `hesap.time.bumba.tr` (`time.bumba.tr/api/v1/` zaten açık veri olduğu için ayrı alt alan).
