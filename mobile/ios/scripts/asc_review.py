@@ -80,6 +80,10 @@ def age_rating(aid):
         a = info["attributes"]
         print(f"Uygulama bilgisi {info['id']}: state={a.get('state') or a.get('appStoreState')} "
               f"appStoreAgeRating={a.get('appStoreAgeRating')}")
+        # Bölgeye özgü dereceler (Avustralya, Brezilya, Fransa, Kore…) ve öbür alanlar da yazılır:
+        # inceleme "derece yok" derse hangi alanın boş kaldığı buradan görülür.
+        for k, v in sorted(a.items()):
+            print(f"    {k} = {v}")
         decl = call("GET", f"/appInfos/{info['id']}/ageRatingDeclaration").get("data") or {}
         if not decl:
             print("  beyan yok")
@@ -87,6 +91,28 @@ def age_rating(aid):
         print(f"  beyan {decl['id']}:")
         for k, v in sorted(decl.get("attributes", {}).items()):
             print(f"    {k} = {v}")
+
+
+def version_age(aid):
+    """Sürüme bağlı eski beyan (API'de kullanımdan kalkan yol) ve sürümün aygıt/derece ile ilgili alanları."""
+    print("--- Sürümler (yaş derecesiyle ilgili) ---")
+    for v in call("GET", f"/apps/{aid}/appStoreVersions?limit=5")["data"]:
+        a = v["attributes"]
+        print(f"Sürüm {a.get('versionString')} ({v['id']}): platform={a.get('platform')} "
+              f"reviewType={a.get('reviewType')} releaseType={a.get('releaseType')}")
+        url = API + f"/appStoreVersions/{v['id']}/ageRatingDeclaration"
+        req = urllib.request.Request(url)
+        req.add_header("Authorization", "Bearer " + token())
+        try:
+            with urllib.request.urlopen(req) as r:
+                d = (json.loads(r.read() or b"{}").get("data") or {})
+            if d:
+                empty = [k for k, x in sorted(d.get("attributes", {}).items()) if x is None]
+                print(f"  sürüme bağlı beyan {d['id']}: boş alanlar = {', '.join(empty) or '-'}")
+            else:
+                print("  sürüme bağlı beyan yok")
+        except urllib.error.HTTPError as e:
+            print(f"  sürüme bağlı beyan okunamadı: {e.code}")
 
 
 def mask(email):
@@ -142,4 +168,5 @@ if __name__ == "__main__":
         print("--- güncel durum ---")
     status(aid)
     age_rating(aid)
+    version_age(aid)
     beta_groups(aid)
