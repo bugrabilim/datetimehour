@@ -1,0 +1,46 @@
+{
+ "source": [
+  "https://en.wikipedia.org/wiki/Javanese_calendar (windu yıl uzunlukları; kurup Asapon 24.03.1936 = 1 Sura 1867 Alip, Salı Pon)",
+  "https://www.detik.com/jatim/budaya/d-8517446/malam-1-suro-2026-bertepatan-weton-apa ve https://www.kompas.tv/info-publik/673755/kalender-jawa-malam-1-suro-2026-jatuh-pada-tanggal-berapa (1 Suro 1960 Be = Rabu Kliwon 17.06.2026)",
+  "https://rri.co.id/en/art-and-culture/1816601/yogyakarta-s-garebeg-mulud-2025-features-once-in-eight-year-rituals ve https://www.detik.com/jogja/budaya/d-8091859/rangkaian-acara-hajad-dalem-sekaten-keraton-jogja-selama-sepekan (Keraton Yogyakarta Garebeg Mulud Dal 1959 = Jumat 05.09.2025)"
+ ],
+ "note": "1 Suro 1959 Dal = Jumat Kliwon 27.06.2025. Aralık dışında 17.08.1945 Jumat Legi hesapla aynı. Grebeg Syawal ve Grebeg Besar sarayın kendi ilanına bağlı olduğu için eklenmedi.",
+ "cases": [
+  {
+   "date": "2025-06-27",
+   "key": "suro"
+  },
+  {
+   "date": "2025-09-05",
+   "key": "grebegMulud"
+  },
+  {
+   "date": "2026-06-17",
+   "key": "suro"
+  }
+ ],
+ "months": [
+  {
+   "date": "2025-09-05",
+   "y": 1959,
+   "m": 3,
+   "d": 12
+  },
+  {
+   "date": "2026-06-17",
+   "y": 1960,
+   "m": 1,
+   "d": 1
+  }
+ ],
+ "daily": [
+  {
+   "date": "2025-06-27",
+   "code": "p5"
+  },
+  {
+   "date": "2026-06-17",
+   "code": "p5"
+  }
+ ]
+}

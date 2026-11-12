@@ -1,0 +1,382 @@
+{
+  "tr": {
+    "name": "Budist takvimi",
+    "desc": "Tayland ay takvimine göre Budist bayramları ve uposatha günleri: Magha Puja, Vesak, Asalha Puja ve Vassa.",
+    "note": "Tarihler Tayland ay takviminin geleneksel hesabındandır (Tayland resmî tarihleri her yıl ilan eder, 2027'den sonraki yıllar hesaptır); uposatha günleri astronomik Ay evresinden bir gün farklı olabilir. Sri Lanka, Myanmar ve diğer ülkelerde bayram bir ay, Budist yılı bir yıl farklı olabilir; BM, Vesak'ı Mayıs dolunayında anar. Temmuz 2030 ile Temmuz 2032 arasındaki tarihler, artık günün hangi yıla konacağına göre bir gün erken olabilir.",
+    "ev": {
+      "maghaPuja": "Magha Puja",
+      "vesak": "Vesak (Visakha Puja)",
+      "asalhaPuja": "Asalha Puja",
+      "vassaStart": "Vassa'nın başlangıcı (Khao Phansa)",
+      "vassaEnd": "Vassa'nın sonu (Ok Phansa)"
+    },
+    "yearFmt": "Budist çağı {y}",
+    "daily": {
+      "k8": "Uposatha (ilk dördün)",
+      "k15": "Uposatha (dolunay)",
+      "r8": "Uposatha (son dördün)",
+      "r14": "Uposatha (yeni ay)",
+      "r15": "Uposatha (yeni ay)"
+    }
+  },
+  "en": {
+    "name": "Buddhist calendar",
+    "desc": "Buddhist holy days and uposatha days by the Thai lunar calendar: Magha Puja, Vesak, Asalha Puja and Vassa.",
+    "note": "Dates follow the traditional reckoning of the Thai lunar calendar (Thailand announces the official dates each year, so years after 2027 are calculated); uposatha days may differ by a day from the astronomical moon phase. In Sri Lanka, Myanmar and elsewhere a festival may fall a month apart and the Buddhist year may differ by one; the UN marks Vesak at the full moon of May. Between July 2030 and July 2032 the dates may be one day earlier, depending on the year the extra day is added.",
+    "ev": {
+      "maghaPuja": "Magha Puja",
+      "vesak": "Vesak (Visakha Puja)",
+      "asalhaPuja": "Asalha Puja",
+      "vassaStart": "Start of Vassa (Khao Phansa)",
+      "vassaEnd": "End of Vassa (Ok Phansa)"
+    },
+    "yearFmt": "Buddhist Era {y}",
+    "daily": {
+      "k8": "Uposatha (first quarter)",
+      "k15": "Uposatha (full moon)",
+      "r8": "Uposatha (last quarter)",
+      "r14": "Uposatha (new moon)",
+      "r15": "Uposatha (new moon)"
+    }
+  },
+  "de": {
+    "name": "Buddhistischer Kalender",
+    "desc": "Buddhistische Feiertage und Uposatha-Tage nach dem thailändischen Mondkalender: Magha Puja, Vesakh, Asalha Puja und Vassa.",
+    "note": "Die Daten folgen der traditionellen Berechnung des thailändischen Mondkalenders (Thailand gibt die amtlichen Daten jedes Jahr bekannt, Jahre nach 2027 sind berechnet); Uposatha-Tage können um einen Tag von der astronomischen Mondphase abweichen. In Sri Lanka, Myanmar und anderen Ländern kann ein Fest einen Monat und das buddhistische Jahr um eins abweichen; die Vereinten Nationen begehen Vesakh am Vollmond im Mai. Zwischen Juli 2030 und Juli 2032 können die Daten einen Tag früher liegen, je nachdem, in welchem Jahr der zusätzliche Tag eingefügt wird.",
+    "ev": {
+      "maghaPuja": "Magha Puja",
+      "vesak": "Vesakh (Visakha Puja)",
+      "asalhaPuja": "Asalha Puja",
+      "vassaStart": "Beginn der Vassa (Khao Phansa)",
+      "vassaEnd": "Ende der Vassa (Ok Phansa)"
+    },
+    "yearFmt": "Buddhistische Ära {y}",
+    "daily": {
+      "k8": "Uposatha (zunehmender Halbmond)",
+      "k15": "Uposatha (Vollmond)",
+      "r8": "Uposatha (abnehmender Halbmond)",
+      "r14": "Uposatha (Neumond)",
+      "r15": "Uposatha (Neumond)"
+    }
+  },
+  "az": {
+    "name": "Buddist təqvimi",
+    "desc": "Tailand ay təqviminə görə Buddist bayramları və uposatha günləri: Maqha Puca, Vesak, Asalha Puca və Vassa.",
+    "note": "Tarixlər Tailand ay təqviminin ənənəvi hesabındandır (Tailand rəsmi tarixləri hər il elan edir, 2027-ci ildən sonrakı illər hesablamadır); uposatha günləri astronomik Ay fazasından bir gün fərqlənə bilər. Şri-Lanka, Myanma və digər ölkələrdə bayram bir ay, Buddist ili isə bir il fərqli ola bilər; BMT Vesakı may ayının bədrində qeyd edir. 2030-cu ilin iyulu ilə 2032-ci ilin iyulu arasındakı tarixlər əlavə günün hansı ilə qoyulmasından asılı olaraq bir gün tez ola bilər.",
+    "ev": {
+      "maghaPuja": "Maqha Puca",
+      "vesak": "Vesak (Visakha Puca)",
+      "asalhaPuja": "Asalha Puca",
+      "vassaStart": "Vassanın başlanğıcı (Khao Phansa)",
+      "vassaEnd": "Vassanın sonu (Ok Phansa)"
+    },
+    "yearFmt": "Buddist erası {y}",
+    "daily": {
+      "k8": "Uposatha (birinci rüb)",
+      "k15": "Uposatha (bədr)",
+      "r8": "Uposatha (sonuncu rüb)",
+      "r14": "Uposatha (yeni Ay)",
+      "r15": "Uposatha (yeni Ay)"
+    }
+  },
+  "ar": {
+    "name": "التقويم البوذي",
+    "desc": "الأعياد البوذية وأيام الأوبوساثا وفق التقويم القمري التايلندي: ماغا بوجا وفيساك وأسالها بوجا وفاسا.",
+    "note": "التواريخ مأخوذة من الحساب التقليدي للتقويم القمري التايلندي (تعلن تايلاند التواريخ الرسمية كل عام، والسنوات بعد 2027 محسوبة)، وقد تختلف أيام الأوبوساثا يومًا عن طور القمر الفلكي. وقد يختلف العيد شهرًا والسنة البوذية سنةً في سريلانكا وميانمار وغيرهما، وتحيي الأمم المتحدة يوم فيساك في بدر شهر مايو. قد تكون التواريخ بين يوليو 2030 ويوليو 2032 أبكر بيوم واحد، بحسب السنة التي يُضاف فيها اليوم الزائد.",
+    "ev": {
+      "maghaPuja": "ماغا بوجا",
+      "vesak": "فيساك (فيساكا بوجا)",
+      "asalhaPuja": "أسالها بوجا",
+      "vassaStart": "بداية فاسا (خاو فانسا)",
+      "vassaEnd": "نهاية فاسا (أوك فانسا)"
+    },
+    "yearFmt": "العصر البوذي {y}",
+    "daily": {
+      "k8": "أوبوساثا (التربيع الأول)",
+      "k15": "أوبوساثا (البدر)",
+      "r8": "أوبوساثا (التربيع الأخير)",
+      "r14": "أوبوساثا (المحاق)",
+      "r15": "أوبوساثا (المحاق)"
+    }
+  },
+  "id": {
+    "name": "Kalender Buddha",
+    "desc": "Hari raya Buddha dan hari uposatha menurut kalender lunar Thailand: Magha Puja, Waisak, Asadha, dan Vassa.",
+    "note": "Tanggal mengikuti perhitungan tradisional kalender lunar Thailand (Thailand mengumumkan tanggal resmi setiap tahun, tahun-tahun setelah 2027 merupakan hasil hitungan); hari uposatha bisa berbeda sehari dari fase bulan astronomis. Di Sri Lanka, Myanmar, dan negara lain hari raya bisa berbeda sebulan dan tahun Buddhis berbeda satu tahun; PBB memperingati Waisak pada purnama bulan Mei. Tanggal antara Juli 2030 dan Juli 2032 bisa satu hari lebih awal, tergantung pada tahun penambahan hari tambahan.",
+    "ev": {
+      "maghaPuja": "Magha Puja",
+      "vesak": "Waisak (Visakha Puja)",
+      "asalhaPuja": "Asadha (Asalha Puja)",
+      "vassaStart": "Awal Vassa (Khao Phansa)",
+      "vassaEnd": "Akhir Vassa (Ok Phansa)"
+    },
+    "yearFmt": "Era Buddhis {y}",
+    "daily": {
+      "k8": "Uposatha (kuartal pertama)",
+      "k15": "Uposatha (purnama)",
+      "r8": "Uposatha (kuartal terakhir)",
+      "r14": "Uposatha (bulan baru)",
+      "r15": "Uposatha (bulan baru)"
+    }
+  },
+  "ur": {
+    "name": "بدھ کیلنڈر",
+    "desc": "تھائی قمری کیلنڈر کے مطابق بدھ مت کے تہوار اور اپوستھ کے دن: ماگھا پوجا، ویساک، آسالھا پوجا اور وسّا۔",
+    "note": "تاریخیں تھائی قمری کیلنڈر کے روایتی حساب سے ہیں (تھائی لینڈ ہر سال سرکاری تاریخوں کا اعلان کرتا ہے، 2027 کے بعد کے سال حساب پر مبنی ہیں)؛ اپوستھ کے دن فلکیاتی چاند کے مرحلے سے ایک دن مختلف ہو سکتے ہیں۔ سری لنکا، میانمار اور دوسرے ممالک میں تہوار ایک مہینہ اور بدھ سال ایک سال مختلف ہو سکتا ہے؛ اقوام متحدہ ویساک مئی کے پورے چاند پر مناتی ہے۔ جولائی 2030 سے جولائی 2032 تک کی تاریخیں ایک دن پہلے ہو سکتی ہیں، اس پر منحصر ہے کہ اضافی دن کس سال میں رکھا جائے۔",
+    "ev": {
+      "maghaPuja": "ماگھا پوجا",
+      "vesak": "ویساک (وساکھا پوجا)",
+      "asalhaPuja": "آسالھا پوجا",
+      "vassaStart": "وسّا کا آغاز (کھاؤ پھانسا)",
+      "vassaEnd": "وسّا کا اختتام (اوک پھانسا)"
+    },
+    "yearFmt": "بدھ سن {y}",
+    "daily": {
+      "k8": "اپوستھ (پہلی چوتھائی)",
+      "k15": "اپوستھ (پورا چاند)",
+      "r8": "اپوستھ (آخری چوتھائی)",
+      "r14": "اپوستھ (نیا چاند)",
+      "r15": "اپوستھ (نیا چاند)"
+    }
+  },
+  "fa": {
+    "name": "تقویم بودایی",
+    "desc": "جشن‌های بودایی و روزهای اوپوساتا بر پایهٔ تقویم قمری تایلند: ماگا پوجا، ویساک، آسالها پوجا و واسا.",
+    "note": "تاریخ‌ها از محاسبهٔ سنتی تقویم قمری تایلند است (تایلند تاریخ‌های رسمی را هر سال اعلام می‌کند و سال‌های پس از 2027 محاسبه‌شده‌اند)؛ روزهای اوپوساتا ممکن است یک روز با اهلّهٔ نجومی ماه فرق داشته باشند. در سری‌لانکا، میانمار و کشورهای دیگر جشن ممکن است یک ماه و سال بودایی یک سال متفاوت باشد؛ سازمان ملل ویساک را در ماه کامل ماه مه گرامی می‌دارد. تاریخ‌های میان ژوئیهٔ 2030 و ژوئیهٔ 2032 بسته به سالی که روز افزوده در آن گذاشته شود ممکن است یک روز زودتر باشند.",
+    "ev": {
+      "maghaPuja": "ماگا پوجا",
+      "vesak": "ویساک (ویساکا پوجا)",
+      "asalhaPuja": "آسالها پوجا",
+      "vassaStart": "آغاز واسا (خائو پانسا)",
+      "vassaEnd": "پایان واسا (اوک پانسا)"
+    },
+    "yearFmt": "عصر بودایی {y}",
+    "daily": {
+      "k8": "اوپوساتا (تربیع اول)",
+      "k15": "اوپوساتا (ماه کامل)",
+      "r8": "اوپوساتا (تربیع آخر)",
+      "r14": "اوپوساتا (ماه نو)",
+      "r15": "اوپوساتا (ماه نو)"
+    }
+  },
+  "fr": {
+    "name": "Calendrier bouddhique",
+    "desc": "Fêtes bouddhiques et jours d’uposatha selon le calendrier lunaire thaï : Magha Puja, Vesak, Asalha Puja et Vassa.",
+    "note": "Les dates suivent le calcul traditionnel du calendrier lunaire thaï (la Thaïlande annonce les dates officielles chaque année ; les années après 2027 sont calculées) ; les jours d’uposatha peuvent différer d’un jour de la phase astronomique de la Lune. Au Sri Lanka, en Birmanie et ailleurs, une fête peut tomber à un mois d’écart et l’année bouddhique différer d’un an ; l’ONU célèbre le Vesak à la pleine lune de mai. Entre juillet 2030 et juillet 2032, les dates peuvent avancer d'un jour selon l'année où le jour supplémentaire est ajouté.",
+    "ev": {
+      "maghaPuja": "Magha Puja",
+      "vesak": "Vesak (Visakha Puja)",
+      "asalhaPuja": "Asalha Puja",
+      "vassaStart": "Début du Vassa (Khao Phansa)",
+      "vassaEnd": "Fin du Vassa (Ok Phansa)"
+    },
+    "yearFmt": "Ère bouddhique {y}",
+    "daily": {
+      "k8": "Uposatha (premier quartier)",
+      "k15": "Uposatha (pleine lune)",
+      "r8": "Uposatha (dernier quartier)",
+      "r14": "Uposatha (nouvelle lune)",
+      "r15": "Uposatha (nouvelle lune)"
+    }
+  },
+  "ru": {
+    "name": "Буддийский календарь",
+    "desc": "Буддийские праздники и дни упосатхи по тайскому лунному календарю: Магха-пуджа, Весак, Асалха-пуджа и Васса.",
+    "note": "Даты рассчитаны по традиционным правилам тайского лунного календаря (Таиланд ежегодно объявляет официальные даты, годы после 2027 рассчитаны); дни упосатхи могут на день расходиться с астрономической фазой Луны. В Шри-Ланке, Мьянме и других странах праздник может отличаться на месяц, а буддийский год — на единицу; ООН отмечает Весак в полнолуние мая. С июля 2030 по июль 2032 года даты могут быть на день раньше — в зависимости от того, в какой год добавят дополнительный день.",
+    "ev": {
+      "maghaPuja": "Магха-пуджа",
+      "vesak": "Весак (Висакха-пуджа)",
+      "asalhaPuja": "Асалха-пуджа",
+      "vassaStart": "Начало Вассы (Кхао Пханса)",
+      "vassaEnd": "Конец Вассы (Ок Пханса)"
+    },
+    "yearFmt": "Буддийская эра {y}",
+    "daily": {
+      "k8": "Упосатха (первая четверть)",
+      "k15": "Упосатха (полнолуние)",
+      "r8": "Упосатха (последняя четверть)",
+      "r14": "Упосатха (новолуние)",
+      "r15": "Упосатха (новолуние)"
+    }
+  },
+  "ja": {
+    "name": "仏教暦",
+    "desc": "タイ太陰暦による仏教の祝祭日と布薩日：マーカ・ブーチャ、ウェーサーカ祭、アーサーラハ・ブーチャ、安居。",
+    "note": "日付はタイ太陰暦の伝統的な計算によるもので（タイは公式の日付を毎年発表し、2027年より後は計算値）、布薩日は天文学上の月相と1日ずれることがあります。スリランカやミャンマーなどでは祭日が1か月、仏暦が1年異なることがあり、国連はウェーサーカ祭を5月の満月に記念します。2030年7月から2032年7月までの日付は、追加の1日をどの年に入れるかによって1日早くなる場合があります。",
+    "ev": {
+      "maghaPuja": "マーカ・ブーチャ（万仏節）",
+      "vesak": "ウェーサーカ祭（ヴィサカ・ブーチャ）",
+      "asalhaPuja": "アーサーラハ・ブーチャ（三宝節）",
+      "vassaStart": "安居入り（カオパンサー）",
+      "vassaEnd": "安居明け（オークパンサー）"
+    },
+    "yearFmt": "仏暦{y}年",
+    "daily": {
+      "k8": "布薩（上弦）",
+      "k15": "布薩（満月）",
+      "r8": "布薩（下弦）",
+      "r14": "布薩（新月）",
+      "r15": "布薩（新月）"
+    }
+  },
+  "ko": {
+    "name": "불교력",
+    "desc": "태국 음력에 따른 불교 명절과 포살일: 마가 푸자, 베삭, 아살하 푸자, 안거.",
+    "note": "날짜는 태국 음력의 전통 계산을 따르며(태국은 매년 공식 날짜를 발표하고 2027년 이후는 계산값), 포살일은 천문학적 달의 위상과 하루 차이 날 수 있습니다. 스리랑카, 미얀마 등에서는 명절이 한 달, 불기가 1년 다를 수 있으며 유엔은 5월 보름에 베삭을 기념합니다. 2030년 7월부터 2032년 7월까지의 날짜는 추가되는 하루를 어느 해에 넣느냐에 따라 하루 빠를 수 있습니다.",
+    "ev": {
+      "maghaPuja": "마가 푸자",
+      "vesak": "베삭(위사카 푸자)",
+      "asalhaPuja": "아살하 푸자",
+      "vassaStart": "안거 시작(카오 판사)",
+      "vassaEnd": "안거 해제(옥 판사)"
+    },
+    "yearFmt": "태국 불기 {y}년",
+    "daily": {
+      "k8": "포살일(상현)",
+      "k15": "포살일(보름)",
+      "r8": "포살일(하현)",
+      "r14": "포살일(그믐)",
+      "r15": "포살일(그믐)"
+    }
+  },
+  "zh": {
+    "name": "佛教历",
+    "desc": "按泰国阴历的佛教节日和布萨日：万佛节、卫塞节、三宝节和守夏安居。",
+    "note": "日期按泰国阴历的传统算法得出（泰国每年公布正式日期，2027年以后为推算），布萨日可能与天文月相相差一天。斯里兰卡、缅甸等地的节日可能相差一个月，佛历年份可能相差一年；联合国在5月满月纪念卫塞节。2030年7月至2032年7月的日期可能因增加一天的年份不同而提前一天。",
+    "ev": {
+      "maghaPuja": "万佛节（摩伽普迦）",
+      "vesak": "卫塞节（毗舍佉普迦）",
+      "asalhaPuja": "三宝节（阿萨哈普迦）",
+      "vassaStart": "入夏安居（考攀萨）",
+      "vassaEnd": "出夏安居（奥攀萨）"
+    },
+    "yearFmt": "泰国佛历{y}年",
+    "daily": {
+      "k8": "布萨日（上弦）",
+      "k15": "布萨日（满月）",
+      "r8": "布萨日（下弦）",
+      "r14": "布萨日（新月）",
+      "r15": "布萨日（新月）"
+    }
+  },
+  "fil": {
+    "name": "Kalendaryong Budista",
+    "desc": "Mga pista at araw ng uposatha ng Budismo ayon sa lunar na kalendaryo ng Thailand: Magha Puja, Vesak, Asalha Puja at Vassa.",
+    "note": "Ang mga petsa ay mula sa tradisyonal na pagkalkula ng lunar na kalendaryo ng Thailand (taon-taong inihahayag ng Thailand ang opisyal na petsa, kaya kalkulado ang mga taon pagkaraan ng 2027); maaaring magkaiba nang isang araw ang mga araw ng uposatha sa astronomikong yugto ng buwan. Sa Sri Lanka, Myanmar at iba pang bansa, maaaring magkaiba nang isang buwan ang pista at nang isang taon ang taong Budista; ginugunita ng UN ang Vesak sa kabilugan ng buwan ng Mayo. Ang mga petsa mula Hulyo 2030 hanggang Hulyo 2032 ay maaaring mas maaga nang isang araw, depende kung anong taon idaragdag ang dagdag na araw.",
+    "ev": {
+      "maghaPuja": "Magha Puja",
+      "vesak": "Vesak (Visakha Puja)",
+      "asalhaPuja": "Asalha Puja",
+      "vassaStart": "Simula ng Vassa (Khao Phansa)",
+      "vassaEnd": "Katapusan ng Vassa (Ok Phansa)"
+    },
+    "yearFmt": "Panahong Budista {y}",
+    "daily": {
+      "k8": "Uposatha (unang kuwarto)",
+      "k15": "Uposatha (kabilugan ng buwan)",
+      "r8": "Uposatha (huling kuwarto)",
+      "r14": "Uposatha (bagong buwan)",
+      "r15": "Uposatha (bagong buwan)"
+    }
+  },
+  "th": {
+    "name": "ปฏิทินพุทธ",
+    "desc": "วันสำคัญทางพระพุทธศาสนาและวันพระตามปฏิทินจันทรคติไทย: มาฆบูชา วิสาขบูชา อาสาฬหบูชา เข้าพรรษา และออกพรรษา",
+    "note": "วันที่คำนวณตามหลักปฏิทินจันทรคติไทยแบบดั้งเดิม (ทางราชการประกาศวันที่เป็นทางการทุกปี ปีหลัง พ.ศ. 2570 เป็นการคำนวณ) วันพระอาจคลาดจากดิถีจันทร์จริงทางดาราศาสตร์หนึ่งวัน ศรีลังกา เมียนมา และประเทศอื่นอาจกำหนดวันสำคัญต่างไปหนึ่งเดือนและนับพุทธศักราชต่างไปหนึ่งปี ส่วนสหประชาชาติจัดวันวิสาขบูชาในวันเพ็ญเดือนพฤษภาคม วันที่ระหว่างเดือนกรกฎาคม พ.ศ. 2573 ถึงเดือนกรกฎาคม พ.ศ. 2575 อาจเร็วขึ้นหนึ่งวัน ขึ้นอยู่กับว่าจะเพิ่มอธิกวารในปีใด",
+    "ev": {
+      "maghaPuja": "วันมาฆบูชา",
+      "vesak": "วันวิสาขบูชา",
+      "asalhaPuja": "วันอาสาฬหบูชา",
+      "vassaStart": "วันเข้าพรรษา",
+      "vassaEnd": "วันออกพรรษา"
+    },
+    "yearFmt": "พ.ศ. {y}",
+    "daily": {
+      "k8": "วันพระ (ขึ้น 8 ค่ำ)",
+      "k15": "วันพระ (ขึ้น 15 ค่ำ)",
+      "r8": "วันพระ (แรม 8 ค่ำ)",
+      "r14": "วันพระ (แรม 14 ค่ำ)",
+      "r15": "วันพระ (แรม 15 ค่ำ)"
+    }
+  },
+  "es": {
+    "name": "Calendario budista",
+    "desc": "Fiestas budistas y días de uposatha según el calendario lunar tailandés: Magha Puja, Vesak, Asalha Puja y Vassa.",
+    "note": "Las fechas siguen el cálculo tradicional del calendario lunar tailandés (Tailandia anuncia las fechas oficiales cada año; los años posteriores a 2027 son calculados); los días de uposatha pueden diferir un día de la fase astronómica de la Luna. En Sri Lanka, Myanmar y otros países una fiesta puede diferir un mes y el año budista uno; la ONU conmemora el Vesak en la luna llena de mayo. Entre julio de 2030 y julio de 2032 las fechas pueden adelantarse un día, según el año en que se añada el día adicional.",
+    "ev": {
+      "maghaPuja": "Magha Puja",
+      "vesak": "Vesak (Visakha Puja)",
+      "asalhaPuja": "Asalha Puja",
+      "vassaStart": "Inicio del Vassa (Khao Phansa)",
+      "vassaEnd": "Fin del Vassa (Ok Phansa)"
+    },
+    "yearFmt": "Era budista {y}",
+    "daily": {
+      "k8": "Uposatha (cuarto creciente)",
+      "k15": "Uposatha (luna llena)",
+      "r8": "Uposatha (cuarto menguante)",
+      "r14": "Uposatha (luna nueva)",
+      "r15": "Uposatha (luna nueva)"
+    }
+  },
+  "pt": {
+    "name": "Calendário budista",
+    "desc": "Festas budistas e dias de uposatha segundo o calendário lunar tailandês: Magha Puja, Vesak, Asalha Puja e Vassa.",
+    "note": "As datas seguem o cálculo tradicional do calendário lunar tailandês (a Tailândia anuncia as datas oficiais a cada ano; os anos após 2027 são calculados); os dias de uposatha podem diferir um dia da fase astronômica da Lua. No Sri Lanka, em Mianmar e em outros países, uma festa pode diferir um mês e o ano budista, um ano; a ONU celebra o Vesak na lua cheia de maio. Entre julho de 2030 e julho de 2032, as datas podem cair um dia antes, conforme o ano em que o dia extra for acrescentado.",
+    "ev": {
+      "maghaPuja": "Magha Puja",
+      "vesak": "Vesak (Visakha Puja)",
+      "asalhaPuja": "Asalha Puja",
+      "vassaStart": "Início do Vassa (Khao Phansa)",
+      "vassaEnd": "Fim do Vassa (Ok Phansa)"
+    },
+    "yearFmt": "Era budista {y}",
+    "daily": {
+      "k8": "Uposatha (quarto crescente)",
+      "k15": "Uposatha (lua cheia)",
+      "r8": "Uposatha (quarto minguante)",
+      "r14": "Uposatha (lua nova)",
+      "r15": "Uposatha (lua nova)"
+    }
+  },
+  "hi": {
+    "name": "बौद्ध पंचांग",
+    "desc": "थाई चंद्र पंचांग के अनुसार बौद्ध पर्व और उपोसथ के दिन: माघ पूजा, वेसाक, आषाढ़ पूजा और वर्षावास।",
+    "note": "तिथियाँ थाई चंद्र पंचांग की पारंपरिक गणना से हैं (थाईलैंड हर साल आधिकारिक तिथियाँ घोषित करता है, 2027 के बाद के वर्ष गणना हैं); उपोसथ के दिन खगोलीय चंद्र कला से एक दिन अलग हो सकते हैं। श्रीलंका, म्यांमार और अन्य देशों में पर्व एक महीना और बौद्ध वर्ष एक साल अलग हो सकता है; संयुक्त राष्ट्र वेसाक मई की पूर्णिमा को मनाता है। जुलाई 2030 से जुलाई 2032 के बीच की तारीखें एक दिन पहले हो सकती हैं, यह इस पर निर्भर है कि अतिरिक्त दिन किस वर्ष जोड़ा जाए।",
+    "ev": {
+      "maghaPuja": "माघ पूजा",
+      "vesak": "वेसाक (विशाखा पूजा)",
+      "asalhaPuja": "आषाढ़ पूजा",
+      "vassaStart": "वर्षावास का आरंभ (खाओ फांसा)",
+      "vassaEnd": "वर्षावास का समापन (ओक फांसा)"
+    },
+    "yearFmt": "थाई बौद्ध संवत {y}",
+    "daily": {
+      "k8": "उपोसथ (शुक्ल अष्टमी)",
+      "k15": "उपोसथ (पूर्णिमा)",
+      "r8": "उपोसथ (कृष्ण अष्टमी)",
+      "r14": "उपोसथ (अमावस्या)",
+      "r15": "उपोसथ (अमावस्या)"
+    }
+  },
+  "bn": {
+    "name": "বৌদ্ধ ক্যালেন্ডার",
+    "desc": "থাই চান্দ্র ক্যালেন্ডার অনুযায়ী বৌদ্ধ পবিত্র দিন ও উপোসথ দিন: মাঘী পূর্ণিমা, বৈশাখী পূর্ণিমা (বুদ্ধ পূর্ণিমা), আষাঢ়ী পূর্ণিমা ও বর্ষাবাস।",
+    "note": "তারিখগুলো থাই চান্দ্র ক্যালেন্ডারের প্রচলিত গণনা অনুসরণ করে (থাইল্যান্ড প্রতি বছর সরকারি তারিখ ঘোষণা করে, তাই 2027-এর পরের বছরগুলো হিসাব করা); উপোসথ দিন জ্যোতির্বিজ্ঞানের চাঁদের দশা থেকে এক দিন আলাদা হতে পারে। শ্রীলঙ্কা, মিয়ানমার ও অন্যত্র কোনো উৎসব এক মাস আলাদা পড়তে পারে এবং বৌদ্ধ বছর এক বছর আলাদা হতে পারে; জাতিসংঘ মে মাসের পূর্ণিমায় বৈশাখ দিবস পালন করে। জুলাই 2030 থেকে জুলাই 2032-এর মধ্যে, অতিরিক্ত দিন কোন বছরে যোগ হয় তার ওপর নির্ভর করে, তারিখগুলো এক দিন আগে হতে পারে।",
+    "ev": {
+      "maghaPuja": "মাঘী পূর্ণিমা",
+      "vesak": "বুদ্ধ পূর্ণিমা (বৈশাখী পূর্ণিমা)",
+      "asalhaPuja": "আষাঢ়ী পূর্ণিমা",
+      "vassaStart": "বর্ষাবাসের শুরু",
+      "vassaEnd": "বর্ষাবাসের শেষ (প্রবারণা পূর্ণিমা)"
+    },
+    "yearFmt": "বুদ্ধাব্দ {y}",
+    "daily": {
+      "k8": "উপোসথ (শুক্লা অষ্টমী)",
+      "k15": "উপোসথ (পূর্ণিমা)",
+      "r8": "উপোসথ (কৃষ্ণা অষ্টমী)",
+      "r14": "উপোসথ (অমাবস্যা)",
+      "r15": "উপোসথ (অমাবস্যা)"
+    }
+  }
+}

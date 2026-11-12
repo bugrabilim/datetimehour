@@ -1,0 +1,51 @@
+Saat Tarix saatı, vidjetləri, zəngli saatı, hava proqnozunu, təqvimi və onlarla gündəlik aləti bir sadə tətbiqdə birləşdirir. Hesab yoxdur, reklam yoxdur, izləmə yoxdur.
+
+Sizə uyğun qurulur
+• İlk açılışda bir neçə qısa sual; alt panel istədiyiniz bölmələrlə qurulur
+• İstifadə etmədiyiniz bölmələr gizlənir və bildiriş göndərmir; qalan hər şey "Hamısı" bölməsində, bir toxunuşla
+
+Saat və vidjetlər
+• 21 saat modeli və 25 analoq siferblat; tam ekran, çarpayı yanı üçün zəif qırmızı gecə rejimi və ekran qoruyucusu
+• Ana ekran üçün 27 vidjet: analoq, rəqəmsal və saniyəli saat, dünya saatları, hava, Ayın fazası, gün çıxması və batması, geri sayım, foto, ilin gedişatı və daha çoxu; şəffaf və şüşə görünüş
+• Digər tətbiqlərin üstündə üzən saat, Sürətli ayarlar düymələri
+• Plitə və komplikasiyalarla Wear OS tətbiqi, Android TV üçün tam ekran saat
+
+Zəngli saat, yuxu və fokus
+• Kilid ekranında tam ekran zəngli saat; tədricən artan səs, səs kitabxanası və fonlar
+• Söndürmək üçün tapşırıqlar: riyaziyyat, silkələmə, addım, çömbəlmə, kod oxutma, əşya tapma, yaddaş və ya yazı
+• Ağıllı zəng, yatma xatırlatmalı yuxu planı, yuxu və təbiət səsləri
+• Statistikalı və tapşırıq siyahılı pomodoro, dərs vaxtı sayğacı, fokus zamanı tətbiqləri bloklama
+• Ekran sönülü olanda da səslə yönləndirən interval məşqi; məşqləri Health Connect-ə yazma
+
+Hava
+• Saatlıq və 14 günlük proqnoz, havanın keyfiyyəti və tozcuqlar, üç hava modelinin müqayisəsi
+• Havaya görə canlanan ekran: yağış, qar, bulud, külək və ildırım
+• Səhər hava xülasəsi və istəyə bağlı hava bildirişi
+
+Təqvim
+• Telefonunuzdakı təqvimlərlə bir yerdə ay, həftə, gün, siyahı və il görünüşü
+• 31 ölkənin rəsmi bayramları və xüsusi günlər
+• Hicri təqvim və tarix çevirici
+
+Alətlər
+• Adlı taymerlər, bir neçə saniyəölçən, öz fotolarınızla geri sayımlar
+• Fırlanan qlobus, xəritə və 24 saatlıq siferblatla dünya saatları; görüş planlayıcısı; saat və tarix hesablama
+• Şahmat saatı, metronom, danışan saat, səhər gündəliyi, sinif alətləri, imtahan taymeri, bürc hesablama
+
+Səma və fəsillər
+• Gün çıxması və batması, qızılı və mavi saat, Ayın çıxması və batması, Ay təqvimi
+• Xəritəli tutulmalar, planet və ulduzlarla gecə səması, səma hadisələri bildirişləri
+• Uşaqlar üçün fəsillərin izahı
+
+Namaz vaxtları və qiblə
+• 14 hesablama üsulu və Hənəfi əsri ilə hər yerdə namaz vaxtları; Türkiyənin 81 vilayəti və 973 rayonu
+• Azanlı vaxt bildirişi, vaxtında zəngli saat, namaz vaxtı telefonu səssizə keçirmə, Ramazan təqvimi
+• Qiblə kompası və yaxındakı məscidlər
+• Qurani-Kərim (ərəbcə), dualar, Əsmaül-Hüsna, zikrmatik, namaz və oruc izləmə, zəkat hesabı, təbrik kartları
+
+Məxfilik
+Məkanınız telefonunuzda qalır. Yalnız hava və yaxındakı məscidlər üçün təxmini məkan aidiyyəti xidmətə (Open-Meteo, OpenStreetMap) göndərilir, kim olduğunuz isə heç vaxt. Hər icazəni Parametrlər › İcazələr bölməsində görüb söndürə bilərsiniz.
+
+19 dildə. Android telefon və planşetləri, Wear OS və Android TV üçün.
+
+Saat Tarix Bumba Life məhsuludur. Veb: time.bumba.tr

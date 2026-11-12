@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.width
 import android.icu.text.LocaleDisplayNames
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -124,7 +125,8 @@ fun MoonScreen() {
         for (e in Eclipse.all(context).filter { it.ut > now.toEpochMilli() - 6 * 3_600_000 }.take(6)) {
             val at = Instant.ofEpochMilli(e.ut)
             AppCard {
-                Text((if (e.kind == "solar") "☀️ " else "🌕 ") + e.title, color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.Bold)
+                IconText(if (e.kind == "solar") "sun" else "moon", e.title, Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.Bold,
+                    iconColor = if (e.kind == "solar") Theme.c.gold else Theme.c.dusk, iconSize = 20.dp)
                 Text("${at.atZone(place.zone).toLocalDate().format(f)} · ${Fmt.hm(Instant.ofEpochMilli((e.ut + 30_000) / 60_000 * 60_000), place.zone)}",
                     color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
                 Text(T("nature.eclipseRegions", Eclipse.names(e.regions)), color = Theme.c.muted, fontSize = 13.sp)
@@ -142,6 +144,8 @@ fun MoonScreen() {
             }
         }
         Text(L("nature.eclipseSafety"), color = Theme.c.text, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+        // Tutulma namazı (10 Kasım 2026, Endonezya araştırması #7): yalnız Vakitler açıkken
+        if (Features.isOn(Tab.PRAYER)) Text(L("nature.eclipsePrayer"), color = Theme.c.muted, fontSize = 13.sp)
         Text(L("nature.eclipseSource"), color = Theme.c.muted, fontSize = 12.sp)
         KidsMoonCard()
         Text("NASA's Scientific Visualization Studio (CGI Moon Kit)", color = Theme.c.muted, fontSize = 11.sp)
@@ -271,7 +275,7 @@ private fun MoonScrubber(place: AppPlace, today: LocalDate, offset: Int, onChang
         // Paylaşım kartı (2. analiz #105)
         val ctx = androidx.compose.ui.platform.LocalContext.current
         androidx.compose.material3.TextButton(onClick = { Share.image(ctx, ShareCards.moon(place, day), "ay.png", L("share.card")) }) {
-            Text("📤 " + L("share.card"), color = Theme.c.accent)
+            DuoIcon("share", 18.dp, Theme.c.accent); androidx.compose.foundation.layout.Spacer(Modifier.width(6.dp)); Text(L("share.card"), color = Theme.c.accent)
         }
     }
 }

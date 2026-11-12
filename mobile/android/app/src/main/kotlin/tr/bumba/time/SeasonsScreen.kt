@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -36,7 +39,6 @@ import java.time.Instant
 import java.time.temporal.ChronoUnit
 
 private val SEASON_KEYS = listOf("spring", "summer", "autumn", "winter")
-private val SEASON_EMOJI = listOf("🌸", "☀️", "🍂", "⛄")
 private val SEASON_COLOR = listOf(Color(0xFF4CAF50), Color(0xFFFA9E1C), Color(0xFFCC6B29), Color(0xFF4087D9))
 
 /** Yılın dört mevsim anı: (0 ilkbahar, 1 yaz, 2 sonbahar, 3 kış) */
@@ -70,13 +72,13 @@ fun SeasonsScreen() {
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         Hero(current, next, now, place)
-        // Kendi çizgi simgelerimiz (2. analiz #97)
+        // İki tonlu simgeler (8 Kasım 2026)
         Info("globe", "kids.why.title", "kids.why.text", "kids.why.myth")
         Info("flashlight", "kids.light.title", "kids.light.text")
         Info("calendar", "kids.dates.title", "kids.dates.text")
         Info("beach", "kids.south.title", "kids.south.text")
         AppCard {
-            Text("💡 " + L("kids.facts.title"), color = Theme.c.text, fontSize = 19.sp, fontWeight = FontWeight.Bold)
+            InfoTitle("idea", "kids.facts.title")
             for (i in 1..5) Text("• " + L("kids.fact$i"), color = Theme.c.text, fontSize = 15.sp)
         }
         SunMoon(place, now) { moonPage = true }
@@ -99,7 +101,12 @@ fun SeasonsScreen() {
         AppCard {
             SectionTitle(L("nature.tableHeading"))
             for ((i, at) in instants(year)) {
-                Row2("${SEASON_EMOJI[i]} ${L("nature.seasons.${SEASON_KEYS[i]}")}", Fmt.shortDateTime(at, place.zone))
+                Row(Modifier.fillMaxWidth().heightIn(min = 40.dp), verticalAlignment = Alignment.CenterVertically) {
+                    DuoIcon(LineIconSets.SEASONS[i], 20.dp, seasonTint(i))
+                    Spacer(Modifier.width(8.dp))
+                    Text(L("nature.seasons.${SEASON_KEYS[i]}"), Modifier.weight(1f), color = Theme.c.text)
+                    Text(Fmt.shortDateTime(at, place.zone), color = Theme.c.text)
+                }
             }
             Text(L("nature.tableLead"), color = Theme.c.muted, fontSize = 12.sp)
         }
@@ -135,13 +142,23 @@ private fun Hero(current: Pair<Int, Instant>, next: Pair<Int, Instant>, now: Ins
     }
 }
 
+/** Kart başlığı: iki tonlu simge dairede (gök mavisi) ve başlık */
+@Composable
+private fun InfoTitle(icon: String, title: String) {
+    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+        DuoChip(icon, Theme.c.sky)
+        Text(L(title), color = Theme.c.text, fontSize = 19.sp, fontWeight = FontWeight.Bold)
+    }
+}
+
+/** Mevsim tablosundaki simgenin rengi: ilkbahar adaçayı, yaz altın, sonbahar kiremit, kış gök mavisi */
+@Composable
+private fun seasonTint(i: Int): Color = when (i) { 0 -> Theme.c.sage; 1 -> Theme.c.gold; 2 -> Theme.c.terra; else -> Theme.c.sky }
+
 @Composable
 private fun Info(icon: String, title: String, vararg texts: String) {
     AppCard {
-        androidx.compose.foundation.layout.Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            LineIcon(icon, 30.dp)
-            Text(L(title), color = Theme.c.text, fontSize = 19.sp, fontWeight = FontWeight.Bold)
-        }
+        InfoTitle(icon, title)
         texts.forEachIndexed { i, t ->
             Text(
                 L(t), color = Theme.c.text, fontSize = 15.sp,
@@ -160,7 +177,11 @@ private fun SunMoon(place: AppPlace, now: Instant, openMoon: () -> Unit) {
     val moon = Nature.moon(now.toEpochMilli())
     Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         AppCard(Modifier.weight(1f)) {
-            Text("🌅 " + L("nature.sunHeading"), color = Theme.c.text, fontWeight = FontWeight.SemiBold)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                DuoIcon("sunrise", 18.dp, Theme.c.sky)
+                Spacer(Modifier.width(6.dp))
+                Text(L("nature.sunHeading"), color = Theme.c.text, fontWeight = FontWeight.SemiBold)
+            }
             fun hm(h: Double?) = h?.let { "%02d:%02d".format((it * 60).toInt() / 60 % 24, (it * 60).toInt() % 60) } ?: "–"
             Text("↑ ${hm(t.sunrise)}   ↓ ${hm(t.maghrib)}", color = Theme.c.text)
             if (t.sunrise != null && t.maghrib != null) {
@@ -188,16 +209,20 @@ private fun SunMoon(place: AppPlace, now: Instant, openMoon: () -> Unit) {
     fun alt(a: Double) = PrayerTimes.sunAltitudeTimes(day.year, day.monthValue, day.dayOfMonth, place.lat, place.lon, off, a)
     val s0 = alt(-0.833); val c6 = alt(-6.0); val c12 = alt(-12.0); val c18 = alt(-18.0)
     fun two(a: Pair<Double?, Double?>, b: Pair<Double?, Double?>) = span(a) + " · " + span(b)
-    val rows = listOf(Triple("nature.blueAm", "🔵", span(light.blueAm)), Triple("nature.goldenAm", "🟠", span(light.goldenAm)),
-        Triple("nature.goldenPm", "🟠", span(light.goldenPm)), Triple("nature.bluePm", "🔵", span(light.bluePm)),
-        Triple("nature.tw.firstLight", "🌌", hm(c18.rise)), Triple("nature.tw.lastLight", "🌌", hm(c18.set)),
-        Triple("nature.tw.civil", "🌆", two(c6.rise to s0.rise, s0.set to c6.set)),
-        Triple("nature.tw.nautical", "⚓", two(c12.rise to c6.rise, c6.set to c12.set)),
-        Triple("nature.tw.astro", "🔭", two(c18.rise to c12.rise, c12.set to c18.set)))
+    // Satır simgeleri iki tonlu (8 Kasım 2026): mavi saat gök mavisi, altın saat altın, alacakaranlıklar akşam moru
+    val c = Theme.c
+    val rows = listOf(Triple("nature.blueAm", "sunrise" to c.sky, span(light.blueAm)), Triple("nature.goldenAm", "sunrise" to c.gold, span(light.goldenAm)),
+        Triple("nature.goldenPm", "sunset" to c.gold, span(light.goldenPm)), Triple("nature.bluePm", "sunset" to c.sky, span(light.bluePm)),
+        Triple("nature.tw.firstLight", "star" to c.dusk, hm(c18.rise)), Triple("nature.tw.lastLight", "star" to c.dusk, hm(c18.set)),
+        Triple("nature.tw.civil", "halfmoon" to c.dusk, two(c6.rise to s0.rise, s0.set to c6.set)),
+        Triple("nature.tw.nautical", "compass" to c.dusk, two(c12.rise to c6.rise, c6.set to c12.set)),
+        Triple("nature.tw.astro", "telescope" to c.dusk, two(c18.rise to c12.rise, c12.set to c18.set)))
     AppCard {
         for ((key, icon, v) in rows) {
-            Row(Modifier.fillMaxWidth()) {
-                Text("$icon ${L(key)}", Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                DuoIcon(icon.first, 18.dp, icon.second)
+                Spacer(Modifier.width(8.dp))
+                Text(L(key), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
                 Text(v, color = Theme.c.text, fontSize = 15.sp, style = Tnum)
             }
         }

@@ -11,6 +11,9 @@ struct SaatTarihApp: App {
     init() {
         // Özellik aç/kapa: ilk iş, önceki kullanıcıda hepsi açık kalsın (Features.migrate)
         Features.migrate()
+        // 12/24 (10 Kasım 2026, Hindistan araştırması #3): kayıtlı seçim yoksa telefonun ayarına göre (kayda yazılmaz)
+        let h12 = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: .current)?.contains("a") ?? false
+        UserDefaults.standard.register(defaults: ["h12": h12])
         // Başlıklarda Literata (doğal tasarım; Latin ve Kiril dillerinde)
         AppFonts.applyNavigationBar()
         AppFonts.applySegmentedControls()
@@ -39,6 +42,8 @@ struct SaatTarihApp: App {
             if phase == .active {
                 BadgeStore.shared.appOpened()
                 CloudSync.start()
+                // Hesap açıksa kayıtlar ve rozetler hesapla eşitlenir (iCloud eşitlemesi ayrıca sürer)
+                if Account.shared.signedIn { Task { await AccountSync.shared.sync() } }
                 Task {
                     await PlaceModel.shared.refresh()
                     await PrayerNotifier.askOnce()
@@ -80,6 +85,8 @@ struct SaatTarihApp: App {
         let changed = d?.string(forKey: Atmosphere.key) != atmo || d?.double(forKey: "place.lat") != p.lat
             || d?.double(forKey: "place.lon") != p.lon
         Atmosphere.publish(atmo: atmo, lat: p.lat, lon: p.lon)
+        PrayerMethod.publish()
+        Hijri.publish(zone: p.zone)
         if changed { WidgetCenter.shared.reloadAllTimelines() }
     }
 }
@@ -134,8 +141,12 @@ enum AppTab: Int, CaseIterable {
 enum ToolRoute: Hashable {
     case alarm, timer, stopwatch, pomodoro, study, wakeGame, sleep, journal, breath, planner, datecalc, settings, about, badges
     // Tümü'nden açılan sayfalar (Seçenek B, 2. analiz #195): ibadet, Ay, takvim yaprağı ve ayar sayfaları
-    case qibla, quran, duas, zikir, track, zakat, reldays, greet, esma, hadith, guide, leaf, moon, sky, sunpath
+    case qibla, quran, duas, zikir, track, zakat, reldays, greet, esma, hadith, guide, leaf, moon, sky, sunpath, photo
+    // Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9); kutlama kartları (nötr vesileler)
+    case panchang, greetN
     case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
+    // Hesap (üyelik aşama 1, 10 Kasım 2026)
+    case account
     // Sitedeki dokuz araç (4 Kasım 2026)
     case chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom
     case sura(Int)
@@ -176,6 +187,9 @@ final class Router {
             if Self.queryInt(url, "start") == 1 { QuickStart.focus() }
             tab = .tools; toolsPath = [.pomodoro]
         case "stopwatch": tab = .tools; toolsPath = [.stopwatch]
+        // Fotoğraf ışığı bildirimi (9 Kasım 2026)
+        case "photo": tab = .tools; toolsPath = [.photo]
+        case "panchang": tab = .tools; toolsPath = [.panchang]
         case "alarm": tab = .tools; toolsPath = [.alarm]
         case "prayer": tab = .prayer
         // Kilit ekranındaki ve Dynamic Island'daki hava etkinliği
@@ -208,7 +222,7 @@ final class Router {
             tab = .calendar
         case .upcoming:
             let today = CalendarDay(Date(), timeZone: PrayerSchedule.zone)
-            calendarDay = CalendarData.shared.upcoming(from: today, limit: 1).first?.day ?? today
+            calendarDay = calUpcoming(from: today, limit: 1).first?.day ?? today
             tab = .calendar
         case .next, .prayers:
             tab = .prayer
@@ -417,10 +431,13 @@ private struct Sidebar: View {
         List {
             Section {
                 ForEach([AppTab.clock] + Features.barOptions.filter(on.contains), id: \.self) { t in
-                    row(t.title, t.icon, selected: router.tab == t) { router.toolsPath = []; router.tab = t }
+                    row(t.title, LineIconMap.tab(t), LineIconMap.tabColor(t), selected: router.tab == t) {
+                        router.toolsPath = []; router.tab = t
+                    }
                 }
                 if !on.isEmpty {
-                    row(L("tab.all"), AppTab.tools.icon, selected: router.tab == .tools && router.toolsPath.isEmpty) {
+                    row(L("tab.all"), LineIconMap.tab(.tools), LineIconMap.tabColor(.tools),
+                        selected: router.tab == .tools && router.toolsPath.isEmpty) {
                         router.toolsPath = []; router.tab = .tools
                     }
                 }
@@ -436,7 +453,7 @@ private struct Sidebar: View {
                 }
             }
             Section {
-                row(L("settings.title"), "gearshape", selected: router.tab == .tools && router.toolsPath.first == .settings) {
+                row(L("settings.title"), "gear", Theme.dusk, selected: router.tab == .tools && router.toolsPath.first == .settings) {
                     router.tab = .tools; router.toolsPath = [.settings]
                 }
             }
@@ -446,16 +463,17 @@ private struct Sidebar: View {
     }
 
     private func entryRow(_ e: AllEntry) -> some View {
-        row(e.title, e.icon, selected: router.tab == .tools && router.toolsPath.first == e.route) {
+        row(e.title, LineIconMap.entry(e.id) ?? "grid", e.cat.color, selected: router.tab == .tools && router.toolsPath.first == e.route) {
             AllPrefs.used(e.id)
             router.tab = .tools
             if let r = e.route { router.toolsPath = [r] }
         }
     }
 
-    private func row(_ title: String, _ icon: String, selected: Bool, action: @escaping () -> Void) -> some View {
+    /// Kenar çubuğu satırı: iki tonlu simge (22 pt, daire yok; DUOTONE.md), konu renginde
+    private func row(_ title: String, _ icon: String, _ color: Color, selected: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Label { Text(title).foregroundStyle(Theme.text) } icon: { Image(systemName: icon).foregroundStyle(Theme.accent) }
+            Label { Text(title).foregroundStyle(Theme.text) } icon: { DuoIcon(name: icon, size: 22, color: color) }
         }
         .listRowBackground(selected ? Theme.accentSoft : Color.clear)
         .accessibilityAddTraits(selected ? .isSelected : [])
@@ -496,9 +514,8 @@ private struct TabBar: View {
                 } label: {
                     VStack(spacing: 3) {
                         // Seçili sekmede simgenin arkasında ana rengin açık tonunda hap (sitedeki .nav gibi; 2. analiz #95)
-                        // 3D simgeler (4 Kasım 2026, sahibin seçimi); seçili olmayan sekme gri ve soluk
-                        LineIcon(name: LineIconMap.tab(tab), size: 26, c1: on ? Theme.accent : Theme.muted,
-                                 c2: on ? Theme.accent : Theme.muted, dim: !on)
+                        // İki tonlu simgeler (8 Kasım 2026, sahibin seçimi "B Karma"): seçili sekme ana renkte, diğerleri soluk
+                        DuoIcon(name: LineIconMap.tab(tab), size: 24, color: on ? Theme.accent : Theme.muted)
                             .frame(width: 56, height: 30)
                             .background(Capsule().fill(on ? Theme.accentSoft : Color.clear))
                         Text(tab.barTitle)
@@ -527,7 +544,8 @@ enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
          wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet,
-         qr, colors, wall, study, wakegame, language, dials, chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom, permissions
+         qr, colors, wall, study, wakegame, language, dials, chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom, permissions,
+         photo, account
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -566,6 +584,8 @@ enum DebugScreen: String, Identifiable {
         case .exam: ExamTimerView()
         case .classroom: ClassroomView()
         case .permissions: PermissionsView()
+        case .account: AccountView()
+        case .photo: PhotoLightView()
         case .planner: MeetingPlannerView()
         case .world: WorldClockView()
         case .weather: WeatherView()

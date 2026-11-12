@@ -45,6 +45,8 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.material.icons.filled.TextDecrease
 import androidx.compose.material.icons.filled.TextIncrease
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -119,6 +121,13 @@ object Quran {
 
     /** Diyanet'in meal sitesinde ayet */
     fun diyanetUrl(sura: Int, aya: Int) = "https://kuran.diyanet.gov.tr/kuran?sure=$sura&ayet=$aya&mode=kuran-meal"
+
+    /** Arayüz dilinde resmî meal sitesi (10 Kasım 2026): Türkçe ve Azerice Diyanet, Endonezce Kemenag; diğer dillerde yok */
+    val mealSite: String? get() = when (Strings.lang) { "tr", "az" -> "diyanet"; "id" -> "kemenag"; else -> null }
+
+    /** Meal sitesinde ayet aralığı (Kemenag: quran.kemenag.go.id/quran/per-ayat/surah/S?from=A&to=B) */
+    fun mealUrl(sura: Int, aya: Int, to: Int = aya) =
+        if (mealSite == "kemenag") "https://quran.kemenag.go.id/quran/per-ayat/surah/$sura?from=$aya&to=$to" else diyanetUrl(sura, aya)
 
     /** Kaldığım yer "sure:ayet" */
     var bookmark: Pair<Int, Int>?
@@ -205,6 +214,10 @@ private fun QuranCredits() {
         Text(L("quran.credit"), color = Theme.c.muted, fontSize = 12.sp)
         Text("tanzil.net", Modifier.clickable { openUrl(context, "https://tanzil.net") }, color = Theme.c.accent, fontSize = 12.sp)
         Text("kuran.diyanet.gov.tr", Modifier.clickable { openUrl(context, "https://kuran.diyanet.gov.tr") }, color = Theme.c.accent, fontSize = 12.sp)
+        if (Quran.mealSite == "kemenag") {
+            Text(L("quran.creditKemenag"), color = Theme.c.muted, fontSize = 12.sp)
+            Text("quran.kemenag.go.id", Modifier.clickable { openUrl(context, "https://quran.kemenag.go.id") }, color = Theme.c.accent, fontSize = 12.sp)
+        }
     }
 }
 
@@ -237,9 +250,9 @@ fun SuraScreen(sura: Int, startAya: Int, onBack: () -> Unit) {
                     SoftSwitch(showEn, { showEn = it; Prefs.store.edit().putBoolean("quran.en", it).apply() },
                         colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
-                if (Strings.lang == "tr" || Strings.lang == "az") {
-                    TextButton(onClick = { openUrl(context, Quran.diyanetUrl(sura, 1)) }) {
-                        Text(L("quran.diyanet"), color = Theme.c.accent)
+                if (Quran.mealSite != null) {
+                    TextButton(onClick = { openUrl(context, Quran.mealUrl(sura, 1, s.ayas)) }) {
+                        Text(L(if (Quran.mealSite == "kemenag") "quran.kemenag" else "quran.diyanet"), color = Theme.c.accent)
                         Icon(Icons.AutoMirrored.Filled.OpenInNew, null, tint = Theme.c.accent, modifier = Modifier.size(16.dp))
                     }
                 }
@@ -258,8 +271,8 @@ fun SuraScreen(sura: Int, startAya: Int, onBack: () -> Unit) {
                         Ltr { Text("$sura:$a", color = Theme.c.accent, fontSize = 12.sp, fontWeight = FontWeight.SemiBold, style = Tnum) }
                         if (marked) Icon(Icons.Filled.Bookmark, L("quran.bookmark"), tint = Theme.c.accent, modifier = Modifier.padding(start = 6.dp).size(14.dp))
                         Spacer(Modifier.weight(1f))
-                        if (Strings.lang == "tr" || Strings.lang == "az") {
-                            Text(L("quran.meal"), Modifier.clickable { openUrl(context, Quran.diyanetUrl(sura, a)) }, color = Theme.c.accent, fontSize = 12.sp)
+                        if (Quran.mealSite != null) {
+                            Text(L("quran.meal"), Modifier.clickable { openUrl(context, Quran.mealUrl(sura, a)) }, color = Theme.c.accent, fontSize = 12.sp)
                         }
                     }
                     RtlText(Quran.ar(sura, a), size, color = pal.ink)
@@ -391,10 +404,10 @@ fun DuasScreen(onBack: () -> Unit) {
                         }
                     }
                 }
-                if (d.refs.isNotEmpty() && (Strings.lang == "tr" || Strings.lang == "az")) {
+                if (d.refs.isNotEmpty() && Quran.mealSite != null) {
                     for (r in d.refs) {
                         val (s, a) = r.split(":").map { it.toInt() }
-                        Text(T("dua.diyanetRef", r), Modifier.clickable { openUrl(context, Quran.diyanetUrl(s, a)) }, color = Theme.c.accent, fontSize = 13.sp)
+                        Text(T(if (Quran.mealSite == "kemenag") "dua.kemenagRef" else "dua.diyanetRef", r), Modifier.clickable { openUrl(context, Quran.mealUrl(s, a)) }, color = Theme.c.accent, fontSize = 13.sp)
                     }
                 }
             }
@@ -741,16 +754,20 @@ fun TrackerScreen(onBack: () -> Unit) {
 /** Zekât hesaplama: nisab 80,18 g altın (Diyanet), oran 1/40; altın fiyatını kullanıcı girer (dış servis yok) */
 object Zakat {
     const val NISAB_GRAMS = 80.18
+    const val STD = "zakat.std"
+    /** Hesap esası (10 Kasım 2026): "diyanet" (nisab 80,18 g) ya da "baznas" (Endonezya, 85 g); seçilmediyse yer Endonezya'daysa BAZNAS */
+    val std: String get() = Prefs.store.getString(STD, null) ?: if (Hijri.regionIsIndonesia()) "baznas" else "diyanet"
+    fun grams(std: String): Double = if (std == "baznas") (Fitre.indonesia?.nisab ?: 85).toDouble() else NISAB_GRAMS
     val FIELDS = listOf("cash", "goldGrams", "goldPrice", "silverValue", "foreign", "trade", "receivable", "debt")
 
     data class Result(val net: Double, val nisab: Double?, val due: Boolean, val zakat: Double)
 
-    fun calc(v: Map<String, Double>): Result {
+    fun calc(v: Map<String, Double>, grams: Double = NISAB_GRAMS): Result {
         fun g(k: String) = v[k] ?: 0.0
         val goldPrice = g("goldPrice")
         val assets = g("cash") + g("goldGrams") * goldPrice + g("silverValue") + g("foreign") + g("trade") + g("receivable")
         val net = maxOf(0.0, assets - g("debt"))
-        val nisab = if (goldPrice > 0) NISAB_GRAMS * goldPrice else null
+        val nisab = if (goldPrice > 0) grams * goldPrice else null
         val due = nisab != null && net >= nisab
         return Result(net, nisab, due, if (due) net / 40 else 0.0)
     }
@@ -772,10 +789,20 @@ fun ZakatScreen(onBack: () -> Unit) {
     ScreenshotWarning()
     var values by remember { mutableStateOf(Zakat.load()) }
     val texts = remember { mutableStateOf(values.mapValues { fmtNum(it.value) }) }
-    val r = Zakat.calc(values)
+    var std by remember { mutableStateOf(Zakat.std) }
+    val grams = Zakat.grams(std)
+    val r = Zakat.calc(values, grams)
     Column(Modifier.fillMaxSize()) {
         SubBar(L("zakat.title"), onBack = onBack)
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            // Hesap esası: Diyanet ya da BAZNAS (Endonezya)
+            if (Fitre.indonesia != null) AppCard {
+                SectionTitle(L("zakat.stdLabel"))
+                for (s in listOf("diyanet", "baznas")) Row(Modifier.fillMaxWidth().clickable { std = s; Prefs.store.edit().putString(Zakat.STD, s).apply() }, verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(std == s, { std = s; Prefs.store.edit().putString(Zakat.STD, s).apply() }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
+                    Text(L(if (s == "baznas") "zakat.stdBaznas" else "zakat.stdDiyanet"), color = Theme.c.text, fontSize = 15.sp)
+                }
+            }
             Text(L("zakat.intro"), color = Theme.c.muted, fontSize = 13.sp)
             for (f in Zakat.FIELDS) {
                 OutlinedTextField(texts.value[f] ?: "", { s ->
@@ -789,7 +816,7 @@ fun ZakatScreen(onBack: () -> Unit) {
             }
             AppCard {
                 Row2(L("zakat.net"), fmtMoney(r.net), bold = true)
-                Row2(T("zakat.nisab", fmtNum(Zakat.NISAB_GRAMS)), r.nisab?.let { fmtMoney(it) } ?: "–")
+                Row2(T("zakat.nisab", fmtNum(grams)), r.nisab?.let { fmtMoney(it) } ?: "–")
                 Text(
                     when {
                         r.nisab == null -> L("zakat.needGold")
@@ -800,9 +827,25 @@ fun ZakatScreen(onBack: () -> Unit) {
                 )
                 if (r.due) Row2(L("zakat.amount"), fmtMoney(r.zakat), bold = true, color = Theme.c.accent)
             }
-            Text(L("zakat.note"), color = Theme.c.muted, fontSize = 12.sp)
+            Text(L(if (std == "baznas") "zakat.noteBaznas" else "zakat.note"), color = Theme.c.muted, fontSize = 12.sp)
+            // Zekât fitrah ve fidye (BAZNAS, Endonezya; 10 Kasım 2026)
+            if (std == "baznas") Fitre.indonesia?.let { i ->
+                var people by remember { mutableStateOf(1) }
+                AppCard {
+                    SectionTitle(L("zakat.fitrahHeading"))
+                    Text(T("zakat.fitrahText", i.year, Fitre.rupiah(i.fitrah.toLong())), color = Theme.c.text, fontSize = 14.sp)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(L("zakat.fitrePeople"), Modifier.weight(1f), color = Theme.c.text, fontSize = 14.sp)
+                        IconButton(onClick = { people = (people - 1).coerceIn(1, 99) }) { Icon(Icons.Filled.Remove, null, tint = Theme.c.accent) }
+                        Text(people.toString(), color = Theme.c.text, fontSize = 17.sp, style = Tnum)
+                        IconButton(onClick = { people = (people + 1).coerceIn(1, 99) }) { Icon(Icons.Filled.Add, null, tint = Theme.c.accent) }
+                    }
+                    Row2(L("zakat.fitreTotal"), Fitre.rupiah(i.fitrah.toLong() * people), bold = true, color = Theme.c.accent)
+                    Text(T("zakat.fidyahText", i.year, Fitre.rupiah(i.fidyah.toLong())), color = Theme.c.muted, fontSize = 12.sp)
+                }
+            }
             // Fitre (rakip analizi #14): Diyanet'in açıkladığı kişi başı tutar (assets/fitre.json)
-            Fitre.info?.let { f ->
+            if (std == "diyanet") Fitre.info?.let { f ->
                 var people by remember { mutableStateOf(1) }
                 AppCard {
                     SectionTitle(L("zakat.fitreHeading"))
@@ -824,7 +867,11 @@ fun ZakatScreen(onBack: () -> Unit) {
 /** Fitre tutarı (gen-strings, src/data/fitre.json): en son açıklanan yıl */
 object Fitre {
     data class Info(val year: Int, val amount: Int, val date: java.time.LocalDate)
+    /** Endonezya (BAZNAS): yıl, kişi başı fitrah ve günlük fidye (rupiah), nisab gramı */
+    data class Indonesia(val year: Int, val fitrah: Int, val fidyah: Int, val nisab: Int)
     var info: Info? = null
+        private set
+    var indonesia: Indonesia? = null
         private set
 
     fun load(json: String) {
@@ -832,7 +879,14 @@ object Fitre {
             val o = org.json.JSONObject(json)
             Info(o.getInt("year"), o.getInt("amount"), java.time.LocalDate.parse(o.getString("date")))
         } catch (_: Exception) { null }
+        indonesia = try {
+            val i = org.json.JSONObject(json).getJSONObject("id")
+            Indonesia(i.getInt("year"), i.getInt("fitrah"), i.getInt("fidyah"), i.getInt("nisab"))
+        } catch (_: Exception) { null }
     }
+
+    /** "Rp 50.000" (Endonezya yazımı) */
+    fun rupiah(n: Long): String = "Rp " + java.text.NumberFormat.getIntegerInstance(java.util.Locale.forLanguageTag("id-ID")).format(n)
 }
 
 private fun fmtNum(x: Double) = if (x == Math.floor(x)) x.toLong().toString() else x.toString().replace(".", Strings.decimalPoint)

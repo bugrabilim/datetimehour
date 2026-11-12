@@ -129,7 +129,7 @@ fun FocusScheduleSection(onChange: () -> Unit) {
         TextButton(onClick = { pick(from) { from = it } }) { Text(L("focus.schedFrom") + "  " + "%02d:%02d".format(from / 60, from % 60), color = Theme.c.accent) }
         TextButton(onClick = { pick(to) { to = it } }) { Text(L("focus.schedTo") + "  " + "%02d:%02d".format(to / 60, to % 60), color = Theme.c.accent) }
     }
-    if (FocusScheduleStore.active()) Text("🔒 " + L("focus.schedOn"), color = Theme.c.accent, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+    if (FocusScheduleStore.active()) IconText("privacy", L("focus.schedOn"), Theme.c.accent, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
 }
 
 // Nefes egzersizi (2. analiz #28)
@@ -248,7 +248,7 @@ fun FlipFocusCard(onChange: () -> Unit) {
             Text(L("flip.toggle"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
             SoftSwitch(on, { on = it; Prefs.store.edit().putBoolean("pomo.flip", it).apply() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
         }
-        if (on && !running) Text(if (paused) "⚠️ " + L("flip.paused") else "📱 " + L("flip.waiting"),
+        if (on && !running) Text(if (paused) L("flip.paused") else L("flip.waiting"),
             color = if (paused) androidx.compose.ui.graphics.Color(0xFFE65100) else Theme.c.accent, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
         Text(L("flip.note"), color = Theme.c.muted, fontSize = 12.sp)
     }

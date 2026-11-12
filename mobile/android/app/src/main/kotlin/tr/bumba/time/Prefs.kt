@@ -42,7 +42,8 @@ object Prefs {
         Features.load(sp) // ilk iş: önceki kullanıcı mı diye dosyanın boş olup olmadığına bakar
         accent = sp.getString("accent", AccentPalette.DEFAULT_ID)!!
         appearance = sp.getString("appearance", "system")!!
-        h12 = sp.getBoolean("h12", false)
+        // 12/24 (10 Kasım 2026, Hindistan araştırması #3): kayıtlı seçim yoksa telefonun ayarına göre
+        h12 = sp.getBoolean("h12", !android.text.format.DateFormat.is24HourFormat(c))
         keepAwake = sp.getBoolean("keepAwake", true)
         secD = sp.getBoolean("secD", true)
         secA = sp.getBoolean("secA", true) // varsayılan: analogda saniye açık (30 Ekim 2026)
@@ -54,6 +55,7 @@ object Prefs {
             sp.edit().putInt("clockModel", clockModel).putInt("clockModelOrder", 2).apply()
         }
         province = sp.getString("province", "istanbul")!!
+        provinceChosen = sp.contains("province")
         savedPlaces = sp.getString("places.saved", "")!!.split("|").filter { it.isNotEmpty() }
         clockFont = sp.getString("clockFont", "rounded")!!
         fsPhoto = sp.getLong("fsPhoto", 0L)
@@ -116,7 +118,10 @@ object Prefs {
     fun saveSecD(v: Boolean) { secD = v; sp.edit().putBoolean("secD", v).apply() }
     fun saveSecA(v: Boolean) { secA = v; sp.edit().putBoolean("secA", v).apply() }
     fun saveClockModel(v: Int) { clockModel = v; sp.edit().putInt("clockModel", v).apply() }
-    fun saveProvince(v: String) { province = v; sp.edit().putString("province", v).apply() }
+    fun saveProvince(v: String) { province = v; provinceChosen = true; sp.edit().putString("province", v).apply() }
+    /** Kişi bir yer seçti mi; seçmediyse yer telefonun saat diliminden (DefaultPlace) */
+    var provinceChosen by mutableStateOf(false)
+        private set
 
     /** Kayıtlı yerler (il ya da ilçe kimlikleri, en çok 8; "|" ile ayrılır) */
     var savedPlaces by mutableStateOf(emptyList<String>())

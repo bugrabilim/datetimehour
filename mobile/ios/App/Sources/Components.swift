@@ -53,28 +53,33 @@ struct EmptyState: View {
     }
 }
 
-/// Liste satırlarındaki renkli simge kutusu (#99; doğal tasarım madde 4, 4 Kasım 2026): "çakıl taşı" biçimi (köşeler
-/// hafif farklı yuvarlak), zemin simge renginin açık tonu, içinde 3D simge (4 Kasım 2026; karşılığı yoksa SF Symbol).
-/// `line` verilirse o simge çizilir.
+/// Liste satırlarındaki renkli simge kutusu (#99; iki tonlu simgeler 8 Kasım 2026, DUOTONE.md): daire (DuoChip), zemin
+/// simge renginin açık tonu, içinde iki tonlu simge. Ad `line` ile açıkça verilir; verilmezse SF Symbol adından eşlenir
+/// (LineIconMap.of), karşılığı yoksa SF Symbol çizilir. Ölçü: satır 32/19, kare 42/25.
 struct IconBox: View {
     let icon: String
     var tint: Color = Theme.accent
     var line: String?
+    var box: CGFloat = 32
+    var glyph: CGFloat = 19
     @Environment(\.colorScheme) private var scheme
 
     var body: some View {
-        Group {
-            if let name = line ?? LineIconMap.of(icon) {
-                LineIcon(name: name, size: 25, c1: tint, c2: tint.opacity(0.72))
-            } else {
-                Image(systemName: icon)
-                    .font(.system(size: 17, weight: .medium))
-                    .foregroundStyle(tint)
-            }
+        if let name = line ?? LineIconMap.of(icon) {
+            DuoChip(name: name, color: tint, box: box, glyph: glyph)
+        } else {
+            Image(systemName: icon)
+                .font(.system(size: glyph * 0.85, weight: .medium))
+                .foregroundStyle(tint)
+                .frame(width: box, height: box)
+                .background {
+                    ZStack {
+                        Circle().fill(Theme.surface)
+                        Circle().fill(tint.opacity(scheme == .dark ? 0.22 : 0.14))
+                    }
+                }
+                .accessibilityHidden(true)
         }
-        .frame(width: 36, height: 36)
-        .background(PebbleShape().fill(tint.opacity(scheme == .dark ? 0.20 : 0.13)))
-        .accessibilityHidden(true)
     }
 }
 
@@ -87,20 +92,30 @@ struct PebbleShape: Shape {
     }
 }
 
-/// Simge kutulu satır etiketi: `Label` yerine (Form/List satırlarında aynı hizada)
+/// Simge kutulu satır etiketi: `Label` yerine (Form/List satırlarında aynı hizada). `duo:` ile iki tonlu simgenin adı ve
+/// konu rengi açıkça verilir (DUOTONE.md); `icon:` SF Symbol adıdır (eşleme LineIconMap.of).
 struct BoxLabel: View {
     let title: String
     let icon: String
     var tint: Color = Theme.accent
+    var line: String?
 
     init(_ title: String, icon: String, tint: Color = Theme.accent) {
         self.title = title
         self.icon = icon
         self.tint = tint
+        self.line = nil
+    }
+
+    init(_ title: String, duo: String, tint: Color) {
+        self.title = title
+        self.icon = "circle"
+        self.tint = tint
+        self.line = duo
     }
 
     var body: some View {
-        Label { Text(title).foregroundStyle(Theme.text) } icon: { IconBox(icon: icon, tint: tint) }
+        Label { Text(title).foregroundStyle(Theme.text) } icon: { IconBox(icon: icon, tint: tint, line: line) }
     }
 }
 
@@ -181,7 +196,7 @@ struct HowItWorks: View {
     var body: some View {
         Button { open = true } label: {
             HStack(spacing: 6) {
-                LineIcon(name: "info", size: 18, c1: Theme.accent, c2: Theme.accent)
+                DuoIcon(name: "info", size: 18, color: Theme.accent)
                 Text(L("common.how")).font(.subheadline.weight(.medium)).foregroundStyle(Theme.accent)
             }
             .padding(.vertical, 4)

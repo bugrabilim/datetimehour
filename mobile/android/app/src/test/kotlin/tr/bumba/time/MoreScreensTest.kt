@@ -343,6 +343,52 @@ class MoreScreensTest {
         page("tr-gunes-yolu", "Güneş yolu") { SunPathScreen() }
         shot("tr-cocuklar-ay") { androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.padding(16.dp)) { KidsMoonCard() } }
     }
+    /** İstanbul için örnek bulut tahmini (saatlik, 7 gün): günlere göre farklı sonuçlar çıksın diye değişen alçak bulut */
+    private fun seedPhotoSky() {
+        val place = AppPlace.current()
+        val start = place.today().atStartOfDay(place.zone).toInstant().toEpochMilli()
+        val lowAm = listOf(10.0, 55.0, 80.0, 5.0, 30.0, 65.0, 20.0)
+        val lowPm = listOf(15.0, 5.0, 45.0, 90.0, 0.0, 25.0, 50.0)
+        val samples = (0 until 7 * 24).map { h ->
+            val d = h / 24
+            val pm = h % 24 >= 12
+            tr.bumba.time.core.PhotoLight.Sample(start + h * 3_600_000L, if (pm) lowPm[d] else lowAm[d],
+                if (d == 4) 0.0 else 45.0, if (d % 2 == 0) 60.0 else 10.0, if (d == 5 && pm) 1.2 else 0.0)
+        }
+        PhotoSky.seed(place.lat, place.lon, samples)
+    }
+
+    /** Fotoğraf ışığı (9 Kasım 2026): örnek bulut tahminiyle bütün sayfa (uzun ekran), Arapça koyu ve "Nasıl çalışır?" */
+    @Test fun photoLight() {
+        Prefs.saveProvince("istanbul")
+        PhotoPrefs.used = true
+        seedPhotoSky()
+        shot("tr-fotograf-isigi", "tr-h2000dp") { SubBar(L("photoApp.title"), onBack = {}); PhotoLightScreen() }
+        shot("ar-fotograf-isigi-koyu", "ar-h2000dp", dark = true) { SubBar(L("photoApp.title"), onBack = {}); PhotoLightScreen() }
+        shot("en-fotograf-isigi-nasil", "en") { HowItWorksContent(photoHowSections()) }
+        // Kutup bölgesi: Tromsø 21 Aralık kutup gecesi; altın saat başlıyor ama bitmiyor ("10:29 – —")
+        val p = PhotoDay(java.time.LocalDate.of(2026, 12, 21), AppPlace("tromso", "Tromsø", 69.65, 18.96, java.time.ZoneId.of("Europe/Oslo")))
+        assertEquals(-1, p.day.polar)
+        assertTrue(p.span(p.day.light.goldenAm).endsWith(" – —"))
+        PhotoPrefs.used = false
+    }
+
+    /** Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9): dünya yeri (Mumbai) seçili, Hintçe */
+    @Test fun panchang() {
+        val mumbai = WorldPlace.search("Mumbai").first()
+        assertEquals("Asia/Kolkata", mumbai.zone.id)
+        Prefs.saveProvince(mumbai.id)
+        assertEquals("Asia/Kolkata", AppPlace.current().zone.id)
+        shot("hi-panchang", "hi-h2000dp") { SubBar(L("panchang.h1"), onBack = {}); PanchangScreen() }
+        shot("en-panchang-nasil", "en") { HowItWorksContent(panchangHowSections()) }
+        // Delhi 8 Kasım 2026: Rahu Kaal Drik Panchang'la aynı (16:10–17:31)
+        val d = PanchangDay(java.time.LocalDate.of(2026, 11, 8), AppPlace("w:28.61:77.21", "Delhi", 28.61, 77.21, java.time.ZoneId.of("Asia/Kolkata")))
+        val fmt = java.time.format.DateTimeFormatter.ofPattern("HH:mm").withZone(d.place.zone)
+        assertEquals("16:10", fmt.format(d.at(d.kaal!!.rahu.first)))
+        assertEquals("17:31", fmt.format(d.at(d.kaal.rahu.second)))
+        Prefs.saveProvince("istanbul")
+    }
+
     /** Kıble (Robolectric'te pusula sensörü yok: kuzey yukarıda sabit kadran) ve örnek verili yakındaki camiler */
     /** Android TV (#95): televizyon ekranı (yatay, 1080p oranı) */
     @Test fun tv() {
@@ -410,6 +456,12 @@ class MoreScreensTest {
     @Test fun worshipExtras() {
         shot("tr-dini-gunler") { ReligiousDaysScreen {} }
         shot("tr-tebrik") { GreetingScreen {} }
+        // Kutlama kartları (10 Kasım 2026): yalnız nötr vesileler; sözde dua ya da "dualarımla" kapanışı yok
+        shot("en-kutlama-karti", "en") { GreetingScreen(neutral = true) {} }
+        for (occ in Greetings.NEUTRAL) for (seed in 0L..200L) {
+            val m = Greetings.message(occ, seed)
+            assertTrue(m, (1..10).none { m.contains(L("greet.bless.$it")) } && !m.contains(L("greet.close.2")))
+        }
         // Her vesilenin her deseni (4 Kasım 2026): kartın kendisi, söz sabit tohumla
         val day = LocalDate.of(2026, 3, 20)
         java.io.File(dir).mkdirs()
@@ -442,6 +494,11 @@ class MoreScreensTest {
         shot("tr-vakitler-kadran") { PrayerScreen() }
         Prefs.store.edit().remove("prayer.visual").remove("prayer.words").commit()
     }
+    /** İki tonlu simgeler (8 Kasım 2026): Vakitler'in altındaki dört ibadet karesi uzun ekranda */
+    @Test fun worshipTiles() {
+        shot("tr-vakitler-ibadet", "tr-h2400dp") { PrayerScreen() }
+        shot("tr-vakitler-ibadet-koyu", "tr-h2400dp", dark = true) { PrayerScreen() }
+    }
     @Test fun prayerExtras() {
         Prefs.store.edit().putString(PrayerMethod.METHOD, "mwl").putBoolean(PrayerMethod.HANAFI, true)
             .putInt(PrayerSilent.MINUTES, 30).putString(PrayerAlarms.KEY, "fajr,maghrib").commit()
@@ -463,6 +520,8 @@ class MoreScreensTest {
         shot("ko-namaz-rehberi", "ko") { PrayerGuideScreen({}) {} }
         shot("fil-hadis", "b+fil") { HadithScreen {} }
         shot("hi-esma", "hi") { EsmaScreen {} }
+        shot("bn-esma", "bn") { EsmaScreen {} }
+        shot("bn-dualar", "bn") { DuasScreen {} }
         shot("es-hadis", "es") { HadithScreen {} }
         shot("pt-namaz-rehberi", "pt") { PrayerGuideScreen({}) {} }
         shot("tr-hadis") { HadithScreen {} }
@@ -572,14 +631,20 @@ class MoreScreensTest {
         shot("ar-atmosfer-gun-batimi", qualifiers = "ar", atmo = "sunset") { PrayerScreen() }
         page("tr-dil", "Dil") { LanguageScreen() }
         shot("tr-kurulum") { OnboardingScreen(0) {} }
+        shot("de-kurulum", qualifiers = "de") { OnboardingScreen(0) {} }
+        shot("ar-kurulum", qualifiers = "ar") { OnboardingScreen(0) {} }
         // Sorulu akış (5 Kasım 2026): 0 hoş geldiniz, 1 güven + konum ve bildirim, 2–6 sorular, 7 özet, 8 "başka neler var",
         // 9–10 ipuçları, 11–16 özellik turu, 17 "Diğer her şey Tümü'nde"
         shot("tr-kurulum-guven") { OnboardingScreen(1) {} }
-        shot("ja-kurulum-guven", qualifiers = "ja") { OnboardingScreen(1) {} }
         val before = Features.enabled
+        // Vakitler'i sormayan dillerde (9 Kasım 2026): 4 soru, 5 tur, namaz geçmez (2–5 sorular, 6 özet, 10–14 tur, 15 son)
+        Features.save(setOf(Tab.TOOLS))
+        shot("en-kurulum", qualifiers = "en") { OnboardingScreen(0) {} }
+        shot("ja-kurulum-guven", qualifiers = "ja") { OnboardingScreen(1) {} }
+        shot("en-kurulum-soru-hava", qualifiers = "en") { OnboardingScreen(2) {} }
+        shot("en-kurulum-tur-widget", qualifiers = "en") { OnboardingScreen(14) {} }
         Features.save(setOf(Tab.PRAYER, Tab.WEATHER, Tab.CALENDAR, Tab.TOOLS))
         shot("tr-kurulum-soru") { OnboardingScreen(2) {} }
-        shot("en-kurulum-soru-hava", qualifiers = "en") { OnboardingScreen(3) {} }
         shot("ar-kurulum-soru", qualifiers = "ar") { OnboardingScreen(6) {} }
         shot("tr-kurulum-ozet") { OnboardingScreen(7) {} }
         shot("tr-kurulum-daha") { OnboardingScreen(8) {} }
@@ -587,7 +652,7 @@ class MoreScreensTest {
         shot("tr-kurulum-tam-ekran", dark = true) { OnboardingScreen(10) {} }
         shot("tr-kurulum-tur-alarm") { OnboardingScreen(11) {} }
         shot("tr-kurulum-tur-vakit") { OnboardingScreen(12) {} }
-        shot("en-kurulum-tur-hava", qualifiers = "en") { OnboardingScreen(13) {} }
+        shot("en-kurulum-tur-hava", qualifiers = "en") { OnboardingScreen(11) {} }
         shot("tr-kurulum-tur-araclar") { OnboardingScreen(14) {} }
         shot("tr-kurulum-tur-gorunum") { OnboardingScreen(15) {} }
         shot("ar-kurulum-tur-widget", qualifiers = "ar") { OnboardingScreen(16) {} }
@@ -598,6 +663,33 @@ class MoreScreensTest {
         page("hi-izinler", "अनुमतियाँ", qualifiers = "hi") { PermissionsScreen() }
         Features.save(before)
         Onboarding.finish()
+    }
+
+    /** Ayarlar › Hesap (üyelik aşama 1): girişsiz ve sahte sunucuyla girişli hâl */
+    @Test fun account() {
+        Account.resetForTest()
+        Account.init(RuntimeEnvironment.getApplication())
+        kotlinx.coroutines.runBlocking { Account.signOut() }
+        page("tr-hesap", "Hesap") { AccountScreen {} }
+        page("ar-hesap", "الحساب", qualifiers = "ar") { AccountScreen {} }
+        // Giriş ve oturum yenileme aynı kullanıcıyı döner (ekran açılınca refresh çağrılır)
+        val user = org.json.JSONObject().put("id", "u1").put("email", "ayse@example.com").put("name", "").put("lang", "tr")
+        val session = """[{"token":"t","client":"android","createdAt":"2026-11-12T09:00:00Z","updatedAt":"2026-11-12T10:00:00Z"},{"token":"w","client":null,"createdAt":"2026-11-10T08:00:00Z","updatedAt":"2026-11-11T19:30:00Z"}]"""
+        Account.transport = { _, p, _, _ ->
+            when (p) {
+                "/v1/hesap" -> Account.Resp(200, """{"eposta":"ayse@example.com","uyeNo":10458,"uyelikTarihi":"2026-11-12T09:00:00Z","kutlama":true,"profil":{"ad":"Ayşe","ulke":"TR","telefon":{"ulkeKodu":"+90","numara":"5321234567"},"gorunurluk":{"acik":true,"alanlar":["ad"]},"sosyal":[{"platform":"instagram","deger":"aysee"}]}}""", null)
+                "/api/auth/list-sessions" -> Account.Resp(200, session, null)
+                "/v1/uyelik/urunler" -> Account.Resp(200, """{"urunler":[{"site":"saat-tarih","ad":"Saat Tarih","acik":true,"kendisi":true},{"site":"gander","ad":"Gander","acik":false,"kendisi":false}]}""", null)
+                "/v1/uyelik/durum" -> Account.Resp(200, """{"ayriHesap":false}""", null)
+                "/v1/kayitlar" -> Account.Resp(200, """{"kayitlar":{},"simdi":1}""", null)
+                "/v1/rozetler" -> Account.Resp(200, """{"rozetler":[{"id":"renk","gun":"2026-11-01"}]}""", null)
+                else -> Account.Resp(200, org.json.JSONObject().put("token", "t").put("user", user).toString(), null)
+            }
+        }
+        kotlinx.coroutines.runBlocking { Account.signIn("ayse@example.com", "guclu-sifre-1") }
+        page("tr-hesap-girisli", "Hesap") { AccountScreen {} }
+        page("tr-ayarlar-hesap", "Ayarlar") { SettingsScreen {} }
+        Account.resetForTest()
     }
 
     @Test fun badges() {

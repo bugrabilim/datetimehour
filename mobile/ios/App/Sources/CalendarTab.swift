@@ -24,8 +24,13 @@ struct CalendarTab: View {
     /// 2. analiz #116, #119, #122: görünüm, hicri aylarla gezme, ülke
     @AppStorage(CalPrefs.modeKey) private var mode = "month"
     @AppStorage(CalPrefs.hijriNavKey) private var hijriNav = false
-    @AppStorage(CalPrefs.countryKey) private var country = "TR"
-    @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw = ""
+    // Ülke ve türler yalnız seçilince yazılır (CalPrefs: yoksa bölge ve Vakitler'e bağlı varsayılan); burada değişince yenilensin diye
+    @AppStorage(CalPrefs.countryKey) private var countryRaw = ""
+    @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw: String?
+    @AppStorage(Features.key) private var featuresRaw = ""
+    /// Kapsayıcı takvimlerin seçimi (değişince takvim yenilensin)
+    @AppStorage(ExtraCals.key) private var extraRaw: String?
+    private var country: String { CalPrefs.country }
     @State private var countrySheet = false
     @State private var leafOpen = false
 
@@ -78,7 +83,11 @@ struct CalendarTab: View {
                         Toggle(L("cal.hijriDays"), isOn: $showHijri)
                         Toggle(L("cal.names"), isOn: $showNames)
                         Toggle(L("cal.hijriNav"), isOn: $hijriNav)
-                        Button(L("cal.country") + ": " + WorldHol.countryName(country)) { countrySheet = true }
+                        // Takvimler ve ülke (kapsayıcı takvimler, 9 Kasım 2026): altında seçili ülke
+                        Button { countrySheet = true } label: {
+                            Text(L("calendars.title"))
+                            Text(WorldHol.countryName(country))
+                        }
                     } label: { Image(systemName: "ellipsis.circle") }
                         .accessibilityLabel(L("cal.view"))
                 }
@@ -267,7 +276,7 @@ struct CalendarTab: View {
                     }
                 }
             }
-            if data.isRamadan(selected) {
+            if CalPrefs.religious && data.isRamadan(selected) {
                 Label(L("calendar.types.ramadan"), systemImage: "moon.stars")
                     .foregroundStyle(CalendarData.color("religious"))
             }
@@ -285,7 +294,7 @@ struct CalendarTab: View {
                         }
                     }
             }
-            if special.isEmpty && deviceEvents.isEmpty && !data.isRamadan(selected) {
+            if special.isEmpty && deviceEvents.isEmpty && !(CalPrefs.religious && data.isRamadan(selected)) {
                 Text(L("calendar.noDayEvents")).foregroundStyle(Theme.muted)
             }
             if !device.authorized && device.canAsk {
@@ -307,12 +316,14 @@ struct CalendarTab: View {
                         .joined(separator: " · "))
                     .font(.caption)
                     .foregroundStyle(Theme.muted)
-                // Hicri tarih (Diyanet takvimi)
-                if let h = Hijri.date(year: selected.year, month: selected.month, day: selected.day) {
+                // Hicri tarih (Diyanet takvimi); dini günler görünürken
+                if CalPrefs.religious, let h = Hijri.date(year: selected.year, month: selected.month, day: selected.day) {
                     Label(h.text, systemImage: "moon")
                         .font(.caption)
                         .foregroundStyle(Theme.accent)
                 }
+                // Açık kapsayıcı takvimlerin ikinci tarihi (her takvim tek satır, takvimin rengiyle nokta)
+                ExtraCalDayLines(day: selected)
             }
             .textCase(nil)
             .padding(.vertical, 4)
@@ -330,14 +341,15 @@ struct CalendarTab: View {
                 if let y = data.years[month.year], y.projected {
                     Text(L("calendar.projected")).font(.footnote).foregroundStyle(Theme.muted)
                 }
-                Text(L("hijri.note")).font(.footnote).foregroundStyle(Theme.muted)
+                if CalPrefs.religious { Text(L("hijri.note")).font(.footnote).foregroundStyle(Theme.muted) }
             }
             .padding(.top, 8)
         }
     }
 
     private var legend: some View {
-        let types = ["holiday", "half", "religious", "special", "school"]
+        let hidden = CalPrefs.hidden
+        let types = WorldHol.types(CalPrefs.country).filter { !hidden.contains($0) } + ExtraCals.sorted().filter { ExtraCals.isOn($0.id) }.map { "cal:\($0.id)" }
         return FlowRow(items: types) { t in
             HStack(spacing: 4) {
                 Circle().fill(CalendarData.color(t)).frame(width: 8, height: 8)
@@ -407,6 +419,8 @@ struct MonthGrid: View {
     @AppStorage("cal.dst") private var showDst = true
     @AppStorage("cal.hijri") private var showHijri = false
     @AppStorage("cal.names") private var showNames = false
+    /// Kapsayıcı takvimlerin seçimi (değişince hücreler yenilensin)
+    @AppStorage(ExtraCals.key) private var extraRaw: String?
 
     /// Bu ayın yeni ay ve dolunay günleri (telefonun saat diliminde): gün numarası → emoji
     private var moonMarks: [Int: String] {
@@ -515,11 +529,12 @@ struct MonthGrid: View {
             if let moon { Text(moon).font(.system(size: 9)).padding(.trailing, 1) }
         }
         .overlay(alignment: .topLeading) {
-            if dst { Text("⏱").font(.system(size: 9)).padding(.leading, 1) }
+            // Saat değişimi günü: "⏱" emojisinin yerine iki tonlu simge (8 Kasım 2026)
+            if dst { DuoIcon(name: "dst", size: 10, color: Theme.terra).padding(.leading, 1) }
         }
         .padding(.vertical, 5)
         .frame(maxWidth: .infinity)
-        .background(data.isRamadan(d) ? CalendarData.color("religious").opacity(0.08) : .clear)
+        .background(CalPrefs.religious && data.isRamadan(d) ? CalendarData.color("religious").opacity(0.08) : .clear)
         .contentShape(Rectangle())
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(([Fmt.day(d)] + events.map(\.name)).joined(separator: ", "))
@@ -571,6 +586,8 @@ struct FlowLayout: Layout {
 /// Takvim türünün adı. Türkçe dışındaki arayüzde resmî tatil, arife ve okul türlerine ülke adı eklenir
 /// ("Public holiday · Türkiye"): takvimdeki tatiller Türkiye'nindir (2. analiz #92).
 func calendarTypeLabel(_ t: String) -> String {
+    // Kapsayıcı takvimlerde takvimin adı
+    if t.hasPrefix("cal:") { return ExtraCals.name(String(t.dropFirst(4))) }
     let base = L("calendar.types.\(t)")
     // Takvimde başka ülke seçiliyse (2. analiz #122) resmî tatil o ülkenindir
     let cc = t == "holiday" && CalPrefs.country != "TR" ? CalPrefs.country : "TR"

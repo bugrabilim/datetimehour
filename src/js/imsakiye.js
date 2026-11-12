@@ -17,9 +17,9 @@
 
   var pad = function (n) { return String(n).padStart(2, "0"); };
   function isoOf(p) { return p.year + "-" + pad(p.month) + "-" + pad(p.day); }
-  function hm(h) {
-    if (!isFinite(h)) return "–";
-    var m = Math.round(h * 60); m = ((m % 1440) + 1440) % 1440;
+  function hmMin(m) {
+    if (m == null || !isFinite(m)) return "–";
+    m = ((m % 1440) + 1440) % 1440;
     return pad(Math.floor(m / 60)) + ":" + pad(m % 60);
   }
   /* Bugünden sonra biten ilk Ramazan */
@@ -28,15 +28,22 @@
     for (var i = 0; i < list.length; i++) if (list[i].to && list[i].to >= today) return list[i];
     return null;
   }
+  var imsakRow = false;
   function rows() {
+    imsakRow = false;
     var out = [], a = ram.from.split("-").map(Number), b = ram.to.split("-").map(Number);
     var t0 = Date.UTC(a[0], a[1] - 1, a[2]), t1 = Date.UTC(b[0], b[1] - 1, b[2]), n = 1;
     for (var t = t0; t <= t1; t += 86400000, n++) {
       var d = new Date(t), y = d.getUTCFullYear(), m = d.getUTCMonth() + 1, dd = d.getUTCDate();
       var off = S.offsetMin(new Date(Date.UTC(y, m - 1, dd, 12)), place.tz) / 60;
       var pm = {}; try { pm = JSON.parse(S.store("sth-prayer") || "{}") || {}; } catch (e) {}
-      var r = P.times(y, m, dd, place.lat, place.lon, off, P.methodParams(pm.m || "diyanet", !!pm.h)), wd = (d.getUTCDay() + 6) % 7;
-      out.push({ n: n, y: y, m: m, d: dd, wd: wd, t: ORDER.map(function (k) { return hm(r[k]); }) });
+      if (!pm.m || !P.METHODS[pm.m]) pm = P.defaultMethod(place.tz, place.lat, place.lon); // kullanıcı seçmediyse bölgeye göre
+      var prm = P.methodParams(pm.m, !!pm.h), r = P.times(y, m, dd, place.lat, place.lon, off, prm), wd = (d.getUTCDay() + 6) % 7;
+      var mins = ORDER.map(function (k) { return P.toMin(r[k], prm, k); });
+      // Kemenag'da sahur sütunu ihtiyat imsakıdır (sabahtan 10 dk önce)
+      var ex = P.methodRows(y, m, dd, place.lat, place.lon, off, prm, mins[0]);
+      if (ex && ex.imsak != null) { mins[0] = ex.imsak; imsakRow = true; }
+      out.push({ n: n, y: y, m: m, d: dd, wd: wd, t: mins.map(hmMin) });
     }
     return out;
   }
@@ -169,7 +176,7 @@
     cell(T.day, 0, ty + 44, "700 19px system-ui, Arial, sans-serif", CREAM); cell(T.date, 1, ty + 44, HF, CREAM);
     ORDER.forEach(function (k, i) {
       var sp = k === "fajr" ? T.sahur : k === "maghrib" ? T.iftar : "";
-      cell(T.names[k], i + 2, sp ? ty + 36 : ty + 44, HF, sp ? GOLD : CREAM);
+      cell(k === "fajr" && imsakRow && T.rowImsak ? T.rowImsak : T.names[k], i + 2, sp ? ty + 36 : ty + 44, HF, sp ? GOLD : CREAM);
       if (sp) cell("(" + sp + ")", i + 2, ty + 58, HS, GOLD);
     });
     // satırlar

@@ -95,7 +95,20 @@
 
   /* ---------- Hicri takvim çevirici (#13): Diyanet'e hizalı tablo, dışında Umm al-Qura ---------- */
   function hijri() {
-    var T = M.table || [], first = T[0][0], end = T[T.length - 1][0];
+    /* Takvim (10 Kasım 2026): Diyanet ya da Endonezya (Kemenag; tarayıcının saat dilimi Endonezya'daysa varsayılan) ve ay başı
+       ±1 gün (Hindistan, Pakistan gibi). Seçim kaydedilmez. */
+    var ID_TZ = ["Asia/Jakarta", "Asia/Pontianak", "Asia/Makassar", "Asia/Jayapura", "Asia/Ujung_Pandang"];
+    var tz = ""; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+    var calSel = q("[data-hj-cal]"), offSel = q("[data-hj-off]"), opts = q("[data-hj-opts]");
+    if (calSel && M.tableId && M.tableId.length) { if (opts) opts.hidden = false; if (ID_TZ.indexOf(tz) >= 0) calSel.value = "kemenag"; }
+    var T, first, end;
+    function pick() {
+      var base = calSel && calSel.value === "kemenag" && M.tableId ? M.tableId : (M.table || []);
+      var off = offSel ? parseInt(offSel.value, 10) || 0 : 0;
+      T = off ? base.map(function (r) { return [isoOf(dnum(r[0]) + off), r[1], r[2]]; }) : base;
+      first = T[0][0]; end = T[T.length - 1][0];
+    }
+    pick();
     var UQ = null;
     try { UQ = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura", { year: "numeric", month: "numeric", day: "numeric", timeZone: "UTC" }); } catch (e) {}
     function uq(n) {
@@ -140,6 +153,10 @@
     }
     // Bugün
     var today = todayIso(), th = toH(today);
+    function renderToday() {
+      th = toH(today);
+      setText(q("[data-hj-today]"), th ? hText(th) : "–");
+    }
     setText(q("[data-hj-today]"), th ? hText(th) : "–");
     setText(q("[data-hj-today-greg]"), longText(today));
     setText(q("[data-hj-rumi]"), rumiText(today));
@@ -163,8 +180,9 @@
     if (th) { yIn.value = th.y; mIn.value = th.m; dIn.value = th.d; }
     [yIn, mIn, dIn].forEach(function (el) { el.addEventListener("input", function () { used1(); run2(); }); });
     run2();
-    // Bu hicri yılın ay başları (derlemedeki yıl değiştiyse yeniden)
+    // Bu hicri yılın ay başları (derlemedeki yıl değiştiyse ya da takvim seçilince yeniden)
     var tb = q("[data-hj-tbody]"), cap = q("[data-hj-table] caption");
+    function renderTable() {
     if (th && tb) {
       var rows = [];
       for (var i = 0; i < T.length - 1; i++) {
@@ -183,6 +201,11 @@
         cap.textContent = tpl(M.yearHeading, { y: th.y });
       }
     }
+    }
+    renderTable();
+    [calSel, offSel].forEach(function (el) {
+      if (el) el.addEventListener("change", function () { pick(); renderToday(); run1(); run2(); renderTable(); });
+    });
   }
 
   /* ---------- Saat hesaplama (#31) ---------- */

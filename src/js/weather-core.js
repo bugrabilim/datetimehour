@@ -60,6 +60,32 @@
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (d) { airCache[key] = { at: now, data: d }; return d; });
   }
+  /* Fotoğraf ışığı (9 Kasım 2026): alçak/orta/yüksek bulut ve yağış, saatlik, bugün + 6 gün; aynı izin, 30 dk önbellek.
+     timeformat=unixtime: saatler mutlak an (yaz saati geçişinde kaymaz). */
+  var cloudCache = {}, cloudFailed = {};
+  function clouds(lat, lon) {
+    if (!allowed()) { var ce = new Error("consent"); ce.consent = true; return Promise.reject(ce); }
+    lat = round2(lat); lon = round2(lon);
+    var key = lat + "," + lon, now = Date.now();
+    if (cloudCache[key] && now - cloudCache[key].at < 1800000) return Promise.resolve(cloudCache[key].data);
+    if (cloudFailed[key] && now - cloudFailed[key] < 60000) return Promise.reject(new Error("backoff"));
+    var url = API + "?latitude=" + lat + "&longitude=" + lon +
+      "&hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high,precipitation&timezone=auto&timeformat=unixtime&forecast_days=7";
+    return fetch(url, { credentials: "omit", referrerPolicy: "no-referrer" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) { cloudCache[key] = { at: now, data: d }; delete cloudFailed[key]; return d; })
+      .catch(function (e) { cloudFailed[key] = Date.now(); throw e; });
+  }
+  /* Gün doğumu/batımı fotoğrafı tahmini; uygulamalardaki kuralla birebir (iOS, Android). L, M, H: alçak, orta, yüksek
+     bulut (%), P: yağış (mm/sa), gün doğumuna/batımına en yakın saatlik değer. Renkleri orta ve yüksek bulut yakalar;
+     ufuktaki alçak bulut ve yağış Güneş'i kapatır; açık gökyüzü temiz ama sade. */
+  function photoSky(L, M, H, P) {
+    if (P >= 0.5 || L >= 75) return "poor";
+    var U = Math.max(M, H);
+    if (L < 40 && U >= 20 && U <= 80) return "good";
+    if (L < 60) return "fair";
+    return "poor";
+  }
   /* Düzeyler: uygulamalardaki Outdoor.aqiLevel / pollenLevel ile aynı eşikler */
   function aqiLevel(v) { return v < 20 ? 0 : v < 40 ? 1 : v < 60 ? 2 : v < 80 ? 3 : v < 100 ? 4 : 5; }
   function pollenLevel(g) { return g < 1 ? 0 : g < 20 ? 1 : g < 100 ? 2 : 3; }
@@ -96,7 +122,7 @@
     p.appendChild(b);
     box.appendChild(p);
   }
-  window.sthWeather = { load: load, air: air, aqiLevel: aqiLevel, pollenLevel: pollenLevel, info: info, compass: compass, temp: temp, words: words, summary: summary, allowed: allowed, consentNote: consentNote, clearFailures: function () { failed = {}; } };
+  window.sthWeather = { load: load, air: air, clouds: clouds, photoSky: photoSky, aqiLevel: aqiLevel, pollenLevel: pollenLevel, info: info, compass: compass, temp: temp, words: words, summary: summary, allowed: allowed, consentNote: consentNote, clearFailures: function () { failed = {}; } };
 
   /* Hava durumlu saat modelleri: yalnız model seçiliyken (görünürken) Open-Meteo'ya gidilir */
   function mk(tag, cls, text) { var e = doc.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }

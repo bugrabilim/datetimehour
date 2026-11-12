@@ -1,0 +1,51 @@
+Time & Date brings a clock, widgets, alarms, weather, a calendar and dozens of everyday tools together in one clean app. No account, no ads, no tracking.
+
+Set up for you
+• A few quick questions on first launch build your bottom bar from the sections you want
+• Sections you don't use stay hidden and send no notifications; everything else is one tap away under All
+
+Clock and widgets
+• 21 clock styles and 25 analogue dials; full screen, a dim red night mode for your bedside and a screen saver
+• 27 home screen widgets: analogue, digital and seconds clocks, world clocks, weather, moon phase, sunrise and sunset, countdowns, photos, year progress and more, with transparent and glass styles
+• A floating clock over other apps and Quick Settings tiles
+• A Wear OS app with tiles and complications, and a full-screen clock for Android TV
+
+Alarm, sleep and focus
+• Full-screen alarms on the lock screen with gradual volume, a sound library and backgrounds
+• Wake-up tasks to turn them off: maths, shaking, steps, squats, scanning a code, finding an object, memory or typing
+• Smart alarm, sleep plan with bedtime reminders, sleep sounds and nature sounds
+• Pomodoro with statistics and a to-do list, study timer, app blocking while you focus
+• Interval training with voice cues, even with the screen off; save workouts to Health Connect
+
+Weather
+• Hourly and 14-day forecast, air quality and pollen, three weather models side by side
+• A screen that moves with the weather: rain, snow, clouds, wind and lightning
+• A morning weather summary and an optional weather notification
+
+Calendar
+• Month, week, day, agenda and year views next to the calendars on your phone
+• Public holidays for 31 countries, including the UK, and special days
+• Hijri calendar and date converter
+
+Tools
+• Named timers, several stopwatches, countdowns with your own photos
+• World clocks with a spinning globe, a map and a 24-hour dial; meeting planner; time and date calculators
+• Chess clock, metronome, talking clock, morning journal, classroom tools, exam timer, zodiac sign
+
+Sky and seasons
+• Sunrise, sunset, golden and blue hour, moonrise and moonset, moon calendar
+• Eclipses with maps, the night sky with planets and stars, sky event notifications
+• The seasons explained for children
+
+Prayer times and Qibla
+• Prayer times anywhere with 14 calculation methods and Hanafi Asr; all 81 provinces and 973 districts of Türkiye
+• Adhan notifications, prayer-time alarms, silencing your phone at prayer times, Ramadan timetable
+• Qibla compass and nearby mosques
+• The Quran in Arabic, duas, the 99 Names of Allah, tasbih counter, prayer and fasting tracker, zakat calculator, greeting cards
+
+Privacy
+Your location stays on your phone. Only for weather and nearby mosques is an approximate location sent to the service (Open-Meteo, OpenStreetMap), never who you are. See and turn off every permission in Settings › Permissions.
+
+In 19 languages. For Android phones and tablets, Wear OS and Android TV.
+
+Time & Date is a Bumba Life product. Web: time.bumba.tr

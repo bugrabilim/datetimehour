@@ -62,7 +62,7 @@
     <string name="prayer_extraNames_istibak">इश्तिबाक (तारे दिखना)</string>
     <string name="prayer_extraNames_isaSani">दूसरा इशा</string>
     <string name="prayer_extraNames_midnight">आधी रात</string>
-    <string name="prayer_extraNames_tahajjud">तहज्जुद (रात का आख़िरी तिहाई)</string>
+    <string name="prayer_extraNames_tahajjud">तहज्जुद (रात का आख़िरी तिहाई हिस्सा)</string>
     <string name="prayer_extraNames_seher">सहर (रात का आख़िरी छठा हिस्सा)</string>
     <string name="prayer_extraNote">दियानत ये समय प्रकाशित नहीं करता। ये Türkiye Takvimi की परिभाषाओं पर आधारित हैं: इशराक़ और इस्फ़िरार में सूरज क्षितिज से 5° ऊपर, इश्तिबाक में 10° और दूसरे इशा में 19° नीचे; ज़हवा-ए-कुबरा इम्साक और मग़रिब के बीचोंबीच; रात मग़रिब से इम्साक तक मानी जाती है।</string>
     <string name="prayer_bayram">ईद की नमाज़</string>
@@ -78,6 +78,10 @@
     <string name="prayer_method_note">तुर्किये में आधिकारिक समय धार्मिक मामलों के निदेशालय (दियानत) के हैं। कोई दूसरी विधि चुनने पर इस पेज के समय, मासिक तालिका और रमज़ान समय-सारणी उसी से निकाली जाती हैं; आपकी पसंद केवल इसी ब्राउज़र में सहेजी जाती है।</string>
     <string name="prayer_method_active">विधि: %1$s</string>
     <string name="prayer_method_hanafiShort">हनफ़ी अस्र</string>
+    <string name="prayer_method_region">आपके क्षेत्र के अनुसार</string>
+    <string name="prayer_method_kemenagNote">केमेनाग विधि निचले इलाक़ों के लिए है: ऊँचे इलाक़ों (लगभग 600 मीटर से ऊपर) में केमेनाग सूर्योदय और मग़रिब के समय 4–5 मिनट अलग प्रकाशित करता है। एहतियात के तौर पर इमसाक फ़ज्र से 10 मिनट पहले है।</string>
+    <string name="prayer_method_rowImsak">इमसाक</string>
+    <string name="prayer_method_rowDuha">चाश्त (ज़ुहा)</string>
     <string name="prayer_method_names_diyanet">दियानत (तुर्किये)</string>
     <string name="prayer_method_names_mwl">मुस्लिम वर्ल्ड लीग</string>
     <string name="prayer_method_names_isna">इस्लामिक सोसाइटी ऑफ़ नॉर्थ अमेरिका (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">कुवैत</string>
     <string name="prayer_method_names_qatar">क़तर</string>
     <string name="prayer_method_names_singapore">सिंगापुर</string>
+    <string name="prayer_method_names_kemenag">केमेनाग (इंडोनेशिया का धार्मिक मामलों का मंत्रालय)</string>
     <string name="prayer_method_names_france">फ़्रांस (UOIF)</string>
     <string name="prayer_method_names_russia">रूस के मुसलमानों का आध्यात्मिक प्रशासन</string>
     <string name="place_myLocation">मेरा स्थान</string>
@@ -98,7 +103,7 @@
     <string name="widget_next_desc">अगली नमाज़, उसका समय और बचा समय।</string>
     <string name="prayer_monthly">मासिक नमाज़ समय-सारणी</string>
     <string name="widget_moon_name">चंद्र कला</string>
-    <string name="widget_moon_desc">आज की चंद्र कला, रोशन हिस्सा और अगली पूर्णिमा या अमावस्या।</string>
+    <string name="widget_moon_desc">आज की चंद्र कला, रोशन हिस्से का प्रतिशत और अगली पूर्णिमा या अमावस्या।</string>
     <string name="hijri_title">हिजरी तारीख</string>
     <string name="hijri_fmt">%1$s %2$s %3$s हिजरी</string>
     <string name="hijri_note">हिजरी तारीख तुर्किये के दियानत कैलेंडर पर चलती है; दूसरे देशों में महीना एक दिन पहले या बाद में शुरू हो सकता है। दिन आधी रात को बदलता है, सूर्यास्त पर नहीं।</string>
@@ -123,12 +128,12 @@
     <string name="wear_phonePlace">iPhone वाला स्थान</string>
     <string name="wear_today">आज</string>
     <string name="prayer_method_app">गणना विधि</string>
-    <string name="prayer_method_appNote">तुर्किये में आधिकारिक समय दियानत के हैं। आपकी पसंद समय, सूचनाएँ, अलार्म और मासिक तालिका बदलती है; होम स्क्रीन विजेट और घड़ी दियानत विधि ही रखते हैं।</string>
+    <string name="prayer_method_appNote">तुर्किये में आधिकारिक समय दियानत के हैं। आपकी पसंद समय, सूचनाएँ, अलार्म और मासिक तालिका बदलती है; होम स्क्रीन विजेट और स्मार्टवॉच दियानत विधि ही रखते हैं।</string>
     <string name="prayer_arc_title">सूरज और चंद्रमा</string>
     <string name="prayer_arc_day">सूर्यास्त तक %1$s</string>
     <string name="prayer_arc_night">सूर्योदय तक %1$s</string>
     <string name="prayer_alarm_heading">नमाज़ के समय अलार्म</string>
-    <string name="prayer_alarm_note">चुने नमाज़ के समय पर असली अलार्म बजता है, फ़ोन साइलेंट या फ़ोकस में हो तब भी। अलार्म अगले दिनों के लिए लगते हैं और हर बार ऐप खोलने पर नए होते हैं।</string>
+    <string name="prayer_alarm_note">चुने नमाज़ के समय पर असली अलार्म बजता है, फ़ोन साइलेंट या फ़ोकस में हो तब भी। अलार्म अगले दिनों के लिए लगते हैं और हर बार ऐप खोलने पर फिर से लगाए जाते हैं।</string>
     <string name="prayer_alarm_unsupported">नमाज़ अलार्म के लिए iOS 26 या बाद का संस्करण चाहिए; यह संस्करण सूचनाएँ इस्तेमाल करता है।</string>
     <string name="prayer_alarm_title">%1$s का समय</string>
     <string name="prayer_silent_heading">नमाज़ के समय फ़ोन साइलेंट करें</string>
@@ -138,7 +143,7 @@
     <string name="prayer_silent_mode">मोड</string>
     <string name="prayer_silent_vibrate">वाइब्रेट</string>
     <string name="prayer_silent_silent">परेशान न करें</string>
-    <string name="prayer_silent_note">चुने नमाज़ के समय के बाद फ़ोन चुनी अवधि तक वाइब्रेट या परेशान न करें पर चला जाता है, फिर पहले जैसा हो जाता है। परेशान न करें के लिए एक बार अनुमति चाहिए।</string>
+    <string name="prayer_silent_note">चुने नमाज़ के समय के बाद फ़ोन चुनी अवधि तक वाइब्रेट या परेशान न करें पर चला जाता है, फिर पहले जैसा हो जाता है। परेशान न करें के लिए Android एक बार अनुमति माँगता है।</string>
     <string name="prayer_silent_grant">अनुमति दें</string>
     <string name="prayer_silent_channel">नमाज़ के समय साइलेंट</string>
     <string name="prayer_silent_active">%1$s तक फ़ोन साइलेंट</string>

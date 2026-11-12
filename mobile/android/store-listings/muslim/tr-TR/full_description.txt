@@ -1,0 +1,37 @@
+Saat Tarih; namaz vakitlerini, kıbleyi, saati, takvimi, hava durumunu ve günlük araçları tek, sade bir uygulamada toplar. Hesap, reklam ve takip yoktur.
+
+Namaz vakitleri ve ibadet
+• Dünyanın her yeri için namaz vakitleri; Diyanet, MWL, ISNA, Ümmü'l-Kurâ, Karaçi, Singapur ve diğerleriyle 14 hesap yöntemi, Hanefî ikindi
+• Türkiye'nin 81 ili ve 973 ilçesi
+• Vaktinde ya da önceden bildirim: ezanın ilk cümlesi, kısa zil ya da sesli duyuru
+• İsterseniz vakit girince telefon titreşime ya da Rahatsız Etmeyin moduna geçer
+• Görsel olarak paylaşabileceğiniz Ramazan imsakiyesi, iftar ve sahur sayacı
+• Kıble pusulası ve haritada yakındaki camiler
+• Kur'an-ı Kerim (Arapça), dualar, Esmaü'l-Hüsna, hadisler, namaz rehberi, zikirmatik, namaz ve oruç takibi, zekât hesabı
+• Hicri takvim ve çevirici, dini günler ve kandiller; Cuma, Ramazan ve bayram tebrik kartları
+
+Size göre hazırlanır
+• İlk açılışta beş kısa soru alt çubuğunuzu kurar. Kullanmadığınız bölümler gizli kalır ve bildirim göndermez
+
+Saat ve widget'lar
+• 21 saat modeli ve 25 analog kadran; tam ekran ve kısık kırmızı gece modu
+• Ana ekran widget'ları: sıradaki vakit, bugünün vakitleri, hicri tarih, saatler, dünya saatleri, hava durumu ve Ay evresi
+• Wear OS uygulaması (kutucuk ve komplikasyonlar), Android TV uygulaması, ekran koruyucu, yüzen saat ve Hızlı Ayarlar kutucukları
+
+Takvim ve hava
+• Türkiye ve 32 ülkenin resmî tatilleri, arifeler; telefonunuzdaki takvimlerle (Google Takvim dahil) bir arada
+• Saatlik ve 14 günlük tahmin, hava kalitesi ve polen, havaya göre canlanan ekran
+
+Alarm, uyku ve odak
+• Kilit ekranında çalan alarm; yavaş yavaş yükselen ses ve matematik, sallama, kod okutma gibi kapatma görevleri
+• Uyku planı, uyku sesleri ve akıllı alarm
+• Pomodoro, ders çalışma sayacı, aralık antrenmanı ve odak sırasında uygulama engelleme
+
+Araçlar
+• Zamanlayıcı, kronometre, satranç saati, metronom, konuşan saat, toplantı planlayıcı, saat ve tarih hesaplama
+• Mevsimler, Ay takvimi, tutulmalar ve gece gökyüzü
+
+Gizlilik
+Hesap yok, reklam yok, takip yok. Namaz vakitleri telefonunuzda hesaplanır. Yalnız hava durumu ve yakındaki camiler için yaklaşık konum ilgili servise (Open-Meteo, OpenStreetMap) gider, kim olduğunuz gitmez. Her izni Ayarlar › İzinler'de görürsünüz.
+
+On dokuz dilde. Saat Tarih bir Bumba Life ürünüdür. Web: time.bumba.tr

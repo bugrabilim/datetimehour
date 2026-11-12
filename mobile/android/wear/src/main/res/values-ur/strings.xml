@@ -78,6 +78,10 @@
     <string name="prayer_method_note">ترکی میں سرکاری اوقات ادارۂ امورِ دینیہ (دیانت) کے ہیں۔ اگر آپ کوئی اور طریقہ منتخب کریں تو اس صفحے کے اوقات، ماہانہ جدول اور رمضان کا اوقات نامہ اسی سے حساب ہوں گے؛ آپ کا انتخاب صرف اسی براؤزر میں محفوظ ہوتا ہے۔</string>
     <string name="prayer_method_active">طریقہ: %1$s</string>
     <string name="prayer_method_hanafiShort">حنفی عصر</string>
+    <string name="prayer_method_region">آپ کے علاقے کے مطابق</string>
+    <string name="prayer_method_kemenagNote">کیمیناگ کا طریقہ نشیبی علاقوں کے لیے ہے: پہاڑی علاقوں میں (تقریباً 600 میٹر سے اوپر) کیمیناگ طلوع اور مغرب کے اوقات 4–5 منٹ مختلف شائع کرتا ہے۔ احتیاطاً امساک فجر سے 10 منٹ پہلے ہے۔</string>
+    <string name="prayer_method_rowImsak">امساک</string>
+    <string name="prayer_method_rowDuha">چاشت</string>
     <string name="prayer_method_names_diyanet">دیانت (ترکی)</string>
     <string name="prayer_method_names_mwl">رابطہ عالمِ اسلامی</string>
     <string name="prayer_method_names_isna">اسلامک سوسائٹی آف نارتھ امریکہ (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">کویت</string>
     <string name="prayer_method_names_qatar">قطر</string>
     <string name="prayer_method_names_singapore">سنگاپور</string>
+    <string name="prayer_method_names_kemenag">کیمیناگ (انڈونیشیا کی وزارتِ مذہبی امور)</string>
     <string name="prayer_method_names_france">فرانس (UOIF)</string>
     <string name="prayer_method_names_russia">روس کے مسلمانوں کی روحانی انتظامیہ</string>
     <string name="place_myLocation">میرا مقام</string>

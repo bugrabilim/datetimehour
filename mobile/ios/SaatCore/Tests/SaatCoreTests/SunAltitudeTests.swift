@@ -54,4 +54,22 @@ final class SunAltitudeTests: XCTestCase {
         let bursa = PrayerTimes.times(year: 2026, month: 3, day: 20, latitude: 40.1826, longitude: 29.0665, utcOffset: 3)
         XCTAssertEqual(Int(jsRound(try XCTUnwrap(PrayerTimes.bayram(bursa)) * 60)), 7 * 60 + 38)
     }
+
+    /// Geleneksel Hint zaman dilimleri: sitedeki hesapla aynı; Delhi 8 Kasım 2026 Drik Panchang ile ±1 dk
+    func testHinduKaal() throws {
+        let file = try Vectors.load("kaal.json", as: KaalVectors.self)
+        XCTAssertGreaterThan(file.cases.count, 400)
+        for c in file.cases {
+            let k = PrayerTimes.hinduKaal(year: c.y, month: c.m, day: c.d, latitude: c.lat, longitude: c.lon, utcOffset: c.tz)
+            guard let want = c.t else { XCTAssertNil(k, c.id); continue }
+            let k2 = try XCTUnwrap(k, c.id)
+            let got = [k2.sunrise, k2.sunset, k2.rahu.0, k2.rahu.1, k2.yamaganda.0, k2.yamaganda.1, k2.gulika.0, k2.gulika.1,
+                       k2.abhijit.0, k2.abhijit.1, k2.brahma.0, k2.brahma.1]
+            for (a, b) in zip(got, want) { XCTAssertEqual(a, b, accuracy: 1e-6, c.id) }
+        }
+        let d = try XCTUnwrap(PrayerTimes.hinduKaal(year: 2026, month: 11, day: 8, latitude: 28.6139, longitude: 77.209, utcOffset: 5.5))
+        for (h, want) in [(d.rahu.0, 16 * 60 + 10), (d.yamaganda.0, 12 * 60 + 5), (d.gulika.0, 14 * 60 + 48), (d.abhijit.0, 11 * 60 + 43), (d.brahma.0, 4 * 60 + 53)] {
+            XCTAssertLessThanOrEqual(abs(Int(jsRound(h * 60)) - want), 1)
+        }
+    }
 }

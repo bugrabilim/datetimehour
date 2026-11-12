@@ -33,43 +33,47 @@ struct SettingsView: View {
         let support = ["support.title", "support.rate", "support.share", "support.qr", "support.feedback", "support.moreApps",
                        "support.version", "badges.h1", "settings.about", "onboard.replay"]
         Form {
+            // Hesap (üyelik aşama 1, 10 Kasım 2026): isteğe bağlı; satırda e-posta ya da "Giriş yapılmadı"
+            if shows("account.title", "account.signIn", "account.signUp", "account.delete", "account.download") {
+                Section { AccountRow() }
+            }
             if general.contains(where: { shows($0) }) {
                 Section(L("settings.color.general")) {
                     if shows("features.title") {
-                        NavigationLink { FeaturesView() } label: { BoxLabel(L("features.title"), icon: "square.grid.2x2") }
+                        NavigationLink { FeaturesView() } label: { BoxLabel(L("features.title"), duo: "features", tint: Theme.sage) }
                     }
                     if shows("settings.location") {
-                        LabeledContent { PlacePicker(font: .body) } label: { BoxLabel(L("settings.location"), icon: "location") }
+                        LabeledContent { PlacePicker(font: .body) } label: { BoxLabel(L("settings.location"), duo: "pin", tint: Theme.sage) }
                     }
                     if shows("settings.notifications") {
-                        NavigationLink { NotificationsView() } label: { BoxLabel(L("settings.notifications"), icon: "bell") }
+                        NavigationLink { NotificationsView() } label: { BoxLabel(L("settings.notifications"), duo: "bell", tint: Theme.sage) }
                     }
                     // İzinler (5 Kasım 2026): her iznin durumu, ne için, nereden kapatılır
                     if shows("perms.title") {
-                        NavigationLink { PermissionsView() } label: { BoxLabel(L("perms.title"), icon: "lock.shield") }
+                        NavigationLink { PermissionsView() } label: { BoxLabel(L("perms.title"), duo: "privacy", tint: Theme.sage) }
                     }
                     if shows("lang.title") { LanguageRow() }
                     if shows("settings.units") {
                         Picker(selection: $units) {
                             Text(L("settings.units.metric")).tag("metric")
                             Text(L("settings.units.imperial")).tag("imperial")
-                        } label: { BoxLabel(L("settings.units"), icon: "ruler") }
+                        } label: { BoxLabel(L("settings.units"), duo: "ruler", tint: Theme.sage) }
                     }
                     // Basınç birimi (2. analiz #106)
                     if shows("settings.pressureUnit") {
                         Picker(selection: $pressureUnit) {
                             Text(L("countdowns.unit.auto")).tag("auto")
                             ForEach(["hPa", "mmHg", "inHg"], id: \.self) { Text($0).tag($0) }
-                        } label: { BoxLabel(L("settings.pressureUnit"), icon: "gauge") }
+                        } label: { BoxLabel(L("settings.pressureUnit"), duo: "gauge", tint: Theme.sage) }
                     }
                     if shows("client.formatLabel") {
                         Picker(selection: $h12) {
                             Text(L("client.format24")).tag(false)
                             Text(L("client.format12")).tag(true)
-                        } label: { BoxLabel(L("client.formatLabel"), icon: "clock") }
+                        } label: { BoxLabel(L("client.formatLabel"), duo: "clock", tint: Theme.sage) }
                     }
                     if shows("settings.keepAwake") {
-                        Toggle(isOn: $keepAwake) { BoxLabel(L("settings.keepAwake"), icon: "sun.max") }
+                        Toggle(isOn: $keepAwake) { BoxLabel(L("settings.keepAwake"), duo: "sun", tint: Theme.sage) }
                     }
                 }
             }
@@ -78,7 +82,7 @@ struct SettingsView: View {
                     if shows("settings.color") {
                         NavigationLink { AccentPickerView() } label: {
                             HStack {
-                                BoxLabel(L("settings.color"), icon: "paintpalette")
+                                BoxLabel(L("settings.color"), duo: "palette", tint: Theme.dusk)
                                 Spacer()
                                 Circle().fill(Theme.accent).frame(width: 18, height: 18)
                             }
@@ -89,7 +93,7 @@ struct SettingsView: View {
                             Text(L("settings.system")).tag("system")
                             Text(L("settings.light")).tag("light")
                             Text(L("settings.dark")).tag("dark")
-                        } label: { BoxLabel(L("settings.appearance"), icon: "circle.lefthalf.filled") }
+                        } label: { BoxLabel(L("settings.appearance"), duo: "halfmoon", tint: Theme.dusk) }
                     }
                     // Yazı boyutu (2. analiz #77): uygulamanın bütün yazıları, %100 telefonun ayarı
                     if shows("fontScale.title") { FontScaleRow() }
@@ -98,11 +102,11 @@ struct SettingsView: View {
             if clock.contains(where: { shows($0) }) {
                 Section(L("tab.clock")) {
                     if shows("look.title", "dial.title", "night.title") {
-                        NavigationLink { AppearanceView() } label: { BoxLabel(L("look.title"), icon: "textformat.size") }
+                        NavigationLink { AppearanceView() } label: { BoxLabel(L("look.title"), duo: "clock", tint: Theme.terra) }
                     }
                     // Saat ekranındaki "Düzenle" düğmesinin yerine (4 Kasım 2026, sahibin isteği)
                     if shows("home.customize", "home.editScreen") {
-                        NavigationLink { HomeItemsView() } label: { BoxLabel(L("home.editScreen"), icon: "slider.horizontal.3") }
+                        NavigationLink { HomeItemsView() } label: { BoxLabel(L("home.editScreen"), duo: "homeitems", tint: Theme.terra) }
                     }
                 }
             }
@@ -111,7 +115,7 @@ struct SettingsView: View {
                     // Sunucusuz eşitleme (CloudSync.swift): aynı Apple hesabındaki cihazlar arasında, iCloud anahtar-değer deposu
                     if shows("sync.title") {
                         Toggle(isOn: Binding(get: { syncOn }, set: { syncOn = $0; CloudSync.setEnabled($0) })) {
-                            BoxLabel(L("sync.title"), icon: "icloud")
+                            BoxLabel(L("sync.title"), duo: "backup", tint: Theme.sky)
                         }
                         NavigationLink { SettingsNoteView(title: L("sync.title"), text: L("sync.note")) } label: {
                             Text(L("settings.details")).foregroundStyle(Theme.muted)
@@ -123,7 +127,7 @@ struct SettingsView: View {
                             SettingsNoteView(title: L("siri.title"), text: L("siri.note")) {
                                 ShortcutsLink().shortcutsLinkStyle(.automaticOutline)
                             }
-                        } label: { BoxLabel(L("siri.title"), icon: "wand.and.stars") }
+                        } label: { BoxLabel(L("siri.title"), duo: "wand", tint: Theme.sky) }
                     }
                 }
             }
@@ -133,11 +137,11 @@ struct SettingsView: View {
                 // Hakkında Ayarlar'dadır (Seçenek B); rozetler Tümü'nde, Tümü yokken (hiçbir özellik açık değil) burada
                 Section {
                     if Features.parse(features).isEmpty {
-                        NavigationLink { BadgesView() } label: { BoxLabel(L("badges.h1"), icon: "rosette") }
+                        NavigationLink { BadgesView() } label: { BoxLabel(L("badges.h1"), duo: "medal", tint: Theme.gold) }
                     }
-                    NavigationLink { AboutView() } label: { BoxLabel(L("settings.about"), icon: "info.circle") }
+                    NavigationLink { AboutView() } label: { BoxLabel(L("settings.about"), duo: "info", tint: Theme.gold) }
                     // İlk kurulumdaki altı adımlık tanıtım (4 Kasım 2026, sahibin isteği)
-                    Button { Onboarding.replay() } label: { BoxLabel(L("onboard.replay"), icon: "graduationcap") }
+                    Button { Onboarding.replay() } label: { BoxLabel(L("onboard.replay"), duo: "cap", tint: Theme.gold) }
                         .foregroundStyle(Theme.text)
                 }
             }
@@ -363,10 +367,13 @@ struct AboutView: View {
                 Link(L("privacy.full"), destination: SiteLinks.privacy)
                     .tint(Theme.accent)
             }
-            // Açık lisanslı parçalar (3D simgeler MIT, yazı tipleri OFL; 4 Kasım 2026)
+            // Açık lisanslı parçalar (3D simgeler MIT, yazı tipleri OFL; 4 Kasım 2026; iki tonlu simgeler Phosphor MIT, 8 Kasım 2026)
             Section {
                 Text(L("about.credits")).font(.footnote).foregroundStyle(Theme.muted)
                 Link(L("about.license"), destination: URL(string: "https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE")!)
+                    .font(.footnote)
+                    .tint(Theme.accent)
+                Link(L("about.licensePhosphor"), destination: URL(string: "https://github.com/phosphor-icons/core/blob/main/LICENSE")!)
                     .font(.footnote)
                     .tint(Theme.accent)
             }

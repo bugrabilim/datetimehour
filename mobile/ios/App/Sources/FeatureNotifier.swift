@@ -10,12 +10,21 @@ import SaatCore
 /// kurulur; yalnız hava özeti için hava servisine (WeatherKit) sorulur. iOS en çok 64 bekleyen bildirim tuttuğu için
 /// liste PrayerNotifier'da vakitlerle birlikte zamana göre sıralanıp kesilir; arka plan yenilemesi listeyi ileri taşır.
 enum NotifyFeature: String, CaseIterable, Identifiable {
-    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, friday, daily, sky
+    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, friday, daily, sky, photo
+    /// Rashdul Qiblat ve sünnet oruçlar (10 Kasım 2026): yalnız Vakitler açıkken; oruçlar varsayılan kapalı
+    case qibla, fasting
 
     var id: String { rawValue }
     var key: String { "notify.\(rawValue)" }
-    var title: String { L("notify.cat.\(rawValue)") }
-    var note: String { L("notify.cat.\(rawValue).note") }
+    /// Fotoğraf ışığının metinleri kendi `photoApp.*` anahtarlarında (9 Kasım 2026)
+    var title: String {
+        switch self {
+        case .photo: L("photoApp.title")
+        case .qibla: L("qibla.rashdul")
+        default: L("notify.cat.\(rawValue)")
+        }
+    }
+    var note: String { self == .photo ? L("photoApp.notify.note") : L("notify.cat.\(rawValue).note") }
 
     var icon: String {
         switch self {
@@ -31,11 +40,45 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
         case .friday: "building.columns"
         case .daily: "quote.bubble"
         case .sky: "sparkles"
+        case .photo: "camera.aperture"
+        case .qibla: "location.north.circle"
+        case .fasting: "moon.stars"
+        }
+    }
+
+    /// İki tonlu simgenin adı (8 Kasım 2026, DUOTONE.md; Ayarlar › Bildirimler satırları)
+    var duo: String {
+        switch self {
+        case .calendar: "calendar"
+        case .seasons: "leaf"
+        case .moon: "moon"
+        case .sun: "sunrise"
+        case .weather: "sun_cloud"
+        case .hourly: "clock"
+        case .dst: "dst"
+        case .bedtime: "bed"
+        case .habits: "coffee"
+        case .friday: "mosque"
+        case .daily: "speech"
+        case .sky: "telescope"
+        case .photo: "aperture"
+        case .qibla: "kaaba"
+        case .fasting: "star_crescent"
+        }
+    }
+
+    /// Konu rengi: takvim ve günün sözü adaçayı, gök ve hava mavi, uyku/alışkanlık/saat başı/yaz saati kiremit, Cuma altın
+    var tint: Color {
+        switch self {
+        case .calendar, .daily: Theme.sage
+        case .seasons, .moon, .sun, .weather, .sky, .photo: Theme.sky
+        case .hourly, .dst, .bedtime, .habits: Theme.terra
+        case .friday, .qibla, .fasting: Theme.gold
         }
     }
 
     /// Varsayılan: saat başı kapalı, diğerleri açık (30 Ekim 2026, sahibin kararı)
-    var defaultOn: Bool { self != .hourly }
+    var defaultOn: Bool { self != .hourly && self != .fasting }
     var isOn: Bool { UserDefaults.standard.object(forKey: key) as? Bool ?? defaultOn }
 
     /// Hava özetinin saati (gece yarısından dakika; varsayılan 07.30)
@@ -84,7 +127,99 @@ enum FeatureNotifier {
         if NotifyFeature.friday.isOn { out += friday(place: place, now: now, days: days) } // Cuma hatırlatması (#58)
         if NotifyFeature.daily.isOn { out += daily(now: now, days: min(days, 7)) } // günün sözü (#16)
         if NotifyFeature.sky.isOn { out += sky(place: place, now: now, days: days) } // gökyüzü olayları (#154)
+        // Fotoğraf ışığı: ekran bir kez açıldıysa, en çok 7 gün (64 bekleyen bildirim sınırı)
+        if NotifyFeature.photo.isOn && PhotoPrefs.used { out += photo(place: place, now: now, days: min(days, 7)) }
+        // Vakitler'e bağlı olanlar (10 Kasım 2026): Rashdul Qiblat, sünnet oruçlar, Kemenag takviminde isbat akşamı
+        if Features.isOn(.prayer) {
+            if NotifyFeature.qibla.isOn { out += rashdul(place: place, now: now) }
+            if NotifyFeature.fasting.isOn { out += fasting(place: place, now: now, days: days) }
+            if NotifyFeature.calendar.isOn { out += isbat(place: place, now: now, days: days) }
+        }
         return out.filter { $0.fireAt > now }
+    }
+
+    /// Fotoğraf ışığı (9 Kasım 2026): seçilen ışığın (sabah/akşam mavi ve altın saat) başlangıcından `lead` dakika önce;
+    /// önbellekte bulut tahmini varsa o günün gün doğumu/batımı tahmini gövdede yazar (bildirim için ağa çıkılmaz)
+    static func photo(place: AppPlace, now: Date, days: Int) -> [PlannedNotification] {
+        let ev = PhotoPrefs.events, lead = PhotoPrefs.lead
+        let samples = PhotoSky.cached(lat: place.lat, lon: place.lon)
+        let today = CalendarDay(now, timeZone: place.zone)
+        return (0..<days).flatMap { i -> [PlannedNotification] in
+            let p = PhotoDay(today.adding(days: i), place)
+            return PhotoPrefs.eventIDs.filter { ev.contains($0) }.compactMap { e -> PlannedNotification? in
+                guard let at = p.start(e) else { return nil }
+                let fire = at.addingTimeInterval(Double(-lead * 60))
+                guard fire > now else { return nil }
+                let ref = e.hasPrefix("am") ? p.sunrise : p.sunset
+                var body = "\(place.name) · \(p.clock(at))"
+                if let ref, let samples, let q = PhotoLight.quality(at: Int64(ref.timeIntervalSince1970 * 1000), in: samples) {
+                    body += " · " + T("photoApp.n.q", L("photoApp.q.\(q.rawValue)"))
+                }
+                return PlannedNotification(id: "\(featurePrefix)photo-\(e)-\(Int(at.timeIntervalSince1970 / 60))", fireAt: fire,
+                                           title: T("photoApp.n.\(e)", lead), body: body)
+            }
+        }
+    }
+
+    /// Rashdul Qiblat: Güneş Kâbe'nin üstüne gelmeden 30 dk önce; yalnız Güneş o anda seçili yerde ufkun üstündeyse
+    static func rashdul(place: AppPlace, now: Date) -> [PlannedNotification] {
+        let y = CalendarDay(now, timeZone: place.zone).year
+        var utc = Calendar(identifier: .gregorian)
+        utc.timeZone = TimeZone(identifier: "UTC")!
+        return (Qibla.rashdul(year: y) + Qibla.rashdul(year: y + 1)).compactMap { ms -> PlannedNotification? in
+            let at = Date(timeIntervalSince1970: (ms / 60000).rounded() * 60)
+            let c = utc.dateComponents([.year, .month, .day, .hour, .minute], from: at)
+            let sun = Qibla.sun(year: c.year ?? 2026, month: c.month ?? 1, day: c.day ?? 1, ut: Double(c.hour ?? 0) + Double(c.minute ?? 0) / 60,
+                                latitude: place.lat, longitude: place.lon)
+            let fire = at.addingTimeInterval(-30 * 60)
+            guard sun.alt > 0, fire > now, fire < now.addingTimeInterval(400 * 86_400) else { return nil }
+            return PlannedNotification(id: "\(featurePrefix)rashdul-\(Int(at.timeIntervalSince1970 / 60))", fireAt: fire,
+                                       title: L("qibla.rashdul"), body: T("notify.n.rashdul", place.hm(at)))
+        }
+    }
+
+    /// Sünnet oruç: oruç gününden önceki akşam 20.00'de (yerin saatiyle); gövdede hicri tarih ve sahurun bittiği vakit
+    /// (Kemenag'da ihtiyat imsakı)
+    static func fasting(place: AppPlace, now: Date, days: Int) -> [PlannedNotification] {
+        let kinds = SunnahFasts.kinds(place: place)
+        let today = CalendarDay(now, timeZone: place.zone)
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = place.zone
+        return (0...days).compactMap { i -> PlannedNotification? in
+            let day = today.adding(days: i), prev = day.adding(days: -1)
+            let names = SunnahFasts.reasons(day, kinds: kinds)
+            guard !names.isEmpty, let h = Hijri.date(year: day.year, month: day.month, day: day.day),
+                  let noon = cal.date(from: DateComponents(year: day.year, month: day.month, day: day.day, hour: 12)),
+                  let fire = cal.date(from: DateComponents(year: prev.year, month: prev.month, day: prev.day, hour: 20)), fire > now else { return nil }
+            let body: String
+            if let imsak = place.extraRows(on: noon)?.imsak {
+                body = T("fast.n.body", h.text, L("prayer.method.rowImsak"), place.hm(imsak))
+            } else if let f = place.schedule.entries(on: noon).first(where: { $0.prayer == .fajr }) {
+                body = T("fast.n.body", h.text, Prayer.fajr.localizedName, place.hm(f.at))
+            } else {
+                return nil
+            }
+            return PlannedNotification(id: "\(featurePrefix)fast-\(day.iso)", fireAt: fire,
+                                       title: T("fast.n.title", names.map { L($0) }.joined(separator: " · ")), body: body)
+        }
+    }
+
+    /// Sidang isbat (Endonezya): Kemenag takvimi kullanılıyorsa Şaban, Ramazan ve Zilkade'nin 29'unda 16.00'da; gövdede
+    /// takvime göre beklenen sonuç (sıradaki ayın 1'i). Karar farklı çıkarsa hicri tarih Hesap yöntemi'nden kaydırılır.
+    static func isbat(place: AppPlace, now: Date, days: Int) -> [PlannedNotification] {
+        guard Hijri.calendar == "kemenag" else { return [] }
+        let today = CalendarDay(now, timeZone: place.zone)
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = place.zone
+        return (0...days).compactMap { i -> PlannedNotification? in
+            let day = today.adding(days: i)
+            guard let h = Hijri.date(year: day.year, month: day.month, day: day.day), h.day == 29, [8, 9, 11].contains(h.month),
+                  let m = Hijri.month(year: h.year, month: h.month + 1),
+                  let fire = cal.date(from: DateComponents(year: day.year, month: day.month, day: day.day, hour: 16)), fire > now else { return nil }
+            let first = CalendarDay(m.first.0, m.first.1, m.first.2)
+            return PlannedNotification(id: "\(featurePrefix)isbat-\(day.iso)", fireAt: fire, title: L("notify.n.isbat"),
+                                       body: T("notify.n.isbatBody", L("hijri.month.\(h.month + 1)"), Fmt.day(first)))
+        }
     }
 
     /// Gökyüzü olayları (2. analiz #154): o gecenin akşamı 20.00'de (yerel öğleden önceki olay bir önceki akşama düşer)
@@ -131,7 +266,8 @@ enum FeatureNotifier {
         return (0..<days).compactMap { i in
             let day = today.adding(days: i)
             var seen = Set<String>()
-            let names = CalendarData.shared.events(on: day).map(\.name).filter { seen.insert($0).inserted }
+            // Kapsayıcı takvimlerin çok günlü olayları yalnız ilk gününde (her gün yinelenmesin)
+            let names = calEvents(day).filter { !$0.type.hasPrefix("cal:") || $0.date == day.iso }.map(\.name).filter { seen.insert($0).inserted }
             guard !names.isEmpty else { return nil }
             let fire = day.noon(in: .current).addingTimeInterval(-3 * 3600)
             return PlannedNotification(id: "\(featurePrefix)cal-\(day.iso)", fireAt: fire,
@@ -435,3 +571,40 @@ struct SunMoonOptionsView: View {
     }
 }
 
+/// Sünnet oruçlar (10 Kasım 2026, Endonezya araştırması #8; Android'deki SunnahFasts ile aynı kural): pazartesi-perşembe,
+/// eyyâm-ı bîd (13–15), arefe (9 Zilhicce), Tasua ve Aşure (9–10 Muharrem), Şevval'in altı günü (bayramın ertesi günü bir kez).
+/// Hicri günler uygulamanın hicri takvimiyle; Ramazan, Ramazan Bayramı, Kurban Bayramı ve teşrik günleri (10–13 Zilhicce)
+/// atlanır. Seçim `notify.fasting.kinds` (virgülle); kayıt yoksa hepsi, Caferî ve Tahran yönteminde Aşure hariç.
+enum SunnahFasts {
+    static let kindsKey = "notify.fasting.kinds"
+    static let all = ["monthu", "bidh", "arafah", "ashura", "shawwal"]
+
+    static func kinds(place: AppPlace) -> Set<String> {
+        if let s = UserDefaults.standard.string(forKey: kindsKey) {
+            return Set(s.split(separator: ",").map(String.init).filter { all.contains($0) })
+        }
+        let shia = ["jafari", "tehran"].contains(PrayerMethod.id(for: place))
+        return Set(all.filter { !(shia && $0 == "ashura") })
+    }
+
+    static func setKinds(_ k: Set<String>) {
+        UserDefaults.standard.set(all.filter { k.contains($0) }.joined(separator: ","), forKey: kindsKey)
+    }
+
+    /// O günün sünnet oruç adları (metin anahtarı); yasak günde ve Ramazan'da boş
+    static func reasons(_ day: CalendarDay, kinds: Set<String>) -> [String] {
+        guard let h = Hijri.date(year: day.year, month: day.month, day: day.day) else { return [] }
+        let m = h.month, d = h.day
+        if m == 9 || (m == 10 && d == 1) || (m == 12 && (10...13).contains(d)) { return [] }
+        var out: [String] = []
+        if kinds.contains("arafah") && m == 12 && d == 9 { out.append("fast.name.arafah") }
+        if kinds.contains("ashura") && m == 1 && d == 9 { out.append("fast.name.tasua") }
+        if kinds.contains("ashura") && m == 1 && d == 10 { out.append("fast.name.ashura") }
+        if kinds.contains("shawwal") && m == 10 && d == 2 { out.append("fast.name.shawwal") }
+        if kinds.contains("bidh") && (13...15).contains(d) { out.append("fast.name.bidh") }
+        if kinds.contains("monthu") {
+            if day.weekday == 0 { out.append("fast.name.monday") } else if day.weekday == 3 { out.append("fast.name.thursday") }
+        }
+        return out
+    }
+}

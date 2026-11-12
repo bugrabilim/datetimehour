@@ -2,12 +2,13 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { CALENDARS, calendarData, calendarsJson, loadCalTexts, runCalendarTests, validateCalendars } from "../lib/calendars/index.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = path.join(ROOT, "dist");
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "site.config.json"), "utf8"));
 const ORIGIN = (process.env.SITE_ORIGIN || cfg.origin).replace(/\/+$/, "");
-const ALL = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
+const ALL = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn"];
 const RTL = ["ar", "ur", "fa"];
 const LANGS = ALL.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
 const LG = LANGS.join("|");
@@ -105,12 +106,15 @@ for (const f of htmlFiles) {
   if (!timerPreset && /\/(geri-sayim|countdown)\/[a-z0-9-]+\/index\.html$/.test(name)) check(/data-cdp-keys/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h) && /events-table/.test(h), `${name}: geri sayım sayfası eksik`);
   if (/\/(namaz-vakitleri|prayer-times)\/([a-z]+\/)?index\.html$/.test(name)) {
     const hub = /\/(namaz-vakitleri|prayer-times)\/index\.html$/.test(name);
-    check(/data-prayer\b/.test(h) && (h.match(/data-pr="/g) || []).length === 6 && /prayer-calc\.js/.test(h) && /prayer\.js/.test(h) && /data-pr-month/.test(h) && /data-imsakiye/.test(h) && /imsakiye\.js/.test(h) && !/class="tool prayer"/.test(h) && !/pr-method-h/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: namaz vakitleri yapısı eksik`);
+    check(/data-prayer\b/.test(h) && (h.match(/data-pr="/g) || []).length === 8 && /prayer-calc\.js/.test(h) && /prayer\.js/.test(h) && /data-pr-month/.test(h) && /data-imsakiye/.test(h) && /imsakiye\.js/.test(h) && !/class="tool prayer"/.test(h) && !/pr-method-h/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: namaz vakitleri yapısı eksik`);
     if (hub) check((h.match(/<option value="[a-z]+" data-lat=/g) || []).length === 81 && /data-place-geo/.test(h), `${name}: hub il listesi/konum düğmesi eksik`);
     else check(/data-mode="city"/.test(h) && /data-lat="[\d.]+" data-lon="[\d.]+"/.test(h), `${name}: il sayfası verisi eksik`);
   }
+  if (/^\/((en|de|az|ar)\/qibla|kible)\/index\.html$/.test(name)) check(/data-qb-rq\b/.test(h), `${name}: Rashdul Qiblat satırı yok`);
   if (/^\/((en|de|az|ar)\/qibla|kible)\/index\.html$/.test(name)) check(/data-qibla\b/.test(h) && /data-qb-rose/.test(h) && /data-qb-needle/.test(h) && /qibla\.js/.test(h) && /prayer-calc\.js/.test(h) && /data-qb-mq-show/.test(h) && /data-needs-place/.test(h), `${name}: kıble sayfası yapısı eksik`);
   if (/\/(mevsimler|seasons)\/index\.html$/.test(name)) {
+    // Tutulma namazı notu yalnız Vakitler'i başta soran dillerde (10 Kasım 2026)
+    check(/class="meta">[^<]*(küsûf|kusuf|الكسوف|کسوف|কুসুফ)/.test(h) === /^\/((ar|id|ur|fa|bn)\/seasons|mevsimler)\//.test(name), `${name}: tutulma namazı notu yalnız Vakitler'i başta soran dillerde`);
     check(/data-wheel/.test(h) && /data-n-chart/.test(h) && /data-moon/.test(h) && (h.match(/class="season-card /g) || []).length === 4 && /nature\.js/.test(h) && /nature-calc\.js/.test(h) && /data-n-turns/.test(h) && /data-n-moon="rise"/.test(h) && /data-n-mooncal/.test(h) && /data-n-eclipses/.test(h) && !/data-place-city="/.test(h.replace(/<dialog[\s\S]*?<\/dialog>/g, "")) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: doğa sayfası yapısı eksik`);
     check(h.indexOf("<h1") < h.indexOf("data-nature"), `${name}: başlık çarkın üstünde olmalı`);
   }
@@ -132,6 +136,7 @@ for (const f of htmlFiles) {
       if (trOnly) check(!LANGS.some((l) => l !== "tr" && h.includes(`<link rel="alternate" hreflang="${l}"`)), `${name}: ilçe sayfasında başka dil hreflang'ı olmamalı`);
       check(/og:image/.test(h) && /twitter:card/.test(h), `${name}: OG/Twitter yok`);
     } else {
+      // Takvimin giriş sayfaları yıl sayfasına canonical verir
       check(/rel="alternate" hreflang/.test(h) === false && /rel="canonical" href="https:\/\/[^"]+\/\d{4}\/"/.test(h), `${name}: noindex giriş sayfası yıl sayfasına canonical vermeli`);
     }
     check(/action="https:\/\/bumbagroup\.com\/api\/liste\/katil"/.test(h) && /name="riza" value="on" required/.test(h) && !/name="riza"[^>]*checked/.test(h), `${name}: liste formu hatalı`);
@@ -216,7 +221,7 @@ for (const l of LANGS.filter((x) => x !== "tr")) {
 for (const l of LANGS) {
   const evs = JSON.parse(fs.readFileSync(path.join(DIST, "assets", `events-${l}.json`), "utf8"));
   check(evs.length > 100 && evs.every((e) => e.n && /^\d{4}-\d\d-\d\d$/.test(e.d)), `events-${l}.json: adsız ya da hatalı etkinlik`);
-  check(evs.some((e) => e.t === "exam"), `events-${l}.json: sınav etkinliği yok`);
+  check(!evs.some((e) => e.t === "exam"), `events-${l}.json: sınav etkinliği var (9 Kasım 2026'da kaldırıldı)`);
 }
 for (const l of LANGS) check(fs.existsSync(path.join(DIST, "assets", `search-${l}.json`)), `search-${l}.json yok`);
 check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z0-9-]+\/<\/loc>|\/emeklilik-hesaplama\/<\/loc>/.test(u) ? ["tr"] : LANGS).every((l) => u.includes(`hreflang="${l}"`))), "sitemap: bir adreste hreflang eksik");
@@ -252,6 +257,11 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
     check(Number.isFinite(t) && Math.abs(Math.round(t * 60) - (hh * 60 + mm)) <= 1, `kıble saati ${d}.10.2026: ${t} ≠ ${v}`);
   }
   check(!Number.isFinite(m.exports.qiblaTime(2026, 10, 30, 40.71, -74.01, -4)), "kıble saati: New York'ta olmamalı");
+  // Rashdul Qiblat (10 Kasım 2026): Kemenag 2025–2027 duyurularıyla aynı dakika (WIB, UTC+7)
+  for (const [y, want] of [[2025, ["2025-05-27 16:18", "2025-07-15 16:27"]], [2026, ["2026-05-28 16:18", "2026-07-15 16:27"]], [2027, ["2027-05-28 16:18", "2027-07-16 16:27"]]]) {
+    const got = m.exports.rashdulQiblat(y).map((ms) => new Date(Math.round(ms / 60000) * 60000 + 7 * 3600000).toISOString().slice(0, 16).replace("T", " "));
+    check(got.join() === want.join(), `Rashdul Qiblat ${y}: ${got} ≠ ${want}`);
+  }
   // İlçe merkezleri (src/data/districts.json, GeoNames): Yüksekova ve Datça 30 Ekim 2026, Diyanet vakitleriyle (±1 dk)
   const DS = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/districts.json"), "utf8"));
   check(DS.count === 973 && Object.keys(DS.provinces).length === 81, `ilçe verisi: ${DS.count} ilçe`);
@@ -264,6 +274,22 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
       const k = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"][i], [hh, mm] = v.split(":").map(Number);
       check(Math.abs(Math.round(r[k] * 60) - (hh * 60 + mm)) <= 1, `ilçe vakti ${name} ${k}: ${r[k].toFixed(3)} ≠ ${v}`);
     });
+  }
+  // Kemenag (10 Kasım 2026): Jakarta 10 Kasım 2026, Kemenag'ın SIHAT tablosundaki 8 satır (Liputan6 aynası) birebir;
+  // bölgeye göre varsayılan yöntem
+  {
+    const P = m.exports, Pm = P.methodParams("kemenag", false), r = P.times(2026, 11, 10, -6.17, 106.83, 7, Pm), mn = {};
+    for (const k of ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"]) mn[k] = P.toMin(r[k], Pm, k);
+    Object.assign(mn, P.methodRows(2026, 11, 10, -6.17, 106.83, 7, Pm, mn.fajr));
+    const want = { imsak: "03:56", fajr: "04:06", sunrise: "05:22", duha: "05:50", dhuhr: "11:40", asr: "14:59", maghrib: "17:51", isha: "19:03" };
+    for (const [k, v] of Object.entries(want)) {
+      const [hh, mm] = v.split(":").map(Number);
+      check(mn[k] === hh * 60 + mm, `Kemenag Jakarta 10.11.2026 ${k}: ${mn[k]} ≠ ${v}`);
+    }
+    const dm = (tz, lat, lon) => { const d = P.defaultMethod(tz, lat, lon); return d.m + (d.h ? "+h" : ""); };
+    check(dm("Asia/Jakarta", -6.2, 106.8) === "kemenag" && dm("Asia/Makassar", -5.1, 119.4) === "kemenag" && dm("Asia/Kolkata", 28.6, 77.2) === "karachi+h"
+      && dm("Asia/Kolkata", 9.9, 76.3) === "karachi" && dm("Asia/Karachi", 24.9, 67) === "karachi+h" && dm("Asia/Singapore", 1.3, 103.8) === "singapore"
+      && dm("Europe/Istanbul", 41, 29) === "diyanet" && dm("Europe/Berlin", 52.5, 13.4) === "diyanet", "bölgeye göre varsayılan yöntem");
   }
   const hl = m.exports.times(2027, 6, 21, 64.1, -21.9, 0); // Reykjavik: imsak/yatsı açısı oluşmaz, yedide bir kuralı
   check(Object.values(hl).every((x) => Number.isFinite(x)), "namaz hesabı: yüksek enlemde NaN");
@@ -367,7 +393,12 @@ check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-
   const W = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/world-holidays.json"), "utf8"));
   check(Object.keys(W.countries).length === 30 && !W.countries.EG && !W.countries.UA, "dünya tatilleri: 30 ülke olmalı (EG, KZ, UA yok)");
   const hub = rd("resmi-tatiller");
-  check((hub.match(/<tr data-d=/g) || []).length === 31 && /href="\/takvim\/\d{4}\/"/.test(hub), "dünya tatilleri merkezi: 30 ülke + Türkiye satırı yok");
+  check((hub.match(/<tr data-d=/g) || []).length === 33 && /href="\/takvim\/\d{4}\/"/.test(hub), "dünya tatilleri merkezi: 32 ülke + Türkiye satırı yok");
+  // Endonezya (SKB 3 Menteri) ve Hindistan (DoPT) resmî listelerden (10 Kasım 2026); cuti bersama tatil sayısına girmez
+  const idp = rd("en/public-holidays/indonesia"), inp = rd("en/public-holidays/india"), idl = rd("id/public-holidays/indonesia");
+  check(/data-d="2027-03-10"/.test(idp) && /class="wh-leave"/.test(idp) && /2027: 18 public holidays/.test(idp) && /SKB 3 Menteri/.test(idp), "Endonezya tatil sayfası eksik");
+  check(/Idulfitri/.test(idl) && /Cuti bersama/.test(idl), "Endonezce Endonezya sayfasında yerel adlar yok");
+  check(/data-d="2026-05-28"/.test(inp) && !/data-d="2026-05-27"/.test(inp) && /2027: 17 public holidays/.test(inp) && /DoP&amp;T/.test(inp), "Hindistan tatil sayfası eksik (Bakrid 2026 28 Mayıs)");
   const de = rd("de/public-holidays/germany"), tr = rd("resmi-tatiller/almanya");
   check(/data-d="2027-10-03"/.test(de) && /Tag der Deutschen Einheit/.test(de) && /Alman Birliği Günü/.test(tr) && /Yerel adı: Tag der Deutschen Einheit/.test(tr), "Almanya tatil sayfası eksik");
   check(/Public holidays in the United Kingdom/.test(rd("en/public-holidays/united-kingdom")), "EN: the United Kingdom");
@@ -391,6 +422,32 @@ check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-
   check(dstH.includes(`data-at="${at(2027, 3, 14, 7)}"`), "yaz saati: 14 Mart 2027 (ABD, New York 07:00 UTC) yok");
   const ux = rd("unix-zaman-damgasi");
   check(/data-unix/.test(ux) && /data-ux-ts/.test(ux) && /data-ux-date/.test(ux) && /zones\.js/.test(ux), "Unix sayfası eksik");
+}
+// Kapsayıcı takvimler (9 Kasım 2026; lib/calendars, docs/takvimler.md): modül doğrulaması (19 dilde metin eşliği, tarih, renk),
+// her modülün <id>.test.json'u, uygulamalardaki calendars.json ve cals.* metinleri güncel, takvim yıl sayfasında seçim ve veri
+{
+  const data = calendarData(), texts = loadCalTexts(ROOT);
+  for (const e of validateCalendars(data, texts, ROOT)) check(false, `takvimler: ${e}`);
+  for (const e of runCalendarTests(data, ROOT)) check(false, `takvim testi: ${e}`);
+  const body = calendarsJson(data);
+  for (const f of ["mobile/android/app/src/main/assets/calendars.json", "mobile/ios/App/Resources/calendars.json"]) {
+    const fp = path.join(ROOT, f);
+    check(fs.existsSync(fp) && fs.readFileSync(fp, "utf8") === body, `${f} güncel değil: node mobile/shared/gen-strings.mjs`);
+  }
+  const andr = fs.readFileSync(path.join(ROOT, "mobile/android/app/src/main/res/values/strings.xml"), "utf8");
+  for (const { meta } of CALENDARS) for (const k of ["name", "desc", ...Object.keys(texts[meta.id].tr.ev).map((x) => `ev_${x}`)])
+    check(andr.includes(`<string name="cals_${meta.id}_${k}">`), `uygulama metni yok: cals.${meta.id}.${k.replace(/_/g, ".")} (node mobile/shared/gen-strings.mjs)`);
+  for (const [f, l, y] of [["takvim/2027", "tr", 2027], ["en/calendar/2027", "en", 2027], ["ar/calendar/2027", "ar", 2027]]) {
+    const h = fs.readFileSync(path.join(DIST, f, "index.html"), "utf8");
+    check(/<details class="cal-pick" data-cals hidden>/.test(h) && CALENDARS.every(({ meta }) => h.includes(`data-cal="${meta.id}"`)) && /data-day-cals/.test(h) && /data-cal-notes/.test(h), `takvim seçimi eksik: /${f}/`);
+    const m = h.match(new RegExp(`"cals":\\{"url":"(/assets/cals-${l}-${y}\\.json)\\?v=[0-9a-f]+","list":\\[`));
+    check(m, `takvim verisi adresi yok: /${f}/`);
+    if (m) {
+      const j = JSON.parse(fs.readFileSync(path.join(DIST, m[1]), "utf8"));
+      check(j.christian && j.christian.events.some((e) => e[0] === "2027-03-28" && e[1] === "easter") && j.christian.ev.easter === texts.christian[l].ev.easter && j.christian.events.every((e) => e[0].startsWith(String(y)) || (e[2] || "").startsWith(String(y))), `takvim verisi hatalı: ${m[1]}`);
+    }
+  }
+  for (const l of LANGS) check(fs.readFileSync(path.join(DIST, l === "tr" ? "gizlilik" : `${l}/privacy`, "index.html"), "utf8").includes("sth-cals"), `gizlilik: çerez tablosunda sth-cals yok (${l})`);
 }
 // Takvim aboneliği (.ics) ve yazdırma (30 Ekim 2026, #21)
 for (const l of LANGS) for (const k of ["holidays", "days"]) {
@@ -432,6 +489,9 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   const zk = fs.readFileSync(path.join(DIST, "zekat-hesaplama", "index.html"), "utf8");
   check(/data-zakat\b/.test(zk) && (zk.match(/data-zk="/g) || []).length === 8 && /zakat\.js/.test(zk) && /data-zk-verdict/.test(zk), "zekât sayfası eksik");
   check(/data-fitre="\d+"/.test(zk) && /data-fitre-people/.test(zk) && /data-fitre-total/.test(zk), "zekât sayfasında fitre bölümü yok");
+  // BAZNAS (Endonezya; 10 Kasım 2026): esas seçimi, fitrah Rp 50.000; Endonezce sayfada BAZNAS seçili
+  const zkId = fs.readFileSync(path.join(DIST, "id", "zakat-calculator", "index.html"), "utf8");
+  check(/data-zk-std/.test(zk) && /data-fitrah="50000"/.test(zk) && /Rp 50\.000/.test(zk) && /<option value="baznas" selected>/.test(zkId), "zekât: BAZNAS esası eksik");
 }
 // 9. tur (30 Ekim 2026, rakip analizi K maddeleri): kerahat, altın/mavi saat, Ay .ics, araç ekleri, saat görünümü
 {
@@ -462,6 +522,10 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   const cd = rd("geri-sayim", "index.html"), sw = rd("kronometre", "index.html"), po = rd("pomodoro", "index.html"), al = rd("alarm", "index.html");
   check(/data-cd-add/.test(cd) && /data-sw-csv/.test(sw) && /data-pomo-csv/.test(po) && /data-pomo-g/.test(po) && /data-pomo-tag/.test(po) && /data-pomo-streak/.test(po) && (al.match(/<option value="(chime|bell|rise|digital|soft)"/g) || []).length === 5, "araç ekleri (+1 dk, CSV, hedef, etiket, alarm sesi) eksik");
   const home = rd("index.html");
+  // Menü sırası (9 Kasım 2026): Namaz vakitleri tr/ar/id/ur/fa'da ikinci, diğer dillerde sonda
+  const navOrder = (h) => [...(h.match(/<nav class="nav"[\s\S]*?<\/nav>/) || [""])[0].matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+  const trNav = navOrder(home), enNav = navOrder(rd("en", "index.html")), arNav = navOrder(rd("ar", "index.html"));
+  check(trNav[1] === "/namaz-vakitleri/" && arNav[1] === "/ar/prayer-times/" && enNav.indexOf("/en/prayer-times/") === enNav.length - 2, `menü sırası hatalı: ${trNav} | ${enNav}`);
   check((home.match(/data-look="font"/g) || []).length === 2 && (home.match(/data-look="color"/g) || []).length === 2, "ayarlarda saat görünümü (yazı tipi, renk) yok");
   // Ek araçlar: 8 sayfa her dilde, araçlar merkezinde kart, betik
   const more = { "hicri-takvim-cevirici": ["data-hj-g", "data-hj-y", "data-hj-tbody"], "saat-hesaplama": ["data-tc-s", "data-tc-sum"], "kac-gun-kaldi": ["data-du-d", "data-du-row"], "aralik-zamanlayici": ["data-iv-start", "data-iv-preset"], "satranc-saati": ["data-ch-side=\"white\"", "data-ch-control"], "metronom": ["data-mm-range", "data-mm-tap"], "konusan-saat": ["data-tk-say", "data-live=\"words\""], "burc-hesaplama": ["data-zo-d", "nature-calc.js"] };
@@ -499,6 +563,15 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
     check((hijriDate(t, d) || []).join("/") === want, `hicri tarih: ${d} ${want} değil (${hijriDate(t, d)})`);
   }
   check(hijriDate(t, "2025-12-20") === null && hijriDate(t, "2031-12-31") !== null, "hicri tarih: tablo aralığı");
+  // Endonezya takvimi (10 Kasım 2026): Kemenag 2026 takvimi, SKB 2026/2027 ve isbat; MABIMS hesabı dayanakların hepsini tutturmalı
+  const { hijriTableId } = await import("../lib/hijri.mjs");
+  const ti = hijriTableId(t, JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/hijri-id.json"), "utf8")));
+  check(ti.mismatch.length === 0, `Endonezya hicri: MABIMS hesabı dayanaklardan ayrılıyor: ${ti.mismatch.join(", ")}`);
+  check(ti[0][1] === t[0][1] && ti[0][2] === t[0][2] && ti.length === t.length, "Endonezya hicri: Diyanet tablosuyla aynı aralıkta değil");
+  for (const [d, want] of [["2026-11-10", "1448/5/30"], ["2026-11-11", "1448/6/1"], ["2026-03-21", "1447/10/1"], ["2026-03-20", "1447/9/30"], ["2027-03-10", "1448/10/1"], ["2027-05-17", "1448/12/10"]]) {
+    check((hijriDate(ti, d) || []).join("/") === want, `Endonezya hicri tarih: ${d} ${want} değil (${hijriDate(ti, d)})`);
+  }
+  check(/data-hj-cal\b/.test(fs.readFileSync(path.join(DIST, "hicri-takvim-cevirici/index.html"), "utf8")), "hicri çevirici: takvim seçimi yok");
 }
 // O maddeleri (30 Ekim 2026): hesap yöntemleri, hilal, gece gökyüzü, tutulma haritası, tarihte bugün, emeklilik
 {
@@ -507,11 +580,11 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   const hm = (h) => Math.round(h * 60);
   const d0 = P.times(2026, 10, 30, 41.01, 28.98, 3), dh = P.times(2026, 10, 30, 41.01, 28.98, 3, P.methodParams("diyanet", true));
   check(hm(d0.fajr) === hm(dh.fajr) && hm(dh.asr) - hm(d0.asr) > 30, "Hanefî ikindisi: yalnız ikindi ve daha geç olmalı");
-  check(P.METHOD_IDS.length === 14 && P.methodParams("bilinmeyen", false) === P.PARAMS, "hesap yöntemleri: 14 yöntem, bilinmeyen Diyanet");
+  check(P.METHOD_IDS.length === 15 && P.methodParams("bilinmeyen", false) === P.PARAMS, "hesap yöntemleri: 15 yöntem, bilinmeyen Diyanet");
   const mk = P.times(2026, 10, 30, 21.42, 39.83, 3, P.methodParams("makkah", false));
   check(Math.abs((mk.isha - mk.maghrib) * 60 - 90) < 0.01, "Ümmü'l-Kura: yatsı akşamdan 90 dk sonra olmalı");
   const pr = fs.readFileSync(path.join(DIST, "namaz-vakitleri", "istanbul", "index.html"), "utf8");
-  check((pr.match(/<select id="pr-method"[^]*?<\/select>/) || [""])[0].split("<option").length - 1 === 14 && /data-pr-asr/.test(pr), "namaz sayfasında yöntem seçimi yok");
+  check((pr.match(/<select id="pr-method"[^]*?<\/select>/) || [""])[0].split("<option").length - 1 === 15 && /data-pr-asr/.test(pr), "namaz sayfasında yöntem seçimi yok");
   // Hilal (Yallop): Ramazan 1447 kavuşumu 17 Şubat 2026; İstanbul'da ilk akşam görülmez, ikinci akşam görülür
   const conj = N.phaseMs(Math.floor((Date.UTC(2026, 1, 17) / 86400000 + 2440587.5 - 2451550.09766) / 29.530588861), false);
   const cr = N.crescent(conj, 41.01, 28.98, 3);
@@ -635,6 +708,81 @@ for (const l of LANGS) {
     check(W.summary(late, 20, null).key === "default", "hava özeti: 12 saatten sonrası bakılmaz");
     const wh = fs.readFileSync(path.join(DIST, "hava-durumu/index.html"), "utf8");
     check(/data-wx-sum/.test(wh) && /visibility/.test(fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8")), "hava sayfası: özet satırı ve görüş isteği");
+    // Fotoğraf ışığı (9 Kasım 2026): gün doğumu/batımı fotoğraf tahmini kuralı; aynı girdiler iOS ve Android testlerinde
+    const PHOTO_CASES = [[0, 0, 0, 0, "fair"], [10, 40, 10, 0, "good"], [10, 10, 60, 0, "good"], [30, 85, 90, 0, "fair"], [50, 50, 50, 0, "fair"], [65, 30, 30, 0, "poor"], [80, 0, 0, 0, "poor"],
+      [5, 50, 50, 0.6, "poor"], [39, 20, 0, 0, "good"], [40, 20, 0, 0, "fair"], [0, 80, 0, 0, "good"], [0, 81, 0, 0, "fair"], [74, 0, 0, 0, "poor"], [59, 0, 0, 0, "fair"]];
+    for (const [L, M, H, P, want] of PHOTO_CASES) check(W.photoSky(L, M, H, P) === want, `fotoğraf tahmini: (${L}, ${M}, ${H}, ${P}) ${want} değil (${W.photoSky(L, M, H, P)})`);
+    const wc = fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8");
+    check(/hourly=cloud_cover_low,cloud_cover_mid,cloud_cover_high,precipitation/.test(wc) && /forecast_days=7/.test(wc) && /function clouds\(lat, lon\) \{\s*if \(!allowed\(\)\)/.test(wc), "fotoğraf ışığı: bulut isteği (katmanlar, 7 gün, izin denetimi)");
+  }
+  // Panchang ve Rahu Kaal (10 Kasım 2026): her dilde; hinduKaal Drik Panchang'la (Delhi 8.11.2026, research doc §2.2)
+  {
+    const pm = { exports: {} };
+    new Function("module", "window", fs.readFileSync(path.join(ROOT, "src/js/prayer-calc.js"), "utf8"))(pm, undefined);
+    const k = pm.exports.hinduKaal(2026, 11, 8, 28.61, 77.21, 5.5);
+    const hm = (h) => { const m = Math.round(h * 60); return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); };
+    check(k && hm(k.sunrise) === "06:38" && hm(k.sunset) === "17:31" && hm(k.rahu[0]) === "16:10" && hm(k.rahu[1]) === "17:31", `panchang: Delhi 8.11.2026 gün doğumu/Rahu Kaal Drik'le aynı değil (${k && [hm(k.sunrise), hm(k.sunset), hm(k.rahu[0]), hm(k.rahu[1])]})`);
+    check(pm.exports.hinduKaal(2026, 12, 21, 78.2, 15.6, 1) === null, "panchang: kutup gecesinde dilim olmamalı");
+    const PC = { tr: "panchang", en: "en/panchang", hi: "hi/panchang", bn: "bn/panchang", ar: "ar/panchang", ja: "ja/panchang" };
+    for (const [l, f] of Object.entries(PC)) {
+      const p = path.join(DIST, f, "index.html"), h = fs.existsSync(p) ? fs.readFileSync(p, "utf8") : "";
+      check(/data-panchang\b/.test(h) && /panchang\.js/.test(h) && /prayer-calc\.js/.test(h) && /data-needs-place/.test(h) && /"WebApplication"/.test(h) && /panchang-days\.json/.test(h), `panchang sayfası eksik: /${f}/`);
+      check(["sunrise", "sunset", "rahu", "yamaganda", "gulika", "abhijit", "brahma"].every((x) => h.includes(`data-pc="${x}"`)) && (h.match(/<tbody data-pc-week>([\s\S]*?)<\/tbody>/) || ["", ""])[1].split("<tr>").length - 1 === 7, `panchang: alanlar ya da 7 günlük tablo eksik (/${f}/)`);
+      check(/data-pc-hindu>[^<]*20\d\d/.test(h), `panchang: Hindu takvimi satırı yok (/${f}/)`);
+    }
+    check(/href="\/panchang\/"/.test(fs.readFileSync(path.join(DIST, "araclar/index.html"), "utf8")) && /id="panchang"/.test(fs.readFileSync(path.join(DIST, "sss/index.html"), "utf8")), "panchang: araçlar kartı ya da SSS grubu yok");
+    // Konum penceresinde dünya araması: alan, 31 şehir verisi
+    const home = fs.readFileSync(path.join(DIST, "en/index.html"), "utf8");
+    check(/data-place-q/.test(home) && /data-place-results/.test(home) && /place-cities-en\.json/.test(home), "konum penceresi: dünya araması eksik");
+    const pc = JSON.parse(fs.readFileSync(path.join(DIST, "assets/place-cities-hi.json"), "utf8"));
+    check(pc.length === 31 && pc.some((c) => c[1] === "Mumbai" && c[4] === "Asia/Kolkata"), "konum penceresi: 31 şehir verisi eksik");
+  }
+  // Üyelik (standart 5.15, 12 Kasım 2026): giriş, kayıt, şifre ve doğrulama sayfaları üyelik sunucusunda; sitede ayarlarda
+  // "Hesap" bağlantısı, gizlilikte kısa bölüm (ortak aydınlatma metni ve sözleşme: Türkçeden Türkçe, öbür dillerden ?dil=en)
+  // ve herkese açık hesap silme sayfası (iki seçenek, en geç 7 gün); eski statik adresler nginx'te üyelik sunucusuna 301
+  {
+    const read = (f) => { const p = path.join(DIST, f, "index.html"); return fs.existsSync(p) ? fs.readFileSync(p, "utf8") : ""; };
+    const ACC = JSON.parse(fs.readFileSync(path.join(ROOT, "server/i18n/account.json"), "utf8"));
+    for (const l of LANGS) {
+      const base = l === "tr" ? "" : `${l}/`;
+      const sfx = l === "tr" ? "" : "?dil=en";
+      check(!read(l === "tr" ? "hesap/sifre" : `${base}account/password`) && !read(l === "tr" ? "hesap/dogrulandi" : `${base}account/verified`), `hesap: eski statik şifre/doğrulama sayfası kaldı (${l})`);
+      const home = read(l === "tr" ? "" : base.slice(0, -1));
+      check(home.includes(`href="https://hesap.time.bumba.tr/hesap?dil=${l}"`) && home.includes(ACC[l].title), `ayarlar: Hesap bağlantısı yok (${l})`);
+      const del = read(l === "tr" ? "hesap-silme" : `${base}account-deletion`);
+      check(/name="robots" content="index/.test(del) && /bilgi@bumbagroup\.com/.test(del) && /<ol>/.test(del) && del.includes(ACC[l].deleteScopeAll) && /\b7\b/.test(del) && !/2 (yıl|years)/.test(del), `hesap silme sayfası eksik (${l})`);
+      const j = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"));
+      const sec = j.privacy.sections.find((x) => x.id === (l === "tr" ? "hesap" : "account"));
+      const txt = sec ? sec.p.join(" ") : "";
+      check(sec && !sec.ul && txt.includes(`https://bumbagroup.com/uyelik-aydinlatma${sfx})`) && txt.includes(`https://bumbagroup.com/uyelik-sozlesmesi${sfx})`) && /\{deleteUrl\}/.test(txt), `gizlilik: üyelik bölümü eksik (${l})`);
+      const priv = read(l === "tr" ? "gizlilik" : `${base}privacy`);
+      check(priv.includes(`href="${l === "tr" ? "/hesap-silme/" : `/${l}/account-deletion/`}"`) && !priv.includes("{deleteUrl}"), `gizlilik: hesap silme bağlantısı yok (${l})`);
+    }
+    check(!sm.includes("/hesap/sifre/") && !sm.includes("/account/password/") && !sm.includes("/account/verified/") && sm.includes("/hesap-silme/</loc>") && sm.includes("/en/account-deletion/</loc>"), "sitemap: hesap sayfaları yanlış");
+    check(!/hesap\.time\.bumba\.tr/.test((ng.match(/form-action[^;]*;/g) || []).join(" ")) && ng.includes("location = /hesap/sifre/ { return 301 https://hesap.time.bumba.tr/sifre?dil=tr&$args; }") && /account\/verified\/\$ \{ return 301 https:\/\/hesap\.time\.bumba\.tr\/dogrulandi\?dil=\$1&\$args; \}/.test(ng), "nginx: hesap yönlendirmeleri ya da form-action");
+  }
+  // Fotoğraf ışığı sayfası (9 Kasım 2026): her dilde; saatler, Ay, 7 günlük tablo, izinli bulut tahmini ve atıf
+  {
+    const PH = { tr: "altin-saat", en: "en/golden-hour", ar: "ar/golden-hour", de: "de/golden-hour", ja: "ja/golden-hour", hi: "hi/golden-hour", bn: "bn/golden-hour" };
+    for (const [l, f] of Object.entries(PH)) {
+      const p = path.join(DIST, f, "index.html"), h = fs.existsSync(p) ? fs.readFileSync(p, "utf8") : "";
+      check(/data-photo\b/.test(h) && /photo\.js/.test(h) && /prayer-calc\.js/.test(h) && /nature-calc\.js/.test(h) && /weather-core\.js/.test(h) && /data-needs-place/.test(h) && /"WebApplication"/.test(h), `fotoğraf ışığı sayfası eksik: /${f}/`);
+      check(["blueAm", "goldenAm", "goldenPm", "bluePm", "rise", "set", "riseAz", "setAz", "riseQ", "setQ", "moonrise", "moonset", "phase"].every((k) => h.includes(`data-ph="${k}"`)), `fotoğraf ışığı: kart alanları eksik (/${f}/)`);
+      check(/Open-Meteo\.com \(CC BY 4\.0\)/.test(h) && /<p class="meta consent-ph" data-ph-consent hidden>[^<]+<button type="button" class="btn btn-ghost btn-sm" data-consent-allow-ext>/.test(h) && /data-ph-fc-box hidden/.test(h), `fotoğraf ışığı: atıf ya da izin yer tutucusu eksik (/${f}/)`);
+      check((h.match(/<tbody data-ph-week>([\s\S]*?)<\/tbody>/) || ["", ""])[1].split("<tr>").length - 1 === 7 && /data-ph-date[^>]*value="\d{4}-\d\d-\d\d"/.test(h), `fotoğraf ışığı: 7 günlük tablo ya da tarih seçimi eksik (/${f}/)`);
+    }
+    // Derleme günü İstanbul (UTC+3): saatler Mevsimler'deki altın/mavi saat tanımıyla aynı hesaptan
+    const tr = fs.readFileSync(path.join(DIST, "altin-saat/index.html"), "utf8");
+    if (cfg.updated === "2026-10-30") check(tr.includes('data-ph="goldenAm" dir="ltr">07:15–08:11<') && tr.includes('data-ph="bluePm" dir="ltr">18:20–18:31<') && /data-ph="riseAz">10\d° DGD</.test(tr), "fotoğraf ışığı: İstanbul 30.10.2026 değerleri beklenen değil");
+    check(/href="\/altin-saat\/"/.test(fs.readFileSync(path.join(DIST, "araclar/index.html"), "utf8")) && /href="\/en\/golden-hour\/"/.test(fs.readFileSync(path.join(DIST, "en/tools/index.html"), "utf8")), "araçlar merkezi: fotoğraf ışığı kartı yok");
+    check(/id="photo"/.test(fs.readFileSync(path.join(DIST, "sss/index.html"), "utf8")), "SSS: fotoğraf ışığı grubu yok");
+    for (const l of LANGS) check(dict[l].get("photo.dirs").length === 16 && /Open-Meteo/.test(dict[l].get("photo.attribution")), `fotoğraf ışığı: ${l} yönler ya da atıf`);
+    // Gizlilik: web, iPhone ve Android maddelerinde fotoğraf ışığının bulut tahmini (Open-Meteo, yaklaşık konum)
+    for (const l of LANGS) {
+      const j = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8")), name = j.tools.hub.cards.photo.name.toLowerCase();
+      const om = j.privacy.sections.flatMap((s) => (s.ul || []).filter((u) => typeof u === "string" && /Open-Meteo/.test(u)));
+      check(om.filter((u) => u.toLowerCase().includes(name)).length >= 3, `gizlilik: fotoğraf ışığı bulut tahmini web/iPhone/Android maddelerinde yok (${l})`);
+    }
   }
   // K-1 site (2. analiz #174–#181, #184, #190): ilk ekran doğruluk satırı, başlıkta saat, görünüm seçenekleri, büyütme, haplar, hafta no
   {

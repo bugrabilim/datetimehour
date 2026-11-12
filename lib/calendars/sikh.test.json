@@ -1,0 +1,41 @@
+{
+  "source": [
+    "https://www.drikpanchang.com/calendars/indian/sikh-festivals/jayanti/guru-nanak-jayanti-date.html?year=2025…2031, …/guru-gobind-jayanti-date.html?year=2025…2031, https://www.drikpanchang.com/festivals/vaisakhi/vaisakhi-date-time.html?year=2025…2031 (Yeni Delhi; 10 Kasım 2026'da okundu; 2032 sayfası yok)",
+    "https://www.staffnews.in/2024/07/restricted-holidays-year-2025.html, /2024/07/gazetted-holidays-year-2025.html, /2025/07/list-of-holidays-2026-closed-holidays.html, /2025/07/list-of-holidays-2026-restricted-holidays.html, /2026/07/list-of-holidays-for-the-year-2027-gazetted.html, /2026/07/list-of-restricted-holidays-for-the-year-2027.html (Hindistan hükümeti DoP&T listeleri 2025–2027: Guru Nanak ve Guru Gobind Singh doğum günleri, Guru Teg Bahadur'un şehadet günü 24 Kasım, Vaisakhi)",
+    "https://www.lokmattimes.com/national/devotees-throng-golden-temple-on-bandi-chhor-divas (IANS: Altın Tapınak'ta Bandi Chhor Divas, Salı 21 Ekim 2025) ve https://en.wikipedia.org/wiki/Bandi_Chhor_Divas (bilgi kutusu: 2025 21 Ekim, 2026 8 Kasım)",
+    "https://en.wikipedia.org/wiki/Hola_Mohalla ve BBC Religion & Ethics 'Hola Mahalla' (Holi'nin ertesi günü), https://www.outlookindia.com/brand-studio/hola-mohalla-2026-dates-history-celebrations-in-anandpur-sahib (2026: 4–6 Mart; Holi 4 Mart, DoP&T 2026)"
+  ],
+  "note": "Guru Nanak (7/7 yıl), Guru Gobind Singh (2025–2031'deki 7 tarih; 2026, 2029 ve 2031'de Gregoryen yılda hiç yok, 2025, 2028 ve 2030'da iki kez) ve Vaisakhi (7/7) drikpanchang ile aynı. Hindistan hükümeti listeleri Guru Nanak (2025 5 Kasım, 2026 24 Kasım, 2027 14 Kasım) ve Guru Gobind Singh (2025 6 Ocak, 2027 15 Ocak) tarihlerinde aynı; Vaisakhi 2025'i 13 Nisan verir (Meṣa geçişi 14 Nisan 03:21 IST, gün doğumundan önce; gün doğumundan sayılan Hindu gününe göre 13 Nisan), drikpanchang 14 Nisan: burada drikpanchang esas (absent). Bandi Chhor Divas Diwali günüdür (hindu.mjs, drikpanchang ile 7/7); 2025'te Delhi Diwali'si 20 Ekim, Altın Tapınak 21 Ekim (OFFICIAL). Hola Mohalla tarihi kaynaklarda Anandpur Sahib'deki şenliğe göre değişir (2026 için 27 Şubat–4 Mart ile 4–6 Mart arası bildirildi); burada Holi'nin ertesi günü. Guru Tegh Bahadur'un şehadet günü hükümet listelerinde her yıl 24 Kasım (asıl Nanakşahi tarihi); SGPC ay takvimine göre (Maghar sudi 5) kutlayabilir. 2003 Nanakşahi takvimini izleyenlerde Guru Gobind Singh 5 Ocak, Vaisakhi 14 Nisan sabittir (notta yazar).",
+  "cases": [
+    { "date": "2025-01-06", "key": "gurpurabGobind" },
+    { "date": "2025-04-14", "key": "vaisakhi" },
+    { "date": "2025-10-21", "key": "bandiChhor" },
+    { "date": "2025-11-05", "key": "gurpurabNanak" },
+    { "date": "2025-11-24", "key": "martyrdomTeghBahadur" },
+    { "date": "2025-12-27", "key": "gurpurabGobind" },
+    { "date": "2026-03-05", "key": "holaMohalla" },
+    { "date": "2026-04-14", "key": "vaisakhi" },
+    { "date": "2026-11-08", "key": "bandiChhor" },
+    { "date": "2026-11-24", "key": "gurpurabNanak" },
+    { "date": "2026-11-24", "key": "martyrdomTeghBahadur" },
+    { "date": "2027-01-15", "key": "gurpurabGobind" },
+    { "date": "2027-04-14", "key": "vaisakhi" },
+    { "date": "2027-11-14", "key": "gurpurabNanak" },
+    { "date": "2027-11-24", "key": "martyrdomTeghBahadur" },
+    { "date": "2028-01-04", "key": "gurpurabGobind" },
+    { "date": "2028-04-13", "key": "vaisakhi" },
+    { "date": "2028-11-02", "key": "gurpurabNanak" },
+    { "date": "2028-12-23", "key": "gurpurabGobind" },
+    { "date": "2029-04-14", "key": "vaisakhi" },
+    { "date": "2029-11-21", "key": "gurpurabNanak" },
+    { "date": "2030-01-10", "key": "gurpurabGobind" },
+    { "date": "2030-04-14", "key": "vaisakhi" },
+    { "date": "2030-11-10", "key": "gurpurabNanak" },
+    { "date": "2030-12-30", "key": "gurpurabGobind" },
+    { "date": "2031-04-14", "key": "vaisakhi" },
+    { "date": "2031-11-28", "key": "gurpurabNanak" }
+  ],
+  "absent": [
+    { "date": "2025-04-13", "key": "vaisakhi" }
+  ]
+}

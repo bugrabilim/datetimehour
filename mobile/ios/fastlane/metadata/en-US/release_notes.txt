@@ -2,11 +2,11 @@ What's new in 1.1
 • Five quick questions on first launch set the app up for you
 • Settings › Permissions: see what each permission is for and turn it off with one tap
 • New navigation: your choices in the tab bar, everything else under All
-• Qibla compass, nearby mosques, the Quran, duas, the 99 Names, tasbih counter, prayer and fasting tracker
-• 14 calculation methods and 973 districts of Türkiye
+• 25 analog dials, night mode and a screen that changes with the weather
 • Sleep plan, smart alarm and wake-up tasks
 • Pomodoro, study timer and app blocking while you focus
 • Chess clock, metronome, talking clock and many more tools
-• 25 analog dials, night mode and a screen that changes with the weather
+• Qibla compass, nearby mosques, the Quran, duas, the 99 Names, tasbih counter, prayer and fasting tracker
+• 14 calculation methods and 973 districts of Türkiye
 • iPad and Apple Watch
-• 18 languages
+• 19 languages

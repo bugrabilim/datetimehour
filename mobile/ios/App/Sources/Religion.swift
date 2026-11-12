@@ -92,6 +92,21 @@ enum Quran {
         URL(string: "https://kuran.diyanet.gov.tr/kuran?sure=\(sura)&ayet=\(aya)&mode=kuran-meal")!
     }
 
+    /// Arayüz dilinde resmî meal sitesi (10 Kasım 2026): Türkçe ve Azerice Diyanet, Endonezce Kemenag; diğer dillerde yok
+    static var mealSite: String? {
+        switch AppLocale.code {
+        case "tr", "az": return "diyanet"
+        case "id": return "kemenag"
+        default: return nil
+        }
+    }
+
+    /// Meal sitesinde ayet aralığı (Kemenag: quran.kemenag.go.id/quran/per-ayat/surah/S?from=A&to=B)
+    static func mealURL(_ sura: Int, _ aya: Int, to: Int? = nil) -> URL {
+        guard mealSite == "kemenag" else { return diyanetURL(sura, aya) }
+        return URL(string: "https://quran.kemenag.go.id/quran/per-ayat/surah/\(sura)?from=\(aya)&to=\(to ?? aya)")!
+    }
+
     static let bookmarkKey = "quran.bookmark"
     /// Kaldığım yer "sure:ayet"
     static func parse(_ s: String) -> (Int, Int)? {
@@ -122,6 +137,10 @@ private struct QuranCredits: View {
             Text(L("quran.credit")).font(.caption).foregroundStyle(Theme.muted)
             Link("tanzil.net", destination: URL(string: "https://tanzil.net")!).font(.caption)
             Link("kuran.diyanet.gov.tr", destination: URL(string: "https://kuran.diyanet.gov.tr")!).font(.caption)
+            if Quran.mealSite == "kemenag" {
+                Text(L("quran.creditKemenag")).font(.caption).foregroundStyle(Theme.muted)
+                Link("quran.kemenag.go.id", destination: URL(string: "https://quran.kemenag.go.id")!).font(.caption)
+            }
         }
         .tint(Theme.accent)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -220,9 +239,9 @@ struct SuraView: View {
                 LazyVStack(spacing: 10) {
                     QuranReadingOptions()
                     Toggle(L("quran.showEn"), isOn: $showEn).tint(Theme.accent).font(.subheadline).foregroundStyle(pal.ink)
-                    if turkic {
-                        Link(destination: Quran.diyanetURL(sura, 1)) {
-                            Label(L("quran.diyanet"), systemImage: "arrow.up.right.square")
+                    if let site = Quran.mealSite {
+                        Link(destination: Quran.mealURL(sura, 1, to: s.ayas)) {
+                            Label(L(site == "kemenag" ? "quran.kemenag" : "quran.diyanet"), systemImage: "arrow.up.right.square")
                         }
                         .tint(Theme.accent)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -238,8 +257,8 @@ struct SuraView: View {
                                         .accessibilityLabel(L("quran.bookmark"))
                                 }
                                 Spacer()
-                                if turkic {
-                                    Link(L("quran.meal"), destination: Quran.diyanetURL(sura, a)).font(.caption).tint(Theme.accent)
+                                if Quran.mealSite != nil {
+                                    Link(L("quran.meal"), destination: Quran.mealURL(sura, a)).font(.caption).tint(Theme.accent)
                                 }
                             }
                             ArabicText(text: Quran.ar(sura, a), size: CGFloat(size), color: pal.ink)
@@ -434,10 +453,10 @@ struct DuasView: View {
                             if let m = d.mean { speakButton("\(d.id)-mean", text: m, arabic: false, title: L("dua.listenMean")) }
                         }
                         .font(.subheadline.weight(.medium))
-                        if turkic {
+                        if let site = Quran.mealSite {
                             ForEach(d.refs, id: \.self) { r in
                                 if let ref = Quran.parse(r) {
-                                    Link(T("dua.diyanetRef", r), destination: Quran.diyanetURL(ref.0, ref.1)).font(.footnote).tint(Theme.accent)
+                                    Link(T(site == "kemenag" ? "dua.kemenagRef" : "dua.diyanetRef", r), destination: Quran.mealURL(ref.0, ref.1)).font(.footnote).tint(Theme.accent)
                                 }
                             }
                         }
@@ -918,16 +937,22 @@ struct TrackerView: View {
 /// Nisab 80,18 g altın (Diyanet), oran 1/40; altın fiyatını kullanıcı girer (dış servis yok)
 enum Zakat {
     static let nisabGrams = 80.18
+    static let stdKey = "zakat.std"
+    /// Hesap esası (10 Kasım 2026): "diyanet" (nisab 80,18 g) ya da "baznas" (Endonezya, 85 g); seçilmediyse yer Endonezya'daysa BAZNAS
+    static var std: String {
+        UserDefaults.standard.string(forKey: stdKey) ?? (PrayerTimes.region(timeZone: Hijri.zone) == "ID" ? "baznas" : "diyanet")
+    }
+    static func grams(_ std: String) -> Double { std == "baznas" ? Double(Fitre.indonesia?.nisab ?? 85) : nisabGrams }
     static let fields = ["cash", "goldGrams", "goldPrice", "silverValue", "foreign", "trade", "receivable", "debt"]
 
     struct Result { let net: Double; let nisab: Double?; let due: Bool; let zakat: Double }
 
-    static func calc(_ v: [String: Double]) -> Result {
+    static func calc(_ v: [String: Double], grams: Double = nisabGrams) -> Result {
         func g(_ k: String) -> Double { v[k] ?? 0 }
         let goldPrice = g("goldPrice")
         let assets = g("cash") + g("goldGrams") * goldPrice + g("silverValue") + g("foreign") + g("trade") + g("receivable")
         let net = max(0, assets - g("debt"))
-        let nisab: Double? = goldPrice > 0 ? nisabGrams * goldPrice : nil
+        let nisab: Double? = goldPrice > 0 ? grams * goldPrice : nil
         let due = nisab.map { net >= $0 } ?? false
         return Result(net: net, nisab: nisab, due: due, zakat: due ? net / 40 : 0)
     }
@@ -974,10 +999,30 @@ enum Fitre {
         guard p.count == 3 else { return nil }
         return (y, a, CalendarDay(p[0], p[1], p[2]))
     }()
+
+    /// Endonezya (BAZNAS): yıl, kişi başı fitrah ve günlük fidye (rupiah), nisab gramı
+    static let indonesia: (year: Int, fitrah: Int, fidyah: Int, nisab: Int)? = {
+        guard let url = Bundle.main.url(forResource: "fitre", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let o = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let i = o["id"] as? [String: Any], let y = i["year"] as? Int, let f = i["fitrah"] as? Int,
+              let d = i["fidyah"] as? Int, let n = i["nisab"] as? Int else { return nil }
+        return (y, f, d, n)
+    }()
+
+    /// "Rp 50.000" (Endonezya yazımı)
+    static func rupiah(_ n: Int) -> String {
+        let f = NumberFormatter()
+        f.locale = Locale(identifier: "id_ID")
+        f.numberStyle = .decimal
+        f.maximumFractionDigits = 0
+        return "Rp " + (f.string(from: NSNumber(value: n)) ?? String(n))
+    }
 }
 
 struct ZakatView: View {
     @State private var fitrePeople = 1
+    @State private var std = Zakat.std
     @State private var texts: [String: String] = Zakat.load().mapValues { v in
         v == v.rounded() ? String(Int64(v)) : String(v)
     }
@@ -986,8 +1031,17 @@ struct ZakatView: View {
 
     @ViewBuilder private var bodyContent: some View {
         let values = texts.compactMapValues(Zakat.parse)
-        let r = Zakat.calc(values)
+        let grams = Zakat.grams(std)
+        let r = Zakat.calc(values, grams: grams)
         Form {
+            Section {
+                Picker(L("zakat.stdLabel"), selection: $std) {
+                    Text(L("zakat.stdDiyanet")).tag("diyanet")
+                    if Fitre.indonesia != nil { Text(L("zakat.stdBaznas")).tag("baznas") }
+                }
+                .pickerStyle(.inline)
+                .labelsHidden()
+            } header: { Text(L("zakat.stdLabel")) }
             Section {
                 ForEach(Zakat.fields, id: \.self) { f in
                     LabeledContent(L("zakat.f.\(f)")) {
@@ -1002,7 +1056,7 @@ struct ZakatView: View {
             }
             Section {
                 LabeledContent(L("zakat.net")) { Text(Zakat.format(r.net)).monospacedDigit().fontWeight(.semibold) }
-                LabeledContent(T("zakat.nisab", Zakat.format(Zakat.nisabGrams))) {
+                LabeledContent(T("zakat.nisab", Zakat.format(grams, fraction: grams == grams.rounded() ? 0 : 2))) {
                     Text(r.nisab.map { Zakat.format($0) } ?? "–").monospacedDigit()
                 }
                 Text(r.nisab == nil ? L("zakat.needGold") : r.due ? L("zakat.due") : L("zakat.notDue"))
@@ -1014,10 +1068,24 @@ struct ZakatView: View {
                     }
                 }
             } footer: {
-                Text(L("zakat.note"))
+                Text(L(std == "baznas" ? "zakat.noteBaznas" : "zakat.note"))
+            }
+            // Zekât fitrah ve fidye (BAZNAS, Endonezya; 10 Kasım 2026)
+            if std == "baznas", let i = Fitre.indonesia {
+                Section {
+                    Text(T("zakat.fitrahText", i.year, Fitre.rupiah(i.fitrah))).font(.subheadline)
+                    Stepper("\(L("zakat.fitrePeople")): \(fitrePeople)", value: $fitrePeople, in: 1...99)
+                    LabeledContent(L("zakat.fitreTotal")) {
+                        Text(Fitre.rupiah(i.fitrah * fitrePeople)).monospacedDigit().fontWeight(.bold).foregroundStyle(Theme.accent)
+                    }
+                } header: {
+                    Text(L("zakat.fitrahHeading"))
+                } footer: {
+                    Text(T("zakat.fidyahText", i.year, Fitre.rupiah(i.fidyah)))
+                }
             }
             // Fitre (rakip analizi #14): Diyanet'in açıkladığı kişi başı tutar (fitre.json, sitedeki src/data/fitre.json)
-            if let f = Fitre.info {
+            if std == "diyanet", let f = Fitre.info {
                 Section {
                     Text(T("zakat.fitreText", f.year, f.amount, Fmt.day(f.date))).font(.subheadline)
                     Stepper("\(L("zakat.fitrePeople")): \(fitrePeople)", value: $fitrePeople, in: 1...99)
@@ -1032,6 +1100,7 @@ struct ZakatView: View {
             }
         }
         .themedBackground()
+        .onChange(of: std) { UserDefaults.standard.set(std, forKey: Zakat.stdKey) }
         .navigationTitle(L("zakat.title"))
         .navigationBarTitleDisplayMode(.large)
     }
@@ -1060,9 +1129,10 @@ struct WorshipRow: View {
                 Button(L("countdowns.all") + " ›", action: showAll).foregroundStyle(Theme.accent)
             }
             HStack(spacing: 10) {
-                tile(L("qibla.title"), "location.north.circle") { QiblaView() }
+                // İki tonlu simgeler (8 Kasım 2026, DUOTONE.md): kare 42/25, altın
+                tile(L("qibla.title"), "compass") { QiblaView() }
                 tile(L("quran.title"), "book") { QuranView() }
-                tile(L("zikir.title"), "hand.tap") { ZikirView() }
+                tile(L("zikir.title"), "beads") { ZikirView() }
                 tile(L("track.title"), "checklist") { TrackerView() }
             }
         }
@@ -1071,7 +1141,7 @@ struct WorshipRow: View {
     private func tile<D: View>(_ title: String, _ icon: String, @ViewBuilder _ dest: @escaping () -> D) -> some View {
         NavigationLink { dest() } label: {
             VStack(spacing: 6) {
-                IconBox(icon: icon)
+                DuoChip(name: icon, color: Theme.gold, box: 42, glyph: 25)
                 Text(title).font(.caption).foregroundStyle(Theme.text).lineLimit(2).multilineTextAlignment(.center)
                     .minimumScaleFactor(0.8)
             }
@@ -1090,17 +1160,18 @@ struct WorshipLinks: View {
     var body: some View {
         ScrollView {
         VStack(alignment: .leading, spacing: 10) {
-            link(L("qibla.link"), "location.north.circle") { QiblaView() }
+            // İki tonlu simgeler (8 Kasım 2026, DUOTONE.md): Tümü'ndeki adlarla aynı, altın
+            link(L("qibla.link"), "compass") { QiblaView() }
             link(L("quran.title"), "book") { QuranView() }
-            link(L("dua.title"), "hands.sparkles") { DuasView() }
+            link(L("dua.title"), "hands") { DuasView() }
             link(L("esma.title"), "sparkles") { EsmaView() }
-            link(L("hadith.title"), "text.quote") { HadithView() }
-            link(L("guide.title"), "figure.mind.and.body") { PrayerGuideView() }
-            link(L("zikir.title"), "hand.tap") { ZikirView() }
+            link(L("hadith.title"), "scroll") { HadithView() }
+            link(L("guide.title"), "guide") { PrayerGuideView() }
+            link(L("zikir.title"), "beads") { ZikirView() }
             link(L("track.title"), "checklist") { TrackerView() }
-            link(L("relday.title"), "calendar.badge.clock") { ReligiousDaysView() }
-            link(L("greet.title"), "gift") { GreetingView() }
-            link(L("zakat.title"), "percent") { ZakatView() }
+            link(L("relday.title"), "star_crescent") { ReligiousDaysView() }
+            link(L("greet.title"), "love_letter") { GreetingView() }
+            link(L("zakat.title"), "coin") { ZakatView() }
         }
         .padding(.vertical, 12)
         .padding(.horizontal, 20)
@@ -1115,7 +1186,7 @@ struct WorshipLinks: View {
             dest()
         } label: {
             HStack {
-                BoxLabel(title, icon: icon)
+                BoxLabel(title, duo: icon, tint: Theme.gold)
                 Spacer()
                 Image(systemName: "chevron.forward").font(.footnote.weight(.semibold)).foregroundStyle(Theme.muted)
             }

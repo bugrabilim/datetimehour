@@ -1,0 +1,54 @@
+Masa & Tarikh menghimpunkan jam, widget, penggera, cuaca, kalendar dan pelbagai alat harian dalam satu aplikasi yang kemas. Tanpa akaun, tanpa iklan dan tanpa penjejakan.
+
+Tentang bahasa
+Antara muka aplikasi tersedia dalam bahasa Inggeris, bahasa Indonesia dan 16 bahasa lain; bahasa Melayu belum ada. Bahasa boleh dipilih di dalam aplikasi. Di telefon, nama aplikasi mengikut bahasa antara muka, contohnya Time & Date.
+
+Disediakan untuk anda
+• Beberapa soalan ringkas semasa aplikasi dibuka kali pertama; bar bawah dibina daripada bahagian yang anda mahu
+• Bahagian yang tidak anda gunakan kekal tersembunyi dan tidak menghantar pemberitahuan; yang lain hanya satu ketikan
+
+Jam dan widget
+• 21 gaya jam dan 25 muka jam analog; skrin penuh, mod malam merah malap untuk tepi katil dan penyelamat skrin
+• 27 widget Skrin Utama: jam analog, digital dan bersaat, jam dunia, cuaca, fasa bulan, matahari terbit dan terbenam, kira detik, foto, kemajuan tahun dan banyak lagi, dengan gaya lut sinar dan kaca
+• Jam terapung di atas aplikasi lain, jubin Tetapan Pantas
+• Aplikasi Wear OS dengan jubin dan komplikasi, serta jam skrin penuh untuk Android TV
+
+Penggera, tidur dan fokus
+• Penggera skrin penuh pada skrin kunci, dengan kelantangan beransur-ansur, pustaka bunyi dan latar belakang
+• Tugasan untuk mematikannya: soalan matematik, menggoncang telefon, langkah, cangkung, mengimbas kod, mencari objek, permainan ingatan atau menaip
+• Penggera pintar, pelan tidur dengan peringatan waktu tidur, bunyi tidur dan bunyi alam
+• Pomodoro dengan statistik dan senarai tugasan, pemasa ulang kaji, sekatan aplikasi semasa fokus
+• Latihan selang masa dengan panduan suara, walaupun skrin dimatikan; simpan senaman ke Health Connect
+
+Cuaca
+• Ramalan setiap jam dan 14 hari, kualiti udara dan debunga, perbandingan tiga model cuaca
+• Skrin yang bergerak mengikut cuaca: hujan, salji, awan, angin dan kilat
+• Ringkasan cuaca pagi dan pemberitahuan cuaca pilihan
+
+Kalendar
+• Paparan bulan, minggu, hari, agenda dan tahun, di sebelah kalendar dalam telefon anda
+• Cuti umum 31 negara, termasuk Singapura, dan hari istimewa
+• Kalendar Hijrah dan penukar tarikh
+
+Alat
+• Pemasa bernama, beberapa jam randik, kira detik dengan foto anda sendiri
+• Jam dunia dengan glob berputar, peta dan dail 24 jam; perancang mesyuarat; pengiraan masa dan tarikh
+• Jam catur, metronom, jam bercakap, jurnal pagi, alat bilik darjah, pemasa peperiksaan, zodiak
+
+Langit dan musim
+• Matahari terbit dan terbenam, waktu keemasan dan waktu biru, bulan terbit dan terbenam, kalendar bulan
+• Gerhana dengan peta, langit malam dengan planet dan bintang, pemberitahuan peristiwa langit
+• Musim diterangkan untuk kanak-kanak
+
+Waktu solat dan kiblat
+• Waktu solat di mana-mana sahaja dengan 14 kaedah pengiraan dan Asar Hanafi; kesemua 81 wilayah dan 973 daerah di Turki
+• Pemberitahuan dengan azan, penggera waktu solat, mod senyap semasa waktu solat, jadual imsakiah Ramadan
+• Kompas kiblat dan masjid berdekatan
+• Al-Quran dalam bahasa Arab, doa, Asmaul Husna, pembilang tasbih, rekod solat dan puasa, kalkulator zakat, kad ucapan
+
+Privasi
+Lokasi anda kekal dalam telefon. Hanya untuk cuaca dan masjid berdekatan, lokasi anggaran dihantar kepada perkhidmatan berkaitan (Open-Meteo, OpenStreetMap), bukan identiti anda. Lihat dan matikan setiap kebenaran di Settings › Permissions.
+
+Untuk telefon dan tablet Android, Wear OS dan Android TV.
+
+Masa & Tarikh ialah produk Bumba Life. Web: time.bumba.tr

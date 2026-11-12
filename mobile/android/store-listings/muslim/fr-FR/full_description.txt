@@ -1,0 +1,37 @@
+Heure & Date réunit les horaires de prière, la qibla, l'horloge, le calendrier, la météo et des outils du quotidien dans une app claire. Sans compte, sans publicité et sans suivi.
+
+Horaires de prière et culte
+• Horaires de prière partout dans le monde, avec 14 méthodes de calcul (MWL, Umm al-Qura, Égypte, France, ISNA, Diyanet…) et Asr hanafite
+• Les 81 provinces et 973 districts de Turquie
+• Notification à l'heure ou avant : première phrase de l'adhan, courte sonnerie ou annonce vocale
+• Si vous le souhaitez, le téléphone passe en vibreur ou en mode Ne pas déranger à l'heure de la prière
+• Calendrier du Ramadan à partager en image, avec compte à rebours de l'iftar et du suhur
+• Boussole de la qibla et mosquées à proximité sur la carte
+• Le Coran en arabe, invocations, les 99 noms d'Allah, hadiths, guide de la prière, compteur de dhikr, suivi des prières et du jeûne, calcul de la zakat
+• Calendrier hégirien et convertisseur, jours religieux et nuits saintes, cartes de vœux pour le vendredi, le Ramadan et l'Aïd
+
+Réglée pour vous
+• Cinq questions rapides au premier lancement construisent votre barre d'onglets. Les sections que vous n'utilisez pas restent masquées et n'envoient aucune notification
+
+Horloge et widgets
+• 21 modèles d'horloge et 25 cadrans analogiques ; plein écran et mode nuit rouge tamisé
+• Widgets pour l'écran d'accueil : prochaine prière, horaires du jour, date hégirienne, horloges, horloges du monde, météo, phase de la Lune
+• Application Wear OS avec tuile et complications, application Android TV, économiseur d'écran, horloge flottante et blocs Réglages rapides
+
+Calendrier et météo
+• Jours fériés de la Turquie et de 32 autres pays, à côté des agendas de votre téléphone (Google Agenda compris)
+• Prévisions heure par heure et sur 14 jours, qualité de l'air et pollens, et un écran qui change avec le temps
+
+Réveil, sommeil et concentration
+• Réveil qui sonne sur l'écran verrouillé, avec volume progressif et tâches pour l'arrêter : calcul, secousses, scan d'un code
+• Plan de sommeil, sons pour dormir et réveil intelligent
+• Pomodoro, minuteur d'étude, entraînement fractionné et blocage d'apps pendant la concentration
+
+Outils
+• Minuteur, chronomètre, pendule d'échecs, métronome, horloge parlante, planificateur de réunions, calculs d'heures et de dates
+• Saisons, calendrier lunaire, éclipses et ciel nocturne
+
+Confidentialité
+Sans compte, sans publicité, sans suivi. Les horaires de prière sont calculés sur votre téléphone. Seule une position approximative est envoyée au service concerné (Open-Meteo, OpenStreetMap) pour la météo et les mosquées à proximité, jamais votre identité. Retrouvez chaque autorisation dans Réglages › Autorisations.
+
+En 19 langues. Heure & Date est un produit Bumba Life. Web : time.bumba.tr

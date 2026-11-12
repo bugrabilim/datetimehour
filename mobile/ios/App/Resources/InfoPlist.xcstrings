@@ -1,5 +1,5 @@
 {
-  "sourceLanguage": "tr",
+  "sourceLanguage": "en",
   "strings": {
     "NSLocationWhenInUseUsageDescription": {
       "extractionState": "manual",
@@ -97,7 +97,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Para mostrar los horarios de oración, la dirección de la alquibla, las mezquitas cercanas y el tiempo donde está. Los horarios y la alquibla se calculan en su teléfono; para el tiempo y la búsqueda de mezquitas solo se envía una ubicación aproximada a los servicios de Apple. Para los recordatorios por ubicación, el propio iPhone detecta cuándo llega o sale de un lugar."
+            "value": "Para mostrar los horarios de oración, la dirección de la alquibla, las mezquitas cercanas y el tiempo del lugar donde está. Los horarios y la alquibla se calculan en su teléfono; para el tiempo y la búsqueda de mezquitas solo se envía una ubicación aproximada a los servicios de Apple. Para los recordatorios por ubicación, el propio iPhone detecta cuándo llega a un lugar o sale de él."
           }
         },
         "pt": {
@@ -110,6 +110,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "आप जहाँ हैं वहाँ के नमाज़ के समय, क़िबला की दिशा, पास की मस्जिदें और मौसम दिखाने के लिए। नमाज़ के समय और क़िबला आपके फ़ोन पर निकाले जाते हैं; मौसम और मस्जिद खोज के लिए केवल अनुमानित स्थान Apple की सेवाओं को भेजा जाता है। स्थान रिमाइंडर में iPhone ख़ुद पहचानता है कि आप कब किसी जगह पहुँचे या वहाँ से निकले।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনি যেখানে আছেন সেখানকার নামাজের সময়, কিবলার দিক, কাছের মসজিদ ও আবহাওয়া দেখাতে। নামাজের সময় ও কিবলা আপনার ফোনেই হিসাব করা হয়; আবহাওয়া ও মসজিদ খোঁজার জন্য শুধু আনুমানিক অবস্থান Apple-এর সেবায় পাঠানো হয়। অবস্থানের রিমাইন্ডারের জন্য iPhone নিজেই বোঝে আপনি কখন কোনো জায়গায় পৌঁছান বা চলে যান।"
           }
         }
       }
@@ -224,6 +230,12 @@
             "state": "translated",
             "value": "समय और तारीख"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সময় ও তারিখ"
+          }
         }
       }
     },
@@ -336,6 +348,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ताकि आपके लगाए अलार्म और टाइमर फ़ोन साइलेंट होने पर भी बजें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "যাতে আপনার দেওয়া অ্যালার্ম ও টাইমার ফোন নীরব থাকলেও বাজে।"
           }
         }
       }
@@ -450,6 +468,12 @@
             "state": "translated",
             "value": "आपके कैलेंडरों के इवेंट ऐप के कैलेंडर में दिखाने और आपको उन्हें हटाने देने के लिए। इवेंट केवल आपके फ़ोन पर इस्तेमाल होते हैं।"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার ক্যালেন্ডারের ইভেন্ট অ্যাপের ক্যালেন্ডারে দেখাতে এবং সেগুলো মুছতে দিতে। ইভেন্ট শুধু আপনার ফোনেই ব্যবহৃত হয়।"
+          }
         }
       }
     },
@@ -563,6 +587,12 @@
             "state": "translated",
             "value": "अलार्म बंद करने वाले कार्यों (QR कोड, फ़ोटो, चीज़ ढूँढना) और क़िबला कैमरा दृश्य के लिए। तस्वीर आपके फ़ोन पर संसाधित होती है, न सहेजी जाती है न कहीं भेजी जाती है।"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "অ্যালার্ম বন্ধের কাজ (QR কোড, ছবি, বস্তু খোঁজা) ও কিবলা ক্যামেরা দৃশ্যের জন্য। ছবি আপনার ফোনেই প্রক্রিয়া হয়, সংরক্ষণ বা কোথাও পাঠানো হয় না।"
+          }
         }
       }
     },
@@ -674,7 +704,13 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत डेटा नहीं पढ़ता।"
+            "value": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत का डेटा नहीं पढ़ता।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনি চালু করলে শেষ হওয়া ইন্টারভাল ব্যায়াম ও রুটিন Health অ্যাপে ওয়ার্কআউট হিসেবে লেখার জন্য। অ্যাপটি আপনার স্বাস্থ্য তথ্য পড়ে না।"
           }
         }
       }
@@ -787,7 +823,13 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत डेटा नहीं पढ़ता।"
+            "value": "अगर आप चालू करें, तो पूरे हुए इंटरवल वर्कआउट और रूटीन को Health ऐप में वर्कआउट के रूप में लिखने के लिए। ऐप आपका सेहत का डेटा नहीं पढ़ता।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনি চালু করলে শেষ হওয়া ইন্টারভাল ব্যায়াম ও রুটিন Health অ্যাপে ওয়ার্কআউট হিসেবে লেখার জন্য। অ্যাপটি আপনার স্বাস্থ্য তথ্য পড়ে না।"
           }
         }
       }
@@ -902,6 +944,12 @@
             "state": "translated",
             "value": "ताकि आप अपनी संगीत लाइब्रेरी से कोई गाना अलार्म की आवाज़ के रूप में चुन सकें। गाने से लिया छोटा हिस्सा आपके फ़ोन पर रहता है और कहीं नहीं भेजा जाता।"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "যাতে আপনার সংগীত লাইব্রেরি থেকে একটি গান অ্যালার্মের শব্দ হিসেবে বাছতে পারেন। গান থেকে নেওয়া ছোট অংশটি আপনার ফোনেই থাকে এবং কোথাও পাঠানো হয় না।"
+          }
         }
       }
     },
@@ -929,7 +977,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zəngli saat tapşırığındakı sözü səsli oxuduğunuzu anlamaq üçün. Səs yalnız telefonda tanınır, yazılmır və heç yerə göndərilmir."
+            "value": "Zəngli saatı söndürmə tapşırığındakı sözü səsli oxuduğunuzu anlamaq üçün. Səs yalnız telefonda tanınır, yazılmır və heç yerə göndərilmir."
           }
         },
         "ar": {
@@ -1014,6 +1062,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "अलार्म बंद करने के काम में आपको कहावत ज़ोर से पढ़ते सुनने के लिए। आवाज़ सिर्फ़ आपके फ़ोन पर पहचानी जाती है, न रिकॉर्ड होती है न कहीं भेजी जाती है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "অ্যালার্ম বন্ধ করার কাজে আপনি বাণীটি জোরে পড়ছেন তা শুনতে। কথা শুধু আপনার ফোনেই চেনা হয়, রেকর্ড বা কোথাও পাঠানো হয় না।"
           }
         }
       }
@@ -1042,7 +1096,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zəngli saat tapşırığındakı sözü səsli oxuduğunuzu anlamaq üçün. Səs yalnız telefonda tanınır, yazılmır və heç yerə göndərilmir."
+            "value": "Zəngli saatı söndürmə tapşırığındakı sözü səsli oxuduğunuzu anlamaq üçün. Səs yalnız telefonda tanınır, yazılmır və heç yerə göndərilmir."
           }
         },
         "ar": {
@@ -1127,6 +1181,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "अलार्म बंद करने के काम में आपको कहावत ज़ोर से पढ़ते सुनने के लिए। आवाज़ सिर्फ़ आपके फ़ोन पर पहचानी जाती है, न रिकॉर्ड होती है न कहीं भेजी जाती है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "অ্যালার্ম বন্ধ করার কাজে আপনি বাণীটি জোরে পড়ছেন তা শুনতে। কথা শুধু আপনার ফোনেই চেনা হয়, রেকর্ড বা কোথাও পাঠানো হয় না।"
           }
         }
       }

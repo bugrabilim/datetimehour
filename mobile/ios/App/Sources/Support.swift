@@ -43,14 +43,15 @@ struct SupportSection: View {
     @Environment(\.requestReview) private var requestReview
 
     var body: some View {
+        // İki tonlu simgeler (8 Kasım 2026, DUOTONE.md): Destek ve paylaşım altın
         Section {
-            Button { requestReview() } label: { Label(L("support.rate"), systemImage: "star") }
+            Button { requestReview() } label: { BoxLabel(L("support.rate"), duo: "star", tint: Theme.gold) }
             ShareLink(item: Support.site, subject: Text(L("app.displayName")), message: Text(Support.shareText)) {
-                Label(L("support.share"), systemImage: "square.and.arrow.up")
+                BoxLabel(L("support.share"), duo: "share", tint: Theme.gold)
             }
-            NavigationLink { ShareQRView() } label: { Label(L("support.qr"), systemImage: "qrcode") }
-            Link(destination: Support.feedbackURL) { Label(L("support.feedback"), systemImage: "envelope") }
-            Link(destination: Support.bumba) { Label(L("support.moreApps"), systemImage: "square.grid.2x2") }
+            NavigationLink { ShareQRView() } label: { BoxLabel(L("support.qr"), duo: "qr", tint: Theme.gold) }
+            Link(destination: Support.feedbackURL) { BoxLabel(L("support.feedback"), duo: "mail", tint: Theme.gold) }
+            Link(destination: Support.bumba) { BoxLabel(L("support.moreApps"), duo: "grid", tint: Theme.gold) }
             LabeledContent(L("support.version"), value: Support.version)
         } header: {
             Text(L("support.title"))
@@ -260,13 +261,13 @@ private struct PermissionPrimerView: View {
                 .foregroundStyle(Theme.text)
                 .multilineTextAlignment(.center)
             // "İzin verirseniz… vermezseniz…" ve nereden kapatılacağı (5 Kasım 2026, sahibin isteği)
-            Text(L("perms.\(kind.rawValue).why"))
+            Text(Onboarding.permWhy(kind.rawValue))
                 .font(.subheadline)
                 .foregroundStyle(Theme.text)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
             if kind == .location {
-                Text(L("onboard.trust.services"))
+                Text(Onboarding.neutral("onboard.trust.services"))
                     .font(.footnote)
                     .foregroundStyle(Theme.muted)
                     .multilineTextAlignment(.center)

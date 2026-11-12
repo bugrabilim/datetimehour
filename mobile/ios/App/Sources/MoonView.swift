@@ -117,6 +117,8 @@ struct MoonView: View {
             } footer: {
                 VStack(alignment: .leading, spacing: 6) {
                     Text(L("nature.eclipseSafety")).fontWeight(.semibold)
+                    // Tutulma namazı (10 Kasım 2026, Endonezya araştırması #7): yalnız Vakitler açıkken
+                    if Features.isOn(.prayer) { Text(L("nature.eclipsePrayer")) }
                     Text(L("nature.eclipseSource"))
                 }
             }

@@ -158,7 +158,12 @@
 
   /* ---------- Saat ---------- */
   var prefs = { h12: false, secD: true, secA: true, model: "", pv: 4, fsColor: "auto", tick: false };
-  try { Object.assign(prefs, JSON.parse(store("sth-prefs") || "{}")); } catch (e) {}
+  var storedPrefs = {};
+  try { storedPrefs = JSON.parse(store("sth-prefs") || "{}") || {}; Object.assign(prefs, storedPrefs); } catch (e) {}
+  // 12/24 (10 Kasım 2026, Hindistan araştırması #3): kayıtlı seçim yoksa tarayıcının diline göre (hi-IN, en-US 12 saat; tr 24)
+  if (!("h12" in storedPrefs)) {
+    try { var hc = new Intl.DateTimeFormat(undefined, { hour: "numeric" }).resolvedOptions().hourCycle; prefs.h12 = hc === "h11" || hc === "h12"; } catch (e) {}
+  }
   if (prefs.pv !== 4) { prefs.secD = true; prefs.secA = true; prefs.pv = 4; } // varsayılan: dijitalde ve analogda saniye açık (30 Ekim 2026; eski kayıtlar bir kez)
   if (window.__sthPrefs) { Object.assign(prefs, window.__sthPrefs); if ("sec" in window.__sthPrefs) prefs.secD = prefs.secA = window.__sthPrefs.sec !== false; }
   prefs.h12 = !!prefs.h12; prefs.secD = prefs.secD !== false; prefs.secA = prefs.secA !== false; prefs.tick = false; // saat sesi düğmesi kaldırıldı (9 Ekim 2026): eski kayıtlar sessiz kalır

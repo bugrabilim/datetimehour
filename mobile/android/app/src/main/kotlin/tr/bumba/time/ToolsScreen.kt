@@ -87,6 +87,8 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "homeItems" -> Page(L("home.customize"), { onRoute("settings") }) { HomeItemsEditor() }
         "features" -> Page(L("features.title"), { onRoute("settings") }) { FeaturesScreen() }
         "permissions" -> Page(L("perms.title"), { onRoute("settings") }) { PermissionsScreen() }
+        // Hesap (üyelik aşama 1, 10 Kasım 2026): isteğe bağlı, e-posta + şifre
+        "account" -> Page(L("account.title"), { onRoute("settings") }) { AccountScreen { onRoute(it) } }
         "about" -> Page(L("settings.about"), onRoute) { AboutScreen() }
         "shareQr" -> Page(L("support.qr"), { onRoute("settings") }) { ShareQrScreen() }
         "language" -> Page(L("lang.title"), { onRoute("settings") }) { LanguageScreen() }
@@ -105,6 +107,8 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "zakat" -> ZakatScreen { onRoute(null) }
         "reldays" -> ReligiousDaysScreen { onRoute(null) }
         "greet" -> GreetingScreen { onRoute(null) }
+        // Kutlama kartları (nötr vesileler; 10 Kasım 2026)
+        "greetN" -> GreetingScreen(neutral = true) { onRoute(null) }
         "esma" -> EsmaScreen { onRoute(null) }
         "hadith" -> HadithScreen { onRoute(null) }
         "guide" -> PrayerGuideScreen({ onRoute(null) }) { onRoute("duas") }
@@ -112,6 +116,10 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "moon" -> Page(L("moon.calendarLink"), onRoute) { MoonScreen() }
         "sky" -> Page(L("sky.h1"), onRoute) { SkyScreen() }
         "sunpath" -> Page(L("sunpath.title"), onRoute) { SunPathScreen() }
+        // Fotoğraf ışığı (9 Kasım 2026): altın/mavi saat, gün doğumu ve batımı tahmini
+        "photo" -> Page(L("photoApp.title"), onRoute) { PhotoLightScreen() }
+        // Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9)
+        "panchang" -> Page(L("panchang.h1"), onRoute) { PanchangScreen() }
         // Sitedeki dokuz araç (4 Kasım 2026)
         in SITE_TOOL_TITLES.keys -> Page(L(SITE_TOOL_TITLES.getValue(route!!)), onRoute) { SiteToolScreen(route) }
         else -> if (route?.startsWith("quran:") == true) QuranScreen(route.removePrefix("quran:").toIntOrNull()) { onRoute(null) }
@@ -142,14 +150,20 @@ private fun ToolRow(icon: ImageVector, title: String, last: Boolean = false, not
 }
 
 @Composable
-fun RoundButton(title: String, prominent: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
+fun RoundButton(title: String, prominent: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) =
+    RoundButton(title, prominent, null, modifier, onClick)
+
+/** Simgeli ana/ikincil düğme: [icon] iki tonlu simgenin adı (8 Kasım 2026; metindeki emojinin yerine) */
+@Composable
+fun RoundButton(title: String, prominent: Boolean, icon: String?, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    val content = if (prominent) Theme.c.onAccent else Theme.c.text
     Button(
         onClick = onClick, modifier = modifier.height(52.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = if (prominent) Theme.c.accent else Theme.c.surface2,
-            contentColor = if (prominent) Theme.c.onAccent else Theme.c.text,
-        ),
-    ) { Text(title, fontWeight = FontWeight.Medium, fontSize = 16.sp) }
+        colors = ButtonDefaults.buttonColors(containerColor = if (prominent) Theme.c.accent else Theme.c.surface2, contentColor = content),
+    ) {
+        if (icon != null) { DuoIcon(icon, 18.dp, content); androidx.compose.foundation.layout.Spacer(Modifier.width(8.dp)) }
+        Text(title, fontWeight = FontWeight.Medium, fontSize = 16.sp)
+    }
 }
 
 /** Ek kronometreler (rakip analizi listesi #81): her biri ayrı sayar; kayıt `stopwatches` (JSON, Unix ms; iOS'la aynı) */

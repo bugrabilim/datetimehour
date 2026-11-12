@@ -33,7 +33,9 @@ data class WPlace(val id: String, val name: String, val lat: Double, val lon: Do
     data class Entry(val prayer: Prayer, val at: Instant)
 
     fun entries(day: LocalDate): List<Entry> {
-        val t = PrayerTimes.times(day, lat, lon, zone)
+        // Saatte yöntem ayarı yok: yerin saat dilimine göre varsayılan (Endonezya Kemenag, Güney Asya Karaçi + Hanefî, diğerleri Diyanet)
+        val m = PrayerTimes.defaultMethod(zone.id, lat, lon)
+        val t = PrayerTimes.times(day, lat, lon, zone, PrayerTimes.Parameters.method(m.id, m.hanafi))
         val start = day.atStartOfDay(zone).toInstant()
         return Prayer.entries.mapNotNull { p -> t.minutes(p)?.let { Entry(p, start.plusSeconds(it * 60L)) } }
     }
@@ -60,6 +62,8 @@ object Wear {
     lateinit var provinces: List<WProvince>
         private set
     private var hijri: List<Triple<Long, Int, Int>> = emptyList()
+    /** Endonezya hicri takvimi (hijri-id.json; 10 Kasım 2026): yer Endonezya'daysa bu tablo */
+    private var hijriId: List<Triple<Long, Int, Int>> = emptyList()
     val turkey: ZoneId = ZoneId.of("Europe/Istanbul")
 
     fun init(c: Context) {
@@ -68,18 +72,24 @@ object Wear {
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
-            WProvince(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi").associateWith { o.optString(it) })
+            WProvince(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi", "bn").associateWith { o.optString(it) })
         }.sortedWith(compareBy(java.text.Collator.getInstance(Locale.forLanguageTag("tr"))) { it.name })
-        val h = JSONArray(read("hijri.json"))
-        hijri = (0 until h.length()).map { i -> h.getJSONArray(i).let { Triple(LocalDate.parse(it.getString(0)).toEpochDay(), it.getInt(1), it.getInt(2)) } }
+        fun table(n: String) = JSONArray(read(n)).let { h -> (0 until h.length()).map { i -> h.getJSONArray(i).let { Triple(LocalDate.parse(it.getString(0)).toEpochDay(), it.getInt(1), it.getInt(2)) } } }
+        hijri = table("hijri.json")
+        hijriId = runCatching { table("hijri-id.json") }.getOrDefault(emptyList())
     }
 
     val prefs: SharedPreferences get() = app.getSharedPreferences("wear", Context.MODE_PRIVATE)
 
     val lang: String
         get() {
-            val l = app.resources.configuration.locales[0].language.let { when (it) { "in" -> "id"; "tl" -> "fil"; else -> it } }
-            return if (l in listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi")) l else "tr"
+            // Telefonun dil listesinde desteklenen ilk dil, yoksa İngilizce (values/ İngilizce; 9 Kasım 2026)
+            val ls = app.resources.configuration.locales
+            for (i in 0 until ls.size()) {
+                val l = ls[i].language.let { when (it) { "in" -> "id"; "tl" -> "fil"; else -> it } }
+                if (l in listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn")) return l
+            }
+            return "en"
         }
 
     @SuppressLint("DiscouragedApi")
@@ -137,9 +147,10 @@ object Wear {
     /** Hicri tarih: (yıl, ay, gün); tablo dışında null */
     fun hijri(d: LocalDate): Triple<Int, Int, Int>? {
         val n = d.toEpochDay()
-        for (i in hijri.size - 2 downTo 0) {
-            val (start, y, m) = hijri[i]
-            if (n >= start) return if (n < hijri[i + 1].first) Triple(y, m, (n - start + 1).toInt()) else null
+        val t = if (hijriId.isNotEmpty() && runCatching { PrayerTimes.region(place().zone.id) == "ID" }.getOrDefault(false)) hijriId else hijri
+        for (i in t.size - 2 downTo 0) {
+            val (start, y, m) = t[i]
+            if (n >= start) return if (n < t[i + 1].first) Triple(y, m, (n - start + 1).toInt()) else null
         }
         return null
     }

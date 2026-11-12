@@ -80,7 +80,7 @@ data class WorldEntry(
         val ABBRS = linkedMapOf(
             "UTC" to "UTC", "GMT" to "Etc/GMT", "BST" to "Europe/London", "WET" to "Europe/Lisbon", "CET" to "Europe/Paris",
             "CEST" to "Europe/Paris", "EET" to "Europe/Athens", "EEST" to "Europe/Athens", "TRT" to "Europe/Istanbul", "MSK" to "Europe/Moscow",
-            "GST" to "Asia/Dubai", "PKT" to "Asia/Karachi", "IST" to "Asia/Kolkata", "SGT" to "Asia/Singapore", "JST" to "Asia/Tokyo",
+            "GST" to "Asia/Dubai", "PKT" to "Asia/Karachi", "IST" to "Asia/Kolkata", "WIB" to "Asia/Jakarta", "WITA" to "Asia/Makassar", "WIT" to "Asia/Jayapura", "SGT" to "Asia/Singapore", "JST" to "Asia/Tokyo",
             "KST" to "Asia/Seoul", "AEST" to "Australia/Sydney", "AEDT" to "Australia/Sydney", "EST" to "America/New_York",
             "EDT" to "America/New_York", "CST" to "America/Chicago", "CDT" to "America/Chicago", "MST" to "America/Denver",
             "PST" to "America/Los_Angeles", "PDT" to "America/Los_Angeles",

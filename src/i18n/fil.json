@@ -45,6 +45,7 @@
     "settings": "Mga setting",
     "theme": "Maliwanag / madilim na tema",
     "placeChange": "Palitan ang lokasyon",
+    "placeSearch": "Maghanap ng lungsod",
     "placeTitle": "Iyong lokasyon",
     "placeNote": "Nananatili ang iyong lokasyon sa iyong device at ginagamit sa bawat pahina para sa oras ng pagdarasal, mga panahon at lagay ng panahon; hindi ito ipinapadala sa server.",
     "placeClose": "Isara",
@@ -272,7 +273,7 @@
       },
       {
         "q": "Paano ko papalitan ang istilo ng orasan?",
-        "a": "Mag-swipe pakaliwa o pakanan sa orasan; sa computer, gamitin ang mga tuldok sa ibaba o ang arrow keys. Kasama sa mga istilo ang klasiko at simpleng analog, digital, analog at digital nang sabay, may petsa o wala, may buwanang kalendaryo, flip clock, orasang nakasulat sa salita, ring clock at malaking petsa. Natatandaan ang iyong pinili sa device na ito."
+        "a": "Mag-swipe pakaliwa o pakanan sa orasan o gamitin ang mga arrow sa ibaba nito; puwede ring i-tap ang numero ng istilo para pumili mula sa listahan. Sa computer, gumagana rin ang arrow keys. Bukod sa analog na may numero, digital, at analog kasama ang digital, may mga istilong may petsa, panahon, buwanang kalendaryo o magkatabing ayos, pati flip clock, hologram, Matrix clock at orasang math. Natatandaan ang iyong pinili sa device na ito."
       },
       {
         "q": "Paano ko makikita ang orasan sa full screen?",
@@ -284,7 +285,7 @@
       },
       {
         "q": "Saan ko makikita ang mga pista opisyal at Ramadan sa Türkiye?",
-        "a": "Sa pahina ng taunang kalendaryo makikita sa iisang kalendaryo ang mga pista opisyal, ang mga araw ng bayram at bisperas nito, ang mga gabi ng kandil at ang buwan ng Ramadan. Ang seksyong \"Mga paparating na araw\" sa itaas ng pahina ng kalendaryo ay nagsasabi kung ilang araw pa bago ang susunod na pista opisyal."
+        "a": "Sa pahina ng taunang kalendaryo makikita sa iisang kalendaryo ang mga pista opisyal, ang mga araw ng bayram at bisperas nito, ang mga gabi ng kandil at ang buwan ng Ramadan."
       }
     ],
     "upcomingHeading": "Mga paparating na pista opisyal at espesyal na araw",
@@ -358,7 +359,7 @@
     "title": "Patakaran sa Privacy at Cookies | Saat Tarih",
     "description": "Anong datos ang pinoproseso ng Saat Tarih, paano ginagamit ang cookies at local storage, ang Umami statistics, ang email list at ang iyong karapatan sa ilalim ng KVKK.",
     "h1": "Patakaran sa privacy at cookies",
-    "lead": "Ipinapaliwanag ng pahinang ito kung anong datos ang pinoproseso kapag ginagamit mo ang Saat Tarih, bakit, at ano ang iyong mga karapatan. Ang kailangan lang ang kinokolekta ng site; walang account o ad at walang cookies na inilalagay; tumatakbo lang ang statistics at mga panlabas na serbisyo kapag pinayagan mo.",
+    "lead": "Ipinapaliwanag ng pahinang ito kung anong datos ang pinoproseso kapag ginagamit mo ang Saat Tarih, bakit, at ano ang iyong mga karapatan. Ang kailangan lang ang kinokolekta ng site; walang ad, opsyonal ang account, at iisang kailangang cookie lang ang inilalagay para tandaan ang inyong pinili sa cookie; tumatakbo lang ang statistics at mga panlabas na serbisyo kapag pinayagan mo.",
     "sections": [
       {
         "id": "controller",
@@ -373,7 +374,7 @@
         "ul": [
           "**Oras at petsa:** Ang oras at time zone ng iyong device ay binabasa at kinakalkula lang sa iyong browser. Hindi ito ipinapadala sa server o sine-save.",
           "**Lokasyon (oras ng pagdarasal):** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\" sa pahina ng oras ng pagdarasal, ginagamit ng browser ang iyong lokasyon sa device mo lang para kalkulahin ang mga oras. Hindi ipinapadala sa server ang coordinates at hindi isinasama sa statistics; nananatili ang huli mong pinili sa local storage ng browser.",
-          "**Lagay ng panahon (panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences, ipinapadala ng pahina ng panahon at ng mga istilo ng orasan na may panahon ang tantiyang coordinates ng napili mong lalawigan o lokasyon (mga 1 km) nang direkta mula sa browser papunta sa Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), na nagbibigay ng datos; nakakarating din sa Open-Meteo ang iyong IP address. Kung walang pahintulot, walang ginagawang request at isang maikling paalala ang ipinapakita sa halip. Hindi nakikita o sine-save ng server ng Saat Tarih ang coordinates na ito; ang sariling mga tuntunin sa privacy ng Open-Meteo ang umiiral.",
+          "**Lagay ng panahon (panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences, ipinapadala ng pahina ng panahon at ng mga istilo ng orasan na may panahon ang tantiyang coordinates ng napili mong lalawigan o lokasyon (mga 1 km) nang direkta mula sa browser papunta sa Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), na nagbibigay ng datos; nakakarating din sa Open-Meteo ang iyong IP address. Kung walang pahintulot, walang ginagawang request at isang maikling paalala ang ipinapakita sa halip. Hindi nakikita o sine-save ng server ng Saat Tarih ang coordinates na ito; ang sariling mga tuntunin sa privacy ng Open-Meteo ang umiiral. Ang forecast ng ulap sa pahinang Liwanag sa litrato ay kinukuha rin sa Open-Meteo, sa parehong pahintulot at parehong tinatayang coordinates (dalawang decimal).",
           "**Mapa (globo, panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences at nag-zoom ka sa globo sa home page lampas sa isang antas, direktang dina-download sa iyong browser ang mga tile ng mapa mula sa server ng OpenStreetMap (tile.openstreetmap.org); kasabay nito, nakakarating sa OpenStreetMap Foundation ang iyong IP address at ang mga address ng tile ng lugar na tinitingnan mo. Kung walang pahintulot, o habang naka-zoom out ang globo, hindi ginagawa ang request na ito. Hindi ito nakikita ng server ng Saat Tarih; ang sariling mga tuntunin sa privacy ng OpenStreetMap ang umiiral.",
           "**Qibla at kalapit na mga masjid:** Kinakalkula sa iyong browser ang direksyon ng qibla, layo at oras ng qibla. Para sa compass, binabasa lang sa browser ang orientation sensor ng telepono (humihingi ng pahintulot ang iPhone) at hindi ito ipinapadala kahit saan. Kung pipindutin mo ang \"Ipakita ang mga masjid\" at pinayagan mo ang mga panlabas na serbisyo, ang coordinates ng napiling lugar na ni-round sa dalawang decimal (mga 1 km) ay ipinapadala mula sa browser sa serbisyong Overpass (overpass-api.de), na naghahatid ng datos ng OpenStreetMap; nakakarating din dito ang iyong IP address. Hindi nakikita ng server ng Saat Tarih ang coordinates na ito.",
           "**Musika ng alarma (YouTube, panlabas na serbisyo, may pahintulot):** Kung nagdagdag ka ng link sa YouTube sa isang alarma sa tool ng alarma at pinayagan mo ang mga panlabas na serbisyo, kapag tumunog ang alarma, ilo-load sa iyong browser ang video gamit ang player ng YouTube sa privacy-enhanced mode (youtube-nocookie.com); kasabay nito, nakakarating sa Google (YouTube) ang iyong IP address at ang ID ng video, at maaaring mag-imbak ang player ng sarili nitong datos sa iyong browser. Nananatili lang ang link sa browser na ito, kasama ng iyong alarma. Kung walang pahintulot, hindi ilo-load ang player at tutunog ang alarma sa sarili nitong tunog. Hindi ito nakikita ng server ng Saat Tarih; ang sariling mga tuntunin sa privacy ng YouTube (Google) ang umiiral.",
@@ -392,7 +393,7 @@
         ],
         "ul": [
           "**Lokasyon:** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\", ginagamit ang iyong lokasyon sa telepono para kalkulahin ang oras ng pagdarasal at hanapin ang pinakamalapit na lalawigan; ang tantiyang lokasyon (mga 1 km) ay sa telepono mo lang naka-save. Ang opsyong \"Awtomatiko\" sa widgets ay gumagamit din ng lokasyon sa telepono lang.",
-          "**Lagay ng panahon:** Galing sa Apple Weather (WeatherKit) ang panahon sa app; para rito, ipinapadala sa Apple ang tantiyang coordinates ng napiling lalawigan o ng iyong lokasyon. Hindi namin nakikita ang datos na ito; ang mga tuntunin sa privacy ng Apple ang umiiral. Ang kalidad ng hangin, polen, paghahambing ng modelo at weather complication ng Apple Watch ay mula sa Open-Meteo (open-meteo.com); para rito, ipinapadala ang mga coordinate na ni-round sa dalawang decimal. Kung naka-on ang panahon sa Lock Screen, kinukuha rin ito sa background kapag pinapayagan ng iOS.",
+          "**Lagay ng panahon:** Galing sa Apple Weather (WeatherKit) ang panahon sa app; para rito, ipinapadala sa Apple ang tantiyang coordinates ng napiling lalawigan o ng iyong lokasyon. Hindi namin nakikita ang datos na ito; ang mga tuntunin sa privacy ng Apple ang umiiral. Ang kalidad ng hangin, polen, paghahambing ng modelo at weather complication ng Apple Watch ay mula sa Open-Meteo (open-meteo.com); para rito, ipinapadala ang mga coordinate na ni-round sa dalawang decimal. Kung naka-on ang panahon sa Lock Screen, kinukuha rin ito sa background kapag pinapayagan ng iOS. Ang forecast ng ulap sa screen na Liwanag sa litrato ay galing din sa Open-Meteo; para rito, binibilog din ang coordinates sa dalawang decimal.",
           "**Mapa:** Ipinapakita gamit ang Apple Maps ang globo sa orasan ng mundo; dina-download mula sa Apple ang mga larawan ng mapa.",
           "**Kalendaryo:** Ipinapakita lang sa app ang mga event mula sa mga kalendaryo sa iyong telepono kung papayagan mo ito; binabasa ang mga ito sa telepono at hindi ipinapadala kahit saan. Ang pagdagdag at pagbura ng event ay ginagawa sa sariling screen ng kalendaryo ng iPhone at kapag kinumpirma mo lang.",
           "**Mga notification at alarma:** Mga notification sa oras ng pagdarasal; mga notification para sa espesyal na araw, simula ng panahon, yugto ng buwan, pagsikat at paglubog ng araw, buod ng panahon sa umaga, bawat oras at daylight saving (bawat isa ay naka-on bilang default maliban sa bawat oras; mababago sa Settings › Notifications); ang mga alarma at timer ay ini-iskedyul sa iyong telepono nang walang server. Para sa buod ng panahon, ang serbisyo ng panahon lang ang kinokontak (tingnan ang item tungkol sa panahon sa itaas). Pinananatiling updated ang listahan gamit ang background refresh ng iOS; ginagawa sa telepono ang mga pasalitang anunsyo.",
@@ -419,7 +420,7 @@
         ],
         "ul": [
           "**Lokasyon:** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\", pahintulot lang sa tantiyang lokasyon ang hinihingi; ginagamit ang iyong lokasyon sa telepono para kalkulahin ang oras ng pagdarasal at hanapin ang pinakamalapit na lalawigan o distrito, at ang tantiyang lokasyon (mga 1 km) ay sa telepono lang naka-save.",
-          "**Lagay ng panahon:** Galing sa Open-Meteo (open-meteo.com) ang panahon sa app; para rito, ipinapadala sa Open-Meteo ang coordinates ng napiling lugar na ni-round sa dalawang decimal (mga 1 km), at nakakarating sa server ng Open-Meteo ang iyong IP address kasama ng request na iyon. Para sa panahon ng mga lungsod sa umiikot na globo, ang coordinates lang ng mga lungsod na iyon ang ipinapadala. Ang mga tuntunin sa privacy ng Open-Meteo ang umiiral; hindi namin nakikita ang datos na ito. Kung naka-on ang panahon sa status bar, ipinapadala rin ang kahilingang ito bawat oras sa background.",
+          "**Lagay ng panahon:** Galing sa Open-Meteo (open-meteo.com) ang panahon sa app; para rito, ipinapadala sa Open-Meteo ang coordinates ng napiling lugar na ni-round sa dalawang decimal (mga 1 km), at nakakarating sa server ng Open-Meteo ang iyong IP address kasama ng request na iyon. Para sa panahon ng mga lungsod sa umiikot na globo, ang coordinates lang ng mga lungsod na iyon ang ipinapadala. Ang mga tuntunin sa privacy ng Open-Meteo ang umiiral; hindi namin nakikita ang datos na ito. Kung naka-on ang panahon sa status bar, ipinapadala rin ang kahilingang ito bawat oras sa background. Para sa forecast ng ulap sa screen na Liwanag sa litrato, ipinapadala rin sa Open-Meteo ang parehong tinatayang lokasyon (dalawang decimal).",
           "**Globo at mapa:** Iginuguhit ang umiikot na globo mula sa isang larawan sa loob ng app; walang serbisyo ng mapa na kinokontak.",
           "**Kalendaryo:** Hinihingi lang ang pahintulot sa kalendaryo kung pipindutin mo ang \"Ipakita ang mga kalendaryo ng telepono ko\"; binabasa sa telepono ang mga event at hindi ipinapadala kahit saan. Idinadagdag ang mga event gamit ang sariling calendar app ng telepono at binubura lang kapag kinumpirma mo.",
           "**Mga notification, alarma at interval workout:** Ang mga notification sa oras ng pagdarasal at ang iba pang uri ng notification (espesyal na araw, simula ng panahon, yugto ng buwan, pagsikat at paglubog ng araw, buod ng panahon sa umaga, bawat oras, daylight saving; bawat isa ay naka-on bilang default maliban sa bawat oras, mababago sa Settings › Notifications), mga alarma at timer ay ini-iskedyul sa iyong telepono nang walang server; ginagamit ang pahintulot sa eksaktong alarma para tumunog sa oras. Habang tumatakbo ang interval workout na sinimulan mo, isang foreground service na makikita sa notification ang nag-aanunsyo ng pagpapalit ng yugto gamit ang text-to-speech ng telepono. Ginagawa sa telepono ang mga pasalitang anunsyo.",
@@ -436,6 +437,14 @@
         ]
       },
       {
+        "id": "account",
+        "h": "Membership",
+        "p": [
+          "Hindi kailangan ng account para gamitin ang Saat Tarih. Kung gusto ninyo, puwede kayong magbukas ng Bumba membership sa website (hesap.time.bumba.tr) at sa mga app gamit ang inyong email address at password; gumagana rin ang parehong membership sa ibang produkto ng Bumba.",
+          "Kung anong impormasyon ang pinoproseso ng membership at bakit, saan ito iniimbak at ang inyong mga karapatan ay nakasulat sa pinagsasaluhang [abiso sa privacy ng Bumba membership](https://bumbagroup.com/uyelik-aydinlatma?dil=en); ang mga tuntunin ay nasa [mga tuntunin ng membership](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Puwede ninyong burahin ang inyong account anumang oras: [Pagbura ng account]({deleteUrl})."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Browser extension",
         "p": [
@@ -446,7 +455,7 @@
         "id": "cookies",
         "h": "Cookies at storage ng browser",
         "p": [
-          "Walang anumang cookie na inilalagay ang Saat Tarih. Sa una mong pagbisita, isang banner sa ibaba ng pahina ang humihingi ng pahintulot mo para sa statistics ng pagbisita (Umami) at mga panlabas na serbisyo (Open-Meteo, OpenStreetMap, YouTube); parehong naka-off hangga't hindi mo pinapayagan. Mapapalitan mo ang iyong pinili anumang oras sa link na \"Cookie preferences\" sa menu ng mga setting. Para matandaan ang iyong mga pinili, ginagamit namin ang local storage (localStorage) ng iyong browser; kabilang ang mga item na ito sa kinakailangang grupo, nananatili sa iyong device at hindi ipinapadala sa server. Mabubura mo ang mga ito anumang oras sa mga setting ng browser. Shared na patakaran sa cookies ng Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Isang kailangang cookie lang ang inilalagay ng Saat Tarih: ang inyong pinili sa cookie banner (bumba-cerez), para hindi na ulit lumabas ang banner sa mga page ng account (hesap.time.bumba.tr). Sa una mong pagbisita, isang banner sa ibaba ng pahina ang humihingi ng pahintulot mo para sa statistics ng pagbisita (Umami) at mga panlabas na serbisyo (Open-Meteo, OpenStreetMap, YouTube); parehong naka-off hangga't hindi mo pinapayagan. Mapapalitan mo ang iyong pinili anumang oras sa link na \"Cookie preferences\" sa menu ng mga setting. Para matandaan ang iyong mga pinili, ginagamit namin ang local storage (localStorage) ng iyong browser; kabilang ang mga item na ito sa kinakailangang grupo, nananatili sa iyong device at hindi ipinapadala sa server. Mabubura mo ang mga ito anumang oras sa mga setting ng browser. Shared na patakaran sa cookies ng Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -458,7 +467,7 @@
             [
               "bumba-cerez",
               "Tinatandaan ang iyong pinili sa cookie banner (statistics at panlabas na serbisyo) at ang bersyon ng patakaran.",
-              "Hanggang burahin mo"
+              "Sa local storage hanggang burahin ninyo; bilang cookie, 1 taon"
             ],
             [
               "sth-theme",
@@ -536,8 +545,13 @@
               "Hanggang burahin mo"
             ],
             [
+              "sth-cals",
+              "Tinatandaan ang mga karagdagang kalendaryo (halimbawa, ang Kalendaryong Kristiyano) na pinili mong ipakita sa mga pahina ng kalendaryo.",
+              "Hanggang burahin mo"
+            ],
+            [
               "sth-place",
-              "Tinatandaan ang huling lalawigan o lokasyong pinili mo para sa mga pahina ng oras ng pagdarasal, kalikasan at panahon.",
+              "Tinatandaan ang huling lalawigan o lokasyong pinili mo para sa mga pahina ng oras ng pagdarasal, mga panahon ng taon at panahon.",
               "Hanggang burahin mo"
             ],
             [
@@ -640,7 +654,7 @@
     "pages": "Mga pahina",
     "cities": "Mga pahina ng lungsod",
     "about": "Tungkol sa site",
-    "aboutText": "Naka-sync ang oras sa orasan ng server ng site (hiwalay sa orasan ng device); binabasa ang time zone mula sa browser at walang personal na datos na ipinapadala. Available sa 18 wika: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French, Russian, Japanese, Korean, Chinese, Filipino, Thai, Spanish, Portuguese at Hindi. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+    "aboutText": "Naka-sync ang oras sa orasan ng server ng site (hiwalay sa orasan ng device); binabasa ang time zone mula sa browser at walang personal na datos na ipinapadala. Available sa 19 wika: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French, Russian, Japanese, Korean, Chinese, Filipino, Thai, Spanish, Portuguese, Hindi at Bengali. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Mga istilo ng orasan",
@@ -688,7 +702,7 @@
     "info": "Tungkol sa pinagmulan ng oras ng orasang ito",
     "infoTitle": "Saan galing ang oras na ito?",
     "infoClose": "Isara",
-    "infoSeconds": "I-tap ang orasan para ipakita o itago ang segundo. Nakabukas ang segundo sa simula sa digital na orasan at nakasara sa analog.",
+    "infoSeconds": "I-tap ang orasan para ipakita o itago ang segundo. Nakabukas ang segundo sa simula sa digital at analog na orasan.",
     "zoomIn": "Palakihin ang orasan",
     "zoomOut": "Paliitin ang orasan"
   },
@@ -708,7 +722,7 @@
       "weekend": "Weekend",
       "today": "Ngayon",
       "school": "Bakasyon sa paaralan o petsa ng termino (MEB)",
-      "exam": "Pagsusulit o kaugnay na petsa (ÖSYM, MEB, AÖF)"
+      "leave": "Araw ng sama-samang leave"
     },
     "eventsHeading": "Listahan ng mga araw sa {year}",
     "colDate": "Petsa",
@@ -805,37 +819,7 @@
       "schoolEnd": "Pagtatapos ng taon ng pasukan, araw ng report card (MEB)",
       "teacherStart": "Simula ng propesyonal na gawain ng mga guro (MEB)",
       "adaptation": "Simula ng linggo ng oryentasyon sa preschool at grade 1 (MEB)",
-      "teacherEnd": "Simula ng propesyonal na gawain ng mga guro sa katapusan ng taon (MEB)",
-      "yksTyt": "YKS: sesyon ng TYT (ÖSYM)",
-      "yksAytYdt": "YKS: mga sesyon ng AYT at YDT (ÖSYM)",
-      "tryos": "TR-YÖS/2: pagsusulit para sa mga dayuhang estudyante (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS antas ng sekondarya (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT: pagsusulit sa larangan ng serbisyong panrelihiyon (ÖSYM)",
-      "dus2": "DUS ikalawang sesyon: pagsusulit sa espesyalidad sa dentistry (ÖSYM)",
-      "eus": "EUS: pagsusulit sa espesyalidad sa parmasya (ÖSYM)",
-      "yds2": "YDS/2: pagsusulit sa kahusayan sa banyagang wika (ÖSYM)",
-      "ales3": "ALES/3: pagsusulit sa pagpasok sa graduate studies (ÖSYM)",
-      "alesApply": "Panahon ng aplikasyon sa ALES/3 (ÖSYM)",
-      "kpssOnResult": "Resulta ng KPSS antas ng associate degree (ÖSYM)",
-      "kpssOrtaResult": "Resulta ng KPSS antas ng sekondarya (ÖSYM)",
-      "ydsResult": "Resulta ng YDS/2 (ÖSYM)",
-      "alesResult": "Resulta ng ALES/3 (ÖSYM)",
-      "kpssTercih": "Mga kagustuhan sa placement ng KPSS-2026/2 (ÖSYM)",
-      "common1": "Termino 1, unang sabayang nakasulat na pagsusulit (MEB)",
-      "common2": "Termino 1, ikalawang sabayang nakasulat na pagsusulit (MEB)",
-      "common3": "Termino 2, unang sabayang nakasulat na pagsusulit (MEB)",
-      "common4": "Termino 2, ikalawang sabayang nakasulat na pagsusulit (MEB)",
-      "aolRegister": "Panahon ng pagpaparehistro sa open high school (AÖL) (MEB)",
-      "aolEsinav": "Panahon ng e-exam ng AÖL (MEB)",
-      "aolWritten": "Nakasulat na pagsusulit ng AÖL (MEB)",
-      "aolResult": "Resulta ng unang termino ng AÖL (MEB)",
-      "aofMid1": "Midterm ng AÖF sa taglagas (Anadolu University)",
-      "aofFinal1": "Final exam ng AÖF sa taglagas (Anadolu University)",
-      "aofMid2": "Midterm ng AÖF sa tagsibol (Anadolu University)",
-      "aofFinal2": "Final exam ng AÖF sa tagsibol (Anadolu University)",
-      "aofSummer": "Pagsusulit ng summer school ng AÖF (Anadolu University)"
+      "teacherEnd": "Simula ng propesyonal na gawain ng mga guro sa katapusan ng taon (MEB)"
     },
     "hubName": "Taunang kalendaryo",
     "hubDesc": "Mga pista opisyal, mga araw ng bayram at bisperas, mga gabi ng kandil at buwan ng Ramadan.",
@@ -851,6 +835,8 @@
     "dayAgo": "{n} araw na ang nakalipas",
     "dayClose": "Isara",
     "dayToList": "Ipakita sa listahan ng mga araw",
+    "calsHeading": "Mga kalendaryo",
+    "calsLead": "Ipakita rin ang mga pista at araw ng ibang kalendaryo. Sa browser na ito lang nakatago ang iyong pinili.",
     "icsHeading": "Idagdag sa iyong kalendaryo",
     "icsHolidays": "Mga pista opisyal at bisperas",
     "icsDays": "Mga panrelihiyon at espesyal na araw",
@@ -1027,6 +1013,10 @@
         "classroom": {
           "name": "Mga kasangkapan sa klase",
           "desc": "Random na pangalan, grupo at counter."
+        },
+        "photo": {
+          "name": "Liwanag sa litrato",
+          "desc": "Golden hour, blue hour at photo forecast ng paglubog."
         }
       },
       "infoHeading": "Mga pahina ng impormasyon"
@@ -1699,22 +1689,6 @@
         "name": "araw ng report card",
         "dat": "araw ng report card"
       },
-      "yks": {
-        "name": "YKS (pagsusulit sa pagpasok sa unibersidad)",
-        "dat": "YKS"
-      },
-      "kpss": {
-        "name": "KPSS (pagsusulit sa pagpili ng tauhan ng gobyerno)",
-        "dat": "KPSS"
-      },
-      "ales": {
-        "name": "ALES (pagsusulit sa pagpasok sa graduate studies)",
-        "dat": "ALES"
-      },
-      "yds": {
-        "name": "YDS (pagsusulit sa kahusayan sa banyagang wika)",
-        "dat": "YDS"
-      },
       "schoolStart": {
         "name": "Pagbubukas ng klase",
         "dat": "pagbubukas ng klase"
@@ -1722,14 +1696,6 @@
       "midterm": {
         "name": "bakasyon sa gitna ng termino",
         "dat": "bakasyon sa gitna ng termino"
-      },
-      "aof": {
-        "name": "Mga pagsusulit ng AÖF (open education ng Anadolu University)",
-        "dat": "mga pagsusulit ng AÖF"
-      },
-      "aol": {
-        "name": "Pagsusulit ng AÖL (open high school)",
-        "dat": "pagsusulit ng AÖL"
       },
       "feb14": {
         "name": "Araw ng mga Puso",
@@ -1751,8 +1717,7 @@
         "name": "Araw ng mga Guro",
         "dat": "Araw ng mga Guro"
       }
-    },
-    "exam": "Kinukuha ang mga petsa ng pagsusulit sa mga anunsyo ng ÖSYM, MEB at Anadolu University, at puwede nilang baguhin ang mga ito. Hindi hinuhulaan ang mga petsang hindi pa inaanunsyo; idinadagdag ang mga ito kapag nailathala na."
+    }
   },
   "datecalc": {
     "title": "Date Calculator: Mga Araw, Araw ng Trabaho, Edad | Saat Tarih",
@@ -1810,7 +1775,7 @@
   },
   "embedgen": {
     "title": "Clock Widget: Maglagay ng Libreng Orasan sa Site Mo | Saat Tarih",
-    "description": "Maglagay ng libreng orasan sa iyong site: 13 istilo, pagpili ng lungsod, maliwanag o madilim na tema. Kopyahin ang handang iframe code at i-paste.",
+    "description": "Maglagay ng libreng orasan sa iyong site: 20 istilo, pagpili ng lungsod, maliwanag o madilim na tema. Kopyahin ang handang iframe code at i-paste.",
     "h1": "Maglagay ng orasan sa iyong site",
     "lead": "Piliin ang istilo, lungsod at tema, saka kopyahin ang handang iframe code at i-paste sa iyong site. Walang ad ang widget, hindi gumagamit ng cookies at tumatakbo sa orasang naka-sync sa server.",
     "modelLabel": "Istilo ng orasan",
@@ -1844,7 +1809,7 @@
       },
       {
         "q": "Kumokolekta ba ang widget ng datos ng mga bisita ko?",
-        "a": "Hindi naglalagay ng cookies ang widget at hindi kumokolekta ng personal na datos. Nagpapadala ito ng ilang maliliit na request sa server para maipakita ang tamang oras; binibilang ang page views sa anonymous na statistics na walang cookies."
+        "a": "Hindi naglalagay ng cookies ang widget at hindi kumokolekta ng personal na datos. Nagpapadala ito ng ilang maliliit na request sa server para maipakita ang tamang oras; walang statistics script ang widget at hindi binibilang ang page views."
       }
     ],
     "sizeNote": "Kailangan ng hindi bababa sa 460 px na taas ang mga istilong may kalendaryo; kasya na sa 360 px ang iba.",
@@ -1856,7 +1821,7 @@
       "date": "Petsa at oras",
       "sun": "Pagsikat at paglubog ng araw"
     },
-    "lineNote": "Oras lang ang ipinapakita ng script; walang cookie at walang ipinapadalang data. Mula sa lungsod ang time zone.",
+    "lineNote": "Ang napili mong teksto lang (oras, petsa, o pagsikat at paglubog ng araw) ang ipinapakita ng script; walang cookie at walang ipinapadalang data. Mula sa lungsod ang time zone.",
     "linePreview": "Silip"
   },
   "embed": {
@@ -1989,9 +1954,14 @@
         "kuwait": "Kuwait",
         "qatar": "Qatar",
         "singapore": "Singapore",
+        "kemenag": "Kemenag (Ministri ng Ugnayang Panrelihiyon, Indonesia)",
         "france": "France (UOIF)",
         "russia": "Spiritual Administration of Muslims of Russia"
-      }
+      },
+      "region": "ayon sa inyong rehiyon",
+      "kemenagNote": "Para sa mabababang lugar ang paraang Kemenag: sa kabundukan (higit sa mga 600 m), iba nang 4–5 minuto ang inilalathalang pagsikat ng araw at maghrib ng Kemenag. Ang imsak ay 10 minuto bago ang fajr bilang pag-iingat.",
+      "rowImsak": "Imsak",
+      "rowDuha": "Duha"
     },
     "ezani": "Oras na ezani (alaturka): {t}",
     "ezaniNote": "Sa oras na ezani (alaturka), 12:00 ang oras ng dasal sa paglubog ng araw at doon nagsisimula ang bilang."
@@ -2057,6 +2027,7 @@
     "eclipseHere": "{place}: nasa itaas ng horizon ang Buwan sa oras na iyon, kaya makikita mula rito ang eklipse.",
     "eclipseNotHere": "{place}: nasa ilalim ng horizon ang Buwan sa oras na iyon.",
     "eclipseSafety": "Huwag tumingin sa eklipse ng araw nang walang proteksyon o gamit ang karaniwang sunglasses; gumamit ng eclipse glasses na sertipikado sa ISO 12312-2.",
+    "eclipsePrayer": "Sa panahon ng eklipse, isinasagawa ang salat al-kusuf (eklipse ng Araw) at salat al-khusuf (eklipse ng Buwan).",
     "eclipseSource": "Pinagmulan: NASA Eclipse Web Site (Fred Espenak, NASA/GSFC).",
     "chartHeading": "Haba ng araw sa buong taon",
     "chartCaption": "{place}: liwanag bawat araw (oras), {year}",
@@ -2304,7 +2275,7 @@
       },
       {
         "q": "Makikita ko ba ang panahon sa full-screen na orasan?",
-        "a": "Oo. Sa full screen, i-tap ang screen para lumabas ang bar; ipapakita ng button ng panahon doon ang panahon ng napili mong lokasyon sa tabi ng orasan."
+        "a": "Oo. Sa home page, i-swipe ang orasan sa istilong may panahon at lumipat sa full screen; lalabas sa tabi ng orasan ang panahon ng napili mong lokasyon."
       }
     ],
     "search": "panahon forecast temperatura ulan hangin halumigmig uv bukas ngayong linggo weather hava durumu tahmin",
@@ -2440,6 +2411,9 @@
     "time": "Oras ng qibla",
     "timeNote": "Sa oras na ito, eksaktong nasa direksyon ng qibla ang Araw: ang pagharap sa Araw ay pagharap sa qibla.",
     "noTime": "Ngayon, hindi dumadaan ang Araw sa direksyon ng qibla.",
+    "rashdul": "Ang Araw sa ibabaw ng Kaaba",
+    "rashdulNote": "Dalawang beses sa isang taon, dumaraan ang Araw nang eksakto sa ibabaw ng Kaaba. Sa sandaling iyon, saanman nakikita ang Araw, ang pagharap sa Araw ay pagharap sa qibla; ang anino ng patayong patpat ay nakaturo nang eksakto palayo sa qibla.",
+    "rashdulNight": "Sa sandaling ito, nasa ilalim ng abot-tanaw ang Araw sa napiling lugar; maaari mong gamitin ang araw-araw na oras ng qibla.",
     "start": "Simulan ang compass",
     "aligned": "Nakaharap ka sa qibla",
     "turn": "Hawakan nang patag ang telepono at umikot papunta sa arrow",
@@ -2667,10 +2641,10 @@
     ]
   },
   "worldHol": {
-    "hubTitle": "Mga pampublikong holiday ayon sa bansa 2026–2028 | Saat Tarih",
+    "hubTitle": "Mga pampublikong holiday ayon sa bansa 2024–2032 | Saat Tarih",
     "hubDescription": "Mga pambansang holiday sa Germany, UK, US, Netherlands, France at 25 pang bansa: mga petsa, araw ng linggo, ang susunod na holiday at natitirang araw.",
     "hubH1": "Mga pampublikong holiday ayon sa bansa",
-    "hubLead": "Mga pambansang holiday sa 30 bansa at ang natitirang araw bago ang susunod.",
+    "hubLead": "Mga pambansang holiday sa 32 bansa at ang natitirang araw bago ang susunod.",
     "hubSearch": "public holidays holiday bansa germany uk us netherlands france bank holiday kalendaryo resmi tatil",
     "colCountry": "Bansa",
     "colNext": "Susunod na holiday",
@@ -2698,9 +2672,13 @@
     "faq": [
       {
         "q": "Aling mga bansa ang may nakalistang holiday?",
-        "a": "Nakalista rito ang mga pambansang holiday sa 30 bansa: Germany, UK, France, Netherlands, Belgium, Austria, Switzerland at iba pa sa Europa, pati na ang US, Canada, Brazil, Australia, Japan, China, Russia, Georgia, Singapore at South Africa. Nasa mga pahina ng taunang kalendaryo ang mga holiday ng Türkiye."
+        "a": "Nakalista rito ang mga pambansang holiday sa 32 bansa: Germany, UK, France, Netherlands, Belgium, Austria, Switzerland at iba pa sa Europa, pati na ang US, Canada, Brazil, Australia, Japan, China, Russia, Georgia, Singapore at South Africa. Nasa mga pahina ng taunang kalendaryo ang mga holiday ng Türkiye. Ang mga holiday ng Indonesia at India ay mula sa opisyal na listahan ng mga pamahalaan (SKB 3 Menteri at DoPT)."
       }
-    ]
+    ],
+    "leaveNote": "Ang mga araw ng sama-samang leave (cuti bersama) ay walang pasok para sa mga kawani ng gobyerno; sa pribadong sektor, ibinabawas ito sa taunang leave at nakadepende sa employer. Hindi ito binibilang na pista opisyal.",
+    "inNote": "Mga araw na sarado ang mga tanggapan ng pamahalaang sentral sa Delhi at New Delhi (DoPT). Iba ang mga holiday ng bawat estado; maaaring maurong nang isang araw ang mga pistang Islamiko depende sa pagkakita sa bagong buwan.",
+    "officialSource": "Pinagmulan: {source}, sinuri noong {date}. Maaaring magbago ang mga petsa; sundin ang opisyal na anunsyo.",
+    "officialNote": "Ang mga holiday ng Indonesia at India ay mula sa opisyal na listahan ng mga pamahalaan (SKB 3 Menteri at DoPT)."
   },
   "zakat": {
     "title": "Zakat calculator: nisab at magkano ang zakat | Saat Tarih",
@@ -2750,7 +2728,14 @@
     "fitreText": "Itinakda ng Presidency of Religious Affairs ng Türkiye (High Board of Religious Affairs) ang fitra ng {year} sa {amount} TL bawat tao ({date}), may bisa mula Ramadan {year} hanggang sa susunod na Ramadan.",
     "fitrePeople": "Bilang ng tao (kasama ang iyong mga dependent)",
     "fitreTotal": "Kabuuang fitra",
-    "fitreNote": "Para sa Türkiye ang halagang ito at ito ang pinakamababa; maaaring magbigay nang higit ang may kaya (ayon sa sukat ng datiles o pasas). Ibinibigay ang fitra bago ang dasal ng Eid."
+    "fitreNote": "Para sa Türkiye ang halagang ito at ito ang pinakamababa; maaaring magbigay nang higit ang may kaya (ayon sa sukat ng datiles o pasas). Ibinibigay ang fitra bago ang dasal ng Eid.",
+    "stdLabel": "Batayan ng pagkalkula",
+    "stdDiyanet": "Diyanet (Turkey): nisab na 80.18 g na ginto",
+    "stdBaznas": "BAZNAS (Indonesia): nisab na 85 g na ginto",
+    "noteBaznas": "Sinusunod ng kalkulasyong ito ang BAZNAS: nisab na 85 gramo ng ginto, 2.5% (isang ika-40); dapat lumipas ang isang taong lunar sa yaman. Para sa tiyak na sagot, magtanong sa BAZNAS o sa isang iskolar ng relihiyon.",
+    "fitrahHeading": "Zakat al-fitr (BAZNAS)",
+    "fitrahText": "Itinakda ng BAZNAS ang zakat al-fitr para sa {year} sa {amount} bawat tao, katumbas ng mga 2.5 kg o 3.5 litro ng bigas. Maaaring magtakda ng ibang halaga ang mga BAZNAS ng lalawigan at distrito ayon sa lokal na presyo ng bigas.",
+    "fidyahText": "Fidyah para sa hindi makapag-ayuno (BAZNAS {year}): {amount} bawat tao bawat araw."
   },
   "api": {
     "title": "Open data (API): holiday, oras ng dasal, Hijri | Saat Tarih",
@@ -2840,7 +2825,15 @@
       }
     ],
     "rumi": "Rumi (Ottoman): {date}",
-    "rumiNote": "Ang petsang Rumi ay sumusunod sa kalendaryong Julian (13 araw na huli) at nagsisimula ang taon sa 1 Marso, gaya ng mga tradisyonal na almanakeng Turko."
+    "rumiNote": "Ang petsang Rumi ay sumusunod sa kalendaryong Julian (13 araw na huli) at nagsisimula ang taon sa 1 Marso, gaya ng mga tradisyonal na almanakeng Turko.",
+    "calLabel": "Kalendaryong Hijri",
+    "calDiyanet": "Diyanet (Turkey)",
+    "calKemenag": "Kemenag (Indonesia)",
+    "offLabel": "Pag-adjust sa simula ng buwan",
+    "offM1": "1 araw na mas maaga",
+    "off0": "Walang pag-adjust",
+    "offP1": "1 araw na mas huli",
+    "calNote": "Ang simula ng buwang Hijri ay maaaring magkaiba nang isang araw sa bawat bansa. Sinusunod ng kalendaryong Indonesian ang mga petsang inanunsyo ng Kemenag, at sa mga buwang hindi pa inaanunsyo, kinakalkula ito ayon sa pamantayang MABIMS. Kung saan karaniwang nakikita ang hilal nang isang araw na mas huli, gaya ng India o Pakistan, maaari mong piliin ang \"1 araw na mas huli\"."
   },
   "timeCalc": {
     "title": "Time calculator: magdagdag, magbawas at oras sa pagitan | Saat Tarih",
@@ -3084,7 +3077,7 @@
     "tableHeading": "Mga petsa ng bawat sign",
     "colSign": "Sign",
     "colDates": "Petsa (tinatayang)",
-    "fun": "Para sa libangan ang astrolohiya at walang batayang siyentipiko. Astronomiko ang mismong kuwenta: ang ecliptic longitude ng Araw at Buwan (tropical zodiac).",
+    "fun": "Para sa libangan ang astrolohiya at walang batayang siyentipiko. Astronomiko ang mismong kuwenta: ang ecliptic longitude ng Araw at Buwan (tropical zodiac). Ang mga sidereal (nirayana) na tanda sa tradisyong Indian ay mga 24° na nasa likod, kaya kadalasang isang tanda ang mas maaga.",
     "faq": [
       {
         "q": "Bakit bahagyang umuusog bawat taon ang hangganan ng mga sign?",
@@ -3351,6 +3344,168 @@
       {
         "q": "Ipinapadala ba kahit saan ang mga pangalan ng estudyante?",
         "a": "Hindi. Ang mga pangalan, grupo at counter ay nakaimbak lang sa browser na ito; hindi ipinapadala sa server at hindi kasama sa istatistika."
+      }
+    ]
+  },
+  "photo": {
+    "title": "Golden Hour at Blue Hour Ngayon: Liwanag sa Litrato | Saat Tarih",
+    "description": "Oras ng golden hour at blue hour sa iyong lugar, direksyon ng pagsikat at paglubog ng araw, pagsikat at yugto ng Buwan, at 7-araw na photo forecast batay sa ulap.",
+    "h1": "Liwanag sa litrato: golden hour at blue hour",
+    "lead": "Ang liwanag ngayon para sa mga photographer sa iisang pahina: blue hour at golden hour sa umaga at gabi, oras at direksyon ng pagsikat at paglubog ng araw, ang Buwan, at photo forecast ng pagsikat at paglubog batay sa ulap.",
+    "search": "golden hour blue hour liwanag sa litrato potograpiya pagsikat ng araw paglubog ng araw direksyon azimuth pagsikat ng buwan ulap forecast photographer",
+    "dateLabel": "Petsa",
+    "prev": "Nakaraang araw",
+    "next": "Susunod na araw",
+    "today": "Ngayon",
+    "morning": "Umaga",
+    "evening": "Gabi",
+    "blue": "Blue hour",
+    "golden": "Golden hour",
+    "sunrise": "Pagsikat ng araw",
+    "sunset": "Paglubog ng araw",
+    "direction": "Direksyon",
+    "forecast": "Photo forecast",
+    "dirs": [
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSW",
+      "SW",
+      "WSW",
+      "W",
+      "WNW",
+      "NW",
+      "NNW"
+    ],
+    "moonHeading": "Buwan",
+    "moonrise": "Pagsikat ng Buwan",
+    "moonset": "Paglubog ng Buwan",
+    "noMoonrise": "Walang pagsikat ng Buwan sa araw na ito",
+    "noMoonset": "Walang paglubog ng Buwan sa araw na ito",
+    "phase": "Yugto",
+    "lit": "{p} naiilawan",
+    "fcHeading": "Photo forecast ng pagsikat at paglubog ng araw",
+    "fcLead": "Ngayon at sa susunod na 6 na araw, batay sa forecast ng ulap sa oras na pinakamalapit sa pagsikat at paglubog ng araw.",
+    "colDay": "Araw",
+    "q": {
+      "good": "Maganda",
+      "fair": "Katamtaman",
+      "poor": "Hindi maganda"
+    },
+    "clouds": "Mababang ulap {l} · gitna {m} · mataas {h}",
+    "rain": "Ulan {p} mm",
+    "why": "Ang mga ulap sa gitna at mataas ang humuhuli ng kulay; ang mababang ulap sa abot-tanaw at ulan ay tumatakip sa Araw; malinis pero payak ang maaliwalas na langit. Tantiya ito, hindi garantiya.",
+    "loading": "Kinukuha ang forecast ng ulap…",
+    "error": "Hindi makuha ang forecast ng ulap. Pakisubukang muli mamaya.",
+    "blocked": "Ang forecast ng ulap ay mula sa Open-Meteo; payagan ang mga panlabas na serbisyo para maipakita ito.",
+    "attribution": "Forecast ng ulap: Open-Meteo.com (CC BY 4.0)",
+    "weekHeading": "Liwanag sa loob ng 7 araw",
+    "colGoldenAm": "Golden hour sa umaga",
+    "colGoldenPm": "Golden hour sa hapon",
+    "colBluePm": "Blue hour sa gabi",
+    "polarDay": "Hindi lumulubog ang Araw sa araw na ito; walang paglubog at blue hour.",
+    "polarNight": "Hindi sumisikat ang Araw sa araw na ito; hindi nangyayari ang mga oras na may —.",
+    "partial": "Sa araw na ito, hindi naaabot ng Araw ang ilan sa mga taas na ito; hindi nangyayari ang mga oras na may —.",
+    "defsHeading": "Ano ang golden hour at blue hour?",
+    "defs": [
+      "**Golden hour:** ang Araw ay nasa pagitan ng 6° sa itaas at 4° sa ibaba ng horizon. Mababa, malambot at mainit ang liwanag, at mahahaba ang anino; paboritong oras para sa portrait at tanawin.",
+      "**Blue hour:** ang Araw ay 4° hanggang 6° sa ibaba ng horizon. Nagiging malalim na asul ang langit at nagbabalanse ang ilaw ng lungsod at ang langit; bagay sa cityscape at long exposure."
+    ],
+    "note": "Kinakalkula ang mga oras sa iyong device para sa napiling lugar at tantiya lamang (ilang minuto); hindi isinasaalang-alang ang mga bundok at gusali sa abot-tanaw. Nananatili sa iyong device ang iyong lokasyon; ang bilugang coordinates lamang ang ipinapadala sa Open-Meteo para sa forecast ng ulap.",
+    "faq": [
+      {
+        "q": "Kailan ang golden hour ngayon?",
+        "a": "Dalawang beses sa isang araw ang golden hour, sa paligid ng pagsikat at paglubog ng araw, habang nasa pagitan ng 6° sa itaas at 4° sa ibaba ng horizon ang Araw. Kinakalkula ng pahinang ito ang mga oras para sa iyong lugar; karaniwang tumatagal ito nang mga 40 hanggang 90 minuto, mas matagal sa taglamig at sa matataas na latitude."
+      },
+      {
+        "q": "Ano ang blue hour at kailan ito nangyayari?",
+        "a": "Ang blue hour ay ang takipsilim kapag 4° hanggang 6° sa ibaba ng horizon ang Araw: bago ang golden hour sa umaga at pagkatapos ng golden hour sa gabi. Malalim na asul ang langit, mainam para sa ilaw ng lungsod at long exposure. Karaniwang tumatagal ito nang 10 hanggang 20 minuto."
+      },
+      {
+        "q": "Paano ginagawa ang photo forecast ng pagsikat at paglubog ng araw?",
+        "a": "Mula sa oras-oras na forecast ng ulap ng Open-Meteo para sa oras na pinakamalapit sa pagsikat o paglubog ng araw. Ang ulan (0.5 mm bawat oras o higit pa) o makapal na mababang ulap (75% o higit pa) ay Hindi maganda; kaunting mababang ulap (wala pang 40%) na may 20–80% na ulap sa gitna o mataas ay Maganda; kung hindi, Katamtaman habang wala pang 60% ang mababang ulap, at Hindi maganda kapag lumampas. Humuhuli ng kulay ang mga ulap sa gitna at mataas, habang tinatakpan ng mababang ulap sa abot-tanaw ang Araw."
+      }
+    ]
+  },
+  "panchang": {
+    "title": "Panchang at oras ng Rahu Kaal",
+    "description": "Ang oras ng Rahu Kaal, Yamaganda, Gulika, Abhijit at Brahma muhurta ngayon sa lugar na pinili mo, kasama ang tithi at nakshatra mula sa kalendaryong Hindu.",
+    "h1": "Panchang at Rahu Kaal",
+    "lead": "Ang mga pang-araw-araw na yugto sa tradisyong Hindu, kinakalkula sa iyong device mula sa pagsikat at paglubog ng araw sa lugar na pinili mo.",
+    "search": "panchang rahu kaal rahu kalam yamaganda gulika abhijit brahma muhurta tithi nakshatra kalendaryong hindu",
+    "hindu": "Sa kalendaryong Hindu",
+    "hinduNote": "Ang tithi, nakshatra at buwan ay ayon sa pagsikat ng araw sa New Delhi; sa ibang lugar maaaring magkaiba nang isang araw.",
+    "hinduNone": "Walang datos ng kalendaryong Hindu para sa petsang ito (2025–2032).",
+    "avoid": "Iniiwasan ayon sa tradisyon",
+    "good": "Itinuturing na mabuti ayon sa tradisyon",
+    "rahu": "Rahu Kaal",
+    "yama": "Yamaganda",
+    "gulika": "Gulika Kaal",
+    "abhijit": "Abhijit muhurta",
+    "brahma": "Brahma muhurta",
+    "wed": "Sa ilang tradisyon, hindi ito itinuturing na mabuti tuwing Miyerkules.",
+    "polar": "Hindi sumisikat o lumulubog ang araw dito sa araw na ito, kaya hindi makalkula ang mga yugto.",
+    "week": "Rahu Kaal sa susunod na pitong araw",
+    "defsHeading": "Paano ito kinakalkula?",
+    "defs": [
+      "Hinahati sa walong pantay na bahagi ang araw mula pagsikat hanggang paglubog. Ang Rahu Kaal, Yamaganda at Gulika ay isa sa mga bahaging ito depende sa araw ng linggo; halimbawa, ang Rahu Kaal ay ikalawang bahagi tuwing Lunes at ikawalo tuwing Linggo.",
+      "Ang Abhijit muhurta ay ikawalo sa labinlimang pantay na bahagi ng araw at tumatapat sa bandang tanghali. Ang Brahma muhurta ay ikalawa sa labinlimang bahagi ng gabi kung bibilang pabalik mula sa pagsikat (mga 96 hanggang 48 minuto bago sumikat ang araw).",
+      "Ang pagsikat at paglubog ay ang sandaling lumitaw sa abot-tanaw ang itaas na gilid ng Araw (kasama ang repraksiyon), katulad ng depinisyon sa oras ng pagdarasal."
+    ],
+    "note": "Tradisyon ang mga yugtong ito; walang astrolohikong interpretasyon ang Saat Tarih. Ini-round sa minuto ang mga oras.",
+    "faq": [
+      {
+        "q": "Ano ang Rahu Kaal?",
+        "a": "Sa tradisyong Hindu, ito ay pang-araw-araw na yugto na mga isa't kalahating oras kung kailan iniiwasang magsimula ng bagong gawain. Hinahati sa walong pantay na bahagi ang araw, at isa rito ang Rahu Kaal depende sa araw ng linggo."
+      },
+      {
+        "q": "Pare-pareho ba ang oras ng Rahu Kaal saanman?",
+        "a": "Hindi. Kinakalkula ito mula sa lokal na pagsikat at paglubog ng araw, kaya nagbabago ito ayon sa lungsod at panahon. Kinakalkula ito ng pahinang ito para sa lugar na pinili mo."
+      }
+    ]
+  },
+  "account": {
+    "delTitle": "Burahin ang account | Saat Tarih",
+    "delDesc": "Paano burahin ang inyong Saat Tarih account sa website o sa mga app para sa iPhone at Android, at kung ano ang nabubura.",
+    "delH1": "Pagbura ng iyong account",
+    "delLead": "Opsyonal ang account sa Saat Tarih at puwede ninyo itong burahin anumang oras. Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw.",
+    "delSections": [
+      {
+        "h": "Pagbura sa website o sa app",
+        "ul": [
+          "Mag-sign in sa **hesap.time.bumba.tr**, o buksan ang **Settings › Account** sa app.",
+          "Sa **Burahin ang account**, piliin ang **Sa Saat Tarih lang** o **Sa lahat ng produkto ng Bumba**.",
+          "Ilagay ang inyong password (hindi kailangan kung nag-sign in kayo sa nakaraang 24 na oras) at kumpirmahin.",
+          "Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw; padadalhan namin kayo ng email. Puwede pa rin ninyong gamitin ang Saat Tarih nang walang account."
+        ]
+      },
+      {
+        "h": "Kung hindi kayo makapag-sign in",
+        "p": [
+          "Kung nakalimutan ninyo ang password, magtakda ng bago sa **Mag-sign in › Nakalimutan ang password**, saka burahin ang account.",
+          "Kung hindi rin ninyo ma-access ang inyong email, sumulat sa [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Kapag nakumpirma naming sa inyo ang account, buburahin namin ito at aabisuhan kayo."
+        ]
+      },
+      {
+        "h": "Ano ang nabubura?",
+        "ul": [
+          "Ang inyong email address, profile (kasama ang larawan) at ang hindi na maibabalik na hash ng inyong password.",
+          "Ang inyong mga session, mga record ng app na nasa account, at mga badge.",
+          "Kung pipiliin ninyo ang **Sa lahat ng produkto ng Bumba**, mabubura rin ang inyong mga membership sa ibang produkto ng Bumba.",
+          "Kusang nabubura ang mga kopya sa backup sa loob ng hindi hihigit sa 30 araw (30 araw itinatago ang mga backup)."
+        ]
+      },
+      {
+        "h": "Ang naiiwan sa inyong telepono",
+        "p": [
+          "Naiiwan sa inyong telepono ang mga setting ng app at mga record sa telepono (at sa inyong iCloud kung naka-on ang iCloud sync). Nabubura ang mga ito kapag binura ninyo ang app sa telepono."
+        ]
       }
     ]
   }

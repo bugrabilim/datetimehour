@@ -176,6 +176,10 @@ a:hover { text-decoration-thickness: 2px; }
 .place-dialog .field { margin-bottom: 0.75rem; }
 .place-dialog .btn { margin-top: 0; }
 .place-dialog .btn-ghost { margin-top: 0.5rem; }
+.place-results { list-style: none; margin: 0.4rem 0 0; padding: 0; max-height: 15rem; overflow-y: auto; }
+.place-hit { display: block; width: 100%; text-align: start; padding: 0.5rem 0.6rem; border: 0; border-radius: 10px; background: none; color: var(--text); font: inherit; cursor: pointer; }
+.place-hit:hover, .place-hit:focus-visible { background: var(--accent-soft); }
+.place-hit .meta { display: block; font-size: 0.85rem; }
 @media (max-width: 74.99rem) {
   /* Tek satır: marka, tarih, menü düğmesi. Menü sayfayı itmez, başlığın altında açılan paneldir. */
   .site-header { position: sticky; top: 0; z-index: 50; }
@@ -513,7 +517,7 @@ tbody th a { color: var(--text); }
 .list-dialog p { margin: 0 0 0.6rem; }
 .field { display: grid; gap: 0.35rem; margin-bottom: 0.9rem; }
 .field label { font-weight: 600; }
-input[type="email"], input[type="search"], input[type="url"], input[type="number"], input[type="time"], input[type="text"], input[type="datetime-local"], input[type="date"], select {
+input[type="email"], input[type="search"], input[type="url"], input[type="number"], input[type="time"], input[type="text"], input[type="password"], input[type="datetime-local"], input[type="date"], select {
   width: 100%; min-height: 2.9rem; padding: 0 0.9rem; font: inherit; color: var(--text);
   background: var(--bg); border: 1px solid var(--muted); border-radius: 10px;
 }
@@ -644,6 +648,8 @@ html.has-cookie-bar body { padding-bottom: 5.5rem; }
 .inputs-row { align-items: flex-end; }
 .inputs-row .field { min-width: 6rem; margin: 0; }
 .inputs-row .field.grow { flex: 1; min-width: 12rem; }
+.hj-opts { justify-content: center; margin-top: 0.75rem; }
+.hj-opts[hidden] { display: none; }
 .check-inline { display: inline-flex; align-items: center; gap: 0.5rem; }
 .check-inline input { width: 1.25rem; height: 1.25rem; accent-color: var(--accent); }
 .chip, .tabs [role="tab"] { min-height: 2.75rem; padding: 0 1rem; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; }
@@ -755,6 +761,7 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .pr-today td { font-variant-numeric: tabular-nums; font-weight: 700; text-align: end; }
 .pr-today tr.is-next th, .pr-today tr.is-next td { background: var(--accent-soft); }
 .pr-today tr.is-next td { color: var(--accent); }
+.pr-today tr.pr-sub th, .pr-today tr.pr-sub td { font-size: 0.95rem; color: var(--muted); font-weight: 500; }
 .im-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.75rem; }
 .im-dialog { width: min(34rem, calc(100vw - 1.5rem)); max-height: calc(100dvh - 1.5rem); overflow: auto; padding: 0.75rem; }
 .im-view img { display: block; width: 100%; height: auto; border-radius: 10px; }
@@ -799,6 +806,26 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .ymonth td:focus-visible { outline: 3px solid var(--focus); outline-offset: -2px; }
 .day-dialog h2 { font-size: 1.2rem; }
 .day-list { margin: 0.5rem 0; padding-inline-start: 1.25rem; }
+/* Kapsayıcı takvimler (9 Kasım 2026): seçim, hücrede renk noktası, gün penceresinde ikinci tarih; renk takvim modülünden (--calc) */
+.cal-pick { margin: 0 0 1rem; }
+.cal-pick > summary { cursor: pointer; font-weight: 600; min-height: 2.75rem; display: inline-flex; align-items: center; color: var(--accent); }
+.cal-pick > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+.cal-pick-list { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; gap: 0.5rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+.cal-pick-item { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.6rem 0.75rem; min-height: 2.75rem; background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); cursor: pointer; }
+.cal-pick-item input { margin: 0.2rem 0 0; width: 1.15rem; height: 1.15rem; flex: none; accent-color: var(--accent); }
+.cal-pick-item .meta { display: block; margin: 0.15rem 0 0; }
+.cal-sw { flex: none; width: 0.9rem; height: 0.9rem; margin-top: 0.25rem; border-radius: 50%; background: var(--calc, var(--muted)); }
+.cal-notes { margin: -0.5rem 0 1rem; }
+.cal-notes .meta { margin: 0.25rem 0; }
+.lg.lg-cal { border-radius: 50%; border-color: transparent; background: var(--calc, var(--muted)); width: 0.8rem; height: 0.8rem; }
+.ymonth td[data-d] { position: relative; }
+.cal-dots { position: absolute; inset-inline: 0; bottom: 3px; display: flex; justify-content: center; gap: 2px; pointer-events: none; line-height: 0; }
+.cal-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--calc, var(--muted)); box-shadow: 0 0 0 1px var(--surface); }
+.day-list .cal-dot, .day-cals .cal-dot { width: 0.6rem; height: 0.6rem; margin-inline-end: 0.45rem; box-shadow: none; }
+.day-cals { list-style: none; margin: 0.25rem 0 0.5rem; padding: 0; }
+.day-dialog [data-day-link][hidden] { display: none; }
+.day-cals li { margin: 0.2rem 0; }
+.day-list li.cal-ev { list-style: none; margin-inline-start: -1.05rem; }
 .events-table tr.is-hit th, .events-table tr.is-hit td { background: var(--accent-soft); }
 .ymonth td[data-d] { cursor: pointer; }
 .cal td a { display: block; color: inherit; text-decoration: none; border-radius: 6px; }
@@ -1082,7 +1109,7 @@ html[dir="rtl"] .tl-axis, html[dir="rtl"] .tl-items { direction: ltr; }
   @page { size: A4 portrait; margin: 10mm; }
   body:has(.year-grid) .hero .lead, body:has(.year-grid) .year-nav, body:has(.year-grid) #events,
   body:has(.year-grid) .cal-export, body:has(.year-grid) .faq-block, body:has(.year-grid) .crumbs,
-  body:has(.year-grid) .sync-line { display: none !important; }
+  body:has(.year-grid) .sync-line, body:has(.year-grid) .cal-pick { display: none !important; }
   body:has(.year-grid) { background: #fff; color: #000; font-size: 9pt; }
   body:has(.year-grid) .hero, body:has(.year-grid) .section { padding: 0; margin: 0; }
   body:has(.year-grid) h1 { font-size: 16pt; margin: 0 0 2mm; }
@@ -1506,3 +1533,46 @@ tr.is-past td { color: var(--muted); }
 tr.is-next td { font-weight: 700; }
 /* Ay adlarının kökeni (2. analiz #125) */
 .month-origin-list { margin: 0.5rem 0; padding-inline-start: 1.4rem; display: grid; gap: 0.35rem; }
+/* Fotoğraf ışığı (9 Kasım 2026): sabah/akşam kartları, Ay, bulut tahmini ve 7 günlük ışık */
+.ph { margin-top: 1rem; }
+.ph-nav { display: flex; gap: 0.5rem; align-items: center; margin-top: 0.5rem; }
+.ph-nav input { flex: 1 1 auto; min-width: 0; }
+.ph-nav .icon-btn { flex: none; }
+html[dir="rtl"] .ph-nav svg { transform: scaleX(-1); }
+@media (min-width: 40rem) { .ph-nav input { flex: 0 0 auto; width: auto; } }
+.ph-dayrow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin-top: 0.6rem; }
+.ph-day { margin: 0; font-weight: 600; }
+@media (min-width: 40rem) { .ph-dayrow { justify-content: flex-start; } }
+.ph-polar { margin: 0.4rem 0 0; }
+.ph-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin-top: 1rem; }
+.pc-line { font-weight: 600; margin: 0 0 0.6rem; }
+.ph-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem 1.25rem 0.6rem; }
+.ph-card h3 { margin: 0 0 0.35rem; font-size: 1.15rem; }
+.ph-card dl { margin: 0; }
+.ph-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1rem; padding: 0.55rem 0; border-top: 1px solid var(--border); }
+.ph-row:first-child { border-top: 0; }
+.ph [hidden], .ph-fc-state[hidden], [data-ph-consent][hidden], [data-ph-fc-box][hidden] { display: none; }
+.ph-row dt { color: var(--muted); }
+.ph-row dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; text-align: end; }
+.ph-blue dt::before, .ph-gold dt::before { content: ""; display: inline-block; width: 0.65rem; height: 0.65rem; border-radius: 50%; margin-inline-end: 0.45rem; vertical-align: 0.05em; }
+.ph-blue dt::before { background: var(--s-winter); }
+.ph-gold dt::before { background: var(--s-summer); }
+.ph-q { display: inline-block; padding: 0.1rem 0.65rem; border-radius: 999px; font-weight: 700; font-size: 0.9rem; background: var(--surface-2); color: var(--text); }
+.ph-q-good { background: var(--ok-bg); color: var(--ok); }
+.ph-q-poor { background: var(--err-bg); color: var(--err); }
+.ph-cl { color: var(--muted); font-size: 0.82rem; font-weight: 400; }
+.ph-row .ph-cl { display: block; margin-top: 0.15rem; }
+.ph-fcq { flex-wrap: nowrap; align-items: center; }
+.ph-fcq dt { flex: 1 1 auto; min-width: 0; }
+.ph-fcq dd { flex: none; }
+.ph-moon { width: 5rem; height: 5rem; }
+.ph-moon-row .facts { flex: 1 1 18rem; grid-template-columns: 1fr 1fr; }
+.ph-moon-row .fact:last-child { grid-column: 1 / -1; }
+.ph-moon-row .fact dd { font-size: 1.25rem; }
+.events-table.ph-fc, .events-table.ph-week { min-width: 0; }
+.ph-fc td { vertical-align: top; }
+.ph-week td { font-variant-numeric: tabular-nums; }
+@media (max-width: 40rem) {
+  .ph-week th, .ph-week td, .ph-fc th, .ph-fc td { padding: 0.6rem 0.55rem; font-size: 0.92rem; }
+}
+

@@ -1,0 +1,26 @@
+{
+ "source": [
+  "https://arxiv.org/abs/1401.6285 (S. Janson, Ek A.3: Yeni Genden / Tögs Buyant sabitleri)",
+  "https://en.wikipedia.org/wiki/Public_holidays_in_Mongolia (Tsagaan Sar 18–20.02.2026 ve 01–03.03.2025, Cengiz Han'ın doğum günü 10.11.2026)",
+  "https://mongolia.gogo.mn/r/7jv11 (Cengiz Han'ın doğum günü 21.11.2025)"
+ ],
+ "note": "2025'te Tsagaan Sar (1 Mart) Tibet Losar'ından (28 Şubat) bir gün sonradır; 2030'da bir ay önce gelir (3 Şubat ve 5 Mart).",
+ "cases": [
+  {
+   "date": "2025-03-01",
+   "key": "tsagaanSar"
+  },
+  {
+   "date": "2025-11-21",
+   "key": "chinggis"
+  },
+  {
+   "date": "2026-02-18",
+   "key": "tsagaanSar"
+  },
+  {
+   "date": "2026-11-10",
+   "key": "chinggis"
+  }
+ ]
+}

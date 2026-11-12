@@ -14,6 +14,8 @@ public struct PrayerDay: Sendable, Equatable {
     public var asr: Double?
     public var maghrib: Double?
     public var isha: Double?
+    /// Dakikaya yuvarlama (Kemenag: başlangıçlar yukarı, güneş aşağı; diğerleri en yakın dakika)
+    public var rounding: PrayerTimes.Rounding = .nearest
 
     public subscript(prayer: Prayer) -> Double? {
         switch prayer {
@@ -26,9 +28,9 @@ public struct PrayerDay: Sendable, Equatable {
         }
     }
 
-    /// Gece yarısından itibaren dakika; sitedeki gibi yuvarlanır (Math.round(saat × 60)).
+    /// Gece yarısından itibaren dakika; sitedeki `toMin` gibi yuvarlanır (çoğu yöntemde Math.round(saat × 60)).
     public func minutes(_ prayer: Prayer) -> Int? {
-        self[prayer].map { Int(jsRound($0 * 60)) }
+        self[prayer].map { PrayerTimes.toMinutes($0, rounding, sunrise: prayer == .sunrise) }
     }
 }
 
@@ -48,6 +50,18 @@ public enum PrayerTimes {
         }()
     }
 
+    /// Dakikaya yuvarlama: en yakın dakika ya da (Kemenag) başlangıçlar yukarı, güneş aşağı.
+    public enum Rounding: Sendable, Equatable { case nearest, ceil }
+
+    /// Ondalık saati gece yarısından dakikaya çevirir (sitedeki `toMin`; yukarı/aşağı yuvarlamada 1e-6 dk pay).
+    public static func toMinutes(_ hours: Double, _ rounding: Rounding, sunrise: Bool = false) -> Int {
+        let x = hours * 60
+        switch rounding {
+        case .nearest: return Int(jsRound(x))
+        case .ceil: return Int(sunrise ? Foundation.floor(x + 1e-6) : Foundation.ceil(x - 1e-6))
+        }
+    }
+
     public struct Parameters: Sendable, Equatable {
         public var fajrAngle = 18.0
         public var ishaAngle = 17.0
@@ -57,6 +71,12 @@ public enum PrayerTimes {
         /// Yatsı akşamdan bu kadar dakika sonra (0 = açıyla; Ümmü'l-Kura, Körfez, Katar)
         public var ishaMinutes = 0.0
         public var adjustments = Adjustments()
+        public var rounding = Rounding.nearest
+        /// Ek satırlar (yalnız Kemenag): imsak uyarısı sabahtan bu kadar dakika önce (0 = yok), duha Güneş bu
+        /// yükseklikteyken + bu kadar dakika.
+        public var imsakMinutes = 0.0
+        public var duhaAltitude = 0.0
+        public var duhaMinutes = 0.0
         public init() {}
         /// Diyanet ile uyumlu varsayılanlar.
         public static let diyanet = Parameters()
@@ -72,9 +92,14 @@ public enum PrayerTimes {
             p.fajrAngle = m.fajr
             p.ishaAngle = m.isha
             p.ishaMinutes = m.ishaMinutes
+            p.sunriseAngle = m.sunrise
             p.sunsetAngle = m.maghrib
             p.asrFactor = hanafi ? 2 : 1
-            p.adjustments = .zero
+            p.adjustments = m.adjustments ?? .zero
+            p.rounding = m.rounding
+            p.imsakMinutes = m.imsakMinutes
+            p.duhaAltitude = m.duhaAltitude
+            p.duhaMinutes = m.duhaMinutes
             return p
         }
     }
@@ -82,9 +107,28 @@ public enum PrayerTimes {
     /// Hesap yöntemleri (sitedeki METHODS ile aynı sıra ve değerler). Diyanet varsayılandır; Türkiye'de resmî vakit odur.
     public struct Method: Sendable, Equatable {
         public let fajr: Double, isha: Double, ishaMinutes: Double, maghrib: Double
+        public var sunrise = 0.833
+        public var adjustments: Adjustments? = nil
+        public var rounding = Rounding.nearest
+        public var imsakMinutes = 0.0, duhaAltitude = 0.0, duhaMinutes = 0.0
+        public init(fajr: Double, isha: Double, ishaMinutes: Double, maghrib: Double) {
+            self.fajr = fajr; self.isha = isha; self.ishaMinutes = ishaMinutes; self.maghrib = maghrib
+        }
     }
+    /// Kemenag (Endonezya; sitedeki METHODS.kemenag): 20°/18°, ufuk 1° altı, ihtiyat dakikaları, yukarı yuvarlama,
+    /// imsak uyarısı (−10 dk) ve duha (+4,5°, +2 dk).
+    static let kemenag: Method = {
+        var m = Method(fajr: 20, isha: 18, ishaMinutes: 0, maghrib: 1)
+        m.sunrise = 1
+        var a = Adjustments()
+        a.fajr = 2; a.sunrise = -2; a.dhuhr = 3; a.asr = 2; a.maghrib = 2; a.isha = 2
+        m.adjustments = a
+        m.rounding = .ceil
+        m.imsakMinutes = 10; m.duhaAltitude = 4.5; m.duhaMinutes = 2
+        return m
+    }()
     public static let methodIDs = ["diyanet", "mwl", "isna", "egypt", "makkah", "karachi", "tehran", "jafari",
-                                   "gulf", "kuwait", "qatar", "singapore", "france", "russia"]
+                                   "gulf", "kuwait", "qatar", "singapore", "kemenag", "france", "russia"]
     public static let methods: [String: Method] = [
         "diyanet": Method(fajr: 18, isha: 17, ishaMinutes: 0, maghrib: 0.833),
         "mwl": Method(fajr: 18, isha: 17, ishaMinutes: 0, maghrib: 0.833),
@@ -98,6 +142,7 @@ public enum PrayerTimes {
         "kuwait": Method(fajr: 18, isha: 17.5, ishaMinutes: 0, maghrib: 0.833),
         "qatar": Method(fajr: 18, isha: 0, ishaMinutes: 90, maghrib: 0.833),
         "singapore": Method(fajr: 20, isha: 18, ishaMinutes: 0, maghrib: 0.833),
+        "kemenag": kemenag,
         "france": Method(fajr: 12, isha: 12, ishaMinutes: 0, maghrib: 0.833),
         "russia": Method(fajr: 16, isha: 15, ishaMinutes: 0, maghrib: 0.833),
     ]
@@ -145,7 +190,43 @@ public enum PrayerTimes {
 
         func value(_ x: Double) -> Double? { x.isNaN ? nil : x }
         return PrayerDay(fajr: value(fajr), sunrise: value(sunrise), dhuhr: value(dhuhr),
-                         asr: value(asr), maghrib: value(maghrib), isha: value(isha))
+                         asr: value(asr), maghrib: value(maghrib), isha: value(isha), rounding: P.rounding)
+    }
+
+    /// Yöntemin ek satırları (yalnız Kemenag; sitedeki `methodRows`): dakika olarak imsak uyarısı ve duha.
+    public struct MethodRows: Sendable, Equatable {
+        public var imsak: Int?
+        public var duha: Int?
+    }
+
+    public static func methodRows(year: Int, month: Int, day: Int, latitude: Double, longitude: Double,
+                                  utcOffset: Double, parameters P: Parameters, times: PrayerDay) -> MethodRows? {
+        guard P.imsakMinutes != 0 else { return nil }
+        let du = sunAltitudeTimes(year: year, month: month, day: day, latitude: latitude, longitude: longitude,
+                                  utcOffset: utcOffset, altitude: P.duhaAltitude).rise
+        return MethodRows(imsak: times.minutes(.fajr).map { $0 - Int(P.imsakMinutes) },
+                          duha: du.map { toMinutes($0 + P.duhaMinutes / 60, P.rounding) })
+    }
+
+    /// Bölgeye göre varsayılan yöntem (sitedeki `defaultMethod`): kullanıcı seçmediyse yerin saat dilimine (Kerala için
+    /// koordinata) bakılır. Endonezya Kemenag; Malezya, Singapur, Brunei Singapur; Pakistan, Hindistan, Bangladeş,
+    /// Afganistan Karaçi + Hanefî (Kerala ve Lakşadvip'te standart ikindi); diğer her yer Diyanet.
+    static let regionTimeZones: [String: String] = [
+        "Asia/Jakarta": "ID", "Asia/Pontianak": "ID", "Asia/Makassar": "ID", "Asia/Jayapura": "ID", "Asia/Ujung_Pandang": "ID",
+        "Asia/Kuala_Lumpur": "MY", "Asia/Kuching": "MY", "Asia/Singapore": "SG", "Singapore": "SG", "Asia/Brunei": "BN",
+        "Asia/Karachi": "PK", "Asia/Kolkata": "IN", "Asia/Calcutta": "IN", "Asia/Dhaka": "BD", "Asia/Dacca": "BD", "Asia/Kabul": "AF",
+        "Europe/Istanbul": "TR", "Asia/Istanbul": "TR", "Turkey": "TR",
+    ]
+    public static func region(timeZone id: String) -> String { regionTimeZones[id] ?? "" }
+    public static func defaultMethod(timeZone id: String, latitude lat: Double, longitude lon: Double) -> (id: String, hanafi: Bool) {
+        switch region(timeZone: id) {
+        case "ID": return ("kemenag", false)
+        case "MY", "SG", "BN": return ("singapore", false)
+        case "PK", "IN", "BD", "AF":
+            let shafii = region(timeZone: id) == "IN" && lat >= 8 && lat <= 12.8 && lon >= 71.5 && lon <= 77.4
+            return ("karachi", !shafii)
+        default: return ("diyanet", false)
+        }
     }
 
     /// Bir gün için vakitler; saat dilimi farkı sitedeki gibi o günün UTC öğlesindeki farktır.
@@ -182,6 +263,37 @@ public enum PrayerTimes {
         if !set.isNaN { set = at(set / 24, ccw: false) }
         let off = tz - lon / 15
         return AltitudeTimes(rise: rise.isNaN ? nil : rise + off, set: set.isNaN ? nil : set + off)
+    }
+
+    /// Geleneksel Hint zaman dilimleri (10 Kasım 2026, Hindistan araştırması): yerel ondalık saat (başlangıç, bitiş).
+    public struct HinduKaal: Sendable {
+        public var sunrise: Double
+        public var sunset: Double
+        public var rahu: (Double, Double)
+        public var yamaganda: (Double, Double)
+        public var gulika: (Double, Double)
+        public var abhijit: (Double, Double)
+        public var brahma: (Double, Double)
+    }
+    /// Gündüzün 8 parçasından hangisi (pazar 0 … cumartesi 6)
+    public static let kaalRahu = [8, 2, 7, 5, 6, 4, 3]
+    public static let kaalYamaganda = [5, 4, 3, 2, 1, 7, 6]
+    public static let kaalGulika = [7, 6, 5, 4, 3, 2, 1]
+
+    /// Gün doğumu ve batımı Güneş −0,833° (düzeltmesiz); gündüz 8 parça (Rahu Kaal, Yamaganda, Gulika), Abhijit gündüzün
+    /// 15 muhurtasının 8.si, Brahma muhurta önceki gecenin 15 muhurtasının 14.sü. Sitedeki `hinduKaal` ile birebir
+    /// (test verisi `kaal.json`); Güneş doğmuyor ya da batmıyorsa nil.
+    public static func hinduKaal(year: Int, month: Int, day: Int, latitude lat: Double, longitude lon: Double,
+                                 utcOffset tz: Double) -> HinduKaal? {
+        let t = sunAltitudeTimes(year: year, month: month, day: day, latitude: lat, longitude: lon, utcOffset: tz, altitude: -0.833)
+        let p = CalendarDay(year, month, day).adding(days: -1)
+        let prev = sunAltitudeTimes(year: p.year, month: p.month, day: p.day, latitude: lat, longitude: lon, utcOffset: tz, altitude: -0.833)
+        guard let rise = t.rise, let set = t.set, let pset = prev.set else { return nil }
+        let dow = Int((julian(year, month, day) + 1.5).rounded(.down)) % 7
+        let part = (set - rise) / 8, mu = (set - rise) / 15, nmu = (rise + 24 - pset) / 15
+        func seg(_ n: Int) -> (Double, Double) { (rise + Double(n - 1) * part, rise + Double(n) * part) }
+        return HinduKaal(sunrise: rise, sunset: set, rahu: seg(kaalRahu[dow]), yamaganda: seg(kaalYamaganda[dow]),
+                         gulika: seg(kaalGulika[dow]), abhijit: (rise + 7 * mu, rise + 8 * mu), brahma: (rise - 2 * nmu, rise - nmu))
     }
 
     /// Altın saat (Güneş +6° ile −4° arası) ve mavi saat (−4° ile −6° arası), sabah ve akşam (başlangıç, bitiş).

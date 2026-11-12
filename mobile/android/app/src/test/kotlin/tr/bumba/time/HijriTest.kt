@@ -41,4 +41,37 @@ class HijriTest {
         RuntimeEnvironment.setQualifiers("+tr")
         assertEquals("19 Cemaziyelevvel 1448", h("2026-10-30")!!.text)
     }
+
+    /** Endonezya takvimi ve ±1 gün (10 Kasım 2026): Kemenag 1448 takvimi, SKB 2026 Idul Fitri 21 Mart */
+    @Test fun kemenagAndOffset() {
+        val app = RuntimeEnvironment.getApplication()
+        Prefs.init(app)
+        try {
+            Prefs.store.edit().putString(Hijri.CAL, "kemenag").putInt(Hijri.OFFSET, 0).commit()
+            assertEquals("kemenag:0", Hijri.key)
+            // Cemaziyelahir 1448: Diyanet 10 Kasım, Kemenag 11 Kasım
+            assertEquals(HijriDate(1448, 5, 30), h("2026-11-10"))
+            assertEquals(HijriDate(1448, 6, 1), h("2026-11-11"))
+            // Ramazan 1447 Endonezya'da da 19 Şubat; Şevval 21 Mart (Diyanet 20 Mart)
+            assertEquals(LocalDate.parse("2026-02-19")..LocalDate.parse("2026-03-20"), AppData.ramadans.first())
+            assertEquals(LocalDate.parse("2026-03-21"), RelDays.all.first { it.key == "rb1" && it.date.year == 2026 }.date)
+            assertEquals(LocalDate.parse("2026-03-20"), RelDays.all.first { it.key == "rbEve" && it.date.year == 2026 }.date)
+            // Türkiye'nin resmî tatili takvimde değişmez
+            assert(AppData.events[LocalDate.parse("2026-03-20")].orEmpty().any { it.key == "rb1" })
+            // Regaib her zaman perşembe
+            val regaib = AppData.events.values.flatten().filter { it.key == "regaib" }
+            assert(regaib.isNotEmpty() && regaib.all { it.date.dayOfWeek == java.time.DayOfWeek.THURSDAY })
+
+            // Diyanet + 1 gün (Hindistan gibi): ay başları bir gün sonra
+            Prefs.store.edit().putString(Hijri.CAL, "diyanet").putInt(Hijri.OFFSET, 1).commit()
+            assertEquals(HijriDate(1448, 5, 29), h("2026-11-10"))
+            assertEquals(HijriDate(1448, 6, 1), h("2026-11-11"))
+            assertEquals(LocalDate.parse("2026-02-20"), AppData.ramadans.first().start)
+            assertEquals(LocalDate.parse("2027-02-09"), AppData.events.entries.first { (_, l) -> l.any { it.key == "ramadanStart" && it.date.year == 2027 } }.key)
+        } finally {
+            Prefs.store.edit().remove(Hijri.CAL).remove(Hijri.OFFSET).commit()
+        }
+        assertEquals("diyanet:0", Hijri.key)
+        assertEquals(HijriDate(1448, 6, 1), h("2026-11-10"))
+    }
 }

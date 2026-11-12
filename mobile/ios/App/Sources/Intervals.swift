@@ -591,7 +591,11 @@ struct TimersView: View {
                     .environment(\.layoutDirection, .leftToRight)
                 // Bitiş saati (2. analiz #133)
                 if t.running && !done {
-                    Text("🕓 " + Fmt.time(Date(timeIntervalSince1970: Double(t.end) / 1000))).font(.caption).foregroundStyle(Theme.muted)
+                    // "🕓" emojisinin yerine iki tonlu saat simgesi (8 Kasım 2026)
+                    HStack(spacing: 3) {
+                        DuoIcon(name: "clock", size: 12, color: Theme.muted)
+                        Text(Fmt.time(Date(timeIntervalSince1970: Double(t.end) / 1000))).font(.caption).foregroundStyle(Theme.muted)
+                    }
                 }
             }
             Spacer()
@@ -799,7 +803,8 @@ struct HiitView: View {
             // Bitiş özeti (2. analiz #135)
             PhasePanel(kind: "done", progress: 1, height: 220) {
                 VStack(spacing: 6) {
-                    Text("🏁").font(.system(size: 44))
+                    // Büyük tek çizim 3D kalır (DUOTONE.md); "🏁" emojisinin yerine
+                    Icon3D(name: "party", size: 48)
                     Text(L("hiit.done")).font(.title.bold())
                     if cfg.isRoutine { Text(cfg.name) }
                     Text(T("hiit.total", clock(cfg.totalSeconds)) + " · " + T("hiit.roundCount", cfg.rounds)).font(.subheadline)
@@ -867,7 +872,7 @@ struct HiitView: View {
                         start = 0
                         paused = 0
                     }
-                    RoundButton(title: "🔒 " + L("tools.lock")) { locked = true }
+                    RoundButton(title: L("tools.lock")) { locked = true }
                 }
             }
             // Sıradakiler ve bitiş saatleri (2. analiz #135)
@@ -883,8 +888,11 @@ struct HiitView: View {
                             Spacer()
                             Text(clock(sg.dur)).monospacedDigit().foregroundStyle(Theme.muted)
                                 .environment(\.layoutDirection, .leftToRight)
-                            Text("🕓 " + Fmt.time(Date(timeIntervalSince1970: (ref + Double(sg.start + sg.dur - elapsed) * 1000) / 1000)))
-                                .font(.footnote).foregroundStyle(Theme.muted)
+                            HStack(spacing: 3) {
+                                DuoIcon(name: "clock", size: 13, color: Theme.muted)
+                                Text(Fmt.time(Date(timeIntervalSince1970: (ref + Double(sg.start + sg.dur - elapsed) * 1000) / 1000)))
+                                    .font(.footnote).foregroundStyle(Theme.muted)
+                            }
                         }
                         .font(.subheadline)
                     }
@@ -970,7 +978,7 @@ struct VisualTimerView: View {
                     }
                     .pickerStyle(.segmented)
                     HStack {
-                        Button("🧒 " + L("timers.kids")) { kids = true }
+                        Button(L("timers.kids")) { kids = true }
                         Spacer()
                         Button(L("common.done")) { dismiss() }
                     }

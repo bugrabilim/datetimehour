@@ -6,8 +6,10 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 import { bridges } from "./lib/bridges.mjs";
-import { hijriTable } from "./lib/hijri.mjs";
+import { hijriTable, hijriTableId } from "./lib/hijri.mjs";
+import { loadWorldHolidays, publicDays } from "./lib/world-holidays.mjs";
 import { skyEvents } from "./lib/sky-events.mjs";
+import { CALENDARS, calendarData, loadCalTexts, validateCalendars, siteYearSlice, dailyMap as dailyMapOf } from "./lib/calendars/index.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, "src");
@@ -19,11 +21,14 @@ const ORIGIN = (process.env.SITE_ORIGIN || cfg.origin).replace(/\/+$/, "");
 const HOST = new URL(ORIGIN).host;
 const UMAMI_ID = process.env.UMAMI_ID ?? cfg.umamiId ?? "";
 /* Diller: tr (varsayılan) ve en zorunlu; diğerleri src/i18n/<dil>.json varsa derlenir. */
-const ALL_LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
+const ALL_LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn"];
 const LANGS = ALL_LANGS.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
 const I = Object.fromEntries(LANGS.map((l) => [l, readJson(`src/i18n/${l}.json`)]));
+/* Kapsayıcı takvimler (9 Kasım 2026): takvim başına metin dosyası src/i18n-cal/<id>.json, burada t.cals.<id> olarak birleşir */
+const CAL_TEXTS = loadCalTexts(ROOT);
+for (const l of LANGS) I[l].cals = Object.fromEntries(CALENDARS.map(({ meta }) => [meta.id, CAL_TEXTS[meta.id][l]]));
 const CITIES = readJson("src/data/cities.json");
-const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية", id: "Bahasa Indonesia", ur: "اردو", fa: "فارسی", fr: "Français", ru: "Русский", ja: "日本語", ko: "한국어", zh: "简体中文", fil: "Filipino", th: "ไทย", es: "Español", pt: "Português", hi: "हिन्दी" };
+const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية", id: "Bahasa Indonesia", ur: "اردو", fa: "فارسی", fr: "Français", ru: "Русский", ja: "日本語", ko: "한국어", zh: "简体中文", fil: "Filipino", th: "ไทย", es: "Español", pt: "Português", hi: "हिन्दी", bn: "বাংলা" };
 /* Ortak liste servisinin bildiği diller (bumbagroup.com/api/liste/katil); servis yeni dil eklediğinde buraya yaz */
 const LIST_LANGS = ["tr", "en"];
 /* Sağdan sola yazılan diller */
@@ -114,6 +119,8 @@ for (const [name, from] of [
   ["weather-core.js", "js/weather-core.js"],
   ["weather-fx.js", "js/weather-fx.js"],
   ["weather.js", "js/weather.js"],
+  ["photo.js", "js/photo.js"],
+  ["panchang.js", "js/panchang.js"],
   ["globe.js", "js/globe.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
@@ -160,11 +167,21 @@ for (const l of LANGS) {
   write(`assets/places-${l}.json`, j);
   PLACE_NAMES_URL[l] = `/assets/places-${l}.json?v=${hash(j)}`;
 }
+/* Konum penceresindeki dünya araması için 31 şehir (places.json'da yoklar): [ad, İngilizce ad, enlem, boylam, saat dilimi] */
+const PLACE_CITIES_URL = {};
+for (const l of LANGS) {
+  const j = JSON.stringify(CITIES.map((c) => [(c[l] || c.en).name, c.en.name, c.lat, c.lon, c.tz]));
+  write(`assets/place-cities-${l}.json`, j);
+  PLACE_CITIES_URL[l] = `/assets/place-cities-${l}.json?v=${hash(j)}`;
+}
 for (const f of ["favicon.svg", "favicon.ico", "icon-192.png", "icon-512.png", "apple-touch-icon.png", "og.png"]) {
   fs.copyFileSync(path.join(SRC, "assets", f), path.join(OUT, f));
 }
 
 /* ---------- parçalar ---------- */
+/* Uygulamaların hesap sunucusu (server/): e-postadaki şifre sıfırlama bağlantısı sitedeki formu açar, form oraya gönderilir */
+const HESAP_ORIGIN = "https://hesap.time.bumba.tr";
+const ACCOUNT_UI = readJson("server/i18n/account.json");
 const CSP = [
   "default-src 'self'",
   "script-src 'self' https://istatistik.bumba.tr",
@@ -186,6 +203,7 @@ const LOGO = `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-
 const ICON_PIN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>`;
 const ICON_GEAR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>`;
 const ICON_LOCK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`;
+const ICON_USER = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>`;
 const ICON_COOKIE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.5A9 9 0 1 1 11.5 3a3 3 0 0 0 4 4 3 3 0 0 0 5.5 5.5z"/><circle cx="8.5" cy="11" r="1"/><circle cx="12" cy="16" r="1"/><circle cx="15.5" cy="13" r="1"/></svg>`;
 const ICON_MENU = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`;
 const ICON_FULL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>`;
@@ -356,7 +374,10 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
+/* Menüde "Namaz vakitleri" bu dillerde ikinci, diğerlerinde sonda (9 Kasım 2026, sahibin kararı; Müslüman olmayanlar raporu A6).
+   Uygulamalardaki ilk kurulum soru sırasıyla aynı dil grubu. Sayfalar ve adresler aynı kalır. */
+const PRAYER_FIRST_LANGS = new Set(["tr", "ar", "id", "ur", "fa", "bn"]);
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "photo", "panchang", "otd", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -454,6 +475,7 @@ function placeDialog(lang) {
   const opts = PROVINCES.map((pr) => `<option value="${pr.slug}" data-lat="${pr.lat}" data-lon="${pr.lon}"${pr.slug === "istanbul" ? " selected" : ""}>${esc(provName(lang, pr))}</option>`).join("");
   return `<dialog class="info-dialog place-dialog" id="place-dialog" aria-labelledby="place-title">
   <h2 id="place-title">${esc(u.placeTitle)}</h2>
+  <div class="field"><label for="place-q">${esc(u.placeSearch)}</label><input id="place-q" type="search" autocomplete="off" spellcheck="false" data-place-q><ul class="place-results" data-place-results hidden></ul></div>
   <div class="field"><label for="place-city">${esc(s.chooseLabel)}</label><select id="place-city" data-place-city>${opts}</select></div>
   <button type="button" class="btn" data-place-geo>${esc(s.useLocation)}</button>
   <p class="meta" data-place-status role="status">&nbsp;</p>
@@ -492,8 +514,9 @@ function layout(p) {
     ...(p.clientExtra && p.clientExtra.eclipses ? { eclipses: p.clientExtra.eclipses } : {}),
     ...(p.clientExtra && p.clientExtra.moonTex ? { moonTex: p.clientExtra.moonTex } : {}),
     ...(p.clientExtra && p.clientExtra.skyEvents ? { skyEvents: p.clientExtra.skyEvents } : {}),
-    placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang] },
-    ...(UMAMI_ID ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler
+    ...(p.clientExtra && p.clientExtra.pc ? { pc: p.clientExtra.pc } : {}),
+    placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang], namesEn: PLACE_NAMES_URL.en, cities: PLACE_CITIES_URL[lang] },
+    ...(UMAMI_ID && !p.noStats ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler; hesap sayfalarında yok (adreste tek kullanımlık anahtar var)
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
     eventsUrl: `/assets/events-${lang}.json?v=${eventsVersion[lang]}`,
     cal: { ...((p.clientExtra && p.clientExtra.cal) || {}), months: t.calendar.months, monthsTitle: t.calendar.monthsTitle, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt, calBase: ROUTES[lang].calendar, calMin: HOL_YEARS[0], calMax: HOL_YEARS[HOL_YEARS.length - 1] },
@@ -539,6 +562,7 @@ ${(alt ? altLangs : LANGS).filter((l) => l !== lang).map((l) => `<meta property=
           <label class="set-look-row"><span>${esc(u.lookSep)}</span><select class="set-select" data-look="sep">${["colon", "dot"].map((k) => `<option value="${k}">${esc(u.lookSeps[k])}</option>`).join("")}</select></label>
           <label class="set-look-row"><span>${esc(u.lookWeekStart)}</span><select class="set-select" data-look="weekStart">${["mon", "sun", "sat"].map((k) => `<option value="${k}">${esc(u.lookWeekStarts[k])}</option>`).join("")}</select></label>
           <span class="set-sub">${esc(u.lookNote)}</span></div>
+        <a class="set-item" href="${HESAP_ORIGIN}/hesap?dil=${lang}">${ICON_USER}<span>${esc(ACCOUNT_UI[lang].title)}</span></a>
         <a class="set-item" href="${ROUTES[lang].privacy}">${ICON_LOCK}<span>${esc(t.consent.privacy)}</span></a>
         <button type="button" class="set-item" data-consent-open aria-haspopup="dialog">${ICON_COOKIE}<span>${esc(t.consent.footerLink)}</span></button>
         <div class="set-item set-langrow">${ICON_GLOBE}<label class="sr-only" for="${sid}">${esc(u.langMenu)}</label><select id="${sid}" class="set-select" data-lang-select>${langOpts}</select></div>
@@ -579,7 +603,7 @@ ${ld}
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
     <p class="top-date"><span data-live="date">&nbsp;</span><span class="top-week" data-live="weeklabel"></span></p>
     <div class="menu" id="site-nav">
-      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}<a class="nav-faq" href="${ROUTES[lang].faq}"${p.nav === "faq" ? ' aria-current="page"' : ""}>${esc(u.faq)}</a></nav>
+      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${PRAYER_FIRST_LANGS.has(lang) ? navLink("prayer", u.prayer) : ""}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}${PRAYER_FIRST_LANGS.has(lang) ? "" : navLink("prayer", u.prayer)}<a class="nav-faq" href="${ROUTES[lang].faq}"${p.nav === "faq" ? ' aria-current="page"' : ""}>${esc(u.faq)}</a></nav>
       ${mobileSettings}
     </div>
     <div class="top-tools">${settings}</div>
@@ -803,8 +827,9 @@ function buildPrivacy(lang) {
   const pagePath = ROUTES[lang].privacy;
   const sections = pr.sections
     .map((s) => {
-      const ps = (s.p || []).map((x) => `<p>${md(x)}</p>`).join("");
-      const ul = s.ul ? `<ul>${s.ul.map((x) => `<li>${md(x)}</li>`).join("")}</ul>` : "";
+      const fill = (x) => x.replaceAll("{deleteUrl}", ROUTES[lang].accountDelete);
+      const ps = (s.p || []).map((x) => `<p>${md(fill(x))}</p>`).join("");
+      const ul = s.ul ? `<ul>${s.ul.map((x) => `<li>${md(fill(x))}</li>`).join("")}</ul>` : "";
       const table = s.table
         ? `<div class="table-wrap"><table><thead><tr>${s.table.head.map((x) => `<th scope="col">${esc(x)}</th>`).join("")}</tr></thead><tbody>${s.table.rows
             .map((r) => `<tr><th scope="row"><code>${esc(r[0])}</code></th>${r.slice(1).map((x) => `<td>${esc(x)}</td>`).join("")}</tr>`)
@@ -832,15 +857,45 @@ function buildPrivacy(lang) {
   const e = searchEntries[lang];
   e.push({ t: pr.h1, u: pagePath, d: pr.description, k: "kvkk çerez cookie gizlilik privacy umami localstorage" });
   pr.sections.forEach((s) =>
-    e.push({ t: s.h, u: `${pagePath}#${s.id}`, d: (s.p && s.p[0] ? s.p[0] : s.ul ? s.ul[0] : "").replace(/\*\*|\[([^\]]+)\]\([^)]+\)/g, "$1"), k: pr.h1 })
+    e.push({ t: s.h, u: `${pagePath}#${s.id}`, d: (s.p && s.p[0] ? s.p[0] : s.ul ? s.ul[0] : "").replaceAll("{deleteUrl}", ROUTES[lang].accountDelete).replace(/\*\*|\[([^\]]+)\]\([^)]+\)/g, "$1"), k: pr.h1 })
   );
   return { lang, key: "privacy", path: pagePath, title: pr.title, description: pr.description, body, ld, nav: "privacy" };
+}
+
+/* ---------- Hesap silme bilgi sayfası (standart 5.15 madde 7; 12 Kasım 2026) ----------
+   Giriş, kayıt, şifre sıfırlama ve e-posta doğrulama sayfaları üyelik sunucusundadır (hesap.time.bumba.tr, server/src/web.mjs);
+   eski statik /hesap/sifre/ ve /hesap/dogrulandi/ adresleri nginx'te oraya 301. Bu sayfa herkese açık kalır (mağazalar hesap
+   silme adresi ister). Ayarlar menüsündeki "Hesap" bağlantısının adı üyelik sunucusunun metinlerinden (server/i18n/account.json). */
+extendRoutes({
+  tr: { accountDelete: "/hesap-silme/" },
+  en: { accountDelete: "/en/account-deletion/" },
+});
+function buildAccountDelete(lang) {
+  const t = I[lang];
+  const a = t.account;
+  const pagePath = ROUTES[lang].accountDelete;
+  const sections = a.delSections
+    .map((s) => `<h2>${esc(s.h)}</h2>${(s.p || []).map((x) => `<p>${md(x)}</p>`).join("")}${s.ul ? `<${s === a.delSections[0] ? "ol" : "ul"}>${s.ul.map((x) => `<li>${md(x)}</li>`).join("")}</${s === a.delSections[0] ? "ol" : "ul"}>` : ""}`)
+    .join("");
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: a.delH1, path: pagePath }];
+  const body = `<section class="hero">
+  <div class="wrap">
+    ${crumbs(lang, trail)}
+    <h1>${esc(a.delH1)}</h1>
+    <p class="lead">${esc(a.delLead)}</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap prose">${sections}</div>
+</section>`;
+  const ld = [...baseLd(lang), webPageLd(lang, pagePath, a.delTitle, a.delDesc), breadcrumbLd(trail)];
+  searchEntries[lang].push({ t: a.delH1, u: pagePath, d: a.delDesc, k: "hesap account silme delete" });
+  return { lang, key: "accountDelete", path: pagePath, title: a.delTitle, description: a.delDesc, body, ld };
 }
 
 /* ---------- Takvim: etkinlikler ve yıl sayfaları ---------- */
 const HOL = readJson("src/data/holidays.json");
 HOL.school = readJson("src/data/school.json");
-HOL.exams = readJson("src/data/exams.json");
 const HOL_YEARS = Object.keys(HOL.years).map(Number).sort((a, b) => a - b);
 /* Gökyüzü olayları (2. analiz #154): meteor yağmuru zirveleri (IMO λ⊙), kavuşumlar, Ay–gezegen, karşı konum, uzanım; 2026–2031 */
 const SKY_EVENTS = skyEvents(ROOT, HOL_YEARS[0], HOL_YEARS[HOL_YEARS.length - 1]);
@@ -851,7 +906,7 @@ const ECLIPSES = ["solar", "lunar"].flatMap((kind) => ECLIPSES_SRC[kind].map((e)
 const ECLIPSE_REGIONS = [...new Set(ECLIPSES.flatMap((e) => e.regions))];
 const eclipseRegionNames = (locale) => { const dn = new Intl.DisplayNames([locale], { type: "region" }); return Object.fromEntries(ECLIPSE_REGIONS.map((c) => [c, dn.of(c) || c])); };
 const BUILD_YEAR = Math.min(Math.max(new Date().getFullYear(), HOL_YEARS[0]), HOL_YEARS[HOL_YEARS.length - 1]);
-const TYPE_LABEL_KEY = { holiday: "holiday", half: "half", religious: "religious", special: "special", school: "school", exam: "exam" };
+const TYPE_LABEL_KEY = { holiday: "holiday", half: "half", religious: "religious", special: "special", school: "school" };
 const yearPath = (lang, y) => `${ROUTES[lang].calendar}${y}/`;
 const YEAR_DATA = Object.fromEntries(HOL_YEARS.map((y) => [y, computeYear(y, HOL)]));
 
@@ -865,6 +920,34 @@ for (const lang of LANGS) {
   write(`assets/events-${lang}.json`, eventsJson[lang]);
 }
 const eventsVersion = Object.fromEntries(LANGS.map((l) => [l, hash(eventsJson[l])]));
+
+/* Kapsayıcı takvimler (9 Kasım 2026; lib/calendars, docs/takvimler.md): veri yapım anında üretilir ve doğrulanır. Takvim yıl
+   sayfaları açık takvimlerin verisini assets/cals-<dil>-<yıl>.json'dan alır (yalnız bir takvim açıkken; metin + o yılın verisi). */
+const CAL_DATA = calendarData();
+{
+  const errs = validateCalendars(CAL_DATA, CAL_TEXTS, ROOT);
+  if (errs.length) throw new Error("Takvimler (lib/calendars):\n- " + errs.join("\n- "));
+}
+const CALS_URL = {};
+for (const lang of LANGS) for (const y of HOL_YEARS) {
+  if (y < CAL_DATA.from || y > CAL_DATA.to) continue;
+  const j = JSON.stringify(siteYearSlice(CAL_DATA, CAL_TEXTS, lang, y));
+  write(`assets/cals-${lang}-${y}.json`, j);
+  CALS_URL[`${lang}-${y}`] = `/assets/cals-${lang}-${y}.json?v=${hash(j)}`;
+}
+/* Takvim seçimi (onay kutuları; JS'siz gizli): ad, açıklama; renk ve varsayılan bölge sayfa yapılandırmasında */
+function calsPicker(lang, year) {
+  if (!CALS_URL[`${lang}-${year}`]) return "";
+  const cal = I[lang].calendar;
+  const items = CALENDARS.map(({ meta }) => {
+    const t = I[lang].cals[meta.id];
+    return `<li><label class="cal-pick-item"><input type="checkbox" data-cal="${meta.id}"><span class="cal-sw" data-cal-sw="${meta.id}" aria-hidden="true"></span><span class="cal-pick-text"><strong>${esc(t.name)}</strong><span class="meta">${esc(t.desc)}</span></span></label></li>`;
+  }).join("");
+  return `<details class="cal-pick" data-cals hidden><summary>${esc(cal.calsHeading)}</summary><p class="meta">${esc(cal.calsLead)}</p><ul class="cal-pick-list">${items}</ul></details>`;
+}
+const calsClient = (lang, year) => (CALS_URL[`${lang}-${year}`]
+  ? { url: CALS_URL[`${lang}-${year}`], list: CALENDARS.map(({ meta }) => ({ id: meta.id, color: meta.color, group: meta.group, regions: meta.regions })) }
+  : undefined);
 
 /* Takvim aboneliği (30 Ekim 2026, rakip analizi #21): her dilde iki .ics akışı, 2026–2031 bütün yıllar.
    /ics/<dil>-holidays.ics: resmî tatiller ve yarım gün arifeler; /ics/<dil>-days.ics: dini ve özel günler.
@@ -916,7 +999,8 @@ function monthTable(lang, year, month, cy, ev, calOverride, interactive = true) 
       const rank = ["holiday", "half", "religious", "special"].find((t) => es.some((e) => e.type === t));
       const school = es.some((e) => e.type === "school") || inRange(date, cy.schoolRanges);
       const cls = [rank && `d-${rank}`, !rank && school && "d-school", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
-      const label = es.length ? `<span class="sr-only">, ${esc(es.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "))}</span>` : "";
+      const lab = (arr) => esc(arr.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "));
+      const label = es.length ? `<span class="sr-only">, ${lab(es)}</span>` : "";
       const title = es.length ? ` title="${esc(es.map((e) => cal.events[e.key]).join("; "))}"` : "";
       tr += interactive
         ? `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}${es.length ? "" : ` title="${esc(cal.dayNone)}"`} tabindex="0" role="button">${d}${label}</td>`
@@ -934,8 +1018,7 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
   const cy = YEAR_DATA[year];
   const counts = holidayCounts(cy.events);
   const byDate = {};
-  /* Sınav günleri takvimde gösterilmez (geri sayım sayfaları kendi verisini kullanır) */
-  const shown = cy.events.filter((e) => e.type !== "exam");
+  const shown = cy.events;
   shown.forEach((e) => (byDate[e.date] ||= []).push(e));
   const date = (key, i = 0) => cy.events.filter((e) => e.key === key)[i];
   const rbDays = cy.events.filter((e) => e.key.startsWith("rb") && e.key !== "rbEve").map((e) => e.date);
@@ -971,7 +1054,7 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
     .map((k) => `<li><span class="lg lg-${k}" aria-hidden="true"></span>${esc(cal.types[k])}</li>`).join("");
   const seenRow = new Set();
   const rows = shown
-    .map((e) => { const first = !seenRow.has(e.date); seenRow.add(e.date); return `<tr data-d="${e.date}"${first ? ` id="e-${e.date}"` : ""}><th scope="row">${esc(f.short(e.date))}</th><td>${esc(cal.weekdays[dowOf(e.date)])}</td><td>${esc(cal.events[e.key])}</td><td>${esc(cal.types[TYPE_LABEL_KEY[e.type]])}</td><td data-left></td></tr>`; })
+    .map((e) => { const first = !seenRow.has(e.date); if (first) seenRow.add(e.date); return `<tr data-d="${e.date}"${first ? ` id="e-${e.date}"` : ""}><th scope="row">${esc(f.short(e.date))}</th><td>${esc(cal.weekdays[dowOf(e.date)])}</td><td>${esc(cal.events[e.key])}</td><td>${esc(cal.types[TYPE_LABEL_KEY[e.type]])}</td><td data-left></td></tr>`; })
     .join("");
   const yearLinks = HOL_YEARS.map((y) => `<li><a href="${yearPath(lang, y)}"${y === year ? ' aria-current="page"' : ""}>${y}</a></li>`).join("");
   const prev = HOL_YEARS.includes(year - 1) ? `<a href="${yearPath(lang, year - 1)}" rel="prev">${esc(tpl(cal.prevYear, { year: year - 1 }))}</a>` : "";
@@ -988,11 +1071,14 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
 <section class="section" aria-labelledby="legend-h">
   <div class="wrap">
     <h2 id="legend-h" class="sr-only">${esc(cal.legendLabel)}</h2>
+    ${calsPicker(lang, year)}
     <ul class="legend" aria-label="${esc(cal.legendLabel)}">${legend}</ul>
+    <div class="cal-notes" data-cal-notes hidden></div>
     <div class="year-grid" data-year="${year}">${months}</div>
     <dialog class="info-dialog day-dialog" id="day-dialog" aria-labelledby="day-title">
       <h2 id="day-title" data-day-title></h2>
       <ul class="day-list" data-day-list></ul>
+      <ul class="day-cals" data-day-cals hidden></ul>
       <p class="meta" data-day-meta></p>
       <div class="im-actions"><a class="btn" href="#events" data-day-link hidden>${esc(cal.dayToList)}</a><button type="button" class="btn btn-ghost" data-day-close>${esc(cal.dayClose)}</button></div>
     </dialog>
@@ -1031,7 +1117,7 @@ ${addFaq(lang, "calendar", t.faqPage.calendar, yearPath(lang, BUILD_YEAR), faq)}
       if (ee) e.push({ t: `${cal.events[k]} ${year}`, u: `${canonicalPath}#events`, d: f.full(ee.date), k: "takvim bayram ramazan kurban calendar eid ramadan " + year });
     }
   }
-  return { lang, key, path: pagePath, title, description, body, ld, nav: "calendar", scripts: ["calendar.js"], clientExtra: { cal: { year }, t: { cald: { none: cal.dayNone, week: cal.dayWeek, doy: cal.dayDoy, today: cal.dayToday, inDays: cal.dayIn, ago: cal.dayAgo, close: cal.dayClose, types: cal.types } } }, noindex: index, canonicalPath: index ? canonicalPath : undefined, noHreflang: index, mapKey: index ? undefined : key };
+  return { lang, key, path: pagePath, title, description, body, ld, nav: "calendar", scripts: ["calendar.js"], clientExtra: { cal: { year, cals: calsClient(lang, year) }, t: { cald: { none: cal.dayNone, week: cal.dayWeek, doy: cal.dayDoy, today: cal.dayToday, inDays: cal.dayIn, ago: cal.dayAgo, close: cal.dayClose, types: cal.types } } }, noindex: index, canonicalPath: index ? canonicalPath : undefined, noHreflang: index, mapKey: index ? undefined : key };
 }
 
 /* ---------- Araç sayfaları ---------- */
@@ -1253,12 +1339,14 @@ const TOOL_ART = {
   chess: svgArt('<rect x="8" y="24" width="80" height="30" rx="6" class="af"/><circle cx="29" cy="39" r="9"/><circle cx="67" cy="39" r="9"/><path d="M23 24v-6h12v6M61 24v-6h12v6M29 39v-5M67 39l4-3"/>'),
   metronome: svgArt('<path d="M32 56 41 10h14l9 46z" class="af"/><path d="M48 46 66 14M28 56h40"/><circle cx="60" cy="25" r="3"/>'),
   talking: svgArt('<circle cx="36" cy="34" r="20" class="af"/><path d="M36 22v12l7 4M64 24c4 6 4 14 0 20M73 17c7 10 7 24 0 34"/>'),
+  photo: svgArt('<rect x="10" y="22" width="56" height="36" rx="6" class="af"/><path d="M24 22l5-8h18l5 8"/><circle cx="38" cy="40" r="10"/><circle cx="78" cy="22" r="7"/><path d="M78 8v3M78 33v3M64 22h3M89 22h3M68 12l2 2M86 30l2 2M68 32l2-2M86 14l2-2M70 50h20"/>'),
   sky: svgArt('<circle cx="48" cy="34" r="25" class="af"/><circle cx="40" cy="28" r="6"/><path d="M34 28h12"/><circle cx="60" cy="42" r="2"/><circle cx="56" cy="20" r="1.5"/><circle cx="34" cy="46" r="1.5"/>'),
   retire: svgArt('<circle cx="48" cy="30" r="20" class="af"/><path d="M48 18v12l8 6M30 62h36M36 56h24"/>'),
   otd: svgArt('<rect x="24" y="12" width="48" height="44" rx="4" class="af"/><path d="M24 24h48M36 8v8M60 8v8M34 34h28M34 42h20"/>'),
   sleepCalc: svgArt('<path d="M58 14a20 20 0 1 0 18 28 16 16 0 0 1-18-28z" class="af"/><path d="M14 54h68M20 54V40h26v14M24 40v-4h8"/>'),
   classroom: svgArt('<rect x="12" y="10" width="72" height="40" rx="4" class="af"/><path d="M22 22h20M22 30h28M22 38h14"/><circle cx="66" cy="28" r="7"/><path d="M28 62a8 8 0 0 1 16 0M52 62a8 8 0 0 1 16 0"/><circle cx="36" cy="52" r="0.5"/><circle cx="60" cy="52" r="0.5"/>'),
   examTimer: svgArt('<rect x="10" y="10" width="76" height="46" rx="5" class="af"/><path d="M22 24h24M22 32h18M22 40h22"/><circle cx="66" cy="33" r="12"/><path d="M66 27v6l4 3"/>'),
+  panchang: svgArt('<circle cx="48" cy="34" r="22" class="af"/><path d="M48 12v44M26 34h44M32.4 18.4l31.2 31.2M63.6 18.4 32.4 49.6"/><circle cx="48" cy="34" r="8"/><path d="M14 62h68"/>'),
   zodiac: svgArt('<circle cx="48" cy="32" r="23" class="af"/><path d="M48 17l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z"/>'),
 };
 
@@ -1271,8 +1359,8 @@ function buildToolsHub(lang) {
     { name: h.h1, path: pagePath },
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
-  const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(k === "retire" ? RETIRE.cardName : h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "interval", "examTimer", "classroom", "chess", "metronome", "talking", "sleepCalc", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
+  const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(k === "retire" ? RETIRE.cardName : k === "panchang" ? t.panchang.h1 : h.cards[k].name)}</span></a></li>`;
+  const cards = [...TOOL_KEYS, "interval", "examTimer", "classroom", "chess", "metronome", "talking", "sleepCalc", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "photo", "panchang", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1398,6 +1486,10 @@ extendRoutes({ tr: { tzn: "/saat-dilimi-haberleri/" }, en: { tzn: "/en/time-zone
 extendRoutes({ tr: { poll: "/toplanti-oylamasi/" }, en: { poll: "/en/meeting-poll/" } });
 // 2. analiz #191 (uyku hesaplama), #141 (sınav salonu zamanlayıcısı)
 extendRoutes({ tr: { sleepCalc: "/uyku-hesaplama/", examTimer: "/sinav-zamanlayicisi/", classroom: "/sinif-araclari/" }, en: { sleepCalc: "/en/sleep-calculator/", examTimer: "/en/exam-timer/", classroom: "/en/classroom-tools/" } });
+// Fotoğraf ışığı (9 Kasım 2026, sahibin onayı): altın saat, mavi saat, gün doğumu/batımı yönü, Ay, bulut tahmini
+extendRoutes({ tr: { photo: "/altin-saat/" }, en: { photo: "/en/golden-hour/" } });
+// Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9)
+extendRoutes({ tr: { panchang: "/panchang/" }, en: { panchang: "/en/panchang/" } });
 ROUTES.tr.retire = "/emeklilik-hesaplama/"; // yalnız Türkçe (SGK kuralları)
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
@@ -1597,12 +1689,6 @@ const CDP = [
   { key: "karne", keys: ["term1End", "schoolEnd"], tr: "karne-gunu", en: "report-card-day", school: true },
   { key: "schoolStart", keys: ["schoolStart"], tr: "okul-acilisi", en: "school-start", school: true },
   { key: "midterm", keys: ["midterm1", "midterm2"], tr: "ara-tatil", en: "mid-term-break", school: true },
-  { key: "yks", keys: ["yksTyt"], tr: "yks", en: "yks", exam: true },
-  { key: "kpss", keys: ["kpssOrta", "kpssDhbt"], tr: "kpss", en: "kpss", exam: true },
-  { key: "ales", keys: ["ales3"], tr: "ales", en: "ales", exam: true },
-  { key: "yds", keys: ["yds2"], tr: "yds", en: "yds", exam: true },
-  { key: "aof", keys: ["aofMid1", "aofFinal1", "aofMid2", "aofFinal2", "aofSummer"], tr: "aof-sinavi", en: "aof-exam", exam: true },
-  { key: "aol", keys: ["aolWritten"], tr: "aol-sinavi", en: "aol-exam", exam: true },
 ];
 const cdpPath = (lang, x) => `${ROUTES[lang].countdown}${x[lang] || x.en}/`;
 
@@ -1647,7 +1733,6 @@ function buildCdp(lang, x) {
     <h2 id="years-h">${esc(tpl(s.yearsHeading, v))}</h2>
     <div class="table-wrap"><table class="events-table"><caption>${esc(tpl(s.yearsCaption, v))}</caption><thead><tr><th scope="col">${esc(s.colYear)}</th><th scope="col">${esc(s.colDate)}</th></tr></thead><tbody>${rowsHtml}</tbody></table></div>
     ${x.school ? `<p class="meta">${esc(s.school)}</p>` : ""}
-    ${x.exam ? `<p class="meta">${esc(s.exam)}</p>` : ""}
     <h2>${esc(s.customHeading)}</h2>
     <p>${esc(s.customText)}</p>
   </div>
@@ -1852,7 +1937,8 @@ function buildNature(lang) {
       <p class="meta">${esc(n.eclMapNote)}</p>
     </div>
     <p class="meta">${esc(n.eclApprox)}</p>
-    <p class="meta"><strong>${esc(n.eclipseSafety)}</strong></p>
+    <p class="meta"><strong>${esc(n.eclipseSafety)}</strong></p>${PRAYER_FIRST_LANGS.has(lang) ? `
+    <p class="meta">${esc(n.eclipsePrayer)}</p>` : ""}
     <p class="meta">${esc(n.eclipseSource)}</p>
     <h3>${esc(n.moonIcsHeading)}</h3>
     <p class="share-row">${(() => { const u = ICS_URL(lang, "moon"), cal = t.calendar; return `<a class="toggle" href="${u}" download>${esc(cal.icsDownload)}</a><a class="toggle" href="${ORIGIN.replace(/^https?:/, "webcal:")}${u}">${esc(cal.icsSubscribe)}</a><a class="toggle" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(ORIGIN.replace(/^https?:/, "webcal:") + u)}" target="_blank" rel="noopener">${esc(cal.icsGoogle)}</a>`; })()}</p>
@@ -1953,14 +2039,16 @@ const PROVINCES = readJson("src/data/provinces.json");
 const PRAYER_KEYS = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
 /* İl adı: Latin dışı yazılı dillerde kendi yazısıyla (provinces.json ar/ru/fa/ja/ko/zh/th); Türkçe ve Azericede Türkçe
    yazımla; diğerlerinde İ → I */
-const NATIVE_PROV = ["ar", "ru", "fa", "ja", "ko", "zh", "th", "hi"];
+const NATIVE_PROV = ["ar", "ru", "fa", "ja", "ko", "zh", "th", "hi", "bn"];
 const provName = (lang, p) => (p[lang] && NATIVE_PROV.includes(lang) ? p[lang] : lang === "tr" || lang === "az" ? p.name : p.name.replace(/İ/g, "I"));
 const prayerPath = (lang, p) => `${ROUTES[lang].prayer}${p.slug}/`;
 
 function prayerBody(lang, prov, extra = "") {
   const t = I[lang];
   const s = t.prayer;
-  const rows = PRAYER_KEYS.map((k) => `<tr data-pr="${k}"><th scope="row">${esc(s.names[k])}</th><td data-pr-time>--:--</td></tr>`).join("");
+  /* Kemenag'ın ek satırları (ihtiyat imsakı, duha) yalnız o yöntemde görünür */
+  const extraRow = (k, label) => `<tr data-pr="${k}" class="pr-sub" hidden><th scope="row">${esc(label)}</th><td data-pr-time>--:--</td></tr>`;
+  const rows = PRAYER_KEYS.map((k) => (k === "fajr" ? extraRow("imsak", s.method.rowImsak) : "") + `<tr data-pr="${k}"><th scope="row">${esc(s.names[k])}</th><td data-pr-time>--:--</td></tr>` + (k === "sunrise" ? extraRow("duha", s.method.rowDuha) : "")).join("");
   const shown = prov ? prov.display || provName(lang, prov) : "";
   const attrs = prov ? ` data-mode="city" data-city="${prov.slug}" data-name="${esc(shown)}" data-lat="${prov.lat}" data-lon="${prov.lon}"` : ` data-mode="hub"`;
   /* Solda geri sayım saati, sağda bugünün vakitleri; çerçeve yok. Konum üst bardaki ortak düğmeyle seçilir. */
@@ -1974,11 +2062,12 @@ function prayerBody(lang, prov, extra = "") {
         <h3>${esc(s.todayHeading)}</h3>
         <table class="events-table pr-today"><thead class="sr-only"><tr><th scope="col">${esc(s.colPrayer)}</th><th scope="col">${esc(s.colTime)}</th></tr></thead><tbody>${rows}</tbody></table>
         <p class="pr-bayram" data-pr-bayram hidden></p>
-        <p class="meta pr-ezani" data-pr-ezani title="${esc(s.ezaniNote)}"></p>
+        <p class="meta pr-ezani" data-pr-ezani data-pr-tr title="${esc(s.ezaniNote)}"></p>
         <details class="pr-kerahat"><summary>${esc(s.kerahatHeading)}</summary><ul>${["israk", "istiva", "isfirar"].map((k) => `<li>${esc(s.kerahatNames[k])}: <span data-pr-kr="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.kerahatNote)}</p></details>
-        <details class="pr-kerahat pr-extra"><summary>${esc(s.extraHeading)}</summary><ul>${Object.keys(s.extraNames).map((k) => `<li>${esc(s.extraNames[k])}: <span data-pr-ex="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.extraNote)}</p></details>
+        <details class="pr-kerahat pr-extra" data-pr-tr><summary>${esc(s.extraHeading)}</summary><ul>${Object.keys(s.extraNames).map((k) => `<li>${esc(s.extraNames[k])}: <span data-pr-ex="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.extraNote)}</p></details>
         <details class="pr-kerahat pr-method"><summary>${esc(s.method.heading)}</summary>
           <p class="meta" data-pr-method-active hidden></p>
+          <p class="meta" data-pr-kemenag hidden>${esc(s.method.kemenagNote)}</p>
           <label class="field-label" for="pr-method">${esc(s.method.label)}</label>
           <select id="pr-method" data-pr-method>${Object.keys(s.method.names).map((k) => `<option value="${k}">${esc(s.method.names[k])}</option>`).join("")}</select>
           <label class="field-label" for="pr-asr">${esc(s.method.asrLabel)}</label>
@@ -1988,7 +2077,8 @@ function prayerBody(lang, prov, extra = "") {
       </div>
       <noscript><p class="meta">${esc(s.noscript)}</p></noscript>
     </section>`;
-  const head = PRAYER_KEYS.map((k) => `<th scope="col">${esc(s.names[k])}</th>`).join("");
+  const subCol = (k, label) => `<th scope="col" data-pr-col="${k}" hidden>${esc(label)}</th>`;
+  const head = PRAYER_KEYS.map((k) => (k === "fajr" ? subCol("imsak", s.method.rowImsak) : "") + `<th scope="col">${esc(s.names[k])}</th>` + (k === "sunrise" ? subCol("duha", s.method.rowDuha) : "")).join("");
   const im = `<section class="section" data-imsakiye aria-labelledby="im-h" hidden>
   <div class="wrap">
     <h2 id="im-h" data-im-heading>${esc(s.imHeading)}</h2>
@@ -2047,7 +2137,7 @@ const placeClient = (s) => ({ locating: s.locating, locationDenied: s.locationDe
 const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to);
 // Bayramın ilk günleri (Ramazan ve Kurban; bayram namazı satırı için, 2. analiz #56)
 const BAYRAM_DAYS = HOL_YEARS.flatMap((y) => YEAR_DATA[y].events.filter((e) => e.key === "rb1" || e.key === "kb1").map((e) => e.date));
-const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names, mActive: s.method.active, mNames: s.method.names, hanafi: s.method.hanafiShort, bayram: s.bayram, bayramTomorrow: s.bayramTomorrow, bayramNote: s.bayramNote, bayramDays: BAYRAM_DAYS, ezani: s.ezani }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
+const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names, mActive: s.method.active, mNames: s.method.names, mRegion: s.method.region, hanafi: s.method.hanafiShort, bayram: s.bayram, bayramTomorrow: s.bayramTomorrow, bayramNote: s.bayramNote, bayramDays: BAYRAM_DAYS, ezani: s.ezani }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names, rowImsak: s.method.rowImsak } });
 const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail, consent: t.consent.wxBlocked, allow: t.consent.allow }; };
 
 /* ---------- Saat dilimi kısaltmaları, yaz saati değişimleri, Unix zamanı (30 Ekim 2026, rakip analizi #25) ----------
@@ -2068,6 +2158,10 @@ const TZ_ABBRS = [
   { a: "GST", tz: "Asia/Dubai", m: 1, off: 240, live: "Asia/Dubai", regions: ["AE", "OM"] },
   { a: "PKT", tz: "Asia/Karachi", m: 1, off: 300, live: "Asia/Karachi", regions: ["PK"] },
   { a: "IST", tz: "Asia/Kolkata", m: 1, off: 330, live: "Asia/Kolkata", regions: ["IN", "LK"] },
+  // Endonezya'nın üç saat dilimi (10 Kasım 2026): Batı, Orta, Doğu
+  { a: "WIB", tz: "Asia/Jakarta", m: 1, off: 420, live: "Asia/Jakarta", regions: ["ID"] },
+  { a: "WITA", tz: "Asia/Makassar", m: 1, off: 480, live: "Asia/Makassar", regions: ["ID"] },
+  { a: "WIT", tz: "Asia/Jayapura", m: 1, off: 540, live: "Asia/Jayapura", regions: ["ID"] },
   { a: "SGT", tz: "Asia/Singapore", m: 1, off: 480, live: "Asia/Singapore", regions: ["SG"] },
   { a: "JST", tz: "Asia/Tokyo", m: 1, off: 540, live: "Asia/Tokyo", regions: ["JP"] },
   { a: "KST", tz: "Asia/Seoul", m: 1, off: 540, live: "Asia/Seoul", regions: ["KR"] },
@@ -2284,10 +2378,10 @@ function buildUnix(lang) {
    Veri src/data/world-holidays.json (Nager.Date, MIT; scripts/fetch-world-holidays.mjs ile elle güncellenir), yalnız
    ülke genelindeki resmî tatiller. Ad: İngilizce sayfada İngilizce; ülkenin dilindeki sayfada (de: DE/AT/CH, ar: EG, fr: FR, ru: RU, ja: JP, zh: CN)
    yerel ad; diğerlerinde src/data/holiday-names.json çevirisi, yoksa İngilizce. Yerel ad ayrıca gösterilir. */
-const WHOL = readJson("src/data/world-holidays.json");
+const WHOL = loadWorldHolidays(ROOT);
 const HOLNAMES = readJson("src/data/holiday-names.json").names;
 const WCC = Object.keys(WHOL.countries);
-const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"], es: ["ES"], pt: ["PT", "BR"] };
+const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"], es: ["ES"], pt: ["PT", "BR"], id: ["ID"], hi: ["IN"] };
 const holName = (lang, cc, h) => {
   const main = lang === "en" ? h.n : (NATIVE_CC[lang] || []).includes(cc) && h.l !== h.n ? h.l : (HOLNAMES[h.n] && HOLNAMES[h.n][lang]) || h.n;
   return { main, local: h.l && h.l !== main && h.l !== h.n ? h.l : "" };
@@ -2307,12 +2401,12 @@ function buildWorldHolHub(lang) {
         const next = HOL_YEARS.flatMap((yy) => YEAR_DATA[yy].events).find((e) => e.type === "holiday" && e.date >= from);
         return `<tr data-d="${next ? next.date : ""}"><th scope="row"><a href="${yearPath(lang, y)}">${esc(name)}</a></th><td>${next ? `${esc(t.calendar.events[next.key])} <span class="meta">${esc(F.short(next.date))}</span>` : "–"}</td><td data-left></td><td>${holidayCounts(YEAR_DATA[y].events).n}</td></tr>`;
       }
-      const all = WHOL.years.flatMap((yy) => (WHOL.countries[cc][yy] || { days: [] }).days);
+      const all = publicDays(WHOL.years.flatMap((yy) => (WHOL.countries[cc][yy] || { days: [] }).days));
       const next = all.find((h) => h.d >= from);
-      return `<tr data-d="${next ? next.d : ""}"><th scope="row"><a href="${worldHolPath(lang, cc)}">${esc(name)}</a></th><td>${next ? `${esc(holName(lang, cc, next).main)} <span class="meta">${esc(F.short(next.d))}</span>` : "–"}</td><td data-left></td><td>${(WHOL.countries[cc][y] || { days: [] }).days.length}</td></tr>`;
+      return `<tr data-d="${next ? next.d : ""}"><th scope="row"><a href="${worldHolPath(lang, cc)}">${esc(name)}</a></th><td>${next ? `${esc(holName(lang, cc, next).main)} <span class="meta">${esc(F.short(next.d))}</span>` : "–"}</td><td data-left></td><td>${publicDays((WHOL.countries[cc][y] || { days: [] }).days).length}</td></tr>`;
     }).join("");
   const hero = `<div class="table-wrap"><table class="events-table" ${holLeftAttrs(s)}><thead><tr><th scope="col">${esc(s.colCountry)}</th><th scope="col">${esc(s.colNext)}</th><th scope="col">${esc(s.colLeft)}</th><th scope="col">${esc(tpl(s.colCount, { year: y }))}</th></tr></thead><tbody>${rows}</tbody></table></div>
-    <p class="meta">${esc(tpl(s.source, { date: WHOL.fetched }))}</p>`;
+    <p class="meta">${esc(tpl(s.source, { date: WHOL.fetched }))} ${esc(s.officialNote)}</p>`;
   return simplePage(lang, "worldHol", { title: s.hubTitle, description: s.hubDescription, h1: s.hubH1, lead: s.hubLead, trail, bodyInner: { hero }, faq: s.faq, faqGroup: { id: "worldHol", title: s.hubH1 }, scripts: ["zones.js"], nav: "calendar", searchK: s.hubSearch });
 }
 
@@ -2323,13 +2417,13 @@ function buildWorldHol(lang, cc) {
   // Verisi eksik yıllar (scripts/fetch-world-holidays.mjs "incomplete") ülkede yoktur
   const years = WHOL.years.filter((yy) => WHOL.countries[cc][yy]);
   const y = years.includes(BUILD_YEAR + 1) ? BUILD_YEAR + 1 : years[years.length - 1];
-  const dy = WHOL.countries[cc][y].days;
+  const dy = publicDays(WHOL.countries[cc][y].days);
   const v = { country, from: years[0], to: years[years.length - 1], year: y, n: dy.length, w: dy.filter((h) => dowOf(h.d) < 5).length };
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.hubH1, path: ROUTES[lang].worldHol }, { name: tpl(s.pageH1, v), path: worldHolPath(lang, cc) }];
   // Ay ızgaralı yıl takvimi (2. analiz #178): derleme yılı (yoksa ilk yıl), tatiller işaretli; diğer yıllar katlanır
   const gy = years.includes(BUILD_YEAR) ? BUILD_YEAR : y;
   const gEv = { byDate: {} };
-  for (const h of (WHOL.countries[cc][gy] || { days: [] }).days) (gEv.byDate[h.d] ||= []).push({ key: h.d, type: "holiday", name: holName(lang, cc, h).main });
+  for (const h of (WHOL.countries[cc][gy] || { days: [] }).days) (gEv.byDate[h.d] ||= []).push({ key: h.d, type: h.k === "leave" ? "half" : "holiday", name: holName(lang, cc, h).main + (h.k === "leave" ? ` (${cal.types.leave})` : "") });
   const gridCal = { ...cal, events: Object.fromEntries(Object.values(gEv.byDate).flat().map((e) => [e.key, e.name])) };
   const months = Array.from({ length: 12 }, (_, i) => `<div class="ymonth-wrap">${monthTable(lang, gy, i + 1, { schoolRanges: [], ramadans: [] }, gEv, gridCal, false)}</div>`).join("");
   const grid = `<section class="section" aria-labelledby="wh-grid"><div class="wrap">
@@ -2340,9 +2434,11 @@ function buildWorldHol(lang, cc) {
     const d = WHOL.countries[cc][yy] || { days: [], regional: 0 };
     const rows = d.days.map((h) => {
       const nm = holName(lang, cc, h);
-      return `<tr data-d="${h.d}"><th scope="row">${esc(F.short(h.d))}</th><td>${esc(cal.weekdays[dowOf(h.d)])}</td><td>${esc(nm.main)}${nm.local ? `<br><span class="meta" lang="">${esc(tpl(s.localName, { name: nm.local }))}</span>` : ""}</td><td data-left></td></tr>`;
+      const leave = h.k === "leave" ? ` <span class="meta">· ${esc(cal.types.leave)}</span>` : "";
+      return `<tr data-d="${h.d}"${h.k === "leave" ? ' class="wh-leave"' : ""}><th scope="row">${esc(F.short(h.d))}</th><td>${esc(cal.weekdays[dowOf(h.d)])}</td><td>${esc(nm.main)}${leave}${nm.local ? `<br><span class="meta" lang="">${esc(tpl(s.localName, { name: nm.local }))}</span>` : ""}</td><td data-left></td></tr>`;
     }).join("");
-    const sum = tpl(s.summary, { year: yy, n: d.days.length, w: d.days.filter((h) => dowOf(h.d) < 5).length });
+    const pub = publicDays(d.days);
+    const sum = tpl(s.summary, { year: yy, n: pub.length, w: pub.filter((h) => dowOf(h.d) < 5).length });
     const table = `<p class="meta">${esc(sum)}${d.regional ? " " + esc(tpl(s.regional, { year: yy, n: d.regional })) : ""}</p>
     <div class="table-wrap"><table class="events-table" ${holLeftAttrs(s)}><caption class="sr-only">${esc(tpl(s.caption, { country, year: yy }))}</caption><thead><tr><th scope="col">${esc(s.colDate)}</th><th scope="col">${esc(s.colDay)}</th><th scope="col">${esc(s.colName)}</th><th scope="col">${esc(s.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     // Derleme yılı ve ertesi yıl açık, diğer yıllar (geçmiş ve uzak yıllar) katlanır
@@ -2355,7 +2451,11 @@ function buildWorldHol(lang, cc) {
   </details></div></section>`;
   }).join("\n");
   const hero = `<p class="info-sub" data-hol-next data-label="${esc(s.nextLabel)}">&nbsp;</p>`;
-  const tail = `<section class="section"><div class="wrap"><p class="meta">${esc(tpl(s.source, { date: WHOL.fetched }))}</p></div></section>`;
+  // Resmî listeden gelen ülkelerde (Endonezya, Hindistan) kaynak, ortak izin ve Hindistan notu
+  const off = WHOL.official[cc];
+  const notes = [cc === "IN" ? s.inNote : "", Object.values(WHOL.countries[cc]).some((v) => v.days.some((h) => h.k === "leave")) ? s.leaveNote : "",
+    off ? tpl(s.officialSource, { source: off.name, date: off.checked }) : tpl(s.source, { date: WHOL.fetched })].filter(Boolean);
+  const tail = `<section class="section"><div class="wrap">${notes.map((n) => `<p class="meta">${esc(n)}</p>`).join("")}</div></section>`;
   // Uzun ülke adında açıklamanın ikinci cümlesi atlanır (170 karakter sınırı)
   let description = tpl(s.pageDescription, v);
   if (description.length > 170) description = description.slice(0, description.indexOf(". ") + 1);
@@ -2431,15 +2531,22 @@ function qiblaDial(lang) {
    (Diyanet), oran 1/40, altın fiyatını kullanıcı yazar; tutarlar kaydedilmez, gönderilmez. Betik zakat.js. */
 const ZAKAT_FIELDS = ["cash", "goldGrams", "goldPrice", "silverValue", "foreign", "trade", "receivable", "debt"];
 const FITRE = readJson("src/data/fitre.json");
+// Endonezya (BAZNAS; 10 Kasım 2026): nisab 85 g, fitrah ve fidye; "Hesap esası" seçimi (Endonezce sayfada ve saat dilimi Endonezya'daysa BAZNAS)
+const ZAKAT_ID = readJson("src/data/zakat-id.json");
+const rupiah = (n) => "Rp " + new Intl.NumberFormat("id-ID").format(n);
 function buildZakat(lang) {
   const t = I[lang], s = t.zakat;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].zakat }];
   const field = (k) => `<div class="field"><label for="zk-${k}">${esc(s.fields[k])}</label><input id="zk-${k}" type="text" inputmode="decimal" autocomplete="off" dir="ltr" data-zk="${k}"></div>`;
   const res = (k, label) => `<div class="fact"><dt${k === "nisab" ? " data-zk-nisab-label" : ""}>${esc(label)}</dt><dd data-zk-${k} dir="ltr">–</dd></div>`;
-  const nisabLabel = tpl(s.nisab, { g: new Intl.NumberFormat(RTL.includes(lang) ? "en" : I[lang].locale, { maximumFractionDigits: 2 }).format(80.18) });
+  const gFmt = (g) => tpl(s.nisab, { g: new Intl.NumberFormat(RTL.includes(lang) ? "en" : I[lang].locale, { maximumFractionDigits: 2 }).format(g) });
+  const baznasFirst = lang === "id";
+  const nisabLabel = gFmt(baznasFirst ? ZAKAT_ID.nisabGrams : 80.18);
+  const std = `<div class="zk-grid"><div class="field"><label for="zk-std">${esc(s.stdLabel)}</label><select id="zk-std" data-zk-std data-nisab-diyanet="${esc(gFmt(80.18))}" data-nisab-baznas="${esc(gFmt(ZAKAT_ID.nisabGrams))}" data-grams-baznas="${ZAKAT_ID.nisabGrams}"><option value="diyanet"${baznasFirst ? "" : " selected"}>${esc(s.stdDiyanet)}</option><option value="baznas"${baznasFirst ? " selected" : ""}>${esc(s.stdBaznas)}</option></select></div></div>`;
   const hero = `<section class="zk" data-zakat aria-labelledby="zk-h">
       <h2 id="zk-h" class="sr-only">${esc(s.h1)}</h2>
       <p class="meta">${esc(s.intro)}</p>
+      ${std}
       <div class="zk-grid">${ZAKAT_FIELDS.map(field).join("")}</div>
       <h2 class="zk-res-h">${esc(s.resultHeading)}</h2>
       <dl class="facts zk-res">${res("net", s.net)}${res("nisab", nisabLabel)}<div class="fact" data-zk-amount-box hidden><dt>${esc(s.amount)}</dt><dd data-zk-amount dir="ltr">–</dd></div></dl>
@@ -2448,14 +2555,23 @@ function buildZakat(lang) {
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`;
   const fy = Object.keys(FITRE.years).sort().pop(), fv = FITRE.years[fy];
-  const fitre = `<section class="zk-fitre" data-fitre="${fv.amount}" aria-labelledby="zk-f-h">
+  const iy = Object.keys(ZAKAT_ID.years).sort().pop(), iv = ZAKAT_ID.years[iy];
+  const only = (std, on) => ` data-zk-only="${std}"${on ? "" : " hidden"}`;
+  const fitrah = `<section class="zk-fitre" data-fitrah="${iv.fitrah}"${only("baznas", baznasFirst)} aria-labelledby="zk-fi-h">
+      <h2 id="zk-fi-h" class="zk-res-h">${esc(s.fitrahHeading)}</h2>
+      <p>${esc(tpl(s.fitrahText, { year: iy, amount: rupiah(iv.fitrah) }))}</p>
+      <div class="zk-grid"><div class="field"><label for="zk-people-id">${esc(s.fitrePeople)}</label><input id="zk-people-id" type="number" inputmode="numeric" min="1" max="99" value="1" data-fitrah-people></div></div>
+      <dl class="facts zk-res"><div class="fact"><dt>${esc(s.fitreTotal)}</dt><dd data-fitrah-total dir="ltr">${esc(rupiah(iv.fitrah))}</dd></div></dl>
+      <p class="meta">${esc(tpl(s.fidyahText, { year: iy, amount: rupiah(iv.fidyah) }))}</p>
+    </section>`;
+  const fitre = `<section class="zk-fitre" data-fitre="${fv.amount}"${only("diyanet", !baznasFirst)} aria-labelledby="zk-f-h">
       <h2 id="zk-f-h" class="zk-res-h">${esc(s.fitreHeading)}</h2>
       <p>${esc(tpl(s.fitreText, { year: fy, amount: fv.amount, date: fmtDate(lang, fv.date) }))}</p>
       <div class="zk-grid"><div class="field"><label for="zk-people">${esc(s.fitrePeople)}</label><input id="zk-people" type="number" inputmode="numeric" min="1" max="99" value="1" data-fitre-people></div></div>
       <dl class="facts zk-res"><div class="fact"><dt>${esc(s.fitreTotal)}</dt><dd data-fitre-total dir="ltr">${fv.amount} TL</dd></div></dl>
       <p class="meta">${esc(s.fitreNote)}</p>
     </section>`;
-  const sections = `<section class="section"><div class="wrap">${fitre}<p class="meta">${esc(s.note)}</p></div></section>`;
+  const sections = `<section class="section"><div class="wrap">${fitre}${fitrah}<p class="meta"${only("diyanet", !baznasFirst)}>${esc(s.note)}</p><p class="meta"${only("baznas", baznasFirst)}>${esc(s.noteBaznas)}</p></div></section>`;
   const zk = { needGold: s.needGold, due: s.due, notDue: s.notDue };
   return simplePage(lang, "zakat", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "zakat", title: s.h1 }, scripts: ["zakat.js"], clientExtra: { t: { zk } }, nav: "prayer", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].zakat, s.description)] });
 }
@@ -2465,6 +2581,8 @@ function buildZakat(lang) {
    burç hesaplama. Hepsi tarayıcıda çalışır (more-tools.js), dış istek yok; ses Web Audio ve cihazdaki konuşma motoru. */
 const MORE_KEYS = ["hijriConv", "timeCalc", "daysUntil", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom"];
 const HIJRI_TABLE = hijriTable(HOL, readJson("src/data/hijri.json"));
+// Endonezya hicri takvimi (10 Kasım 2026): Kemenag takvimi, isbat kararları, dışında MABIMS hesabı; Diyanet tablosuyla aynı aralıkta
+const HIJRI_TABLE_ID = [...hijriTableId(HIJRI_TABLE, readJson("src/data/hijri-id.json"))];
 const DU_KEYS = ["newYear", "ramadanStart", "rb1", "apr23", "may1", "may19", "kb1", "jul15", "aug30", "oct29", "hijri", "ashura", "mawlid", "regaib", "mirac", "berat", "kadir", "feb14", "mothers", "fathers"];
 // Burçların yaklaşık başlangıç günleri (tropikal zodyak; Koç'tan başlayarak [ay, gün])
 const ZODIAC_START = [[3, 21], [4, 20], [5, 21], [6, 21], [7, 23], [8, 23], [9, 23], [10, 23], [11, 22], [12, 22], [1, 20], [2, 19]];
@@ -2486,6 +2604,7 @@ function moreBody(lang, key) {
       <p class="big-time mt-big" data-hj-today>–</p>
       <p class="meta" data-hj-today-greg>&nbsp;</p>
       <p class="meta" data-hj-rumi title="${esc(s.rumiNote)}">&nbsp;</p>
+      <div class="inputs-row hj-opts" data-hj-opts hidden>${mtField("hj-cal", s.calLabel, `<select id="hj-cal" data-hj-cal><option value="diyanet">${esc(s.calDiyanet)}</option><option value="kemenag">${esc(s.calKemenag)}</option></select>`)}${mtField("hj-off", s.offLabel, `<select id="hj-off" data-hj-off><option value="-1">${esc(s.offM1)}</option><option value="0" selected>${esc(s.off0)}</option><option value="1">${esc(s.offP1)}</option></select>`)}</div>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`;
     const sections = `<section class="section" aria-labelledby="hj-a"><div class="wrap">
@@ -2501,9 +2620,10 @@ function moreBody(lang, key) {
     <section class="section" aria-labelledby="hj-c"><div class="wrap">
       <div class="table-wrap"><table class="events-table" data-hj-table><caption id="hj-c">${esc(tpl(s.yearHeading, { y: hy }))}</caption><thead><tr><th scope="col">${esc(s.colMonth)}</th><th scope="col">${esc(s.colStart)}</th><th scope="col">${esc(s.colDays)}</th></tr></thead><tbody data-hj-tbody>${rows}</tbody></table></div>
       <p class="meta">${esc(s.note)}</p>
+      <p class="meta">${esc(s.calNote)}</p>
       <p class="meta">${esc(s.rumiNote)}</p>
     </div></section>`;
-    return { hero, sections, client: { rumi: s.rumi, months: s.months, fmt: s.fmt, outside: s.outside, dayMax: s.dayMax, invalid: s.invalid, yearHeading: s.yearHeading, table: HIJRI_TABLE } };
+    return { hero, sections, client: { rumi: s.rumi, months: s.months, fmt: s.fmt, outside: s.outside, dayMax: s.dayMax, invalid: s.invalid, yearHeading: s.yearHeading, table: HIJRI_TABLE, tableId: HIJRI_TABLE_ID } };
   }
   if (key === "timeCalc") {
     const hero = `<section class="mt" data-mt="timecalc" aria-labelledby="tc-a">
@@ -2766,6 +2886,7 @@ function buildQibla(lang) {
         <div class="fact"><dt>${esc(s.angle)}</dt><dd data-qb-angle>–</dd><dd class="meta">${esc(s.angleNote)}</dd></div>
         <div class="fact"><dt>${esc(s.distance)}</dt><dd data-qb-dist>–</dd></div>
         <div class="fact"><dt>${esc(s.time)}</dt><dd data-qb-time>–</dd><dd class="meta" data-qb-time-note>&nbsp;</dd></div>
+        <div class="fact" data-qb-rq-row><dt>${esc(s.rashdul)}</dt><dd data-qb-rq>–</dd><dd class="meta" data-qb-rq-note>${esc(s.rashdulNote)}</dd></div>
       </dl>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`;
@@ -2781,7 +2902,7 @@ function buildQibla(lang) {
     <p class="meta">${esc(s.method)}</p>
   </div>
 </section>`;
-  const qb = { timeNote: s.timeNote, noTime: s.noTime, aligned: s.aligned, turn: s.turn, waiting: s.waiting, noCompass: s.noCompass, denied: s.denied, atKaaba: s.atKaaba, mosquesLoading: s.mosquesLoading, mosquesNone: s.mosquesNone, mosquesError: s.mosquesError, mosqueUnnamed: s.mosqueUnnamed, mapsQuery: s.mapsQuery, km: s.km, m: s.m, blocked: t.consent.mqBlocked, allow: t.consent.allow };
+  const qb = { timeNote: s.timeNote, noTime: s.noTime, rashdulNote: s.rashdulNote, rashdulNight: s.rashdulNight, aligned: s.aligned, turn: s.turn, waiting: s.waiting, noCompass: s.noCompass, denied: s.denied, atKaaba: s.atKaaba, mosquesLoading: s.mosquesLoading, mosquesNone: s.mosquesNone, mosquesError: s.mosquesError, mosqueUnnamed: s.mosqueUnnamed, mapsQuery: s.mapsQuery, km: s.km, m: s.m, blocked: t.consent.mqBlocked, allow: t.consent.allow };
   return simplePage(lang, "qibla", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "qibla", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "wmm.js", "qibla.js"], clientExtra: { t: { pl: placeClient(t.prayer), qb } }, nav: "prayer", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].qibla, s.description)] });
 }
 
@@ -2840,6 +2961,165 @@ function buildSky(lang) {
     showers: s.showers, evShower: s.evShower, showerRate: s.showerRate, showerVar: s.showerVar, moonLight: s.moonLight, evOpp: s.evOpp, evElongE: s.evElongE, evElongW: s.evElongW, evConj: s.evConj, evMoon: s.evMoon,
     darkNone: s.darkNone, moonUpDark: s.moonUpDark, moonDownDark: s.moonDownDark, planetsNone: s.planetsNone, score: s.score, tipMoon: s.tipMoon, tipDark: s.tipDark, tipCloudy: s.tipCloudy, tipBest: s.tipBest, window2: s.window };
   return simplePage(lang, "sky", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "sky", title: s.h1 }, scripts: ["place.js", "nature-calc.js", "sky-calc.js", "weather-core.js", "moon-render.js", "sky.js"], clientExtra: { moonTex: MOON_URL, t: { pl: placeClient(t.prayer), sk }, skyEvents: SKY_EVENTS.filter((e) => e.t >= Date.UTC(BUILD_YEAR, 0, 1)).map((e) => ({ ...e })) }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].sky, s.description)] });
+}
+
+/* Fotoğraf ışığı (9 Kasım 2026, sahibin onayı; uygulamalarla aynı tanımlar): seçili yerde ve günde mavi saat (Güneş
+   −4°…−6°), altın saat (+6°…−4°), gün doğumu/batımı (−0,833°) saati ve azimutu, Ay; 7 günlük ışık tablosu; bugün + 6 gün
+   gün doğumu/batımı fotoğraf tahmini (Open-Meteo bulut katmanları, dış hizmet izniyle; kural weather-core.js photoSky).
+   Hesap tarayıcıda (photo.js). JS'siz okur için sayfa, öntanımlı yerin (İstanbul, UTC+3) derleme gününün değerlerini taşır;
+   photo.js seçili yerle ve bugünle (ya da ?d=YYYY-MM-DD) yeniden çizer. */
+const PRAYER_CALC = (() => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(SRC, "js/prayer-calc.js"), "utf8"))(m, undefined); return m.exports; })();
+const PH_KEYS = ["blueAm", "goldenAm", "goldenPm", "bluePm"];
+const PH_PHASES = ["new", "waxingCrescent", "firstQuarter", "waxingGibbous", "full", "waningGibbous", "lastQuarter", "waningCrescent"];
+function photoLight(y, m, d, lat, lon, tz) {
+  const P = PRAYER_CALC, base = Date.UTC(y, m - 1, d);
+  const ms = (h) => (Number.isFinite(h) ? base + (h - tz) * 3600000 : NaN);
+  const az = (h) => (Number.isFinite(h) ? P.sunAltAz(y, m, d, h - tz, lat, lon).az : NaN);
+  const lh = P.lightHours(y, m, d, lat, lon, tz), rs = P.sunAltTimes(y, m, d, lat, lon, tz, -0.833);
+  return { rise: ms(rs.rise), set: ms(rs.set), riseAz: az(rs.rise), setAz: az(rs.set), ...Object.fromEntries(PH_KEYS.map((k) => [k, [ms(lh[k][0]), ms(lh[k][1])]])) };
+}
+function buildPhoto(lang) {
+  const t = I[lang], s = t.photo, cal = t.calendar;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].photo }];
+  const prov = PROVINCES.find((p) => p.slug === "istanbul"), tz = 3, lat = prov.lat, lon = prov.lon;
+  const [y0, m0, d0] = cfg.updated.split("-").map(Number);
+  const day = (i) => { const x = new Date(Date.UTC(y0, m0 - 1, d0 + i)); return [x.getUTCFullYear(), x.getUTCMonth() + 1, x.getUTCDate()]; };
+  const wd = (y, m, d) => (new Date(Date.UTC(y, m - 1, d)).getUTCDay() + 6) % 7;
+  const hm = (v) => (Number.isFinite(v) ? new Date(Math.round(v / 60000) * 60000 + tz * 3600000).toISOString().slice(11, 16) : "—");
+  const rng = (r) => { const a = Number.isFinite(r[0]), b = Number.isFinite(r[1]); return !a && !b ? "—" : `${hm(r[0])}${a && b ? "–" : " – "}${hm(r[1])}`; };
+  const dir = (a) => (Number.isFinite(a) ? `${Math.round(a) % 360}° ${s.dirs[Math.round(a / 22.5) % 16]}` : "—");
+  const o = photoLight(y0, m0, d0, lat, lon, tz);
+  const start = Date.UTC(y0, m0 - 1, d0) - tz * 3600000, mrs = NATURE.moonRiseSet(start, lat, lon, 86400000), mo = NATURE.moon(start + 43200000);
+  const place = provName(lang, prov);
+  const row = (k, label, val, attrs = "") => `<div class="ph-row${k ? ` ph-${k}` : ""}"${attrs}><dt>${esc(label)}</dt><dd ${val}</dd></div>`;
+  const hero = `<section class="ph" data-photo aria-labelledby="ph-place">
+      <h2 id="ph-place" class="qb-place" data-ph-place>${esc(place)}</h2>
+      <div class="ph-nav"><button type="button" class="icon-btn" data-ph-step="-1" aria-label="${esc(s.prev)}" title="${esc(s.prev)}">${ICON_PREV}</button><label for="ph-d" class="sr-only">${esc(s.dateLabel)}</label><input id="ph-d" type="date" data-ph-date min="1900-01-01" max="2100-12-31" value="${cfg.updated}"><button type="button" class="icon-btn" data-ph-step="1" aria-label="${esc(s.next)}" title="${esc(s.next)}">${ICON_NEXT}</button></div>
+      <div class="ph-dayrow"><p class="ph-day" data-ph-day>${esc(tpl(cal.fullFmt, { weekday: cal.weekdays[wd(y0, m0, d0)], day: d0, month: cal.months[m0 - 1], year: y0 }))}</p><button type="button" class="toggle" data-ph-today hidden>${esc(s.today)}</button></div>
+      <p class="meta ph-polar" data-ph-polar role="status" hidden></p>
+      <div class="ph-cards">
+        <article class="ph-card ph-am" aria-labelledby="ph-am-h">
+          <h3 id="ph-am-h">${esc(s.morning)}</h3>
+          <dl>${row("blue", s.blue, `data-ph="blueAm" dir="ltr">${rng(o.blueAm)}`)}${row("gold", s.golden, `data-ph="goldenAm" dir="ltr">${rng(o.goldenAm)}`)}${row("", s.sunrise, `data-ph="rise" dir="ltr">${hm(o.rise)}`)}${row("", s.direction, `data-ph="riseAz">${esc(dir(o.riseAz))}`)}${row("fcq", s.forecast, 'data-ph="riseQ">', " hidden")}</dl>
+        </article>
+        <article class="ph-card ph-pm" aria-labelledby="ph-pm-h">
+          <h3 id="ph-pm-h">${esc(s.evening)}</h3>
+          <dl>${row("gold", s.golden, `data-ph="goldenPm" dir="ltr">${rng(o.goldenPm)}`)}${row("blue", s.blue, `data-ph="bluePm" dir="ltr">${rng(o.bluePm)}`)}${row("", s.sunset, `data-ph="set" dir="ltr">${hm(o.set)}`)}${row("", s.direction, `data-ph="setAz">${esc(dir(o.setAz))}`)}${row("fcq", s.forecast, 'data-ph="setQ">', " hidden")}</dl>
+        </article>
+      </div>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+  const weekRows = Array.from({ length: 7 }, (_, i) => {
+    const [y, m, d] = day(i), x = photoLight(y, m, d, lat, lon, tz);
+    return `<tr><th scope="row">${esc(`${cal.weekdaysShort[wd(y, m, d)]} ${tpl(cal.shortFmt, { day: d, month: cal.months[m - 1] })}`)}</th>${[x.goldenAm, x.goldenPm, x.bluePm].map((r) => `<td dir="ltr">${rng(r)}</td>`).join("")}</tr>`;
+  }).join("");
+  const fact = (label, val) => `<div class="fact"><dt>${esc(label)}</dt><dd ${val}</dd></div>`;
+  const sections = `<section class="section" aria-labelledby="ph-moon-h">
+  <div class="wrap">
+    <h2 id="ph-moon-h">${esc(s.moonHeading)}</h2>
+    <div class="moon-row ph-moon-row">
+      <svg class="moon ph-moon" data-ph-moon viewBox="0 0 80 80" aria-hidden="true" focusable="false"></svg>
+      <dl class="facts">${fact(s.moonrise, `data-ph="moonrise" dir="ltr">${mrs.rise === null ? esc(s.noMoonrise) : hm(mrs.rise)}`)}${fact(s.moonset, `data-ph="moonset" dir="ltr">${mrs.set === null ? esc(s.noMoonset) : hm(mrs.set)}`)}${fact(s.phase, `data-ph="phase">${esc(`${t.nature.phases[PH_PHASES[mo.idx]]} · ${tpl(s.lit, { p: new Intl.NumberFormat(t.locale, { style: "percent", numberingSystem: "latn", maximumFractionDigits: 0 }).format(Math.round(mo.illum * 100) / 100) })}`)}`)}</dl>
+    </div>
+  </div>
+</section>
+<section class="section" aria-labelledby="ph-fc-h">
+  <div class="wrap">
+    <h2 id="ph-fc-h">${esc(s.fcHeading)}</h2>
+    <p class="meta">${esc(s.fcLead)}</p>
+    <p class="meta ph-fc-state" data-ph-fc-state role="status" aria-live="polite" hidden></p>
+    <p class="meta consent-ph" data-ph-consent hidden>${esc(s.blocked)} <button type="button" class="btn btn-ghost btn-sm" data-consent-allow-ext>${esc(t.consent.allow)}</button></p>
+    <div class="table-wrap" data-ph-fc-box hidden><table class="events-table ph-fc"><caption class="sr-only">${esc(s.fcHeading)}</caption><thead><tr><th scope="col">${esc(s.colDay)}</th><th scope="col">${esc(s.sunrise)}</th><th scope="col">${esc(s.sunset)}</th></tr></thead><tbody data-ph-fc></tbody></table></div>
+    <p class="meta">${esc(s.why)}</p>
+    <p class="meta">${esc(s.attribution)}</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="ph-wk-h">
+  <div class="wrap">
+    <h2 id="ph-wk-h">${esc(s.weekHeading)}</h2>
+    <p class="meta" data-ph-wk-place>${esc(place)}</p>
+    <div class="table-wrap"><table class="events-table ph-week"><caption class="sr-only">${esc(s.weekHeading)}</caption><thead><tr><th scope="col">${esc(s.colDay)}</th><th scope="col">${esc(s.colGoldenAm)}</th><th scope="col">${esc(s.colGoldenPm)}</th><th scope="col">${esc(s.colBluePm)}</th></tr></thead><tbody data-ph-week>${weekRows}</tbody></table></div>
+  </div>
+</section>
+<section class="section" aria-labelledby="ph-def-h">
+  <div class="wrap">
+    <h2 id="ph-def-h">${esc(s.defsHeading)}</h2>
+    ${s.defs.map((p) => `<p>${md(p)}</p>`).join("\n    ")}
+    <p class="meta">${esc(s.note)}</p>
+  </div>
+</section>`;
+  const ph = { dirs: s.dirs, q: s.q, clouds: s.clouds, rain: s.rain, lit: s.lit, noMoonrise: s.noMoonrise, noMoonset: s.noMoonset, loading: s.loading, error: s.error, polarDay: s.polarDay, polarNight: s.polarNight, partial: s.partial, phases: t.nature.phases };
+  return simplePage(lang, "photo", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "photo", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "weather-core.js", "photo.js"], clientExtra: { t: { pl: placeClient(t.prayer), ph } }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].photo, s.description)] });
+}
+
+/* Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9; uygulamalarla aynı tanımlar): seçili yerde gün doğumu ve
+   batımı, geleneksel olarak kaçınılan (Rahu Kaal, Yamaganda, Gulika) ve uygun sayılan (Abhijit, Brahma muhurta) dilimler,
+   yedi günün Rahu Kaal tablosu (prayer-calc.js hinduKaal). Hindu takviminin günlük satırı Yeni Delhi gün doğumuna göre
+   (lib/calendars/hindu.mjs günlük kodları, assets/panchang-days.json; adlar src/i18n-cal/hindu.json). JS'siz okur için
+   sayfa öntanımlı yerin (Delhi, UTC+5:30) derleme gününün değerlerini taşır; panchang.js seçili yerle yeniden çizer. */
+const PANCHANG_DAYS_JSON = JSON.stringify(CAL_DATA.cals.hindu.daily || {});
+write("assets/panchang-days.json", PANCHANG_DAYS_JSON);
+const PANCHANG_DAYS_URL = `/assets/panchang-days.json?v=${hash(PANCHANG_DAYS_JSON)}`;
+const PC_KEYS = ["rahu", "yamaganda", "gulika", "abhijit", "brahma"];
+function buildPanchang(lang) {
+  const t = I[lang], s = t.panchang, ph = t.photo, cal = t.calendar;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].panchang }];
+  const di = PLACES_SRC.names.en.indexOf("Delhi"), dRow = PLACES_SRC.p[di] || [28.67, 77.23];
+  const lat = dRow[0], lon = dRow[1], tz = 5.5;
+  const [y0, m0, d0] = cfg.updated.split("-").map(Number);
+  const day = (i) => { const x = new Date(Date.UTC(y0, m0 - 1, d0 + i)); return [x.getUTCFullYear(), x.getUTCMonth() + 1, x.getUTCDate()]; };
+  const wd = (y, m, d) => (new Date(Date.UTC(y, m - 1, d)).getUTCDay() + 6) % 7;
+  const hm = (h) => { if (!Number.isFinite(h)) return "—"; const mm = Math.round(h * 60); return `${String(Math.floor((((mm / 60) % 24) + 24) % 24)).padStart(2, "0")}:${String(((mm % 60) + 60) % 60).padStart(2, "0")}`; };
+  const rng = (r) => (r ? `${hm(r[0])}–${hm(r[1])}` : "—");
+  const k0 = PRAYER_CALC.hinduKaal(y0, m0, d0, lat, lon, tz);
+  const names = (CAL_TEXTS.hindu[lang] || CAL_TEXTS.hindu.en).daily || {};
+  const code = (dailyMapOf(CAL_DATA.cals.hindu.daily))[cfg.updated] || "";
+  const hinduLine = code ? (code.match(/[a-z]+[0-9]+/gi) || []).map((k) => names[k] || k).join(" · ") : s.hinduNone;
+  const place = (PLACES_SRC.names[lang] || [])[di] || "Delhi";
+  const row = (label, key, val, extra = "") => `<div class="ph-row"><dt>${esc(label)}</dt><dd data-pc="${key}" dir="ltr">${val}</dd>${extra}</div>`;
+  const hero = `<section class="ph pc" data-panchang aria-labelledby="pc-place">
+      <h2 id="pc-place" class="qb-place" data-pc-place>${esc(place)}</h2>
+      <div class="ph-nav"><button type="button" class="icon-btn" data-pc-step="-1" aria-label="${esc(ph.prev)}" title="${esc(ph.prev)}">${ICON_PREV}</button><label for="pc-d" class="sr-only">${esc(ph.dateLabel)}</label><input id="pc-d" type="date" data-pc-date min="1900-01-01" max="2100-12-31" value="${cfg.updated}"><button type="button" class="icon-btn" data-pc-step="1" aria-label="${esc(ph.next)}" title="${esc(ph.next)}">${ICON_NEXT}</button></div>
+      <div class="ph-dayrow"><p class="ph-day" data-pc-day>${esc(tpl(cal.fullFmt, { weekday: cal.weekdays[wd(y0, m0, d0)], day: d0, month: cal.months[m0 - 1], year: y0 }))}</p><button type="button" class="toggle" data-pc-today hidden>${esc(ph.today)}</button></div>
+      <p class="meta ph-polar" data-pc-polar role="status"${k0 ? " hidden" : ""}>${esc(s.polar)}</p>
+      <div class="ph-cards pc-cards">
+        <article class="ph-card pc-hindu" aria-labelledby="pc-hindu-h">
+          <h3 id="pc-hindu-h">${esc(s.hindu)}</h3>
+          <p class="pc-line" data-pc-hindu>${esc(hinduLine)}</p>
+          <dl>${row(ph.sunrise, "sunrise", hm(k0 && k0.sunrise))}${row(ph.sunset, "sunset", hm(k0 && k0.sunset))}</dl>
+          <p class="meta">${esc(s.hinduNote)}</p>
+        </article>
+        <article class="ph-card pc-avoid" aria-labelledby="pc-avoid-h">
+          <h3 id="pc-avoid-h">${esc(s.avoid)}</h3>
+          <dl>${row(s.rahu, "rahu", rng(k0 && k0.rahu))}${row(s.yama, "yamaganda", rng(k0 && k0.yamaganda))}${row(s.gulika, "gulika", rng(k0 && k0.gulika))}</dl>
+        </article>
+        <article class="ph-card pc-good" aria-labelledby="pc-good-h">
+          <h3 id="pc-good-h">${esc(s.good)}</h3>
+          <dl>${row(s.abhijit, "abhijit", rng(k0 && k0.abhijit))}${row(s.brahma, "brahma", rng(k0 && k0.brahma))}</dl>
+          <p class="meta" data-pc-wed${new Date(Date.UTC(y0, m0 - 1, d0)).getUTCDay() === 3 ? "" : " hidden"}>${esc(s.abhijit)}: ${esc(s.wed)}</p>
+        </article>
+      </div>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+  const weekRows = Array.from({ length: 7 }, (_, i) => {
+    const [y, m, d] = day(i), k = PRAYER_CALC.hinduKaal(y, m, d, lat, lon, tz);
+    return `<tr><th scope="row">${esc(`${cal.weekdaysShort[wd(y, m, d)]} ${tpl(cal.shortFmt, { day: d, month: cal.months[m - 1] })}`)}</th><td dir="ltr">${rng(k && k.rahu)}</td></tr>`;
+  }).join("");
+  const sections = `<section class="section" aria-labelledby="pc-wk-h">
+  <div class="wrap">
+    <h2 id="pc-wk-h">${esc(s.week)}</h2>
+    <div class="table-wrap"><table class="events-table pc-week"><caption class="sr-only">${esc(s.week)}</caption><thead><tr><th scope="col">${esc(ph.colDay)}</th><th scope="col">${esc(s.rahu)}</th></tr></thead><tbody data-pc-week>${weekRows}</tbody></table></div>
+  </div>
+</section>
+<section class="section" aria-labelledby="pc-def-h">
+  <div class="wrap">
+    <h2 id="pc-def-h">${esc(s.defsHeading)}</h2>
+    ${s.defs.map((p) => `<p>${md(p)}</p>`).join("\n    ")}
+    <p class="meta">${esc(s.note)}</p>
+  </div>
+</section>`;
+  const pc = { hinduNone: s.hinduNone };
+  return simplePage(lang, "panchang", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "panchang", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "panchang.js"], clientExtra: { t: { pl: placeClient(t.prayer), pc }, pc: { days: PANCHANG_DAYS_URL, names } }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].panchang, s.description)] });
 }
 
 /* Tarihte bugün (30 Ekim 2026, rakip analizi listesi #89): Wikidata (CC0) verisi, scripts/fetch-on-this-day.mjs ile elle
@@ -3019,7 +3299,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildPhoto(lang), buildPanchang(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), buildAccountDelete(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

@@ -67,6 +67,7 @@ struct QiblaVectors: Decodable {
     }
     let dates: [[Int]]
     let cases: [Case]
+    let rashdul: [[Double]]
 }
 
 struct SunAltitudeVectors: Decodable {
@@ -77,5 +78,35 @@ struct SunAltitudeVectors: Decodable {
         let t: [Double?]
     }
     let altitudes: [Double]
+    let cases: [Case]
+}
+
+/// Kemenag yuvarlaması, ek satırları ve bölgeye göre varsayılan yöntem (kemenag.json)
+struct KemenagVectors: Decodable {
+    struct Case: Decodable {
+        let id: String
+        let method: String
+        let y: Int, m: Int, d: Int
+        let lat: Double, lon: Double, tz: Double
+        let min: [Int?]
+    }
+    struct Region: Decodable {
+        let tz: String
+        let lat: Double, lon: Double
+        let method: String
+        let hanafi: Bool
+    }
+    let keys: [String]
+    let cases: [Case]
+    let region: [Region]
+}
+
+struct KaalVectors: Decodable {
+    struct Case: Decodable {
+        let id: String
+        let y: Int, m: Int, d: Int
+        let lat: Double, lon: Double, tz: Double
+        let t: [Double]?
+    }
     let cases: [Case]
 }

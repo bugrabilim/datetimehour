@@ -85,6 +85,9 @@ struct LineIcon: View {
     var body: some View {
         if Icons3D.has(name) {
             Icon3D(name: name, size: size, dim: dim)
+        } else if LineIcons.all[name] == nil, DuoIcons.has(name) {
+            // Ne 3D ne çizgi çizimi olan ad (privacy, language…): iki tonlu çizilir, hiçbir simge kaybolmasın
+            DuoIcon(name: name, size: size, color: dim ? Theme.muted : c1)
         } else {
             lines
         }
@@ -110,6 +113,84 @@ struct LineIcon: View {
     }
 }
 
+/// İki tonlu küçük simgeler (8 Kasım 2026, sahibin seçimi "B Karma"; mobile/shared/icons/DUOTONE.md): Phosphor duotone
+/// (MIT), 24×24 alan, her ad iki katman (önce %20 saydam arka katman, sonra ön katman), ikisi de aynı renkle doldurulur
+/// (nonzero). 3D yalnız hava verisinde, altı vakit satırında, büyük çizimlerde ve boş durumlarda kalır; alt çubuk, Tümü
+/// kareleri, ayar/izin/bildirim satırları gibi bütün küçük simgeler iki tonludur. Veri App/Resources/duotone.json
+/// (gen-strings kopyalar; yalnız uygulama hedefinde, widget ve saat hedeflerinde yok). Android'deki DuoIcons ile aynı adlar.
+enum DuoIcons {
+    struct Layer {
+        let opacity: Double
+        let path: Path
+    }
+
+    /// Bütün simgeler: dosya bir kez okunur, yollar bir kez ayrıştırılır (yollar uzun; her karede yeniden ayrıştırılmaz)
+    static let all: [String: [Layer]] = {
+        guard let url = Bundle.main.url(forResource: "duotone", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let raw = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return [:] }
+        var out: [String: [Layer]] = [:]
+        for (k, v) in raw {
+            guard let layers = v as? [[String: Any]] else { continue }
+            let parsed: [Layer] = layers.compactMap { l in
+                guard let d = l["d"] as? String else { return nil }
+                let o = (l["o"] as? NSNumber)?.doubleValue ?? 1
+                return Layer(opacity: o, path: LineIcons.parse(d).0)
+            }
+            if !parsed.isEmpty { out[k] = parsed }
+        }
+        return out
+    }()
+
+    /// Bu adla iki tonlu simge var mı
+    static func has(_ name: String) -> Bool { all[name] != nil }
+}
+
+/// İki tonlu simge: katmanlar aynı renkle, katmanın saydamlığıyla doldurulur. Ad duotone.json'da yoksa eski LineIcon
+/// (3D ya da çizgi) çizilir. Ekran okuyucudan gizli (yanındaki yazı okunur).
+struct DuoIcon: View {
+    let name: String
+    var size: CGFloat = 24
+    var color: Color = Theme.accent
+
+    var body: some View {
+        if let layers = DuoIcons.all[name] {
+            Canvas { ctx, sz in
+                let k = min(sz.width, sz.height) / 24
+                ctx.scaleBy(x: k, y: k)
+                for layer in layers {
+                    ctx.fill(layer.path, with: .color(color.opacity(layer.opacity)))
+                }
+            }
+            .frame(width: size, height: size)
+            .accessibilityHidden(true)
+        } else {
+            LineIcon(name: name, size: size, c1: color, c2: color)
+                .accessibilityHidden(true)
+        }
+    }
+}
+
+/// Dairede iki tonlu simge (eski çakıl taşı kutunun yerine): zemin, simge renginin açık tonu (açıkta %14, koyuda %22)
+/// tema yüzeyinin üstünde. Ölçüler: satır 32/19, kare 42/25 (DUOTONE.md).
+struct DuoChip: View {
+    let name: String
+    var color: Color = Theme.accent
+    var box: CGFloat = 32
+    var glyph: CGFloat = 19
+    @Environment(\.colorScheme) private var scheme
+
+    var body: some View {
+        ZStack {
+            Circle().fill(Theme.surface)
+            Circle().fill(color.opacity(scheme == .dark ? 0.22 : 0.14))
+            DuoIcon(name: name, size: glyph, color: color)
+        }
+        .frame(width: box, height: box)
+        .accessibilityHidden(true)
+    }
+}
+
 /// SF Symbol'den kendi çizgi simgemize eşleme (doğal tasarım madde 4, 4 Kasım 2026): IconBox ve alt çubuk önce buraya
 /// bakar, karşılığı yoksa SF Symbol çizilir. Android'deki LineIconMap ile aynı simgeler.
 enum LineIconMap {
@@ -120,22 +201,26 @@ enum LineIconMap {
         "calendar": "calendar", "calendar.badge.clock": "calendar", "calendar.badge.exclamationmark": "calendar", "doc.text": "leafcal",
         "sun.horizon": "sunrise", "beach.umbrella": "beach", "cloud.sun": "sun", "sun.max": "sun", "globe.europe.africa": "globe",
         "globe": "globe", "leaf": "leaf", "moon": "moon", "moon.stars": "night", "sparkles": "sparkles", "rosette": "medal", "gift": "gift",
-        "location.north.line": "compass", "book": "book", "hand.tap": "beads", "checkmark.circle": "checklist", "lock.shield": "checklist", "hands.sparkles": "hands",
+        "location.north.line": "compass", "book": "book", "hand.tap": "beads", "checkmark.circle": "checklist", "lock.shield": "privacy", "hands.sparkles": "hands",
         "figure.mind.and.body": "mosque", "percent": "coin", "gearshape": "gear", "bell": "bell", "location": "pin",
         "paintpalette": "palette", "textformat.size": "textsize", "info.circle": "info", "qrcode": "qr", "slider.horizontal.3": "sliders",
-        "icloud": "cloud", "square.grid.3x3": "grid", "square.grid.2x2": "grid", "clock": "clock", "magnifyingglass": "search",
+        "icloud": "backup", "square.grid.3x3": "grid", "square.grid.2x2": "grid", "clock": "clock", "magnifyingglass": "search",
         "envelope": "mail", "square.and.arrow.up": "share", "star": "star", "heart": "heart",
         "arrow.up.left.and.arrow.down.right": "fullscreen", "thermometer.medium": "thermometer",
         // 3D simgelerle eklenenler (4 Kasım 2026)
-        "wand.and.stars": "sparkles", "textformat.123": "numbers", "textformat": "textsize", "sunrise": "sunrise",
+        "wand.and.stars": "wand", "textformat.123": "numbers", "textformat": "textsize", "sunrise": "sunrise",
         "stopwatch.fill": "stopwatch", "square.and.pencil": "memo", "ruler": "ruler", "quote.opening": "speech",
         "quote.bubble": "speech", "moon.haze": "night", "mappin.and.ellipse": "pin", "list.bullet.rectangle": "clipboard",
-        "list.bullet": "clipboard", "gauge": "chart", "doc.on.doc": "paper", "circle.lefthalf.filled": "halfmoon",
+        "list.bullet": "clipboard", "gauge": "gauge", "doc.on.doc": "paper", "circle.lefthalf.filled": "halfmoon",
         "cup.and.saucer": "coffee", "party.popper": "party", "lock.iphone": "qr",
+        // İki tonlu simgelerle eklenenler (8 Kasım 2026, DUOTONE.md); çağrı yerleri adı ayrıca açıkça verir
+        "location.north.circle": "compass", "checklist": "checklist", "text.quote": "speech", "number": "numbers",
+        "battery.75percent": "battery", "cloud.rain": "umbrella", "clock.arrow.2.circlepath": "dst",
+        "building.columns": "mosque", "moon.circle": "moon",
     ]
 
     static func of(_ symbol: String) -> String? {
-        guard let n = bySymbol[symbol], Icons3D.has(n) || LineIcons.all[n] != nil else { return nil }
+        guard let n = bySymbol[symbol], Icons3D.has(n) || LineIcons.all[n] != nil || DuoIcons.has(n) else { return nil }
         return n
     }
 
@@ -152,6 +237,17 @@ enum LineIconMap {
         }
     }
 
+    /// Sekmenin konu rengi (DUOTONE.md): Saat kiremit, Takvim adaçayı, Hava/Dünya/Mevsimler mavi, Vakitler altın, Tümü mor
+    static func tabColor(_ t: AppTab) -> Color {
+        switch t {
+        case .clock: Theme.terra
+        case .calendar: Theme.sage
+        case .weather, .world, .seasons: Theme.sky
+        case .prayer: Theme.gold
+        case .tools: Theme.dusk
+        }
+    }
+
     /// Tümü girişleri (aynı SF Symbol'ü paylaşan girişler ayrışsın diye kimliğe göre)
     static func entry(_ id: String) -> String? {
         let m: [String: String] = [
@@ -160,13 +256,17 @@ enum LineIconMap {
             "talking": "speaker", "exam": "paper", "classroom": "school", "timecalc": "calc", "calendar": "calendar",
             "leaf": "leafcal", "datecalc": "date", "planner": "people", "journal": "notebook", "bridge": "bridge",
             "retire": "beach", "weather": "sun_cloud", "world": "globe", "seasons": "leaf", "moon": "moon",
-            "sky": "telescope", "sunpath": "sunset", "zodiac": "milkyway", "prayer": "mosque", "qibla": "compass",
+            "sky": "telescope", "sunpath": "sunset", "photo": "aperture", "panchang": "sunrise", "greetN": "party", "zodiac": "milkyway", "prayer": "mosque", "qibla": "compass",
             "quran": "book", "zikir": "beads", "track": "checklist", "duas": "hands", "esma": "sparkles",
-            "hadith": "scroll", "guide": "kaaba", "reldays": "star_crescent", "greet": "love_letter", "zakat": "coin",
+            "hadith": "scroll", "guide": "guide", "reldays": "star_crescent", "greet": "love_letter", "zakat": "coin",
             "settings": "gear", "badges": "medal",
+            // Ayar arama girdileri (`s:` öneki atılır)
+            "appearance": "clock", "color": "palette", "dials": "dial", "widgets": "widgets", "homeItems": "homeitems",
+            "features": "features", "notifications": "bell", "language": "language", "about": "info", "shareQr": "qr",
+            "account": "account",
         ]
         let key = id.hasPrefix("s:") ? String(id.dropFirst(2)) : id
-        guard let n = m[key], Icons3D.has(n) || LineIcons.all[n] != nil else { return nil }
+        guard let n = m[key], Icons3D.has(n) || LineIcons.all[n] != nil || DuoIcons.has(n) else { return nil }
         return n
     }
 }

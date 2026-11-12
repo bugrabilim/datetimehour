@@ -11,17 +11,17 @@ import { hijriTable } from "../lib/hijri.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const EXT = path.join(ROOT, "extension");
-const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn"];
 // Chrome'un desteklediği _locales klasörleri (Azerice ve Urduca listede yok; o arayüzler İngilizce ad ve açıklamayı görür).
 // Çince klasörü zh_CN (Basitleştirilmiş).
-const CHROME_LOCALES = ["tr", "en", "de", "ar", "id", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
+const CHROME_LOCALES = ["tr", "en", "de", "ar", "id", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn"];
 const CHROME_DIR = (l) => (l === "zh" ? "zh_CN" : l === "pt" ? "pt_BR" : l);
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), "utf8"));
 const check = process.argv.includes("--check");
 
 const own = read("extension/strings.json");
 const app = read("mobile/shared/app-strings.json");
-const provinces = read("src/data/provinces.json").map((p) => [p.slug, p.name, p.lat, p.lon, p.ar || "", p.ru || "", p.fa || "", p.ja || "", p.ko || "", p.zh || "", p.th || "", p.hi || ""]);
+const provinces = read("src/data/provinces.json").map((p) => [p.slug, p.name, p.lat, p.lon, p.ar || "", p.ru || "", p.fa || "", p.ja || "", p.ko || "", p.zh || "", p.th || "", p.hi || "", p.bn || ""]);
 const hijri = hijriTable(read("src/data/holidays.json"), read("src/data/hijri.json"));
 const strings = Object.fromEntries(LANGS.map((l) => {
   const site = read(`src/i18n/${l}.json`);

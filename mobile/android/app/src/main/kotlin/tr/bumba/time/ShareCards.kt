@@ -42,6 +42,13 @@ object Share {
         send(context, f, "text/csv", title)
     }
 
+    /** JSON dosyası (hesabın "Verilerimi indir"i) */
+    fun json(context: Context, name: String, text: String, title: String) {
+        val f = File(dir(context), name)
+        f.writeText(text)
+        send(context, f, "application/json", title)
+    }
+
     fun image(context: Context, bitmap: Bitmap, name: String, title: String, text: String? = null) {
         val f = File(dir(context), name)
         f.outputStream().use { bitmap.compress(Bitmap.CompressFormat.PNG, 100, it) }

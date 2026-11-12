@@ -42,7 +42,10 @@ FEAT="prayer,weather" shoot tr tr_TR light tr-iki-ozellik -startTab 5
 FEAT="" shoot tr tr_TR light tr-kurulum -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>0</integer>"
 FEAT="" shoot tr tr_TR light tr-kurulum-guven -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>1</integer>"
 FEAT="" shoot tr tr_TR light tr-kurulum-soru -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>2</integer>"
-FEAT="" shoot en en_US light en-kurulum-soru-hava -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>3</integer>"
+# Vakitler'i sormayan dillerde (en) 4 soru ve 5 tur, namaz geçmez: 2 hava sorusu, 14 widget turu (9 Kasım 2026)
+FEAT="" shoot en en_US light en-kurulum -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>0</integer>"
+FEAT="" shoot en en_US light en-kurulum-soru-hava -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>2</integer>"
+FEAT="" shoot en en_US light en-kurulum-tur-widget -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>14</integer>"
 FEAT="" shoot ar ar_SA light ar-kurulum-soru -onboard.pending "<true/>" -onboard.fresh "<true/>" -onboardPage "<integer>6</integer>"
 FEAT="prayer,weather,calendar,tools" shoot tr tr_TR light tr-kurulum-ozet -onboard.pending "<true/>" -onboardPage "<integer>7</integer>"
 FEAT="" shoot tr tr_TR light tr-kurulum-daha -onboard.pending "<true/>" -onboardPage "<integer>8</integer>"
@@ -58,6 +61,8 @@ FEAT="" shoot tr tr_TR light tr-kuruluma-devam -onboard.resume "<true/>"
 # İzinler sayfası (5 Kasım 2026): durum, ne için, telefonun ayarlarına bağlantı
 shoot tr tr_TR light tr-izinler -openScreen permissions
 shoot hi hi_IN dark hi-izinler -openScreen permissions
+# Ayarlar › Hesap (üyelik aşama 1): girişsiz hâl
+shoot tr tr_TR light tr-hesap -openScreen account
 # Saat modelleri (sitedeki 20 model; -clockModel kimlik)
 for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal flip; do
   shoot tr tr_TR light "model-$M" -clockModel "$M"
@@ -82,9 +87,11 @@ shoot tr tr_TR light tr-araclar -startTab 6
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -startTab 5 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 # Alt ekranlar (doğrudan açılır)
-for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features qibla study wakegame language dials chess metronome talking zodiac timecalc bridge retire exam classroom; do
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features qibla study wakegame language dials chess metronome talking zodiac timecalc bridge retire exam classroom photo; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
+# Fotoğraf ışığı (9 Kasım 2026): Arapça, koyu (sağdan sola)
+shoot ar ar_SA dark ekran-photo-ar -openScreen photo
 shoot tr tr_TR dark ekran-about-koyu -openScreen about
 shoot tr tr_TR light ekran-renk-cocuk -openScreen settings -accent kid-purple
 shoot tr tr_TR light tr-renk-cocuk -accent kid-green

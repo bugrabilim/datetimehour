@@ -124,6 +124,8 @@ class ScreenshotTest {
     @Test fun spanish() = shot("es-vakitler", Tab.PRAYER, "es")
     @Test fun portuguese() = shot("pt-saat", Tab.CLOCK, "pt")
     @Test fun hindi() = shot("hi-takvim", Tab.CALENDAR, "hi")
+    // Dördüncü dalga (10 Kasım 2026): Bengalce
+    @Test fun bengali() = shot("bn-vakitler", Tab.PRAYER, "bn")
     // Araçlar alt sayfaları
     private fun tool(name: String, route: String) {
         RuntimeEnvironment.setQualifiers("+tr")
@@ -137,9 +139,12 @@ class ScreenshotTest {
     }
 
     @Test fun alarm() {
-        AlarmItem.save(listOf(AlarmItem(id = "a", hour = 7, minute = 0, days = AlarmItem.WEEKDAYS, snooze = 10),
-            AlarmItem(id = "b", hour = 9, minute = 30, label = "Spor", enabled = false)))
+        // Görevli ve güneşe bağlı alarm: listedeki iki tonlu görev ve güneş simgeleri (8 Kasım 2026)
+        AlarmItem.save(listOf(AlarmItem(id = "a", hour = 7, minute = 0, days = AlarmItem.WEEKDAYS, snooze = 10, task = "math", preAlarm = 10),
+            AlarmItem(id = "b", hour = 9, minute = 30, label = "Spor", enabled = false, task = "squat"),
+            AlarmItem(id = "c", hour = 6, minute = 0, label = "Sabah yürüyüşü", days = AlarmItem.WEEKDAYS, sun = "rise", task = "steps")))
         tool("tr-alarm", "alarm")
+        AlarmItem.save(emptyList())
     }
     @Test fun stopwatches() {
         // Ana kronometre durmuş, iki ek kronometre: biri sayıyor (Fırın), biri durmuş

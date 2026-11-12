@@ -1,13 +1,4 @@
-Jam & Tanggal menyatukan jam, jadwal salat, kalender, cuaca, dan alat sehari-hari dalam satu aplikasi yang rapi. Gratis, tanpa akun, tanpa iklan, dan tanpa pelacakan.
-
-DISIAPKAN UNTUK ANDA
-• Lima pertanyaan singkat saat pertama dibuka: jadwal salat, cuaca, kalender, jam dunia, musim. Bilah tab disusun dari jawaban Anda
-• Bagian yang tidak Anda pakai disembunyikan dan tidak mengirim notifikasi
-
-JAM
-• 21 model jam dan 25 muka jam analog; layar penuh dan mode malam merah redup
-• Tampilkan salat berikutnya, cuaca, tanggal, atau jam dunia di bawah jam
-• Widget layar utama dan layar kunci, komplikasi Apple Watch
+Jam & Tanggal menyatukan jadwal salat, kiblat, jam, kalender, cuaca, dan alat sehari-hari dalam satu aplikasi yang rapi. Gratis, tanpa akun, tanpa iklan, dan tanpa pelacakan.
 
 JADWAL SALAT DAN IBADAH
 • Jadwal salat di mana saja, dengan 14 metode perhitungan (Diyanet, MWL, ISNA, Umm al-Qura, dan lainnya) serta Asar Hanafi
@@ -16,8 +7,17 @@ JADWAL SALAT DAN IBADAH
 • Kompas kiblat dan masjid terdekat
 • Al-Qur'an berbahasa Arab, doa, Asmaul Husna, penghitung tasbih, pencatat salat dan puasa, kalkulator zakat
 
+DISIAPKAN UNTUK ANDA
+• Lima pertanyaan singkat saat pertama dibuka: jadwal salat, cuaca, kalender, jam dunia, musim. Bilah tab disusun dari jawaban Anda
+• Bagian yang tidak Anda pakai disembunyikan dan tidak mengirim notifikasi
+
+JAM
+• 21 model jam dan 25 muka jam analog; layar penuh dan mode malam merah redup
+• Tampilkan salat berikutnya, cuaca, tanggal, atau jam dunia di bawah jam
+• Widget Layar Utama dan Layar Terkunci, komplikasi Apple Watch
+
 KALENDER DAN CUACA
-• Hari libur Turki dan 30 negara lain, hari keagamaan dan hari istimewa, berdampingan dengan kalender di ponsel Anda
+• Hari libur Turki dan 32 negara lain, hari keagamaan dan hari istimewa, berdampingan dengan kalender di ponsel Anda
 • Kalender Hijriah dan pengonversi
 • Prakiraan per jam dan 10 hari, kualitas udara, serta layar yang berubah mengikuti cuaca
 
@@ -35,6 +35,6 @@ ALAT
 PRIVASI
 Tanpa akun, tanpa iklan, tanpa pelacakan. Lokasi Anda tetap di ponsel untuk jadwal salat; hanya untuk cuaca dan masjid terdekat, lokasi perkiraan dikirim ke layanan terkait (Apple, Open-Meteo), tidak pernah identitas Anda. Lihat dan matikan setiap izin di Pengaturan › Izin.
 
-Dalam 18 bahasa. Untuk iPhone, iPad, dan Apple Watch.
+Dalam 19 bahasa. Untuk iPhone, iPad, dan Apple Watch.
 
 Jam & Tanggal adalah produk Bumba Life. Web: time.bumba.tr

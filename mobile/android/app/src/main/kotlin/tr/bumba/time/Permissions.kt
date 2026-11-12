@@ -68,13 +68,13 @@ object AppPermissions {
             { (it.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).canUseFullScreenIntent() },
             { c -> Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT, pkg(c)) }))
         add(Item("calendar", "calendar", { has(it, Manifest.permission.READ_CALENDAR) }, ::appDetails))
-        add(Item("mic", "speech", { has(it, Manifest.permission.RECORD_AUDIO) }, ::appDetails))
+        add(Item("mic", "mic", { has(it, Manifest.permission.RECORD_AUDIO) }, ::appDetails))
         add(Item("health", "heart", { HealthLog.enabled }) { c ->
             runCatching { Intent("androidx.health.ACTION_HEALTH_CONNECT_SETTINGS") }.getOrElse { appDetails(c) }
         })
-        add(Item("overlay", "sliders", { Settings.canDrawOverlays(it) }) { c -> Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, pkg(c)) })
+        add(Item("overlay", "overlay", { Settings.canDrawOverlays(it) }) { c -> Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, pkg(c)) })
         add(Item("usage", "chart", { FocusBlock.hasUsageAccess(it) }) { Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS) })
-        add(Item("dnd", "halfmoon", { (it.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).isNotificationPolicyAccessGranted }) {
+        add(Item("dnd", "moon", { (it.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).isNotificationPolicyAccessGranted }) {
             Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
         })
     }
@@ -115,18 +115,18 @@ fun PermissionsScreen() {
     }
 }
 
-/** İzin satırı: 3D simge, ad, ne için; sağda durum (Açık / Kapalı) */
+/** İzin satırı: iki tonlu simge (adaçayı), ad, ne için; sağda durum (Açık / Kapalı) */
 @Composable
 private fun PermissionRow(id: String, icon: String, on: Boolean, onClick: () -> Unit) {
     Row(
         Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        LineIcon(icon, 30.dp)
+        DuoChip(icon, Theme.c.sage)
         Spacer(Modifier.width(12.dp))
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
             Text(L("perms.$id.title"), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
-            Text(L("perms.$id.why"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
+            Text(Onboarding.permWhy(id), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
         }
         Spacer(Modifier.width(10.dp))
         Text(

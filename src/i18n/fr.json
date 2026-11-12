@@ -45,6 +45,7 @@
     "settings": "Paramètres",
     "theme": "Thème clair / sombre",
     "placeChange": "Changer de lieu",
+    "placeSearch": "Rechercher une ville",
     "placeTitle": "Votre lieu",
     "placeNote": "Votre lieu reste sur votre appareil et est utilisé sur toutes les pages pour les heures de prière, les saisons et la météo ; il n’est pas envoyé au serveur.",
     "placeClose": "Fermer",
@@ -233,7 +234,7 @@
       },
       {
         "q": "Comment changer le style de l’horloge ?",
-        "a": "Faites glisser l’horloge vers la gauche ou la droite ; sur ordinateur, utilisez les points en dessous ou les flèches du clavier. Les styles comprennent des horloges analogiques classiques et épurées, numériques, analogiques et numériques à la fois, avec ou sans date, avec calendrier mensuel, une horloge à palettes, une horloge en toutes lettres, une horloge à anneaux et une grande date. Votre choix est mémorisé sur cet appareil."
+        "a": "Faites glisser l’horloge vers la gauche ou la droite, ou utilisez les flèches en dessous ; vous pouvez aussi toucher le numéro du style pour choisir dans une liste. Sur ordinateur, les flèches du clavier fonctionnent aussi. Outre l’horloge analogique à chiffres, l’horloge numérique et l’analogique avec numérique, il existe des styles avec date, météo, calendrier mensuel ou disposition côte à côte, ainsi qu’une horloge à palettes, un hologramme, une horloge Matrix et une horloge mathématique. Votre choix est mémorisé sur cet appareil."
       },
       {
         "q": "Comment afficher l’horloge en plein écran ?",
@@ -245,7 +246,7 @@
       },
       {
         "q": "Où voir les jours fériés turcs et le Ramadan ?",
-        "a": "La page du calendrier annuel réunit les jours fériés, les jours de bayram et leurs veilles, les nuits de kandil et le mois de Ramadan. La section « Jours à venir » en haut de la page indique combien de jours il reste avant la prochaine fête."
+        "a": "La page du calendrier annuel réunit les jours fériés, les jours de bayram et leurs veilles, les nuits de kandil et le mois de Ramadan."
       }
     ],
     "upcomingHeading": "Jours fériés et dates particulières à venir",
@@ -319,7 +320,7 @@
     "title": "Politique de confidentialité et de cookies | Saat Tarih",
     "description": "Données traitées par Saat Tarih : cookies, stockage local, statistiques Umami, liste de diffusion et vos droits selon la loi turque sur les données (KVKK).",
     "h1": "Politique de confidentialité et de cookies",
-    "lead": "Cette page explique quelles données sont traitées lorsque vous utilisez Saat Tarih, pourquoi, et quels sont vos droits. Le site ne collecte que le nécessaire : pas de compte, pas de publicité, aucun cookie ; les statistiques et les services externes ne fonctionnent qu’avec votre autorisation.",
+    "lead": "Cette page explique quelles données sont traitées lorsque vous utilisez Saat Tarih, pourquoi, et quels sont vos droits. Le site ne collecte que le nécessaire : pas de publicité, un compte facultatif et un seul cookie nécessaire, qui retient votre choix de cookies ; les statistiques et les services externes ne fonctionnent qu’avec votre autorisation.",
     "sections": [
       {
         "id": "controller",
@@ -334,7 +335,7 @@
         "ul": [
           "**Heure et date :** l’heure et le fuseau horaire de votre appareil sont lus et calculés uniquement dans votre navigateur. Ils ne sont ni envoyés à un serveur ni conservés.",
           "**Lieu (heures de prière) :** si vous appuyez sur « Utiliser ma position » sur la page des heures de prière, votre navigateur utilise votre position uniquement sur votre appareil pour calculer les heures. Les coordonnées ne sont ni envoyées au serveur ni incluses dans les statistiques ; votre dernier choix reste dans le stockage local de votre navigateur.",
-          "**Météo (service externe, avec autorisation) :** si vous avez autorisé les services externes dans les préférences de cookies, la page météo et les styles d’horloge avec météo envoient les coordonnées approximatives de la province ou du lieu choisi (à environ 1 km près) directement depuis votre navigateur à Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), qui fournit les données ; votre adresse IP parvient aussi à Open-Meteo. Sans autorisation, aucune requête n’est faite et une courte note s’affiche à la place. Le serveur de Saat Tarih ne voit ni ne conserve ces coordonnées ; les conditions de confidentialité d’Open-Meteo s’appliquent.",
+          "**Météo (service externe, avec autorisation) :** si vous avez autorisé les services externes dans les préférences de cookies, la page météo et les styles d’horloge avec météo envoient les coordonnées approximatives de la province ou du lieu choisi (à environ 1 km près) directement depuis votre navigateur à Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), qui fournit les données ; votre adresse IP parvient aussi à Open-Meteo. Sans autorisation, aucune requête n’est faite et une courte note s’affiche à la place. Le serveur de Saat Tarih ne voit ni ne conserve ces coordonnées ; les conditions de confidentialité d’Open-Meteo s’appliquent. La prévision des nuages de la page Lumière photo est elle aussi chargée depuis Open-Meteo, avec la même autorisation et les mêmes coordonnées approximatives (deux décimales).",
           "**Carte (globe, service externe, avec autorisation) :** si vous avez autorisé les services externes dans les préférences de cookies et que vous zoomez sur le globe de la page d’accueil au-delà d’un certain niveau, les tuiles de la carte sont téléchargées directement dans votre navigateur depuis le serveur d’OpenStreetMap (tile.openstreetmap.org) ; votre adresse IP et les adresses des tuiles de la zone que vous regardez parviennent alors à la Fondation OpenStreetMap. Sans autorisation, ou tant que le globe est dézoomé, cette requête n’est pas faite. Le serveur de Saat Tarih ne les voit pas ; les conditions de confidentialité d’OpenStreetMap s’appliquent.",
           "**Qibla et mosquées proches :** la direction de la qibla, la distance et l’heure de la qibla sont calculées dans votre navigateur. Pour la boussole, le capteur d’orientation de votre téléphone est lu uniquement dans le navigateur (l’iPhone demande l’autorisation) et n’est jamais transmis. Si vous appuyez sur « Afficher les mosquées » et avez autorisé les services externes, les coordonnées du lieu choisi arrondies à deux décimales (environ 1 km) sont envoyées depuis votre navigateur au service Overpass (overpass-api.de), qui fournit les données OpenStreetMap ; votre adresse IP parvient aussi à ce service. Le serveur de Saat Tarih ne voit pas ces coordonnées.",
           "**Musique de réveil (YouTube, service externe, avec autorisation) :** si vous ajoutez un lien YouTube à une alarme dans l’outil de réveil et avez autorisé les services externes, la vidéo est chargée dans votre navigateur quand l’alarme sonne, avec le lecteur en mode confidentialité renforcée de YouTube (youtube-nocookie.com) ; votre adresse IP et l’identifiant de la vidéo parviennent alors à Google (YouTube), et le lecteur peut enregistrer ses propres données dans votre navigateur. Le lien reste uniquement dans ce navigateur, avec votre alarme. Sans autorisation, le lecteur n’est pas chargé et l’alarme sonne avec son propre son. Le serveur de Saat Tarih ne voit pas ces données ; les conditions de confidentialité de YouTube (Google) s’appliquent.",
@@ -353,7 +354,7 @@
         ],
         "ul": [
           "**Lieu :** si vous touchez « Utiliser ma position », votre position sert sur votre téléphone à calculer les heures de prière et à trouver la province la plus proche ; une position approximative (environ 1 km) est conservée uniquement sur votre téléphone. L’option « Automatique » des widgets utilise elle aussi votre position uniquement sur le téléphone.",
-          "**Météo :** la météo de l’application provient d’Apple Météo (WeatherKit) ; pour cela, les coordonnées approximatives de la province choisie ou de votre position sont envoyées à Apple. Nous ne voyons jamais ces données ; les conditions de confidentialité d’Apple s’appliquent. La qualité de l'air, le pollen, la comparaison des modèles et la complication météo de l'Apple Watch proviennent d'Open-Meteo (open-meteo.com) ; pour cela, des coordonnées arrondies à deux décimales sont envoyées. Si la météo sur l'écran verrouillé est activée, elle est aussi récupérée en arrière-plan quand iOS le permet.",
+          "**Météo :** la météo de l’application provient d’Apple Météo (WeatherKit) ; pour cela, les coordonnées approximatives de la province choisie ou de votre position sont envoyées à Apple. Nous ne voyons jamais ces données ; les conditions de confidentialité d’Apple s’appliquent. La qualité de l'air, le pollen, la comparaison des modèles et la complication météo de l'Apple Watch proviennent d'Open-Meteo (open-meteo.com) ; pour cela, des coordonnées arrondies à deux décimales sont envoyées. Si la météo sur l'écran verrouillé est activée, elle est aussi récupérée en arrière-plan quand iOS le permet. La prévision des nuages de l’écran Lumière photo provient elle aussi d’Open-Meteo ; là aussi, les coordonnées sont arrondies à deux décimales.",
           "**Carte :** le globe de l’horloge mondiale est affiché avec Apple Plans ; les images de carte sont téléchargées depuis Apple.",
           "**Calendrier :** uniquement si vous l’autorisez, les événements des calendriers de votre téléphone s’affichent dans l’application ; ils sont lus sur le téléphone et ne sont jamais transmis. L’ajout et la suppression d’événements passent par l’écran de calendrier de l’iPhone et uniquement avec votre confirmation.",
           "**Notifications et alarmes :** les notifications des heures de prière ; les notifications de jours particuliers, de début de saison, de phase de la Lune, de lever et coucher du soleil, de résumé météo du matin, d’heure pile et de changement d’heure (toutes activées par défaut sauf l’heure pile ; modifiables dans Réglages › Notifications) ; les alarmes et minuteurs sont programmés sur votre téléphone sans aucun serveur. Seul le résumé météo interroge le service météo (voir ci-dessus). La liste est tenue à jour grâce à l’actualisation en arrière-plan d’iOS ; les annonces vocales sont produites sur votre téléphone.",
@@ -364,7 +365,7 @@
           "**Préférences :** les préférences comme le modèle d’horloge, la province et les horloges mondiales sont conservées uniquement sur votre téléphone et supprimées avec l’application.",
           "**Qibla et mosquées proches :** la direction de la qibla est calculée sur le téléphone ; la boussole utilise le capteur d’orientation (avec l’autorisation de localisation, la position sert aussi sur le téléphone à trouver le nord géographique). Sur l’écran « Mosquées proches », la recherche utilise Apple Plans : le mot recherché (« mosquée ») et le centre de la zone arrondi à deux décimales sont envoyés à Apple ; les conditions de confidentialité d’Apple s’appliquent. Sur l'écran qibla, la ligne vers la Kaaba s'affiche sur Apple Plans ; les images de carte de votre zone sont téléchargées depuis Apple.",
           "**Apple Watch, Siri et écran verrouillé :** l’application Apple Watch calcule les heures de prière sur la montre ; si « Lieu de l’iPhone » est choisi, le nom et les coordonnées du lieu sont envoyés de l’iPhone à la montre (WatchConnectivity d’Apple) et nulle part ailleurs ; si « Ma position » est choisi sur la montre, la position n’est utilisée que sur la montre. Les actions Siri et Raccourcis (minuteur, alarme, horloge plein écran, prochaine prière, date) s’exécutent sur le téléphone ; Apple traite les requêtes vocales. Les activités en direct de l’écran verrouillé (compteurs, prochaine prière) sont créées sur le téléphone.",
-          "**Appareil photo, sommeil et concentration :** pour lire le code QR ou le code-barres de la tâche d’arrêt d’une alarme, l’appareil photo ne s’ouvre que pendant l’enregistrement du code et l’arrêt de l’alarme (l’autorisation est demandée la première fois) ; l’image est traitée sur l’appareil, ni conservée ni envoyée, et seule la valeur lue est gardée sur l’appareil avec l’alarme. Les tâches « secouer » et « pas » utilisent le capteur de mouvement uniquement pendant que l’écran de la tâche est ouvert ; les pas ne sont pas enregistrés. L’historique pomodoro (jour, minutes, nom de tâche) et le programme de sommeil restent uniquement sur l’appareil ; les bruits pomodoro et les sons de sommeil sont produits sur l’appareil. Réveil intelligent : si vous lancez une session dans l’écran Sommeil, le capteur de mouvement (accéléromètre) est lu pendant la plage du réveil intelligent et l’alarme sonne plus tôt dès que des signes de sommeil léger apparaissent ; les données de mouvement restent uniquement en mémoire et ne sont ni conservées ni envoyées. Il n’y a pas de suivi du sommeil (phases, enregistrements) et le micro n’est pas utilisé pour le sommeil. La photo de la tâche « trouver un objet » (reconnue avec Apple Vision), l'image de la vue caméra de la qibla et le micro de la tâche de lecture à voix haute (reconnaissance vocale sur l'appareil uniquement) ne servent que lorsque cet écran est ouvert ; tout est traité sur l'appareil, ni enregistré ni envoyé. Le style de boussole et les mosquées favorites sont enregistrés sur l'appareil et, si la synchronisation iCloud est activée, synchronisés entre vos propres appareils.",
+          "**Appareil photo, sommeil et concentration :** pour lire le code QR ou le code-barres de la tâche d’arrêt d’une alarme, l’appareil photo ne s’ouvre que pendant l’enregistrement du code et l’arrêt de l’alarme (l’autorisation est demandée la première fois) ; l’image est traitée sur l’appareil, ni conservée ni envoyée, et seule la valeur lue est gardée sur l’appareil avec l’alarme. Les tâches « secouer » et « pas » utilisent le capteur de mouvement uniquement pendant que l’écran de la tâche est ouvert ; les pas ne sont pas enregistrés. L’historique pomodoro (jour, minutes, nom de tâche) et le programme de sommeil restent sur l’appareil ; les bruits pomodoro et les sons de sommeil sont produits sur l’appareil. Réveil intelligent : si vous lancez une session dans l’écran Sommeil, le capteur de mouvement (accéléromètre) est lu pendant la plage du réveil intelligent et l’alarme sonne plus tôt dès que des signes de sommeil léger apparaissent ; les données de mouvement restent uniquement en mémoire et ne sont ni conservées ni envoyées. Il n’y a pas de suivi du sommeil (phases, enregistrements) et le micro n’est pas utilisé pour le sommeil. La photo de la tâche « trouver un objet » (reconnue avec Apple Vision), l'image de la vue caméra de la qibla et le micro de la tâche de lecture à voix haute (reconnaissance vocale sur l'appareil uniquement) ne servent que lorsque cet écran est ouvert ; tout est traité sur l'appareil, ni enregistré ni envoyé. Le style de boussole et les mosquées favorites sont enregistrés sur l'appareil et, si la synchronisation iCloud est activée, synchronisés entre vos propres appareils.",
           "**Culte :** votre marque-page du Coran, la taille du texte, les compteurs de dhikr, le suivi des prières et du jeûne (prières accomplies, compteurs de rattrapage, jours jeûnés) et les montants saisis dans le calcul de la zakat restent uniquement sur l’appareil ; ils ne sont pas transmis et ne servent ni aux statistiques ni aux badges. Le texte du Coran et les invocations sont inclus dans l’application. Le lien vers le site de traduction turque du Coran de la Diyanet ouvre ce site dans votre navigateur. Vous saisissez vous-même le prix de l’or pour la zakat ; l’application ne récupère aucun prix.",
           "**Synchronisation iCloud :** si « Synchroniser avec iCloud » est activé dans les réglages (par défaut), les réglages, horloges mondiales, comptes à rebours, lieux enregistrés, données pomodoro et sommeil et données de culte sont synchronisés via le stockage clé-valeur iCloud d’Apple entre l’iPhone, l’iPad et le Mac connectés au même compte Apple. Ces données restent dans votre compte iCloud selon les conditions d’Apple ; nous n’y avons pas accès et elles n’atteignent jamais nos serveurs. Le lieu, les alarmes, les minuteurs en cours, les réglages de notification, les badges et les photos ne sont pas synchronisés. Désactiver l’option arrête la synchronisation sur cet appareil.",
           "**Santé, journal du matin, photo d’alarme et horloge flottante :** si vous activez « Enregistrer dans Santé », chaque entraînement fractionné terminé est inscrit dans l’app Santé comme entraînement (type, début, durée) ; l’application ne lit pas vos données de santé et ces données ne sont envoyées à aucun serveur. Le journal du matin (humeur, sommeil, intention, note) reste uniquement sur vos appareils (sur ceux de votre compte Apple si la synchronisation iCloud est activée). Pour la tâche photo d’une alarme, la photo n’est pas conservée ; seul un très petit résumé (72 valeurs de gris) est gardé sur le téléphone pour la comparaison. La méthode de calcul, les alarmes aux heures de prière (iOS 26+) et les boutons du Centre de contrôle restent sur le téléphone. L’horloge flottante est une fenêtre en incrustation ; elle ne joue aucun son et n’envoie aucune donnée.",
@@ -380,7 +381,7 @@
         ],
         "ul": [
           "**Lieu :** si vous touchez « Utiliser ma position », seule l’autorisation de position approximative est demandée ; votre position sert sur le téléphone à calculer les heures de prière et à trouver la province ou le district le plus proche, et une position approximative (environ 1 km) est conservée uniquement sur le téléphone.",
-          "**Météo :** la météo de l’application provient d’Open-Meteo (open-meteo.com) ; pour cela, les coordonnées du lieu choisi, arrondies à deux décimales (environ 1 km), sont envoyées à Open-Meteo, et votre adresse IP parvient au serveur d’Open-Meteo avec la requête. Pour la météo des villes sur le globe, seules les coordonnées de ces villes sont envoyées. Les conditions de confidentialité d’Open-Meteo s’appliquent ; nous ne voyons jamais ces données. Si la météo dans la barre d'état est activée, cette requête est aussi envoyée toutes les heures en arrière-plan.",
+          "**Météo :** la météo de l’application provient d’Open-Meteo (open-meteo.com) ; pour cela, les coordonnées du lieu choisi, arrondies à deux décimales (environ 1 km), sont envoyées à Open-Meteo, et votre adresse IP parvient au serveur d’Open-Meteo avec la requête. Pour la météo des villes sur le globe, seules les coordonnées de ces villes sont envoyées. Les conditions de confidentialité d’Open-Meteo s’appliquent ; nous ne voyons jamais ces données. Si la météo dans la barre d'état est activée, cette requête est aussi envoyée toutes les heures en arrière-plan. Pour la prévision des nuages de l’écran Lumière photo, la même position approximative (deux décimales) est également envoyée à Open-Meteo.",
           "**Globe et carte :** le globe qui tourne est dessiné à partir d’une image incluse dans l’application ; aucun service de carte n’est contacté.",
           "**Calendrier :** l’autorisation d’accès au calendrier n’est demandée que si vous touchez « Afficher les calendriers de mon téléphone » ; les événements sont lus sur le téléphone et jamais transmis. Les événements sont ajoutés via l’application de calendrier du téléphone et supprimés uniquement avec votre confirmation.",
           "**Notifications, alarmes et entraînement fractionné :** les notifications des heures de prière et les autres types de notification (jours particuliers, début de saison, phase de la Lune, lever et coucher du soleil, résumé météo du matin, heure pile, changement d’heure ; toutes activées par défaut sauf l’heure pile, modifiables dans Réglages › Notifications), les alarmes et minuteurs sont programmés sur votre téléphone sans aucun serveur ; l’autorisation d’alarme exacte est utilisée pour qu’ils sonnent à l’heure. Pendant un entraînement fractionné que vous avez lancé, un service de premier plan visible dans la notification annonce les changements de phase avec la synthèse vocale du téléphone. Les annonces vocales sont produites sur votre téléphone.",
@@ -397,6 +398,14 @@
         ]
       },
       {
+        "id": "account",
+        "h": "Adhésion",
+        "p": [
+          "Aucun compte n'est nécessaire pour utiliser Saat Tarih. Si vous le souhaitez, vous pouvez ouvrir une adhésion Bumba sur le site (hesap.time.bumba.tr) et dans les applications avec votre adresse e-mail et un mot de passe ; la même adhésion fonctionne aussi dans les autres produits Bumba.",
+          "Les informations traitées par l'adhésion, leurs finalités, leur lieu de stockage et vos droits sont décrits dans la [notice de confidentialité commune de l'adhésion Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en) ; les règles figurent dans les [conditions d'adhésion](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Vous pouvez supprimer votre compte à tout moment : [Supprimer votre compte]({deleteUrl})."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Extension de navigateur",
         "p": [
@@ -407,7 +416,7 @@
         "id": "cookies",
         "h": "Cookies et stockage du navigateur",
         "p": [
-          "Saat Tarih ne dépose aucun cookie. Lors de votre première visite, un bandeau en bas de page vous demande l’autorisation pour les statistiques de visite (Umami) et les services externes (Open-Meteo, OpenStreetMap, YouTube) ; les deux restent désactivés tant que vous ne les autorisez pas. Vous pouvez modifier votre choix à tout moment avec le lien « Préférences de cookies » du menu des paramètres. Pour mémoriser vos choix, nous utilisons le stockage local de votre navigateur (localStorage) ; ces éléments font partie du groupe nécessaire, restent sur votre appareil et ne sont pas envoyés à un serveur. Vous pouvez les supprimer à tout moment dans les réglages du navigateur. Politique de cookies partagée de Bumba Group : [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Saat Tarih ne dépose qu’un seul cookie nécessaire : votre choix dans le bandeau cookies (bumba-cerez), pour que le bandeau ne réapparaisse pas sur les pages du compte (hesap.time.bumba.tr). Lors de votre première visite, un bandeau en bas de page vous demande l’autorisation pour les statistiques de visite (Umami) et les services externes (Open-Meteo, OpenStreetMap, YouTube) ; les deux restent désactivés tant que vous ne les autorisez pas. Vous pouvez modifier votre choix à tout moment avec le lien « Préférences de cookies » du menu des paramètres. Pour mémoriser vos choix, nous utilisons le stockage local de votre navigateur (localStorage) ; ces éléments font partie du groupe nécessaire, restent sur votre appareil et ne sont pas envoyés à un serveur. Vous pouvez les supprimer à tout moment dans les réglages du navigateur. Politique de cookies partagée de Bumba Group : [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -419,7 +428,7 @@
             [
               "bumba-cerez",
               "Mémorise votre choix dans le bandeau de cookies (statistiques et services externes) et la version de la politique.",
-              "Jusqu’à ce que vous le supprimiez"
+              "Dans le stockage local jusqu’à ce que vous le supprimiez ; en cookie, 1 an"
             ],
             [
               "sth-theme",
@@ -497,8 +506,13 @@
               "Jusqu’à ce que vous le supprimiez"
             ],
             [
+              "sth-cals",
+              "Mémorise les calendriers supplémentaires (par exemple le calendrier chrétien) que vous avez choisi d’afficher sur les pages du calendrier.",
+              "Jusqu’à ce que vous le supprimiez"
+            ],
+            [
               "sth-place",
-              "Mémorise la province ou le lieu choisi en dernier pour les pages heures de prière, nature et météo.",
+              "Mémorise la province ou le lieu choisi en dernier pour les pages heures de prière, saisons et météo.",
               "Jusqu’à ce que vous le supprimiez"
             ],
             [
@@ -601,7 +615,7 @@
     "pages": "Pages",
     "cities": "Pages des villes",
     "about": "À propos",
-    "aboutText": "L’heure est synchronisée avec l’horloge du serveur du site (indépendamment de l’horloge de l’appareil) ; le fuseau horaire est lu dans le navigateur et aucune donnée personnelle n’est envoyée. Disponible en dix-huit langues : turc, anglais, allemand, azerbaïdjanais, arabe, indonésien, ourdou, persan, français, russe, japonais, coréen, chinois, filipino, thaï, espagnol, portugais et hindi. Responsable du traitement : Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact : bilgi@bumbagroup.com."
+    "aboutText": "L’heure est synchronisée avec l’horloge du serveur du site (indépendamment de l’horloge de l’appareil) ; le fuseau horaire est lu dans le navigateur et aucune donnée personnelle n’est envoyée. Disponible en dix-neuf langues : turc, anglais, allemand, azerbaïdjanais, arabe, indonésien, ourdou, persan, français, russe, japonais, coréen, chinois, filipino, thaï, espagnol, portugais, hindi et bengali. Responsable du traitement : Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact : bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Styles d’horloge",
@@ -649,7 +663,7 @@
     "info": "À propos de la source de l’heure",
     "infoTitle": "D’où vient cette heure ?",
     "infoClose": "Fermer",
-    "infoSeconds": "Touchez l’horloge pour afficher ou masquer les secondes. Les secondes sont affichées au départ sur les horloges numériques et masquées sur les horloges analogiques.",
+    "infoSeconds": "Touchez l’horloge pour afficher ou masquer les secondes. Les secondes sont affichées au départ sur les horloges numériques comme analogiques.",
     "zoomIn": "Agrandir l'horloge",
     "zoomOut": "Réduire l'horloge"
   },
@@ -669,7 +683,7 @@
       "weekend": "Week-end",
       "today": "Aujourd’hui",
       "school": "Vacances ou date scolaire (MEB)",
-      "exam": "Examen ou date liée à un examen (ÖSYM, MEB, AÖF)"
+      "leave": "Jour de congé collectif"
     },
     "eventsHeading": "Liste des jours de {year}",
     "colDate": "Date",
@@ -766,37 +780,7 @@
       "schoolEnd": "Fin de l’année scolaire, remise des bulletins (MEB)",
       "teacherStart": "Début des activités professionnelles des enseignants (MEB)",
       "adaptation": "Début de la semaine d’adaptation en maternelle et en 1re année (MEB)",
-      "teacherEnd": "Début des activités de fin d’année des enseignants (MEB)",
-      "yksTyt": "YKS : épreuve TYT (ÖSYM)",
-      "yksAytYdt": "YKS : épreuves AYT et YDT (ÖSYM)",
-      "tryos": "TR-YÖS/2 : examen des étudiants internationaux (ÖSYM)",
-      "eyds1": "e-YDS 2026/11 (ÖSYM)",
-      "eyds2": "e-YDS 2026/12 (ÖSYM)",
-      "kpssOrta": "KPSS, niveau enseignement secondaire (ÖSYM)",
-      "kpssDhbt": "KPSS DHBT : test des services religieux (ÖSYM)",
-      "dus2": "DUS, 2e session : examen de spécialité en dentisterie (ÖSYM)",
-      "eus": "EUS : examen de spécialité en pharmacie (ÖSYM)",
-      "yds2": "YDS/2 : examen de langue étrangère (ÖSYM)",
-      "ales3": "ALES/3 : examen d’entrée en master et doctorat (ÖSYM)",
-      "alesApply": "Période d’inscription à l’ALES/3 (ÖSYM)",
-      "kpssOnResult": "Résultats du KPSS niveau bac+2 (ÖSYM)",
-      "kpssOrtaResult": "Résultats du KPSS niveau secondaire (ÖSYM)",
-      "ydsResult": "Résultats du YDS/2 (ÖSYM)",
-      "alesResult": "Résultats de l’ALES/3 (ÖSYM)",
-      "kpssTercih": "Vœux d’affectation KPSS-2026/2 (ÖSYM)",
-      "common1": "1er semestre, premières épreuves écrites communes (MEB)",
-      "common2": "1er semestre, secondes épreuves écrites communes (MEB)",
-      "common3": "2d semestre, premières épreuves écrites communes (MEB)",
-      "common4": "2d semestre, secondes épreuves écrites communes (MEB)",
-      "aolRegister": "Période d’inscription au lycée ouvert (AÖL) (MEB)",
-      "aolEsinav": "Période des examens en ligne de l’AÖL (MEB)",
-      "aolWritten": "Examen écrit de l’AÖL (MEB)",
-      "aolResult": "Résultats de la 1re session de l’AÖL (MEB)",
-      "aofMid1": "AÖF : partiel d’automne (Université Anadolu)",
-      "aofFinal1": "AÖF : examen final d’automne (Université Anadolu)",
-      "aofMid2": "AÖF : partiel de printemps (Université Anadolu)",
-      "aofFinal2": "AÖF : examen final de printemps (Université Anadolu)",
-      "aofSummer": "AÖF : examen de l’école d’été (Université Anadolu)"
+      "teacherEnd": "Début des activités de fin d’année des enseignants (MEB)"
     },
     "hubName": "Calendrier annuel",
     "hubDesc": "Jours fériés, jours de bayram et leurs veilles, nuits de kandil et mois de Ramadan.",
@@ -812,6 +796,8 @@
     "dayAgo": "Il y a {n} jours",
     "dayClose": "Fermer",
     "dayToList": "Voir dans la liste des jours",
+    "calsHeading": "Calendriers",
+    "calsLead": "Affichez aussi les fêtes et les jours d’autres calendriers. Votre choix reste uniquement dans ce navigateur.",
     "icsHeading": "Ajouter à votre calendrier",
     "icsHolidays": "Jours fériés et veilles",
     "icsDays": "Jours religieux et particuliers",
@@ -1002,6 +988,10 @@
         "classroom": {
           "name": "Outils de classe",
           "desc": "Noms au hasard, équipes et compteurs."
+        },
+        "photo": {
+          "name": "Lumière photo",
+          "desc": "Heure dorée, heure bleue et prévision photo du coucher."
         }
       },
       "infoHeading": "Pages d’information"
@@ -1674,22 +1664,6 @@
         "name": "la remise des bulletins",
         "dat": "la remise des bulletins"
       },
-      "yks": {
-        "name": "le YKS (examen d’entrée à l’université)",
-        "dat": "le YKS"
-      },
-      "kpss": {
-        "name": "le KPSS (examen de sélection de la fonction publique)",
-        "dat": "le KPSS"
-      },
-      "ales": {
-        "name": "l’ALES (examen d’entrée en master et doctorat)",
-        "dat": "l’ALES"
-      },
-      "yds": {
-        "name": "le YDS (examen de langue étrangère)",
-        "dat": "le YDS"
-      },
       "schoolStart": {
         "name": "la rentrée scolaire",
         "dat": "la rentrée scolaire"
@@ -1697,14 +1671,6 @@
       "midterm": {
         "name": "les vacances de mi-semestre",
         "dat": "la pause de mi-semestre"
-      },
-      "aof": {
-        "name": "les examens de l’AÖF (enseignement ouvert de l’Université Anadolu)",
-        "dat": "les examens de l’AÖF"
-      },
-      "aol": {
-        "name": "l’examen de l’AÖL (lycée ouvert)",
-        "dat": "l’examen de l’AÖL"
       },
       "feb14": {
         "name": "la Saint-Valentin",
@@ -1726,8 +1692,7 @@
         "name": "la Journée des enseignants",
         "dat": "la Journée des enseignants"
       }
-    },
-    "exam": "Les dates d’examen proviennent des annonces de l’ÖSYM, du MEB et de l’Université Anadolu, qui peuvent les modifier. Les dates non annoncées ne sont pas devinées ; elles sont ajoutées dès leur publication."
+    }
   },
   "datecalc": {
     "title": "Calcul de dates : jours, jours ouvrés, âge | Saat Tarih",
@@ -1785,7 +1750,7 @@
   },
   "embedgen": {
     "title": "Widget horloge gratuit à intégrer sur votre site | Saat Tarih",
-    "description": "Intégrez gratuitement une horloge à votre site : 13 styles, choix de la ville, thème clair ou sombre. Copiez le code iframe prêt à l’emploi et collez-le.",
+    "description": "Intégrez gratuitement une horloge à votre site : 20 styles, choix de la ville, thème clair ou sombre. Copiez le code iframe prêt à l’emploi et collez-le.",
     "h1": "Intégrer une horloge à votre site",
     "lead": "Choisissez le style, la ville et le thème, puis copiez le code iframe prêt à l’emploi et collez-le dans votre site. Le widget est sans publicité, n’utilise pas de cookies et fonctionne avec l’horloge synchronisée avec le serveur.",
     "modelLabel": "Style d’horloge",
@@ -1819,7 +1784,7 @@
       },
       {
         "q": "Le widget collecte-t-il les données de mes visiteurs ?",
-        "a": "Le widget ne dépose aucun cookie et ne collecte aucune donnée personnelle. Il envoie quelques petites requêtes au serveur pour afficher l’heure exacte ; les pages vues sont comptées dans des statistiques anonymes sans cookies."
+        "a": "Le widget ne dépose aucun cookie et ne collecte aucune donnée personnelle. Il envoie quelques petites requêtes au serveur pour afficher l’heure exacte ; le widget ne contient aucun script de statistiques et les pages vues ne sont pas comptées."
       }
     ],
     "sizeNote": "Les styles avec calendrier demandent une hauteur d’au moins 460 px ; les autres tiennent à l’aise dans 360 px.",
@@ -1831,7 +1796,7 @@
       "date": "Date et heure",
       "sun": "Lever et coucher du soleil"
     },
-    "lineNote": "Le script affiche seulement l'heure ; il ne dépose aucun cookie et n'envoie aucune donnée. Le fuseau vient de la ville.",
+    "lineNote": "Le script affiche seulement le texte choisi (l'heure, la date ou le lever et le coucher du soleil) ; il ne dépose aucun cookie et n'envoie aucune donnée. Le fuseau vient de la ville.",
     "linePreview": "Aperçu"
   },
   "embed": {
@@ -1964,9 +1929,14 @@
         "kuwait": "Koweït",
         "qatar": "Qatar",
         "singapore": "Singapour",
+        "kemenag": "Kemenag (ministère des Affaires religieuses, Indonésie)",
         "france": "France (UOIF)",
         "russia": "Direction spirituelle des musulmans de Russie"
-      }
+      },
+      "region": "selon votre région",
+      "kemenagNote": "La méthode Kemenag vaut pour les lieux de faible altitude : en altitude (au-dessus d’environ 600 m), Kemenag publie le lever du soleil et le maghrib avec 4 à 5 minutes d’écart. L’imsak est 10 minutes avant le fajr, par précaution.",
+      "rowImsak": "Imsak",
+      "rowDuha": "Duha"
     },
     "ezani": "Heure ezani (alla turca) : {t}",
     "ezaniNote": "Dans l'heure ezani (alla turca), la prière du soir (coucher du soleil) vaut 12 h 00 ; on compte à partir de là."
@@ -2032,6 +2002,7 @@
     "eclipseHere": "{place} : la Lune est alors au-dessus de l’horizon, l’éclipse est donc visible d’ici.",
     "eclipseNotHere": "{place} : la Lune est alors sous l’horizon.",
     "eclipseSafety": "Ne regardez jamais une éclipse de Soleil à l’œil nu ou avec des lunettes de soleil ordinaires ; utilisez des lunettes d’éclipse certifiées ISO 12312-2.",
+    "eclipsePrayer": "Pendant les éclipses, on accomplit la prière de l’éclipse : salat al-kusuf pour le Soleil, salat al-khusuf pour la Lune.",
     "eclipseSource": "Source : NASA Eclipse Web Site (Fred Espenak, NASA/GSFC).",
     "chartHeading": "Durée du jour au fil de l’année",
     "chartCaption": "{place} : durée du jour (heures), {year}",
@@ -2279,7 +2250,7 @@
       },
       {
         "q": "Puis-je voir la météo sur l’horloge plein écran ?",
-        "a": "Oui. En plein écran, le bouton météo de la barre qui apparaît lorsque vous touchez l’écran affiche la météo du lieu choisi à côté de l’horloge."
+        "a": "Oui. Sur la page d’accueil, faites défiler jusqu’à un style d’horloge avec la météo, puis passez en plein écran ; la météo du lieu choisi s’affiche à côté de l’horloge."
       }
     ],
     "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin météo prévisions température pluie vent humidité demain cette semaine",
@@ -2415,6 +2386,9 @@
     "time": "Heure de la qibla",
     "timeNote": "À cette heure, le Soleil est exactement dans la direction de la qibla : faire face au Soleil, c’est faire face à la qibla.",
     "noTime": "Aujourd’hui, le Soleil ne passe pas par la direction de la qibla.",
+    "rashdul": "Le Soleil au-dessus de la Kaaba",
+    "rashdulNote": "Deux fois par an, le Soleil passe exactement au-dessus de la Kaaba. À cet instant, partout où le Soleil est visible, se tourner vers le Soleil revient à se tourner vers la qibla ; l’ombre d’un bâton vertical pointe exactement à l’opposé de la qibla.",
+    "rashdulNight": "À cet instant, le Soleil est sous l’horizon au lieu choisi ; vous pouvez utiliser l’heure de la qibla du jour.",
     "start": "Démarrer la boussole",
     "aligned": "Vous faites face à la qibla",
     "turn": "Tenez le téléphone à plat et tournez-vous vers la flèche",
@@ -2642,10 +2616,10 @@
     ]
   },
   "worldHol": {
-    "hubTitle": "Jours fériés par pays 2026–2028 | Saat Tarih",
+    "hubTitle": "Jours fériés par pays 2024–2032 | Saat Tarih",
     "hubDescription": "Jours fériés en Allemagne, au Royaume-Uni, aux États-Unis, aux Pays-Bas, en France et dans 25 autres pays : dates, prochain jour férié et jours restants.",
     "hubH1": "Jours fériés par pays",
-    "hubLead": "Les jours fériés nationaux de 30 pays et les jours restants avant le prochain.",
+    "hubLead": "Les jours fériés nationaux de 32 pays et les jours restants avant le prochain.",
     "hubSearch": "public holidays country germany uk us netherlands france bank holidays calendar resmi tatil jours fériés pays calendrier",
     "colCountry": "Pays",
     "colNext": "Prochain jour férié",
@@ -2673,9 +2647,13 @@
     "faq": [
       {
         "q": "Pour quels pays les jours fériés sont-ils indiqués ?",
-        "a": "Cette section liste les jours fériés nationaux de 30 pays : l’Allemagne, le Royaume-Uni, la France, les Pays-Bas, la Belgique, l’Autriche, la Suisse et d’autres en Europe, ainsi que les États-Unis, le Canada, le Brésil, l’Australie, le Japon, la Chine, la Russie, la Géorgie, Singapour et l’Afrique du Sud. Les jours fériés turcs figurent sur les pages du calendrier annuel."
+        "a": "Cette section liste les jours fériés nationaux de 32 pays : l’Allemagne, le Royaume-Uni, la France, les Pays-Bas, la Belgique, l’Autriche, la Suisse et d’autres en Europe, ainsi que les États-Unis, le Canada, le Brésil, l’Australie, le Japon, la Chine, la Russie, la Géorgie, Singapour et l’Afrique du Sud. Les jours fériés turcs figurent sur les pages du calendrier annuel. Les jours fériés de l’Indonésie et de l’Inde proviennent des listes officielles des gouvernements (SKB 3 Menteri et DoPT)."
       }
-    ]
+    ],
+    "leaveNote": "Les jours de congé collectif (cuti bersama) sont chômés pour les fonctionnaires ; dans le privé, ils sont déduits des congés annuels et dépendent de l’employeur. Ils ne comptent pas comme jours fériés.",
+    "inNote": "Jours de fermeture des administrations centrales à Delhi et New Delhi (DoPT). Les jours fériés des États diffèrent ; les fêtes islamiques peuvent se décaler d’un jour selon l’observation du croissant.",
+    "officialSource": "Source : {source}, vérifiée le {date}. Les dates peuvent changer ; seule l’annonce officielle fait foi.",
+    "officialNote": "Les jours fériés de l’Indonésie et de l’Inde proviennent des listes officielles des gouvernements (SKB 3 Menteri et DoPT)."
   },
   "zakat": {
     "title": "Calcul de la zakat : nisab et montant à payer | Saat Tarih",
@@ -2725,7 +2703,14 @@
     "fitreText": "La Présidence des affaires religieuses de Turquie (Haut Conseil des affaires religieuses) a fixé la fitra {year} à {amount} TL par personne ({date}), valable du Ramadan {year} jusqu’au Ramadan suivant.",
     "fitrePeople": "Nombre de personnes (y compris les personnes à charge)",
     "fitreTotal": "Fitra totale",
-    "fitreNote": "Le montant vaut pour la Turquie et constitue un minimum ; ceux qui en ont les moyens peuvent donner davantage (selon la mesure de dattes ou de raisins secs). La fitra se donne avant la prière de l’Aïd."
+    "fitreNote": "Le montant vaut pour la Turquie et constitue un minimum ; ceux qui en ont les moyens peuvent donner davantage (selon la mesure de dattes ou de raisins secs). La fitra se donne avant la prière de l’Aïd.",
+    "stdLabel": "Base de calcul",
+    "stdDiyanet": "Diyanet (Turquie) : nisab de 80,18 g d’or",
+    "stdBaznas": "BAZNAS (Indonésie) : nisab de 85 g d’or",
+    "noteBaznas": "Le calcul suit les règles de BAZNAS : nisab de 85 grammes d’or, taux de 2,5 % (un quarantième) ; une année lunaire doit s’être écoulée sur les biens. Pour un avis certain, consultez BAZNAS ou un savant.",
+    "fitrahHeading": "Zakat al-fitr (BAZNAS)",
+    "fitrahText": "BAZNAS a fixé la zakat al-fitr {year} à {amount} par personne, soit environ 2,5 kg ou 3,5 litres de riz. Les bureaux provinciaux et de district de BAZNAS peuvent fixer un autre montant selon le prix local du riz.",
+    "fidyahText": "Fidya pour les personnes qui ne peuvent pas jeûner (BAZNAS {year}) : {amount} par personne et par jour."
   },
   "api": {
     "title": "API ouverte : jours fériés, heures de prière, hégire | Saat Tarih",
@@ -2815,7 +2800,15 @@
       }
     ],
     "rumi": "Rumi (ottoman) : {date}",
-    "rumiNote": "La date rumi suit le calendrier julien (13 jours de retard) avec une année commençant le 1er mars, comme dans les almanachs turcs traditionnels."
+    "rumiNote": "La date rumi suit le calendrier julien (13 jours de retard) avec une année commençant le 1er mars, comme dans les almanachs turcs traditionnels.",
+    "calLabel": "Calendrier hégirien",
+    "calDiyanet": "Diyanet (Turquie)",
+    "calKemenag": "Kemenag (Indonésie)",
+    "offLabel": "Ajustement du début du mois",
+    "offM1": "1 jour plus tôt",
+    "off0": "Aucun ajustement",
+    "offP1": "1 jour plus tard",
+    "calNote": "Le début d'un mois hégirien peut varier d'un jour selon les pays. Le calendrier indonésien suit les dates annoncées par Kemenag et, pour les mois pas encore annoncés, un calcul selon le critère MABIMS. Là où le croissant est généralement vu un jour plus tard, comme en Inde ou au Pakistan, vous pouvez choisir « 1 jour plus tard »."
   },
   "timeCalc": {
     "title": "Calcul d’heures : addition, soustraction, durée | Saat Tarih",
@@ -3059,7 +3052,7 @@
     "tableHeading": "Dates des signes",
     "colSign": "Signe",
     "colDates": "Dates (approximatives)",
-    "fun": "L’astrologie est un divertissement sans fondement scientifique. Le calcul, lui, est astronomique : la longitude écliptique du Soleil et de la Lune (zodiaque tropical).",
+    "fun": "L’astrologie est un divertissement sans fondement scientifique. Le calcul, lui, est astronomique : la longitude écliptique du Soleil et de la Lune (zodiaque tropical). Les signes sidéraux (nirayana) de la tradition indienne sont décalés d’environ 24° et tombent donc souvent un signe plus tôt.",
     "faq": [
       {
         "q": "Pourquoi les limites des signes varient-elles un peu chaque année ?",
@@ -3326,6 +3319,168 @@
       {
         "q": "Les noms des élèves sont-ils envoyés quelque part ?",
         "a": "Non. Les noms, équipes et compteurs sont enregistrés uniquement dans ce navigateur ; ils ne sont envoyés à aucun serveur et n'entrent pas dans les statistiques."
+      }
+    ]
+  },
+  "photo": {
+    "title": "Heure dorée et heure bleue aujourd’hui : lumière photo | Saat Tarih",
+    "description": "Heure dorée et heure bleue pour votre lieu, direction du lever et du coucher du soleil, lever et phase de la Lune, et prévision photo sur 7 jours selon les nuages.",
+    "h1": "Lumière photo : heure dorée et heure bleue",
+    "lead": "La lumière du jour pour les photographes sur une seule page : heure bleue et heure dorée du matin et du soir, heure et direction du lever et du coucher du soleil, la Lune et une prévision photo du lever et du coucher selon les nuages.",
+    "search": "heure dorée heure bleue lumière photo photographie lever du soleil coucher du soleil direction azimut lever de lune prévision nuages golden hour blue hour",
+    "dateLabel": "Date",
+    "prev": "Jour précédent",
+    "next": "Jour suivant",
+    "today": "Aujourd’hui",
+    "morning": "Matin",
+    "evening": "Soir",
+    "blue": "Heure bleue",
+    "golden": "Heure dorée",
+    "sunrise": "Lever du soleil",
+    "sunset": "Coucher du soleil",
+    "direction": "Direction",
+    "forecast": "Prévision photo",
+    "dirs": [
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSO",
+      "SO",
+      "OSO",
+      "O",
+      "ONO",
+      "NO",
+      "NNO"
+    ],
+    "moonHeading": "Lune",
+    "moonrise": "Lever de la Lune",
+    "moonset": "Coucher de la Lune",
+    "noMoonrise": "Pas de lever de Lune ce jour-là",
+    "noMoonset": "Pas de coucher de Lune ce jour-là",
+    "phase": "Phase",
+    "lit": "éclairée à {p}",
+    "fcHeading": "Prévision photo du lever et du coucher du soleil",
+    "fcLead": "Aujourd’hui et les 6 jours suivants, d’après la prévision de nuages pour l’heure la plus proche du lever et du coucher du soleil.",
+    "colDay": "Jour",
+    "q": {
+      "good": "Bonne",
+      "fair": "Moyenne",
+      "poor": "Mauvaise"
+    },
+    "clouds": "Nuages bas {l} · moyens {m} · hauts {h}",
+    "rain": "Pluie {p} mm",
+    "why": "Les nuages moyens et hauts captent les couleurs ; les nuages bas à l’horizon et la pluie cachent le Soleil ; un ciel dégagé est net mais sobre. C’est une estimation, pas une garantie.",
+    "loading": "Chargement de la prévision des nuages…",
+    "error": "La prévision des nuages n’a pas pu être chargée. Veuillez réessayer plus tard.",
+    "blocked": "La prévision des nuages est chargée depuis Open-Meteo ; autorisez les services externes pour l’afficher.",
+    "attribution": "Prévision des nuages : Open-Meteo.com (CC BY 4.0)",
+    "weekHeading": "Lumière sur 7 jours",
+    "colGoldenAm": "Heure dorée du matin",
+    "colGoldenPm": "Heure dorée du soir",
+    "colBluePm": "Heure bleue du soir",
+    "polarDay": "Le Soleil ne se couche pas ce jour-là ; pas de coucher ni d’heure bleue.",
+    "polarNight": "Le Soleil ne se lève pas ce jour-là ; les heures marquées — n’ont pas lieu.",
+    "partial": "Ce jour-là, le Soleil n’atteint pas certaines de ces hauteurs ; les heures marquées — n’ont pas lieu.",
+    "defsHeading": "Qu’est-ce que l’heure dorée et l’heure bleue ?",
+    "defs": [
+      "**Heure dorée :** le Soleil se trouve entre 6° au-dessus et 4° sous l’horizon. La lumière est rasante, douce et chaude, les ombres sont longues ; c’est le moment préféré pour les portraits et les paysages.",
+      "**Heure bleue :** le Soleil se trouve entre 4° et 6° sous l’horizon. Le ciel devient bleu profond et les lumières de la ville s’équilibrent avec le ciel ; idéal pour les vues urbaines et les poses longues."
+    ],
+    "note": "Les heures sont calculées sur votre appareil pour le lieu choisi et sont approximatives (quelques minutes) ; les montagnes et les bâtiments à l’horizon ne sont pas pris en compte. Votre position reste sur votre appareil ; seules des coordonnées arrondies sont envoyées à Open-Meteo pour la prévision des nuages.",
+    "faq": [
+      {
+        "q": "Quand est l’heure dorée aujourd’hui ?",
+        "a": "L’heure dorée a lieu deux fois par jour, autour du lever et du coucher du soleil, tant que le Soleil est entre 6° au-dessus et 4° sous l’horizon. Cette page calcule les heures pour votre lieu ; elle dure en général 40 à 90 minutes, davantage en hiver et aux hautes latitudes."
+      },
+      {
+        "q": "Qu’est-ce que l’heure bleue et quand a-t-elle lieu ?",
+        "a": "L’heure bleue est le crépuscule pendant lequel le Soleil est entre 4° et 6° sous l’horizon : avant l’heure dorée du matin et après celle du soir. Le ciel est d’un bleu profond, idéal pour les lumières de la ville et les poses longues. Elle dure en général 10 à 20 minutes."
+      },
+      {
+        "q": "Comment la prévision photo du lever et du coucher est-elle établie ?",
+        "a": "À partir de la prévision horaire des nuages d’Open-Meteo pour l’heure la plus proche du lever ou du coucher. La pluie (0,5 mm par heure ou plus) ou des nuages bas épais (75 % ou plus) donnent Mauvaise ; peu de nuages bas (moins de 40 %) avec 20 à 80 % de nuages moyens ou hauts donnent Bonne ; sinon Moyenne tant que les nuages bas restent sous 60 %, et Mauvaise au-delà. Les nuages moyens et hauts captent les couleurs, les nuages bas à l’horizon cachent le Soleil."
+      }
+    ]
+  },
+  "panchang": {
+    "title": "Panchang et horaires du Rahu Kaal",
+    "description": "Les horaires du jour du Rahu Kaal, du Yamaganda, du Gulika, de l'Abhijit et du Brahma muhurta pour votre lieu, avec tithi et nakshatra du calendrier hindou.",
+    "h1": "Panchang et Rahu Kaal",
+    "lead": "Les périodes quotidiennes de la tradition hindoue, calculées sur votre appareil d'après le lever et le coucher du soleil du lieu choisi.",
+    "search": "panchang rahu kaal rahu kalam yamaganda gulika abhijit brahma muhurta tithi nakshatra calendrier hindou",
+    "hindu": "Dans le calendrier hindou",
+    "hinduNote": "Le tithi, le nakshatra et le mois correspondent au lever du soleil à New Delhi ; ailleurs, ils peuvent différer d'un jour.",
+    "hinduNone": "Pas de données du calendrier hindou pour cette date (2025–2032).",
+    "avoid": "Traditionnellement évité",
+    "good": "Traditionnellement jugé favorable",
+    "rahu": "Rahu Kaal",
+    "yama": "Yamaganda",
+    "gulika": "Gulika Kaal",
+    "abhijit": "Abhijit muhurta",
+    "brahma": "Brahma muhurta",
+    "wed": "Certaines traditions ne le jugent pas favorable le mercredi.",
+    "polar": "Le soleil ne se lève pas ou ne se couche pas ici ce jour-là ; les périodes ne peuvent pas être calculées.",
+    "week": "Rahu Kaal des sept prochains jours",
+    "defsHeading": "Comment est-ce calculé ?",
+    "defs": [
+      "La journée, du lever au coucher du soleil, est divisée en huit parts égales. Le Rahu Kaal, le Yamaganda et le Gulika correspondent chacun à l'une de ces parts selon le jour de la semaine ; par exemple, le Rahu Kaal est la deuxième part le lundi et la huitième le dimanche.",
+      "L'Abhijit muhurta est la huitième des quinze parts égales de la journée et tombe vers midi. Le Brahma muhurta est la deuxième des quinze parts de la nuit, en comptant à rebours depuis le lever du soleil (environ 96 à 48 minutes avant le lever).",
+      "Le lever et le coucher du soleil sont les instants où le bord supérieur du Soleil apparaît à l'horizon (réfraction comprise), comme pour les horaires de prière."
+    ],
+    "note": "Ces périodes relèvent de la tradition ; Saat Tarih n'en fait aucune interprétation astrologique. Les horaires sont arrondis à la minute.",
+    "faq": [
+      {
+        "q": "Qu'est-ce que le Rahu Kaal ?",
+        "a": "Dans la tradition hindoue, c'est une période quotidienne d'environ une heure et demie pendant laquelle on évite de commencer quelque chose de nouveau. La journée est divisée en huit parts égales, et le Rahu Kaal est l'une d'elles selon le jour de la semaine."
+      },
+      {
+        "q": "Le Rahu Kaal a-t-il lieu à la même heure partout ?",
+        "a": "Non. Il est calculé à partir du lever et du coucher du soleil locaux ; il change donc d'une ville à l'autre et selon les saisons. Cette page le calcule pour le lieu que vous choisissez."
+      }
+    ]
+  },
+  "account": {
+    "delTitle": "Supprimer votre compte | Saat Tarih",
+    "delDesc": "Comment supprimer votre compte Saat Tarih sur le site ou dans les applications iPhone et Android, et ce qui est supprimé.",
+    "delH1": "Supprimer votre compte",
+    "delLead": "Le compte est facultatif dans Saat Tarih et vous pouvez le supprimer à tout moment. La suppression commence immédiatement et se termine au plus tard sous 7 jours.",
+    "delSections": [
+      {
+        "h": "Supprimer sur le site ou dans l'application",
+        "ul": [
+          "Connectez-vous sur **hesap.time.bumba.tr**, ou ouvrez **Réglages › Compte** dans l'application.",
+          "Dans **Supprimer le compte**, choisissez **De Saat Tarih seulement** ou **De tous les produits Bumba**.",
+          "Saisissez votre mot de passe (inutile si vous vous êtes connecté au cours des dernières 24 heures) et confirmez.",
+          "La suppression commence immédiatement et se termine au plus tard sous 7 jours ; vous recevez un e-mail. Vous pouvez continuer à utiliser Saat Tarih sans compte."
+        ]
+      },
+      {
+        "h": "Si vous ne pouvez pas vous connecter",
+        "p": [
+          "Si vous avez oublié votre mot de passe, définissez-en un nouveau avec **Se connecter › Mot de passe oublié**, puis supprimez le compte.",
+          "Si vous n'avez plus accès à votre adresse e-mail non plus, écrivez à [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Après avoir vérifié que le compte vous appartient, nous le supprimons et vous prévenons."
+        ]
+      },
+      {
+        "h": "Qu'est-ce qui est supprimé ?",
+        "ul": [
+          "Votre adresse e-mail, votre profil (photo comprise) et l'empreinte irréversible de votre mot de passe.",
+          "Vos sessions, les données de l'application conservées dans le compte et vos badges.",
+          "Si vous choisissez **De tous les produits Bumba**, vos adhésions aux autres produits Bumba sont aussi supprimées.",
+          "Les copies dans les sauvegardes sont supprimées automatiquement sous 30 jours au plus tard (les sauvegardes sont conservées 30 jours)."
+        ]
+      },
+      {
+        "h": "Ce qui reste sur votre téléphone",
+        "p": [
+          "Les réglages de l'application et vos données sur le téléphone restent sur votre téléphone (et dans votre iCloud si la synchronisation iCloud est activée). Ils sont supprimés lorsque vous supprimez l'application du téléphone."
+        ]
       }
     ]
   }

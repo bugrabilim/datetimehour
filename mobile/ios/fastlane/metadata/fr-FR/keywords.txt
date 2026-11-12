@@ -1,1 +1,1 @@
-salat,adhan,qibla,coran,tasbih,ramadan,réveil,chronomètre,horloge mondiale,calendrier,métronome
+horloge,mondiale,minuteur,chronomètre,calendrier,sommeil,lune,fériés,pomodoro,qibla,ramadan

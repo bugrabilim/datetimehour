@@ -100,4 +100,52 @@ class OnboardingTest {
         assertTrue(Features.isOn(Tab.PRAYER))
         assertFalse(Onboarding.resume)
     }
+
+    /** Vakitler sorusu dil grubuna göre (9 Kasım 2026, sahibin kararı): tr, ar, id, ur, fa başta, diğer dillerde sonda */
+    @Test fun prayerQuestionOrderByLanguage() {
+        for (l in listOf("tr", "ar", "in", "ur", "fa", "bn")) {
+            org.robolectric.RuntimeEnvironment.setQualifiers("+$l")
+            assertEquals(l, Tab.PRAYER, Onboarding.QUESTIONS.first())
+            assertEquals(l, "q:prayer", Onboarding.PAGES[2])
+        }
+        // Diğer dillerde tanıtımda vakit/namaz hiç geçmez (9 Kasım 2026, sahibin kararı): soru ve tur yok
+        for (l in listOf("en", "de", "ja", "hi", "es", "ru")) {
+            org.robolectric.RuntimeEnvironment.setQualifiers("+$l")
+            assertFalse(l, Tab.PRAYER in Onboarding.QUESTIONS)
+            assertFalse(l, "tour:prayer" in Onboarding.PAGES)
+            assertEquals(l, 4, Onboarding.QUESTIONS.size)
+            assertEquals(l, "q:weather", Onboarding.PAGES[2])
+            assertEquals(l, 6, Onboarding.SUMMARY)
+            assertEquals(l, 16, Onboarding.PAGES.size)
+        }
+    }
+
+    /** Desteklenmeyen telefon dilinde (Malayca) uygulama İngilizce açılır (9 Kasım 2026, sahibin kararı) */
+    @Test fun unsupportedLanguageFallsBackToEnglish() {
+        org.robolectric.RuntimeEnvironment.setQualifiers("+ms")
+        assertEquals("en", Strings.lang)
+        assertEquals("Four short questions and the app is set up just for you.", L("onboard.welcome.hint4"))
+        assertFalse(Onboarding.prayerFirst)
+        org.robolectric.RuntimeEnvironment.setQualifiers("+tr")
+        assertEquals("tr", Strings.lang)
+        assertEquals("Dört kısa soruyla uygulamayı size göre hazırlayalım.", L("onboard.welcome.hint4"))
+    }
+
+    /** Vakitler sorulmayan dilde yeni kurulum: Vakitler kapalı, vakit bildirimleri de kapalı başlar (bitince ve geçince) */
+    @Test fun noPrayerLanguageTurnsPrayerNotificationsOff() {
+        org.robolectric.RuntimeEnvironment.setQualifiers("+en")
+        for (skip in listOf(false, true)) {
+            Prefs.store.edit().clear().commit()
+            Features.save(emptySet())
+            Onboarding.load(fresh = true)
+            Onboarding.begin()
+            for (t in Onboarding.QUESTIONS) Onboarding.answer(t, true)
+            if (skip) Onboarding.skip() else Onboarding.finish()
+            assertFalse(Features.isOn(Tab.PRAYER))
+            assertFalse(Prefs.store.getBoolean(NotifyPrefs.ENABLED, true))
+            assertFalse(Prefs.store.getBoolean("notify.friday", true))
+            assertFalse(Onboarding.prayerShown)
+        }
+        org.robolectric.RuntimeEnvironment.setQualifiers("+tr")
+    }
 }

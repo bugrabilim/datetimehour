@@ -7,6 +7,8 @@ class SaatTarihApp : Application() {
         super.onCreate()
         Strings.init(this)
         Prefs.init(this)
+        Account.init(this) // uygulamalardaki hesap (isteğe bağlı; oturum anahtarı şifreli, yedeğe girmez)
+        AccountSync.init(this) // girişliyken kayıtlar ve rozetler hesapla eşitlenir
         AccentPalette.initDynamic(this)
         AppData.init(this)
         // Araçlar: alarmlar ve süren zamanlayıcı/pomodoro yeniden kurulur (uygulama zorla durdurulmuş olabilir)

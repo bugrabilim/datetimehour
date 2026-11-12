@@ -1,5 +1,5 @@
 {
-  "source": "NASA Eclipse Web Site (Fred Espenak, NASA/GSFC): eclipse.gsfc.nasa.gov SEdecade2021, LEdecade2021; okundu 30 Ekim 2026",
+  "source": "NASA Eclipse Web Site (Fred Espenak, NASA/GSFC): eclipse.gsfc.nasa.gov SEdecade2021, LEdecade2021 (okundu 30 Ekim 2026), SEdecade2031, LEdecade2031 (okundu 8 Kasım 2026; 21 Mayıs 2031 halkalı tutulma yolundaki 'Congo', NASA merkez çizgisi tablosunda yol Lubumbashi yakınından [11°41'G, 27°55'D] geçtiği için Kongo Demokratik Cumhuriyeti [CD])",
   "note": "td: en büyük tutulma anı, NASA tablosundaki Karasal Dinamik Zaman (TD); UT = TD - 69 sn (nature-calc.js DELTA_T). regions: NASA'nın 'görüldüğü bölgeler' sütunu, UN M49 bölge ya da ISO ülke kodu (adlar platformun dil verisinden). path: Güneş tutulmasında tam/halkalı evrenin geçtiği ülkeler (NASA köşeli parantez). Okyanus/Arktik gibi kodu olmayan bölgeler yazılmaz. Yıllık görev: NASA tablosundan yeni yılları ekle.",
   "solar": [
     { "td": "2027-02-06T16:00:47Z", "type": "annular", "regions": ["005", "AQ", "011", "018"], "path": ["CL", "AR"] },
@@ -11,7 +11,11 @@
     { "td": "2029-07-11T15:37:18Z", "type": "partial", "regions": ["CL", "AR"], "path": [] },
     { "td": "2029-12-05T15:03:57Z", "type": "partial", "regions": ["AR", "CL", "AQ"], "path": [] },
     { "td": "2030-06-01T06:29:13Z", "type": "annular", "regions": ["150", "015", "145", "142", "US"], "path": ["DZ", "TN", "GR", "TR", "RU", "CN", "JP"] },
-    { "td": "2030-11-25T06:51:37Z", "type": "total", "regions": ["018", "035", "AU", "AQ"], "path": ["BW", "ZA", "AU"] }
+    { "td": "2030-11-25T06:51:37Z", "type": "total", "regions": ["018", "035", "AU", "AQ"], "path": ["BW", "ZA", "AU"] },
+    { "td": "2031-05-21T07:16:04Z", "type": "annular", "regions": ["002", "034", "035", "AU"], "path": ["AO", "CD", "ZM", "TZ", "IN", "MY", "ID"] },
+    { "td": "2031-11-14T21:07:30Z", "type": "hybrid", "regions": ["009", "US", "013", "005"], "path": ["PA"] },
+    { "td": "2032-05-09T13:26:42Z", "type": "annular", "regions": ["005", "018"], "path": [] },
+    { "td": "2032-11-03T05:34:12Z", "type": "partial", "regions": ["142"], "path": [] }
   ],
   "lunar": [
     { "td": "2027-02-20T23:14:06Z", "type": "penumbral", "regions": ["019", "150", "002", "142"] },
@@ -23,6 +27,11 @@
     { "td": "2029-06-26T03:23:22Z", "type": "total", "regions": ["019", "150", "002", "145"] },
     { "td": "2029-12-20T22:43:12Z", "type": "total", "regions": ["019", "150", "002", "142"] },
     { "td": "2030-06-15T18:34:34Z", "type": "partial", "regions": ["150", "002", "142", "AU"] },
-    { "td": "2030-12-09T22:28:51Z", "type": "penumbral", "regions": ["019", "150", "002", "142"] }
+    { "td": "2030-12-09T22:28:51Z", "type": "penumbral", "regions": ["019", "150", "002", "142"] },
+    { "td": "2031-05-07T03:52:02Z", "type": "penumbral", "regions": ["019", "150", "002"] },
+    { "td": "2031-06-05T11:45:17Z", "type": "penumbral", "regions": ["035", "AU", "009"] },
+    { "td": "2031-10-30T07:46:45Z", "type": "penumbral", "regions": ["019"] },
+    { "td": "2032-04-25T15:14:51Z", "type": "total", "regions": ["014", "142", "AU", "009"] },
+    { "td": "2032-10-18T19:03:40Z", "type": "total", "regions": ["002", "150", "142", "AU"] }
   ]
 }

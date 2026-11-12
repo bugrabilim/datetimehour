@@ -1,0 +1,51 @@
+Hora e Data reúne relógio, widgets, alarmes, clima, calendário e dezenas de ferramentas do dia a dia em um app simples. Sem conta, sem anúncios e sem rastreamento.
+
+Feito para você
+• Algumas perguntas rápidas na primeira abertura; a barra inferior é montada com as seções que você quiser
+• As seções que você não usa ficam ocultas e não enviam notificações; todo o resto fica a um toque, em Tudo
+
+Relógio e widgets
+• 21 modelos de relógio e 25 mostradores analógicos; tela cheia, modo noturno em vermelho suave para a cabeceira e protetor de tela
+• 27 widgets para a tela inicial: relógios analógicos, digitais e com segundos, relógios mundiais, clima, fase da lua, nascer e pôr do sol, contagens regressivas, fotos, progresso do ano e mais, com estilo transparente ou de vidro
+• Relógio flutuante sobre outros apps, blocos das Configurações rápidas
+• App para Wear OS com blocos e complicações, e relógio em tela cheia para Android TV
+
+Alarme, sono e foco
+• Alarmes em tela cheia na tela de bloqueio, com volume gradual, biblioteca de sons e fundos
+• Tarefas para desligar: contas, sacudir o celular, passos, agachamentos, ler um código, encontrar um objeto, jogo da memória ou digitação
+• Alarme inteligente, plano de sono com lembrete da hora de dormir, sons para dormir e sons da natureza
+• Pomodoro com estatísticas e lista de tarefas, temporizador de estudo, bloqueio de apps durante o foco
+• Treino intervalado com orientação por voz, mesmo com a tela apagada; salve os treinos no Health Connect
+
+Clima
+• Previsão por hora e para 14 dias, qualidade do ar e pólen, comparação de três modelos meteorológicos
+• Uma tela que se anima com o clima: chuva, neve, nuvens, vento e raios
+• Resumo do clima pela manhã e notificação de clima opcional
+
+Calendário
+• Visualizações de mês, semana, dia, agenda e ano, junto com os calendários do seu celular
+• Feriados de 31 países, incluindo o Brasil, e datas especiais
+• Calendário da Hégira e conversor de datas
+
+Ferramentas
+• Temporizadores com nome, vários cronômetros, contagens regressivas com suas próprias fotos
+• Relógios mundiais com globo giratório, mapa e mostrador de 24 horas; planejador de reuniões; cálculo de horas e datas
+• Relógio de xadrez, metrônomo, relógio falante, diário matinal, ferramentas para a sala de aula, temporizador de prova, signo do zodíaco
+
+Céu e estações
+• Nascer e pôr do sol, hora dourada e hora azul, nascer e pôr da lua, calendário lunar
+• Eclipses com mapas, céu noturno com planetas e estrelas, avisos de eventos no céu
+• As estações explicadas para crianças
+
+Horários de oração e qibla
+• Horários de oração em qualquer lugar com 14 métodos de cálculo e Asr hanafita; as 81 províncias e os 973 distritos da Turquia
+• Notificações com o adhan, alarmes na hora da oração, celular no silencioso durante a oração, tabela do Ramadã
+• Bússola da qibla e mesquitas próximas
+• O Alcorão em árabe, súplicas, os 99 nomes de Alá, contador de tasbih, registro de orações e jejuns, cálculo do zakat, cartões de felicitação
+
+Privacidade
+Sua localização fica no celular. Só para o clima e as mesquitas próximas uma localização aproximada é enviada ao serviço correspondente (Open-Meteo, OpenStreetMap), nunca a sua identidade. Veja e desative cada permissão em Ajustes › Permissões.
+
+Em 19 idiomas. Para celulares e tablets Android, Wear OS e Android TV.
+
+Hora e Data é um produto Bumba Life. Web: time.bumba.tr
