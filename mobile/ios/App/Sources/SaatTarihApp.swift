@@ -42,6 +42,8 @@ struct SaatTarihApp: App {
             if phase == .active {
                 BadgeStore.shared.appOpened()
                 CloudSync.start()
+                // Hesap açıksa kayıtlar ve rozetler hesapla eşitlenir (iCloud eşitlemesi ayrıca sürer)
+                if Account.shared.signedIn { Task { await AccountSync.shared.sync() } }
                 Task {
                     await PlaceModel.shared.refresh()
                     await PrayerNotifier.askOnce()

@@ -122,6 +122,15 @@ for (const [target, dirs] of Object.entries(TARGETS)) {
     if (used.length) problems.push(`${relative(ROOT, f)}: 'import SaatCore' yok ama ${used.slice(0, 4).join(", ")} kullanılıyor`);
   }
 }
+// 5) Hesapla eşitlenen kayıtların türleri iki platformda aynı olmalı (12 Kasım 2026): iOS AccountSync.swift ile Android
+//    AccountSync.kt'deki s/i/b listeleri (yanlış türle yazılan kayıt Android'de çöker)
+{
+  const lists = (src) => Object.fromEntries([...src.matchAll(/(?:let|val) ([sib])(?:: \w+)? = ((?:"[^"]*"\s*\+?\s*)+)/g)]
+    .map((m) => [m[1], [...m[2].matchAll(/"([^"]*)"/g)].map((x) => x[1]).join("").split(/\s+/).filter(Boolean).sort().join(" ")]));
+  const ios = lists(readFileSync(join(ROOT, "App/Sources/AccountSync.swift"), "utf8"));
+  const android = lists(readFileSync(join(ROOT, "../android/app/src/main/kotlin/tr/bumba/time/AccountSync.kt"), "utf8"));
+  for (const k of ["s", "i", "b"]) if (!ios[k] || ios[k] !== android[k]) problems.push(`AccountSync: '${k}' türündeki anahtarlar iOS ile Android'de farklı`);
+}
 if (problems.length) {
   console.error(problems.join("\n"));
   process.exit(1);
