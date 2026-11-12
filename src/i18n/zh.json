@@ -319,7 +319,7 @@
     "title": "隐私与 Cookie 政策 | Saat Tarih",
     "description": "Saat Tarih 处理哪些数据、如何使用 Cookie 和本地存储、Umami 统计、邮件列表，以及您在土耳其个人数据保护法（KVKK）下的权利。",
     "h1": "隐私与 Cookie 政策",
-    "lead": "本页说明您使用 Saat Tarih 时处理哪些数据、为什么处理，以及您享有哪些权利。本站只收集必要的数据；没有账户、没有广告，也不设置 Cookie；统计和外部服务只在您允许后运行。",
+    "lead": "本页说明您使用 Saat Tarih 时处理哪些数据、为什么处理，以及您享有哪些权利。本站只收集必要的数据；没有广告，账户可选，只设置一个用于记住您 Cookie 选择的必要 Cookie；统计和外部服务只在您允许后运行。",
     "sections": [
       {
         "id": "controller",
@@ -415,7 +415,7 @@
         "id": "cookies",
         "h": "Cookie 和浏览器存储",
         "p": [
-          "Saat Tarih 不设置任何 Cookie。首次访问时，页面底部的横幅会请求您允许访问统计（Umami）和外部服务（Open-Meteo、OpenStreetMap、YouTube）；在您允许之前两者都处于关闭状态。您可以随时通过设置菜单中的“Cookie 偏好设置”更改选择。为了记住您的选择，我们使用浏览器的本地存储（localStorage）；这些项目属于必要类，保存在您的设备上，不会发送到服务器。您可以随时在浏览器设置中删除它们。Bumba Group 的共享 Cookie 政策：[bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)。"
+          "Saat Tarih 只设置一个必要的 Cookie：您在 Cookie 横幅中的选择（bumba-cerez），以免账户页面（hesap.time.bumba.tr）再次显示横幅。首次访问时，页面底部的横幅会请求您允许访问统计（Umami）和外部服务（Open-Meteo、OpenStreetMap、YouTube）；在您允许之前两者都处于关闭状态。您可以随时通过设置菜单中的“Cookie 偏好设置”更改选择。为了记住您的选择，我们使用浏览器的本地存储（localStorage）；这些项目属于必要类，保存在您的设备上，不会发送到服务器。您可以随时在浏览器设置中删除它们。Bumba Group 的共享 Cookie 政策：[bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)。"
         ],
         "table": {
           "head": [
@@ -427,7 +427,7 @@
             [
               "bumba-cerez",
               "记住您在 Cookie 横幅中的选择（统计和外部服务）以及政策版本。",
-              "直到您删除"
+              "本地存储中直到您删除；Cookie 中 1 年"
             ],
             [
               "sth-theme",

@@ -210953,7 +210953,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Opsyonal ang membership; gumagana ang bawat feature ng Saat Tarih kahit walang account. Kapag may account, makikita ang mga badge at record mo sa lahat ng device mo."
+            "value": "Opsyonal ang membership; gumagana ang bawat feature ng Saat Tarih kahit walang account. Kapag may account kayo, makikita ninyo ang inyong mga badge at record sa lahat ng inyong device."
           }
         },
         "th": {
@@ -211072,7 +211072,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dapat may ganito ang password mo:"
+            "value": "Dapat may ganito ang inyong password:"
           }
         },
         "th": {
@@ -211667,7 +211667,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pinoproseso ang personal data mo ayon sa [Abiso sa Privacy](https://bumbagroup.com/uyelik-aydinlatma?dil=en). Sa pagpindot ng \"Mag-sign up\", pinatutunayan mong 16 taong gulang ka na o higit pa, nabasa at tinatanggap mo ang [Mga Tuntunin ng Membership](https://bumbagroup.com/uyelik-sozlesmesi?dil=en) at ang Abiso sa Privacy, at pumapayag kang iproseso ayon doon ang opsyonal na impormasyong idaragdag mo, ang mga email ng pagbati at ang paglilipat sa ibang bansa."
+            "value": "Pinoproseso ang inyong personal data ayon sa [Abiso sa Privacy](https://bumbagroup.com/uyelik-aydinlatma?dil=en). Sa pagpindot ng \"Mag-sign up\", pinatutunayan ninyong 16 taong gulang na kayo o higit pa, nabasa at tinatanggap ninyo ang [Mga Tuntunin ng Membership](https://bumbagroup.com/uyelik-sozlesmesi?dil=en) at ang Abiso sa Privacy, at pumapayag kayong iproseso ayon doon ang opsyonal na impormasyong idaragdag ninyo, ang mga email ng pagbati at ang paglilipat sa ibang bansa."
           }
         },
         "th": {
@@ -211786,7 +211786,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "May Bumba membership ka na gamit ang email na ito. Gusto mo ba itong gamitin dito rin?"
+            "value": "May Bumba membership na kayo gamit ang email na ito. Gusto ba ninyo itong gamitin dito rin?"
           }
         },
         "th": {
@@ -211905,7 +211905,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Puwede mong gamitin ang kasalukuyan mong password."
+            "value": "Puwede ninyong gamitin ang kasalukuyan ninyong password."
           }
         },
         "th": {
@@ -212024,7 +212024,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hindi puwedeng mag-sign up dito gamit ang email address na ito; puwede kang mag-sign up gamit ang ibang email address."
+            "value": "Hindi puwedeng mag-sign up dito gamit ang email address na ito; puwede kayong mag-sign up gamit ang ibang email address."
           }
         },
         "th": {
@@ -212143,7 +212143,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mag-sign in gamit ang Bumba membership mo"
+            "value": "Mag-sign in gamit ang inyong Bumba membership"
           }
         },
         "th": {
@@ -212262,7 +212262,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nagpadala kami ng email para sa beripikasyon. Pagkabukas mo ng link doon, puwede ka nang mag-sign in. 24 oras ang bisa ng link."
+            "value": "Nagpadala kami ng email para sa beripikasyon. Pagkabukas ninyo ng link doon, puwede na kayong mag-sign in. 24 oras ang bisa ng link."
           }
         },
         "th": {
@@ -212619,7 +212619,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ilagay ang email address ng iyong account; magpapadala kami ng link para i-reset ang password."
+            "value": "Ilagay ang email address ng inyong account; magpapadala kami ng link para i-reset ang password."
           }
         },
         "th": {
@@ -213452,7 +213452,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Napalitan na ang password mo at isinara ang mga bukas na session. Puwede ka nang mag-sign in gamit ang bagong password."
+            "value": "Napalitan na ang inyong password at isinara ang mga bukas na session. Puwede na kayong mag-sign in gamit ang bagong password."
           }
         },
         "th": {
@@ -213690,7 +213690,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Na-verify na ang email address mo. Puwede ka nang mag-sign in."
+            "value": "Na-verify na ang inyong email address. Puwede na kayong mag-sign in."
           }
         },
         "th": {
@@ -213809,7 +213809,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "May membership ka na sa ibang produkto ng Bumba gamit ang email address na ito, kaya walang hiwalay na account na binuksan dito. Sa sign-up screen, isulat ang email mo at piliin ang \"Oo\" para mag-sign in gamit ang Bumba membership mo."
+            "value": "May membership na kayo sa ibang produkto ng Bumba gamit ang email address na ito, kaya walang hiwalay na account na binuksan dito. Sa sign-up screen, isulat ang inyong email at piliin ang \"Oo\" para mag-sign in gamit ang inyong Bumba membership."
           }
         },
         "th": {
@@ -213928,7 +213928,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kinumpirma mo ang pagbabago. Nagpadala kami ng link sa beripikasyon sa bago mong address."
+            "value": "Kinumpirma ninyo ang pagbabago. Nagpadala kami ng link sa beripikasyon sa bago ninyong address."
           }
         },
         "th": {
@@ -214047,7 +214047,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Na-verify na ang bago mong email address."
+            "value": "Na-verify na ang bago ninyong email address."
           }
         },
         "th": {
@@ -214285,7 +214285,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "May hiwalay ka ring account sa ibang produkto ng Bumba gamit ang email na ito. Pagdugtungin ba natin ang mga account?"
+            "value": "May hiwalay rin kayong account sa ibang produkto ng Bumba gamit ang email na ito. Pagdugtungin ba natin ang mga account?"
           }
         },
         "th": {
@@ -214404,7 +214404,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Para pagdugtungin, isulat ang password ng account na iyon. Kapag nadugtong, maiiwan ang pinakalumang numero ng miyembro at ang password mo ay magiging password ng account na iyon."
+            "value": "Para pagdugtungin, isulat ang password ng account na iyon. Kapag nadugtong, maiiwan ang pinakalumang numero ng miyembro at ang inyong password ay magiging password ng account na iyon."
           }
         },
         "th": {
@@ -214523,7 +214523,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nadugtong na ang mga account mo."
+            "value": "Nadugtong na ang inyong mga account."
           }
         },
         "th": {
@@ -214761,7 +214761,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hindi pa na-verify ang iyong email address. Nagpadala kami ng bagong verification link; tingnan ang iyong email."
+            "value": "Hindi pa na-verify ang inyong email address. Nagpadala kami ng bagong verification link; tingnan ang inyong email."
           }
         },
         "th": {
@@ -214880,7 +214880,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sinuspinde ang account mo. Para sa mga tanong, sumulat sa bilgi@bumbagroup.com."
+            "value": "Sinuspinde ang inyong account. Para sa mga tanong, sumulat sa bilgi@bumbagroup.com."
           }
         },
         "th": {
@@ -216903,7 +216903,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pinaliliit ang larawan sa 512 pixel sa device mo at inaalis ang nakatagong impormasyon gaya ng lokasyon."
+            "value": "Pinaliliit ang larawan sa 512 pixel sa inyong device at inaalis ang nakatagong impormasyon gaya ng lokasyon."
           }
         },
         "th": {
@@ -219759,7 +219759,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hindi kailanman ipinapakita ang email address mo."
+            "value": "Hindi kailanman ipinapakita ang inyong email address."
           }
         },
         "th": {
@@ -220473,7 +220473,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nagpadala kami ng email sa kasalukuyan mong address para kumpirmahin. Pagkatapos, may verification link na ipapadala sa bago mong address."
+            "value": "Nagpadala kami ng email sa kasalukuyan ninyong address para kumpirmahin. Pagkatapos, may verification link na ipapadala sa bago ninyong address."
           }
         },
         "th": {
@@ -220949,7 +220949,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Napalitan na ang password mo; isinara ang ibang session."
+            "value": "Napalitan na ang inyong password; isinara ang ibang session."
           }
         },
         "th": {
@@ -221901,7 +221901,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sa app, setting ng app ang wika at tema; ipinapadala ang mga email ng account mo sa wikang pinili mo."
+            "value": "Sa app, setting ng app ang wika at tema; ipinapadala ang mga email ng inyong account sa wikang pinili ninyo."
           }
         },
         "th": {
@@ -222258,7 +222258,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Maikling pagbati sa kaarawan mo, anibersaryo ng membership mo, Bagong Taon at mga pista ng bansang nasa profile mo. Walang promosyon."
+            "value": "Maikling pagbati sa inyong kaarawan, anibersaryo ng inyong membership, Bagong Taon at mga pista ng bansang nasa inyong profile. Walang promosyon."
           }
         },
         "th": {
@@ -222496,7 +222496,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hiwalay sa membership ang email list; hiwalay kang sumasali at umaalis dito."
+            "value": "Hiwalay sa membership ang email list; hiwalay kayong sumasali at umaalis dito."
           }
         },
         "th": {
@@ -224400,7 +224400,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sa produktong bubuksan mo, magbubukas ng account gamit ang parehong email at password, at kasama ring mapupunta roon ang profile mo. Kapag isinara, mabubura ang account at data mo sa produktong iyon."
+            "value": "Sa produktong bubuksan ninyo, magbubukas ng account gamit ang parehong email at password, at kasama ring mapupunta roon ang inyong profile. Kapag isinara, mabubura ang inyong account at data sa produktong iyon."
           }
         },
         "th": {
@@ -225233,7 +225233,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Isulat ang password mo para buksan."
+            "value": "Isulat ang inyong password para buksan."
           }
         },
         "th": {
@@ -225352,7 +225352,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mabubura ang account mo sa %1$@ at ang data mo roon. Puwede mo munang i-download ang data mo. Isara?"
+            "value": "Mabubura ang inyong account sa %1$@ at ang inyong data roon. Puwede muna ninyong i-download ang inyong data. Isara?"
           }
         },
         "th": {
@@ -225709,7 +225709,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ang account, profile (kasama ang larawan), record ng pahintulot, mga session, record at badge mo bilang JSON file."
+            "value": "Ang inyong account, profile (kasama ang larawan), record ng pahintulot, mga session, record at badge bilang JSON file."
           }
         },
         "th": {
@@ -225947,7 +225947,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Agad at permanenteng mabubura ang account mo. Matatapos ang mga hakbang sa background (gaya ng naka-iskedyul nang email ng pagbati) sa loob ng 7 araw."
+            "value": "Agad at permanenteng mabubura ang inyong account. Matatapos ang mga hakbang sa background (gaya ng naka-iskedyul nang email ng pagbati) sa loob ng 7 araw."
           }
         },
         "th": {
@@ -226304,7 +226304,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Isulat ang password mo para kumpirmahin (hindi kailangan kung nag-sign in ka sa nakaraang 24 oras)."
+            "value": "Isulat ang inyong password para kumpirmahin (hindi kailangan kung nag-sign in kayo sa nakaraang 24 oras)."
           }
         },
         "th": {
@@ -226423,7 +226423,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Burahin ang iyong account? Hindi na ito maibabalik."
+            "value": "Burahin ang inyong account? Hindi na ito maibabalik."
           }
         },
         "th": {
@@ -226542,7 +226542,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nabura na ang iyong account."
+            "value": "Nabura na ang inyong account."
           }
         },
         "th": {
@@ -226661,7 +226661,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mananatili sa telepono ang mga setting at record mo sa telepono."
+            "value": "Mananatili sa telepono ang inyong mga setting at record sa telepono."
           }
         },
         "th": {
@@ -227256,7 +227256,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nakatago sa account mo ang mga badge; nabubura ang mga ito kasabay ng account at naaalis sa mga backup sa loob ng 30 araw."
+            "value": "Nakatago sa inyong account ang mga badge; nabubura ang mga ito kasabay ng account at naaalis sa mga backup sa loob ng 30 araw."
           }
         },
         "th": {
@@ -227613,7 +227613,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "May %1$@ badge sa device na ito. Idagdag ba sa account mo?"
+            "value": "May %1$@ badge sa device na ito. Idagdag ba sa inyong account?"
           }
         },
         "th": {
@@ -227851,7 +227851,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Naidagdag na ang mga badge sa account mo."
+            "value": "Naidagdag na ang mga badge sa inyong account."
           }
         },
         "th": {
@@ -227970,7 +227970,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mga record mo mula sa app"
+            "value": "Ang inyong mga record mula sa app"
           }
         },
         "th": {
@@ -228089,7 +228089,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kapag naka-sign in ka sa app, isinusulat din sa account mo ang mga record mo (gaya ng setting, listahan, pomodoro at record ng pagsamba); sa iPhone, nananatili rin ang mga ito sa iCloud."
+            "value": "Kapag naka-sign in kayo sa app, isinusulat din sa inyong account ang inyong mga record (gaya ng setting, listahan, pomodoro at record ng pagsamba); sa iPhone, nananatili rin ang mga ito sa iCloud."
           }
         },
         "th": {
@@ -228327,7 +228327,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wala pang record mula sa app sa account mo."
+            "value": "Wala pang record mula sa app sa inyong account."
           }
         },
         "th": {
@@ -228684,7 +228684,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kapag naka-sign in ka, isinusulat din sa account mo ang mga record at badge mo."
+            "value": "Kapag naka-sign in kayo, isinusulat din sa inyong account ang inyong mga record at badge."
           }
         },
         "th": {
@@ -228922,7 +228922,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gusto mo bang patayin ang mga email ng pagbati?"
+            "value": "Gusto ba ninyong patayin ang mga email ng pagbati?"
           }
         },
         "th": {
@@ -229160,7 +229160,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pinatay na ang mga email ng pagbati. Puwede pang dumating sa loob ng 7 araw ang naka-iskedyul nang email. Puwede mo itong buksan ulit sa page ng account mo."
+            "value": "Pinatay na ang mga email ng pagbati. Puwede pang dumating sa loob ng 7 araw ang naka-iskedyul nang email. Puwede ninyo itong buksan ulit sa page ng inyong account."
           }
         },
         "th": {
@@ -229517,7 +229517,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Isang kailangang session cookie lang ang ginagamit para sa sign-in. Kapag pumayag ka, binibilang ang mga pagbisita gamit ang Umami."
+            "value": "Isang kailangang session cookie lang ang ginagamit para sa sign-in. Kapag pumayag kayo, binibilang ang mga pagbisita gamit ang Umami."
           }
         },
         "th": {
@@ -229636,7 +229636,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nakatago sa browser na ito ang member session mo (cookie na server lang ang bumabasa), ang pagpili mo ng cookie at ang tema. Hindi ka makakapag-sign in kung wala ang mga ito."
+            "value": "Nakatago sa browser na ito ang inyong member session (cookie na server lang ang bumabasa), ang inyong pagpili ng cookie at ang tema. Hindi kayo makakapag-sign in kung wala ang mga ito."
           }
         },
         "th": {
@@ -477037,7 +477037,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Naka-sign in ka sa device na ito."
+            "value": "Naka-sign in kayo sa device na ito."
           }
         },
         "th": {
@@ -477156,7 +477156,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nag-sign out ka na."
+            "value": "Nag-sign out na kayo."
           }
         },
         "th": {

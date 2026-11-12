@@ -359,7 +359,7 @@
     "title": "Patakaran sa Privacy at Cookies | Saat Tarih",
     "description": "Anong datos ang pinoproseso ng Saat Tarih, paano ginagamit ang cookies at local storage, ang Umami statistics, ang email list at ang iyong karapatan sa ilalim ng KVKK.",
     "h1": "Patakaran sa privacy at cookies",
-    "lead": "Ipinapaliwanag ng pahinang ito kung anong datos ang pinoproseso kapag ginagamit mo ang Saat Tarih, bakit, at ano ang iyong mga karapatan. Ang kailangan lang ang kinokolekta ng site; walang account o ad at walang cookies na inilalagay; tumatakbo lang ang statistics at mga panlabas na serbisyo kapag pinayagan mo.",
+    "lead": "Ipinapaliwanag ng pahinang ito kung anong datos ang pinoproseso kapag ginagamit mo ang Saat Tarih, bakit, at ano ang iyong mga karapatan. Ang kailangan lang ang kinokolekta ng site; walang ad, opsyonal ang account, at iisang kailangang cookie lang ang inilalagay para tandaan ang inyong pinili sa cookie; tumatakbo lang ang statistics at mga panlabas na serbisyo kapag pinayagan mo.",
     "sections": [
       {
         "id": "controller",
@@ -440,8 +440,8 @@
         "id": "account",
         "h": "Membership",
         "p": [
-          "Hindi kailangan ng account para gamitin ang Saat Tarih. Kung gusto mo, puwede kang magbukas ng Bumba membership sa website (hesap.time.bumba.tr) at sa mga app gamit ang iyong email address at password; gumagana rin ang parehong membership sa ibang produkto ng Bumba.",
-          "Kung anong impormasyon ang pinoproseso ng membership at bakit, saan ito iniimbak at ang iyong mga karapatan ay nakasulat sa pinagsasaluhang [abiso sa privacy ng Bumba membership](https://bumbagroup.com/uyelik-aydinlatma?dil=en); ang mga tuntunin ay nasa [mga tuntunin ng membership](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Puwede mong burahin ang account mo anumang oras: [Pagbura ng account]({deleteUrl})."
+          "Hindi kailangan ng account para gamitin ang Saat Tarih. Kung gusto ninyo, puwede kayong magbukas ng Bumba membership sa website (hesap.time.bumba.tr) at sa mga app gamit ang inyong email address at password; gumagana rin ang parehong membership sa ibang produkto ng Bumba.",
+          "Kung anong impormasyon ang pinoproseso ng membership at bakit, saan ito iniimbak at ang inyong mga karapatan ay nakasulat sa pinagsasaluhang [abiso sa privacy ng Bumba membership](https://bumbagroup.com/uyelik-aydinlatma?dil=en); ang mga tuntunin ay nasa [mga tuntunin ng membership](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Puwede ninyong burahin ang inyong account anumang oras: [Pagbura ng account]({deleteUrl})."
         ]
       },
       {
@@ -455,7 +455,7 @@
         "id": "cookies",
         "h": "Cookies at storage ng browser",
         "p": [
-          "Walang anumang cookie na inilalagay ang Saat Tarih. Sa una mong pagbisita, isang banner sa ibaba ng pahina ang humihingi ng pahintulot mo para sa statistics ng pagbisita (Umami) at mga panlabas na serbisyo (Open-Meteo, OpenStreetMap, YouTube); parehong naka-off hangga't hindi mo pinapayagan. Mapapalitan mo ang iyong pinili anumang oras sa link na \"Cookie preferences\" sa menu ng mga setting. Para matandaan ang iyong mga pinili, ginagamit namin ang local storage (localStorage) ng iyong browser; kabilang ang mga item na ito sa kinakailangang grupo, nananatili sa iyong device at hindi ipinapadala sa server. Mabubura mo ang mga ito anumang oras sa mga setting ng browser. Shared na patakaran sa cookies ng Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Isang kailangang cookie lang ang inilalagay ng Saat Tarih: ang inyong pinili sa cookie banner (bumba-cerez), para hindi na ulit lumabas ang banner sa mga page ng account (hesap.time.bumba.tr). Sa una mong pagbisita, isang banner sa ibaba ng pahina ang humihingi ng pahintulot mo para sa statistics ng pagbisita (Umami) at mga panlabas na serbisyo (Open-Meteo, OpenStreetMap, YouTube); parehong naka-off hangga't hindi mo pinapayagan. Mapapalitan mo ang iyong pinili anumang oras sa link na \"Cookie preferences\" sa menu ng mga setting. Para matandaan ang iyong mga pinili, ginagamit namin ang local storage (localStorage) ng iyong browser; kabilang ang mga item na ito sa kinakailangang grupo, nananatili sa iyong device at hindi ipinapadala sa server. Mabubura mo ang mga ito anumang oras sa mga setting ng browser. Shared na patakaran sa cookies ng Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -467,7 +467,7 @@
             [
               "bumba-cerez",
               "Tinatandaan ang iyong pinili sa cookie banner (statistics at panlabas na serbisyo) at ang bersyon ng patakaran.",
-              "Hanggang burahin mo"
+              "Sa local storage hanggang burahin ninyo; bilang cookie, 1 taon"
             ],
             [
               "sth-theme",
@@ -3472,39 +3472,39 @@
   },
   "account": {
     "delTitle": "Burahin ang account | Saat Tarih",
-    "delDesc": "Paano burahin ang iyong Saat Tarih account sa website o sa mga app para sa iPhone at Android, at kung ano ang nabubura.",
+    "delDesc": "Paano burahin ang inyong Saat Tarih account sa website o sa mga app para sa iPhone at Android, at kung ano ang nabubura.",
     "delH1": "Pagbura ng iyong account",
-    "delLead": "Opsyonal ang account sa Saat Tarih at puwede mo itong burahin anumang oras. Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw.",
+    "delLead": "Opsyonal ang account sa Saat Tarih at puwede ninyo itong burahin anumang oras. Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw.",
     "delSections": [
       {
         "h": "Pagbura sa website o sa app",
         "ul": [
           "Mag-sign in sa **hesap.time.bumba.tr**, o buksan ang **Settings › Account** sa app.",
           "Sa **Burahin ang account**, piliin ang **Sa Saat Tarih lang** o **Sa lahat ng produkto ng Bumba**.",
-          "Ilagay ang password mo (hindi kailangan kung nag-sign in ka sa nakaraang 24 na oras) at kumpirmahin.",
-          "Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw; padadalhan ka namin ng email. Puwede mo pa ring gamitin ang Saat Tarih nang walang account."
+          "Ilagay ang inyong password (hindi kailangan kung nag-sign in kayo sa nakaraang 24 na oras) at kumpirmahin.",
+          "Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw; padadalhan namin kayo ng email. Puwede pa rin ninyong gamitin ang Saat Tarih nang walang account."
         ]
       },
       {
-        "h": "Kung hindi ka makapag-sign in",
+        "h": "Kung hindi kayo makapag-sign in",
         "p": [
-          "Kung nakalimutan mo ang password, magtakda ng bago sa **Mag-sign in › Nakalimutan ang password**, saka burahin ang account.",
-          "Kung hindi mo rin ma-access ang email mo, sumulat sa [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Kapag nakumpirma naming sa iyo ang account, buburahin namin ito at aabisuhan ka."
+          "Kung nakalimutan ninyo ang password, magtakda ng bago sa **Mag-sign in › Nakalimutan ang password**, saka burahin ang account.",
+          "Kung hindi rin ninyo ma-access ang inyong email, sumulat sa [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Kapag nakumpirma naming sa inyo ang account, buburahin namin ito at aabisuhan kayo."
         ]
       },
       {
         "h": "Ano ang nabubura?",
         "ul": [
-          "Ang iyong email address, profile (kasama ang larawan) at ang hindi na maibabalik na hash ng password mo.",
-          "Ang iyong mga session, mga record ng app na nasa account, at mga badge.",
-          "Kung pipiliin mo ang **Sa lahat ng produkto ng Bumba**, mabubura rin ang mga membership mo sa ibang produkto ng Bumba.",
+          "Ang inyong email address, profile (kasama ang larawan) at ang hindi na maibabalik na hash ng inyong password.",
+          "Ang inyong mga session, mga record ng app na nasa account, at mga badge.",
+          "Kung pipiliin ninyo ang **Sa lahat ng produkto ng Bumba**, mabubura rin ang inyong mga membership sa ibang produkto ng Bumba.",
           "Kusang nabubura ang mga kopya sa backup sa loob ng hindi hihigit sa 30 araw (30 araw itinatago ang mga backup)."
         ]
       },
       {
-        "h": "Ang naiiwan sa telepono mo",
+        "h": "Ang naiiwan sa inyong telepono",
         "p": [
-          "Naiiwan sa telepono mo ang mga setting ng app at mga record sa telepono (at sa iCloud mo kung naka-on ang iCloud sync). Nabubura ang mga ito kapag binura mo ang app sa telepono."
+          "Naiiwan sa inyong telepono ang mga setting ng app at mga record sa telepono (at sa inyong iCloud kung naka-on ang iCloud sync). Nabubura ang mga ito kapag binura ninyo ang app sa telepono."
         ]
       }
     ]

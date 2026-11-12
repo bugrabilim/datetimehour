@@ -232,7 +232,7 @@ final class Account {
 
     /// Fotoğraf: `data:image/webp;base64,…` (uygulamada 512 piksele küçültülür) ya da nil (kaldır)
     func savePhoto(_ dataUrl: String?) async -> Result {
-        let r = await call("POST", "/v1/profil/foto", ["foto": dataUrl ?? NSNull()], auth: true)
+        let r = await call("POST", "/v1/profil/foto", ["foto": dataUrl.map { $0 as Any } ?? NSNull()], auth: true)
         return r.code == 200 ? .success : .fail(Self.errorOf(r))
     }
 

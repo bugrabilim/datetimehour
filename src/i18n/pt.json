@@ -359,7 +359,7 @@
     "title": "Política de privacidade e cookies | Saat Tarih",
     "description": "Quais dados o Saat Tarih trata, cookies e armazenamento local, estatísticas do Umami, a lista de e-mail e seus direitos pela lei turca KVKK.",
     "h1": "Política de privacidade e cookies",
-    "lead": "Esta página explica quais dados são tratados quando você usa o Saat Tarih, por quê e quais são os seus direitos. O site coleta só o que precisa; não há contas nem anúncios e nenhum cookie é gravado; as estatísticas e os serviços externos só funcionam com a sua permissão.",
+    "lead": "Esta página explica quais dados são tratados quando você usa o Saat Tarih, por quê e quais são os seus direitos. O site coleta só o que precisa; não há anúncios, a conta é opcional e só é gravado um cookie necessário que guarda a sua escolha de cookies; as estatísticas e os serviços externos só funcionam com a sua permissão.",
     "sections": [
       {
         "id": "controller",
@@ -455,7 +455,7 @@
         "id": "cookies",
         "h": "Cookies e armazenamento do navegador",
         "p": [
-          "O Saat Tarih não grava nenhum cookie. Na sua primeira visita, um aviso no rodapé da página pede sua permissão para as estatísticas de visitas (Umami) e os serviços externos (Open-Meteo, OpenStreetMap, YouTube); os dois ficam desativados até você permitir. Você pode mudar sua escolha a qualquer momento pelo link \"Preferências de cookies\" no menu de configurações. Para lembrar suas escolhas usamos o armazenamento local do navegador (localStorage); esses itens fazem parte do grupo necessário, ficam só no seu aparelho e não são enviados a nenhum servidor. Você pode apagá-los a qualquer momento nas configurações do navegador. Política de cookies compartilhada da Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "O Saat Tarih grava só um cookie necessário: a sua escolha no banner de cookies (bumba-cerez), para que o banner não apareça de novo nas páginas da conta (hesap.time.bumba.tr). Na sua primeira visita, um aviso no rodapé da página pede sua permissão para as estatísticas de visitas (Umami) e os serviços externos (Open-Meteo, OpenStreetMap, YouTube); os dois ficam desativados até você permitir. Você pode mudar sua escolha a qualquer momento pelo link \"Preferências de cookies\" no menu de configurações. Para lembrar suas escolhas usamos o armazenamento local do navegador (localStorage); esses itens fazem parte do grupo necessário, ficam só no seu aparelho e não são enviados a nenhum servidor. Você pode apagá-los a qualquer momento nas configurações do navegador. Política de cookies compartilhada da Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -467,7 +467,7 @@
             [
               "bumba-cerez",
               "Lembra sua escolha no aviso de cookies (estatísticas e serviços externos) e a versão da política.",
-              "Até você apagar"
+              "No armazenamento local até você apagar; como cookie, 1 ano"
             ],
             [
               "sth-theme",

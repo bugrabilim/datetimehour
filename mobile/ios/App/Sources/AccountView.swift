@@ -261,11 +261,11 @@ private struct ProfileForm {
     }
 
     var json: [String: Any] {
-        func v(_ s: String) -> Any { let t = s.trimmingCharacters(in: .whitespacesAndNewlines); return t.isEmpty ? NSNull() : t }
+        func v(_ s: String) -> Any { let t = s.trimmingCharacters(in: .whitespacesAndNewlines); return t.isEmpty ? NSNull() as Any : t as Any }
         let n = numara.filter(\.isNumber)
         return ["ad": v(ad), "soyad": v(soyad), "takmaAd": v(takma), "dogumTarihi": v(dogum), "cinsiyet": v(cinsiyet), "ulke": v(ulke),
                 "sehir": v(sehir), "meslek": v(meslek), "hakkimda": v(hakkimda),
-                "telefon": !kod.isEmpty && !n.isEmpty ? ["ulkeKodu": kod, "numara": n] as [String: Any] : NSNull(),
+                "telefon": !kod.isEmpty && !n.isEmpty ? ["ulkeKodu": kod, "numara": n] as Any : NSNull() as Any,
                 "sosyal": sosyal.filter { !$0.value.trimmingCharacters(in: .whitespaces).isEmpty }
                     .map { ["platform": $0.platform, "deger": $0.value.trimmingCharacters(in: .whitespaces)] },
                 "gorunurluk": ["acik": acik, "alanlar": visibleFields.map(\.0).filter { alanlar.contains($0) }]]
@@ -434,9 +434,9 @@ private struct AccountSignedIn: View {
                 }
             }
             Text(A("photoNote")).font(.footnote).foregroundStyle(Theme.muted)
-            TextField(A("firstName"), text: $p.ad.max(100)).textContentType(.givenName)
-            TextField(A("lastName"), text: $p.soyad.max(100)).textContentType(.familyName)
-            TextField(A("nickname"), text: $p.takma.max(60)).textContentType(.nickname)
+            TextField(A("firstName"), text: $p.ad.limited(100)).textContentType(.givenName)
+            TextField(A("lastName"), text: $p.soyad.limited(100)).textContentType(.familyName)
+            TextField(A("nickname"), text: $p.takma.limited(60)).textContentType(.nickname)
             birthDate
             Picker(A("gender"), selection: $p.cinsiyet) {
                 Text(A("none")).tag("")
@@ -457,10 +457,10 @@ private struct AccountSignedIn: View {
             }
             TextField(A("phoneNumber"), text: Binding(get: { p.numara }, set: { p.numara = String($0.filter { $0.isNumber || $0 == " " }.prefix(20)) }))
                 .keyboardType(.phonePad).textContentType(.telephoneNumber)
-            TextField(A("city"), text: $p.sehir.max(100)).textContentType(.addressCity)
-            TextField(A("job"), text: $p.meslek.max(100)).textContentType(.jobTitle)
+            TextField(A("city"), text: $p.sehir.limited(100)).textContentType(.addressCity)
+            TextField(A("job"), text: $p.meslek.limited(100)).textContentType(.jobTitle)
             VStack(alignment: .leading, spacing: 4) {
-                TextField(A("about"), text: $p.hakkimda.max(160), axis: .vertical).lineLimit(2...5)
+                TextField(A("about"), text: $p.hakkimda.limited(160), axis: .vertical).lineLimit(2...5)
                 Text(A("aboutHint") + " · \(p.hakkimda.count)/160").font(.caption).foregroundStyle(Theme.muted)
             }
         } header: { Numbered(n: 1, title: A("profile")) }
@@ -748,7 +748,7 @@ private struct AccountSignedIn: View {
 
 private extension Binding where Value == String {
     /// Alan uzunluğu sınırı (sunucudaki sınırlarla aynı)
-    func max(_ n: Int) -> Binding<String> {
+    func limited(_ n: Int) -> Binding<String> {
         Binding(get: { wrappedValue }, set: { wrappedValue = String($0.prefix(n)) })
     }
 }

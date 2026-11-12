@@ -293,7 +293,7 @@
     "title": "プライバシーと Cookie ポリシー | Saat Tarih",
     "description": "Saat Tarih が処理するデータ、Cookie とローカルストレージの使い方、Umami 統計、メールリスト、トルコの個人データ保護法（KVKK）に基づくあなたの権利。",
     "h1": "プライバシーと Cookie ポリシー",
-    "lead": "このページでは、Saat Tarih を使うときにどのデータがなぜ処理されるのか、あなたにどんな権利があるのかを説明します。サイトは必要なものだけを集めます。アカウントも広告もなく、Cookie も設定しません。統計と外部サービスはあなたの許可があるときだけ動きます。",
+    "lead": "このページでは、Saat Tarih を使うときにどのデータがなぜ処理されるのか、あなたにどんな権利があるのかを説明します。サイトは必要なものだけを集めます。広告はなく、アカウントは任意で、Cookie の選択を覚えておくための必須 Cookie を 1 つだけ設定します。統計と外部サービスはあなたの許可があるときだけ動きます。",
     "sections": [
       {
         "id": "controller",
@@ -389,7 +389,7 @@
         "id": "cookies",
         "h": "Cookie とブラウザのストレージ",
         "p": [
-          "Saat Tarih は Cookie を一切設定しません。初めて訪れたとき、ページ下部のバナーで訪問統計（Umami）と外部サービス（Open-Meteo、OpenStreetMap、YouTube）の許可を求めます。どちらも許可するまではオフのままです。設定メニューの「Cookie の設定」からいつでも選択を変えられます。設定を覚えておくためにブラウザのローカルストレージ（localStorage）を使います。これらの項目は必須のグループに属し、端末にだけ残り、サーバーには送られません。ブラウザの設定からいつでも削除できます。Bumba Group の共通 Cookie ポリシー：[bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)。"
+          "Saat Tarih が設定する Cookie は必須の 1 つだけです。Cookie バナーでの選択（bumba-cerez）で、アカウントページ（hesap.time.bumba.tr）でバナーが再び表示されないようにするためのものです。初めて訪れたとき、ページ下部のバナーで訪問統計（Umami）と外部サービス（Open-Meteo、OpenStreetMap、YouTube）の許可を求めます。どちらも許可するまではオフのままです。設定メニューの「Cookie の設定」からいつでも選択を変えられます。設定を覚えておくためにブラウザのローカルストレージ（localStorage）を使います。これらの項目は必須のグループに属し、端末にだけ残り、サーバーには送られません。ブラウザの設定からいつでも削除できます。Bumba Group の共通 Cookie ポリシー：[bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)。"
         ],
         "table": {
           "head": [
@@ -401,7 +401,7 @@
             [
               "bumba-cerez",
               "Cookie バナーでの選択（統計と外部サービス）とポリシーのバージョンを覚えます。",
-              "削除するまで"
+              "ローカルストレージでは削除するまで、Cookie では 1 年"
             ],
             [
               "sth-theme",

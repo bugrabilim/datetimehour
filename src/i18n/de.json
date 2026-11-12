@@ -320,7 +320,7 @@
     "title": "Datenschutzerklärung und Cookie-Richtlinie | Saat Tarih",
     "description": "Welche Daten Saat Tarih verarbeitet, Cookies und lokaler Speicher, Umami-Statistik, E-Mail-Liste und Ihre Rechte nach türkischem Datenschutzrecht (KVKK).",
     "h1": "Datenschutzerklärung und Cookie-Richtlinie",
-    "lead": "Hier erklären wir, welche Daten bei der Nutzung von Saat Tarih verarbeitet werden, warum und welche Rechte Sie haben. Die Website erhebt nur das Nötige; es gibt keine Konten und keine Werbung, es werden keine Cookies gesetzt; Statistik und externe Dienste laufen nur mit Ihrer Zustimmung.",
+    "lead": "Hier erklären wir, welche Daten bei der Nutzung von Saat Tarih verarbeitet werden, warum und welche Rechte Sie haben. Die Website erhebt nur das Nötige; es gibt keine Werbung, ein Konto ist freiwillig, und nur ein notwendiges Cookie speichert Ihre Cookie-Auswahl; Statistik und externe Dienste laufen nur mit Ihrer Zustimmung.",
     "sections": [
       {
         "id": "controller",
@@ -416,7 +416,7 @@
         "id": "cookies",
         "h": "Cookies und Browser-Speicher",
         "p": [
-          "Saat Tarih setzt keine Cookies. Beim ersten Besuch fragt ein Banner unten auf der Seite nach Ihrer Zustimmung zur Besuchsstatistik (Umami) und zu externen Diensten (Open-Meteo, OpenStreetMap, YouTube); beides bleibt aus, bis Sie zustimmen. Sie können Ihre Wahl jederzeit über den Link „Cookie-Einstellungen“ im Einstellungsmenü ändern. Um Ihre Einstellungen zu speichern, nutzen wir den lokalen Speicher Ihres Browsers (localStorage); diese Einträge gehören zur notwendigen Gruppe, bleiben auf Ihrem Gerät und werden nicht an einen Server gesendet. Sie können sie jederzeit in den Browsereinstellungen löschen. Gemeinsame Cookie-Richtlinie der Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Saat Tarih setzt nur ein notwendiges Cookie: Ihre Auswahl im Cookie-Banner (bumba-cerez), damit das Banner auf den Kontoseiten (hesap.time.bumba.tr) nicht noch einmal erscheint. Beim ersten Besuch fragt ein Banner unten auf der Seite nach Ihrer Zustimmung zur Besuchsstatistik (Umami) und zu externen Diensten (Open-Meteo, OpenStreetMap, YouTube); beides bleibt aus, bis Sie zustimmen. Sie können Ihre Wahl jederzeit über den Link „Cookie-Einstellungen“ im Einstellungsmenü ändern. Um Ihre Einstellungen zu speichern, nutzen wir den lokalen Speicher Ihres Browsers (localStorage); diese Einträge gehören zur notwendigen Gruppe, bleiben auf Ihrem Gerät und werden nicht an einen Server gesendet. Sie können sie jederzeit in den Browsereinstellungen löschen. Gemeinsame Cookie-Richtlinie der Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -428,7 +428,7 @@
             [
               "bumba-cerez",
               "Speichert Ihre Wahl im Cookie-Banner (Statistik und externe Dienste) und die Version der Richtlinie.",
-              "Bis zur Löschung durch Sie"
+              "Im lokalen Speicher bis zur Löschung durch Sie; als Cookie 1 Jahr"
             ],
             [
               "sth-theme",

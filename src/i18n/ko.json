@@ -319,7 +319,7 @@
     "title": "개인정보 및 쿠키 정책 | Saat Tarih",
     "description": "Saat Tarih가 처리하는 데이터, 쿠키와 로컬 저장소 사용, Umami 통계, 이메일 목록, 튀르키예 개인정보보호법(KVKK)에 따른 권리.",
     "h1": "개인정보 및 쿠키 정책",
-    "lead": "이 페이지는 Saat Tarih를 쓸 때 어떤 데이터가 왜 처리되는지, 그리고 어떤 권리가 있는지 설명합니다. 사이트는 꼭 필요한 것만 수집합니다. 계정과 광고가 없고 쿠키도 설정하지 않으며, 통계와 외부 서비스는 허락했을 때만 동작합니다.",
+    "lead": "이 페이지는 Saat Tarih를 쓸 때 어떤 데이터가 왜 처리되는지, 그리고 어떤 권리가 있는지 설명합니다. 사이트는 꼭 필요한 것만 수집합니다. 광고가 없고 계정은 선택 사항이며, 쿠키 선택을 기억하는 필수 쿠키 하나만 설정하고, 통계와 외부 서비스는 허락했을 때만 동작합니다.",
     "sections": [
       {
         "id": "controller",
@@ -415,7 +415,7 @@
         "id": "cookies",
         "h": "쿠키와 브라우저 저장소",
         "p": [
-          "Saat Tarih는 쿠키를 전혀 설정하지 않습니다. 처음 방문하면 페이지 아래쪽 배너에서 방문 통계(Umami)와 외부 서비스(Open-Meteo, OpenStreetMap, YouTube)에 대한 허락을 구하며, 둘 다 허락할 때까지 꺼져 있습니다. 설정 메뉴의 \"쿠키 설정\"에서 언제든 선택을 바꿀 수 있습니다. 선택을 기억하기 위해 브라우저의 로컬 저장소(localStorage)를 사용합니다. 이 항목들은 필수 그룹에 속하며 기기에만 남고 서버로 보내지 않습니다. 브라우저 설정에서 언제든 지울 수 있습니다. Bumba Group 공용 쿠키 정책: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Saat Tarih가 설정하는 쿠키는 필수 쿠키 하나뿐입니다. 쿠키 배너에서 고른 선택(bumba-cerez)으로, 계정 페이지(hesap.time.bumba.tr)에서 배너가 다시 나오지 않게 합니다. 처음 방문하면 페이지 아래쪽 배너에서 방문 통계(Umami)와 외부 서비스(Open-Meteo, OpenStreetMap, YouTube)에 대한 허락을 구하며, 둘 다 허락할 때까지 꺼져 있습니다. 설정 메뉴의 \"쿠키 설정\"에서 언제든 선택을 바꿀 수 있습니다. 선택을 기억하기 위해 브라우저의 로컬 저장소(localStorage)를 사용합니다. 이 항목들은 필수 그룹에 속하며 기기에만 남고 서버로 보내지 않습니다. 브라우저 설정에서 언제든 지울 수 있습니다. Bumba Group 공용 쿠키 정책: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -427,7 +427,7 @@
             [
               "bumba-cerez",
               "쿠키 배너에서 한 선택(통계와 외부 서비스)과 정책 버전을 기억합니다.",
-              "삭제할 때까지"
+              "로컬 저장소에서는 삭제할 때까지, 쿠키로는 1년"
             ],
             [
               "sth-theme",

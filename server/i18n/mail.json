@@ -1015,57 +1015,57 @@
  },
  "fil": {
   "verify": {
-   "subject": "I-verify ang iyong email address",
-   "body": "I-tap ang button sa ibaba para tapusin ang paggawa ng iyong Oras at Petsa account. May bisa ang link nang 24 na oras.",
+   "subject": "I-verify ang inyong email address",
+   "body": "I-tap ang button sa ibaba para tapusin ang paggawa ng inyong Saat Tarih account. May bisa ang link nang 24 na oras.",
    "button": "I-verify ang address ko"
   },
   "reset": {
    "subject": "I-reset ang password",
-   "body": "May humiling na i-reset ang password ng iyong Oras at Petsa account. I-tap ang button sa ibaba para pumili ng bagong password. May bisa ang link nang 1 oras.",
+   "body": "May humiling na i-reset ang password ng inyong Saat Tarih account. I-tap ang button sa ibaba para pumili ng bagong password. May bisa ang link nang 1 oras.",
    "button": "Pumili ng bagong password"
   },
   "exists": {
-   "subject": "May account ka na sa address na ito",
-   "body": "May sumubok gumawa ng bagong Saat Tarih account gamit ang email address na ito, pero may account ka na rito. Kung hindi mo maalala ang password, gamitin ang \"Nakalimutan ang password\" sa screen ng pag-sign in."
+   "subject": "May account na kayo sa address na ito",
+   "body": "May sumubok gumawa ng bagong Saat Tarih account gamit ang email address na ito, pero may account na kayo rito. Kung hindi ninyo maalala ang password, gamitin ang \"Nakalimutan ang password\" sa screen ng pag-sign in."
   },
   "changeOld": {
-   "subject": "Nagbabago ang iyong email address",
-   "body": "May natanggap kaming kahilingang palitan ng {email} ang email address ng iyong Oras at Petsa account. Kung ikaw ang humiling, kumpirmahin ito gamit ang button sa ibaba.",
+   "subject": "Nagbabago ang inyong email address",
+   "body": "May natanggap kaming kahilingang palitan ng {email} ang email address ng inyong Saat Tarih account. Kung kayo ang humiling, kumpirmahin ito gamit ang button sa ibaba.",
    "button": "Kumpirmahin ang pagbabago"
   },
   "deleted": {
-   "subject": "Nabura na ang account mo",
-   "body": "Nabura na ang iyong Saat Tarih account at ang impormasyong kaugnay nito. Maaaring dumating pa sa loob ng 7 araw ang email ng pagbati na naka-iskedyul na. Puwede mo pa ring gamitin ang app at website nang walang account."
+   "subject": "Nabura na ang inyong account",
+   "body": "Nabura na ang inyong Saat Tarih account at ang impormasyong kaugnay nito. Maaaring dumating pa sa loob ng 7 araw ang email ng pagbati na naka-iskedyul na. Puwede pa rin ninyong gamitin ang app at website nang walang account."
   },
-  "ignore": "Kung hindi ikaw ang humiling nito, huwag pansinin ang email na ito; walang magbabago sa iyong account.",
-  "footer": "Natanggap mo ang email na ito dahil sa isang aksyon sa iyong Oras at Petsa account. Ang Oras at Petsa ay produkto ng Bumba Life.",
+  "ignore": "Kung hindi kayo ang humiling nito, huwag pansinin ang email na ito; walang magbabago sa inyong account.",
+  "footer": "Natanggap ninyo ang email na ito dahil sa isang aksyon sa inyong Saat Tarih account. Ang Saat Tarih ay produkto ng Bumba Life.",
   "deletedAll": {
-   "subject": "Nabura na ang iyong Bumba membership",
-   "body": "Nabura na ang iyong Saat Tarih account at ang membership mo sa lahat ng produkto ng Bumba. Maaaring dumating pa sa loob ng 7 araw ang email ng pagbati na naka-iskedyul na."
+   "subject": "Nabura na ang inyong Bumba membership",
+   "body": "Nabura na ang inyong Saat Tarih account at ang inyong membership sa lahat ng produkto ng Bumba. Maaaring dumating pa sa loob ng 7 araw ang email ng pagbati na naka-iskedyul na."
   },
   "passwordChanged": {
-   "subject": "Napalitan ang password mo",
-   "body": "Napalitan ang password ng iyong Saat Tarih account at naisara ang mga bukas na session. Kung hindi ikaw ito, magtakda agad ng bagong password gamit ang \"Nakalimutan ang password\" at sumulat sa {iletisim}."
+   "subject": "Napalitan ang inyong password",
+   "body": "Napalitan ang password ng inyong Saat Tarih account at naisara ang mga bukas na session. Kung hindi kayo ito, magtakda agad ng bagong password gamit ang \"Nakalimutan ang password\" at sumulat sa {iletisim}."
   },
   "suspended": {
-   "subject": "Sinuspinde ang account mo",
-   "body": "Sinuspinde ang iyong Saat Tarih account. Dahilan: {sebep}. Habang suspendido, hindi ka makakapag-sign in; hindi binubura ang iyong impormasyon. Para sa mga tanong, pagbura, o kopya ng iyong data, sumulat sa {iletisim}."
+   "subject": "Sinuspinde ang inyong account",
+   "body": "Sinuspinde ang inyong Saat Tarih account. Dahilan: {sebep}. Habang suspendido, hindi kayo makakapag-sign in; hindi binubura ang inyong impormasyon. Para sa mga tanong, pagbura, o kopya ng inyong data, sumulat sa {iletisim}."
   },
   "reopened": {
-   "subject": "Muling binuksan ang account mo",
-   "body": "Inalis na ang suspensyon ng iyong Saat Tarih account. Makakapag-sign in ka ulit gamit ang iyong email address at password."
+   "subject": "Muling binuksan ang inyong account",
+   "body": "Inalis na ang suspensyon ng inyong Saat Tarih account. Makakapag-sign in kayo ulit gamit ang inyong email address at password."
   },
   "banned": {
-   "subject": "Permanenteng isinara ang account mo",
-   "body": "Permanenteng isinara ang iyong Saat Tarih account at ang membership mo sa lahat ng produkto ng Bumba. Dahilan: {sebep}. Nabura ang iyong profile at data ng paggamit, at hindi na magagamit ang email address na ito para sumali ulit sa mga produkto ng Bumba. Para sa mga tanong, sumulat sa {iletisim}."
+   "subject": "Permanenteng isinara ang inyong account",
+   "body": "Permanenteng isinara ang inyong Saat Tarih account at ang inyong membership sa lahat ng produkto ng Bumba. Dahilan: {sebep}. Nabura ang inyong profile at data ng paggamit, at hindi na magagamit ang email address na ito para sumali ulit sa mga produkto ng Bumba. Para sa mga tanong, sumulat sa {iletisim}."
   },
   "linkedOpened": {
-   "subject": "Bukas na ang membership mo sa Saat Tarih",
-   "body": "Dahil sa iyong Bumba membership, nagbukas din ng account sa Saat Tarih. Makakapag-sign in ka gamit ang parehong email address at password. Kung hindi mo ito hiniling, sumulat sa {iletisim}."
+   "subject": "Bukas na ang inyong membership sa Saat Tarih",
+   "body": "Dahil sa inyong Bumba membership, nagbukas din ng account sa Saat Tarih. Makakapag-sign in kayo gamit ang parehong email address at password. Kung hindi ninyo ito hiniling, sumulat sa {iletisim}."
   },
   "linkedClosed": {
-   "subject": "Naisara ang account mo sa Saat Tarih",
-   "body": "Nabura ang iyong Saat Tarih account at ang impormasyon mo sa produktong ito. Tuloy pa rin ang membership mo sa iba pang produkto ng Bumba."
+   "subject": "Naisara ang inyong account sa Saat Tarih",
+   "body": "Nabura ang inyong Saat Tarih account at ang inyong impormasyon sa produktong ito. Tuloy pa rin ang inyong membership sa iba pang produkto ng Bumba."
   },
   "suspendedUntil": "Kusang matatapos ang suspensyon sa {tarih}.",
   "hello": "Kumusta, {ad}!",
@@ -1073,22 +1073,22 @@
   "celebrate": {
    "birthday": {
     "subject": "Maligayang kaarawan!",
-    "body": "{selam} Binabati ka ng Saat Tarih ng maligayang kaarawan. Nawa'y marami ka pang malulusog at masasayang taon."
+    "body": "{selam} Binabati kayo ng Saat Tarih ng maligayang kaarawan. Nawa'y marami pa kayong malulusog at masasayang taon."
    },
    "anniversary": {
-    "subject": "{n} taon na ang membership mo",
-    "body": "{selam} Ngayong araw, {n} taon na ang iyong Saat Tarih membership. Salamat sa pagsama sa amin."
+    "subject": "{n} taon na ang inyong membership",
+    "body": "{selam} Ngayong araw, {n} taon na ang inyong Saat Tarih membership. Salamat sa pagsama sa amin."
    },
    "newyear": {
     "subject": "Manigong Bagong Taon!",
-    "body": "{selam} Manigong Bagong Taon! Nawa'y magdala ang bagong taon ng kalusugan at kapayapaan sa iyo at sa iyong mga mahal sa buhay."
+    "body": "{selam} Manigong Bagong Taon! Nawa'y magdala ang bagong taon ng kalusugan at kapayapaan sa inyo at sa inyong mga mahal sa buhay."
    },
    "holiday": {
     "subject": "Maligayang {gun}",
-    "body": "{selam} Maligayang {gun}! Nawa'y maging masaya ang araw mo kasama ang iyong mga mahal sa buhay."
+    "body": "{selam} Maligayang {gun}! Nawa'y maging masaya ang inyong araw kasama ang inyong mga mahal sa buhay."
    }
   },
-  "footerCelebrate": "Natanggap mo ang email ng pagbating ito dahil sa iyong Saat Tarih membership; walang patalastas dito. Ang Saat Tarih ay produkto ng Bumba Life.",
+  "footerCelebrate": "Natanggap ninyo ang email ng pagbating ito dahil sa inyong Saat Tarih membership; walang patalastas dito. Ang Saat Tarih ay produkto ng Bumba Life.",
   "unsubscribe": "I-off ang mga email ng pagbati"
  },
  "th": {

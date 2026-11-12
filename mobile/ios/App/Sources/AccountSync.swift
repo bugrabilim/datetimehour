@@ -133,7 +133,7 @@ final class AccountSync {
                     if srvV != local { apply(key, srvV) }
                     map[key] = ["h": Self.hash(srvV), "t": srvT]
                 } else if let local {
-                    push[key] = ["v": local, "t": now]
+                    push[key] = ["v": local, "t": now] as [String: Any]
                     map[key] = ["h": Self.hash(local), "t": now]
                 }
                 continue
@@ -142,7 +142,7 @@ final class AccountSync {
             let localChanged = Self.hash(local) != (last?["h"] as? String ?? "-")
             let serverChanged = srv != nil && srvT > ((last?["t"] as? NSNumber)?.int64Value ?? 0)
             if localChanged {
-                push[key] = ["v": local ?? NSNull(), "t": now]
+                push[key] = ["v": local.map { $0 as Any } ?? NSNull(), "t": now] as [String: Any]
                 map[key] = ["h": Self.hash(local), "t": now]
             } else if serverChanged {
                 apply(key, srvV)

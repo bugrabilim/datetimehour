@@ -293,7 +293,7 @@
     "title": "Məxfilik və kuki siyasəti | Saat Tarih",
     "description": "Saat Tarih-in emal etdiyi məlumatlar, kuki və yerli yaddaş istifadəsi, Umami statistikası, e-poçt siyahısı və KVKK (Türkiyə) üzrə hüquqlarınız.",
     "h1": "Məxfilik və kuki siyasəti",
-    "lead": "Burada Saat Tarih-dən istifadə edərkən hansı məlumatların nə üçün emal olunduğunu və hüquqlarınızı izah edirik. Sayt yalnız lazım olanı toplayır; hesab və reklam yoxdur, kuki qoyulmur; statistika və xarici xidmətlər yalnız icazənizlə işləyir.",
+    "lead": "Burada Saat Tarih-dən istifadə edərkən hansı məlumatların nə üçün emal olunduğunu və hüquqlarınızı izah edirik. Sayt yalnız lazım olanı toplayır; reklam yoxdur, hesab könüllüdür, yalnız kuki seçiminizi saxlayan bir zəruri kuki qoyulur; statistika və xarici xidmətlər yalnız icazənizlə işləyir.",
     "sections": [
       {
         "id": "controller",
@@ -389,7 +389,7 @@
         "id": "cookies",
         "h": "Kukilər və brauzer yaddaşı",
         "p": [
-          "Saat Tarih kuki qoymur. İlk ziyarətinizdə səhifənin altındakı banner ziyarət statistikası (Umami) və xarici xidmətlər (Open-Meteo, OpenStreetMap, YouTube) üçün icazənizi soruşur; ikisi də siz icazə verənə qədər bağlıdır. Seçiminizi istənilən vaxt ayarlar menyusundakı \"Kuki seçimləri\" keçidi ilə dəyişə bilərsiniz. Seçimlərinizi yadda saxlamaq üçün brauzerinizin yerli yaddaşından (localStorage) istifadə edirik; bunlar zəruri qrupdadır, yalnız cihazınızda qalır və serverə göndərilmir. Brauzer ayarlarından istənilən vaxt silə bilərsiniz. Bumba Group-un ortaq kuki siyasəti: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Saat Tarih yalnız bir zəruri kuki qoyur: kuki bannerindəki seçiminiz (bumba-cerez), hesab səhifələrində (hesap.time.bumba.tr) banner ikinci dəfə çıxmasın deyə. İlk ziyarətinizdə səhifənin altındakı banner ziyarət statistikası (Umami) və xarici xidmətlər (Open-Meteo, OpenStreetMap, YouTube) üçün icazənizi soruşur; ikisi də siz icazə verənə qədər bağlıdır. Seçiminizi istənilən vaxt ayarlar menyusundakı \"Kuki seçimləri\" keçidi ilə dəyişə bilərsiniz. Seçimlərinizi yadda saxlamaq üçün brauzerinizin yerli yaddaşından (localStorage) istifadə edirik; bunlar zəruri qrupdadır, yalnız cihazınızda qalır və serverə göndərilmir. Brauzer ayarlarından istənilən vaxt silə bilərsiniz. Bumba Group-un ortaq kuki siyasəti: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -401,7 +401,7 @@
             [
               "bumba-cerez",
               "Kuki bannerindəki seçiminizi (statistika və xarici xidmətlər) və siyasətin versiyasını yadda saxlayır.",
-              "Siz silənədək"
+              "Yerli yaddaşda siz silənədək; kukidə 1 il"
             ],
             [
               "sth-theme",

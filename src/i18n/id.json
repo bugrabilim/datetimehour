@@ -293,7 +293,7 @@
     "title": "Kebijakan Privasi dan Cookie | Saat Tarih",
     "description": "Data yang diproses Saat Tarih, cookie dan penyimpanan lokal, statistik Umami, daftar email, dan hak Anda menurut UU perlindungan data Turki (KVKK).",
     "h1": "Kebijakan privasi dan cookie",
-    "lead": "Halaman ini menjelaskan data apa yang diproses saat Anda memakai Saat Tarih, mengapa, dan apa hak Anda. Situs hanya mengumpulkan yang diperlukan; tidak ada akun, tidak ada iklan, dan tidak ada cookie; statistik dan layanan eksternal hanya berjalan dengan izin Anda.",
+    "lead": "Halaman ini menjelaskan data apa yang diproses saat Anda memakai Saat Tarih, mengapa, dan apa hak Anda. Situs hanya mengumpulkan yang diperlukan; tidak ada iklan, akun bersifat opsional, dan hanya ada satu cookie yang diperlukan untuk menyimpan pilihan cookie Anda; statistik dan layanan eksternal hanya berjalan dengan izin Anda.",
     "sections": [
       {
         "id": "controller",
@@ -389,7 +389,7 @@
         "id": "cookies",
         "h": "Cookie dan penyimpanan peramban",
         "p": [
-          "Saat Tarih tidak memasang cookie apa pun. Pada kunjungan pertama, spanduk di bagian bawah halaman meminta izin Anda untuk statistik kunjungan (Umami) dan layanan eksternal (Open-Meteo, OpenStreetMap, YouTube); keduanya tetap nonaktif sampai Anda mengizinkannya. Anda dapat mengubah pilihan kapan saja lewat tautan \"Preferensi cookie\" di menu pengaturan. Untuk mengingat pilihan Anda kami memakai penyimpanan lokal peramban (localStorage); item ini termasuk kelompok yang diperlukan, tetap di perangkat Anda, dan tidak dikirim ke server. Anda dapat menghapusnya kapan saja di pengaturan peramban. Kebijakan cookie bersama Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Saat Tarih hanya memasang satu cookie yang diperlukan: pilihan Anda di banner cookie (bumba-cerez), agar banner tidak muncul lagi di halaman akun (hesap.time.bumba.tr). Pada kunjungan pertama, spanduk di bagian bawah halaman meminta izin Anda untuk statistik kunjungan (Umami) dan layanan eksternal (Open-Meteo, OpenStreetMap, YouTube); keduanya tetap nonaktif sampai Anda mengizinkannya. Anda dapat mengubah pilihan kapan saja lewat tautan \"Preferensi cookie\" di menu pengaturan. Untuk mengingat pilihan Anda kami memakai penyimpanan lokal peramban (localStorage); item ini termasuk kelompok yang diperlukan, tetap di perangkat Anda, dan tidak dikirim ke server. Anda dapat menghapusnya kapan saja di pengaturan peramban. Kebijakan cookie bersama Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -401,7 +401,7 @@
             [
               "bumba-cerez",
               "Mengingat pilihan Anda di spanduk cookie (statistik dan layanan eksternal) serta versi kebijakan.",
-              "Sampai Anda menghapusnya"
+              "Di penyimpanan lokal sampai Anda menghapusnya; sebagai cookie 1 tahun"
             ],
             [
               "sth-theme",

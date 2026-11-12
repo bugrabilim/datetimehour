@@ -293,7 +293,7 @@
     "title": "Gizlilik ve Çerez Politikası | Saat Tarih",
     "description": "Saat Tarih'in hangi verileri işlediği, çerez ve yerel depolama kullanımı, Umami istatistikleri, e-posta listesi ve KVKK kapsamındaki haklarınız.",
     "h1": "Gizlilik ve çerez politikası",
-    "lead": "Saat Tarih'i kullanırken hangi verilerin işlendiğini, nedenini ve haklarınızı burada özetliyoruz. Site yalnızca gerekli olanı toplar; hesap ve reklam yoktur, çerez bırakılmaz; istatistik ve dış hizmetler yalnız izninizle çalışır.",
+    "lead": "Saat Tarih'i kullanırken hangi verilerin işlendiğini, nedenini ve haklarınızı burada özetliyoruz. Site yalnızca gerekli olanı toplar; reklam yoktur, hesap isteğe bağlıdır, yalnız çerez seçiminizi saklayan bir zorunlu çerez bırakılır; istatistik ve dış hizmetler yalnız izninizle çalışır.",
     "sections": [
       {
         "id": "veri-sorumlusu",
@@ -389,7 +389,7 @@
         "id": "cerezler",
         "h": "Çerezler ve tarayıcı depolaması",
         "p": [
-          "Saat Tarih çerez bırakmaz. İlk ziyaretinizde sayfanın altındaki bantta ziyaret istatistiği (Umami) ve dış hizmetler (Open-Meteo, OpenStreetMap, YouTube) için izninizi sorarız; ikisi de siz izin verene kadar kapalıdır. Seçiminizi ayarlar menüsündeki \"Çerez tercihleri\" bağlantısıyla istediğiniz zaman değiştirebilirsiniz. Tercihlerinizi hatırlamak için tarayıcınızın yerel depolama alanını (localStorage) kullanırız; bunlar zorunlu gruptadır, yalnızca cihazınızda durur ve sunucuya gönderilmez. Tarayıcı ayarlarından istediğiniz zaman silebilirsiniz. Bumba Group'un ortak çerez politikası: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi)."
+          "Saat Tarih yalnız bir zorunlu çerez bırakır: çerez bandındaki seçiminiz (bumba-cerez), hesap sayfalarında (hesap.time.bumba.tr) bant ikinci kez çıkmasın diye. İlk ziyaretinizde sayfanın altındaki bantta ziyaret istatistiği (Umami) ve dış hizmetler (Open-Meteo, OpenStreetMap, YouTube) için izninizi sorarız; ikisi de siz izin verene kadar kapalıdır. Seçiminizi ayarlar menüsündeki \"Çerez tercihleri\" bağlantısıyla istediğiniz zaman değiştirebilirsiniz. Tercihlerinizi hatırlamak için tarayıcınızın yerel depolama alanını (localStorage) kullanırız; bunlar zorunlu gruptadır, yalnızca cihazınızda durur ve sunucuya gönderilmez. Tarayıcı ayarlarından istediğiniz zaman silebilirsiniz. Bumba Group'un ortak çerez politikası: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi)."
         ],
         "table": {
           "head": [
@@ -401,7 +401,7 @@
             [
               "bumba-cerez",
               "Çerez bandındaki seçiminizi (istatistik ve dış hizmetler) ve politikanın sürümünü hatırlar.",
-              "Siz silene kadar"
+              "Yerel depoda siz silene kadar; çerezde 1 yıl"
             ],
             [
               "sth-theme",

@@ -23,8 +23,18 @@
 
   /* ---- Çerez bandı (standart madde 14): zorunlu + istatistik; Umami yalnız izinle ---- */
   const KEY = "bumba-cerez", VERSION = "2026-10-21";
-  const readChoice = () => { try { const c = JSON.parse(localStorage.getItem(KEY) || "null"); return c && c.surum === VERSION ? c : null; } catch { return null; } };
-  const saveChoice = (stats) => { try { localStorage.setItem(KEY, JSON.stringify({ surum: VERSION, istatistik: !!stats })); } catch {} };
+  // Seçim sitedekiyle ortak (standart 5.17 madde 14): önce yerel depo, yoksa time.bumba.tr alan adındaki `bumba-cerez`
+  // çerezi; yazarken ikisi birlikte. Sitenin "dış hizmetler" seçimi (dis) korunur.
+  const cookieRead = () => { const m = document.cookie.match(/(?:^|;\s*)bumba-cerez=([^;]*)/); return m ? decodeURIComponent(m[1]) : null; };
+  const raw = () => { let v = null; try { v = localStorage.getItem(KEY); } catch {} return v || cookieRead(); };
+  const readChoice = () => { try { const c = JSON.parse(raw() || "null"); return c && c.surum === VERSION && typeof c.istatistik === "boolean" ? c : null; } catch { return null; } };
+  const saveChoice = (stats) => {
+    const prev = readChoice();
+    const v = JSON.stringify({ surum: VERSION, istatistik: !!stats, dis: !!(prev && prev.dis) });
+    try { localStorage.setItem(KEY, v); } catch {}
+    const dom = /(^|\.)time\.bumba\.tr$/.test(location.hostname) ? "; Domain=time.bumba.tr" : "";
+    try { document.cookie = `${KEY}=${encodeURIComponent(v)}${dom}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`; } catch {}
+  };
   const bar = $("#cookie-bar"), dlg = $("#cookie-dialog");
   function loadUmami() {
     if (!D.umami || document.querySelector("script[data-website-id]")) return;
