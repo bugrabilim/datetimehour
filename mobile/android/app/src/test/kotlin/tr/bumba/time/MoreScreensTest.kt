@@ -673,8 +673,19 @@ class MoreScreensTest {
         page("tr-hesap", "Hesap") { AccountScreen {} }
         page("ar-hesap", "الحساب", qualifiers = "ar") { AccountScreen {} }
         // Giriş ve oturum yenileme aynı kullanıcıyı döner (ekran açılınca refresh çağrılır)
-        val user = org.json.JSONObject().put("id", "u1").put("email", "ayse@example.com").put("name", "Ayşe").put("lang", "tr")
-        Account.transport = { _, _, _, _ -> Account.Resp(200, org.json.JSONObject().put("token", "t").put("user", user).toString(), null) }
+        val user = org.json.JSONObject().put("id", "u1").put("email", "ayse@example.com").put("name", "").put("lang", "tr")
+        val session = """[{"token":"t","client":"android","createdAt":"2026-11-12T09:00:00Z","updatedAt":"2026-11-12T10:00:00Z"},{"token":"w","client":null,"createdAt":"2026-11-10T08:00:00Z","updatedAt":"2026-11-11T19:30:00Z"}]"""
+        Account.transport = { _, p, _, _ ->
+            when (p) {
+                "/v1/hesap" -> Account.Resp(200, """{"eposta":"ayse@example.com","uyeNo":10458,"uyelikTarihi":"2026-11-12T09:00:00Z","kutlama":true,"profil":{"ad":"Ayşe","ulke":"TR","telefon":{"ulkeKodu":"+90","numara":"5321234567"},"gorunurluk":{"acik":true,"alanlar":["ad"]},"sosyal":[{"platform":"instagram","deger":"aysee"}]}}""", null)
+                "/api/auth/list-sessions" -> Account.Resp(200, session, null)
+                "/v1/uyelik/urunler" -> Account.Resp(200, """{"urunler":[{"site":"saat-tarih","ad":"Saat Tarih","acik":true,"kendisi":true},{"site":"gander","ad":"Gander","acik":false,"kendisi":false}]}""", null)
+                "/v1/uyelik/durum" -> Account.Resp(200, """{"ayriHesap":false}""", null)
+                "/v1/kayitlar" -> Account.Resp(200, """{"kayitlar":{},"simdi":1}""", null)
+                "/v1/rozetler" -> Account.Resp(200, """{"rozetler":[{"id":"renk","gun":"2026-11-01"}]}""", null)
+                else -> Account.Resp(200, org.json.JSONObject().put("token", "t").put("user", user).toString(), null)
+            }
+        }
         kotlinx.coroutines.runBlocking { Account.signIn("ayse@example.com", "guclu-sifre-1") }
         page("tr-hesap-girisli", "Hesap") { AccountScreen {} }
         page("tr-ayarlar-hesap", "Ayarlar") { SettingsScreen {} }

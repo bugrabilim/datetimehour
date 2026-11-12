@@ -1,6 +1,7 @@
 package tr.bumba.time
 
 import kotlinx.coroutines.launch
+import androidx.lifecycle.lifecycleScope
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -100,6 +101,8 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         BadgeStore.appOpened()
+        // Girişliyse kayıtlar ve rozetler hesapla eşitlenir (madde 7 ve 13; sahibin kararı S1)
+        if (Account.signedIn) lifecycleScopeLaunchSync()
         AccentPalette.initDynamic(this) // duvar kâğıdı değişmiş olabilir (Material You)
         // Aralık antrenmanı sürüyorsa sesli duyuru hizmeti çalışsın (uygulama zorla kapatılmış olabilir)
         HiitService.sync(this)
@@ -341,4 +344,9 @@ private fun BackRow(to: Tab, onBack: () -> Unit) {
         Spacer(Modifier.width(6.dp))
         Text(Features.label(to), color = Theme.c.accent, fontSize = 16.sp)
     }
+}
+
+/** Uygulama öne gelince hesapla eşitleme (ağ işi arka planda) */
+private fun ComponentActivity.lifecycleScopeLaunchSync() {
+    lifecycleScope.launch { AccountSync.sync() }
 }

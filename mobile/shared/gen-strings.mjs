@@ -182,6 +182,11 @@ for (const { meta } of CALENDARS) {
   walk(CAL_TEXTS[meta.id].tr, []);
 }
 
+/* Üyelik ekranlarının metinleri (standart 5.15 madde 7; 12 Kasım 2026): web'deki hesap sayfalarıyla tek kaynak
+   server/i18n/account.json → account.<anahtar>. Uygulamaya özgü birkaç hesap metni app-strings.json'da (account.rowSignedOut…). */
+const ACCOUNT = JSON.parse(fs.readFileSync(path.join(ROOT, "server/i18n/account.json"), "utf8"));
+for (const k of Object.keys(ACCOUNT.tr)) KEYS[`account.${k}`] = (t, l) => ACCOUNT[l][k];
+
 const APP = JSON.parse(fs.readFileSync(path.join(HERE, "app-strings.json"), "utf8"));
 for (const [key, byLang] of Object.entries(APP)) {
   if (key === "_") continue;
@@ -382,8 +387,13 @@ const duotoneJson = JSON.stringify(duotoneSrc) + "\n";
 /* NASA SVS CGI Moon Kit dokusu (kamu malı; 2. analiz #103): ikili dosya, uygulamalara kopyalanır */
 const moonJpg = fs.readFileSync(path.join(ROOT, "src/assets/moon.jpg"));
 
+/* Profildeki ülke ve telefon kodu listesi (server/data/countries.json; libphonenumber-js meta verisi, MIT) */
+const countriesJson = fs.readFileSync(path.join(ROOT, "server/data/countries.json"), "utf8");
+
 const files = {
   ...otdFiles,
+  "mobile/ios/App/Resources/countries.json": countriesJson,
+  "mobile/android/app/src/main/assets/countries.json": countriesJson,
   "mobile/ios/App/Resources/sky-events.json": skyEventsJson,
   "mobile/android/app/src/main/assets/sky-events.json": skyEventsJson,
   "mobile/ios/App/Resources/constellations.json": constellationsJson,
