@@ -8,6 +8,7 @@ RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
 COPY src ./src
 COPY i18n ./i18n
 COPY data ./data
+COPY web ./web
 USER node
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s CMD wget -qO- http://127.0.0.1:8080/saglik >/dev/null || exit 1
