@@ -438,19 +438,10 @@
       },
       {
         "id": "account",
-        "h": "Account sa mga app (membership)",
+        "h": "Membership",
         "p": [
-          "Hindi mo kailangan ng account para magamit ang Saat Tarih, at walang membership sa website na ito. Sa mga app para sa iPhone at Android, puwede kang gumawa ng opsyonal na account gamit ang iyong email address at isang password; gagamitin ito sa hinaharap ng mga feature para sa grupo. Ang bahaging ito ang paunawa ng impormasyon para sa account na iyon (KVKK ng Türkiye, Artikulo 10)."
-        ],
-        "ul": [
-          "**Datos na pinoproseso:** ang iyong email address; ang display name (puwedeng palayaw); ang wika ng app; ang buod ng iyong password na hindi na maibabalik (hindi iniimbak ang password mismo); ang petsa ng pagbukas at huling paggamit ng account; ang iyong mga session (session key, IP address, pagkakakilanlan ng app [user agent], oras ng simula at pagtatapos); panandaliang bilang ng mga pagtatangka sa pag-sign in at iba pang aksiyon sa account (kasama ang IP address).",
-          "**Layunin at legal na batayan:** ang paggawa ng account, pag-sign in mo at pagpapadala ng mga email ng account (pag-verify, pag-reset ng password, pagpapalit ng address, babala bago burahin ang hindi ginagamit na account, kumpirmasyon ng pagbura) ay kailangan para mabuo at matupad ang kasunduan natin (KVKK, Art. 5(2)(c)). Ang seguridad ng account at pag-iwas sa pang-aabuso (mga IP address, bilang ng pagtatangka) ay nakabatay sa aming lehitimong interes (Art. 5(2)(f)). Hindi kami nagpapadala ng promotional na email; ang paggawa ng account ay hindi pagsali sa email list.",
-          "**Paraan ng pagkolekta:** elektroniko, sa pamamagitan ng mga form ng pag-sign up at pag-sign in sa app at ng mga request ng app sa aming account server (hesap.time.bumba.tr).",
-          "**Lugar ng pag-iimbak at mga tatanggap:** nakaimbak ang datos sa aming server sa Istanbul. Ibinibigay lamang ito sa dalawang service provider na nagpapatakbo ng serbisyo para sa amin at ayon sa aming tagubilin (data processor): para ipadala ang mga email ng account, tinatanggap ng **Resend** (Plus Five Five, Inc., USA) ang iyong email address at ang nilalaman ng email (kasama ang mga link); ang gabi-gabing backup ng database ay iniimbak sa **Cloudflare** (Cloudflare, Inc., USA) sa R2 storage service nito, naka-encrypt sa panig ng Cloudflare, nang 30 araw, at naglalaman ng lahat ng impormasyon ng iyong account. Maaaring gumamit ang dalawang kumpanya ng sarili nilang sub-processor (hal. hosting) para sa serbisyo. Kapag hinihingi ng batas, ibinibigay ang impormasyon sa mga awtorisadong ahensiya ng pamahalaan. Hindi namin ibinabahagi ang iyong datos kaninuman at hindi namin ito ibinebenta.",
-          "**Paglilipat sa ibang bansa:** nasa US ang dalawang serbisyong ito, kaya napupunta sa US ang mga email ng account at ang mga backup. Maaaring hindi kapareho ng sa Türkiye ang antas ng proteksyon ng personal na data sa US. Opsyonal ang paggawa ng account; kung hindi ka gagawa, walang impormasyon mo ang mapupunta sa mga serbisyong ito.",
-          "**Tagal ng pag-iimbak:** hanggang burahin mo ang account. Binubura ang account na hindi na-verify sa loob ng 7 araw. Binubura ang account na hindi nagamit nang 2 taon; nag-e-email kami sa iyo 30 araw bago nito. Binubura ang mga session kapag nag-expire (hindi hihigit sa 90 araw), ang bilang ng pagtatangka sa loob ng isang araw; nabubura ang mga kopya sa backup sa loob ng hindi hihigit sa 30 araw (30 araw iniimbak ang mga backup).",
-          "**Sa iyong telepono:** nakaimbak ang session key sa ligtas na storage ng telepono (Keychain sa iPhone, naka-encrypt na storage sa Android) at binubura kapag nag-sign out ka.",
-          "**Ang iyong mga karapatan:** makikita at mada-download mo ang iyong datos sa app (Settings › Account › I-download ang aking data), maitatama ito (pangalan, wika, email) at mabubura ang iyong account ([Pagbura ng iyong account]({deleteUrl})). Para sa iba mong karapatan sa ilalim ng Artikulo 11 ng KVKK: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "Hindi kailangan ng account para gamitin ang Saat Tarih. Kung gusto mo, puwede kang magbukas ng Bumba membership sa website (hesap.time.bumba.tr) at sa mga app gamit ang iyong email address at password; gumagana rin ang parehong membership sa ibang produkto ng Bumba.",
+          "Kung anong impormasyon ang pinoproseso ng membership at bakit, saan ito iniimbak at ang iyong mga karapatan ay nakasulat sa pinagsasaluhang [abiso sa privacy ng Bumba membership](https://bumbagroup.com/uyelik-aydinlatma?dil=en); ang mga tuntunin ay nasa [mga tuntunin ng membership](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Puwede mong burahin ang account mo anumang oras: [Pagbura ng account]({deleteUrl})."
         ]
       },
       {
@@ -3480,66 +3471,40 @@
     ]
   },
   "account": {
-    "pwTitle": "Bagong password | Saat Tarih",
-    "pwDesc": "Gumawa ng bagong password para sa iyong account sa mga app ng Saat Tarih.",
-    "pwH1": "Gumawa ng bagong password",
-    "pwNew": "Bagong password",
-    "pwRepeat": "Ulitin ang bagong password",
-    "pwHint": "Hindi bababa sa 8 character.",
-    "pwShow": "Ipakita ang password",
-    "pwSave": "I-save ang password",
-    "pwOk": "Napalitan na ang iyong password. Mag-sign in sa app gamit ang bagong password; na-sign out ka na sa iba mong device.",
-    "pwErrMatch": "Hindi magkapareho ang dalawang password.",
-    "pwErrLength": "Dapat 8 hanggang 128 character ang password.",
-    "pwErrLink": "Nag-expire na o nagamit na ang link na ito. Humingi ng bago sa app: Mag-sign in › Nakalimutan ang password.",
-    "pwNoToken": "Nabubuksan ang pahinang ito mula sa link sa email para i-reset ang password. Para makakuha nito, gamitin ang Mag-sign in › Nakalimutan ang password sa app.",
-    "vTitle": "Pag-verify ng email | Saat Tarih",
-    "vDesc": "Resulta ng pag-verify sa email address ng iyong account sa mga app ng Saat Tarih.",
-    "vH1": "Pag-verify ng email",
-    "vOk": "Na-verify na ang iyong email address. Bumalik sa app at mag-sign in sa iyong account.",
-    "vStep": "Inaprubahan mo ang pagbabago. Tapusin ngayon sa pagbukas ng link na ipinadala namin sa iyong bagong address.",
-    "vChanged": "Na-verify na ang iyong bagong email address. Mula ngayon, mag-sign in gamit ang address na ito sa app.",
-    "vErr": "Nag-expire na o nagamit na ang link na ito. Humingi ng bagong link sa app.",
-    "noJs": "Kailangan ng JavaScript ang pahinang ito.",
     "delTitle": "Burahin ang account | Saat Tarih",
-    "delDesc": "Paano burahin ang iyong account sa mga app ng Saat Tarih para sa iPhone at Android, at kung ano ang nabubura.",
+    "delDesc": "Paano burahin ang iyong Saat Tarih account sa website o sa mga app para sa iPhone at Android, at kung ano ang nabubura.",
     "delH1": "Pagbura ng iyong account",
-    "delLead": "Opsyonal ang account sa mga app ng Saat Tarih at mabubura mo ito anumang oras. Kapag binura mo ito, agad na aalisin sa aming server ang impormasyon ng account.",
+    "delLead": "Opsyonal ang account sa Saat Tarih at puwede mo itong burahin anumang oras. Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw.",
     "delSections": [
       {
-        "h": "Burahin sa app",
+        "h": "Pagbura sa website o sa app",
         "ul": [
-          "Buksan ang **Settings › Account** sa app.",
-          "I-tap ang **Burahin ang account** at ilagay ang iyong password.",
-          "Agad na nabubura ang account at nagpapadala kami ng kumpirmasyon sa iyong email address. Puwede mo pa ring gamitin ang app nang walang account."
+          "Mag-sign in sa **hesap.time.bumba.tr**, o buksan ang **Settings › Account** sa app.",
+          "Sa **Burahin ang account**, piliin ang **Sa Saat Tarih lang** o **Sa lahat ng produkto ng Bumba**.",
+          "Ilagay ang password mo (hindi kailangan kung nag-sign in ka sa nakaraang 24 na oras) at kumpirmahin.",
+          "Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw; padadalhan ka namin ng email. Puwede mo pa ring gamitin ang Saat Tarih nang walang account."
         ]
       },
       {
-        "h": "Kung hindi mo magamit ang app",
+        "h": "Kung hindi ka makapag-sign in",
         "p": [
-          "Kung nakalimutan mo ang password, gumawa ng bago sa **Mag-sign in › Nakalimutan ang password** sa app, saka burahin ang account.",
-          "Kung wala ka nang app o telepono, sumulat sa [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) **mula sa email address ng iyong account** at hilinging burahin ito. Kapag natiyak naming iyo ang address, buburahin namin ang account sa loob ng hindi hihigit sa 30 araw at sasabihan ka namin."
+          "Kung nakalimutan mo ang password, magtakda ng bago sa **Mag-sign in › Nakalimutan ang password**, saka burahin ang account.",
+          "Kung hindi mo rin ma-access ang email mo, sumulat sa [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Kapag nakumpirma naming sa iyo ang account, buburahin namin ito at aabisuhan ka."
         ]
       },
       {
         "h": "Ano ang nabubura?",
         "ul": [
-          "Ang iyong email address, display name, wika at ang buod ng iyong password na hindi na maibabalik.",
-          "Ang iyong mga session (kasama ang mga IP address at impormasyon ng app) at ang tala kung kailan huling ginamit ang account.",
-          "Kapag dumating ang mga feature para sa grupo: ang iyong pagiging miyembro ng mga grupo at ang mga idinagdag mo sa mga ito.",
-          "Kusang nabubura ang mga kopya sa gabi-gabing backup ng database sa loob ng hindi hihigit sa 30 araw (30 araw iniimbak ang mga backup)."
+          "Ang iyong email address, profile (kasama ang larawan) at ang hindi na maibabalik na hash ng password mo.",
+          "Ang iyong mga session, mga record ng app na nasa account, at mga badge.",
+          "Kung pipiliin mo ang **Sa lahat ng produkto ng Bumba**, mabubura rin ang mga membership mo sa ibang produkto ng Bumba.",
+          "Kusang nabubura ang mga kopya sa backup sa loob ng hindi hihigit sa 30 araw (30 araw itinatago ang mga backup)."
         ]
       },
       {
-        "h": "Ang natitira sa iyong telepono",
+        "h": "Ang naiiwan sa telepono mo",
         "p": [
-          "Hindi bahagi ng account ang iyong settings, alarm, tala ng dasal at pag-aayuno, mga note at iba pang impormasyon sa app: nananatili ang mga ito sa iyong telepono (at sa iyong iCloud kung naka-on ang iCloud sync). Kapag binura mo ang app sa telepono, nabubura rin ang mga ito."
-        ]
-      },
-      {
-        "h": "Mga hindi ginagamit na account",
-        "p": [
-          "Kusang binubura ang account na hindi nagamit nang 2 taon; nagpapadala kami ng email 30 araw bago nito. Binubura ang account na hindi na-verify ang email address sa loob ng 7 araw."
+          "Naiiwan sa telepono mo ang mga setting ng app at mga record sa telepono (at sa iCloud mo kung naka-on ang iCloud sync). Nabubura ang mga ito kapag binura mo ang app sa telepono."
         ]
       }
     ]

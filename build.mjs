@@ -122,7 +122,6 @@ for (const [name, from] of [
   ["photo.js", "js/photo.js"],
   ["panchang.js", "js/panchang.js"],
   ["globe.js", "js/globe.js"],
-  ["account.js", "js/account.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
@@ -182,6 +181,7 @@ for (const f of ["favicon.svg", "favicon.ico", "icon-192.png", "icon-512.png", "
 /* ---------- parçalar ---------- */
 /* Uygulamaların hesap sunucusu (server/): e-postadaki şifre sıfırlama bağlantısı sitedeki formu açar, form oraya gönderilir */
 const HESAP_ORIGIN = "https://hesap.time.bumba.tr";
+const ACCOUNT_UI = readJson("server/i18n/account.json");
 const CSP = [
   "default-src 'self'",
   "script-src 'self' https://istatistik.bumba.tr",
@@ -190,7 +190,7 @@ const CSP = [
   "frame-src 'self' https://www.youtube-nocookie.com", // gömme kodu önizlemesi (kendi sitesi) ve alarm müziği (YouTube gelişmiş gizlilik modu; dış hizmet izniyle, 31 Ekim 2026)
   "style-src 'self'",
   "font-src 'self'",
-  `form-action 'self' https://bumbagroup.com ${HESAP_ORIGIN}`, // hesap: sitedeki şifre sıfırlama formu hesap sunucusuna gider (üyelik, 10 Kasım 2026)
+  "form-action 'self' https://bumbagroup.com",
   "base-uri 'self'",
   "object-src 'none'",
 ].join("; ");
@@ -203,6 +203,7 @@ const LOGO = `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-
 const ICON_PIN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>`;
 const ICON_GEAR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>`;
 const ICON_LOCK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`;
+const ICON_USER = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>`;
 const ICON_COOKIE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.5A9 9 0 1 1 11.5 3a3 3 0 0 0 4 4 3 3 0 0 0 5.5 5.5z"/><circle cx="8.5" cy="11" r="1"/><circle cx="12" cy="16" r="1"/><circle cx="15.5" cy="13" r="1"/></svg>`;
 const ICON_MENU = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`;
 const ICON_FULL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>`;
@@ -561,6 +562,7 @@ ${(alt ? altLangs : LANGS).filter((l) => l !== lang).map((l) => `<meta property=
           <label class="set-look-row"><span>${esc(u.lookSep)}</span><select class="set-select" data-look="sep">${["colon", "dot"].map((k) => `<option value="${k}">${esc(u.lookSeps[k])}</option>`).join("")}</select></label>
           <label class="set-look-row"><span>${esc(u.lookWeekStart)}</span><select class="set-select" data-look="weekStart">${["mon", "sun", "sat"].map((k) => `<option value="${k}">${esc(u.lookWeekStarts[k])}</option>`).join("")}</select></label>
           <span class="set-sub">${esc(u.lookNote)}</span></div>
+        <a class="set-item" href="${HESAP_ORIGIN}/hesap?dil=${lang}">${ICON_USER}<span>${esc(ACCOUNT_UI[lang].title)}</span></a>
         <a class="set-item" href="${ROUTES[lang].privacy}">${ICON_LOCK}<span>${esc(t.consent.privacy)}</span></a>
         <button type="button" class="set-item" data-consent-open aria-haspopup="dialog">${ICON_COOKIE}<span>${esc(t.consent.footerLink)}</span></button>
         <div class="set-item set-langrow">${ICON_GLOBE}<label class="sr-only" for="${sid}">${esc(u.langMenu)}</label><select id="${sid}" class="set-select" data-lang-select>${langOpts}</select></div>
@@ -860,50 +862,14 @@ function buildPrivacy(lang) {
   return { lang, key: "privacy", path: pagePath, title: pr.title, description: pr.description, body, ld, nav: "privacy" };
 }
 
-/* ---------- Uygulamalardaki hesap (üyelik, 10 Kasım 2026; server/, docs/uyelik-plani-2026-11.md) ----------
-   Sunucu kullanıcıya sayfa göstermez; e-postadaki bağlantılar bu statik sayfalarda açılır. Şifre ve doğrulama sayfaları
-   noindex, sitemap/llms/aramada yok, Umami yok (adreste tek kullanımlık anahtar). Hesap silme sayfası herkese açık (Google
-   Play hesap silme adresi ister). Durumu adresten account.js okur; betiksiz tarayıcıda <noscript> notu. */
+/* ---------- Hesap silme bilgi sayfası (standart 5.15 madde 7; 12 Kasım 2026) ----------
+   Giriş, kayıt, şifre sıfırlama ve e-posta doğrulama sayfaları üyelik sunucusundadır (hesap.time.bumba.tr, server/src/web.mjs);
+   eski statik /hesap/sifre/ ve /hesap/dogrulandi/ adresleri nginx'te oraya 301. Bu sayfa herkese açık kalır (mağazalar hesap
+   silme adresi ister). Ayarlar menüsündeki "Hesap" bağlantısının adı üyelik sunucusunun metinlerinden (server/i18n/account.json). */
 extendRoutes({
-  tr: { accountPw: "/hesap/sifre/", accountVerified: "/hesap/dogrulandi/", accountDelete: "/hesap-silme/" },
-  en: { accountPw: "/en/account/password/", accountVerified: "/en/account/verified/", accountDelete: "/en/account-deletion/" },
+  tr: { accountDelete: "/hesap-silme/" },
+  en: { accountDelete: "/en/account-deletion/" },
 });
-function accountShell(lang, h1, inner) {
-  const a = I[lang].account;
-  return `<section class="section acct">
-  <div class="wrap acct-wrap">
-    <h1>${esc(h1)}</h1>
-    ${inner}
-    <noscript><p class="form-msg err is-shown">${esc(a.noJs)}</p></noscript>
-  </div>
-</section>`;
-}
-function buildAccountPassword(lang) {
-  const a = I[lang].account;
-  const msg = (state, cls, text) => `<p class="form-msg ${cls} is-shown" data-state="${state}" role="status" hidden>${esc(text)}</p>`;
-  const inner = `<div data-account="password">
-    ${msg("ok", "ok", a.pwOk)}${msg("err-baglanti", "err", a.pwErrLink)}${msg("none", "err", a.pwNoToken)}
-    <div data-state="form" hidden>
-      <p class="form-msg err is-shown" data-form-err role="alert" hidden></p>
-      <form class="acct-form" action="${HESAP_ORIGIN}/sifre" method="post" data-pw-form data-err-match="${esc(a.pwErrMatch)}" data-err-length="${esc(a.pwErrLength)}">
-        <input type="hidden" name="token" value="">
-        <input type="hidden" name="dil" value="${lang}">
-        <div class="field"><label for="pw-new">${esc(a.pwNew)}</label><input id="pw-new" name="sifre" type="password" autocomplete="new-password" minlength="8" maxlength="128" required aria-describedby="pw-hint"></div>
-        <div class="field"><label for="pw-again">${esc(a.pwRepeat)}</label><input id="pw-again" name="sifre2" type="password" autocomplete="new-password" minlength="8" maxlength="128" required></div>
-        <p class="acct-hint" id="pw-hint">${esc(a.pwHint)}</p>
-        <label class="check"><input type="checkbox" data-pw-show><span>${esc(a.pwShow)}</span></label>
-        <button class="btn" type="submit">${esc(a.pwSave)}</button>
-      </form>
-    </div>
-  </div>`;
-  return { lang, key: "accountPw", path: ROUTES[lang].accountPw, title: a.pwTitle, description: a.pwDesc, body: accountShell(lang, a.pwH1, inner), ld: baseLd(lang), noindex: true, noStats: true, noHreflang: true, scripts: ["account.js"] };
-}
-function buildAccountVerified(lang) {
-  const a = I[lang].account;
-  const msg = (state, cls, text) => `<p class="form-msg ${cls} is-shown" data-state="${state}" role="status" hidden>${esc(text)}</p>`;
-  const inner = `<div data-account="verified">${msg("ok", "ok", a.vOk)}${msg("step", "ok", a.vStep)}${msg("changed", "ok", a.vChanged)}${msg("err", "err", a.vErr)}</div>`;
-  return { lang, key: "accountVerified", path: ROUTES[lang].accountVerified, title: a.vTitle, description: a.vDesc, body: accountShell(lang, a.vH1, inner), ld: baseLd(lang), noindex: true, noStats: true, noHreflang: true, scripts: ["account.js"] };
-}
 function buildAccountDelete(lang) {
   const t = I[lang];
   const a = t.account;
@@ -3333,7 +3299,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildPhoto(lang), buildPanchang(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), buildAccountPassword(lang), buildAccountVerified(lang), buildAccountDelete(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildPhoto(lang), buildPanchang(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), buildAccountDelete(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

@@ -438,19 +438,10 @@
       },
       {
         "id": "account",
-        "h": "Cuenta en las aplicaciones (membresía)",
+        "h": "Membresía",
         "p": [
-          "No necesita una cuenta para usar Saat Tarih, y este sitio web no tiene membresía. En las aplicaciones para iPhone y Android puede abrir una cuenta opcional con su dirección de correo y una contraseña; en el futuro la usarán las funciones que trabajan con grupos. Esta sección es el aviso informativo de esa cuenta (KVKK, ley turca de protección de datos, artículo 10)."
-        ],
-        "ul": [
-          "**Datos tratados:** su dirección de correo; su nombre visible (puede ser un seudónimo); el idioma de la aplicación; un resumen irreversible de su contraseña (la contraseña en sí no se guarda); las fechas de apertura y último uso de la cuenta; sus sesiones (clave de sesión, dirección IP, identificación de la aplicación [user agent], inicio y fin); contadores de intentos de corta duración para el inicio de sesión y otras acciones de la cuenta (con la dirección IP).",
-          "**Finalidades y base jurídica:** abrir la cuenta, iniciar su sesión y enviar los correos de la cuenta (verificación, restablecimiento de contraseña, cambio de dirección, aviso antes de eliminar una cuenta sin uso, confirmación de eliminación) son necesarios para celebrar y ejecutar el contrato entre nosotros (KVKK, art. 5/2-c). La seguridad de la cuenta y la prevención de abusos (direcciones IP, contadores de intentos) se basan en nuestro interés legítimo (art. 5/2-f). No enviamos correos promocionales; abrir una cuenta no le inscribe en la lista de correo.",
-          "**Forma de recogida:** por medios electrónicos, mediante los formularios de registro e inicio de sesión de la aplicación y las solicitudes que la aplicación envía a nuestro servidor de cuentas (hesap.time.bumba.tr).",
-          "**Lugar de conservación y destinatarios:** los datos se conservan en nuestro servidor de Estambul. Solo se comunican a dos proveedores que prestan el servicio en nuestro nombre y según nuestras instrucciones (encargados del tratamiento): para enviar los correos de la cuenta, **Resend** (Plus Five Five, Inc., EE. UU.) recibe su dirección de correo y el contenido del correo (incluidos los enlaces); las copias de seguridad nocturnas de la base de datos se guardan en **Cloudflare** (Cloudflare, Inc., EE. UU.), en su servicio de almacenamiento R2, cifradas por Cloudflare, durante 30 días, y contienen toda la información de su cuenta. Ambas empresas pueden usar sus propios subencargados (por ejemplo, alojamiento) para el servicio. Si la ley lo exige, la información se facilita a las autoridades públicas competentes. No compartimos sus datos con nadie más y no los vendemos.",
-          "**Transferencia al extranjero:** ambos servicios están en EE. UU., por lo que los correos de la cuenta y las copias de seguridad van a EE. UU. El nivel de protección de datos personales en EE. UU. puede no ser el mismo que en Türkiye. Crear una cuenta es opcional; si no la crea, ninguno de sus datos llega a estos servicios.",
-          "**Plazo de conservación:** hasta que elimine su cuenta. Una cuenta no verificada en 7 días se elimina. Una cuenta sin uso durante 2 años se elimina; le escribimos 30 días antes. Las sesiones se eliminan al caducar (90 días como máximo), los contadores de intentos en un día; las copias en las copias de seguridad se borran en un plazo máximo de 30 días (las copias de seguridad se guardan 30 días).",
-          "**En su teléfono:** la clave de sesión se guarda en el almacenamiento seguro del teléfono (llavero en iPhone, almacenamiento cifrado en Android) y se borra al cerrar sesión.",
-          "**Sus derechos:** puede ver y descargar sus datos en la aplicación (Ajustes › Cuenta › Descargar mis datos), corregirlos (nombre, idioma, correo) y eliminar su cuenta ([Eliminar su cuenta]({deleteUrl})). Para sus demás derechos según el artículo 11 de la KVKK: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "No necesita una cuenta para usar Saat Tarih. Si lo desea, puede abrir una membresía de Bumba en el sitio (hesap.time.bumba.tr) y en las aplicaciones con su correo electrónico y una contraseña; la misma membresía sirve también en otros productos de Bumba.",
+          "Qué información trata la membresía y para qué, dónde se guarda y cuáles son sus derechos se explica en el [aviso de privacidad común de la membresía de Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en); las reglas están en las [condiciones de membresía](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Puede eliminar su cuenta en cualquier momento: [Eliminar su cuenta]({deleteUrl})."
         ]
       },
       {
@@ -3494,66 +3485,40 @@
     ]
   },
   "account": {
-    "pwTitle": "Nueva contraseña | Saat Tarih",
-    "pwDesc": "Establezca una nueva contraseña para su cuenta en las aplicaciones de Saat Tarih.",
-    "pwH1": "Establezca una nueva contraseña",
-    "pwNew": "Nueva contraseña",
-    "pwRepeat": "Repita la nueva contraseña",
-    "pwHint": "Al menos 8 caracteres.",
-    "pwShow": "Mostrar contraseña",
-    "pwSave": "Guardar contraseña",
-    "pwOk": "Su contraseña se cambió. Inicie sesión en la aplicación con la nueva contraseña; se cerró la sesión en sus otros dispositivos.",
-    "pwErrMatch": "Las dos contraseñas no coinciden.",
-    "pwErrLength": "La contraseña debe tener entre 8 y 128 caracteres.",
-    "pwErrLink": "Este enlace caducó o ya se usó. Pida uno nuevo en la aplicación: Iniciar sesión › Olvidé mi contraseña.",
-    "pwNoToken": "Esta página se abre desde el enlace del correo para restablecer la contraseña. Para recibirlo, use Iniciar sesión › Olvidé mi contraseña en la aplicación.",
-    "vTitle": "Verificación del correo | Saat Tarih",
-    "vDesc": "Resultado de la verificación de la dirección de correo de su cuenta en las aplicaciones de Saat Tarih.",
-    "vH1": "Verificación del correo",
-    "vOk": "Su dirección de correo está verificada. Vuelva a la aplicación e inicie sesión en su cuenta.",
-    "vStep": "Aprobó el cambio. Ahora termine abriendo el enlace que enviamos a su nueva dirección.",
-    "vChanged": "Su nueva dirección de correo está verificada. A partir de ahora, inicie sesión con esta dirección en la aplicación.",
-    "vErr": "Este enlace caducó o ya se usó. Pida un enlace nuevo en la aplicación.",
-    "noJs": "Esta página necesita JavaScript.",
     "delTitle": "Eliminar su cuenta | Saat Tarih",
-    "delDesc": "Cómo eliminar su cuenta en las aplicaciones de Saat Tarih para iPhone y Android, y qué se elimina.",
+    "delDesc": "Cómo eliminar su cuenta de Saat Tarih en el sitio o en las aplicaciones para iPhone y Android, y qué se elimina.",
     "delH1": "Eliminar su cuenta",
-    "delLead": "La cuenta es opcional en las aplicaciones de Saat Tarih y puede eliminarla en cualquier momento. Al eliminarla, la información de la cuenta se borra de inmediato de nuestro servidor.",
+    "delLead": "La cuenta es opcional en Saat Tarih y puede eliminarla en cualquier momento. La eliminación empieza de inmediato y termina en un plazo máximo de 7 días.",
     "delSections": [
       {
-        "h": "Eliminarla en la aplicación",
+        "h": "Eliminar en el sitio o en la aplicación",
         "ul": [
-          "Abra **Ajustes › Cuenta** en la aplicación.",
-          "Toque **Eliminar cuenta** e introduzca su contraseña.",
-          "La cuenta se elimina en el acto y le enviamos una confirmación por correo. Puede seguir usando la aplicación sin cuenta."
+          "Inicie sesión en **hesap.time.bumba.tr** o abra **Ajustes › Cuenta** en la aplicación.",
+          "En **Eliminar cuenta**, elija **Solo de Saat Tarih** o **De todos los productos de Bumba**.",
+          "Escriba su contraseña (no hace falta si inició sesión en las últimas 24 horas) y confirme.",
+          "La eliminación empieza de inmediato y termina en un plazo máximo de 7 días; le avisamos por correo. Puede seguir usando Saat Tarih sin cuenta."
         ]
       },
       {
-        "h": "Si no puede usar la aplicación",
+        "h": "Si no puede iniciar sesión",
         "p": [
-          "Si olvidó su contraseña, establezca una nueva con **Iniciar sesión › Olvidé mi contraseña** en la aplicación y luego elimine la cuenta.",
-          "Si ya no tiene la aplicación ni el teléfono, escriba a [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) **desde la dirección de correo de su cuenta** y pida que la eliminemos. Tras confirmar que la dirección es suya, eliminamos la cuenta en un plazo máximo de 30 días y se lo avisamos."
+          "Si olvidó su contraseña, cree una nueva con **Iniciar sesión › Olvidé mi contraseña** y luego elimine la cuenta.",
+          "Si tampoco puede acceder a su correo, escriba a [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Tras comprobar que la cuenta es suya, la eliminamos y se lo comunicamos."
         ]
       },
       {
         "h": "¿Qué se elimina?",
         "ul": [
-          "Su dirección de correo, su nombre visible, su idioma y el resumen irreversible de su contraseña.",
-          "Sus sesiones (con sus direcciones IP y la información de la aplicación) y el registro del último uso de la cuenta.",
-          "Cuando lleguen las funciones de grupo: su participación en los grupos y lo que haya añadido en ellos.",
-          "Las copias en las copias de seguridad nocturnas de la base de datos se borran solas en un plazo máximo de 30 días (las copias de seguridad se guardan 30 días)."
+          "Su correo electrónico, su perfil (con la foto) y el resumen irreversible de su contraseña.",
+          "Sus sesiones, los registros de la aplicación guardados en la cuenta y sus insignias.",
+          "Si elige **De todos los productos de Bumba**, también se eliminan sus membresías en los demás productos de Bumba.",
+          "Las copias en las copias de seguridad se eliminan solas en un plazo máximo de 30 días (las copias se guardan 30 días)."
         ]
       },
       {
         "h": "Lo que queda en su teléfono",
         "p": [
-          "Sus ajustes, alarmas, registros de oración y ayuno, notas y demás información de la aplicación no forman parte de la cuenta: quedan en su teléfono (y en su iCloud si la sincronización con iCloud está activada). Al eliminar la aplicación del teléfono, también se eliminan."
-        ]
-      },
-      {
-        "h": "Cuentas sin uso",
-        "p": [
-          "Una cuenta que no se usa durante 2 años se elimina automáticamente; enviamos un correo 30 días antes. Una cuenta cuya dirección de correo no se verifica en 7 días se elimina."
+          "Los ajustes de la aplicación y sus registros en el teléfono quedan en su teléfono (y en su iCloud si la sincronización con iCloud está activada). Se eliminan al borrar la aplicación del teléfono."
         ]
       }
     ]

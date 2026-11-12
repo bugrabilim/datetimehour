@@ -11,6 +11,9 @@ on:
       - "lib/**"
       - "src/i18n/**"
       - "src/i18n-cal/**"
+      # Hesap ekranı metinleri ve ülke listesi (üyelik sunucusuyla ortak; gen-strings uygulamalara kopyalar)
+      - "server/i18n/account.json"
+      - "server/data/countries.json"
       - ".github/workflows/mobile.yml"
   push:
     branches: [main]
@@ -22,6 +25,9 @@ on:
       - "lib/**"
       - "src/i18n/**"
       - "src/i18n-cal/**"
+      # Hesap ekranı metinleri ve ülke listesi (üyelik sunucusuyla ortak; gen-strings uygulamalara kopyalar)
+      - "server/i18n/account.json"
+      - "server/data/countries.json"
       - ".github/workflows/mobile.yml"
 
 # Aynı PR'a (ya da dala) yeni commit gelince eski çalışma iptal edilir: üst üste gönderimlerde eski commit'lerin

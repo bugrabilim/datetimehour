@@ -372,19 +372,10 @@
       },
       {
         "id": "account",
-        "h": "Akun di aplikasi (keanggotaan)",
+        "h": "Keanggotaan",
         "p": [
-          "Anda tidak memerlukan akun untuk memakai Saat Tarih, dan situs web ini tidak memiliki keanggotaan. Di aplikasi iPhone dan Android Anda dapat membuat akun opsional dengan alamat email dan kata sandi; fitur yang bekerja dengan grup akan memakainya di masa mendatang. Bagian ini adalah pemberitahuan informasi untuk akun tersebut (KVKK, Pasal 10)."
-        ],
-        "ul": [
-          "**Data yang diproses:** alamat email; nama tampilan (boleh nama samaran); bahasa aplikasi; ringkasan kata sandi yang tidak dapat dikembalikan (kata sandinya sendiri tidak disimpan); tanggal akun dibuat dan terakhir dipakai; sesi Anda (kunci sesi, alamat IP, identitas aplikasi [user agent], waktu mulai dan berakhir); penghitung percobaan berjangka pendek untuk masuk dan tindakan akun lainnya (beserta alamat IP).",
-          "**Tujuan dan dasar hukum:** membuat akun, memasukkan Anda, dan mengirim email akun (verifikasi, atur ulang kata sandi, perubahan alamat, peringatan sebelum akun yang tidak dipakai dihapus, konfirmasi penghapusan) diperlukan untuk membuat dan melaksanakan perjanjian di antara kita (KVKK, Pasal 5(2)(c)). Keamanan akun dan pencegahan penyalahgunaan (alamat IP, penghitung percobaan) didasarkan pada kepentingan sah kami (Pasal 5(2)(f)). Kami tidak mengirim email promosi; membuat akun tidak berarti bergabung dengan milis.",
-          "**Cara pengumpulan:** secara elektronik, melalui formulir daftar dan masuk di aplikasi serta permintaan aplikasi ke server akun kami (hesap.time.bumba.tr).",
-          "**Tempat penyimpanan dan penerima:** data disimpan di server kami di Istanbul. Data hanya diteruskan kepada dua penyedia layanan yang menjalankan layanan atas nama dan instruksi kami (pemroses data): untuk mengirim email akun, **Resend** (Plus Five Five, Inc., AS) menerima alamat email Anda dan isi email (termasuk tautan); cadangan basis data harian disimpan di **Cloudflare** (Cloudflare, Inc., AS) dalam layanan penyimpanan R2, dienkripsi di sisi Cloudflare, selama 30 hari, dan memuat seluruh informasi akun Anda. Kedua perusahaan dapat memakai subpemroses mereka sendiri (misalnya hosting) untuk layanan ini. Jika diwajibkan hukum, informasi diberikan kepada otoritas publik yang berwenang. Kami tidak membagikan data Anda kepada pihak lain dan tidak menjualnya.",
-          "**Transfer ke luar negeri:** kedua layanan berada di AS, sehingga email akun dan cadangan dikirim ke AS. Tingkat perlindungan data pribadi di AS mungkin tidak sama dengan di Türkiye. Membuat akun bersifat opsional; jika Anda tidak membuatnya, tidak ada informasi Anda yang dikirim ke layanan ini.",
-          "**Masa simpan:** sampai Anda menghapus akun. Akun yang tidak diverifikasi dalam 7 hari dihapus. Akun yang tidak dipakai selama 2 tahun dihapus; kami mengirim email kepada Anda 30 hari sebelumnya. Sesi dihapus saat berakhir (paling lama 90 hari), penghitung percobaan dalam satu hari; salinan di cadangan dihapus paling lama dalam 30 hari (cadangan disimpan 30 hari).",
-          "**Di ponsel Anda:** kunci sesi disimpan di penyimpanan aman ponsel (Keychain di iPhone, penyimpanan terenkripsi di Android) dan dihapus saat Anda keluar.",
-          "**Hak Anda:** Anda dapat melihat dan mengunduh data Anda di aplikasi (Pengaturan › Akun › Unduh data saya), memperbaikinya (nama, bahasa, email), dan menghapus akun ([Menghapus akun Anda]({deleteUrl})). Untuk hak lain menurut Pasal 11 KVKK: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "Anda tidak perlu akun untuk memakai Saat Tarih. Jika mau, Anda bisa membuat keanggotaan Bumba di situs (hesap.time.bumba.tr) dan di aplikasi dengan alamat email dan kata sandi; keanggotaan yang sama juga berlaku di produk Bumba lainnya.",
+          "Informasi apa yang diproses keanggotaan dan untuk apa, di mana disimpan, serta hak Anda tertulis dalam [pemberitahuan privasi keanggotaan Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en) bersama; aturannya ada di [ketentuan keanggotaan](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Anda bisa menghapus akun kapan saja: [Menghapus akun Anda]({deleteUrl})."
         ]
       },
       {
@@ -3414,66 +3405,40 @@
     ]
   },
   "account": {
-    "pwTitle": "Kata sandi baru | Saat Tarih",
-    "pwDesc": "Buat kata sandi baru untuk akun Anda di aplikasi Saat Tarih.",
-    "pwH1": "Buat kata sandi baru",
-    "pwNew": "Kata sandi baru",
-    "pwRepeat": "Ulangi kata sandi baru",
-    "pwHint": "Minimal 8 karakter.",
-    "pwShow": "Tampilkan kata sandi",
-    "pwSave": "Simpan kata sandi",
-    "pwOk": "Kata sandi Anda sudah diganti. Masuk dengan kata sandi baru di aplikasi; sesi di perangkat Anda yang lain sudah ditutup.",
-    "pwErrMatch": "Kedua kata sandi tidak sama.",
-    "pwErrLength": "Kata sandi harus 8 sampai 128 karakter.",
-    "pwErrLink": "Tautan ini sudah kedaluwarsa atau sudah dipakai. Minta tautan baru di aplikasi: Masuk › Lupa kata sandi.",
-    "pwNoToken": "Halaman ini dibuka dari tautan di email pengaturan ulang kata sandi. Untuk mendapatkannya, gunakan Masuk › Lupa kata sandi di aplikasi.",
-    "vTitle": "Verifikasi email | Saat Tarih",
-    "vDesc": "Hasil verifikasi alamat email akun Anda di aplikasi Saat Tarih.",
-    "vH1": "Verifikasi email",
-    "vOk": "Alamat email Anda sudah terverifikasi. Kembali ke aplikasi dan masuk ke akun Anda.",
-    "vStep": "Anda sudah menyetujui perubahan. Sekarang selesaikan verifikasi dengan membuka tautan yang kami kirim ke alamat baru Anda.",
-    "vChanged": "Alamat email baru Anda sudah terverifikasi. Mulai sekarang masuk dengan alamat ini di aplikasi.",
-    "vErr": "Tautan ini sudah kedaluwarsa atau sudah dipakai. Minta tautan baru di aplikasi.",
-    "noJs": "Halaman ini memerlukan JavaScript.",
     "delTitle": "Hapus akun | Saat Tarih",
-    "delDesc": "Cara menghapus akun Anda di aplikasi Saat Tarih untuk iPhone dan Android, dan apa saja yang dihapus.",
+    "delDesc": "Cara menghapus akun Saat Tarih Anda di situs atau di aplikasi iPhone dan Android, dan apa yang dihapus.",
     "delH1": "Menghapus akun Anda",
-    "delLead": "Akun di aplikasi Saat Tarih bersifat opsional dan dapat dihapus kapan saja. Saat dihapus, informasi akun Anda langsung dihapus dari server kami.",
+    "delLead": "Akun di Saat Tarih bersifat opsional dan bisa dihapus kapan saja. Penghapusan dimulai segera dan selesai paling lambat dalam 7 hari.",
     "delSections": [
       {
-        "h": "Hapus di aplikasi",
+        "h": "Menghapus di situs atau di aplikasi",
         "ul": [
-          "Buka **Pengaturan › Akun** di aplikasi.",
-          "Ketuk **Hapus akun** lalu masukkan kata sandi Anda.",
-          "Akun Anda langsung dihapus dan kami mengirim pemberitahuan ke alamat email Anda. Anda tetap dapat memakai aplikasi tanpa akun."
+          "Masuk di **hesap.time.bumba.tr**, atau buka **Pengaturan › Akun** di aplikasi.",
+          "Di **Hapus akun**, pilih **Hanya dari Saat Tarih** atau **Dari semua produk Bumba**.",
+          "Masukkan kata sandi (tidak perlu jika Anda masuk dalam 24 jam terakhir) lalu konfirmasi.",
+          "Penghapusan dimulai segera dan selesai paling lambat dalam 7 hari; kami mengirim email kepada Anda. Anda tetap bisa memakai Saat Tarih tanpa akun."
         ]
       },
       {
-        "h": "Jika Anda tidak dapat memakai aplikasi",
+        "h": "Jika Anda tidak bisa masuk",
         "p": [
-          "Jika lupa kata sandi, buat kata sandi baru lewat **Masuk › Lupa kata sandi** di aplikasi, lalu hapus akun.",
-          "Jika Anda sudah tidak punya aplikasi atau ponselnya, kirim email ke [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) **dari alamat email akun Anda** dan minta akun dihapus. Setelah kami memastikan alamat itu milik Anda, akun kami hapus paling lambat dalam 30 hari dan kami beri tahu Anda."
+          "Jika lupa kata sandi, buat kata sandi baru dengan **Masuk › Lupa kata sandi**, lalu hapus akunnya.",
+          "Jika alamat email Anda juga tidak bisa diakses, tulis ke [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Setelah kami memastikan akun itu milik Anda, kami menghapusnya dan memberi tahu Anda."
         ]
       },
       {
-        "h": "Apa saja yang dihapus?",
+        "h": "Apa yang dihapus?",
         "ul": [
-          "Alamat email, nama tampilan, bahasa, dan ringkasan kata sandi Anda yang tidak dapat dikembalikan.",
-          "Sesi Anda (beserta alamat IP dan informasi aplikasi) dan catatan kapan akun terakhir dipakai.",
-          "Saat fitur grup hadir: keanggotaan Anda di grup dan apa yang Anda tambahkan ke sana.",
-          "Salinan di cadangan basis data harian otomatis terhapus paling lama dalam 30 hari (cadangan disimpan 30 hari)."
+          "Alamat email, profil Anda (termasuk foto) dan hash kata sandi yang tidak bisa dibalik.",
+          "Sesi Anda, catatan aplikasi yang disimpan di akun, dan lencana Anda.",
+          "Jika memilih **Dari semua produk Bumba**, keanggotaan Anda di produk Bumba lainnya juga dihapus.",
+          "Salinan di cadangan terhapus otomatis paling lambat dalam 30 hari (cadangan disimpan 30 hari)."
         ]
       },
       {
         "h": "Yang tetap ada di ponsel Anda",
         "p": [
-          "Pengaturan, alarm, catatan salat dan puasa, catatan, dan informasi lain di aplikasi bukan bagian dari akun: semuanya tetap di ponsel Anda (dan di iCloud jika sinkronisasi iCloud aktif). Jika aplikasi dihapus dari ponsel, semuanya ikut terhapus."
-        ]
-      },
-      {
-        "h": "Akun yang tidak dipakai",
-        "p": [
-          "Akun yang tidak dipakai selama 2 tahun dihapus otomatis; kami mengirim email 30 hari sebelumnya. Akun yang alamat emailnya tidak diverifikasi dalam 7 hari dihapus."
+          "Pengaturan aplikasi dan catatan di ponsel tetap ada di ponsel Anda (dan di iCloud Anda jika sinkronisasi iCloud aktif). Semuanya terhapus saat Anda menghapus aplikasi dari ponsel."
         ]
       }
     ]

@@ -399,19 +399,10 @@
       },
       {
         "id": "account",
-        "h": "Compte dans les applications (adhésion)",
+        "h": "Adhésion",
         "p": [
-          "Vous n'avez pas besoin de compte pour utiliser Saat Tarih, et ce site n'a pas d'espace membre. Dans les applications iPhone et Android, vous pouvez ouvrir un compte facultatif avec votre adresse e-mail et un mot de passe ; les fonctions de groupe l'utiliseront à l'avenir. Cette section est la notice d'information relative à ce compte (KVKK, article 10)."
-        ],
-        "ul": [
-          "**Données traitées :** votre adresse e-mail ; votre nom affiché (un pseudonyme est possible) ; la langue de l'application ; une empreinte irréversible de votre mot de passe (le mot de passe lui-même n'est pas conservé) ; les dates d'ouverture et de dernière utilisation du compte ; vos sessions (clé de session, adresse IP, identification de l'application [user agent], début et fin) ; des compteurs de tentatives de courte durée pour la connexion et les autres opérations du compte (avec l'adresse IP).",
-          "**Finalités et base juridique :** ouvrir le compte, vous connecter et envoyer les e-mails du compte (vérification, réinitialisation du mot de passe, changement d'adresse, avertissement avant la suppression d'un compte inutilisé, confirmation de suppression) sont nécessaires à la conclusion et à l'exécution du contrat qui nous lie (KVKK, art. 5/2-c). La sécurité du compte et la prévention des abus (adresses IP, compteurs de tentatives) reposent sur notre intérêt légitime (art. 5/2-f). Nous n'envoyons pas d'e-mails promotionnels ; ouvrir un compte ne vous inscrit pas à la liste de diffusion.",
-          "**Mode de collecte :** par voie électronique, via les formulaires d'inscription et de connexion de l'application et les requêtes que l'application envoie à notre serveur de comptes (hesap.time.bumba.tr).",
-          "**Lieu de conservation et destinataires :** les données sont conservées sur notre serveur à Istanbul. Elles ne sont transmises qu'à deux prestataires qui fournissent le service pour notre compte et sur nos instructions (sous-traitants) : pour envoyer les e-mails du compte, **Resend** (Plus Five Five, Inc., États-Unis) reçoit votre adresse e-mail et le contenu de l'e-mail (liens compris) ; les sauvegardes nocturnes de la base de données sont stockées chez **Cloudflare** (Cloudflare, Inc., États-Unis) dans son service de stockage R2, chiffrées côté Cloudflare, pendant 30 jours, et contiennent toutes les informations de votre compte. Ces deux sociétés peuvent recourir à leurs propres sous-traitants (par exemple l'hébergement) pour le service. Si la loi l'exige, des informations sont communiquées aux autorités publiques compétentes. Nous ne partageons vos données avec personne d'autre et ne les vendons pas.",
-          "**Transfert à l'étranger :** ces deux services sont aux États-Unis ; les e-mails du compte et les sauvegardes y sont donc envoyés. Le niveau de protection des données personnelles aux États-Unis peut ne pas être le même qu'en Türkiye. La création d'un compte est facultative ; sans compte, aucune de vos informations n'est envoyée à ces services.",
-          "**Durée de conservation :** jusqu'à la suppression de votre compte. Un compte non vérifié sous 7 jours est supprimé. Un compte inutilisé pendant 2 ans est supprimé ; nous vous écrivons 30 jours avant. Les sessions sont supprimées à leur expiration (90 jours au plus), les compteurs de tentatives dans la journée ; les copies dans les sauvegardes sont effacées sous 30 jours au plus (les sauvegardes sont conservées 30 jours).",
-          "**Sur votre téléphone :** la clé de session est conservée dans le stockage sécurisé du téléphone (trousseau sur iPhone, stockage chiffré sur Android) et supprimée lorsque vous vous déconnectez.",
-          "**Vos droits :** vous pouvez consulter et télécharger vos données dans l'application (Réglages › Compte › Télécharger mes données), les rectifier (nom, langue, e-mail) et supprimer votre compte ([Supprimer votre compte]({deleteUrl})). Pour vos autres droits au titre de l'article 11 de la KVKK : [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "Aucun compte n'est nécessaire pour utiliser Saat Tarih. Si vous le souhaitez, vous pouvez ouvrir une adhésion Bumba sur le site (hesap.time.bumba.tr) et dans les applications avec votre adresse e-mail et un mot de passe ; la même adhésion fonctionne aussi dans les autres produits Bumba.",
+          "Les informations traitées par l'adhésion, leurs finalités, leur lieu de stockage et vos droits sont décrits dans la [notice de confidentialité commune de l'adhésion Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en) ; les règles figurent dans les [conditions d'adhésion](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Vous pouvez supprimer votre compte à tout moment : [Supprimer votre compte]({deleteUrl})."
         ]
       },
       {
@@ -3455,66 +3446,40 @@
     ]
   },
   "account": {
-    "pwTitle": "Nouveau mot de passe | Saat Tarih",
-    "pwDesc": "Choisissez un nouveau mot de passe pour votre compte dans les applications Saat Tarih.",
-    "pwH1": "Choisissez un nouveau mot de passe",
-    "pwNew": "Nouveau mot de passe",
-    "pwRepeat": "Confirmez le nouveau mot de passe",
-    "pwHint": "8 caractères au moins.",
-    "pwShow": "Afficher le mot de passe",
-    "pwSave": "Enregistrer le mot de passe",
-    "pwOk": "Votre mot de passe a été modifié. Connectez-vous dans l'application avec le nouveau mot de passe ; vous avez été déconnecté de vos autres appareils.",
-    "pwErrMatch": "Les deux mots de passe ne sont pas identiques.",
-    "pwErrLength": "Le mot de passe doit comporter de 8 à 128 caractères.",
-    "pwErrLink": "Ce lien a expiré ou a déjà été utilisé. Demandez-en un nouveau dans l'application : Connexion › Mot de passe oublié.",
-    "pwNoToken": "Cette page s'ouvre depuis le lien de l'e-mail de réinitialisation du mot de passe. Pour en recevoir un, utilisez Connexion › Mot de passe oublié dans l'application.",
-    "vTitle": "Vérification de l'e-mail | Saat Tarih",
-    "vDesc": "Résultat de la vérification de l'adresse e-mail de votre compte dans les applications Saat Tarih.",
-    "vH1": "Vérification de l'e-mail",
-    "vOk": "Votre adresse e-mail est vérifiée. Revenez dans l'application et connectez-vous à votre compte.",
-    "vStep": "Vous avez approuvé la modification. Terminez maintenant en ouvrant le lien que nous avons envoyé à votre nouvelle adresse.",
-    "vChanged": "Votre nouvelle adresse e-mail est vérifiée. Désormais, connectez-vous avec cette adresse dans l'application.",
-    "vErr": "Ce lien a expiré ou a déjà été utilisé. Demandez un nouveau lien dans l'application.",
-    "noJs": "Cette page nécessite JavaScript.",
     "delTitle": "Supprimer votre compte | Saat Tarih",
-    "delDesc": "Comment supprimer votre compte dans les applications Saat Tarih pour iPhone et Android, et ce qui est supprimé.",
+    "delDesc": "Comment supprimer votre compte Saat Tarih sur le site ou dans les applications iPhone et Android, et ce qui est supprimé.",
     "delH1": "Supprimer votre compte",
-    "delLead": "Le compte est facultatif dans les applications Saat Tarih et vous pouvez le supprimer à tout moment. Une fois supprimé, les informations du compte sont effacées immédiatement de notre serveur.",
+    "delLead": "Le compte est facultatif dans Saat Tarih et vous pouvez le supprimer à tout moment. La suppression commence immédiatement et se termine au plus tard sous 7 jours.",
     "delSections": [
       {
-        "h": "Le supprimer dans l'application",
+        "h": "Supprimer sur le site ou dans l'application",
         "ul": [
-          "Ouvrez **Réglages › Compte** dans l'application.",
-          "Touchez **Supprimer le compte** et saisissez votre mot de passe.",
-          "Votre compte est supprimé aussitôt et nous envoyons une confirmation à votre adresse e-mail. Vous pouvez continuer à utiliser l'application sans compte."
+          "Connectez-vous sur **hesap.time.bumba.tr**, ou ouvrez **Réglages › Compte** dans l'application.",
+          "Dans **Supprimer le compte**, choisissez **De Saat Tarih seulement** ou **De tous les produits Bumba**.",
+          "Saisissez votre mot de passe (inutile si vous vous êtes connecté au cours des dernières 24 heures) et confirmez.",
+          "La suppression commence immédiatement et se termine au plus tard sous 7 jours ; vous recevez un e-mail. Vous pouvez continuer à utiliser Saat Tarih sans compte."
         ]
       },
       {
-        "h": "Si vous ne pouvez pas utiliser l'application",
+        "h": "Si vous ne pouvez pas vous connecter",
         "p": [
-          "Si vous avez oublié votre mot de passe, choisissez-en un nouveau avec **Connexion › Mot de passe oublié** dans l'application, puis supprimez le compte.",
-          "Si vous n'avez plus l'application ni le téléphone, écrivez à [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) **depuis l'adresse e-mail de votre compte** pour demander sa suppression. Après avoir vérifié que l'adresse vous appartient, nous supprimons le compte dans un délai de 30 jours au plus et vous en informons."
+          "Si vous avez oublié votre mot de passe, définissez-en un nouveau avec **Se connecter › Mot de passe oublié**, puis supprimez le compte.",
+          "Si vous n'avez plus accès à votre adresse e-mail non plus, écrivez à [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Après avoir vérifié que le compte vous appartient, nous le supprimons et vous prévenons."
         ]
       },
       {
         "h": "Qu'est-ce qui est supprimé ?",
         "ul": [
-          "Votre adresse e-mail, votre nom affiché, votre langue et l'empreinte irréversible de votre mot de passe.",
-          "Vos sessions (avec leurs adresses IP et les informations de l'application) et la trace de la dernière utilisation du compte.",
-          "Quand les fonctions de groupe arriveront : vos adhésions aux groupes et ce que vous y avez ajouté.",
-          "Les copies présentes dans les sauvegardes nocturnes de la base de données sont effacées automatiquement sous 30 jours au plus (les sauvegardes sont conservées 30 jours)."
+          "Votre adresse e-mail, votre profil (photo comprise) et l'empreinte irréversible de votre mot de passe.",
+          "Vos sessions, les données de l'application conservées dans le compte et vos badges.",
+          "Si vous choisissez **De tous les produits Bumba**, vos adhésions aux autres produits Bumba sont aussi supprimées.",
+          "Les copies dans les sauvegardes sont supprimées automatiquement sous 30 jours au plus tard (les sauvegardes sont conservées 30 jours)."
         ]
       },
       {
         "h": "Ce qui reste sur votre téléphone",
         "p": [
-          "Vos réglages, alarmes, suivis de prière et de jeûne, notes et autres informations de l'application ne font pas partie du compte : ils restent sur votre téléphone (et dans votre iCloud si la synchronisation iCloud est activée). Supprimer l'application du téléphone les supprime aussi."
-        ]
-      },
-      {
-        "h": "Comptes inutilisés",
-        "p": [
-          "Un compte inutilisé pendant 2 ans est supprimé automatiquement ; nous envoyons un e-mail 30 jours avant. Un compte dont l'adresse e-mail n'est pas vérifiée sous 7 jours est supprimé."
+          "Les réglages de l'application et vos données sur le téléphone restent sur votre téléphone (et dans votre iCloud si la synchronisation iCloud est activée). Ils sont supprimés lorsque vous supprimez l'application du téléphone."
         ]
       }
     ]

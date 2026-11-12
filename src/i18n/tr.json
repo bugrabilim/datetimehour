@@ -372,19 +372,10 @@
       },
       {
         "id": "hesap",
-        "h": "Uygulamalardaki hesap (üyelik)",
+        "h": "Üyelik",
         "p": [
-          "Saat Tarih'i kullanmak için hesap gerekmez; bu sitede üyelik yoktur. iPhone ve Android uygulamalarında e-posta adresiniz ve bir şifreyle isteğe bağlı bir hesap açabilirsiniz; ileride grupla çalışan özellikler bu hesabı kullanacak. Bu bölüm o hesabın aydınlatma metnidir (KVKK md. 10)."
-        ],
-        "ul": [
-          "**İşlenen veriler:** e-posta adresiniz; görünen adınız (takma ad olabilir); uygulamanın dili; şifrenizin geri çevrilemez özeti (şifrenin kendisi saklanmaz); hesabın açılış ve son kullanım tarihi; oturumlarınız (oturum anahtarı, IP adresi, uygulamanın kimlik bilgisi [user agent], başlangıç ve bitiş zamanı); giriş ve diğer hesap işlemleri için kısa süreli deneme sayaçları (IP adresiyle).",
-          "**Amaç ve hukuki sebep:** hesabı açmak, girişinizi sağlamak ve hesapla ilgili e-postaları (doğrulama, şifre sıfırlama, adres değişikliği, kullanılmayan hesabı silmeden önce uyarı, silme bildirimi) göndermek aramızdaki sözleşmenin kurulması ve ifası için gereklidir (KVKK md. 5/2-c). Hesabın güvenliği ve kötüye kullanımın önlenmesi (IP adresleri, deneme sayaçları) meşru menfaatimize dayanır (md. 5/2-f). Tanıtım e-postası göndermeyiz; hesap açmak e-posta listesine katılmak değildir.",
-          "**Toplama yöntemi:** uygulamadaki kayıt ve giriş formlarıyla ve uygulamanın hesap sunucumuza (hesap.time.bumba.tr) yaptığı isteklerle, elektronik ortamda.",
-          "**Saklama yeri ve alıcılar:** veriler İstanbul'daki sunucumuzda tutulur. Yalnız hizmeti bizim adımıza ve talimatımızla yürüten iki hizmet sağlayıcıya (veri işleyen) aktarılır: hesap e-postalarını göndermek için **Resend** (Plus Five Five, Inc., ABD) e-posta adresinizi ve e-postanın içeriğini (bağlantılar dahil) alır; veritabanının gece yedekleri **Cloudflare** (Cloudflare, Inc., ABD) R2 depolama hizmetinde, Cloudflare'in kendi tarafında şifrelenmiş olarak 30 gün saklanır ve hesabınızdaki bütün bilgileri içerir. Bu iki şirket hizmet için kendi alt işleyenlerini (ör. barındırma) kullanabilir. Yasal bir zorunluluk olursa bilgiler yetkili kamu kurum ve kuruluşlarıyla paylaşılır. Verilerinizi başka kimseyle paylaşmaz, satmayız.",
-          "**Yurt dışına aktarım:** bu iki hizmet ABD'dedir; bu yüzden hesap e-postaları ve yedekler ABD'ye gider. ABD'de kişisel verilerin korunma düzeyi Türkiye'dekiyle aynı olmayabilir. Hesap açmak isteğe bağlıdır; hesap açmazsanız bu hizmetlere hiçbir bilginiz gitmez.",
-          "**Saklama süresi:** hesabınızı silene kadar. 7 gün içinde doğrulanmayan hesap silinir. 2 yıl kullanılmayan hesap silinir; silmeden 30 gün önce size e-posta göndeririz. Oturumlar süresi dolunca (en geç 90 gün), deneme sayaçları bir gün içinde silinir; yedeklerdeki kopyalar en geç 30 gün içinde silinir (yedekler 30 gün tutulur).",
-          "**Telefonunuzda:** oturum anahtarı telefonun güvenli deposunda (iPhone'da Anahtar Zinciri, Android'de şifreli depo) tutulur ve çıkış yapınca silinir.",
-          "**Haklarınız:** bilgilerinizi uygulamada görebilir ve indirebilir (Ayarlar › Hesap › Verilerimi indir), düzeltebilir (ad, dil, e-posta) ve hesabınızı silebilirsiniz ([Hesabınızı silme]({deleteUrl})). KVKK md. 11'deki diğer haklarınız için: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "Saat Tarih'i kullanmak için hesap gerekmez. İsterseniz sitede (hesap.time.bumba.tr) ve uygulamalarda e-posta adresiniz ve bir şifreyle Bumba üyeliği açabilirsiniz; aynı üyelikle öbür Bumba ürünlerine de girebilirsiniz.",
+          "Üyelikte hangi bilgilerin neden işlendiği, nerede saklandığı ve haklarınız ortak [Bumba üyelik aydınlatma metninde](https://bumbagroup.com/uyelik-aydinlatma), kurallar [üyelik sözleşmesinde](https://bumbagroup.com/uyelik-sozlesmesi) yazar. Hesabınızı istediğiniz zaman silebilirsiniz: [Hesabınızı silme]({deleteUrl})."
         ]
       },
       {
@@ -3414,66 +3405,40 @@
     ]
   },
   "account": {
-    "pwTitle": "Yeni şifre | Saat Tarih",
-    "pwDesc": "Saat Tarih uygulamalarındaki hesabınız için yeni şifre belirleyin.",
-    "pwH1": "Yeni şifre belirleyin",
-    "pwNew": "Yeni şifre",
-    "pwRepeat": "Yeni şifre (tekrar)",
-    "pwHint": "En az 8 karakter.",
-    "pwShow": "Şifreyi göster",
-    "pwSave": "Şifreyi kaydet",
-    "pwOk": "Şifreniz değişti. Uygulamada yeni şifrenizle giriş yapın; diğer cihazlarınızdaki oturumlar kapatıldı.",
-    "pwErrMatch": "İki şifre aynı değil.",
-    "pwErrLength": "Şifre 8 ile 128 karakter arasında olmalı.",
-    "pwErrLink": "Bu bağlantının süresi dolmuş ya da daha önce kullanılmış. Uygulamada Giriş › Şifremi unuttum ile yeni bağlantı isteyin.",
-    "pwNoToken": "Bu sayfa, şifre sıfırlama e-postasındaki bağlantıyla açılır. Bağlantı için uygulamada Giriş › Şifremi unuttum'u kullanın.",
-    "vTitle": "E-posta doğrulama | Saat Tarih",
-    "vDesc": "Saat Tarih uygulamalarındaki hesabınızın e-posta doğrulama sonucu.",
-    "vH1": "E-posta doğrulama",
-    "vOk": "E-posta adresiniz doğrulandı. Uygulamaya dönüp hesabınızla giriş yapabilirsiniz.",
-    "vStep": "Değişikliği onayladınız. Şimdi yeni adresinize gönderdiğimiz bağlantıyı açarak doğrulamayı tamamlayın.",
-    "vChanged": "Yeni e-posta adresiniz doğrulandı. Uygulamada artık bu adresle giriş yapabilirsiniz.",
-    "vErr": "Bu bağlantının süresi dolmuş ya da daha önce kullanılmış. Uygulamadan yeni bağlantı isteyin.",
-    "noJs": "Bu sayfa için JavaScript gerekir.",
     "delTitle": "Hesabı silme | Saat Tarih",
-    "delDesc": "Saat Tarih'in iPhone ve Android uygulamalarındaki hesabınızı nasıl silersiniz, neler silinir.",
+    "delDesc": "Saat Tarih hesabınızı sitede ya da iPhone ve Android uygulamalarında nasıl silersiniz, neler silinir.",
     "delH1": "Hesabınızı silme",
-    "delLead": "Saat Tarih uygulamalarında hesap isteğe bağlıdır ve istediğiniz zaman silinebilir. Hesabı silince hesap bilgileriniz sunucumuzdan hemen silinir.",
+    "delLead": "Saat Tarih'te hesap isteğe bağlıdır ve istediğiniz zaman silinebilir. Silme hemen başlar, en geç 7 gün içinde tamamlanır.",
     "delSections": [
       {
-        "h": "Uygulamadan silme",
+        "h": "Sitede ya da uygulamada silme",
         "ul": [
-          "Uygulamada **Ayarlar › Hesap**'ı açın.",
-          "**Hesabı sil**'e dokunun ve şifrenizi girin.",
-          "Hesabınız hemen silinir, e-posta adresinize bilgi gider. Uygulamayı hesapsız kullanmaya devam edebilirsiniz."
+          "**hesap.time.bumba.tr** adresinde giriş yapın ya da uygulamada **Ayarlar › Hesap**'ı açın.",
+          "**Hesabı sil** bölümünde seçin: **Yalnız Saat Tarih'ten** ya da **Bütün Bumba ürünlerinden**.",
+          "Şifrenizi girin (son 24 saatte giriş yaptıysanız gerekmez) ve onaylayın.",
+          "Silme hemen başlar, en geç 7 gün içinde tamamlanır; e-posta adresinize bilgi gider. Saat Tarih'i hesapsız kullanmaya devam edebilirsiniz."
         ]
       },
       {
-        "h": "Uygulamayı kullanamıyorsanız",
+        "h": "Giriş yapamıyorsanız",
         "p": [
-          "Şifrenizi unuttuysanız uygulamada **Giriş › Şifremi unuttum** ile yeni şifre belirleyip hesabı silebilirsiniz.",
-          "Uygulamaya ya da telefonunuza artık erişemiyorsanız **hesabınızın e-posta adresinden** [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) adresine yazıp hesabınızın silinmesini isteyin. Adresin size ait olduğunu doğruladıktan sonra hesabı en geç 30 gün içinde siler, size haber veririz."
+          "Şifrenizi unuttuysanız **Giriş yap › Şifremi unuttum** ile yeni şifre belirleyip hesabı silebilirsiniz.",
+          "E-posta adresinize de erişemiyorsanız [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) adresine yazın. Hesabın size ait olduğunu doğruladıktan sonra siler, size haber veririz."
         ]
       },
       {
         "h": "Neler silinir?",
         "ul": [
-          "E-posta adresiniz, görünen adınız, diliniz ve şifrenizin geri çevrilemez özeti.",
-          "Oturumlarınız (IP adresleri ve uygulama bilgisiyle) ve hesabın son kullanım kaydı.",
-          "Grup özellikleri geldiğinde: gruplardaki üyelikleriniz ve gruplara eklediğiniz bilgiler.",
-          "Gece alınan veritabanı yedeklerindeki kopyalar en geç 30 gün içinde kendiliğinden silinir (yedekler 30 gün tutulur)."
+          "E-posta adresiniz, profil bilgileriniz (fotoğraf dahil) ve şifrenizin geri çevrilemez özeti.",
+          "Oturumlarınız, hesapta tutulan uygulama kayıtlarınız ve rozetleriniz.",
+          "**Bütün Bumba ürünlerinden** seçerseniz öbür Bumba ürünlerindeki üyelikleriniz de silinir.",
+          "Yedeklerdeki kopyalar en geç 30 gün içinde kendiliğinden silinir (yedekler 30 gün tutulur)."
         ]
       },
       {
         "h": "Telefonunuzda kalanlar",
         "p": [
-          "Ayarlarınız, alarmlarınız, namaz ve oruç kayıtlarınız, notlarınız ve uygulamadaki diğer bilgiler hesabın parçası değildir: telefonunuzda (iCloud eşitlemesi açıksa iCloud'unuzda) durur. Uygulamayı telefondan silince bunlar da silinir."
-        ]
-      },
-      {
-        "h": "Kullanılmayan hesaplar",
-        "p": [
-          "2 yıl kullanılmayan hesap kendiliğinden silinir; silmeden 30 gün önce e-posta göndeririz. E-posta adresi 7 gün içinde doğrulanmayan hesap silinir."
+          "Uygulamanın ayarları ve telefondaki kayıtlarınız telefonunuzda (iCloud eşitlemesi açıksa iCloud'unuzda) kalır. Uygulamayı telefondan silince bunlar da silinir."
         ]
       }
     ]
