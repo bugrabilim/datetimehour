@@ -49,6 +49,8 @@ export function authOptions(cfg, pool, mailer, center) {
       // Kayıtta yalnız e-posta ve şifre: ad boş, profil ve öbür alanlar kayıttan sonra hesap sayfasında
       ctx.body.name = "";
       const email = String(ctx.body?.email || "").toLowerCase();
+      // Yönetici adresi kayıt sayfasından açılamaz (madde 10); yanıt sıradan kayıttaki gibi
+      if (isAdminEmail(email)) return ctx.json({ token: null, user: null });
       // Bu üründe zaten kayıtlıysa Better Auth'un sıradan akışı (yanıt aynı, sahibine haber); hesabın varlığı ele verilmez
       const local = (await pool.query(`select 1 from "user" where lower(email) = $1`, [email])).rowCount > 0;
       const q = local ? { ok: false } : await center.sorgula(email);
@@ -59,7 +61,11 @@ export function authOptions(cfg, pool, mailer, center) {
     if (p === "/reset-password" || p === "/change-password") {
       if (!passwordOk(ctx.body?.newPassword)) throw new APIError("BAD_REQUEST", { code: "WEAK_PASSWORD", message: "weak password" });
     }
+    // Şifre değişince öbür oturumlar kapanır, bu oturumun kimliği yenilenir (yanıttaki yeni belirteç; web'de yeni çerez)
+    if (p === "/change-password" && ctx.body) ctx.body.revokeOtherSessions = true;
     if (p === "/change-email") {
+      // Yalnız /v1/eposta'dan (mevcut şifre orada denetlenir); dışarıdan gelen istekte ctx.request vardır
+      if (ctx.request) throw new APIError("FORBIDDEN", { code: "USE_V1_EPOSTA", message: "use /v1/eposta" });
       const q = await center.sorgula(String(ctx.body?.newEmail || "").toLowerCase());
       if (q.ok && q.data?.durum !== "yok") throw new APIError("BAD_REQUEST", { code: "EMAIL_TAKEN", message: "email taken" });
     }
@@ -118,8 +124,12 @@ export function authOptions(cfg, pool, mailer, center) {
         await send("verify", user.email, user.lang, { url: u.toString() });
       },
       afterEmailVerification: async (user) => {
-        if (isAdminEmail(user.email)) await pool.query(`update "user" set role = 'admin' where id = $1`, [user.id]);
         let result = "ok";
+        // Yönetici hesabı üye değildir: ortak üyelik servisi çağrılmaz
+        if (isAdminEmail(user.email)) {
+          await pool.query(`update verify_ref set result = $1 where email = lower($2) and result is null`, [result, user.email]);
+          return;
+        }
         if (user.uyeNo != null) {
           // E-posta değişikliği tamamlandı: bağlı ürünlere yeni adres
           await center.guncelle(Number(user.uyeNo), { eposta: user.email, epostaDogrulandi: true });

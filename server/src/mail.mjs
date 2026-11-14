@@ -1,7 +1,7 @@
 /* Üyelik e-postaları (standart madde 7 ve "E-posta gönderimi"): Resend ile bilgi@bumbagroup.com'dan, gönderen adı
    ürünün adı. Yalnız standarttaki liste: doğrulama, şifre sıfırlama, "şifreniz değişti", e-posta değişikliği onayı,
    "hesabınız silindi", yeniden kayıt denemesi, askı, yeniden açılma, kalıcı kapatma, başka üründe üyelik açıldı ya da
-   kapandı ve kutlama. Hoş geldin, tanıtım ya da bülten yok. Metin + HTML; açılma ve tıklama izleme yok (Resend'de alan
+   kapandı, "hesaplarınız birleştirildi" (şifre seçimi bağlantısıyla) ve kutlama. Hoş geldin, tanıtım ya da bülten yok. Metin + HTML; açılma ve tıklama izleme yok (Resend'de alan
    adı ayarı, kodda izleme parametresi açılmaz). Metinler 19 dilde (i18n/mail.json); İngilizceye düşülmez. */
 import crypto from "node:crypto";
 import { readFileSync } from "node:fs";
@@ -23,6 +23,23 @@ export function readUnsubscribeToken(secret, token) {
   const want = unsubscribeToken(secret, userId).split(".")[1];
   if (sig.length !== want.length || !crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(want))) return null;
   return userId;
+}
+
+/* "Hesaplarınız birleştirildi" e-postasındaki şifre seçimi bağlantısı: hesap kimliği + bitiş anı + HMAC; 7 gün geçerli.
+   Tek kullanımlıktır, çünkü seçim yapılınca merkezde bekleyen seçim kalmaz (sifre-sec → 404 secim-yok). Oturum açmaz. */
+export const CHOICE_DAYS = 7;
+export function choiceToken(secret, userId, exp = Date.now() + CHOICE_DAYS * 864e5) {
+  const body = `${Buffer.from(userId).toString("base64url")}.${Math.floor(exp / 1000).toString(36)}`;
+  const sig = crypto.createHmac("sha256", secret).update("sifre-sec:" + body).digest("base64url").slice(0, 32);
+  return `${body}.${sig}`;
+}
+export function readChoiceToken(secret, token) {
+  const [id64, exp36, sig] = String(token || "").split(".");
+  if (!id64 || !exp36 || !sig) return null;
+  const want = crypto.createHmac("sha256", secret).update(`sifre-sec:${id64}.${exp36}`).digest("base64url").slice(0, 32);
+  if (sig.length !== want.length || !crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(want))) return null;
+  if (parseInt(exp36, 36) * 1000 < Date.now()) return null;
+  return Buffer.from(id64, "base64url").toString("utf8");
 }
 
 function fmtDate(lang, d) {

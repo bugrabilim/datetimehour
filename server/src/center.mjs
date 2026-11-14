@@ -33,6 +33,8 @@ export function createCenter(cfg, fetchImpl = fetch) {
     ayril: (uyeNo) => call("ayril", { uyeNo }),
     sil: (uyeNo) => call("sil", { uyeNo }),
     bildir: (hesaplar) => call("bildir", { hesaplar }),
-    birlestir: (uyeNo, eposta, sifre) => call("birlestir", { uyeNo, eposta, sifre }),
+    // Aynı e-postanın ayrı hesapları girişte sormadan birleşir; şifre değişmez, üye sonra hangi şifreyle süreceğini seçer
+    birlestir: (uyeNo, eposta) => call("birlestir", { uyeNo, eposta }),
+    sifreSec: (uyeNo, site) => call("sifre-sec", { uyeNo, site }),
   };
 }

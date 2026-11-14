@@ -280,9 +280,16 @@ private struct AccountSignedIn: View {
     @State private var busy = false
     /// Her bölümün kendi iletisi: (bölüm, metin anahtarı, başarılı mı)
     @State private var msg: (String, String, Bool)?
-    @State private var separate = false
-    @State private var mergePassword = ""
-    @State private var mergeErr: String?
+    /// Ayrı hesaplar birleşti, şifre seçimi bekleniyor: seçilene kadar yalnız seçim ve çıkış
+    @State private var choice: Account.Choice?
+    /// Açık bölüm grubu (web'deki sekme; telefonda açılır kapanır): profil, guvenlik, tercihler, uyelikler, veri, rozetler
+    @State private var open = "profil"
+    @State private var pendingOpen: String?
+    @State private var askLeave = false
+    @State private var profileBase = ""
+    @State private var emailPassword = ""
+    @State private var celebrateSaved = true
+    @Environment(\.dismiss) private var dismiss
     @State private var photoItem: PhotosPickerItem?
     @State private var newEmail = ""
     @State private var current = ""
@@ -319,8 +326,51 @@ private struct AccountSignedIn: View {
         if r.ok, let o = Account.json(r.data) {
             data = o
             p = ProfileForm(o["profil"] as? [String: Any] ?? [:])
+            profileBase = Self.key(p.json)
             celebrate = o["kutlama"] as? Bool ?? true
+            celebrateSaved = celebrate
         } else { loadErr = r.err }
+    }
+
+    private static func key(_ o: [String: Any]) -> String {
+        (try? JSONSerialization.data(withJSONObject: o, options: [.sortedKeys])).map { String(decoding: $0, as: UTF8.self) } ?? ""
+    }
+
+    /// Kaydedilmemiş değişiklik (madde 7): profil ve görünürlük kayıtlı hâlinden farklı, e-posta, şifre ya da kutlama alanı dolu
+    private var dirtyGroups: Set<String> {
+        var d = Set<String>()
+        if (!profileBase.isEmpty && Self.key(p.json) != profileBase) || !newEmail.isEmpty || !emailPassword.isEmpty { d.insert("profil") }
+        if !current.isEmpty || !next.isEmpty { d.insert("guvenlik") }
+        if celebrate != celebrateSaved { d.insert("tercihler") }
+        return d
+    }
+
+    private func toggle(_ id: String) {
+        let target = open == id ? "" : id
+        if dirtyGroups.contains(open) { pendingOpen = target } else { withAnimation { open = target } }
+    }
+
+    /// Bölüm grubu başlığı; açıkken içerik ve altında ortak metinlere bağlantı
+    @ViewBuilder private func group<C: View>(_ id: String, _ title: String, @ViewBuilder content: () -> C) -> some View {
+        Section {
+            Button { toggle(id) } label: {
+                HStack {
+                    Text(title).font(.headline).foregroundStyle(Theme.text)
+                    Spacer()
+                    Image(systemName: open == id ? "chevron.up" : "chevron.down").foregroundStyle(Theme.muted)
+                }
+            }
+            .accessibilityAddTraits(.isHeader)
+        }
+        if open == id {
+            content()
+            Section {
+                Link(A("notice"), destination: AccountLinks.notice)
+                Link(A("terms"), destination: AccountLinks.terms)
+            }
+            .font(.footnote)
+            .tint(Theme.accent)
+        }
     }
 
     private var memberNo: String { (data?["uyeNo"] as? NSNumber).map { String($0.int64Value) } ?? "" }
@@ -340,31 +390,71 @@ private struct AccountSignedIn: View {
     }
 
     var body: some View {
+        content
+            // Yükleme bütün sayfaya bağlı: ilk bölüm yerini verince görev iptal olmasın (birleşme ve şifre seçimi önce)
+            .task(id: Account.shared.user?.id) {
+                guard Account.shared.user != nil, data == nil else { return }
+                choice = await Account.shared.passwordChoice()
+                await load()
+                sessions = await Account.shared.sessions()
+                products = await Account.shared.products()
+                await sync.sync()
+            }
+            .modifier(leaveGuard)
+            .alert(A("unsaved"), isPresented: $askLeave) {
+                Button(A("yes"), role: .destructive) { dismiss() }
+                Button(A("no"), role: .cancel) {}
+            }
+            .alert(A("unsaved"), isPresented: Binding(get: { pendingOpen != nil }, set: { if !$0 { pendingOpen = nil } })) {
+                Button(A("yes"), role: .destructive) {
+                    let target = pendingOpen ?? ""
+                    newEmail = ""; emailPassword = ""; current = ""; next = ""
+                    Task { await load(); withAnimation { open = target } }
+                }
+                Button(A("no"), role: .cancel) {}
+            }
+    }
+
+    @ViewBuilder private var content: some View {
         if let u = Account.shared.user {
             if data == nil {
                 Section { Text(loadErr.map(messageText) ?? "…").foregroundStyle(Theme.muted) }
-                    .task(id: u.id) {
-                        await load()
-                        separate = await Account.shared.separateAccount()
-                        sessions = await Account.shared.sessions()
-                        products = await Account.shared.products()
-                        await sync.sync()
-                    }
+            } else if let ch = choice {
+                choiceSection(ch)
             } else {
                 header(u)
-                badges
-                profile
-                visibility
-                emailSection
-                passwordSection
-                prefs
-                emails
-                sessionsSection
-                membership
-                downloadSection
-                deleteSection
+                // Beş grup web'deki sekmelerle aynı: Profil (1, 2, 3), Güvenlik (4, 7), Tercihler (5, 6), Üyelikler (8),
+                // Veri ve hesap (9, 10); sonra uygulamanın kullanım verisi (rozetler ve kayıtlar)
+                group("profil", A("tabProfile")) { profile; visibility; emailSection }
+                group("guvenlik", A("tabSecurity")) { passwordSection; sessionsSection }
+                group("tercihler", A("tabPrefs")) { prefs; emails }
+                group("uyelikler", A("tabMembership")) { membership }
+                group("veri", A("tabData")) { downloadSection; deleteSection }
+                group("rozetler", A("badgesTitle")) { badges }
             }
         }
+    }
+
+    /// Kaydedilmemiş değişiklikle çıkış: geri düğmesi yerine soran düğme
+    private var leaveGuard: some ViewModifier { LeaveGuard(dirty: !dirtyGroups.isEmpty, ask: $askLeave) }
+
+    @ViewBuilder private func choiceSection(_ ch: Account.Choice) -> some View {
+        Section {
+            let names = ListFormatter.localizedString(byJoining: ch.options.map { $0.name })
+            Text(T("account.mergedText", names, ch.uyeNo.map { String($0) } ?? memberNo))
+            ForEach(ch.options.indices, id: \.self) { i in
+                let o = ch.options[i]
+                Button(T("account.mergedChoice", o.name)) {
+                    run("choice", { await Account.shared.choosePassword(o.site) }, ok: "account.mergedDone") { _ in
+                        Task { try? await Task.sleep(nanoseconds: 1_200_000_000); choice = nil }
+                    }
+                }
+                .font(.headline)
+            }
+            message("choice")
+            Button(A("signOut")) { Task { await Account.shared.signOut(); onSignedOut("account.signedOut") } }
+        } header: { Text(A("mergedTitle")) } footer: { Text(A("mergedNote")) }
+        .tint(Theme.accent)
     }
 
     // Üst: e-posta ve çıkış
@@ -375,7 +465,7 @@ private struct AccountSignedIn: View {
         } footer: { Text(A("signedInNote")) }
     }
 
-    // Rozetlerim ve kayıtlarım (sahibin kararı S3, 12 Kasım 2026: ayrı bölüm)
+    // Rozetlerim ve kayıtlarım (madde 7: hesap sayfasının beş grubundan sonra kendi grubunda)
     @ViewBuilder private var badges: some View {
         Section {
             Text(T("account.badgesCount", max(sync.accountBadges, 0)))
@@ -392,17 +482,6 @@ private struct AccountSignedIn: View {
             Button(A("yes")) { Task { await sync.addBadges() } }
             Button(A("no"), role: .cancel) { sync.declineBadges() }
         }
-        .alert(A("ayriQ"), isPresented: $separate) {
-            SecureField(A("password"), text: $mergePassword)
-            Button(A("yes")) {
-                Task {
-                    let r = await Account.shared.merge(password: mergePassword)
-                    mergePassword = ""
-                    if r.ok { msg = ("badges", "account.ayriDone", true); await load() } else { msg = ("badges", r.err ?? "account.err.generic", false) }
-                }
-            }
-            Button(A("no"), role: .cancel) { mergePassword = "" }
-        } message: { Text(A("ayriNote")) }
     }
 
     // 1. Profil
@@ -476,7 +555,7 @@ private struct AccountSignedIn: View {
             }
             if p.sosyal.count < 8 { Button(A("socialAdd")) { p.sosyal.append((socialPlatforms[0], "")) } }
             LinkedText(raw: A("optionalNote"))
-            Button(A("save")) { run("profile", { await Account.shared.saveProfile(p.json) }, ok: "account.saved") }
+            Button(A("save")) { run("profile", { await Account.shared.saveProfile(p.json) }, ok: "account.saved") { _ in profileBase = Self.key(p.json) } }
             message("profile")
         } header: { Text(A("social")) }
     }
@@ -527,7 +606,7 @@ private struct AccountSignedIn: View {
                     .tint(Theme.accent)
             }
             Text(T("account.displayName", shownName)).font(.footnote).foregroundStyle(Theme.muted)
-            Button(A("save")) { run("visibility", { await Account.shared.saveProfile(p.json) }, ok: "account.saved") }
+            Button(A("save")) { run("visibility", { await Account.shared.saveProfile(p.json) }, ok: "account.saved") { _ in profileBase = Self.key(p.json) } }
             message("visibility")
         } header: { Numbered(n: 2, title: A("visibility")) } footer: { Text(A("visibleFields") + "\n" + A("emailNever")) }
     }
@@ -545,8 +624,11 @@ private struct AccountSignedIn: View {
         Section {
             Text(data?["eposta"] as? String ?? "").font(.headline)
             TextField(A("newEmail"), text: $newEmail).textContentType(.emailAddress).emailField()
+            // Önce mevcut şifre, sonra eski adrese onay, en son yeni adrese doğrulama (madde 7)
+            SecureField(A("passwordCurrent"), text: $emailPassword).textContentType(.password)
             Button(A("changeEmail")) {
-                run("email", { await Account.shared.changeEmail(newEmail) }, ok: "account.changeEmailSent") { _ in newEmail = "" }
+                let ne = newEmail, pw = emailPassword
+                run("email", { await Account.shared.changeEmail(ne, password: pw) }, ok: "account.changeEmailSent") { _ in newEmail = ""; emailPassword = "" }
             }
             message("email")
         } header: { Numbered(n: 3, title: A("emailSection")) }
@@ -579,11 +661,13 @@ private struct AccountSignedIn: View {
     // 6. E-postalar
     @ViewBuilder private var emails: some View {
         Section {
-            Toggle(A("celebrate"), isOn: Binding(get: { celebrate }, set: { on in
-                celebrate = on
-                Task { if !(await Account.shared.setCelebrate(on)).ok { celebrate = !on } }
-            })).tint(Theme.accent)
+            Toggle(A("celebrate"), isOn: $celebrate).tint(Theme.accent)
             Text(A("celebrateNote")).font(.footnote).foregroundStyle(Theme.muted)
+            Button(A("save")) {
+                let on = celebrate
+                run("emails", { await Account.shared.setCelebrate(on) }, ok: "account.saved") { _ in celebrateSaved = on }
+            }
+            message("emails")
             VStack(alignment: .leading, spacing: 4) {
                 Text(A("list")).font(.subheadline.weight(.medium))
                 Text(A("listNote")).font(.footnote).foregroundStyle(Theme.muted)
@@ -722,6 +806,20 @@ private struct AccountSignedIn: View {
 
     // 10. Hesabı sil
     @ViewBuilder private var deleteSection: some View {
+        // Silme ekranı (madde 7): önce verileri indirme bağlantısı, silinmeyenler ve nedeni, düğme ayrı kırmızı blokta
+        Section {
+            Button(A("deleteDownloadFirst")) {
+                run("delete", { await Account.shared.download() }, ok: nil) { r in
+                    let url = FileManager.default.temporaryDirectory.appendingPathComponent("saat-tarih-hesap.json")
+                    if (try? (r.data ?? Data("{}".utf8)).write(to: url, options: .atomic)) != nil { export = url }
+                }
+            }
+            .tint(Theme.accent)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(A("deleteKeptTitle")).font(.subheadline.weight(.medium))
+                Text(A("deleteKept")).font(.footnote).foregroundStyle(Theme.muted)
+            }
+        } header: { Numbered(n: 10, title: A("delete")) }
         Section {
             Text(A("deleteLead")).font(.subheadline)
             Picker("", selection: $scopeAll) {
@@ -731,9 +829,12 @@ private struct AccountSignedIn: View {
             .pickerStyle(.inline)
             .labelsHidden()
             SecureField(A("deletePassword"), text: $deletePassword).textContentType(.password)
-            Button(A("delete"), role: .destructive) { confirmDelete = true }
+            Button { confirmDelete = true } label: {
+                Text(A("delete")).font(.headline).foregroundStyle(.white).frame(maxWidth: .infinity)
+            }
+            .listRowBackground(Theme.err)
             message("delete")
-        } header: { Numbered(n: 10, title: A("delete")) } footer: { Text(A("deviceKeeps")) }
+        } footer: { Text(A("deviceKeeps")) }
         .confirmationDialog(A("deleteConfirm"), isPresented: $confirmDelete, titleVisibility: .visible) {
             Button(A("delete"), role: .destructive) {
                 let scope = scopeAll ? "hepsi" : "urun", pw = deletePassword
@@ -743,6 +844,24 @@ private struct AccountSignedIn: View {
             }
             Button(A("cancel"), role: .cancel) {}
         }
+    }
+}
+
+/// Kaydedilmemiş değişiklik varken geri düğmesi gizlenir, yerine soran düğme çıkar (kaydırarak geri dönme de kapanır)
+private struct LeaveGuard: ViewModifier {
+    let dirty: Bool
+    @Binding var ask: Bool
+    func body(content: Content) -> some View {
+        content
+            .navigationBarBackButtonHidden(dirty)
+            .toolbar {
+                if dirty {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button { ask = true } label: { Image(systemName: "chevron.backward").font(.headline) }
+                            .accessibilityLabel(A("back"))
+                    }
+                }
+            }
     }
 }
 

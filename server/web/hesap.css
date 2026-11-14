@@ -40,7 +40,8 @@ a { color: var(--accent); }
 .wrap { max-width: 46rem; margin: 0 auto; padding: 0 16px 32px; }
 h1 { font-size: 1.75rem; line-height: 1.2; margin: 8px 0 16px; }
 h2 { font-size: 1.2rem; margin: 0 0 12px; }
-h3 { font-size: 1rem; margin: 18px 0 6px; }
+h3 { font-size: 1.1rem; margin: 0 0 12px; }
+h4 { font-size: 1rem; margin: 18px 0 6px; }
 .card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; margin: 0 0 16px; }
 .num { display: inline-grid; place-items: center; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--accent-soft); color: var(--text); font-size: 0.8em; margin-inline-end: 6px; }
 .muted { color: var(--muted); }
@@ -99,5 +100,25 @@ legend { font-weight: 550; padding: 0 4px; }
 .cookie .row button { flex: 1 1 0; min-width: 7rem; }
 dialog { border: 0; border-radius: var(--radius); background: var(--surface); color: var(--text); max-width: min(32rem, calc(100vw - 32px)); padding: 20px; }
 dialog::backdrop { background: rgb(0 0 0 / 0.45); }
+/* Sekmeler (geniş ekran) ve açılır kapanır bölümler (telefon genişliği); aynı paneller, aynı adres (?sekme=) */
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; padding: 4px; background: var(--surface-2); border-radius: 999px; }
+.tabs a { flex: 1 1 auto; text-align: center; padding: 8px 14px; border-radius: 999px; color: var(--text); text-decoration: none; font-weight: 550; min-height: 40px; }
+.tabs a[aria-selected="true"] { background: var(--surface); box-shadow: var(--shadow); }
+.acc-head { display: none; margin: 0; }
+.tabpanel { display: none; }
+.tabpanel.on { display: block; }
+.legal { font-size: 0.875rem; }
+.choices { display: flex; flex-direction: column; gap: 8px; align-items: stretch; margin: 0 0 12px; }
+.danger-zone { border: 2px solid var(--err); background: var(--err-bg); border-radius: 16px; padding: 14px; margin-top: 12px; }
+@media (max-width: 40rem) {
+  .tabs { display: none; }
+  .tabpanel { display: block; margin: 0 0 8px; }
+  .acc-head { display: block; }
+  .acc-head button { width: 100%; justify-content: space-between; border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); border: 0; font-weight: 650; font-size: 1.05rem; padding: 12px 16px; }
+  .acc-head button::after { content: "+"; font-weight: 400; }
+  .acc-head button[aria-expanded="true"]::after { content: "−"; }
+  .tabpanel .tab-body { display: none; padding-top: 8px; }
+  .tabpanel.on .tab-body { display: block; }
+}
 @media (max-width: 30rem) { .social-row { grid-template-columns: 1fr; } .phone { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }

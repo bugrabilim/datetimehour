@@ -3,7 +3,7 @@
    işleri /varlik/hesap.js yapar (aynı kaynaktan JSON istekleri). Satır içi betik ve stil yok. */
 import { readFileSync } from "node:fs";
 import { LANGS, RTL, normLang, PRODUCT_NAME } from "./config.mjs";
-import { readUnsubscribeToken } from "./mail.mjs";
+import { readUnsubscribeToken, readChoiceToken } from "./mail.mjs";
 import { COUNTRIES, SOCIAL, VISIBLE_FIELDS, birthDateRange } from "./profile.mjs";
 
 export const UI = JSON.parse(readFileSync(new URL("../i18n/account.json", import.meta.url), "utf8"));
@@ -42,7 +42,7 @@ function pickLang(req, url, user) {
   return "en";
 }
 
-export function webRoutes({ cfg, closed, accounts }) {
+export function webRoutes({ cfg, closed, accounts, center }) {
   function page(res, { lang, title, body, data = {}, stats = true, theme = "system", status = 200 }) {
     const t = UI[lang];
     const dir = RTL.has(lang) ? "rtl" : "ltr";
@@ -71,6 +71,14 @@ export function webRoutes({ cfg, closed, accounts }) {
   const deletionUrl = (lang) => `${cfg.siteUrl}${lang === "tr" ? "/hesap-silme/" : `/${lang}/account-deletion/`}`;
   const cookieTexts = (lang) => COOKIE[lang] || COOKIE.en;
 
+  const fill = (str, v) => String(str).replace(/\{(\w+)\}/g, (_, n) => (v[n] != null ? v[n] : ""));
+  const listOf = (lang, names) => { try { return new Intl.ListFormat(lang, { type: "conjunction" }).format(names); } catch { return names.join(", "); } };
+  async function readForm(req) {
+    const chunks = [];
+    let n = 0;
+    for await (const ch of req) { n += ch.length; if (n > 8192) break; chunks.push(ch); }
+    return new URLSearchParams(Buffer.concat(chunks).toString("utf8"));
+  }
   const shell = (inner) => `<section class="card">${inner}</section>`;
   const msg = (text, kind = "") => `<p class="msg ${kind}" role="status">${esc(text)}</p>`;
 
@@ -82,10 +90,17 @@ export function webRoutes({ cfg, closed, accounts }) {
       res.end(readFileSync(file));
       return true;
     }
-    const pages = ["/", "/giris", "/kayit", "/sifre", "/dogrulandi", "/hesap", "/hesap/rozetler", "/kutlama"];
-    if (!pages.includes(p) || !["GET", "POST"].includes(req.method) || (req.method === "POST" && p !== "/kutlama")) return false;
+    const pages = ["/", "/giris", "/kayit", "/sifre", "/dogrulandi", "/hesap", "/hesap/rozetler", "/kutlama", "/sifre-sec"];
+    if (!pages.includes(p) || !["GET", "POST"].includes(req.method) || (req.method === "POST" && p !== "/kutlama" && p !== "/sifre-sec")) return false;
+    // Rozetler ve kayıtlar artık hesap sayfasının sekmesi (madde 7: kullanım verisi ayrı sayfaya konmaz)
+    if (p === "/hesap/rozetler") {
+      const l = url.searchParams.get("dil");
+      res.writeHead(301, { Location: `/hesap?sekme=rozetler${l ? `&dil=${encodeURIComponent(l)}` : ""}`, "Cache-Control": "no-store" });
+      res.end();
+      return true;
+    }
 
-    const s = ctx && !closed && ["/", "/giris", "/kayit", "/hesap", "/hesap/rozetler"].includes(p) ? await ctx.session(req) : null;
+    const s = ctx && !closed && ["/", "/giris", "/kayit", "/hesap"].includes(p) ? await ctx.session(req) : null;
     const user = s?.user || null;
     const lang = pickLang(req, url, user);
     const t = UI[lang];
@@ -100,7 +115,7 @@ export function webRoutes({ cfg, closed, accounts }) {
 
     if (p === "/") return go(user ? "/hesap" : "/giris");
     if ((p === "/giris" || p === "/kayit") && user && !url.searchParams.has("adim")) return go("/hesap");
-    if ((p === "/hesap" || p === "/hesap/rozetler") && !user) return go("/giris");
+    if (p === "/hesap" && !user) return go("/giris");
 
     const pw = `<div class="pw-rule" data-pw-rule><p>${esc(t.pwRuleTitle)}</p><ul>${["pwLen", "pwDigit", "pwCase", "pwSymbol"].map((k) => `<li data-rule="${k}">${esc(t[k])}</li>`).join("")}</ul></div>`;
 
@@ -111,8 +126,6 @@ export function webRoutes({ cfg, closed, accounts }) {
 <div data-msg></div><button type="submit" class="primary">${esc(t.signIn)}</button></form>
 <p><button type="button" class="link" data-show="forgot">${esc(t.forgot)}</button></p>
 <form data-form="forgot" hidden novalidate><p>${esc(t.forgotLead)}</p><label>${esc(t.email)}<input type="email" name="email" autocomplete="email" required></label><div data-msg></div><button type="submit">${esc(t.forgotSend)}</button></form>
-<form data-form="link-separate" hidden novalidate><p>${esc(t.ayriQ)}</p><p class="muted">${esc(t.ayriNote)}</p><label>${esc(t.password)}<input type="password" name="password" autocomplete="off"></label><div data-msg></div>
-<div class="row"><button type="submit" class="primary">${esc(t.yes)}</button><button type="button" data-skip>${esc(t.no)}</button></div></form>
 <p class="muted">${esc(t.noAccount)} <a href="/kayit?dil=${lang}">${esc(t.signUp)}</a></p>`) });
       return true;
     }
@@ -161,18 +174,48 @@ ${token ? `<form data-form="reset" novalidate><label>${esc(t.newPassword)}<input
       page(res, { ...base, stats: false, title: t.unsubTitle, body: shell(`<h1>${esc(t.unsubTitle)}</h1>${body}`) });
       return true;
     }
-    if (p === "/hesap/rozetler") {
-      page(res, { ...base, title: t.badgesTitle, data: { ...base.data, badgeNames: BADGE_NAMES[lang] || BADGE_NAMES.en }, body: `<p><a href="/hesap?dil=${lang}">‹ ${esc(t.title)}</a></p>
-${shell(`<h1>${esc(t.badgesTitle)}</h1><p class="muted">${esc(t.badgesNote)}</p><div data-badges></div>`)}
-${shell(`<h2>${esc(t.recordsTitle)}</h2><p class="muted">${esc(t.recordsNote)}</p><div data-records></div>`)}` });
+    // "Hesaplarınız birleştirildi" e-postasındaki şifre seçimi (madde 7): oturum açmaz, yalnız seçimi yapar; seçim
+    // yapıldıysa (ekrandan ya da bu bağlantıdan) merkezde bekleyen seçim kalmaz ve bağlantı geçersiz olur
+    if (p === "/sifre-sec") {
+      const k = url.searchParams.get("k") || "";
+      const userId = readChoiceToken(cfg.secret, k);
+      const u = userId ? (await ctx.pool.query(`select email, "uyeNo" from "user" where id = $1`, [userId])).rows[0] : null;
+      const bad = () => page(res, { ...base, stats: false, title: t.mergedTitle, body: shell(`<h1>${esc(t.mergedTitle)}</h1>${msg(t.mergedLinkBad, "err")}<p><a class="button primary" href="/giris?dil=${lang}">${esc(t.signIn)}</a></p>`) });
+      if (!u || u.uyeNo == null) { bad(); return true; }
+      if (req.method === "POST") {
+        const body = await readForm(req);
+        const r = await center.sifreSec(Number(u.uyeNo), String(body.get("site") || ""));
+        if (!r.ok) { bad(); return true; }
+        page(res, { ...base, stats: false, title: t.mergedTitle, body: shell(`<h1>${esc(t.mergedTitle)}</h1>${msg(t.mergedDone, "ok")}<p><a class="button primary" href="/giris?dil=${lang}">${esc(t.signIn)}</a></p>`) });
+        return true;
+      }
+      const q = await center.sorgula(u.email, Number(u.uyeNo));
+      const opts = Array.isArray(q.data?.sifreSecimi) ? q.data.sifreSecimi : [];
+      if (!q.ok || !opts.length) { bad(); return true; }
+      const names = listOf(lang, opts.map((x) => String(x.ad)));
+      page(res, { ...base, stats: false, title: t.mergedTitle, body: shell(`<h1>${esc(t.mergedTitle)}</h1><p>${esc(fill(t.mergedText, { urunler: names, no: u.uyeNo }))}</p>
+<form method="post" action="/sifre-sec?dil=${lang}&amp;k=${esc(k)}" class="choices">${opts.map((x) => `<button type="submit" name="site" value="${esc(x.site)}" class="primary">${esc(fill(t.mergedChoice, { ad: x.ad }))}</button>`).join("")}</form>
+<p class="muted">${esc(t.mergedNote)}</p>`) });
       return true;
     }
     if (p === "/hesap") {
       const range = birthDateRange();
-      const sec = (id, n, title, inner) => `<section class="card" id="${id}" aria-labelledby="${id}-h"><h2 id="${id}-h"><span class="num">${n}</span> ${esc(title)}</h2>${inner}</section>`;
+      const sec = (id, n, title, inner) => `<section class="card" id="${id}" aria-labelledby="${id}-h"><h3 id="${id}-h"><span class="num">${n}</span> ${esc(title)}</h3>${inner}</section>`;
       const opt = (v, l, sel) => `<option value="${esc(v)}"${sel ? " selected" : ""}>${esc(l)}</option>`;
-      const body = `<h1>${esc(t.title)}</h1><p class="row"><a class="button" href="/hesap/rozetler?dil=${lang}">${esc(t.badgesTitle)}</a><button type="button" data-signout>${esc(t.signOut)}</button></p>
-${sec("profil", 1, t.profile, `<form data-form="profile" novalidate>
+      const legalP = `<p class="muted legal"><a href="${esc(legal(lang).notice)}" target="_blank" rel="noopener">${esc(t.notice)}</a> · <a href="${esc(legal(lang).terms)}" target="_blank" rel="noopener">${esc(t.terms)}</a></p>`;
+      const TABS = ["profil", "guvenlik", "tercihler", "uyelikler", "veri", "rozetler"];
+      const tab = TABS.includes(url.searchParams.get("sekme")) ? url.searchParams.get("sekme") : "profil";
+      const tabTitle = { profil: t.tabProfile, guvenlik: t.tabSecurity, tercihler: t.tabPrefs, uyelikler: t.tabMembership, veri: t.tabData, rozetler: t.badgesTitle };
+      // Sekmeli düzen (madde 7): beş sekme + sitenin kendi kullanım verisi; sekme adreste (?sekme=), telefon genişliğinde
+      // açılır kapanır bölümler (aynı başlıklar). Her sekmenin altında ortak aydınlatma metni ve sözleşme bağlantısı.
+      const panel = (id, inner) => `<section class="tabpanel${id === tab ? " on" : ""}" id="tab-${id}" data-tab="${id}" role="tabpanel" aria-labelledby="tl-${id}">
+<h2 class="acc-head"><button type="button" data-acc="${id}" aria-expanded="${id === tab}" aria-controls="tb-${id}">${esc(tabTitle[id])}</button></h2>
+<div class="tab-body" id="tb-${id}">${inner}${legalP}</div></section>`;
+      const body = `<h1>${esc(t.title)}</h1>
+<section class="card" data-choice hidden aria-live="polite"><h2>${esc(t.mergedTitle)}</h2><p data-choice-text></p><div class="choices" data-choice-buttons></div><p class="muted">${esc(t.mergedNote)}</p><div data-msg></div><p><button type="button" data-signout>${esc(t.signOut)}</button></p></section>
+<div data-account><p class="row"><button type="button" data-signout>${esc(t.signOut)}</button></p>
+<nav class="tabs" role="tablist" aria-label="${esc(t.title)}">${TABS.map((id) => `<a role="tab" id="tl-${id}" href="/hesap?sekme=${id}&amp;dil=${lang}" data-tab-link="${id}" aria-controls="tab-${id}" aria-selected="${id === tab}"${id === tab ? "" : ' tabindex="-1"'}>${esc(tabTitle[id])}</a>`).join("")}</nav>
+${panel("profil", `${sec("profil", 1, t.profile, `<form data-form="profile" novalidate>
 <div class="photo"><img data-photo alt="" width="96" height="96" hidden><div><label class="button">${esc(t.photoChoose)}<input type="file" accept="image/*" data-photo-input class="sr"></label> <button type="button" data-photo-remove hidden>${esc(t.photoRemove)}</button><p class="muted">${esc(t.photoNote)}</p></div></div>
 <div class="grid"><label>${esc(t.firstName)}<input name="ad" maxlength="100" autocomplete="given-name"></label><label>${esc(t.lastName)}<input name="soyad" maxlength="100" autocomplete="family-name"></label>
 <label>${esc(t.nickname)}<input name="takmaAd" maxlength="60" autocomplete="nickname"></label>
@@ -187,22 +230,29 @@ ${sec("profil", 1, t.profile, `<form data-form="profile" novalidate>
 ${sec("gorunurluk", 2, t.visibility, `<form data-form="visibility" novalidate><label class="check"><input type="checkbox" name="acik"> ${esc(t.showProfile)}</label>
 <fieldset><legend>${esc(t.visibleFields)}</legend><div class="checks">${VISIBLE_FIELDS.map((f) => `<label class="check"><input type="checkbox" name="alan" value="${f}"> ${esc(t[FIELD_LABEL[f]])}</label>`).join("")}</div></fieldset>
 <p class="muted">${esc(t.emailNever)}</p><p data-display-name class="muted"></p><div data-msg></div><button type="submit" class="primary">${esc(t.save)}</button></form>`)}
-${sec("eposta", 3, t.emailSection, `<p data-email class="strong"></p><form data-form="email" novalidate><label>${esc(t.newEmail)}<input type="email" name="email" autocomplete="email" required></label><div data-msg></div><button type="submit">${esc(t.changeEmail)}</button></form>`)}
-${sec("sifre", 4, t.passwordSection, `<form data-form="password" novalidate><label>${esc(t.passwordCurrent)}<input type="password" name="current" autocomplete="current-password" required></label>
-<label>${esc(t.newPassword)}<input type="password" name="password" autocomplete="new-password" required></label>${pw}<div data-msg></div><button type="submit">${esc(t.changePassword)}</button></form>`)}
-${sec("tercihler", 5, t.prefs, `<form data-form="prefs" novalidate><div class="grid"><label>${esc(t.language)}<select name="lang">${LANGS.map((l) => opt(l, LANG_NAMES[l], l === lang)).join("")}</select></label>
-<label>${esc(t.theme)}<select name="theme">${opt("system", t.themeSystem)}${opt("light", t.themeLight)}${opt("dark", t.themeDark)}</select></label>
-<label>${esc(t.timeZone)}<select name="timeZone" data-zones></select></label></div><div data-msg></div><button type="submit">${esc(t.save)}</button></form>`)}
-${sec("epostalar", 6, t.emails, `<label class="check"><input type="checkbox" data-celebrate> ${esc(t.celebrate)}</label><p class="muted">${esc(t.celebrateNote)}</p>
-<h3>${esc(t.list)}</h3><p class="muted">${esc(t.listNote)}</p><p><a href="${esc(cfg.siteUrl)}${lang === "tr" ? "/" : `/${lang}/`}#liste-form">${esc(t.listJoin)}</a></p>`)}
+${sec("eposta", 3, t.emailSection, `<p data-email class="strong"></p><form data-form="email" novalidate><label>${esc(t.newEmail)}<input type="email" name="email" autocomplete="email" required></label><label>${esc(t.passwordCurrent)}<input type="password" name="current" autocomplete="current-password" required></label><div data-msg></div><button type="submit" class="primary">${esc(t.changeEmail)}</button></form>`)}
+`)}
+${panel("guvenlik", `${sec("sifre", 4, t.passwordSection, `<form data-form="password" novalidate><label>${esc(t.passwordCurrent)}<input type="password" name="current" autocomplete="current-password" required></label>
+<label>${esc(t.newPassword)}<input type="password" name="password" autocomplete="new-password" required></label>${pw}<div data-msg></div><button type="submit" class="primary">${esc(t.changePassword)}</button></form>`)}
 ${sec("oturumlar", 7, t.sessions, `<ul class="list" data-sessions></ul><button type="button" data-close-others>${esc(t.closeOthers)}</button>`)}
-${sec("uyelik", 8, t.membership, `<dl class="facts"><dt>${esc(t.memberNo)}</dt><dd data-no></dd><dt>${esc(t.memberSince)}</dt><dd data-since></dd></dl>
-<h3>${esc(t.products)}</h3><p class="muted">${esc(t.productsNote)}</p><ul class="list" data-products></ul><div class="row"><button type="button" data-open-all>${esc(t.openAll)}</button><button type="button" data-close-all>${esc(t.closeAll)}</button></div><div data-msg-products></div>`)}
-${sec("verilerim", 9, t.download, `<p class="muted">${esc(t.downloadNote)}</p><a class="button" href="/v1/verilerim" download>${esc(t.download)}</a>`)}
-${sec("sil", 10, t.delete, `<form data-form="delete" novalidate><p>${esc(t.deleteLead)}</p><fieldset><label class="check"><input type="radio" name="kapsam" value="urun" checked> ${esc(t.deleteScopeProduct)}</label><label class="check"><input type="radio" name="kapsam" value="hepsi"> ${esc(t.deleteScopeAll)}</label></fieldset>
+`)}
+${panel("tercihler", `${sec("tercihler", 5, t.prefs, `<form data-form="prefs" novalidate><div class="grid"><label>${esc(t.language)}<select name="lang">${LANGS.map((l) => opt(l, LANG_NAMES[l], l === lang)).join("")}</select></label>
+<label>${esc(t.theme)}<select name="theme">${opt("system", t.themeSystem)}${opt("light", t.themeLight)}${opt("dark", t.themeDark)}</select></label>
+<label>${esc(t.timeZone)}<select name="timeZone" data-zones></select></label></div><div data-msg></div><button type="submit" class="primary">${esc(t.save)}</button></form>`)}
+${sec("epostalar", 6, t.emails, `<form data-form="emails" novalidate><label class="check"><input type="checkbox" name="kutlama"> ${esc(t.celebrate)}</label><p class="muted">${esc(t.celebrateNote)}</p><div data-msg></div><button type="submit" class="primary">${esc(t.save)}</button></form>
+<h4>${esc(t.list)}</h4><p class="muted">${esc(t.listNote)}</p><p><a href="${esc(cfg.siteUrl)}${lang === "tr" ? "/" : `/${lang}/`}#liste-form">${esc(t.listJoin)}</a></p>`)}
+`)}
+${panel("uyelikler", `${sec("uyelik", 8, t.membership, `<dl class="facts"><dt>${esc(t.memberNo)}</dt><dd data-no></dd><dt>${esc(t.memberSince)}</dt><dd data-since></dd></dl>
+<h4>${esc(t.products)}</h4><p class="muted">${esc(t.productsNote)}</p><ul class="list" data-products></ul><div class="row"><button type="button" data-open-all>${esc(t.openAll)}</button><button type="button" data-close-all>${esc(t.closeAll)}</button></div><div data-msg-products></div>`)}
+`)}
+${panel("veri", `${sec("verilerim", 9, t.download, `<p class="muted">${esc(t.downloadNote)}</p><a class="button" href="/v1/verilerim" download>${esc(t.download)}</a>`)}
+${sec("sil", 10, t.delete, `<p><a href="/hesap?sekme=veri&amp;dil=${lang}#verilerim" data-goto="verilerim">${esc(t.deleteDownloadFirst)}</a></p><h4>${esc(t.deleteKeptTitle)}</h4><p class="muted">${esc(t.deleteKept)}</p>
+<form data-form="delete" class="danger-zone" novalidate><p>${esc(t.deleteLead)}</p><fieldset><label class="check"><input type="radio" name="kapsam" value="urun" checked> ${esc(t.deleteScopeProduct)}</label><label class="check"><input type="radio" name="kapsam" value="hepsi"> ${esc(t.deleteScopeAll)}</label></fieldset>
 <label>${esc(t.deletePassword)}<input type="password" name="password" autocomplete="current-password"></label><div data-msg></div><button type="submit" class="danger">${esc(t.delete)}</button></form>`)}
-<p class="muted"><a href="${esc(legal(lang).notice)}" target="_blank" rel="noopener">${esc(t.notice)}</a> · <a href="${esc(legal(lang).terms)}" target="_blank" rel="noopener">${esc(t.terms)}</a></p>`;
-      page(res, { ...base, title: t.title, data: { ...base.data, countries: COUNTRIES, social: SOCIAL }, body });
+`)}
+${panel("rozetler", `<section class="card" id="rozetler"><h3>${esc(t.badgesTitle)}</h3><p class="muted">${esc(t.badgesNote)}</p><div data-badges></div></section><section class="card" id="kayitlar"><h3>${esc(t.recordsTitle)}</h3><p class="muted">${esc(t.recordsNote)}</p><div data-records></div></section>`)}
+</div>`;
+      page(res, { ...base, title: t.title, data: { ...base.data, countries: COUNTRIES, social: SOCIAL, badgeNames: BADGE_NAMES[lang] || BADGE_NAMES.en }, body });
       return true;
     }
     return false;

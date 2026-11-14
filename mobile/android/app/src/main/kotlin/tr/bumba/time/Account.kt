@@ -89,7 +89,7 @@ object Account {
             code == "EMAIL_NOT_VERIFIED" -> "account.err.unverified"
             code == "BANNED_USER" -> "account.err.suspended"
             code == "BUMBA_MEMBER" -> "account.bumba"
-            code == "EMAIL_TAKEN" || code == "USER_ALREADY_EXISTS" -> "account.err.emailTaken"
+            code == "EMAIL_TAKEN" || code == "USER_ALREADY_EXISTS" || code == "eposta-alinmis" -> "account.err.emailTaken"
             code == "WEAK_PASSWORD" || code.startsWith("PASSWORD_TOO") -> "account.err.password"
             code == "INVALID_PASSWORD" || code == "sifre" || wrongPassword && (r.code == 400 || r.code == 401) -> "account.err.wrongPassword"
             code == "INVALID_EMAIL_OR_PASSWORD" || code == "bilgiler" || r.code == 401 -> "account.err.credentials"
@@ -156,15 +156,27 @@ object Account {
         AccountSync.sync(first = true)
     }
 
-    /** Girişten sonra: aynı e-postayla başka bir Bumba ürününde ayrı hesap var mı */
-    suspend fun separateAccount(): Boolean {
-        val r = call("GET", "/v1/uyelik/durum", auth = true)
-        return r.code == 200 && runCatching { JSONObject(r.body).optBoolean("ayriHesap") }.getOrDefault(false)
+    /** Şifre seçimi bekleyen birleşme: seçenekler (site, ürün adı) ve birleşmiş üye numarası */
+    data class Choice(val uyeNo: Long?, val options: List<Pair<String, String>>)
+
+    /**
+     * Girişten sonra (hesap ekranı her açıldığında): aynı e-postayla başka bir Bumba ürününde ayrı hesap varsa sunucu
+     * sormadan birleştirir (madde 7); şifre değişmez. Şifre seçimi bekleniyorsa seçenekler döner, yoksa null.
+     */
+    suspend fun passwordChoice(): Choice? {
+        val r = call("POST", "/v1/uyelik/durum", JSONObject(), auth = true)
+        if (r.code != 200) return null
+        val o = runCatching { JSONObject(r.body) }.getOrNull() ?: return null
+        val a = o.optJSONArray("sifreSecimi") ?: return null
+        val opts = (0 until a.length()).mapNotNull { a.optJSONObject(it) }.map { it.optString("site") to it.optString("ad") }.filter { it.first.isNotEmpty() }
+        if (opts.isEmpty()) return null
+        return Choice(if (o.isNull("uyeNo")) null else o.optLong("uyeNo"), opts)
     }
 
-    suspend fun merge(password: String): Result {
-        val r = call("POST", "/v1/uyelik/birlestir", JSONObject().put("sifre", password), auth = true)
-        return if (r.code == 200) Result() else Result(errorOf(r, wrongPassword = true))
+    /** Seçilen ürünün şifresi bütün bağlı ürünlerde geçerli olur; seçim zaten yapılmışsa (404) de tamam sayılır */
+    suspend fun choosePassword(site: String): Result {
+        val r = call("POST", "/v1/uyelik/sifre-sec", JSONObject().put("site", site), auth = true)
+        return if (r.code == 200 || r.code == 404) Result() else Result(errorOf(r))
     }
 
     /** Sunucudaki güncel bilgiler; oturum geçersizse (silinmiş, şifre başka yerde değişmiş) çıkış */
@@ -212,10 +224,12 @@ object Account {
         return if (r.code == 200) Result() else Result(errorOf(r))
     }
 
-    suspend fun changeEmail(newEmail: String): Result {
+    /** Önce mevcut şifre (sunucu denetler), sonra eski adrese onay, en son yeni adrese doğrulama */
+    suspend fun changeEmail(newEmail: String, password: String): Result {
         if (!validEmail(newEmail)) return Result("account.err.email")
-        val r = call("POST", "/api/auth/change-email", JSONObject().put("newEmail", newEmail.trim().lowercase()), auth = true)
-        return if (r.code == 200) Result() else Result(errorOf(r))
+        if (password.isEmpty()) return Result("account.err.wrongPassword")
+        val r = call("POST", "/v1/eposta", JSONObject().put("eposta", newEmail.trim().lowercase()).put("sifre", password), auth = true)
+        return if (r.code == 200) Result() else Result(errorOf(r, wrongPassword = true))
     }
 
     /** Öbür oturumlar kapanır; sunucu bu cihaz için yeni belirteç verir */

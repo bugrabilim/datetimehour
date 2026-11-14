@@ -20,7 +20,7 @@ const freePort = () => new Promise((resolve, reject) => {
 /* Sahte merkez: başka üründe kayıtlı adresler (`others`), yasaklı adresler, gelen çağrıların kaydı */
 export async function startCenter() {
   const c = {
-    calls: [], next: 10458, numbers: new Map(), others: new Map(), banned: new Set(), down: false, ayriHesap: new Set(),
+    calls: [], next: 10458, numbers: new Map(), others: new Map(), banned: new Set(), down: false, ayriHesap: new Set(), merge: new Map(), pending: new Map(),
     find: (op) => c.calls.filter((x) => x.op === op),
   };
   const server = http.createServer(async (req, res) => {
@@ -36,7 +36,11 @@ export async function startCenter() {
     if (op === "sorgula") {
       if (c.banned.has(e)) return out(200, { durum: "yasakli" });
       if (c.others.has(e)) return out(200, { durum: "var", uyeNo: c.others.get(e).hesap.uyeNo, urunler: ["gander"], buradaAcik: false });
-      if (c.numbers.has(e)) return out(200, { durum: "var", uyeNo: c.numbers.get(e), urunler: ["saat-tarih"], buradaAcik: true, ayriHesap: c.ayriHesap.has(e) });
+      if (c.numbers.has(e)) {
+        const no = Number(body.uyeNo) || c.numbers.get(e);
+        const extra = c.pending.has(no) ? { sifreSecimi: c.pending.get(no) } : {};
+        return out(200, { durum: "var", uyeNo: c.numbers.get(e), urunler: ["saat-tarih"], buradaAcik: true, ayriHesap: c.ayriHesap.has(e), ...extra });
+      }
       return out(200, { durum: "yok" });
     }
     if (op === "kayit") {
@@ -50,10 +54,21 @@ export async function startCenter() {
       if (!o || o.sifre !== body.sifre) return out(200, { gecerli: false });
       return out(200, { gecerli: true, hesap: o.hesap });
     }
+    // Birleşme şifresiz (5.16): en eski numara, birleşmiş profil, şifre özeti null; şifre seçimi bekler
     if (op === "birlestir") {
-      const o = c.others.get(e);
-      if (!o || o.sifre !== body.sifre) return out(200, { gecerli: false });
-      return out(200, { gecerli: true, yeniNo: o.hesap.uyeNo, hesap: o.hesap });
+      const h = c.merge.get(e);
+      if (!h || !c.ayriHesap.has(e)) return out(200, { birlesti: false });
+      c.ayriHesap.delete(e);
+      c.numbers.set(e, h.uyeNo);
+      const secim = [{ site: "saat-tarih", ad: "Saat Tarih" }, { site: "gander", ad: "Gander" }];
+      c.pending.set(h.uyeNo, secim);
+      return out(200, { birlesti: true, yeniNo: h.uyeNo, hesap: { ...h, sifreOzeti: null }, urunler: ["saat-tarih", "gander"], sifreSecimi: secim });
+    }
+    if (op === "sifre-sec") {
+      const no = Number(body.uyeNo);
+      if (!c.pending.has(no) || !c.pending.get(no).some((x) => x.site === body.site)) return out(404, { hata: "secim-yok" });
+      c.pending.delete(no);
+      return out(200, { tamam: true });
     }
     if (op === "urunler") return out(200, { urunler: [{ site: "saat-tarih", ad: "Saat Tarih", adres: "https://time.bumba.tr", acik: true, kendisi: true }, { site: "gander", ad: "Gander", adres: "https://gander.bumba.tr", acik: false, kendisi: false }] });
     if (op === "ac") return out(200, { sonuclar: Object.fromEntries((body.hedefler || []).map((h) => [h, "acildi"])) });

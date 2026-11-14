@@ -147,8 +147,15 @@ test("şifre değiştirme: mevcut şifre, kural, haber ve bağlı ürünlere öz
   assert.equal((await t.req("/api/auth/change-password", { method: "POST", token, body: { currentPassword: "Yanlis-sifre1", newPassword: "En-yeni-sifre5" } })).status, 400);
   assert.equal((await t.req("/api/auth/change-password", { method: "POST", token, body: { currentPassword: "Yeni-sifre3", newPassword: "zayif" } })).status, 400);
   const before = t.center.find("guncelle").length;
-  const ok = await t.req("/api/auth/change-password", { method: "POST", token, body: { currentPassword: "Yeni-sifre3", newPassword: "En-yeni-sifre5", revokeOtherSessions: true } });
+  const other = (await t.req("/api/auth/sign-in/email", { method: "POST", headers: { "x-saat-istemci": "android" }, body: { email: "ali@example.com", password: "Yeni-sifre3" } })).json.token;
+  // revokeOtherSessions gönderilmese de öbür oturumlar kapanır; yanıtta yeni belirteç, eskisi geçersiz
+  const ok = await t.req("/api/auth/change-password", { method: "POST", token, body: { currentPassword: "Yeni-sifre3", newPassword: "En-yeni-sifre5" } });
   assert.equal(ok.status, 200, ok.text);
+  assert.ok(ok.json.token && ok.json.token !== token, "bu oturumun kimliği yenilenir");
+  assert.ok(ok.headers.get("set-auth-token").startsWith(ok.json.token), "uygulamalar yeni belirteci başlıktan alır");
+  assert.equal((await t.req("/api/auth/get-session", { token })).json, null, "eski kimlik geçersiz");
+  assert.equal((await t.req("/api/auth/get-session", { token: other })).json, null, "öbür oturum kapandı");
+  assert.equal((await t.req("/api/auth/get-session", { token: ok.json.token })).json.user.email, "ali@example.com");
   assert.equal(t.center.find("guncelle").length, before + 1);
   assert.equal(t.outbox.filter((m) => m.kind === "passwordChanged" && m.to === "ali@example.com").length, 2);
 });
@@ -156,9 +163,13 @@ test("şifre değiştirme: mevcut şifre, kural, haber ve bağlı ürünlere öz
 test("e-posta değiştirme: önce ortak servise sorulur, eski adrese onay, yeni adrese doğrulama, bağlı ürünlere yeni adres", async () => {
   const s = await t.req("/api/auth/sign-in/email", { method: "POST", headers: { "x-saat-istemci": "ios" }, body: { email: "ali@example.com", password: "En-yeni-sifre5" } });
   const token = s.json.token;
-  const taken = await t.req("/api/auth/change-email", { method: "POST", token, body: { newEmail: "bumba@example.com" } });
+  // Better Auth'un ucu dışarıdan doğrudan çağrılamaz: önce mevcut şifre (/v1/eposta)
+  assert.equal((await t.req("/api/auth/change-email", { method: "POST", token, body: { newEmail: "ali.yeni@example.com" } })).status, 403);
+  assert.equal((await t.req("/v1/eposta", { method: "POST", token, body: { eposta: "ali.yeni@example.com", sifre: "Yanlis-sifre1" } })).status, 401, "mevcut şifre");
+  const taken = await t.req("/v1/eposta", { method: "POST", token, body: { eposta: "bumba@example.com", sifre: "En-yeni-sifre5" } });
   assert.equal(taken.status, 400, "başka üyenin adresi");
-  const r = await t.req("/api/auth/change-email", { method: "POST", token, body: { newEmail: "ali.yeni@example.com" } });
+  assert.equal(taken.json.hata, "eposta-alinmis");
+  const r = await t.req("/v1/eposta", { method: "POST", token, body: { eposta: "ali.yeni@example.com", sifre: "En-yeni-sifre5" } });
   assert.equal(r.status, 200, r.text);
   const c = t.last("changeOld", "ali@example.com");
   const cu = new URL(c.vars.url);

@@ -1,12 +1,13 @@
 /* Temizlik (standart madde 7, "Saklama"): `POST /gorev/temizlik`, günde bir (görevi ana altyapı oturumu kurar).
    - süresi geçmiş oturum, doğrulama ve deneme sınırı kayıtları her gün silinir;
    - 7 gün içinde doğrulanmayan hesap silinir (ortak servise `ayril`; e-posta gönderilmez);
-   - e-postası doğrulanmış ama Bumba üye numarası eksik hesaplar numarasını `kayit`'tan alır;
+   - e-postası doğrulanmış ama Bumba üye numarası eksik hesaplar numarasını `kayit`'tan alır (yönetici hesabı hariç:
+     üye değildir, merkez çağrılmaz);
    - ortak servise ulaşılamadığı için bekleyen bildirimler yeniden gönderilir.
    Kullanılmayan hesap silinmez. */
 export const RETENTION = { unverifiedDays: 7 };
 
-export async function runCleanup({ pool, center, now = new Date() }) {
+export async function runCleanup({ pool, center, adminEmail = "", now = new Date() }) {
   const out = { sessions: 0, verifications: 0, rateLimits: 0, unverified: 0, numbers: 0, retried: 0 };
   out.sessions = (await pool.query(`delete from session where "expiresAt" < $1`, [now])).rowCount;
   out.verifications = (await pool.query(`delete from verification where "expiresAt" < $1`, [now])).rowCount;
@@ -24,7 +25,7 @@ export async function runCleanup({ pool, center, now = new Date() }) {
     out.unverified++;
   }
 
-  const missing = await pool.query(`select id, email from "user" where "emailVerified" = true and "uyeNo" is null and coalesce(banned, false) = false`);
+  const missing = await pool.query(`select id, email from "user" where "emailVerified" = true and "uyeNo" is null and coalesce(banned, false) = false and lower(email) <> $1`, [String(adminEmail).toLowerCase()]);
   for (const u of missing.rows) {
     const r = await center.kayit(u.email);
     if (r.ok && Number.isInteger(r.data?.no)) {

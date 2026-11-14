@@ -75,7 +75,7 @@
     if (c === "EMAIL_NOT_VERIFIED") return t["err.unverified"];
     if (c === "BANNED_USER") return t["err.suspended"];
     if (c === "WEAK_PASSWORD" || c === "PASSWORD_TOO_SHORT" || c === "PASSWORD_TOO_LONG") return t["err.password"];
-    if (c === "EMAIL_TAKEN" || c === "USER_ALREADY_EXISTS") return t["err.emailTaken"];
+    if (c === "EMAIL_TAKEN" || c === "USER_ALREADY_EXISTS" || c === "eposta-alinmis") return t["err.emailTaken"];
     if (c === "INVALID_PASSWORD" || c === "sifre") return t["err.wrongPassword"];
     if (c === "INVALID_EMAIL" || c === "eposta") return t["err.email"];
     if (typeof c === "string" && c.startsWith("gecersiz:")) return fill(t["err.field"], { alan: c.slice(9) });
@@ -110,15 +110,8 @@
 
   /* ---- Giriş ---- */
   const signin = $('[data-form="signin"]');
-  async function afterSignIn() {
-    const d = await call("/v1/uyelik/durum", null, "GET");
-    if (d.status === 200 && d.data && d.data.ayriHesap) {
-      signin.hidden = true;
-      const f = $('[data-form="link-separate"]'); f.hidden = false; $('input', f).focus();
-      return;
-    }
-    location.href = "/hesap?dil=" + lang;
-  }
+  // Girişten sonra hesap sayfası: ayrı hesap birleşmesi ve şifre seçimi orada (POST /v1/uyelik/durum)
+  const afterSignIn = () => { location.href = "/hesap?dil=" + lang; };
   if (signin) {
     signin.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -143,16 +136,6 @@
       busy(forgot, false);
       if (r.status === 200) say(forgot, t.forgotSent, "ok"); else say(forgot, errText(r), "err");
     });
-    const sep = $('[data-form="link-separate"]');
-    sep.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      busy(sep, true);
-      const r = await call("/v1/uyelik/birlestir", { sifre: sep.password.value });
-      busy(sep, false);
-      if (r.status === 200) { say(sep, t.ayriDone, "ok"); setTimeout(() => { location.href = "/hesap?dil=" + lang; }, 1200); }
-      else say(sep, errText(r), "err");
-    });
-    $("[data-skip]", sep).addEventListener("click", () => { location.href = "/hesap?dil=" + lang; });
   }
 
   /* ---- Kayıt: önce e-posta; başka bir Bumba ürününde üyeyse soru, değilse şifre + onay + Üye ol ---- */
@@ -229,15 +212,85 @@
   });
 
   /* ---- Hesap sayfası ---- */
-  if ($('[data-form="profile"]')) account();
-  if ($("[data-badges]")) badgesPage();
+  if ($('[data-form="profile"]')) account().then(() => { const acc = $("[data-account]"); if ($("[data-badges]") && acc && !acc.hidden) badgesPage(); });
+
+  /* Sekmeler (geniş ekran) ve açılır kapanır bölümler (telefon): aynı paneller, sekme adreste (?sekme=). Kaydedilmemiş
+     değişiklikle sekmeden ya da sayfadan çıkılırken uyarı (madde 7). */
+  const dirty = new Set();
+  function watchDirty(form) {
+    if (!form) return;
+    const mark = () => dirty.add(form);
+    form.addEventListener("input", mark); form.addEventListener("change", mark);
+  }
+  const clean = (form) => dirty.delete(form);
+  const dirtyIn = (panel) => Array.from(dirty).some((f) => panel && panel.contains(f));
+  window.addEventListener("beforeunload", (e) => { if (dirty.size) { e.preventDefault(); e.returnValue = ""; } });
+  function setTab(id, { push = true, toggle = false } = {}) {
+    const cur = $(".tabpanel.on");
+    if (cur && cur.dataset.tab === id && toggle) {
+      if (dirtyIn(cur) && !window.confirm(t.unsaved)) return;
+      cur.classList.remove("on"); $("[data-acc]", cur).setAttribute("aria-expanded", "false");
+      return;
+    }
+    if (cur && cur.dataset.tab !== id && dirtyIn(cur)) {
+      if (!window.confirm(t.unsaved)) return;
+      Array.from(dirty).forEach((f) => { if (cur.contains(f)) { if (f.reset) f.reset(); dirty.delete(f); } });
+    }
+    $$(".tabpanel").forEach((p) => { const on = p.dataset.tab === id; p.classList.toggle("on", on); $("[data-acc]", p).setAttribute("aria-expanded", String(on)); });
+    $$("[data-tab-link]").forEach((a) => { const on = a.dataset.tabLink === id; a.setAttribute("aria-selected", String(on)); if (on) a.removeAttribute("tabindex"); else a.tabIndex = -1; });
+    if (push) { const u = new URL(location.href); u.searchParams.set("sekme", id); u.hash = ""; history.replaceState(null, "", u.toString()); }
+  }
+  function tabs() {
+    const links = $$("[data-tab-link]");
+    links.forEach((a, i) => {
+      a.addEventListener("click", (e) => { e.preventDefault(); setTab(a.dataset.tabLink); });
+      a.addEventListener("keydown", (e) => {
+        const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (!d) return;
+        const step = document.documentElement.dir === "rtl" ? -d : d;
+        const n = links[(i + step + links.length) % links.length];
+        n.focus(); setTab(n.dataset.tabLink);
+      });
+    });
+    $$("[data-acc]").forEach((b) => b.addEventListener("click", () => setTab(b.dataset.acc, { toggle: true })));
+    $$("[data-goto]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); const el = document.getElementById(a.dataset.goto); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }));
+  }
+
+  /* Aynı e-postanın ayrı hesapları girişte sormadan birleşir; şifre seçimi bekleniyorsa hesap sayfası yerine yalnız
+     seçim ve "Çıkış" görünür (seçim yapılana kadar her girişte yine çıkar). */
+  async function choiceGate(A) {
+    const d = await call("/v1/uyelik/durum", {});
+    const opts = (d.status === 200 && d.data && Array.isArray(d.data.sifreSecimi)) ? d.data.sifreSecimi : [];
+    if (!opts.length) return false;
+    const box = $("[data-choice]");
+    $("[data-account]").hidden = true; box.hidden = false;
+    let names = opts.map((o) => o.ad).join(", ");
+    try { names = new Intl.ListFormat(lang, { type: "conjunction" }).format(opts.map((o) => o.ad)); } catch {}
+    $("[data-choice-text]").textContent = fill(t.mergedText, { urunler: names, no: d.data.uyeNo != null ? d.data.uyeNo : (A.uyeNo != null ? A.uyeNo : "") });
+    const wrap = $("[data-choice-buttons]");
+    for (const o of opts) {
+      const b = document.createElement("button"); b.type = "button"; b.className = "primary"; b.textContent = fill(t.mergedChoice, { ad: o.ad });
+      b.addEventListener("click", async () => {
+        $$("button", wrap).forEach((x) => { x.disabled = true; });
+        const s = await call("/v1/uyelik/sifre-sec", { site: o.site });
+        if (s.status === 200 || s.status === 404) { say(box, t.mergedDone, "ok"); setTimeout(() => location.reload(), 1500); return; }
+        $$("button", wrap).forEach((x) => { x.disabled = false; });
+        say(box, errText(s), "err");
+      });
+      wrap.appendChild(b);
+    }
+    return true;
+  }
 
   async function account() {
     const r = await call("/v1/hesap", null, "GET");
     if (r.status === 401) { location.href = "/giris?dil=" + lang; return; }
     if (r.status !== 200) return;
     const A = r.data, P = A.profil || {};
-    $("[data-signout]").addEventListener("click", async () => { await call("/api/auth/sign-out", {}); location.href = "/giris?dil=" + lang; });
+    $$("[data-signout]").forEach((b) => b.addEventListener("click", async () => { dirty.clear(); await call("/api/auth/sign-out", {}); location.href = "/giris?dil=" + lang; }));
+    if (await choiceGate(A)) return;
+    tabs();
+    ["profile", "visibility", "email", "password", "prefs", "emails"].forEach((f) => watchDirty($(`[data-form="${f}"]`)));
 
     // 1. Profil
     const pf = $('[data-form="profile"]');
@@ -316,7 +369,7 @@
       busy(form, true);
       const s = await call("/v1/profil", { profil: collect() });
       busy(form, false);
-      if (s.status === 200) { Object.assign(P, s.data.profil); say(form, t.saved, "ok"); showName(); } else say(form, errText(s), "err");
+      if (s.status === 200) { Object.assign(P, s.data.profil); say(form, t.saved, "ok"); showName(); clean(form); } else say(form, errText(s), "err");
     }
     pf.addEventListener("submit", (e) => { e.preventDefault(); saveProfile(pf); });
 
@@ -342,10 +395,12 @@
       e.preventDefault();
       const ne = ef.email.value.trim().toLowerCase();
       if (!emailOk(ne)) return say(ef, t["err.email"], "err");
+      if (!ef.current.value) return say(ef, t["err.wrongPassword"], "err");
       busy(ef, true);
-      const s = await call("/api/auth/change-email", { newEmail: ne });
+      // Önce mevcut şifre, sonra eski adrese onay, en son yeni adrese doğrulama (madde 7)
+      const s = await call("/v1/eposta", { eposta: ne, sifre: ef.current.value });
       busy(ef, false);
-      if (s.status === 200) { say(ef, t.changeEmailSent, "ok"); ef.email.value = ""; } else say(ef, errText(s), "err");
+      if (s.status === 200) { say(ef, t.changeEmailSent, "ok"); ef.reset(); clean(ef); } else say(ef, errText(s), "err");
     });
 
     // 4. Şifre
@@ -354,9 +409,10 @@
       e.preventDefault();
       if (!pwOk(wf.password.value)) return say(wf, t["err.password"], "err");
       busy(wf, true);
+      // Öbür oturumlar kapanır, bu oturumun kimliği yenilenir (yeni çerez yanıtla gelir)
       const s = await call("/api/auth/change-password", { currentPassword: wf.current.value, newPassword: wf.password.value, revokeOtherSessions: true });
       busy(wf, false);
-      if (s.status === 200) { wf.reset(); say(wf, t.passwordChanged, "ok"); listSessions(); } else say(wf, errText(s), "err");
+      if (s.status === 200) { wf.reset(); clean(wf); say(wf, t.passwordChanged, "ok"); listSessions(); } else say(wf, errText(s), "err");
     });
 
     // 5. Tercihler
@@ -378,17 +434,21 @@
       const s = await call("/api/auth/update-user", body);
       busy(prf, false);
       if (s.status !== 200) return say(prf, errText(s), "err");
-      if (body.lang !== lang) { location.href = "/hesap?dil=" + body.lang; return; }
+      clean(prf);
+      if (body.lang !== lang) { location.href = "/hesap?sekme=tercihler&dil=" + body.lang; return; }
       document.documentElement.dataset.theme = body.theme;
       say(prf, t.saved, "ok");
     });
 
     // 6. E-postalar: kutlama
-    const cb = $("[data-celebrate]");
-    cb.checked = !!A.kutlama;
-    cb.addEventListener("change", async () => {
-      const s = await call("/v1/kutlama", { acik: cb.checked });
-      if (s.status !== 200) cb.checked = !cb.checked;
+    const mf = $('[data-form="emails"]');
+    mf.kutlama.checked = !!A.kutlama;
+    mf.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      busy(mf, true);
+      const s = await call("/v1/kutlama", { acik: mf.kutlama.checked });
+      busy(mf, false);
+      if (s.status === 200) { A.kutlama = s.data.kutlama; say(mf, t.saved, "ok"); clean(mf); } else say(mf, errText(s), "err");
     });
 
     // 7. Oturumlar
@@ -474,6 +534,7 @@
       const s = await call("/v1/hesap/sil", { kapsam: df.kapsam.value, sifre: df.password.value || undefined });
       busy(df, false);
       if (s.status === 200) {
+        dirty.clear();
         document.querySelector("main").innerHTML = "";
         const sec = document.createElement("section"); sec.className = "card";
         const p = document.createElement("p"); p.className = "msg ok"; p.setAttribute("role", "status"); p.textContent = t.deleted;

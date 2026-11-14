@@ -7,7 +7,7 @@ import pg from "pg";
 import { betterAuth } from "better-auth";
 import { toNodeHandler, fromNodeHeaders } from "better-auth/node";
 import { loadConfig, normLang } from "./config.mjs";
-import { createMailer, readUnsubscribeToken } from "./mail.mjs";
+import { createMailer, readUnsubscribeToken, choiceToken } from "./mail.mjs";
 import { authOptions } from "./auth.mjs";
 import { migrate } from "./migrate.mjs";
 import { createMetrics } from "./metrics.mjs";
@@ -21,6 +21,7 @@ import { validateProfile, checkPhoto, passwordChecks } from "./profile.mjs";
 import { createLimiter, ipOf } from "./limit.mjs";
 import { readJson, send, json } from "./http.mjs";
 import { webRoutes } from "./web.mjs";
+import { panelRoutes } from "./panel.mjs";
 
 const SEC_HEADERS = {
   "Strict-Transport-Security": "max-age=31536000",
@@ -28,6 +29,17 @@ const SEC_HEADERS = {
   "Referrer-Policy": "no-referrer",
   "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
 };
+
+async function ensureAdmin(auth, pool, email) {
+  if (!email) return;
+  const r = await pool.query(`select id from "user" where lower(email) = $1`, [email]);
+  if (!r.rowCount) {
+    const u = await (await auth.$context).internalAdapter.createUser({ email, name: "admin", emailVerified: true, lang: "tr", celebrate: false, anaUrun: false });
+    await pool.query(`update "user" set role = 'admin', "uyeNo" = null where id = $1`, [u.id]);
+  } else {
+    await pool.query(`update "user" set role = 'admin', name = 'admin', "emailVerified" = true, celebrate = false where id = $1`, [r.rows[0].id]);
+  }
+}
 
 const bearerOk = (header, secret) => {
   if (!secret) return false;
@@ -57,15 +69,17 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
   const options = authOptions(cfg, pool, mailer, center);
   await migrate(options, pool);
   const auth = betterAuth(options);
-  // Yönetici: sabit bilgilerdeki adres, doğrulanmışsa (madde 10: yönetici rolü üyelikten)
-  await pool.query(`update "user" set role = 'admin' where lower(email) = $1 and "emailVerified" = true and coalesce(role, '') <> 'admin'`, [cfg.adminEmail]);
+  // Yönetici hesabı (madde 10): sabit bilgilerdeki adres, görünen adı "admin". Üye değildir: kayıt sayfasından açılamaz,
+  // ortak üyelik servisine gitmez (numara almaz). Yoksa kurulumda şifresiz açılır; şifre "Şifremi unuttum"la belirlenir.
+  await ensureAdmin(auth, pool, cfg.adminEmail);
   const metrics = createMetrics(pool);
   const authHandler = toNodeHandler(auth);
   const accounts = createAccounts({ pool, auth });
   const records = createRecords(pool);
   const limit = createLimiter(pool, cfg.rateLimit);
   const linked = linkedRoutes({ cfg, auth, accounts, mailer, json, readJson });
-  const web = webRoutes({ cfg, closed: false, accounts });
+  const web = webRoutes({ cfg, closed: false, accounts, center });
+  const panel = panelRoutes({ cfg, pool, accounts, records, mailer, metrics, json, readJson });
   const ctxP = auth.$context;
 
   const session = (req) => auth.api.getSession({ headers: fromNodeHeaders(req.headers) }).catch(() => null);
@@ -99,6 +113,18 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       kutlama: user.celebrate !== false,
       profil: await profileView(user),
     };
+  }
+
+  const isAdmin = (u) => String(u?.email || "").toLowerCase() === cfg.adminEmail;
+  const listOf = (lang, names) => {
+    try { return new Intl.ListFormat(normLang(lang), { type: "conjunction" }).format(names); } catch { return names.join(", "); }
+  };
+  /* Birleşme: numara en eski hesabınki (yeniNo), profil merkezin birleştirdiği profil (en eski hesabınki, boş alanları
+     öbüründen). Şifre değişmez (gelen sifreOzeti null; şifre sifre-sec'le gelir). */
+  async function applyMerge(user, d) {
+    const no = Number(d.yeniNo);
+    if (Number.isInteger(no) && no !== Number(user.uyeNo)) await (await accounts.ia()).updateUser(user.id, { uyeNo: no, updatedAt: new Date() });
+    if (d.hesap?.profil) await accounts.writeProfile(user.id, d.hesap.profil);
   }
 
   async function api(req, res, p, url) {
@@ -161,29 +187,58 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       if (user.uyeNo != null) await tell("guncelle", { uyeNo: Number(user.uyeNo), degisiklik: { kutlama: on } });
       return json(res, 200, { kutlama: on });
     }
+    // E-posta değiştirme (madde 7): önce mevcut şifre, sonra eski adrese onay, en son yeni adrese doğrulama.
+    // Better Auth'un /change-email ucu dışarıdan doğrudan çağrılamaz (auth.mjs); buradan şifre denetlenince çağrılır.
+    if (p === "/v1/eposta" && m === "POST") {
+      const b = await readJson(req);
+      if (!(await limit(`eposta:${user.id}`, 900, 5))) return json(res, 429, { hata: "sinir" });
+      if (isAdmin(user)) return json(res, 403, { hata: "yonetici" });
+      if (!(await verifyPassword(user.id, b.sifre))) return json(res, 401, { hata: "sifre" });
+      const newEmail = String(b.eposta || "").trim().toLowerCase();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail) || newEmail === cfg.adminEmail) return json(res, 400, { hata: "eposta" });
+      try {
+        await auth.api.changeEmail({ body: { newEmail, callbackURL: `${cfg.publicUrl}/hesap?sekme=profil` }, headers: fromNodeHeaders(req.headers) });
+        return json(res, 200, { tamam: true });
+      } catch (e) {
+        const code = e?.body?.code || "";
+        if (!e?.statusCode && !e?.status) throw e;
+        return json(res, 400, { hata: code === "EMAIL_TAKEN" || code === "COULDNT_UPDATE_YOUR_EMAIL" ? "eposta-alinmis" : "eposta" });
+      }
+    }
     if (p === "/v1/sifre-kurali" && m === "POST") {
       const b = await readJson(req);
       return json(res, 200, passwordChecks(b.sifre));
     }
-    // Girişten sonra: aynı e-postayla başka bir Bumba ürününde ayrı hesap var mı (ayrı hesap sorusu)
-    if (p === "/v1/uyelik/durum" && m === "GET") {
-      if (user.uyeNo == null) return json(res, 200, { ayriHesap: false });
+    // Girişten sonra (web hesap sayfası ve uygulamalar her açılışta): aynı e-postayla başka bir Bumba ürününde ayrı
+    // hesap varsa sormadan birleşir (madde 7); şifre değişmez, üye hangi ürünün şifresiyle süreceğini seçer
+    // (`sifreSecimi` doluysa seçim ekranı; seçilene kadar hesap sayfası açılmaz, ekranda yalnız seçim ve "Çıkış").
+    if (p === "/v1/uyelik/durum" && m === "POST") {
+      if (user.uyeNo == null || isAdmin(user)) return json(res, 200, { birlesti: false, sifreSecimi: [] });
       const q = await center.sorgula(user.email, Number(user.uyeNo));
-      return json(res, 200, { ayriHesap: !!(q.ok && q.data?.ayriHesap), urunler: q.data?.urunler || [] });
+      if (!q.ok) return json(res, 200, { birlesti: false, sifreSecimi: [], merkez: false });
+      let secim = Array.isArray(q.data?.sifreSecimi) ? q.data.sifreSecimi : [];
+      let birlesti = false;
+      if (q.data?.ayriHesap) {
+        const r = await center.birlestir(Number(user.uyeNo), user.email);
+        if (r.ok && r.data?.birlesti) {
+          birlesti = true;
+          await applyMerge(user, r.data);
+          secim = Array.isArray(r.data.sifreSecimi) ? r.data.sifreSecimi : [];
+          const no = Number(r.data.yeniNo);
+          const url = `${cfg.publicUrl}/sifre-sec?dil=${normLang(user.lang)}&k=${choiceToken(cfg.secret, user.id)}`;
+          await mailer.send("merged", user.email, user.lang, { urunler: listOf(user.lang, secim.map((x) => x.ad)), no, url }).catch(() => {});
+        }
+      }
+      const fresh = (await pool.query(`select "uyeNo" from "user" where id = $1`, [user.id])).rows[0];
+      return json(res, 200, { birlesti, uyeNo: fresh?.uyeNo != null ? Number(fresh.uyeNo) : null, sifreSecimi: secim.map((x) => ({ site: String(x.site), ad: String(x.ad) })) });
     }
-    if (p === "/v1/uyelik/birlestir" && m === "POST") {
+    if (p === "/v1/uyelik/sifre-sec" && m === "POST") {
       const b = await readJson(req);
-      if (!(await limit(`birlestir:${user.id}`, 900, 5))) return json(res, 429, { hata: "sinir" });
-      const r = await center.birlestir(Number(user.uyeNo), user.email, String(b.sifre || ""));
-      if (!r.ok || !r.data?.gecerli) return json(res, r.status === 429 ? 429 : 401, { hata: "bilgiler" });
-      const gelen = r.data.hesap || {};
-      const mine = await profileView(user);
-      const profil = { ...mine };
-      for (const [k, v] of Object.entries(gelen.profil || {})) if (v != null && !(Array.isArray(v) && !v.length)) profil[k] = v;
-      await (await accounts.ia()).updateUser(user.id, { uyeNo: Number(r.data.yeniNo), updatedAt: new Date() });
-      await accounts.applyChange({ ...user, uyeNo: r.data.yeniNo }, { sifreOzeti: gelen.sifreOzeti || undefined, profil });
-      await tell("guncelle", { uyeNo: Number(r.data.yeniNo), degisiklik: { profil } });
-      return json(res, 200, { uyeNo: Number(r.data.yeniNo) });
+      if (user.uyeNo == null || !b.site) return json(res, 400, { hata: "site" });
+      const r = await center.sifreSec(Number(user.uyeNo), String(b.site));
+      if (r.status === 404) return json(res, 404, { hata: "secim-yok" });
+      if (!r.ok) return json(res, 503, { hata: "merkez" });
+      return json(res, 200, { tamam: true });
     }
     if (p === "/v1/uyelik/urunler" && m === "GET") {
       const r = await center.urunler(Number(user.uyeNo));
@@ -252,6 +307,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     const p = url.pathname;
     if (p.startsWith("/api/auth/")) return authHandler(req, res);
     if (p.startsWith("/api/bumba-uyelik/")) return linked(req, res, p.slice("/api/bumba-uyelik/".length));
+    if (p.startsWith("/api/bumba-panel/")) return panel(req, res, p.slice("/api/bumba-panel/".length));
     if (p.startsWith("/v1/")) return api(req, res, p, url);
 
     if (p === "/saglik" && req.method === "GET") {
@@ -261,7 +317,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     // Zamanlanmış görevler (CRON_SECRET'la; görevleri ana altyapı oturumu kurar)
     if (p === "/gorev/temizlik" && req.method === "POST") {
       if (!bearerOk(req.headers.authorization, cfg.cronSecret)) return json(res, 401, { hata: "yetki" });
-      return json(res, 200, await runCleanup({ pool, center }));
+      return json(res, 200, await runCleanup({ pool, center, adminEmail: cfg.adminEmail }));
     }
     if (p === "/gorev/kutlama" && req.method === "POST") {
       if (!bearerOk(req.headers.authorization, cfg.cronSecret)) return json(res, 401, { hata: "yetki" });

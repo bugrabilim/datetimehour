@@ -81,13 +81,23 @@ test("yönlendirmeler: girişsiz hesap sayfası girişe, girişli giriş sayfas�
   r = await t.req("/hesap", { cookie });
   assert.equal(r.status, 200);
   assert.match(r.text, /<html lang="tr"/);
+  // Beş sekme (Profil 1-3, Güvenlik 4 ve 7, Tercihler 5-6, Üyelikler 8, Veri ve hesap 9-10), sonra rozetler ve kayıtlar
   const sections = [...r.text.matchAll(/<span class="num">(\d+)<\/span>/g)].map((m) => Number(m[1]));
-  assert.deepEqual(sections, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-  for (const k of ["products", "download", "delete", "deleteScopeProduct", "deleteScopeAll", "badgesTitle"]) assert.ok(has(r.text, UI.tr[k]), k);
-  assert.ok(r.text.includes('href="/hesap/rozetler?dil=tr"'));
+  assert.deepEqual(sections, [1, 2, 3, 4, 7, 5, 6, 8, 9, 10]);
+  const tabs = [...r.text.matchAll(/data-tab="([a-z]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(tabs, ["profil", "guvenlik", "tercihler", "uyelikler", "veri", "rozetler"]);
+  assert.match(r.text, /class="tabpanel on" id="tab-profil"/);
+  for (const k of ["tabProfile", "tabSecurity", "tabPrefs", "tabMembership", "tabData", "products", "download", "delete", "deleteScopeProduct", "deleteScopeAll", "badgesTitle", "deleteDownloadFirst", "deleteKept"]) assert.ok(has(r.text, UI.tr[k]), k);
+  // Her sekmenin altında ortak aydınlatma metni ve sözleşme
+  assert.equal(r.text.split('<p class="muted legal">').length - 1, 6);
+  // E-posta değişikliği mevcut şifreyi ister; silme düğmesi ayrı kırmızı blokta
+  assert.match(r.text, /data-form="email"[^]*?name="current"/);
+  assert.match(r.text, /class="danger-zone"/);
+  const g = await t.req("/hesap?sekme=guvenlik&dil=en", { cookie });
+  assert.match(g.text, /class="tabpanel on" id="tab-guvenlik"/);
   const b = await t.req("/hesap/rozetler?dil=en", { cookie });
-  assert.equal(b.status, 200);
-  assert.ok(has(b.text, UI.en.badgesTitle));
+  assert.equal(b.status, 301, "rozetler artık sekme");
+  assert.equal(b.headers.get("location"), "/hesap?sekme=rozetler&dil=en");
 });
 
 test("doğrulama sonucu: başarı, bağlantı hatası ve e-posta değişikliğinin ilk adımı", async () => {

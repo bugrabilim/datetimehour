@@ -242,22 +242,51 @@ test("kayıt sorusunda Evet: ortak servis şifreyi doğrular, hesap burada açı
   assert.equal(u.lang, "tr");
 });
 
-test("ayrı hesap sorusu ve birleştirme; ürün listesi, aç ve kapat", async () => {
+test("ayrı hesaplar girişte sormadan birleşir; şifre değişmez, seçim ekrandan ya da e-postadaki bağlantıdan; ürün listesi, aç ve kapat", async () => {
   const tk = await signUpVerified(t, "ayri@example.com");
+  // Ayrı hesap yokken birleşme olmaz, seçim de beklenmez
+  const d0 = (await t.req("/v1/uyelik/durum", { method: "POST", token: tk, body: {} })).json;
+  assert.equal(d0.birlesti, false);
+  assert.deepEqual(d0.sifreSecimi, []);
   t.center.ayriHesap.add("ayri@example.com");
-  assert.equal((await t.req("/v1/uyelik/durum", { token: tk })).json.ayriHesap, true);
-  t.center.others.set("ayri@example.com", { sifre: "Eski-hesap1", hesap: { uyeNo: 10005, eposta: "ayri@example.com", sifreOzeti: await (await import("better-auth/crypto")).hashPassword("Eski-hesap1"), profil: { ad: "Eski", sehir: null } } });
-  assert.equal((await t.req("/v1/uyelik/birlestir", { method: "POST", token: tk, body: { sifre: "Yanlis-1a" } })).status, 401);
-  const b = await t.req("/v1/uyelik/birlestir", { method: "POST", token: tk, body: { sifre: "Eski-hesap1" } });
-  assert.equal(b.status, 200, b.text);
-  assert.equal(b.json.uyeNo, 10005, "en eski numara kalır");
-  const tk2 = await tokenOf("ayri@example.com", "Eski-hesap1");
-  assert.ok(tk2, "ortak şifre en eski hesabınki");
+  t.center.merge.set("ayri@example.com", { uyeNo: 10005, eposta: "ayri@example.com", profil: { ad: "Eski", sehir: null } });
+  const d = await t.req("/v1/uyelik/durum", { method: "POST", token: tk, body: {} });
+  assert.equal(d.status, 200, d.text);
+  assert.equal(d.json.birlesti, true);
+  assert.equal(d.json.uyeNo, 10005, "en eski numara kalır");
+  assert.deepEqual(d.json.sifreSecimi.map((x) => x.site), ["saat-tarih", "gander"]);
+  assert.equal(t.center.find("birlestir").at(-1).body.sifre, undefined, "birleşme şifre istemez");
+  const mail = t.last("merged", "ayri@example.com");
+  assert.ok(mail, "hesaplarınız birleştirildi e-postası");
+  assert.match(mail.text, /Saat Tarih ve Gander/);
+  assert.match(mail.text, /10005/);
+  const link = new URL(mail.vars.url);
+  assert.equal(link.pathname, "/sifre-sec");
+  // Şifre değişmez: eski şifre geçerli, profil birleşmiş profil
+  const tk2 = await tokenOf("ayri@example.com");
+  assert.ok(tk2, "kendi şifresi geçerli kalır");
   assert.equal((await t.req("/v1/hesap", { token: tk2 })).json.profil.ad, "Eski");
+  // Seçim yapılana kadar her girişte yine çıkar (birleşme yeniden olmaz)
+  const d2 = await t.req("/v1/uyelik/durum", { method: "POST", token: tk2, body: {} });
+  assert.equal(d2.json.birlesti, false);
+  assert.equal(d2.json.sifreSecimi.length, 2);
+  // E-postadaki bağlantı: oturum açmadan seçim sayfası
+  const page = await t.req(link.pathname + link.search);
+  assert.equal(page.status, 200);
+  assert.match(page.text, /name="site" value="gander"/);
+  assert.equal(page.headers.getSetCookie().length, 0, "bağlantı oturum açmaz");
+  assert.equal((await t.req(`/sifre-sec?dil=tr&k=bozuk`)).status, 200);
+  // Ekrandan seçim; ikinci seçim yok
+  assert.equal((await t.req("/v1/uyelik/sifre-sec", { method: "POST", token: tk2, body: { site: "gander" } })).status, 200);
+  assert.equal((await t.req("/v1/uyelik/sifre-sec", { method: "POST", token: tk2, body: { site: "gander" } })).status, 404);
+  assert.deepEqual((await t.req("/v1/uyelik/durum", { method: "POST", token: tk2, body: {} })).json.sifreSecimi, []);
+  // Seçim yapıldıktan sonra bağlantı geçersiz
+  const after = await t.req(link.pathname + link.search);
+  assert.doesNotMatch(after.text, /name="site"/);
   const list = await t.req("/v1/uyelik/urunler", { token: tk2 });
   assert.equal(list.json.urunler.length, 2);
   assert.equal((await t.req("/v1/uyelik/ac", { method: "POST", token: tk2, body: { hedefler: ["gander"], sifre: "Yanlis-1a" } })).status, 401, "açmadan önce şifre");
-  const ac = await t.req("/v1/uyelik/ac", { method: "POST", token: tk2, body: { hedefler: ["gander"], sifre: "Eski-hesap1" } });
+  const ac = await t.req("/v1/uyelik/ac", { method: "POST", token: tk2, body: { hedefler: ["gander"], sifre: PW } });
   assert.deepEqual(ac.json, { sonuclar: { gander: "acildi" } });
   assert.match(t.center.find("ac").at(-1).body.hesap.sifreOzeti, /:/);
   const kp = await t.req("/v1/uyelik/kapat", { method: "POST", token: tk2, body: { hedefler: ["gander"] } });

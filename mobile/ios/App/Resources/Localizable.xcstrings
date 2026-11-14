@@ -214201,363 +214201,6 @@
         }
       }
     },
-    "account.ayriQ": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu e-postayla başka bir Bumba ürününde ayrı bir hesabınız da var. Hesapları bağlayalım mı?"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You also have a separate account in another Bumba product with this email. Shall we link the accounts?"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mit dieser E-Mail haben Sie in einem anderen Bumba-Produkt auch ein separates Konto. Sollen wir die Konten verknüpfen?"
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu e-poçtla başqa bir Bumba məhsulunda ayrıca hesabınız da var. Hesabları birləşdirək?"
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "لديك أيضًا حساب منفصل في منتج آخر من Bumba بهذا البريد. هل نربط الحسابين؟"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anda juga memiliki akun terpisah di produk Bumba lain dengan email ini. Hubungkan kedua akun?"
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "اس ای میل سے کسی اور Bumba پروڈکٹ میں آپ کا ایک الگ اکاؤنٹ بھی ہے۔ کیا دونوں اکاؤنٹس جوڑ دیں؟"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "با این ایمیل در محصول دیگری از Bumba حساب جداگانه‌ای هم دارید. حساب‌ها را پیوند دهیم؟"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vous avez aussi un compte séparé dans un autre produit Bumba avec cet e-mail. Relier les comptes ?"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "С этим адресом у вас есть и отдельный аккаунт в другом продукте Bumba. Связать аккаунты?"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "このメールアドレスでは別の Bumba 製品にも個別のアカウントがあります。アカウントを連携しますか？"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "이 이메일로 다른 Bumba 제품에도 별도 계정이 있습니다. 계정을 연결할까요?"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "您用此邮箱在另一个 Bumba 产品中还有一个独立账户。要关联这两个账户吗？"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "May hiwalay rin kayong account sa ibang produkto ng Bumba gamit ang email na ito. Pagdugtungin ba natin ang mga account?"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "อีเมลนี้มีบัญชีแยกอีกบัญชีในผลิตภัณฑ์อื่นของ Bumba ด้วย ต้องการเชื่อมบัญชีไหม"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Con este correo también tiene una cuenta aparte en otro producto de Bumba. ¿Vinculamos las cuentas?"
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Com este e-mail você também tem uma conta separada em outro produto Bumba. Vamos vincular as contas?"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "इस ईमेल से किसी दूसरे Bumba उत्पाद में आपका एक अलग खाता भी है। क्या दोनों खाते जोड़ दें?"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "এই ইমেইলে অন্য একটি Bumba পণ্যে আপনার আলাদা একটি অ্যাকাউন্টও আছে। অ্যাকাউন্টগুলো যুক্ত করব?"
-          }
-        }
-      }
-    },
-    "account.ayriNote": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bağlamak için o hesabın şifresini yazın. Hesaplar bağlanınca en eski üye numarası kalır ve şifreniz o hesabınki olur."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "To link them, enter that account's password. Once linked, the oldest member number stays and your password becomes that account's password."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geben Sie zum Verknüpfen das Passwort jenes Kontos ein. Danach bleibt die älteste Mitgliedsnummer, und Ihr Passwort ist das jenes Kontos."
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Birləşdirmək üçün o hesabın şifrəsini yazın. Birləşdikdən sonra ən köhnə üzv nömrəsi qalır və şifrəniz o hesabınkı olur."
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "للربط اكتب كلمة مرور ذلك الحساب. بعد الربط يبقى أقدم رقم عضوية وتصبح كلمة مرورك هي كلمة مرور ذلك الحساب."
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Untuk menghubungkan, tulis kata sandi akun tersebut. Setelah terhubung, nomor anggota tertua yang dipakai dan kata sandi Anda menjadi kata sandi akun tersebut."
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "جوڑنے کے لیے اس اکاؤنٹ کا پاس ورڈ لکھیں۔ جڑنے کے بعد سب سے پرانا رکنیت نمبر رہے گا اور آپ کا پاس ورڈ اسی اکاؤنٹ کا ہو جائے گا۔"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "برای پیوند، گذرواژهٔ آن حساب را بنویسید. پس از پیوند، قدیمی‌ترین شمارهٔ عضویت می‌ماند و گذرواژهٔ شما گذرواژهٔ آن حساب می‌شود."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pour les relier, saisissez le mot de passe de ce compte. Une fois reliés, le plus ancien numéro de membre est conservé et votre mot de passe devient celui de ce compte."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Чтобы связать их, введите пароль того аккаунта. После связывания сохранится самый ранний номер участника, а вашим паролем станет пароль того аккаунта."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "連携するには、そのアカウントのパスワードを入力してください。連携後は最も古い会員番号が残り、パスワードはそのアカウントのものになります。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "연결하려면 그 계정의 비밀번호를 입력하세요. 연결 후에는 가장 오래된 회원 번호가 남고 비밀번호는 그 계정의 것이 됩니다."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "关联时请输入该账户的密码。关联后保留最早的会员编号，您的密码将改为该账户的密码。"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Para pagdugtungin, isulat ang password ng account na iyon. Kapag nadugtong, maiiwan ang pinakalumang numero ng miyembro at ang inyong password ay magiging password ng account na iyon."
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "หากต้องการเชื่อม ให้กรอกรหัสผ่านของบัญชีนั้น เมื่อเชื่อมแล้วจะใช้หมายเลขสมาชิกที่เก่าที่สุด และรหัสผ่านจะเป็นของบัญชีนั้น"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Para vincularlas, escriba la contraseña de esa cuenta. Una vez vinculadas, se conserva el número de miembro más antiguo y su contraseña pasa a ser la de esa cuenta."
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Para vincular, digite a senha daquela conta. Depois de vinculadas, fica o número de membro mais antigo e sua senha passa a ser a daquela conta."
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "जोड़ने के लिए उस खाते का पासवर्ड लिखें। जुड़ने के बाद सबसे पुराना सदस्य नंबर रहेगा और आपका पासवर्ड उसी खाते का हो जाएगा।"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "যুক্ত করতে সেই অ্যাকাউন্টের পাসওয়ার্ড লিখুন। যুক্ত হওয়ার পর সবচেয়ে পুরোনো সদস্য নম্বরটি থাকবে এবং আপনার পাসওয়ার্ড হবে সেই অ্যাকাউন্টের পাসওয়ার্ড।"
-          }
-        }
-      }
-    },
-    "account.ayriDone": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hesaplarınız bağlandı."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your accounts are linked."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ihre Konten sind verknüpft."
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hesablarınız birləşdirildi."
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "تم ربط حساباتك."
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Akun Anda telah terhubung."
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "آپ کے اکاؤنٹس جوڑ دیے گئے۔"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "حساب‌های شما پیوند خوردند."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vos comptes sont reliés."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ваши аккаунты связаны."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "アカウントを連携しました。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "계정이 연결되었습니다."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "您的账户已关联。"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nadugtong na ang inyong mga account."
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "เชื่อมบัญชีแล้ว"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sus cuentas están vinculadas."
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Suas contas foram vinculadas."
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "आपके खाते जोड़ दिए गए।"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "আপনার অ্যাকাউন্টগুলো যুক্ত হয়েছে।"
-          }
-        }
-      }
-    },
     "account.err.credentials": {
       "extractionState": "manual",
       "localizations": {
@@ -229667,6 +229310,1791 @@
           "stringUnit": {
             "state": "translated",
             "value": "আপনার সদস্য সেশন (একটি কুকি যা শুধু সার্ভার পড়ে), কুকি বাছাই ও থিম এই ব্রাউজারে রাখা হয়। এগুলো ছাড়া সাইন ইন করা যায় না।"
+          }
+        }
+      }
+    },
+    "account.tabProfile": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profile"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profil"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profil"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الملف الشخصي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profil"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پروفائل"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نمایه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profil"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Профиль"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プロフィール"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "프로필"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "个人资料"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profile"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โปรไฟล์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perfil"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perfil"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "प्रोफ़ाइल"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "প্রোফাইল"
+          }
+        }
+      }
+    },
+    "account.tabSecurity": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güvenlik"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Security"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sicherheit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təhlükəsizlik"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأمان"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keamanan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حفاظت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امنیت"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sécurité"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Безопасность"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "セキュリティ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "보안"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安全"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seguridad"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ความปลอดภัย"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seguridad"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Segurança"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सुरक्षा"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "নিরাপত্তা"
+          }
+        }
+      }
+    },
+    "account.tabPrefs": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tercihler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preferences"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einstellungen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçimlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التفضيلات"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preferensi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ترجیحات"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ترجیحات"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Préférences"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настройки"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "환경설정"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "偏好设置"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga kagustuhan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การตั้งค่า"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preferencias"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preferências"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पसंद"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "পছন্দ"
+          }
+        }
+      }
+    },
+    "account.tabMembership": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üyelikler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memberships"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitgliedschaften"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üzvlüklər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العضويات"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keanggotaan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رکنیتیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عضویت‌ها"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adhésions"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Членство"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メンバーシップ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "멤버십"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "会员资格"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga membership"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สมาชิกภาพ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Membresías"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Associações"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सदस्यताएँ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সদস্যপদ"
+          }
+        }
+      }
+    },
+    "account.tabData": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veri ve hesap"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data and account"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daten und Konto"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məlumat və hesab"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "البيانات والحساب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data dan akun"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ڈیٹا اور اکاؤنٹ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "داده‌ها و حساب"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Données et compte"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Данные и аккаунт"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "データとアカウント"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "데이터 및 계정"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数据与账户"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data at account"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ข้อมูลและบัญชี"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datos y cuenta"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dados e conta"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "डेटा और खाता"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ডেটা ও অ্যাকাউন্ট"
+          }
+        }
+      }
+    },
+    "account.unsaved": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydedilmemiş değişiklikleriniz var. Yine de çıkmak istiyor musunuz?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You have unsaved changes. Leave anyway?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sie haben nicht gespeicherte Änderungen. Trotzdem verlassen?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yadda saxlanmamış dəyişiklikləriniz var. Yenə də çıxmaq istəyirsiniz?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لديك تغييرات غير محفوظة. هل تريد المغادرة رغم ذلك؟"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ada perubahan yang belum disimpan. Tetap keluar?"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کی کچھ تبدیلیاں محفوظ نہیں ہوئیں۔ کیا آپ پھر بھی نکلنا چاہتے ہیں؟"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تغییراتی دارید که ذخیره نشده است. باز هم خارج می‌شوید؟"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vous avez des modifications non enregistrées. Quitter quand même ?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Есть несохранённые изменения. Всё равно выйти?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存していない変更があります。このまま移動しますか？"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "저장하지 않은 변경 사항이 있습니다. 그래도 나가시겠습니까?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您有未保存的更改。仍要离开吗？"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May mga pagbabago po kayong hindi pa nase-save. Aalis pa rin po ba kayo?"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก ต้องการออกจากหน้านี้หรือไม่"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiene cambios sin guardar. ¿Desea salir de todos modos?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Você tem alterações não salvas. Deseja sair mesmo assim?"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपके कुछ बदलाव सहेजे नहीं गए हैं। क्या आप फिर भी बाहर जाना चाहते हैं?"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার কিছু পরিবর্তন সংরক্ষণ করা হয়নি। তবুও কি বের হতে চান?"
+          }
+        }
+      }
+    },
+    "account.mergedTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesaplarınız birleştirildi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your accounts have been merged"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihre Konten wurden zusammengeführt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesablarınız birləşdirildi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم دمج حساباتك"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akun Anda telah digabungkan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کے اکاؤنٹ یکجا کر دیے گئے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حساب‌های شما یکی شد"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vos comptes ont été fusionnés"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваши аккаунты объединены"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アカウントが統合されました"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "계정이 통합되었습니다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您的账户已合并"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pinagsama na po ang inyong mga account"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บัญชีของคุณถูกรวมแล้ว"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sus cuentas se han unido"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suas contas foram unificadas"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपके खाते जोड़ दिए गए"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার অ্যাকাউন্টগুলো একত্র করা হয়েছে"
+          }
+        }
+      }
+    },
+    "account.mergedText": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu e-postayla açılmış %1$@ hesaplarınız birleştirildi. Üye numaranız %2$@. Hangi şifreyle devam etmek istersiniz?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your %1$@ accounts opened with this email have been merged. Your member number is %2$@. Which password would you like to continue with?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihre mit dieser E-Mail-Adresse eröffneten Konten bei %1$@ wurden zusammengeführt. Ihre Mitgliedsnummer ist %2$@. Mit welchem Passwort möchten Sie fortfahren?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu e-poçtla açılmış %1$@ hesablarınız birləşdirildi. Üzv nömrəniz %2$@. Hansı şifrə ilə davam etmək istəyirsiniz?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم دمج حساباتك في %1$@ التي أُنشئت بهذا البريد الإلكتروني. رقم عضويتك %2$@. بأي كلمة مرور تريد المتابعة؟"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akun %1$@ Anda yang dibuat dengan email ini telah digabungkan. Nomor anggota Anda %2$@. Kata sandi mana yang ingin Anda gunakan?"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس ای میل سے کھولے گئے آپ کے %1$@ اکاؤنٹ یکجا کر دیے گئے ہیں۔ آپ کا رکنیت نمبر %2$@ ہے۔ آپ کس پاس ورڈ کے ساتھ جاری رکھنا چاہیں گے؟"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حساب‌های %1$@ شما که با این ایمیل باز شده بودند یکی شدند. شمارهٔ عضویت شما %2$@ است. با کدام رمز عبور ادامه می‌دهید؟"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vos comptes %1$@ ouverts avec cette adresse e-mail ont été fusionnés. Votre numéro de membre est %2$@. Avec quel mot de passe souhaitez-vous continuer ?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваши аккаунты в %1$@, открытые с этим адресом, объединены. Ваш номер участника — %2$@. С каким паролем вы хотите продолжить?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このメールアドレスで作成された%1$@のアカウントが統合されました。会員番号は%2$@です。どのパスワードで続けますか？"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 이메일로 만든 %1$@ 계정이 통합되었습니다. 회원 번호는 %2$@입니다. 어떤 비밀번호로 계속하시겠습니까?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您用此邮箱在%1$@开设的账户已合并。您的会员编号是 %2$@。您想使用哪个密码继续？"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pinagsama na po ang inyong mga account sa %1$@ na binuksan gamit ang email na ito. Ang inyong member number ay %2$@. Aling password po ang gusto ninyong gamitin?"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บัญชี %1$@ ของคุณที่เปิดด้วยอีเมลนี้ถูกรวมกันแล้ว หมายเลขสมาชิกของคุณคือ %2$@ คุณต้องการใช้รหัสผ่านใดต่อไป"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sus cuentas de %1$@ abiertas con este correo se han unido. Su número de miembro es %2$@. ¿Con qué contraseña desea continuar?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suas contas de %1$@ abertas com este e-mail foram unificadas. Seu número de membro é %2$@. Com qual senha você deseja continuar?"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस ईमेल से खोले गए आपके %1$@ खाते जोड़ दिए गए हैं। आपका सदस्य नंबर %2$@ है। आप किस पासवर्ड से आगे बढ़ना चाहेंगे?"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই ইমেইল দিয়ে খোলা আপনার %1$@ অ্যাকাউন্টগুলো একত্র করা হয়েছে। আপনার সদস্য নম্বর %2$@। কোন পাসওয়ার্ড দিয়ে চালিয়ে যেতে চান?"
+          }
+        }
+      }
+    },
+    "account.mergedChoice": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ şifrem"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My %1$@ password"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mein %1$@-Passwort"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ şifrəm"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كلمة مروري في %1$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kata sandi %1$@ saya"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "میرا %1$@ پاس ورڈ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رمز عبور %1$@ من"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mon mot de passe %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мой пароль %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@のパスワード"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "내 %1$@ 비밀번호"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我的%1$@密码"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang aking password sa %1$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "รหัสผ่าน %1$@ ของฉัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mi contraseña de %1$@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minha senha do %1$@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मेरा %1$@ पासवर्ड"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আমার %1$@ পাসওয়ার্ড"
+          }
+        }
+      }
+    },
+    "account.mergedNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçtiğiniz şifre bütün bağlı ürünlerde geçerli olur. Seçim yapana kadar her ürün kendi eski şifresini kabul eder."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The password you choose will work in all linked products. Until you choose, each product accepts its own old password."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das gewählte Passwort gilt in allen verbundenen Produkten. Bis Sie wählen, akzeptiert jedes Produkt sein bisheriges Passwort."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçdiyiniz şifrə bütün bağlı məhsullarda keçərli olur. Seçim edənə qədər hər məhsul öz köhnə şifrəsini qəbul edir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تصبح كلمة المرور التي تختارها صالحة في كل المنتجات المرتبطة. وإلى أن تختار، يقبل كل منتج كلمة مروره القديمة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kata sandi yang Anda pilih berlaku di semua produk yang terhubung. Sampai Anda memilih, setiap produk menerima kata sandi lamanya sendiri."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کا منتخب کردہ پاس ورڈ تمام منسلک مصنوعات میں کارآمد ہوگا۔ انتخاب تک ہر پروڈکٹ اپنا پرانا پاس ورڈ قبول کرتی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رمزی که انتخاب می‌کنید در همهٔ محصولات پیوسته معتبر می‌شود. تا زمان انتخاب، هر محصول رمز قدیمی خودش را می‌پذیرد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le mot de passe choisi sera valable dans tous les produits liés. En attendant votre choix, chaque produit accepte son ancien mot de passe."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбранный пароль будет действовать во всех связанных продуктах. Пока вы не выбрали, каждый продукт принимает свой прежний пароль."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選んだパスワードは、連携しているすべての製品で使えます。選ぶまでは、各製品でそれぞれの以前のパスワードが使えます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "선택하신 비밀번호는 연결된 모든 제품에서 사용됩니다. 선택하시기 전까지는 각 제품이 이전 비밀번호를 받습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您选择的密码将在所有关联产品中生效。在您选择之前，各产品仍接受各自原来的密码。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gagana ang password na pipiliin ninyo sa lahat ng nakakonektang produkto. Hangga't hindi pa kayo pumipili, tinatanggap ng bawat produkto ang dati nitong password."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "รหัสผ่านที่คุณเลือกจะใช้ได้ในทุกผลิตภัณฑ์ที่เชื่อมโยง จนกว่าคุณจะเลือก แต่ละผลิตภัณฑ์ยังรับรหัสผ่านเดิมของตน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La contraseña que elija valdrá en todos los productos vinculados. Hasta que elija, cada producto acepta su contraseña anterior."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A senha escolhida valerá em todos os produtos vinculados. Até você escolher, cada produto aceita a sua senha antiga."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका चुना हुआ पासवर्ड सभी जुड़े उत्पादों में मान्य होगा। चुनने तक हर उत्पाद अपना पुराना पासवर्ड स्वीकार करता है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার বেছে নেওয়া পাসওয়ার্ড সব যুক্ত পণ্যে চলবে। বেছে না নেওয়া পর্যন্ত প্রতিটি পণ্য নিজের পুরোনো পাসওয়ার্ড গ্রহণ করে।"
+          }
+        }
+      }
+    },
+    "account.mergedDone": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifreniz seçildi. Bundan sonra bütün bağlı ürünlere bu şifreyle girersiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your password has been chosen. From now on, sign in with it in all linked products."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihr Passwort wurde gewählt. Ab jetzt melden Sie sich damit in allen verbundenen Produkten an."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifrəniz seçildi. Bundan sonra bütün bağlı məhsullara bu şifrə ilə daxil olursunuz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم اختيار كلمة المرور. من الآن سجّل الدخول بها في كل المنتجات المرتبطة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kata sandi Anda telah dipilih. Mulai sekarang, masuklah dengan kata sandi ini di semua produk yang terhubung."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کا پاس ورڈ منتخب ہو گیا۔ اب سے تمام منسلک مصنوعات میں اسی سے سائن ان کریں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رمز عبور شما انتخاب شد. از این پس در همهٔ محصولات پیوسته با همین رمز وارد شوید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre mot de passe a été choisi. Désormais, connectez-vous avec celui-ci dans tous les produits liés."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пароль выбран. Теперь входите с ним во все связанные продукты."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "パスワードを選びました。今後は連携しているすべての製品で、このパスワードでログインしてください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "비밀번호가 선택되었습니다. 이제 연결된 모든 제품에 이 비밀번호로 로그인하세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "密码已选定。今后请在所有关联产品中使用此密码登录。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Napili na po ang inyong password. Mula ngayon, ito na ang gamitin sa pag-sign in sa lahat ng nakakonektang produkto."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เลือกรหัสผ่านแล้ว ต่อจากนี้โปรดใช้รหัสผ่านนี้เข้าสู่ระบบในทุกผลิตภัณฑ์ที่เชื่อมโยง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Su contraseña se ha elegido. A partir de ahora, inicie sesión con ella en todos los productos vinculados."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sua senha foi escolhida. A partir de agora, entre com ela em todos os produtos vinculados."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका पासवर्ड चुन लिया गया। अब से सभी जुड़े उत्पादों में इसी से साइन इन करें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার পাসওয়ার্ড বেছে নেওয়া হয়েছে। এখন থেকে সব যুক্ত পণ্যে এটি দিয়ে সাইন ইন করুন।"
+          }
+        }
+      }
+    },
+    "account.mergedLinkBad": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu bağlantı geçersiz ya da süresi dolmuş. Seçimi giriş yaptıktan sonra hesap sayfanızda yapabilirsiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This link is invalid or has expired. You can make the choice on your account page after signing in."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieser Link ist ungültig oder abgelaufen. Sie können die Wahl nach der Anmeldung auf Ihrer Kontoseite treffen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu keçid etibarsızdır və ya müddəti bitib. Seçimi daxil olduqdan sonra hesab səhifənizdə edə bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذا الرابط غير صالح أو انتهت صلاحيته. يمكنك الاختيار من صفحة حسابك بعد تسجيل الدخول."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tautan ini tidak valid atau sudah kedaluwarsa. Anda dapat memilih di halaman akun setelah masuk."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یہ لنک درست نہیں یا اس کی مدت ختم ہو چکی ہے۔ آپ سائن ان کے بعد اپنے اکاؤنٹ کے صفحے پر انتخاب کر سکتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "این پیوند نامعتبر است یا مهلتش گذشته است. می‌توانید پس از ورود، در صفحهٔ حسابتان انتخاب کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce lien n’est pas valide ou a expiré. Vous pouvez faire ce choix sur votre page de compte après vous être connecté."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ссылка недействительна или устарела. Сделать выбор можно на странице аккаунта после входа."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このリンクは無効か、有効期限が切れています。ログイン後にアカウントページで選ぶことができます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 링크는 유효하지 않거나 만료되었습니다. 로그인한 뒤 계정 페이지에서 선택하실 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此链接无效或已过期。您可以在登录后于账户页面进行选择。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi na po wasto o expired na ang link na ito. Makakapili kayo sa inyong account page pagkatapos mag-sign in."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลิงก์นี้ไม่ถูกต้องหรือหมดอายุแล้ว คุณเลือกได้ที่หน้าบัญชีหลังเข้าสู่ระบบ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este enlace no es válido o ha caducado. Puede elegir en la página de su cuenta después de iniciar sesión."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este link é inválido ou expirou. Você pode escolher na página da sua conta depois de entrar."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "यह लिंक अमान्य है या इसकी अवधि खत्म हो गई है। आप साइन इन के बाद अपने खाते के पेज पर चुन सकते हैं।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই লিংকটি অবৈধ বা মেয়াদ শেষ হয়ে গেছে। সাইন ইন করার পর অ্যাকাউন্ট পাতায় বেছে নিতে পারেন।"
+          }
+        }
+      }
+    },
+    "account.deleteDownloadFirst": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önce verilerinizi indirin"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download your data first"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laden Sie zuerst Ihre Daten herunter"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Əvvəlcə məlumatlarınızı endirin"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نزّل بياناتك أولًا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unduh data Anda terlebih dahulu"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پہلے اپنا ڈیٹا ڈاؤن لوڈ کریں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اول داده‌هایتان را بارگیری کنید"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Téléchargez d’abord vos données"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сначала скачайте свои данные"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "先にデータをダウンロードしてください"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "먼저 데이터를 내려받으세요"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先下载您的数据"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I-download po muna ang inyong data"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โปรดดาวน์โหลดข้อมูลของคุณก่อน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primero descargue sus datos"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Baixe seus dados primeiro"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पहले अपना डेटा डाउनलोड करें"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আগে আপনার ডেটা ডাউনলোড করুন"
+          }
+        }
+      }
+    },
+    "account.deleteKeptTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silinmeyenler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What is not deleted"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was nicht gelöscht wird"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silinməyənlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ما لا يُحذف"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yang tidak dihapus"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جو حذف نہیں ہوتا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آنچه پاک نمی‌شود"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce qui n’est pas supprimé"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Что не удаляется"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "削除されないもの"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "삭제되지 않는 것"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不会删除的内容"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang hindi binubura"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สิ่งที่ไม่ถูกลบ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lo que no se elimina"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O que não é excluído"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "जो हटाया नहीं जाता"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "যা মুছে ফেলা হয় না"
+          }
+        }
+      }
+    },
+    "account.deleteKept": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yedeklerdeki kopya en geç 30 gün içinde kendiliğinden silinir (yedekler yalnız bir arızadan sonra geri yüklemek içindir). Hesabınızı yalnız Saat Tarih'ten silerseniz öbür Bumba ürünlerindeki hesaplarınız ve üye numaranız orada kalır. Telefondaki ayarlarınız ve kayıtlarınız telefonda kalır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The copy in backups is deleted automatically within 30 days at most (backups are only for restoring after a failure). If you delete your account from Saat Tarih only, your accounts and member number in other Bumba products stay there. Settings and records on your phone stay on your phone."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Kopie in den Sicherungen wird spätestens nach 30 Tagen automatisch gelöscht (Sicherungen dienen nur der Wiederherstellung nach einem Ausfall). Wenn Sie Ihr Konto nur aus Saat Tarih löschen, bleiben Ihre Konten und Ihre Mitgliedsnummer in anderen Bumba-Produkten bestehen. Einstellungen und Einträge auf Ihrem Telefon bleiben auf dem Telefon."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ehtiyat nüsxələrdəki surət ən gec 30 gün ərzində özü silinir (ehtiyat nüsxələr yalnız nasazlıqdan sonra bərpa üçündür). Hesabınızı yalnız Saat Tarix-dən silsəniz, digər Bumba məhsullarındakı hesablarınız və üzv nömrəniz orada qalır. Telefondakı ayarlarınız və qeydləriniz telefonda qalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُحذف النسخة الموجودة في النسخ الاحتياطية تلقائيًا خلال 30 يومًا على الأكثر (النسخ الاحتياطية للاستعادة بعد عطل فقط). إذا حذفت حسابك من Saat Tarih فقط، تبقى حساباتك ورقم عضويتك في منتجات Bumba الأخرى كما هي. وتبقى إعداداتك وسجلاتك التي على هاتفك في الهاتف."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salinan di cadangan terhapus otomatis paling lambat dalam 30 hari (cadangan hanya untuk pemulihan setelah gangguan). Jika Anda menghapus akun hanya dari Saat Tarih, akun dan nomor anggota Anda di produk Bumba lain tetap ada. Pengaturan dan catatan di ponsel Anda tetap di ponsel."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بیک اپ میں موجود نقل زیادہ سے زیادہ 30 دن میں خود حذف ہو جاتی ہے (بیک اپ صرف خرابی کے بعد بحالی کے لیے ہیں)۔ اگر آپ اکاؤنٹ صرف Saat Tarih سے حذف کریں تو دوسری Bumba مصنوعات میں آپ کے اکاؤنٹ اور رکنیت نمبر وہیں رہتے ہیں۔ فون پر آپ کی ترتیبات اور ریکارڈ فون پر رہتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نسخهٔ موجود در پشتیبان‌ها حداکثر تا 30 روز خودبه‌خود پاک می‌شود (پشتیبان‌ها فقط برای بازیابی پس از خرابی‌اند). اگر حساب را فقط از Saat Tarih پاک کنید، حساب‌ها و شمارهٔ عضویت شما در دیگر محصولات Bumba باقی می‌ماند. تنظیمات و ثبت‌های روی گوشی شما در گوشی می‌ماند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La copie dans les sauvegardes est supprimée automatiquement sous 30 jours au plus (les sauvegardes servent uniquement à restaurer après une panne). Si vous supprimez votre compte de Saat Tarih seulement, vos comptes et votre numéro de membre dans les autres produits Bumba y restent. Les réglages et enregistrements de votre téléphone restent sur le téléphone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Копия в резервных копиях удаляется автоматически не позже чем через 30 дней (резервные копии нужны только для восстановления после сбоя). Если вы удалите аккаунт только из Saat Tarih, ваши аккаунты и номер участника в других продуктах Bumba останутся. Настройки и записи на телефоне остаются на телефоне."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "バックアップ内のコピーは最長30日以内に自動で削除されます（バックアップは障害後の復元にのみ使います）。Saat Tarih からのみ削除した場合、ほかの Bumba 製品のアカウントと会員番号はそのまま残ります。スマートフォン上の設定と記録はスマートフォンに残ります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "백업에 있는 사본은 늦어도 30일 안에 자동으로 삭제됩니다(백업은 장애 후 복구에만 쓰입니다). Saat Tarih에서만 계정을 삭제하시면 다른 Bumba 제품의 계정과 회원 번호는 그대로 남습니다. 휴대전화의 설정과 기록은 휴대전화에 남습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份中的副本最迟在 30 天内自动删除（备份仅用于故障后的恢复）。如果您只从 Saat Tarih 删除账户，您在其他 Bumba 产品中的账户和会员编号仍会保留。手机上的设置和记录留在手机上。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kusang nabubura ang kopya sa mga backup sa loob ng hindi hihigit sa 30 araw (para lang sa pagbabalik pagkatapos ng sira ang mga backup). Kung sa Saat Tarih lang ninyo buburahin ang account, mananatili ang inyong mga account at member number sa ibang produkto ng Bumba. Mananatili sa telepono ang mga setting at talaan sa inyong telepono."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สำเนาในข้อมูลสำรองจะถูกลบเองภายใน 30 วันเป็นอย่างช้า (ข้อมูลสำรองใช้กู้คืนหลังระบบขัดข้องเท่านั้น) หากคุณลบบัญชีจาก Saat Tarih เท่านั้น บัญชีและหมายเลขสมาชิกของคุณในผลิตภัณฑ์อื่นของ Bumba จะยังอยู่ การตั้งค่าและบันทึกบนโทรศัพท์ของคุณจะอยู่ในโทรศัพท์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La copia en las copias de seguridad se elimina sola en un plazo máximo de 30 días (las copias de seguridad solo sirven para restaurar tras una avería). Si elimina su cuenta solo de Saat Tarih, sus cuentas y su número de miembro en los demás productos de Bumba se mantienen. Los ajustes y registros de su teléfono se quedan en el teléfono."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A cópia nos backups é excluída automaticamente em no máximo 30 dias (os backups servem só para restaurar depois de uma falha). Se você excluir a conta só do Saat Tarih, suas contas e seu número de membro nos outros produtos Bumba continuam lá. As configurações e os registros no seu celular ficam no celular."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बैकअप में रखी प्रति अधिकतम 30 दिनों में अपने-आप हट जाती है (बैकअप केवल किसी खराबी के बाद बहाली के लिए हैं)। यदि आप खाता सिर्फ़ Saat Tarih से हटाते हैं, तो दूसरे Bumba उत्पादों में आपके खाते और सदस्य नंबर वहीं रहते हैं। फ़ोन पर आपकी सेटिंग्स और रिकॉर्ड फ़ोन पर रहते हैं।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ব্যাকআপে থাকা কপি সর্বোচ্চ 30 দিনের মধ্যে আপনা-আপনি মুছে যায় (ব্যাকআপ কেবল কোনো ত্রুটির পর পুনরুদ্ধারের জন্য)। আপনি অ্যাকাউন্ট শুধু Saat Tarih থেকে মুছলে অন্যান্য Bumba পণ্যে আপনার অ্যাকাউন্ট ও সদস্য নম্বর সেখানেই থাকে। ফোনে থাকা আপনার সেটিংস ও রেকর্ড ফোনেই থাকে।"
           }
         }
       }

@@ -6,14 +6,19 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.util.Base64
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -49,7 +54,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -194,9 +203,54 @@ private fun Picker(label: String, value: String, options: List<Pair<String, Stri
 fun AccountScreen(onRoute: (String) -> Unit) {
     LaunchedEffect(Unit) { if (Account.signedIn) Account.refresh() }
     var notice by remember { mutableStateOf<String?>(null) }
+    // Açık bölüm (web'deki sekme): telefonda açılır kapanır, aynı adlar ve sıra; kaydedilmemiş değişiklikle çıkışta uyarı
+    var open by rememberSaveable { mutableStateOf("profil") }
+    var gen by remember { mutableIntStateOf(0) }
+    BackHandler(enabled = AccountLeave.dirty) { AccountLeave.leave { onRoute("settings") } }
+    DisposableEffect(Unit) { onDispose { AccountLeave.dirty = false; AccountLeave.pending = null } }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        if (Account.signedIn) SignedIn(onRoute) { notice = it } else SignedOut(notice)
+        if (Account.signedIn) key(gen) { SignedIn(onRoute, open, { open = it }, { AccountLeave.dirty = false; gen++ }) { notice = it } } else SignedOut(notice)
         AccountLinks()
+    }
+    AccountLeave.pending?.let { go ->
+        AlertDialog(onDismissRequest = { AccountLeave.pending = null },
+            text = { Text(A("unsaved")) },
+            confirmButton = { TextButton({ AccountLeave.pending = null; AccountLeave.dirty = false; go() }) { Text(A("yes")) } },
+            dismissButton = { TextButton({ AccountLeave.pending = null }) { Text(A("no")) } })
+    }
+}
+
+/** Kaydedilmemiş değişiklikle hesap sayfasından (ya da açık bölümden) çıkılırken uyarı (madde 7); Hesap sayfasının geri
+    düğmesi de buradan sorar */
+object AccountLeave {
+    var dirty by mutableStateOf(false)
+    var pending by mutableStateOf<(() -> Unit)?>(null)
+    fun leave(go: () -> Unit) { if (dirty) pending = go else go() }
+}
+
+/** Hesap sayfasının bölüm grubu (web'deki sekme): başlığa dokununca açılır, altında ortak metinlere bağlantı */
+@Composable
+private fun Group(title: String, open: Boolean, onToggle: () -> Unit, content: @Composable ColumnScope.() -> Unit) {
+    AppCard(padding = 4) {
+        Row(Modifier.fillMaxWidth().clickable(role = Role.Button, onClick = onToggle)
+            .padding(horizontal = 14.dp, vertical = 14.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+            Text(if (open) "−" else "+", color = Theme.c.muted, fontSize = 22.sp)
+        }
+    }
+    if (open) Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        content()
+        LegalLine()
+    }
+}
+
+@Composable
+private fun LegalLine() {
+    val context = LocalContext.current
+    fun open(url: String) = context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    FlowRow(Modifier.fillMaxWidth().padding(horizontal = 4.dp), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+        Text(A("notice"), Modifier.clickable { open(accountNoticeUrl()) }, color = Theme.c.accent, fontSize = 13.sp)
+        Text(A("terms"), Modifier.clickable { open(accountTermsUrl()) }, color = Theme.c.accent, fontSize = 13.sp)
     }
 }
 
@@ -220,7 +274,7 @@ fun AccountSettingsRow(onClick: () -> Unit) {
 @Composable
 private fun SignedOut(initialNotice: String?) {
     val scope = rememberCoroutineScope()
-    var mode by rememberSaveable { mutableStateOf("in") } // in, up, forgot, link (Bumba üyeliğiyle giriş), done (kayıt bitti), separate
+    var mode by rememberSaveable { mutableStateOf("in") } // in, up, forgot, link (Bumba üyeliğiyle giriş), done (kayıt bitti)
     var email by rememberSaveable { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var bumba by rememberSaveable { mutableStateOf(false) } // kayıtta e-posta başka bir Bumba ürününde kayıtlı
@@ -239,8 +293,6 @@ private fun SignedOut(initialNotice: String?) {
             else { err = r.err; canResend = r.err == "account.err.unverified" }
         }
     }
-    // Girişten sonra: aynı e-postayla başka bir Bumba ürününde ayrı hesap varsa birleştirme sorulur
-    fun signedIn() { scope.launch { if (Account.separateAccount()) { mode = "separate" } } }
 
     Text(A("intro"), color = Theme.c.muted, fontSize = 14.sp)
     if (mode == "in" || mode == "up") SoftSegmentedRow(Modifier.fillMaxWidth()) {
@@ -295,7 +347,7 @@ private fun SignedOut(initialNotice: String?) {
                 Field(email, { email = it.trim() }, A("email"), ContentType.EmailAddress, email = true)
                 Field(password, { password = it }, A("password"), ContentType.Password, password = true)
                 RoundButton(A("signIn"), true, Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
-                    run({ Account.signIn(email, password) }) { password = ""; signedIn() }
+                    run({ Account.signIn(email, password) }) { password = "" }
                 }
                 TextButton({ mode = "forgot"; err = null; info = null }) { Text(A("forgot"), color = Theme.c.accent) }
             }
@@ -374,7 +426,7 @@ private fun photoBitmap(dataUrl: String?): androidx.compose.ui.graphics.ImageBit
 
 @OptIn(ExperimentalMaterial3Api::class, androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 @Composable
-private fun SignedIn(onRoute: (String) -> Unit, onSignedOut: (String) -> Unit) {
+private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) -> Unit, discard: () -> Unit, onSignedOut: (String) -> Unit) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val u = Account.user ?: return
@@ -382,7 +434,7 @@ private fun SignedIn(onRoute: (String) -> Unit, onSignedOut: (String) -> Unit) {
     var loadErr by remember { mutableStateOf<String?>(null) }
     var msg by remember { mutableStateOf<Triple<String, String, Boolean>?>(null) } // (bölüm, metin anahtarı, başarılı mı)
     var busy by remember { mutableStateOf(false) }
-    var separate by remember { mutableStateOf(false) }
+    var choice by remember { mutableStateOf<Account.Choice?>(null) }
     fun run(card: String, block: suspend () -> Account.Result, okKey: String?, onOk: (Account.Result) -> Unit = {}) {
         if (busy) return
         busy = true; msg = null
@@ -397,7 +449,7 @@ private fun SignedIn(onRoute: (String) -> Unit, onSignedOut: (String) -> Unit) {
     LaunchedEffect(u.id) {
         val r = Account.load()
         if (r.ok) data = JSONObject(r.data!!) else loadErr = r.err
-        separate = Account.separateAccount()
+        choice = Account.passwordChoice()
         AccountSync.sync()
     }
     val d = data
@@ -436,7 +488,8 @@ private fun SignedIn(onRoute: (String) -> Unit, onSignedOut: (String) -> Unit) {
         put("sosyal", JSONArray(sosyal.filter { it.second.isNotBlank() }.map { JSONObject().put("platform", it.first).put("deger", it.second.trim()) }))
         put("gorunurluk", JSONObject().put("acik", acik).put("alanlar", JSONArray(alanlar.toList())))
     }
-    fun saveProfile(card: String) = run(card, { Account.saveProfile(profileJson()) }, "account.saved")
+    var profileBase by remember { mutableStateOf("") }
+    fun saveProfile(card: String) = run(card, { Account.saveProfile(profileJson()) }, "account.saved") { profileBase = profileJson().toString() }
 
     val pickPhoto = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null) scope.launch {
@@ -449,144 +502,12 @@ private fun SignedIn(onRoute: (String) -> Unit, onSignedOut: (String) -> Unit) {
     val countries = remember { Countries.list(context) }
     val dateFmt = remember { DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(Strings.locale) }
 
-    // Üst: e-posta, rozetlerim ve kayıtlarım, çıkış
-    AppCard {
-        SectionTitle(u.email)
-        Text(A("signedInNote"), color = Theme.c.muted, fontSize = 13.sp)
-        RoundButton(A("signOut"), false, Modifier.fillMaxWidth()) { scope.launch { Account.signOut(); onSignedOut("account.signedOut") } }
-    }
-    AppCard {
-        SectionTitle(A("badgesTitle"))
-        Text(T("account.badgesCount", maxOf(AccountSync.accountBadges, 0)), color = Theme.c.text, fontSize = 15.sp)
-        Text(A("syncNote"), color = Theme.c.muted, fontSize = 13.sp)
-        if (BadgeStore.saved.r.isNotEmpty()) RoundButton(A("badgesAdd"), false, Modifier.fillMaxWidth()) {
-            run("badges", { if (AccountSync.addBadges()) Account.Result() else Account.Result("account.err.generic") }, "account.badgesAdded")
-        }
-        RoundButton(A("sync"), false, Modifier.fillMaxWidth()) {
-            run("badges", { if (AccountSync.sync()) Account.Result() else Account.Result("account.err.network") }, "account.saved")
-        }
-        Text(if (AccountSync.records > 0) T("account.recordsCount", AccountSync.records) else A("recordsNone"), color = Theme.c.muted, fontSize = 13.sp)
-        Text(A("badgesNote"), color = Theme.c.muted, fontSize = 13.sp)
-        CardMessage("badges")
-    }
-
-    // 1. Profil
-    AppCard {
-        Numbered(1, A("profile"))
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            val bmp = remember(foto) { photoBitmap(foto) }
-            if (bmp != null) Image(bmp, A("photo"), Modifier.size(80.dp).clip(CircleShape), contentScale = ContentScale.Crop)
-            Spacer(Modifier.width(12.dp))
-            Column(Modifier.weight(1f)) {
-                TextButton({ pickPhoto.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }) { Text(A("photoChoose"), color = Theme.c.accent) }
-                if (foto != null) TextButton({ scope.launch { if (Account.savePhoto(null).ok) foto = null } }) { Text(A("photoRemove"), color = Theme.c.accent) }
-            }
-        }
-        Text(A("photoNote"), color = Theme.c.muted, fontSize = 12.sp)
-        Field(ad, { ad = it.take(100) }, A("firstName"), ContentType.PersonFirstName)
-        Field(soyad, { soyad = it.take(100) }, A("lastName"), ContentType.PersonLastName)
-        Field(takma, { takma = it.take(60) }, A("nickname"))
-        Column(Modifier.fillMaxWidth().clickable(role = Role.Button) { picking = true }.padding(vertical = 6.dp)) {
-            Text(A("birthDate"), color = Theme.c.muted, fontSize = 13.sp)
-            Text(dogum.takeIf { it.isNotEmpty() }?.let { runCatching { LocalDate.parse(it).format(dateFmt) }.getOrNull() } ?: A("none"), color = Theme.c.text, fontSize = 16.sp)
-        }
-        Picker(A("gender"), cinsiyet, listOf("" to A("none"), "kadin" to A("genderF"), "erkek" to A("genderM"), "belirtmek-istemiyorum" to A("genderN"))) { cinsiyet = it }
-        Picker(A("country"), ulke, listOf("" to A("none")) + countries.map { it.first to "${flag(it.first)} ${it.third}" }) { cc ->
-            ulke = cc
-            if (kod.isEmpty()) countries.firstOrNull { it.first == cc }?.second?.takeIf { it.isNotEmpty() }?.let { kod = "+$it" }
-        }
-        Text(A("phone"), color = Theme.c.muted, fontSize = 13.sp)
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            Box(Modifier.weight(0.45f)) {
-                Picker(A("phoneCode"), kod, listOf("" to A("phoneCode")) + countries.filter { it.second.isNotEmpty() }
-                    .map { "+${it.second}" to "${flag(it.first)} +${it.second}" }.distinctBy { it.first }) { kod = it }
-            }
-            Box(Modifier.weight(0.55f)) { Field(numara, { numara = it.filter { c -> c.isDigit() || c == ' ' }.take(20) }, A("phoneNumber"), ContentType.PhoneNumber, keyboard = KeyboardType.Phone) }
-        }
-        Field(sehir, { sehir = it.take(100) }, A("city"), ContentType.AddressLocality)
-        Field(meslek, { meslek = it.take(100) }, A("job"))
-        Field(hakkimda, { hakkimda = it.take(160) }, A("about"), singleLine = false)
-        Text(A("aboutHint") + " · ${hakkimda.length}/160", color = Theme.c.muted, fontSize = 12.sp)
-        Text(A("social"), color = Theme.c.muted, fontSize = 13.sp)
-        sosyal.forEachIndexed { i, (pl, v) ->
-            Picker(A("social"), pl, SOCIAL.map { it to if (it == "web") A("socialWeb") else it.replaceFirstChar { c -> c.uppercase() } }) { sosyal[i] = it to v }
-            Field(v, { sosyal[i] = pl to it.take(300) }, A("socialValue"))
-            TextButton({ sosyal.removeAt(i) }) { Text(A("socialRemove"), color = Theme.c.accent) }
-        }
-        if (sosyal.size < 8) TextButton({ sosyal.add(SOCIAL[0] to "") }) { Text(A("socialAdd"), color = Theme.c.accent) }
-        LinkedText(A("optionalNote"))
-        RoundButton(A("save"), true, Modifier.fillMaxWidth()) { saveProfile("profile") }
-        CardMessage("profile")
-    }
-
-    // 2. Görünürlük
-    AppCard {
-        Numbered(2, A("visibility"))
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(A("showProfile"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-            SoftSwitch(acik, { acik = it })
-        }
-        Text(A("visibleFields"), color = Theme.c.muted, fontSize = 13.sp)
-        for ((field, label) in VISIBLE) CheckLine(field in alanlar, A(label)) { on -> if (on) alanlar.add(field) else alanlar.remove(field) }
-        Text(A("emailNever"), color = Theme.c.muted, fontSize = 13.sp)
-        val shown = when {
-            acik && "takmaAd" in alanlar && takma.isNotBlank() -> takma
-            acik && "ad" in alanlar && ad.isNotBlank() -> if ("soyad" in alanlar && soyad.isNotBlank()) "$ad $soyad" else ad
-            else -> T("account.member", if (d.isNull("uyeNo")) "" else d.optLong("uyeNo").toString())
-        }
-        Text(T("account.displayName", shown), color = Theme.c.muted, fontSize = 13.sp)
-        RoundButton(A("save"), true, Modifier.fillMaxWidth()) { saveProfile("visibility") }
-        CardMessage("visibility")
-    }
-
-    // 3. E-posta
     var newEmail by rememberSaveable { mutableStateOf("") }
-    AppCard {
-        Numbered(3, A("emailSection"))
-        Text(d.optString("eposta"), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.Medium)
-        Field(newEmail, { newEmail = it.trim() }, A("newEmail"), ContentType.EmailAddress, email = true)
-        RoundButton(A("changeEmail"), false, Modifier.fillMaxWidth()) { run("email", { Account.changeEmail(newEmail) }, "account.changeEmailSent") { newEmail = "" } }
-        CardMessage("email")
-    }
-
-    // 4. Şifre
+    var emailPw by remember { mutableStateOf("") }
     var current by remember { mutableStateOf("") }
     var next by remember { mutableStateOf("") }
-    AppCard {
-        Numbered(4, A("passwordSection"))
-        Field(current, { current = it }, A("passwordCurrent"), ContentType.Password, password = true)
-        Field(next, { next = it }, A("newPassword"), ContentType.NewPassword, password = true)
-        PasswordRules(next)
-        RoundButton(A("changePassword"), false, Modifier.fillMaxWidth()) {
-            run("password", { Account.changePassword(current, next) }, "account.passwordChanged") { current = ""; next = "" }
-        }
-        CardMessage("password")
-    }
-
-    // 5. Dil, tema ve saat dilimi (uygulamada dil ve tema uygulamanın ayarlarıdır; saat dilimi telefonunki)
-    AppCard(padding = 12) {
-        Box(Modifier.padding(horizontal = 8.dp)) { Numbered(5, A("prefs")) }
-        LinkRow("globe", A("language")) { onRoute("language") }
-        LinkRow("palette", A("theme")) { onRoute("color") }
-        Text(A("timeZone") + ": " + java.util.TimeZone.getDefault().id.replace('_', ' '), Modifier.padding(horizontal = 8.dp), color = Theme.c.text, fontSize = 15.sp)
-        Text(A("prefsApp"), Modifier.padding(horizontal = 8.dp), color = Theme.c.muted, fontSize = 13.sp)
-    }
-
-    // 6. E-postalar
     var celebrate by remember { mutableStateOf(d.optBoolean("kutlama", true)) }
-    AppCard {
-        Numbered(6, A("emails"))
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(A("celebrate"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-            SoftSwitch(celebrate, { on -> celebrate = on; scope.launch { if (!Account.setCelebrate(on).ok) celebrate = !on } })
-        }
-        Text(A("celebrateNote"), color = Theme.c.muted, fontSize = 13.sp)
-        Text(A("list"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.Medium)
-        Text(A("listNote"), color = Theme.c.muted, fontSize = 13.sp)
-        TextButton({ onRoute("about") }) { Text(A("listJoin"), color = Theme.c.accent) }
-    }
-
-    // 7. Açık oturumlar
+    var celebrateSaved by remember { mutableStateOf(celebrate) }
     val sessions = remember { mutableStateListOf<JSONObject>() }
     suspend fun loadSessions() {
         val r = Account.sessions()
@@ -596,23 +517,6 @@ private fun SignedIn(onRoute: (String) -> Unit, onSignedOut: (String) -> Unit) {
     LaunchedEffect(u.id) { loadSessions() }
     val dt = remember { DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT).withLocale(Strings.locale) }
     fun fmt(iso: String) = runCatching { Instant.parse(iso).atZone(java.time.ZoneId.systemDefault()).format(dt) }.getOrDefault(iso)
-    AppCard {
-        Numbered(7, A("sessions"))
-        for (s in sessions) {
-            val tok = s.optString("token")
-            val dev = when (s.optString("client")) { "ios" -> A("deviceIos"); "android" -> A("deviceAndroid"); "" -> A("deviceWeb"); else -> A("deviceApp") }
-            Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
-                    Text(dev + if (Account.isCurrent(tok)) " · " + A("thisSession") else "", color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.Medium)
-                    Text(T("account.opened", fmt(s.optString("createdAt"))) + " · " + T("account.lastUsed", fmt(s.optString("updatedAt"))), color = Theme.c.muted, fontSize = 12.sp)
-                }
-                if (!Account.isCurrent(tok)) TextButton({ scope.launch { Account.closeSession(tok); loadSessions() } }) { Text(A("close"), color = Theme.c.accent) }
-            }
-        }
-        RoundButton(A("closeOthers"), false, Modifier.fillMaxWidth()) { scope.launch { Account.closeOtherSessions(); loadSessions() } }
-    }
-
-    // 8. Üyelik ve öbür Bumba ürünleri
     val products = remember { mutableStateListOf<JSONObject>() }
     var productsErr by remember { mutableStateOf(false) }
     var askOpen by remember { mutableStateOf<List<String>?>(null) }
@@ -623,28 +527,246 @@ private fun SignedIn(onRoute: (String) -> Unit, onSignedOut: (String) -> Unit) {
         if (r.ok) runCatching { JSONArray(r.data) }.getOrNull()?.let { a -> for (i in 0 until a.length()) a.optJSONObject(i)?.let { if (it.optString("site").isNotEmpty()) products.add(it) } }
     }
     LaunchedEffect(u.id) { loadProducts() }
-    AppCard {
-        Numbered(8, A("membership"))
-        Text(A("memberNo") + ": " + (if (d.isNull("uyeNo")) "—" else d.optLong("uyeNo").toString()), color = Theme.c.text, fontSize = 15.sp)
-        val since = runCatching { Instant.parse(d.optString("uyelikTarihi")).atZone(java.time.ZoneId.systemDefault()).toLocalDate().format(dateFmt) }.getOrDefault("")
-        Text(A("memberSince") + ": " + since, color = Theme.c.text, fontSize = 15.sp)
-        Text(A("products"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.Medium)
-        Text(A("productsNote"), color = Theme.c.muted, fontSize = 13.sp)
-        if (productsErr) Text(A("productsUnavailable"), color = Theme.c.muted, fontSize = 13.sp)
-        for (pr in products) {
-            val site = pr.optString("site"); val on = pr.optBoolean("acik"); val self = site == "saat-tarih" || pr.optBoolean("kendisi")
-            Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text(pr.optString("ad", site) + if (self) " · " + A("productThis") else "", Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                if (self) Text(A("productOn"), color = Theme.c.muted, fontSize = 14.sp)
-                else SoftSwitch(on, { want -> if (want) askOpen = listOf(site) else askClose = listOf(site) })
+    var scopeAll by rememberSaveable { mutableStateOf(false) }
+    var delPw by remember { mutableStateOf("") }
+    var confirm by remember { mutableStateOf(false) }
+
+    // Kaydedilmemiş değişiklik: profil ve görünürlük (kayıtlı hâlle), e-posta, şifre ve kutlama alanları
+    LaunchedEffect(Unit) { profileBase = profileJson().toString() }
+    val dirtyOf = mapOf(
+        "profil" to ((profileBase.isNotEmpty() && profileJson().toString() != profileBase) || newEmail.isNotEmpty() || emailPw.isNotEmpty()),
+        "guvenlik" to (current.isNotEmpty() || next.isNotEmpty()),
+        "tercihler" to (celebrate != celebrateSaved),
+    )
+    val anyDirty = dirtyOf.values.any { it }
+    SideEffect { AccountLeave.dirty = anyDirty }
+    fun toggle(id: String) {
+        val target = if (open == id) "" else id
+        if (dirtyOf[open] == true) AccountLeave.pending = { discard(); setOpen(target) } else setOpen(target)
+    }
+
+    // Aynı e-postanın ayrı hesapları girişte birleşti ve şifre seçimi bekleniyor: seçim yapılana kadar yalnız seçim ve çıkış
+    choice?.takeIf { it.options.isNotEmpty() }?.let { ch ->
+        AppCard {
+            SectionTitle(A("mergedTitle"))
+            val names = runCatching { android.icu.text.ListFormatter.getInstance(Strings.locale).format(ch.options.map { it.second }) }.getOrDefault(ch.options.joinToString(", ") { it.second })
+            Text(T("account.mergedText", names, (ch.uyeNo ?: d.optLong("uyeNo")).toString()), color = Theme.c.text, fontSize = 15.sp)
+            for ((site, name) in ch.options) RoundButton(T("account.mergedChoice", name), true, Modifier.fillMaxWidth()) {
+                run("choice", { Account.choosePassword(site) }, "account.mergedDone") { choice = null }
             }
+            Text(A("mergedNote"), color = Theme.c.muted, fontSize = 13.sp)
+            CardMessage("choice")
+            RoundButton(A("signOut"), false, Modifier.fillMaxWidth()) { scope.launch { Account.signOut(); onSignedOut("account.signedOut") } }
         }
-        val others = products.filter { it.optString("site") != "saat-tarih" && !it.optBoolean("kendisi") }
-        if (others.isNotEmpty()) Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            RoundButton(A("openAll"), false, Modifier.weight(1f)) { others.filter { !it.optBoolean("acik") }.map { it.optString("site") }.takeIf { it.isNotEmpty() }?.let { askOpen = it } }
-            RoundButton(A("closeAll"), false, Modifier.weight(1f)) { others.filter { it.optBoolean("acik") }.map { it.optString("site") }.takeIf { it.isNotEmpty() }?.let { askClose = it } }
+        return
+    }
+
+    AppCard {
+        SectionTitle(u.email)
+        Text(A("signedInNote"), color = Theme.c.muted, fontSize = 13.sp)
+        RoundButton(A("signOut"), false, Modifier.fillMaxWidth()) { scope.launch { Account.signOut(); onSignedOut("account.signedOut") } }
+    }
+
+    // Beş bölüm grubu web'deki sekmelerle aynı: Profil (1, 2, 3), Güvenlik (4, 7), Tercihler (5, 6), Üyelikler (8),
+    // Veri ve hesap (9, 10); sonra uygulamanın kullanım verisi (rozetler ve kayıtlar)
+    Group(A("tabProfile"), open == "profil", { toggle("profil") }) {
+        AppCard {
+            Numbered(1, A("profile"))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                val bmp = remember(foto) { photoBitmap(foto) }
+                if (bmp != null) Image(bmp, A("photo"), Modifier.size(80.dp).clip(CircleShape), contentScale = ContentScale.Crop)
+                Spacer(Modifier.width(12.dp))
+                Column(Modifier.weight(1f)) {
+                    TextButton({ pickPhoto.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }) { Text(A("photoChoose"), color = Theme.c.accent) }
+                    if (foto != null) TextButton({ scope.launch { if (Account.savePhoto(null).ok) foto = null } }) { Text(A("photoRemove"), color = Theme.c.accent) }
+                }
+            }
+            Text(A("photoNote"), color = Theme.c.muted, fontSize = 12.sp)
+            Field(ad, { ad = it.take(100) }, A("firstName"), ContentType.PersonFirstName)
+            Field(soyad, { soyad = it.take(100) }, A("lastName"), ContentType.PersonLastName)
+            Field(takma, { takma = it.take(60) }, A("nickname"))
+            Column(Modifier.fillMaxWidth().clickable(role = Role.Button) { picking = true }.padding(vertical = 6.dp)) {
+                Text(A("birthDate"), color = Theme.c.muted, fontSize = 13.sp)
+                Text(dogum.takeIf { it.isNotEmpty() }?.let { runCatching { LocalDate.parse(it).format(dateFmt) }.getOrNull() } ?: A("none"), color = Theme.c.text, fontSize = 16.sp)
+            }
+            Picker(A("gender"), cinsiyet, listOf("" to A("none"), "kadin" to A("genderF"), "erkek" to A("genderM"), "belirtmek-istemiyorum" to A("genderN"))) { cinsiyet = it }
+            Picker(A("country"), ulke, listOf("" to A("none")) + countries.map { it.first to "${flag(it.first)} ${it.third}" }) { cc ->
+                ulke = cc
+                if (kod.isEmpty()) countries.firstOrNull { it.first == cc }?.second?.takeIf { it.isNotEmpty() }?.let { kod = "+$it" }
+            }
+            Text(A("phone"), color = Theme.c.muted, fontSize = 13.sp)
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                Box(Modifier.weight(0.45f)) {
+                    Picker(A("phoneCode"), kod, listOf("" to A("phoneCode")) + countries.filter { it.second.isNotEmpty() }
+                        .map { "+${it.second}" to "${flag(it.first)} +${it.second}" }.distinctBy { it.first }) { kod = it }
+                }
+                Box(Modifier.weight(0.55f)) { Field(numara, { numara = it.filter { c -> c.isDigit() || c == ' ' }.take(20) }, A("phoneNumber"), ContentType.PhoneNumber, keyboard = KeyboardType.Phone) }
+            }
+            Field(sehir, { sehir = it.take(100) }, A("city"), ContentType.AddressLocality)
+            Field(meslek, { meslek = it.take(100) }, A("job"))
+            Field(hakkimda, { hakkimda = it.take(160) }, A("about"), singleLine = false)
+            Text(A("aboutHint") + " · ${hakkimda.length}/160", color = Theme.c.muted, fontSize = 12.sp)
+            Text(A("social"), color = Theme.c.muted, fontSize = 13.sp)
+            sosyal.forEachIndexed { i, (pl, v) ->
+                Picker(A("social"), pl, SOCIAL.map { it to if (it == "web") A("socialWeb") else it.replaceFirstChar { c -> c.uppercase() } }) { sosyal[i] = it to v }
+                Field(v, { sosyal[i] = pl to it.take(300) }, A("socialValue"))
+                TextButton({ sosyal.removeAt(i) }) { Text(A("socialRemove"), color = Theme.c.accent) }
+            }
+            if (sosyal.size < 8) TextButton({ sosyal.add(SOCIAL[0] to "") }) { Text(A("socialAdd"), color = Theme.c.accent) }
+            LinkedText(A("optionalNote"))
+            RoundButton(A("save"), true, Modifier.fillMaxWidth()) { saveProfile("profile") }
+            CardMessage("profile")
         }
-        CardMessage("products")
+        AppCard {
+            Numbered(2, A("visibility"))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(A("showProfile"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                SoftSwitch(acik, { acik = it })
+            }
+            Text(A("visibleFields"), color = Theme.c.muted, fontSize = 13.sp)
+            for ((field, label) in VISIBLE) CheckLine(field in alanlar, A(label)) { on -> if (on) alanlar.add(field) else alanlar.remove(field) }
+            Text(A("emailNever"), color = Theme.c.muted, fontSize = 13.sp)
+            val shown = when {
+                acik && "takmaAd" in alanlar && takma.isNotBlank() -> takma
+                acik && "ad" in alanlar && ad.isNotBlank() -> if ("soyad" in alanlar && soyad.isNotBlank()) "$ad $soyad" else ad
+                else -> T("account.member", if (d.isNull("uyeNo")) "" else d.optLong("uyeNo").toString())
+            }
+            Text(T("account.displayName", shown), color = Theme.c.muted, fontSize = 13.sp)
+            RoundButton(A("save"), true, Modifier.fillMaxWidth()) { saveProfile("visibility") }
+            CardMessage("visibility")
+        }
+        AppCard {
+            Numbered(3, A("emailSection"))
+            Text(d.optString("eposta"), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.Medium)
+            Field(newEmail, { newEmail = it.trim() }, A("newEmail"), ContentType.EmailAddress, email = true)
+            // Önce mevcut şifre, sonra eski adrese onay, en son yeni adrese doğrulama (madde 7)
+            Field(emailPw, { emailPw = it }, A("passwordCurrent"), ContentType.Password, password = true)
+            RoundButton(A("changeEmail"), true, Modifier.fillMaxWidth()) { run("email", { Account.changeEmail(newEmail, emailPw) }, "account.changeEmailSent") { newEmail = ""; emailPw = "" } }
+            CardMessage("email")
+        }
+    }
+    Group(A("tabSecurity"), open == "guvenlik", { toggle("guvenlik") }) {
+        AppCard {
+            Numbered(4, A("passwordSection"))
+            Field(current, { current = it }, A("passwordCurrent"), ContentType.Password, password = true)
+            Field(next, { next = it }, A("newPassword"), ContentType.NewPassword, password = true)
+            PasswordRules(next)
+            RoundButton(A("changePassword"), true, Modifier.fillMaxWidth()) {
+                run("password", { Account.changePassword(current, next) }, "account.passwordChanged") { current = ""; next = "" }
+            }
+            CardMessage("password")
+        }
+        AppCard {
+            Numbered(7, A("sessions"))
+            for (s in sessions) {
+                val tok = s.optString("token")
+                val dev = when (s.optString("client")) { "ios" -> A("deviceIos"); "android" -> A("deviceAndroid"); "" -> A("deviceWeb"); else -> A("deviceApp") }
+                Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text(dev + if (Account.isCurrent(tok)) " · " + A("thisSession") else "", color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.Medium)
+                        Text(T("account.opened", fmt(s.optString("createdAt"))) + " · " + T("account.lastUsed", fmt(s.optString("updatedAt"))), color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                    if (!Account.isCurrent(tok)) TextButton({ scope.launch { Account.closeSession(tok); loadSessions() } }) { Text(A("close"), color = Theme.c.accent) }
+                }
+            }
+            RoundButton(A("closeOthers"), false, Modifier.fillMaxWidth()) { scope.launch { Account.closeOtherSessions(); loadSessions() } }
+        }
+    }
+    Group(A("tabPrefs"), open == "tercihler", { toggle("tercihler") }) {
+        AppCard(padding = 12) {
+            Box(Modifier.padding(horizontal = 8.dp)) { Numbered(5, A("prefs")) }
+            LinkRow("globe", A("language")) { onRoute("language") }
+            LinkRow("palette", A("theme")) { onRoute("color") }
+            Text(A("timeZone") + ": " + java.util.TimeZone.getDefault().id.replace('_', ' '), Modifier.padding(horizontal = 8.dp), color = Theme.c.text, fontSize = 15.sp)
+            Text(A("prefsApp"), Modifier.padding(horizontal = 8.dp), color = Theme.c.muted, fontSize = 13.sp)
+        }
+        AppCard {
+            Numbered(6, A("emails"))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(A("celebrate"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                SoftSwitch(celebrate, { celebrate = it })
+            }
+            Text(A("celebrateNote"), color = Theme.c.muted, fontSize = 13.sp)
+            RoundButton(A("save"), true, Modifier.fillMaxWidth()) { run("emails", { Account.setCelebrate(celebrate) }, "account.saved") { celebrateSaved = celebrate } }
+            CardMessage("emails")
+            Text(A("list"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.Medium)
+            Text(A("listNote"), color = Theme.c.muted, fontSize = 13.sp)
+            TextButton({ onRoute("about") }) { Text(A("listJoin"), color = Theme.c.accent) }
+        }
+    }
+    Group(A("tabMembership"), open == "uyelikler", { toggle("uyelikler") }) {
+        AppCard {
+            Numbered(8, A("membership"))
+            Text(A("memberNo") + ": " + (if (d.isNull("uyeNo")) "—" else d.optLong("uyeNo").toString()), color = Theme.c.text, fontSize = 15.sp)
+            val since = runCatching { Instant.parse(d.optString("uyelikTarihi")).atZone(java.time.ZoneId.systemDefault()).toLocalDate().format(dateFmt) }.getOrDefault("")
+            Text(A("memberSince") + ": " + since, color = Theme.c.text, fontSize = 15.sp)
+            Text(A("products"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.Medium)
+            Text(A("productsNote"), color = Theme.c.muted, fontSize = 13.sp)
+            if (productsErr) Text(A("productsUnavailable"), color = Theme.c.muted, fontSize = 13.sp)
+            for (pr in products) {
+                val site = pr.optString("site"); val on = pr.optBoolean("acik"); val self = site == "saat-tarih" || pr.optBoolean("kendisi")
+                Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(pr.optString("ad", site) + if (self) " · " + A("productThis") else "", Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    if (self) Text(A("productOn"), color = Theme.c.muted, fontSize = 14.sp)
+                    else SoftSwitch(on, { want -> if (want) askOpen = listOf(site) else askClose = listOf(site) })
+                }
+            }
+            val others = products.filter { it.optString("site") != "saat-tarih" && !it.optBoolean("kendisi") }
+            if (others.isNotEmpty()) Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                RoundButton(A("openAll"), false, Modifier.weight(1f)) { others.filter { !it.optBoolean("acik") }.map { it.optString("site") }.takeIf { it.isNotEmpty() }?.let { askOpen = it } }
+                RoundButton(A("closeAll"), false, Modifier.weight(1f)) { others.filter { it.optBoolean("acik") }.map { it.optString("site") }.takeIf { it.isNotEmpty() }?.let { askClose = it } }
+            }
+            CardMessage("products")
+        }
+    }
+    Group(A("tabData"), open == "veri", { toggle("veri") }) {
+        AppCard {
+            Numbered(9, A("download"))
+            Text(A("downloadNote"), color = Theme.c.text, fontSize = 14.sp)
+            RoundButton(A("download"), false, Modifier.fillMaxWidth()) {
+                run("data", { Account.download() }, null) { r -> Share.json(context, "saat-tarih-hesap.json", r.data ?: "{}", A("download")) }
+            }
+            CardMessage("data")
+        }
+        AppCard {
+            Numbered(10, A("delete"))
+            // Silme ekranı (madde 7): önce verileri indirme bağlantısı, silinmeyenler ve nedeni, düğme ayrı kırmızı blokta
+            TextButton({ run("delete", { Account.download() }, null) { r -> Share.json(context, "saat-tarih-hesap.json", r.data ?: "{}", A("download")) } }) {
+                Text(A("deleteDownloadFirst"), color = Theme.c.accent)
+            }
+            Text(A("deleteKeptTitle"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.Medium)
+            Text(A("deleteKept"), color = Theme.c.muted, fontSize = 13.sp)
+        }
+        Column(Modifier.fillMaxWidth().border(BorderStroke(2.dp, Theme.c.err), RoundedCornerShape(18.dp)).background(Theme.c.err.copy(alpha = 0.07f), RoundedCornerShape(18.dp))
+            .padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text(A("deleteLead"), color = Theme.c.text, fontSize = 14.sp)
+            for ((all, label) in listOf(false to A("deleteScopeProduct"), true to A("deleteScopeAll"))) {
+                Row(Modifier.fillMaxWidth().selectable(scopeAll == all, role = Role.RadioButton) { scopeAll = all }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(scopeAll == all, null, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
+                    Text(label, color = Theme.c.text, fontSize = 15.sp)
+                }
+            }
+            Field(delPw, { delPw = it }, A("deletePassword"), ContentType.Password, password = true)
+            Text(A("deviceKeeps"), color = Theme.c.muted, fontSize = 13.sp)
+            TextButton({ confirm = true }, Modifier.fillMaxWidth().background(Theme.c.err, RoundedCornerShape(24.dp))) { Text(A("delete"), color = Theme.c.onAccent, fontWeight = FontWeight.SemiBold) }
+            CardMessage("delete")
+        }
+    }
+    Group(A("badgesTitle"), open == "rozetler", { toggle("rozetler") }) {
+        AppCard {
+            SectionTitle(A("badgesTitle"))
+            Text(T("account.badgesCount", maxOf(AccountSync.accountBadges, 0)), color = Theme.c.text, fontSize = 15.sp)
+            Text(A("syncNote"), color = Theme.c.muted, fontSize = 13.sp)
+            if (BadgeStore.saved.r.isNotEmpty()) RoundButton(A("badgesAdd"), false, Modifier.fillMaxWidth()) {
+                run("badges", { if (AccountSync.addBadges()) Account.Result() else Account.Result("account.err.generic") }, "account.badgesAdded")
+            }
+            RoundButton(A("sync"), false, Modifier.fillMaxWidth()) {
+                run("badges", { if (AccountSync.sync()) Account.Result() else Account.Result("account.err.network") }, "account.saved")
+            }
+            Text(if (AccountSync.records > 0) T("account.recordsCount", AccountSync.records) else A("recordsNone"), color = Theme.c.muted, fontSize = 13.sp)
+            Text(A("badgesNote"), color = Theme.c.muted, fontSize = 13.sp)
+            CardMessage("badges")
+        }
     }
     askOpen?.let { sites ->
         var pw by remember { mutableStateOf("") }
@@ -661,34 +783,6 @@ private fun SignedIn(onRoute: (String) -> Unit, onSignedOut: (String) -> Unit) {
             dismissButton = { TextButton({ askClose = null }) { Text(A("cancel")) } })
     }
 
-    // 9. Verilerimi indir
-    AppCard {
-        Numbered(9, A("download"))
-        Text(A("downloadNote"), color = Theme.c.text, fontSize = 14.sp)
-        RoundButton(A("download"), false, Modifier.fillMaxWidth()) {
-            run("data", { Account.download() }, null) { r -> Share.json(context, "saat-tarih-hesap.json", r.data ?: "{}", A("download")) }
-        }
-        CardMessage("data")
-    }
-
-    // 10. Hesabı sil
-    var scopeAll by rememberSaveable { mutableStateOf(false) }
-    var delPw by remember { mutableStateOf("") }
-    var confirm by remember { mutableStateOf(false) }
-    AppCard {
-        Numbered(10, A("delete"))
-        Text(A("deleteLead"), color = Theme.c.text, fontSize = 14.sp)
-        for ((all, label) in listOf(false to A("deleteScopeProduct"), true to A("deleteScopeAll"))) {
-            Row(Modifier.fillMaxWidth().selectable(scopeAll == all, role = Role.RadioButton) { scopeAll = all }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
-                RadioButton(scopeAll == all, null, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
-                Text(label, color = Theme.c.text, fontSize = 15.sp)
-            }
-        }
-        Field(delPw, { delPw = it }, A("deletePassword"), ContentType.Password, password = true)
-        Text(A("deviceKeeps"), color = Theme.c.muted, fontSize = 13.sp)
-        RoundButton(A("delete"), false, Modifier.fillMaxWidth()) { confirm = true }
-        CardMessage("delete")
-    }
     if (confirm) AlertDialog(
         onDismissRequest = { confirm = false },
         text = { Text(A("deleteConfirm")) },
@@ -718,15 +812,7 @@ private fun SignedIn(onRoute: (String) -> Unit, onSignedOut: (String) -> Unit) {
             dismissButton = { TextButton({ dogum = ""; picking = false }) { Text(A("none")) } }) { DatePicker(state) }
     }
 
-    // Girişten sonra sorular: ayrı hesap birleştirme ve (var olan hesaba girişte bir kez) bu cihazdaki rozetler
-    if (separate) {
-        var pw by remember { mutableStateOf("") }
-        var e by remember { mutableStateOf<String?>(null) }
-        AlertDialog(onDismissRequest = { separate = false },
-            text = { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) { Text(A("ayriQ")); Text(A("ayriNote"), fontSize = 13.sp); Field(pw, { pw = it }, A("password"), ContentType.Password, password = true); Message(e) } },
-            confirmButton = { TextButton({ scope.launch { val r = Account.merge(pw); if (r.ok) { separate = false; msg = Triple("badges", "account.ayriDone", true); Account.load().data?.let { data = JSONObject(it) } } else e = r.err } }) { Text(A("yes")) } },
-            dismissButton = { TextButton({ separate = false }) { Text(A("no")) } })
-    }
+    // Var olan hesaba girişte bir kez: bu cihazdaki rozetler hesaba eklensin mi
     if (AccountSync.askBadges > 0) AlertDialog(onDismissRequest = { AccountSync.declineBadges() },
         text = { Text(T("account.badgesAsk", AccountSync.askBadges)) },
         confirmButton = { TextButton({ scope.launch { AccountSync.addBadges() } }) { Text(A("yes")) } },

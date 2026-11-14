@@ -89,7 +89,7 @@ final class Account {
         if code == "EMAIL_NOT_VERIFIED" { return "account.err.unverified" }
         if code == "BANNED_USER" { return "account.err.suspended" }
         if code == "BUMBA_MEMBER" { return "account.bumba" }
-        if code == "EMAIL_TAKEN" || code == "USER_ALREADY_EXISTS" { return "account.err.emailTaken" }
+        if code == "EMAIL_TAKEN" || code == "USER_ALREADY_EXISTS" || code == "eposta-alinmis" { return "account.err.emailTaken" }
         if code == "WEAK_PASSWORD" || code.hasPrefix("PASSWORD_TOO") { return "account.err.password" }
         if code == "INVALID_PASSWORD" || code == "sifre" || (wrongPassword && (r.code == 400 || r.code == 401)) { return "account.err.wrongPassword" }
         if code == "INVALID_EMAIL_OR_PASSWORD" || code == "bilgiler" || r.code == 401 { return "account.err.credentials" }
@@ -184,15 +184,29 @@ final class Account {
         await AccountSync.shared.sync(first: true)
     }
 
-    /// Girişten sonra: aynı e-postayla başka bir Bumba ürününde ayrı hesap var mı
-    func separateAccount() async -> Bool {
-        let r = await call("GET", "/v1/uyelik/durum", auth: true)
-        return r.code == 200 && (Self.json(r.body)?["ayriHesap"] as? Bool ?? false)
+    /// Şifre seçimi bekleyen birleşme: seçenekler (site, ürün adı) ve birleşmiş üye numarası
+    struct Choice: Equatable {
+        let uyeNo: Int?
+        let options: [(site: String, name: String)]
+        static func == (a: Choice, b: Choice) -> Bool { a.uyeNo == b.uyeNo && a.options.map { $0.site } == b.options.map { $0.site } }
     }
 
-    func merge(password: String) async -> Result {
-        let r = await call("POST", "/v1/uyelik/birlestir", ["sifre": password], auth: true)
-        return r.code == 200 ? .success : .fail(Self.errorOf(r, wrongPassword: true))
+    /// Girişten sonra (hesap ekranı her açıldığında): aynı e-postayla başka bir Bumba ürününde ayrı hesap varsa sunucu
+    /// sormadan birleştirir (madde 7); şifre değişmez. Şifre seçimi bekleniyorsa seçenekler döner, yoksa nil.
+    func passwordChoice() async -> Choice? {
+        let r = await call("POST", "/v1/uyelik/durum", [:], auth: true)
+        guard r.code == 200, let o = Self.json(r.body), let a = o["sifreSecimi"] as? [[String: Any]] else { return nil }
+        let opts = a.compactMap { x -> (site: String, name: String)? in
+            guard let s = x["site"] as? String, !s.isEmpty else { return nil }
+            return (s, x["ad"] as? String ?? s)
+        }
+        return opts.isEmpty ? nil : Choice(uyeNo: (o["uyeNo"] as? NSNumber)?.intValue, options: opts)
+    }
+
+    /// Seçilen ürünün şifresi bütün bağlı ürünlerde geçerli olur; seçim zaten yapılmışsa (404) de tamam sayılır
+    func choosePassword(_ site: String) async -> Result {
+        let r = await call("POST", "/v1/uyelik/sifre-sec", ["site": site], auth: true)
+        return r.code == 200 || r.code == 404 ? .success : .fail(Self.errorOf(r))
     }
 
     /// Sunucudaki güncel bilgiler; oturum geçersizse (silinmiş, şifre başka yerde değişmiş) çıkış
@@ -241,10 +255,12 @@ final class Account {
         return r.code == 200 ? .success : .fail(Self.errorOf(r))
     }
 
-    func changeEmail(_ newEmail: String) async -> Result {
+    /// Önce mevcut şifre (sunucu denetler), sonra eski adrese onay, en son yeni adrese doğrulama
+    func changeEmail(_ newEmail: String, password: String) async -> Result {
         guard Self.validEmail(newEmail) else { return .fail("account.err.email") }
-        let r = await call("POST", "/api/auth/change-email", ["newEmail": Self.clean(newEmail)], auth: true)
-        return r.code == 200 ? .success : .fail(Self.errorOf(r))
+        guard !password.isEmpty else { return .fail("account.err.wrongPassword") }
+        let r = await call("POST", "/v1/eposta", ["eposta": Self.clean(newEmail), "sifre": password], auth: true)
+        return r.code == 200 ? .success : .fail(Self.errorOf(r, wrongPassword: true))
     }
 
     /// Öbür oturumlar kapanır; sunucu bu cihaz için yeni belirteç verir
