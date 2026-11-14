@@ -6,6 +6,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 import { bridges } from "./lib/bridges.mjs";
+import { SHARE_ICON_PATHS } from "./lib/share-icons.mjs";
 import { hijriTable, hijriTableId } from "./lib/hijri.mjs";
 import { loadWorldHolidays, publicDays } from "./lib/world-holidays.mjs";
 import { skyEvents } from "./lib/sky-events.mjs";
@@ -203,6 +204,29 @@ const LOGO = `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-
 const ICON_PIN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>`;
 const ICON_GEAR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>`;
 const ICON_LOCK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`;
+/* Paylaş (standart madde 15): tek düğme; telefonda cihazın paylaşım menüsü, yoksa düz bağlantılı küçük menü.
+   Sosyal ağların betiği yüklenmez, tıklanana kadar hiçbir ağa istek gitmez. Adres canonical, izleme parametresi yok. */
+const ICON_SHARE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 15V3"/><path d="m7 8 5-5 5 5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>`;
+const ICON_MAIL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>`;
+const ICON_LINK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>`;
+const brandIcon = (k) => `<svg viewBox="0 0 24 24" fill="currentColor"${k === "linkedin" ? ' fill-rule="evenodd"' : ""} aria-hidden="true" focusable="false"><path d="${SHARE_ICON_PATHS[k]}"/></svg>`;
+function shareUi(lang, url, title, text) {
+  const u = I[lang].ui;
+  const e = encodeURIComponent;
+  const msg = `${title} ${url}`;
+  const nets = [
+    ["whatsapp", "WhatsApp", `https://wa.me/?text=${e(msg)}`],
+    ["x", "X", `https://x.com/intent/post?url=${e(url)}&text=${e(title)}`],
+    ["facebook", "Facebook", `https://www.facebook.com/sharer/sharer.php?u=${e(url)}`],
+    ["linkedin", "LinkedIn", `https://www.linkedin.com/sharing/share-offsite/?url=${e(url)}`],
+    ["telegram", "Telegram", `https://t.me/share/url?url=${e(url)}&text=${e(title)}`],
+    ["bluesky", "Bluesky", `https://bsky.app/intent/compose?text=${e(msg)}`],
+  ];
+  const items = nets.map(([k, name, href]) => `<a class="share-item" href="${esc(href)}" target="_blank" rel="noopener noreferrer" data-share-net="${k}">${brandIcon(k)}<span>${name}</span></a>`).join("")
+    + `<a class="share-item" href="mailto:?subject=${esc(e(title))}&amp;body=${esc(e(msg))}" data-share-net="email">${ICON_MAIL}<span>${esc(u.shareEmail)}</span></a>`
+    + `<button type="button" class="share-item" data-share-copy data-done="${esc(u.shareCopied)}">${ICON_LINK}<span>${esc(I[lang].converter.shareLink)}</span></button>`;
+  return `<details class="share" data-page-share data-url="${esc(url)}" data-title="${esc(title)}" data-text="${esc(text)}"><summary class="share-btn" title="${esc(u.share)}" aria-label="${esc(u.share)}">${ICON_SHARE}<span class="share-label">${esc(u.share)}</span></summary><div class="share-pop">${items}<span class="sr-only" role="status" aria-live="polite" data-share-status></span></div></details>`;
+}
 const ICON_USER = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>`;
 const ICON_COOKIE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.5A9 9 0 1 1 11.5 3a3 3 0 0 0 4 4 3 3 0 0 0 5.5 5.5z"/><circle cx="8.5" cy="11" r="1"/><circle cx="12" cy="16" r="1"/><circle cx="15.5" cy="13" r="1"/></svg>`;
 const ICON_MENU = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`;
@@ -358,7 +382,7 @@ function clockStage(lang, { tz = "", place = null, pills = false } = {}) {
     <p class="meta source-line">${esc(s.source)}</p>
     <p class="sync-line" data-sync-status>&nbsp;</p>
     <p class="meta">${esc(s.infoSeconds)}</p>
-    <p class="share-row"><button type="button" class="toggle" data-share data-done="${esc(I[lang].ui.shareCopied)}">${esc(I[lang].ui.share)}</button> <button type="button" class="btn" data-info-close>${esc(s.infoClose)}</button></p>
+    <p class="share-row"><button type="button" class="btn" data-info-close>${esc(s.infoClose)}</button></p>
   </dialog>
 </div>`;
 }
@@ -611,7 +635,7 @@ ${ld}
   </div>
 </header>
 <main id="main">
-${isError ? p.body : p.body.replace(/<p class="lead"/g, '<p class="lead sr-only"')}
+${isError ? p.body : withShare(p, canonical, p.body.replace(/<p class="lead"/g, '<p class="lead sr-only"'))}
 </main>
 <footer class="site-footer">
   <div class="wrap footer-row">
@@ -633,6 +657,16 @@ ${["place.js", ...(p.scripts || []).filter((n) => n !== "place.js")].map((n) => 
 </body>
 </html>
 `;
+}
+
+/* Paylaş düğmesinin yeri: görünen ilk başlığın yanında; başlık görünmüyorsa (ana sayfa) içeriğin sonunda.
+   Herkese açık ve dizinlenen sayfalarda; hesapla ilgili sayfalarda (hesap silme) yok. */
+function withShare(p, canonical, body) {
+  if (p.noindex || p.noShare || !canonical) return body;
+  const ui = shareUi(p.lang, canonical, p.title, p.description);
+  const m = body.match(/<h1>([\s\S]*?)<\/h1>/);
+  if (m) return body.replace(m[0], `<div class="title-row">${m[0]}${ui}</div>`);
+  return `${body}\n<div class="wrap share-end">${ui}</div>`;
 }
 
 /* ---------- JSON-LD ---------- */
@@ -890,7 +924,7 @@ function buildAccountDelete(lang) {
 </section>`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, a.delTitle, a.delDesc), breadcrumbLd(trail)];
   searchEntries[lang].push({ t: a.delH1, u: pagePath, d: a.delDesc, k: "hesap account silme delete" });
-  return { lang, key: "accountDelete", path: pagePath, title: a.delTitle, description: a.delDesc, body, ld };
+  return { lang, key: "accountDelete", path: pagePath, title: a.delTitle, description: a.delDesc, body, ld, noShare: true };
 }
 
 /* ---------- Takvim: etkinlikler ve yıl sayfaları ---------- */

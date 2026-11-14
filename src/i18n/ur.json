@@ -89,7 +89,8 @@
     "lookMs": "ملی سیکنڈ",
     "lookNight": "رات کا موڈ (روشنیاں بند)",
     "share": "شیئر کریں",
-    "shareCopied": "لنک کاپی ہو گیا"
+    "shareCopied": "لنک کاپی ہو گیا",
+    "shareEmail": "ای میل"
   },
   "client": {
     "format24": "24 گھنٹے",

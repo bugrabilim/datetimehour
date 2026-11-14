@@ -89,7 +89,8 @@
     "lookMs": "Milidetik",
     "lookNight": "Mode malam (matikan lampu)",
     "share": "Bagikan",
-    "shareCopied": "Tautan disalin"
+    "shareCopied": "Tautan disalin",
+    "shareEmail": "Email"
   },
   "client": {
     "format24": "24 jam",

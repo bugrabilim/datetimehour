@@ -135,6 +135,17 @@ for (const f of htmlFiles) {
       for (const l of [...(trOnly ? ["tr"] : LANGS), "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
       if (trOnly) check(!LANGS.some((l) => l !== "tr" && h.includes(`<link rel="alternate" hreflang="${l}"`)), `${name}: ilçe sayfasında başka dil hreflang'ı olmamalı`);
       check(/og:image/.test(h) && /twitter:card/.test(h), `${name}: OG/Twitter yok`);
+      // madde 15: tek Paylaş; görünen başlık varsa yanında, yoksa içeriğin sonunda; adres canonical, ağ betiği yok
+      const accDel = /\/(hesap-silme|account-deletion)\//.test(name);
+      const shares = (h.match(/data-page-share/g) || []).length;
+      check(shares === (accDel ? 0 : 1), `${name}: Paylaş düğmesi ${shares} (beklenen ${accDel ? 0 : 1})`);
+      if (!accDel) {
+        const can = (/rel="canonical" href="([^"]+)"/.exec(h) || [])[1];
+        check(h.includes(`data-page-share data-url="${can}"`) && !/utm_/.test(h), `${name}: Paylaş adresi canonical değil`);
+        check(/<h1>/.test(h) ? /<div class="title-row"><h1>[\s\S]*?<\/h1><details class="share"/.test(h) : /class="wrap share-end"/.test(h), `${name}: Paylaş düğmesinin yeri yanlış`);
+        for (const k of ["wa.me/", "x.com/intent/post", "facebook.com/sharer", "linkedin.com/sharing", "t.me/share", "bsky.app/intent", "mailto:?subject", "data-share-copy"]) check(h.includes(k), `${name}: Paylaş menüsünde ${k} yok`);
+        check(!/<script[^>]+src="https:\/\/(?!istatistik\.bumba\.tr)/.test(h), `${name}: dış betik yüklenmemeli`);
+      }
     } else {
       // Takvimin giriş sayfaları yıl sayfasına canonical verir
       check(/rel="alternate" hreflang/.test(h) === false && /rel="canonical" href="https:\/\/[^"]+\/\d{4}\/"/.test(h), `${name}: noindex giriş sayfası yıl sayfasına canonical vermeli`);
@@ -361,7 +372,7 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
   const g = fs.readFileSync(path.join(DIST, "gomme/index.html"), "utf8");
   check(/data-eg-lcode/.test(g) && /data-eg-lkind/.test(g) && /line\.js/.test(g), "gömme sayfasında metin satırı üreteci eksik");
   const tk = fs.readFileSync(path.join(DIST, "dunya-saatleri/tokyo/index.html"), "utf8");
-  check(/Nüfus \(kent bölgesi/.test(tk) && /data-share/.test(tk), "Tokyo sayfasında nüfus ya da paylaş düğmesi eksik");
+  check(/Nüfus \(kent bölgesi/.test(tk) && /data-page-share/.test(tk), "Tokyo sayfasında nüfus ya da paylaş düğmesi eksik");
 }
 
 // kontrast (WCAG AA)

@@ -89,7 +89,8 @@
     "lookMs": "Milisaniye",
     "lookNight": "Gece modu (ışıkları kapat)",
     "share": "Paylaş",
-    "shareCopied": "Bağlantı kopyalandı"
+    "shareCopied": "Bağlantı kopyalandı",
+    "shareEmail": "E-posta"
   },
   "client": {
     "format24": "24 saat",

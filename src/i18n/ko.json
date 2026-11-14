@@ -89,7 +89,8 @@
     "lookMs": "밀리초",
     "lookNight": "야간 모드(불 끄기)",
     "share": "공유",
-    "shareCopied": "링크를 복사했습니다"
+    "shareCopied": "링크를 복사했습니다",
+    "shareEmail": "이메일"
   },
   "client": {
     "format24": "24시간",

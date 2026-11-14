@@ -5,7 +5,6 @@ Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"
 ## Sahibe sorular
 - Hesap sunucusunun iki günlük zamanlanmış görevi (`POST /gorev/temizlik`, `POST /gorev/kutlama`): ana altyapı oturumu ilk yayında açsın mı? Sunucunun ilk yayınını bekliyor. (12 Kasım 2026)
 - Profil fotoğrafı iPhone'da: iOS WebP yazamıyor olabilir; (a) uygulamaya WebP kodlayıcı eklemek mi, (b) sunucunun fotoğrafı WebP'ye çevirmesi mi? Cevap bekliyor. (12 Kasım 2026)
-- Standart madde 15 (her içerik sayfasında Paylaş düğmesi): sitede bugün yalnız araçlarda "Bağlantıyı kopyala" var; yapılsın mı, nasıl? Cevap bekliyor. (12 Kasım 2026)
 
 ## Sahipte
 - Site yayını (canlı sırası, bitti): PR bugrabilim/datetimehour#60'ın main'e birleştirilmesi; Coolify kendiliğinden yayımlar. İçinde: sınav takviminin kaldırılması (126 sayfa 301), fotoğraf ışığı `/altin-saat/`, 22 kapsayıcı takvim, Bengalce (`/bn/`), Endonezya ve Hindistan işleri, panchang, dünya şehri araması, dil düzeltmeleri, bakım, üyelik (ayarlarda "Hesap", gizlilikte üyelik bölümü, `/hesap-silme/`, eski hesap adresleri 301). Önce CI yeşil, `npm test`; zamanı sahibin onayıyla. (9 Kasım 2026)

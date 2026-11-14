@@ -89,7 +89,8 @@
     "lookMs": "Millisaniyə",
     "lookNight": "Gecə rejimi (işıqları söndür)",
     "share": "Paylaş",
-    "shareCopied": "Keçid kopyalandı"
+    "shareCopied": "Keçid kopyalandı",
+    "shareEmail": "E-poçt"
   },
   "client": {
     "format24": "24 saat",

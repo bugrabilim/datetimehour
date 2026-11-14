@@ -89,7 +89,8 @@
     "lookMs": "میلی‌ثانیه",
     "lookNight": "حالت شب (خاموش‌کردن چراغ‌ها)",
     "share": "هم‌رسانی",
-    "shareCopied": "پیوند کپی شد"
+    "shareCopied": "پیوند کپی شد",
+    "shareEmail": "ایمیل"
   },
   "client": {
     "format24": "24 ساعته",

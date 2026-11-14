@@ -89,7 +89,8 @@
     "lookMs": "ミリ秒",
     "lookNight": "夜間モード（消灯）",
     "share": "共有",
-    "shareCopied": "リンクをコピーしました"
+    "shareCopied": "リンクをコピーしました",
+    "shareEmail": "メール"
   },
   "client": {
     "format24": "24時間",

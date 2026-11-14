@@ -89,7 +89,8 @@
     "lookMs": "Millisecond",
     "lookNight": "Night mode (patayin ang ilaw)",
     "share": "Ibahagi",
-    "shareCopied": "Nakopya ang link"
+    "shareCopied": "Nakopya ang link",
+    "shareEmail": "Email"
   },
   "client": {
     "format24": "24 oras",

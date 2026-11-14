@@ -89,7 +89,8 @@
     "lookMs": "Milisegundos",
     "lookNight": "Modo nocturno (luces apagadas)",
     "share": "Compartir",
-    "shareCopied": "Enlace copiado"
+    "shareCopied": "Enlace copiado",
+    "shareEmail": "Correo"
   },
   "client": {
     "format24": "24 horas",

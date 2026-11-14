@@ -89,7 +89,8 @@
     "lookMs": "मिलीसेकंड",
     "lookNight": "रात्रि मोड (लाइट बंद)",
     "share": "साझा करें",
-    "shareCopied": "लिंक कॉपी हो गया"
+    "shareCopied": "लिंक कॉपी हो गया",
+    "shareEmail": "ईमेल"
   },
   "client": {
     "format24": "24 घंटे",

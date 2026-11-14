@@ -89,7 +89,8 @@
     "lookMs": "মিলিসেকেন্ড",
     "lookNight": "রাত মোড (আলো নিভিয়ে)",
     "share": "শেয়ার করুন",
-    "shareCopied": "লিংক কপি হয়েছে"
+    "shareCopied": "লিংক কপি হয়েছে",
+    "shareEmail": "ইমেইল"
   },
   "client": {
     "format24": "24 ঘণ্টা",

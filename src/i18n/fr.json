@@ -89,7 +89,8 @@
     "lookMs": "Millisecondes",
     "lookNight": "Mode nuit (lumières éteintes)",
     "share": "Partager",
-    "shareCopied": "Lien copié"
+    "shareCopied": "Lien copié",
+    "shareEmail": "E-mail"
   },
   "client": {
     "format24": "24 heures",
