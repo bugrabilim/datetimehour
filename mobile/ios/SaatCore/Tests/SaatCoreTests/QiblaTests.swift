@@ -31,4 +31,21 @@ final class QiblaTests: XCTestCase {
         let t = try XCTUnwrap(Qibla.time(year: 2026, month: 10, day: 28, latitude: 41.01, longitude: 28.98, utcOffset: 3))
         XCTAssertLessThanOrEqual(abs(Int(jsRound(t * 60)) - (11 * 60 + 9)), 1)
     }
+
+    /// Rashdul Qiblat: sitedeki hesapla aynı; 2026'da Kemenag'ın duyurduğu 28 Mayıs 16.18 ve 15 Temmuz 16.27 WIB (UTC+7)
+    func testRashdul() throws {
+        let file = try Vectors.load("qibla.json", as: QiblaVectors.self)
+        XCTAssertGreaterThanOrEqual(file.rashdul.count, 10)
+        for r in file.rashdul {
+            let got = Qibla.rashdul(year: Int(r[0]))
+            XCTAssertEqual(got[0], r[1], accuracy: 1, "\(r[0]) Mayıs")
+            XCTAssertEqual(got[1], r[2], accuracy: 1, "\(r[0]) Temmuz")
+        }
+        let r26 = Qibla.rashdul(year: 2026).map { Int(jsRound($0 / 60000)) * 60 + 7 * 3600 }
+        let cal = { (s: Int) -> String in
+            let f = DateFormatter(); f.timeZone = TimeZone(identifier: "UTC"); f.dateFormat = "yyyy-MM-dd HH:mm"
+            return f.string(from: Date(timeIntervalSince1970: Double(s)))
+        }
+        XCTAssertEqual(r26.map(cal), ["2026-05-28 16:18", "2026-07-15 16:27"])
+    }
 }

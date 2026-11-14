@@ -38,7 +38,8 @@ struct MorningCard: View {
 
     var body: some View {
         let place = PlaceModel.shared.place
-        let today = CalendarData.shared.events(on: CalendarDay(now)).map(\.name)
+        // Takvimin ülke ve tür seçimiyle (9 Kasım 2026: dini günler yalnız Vakitler açıkken varsayılan)
+        let today = calEvents(CalendarDay(now)).map(\.name)
         NavigationStack {
             List {
                 Section {
@@ -61,7 +62,8 @@ struct MorningCard: View {
                         AppleWeatherMark(compact: true)
                     }
                 }
-                if let next = place.schedule.next(after: now) {
+                // Sıradaki vakit yalnız Vakitler açıkken (9 Kasım 2026, Müslüman olmayanlar raporu A5)
+                if Features.isOn(.prayer), let next = place.schedule.next(after: now) {
                     Section(L("home.item.next")) {
                         Text("\(next.prayer.localizedName) \(place.hm(next.at))").font(.headline)
                     }

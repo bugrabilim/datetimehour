@@ -1,1 +1,1 @@
-azan,qibla,quran,tasbih,ramadan,alarm,stopwatch,world clock,calendar,अज़ान,कुरान
+alarm,clock,widget,timer,stopwatch,world,weather,calendar,sleep,moon,pomodoro,namaz,qibla,ramzan

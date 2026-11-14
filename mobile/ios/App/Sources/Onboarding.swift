@@ -25,12 +25,28 @@ enum Onboarding {
     /// Bunlardan biri değişirse (kişi ayarlardan bir şey değiştirdi) "Kuruluma devam et" kalkar
     private static let settingKeys = [Features.key, Features.barKey, "province", NotificationPrefs.enabledKey, "accent",
                                       "appearance", Atmosphere.key, "h12", "units", "fontScale", "homeItems", "AppleLanguages"]
+    /// Vakitler dil grubuna göre (9 Kasım 2026, sahibin kararları; Müslüman olmayanlar raporu A3): bu dillerde Vakitler ilk
+    /// soru; diğer dillerde tanıtımda vakit/namaz hiç geçmez (soru, özellik turu, ızgara ve metinler nötr). İnanç tahmin
+    /// edilmez: Vakitler Ayarlar › Özellikler'den her dilde açılır. Android ile aynı.
+    static let prayerFirstLangs: Set<String> = ["tr", "ar", "id", "ur", "fa", "bn"]
+    static var prayerFirst: Bool { prayerFirstLangs.contains(AppLocale.code) }
+    /// Namaz geçen metinler gösterilsin mi: bu dillerde ya da kişi Vakitler'i açmışsa
+    static var prayerShown: Bool { prayerFirst || Features.isOn(.prayer) }
+    /// Nötr eşi olan metin (`<anahtar>N`): namaz geçmeyen hâli, Vakitler gösterilmiyorsa
+    static func neutral(_ key: String) -> String { L(prayerShown ? key : key + "N") }
+    /// İzin açıklaması (`perms.<izin>.why`); konum ve bildirimde nötr eşi var
+    static func permWhy(_ id: String) -> String {
+        id == "location" || id == "notify" ? neutral("perms.\(id).why") : L("perms.\(id).why")
+    }
+    /// Sorulabilen bütün özellikler (geçilince yeni kurulumda hepsinin bildirimi kapanır)
+    private static let askable: [AppTab] = [.prayer, .weather, .calendar, .world, .seasons]
     /// Sorulan özellikler, sırayla (alt çubuğa giriş sırası da budur)
-    static let questions: [AppTab] = [.prayer, .weather, .calendar, .world, .seasons]
-    /// Özellik turu ("başka neler var" sorusuna Evet denince)
-    static let tours = ["alarm", "prayer", "weather", "tools", "look", "widgets"]
-    /// Sayfa kimlikleri (CI -onboardPage N: 0 hoş geldiniz, 1 kurulum, 2–6 sorular, 7 özet, 8 "başka neler var", 9–10 ipuçları,
-    /// 11–16 özellik turu, 17 son sayfa "Diğer her şey Tümü'nde")
+    static let questions: [AppTab] = prayerFirst ? askable : askable.filter { $0 != .prayer }
+    /// Özellik turu ("başka neler var" sorusuna Evet denince); Vakitler turu yalnız bu dillerde
+    static let tours = ["alarm"] + (prayerFirst ? ["prayer"] : []) + ["weather", "tools", "look", "widgets"]
+    /// Sayfa kimlikleri (CI -onboardPage N; Vakitler'i soran dillerde: 0 hoş geldiniz, 1 kurulum, 2–6 sorular, 7 özet,
+    /// 8 "başka neler var", 9–10 ipuçları, 11–16 özellik turu, 17 son sayfa "Diğer her şey Tümü'nde"; diğer dillerde 4 soru
+    /// ve 5 tur: 2–5 sorular, 6 özet, 7 "başka neler var", 8–9 ipuçları, 10–14 tur, 15 son)
     static let pages: [String] = ["welcome", "setup"] + questions.map { "q:" + $0.key } +
         ["summary", "more", "tip:swipe", "tip:full"] + tours.map { "tour:" + $0 } + ["tip:all"]
     static let summary = pages.firstIndex(of: "summary")!
@@ -83,7 +99,7 @@ enum Onboarding {
     /// "Hayır" denen bölümün bildirimleri (Android'dekiyle aynı anahtarlar)
     static func notifyKeys(_ t: AppTab) -> [String] {
         switch t {
-        case .prayer: [NotificationPrefs.enabledKey, NotifyFeature.friday.key]
+        case .prayer: [NotificationPrefs.enabledKey, NotifyFeature.friday.key, NotifyFeature.qibla.key, NotifyFeature.fasting.key]
         case .weather: [NotifyFeature.weather.key]
         case .calendar: [NotifyFeature.calendar.key, NotifyFeature.daily.key]
         case .seasons: [NotifyFeature.seasons.key, NotifyFeature.moon.key, NotifyFeature.sun.key, NotifyFeature.sky.key]
@@ -98,7 +114,7 @@ enum Onboarding {
         let isFresh = fresh
         if isFresh {
             Features.save([])
-            for t in questions { for k in notifyKeys(t) { d.set(false, forKey: k) } }
+            for t in askable { for k in notifyKeys(t) { d.set(false, forKey: k) } }
         } else if let b = before {
             d.set(b.0, forKey: Features.key)
             d.set(b.1, forKey: Features.barKey)
@@ -125,6 +141,10 @@ enum Onboarding {
         let d = UserDefaults.standard
         for (t, yes) in answers where !yes {
             for k in notifyKeys(t) { d.set(false, forKey: k) }
+        }
+        // Yeni kurulumda Vakitler kapalı kaldıysa (sorulmayan dillerde de) vakit bildirimleri kapalı başlar
+        if fresh, !Features.isOn(.prayer) {
+            for k in notifyKeys(.prayer) { d.set(false, forKey: k) }
         }
         if fresh, answers[.prayer] == true, d.object(forKey: "homeItems") == nil {
             var layout = HomeLayout(raw: HomeItem.defaultRaw)
@@ -157,6 +177,30 @@ enum Onboarding {
     }
     private static var resumeChecking = false
 }
+
+/// İlk sayfadaki özellik ızgarası (sahibin isteği, 6 Kasım 2026): metin anahtarı, iki tonlu simge ve konu rengi
+/// (8 Kasım 2026, DUOTONE.md), sırası sabit (Android'deki WELCOME_FEATURES). Vakitler'i başta soran dillerin dışında Kıble
+/// yerine Widget'lar (9 Kasım 2026, Müslüman olmayanlar raporu A7).
+private struct OnboardWelcomeFeature: Hashable {
+    let key: String
+    let icon: String
+    let color: Color
+}
+
+private let onboardWelcomeFeatures: [OnboardWelcomeFeature] = [
+    OnboardWelcomeFeature(key: "clock", icon: "clock", color: Theme.terra),
+    OnboardWelcomeFeature(key: "calendar", icon: "calendar", color: Theme.sage),
+    OnboardWelcomeFeature(key: "weather", icon: "sun_cloud", color: Theme.sky),
+    // Vakitler'i soran dillerin dışında namaz yerine Uyku, Kıble yerine Widget'lar (9 Kasım 2026, sahibin kararı)
+    Onboarding.prayerFirst ? OnboardWelcomeFeature(key: "prayer", icon: "mosque", color: Theme.gold)
+        : OnboardWelcomeFeature(key: "sleep", icon: "bed", color: Theme.dusk),
+    OnboardWelcomeFeature(key: "alarm", icon: "alarm", color: Theme.terra),
+    OnboardWelcomeFeature(key: "world", icon: "globe", color: Theme.sky),
+    Onboarding.prayerFirst ? OnboardWelcomeFeature(key: "qibla", icon: "kaaba", color: Theme.gold)
+        : OnboardWelcomeFeature(key: "widgets", icon: "widgets", color: Theme.dusk),
+    OnboardWelcomeFeature(key: "sky", icon: "telescope", color: Theme.dusk),
+    OnboardWelcomeFeature(key: "pomodoro", icon: "tomato", color: Theme.terra),
+]
 
 struct OnboardingView: View {
     let done: () -> Void
@@ -300,7 +344,8 @@ struct OnboardingView: View {
             OnboardTip(key: "onboard.full") { FullscreenArt() }
         } else if pid.hasPrefix("tour:") {
             let name = String(pid.dropFirst(5))
-            OnboardFeature(icons: tourIcons(name), title: L("onboard.tour.\(name).title"), text: L("onboard.tour.\(name).text"))
+            OnboardFeature(icons: tourIcons(name), title: L("onboard.tour.\(name).title"),
+                           text: name == "widgets" ? Onboarding.neutral("onboard.tour.widgets.text") : L("onboard.tour.\(name).text"))
         } else {
             OnboardTip(key: "onboard.all") { AllArt() }
         }
@@ -313,30 +358,68 @@ struct OnboardingView: View {
         case "weather": ["telescope", "sun_cloud", "moon"]
         case "tools": ["metronome", "tomato", "knight"]
         case "look": ["sparkles", "palette", "clock"]
-        default: ["sun_cloud", "clock", "star_crescent"]
+        default: ["sun_cloud", "clock", Onboarding.prayerShown ? "star_crescent" : "moon"]
         }
     }
 
     private var welcome: some View {
+        // Sıkı düzen (8 Kasım 2026, Android'deki gibi): iki tonlu ızgarayla sayfa uzamasın diye saat 104, aralıklar 10
         ScrollView {
-            VStack(spacing: 16) {
+            VStack(spacing: 10) {
                 TimelineView(.periodic(from: .now, by: 1)) { ctx in
-                    AnalogClock(date: ctx.date, showSeconds: true).frame(width: 200, height: 200)
+                    AnalogClock(date: ctx.date, showSeconds: true).frame(width: 104, height: 104)
                 }
                 .accessibilityHidden(true)
                 Text(L("app.displayName")).font(.largeTitle.weight(.bold)).foregroundStyle(Theme.text)
                     .multilineTextAlignment(.center)
-                Text(L("onboard.welcome.title")).font(.title3.weight(.semibold)).foregroundStyle(Theme.accent)
+                // Sahibin metni (6 Kasım 2026): vurgulu iki satırlık başlık, ne yaptık, özellikler, "Neden ücretsiz?"
+                Text(L("onboard.welcome.title"))
+                    .font(AppFonts.serif ? .custom("Literata-SemiBold", size: 26, relativeTo: .title)
+                                         : .system(size: 25, weight: .semibold))
+                    .foregroundStyle(Theme.accent)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
                 Text(L("onboard.welcome.text"))
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(3)
+                    .foregroundStyle(Theme.muted)
+                    .fixedSize(horizontal: false, vertical: true)
+                // Kareler arası 6, karede simge 36/21 ve yazıyla arası 4, dikey iç boşluk 8
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 3), spacing: 6) {
+                    ForEach(onboardWelcomeFeatures, id: \.key) { f in
+                        VStack(spacing: 4) {
+                            DuoChip(name: f.icon, color: f.color, box: 36, glyph: 21)
+                            Text(f.key == "widgets" ? L("widgets.gallery")
+                                 : f.key == "sleep" ? L("sleep.title") : L("onboard.welcome.f.\(f.key)"))
+                                .font(.footnote.weight(.medium))
+                                .foregroundStyle(Theme.text)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                                .minimumScaleFactor(0.8)
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 72)
+                        .card(padding: 8)
+                    }
+                }
+                Text(L("onboard.welcome.whyTitle"))
+                    .font(AppFonts.section)
+                    .foregroundStyle(Theme.text)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 4)
+                    .accessibilityAddTraits(.isHeader)
+                Text(L("onboard.welcome.why"))
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(3)
+                    .foregroundStyle(Theme.muted)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text(L(Onboarding.questions.count == 4 ? "onboard.welcome.hint4" : "onboard.welcome.hint"))
+                    .font(.subheadline)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Theme.muted)
                     .fixedSize(horizontal: false, vertical: true)
-                Text(L("onboard.welcome.hint"))
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(Theme.text)
-                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.top, 2)
             }
-            .padding(.horizontal, 28)
+            .padding(.horizontal, 24)
             .padding(.vertical, 12)
             .frame(maxWidth: .infinity)
         }
@@ -361,7 +444,7 @@ struct OnboardingView: View {
                         Text(L("onboard.summary.on")).font(.footnote.weight(.semibold)).foregroundStyle(Theme.muted)
                         ForEach(on, id: \.self) { t in
                             HStack(spacing: 12) {
-                                LineIcon(name: LineIconMap.tab(t), size: 28)
+                                DuoChip(name: LineIconMap.tab(t), color: LineIconMap.tabColor(t))
                                 Text(t.title).font(.headline).foregroundStyle(Theme.text)
                                 Spacer()
                                 Image(systemName: "checkmark.circle.fill").foregroundStyle(Theme.accent)
@@ -386,12 +469,12 @@ struct OnboardingView: View {
                 TrustCard()
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 10) {
-                        LineIcon(name: "pin", size: 26)
+                        DuoChip(name: "pin", color: Theme.sage)
                         Text(L("settings.location")).font(.headline).foregroundStyle(Theme.text)
                         Spacer()
                         PlacePicker(font: .body)
                     }
-                    Text(L("perms.location.why")).font(.footnote).foregroundStyle(Theme.muted)
+                    Text(Onboarding.permWhy("location")).font(.footnote).foregroundStyle(Theme.muted)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 .card(padding: 14)
@@ -403,13 +486,13 @@ struct OnboardingView: View {
                 } label: {
                     VStack(alignment: .leading, spacing: 6) {
                         HStack(spacing: 10) {
-                            LineIcon(name: "bell", size: 26)
+                            DuoChip(name: "bell", color: Theme.sage)
                             Text(L(notifyOn ? "onboard.notifyOn" : "onboard.notify")).font(.headline)
                                 .foregroundStyle(notifyOn ? Theme.accent : Theme.text)
                             Spacer()
                             if notifyOn { Image(systemName: "checkmark.circle.fill").foregroundStyle(Theme.accent) }
                         }
-                        Text(L("perms.notify.why")).font(.footnote).foregroundStyle(Theme.muted)
+                        Text(Onboarding.permWhy("notify")).font(.footnote).foregroundStyle(Theme.muted)
                             .multilineTextAlignment(.leading)
                             .fixedSize(horizontal: false, vertical: true)
                     }
@@ -501,12 +584,12 @@ struct TrustCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 10) {
-                LineIcon(name: "heart", size: 30)
+                DuoChip(name: "privacy", color: Theme.sage)
                 Text(L("onboard.trust.title")).font(.headline).foregroundStyle(Theme.text)
             }
             Text(L("onboard.trust.text")).font(.subheadline).foregroundStyle(Theme.text)
                 .fixedSize(horizontal: false, vertical: true)
-            Text(L("onboard.trust.services")).font(.footnote).foregroundStyle(Theme.muted)
+            Text(Onboarding.neutral("onboard.trust.services")).font(.footnote).foregroundStyle(Theme.muted)
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -528,7 +611,7 @@ private struct OnboardTip<Art: View>: View {
                     .accessibilityHidden(true)
                 Text(L("\(key).title")).font(.title2.weight(.bold)).foregroundStyle(Theme.text)
                     .multilineTextAlignment(.center)
-                Text(L("\(key).text")).font(.body).foregroundStyle(Theme.muted)
+                Text(key == "onboard.all" ? Onboarding.neutral("\(key).text") : L("\(key).text")).font(.body).foregroundStyle(Theme.muted)
                     .multilineTextAlignment(.center)
                     .lineSpacing(3)
                     .fixedSize(horizontal: false, vertical: true)
@@ -643,8 +726,7 @@ private struct FullscreenArt: View {
 /// Tümü: arama, renkli araç kutuları, alt çubukta vurgulanan "Tümü" ve uzun basılan kutunun halkası
 private struct AllArt: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.colorScheme) private var scheme
-    // 3D simgeler (4 Kasım 2026, sahibin seçimi)
+    // İki tonlu simgeler (8 Kasım 2026, DUOTONE.md: 34/20, daire)
     private let tiles: [(String, Color)] = [
         ("alarm", Theme.terra), ("hourglass", Theme.terra), ("calendar", Theme.sage),
         ("sun_cloud", Theme.sky), ("compass", Theme.gold), ("book", Theme.gold),
@@ -676,20 +758,17 @@ private struct AllArt: View {
                 .padding(.top, 24)
                 .overlay(alignment: .bottom) {
                     HStack {
-                        Image(systemName: "clock")
+                        DuoIcon(name: "clock", size: 15, color: Theme.muted)
                         Spacer()
-                        Image(systemName: "moon")
+                        DuoIcon(name: "mosque", size: 15, color: Theme.muted)
                         Spacer()
-                        Image(systemName: "sun.max")
+                        DuoIcon(name: "sun_cloud", size: 15, color: Theme.muted)
                         Spacer()
-                        Image(systemName: "square.grid.3x3.fill")
-                            .foregroundStyle(Theme.accent)
+                        DuoIcon(name: "grid", size: 15, color: Theme.accent)
                             .padding(.horizontal, 7)
                             .padding(.vertical, 3)
                             .background(Theme.accent.opacity(0.12 + 0.2 * k), in: Capsule())
                     }
-                    .font(.system(size: 13))
-                    .foregroundStyle(Theme.muted)
                     .padding(.horizontal, 12)
                     .frame(height: 34)
                     .background(Theme.surface2)
@@ -699,10 +778,7 @@ private struct AllArt: View {
     }
 
     private func tile(_ t: (String, Color), pressed: Bool, k: CGFloat) -> some View {
-        RoundedRectangle(cornerRadius: 11)
-            .fill(t.1.opacity(scheme == .dark ? 0.22 : 0.14))
-            .frame(width: 34, height: 34)
-            .overlay(Icon3D(name: t.0, size: 22))
-            .overlay(RoundedRectangle(cornerRadius: 11).strokeBorder(Theme.accent.opacity(pressed ? k : 0), lineWidth: 1 + 2 * k))
+        DuoChip(name: t.0, color: t.1, box: 34, glyph: 20)
+            .overlay(Circle().strokeBorder(Theme.accent.opacity(pressed ? k : 0), lineWidth: 1 + 2 * k))
     }
 }

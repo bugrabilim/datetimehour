@@ -45,4 +45,21 @@ class QiblaTest {
         val t = assertNotNull(Qibla.time(2026, 10, 28, 41.01, 28.98, 3.0))
         assertTrue(abs(jsRound(t * 60).toInt() - (11 * 60 + 9)) <= 1)
     }
+
+    /** Rashdul Qiblat: sitedeki hesapla aynı; 2026'da Kemenag'ın duyurduğu 28 Mayıs 16.18 ve 15 Temmuz 16.27 WIB (UTC+7) */
+    @Test
+    fun rashdul() {
+        val arr = Vectors.load("qibla.json").getJSONArray("rashdul")
+        assertTrue(arr.length() >= 10)
+        for (i in 0 until arr.length()) {
+            val r = arr.getJSONArray(i)
+            val got = Qibla.rashdul(r.getInt(0))
+            assertEquals(r.getLong(1), got[0], "${r.getInt(0)} Mayıs")
+            assertEquals(r.getLong(2), got[1], "${r.getInt(0)} Temmuz")
+        }
+        val wib = java.time.ZoneOffset.ofHours(7)
+        val f = java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+        val got = Qibla.rashdul(2026).map { java.time.Instant.ofEpochSecond(jsRound(it / 60000.0).toLong() * 60).atOffset(wib).format(f) }
+        assertEquals(listOf("2026-05-28 16:18", "2026-07-15 16:27"), got)
+    }
 }

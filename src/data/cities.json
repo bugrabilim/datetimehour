@@ -97,6 +97,11 @@
       "slug": "istanbul",
       "name": "इस्तांबुल",
       "country": "तुर्किये"
+    },
+    "bn": {
+      "slug": "istanbul",
+      "name": "ইস্তাম্বুল",
+      "country": "তুরস্ক"
     }
   },
   {
@@ -197,6 +202,11 @@
       "slug": "ankara",
       "name": "अंकारा",
       "country": "तुर्किये"
+    },
+    "bn": {
+      "slug": "ankara",
+      "name": "আঙ্কারা",
+      "country": "তুরস্ক"
     }
   },
   {
@@ -297,6 +307,11 @@
       "slug": "izmir",
       "name": "इज़मिर",
       "country": "तुर्किये"
+    },
+    "bn": {
+      "slug": "izmir",
+      "name": "ইজমির",
+      "country": "তুরস্ক"
     }
   },
   {
@@ -397,6 +412,11 @@
       "slug": "london",
       "name": "लंदन",
       "country": "यूनाइटेड किंगडम"
+    },
+    "bn": {
+      "slug": "london",
+      "name": "লন্ডন",
+      "country": "যুক্তরাজ্য"
     }
   },
   {
@@ -497,6 +517,11 @@
       "slug": "paris",
       "name": "पेरिस",
       "country": "फ़्रांस"
+    },
+    "bn": {
+      "slug": "paris",
+      "name": "প্যারিস",
+      "country": "ফ্রান্স"
     }
   },
   {
@@ -597,6 +622,11 @@
       "slug": "berlin",
       "name": "बर्लिन",
       "country": "जर्मनी"
+    },
+    "bn": {
+      "slug": "berlin",
+      "name": "বার্লিন",
+      "country": "জার্মানি"
     }
   },
   {
@@ -697,6 +727,11 @@
       "slug": "moscow",
       "name": "मॉस्को",
       "country": "रूस"
+    },
+    "bn": {
+      "slug": "moscow",
+      "name": "মস্কো",
+      "country": "রাশিয়া"
     }
   },
   {
@@ -797,6 +832,11 @@
       "slug": "dubai",
       "name": "दुबई",
       "country": "संयुक्त अरब अमीरात"
+    },
+    "bn": {
+      "slug": "dubai",
+      "name": "দুবাই",
+      "country": "সংযুক্ত আরব আমিরাত"
     }
   },
   {
@@ -897,6 +937,11 @@
       "slug": "baku",
       "name": "बाकू",
       "country": "अज़रबैजान"
+    },
+    "bn": {
+      "slug": "baku",
+      "name": "বাকু",
+      "country": "আজারবাইজান"
     }
   },
   {
@@ -997,6 +1042,11 @@
       "slug": "cairo",
       "name": "काहिरा",
       "country": "मिस्र"
+    },
+    "bn": {
+      "slug": "cairo",
+      "name": "কায়রো",
+      "country": "মিশর"
     }
   },
   {
@@ -1097,6 +1147,11 @@
       "slug": "new-york",
       "name": "न्यूयॉर्क",
       "country": "संयुक्त राज्य अमेरिका"
+    },
+    "bn": {
+      "slug": "new-york",
+      "name": "নিউ ইয়র্ক",
+      "country": "যুক্তরাষ্ট্র"
     }
   },
   {
@@ -1197,6 +1252,11 @@
       "slug": "los-angeles",
       "name": "लॉस एंजेलिस",
       "country": "संयुक्त राज्य अमेरिका"
+    },
+    "bn": {
+      "slug": "los-angeles",
+      "name": "লস অ্যাঞ্জেলেস",
+      "country": "যুক্তরাষ্ট্র"
     }
   },
   {
@@ -1297,6 +1357,11 @@
       "slug": "tokyo",
       "name": "टोक्यो",
       "country": "जापान"
+    },
+    "bn": {
+      "slug": "tokyo",
+      "name": "টোকিও",
+      "country": "জাপান"
     }
   },
   {
@@ -1397,6 +1462,11 @@
       "slug": "beijing",
       "name": "बीजिंग",
       "country": "चीन"
+    },
+    "bn": {
+      "slug": "beijing",
+      "name": "বেইজিং",
+      "country": "চীন"
     }
   },
   {
@@ -1497,6 +1567,11 @@
       "slug": "singapore",
       "name": "सिंगापुर",
       "country": "सिंगापुर"
+    },
+    "bn": {
+      "slug": "singapore",
+      "name": "সিঙ্গাপুর",
+      "country": "সিঙ্গাপুর"
     }
   },
   {
@@ -1597,6 +1672,11 @@
       "slug": "mumbai",
       "name": "मुंबई",
       "country": "भारत"
+    },
+    "bn": {
+      "slug": "mumbai",
+      "name": "মুম্বাই",
+      "country": "ভারত"
     }
   },
   {
@@ -1697,6 +1777,11 @@
       "slug": "sydney",
       "name": "सिडनी",
       "country": "ऑस्ट्रेलिया"
+    },
+    "bn": {
+      "slug": "sydney",
+      "name": "সিডনি",
+      "country": "অস্ট্রেলিয়া"
     }
   },
   {
@@ -1797,6 +1882,11 @@
       "slug": "riyadh",
       "name": "रियाद",
       "country": "सऊदी अरब"
+    },
+    "bn": {
+      "slug": "riyadh",
+      "name": "রিয়াদ",
+      "country": "সৌদি আরব"
     }
   },
   {
@@ -1897,6 +1987,11 @@
       "slug": "doha",
       "name": "दोहा",
       "country": "क़तर"
+    },
+    "bn": {
+      "slug": "doha",
+      "name": "দোহা",
+      "country": "কাতার"
     }
   },
   {
@@ -1997,6 +2092,11 @@
       "slug": "amsterdam",
       "name": "एम्स्टर्डम",
       "country": "नीदरलैंड"
+    },
+    "bn": {
+      "slug": "amsterdam",
+      "name": "আমস্টারডাম",
+      "country": "নেদারল্যান্ডস"
     }
   },
   {
@@ -2097,6 +2197,11 @@
       "slug": "rome",
       "name": "रोम",
       "country": "इटली"
+    },
+    "bn": {
+      "slug": "rome",
+      "name": "রোম",
+      "country": "ইতালি"
     }
   },
   {
@@ -2197,6 +2302,11 @@
       "slug": "madrid",
       "name": "मैड्रिड",
       "country": "स्पेन"
+    },
+    "bn": {
+      "slug": "madrid",
+      "name": "মাদ্রিদ",
+      "country": "স্পেন"
     }
   },
   {
@@ -2297,6 +2407,11 @@
       "slug": "athens",
       "name": "एथेंस",
       "country": "यूनान"
+    },
+    "bn": {
+      "slug": "athens",
+      "name": "এথেন্স",
+      "country": "গ্রিস"
     }
   },
   {
@@ -2397,6 +2512,11 @@
       "slug": "vienna",
       "name": "वियना",
       "country": "ऑस्ट्रिया"
+    },
+    "bn": {
+      "slug": "vienna",
+      "name": "ভিয়েনা",
+      "country": "অস্ট্রিয়া"
     }
   },
   {
@@ -2497,6 +2617,11 @@
       "slug": "kyiv",
       "name": "कीव",
       "country": "यूक्रेन"
+    },
+    "bn": {
+      "slug": "kyiv",
+      "name": "কিয়েভ",
+      "country": "ইউক্রেন"
     }
   },
   {
@@ -2597,6 +2722,11 @@
       "slug": "tehran",
       "name": "तेहरान",
       "country": "ईरान"
+    },
+    "bn": {
+      "slug": "tehran",
+      "name": "তেহরান",
+      "country": "ইরান"
     }
   },
   {
@@ -2697,6 +2827,11 @@
       "slug": "hong-kong",
       "name": "हांगकांग",
       "country": "चीन (हांगकांग)"
+    },
+    "bn": {
+      "slug": "hong-kong",
+      "name": "হংকং",
+      "country": "চীন (হংকং)"
     }
   },
   {
@@ -2797,6 +2932,11 @@
       "slug": "bangkok",
       "name": "बैंकॉक",
       "country": "थाईलैंड"
+    },
+    "bn": {
+      "slug": "bangkok",
+      "name": "ব্যাংকক",
+      "country": "থাইল্যান্ড"
     }
   },
   {
@@ -2897,6 +3037,11 @@
       "slug": "toronto",
       "name": "टोरंटो",
       "country": "कनाडा"
+    },
+    "bn": {
+      "slug": "toronto",
+      "name": "টরন্টো",
+      "country": "কানাডা"
     }
   },
   {
@@ -2997,6 +3142,11 @@
       "slug": "sao-paulo",
       "name": "साओ पाउलो",
       "country": "ब्राज़ील"
+    },
+    "bn": {
+      "slug": "sao-paulo",
+      "name": "সাও পাওলো",
+      "country": "ব্রাজিল"
     }
   },
   {
@@ -3097,6 +3247,11 @@
       "slug": "johannesburg",
       "name": "जोहान्सबर्ग",
       "country": "दक्षिण अफ़्रीका"
+    },
+    "bn": {
+      "slug": "johannesburg",
+      "name": "জোহানেসবার্গ",
+      "country": "দক্ষিণ আফ্রিকা"
     }
   }
 ]

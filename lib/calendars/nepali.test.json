@@ -1,0 +1,102 @@
+{
+ "source": [
+  "https://my.nepalembassy.gov.np/pages/public-holidays--2083---2026-27-/ (Nepal'in Kuala Lumpur Büyükelçiliği, 2083 BS tatilleri: BS ve Gregoryen tarih yan yana; 15 tarihin 15'i tutuyor)",
+  "https://www.npmjs.com/package/nepali-date-converter (MIT) ve https://www.npmjs.com/package/bikram-sambat (Apache-2.0): ay uzunluğu tabloları, 2075–2090 BS birebir aynı",
+  "https://english.khabarhub.com/?p=515986 (Maghe Sankranti 15.01.2026 kutlanıyor; Magh 1, 2082)"
+ ],
+ "note": "2082 BS resmî günleri (Cumhuriyet Günü Jestha 15 = 29.05.2025, Anayasa Günü Asoj 3 = 19.09.2025, Demokrasi Günü Falgun 7 = 19.02.2026) tabloyla aynı. Maghe Sankranti 2026'yı 14 Ocak veren kaynaklar genel Makar Sankranti tarihini yazıyor (absent). 2084 BS ve sonrası tahmin tablosudur.",
+ "cases": [
+  {
+   "date": "2025-04-14",
+   "key": "newYear"
+  },
+  {
+   "date": "2025-05-29",
+   "key": "republicDay"
+  },
+  {
+   "date": "2025-09-19",
+   "key": "constitutionDay"
+  },
+  {
+   "date": "2026-01-15",
+   "key": "maghe"
+  },
+  {
+   "date": "2026-02-19",
+   "key": "democracyDay"
+  },
+  {
+   "date": "2026-04-14",
+   "key": "newYear"
+  }
+ ],
+ "absent": [
+  {
+   "date": "2026-01-14",
+   "key": "maghe"
+  }
+ ],
+ "months": [
+  {
+   "date": "2025-10-02",
+   "y": 2082,
+   "m": 6,
+   "d": 16
+  },
+  {
+   "date": "2026-04-14",
+   "y": 2083,
+   "m": 1,
+   "d": 1
+  },
+  {
+   "date": "2026-06-17",
+   "y": 2083,
+   "m": 3,
+   "d": 3
+  },
+  {
+   "date": "2026-08-31",
+   "y": 2083,
+   "m": 5,
+   "d": 15
+  },
+  {
+   "date": "2026-09-16",
+   "y": 2083,
+   "m": 5,
+   "d": 31
+  },
+  {
+   "date": "2026-10-20",
+   "y": 2083,
+   "m": 7,
+   "d": 3
+  },
+  {
+   "date": "2026-11-09",
+   "y": 2083,
+   "m": 7,
+   "d": 23
+  },
+  {
+   "date": "2026-12-25",
+   "y": 2083,
+   "m": 9,
+   "d": 10
+  },
+  {
+   "date": "2027-01-22",
+   "y": 2083,
+   "m": 10,
+   "d": 8
+  },
+  {
+   "date": "2027-03-22",
+   "y": 2083,
+   "m": 12,
+   "d": 8
+  }
+ ]
+}

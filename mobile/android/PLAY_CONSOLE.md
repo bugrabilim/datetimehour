@@ -173,8 +173,17 @@ Sitedeki gizlilik sayfasının "Android uygulaması" bölümüyle aynı olmalı:
   kullanıcı adına yaptığı yedektir, geliştiriciye gelmez (Play'in tanımında "toplama" sayılmaz).
 - Alarm kapatma görevindeki QR/barkod okuma Google kod tarayıcısıyla (Play hizmetleri) yapılır: uygulama kamera izni
   istemez, görüntü uygulamaya gelmez, yalnız okunan değer gelir ve telefonda saklanır ("toplanmaz").
+- **Hesap (isteğe bağlı; 10 Kasım 2026, üyelik aşama 1):** Ayarlar › Hesap'tan e-posta + şifreyle açılırsa toplanır:
+  **E-posta adresi** ve **Ad** (görünen ad, isteğe bağlı) ile **Kullanıcı kimlikleri** (hesap kimliği); amaç
+  "Hesap yönetimi" ve "Uygulama işlevi", paylaşılmaz (Resend ve sunucu barındırma hizmet sağlayıcısıdır, Play'in
+  tanımında "paylaşım" sayılmaz), isteğe bağlı, kimlikle bağlantılı. Şifre yalnız özet (hash) olarak saklanır.
+  Oturum sırasında IP adresi ve cihaz bilgisi (User-Agent) güvenlik için oturum kaydında tutulur, oturum kapanınca silinir.
 - Veri aktarımı şifreli (HTTPS). Silme: uygulama silinince yerel veriler silinir; e-posta listesinden çıkış
-  e-postadaki bağlantıyla.
+  e-postadaki bağlantıyla; hesap uygulamada Ayarlar › Hesap › Hesabı sil ile hemen silinir.
+- **Hesap silme adresi** (Play Console › Uygulama içeriği › Veri güvenliği › "Hesap silme" alanı; hesap açılabilen
+  uygulamalarda zorunlu): https://time.bumba.tr/en/account-deletion/ (Türkçe: https://time.bumba.tr/hesap-silme/).
+  Sayfa uygulamayı kurmadan silme yolunu da anlatır (bilgi@bumbagroup.com'a hesabın e-postasından yazmak).
+  Bu alan ve hesap beyanı, hesap ekranları olan sürümle birlikte doldurulur.
 - Reklam yok, izleme yok, istatistik yok.
 
 Gizlilik politikası adresi: https://time.bumba.tr/gizlilik/ (İngilizce: https://time.bumba.tr/en/privacy/).

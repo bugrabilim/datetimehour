@@ -153,17 +153,28 @@ fun DayDetailDialog(d: WeatherData, day: WeatherData.Day, onClose: () -> Unit) {
         title = { Text(Fmt.longDate(day.date), color = Theme.c.text) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                Text(WeatherCode.of(day.code).icon() + "  " + WeatherCode.of(day.code).label, color = Theme.c.text, fontSize = 16.sp)
+                // Hava verisi 3D simgeyle (8 Kasım 2026; metindeki emoji yerine)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    WeatherIcon(WeatherCode.of(day.code), true, 24.dp)
+                    Spacer(Modifier.width(8.dp))
+                    Text(WeatherCode.of(day.code).label, color = Theme.c.text, fontSize = 16.sp)
+                }
                 Ltr { Text("↑ ${Units.temp(day.max)}   ↓ ${Units.temp(day.min)}", color = Theme.c.text, fontSize = 15.sp) }
                 if (dayHours.isNotEmpty()) {
                     val c = dayHours.groupingBy { it.code }.eachCount().maxBy { it.value }.key
-                    Text(L("wx.day") + ": " + WeatherCode.of(c).icon(true) + " " + WeatherCode.of(c).label + " · " + Units.temp(dayHours.maxOf { it.temp }),
-                        color = Theme.c.muted, fontSize = 14.sp)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(L("wx.day") + ": ", color = Theme.c.muted, fontSize = 14.sp)
+                        WeatherIcon(WeatherCode.of(c), true, 18.dp)
+                        Text(" " + WeatherCode.of(c).label + " · " + Units.temp(dayHours.maxOf { it.temp }), color = Theme.c.muted, fontSize = 14.sp)
+                    }
                 }
                 if (nightHours.isNotEmpty()) {
                     val c = nightHours.groupingBy { it.code }.eachCount().maxBy { it.value }.key
-                    Text(L("wx.night") + ": " + WeatherCode.of(c).icon(false) + " " + WeatherCode.of(c).label + " · " + Units.temp(nightHours.minOf { it.temp }),
-                        color = Theme.c.muted, fontSize = 14.sp)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(L("wx.night") + ": ", color = Theme.c.muted, fontSize = 14.sp)
+                        WeatherIcon(WeatherCode.of(c), false, 18.dp)
+                        Text(" " + WeatherCode.of(c).label + " · " + Units.temp(nightHours.minOf { it.temp }), color = Theme.c.muted, fontSize = 14.sp)
+                    }
                 }
                 Text(L("weather.rainChanceShort") + ": " + Fmt.percent(day.rain) + " · " + L("weather.precipitation") + ": " + Units.precip(day.precip),
                     color = Theme.c.muted, fontSize = 14.sp)

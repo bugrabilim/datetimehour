@@ -1,0 +1,48 @@
+{
+ "source": [
+  "https://en.wikipedia.org/wiki/Zoroastrian_calendar (Şehinşahi 1370 YZ yılbaşı 21.08.2000; Kadimi Şehinşahi'den 30 gün önce)",
+  "https://www.staffnews.in/2024/07/restricted-holidays-year-2025.html, /2025/07/list-of-holidays-2026-restricted-holidays.html, /2026/07/list-of-restricted-holidays-for-the-year-2027.html (Hindistan hükümeti DoP&T kısıtlı tatil listeleri: Parsi New Year / Navroz 2025, 2026 ve 2027'de 15 Ağustos)",
+  "https://www.reonline.org.uk/festival_event/khordad-sal-3 (Khordad Sal 2027: Şehinşahi 20 Ağustos, Kadimi 21 Temmuz, Fasli/İran 26 Mart)"
+ ],
+ "note": "Kadimi yılbaşı 16.07.2027, Kadimi Khordad Sal'dan (6. gün, 21.07.2027) çıkarılır. Şehinşahi yılbaşı 2028'de 14 Ağustos'a kayar (artık gün yok).",
+ "cases": [
+  {
+   "date": "2025-08-15",
+   "key": "navroz"
+  },
+  {
+   "date": "2026-08-15",
+   "key": "navroz"
+  },
+  {
+   "date": "2027-08-15",
+   "key": "navroz"
+  },
+  {
+   "date": "2027-08-20",
+   "key": "khordadSal"
+  },
+  {
+   "date": "2027-07-16",
+   "key": "kadmiNavroz"
+  },
+  {
+   "date": "2026-03-21",
+   "key": "jamshediNavroz"
+  }
+ ],
+ "months": [
+  {
+   "date": "2025-08-15",
+   "y": 1395,
+   "m": 1,
+   "d": 1
+  },
+  {
+   "date": "2027-08-20",
+   "y": 1397,
+   "m": 1,
+   "d": 6
+  }
+ ]
+}

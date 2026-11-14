@@ -81,6 +81,17 @@
       tNote.textContent = atKaaba ? X.atKaaba : X.noTime;
     }
     if (atKaaba) statusEl.textContent = X.atKaaba;
+    // Rashdul Qiblat (10 Kasım 2026): Güneş'in Kâbe'nin üstünden geçtiği sıradaki an, yerin saatiyle (dakikaya yuvarlı);
+    // o anda seçili yerde Güneş ufkun altındaysa not değişir
+    var rqRow = q("[data-qb-rq-row]");
+    if (rqRow && P.rashdulQiblat) {
+      rqRow.hidden = atKaaba;
+      var next = P.rashdulQiblat(p.year).concat(P.rashdulQiblat(p.year + 1)).filter(function (ms) { return ms > now - 3600000; })[0];
+      var at = Math.round(next / 60000) * 60000, rp = S.parts(new Date(at), tz), u = new Date(at);
+      q("[data-qb-rq]").textContent = S.longDate(rp) + " " + hm(at, tz);
+      var sun = P.sunAltAz(u.getUTCFullYear(), u.getUTCMonth() + 1, u.getUTCDate(), u.getUTCHours() + u.getUTCMinutes() / 60, pl.lat, pl.lon);
+      q("[data-qb-rq-note]").textContent = sun.alt > 0 ? X.rashdulNote : X.rashdulNight;
+    }
     var lat = pl.lat.toFixed(4), lon = pl.lon.toFixed(4), qq = encodeURIComponent(X.mapsQuery);
     q("[data-qb-google]").href = "https://www.google.com/maps/search/" + qq + "/@" + lat + "," + lon + ",15z";
     q("[data-qb-apple]").href = "https://maps.apple.com/?q=" + qq + "&sll=" + lat + "," + lon + "&z=15";

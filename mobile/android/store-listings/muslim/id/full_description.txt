@@ -1,0 +1,37 @@
+Jam & Tanggal menyatukan jadwal sholat, arah kiblat, jam, kalender, cuaca, dan alat sehari-hari dalam satu aplikasi yang rapi. Tanpa akun, tanpa iklan, dan tanpa pelacakan.
+
+Jadwal sholat dan ibadah
+• Jadwal sholat (salat) untuk di mana saja, dengan 14 metode perhitungan (Diyanet, MWL, ISNA, Umm al-Qura, Karachi, Singapura, dan lainnya) serta Asar Hanafi
+• Seluruh 81 provinsi dan 973 distrik di Turki
+• Notifikasi tepat waktu atau lebih awal: kalimat pertama adzan, nada singkat, atau pengumuman suara
+• Jika Anda mau, ponsel beralih ke mode getar atau Jangan Ganggu saat waktu sholat
+• Jadwal imsakiyah Ramadan yang bisa dibagikan sebagai gambar, dengan hitung mundur berbuka dan sahur
+• Kompas kiblat dan masjid terdekat di peta
+• Al-Qur'an berbahasa Arab, doa, Asmaul Husna, hadis, panduan sholat, penghitung zikir, pencatat sholat dan puasa, serta kalkulator zakat
+• Kalender Hijriah dan pengonversi tanggal, hari besar Islam dan malam-malam mulia, kartu ucapan untuk Jumat, Ramadan, Idul Fitri, dan Idul Adha
+
+Disiapkan untuk Anda
+• Lima pertanyaan singkat saat pertama dibuka menyusun bilah tab Anda. Bagian yang tidak Anda pakai tetap tersembunyi dan tidak mengirim notifikasi
+
+Jam dan widget
+• 21 model jam dan 25 muka jam analog; layar penuh dan mode malam merah redup
+• Widget layar utama: sholat berikutnya, jadwal hari ini, tanggal Hijriah, jam, jam dunia, cuaca, dan fase bulan
+• Aplikasi Wear OS dengan tile dan komplikasi, aplikasi Android TV, screensaver, jam mengambang, dan tile Setelan Cepat
+
+Kalender dan cuaca
+• Hari libur resmi Turki dan 32 negara lain, berdampingan dengan kalender di ponsel Anda (termasuk Google Kalender)
+• Prakiraan per jam dan 14 hari, kualitas udara dan serbuk sari, serta layar yang berubah mengikuti cuaca
+
+Alarm, tidur, dan fokus
+• Alarm yang berbunyi di layar kunci, dengan volume yang naik perlahan dan tugas untuk mematikannya: hitungan, mengguncang ponsel, atau memindai kode
+• Rencana tidur, suara pengantar tidur, dan alarm pintar
+• Pomodoro, pengatur waktu belajar, latihan interval, dan pemblokiran aplikasi saat fokus
+
+Alat
+• Timer, stopwatch, jam catur, metronom, jam berbicara, perencana rapat, kalkulator jam dan tanggal
+• Musim, kalender bulan, gerhana, dan langit malam
+
+Privasi
+Tanpa akun, tanpa iklan, tanpa pelacakan. Jadwal sholat dihitung di ponsel Anda. Hanya untuk cuaca dan masjid terdekat, lokasi perkiraan dikirim ke layanan terkait (Open-Meteo, OpenStreetMap), tidak pernah identitas Anda. Lihat setiap izin di Pengaturan › Izin.
+
+Dalam 19 bahasa. Jam & Tanggal adalah produk Bumba Life. Web: time.bumba.tr

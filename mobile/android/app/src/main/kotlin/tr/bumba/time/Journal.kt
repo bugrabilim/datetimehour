@@ -30,7 +30,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
@@ -54,7 +53,12 @@ object Journal {
     /** Nottaki etiketler (2. analiz #50): "#kahve", "#spor" (harf ve rakam; küçük harfe çevrilir) */
     fun tags(note: String): Set<String> =
         Regex("#([\\p{L}\\p{N}_]{1,30})").findAll(note).map { it.groupValues[1].lowercase(Strings.locale) }.toSet()
-    val moods = listOf("😞", "🙁", "😐", "🙂", "😄")
+
+    /** Ruh hâli yüzünün rengi (DUOTONE.md): 1 kiremit, 2 altın, 3 akşam moru, 4 gök mavisi, 5 adaçayı */
+    @Composable
+    fun moodColor(v: Int): androidx.compose.ui.graphics.Color = when (v) {
+        1 -> Theme.c.terra; 2 -> Theme.c.gold; 3 -> Theme.c.dusk; 4 -> Theme.c.sky; else -> Theme.c.sage
+    }
 
     fun load(): List<JournalEntry> = runCatching {
         val a = org.json.JSONArray(Prefs.store.getString(KEY, "[]"))
@@ -79,13 +83,13 @@ fun JournalQuick(entry: JournalEntry, showSleep: Boolean = true, onChange: (Jour
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(L("journal.mood"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
         Row(Modifier.fillMaxWidth()) {
-            // Ruh hâli kendi çizgi yüzlerimizle (2. analiz #97)
+            // Ruh hâli iki tonlu yüzlerle (8 Kasım 2026); bir yüz seçiliyse diğerleri soluk renkte
             for (v in 1..5) androidx.compose.foundation.layout.Box(
-                Modifier.weight(1f).alpha(if (entry.m == 0 || entry.m == v) 1f else 0.35f)
+                Modifier.weight(1f)
                     .clickable { onChange(entry.copy(m = if (entry.m == v) 0 else v)) }
                     .semantics { contentDescription = L("journal.level.$v"); selected = entry.m == v },
                 contentAlignment = androidx.compose.ui.Alignment.Center,
-            ) { LineIcon(LineIconSets.MOODS[v - 1], 38.dp) }
+            ) { DuoIcon(LineIconSets.MOODS[v - 1], 34.dp, if (entry.m == 0 || entry.m == v) Journal.moodColor(v) else Theme.c.muted) }
         }
         if (showSleep) {
             Text(L("journal.sleep"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
@@ -133,7 +137,8 @@ fun JournalScreen() {
                         val day = LocalDate.now().minusDays(back.toLong())
                         val e = byDay[day.toString()]
                         Column(Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(e?.let { if (it.m > 0) Journal.moods[it.m - 1] else "•" } ?: "·", fontSize = 18.sp, color = Theme.c.muted)
+                            if (e != null && e.m > 0) DuoIcon(LineIconSets.MOODS[e.m - 1], 18.dp, Journal.moodColor(e.m), modifier = Modifier.padding(vertical = 3.dp))
+                            else Text(if (e != null) "•" else "·", fontSize = 18.sp, color = Theme.c.muted)
                             Text("${day.dayOfMonth}", color = Theme.c.muted, fontSize = 10.sp)
                         }
                     }
@@ -166,7 +171,8 @@ fun JournalScreen() {
             if (older.isEmpty()) EmptyState(Icons.Outlined.EditNote, L("journal.empty").trimEnd('.', '。', '۔'), L("empty.journal.text"))
             older.take(60).forEachIndexed { idx, e ->
                 Row(Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
-                    Text(if (e.m > 0) Journal.moods[e.m - 1] else "·", fontSize = 24.sp)
+                    if (e.m > 0) DuoIcon(LineIconSets.MOODS[e.m - 1], 24.dp, Journal.moodColor(e.m), modifier = Modifier.padding(top = 2.dp))
+                    else Text("·", fontSize = 24.sp, color = Theme.c.muted, modifier = Modifier.width(24.dp))
                     Spacer(Modifier.width(10.dp))
                     Column {
                         Text(runCatching { Fmt.longDate(LocalDate.parse(e.d)) }.getOrDefault(e.d), color = Theme.c.muted, fontSize = 12.sp)

@@ -79,14 +79,32 @@
     });
   });
 
-  /* ---------- Paylaş (2. analiz #188): telefonda sistem paylaşımı, yoksa bağlantıyı panoya kopyalar ---------- */
-  Array.prototype.forEach.call(doc.querySelectorAll("[data-share]"), function (b) {
-    b.addEventListener("click", function () {
-      var url = location.href.split("#")[0], title = doc.title;
-      var done = function () { var t = b.textContent; b.textContent = b.getAttribute("data-done") || t; setTimeout(function () { b.textContent = t; }, 2000); };
-      if (navigator.share) { navigator.share({ title: title, url: url }).catch(function () {}); return; }
+  /* ---------- Paylaş (standart madde 15): cihazın paylaşım menüsü, yoksa düz bağlantılı menü ---------- */
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-page-share]"), function (box) {
+    var sum = box.querySelector("summary"), status = box.querySelector("[data-share-status]");
+    var url = box.getAttribute("data-url"), title = box.getAttribute("data-title"), text = box.getAttribute("data-text");
+    sum.addEventListener("click", function (e) {
+      if (box.open || !navigator.share) return;
+      e.preventDefault();
+      navigator.share({ title: title, text: text, url: url }).then(function () { track("paylas", { platform: "cihaz" }); }, function (err) {
+        if (!err || err.name !== "AbortError") box.open = true; // paylaşım menüsü açılamadı: bağlantılar
+      });
+    });
+    Array.prototype.forEach.call(box.querySelectorAll("[data-share-net]"), function (a) {
+      a.addEventListener("click", function () { track("paylas", { platform: a.getAttribute("data-share-net") }); box.open = false; });
+    });
+    var copy = box.querySelector("[data-share-copy]");
+    copy.addEventListener("click", function () {
+      var label = copy.querySelector("span"), was = label.textContent;
+      var done = function () {
+        label.textContent = copy.getAttribute("data-done"); status.textContent = copy.getAttribute("data-done");
+        track("paylas", { platform: "kopyala" });
+        setTimeout(function () { label.textContent = was; status.textContent = ""; }, 2000);
+      };
       if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () {});
     });
+    box.addEventListener("keydown", function (e) { if (e.key === "Escape" && box.open) { box.open = false; sum.focus(); } });
+    doc.addEventListener("click", function (e) { if (box.open && !box.contains(e.target)) box.open = false; });
   });
 
   /* ---------- Menü (dar ekranda açılır) ---------- */
@@ -158,7 +176,12 @@
 
   /* ---------- Saat ---------- */
   var prefs = { h12: false, secD: true, secA: true, model: "", pv: 4, fsColor: "auto", tick: false };
-  try { Object.assign(prefs, JSON.parse(store("sth-prefs") || "{}")); } catch (e) {}
+  var storedPrefs = {};
+  try { storedPrefs = JSON.parse(store("sth-prefs") || "{}") || {}; Object.assign(prefs, storedPrefs); } catch (e) {}
+  // 12/24 (10 Kasım 2026, Hindistan araştırması #3): kayıtlı seçim yoksa tarayıcının diline göre (hi-IN, en-US 12 saat; tr 24)
+  if (!("h12" in storedPrefs)) {
+    try { var hc = new Intl.DateTimeFormat(undefined, { hour: "numeric" }).resolvedOptions().hourCycle; prefs.h12 = hc === "h11" || hc === "h12"; } catch (e) {}
+  }
   if (prefs.pv !== 4) { prefs.secD = true; prefs.secA = true; prefs.pv = 4; } // varsayılan: dijitalde ve analogda saniye açık (30 Ekim 2026; eski kayıtlar bir kez)
   if (window.__sthPrefs) { Object.assign(prefs, window.__sthPrefs); if ("sec" in window.__sthPrefs) prefs.secD = prefs.secA = window.__sthPrefs.sec !== false; }
   prefs.h12 = !!prefs.h12; prefs.secD = prefs.secD !== false; prefs.secA = prefs.secA !== false; prefs.tick = false; // saat sesi düğmesi kaldırıldı (9 Ekim 2026): eski kayıtlar sessiz kalır

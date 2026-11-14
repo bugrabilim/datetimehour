@@ -194,6 +194,14 @@ object BadgeStore {
         if (n >= 7) hit(Badge.SERI7)
     }
 
+    /** Hesaptaki rozetler cihaza (madde 13, "Üye"): aynı rozette erken gün kalır; bildirim gösterilmez */
+    fun mergeFromAccount(days: Map<String, String>) {
+        val known = Badge.entries.map { it.id }.toSet()
+        val r = saved.r.toMutableMap()
+        for ((id, day) in days) if (id in known && (r[id] == null || day < r[id]!!)) r[id] = day
+        if (r != saved.r) { saved = saved.copy(r = r); persist() }
+    }
+
     fun deleteAll() {
         saved = Saved()
         Prefs.store.edit().remove(KEY).apply()

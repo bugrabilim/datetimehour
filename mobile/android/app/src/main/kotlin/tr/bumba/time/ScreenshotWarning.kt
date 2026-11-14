@@ -74,7 +74,7 @@ fun ScreenshotWarning() {
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             verticalAlignment = Alignment.Top,
         ) {
-            Text("👁", fontSize = 16.sp)
+            DuoIcon("privacy", 20.dp, c.accent)
             Text(L("screenshot.warn"), color = c.text, fontSize = 14.sp)
         }
     }

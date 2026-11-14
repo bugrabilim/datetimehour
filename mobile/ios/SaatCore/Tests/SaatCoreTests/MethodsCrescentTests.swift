@@ -21,6 +21,31 @@ final class MethodsCrescentTests: XCTestCase {
         XCTAssertEqual(PrayerTimes.methodIDs.count, PrayerTimes.methods.count)
     }
 
+    /// Kemenag: yukarı/aşağı yuvarlama, imsak uyarısı ve duha; bölgeye göre varsayılan yöntem (sitedeki toMin,
+    /// methodRows, defaultMethod ile aynı)
+    func testKemenagAndRegionMatchWeb() throws {
+        let file = try Vectors.load("kemenag.json", as: KemenagVectors.self)
+        XCTAssertGreaterThan(file.cases.count, 50)
+        for c in file.cases {
+            let p = PrayerTimes.Parameters.method(c.method, hanafi: false)
+            let day = PrayerTimes.times(year: c.y, month: c.m, day: c.d, latitude: c.lat, longitude: c.lon, utcOffset: c.tz, parameters: p)
+            let rows = PrayerTimes.methodRows(year: c.y, month: c.m, day: c.d, latitude: c.lat, longitude: c.lon,
+                                              utcOffset: c.tz, parameters: p, times: day)
+            var got: [String: Int?] = [:]
+            for prayer in Prayer.allCases { got[prayer.rawValue] = day.minutes(prayer) }
+            got["imsak"] = rows?.imsak
+            got["duha"] = rows?.duha
+            for (i, key) in file.keys.enumerated() {
+                XCTAssertEqual(c.min[i], got[key] ?? nil, "\(c.id) \(c.method) \(c.m)-\(c.d) \(key)")
+            }
+        }
+        for r in file.region {
+            let d = PrayerTimes.defaultMethod(timeZone: r.tz, latitude: r.lat, longitude: r.lon)
+            XCTAssertEqual(d.id, r.method, r.tz)
+            XCTAssertEqual(d.hanafi, r.hanafi, "\(r.tz) \(r.lat)")
+        }
+    }
+
     /// Hilal görünürlüğü (Yallop): sitedeki crescent ile aynı gün batımı, Ay batımı (±1 sn), q ve sınıf
     func testCrescentMatchesWeb() throws {
         let file = try Vectors.load("nature.json", as: NatureVectors.self)

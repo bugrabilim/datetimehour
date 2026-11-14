@@ -1,6 +1,7 @@
 package tr.bumba.time
 
 import kotlinx.coroutines.launch
+import androidx.lifecycle.lifecycleScope
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -34,7 +35,6 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Eco
-import androidx.compose.material.icons.filled.NightsStay
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Timer
@@ -101,6 +101,8 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         BadgeStore.appOpened()
+        // Girişliyse kayıtlar ve rozetler hesapla eşitlenir (madde 7 ve 13; sahibin kararı S1)
+        if (Account.signedIn) lifecycleScopeLaunchSync()
         AccentPalette.initDynamic(this) // duvar kâğıdı değişmiş olabilir (Material You)
         // Aralık antrenmanı sürüyorsa sesli duyuru hizmeti çalışsın (uygulama zorla kapatılmış olabilir)
         HiitService.sync(this)
@@ -318,8 +320,8 @@ private fun TabBar(tabs: List<Tab>, selected: Tab, resume: (() -> Unit)? = null,
                             .background(if (on) Theme.c.accentSoft else Color.Transparent),
                         contentAlignment = Alignment.Center,
                     ) {
-                        // 3D simgeler (4 Kasım 2026, sahibin seçimi); seçili olmayan sekme gri ve soluk
-                        LineIcon(LineIconMap.tab(t), 26.dp, c1 = color, c2 = color, label = Features.label(t), dim = !on)
+                        // İki tonlu simgeler (8 Kasım 2026, sahibin seçimi "B Karma"); seçili sekme ana renk, diğerleri soluk renk
+                        DuoIcon(LineIconMap.tab(t), 24.dp, color)
                     }
                     Text(
                         Features.label(t), color = color, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
@@ -342,4 +344,9 @@ private fun BackRow(to: Tab, onBack: () -> Unit) {
         Spacer(Modifier.width(6.dp))
         Text(Features.label(to), color = Theme.c.accent, fontSize = 16.sp)
     }
+}
+
+/** Uygulama öne gelince hesapla eşitleme (ağ işi arka planda) */
+private fun ComponentActivity.lifecycleScopeLaunchSync() {
+    lifecycleScope.launch { AccountSync.sync() }
 }

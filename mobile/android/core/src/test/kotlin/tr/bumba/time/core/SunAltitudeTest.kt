@@ -68,4 +68,25 @@ class SunAltitudeTest {
         val bursa = PrayerTimes.times(2026, 3, 20, 40.1826, 29.0665, 3.0)
         assertEquals(7 * 60 + 38, (PrayerTimes.bayram(bursa)!! * 60).roundToInt())
     }
+
+    /** Geleneksel Hint zaman dilimleri: sitedeki hesapla aynı; Delhi 8 Kasım 2026 Drik Panchang ile ±1 dk */
+    @Test
+    fun hinduKaal() {
+        val cases = Vectors.load("kaal.json").getJSONArray("cases").objects()
+        assertTrue(cases.size > 400)
+        for (c in cases) {
+            val k = PrayerTimes.hinduKaal(c.getInt("y"), c.getInt("m"), c.getInt("d"), c.getDouble("lat"), c.getDouble("lon"), c.getDouble("tz"))
+            val id = c.getString("id")
+            if (c.isNull("t")) { assertTrue(k == null, id); continue }
+            val want = c.getJSONArray("t")
+            val got = listOf(k!!.sunrise, k.sunset, k.rahu.first, k.rahu.second, k.yamaganda.first, k.yamaganda.second,
+                k.gulika.first, k.gulika.second, k.abhijit.first, k.abhijit.second, k.brahma.first, k.brahma.second)
+            got.forEachIndexed { i, v -> assertEquals(want.getDouble(i), v, 1e-6, id) }
+        }
+        val d = PrayerTimes.hinduKaal(2026, 11, 8, 28.6139, 77.209, 5.5)!!
+        for ((h, want) in listOf(d.rahu.first to 16 * 60 + 10, d.yamaganda.first to 12 * 60 + 5, d.gulika.first to 14 * 60 + 48,
+            d.abhijit.first to 11 * 60 + 43, d.brahma.first to 4 * 60 + 53)) {
+            assertTrue(kotlin.math.abs(jsRound(h * 60).toInt() - want) <= 1)
+        }
+    }
 }

@@ -14,10 +14,11 @@ struct Province: Decodable, Identifiable, Hashable {
     let zh: String?
     let th: String?
     let hi: String?
+    let bn: String?
 
     var id: String { slug }
 
-    /// Arapça, Rusça, Farsça, Japonca, Korece, Çince ve Tayca arayüzde o dildeki ad, diğer dillerde Türkçe ad.
+    /// Arapça, Rusça, Farsça, Japonca, Korece, Çince, Tayca, Hintçe ve Bengalce arayüzde o dildeki ad, diğer dillerde Türkçe ad.
     var displayName: String {
         switch Locale.current.language.languageCode?.identifier {
         case "ar": ar
@@ -28,6 +29,7 @@ struct Province: Decodable, Identifiable, Hashable {
         case "zh": zh ?? name
         case "th": th ?? name
         case "hi": hi ?? name
+        case "bn": bn ?? name
         default: name
         }
     }

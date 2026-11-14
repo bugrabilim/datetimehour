@@ -10,6 +10,10 @@ on:
       - "src/data/**"
       - "lib/**"
       - "src/i18n/**"
+      - "src/i18n-cal/**"
+      # Hesap ekranı metinleri ve ülke listesi (üyelik sunucusuyla ortak; gen-strings uygulamalara kopyalar)
+      - "server/i18n/account.json"
+      - "server/data/countries.json"
       - ".github/workflows/mobile.yml"
   push:
     branches: [main]
@@ -20,6 +24,10 @@ on:
       - "src/data/**"
       - "lib/**"
       - "src/i18n/**"
+      - "src/i18n-cal/**"
+      # Hesap ekranı metinleri ve ülke listesi (üyelik sunucusuyla ortak; gen-strings uygulamalara kopyalar)
+      - "server/i18n/account.json"
+      - "server/data/countries.json"
       - ".github/workflows/mobile.yml"
 
 # Aynı PR'a (ya da dala) yeni commit gelince eski çalışma iptal edilir: üst üste gönderimlerde eski commit'lerin
@@ -41,6 +49,8 @@ jobs:
       - run: node mobile/shared/gen-strings.mjs --check
       - run: node mobile/shared/gen-religion.mjs --check
       - run: python3 -I mobile/shared/icons3d/gen-icons3d.py --check
+      # İki tonlu simgeler (Phosphor, sabit sürüm): npm pack ile paketi indirip yeniden üretir, depodakiyle karşılaştırır
+      - run: node mobile/shared/icons/gen-duotone.mjs --check
       - run: node mobile/ios/scripts/check-swift.mjs
 
   swift-linux:

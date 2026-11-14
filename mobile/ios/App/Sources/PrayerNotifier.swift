@@ -191,6 +191,15 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
             }
             return
         }
+        // Fotoğraf ışığı bildirimine dokununca Fotoğraf ışığı ekranı açılır (Android'deki gibi)
+        if response.actionIdentifier == UNNotificationDefaultActionIdentifier,
+           response.notification.request.identifier.hasPrefix(FeatureNotifier.featurePrefix + "photo-") {
+            Task { @MainActor in
+                Router.shared.handle(URL(string: "saattarih://photo")!)
+                completionHandler()
+            }
+            return
+        }
         completionHandler()
     }
 

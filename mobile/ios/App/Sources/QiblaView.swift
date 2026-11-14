@@ -246,9 +246,26 @@ struct QiblaView: View {
                 } else {
                     row(L("qibla.time"), "–", note: L("qibla.noTime"))
                 }
+                // Rashdul Qiblat (10 Kasım 2026): Güneş'in Kâbe'nin üstünden geçtiği sıradaki an, yerin saatiyle
+                let rq = rashdul(place: place)
+                Divider()
+                row(L("qibla.rashdul"), Fmt.shortDateTime(rq.at, tz: place.zone), note: L(rq.sunUp ? "qibla.rashdulNote" : "qibla.rashdulNight"))
             }
         }
         .card()
+    }
+
+    /// Sıradaki Rashdul Qiblat anı (dakikaya yuvarlı; bir saat sonrasına kadar gösterilir) ve Güneş o anda yerde ufkun üstünde mi
+    private func rashdul(place: AppPlace) -> (at: Date, sunUp: Bool) {
+        let now = Date(), y = place.today.year
+        let all = (Qibla.rashdul(year: y) + Qibla.rashdul(year: y + 1)).map { Date(timeIntervalSince1970: ($0 / 60000).rounded() * 60) }
+        let at = all.first { $0 > now.addingTimeInterval(-3600) } ?? all[all.count - 1]
+        var utc = Calendar(identifier: .gregorian)
+        utc.timeZone = TimeZone(identifier: "UTC")!
+        let c = utc.dateComponents([.year, .month, .day, .hour, .minute], from: at)
+        let sun = Qibla.sun(year: c.year ?? y, month: c.month ?? 1, day: c.day ?? 1, ut: Double(c.hour ?? 0) + Double(c.minute ?? 0) / 60,
+                            latitude: place.lat, longitude: place.lon)
+        return (at, sun.alt > 0)
     }
 
     private func row(_ title: String, _ value: String, note: String? = nil) -> some View {

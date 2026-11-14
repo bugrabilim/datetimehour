@@ -22,11 +22,11 @@ Almanca arayüzde İngilizce meal gösterilir (Henning çevirisinin yalnız tara
 
 ## Diller (31 Ekim 2026)
 
-Esmaü'l-Hüsna, hadis, dualar (başlık, ne zaman, Kur'an dışı duaların anlamı), namaz rehberi ve günün sözü sitenin on sekiz
-dilindedir (tr, en, de, az, ar, id, ur, fa, fr, ru, ja, ko, zh, fil, th, es, pt, hi; `gen-religion.mjs` `LANGS`, eksik dilde durur). `esma.json`
-satırı: `[Arapça, Türkçe okunuş, Latin okunuş, anlam tr, en, de, az, id, ur, fa, fr, ru, ja, ko, zh, fil, th, es, pt, hi]`; Arapça arayüzde yalnız ad,
+Esmaü'l-Hüsna, hadis, dualar (başlık, ne zaman, Kur'an dışı duaların anlamı), namaz rehberi ve günün sözü sitenin on dokuz
+dilindedir (tr, en, de, az, ar, id, ur, fa, fr, ru, ja, ko, zh, fil, th, es, pt, hi, bn; `gen-religion.mjs` `LANGS`, eksik dilde durur). `esma.json`
+satırı: `[Arapça, Türkçe okunuş, Latin okunuş, anlam tr, en, de, az, id, ur, fa, fr, ru, ja, ko, zh, fil, th, es, pt, hi, bn]`; Arapça arayüzde yalnız ad,
 Farsça ve Urducada okunuş gösterilmez (ad Arapça yazıyla okunur). `sayings.json`: her dilin kendi atasözleri (yeni
-dillerde 40'ar; es, pt, hi 4 Kasım 2026). Kur'an'dan olan duaların anlamı İngilizce Pickthall mealidir: en, de, id, fr, ru, ja, ko, zh, fil, th, es, pt, hi arayüzünde
+dillerde 40'ar; es, pt, hi 4 Kasım 2026, bn 10 Kasım 2026). Kur'an'dan olan duaların anlamı İngilizce Pickthall mealidir: en, de, id, fr, ru, ja, ko, zh, fil, th, es, pt, hi, bn arayüzünde
 gösterilir; Arapça yazılı dillerde (ar, fa, ur) gösterilmez. Yeni dillerin anlamları Saat Tarih çevirisidir
 (gözden geçirme bekler; sahibin kararıyla dil işi bitince ajanlarla).
 

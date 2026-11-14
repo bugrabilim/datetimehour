@@ -78,6 +78,10 @@
     <string name="prayer_method_note">Sa Türkiye, ang opisyal na oras ay mula sa Presidency of Religious Affairs (Diyanet). Kung pipili ka ng ibang paraan, kakalkulahin gamit ito ang mga oras, buwanang talahanayan at iskedyul ng Ramadan sa pahinang ito; sa browser na ito lang naka-save ang iyong pinili.</string>
     <string name="prayer_method_active">Paraan: %1$s</string>
     <string name="prayer_method_hanafiShort">Hanafi na Asr</string>
+    <string name="prayer_method_region">ayon sa inyong rehiyon</string>
+    <string name="prayer_method_kemenagNote">Para sa mabababang lugar ang paraang Kemenag: sa kabundukan (higit sa mga 600 m), iba nang 4–5 minuto ang inilalathalang pagsikat ng araw at maghrib ng Kemenag. Ang imsak ay 10 minuto bago ang fajr bilang pag-iingat.</string>
+    <string name="prayer_method_rowImsak">Imsak</string>
+    <string name="prayer_method_rowDuha">Duha</string>
     <string name="prayer_method_names_diyanet">Diyanet (Türkiye)</string>
     <string name="prayer_method_names_mwl">Muslim World League</string>
     <string name="prayer_method_names_isna">Islamic Society of North America (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">Kuwait</string>
     <string name="prayer_method_names_qatar">Qatar</string>
     <string name="prayer_method_names_singapore">Singapore</string>
+    <string name="prayer_method_names_kemenag">Kemenag (Ministri ng Ugnayang Panrelihiyon, Indonesia)</string>
     <string name="prayer_method_names_france">France (UOIF)</string>
     <string name="prayer_method_names_russia">Spiritual Administration of Muslims of Russia</string>
     <string name="place_myLocation">Aking lokasyon</string>

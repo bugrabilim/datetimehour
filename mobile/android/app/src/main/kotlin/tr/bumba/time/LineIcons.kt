@@ -2,20 +2,23 @@ package tr.bumba.time
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.scale
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -83,21 +86,16 @@ object Icons3D {
     }
 }
 
-/** Gri ve soluk (alt çubukta seçili olmayan sekme, bitmemiş pomodoro turu) */
-private val GRAY = ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(0f) })
-
 /**
- * Uygulamanın simgesi: 3D görsel (Icons3D); görseli olmayan ad için eski çizgi çizimi. `dim`: gri ve soluk.
- * `c1`/`c2` yalnız çizgi çizimde kullanılır. `label` verilirse ekran okuyucu için ad.
+ * Uygulamanın 3D simgesi (Icons3D; 8 Kasım 2026'dan beri yalnız hava, vakit satırları, büyük çizimler ve boş durumlar);
+ * görseli olmayan ad için eski çizgi çizimi. `c1`/`c2` yalnız çizgi çizimde kullanılır. `label` verilirse ekran okuyucu için ad.
+ * Küçük simgeler için [DuoIcon].
  */
 @Composable
-fun LineIcon(name: String, size: Dp = 28.dp, c1: Color = Theme.c.accent, c2: Color = Theme.c.accent2, label: String? = null,
-             dim: Boolean = false) {
+fun LineIcon(name: String, size: Dp = 28.dp, c1: Color = Theme.c.accent, c2: Color = Theme.c.accent2, label: String? = null) {
     val res = Icons3D.res(name)
     if (res != 0) {
-        Image(painterResource(res), contentDescription = label,
-            modifier = Modifier.size(size).graphicsLayer { alpha = if (dim) 0.45f else 1f },
-            colorFilter = if (dim) GRAY else null)
+        Image(painterResource(res), contentDescription = label, modifier = Modifier.size(size))
         return
     }
     val parts = LineIcons.get(name)
@@ -113,6 +111,62 @@ fun LineIcon(name: String, size: Dp = 28.dp, c1: Color = Theme.c.accent, c2: Col
             }
         }
     }
+}
+
+/**
+ * İki tonlu küçük simgeler (8 Kasım 2026, sahibin seçimi "B Karma"; mobile/shared/icons/DUOTONE.md): Phosphor duotone
+ * (MIT), assets/duotone.json (gen-strings kopyalar). Her ad iki katman: önce `o` 0,2 arka katman, sonra `o` 1 ön katman;
+ * ikisi aynı renkle doldurulur (nonzero). Yollar bir kez ayrıştırılıp önbellekte tutulur. 3D simgeler yalnız hava, altı
+ * vakit satırı, büyük tek çizimler ve boş durumlarda kalır.
+ */
+object DuoIcons {
+    class Layer(val o: Float, val path: Path)
+
+    private var all: Map<String, List<Layer>>? = null
+
+    private fun load(): Map<String, List<Layer>> = all ?: runCatching {
+        val o = JSONObject(Strings.appContext.assets.open("duotone.json").bufferedReader().use { it.readText() })
+        o.keys().asSequence().filterNot { it.startsWith("_") }.associateWith { k ->
+            val a = o.getJSONArray(k)
+            (0 until a.length()).map { i -> a.getJSONObject(i).let { l -> Layer(l.getDouble("o").toFloat(), LineIcons.parse(l.getString("d")).first) } }
+        }
+    }.getOrDefault(emptyMap()).also { all = it }
+
+    fun has(name: String): Boolean = load().containsKey(name)
+
+    fun get(name: String): List<Layer> = load()[name].orEmpty()
+}
+
+/**
+ * İki tonlu simge: 24×24 glif [size] boyutunda, iki katman aynı [color] ile (arka katman %20). Ad duotone.json'da yoksa
+ * eski simge (LineIcon) çizilir ki hiçbir şey kaybolmasın. [label] yoksa ekran okuyucudan gizlidir.
+ */
+@Composable
+fun DuoIcon(name: String, size: Dp = 24.dp, color: Color = Theme.c.accent, label: String? = null, modifier: Modifier = Modifier) {
+    val layers = DuoIcons.get(name)
+    if (layers.isEmpty()) {
+        Box(modifier) { LineIcon(name, size, c1 = color, c2 = color, label = label) }
+        return
+    }
+    Canvas(modifier.size(size).semantics { if (label != null) contentDescription = label }) {
+        val k = this.size.minDimension / 24f
+        scale(k, k, Offset.Zero) {
+            for (l in layers) drawPath(l.path, color.copy(alpha = color.alpha * l.o), style = Fill)
+        }
+    }
+}
+
+/**
+ * İki tonlu simge dairede (ayar, izin, bildirim satırları: 32/19; kareler: 42/25): zemin simge renginin açık tonu
+ * (açık temada %14, koyu temada %22, kâğıt zeminin üstünde), ortada [DuoIcon].
+ */
+@Composable
+fun DuoChip(name: String, color: Color, modifier: Modifier = Modifier, box: Dp = 32.dp, glyph: Dp = 19.dp, label: String? = null) {
+    val c = Theme.c
+    Box(
+        modifier.size(box).clip(CircleShape).background(color.copy(alpha = if (c.dark) 0.22f else 0.14f).compositeOver(c.surface)),
+        contentAlignment = Alignment.Center,
+    ) { DuoIcon(name, glyph, color, label) }
 }
 
 /**
@@ -136,14 +190,24 @@ object LineIconMap {
         "Filled.LocationOn" to "pin", "Filled.Palette" to "palette", "Filled.ColorLens" to "palette", "Filled.TextFields" to "textsize",
         "Filled.Tune" to "sliders", "Filled.Info" to "info", "Filled.Share" to "share", "Filled.QrCode" to "qr", "Filled.Email" to "mail",
         "Filled.Search" to "search", "Filled.Apps" to "grid", "Filled.Widgets" to "grid", "Filled.Watch" to "clock", "Filled.Schedule" to "clock",
-        "Filled.Fullscreen" to "fullscreen", "Filled.Backup" to "cloud", "Filled.Thermostat" to "thermometer", "Filled.Favorite" to "heart",
+        "Filled.Fullscreen" to "fullscreen", "Filled.Backup" to "backup", "Filled.Thermostat" to "thermometer", "Filled.Favorite" to "heart",
         // 3D simgelerle eklenenler (4 Kasım 2026)
         "Filled.FormatQuote" to "speech", "Filled.LocalCafe" to "coffee", "Filled.TableChart" to "chart",
         "Filled.CheckCircle" to "checklist", "Filled.Straighten" to "ruler", "Filled.EditNote" to "memo", "Filled.Edit" to "memo",
         "Filled.Brightness6" to "halfmoon", "Filled.CardGiftcard" to "gift", "Filled.Numbers" to "numbers",
+        // İki tonlu simgelerle eklenenler (8 Kasım 2026)
+        "Filled.Bed" to "bed", "Filled.Update" to "dst", "Filled.Lock" to "privacy", "Filled.Shortcut" to "shortcut",
+        "Filled.QrCode2" to "qr", "Filled.Umbrella" to "umbrella",
+        // Boş durumlar (3D kalır)
+        "Outlined.Alarm" to "alarm", "Outlined.HourglassEmpty" to "hourglass", "Outlined.EditNote" to "memo",
+        "Outlined.WhereToVote" to "pin", "Filled.DateRange" to "calendar",
     )
 
-    fun of(vectorName: String): String? = byVector[vectorName]?.takeIf { Icons3D.res(it) != 0 || LineIcons.get(it).isNotEmpty() }
+    fun of(vectorName: String): String? =
+        byVector[vectorName]?.takeIf { DuoIcons.has(it) || Icons3D.res(it) != 0 || LineIcons.get(it).isNotEmpty() }
+
+    /** Yalnız 3D görseli olan eşleme (boş durumlar 3D kalır) */
+    fun of3D(vectorName: String): String? = byVector[vectorName]?.takeIf { Icons3D.res(it) != 0 }
 
     /** Alt çubuktaki sekmeler */
     fun tab(t: Tab): String = when (t) {
@@ -151,10 +215,31 @@ object LineIconMap {
         Tab.SEASONS -> "leaf"; Tab.PRAYER -> "mosque"; Tab.TOOLS -> "grid"
     }
 
+    /** Sekmenin konu rengi (Özellikler satırları, ilk kurulum özeti; Tümü kategorileriyle aynı) */
+    @Composable
+    fun tabColor(t: Tab): Color = when (t) {
+        Tab.CLOCK -> Theme.c.terra; Tab.CALENDAR -> Theme.c.sage; Tab.PRAYER -> Theme.c.gold; Tab.TOOLS -> Theme.c.dusk
+        Tab.WEATHER, Tab.WORLD, Tab.SEASONS -> Theme.c.sky
+    }
+
     /** Vakit satırları (3D): imsak dağlarda şafak, güneş doğuş, öğle güneş, ikindi bulutlu güneş, akşam batış, yatsı yıldızlı gece */
     fun prayer(p: Prayer): String = when (p) {
         Prayer.FAJR -> "dawn"; Prayer.SUNRISE -> "sunrise"; Prayer.DHUHR -> "noon"
         Prayer.ASR -> "afternoon"; Prayer.MAGHRIB -> "sunset"; Prayer.ISHA -> "night"
+    }
+}
+
+/**
+ * Alarm listesindeki görev simgesi (2. analiz #51; 8 Kasım 2026'dan beri emoji yerine iki tonlu): matematik hesap
+ * makinesi, sallama titreşim dalgası, adım sayaç, kod QR, hafıza (renk sırası) palet, yazma kalem, fotoğraf kamera,
+ * çömelme kalp, nesne büyüteç, konuşma mikrofon, ışık ampul, rastgele sihirli değnek.
+ */
+object AlarmTaskIcon {
+    fun of(task: String): String? = when (task) {
+        "math" -> "calc"; "shake" -> "waveform"; "steps" -> "gauge"; "code" -> "qr"; "memory" -> "palette"
+        "typing" -> "memo"; "photo" -> "camera"; "squat" -> "heart"; "object" -> "search"; "speak" -> "mic"
+        "light" -> "idea"; "random" -> "wand"
+        else -> null
     }
 }
 

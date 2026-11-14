@@ -86,6 +86,10 @@
     "hi": [
      "क्यूबा इस सर्दी घड़ियाँ पीछे नहीं करेगा",
      "क्यूबा 1 नवंबर 2026 को घड़ियाँ एक घंटा पीछे नहीं करेगा; वह 7 नवंबर 2027 तक UTC−4 (ग्रीष्म समय) पर रहने की योजना बना रहा है।"
+    ],
+    "bn": [
+     "এই শীতে কিউবা ঘড়ি পিছিয়ে দিচ্ছে না",
+     "কিউবা 1 নভেম্বর 2026-এ ঘড়ি এক ঘণ্টা পিছিয়ে দেবে না; 7 নভেম্বর 2027 পর্যন্ত UTC−4-এ (দিবালোক সংরক্ষণ সময়) থাকার পরিকল্পনা করছে।"
     ]
    }
   },
@@ -166,12 +170,16 @@
      "La provincia canadiense de Manitoba usa UTC−5 todo el año desde el 31 de octubre de 2026; el adelanto del 8 de marzo de 2026 fue su último cambio de hora. Se espera que las zonas del noroeste de Ontario que siguen la hora de Winnipeg hagan lo mismo."
     ],
     "pt": [
-     "Manitoba passa a UTC−5 permanente",
+     "Manitoba adota UTC−5 permanente",
      "A província canadense de Manitoba usa UTC−5 o ano inteiro desde 31 de outubro de 2026; o adiantamento de 8 de março de 2026 foi sua última mudança de hora. Espera-se que partes do noroeste de Ontário que seguem o horário de Winnipeg façam o mesmo."
     ],
     "hi": [
      "मैनिटोबा स्थायी UTC−5 पर",
      "कनाडा का मैनिटोबा प्रांत 31 अक्टूबर 2026 से पूरे साल UTC−5 इस्तेमाल करता है; 8 मार्च 2026 को घड़ी आगे करना उसका आख़िरी बदलाव था। विनिपेग का समय मानने वाले उत्तर-पश्चिमी ओंटारियो के हिस्सों से भी यही उम्मीद है।"
+    ],
+    "bn": [
+     "মানিটোবা স্থায়ীভাবে UTC−5-এ যাচ্ছে",
+     "কানাডার মানিটোবা প্রদেশ 31 অক্টোবর 2026 থেকে সারা বছর UTC−5 ব্যবহার করে; 8 মার্চ 2026-এ ঘড়ি এগিয়ে দেওয়াই ছিল শেষ ঘড়ি বদল। উইনিপেগের সময় মেনে চলা উত্তর-পশ্চিম অন্টারিওর কিছু অংশও একই কাজ করবে বলে আশা করা হচ্ছে।"
     ]
    }
   },
@@ -255,11 +263,15 @@
     ],
     "pt": [
      "Marrocos volta a UTC+0 permanente",
-     "Desde 20 de setembro de 2026 às 02:00, Marrocos (e o Saara Ocidental) usa UTC+0 o ano inteiro sem horário de verão; as mudanças temporárias de hora em torno do Ramadã também acabam."
+     "Desde 20 de setembro de 2026 às 02:00, Marrocos (e o Saara Ocidental) usa UTC+0 o ano inteiro sem horário de verão; as mudanças temporárias de hora em torno do Ramadã também acabaram."
     ],
     "hi": [
      "मोरक्को फिर स्थायी UTC+0 पर",
      "20 सितंबर 2026 को 02:00 से मोरक्को (और पश्चिमी सहारा) बिना डेलाइट सेविंग के पूरे साल UTC+0 इस्तेमाल करता है; रमज़ान के आसपास के अस्थायी घड़ी बदलाव भी ख़त्म हो गए।"
+    ],
+    "bn": [
+     "মরক্কো স্থায়ীভাবে UTC+0-এ ফিরছে",
+     "20 সেপ্টেম্বর 2026-এর 02:00 থেকে মরক্কো (ও পশ্চিম সাহারা) দিবালোক সংরক্ষণ সময় ছাড়া সারা বছর UTC+0 ব্যবহার করে; রমজানকে ঘিরে অস্থায়ী ঘড়ি বদলও শেষ হচ্ছে।"
     ]
    }
   },
@@ -347,6 +359,10 @@
     "hi": [
      "कनाडा के नॉर्थवेस्ट टेरिटरीज़ स्थायी UTC−6 पर",
      "नॉर्थवेस्ट टेरिटरीज़ 21 अगस्त 2026 से पूरे साल UTC−6 इस्तेमाल करते हैं और पड़ोसी अल्बर्टा की तरह 1 नवंबर 2026 को घड़ियाँ पीछे नहीं करते।"
+    ],
+    "bn": [
+     "কানাডার নর্থওয়েস্ট টেরিটরিজ স্থায়ীভাবে UTC−6-এ",
+     "নর্থওয়েস্ট টেরিটরিজ 21 আগস্ট 2026 থেকে সারা বছর UTC−6 ব্যবহার করছে এবং প্রতিবেশী আলবার্টার মতো 1 নভেম্বর 2026-এ ঘড়ি পিছিয়ে দেয় না।"
     ]
    }
   },
@@ -427,12 +443,16 @@
      "La provincia canadiense de Alberta usa UTC−6 todo el año desde el 18 de junio de 2026; el adelanto del 8 de marzo de 2026 fue su último cambio de hora y los relojes no se atrasan el 1 de noviembre de 2026."
     ],
     "pt": [
-     "Alberta passa a UTC−6 permanente",
+     "Alberta adota UTC−6 permanente",
      "A província canadense de Alberta usa UTC−6 o ano inteiro desde 18 de junho de 2026; o adiantamento de 8 de março de 2026 foi sua última mudança de hora, e os relógios não são atrasados em 1º de novembro de 2026."
     ],
     "hi": [
      "अल्बर्टा स्थायी UTC−6 पर",
      "कनाडा का अल्बर्टा प्रांत 18 जून 2026 से पूरे साल UTC−6 इस्तेमाल करता है; 8 मार्च 2026 को घड़ी आगे करना उसका आख़िरी बदलाव था और 1 नवंबर 2026 को घड़ियाँ पीछे नहीं की जातीं।"
+    ],
+    "bn": [
+     "আলবার্টা স্থায়ীভাবে UTC−6-এ যাচ্ছে",
+     "কানাডার আলবার্টা প্রদেশ 18 জুন 2026 থেকে সারা বছর UTC−6 ব্যবহার করছে; 8 মার্চ 2026-এ ঘড়ি এগিয়ে দেওয়াই ছিল শেষ ঘড়ি বদল, এবং 1 নভেম্বর 2026-এ ঘড়ি পিছিয়ে দেওয়া হয় না।"
     ]
    }
   },
@@ -513,12 +533,16 @@
      "La provincia canadiense de Columbia Británica usa UTC−7 todo el año desde el 9 de marzo de 2026; el adelanto del 8 de marzo de 2026 fue su último cambio de hora."
     ],
     "pt": [
-     "Colúmbia Britânica passa a UTC−7 permanente",
+     "Colúmbia Britânica adota UTC−7 permanente",
      "A província canadense da Colúmbia Britânica usa UTC−7 o ano inteiro desde 9 de março de 2026; o adiantamento de 8 de março de 2026 foi sua última mudança de hora."
     ],
     "hi": [
      "ब्रिटिश कोलंबिया स्थायी UTC−7 पर",
      "कनाडा का ब्रिटिश कोलंबिया प्रांत 9 मार्च 2026 से पूरे साल UTC−7 इस्तेमाल करता है; 8 मार्च 2026 को घड़ी आगे करना उसका आख़िरी बदलाव था।"
+    ],
+    "bn": [
+     "ব্রিটিশ কলাম্বিয়া স্থায়ীভাবে UTC−7-এ যাচ্ছে",
+     "কানাডার ব্রিটিশ কলাম্বিয়া প্রদেশ 9 মার্চ 2026 থেকে সারা বছর UTC−7 ব্যবহার করছে; 8 মার্চ 2026-এ ঘড়ি এগিয়ে দেওয়াই ছিল শেষ ঘড়ি বদল।"
     ]
    }
   },
@@ -596,7 +620,7 @@
     ],
     "es": [
      "Moldavia cambia la hora al mismo tiempo que la UE",
-     "Desde 2022 Moldavia cambia la hora en el mismo momento que la Unión Europea: adelanta a las 03:00 y atrasa a las 04:00 hora local. La base de datos tz lo corrigió en 2026."
+     "Desde 2022 Moldavia cambia la hora en el mismo momento que la Unión Europea: adelanta los relojes a las 03:00 y los atrasa a las 04:00, hora local. La base de datos tz lo corrigió en 2026."
     ],
     "pt": [
      "Moldávia muda a hora junto com a UE",
@@ -604,7 +628,11 @@
     ],
     "hi": [
      "मोल्दोवा यूरोपीय संघ के समय पर घड़ियाँ बदलता है",
-     "2022 से मोल्दोवा यूरोपीय संघ वाले क्षण पर ही घड़ियाँ बदलता है: स्थानीय समय 03:00 पर आगे और 04:00 पर पीछे। tz डेटाबेस ने 2026 में इसे सुधारा।"
+     "2022 से मोल्दोवा यूरोपीय संघ के साथ एक ही समय पर घड़ियाँ बदलता है: स्थानीय समय 03:00 पर आगे और 04:00 पर पीछे। tz डेटाबेस ने 2026 में इसे सुधारा।"
+    ],
+    "bn": [
+     "মলদোভা ইইউর সময় মেনে ঘড়ি বদলায়",
+     "2022 থেকে মলদোভা ইউরোপীয় ইউনিয়নের সঙ্গে একই মুহূর্তে ঘড়ি বদলায়: স্থানীয় সময় 03:00-এ এগিয়ে আর 04:00-এ পিছিয়ে। tz ডেটাবেস 2026-এ এটি সংশোধন করেছে।"
     ]
    }
   },
@@ -691,6 +719,10 @@
     "hi": [
      "चिली का आइसेन क्षेत्र पूरे साल UTC−3 पर",
      "चिली का आइसेन क्षेत्र 2025 से पूरे साल UTC−3 इस्तेमाल करता है और (मागाल्यानेस की तरह) 5 अप्रैल 2025 को घड़ियाँ पीछे नहीं कीं। इसके लिए नया समय क्षेत्र बनाया गया: America/Coyhaique।"
+    ],
+    "bn": [
+     "চিলির আইসেন অঞ্চল সারা বছর UTC−3-এ",
+     "চিলির আইসেন অঞ্চল 2025 থেকে সারা বছর UTC−3 ব্যবহার করছে এবং (মাগাইয়ানেসের মতো) 5 এপ্রিল 2025-এ ঘড়ি পিছিয়ে দেয়নি। এর জন্য একটি নতুন সময় অঞ্চল তৈরি হয়েছে: America/Coyhaique।"
     ]
    }
   },
@@ -777,6 +809,10 @@
     "hi": [
      "पराग्वे स्थायी UTC−3 पर",
      "6 अक्टूबर 2024 को घड़ी आगे करने के बाद पराग्वे ने घड़ियाँ बदलना बंद कर दिया और अब पूरे साल UTC−3 इस्तेमाल करता है।"
+    ],
+    "bn": [
+     "প্যারাগুয়ে স্থায়ীভাবে UTC−3-এ",
+     "6 অক্টোবর 2024-এ ঘড়ি এগিয়ে দেওয়ার পর প্যারাগুয়ে ঘড়ি বদল বন্ধ করেছে এবং এখন সারা বছর UTC−3 ব্যবহার করে।"
     ]
    }
   },
@@ -863,6 +899,10 @@
     "hi": [
      "ग्रीनलैंड के इत्तोक्कोर्तूर्मीत का समय क्षेत्र बदला",
      "31 मार्च 2024 को इत्तोक्कोर्तूर्मीत UTC−1/+0 से UTC−2/−1 पर चला गया, जो ग्रीनलैंड के ज़्यादातर हिस्से में चलता है; उस दिन वहाँ घड़ियाँ आगे नहीं की गईं।"
+    ],
+    "bn": [
+     "গ্রিনল্যান্ডের ইত্তোককোরতোরমিত সময় অঞ্চল বদলেছে",
+     "31 মার্চ 2024-এ ইত্তোককোরতোরমিত UTC−1/+0 থেকে গ্রিনল্যান্ডের বেশিরভাগ অংশের ব্যবহৃত UTC−2/−1-এ গেছে; সেদিন সেখানে ঘড়ি এগিয়ে দেওয়া হয়নি।"
     ]
    }
   },
@@ -944,12 +984,16 @@
      "El este de Kazajistán pasó de UTC+6 a UTC+5 el 1 de marzo de 2024; todo el país usa ahora UTC+5."
     ],
     "pt": [
-     "Cazaquistão unificou o fuso horário",
+     "Cazaquistão adotou um fuso horário único",
      "O leste do Cazaquistão passou de UTC+6 para UTC+5 em 1º de março de 2024; o país inteiro agora usa UTC+5."
     ],
     "hi": [
-     "कज़ाख़स्तान का एक ही समय क्षेत्र",
+     "कज़ाख़स्तान अब एक ही समय क्षेत्र पर",
      "पूर्वी कज़ाख़स्तान 1 मार्च 2024 को UTC+6 से UTC+5 पर आ गया; अब पूरा देश UTC+5 इस्तेमाल करता है।"
+    ],
+    "bn": [
+     "কাজাখস্তান একটি সময় অঞ্চলে একীভূত",
+     "পূর্ব কাজাখস্তান 1 মার্চ 2024-এ UTC+6 থেকে UTC+5-এ গেছে; এখন পুরো দেশ UTC+5 ব্যবহার করে।"
     ]
    }
   },
@@ -1030,12 +1074,16 @@
      "Nuuk y la mayor parte de Groenlandia no atrasaron los relojes en octubre de 2023; la hora estándar pasó a ser UTC−2, con horario de verano (UTC−1) según las normas de la UE desde 2024."
     ],
     "pt": [
-     "A maior parte da Groenlândia passou a UTC−2",
+     "A maior parte da Groenlândia passou para UTC−2",
      "Nuuk e a maior parte da Groenlândia não atrasaram os relógios em outubro de 2023; o horário padrão passou a ser UTC−2, com horário de verão (UTC−1) pelas regras da UE desde 2024."
     ],
     "hi": [
      "ग्रीनलैंड का ज़्यादातर हिस्सा UTC−2 पर",
-     "नूक और ग्रीनलैंड के ज़्यादातर हिस्से ने अक्टूबर 2023 में घड़ियाँ पीछे नहीं कीं; मानक समय UTC−2 हो गया, और 2024 से यूरोपीय संघ के नियमों से ग्रीष्म समय (UTC−1)।"
+     "नूक और ग्रीनलैंड के ज़्यादातर हिस्से ने अक्टूबर 2023 में घड़ियाँ पीछे नहीं कीं; मानक समय UTC−2 हो गया, और 2024 से यूरोपीय संघ के नियमों के अनुसार ग्रीष्म समय (UTC−1) लागू होता है।"
+    ],
+    "bn": [
+     "গ্রিনল্যান্ডের বেশিরভাগ অংশ UTC−2-এ গেছে",
+     "নুক ও গ্রিনল্যান্ডের বেশিরভাগ অংশ অক্টোবর 2023-এ ঘড়ি পিছিয়ে দেয়নি; প্রমিত সময় UTC−2 হয়েছে, আর 2024 থেকে ইইউর নিয়মে দিবালোক সংরক্ষণ সময় (UTC−1)।"
     ]
    }
   },
@@ -1122,6 +1170,10 @@
     "hi": [
      "मिस्र ने डेलाइट सेविंग फिर शुरू किया",
      "मिस्र 2023 से डेलाइट सेविंग मानता है: अप्रैल के आख़िरी शुक्रवार को घड़ियाँ आगे और अक्टूबर के आख़िरी गुरुवार के अंत में पीछे होती हैं।"
+    ],
+    "bn": [
+     "মিশর দিবালোক সংরক্ষণ সময় ফিরিয়ে এনেছে",
+     "মিশর 2023 থেকে দিবালোক সংরক্ষণ সময় মানছে: এপ্রিলের শেষ শুক্রবার ঘড়ি এগিয়ে দেওয়া হয় এবং অক্টোবরের শেষ বৃহস্পতিবারের শেষে পিছিয়ে দেওয়া হয়।"
     ]
    }
   },
@@ -1209,6 +1261,10 @@
     "hi": [
      "मेक्सिको ने डेलाइट सेविंग ख़त्म किया",
      "30 अक्टूबर 2022 से मेक्सिको में डेलाइट सेविंग नहीं है; अमेरिकी सीमा की कुछ जगहें (जैसे सियुदाद ख़ुआरेज़) अब भी अमेरिका के साथ घड़ियाँ बदलती हैं।"
+    ],
+    "bn": [
+     "মেক্সিকো দিবালোক সংরক্ষণ সময় বাতিল করেছে",
+     "মেক্সিকো 30 অক্টোবর 2022 থেকে দিবালোক সংরক্ষণ সময় মানে না; যুক্তরাষ্ট্র সীমান্তের কিছু জায়গা (যেমন সিউদাদ হুয়ারেস) এখনো যুক্তরাষ্ট্রের সঙ্গে ঘড়ি বদলায়।"
     ]
    }
   }

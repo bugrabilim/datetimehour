@@ -36,6 +36,32 @@ class MethodsCrescentTest {
         assertTrue(h.asr!! - a.asr!! > 0.5)
     }
 
+    /** Kemenag: yukarı/aşağı yuvarlama, imsak uyarısı ve duha; bölgeye göre varsayılan yöntem (sitedeki toMin, methodRows, defaultMethod) */
+    @Test
+    fun kemenagAndRegionMatchWeb() {
+        val file = Vectors.load("kemenag.json")
+        val keys = file.getJSONArray("keys").let { k -> (0 until k.length()).map { k.getString(it) } }
+        val cases = file.getJSONArray("cases").objects()
+        assertTrue(cases.size > 50)
+        for (c in cases) {
+            val p = PrayerTimes.Parameters.method(c.getString("method"), false)
+            val y = c.getInt("y"); val m = c.getInt("m"); val d = c.getInt("d")
+            val lat = c.getDouble("lat"); val lon = c.getDouble("lon"); val tz = c.getDouble("tz")
+            val day = PrayerTimes.times(y, m, d, lat, lon, tz, p)
+            val rows = PrayerTimes.methodRows(y, m, d, lat, lon, tz, p, day)
+            val got = Prayer.entries.associate { it.key to day.minutes(it) } + mapOf("imsak" to rows?.imsak, "duha" to rows?.duha)
+            val want = c.getJSONArray("min")
+            keys.forEachIndexed { i, k ->
+                assertEquals(if (want.isNull(i)) null else want.getInt(i), got[k], "${c.getString("id")} ${c.getString("method")} $m-$d $k")
+            }
+        }
+        for (r in file.getJSONArray("region").objects()) {
+            val dm = PrayerTimes.defaultMethod(r.getString("tz"), r.getDouble("lat"), r.getDouble("lon"))
+            assertEquals(r.getString("method"), dm.id, r.getString("tz"))
+            assertEquals(r.getBoolean("hanafi"), dm.hanafi, r.getString("tz") + " " + r.getDouble("lat"))
+        }
+    }
+
     /** Hilal görünürlüğü (Yallop): sitedeki crescent ile aynı gün batımı, Ay batımı (±1 sn), q ve sınıf */
     @Test
     fun crescentMatchesWeb() {

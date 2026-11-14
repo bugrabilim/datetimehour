@@ -78,6 +78,10 @@
     <string name="prayer_method_note">در ترکیه اوقات رسمی، اوقات ریاست امور دینی (دیانت) است. اگر روش دیگری انتخاب کنید، اوقات، جدول ماهانه و امساکیهٔ این صفحه با آن محاسبه می‌شوند؛ انتخاب شما فقط در همین مرورگر ذخیره می‌شود.</string>
     <string name="prayer_method_active">روش: %1$s</string>
     <string name="prayer_method_hanafiShort">عصر حنفی</string>
+    <string name="prayer_method_region">بر اساس منطقه شما</string>
+    <string name="prayer_method_kemenagNote">روش کمناگ برای مناطق کم‌ارتفاع است: در مناطق مرتفع (بالای حدود 600 متر) کمناگ طلوع و مغرب را 4 تا 5 دقیقه متفاوت منتشر می‌کند. امساک از روی احتیاط 10 دقیقه پیش از صبح است.</string>
+    <string name="prayer_method_rowImsak">امساک</string>
+    <string name="prayer_method_rowDuha">ضحی</string>
     <string name="prayer_method_names_diyanet">دیانت (ترکیه)</string>
     <string name="prayer_method_names_mwl">رابطهٔ جهان اسلام</string>
     <string name="prayer_method_names_isna">انجمن اسلامی آمریکای شمالی (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">کویت</string>
     <string name="prayer_method_names_qatar">قطر</string>
     <string name="prayer_method_names_singapore">سنگاپور</string>
+    <string name="prayer_method_names_kemenag">کمناگ (وزارت امور دینی اندونزی)</string>
     <string name="prayer_method_names_france">فرانسه (UOIF)</string>
     <string name="prayer_method_names_russia">ادارهٔ روحانی مسلمانان روسیه</string>
     <string name="place_myLocation">موقعیت من</string>

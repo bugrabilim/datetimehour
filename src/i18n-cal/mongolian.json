@@ -1,0 +1,173 @@
+{
+ "tr": {
+  "name": "Moğol takvimi",
+  "desc": "Moğol ay-güneş takvimine göre Tsagaan Sar (Moğol yılbaşı) ve Cengiz Han'ın doğum günü.",
+  "note": "Moğolistan'ın geleneksel takvimi, Tibet takviminin Yeni Genden (Tögs Buyant) sürümüdür. Tsagaan Sar çoğu yıl Tibet'in Losar'ıyla aynı gündür, bazı yıllarda bir gün ya da bir ay ayrılır; Moğolistan'da üç gün resmî tatildir. Cengiz Han'ın doğum günü kışın ilk ayının ilk günüdür (2012'den beri resmî tatil).",
+  "ev": {
+   "tsagaanSar": "Tsagaan Sar (Moğol yılbaşı)",
+   "chinggis": "Cengiz Han'ın doğum günü (Ulusal Gurur Günü)"
+  }
+ },
+ "en": {
+  "name": "Mongolian calendar",
+  "desc": "Tsagaan Sar (Mongolian New Year) and Chinggis Khaan's birthday in the Mongolian lunisolar calendar.",
+  "note": "Mongolia's traditional calendar is the New Genden (Tögs Buyant) version of the Tibetan calendar. Tsagaan Sar usually falls on the same day as Tibetan Losar, but in some years a day or a month apart; it is a three-day public holiday in Mongolia. Chinggis Khaan's birthday is the first day of the first winter month (a public holiday since 2012).",
+  "ev": {
+   "tsagaanSar": "Tsagaan Sar (Mongolian New Year)",
+   "chinggis": "Chinggis Khaan's Birthday (National Pride Day)"
+  }
+ },
+ "de": {
+  "name": "Mongolischer Kalender",
+  "desc": "Tsagaan Sar (mongolisches Neujahr) und Dschingis Khans Geburtstag im mongolischen Lunisolarkalender.",
+  "note": "Der traditionelle Kalender der Mongolei ist die Neue-Genden-Fassung (Tögs Buyant) des tibetischen Kalenders. Tsagaan Sar fällt meist auf denselben Tag wie das tibetische Losar, in manchen Jahren einen Tag oder einen Monat versetzt; in der Mongolei ist es ein dreitägiger Feiertag. Dschingis Khans Geburtstag ist der erste Tag des ersten Wintermonats (Feiertag seit 2012).",
+  "ev": {
+   "tsagaanSar": "Tsagaan Sar (mongolisches Neujahr)",
+   "chinggis": "Geburtstag Dschingis Khans (Tag des Nationalstolzes)"
+  }
+ },
+ "az": {
+  "name": "Monqol təqvimi",
+  "desc": "Monqol ay-günəş təqviminə görə Tsaqaan Sar (Monqol yeni ili) və Çingiz xanın doğum günü.",
+  "note": "Monqolustanın ənənəvi təqvimi Tibet təqviminin Yeni Qenden (Töqs Buyant) variantıdır. Tsaqaan Sar adətən Tibet Losarı ilə eyni gündür, bəzi illərdə bir gün və ya bir ay fərqlənir; Monqolustanda üç günlük rəsmi bayramdır. Çingiz xanın doğum günü qışın ilk ayının ilk günüdür (2012-ci ildən rəsmi bayram).",
+  "ev": {
+   "tsagaanSar": "Tsaqaan Sar (Monqol yeni ili)",
+   "chinggis": "Çingiz xanın doğum günü (Milli Qürur Günü)"
+  }
+ },
+ "ar": {
+  "name": "التقويم المنغولي",
+  "desc": "تساغان سار (رأس السنة المنغولية) وعيد ميلاد جنكيز خان في التقويم القمري الشمسي المنغولي.",
+  "note": "التقويم التقليدي في منغوليا هو صيغة غندن الجديدة (توغس بويانت) من التقويم التبتي. يوافق تساغان سار في الغالب يوم لوسار التبتي، ويختلف عنه في بعض السنوات بيوم أو بشهر؛ وهو عطلة رسمية لثلاثة أيام في منغوليا. عيد ميلاد جنكيز خان هو أول يوم من أول شهور الشتاء (عطلة رسمية منذ 2012).",
+  "ev": {
+   "tsagaanSar": "تساغان سار (رأس السنة المنغولية)",
+   "chinggis": "عيد ميلاد جنكيز خان (يوم الفخر الوطني)"
+  }
+ },
+ "id": {
+  "name": "Kalender Mongolia",
+  "desc": "Tsagaan Sar (Tahun Baru Mongolia) dan hari lahir Jenghis Khan menurut kalender lunisolar Mongolia.",
+  "note": "Kalender tradisional Mongolia adalah versi Genden Baru (Tögs Buyant) dari kalender Tibet. Tsagaan Sar biasanya jatuh pada hari yang sama dengan Losar Tibet, tetapi pada tahun tertentu berselisih sehari atau sebulan; di Mongolia hari ini libur resmi tiga hari. Hari lahir Jenghis Khan adalah hari pertama bulan pertama musim dingin (libur resmi sejak 2012).",
+  "ev": {
+   "tsagaanSar": "Tsagaan Sar (Tahun Baru Mongolia)",
+   "chinggis": "Hari lahir Jenghis Khan (Hari Kebanggaan Nasional)"
+  }
+ },
+ "ur": {
+  "name": "منگول کیلنڈر",
+  "desc": "منگول قمری شمسی کیلنڈر کے مطابق تساگان سار (منگول نیا سال) اور چنگیز خان کا یومِ پیدائش۔",
+  "note": "منگولیا کا روایتی کیلنڈر تبتی کیلنڈر کا نیا گاندن (توگس بویانت) نسخہ ہے۔ تساگان سار عموماً تبتی لوسار کے دن ہی آتا ہے، بعض برسوں میں ایک دن یا ایک مہینے کا فرق ہوتا ہے؛ منگولیا میں یہ تین دن کی سرکاری تعطیل ہے۔ چنگیز خان کا یومِ پیدائش سردیوں کے پہلے مہینے کا پہلا دن ہے (2012 سے سرکاری تعطیل)۔",
+  "ev": {
+   "tsagaanSar": "تساگان سار (منگول نیا سال)",
+   "chinggis": "چنگیز خان کا یومِ پیدائش (قومی فخر کا دن)"
+  }
+ },
+ "fa": {
+  "name": "گاه‌شماری مغولی",
+  "desc": "تساگان سار (سال نو مغولی) و زادروز چنگیز خان در گاه‌شماری قمری‌خورشیدی مغولی.",
+  "note": "گاه‌شماری سنتی مغولستان نسخهٔ گاندن نو (توگس بویانت) از گاه‌شماری تبتی است. تساگان سار بیشتر سال‌ها با لوسار تبتی هم‌روز است و در برخی سال‌ها یک روز یا یک ماه فاصله دارد؛ در مغولستان سه روز تعطیل رسمی است. زادروز چنگیز خان نخستین روز نخستین ماه زمستان است (تعطیل رسمی از 2012).",
+  "ev": {
+   "tsagaanSar": "تساگان سار (سال نو مغولی)",
+   "chinggis": "زادروز چنگیز خان (روز افتخار ملی)"
+  }
+ },
+ "fr": {
+  "name": "Calendrier mongol",
+  "desc": "Tsagaan Sar (Nouvel An mongol) et l’anniversaire de Gengis Khan dans le calendrier luni-solaire mongol.",
+  "note": "Le calendrier traditionnel de la Mongolie est la version Nouveau Genden (Tögs Buyant) du calendrier tibétain. Tsagaan Sar tombe en général le même jour que le Losar tibétain, mais certaines années un jour ou un mois plus tôt ou plus tard ; c’est un jour férié de trois jours en Mongolie. L’anniversaire de Gengis Khan est le premier jour du premier mois d’hiver (férié depuis 2012).",
+  "ev": {
+   "tsagaanSar": "Tsagaan Sar (Nouvel An mongol)",
+   "chinggis": "Anniversaire de Gengis Khan (Journée de la fierté nationale)"
+  }
+ },
+ "ru": {
+  "name": "Монгольский календарь",
+  "desc": "Цагаан сар (монгольский Новый год) и день рождения Чингисхана по монгольскому лунно-солнечному календарю.",
+  "note": "Традиционный календарь Монголии — версия Новый Гандэн (Тэгс буянт) тибетского календаря. Цагаан сар обычно совпадает с тибетским Лосаром, но в некоторые годы расходится на день или на месяц; в Монголии это трёхдневный праздник. День рождения Чингисхана — первый день первого зимнего месяца (государственный праздник с 2012 года).",
+  "ev": {
+   "tsagaanSar": "Цагаан сар (монгольский Новый год)",
+   "chinggis": "День рождения Чингисхана (День национальной гордости)"
+  }
+ },
+ "ja": {
+  "name": "モンゴル暦",
+  "desc": "モンゴルの太陰太陽暦によるツァガーン・サル（モンゴル正月）とチンギス・ハーンの誕生日。",
+  "note": "モンゴルの伝統暦は、チベット暦の新ガンデン派（トゥグス・ブヤント）の方式です。ツァガーン・サルは多くの年でチベットのロサルと同じ日ですが、1日または1か月ずれる年もあります。モンゴルでは3日間の祝日です。チンギス・ハーンの誕生日は冬の最初の月の1日です（2012年から祝日）。",
+  "ev": {
+   "tsagaanSar": "ツァガーン・サル（モンゴル正月）",
+   "chinggis": "チンギス・ハーンの誕生日（国家の誇りの日）"
+  }
+ },
+ "ko": {
+  "name": "몽골력",
+  "desc": "몽골 태음태양력에 따른 차강사르(몽골 설날)와 칭기즈 칸 탄생일.",
+  "note": "몽골의 전통 달력은 티베트력의 신간덴(투그스 보양트) 체계입니다. 차강사르는 대개 티베트의 로사르와 같은 날이지만, 하루나 한 달 차이가 나는 해도 있습니다. 몽골에서는 사흘 동안의 공휴일입니다. 칭기즈 칸 탄생일은 겨울 첫 달의 첫날입니다(2012년부터 공휴일).",
+  "ev": {
+   "tsagaanSar": "차강사르(몽골 설날)",
+   "chinggis": "칭기즈 칸 탄생일(국가 자긍심의 날)"
+  }
+ },
+ "zh": {
+  "name": "蒙古历",
+  "desc": "按蒙古阴阳历的白月节（蒙古新年）和成吉思汗诞辰。",
+  "note": "蒙古国的传统历法是藏历的新甘丹（图格斯布彦特）版本。白月节多数年份与藏历新年同日，有些年份相差一天或一个月；在蒙古国是为期三天的公众假日。成吉思汗诞辰是冬季第一个月的第一天（自2012年起为公众假日）。",
+  "ev": {
+   "tsagaanSar": "白月节（蒙古新年）",
+   "chinggis": "成吉思汗诞辰（民族自豪日）"
+  }
+ },
+ "fil": {
+  "name": "Kalendaryong Mongol",
+  "desc": "Ang Tsagaan Sar (Bagong Taon ng Mongolia) at ang kaarawan ni Genghis Khan ayon sa kalendaryong lunisolar ng Mongolia.",
+  "note": "Ang tradisyonal na kalendaryo ng Mongolia ay ang bersiyong Bagong Genden (Tögs Buyant) ng kalendaryong Tibetano. Kadalasang kapareho ng araw ng Losar ng Tibet ang Tsagaan Sar, pero sa ilang taon ay nauuna o nahuhuli nang isang araw o isang buwan; tatlong araw itong pista opisyal sa Mongolia. Ang kaarawan ni Genghis Khan ay ang unang araw ng unang buwan ng taglamig (pista opisyal mula 2012).",
+  "ev": {
+   "tsagaanSar": "Tsagaan Sar (Bagong Taon ng Mongolia)",
+   "chinggis": "Kaarawan ni Genghis Khan (Araw ng Pambansang Pagmamalaki)"
+  }
+ },
+ "th": {
+  "name": "ปฏิทินมองโกล",
+  "desc": "ซากานซาร์ (ปีใหม่มองโกล) และวันเกิดเจงกิสข่าน ตามปฏิทินจันทรคติ-สุริยคติของมองโกล",
+  "note": "ปฏิทินดั้งเดิมของมองโกเลียคือปฏิทินทิเบตแบบกันเดนใหม่ (เทิกส์บูยันต์) ซากานซาร์มักตรงกับโลซาร์ของทิเบต แต่บางปีห่างกันหนึ่งวันหรือหนึ่งเดือน ในมองโกเลียเป็นวันหยุดราชการสามวัน วันเกิดเจงกิสข่านคือวันแรกของเดือนแรกในฤดูหนาว (วันหยุดราชการตั้งแต่ปี 2012)",
+  "ev": {
+   "tsagaanSar": "ซากานซาร์ (ปีใหม่มองโกล)",
+   "chinggis": "วันเกิดเจงกิสข่าน (วันแห่งความภาคภูมิใจของชาติ)"
+  }
+ },
+ "es": {
+  "name": "Calendario mongol",
+  "desc": "El Tsagaan Sar (Año Nuevo mongol) y el cumpleaños de Gengis Kan en el calendario lunisolar mongol.",
+  "note": "El calendario tradicional de Mongolia es la versión Nuevo Genden (Tögs Buyant) del calendario tibetano. El Tsagaan Sar suele caer el mismo día que el Losar tibetano, pero algunos años con un día o un mes de diferencia; en Mongolia es festivo durante tres días. El cumpleaños de Gengis Kan es el primer día del primer mes de invierno (festivo desde 2012).",
+  "ev": {
+   "tsagaanSar": "Tsagaan Sar (Año Nuevo mongol)",
+   "chinggis": "Cumpleaños de Gengis Kan (Día del Orgullo Nacional)"
+  }
+ },
+ "pt": {
+  "name": "Calendário mongol",
+  "desc": "O Tsagaan Sar (Ano-Novo mongol) e o aniversário de Gengis Khan no calendário lunissolar mongol.",
+  "note": "O calendário tradicional da Mongólia é a versão Novo Genden (Tögs Buyant) do calendário tibetano. O Tsagaan Sar costuma cair no mesmo dia do Losar tibetano, mas em alguns anos com um dia ou um mês de diferença; na Mongólia é feriado de três dias. O aniversário de Gengis Khan é o primeiro dia do primeiro mês de inverno (feriado desde 2012).",
+  "ev": {
+   "tsagaanSar": "Tsagaan Sar (Ano-Novo mongol)",
+   "chinggis": "Aniversário de Gengis Khan (Dia do Orgulho Nacional)"
+  }
+ },
+ "hi": {
+  "name": "मंगोल पंचांग",
+  "desc": "मंगोल चांद्र-सौर पंचांग के अनुसार त्सगान सर (मंगोल नववर्ष) और चंगेज़ ख़ान का जन्मदिन।",
+  "note": "मंगोलिया का पारंपरिक पंचांग तिब्बती पंचांग का नया गंदेन (तोग्स बुयंत) रूप है। त्सगान सर ज़्यादातर तिब्बती लोसर के दिन ही पड़ता है, कुछ वर्षों में एक दिन या एक महीने का अंतर होता है; मंगोलिया में यह तीन दिन का सार्वजनिक अवकाश है। चंगेज़ ख़ान का जन्मदिन जाड़े के पहले महीने का पहला दिन है (2012 से सार्वजनिक अवकाश)।",
+  "ev": {
+   "tsagaanSar": "त्सगान सर (मंगोल नववर्ष)",
+   "chinggis": "चंगेज़ ख़ान का जन्मदिन (राष्ट्रीय गौरव दिवस)"
+  }
+ },
+ "bn": {
+  "name": "মঙ্গোল পঞ্জিকা",
+  "desc": "মঙ্গোল চান্দ্র-সৌর পঞ্জিকা অনুযায়ী ৎসাগান সার (মঙ্গোল নববর্ষ) এবং চেঙ্গিস খানের জন্মদিন।",
+  "note": "মঙ্গোলিয়ার ঐতিহ্যবাহী পঞ্জিকা তিব্বতি পঞ্জিকার নতুন গান্দেন (তোগস বুয়ান্ত) রূপ। ৎসাগান সার সাধারণত তিব্বতি লোসারের দিনেই পড়ে, কোনো কোনো বছর এক দিন বা এক মাসের ব্যবধান হয়; মঙ্গোলিয়ায় এটি তিন দিনের সরকারি ছুটি। চেঙ্গিস খানের জন্মদিন শীতের প্রথম মাসের প্রথম দিন (2012 থেকে সরকারি ছুটি)।",
+  "ev": {
+   "tsagaanSar": "ৎসাগান সার (মঙ্গোল নববর্ষ)",
+   "chinggis": "চেঙ্গিস খানের জন্মদিন (জাতীয় গৌরব দিবস)"
+  }
+ }
+}

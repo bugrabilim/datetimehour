@@ -64,7 +64,7 @@
     <string name="prayer_extraNames_midnight">منتصف الليل</string>
     <string name="prayer_extraNames_tahajjud">التهجد (الثلث الأخير من الليل)</string>
     <string name="prayer_extraNames_seher">السحر</string>
-    <string name="prayer_extraNote">لا تنشر رئاسة الشؤون الدينية هذه الأوقات. تُحسب وفق تعريفات تقويم تركيا: الإشراق والاصفرار والشمس على ارتفاع 5° فوق الأفق، واشتباك النجوم عند 10° والعشاء الثاني عند 19° تحته؛ والضحوة الكبرى منتصف ما بين الإمساك والمغرب؛ والليل من المغرب إلى الإمساك.</string>
+    <string name="prayer_extraNote">لا تنشر رئاسة الشؤون الدينية هذه الأوقات. تُحسب وفق تعريفات «تقويم تركيا» (Türkiye Takvimi): الإشراق والاصفرار والشمس على ارتفاع 5° فوق الأفق، واشتباك النجوم عند 10° والعشاء الثاني عند 19° تحته؛ والضحوة الكبرى منتصف ما بين الإمساك والمغرب؛ والليل من المغرب إلى الإمساك.</string>
     <string name="prayer_bayram">صلاة العيد</string>
     <string name="prayer_bayramTomorrow">صلاة العيد غدًا: %1$s</string>
     <string name="prayer_bayramNote">القاعدة نفسها في مواقيت رئاسة الشؤون الدينية (بعد الشروق بـ 38 دقيقة)؛ والمعتمد إعلان مفتي الولاية.</string>
@@ -78,6 +78,10 @@
     <string name="prayer_method_note">المواقيت الرسمية في تركيا هي مواقيت رئاسة الشؤون الدينية. إذا اخترت طريقة أخرى فستُحسب بها المواقيت والجدول الشهري وإمساكية رمضان في هذه الصفحة؛ ويُحفظ اختيارك في هذا المتصفح فقط.</string>
     <string name="prayer_method_active">الطريقة: %1$s</string>
     <string name="prayer_method_hanafiShort">العصر الحنفي</string>
+    <string name="prayer_method_region">حسب منطقتك</string>
+    <string name="prayer_method_kemenagNote">طريقة وزارة الشؤون الدينية الإندونيسية للأماكن المنخفضة: في المرتفعات (فوق نحو 600 متر) تنشر الوزارة الشروق والمغرب بفارق 4–5 دقائق. والإمساك قبل الفجر بعشر دقائق احتياطًا.</string>
+    <string name="prayer_method_rowImsak">الإمساك</string>
+    <string name="prayer_method_rowDuha">الضحى</string>
     <string name="prayer_method_names_diyanet">ديانت (تركيا)</string>
     <string name="prayer_method_names_mwl">رابطة العالم الإسلامي</string>
     <string name="prayer_method_names_isna">الجمعية الإسلامية لأمريكا الشمالية (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">الكويت</string>
     <string name="prayer_method_names_qatar">قطر</string>
     <string name="prayer_method_names_singapore">سنغافورة</string>
+    <string name="prayer_method_names_kemenag">وزارة الشؤون الدينية الإندونيسية (Kemenag)</string>
     <string name="prayer_method_names_france">فرنسا (UOIF)</string>
     <string name="prayer_method_names_russia">الإدارة الدينية لمسلمي روسيا</string>
     <string name="place_myLocation">موقعي</string>
@@ -155,7 +160,7 @@
     <string name="watch_timer">المؤقت</string>
     <string name="watch_pomodoro">بومودورو</string>
     <string name="watch_world">الساعة العالمية</string>
-    <string name="watch_zikir">المسبحة</string>
+    <string name="watch_zikir">عدّاد الذكر</string>
     <string name="watch_start">ابدأ</string>
     <string name="watch_pause">إيقاف مؤقت</string>
     <string name="watch_reset">إعادة الضبط</string>

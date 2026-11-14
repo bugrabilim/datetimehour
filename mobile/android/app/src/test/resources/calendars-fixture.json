@@ -1,0 +1,25 @@
+{
+  "_": "Yalnız testler için uydurma takvim (sözleşme v1 biçimi); gerçek veri gen-strings.mjs ile assets/calendars.json'a yazılır.",
+  "v": 1,
+  "from": 2027,
+  "to": 2027,
+  "cals": {
+    "fixture": {
+      "group": "cultural",
+      "regions": ["DE", "AT"],
+      "color": "#7B5EA7",
+      "events": [
+        ["2027-03-28", "spring"],
+        ["2027-04-10", "fest", "2027-04-12"]
+      ],
+      "months": [
+        ["2027-03-10", 5787, 1, 0],
+        ["2027-04-09", 5787, 2, 1],
+        ["2027-05-08", 5787, 3, 0],
+        ["2027-06-07", 5787, 4, 0]
+      ],
+      "daily": { "2027-03-28": "t5n12", "2027-04-10": "r3" },
+      "years": { "2027": 9 }
+    }
+  }
+}

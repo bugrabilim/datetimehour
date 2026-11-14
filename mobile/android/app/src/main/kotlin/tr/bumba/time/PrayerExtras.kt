@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.width
 import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -70,20 +71,49 @@ import kotlin.math.sin
 object PrayerMethod {
     const val METHOD = "prayer.method"
     const val HANAFI = "prayer.hanafi"
-    val id: String get() = if (Prefs.ready) Prefs.store.getString(METHOD, "diyanet") ?: "diyanet" else "diyanet"
-    val hanafi: Boolean get() = Prefs.ready && Prefs.store.getBoolean(HANAFI, false)
-    fun params(): PrayerTimes.Parameters = PrayerTimes.Parameters.method(id, hanafi)
+    /** Kullanıcı yöntem seçti mi (seçmediyse yerin saat dilimine göre varsayılan; 10 Kasım 2026, sitedeki defaultMethod) */
+    val chosen: Boolean get() = Prefs.ready && Prefs.store.contains(METHOD)
+    private fun place(): AppPlace? = if (Prefs.ready) runCatching { AppPlace.current() }.getOrNull() else null
+    fun regionDefault(place: AppPlace?): PrayerTimes.DefaultMethod =
+        place?.let { PrayerTimes.defaultMethod(it.zone.id, it.lat, it.lon) } ?: PrayerTimes.DefaultMethod("diyanet", false)
+    fun id(place: AppPlace?): String = if (chosen) Prefs.store.getString(METHOD, "diyanet") ?: "diyanet" else regionDefault(place).id
+    fun hanafi(place: AppPlace?): Boolean = if (chosen) Prefs.store.getBoolean(HANAFI, false) else regionDefault(place).hanafi
+    fun params(place: AppPlace? = place()): PrayerTimes.Parameters = PrayerTimes.Parameters.method(id(place), hanafi(place))
+    /** Yöntem bölgeden mi geldi (Diyanet dışı bir varsayılan) */
+    fun fromRegion(place: AppPlace?): Boolean = !chosen && regionDefault(place).let { it.id != "diyanet" || it.hanafi }
+    val id: String get() = id(place())
+    val hanafi: Boolean get() = hanafi(place())
     val isCustom: Boolean get() = id != "diyanet" || hanafi
+    /** Türkiye'ye özgü ekler (bayram namazı, ezani saat, Türkiye Takvimi ek vakitleri) yalnız Diyanet'te */
+    fun isDiyanet(place: AppPlace?): Boolean = id(place) == "diyanet"
     fun name(id: String) = L("prayer.method.names.$id")
+    /** "…" menüsündeki ve ayardaki kısa açıklama: yöntem adı, Hanefî, bölgenize göre */
+    fun label(place: AppPlace?): String {
+        val parts = mutableListOf(name(id(place)))
+        if (hanafi(place)) parts += L("prayer.method.hanafiShort")
+        if (fromRegion(place)) parts += L("prayer.method.region")
+        return parts.joinToString(" · ")
+    }
 }
 
 @Composable
 fun PrayerMethodScreen(onBack: () -> Unit) {
     val context = LocalContext.current
-    var method by remember { mutableStateOf(PrayerMethod.id) }
-    var hanafi by remember { mutableStateOf(PrayerMethod.hanafi) }
+    val place = remember { AppPlace.current() }
+    var method by remember { mutableStateOf(PrayerMethod.id(place)) }
+    var hanafi by remember { mutableStateOf(PrayerMethod.hanafi(place)) }
+    var regional by remember { mutableStateOf(PrayerMethod.fromRegion(place)) }
+    var hijriCal by remember { mutableStateOf(Hijri.setting) }
+    var hijriOff by remember { mutableStateOf(Hijri.offset) }
+    val todayHijri = remember(hijriCal, hijriOff) { Hijri.date(java.time.LocalDate.now()) }
+    fun saveHijri() {
+        Prefs.store.edit().putString(Hijri.CAL, hijriCal).putInt(Hijri.OFFSET, hijriOff).apply()
+        WidgetUpdater.updateAll(context)
+        PrayerNotifier.reschedule(context)
+    }
     fun save() {
         Prefs.store.edit().putString(PrayerMethod.METHOD, method).putBoolean(PrayerMethod.HANAFI, hanafi).apply()
+        regional = false
         PrayerNotifier.reschedule(context)
     }
     Column(Modifier.fillMaxSize()) {
@@ -103,7 +133,25 @@ fun PrayerMethodScreen(onBack: () -> Unit) {
                     Text(L(if (h) "prayer.method.asrHanafi" else "prayer.method.asrStd"), color = Theme.c.text, fontSize = 15.sp)
                 }
             }
+            if (regional) Text(PrayerMethod.label(place), color = Theme.c.muted, fontSize = 12.sp)
+            if (method == "kemenag") Text(L("prayer.method.kemenagNote"), color = Theme.c.muted, fontSize = 12.sp)
             Text(L("prayer.method.appNote"), color = Theme.c.muted, fontSize = 12.sp)
+            // Hicri takvim: Diyanet, Endonezya (Kemenag) ya da yere göre; ay başı ±1 gün (10 Kasım 2026)
+            AppCard {
+                SectionTitle(L("hijriCal.title"))
+                for (c in listOf("auto", "diyanet", "kemenag")) Row(Modifier.fillMaxWidth().clickable { hijriCal = c; saveHijri() }, verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(hijriCal == c, { hijriCal = c; saveHijri() }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
+                    Text(L("hijriCal.$c"), color = Theme.c.text, fontSize = 15.sp)
+                }
+            }
+            AppCard {
+                SectionTitle(L("hijriCal.offset"))
+                for (o in listOf(-1, 0, 1)) Row(Modifier.fillMaxWidth().clickable { hijriOff = o; saveHijri() }, verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(hijriOff == o, { hijriOff = o; saveHijri() }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
+                    Text(L(when (o) { -1 -> "hijriCal.offsetM1"; 1 -> "hijriCal.offsetP1"; else -> "hijriCal.offset0" }), color = Theme.c.text, fontSize = 15.sp)
+                }
+            }
+            Text((todayHijri?.text?.let { "☾ $it · " } ?: "") + L("hijriCal.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
     }
 }
@@ -387,13 +435,22 @@ fun CrescentCard(place: AppPlace, now: Instant) {
     for (e in evenings) AppCard {
         Text(Fmt.dayMonth(java.time.Instant.ofEpochMilli(e.sunset).atZone(place.zone).toLocalDate()), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
         Text(L("nature.crescentCats.${e.category}"), color = if (e.category == "A" || e.category == "B") Theme.c.accent else Theme.c.muted, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
-        val parts = mutableListOf("☀ " + Fmt.hm(Instant.ofEpochMilli(e.sunset), place.zone))
-        e.moonset?.let { ms ->
+        // Gün batımı ve Ay batımı iki tonlu simgeyle (8 Kasım 2026; "☀"/"☾" yerine)
+        val moonPart = e.moonset?.let { ms ->
             val lag = e.lag ?: 0.0
-            parts += "☾ " + Fmt.hm(Instant.ofEpochMilli(ms), place.zone) + " (" + (if (lag > 0) T("nature.crescentLag", lag.roundToInt()) else L("nature.crescentBefore")) + ")"
+            Fmt.hm(Instant.ofEpochMilli(ms), place.zone) + " (" + (if (lag > 0) T("nature.crescentLag", lag.roundToInt()) else L("nature.crescentBefore")) + ")"
         }
-        if (e.age > 0) parts += T("nature.crescentAge", e.age.roundToInt())
-        Text(parts.joinToString(" · "), color = Theme.c.muted, fontSize = 12.sp)
+        val agePart = if (e.age > 0) T("nature.crescentAge", e.age.roundToInt()) else null
+        androidx.compose.foundation.layout.Row(verticalAlignment = Alignment.CenterVertically) {
+            DuoIcon("sunset", 14.dp, Theme.c.muted)
+            androidx.compose.foundation.layout.Spacer(Modifier.width(3.dp))
+            Text(Fmt.hm(Instant.ofEpochMilli(e.sunset), place.zone) + if (moonPart != null || agePart != null) " · " else "", color = Theme.c.muted, fontSize = 12.sp)
+            if (moonPart != null) {
+                DuoIcon("moon", 14.dp, Theme.c.muted)
+                androidx.compose.foundation.layout.Spacer(Modifier.width(3.dp))
+            }
+            Text(listOfNotNull(moonPart, agePart).joinToString(" · "), color = Theme.c.muted, fontSize = 12.sp)
+        }
     }
     Text(T("nature.crescentLead", place.name, Fmt.hm(Instant.ofEpochMilli(conj), place.zone)) + " " + L("nature.crescentNote"), color = Theme.c.muted, fontSize = 12.sp)
 }

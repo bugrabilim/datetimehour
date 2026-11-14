@@ -1,0 +1,44 @@
+{
+  "source": [
+    "https://de.wikipedia.org/wiki/Osterdatum (Tablo: Ostersonntage im gregor. und im jul. Kalender; Batı ve Doğu kiliseleri, 2017–2035; 9 Kasım 2026'da okundu)",
+    "https://en.wikipedia.org/wiki/List_of_dates_for_Easter (Batı ve Ortodoks Paskalyası 2025 ve 2028'de aynı gün)"
+  ],
+  "note": "Paskalya tarihleri kaynak tablodan; türetilen bayramlar (Kül Çarşambası = Paskalya − 46, Göğe Yükseliş = +39, Pentekost = +49, Corpus Christi = +60, Advent = Noel'den önceki dördüncü pazar) kuraldan.",
+  "cases": [
+    { "date": "2025-04-20", "key": "easter" },
+    { "date": "2026-04-05", "key": "easter" },
+    { "date": "2027-03-28", "key": "easter" },
+    { "date": "2028-04-16", "key": "easter" },
+    { "date": "2029-04-01", "key": "easter" },
+    { "date": "2030-04-21", "key": "easter" },
+    { "date": "2031-04-13", "key": "easter" },
+    { "date": "2032-03-28", "key": "easter" },
+    { "date": "2025-04-20", "key": "orthodoxEaster" },
+    { "date": "2026-04-12", "key": "orthodoxEaster" },
+    { "date": "2027-05-02", "key": "orthodoxEaster" },
+    { "date": "2028-04-16", "key": "orthodoxEaster" },
+    { "date": "2029-04-08", "key": "orthodoxEaster" },
+    { "date": "2030-04-28", "key": "orthodoxEaster" },
+    { "date": "2031-04-13", "key": "orthodoxEaster" },
+    { "date": "2032-05-02", "key": "orthodoxEaster" },
+    { "date": "2026-02-18", "key": "ashWednesday" },
+    { "date": "2027-02-10", "key": "ashWednesday" },
+    { "date": "2027-03-26", "key": "goodFriday" },
+    { "date": "2027-03-29", "key": "easterMonday" },
+    { "date": "2027-04-30", "key": "orthodoxGoodFriday" },
+    { "date": "2027-05-06", "key": "ascension" },
+    { "date": "2027-05-16", "key": "pentecost" },
+    { "date": "2027-05-17", "key": "whitMonday" },
+    { "date": "2027-05-27", "key": "corpusChristi" },
+    { "date": "2027-06-20", "key": "orthodoxPentecost" },
+    { "date": "2026-11-29", "key": "advent1" },
+    { "date": "2027-11-28", "key": "advent1" },
+    { "date": "2028-12-03", "key": "advent1" },
+    { "date": "2027-01-07", "key": "orthodoxChristmas" },
+    { "date": "2027-12-25", "key": "christmas" }
+  ],
+  "absent": [
+    { "date": "2027-03-28", "key": "orthodoxEaster" },
+    { "date": "2027-12-24", "key": "christmas" }
+  ]
+}

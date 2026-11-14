@@ -65,6 +65,25 @@ final class OneShotLocation: NSObject, CLLocationManagerDelegate {
     }
 }
 
+/// Vakit yöntemi (widget, saat ve masaüstü uygulamaları dahil; 10 Kasım 2026): uygulamada seçildiyse App Group'taki seçim
+/// (`PrayerMethod.publish`), yoksa yerin saat dilimine göre varsayılan (Endonezya Kemenag, Güney Asya Karaçi + Hanefî,
+/// Türkiye ve diğerleri Diyanet).
+enum SharedPrayerMethod {
+    static func parameters(latitude: Double, longitude: Double, timeZone: TimeZone) -> PrayerTimes.Parameters {
+        let g = UserDefaults(suiteName: "group.tr.bumba.time")
+        if let id = g?.string(forKey: "prayer.method") {
+            return .method(id, hanafi: g?.bool(forKey: "prayer.hanafi") ?? false)
+        }
+        let d = PrayerTimes.defaultMethod(timeZone: timeZone.identifier, latitude: latitude, longitude: longitude)
+        return .method(d.id, hanafi: d.hanafi)
+    }
+
+    static func schedule(latitude: Double, longitude: Double, timeZone: TimeZone) -> PrayerSchedule {
+        PrayerSchedule(latitude: latitude, longitude: longitude, timeZone: timeZone,
+                       parameters: parameters(latitude: latitude, longitude: longitude, timeZone: timeZone))
+    }
+}
+
 /// Vakitlerin hesaplanacağı yer: bir il ya da (yurt dışında) tam konum.
 struct Place {
     let name: String
@@ -76,7 +95,8 @@ struct Place {
     }
 
     init(province: Province) {
-        self.init(name: province.displayName, schedule: PrayerSchedule(province: province))
+        self.init(name: province.displayName,
+                  schedule: SharedPrayerMethod.schedule(latitude: province.lat, longitude: province.lon, timeZone: PrayerSchedule.zone))
     }
 
     /// En yakın il; en yakın il merkezi 150 km'den uzaksa (yurt dışı) tam konum ve cihazın saat dilimi.
@@ -86,8 +106,8 @@ struct Place {
             self.init(province: province)
         } else {
             self.init(name: L("place.myLocation"),
-                      schedule: PrayerSchedule(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude,
-                                               timeZone: .current))
+                      schedule: SharedPrayerMethod.schedule(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude,
+                                                            timeZone: .current))
         }
     }
 }

@@ -1,0 +1,287 @@
+{
+  "tr": {
+    "name": "Etiyopya takvimi",
+    "desc": "Etiyopya tarihi ve Enkutataş, Meskel, Genna, Timkat, Fasika gibi Etiyopya bayramları.",
+    "note": "Etiyopya yılı 30 günlük 12 ay ile 5 ya da 6 günlük Pagume'den oluşur; 11 Eylül'de (Gregoryen artık yıldan önceki yılda 12 Eylül'de) başlar ve Gregoryen yılın 7–8 yıl gerisindedir. Bayramlar Etiyopya Ortodoks Tewahedo Kilisesi'ne göredir: Genna her yıl 7 Ocak'ta, Fasika Ortodoks Paskalyasıyla aynı gündedir.",
+    "ev": {
+      "genna": "Genna (Etiyopya Noeli)",
+      "timkat": "Timkat (Epifani)",
+      "siklet": "Siklet (Kutsal Cuma)",
+      "fasika": "Fasika (Etiyopya Paskalyası)",
+      "enkutatash": "Enkutataş (Etiyopya yılbaşı)",
+      "meskel": "Meskel (Haçın bulunuşu)"
+    },
+    "month": ["Meskerem", "Tikimt", "Hidar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miyazya", "Ginbot", "Sene", "Hamle", "Nehase", "Pagume"],
+    "fmt": "{d} {m} {y}"
+  },
+  "en": {
+    "name": "Ethiopian calendar",
+    "desc": "The Ethiopian date and Ethiopian holidays such as Enkutatash, Meskel, Genna, Timkat and Fasika.",
+    "note": "The Ethiopian year has twelve 30-day months and Pagume of 5 or 6 days; it begins on 11 September (12 September in the year before a Gregorian leap year) and runs 7–8 years behind the Gregorian year. Feasts follow the Ethiopian Orthodox Tewahedo Church: Genna falls on 7 January every year and Fasika on Orthodox Easter.",
+    "ev": {
+      "genna": "Genna (Ethiopian Christmas)",
+      "timkat": "Timkat (Epiphany)",
+      "siklet": "Siklet (Good Friday)",
+      "fasika": "Fasika (Ethiopian Easter)",
+      "enkutatash": "Enkutatash (Ethiopian New Year)",
+      "meskel": "Meskel (Finding of the True Cross)"
+    },
+    "month": ["Meskerem", "Tikimt", "Hidar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miyazya", "Ginbot", "Sene", "Hamle", "Nehase", "Pagume"],
+    "fmt": "{d} {m} {y}"
+  },
+  "de": {
+    "name": "Äthiopischer Kalender",
+    "desc": "Das äthiopische Datum und äthiopische Feste wie Enkutatash, Meskel, Genna, Timkat und Fasika.",
+    "note": "Das äthiopische Jahr hat zwölf Monate zu 30 Tagen und den Pagume mit 5 oder 6 Tagen; es beginnt am 11. September (im Jahr vor einem gregorianischen Schaltjahr am 12. September) und liegt 7–8 Jahre hinter dem gregorianischen Jahr. Die Feste folgen der Äthiopisch-Orthodoxen Tewahedo-Kirche: Genna ist jedes Jahr am 7. Januar, Fasika am orthodoxen Ostersonntag.",
+    "ev": {
+      "genna": "Genna (äthiopisches Weihnachten)",
+      "timkat": "Timkat (Epiphanias)",
+      "siklet": "Siklet (Karfreitag)",
+      "fasika": "Fasika (äthiopisches Osterfest)",
+      "enkutatash": "Enkutatash (äthiopisches Neujahr)",
+      "meskel": "Meskel (Kreuzauffindung)"
+    },
+    "month": ["Meskerem", "Tikimt", "Hidar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miyazya", "Ginbot", "Sene", "Hamle", "Nehase", "Pagume"],
+    "fmt": "{d}. {m} {y}"
+  },
+  "az": {
+    "name": "Efiopiya təqvimi",
+    "desc": "Efiopiya tarixi və Enkutataş, Meskel, Genna, Timkat, Fasika kimi Efiopiya bayramları.",
+    "note": "Efiopiya ili 30 günlük 12 aydan və 5 ya da 6 günlük Paqumedən ibarətdir; 11 sentyabrda (Qriqorian uzun ilindən əvvəlki ildə 12 sentyabrda) başlayır və Qriqorian ildən 7–8 il geridədir. Bayramlar Efiopiya Ortodoks Tevahedo Kilsəsinə görədir: Genna hər il 7 yanvarda, Fasika Pravoslav Pasxası ilə eyni gündədir.",
+    "ev": {
+      "genna": "Genna (Efiopiya Miladı)",
+      "timkat": "Timkat (Epifaniya)",
+      "siklet": "Siklet (Müqəddəs Cümə)",
+      "fasika": "Fasika (Efiopiya Pasxası)",
+      "enkutatash": "Enkutataş (Efiopiya Yeni ili)",
+      "meskel": "Meskel (Xaçın tapılması)"
+    },
+    "month": ["Məskərəm", "Tıkımt", "Hıdar", "Tahsas", "Tırr", "Yəkatit", "Məqabit", "Miyazya", "Qınbot", "Səne", "Hamle", "Nəhase", "Paqume"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ar": {
+    "name": "التقويم الإثيوبي",
+    "desc": "التاريخ الإثيوبي والأعياد الإثيوبية مثل إنكوتاتاش ومسقل وجنا وتمكات وفاسيكا.",
+    "note": "تتكون السنة الإثيوبية من 12 شهرًا كل منها 30 يومًا وشهر باجمي من 5 أو 6 أيام، وتبدأ في 11 سبتمبر (12 سبتمبر في السنة التي تسبق السنة الكبيسة الغريغورية) وتتأخر 7 أو 8 سنوات عن السنة الغريغورية. تتبع الأعياد الكنيسة الأرثوذكسية الإثيوبية التوحيدية: يقع جنا في 7 يناير كل عام، وفاسيكا في يوم عيد الفصح الأرثوذكسي.",
+    "ev": {
+      "genna": "جنا (عيد الميلاد الإثيوبي)",
+      "timkat": "تمكات (عيد الغطاس)",
+      "siklet": "سقلت (الجمعة العظيمة)",
+      "fasika": "فاسيكا (عيد الفصح الإثيوبي)",
+      "enkutatash": "إنكوتاتاش (رأس السنة الإثيوبية)",
+      "meskel": "مسقل (عيد الصليب)"
+    },
+    "month": ["مسكرم", "تقمت", "هدار", "تاهساس", "طر", "يكاتيت", "مجابيت", "ميازيا", "جنبوت", "سني", "حملي", "نهاسي", "باجمي"],
+    "fmt": "{d} {m} {y}"
+  },
+  "id": {
+    "name": "Kalender Etiopia",
+    "desc": "Tanggal Etiopia dan hari raya Etiopia seperti Enkutatash, Meskel, Genna, Timkat, dan Fasika.",
+    "note": "Tahun Etiopia terdiri atas 12 bulan masing-masing 30 hari dan bulan Pagume 5 atau 6 hari; tahun dimulai pada 11 September (12 September pada tahun sebelum tahun kabisat Gregorius) dan tertinggal 7–8 tahun dari tahun Gregorius. Hari raya mengikuti Gereja Ortodoks Tewahedo Etiopia: Genna jatuh setiap 7 Januari dan Fasika pada hari Paskah Ortodoks.",
+    "ev": {
+      "genna": "Genna (Natal Etiopia)",
+      "timkat": "Timkat (Epifani)",
+      "siklet": "Siklet (Jumat Agung)",
+      "fasika": "Fasika (Paskah Etiopia)",
+      "enkutatash": "Enkutatash (Tahun Baru Etiopia)",
+      "meskel": "Meskel (Penemuan Salib Suci)"
+    },
+    "month": ["Meskerem", "Tikimt", "Hidar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miyazya", "Ginbot", "Sene", "Hamle", "Nehase", "Pagume"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ur": {
+    "name": "ایتھوپیائی کیلنڈر",
+    "desc": "ایتھوپیائی تاریخ اور ایتھوپیائی تہوار جیسے انکوتاتاش، مسکل، گینا، تمکات اور فاسیکا۔",
+    "note": "ایتھوپیائی سال 30 دن کے 12 مہینوں اور 5 یا 6 دن کے مہینے پاگومے پر مشتمل ہے؛ یہ 11 ستمبر کو (گریگوری لیپ سال سے پہلے والے سال میں 12 ستمبر کو) شروع ہوتا ہے اور گریگوری سال سے 7–8 سال پیچھے ہے۔ تہوار ایتھوپیائی آرتھوڈوکس تواحیدو کلیسا کے مطابق ہیں: گینا ہر سال 7 جنوری کو اور فاسیکا آرتھوڈوکس ایسٹر کے دن ہوتا ہے۔",
+    "ev": {
+      "genna": "گینا (ایتھوپیائی کرسمس)",
+      "timkat": "تمکات (عیدِ ظہور)",
+      "siklet": "سکلیت (گڈ فرائیڈے)",
+      "fasika": "فاسیکا (ایتھوپیائی ایسٹر)",
+      "enkutatash": "انکوتاتاش (ایتھوپیائی نیا سال)",
+      "meskel": "مسکل (صلیب کی دریافت)"
+    },
+    "month": ["مسکرم", "تکمت", "ہدار", "تہساس", "تر", "یکاتیت", "مگابیت", "میازیا", "گنبوت", "سینے", "ہملے", "نہاسے", "پاگومے"],
+    "fmt": "{d} {m} {y}"
+  },
+  "fa": {
+    "name": "گاه‌شماری اتیوپیایی",
+    "desc": "تاریخ اتیوپیایی و اعیاد اتیوپی مانند اینکوتاتاش، مسکل، گنا، تیمکت و فاسیکا.",
+    "note": "سال اتیوپیایی از 12 ماه 30 روزه و ماه پاگومه با 5 یا 6 روز تشکیل می‌شود؛ در 11 سپتامبر (در سال پیش از سال کبیسهٔ میلادی در 12 سپتامبر) آغاز می‌شود و 7 تا 8 سال از سال میلادی عقب‌تر است. اعیاد طبق کلیسای ارتدکس تواحدوی اتیوپی است: گنا هر سال در 7 ژانویه و فاسیکا در روز عید پاک ارتدکس است.",
+    "ev": {
+      "genna": "گنا (کریسمس اتیوپی)",
+      "timkat": "تیمکت (عید ظهور)",
+      "siklet": "سیکلت (جمعهٔ مقدس)",
+      "fasika": "فاسیکا (عید پاک اتیوپی)",
+      "enkutatash": "اینکوتاتاش (سال نو اتیوپی)",
+      "meskel": "مسکل (یافتن صلیب)"
+    },
+    "month": ["مسکرم", "تکیمت", "هیدار", "تهساس", "تر", "یکاتیت", "مگابیت", "میازیا", "گینبوت", "سنه", "هامله", "نهاسه", "پاگومه"],
+    "fmt": "{d} {m} {y}"
+  },
+  "fr": {
+    "name": "Calendrier éthiopien",
+    "desc": "La date éthiopienne et les fêtes éthiopiennes comme Enkutatash, Meskel, Genna, Timkat et Fasika.",
+    "note": "L’année éthiopienne compte douze mois de 30 jours et le mois de Pagume, de 5 ou 6 jours ; elle commence le 11 septembre (le 12 septembre l’année qui précède une année bissextile grégorienne) et a 7 à 8 ans de retard sur l’année grégorienne. Les fêtes suivent l’Église orthodoxe éthiopienne Tewahedo : Genna tombe chaque année le 7 janvier et Fasika le jour de Pâques orthodoxe.",
+    "ev": {
+      "genna": "Genna (Noël éthiopien)",
+      "timkat": "Timkat (Épiphanie)",
+      "siklet": "Siklet (Vendredi saint)",
+      "fasika": "Fasika (Pâques éthiopiennes)",
+      "enkutatash": "Enkutatash (Nouvel An éthiopien)",
+      "meskel": "Meskel (Invention de la Croix)"
+    },
+    "month": ["Meskerem", "Tikimt", "Hidar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miyazya", "Ginbot", "Sene", "Hamle", "Nehase", "Pagume"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ru": {
+    "name": "Эфиопский календарь",
+    "desc": "Эфиопская дата и эфиопские праздники: Энкутаташ, Мескель, Генна, Тимкат и Фасика.",
+    "note": "Эфиопский год состоит из 12 месяцев по 30 дней и месяца пагумен из 5 или 6 дней; он начинается 11 сентября (12 сентября в год перед григорианским високосным) и отстаёт от григорианского на 7–8 лет. Праздники отмечаются по Эфиопской православной церкви Тевахедо: Генна каждый год 7 января, Фасика в день православной Пасхи.",
+    "ev": {
+      "genna": "Генна (эфиопское Рождество)",
+      "timkat": "Тимкат (Богоявление)",
+      "siklet": "Сиклет (Страстная пятница)",
+      "fasika": "Фасика (эфиопская Пасха)",
+      "enkutatash": "Энкутаташ (эфиопский Новый год)",
+      "meskel": "Мескель (Обретение Креста)"
+    },
+    "month": ["маскарама", "тэкэмта", "хедара", "тахсаса", "тэра", "якатита", "магабита", "миязьи", "генбота", "сэне", "хамле", "нахасе", "пагумена"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ja": {
+    "name": "エチオピア暦",
+    "desc": "エチオピア暦の日付と、エンクタタシュ、メスケル、ゲンナ、ティムカット、ファシカなどのエチオピアの祝祭日。",
+    "note": "エチオピア暦の1年は30日の月が12か月とパグメ月（5日または6日）からなり、9月11日（グレゴリオ暦の閏年の前年は9月12日）に始まり、グレゴリオ暦より7〜8年遅れています。祝祭日はエチオピア正教会に従い、ゲンナは毎年1月7日、ファシカは正教会の復活大祭と同じ日です。",
+    "ev": {
+      "genna": "ゲンナ（エチオピアの降誕祭）",
+      "timkat": "ティムカット（神現祭）",
+      "siklet": "シクレット（聖金曜日）",
+      "fasika": "ファシカ（エチオピアの復活祭）",
+      "enkutatash": "エンクタタシュ（エチオピアの新年）",
+      "meskel": "メスケル（十字架発見祭）"
+    },
+    "month": ["マスカラム月", "テクムト月", "フダル月", "タフサス月", "トルウ月", "ヤカテイト月", "マガビット月", "ミヤズヤ月", "グンボット月", "サネ月", "ハムレ月", "ナハセ月", "パグメ月"],
+    "fmt": "{y}年{m}{d}日"
+  },
+  "ko": {
+    "name": "에티오피아력",
+    "desc": "에티오피아력 날짜와 엔쿠타타시, 메스켈, 겐나, 팀카트, 파시카 등 에티오피아 축일.",
+    "note": "에티오피아력의 1년은 30일짜리 12개월과 5일 또는 6일인 파구메월로 이루어지며, 9월 11일(그레고리력 윤년 전해에는 9월 12일)에 시작하고 그레고리력보다 7~8년 늦습니다. 축일은 에티오피아 정교회 테와헤도를 따르며, 겐나는 매년 1월 7일, 파시카는 정교회 부활절과 같은 날입니다.",
+    "ev": {
+      "genna": "겐나(에티오피아 성탄절)",
+      "timkat": "팀카트(주님 공현)",
+      "siklet": "시클레트(성금요일)",
+      "fasika": "파시카(에티오피아 부활절)",
+      "enkutatash": "엔쿠타타시(에티오피아 새해)",
+      "meskel": "메스켈(성 십자가 발견 축일)"
+    },
+    "month": ["메스케렘월", "티킴트월", "히다르월", "타흐사스월", "티르월", "예카티트월", "메가비트월", "미야즈야월", "긴보트월", "세네월", "함레월", "네하세월", "파구메월"],
+    "fmt": "{y}년 {m} {d}일"
+  },
+  "zh": {
+    "name": "埃塞俄比亚历",
+    "desc": "埃塞俄比亚历日期，以及恩库塔塔什节、梅斯克尔节、根纳节、蒂姆卡特节和法西卡等埃塞俄比亚节日。",
+    "note": "埃塞俄比亚历一年有12个30天的月和一个5天或6天的帕古梅月，每年从9月11日开始（格里历闰年的前一年为9月12日），比格里历晚7至8年。节日依照埃塞俄比亚正教会台瓦西多：根纳节每年在1月7日，法西卡与东正教复活节同日。",
+    "ev": {
+      "genna": "根纳节（埃塞俄比亚圣诞节）",
+      "timkat": "蒂姆卡特节（主显节）",
+      "siklet": "西克莱特（耶稣受难日）",
+      "fasika": "法西卡（埃塞俄比亚复活节）",
+      "enkutatash": "恩库塔塔什节（埃塞俄比亚新年）",
+      "meskel": "梅斯克尔节（十字架节）"
+    },
+    "month": ["梅斯凯雷姆月", "提克姆特月", "希达尔月", "塔赫萨斯月", "提尔月", "耶卡提特月", "梅加比特月", "米亚兹亚月", "金博特月", "塞内月", "哈姆勒月", "内哈塞月", "帕古梅月"],
+    "fmt": "{y}年{m}{d}日"
+  },
+  "fil": {
+    "name": "Kalendaryo ng Etiyopiya",
+    "desc": "Ang petsa sa kalendaryo ng Etiyopiya at mga pista gaya ng Enkutatash, Meskel, Genna, Timkat, at Fasika.",
+    "note": "Ang taon ng Etiyopiya ay may 12 buwan na tig-30 araw at ang buwang Pagume na 5 o 6 na araw; nagsisimula ito sa 11 Setyembre (12 Setyembre sa taon bago ang leap year ng Gregoryano) at 7–8 taon itong nahuhuli sa taong Gregoryano. Sinusunod ng mga pista ang Simbahang Ortodoksong Tewahedo ng Etiyopiya: tuwing 7 Enero ang Genna at kasabay ng Pasko ng Pagkabuhay ng Ortodokso ang Fasika.",
+    "ev": {
+      "genna": "Genna (Pasko ng Etiyopiya)",
+      "timkat": "Timkat (Binyag ng Panginoon)",
+      "siklet": "Siklet (Biyernes Santo)",
+      "fasika": "Fasika (Pasko ng Pagkabuhay ng Etiyopiya)",
+      "enkutatash": "Enkutatash (Bagong Taon ng Etiyopiya)",
+      "meskel": "Meskel (Pagkatagpo sa Banal na Krus)"
+    },
+    "month": ["Meskerem", "Tikimt", "Hidar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miyazya", "Ginbot", "Sene", "Hamle", "Nehase", "Pagume"],
+    "fmt": "{d} {m} {y}"
+  },
+  "th": {
+    "name": "ปฏิทินเอธิโอเปีย",
+    "desc": "วันที่ตามปฏิทินเอธิโอเปียและเทศกาลของเอธิโอเปีย เช่น เอนคูทาทาช เมสเกล เกนนา ทิมกัต และฟาซิกา",
+    "note": "ปีเอธิโอเปียมี 12 เดือน เดือนละ 30 วัน และเดือนปากูเมซึ่งมี 5 หรือ 6 วัน เริ่มต้นวันที่ 11 กันยายน (12 กันยายนในปีก่อนปีอธิกสุรทินของปฏิทินเกรกอรี) และช้ากว่าปีเกรกอรี 7–8 ปี เทศกาลเป็นไปตามคริสตจักรออร์โธดอกซ์เตวาเฮโดเอธิโอเปีย โดยเกนนาตรงกับวันที่ 7 มกราคมทุกปี และฟาซิกาตรงกับวันอีสเตอร์ของออร์โธดอกซ์",
+    "ev": {
+      "genna": "เกนนา (คริสต์มาสเอธิโอเปีย)",
+      "timkat": "ทิมกัต (วันพระคริสต์แสดงองค์)",
+      "siklet": "ซิกเลต (วันศุกร์ประเสริฐ)",
+      "fasika": "ฟาซิกา (อีสเตอร์เอธิโอเปีย)",
+      "enkutatash": "เอนคูทาทาช (ปีใหม่เอธิโอเปีย)",
+      "meskel": "เมสเกล (วันพบไม้กางเขน)"
+    },
+    "month": ["เมสเคอเรม", "ทีเคมท์", "เฮอดาร์", "ทาฮ์ซัส", "เทอร์", "เยคาทิท", "เมกาบิท", "มิยัซยา", "เกนโบท", "เซเน", "ฮัมเล", "เนฮาเซ", "ปากูเม"],
+    "fmt": "{d} {m} {y}"
+  },
+  "es": {
+    "name": "Calendario etíope",
+    "desc": "La fecha etíope y las fiestas etíopes como Enkutatash, Meskel, Genna, Timkat y Fasika.",
+    "note": "El año etíope tiene doce meses de 30 días y el mes de Pagume, de 5 o 6 días; comienza el 11 de septiembre (el 12 de septiembre en el año anterior a un año bisiesto gregoriano) y va 7 u 8 años por detrás del año gregoriano. Las fiestas siguen a la Iglesia ortodoxa etíope Tewahedo: Genna cae cada año el 7 de enero y Fasika el día de la Pascua ortodoxa.",
+    "ev": {
+      "genna": "Genna (Navidad etíope)",
+      "timkat": "Timkat (Epifanía)",
+      "siklet": "Siklet (Viernes Santo)",
+      "fasika": "Fasika (Pascua etíope)",
+      "enkutatash": "Enkutatash (Año Nuevo etíope)",
+      "meskel": "Meskel (Hallazgo de la Santa Cruz)"
+    },
+    "month": ["Meskerem", "Tikimt", "Hidar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miyazya", "Ginbot", "Sene", "Hamle", "Nehase", "Pagume"],
+    "fmt": "{d} de {m} de {y}"
+  },
+  "pt": {
+    "name": "Calendário etíope",
+    "desc": "A data etíope e as festas etíopes como Enkutatash, Meskel, Genna, Timkat e Fasika.",
+    "note": "O ano etíope tem doze meses de 30 dias e o mês de Pagume, de 5 ou 6 dias; começa em 11 de setembro (12 de setembro no ano anterior a um ano bissexto gregoriano) e fica 7 a 8 anos atrás do ano gregoriano. As festas seguem a Igreja Ortodoxa Etíope Tewahedo: Genna cai todo ano em 7 de janeiro e Fasika no dia da Páscoa ortodoxa.",
+    "ev": {
+      "genna": "Genna (Natal etíope)",
+      "timkat": "Timkat (Epifania)",
+      "siklet": "Siklet (Sexta-feira Santa)",
+      "fasika": "Fasika (Páscoa etíope)",
+      "enkutatash": "Enkutatash (Ano-Novo etíope)",
+      "meskel": "Meskel (Invenção da Santa Cruz)"
+    },
+    "month": ["Meskerem", "Tikimt", "Hidar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miyazya", "Ginbot", "Sene", "Hamle", "Nehase", "Pagume"],
+    "fmt": "{d} de {m} de {y}"
+  },
+  "hi": {
+    "name": "इथियोपियाई कैलेंडर",
+    "desc": "इथियोपियाई तारीख़ और एनकुताताश, मेस्केल, गेन्ना, टिमकत व फ़ासिका जैसे इथियोपियाई त्योहार।",
+    "note": "इथियोपियाई वर्ष में 30-30 दिन के 12 महीने और 5 या 6 दिन का पागुमे महीना होता है; यह 11 सितंबर को (ग्रेगोरियन लीप वर्ष से पहले वाले वर्ष में 12 सितंबर को) शुरू होता है और ग्रेगोरियन वर्ष से 7–8 वर्ष पीछे रहता है। त्योहार इथियोपियाई ऑर्थोडॉक्स तेवाहेदो चर्च के अनुसार हैं: गेन्ना हर वर्ष 7 जनवरी को और फ़ासिका ऑर्थोडॉक्स ईस्टर के दिन होता है।",
+    "ev": {
+      "genna": "गेन्ना (इथियोपियाई क्रिसमस)",
+      "timkat": "टिमकत (एपिफ़नी)",
+      "siklet": "सिकलेत (गुड फ्राइडे)",
+      "fasika": "फ़ासिका (इथियोपियाई ईस्टर)",
+      "enkutatash": "एनकुताताश (इथियोपियाई नव वर्ष)",
+      "meskel": "मेस्केल (पवित्र क्रूस की खोज)"
+    },
+    "month": ["मेस्केरेम", "तिकिम्त", "हिदार", "तहसास", "तिर", "येकातित", "मेगाबित", "मियाज़िया", "गिनबोत", "सेने", "हामले", "नेहासे", "पागुमे"],
+    "fmt": "{d} {m} {y}"
+  },
+  "bn": {
+    "name": "ইথিওপীয় ক্যালেন্ডার",
+    "desc": "ইথিওপীয় তারিখ এবং এনকুতাতাশ, মেসকেল, গেন্না, তিমকাত ও ফাসিকার মতো ইথিওপীয় ছুটি।",
+    "note": "ইথিওপীয় বছরে 30 দিনের বারোটি মাস এবং 5 বা 6 দিনের পাগুমে থাকে; বছর 11 সেপ্টেম্বর শুরু হয় (গ্রেগরীয় অধিবর্ষের আগের বছরে 12 সেপ্টেম্বর) এবং গ্রেগরীয় বছরের চেয়ে 7–8 বছর পিছিয়ে চলে। উৎসবগুলো ইথিওপীয় অর্থোডক্স তেওয়াহেদো গির্জা অনুসরণ করে: গেন্না প্রতি বছর 7 জানুয়ারি এবং ফাসিকা অর্থোডক্স ইস্টারে।",
+    "ev": {
+      "genna": "গেন্না (ইথিওপীয় বড়দিন)",
+      "timkat": "তিমকাত (এপিফ্যানি)",
+      "siklet": "সিকলেত (গুড ফ্রাইডে)",
+      "fasika": "ফাসিকা (ইথিওপীয় ইস্টার)",
+      "enkutatash": "এনকুতাতাশ (ইথিওপীয় নববর্ষ)",
+      "meskel": "মেসকেল (প্রকৃত ক্রুশের সন্ধান)"
+    },
+    "month": ["মেসকেরেম", "তিকিমত", "হিদার", "তাহসাস", "তির", "ইয়েকাতিত", "মেগাবিত", "মিয়াজিয়া", "গিনবত", "সেনে", "হামলে", "নেহাসে", "পাগুমে"],
+    "fmt": "{d} {m} {y}"
+  }
+}

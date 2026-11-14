@@ -78,6 +78,10 @@
     <string name="prayer_method_note">튀르키예에서 공식 시간은 튀르키예 종교청(디야넷)의 시간입니다. 다른 방법을 고르면 이 페이지의 시간, 월간 표, 라마단 시간표가 그 방법으로 계산되며 선택은 이 브라우저에만 저장됩니다.</string>
     <string name="prayer_method_active">방법: %1$s</string>
     <string name="prayer_method_hanafiShort">하나피 아스르</string>
+    <string name="prayer_method_region">지역에 맞춤</string>
+    <string name="prayer_method_kemenagNote">Kemenag 방식은 저지대 기준입니다. 고지대(해발 약 600m 이상)에서는 Kemenag의 일출과 마그립 시각이 4~5분 다릅니다. 임삭은 예방 차원에서 파즈르 10분 전입니다.</string>
+    <string name="prayer_method_rowImsak">임삭</string>
+    <string name="prayer_method_rowDuha">두하</string>
     <string name="prayer_method_names_diyanet">디야넷(튀르키예)</string>
     <string name="prayer_method_names_mwl">무슬림 세계 연맹</string>
     <string name="prayer_method_names_isna">북미 이슬람 협회(ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">쿠웨이트</string>
     <string name="prayer_method_names_qatar">카타르</string>
     <string name="prayer_method_names_singapore">싱가포르</string>
+    <string name="prayer_method_names_kemenag">Kemenag (인도네시아 종교부)</string>
     <string name="prayer_method_names_france">프랑스(UOIF)</string>
     <string name="prayer_method_names_russia">러시아 무슬림 종무청</string>
     <string name="place_myLocation">내 위치</string>

@@ -14,7 +14,7 @@ import kotlin.math.sqrt
 /** 81 il (sitedeki src/data/provinces.json) */
 data class Province(val slug: String, val name: String, val lat: Double, val lon: Double, val ar: String, val local: Map<String, String> = emptyMap()) {
     /** Arapça, Rusça ve Farsçada kendi yazısıyla; diğer dillerde Türkçe yazım */
-    /** Arapçada Arapça ad; Rusça, Farsça, Japonca, Korece, Çince ve Taycada o dildeki ad (provinces.json), diğerlerinde Türkçe ad */
+    /** Arapçada Arapça ad; Rusça, Farsça, Japonca, Korece, Çince, Tayca, Hintçe ve Bengalcede o dildeki ad (provinces.json), diğerlerinde Türkçe ad */
     val displayName: String get() = if (Strings.lang == "ar") ar else local[Strings.lang]?.ifEmpty { null } ?: name
 
     companion object {
@@ -54,6 +54,7 @@ data class City(
     private val countries: Map<String, String>,
 ) {
     val displayName: String get() = names[Strings.lang] ?: names["en"] ?: key
+    val englishName: String get() = names["en"] ?: key
     val displayCountry: String get() = countries[Strings.lang] ?: countries["en"] ?: ""
     val zone: ZoneId get() = ZoneId.of(tz)
 
@@ -92,11 +93,53 @@ object AppData {
     /** İl → ilçeleri (ada göre sıralı) */
     lateinit var districts: Map<String, List<District>>
         private set
-    /** Gün → o günün olayları (birden çok güne yayılanlar her günde) */
-    lateinit var events: Map<LocalDate, List<CalEvent>>
-        private set
-    lateinit var ramadans: List<ClosedRange<LocalDate>>
-        private set
+    /** calendar.json'daki olaylar dosya sırasıyla ve Ramazanlar (Diyanet'e göre) */
+    private var baseEvents: List<CalEvent> = emptyList()
+    private var baseRamadans: List<ClosedRange<LocalDate>> = emptyList()
+    private var shiftKey = ""
+    private var shiftedEvents: Map<LocalDate, List<CalEvent>> = emptyMap()
+    private var shiftedRamadans: List<ClosedRange<LocalDate>> = emptyList()
+
+    /**
+     * Gün → o günün olayları (birden çok güne yayılanlar her günde). Dini günler (tür "religious") ve Ramazan seçili hicri
+     * takvime göredir (Hijri.shift: Endonezya takvimi ya da ±1 gün; 10 Kasım 2026); Türkiye'nin resmî tatilleri değişmez.
+     */
+    val events: Map<LocalDate, List<CalEvent>> get() { refreshShift(); return shiftedEvents }
+    val ramadans: List<ClosedRange<LocalDate>> get() { refreshShift(); return shiftedRamadans }
+
+    /** Diyanet'e göre bir dini günün seçili takvimdeki günü (Regaib: Recep'in ilk cumasından önceki perşembe) */
+    fun shiftReligious(e: CalEvent): CalEvent {
+        if (Hijri.isDefault) return e
+        val date = when (e.key) {
+            "regaib" -> Hijri.baseDate(e.date.plusDays(1))?.let { h -> Hijri.month(h.year, 7)?.first }
+                ?.let { first -> first.with(java.time.temporal.TemporalAdjusters.nextOrSame(java.time.DayOfWeek.FRIDAY)).minusDays(1) }
+                ?: e.date
+            // Arife: bayramın birinci gününden önceki gün (Ramazan 29 ya da 30 gün olabilir)
+            "rbEve", "kbEve" -> Hijri.shift(e.date.plusDays(1)).minusDays(1)
+            else -> Hijri.shift(e.date)
+        }
+        return if (date == e.date) e else e.copy(date = date, end = e.end?.let { it.plusDays(java.time.temporal.ChronoUnit.DAYS.between(e.date, date)) })
+    }
+
+    private fun refreshShift() {
+        val k = Hijri.key
+        if (k == shiftKey) return
+        val m = LinkedHashMap<LocalDate, MutableList<CalEvent>>()
+        for (e0 in baseEvents) {
+            val e = if (e0.type == "religious") shiftReligious(e0) else e0
+            var d = e.date
+            while (!d.isAfter(e.end ?: e.date)) {
+                m.getOrPut(d) { ArrayList() }.add(e)
+                d = d.plusDays(1)
+            }
+        }
+        shiftedEvents = m
+        shiftedRamadans = if (Hijri.isDefault) baseRamadans else baseRamadans.map { r ->
+            Hijri.shift(r.start)..Hijri.shift(r.endInclusive.plusDays(1)).minusDays(1)
+        }
+        shiftKey = k
+    }
+
     lateinit var schoolBreaks: List<ClosedRange<LocalDate>>
         private set
     lateinit var projectedYears: Set<Int>
@@ -104,11 +147,13 @@ object AppData {
 
     fun init(c: Context) {
         fun read(name: String) = c.assets.open(name).bufferedReader().use { it.readText() }
+        WorldHol.appContext = c.applicationContext
+        ExtraCals.appContext = c.applicationContext
 
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
-            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi").associateWith { o.optString(it) })
+            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th", "hi", "bn").associateWith { o.optString(it) })
         }
 
         val dj = JSONObject(read("districts.json"))
@@ -124,12 +169,12 @@ object AppData {
                  o.getJSONObject("name").toMap(), o.getJSONObject("country").toMap())
         }
 
-        Hijri.load(read("hijri.json"))
+        Hijri.load(read("hijri.json"), runCatching { read("hijri-id.json") }.getOrNull())
         Fitre.load(read("fitre.json"))
 
         val cal = JSONObject(read("calendar.json"))
         val years = cal.getJSONObject("years")
-        val byDay = HashMap<LocalDate, MutableList<CalEvent>>()
+        val all = ArrayList<CalEvent>()
         val school = ArrayList<ClosedRange<LocalDate>>()
         val projected = HashSet<Int>()
         for (y in years.keys()) {
@@ -140,12 +185,7 @@ object AppData {
                 val o = ev.getJSONObject(i)
                 val start = LocalDate.parse(o.getString("date"))
                 val end = if (o.has("end") && !o.isNull("end")) LocalDate.parse(o.getString("end")) else null
-                val e = CalEvent(start, o.getString("key"), o.getString("type"), end)
-                var d = start
-                while (!d.isAfter(end ?: start)) {
-                    byDay.getOrPut(d) { ArrayList() }.add(e)
-                    d = d.plusDays(1)
-                }
+                all += CalEvent(start, o.getString("key"), o.getString("type"), end)
             }
             val sr = yo.getJSONArray("schoolRanges")
             for (i in 0 until sr.length()) {
@@ -153,31 +193,39 @@ object AppData {
                 school += LocalDate.parse(o.getString("from"))..LocalDate.parse(o.getString("to"))
             }
         }
-        events = byDay
+        baseEvents = all
         schoolBreaks = school
         projectedYears = projected
         val r = cal.getJSONArray("ramadans")
         // Son Ramazan'ın bitişi henüz belli olmayabilir (veride null): 29 gün sayılır
-        ramadans = (0 until r.length()).map { i ->
+        baseRamadans = (0 until r.length()).map { i ->
             val o = r.getJSONObject(i)
             val from = LocalDate.parse(o.getString("from"))
             from..(if (o.isNull("to")) from.plusDays(29) else LocalDate.parse(o.getString("to")))
         }
+        shiftKey = ""
     }
 
     fun isRamadan(d: LocalDate) = ramadans.any { d in it }
     fun isSchoolBreak(d: LocalDate) = schoolBreaks.any { d in it }
 
     /** Bugünden sonraki özel günler (okul hariç) */
-    fun upcoming(from: LocalDate, limit: Int): List<CalEvent> =
-        events.entries.filter { !it.key.isBefore(from) }.sortedBy { it.key }
-            .flatMap { e -> e.value.filter { it.type != "school" && it.date == e.key } }
-            .take(limit)
+    /** Yaklaşan özel günler, takvimin ülke ve tür seçimiyle (calEvents; 9 Kasım 2026) */
+    fun upcoming(from: LocalDate, limit: Int): List<CalEvent> {
+        val out = mutableListOf<CalEvent>()
+        val last = events.keys.maxOrNull() ?: return out
+        var d = from
+        while (!d.isAfter(last) && out.size < limit) {
+            out += calEvents(d).filter { it.type != "school" && it.date == d }
+            d = d.plusDays(1)
+        }
+        return out.take(limit)
+    }
 
-    /** Olay türünün rengi (sitedeki takvim renkleri) */
-    fun color(type: String): Color = when (type) {
+    /** Olay türünün rengi (sitedeki takvim renkleri; kapsayıcı takvimlerde `cal:<id>` takvimin rengi) */
+    fun color(type: String): Color = if (type.startsWith("cal:")) ExtraCals.color(type.removePrefix("cal:")) else when (type) {
         "holiday" -> Color(0xFFD32F2F)
-        "half" -> Color(0xFFF57C00)
+        "half", "leave" -> Color(0xFFF57C00)
         "religious" -> Color(0xFF2E7D32)
         "school" -> Color(0xFF7B1FA2)
         else -> Color(0xFF1976D2)

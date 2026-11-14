@@ -35,9 +35,9 @@ enum Esma {
         let rows = bundleJSON("esma", [[String]].self) ?? []
         let lang = AppLocale.code
         return rows.enumerated().map { i, r in
-            // Sütunlar: [ar, Türkçe okunuş, Latin okunuş, tr, en, de, az, id, ur, fa, fr, ru, ja, ko, zh, fil, th]; Farsça ve Urducada okunuş yok
+            // Sütunlar: [ar, Türkçe okunuş, Latin okunuş, tr, en, de, az, id, ur, fa, fr, ru, ja, ko, zh, fil, th, es, pt, hi, bn]; Farsça ve Urducada okunuş yok
             let read = switch lang { case "tr", "az": r[1]; case "ur", "fa": ""; default: r[2] }
-            let col = ["tr": 3, "en": 4, "de": 5, "az": 6, "id": 7, "ur": 8, "fa": 9, "fr": 10, "ru": 11, "ja": 12, "ko": 13, "zh": 14, "fil": 15, "th": 16, "es": 17, "pt": 18, "hi": 19][lang]
+            let col = ["tr": 3, "en": 4, "de": 5, "az": 6, "id": 7, "ur": 8, "fa": 9, "fr": 10, "ru": 11, "ja": 12, "ko": 13, "zh": 14, "fil": 15, "th": 16, "es": 17, "pt": 18, "hi": 19, "bn": 20][lang]
             let mean = col.map { $0 < r.count ? r[$0] : "" } ?? ""
             return EsmaName(id: i + 1, ar: r[0], okunus: read, meaning: mean)
         }
@@ -300,9 +300,12 @@ struct CalendarLeafView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text(L("otd.h1")).font(.headline).foregroundStyle(Theme.text)
                         ForEach(otd, id: \.self) { it in
-                            VStack(alignment: .leading, spacing: 1) {
-                                Text(it.icon + " " + String(it.year) + " · " + it.title).foregroundStyle(Theme.text)
-                                if !it.desc.isEmpty { Text(it.desc).font(.caption).foregroundStyle(Theme.muted) }
+                            HStack(alignment: .top, spacing: 8) {
+                                DuoIcon(name: it.icon, size: 18, color: Theme.sage).padding(.top, 1)
+                                VStack(alignment: .leading, spacing: 1) {
+                                    Text(String(it.year) + " · " + it.title).foregroundStyle(Theme.text)
+                                    if !it.desc.isEmpty { Text(it.desc).font(.caption).foregroundStyle(Theme.muted) }
+                                }
                             }
                         }
                         Text("Wikidata (CC0)").font(.caption2).foregroundStyle(Theme.muted)
@@ -368,7 +371,8 @@ enum OnThisDay {
         let kind: String
         let name: String
         let desc: String
-        var icon: String { ["e": "📜", "f": "🏛️", "b": "🎂", "d": "🕯️"][kind] ?? "📜" }
+        /// İki tonlu simge (8 Kasım 2026, emoji yerine): olay parşömen, kuruluş topluluk, doğum hediye, ölüm yaprak
+        var icon: String { ["e": "scroll", "f": "people", "b": "gift", "d": "leaf"][kind] ?? "scroll" }
         var title: String { kind == "f" ? T("otd.foundedFmt", name) : name }
     }
 

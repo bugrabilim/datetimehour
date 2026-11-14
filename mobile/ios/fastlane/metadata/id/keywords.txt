@@ -1,1 +1,1 @@
-azan,imsakiyah,kiblat,quran,tasbih,ramadan,stopwatch,jam dunia,kalender,libur,metronom,jam catur
+salat,shalat,azan,imsakiyah,puasa,quran,tasbih,ramadan,masjid,doa,hijriah,kalender,stopwatch,dunia

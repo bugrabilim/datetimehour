@@ -218,7 +218,7 @@ class EventsWidget : BaseWidget() {
         val lines = mutableListOf<String>()
         for (d in listOf(today, today.plusDays(1))) {
             val prefix = if (d == today) "" else L("client.tomorrow") + " · "
-            AppData.events[d].orEmpty().map { it.name }.distinct().forEach { lines += "★ $prefix$it" }
+            calEvents(d).map { it.name }.distinct().forEach { lines += "★ $prefix$it" }
             if (calendarGranted(c)) {
                 DeviceCalendar.events(c, YearMonth.from(d))[d].orEmpty().forEach { e ->
                     lines += "• $prefix" + (if (e.allDay) "" else Fmt.hm(e.begin, zone) + " ") + e.title

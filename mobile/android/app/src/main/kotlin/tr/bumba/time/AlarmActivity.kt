@@ -175,7 +175,7 @@ class AlarmActivity : ComponentActivity() {
                     // El feneri (2. analiz #41)
                     if (Torch.available(this@AlarmActivity)) {
                         Spacer(Modifier.height(12.dp))
-                        RoundButton((if (torch) "🔦 ✓ " else "🔦 ") + L("alarm.torch"), torch, Modifier.fillMaxWidth()) {
+                        RoundButton((if (torch) "✓ " else "") + L("alarm.torch"), torch, "flashlight", Modifier.fillMaxWidth()) {
                             torch = !torch
                             Torch.set(this@AlarmActivity, torch)
                         }
@@ -255,7 +255,8 @@ fun MorningCard(onDone: () -> Unit) {
     val today = place.today(now)
     var weather by remember { mutableStateOf(WeatherCache.cached(place.lat, place.lon)) }
     LaunchedEffect(place.id) { weather = runCatching { WeatherCache.weather(place.lat, place.lon) }.getOrNull() ?: weather }
-    val events = AppData.events[LocalDate.now()].orEmpty().map { it.name }.distinct()
+    // Takvimin ülke ve tür seçimiyle (9 Kasım 2026: dini günler yalnız Vakitler açıkken varsayılan)
+    val events = calEvents(LocalDate.now()).map { it.name }.distinct()
     Column(
         Modifier.fillMaxSize().wallBackground().verticalScroll(rememberScrollState()).padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
@@ -278,7 +279,8 @@ fun MorningCard(onDone: () -> Unit) {
                 WeatherAttribution(Modifier.fillMaxWidth().padding(top = 6.dp))
             }
         }
-        place.next(now)?.let { next ->
+        // Sıradaki vakit yalnız Vakitler açıkken (9 Kasım 2026, Müslüman olmayanlar raporu A5)
+        if (Features.isOn(Tab.PRAYER)) place.next(now)?.let { next ->
             AppCard {
                 Text(L("home.item.next"), color = Theme.c.accent, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
                 Text("${next.prayer.title} ${Fmt.hm(next.at, place.zone)}", color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)

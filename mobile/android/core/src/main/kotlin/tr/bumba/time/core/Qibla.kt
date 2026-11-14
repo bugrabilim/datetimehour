@@ -60,4 +60,25 @@ object Qibla {
         }
         return null
     }
+
+    /**
+     * Rashdul Qiblat (10 Kasım 2026): Güneş'in Kâbe'nin tam üstünden geçtiği iki an, [Mayıs, Temmuz] UTC ms. Mayıs 15–31 ve
+     * Temmuz 5–31 arasında Kâbe'de öğle anında Güneş'i başucuna en yakın getiren gün; sitedeki `rashdulQiblat` ile aynı.
+     */
+    fun rashdul(year: Int): List<Long> {
+        fun noon(m: Int, d: Int): Triple<Double, Double, Double> {
+            val jd = PrayerTimes.julian(year, m, d)
+            var t = 12 - KAABA_LON / 15
+            repeat(3) { t = 12 - PrayerTimes.sunPosition(jd + t / 24).eqt - KAABA_LON / 15 }
+            return Triple(jd, t, kotlin.math.abs(PrayerTimes.sunPosition(jd + t / 24).decl - KAABA_LAT))
+        }
+        return listOf(Triple(5, 15, 31), Triple(7, 5, 31)).map { (m, from, to) ->
+            var best: Triple<Double, Double, Double>? = null
+            for (d in from..to) {
+                val n = noon(m, d)
+                if (best == null || n.third < best.third) best = n
+            }
+            jsRound((best!!.first - 2440587.5) * 86400000 + best.second * 3600000).toLong()
+        }
+    }
 }

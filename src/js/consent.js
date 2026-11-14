@@ -1,6 +1,9 @@
 /* Çerez onayı (Bumba standardı madde 14): ilk ziyarette bant, tercihler penceresi, Umami yalnız istatistik izniyle.
    Seçim `bumba-cerez` anahtarında: {"surum":"2026-10-21","istatistik":bool,"dis":bool}. "dis": dış hizmetler
-   (Open-Meteo hava durumu, OSM harita karoları ve Overpass camileri, alarmdaki YouTube müziği), varsayılan kapalı. main.js'ten önce çalışır. */
+   (Open-Meteo hava durumu, OSM harita karoları ve Overpass camileri, alarmdaki YouTube müziği), varsayılan kapalı. main.js'ten önce çalışır.
+   Aynı değer `bumba-cerez` çerezinde de durur (Domain=time.bumba.tr, bir yıl; standart 5.17 madde 14, 12 Kasım 2026): hesap
+   sayfaları ayrı alt alan adında (hesap.time.bumba.tr) olduğu için bant orada ikinci kez çıkmasın. Önce yerel depo, yoksa çerez
+   okunur; seçim değişince ikisi birlikte yazılır. */
 (function () {
   "use strict";
   var doc = document;
@@ -9,8 +12,18 @@
   var cfg = {};
   try { cfg = cfgEl ? JSON.parse(cfgEl.textContent) : {}; } catch (e) {}
   var choice = null;
+  function cookieRead() {
+    var m = doc.cookie.match(/(?:^|;\s*)bumba-cerez=([^;]*)/);
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+  function cookieWrite(v) {
+    var host = location.hostname, dom = /(^|\.)time\.bumba\.tr$/.test(host) ? "; Domain=time.bumba.tr" : "";
+    doc.cookie = KEY + "=" + encodeURIComponent(v) + dom + "; Path=/; Max-Age=31536000; SameSite=Lax" + (location.protocol === "https:" ? "; Secure" : "");
+  }
   try {
-    var raw = JSON.parse(localStorage.getItem(KEY) || "null");
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch (e) {}
+    var raw = JSON.parse(stored || cookieRead() || "null");
     if (raw && raw.surum === VER && typeof raw.istatistik === "boolean") choice = { istatistik: raw.istatistik, dis: raw.dis === true };
   } catch (e) {}
 
@@ -45,7 +58,9 @@
   function save(next) {
     var before = choice;
     choice = { istatistik: !!next.istatistik, dis: !!next.dis };
-    try { localStorage.setItem(KEY, JSON.stringify({ surum: VER, istatistik: choice.istatistik, dis: choice.dis })); } catch (e) {}
+    var v = JSON.stringify({ surum: VER, istatistik: choice.istatistik, dis: choice.dis });
+    try { localStorage.setItem(KEY, v); } catch (e) {}
+    try { cookieWrite(v); } catch (e) {}
     if (bar) bar.hidden = true;
     doc.documentElement.classList.remove("has-cookie-bar");
     closePrefs();

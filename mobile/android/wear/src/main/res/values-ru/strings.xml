@@ -78,6 +78,10 @@
     <string name="prayer_method_note">В Турции официальным является время Управления по делам религии (Diyanet). Если выбрать другой метод, время, таблица на месяц и расписание Рамадана на этой странице рассчитываются по нему; выбор сохраняется только в этом браузере.</string>
     <string name="prayer_method_active">Метод: %1$s</string>
     <string name="prayer_method_hanafiShort">Ханафитский аср</string>
+    <string name="prayer_method_region">по вашему региону</string>
+    <string name="prayer_method_kemenagNote">Метод Kemenag рассчитан на низменности: в высокогорье (выше примерно 600 м) Kemenag публикует восход и магриб с разницей в 4–5 минут. Имсак — за 10 минут до фаджра, для предосторожности.</string>
+    <string name="prayer_method_rowImsak">Имсак</string>
+    <string name="prayer_method_rowDuha">Духа</string>
     <string name="prayer_method_names_diyanet">Diyanet (Турция)</string>
     <string name="prayer_method_names_mwl">Всемирная исламская лига</string>
     <string name="prayer_method_names_isna">Исламское общество Северной Америки (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">Кувейт</string>
     <string name="prayer_method_names_qatar">Катар</string>
     <string name="prayer_method_names_singapore">Сингапур</string>
+    <string name="prayer_method_names_kemenag">Kemenag (Министерство по делам религий Индонезии)</string>
     <string name="prayer_method_names_france">Франция (UOIF)</string>
     <string name="prayer_method_names_russia">Духовное управление мусульман России</string>
     <string name="place_myLocation">Моё местоположение</string>

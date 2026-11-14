@@ -67,7 +67,7 @@
     <string name="prayer_extraNote">Diyanət bu vaxtları dərc etmir. Türkiye Takvimi tərifləri ilə hesablanır: işraq və isfirar Günəş üfüqdən 5° yuxarıda, iştibak 10°, işa-i sani 19° aşağıda olanda; dəhvə-i kübra imsak ilə axşamın ortası; gecə axşamdan imsaka qədər sayılır.</string>
     <string name="prayer_bayram">Bayram namazı</string>
     <string name="prayer_bayramTomorrow">Sabah bayram namazı: %1$s</string>
-    <string name="prayer_bayramNote">Diyanətin dərc etdiyi saatlarla eyni qayda (günəşdən 38 dəq sonra); dəqiq saat il müftiliyinin elanıdır.</string>
+    <string name="prayer_bayramNote">Diyanətin dərc etdiyi saatlarla eyni qayda (gün çıxandan 38 dəq sonra); dəqiq saat vilayət müftiliyinin elanıdır.</string>
     <string name="prayer_ezani">Əzani saat: %1$s</string>
     <string name="prayer_ezaniNote">Əzani (alaturka) saatda axşam vaxtı 12:00 sayılır; saat oradan hesablanır.</string>
     <string name="prayer_method_heading">Hesablama üsulu</string>
@@ -78,6 +78,10 @@
     <string name="prayer_method_note">Türkiyədə rəsmi vaxtlar Diyanət İşləri Başqanlığının vaxtlarıdır. Başqa üsul seçsəniz, bu səhifədəki vaxtlar, aylıq cədvəl və imsakiyyə həmin üsulla hesablanır; seçim yalnız bu brauzerdə saxlanılır.</string>
     <string name="prayer_method_active">Üsul: %1$s</string>
     <string name="prayer_method_hanafiShort">Hənəfi əsr vaxtı</string>
+    <string name="prayer_method_region">bölgənizə görə</string>
+    <string name="prayer_method_kemenagNote">Kemenag üsulu alçaq yerlər üçündür: yaylada (təxminən 600 metrdən yuxarı) Kemenag gün çıxanı və axşam vaxtını 4–5 dəqiqə fərqli dərc edir. İhtiyat imsakı sübhdən 10 dəqiqə əvvəldir.</string>
+    <string name="prayer_method_rowImsak">İhtiyat imsakı</string>
+    <string name="prayer_method_rowDuha">Çaşt (duha)</string>
     <string name="prayer_method_names_diyanet">Diyanət (Türkiyə)</string>
     <string name="prayer_method_names_mwl">Müsəlman Dünya Liqası</string>
     <string name="prayer_method_names_isna">Şimali Amerika İslam Cəmiyyəti (ISNA)</string>
@@ -90,6 +94,7 @@
     <string name="prayer_method_names_kuwait">Küveyt</string>
     <string name="prayer_method_names_qatar">Qətər</string>
     <string name="prayer_method_names_singapore">Sinqapur</string>
+    <string name="prayer_method_names_kemenag">Kemenag (İndoneziya Din İşləri Nazirliyi)</string>
     <string name="prayer_method_names_france">Fransa (UOIF)</string>
     <string name="prayer_method_names_russia">Rusiya Müsəlmanları Dini İdarəsi</string>
     <string name="place_myLocation">Məkanım</string>
@@ -157,7 +162,7 @@
     <string name="watch_world">Dünya saatları</string>
     <string name="watch_zikir">Zikrmatik</string>
     <string name="watch_start">Başlat</string>
-    <string name="watch_pause">Fasilə</string>
+    <string name="watch_pause">Dayandır</string>
     <string name="watch_reset">Sıfırla</string>
     <string name="watch_done">Vaxt bitdi</string>
     <string name="watch_work">İş</string>

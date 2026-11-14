@@ -1,0 +1,477 @@
+{
+  "tr": {
+    "name": "Hint ulusal takvimi",
+    "desc": "Hindistan'ın resmî Saka takvimine göre tarih, Saka yılbaşı ile Bengal ve Tamil yılbaşları.",
+    "note": "Saka takvimi Hindistan'ın resmî sivil takvimidir: 1 Çaitra 22 Mart'a düşer (artık yılda 21 Mart), yıl Gregoryen yılın 78 yıl gerisindedir. Bengal yılbaşı (Pohela Boişakh) Hindistan'daki kurala göredir; Bangladeş her yıl 14 Nisan'da kutlar. Tamil yılbaşı (Puthandu) Güneş'in yıldızıl Koç burcuna girişine göredir.",
+    "ev": {
+      "sakaNewYear": "Saka yılbaşı (1 Çaitra)",
+      "bengaliNewYear": "Pohela Boişakh (Bengal yılbaşı)",
+      "tamilNewYear": "Puthandu (Tamil yılbaşı)"
+    },
+    "month": [
+      "Çaitra",
+      "Vaişakha",
+      "Jyeştha",
+      "Aşadha",
+      "Şravana",
+      "Bhadra",
+      "Aşvin",
+      "Kartika",
+      "Agrahayana",
+      "Pauşa",
+      "Magha",
+      "Phalguna"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "en": {
+    "name": "Indian national calendar",
+    "desc": "The date in India's official Saka calendar, the Saka New Year and the Bengali and Tamil New Years.",
+    "note": "The Saka calendar is India's official civil calendar: 1 Chaitra falls on 22 March (21 March in leap years) and the year runs 78 years behind the Gregorian year. Bengali New Year (Pohela Boishakh) follows the rule used in India; Bangladesh celebrates it on 14 April every year. Tamil New Year (Puthandu) follows the Sun's entry into sidereal Aries.",
+    "ev": {
+      "sakaNewYear": "Saka New Year (1 Chaitra)",
+      "bengaliNewYear": "Pohela Boishakh (Bengali New Year)",
+      "tamilNewYear": "Puthandu (Tamil New Year)"
+    },
+    "month": [
+      "Chaitra",
+      "Vaishakha",
+      "Jyeshtha",
+      "Ashadha",
+      "Shravana",
+      "Bhadra",
+      "Ashwin",
+      "Kartika",
+      "Agrahayana",
+      "Pausha",
+      "Magha",
+      "Phalguna"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "de": {
+    "name": "Indischer Nationalkalender",
+    "desc": "Das Datum im amtlichen Saka-Kalender Indiens, das Saka-Neujahr sowie das bengalische und das tamilische Neujahr.",
+    "note": "Der Saka-Kalender ist der amtliche zivile Kalender Indiens: Der 1. Chaitra fällt auf den 22. März (in Schaltjahren auf den 21. März), die Jahreszahl liegt 78 Jahre hinter der gregorianischen. Das bengalische Neujahr (Pohela Boishakh) folgt der in Indien üblichen Regel; Bangladesch feiert es jedes Jahr am 14. April. Das tamilische Neujahr (Puthandu) richtet sich nach dem Eintritt der Sonne in den siderischen Widder.",
+    "ev": {
+      "sakaNewYear": "Saka-Neujahr (1. Chaitra)",
+      "bengaliNewYear": "Pohela Boishakh (bengalisches Neujahr)",
+      "tamilNewYear": "Puthandu (tamilisches Neujahr)"
+    },
+    "month": [
+      "Chaitra",
+      "Vaishakha",
+      "Jyeshtha",
+      "Ashadha",
+      "Shravana",
+      "Bhadra",
+      "Ashwin",
+      "Kartika",
+      "Agrahayana",
+      "Pausha",
+      "Magha",
+      "Phalguna"
+    ],
+    "fmt": "{d}. {m} {y}"
+  },
+  "az": {
+    "name": "Hindistan milli təqvimi",
+    "desc": "Hindistanın rəsmi Saka təqviminə görə tarix, Saka ilbaşı, Benqal və Tamil ilbaşıları.",
+    "note": "Saka təqvimi Hindistanın rəsmi mülki təqvimidir: 1 Çaitra 22 marta düşür (uzun ildə 21 marta), il Qriqori ilindən 78 il geridədir. Benqal ilbaşı (Pohela Boyşax) Hindistandakı qaydaya görədir; Banqladeş onu hər il 14 apreldə qeyd edir. Tamil ilbaşı (Puthandu) Günəşin siderik Qoç bürcünə girməsinə görədir.",
+    "ev": {
+      "sakaNewYear": "Saka ilbaşı (1 Çaitra)",
+      "bengaliNewYear": "Pohela Boyşax (Benqal ilbaşı)",
+      "tamilNewYear": "Puthandu (Tamil ilbaşı)"
+    },
+    "month": [
+      "Çaitra",
+      "Vaişakha",
+      "Jyeştha",
+      "Aşadha",
+      "Şravana",
+      "Bhadra",
+      "Aşvin",
+      "Kartika",
+      "Aqrahayana",
+      "Pauşa",
+      "Magha",
+      "Phalguna"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "ar": {
+    "name": "التقويم الوطني الهندي",
+    "desc": "التاريخ بحسب تقويم ساكا الرسمي في الهند، ورأس السنة الساكية، ورأسا السنة البنغالية والتاميلية.",
+    "note": "تقويم ساكا هو التقويم المدني الرسمي للهند: يوافق 1 تشايترا يوم 22 مارس (21 مارس في السنة الكبيسة)، وتتأخر سنته 78 عامًا عن السنة الميلادية. يتبع رأس السنة البنغالية (بوهيلا بويشاخ) القاعدة المعمول بها في الهند، أما بنغلاديش فتحتفل به في 14 أبريل كل عام. ويتبع رأس السنة التاميلية (بوثاندو) دخول الشمس برج الحمل النجمي.",
+    "ev": {
+      "sakaNewYear": "رأس السنة الساكية (1 تشايترا)",
+      "bengaliNewYear": "بوهيلا بويشاخ (رأس السنة البنغالية)",
+      "tamilNewYear": "بوثاندو (رأس السنة التاميلية)"
+    },
+    "month": [
+      "تشايترا",
+      "فايشاكا",
+      "جييشثا",
+      "أشادها",
+      "شرافانا",
+      "بهادرا",
+      "أشوين",
+      "كارتيكا",
+      "أغراهايانا",
+      "باوشا",
+      "ماغا",
+      "فالغونا"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "id": {
+    "name": "Kalender nasional India",
+    "desc": "Tanggal menurut kalender Saka resmi India, Tahun Baru Saka, serta Tahun Baru Bengali dan Tamil.",
+    "note": "Kalender Saka adalah kalender sipil resmi India (berbeda dari kalender Saka Bali): 1 Chaitra jatuh pada 22 Maret (21 Maret pada tahun kabisat), dan tahunnya 78 tahun di belakang tahun Masehi. Tahun Baru Bengali (Pohela Boishakh) mengikuti aturan yang dipakai di India; Bangladesh merayakannya setiap 14 April. Tahun Baru Tamil (Puthandu) mengikuti masuknya Matahari ke rasi Aries sideris.",
+    "ev": {
+      "sakaNewYear": "Tahun Baru Saka (1 Chaitra)",
+      "bengaliNewYear": "Pohela Boishakh (Tahun Baru Bengali)",
+      "tamilNewYear": "Puthandu (Tahun Baru Tamil)"
+    },
+    "month": [
+      "Chaitra",
+      "Vaishakha",
+      "Jyeshtha",
+      "Ashadha",
+      "Shravana",
+      "Bhadra",
+      "Ashwin",
+      "Kartika",
+      "Agrahayana",
+      "Pausha",
+      "Magha",
+      "Phalguna"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "ur": {
+    "name": "بھارت کا قومی کیلنڈر",
+    "desc": "بھارت کے سرکاری شک کیلنڈر کے مطابق تاریخ، شک نیا سال، اور بنگالی و تمل نیا سال۔",
+    "note": "شک کیلنڈر بھارت کا سرکاری شہری کیلنڈر ہے: یکم چیت 22 مارچ کو ہوتی ہے (لیپ کے سال میں 21 مارچ)، اور اس کا سال عیسوی سال سے 78 سال پیچھے ہے۔ بنگالی نیا سال (پوہیلا بوئیشاکھ) بھارت میں رائج قاعدے کے مطابق ہے؛ بنگلہ دیش اسے ہر سال 14 اپریل کو مناتا ہے۔ تمل نیا سال (پتھانڈو) سورج کے نجومی برجِ حمل میں داخلے کے مطابق ہے۔",
+    "ev": {
+      "sakaNewYear": "شک نیا سال (یکم چیت)",
+      "bengaliNewYear": "پوہیلا بوئیشاکھ (بنگالی نیا سال)",
+      "tamilNewYear": "پتھانڈو (تمل نیا سال)"
+    },
+    "month": [
+      "چیت",
+      "بیساکھ",
+      "جیٹھ",
+      "اساڑھ",
+      "ساون",
+      "بھادوں",
+      "کنوار",
+      "کاتک",
+      "اگہن",
+      "پوس",
+      "ماگھ",
+      "پھاگن"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "fa": {
+    "name": "تقویم ملی هند",
+    "desc": "تاریخ بر پایهٔ تقویم رسمی ساکای هند، آغاز سال ساکا و سال نو بنگالی و تامیلی.",
+    "note": "تقویم ساکا تقویم رسمی مدنی هند است: 1 چیترا برابر با 22 مارس است (در سال کبیسه 21 مارس) و سال آن 78 سال از سال میلادی عقب‌تر است. سال نو بنگالی (پوهلا بویشاخ) طبق قاعدهٔ رایج در هند است؛ بنگلادش هر سال آن را در 14 آوریل جشن می‌گیرد. سال نو تامیلی (پوتاندو) بر پایهٔ ورود خورشید به برج حمل نجومی است.",
+    "ev": {
+      "sakaNewYear": "آغاز سال ساکا (1 چیترا)",
+      "bengaliNewYear": "پوهلا بویشاخ (سال نو بنگالی)",
+      "tamilNewYear": "پوتاندو (سال نو تامیلی)"
+    },
+    "month": [
+      "چیترا",
+      "ویشاکا",
+      "جیشتا",
+      "آشادا",
+      "شراونا",
+      "بهادرا",
+      "آشوین",
+      "کارتیکا",
+      "آگراهایانا",
+      "پاوشا",
+      "ماگا",
+      "فالگونا"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "fr": {
+    "name": "Calendrier national indien",
+    "desc": "La date dans le calendrier saka officiel de l’Inde, le Nouvel An saka et les Nouvel An bengali et tamoul.",
+    "note": "Le calendrier saka est le calendrier civil officiel de l’Inde : le 1er Chaitra tombe le 22 mars (le 21 mars les années bissextiles) et l’année a 78 ans de retard sur l’année grégorienne. Le Nouvel An bengali (Pohela Boishakh) suit la règle en usage en Inde ; le Bangladesh le fête chaque année le 14 avril. Le Nouvel An tamoul (Puthandu) suit l’entrée du Soleil dans le Bélier sidéral.",
+    "ev": {
+      "sakaNewYear": "Nouvel An saka (1er Chaitra)",
+      "bengaliNewYear": "Pohela Boishakh (Nouvel An bengali)",
+      "tamilNewYear": "Puthandu (Nouvel An tamoul)"
+    },
+    "month": [
+      "Chaitra",
+      "Vaishakha",
+      "Jyeshtha",
+      "Ashadha",
+      "Shravana",
+      "Bhadra",
+      "Ashwin",
+      "Kartika",
+      "Agrahayana",
+      "Pausha",
+      "Magha",
+      "Phalguna"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "ru": {
+    "name": "Индийский национальный календарь",
+    "desc": "Дата по официальному календарю Шака в Индии, Новый год Шака, бенгальский и тамильский Новый год.",
+    "note": "Календарь Шака — официальный гражданский календарь Индии: 1 чайтры приходится на 22 марта (в високосный год — на 21 марта), а год отстаёт от григорианского на 78 лет. Бенгальский Новый год (Похела Бойшакх) — по правилу, принятому в Индии; Бангладеш отмечает его каждый год 14 апреля. Тамильский Новый год (Путханду) — по вступлению Солнца в сидерический Овен.",
+    "ev": {
+      "sakaNewYear": "Новый год Шака (1 чайтры)",
+      "bengaliNewYear": "Похела Бойшакх (бенгальский Новый год)",
+      "tamilNewYear": "Путханду (тамильский Новый год)"
+    },
+    "month": [
+      "Чайтра",
+      "Вайшакха",
+      "Джьештха",
+      "Ашадха",
+      "Шравана",
+      "Бхадра",
+      "Ашвин",
+      "Картика",
+      "Аграхаяна",
+      "Пауша",
+      "Магха",
+      "Пхалгуна"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "ja": {
+    "name": "インド国定暦",
+    "desc": "インドの公式なサカ暦による日付、サカ暦の新年、ベンガルとタミルの新年。",
+    "note": "サカ暦はインドの公式な市民暦です。チャイトラ月1日は3月22日（閏年は3月21日）で、年はグレゴリオ暦より78年遅れています。ベンガル新年（ポヘラ・ボイシャク）はインドで用いられる規則により、バングラデシュでは毎年4月14日です。タミル新年（プッタンドゥ）は太陽が恒星黄道の白羊宮に入る日によります。",
+    "ev": {
+      "sakaNewYear": "サカ暦新年（チャイトラ月1日）",
+      "bengaliNewYear": "ポヘラ・ボイシャク（ベンガル新年）",
+      "tamilNewYear": "プッタンドゥ（タミル新年）"
+    },
+    "month": [
+      "チャイトラ月",
+      "ヴァイシャーカ月",
+      "ジェーシュタ月",
+      "アーシャーダ月",
+      "シュラーヴァナ月",
+      "バードラ月",
+      "アーシュヴィナ月",
+      "カールッティカ月",
+      "アグラハーヤナ月",
+      "パウシャ月",
+      "マーガ月",
+      "パールグナ月"
+    ],
+    "fmt": "{y}年{m}{d}日"
+  },
+  "ko": {
+    "name": "인도 국정력",
+    "desc": "인도의 공식 사카력 날짜, 사카력 새해, 벵골과 타밀의 새해.",
+    "note": "사카력은 인도의 공식 민간 달력입니다. 차이트라월 1일은 3월 22일(윤년에는 3월 21일)이며, 연도는 그레고리력보다 78년 늦습니다. 벵골 새해(포헬라 보이샤크)는 인도에서 쓰는 규칙을 따르며, 방글라데시는 매년 4월 14일에 지냅니다. 타밀 새해(푸탄두)는 태양이 항성 황도의 양자리에 들어가는 날을 따릅니다.",
+    "ev": {
+      "sakaNewYear": "사카력 새해(차이트라월 1일)",
+      "bengaliNewYear": "포헬라 보이샤크(벵골 새해)",
+      "tamilNewYear": "푸탄두(타밀 새해)"
+    },
+    "month": [
+      "차이트라월",
+      "바이샤카월",
+      "제슈타월",
+      "아샤다월",
+      "슈라바나월",
+      "바드라월",
+      "아슈빈월",
+      "카르티카월",
+      "아그라하야나월",
+      "파우샤월",
+      "마가월",
+      "팔구나월"
+    ],
+    "fmt": "{y}년 {m} {d}일"
+  },
+  "zh": {
+    "name": "印度国定历",
+    "desc": "印度官方萨卡历的日期、萨卡历新年以及孟加拉新年和泰米尔新年。",
+    "note": "萨卡历是印度官方的民用历法：制呾罗月1日为3月22日（闰年为3月21日），纪年比公历晚78年。孟加拉新年（博伊沙克节）按印度通行的规则计算，孟加拉国则每年于4月14日庆祝。泰米尔新年（普坦杜节）以太阳进入恒星白羊宫为准。",
+    "ev": {
+      "sakaNewYear": "萨卡历新年（制呾罗月1日）",
+      "bengaliNewYear": "博伊沙克节（孟加拉新年）",
+      "tamilNewYear": "普坦杜节（泰米尔新年）"
+    },
+    "month": [
+      "制呾罗月",
+      "吠舍佉月",
+      "逝瑟吒月",
+      "頞沙荼月",
+      "室罗伐拏月",
+      "婆达罗钵陀月",
+      "頞湿缚庾阇月",
+      "迦剌底迦月",
+      "末伽始罗月",
+      "报沙月",
+      "磨袪月",
+      "颇勒窭拏月"
+    ],
+    "fmt": "{y}年{m}{d}日"
+  },
+  "fil": {
+    "name": "Pambansang kalendaryo ng India",
+    "desc": "Ang petsa sa opisyal na kalendaryong Saka ng India, ang Bagong Taon ng Saka, at ang Bagong Taon ng mga Bengali at Tamil.",
+    "note": "Ang kalendaryong Saka ang opisyal na sibil na kalendaryo ng India: pumapatak ang 1 Chaitra sa Marso 22 (Marso 21 sa leap year), at 78 taon itong nahuhuli sa taong Gregoryano. Sumusunod ang Bagong Taon ng Bengali (Pohela Boishakh) sa tuntuning gamit sa India; sa Bangladesh, ipinagdiriwang ito tuwing Abril 14. Sumusunod ang Bagong Taon ng Tamil (Puthandu) sa pagpasok ng Araw sa sidereal na Aries.",
+    "ev": {
+      "sakaNewYear": "Bagong Taon ng Saka (1 Chaitra)",
+      "bengaliNewYear": "Pohela Boishakh (Bagong Taon ng Bengali)",
+      "tamilNewYear": "Puthandu (Bagong Taon ng Tamil)"
+    },
+    "month": [
+      "Chaitra",
+      "Vaishakha",
+      "Jyeshtha",
+      "Ashadha",
+      "Shravana",
+      "Bhadra",
+      "Ashwin",
+      "Kartika",
+      "Agrahayana",
+      "Pausha",
+      "Magha",
+      "Phalguna"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "th": {
+    "name": "ปฏิทินแห่งชาติอินเดีย",
+    "desc": "วันที่ตามปฏิทินศกอย่างเป็นทางการของอินเดีย วันขึ้นปีใหม่ศก และวันขึ้นปีใหม่เบงกอลและทมิฬ",
+    "note": "ปฏิทินศกเป็นปฏิทินทางราชการของอินเดีย วันที่ 1 เดือนไจตระตรงกับ 22 มีนาคม (21 มีนาคมในปีอธิกสุรทิน) และปีศกช้ากว่าปีคริสต์ศักราช 78 ปี ปีใหม่เบงกอล (โปเหลา ไบศาข) ใช้หลักที่ถือกันในอินเดีย ส่วนบังกลาเทศฉลองทุกวันที่ 14 เมษายน ปีใหม่ทมิฬ (ปุตตาณฑุ) ถือตามวันที่ดวงอาทิตย์เข้าสู่ราศีเมษแบบนิรายนะ",
+    "ev": {
+      "sakaNewYear": "วันขึ้นปีใหม่ศก (1 เดือนไจตระ)",
+      "bengaliNewYear": "โปเหลา ไบศาข (ปีใหม่เบงกอล)",
+      "tamilNewYear": "ปุตตาณฑุ (ปีใหม่ทมิฬ)"
+    },
+    "month": [
+      "เดือนไจตระ",
+      "เดือนไวศาขะ",
+      "เดือนเชษฐะ",
+      "เดือนอาษาฒะ",
+      "เดือนศราวณะ",
+      "เดือนภาทรปทะ",
+      "เดือนอาศวินะ",
+      "เดือนการติกะ",
+      "เดือนมารคศีรษะ",
+      "เดือนเปาษะ",
+      "เดือนมาฆะ",
+      "เดือนผาลคุนะ"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "es": {
+    "name": "Calendario nacional indio",
+    "desc": "La fecha en el calendario saka oficial de la India, el Año Nuevo saka y los años nuevos bengalí y tamil.",
+    "note": "El calendario saka es el calendario civil oficial de la India: el 1 de Chaitra cae el 22 de marzo (el 21 de marzo en años bisiestos) y su año va 78 años por detrás del gregoriano. El Año Nuevo bengalí (Pohela Boishakh) sigue la regla usada en la India; Bangladés lo celebra cada año el 14 de abril. El Año Nuevo tamil (Puthandu) sigue la entrada del Sol en Aries sideral.",
+    "ev": {
+      "sakaNewYear": "Año Nuevo saka (1 de Chaitra)",
+      "bengaliNewYear": "Pohela Boishakh (Año Nuevo bengalí)",
+      "tamilNewYear": "Puthandu (Año Nuevo tamil)"
+    },
+    "month": [
+      "Chaitra",
+      "Vaishakha",
+      "Jyeshtha",
+      "Ashadha",
+      "Shravana",
+      "Bhadra",
+      "Ashwin",
+      "Kartika",
+      "Agrahayana",
+      "Pausha",
+      "Magha",
+      "Phalguna"
+    ],
+    "fmt": "{d} de {m} de {y}"
+  },
+  "pt": {
+    "name": "Calendário nacional indiano",
+    "desc": "A data no calendário saka oficial da Índia, o Ano-Novo saka e os anos-novos bengali e tâmil.",
+    "note": "O calendário saka é o calendário civil oficial da Índia: o 1º de Chaitra cai em 22 de março (21 de março em anos bissextos), e o ano fica 78 anos atrás do gregoriano. O Ano-Novo bengali (Pohela Boishakh) segue a regra usada na Índia; Bangladesh o celebra todo ano em 14 de abril. O Ano-Novo tâmil (Puthandu) segue a entrada do Sol em Áries sideral.",
+    "ev": {
+      "sakaNewYear": "Ano-Novo saka (1º de Chaitra)",
+      "bengaliNewYear": "Pohela Boishakh (Ano-Novo bengali)",
+      "tamilNewYear": "Puthandu (Ano-Novo tâmil)"
+    },
+    "month": [
+      "Chaitra",
+      "Vaishakha",
+      "Jyeshtha",
+      "Ashadha",
+      "Shravana",
+      "Bhadra",
+      "Ashwin",
+      "Kartika",
+      "Agrahayana",
+      "Pausha",
+      "Magha",
+      "Phalguna"
+    ],
+    "fmt": "{d} de {m} de {y}"
+  },
+  "hi": {
+    "name": "भारतीय राष्ट्रीय पंचांग",
+    "desc": "भारत के आधिकारिक शक संवत के अनुसार तारीख, शक नव वर्ष तथा बंगाली और तमिल नव वर्ष।",
+    "note": "शक संवत भारत का आधिकारिक नागरिक कैलेंडर है: 1 चैत्र 22 मार्च को पड़ता है (लीप वर्ष में 21 मार्च), और इसका वर्ष ग्रेगोरियन वर्ष से 78 वर्ष पीछे है। बंगाली नव वर्ष (पोहेला बोइशाख) भारत में प्रचलित नियम से है; बांग्लादेश इसे हर वर्ष 14 अप्रैल को मनाता है। तमिल नव वर्ष (पुथांडु) सूर्य के निरयण मेष राशि में प्रवेश के अनुसार है।",
+    "ev": {
+      "sakaNewYear": "शक नव वर्ष (1 चैत्र)",
+      "bengaliNewYear": "पोहेला बोइशाख (बंगाली नव वर्ष)",
+      "tamilNewYear": "पुथांडु (तमिल नव वर्ष)"
+    },
+    "month": [
+      "चैत्र",
+      "वैशाख",
+      "ज्येष्ठ",
+      "आषाढ़",
+      "श्रावण",
+      "भाद्र",
+      "आश्विन",
+      "कार्तिक",
+      "अग्रहायण",
+      "पौष",
+      "माघ",
+      "फाल्गुन"
+    ],
+    "fmt": "{d} {m} {y}"
+  },
+  "bn": {
+    "name": "ভারতের জাতীয় ক্যালেন্ডার",
+    "desc": "ভারতের সরকারি শক ক্যালেন্ডারের তারিখ, শক নববর্ষ এবং বাংলা ও তামিল নববর্ষ।",
+    "note": "শক ক্যালেন্ডার ভারতের সরকারি নাগরিক ক্যালেন্ডার: 1 চৈত্র 22 মার্চ (অধিবর্ষে 21 মার্চ) পড়ে এবং বছর গ্রেগরীয় বছরের চেয়ে 78 বছর পিছিয়ে চলে। পহেলা বৈশাখ (বাংলা নববর্ষ) ভারতে প্রচলিত নিয়ম অনুসরণ করে; বাংলাদেশ প্রতি বছর 14 এপ্রিল উদযাপন করে। পুথান্ডু (তামিল নববর্ষ) সূর্যের নিরয়ন মেষ রাশিতে প্রবেশ অনুসরণ করে।",
+    "ev": {
+      "sakaNewYear": "শক নববর্ষ (1 চৈত্র)",
+      "bengaliNewYear": "পহেলা বৈশাখ (বাংলা নববর্ষ)",
+      "tamilNewYear": "পুথান্ডু (তামিল নববর্ষ)"
+    },
+    "month": [
+      "চৈত্র",
+      "বৈশাখ",
+      "জ্যৈষ্ঠ",
+      "আষাঢ়",
+      "শ্রাবণ",
+      "ভাদ্র",
+      "আশ্বিন",
+      "কার্তিক",
+      "অগ্রহায়ণ",
+      "পৌষ",
+      "মাঘ",
+      "ফাল্গুন"
+    ],
+    "fmt": "{d} {m} {y}"
+  }
+}

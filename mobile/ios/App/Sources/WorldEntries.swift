@@ -80,7 +80,7 @@ struct WorldEntry: Identifiable, Hashable {
     static let abbrs: [(String, String)] = [
         ("UTC", "UTC"), ("GMT", "Etc/GMT"), ("BST", "Europe/London"), ("WET", "Europe/Lisbon"), ("CET", "Europe/Paris"),
         ("CEST", "Europe/Paris"), ("EET", "Europe/Athens"), ("EEST", "Europe/Athens"), ("TRT", "Europe/Istanbul"), ("MSK", "Europe/Moscow"),
-        ("GST", "Asia/Dubai"), ("PKT", "Asia/Karachi"), ("IST", "Asia/Kolkata"), ("SGT", "Asia/Singapore"), ("JST", "Asia/Tokyo"),
+        ("GST", "Asia/Dubai"), ("PKT", "Asia/Karachi"), ("IST", "Asia/Kolkata"), ("WIB", "Asia/Jakarta"), ("WITA", "Asia/Makassar"), ("WIT", "Asia/Jayapura"), ("SGT", "Asia/Singapore"), ("JST", "Asia/Tokyo"),
         ("KST", "Asia/Seoul"), ("AEST", "Australia/Sydney"), ("AEDT", "Australia/Sydney"), ("EST", "America/New_York"),
         ("EDT", "America/New_York"), ("CST", "America/Chicago"), ("CDT", "America/Chicago"), ("MST", "America/Denver"),
         ("PST", "America/Los_Angeles"), ("PDT", "America/Los_Angeles"),

@@ -17,7 +17,8 @@ struct JournalEntry: Codable, Equatable {
 
 enum Journal {
     static let key = "journal"
-    static let moods = ["😞", "🙁", "😐", "🙂", "😄"]
+    /// Ruh hâli 1–5'in rengi (iki tonlu yüzler, 8 Kasım 2026; DUOTONE.md): kiremit, altın, mor, mavi, adaçayı
+    static let moodColors: [Color] = [Theme.terra, Theme.gold, Theme.dusk, Theme.sky, Theme.sage]
 
     static func load() -> [JournalEntry] {
         guard let raw = UserDefaults.standard.string(forKey: key), let d = raw.data(using: .utf8) else { return [] }
@@ -49,9 +50,9 @@ struct JournalQuick: View {
                     Button {
                         entry.m = entry.m == v ? 0 : v
                     } label: {
-                        // Ruh hâli kendi çizgi yüzlerimizle (2. analiz #97)
-                        LineIcon(name: LineIcons.moods[v - 1], size: 38)
-                            .opacity(entry.m == 0 || entry.m == v ? 1 : 0.35)
+                        // Ruh hâli iki tonlu yüzlerle (8 Kasım 2026); bir yüz seçiliyse diğerleri soluk renkte
+                        DuoIcon(name: LineIcons.moods[v - 1], size: 34,
+                                color: entry.m == 0 || entry.m == v ? Journal.moodColors[v - 1] : Theme.muted)
                             .frame(maxWidth: .infinity)
                             .accessibilityLabel(L("journal.level.\(v)"))
                     }
@@ -136,7 +137,11 @@ struct JournalView: View {
                 }
                 ForEach(older.prefix(60), id: \.d) { e in
                     HStack(alignment: .top, spacing: 10) {
-                        Text(e.m > 0 ? Journal.moods[e.m - 1] : "·").font(.title2)
+                        if e.m > 0 {
+                            DuoIcon(name: LineIcons.moods[e.m - 1], size: 24, color: Journal.moodColors[e.m - 1])
+                        } else {
+                            Text("·").font(.title2).frame(width: 24)
+                        }
                         VStack(alignment: .leading, spacing: 2) {
                             Text(dateText(e.d)).font(.footnote).foregroundStyle(Theme.muted)
                             if !e.i.isEmpty { Text(e.i) }
@@ -178,7 +183,11 @@ struct JournalView: View {
             ForEach(days, id: \.self) { day in
                 let e = byDay[BadgeStore.day(day)]
                 VStack(spacing: 2) {
-                    Text(e.map { $0.m > 0 ? Journal.moods[$0.m - 1] : "•" } ?? "·").font(.system(size: 18))
+                    if let m = e?.m, m > 0 {
+                        DuoIcon(name: LineIcons.moods[m - 1], size: 18, color: Journal.moodColors[m - 1])
+                    } else {
+                        Text(e == nil ? "·" : "•").font(.system(size: 18)).frame(height: 18)
+                    }
                     Text("\(Calendar.current.component(.day, from: day))").font(.caption2).foregroundStyle(Theme.muted)
                 }
                 .frame(maxWidth: .infinity)

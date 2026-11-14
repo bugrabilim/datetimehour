@@ -1,0 +1,29 @@
+{
+ "source": "Kementerian Agama RI (Kemenag): Kalender Hijriah Indonesia 2026 (Ditjen Bimas Islam, 14 Ekim 2025); sidang isbat 1446–1447 kararları; SKB 3 Menteri 2026 ve 2027 resmî tatil günlerinden çıkan ay başları (Isra Mikraj = 27 Recep, Idul Fitri = 1 Şevval, Iduladha = 10 Zilhicce, 1 Muharrem, Maulid = 12 Rebiülevvel).",
+ "note": "Anahtar: hicri yıl-ay; değer: Endonezya'da o ayın 1. günü. Dayanak olmayan aylar MABIMS ölçütüyle hesaplanır (lib/hijri.mjs hijriTableId): ayın 29'u akşamı Banda Aceh'te gün batımında yer merkezli hilal yüksekliği ≥ 3° ve uzanım ≥ 6,4° ise ertesi gün ay başıdır, değilse ay 30 gün tamamlanır. Bu kural aşağıdaki 22 dayanağın hepsini veriyor. Yeni isbat kararı ve yıllık Kalender Hijriah Indonesia yayımlandıkça eklenir; çelişirse dayanak kazanır.",
+ "checked": "2026-11-10",
+ "months": {
+  "1446-9": "2025-03-01",
+  "1446-10": "2025-03-31",
+  "1446-12": "2025-05-28",
+  "1447-1": "2025-06-27",
+  "1447-7": "2025-12-21",
+  "1447-8": "2026-01-20",
+  "1447-9": "2026-02-19",
+  "1447-10": "2026-03-21",
+  "1447-11": "2026-04-19",
+  "1447-12": "2026-05-18",
+  "1448-1": "2026-06-16",
+  "1448-2": "2026-07-16",
+  "1448-3": "2026-08-14",
+  "1448-4": "2026-09-13",
+  "1448-5": "2026-10-12",
+  "1448-6": "2026-11-11",
+  "1448-7": "2026-12-10",
+  "1448-10": "2027-03-10",
+  "1448-12": "2027-05-08",
+  "1449-1": "2027-06-06",
+  "1449-3": "2027-08-04",
+  "1449-7": "2027-11-30"
+ }
+}

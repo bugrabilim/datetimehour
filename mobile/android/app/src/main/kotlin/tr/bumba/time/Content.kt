@@ -74,8 +74,8 @@ object Esma {
 
     fun load(c: Context): List<Name> = runCatching {
         val a = JSONArray(asset(c, "esma.json") ?: "[]")
-        // Sütunlar: [ar, Türkçe okunuş, Latin okunuş, tr, en, de, az, id, ur, fa, fr, ru, ja, ko, zh, fil, th, es, pt, hi]; Farsça ve Urducada okunuş yok (ad Arapça yazıyla okunur)
-        val col = when (Strings.lang) { "tr" -> 3; "en" -> 4; "de" -> 5; "az" -> 6; "id" -> 7; "ur" -> 8; "fa" -> 9; "fr" -> 10; "ru" -> 11; "ja" -> 12; "ko" -> 13; "zh" -> 14; "fil" -> 15; "th" -> 16; "es" -> 17; "pt" -> 18; "hi" -> 19; else -> -1 }
+        // Sütunlar: [ar, Türkçe okunuş, Latin okunuş, tr, en, de, az, id, ur, fa, fr, ru, ja, ko, zh, fil, th, es, pt, hi, bn]; Farsça ve Urducada okunuş yok (ad Arapça yazıyla okunur)
+        val col = when (Strings.lang) { "tr" -> 3; "en" -> 4; "de" -> 5; "az" -> 6; "id" -> 7; "ur" -> 8; "fa" -> 9; "fr" -> 10; "ru" -> 11; "ja" -> 12; "ko" -> 13; "zh" -> 14; "fil" -> 15; "th" -> 16; "es" -> 17; "pt" -> 18; "hi" -> 19; "bn" -> 20; else -> -1 }
         (0 until a.length()).map { i ->
             val r = a.getJSONArray(i)
             val read = when (Strings.lang) { "tr", "az" -> r.getString(1); "ur", "fa" -> ""; else -> r.getString(2) }
@@ -304,7 +304,7 @@ fun CalendarLeafScreen(onBack: () -> Unit) {
             if (otd.isNotEmpty()) AppCard {
                 SectionTitle(L("otd.h1"))
                 for (it in otd) {
-                    Text("${it.icon} ${it.year} · ${it.title}", color = Theme.c.text, fontSize = 15.sp)
+                    IconText(it.icon, "${it.year} · ${it.title}", Theme.c.text, fontSize = 15.sp, iconColor = Theme.c.sage)
                     if (it.desc.isNotEmpty()) Text(it.desc, color = Theme.c.muted, fontSize = 12.sp)
                 }
                 Text("Wikidata (CC0)", color = Theme.c.muted, fontSize = 11.sp)
@@ -346,7 +346,8 @@ object Rumi {
 /** Tarihte bugün (2. analiz #124): Wikidata (CC0) kayıtları, dile göre assets/otd-<dil>.json (gen-strings.mjs) */
 object OnThisDay {
     data class Item(val year: Int, val kind: String, val name: String, val desc: String) {
-        val icon: String get() = when (kind) { "f" -> "🏛️"; "b" -> "🎂"; "d" -> "🕯️"; else -> "📜" }
+        /** İki tonlu simge (8 Kasım 2026; emoji yerine): kuruluş ışıltı, doğum hediye, ölüm yaprak, olay parşömen */
+        val icon: String get() = when (kind) { "f" -> "sparkles"; "b" -> "gift"; "d" -> "leaf"; else -> "scroll" }
         val title: String get() = if (kind == "f") T("otd.foundedFmt", name) else name
     }
     private var cache: Pair<String, Map<String, List<Item>>>? = null

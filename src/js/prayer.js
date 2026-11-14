@@ -18,7 +18,7 @@
   var labelEl = root.querySelector("[data-pr-nextlabel]");
   var cdEl = root.querySelector("[data-pr-countdown]");
   var rows = {};
-  order.forEach(function (k) { rows[k] = root.querySelector('[data-pr="' + k + '"]'); });
+  order.concat(["imsak", "duha"]).forEach(function (k) { rows[k] = root.querySelector('[data-pr="' + k + '"]'); });
   var mTable = doc.querySelector("[data-pr-month]");
   var mTitle = doc.querySelector("[data-pr-month-title]");
   var mCap = doc.querySelector("[data-pr-caption]");
@@ -27,25 +27,35 @@
   var state = null, view = null, lastDay = "", nextAt = 0, nextKey = "";
   /* Hesap yöntemi ve ikindi (sth-prayer: { m, h }); varsayılan Diyanet, standart ikindi */
   var mSel = doc.querySelector("[data-pr-method]"), aSel = doc.querySelector("[data-pr-asr]"), mAct = doc.querySelector("[data-pr-method-active]");
-  var method = {}; try { method = JSON.parse(S.store("sth-prayer") || "{}") || {}; } catch (e) {}
-  var params = P.methodParams(method.m || "diyanet", !!method.h);
+  /* Kullanıcı seçmediyse yöntem yerin saat dilimine göre (10 Kasım 2026, P.defaultMethod): Endonezya Kemenag,
+     Güney Asya Karaçi + Hanefî … Seçim yapılınca (Diyanet dahil) saklanır ve her yerde o kullanılır. */
+  var stored = {}; try { stored = JSON.parse(S.store("sth-prayer") || "{}") || {}; } catch (e) {}
+  var method = { m: "diyanet", h: 0 }, fromRegion = false, params = P.methodParams("diyanet", false);
+  var mKem = doc.querySelector("[data-pr-kemenag]"), trOnly = doc.querySelectorAll("[data-pr-tr]");
+  function resolveMethod() {
+    if (stored.m && P.METHODS[stored.m]) { method = { m: stored.m, h: stored.h ? 1 : 0 }; fromRegion = false; }
+    else if (state) { method = P.defaultMethod(state.tz, state.lat, state.lon); fromRegion = method.m !== "diyanet" || !!method.h; }
+    params = P.methodParams(method.m, !!method.h);
+  }
   function showMethod() {
     if (mSel) mSel.value = P.METHODS[method.m] ? method.m : "diyanet";
     if (aSel) aSel.value = method.h ? "1" : "0";
+    if (mKem) mKem.hidden = method.m !== "kemenag";
+    // Türkiye Takvimi ek vakitleri ve ezani saat Diyanet'e özgü: başka yöntemde gizlenir
+    Array.prototype.forEach.call(trOnly, function (el) { el.hidden = method.m !== "diyanet"; });
     if (!mAct) return;
-    var custom = (method.m && method.m !== "diyanet") || method.h;
+    var custom = method.m !== "diyanet" || method.h;
     mAct.hidden = !custom;
-    if (custom) mAct.textContent = S.tpl(T.mActive, { name: (T.mNames || {})[method.m || "diyanet"] || "" }) + (method.h ? " · " + T.hanafi : "");
+    if (custom) mAct.textContent = S.tpl(T.mActive, { name: (T.mNames || {})[method.m] || "" }) + (method.h ? " · " + T.hanafi : "") + (fromRegion && T.mRegion ? " · " + T.mRegion : "");
   }
   function setMethod() {
-    method = { m: mSel ? mSel.value : "diyanet", h: aSel && aSel.value === "1" ? 1 : 0 };
-    if (method.m === "diyanet" && !method.h) { try { localStorage.removeItem("sth-prayer"); } catch (e) {} } else S.store("sth-prayer", JSON.stringify(method));
-    params = P.methodParams(method.m, !!method.h);
+    stored = { m: mSel ? mSel.value : "diyanet", h: aSel && aSel.value === "1" ? 1 : 0 };
+    S.store("sth-prayer", JSON.stringify(stored));
+    resolveMethod();
     showMethod();
     if (state) { renderToday(); renderMonth(); tick(); }
     doc.dispatchEvent(new CustomEvent("sth-prayer-method"));
   }
-  showMethod();
   if (mSel) mSel.addEventListener("change", setMethod);
   if (aSel) aSel.addEventListener("change", setMethod);
 
@@ -61,7 +71,9 @@
     var off = offHours(y, m, d);
     var r = P.times(y, m, d, state.lat, state.lon, off, params);
     var out = { off: off };
-    order.forEach(function (k) { out[k] = isFinite(r[k]) ? Math.round(r[k] * 60) : null; });
+    order.forEach(function (k) { out[k] = P.toMin(r[k], params, k); });
+    var ex = P.methodRows(y, m, d, state.lat, state.lon, off, params, out.fajr);
+    out.imsak = ex ? ex.imsak : null; out.duha = ex ? ex.duha : null;
     return out;
   }
   function instant(y, m, d, min, off) { return Date.UTC(y, m - 1, d) + (min - off * 60) * 60000; }
@@ -85,8 +97,10 @@
     var now = S.nowMs(), p = S.parts(new Date(now), state.tz);
     lastDay = p.year + "-" + p.month + "-" + p.day;
     var t = dayTimes(p.year, p.month, p.day);
-    order.forEach(function (k) {
-      var td = rows[k] && rows[k].querySelector("[data-pr-time]");
+    order.concat(["imsak", "duha"]).forEach(function (k) {
+      if (!rows[k]) return;
+      if (k === "imsak" || k === "duha") rows[k].hidden = t[k] == null;
+      var td = rows[k].querySelector("[data-pr-time]");
       if (td) td.textContent = fmt(t[k]);
     });
     // Kerahat (yaklaşık, P.KERAHAT_MIN dakika): işrak, istiva, isfirar
@@ -107,7 +121,8 @@
     }
     // Bayram namazı (2. analiz #56): bayramın ilk günü öğleye kadar, arefe günü "yarın"
     var bEl = doc.querySelector("[data-pr-bayram]");
-    if (bEl && P.bayram && T.bayramDays) {
+    if (bEl && P.bayram && T.bayramDays && method.m !== "diyanet") bEl.hidden = true;
+    else if (bEl && P.bayram && T.bayramDays) {
       var iso = function (q) { return q.y + "-" + pad(q.m) + "-" + pad(q.d); };
       var tod = { y: p.year, m: p.month, d: p.day }, tom = addDay(p.year, p.month, p.day, 1), txt = "";
       if (T.bayramDays.indexOf(iso(tod)) >= 0 && t.dhuhr != null && p.hour * 60 + p.minute < t.dhuhr) {
@@ -126,7 +141,7 @@
   }
   var ezRef = null, ezEl = doc.querySelector("[data-pr-ezani]");
   function renderEzani(now) {
-    if (!ezEl || !ezRef || !T.ezani) return;
+    if (!ezEl || !ezRef || !T.ezani || method.m !== "diyanet") return;
     var ref = ezRef.today != null && now >= ezRef.today ? ezRef.today : ezRef.yday;
     if (ref == null) { ezEl.textContent = ""; return; }
     var m = Math.floor((now - ref) / 60000), h = Math.floor(m / 60) % 12;
@@ -160,13 +175,15 @@
     var days = new Date(Date.UTC(view.y, view.m, 0)).getUTCDate();
     var head = mTable.tHead, body = mTable.tBodies[0];
     body.textContent = "";
+    var sub = !!params.imsakMin, cols = sub ? ["imsak", "fajr", "sunrise", "duha", "dhuhr", "asr", "maghrib", "isha"] : order;
+    Array.prototype.forEach.call(head.querySelectorAll("[data-pr-col]"), function (th) { th.hidden = !sub; });
     for (var d = 1; d <= days; d++) {
       var t = dayTimes(view.y, view.m, d), tr = doc.createElement("tr");
       var wd = (new Date(Date.UTC(view.y, view.m - 1, d)).getUTCDay() + 6) % 7;
       var th = doc.createElement("th"); th.scope = "row";
       th.textContent = d + " " + ((CAL.weekdaysShort || CAL.weekdays || [])[wd] || "");
       tr.appendChild(th);
-      order.forEach(function (k) { var td = doc.createElement("td"); td.textContent = fmt(t[k]); tr.appendChild(td); });
+      cols.forEach(function (k) { var td = doc.createElement("td"); td.textContent = fmt(t[k]); tr.appendChild(td); });
       if (view.y === now.year && view.m === now.month && d === now.day) tr.className = "is-today";
       if (wd === 4) tr.className += " is-fri";
       body.appendChild(tr);
@@ -179,6 +196,7 @@
   function setState(next) {
     state = next; view = null;
     if (placeEl) placeEl.textContent = state.name;
+    resolveMethod(); showMethod();
     renderToday(); renderMonth(); tick();
   }
   if (mPrev) mPrev.addEventListener("click", function () { if (!view) return; view.m--; if (view.m < 1) { view.m = 12; view.y--; } renderMonth(); });

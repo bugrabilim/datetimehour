@@ -1,0 +1,51 @@
+Heure & Date réunit l'horloge, les widgets, le réveil, la météo, le calendrier et des dizaines d'outils du quotidien dans une app claire. Sans compte, sans publicité, sans suivi.
+
+Réglée pour vous
+• Quelques questions rapides au premier lancement ; la barre du bas se construit avec les sections que vous voulez
+• Les sections que vous n'utilisez pas restent masquées et n'envoient aucune notification ; tout le reste est à portée de doigt, dans Tout
+
+Horloge et widgets
+• 21 modèles d'horloge et 25 cadrans analogiques ; plein écran, mode nuit rouge tamisé pour la table de chevet et économiseur d'écran
+• 27 widgets pour l'écran d'accueil : horloges analogiques, numériques et à secondes, horloges du monde, météo, phase de la Lune, lever et coucher du soleil, comptes à rebours, photos, avancée de l'année et plus encore, en style transparent ou verre
+• Horloge flottante au-dessus des autres apps, vignettes des Réglages rapides
+• Une app Wear OS avec vignettes et complications, et une horloge plein écran pour Android TV
+
+Réveil, sommeil et concentration
+• Réveils plein écran sur l'écran de verrouillage, avec volume progressif, bibliothèque de sons et fonds
+• Des tâches pour les arrêter : calcul, secousses, pas, squats, scan d'un code, recherche d'un objet, jeu de mémoire ou saisie
+• Réveil intelligent, plan de sommeil avec rappel du coucher, sons pour dormir et sons de la nature
+• Pomodoro avec statistiques et liste de tâches, minuteur d'étude, blocage d'apps pendant la concentration
+• Entraînement fractionné guidé à la voix, même écran éteint ; enregistrement des séances dans Health Connect
+
+Météo
+• Prévisions heure par heure et sur 14 jours, qualité de l'air et pollens, trois modèles météo comparés
+• Un écran qui s'anime avec le temps : pluie, neige, nuages, vent et éclairs
+• Résumé météo du matin et notification météo facultative
+
+Calendrier
+• Vues mois, semaine, jour, agenda et année, à côté des calendriers de votre téléphone
+• Jours fériés de 31 pays, dont la France, et journées particulières
+• Calendrier hégirien et convertisseur de dates
+
+Outils
+• Minuteurs nommés, plusieurs chronomètres, comptes à rebours avec vos propres photos
+• Horloges du monde avec globe qui tourne, carte et cadran de 24 heures ; planificateur de réunions ; calculs d'heures et de dates
+• Pendule d'échecs, métronome, horloge parlante, journal du matin, outils pour la classe, minuteur d'examen, signe du zodiaque
+
+Ciel et saisons
+• Lever et coucher du soleil, heure dorée et heure bleue, lever et coucher de la Lune, calendrier lunaire
+• Éclipses avec cartes, ciel nocturne avec planètes et étoiles, notifications des événements célestes
+• Les saisons expliquées aux enfants
+
+Horaires de prière et qibla
+• Horaires de prière partout dans le monde avec 14 méthodes de calcul et Asr hanafite ; les 81 provinces et 973 districts de Turquie
+• Notifications avec l'adhan, alarmes à l'heure de la prière, mode silencieux pendant la prière, calendrier du Ramadan
+• Boussole de la qibla et mosquées à proximité
+• Le Coran en arabe, invocations, les 99 noms d'Allah, compteur de tasbih, suivi des prières et du jeûne, calcul de la zakat, cartes de vœux
+
+Confidentialité
+Votre position reste sur votre téléphone. Seule une position approximative est envoyée au service (Open-Meteo, OpenStreetMap), pour la météo et les mosquées à proximité, jamais votre identité. Consultez et désactivez chaque autorisation dans Réglages › Autorisations.
+
+En 19 langues. Pour téléphones et tablettes Android, Wear OS et Android TV.
+
+Heure & Date est un produit Bumba Life. Web : time.bumba.tr

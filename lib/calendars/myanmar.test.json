@@ -1,0 +1,84 @@
+{
+ "source": [
+  "https://ais.gov.mm/wp-content/uploads/2025/01/AIC-03-2025.pdf (Myanmar Sivil Havacılık Dairesi, Myanmar Public Holidays for Year 2025, 07.01.2025)",
+  "https://ais.gov.mm/wp-content/uploads/2025/12/AIC-03-2026.pdf (Myanmar Public Holidays for Year 2026, 01.01.2026)",
+  "https://github.com/yan9a/mmcal ve http://cool-emerald.blogspot.com/2013/06/algorithm-program-and-calculation-of.html (algoritma; kod çalıştırılmadı, okunarak yazıldı)"
+ ],
+ "note": "İki listedeki dolunay, ulusal gün ve Karen yılbaşı tarihlerinin hepsi tutuyor. İki günlük tatillerde (Işık Bayramı 26–27.10.2026, Tazaungmon dolunayı 23–24.11.2026) dolunay listedeki günlerden biridir. Su bayramı 2026'da 13–16 Nisan (hesapla aynı); 2025'te hükümet tatili 13–21 Nisan'dı (Thingyan günleri 13–16 Nisan, yılbaşı 17 Nisan).",
+ "cases": [
+  {
+   "date": "2025-03-13",
+   "key": "tabaung"
+  },
+  {
+   "date": "2025-05-11",
+   "key": "kason"
+  },
+  {
+   "date": "2025-07-09",
+   "key": "waso"
+  },
+  {
+   "date": "2025-10-06",
+   "key": "thadingyut"
+  },
+  {
+   "date": "2025-11-04",
+   "key": "tazaungdaing"
+  },
+  {
+   "date": "2025-11-14",
+   "key": "nationalDay"
+  },
+  {
+   "date": "2025-12-19",
+   "key": "karenNewYear"
+  },
+  {
+   "date": "2026-03-02",
+   "key": "tabaung"
+  },
+  {
+   "date": "2026-04-13",
+   "key": "thingyan"
+  },
+  {
+   "date": "2026-04-17",
+   "key": "newYear"
+  },
+  {
+   "date": "2026-04-30",
+   "key": "kason"
+  },
+  {
+   "date": "2026-07-29",
+   "key": "waso"
+  },
+  {
+   "date": "2026-10-26",
+   "key": "thadingyut"
+  },
+  {
+   "date": "2026-11-24",
+   "key": "tazaungdaing"
+  },
+  {
+   "date": "2026-12-04",
+   "key": "nationalDay"
+  }
+ ],
+ "daily": [
+  {
+   "date": "2025-12-19",
+   "code": "m10w1y1387"
+  },
+  {
+   "date": "2026-04-30",
+   "code": "m2f15y1388"
+  },
+  {
+   "date": "2026-07-29",
+   "code": "s4f15y1388"
+  }
+ ]
+}

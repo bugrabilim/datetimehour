@@ -134,6 +134,14 @@ final class BadgeStore {
         if saved.n >= 7 { hit(.seri7) }
     }
 
+    /// Hesaptaki rozetler cihaza gelir (madde 13); aynı rozette erken gün kalır, bilinmeyen kimlik atlanır
+    func mergeFromAccount(_ days: [String: String]) {
+        let known = Set(Badge.allCases.map(\.rawValue))
+        var r = saved.r
+        for (id, day) in days where known.contains(id) { if r[id].map({ day < $0 }) ?? true { r[id] = day } }
+        if r != saved.r { saved.r = r; persist() }
+    }
+
     func deleteAll() {
         saved = Saved()
         UserDefaults.standard.removeObject(forKey: Self.key)

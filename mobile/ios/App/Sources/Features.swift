@@ -163,7 +163,7 @@ struct FeaturesView: View {
     private func barRow(_ tab: AppTab, _ list: [AppTab]) -> some View {
         let i = list.firstIndex(of: tab) ?? 0
         return HStack {
-            Label(tab.title, systemImage: tab.icon)
+            Label { Text(tab.title) } icon: { DuoChip(name: LineIconMap.tab(tab), color: LineIconMap.tabColor(tab)) }
             Spacer()
             Button { move(list, i, -1) } label: { Image(systemName: "chevron.up") }
                 .disabled(i == 0)
@@ -191,7 +191,7 @@ struct FeaturesView: View {
                     Text(L("features.\(tab.key).note")).font(.caption).foregroundStyle(Theme.muted)
                 }
             } icon: {
-                Image(systemName: tab.icon).foregroundStyle(Theme.accent)
+                DuoChip(name: LineIconMap.tab(tab), color: LineIconMap.tabColor(tab))
             }
         }
     }
@@ -206,7 +206,7 @@ struct BarPreview: View {
         HStack(spacing: 0) {
             ForEach(Features.barTabs(raw: raw, bar: bar), id: \.self) { tab in
                 VStack(spacing: 3) {
-                    LineIcon(name: LineIconMap.tab(tab), size: 26)
+                    DuoIcon(name: LineIconMap.tab(tab), size: 24, color: tab == .clock ? Theme.accent : Theme.muted)
                     Text(tab.barTitle).font(.system(size: 11)).lineLimit(1).minimumScaleFactor(0.7)
                 }
                 .foregroundStyle(tab == .clock ? Theme.accent : Theme.muted)

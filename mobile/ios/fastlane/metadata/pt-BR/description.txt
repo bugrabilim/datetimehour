@@ -1,24 +1,17 @@
-Hora e Data reúne relógio, horários de oração, calendário, clima e ferramentas do dia a dia em um app simples. É gratuito, sem conta, sem anúncios e sem rastreamento.
+Hora e Data reúne relógio, widgets, clima, calendário, alarmes e ferramentas do dia a dia em um app simples. É gratuito, sem conta, sem anúncios e sem rastreamento.
 
 FEITO PARA VOCÊ
-• Cinco perguntas rápidas na primeira abertura: orações, clima, calendário, relógios mundiais, estações. A barra de abas é montada a partir das suas respostas
+• Cinco perguntas rápidas na primeira abertura: clima, calendário, relógios mundiais, estações, orações. A barra de abas é montada a partir das suas respostas
 • As seções que você não usa ficam ocultas e não enviam notificações
 
-RELÓGIO
+RELÓGIO E WIDGETS
 • 21 modelos de relógio e 25 mostradores analógicos; tela cheia e modo noturno em vermelho suave
-• Mostre sob o relógio a próxima oração, o clima, a data ou relógios mundiais
-• Widgets para a Tela de Início e a Tela Bloqueada, complicações para Apple Watch
-
-HORÁRIOS DE ORAÇÃO E CULTO
-• Horários em qualquer lugar, com 14 métodos de cálculo (Diyanet, MWL, ISNA, Umm al-Qura e outros) e Asr hanafita
-• As 81 províncias e 973 distritos da Turquia
-• Notificações com som do adhan, calendário do Ramadã
-• Bússola da qibla e mesquitas próximas
-• O Alcorão em árabe, súplicas, os 99 nomes de Alá, contador de tasbih, acompanhamento de orações e jejuns, cálculo do zakat
+• Mostre sob o relógio o clima, a data, relógios mundiais ou a próxima oração
+• Widgets para a Tela de Início e a Tela Bloqueada: relógios, relógios mundiais, contagens regressivas, fase da lua; complicações para Apple Watch
 
 CALENDÁRIO E CLIMA
-• Feriados da Turquia e de outros 30 países, dias religiosos e especiais, ao lado dos calendários do seu celular
-• Calendário hijri e conversor
+• Feriados do Brasil, da Turquia e de outros 29 países, dias religiosos e especiais, junto com os calendários do seu celular
+• Calendário da Hégira e conversor
 • Previsão por hora e para 10 dias, qualidade do ar e uma tela que muda com o clima
 
 ALARME, SONO E FOCO
@@ -27,14 +20,21 @@ ALARME, SONO E FOCO
 • Pomodoro, cronômetro de estudo, bloqueio de apps durante o foco
 
 FERRAMENTAS
-• Timer, cronômetro, treino intervalado, relógio de xadrez, metrônomo, relógio falante
+• Temporizador, cronômetro, treino intervalado, relógio de xadrez, metrônomo, relógio falante
 • Relógios mundiais com globo giratório, planejador de reuniões, cálculo de horas e datas
 • Estações, calendário lunar, eclipses, céu noturno, signo do zodíaco
-• Cartões para sexta-feira, Ramadã, Eid e noites sagradas
+
+HORÁRIOS DE ORAÇÃO E CULTO
+• Horários em qualquer lugar, com 14 métodos de cálculo (Diyanet, MWL, ISNA, Umm al-Qura e outros) e Asr hanafita
+• As 81 províncias e os 973 distritos da Turquia
+• Notificações com som do adhan, tabela do Ramadã
+• Bússola da qibla e mesquitas próximas
+• O Alcorão em árabe, súplicas, os 99 nomes de Alá, contador de tasbih, registro de orações e jejuns, cálculo do zakat
+• Cartões de felicitação para sexta-feira, Ramadã, Eid e noites sagradas
 
 PRIVACIDADE
-Sem conta, sem anúncios, sem rastreamento. Sua localização fica no celular para os horários de oração; só para o clima e as mesquitas próximas uma localização aproximada vai ao serviço (Apple, Open-Meteo), nunca quem você é. Veja e desative cada permissão em Ajustes › Permissões.
+Sem conta, sem anúncios, sem rastreamento. Sua localização fica no celular para os horários de oração; só para o clima e as mesquitas próximas uma localização aproximada é enviada ao serviço correspondente (Apple, Open-Meteo), nunca a sua identidade. Veja e desative cada permissão em Ajustes › Permissões.
 
-Em 18 idiomas. Para iPhone, iPad e Apple Watch.
+Em 19 idiomas. Para iPhone, iPad e Apple Watch.
 
 Hora e Data é um produto Bumba Life. Web: time.bumba.tr

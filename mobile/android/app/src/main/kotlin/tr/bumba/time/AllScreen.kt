@@ -22,6 +22,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.MenuBook
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Air
 import androidx.compose.material.icons.filled.Stars
 import androidx.compose.material.icons.filled.Elderly
@@ -40,6 +41,7 @@ import androidx.compose.material.icons.filled.Bedtime
 import androidx.compose.material.icons.filled.Brightness3
 import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.Cake
 import androidx.compose.material.icons.filled.Celebration
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.ColorLens
@@ -57,6 +59,7 @@ import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material.icons.filled.PhotoCamera
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.QrCode2
 import androidx.compose.material.icons.filled.School
@@ -152,6 +155,9 @@ object AllPrefs {
         AllEntry("datecalc", "tools.hub.cards.datecalc.name", Icons.Filled.EditCalendar, AllCat.PLAN, Tab.TOOLS, route = "datecalc"),
         AllEntry("planner", "planner.h1", Icons.Filled.Groups, AllCat.PLAN, Tab.TOOLS, route = "planner"),
         AllEntry("journal", "journal.title", Icons.Filled.WbTwilight, AllCat.PLAN, Tab.TOOLS, route = "journal"),
+        // Kutlama kartları (10 Kasım 2026): doğum günü, yılbaşı, yıl dönümü, mezuniyet, yeni iş; dini vesileler İbadet'te
+        AllEntry("greetN", "greet.titleN", Icons.Filled.Cake, AllCat.PLAN, Tab.TOOLS, route = "greetN",
+            words = "greet.birthday greet.newyear greet.anniversary greet.graduation greet.newjob"),
         AllEntry("bridge", "bridge.h1", Icons.Filled.BeachAccess, AllCat.PLAN, Tab.TOOLS, route = "bridge"),
         AllEntry("retire", "retire.h1", Icons.Filled.Elderly, AllCat.PLAN, Tab.TOOLS, route = "retire"),
         AllEntry("weather", "tab.weather", Icons.Filled.WbSunny, AllCat.SKY, Tab.WEATHER, tab = Tab.WEATHER),
@@ -160,6 +166,12 @@ object AllPrefs {
         AllEntry("moon", "moon.calendarLink", Icons.Filled.Brightness3, AllCat.SKY, Tab.SEASONS, route = "moon"),
         AllEntry("sky", "sky.h1", Icons.Filled.AutoAwesome, AllCat.SKY, Tab.SEASONS, route = "sky", words = "sky.eventsHeading sky.constellations sky.tonightHeading"),
         AllEntry("sunpath", "sunpath.title", Icons.Filled.WbTwilight, AllCat.SKY, Tab.SEASONS, route = "sunpath"),
+        // Fotoğraf ışığı (9 Kasım 2026): Araçlar açıksa görünür (Mevsimler kapalı da olsa)
+        AllEntry("photo", "photoApp.title", Icons.Filled.PhotoCamera, AllCat.SKY, Tab.TOOLS, route = "photo",
+            words = "photoApp.subtitle nature.goldenAm nature.bluePm photoApp.forecast"),
+        // Panchang ve Rahu Kaal (10 Kasım 2026): Araçlar açıksa görünür
+        AllEntry("panchang", "panchang.h1", Icons.Filled.WbSunny, AllCat.SKY, Tab.TOOLS, route = "panchang",
+            words = "panchang.rahu panchang.yama panchang.gulika panchang.abhijit panchang.brahma panchang.hindu"),
         AllEntry("zodiac", "zodiac.h1", Icons.Filled.Stars, AllCat.SKY, Tab.TOOLS, route = "zodiac"),
         AllEntry("prayer", "tab.prayer", Icons.Filled.DarkMode, AllCat.FAITH, Tab.PRAYER, tab = Tab.PRAYER),
         AllEntry("qibla", "qibla.title", Icons.Filled.Explore, AllCat.FAITH, Tab.PRAYER, route = "qibla"),
@@ -178,7 +190,10 @@ object AllPrefs {
         AllEntry("badges", "badges.h1", Icons.Filled.MilitaryTech, AllCat.MORE, null, route = "badges"),
     )
 
-    /** Girişin 3D simgesi (4 Kasım 2026; her giriş ayrı nesne, aynı Material simgesini paylaşanlar da ayrışır) */
+    /**
+     * Girişin simgesi (her giriş ayrı nesne, aynı Material simgesini paylaşanlar da ayrışır); 8 Kasım 2026'dan beri iki
+     * tonlu (DuoIcons). Ayar arama girdileri `s:` öneksiz aynı tabloda.
+     */
     fun line(id: String): String? = mapOf(
         "alarm" to "alarm", "timer" to "hourglass", "stopwatch" to "stopwatch", "pomodoro" to "tomato",
         "study" to "books", "sleep" to "bed", "wakeGame" to "chick", "breath" to "wind", "chess" to "knight",
@@ -186,11 +201,14 @@ object AllPrefs {
         "timecalc" to "calc", "calendar" to "calendar", "leaf" to "leafcal", "datecalc" to "date",
         "planner" to "people", "journal" to "notebook", "bridge" to "bridge", "retire" to "beach",
         "weather" to "sun_cloud", "world" to "globe", "seasons" to "leaf", "moon" to "moon", "sky" to "telescope",
-        "sunpath" to "sunset", "zodiac" to "milkyway", "prayer" to "mosque", "qibla" to "compass", "quran" to "book",
+        "sunpath" to "sunset", "photo" to "aperture", "panchang" to "sunrise", "zodiac" to "milkyway", "prayer" to "mosque", "qibla" to "compass", "quran" to "book",
         "zikir" to "beads", "track" to "checklist", "duas" to "hands", "esma" to "sparkles", "hadith" to "scroll",
-        "guide" to "kaaba", "reldays" to "star_crescent", "greet" to "love_letter", "zakat" to "coin",
+        "guide" to "guide", "reldays" to "star_crescent", "greet" to "love_letter", "greetN" to "party", "zakat" to "coin",
         "settings" to "gear", "badges" to "medal",
-    )[id.removePrefix("s:")]?.takeIf { Icons3D.res(it) != 0 || LineIcons.get(it).isNotEmpty() }
+        "appearance" to "clock", "color" to "palette", "dials" to "dial", "widgets" to "widgets", "homeItems" to "homeitems",
+        "features" to "features", "notifications" to "bell", "language" to "language", "about" to "info", "shareQr" to "qr",
+        "account" to "account",
+    )[id.removePrefix("s:")]?.takeIf { DuoIcons.has(it) || Icons3D.res(it) != 0 || LineIcons.get(it).isNotEmpty() }
 
     /** Aramada ayar sayfaları da çıkar (Ayarlar'ın alt sayfaları) */
     val settings: List<AllEntry> = listOf(
@@ -203,6 +221,7 @@ object AllPrefs {
         AllEntry("s:features", "features.title", Icons.Filled.Apps, AllCat.MORE, null, route = "features", words = "features.barTitle"),
         AllEntry("s:notifications", "settings.notifications", Icons.Filled.Notifications, AllCat.MORE, null, route = "notifications"),
         AllEntry("s:language", "lang.title", Icons.Filled.Language, AllCat.MORE, null, route = "language"),
+        AllEntry("s:account", "account.title", Icons.Filled.AccountCircle, AllCat.MORE, null, route = "account", words = "account.signIn"),
         AllEntry("s:about", "settings.about", Icons.Filled.Info, AllCat.MORE, null, route = "about"),
         AllEntry("s:shareQr", "support.qr", Icons.Filled.QrCode2, AllCat.MORE, null, route = "shareQr"),
     )
@@ -306,14 +325,14 @@ fun AllScreen(onRoute: (String?) -> Unit) {
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
                             IconBox(e.icon, tint = e.cat.color(), line = AllPrefs.line(e.id))
-                            Spacer(Modifier.width(12.dp))
+                            Spacer(Modifier.width(14.dp))
                             Column(Modifier.weight(1f)) {
                                 Text(if (e.route?.startsWith("quran:") == true) sub else e.title, color = Theme.c.text, fontSize = 16.sp)
                                 Text(if (e.route?.startsWith("quran:") == true) e.title else sub, color = Theme.c.muted, fontSize = 12.sp)
                             }
                             Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
                         }
-                        if (i < results.size - 1) androidx.compose.material3.HorizontalDivider(Modifier.padding(start = 60.dp), color = Theme.c.border.copy(alpha = 0.5f))
+                        if (i < results.size - 1) androidx.compose.material3.HorizontalDivider(Modifier.padding(start = 58.dp), color = Theme.c.border.copy(alpha = 0.5f))
                     }
                 }
                 return@Column
@@ -376,7 +395,7 @@ private fun TileGrid(list: List<AllEntry>, columns: Int, fav: Boolean, onOpen: (
                             horizontalAlignment = Alignment.CenterHorizontally,
                         ) {
                             Box {
-                                IconBox(e.icon, tint = e.cat.color(), line = AllPrefs.line(e.id))
+                                IconBox(e.icon, tint = e.cat.color(), line = AllPrefs.line(e.id), box = 42.dp, glyph = 25.dp)
                                 if (fav) Icon(Icons.Filled.Star, null, tint = Theme.c.accent, modifier = Modifier.size(12.dp).align(Alignment.TopEnd))
                             }
                             Spacer(Modifier.height(6.dp))

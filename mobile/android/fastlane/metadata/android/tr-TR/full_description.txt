@@ -1,0 +1,51 @@
+Saat Tarih; saat, widget'lar, alarm, hava durumu, takvim ve onlarca günlük aracı tek, sade bir uygulamada toplar. Hesap yok, reklam yok, takip yok.
+
+Size göre hazırlanır
+• İlk açılışta birkaç kısa soru; alt çubuk istediğiniz bölümlerle kurulur
+• Kullanmadığınız bölüm gizlenir ve bildirim göndermez; geri kalan her şey Tümü'nde, bir dokunuş uzağınızda
+
+Saat ve widget'lar
+• 21 saat modeli ve 25 analog kadran; tam ekran, komodin için kısık kırmızı gece modu ve ekran koruyucu
+• 27 ana ekran widget'ı: analog, dijital ve saniyeli saat, dünya saatleri, hava, Ay evresi, gün doğumu ve batımı, geri sayım, fotoğraf, yıl ilerlemesi ve daha fazlası; şeffaf ve cam görünüm
+• Başka uygulamaların üstünde yüzen saat, Hızlı Ayarlar kutucukları
+• Kutucuk ve komplikasyonlarıyla Wear OS uygulaması, Android TV için tam ekran saat
+
+Alarm, uyku ve odak
+• Kilit ekranında tam ekran alarm; kademeli ses, ses kitaplığı ve arka planlar
+• Kapatma görevleri: matematik, sallama, adım, çömelme, kod okutma, nesne bulma, hafıza ya da yazma
+• Akıllı alarm, yatma hatırlatmalı uyku planı, uyku ve doğa sesleri
+• İstatistikli ve yapılacaklar listeli pomodoro, ders çalışma sayacı, odaklanırken uygulama engelleme
+• Ekran kapalıyken de sesle yönlendiren aralık antrenmanı; antrenmanları Health Connect'e kaydetme
+
+Hava durumu
+• Saatlik ve 14 günlük tahmin, hava kalitesi ve polen, üç hava modelinin karşılaştırması
+• Havaya göre canlanan ekran: yağmur, kar, bulut, rüzgâr ve şimşek
+• Sabah hava özeti ve isteğe bağlı hava bildirimi
+
+Takvim
+• Telefonunuzdaki takvimlerle bir arada ay, hafta, gün, ajanda ve yıl görünümü
+• 31 ülkenin resmî tatilleri ve özel günler
+• Hicri takvim ve tarih çevirici
+
+Araçlar
+• Adlı zamanlayıcılar, birden çok kronometre, kendi fotoğraflarınızla geri sayımlar
+• Dönen dünya, harita ve 24 saat kadranıyla dünya saatleri; toplantı planlayıcı; saat ve tarih hesaplama
+• Satranç saati, metronom, konuşan saat, sabah günlüğü, sınıf araçları, sınav zamanlayıcısı, burç hesaplama
+
+Gökyüzü ve mevsimler
+• Gün doğumu ve batımı, altın ve mavi saat, Ay'ın doğuşu ve batışı, Ay takvimi
+• Haritalı tutulmalar, gezegenleri ve yıldızlarıyla gece gökyüzü, gökyüzü olayı bildirimleri
+• Çocuklar için mevsimlerin anlatımı
+
+Namaz vakitleri ve kıble
+• Diyanet yöntemi ve 13 hesap yöntemi daha, Hanefî ikindi; her yerde namaz vakitleri, Türkiye'nin 81 ili ve 973 ilçesi
+• Ezanlı vakit bildirimi, vakitte alarm, vakitte telefonu sessize alma, Ramazan imsakiyesi
+• Kıble pusulası ve yakındaki camiler
+• Kur'an-ı Kerim (Arapça), dualar, Esmaü'l-Hüsna, zikirmatik, namaz ve oruç takibi, zekât hesabı, tebrik kartları
+
+Gizlilik
+Konumunuz telefonunuzda kalır. Yalnız hava durumu ve yakındaki camiler için yaklaşık konum ilgili servise (Open-Meteo, OpenStreetMap) gider, kim olduğunuz gitmez. Her izni Ayarlar › İzinler'den görür, kapatırsınız.
+
+On sekiz dilde. Android telefon ve tabletler, Wear OS ve Android TV için.
+
+Saat Tarih bir Bumba Life ürünüdür. Web: time.bumba.tr

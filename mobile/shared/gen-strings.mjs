@@ -11,12 +11,14 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeYear } from "../../lib/events.mjs";
 import { bridges } from "../../lib/bridges.mjs";
-import { hijriTable } from "../../lib/hijri.mjs";
+import { hijriTable, hijriTableId } from "../../lib/hijri.mjs";
+import { loadWorldHolidays } from "../../lib/world-holidays.mjs";
 import { otdDay } from "../../lib/otd.mjs";
+import { CALENDARS, CAL_PLACEHOLDERS, calendarData, calendarsJson, loadCalTexts, validateCalendars } from "../../lib/calendars/index.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
-const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn"];
 /* iOS String Catalog dil kodları: Çince Basitleştirilmiş Çince (zh-Hans); diğerleri aynı */
 const IOS_CODE = (l) => (l === "zh" ? "zh-Hans" : l);
 const I = Object.fromEntries(LANGS.map((l) => [l, JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"))]));
@@ -54,7 +56,13 @@ const SITE_PATHS = [
   "nature.nextFull", "nature.tableHeading", "nature.tableLead", "nature.colYear", "nature.hoursShort", "nature.minutesShort",
   "nature.moonrise", "nature.moonset", "nature.moonNoRise", "nature.moonNoSet", "nature.moonCalHeading", "nature.eclipseHeading",
   "nature.eclipseLead", "nature.eclipseTypes.*", "nature.eclipseRegions", "nature.eclipsePath", "nature.eclipseHere", "nature.eclipseNotHere",
-  "nature.eclipseSafety", "nature.eclipseSource",
+  "nature.eclipseSafety", "nature.eclipseSource", "nature.eclipsePrayer",
+  // Rashdul Qiblat (10 Kasım 2026): kıble ekranı ve bildirim
+  "qibla.rashdul", "qibla.rashdulNote", "qibla.rashdulNight",
+  // Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9): uygulamadaki panchang ekranı
+  "panchang.h1", "panchang.hindu", "panchang.hinduNote", "panchang.hinduNone", "panchang.avoid", "panchang.good", "panchang.rahu",
+  "panchang.yama", "panchang.gulika", "panchang.abhijit", "panchang.brahma", "panchang.wed", "panchang.polar", "panchang.week",
+  "panchang.defsHeading", "panchang.note",
   "weather.h1", "weather.now", "weather.feelsLike", "weather.humidity", "weather.wind", "weather.precipitation", "weather.uv",
   "weather.hourlyHeading", "weather.dailyHeading", "weather.loading", "weather.error", "weather.retry", "weather.pressure",
   "weather.codes.*", "weather.attribution", "weather.sunrise", "weather.sunset",
@@ -89,6 +97,8 @@ const SITE_PATHS = [
   // 2. analiz #125: ay adlarının kökeni (takvim yaprağı)
   "calendar.monthOrigin.heading", "calendar.monthOrigin.source", "calendar.monthOrigin.items.*",
   "zakat.fitreHeading", "zakat.fitreText", "zakat.fitrePeople", "zakat.fitreTotal", "zakat.fitreNote",
+  // Endonezya zekâtı (BAZNAS; 10 Kasım 2026)
+  "zakat.stdLabel", "zakat.stdDiyanet", "zakat.stdBaznas", "zakat.noteBaznas", "zakat.fitrahHeading", "zakat.fitrahText", "zakat.fidyahText",
   "hijriConv.h1", "hijriConv.toHijri", "hijriConv.toGreg", "hijriConv.gregLabel", "hijriConv.yearLabel", "hijriConv.monthLabel",
   "hijriConv.dayLabel", "hijriConv.dayMax",
   "tools.pomodoro.tags.*",
@@ -140,6 +150,7 @@ for (const spec of SITE_PATHS) {
    (Rusçada calendar.months tarih içindeki tamlama hâlidir: "31 октября"; başlık "Октябрь"). */
 for (let i = 0; i < 12; i++) KEYS[`calendar.months.${i}`] = (t) => (t.calendar.monthsTitle || t.calendar.months)[i];
 for (let i = 0; i < 12; i++) KEYS[`zodiac.signs.${i}`] = (t) => t.zodiac.signs[i];
+for (let i = 0; i < 3; i++) KEYS[`panchang.defs.${i}`] = (t) => t.panchang.defs[i];
 
 /* Emeklilik hesaplama yalnız Türkçe (src/data/retire-tr.json; 4/a sigortalıları, Türkiye mevzuatı). Uygulama bu aracı yalnız
    Türkçe arayüzde gösterir; anahtarlar her dilde aynı Türkçe metinle yazılır ki kaynak dosyaları eşit kalsın. */
@@ -148,6 +159,33 @@ for (const k of ["h1", "gender", "women", "men", "birth", "start", "days", "days
   "result", "resultAge", "resultLeft", "resultPast", "resultNever", "group", "condDays", "condYears", "condAge", "condNoAge", "done",
   "never", "years", "months", "noteScope", "noteLaw"]) KEYS[`retire.${k}`] = () => RETIRE[k];
 for (const sub of ["groups", "routes"]) for (const k of Object.keys(RETIRE[sub])) KEYS[`retire.${sub}.${k}`] = () => RETIRE[sub][k];
+
+/* Kapsayıcı takvimler (9 Kasım 2026; lib/calendars, docs/takvimler.md): src/i18n-cal/<id>.json → cals.<id>.<anahtar>
+   (iç içe nesneler noktayla: cals.christian.ev.easter; dizi öğeleri 1'den: cals.<id>.month.1). "cals.<id>." öneki bu metinlere
+   ayrılmıştır; uygulama arayüz metinleri app-strings.json'da başka adla durur. Yer tutucuların argüman sırası CAL_PLACEHOLDERS
+   (d, m, y; Türkçe fmt de bu sırada yazılır, doğrulama denetler), sonra diğerleri (aşağıda calOrder). */
+const CAL_TEXTS = loadCalTexts(ROOT);
+const CAL_DATA = calendarData();
+{
+  const errs = validateCalendars(CAL_DATA, CAL_TEXTS, ROOT);
+  if (errs.length) throw new Error("Takvimler (lib/calendars):\n- " + errs.join("\n- "));
+}
+for (const { meta } of CALENDARS) {
+  const walk = (o, p) => {
+    for (const [k, v] of Object.entries(o)) {
+      const q = [...p, k];
+      if (Array.isArray(v)) v.forEach((_, i) => { KEYS[`cals.${meta.id}.${q.join(".")}.${i + 1}`] = (t, l) => at(CAL_TEXTS[meta.id][l], [...q, i]); });
+      else if (v && typeof v === "object") walk(v, q);
+      else KEYS[`cals.${meta.id}.${q.join(".")}`] = (t, l) => at(CAL_TEXTS[meta.id][l], q);
+    }
+  };
+  walk(CAL_TEXTS[meta.id].tr, []);
+}
+
+/* Üyelik ekranlarının metinleri (standart 5.15 madde 7; 12 Kasım 2026): web'deki hesap sayfalarıyla tek kaynak
+   server/i18n/account.json → account.<anahtar>. Uygulamaya özgü birkaç hesap metni app-strings.json'da (account.rowSignedOut…). */
+const ACCOUNT = JSON.parse(fs.readFileSync(path.join(ROOT, "server/i18n/account.json"), "utf8"));
+for (const k of Object.keys(ACCOUNT.tr)) KEYS[`account.${k}`] = (t, l) => ACCOUNT[l][k];
 
 const APP = JSON.parse(fs.readFileSync(path.join(HERE, "app-strings.json"), "utf8"));
 for (const [key, byLang] of Object.entries(APP)) {
@@ -158,13 +196,16 @@ for (const [key, byLang] of Object.entries(APP)) {
 
 /* {ad} → %1$@, %2$@…: sıra Türkçe metindeki ilk görünüş sırasıdır; her dil aynı adları kullanmalı. */
 const names = (s) => [...new Set([...s.matchAll(/\{([a-z]+)\}/gi)].map((m) => m[1]))];
+/* Takvim metinlerinde (cals.*) sıra sabit: d, m, y, sonra diğerleri Türkçe metindeki sırayla (iOS ve Android argümanları bu sırayla verir) */
+const calOrder = (key, s) => (key.startsWith("cals.") ? [...CAL_PLACEHOLDERS.filter((n) => names(s).includes(n)), ...names(s).filter((n) => !CAL_PLACEHOLDERS.includes(n))] : names(s));
 const toIOS = (s, order) => s.replace(/%/g, "%%").replace(/\{([a-z]+)\}/gi, (_, n) => `%${order.indexOf(n) + 1}$@`);
 
 /* Android: {ad} → %1$s; yer tutucusu olmayan metinde % olduğu gibi kalır (formatted="false") */
 /* Endonezce Android kaynaklarında eski "in" koduyla (values-in) durur; Filipince üç harfli kod BCP 47 biçimiyle (values-b+fil);
-   Çince Basitleştirilmiş (values-zh bütün Çince yerel ayarlara uyar, Geleneksel Çincede de Türkçe yerine bu gelir).
+   Çince Basitleştirilmiş (values-zh bütün Çince yerel ayarlara uyar, Geleneksel Çincede de İngilizce yerine bu gelir).
+   Varsayılan values/ İngilizcedir (desteklenmeyen telefon dillerinde İngilizce; 9 Kasım 2026, sahibin kararı), Türkçe values-tr.
    Dil seçimi (locales_config) BCP 47 kodlarıyla: id, fil, zh-Hans. */
-const ANDROID_DIRS = { tr: "values", en: "values-en", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru", ja: "values-ja", ko: "values-ko", zh: "values-zh", fil: "values-b+fil", th: "values-th", es: "values-es", pt: "values-pt", hi: "values-hi" };
+const ANDROID_DIRS = { tr: "values-tr", en: "values", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru", ja: "values-ja", ko: "values-ko", zh: "values-zh", fil: "values-b+fil", th: "values-th", es: "values-es", pt: "values-pt", hi: "values-hi", bn: "values-bn" };
 const LOCALE_TAG = (l) => (l === "zh" ? "zh-Hans" : l);
 const androidName = (key) => key.replace(/[^A-Za-z0-9_]/g, "_");
 const androidEscape = (s) => s
@@ -200,7 +241,7 @@ for (const key of Object.keys(KEYS)) if (key.startsWith("siri.phrase.")) delete 
 const strings = {}, plistStrings = {};
 for (const [key, get] of Object.entries(KEYS)) {
   const localizations = {};
-  const order = names(get(I.tr, "tr") ?? "");
+  const order = calOrder(key, get(I.tr, "tr") ?? "");
   for (const l of LANGS) {
     const v = get(I[l], l);
     if (typeof v !== "string" || !v) throw new Error(`${l}: ${key} metni yok`);
@@ -233,20 +274,21 @@ const androidXml = (l, res = androidRes) => '<?xml version="1.0" encoding="utf-8
   res[l].join("\n") + "\n</resources>\n";
 const localesConfig = '<?xml version="1.0" encoding="utf-8"?>\n<locale-config xmlns:android="http://schemas.android.com/apk/res/android">\n' +
   LANGS.map((l) => `    <locale android:name="${LOCALE_TAG(l)}" />`).join("\n") + "\n</locale-config>\n";
-const catalog = (s, source = "tr") => JSON.stringify({ sourceLanguage: source, strings: s, version: "1.0" }, null, 2) + "\n";
+const catalog = (s, source = "en") => JSON.stringify({ sourceLanguage: source, strings: s, version: "1.0" }, null, 2) + "\n";
 const xcstrings = catalog(strings);
 
 const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces.json"), "utf8"))
-  .map(({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }) => ({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi }));
+  .map(({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi, bn }) => ({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th, hi, bn }));
 const provincesJson = JSON.stringify(provinces) + "\n";
 
-/* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak; sınavlar takvimde yok). */
+/* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak). Sınav takvimi
+   9 Kasım 2026'da kaldırıldı (sahibin kararı: yalnız Türkiye'ye özgü, projenin küresel amacına aykırı). */
 const HOL = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/holidays.json"), "utf8"));
 HOL.school = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/school.json"), "utf8"));
 const years = {};
 for (const y of Object.keys(HOL.years).map(Number).sort((a, b) => a - b)) {
   const r = computeYear(y, HOL);
-  years[y] = { events: r.events.filter((e) => e.type !== "exam"), schoolRanges: r.schoolRanges, projected: r.projected };
+  years[y] = { events: r.events, schoolRanges: r.schoolRanges, projected: r.projected };
   for (const e of years[y].events) if (!KEYS[`calendar.events.${e.key}`]) throw new Error(`calendar.events.${e.key} metni yok`);
 }
 const calendarJson = JSON.stringify({ years, ramadans: HOL.ramadans }) + "\n";
@@ -266,11 +308,19 @@ const bridgesJson = JSON.stringify(Object.fromEntries(Object.keys(years).map((y)
 
 /* Hicri takvim: Diyanet'e hizalı ay başları (lib/hijri.mjs): [[ay başı, hicri yıl, ay], …]; son satır tablonun sonu */
 const hijriJson = JSON.stringify(hijriTable(HOL, JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/hijri.json"), "utf8")))) + "\n";
+/* Endonezya hicri takvimi (10 Kasım 2026): Kemenag takvimi, isbat kararları ve MABIMS hesabı, Diyanet tablosuyla aynı aralıkta */
+const hijriIdTable = hijriTableId(JSON.parse(hijriJson), JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/hijri-id.json"), "utf8")));
+if (hijriIdTable.mismatch.length) console.warn("Not: Endonezya hicri dayanakları MABIMS hesabından ayrılıyor (dayanak kullanıldı): " + hijriIdTable.mismatch.join(", "));
+const hijriIdJson = JSON.stringify([...hijriIdTable]) + "\n";
 
 /* Fitre (src/data/fitre.json): en son açıklanan yıl, tutar (TL) ve açıklama tarihi */
 const fitreSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/fitre.json"), "utf8")).years;
 const fitreYear = Object.keys(fitreSrc).sort().pop();
-const fitreJson = JSON.stringify({ year: +fitreYear, amount: fitreSrc[fitreYear].amount, date: fitreSrc[fitreYear].date }) + "\n";
+// "id": Endonezya (BAZNAS) en son yıl, fitrah ve fidye (rupiah), nisab gramı (src/data/zakat-id.json)
+const zakatIdSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/zakat-id.json"), "utf8"));
+const zakatIdYear = Object.keys(zakatIdSrc.years).sort().pop();
+const fitreJson = JSON.stringify({ year: +fitreYear, amount: fitreSrc[fitreYear].amount, date: fitreSrc[fitreYear].date,
+  id: { year: +zakatIdYear, fitrah: zakatIdSrc.years[zakatIdYear].fitrah, fidyah: zakatIdSrc.years[zakatIdYear].fidyah, nisab: zakatIdSrc.nisabGrams } }) + "\n";
 
 /* Dünya saatleri için şehirler: ad ve ülke beş dilde, IANA saat dilimi, koordinat */
 const cities = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/cities.json"), "utf8")).map((c) => ({
@@ -303,7 +353,7 @@ const otdFiles = Object.fromEntries(LANGS.flatMap((l) => {
 /* Dünya resmî tatilleri (2. analiz #122; src/data/world-holidays.json, Nager.Date MIT): takvimde ülke seçimi. Ad tablosu
    bir kez: "s" [ad], ülke → yıl → [[tarih, İngilizce ad sırası, yerel ad sırası]]; "tx" İngilizce ad sırası → {dil: çeviri}
    (src/data/holiday-names.json); "native" sitedeki NATIVE_CC (o dilde yerel ad gösterilir) */
-const wholSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/world-holidays.json"), "utf8"));
+const wholSrc = loadWorldHolidays(ROOT);
 const holNamesSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/holiday-names.json"), "utf8")).names;
 const wholJson = (() => {
   const strs = [], idx = new Map();
@@ -311,11 +361,12 @@ const wholJson = (() => {
   const countries = {};
   for (const [cc, years] of Object.entries(wholSrc.countries)) {
     countries[cc] = {};
-    for (const [y, v] of Object.entries(years)) countries[cc][y] = v.days.map((h) => [h.d, id(h.n), id(h.l || h.n)]);
+    // Dördüncü öğe 1: ortak izin günü (Endonezya cuti bersama; 10 Kasım 2026)
+    for (const [y, v] of Object.entries(years)) countries[cc][y] = v.days.map((h) => h.k === "leave" ? [h.d, id(h.n), id(h.l || h.n), 1] : [h.d, id(h.n), id(h.l || h.n)]);
   }
   const tx = {};
   for (const [en, tr] of Object.entries(holNamesSrc)) if (idx.has(en)) tx[idx.get(en)] = tr;
-  return JSON.stringify({ s: strs, countries, tx, native: { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"] } }) + "\n";
+  return JSON.stringify({ s: strs, countries, tx, native: { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"], es: ["ES"], pt: ["PT", "BR"], id: ["ID"], hi: ["IN"] } }) + "\n";
 })();
 
 /* Gökyüzü (2. analiz #154, #157): olaylar (lib/sky-events.mjs, 2026–2031) ve takımyıldızlar (d3-celestial, BSD-3) */
@@ -326,23 +377,38 @@ const constellationsJson = JSON.stringify(conSrc.con) + "\n";
 const iconsSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "mobile/shared/icons/icons.json"), "utf8"));
 delete iconsSrc._note;
 const iconsJson = JSON.stringify(iconsSrc) + "\n";
+/* İki tonlu küçük simgeler (8 Kasım 2026, sahibin kararı "B Karma"; Phosphor Icons, MIT): liste, kare, sekme ve satır
+   simgeleri. mobile/shared/icons/gen-duotone.mjs üretir; biçim ve kurallar mobile/shared/icons/DUOTONE.md */
+const duotoneSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "mobile/shared/icons/duotone.json"), "utf8"));
+delete duotoneSrc._note;
+const duotoneJson = JSON.stringify(duotoneSrc) + "\n";
 /* Widget'lardaki hava ve gök simgeleri 4 Kasım 2026'dan beri 3D görsel (res/drawable-nodpi/e3d_*.png,
    mobile/shared/icons3d/gen-icons3d.py); eski çizgi vektörleri (wi_*.xml) kaldırıldı. */
 /* NASA SVS CGI Moon Kit dokusu (kamu malı; 2. analiz #103): ikili dosya, uygulamalara kopyalanır */
 const moonJpg = fs.readFileSync(path.join(ROOT, "src/assets/moon.jpg"));
 
+/* Profildeki ülke ve telefon kodu listesi (server/data/countries.json; libphonenumber-js meta verisi, MIT) */
+const countriesJson = fs.readFileSync(path.join(ROOT, "server/data/countries.json"), "utf8");
+
 const files = {
   ...otdFiles,
+  "mobile/ios/App/Resources/countries.json": countriesJson,
+  "mobile/android/app/src/main/assets/countries.json": countriesJson,
   "mobile/ios/App/Resources/sky-events.json": skyEventsJson,
   "mobile/android/app/src/main/assets/sky-events.json": skyEventsJson,
   "mobile/ios/App/Resources/constellations.json": constellationsJson,
   "mobile/android/app/src/main/assets/constellations.json": constellationsJson,
   "mobile/ios/App/Resources/icons.json": iconsJson,
   "mobile/android/app/src/main/assets/icons.json": iconsJson,
+  "mobile/ios/App/Resources/duotone.json": duotoneJson,
+  "mobile/android/app/src/main/assets/duotone.json": duotoneJson,
   "mobile/ios/App/Resources/moon.jpg": moonJpg,
   "mobile/android/app/src/main/assets/moon.jpg": moonJpg,
   "mobile/ios/App/Resources/world-holidays.json": wholJson,
   "mobile/android/app/src/main/assets/world-holidays.json": wholJson,
+  // Kapsayıcı takvimler (lib/calendars; biçim docs/takvimler.md)
+  "mobile/ios/App/Resources/calendars.json": calendarsJson(CAL_DATA),
+  "mobile/android/app/src/main/assets/calendars.json": calendarsJson(CAL_DATA),
   "mobile/ios/App/Resources/Localizable.xcstrings": xcstrings,
   "mobile/ios/App/Resources/InfoPlist.xcstrings": catalog(plistStrings),
   "mobile/ios/App/Resources/AppShortcuts.xcstrings": catalog(shortcutStrings, "en"),
@@ -353,6 +419,7 @@ const files = {
   "mobile/ios/App/Resources/eclipses.json": eclipsesJson,
   "mobile/ios/App/Resources/districts.json": districtsJson,
   "mobile/ios/App/Resources/hijri.json": hijriJson,
+  "mobile/ios/App/Resources/hijri-id.json": hijriIdJson,
   "mobile/ios/App/Resources/fitre.json": fitreJson,
   "mobile/ios/App/Resources/bridges.json": bridgesJson,
   "mobile/android/app/src/main/assets/provinces.json": provincesJson,
@@ -362,6 +429,7 @@ const files = {
   "mobile/android/app/src/main/assets/eclipses.json": eclipsesJson,
   "mobile/android/app/src/main/assets/districts.json": districtsJson,
   "mobile/android/app/src/main/assets/hijri.json": hijriJson,
+  "mobile/android/app/src/main/assets/hijri-id.json": hijriIdJson,
   "mobile/android/app/src/main/assets/fitre.json": fitreJson,
   "mobile/android/app/src/main/assets/bridges.json": bridgesJson,
   "mobile/android/app/src/main/res/xml/locales_config.xml": localesConfig,
@@ -369,6 +437,7 @@ const files = {
   // Wear OS saati (Wear modülü): il listesi, hicri ay başları ve saat ekranlarının metinleri
   "mobile/android/wear/src/main/assets/provinces.json": provincesJson,
   "mobile/android/wear/src/main/assets/hijri.json": hijriJson,
+  "mobile/android/wear/src/main/assets/hijri-id.json": hijriIdJson,
   "mobile/android/wear/src/main/res/xml/locales_config.xml": localesConfig,
   ...Object.fromEntries(LANGS.map((l) => [`mobile/android/wear/src/main/res/${ANDROID_DIRS[l]}/strings.xml`, androidXml(l, wearRes)])),
 };

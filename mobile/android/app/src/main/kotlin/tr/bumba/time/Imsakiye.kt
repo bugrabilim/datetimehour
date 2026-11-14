@@ -70,7 +70,9 @@ object Imsakiye {
         var d = ramadan.start
         var n = 1
         while (!d.isAfter(ramadan.endInclusive)) {
-            val e = place.entries(d).associate { it.prayer to Fmt.hm(it.at, place.zone) }
+            val e = place.entries(d).associate { it.prayer to Fmt.hm(it.at, place.zone) }.toMutableMap()
+            // Kemenag'da sahur sütunu ihtiyat imsakıdır (sabahtan 10 dk önce)
+            place.extraRows(d)?.first?.let { e[Prayer.FAJR] = Fmt.hm(it, place.zone) }
             out += Row(n++, d, Prayer.entries.map { e[it] ?: "–" })
             d = d.plusDays(1)
         }
@@ -154,7 +156,8 @@ object Imsakiye {
                 Prayer.MAGHRIB -> L("prayer.imIftar")
                 else -> ""
             }
-            cell(pr.title, i + 2, if (sp.isNotEmpty()) ty + 36 else ty + 44, 22f, Typeface.BOLD, if (sp.isNotEmpty()) GOLD else CREAM)
+            val title = if (pr == Prayer.FAJR && place.extraRows(place.today()) != null) L("prayer.method.rowImsak") else pr.title
+            cell(title, i + 2, if (sp.isNotEmpty()) ty + 36 else ty + 44, 22f, Typeface.BOLD, if (sp.isNotEmpty()) GOLD else CREAM)
             if (sp.isNotEmpty()) cell("($sp)", i + 2, ty + 58, 17f, Typeface.BOLD, GOLD)
         }
         // satırlar (cuma vurgulu)

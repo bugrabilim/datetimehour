@@ -6,3 +6,6 @@ dist
 mobile
 extension
 dist-extension
+server
+# Ayarlar menüsündeki "Hesap" bağlantısının adı üyelik sunucusunun metinlerinden (build.mjs ACCOUNT_UI)
+!server/i18n/account.json

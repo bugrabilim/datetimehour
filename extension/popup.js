@@ -4,7 +4,7 @@
 (function () {
   "use strict";
   var D = window.STH_DATA, P = window.sthPrayer;
-  var LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi"];
+  var LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn"];
   var RTL = ["ar", "ur", "fa"];
   var uiTag = ((window.chrome && chrome.i18n && chrome.i18n.getUILanguage && chrome.i18n.getUILanguage()) || navigator.language || "en").toLowerCase();
   // Filipince üç harfli kod (fil; eski Tagalog kodu tl), diğerleri iki harf
@@ -26,9 +26,9 @@
   var store = (window.chrome && chrome.storage && chrome.storage.local) || null;
   var state = { province: "istanbul", h12: false };
 
-  // İller: arayüz dilinde sıralı (Latin dışı yazılı dillerde kendi yazısıyla: p[4] ar, p[5] ru, p[6] fa, p[7] ja, p[8] ko, p[9] zh, p[10] th)
+  // İller: arayüz dilinde sıralı (Latin dışı yazılı dillerde kendi yazısıyla: p[4] ar, p[5] ru, p[6] fa, p[7] ja, p[8] ko, p[9] zh, p[10] th, p[11] hi, p[12] bn)
   var sel = $("province");
-  var nameIdx = { ar: 4, ru: 5, fa: 6, ja: 7, ko: 8, zh: 9, th: 10, hi: 11 }[lang];
+  var nameIdx = { ar: 4, ru: 5, fa: 6, ja: 7, ko: 8, zh: 9, th: 10, hi: 11, bn: 12 }[lang];
   D.provinces.map(function (p) { return { slug: p[0], name: nameIdx && p[nameIdx] ? p[nameIdx] : p[1] }; })
     .sort(function (a, b) { return a.name.localeCompare(b.name, lang); })
     .forEach(function (p) { var o = document.createElement("option"); o.value = p.slug; o.textContent = p.name; sel.appendChild(o); });

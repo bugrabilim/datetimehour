@@ -275,11 +275,12 @@ struct SeasonsView: View {
                     HemispheresDiagram(north: current.0).frame(height: 150)
                     Text(L("kids.south.text"))
                 }
-                card(L("kids.facts.title"), emoji: "💡") {
+                card(L("kids.facts.title"), emoji: "idea") {
+                    // Madde imleri emoji yerine iki tonlu simge (8 Kasım 2026): en uzun gün, ekinoks, kutup, ekvator, yörünge
                     ForEach(1...5, id: \.self) { i in
-                        HStack(alignment: .firstTextBaseline, spacing: 10) {
-                            Text(["🌞", "⚖️", "🐻‍❄️", "🌴", "🐢"][i - 1])
-                            Text(L("kids.fact\(i)"))
+                        HStack(alignment: .top, spacing: 10) {
+                            DuoIcon(name: ["sun", "halfmoon", "snowman", "umbrella", "telescope"][i - 1], size: 20, color: Theme.sky)
+                            Text(L("kids.fact\(i)")).fixedSize(horizontal: false, vertical: true)
                         }
                     }
                 }
@@ -328,8 +329,7 @@ struct SeasonsView: View {
                     ZStack(alignment: .leading) {
                         Capsule().fill(Theme.surface2)
                         Capsule().fill(color).frame(width: max(14, g.size.width * done))
-                        Text(Self.seasonEmoji[next.0])
-                            .font(.system(size: 16))
+                        DuoIcon(name: LineIcons.seasons[next.0], size: 16, color: Self.seasonColor[next.0])
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .padding(.trailing, 4)
                     }
@@ -356,8 +356,8 @@ struct SeasonsView: View {
     private func card<Content: View>(_ title: String, emoji: String, @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
-                // Kendi çizgi simgelerimiz (2. analiz #97)
-                LineIcon(name: emoji, size: 30)
+                // İki tonlu simge (8 Kasım 2026, DUOTONE.md): kart başlığı, gök mavi
+                DuoChip(name: emoji, color: Theme.sky)
                 Text(title).font(.title3.weight(.bold)).foregroundStyle(Theme.text)
             }
             content()
@@ -373,7 +373,11 @@ struct SeasonsView: View {
         let moon = Nature.moon(at: now)
         return HStack(alignment: .top, spacing: 12) {
             VStack(alignment: .leading, spacing: 6) {
-                Text("🌅 " + L("nature.sunHeading")).font(.headline)
+                // "🌅" emojisinin yerine iki tonlu simge (8 Kasım 2026)
+                HStack(spacing: 6) {
+                    DuoIcon(name: "sunrise", size: 18, color: Theme.sky)
+                    Text(L("nature.sunHeading")).font(.headline)
+                }
                 if let sun = Self.sun(place: place, now: now) {
                     Text("↑ " + place.hm(sun.rise)).monospacedDigit()
                     Text("↓ " + place.hm(sun.set)).monospacedDigit()
@@ -434,7 +438,7 @@ struct SeasonsView: View {
         let list = Self.instants(y)
         return ForEach(0..<4, id: \.self) { i in
             HStack {
-                Text(Self.seasonEmoji[i])
+                DuoIcon(name: LineIcons.seasons[i], size: 18, color: Self.seasonColor[i])
                 Text(L("nature.seasons.\(Self.seasonKeys[i])"))
                 Spacer()
                 Text(Fmt.shortDateTime(list[i].1, tz: tz)).monospacedDigit().foregroundStyle(Theme.muted)
@@ -467,18 +471,23 @@ struct SeasonsView: View {
         let s0 = alt(-0.833), c6 = alt(-6), c12 = alt(-12), c18 = alt(-18)
         func one(_ h: Double?) -> String { guard let h else { return "–" }; return place.hm(midnight.addingTimeInterval(h * 3600)) }
         func two(_ a: (Double?, Double?), _ b: (Double?, Double?)) -> String { span(a) + " · " + span(b) }
-        let rows: [(String, String, String)] = [("nature.blueAm", "🔵", span(l.blueAm)), ("nature.goldenAm", "🟠", span(l.goldenAm)),
-                                                ("nature.goldenPm", "🟠", span(l.goldenPm)), ("nature.bluePm", "🔵", span(l.bluePm)),
-                                                ("nature.tw.firstLight", "🌌", one(c18.rise)), ("nature.tw.lastLight", "🌌", one(c18.set)),
-                                                ("nature.tw.civil", "🌆", two((c6.rise, s0.rise), (s0.set, c6.set))),
-                                                ("nature.tw.nautical", "⚓", two((c12.rise, c6.rise), (c6.set, c12.set))),
-                                                ("nature.tw.astro", "🔭", two((c18.rise, c12.rise), (c12.set, c18.set)))]
+        // Emoji yerine iki tonlu simge ve gökyüzü rengi (8 Kasım 2026): mavi saat mavi, altın saat altın, ilk/son ışık ve
+        // astronomik alacakaranlık mor, sivil kiremit, denizcilik mavi
+        let rows: [(String, String, Color, String)] = [
+            ("nature.blueAm", "dawn", Theme.sky, span(l.blueAm)), ("nature.goldenAm", "sunrise", Theme.gold, span(l.goldenAm)),
+            ("nature.goldenPm", "sunset", Theme.gold, span(l.goldenPm)), ("nature.bluePm", "sunset", Theme.sky, span(l.bluePm)),
+            ("nature.tw.firstLight", "night", Theme.dusk, one(c18.rise)), ("nature.tw.lastLight", "night", Theme.dusk, one(c18.set)),
+            ("nature.tw.civil", "sunset", Theme.terra, two((c6.rise, s0.rise), (s0.set, c6.set))),
+            ("nature.tw.nautical", "compass", Theme.sky, two((c12.rise, c6.rise), (c6.set, c12.set))),
+            ("nature.tw.astro", "telescope", Theme.dusk, two((c18.rise, c12.rise), (c12.set, c18.set))),
+        ]
         return VStack(alignment: .leading, spacing: 8) {
             ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
-                HStack {
-                    Text(row.1 + " " + L(row.0))
+                HStack(spacing: 8) {
+                    DuoIcon(name: row.1, size: 18, color: row.2)
+                    Text(L(row.0))
                     Spacer()
-                    Text(row.2).monospacedDigit().environment(\.layoutDirection, .leftToRight)
+                    Text(row.3).monospacedDigit().environment(\.layoutDirection, .leftToRight)
                 }
             }
             Text(L("nature.lightNote")).font(.caption).foregroundStyle(Theme.muted)

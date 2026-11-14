@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.width
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
@@ -335,7 +336,7 @@ fun FocusStatsCard(log: List<FocusLog.Entry>, onClear: () -> Unit) {
     AppCard {
         SectionTitle(L("tools.pomodoro.statsHeading"))
         // Odak serisi (rakip analizi #27): bugün ya da dün biten üst üste gün
-        if (streak >= 2) Text("🔥 " + T("tools.pomodoro.streak", streak), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+        if (streak >= 2) Text(T("tools.pomodoro.streak", streak), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
         if (log.isEmpty()) {
             Text(L("tools.pomodoro.empty"), color = Theme.c.muted, fontSize = 14.sp)
         } else {
@@ -343,7 +344,7 @@ fun FocusStatsCard(log: List<FocusLog.Entry>, onClear: () -> Unit) {
             // Bugünün odak kartı (2. analiz #105)
             if (s.today.m > 0) androidx.compose.material3.TextButton(onClick = {
                 Share.image(context, ShareCards.focus(s.today.m, s.today.n, streak, s.top.firstOrNull()?.first), "odak.png", L("share.card"))
-            }) { Text("📤 " + L("share.card"), color = Theme.c.accent) }
+            }) { DuoIcon("share", 18.dp, Theme.c.accent); androidx.compose.foundation.layout.Spacer(Modifier.width(6.dp)); Text(L("share.card"), color = Theme.c.accent) }
             Row2(L("tools.pomodoro.week"), T("tools.pomodoro.statLine", s.week.n, s.week.m))
             Row2(L("tools.pomodoro.total"), T("tools.pomodoro.statLine", s.total.n, s.total.m))
             // 7 gün / 30 gün / 12 ay (2. analiz #31)

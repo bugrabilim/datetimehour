@@ -1,0 +1,249 @@
+{
+  "tr": {
+    "name": "Sih takvimi",
+    "desc": "Gurpurablar ve Sih kutsal günleri: Guru Nanak ve Guru Gobind Singh'in doğum günleri, Vaisakhi, Hola Mohalla ve Bandi Chhor Divas.",
+    "note": "Tarihler Hindistan'da yaygın izlenen SGPC takvimine göredir (çoğu ay takviminden, Yeni Delhi'de gün doğumuna göre hesaplanır). 2003 tarihli asıl Nanakşahi takvimini izleyen gurdwaralarda (ör. Pakistan) bazı günler başka tarihlerdedir; kendi gurdwaranızın takvimine bakın.",
+    "ev": {
+      "gurpurabGobind": "Guru Gobind Singh Gurpurab (doğum günü)",
+      "holaMohalla": "Hola Mohalla",
+      "vaisakhi": "Vaisakhi (Khalsa'nın kuruluşu)",
+      "bandiChhor": "Bandi Chhor Divas",
+      "gurpurabNanak": "Guru Nanak Gurpurab (Guru Nanak'ın doğum günü)",
+      "martyrdomTeghBahadur": "Guru Tegh Bahadur'un şehadet günü"
+    }
+  },
+  "en": {
+    "name": "Sikh calendar",
+    "desc": "Gurpurabs and Sikh holy days: the births of Guru Nanak and Guru Gobind Singh, Vaisakhi, Hola Mohalla and Bandi Chhor Divas.",
+    "note": "Dates follow the SGPC calendar widely observed in India (mostly lunar, calculated for sunrise in New Delhi). Gurdwaras that follow the original 2003 Nanakshahi calendar (for example in Pakistan) mark some days on other dates; check your gurdwara's calendar.",
+    "ev": {
+      "gurpurabGobind": "Guru Gobind Singh Gurpurab (birth)",
+      "holaMohalla": "Hola Mohalla",
+      "vaisakhi": "Vaisakhi (founding of the Khalsa)",
+      "bandiChhor": "Bandi Chhor Divas",
+      "gurpurabNanak": "Guru Nanak Gurpurab (birth of Guru Nanak)",
+      "martyrdomTeghBahadur": "Martyrdom of Guru Tegh Bahadur"
+    }
+  },
+  "de": {
+    "name": "Sikh-Kalender",
+    "desc": "Gurpurabs und heilige Tage der Sikhs: die Geburtstage von Guru Nanak und Guru Gobind Singh, Vaisakhi, Hola Mohalla und Bandi Chhor Divas.",
+    "note": "Die Daten folgen dem in Indien verbreiteten SGPC-Kalender (meist nach dem Mondkalender, berechnet für den Sonnenaufgang in Neu-Delhi). Gurdwaras, die dem ursprünglichen Nanakshahi-Kalender von 2003 folgen (etwa in Pakistan), begehen manche Tage an anderen Daten; fragen Sie in Ihrem Gurdwara nach.",
+    "ev": {
+      "gurpurabGobind": "Guru Gobind Singh Gurpurab (Geburt)",
+      "holaMohalla": "Hola Mohalla",
+      "vaisakhi": "Vaisakhi (Gründung der Khalsa)",
+      "bandiChhor": "Bandi Chhor Divas",
+      "gurpurabNanak": "Guru Nanak Gurpurab (Geburt Guru Nanaks)",
+      "martyrdomTeghBahadur": "Märtyrertod von Guru Tegh Bahadur"
+    }
+  },
+  "az": {
+    "name": "Sikh təqvimi",
+    "desc": "Qurpurablar və sikhlərin müqəddəs günləri: Quru Nanak və Quru Qobind Sinqhin doğum günləri, Vaysaxi, Hola Mohalla və Bandi Çhor Divas.",
+    "note": "Tarixlər Hindistanda geniş izlənən SGPC təqviminə görədir (əsasən ay təqvimindən, Yeni Dehlidə gündoğana görə hesablanır). 2003-cü ilin əsl Nanakşahi təqvimini izləyən qurdvaralarda (məs., Pakistanda) bəzi günlər başqa tarixlərdədir; öz qurdvaranızın təqviminə baxın.",
+    "ev": {
+      "gurpurabGobind": "Quru Qobind Sinqh Qurpurabı (doğum günü)",
+      "holaMohalla": "Hola Mohalla",
+      "vaisakhi": "Vaysaxi (Xalsanın qurulması)",
+      "bandiChhor": "Bandi Çhor Divas",
+      "gurpurabNanak": "Quru Nanak Qurpurabı (Quru Nanakın doğum günü)",
+      "martyrdomTeghBahadur": "Quru Teq Bahadurun şəhadət günü"
+    }
+  },
+  "ar": {
+    "name": "التقويم السيخي",
+    "desc": "أعياد الغوربوراب وأيام السيخ المقدسة: مولد غورو ناناك وغورو غوبيند سينغ، وفايساخي، وهولا موهالا، وباندي تشور ديفاس.",
+    "note": "تتبع التواريخ تقويم لجنة SGPC المتّبع على نطاق واسع في الهند (قمري في معظمه، ومحسوب لشروق الشمس في نيودلهي). تحتفل المعابد (الغوردوارا) التي تتبع تقويم ناناكشاهي الأصلي لعام 2003، كما في باكستان، ببعض الأيام في تواريخ أخرى؛ راجع تقويم معبدك.",
+    "ev": {
+      "gurpurabGobind": "غوربوراب غورو غوبيند سينغ (مولده)",
+      "holaMohalla": "هولا موهالا",
+      "vaisakhi": "فايساخي (تأسيس الخالصة)",
+      "bandiChhor": "باندي تشور ديفاس",
+      "gurpurabNanak": "غوربوراب غورو ناناك (مولد غورو ناناك)",
+      "martyrdomTeghBahadur": "استشهاد غورو تيغ بهادور"
+    }
+  },
+  "id": {
+    "name": "Kalender Sikh",
+    "desc": "Gurpurab dan hari suci Sikh: kelahiran Guru Nanak dan Guru Gobind Singh, Vaisakhi, Hola Mohalla, dan Bandi Chhor Divas.",
+    "note": "Tanggal mengikuti kalender SGPC yang banyak dipakai di India (sebagian besar kalender bulan, dihitung untuk matahari terbit di New Delhi). Gurdwara yang mengikuti kalender Nanakshahi asli tahun 2003 (misalnya di Pakistan) merayakan beberapa hari pada tanggal lain; periksa kalender gurdwara Anda.",
+    "ev": {
+      "gurpurabGobind": "Gurpurab Guru Gobind Singh (kelahiran)",
+      "holaMohalla": "Hola Mohalla",
+      "vaisakhi": "Vaisakhi (berdirinya Khalsa)",
+      "bandiChhor": "Bandi Chhor Divas",
+      "gurpurabNanak": "Gurpurab Guru Nanak (kelahiran Guru Nanak)",
+      "martyrdomTeghBahadur": "Kemartiran Guru Tegh Bahadur"
+    }
+  },
+  "ur": {
+    "name": "سکھ کیلنڈر",
+    "desc": "گرپرب اور سکھوں کے مقدس دن: گرو نانک اور گرو گوبند سنگھ کا یومِ پیدائش، ویساکھی، ہولا محلہ اور بندی چھوڑ دیوس۔",
+    "note": "تاریخیں ہندوستان میں عام طور پر مانے جانے والے ایس جی پی سی کیلنڈر کے مطابق ہیں (زیادہ تر قمری، نئی دہلی کے طلوعِ آفتاب کے حساب سے)۔ 2003 کے اصل نانک شاہی کیلنڈر پر چلنے والے گوردواروں میں، جیسے پاکستان میں، کچھ دن دوسری تاریخوں پر منائے جاتے ہیں؛ اپنے گوردوارے کا کیلنڈر دیکھیں۔",
+    "ev": {
+      "gurpurabGobind": "گرپرب گرو گوبند سنگھ (یومِ پیدائش)",
+      "holaMohalla": "ہولا محلہ",
+      "vaisakhi": "ویساکھی (خالصہ کا قیام)",
+      "bandiChhor": "بندی چھوڑ دیوس",
+      "gurpurabNanak": "گرپرب گرو نانک (گرو نانک کا یومِ پیدائش)",
+      "martyrdomTeghBahadur": "گرو تیغ بہادر کی شہادت"
+    }
+  },
+  "fa": {
+    "name": "تقویم سیک",
+    "desc": "گورپوراب‌ها و روزهای مقدس سیک‌ها: زادروز گورو نانک و گورو گوبیند سینگ، ویساکی، هولا موهالا و باندی چور دیواس.",
+    "note": "تاریخ‌ها بر پایهٔ تقویم SGPC است که در هند به‌طور گسترده رعایت می‌شود (بیشتر قمری و محاسبه‌شده برای طلوع خورشید در دهلی نو). گوردواراهایی که از تقویم اصلی ناناکشاهی سال 2003 پیروی می‌کنند، مانند پاکستان، برخی روزها را در تاریخ‌های دیگری برگزار می‌کنند؛ تقویم گوردوارای خود را ببینید.",
+    "ev": {
+      "gurpurabGobind": "گورپوراب گورو گوبیند سینگ (زادروز)",
+      "holaMohalla": "هولا موهالا",
+      "vaisakhi": "ویساکی (بنیان‌گذاری خالصه)",
+      "bandiChhor": "باندی چور دیواس",
+      "gurpurabNanak": "گورپوراب گورو نانک (زادروز گورو نانک)",
+      "martyrdomTeghBahadur": "شهادت گورو تگ بهادر"
+    }
+  },
+  "fr": {
+    "name": "Calendrier sikh",
+    "desc": "Gurpurabs et jours saints sikhs : naissances de Guru Nanak et de Guru Gobind Singh, Vaisakhi, Hola Mohalla et Bandi Chhor Divas.",
+    "note": "Les dates suivent le calendrier du SGPC, largement suivi en Inde (surtout lunaire, calculé pour le lever du soleil à New Delhi). Les gurdwaras qui suivent le calendrier Nanakshahi d’origine de 2003 (par exemple au Pakistan) célèbrent certains jours à d’autres dates ; consultez le calendrier de votre gurdwara.",
+    "ev": {
+      "gurpurabGobind": "Gurpurab de Guru Gobind Singh (naissance)",
+      "holaMohalla": "Hola Mohalla",
+      "vaisakhi": "Vaisakhi (fondation du Khalsa)",
+      "bandiChhor": "Bandi Chhor Divas",
+      "gurpurabNanak": "Gurpurab de Guru Nanak (naissance de Guru Nanak)",
+      "martyrdomTeghBahadur": "Martyre de Guru Tegh Bahadur"
+    }
+  },
+  "ru": {
+    "name": "Сикхский календарь",
+    "desc": "Гурпурабы и священные дни сикхов: дни рождения Гуру Нанака и Гуру Гобинда Сингха, Вайсакхи, Хола Мохалла и Банди Чхор Дивас.",
+    "note": "Даты по календарю SGPC, распространённому в Индии (в основном лунному, с расчётом на восход солнца в Нью-Дели). В гурдварах, которые следуют исходному календарю Нанакшахи 2003 года (например, в Пакистане), некоторые дни отмечают в другие даты; уточните календарь своей гурдвары.",
+    "ev": {
+      "gurpurabGobind": "Гурпураб Гуру Гобинда Сингха (рождение)",
+      "holaMohalla": "Хола Мохалла",
+      "vaisakhi": "Вайсакхи (основание Хальсы)",
+      "bandiChhor": "Банди Чхор Дивас",
+      "gurpurabNanak": "Гурпураб Гуру Нанака (рождение Гуру Нанака)",
+      "martyrdomTeghBahadur": "Мученичество Гуру Тегх Бахадура"
+    }
+  },
+  "ja": {
+    "name": "シク教の暦",
+    "desc": "グルプラブとシク教の聖日：グル・ナーナクとグル・ゴービンド・シングの生誕祭、ヴァイサーキー、ホーラー・モハッラー、バンディ・チョール・ディワス。",
+    "note": "日付はインドで広く用いられるSGPCの暦によります（主に太陰暦で、ニューデリーの日の出で計算）。2003年制定の元のナーナクシャーヒー暦に従うグルドワーラー（パキスタンなど）では一部の日が異なります。所属のグルドワーラーの暦をご確認ください。",
+    "ev": {
+      "gurpurabGobind": "グル・ゴービンド・シング生誕祭",
+      "holaMohalla": "ホーラー・モハッラー",
+      "vaisakhi": "ヴァイサーキー（カールサー創設の日）",
+      "bandiChhor": "バンディ・チョール・ディワス",
+      "gurpurabNanak": "グル・ナーナク生誕祭",
+      "martyrdomTeghBahadur": "グル・テーグ・バハードゥル殉教の日"
+    }
+  },
+  "ko": {
+    "name": "시크교 달력",
+    "desc": "구르푸라브와 시크교 성일: 구루 나나크와 구루 고빈드 싱의 탄신일, 바이사키, 홀라 모할라, 반디 초르 디와스.",
+    "note": "날짜는 인도에서 널리 따르는 SGPC 달력 기준입니다(대부분 음력, 뉴델리 일출 기준 계산). 2003년 원래 나낙샤히 달력을 따르는 구르드와라(예: 파키스탄)에서는 일부 날짜가 다릅니다. 다니는 구르드와라의 달력을 확인하세요.",
+    "ev": {
+      "gurpurabGobind": "구루 고빈드 싱 구르푸라브(탄신일)",
+      "holaMohalla": "홀라 모할라",
+      "vaisakhi": "바이사키(칼사 창설일)",
+      "bandiChhor": "반디 초르 디와스",
+      "gurpurabNanak": "구루 나나크 구르푸라브(구루 나나크 탄신일)",
+      "martyrdomTeghBahadur": "구루 테그 바하두르 순교일"
+    }
+  },
+  "zh": {
+    "name": "锡克教历",
+    "desc": "锡克教的古尔普拉布与圣日：古鲁那纳克和古鲁戈宾德·辛格诞辰、维萨奇节、霍拉·莫哈拉节和班迪·乔尔节。",
+    "note": "日期依据印度普遍遵循的SGPC历（多为阴历，按新德里日出计算）。遵循2003年原版纳纳克沙希历的谒师所（如巴基斯坦）部分节日日期不同，请以所在谒师所的日历为准。",
+    "ev": {
+      "gurpurabGobind": "古鲁戈宾德·辛格诞辰",
+      "holaMohalla": "霍拉·莫哈拉节",
+      "vaisakhi": "维萨奇节（卡尔萨创立日）",
+      "bandiChhor": "班迪·乔尔节",
+      "gurpurabNanak": "古鲁那纳克诞辰",
+      "martyrdomTeghBahadur": "古鲁德格·巴哈杜尔殉道日"
+    }
+  },
+  "fil": {
+    "name": "Kalendaryong Sikh",
+    "desc": "Mga Gurpurab at banal na araw ng mga Sikh: kapanganakan nina Guru Nanak at Guru Gobind Singh, Vaisakhi, Hola Mohalla, at Bandi Chhor Divas.",
+    "note": "Sumusunod ang mga petsa sa kalendaryo ng SGPC na malawak na sinusunod sa India (karaniwang lunar, kinakalkula para sa pagsikat ng araw sa New Delhi). Sa mga gurdwara na sumusunod sa orihinal na kalendaryong Nanakshahi ng 2003 (halimbawa sa Pakistan), iba ang petsa ng ilang araw; tingnan ang kalendaryo ng inyong gurdwara.",
+    "ev": {
+      "gurpurabGobind": "Gurpurab ni Guru Gobind Singh (kapanganakan)",
+      "holaMohalla": "Hola Mohalla",
+      "vaisakhi": "Vaisakhi (pagkatatag ng Khalsa)",
+      "bandiChhor": "Bandi Chhor Divas",
+      "gurpurabNanak": "Gurpurab ni Guru Nanak (kapanganakan ni Guru Nanak)",
+      "martyrdomTeghBahadur": "Pagkamartir ni Guru Tegh Bahadur"
+    }
+  },
+  "th": {
+    "name": "ปฏิทินซิกข์",
+    "desc": "คุรุปุรับและวันศักดิ์สิทธิ์ของชาวซิกข์ ได้แก่ วันประสูติของคุรุนานักและคุรุโควินท์ สิงห์ ไวสาขี โหลา โมหัลลา และบันดี ฉอร์ ดิวัส",
+    "note": "วันที่เป็นไปตามปฏิทินของ SGPC ที่ใช้แพร่หลายในอินเดีย (ส่วนใหญ่เป็นจันทรคติ คำนวณตามเวลาดวงอาทิตย์ขึ้นที่นิวเดลี) คุรุทวาราที่ใช้ปฏิทินนานักศาหีฉบับดั้งเดิมปี ค.ศ. 2003 (เช่น ในปากีสถาน) จัดบางวันในวันที่ต่างออกไป โปรดตรวจสอบปฏิทินของคุรุทวาราของท่าน",
+    "ev": {
+      "gurpurabGobind": "คุรุปุรับคุรุโควินท์ สิงห์ (วันประสูติ)",
+      "holaMohalla": "โหลา โมหัลลา",
+      "vaisakhi": "ไวสาขี (วันสถาปนาขาลสา)",
+      "bandiChhor": "บันดี ฉอร์ ดิวัส",
+      "gurpurabNanak": "คุรุปุรับคุรุนานัก (วันประสูติคุรุนานัก)",
+      "martyrdomTeghBahadur": "วันพลีชีพของคุรุเตฆ บหาทุร"
+    }
+  },
+  "es": {
+    "name": "Calendario sij",
+    "desc": "Gurpurabs y días sagrados sijs: los nacimientos de Guru Nanak y Guru Gobind Singh, Vaisakhi, Hola Mohalla y Bandi Chhor Divas.",
+    "note": "Las fechas siguen el calendario del SGPC, muy seguido en la India (mayormente lunar, calculado para la salida del sol en Nueva Delhi). Los gurdwaras que siguen el calendario Nanakshahi original de 2003 (por ejemplo, en Pakistán) celebran algunos días en otras fechas; consulte el calendario de su gurdwara.",
+    "ev": {
+      "gurpurabGobind": "Gurpurab de Guru Gobind Singh (nacimiento)",
+      "holaMohalla": "Hola Mohalla",
+      "vaisakhi": "Vaisakhi (fundación del Khalsa)",
+      "bandiChhor": "Bandi Chhor Divas",
+      "gurpurabNanak": "Gurpurab de Guru Nanak (nacimiento de Guru Nanak)",
+      "martyrdomTeghBahadur": "Martirio de Guru Tegh Bahadur"
+    }
+  },
+  "pt": {
+    "name": "Calendário sikh",
+    "desc": "Gurpurabs e dias sagrados sikhs: os nascimentos de Guru Nanak e Guru Gobind Singh, Vaisakhi, Hola Mohalla e Bandi Chhor Divas.",
+    "note": "As datas seguem o calendário do SGPC, amplamente seguido na Índia (em grande parte lunar, calculado para o nascer do sol em Nova Délhi). Os gurdwaras que seguem o calendário Nanakshahi original de 2003 (por exemplo, no Paquistão) celebram alguns dias em outras datas; confira o calendário do seu gurdwara.",
+    "ev": {
+      "gurpurabGobind": "Gurpurab de Guru Gobind Singh (nascimento)",
+      "holaMohalla": "Hola Mohalla",
+      "vaisakhi": "Vaisakhi (fundação do Khalsa)",
+      "bandiChhor": "Bandi Chhor Divas",
+      "gurpurabNanak": "Gurpurab de Guru Nanak (nascimento de Guru Nanak)",
+      "martyrdomTeghBahadur": "Martírio de Guru Tegh Bahadur"
+    }
+  },
+  "hi": {
+    "name": "सिख कैलेंडर",
+    "desc": "गुरपुरब और सिखों के पवित्र दिन: गुरु नानक और गुरु गोबिंद सिंह का प्रकाश पर्व, वैसाखी, होला मोहल्ला और बंदी छोड़ दिवस।",
+    "note": "तारीखें भारत में व्यापक रूप से माने जाने वाले एसजीपीसी कैलेंडर के अनुसार हैं (अधिकतर चांद्र, नई दिल्ली के सूर्योदय के अनुसार गणना)। 2003 के मूल नानकशाही कैलेंडर को मानने वाले गुरुद्वारों में (जैसे पाकिस्तान में) कुछ दिन अलग तारीखों पर मनाए जाते हैं; अपने गुरुद्वारे का कैलेंडर देखें।",
+    "ev": {
+      "gurpurabGobind": "गुरु गोबिंद सिंह प्रकाश पर्व (गुरपुरब)",
+      "holaMohalla": "होला मोहल्ला",
+      "vaisakhi": "वैसाखी (खालसा स्थापना दिवस)",
+      "bandiChhor": "बंदी छोड़ दिवस",
+      "gurpurabNanak": "गुरु नानक प्रकाश पर्व (गुरपुरब)",
+      "martyrdomTeghBahadur": "गुरु तेग बहादुर शहीदी दिवस"
+    }
+  },
+  "bn": {
+    "name": "শিখ ক্যালেন্ডার",
+    "desc": "গুরপুরব ও শিখ পবিত্র দিন: গুরু নানক ও গুরু গোবিন্দ সিংহের জন্মদিন, বৈশাখী, হোলা মহল্লা ও বন্দি ছোড় দিবস।",
+    "note": "তারিখগুলো ভারতে বহুলভাবে অনুসৃত SGPC ক্যালেন্ডার অনুসরণ করে (বেশিরভাগই চান্দ্র, নয়াদিল্লির সূর্যোদয়ের জন্য হিসাব করা)। মূল 2003 সালের নানকশাহী ক্যালেন্ডার অনুসরণকারী গুরুদ্বারগুলোতে (যেমন পাকিস্তানে) কিছু দিন অন্য তারিখে পালিত হয়; আপনার গুরুদ্বারের ক্যালেন্ডার দেখুন।",
+    "ev": {
+      "gurpurabGobind": "গুরু গোবিন্দ সিংহ গুরপুরব (জন্মদিন)",
+      "holaMohalla": "হোলা মহল্লা",
+      "vaisakhi": "বৈশাখী (খালসা প্রতিষ্ঠা)",
+      "bandiChhor": "বন্দি ছোড় দিবস",
+      "gurpurabNanak": "গুরু নানক গুরপুরব (গুরু নানকের জন্মদিন)",
+      "martyrdomTeghBahadur": "গুরু তেগ বাহাদুরের শাহাদাত দিবস"
+    }
+  }
+}

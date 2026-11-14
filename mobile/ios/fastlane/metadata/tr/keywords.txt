@@ -1,1 +1,1 @@
-ezan,imsakiye,vakit,kıble,kuran,zikirmatik,alarm,kronometre,dünya saati,tatil,pomodoro,metronom
+imsakiye,iftar,kuran,zikirmatik,cami,dua,takvim,hicri,tatil,dünya,kronometre,uyku,widget,pomodoro

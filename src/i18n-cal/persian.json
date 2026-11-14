@@ -1,0 +1,306 @@
+{
+  "tr": {
+    "name": "İran takvimi",
+    "desc": "Hicri Şemsi takvim: güneş yılına göre ay ve yıl; Nevruz, Sizdebedar, Yelda gecesi ve diğer İran kültür günleri.",
+    "note": "Yıl, ilkbahar ekinoksu Tahran saatiyle (UTC+3:30) öğleden önceyse o gün, sonraysa ertesi gün başlar; tarihler bu kuralla hesaplanmıştır. Aylar İran'daki adlarıyla gösterilir; Afganistan'da aylar burç adlarıyla (Hamel, Sevr…) anılır. Çarşamba Suri yılın son çarşambasından önceki salı akşamı, Yelda gecesi Azer ayının son akşamı kutlanır; Mihrican eski Zerdüşt sayımıyla 16 Mehr'dir. Dini ve siyasi anma günleri gösterilmez.",
+    "ev": {
+      "nowruz": "Nevruz",
+      "sizdahBedar": "Sizdebedar",
+      "chaharshanbeSuri": "Çarşamba Suri",
+      "tirgan": "Tirgan",
+      "mehregan": "Mihrican",
+      "yalda": "Yelda gecesi",
+      "sadeh": "Sede bayramı"
+    },
+    "month": ["Ferverdin", "Ordibeheşt", "Hordad", "Tir", "Mordad", "Şehriver", "Mehr", "Aban", "Azer", "Dey", "Behmen", "Esfend"],
+    "fmt": "{d} {m} {y}"
+  },
+  "en": {
+    "name": "Persian calendar",
+    "desc": "The Solar Hijri calendar: months and years of the solar year, with Nowruz, Sizdah Bedar, Yalda Night and other Iranian cultural days.",
+    "note": "The year begins on the day of the March equinox if it falls before noon Tehran time (UTC+3:30), otherwise on the next day; dates here are calculated by this rule. Months are shown with their Iranian names; in Afghanistan the months take zodiac names (Hamal, Sawr…). Chaharshanbe Suri is held on the Tuesday evening before the last Wednesday of the year and Yalda Night on the last evening of Azar; Mehregan falls on 16 Mehr in the old Zoroastrian count. Religious and political commemorations are not shown.",
+    "ev": {
+      "nowruz": "Nowruz",
+      "sizdahBedar": "Sizdah Bedar",
+      "chaharshanbeSuri": "Chaharshanbe Suri",
+      "tirgan": "Tirgan",
+      "mehregan": "Mehregan",
+      "yalda": "Yalda Night",
+      "sadeh": "Sadeh"
+    },
+    "month": ["Farvardin", "Ordibehesht", "Khordad", "Tir", "Mordad", "Shahrivar", "Mehr", "Aban", "Azar", "Dey", "Bahman", "Esfand"],
+    "fmt": "{d} {m} {y}"
+  },
+  "de": {
+    "name": "Persischer Kalender",
+    "desc": "Der iranische Sonnenkalender (Solar-Hidschri): Monate und Jahre des Sonnenjahres mit Nouruz, Sizdah Bedar, Yalda-Nacht und weiteren iranischen Kulturfesten.",
+    "note": "Das Jahr beginnt am Tag der März-Tagundnachtgleiche, wenn sie vor Mittag Teheraner Zeit (UTC+3:30) liegt, sonst am folgenden Tag; die Daten sind nach dieser Regel berechnet. Die Monate tragen ihre iranischen Namen; in Afghanistan heißen sie nach den Tierkreiszeichen (Hamal, Saur …). Tschahar Schanbe Suri wird am Dienstagabend vor dem letzten Mittwoch des Jahres gefeiert, die Yalda-Nacht am letzten Abend des Monats Azar; Mehregan fällt nach alter zoroastrischer Zählung auf den 16. Mehr. Religiöse und politische Gedenktage werden nicht angezeigt.",
+    "ev": {
+      "nowruz": "Nouruz",
+      "sizdahBedar": "Sizdah Bedar",
+      "chaharshanbeSuri": "Tschahar Schanbe Suri",
+      "tirgan": "Tirgan",
+      "mehregan": "Mehregan",
+      "yalda": "Yalda-Nacht",
+      "sadeh": "Sadeh-Fest"
+    },
+    "month": ["Farwardin", "Ordibehescht", "Chordad", "Tir", "Mordad", "Schahriwar", "Mehr", "Aban", "Azar", "Dey", "Bahman", "Esfand"],
+    "fmt": "{d}. {m} {y}"
+  },
+  "az": {
+    "name": "İran təqvimi",
+    "desc": "Hicri-şəmsi təqvim: günəş ilinə görə ay və il; Novruz, Sizdəbədər, Çillə gecəsi və digər İran mədəniyyət günləri.",
+    "note": "İl, yaz gecə-gündüz bərabərliyi Tehran vaxtı ilə (UTC+3:30) günortadan əvvəl olarsa həmin gün, sonra olarsa ertəsi gün başlayır; tarixlər bu qaydaya görə hesablanıb. Aylar İrandakı adları ilə göstərilir; Əfqanıstanda aylar bürc adları ilə (Həməl, Sövr…) adlanır. Çərşənbə suri ilin son çərşənbəsindən əvvəlki çərşənbə axşamı, Çillə gecəsi isə Azər ayının son axşamı qeyd olunur; Mehrqan köhnə zərdüşti hesabı ilə 16 Mehrə düşür. Dini və siyasi anım günləri göstərilmir.",
+    "ev": {
+      "nowruz": "Novruz",
+      "sizdahBedar": "Sizdəbədər",
+      "chaharshanbeSuri": "Çərşənbə suri",
+      "tirgan": "Tirqan",
+      "mehregan": "Mehrqan",
+      "yalda": "Çillə gecəsi",
+      "sadeh": "Sədə bayramı"
+    },
+    "month": ["Fərvərdin", "Ordibeheşt", "Xordad", "Tir", "Mordad", "Şəhrivər", "Mehr", "Aban", "Azər", "Dey", "Bəhmən", "Əsfənd"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ar": {
+    "name": "التقويم الهجري الشمسي",
+    "desc": "التقويم الهجري الشمسي المعتمد في إيران: أشهر السنة الشمسية وسنواتها، مع النوروز وسيزده بدر وليلة يلدا وغيرها من المناسبات الثقافية الإيرانية.",
+    "note": "تبدأ السنة يوم الاعتدال الربيعي إذا وقع قبل الظهر بتوقيت طهران (UTC+3:30)، وإلا ففي اليوم التالي؛ والتواريخ هنا محسوبة بهذه القاعدة. تُعرض الأشهر بأسمائها الإيرانية، أما في أفغانستان فتُسمّى الأشهر بأسماء الأبراج (الحمل، الثور…). يُحتفل بجهارشنبه سوري مساء الثلاثاء السابق لآخر أربعاء في السنة، وبليلة يلدا في آخر مساء من شهر آذر؛ ويقع عيد مهرجان في العدّ الزرادشتي القديم يوم 16 مهر. لا تُعرض المناسبات الدينية والسياسية.",
+    "ev": {
+      "nowruz": "عيد النوروز",
+      "sizdahBedar": "سيزده بدر",
+      "chaharshanbeSuri": "جهارشنبه سوري",
+      "tirgan": "عيد تيركان",
+      "mehregan": "عيد مهرجان",
+      "yalda": "ليلة يلدا",
+      "sadeh": "عيد سده"
+    },
+    "month": ["فروردين", "أرديبهشت", "خرداد", "تير", "مرداد", "شهريور", "مهر", "آبان", "آذر", "دي", "بهمن", "إسفند"],
+    "fmt": "{d} {m} {y} هـ.ش"
+  },
+  "id": {
+    "name": "Kalender Persia",
+    "desc": "Kalender Hijriah Syamsiah: bulan dan tahun menurut tahun matahari, dengan Nowruz, Sizdah Bedar, Malam Yalda, dan hari budaya Iran lainnya.",
+    "note": "Tahun dimulai pada hari ekuinoks Maret jika terjadi sebelum tengah hari waktu Teheran (UTC+3:30), jika tidak pada hari berikutnya; tanggal di sini dihitung dengan aturan ini. Bulan ditampilkan dengan nama Iran; di Afganistan bulan memakai nama zodiak (Hamal, Saur…). Chaharshanbe Suri dirayakan pada Selasa malam sebelum Rabu terakhir dalam tahun dan Malam Yalda pada malam terakhir bulan Azar; Mehregan jatuh pada 16 Mehr menurut hitungan Zoroaster lama. Hari peringatan keagamaan dan politik tidak ditampilkan.",
+    "ev": {
+      "nowruz": "Nowruz",
+      "sizdahBedar": "Sizdah Bedar",
+      "chaharshanbeSuri": "Chaharshanbe Suri",
+      "tirgan": "Tirgan",
+      "mehregan": "Mehregan",
+      "yalda": "Malam Yalda",
+      "sadeh": "Sadeh"
+    },
+    "month": ["Farvardin", "Ordibehesht", "Khordad", "Tir", "Mordad", "Shahrivar", "Mehr", "Aban", "Azar", "Dey", "Bahman", "Esfand"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ur": {
+    "name": "ہجری شمسی تقویم",
+    "desc": "ایران کا ہجری شمسی تقویم: شمسی سال کے مہینے اور سال، نوروز، سیزدہ بدر، شب یلدا اور دیگر ایرانی ثقافتی دنوں کے ساتھ۔",
+    "note": "سال اس دن شروع ہوتا ہے جس دن مارچ کا اعتدال تہران کے وقت (UTC+3:30) کے مطابق دوپہر سے پہلے ہو، ورنہ اگلے دن؛ یہاں تاریخیں اسی اصول سے نکالی گئی ہیں۔ مہینے ایرانی ناموں سے دکھائے گئے ہیں؛ افغانستان میں مہینوں کے نام برجوں پر ہیں (حمل، ثور…)۔ چہارشنبہ سوری سال کے آخری بدھ سے پہلے منگل کی شام اور شب یلدا آذر کی آخری شام منائی جاتی ہے؛ پرانے زرتشتی حساب سے مہرگان 16 مہر کو ہے۔ مذہبی اور سیاسی یادگاری دن نہیں دکھائے جاتے۔",
+    "ev": {
+      "nowruz": "نوروز",
+      "sizdahBedar": "سیزدہ بدر",
+      "chaharshanbeSuri": "چہارشنبہ سوری",
+      "tirgan": "جشن تیرگان",
+      "mehregan": "جشن مہرگان",
+      "yalda": "شب یلدا",
+      "sadeh": "جشن سدہ"
+    },
+    "month": ["فروردین", "اردیبہشت", "خرداد", "تیر", "مرداد", "شہریور", "مہر", "آبان", "آذر", "دے", "بہمن", "اسفند"],
+    "fmt": "{d} {m} {y}"
+  },
+  "fa": {
+    "name": "تقویم هجری شمسی",
+    "desc": "تقویم رسمی ایران: ماه‌ها و سال‌های خورشیدی، همراه با نوروز، سیزده‌بدر، شب یلدا و دیگر جشن‌های ایرانی.",
+    "note": "سال در روز اعتدال بهاری آغاز می‌شود اگر اعتدال پیش از ظهر به وقت تهران (UTC+3:30) رخ دهد، وگرنه در روز بعد؛ تاریخ‌ها اینجا با همین قاعده محاسبه شده‌اند. ماه‌ها با نام‌های رایج در ایران نشان داده می‌شوند؛ در افغانستان ماه‌ها نام برج‌ها را دارند (حمل، ثور…). چهارشنبه‌سوری در شب آخرین چهارشنبهٔ سال (سه‌شنبه‌شب) و شب یلدا در آخرین شب آذر برگزار می‌شود؛ مهرگان در گاه‌شماری کهن زرتشتی 16 مهر است. مناسبت‌های مذهبی و سیاسی نمایش داده نمی‌شوند.",
+    "ev": {
+      "nowruz": "نوروز",
+      "sizdahBedar": "سیزده‌بدر",
+      "chaharshanbeSuri": "چهارشنبه‌سوری",
+      "tirgan": "جشن تیرگان",
+      "mehregan": "جشن مهرگان",
+      "yalda": "شب یلدا",
+      "sadeh": "جشن سده"
+    },
+    "month": ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"],
+    "fmt": "{d} {m} {y}"
+  },
+  "fr": {
+    "name": "Calendrier persan",
+    "desc": "Le calendrier hégirien solaire : mois et années de l’année solaire, avec Norouz, Sizdah bedar, la nuit de Yalda et d’autres fêtes culturelles iraniennes.",
+    "note": "L’année commence le jour de l’équinoxe de mars s’il a lieu avant midi, heure de Téhéran (UTC+3:30), sinon le lendemain ; les dates sont calculées selon cette règle. Les mois portent leurs noms iraniens ; en Afghanistan, ils prennent les noms des signes du zodiaque (Hamal, Saur…). Tchaharchanbé Souri se fête le mardi soir qui précède le dernier mercredi de l’année, la nuit de Yalda le dernier soir du mois d’azar ; Mehregan tombe le 16 mehr selon l’ancien comput zoroastrien. Les commémorations religieuses et politiques ne sont pas affichées.",
+    "ev": {
+      "nowruz": "Norouz",
+      "sizdahBedar": "Sizdah bedar",
+      "chaharshanbeSuri": "Tchaharchanbé Souri",
+      "tirgan": "Tirgan",
+      "mehregan": "Mehregan",
+      "yalda": "Nuit de Yalda",
+      "sadeh": "Sadeh"
+    },
+    "month": ["farvardin", "ordibehesht", "khordad", "tir", "mordad", "shahrivar", "mehr", "aban", "azar", "dey", "bahman", "esfand"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ru": {
+    "name": "Иранский календарь",
+    "desc": "Солнечный календарь хиджры: месяцы и годы солнечного года, Навруз, Сиздах-бедар, ночь Ялда и другие иранские праздники.",
+    "note": "Год начинается в день мартовского равноденствия, если оно наступает до полудня по тегеранскому времени (UTC+3:30), иначе на следующий день; даты рассчитаны по этому правилу. Месяцы показаны с иранскими названиями; в Афганистане месяцы называются по знакам зодиака (хамаль, саур…). Чахаршанбе-Сури отмечают во вторник вечером перед последней средой года, ночь Ялда — в последний вечер месяца азар; Мехреган по старому зороастрийскому счёту приходится на 16 мехра. Религиозные и политические памятные дни не показываются.",
+    "ev": {
+      "nowruz": "Навруз",
+      "sizdahBedar": "Сиздах-бедар",
+      "chaharshanbeSuri": "Чахаршанбе-Сури",
+      "tirgan": "Тирган",
+      "mehregan": "Мехреган",
+      "yalda": "Ночь Ялда",
+      "sadeh": "Праздник Саде"
+    },
+    "month": ["фарвардина", "ордибехешта", "хордада", "тира", "мордада", "шахривара", "мехра", "абана", "азара", "дея", "бахмана", "эсфанда"],
+    "fmt": "{d} {m} {y}"
+  },
+  "ja": {
+    "name": "イラン暦",
+    "desc": "ヒジュラ太陽暦：太陽年による月と年、ノウルーズ、スィーズダ・ベダル、ヤルダーの夜などイランの伝統行事。",
+    "note": "春分がテヘラン時間（UTC+3:30）の正午前ならその日、正午以降なら翌日が元日です。日付はこの規則で計算しています。月名はイランでの名称で表示します。アフガニスタンでは月を黄道十二宮の名で呼びます（ハマル、サウル…）。チャハールシャンベ・スーリーは年の最後の水曜日の前の火曜日の夜、ヤルダーの夜はアーザル月の最後の夜に祝われます。メフレガーンは古いゾロアスター暦の数え方ではメフル月16日です。宗教的・政治的な記念日は表示しません。",
+    "ev": {
+      "nowruz": "ノウルーズ",
+      "sizdahBedar": "スィーズダ・ベダル",
+      "chaharshanbeSuri": "チャハールシャンベ・スーリー",
+      "tirgan": "ティールガーン",
+      "mehregan": "メフレガーン",
+      "yalda": "ヤルダーの夜",
+      "sadeh": "サデ祭"
+    },
+    "month": ["ファルヴァルディーン月", "オルディーベヘシュト月", "ホルダード月", "ティール月", "モルダード月", "シャフリーヴァル月", "メフル月", "アーバーン月", "アーザル月", "デイ月", "バフマン月", "エスファンド月"],
+    "fmt": "{y}年{m}{d}日"
+  },
+  "ko": {
+    "name": "이란력",
+    "desc": "태양 헤지라력: 태양년에 따른 달과 해, 노루즈·시즈다 베다르·얄다의 밤 등 이란의 전통 명절.",
+    "note": "춘분이 테헤란 시간(UTC+3:30) 정오 전이면 그날, 정오 이후면 다음 날이 새해 첫날이며, 날짜는 이 규칙으로 계산했습니다. 달 이름은 이란에서 쓰는 이름으로 표시하며, 아프가니스탄에서는 황도 12궁 이름(하말, 사우르…)으로 부릅니다. 차하르샴베 수리는 그해 마지막 수요일 전 화요일 저녁에, 얄다의 밤은 아자르 달의 마지막 저녁에 기념하며, 메흐레간은 옛 조로아스터교 셈법으로 메흐르 달 16일입니다. 종교·정치 기념일은 표시하지 않습니다.",
+    "ev": {
+      "nowruz": "노루즈",
+      "sizdahBedar": "시즈다 베다르",
+      "chaharshanbeSuri": "차하르샴베 수리",
+      "tirgan": "티르간",
+      "mehregan": "메흐레간",
+      "yalda": "얄다의 밤",
+      "sadeh": "사데 축제"
+    },
+    "month": ["파르바르딘", "오르디베헤슈트", "호르다드", "티르", "모르다드", "샤흐리바르", "메흐르", "아반", "아자르", "데이", "바흐만", "에스판드"],
+    "fmt": "{y}년 {m} {d}일"
+  },
+  "zh": {
+    "name": "伊朗历",
+    "desc": "太阳希吉来历：按太阳年计算的月份和年份，以及诺鲁孜节、锡兹达贝达尔节、雅尔达之夜等伊朗传统节日。",
+    "note": "若春分发生在德黑兰时间（UTC+3:30）正午之前，当天即为新年第一天，否则为次日；此处日期均按此规则计算。月份使用伊朗的名称；阿富汗以黄道十二宫命名月份（白羊月、金牛月……）。跳火节在一年最后一个星期三前的星期二晚上庆祝，雅尔达之夜在阿扎尔月的最后一晚；按古老的琐罗亚斯德历法，梅赫尔甘节在梅赫尔月16日。不显示宗教和政治纪念日。",
+    "ev": {
+      "nowruz": "诺鲁孜节",
+      "sizdahBedar": "锡兹达贝达尔节",
+      "chaharshanbeSuri": "跳火节",
+      "tirgan": "提尔甘节",
+      "mehregan": "梅赫尔甘节",
+      "yalda": "雅尔达之夜",
+      "sadeh": "萨德节"
+    },
+    "month": ["法尔瓦丁月", "奥尔迪贝赫什特月", "霍尔达德月", "提尔月", "莫尔达德月", "沙赫里瓦尔月", "梅赫尔月", "阿班月", "阿扎尔月", "代伊月", "巴赫曼月", "埃斯凡德月"],
+    "fmt": "{y}年{m}{d}日"
+  },
+  "fil": {
+    "name": "Kalendaryong Persa",
+    "desc": "Ang Solar Hijri na kalendaryo: mga buwan at taon ayon sa taong solar, kasama ang Nowruz, Sizdah Bedar, Gabi ng Yalda at iba pang araw ng kulturang Iranian.",
+    "note": "Nagsisimula ang taon sa araw ng equinox ng Marso kung mangyari ito bago magtanghali sa oras ng Tehran (UTC+3:30), kung hindi ay sa susunod na araw; kinuwenta ang mga petsa ayon sa tuntuning ito. Ipinapakita ang mga buwan sa pangalang Iranian; sa Afghanistan, pangalan ng zodiac ang gamit (Hamal, Sawr…). Ipinagdiriwang ang Chaharshanbe Suri sa gabi ng Martes bago ang huling Miyerkules ng taon at ang Gabi ng Yalda sa huling gabi ng Azar; ang Mehregan ay 16 Mehr sa lumang bilang ng Zoroastrian. Hindi ipinapakita ang mga araw ng paggunitang panrelihiyon at pampulitika.",
+    "ev": {
+      "nowruz": "Nowruz",
+      "sizdahBedar": "Sizdah Bedar",
+      "chaharshanbeSuri": "Chaharshanbe Suri",
+      "tirgan": "Tirgan",
+      "mehregan": "Mehregan",
+      "yalda": "Gabi ng Yalda",
+      "sadeh": "Sadeh"
+    },
+    "month": ["Farvardin", "Ordibehesht", "Khordad", "Tir", "Mordad", "Shahrivar", "Mehr", "Aban", "Azar", "Dey", "Bahman", "Esfand"],
+    "fmt": "{d} {m} {y}"
+  },
+  "th": {
+    "name": "ปฏิทินอิหร่าน",
+    "desc": "ปฏิทินสุริยคติฮิจเราะห์: เดือนและปีตามปีสุริยคติ พร้อมเทศกาลนาวรูซ ซีซดาห์เบดาร์ คืนยัลดา และวันสำคัญทางวัฒนธรรมอื่น ๆ ของอิหร่าน",
+    "note": "ปีใหม่เริ่มในวันวิษุวัตเดือนมีนาคม หากเกิดก่อนเที่ยงตามเวลาเตหะราน (UTC+3:30) มิฉะนั้นจะเริ่มในวันถัดไป วันที่ในที่นี้คำนวณตามกฎนี้ ชื่อเดือนแสดงตามที่ใช้ในอิหร่าน ส่วนในอัฟกานิสถานเรียกเดือนตามชื่อจักรราศี (ฮามาล, เซาร์…) ชาฮาร์ชานเบซูรีจัดในคืนวันอังคารก่อนวันพุธสุดท้ายของปี และคืนยัลดาจัดในคืนสุดท้ายของเดือนอาซาร์ ส่วนเทศกาลเมห์เรกานตรงกับวันที่ 16 เดือนเมห์รตามการนับแบบโซโรอัสเตอร์ดั้งเดิม ไม่แสดงวันรำลึกทางศาสนาและการเมือง",
+    "ev": {
+      "nowruz": "นาวรูซ",
+      "sizdahBedar": "ซีซดาห์เบดาร์",
+      "chaharshanbeSuri": "ชาฮาร์ชานเบซูรี",
+      "tirgan": "เทศกาลตีร์กาน",
+      "mehregan": "เทศกาลเมห์เรกาน",
+      "yalda": "คืนยัลดา",
+      "sadeh": "เทศกาลซาเดห์"
+    },
+    "month": ["ฟาร์วาร์ดิน", "ออร์ดีเบเฮชต์", "คอร์ดาด", "ตีร์", "มอร์ดาด", "ชาห์รีวาร์", "เมห์ร", "อาบาน", "อาซาร์", "เดย์", "บาห์มาน", "เอสฟานด์"],
+    "fmt": "{d} {m} {y}"
+  },
+  "es": {
+    "name": "Calendario persa",
+    "desc": "El calendario hégira solar: meses y años del año solar, con Nouruz, Sizdah Bedar, la noche de Yalda y otras fiestas culturales iraníes.",
+    "note": "El año empieza el día del equinoccio de marzo si este ocurre antes del mediodía, hora de Teherán (UTC+3:30); si no, al día siguiente. Las fechas se calculan con esta regla. Los meses se muestran con sus nombres iraníes; en Afganistán llevan los nombres de los signos del zodiaco (hamal, saur…). Chaharshanbe Suri se celebra la noche del martes anterior al último miércoles del año, y la noche de Yalda, la última noche del mes de azar; Mehregán cae el 16 de mehr según el antiguo cómputo zoroástrico. No se muestran las conmemoraciones religiosas ni políticas.",
+    "ev": {
+      "nowruz": "Nouruz",
+      "sizdahBedar": "Sizdah Bedar",
+      "chaharshanbeSuri": "Chaharshanbe Suri",
+      "tirgan": "Tirgán",
+      "mehregan": "Mehregán",
+      "yalda": "Noche de Yalda",
+      "sadeh": "Sadeh"
+    },
+    "month": ["farvardín", "ordibehesht", "jordad", "tir", "mordad", "shahrivar", "mehr", "abán", "azar", "dey", "bahmán", "esfand"],
+    "fmt": "{d} de {m} de {y}"
+  },
+  "pt": {
+    "name": "Calendário persa",
+    "desc": "O calendário hegírico solar: meses e anos do ano solar, com Noruz, Sizdah Bedar, a noite de Yalda e outras festas culturais iranianas.",
+    "note": "O ano começa no dia do equinócio de março se ele ocorrer antes do meio-dia no horário de Teerã (UTC+3:30); caso contrário, no dia seguinte. As datas são calculadas por essa regra. Os meses aparecem com os nomes iranianos; no Afeganistão, levam os nomes dos signos do zodíaco (hamal, saur…). O Chaharshanbe Suri é celebrado na noite de terça-feira antes da última quarta-feira do ano, e a noite de Yalda, na última noite do mês de azar; o Mehregan cai em 16 de mehr pela antiga contagem zoroastriana. Comemorações religiosas e políticas não são exibidas.",
+    "ev": {
+      "nowruz": "Noruz",
+      "sizdahBedar": "Sizdah Bedar",
+      "chaharshanbeSuri": "Chaharshanbe Suri",
+      "tirgan": "Tirgan",
+      "mehregan": "Mehregan",
+      "yalda": "Noite de Yalda",
+      "sadeh": "Sadeh"
+    },
+    "month": ["farvardin", "ordibehesht", "khordad", "tir", "mordad", "shahrivar", "mehr", "aban", "azar", "dey", "bahman", "esfand"],
+    "fmt": "{d} de {m} de {y}"
+  },
+  "hi": {
+    "name": "ईरानी कैलेंडर",
+    "desc": "सौर हिजरी कैलेंडर: सौर वर्ष के अनुसार महीने और वर्ष, साथ में नौरोज़, सीज़दह बेदर, शब-ए-यल्दा और ईरान के अन्य सांस्कृतिक दिन।",
+    "note": "वर्ष उस दिन शुरू होता है जिस दिन मार्च का विषुव तेहरान समय (UTC+3:30) के अनुसार दोपहर से पहले हो, नहीं तो अगले दिन; यहाँ तारीख़ें इसी नियम से निकाली गई हैं। महीने ईरानी नामों से दिखाए गए हैं; अफ़ग़ानिस्तान में महीनों के नाम राशियों पर हैं (हमल, सौर…)। चहारशंबे सूरी साल के आख़िरी बुधवार से पहले मंगलवार की शाम और शब-ए-यल्दा आज़र महीने की आख़िरी शाम मनाई जाती है; पुरानी ज़रथुश्त्री गणना में मेहरगान 16 मेहर को पड़ता है। धार्मिक और राजनीतिक स्मृति दिवस नहीं दिखाए जाते।",
+    "ev": {
+      "nowruz": "नौरोज़",
+      "sizdahBedar": "सीज़दह बेदर",
+      "chaharshanbeSuri": "चहारशंबे सूरी",
+      "tirgan": "तीरगान",
+      "mehregan": "मेहरगान",
+      "yalda": "शब-ए-यल्दा",
+      "sadeh": "जश्न-ए-सदे"
+    },
+    "month": ["फ़रवरदीन", "उर्दीबहिश्त", "ख़ुर्दाद", "तीर", "मुर्दाद", "शहरीवर", "मेहर", "आबान", "आज़र", "दे", "बहमन", "इस्फ़ंद"],
+    "fmt": "{d} {m} {y}"
+  },
+  "bn": {
+    "name": "ফারসি ক্যালেন্ডার",
+    "desc": "সৌর হিজরি ক্যালেন্ডার: সৌর বছরের মাস ও বছর, নওরোজ, সিজদা বেদার, ইয়াল্দা রাত ও অন্যান্য ইরানি সাংস্কৃতিক দিনসহ।",
+    "note": "মার্চ বিষুব তেহরানের সময়ে (UTC+3:30) দুপুরের আগে পড়লে বছর সেই দিন শুরু হয়, নইলে পরের দিন; এখানকার তারিখগুলো এই নিয়মে হিসাব করা। মাসগুলো ইরানি নামে দেখানো হয়েছে; আফগানিস্তানে মাসগুলোর নাম রাশির নামে (হামাল, সওর…)। চাহারশাম্বে সুরি বছরের শেষ বুধবারের আগের মঙ্গলবার সন্ধ্যায় এবং ইয়াল্দা রাত আজার মাসের শেষ সন্ধ্যায় পালিত হয়; মেহরেগান পুরোনো জরথুস্ত্রীয় গণনায় 16 মেহরে পড়ে। ধর্মীয় ও রাজনৈতিক স্মরণ দিবস দেখানো হয়নি।",
+    "ev": {
+      "nowruz": "নওরোজ",
+      "sizdahBedar": "সিজদা বেদার",
+      "chaharshanbeSuri": "চাহারশাম্বে সুরি",
+      "tirgan": "তিরগান",
+      "mehregan": "মেহরেগান",
+      "yalda": "ইয়াল্দা রাত",
+      "sadeh": "সাদেহ"
+    },
+    "month": ["ফারভারদিন", "ওর্দিবেহেশত", "খোরদাদ", "তির", "মোরদাদ", "শাহরিভার", "মেহর", "আবান", "আজার", "দেই", "বাহমান", "এসফান্দ"],
+    "fmt": "{d} {m} {y}"
+  }
+}

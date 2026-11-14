@@ -111,6 +111,12 @@
             "state": "translated",
             "value": "टाइमर"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "টাইমার"
+          }
         }
       }
     },
@@ -223,6 +229,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "अलार्म"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "অ্যালার্ম"
           }
         }
       }
@@ -337,6 +349,12 @@
             "state": "translated",
             "value": "फ़ुल स्क्रीन घड़ी"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "পূর্ণ পর্দার ঘড়ি"
+          }
         }
       }
     },
@@ -449,6 +467,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "अगली नमाज़"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "পরের নামাজ"
           }
         }
       }
@@ -563,6 +587,12 @@
             "state": "translated",
             "value": "आज की तारीख"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আজকের তারিখ"
+          }
         }
       }
     },
@@ -675,6 +705,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} में टाइमर शुरू करो"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ টাইমার চালু করো"
           }
         }
       }
@@ -789,6 +825,12 @@
             "state": "translated",
             "value": "${applicationName} का टाइमर लगाओ"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} টাইমার দাও"
+          }
         }
       }
     },
@@ -901,6 +943,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} में अलार्म लगाओ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ অ্যালার্ম দাও"
           }
         }
       }
@@ -1015,6 +1063,12 @@
             "state": "translated",
             "value": "${applicationName} में घड़ी दिखाओ"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ ঘড়ি দেখাও"
+          }
         }
       }
     },
@@ -1127,6 +1181,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} में फ़ुल स्क्रीन घड़ी खोलो"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ পূর্ণ পর্দার ঘড়ি খোলো"
           }
         }
       }
@@ -1241,6 +1301,12 @@
             "state": "translated",
             "value": "${applicationName} में अगली नमाज़ कब है"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ পরের নামাজ কখন"
+          }
         }
       }
     },
@@ -1353,6 +1419,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} में अगली नमाज़ का समय"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ পরের নামাজের সময়"
           }
         }
       }
@@ -1467,6 +1539,12 @@
             "state": "translated",
             "value": "${applicationName} में आज की तारीख क्या है"
           }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ আজ কত তারিখ"
+          }
         }
       }
     },
@@ -1579,6 +1657,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} में हिजरी तारीख क्या है"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ হিজরি তারিখ কত"
           }
         }
       }

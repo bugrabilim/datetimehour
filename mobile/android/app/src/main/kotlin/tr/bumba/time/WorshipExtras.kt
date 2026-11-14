@@ -88,8 +88,16 @@ object RelDays {
     /** Dini gün ve geceler, bayramların ilk günleri ve arifeleri */
     fun isReligious(e: CalEvent) = e.type == "religious" || e.key in setOf("rb1", "kb1", "rbEve", "kbEve")
 
-    val all: List<CalEvent> by lazy {
-        AppData.events.entries.flatMap { (d, l) -> l.filter { it.date == d && isReligious(it) } }.sortedBy { it.date }
+    private var key = ""
+    private var cache: List<CalEvent> = emptyList()
+    /** Bayramlar ve arifeleri de seçili hicri takvime göre (Endonezya takvimi ya da ±1 gün; Türkiye'nin tatil günleri değişmez) */
+    val all: List<CalEvent> get() {
+        if (key != Hijri.key) {
+            cache = AppData.events.entries.flatMap { (d, l) -> l.filter { it.date == d && isReligious(it) } }
+                .map { if (it.type == "religious") it else AppData.shiftReligious(it) }.sortedBy { it.date }
+            key = Hijri.key
+        }
+        return cache
     }
 
     fun next(today: LocalDate) = all.firstOrNull { !it.date.isBefore(today) }

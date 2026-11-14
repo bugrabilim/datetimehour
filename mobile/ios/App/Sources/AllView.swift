@@ -71,6 +71,9 @@ enum AllPrefs {
         AllEntry(id: "datecalc", titleKey: "tools.hub.cards.datecalc.name", icon: "calendar.badge.clock", cat: .plan, feature: .tools, route: .datecalc),
         AllEntry(id: "planner", titleKey: "planner.h1", icon: "person.2.wave.2", cat: .plan, feature: .tools, route: .planner),
         AllEntry(id: "journal", titleKey: "journal.title", icon: "sun.horizon", cat: .plan, feature: .tools, route: .journal),
+        // Kutlama kartları (10 Kasım 2026): doğum günü, yılbaşı, yıl dönümü, mezuniyet, yeni iş; dini vesileler İbadet'te
+        AllEntry(id: "greetN", titleKey: "greet.titleN", icon: "gift", cat: .plan, feature: .tools, route: .greetN,
+                 words: ["greet.birthday", "greet.newyear", "greet.anniversary", "greet.graduation", "greet.newjob"]),
         AllEntry(id: "bridge", titleKey: "bridge.h1", icon: "beach.umbrella", cat: .plan, feature: .tools, route: .bridge),
         AllEntry(id: "retire", titleKey: "retire.h1", icon: "calendar.badge.clock", cat: .plan, feature: .tools, route: .retire),
         AllEntry(id: "weather", titleKey: "tab.weather", icon: "cloud.sun", cat: .sky, feature: .weather, tab: .weather),
@@ -79,6 +82,11 @@ enum AllPrefs {
         AllEntry(id: "moon", titleKey: "moon.calendarLink", icon: "moon", cat: .sky, feature: .seasons, route: .moon),
         AllEntry(id: "sky", titleKey: "sky.h1", icon: "sparkles", cat: .sky, feature: .seasons, route: .sky),
         AllEntry(id: "sunpath", titleKey: "sunpath.title", icon: "sun.horizon", cat: .sky, feature: .seasons, route: .sunpath),
+        AllEntry(id: "photo", titleKey: "photoApp.title", icon: "camera.aperture", cat: .sky, feature: .tools, route: .photo,
+                 words: ["photoApp.subtitle", "nature.goldenAm", "nature.bluePm", "photoApp.forecast"]),
+        // Panchang ve Rahu Kaal (10 Kasım 2026): Araçlar açıksa görünür
+        AllEntry(id: "panchang", titleKey: "panchang.h1", icon: "sun.max", cat: .sky, feature: .tools, route: .panchang,
+                 words: ["panchang.rahu", "panchang.yama", "panchang.gulika", "panchang.abhijit", "panchang.brahma", "panchang.hindu"]),
         AllEntry(id: "zodiac", titleKey: "zodiac.h1", icon: "sparkles", cat: .sky, feature: .tools, route: .zodiac),
         AllEntry(id: "prayer", titleKey: "tab.prayer", icon: "moon.stars", cat: .faith, feature: .prayer, tab: .prayer),
         AllEntry(id: "qibla", titleKey: "qibla.title", icon: "location.north.line", cat: .faith, feature: .prayer, route: .qibla),
@@ -111,6 +119,8 @@ enum AllPrefs {
         AllEntry(id: "s:language", titleKey: "lang.title", icon: "globe", cat: .more, feature: nil, route: .language),
         AllEntry(id: "s:about", titleKey: "settings.about", icon: "info.circle", cat: .more, feature: nil, route: .about),
         AllEntry(id: "s:shareQr", titleKey: "support.qr", icon: "qrcode", cat: .more, feature: nil, route: .shareQr),
+        AllEntry(id: "s:account", titleKey: "account.title", icon: "person.crop.circle", cat: .more, feature: nil, route: .account,
+                 words: ["account.signIn"]),
     ]
 
     /// Emeklilik hesabı yalnız Türkçe arayüzde (Türkiye mevzuatı, metni Türkçe)
@@ -251,6 +261,7 @@ struct AllView: View {
         let isSura: Bool = { if case .sura = e.route { return true } else { return false } }()
         return Button { open(e) } label: {
             HStack(spacing: 12) {
+                // İki tonlu simge (8 Kasım 2026, DUOTONE.md): satır 32/19, kategori renginde
                 IconBox(icon: e.icon, tint: e.cat.color, line: LineIconMap.entry(e.id))
                 VStack(alignment: .leading, spacing: 2) {
                     Text(isSura ? sub : e.title).foregroundStyle(Theme.text)
@@ -279,7 +290,8 @@ struct AllView: View {
         let isFav = AllPrefs.list(favsRaw).contains(e.id)
         return Button { open(e) } label: {
             VStack(spacing: 6) {
-                IconBox(icon: e.icon, tint: e.cat.color, line: LineIconMap.entry(e.id))
+                // İki tonlu simge (8 Kasım 2026, DUOTONE.md): kare 42/25, kategori renginde
+                IconBox(icon: e.icon, tint: e.cat.color, line: LineIconMap.entry(e.id), box: 42, glyph: 25)
                     .overlay(alignment: .topTrailing) {
                         if fav { Image(systemName: "star.fill").font(.system(size: 9)).foregroundStyle(Theme.accent).offset(x: 4, y: -4) }
                     }
@@ -355,6 +367,9 @@ extension ToolRoute {
         case .moon: MoonView()
         case .sky: SkyView()
         case .sunpath: SunPathView()
+        case .photo: PhotoLightView()
+        case .panchang: PanchangView()
+        case .greetN: GreetingView(neutral: true)
         case .chess: ChessClockView()
         case .metronome: MetronomeView()
         case .talking: TalkingClockView()
@@ -373,6 +388,7 @@ extension ToolRoute {
         case .notifications: NotificationsView()
         case .language: LanguageView()
         case .shareQr: ShareQRView()
+        case .account: AccountView()
         }
     }
 }

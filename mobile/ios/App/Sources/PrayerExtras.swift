@@ -1,5 +1,6 @@
 import SwiftUI
 import SaatCore
+import WidgetKit
 
 /*
  * Vakitler ekleri (30 Ekim 2026, rakip analizi listesi #65–#67, #73):
@@ -15,16 +16,58 @@ import SaatCore
 enum PrayerMethod {
     static let methodKey = "prayer.method"
     static let hanafiKey = "prayer.hanafi"
-    static var id: String { UserDefaults.standard.string(forKey: methodKey) ?? "diyanet" }
-    static var hanafi: Bool { UserDefaults.standard.bool(forKey: hanafiKey) }
-    static var parameters: PrayerTimes.Parameters { .method(id, hanafi: hanafi) }
+    /// Kullanıcı yöntem seçti mi (seçmediyse yerin saat dilimine göre varsayılan; 10 Kasım 2026, sitedeki defaultMethod)
+    static var chosen: Bool { UserDefaults.standard.object(forKey: methodKey) != nil }
+    static func regionDefault(_ p: AppPlace) -> (id: String, hanafi: Bool) {
+        PrayerTimes.defaultMethod(timeZone: p.zone.identifier, latitude: p.lat, longitude: p.lon)
+    }
+    static func id(for p: AppPlace) -> String {
+        chosen ? (UserDefaults.standard.string(forKey: methodKey) ?? "diyanet") : regionDefault(p).id
+    }
+    static func hanafi(for p: AppPlace) -> Bool {
+        chosen ? UserDefaults.standard.bool(forKey: hanafiKey) : regionDefault(p).hanafi
+    }
+    static func parameters(for p: AppPlace) -> PrayerTimes.Parameters { .method(id(for: p), hanafi: hanafi(for: p)) }
+    /// Yöntem bölgeden mi geldi (Diyanet dışı bir varsayılan)
+    static func fromRegion(_ p: AppPlace) -> Bool {
+        guard !chosen else { return false }
+        let d = regionDefault(p)
+        return d.id != "diyanet" || d.hanafi
+    }
+    static var id: String { id(for: AppPlace.stored()) }
+    static var hanafi: Bool { hanafi(for: AppPlace.stored()) }
+    static var parameters: PrayerTimes.Parameters { parameters(for: AppPlace.stored()) }
     static var isCustom: Bool { id != "diyanet" || hanafi }
+    /// Türkiye'ye özgü ekler (bayram namazı, ezani saat, Türkiye Takvimi ek vakitleri) yalnız Diyanet'te
+    static func isDiyanet(_ p: AppPlace) -> Bool { id(for: p) == "diyanet" }
     static func name(_ id: String) -> String { L("prayer.method.names.\(id)") }
+    /// Kısa açıklama: yöntem adı, Hanefî, bölgenize göre
+    static func label(_ p: AppPlace) -> String {
+        var parts = [name(id(for: p))]
+        if hanafi(for: p) { parts.append(L("prayer.method.hanafiShort")) }
+        if fromRegion(p) { parts.append(L("prayer.method.region")) }
+        return parts.joined(separator: " · ")
+    }
+    /// Widget'lar seçimi App Group'tan okur (Location.swift `SharedPrayerMethod`); seçim yoksa anahtar silinir
+    static func publish() {
+        guard let g = UserDefaults(suiteName: Atmosphere.groupID) else { return }
+        if chosen {
+            g.set(UserDefaults.standard.string(forKey: methodKey) ?? "diyanet", forKey: methodKey)
+            g.set(UserDefaults.standard.bool(forKey: hanafiKey), forKey: hanafiKey)
+        } else {
+            g.removeObject(forKey: methodKey)
+            g.removeObject(forKey: hanafiKey)
+        }
+    }
 }
 
 struct PrayerMethodView: View {
-    @AppStorage(PrayerMethod.methodKey) private var method = "diyanet"
-    @AppStorage(PrayerMethod.hanafiKey) private var hanafi = false
+    private let place = AppPlace.stored()
+    @State private var method = PrayerMethod.id
+    @State private var hanafi = PrayerMethod.hanafi
+    @State private var regional = PrayerMethod.fromRegion(AppPlace.stored())
+    @State private var hijriCal = Hijri.setting
+    @State private var hijriOffset = Hijri.offset
 
     var body: some View {
         Form {
@@ -42,14 +85,60 @@ struct PrayerMethodView: View {
                 }
                 .pickerStyle(.inline)
                 .labelsHidden()
-            } header: { Text(L("prayer.method.asrLabel")) } footer: { Text(L("prayer.method.appNote")) }
+            } header: { Text(L("prayer.method.asrLabel")) } footer: {
+                VStack(alignment: .leading, spacing: 6) {
+                    if regional { Text(PrayerMethod.label(place)) }
+                    if method == "kemenag" { Text(L("prayer.method.kemenagNote")) }
+                    Text(L("prayer.method.appNote"))
+                }
+            }
+            // Hicri takvim: Diyanet, Endonezya (Kemenag) ya da yere göre; ay başı ±1 gün (10 Kasım 2026)
+            Section {
+                Picker(L("hijriCal.title"), selection: $hijriCal) {
+                    ForEach(["auto", "diyanet", "kemenag"], id: \.self) { Text(L("hijriCal.\($0)")).tag($0) }
+                }
+                .pickerStyle(.inline)
+                .labelsHidden()
+            } header: { Text(L("hijriCal.title")) }
+            Section {
+                Picker(L("hijriCal.offset"), selection: $hijriOffset) {
+                    Text(L("hijriCal.offsetM1")).tag(-1)
+                    Text(L("hijriCal.offset0")).tag(0)
+                    Text(L("hijriCal.offsetP1")).tag(1)
+                }
+                .pickerStyle(.inline)
+                .labelsHidden()
+            } header: { Text(L("hijriCal.offset")) } footer: {
+                let today = Hijri.date(Date()).map { "☾ \($0.text) · " } ?? ""
+                Text(today + L("hijriCal.note")).id("\(hijriCal):\(hijriOffset)")
+            }
         }
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("prayer.method.app"))
         .navigationBarTitleDisplayMode(.large)
-        .onChange(of: method) { refresh() }
-        .onChange(of: hanafi) { refresh() }
+        .onChange(of: method) { save() }
+        .onChange(of: hanafi) { save() }
+        .onChange(of: hijriCal) { saveHijri() }
+        .onChange(of: hijriOffset) { saveHijri() }
+    }
+
+    private func saveHijri() {
+        UserDefaults.standard.set(hijriCal, forKey: Hijri.calKey)
+        UserDefaults.standard.set(hijriOffset, forKey: Hijri.offsetKey)
+        Hijri.publish(zone: PlaceModel.shared.place.zone)
+        WidgetCenter.shared.reloadAllTimelines()
+        refresh()
+    }
+
+    /// Seçim (Diyanet dahil) saklanır; bundan sonra bölge varsayılanı kullanılmaz
+    private func save() {
+        UserDefaults.standard.set(method, forKey: PrayerMethod.methodKey)
+        UserDefaults.standard.set(hanafi, forKey: PrayerMethod.hanafiKey)
+        regional = false
+        PrayerMethod.publish()
+        WidgetCenter.shared.reloadAllTimelines()
+        refresh()
     }
 
     private func refresh() {

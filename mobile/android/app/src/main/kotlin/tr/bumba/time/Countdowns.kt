@@ -254,7 +254,7 @@ fun CountdownsScreen() {
         // Arşiv (2. analiz #73)
         val archivedCount = items.count { it.archived }
         if (archivedCount > 0 || showArchive) TextButton(onClick = { showArchive = !showArchive }) {
-            Text(if (showArchive) "‹ " + L("countdowns.heading") else "🗄 " + T("countdowns.archiveCount", archivedCount), color = Theme.c.accent)
+            Text(if (showArchive) "‹ " + L("countdowns.heading") else T("countdowns.archiveCount", archivedCount), color = Theme.c.accent)
         }
         SectionTitle(L("tools.countdown.quickHeading"))
         AppCard(padding = 4) {
@@ -334,7 +334,9 @@ private fun CountdownEditor(item: CountdownItem, isNew: Boolean, onDismiss: () -
                         Text(Fmt.time(at.atZone(zone)), color = Theme.c.accent)
                     }
                 }
-                TextButton(onClick = { DeviceCalendar.reload(context); picking = 3 }) { Text("📅 " + L("countdowns.fromCalendar"), color = Theme.c.accent) }
+                TextButton(onClick = { DeviceCalendar.reload(context); picking = 3 }) {
+                    DuoIcon("calendar", 20.dp, Theme.c.accent); Spacer(Modifier.width(6.dp)); Text(L("countdowns.fromCalendar"), color = Theme.c.accent)
+                }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("countdowns.yearly"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
                     SoftSwitch(yearly, { yearly = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))

@@ -20,8 +20,10 @@ final class WatchSync: NSObject, WCSessionDelegate {
         // Dünya saatleri listesinin ilk 8 yeri ("ad|saat dilimi"; 2. analiz #137, saatteki dünya saati)
         let world = WorldEntry.list(UserDefaults.standard.string(forKey: "world") ?? City.defaultKeys)
             .prefix(8).map { "\($0.displayName)|\($0.zone.identifier)" }
+        // Vakit yöntemi (seçilmediyse yere göre varsayılan): saat aynı vakitleri göstersin
         try? s.updateApplicationContext(["name": place.name, "lat": place.lat, "lon": place.lon, "tz": place.zone.identifier,
-                                         "world": Array(world)])
+                                         "world": Array(world), "method": PrayerMethod.id(for: place),
+                                         "hanafi": PrayerMethod.hanafi(for: place)])
     }
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

@@ -1,0 +1,67 @@
+{
+ "source": [
+  "https://soc-wus.org/ourchurch/syriac%20calendar.htm (Süryani Ortodoks Kilisesi Batı ABD Başpiskoposluğu: sabit bayramlar Gregoryen, Paskalya Jülyen hesabı, Büyük Perhiz, Ninova orucu, Qudosh 'Idto kuralları)",
+  "https://www.mecc.org/news-en/2026/2/4/his-holiness-patriarch-mor-ignatius-aphrem-ii-presides-over-the-holy-qurobo-on-the-occasion-of-the-fast-of-nineveh-at-st-georges-patriarchal-cathedral-in-bab-touma-damascus (Orta Doğu Kiliseler Konseyi: Patrik Mor İgnatius Afrem II 04.02.2026'da Şam'da Ninova orucu ayinini yönetti)"
+ ],
+ "note": "Hesapta Ninova orucu 02–04.02.2026 (Ortodoks Paskalyası 12.04.2026). 26–28.01.2026, Gregoryen Paskalya'yı (05.04.2026) izleyen Doğu Asur ve Keldani kiliselerinin tarihidir (absent). Ortodoks Paskalyası christian.test.json ile doğrulanmıştır. Qudosh 'Idto her yıl pazar günüdür.",
+ "cases": [
+  {
+   "date": "2025-11-02",
+   "key": "churchYear"
+  },
+  {
+   "date": "2026-02-02",
+   "key": "nineveh"
+  },
+  {
+   "date": "2026-02-23",
+   "key": "greatLent"
+  },
+  {
+   "date": "2026-04-01",
+   "key": "akitu"
+  },
+  {
+   "date": "2026-04-12",
+   "key": "easter"
+  },
+  {
+   "date": "2026-11-01",
+   "key": "churchYear"
+  },
+  {
+   "date": "2026-12-25",
+   "key": "christmas"
+  }
+ ],
+ "absent": [
+  {
+   "date": "2026-01-26",
+   "key": "nineveh"
+  },
+  {
+   "date": "2025-11-03",
+   "key": "churchYear"
+  }
+ ],
+ "months": [
+  {
+   "date": "2025-09-30",
+   "y": 2336,
+   "m": 12,
+   "d": 30
+  },
+  {
+   "date": "2025-10-01",
+   "y": 2337,
+   "m": 1,
+   "d": 1
+  },
+  {
+   "date": "2026-02-04",
+   "y": 2337,
+   "m": 5,
+   "d": 4
+  }
+ ]
+}

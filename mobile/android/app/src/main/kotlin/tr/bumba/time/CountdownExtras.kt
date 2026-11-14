@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.width
 import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.Canvas
@@ -155,12 +156,12 @@ fun CountdownDetail(item: CountdownItem, onDismiss: () -> Unit, onEdit: () -> Un
                     TextButton(onClick = {
                         context.startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).setType("text/plain")
                             .putExtra(Intent.EXTRA_TEXT, item.label + "\n" + item.shareUrl()), item.label).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-                    }) { Text("🔗 " + L("countdowns.shareLink"), color = Color.White) }
+                    }) { DuoIcon("share", 18.dp, Color.White); Spacer(Modifier.width(6.dp)); Text(L("countdowns.shareLink"), color = Color.White) }
                     if (at.isAfter(now)) TextButton(onClick = {
                         val l = at.atZone(ZoneId.systemDefault())
                         AlarmItem.addNew(context, AlarmItem(hour = l.hour, minute = l.minute, label = item.label.take(40), date = l.toLocalDate().toString()))
                         msg = T("alarm.quickSet", Fmt.longDate(l.toLocalDate()) + " " + Fmt.time(l))
-                    }) { Text("⏰ " + L("countdowns.alarm"), color = Color.White) }
+                    }) { DuoIcon("alarm", 18.dp, Color.White); Spacer(Modifier.width(6.dp)); Text(L("countdowns.alarm"), color = Color.White) }
                 }
                 if (msg.isNotEmpty()) Text(msg, color = Color(0xDDFFFFFF), fontSize = 13.sp)
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {

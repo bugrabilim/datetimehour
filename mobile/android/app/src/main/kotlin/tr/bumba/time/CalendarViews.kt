@@ -49,16 +49,22 @@ import java.time.ZoneId
  * Takvim görünümleri ve ülke seçimi (2. analiz #116, #119, #122, #126, #127; iOS CalendarViews.swift ile aynı):
  * ay / hafta / gün (zaman çizelgesi, bayram kartı) / ajanda (60 gün) / yıl (yoğunluk ısı haritası); hicri aylarla gezme;
  * ülke seçimi (30 ülkenin ulusal tatilleri, src/data/world-holidays.json) ve gösterilen gün türleri.
- * Kayıt: `cal.mode`, `cal.hijriNav`, `cal.country` (TR varsayılan), `cal.hidden` (virgülle tür).
+ * Kayıt: `cal.mode`, `cal.hijriNav`, `cal.country` (yoksa telefonun bölgesi, 30 ülke dışında TR), `cal.hidden` (virgülle tür;
+ * yoksa Vakitler kapalıyken "religious"). İkisi yalnız kullanıcı seçince yazılır.
  */
 object WorldHol {
     private var loaded = false
     private var strs: List<String> = emptyList()
-    private val days = HashMap<String, HashMap<LocalDate, MutableList<Pair<Int, Int>>>>()
+    /** Ülke → gün → (İngilizce ad, yerel ad, ortak izin günü mü) */
+    private val days = HashMap<String, HashMap<LocalDate, MutableList<Triple<Int, Int, Boolean>>>>()
     private var tx: Map<Int, Map<String, String>> = emptyMap()
     private var native: Map<String, Set<String>> = emptyMap()
     var countries: List<String> = emptyList()
         private set
+    /** Bildirim, widget ve alarm ekranı gibi takvim ekranı dışındaki yerler için (AppData.init yazar) */
+    var appContext: Context? = null
+
+    fun ensure() { if (!loaded) appContext?.let { load(it) } }
 
     fun load(c: Context) {
         if (loaded) return
@@ -69,13 +75,13 @@ object WorldHol {
         val cs = o.getJSONObject("countries")
         countries = cs.keys().asSequence().toList()
         for (cc in countries) {
-            val map = HashMap<LocalDate, MutableList<Pair<Int, Int>>>()
+            val map = HashMap<LocalDate, MutableList<Triple<Int, Int, Boolean>>>()
             val ys = cs.getJSONObject(cc)
             for (y in ys.keys()) {
                 val arr = ys.getJSONArray(y)
                 for (i in 0 until arr.length()) {
                     val r = arr.getJSONArray(i)
-                    map.getOrPut(LocalDate.parse(r.getString(0))) { mutableListOf() }.add(r.getInt(1) to r.getInt(2))
+                    map.getOrPut(LocalDate.parse(r.getString(0))) { mutableListOf() }.add(Triple(r.getInt(1), r.getInt(2), r.optInt(3) == 1))
                 }
             }
             days[cc] = map
@@ -96,19 +102,24 @@ object WorldHol {
         }
     }
 
+    /** Ortak izin günleri (Endonezya cuti bersama) tür "leave" ile gelir; tatil sayısına girmez */
     fun events(cc: String, d: LocalDate): List<CalEvent> =
-        days[cc]?.get(d).orEmpty().mapIndexed { i, (en, lo) -> CalEvent(d, "w:$cc:$en:$i", "holiday", null, name(cc, en, lo)) }
+        days[cc]?.get(d).orEmpty().mapIndexed { i, (en, lo, leave) -> CalEvent(d, "w:$cc:$en:$i", if (leave) "leave" else "holiday", null, name(cc, en, lo)) }
+
+    /** Ülkenin verisinde ortak izin günü var mı (takvimdeki tür listesi için) */
+    fun hasLeave(cc: String): Boolean { ensure(); return days[cc]?.values?.any { l -> l.any { it.third } } == true }
 
     /** Ülke adı (telefonun dil verisinden) */
     fun countryName(cc: String): String = java.util.Locale.Builder().setRegion(cc).build().getDisplayCountry(Strings.locale).ifBlank { cc }
 }
 
-/** Takvimin seçili ülkesine ve türlerine göre bir günün özel günleri */
+/** Takvimin seçili ülkesine ve türlerine göre bir günün özel günleri; açık kapsayıcı takvimlerin günleri sonda (tür `cal:<id>`) */
 fun calEvents(d: LocalDate): List<CalEvent> {
+    CalView.load(); WorldHol.ensure()
     val base = AppData.events[d].orEmpty()
     val list = if (CalView.country == "TR") base
         else base.filter { it.type == "religious" } + WorldHol.events(CalView.country, d)
-    return list.filter { it.type !in CalView.hidden }
+    return list.filter { it.type !in CalView.hidden } + ExtraCals.events(d)
 }
 
 /** Ay / hafta / gün / ajanda / yıl seçimi */
@@ -134,23 +145,33 @@ fun CalExtraMenuItems(onCountry: () -> Unit) {
         trailingIcon = { Checkbox(checked = CalView.hijriNav, onCheckedChange = null) },
         onClick = { CalView.hijriNav = !CalView.hijriNav; CalView.save() },
     )
+    // Takvimler ve ülke (kapsayıcı takvimler, 9 Kasım 2026): altında seçili ülke
     DropdownMenuItem(
-        text = { Text(L("cal.country") + ": " + (if (CalView.country == "TR") WorldHol.countryName("TR") else WorldHol.countryName(CalView.country))) },
+        text = {
+            Column {
+                Text(L("calendars.title"))
+                Text(WorldHol.countryName(CalView.country), color = Theme.c.muted, fontSize = 12.sp)
+            }
+        },
         onClick = onCountry,
     )
 }
 
-/** Ülke ve tür seçim penceresi */
+/** Takvimler ve ülke penceresi: kapsayıcı takvimler (açık/kapalı), gösterilen türler ve ülke */
 @Composable
 fun CalCountryDialog(onClose: () -> Unit) {
     androidx.compose.material3.AlertDialog(
         onDismissRequest = onClose,
         confirmButton = { androidx.compose.material3.TextButton(onClick = onClose) { Text(L("common.done"), color = Theme.c.accent) } },
-        title = { Text(L("cal.country")) },
+        title = { Text(L("calendars.title")) },
         text = {
             Column(Modifier.heightIn(max = 460.dp).verticalScroll(rememberScrollState())) {
+                if (ExtraCals.all.isNotEmpty()) {
+                    ExtraCalsSection()
+                    HorizontalDivider(Modifier.padding(vertical = 8.dp), color = Theme.c.border)
+                }
                 Text(L("cal.shownTypes"), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
-                val types = if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")
+                val types = CalView.types()
                 for (t in types) {
                     Row(Modifier.fillMaxWidth().clickable {
                         CalView.hidden = if (t in CalView.hidden) CalView.hidden - t else CalView.hidden + t

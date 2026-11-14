@@ -12,7 +12,12 @@ import SaatCore
  * Dış görsel yok; görsel yalnız kullanıcı paylaşınca sistemin paylaşım penceresiyle gider.
  */
 enum Greetings {
-    static let occasions = ["cuma", "ramadan", "rb", "kb", "kandil", "hijri"]
+    static let religious = ["cuma", "ramadan", "rb", "kb", "kandil", "hijri"]
+    /// Nötr vesileler (10 Kasım 2026, Müslüman olmayanlar araştırması): "Kutlama kartları" yalnız bunları gösterir
+    static let neutral = ["birthday", "newyear", "anniversary", "graduation", "newjob"]
+    static let occasions = religious + neutral
+    /// Nötr kartlarda dua içeren kapanış (2: "dualarımla") kullanılmaz
+    private static let neutralCloses = [1, 3, 4, 5, 6, 7, 8]
     static let styles = ["night", "emerald", "gold"]
     static let arabic = ["cuma": "جمعة مباركة", "ramadan": "رمضان كريم", "rb": "عيد مبارك", "kb": "عيد مبارك",
                          "kandil": "ليلة مباركة", "hijri": "عام هجري سعيد"]
@@ -24,12 +29,27 @@ enum Greetings {
         "kb": ["kaaba", "tulips", "geo"],
         "kandil": ["lamp", "stars", "arch"],
         "hijri": ["crescent", "stars", "geo"],
+        "birthday": ["lights", "stars", "tulips"],
+        "newyear": ["stars", "lights", "geo"],
+        "anniversary": ["tulips", "lights", "stars"],
+        "graduation": ["stars", "geo", "lights"],
+        "newjob": ["geo", "tulips", "stars"],
     ]
 
     /// Söz: vesileye özgü dilek + dua + kapanış; tohumdan seçilir (Android'deki Greetings.message ile aynı kural)
     static func message(_ occasion: String, seed: UInt64) -> String {
+        if neutral.contains(occasion) {
+            // Nötr: vesile sözü (3) + dilek (6, dua yok) + kapanış (7)
+            let w = Int(seed % 3) + 1, b = Int((seed / 3) % 6) + 1, c = neutralCloses[Int((seed / 18) % UInt64(neutralCloses.count))]
+            return [L("greet.m.\(occasion).\(w)"), L("greet.wish.\(b)"), L("greet.close.\(c)")].joined(separator: "\n")
+        }
         let w = Int(seed % 6) + 1, b = Int((seed / 6) % 10) + 1, c = Int((seed / 60) % 8) + 1
         return [L("greet.m.\(occasion).\(w)"), L("greet.bless.\(b)"), L("greet.close.\(c)")].joined(separator: "\n")
+    }
+
+    /// Kutlama kartları açılışı: yılbaşına yakınsa (20 Aralık–7 Ocak) yeni yıl, değilse doğum günü
+    static func suggestNeutral(_ today: CalendarDay) -> String {
+        (today.month == 12 && today.day >= 20) || (today.month == 1 && today.day <= 7) ? "newyear" : "birthday"
     }
 
     /// Bugüne en uygun vesile: yakın bayram/kandil/hicri yılbaşı/Ramazan, yoksa Cuma
@@ -285,7 +305,8 @@ struct GreetingArt: View {
                         .multilineTextAlignment(.center)
                     Text(message).font(.system(size: s * 0.036)).foregroundStyle(ink.opacity(0.9))
                         .multilineTextAlignment(.center).lineSpacing(s * 0.006).minimumScaleFactor(0.6)
-                    Text(Hijri.date(today.noon(in: .current))?.text ?? Fmt.day(today))
+                    // Dini kartta hicri tarih, nötr kartta miladi tarih
+                    Text(Greetings.neutral.contains(occasion) ? Fmt.day(today) : (Hijri.date(today.noon(in: .current))?.text ?? Fmt.day(today)))
                         .font(.system(size: s * 0.028)).foregroundStyle(ink.opacity(0.7))
                 }
                 .padding(.horizontal, s * 0.14)
@@ -310,7 +331,11 @@ private struct ActivitySheet: UIViewControllerRepresentable {
 }
 
 struct GreetingView: View {
-    @State private var occasion = Greetings.suggest(CalendarDay(Date()))
+    /// Kutlama kartları (nötr) yalnız nötr vesileleri, İbadet'teki tebrik kartları önce dini sonra nötr vesileleri gösterir
+    var neutral = false
+    @State private var picked = ""
+    /// Seçili vesile; seçilmediyse bugüne uygun olan
+    private var occasion: String { picked.isEmpty ? (neutral ? Greetings.suggestNeutral(today) : Greetings.suggest(today)) : picked }
     @State private var style = "night"
     @State private var pattern = ""
     /// Her girişte yeni söz (4 Kasım 2026, sahibin isteği)
@@ -334,8 +359,8 @@ struct GreetingView: View {
                     .accessibilityElement(children: .combine)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
-                        ForEach(Greetings.occasions, id: \.self) { o in
-                            chip(L("greet.\(o)"), o == occasion) { occasion = o; pattern = "" }
+                        ForEach(neutral ? Greetings.neutral : Greetings.occasions, id: \.self) { o in
+                            chip(L("greet.\(o)"), o == occasion) { picked = o; pattern = "" }
                         }
                     }
                 }
@@ -376,7 +401,7 @@ struct GreetingView: View {
         }
         .scrollDismissesKeyboard(.interactively)
         .background(AppBackdrop().ignoresSafeArea())
-        .navigationTitle(L("greet.title"))
+        .navigationTitle(L(neutral ? "greet.titleN" : "greet.title"))
         .navigationBarTitleDisplayMode(.large)
         .task(id: "\(occasion)|\(style)|\(currentPattern)|\(message)") {
             let r = ImageRenderer(content: GreetingArt(occasion: occasion, style: style, pattern: currentPattern, message: message, today: today)

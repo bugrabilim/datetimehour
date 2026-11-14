@@ -1,0 +1,801 @@
+{
+  "source": [
+    "https://www.drikpanchang.com/calendars/hindu/hinducalendar.html?year=2025…2031&geoname-id=1261481 (Yeni Delhi bayram listeleri; 9 Kasım 2026'da okundu; 2032 sayfası yok)",
+    "https://www.drikpanchang.com/panchang/month-panchang.html?date=01/MM/YYYY&geoname-id=1261481 (2025–2031'in 2556 günü: gün doğumundaki tithi ve nakşatra)",
+    "https://www.drikpanchang.com/panchang/day-panchang.html?date=DD/MM/YYYY&geoname-id=1261481 (amānta/pūrṇimānta ay, artık ay, Vikram Samvat)",
+    "https://panchang.astrosage.com/festival/<bayram>?date=2032&language=en (Yeni Delhi; 2032 tarihleri)",
+    "https://www.staffnews.in/2024/07/restricted-holidays-year-2025.html, /2024/07/gazetted-holidays-year-2025.html, /2025/07/list-of-holidays-2026-closed-holidays.html, /2025/07/list-of-holidays-2026-restricted-holidays.html, /2026/07/list-of-holidays-for-the-year-2027-gazetted.html, /2026/07/list-of-restricted-holidays-for-the-year-2027.html (Hindistan hükümeti DoP&T, Delhi merkezi devlet daireleri tatil listeleri 2025–2027; O.M. 09.07.2024, 03.07.2025, 16.07.2026)",
+    "https://ssd.jpl.nasa.gov/api/horizons.api (DE441; Güneş ve Ay'ın görünür boylamı, 2025–2032, ~2 günde bir 1403 nokta)"
+  ],
+  "note": "Bayramlar: 2025–2031 drikpanchang Yeni Delhi (17 bayram × 7 yıl = 119/119 aynı), 2032 AstroSage Yeni Delhi (17/17). AstroSage 2025–2031'de drikpanchang'dan 7 yerde ayrılıyor (Makar Sankranti 2030, Holika Dahan ve Holi 2027, Dussehra 2027, Dhanteras 2029, Diwali 2025, Chhath 2025); orada drikpanchang esas. Hindistan hükümeti listeleriyle (2025–2027, 14 bayram) 42 karşılaştırmanın 38'i aynı; farklar: Chhath 2025 (liste 28 Ekim 'Surya Shashthi', burada 27 Ekim akşam arghyası), Makar Sankranti 2027 (liste geçiş günü 14 Ocak, burada puṇya kāla 15 Ocak), Holika Dahan/Holi 2027 (liste 22/23 Mart, drikpanchang ve çoğu pañcāṅga 21/22 Mart). Janmashtami Vaishnava (udaya) tarihi: hükümetin resmî tatiliyle (2025 16 Ağustos) ve drikpanchang ISKCON tarihiyle aynı; Smarta tarihi 2025 ve 2031'de bir gün önce (absent). Günlük (gün doğumu): 2025–2031'in 2556 gününde tithi 2553, nakşatra 2553 gün aynı; farklı 3+3 gün sınırdan en çok 45 sn uzakta (2026-06-30, 2028-03-11, 2028-11-13 tithi; 2027-09-13, 2027-12-17, 2031-07-31 nakşatra; drikpanchang da sınırı gün doğumuyla aynı dakikada veriyor). Ay adları drikpanchang bayram listesindeki 654 günün 653'ünde aynı (Ganga Dussehra 2026 artık Jyeshtha'da olduğu hâlde 'Jyeshtha' yazılmış); artık aylar Jyeshtha 2026, Chaitra 2029, Bhadrapada 2031. Vikram Samvat yılı yılın ilk Caitra ayıyla artar (2029'da artık Caitra 16 Mart'tan 2086; drikpanchang gün sayfaları). Gök: Güneş Horizons'a göre en çok 0,5″, Ay 10,8″.",
+  "cases": [
+    {
+      "date": "2025-01-14",
+      "key": "makarSankranti"
+    },
+    {
+      "date": "2025-02-02",
+      "key": "vasantPanchami"
+    },
+    {
+      "date": "2025-02-26",
+      "key": "mahaShivaratri"
+    },
+    {
+      "date": "2025-03-13",
+      "key": "holikaDahan"
+    },
+    {
+      "date": "2025-03-14",
+      "key": "holi"
+    },
+    {
+      "date": "2025-03-30",
+      "key": "chaitraNavratri"
+    },
+    {
+      "date": "2025-04-06",
+      "key": "ramNavami"
+    },
+    {
+      "date": "2025-04-12",
+      "key": "hanumanJayanti"
+    },
+    {
+      "date": "2025-08-09",
+      "key": "rakshaBandhan"
+    },
+    {
+      "date": "2025-08-16",
+      "key": "janmashtami"
+    },
+    {
+      "date": "2025-08-27",
+      "key": "ganeshChaturthi"
+    },
+    {
+      "date": "2025-09-22",
+      "key": "navratri"
+    },
+    {
+      "date": "2025-10-02",
+      "key": "dussehra"
+    },
+    {
+      "date": "2025-10-18",
+      "key": "dhanteras"
+    },
+    {
+      "date": "2025-10-20",
+      "key": "diwali"
+    },
+    {
+      "date": "2025-10-23",
+      "key": "bhaiDooj"
+    },
+    {
+      "date": "2025-10-27",
+      "key": "chhath"
+    },
+    {
+      "date": "2026-01-14",
+      "key": "makarSankranti"
+    },
+    {
+      "date": "2026-01-23",
+      "key": "vasantPanchami"
+    },
+    {
+      "date": "2026-02-15",
+      "key": "mahaShivaratri"
+    },
+    {
+      "date": "2026-03-03",
+      "key": "holikaDahan"
+    },
+    {
+      "date": "2026-03-04",
+      "key": "holi"
+    },
+    {
+      "date": "2026-03-19",
+      "key": "chaitraNavratri"
+    },
+    {
+      "date": "2026-03-26",
+      "key": "ramNavami"
+    },
+    {
+      "date": "2026-04-02",
+      "key": "hanumanJayanti"
+    },
+    {
+      "date": "2026-08-28",
+      "key": "rakshaBandhan"
+    },
+    {
+      "date": "2026-09-04",
+      "key": "janmashtami"
+    },
+    {
+      "date": "2026-09-14",
+      "key": "ganeshChaturthi"
+    },
+    {
+      "date": "2026-10-11",
+      "key": "navratri"
+    },
+    {
+      "date": "2026-10-20",
+      "key": "dussehra"
+    },
+    {
+      "date": "2026-11-06",
+      "key": "dhanteras"
+    },
+    {
+      "date": "2026-11-08",
+      "key": "diwali"
+    },
+    {
+      "date": "2026-11-11",
+      "key": "bhaiDooj"
+    },
+    {
+      "date": "2026-11-15",
+      "key": "chhath"
+    },
+    {
+      "date": "2027-01-15",
+      "key": "makarSankranti"
+    },
+    {
+      "date": "2027-02-11",
+      "key": "vasantPanchami"
+    },
+    {
+      "date": "2027-03-06",
+      "key": "mahaShivaratri"
+    },
+    {
+      "date": "2027-03-21",
+      "key": "holikaDahan"
+    },
+    {
+      "date": "2027-03-22",
+      "key": "holi"
+    },
+    {
+      "date": "2027-04-07",
+      "key": "chaitraNavratri"
+    },
+    {
+      "date": "2027-04-15",
+      "key": "ramNavami"
+    },
+    {
+      "date": "2027-04-20",
+      "key": "hanumanJayanti"
+    },
+    {
+      "date": "2027-08-17",
+      "key": "rakshaBandhan"
+    },
+    {
+      "date": "2027-08-25",
+      "key": "janmashtami"
+    },
+    {
+      "date": "2027-09-04",
+      "key": "ganeshChaturthi"
+    },
+    {
+      "date": "2027-09-30",
+      "key": "navratri"
+    },
+    {
+      "date": "2027-10-09",
+      "key": "dussehra"
+    },
+    {
+      "date": "2027-10-27",
+      "key": "dhanteras"
+    },
+    {
+      "date": "2027-10-29",
+      "key": "diwali"
+    },
+    {
+      "date": "2027-10-31",
+      "key": "bhaiDooj"
+    },
+    {
+      "date": "2027-11-04",
+      "key": "chhath"
+    },
+    {
+      "date": "2028-01-15",
+      "key": "makarSankranti"
+    },
+    {
+      "date": "2028-01-31",
+      "key": "vasantPanchami"
+    },
+    {
+      "date": "2028-02-23",
+      "key": "mahaShivaratri"
+    },
+    {
+      "date": "2028-03-10",
+      "key": "holikaDahan"
+    },
+    {
+      "date": "2028-03-11",
+      "key": "holi"
+    },
+    {
+      "date": "2028-03-27",
+      "key": "chaitraNavratri"
+    },
+    {
+      "date": "2028-04-03",
+      "key": "ramNavami"
+    },
+    {
+      "date": "2028-04-09",
+      "key": "hanumanJayanti"
+    },
+    {
+      "date": "2028-08-05",
+      "key": "rakshaBandhan"
+    },
+    {
+      "date": "2028-08-13",
+      "key": "janmashtami"
+    },
+    {
+      "date": "2028-08-23",
+      "key": "ganeshChaturthi"
+    },
+    {
+      "date": "2028-09-19",
+      "key": "navratri"
+    },
+    {
+      "date": "2028-09-27",
+      "key": "dussehra"
+    },
+    {
+      "date": "2028-10-15",
+      "key": "dhanteras"
+    },
+    {
+      "date": "2028-10-17",
+      "key": "diwali"
+    },
+    {
+      "date": "2028-10-19",
+      "key": "bhaiDooj"
+    },
+    {
+      "date": "2028-10-23",
+      "key": "chhath"
+    },
+    {
+      "date": "2029-01-14",
+      "key": "makarSankranti"
+    },
+    {
+      "date": "2029-01-19",
+      "key": "vasantPanchami"
+    },
+    {
+      "date": "2029-02-11",
+      "key": "mahaShivaratri"
+    },
+    {
+      "date": "2029-02-28",
+      "key": "holikaDahan"
+    },
+    {
+      "date": "2029-03-01",
+      "key": "holi"
+    },
+    {
+      "date": "2029-04-14",
+      "key": "chaitraNavratri"
+    },
+    {
+      "date": "2029-04-23",
+      "key": "ramNavami"
+    },
+    {
+      "date": "2029-04-28",
+      "key": "hanumanJayanti"
+    },
+    {
+      "date": "2029-08-23",
+      "key": "rakshaBandhan"
+    },
+    {
+      "date": "2029-09-01",
+      "key": "janmashtami"
+    },
+    {
+      "date": "2029-09-11",
+      "key": "ganeshChaturthi"
+    },
+    {
+      "date": "2029-10-08",
+      "key": "navratri"
+    },
+    {
+      "date": "2029-10-16",
+      "key": "dussehra"
+    },
+    {
+      "date": "2029-11-04",
+      "key": "dhanteras"
+    },
+    {
+      "date": "2029-11-05",
+      "key": "diwali"
+    },
+    {
+      "date": "2029-11-07",
+      "key": "bhaiDooj"
+    },
+    {
+      "date": "2029-11-11",
+      "key": "chhath"
+    },
+    {
+      "date": "2030-01-14",
+      "key": "makarSankranti"
+    },
+    {
+      "date": "2030-02-07",
+      "key": "vasantPanchami"
+    },
+    {
+      "date": "2030-03-02",
+      "key": "mahaShivaratri"
+    },
+    {
+      "date": "2030-03-19",
+      "key": "holikaDahan"
+    },
+    {
+      "date": "2030-03-20",
+      "key": "holi"
+    },
+    {
+      "date": "2030-04-03",
+      "key": "chaitraNavratri"
+    },
+    {
+      "date": "2030-04-12",
+      "key": "ramNavami"
+    },
+    {
+      "date": "2030-04-18",
+      "key": "hanumanJayanti"
+    },
+    {
+      "date": "2030-08-13",
+      "key": "rakshaBandhan"
+    },
+    {
+      "date": "2030-08-21",
+      "key": "janmashtami"
+    },
+    {
+      "date": "2030-09-01",
+      "key": "ganeshChaturthi"
+    },
+    {
+      "date": "2030-09-28",
+      "key": "navratri"
+    },
+    {
+      "date": "2030-10-06",
+      "key": "dussehra"
+    },
+    {
+      "date": "2030-10-24",
+      "key": "dhanteras"
+    },
+    {
+      "date": "2030-10-26",
+      "key": "diwali"
+    },
+    {
+      "date": "2030-10-28",
+      "key": "bhaiDooj"
+    },
+    {
+      "date": "2030-11-01",
+      "key": "chhath"
+    },
+    {
+      "date": "2031-01-15",
+      "key": "makarSankranti"
+    },
+    {
+      "date": "2031-01-27",
+      "key": "vasantPanchami"
+    },
+    {
+      "date": "2031-02-20",
+      "key": "mahaShivaratri"
+    },
+    {
+      "date": "2031-03-08",
+      "key": "holikaDahan"
+    },
+    {
+      "date": "2031-03-09",
+      "key": "holi"
+    },
+    {
+      "date": "2031-03-24",
+      "key": "chaitraNavratri"
+    },
+    {
+      "date": "2031-04-01",
+      "key": "ramNavami"
+    },
+    {
+      "date": "2031-04-07",
+      "key": "hanumanJayanti"
+    },
+    {
+      "date": "2031-08-02",
+      "key": "rakshaBandhan"
+    },
+    {
+      "date": "2031-08-10",
+      "key": "janmashtami"
+    },
+    {
+      "date": "2031-09-20",
+      "key": "ganeshChaturthi"
+    },
+    {
+      "date": "2031-10-17",
+      "key": "navratri"
+    },
+    {
+      "date": "2031-10-25",
+      "key": "dussehra"
+    },
+    {
+      "date": "2031-11-12",
+      "key": "dhanteras"
+    },
+    {
+      "date": "2031-11-14",
+      "key": "diwali"
+    },
+    {
+      "date": "2031-11-16",
+      "key": "bhaiDooj"
+    },
+    {
+      "date": "2031-11-20",
+      "key": "chhath"
+    },
+    {
+      "date": "2032-01-15",
+      "key": "makarSankranti"
+    },
+    {
+      "date": "2032-02-15",
+      "key": "vasantPanchami"
+    },
+    {
+      "date": "2032-03-10",
+      "key": "mahaShivaratri"
+    },
+    {
+      "date": "2032-03-26",
+      "key": "holikaDahan"
+    },
+    {
+      "date": "2032-03-27",
+      "key": "holi"
+    },
+    {
+      "date": "2032-04-11",
+      "key": "chaitraNavratri"
+    },
+    {
+      "date": "2032-04-19",
+      "key": "ramNavami"
+    },
+    {
+      "date": "2032-04-25",
+      "key": "hanumanJayanti"
+    },
+    {
+      "date": "2032-08-20",
+      "key": "rakshaBandhan"
+    },
+    {
+      "date": "2032-08-28",
+      "key": "janmashtami"
+    },
+    {
+      "date": "2032-09-08",
+      "key": "ganeshChaturthi"
+    },
+    {
+      "date": "2032-10-05",
+      "key": "navratri"
+    },
+    {
+      "date": "2032-10-14",
+      "key": "dussehra"
+    },
+    {
+      "date": "2032-10-31",
+      "key": "dhanteras"
+    },
+    {
+      "date": "2032-11-02",
+      "key": "diwali"
+    },
+    {
+      "date": "2032-11-04",
+      "key": "bhaiDooj"
+    },
+    {
+      "date": "2032-11-09",
+      "key": "chhath"
+    }
+  ],
+  "absent": [
+    {
+      "date": "2025-08-15",
+      "key": "janmashtami"
+    },
+    {
+      "date": "2031-08-09",
+      "key": "janmashtami"
+    },
+    {
+      "date": "2027-03-23",
+      "key": "holi"
+    },
+    {
+      "date": "2025-10-21",
+      "key": "diwali"
+    },
+    {
+      "date": "2026-05-17",
+      "key": "chaitraNavratri"
+    },
+    {
+      "date": "2029-03-16",
+      "key": "chaitraNavratri"
+    }
+  ],
+  "daily": [
+    {
+      "date": "2025-04-12",
+      "code": "m1t15n13v2082"
+    },
+    {
+      "date": "2025-08-09",
+      "code": "m5t15n22v2082"
+    },
+    {
+      "date": "2025-08-27",
+      "code": "m6t4n13v2082"
+    },
+    {
+      "date": "2025-09-22",
+      "code": "m7t1n12v2082"
+    },
+    {
+      "date": "2026-01-23",
+      "code": "m11t5n25v2082"
+    },
+    {
+      "date": "2026-03-04",
+      "code": "m12t16n11v2082"
+    },
+    {
+      "date": "2026-04-02",
+      "code": "m1t15n13v2083"
+    },
+    {
+      "date": "2026-05-20",
+      "code": "a3t4n6v2083"
+    },
+    {
+      "date": "2026-05-27",
+      "code": "a3t11n13v2083"
+    },
+    {
+      "date": "2026-06-11",
+      "code": "a3t26n27v2083"
+    },
+    {
+      "date": "2026-06-29",
+      "code": "m3t15n19v2083"
+    },
+    {
+      "date": "2026-08-28",
+      "code": "m5t15n24v2083"
+    },
+    {
+      "date": "2026-10-11",
+      "code": "m7t1n14v2083"
+    },
+    {
+      "date": "2027-01-15",
+      "code": "m10t7n27v2083"
+    },
+    {
+      "date": "2027-02-11",
+      "code": "m11t5n27v2083"
+    },
+    {
+      "date": "2027-04-06",
+      "code": "m12t30n26v2083"
+    },
+    {
+      "date": "2027-04-07",
+      "code": "m1t1n27v2084"
+    },
+    {
+      "date": "2027-04-20",
+      "code": "m1t15n14v2084"
+    },
+    {
+      "date": "2027-08-17",
+      "code": "m5t15n23v2084"
+    },
+    {
+      "date": "2027-09-04",
+      "code": "m6t4n14v2084"
+    },
+    {
+      "date": "2027-09-12",
+      "code": "m6t12n22v2084"
+    },
+    {
+      "date": "2027-10-29",
+      "code": "m7t30n14v2084"
+    },
+    {
+      "date": "2027-12-16",
+      "code": "m9t18n7v2084"
+    },
+    {
+      "date": "2028-03-10",
+      "code": "m12t14n10v2084"
+    },
+    {
+      "date": "2028-04-09",
+      "code": "m1t15n13v2085"
+    },
+    {
+      "date": "2028-08-05",
+      "code": "m5t15n22v2085"
+    },
+    {
+      "date": "2028-08-23",
+      "code": "m6t4n13v2085"
+    },
+    {
+      "date": "2028-09-19",
+      "code": "m7t1n12v2085"
+    },
+    {
+      "date": "2028-11-12",
+      "code": "m8t25n11v2085"
+    },
+    {
+      "date": "2029-01-19",
+      "code": "m11t5n25v2085"
+    },
+    {
+      "date": "2029-03-01",
+      "code": "m12t16n11v2085"
+    },
+    {
+      "date": "2029-03-20",
+      "code": "a1t5n3v2086"
+    },
+    {
+      "date": "2029-03-26",
+      "code": "a1t11n8v2086"
+    },
+    {
+      "date": "2029-03-30",
+      "code": "a1t15n13v2086"
+    },
+    {
+      "date": "2029-04-09",
+      "code": "a1t26n23v2086"
+    },
+    {
+      "date": "2029-04-10",
+      "code": "a1t27n24v2086"
+    },
+    {
+      "date": "2029-04-15",
+      "code": "m1t2n1v2086"
+    },
+    {
+      "date": "2029-04-28",
+      "code": "m1t15n15v2086"
+    },
+    {
+      "date": "2029-10-08",
+      "code": "m7t1n14v2086"
+    },
+    {
+      "date": "2030-02-07",
+      "code": "m11t5n26v2086"
+    },
+    {
+      "date": "2030-03-20",
+      "code": "m12t16n12v2086"
+    },
+    {
+      "date": "2030-04-18",
+      "code": "m1t15n14v2087"
+    },
+    {
+      "date": "2030-08-13",
+      "code": "m5t15n22v2087"
+    },
+    {
+      "date": "2030-09-01",
+      "code": "m6t4n13v2087"
+    },
+    {
+      "date": "2030-09-28",
+      "code": "m7t1n13v2087"
+    },
+    {
+      "date": "2030-10-26",
+      "code": "m7t30n14v2087"
+    },
+    {
+      "date": "2031-01-27",
+      "code": "m11t5n26v2087"
+    },
+    {
+      "date": "2031-04-07",
+      "code": "m1t15n13v2088"
+    },
+    {
+      "date": "2031-07-30",
+      "code": "m5t11n17v2088"
+    },
+    {
+      "date": "2031-09-01",
+      "code": "a6t15n24v2088"
+    },
+    {
+      "date": "2031-09-12",
+      "code": "a6t26n7v2088"
+    },
+    {
+      "date": "2031-09-20",
+      "code": "m6t4n15v2088"
+    },
+    {
+      "date": "2031-10-17",
+      "code": "m7t1n15v2088"
+    },
+    {
+      "date": "2031-11-14",
+      "code": "m7t30n15v2088"
+    }
+  ]
+}

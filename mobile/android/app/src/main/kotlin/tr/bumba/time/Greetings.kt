@@ -51,7 +51,12 @@ import kotlin.math.sin
  * Dış görsel yok; görsel yalnız kullanıcı paylaşınca sistemin paylaşım penceresiyle gider.
  */
 object Greetings {
-    val OCCASIONS = listOf("cuma", "ramadan", "rb", "kb", "kandil", "hijri")
+    val RELIGIOUS = listOf("cuma", "ramadan", "rb", "kb", "kandil", "hijri")
+    /** Nötr vesileler (10 Kasım 2026, Müslüman olmayanlar araştırması): "Kutlama kartları" yalnız bunları gösterir */
+    val NEUTRAL = listOf("birthday", "newyear", "anniversary", "graduation", "newjob")
+    val OCCASIONS = RELIGIOUS + NEUTRAL
+    /** Nötr kartlarda dua içeren kapanış (2: "dualarımla") kullanılmaz */
+    private val NEUTRAL_CLOSES = listOf(1, 3, 4, 5, 6, 7, 8)
     val STYLES = listOf("night", "emerald", "gold")
     private val AR = mapOf(
         "cuma" to "جمعة مباركة", "ramadan" to "رمضان كريم", "rb" to "عيد مبارك", "kb" to "عيد مبارك",
@@ -65,6 +70,11 @@ object Greetings {
         "kb" to listOf("kaaba", "tulips", "geo"),
         "kandil" to listOf("lamp", "stars", "arch"),
         "hijri" to listOf("crescent", "stars", "geo"),
+        "birthday" to listOf("lights", "stars", "tulips"),
+        "newyear" to listOf("stars", "lights", "geo"),
+        "anniversary" to listOf("tulips", "lights", "stars"),
+        "graduation" to listOf("stars", "geo", "lights"),
+        "newjob" to listOf("geo", "tulips", "stars"),
     )
     /** Play sayfası (uygulama yayımlanınca açılır) */
     const val STORE = "https://play.google.com/store/apps/details?id=tr.bumba.time"
@@ -72,9 +82,18 @@ object Greetings {
     /** Söz: vesileye özgü dilek + dua + kapanış; tohumdan seçilir (iOS'taki Greetings.message ile aynı kural) */
     fun message(occasion: String, seed: Long): String {
         val u = seed and 0x7FFFFFFFL
+        if (occasion in NEUTRAL) {
+            // Nötr: vesile sözü (3) + dilek (6, dua yok) + kapanış (7)
+            val w = (u % 3).toInt() + 1; val b = ((u / 3) % 6).toInt() + 1; val c = NEUTRAL_CLOSES[((u / 18) % NEUTRAL_CLOSES.size).toInt()]
+            return listOf(L("greet.m.$occasion.$w"), L("greet.wish.$b"), L("greet.close.$c")).joinToString("\n")
+        }
         val w = (u % 6).toInt() + 1; val b = ((u / 6) % 10).toInt() + 1; val c = ((u / 60) % 8).toInt() + 1
         return listOf(L("greet.m.$occasion.$w"), L("greet.bless.$b"), L("greet.close.$c")).joinToString("\n")
     }
+
+    /** Kutlama kartları açılışı: yılbaşına yakınsa (20 Aralık–7 Ocak) yeni yıl, değilse doğum günü */
+    fun suggestNeutral(today: LocalDate): String =
+        if ((today.monthValue == 12 && today.dayOfMonth >= 20) || (today.monthValue == 1 && today.dayOfMonth <= 7)) "newyear" else "birthday"
 
     /** Bugüne en uygun vesile: yakın bayram/kandil/hicri yılbaşı/Ramazan, yoksa Cuma */
     fun suggest(today: LocalDate): String {
@@ -116,10 +135,12 @@ object Greetings {
         var total: Float
         while (true) {
             blocks = buildList {
-                if (Strings.lang != "ar") add(layout(AR.getValue(occasion), s * 0.055f, gold, false))
+                AR[occasion]?.let { if (Strings.lang != "ar") add(layout(it, s * 0.055f, gold, false)) }
                 add(layout(L("greet.$occasion"), s * 0.066f, ink, true))
                 add(layout(message, msgSize, ink and 0x00FFFFFF or 0xE6000000.toInt(), false))
-                add(layout(Hijri.date(today)?.text ?: Fmt.longDate(today), s * 0.028f, ink and 0x00FFFFFF or 0xB3000000.toInt(), false))
+                // Dini kartta hicri tarih, nötr kartta miladi tarih
+                val dateText = if (occasion in NEUTRAL) Fmt.longDate(today) else Hijri.date(today)?.text ?: Fmt.longDate(today)
+                add(layout(dateText, s * 0.028f, ink and 0x00FFFFFF or 0xB3000000.toInt(), false))
             }
             total = blocks.sumOf { it.height } + gap * (blocks.size - 1)
             if (total <= s * 0.48f || msgSize < s * 0.024f) break
@@ -298,10 +319,12 @@ private object GreetMotifs {
 }
 
 @Composable
-fun GreetingScreen(onBack: () -> Unit) {
+fun GreetingScreen(neutral: Boolean = false, onBack: () -> Unit) {
     val context = LocalContext.current
     val today = remember { LocalDate.now() }
-    var occasion by remember { mutableStateOf(Greetings.suggest(today)) }
+    // Kutlama kartları (nötr) yalnız nötr vesileleri, İbadet'teki tebrik kartları önce dini sonra nötr vesileleri gösterir
+    val occasions = if (neutral) Greetings.NEUTRAL else Greetings.OCCASIONS
+    var occasion by remember { mutableStateOf(if (neutral) Greetings.suggestNeutral(today) else Greetings.suggest(today)) }
     var style by remember { mutableStateOf("night") }
     var pattern by remember { mutableStateOf("") }
     // Her girişte yeni söz (4 Kasım 2026, sahibin isteği); "Başka söz" yenisini seçer
@@ -311,11 +334,11 @@ fun GreetingScreen(onBack: () -> Unit) {
     val message = own.trim().ifEmpty { Greetings.message(occasion, seed) }
     val bmp = remember(occasion, style, pat, message) { Greetings.render(occasion, style, pat, message, today, 720) }
     Column(Modifier.fillMaxSize()) {
-        SubBar(L("greet.title"), onBack = onBack)
+        SubBar(L(if (neutral) "greet.titleN" else "greet.title"), onBack = onBack)
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Image(bmp.asImageBitmap(), L("greet.$occasion"), Modifier.fillMaxWidth().aspectRatio(1f).clip(RoundedCornerShape(20.dp)))
             Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                for (o in Greetings.OCCASIONS) Chip(L("greet.$o"), o == occasion) { occasion = o; pattern = "" }
+                for (o in occasions) Chip(L("greet.$o"), o == occasion) { occasion = o; pattern = "" }
             }
             Chip("↻ " + L("greet.shuffle"), false) { seed = kotlin.random.Random.nextLong(); own = "" }
             androidx.compose.material3.OutlinedTextField(own, { own = it.take(300) }, Modifier.fillMaxWidth(),
@@ -330,7 +353,7 @@ fun GreetingScreen(onBack: () -> Unit) {
                 for (st in Greetings.STYLES) Chip(names.getValue(st), st == style) { style = st }
             }
             RoundButton(L("share.card"), true, Modifier.fillMaxWidth()) {
-                Share.image(context, Greetings.render(occasion, style, pat, message, today), "tebrik-$occasion.png", L("greet.title"),
+                Share.image(context, Greetings.render(occasion, style, pat, message, today), "tebrik-$occasion.png", L(if (neutral) "greet.titleN" else "greet.title"),
                     T("greet.shareText", L("greet.$occasion"), Greetings.STORE))
             }
             Text(L("greet.note"), color = Theme.c.muted, fontSize = 12.sp)

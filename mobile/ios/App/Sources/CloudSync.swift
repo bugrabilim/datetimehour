@@ -20,7 +20,7 @@ enum CloudSync {
         "metro", "classroom", "talking.every", "talking.chime",
         // Görünüm ve saat
         "appearance", "accent", "h12", "units", "keepAwake", "clockModel", "clockFont", "digital.style", "world.view", "qibla.style", "qibla.favs", "secA", "secD", "homeItems",
-        Features.key, Features.barKey, AllPrefs.favsKey, CalPrefs.modeKey, CalPrefs.hijriNavKey, CalPrefs.countryKey, CalPrefs.hiddenKey, FullscreenBackground.key, NightMode.key, "fs.text", "fs.scale", FullscreenPhoto.slideEveryKey,
+        Features.key, Features.barKey, AllPrefs.favsKey, CalPrefs.modeKey, CalPrefs.hijriNavKey, CalPrefs.countryKey, CalPrefs.hiddenKey, ExtraCals.key, FullscreenBackground.key, NightMode.key, "fs.text", "fs.scale", FullscreenPhoto.slideEveryKey,
         // Kişisel listeler
         "world", SavedPlaces.key, "countdowns", "tools.voice", "hiit.cfg", "hiit.routine", "hiit.log", "world.labels", "hiit.cue.next", "hiit.cue.half", "hiit.cue.ten", "timers.visual", "timers.keypad", "routines", "timers.history", Journal.key, "meet.cities", PrayerMethod.methodKey, PrayerMethod.hanafiKey,
         // Pomodoro ve uyku
@@ -29,11 +29,11 @@ enum CloudSync {
         SleepSounds.kindKey, SleepSounds.volumeKey, SleepSounds.timerKey,
         // İbadet
         Quran.bookmarkKey, "quran.size", "quran.en", "zikir.kind", "zikir.target", "zikir.tesbihat", "zikir.total",
-        "track.prayer", "track.kaza", "track.fast", "zakat.values",
+        "track.prayer", "track.kaza", "track.fast", "zakat.values", "zakat.std",
         // 2. analiz 1. dalga D (3 Kasım 2026): takip ekleri, hatim, Kur'an zemini/hedefi, dua favorileri, kendi zikirleri, vakit görünümü
         "track.when", "track.pauses", "track.pausedFrom", "track.kazaLog", "track.life", TrackX.inlineKey,
         "quran.hatim", QuranPlan.goalKey, "quran.read", QuranPlan.themeKey, Duas.favsKey, ZikirCustom.key, "zikir.beads", "zikir.shake",
-        "prayer.visual", "prayer.words", "meet.h12", "meet.exchanges",
+        "prayer.visual", "hijri.cal", "hijri.offset", "prayer.words", "meet.h12", "meet.exchanges",
         // Sahibin ekran görüntüleri (3 Kasım 2026): yazı boyutu
         FontScale.key, Atmosphere.key,
         // 2. analiz K-6 (3 Kasım 2026): gece yazı rengi ve saatleri, lüm rengi
