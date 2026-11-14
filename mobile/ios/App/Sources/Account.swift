@@ -244,7 +244,7 @@ final class Account {
         return r.code == 200 ? Result(data: r.body) : .fail(Self.errorOf(r))
     }
 
-    /// Fotoğraf: `data:image/webp;base64,…` (uygulamada 512 piksele küçültülür) ya da nil (kaldır)
+    /// Fotoğraf: `data:image/jpeg;base64,…` (uygulamada 512 piksele küçültülür, sunucu WebP'ye çevirir) ya da nil (kaldır)
     func savePhoto(_ dataUrl: String?) async -> Result {
         let r = await call("POST", "/v1/profil/foto", ["foto": dataUrl.map { $0 as Any } ?? NSNull()], auth: true)
         return r.code == 200 ? .success : .fail(Self.errorOf(r))
@@ -363,10 +363,11 @@ final class Account {
         var q = 0.85
         while q >= 0.35 {
             let buf = NSMutableData()
-            guard let dest = CGImageDestinationCreateWithData(buf as CFMutableData, UTType.webP.identifier as CFString, 1, nil) else { return nil }
+            // iOS WebP yazamıyor: JPEG gönderilir, sunucu WebP'ye çevirir (sahibin kararı, 14 Kasım 2026)
+            guard let dest = CGImageDestinationCreateWithData(buf as CFMutableData, UTType.jpeg.identifier as CFString, 1, nil) else { return nil }
             CGImageDestinationAddImage(dest, out, [kCGImageDestinationLossyCompressionQuality: q] as CFDictionary)
             guard CGImageDestinationFinalize(dest) else { return nil }
-            if buf.length <= 190 * 1024 { return "data:image/webp;base64," + (buf as Data).base64EncodedString() }
+            if buf.length <= 190 * 1024 { return "data:image/jpeg;base64," + (buf as Data).base64EncodedString() }
             q -= 0.1
         }
         return nil

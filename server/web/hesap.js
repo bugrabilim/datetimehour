@@ -329,7 +329,7 @@
     }
     (P.sosyal || []).forEach(socialRow);
     $("[data-social-add]").addEventListener("click", () => { if ($$(".social-row", sBox).length < 8) socialRow(); });
-    // Fotoğraf: cihazda 512 piksel WebP'ye küçültülür (EXIF ve konum çizimle düşer); sunucu boyutu ve türü yeniden denetler
+    // Fotoğraf: cihazda 512 piksele küçültülür (EXIF ve konum çizimle düşer); sunucu yeniden WebP'ye çevirir
     const img = $("[data-photo]"), rmPhoto = $("[data-photo-remove]");
     function showPhoto(src) { img.hidden = !src; rmPhoto.hidden = !src; if (src) img.src = src; else img.removeAttribute("src"); }
     showPhoto(P.foto);
@@ -341,9 +341,10 @@
         const side = Math.min(bmp.width, bmp.height), size = Math.min(512, side);
         const cv = document.createElement("canvas"); cv.width = cv.height = size;
         cv.getContext("2d").drawImage(bmp, (bmp.width - side) / 2, (bmp.height - side) / 2, side, side, 0, 0, size, size);
-        let q = 0.85, data = cv.toDataURL("image/webp", q);
-        while (data.length * 0.75 > 190 * 1024 && q > 0.4) { q -= 0.1; data = cv.toDataURL("image/webp", q); }
-        if (!data.startsWith("data:image/webp")) throw new Error("webp");
+        // WebP yazamayan tarayıcıda (Safari) JPEG; sunucu her durumda WebP'ye çevirir
+        const type = cv.toDataURL("image/webp").startsWith("data:image/webp") ? "image/webp" : "image/jpeg";
+        let q = 0.85, data = cv.toDataURL(type, q);
+        while (data.length * 0.75 > 190 * 1024 && q > 0.4) { q -= 0.1; data = cv.toDataURL(type, q); }
         const s = await call("/v1/profil/foto", { foto: data });
         if (s.status === 200) { showPhoto(s.data.foto); say(pf, t.saved, "ok"); } else say(pf, errText(s), "err");
       } catch { say(pf, t["err.generic"], "err"); }

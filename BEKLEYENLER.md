@@ -3,8 +3,7 @@
 Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"). Biten iş silinir; geçmiş git'te.
 
 ## Sahibe sorular
-- Hesap sunucusunun iki günlük zamanlanmış görevi (`POST /gorev/temizlik`, `POST /gorev/kutlama`): ana altyapı oturumu ilk yayında açsın mı? Sunucunun ilk yayınını bekliyor. (12 Kasım 2026)
-- Profil fotoğrafı iPhone'da: iOS WebP yazamıyor olabilir; (a) uygulamaya WebP kodlayıcı eklemek mi, (b) sunucunun fotoğrafı WebP'ye çevirmesi mi? Cevap bekliyor. (12 Kasım 2026)
+- (Şu an açık soru yok.)
 
 ## Sahipte
 - Site yayını (canlı sırası, bitti): PR bugrabilim/datetimehour#60'ın main'e birleştirilmesi; Coolify kendiliğinden yayımlar. İçinde: sınav takviminin kaldırılması (126 sayfa 301), fotoğraf ışığı `/altin-saat/`, 22 kapsayıcı takvim, Bengalce (`/bn/`), Endonezya ve Hindistan işleri, panchang, dünya şehri araması, dil düzeltmeleri, bakım, üyelik (ayarlarda "Hesap", gizlilikte üyelik bölümü, `/hesap-silme/`, eski hesap adresleri 301). Önce CI yeşil, `npm test`; zamanı sahibin onayıyla. (9 Kasım 2026)
@@ -24,7 +23,7 @@ Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"
 - Üyelik aşama 2 (ücretsiz, üyelik zorunlu): ortak zikir ve hatim, uyanma grupları, favori cami notlarının paylaşımı; sıra `docs/uyelik-plani-2026-11.md`'de. Sahibin "başla" demesini bekliyor. (10 Kasım 2026)
 
 ## Başkasında
-- Ana altyapı oturumu: hesap sunucusunun (`hesap.time.bumba.tr`; canlı sırası, bitti: standart 5.18'e göre) ilk yayını ve sonra otomatik yayının açılması; PR #60'tan sonra, sahibin onayıyla. Coolify uygulaması `saat-hesap` kurulu, otomatik yayın kapalı. (10 Kasım 2026)
+- Ana altyapı oturumu: hesap sunucusunun (`hesap.time.bumba.tr`; canlı sırası, bitti: standart 5.18'e göre) ilk yayını ve sonra otomatik yayının açılması; PR #60'tan sonra, sahibin onayıyla. Coolify uygulaması `saat-hesap` kurulu, otomatik yayın kapalı. İki günlük görev (`POST /gorev/temizlik`, `POST /gorev/kutlama`) ilk yayında açılacak (sahibin onayı 14 Kasım 2026, merkeze iletildi). (10 Kasım 2026)
 - Ana altyapı oturumu: yönetim paneli uçları (`/api/bumba-panel/ozet|uyeler|uye`) hazır; merkezdeki kayıt ve uçtan uca deneme. (14 Kasım 2026)
 - Ana altyapı oturumu: kayıttaki onay cümlesinin 19 dildeki çevirisi iletildi; bumbagroup.com'daki yerinin belirlenmesi. (14 Kasım 2026)
 - MEB 2027-2028 çalışma takvimi: yayımlanınca `src/data/school.json`. (6 Kasım 2026)

@@ -659,10 +659,12 @@ ${["place.js", ...(p.scripts || []).filter((n) => n !== "place.js")].map((n) => 
 `;
 }
 
-/* Paylaş düğmesinin yeri: görünen ilk başlığın yanında; başlık görünmüyorsa (ana sayfa) içeriğin sonunda.
-   Herkese açık ve dizinlenen sayfalarda; hesapla ilgili sayfalarda (hesap silme) yok. */
+/* Paylaş yalnız paylaşılmaya değer sayfalarda (sahibin kararı, 14 Kasım 2026; standart madde 15'ten sapma: "her
+   yere koymayalım, bir iki yere yeter"): hazır geri sayımlar (yılbaşı, bayramlar, özel günler) ve tarihte bugün.
+   Yeri: görünen ilk başlığın yanında; başlık görünmüyorsa içeriğin sonunda. */
+const SHARE_PAGE = (key) => /^cdp:/.test(key || "") || key === "otd";
 function withShare(p, canonical, body) {
-  if (p.noindex || p.noShare || !canonical) return body;
+  if (p.noindex || !SHARE_PAGE(p.key) || !canonical) return body;
   const ui = shareUi(p.lang, canonical, p.title, p.description);
   const m = body.match(/<h1>([\s\S]*?)<\/h1>/);
   if (m) return body.replace(m[0], `<div class="title-row">${m[0]}${ui}</div>`);
@@ -924,7 +926,7 @@ function buildAccountDelete(lang) {
 </section>`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, a.delTitle, a.delDesc), breadcrumbLd(trail)];
   searchEntries[lang].push({ t: a.delH1, u: pagePath, d: a.delDesc, k: "hesap account silme delete" });
-  return { lang, key: "accountDelete", path: pagePath, title: a.delTitle, description: a.delDesc, body, ld, noShare: true };
+  return { lang, key: "accountDelete", path: pagePath, title: a.delTitle, description: a.delDesc, body, ld };
 }
 
 /* ---------- Takvim: etkinlikler ve yıl sayfaları ---------- */

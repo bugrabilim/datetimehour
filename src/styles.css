@@ -1586,9 +1586,9 @@ html[dir="rtl"] .ph-nav svg { transform: scaleX(-1); }
 .share summary::-webkit-details-marker { display: none; }
 .share-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; min-width: 2.75rem; min-height: 2.75rem; padding: 0 0.85rem;
-  background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 999px; font-weight: 600; font-size: 0.95rem; cursor: pointer;
+  background: none; color: var(--muted); border: 0; border-radius: 999px; font-weight: 600; font-size: 0.95rem; cursor: pointer;
 }
-.share-btn:hover { background: var(--surface-2); }
+.share-btn:hover, .share[open] .share-btn { background: var(--surface-2); color: var(--text); }
 .share-btn svg { width: 1.15rem; height: 1.15rem; }
 .share-btn:focus-visible, .share-item:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .share-pop {

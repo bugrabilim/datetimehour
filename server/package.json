@@ -13,6 +13,7 @@
   "dependencies": {
     "better-auth": "1.7.21",
     "date-holidays": "3.39.1",
-    "pg": "8.23.1"
+    "pg": "8.23.1",
+    "sharp": "0.35.5"
   }
 }

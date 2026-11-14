@@ -95,15 +95,38 @@ export function validateProfile(p, now = new Date()) {
   return out;
 }
 
-/* Fotoğraf: data:image/webp;base64,… en çok 200 KB, gerçekten WebP (RIFF….WEBP) */
-export function checkPhoto(dataUrl) {
+/* Fotoğraf (sahibin kararı, 14 Kasım 2026: dönüşüm sunucuda): istemci JPEG, PNG ya da WebP gönderir (en çok 2 MB;
+   iPhone ve Safari WebP yazamayabilir). Sunucu yönü düzeltir, kare kırpıp 512 piksele küçültür ve WebP olarak yeniden
+   kodlar (EXIF ve konum dahil bütün üst veri düşer); sonuç en çok 200 KB. */
+export const PHOTO_IN_MAX_BYTES = 2 * 1024 * 1024;
+const PHOTO_TYPES = {
+  webp: (b) => b.toString("ascii", 0, 4) === "RIFF" && b.toString("ascii", 8, 12) === "WEBP",
+  jpeg: (b) => b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff,
+  png: (b) => b.toString("binary", 0, 8) === "\x89PNG\r\n\x1a\n",
+};
+export async function checkPhoto(dataUrl) {
   if (dataUrl == null || dataUrl === "") return null;
-  const m = /^data:image\/webp;base64,([A-Za-z0-9+/]+={0,2})$/.exec(String(dataUrl));
+  const m = /^data:image\/(webp|jpeg|png);base64,([A-Za-z0-9+/]+={0,2})$/.exec(String(dataUrl));
   if (!m) throw bad("foto");
-  const buf = Buffer.from(m[1], "base64");
-  if (buf.length > PHOTO_MAX_BYTES || buf.length < 16) throw bad("foto");
-  if (buf.toString("ascii", 0, 4) !== "RIFF" || buf.toString("ascii", 8, 12) !== "WEBP") throw bad("foto");
-  return `data:image/webp;base64,${buf.toString("base64")}`;
+  const buf = Buffer.from(m[2], "base64");
+  if (buf.length > PHOTO_IN_MAX_BYTES || buf.length < 16 || !PHOTO_TYPES[m[1]](buf)) throw bad("foto");
+  const { default: sharp } = await import("sharp");
+  let img;
+  try {
+    // Sıkıştırma bombasına karşı piksel sınırı (40 megapiksel)
+    const opt = { limitInputPixels: 40_000_000, failOn: "error" };
+    const meta = await sharp(buf, opt).metadata();
+    const o = meta.autoOrient || { width: meta.width, height: meta.height };
+    const side = Math.min(512, o.width, o.height); // küçük görüntü büyütülmez, yine de kare olur
+    img = sharp(buf, opt).rotate().resize(side, side, { fit: "cover" });
+    for (let q = 82; q >= 32; q -= 10) {
+      const out = await img.clone().webp({ quality: q }).toBuffer();
+      if (out.length <= PHOTO_MAX_BYTES) return `data:image/webp;base64,${out.toString("base64")}`;
+    }
+  } catch {
+    throw bad("foto");
+  }
+  throw bad("foto");
 }
 
 /* Görünen ad (standart madde 7): görünür takma ad; yoksa görünür ad (soyad da görünürse onunla); yoksa "Üye 10458" */

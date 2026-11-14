@@ -82,12 +82,14 @@ export async function startCenter() {
   return c;
 }
 
-/* Bir WebP dosyası (en küçük geçerli başlık; içerik denetimi yalnız başlığa bakar) */
-export const tinyWebp = (extra = 0) => {
-  const b = Buffer.alloc(30 + extra);
-  b.write("RIFF", 0, "ascii"); b.writeUInt32LE(22 + extra, 4); b.write("WEBP", 8, "ascii"); b.write("VP8L", 12, "ascii");
-  return `data:image/webp;base64,${b.toString("base64")}`;
-};
+/* Deneme fotoğrafı: verilen biçimde gerçek görüntü (data URL); EXIF'e iz yazılabilir */
+export async function testPhoto(fmt = "jpeg", w = 900, h = 600, exif = false) {
+  const { default: sharp } = await import("sharp");
+  let img = sharp({ create: { width: w, height: h, channels: 3, background: "#c84" } });
+  if (exif) img = img.withExif({ IFD0: { Make: "Deneme", Software: "gizli-iz" } });
+  const buf = await img[fmt]().toBuffer();
+  return `data:image/${fmt};base64,${buf.toString("base64")}`;
+}
 
 export async function start(env = {}) {
   const name = "saat_test_" + crypto.randomBytes(6).toString("hex");

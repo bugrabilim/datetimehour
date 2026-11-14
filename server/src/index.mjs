@@ -174,8 +174,8 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       return json(res, 200, { profil: clean });
     }
     if (p === "/v1/profil/foto" && m === "POST") {
-      const b = await readJson(req, 400 * 1024);
-      const foto = checkPhoto(b.foto);
+      const b = await readJson(req, 3 * 1024 * 1024);
+      const foto = await checkPhoto(b.foto);
       await (await accounts.ia()).updateUser(user.id, { photo: foto, updatedAt: new Date() });
       if (user.uyeNo != null) await tell("guncelle", { uyeNo: Number(user.uyeNo), degisiklik: { profil: { ...profileOf(user), foto } } });
       return json(res, 200, { foto });

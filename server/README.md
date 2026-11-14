@@ -35,7 +35,7 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
     öbür dillerden `?dil=en` metnine gider (sahibin kararı, 12 Kasım 2026).
   - Kendi çerez bandı var (`bumba-cerez`). Umami yalnız istatistik izniyle yüklenir; adresinde anahtar olan sayfalarda
     hiç yüklenmez.
-- **Profil:** ad, soyad, takma ad, fotoğraf (512 piksel WebP, ≤200 KB, EXIF cihazda silinir), doğum tarihi, cinsiyet,
+- **Profil:** ad, soyad, takma ad, fotoğraf (istemci JPEG, PNG ya da WebP gönderir, en çok 2 MB; sunucu `sharp` ile yönü düzeltip 512 piksel kare WebP'ye çevirir, ≤200 KB, bütün üst veri düşer), doğum tarihi, cinsiyet,
   telefon, ülke, şehir, meslek, hakkımda (160), sosyal hesaplar (en çok 8). Görünürlük varsayılan kapalı.
 - **Yönetici hesabı:** `bilgi@bumbagroup.com` kurulumda açılır (adı "admin", numarasız; şifre "Şifremi unuttum"la);
   kayıt sayfasından açılamaz, ortak servise bildirilmez, panel sayılarına girmez.

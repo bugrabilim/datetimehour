@@ -135,14 +135,16 @@ for (const f of htmlFiles) {
       for (const l of [...(trOnly ? ["tr"] : LANGS), "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
       if (trOnly) check(!LANGS.some((l) => l !== "tr" && h.includes(`<link rel="alternate" hreflang="${l}"`)), `${name}: ilçe sayfasında başka dil hreflang'ı olmamalı`);
       check(/og:image/.test(h) && /twitter:card/.test(h), `${name}: OG/Twitter yok`);
-      // madde 15: tek Paylaş; görünen başlık varsa yanında, yoksa içeriğin sonunda; adres canonical, ağ betiği yok
-      const accDel = /\/(hesap-silme|account-deletion)\//.test(name);
+      // madde 15 (sahibin sapma kararı, 14 Kasım 2026): Paylaş yalnız hazır geri sayımlarda ve tarihte bugünde; tek düğme,
+      // görünen başlığın yanında, adres canonical, ağ betiği yok
+      const sharePage = (/\/(geri-sayim|countdown)\/[a-z0-9-]+\/index\.html$/.test(name) && !/data-cd-fixed/.test(h)) || /\/(tarihte-bugun|on-this-day)\/index\.html$/.test(name);
       const shares = (h.match(/data-page-share/g) || []).length;
-      check(shares === (accDel ? 0 : 1), `${name}: Paylaş düğmesi ${shares} (beklenen ${accDel ? 0 : 1})`);
-      if (!accDel) {
+      check(shares === (sharePage ? 1 : 0), `${name}: Paylaş ${shares} (beklenen ${sharePage ? 1 : 0})`);
+      if (shares) {
+        check(shares === 1, `${name}: birden çok Paylaş`);
         const can = (/rel="canonical" href="([^"]+)"/.exec(h) || [])[1];
         check(h.includes(`data-page-share data-url="${can}"`) && !/utm_/.test(h), `${name}: Paylaş adresi canonical değil`);
-        check(/<h1>/.test(h) ? /<div class="title-row"><h1>[\s\S]*?<\/h1><details class="share"/.test(h) : /class="wrap share-end"/.test(h), `${name}: Paylaş düğmesinin yeri yanlış`);
+        check(/<div class="title-row"><h1>[\s\S]*?<\/h1><details class="share"/.test(h), `${name}: Paylaş düğmesinin yeri yanlış`);
         for (const k of ["wa.me/", "x.com/intent/post", "facebook.com/sharer", "linkedin.com/sharing", "t.me/share", "bsky.app/intent", "mailto:?subject", "data-share-copy"]) check(h.includes(k), `${name}: Paylaş menüsünde ${k} yok`);
         check(!/<script[^>]+src="https:\/\/(?!istatistik\.bumba\.tr)/.test(h), `${name}: dış betik yüklenmemeli`);
       }
@@ -372,7 +374,7 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
   const g = fs.readFileSync(path.join(DIST, "gomme/index.html"), "utf8");
   check(/data-eg-lcode/.test(g) && /data-eg-lkind/.test(g) && /line\.js/.test(g), "gömme sayfasında metin satırı üreteci eksik");
   const tk = fs.readFileSync(path.join(DIST, "dunya-saatleri/tokyo/index.html"), "utf8");
-  check(/Nüfus \(kent bölgesi/.test(tk) && /data-page-share/.test(tk), "Tokyo sayfasında nüfus ya da paylaş düğmesi eksik");
+  check(/Nüfus \(kent bölgesi/.test(tk) && !/data-page-share/.test(tk), "Tokyo sayfasında nüfus eksik ya da Paylaş olmamalı");
 }
 
 // kontrast (WCAG AA)
@@ -633,6 +635,7 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   }
 }
 for (const f of ["geri-sayim/5-dakika", "geri-sayim/1-saat", "en/countdown/5-minutes", "ar/countdown/2-hours", "alarm/07-00", "en/alarm/06-30", "de/alarm/05-15"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `hazır araç sayfası yok: /${f}/`);
+for (const f of ["geri-sayim/yilbasi", "en/countdown/new-year", "ar/countdown/eid-al-fitr", "tarihte-bugun", "en/on-this-day"]) check(/data-page-share/.test(fs.readFileSync(path.join(DIST, f, "index.html"), "utf8")), `Paylaş yok: /${f}/`);
 for (const f of ["kible", "en/qibla", "de/qibla", "az/qibla", "ar/qibla"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `kıble sayfası yok: /${f}/`);
 check(ng.split("https://overpass-api.de").length === 3, "nginx.conf: connect-src overpass (yakındaki camiler) iki konumda olmalı");
 check(!/includeSubDomains|preload/.test(ng), "nginx.conf: includeSubDomains/preload kullanılmamalı");

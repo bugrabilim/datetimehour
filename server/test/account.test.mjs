@@ -4,7 +4,7 @@
    bağlanma, ayrı hesap birleştirme, ürün listesi, kutlama e-postaları, temizlik ve kapalı üyelik. */
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
-import { start, signUpVerified, PW, tinyWebp, CENTER_KEY, CRON } from "./helpers.mjs";
+import { start, signUpVerified, PW, testPhoto, CENTER_KEY, CRON } from "./helpers.mjs";
 import { createApp } from "../src/index.mjs";
 import { loadConfig } from "../src/config.mjs";
 import { birthDateRange } from "../src/profile.mjs";
@@ -47,15 +47,31 @@ test("profil: isteğe bağlı alanlar, doğrulama, görünürlük varsayılan ka
   assert.equal(h.json.profil.din, undefined, "listede olmayan alan kaydedilmez");
 });
 
-test("fotoğraf: yalnız WebP, en çok 200 KB; kaldırılabilir", async () => {
-  assert.equal((await t.req("/v1/profil/foto", { method: "POST", token: tok, body: { foto: "data:image/png;base64,AAAA" } })).status, 400);
-  assert.equal((await t.req("/v1/profil/foto", { method: "POST", token: tok, body: { foto: tinyWebp(205 * 1024) } })).status, 400);
-  const ok = await t.req("/v1/profil/foto", { method: "POST", token: tok, body: { foto: tinyWebp() } });
-  assert.equal(ok.status, 200, ok.text);
-  assert.equal((await t.req("/v1/hesap", { token: tok })).json.profil.foto, tinyWebp());
+test("fotoğraf: JPEG, PNG ya da WebP gelir; sunucu 512 piksel kare WebP'ye çevirir, üst veri düşer; kaldırılabilir", async () => {
+  const post = (foto) => t.req("/v1/profil/foto", { method: "POST", token: tok, body: { foto } });
+  assert.equal((await post("data:image/png;base64,AAAA")).status, 400, "bozuk görüntü");
+  assert.equal((await post("data:image/gif;base64,R0lGODlhAQABAAAAACw=")).status, 400, "desteklenmeyen tür");
+  assert.equal((await post((await testPhoto("jpeg")).replace("image/jpeg", "image/png"))).status, 400, "tür başlıkla uyuşmuyor");
+  const { default: sharp } = await import("sharp");
+  for (const fmt of ["jpeg", "png", "webp"]) {
+    const ok = await post(await testPhoto(fmt, 1200, 800, fmt === "jpeg"));
+    assert.equal(ok.status, 200, ok.text);
+    assert.match(ok.json.foto, /^data:image\/webp;base64,/);
+    const buf = Buffer.from(ok.json.foto.split(",")[1], "base64");
+    assert.ok(buf.length <= 200 * 1024);
+    const meta = await sharp(buf).metadata();
+    assert.equal(meta.format, "webp");
+    assert.deepEqual([meta.width, meta.height], [512, 512]);
+    assert.equal(meta.exif, undefined, "EXIF düşer");
+    assert.ok(!buf.includes("gizli-iz"));
+  }
+  const small = await post(await testPhoto("png", 200, 300));
+  const sm = await sharp(Buffer.from(small.json.foto.split(",")[1], "base64")).metadata();
+  assert.deepEqual([sm.width, sm.height], [200, 200], "küçük görüntü büyütülmez");
+  assert.equal((await t.req("/v1/hesap", { token: tok })).json.profil.foto, small.json.foto);
   const s = (await t.req("/api/auth/get-session", { token: tok })).json;
   assert.equal(s.user.photo, undefined, "fotoğraf oturum yanıtına girmez");
-  assert.equal((await t.req("/v1/profil/foto", { method: "POST", token: tok, body: { foto: null } })).status, 200);
+  assert.equal((await post(null)).status, 200);
   assert.equal((await t.req("/v1/hesap", { token: tok })).json.profil.foto, null);
 });
 
@@ -131,12 +147,12 @@ test("rozetler: yalnız bilinen kimlik ve geçmiş gün; erken gün kalır; sili
 });
 
 test("verilerimi indir: profil, fotoğraf, onay, oturumlar (IP yok), kayıtlar, rozetler", async () => {
-  await t.req("/v1/profil/foto", { method: "POST", token: tok, body: { foto: tinyWebp() } });
+  const foto = (await t.req("/v1/profil/foto", { method: "POST", token: tok, body: { foto: await testPhoto() } })).json.foto;
   const r = await t.req("/v1/verilerim", { token: tok });
   assert.equal(r.status, 200);
   assert.match(r.headers.get("content-disposition"), /attachment/);
   assert.equal(r.json.hesap.eposta, "profil@example.com");
-  assert.equal(r.json.hesap.profil.foto, tinyWebp());
+  assert.equal(r.json.hesap.profil.foto, foto);
   assert.equal(r.json.onay.surum, "2026-11-11");
   assert.ok(r.json.oturumlar.length >= 1);
   assert.equal(r.json.oturumlar[0].ipAddress, undefined);
@@ -155,7 +171,7 @@ test("ortak servisin ürün uçları: anahtar, dogrula, hesap-getir, guncelle", 
   assert.equal(h.eposta, "profil@example.com");
   assert.equal(h.epostaDogrulandi, true);
   assert.match(h.sifreOzeti, /^[0-9a-f]+:[0-9a-f]+$/);
-  assert.equal(h.profil.foto, tinyWebp());
+  assert.match(h.profil.foto, /^data:image\/webp;base64,/);
   assert.equal(h.kutlama, true);
   assert.equal(h.onay.surum, "2026-11-11");
   assert.equal(h.anaUrun, true);
