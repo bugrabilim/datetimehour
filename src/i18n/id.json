@@ -3450,5 +3450,15 @@
         ]
       }
     ]
+  },
+  "invite": {
+    "title": "Undangan lingkaran | Saat Tarih",
+    "h1": "Anda diundang ke sebuah lingkaran",
+    "lead": "Anda diundang ke lingkaran zikir atau khatam Al-Qur'an bersama di aplikasi Saat Tarih.",
+    "code": "Kode undangan",
+    "open": "Buka di aplikasi",
+    "how": "Jika aplikasi tidak terbuka, buka Semua › Lingkaran › Gabung dengan kode di Saat Tarih lalu masukkan kode ini. Lingkaran memerlukan akun gratis.",
+    "get": "Unduh di App Store",
+    "none": "Tautan ini tidak berisi kode undangan. Minta orang yang mengundang Anda untuk mengirimkannya lagi."
   }
 }

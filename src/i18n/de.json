@@ -3477,5 +3477,15 @@
         ]
       }
     ]
+  },
+  "invite": {
+    "title": "Einladung in einen Kreis | Saat Tarih",
+    "h1": "Sie wurden in einen Kreis eingeladen",
+    "lead": "Sie wurden in der App Saat Tarih zu einem gemeinsamen Dhikr- oder Koran-Khatm-Kreis eingeladen.",
+    "code": "Einladungscode",
+    "open": "In der App öffnen",
+    "how": "Falls sich die App nicht öffnet: In Saat Tarih Alle › Kreise › Mit Code beitreten antippen und diesen Code eingeben. Für Kreise ist ein kostenloses Konto nötig.",
+    "get": "Im App Store laden",
+    "none": "Dieser Link enthält keinen Einladungscode. Bitten Sie die einladende Person, ihn erneut zu senden."
   }
 }

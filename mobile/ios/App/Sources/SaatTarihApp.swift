@@ -201,6 +201,9 @@ final class Router {
         // Sitedeki "Uygulamaya ekle" ya da paylaşılan geri sayım (2. analiz #138)
         case "countdown":
             if CountdownItem.importURL(url) { tab = .tools; toolsPath = [.timer] }
+        // Halka daveti (üyelik aşama 2c): saattarih://davet?kod=KOD; Halkalar › Kodla katıl kodla açılır
+        case "davet":
+            if let code = Circles.code(from: url) { Circles.pendingCode = code; tab = .tools; toolsPath = [.circles] }
         default: break
         }
     }

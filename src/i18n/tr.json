@@ -3450,5 +3450,15 @@
         ]
       }
     ]
+  },
+  "invite": {
+    "title": "Halka daveti | Saat Tarih",
+    "h1": "Halkaya davet edildiniz",
+    "lead": "Saat Tarih uygulamasında ortak bir zikir ya da hatim halkasına davet edildiniz.",
+    "code": "Davet kodu",
+    "open": "Uygulamada aç",
+    "how": "Uygulama açılmazsa Saat Tarih'te Tümü › Halkalar › Kodla katıl adımlarına dokunup bu kodu yazın. Halkalar için ücretsiz bir hesap gerekir.",
+    "get": "App Store'dan indirin",
+    "none": "Bu bağlantıda davet kodu yok. Sizi davet edenden bağlantıyı yeniden göndermesini isteyin."
   }
 }

@@ -3516,5 +3516,15 @@
         ]
       }
     ]
+  },
+  "invite": {
+    "title": "Imbitasyon sa circle | Saat Tarih",
+    "h1": "Inimbitahan ka sa isang circle",
+    "lead": "Inimbitahan ka sa isang pinagsasaluhang circle ng dhikr o khatm ng Quran sa app na Saat Tarih.",
+    "code": "Invite code",
+    "open": "Buksan sa app",
+    "how": "Kung hindi bumukas ang app, pumunta sa Lahat › Mga Circle › Sumali gamit ang code sa Saat Tarih at ilagay ang code na ito. Kailangan ng libreng account para sa mga circle.",
+    "get": "I-download sa App Store",
+    "none": "Walang invite code ang link na ito. Hilingin sa nag-imbita sa iyo na ipadala itong muli."
   }
 }

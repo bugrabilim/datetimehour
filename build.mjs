@@ -123,6 +123,7 @@ for (const [name, from] of [
   ["photo.js", "js/photo.js"],
   ["panchang.js", "js/panchang.js"],
   ["globe.js", "js/globe.js"],
+  ["invite.js", "js/invite.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
@@ -3383,6 +3384,38 @@ function errorPage(kind) {
     searchVersion: searchVersion.tr,
   });
 }
+/* ---------- halka daveti (üyelik aşama 2c, 15 Kasım 2026): /davet/#KOD, bütün diller bir arada, noindex ----------
+   Uygulamadaki "Davet et" bu adresi paylaşır. invite.js tarayıcının diline uyan bölümü gösterir; uygulama kuruluysa
+   "Uygulamada aç" saattarih://davet?kod=KOD açar (Android'de https bağlantısı da uygulamayı önerir). */
+function invitePage() {
+  const block = (lang, s) => `<section class="center-page" data-invite="${lang}" lang="${lang}" dir="${DIR(lang)}"${lang === "en" ? "" : " hidden"}>
+  <div class="wrap">
+    <h1>${esc(s.h1)}</h1>
+    <p class="lead">${esc(s.lead)}</p>
+    <div data-invite-has hidden>
+      <p class="invite-label">${esc(s.code)}</p>
+      <p class="invite-code" dir="ltr" data-invite-code></p>
+      <p><a class="btn" data-invite-open href="saattarih://davet">${esc(s.open)}</a></p>
+      <p>${esc(s.how)}</p>
+      <p><a href="https://apps.apple.com/app/id6823767495">${esc(s.get)}</a></p>
+    </div>
+    <p data-invite-none>${esc(s.none)}</p>
+  </div>
+</section>`;
+  return layout({
+    lang: "en",
+    title: I.en.invite.title,
+    description: I.en.invite.lead,
+    body: LANGS.map((l) => block(l, I[l].invite)).join(""),
+    noindex: true,
+    error: true,
+    noStats: true,
+    path: "",
+    scripts: ["invite.js"],
+    searchVersion: searchVersion.en,
+  });
+}
+write("davet/index.html", invitePage());
 write("404.html", errorPage("notFound"));
 write("500.html", errorPage("serverError"));
 

@@ -95,6 +95,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="saattarih" android:host="countdown" />
+                <data android:scheme="saattarih" android:host="davet" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -102,6 +103,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https" android:host="time.bumba.tr" android:pathPrefix="/geri-sayim/" />
                 <data android:scheme="https" android:host="time.bumba.tr" android:pathPattern="/.*/countdown/.*" />
+                <data android:scheme="https" android:host="time.bumba.tr" android:pathPrefix="/davet/" />
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"

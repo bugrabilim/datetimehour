@@ -31,7 +31,8 @@ const pagesInfo = [];
 for (const f of htmlFiles) {
   const h = fs.readFileSync(f, "utf8");
   const name = rel(f);
-  const err = name === "/404.html" || name === "/500.html";
+  // Hata sayfaları ve halka daveti (/davet/, üyelik aşama 2c): bütün diller bir arada, noindex
+  const err = name === "/404.html" || name === "/500.html" || name === "/davet/index.html";
   const noidx = /<meta name="robots" content="noindex/.test(h);
   const embed = new RegExp(`^/embed/(${LG})/index\\.html$`).test(name);
   ids[f] = new Set([...h.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
@@ -193,6 +194,7 @@ for (const f of htmlFiles) {
   const h = fs.readFileSync(f, "utf8");
   for (const m of h.matchAll(/(?:href|src)="([^"]+)"/g)) {
     let u = m[1];
+    if (u.startsWith("saattarih:")) continue; // uygulamanın kendi adresi (davet sayfası)
     if (/^(https?:|mailto:|data:|webcal:)/.test(u)) {
       if (u.startsWith("webcal:")) u = "https:" + u.slice(7); // takvim aboneliği (.ics) aynı dosyaya gider
       if (u.startsWith(ORIGIN)) u = u.slice(ORIGIN.length) || "/"; else continue;
@@ -833,6 +835,13 @@ for (const l of LANGS) {
     check(/data-al-snooze/.test(ah) && /data-al-vol/.test(ah) && /data-al-try/.test(ah) && /data-al-ring/.test(ah) && /data-al-history/.test(ah) && /data-al-recent/.test(ah), "alarm: erteleme süresi, ses düzeyi, şimdi dene, halka, geçmiş, son saatler");
   }
   check(/S\.pct\(/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8")) && !/\+ "%"/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8").replace(/toFixed\(1\) \+ "%"/g, "")), "hava sayfasında yüzde dile göre biçimlenmeli");
+}
+
+// Halka daveti (üyelik aşama 2c): /davet/#KOD, 19 dilin bölümü, uygulama adresi, sitemap'te yok
+{
+  const inv = fs.readFileSync(path.join(DIST, "davet", "index.html"), "utf8");
+  check((inv.match(/data-invite="/g) || []).length === LANGS.length && /saattarih:\/\/davet/.test(inv) && /invite\.js/.test(inv) && /noindex/.test(inv), "davet sayfası yanlış");
+  check(!fs.readFileSync(path.join(DIST, "sitemap.xml"), "utf8").includes("/davet/"), "sitemap: davet sayfası olmamalı");
 }
 
 if (fails.length) {

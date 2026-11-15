@@ -584,6 +584,10 @@ html.has-cookie-bar body { padding-bottom: 5.5rem; }
 .center-page { text-align: center; padding-block: 4rem; }
 .center-page .lead { margin-inline: auto; }
 .center-page + .center-page { border-top: 1px solid var(--border); }
+/* Halka daveti (/davet/): yalnız tarayıcının dilindeki bölüm görünür (invite.js) */
+.center-page[hidden] { display: none; }
+.invite-label { color: var(--muted); margin-block-end: 0; }
+.invite-code { font-size: 2rem; font-weight: 600; letter-spacing: 0.2em; font-variant-numeric: tabular-nums; margin-block-start: 0.25rem; }
 
 @media print { .site-header, .site-footer, dialog, .controls, .cookie-bar { display: none !important; } }
 

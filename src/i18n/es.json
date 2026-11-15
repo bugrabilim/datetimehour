@@ -3530,5 +3530,15 @@
         ]
       }
     ]
+  },
+  "invite": {
+    "title": "Invitación a un círculo | Saat Tarih",
+    "h1": "Le han invitado a un círculo",
+    "lead": "Le han invitado a un círculo compartido de dhikr o de jatm del Corán en la aplicación Saat Tarih.",
+    "code": "Código de invitación",
+    "open": "Abrir en la aplicación",
+    "how": "Si la aplicación no se abre, vaya a Todo › Círculos › Unirse con un código en Saat Tarih e introduzca este código. Los círculos necesitan una cuenta gratuita.",
+    "get": "Descargar en el App Store",
+    "none": "Este enlace no tiene código de invitación. Pida a quien le invitó que lo envíe de nuevo."
   }
 }

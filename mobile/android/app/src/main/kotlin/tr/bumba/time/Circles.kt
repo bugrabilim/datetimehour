@@ -64,6 +64,19 @@ object Circles {
     /** Davet bağlantısıyla gelen kod (aşama 2c): Halkalar › Kodla katıl bununla açılır */
     var pendingCode by mutableStateOf<String?>(null)
 
+    /** Davet kodu biçimi: sunucudaki gibi 8 harf/rakam (karışan harfler yok) */
+    fun cleanCode(s: String?): String? = s?.uppercase()?.filter { it.isLetterOrDigit() }?.takeIf { it.length == 8 }
+
+    /** https://time.bumba.tr/davet/#KOD ya da saattarih://davet?kod=KOD (aşama 2c) */
+    fun handle(intent: Intent?): Boolean {
+        val uri = intent?.data ?: return false
+        val site = uri.host == "time.bumba.tr" && uri.path.orEmpty().startsWith("/davet")
+        val app = uri.scheme == "saattarih" && uri.host == "davet"
+        if (!site && !app) return false
+        pendingCode = cleanCode(uri.getQueryParameter("kod") ?: uri.fragment) ?: return false
+        return true
+    }
+
     data class Member(val id: Long, val name: String?, val blocked: Boolean, val you: Boolean, val owner: Boolean, val count: Long)
     data class Juz(val n: Int, val state: String, val member: Long?, val you: Boolean, val gone: String?)
     data class Circle(
@@ -175,6 +188,8 @@ fun CirclesScreen(onBack: () -> Unit, onAccount: () -> Unit) {
     var sheet by remember { mutableStateOf<String?>(null) } // "create" | "join"
     var reload by remember { mutableIntStateOf(0) }
     var askWithdraw by remember { mutableStateOf(false) }
+    // Davet bağlantısı ekran açıkken gelirse de katılma sayfası açılır
+    LaunchedEffect(Circles.pendingCode, Account.signedIn) { if (Circles.pendingCode != null && Account.signedIn) sheet = "join" }
     LaunchedEffect(reload, Account.signedIn) {
         if (!Account.signedIn) return@LaunchedEffect
         val r = Circles.list()

@@ -11,6 +11,14 @@ enum Circles {
     /// Davet bağlantısıyla gelen kod (aşama 2c): Halkalar › Kodla katıl bununla açılır
     static var pendingCode: String?
 
+    /// Davet kodu: sunucudaki gibi 8 harf/rakam. saattarih://davet?kod=KOD ya da …/davet/#KOD
+    static func code(from url: URL) -> String? {
+        let c = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        let raw = c?.queryItems?.first { $0.name == "kod" }?.value ?? c?.fragment ?? ""
+        let s = String(raw.uppercased().filter { $0.isLetter || $0.isNumber })
+        return s.count == 8 ? s : nil
+    }
+
     struct Member: Identifiable {
         let id: Int64
         let name: String?
@@ -155,7 +163,7 @@ struct CirclesView: View {
     @State private var signedIn = Account.shared.signedIn
     @State private var askWithdraw = false
     @State private var opened: String?
-    @State private var joining = Circles.pendingCode != nil
+    @State private var joining = Circles.pendingCode != nil && Account.shared.signedIn
 
     var body: some View {
         ScrollView {
