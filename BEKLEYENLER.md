@@ -19,7 +19,7 @@ Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"
 - App Store 1.1 ve ilk Play gönderiminden önce standart "Mobil yayın" kontrol listesini sahibe raporla. (14 Kasım 2026)
 
 ## Başkasında
-- Ana altyapı oturumu: yönetim paneli uçları (`/api/bumba-panel/ozet|uyeler|uye`) hazır; merkezdeki kayıt ve uçtan uca deneme (sahibin 15 Kasım 2026 isteğiyle merkeze iletildi, yanıt bekleniyor). (14 Kasım 2026)
+- Ana altyapı oturumu: yönetim paneli denemesi 15 Kasım 2026'da bitti, uyumsuzluk yok (sürüm tarihi eklendi, hesap sunucusunun sonraki yayınıyla görünür). Sırada merkezle uçtan uca üyelik denemesi (bağlama, güncelleme) ve `etkin: true`; bumbagroup.com'un sonraki yayınıyla (sahibin onayıyla). (15 Kasım 2026)
 - MEB 2027-2028 çalışma takvimi: yayımlanınca `src/data/school.json`. (6 Kasım 2026)
 - Fitre 2027: Diyanet Ocak 2027'de açıklayınca `src/data/fitre.json`; BAZNAS 2027 kararları (zekât fitrah, fidye). Bakılacak tarih: Ocak 2027. (6 Kasım 2026)
 - Diyanet 2027 takvimi ve vakit tablosu: yayımlanınca `holidays.json` ve `node scripts/fetch-hijri.mjs`. (8 Kasım 2026)
