@@ -25,6 +25,7 @@ import { panelRoutes } from "./panel.mjs";
 import { createConsent } from "./consent.mjs";
 import { validateFeedback, feedbackMail } from "./feedback.mjs";
 import { createCircles } from "./circles.mjs";
+import { createGroups } from "./groups.mjs";
 
 const SEC_HEADERS = {
   "Strict-Transport-Security": "max-age=31536000",
@@ -83,7 +84,8 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
   const accounts = createAccounts({ pool, auth });
   const records = createRecords(pool);
   const circles = createCircles({ pool, mailer, adminEmail: cfg.adminEmail });
-  accounts.hooks.beforeGone = (userId) => circles.onUserGone(userId);
+  const groups = createGroups({ pool, mailer, adminEmail: cfg.adminEmail });
+  accounts.hooks.beforeGone = async (userId) => { await circles.onUserGone(userId); await groups.onUserGone(userId); };
   const limit = createLimiter(pool, cfg.rateLimit);
   const linked = linkedRoutes({ cfg, auth, accounts, mailer, json, readJson });
   const web = webRoutes({ cfg, closed: false, accounts, center, consent });
@@ -315,6 +317,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
         kayitlar: await records.list(user.id),
         rozetler: await records.badges(user.id),
         halkalar: await circles.exportOf(user.id),
+        ...(await groups.exportOf(user.id)),
         olusturma: new Date().toISOString(),
       };
       return json(res, 200, data, { "Content-Disposition": 'attachment; filename="saat-tarih-hesap.json"' });
@@ -340,6 +343,49 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
         if (e.hata) return json(res, e.status, { hata: e.hata });
         throw e;
       }
+    }
+    // Ortak gruplar ve anonim hava bildirimi (aşama 2d; groups.mjs). Kişi başına dakikada 120 istek.
+    if (cfg.groups && (p === "/v1/gruplar" || p.startsWith("/v1/grup") || p === "/v1/hava-bildirim")) {
+      if (!(await limit(`grup:${user.id}`, 60, 120))) return json(res, 429, { hata: "sinir" });
+      try {
+        return await groupApi(user, req, res, p, m, url);
+      } catch (e) {
+        if (e.hata) return json(res, e.status, { hata: e.hata });
+        throw e;
+      }
+    }
+    return json(res, 404, { hata: "yok" });
+  }
+
+  async function groupApi(user, req, res, p, m, url) {
+    const lang = normLang(user.lang);
+    const nc = { "Cache-Control": "private, no-store" };
+    if (p === "/v1/gruplar" && m === "GET") return json(res, 200, { gruplar: await groups.list(user) }, nc);
+    if (p === "/v1/hava-bildirim" && m === "GET") return json(res, 200, await groups.weatherNear(url.searchParams.get("enlem"), url.searchParams.get("boylam")), nc);
+    const b = m === "POST" ? await readJson(req) : {};
+    if (p === "/v1/hava-bildirim" && m === "POST") return json(res, 200, await groups.weatherReport(user, b));
+    if (p === "/v1/grup" && m === "POST") return json(res, 200, await groups.detail(user, await groups.create(user, b), lang));
+    if (p === "/v1/grup/onizle" && m === "POST") return json(res, 200, await groups.preview(b.kod));
+    if (p === "/v1/grup/katil" && m === "POST") return json(res, 200, await groups.detail(user, await groups.join(user, b), lang));
+    const mm = /^\/v1\/grup\/([A-Za-z0-9_-]{6,20})(?:\/([a-z-]+))?$/.exec(p);
+    if (!mm) return json(res, 404, { hata: "yok" });
+    const [, id, op] = mm;
+    if (!op && m === "GET") return json(res, 200, await groups.detail(user, id, lang), nc);
+    if (m !== "POST") return json(res, 404, { hata: "yok" });
+    const after = async () => json(res, 200, await groups.detail(user, id, lang));
+    switch (op) {
+      case "yerim": await groups.setPlace(user, id, b); return after();
+      case "oy": await groups.vote(user, id, b); return after();
+      case "odak": await groups.focus(user, id, b.islem, b); return after();
+      case "izledim": await groups.watched(user, id, b); return after();
+      case "alarm": await groups.alarmRequest(user, id, b); return after();
+      case "alarm-yanit": await groups.alarmAnswer(user, id, b); return after();
+      case "ayril": await groups.leave(user, id); return json(res, 200, { tamam: true });
+      case "cikar": await groups.kick(user, id, b.uye); return after();
+      case "duzenle": await groups.edit(user, id, b); return after();
+      case "sil": await groups.remove(user, id); return json(res, 200, { tamam: true });
+      case "bildir": return json(res, 200, await groups.report(user, id, b));
+      case "engelle": await groups.block(user, id, b.uye, b.kaldir !== true); return after();
     }
     return json(res, 404, { hata: "yok" });
   }
@@ -396,6 +442,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       if (!bearerOk(req.headers.authorization, cfg.cronSecret)) return json(res, 401, { hata: "yetki" });
       const out = await runCleanup({ pool, center, adminEmail: cfg.adminEmail });
       out.halkalar = await circles.cleanup();
+      out.gruplar = await groups.cleanup();
       return json(res, 200, out);
     }
     if (p === "/gorev/kutlama" && req.method === "POST") {
@@ -442,7 +489,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     consent.stop();
     await pool.end();
   }
-  return { server, auth, pool, mailer, center, metrics, accounts, records, consent, circles, close };
+  return { server, auth, pool, mailer, center, metrics, accounts, records, consent, circles, groups, close };
 }
 
 /* Doğrudan çalıştırma */

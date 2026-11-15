@@ -48,6 +48,8 @@ export function loadConfig(env = process.env) {
     rateLimit: env.RATE_LIMIT !== "off",
     // Halkalar (aşama 2) açık rıza metni ve uygulama ekranları yayına hazır olana kadar kapalı: HALKALAR=acik
     circles: env.HALKALAR === "acik",
+    // Ortak gruplar ve anonim hava bildirimi (aşama 2d): yayına hazır olana kadar kapalı, GRUPLAR=acik
+    groups: env.GRUPLAR === "acik",
   };
   const missing = REQUIRED.filter((k) => {
     if (k === "RESEND_API_KEY") return mailDriver === "resend" ? !cfg.resendKey : false;
