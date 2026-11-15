@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       islem:
-        description: "durum: yalnız oku · yeniden-gonder: reddedilen öğeyi çözüldü işaretle ve yeniden incelemeye yolla"
+        description: "durum: yalnız oku · yeniden-gonder: reddedilen öğeyi çözüldü işaretle ve yeniden incelemeye yolla · urun-sayfalari: özel ürün sayfalarını oku · urun-sayfalari-gonder: taslak sayfaları incelemeye gönder (sahibin onayıyla)"
         type: choice
-        options: [durum, yeniden-gonder]
+        options: [durum, yeniden-gonder, urun-sayfalari, urun-sayfalari-gonder]
         default: durum
 
 permissions:
@@ -27,4 +27,9 @@ jobs:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
-        run: python3 mobile/ios/scripts/asc_review.py "${{ inputs.islem }}"
+        run: |
+          case "${{ inputs.islem }}" in
+            urun-sayfalari) python3 mobile/ios/scripts/asc_cpp.py durum ;;
+            urun-sayfalari-gonder) python3 mobile/ios/scripts/asc_cpp.py gonder ;;
+            *) python3 mobile/ios/scripts/asc_review.py "${{ inputs.islem }}" ;;
+          esac
