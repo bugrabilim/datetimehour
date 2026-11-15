@@ -105,6 +105,7 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "duas" -> DuasScreen { onRoute(null) }
         "zikir" -> ZikirScreen { onRoute(null) }
         "circles" -> CirclesScreen({ onRoute(null) }) { onRoute("account") }
+        "groups" -> GroupsScreen({ onRoute(null) }) { onRoute("account") }
         "track" -> TrackerScreen { onRoute(null) }
         "zakat" -> ZakatScreen { onRoute(null) }
         "reldays" -> ReligiousDaysScreen { onRoute(null) }

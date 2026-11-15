@@ -697,6 +697,49 @@ class MoreScreensTest {
         Account.resetForTest()
     }
 
+    /** Gruplar (üyelik aşama 2d): sahte sunucuyla liste ve altı türün ayrıntısı, kurma, hava bildirimi kartı */
+    @Test fun groups() {
+        val user = org.json.JSONObject().put("id", "u1").put("email", "ayse@example.com").put("name", "").put("lang", "tr")
+        val now = System.currentTimeMillis()
+        val base = """"kod":"K7MPQ2RT","sahip":true,"adGizli":false,"enCok":30"""
+        fun ms(extra: List<String>) = "[" + listOf("Ayşe", "Üye 10459", "Mert").mapIndexed { i, n -> """{"id":${i + 1},"ad":"$n","engelli":false,"sen":${i == 0},"sahip":${i == 0}${extra.getOrElse(i) { "" }}}""" }.joinToString(",") + "]"
+        val cd = """{"id":"g1abcd","tur":"geri-sayim","ad":"Ailece tatil",$base,"hedef":${now + 12 * 86_400_000L + 3_600_000},"yillik":false,"simge":"🏖️","uyeler":${ms(emptyList())}}"""
+        val world = """{"id":"g2abcd","tur":"dunya","ad":"Ekibim",$base,"uyeler":${ms(listOf(""","sehir":"İstanbul","tz":"Europe/Istanbul","mesai":[9,18]""", ""","sehir":"Tokyo","tz":"Asia/Tokyo","mesai":[9,18]""", ""","sehir":"New York","tz":"America/New_York","mesai":null"""))}}"""
+        val s0 = (now / 60_000 / 60 + 30) * 60
+        val poll = """{"id":"g3abcd","tur":"oylama","ad":"Proje toplantısı",$base,"sure":45,"saatler":[$s0,${s0 + 60},${s0 + 1440}],"kapali":false,"sonuc":[{"uygun":2,"olabilir":1},{"uygun":1,"olabilir":0},{"uygun":0,"olabilir":2}],"enIyi":0,"uyeler":${ms(listOf(""","oy":[2,0,1]""", ""","oy":[2,2,1]""", ""","oy":[1,0,0]"""))}}"""
+        val focus = """{"id":"g4abcd","tur":"odak","ad":"Ders çalışma",$base,"oturum":{"bas":${now - 600_000},"dk":25},"uyeler":${ms(listOf(""","katildi":true,"bitti":false""", ""","katildi":true,"bitti":true""", ""","katildi":false,"bitti":false"""))}}"""
+        val alarm = """{"id":"g5abcd","tur":"alarm","ad":"Ev",$base,"istekler":[{"id":7,"gelen":true,"kimden":2,"kime":1,"saat":"06:30","gunler":31,"etiket":"Okul","durum":"bekliyor","zaman":"2026-11-15T08:00:00Z"},{"id":8,"gelen":false,"kimden":1,"kime":3,"saat":"07:15","gunler":0,"etiket":null,"durum":"kuruldu","zaman":"2026-11-15T08:00:00Z"}],"uyeler":${ms(emptyList())}}"""
+        val watch = """{"id":"g6abcd","tur":"gozlem","ad":"Gökyüzü",$base,"sayilar":{},"benim":[],"uyeler":${ms(emptyList())}}"""
+        val list = """{"gruplar":[{"id":"g1abcd","tur":"geri-sayim","ad":"Ailece tatil","sahip":true,"uyeSayisi":3,"hedef":${now + 12 * 86_400_000L},"yillik":false,"simge":"🏖️"},{"id":"g2abcd","tur":"dunya","ad":"Ekibim","sahip":false,"uyeSayisi":3},{"id":"g3abcd","tur":"oylama","ad":"Proje toplantısı","sahip":true,"uyeSayisi":3},{"id":"g4abcd","tur":"odak","ad":"Ders çalışma","sahip":false,"uyeSayisi":3,"oturum":{"bas":${now - 600_000},"dk":25}},{"id":"g5abcd","tur":"alarm","ad":"Ev","sahip":true,"uyeSayisi":3,"bekleyen":1}]}"""
+        Account.transport = { _, p, _, _ ->
+            when {
+                p == "/v1/gruplar" -> Account.Resp(200, list, null)
+                p == "/v1/grup/g1abcd" -> Account.Resp(200, cd, null)
+                p == "/v1/grup/g2abcd" -> Account.Resp(200, world, null)
+                p == "/v1/grup/g3abcd" -> Account.Resp(200, poll, null)
+                p == "/v1/grup/g4abcd" -> Account.Resp(200, focus, null)
+                p == "/v1/grup/g5abcd" -> Account.Resp(200, alarm, null)
+                p == "/v1/grup/g6abcd" -> Account.Resp(200, watch, null)
+                p.startsWith("/v1/hava-bildirim") -> Account.Resp(200, """{"sayilar":{"yagmur":4,"bulutlu":1},"dakika":60}""", null)
+                p == "/v1/kayitlar" -> Account.Resp(200, """{"kayitlar":{},"simdi":1}""", null)
+                p == "/v1/rozetler" -> Account.Resp(200, """{"rozetler":[]}""", null)
+                else -> Account.Resp(200, org.json.JSONObject().put("token", "t").put("user", user).toString(), null)
+            }
+        }
+        kotlinx.coroutines.runBlocking { Account.signIn("ayse@example.com", "guclu-sifre-1") }
+        shot("tr-gruplar") { GroupsScreen({}) {} }
+        shot("tr-grup-geri-sayim") { GroupDetail("g1abcd") {} }
+        shot("tr-grup-dunya") { GroupDetail("g2abcd") {} }
+        shot("tr-grup-oylama") { GroupDetail("g3abcd") {} }
+        shot("tr-grup-odak") { GroupDetail("g4abcd") {} }
+        shot("tr-grup-alarm") { GroupDetail("g5abcd") {} }
+        shot("tr-grup-gozlem") { GroupDetail("g6abcd") {} }
+        shot("en-grup-oylama", qualifiers = "en", dark = true) { GroupDetail("g3abcd") {} }
+        shot("tr-grup-kur") { GroupCreate({}) {} }
+        shot("tr-hava-bildirimi") { androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.padding(16.dp)) { WeatherReportCard(41.0, 29.0) } }
+        Account.resetForTest()
+    }
+
     /** Halkalar (üyelik aşama 2b): sahte sunucuyla liste, zikir ve hatim ayrıntısı, kurma (açık rıza) */
     @Test fun circles() {
         val user = org.json.JSONObject().put("id", "u1").put("email", "ayse@example.com").put("name", "").put("lang", "tr")

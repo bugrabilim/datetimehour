@@ -164,7 +164,7 @@ object Nav {
         // Paylaşılan geri sayım bağlantısı (2. analiz #138): listeye eklenir, geri sayımlar açılır
         if (CountdownImport.handle(intent)) { overlay = null; tool("timer"); return }
         // Halka daveti (üyelik aşama 2c): Halkalar › Kodla katıl kodla açılır
-        if (Circles.handle(intent)) { overlay = null; tool("circles"); return }
+        if (Circles.handle(intent)) { overlay = null; tool(if (Groups.pendingCode != null) "groups" else "circles"); return }
         if (intent?.getBooleanExtra("night", false) == true) Prefs.saveNightMode("on")
         when (intent?.getStringExtra("shortcut")) {
             "fullscreen" -> { overlay = null; tab = Tab.CLOCK; openFullscreen = true }

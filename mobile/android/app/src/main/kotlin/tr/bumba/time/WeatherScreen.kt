@@ -116,6 +116,8 @@ fun WeatherScreen() {
                 // Meteogram ve model karşılaştırma (2. analiz #114)
                 MeteogramCard(d)
                 ModelsCard(place)
+                // Anonim hava bildirimi (üyelik aşama 2d; girişliyken, sunucuda açıksa)
+                WeatherReportCard(place.lat, place.lon)
             }
             failed -> {
                 Text(L("weather.error"), color = Theme.c.muted, textAlign = TextAlign.Center)

@@ -73,7 +73,11 @@ object Circles {
         val site = uri.host == "time.bumba.tr" && uri.path.orEmpty().startsWith("/davet")
         val app = uri.scheme == "saattarih" && uri.host == "davet"
         if (!site && !app) return false
-        pendingCode = cleanCode(uri.getQueryParameter("kod") ?: uri.fragment) ?: return false
+        // Grup daveti "g:" önekiyle (…/davet/#g:KOD, saattarih://davet?kod=KOD&tur=grup)
+        val raw = uri.getQueryParameter("kod") ?: uri.fragment
+        val group = uri.getQueryParameter("tur") == "grup" || raw?.startsWith("g:") == true
+        val code = cleanCode(raw?.removePrefix("g:")) ?: return false
+        if (group) Groups.pendingCode = code else pendingCode = code
         return true
     }
 
