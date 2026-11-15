@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">नीचे की पट्टी आपके जवाबों से तैयार हो गई। घड़ी हमेशा पहले; सारे टूल \"सब\" में हैं।</string>
     <string name="onboard_summary_on">चालू हुए हिस्से</string>
     <string name="onboard_summary_none">सिर्फ़ घड़ी और टूल चालू हैं। जब चाहें सेटिंग्स › सुविधाएँ से हिस्से जोड़ें।</string>
+    <string name="onboard_continueTour">परिचय जारी रखें</string>
     <string name="onboard_trust_title">आपका डेटा आपके पास ही रहता है</string>
     <string name="onboard_trust_text">न खाता, न विज्ञापन, न ट्रैकिंग। आपका स्थान, निजी जानकारी, कैलेंडर और सेहत का डेटा हम तक नहीं आता और हमारे किसी सर्वर पर नहीं रखा जाता। अनुमतियाँ सिर्फ़ आपके फ़ोन के अंदर काम करती हैं।</string>
     <string name="onboard_trust_services">मौसम और पास की मस्जिदों के लिए सिर्फ़ अनुमानित स्थान (लगभग 1 किमी) उस सेवा को जाता है, आप कौन हैं यह कभी नहीं।</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">सिर्फ़ फ़ोकस ब्लॉक के लिए, चुना हुआ ऐप खुलने पर चेताने को। यह जानकारी फ़ोन से बाहर नहीं जाती।</string>
     <string name="perms_dnd_title">\"परेशान न करें\" तक पहुँच</string>
     <string name="perms_dnd_why">सिर्फ़ नमाज़ का समय होने पर फ़ोन साइलेंट करने के लिए। न दें तो अपने-आप साइलेंट होना काम नहीं करेगा।</string>
-    <string name="onboard_more_title">क्या आप जानना चाहेंगे कि और क्या-क्या है?</string>
-    <string name="onboard_more_text">हम बाक़ी सुविधाएँ कुछ छोटे पन्नों में एक-एक करके दिखाएँगे। नहीं चाहें तो सब कुछ \"सब\" में आपका इंतज़ार कर रहा है।</string>
     <string name="onboard_tour_alarm_title">अलार्म और नींद</string>
     <string name="onboard_tour_alarm_text">साइलेंट मोड में भी बजने वाला अलार्म; बंद करने के लिए गणित, फ़ोन हिलाना या कोड स्कैन करना जैसे काम। नींद की योजना, नींद की आवाज़ें और स्मार्ट अलार्म।</string>
     <string name="onboard_tour_prayer_title">नमाज़ के समय और इबादत</string>

@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">La barre est réglée selon vos réponses. L\'horloge vient toujours en premier ; tous les outils sont dans Tout.</string>
     <string name="onboard_summary_on">Activé</string>
     <string name="onboard_summary_none">Seuls l\'horloge et les outils sont activés. Ajoutez des sections quand vous voulez dans Réglages › Fonctions.</string>
+    <string name="onboard_continueTour">Continuer la visite</string>
     <string name="onboard_trust_title">Vos données restent chez vous</string>
     <string name="onboard_trust_text">Pas de compte, pas de pub, pas de pistage. Votre position, vos données personnelles, votre calendrier et vos données de santé ne nous parviennent jamais et ne sont stockés sur aucun de nos serveurs. Les autorisations ne servent qu\'à l\'intérieur de votre téléphone.</string>
     <string name="onboard_trust_services">Pour la météo et les mosquées proches, seule une position approximative (environ 1 km) part vers le service concerné, jamais votre identité.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">Uniquement pour le blocage de concentration, afin de vous prévenir quand une appli choisie s\'ouvre. Cela ne quitte jamais votre téléphone.</string>
     <string name="perms_dnd_title">Accès à Ne pas déranger</string>
     <string name="perms_dnd_why">Uniquement pour couper le son du téléphone à l\'heure de la prière. Sinon, la mise en silence automatique ne marche pas.</string>
-    <string name="onboard_more_title">Voulez-vous découvrir ce qu\'il y a d\'autre ?</string>
-    <string name="onboard_more_text">Nous vous présentons les autres fonctions une à une sur quelques pages courtes. Sinon, tout vous attend dans « Tout ».</string>
     <string name="onboard_tour_alarm_title">Réveil et sommeil</string>
     <string name="onboard_tour_alarm_text">Un réveil qui sonne même en mode silencieux, avec des tâches pour l\'arrêter : calcul, secousses ou scan d\'un code. Plan de sommeil, sons pour dormir et réveil intelligent.</string>
     <string name="onboard_tour_prayer_title">Prières et culte</string>

@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.border
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,16 +24,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.NightsStay
 import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.TableChart
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -104,32 +99,6 @@ fun PrayerScreen() {
                     L("notify.heading"), tint = Theme.c.accent,
                 )
             }
-            // Seyrek kullanılanlar "…" menüsünde (2. analiz #199): paylaş, aylık çizelge, hesap yöntemi, imsakiye
-            Box {
-                var menu by remember { mutableStateOf(false) }
-                IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, L("common.more"), tint = Theme.c.accent) }
-                androidx.compose.material3.DropdownMenu(menu, { menu = false }) {
-                    androidx.compose.material3.DropdownMenuItem(
-                        text = { Text(L("share.prayer")) }, leadingIcon = { Icon(Icons.Filled.Share, null) },
-                        onClick = {
-                            menu = false
-                            Share.image(shareCtx, ShareCards.prayer(place, java.time.Instant.now()), "vakitler-${place.today(now)}.png", L("share.prayer"))
-                        },
-                    )
-                    androidx.compose.material3.DropdownMenuItem(
-                        text = { Text(L("prayer.monthly")) }, leadingIcon = { Icon(Icons.Filled.TableChart, null) },
-                        onClick = { menu = false; page = "monthly" },
-                    )
-                    androidx.compose.material3.DropdownMenuItem(
-                        text = { Text(L("prayer.method.app") + if (PrayerMethod.id(place) != "diyanet" || PrayerMethod.hanafi(place)) " · " + PrayerMethod.name(PrayerMethod.id(place)) else "") },
-                        leadingIcon = { Icon(Icons.Filled.Tune, null) }, onClick = { menu = false; page = "method" },
-                    )
-                    if (ramadan != null) androidx.compose.material3.DropdownMenuItem(
-                        text = { Text(T("imsakiye.title", ramadan.start.year)) }, leadingIcon = { Icon(Icons.Filled.NightsStay, null) },
-                        onClick = { menu = false; page = "imsakiye" },
-                    )
-                }
-            }
         })
         Column(
             Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 16.dp),
@@ -196,7 +165,30 @@ fun PrayerScreen() {
                 WorshipTile("beads", L("zikir.title"), Modifier.weight(1f)) { page = "zikir" }
                 WorshipTile("checklist", L("track.title"), Modifier.weight(1f)) { page = "track" }
             }
+            // Eski "…" menüsü (sahibin isteği, 15 Kasım 2026: üstteki üç nokta kalktı, içindekiler İbadet'in altında)
+            AppCard {
+                ToolRow("share", L("share.prayer")) {
+                    Share.image(shareCtx, ShareCards.prayer(place, java.time.Instant.now()), "vakitler-${place.today(now)}.png", L("share.prayer"))
+                }
+                ToolRow("calendar", L("prayer.monthly")) { page = "monthly" }
+                ToolRow("sliders", L("prayer.method.app"),
+                    if (PrayerMethod.id(place) != "diyanet" || PrayerMethod.hanafi(place)) PrayerMethod.name(PrayerMethod.id(place)) else null) { page = "method" }
+                if (ramadan != null) ToolRow("night", T("imsakiye.title", ramadan.start.year)) { page = "imsakiye" }
+            }
         }
+    }
+}
+
+/** İbadet bölümünün altındaki satır: küçük simge, ad, (varsa) değer ve ok */
+@Composable
+private fun ToolRow(icon: String, title: String, value: String? = null, onClick: () -> Unit) {
+    Row(Modifier.fillMaxWidth().heightIn(min = 46.dp).clip(RoundedCornerShape(10.dp)).clickable(onClick = onClick),
+        verticalAlignment = Alignment.CenterVertically) {
+        DuoChip(icon, Theme.c.gold, box = 32.dp, glyph = 19.dp)
+        Spacer(Modifier.width(12.dp))
+        Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+        if (value != null) Text(value, color = Theme.c.muted, fontSize = 13.sp, maxLines = 1)
+        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
     }
 }
 

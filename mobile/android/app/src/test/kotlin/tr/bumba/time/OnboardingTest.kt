@@ -116,7 +116,7 @@ class OnboardingTest {
             assertEquals(l, 4, Onboarding.QUESTIONS.size)
             assertEquals(l, "q:weather", Onboarding.PAGES[2])
             assertEquals(l, 6, Onboarding.SUMMARY)
-            assertEquals(l, 16, Onboarding.PAGES.size)
+            assertEquals(l, 15, Onboarding.PAGES.size)
         }
     }
 

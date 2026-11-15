@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">Bilah bawah disusun dari jawaban Anda. Jam selalu di depan; semua alat ada di Semua.</string>
     <string name="onboard_summary_on">Yang dinyalakan</string>
     <string name="onboard_summary_none">Hanya jam dan alat yang aktif. Tambahkan bagian kapan saja di Pengaturan › Fitur.</string>
+    <string name="onboard_continueTour">Lanjutkan tur</string>
     <string name="onboard_trust_title">Data Anda tetap di tangan Anda</string>
     <string name="onboard_trust_text">Tanpa akun, tanpa iklan, tanpa pelacakan. Lokasi, data pribadi, kalender, dan data kesehatan Anda tidak pernah sampai ke kami dan tidak disimpan di server kami. Izin hanya bekerja di dalam ponsel Anda.</string>
     <string name="onboard_trust_services">Untuk cuaca dan masjid terdekat, hanya perkiraan lokasi (sekitar 1 km) yang dikirim ke layanan terkait; identitas Anda tidak pernah dikirim.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">Hanya untuk blokir saat fokus, yaitu memberi peringatan ketika aplikasi pilihan Anda dibuka. Informasi ini tidak keluar dari ponsel.</string>
     <string name="perms_dnd_title">Akses Jangan Ganggu</string>
     <string name="perms_dnd_why">Hanya untuk menyenyapkan ponsel saat waktu salat tiba. Jika tidak diizinkan, fitur senyap otomatis tidak berfungsi.</string>
-    <string name="onboard_more_title">Ingin tahu fitur apa lagi yang ada?</string>
-    <string name="onboard_more_text">Kami tunjukkan fitur lainnya satu per satu dalam beberapa halaman singkat. Jika tidak, semuanya menunggu di Semua.</string>
     <string name="onboard_tour_alarm_title">Alarm dan tidur</string>
     <string name="onboard_tour_alarm_text">Alarm yang tetap berbunyi dalam mode senyap, dengan tugas untuk mematikannya seperti hitungan, mengguncang, atau memindai kode. Rencana tidur, suara tidur, dan alarm pintar.</string>
     <string name="onboard_tour_prayer_title">Jadwal salat dan ibadah</string>

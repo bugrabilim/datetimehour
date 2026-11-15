@@ -227,7 +227,13 @@ private fun minutesLabel(m: Int): String {
     return listOf(Fmt.time(at), Fmt.ampm(at)).filter { it.isNotEmpty() }.joinToString(" ")
 }
 
-/** İlk açılışta bildirim izni bir kez sorulur (Android 13+; bildirimler varsayılan açık); sonra yalnız Ayarlar'dan */
+/** Bu süreçte açılış sayıldı mı (etkinlik yeniden kurulunca, ör. döndürmede, yeniden sayılmaz) */
+private var launchCounted = false
+
+/**
+ * Bildirim izni bir kez sorulur (Android 13+; bildirimler varsayılan açık), sonra yalnız Ayarlar'dan. Kurulumda Vakitler'e
+ * "Evet" denince orada hemen sorulur; denmediyse uygulamanın ikinci açılışında (sahibin isteği, 15 Kasım 2026).
+ */
 @Composable
 fun AskNotificationsOnce() {
     if (Build.VERSION.SDK_INT < 33 || LocalActivityResultRegistryOwner.current == null) return
@@ -237,7 +243,11 @@ fun AskNotificationsOnce() {
     var primer by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) {
         val sp = Prefs.store
-        if (sp.getBoolean("notify.asked", false)) return@LaunchedEffect
+        if (!launchCounted) {
+            launchCounted = true
+            sp.edit().putInt("notify.launches", sp.getInt("notify.launches", 0) + 1).apply()
+        }
+        if (sp.getBoolean("notify.asked", false) || Onboarding.pending || sp.getInt("notify.launches", 0) < 2) return@LaunchedEffect
         sp.edit().putBoolean("notify.asked", true).apply()
         if (!PrayerNotifier.notificationsAllowed(context)) primer = true
     }

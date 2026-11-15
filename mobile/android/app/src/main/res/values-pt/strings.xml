@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">A barra inferior foi montada com base nas suas respostas. O relógio vem sempre primeiro; todas as ferramentas estão em Tudo.</string>
     <string name="onboard_summary_on">Seções ativas</string>
     <string name="onboard_summary_none">Só o relógio e as ferramentas estão ativos. Adicione seções quando quiser em Ajustes › Recursos.</string>
+    <string name="onboard_continueTour">Continuar o tour</string>
     <string name="onboard_trust_title">Seus dados ficam com você</string>
     <string name="onboard_trust_text">Sem conta, sem anúncios, sem rastreamento. Sua localização, seus dados pessoais, sua agenda e seus dados de saúde nunca chegam até nós nem ficam em nenhum servidor nosso. As permissões só funcionam dentro do seu celular.</string>
     <string name="onboard_trust_services">Para o clima e mesquitas próximas, só uma localização aproximada (cerca de 1 km) vai para o serviço, nunca quem você é.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">Só para o bloqueio de foco, para avisar quando um app escolhido abrir. Isso nunca sai do celular.</string>
     <string name="perms_dnd_title">Acesso ao Não perturbe</string>
     <string name="perms_dnd_why">Só para silenciar o celular na hora da oração. Se não, o silêncio automático não funciona.</string>
-    <string name="onboard_more_title">Quer conhecer o que mais o app oferece?</string>
-    <string name="onboard_more_text">Vamos mostrar os outros recursos um a um, em poucas páginas curtas. Se não quiser, todos eles esperam por você em \"Tudo\".</string>
     <string name="onboard_tour_alarm_title">Alarme e sono</string>
     <string name="onboard_tour_alarm_text">Alarmes que tocam até no modo silencioso, com tarefas para desligar como fazer contas, chacoalhar o celular ou ler um código. Plano de sono, sons para dormir e alarme inteligente.</string>
     <string name="onboard_tour_prayer_title">Orações e culto</string>

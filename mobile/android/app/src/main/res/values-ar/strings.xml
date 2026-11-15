@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">جُهّز الشريط السفلي حسب إجاباتك. الساعة أولًا دائمًا، وكل الأدوات في «الكل».</string>
     <string name="onboard_summary_on">ما فُعِّل</string>
     <string name="onboard_summary_none">الساعة والأدوات فقط مفعّلة. أضف أقسامًا متى شئت من الإعدادات › الميزات.</string>
+    <string name="onboard_continueTour">متابعة الجولة التعريفية</string>
     <string name="onboard_trust_title">بياناتك تبقى معك</string>
     <string name="onboard_trust_text">لا حساب، لا إعلانات، لا تتبّع. موقعك وبياناتك الشخصية وتقويمك وبياناتك الصحية لا تصل إلينا ولا تُخزَّن على أي خادم لنا. الأذونات تعمل داخل هاتفك فقط.</string>
     <string name="onboard_trust_services">للطقس والمساجد القريبة يُرسَل موقع تقريبي فقط (نحو 1 كم) إلى الخدمة المعنية، ولا تُرسَل هويتك أبدًا.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">للحظر أثناء التركيز فقط، لتنبيهك عند فتح تطبيق اخترته. لا تغادر هذه المعلومة هاتفك.</string>
     <string name="perms_dnd_title">الوصول إلى «عدم الإزعاج»</string>
     <string name="perms_dnd_why">لكتم الهاتف عند دخول وقت الصلاة فقط. وإن لم تسمح، لا يعمل الكتم التلقائي.</string>
-    <string name="onboard_more_title">هل تريد أن تعرف ما الذي يقدّمه التطبيق أيضًا؟</string>
-    <string name="onboard_more_text">سنعرض لك بقية الميزات واحدة تلو الأخرى في صفحات قصيرة. وإن قلت لا، تجدها كلها في «الكل».</string>
     <string name="onboard_tour_alarm_title">المنبه والنوم</string>
     <string name="onboard_tour_alarm_text">منبه يرن حتى في الوضع الصامت، مع مهام لإيقافه مثل مسألة حسابية أو هزّ الهاتف أو مسح رمز. خطة النوم وأصوات النوم والمنبه الذكي.</string>
     <string name="onboard_tour_prayer_title">مواقيت الصلاة والعبادة</string>

@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">La barra inferior se ajustó según sus respuestas. El reloj va siempre primero; todas las herramientas están en Todo.</string>
     <string name="onboard_summary_on">Activadas</string>
     <string name="onboard_summary_none">Solo están activos el reloj y las herramientas. Añada secciones cuando quiera en Ajustes › Funciones.</string>
+    <string name="onboard_continueTour">Continuar el recorrido</string>
     <string name="onboard_trust_title">Sus datos se quedan con usted</string>
     <string name="onboard_trust_text">Sin cuenta, sin anuncios, sin rastreo. Su ubicación, sus datos personales, su calendario y sus datos de salud nunca nos llegan ni se guardan en ningún servidor nuestro. Los permisos solo funcionan dentro de su teléfono.</string>
     <string name="onboard_trust_services">Para el tiempo y las mezquitas cercanas solo se envía una ubicación aproximada (cerca de 1 km) a ese servicio, nunca quién es usted.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">Solo para el bloqueo durante la concentración, para avisarle cuando se abre una app elegida. Esta información nunca sale del teléfono.</string>
     <string name="perms_dnd_title">Acceso a No molestar</string>
     <string name="perms_dnd_why">Solo para silenciar el teléfono a la hora de la oración. Si no, el silencio automático no funciona.</string>
-    <string name="onboard_more_title">¿Quiere conocer qué más ofrece la app?</string>
-    <string name="onboard_more_text">Le mostramos las demás funciones una a una en unas pocas páginas breves. Si no, todo le espera en «Todo».</string>
     <string name="onboard_tour_alarm_title">Alarma y sueño</string>
     <string name="onboard_tour_alarm_text">Alarmas que suenan incluso en silencio, con tareas para apagarlas como cálculos, agitar el teléfono o escanear un código. Plan de sueño, sonidos para dormir y alarma inteligente.</string>
     <string name="onboard_tour_prayer_title">Oraciones y culto</string>

@@ -14,7 +14,7 @@ enum SoundMode: String, CaseIterable {
     case voice, chime, adhan, system
 
     static let key = "notify.sound"
-    static var current: SoundMode { SoundMode(rawValue: UserDefaults.standard.string(forKey: key) ?? "") ?? .voice }
+    static var current: SoundMode { SoundMode(rawValue: UserDefaults.standard.string(forKey: key) ?? "") ?? .adhan }
 
     var label: String { L("notify.sound." + rawValue) }
 }
@@ -22,10 +22,10 @@ enum SoundMode: String, CaseIterable {
 /// Ezan sesi (rakip analizi listesi #92): uygulamayla gelen açık lisanslı kayıtların ilk cümlesi; kaynaklar ve kesim
 /// mobile/shared/ezan/README.md. Seçim `notify.adhanVoice` (Android'le aynı kimlikler); atıf ayarda seçili kaydın altında.
 enum AdhanVoice: String, CaseIterable {
-    case azeez, medina
+    case medina, azeez
 
     static let key = "notify.adhanVoice"
-    static var current: AdhanVoice { AdhanVoice(rawValue: UserDefaults.standard.string(forKey: key) ?? "") ?? .azeez }
+    static var current: AdhanVoice { AdhanVoice(rawValue: UserDefaults.standard.string(forKey: key) ?? "") ?? .medina }
 
     /// Uygulama paketindeki dosya (iOS bildirim sesi en çok 30 sn)
     var resource: String { self == .azeez ? "ezan" : "ezan-\(rawValue)" }

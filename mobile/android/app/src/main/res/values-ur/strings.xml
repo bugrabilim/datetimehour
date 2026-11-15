@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">نیچے کی پٹی آپ کے جوابات کے مطابق تیار ہے۔ گھڑی ہمیشہ پہلے؛ سب ٹولز «سب» میں ہیں۔</string>
     <string name="onboard_summary_on">جو چالو ہوئے</string>
     <string name="onboard_summary_none">صرف گھڑی اور ٹولز چالو ہیں۔ جب چاہیں ترتیبات › خصوصیات سے حصے شامل کریں۔</string>
+    <string name="onboard_continueTour">تعارف جاری رکھیں</string>
     <string name="onboard_trust_title">آپ کا ڈیٹا آپ ہی کے پاس رہتا ہے</string>
     <string name="onboard_trust_text">نہ اکاؤنٹ، نہ اشتہار، نہ ٹریکنگ۔ آپ کا مقام، ذاتی معلومات، کیلنڈر اور صحت کا ڈیٹا ہم تک نہیں آتا اور ہمارے کسی سرور پر محفوظ نہیں ہوتا۔ اجازتیں صرف آپ کے فون کے اندر کام کرتی ہیں۔</string>
     <string name="onboard_trust_services">موسم اور قریبی مساجد کے لیے صرف تخمینی مقام (تقریباً 1 کلومیٹر) متعلقہ سروس کو جاتا ہے؛ آپ کون ہیں، یہ کبھی نہیں جاتا۔</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">صرف فوکس بلاک کے لیے، چنی ہوئی ایپ کھلنے پر خبردار کرنے کو۔ یہ معلومات فون سے باہر نہیں جاتی۔</string>
     <string name="perms_dnd_title">ڈسٹرب نہ کریں تک رسائی</string>
     <string name="perms_dnd_why">صرف نماز کا وقت ہونے پر فون خاموش کرنے کے لیے۔ نہ دیں تو خودکار خاموشی کام نہیں کرے گی۔</string>
-    <string name="onboard_more_title">کیا آپ جاننا چاہیں گے کہ اور کیا کچھ ہے؟</string>
-    <string name="onboard_more_text">ہم دوسری خصوصیات چند مختصر صفحوں میں ایک ایک کر کے دکھائیں گے۔ نہیں کہیں تو سب کچھ «سب» میں آپ کا منتظر ہے۔</string>
     <string name="onboard_tour_alarm_title">الارم اور نیند</string>
     <string name="onboard_tour_alarm_text">فون خاموش ہو تب بھی بجنے والا الارم؛ بند کرنے کے لیے حساب، فون ہلانا یا کوڈ اسکین کرنا جیسے کام۔ نیند کا منصوبہ، نیند کی آوازیں اور اسمارٹ الارم۔</string>
     <string name="onboard_tour_prayer_title">نماز کے اوقات اور عبادت</string>

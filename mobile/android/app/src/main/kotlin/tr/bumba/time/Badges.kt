@@ -165,10 +165,33 @@ object BadgeStore {
         showing = true
         toastNote = next.second
         toast = next.first
-        main.postDelayed({
-            toast = null
-            main.postDelayed({ showNext() }, 400)
-        }, if (next.second) 7000 else 4000)
+        playSound()
+        main.removeCallbacks(hide)
+        main.postDelayed(hide, if (next.second) 7000 else 4000)
+    }
+
+    private val hide = Runnable { dismissToast() }
+
+    /** Bildirimi kapatır (dokununca ya da süre dolunca; sahibin isteği 15 Kasım 2026: dokununca sayfa açılmaz) */
+    fun dismissToast() {
+        if (toast == null) return
+        main.removeCallbacks(hide)
+        toast = null
+        main.postDelayed({ showNext() }, 400)
+    }
+
+    /** Kısa başarım sesi (`res/raw/badge_win.ogg`, sentez; mobile/shared/sounds/gen-badge.mjs). Telefon sessiz ya da
+        titreşimdeyse çalmaz; bildirim sesi akışında, müziği kesmez. */
+    private fun playSound() = runCatching {
+        val ctx = Strings.appContext
+        val am = ctx.getSystemService(android.content.Context.AUDIO_SERVICE) as android.media.AudioManager
+        if (am.ringerMode != android.media.AudioManager.RINGER_MODE_NORMAL) return@runCatching
+        val attrs = android.media.AudioAttributes.Builder()
+            .setUsage(android.media.AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+            .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION).build()
+        val mp = android.media.MediaPlayer.create(ctx, R.raw.badge_win, attrs, am.generateAudioSessionId()) ?: return@runCatching
+        mp.setOnCompletionListener { it.release() }
+        mp.start()
     }
 
     /** Saat sahnesinde bir model göründü (açılıştaki model dahil) */
@@ -225,7 +248,7 @@ fun BadgeToast(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .background(Theme.c.surface, RoundedCornerShape(14.dp))
                 .border(BorderStroke(1.dp, Theme.c.accent.copy(alpha = 0.6f)), RoundedCornerShape(14.dp))
-                .clickable { Nav.tool("badges") }
+                .clickable { BadgeStore.dismissToast() }
                 .padding(12.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {

@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">The tab bar is set from your answers. The clock always comes first; every tool is in All.</string>
     <string name="onboard_summary_on">Turned on</string>
     <string name="onboard_summary_none">Only the clock and tools are on. Add sections any time in Settings › Features.</string>
+    <string name="onboard_continueTour">Continue the tour</string>
     <string name="onboard_trust_title">Your data stays with you</string>
     <string name="onboard_trust_text">No account, no ads, no tracking. Your location, personal details, calendar and health data never reach us and are not stored on any server of ours. Permissions only work inside your phone.</string>
     <string name="onboard_trust_services">For weather and nearby mosques, only an approximate location (about 1 km) goes to the relevant service, never who you are.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">Only for focus blocking, to warn you when a chosen app opens. This never leaves your phone.</string>
     <string name="perms_dnd_title">Do Not Disturb access</string>
     <string name="perms_dnd_why">Only to silence your phone at prayer time. Without it, auto-silence doesn\'t work.</string>
-    <string name="onboard_more_title">Would you like to see what else is here?</string>
-    <string name="onboard_more_text">We\'ll show the other features one by one on a few short pages. If you say no, they\'re all waiting under All.</string>
     <string name="onboard_tour_alarm_title">Alarms and sleep</string>
     <string name="onboard_tour_alarm_text">Alarms that ring even in silent mode, with tasks to turn them off such as math, shaking or scanning a code. A sleep plan, sleep sounds and a smart alarm.</string>
     <string name="onboard_tour_prayer_title">Prayer times and worship</string>

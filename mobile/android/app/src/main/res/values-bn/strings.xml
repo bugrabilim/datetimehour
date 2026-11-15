@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">ট্যাব বার আপনার উত্তর অনুযায়ী সাজানো হয়েছে। ঘড়ি সবসময় প্রথমে আসে; প্রতিটি টুল সব-এ আছে।</string>
     <string name="onboard_summary_on">চালু হয়েছে</string>
     <string name="onboard_summary_none">শুধু ঘড়ি ও টুলস চালু। যেকোনো সময় সেটিংস › বৈশিষ্ট্যে অংশ যোগ করুন।</string>
+    <string name="onboard_continueTour">পরিচিতি চালিয়ে যান</string>
     <string name="onboard_trust_title">আপনার তথ্য আপনার কাছেই থাকে</string>
     <string name="onboard_trust_text">কোনো অ্যাকাউন্ট নেই, বিজ্ঞাপন নেই, ট্র্যাকিং নেই। আপনার অবস্থান, ব্যক্তিগত তথ্য, ক্যালেন্ডার ও স্বাস্থ্য তথ্য কখনো আমাদের কাছে আসে না এবং আমাদের কোনো সার্ভারে সংরক্ষিত হয় না। অনুমতিগুলো শুধু আপনার ফোনের ভেতরে কাজ করে।</string>
     <string name="onboard_trust_services">আবহাওয়া ও কাছের মসজিদের জন্য শুধু একটি আনুমানিক অবস্থান (প্রায় 1 কিমি) সংশ্লিষ্ট পরিষেবায় যায়, আপনি কে তা কখনো নয়।</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">শুধু মনোযোগের সময় ব্লকের জন্য, বাছা কোনো অ্যাপ খুললে সতর্ক করতে। এটি কখনো আপনার ফোন ছেড়ে যায় না।</string>
     <string name="perms_dnd_title">বিরক্ত করবেন না অ্যাক্সেস</string>
     <string name="perms_dnd_why">শুধু নামাজের সময় ফোন নীরব করতে। এটি ছাড়া স্বয়ংক্রিয় নীরবতা কাজ করে না।</string>
-    <string name="onboard_more_title">এখানে আর কী আছে দেখতে চান?</string>
-    <string name="onboard_more_text">কয়েকটি ছোট পাতায় অন্য বৈশিষ্ট্যগুলো একে একে দেখাব। না বললে সেগুলো সব-এ আপনার অপেক্ষায় থাকবে।</string>
     <string name="onboard_tour_alarm_title">অ্যালার্ম ও ঘুম</string>
     <string name="onboard_tour_alarm_text">নীরব মোডেও বাজে এমন অ্যালার্ম, বন্ধ করতে গণিত, ঝাঁকানো বা কোড স্ক্যানের মতো কাজসহ। ঘুমের সূচি, ঘুমের শব্দ ও স্মার্ট অ্যালার্ম।</string>
     <string name="onboard_tour_prayer_title">নামাজের সময় ও ইবাদত</string>

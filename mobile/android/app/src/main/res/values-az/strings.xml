@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">Alt panel cavablarınıza görə hazırlandı. Saat həmişə birincidir; bütün alətlər Hamısı bölməsindədir.</string>
     <string name="onboard_summary_on">Açılan bölmələr</string>
     <string name="onboard_summary_none">Yalnız saat və alətlər açıqdır. İstədiyiniz an Parametrlər › Xüsusiyyətlər bölməsindən əlavə edərsiniz.</string>
+    <string name="onboard_continueTour">Tanıtıma davam et</string>
     <string name="onboard_trust_title">Məlumatlarınız sizdə qalır</string>
     <string name="onboard_trust_text">Hesab yoxdur, reklam yoxdur, izləmə yoxdur. Məkanınız, şəxsi məlumatlarınız, təqviminiz və sağlamlıq məlumatlarınız bizə gəlmir, heç bir serverimizdə saxlanmır. İcazələr yalnız telefonunuzun içində işləyir.</string>
     <string name="onboard_trust_services">Hava proqnozu və yaxınlıqdakı məscidlər üçün yalnız təxmini məkan (təxminən 1 km) həmin xidmətə gedir; kim olduğunuz getmir.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">Yalnız fokusda bloklamada, seçdiyiniz tətbiq açılanda xəbərdar etmək üçün. Bu məlumat telefondan çıxmır.</string>
     <string name="perms_dnd_title">Narahat etməyin girişi</string>
     <string name="perms_dnd_why">Yalnız vaxt girəndə telefonu səssizə almaq üçün. Verməsəniz, səssizə alma işləmir.</string>
-    <string name="onboard_more_title">Başqa nələr var, öyrənmək istəyirsinizmi?</string>
-    <string name="onboard_more_text">Digər imkanları bir neçə qısa səhifədə bir-bir göstərək. Xeyr desəniz, hamısı \"Hamısı\" bölməsində sizi gözləyir.</string>
     <string name="onboard_tour_alarm_title">Zəngli saat və yuxu</string>
     <string name="onboard_tour_alarm_text">Telefon səssizdə olanda da çalan zəngli saat; söndürmək üçün riyaziyyat, silkələmə ya da kod oxutma kimi tapşırıqlar. Yuxu planı, yuxu səsləri və ağıllı zəngli saat.</string>
     <string name="onboard_tour_prayer_title">Vaxtlar və ibadət</string>

@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">แถบด้านล่างจัดตามคำตอบของคุณแล้ว นาฬิกาอยู่หน้าสุดเสมอ เครื่องมือทั้งหมดอยู่ใน ทั้งหมด</string>
     <string name="onboard_summary_on">ที่เปิดไว้</string>
     <string name="onboard_summary_none">เปิดไว้เฉพาะนาฬิกาและเครื่องมือ เพิ่มส่วนอื่นได้ทุกเมื่อที่ การตั้งค่า › ฟีเจอร์</string>
+    <string name="onboard_continueTour">ดูแนะนำต่อ</string>
     <string name="onboard_trust_title">ข้อมูลของคุณอยู่กับคุณ</string>
     <string name="onboard_trust_text">ไม่มีบัญชี ไม่มีโฆษณา ไม่มีการติดตาม ตำแหน่ง ข้อมูลส่วนตัว ปฏิทิน และข้อมูลสุขภาพของคุณไม่ถูกส่งมาถึงเรา และไม่ถูกเก็บบนเซิร์ฟเวอร์ใดของเรา สิทธิ์ต่าง ๆ ทำงานเฉพาะในโทรศัพท์ของคุณ</string>
     <string name="onboard_trust_services">สำหรับสภาพอากาศและมัสยิดใกล้เคียง จะส่งเพียงตำแหน่งโดยประมาณ (ราว 1 กม.) ไปยังบริการนั้น ไม่เคยส่งว่าคุณเป็นใคร</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">ใช้เฉพาะการบล็อกขณะโฟกัส เพื่อเตือนเมื่อแอปที่เลือกถูกเปิด ข้อมูลนี้ไม่ออกจากโทรศัพท์</string>
     <string name="perms_dnd_title">การเข้าถึงห้ามรบกวน</string>
     <string name="perms_dnd_why">ใช้เพื่อปิดเสียงโทรศัพท์เมื่อถึงเวลาละหมาดเท่านั้น ถ้าไม่อนุญาต การปิดเสียงอัตโนมัติจะใช้ไม่ได้</string>
-    <string name="onboard_more_title">อยากรู้ไหมว่ามีอะไรอีกบ้าง</string>
-    <string name="onboard_more_text">เราจะแนะนำฟีเจอร์อื่น ๆ ทีละอย่างในไม่กี่หน้า หากไม่ต้องการ ทุกอย่างรออยู่ใน \"ทั้งหมด\"</string>
     <string name="onboard_tour_alarm_title">นาฬิกาปลุกและการนอน</string>
     <string name="onboard_tour_alarm_text">นาฬิกาปลุกที่ดังแม้ในโหมดเงียบ พร้อมภารกิจเพื่อปิด เช่น คิดเลข เขย่าโทรศัพท์ หรือสแกนโค้ด มีแผนการนอน เสียงช่วยนอน และนาฬิกาปลุกอัจฉริยะ</string>
     <string name="onboard_tour_prayer_title">เวลาละหมาดและการทำอิบาดะห์</string>

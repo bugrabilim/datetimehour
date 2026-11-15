@@ -545,7 +545,7 @@ enum DebugScreen: String, Identifiable {
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
          wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet,
          qr, colors, wall, study, wakegame, language, dials, chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom, permissions,
-         photo, account
+         photo, account, widgets, panchang
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -586,6 +586,9 @@ enum DebugScreen: String, Identifiable {
         case .permissions: PermissionsView()
         case .account: AccountView()
         case .photo: PhotoLightView()
+        // Özel ürün sayfası görselleri (15 Kasım 2026)
+        case .widgets: WidgetGalleryView()
+        case .panchang: PanchangView()
         case .planner: MeetingPlannerView()
         case .world: WorldClockView()
         case .weather: WeatherView()

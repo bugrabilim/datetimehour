@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">하단 막대가 답변에 맞춰 준비됐어요. 시계는 항상 맨 앞, 모든 도구는 전체에 있어요.</string>
     <string name="onboard_summary_on">켜진 항목</string>
     <string name="onboard_summary_none">시계와 도구만 켜져 있어요. 언제든 설정 › 기능에서 항목을 추가할 수 있어요.</string>
+    <string name="onboard_continueTour">둘러보기 계속</string>
     <string name="onboard_trust_title">데이터는 내 폰에만</string>
     <string name="onboard_trust_text">계정도, 광고도, 추적도 없어요. 위치, 개인 정보, 일정, 건강 데이터는 저희에게 오지 않고 어떤 서버에도 저장되지 않아요. 권한은 휴대폰 안에서만 쓰여요.</string>
     <string name="onboard_trust_services">날씨와 가까운 모스크 검색에는 대략적인 위치(약 1km)만 해당 서비스로 가고, 누구인지는 절대 보내지 않아요.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">집중 차단에만 써요. 고른 앱이 열리면 알려 줘요. 이 정보는 휴대폰 밖으로 나가지 않아요.</string>
     <string name="perms_dnd_title">방해 금지 접근</string>
     <string name="perms_dnd_why">기도 시간에 휴대폰을 무음으로 바꾸는 데만 써요. 허용하지 않으면 자동 무음이 작동하지 않아요.</string>
-    <string name="onboard_more_title">어떤 기능이 더 있는지 알아볼까요?</string>
-    <string name="onboard_more_text">다른 기능을 짧은 페이지로 하나씩 보여 드릴게요. 아니요를 누르면 모든 기능은 \'전체\'에 있습니다.</string>
     <string name="onboard_tour_alarm_title">알람과 수면</string>
     <string name="onboard_tour_alarm_text">무음 모드에서도 울리는 알람, 끄려면 계산·흔들기·코드 스캔 같은 과제를 해야 해요. 수면 계획, 수면 사운드, 스마트 알람도 있어요.</string>
     <string name="onboard_tour_prayer_title">기도 시간과 예배</string>

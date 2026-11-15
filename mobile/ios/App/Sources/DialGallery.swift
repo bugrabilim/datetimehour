@@ -130,7 +130,10 @@ struct DialNewsCard: View {
     @AppStorage(DialFace.seenKey) private var seen = false
     @State private var open = false
 
+    // Galeri açılınca `seen` true olur; sayfa kartın içinde tutulursa kart kalkınca sayfa da kapanıyordu (TestFlight 31,
+    // sahibin bildirimi 15 Kasım 2026). Sayfa artık kartın dışında, her zaman var olan kaba bağlı.
     var body: some View {
+        Group {
         if !seen {
             HStack(spacing: 12) {
                 TimelineView(.periodic(from: .now, by: 1)) { ctx in
@@ -149,7 +152,8 @@ struct DialNewsCard: View {
             .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
             .contentShape(Rectangle())
             .onTapGesture { open = true }
-            .sheet(isPresented: $open) { NavigationStack { DialGalleryView() } }
         }
+        }
+        .sheet(isPresented: $open) { NavigationStack { DialGalleryView() } }
     }
 }

@@ -9,25 +9,21 @@ struct NotificationSettingsView: View {
     @AppStorage(NotificationPrefs.enabledKey) private var enabled = true
     @AppStorage(NotificationPrefs.prayersKey) private var prayersRaw = NotificationPrefs.defaultPrayers
     @AppStorage(NotificationPrefs.leadKey) private var lead = 0
-    @AppStorage(SoundMode.key) private var sound = SoundMode.voice.rawValue
-    @AppStorage(AdhanVoice.key) private var adhanVoice = AdhanVoice.azeez.rawValue
+    @AppStorage(SoundMode.key) private var sound = SoundMode.adhan.rawValue
+    @AppStorage(AdhanVoice.key) private var adhanVoice = AdhanVoice.medina.rawValue
     @State private var denied = false
     /// Kilit ekranında / Dynamic Island'da sıradaki vakit (Live Activity; 2. analiz #199 ile Vakitler'den buraya)
     @AppStorage(LiveActivities.prayerKey) private var liveOn = false
+    @State private var advanced = false
 
     var body: some View {
         NavigationStack {
+            // Düzen (sahibin isteği, 15 Kasım 2026: "geniş yer tutuyor, kafa karıştırıyor"): aç/kapat; her vakit tek satır
+            // (dokununca o vaktin ayarı: bildirim al, önceden haber ver, ses, günler); genel süre ve ses; "Gelişmiş"te
+            // vakitte alarm ve kilit ekranı. Eski iki liste ("Hangi vakitler" + "Vakte göre ayarlar") tek listede.
             Form {
                 Section {
                     Toggle(L("notify.enable"), isOn: Binding(get: { enabled }, set: setEnabled))
-                } footer: {
-                    Text(L("notify.note"))
-                }
-                Section {
-                    Toggle(isOn: $liveOn) { Label(L("live.prayer.toggle"), systemImage: "lock.iphone") }
-                        .onChange(of: liveOn) { LiveActivities.sync() }
-                } footer: {
-                    Text(L("live.prayer.note"))
                 }
                 if denied {
                     Section {
@@ -37,30 +33,26 @@ struct NotificationSettingsView: View {
                         }
                     }
                 }
-                PrayerAlarmSection()
                 if enabled {
-                    Section(L("notify.prayers")) {
-                        ForEach(Prayer.allCases, id: \.self) { prayer in
-                            Toggle(prayer.localizedName, isOn: selected(prayer))
-                        }
-                    }
                     Section {
-                        ForEach(Prayer.allCases.filter { NotificationPrefs.decode(prayersRaw).contains($0) }, id: \.self) { prayer in
-                            NavigationLink { PerPrayerSettings(prayer: prayer) } label: { Text(prayer.localizedName) }
+                        ForEach(Prayer.allCases, id: \.self) { prayer in
+                            NavigationLink {
+                                PerPrayerSettings(prayer: prayer, on: selected(prayer))
+                            } label: {
+                                LabeledContent(prayer.localizedName, value: summary(prayer))
+                            }
                         }
                     } header: {
-                        Text(L("notify.perPrayer"))
+                        Text(L("notify.prayers"))
                     } footer: {
                         Text(L("notify.perPrayer.note"))
                     }
                     Section {
                         Picker(L("notify.lead"), selection: $lead) {
                             ForEach(PrayerAlerts.Settings.leadChoices, id: \.self) { m in
-                                Text(m == 0 ? L("notify.lead.zero") : String(format: L("notify.lead.minutes"), String(m))).tag(m)
+                                Text(Self.leadLabel(m)).tag(m)
                             }
                         }
-                    }
-                    Section {
                         Picker(L("notify.sound"), selection: $sound) {
                             ForEach(SoundMode.allCases, id: \.rawValue) { Text($0.label).tag($0.rawValue) }
                         }
@@ -70,23 +62,30 @@ struct NotificationSettingsView: View {
                             }
                         }
                         Button {
-                            Task { await NotificationSounds.preview(mode: SoundMode(rawValue: sound) ?? .voice, lead: lead,
-                                                                     voice: AdhanVoice(rawValue: adhanVoice) ?? .azeez) }
+                            Task { await NotificationSounds.preview(mode: SoundMode(rawValue: sound) ?? .adhan, lead: lead,
+                                                                     voice: AdhanVoice(rawValue: adhanVoice) ?? .medina) }
                         } label: {
                             Label(L("notify.sound.preview"), systemImage: "play.circle")
                         }
                     } footer: {
                         VStack(alignment: .leading, spacing: 6) {
-                            Text(L("notify.sound.note"))
                             if sound == SoundMode.adhan.rawValue {
-                                Text(L("notify.sound.adhanNote"))
-                                Text((AdhanVoice(rawValue: adhanVoice) ?? .azeez).credit).font(.caption2)
+                                Text((AdhanVoice(rawValue: adhanVoice) ?? .medina).credit).font(.caption2)
                             }
                             if sound == SoundMode.voice.rawValue && NotificationSounds.hasOnlyBasicVoice {
                                 Text(L("notify.sound.better"))
                             }
                         }
                     }
+                }
+                Section {
+                    DisclosureGroup(L("alarm.advanced"), isExpanded: $advanced) {
+                        Toggle(isOn: $liveOn) { Text(L("live.prayer.toggle")) }
+                            .onChange(of: liveOn) { LiveActivities.sync() }
+                        PrayerAlarmRows()
+                    }
+                } footer: {
+                    if advanced { Text(L(PrayerAlarms.supported ? "prayer.alarm.note" : "prayer.alarm.unsupported")) }
                 }
             }
             .themedBackground()
@@ -107,6 +106,17 @@ struct NotificationSettingsView: View {
         .onChange(of: lead) { Task { await PrayerNotifier.reschedule() } }
         .onChange(of: sound) { Task { await PrayerNotifier.reschedule() } }
         .onChange(of: adhanVoice) { Task { await PrayerNotifier.reschedule() } }
+    }
+
+    static func leadLabel(_ m: Int) -> String {
+        m == 0 ? L("notify.lead.zero") : String(format: L("notify.lead.minutes"), String(m))
+    }
+
+    /// Satırdaki özet: kapalıysa "Kapalı", açıksa o vaktin süresi (vakte özel ya da genel)
+    private func summary(_ prayer: Prayer) -> String {
+        guard NotificationPrefs.decode(prayersRaw).contains(prayer) else { return L("perms.status.off") }
+        let own = UserDefaults.standard.object(forKey: NotificationPrefs.perLeadKey(prayer)) as? Int ?? -1
+        return Self.leadLabel(own >= 0 ? own : lead)
     }
 
     private func selected(_ prayer: Prayer) -> Binding<Bool> {
@@ -145,12 +155,15 @@ struct NotificationSettingsView: View {
 /// Vakte göre ayar (2. analiz #54): bu vakit için önceden bildirim süresi, ses ve günler; boşsa genel ayar
 private struct PerPrayerSettings: View {
     let prayer: Prayer
+    @Binding var on: Bool
     @State private var lead = -1
     @State private var sound = ""
     @State private var days: Set<Int> = []
 
     var body: some View {
         Form {
+            Toggle(L("notify.enable"), isOn: $on)
+            if on {
             Picker(L("notify.lead"), selection: $lead) {
                 Text(L("notify.perPrayer.general")).tag(-1)
                 ForEach(PrayerAlerts.Settings.leadChoices, id: \.self) { m in
@@ -165,6 +178,7 @@ private struct PerPrayerSettings: View {
                 ForEach(1...7, id: \.self) { d in
                     Toggle(L("tools.alarm.dayNames.\(d - 1)"), isOn: dayBinding(d))
                 }
+            }
             }
         }
         .navigationTitle(prayer.localizedName)

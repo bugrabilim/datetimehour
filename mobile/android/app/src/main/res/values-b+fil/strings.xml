@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">Naayos ang bar sa ibaba ayon sa mga sagot mo. Laging una ang orasan; nasa Lahat ang lahat ng tool.</string>
     <string name="onboard_summary_on">Binuksan</string>
     <string name="onboard_summary_none">Orasan at mga tool lang ang bukas. Magdagdag anumang oras sa Settings › Mga feature.</string>
+    <string name="onboard_continueTour">Ituloy ang tour</string>
     <string name="onboard_trust_title">Nasa iyo lang ang data mo</string>
     <string name="onboard_trust_text">Walang account, walang ad, walang tracking. Hindi kailanman nakararating sa amin ang lokasyon, personal na impormasyon, kalendaryo at health data mo, at hindi ito iniimbak sa anumang server namin. Sa loob lang ng telepono mo gumagana ang mga pahintulot.</string>
     <string name="onboard_trust_services">Para sa panahon at kalapit na moske, tinatayang lokasyon lang (mga 1 km) ang napupunta sa serbisyo, hindi kung sino ka.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">Para lang sa focus block, para magbabala kapag nabuksan ang napiling app. Hindi ito lumalabas sa telepono.</string>
     <string name="perms_dnd_title">Access sa Huwag Istorbohin</string>
     <string name="perms_dnd_why">Para lang patahimikin ang telepono sa oras ng dasal. Kung hindi, hindi gagana ang awtomatikong pagpapatahimik.</string>
-    <string name="onboard_more_title">Gusto mo bang malaman kung ano pa ang narito?</string>
-    <string name="onboard_more_text">Ipapakita namin ang iba pang feature isa-isa sa ilang maiikling pahina. Kung hindi, naghihintay ang lahat sa Lahat.</string>
     <string name="onboard_tour_alarm_title">Alarm at tulog</string>
     <string name="onboard_tour_alarm_text">Alarm na tumutunog kahit naka-silent, na may gawain para patayin ito gaya ng math, pag-alog o pag-scan ng code. May plano sa pagtulog, tunog pampatulog at smart alarm.</string>
     <string name="onboard_tour_prayer_title">Oras ng dasal at pagsamba</string>

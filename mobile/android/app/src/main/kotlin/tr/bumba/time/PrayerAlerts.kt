@@ -74,11 +74,11 @@ object NotifyPrefs {
         private set
     var lead by mutableIntStateOf(0)
         private set
-    /** "voice" (sesli duyuru, varsayılan), "chime" (kısa zil), "adhan" (vaktinde ezanın ilk cümlesi), "system" (telefonun sesi) */
-    var sound by mutableStateOf("voice")
+    /** "adhan" (vaktinde ezan, varsayılan; 15 Kasım 2026 sahibin kararı), "voice" (sesli duyuru), "chime" (kısa zil), "system" (telefonun sesi) */
+    var sound by mutableStateOf("adhan")
         private set
-    /** Ezan sesi (#92; iOS'la aynı kimlikler): "azeez" (5 sn, varsayılan), "medina" */
-    var adhanVoice by mutableStateOf("azeez")
+    /** Ezan sesi (#92; iOS'la aynı kimlikler): "medina" (Mescid-i Nebevî, varsayılan; 15 Kasım 2026 sahibin kararı), "azeez" (5 sn) */
+    var adhanVoice by mutableStateOf("medina")
         private set
 
     /** Prefs.init'ten sonra ilk kullanımda okunur */
@@ -88,12 +88,12 @@ object NotifyPrefs {
         enabled = sp.getBoolean(ENABLED, true)
         prayersRaw = sp.getString(PRAYERS, null) ?: encode(PrayerAlerts.DEFAULT_PRAYERS)
         lead = sp.getInt(LEAD, 0)
-        sound = sp.getString(SOUND, null)?.takeIf { it in SOUNDS } ?: "voice"
-        adhanVoice = sp.getString(ADHAN_VOICE, null)?.takeIf { it in ADHAN_VOICES } ?: "azeez"
+        sound = sp.getString(SOUND, null)?.takeIf { it in SOUNDS } ?: "adhan"
+        adhanVoice = sp.getString(ADHAN_VOICE, null)?.takeIf { it in ADHAN_VOICES } ?: "medina"
     }
 
     val SOUNDS = listOf("voice", "chime", "adhan", "system")
-    val ADHAN_VOICES = listOf("azeez", "medina")
+    val ADHAN_VOICES = listOf("medina", "azeez")
 
     val prayers: Set<Prayer> get() { load(); return decode(prayersRaw) }
 

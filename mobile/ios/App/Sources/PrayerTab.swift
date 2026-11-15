@@ -7,7 +7,7 @@ struct PrayerTab: View {
     /// Ekran görüntüsü için: -openNotifications ile ayar penceresi açık başlar
     @State private var showNotify = ProcessInfo.processInfo.arguments.contains("-openNotifications")
     @State private var sharing = false
-    /// "…" menüsünden açılan sayfalar (2. analiz #199)
+    /// İbadet bölümünün altındaki satırlardan açılan sayfalar
     @State private var route: PrayerRoute?
 
     enum PrayerRoute: Hashable { case monthly, method, imsakiye, worship }
@@ -25,6 +25,8 @@ struct PrayerTab: View {
                             .onChange(of: place.schedule.next(after: context.date)?.at) { LiveActivities.sync() }
                         // İbadet satırı (2. analiz #199): dört kare, hepsi "İbadet" sayfasında
                         WorshipRow { route = .worship }
+                        // Eski "…" menüsü (sahibin isteği, 15 Kasım 2026: üstteki üç nokta kalktı, içindekiler İbadet'in altında)
+                        PrayerToolRows(place: place, sharing: $sharing, route: $route)
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 20)
@@ -53,22 +55,6 @@ struct PrayerTab: View {
                         Image(systemName: notifyOn ? "bell.fill" : "bell")
                     }
                     .accessibilityLabel(L("notify.heading"))
-                }
-                // Seyrek kullanılanlar "…" menüsünde (2. analiz #199): paylaş, aylık çizelge, hesap yöntemi, imsakiye
-                ToolbarItem(placement: .topBarTrailing) {
-                    Menu {
-                        Button { sharing = true } label: { Label(L("share.prayer"), systemImage: "square.and.arrow.up") }
-                        Button { route = .monthly } label: { Label(L("prayer.monthly"), systemImage: "tablecells") }
-                        Button { route = .method } label: {
-                            let place = PlaceModel.shared.place
-                            Label(L("prayer.method.app") + (PrayerMethod.id(for: place) != "diyanet" || PrayerMethod.hanafi(for: place) ? " · " + PrayerMethod.name(PrayerMethod.id(for: place)) : ""),
-                                  systemImage: "slider.horizontal.3")
-                        }
-                        if let ramadan = CalendarData.shared.nextRamadan(from: CalendarDay(Date())) {
-                            Button { route = .imsakiye } label: { Label(T("imsakiye.title", ramadan.from.year), systemImage: "moon.haze") }
-                        }
-                    } label: { Image(systemName: "ellipsis.circle") }
-                    .accessibilityLabel(L("common.more"))
                 }
             }
             .sheet(isPresented: $showNotify) { NotificationSettingsView() }
@@ -493,5 +479,42 @@ struct ImsakiyeCard: View {
         .foregroundStyle(Theme.text)
         .padding(18)
         .background(Theme.surface, in: RoundedRectangle(cornerRadius: 18))
+    }
+}
+
+/// Vakitler'de İbadet'in altındaki satırlar: paylaş, aylık çizelge, hesap yöntemi, imsakiye
+private struct PrayerToolRows: View {
+    let place: AppPlace
+    @Binding var sharing: Bool
+    @Binding var route: PrayerTab.PrayerRoute?
+
+    var body: some View {
+        VStack(spacing: 4) {
+            row("share", L("share.prayer")) { sharing = true }
+            row("calendar", L("prayer.monthly")) { route = .monthly }
+            row("sliders", L("prayer.method.app"),
+                PrayerMethod.id(for: place) != "diyanet" || PrayerMethod.hanafi(for: place) ? PrayerMethod.name(PrayerMethod.id(for: place)) : nil) {
+                route = .method
+            }
+            if let ramadan = CalendarData.shared.nextRamadan(from: CalendarDay(Date())) {
+                row("night", T("imsakiye.title", ramadan.from.year)) { route = .imsakiye }
+            }
+        }
+        .card(padding: 12)
+    }
+
+    private func row(_ icon: String, _ title: String, _ value: String? = nil, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 12) {
+                DuoChip(name: icon, color: Theme.gold, box: 32, glyph: 19)
+                Text(title).foregroundStyle(Theme.text)
+                Spacer(minLength: 8)
+                if let value { Text(value).font(.footnote).foregroundStyle(Theme.muted).lineLimit(1) }
+                Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(Theme.muted)
+            }
+            .frame(minHeight: 44)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
     }
 }

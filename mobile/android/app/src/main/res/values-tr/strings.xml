@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">Alt çubuk yanıtlarınıza göre hazırlandı. Saat hep ilk sırada; bütün araçlar Tümü\'nde.</string>
     <string name="onboard_summary_on">Açılan bölümler</string>
     <string name="onboard_summary_none">Yalnız saat ve araçlar açık. İstediğiniz an Ayarlar › Özellikler\'den bölüm eklersiniz.</string>
+    <string name="onboard_continueTour">Tanıtıma devam et</string>
     <string name="onboard_trust_title">Verileriniz sizde kalır</string>
     <string name="onboard_trust_text">Hesap yok, reklam yok, takip yok. Konumunuz, kişisel bilgileriniz, takviminiz ve sağlık verileriniz bize gelmez; hiçbir sunucumuzda saklanmaz. İzinler yalnız telefonunuzun içinde iş görür.</string>
     <string name="onboard_trust_services">Hava durumu ve yakındaki camiler için yalnız yaklaşık konum (yaklaşık 1 km) ilgili servise gider; kim olduğunuz gitmez.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">Yalnız odak engelinde, seçtiğiniz uygulama açılınca uyarmak için. Bu bilgi telefondan çıkmaz.</string>
     <string name="perms_dnd_title">Rahatsız Etmeyin erişimi</string>
     <string name="perms_dnd_why">Yalnız vakit girince telefonu sessize almak için. Vermezseniz sessize alma çalışmaz.</string>
-    <string name="onboard_more_title">Başka neler var, öğrenmek ister misiniz?</string>
-    <string name="onboard_more_text">Diğer özellikleri birkaç kısa sayfada tek tek gösterelim. Hayır derseniz hepsi Tümü\'nde sizi bekler.</string>
     <string name="onboard_tour_alarm_title">Alarm ve uyku</string>
     <string name="onboard_tour_alarm_text">Telefon sessizdeyken de çalan alarm; kapatmak için matematik, sallama ya da kod okutma gibi görevler. Uyku planı, uyku sesleri ve akıllı alarm.</string>
     <string name="onboard_tour_prayer_title">Vakitler ve ibadet</string>

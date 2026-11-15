@@ -67,6 +67,9 @@ import androidx.compose.material.icons.filled.School
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.SelfImprovement
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.foundation.clickable
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Spa
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.TaskAlt
@@ -189,6 +192,8 @@ object AllPrefs {
         AllEntry("settings", "settings.title", Icons.Filled.Settings, AllCat.MORE, null, route = "settings",
             words = "settings.color lang.title settings.notifications"),
         AllEntry("badges", "badges.h1", Icons.Filled.MilitaryTech, AllCat.MORE, null, route = "badges"),
+        // Sahibin isteği (15 Kasım 2026): eski yazı bağlantısı yerine diğerleri gibi kare
+        AllEntry("features", "all.editFeatures", Icons.Filled.Apps, AllCat.MORE, null, route = "features", words = "features.title features.barTitle"),
     )
 
     /**
@@ -241,6 +246,13 @@ object AllPrefs {
         private set
 
     fun reload() { favs = list(FAVS); recent = list(RECENT) }
+
+    /** Kapalı başlıklar (varsayılan hepsi açık) */
+    var closed by mutableStateOf(list("all.closed").toSet())
+    fun toggleClosed(key: String) {
+        closed = if (key in closed) closed - key else closed + key
+        Prefs.store.edit().putString("all.closed", closed.joinToString(",")).apply()
+    }
 
     /** Ekler ya da çıkarır; 4 doluysa null döner */
     fun toggleFav(id: String): Boolean? {
@@ -295,10 +307,8 @@ fun AllScreen(onRoute: (String?) -> Unit) {
     }
     Box(Modifier.fillMaxSize()) {
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 24.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(Modifier.weight(1f)) { PageTitle(L("tab.all")) }
-                IconButton(onClick = { onRoute("settings") }) { Icon(Icons.Filled.Settings, L("settings.title"), tint = Theme.c.accent) }
-            }
+            // Sağ üstteki Ayarlar dişlisi kalktı (sahibin isteği, 15 Kasım 2026): Ayarlar "Diğer"de
+            PageTitle(L("tab.all"))
             OutlinedTextField(
                 query, { query = it }, Modifier.fillMaxWidth().padding(vertical = 8.dp), singleLine = true,
                 placeholder = { Text(L("all.search"), maxLines = 1, overflow = TextOverflow.Ellipsis) },
@@ -343,24 +353,22 @@ fun AllScreen(onRoute: (String?) -> Unit) {
             val favs = AllPrefs.favs.mapNotNull { AllPrefs.byId(it) }.filter { AllPrefs.visible(it) }
             val recent = AllPrefs.recent.mapNotNull { AllPrefs.byId(it) }.filter { AllPrefs.visible(it) }
             val top = favs.ifEmpty { recent }
-            SectionTitle(if (favs.isNotEmpty() || recent.isEmpty()) L("all.favs") else L("all.recent"))
-            if (top.isEmpty()) Text(L("all.favHint"), color = Theme.c.muted, fontSize = 13.sp, modifier = Modifier.padding(bottom = 6.dp))
-            else {
-                TileGrid(top, columns = 4, fav = favs.isNotEmpty(), onOpen = { AllPrefs.open(it, onRoute) }, onLong = { longPress(it) })
-                if (favs.isEmpty()) Text(L("all.favHint"), color = Theme.c.muted, fontSize = 12.sp, modifier = Modifier.padding(top = 4.dp))
+            // Bütün başlıklar açılır kapanır, varsayılan açık (sahibin isteği, 15 Kasım 2026); kapalılar `all.closed`
+            if (SectionTitle(if (favs.isNotEmpty() || recent.isEmpty()) L("all.favs") else L("all.recent"), "top")) {
+                if (top.isEmpty()) Text(L("all.favHint"), color = Theme.c.muted, fontSize = 13.sp, modifier = Modifier.padding(bottom = 6.dp))
+                else {
+                    TileGrid(top, columns = 4, fav = favs.isNotEmpty(), onOpen = { AllPrefs.open(it, onRoute) }, onLong = { longPress(it) })
+                    if (favs.isEmpty()) Text(L("all.favHint"), color = Theme.c.muted, fontSize = 12.sp, modifier = Modifier.padding(top = 4.dp))
+                }
             }
             for (cat in AllCat.entries) {
                 val list = AllPrefs.entries.filter { it.cat == cat && AllPrefs.visible(it) }
                 if (list.isEmpty()) continue
                 Spacer(Modifier.height(10.dp))
-                SectionTitle(L(cat.key))
-                TileGrid(list, columns = 4, fav = false, onOpen = { AllPrefs.open(it, onRoute) }, onLong = { longPress(it) })
+                if (SectionTitle(L(cat.key), cat.name)) {
+                    TileGrid(list, columns = 4, fav = false, onOpen = { AllPrefs.open(it, onRoute) }, onLong = { longPress(it) })
+                }
             }
-            Spacer(Modifier.height(14.dp))
-            Text(
-                L("all.editFeatures") + " ›", color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.clip(RoundedCornerShape(8.dp)).combinedClickable(onClick = { onRoute("features") }).padding(vertical = 8.dp),
-            )
         }
         toast?.let {
             Text(
@@ -372,9 +380,18 @@ fun AllScreen(onRoute: (String?) -> Unit) {
     }
 }
 
+/** Açılır kapanır başlık; açıksa true döner. Kapalı başlıklar `all.closed`ta (virgülle) kalır */
 @Composable
-private fun SectionTitle(text: String) {
-    Text(text, color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium, modifier = Modifier.padding(top = 8.dp, bottom = 8.dp))
+private fun SectionTitle(text: String, key: String): Boolean {
+    val open = key !in AllPrefs.closed
+    Row(
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(8.dp)).clickable { AllPrefs.toggleClosed(key) }.padding(top = 8.dp, bottom = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(text, Modifier.weight(1f), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
+        Icon(if (open) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown, null, tint = Theme.c.muted)
+    }
+    return open
 }
 
 /** Kategorideki kareler: simge kutusu + ad; uzun basınca sık kullanılanlara eklenir/çıkar */

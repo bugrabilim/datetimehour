@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">Die Leiste ist nach Ihren Antworten eingerichtet. Die Uhr steht immer vorn; alle Werkzeuge finden Sie unter „Alle“.</string>
     <string name="onboard_summary_on">Eingeschaltet</string>
     <string name="onboard_summary_none">Nur Uhr und Werkzeuge sind eingeschaltet. Bereiche fügen Sie jederzeit unter Einstellungen › Funktionen hinzu.</string>
+    <string name="onboard_continueTour">Tour fortsetzen</string>
     <string name="onboard_trust_title">Ihre Daten bleiben bei Ihnen</string>
     <string name="onboard_trust_text">Kein Konto, keine Werbung, kein Tracking. Ihr Standort, Ihre persönlichen Angaben, Ihr Kalender und Ihre Gesundheitsdaten erreichen uns nie und liegen auf keinem unserer Server. Berechtigungen wirken nur in Ihrem Telefon.</string>
     <string name="onboard_trust_services">Für Wetter und Moscheen in der Nähe geht nur ein ungefährer Standort (etwa 1 km) an den jeweiligen Dienst, nie Ihre Identität.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">Nur für die Fokussperre, um Sie zu warnen, wenn eine gewählte App geöffnet wird. Das verlässt Ihr Telefon nie.</string>
     <string name="perms_dnd_title">Zugriff auf „Bitte nicht stören“</string>
     <string name="perms_dnd_why">Nur um das Telefon zur Gebetszeit stummzuschalten. Ohne diese Berechtigung funktioniert die Stummschaltung nicht.</string>
-    <string name="onboard_more_title">Möchten Sie sehen, was es sonst noch gibt?</string>
-    <string name="onboard_more_text">Wir zeigen Ihnen die weiteren Funktionen nacheinander auf ein paar kurzen Seiten. Wenn nicht, finden Sie alles unter „Alle“.</string>
     <string name="onboard_tour_alarm_title">Wecker und Schlaf</string>
     <string name="onboard_tour_alarm_text">Wecker, die auch im Stummmodus klingeln, mit Aufgaben zum Ausschalten wie Rechnen, Schütteln oder Code scannen. Schlafplan, Schlafgeräusche und smarter Wecker.</string>
     <string name="onboard_tour_prayer_title">Gebetszeiten und Glaubenspraxis</string>

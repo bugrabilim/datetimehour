@@ -3,7 +3,7 @@ import SwiftUI
 /// "Tümü" sayfası (Seçenek B, 2. analiz #195–#197; Android AllScreen ile aynı kimlikler ve kayıtlar):
 /// üstte genel arama (araç, ayar, içerik), 4 karelik sık kullanılanlar (uzun basınca menüden ekle/çıkar; boşsa son
 /// kullanılanlar), sonra kategoriler (Süre ve alarm, Gün ve plan, Gök ve dünya, İbadet), sonda Ayarlar ve Rozetler
-/// (Ayarlar ayrıca sağ üstteki dişliden; 4 Kasım 2026'dan beri saat ekranında dişli yok, Tümü her zaman çubukta). Yalnız açık özelliklerin girişleri görünür. Kayıt: `all.favs`, `all.recent` (virgülle kimlik).
+/// (Ayarlar "Diğer"de; 15 Kasım 2026 sahibin isteğiyle sağ üstteki dişli kalktı; 4 Kasım 2026'dan beri saat ekranında dişli yok, Tümü her zaman çubukta). Yalnız açık özelliklerin girişleri görünür. Kayıt: `all.favs`, `all.recent` (virgülle kimlik).
 enum AllCat: CaseIterable {
     case time, plan, sky, faith, more
 
@@ -103,6 +103,9 @@ enum AllPrefs {
         AllEntry(id: "settings", titleKey: "settings.title", icon: "gearshape", cat: .more, feature: nil, route: .settings,
                  words: ["settings.color", "lang.title", "settings.notifications"]),
         AllEntry(id: "badges", titleKey: "badges.h1", icon: "rosette", cat: .more, feature: nil, route: .badges),
+        // Sahibin isteği (15 Kasım 2026): eski yazı bağlantısı yerine diğerleri gibi kare
+        AllEntry(id: "features", titleKey: "all.editFeatures", icon: "square.grid.3x3", cat: .more, feature: nil, route: .features,
+                 words: ["features.title", "features.barTitle"]),
     ]
 
     /// Aramada ayar sayfaları da çıkar
@@ -167,6 +170,7 @@ enum AllPrefs {
 struct AllView: View {
     @State private var router = Router.shared
     @AppStorage(AllPrefs.favsKey) private var favsRaw = ""
+    @AppStorage("all.closed") private var closedRaw = ""
     @AppStorage(AllPrefs.recentKey) private var recentRaw = ""
     @AppStorage(Features.key) private var features = ""
     @Environment(\.horizontalSizeClass) private var hsc
@@ -194,12 +198,6 @@ struct AllView: View {
         .themedBackground()
         .navigationTitle(L("tab.all"))
         .navigationBarTitleDisplayMode(.large)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button { router.toolsPath.append(.settings) } label: { Image(systemName: "gearshape") }
-                    .accessibilityLabel(L("settings.title"))
-            }
-        }
         .overlay(alignment: .bottom) {
             if let t = toast {
                 Text(t)
@@ -222,25 +220,26 @@ struct AllView: View {
         let favs = AllPrefs.list(favsRaw).compactMap(AllPrefs.byID).filter(AllPrefs.visible)
         let recent = AllPrefs.list(recentRaw).compactMap(AllPrefs.byID).filter(AllPrefs.visible)
         let top = favs.isEmpty ? recent : favs
-        sectionTitle(favs.isEmpty && !recent.isEmpty ? L("all.recent") : L("all.favs"))
-        if top.isEmpty {
-            Text(L("all.favHint")).font(.footnote).foregroundStyle(Theme.muted)
-        } else {
-            grid(top, fav: !favs.isEmpty)
-            if favs.isEmpty { Text(L("all.favHint")).font(.caption).foregroundStyle(Theme.muted) }
+        // Bütün başlıklar açılır kapanır, varsayılan açık (sahibin isteği, 15 Kasım 2026); kapalılar `all.closed`
+        sectionTitle(favs.isEmpty && !recent.isEmpty ? L("all.recent") : L("all.favs"), key: "top")
+        if isOpen("top") {
+            if top.isEmpty {
+                Text(L("all.favHint")).font(.footnote).foregroundStyle(Theme.muted)
+            } else {
+                grid(top, fav: !favs.isEmpty)
+                if favs.isEmpty { Text(L("all.favHint")).font(.caption).foregroundStyle(Theme.muted) }
+            }
         }
         ForEach(AllCat.allCases, id: \.self) { cat in
             let list = AllPrefs.entries.filter { $0.cat == cat && AllPrefs.visible($0) }
             if !list.isEmpty {
-                sectionTitle(cat.title).padding(.top, 8)
-                grid(list, fav: false)
+                sectionTitle(cat.title, key: "\(cat)").padding(.top, 8)
+                if isOpen("\(cat)") { grid(list, fav: false) }
             }
         }
-        Button { router.toolsPath.append(.features) } label: {
-            Text(L("all.editFeatures") + " ›").font(.subheadline.weight(.semibold))
-        }
-        .padding(.top, 14)
     }
+
+    private func isOpen(_ key: String) -> Bool { !AllPrefs.list(closedRaw).contains(key) }
 
     @ViewBuilder private var results: some View {
         let found = AllPrefs.search(query)
@@ -276,8 +275,23 @@ struct AllView: View {
         .buttonStyle(.plain)
     }
 
-    private func sectionTitle(_ text: String) -> some View {
-        Text(text).font(.footnote.weight(.semibold)).foregroundStyle(Theme.muted).padding(.top, 8)
+    private func sectionTitle(_ text: String, key: String) -> some View {
+        let open = isOpen(key)
+        return Button {
+            var set = AllPrefs.list(closedRaw)
+            if open { set.append(key) } else { set.removeAll { $0 == key } }
+            withAnimation(.easeInOut(duration: 0.2)) { closedRaw = set.joined(separator: ",") }
+        } label: {
+            HStack {
+                Text(text).font(.footnote.weight(.semibold)).foregroundStyle(Theme.muted)
+                Spacer()
+                Image(systemName: open ? "chevron.up" : "chevron.down").font(.caption.weight(.semibold)).foregroundStyle(Theme.muted)
+            }
+            .padding(.top, 8)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(.isHeader)
     }
 
     private func grid(_ list: [AllEntry], fav: Bool) -> some View {

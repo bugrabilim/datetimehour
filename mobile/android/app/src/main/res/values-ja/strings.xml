@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">下のバーは回答に合わせて整いました。時計はいつも先頭、すべてのツールは「すべて」にあります。</string>
     <string name="onboard_summary_on">オンにした項目</string>
     <string name="onboard_summary_none">時計とツールだけがオンです。いつでも 設定 › 機能 から追加できます。</string>
+    <string name="onboard_continueTour">ツアーを続ける</string>
     <string name="onboard_trust_title">データはあなたの手元に</string>
     <string name="onboard_trust_text">アカウントも広告もトラッキングもありません。位置情報、個人情報、カレンダー、健康データが私たちに届くことはなく、どのサーバーにも保存されません。許可はあなたのスマートフォンの中だけで使われます。</string>
     <string name="onboard_trust_services">天気と近くのモスクの検索には、おおよその位置（約1km）だけがそのサービスに送られます。あなたが誰かは送られません。</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">集中ブロック専用で、選んだアプリが開いたときに知らせます。この情報は端末の外に出ません。</string>
     <string name="perms_dnd_title">おやすみモードへのアクセス</string>
     <string name="perms_dnd_why">礼拝時刻にスマートフォンを消音するためだけに使います。許可しないと自動消音は動きません。</string>
-    <string name="onboard_more_title">ほかにどんな機能があるか見てみますか？</string>
-    <string name="onboard_more_text">ほかの機能を短いページで1つずつご紹介します。「いいえ」の場合も、すべて「すべて」にあります。</string>
     <string name="onboard_tour_alarm_title">アラームと睡眠</string>
     <string name="onboard_tour_alarm_text">マナーモードでも鳴るアラーム。止めるには計算、振る、コードの読み取りなどのタスク。睡眠プラン、睡眠用サウンド、スマートアラームも。</string>
     <string name="onboard_tour_prayer_title">礼拝時刻と礼拝</string>

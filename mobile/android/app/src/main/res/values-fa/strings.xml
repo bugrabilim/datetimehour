@@ -3897,6 +3897,7 @@
     <string name="onboard_summary_text">نوار پایین بر اساس پاسخ‌هایتان آماده شد. ساعت همیشه اول است و همه‌ی ابزارها در «همه» هستند.</string>
     <string name="onboard_summary_on">بخش‌های روشن</string>
     <string name="onboard_summary_none">فقط ساعت و ابزارها روشن‌اند. هر وقت خواستید از تنظیمات › ویژگی‌ها بخش اضافه کنید.</string>
+    <string name="onboard_continueTour">ادامهٔ معرفی</string>
     <string name="onboard_trust_title">داده‌هایتان پیش خودتان می‌ماند</string>
     <string name="onboard_trust_text">بدون حساب، بدون تبلیغ، بدون ردیابی. موقعیت، اطلاعات شخصی، تقویم و داده‌های سلامت شما به ما نمی‌رسد و روی هیچ سروری از ما ذخیره نمی‌شود. مجوزها فقط درون گوشی شما کار می‌کنند.</string>
     <string name="onboard_trust_services">برای آب‌وهوا و مسجدهای نزدیک فقط موقعیت تقریبی (حدود 1 کیلومتر) به سرویس مربوط فرستاده می‌شود، هرگز هویت شما.</string>
@@ -3945,8 +3946,6 @@
     <string name="perms_usage_why">فقط برای مسدودسازی تمرکز، تا هنگام باز شدن برنامه‌ی انتخابی هشدار دهد. این اطلاعات از گوشی بیرون نمی‌رود.</string>
     <string name="perms_dnd_title">دسترسی به «مزاحم نشوید»</string>
     <string name="perms_dnd_why">فقط برای بی‌صدا کردن گوشی هنگام رسیدن وقت نماز. اگر ندهید، بی‌صدا شدن خودکار کار نمی‌کند.</string>
-    <string name="onboard_more_title">می‌خواهید ببینید چه امکانات دیگری هست؟</string>
-    <string name="onboard_more_text">امکانات دیگر را یکی‌یکی در چند صفحهٔ کوتاه نشان می‌دهیم. اگر نه، همه در «همه» منتظر شما هستند.</string>
     <string name="onboard_tour_alarm_title">زنگ هشدار و خواب</string>
     <string name="onboard_tour_alarm_text">زنگی که در حالت بی‌صدا هم به صدا درمی‌آید، با کارهایی برای خاموش کردنش مثل حساب، تکان دادن یا اسکن کد. برنامهٔ خواب، صداهای خواب و زنگ هوشمند.</string>
     <string name="onboard_tour_prayer_title">اوقات نماز و عبادت</string>
