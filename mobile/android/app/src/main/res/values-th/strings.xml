@@ -4088,7 +4088,7 @@
     <string name="circle_err_taken">มีคนอื่นรับญุซอ์นี้แล้ว</string>
     <string name="circle_err_ended">กลุ่มนี้สิ้นสุดแล้ว</string>
     <string name="circle_privacyNote">ชื่อของคุณในกลุ่มคือชื่อที่แสดงในหน้าบัญชี มีเพียงสมาชิกที่เห็น คุณรายงานชื่อที่ไม่เหมาะสม หรือบล็อกเพื่อซ่อนบุคคลได้</string>
-    <string name="group_title">กลุ่ม</string>
+    <string name="group_title">กลุ่มร่วมกัน</string>
     <string name="group_intro">นับถอยหลังร่วมกัน นาฬิกาโลก โหวตเวลาประชุม และอื่นๆ กับครอบครัว เพื่อน หรือทีมของคุณ กลุ่มเป็นแบบส่วนตัว เข้าร่วมได้ด้วยรหัสเชิญเท่านั้น</string>
     <string name="group_closed">กลุ่มจะเปิดเร็วๆ นี้</string>
     <string name="group_empty">คุณยังไม่มีกลุ่ม</string>

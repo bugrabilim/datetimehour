@@ -3384,19 +3384,22 @@ function errorPage(kind) {
     searchVersion: searchVersion.tr,
   });
 }
-/* ---------- halka daveti (üyelik aşama 2c, 15 Kasım 2026): /davet/#KOD, bütün diller bir arada, noindex ----------
+/* ---------- halka ve grup daveti (üyelik aşama 2c, 15 Kasım 2026): /davet/#KOD (grup: #g:KOD), bütün diller bir arada, noindex ----------
    Uygulamadaki "Davet et" bu adresi paylaşır. invite.js tarayıcının diline uyan bölümü gösterir; uygulama kuruluysa
    "Uygulamada aç" saattarih://davet?kod=KOD açar (Android'de https bağlantısı da uygulamayı önerir). */
 function invitePage() {
   const block = (lang, s) => `<section class="center-page" data-invite="${lang}" lang="${lang}" dir="${DIR(lang)}"${lang === "en" ? "" : " hidden"}>
   <div class="wrap">
-    <h1>${esc(s.h1)}</h1>
-    <p class="lead">${esc(s.lead)}</p>
+    <h1 data-invite-kind="circle">${esc(s.h1)}</h1>
+    <h1 data-invite-kind="group" hidden>${esc(s.h1Group)}</h1>
+    <p class="lead" data-invite-kind="circle">${esc(s.lead)}</p>
+    <p class="lead" data-invite-kind="group" hidden>${esc(s.leadGroup)}</p>
     <div data-invite-has hidden>
       <p class="invite-label">${esc(s.code)}</p>
       <p class="invite-code" dir="ltr" data-invite-code></p>
       <p><a class="btn" data-invite-open href="saattarih://davet">${esc(s.open)}</a></p>
-      <p>${esc(s.how)}</p>
+      <p data-invite-kind="circle">${esc(s.how)}</p>
+      <p data-invite-kind="group" hidden>${esc(s.howGroup)}</p>
       <p><a href="https://apps.apple.com/app/id6823767495">${esc(s.get)}</a></p>
     </div>
     <p data-invite-none>${esc(s.none)}</p>

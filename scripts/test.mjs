@@ -40,7 +40,7 @@ for (const f of htmlFiles) {
   const desc = (h.match(/<meta name="description" content="([^"]*)"/) || [])[1];
   check(title, `${name}: title yok`);
   check(desc || embed, `${name}: description yok`);
-  check((h.match(/<h1[ >]/g) || []).length === (embed ? 0 : err ? LANGS.length : 1), `${name}: H1 sayısı hatalı`);
+  check((h.match(/<h1[ >]/g) || []).length === (embed ? 0 : err ? LANGS.length * (name === "/davet/index.html" ? 2 : 1) : 1), `${name}: H1 sayısı hatalı`);
   check(new RegExp(`<html lang="(${LG})" dir="(ltr|rtl)"`).test(h), `${name}: html lang/dir yok`);
   const hl = (h.match(/<html lang="(\w+)" dir="(\w+)"/) || []);
   check(hl[2] === (RTL.includes(hl[1]) ? "rtl" : "ltr"), `${name}: dir değeri hatalı`);
@@ -841,6 +841,8 @@ for (const l of LANGS) {
 {
   const inv = fs.readFileSync(path.join(DIST, "davet", "index.html"), "utf8");
   check((inv.match(/data-invite="/g) || []).length === LANGS.length && /saattarih:\/\/davet/.test(inv) && /invite\.js/.test(inv) && /noindex/.test(inv), "davet sayfası yanlış");
+  check((inv.match(/data-invite-kind="group"/g) || []).length === LANGS.length * 3, "davet sayfası: grup metinleri eksik");
+  check(/tur=grup/.test(fs.readFileSync(path.join(DIST, "assets", "invite.js"), "utf8")), "davet: grup bağlantısı yok");
   check(!fs.readFileSync(path.join(DIST, "sitemap.xml"), "utf8").includes("/davet/"), "sitemap: davet sayfası olmamalı");
 }
 

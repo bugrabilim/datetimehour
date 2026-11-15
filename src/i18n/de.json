@@ -3486,6 +3486,9 @@
     "open": "In der App öffnen",
     "how": "Falls sich die App nicht öffnet: In Saat Tarih Alle › Kreise › Mit Code beitreten antippen und diesen Code eingeben. Für Kreise ist ein kostenloses Konto nötig.",
     "get": "Im App Store laden",
-    "none": "Dieser Link enthält keinen Einladungscode. Bitten Sie die einladende Person, ihn erneut zu senden."
+    "none": "Dieser Link enthält keinen Einladungscode. Bitten Sie die einladende Person, ihn erneut zu senden.",
+    "howGroup": "Falls sich die App nicht öffnet: In Saat Tarih Alle › Gruppen › Mit Code beitreten antippen und diesen Code eingeben. Für Gruppen ist ein kostenloses Konto nötig.",
+    "h1Group": "Sie wurden in eine Gruppe eingeladen",
+    "leadGroup": "Sie wurden in der App Saat Tarih in eine gemeinsame Gruppe eingeladen: Countdown, Weltuhr, Terminumfrage, Fokusraum, Wecker oder Himmelsbeobachtung."
   }
 }

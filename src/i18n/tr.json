@@ -3459,6 +3459,9 @@
     "open": "Uygulamada aç",
     "how": "Uygulama açılmazsa Saat Tarih'te Tümü › Halkalar › Kodla katıl adımlarına dokunup bu kodu yazın. Halkalar için ücretsiz bir hesap gerekir.",
     "get": "App Store'dan indirin",
-    "none": "Bu bağlantıda davet kodu yok. Sizi davet edenden bağlantıyı yeniden göndermesini isteyin."
+    "none": "Bu bağlantıda davet kodu yok. Sizi davet edenden bağlantıyı yeniden göndermesini isteyin.",
+    "howGroup": "Uygulama açılmazsa Saat Tarih'te Tümü › Gruplar › Kodla katıl adımlarına dokunup bu kodu yazın. Gruplar için ücretsiz bir hesap gerekir.",
+    "h1Group": "Gruba davet edildiniz",
+    "leadGroup": "Saat Tarih uygulamasında ortak bir geri sayım, dünya saati, toplantı oylaması, odak odası, alarm ya da gözlem grubuna davet edildiniz."
   }
 }

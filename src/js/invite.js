@@ -1,4 +1,4 @@
-/* Halka daveti (üyelik aşama 2c, 15 Kasım 2026): /davet/#KOD. Kod adresin # kısmındadır (sunucuya gitmez); sayfa
+/* Halka ve grup daveti (üyelik aşama 2c, 15 Kasım 2026): /davet/#KOD, grup için /davet/#g:KOD. Kod adresin # kısmındadır (sunucuya gitmez); sayfa
    tarayıcının diline uyan bölümü gösterir, kodu yazar ve "Uygulamada aç" düğmesine saattarih://davet?kod=KOD verir. */
 (function () {
   "use strict";
@@ -14,10 +14,15 @@
   blocks.forEach(function (b) { b.hidden = b !== pick; });
   document.documentElement.lang = pick.getAttribute("lang") || "en";
   document.documentElement.dir = pick.getAttribute("dir") || "ltr";
-  var code = decodeURIComponent((location.hash || "").slice(1)).toUpperCase().replace(/[^A-Z0-9]/g, "");
+  var raw = decodeURIComponent((location.hash || "").slice(1));
+  var group = /^g:/i.test(raw);
+  var code = (group ? raw.slice(2) : raw).toUpperCase().replace(/[^A-Z0-9]/g, "");
   var ok = code.length === 8;
+  pick.querySelectorAll("[data-invite-kind]").forEach(function (el) {
+    el.hidden = el.getAttribute("data-invite-kind") !== (group ? "group" : "circle");
+  });
   pick.querySelectorAll("[data-invite-code]").forEach(function (el) { el.textContent = code; });
   pick.querySelectorAll("[data-invite-has]").forEach(function (el) { el.hidden = !ok; });
   pick.querySelectorAll("[data-invite-none]").forEach(function (el) { el.hidden = ok; });
-  pick.querySelectorAll("[data-invite-open]").forEach(function (el) { el.href = "saattarih://davet?kod=" + code; });
+  pick.querySelectorAll("[data-invite-open]").forEach(function (el) { el.href = "saattarih://davet?kod=" + code + (group ? "&tur=grup" : ""); });
 })();

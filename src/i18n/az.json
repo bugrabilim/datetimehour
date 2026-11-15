@@ -3459,6 +3459,9 @@
     "open": "Tətbiqdə aç",
     "how": "Tətbiq açılmasa, Saat Tarih-də Hamısı › Halqalar › Kodla qoşul addımlarına toxunub bu kodu yazın. Halqalar üçün pulsuz hesab lazımdır.",
     "get": "App Store-dan yükləyin",
-    "none": "Bu keçiddə dəvət kodu yoxdur. Sizi dəvət edəndən keçidi yenidən göndərməsini xahiş edin."
+    "none": "Bu keçiddə dəvət kodu yoxdur. Sizi dəvət edəndən keçidi yenidən göndərməsini xahiş edin.",
+    "howGroup": "Tətbiq açılmasa, Saat Tarih-də Hamısı › Qruplar › Kodla qoşul addımlarına toxunub bu kodu yazın. Qruplar üçün pulsuz hesab lazımdır.",
+    "h1Group": "Qrupa dəvət olunmusunuz",
+    "leadGroup": "Saat Tarix tətbiqində ortaq geri sayım, dünya saatı, görüş səsverməsi, diqqət otağı, zəngli saat və ya müşahidə qrupuna dəvət olunmusunuz."
   }
 }

@@ -3459,6 +3459,9 @@
     "open": "Buka di aplikasi",
     "how": "Jika aplikasi tidak terbuka, buka Semua › Lingkaran › Gabung dengan kode di Saat Tarih lalu masukkan kode ini. Lingkaran memerlukan akun gratis.",
     "get": "Unduh di App Store",
-    "none": "Tautan ini tidak berisi kode undangan. Minta orang yang mengundang Anda untuk mengirimkannya lagi."
+    "none": "Tautan ini tidak berisi kode undangan. Minta orang yang mengundang Anda untuk mengirimkannya lagi.",
+    "howGroup": "Jika aplikasi tidak terbuka, buka Semua › Grup › Gabung dengan kode di Saat Tarih lalu masukkan kode ini. Grup memerlukan akun gratis.",
+    "h1Group": "Anda diundang ke sebuah grup",
+    "leadGroup": "Anda diundang ke grup bersama di aplikasi Saat Tarih: hitung mundur, jam dunia, polling rapat, ruang fokus, alarm, atau pengamatan langit."
   }
 }

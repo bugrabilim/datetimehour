@@ -3539,6 +3539,9 @@
     "open": "Abrir no app",
     "how": "Se o app não abrir, vá em Tudo › Círculos › Entrar com um código no Saat Tarih e digite este código. Os círculos exigem uma conta gratuita.",
     "get": "Baixar na App Store",
-    "none": "Este link não tem código de convite. Peça a quem convidou você para enviá-lo novamente."
+    "none": "Este link não tem código de convite. Peça a quem convidou você para enviá-lo novamente.",
+    "howGroup": "Se o app não abrir, vá em Tudo › Grupos › Entrar com um código no Saat Tarih e digite este código. Os grupos exigem uma conta gratuita.",
+    "h1Group": "Você foi convidado para um grupo",
+    "leadGroup": "Você foi convidado no app Saat Tarih para um grupo compartilhado: contagem regressiva, relógio mundial, votação de reunião, sala de foco, alarme ou observação do céu."
   }
 }

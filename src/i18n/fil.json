@@ -3525,6 +3525,9 @@
     "open": "Buksan sa app",
     "how": "Kung hindi bumukas ang app, pumunta sa Lahat › Mga Circle › Sumali gamit ang code sa Saat Tarih at ilagay ang code na ito. Kailangan ng libreng account para sa mga circle.",
     "get": "I-download sa App Store",
-    "none": "Walang invite code ang link na ito. Hilingin sa nag-imbita sa iyo na ipadala itong muli."
+    "none": "Walang invite code ang link na ito. Hilingin sa nag-imbita sa iyo na ipadala itong muli.",
+    "howGroup": "Kung hindi bumukas ang app, pumunta sa Lahat › Mga Grupo › Sumali gamit ang code sa Saat Tarih at ilagay ang code na ito. Kailangan ng libreng account para sa mga grupo.",
+    "h1Group": "Inimbitahan ka sa isang grupo",
+    "leadGroup": "Inimbitahan ka sa isang shared na grupo sa Saat Tarih app: countdown, world clock, botohan sa pulong, focus room, alarm o pagmamasid sa langit."
   }
 }
