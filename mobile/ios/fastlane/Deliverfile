@@ -2,7 +2,7 @@
 # Bu dosya yoksa deliver kurulum sorusu sorar ve CI'da durur.
 app_identifier("tr.bumba.time")
 platform("ios")
-app_version("1.0")
+app_version("1.1")
 metadata_path("./fastlane/metadata")
 screenshots_path("./fastlane/screenshots")
 overwrite_screenshots(true)
