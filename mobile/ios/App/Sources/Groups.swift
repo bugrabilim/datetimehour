@@ -671,7 +671,7 @@ private struct GroupPollSection: View {
 
     private func reset() {
         let mine = members.first(where: { $0["sen"] as? Bool == true })?["oy"] as? [Int]
-        votes = slots.indices.map { mine.map { m in $0 < m.count ? m[$0] : 0 } ?? 0 }
+        votes = slots.indices.map { i in mine.map { m in i < m.count ? m[i] : 0 } ?? 0 }
     }
 }
 
