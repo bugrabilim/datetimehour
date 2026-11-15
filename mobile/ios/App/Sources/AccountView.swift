@@ -150,6 +150,8 @@ private struct AccountSignedOut: View {
     @State private var err: String?
     @State private var info: String?
     @State private var canResend = false
+    /// Kayıttaki onay cümlesi merkezden (standart 5.20); gelene kadar ya da gelmezse uygulamadaki kopya
+    @State private var consent: String?
 
     init(notice: String?) {
         self.notice = notice
@@ -206,7 +208,8 @@ private struct AccountSignedOut: View {
                             return await Account.shared.signUp(email: email, password: password)
                         }) { _ in password = ""; mode = "done"; canResend = true }
                     } label: { BusyLabel(A("signUp"), busy: busy) }
-                    LinkedText(raw: A("consent"))
+                    LinkedText(raw: consent ?? A("consent"))
+                        .task(id: mode) { if consent == nil { consent = await Account.shared.consentText() } }
                 }
             case "link":
                 Text(A("bumbaNote")).font(.subheadline).foregroundStyle(Theme.muted)

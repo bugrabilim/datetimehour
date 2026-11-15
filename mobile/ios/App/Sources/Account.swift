@@ -142,6 +142,20 @@ final class Account {
         return Result(data: Data(((Self.json(r.body)?["durum"] as? String) ?? "yok").utf8))
     }
 
+    /// Kayıttaki onay cümlesi merkezden (standart 5.20; sunucu `/v1/onay-cumlesi`, sürümüyle). Alınamazsa ya da
+    /// bağlantılar ortak metinlere gitmiyorsa nil: ekran uygulamadaki kopyayı (`account.consent`) gösterir.
+    func consentText() async -> String? {
+        let r = await call("GET", "/v1/onay-cumlesi?dil=\(Self.lang)")
+        guard r.code == 200, let m = Self.json(r.body)?["metin"] as? String, Self.safeConsent(m) else { return nil }
+        return m
+    }
+    nonisolated static func safeConsent(_ m: String) -> Bool {
+        guard !m.trimmingCharacters(in: .whitespaces).isEmpty, m.count <= 2000,
+              let re = try? NSRegularExpression(pattern: #"\]\(([^)\s]+)\)"#) else { return false }
+        let links = re.matches(in: m, range: NSRange(m.startIndex..., in: m)).compactMap { Range($0.range(at: 1), in: m).map { String(m[$0]) } }
+        return !links.isEmpty && links.allSatisfy { $0.range(of: #"^https://bumbagroup\.com/uyelik-(aydinlatma|sozlesmesi)(\?dil=en)?$"#, options: .regularExpression) != nil }
+    }
+
     /// Kayıt: yalnız e-posta ve şifre (onay kaydını sunucu tutar); dil ve saat dilimi e-postalar için
     func signUp(email: String, password: String) async -> Result {
         guard Self.validEmail(email) else { return .fail("account.err.email") }

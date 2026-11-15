@@ -31,6 +31,8 @@ export async function startCenter() {
     c.calls.push({ op, body, auth: req.headers.authorization, site: req.headers["x-bumba-site"] });
     const out = (s, o) => { res.writeHead(s, { "Content-Type": "application/json" }); res.end(JSON.stringify(o)); };
     if (c.down) return out(503, { hata: "kapali" });
+    // Kayıttaki onay cümlesi (herkese açık uç, anahtar istemez); c.consent verilmediyse yok sayılır
+    if (req.url.includes("/onay-cumlesi")) return c.consent ? out(200, c.consent) : out(404, {});
     if (req.headers.authorization !== `Bearer ${CENTER_KEY}` || req.headers["x-bumba-site"] !== "saat-tarih") return out(401, {});
     const e = String(body.eposta || "").toLowerCase();
     if (op === "sorgula") {

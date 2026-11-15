@@ -143,3 +143,27 @@ test("kapalı üyelik: sayfalar 'şu an kapalı' der", async () => {
   assert.match(html, /dir="rtl"/);
   await app.close();
 });
+
+test("onay cümlesi merkezden: kayıt sayfası ve /v1/onay-cumlesi; bozuk bağlantılı dil İngilizceye düşer", async () => {
+  const UIj = JSON.parse(await (await import("node:fs/promises")).readFile(new URL("../i18n/account.json", import.meta.url), "utf8"));
+  // Merkez yokken koddaki kopya
+  let r = await t.req("/v1/onay-cumlesi?dil=de");
+  assert.equal(r.status, 200);
+  assert.equal(r.json.surum, "2026-11-14");
+  assert.equal(r.json.metin, UIj.de.consent);
+  const de = "Neu: [Datenschutz](https://bumbagroup.com/uyelik-aydinlatma?dil=en) und [Bedingungen](https://bumbagroup.com/uyelik-sozlesmesi?dil=en).";
+  t.center.consent = { surum: "2099-01-01", diller: [
+    { kod: "tr", rtl: false, metin: UIj.tr.consent },
+    { kod: "en", rtl: false, metin: "EN: [Privacy](https://bumbagroup.com/uyelik-aydinlatma?dil=en) and [Terms](https://bumbagroup.com/uyelik-sozlesmesi?dil=en)." },
+    { kod: "de", rtl: false, metin: de },
+    { kod: "fr", rtl: false, metin: "Mauvais [lien](https://example.com/x)." },
+  ] };
+  assert.equal(await t.app.consent.refresh(), true);
+  r = await t.req("/v1/onay-cumlesi?dil=de-AT");
+  assert.deepEqual(r.json, { surum: "2099-01-01", kod: "de", rtl: false, metin: de });
+  r = await t.req("/v1/onay-cumlesi?dil=fr");
+  assert.equal(r.json.kod, "en", "başka adrese bağlantılı metin alınmaz");
+  const page = await t.req("/kayit?dil=de");
+  assert.ok(page.text.includes(`<a href="https://bumbagroup.com/uyelik-aydinlatma?dil=en" target="_blank" rel="noopener">Datenschutz</a>`));
+  t.center.consent = null;
+});

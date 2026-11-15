@@ -282,6 +282,9 @@ private fun SignedOut(initialNotice: String?) {
     var err by remember { mutableStateOf<String?>(null) }
     var info by remember { mutableStateOf(initialNotice) }
     var canResend by remember { mutableStateOf(false) }
+    // Kayıttaki onay cümlesi merkezden (standart 5.20); gelene kadar ya da gelmezse uygulamadaki kopya
+    var consent by remember { mutableStateOf<String?>(null) }
+    LaunchedEffect(mode) { if (mode == "up" && consent == null) consent = Account.consentText() }
     fun run(block: suspend () -> Account.Result, onOk: (Account.Result) -> Unit = {}) {
         if (busy) return
         busy = true; err = null; info = null
@@ -329,7 +332,7 @@ private fun SignedOut(initialNotice: String?) {
                         }
                     }) { password = ""; mode = "done"; canResend = true }
                 }
-                LinkedText(A("consent"))
+                LinkedText(consent ?: A("consent"))
             }
             "link" -> {
                 SectionTitle(A("bumbaSignIn"))

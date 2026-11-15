@@ -3,7 +3,7 @@
 Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"). Biten iş silinir; geçmiş git'te.
 
 ## Sahibe sorular
-- Hesap sunucusunun güncellenmesi: ana altyapı `saat-hesap`'ı main/HEAD'e çevirip otomatik yayını açsın mı? Canlıdaki sunucu `33c5ee7`'de; profil fotoğrafının sunucuda WebP'ye çevrilmesi (`sharp`) ve Safari'nin JPEG yedeği ancak bununla canlıya çıkar. O zamana kadar iOS (TestFlight 31) ve Safari'de profil fotoğrafı yüklenemez. (15 Kasım 2026)
+- "Global düşün" (standart 5.20): Türkiye'ye sabitlenmiş yerlerin düzeltme sırası (liste sahibe 15 Kasım 2026'da raporlandı). (15 Kasım 2026)
 
 ## Sahipte
 - App Store 1.1 gönderimi (canlı sırası, bitti): yukarıdaki iOS işleri + 24 dil sürümünde mağaza metinleri (nötr adlar, yeni dil sürümleri en-GB, en-AU, en-CA, fr-CA, es-MX, pt-PT, zh-Hant, ms, ur-PK, bn-BD) ve ülkeye göre ekran görüntüsü sırası; sahibin onayıyla; `MARKETING_VERSION` ve `Deliverfile` `app_version` 15 Kasım 2026'da 1.1 oldu (TestFlight yapı 31); göndermeden önce 24 dil sürümünde `release_notes.txt`, App Store Connect Uygulama Gizliliği (e-posta, ad, kullanıcı kimliği), App Review deneme hesabı (depoya yazılmaz). (13 Kasım 2026)
@@ -16,13 +16,13 @@ Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"
 - Yeni dil ya da yeni kapsayıcı takvim: ancak sahip isterse (Ermeni takvimi bilerek yok). (10 Kasım 2026)
 
 ## Bu oturumda
+- Onay cümlesinin merkezden alınması (standart 5.20; sunucu `consent.mjs`, `/v1/onay-cumlesi`, uygulamalar `Account.consentText`): bitti, dalda; main'e birleştirme (sunucu ve site yayını) sahibin onayıyla. (15 Kasım 2026)
 - App Store 1.1 ve ilk Play gönderiminden önce standart "Mobil yayın" kontrol listesini sahibe raporla. (14 Kasım 2026)
 - Üyelik aşama 2 (ücretsiz, üyelik zorunlu): ortak zikir ve hatim, uyanma grupları, favori cami notlarının paylaşımı; sıra `docs/uyelik-plani-2026-11.md`'de. Sahibin "başla" demesini bekliyor. (10 Kasım 2026)
 
 ## Başkasında
-- Ana altyapı oturumu: hesap sunucusu (`hesap.time.bumba.tr`) `33c5ee7` ile canlıda, iki günlük görev açık; main/HEAD'e geçiş ve otomatik yayın sahibin onayını bekliyor (yukarıda Sahibe sorular). (15 Kasım 2026)
+- Ana altyapı oturumu: hesap sunucusu `saat-hesap`'ın main/HEAD'e geçirilmesi ve otomatik yayının açılması (sahibin onayı 15 Kasım 2026; `33c5ee7`'den sonraki fotoğraf WebP çevirisi bununla canlıya çıkar). (15 Kasım 2026)
 - Ana altyapı oturumu: yönetim paneli uçları (`/api/bumba-panel/ozet|uyeler|uye`) hazır; merkezdeki kayıt ve uçtan uca deneme. (14 Kasım 2026)
-- Ana altyapı oturumu: kayıttaki onay cümlesinin 19 dildeki çevirisi iletildi; bumbagroup.com'daki yerinin belirlenmesi. (14 Kasım 2026)
 - MEB 2027-2028 çalışma takvimi: yayımlanınca `src/data/school.json`. (6 Kasım 2026)
 - Fitre 2027: Diyanet Ocak 2027'de açıklayınca `src/data/fitre.json`; BAZNAS 2027 kararları (zekât fitrah, fidye). Bakılacak tarih: Ocak 2027. (6 Kasım 2026)
 - Diyanet 2027 takvimi ve vakit tablosu: yayımlanınca `holidays.json` ve `node scripts/fetch-hijri.mjs`. (8 Kasım 2026)
