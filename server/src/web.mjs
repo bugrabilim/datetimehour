@@ -42,7 +42,7 @@ function pickLang(req, url, user) {
   return "en";
 }
 
-export function webRoutes({ cfg, closed, accounts, center }) {
+export function webRoutes({ cfg, closed, accounts, center, consent }) {
   function page(res, { lang, title, body, data = {}, stats = true, theme = "system", status = 200 }) {
     const t = UI[lang];
     const dir = RTL.has(lang) ? "rtl" : "ltr";
@@ -134,7 +134,7 @@ export function webRoutes({ cfg, closed, accounts, center }) {
 <form data-form="signup" novalidate><label>${esc(t.email)}<input type="email" name="email" autocomplete="email" required></label>
 <div data-bumba hidden><p>${esc(t.bumbaQ)}</p><p class="muted">${esc(t.bumbaNote)}</p><div class="row"><button type="button" class="primary" data-bumba-yes>${esc(t.yes)}</button><button type="button" data-bumba-no>${esc(t.no)}</button></div></div>
 <div data-signup-rest><label>${esc(t.password)}<input type="password" name="password" autocomplete="new-password" required aria-describedby="pwr"></label><div id="pwr">${pw}</div>
-<div data-msg></div><button type="submit" class="primary">${esc(t.signUp)}</button><p class="consent">${linkify(t.consent)}</p></div></form>
+<div data-msg></div><button type="submit" class="primary">${esc(t.signUp)}</button><p class="consent">${linkify(consent ? consent.get(lang).metin : t.consent)}</p></div></form>
 <form data-form="link" hidden novalidate><h2>${esc(t.bumbaSignIn)}</h2><p class="muted">${esc(t.bumbaNote)}</p><label>${esc(t.email)}<input type="email" name="email" autocomplete="username" readonly></label>
 <label>${esc(t.password)}<input type="password" name="password" autocomplete="current-password" required></label><div data-msg></div><button type="submit" class="primary">${esc(t.signIn)}</button>
 <p><a href="/giris?dil=${lang}">${esc(t.forgot)}</a></p></form>

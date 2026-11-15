@@ -22,6 +22,7 @@ import { createLimiter, ipOf } from "./limit.mjs";
 import { readJson, send, json } from "./http.mjs";
 import { webRoutes } from "./web.mjs";
 import { panelRoutes } from "./panel.mjs";
+import { createConsent } from "./consent.mjs";
 
 const SEC_HEADERS = {
   "Strict-Transport-Security": "max-age=31536000",
@@ -66,6 +67,9 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
   pool ||= new pg.Pool({ connectionString: cfg.databaseUrl, max: 10 });
   mailer ||= createMailer(cfg);
   center ||= createCenter(cfg, fetchImpl);
+  // Kayıttaki onay cümlesi merkezden (standart 5.20); testlerde sahte merkez
+  const consent = createConsent({ url: `${cfg.centerUrl}/onay-cumlesi`, fetchImpl: fetchImpl || fetch });
+  consent.start();
   const options = authOptions(cfg, pool, mailer, center);
   await migrate(options, pool);
   const auth = betterAuth(options);
@@ -78,7 +82,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
   const records = createRecords(pool);
   const limit = createLimiter(pool, cfg.rateLimit);
   const linked = linkedRoutes({ cfg, auth, accounts, mailer, json, readJson });
-  const web = webRoutes({ cfg, closed: false, accounts, center });
+  const web = webRoutes({ cfg, closed: false, accounts, center, consent });
   const panel = panelRoutes({ cfg, pool, accounts, records, mailer, metrics, json, readJson });
   const ctxP = auth.$context;
 
@@ -157,6 +161,12 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       if (setCookie.length) headers["set-cookie"] = setCookie;
       res.writeHead(out.status, { ...headers, "Cache-Control": "no-store" });
       return res.end(Buffer.from(await out.arrayBuffer()));
+    }
+
+    // Kayıt ekranındaki onay cümlesi (uygulamalar; merkezden, sürümüyle)
+    if (p === "/v1/onay-cumlesi" && m === "GET") {
+      const c = consent.get(url.searchParams.get("dil"));
+      return json(res, 200, { surum: c.surum, kod: c.kod, rtl: c.rtl, metin: c.metin }, { "Cache-Control": "public, max-age=300" });
     }
 
     const s = await session(req);
@@ -360,9 +370,10 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     await new Promise((r) => server.close(r));
     await metrics.flush();
     metrics.stop();
+    consent.stop();
     await pool.end();
   }
-  return { server, auth, pool, mailer, center, metrics, accounts, records, close };
+  return { server, auth, pool, mailer, center, metrics, accounts, records, consent, close };
 }
 
 /* Doğrudan çalıştırma */

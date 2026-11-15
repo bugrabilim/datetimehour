@@ -7,7 +7,9 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
 
 ## Ne yapar
 - **Hesap:** e-posta + şifreyle kayıt ve giriş; Google, Apple ya da başka giriş yok. Kayıtta yalnız e-posta ve şifre
-  alınır, onay kaydı `{zaman, sürüm 2026-11-11}` tutulur.
+  alınır, onay kaydı `{zaman, sürüm 2026-11-11}` tutulur. Kayıt ekranındaki onay cümlesi merkezden alınır
+  (standart 5.20; `src/consent.mjs`: `bumbagroup.com/api/uyelik/onay-cumlesi?dil=hepsi`, açılışta ve saatte bir; ulaşılamazsa
+  `i18n/account.json` `consent` kopyası, sürüm 2026-11-14; bağlantısı ortak metinler dışına giden metin alınmaz).
   - Şifre kuralı: 8–128 karakter, boşluksuz, rakam, büyük ve küçük harf, sembol. Alanın altında dört satır olarak
     görünür, sunucu da denetler.
   - E-posta doğrulaması zorunludur (bağlantı 24 saat). Şifre sıfırlama bağlantısı 1 saat geçerli, tek kullanımlık.
@@ -61,6 +63,7 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
 | `/api/auth/*` | Better Auth (kayıt, giriş, çıkış, oturumlar, şifre, e-posta, doğrulama) |
 | `/api/bumba-uyelik/<işlem>` | Ortak servisin ürün uçları (`dogrula`, `hesap-getir`, `hesap-ac`, `guncelle`, `hesap-sil`, `durum`, `numara-degistir`; `Bearer $UYELIK_ANAHTARI`) |
 | `/v1/uyelik/sorgula`, `/v1/uyelik/bagla` | Kayıt ekranındaki Bumba üyeliği sorusu |
+| `/v1/onay-cumlesi?dil=` | Kayıttaki onay cümlesi (merkezden; `{surum, kod, rtl, metin}`; uygulamalar) |
 | `/v1/hesap`, `/v1/profil`, `/v1/profil/foto`, `/v1/kutlama` | Hesap ve profil |
 | `/v1/eposta` | E-posta değişikliği (`{eposta, sifre}`; Better Auth'un `/change-email` ucu dışarıdan kapalı) |
 | `/v1/uyelik/durum`, `sifre-sec`, `urunler`, `ac`, `kapat` | Bağlı üyelik (birleşme, şifre seçimi) |

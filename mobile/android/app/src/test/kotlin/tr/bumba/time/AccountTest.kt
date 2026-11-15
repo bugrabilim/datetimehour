@@ -178,6 +178,22 @@ class AccountTest {
         assertTrue(L("account.consent").contains("](https://bumbagroup.com/uyelik-aydinlatma)")) // Türkçe arayüzde Türkçe metin
     }
 
+    @Test fun consentFromCenter() = runBlocking {
+        // Kayıttaki onay cümlesi sunucudan (merkezin metni); bağlantısı başka yere giden ya da gelmeyen metin yerine kopya
+        val ok = "Yeni: [Aydınlatma Metni](https://bumbagroup.com/uyelik-aydinlatma) ve [Sözleşme](https://bumbagroup.com/uyelik-sozlesmesi)."
+        var body = JSONObject().put("surum", "2099-01-01").put("kod", "tr").put("metin", ok).toString()
+        var code = 200
+        val paths = mutableListOf<String>()
+        Account.transport = { _, path, _, _ -> paths += path; Account.Resp(code, body, null) }
+        assertEquals(ok, Account.consentText())
+        assertTrue(paths.last().startsWith("/v1/onay-cumlesi?dil="))
+        body = JSONObject().put("metin", "Kötü [bağlantı](https://example.com/x)").toString()
+        assertEquals(null, Account.consentText())
+        code = 0
+        assertEquals(null, Account.consentText())
+        assertTrue("uygulamadaki kopya da kurala uyar", Account.safeConsent(L("account.consent")))
+    }
+
     @Test fun recordsSyncTypesAndLastWriter() = runBlocking {
         val st = Prefs.store
         st.edit().putInt("zikir.total", 33).putBoolean("h12", true).putString("world", "[\"london\"]").remove("pomo.goal").apply()

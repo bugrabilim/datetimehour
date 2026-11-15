@@ -120,6 +120,20 @@ object Account {
         return if (r.code == 200) Result(data = JSONObject(r.body).optString("durum", "yok")) else Result(errorOf(r))
     }
 
+    /** Kayıttaki onay cümlesi merkezden (standart 5.20; sunucu `/v1/onay-cumlesi`, sürümüyle). Alınamazsa ya da
+        bağlantılar ortak metinlere gitmiyorsa null: ekran uygulamadaki kopyayı (`account.consent`) gösterir. */
+    suspend fun consentText(): String? {
+        val r = call("GET", "/v1/onay-cumlesi?dil=${Strings.lang}")
+        if (r.code != 200) return null
+        val m = runCatching { JSONObject(r.body).optString("metin") }.getOrNull() ?: return null
+        return m.takeIf { safeConsent(it) }
+    }
+    fun safeConsent(m: String): Boolean {
+        val links = Regex("\\]\\(([^)\\s]+)\\)").findAll(m).map { it.groupValues[1] }.toList()
+        return m.isNotBlank() && m.length <= 2000 && links.isNotEmpty() &&
+            links.all { Regex("^https://bumbagroup\\.com/uyelik-(aydinlatma|sozlesmesi)(\\?dil=en)?$").matches(it) }
+    }
+
     /** Kayıt: yalnız e-posta ve şifre (onay kaydını sunucu tutar); dil ve saat dilimi e-postalar için */
     suspend fun signUp(email: String, password: String): Result {
         if (!validEmail(email)) return Result("account.err.email")
