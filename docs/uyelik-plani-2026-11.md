@@ -196,15 +196,36 @@ hesabı açılana kadar yalnız kodda.
     giderse halka en eski üyeye geçer; hesap silmede üye kalmadıysa 30 gün tutulur (temizlik görevi siler), ayrılmada
     hemen silinir. Yasaklanan üyede de aynı.
   - "Verilerimi indir"e halkalar ve onay kaydı eklendi.
-- **2b, uygulamalar (sırada):** Vakitler › İbadet'te "Halkalar" (giriş ister): liste, kur, kodla katıl, zikir
-  (zikirmatikten ekleme), 30 cüz ızgarası, üyeler, Bildir/Engelle/Çıkar, onay ekranı, rızayı geri alma; metinler 19 dil.
-- **2c, davet bağlantısı:** `https://time.bumba.tr/davet/#KOD` (statik sayfa, evrensel bağlantı; Associated Domains
-  sahipte).
-- **Yayından önce (sahibin onayıyla):** açık rıza ve aydınlatma metni (aşağıda taslak) sahibe gösterilir, gizlilik
-  sayfasına "Halkalar" bölümü (19 dil), App Store yaş derecelendirmesinde kullanıcı içeriği sorusu, Uygulama
-  Gizliliği'ne "Diğer kullanıcı içeriği", Play veri güvenliği formu, App Review notunda moderasyon akışı ve deneme hesabı.
+- **2b, uygulamalar (15 Kasım 2026, yapıldı, yayında değil):** Vakitler › İbadet ve Tümü › İbadet'te "Halkalar"
+  (giriş ister): liste, kur, kodla katıl, zikir (+33, +100), 30 cüz ızgarası, üyeler, Bildir/Engelle/Çıkar, onay
+  ekranı, rızayı geri alma; metinler 19 dil (`circle.*`). Android `Circles.kt`, iOS `Circles.swift`; sunucuda kapalıyken
+  "yakında" yazar. Android ekran görüntüleri `tr-halkalar`, `tr-halka-zikir`, `tr-halka-hatim`, `ar-halka-hatim`.
+- **2c, davet bağlantısı (15 Kasım 2026, yapıldı, yayında değil):** `https://time.bumba.tr/davet/#KOD` (grup için
+  `#g:KOD`): statik, noindex, 19 dil bir arada (`invite.js` tarayıcı diline göre gösterir), "Uygulamada aç" düğmesi
+  `saattarih://davet?kod=KOD` (grup `&tur=grup`), App Store bağlantısı. Android `https://time.bumba.tr/davet/` ve
+  `saattarih://davet` bağlantılarını açar (doğrulanmış App Links için `assetlinks.json` Play imzasıyla sonra); iOS
+  `saattarih://davet`. Evrensel bağlantı (Associated Domains + `apple-app-site-association`) sonra, sahibin onayıyla.
+- **2d, yedi ortak özellik (15 Kasım 2026, sahibin onayı "tüm önerilerin uygun"; yapıldı, yayında değil):**
+  `docs/uyelik-ortak-ozellikler-2026-11.md`'deki yedi öneri. Sunucu `server/src/groups.mjs` (uçlar `/v1/gruplar`,
+  `/v1/grup` kur, `/onizle`, `/katil`, `/v1/grup/<id>` ve `/yerim`, `/oy`, `/odak`, `/izledim`, `/alarm`,
+  `/alarm-yanit`, `/ayril`, `/cikar`, `/duzenle`, `/sil`, `/bildir`, `/engelle`; `/v1/hava-bildirim`), testler
+  `server/test/groups.test.mjs`; kapalıyken 404 (`GRUPLAR=acik` ile açılır). Türler: ortak geri sayım (hedef, yıllık,
+  simge; "Geri sayımlarıma ekle"), ortak dünya saati (her üye şehrini, saat dilimini ve isteğe bağlı mesai saatini
+  paylaşır), toplantı oylaması (en çok 12 aday, uygun/olabilir/uygun değil, en iyi saat, kurucu kapatır), odak odası
+  (25/50 dk ortak oturum, katıl ve bitirdim; ses ya da sohbet yok), alarm önerisi (üye bir saat önerir, alan kişi
+  onaylamadan telefonuna kurulmaz; kişi başına günde en çok 5; en çok 30 üye, kişi başına 20 grup), gözlem sayacı (gök olaylarında "izledim" işareti,
+  sayılar). Anonim hava bildirimi (giriş ister ama başkalarına kimlik gösterilmez): konum 0,25° hücreye, 10 dakikada
+  bir, günde en çok 20, 24 saatte silinir; Hava ekranında kart. Kullanıcı metni yalnız grup adı, şehir adı ve alarm
+  etiketi (halkalardaki süzgeç); Bildir, Engelle (halkalarla ortak engel listesi), kurucu Çıkar. Din verisi olmadığı
+  için ayrı rıza yok; hukuki sebep üyelik sözleşmesinin ifası. Uygulamalar Tümü › Gün ve plan › "Gruplar" (Android
+  `Groups.kt`, iOS `Groups.swift`), metinler `group.*`, `wxr.*` (19 dil); Android ekran görüntüleri `tr-gruplar`,
+  `tr-grup-*`, `en-grup-oylama`, `tr-grup-kur`, `tr-hava-bildirimi`. Gizlilik sayfasının "Üyelik" bölümünde halkalar
+  ve gruplar (19 dil).
+- **Yayından önce (sahibin onayıyla):** sunucuda `HALKALAR=acik` ve `GRUPLAR=acik` (ana altyapı girer), App Store yaş
+  derecelendirmesinde kullanıcı içeriği sorusu, Uygulama Gizliliği'ne "Diğer kullanıcı içeriği" ve kaba konum (hava
+  bildirimi), Play veri güvenliği formu, App Review notunda moderasyon akışı ve deneme hesabı.
 
-### Açık rıza metni (taslak, sahip bakacak)
+### Açık rıza metni (sahip 15 Kasım 2026'da onayladı: "tüm önerilerin uygun")
 "Zikir ve hatim halkasına katılmanız dini inancınızla ilgili bilgi (KVKK m. 6, özel nitelikli kişisel veri)
 sayılabilir. Halkada şunlar tutulur: halkanın adı, üyeliğiniz, görünen adınız, eklediğiniz zikir sayısı ve
 aldığınız/bitirdiğiniz cüzler. Bunları yalnız halkanın üyeleri görür; herkese açık değildir, satılmaz, reklam için
