@@ -56,6 +56,7 @@ struct WeatherView: View {
                     // Meteogram (WeatherKit) ve model karşılaştırma (Open-Meteo; 2. analiz #114)
                     MeteogramCard(weather: d, zone: zone)
                     ModelsCard(place: place)
+                    WeatherReportCard(lat: place.lat, lon: place.lon)
                 } else if failed {
                     Text(L("weather.error")).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
                     Button(L("weather.retry")) { Task { await load(place) } }.tint(Theme.accent)

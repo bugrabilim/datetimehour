@@ -14,9 +14,16 @@ enum Circles {
     /// Davet kodu: sunucudaki gibi 8 harf/rakam. saattarih://davet?kod=KOD ya da …/davet/#KOD
     static func code(from url: URL) -> String? {
         let c = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        let raw = c?.queryItems?.first { $0.name == "kod" }?.value ?? c?.fragment ?? ""
+        var raw = c?.queryItems?.first { $0.name == "kod" }?.value ?? c?.fragment ?? ""
+        if raw.lowercased().hasPrefix("g:") { raw.removeFirst(2) }
         let s = String(raw.uppercased().filter { $0.isLetter || $0.isNumber })
         return s.count == 8 ? s : nil
+    }
+
+    /// Davet bir grubun mu (bağlantıda "tur=grup" ya da "#g:KOD")
+    static func isGroup(_ url: URL) -> Bool {
+        let c = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        return c?.queryItems?.first { $0.name == "tur" }?.value == "grup" || (c?.fragment ?? "").lowercased().hasPrefix("g:")
     }
 
     struct Member: Identifiable {

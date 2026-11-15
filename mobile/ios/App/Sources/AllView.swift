@@ -68,6 +68,8 @@ enum AllPrefs {
         AllEntry(id: "timecalc", titleKey: "timeCalc.h1", icon: "clock.badge.questionmark", cat: .time, feature: .tools, route: .timecalc),
         AllEntry(id: "calendar", titleKey: "tab.calendar", icon: "calendar", cat: .plan, feature: .calendar, tab: .calendar),
         AllEntry(id: "leaf", titleKey: "leaf.title", icon: "doc.text", cat: .plan, feature: .calendar, route: .leaf),
+        AllEntry(id: "groups", titleKey: "group.title", icon: "person.3", cat: .plan, feature: .tools, route: .groups,
+                 words: ["group.k.geri-sayim", "group.k.dunya", "group.k.oylama", "group.k.odak", "group.k.alarm", "group.k.gozlem"]),
         AllEntry(id: "datecalc", titleKey: "tools.hub.cards.datecalc.name", icon: "calendar.badge.clock", cat: .plan, feature: .tools, route: .datecalc),
         AllEntry(id: "planner", titleKey: "planner.h1", icon: "person.2.wave.2", cat: .plan, feature: .tools, route: .planner),
         AllEntry(id: "journal", titleKey: "journal.title", icon: "sun.horizon", cat: .plan, feature: .tools, route: .journal),
@@ -406,6 +408,7 @@ extension ToolRoute {
         case .shareQr: ShareQRView()
         case .account: AccountView()
         case .circles: CirclesView()
+        case .groups: GroupsView()
         }
     }
 }

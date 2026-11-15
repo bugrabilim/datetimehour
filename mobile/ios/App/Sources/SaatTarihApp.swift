@@ -146,7 +146,7 @@ enum ToolRoute: Hashable {
     case panchang, greetN
     case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
     // Hesap (üyelik aşama 1, 10 Kasım 2026) ve halkalar (aşama 2b, 15 Kasım 2026)
-    case account, circles
+    case account, circles, groups
     // Sitedeki dokuz araç (4 Kasım 2026)
     case chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom
     case sura(Int)
@@ -203,7 +203,10 @@ final class Router {
             if CountdownItem.importURL(url) { tab = .tools; toolsPath = [.timer] }
         // Halka daveti (üyelik aşama 2c): saattarih://davet?kod=KOD; Halkalar › Kodla katıl kodla açılır
         case "davet":
-            if let code = Circles.code(from: url) { Circles.pendingCode = code; tab = .tools; toolsPath = [.circles] }
+            if let code = Circles.code(from: url) {
+                if Circles.isGroup(url) { Groups.pendingCode = code; tab = .tools; toolsPath = [.groups] }
+                else { Circles.pendingCode = code; tab = .tools; toolsPath = [.circles] }
+            }
         default: break
         }
     }
