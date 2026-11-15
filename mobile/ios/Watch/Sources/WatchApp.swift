@@ -19,8 +19,8 @@ enum WatchPlace {
 
     static func resolve(_ sel: String, auto: Place?) -> Place {
         switch sel {
-        case "phone": return PhonePlace.shared.place ?? Place(province: Province.find("istanbul"))
-        case "auto": return auto ?? Place(province: Province.find("istanbul"))
+        case "phone": return PhonePlace.shared.place ?? Place.fallback()
+        case "auto": return auto ?? Place.fallback()
         default: return Place(province: Province.find(sel))
         }
     }

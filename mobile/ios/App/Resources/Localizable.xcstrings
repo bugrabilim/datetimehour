@@ -43204,115 +43204,115 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Astronomik mevsimler, yani ekinoks ve gündönümü anları. Saatler Türkiye saatiyle (UTC+3) verilmiştir."
+            "value": "Astronomik mevsimler, yani ekinoks ve gündönümü anları. Saatler seçili yerin saatiyledir."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Astronomical seasons, that is the moments of the equinoxes and solstices. Times are in Turkey time (UTC+3)."
+            "value": "Astronomical seasons, that is the moments of the equinoxes and solstices. Times are shown in the selected location's time."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Astronomische Jahreszeiten, also die Zeitpunkte der Tagundnachtgleichen und Sonnenwenden. Die Zeiten sind in türkischer Zeit (UTC+3) angegeben."
+            "value": "Astronomische Jahreszeiten, also die Zeitpunkte der Tagundnachtgleichen und Sonnenwenden. Die Zeiten sind in der Ortszeit des gewählten Ortes angegeben."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Astronomik fəsillər, yəni bərabərgünlük və gündönümü anları. Vaxtlar Türkiyə vaxtı ilədir (UTC+3)."
+            "value": "Astronomik fəsillər, yəni bərabərgünlük və gündönümü anları. Vaxtlar seçilmiş yerin vaxtı ilədir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الفصول الفلكية، أي لحظات الاعتدالين والانقلابين. الأوقات بتوقيت تركيا (UTC+3)."
+            "value": "الفصول الفلكية، أي لحظات الاعتدالين والانقلابين. الأوقات بتوقيت المكان المحدد."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Musim astronomis, yaitu saat terjadinya ekuinoks dan titik balik matahari. Waktu dinyatakan dalam waktu Turki (UTC+3)."
+            "value": "Musim astronomis, yaitu saat terjadinya ekuinoks dan titik balik matahari. Waktu dinyatakan dalam waktu lokasi yang dipilih."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "فلکیاتی موسم، یعنی اعتدال اور انقلاب کے لمحات۔ اوقات ترکی کے وقت (UTC+3) میں ہیں۔"
+            "value": "فلکیاتی موسم، یعنی اعتدال اور انقلاب کے لمحات۔ اوقات منتخب مقام کے وقت میں ہیں۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "فصل‌های نجومی، یعنی لحظه‌های اعتدال‌ها و انقلاب‌ها. زمان‌ها به وقت ترکیه (UTC+3) است."
+            "value": "فصل‌های نجومی، یعنی لحظه‌های اعتدال‌ها و انقلاب‌ها. زمان‌ها به وقت مکان انتخاب‌شده است."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saisons astronomiques, c’est-à-dire les instants des équinoxes et des solstices. Heures exprimées à l’heure de Turquie (UTC+3)."
+            "value": "Saisons astronomiques, c’est-à-dire les instants des équinoxes et des solstices. Heures exprimées à l’heure du lieu choisi."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Астрономические времена года, то есть моменты равноденствий и солнцестояний. Время указано по Турции (UTC+3)."
+            "value": "Астрономические времена года, то есть моменты равноденствий и солнцестояний. Время указано по выбранному месту."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "天文学上の季節、つまり春分・秋分と夏至・冬至の瞬間です。時刻はトルコ時間（UTC+3）です。"
+            "value": "天文学上の季節、つまり春分・秋分と夏至・冬至の瞬間です。時刻は選択した場所の時間です。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "천문학적 계절, 곧 춘분·추분과 하지·동지의 순간입니다. 시각은 튀르키예 시간(UTC+3)입니다."
+            "value": "천문학적 계절, 곧 춘분·추분과 하지·동지의 순간입니다. 시각은 선택한 장소의 시간입니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "天文季节，即春分秋分和夏至冬至的时刻。时间为土耳其时间（UTC+3）。"
+            "value": "天文季节，即春分秋分和夏至冬至的时刻。时间为所选地点的时间。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mga astronomikal na panahon, ibig sabihin ang mga sandali ng equinox at solstice. Nasa oras ng Türkiye (UTC+3) ang mga oras."
+            "value": "Mga astronomikal na panahon, ibig sabihin ang mga sandali ng equinox at solstice. Nasa oras ng napiling lugar ang mga oras."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ฤดูกาลทางดาราศาสตร์ คือช่วงเวลาของวิษุวัตและอายัน เวลาเป็นเวลาตุรกี (UTC+3)"
+            "value": "ฤดูกาลทางดาราศาสตร์ คือช่วงเวลาของวิษุวัตและอายัน เวลาเป็นเวลาของสถานที่ที่เลือก"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Estaciones astronómicas, es decir, los momentos de los equinoccios y solsticios. Las horas se indican en hora de Turquía (UTC+3)."
+            "value": "Estaciones astronómicas, es decir, los momentos de los equinoccios y solsticios. Las horas se indican en la hora del lugar seleccionado."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Estações astronômicas, ou seja, os momentos dos equinócios e solstícios. Os horários estão na hora da Turquia (UTC+3)."
+            "value": "Estações astronômicas, ou seja, os momentos dos equinócios e solstícios. Os horários estão na hora do local selecionado."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "खगोलीय ऋतुएँ, यानी विषुव और संक्रांति के क्षण। समय तुर्किये समय (UTC+3) में हैं।"
+            "value": "खगोलीय ऋतुएँ, यानी विषुव और संक्रांति के क्षण। समय चुने गए स्थान के समय में हैं।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "জ্যোতির্বিজ্ঞানের ঋতু, অর্থাৎ বিষুব ও অয়নান্তের মুহূর্ত। সময়গুলো তুরস্কের সময়ে (UTC+3)।"
+            "value": "জ্যোতির্বিজ্ঞানের ঋতু, অর্থাৎ বিষুব ও অয়নান্তের মুহূর্ত। সময়গুলো নির্বাচিত স্থানের সময়ে।"
           }
         }
       }

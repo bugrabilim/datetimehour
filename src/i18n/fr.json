@@ -2012,7 +2012,7 @@
     "hoursShort": "h",
     "minutesShort": "min",
     "tableHeading": "Dates de début des saisons",
-    "tableLead": "Saisons astronomiques, c’est-à-dire les instants des équinoxes et des solstices. Heures exprimées à l’heure de Turquie (UTC+3).",
+    "tableLead": "Saisons astronomiques, c’est-à-dire les instants des équinoxes et des solstices. Heures exprimées à l’heure du lieu choisi.",
     "colYear": "Année",
     "meteoNote": "Les saisons météorologiques sont des blocs de trois mois : le printemps commence le 1er mars, l’été le 1er juin, l’automne le 1er septembre et l’hiver le 1er décembre. Elles servent aux calendriers et aux statistiques.",
     "factsHeading": "La nature au fil des saisons",

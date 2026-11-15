@@ -364,7 +364,7 @@
     <string name="nature_nextNew">Susunod na bagong buwan</string>
     <string name="nature_nextFull">Susunod na kabilugan</string>
     <string name="nature_tableHeading">Mga petsa ng simula ng panahon</string>
-    <string name="nature_tableLead">Mga astronomikal na panahon, ibig sabihin ang mga sandali ng equinox at solstice. Nasa oras ng Türkiye (UTC+3) ang mga oras.</string>
+    <string name="nature_tableLead">Mga astronomikal na panahon, ibig sabihin ang mga sandali ng equinox at solstice. Nasa oras ng napiling lugar ang mga oras.</string>
     <string name="nature_colYear">Taon</string>
     <string name="nature_hoursShort">oras</string>
     <string name="nature_minutesShort">min</string>

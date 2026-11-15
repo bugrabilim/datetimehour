@@ -364,7 +364,7 @@
     <string name="nature_nextNew">Próxima luna nueva</string>
     <string name="nature_nextFull">Próxima luna llena</string>
     <string name="nature_tableHeading">Fechas de inicio de las estaciones</string>
-    <string name="nature_tableLead">Estaciones astronómicas, es decir, los momentos de los equinoccios y solsticios. Las horas se indican en hora de Turquía (UTC+3).</string>
+    <string name="nature_tableLead">Estaciones astronómicas, es decir, los momentos de los equinoccios y solsticios. Las horas se indican en la hora del lugar seleccionado.</string>
     <string name="nature_colYear">Año</string>
     <string name="nature_hoursShort">h</string>
     <string name="nature_minutesShort">min</string>

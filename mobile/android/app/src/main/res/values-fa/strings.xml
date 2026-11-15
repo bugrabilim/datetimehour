@@ -364,7 +364,7 @@
     <string name="nature_nextNew">ماه نوِ بعدی</string>
     <string name="nature_nextFull">ماه کاملِ بعدی</string>
     <string name="nature_tableHeading">تاریخ آغاز فصل‌ها</string>
-    <string name="nature_tableLead">فصل‌های نجومی، یعنی لحظه‌های اعتدال‌ها و انقلاب‌ها. زمان‌ها به وقت ترکیه (UTC+3) است.</string>
+    <string name="nature_tableLead">فصل‌های نجومی، یعنی لحظه‌های اعتدال‌ها و انقلاب‌ها. زمان‌ها به وقت مکان انتخاب‌شده است.</string>
     <string name="nature_colYear">سال</string>
     <string name="nature_hoursShort">ساعت</string>
     <string name="nature_minutesShort">دقیقه</string>

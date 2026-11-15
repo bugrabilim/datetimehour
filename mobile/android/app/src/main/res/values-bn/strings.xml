@@ -364,7 +364,7 @@
     <string name="nature_nextNew">পরের অমাবস্যা</string>
     <string name="nature_nextFull">পরের পূর্ণিমা</string>
     <string name="nature_tableHeading">ঋতু শুরুর তারিখ</string>
-    <string name="nature_tableLead">জ্যোতির্বিজ্ঞানের ঋতু, অর্থাৎ বিষুব ও অয়নান্তের মুহূর্ত। সময়গুলো তুরস্কের সময়ে (UTC+3)।</string>
+    <string name="nature_tableLead">জ্যোতির্বিজ্ঞানের ঋতু, অর্থাৎ বিষুব ও অয়নান্তের মুহূর্ত। সময়গুলো নির্বাচিত স্থানের সময়ে।</string>
     <string name="nature_colYear">বছর</string>
     <string name="nature_hoursShort">ঘ.</string>
     <string name="nature_minutesShort">মি.</string>

@@ -364,7 +364,7 @@
     <string name="nature_nextNew">Nächster Neumond</string>
     <string name="nature_nextFull">Nächster Vollmond</string>
     <string name="nature_tableHeading">Beginn der Jahreszeiten</string>
-    <string name="nature_tableLead">Astronomische Jahreszeiten, also die Zeitpunkte der Tagundnachtgleichen und Sonnenwenden. Die Zeiten sind in türkischer Zeit (UTC+3) angegeben.</string>
+    <string name="nature_tableLead">Astronomische Jahreszeiten, also die Zeitpunkte der Tagundnachtgleichen und Sonnenwenden. Die Zeiten sind in der Ortszeit des gewählten Ortes angegeben.</string>
     <string name="nature_colYear">Jahr</string>
     <string name="nature_hoursShort">Std.</string>
     <string name="nature_minutesShort">Min.</string>

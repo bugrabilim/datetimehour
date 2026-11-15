@@ -364,7 +364,7 @@
     <string name="nature_nextNew">अगली अमावस्या</string>
     <string name="nature_nextFull">अगली पूर्णिमा</string>
     <string name="nature_tableHeading">ऋतुओं के शुरू होने की तारीखें</string>
-    <string name="nature_tableLead">खगोलीय ऋतुएँ, यानी विषुव और संक्रांति के क्षण। समय तुर्किये समय (UTC+3) में हैं।</string>
+    <string name="nature_tableLead">खगोलीय ऋतुएँ, यानी विषुव और संक्रांति के क्षण। समय चुने गए स्थान के समय में हैं।</string>
     <string name="nature_colYear">साल</string>
     <string name="nature_hoursShort">घं</string>
     <string name="nature_minutesShort">मि</string>

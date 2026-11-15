@@ -364,7 +364,7 @@
     <string name="nature_nextNew">다음 삭</string>
     <string name="nature_nextFull">다음 보름달</string>
     <string name="nature_tableHeading">계절 시작일</string>
-    <string name="nature_tableLead">천문학적 계절, 곧 춘분·추분과 하지·동지의 순간입니다. 시각은 튀르키예 시간(UTC+3)입니다.</string>
+    <string name="nature_tableLead">천문학적 계절, 곧 춘분·추분과 하지·동지의 순간입니다. 시각은 선택한 장소의 시간입니다.</string>
     <string name="nature_colYear">연도</string>
     <string name="nature_hoursShort">시간</string>
     <string name="nature_minutesShort">분</string>

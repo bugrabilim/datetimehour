@@ -364,7 +364,7 @@
     <string name="nature_nextNew">下一次新月</string>
     <string name="nature_nextFull">下一次满月</string>
     <string name="nature_tableHeading">季节开始日期</string>
-    <string name="nature_tableLead">天文季节，即春分秋分和夏至冬至的时刻。时间为土耳其时间（UTC+3）。</string>
+    <string name="nature_tableLead">天文季节，即春分秋分和夏至冬至的时刻。时间为所选地点的时间。</string>
     <string name="nature_colYear">年份</string>
     <string name="nature_hoursShort">小时</string>
     <string name="nature_minutesShort">分</string>

@@ -364,7 +364,7 @@
     <string name="nature_nextNew">القمر الجديد القادم</string>
     <string name="nature_nextFull">البدر القادم</string>
     <string name="nature_tableHeading">تواريخ بداية الفصول</string>
-    <string name="nature_tableLead">الفصول الفلكية، أي لحظات الاعتدالين والانقلابين. الأوقات بتوقيت تركيا (UTC+3).</string>
+    <string name="nature_tableLead">الفصول الفلكية، أي لحظات الاعتدالين والانقلابين. الأوقات بتوقيت المكان المحدد.</string>
     <string name="nature_colYear">السنة</string>
     <string name="nature_hoursShort">س</string>
     <string name="nature_minutesShort">د</string>

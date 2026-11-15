@@ -364,7 +364,7 @@
     <string name="nature_nextNew">Bulan baru berikutnya</string>
     <string name="nature_nextFull">Purnama berikutnya</string>
     <string name="nature_tableHeading">Tanggal awal musim</string>
-    <string name="nature_tableLead">Musim astronomis, yaitu saat terjadinya ekuinoks dan titik balik matahari. Waktu dinyatakan dalam waktu Turki (UTC+3).</string>
+    <string name="nature_tableLead">Musim astronomis, yaitu saat terjadinya ekuinoks dan titik balik matahari. Waktu dinyatakan dalam waktu lokasi yang dipilih.</string>
     <string name="nature_colYear">Tahun</string>
     <string name="nature_hoursShort">j</string>
     <string name="nature_minutesShort">mnt</string>

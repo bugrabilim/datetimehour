@@ -2051,7 +2051,7 @@
     "hoursShort": "h",
     "minutesShort": "min",
     "tableHeading": "Datas de início das estações",
-    "tableLead": "Estações astronômicas, ou seja, os momentos dos equinócios e solstícios. Os horários estão na hora da Turquia (UTC+3).",
+    "tableLead": "Estações astronômicas, ou seja, os momentos dos equinócios e solstícios. Os horários estão na hora do local selecionado.",
     "colYear": "Ano",
     "meteoNote": "As estações meteorológicas são blocos de três meses: a primavera começa em 1º de março, o verão em 1º de junho, o outono em 1º de setembro e o inverno em 1º de dezembro. Elas são usadas em calendários e estatísticas.",
     "factsHeading": "A natureza ao longo das estações",

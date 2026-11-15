@@ -3,9 +3,10 @@
 Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"). Biten iş silinir; geçmiş git'te.
 
 ## Sahibe sorular
-- "Global düşün" (standart 5.20): Türkiye'ye sabitlenmiş yerlerin düzeltme sırası (liste sahibe 15 Kasım 2026'da raporlandı). (15 Kasım 2026)
+(Şu an yok.)
 
 ## Sahipte
+- "Global düşün" 1 ve 2 (canlı sırası, bitti): Mevsimler'deki mevsim başlangıçları tablosu seçili yerin saatiyle (site yayını, sahibin onayıyla); saat uygulamaları, widget'lar ve Mac/TV/Vision'da konum yokken telefonun saat diliminin yeri (sıradaki TestFlight ve Play yayınıyla). (15 Kasım 2026)
 - App Store 1.1 gönderimi (canlı sırası, bitti): yukarıdaki iOS işleri + 24 dil sürümünde mağaza metinleri (nötr adlar, yeni dil sürümleri en-GB, en-AU, en-CA, fr-CA, es-MX, pt-PT, zh-Hant, ms, ur-PK, bn-BD) ve ülkeye göre ekran görüntüsü sırası; sahibin onayıyla; `MARKETING_VERSION` ve `Deliverfile` `app_version` 15 Kasım 2026'da 1.1 oldu (TestFlight yapı 31); göndermeden önce 24 dil sürümünde `release_notes.txt`, App Store Connect Uygulama Gizliliği (e-posta, ad, kullanıcı kimliği), App Review deneme hesabı (depoya yazılmaz). (13 Kasım 2026)
 - Google Play ve Wear OS (canlı sırası, bitti: iOS'la aynı içerik, mağaza sayfası 23 dilde): şahıs şirketi adına kurum hesabı; D-U-N-S numarası bekleniyor (ücretsiz, 30 güne kadar). Hesap açılınca `mobile/android/PLAY_CONSOLE.md` beyanları ve ilk yayından sonra ülkeye özel mağaza sayfaları (`mobile/android/store-listings/`). (5 Kasım 2026)
 - Tarayıcı eklentisinin mağazalara konması: "şimdilik gerek yok"; kod hazır ve testli. (6 Kasım 2026)

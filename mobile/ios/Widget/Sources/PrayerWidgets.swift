@@ -21,7 +21,7 @@ struct PrayerEntry: TimelineEntry {
 /// Zaman çizelgesi: şimdi, bugünkü ve yarınki her vakit anı ve gece yarısı; sonra yeniden hesaplanır.
 struct PrayerProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> PrayerEntry {
-        entry(at: Date(), place: Place(province: Province.find("istanbul")))
+        entry(at: Date(), place: Place.fallback())
     }
 
     func snapshot(for configuration: ProvinceIntent, in context: Context) async -> PrayerEntry {

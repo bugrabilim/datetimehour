@@ -1971,7 +1971,7 @@
     "hoursShort": "h",
     "minutesShort": "min",
     "tableHeading": "Season start dates",
-    "tableLead": "Astronomical seasons, that is the moments of the equinoxes and solstices. Times are in Turkey time (UTC+3).",
+    "tableLead": "Astronomical seasons, that is the moments of the equinoxes and solstices. Times are shown in the selected location's time.",
     "colYear": "Year",
     "meteoNote": "Meteorological seasons are three-month blocks: spring starts on 1 March, summer on 1 June, autumn on 1 September and winter on 1 December. They are used for calendars and statistics.",
     "factsHeading": "Nature through the seasons",

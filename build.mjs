@@ -1869,9 +1869,9 @@ function buildEmbedGen(lang) {
 /* ---------- Doğa (mevsim çarkı, Güneş, Ay, gün uzunluğu) ve hava durumu ---------- */
 const NATURE = (() => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(SRC, "js/nature-calc.js"), "utf8"))(m, undefined); return m.exports; })();
 
-function trDateTime(lang, ms) { // Türkiye saatiyle (UTC+3) "20 Mart 14:46"
-  const d = new Date(ms + 3 * 3600000);
-  return `${d.getUTCDate()} ${I[lang].calendar.months[d.getUTCMonth()]} ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")}`;
+function utcDateTime(lang, ms) { // "20 Mart 14:46 UTC"; sayfada nature.js seçili yerin saatine çevirir (Global düşün, 15 Kasım 2026)
+  const d = new Date(ms);
+  return `${d.getUTCDate()} ${I[lang].calendar.months[d.getUTCMonth()]} ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")} UTC`;
 }
 
 // Halk takvimi (2. analiz #60): geleneksel tarihler, kaynaklar dosyanın "_" alanında
@@ -1892,7 +1892,7 @@ function buildNature(lang) {
       </div>
     </section>`;
   const head = ["spring", "summer", "autumn", "winter"].map((k) => `<th scope="col">${esc(n.seasons[k])}</th>`).join("");
-  const rows = HOL_YEARS.map((y) => { const q = NATURE.seasons(y); return `<tr><th scope="row">${y}</th>${[q.march, q.june, q.sept, q.dec].map((ms) => `<td>${esc(trDateTime(lang, ms))}</td>`).join("")}</tr>`; }).join("");
+  const rows = HOL_YEARS.map((y) => { const q = NATURE.seasons(y); return `<tr><th scope="row">${y}</th>${[q.march, q.june, q.sept, q.dec].map((ms) => `<td data-n-season-at="${ms}">${esc(utcDateTime(lang, ms))}</td>`).join("")}</tr>`; }).join("");
   const facts = ["spring", "summer", "autumn", "winter"].map((k) => `<article class="season-card sc-${k}"><h3>${esc(n.seasons[k])}</h3><ul>${n.facts[k].map((f) => `<li>${esc(f)}</li>`).join("")}</ul></article>`).join("");
   const cell = (label, attr) => `<div class="fact"><dt>${esc(label)}</dt><dd ${attr}>–</dd></div>`;
   const sections = `<section class="section" aria-labelledby="n-turn-h">

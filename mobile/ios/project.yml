@@ -103,6 +103,7 @@ targets:
       - path: App/Sources/WallpaperWidget.swift
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/provinces.json
+      - path: App/Resources/zone-places.json
       - path: App/Resources/cities.json
       - path: App/Resources/moon.jpg
       - path: App/Resources/earth.jpg
@@ -192,6 +193,7 @@ targets:
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/InfoPlist.xcstrings
       - path: App/Resources/provinces.json
+      - path: App/Resources/zone-places.json
       - path: App/Resources/hijri.json
       - path: App/Resources/hijri-id.json
     dependencies:
@@ -232,6 +234,7 @@ targets:
       - path: App/Sources/Hijri.swift
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/provinces.json
+      - path: App/Resources/zone-places.json
       - path: App/Resources/hijri.json
       - path: App/Resources/hijri-id.json
     dependencies:
@@ -277,6 +280,7 @@ targets:
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/InfoPlist.xcstrings
       - path: App/Resources/provinces.json
+      - path: App/Resources/zone-places.json
       - path: App/Resources/hijri.json
       - path: App/Resources/hijri-id.json
     dependencies:
@@ -325,6 +329,7 @@ targets:
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/InfoPlist.xcstrings
       - path: App/Resources/provinces.json
+      - path: App/Resources/zone-places.json
       - path: App/Resources/hijri.json
       - path: App/Resources/hijri-id.json
     dependencies:
@@ -366,6 +371,7 @@ targets:
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/InfoPlist.xcstrings
       - path: App/Resources/provinces.json
+      - path: App/Resources/zone-places.json
       - path: App/Resources/hijri.json
       - path: App/Resources/hijri-id.json
     dependencies:

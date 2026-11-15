@@ -364,7 +364,7 @@
     <string name="nature_nextNew">اگلا نیا چاند</string>
     <string name="nature_nextFull">اگلا پورا چاند</string>
     <string name="nature_tableHeading">موسموں کے آغاز کی تاریخیں</string>
-    <string name="nature_tableLead">فلکیاتی موسم، یعنی اعتدال اور انقلاب کے لمحات۔ اوقات ترکی کے وقت (UTC+3) میں ہیں۔</string>
+    <string name="nature_tableLead">فلکیاتی موسم، یعنی اعتدال اور انقلاب کے لمحات۔ اوقات منتخب مقام کے وقت میں ہیں۔</string>
     <string name="nature_colYear">سال</string>
     <string name="nature_hoursShort">گھنٹے</string>
     <string name="nature_minutesShort">منٹ</string>

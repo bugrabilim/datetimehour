@@ -364,7 +364,7 @@
     <string name="nature_nextNew">Prochaine nouvelle lune</string>
     <string name="nature_nextFull">Prochaine pleine lune</string>
     <string name="nature_tableHeading">Dates de début des saisons</string>
-    <string name="nature_tableLead">Saisons astronomiques, c’est-à-dire les instants des équinoxes et des solstices. Heures exprimées à l’heure de Turquie (UTC+3).</string>
+    <string name="nature_tableLead">Saisons astronomiques, c’est-à-dire les instants des équinoxes et des solstices. Heures exprimées à l’heure du lieu choisi.</string>
     <string name="nature_colYear">Année</string>
     <string name="nature_hoursShort">h</string>
     <string name="nature_minutesShort">min</string>

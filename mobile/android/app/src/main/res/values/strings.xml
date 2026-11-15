@@ -364,7 +364,7 @@
     <string name="nature_nextNew">Next new moon</string>
     <string name="nature_nextFull">Next full moon</string>
     <string name="nature_tableHeading">Season start dates</string>
-    <string name="nature_tableLead">Astronomical seasons, that is the moments of the equinoxes and solstices. Times are in Turkey time (UTC+3).</string>
+    <string name="nature_tableLead">Astronomical seasons, that is the moments of the equinoxes and solstices. Times are shown in the selected location\'s time.</string>
     <string name="nature_colYear">Year</string>
     <string name="nature_hoursShort">h</string>
     <string name="nature_minutesShort">min</string>

@@ -364,7 +364,7 @@
     <string name="nature_nextNew">Növbəti yeni ay</string>
     <string name="nature_nextFull">Növbəti tam ay</string>
     <string name="nature_tableHeading">Fəsillərin başlama tarixləri</string>
-    <string name="nature_tableLead">Astronomik fəsillər, yəni bərabərgünlük və gündönümü anları. Vaxtlar Türkiyə vaxtı ilədir (UTC+3).</string>
+    <string name="nature_tableLead">Astronomik fəsillər, yəni bərabərgünlük və gündönümü anları. Vaxtlar seçilmiş yerin vaxtı ilədir.</string>
     <string name="nature_colYear">İl</string>
     <string name="nature_hoursShort">s</string>
     <string name="nature_minutesShort">dəq</string>

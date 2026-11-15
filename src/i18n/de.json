@@ -1998,7 +1998,7 @@
     "hoursShort": "Std.",
     "minutesShort": "Min.",
     "tableHeading": "Beginn der Jahreszeiten",
-    "tableLead": "Astronomische Jahreszeiten, also die Zeitpunkte der Tagundnachtgleichen und Sonnenwenden. Die Zeiten sind in türkischer Zeit (UTC+3) angegeben.",
+    "tableLead": "Astronomische Jahreszeiten, also die Zeitpunkte der Tagundnachtgleichen und Sonnenwenden. Die Zeiten sind in der Ortszeit des gewählten Ortes angegeben.",
     "colYear": "Jahr",
     "meteoNote": "Meteorologische Jahreszeiten sind Dreimonatsblöcke: Der Frühling beginnt am 1. März, der Sommer am 1. Juni, der Herbst am 1. September und der Winter am 1. Dezember. Sie werden für Kalender und Statistiken verwendet.",
     "factsHeading": "Die Natur im Lauf der Jahreszeiten",

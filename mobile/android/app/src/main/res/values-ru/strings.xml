@@ -364,7 +364,7 @@
     <string name="nature_nextNew">Следующее новолуние</string>
     <string name="nature_nextFull">Следующее полнолуние</string>
     <string name="nature_tableHeading">Даты начала времён года</string>
-    <string name="nature_tableLead">Астрономические времена года, то есть моменты равноденствий и солнцестояний. Время указано по Турции (UTC+3).</string>
+    <string name="nature_tableLead">Астрономические времена года, то есть моменты равноденствий и солнцестояний. Время указано по выбранному месту.</string>
     <string name="nature_colYear">Год</string>
     <string name="nature_hoursShort">ч</string>
     <string name="nature_minutesShort">мин</string>

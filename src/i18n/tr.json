@@ -1971,7 +1971,7 @@
     "hoursShort": "sa",
     "minutesShort": "dk",
     "tableHeading": "Mevsim başlangıçları",
-    "tableLead": "Astronomik mevsimler, yani ekinoks ve gündönümü anları. Saatler Türkiye saatiyle (UTC+3) verilmiştir.",
+    "tableLead": "Astronomik mevsimler, yani ekinoks ve gündönümü anları. Saatler seçili yerin saatiyledir.",
     "colYear": "Yıl",
     "meteoNote": "Meteorolojik mevsimler üçer aylık bloklardır: ilkbahar 1 Mart'ta, yaz 1 Haziran'da, sonbahar 1 Eylül'de, kış 1 Aralık'ta başlar. Takvim ve istatistik çalışmalarında bunlar kullanılır.",
     "factsHeading": "Mevsimlerde doğa",

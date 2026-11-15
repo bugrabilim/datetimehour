@@ -1971,7 +1971,7 @@
     "hoursShort": "s",
     "minutesShort": "dəq",
     "tableHeading": "Fəsillərin başlama tarixləri",
-    "tableLead": "Astronomik fəsillər, yəni bərabərgünlük və gündönümü anları. Vaxtlar Türkiyə vaxtı ilədir (UTC+3).",
+    "tableLead": "Astronomik fəsillər, yəni bərabərgünlük və gündönümü anları. Vaxtlar seçilmiş yerin vaxtı ilədir.",
     "colYear": "İl",
     "meteoNote": "Meteoroloji fəsillər üç aylıq bloklardır: yaz 1 martda, yay 1 iyunda, payız 1 sentyabrda, qış isə 1 dekabrda başlayır. Təqvimlər və statistika üçün istifadə olunur.",
     "factsHeading": "Fəsillər üzrə təbiət",

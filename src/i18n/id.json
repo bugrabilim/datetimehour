@@ -1971,7 +1971,7 @@
     "hoursShort": "j",
     "minutesShort": "mnt",
     "tableHeading": "Tanggal awal musim",
-    "tableLead": "Musim astronomis, yaitu saat terjadinya ekuinoks dan titik balik matahari. Waktu dinyatakan dalam waktu Turki (UTC+3).",
+    "tableLead": "Musim astronomis, yaitu saat terjadinya ekuinoks dan titik balik matahari. Waktu dinyatakan dalam waktu lokasi yang dipilih.",
     "colYear": "Tahun",
     "meteoNote": "Musim meteorologis adalah blok tiga bulan: musim semi mulai 1 Maret, musim panas 1 Juni, musim gugur 1 September, dan musim dingin 1 Desember. Musim ini dipakai untuk kalender dan statistik.",
     "factsHeading": "Alam sepanjang musim",

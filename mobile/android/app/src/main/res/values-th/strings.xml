@@ -364,7 +364,7 @@
     <string name="nature_nextNew">จันทร์ดับครั้งถัดไป</string>
     <string name="nature_nextFull">จันทร์เต็มดวงครั้งถัดไป</string>
     <string name="nature_tableHeading">วันเริ่มฤดูกาล</string>
-    <string name="nature_tableLead">ฤดูกาลทางดาราศาสตร์ คือช่วงเวลาของวิษุวัตและอายัน เวลาเป็นเวลาตุรกี (UTC+3)</string>
+    <string name="nature_tableLead">ฤดูกาลทางดาราศาสตร์ คือช่วงเวลาของวิษุวัตและอายัน เวลาเป็นเวลาของสถานที่ที่เลือก</string>
     <string name="nature_colYear">ปี</string>
     <string name="nature_hoursShort">ชม.</string>
     <string name="nature_minutesShort">นาที</string>

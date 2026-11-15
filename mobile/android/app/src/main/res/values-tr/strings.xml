@@ -364,7 +364,7 @@
     <string name="nature_nextNew">Sonraki yeni ay</string>
     <string name="nature_nextFull">Sonraki dolunay</string>
     <string name="nature_tableHeading">Mevsim başlangıçları</string>
-    <string name="nature_tableLead">Astronomik mevsimler, yani ekinoks ve gündönümü anları. Saatler Türkiye saatiyle (UTC+3) verilmiştir.</string>
+    <string name="nature_tableLead">Astronomik mevsimler, yani ekinoks ve gündönümü anları. Saatler seçili yerin saatiyledir.</string>
     <string name="nature_colYear">Yıl</string>
     <string name="nature_hoursShort">sa</string>
     <string name="nature_minutesShort">dk</string>

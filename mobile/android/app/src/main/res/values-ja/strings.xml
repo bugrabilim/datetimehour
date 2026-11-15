@@ -364,7 +364,7 @@
     <string name="nature_nextNew">次の新月</string>
     <string name="nature_nextFull">次の満月</string>
     <string name="nature_tableHeading">季節の始まりの日</string>
-    <string name="nature_tableLead">天文学上の季節、つまり春分・秋分と夏至・冬至の瞬間です。時刻はトルコ時間（UTC+3）です。</string>
+    <string name="nature_tableLead">天文学上の季節、つまり春分・秋分と夏至・冬至の瞬間です。時刻は選択した場所の時間です。</string>
     <string name="nature_colYear">年</string>
     <string name="nature_hoursShort">時間</string>
     <string name="nature_minutesShort">分</string>
