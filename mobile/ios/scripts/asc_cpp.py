@@ -61,11 +61,15 @@ def call(method, path, body=None, soft=False):
         sys.exit(1)
 
 
-def app_id():
+def the_app():
     apps = call("GET", f"/apps?filter[bundleId]={BUNDLE_ID}")["data"]
     if not apps:
         sys.exit(f"{BUNDLE_ID} bulunamadı")
-    return apps[0]["id"]
+    return apps[0]
+
+
+def app_id():
+    return the_app()["id"]
 
 
 def versions(aid):
@@ -155,8 +159,12 @@ def add_shots(loc_id, folder):
 
 
 def add_keywords(loc_id, wanted, available):
-    have = {k.strip().lower() for k in (available or "").split(",") if k.strip()}
-    ok = [k for k in wanted if k.lower() in have]
+    # Apple anahtar kelimeyi listedeki yazımıyla tanır ("Widget" ile "widget" ayrı): listedeki yazım gönderilir.
+    have = {}
+    for k in (available or "").split(","):
+        if k.strip():
+            have.setdefault(k.strip().lower(), k.strip())
+    ok = list(dict.fromkeys(have[k.lower()] for k in wanted if k.lower() in have))
     missing = [k for k in wanted if k.lower() not in have]
     if missing:
         print(f"    anahtar kelime listesinde olmadığı için atanmadı: {', '.join(missing)}")
@@ -170,47 +178,77 @@ def add_keywords(loc_id, wanted, available):
         print("    arama kelimeleri atanamadı (API desteklemiyor olabilir); App Store Connect'te elle atanır")
 
 
-def create(aid, shots_dir):
+def refresh_keywords(pid, p, locs):
+    """Var olan sayfanın taslak sürümünde arama kelimelerini yeniden atar (görsellere dokunmaz)."""
+    drafts = [pv for pv in page_versions(pid) if pv["attributes"].get("state") == "PREPARE_FOR_SUBMISSION"]
+    if not drafts:
+        print("  taslak sürüm yok, dokunulmadı")
+        return
+    for l in page_locs(drafts[0]["id"]):
+        loc = l["attributes"]["locale"]
+        if loc in p["locales"]:
+            print(f"  {loc}")
+            add_keywords(l["id"], p["locales"][loc].get("keywords", []), locs.get(loc))
+
+
+def create(app, shots_dir):
+    aid = app["id"]
+    primary = app["attributes"].get("primaryLocale")
     cfg = json.load(open(PAGES))["pages"]
-    live = live_version(aid)
-    locs = {l["attributes"]["locale"]: l["attributes"].get("keywords") for l in version_locs(live["id"])}
-    print(f"Canlı sürüm {live['attributes']['versionString']}, dil sürümleri: {', '.join(sorted(locs))}")
-    existing = {p["attributes"]["name"]: p["id"] for p in pages(aid)}
     for p in cfg:
-        if p["name"] in existing:
-            print(f"- {p['name']}: zaten var, atlandı")
-            continue
-        use = [l for l in p["locales"] if l in locs]
-        if not use:
-            print(f"- {p['name']}: canlı sürümde dil sürümü yok, atlandı")
-            continue
         for l, v in p["locales"].items():
             if len(v["promo"]) > 170:
                 sys.exit(f"{p['id']}/{l}: tanıtım metni 170 karakteri aşıyor")
-        included = [{"type": "appCustomProductPageVersions", "id": "${v}", "relationships": {"appCustomProductPageLocalizations": {
-            "data": [{"type": "appCustomProductPageLocalizations", "id": f"${{l{i}}}"} for i in range(len(use))]}}}]
-        for i, l in enumerate(use):
-            included.append({"type": "appCustomProductPageLocalizations", "id": f"${{l{i}}}",
-                             "attributes": {"locale": l, "promotionalText": p["locales"][l]["promo"]}})
-        r = call("POST", "/appCustomProductPages", {"data": {
-            "type": "appCustomProductPages",
-            "attributes": {"name": p["name"]},
-            "relationships": {
-                "app": {"data": {"type": "apps", "id": aid}},
-                "appCustomProductPageVersions": {"data": [{"type": "appCustomProductPageVersions", "id": "${v}"}]},
-            },
-        }, "included": included})
-        pid = r["data"]["id"]
-        print(f"- {p['name']}: açıldı ({pid}), dil sürümleri: {', '.join(use)}")
-        skipped = [l for l in p["locales"] if l not in locs]
-        if skipped:
-            print(f"  canlı sürümde olmadığı için sonraya: {', '.join(skipped)}")
-        pv = page_versions(pid)[0]
-        for l in page_locs(pv["id"]):
-            loc = l["attributes"]["locale"]
-            print(f"  {loc}")
-            add_shots(l["id"], os.path.join(shots_dir, p["id"], loc))
-            add_keywords(l["id"], p["locales"][loc].get("keywords", []), locs.get(loc))
+    live = live_version(aid)
+    locs = {l["attributes"]["locale"]: l["attributes"].get("keywords") for l in version_locs(live["id"])}
+    print(f"Canlı sürüm {live['attributes']['versionString']}, ana dil: {primary}, dil sürümleri: {', '.join(sorted(locs))}")
+    existing = {p["attributes"]["name"]: p["id"] for p in pages(aid)}
+    failed = []
+    for p in cfg:
+        try:
+            create_one(aid, p, primary, locs, existing, shots_dir)
+        except (ApiError, SystemExit) as e:
+            print(f"  {p['name']}: açılamadı ({e})")
+            failed.append(p["name"])
+    if failed:
+        sys.exit(f"Açılamayan sayfalar: {', '.join(failed)}")
+
+
+def create_one(aid, p, primary, locs, existing, shots_dir):
+    if p["name"] in existing:
+        print(f"- {p['name']}: zaten var; arama kelimeleri yeniden atanıyor")
+        refresh_keywords(existing[p["name"]], p, locs)
+        return
+    use = [l for l in p["locales"] if l in locs]
+    if not use:
+        print(f"- {p['name']}: canlı sürümde dil sürümü yok, atlandı")
+        return
+    if primary and primary not in use:
+        raise ApiError(f"ana dil ({primary}) custom-pages.json'da yok; App Store Connect ana dilsiz sayfa açmaz")
+    included = [{"type": "appCustomProductPageVersions", "id": "${v}", "relationships": {"appCustomProductPageLocalizations": {
+        "data": [{"type": "appCustomProductPageLocalizations", "id": f"${{l{i}}}"} for i in range(len(use))]}}}]
+    for i, l in enumerate(use):
+        included.append({"type": "appCustomProductPageLocalizations", "id": f"${{l{i}}}",
+                         "attributes": {"locale": l, "promotionalText": p["locales"][l]["promo"]}})
+    r = call("POST", "/appCustomProductPages", soft=True, body={"data": {
+        "type": "appCustomProductPages",
+        "attributes": {"name": p["name"]},
+        "relationships": {
+            "app": {"data": {"type": "apps", "id": aid}},
+            "appCustomProductPageVersions": {"data": [{"type": "appCustomProductPageVersions", "id": "${v}"}]},
+        },
+    }, "included": included})
+    pid = r["data"]["id"]
+    print(f"- {p['name']}: açıldı ({pid}), dil sürümleri: {', '.join(use)}")
+    skipped = [l for l in p["locales"] if l not in locs]
+    if skipped:
+        print(f"  canlı sürümde olmadığı için sonraya: {', '.join(skipped)}")
+    pv = page_versions(pid)[0]
+    for l in page_locs(pv["id"]):
+        loc = l["attributes"]["locale"]
+        print(f"  {loc}")
+        add_shots(l["id"], os.path.join(shots_dir, p["id"], loc))
+        add_keywords(l["id"], p["locales"][loc].get("keywords", []), locs.get(loc))
 
 
 def submit(aid):
@@ -239,13 +277,14 @@ def submit(aid):
 
 if __name__ == "__main__":
     action = sys.argv[1] if len(sys.argv) > 1 else "durum"
-    aid = app_id()
+    app = the_app()
+    aid = app["id"]
     if action == "durum":
         status(aid)
     elif action == "olustur":
         if len(sys.argv) < 3:
             sys.exit("Kullanım: asc_cpp.py olustur <çerçevelenmiş görsel klasörü>")
-        create(aid, sys.argv[2])
+        create(app, sys.argv[2])
     elif action == "gonder":
         submit(aid)
     else:

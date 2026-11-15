@@ -26,9 +26,10 @@
     {
       "id": "vakit",
       "name": "Namaz vakitleri (nötr diller)",
-      "_not": "Müslüman vitrini dillerinde (tr, ar-SA, id, ms, ur-PK) varsayılan sayfa zaten bu içerikte; bu sayfa yalnız nötr dil sürümlerinde.",
+      "_not": "Müslüman vitrini dillerinde (tr, ar-SA, id, ms, ur-PK) varsayılan sayfa zaten bu içerikte; bu sayfa nötr dil sürümleri için. Türkçe dil sürümü uygulamanın ana dili olduğu için zorunlu (App Store Connect ana dilsiz sayfa açmıyor, 15 Kasım 2026).",
       "shots": ["vakitler", "imsakiye", "takvim", "saat"],
       "locales": {
+        "tr": {"promo": "Şehrinizin namaz vakitleri 14 hesap yöntemiyle; kıble pusulası, imsakiye, Kur'an ve dualar. İnternetsiz çalışır. Ücretsiz, reklamsız, hesap gerekmez.", "keywords": ["imsakiye", "cami", "kuran", "iftar", "dua"]},
         "en-US": {"promo": "Prayer times for your city with 14 calculation methods, a qibla compass, Ramadan timetable, Quran and duas. Works offline. Free, no ads, no account.", "keywords": ["prayer times", "salah", "azan", "qibla", "ramadan", "quran"]},
         "de-DE": {"promo": "Gebetszeiten für Ihre Stadt mit 14 Berechnungsmethoden, Qibla-Kompass, Ramadan-Kalender, Koran und Bittgebete. Funktioniert offline. Kostenlos, ohne Werbung.", "keywords": ["Gebetszeiten", "Gebetszeit", "Qibla", "Ramadan", "Koran", "namaz"]}
       }
@@ -47,10 +48,11 @@
     {
       "id": "panchang",
       "name": "Panchang (Hindistan)",
-      "_not": "Hintçe dil sürümü 1.1 ile gelir; o zaman hi eklenir. Çekim Delhi saatiyle (TZ Asia/Kolkata → varsayılan yer Delhi).",
+      "_not": "Hintçe dil sürümü 1.1 ile gelir; o zaman hi eklenir. Türkçe dil sürümü uygulamanın ana dili olduğu için zorunlu. Çekim Delhi saatiyle (TZ Asia/Kolkata → varsayılan yer Delhi).",
       "tz": "Asia/Kolkata",
       "shots": ["panchang", "takvimler", "saat", "dunya"],
       "locales": {
+        "tr": {"promo": "Seçtiğiniz şehirde bugünün Rahu Kaal, Yamaganda, Gulika ve Abhijit muhurtası; tithi ve nakşatra. İnternetsiz çalışır. Ücretsiz, reklamsız, hesap gerekmez.", "keywords": ["takvim"]},
         "en-US": {"promo": "Today's Rahu Kaal, Yamaganda, Gulika and Abhijit muhurta for your city, with tithi and nakshatra. Works offline. Free, no ads, no account.", "keywords": ["panchang", "rahu kaal", "hindu calendar", "tithi", "muhurat", "calendar"]}
       }
     },
