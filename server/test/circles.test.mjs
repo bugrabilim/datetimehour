@@ -9,7 +9,7 @@ import { cleanName } from "../src/circles.mjs";
 let t;
 const tok = {};
 before(async () => {
-  t = await start();
+  t = await start({ HALKALAR: "acik" });
   for (const n of ["ayse", "ali", "can", "deniz", "ece"]) tok[n] = await signUpVerified(t, `${n}@example.com`);
 });
 after(async () => { await t.stop(); });

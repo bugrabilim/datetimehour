@@ -46,6 +46,8 @@ export function loadConfig(env = process.env) {
     contactEmail: "bilgi@bumbagroup.com",
     commit: env.SOURCE_COMMIT || env.COMMIT || "",
     rateLimit: env.RATE_LIMIT !== "off",
+    // Halkalar (aşama 2) açık rıza metni ve uygulama ekranları yayına hazır olana kadar kapalı: HALKALAR=acik
+    circles: env.HALKALAR === "acik",
   };
   const missing = REQUIRED.filter((k) => {
     if (k === "RESEND_API_KEY") return mailDriver === "resend" ? !cfg.resendKey : false;

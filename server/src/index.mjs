@@ -332,7 +332,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       return json(res, 200, { silindi: true });
     }
     // Ortak zikir ve hatim halkaları (üyelik aşama 2; circles.mjs). Kişi başına dakikada 120 istek.
-    if (p === "/v1/halkalar" || p.startsWith("/v1/halka")) {
+    if (cfg.circles && (p === "/v1/halkalar" || p.startsWith("/v1/halka"))) {
       if (!(await limit(`halka:${user.id}`, 60, 120))) return json(res, 429, { hata: "sinir" });
       try {
         return await circleApi(user, req, res, p, m);
