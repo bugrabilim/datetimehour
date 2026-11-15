@@ -105,7 +105,10 @@ export function createAccounts({ pool, auth }) {
     }
   }
 
+  // Hesap silinmeden ya da yasaklanmadan önce ortak içerik (halkalar) devredilir; index.mjs bağlar
+  const hooks = { beforeGone: null };
   async function deleteLocal(userId) {
+    if (hooks.beforeGone) await hooks.beforeGone(userId);
     await (await ia()).deleteUser(userId);
   }
 
@@ -127,6 +130,7 @@ export function createAccounts({ pool, auth }) {
     });
     await a.deleteUserSessions(user.id);
     if (permanent) {
+      if (hooks.beforeGone) await hooks.beforeGone(user.id);
       await a.updateUser(user.id, { profile: null, photo: null, name: "", timeZone: null });
       await pool.query(`delete from account_record where user_id = $1`, [user.id]);
       await pool.query(`delete from user_badge where user_id = $1`, [user.id]);
@@ -134,5 +138,5 @@ export function createAccounts({ pool, auth }) {
     }
   }
 
-  return { userByNo, userByEmail, passwordHash, toHesap, writeProfile, createFromHesap, applyChange, deleteLocal, setStatus, ia };
+  return { userByNo, userByEmail, passwordHash, toHesap, writeProfile, createFromHesap, applyChange, deleteLocal, setStatus, ia, hooks };
 }

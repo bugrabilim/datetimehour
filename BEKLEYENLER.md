@@ -16,7 +16,7 @@ Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"
 
 ## Bu oturumda
 - App Store 1.1 ve ilk Play gönderiminden önce standart "Mobil yayın" kontrol listesini sahibe raporla. (14 Kasım 2026)
-- Üyelik aşama 2 (ücretsiz, üyelik zorunlu; sahip 15 Kasım 2026'da "başla" dedi): önce ortak zikir ve hatim halkaları, sonra uyanma grupları ve cami notları; sıra `docs/uyelik-plani-2026-11.md`'de. Başka hangi özelliklerin ortak yapılabileceği üç ajanla araştırılıyor. (15 Kasım 2026)
+- Üyelik aşama 2 (ücretsiz, üyelik zorunlu; sahip 15 Kasım 2026'da "başla" dedi): ortak zikir ve hatim halkalarının sunucusu yapıldı (2a); sırada uygulama ekranları (2b) ve davet bağlantısı (2c); sonra uyanma grupları ve cami notları. Yayından önce açık rıza metni sahibe gösterilir (`docs/uyelik-plani-2026-11.md`). Araştırmadaki yeni ortak özellik önerileri (ortak geri sayım, ortak dünya saati listesi, hesaplı toplantı oylaması…) `docs/uyelik-ortak-ozellikler-2026-11.md`'de, sahibin seçimini bekliyor. (15 Kasım 2026)
 
 ## Başkasında
 - Ana altyapı oturumu: yönetim paneli uçları (`/api/bumba-panel/ozet|uyeler|uye`) hazır; merkezdeki kayıt ve uçtan uca deneme. (14 Kasım 2026)

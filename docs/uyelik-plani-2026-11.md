@@ -176,3 +176,37 @@ hesabı açılana kadar yalnız kodda.
   PR #60 main'e (site sayfaları canlıya; bu oturum, sahibin onayıyla) → bu oturum ana altyapı oturumuna sunucunun
   hazır olduğunu yazar → sahip ana altyapı oturumunda sunucunun ilk yayınını onaylar, o oturum basar → hesap
   ekranlı uygulama sürümü. Sonra aşama 2 (ortak zikir ve hatim).
+
+## Aşama 2 (sahip 15 Kasım 2026'da "başla" dedi)
+- **2a, sunucu (15 Kasım 2026, yapıldı, yayında değil):** `server/src/circles.mjs`, uçlar `/v1/halkalar`, `/v1/halka`
+  (kur), `/v1/halka/onizle`, `/v1/halka/katil`, `/v1/halka/<id>` ve `/zikir`, `/cuz`, `/ayril`, `/cikar`, `/duzenle`,
+  `/sil`, `/bildir`, `/engelle`, `/v1/halka/riza/geri-al`; testler `server/test/circles.test.mjs`. Kurallar:
+  - En çok 30 üye, kişi başına 20 halka; davet kodu 8 harf (karışan harf yok), kurucu yeniler.
+  - Zikir halkası: hazır zikir türü (serbest metin yok), hedef 33–10.000.000, isteğe bağlı bitiş günü; her istekte
+    1–10.000 eklenir; üyelerin payı görünür, sıralama yok.
+  - Hatim halkası: 30 cüz; al, bırak, bitir; 30'u bitince hatim sayısı artar, yeni hatim başlar.
+  - Görünen ad standarttaki kural (takma ad / ad / "Üye 10458"); halkaya özel ad yok.
+  - Açık rıza (`circle_consent`, sürüm 2026-11-15) ilk kurma ya da katılmada, kayıt onayından ayrı; geri alınınca kişi
+    bütün halkalardan çıkar.
+  - Kullanıcı içeriği yalnız halka adı ve görünen ad: süzgeç (bağlantı, e-posta, telefon, kısa yasaklı sözcük
+    listesi), Bildir (her bildirim e-postayla sahibe, bildirenin ve yazanın kimliği yazılmaz; üç ayrı kişiden sonra ad
+    kendiliğinden gizlenir), Engelle, kurucu üyeyi çıkarır.
+  - Ayrılan ya da silinen üyenin katkısı kalır ("Eski üye" / "Silinmiş üye"), bitmemiş cüzü serbest kalır; kurucu
+    giderse halka en eski üyeye geçer; hesap silmede üye kalmadıysa 30 gün tutulur (temizlik görevi siler), ayrılmada
+    hemen silinir. Yasaklanan üyede de aynı.
+  - "Verilerimi indir"e halkalar ve onay kaydı eklendi.
+- **2b, uygulamalar (sırada):** Vakitler › İbadet'te "Halkalar" (giriş ister): liste, kur, kodla katıl, zikir
+  (zikirmatikten ekleme), 30 cüz ızgarası, üyeler, Bildir/Engelle/Çıkar, onay ekranı, rızayı geri alma; metinler 19 dil.
+- **2c, davet bağlantısı:** `https://time.bumba.tr/davet/#KOD` (statik sayfa, evrensel bağlantı; Associated Domains
+  sahipte).
+- **Yayından önce (sahibin onayıyla):** açık rıza ve aydınlatma metni (aşağıda taslak) sahibe gösterilir, gizlilik
+  sayfasına "Halkalar" bölümü (19 dil), App Store yaş derecelendirmesinde kullanıcı içeriği sorusu, Uygulama
+  Gizliliği'ne "Diğer kullanıcı içeriği", Play veri güvenliği formu, App Review notunda moderasyon akışı ve deneme hesabı.
+
+### Açık rıza metni (taslak, sahip bakacak)
+"Zikir ve hatim halkasına katılmanız dini inancınızla ilgili bilgi (KVKK m. 6, özel nitelikli kişisel veri)
+sayılabilir. Halkada şunlar tutulur: halkanın adı, üyeliğiniz, görünen adınız, eklediğiniz zikir sayısı ve
+aldığınız/bitirdiğiniz cüzler. Bunları yalnız halkanın üyeleri görür; herkese açık değildir, satılmaz, reklam için
+kullanılmaz. Halkadan ayrılınca katkı sayılarınız halkada adsız kalır. Bu onayı dilediğiniz zaman geri alabilirsiniz:
+bütün halkalardan çıkarsınız. Hesabınızı silince üyelikleriniz silinir. Veri sorumlusu Bumba Teknoloji Ltd. Şti.;
+ayrıntılar Gizlilik ve Üyelik Aydınlatma Metni'nde. Okudum, açıkça onaylıyorum."
