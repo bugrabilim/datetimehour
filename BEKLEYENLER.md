@@ -16,12 +16,10 @@ Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"
 - Yeni dil ya da yeni kapsayıcı takvim: ancak sahip isterse (Ermeni takvimi bilerek yok). (10 Kasım 2026)
 
 ## Bu oturumda
-- Onay cümlesinin merkezden alınması (standart 5.20; sunucu `consent.mjs`, `/v1/onay-cumlesi`, uygulamalar `Account.consentText`): bitti, dalda; main'e birleştirme (sunucu ve site yayını) sahibin onayıyla. (15 Kasım 2026)
 - App Store 1.1 ve ilk Play gönderiminden önce standart "Mobil yayın" kontrol listesini sahibe raporla. (14 Kasım 2026)
 - Üyelik aşama 2 (ücretsiz, üyelik zorunlu): ortak zikir ve hatim, uyanma grupları, favori cami notlarının paylaşımı; sıra `docs/uyelik-plani-2026-11.md`'de. Sahibin "başla" demesini bekliyor. (10 Kasım 2026)
 
 ## Başkasında
-- Ana altyapı oturumu: hesap sunucusu `saat-hesap`'ın main/HEAD'e geçirilmesi ve otomatik yayının açılması (sahibin onayı 15 Kasım 2026; `33c5ee7`'den sonraki fotoğraf WebP çevirisi bununla canlıya çıkar). (15 Kasım 2026)
 - Ana altyapı oturumu: yönetim paneli uçları (`/api/bumba-panel/ozet|uyeler|uye`) hazır; merkezdeki kayıt ve uçtan uca deneme. (14 Kasım 2026)
 - MEB 2027-2028 çalışma takvimi: yayımlanınca `src/data/school.json`. (6 Kasım 2026)
 - Fitre 2027: Diyanet Ocak 2027'de açıklayınca `src/data/fitre.json`; BAZNAS 2027 kararları (zekât fitrah, fidye). Bakılacak tarih: Ocak 2027. (6 Kasım 2026)
