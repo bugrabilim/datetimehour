@@ -180,7 +180,8 @@ hesabı açılana kadar yalnız kodda.
 ## Aşama 2 (sahip 15 Kasım 2026'da "başla" dedi)
 - **2a, sunucu (15 Kasım 2026, yapıldı, yayında değil):** `server/src/circles.mjs`, uçlar `/v1/halkalar`, `/v1/halka`
   (kur), `/v1/halka/onizle`, `/v1/halka/katil`, `/v1/halka/<id>` ve `/zikir`, `/cuz`, `/ayril`, `/cikar`, `/duzenle`,
-  `/sil`, `/bildir`, `/engelle`, `/v1/halka/riza/geri-al`; testler `server/test/circles.test.mjs`. Kurallar:
+  `/sil`, `/bildir`, `/engelle`, `/v1/halka/riza/geri-al`; testler `server/test/circles.test.mjs`. Yayına hazır olana kadar
+  kapalı (uçlar 404; ortam değişkeni `HALKALAR=acik` ile açılır, ana altyapı girer). Kurallar:
   - En çok 30 üye, kişi başına 20 halka; davet kodu 8 harf (karışan harf yok), kurucu yeniler.
   - Zikir halkası: hazır zikir türü (serbest metin yok), hedef 33–10.000.000, isteğe bağlı bitiş günü; her istekte
     1–10.000 eklenir; üyelerin payı görünür, sıralama yok.
