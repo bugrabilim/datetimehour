@@ -92,6 +92,8 @@ enum AllPrefs {
         AllEntry(id: "qibla", titleKey: "qibla.title", icon: "location.north.line", cat: .faith, feature: .prayer, route: .qibla),
         AllEntry(id: "quran", titleKey: "quran.title", icon: "book", cat: .faith, feature: .prayer, route: .quran),
         AllEntry(id: "zikir", titleKey: "zikir.title", icon: "hand.tap", cat: .faith, feature: .prayer, route: .zikir),
+        AllEntry(id: "circles", titleKey: "circle.title", icon: "person.3", cat: .faith, feature: .prayer, route: .circles,
+                 words: ["circle.kindZikir", "circle.kindHatim"]),
         AllEntry(id: "track", titleKey: "track.title", icon: "checkmark.circle", cat: .faith, feature: .prayer, route: .track),
         AllEntry(id: "duas", titleKey: "dua.title", icon: "hands.sparkles", cat: .faith, feature: .prayer, route: .duas),
         AllEntry(id: "esma", titleKey: "esma.title", icon: "sparkles", cat: .faith, feature: .prayer, route: .esma),
@@ -403,6 +405,7 @@ extension ToolRoute {
         case .language: LanguageView()
         case .shareQr: ShareQRView()
         case .account: AccountView()
+        case .circles: CirclesView()
         }
     }
 }

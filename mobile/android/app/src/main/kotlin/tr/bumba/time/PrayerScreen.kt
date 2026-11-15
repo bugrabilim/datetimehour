@@ -70,6 +70,8 @@ fun PrayerScreen() {
         "quran" -> { BackHandler { page = null }; QuranScreen { page = null }; return }
         "duas" -> { BackHandler { page = null }; DuasScreen { page = null }; return }
         "zikir" -> { BackHandler { page = null }; ZikirScreen { page = null }; return }
+        // Halkalar (üyelik aşama 2b): ortak zikir ve hatim
+        "circles" -> { BackHandler { page = null }; CirclesScreen({ page = null }) { Nav.tool("account") }; return }
         "track" -> { BackHandler { page = null }; TrackerScreen { page = null }; return }
         "zakat" -> { BackHandler { page = null }; ZakatScreen { page = null }; return }
         "reldays" -> { BackHandler { page = null }; ReligiousDaysScreen { page = null }; return }
@@ -221,6 +223,7 @@ private fun WorshipHub(onBack: () -> Unit, open: (String) -> Unit) {
             LinkCard("scroll", L("hadith.title")) { open("hadith") }
             LinkCard("guide", L("guide.title")) { open("guide") }
             LinkCard("beads", L("zikir.title")) { open("zikir") }
+            LinkCard("people", L("circle.title")) { open("circles") }
             LinkCard("checklist", L("track.title")) { open("track") }
             LinkCard("star_crescent", L("relday.title")) { open("reldays") }
             LinkCard("love_letter", L("greet.title")) { open("greet") }

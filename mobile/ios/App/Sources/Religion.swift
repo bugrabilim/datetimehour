@@ -1168,6 +1168,7 @@ struct WorshipLinks: View {
             link(L("hadith.title"), "scroll") { HadithView() }
             link(L("guide.title"), "guide") { PrayerGuideView() }
             link(L("zikir.title"), "beads") { ZikirView() }
+            link(L("circle.title"), "people") { CirclesView() }
             link(L("track.title"), "checklist") { TrackerView() }
             link(L("relday.title"), "star_crescent") { ReligiousDaysView() }
             link(L("greet.title"), "love_letter") { GreetingView() }

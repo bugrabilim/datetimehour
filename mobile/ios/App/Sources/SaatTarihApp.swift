@@ -145,8 +145,8 @@ enum ToolRoute: Hashable {
     // Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9); kutlama kartları (nötr vesileler)
     case panchang, greetN
     case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
-    // Hesap (üyelik aşama 1, 10 Kasım 2026)
-    case account
+    // Hesap (üyelik aşama 1, 10 Kasım 2026) ve halkalar (aşama 2b, 15 Kasım 2026)
+    case account, circles
     // Sitedeki dokuz araç (4 Kasım 2026)
     case chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom
     case sura(Int)

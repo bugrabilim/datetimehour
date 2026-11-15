@@ -697,6 +697,34 @@ class MoreScreensTest {
         Account.resetForTest()
     }
 
+    /** Halkalar (üyelik aşama 2b): sahte sunucuyla liste, zikir ve hatim ayrıntısı, kurma (açık rıza) */
+    @Test fun circles() {
+        val user = org.json.JSONObject().put("id", "u1").put("email", "ayse@example.com").put("name", "").put("lang", "tr")
+        val uyeler = """[{"id":1,"ad":"Ayşe","engelli":false,"sen":true,"sahip":true,"sayi":340},{"id":2,"ad":"Üye 10459","engelli":false,"sen":false,"sahip":false,"sayi":125},{"id":3,"ad":null,"engelli":true,"sen":false,"sahip":false,"sayi":60}]"""
+        val zikir = """{"id":"z1abc","tur":"zikir","ad":"Cuma salavatı","adGizli":false,"kod":"K7MPQ2RT","sahip":true,"bitis":null,"zikir":"salavat","hedef":1000,"toplam":525,"uyeler":$uyeler,"enCok":30}"""
+        val cuz = (1..30).joinToString(",") { n -> when { n <= 9 -> """{"cuz":$n,"durum":"bitti","uye":2,"sen":false,"eski":null}"""; n == 10 -> """{"cuz":10,"durum":"alindi","uye":1,"sen":true,"eski":null}"""; n in 11..13 -> """{"cuz":$n,"durum":"alindi","uye":2,"sen":false,"eski":null}"""; else -> """{"cuz":$n,"durum":"bos"}""" } }
+        val hatim = """{"id":"h1abc","tur":"hatim","ad":"Aile hatmi","adGizli":false,"kod":"P3XW9ZQA","sahip":false,"bitis":null,"hatim":{"tur":2,"biten":1},"cuzler":[$cuz],"uyeler":$uyeler,"enCok":30}"""
+        val list = """{"riza":true,"halkalar":[{"id":"z1abc","tur":"zikir","ad":"Cuma salavatı","sahip":true,"uyeSayisi":3,"zikir":"salavat","hedef":1000,"toplam":525},{"id":"h1abc","tur":"hatim","ad":"Aile hatmi","sahip":false,"uyeSayisi":3,"hatim":{"tur":2,"biten":1,"bitenCuz":9}}]}"""
+        Account.transport = { _, p, _, _ ->
+            when (p) {
+                "/v1/halkalar" -> Account.Resp(200, list, null)
+                "/v1/halka/z1abc" -> Account.Resp(200, zikir, null)
+                "/v1/halka/h1abc" -> Account.Resp(200, hatim, null)
+                "/v1/kayitlar" -> Account.Resp(200, """{"kayitlar":{},"simdi":1}""", null)
+                "/v1/rozetler" -> Account.Resp(200, """{"rozetler":[]}""", null)
+                else -> Account.Resp(200, org.json.JSONObject().put("token", "t").put("user", user).toString(), null)
+            }
+        }
+        kotlinx.coroutines.runBlocking { Account.signIn("ayse@example.com", "guclu-sifre-1") }
+        shot("tr-halkalar") { CirclesScreen({}) {} }
+        shot("tr-halka-zikir") { CircleDetail("z1abc") {} }
+        shot("tr-halka-hatim") { CircleDetail("h1abc") {} }
+        shot("ar-halka-hatim", qualifiers = "ar", dark = true) { CircleDetail("h1abc") {} }
+        shot("tr-halka-kur") { CircleCreate(false, {}) {} }
+        Account.resetForTest()
+        shot("tr-halkalar-giris") { CirclesScreen({}) {} }
+    }
+
     @Test fun badges() {
         // Örnek ilerleme: birkaç rozet kazanılmış, 6 model görülmüş, 2 gün seri
         BadgeStore.deleteAll()
