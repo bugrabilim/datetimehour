@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">যা মুছে ফেলা হয় না</string>
     <string name="account_deleteKept">ব্যাকআপে থাকা কপি সর্বোচ্চ 30 দিনের মধ্যে আপনা-আপনি মুছে যায় (ব্যাকআপ কেবল কোনো ত্রুটির পর পুনরুদ্ধারের জন্য)। আপনি অ্যাকাউন্ট শুধু Saat Tarih থেকে মুছলে অন্যান্য Bumba পণ্যে আপনার অ্যাকাউন্ট ও সদস্য নম্বর সেখানেই থাকে। ফোনে থাকা আপনার সেটিংস ও রেকর্ড ফোনেই থাকে।</string>
     <string name="account_myAccount">আমার অ্যাকাউন্ট</string>
+    <string name="account_fbTitle">সমস্যা জানান</string>
+    <string name="account_fbIntro">কোনো সমস্যা হয়েছে? সংক্ষেপে লিখুন কী হয়েছে, আপনি কী করেছিলেন এবং কী আশা করেছিলেন।</string>
+    <string name="account_fbMessage">কী হয়েছে?</string>
+    <string name="account_fbEmail">আপনার ইমেইল (ঐচ্ছিক, যাতে আমরা উত্তর দিতে পারি)</string>
+    <string name="account_fbSend">পাঠান</string>
+    <string name="account_fbSent">ধন্যবাদ, আপনার রিপোর্ট আমরা পেয়েছি।</string>
+    <string name="account_fbShort">আরেকটু বিস্তারিত লিখুন (অন্তত 10 অক্ষর)।</string>
+    <string name="account_fbPrivacy">আপনার লেখা, আপনার ইমেইল ঠিকানা (যদি দেন), পেজ বা অ্যাপের সংস্করণ, ডিভাইসের ধরন ও ভাষা শুধু এই রিপোর্ট দেখা ও আপনাকে উত্তর দেওয়ার জন্য ইমেইলে আমাদের কাছে পাঠানো হয় (ইমেইল সেবা Resend, যুক্তরাষ্ট্র)। এগুলো অন্য কোথাও রাখা হয় না এবং সর্বোচ্চ এক বছরের মধ্যে মুছে ফেলা হয়।</string>
+    <string name="account_fbPrivacyLink">গোপনীয়তা</string>
     <string name="common_done">হয়ে গেছে</string>
     <string name="notify_heading">নামাজের সময়ের নোটিফিকেশন</string>
     <string name="notify_enable">নামাজের সময়ে আমাকে জানান</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s: ঘড়ি, ক্যালেন্ডার, নামাজের সময় ও টুলস; বিনামূল্যে, কোনো বিজ্ঞাপন নেই।</string>
     <string name="support_qr">QR কোড দিয়ে শেয়ার করুন</string>
     <string name="support_qrNote">time.bumba.tr খুলতে ফোনের ক্যামেরা দিয়ে স্ক্যান করুন।</string>
-    <string name="support_feedback">মতামত পাঠান</string>
-    <string name="support_feedbackSubject">%1$s সম্পর্কে মতামত</string>
-    <string name="support_feedbackNote">আপনার ইমেইল অ্যাপ খুলবে। বার্তায় শুধু অ্যাপের সংস্করণ ও সিস্টেমের সংস্করণ যোগ হয়, এবং পাঠানোর আগে আপনি সেগুলো দেখতে পান।</string>
     <string name="support_moreApps">Bumba-র আরও অ্যাপ</string>
     <string name="support_version">সংস্করণ</string>
     <string name="fontScale_title">লেখার আকার</string>

@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">削除されないもの</string>
     <string name="account_deleteKept">バックアップ内のコピーは最長30日以内に自動で削除されます（バックアップは障害後の復元にのみ使います）。Saat Tarih からのみ削除した場合、ほかの Bumba 製品のアカウントと会員番号はそのまま残ります。スマートフォン上の設定と記録はスマートフォンに残ります。</string>
     <string name="account_myAccount">マイアカウント</string>
+    <string name="account_fbTitle">問題を報告</string>
+    <string name="account_fbIntro">うまくいかないことがありましたか？何が起きたか、何をしたか、どうなるはずだったかを簡単に書いてください。</string>
+    <string name="account_fbMessage">何が起きましたか？</string>
+    <string name="account_fbEmail">メールアドレス（任意、返信のため）</string>
+    <string name="account_fbSend">送信</string>
+    <string name="account_fbSent">ありがとうございます。報告を受け取りました。</string>
+    <string name="account_fbShort">もう少し詳しく書いてください（10文字以上）。</string>
+    <string name="account_fbPrivacy">入力内容、メールアドレス（入力した場合）、ページまたはアプリのバージョン、端末の種類、言語は、この報告を調べて返信するためだけにメールで当方に送られます（メールサービス Resend、米国）。ほかの場所には保存されず、遅くとも1年以内に削除されます。</string>
+    <string name="account_fbPrivacyLink">プライバシー</string>
     <string name="common_done">完了</string>
     <string name="notify_heading">礼拝時刻の通知</string>
     <string name="notify_enable">礼拝時刻に通知する</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s：時計、カレンダー、礼拝時刻、ツール。無料で広告なし。</string>
     <string name="support_qr">QRコードで共有</string>
     <string name="support_qrNote">スマホのカメラで読み取ると time.bumba.tr が開きます。</string>
-    <string name="support_feedback">フィードバックを送る</string>
-    <string name="support_feedbackSubject">%1$sへのフィードバック</string>
-    <string name="support_feedbackNote">メールアプリが開きます。メッセージに追加されるのはアプリとシステムのバージョンだけで、送信前に確認できます。</string>
     <string name="support_moreApps">Bumbaのほかの製品</string>
     <string name="support_version">バージョン</string>
     <string name="fontScale_title">文字サイズ</string>

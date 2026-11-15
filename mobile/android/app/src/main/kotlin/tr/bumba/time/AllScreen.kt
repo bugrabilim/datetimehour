@@ -23,6 +23,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Air
 import androidx.compose.material.icons.filled.Stars
 import androidx.compose.material.icons.filled.Elderly
@@ -207,7 +208,7 @@ object AllPrefs {
         "settings" to "gear", "badges" to "medal",
         "appearance" to "clock", "color" to "palette", "dials" to "dial", "widgets" to "widgets", "homeItems" to "homeitems",
         "features" to "features", "notifications" to "bell", "language" to "language", "about" to "info", "shareQr" to "qr",
-        "account" to "account",
+        "account" to "account", "reportProblem" to "mail",
     )[id.removePrefix("s:")]?.takeIf { DuoIcons.has(it) || Icons3D.res(it) != 0 || LineIcons.get(it).isNotEmpty() }
 
     /** Aramada ayar sayfaları da çıkar (Ayarlar'ın alt sayfaları) */
@@ -224,6 +225,7 @@ object AllPrefs {
         AllEntry("s:account", "account.title", Icons.Filled.AccountCircle, AllCat.MORE, null, route = "account", words = "account.signIn"),
         AllEntry("s:about", "settings.about", Icons.Filled.Info, AllCat.MORE, null, route = "about"),
         AllEntry("s:shareQr", "support.qr", Icons.Filled.QrCode2, AllCat.MORE, null, route = "shareQr"),
+        AllEntry("s:reportProblem", "account.fbTitle", Icons.Filled.Email, AllCat.MORE, null, route = "reportProblem"),
     )
 
     /** Emeklilik hesabı yalnız Türkçe arayüzde (Türkiye mevzuatı, metni Türkçe) */

@@ -625,6 +625,7 @@ class MoreScreensTest {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) { FontScaleCard(); SupportCard {} }
         }
         shot("tr-qr-paylas") { ShareQrScreen() }
+        shot("tr-hata-bildir") { FeedbackScreen() }
         shot("tr-atmosfer", atmo = "lavender") { ColorScreen() }
         shot("tr-atmosfer-koyu", atmo = "ocean", dark = true) { SettingsScreen {} }
         shot("tr-yazi-boyutu-130", fontScale = 130) { SettingsScreen {} }

@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">不会删除的内容</string>
     <string name="account_deleteKept">备份中的副本最迟在 30 天内自动删除（备份仅用于故障后的恢复）。如果您只从 Saat Tarih 删除账户，您在其他 Bumba 产品中的账户和会员编号仍会保留。手机上的设置和记录留在手机上。</string>
     <string name="account_myAccount">我的账户</string>
+    <string name="account_fbTitle">报告问题</string>
+    <string name="account_fbIntro">遇到问题了吗？请简要写下发生了什么、您做了什么以及您期望的结果。</string>
+    <string name="account_fbMessage">发生了什么？</string>
+    <string name="account_fbEmail">您的邮箱（可选，便于我们回复）</string>
+    <string name="account_fbSend">发送</string>
+    <string name="account_fbSent">谢谢，我们已收到您的报告。</string>
+    <string name="account_fbShort">请再写详细一些（至少 10 个字符）。</string>
+    <string name="account_fbPrivacy">您填写的内容、邮箱地址（如填写）、页面或应用版本、设备类型和语言仅为处理此报告并回复您而通过电子邮件发送给我们（邮件服务 Resend，美国）。不会保存在其他地方，最迟一年内删除。</string>
+    <string name="account_fbPrivacyLink">隐私</string>
     <string name="common_done">完成</string>
     <string name="notify_heading">礼拜时间通知</string>
     <string name="notify_enable">礼拜时间提醒我</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s：时钟、日历、礼拜时间和工具，免费且无广告。</string>
     <string name="support_qr">用二维码分享</string>
     <string name="support_qrNote">用手机相机扫描即可打开 time.bumba.tr。</string>
-    <string name="support_feedback">发送反馈</string>
-    <string name="support_feedbackSubject">%1$s 反馈</string>
-    <string name="support_feedbackNote">将打开您的邮件应用。邮件中只附加应用版本和系统版本，发送前您可以看到。</string>
     <string name="support_moreApps">Bumba 的其他产品</string>
     <string name="support_version">版本</string>
     <string name="fontScale_title">文字大小</string>

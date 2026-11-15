@@ -380,6 +380,13 @@
         ]
       },
       {
+        "id": "report-problem",
+        "h": "Laporkan masalah",
+        "p": [
+          "Anda dapat melaporkan masalah di situs (hesap.time.bumba.tr/hata-bildir) dan di aplikasi (Pengaturan › Dukungan); tidak perlu akun. Tulisan Anda, alamat email Anda (jika diisi), versi halaman atau aplikasi, jenis perangkat, dan bahasa dikirim kepada kami lewat email (layanan email Resend, AS) hanya untuk memeriksa laporan ini dan membalas Anda. Data ini tidak disimpan di tempat lain dan dihapus paling lambat dalam satu tahun. Untuk membatasi penyalahgunaan, alamat IP Anda disimpan paling lama satu hari. Dasar hukum: kepentingan sah kami untuk menjawab laporan Anda (KVKK pasal 5/2-f)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Ekstensi peramban",
         "p": [

@@ -380,6 +380,13 @@
         ]
       },
       {
+        "id": "report-problem",
+        "h": "Report a problem",
+        "p": [
+          "You can report a problem on the website (hesap.time.bumba.tr/hata-bildir) and in the apps (Settings › Support); no account is needed. What you write, your email address (if given), the page or app version, device type and language are sent to us by email (email service Resend, USA) only to look into this report and reply to you. They are not stored anywhere else and are deleted within one year at the latest. To limit abuse, your IP address is kept for at most one day. Legal basis: our legitimate interest in answering your report (KVKK art. 5/2-f)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Browser extension",
         "p": [

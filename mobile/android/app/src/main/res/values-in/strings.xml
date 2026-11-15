@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">Yang tidak dihapus</string>
     <string name="account_deleteKept">Salinan di cadangan terhapus otomatis paling lambat dalam 30 hari (cadangan hanya untuk pemulihan setelah gangguan). Jika Anda menghapus akun hanya dari Saat Tarih, akun dan nomor anggota Anda di produk Bumba lain tetap ada. Pengaturan dan catatan di ponsel Anda tetap di ponsel.</string>
     <string name="account_myAccount">Akun saya</string>
+    <string name="account_fbTitle">Laporkan masalah</string>
+    <string name="account_fbIntro">Ada yang tidak beres? Tulis singkat apa yang terjadi, apa yang Anda lakukan, dan apa yang Anda harapkan.</string>
+    <string name="account_fbMessage">Apa yang terjadi?</string>
+    <string name="account_fbEmail">Email Anda (opsional, agar kami bisa membalas)</string>
+    <string name="account_fbSend">Kirim</string>
+    <string name="account_fbSent">Terima kasih, laporan Anda sudah kami terima.</string>
+    <string name="account_fbShort">Tulis sedikit lebih rinci (minimal 10 karakter).</string>
+    <string name="account_fbPrivacy">Tulisan Anda, alamat email Anda (jika diisi), versi halaman atau aplikasi, jenis perangkat, dan bahasa dikirim kepada kami lewat email (layanan email Resend, AS) hanya untuk memeriksa laporan ini dan membalas Anda. Data ini tidak disimpan di tempat lain dan dihapus paling lambat dalam satu tahun.</string>
+    <string name="account_fbPrivacyLink">Privasi</string>
     <string name="common_done">Selesai</string>
     <string name="notify_heading">Notifikasi waktu salat</string>
     <string name="notify_enable">Beri tahu saya saat waktu salat</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s: jam, kalender, waktu salat, dan alat; gratis tanpa iklan.</string>
     <string name="support_qr">Bagikan dengan kode QR</string>
     <string name="support_qrNote">Pindai dengan kamera ponsel untuk membuka time.bumba.tr.</string>
-    <string name="support_feedback">Kirim masukan</string>
-    <string name="support_feedbackSubject">Masukan %1$s</string>
-    <string name="support_feedbackNote">Aplikasi email Anda akan terbuka. Hanya versi aplikasi dan versi sistem yang ditambahkan ke pesan, dan Anda melihatnya sebelum mengirim.</string>
     <string name="support_moreApps">Produk Bumba lainnya</string>
     <string name="support_version">Versi</string>
     <string name="fontScale_title">Ukuran teks</string>

@@ -231099,6 +231099,1077 @@
         }
       }
     },
+    "account.fbTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hata bildir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Report a problem"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Problem melden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xəta bildir"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الإبلاغ عن مشكلة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laporkan masalah"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مسئلے کی اطلاع دیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گزارش مشکل"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signaler un problème"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сообщить о проблеме"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "問題を報告"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "문제 신고"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "报告问题"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mag-ulat ng problema"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แจ้งปัญหา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Informar de un problema"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relatar um problema"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "समस्या बताएँ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সমস্যা জানান"
+          }
+        }
+      }
+    },
+    "account.fbIntro": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir sorun mu gördünüz? Ne olduğunu, ne yaptığınızı ve ne beklediğinizi kısaca yazın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Did something go wrong? Briefly describe what happened, what you did and what you expected."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ist etwas schiefgelaufen? Beschreiben Sie kurz, was passiert ist, was Sie getan haben und was Sie erwartet haben."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Problem gördünüz? Nə baş verdiyini, nə etdiyinizi və nə gözlədiyinizi qısaca yazın."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هل واجهت مشكلة؟ اكتب باختصار ما حدث وما فعلته وما كنت تتوقعه."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ada yang tidak beres? Tulis singkat apa yang terjadi, apa yang Anda lakukan, dan apa yang Anda harapkan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کوئی مسئلہ ہوا؟ مختصراً لکھیں کہ کیا ہوا، آپ نے کیا کیا اور آپ کیا توقع کر رہے تھے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مشکلی پیش آمد؟ کوتاه بنویسید چه شد، چه کردید و چه انتظاری داشتید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelque chose ne va pas ? Décrivez brièvement ce qui s'est passé, ce que vous avez fait et ce que vous attendiez."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Что-то пошло не так? Коротко опишите, что произошло, что вы делали и чего ожидали."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "うまくいかないことがありましたか？何が起きたか、何をしたか、どうなるはずだったかを簡単に書いてください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "문제가 있었나요? 무슨 일이 있었는지, 무엇을 했는지, 무엇을 기대했는지 간단히 적어 주세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "遇到问题了吗？请简要写下发生了什么、您做了什么以及您期望的结果。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May nagkaproblema ba? Isulat nang maikli kung ano ang nangyari, ano ang ginawa mo, at ano ang inaasahan mo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พบปัญหาหรือไม่ เขียนสั้น ๆ ว่าเกิดอะไรขึ้น คุณทำอะไร และคาดว่าจะเป็นอย่างไร"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Algo salió mal? Describa brevemente qué pasó, qué hizo y qué esperaba."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Algo deu errado? Descreva brevemente o que aconteceu, o que você fez e o que esperava."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कुछ गड़बड़ हुई? संक्षेप में लिखें कि क्या हुआ, आपने क्या किया और आप क्या उम्मीद कर रहे थे।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কোনো সমস্যা হয়েছে? সংক্ষেপে লিখুন কী হয়েছে, আপনি কী করেছিলেন এবং কী আশা করেছিলেন।"
+          }
+        }
+      }
+    },
+    "account.fbMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne oldu?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What happened?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was ist passiert?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nə baş verdi?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماذا حدث؟"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apa yang terjadi?"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کیا ہوا؟"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "چه شد؟"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Que s'est-il passé ?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Что произошло?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "何が起きましたか？"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "무슨 일이 있었나요?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "发生了什么？"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ano ang nangyari?"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เกิดอะไรขึ้น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Qué pasó?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O que aconteceu?"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "क्या हुआ?"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কী হয়েছে?"
+          }
+        }
+      }
+    },
+    "account.fbEmail": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-postanız (isteğe bağlı, size yanıt verebilmemiz için)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your email (optional, so we can reply)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihre E-Mail (optional, damit wir antworten können)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-poçtunuz (istəyə bağlı, sizə cavab verə bilməyimiz üçün)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بريدك الإلكتروني (اختياري، لنتمكن من الرد)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Email Anda (opsional, agar kami bisa membalas)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کا ای میل (اختیاری، تاکہ ہم جواب دے سکیں)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ایمیل شما (اختیاری، تا بتوانیم پاسخ دهیم)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre e-mail (facultatif, pour que nous puissions répondre)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваш e-mail (необязательно, чтобы мы могли ответить)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メールアドレス（任意、返信のため）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이메일 (선택, 답장을 위해)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您的邮箱（可选，便于我们回复）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang email mo (opsyonal, para makasagot kami)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อีเมลของคุณ (ไม่บังคับ เพื่อให้เราตอบกลับได้)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Su correo (opcional, para poder responderle)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seu e-mail (opcional, para podermos responder)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका ईमेल (वैकल्पिक, ताकि हम जवाब दे सकें)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার ইমেইল (ঐচ্ছিক, যাতে আমরা উত্তর দিতে পারি)"
+          }
+        }
+      }
+    },
+    "account.fbSend": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gönder"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Göndər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إرسال"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kirim"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بھیجیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ارسال"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Envoyer"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отправить"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "送信"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "보내기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "发送"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ipadala"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ส่ง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviar"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviar"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "भेजें"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "পাঠান"
+          }
+        }
+      }
+    },
+    "account.fbSent": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teşekkürler, bildiriminiz bize ulaştı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thank you, your report has reached us."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Danke, Ihre Meldung ist bei uns angekommen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təşəkkürlər, bildirişiniz bizə çatdı."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شكرًا، وصلنا بلاغك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terima kasih, laporan Anda sudah kami terima."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شکریہ، آپ کی اطلاع ہم تک پہنچ گئی۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سپاس، گزارش شما به ما رسید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merci, votre signalement nous est bien parvenu."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спасибо, ваше сообщение получено."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ありがとうございます。報告を受け取りました。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "감사합니다. 신고가 접수되었습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "谢谢，我们已收到您的报告。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salamat, natanggap namin ang ulat mo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขอบคุณ เราได้รับรายงานของคุณแล้ว"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gracias, hemos recibido su informe."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obrigado, recebemos seu relato."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "धन्यवाद, आपकी रिपोर्ट हमें मिल गई।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ধন্যবাদ, আপনার রিপোর্ট আমরা পেয়েছি।"
+          }
+        }
+      }
+    },
+    "account.fbShort": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biraz daha ayrıntı yazın (en az 10 karakter)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Please add a little more detail (at least 10 characters)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitte schreiben Sie etwas mehr (mindestens 10 Zeichen)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir az daha ətraflı yazın (ən azı 10 simvol)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يرجى كتابة مزيد من التفاصيل (10 أحرف على الأقل)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tulis sedikit lebih rinci (minimal 10 karakter)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "براہ کرم کچھ مزید تفصیل لکھیں (کم از کم 10 حروف)۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لطفاً کمی بیشتر توضیح دهید (دست‌کم 10 نویسه)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajoutez un peu plus de détails (au moins 10 caractères)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пожалуйста, напишите чуть подробнее (не менее 10 символов)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "もう少し詳しく書いてください（10文字以上）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "조금 더 자세히 적어 주세요(10자 이상)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请再写详细一些（至少 10 个字符）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pakisulat nang mas detalyado (hindi bababa sa 10 character)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โปรดเขียนรายละเอียดเพิ่มอีกเล็กน้อย (อย่างน้อย 10 ตัวอักษร)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escriba un poco más de detalle (al menos 10 caracteres)."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escreva um pouco mais de detalhes (pelo menos 10 caracteres)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कृपया थोड़ा और विवरण लिखें (कम से कम 10 अक्षर)।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আরেকটু বিস্তারিত লিখুন (অন্তত 10 অক্ষর)।"
+          }
+        }
+      }
+    },
+    "account.fbPrivacy": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazdıklarınız, yazdıysanız e-posta adresiniz, sayfa ya da uygulama sürümü, cihaz türü ve dil yalnız bu bildirimi incelemek ve size yanıt vermek için e-postayla bize iletilir (e-posta hizmeti Resend, ABD). Başka yerde saklanmaz, en geç bir yıl içinde silinir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What you write, your email address (if given), the page or app version, device type and language are sent to us by email (email service Resend, USA) only to look into this report and reply to you. They are not stored anywhere else and are deleted within one year at the latest."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihr Text, Ihre E-Mail-Adresse (falls angegeben), die Seiten- oder App-Version, der Gerätetyp und die Sprache werden nur zur Prüfung dieser Meldung und für eine Antwort per E-Mail an uns übermittelt (E-Mail-Dienst Resend, USA). Sie werden nirgendwo sonst gespeichert und spätestens nach einem Jahr gelöscht."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazdıqlarınız, yazmısınızsa e-poçt ünvanınız, səhifə və ya tətbiq versiyası, cihaz növü və dil yalnız bu bildirişi araşdırmaq və sizə cavab vermək üçün e-poçtla bizə göndərilir (e-poçt xidməti Resend, ABŞ). Başqa yerdə saxlanılmır, ən geci bir il ərzində silinir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُرسَل ما تكتبه وبريدك الإلكتروني (إن كتبته) وإصدار الصفحة أو التطبيق ونوع الجهاز واللغة إلينا بالبريد الإلكتروني (خدمة البريد Resend، الولايات المتحدة) فقط لدراسة هذا البلاغ والرد عليك. لا تُحفظ في أي مكان آخر وتُحذف خلال سنة على الأكثر."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tulisan Anda, alamat email Anda (jika diisi), versi halaman atau aplikasi, jenis perangkat, dan bahasa dikirim kepada kami lewat email (layanan email Resend, AS) hanya untuk memeriksa laporan ini dan membalas Anda. Data ini tidak disimpan di tempat lain dan dihapus paling lambat dalam satu tahun."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کی تحریر، آپ کا ای میل پتا (اگر لکھا ہو)، صفحے یا ایپ کا ورژن، ڈیوائس کی قسم اور زبان صرف اس اطلاع کو دیکھنے اور آپ کو جواب دینے کے لیے ای میل کے ذریعے ہمیں بھیجی جاتی ہیں (ای میل سروس Resend، امریکا)۔ یہ کہیں اور محفوظ نہیں کی جاتیں اور زیادہ سے زیادہ ایک سال میں حذف کر دی جاتی ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نوشته شما، نشانی ایمیلتان (اگر نوشته باشید)، نسخه صفحه یا برنامه، نوع دستگاه و زبان فقط برای بررسی این گزارش و پاسخ به شما با ایمیل برای ما فرستاده می‌شود (سرویس ایمیل Resend، آمریکا). جای دیگری نگه داشته نمی‌شود و حداکثر ظرف یک سال پاک می‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre texte, votre adresse e-mail (si vous l'indiquez), la version de la page ou de l'application, le type d'appareil et la langue nous sont envoyés par e-mail (service d'e-mail Resend, États-Unis) uniquement pour examiner ce signalement et vous répondre. Ils ne sont conservés nulle part ailleurs et sont supprimés au plus tard dans un an."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваш текст, адрес e-mail (если указан), версия страницы или приложения, тип устройства и язык отправляются нам по e-mail (почтовый сервис Resend, США) только для разбора этого сообщения и ответа вам. Они нигде больше не хранятся и удаляются не позднее чем через год."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "入力内容、メールアドレス（入力した場合）、ページまたはアプリのバージョン、端末の種類、言語は、この報告を調べて返信するためだけにメールで当方に送られます（メールサービス Resend、米国）。ほかの場所には保存されず、遅くとも1年以内に削除されます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "작성한 내용, 이메일 주소(입력한 경우), 페이지 또는 앱 버전, 기기 종류와 언어는 이 신고를 확인하고 답장하기 위해서만 이메일로 저희에게 전달됩니다(이메일 서비스 Resend, 미국). 다른 곳에 저장되지 않으며 늦어도 1년 안에 삭제됩니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您填写的内容、邮箱地址（如填写）、页面或应用版本、设备类型和语言仅为处理此报告并回复您而通过电子邮件发送给我们（邮件服务 Resend，美国）。不会保存在其他地方，最迟一年内删除。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang isinulat mo, ang email address mo (kung inilagay), ang bersyon ng pahina o app, uri ng device at wika ay ipinapadala sa amin sa email (serbisyong email na Resend, US) para lamang suriin ang ulat na ito at sumagot sa iyo. Hindi ito iniimbak saanman at binubura sa loob ng isang taon sa pinakamatagal."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ข้อความของคุณ อีเมล (หากระบุ) เวอร์ชันของหน้าหรือแอป ประเภทอุปกรณ์ และภาษา จะถูกส่งถึงเราทางอีเมล (บริการอีเมล Resend สหรัฐอเมริกา) เพื่อตรวจสอบรายงานนี้และตอบกลับคุณเท่านั้น ไม่ถูกเก็บไว้ที่อื่น และจะถูกลบภายในหนึ่งปีเป็นอย่างช้า"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lo que escribe, su correo electrónico (si lo indica), la versión de la página o de la aplicación, el tipo de dispositivo y el idioma se nos envían por correo electrónico (servicio de correo Resend, EE. UU.) solo para revisar este informe y responderle. No se guardan en ningún otro lugar y se eliminan en un plazo máximo de un año."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O que você escreve, seu e-mail (se informado), a versão da página ou do app, o tipo de dispositivo e o idioma são enviados a nós por e-mail (serviço de e-mail Resend, EUA) apenas para analisar este relato e responder a você. Não são guardados em nenhum outro lugar e são excluídos em no máximo um ano."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका लिखा हुआ, आपका ईमेल पता (यदि दिया हो), पेज या ऐप का संस्करण, डिवाइस का प्रकार और भाषा केवल इस रिपोर्ट को देखने और आपको जवाब देने के लिए ईमेल से हमें भेजे जाते हैं (ईमेल सेवा Resend, अमेरिका)। इन्हें कहीं और नहीं रखा जाता और अधिकतम एक वर्ष में हटा दिया जाता है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার লেখা, আপনার ইমেইল ঠিকানা (যদি দেন), পেজ বা অ্যাপের সংস্করণ, ডিভাইসের ধরন ও ভাষা শুধু এই রিপোর্ট দেখা ও আপনাকে উত্তর দেওয়ার জন্য ইমেইলে আমাদের কাছে পাঠানো হয় (ইমেইল সেবা Resend, যুক্তরাষ্ট্র)। এগুলো অন্য কোথাও রাখা হয় না এবং সর্বোচ্চ এক বছরের মধ্যে মুছে ফেলা হয়।"
+          }
+        }
+      }
+    },
+    "account.fbPrivacyLink": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gizlilik"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datenschutz"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məxfilik"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الخصوصية"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privasi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رازداری"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حریم خصوصی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confidentialité"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Конфиденциальность"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プライバシー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "개인정보"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐私"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ความเป็นส่วนตัว"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacidad"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacidade"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गोपनीयता"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "গোপনীয়তা"
+          }
+        }
+      }
+    },
     "common.done": {
       "extractionState": "manual",
       "localizations": {
@@ -365803,363 +366874,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "time.bumba.tr খুলতে ফোনের ক্যামেরা দিয়ে স্ক্যান করুন।"
-          }
-        }
-      }
-    },
-    "support.feedback": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geri bildirim gönder"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send feedback"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Feedback senden"
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rəy göndər"
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "أرسل ملاحظاتك"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kirim masukan"
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "رائے بھیجیں"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ارسال بازخورد"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Envoyer un commentaire"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Отправить отзыв"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "フィードバックを送る"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "의견 보내기"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "发送反馈"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Magpadala ng feedback"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ส่งความคิดเห็น"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enviar comentarios"
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enviar comentários"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "प्रतिक्रिया भेजें"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "মতামত পাঠান"
-          }
-        }
-      }
-    },
-    "support.feedbackSubject": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ geri bildirimi"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ feedback"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Feedback zu %1$@"
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ rəyi"
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ملاحظات حول %1$@"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Masukan %1$@"
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ کے بارے میں رائے"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "بازخورد %1$@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Commentaire sur %1$@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Отзыв о приложении %1$@"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@へのフィードバック"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ 의견"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ 反馈"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Feedback sa %1$@"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ความคิดเห็นเกี่ยวกับ %1$@"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comentarios sobre %1$@"
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comentários sobre o %1$@"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ के बारे में प्रतिक्रिया"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ সম্পর্কে মতামত"
-          }
-        }
-      }
-    },
-    "support.feedbackNote": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "E-posta uygulamanız açılır. İletiye yalnız uygulama sürümü ve sistem sürümü eklenir; göndermeden önce görürsünüz."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your email app opens. Only the app version and system version are added to the message, and you see them before sending."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ihre E-Mail-App öffnet sich. Der Nachricht werden nur App- und Systemversion hinzugefügt; Sie sehen sie vor dem Senden."
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "E-poçt tətbiqiniz açılır. Məktuba yalnız tətbiq və sistem versiyası əlavə olunur; göndərməzdən əvvəl görürsünüz."
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "يُفتح تطبيق البريد لديك. لا يُضاف إلى الرسالة إلا إصدار التطبيق وإصدار النظام، وتراهما قبل الإرسال."
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aplikasi email Anda akan terbuka. Hanya versi aplikasi dan versi sistem yang ditambahkan ke pesan, dan Anda melihatnya sebelum mengirim."
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "آپ کی ای میل ایپ کھلے گی۔ پیغام میں صرف ایپ اور سسٹم کا ورژن شامل ہوتا ہے، اور آپ بھیجنے سے پہلے اسے دیکھتے ہیں۔"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "برنامه ایمیل شما باز می‌شود. فقط نسخه برنامه و نسخه سیستم به پیام افزوده می‌شود و پیش از ارسال آن را می‌بینید."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre application de messagerie s'ouvre. Seules les versions de l'application et du système sont ajoutées au message ; vous les voyez avant l'envoi."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Откроется почтовое приложение. В письмо добавляются только версия приложения и версия системы; вы увидите их перед отправкой."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "メールアプリが開きます。メッセージに追加されるのはアプリとシステムのバージョンだけで、送信前に確認できます。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "이메일 앱이 열립니다. 메시지에는 앱 버전과 시스템 버전만 추가되며, 보내기 전에 확인할 수 있습니다."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "将打开您的邮件应用。邮件中只附加应用版本和系统版本，发送前您可以看到。"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Magbubukas ang email app mo. Bersyon lang ng app at ng system ang idinadagdag sa mensahe, at makikita mo ito bago ipadala."
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "แอปอีเมลจะเปิดขึ้น ข้อความจะมีเพียงเวอร์ชันแอปและเวอร์ชันระบบ ซึ่งคุณเห็นได้ก่อนส่ง"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se abre su app de correo. Al mensaje solo se añaden la versión de la app y la del sistema, y las verá antes de enviarlo."
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seu app de e-mail abre. Só a versão do app e a do sistema são adicionadas à mensagem, e você as vê antes de enviar."
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "आपका ईमेल ऐप खुलता है। संदेश में केवल ऐप और सिस्टम का संस्करण जोड़ा जाता है, और भेजने से पहले आप उसे देखते हैं।"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "আপনার ইমেইল অ্যাপ খুলবে। বার্তায় শুধু অ্যাপের সংস্করণ ও সিস্টেমের সংস্করণ যোগ হয়, এবং পাঠানোর আগে আপনি সেগুলো দেখতে পান।"
           }
         }
       }

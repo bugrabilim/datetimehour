@@ -407,6 +407,13 @@
         ]
       },
       {
+        "id": "report-problem",
+        "h": "Signaler un problème",
+        "p": [
+          "Vous pouvez nous signaler un problème sur le site (hesap.time.bumba.tr/hata-bildir) et dans les applications (Réglages › Assistance) ; aucun compte n'est nécessaire. Votre texte, votre adresse e-mail (si vous l'indiquez), la version de la page ou de l'application, le type d'appareil et la langue nous sont envoyés par e-mail (service d'e-mail Resend, États-Unis) uniquement pour examiner ce signalement et vous répondre. Ils ne sont conservés nulle part ailleurs et sont supprimés au plus tard dans un an. Pour limiter les abus, votre adresse IP est conservée un jour au plus. Base légale : notre intérêt légitime à répondre à votre signalement (KVKK art. 5/2-f)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Extension de navigateur",
         "p": [

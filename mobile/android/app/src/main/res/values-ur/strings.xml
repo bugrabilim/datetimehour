@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">جو حذف نہیں ہوتا</string>
     <string name="account_deleteKept">بیک اپ میں موجود نقل زیادہ سے زیادہ 30 دن میں خود حذف ہو جاتی ہے (بیک اپ صرف خرابی کے بعد بحالی کے لیے ہیں)۔ اگر آپ اکاؤنٹ صرف Saat Tarih سے حذف کریں تو دوسری Bumba مصنوعات میں آپ کے اکاؤنٹ اور رکنیت نمبر وہیں رہتے ہیں۔ فون پر آپ کی ترتیبات اور ریکارڈ فون پر رہتے ہیں۔</string>
     <string name="account_myAccount">میرا اکاؤنٹ</string>
+    <string name="account_fbTitle">مسئلے کی اطلاع دیں</string>
+    <string name="account_fbIntro">کوئی مسئلہ ہوا؟ مختصراً لکھیں کہ کیا ہوا، آپ نے کیا کیا اور آپ کیا توقع کر رہے تھے۔</string>
+    <string name="account_fbMessage">کیا ہوا؟</string>
+    <string name="account_fbEmail">آپ کا ای میل (اختیاری، تاکہ ہم جواب دے سکیں)</string>
+    <string name="account_fbSend">بھیجیں</string>
+    <string name="account_fbSent">شکریہ، آپ کی اطلاع ہم تک پہنچ گئی۔</string>
+    <string name="account_fbShort">براہ کرم کچھ مزید تفصیل لکھیں (کم از کم 10 حروف)۔</string>
+    <string name="account_fbPrivacy">آپ کی تحریر، آپ کا ای میل پتا (اگر لکھا ہو)، صفحے یا ایپ کا ورژن، ڈیوائس کی قسم اور زبان صرف اس اطلاع کو دیکھنے اور آپ کو جواب دینے کے لیے ای میل کے ذریعے ہمیں بھیجی جاتی ہیں (ای میل سروس Resend، امریکا)۔ یہ کہیں اور محفوظ نہیں کی جاتیں اور زیادہ سے زیادہ ایک سال میں حذف کر دی جاتی ہیں۔</string>
+    <string name="account_fbPrivacyLink">رازداری</string>
     <string name="common_done">ہو گیا</string>
     <string name="notify_heading">اوقاتِ نماز کی اطلاعات</string>
     <string name="notify_enable">نماز کے وقت مجھے اطلاع دیں</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s: گھڑی، کیلنڈر، نماز کے اوقات اور ٹولز؛ مفت اور اشتہارات کے بغیر۔</string>
     <string name="support_qr">QR کوڈ سے شیئر کریں</string>
     <string name="support_qrNote">فون کے کیمرے سے اسکین کریں تو time.bumba.tr کھل جائے گا۔</string>
-    <string name="support_feedback">رائے بھیجیں</string>
-    <string name="support_feedbackSubject">%1$s کے بارے میں رائے</string>
-    <string name="support_feedbackNote">آپ کی ای میل ایپ کھلے گی۔ پیغام میں صرف ایپ اور سسٹم کا ورژن شامل ہوتا ہے، اور آپ بھیجنے سے پہلے اسے دیکھتے ہیں۔</string>
     <string name="support_moreApps">Bumba کی دیگر مصنوعات</string>
     <string name="support_version">ورژن</string>
     <string name="fontScale_title">متن کا سائز</string>

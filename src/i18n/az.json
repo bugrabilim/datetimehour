@@ -380,6 +380,13 @@
         ]
       },
       {
+        "id": "report-problem",
+        "h": "Xəta bildir",
+        "p": [
+          "Saytda (hesap.time.bumba.tr/hata-bildir) və tətbiqlərdə (Ayarlar › Dəstək) bizə problem bildirə bilərsiniz; hesab lazım deyil. Yazdıqlarınız, yazmısınızsa e-poçt ünvanınız, səhifə və ya tətbiq versiyası, cihaz növü və dil yalnız bu bildirişi araşdırmaq və sizə cavab vermək üçün e-poçtla bizə göndərilir (e-poçt xidməti Resend, ABŞ). Başqa yerdə saxlanılmır, ən geci bir il ərzində silinir. Sui-istifadəni məhdudlaşdırmaq üçün IP ünvanınız ən çox bir gün saxlanılır. Hüquqi əsas: bildirişinizə cavab verməkdə qanuni marağımız (KVKK m. 5/2-f)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Brauzer əlavəsi",
         "p": [

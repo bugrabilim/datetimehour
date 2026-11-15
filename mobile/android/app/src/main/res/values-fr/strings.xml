@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">Ce qui n’est pas supprimé</string>
     <string name="account_deleteKept">La copie dans les sauvegardes est supprimée automatiquement sous 30 jours au plus (les sauvegardes servent uniquement à restaurer après une panne). Si vous supprimez votre compte de Saat Tarih seulement, vos comptes et votre numéro de membre dans les autres produits Bumba y restent. Les réglages et enregistrements de votre téléphone restent sur le téléphone.</string>
     <string name="account_myAccount">Mon compte</string>
+    <string name="account_fbTitle">Signaler un problème</string>
+    <string name="account_fbIntro">Quelque chose ne va pas ? Décrivez brièvement ce qui s\'est passé, ce que vous avez fait et ce que vous attendiez.</string>
+    <string name="account_fbMessage">Que s\'est-il passé ?</string>
+    <string name="account_fbEmail">Votre e-mail (facultatif, pour que nous puissions répondre)</string>
+    <string name="account_fbSend">Envoyer</string>
+    <string name="account_fbSent">Merci, votre signalement nous est bien parvenu.</string>
+    <string name="account_fbShort">Ajoutez un peu plus de détails (au moins 10 caractères).</string>
+    <string name="account_fbPrivacy">Votre texte, votre adresse e-mail (si vous l\'indiquez), la version de la page ou de l\'application, le type d\'appareil et la langue nous sont envoyés par e-mail (service d\'e-mail Resend, États-Unis) uniquement pour examiner ce signalement et vous répondre. Ils ne sont conservés nulle part ailleurs et sont supprimés au plus tard dans un an.</string>
+    <string name="account_fbPrivacyLink">Confidentialité</string>
     <string name="common_done">OK</string>
     <string name="notify_heading">Notifications des heures de prière</string>
     <string name="notify_enable">M’avertir aux heures de prière</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s : horloge, calendrier, heures de prière et outils ; gratuit et sans publicité.</string>
     <string name="support_qr">Partager avec un code QR</string>
     <string name="support_qrNote">Scannez-le avec l\'appareil photo d\'un téléphone pour ouvrir time.bumba.tr.</string>
-    <string name="support_feedback">Envoyer un commentaire</string>
-    <string name="support_feedbackSubject">Commentaire sur %1$s</string>
-    <string name="support_feedbackNote">Votre application de messagerie s\'ouvre. Seules les versions de l\'application et du système sont ajoutées au message ; vous les voyez avant l\'envoi.</string>
     <string name="support_moreApps">Autres produits Bumba</string>
     <string name="support_version">Version</string>
     <string name="fontScale_title">Taille du texte</string>

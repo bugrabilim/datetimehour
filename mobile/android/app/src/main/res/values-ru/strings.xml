@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">Что не удаляется</string>
     <string name="account_deleteKept">Копия в резервных копиях удаляется автоматически не позже чем через 30 дней (резервные копии нужны только для восстановления после сбоя). Если вы удалите аккаунт только из Saat Tarih, ваши аккаунты и номер участника в других продуктах Bumba останутся. Настройки и записи на телефоне остаются на телефоне.</string>
     <string name="account_myAccount">Мой аккаунт</string>
+    <string name="account_fbTitle">Сообщить о проблеме</string>
+    <string name="account_fbIntro">Что-то пошло не так? Коротко опишите, что произошло, что вы делали и чего ожидали.</string>
+    <string name="account_fbMessage">Что произошло?</string>
+    <string name="account_fbEmail">Ваш e-mail (необязательно, чтобы мы могли ответить)</string>
+    <string name="account_fbSend">Отправить</string>
+    <string name="account_fbSent">Спасибо, ваше сообщение получено.</string>
+    <string name="account_fbShort">Пожалуйста, напишите чуть подробнее (не менее 10 символов).</string>
+    <string name="account_fbPrivacy">Ваш текст, адрес e-mail (если указан), версия страницы или приложения, тип устройства и язык отправляются нам по e-mail (почтовый сервис Resend, США) только для разбора этого сообщения и ответа вам. Они нигде больше не хранятся и удаляются не позднее чем через год.</string>
+    <string name="account_fbPrivacyLink">Конфиденциальность</string>
     <string name="common_done">Готово</string>
     <string name="notify_heading">Уведомления о времени намаза</string>
     <string name="notify_enable">Уведомлять о времени намаза</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s: часы, календарь, время намаза и инструменты; бесплатно и без рекламы.</string>
     <string name="support_qr">Поделиться QR-кодом</string>
     <string name="support_qrNote">Отсканируйте камерой телефона, чтобы открыть time.bumba.tr.</string>
-    <string name="support_feedback">Отправить отзыв</string>
-    <string name="support_feedbackSubject">Отзыв о приложении %1$s</string>
-    <string name="support_feedbackNote">Откроется почтовое приложение. В письмо добавляются только версия приложения и версия системы; вы увидите их перед отправкой.</string>
     <string name="support_moreApps">Другие продукты Bumba</string>
     <string name="support_version">Версия</string>
     <string name="fontScale_title">Размер текста</string>

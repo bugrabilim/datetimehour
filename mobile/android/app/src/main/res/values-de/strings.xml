@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">Was nicht gelöscht wird</string>
     <string name="account_deleteKept">Die Kopie in den Sicherungen wird spätestens nach 30 Tagen automatisch gelöscht (Sicherungen dienen nur der Wiederherstellung nach einem Ausfall). Wenn Sie Ihr Konto nur aus Saat Tarih löschen, bleiben Ihre Konten und Ihre Mitgliedsnummer in anderen Bumba-Produkten bestehen. Einstellungen und Einträge auf Ihrem Telefon bleiben auf dem Telefon.</string>
     <string name="account_myAccount">Mein Konto</string>
+    <string name="account_fbTitle">Problem melden</string>
+    <string name="account_fbIntro">Ist etwas schiefgelaufen? Beschreiben Sie kurz, was passiert ist, was Sie getan haben und was Sie erwartet haben.</string>
+    <string name="account_fbMessage">Was ist passiert?</string>
+    <string name="account_fbEmail">Ihre E-Mail (optional, damit wir antworten können)</string>
+    <string name="account_fbSend">Senden</string>
+    <string name="account_fbSent">Danke, Ihre Meldung ist bei uns angekommen.</string>
+    <string name="account_fbShort">Bitte schreiben Sie etwas mehr (mindestens 10 Zeichen).</string>
+    <string name="account_fbPrivacy">Ihr Text, Ihre E-Mail-Adresse (falls angegeben), die Seiten- oder App-Version, der Gerätetyp und die Sprache werden nur zur Prüfung dieser Meldung und für eine Antwort per E-Mail an uns übermittelt (E-Mail-Dienst Resend, USA). Sie werden nirgendwo sonst gespeichert und spätestens nach einem Jahr gelöscht.</string>
+    <string name="account_fbPrivacyLink">Datenschutz</string>
     <string name="common_done">Fertig</string>
     <string name="notify_heading">Benachrichtigungen zu Gebetszeiten</string>
     <string name="notify_enable">Bei Gebetszeiten benachrichtigen</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s: Uhr, Kalender, Gebetszeiten und Werkzeuge – kostenlos und ohne Werbung.</string>
     <string name="support_qr">Per QR-Code teilen</string>
     <string name="support_qrNote">Mit der Handykamera scannen, um time.bumba.tr zu öffnen.</string>
-    <string name="support_feedback">Feedback senden</string>
-    <string name="support_feedbackSubject">Feedback zu %1$s</string>
-    <string name="support_feedbackNote">Ihre E-Mail-App öffnet sich. Der Nachricht werden nur App- und Systemversion hinzugefügt; Sie sehen sie vor dem Senden.</string>
     <string name="support_moreApps">Mehr von Bumba</string>
     <string name="support_version">Version</string>
     <string name="fontScale_title">Textgröße</string>

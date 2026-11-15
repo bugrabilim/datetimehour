@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">O que não é excluído</string>
     <string name="account_deleteKept">A cópia nos backups é excluída automaticamente em no máximo 30 dias (os backups servem só para restaurar depois de uma falha). Se você excluir a conta só do Saat Tarih, suas contas e seu número de membro nos outros produtos Bumba continuam lá. As configurações e os registros no seu celular ficam no celular.</string>
     <string name="account_myAccount">Minha conta</string>
+    <string name="account_fbTitle">Relatar um problema</string>
+    <string name="account_fbIntro">Algo deu errado? Descreva brevemente o que aconteceu, o que você fez e o que esperava.</string>
+    <string name="account_fbMessage">O que aconteceu?</string>
+    <string name="account_fbEmail">Seu e-mail (opcional, para podermos responder)</string>
+    <string name="account_fbSend">Enviar</string>
+    <string name="account_fbSent">Obrigado, recebemos seu relato.</string>
+    <string name="account_fbShort">Escreva um pouco mais de detalhes (pelo menos 10 caracteres).</string>
+    <string name="account_fbPrivacy">O que você escreve, seu e-mail (se informado), a versão da página ou do app, o tipo de dispositivo e o idioma são enviados a nós por e-mail (serviço de e-mail Resend, EUA) apenas para analisar este relato e responder a você. Não são guardados em nenhum outro lugar e são excluídos em no máximo um ano.</string>
+    <string name="account_fbPrivacyLink">Privacidade</string>
     <string name="common_done">Pronto</string>
     <string name="notify_heading">Notificações de horários de oração</string>
     <string name="notify_enable">Avisar nos horários de oração</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s: relógio, calendário, horários de oração e ferramentas; grátis e sem anúncios.</string>
     <string name="support_qr">Compartilhar com um código QR</string>
     <string name="support_qrNote">Leia com a câmera de um celular para abrir time.bumba.tr.</string>
-    <string name="support_feedback">Enviar comentários</string>
-    <string name="support_feedbackSubject">Comentários sobre o %1$s</string>
-    <string name="support_feedbackNote">Seu app de e-mail abre. Só a versão do app e a do sistema são adicionadas à mensagem, e você as vê antes de enviar.</string>
     <string name="support_moreApps">Mais da Bumba</string>
     <string name="support_version">Versão</string>
     <string name="fontScale_title">Tamanho do texto</string>

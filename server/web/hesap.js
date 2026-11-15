@@ -108,6 +108,22 @@
     input.addEventListener("input", upd); upd();
   });
 
+  /* ---- Hata bildirimi (hesap gerekmez) ---- */
+  const fb = $('[data-form="feedback"]');
+  if (fb) {
+    fb.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const mesaj = fb.mesaj.value.trim(), eposta = fb.eposta.value.trim();
+      if (mesaj.length < 10) return say(fb, t.fbShort, "err");
+      if (eposta && !emailOk(eposta)) return say(fb, t["err.email"], "err");
+      busy(fb, true);
+      const r = await call("/v1/geri-bildirim", { mesaj, eposta, site: fb.site.value, kaynak: "web", sayfa: D.donus || "", cihaz: navigator.userAgent, dil: lang });
+      busy(fb, false);
+      if (r.status === 200) { fb.reset(); say(fb, t.fbSent, "ok"); track("hata-bildirimi"); return; }
+      say(fb, r.data && r.data.hata === "kisa" ? t.fbShort : errText(r), "err");
+    });
+  }
+
   /* ---- Giriş ---- */
   const signin = $('[data-form="signin"]');
   // Girişten sonra geldiği site sayfasına döner (sahibin kararı, 15 Kasım 2026; "donus"). Aynı e-postanın ayrı

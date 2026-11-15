@@ -407,6 +407,13 @@
         ]
       },
       {
+        "id": "report-problem",
+        "h": "Problem melden",
+        "p": [
+          "Sie können uns auf der Website (hesap.time.bumba.tr/hata-bildir) und in den Apps (Einstellungen › Support) ein Problem melden; ein Konto ist nicht nötig. Ihr Text, Ihre E-Mail-Adresse (falls angegeben), die Seiten- oder App-Version, der Gerätetyp und die Sprache werden nur zur Prüfung dieser Meldung und für eine Antwort per E-Mail an uns übermittelt (E-Mail-Dienst Resend, USA). Sie werden nirgendwo sonst gespeichert und spätestens nach einem Jahr gelöscht. Zur Missbrauchsbegrenzung wird Ihre IP-Adresse höchstens einen Tag gespeichert. Rechtsgrundlage: unser berechtigtes Interesse, Ihre Meldung zu beantworten (KVKK Art. 5/2-f)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Browser-Erweiterung",
         "p": [

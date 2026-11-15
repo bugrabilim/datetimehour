@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">Silinmeyenler</string>
     <string name="account_deleteKept">Yedeklerdeki kopya en geç 30 gün içinde kendiliğinden silinir (yedekler yalnız bir arızadan sonra geri yüklemek içindir). Hesabınızı yalnız Saat Tarih\'ten silerseniz öbür Bumba ürünlerindeki hesaplarınız ve üye numaranız orada kalır. Telefondaki ayarlarınız ve kayıtlarınız telefonda kalır.</string>
     <string name="account_myAccount">Hesabım</string>
+    <string name="account_fbTitle">Hata bildir</string>
+    <string name="account_fbIntro">Bir sorun mu gördünüz? Ne olduğunu, ne yaptığınızı ve ne beklediğinizi kısaca yazın.</string>
+    <string name="account_fbMessage">Ne oldu?</string>
+    <string name="account_fbEmail">E-postanız (isteğe bağlı, size yanıt verebilmemiz için)</string>
+    <string name="account_fbSend">Gönder</string>
+    <string name="account_fbSent">Teşekkürler, bildiriminiz bize ulaştı.</string>
+    <string name="account_fbShort">Biraz daha ayrıntı yazın (en az 10 karakter).</string>
+    <string name="account_fbPrivacy">Yazdıklarınız, yazdıysanız e-posta adresiniz, sayfa ya da uygulama sürümü, cihaz türü ve dil yalnız bu bildirimi incelemek ve size yanıt vermek için e-postayla bize iletilir (e-posta hizmeti Resend, ABD). Başka yerde saklanmaz, en geç bir yıl içinde silinir.</string>
+    <string name="account_fbPrivacyLink">Gizlilik</string>
     <string name="common_done">Bitti</string>
     <string name="notify_heading">Vakit bildirimleri</string>
     <string name="notify_enable">Vakitlerde bildirim al</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s: saat, takvim, namaz vakitleri ve araçlar; reklamsız ve ücretsiz.</string>
     <string name="support_qr">QR kodla paylaş</string>
     <string name="support_qrNote">Telefonun kamerasıyla okutunca time.bumba.tr açılır.</string>
-    <string name="support_feedback">Geri bildirim gönder</string>
-    <string name="support_feedbackSubject">%1$s geri bildirimi</string>
-    <string name="support_feedbackNote">E-posta uygulamanız açılır. İletiye yalnız uygulama sürümü ve sistem sürümü eklenir; göndermeden önce görürsünüz.</string>
     <string name="support_moreApps">Bumba\'nın diğer ürünleri</string>
     <string name="support_version">Sürüm</string>
     <string name="fontScale_title">Yazı boyutu</string>

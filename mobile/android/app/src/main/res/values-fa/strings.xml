@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">آنچه پاک نمی‌شود</string>
     <string name="account_deleteKept">نسخهٔ موجود در پشتیبان‌ها حداکثر تا 30 روز خودبه‌خود پاک می‌شود (پشتیبان‌ها فقط برای بازیابی پس از خرابی‌اند). اگر حساب را فقط از Saat Tarih پاک کنید، حساب‌ها و شمارهٔ عضویت شما در دیگر محصولات Bumba باقی می‌ماند. تنظیمات و ثبت‌های روی گوشی شما در گوشی می‌ماند.</string>
     <string name="account_myAccount">حساب من</string>
+    <string name="account_fbTitle">گزارش مشکل</string>
+    <string name="account_fbIntro">مشکلی پیش آمد؟ کوتاه بنویسید چه شد، چه کردید و چه انتظاری داشتید.</string>
+    <string name="account_fbMessage">چه شد؟</string>
+    <string name="account_fbEmail">ایمیل شما (اختیاری، تا بتوانیم پاسخ دهیم)</string>
+    <string name="account_fbSend">ارسال</string>
+    <string name="account_fbSent">سپاس، گزارش شما به ما رسید.</string>
+    <string name="account_fbShort">لطفاً کمی بیشتر توضیح دهید (دست‌کم 10 نویسه).</string>
+    <string name="account_fbPrivacy">نوشته شما، نشانی ایمیلتان (اگر نوشته باشید)، نسخه صفحه یا برنامه، نوع دستگاه و زبان فقط برای بررسی این گزارش و پاسخ به شما با ایمیل برای ما فرستاده می‌شود (سرویس ایمیل Resend، آمریکا). جای دیگری نگه داشته نمی‌شود و حداکثر ظرف یک سال پاک می‌شود.</string>
+    <string name="account_fbPrivacyLink">حریم خصوصی</string>
     <string name="common_done">تمام</string>
     <string name="notify_heading">اعلان‌های اوقات شرعی</string>
     <string name="notify_enable">اعلان در وقت نماز</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s: ساعت، تقویم، اوقات نماز و ابزارها؛ رایگان و بدون تبلیغ.</string>
     <string name="support_qr">اشتراک با کد QR</string>
     <string name="support_qrNote">با دوربین گوشی اسکن کنید تا time.bumba.tr باز شود.</string>
-    <string name="support_feedback">ارسال بازخورد</string>
-    <string name="support_feedbackSubject">بازخورد %1$s</string>
-    <string name="support_feedbackNote">برنامه ایمیل شما باز می‌شود. فقط نسخه برنامه و نسخه سیستم به پیام افزوده می‌شود و پیش از ارسال آن را می‌بینید.</string>
     <string name="support_moreApps">محصولات دیگر Bumba</string>
     <string name="support_version">نسخه</string>
     <string name="fontScale_title">اندازه متن</string>

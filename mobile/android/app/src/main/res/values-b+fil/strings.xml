@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">Ang hindi binubura</string>
     <string name="account_deleteKept">Kusang nabubura ang kopya sa mga backup sa loob ng hindi hihigit sa 30 araw (para lang sa pagbabalik pagkatapos ng sira ang mga backup). Kung sa Saat Tarih lang ninyo buburahin ang account, mananatili ang inyong mga account at member number sa ibang produkto ng Bumba. Mananatili sa telepono ang mga setting at talaan sa inyong telepono.</string>
     <string name="account_myAccount">Aking account</string>
+    <string name="account_fbTitle">Mag-ulat ng problema</string>
+    <string name="account_fbIntro">May nagkaproblema ba? Isulat nang maikli kung ano ang nangyari, ano ang ginawa mo, at ano ang inaasahan mo.</string>
+    <string name="account_fbMessage">Ano ang nangyari?</string>
+    <string name="account_fbEmail">Ang email mo (opsyonal, para makasagot kami)</string>
+    <string name="account_fbSend">Ipadala</string>
+    <string name="account_fbSent">Salamat, natanggap namin ang ulat mo.</string>
+    <string name="account_fbShort">Pakisulat nang mas detalyado (hindi bababa sa 10 character).</string>
+    <string name="account_fbPrivacy">Ang isinulat mo, ang email address mo (kung inilagay), ang bersyon ng pahina o app, uri ng device at wika ay ipinapadala sa amin sa email (serbisyong email na Resend, US) para lamang suriin ang ulat na ito at sumagot sa iyo. Hindi ito iniimbak saanman at binubura sa loob ng isang taon sa pinakamatagal.</string>
+    <string name="account_fbPrivacyLink">Privacy</string>
     <string name="common_done">Tapos na</string>
     <string name="notify_heading">Abiso sa oras ng dasal</string>
     <string name="notify_enable">Abisuhan ako sa oras ng dasal</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s: orasan, kalendaryo, oras ng pagdarasal at mga tool; libre at walang ad.</string>
     <string name="support_qr">Ibahagi gamit ang QR code</string>
     <string name="support_qrNote">I-scan gamit ang camera ng telepono para buksan ang time.bumba.tr.</string>
-    <string name="support_feedback">Magpadala ng feedback</string>
-    <string name="support_feedbackSubject">Feedback sa %1$s</string>
-    <string name="support_feedbackNote">Magbubukas ang email app mo. Bersyon lang ng app at ng system ang idinadagdag sa mensahe, at makikita mo ito bago ipadala.</string>
     <string name="support_moreApps">Iba pang produkto ng Bumba</string>
     <string name="support_version">Bersyon</string>
     <string name="fontScale_title">Laki ng teksto</string>

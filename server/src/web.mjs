@@ -90,7 +90,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
       res.end(readFileSync(file));
       return true;
     }
-    const pages = ["/", "/giris", "/kayit", "/sifre", "/dogrulandi", "/hesap", "/hesap/rozetler", "/kutlama", "/sifre-sec"];
+    const pages = ["/", "/giris", "/kayit", "/sifre", "/dogrulandi", "/hesap", "/hesap/rozetler", "/kutlama", "/sifre-sec", "/hata-bildir"];
     if (!pages.includes(p) || !["GET", "POST"].includes(req.method) || (req.method === "POST" && p !== "/kutlama" && p !== "/sifre-sec")) return false;
     // Rozetler ve kayıtlar artık hesap sayfasının sekmesi (madde 7: kullanım verisi ayrı sayfaya konmaz)
     if (p === "/hesap/rozetler") {
@@ -122,6 +122,18 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
 
     const pw = `<div class="pw-rule" data-pw-rule><p>${esc(t.pwRuleTitle)}</p><ul>${["pwLen", "pwDigit", "pwCase", "pwSymbol"].map((k) => `<li data-rule="${k}">${esc(t[k])}</li>`).join("")}</ul></div>`;
 
+    // Hata bildirimi (sahibin isteği, 15 Kasım 2026): hesap gerekmez; sitedeki ayarlar menüsünden, geldiği sayfayla
+    if (p === "/hata-bildir") {
+      const privacy = `${cfg.siteUrl}${lang === "tr" ? "/gizlilik/#hata-bildirimi" : `/${lang}/privacy/#report-problem`}`;
+      const back = donus ? `<p><a href="${esc(cfg.siteUrl + donus)}">${esc(t.toSite)}</a></p>` : "";
+      page(res, { ...base, title: t.fbTitle, data: { ...base.data, donus }, body: shell(`<h1>${esc(t.fbTitle)}</h1><p class="muted">${esc(t.fbIntro)}</p>
+<form data-form="feedback" novalidate><label>${esc(t.fbMessage)}<textarea name="mesaj" rows="7" maxlength="4000" required></textarea></label>
+<label>${esc(t.fbEmail)}<input type="email" name="eposta" autocomplete="email"></label>
+<label class="sr" aria-hidden="true">Site<input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+<div data-msg></div><button type="submit" class="primary">${esc(t.fbSend)}</button></form>
+<p class="muted">${esc(t.fbPrivacy)} <a href="${esc(privacy)}" target="_blank" rel="noopener">${esc(t.fbPrivacyLink)}</a></p>${back}`) });
+      return true;
+    }
     if (p === "/giris") {
       page(res, { ...base, title: t.signIn, data: { ...base.data, donus }, body: shell(`<h1>${esc(t.signIn)}</h1><p class="muted">${esc(t.intro)}</p>
 <form data-form="signin" novalidate><label>${esc(t.email)}<input type="email" name="email" autocomplete="username" required></label>

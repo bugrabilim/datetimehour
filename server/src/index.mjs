@@ -23,6 +23,7 @@ import { readJson, send, json } from "./http.mjs";
 import { webRoutes } from "./web.mjs";
 import { panelRoutes } from "./panel.mjs";
 import { createConsent } from "./consent.mjs";
+import { validateFeedback, feedbackMail } from "./feedback.mjs";
 
 const SEC_HEADERS = {
   "Strict-Transport-Security": "max-age=31536000",
@@ -167,6 +168,23 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     if (p === "/v1/onay-cumlesi" && m === "GET") {
       const c = consent.get(url.searchParams.get("dil"));
       return json(res, 200, { surum: c.surum, kod: c.kod, rtl: c.rtl, metin: c.metin }, { "Cache-Control": "public, max-age=300" });
+    }
+
+    // Hata bildirimi (hesap gerekmez): yalnız e-postayla sahibe; IP başına saatte 5, günde toplam 300
+    if (p === "/v1/geri-bildirim" && m === "POST") {
+      if (!sameOrigin(req)) return json(res, 403, { hata: "kaynak" });
+      const b = await readJson(req, 32 * 1024);
+      if (b.site) return json(res, 200, { tamam: true }); // tuzak alan: botlar doldurur, sessizce atılır
+      const f = validateFeedback(b);
+      if (f.hata) return json(res, 400, { hata: f.hata });
+      if (!(await limit(`fb:${ipOf(req)}`, 3600, 5)) || !(await limit("fb:hepsi", 86400, 300))) return json(res, 429, { hata: "sinir" });
+      const mail = feedbackMail(f, cfg.siteUrl);
+      try {
+        await mailer.sendRaw({ to: cfg.adminEmail || "bilgi@bumbagroup.com", ...mail });
+      } catch {
+        return json(res, 503, { hata: "gonderilemedi" });
+      }
+      return json(res, 200, { tamam: true });
     }
 
     const s = await session(req);

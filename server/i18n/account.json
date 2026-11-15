@@ -186,7 +186,16 @@
   "deleteDownloadFirst": "Önce verilerinizi indirin",
   "deleteKeptTitle": "Silinmeyenler",
   "deleteKept": "Yedeklerdeki kopya en geç 30 gün içinde kendiliğinden silinir (yedekler yalnız bir arızadan sonra geri yüklemek içindir). Hesabınızı yalnız Saat Tarih'ten silerseniz öbür Bumba ürünlerindeki hesaplarınız ve üye numaranız orada kalır. Telefondaki ayarlarınız ve kayıtlarınız telefonda kalır.",
-  "myAccount": "Hesabım"
+  "myAccount": "Hesabım",
+  "fbTitle": "Hata bildir",
+  "fbIntro": "Bir sorun mu gördünüz? Ne olduğunu, ne yaptığınızı ve ne beklediğinizi kısaca yazın.",
+  "fbMessage": "Ne oldu?",
+  "fbEmail": "E-postanız (isteğe bağlı, size yanıt verebilmemiz için)",
+  "fbSend": "Gönder",
+  "fbSent": "Teşekkürler, bildiriminiz bize ulaştı.",
+  "fbShort": "Biraz daha ayrıntı yazın (en az 10 karakter).",
+  "fbPrivacy": "Yazdıklarınız, yazdıysanız e-posta adresiniz, sayfa ya da uygulama sürümü, cihaz türü ve dil yalnız bu bildirimi incelemek ve size yanıt vermek için e-postayla bize iletilir (e-posta hizmeti Resend, ABD). Başka yerde saklanmaz, en geç bir yıl içinde silinir.",
+  "fbPrivacyLink": "Gizlilik"
  },
  "en": {
   "title": "Account",
@@ -375,7 +384,16 @@
   "deleteDownloadFirst": "Download your data first",
   "deleteKeptTitle": "What is not deleted",
   "deleteKept": "The copy in backups is deleted automatically within 30 days at most (backups are only for restoring after a failure). If you delete your account from Saat Tarih only, your accounts and member number in other Bumba products stay there. Settings and records on your phone stay on your phone.",
-  "myAccount": "My account"
+  "myAccount": "My account",
+  "fbTitle": "Report a problem",
+  "fbIntro": "Did something go wrong? Briefly describe what happened, what you did and what you expected.",
+  "fbMessage": "What happened?",
+  "fbEmail": "Your email (optional, so we can reply)",
+  "fbSend": "Send",
+  "fbSent": "Thank you, your report has reached us.",
+  "fbShort": "Please add a little more detail (at least 10 characters).",
+  "fbPrivacy": "What you write, your email address (if given), the page or app version, device type and language are sent to us by email (email service Resend, USA) only to look into this report and reply to you. They are not stored anywhere else and are deleted within one year at the latest.",
+  "fbPrivacyLink": "Privacy"
  },
  "de": {
   "title": "Konto",
@@ -564,7 +582,16 @@
   "deleteDownloadFirst": "Laden Sie zuerst Ihre Daten herunter",
   "deleteKeptTitle": "Was nicht gelöscht wird",
   "deleteKept": "Die Kopie in den Sicherungen wird spätestens nach 30 Tagen automatisch gelöscht (Sicherungen dienen nur der Wiederherstellung nach einem Ausfall). Wenn Sie Ihr Konto nur aus Saat Tarih löschen, bleiben Ihre Konten und Ihre Mitgliedsnummer in anderen Bumba-Produkten bestehen. Einstellungen und Einträge auf Ihrem Telefon bleiben auf dem Telefon.",
-  "myAccount": "Mein Konto"
+  "myAccount": "Mein Konto",
+  "fbTitle": "Problem melden",
+  "fbIntro": "Ist etwas schiefgelaufen? Beschreiben Sie kurz, was passiert ist, was Sie getan haben und was Sie erwartet haben.",
+  "fbMessage": "Was ist passiert?",
+  "fbEmail": "Ihre E-Mail (optional, damit wir antworten können)",
+  "fbSend": "Senden",
+  "fbSent": "Danke, Ihre Meldung ist bei uns angekommen.",
+  "fbShort": "Bitte schreiben Sie etwas mehr (mindestens 10 Zeichen).",
+  "fbPrivacy": "Ihr Text, Ihre E-Mail-Adresse (falls angegeben), die Seiten- oder App-Version, der Gerätetyp und die Sprache werden nur zur Prüfung dieser Meldung und für eine Antwort per E-Mail an uns übermittelt (E-Mail-Dienst Resend, USA). Sie werden nirgendwo sonst gespeichert und spätestens nach einem Jahr gelöscht.",
+  "fbPrivacyLink": "Datenschutz"
  },
  "az": {
   "title": "Hesab",
@@ -753,7 +780,16 @@
   "deleteDownloadFirst": "Əvvəlcə məlumatlarınızı endirin",
   "deleteKeptTitle": "Silinməyənlər",
   "deleteKept": "Ehtiyat nüsxələrdəki surət ən gec 30 gün ərzində özü silinir (ehtiyat nüsxələr yalnız nasazlıqdan sonra bərpa üçündür). Hesabınızı yalnız Saat Tarix-dən silsəniz, digər Bumba məhsullarındakı hesablarınız və üzv nömrəniz orada qalır. Telefondakı ayarlarınız və qeydləriniz telefonda qalır.",
-  "myAccount": "Hesabım"
+  "myAccount": "Hesabım",
+  "fbTitle": "Xəta bildir",
+  "fbIntro": "Problem gördünüz? Nə baş verdiyini, nə etdiyinizi və nə gözlədiyinizi qısaca yazın.",
+  "fbMessage": "Nə baş verdi?",
+  "fbEmail": "E-poçtunuz (istəyə bağlı, sizə cavab verə bilməyimiz üçün)",
+  "fbSend": "Göndər",
+  "fbSent": "Təşəkkürlər, bildirişiniz bizə çatdı.",
+  "fbShort": "Bir az daha ətraflı yazın (ən azı 10 simvol).",
+  "fbPrivacy": "Yazdıqlarınız, yazmısınızsa e-poçt ünvanınız, səhifə və ya tətbiq versiyası, cihaz növü və dil yalnız bu bildirişi araşdırmaq və sizə cavab vermək üçün e-poçtla bizə göndərilir (e-poçt xidməti Resend, ABŞ). Başqa yerdə saxlanılmır, ən geci bir il ərzində silinir.",
+  "fbPrivacyLink": "Məxfilik"
  },
  "ar": {
   "title": "الحساب",
@@ -942,7 +978,16 @@
   "deleteDownloadFirst": "نزّل بياناتك أولًا",
   "deleteKeptTitle": "ما لا يُحذف",
   "deleteKept": "تُحذف النسخة الموجودة في النسخ الاحتياطية تلقائيًا خلال 30 يومًا على الأكثر (النسخ الاحتياطية للاستعادة بعد عطل فقط). إذا حذفت حسابك من Saat Tarih فقط، تبقى حساباتك ورقم عضويتك في منتجات Bumba الأخرى كما هي. وتبقى إعداداتك وسجلاتك التي على هاتفك في الهاتف.",
-  "myAccount": "حسابي"
+  "myAccount": "حسابي",
+  "fbTitle": "الإبلاغ عن مشكلة",
+  "fbIntro": "هل واجهت مشكلة؟ اكتب باختصار ما حدث وما فعلته وما كنت تتوقعه.",
+  "fbMessage": "ماذا حدث؟",
+  "fbEmail": "بريدك الإلكتروني (اختياري، لنتمكن من الرد)",
+  "fbSend": "إرسال",
+  "fbSent": "شكرًا، وصلنا بلاغك.",
+  "fbShort": "يرجى كتابة مزيد من التفاصيل (10 أحرف على الأقل).",
+  "fbPrivacy": "يُرسَل ما تكتبه وبريدك الإلكتروني (إن كتبته) وإصدار الصفحة أو التطبيق ونوع الجهاز واللغة إلينا بالبريد الإلكتروني (خدمة البريد Resend، الولايات المتحدة) فقط لدراسة هذا البلاغ والرد عليك. لا تُحفظ في أي مكان آخر وتُحذف خلال سنة على الأكثر.",
+  "fbPrivacyLink": "الخصوصية"
  },
  "id": {
   "title": "Akun",
@@ -1131,7 +1176,16 @@
   "deleteDownloadFirst": "Unduh data Anda terlebih dahulu",
   "deleteKeptTitle": "Yang tidak dihapus",
   "deleteKept": "Salinan di cadangan terhapus otomatis paling lambat dalam 30 hari (cadangan hanya untuk pemulihan setelah gangguan). Jika Anda menghapus akun hanya dari Saat Tarih, akun dan nomor anggota Anda di produk Bumba lain tetap ada. Pengaturan dan catatan di ponsel Anda tetap di ponsel.",
-  "myAccount": "Akun saya"
+  "myAccount": "Akun saya",
+  "fbTitle": "Laporkan masalah",
+  "fbIntro": "Ada yang tidak beres? Tulis singkat apa yang terjadi, apa yang Anda lakukan, dan apa yang Anda harapkan.",
+  "fbMessage": "Apa yang terjadi?",
+  "fbEmail": "Email Anda (opsional, agar kami bisa membalas)",
+  "fbSend": "Kirim",
+  "fbSent": "Terima kasih, laporan Anda sudah kami terima.",
+  "fbShort": "Tulis sedikit lebih rinci (minimal 10 karakter).",
+  "fbPrivacy": "Tulisan Anda, alamat email Anda (jika diisi), versi halaman atau aplikasi, jenis perangkat, dan bahasa dikirim kepada kami lewat email (layanan email Resend, AS) hanya untuk memeriksa laporan ini dan membalas Anda. Data ini tidak disimpan di tempat lain dan dihapus paling lambat dalam satu tahun.",
+  "fbPrivacyLink": "Privasi"
  },
  "ur": {
   "title": "اکاؤنٹ",
@@ -1320,7 +1374,16 @@
   "deleteDownloadFirst": "پہلے اپنا ڈیٹا ڈاؤن لوڈ کریں",
   "deleteKeptTitle": "جو حذف نہیں ہوتا",
   "deleteKept": "بیک اپ میں موجود نقل زیادہ سے زیادہ 30 دن میں خود حذف ہو جاتی ہے (بیک اپ صرف خرابی کے بعد بحالی کے لیے ہیں)۔ اگر آپ اکاؤنٹ صرف Saat Tarih سے حذف کریں تو دوسری Bumba مصنوعات میں آپ کے اکاؤنٹ اور رکنیت نمبر وہیں رہتے ہیں۔ فون پر آپ کی ترتیبات اور ریکارڈ فون پر رہتے ہیں۔",
-  "myAccount": "میرا اکاؤنٹ"
+  "myAccount": "میرا اکاؤنٹ",
+  "fbTitle": "مسئلے کی اطلاع دیں",
+  "fbIntro": "کوئی مسئلہ ہوا؟ مختصراً لکھیں کہ کیا ہوا، آپ نے کیا کیا اور آپ کیا توقع کر رہے تھے۔",
+  "fbMessage": "کیا ہوا؟",
+  "fbEmail": "آپ کا ای میل (اختیاری، تاکہ ہم جواب دے سکیں)",
+  "fbSend": "بھیجیں",
+  "fbSent": "شکریہ، آپ کی اطلاع ہم تک پہنچ گئی۔",
+  "fbShort": "براہ کرم کچھ مزید تفصیل لکھیں (کم از کم 10 حروف)۔",
+  "fbPrivacy": "آپ کی تحریر، آپ کا ای میل پتا (اگر لکھا ہو)، صفحے یا ایپ کا ورژن، ڈیوائس کی قسم اور زبان صرف اس اطلاع کو دیکھنے اور آپ کو جواب دینے کے لیے ای میل کے ذریعے ہمیں بھیجی جاتی ہیں (ای میل سروس Resend، امریکا)۔ یہ کہیں اور محفوظ نہیں کی جاتیں اور زیادہ سے زیادہ ایک سال میں حذف کر دی جاتی ہیں۔",
+  "fbPrivacyLink": "رازداری"
  },
  "fa": {
   "title": "حساب",
@@ -1509,7 +1572,16 @@
   "deleteDownloadFirst": "اول داده‌هایتان را بارگیری کنید",
   "deleteKeptTitle": "آنچه پاک نمی‌شود",
   "deleteKept": "نسخهٔ موجود در پشتیبان‌ها حداکثر تا 30 روز خودبه‌خود پاک می‌شود (پشتیبان‌ها فقط برای بازیابی پس از خرابی‌اند). اگر حساب را فقط از Saat Tarih پاک کنید، حساب‌ها و شمارهٔ عضویت شما در دیگر محصولات Bumba باقی می‌ماند. تنظیمات و ثبت‌های روی گوشی شما در گوشی می‌ماند.",
-  "myAccount": "حساب من"
+  "myAccount": "حساب من",
+  "fbTitle": "گزارش مشکل",
+  "fbIntro": "مشکلی پیش آمد؟ کوتاه بنویسید چه شد، چه کردید و چه انتظاری داشتید.",
+  "fbMessage": "چه شد؟",
+  "fbEmail": "ایمیل شما (اختیاری، تا بتوانیم پاسخ دهیم)",
+  "fbSend": "ارسال",
+  "fbSent": "سپاس، گزارش شما به ما رسید.",
+  "fbShort": "لطفاً کمی بیشتر توضیح دهید (دست‌کم 10 نویسه).",
+  "fbPrivacy": "نوشته شما، نشانی ایمیلتان (اگر نوشته باشید)، نسخه صفحه یا برنامه، نوع دستگاه و زبان فقط برای بررسی این گزارش و پاسخ به شما با ایمیل برای ما فرستاده می‌شود (سرویس ایمیل Resend، آمریکا). جای دیگری نگه داشته نمی‌شود و حداکثر ظرف یک سال پاک می‌شود.",
+  "fbPrivacyLink": "حریم خصوصی"
  },
  "fr": {
   "title": "Compte",
@@ -1698,7 +1770,16 @@
   "deleteDownloadFirst": "Téléchargez d’abord vos données",
   "deleteKeptTitle": "Ce qui n’est pas supprimé",
   "deleteKept": "La copie dans les sauvegardes est supprimée automatiquement sous 30 jours au plus (les sauvegardes servent uniquement à restaurer après une panne). Si vous supprimez votre compte de Saat Tarih seulement, vos comptes et votre numéro de membre dans les autres produits Bumba y restent. Les réglages et enregistrements de votre téléphone restent sur le téléphone.",
-  "myAccount": "Mon compte"
+  "myAccount": "Mon compte",
+  "fbTitle": "Signaler un problème",
+  "fbIntro": "Quelque chose ne va pas ? Décrivez brièvement ce qui s'est passé, ce que vous avez fait et ce que vous attendiez.",
+  "fbMessage": "Que s'est-il passé ?",
+  "fbEmail": "Votre e-mail (facultatif, pour que nous puissions répondre)",
+  "fbSend": "Envoyer",
+  "fbSent": "Merci, votre signalement nous est bien parvenu.",
+  "fbShort": "Ajoutez un peu plus de détails (au moins 10 caractères).",
+  "fbPrivacy": "Votre texte, votre adresse e-mail (si vous l'indiquez), la version de la page ou de l'application, le type d'appareil et la langue nous sont envoyés par e-mail (service d'e-mail Resend, États-Unis) uniquement pour examiner ce signalement et vous répondre. Ils ne sont conservés nulle part ailleurs et sont supprimés au plus tard dans un an.",
+  "fbPrivacyLink": "Confidentialité"
  },
  "ru": {
   "title": "Аккаунт",
@@ -1887,7 +1968,16 @@
   "deleteDownloadFirst": "Сначала скачайте свои данные",
   "deleteKeptTitle": "Что не удаляется",
   "deleteKept": "Копия в резервных копиях удаляется автоматически не позже чем через 30 дней (резервные копии нужны только для восстановления после сбоя). Если вы удалите аккаунт только из Saat Tarih, ваши аккаунты и номер участника в других продуктах Bumba останутся. Настройки и записи на телефоне остаются на телефоне.",
-  "myAccount": "Мой аккаунт"
+  "myAccount": "Мой аккаунт",
+  "fbTitle": "Сообщить о проблеме",
+  "fbIntro": "Что-то пошло не так? Коротко опишите, что произошло, что вы делали и чего ожидали.",
+  "fbMessage": "Что произошло?",
+  "fbEmail": "Ваш e-mail (необязательно, чтобы мы могли ответить)",
+  "fbSend": "Отправить",
+  "fbSent": "Спасибо, ваше сообщение получено.",
+  "fbShort": "Пожалуйста, напишите чуть подробнее (не менее 10 символов).",
+  "fbPrivacy": "Ваш текст, адрес e-mail (если указан), версия страницы или приложения, тип устройства и язык отправляются нам по e-mail (почтовый сервис Resend, США) только для разбора этого сообщения и ответа вам. Они нигде больше не хранятся и удаляются не позднее чем через год.",
+  "fbPrivacyLink": "Конфиденциальность"
  },
  "ja": {
   "title": "アカウント",
@@ -2076,7 +2166,16 @@
   "deleteDownloadFirst": "先にデータをダウンロードしてください",
   "deleteKeptTitle": "削除されないもの",
   "deleteKept": "バックアップ内のコピーは最長30日以内に自動で削除されます（バックアップは障害後の復元にのみ使います）。Saat Tarih からのみ削除した場合、ほかの Bumba 製品のアカウントと会員番号はそのまま残ります。スマートフォン上の設定と記録はスマートフォンに残ります。",
-  "myAccount": "マイアカウント"
+  "myAccount": "マイアカウント",
+  "fbTitle": "問題を報告",
+  "fbIntro": "うまくいかないことがありましたか？何が起きたか、何をしたか、どうなるはずだったかを簡単に書いてください。",
+  "fbMessage": "何が起きましたか？",
+  "fbEmail": "メールアドレス（任意、返信のため）",
+  "fbSend": "送信",
+  "fbSent": "ありがとうございます。報告を受け取りました。",
+  "fbShort": "もう少し詳しく書いてください（10文字以上）。",
+  "fbPrivacy": "入力内容、メールアドレス（入力した場合）、ページまたはアプリのバージョン、端末の種類、言語は、この報告を調べて返信するためだけにメールで当方に送られます（メールサービス Resend、米国）。ほかの場所には保存されず、遅くとも1年以内に削除されます。",
+  "fbPrivacyLink": "プライバシー"
  },
  "ko": {
   "title": "계정",
@@ -2265,7 +2364,16 @@
   "deleteDownloadFirst": "먼저 데이터를 내려받으세요",
   "deleteKeptTitle": "삭제되지 않는 것",
   "deleteKept": "백업에 있는 사본은 늦어도 30일 안에 자동으로 삭제됩니다(백업은 장애 후 복구에만 쓰입니다). Saat Tarih에서만 계정을 삭제하시면 다른 Bumba 제품의 계정과 회원 번호는 그대로 남습니다. 휴대전화의 설정과 기록은 휴대전화에 남습니다.",
-  "myAccount": "내 계정"
+  "myAccount": "내 계정",
+  "fbTitle": "문제 신고",
+  "fbIntro": "문제가 있었나요? 무슨 일이 있었는지, 무엇을 했는지, 무엇을 기대했는지 간단히 적어 주세요.",
+  "fbMessage": "무슨 일이 있었나요?",
+  "fbEmail": "이메일 (선택, 답장을 위해)",
+  "fbSend": "보내기",
+  "fbSent": "감사합니다. 신고가 접수되었습니다.",
+  "fbShort": "조금 더 자세히 적어 주세요(10자 이상).",
+  "fbPrivacy": "작성한 내용, 이메일 주소(입력한 경우), 페이지 또는 앱 버전, 기기 종류와 언어는 이 신고를 확인하고 답장하기 위해서만 이메일로 저희에게 전달됩니다(이메일 서비스 Resend, 미국). 다른 곳에 저장되지 않으며 늦어도 1년 안에 삭제됩니다.",
+  "fbPrivacyLink": "개인정보"
  },
  "zh": {
   "title": "账户",
@@ -2454,7 +2562,16 @@
   "deleteDownloadFirst": "请先下载您的数据",
   "deleteKeptTitle": "不会删除的内容",
   "deleteKept": "备份中的副本最迟在 30 天内自动删除（备份仅用于故障后的恢复）。如果您只从 Saat Tarih 删除账户，您在其他 Bumba 产品中的账户和会员编号仍会保留。手机上的设置和记录留在手机上。",
-  "myAccount": "我的账户"
+  "myAccount": "我的账户",
+  "fbTitle": "报告问题",
+  "fbIntro": "遇到问题了吗？请简要写下发生了什么、您做了什么以及您期望的结果。",
+  "fbMessage": "发生了什么？",
+  "fbEmail": "您的邮箱（可选，便于我们回复）",
+  "fbSend": "发送",
+  "fbSent": "谢谢，我们已收到您的报告。",
+  "fbShort": "请再写详细一些（至少 10 个字符）。",
+  "fbPrivacy": "您填写的内容、邮箱地址（如填写）、页面或应用版本、设备类型和语言仅为处理此报告并回复您而通过电子邮件发送给我们（邮件服务 Resend，美国）。不会保存在其他地方，最迟一年内删除。",
+  "fbPrivacyLink": "隐私"
  },
  "fil": {
   "title": "Account",
@@ -2643,7 +2760,16 @@
   "deleteDownloadFirst": "I-download po muna ang inyong data",
   "deleteKeptTitle": "Ang hindi binubura",
   "deleteKept": "Kusang nabubura ang kopya sa mga backup sa loob ng hindi hihigit sa 30 araw (para lang sa pagbabalik pagkatapos ng sira ang mga backup). Kung sa Saat Tarih lang ninyo buburahin ang account, mananatili ang inyong mga account at member number sa ibang produkto ng Bumba. Mananatili sa telepono ang mga setting at talaan sa inyong telepono.",
-  "myAccount": "Aking account"
+  "myAccount": "Aking account",
+  "fbTitle": "Mag-ulat ng problema",
+  "fbIntro": "May nagkaproblema ba? Isulat nang maikli kung ano ang nangyari, ano ang ginawa mo, at ano ang inaasahan mo.",
+  "fbMessage": "Ano ang nangyari?",
+  "fbEmail": "Ang email mo (opsyonal, para makasagot kami)",
+  "fbSend": "Ipadala",
+  "fbSent": "Salamat, natanggap namin ang ulat mo.",
+  "fbShort": "Pakisulat nang mas detalyado (hindi bababa sa 10 character).",
+  "fbPrivacy": "Ang isinulat mo, ang email address mo (kung inilagay), ang bersyon ng pahina o app, uri ng device at wika ay ipinapadala sa amin sa email (serbisyong email na Resend, US) para lamang suriin ang ulat na ito at sumagot sa iyo. Hindi ito iniimbak saanman at binubura sa loob ng isang taon sa pinakamatagal.",
+  "fbPrivacyLink": "Privacy"
  },
  "th": {
   "title": "บัญชี",
@@ -2832,7 +2958,16 @@
   "deleteDownloadFirst": "โปรดดาวน์โหลดข้อมูลของคุณก่อน",
   "deleteKeptTitle": "สิ่งที่ไม่ถูกลบ",
   "deleteKept": "สำเนาในข้อมูลสำรองจะถูกลบเองภายใน 30 วันเป็นอย่างช้า (ข้อมูลสำรองใช้กู้คืนหลังระบบขัดข้องเท่านั้น) หากคุณลบบัญชีจาก Saat Tarih เท่านั้น บัญชีและหมายเลขสมาชิกของคุณในผลิตภัณฑ์อื่นของ Bumba จะยังอยู่ การตั้งค่าและบันทึกบนโทรศัพท์ของคุณจะอยู่ในโทรศัพท์",
-  "myAccount": "บัญชีของฉัน"
+  "myAccount": "บัญชีของฉัน",
+  "fbTitle": "แจ้งปัญหา",
+  "fbIntro": "พบปัญหาหรือไม่ เขียนสั้น ๆ ว่าเกิดอะไรขึ้น คุณทำอะไร และคาดว่าจะเป็นอย่างไร",
+  "fbMessage": "เกิดอะไรขึ้น",
+  "fbEmail": "อีเมลของคุณ (ไม่บังคับ เพื่อให้เราตอบกลับได้)",
+  "fbSend": "ส่ง",
+  "fbSent": "ขอบคุณ เราได้รับรายงานของคุณแล้ว",
+  "fbShort": "โปรดเขียนรายละเอียดเพิ่มอีกเล็กน้อย (อย่างน้อย 10 ตัวอักษร)",
+  "fbPrivacy": "ข้อความของคุณ อีเมล (หากระบุ) เวอร์ชันของหน้าหรือแอป ประเภทอุปกรณ์ และภาษา จะถูกส่งถึงเราทางอีเมล (บริการอีเมล Resend สหรัฐอเมริกา) เพื่อตรวจสอบรายงานนี้และตอบกลับคุณเท่านั้น ไม่ถูกเก็บไว้ที่อื่น และจะถูกลบภายในหนึ่งปีเป็นอย่างช้า",
+  "fbPrivacyLink": "ความเป็นส่วนตัว"
  },
  "es": {
   "title": "Cuenta",
@@ -3021,7 +3156,16 @@
   "deleteDownloadFirst": "Primero descargue sus datos",
   "deleteKeptTitle": "Lo que no se elimina",
   "deleteKept": "La copia en las copias de seguridad se elimina sola en un plazo máximo de 30 días (las copias de seguridad solo sirven para restaurar tras una avería). Si elimina su cuenta solo de Saat Tarih, sus cuentas y su número de miembro en los demás productos de Bumba se mantienen. Los ajustes y registros de su teléfono se quedan en el teléfono.",
-  "myAccount": "Mi cuenta"
+  "myAccount": "Mi cuenta",
+  "fbTitle": "Informar de un problema",
+  "fbIntro": "¿Algo salió mal? Describa brevemente qué pasó, qué hizo y qué esperaba.",
+  "fbMessage": "¿Qué pasó?",
+  "fbEmail": "Su correo (opcional, para poder responderle)",
+  "fbSend": "Enviar",
+  "fbSent": "Gracias, hemos recibido su informe.",
+  "fbShort": "Escriba un poco más de detalle (al menos 10 caracteres).",
+  "fbPrivacy": "Lo que escribe, su correo electrónico (si lo indica), la versión de la página o de la aplicación, el tipo de dispositivo y el idioma se nos envían por correo electrónico (servicio de correo Resend, EE. UU.) solo para revisar este informe y responderle. No se guardan en ningún otro lugar y se eliminan en un plazo máximo de un año.",
+  "fbPrivacyLink": "Privacidad"
  },
  "pt": {
   "title": "Conta",
@@ -3210,7 +3354,16 @@
   "deleteDownloadFirst": "Baixe seus dados primeiro",
   "deleteKeptTitle": "O que não é excluído",
   "deleteKept": "A cópia nos backups é excluída automaticamente em no máximo 30 dias (os backups servem só para restaurar depois de uma falha). Se você excluir a conta só do Saat Tarih, suas contas e seu número de membro nos outros produtos Bumba continuam lá. As configurações e os registros no seu celular ficam no celular.",
-  "myAccount": "Minha conta"
+  "myAccount": "Minha conta",
+  "fbTitle": "Relatar um problema",
+  "fbIntro": "Algo deu errado? Descreva brevemente o que aconteceu, o que você fez e o que esperava.",
+  "fbMessage": "O que aconteceu?",
+  "fbEmail": "Seu e-mail (opcional, para podermos responder)",
+  "fbSend": "Enviar",
+  "fbSent": "Obrigado, recebemos seu relato.",
+  "fbShort": "Escreva um pouco mais de detalhes (pelo menos 10 caracteres).",
+  "fbPrivacy": "O que você escreve, seu e-mail (se informado), a versão da página ou do app, o tipo de dispositivo e o idioma são enviados a nós por e-mail (serviço de e-mail Resend, EUA) apenas para analisar este relato e responder a você. Não são guardados em nenhum outro lugar e são excluídos em no máximo um ano.",
+  "fbPrivacyLink": "Privacidade"
  },
  "hi": {
   "title": "खाता",
@@ -3399,7 +3552,16 @@
   "deleteDownloadFirst": "पहले अपना डेटा डाउनलोड करें",
   "deleteKeptTitle": "जो हटाया नहीं जाता",
   "deleteKept": "बैकअप में रखी प्रति अधिकतम 30 दिनों में अपने-आप हट जाती है (बैकअप केवल किसी खराबी के बाद बहाली के लिए हैं)। यदि आप खाता सिर्फ़ Saat Tarih से हटाते हैं, तो दूसरे Bumba उत्पादों में आपके खाते और सदस्य नंबर वहीं रहते हैं। फ़ोन पर आपकी सेटिंग्स और रिकॉर्ड फ़ोन पर रहते हैं।",
-  "myAccount": "मेरा खाता"
+  "myAccount": "मेरा खाता",
+  "fbTitle": "समस्या बताएँ",
+  "fbIntro": "कुछ गड़बड़ हुई? संक्षेप में लिखें कि क्या हुआ, आपने क्या किया और आप क्या उम्मीद कर रहे थे।",
+  "fbMessage": "क्या हुआ?",
+  "fbEmail": "आपका ईमेल (वैकल्पिक, ताकि हम जवाब दे सकें)",
+  "fbSend": "भेजें",
+  "fbSent": "धन्यवाद, आपकी रिपोर्ट हमें मिल गई।",
+  "fbShort": "कृपया थोड़ा और विवरण लिखें (कम से कम 10 अक्षर)।",
+  "fbPrivacy": "आपका लिखा हुआ, आपका ईमेल पता (यदि दिया हो), पेज या ऐप का संस्करण, डिवाइस का प्रकार और भाषा केवल इस रिपोर्ट को देखने और आपको जवाब देने के लिए ईमेल से हमें भेजे जाते हैं (ईमेल सेवा Resend, अमेरिका)। इन्हें कहीं और नहीं रखा जाता और अधिकतम एक वर्ष में हटा दिया जाता है।",
+  "fbPrivacyLink": "गोपनीयता"
  },
  "bn": {
   "title": "অ্যাকাউন্ট",
@@ -3588,6 +3750,15 @@
   "deleteDownloadFirst": "আগে আপনার ডেটা ডাউনলোড করুন",
   "deleteKeptTitle": "যা মুছে ফেলা হয় না",
   "deleteKept": "ব্যাকআপে থাকা কপি সর্বোচ্চ 30 দিনের মধ্যে আপনা-আপনি মুছে যায় (ব্যাকআপ কেবল কোনো ত্রুটির পর পুনরুদ্ধারের জন্য)। আপনি অ্যাকাউন্ট শুধু Saat Tarih থেকে মুছলে অন্যান্য Bumba পণ্যে আপনার অ্যাকাউন্ট ও সদস্য নম্বর সেখানেই থাকে। ফোনে থাকা আপনার সেটিংস ও রেকর্ড ফোনেই থাকে।",
-  "myAccount": "আমার অ্যাকাউন্ট"
+  "myAccount": "আমার অ্যাকাউন্ট",
+  "fbTitle": "সমস্যা জানান",
+  "fbIntro": "কোনো সমস্যা হয়েছে? সংক্ষেপে লিখুন কী হয়েছে, আপনি কী করেছিলেন এবং কী আশা করেছিলেন।",
+  "fbMessage": "কী হয়েছে?",
+  "fbEmail": "আপনার ইমেইল (ঐচ্ছিক, যাতে আমরা উত্তর দিতে পারি)",
+  "fbSend": "পাঠান",
+  "fbSent": "ধন্যবাদ, আপনার রিপোর্ট আমরা পেয়েছি।",
+  "fbShort": "আরেকটু বিস্তারিত লিখুন (অন্তত 10 অক্ষর)।",
+  "fbPrivacy": "আপনার লেখা, আপনার ইমেইল ঠিকানা (যদি দেন), পেজ বা অ্যাপের সংস্করণ, ডিভাইসের ধরন ও ভাষা শুধু এই রিপোর্ট দেখা ও আপনাকে উত্তর দেওয়ার জন্য ইমেইলে আমাদের কাছে পাঠানো হয় (ইমেইল সেবা Resend, যুক্তরাষ্ট্র)। এগুলো অন্য কোথাও রাখা হয় না এবং সর্বোচ্চ এক বছরের মধ্যে মুছে ফেলা হয়।",
+  "fbPrivacyLink": "গোপনীয়তা"
  }
 }

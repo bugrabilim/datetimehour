@@ -380,6 +380,13 @@
         ]
       },
       {
+        "id": "hata-bildirimi",
+        "h": "Hata bildir",
+        "p": [
+          "Sitede (hesap.time.bumba.tr/hata-bildir) ve uygulamalarda (Ayarlar › Destek) bize sorun bildirebilirsiniz; hesap gerekmez. Yazdıklarınız, yazdıysanız e-posta adresiniz, sayfa ya da uygulama sürümü, cihaz türü ve dil yalnız bu bildirimi incelemek ve size yanıt vermek için e-postayla bize iletilir (e-posta hizmeti Resend, ABD). Başka yerde saklanmaz, en geç bir yıl içinde silinir. Kötüye kullanımı sınırlamak için IP adresiniz en çok bir gün tutulur. Hukuki sebep: bildiriminizi yanıtlamaktaki meşru menfaatimiz (KVKK m. 5/2-f)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Tarayıcı eklentisi",
         "p": [

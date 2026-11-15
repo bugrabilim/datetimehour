@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">สิ่งที่ไม่ถูกลบ</string>
     <string name="account_deleteKept">สำเนาในข้อมูลสำรองจะถูกลบเองภายใน 30 วันเป็นอย่างช้า (ข้อมูลสำรองใช้กู้คืนหลังระบบขัดข้องเท่านั้น) หากคุณลบบัญชีจาก Saat Tarih เท่านั้น บัญชีและหมายเลขสมาชิกของคุณในผลิตภัณฑ์อื่นของ Bumba จะยังอยู่ การตั้งค่าและบันทึกบนโทรศัพท์ของคุณจะอยู่ในโทรศัพท์</string>
     <string name="account_myAccount">บัญชีของฉัน</string>
+    <string name="account_fbTitle">แจ้งปัญหา</string>
+    <string name="account_fbIntro">พบปัญหาหรือไม่ เขียนสั้น ๆ ว่าเกิดอะไรขึ้น คุณทำอะไร และคาดว่าจะเป็นอย่างไร</string>
+    <string name="account_fbMessage">เกิดอะไรขึ้น</string>
+    <string name="account_fbEmail">อีเมลของคุณ (ไม่บังคับ เพื่อให้เราตอบกลับได้)</string>
+    <string name="account_fbSend">ส่ง</string>
+    <string name="account_fbSent">ขอบคุณ เราได้รับรายงานของคุณแล้ว</string>
+    <string name="account_fbShort">โปรดเขียนรายละเอียดเพิ่มอีกเล็กน้อย (อย่างน้อย 10 ตัวอักษร)</string>
+    <string name="account_fbPrivacy">ข้อความของคุณ อีเมล (หากระบุ) เวอร์ชันของหน้าหรือแอป ประเภทอุปกรณ์ และภาษา จะถูกส่งถึงเราทางอีเมล (บริการอีเมล Resend สหรัฐอเมริกา) เพื่อตรวจสอบรายงานนี้และตอบกลับคุณเท่านั้น ไม่ถูกเก็บไว้ที่อื่น และจะถูกลบภายในหนึ่งปีเป็นอย่างช้า</string>
+    <string name="account_fbPrivacyLink">ความเป็นส่วนตัว</string>
     <string name="common_done">เสร็จ</string>
     <string name="notify_heading">การแจ้งเตือนเวลาละหมาด</string>
     <string name="notify_enable">แจ้งเตือนเมื่อถึงเวลาละหมาด</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s: นาฬิกา ปฏิทิน เวลาละหมาด และเครื่องมือ ฟรีและไม่มีโฆษณา</string>
     <string name="support_qr">แชร์ด้วยคิวอาร์โค้ด</string>
     <string name="support_qrNote">สแกนด้วยกล้องโทรศัพท์เพื่อเปิด time.bumba.tr</string>
-    <string name="support_feedback">ส่งความคิดเห็น</string>
-    <string name="support_feedbackSubject">ความคิดเห็นเกี่ยวกับ %1$s</string>
-    <string name="support_feedbackNote">แอปอีเมลจะเปิดขึ้น ข้อความจะมีเพียงเวอร์ชันแอปและเวอร์ชันระบบ ซึ่งคุณเห็นได้ก่อนส่ง</string>
     <string name="support_moreApps">ผลิตภัณฑ์อื่นของ Bumba</string>
     <string name="support_version">เวอร์ชัน</string>
     <string name="fontScale_title">ขนาดตัวอักษร</string>

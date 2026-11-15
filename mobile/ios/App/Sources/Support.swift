@@ -24,21 +24,9 @@ enum Support {
     }
 
     static var shareText: String { T("support.shareText", L("app.displayName")) }
-
-    /// Geri bildirim iletisi: konu ve yalnız uygulama/sistem sürümü (kullanıcı göndermeden önce görür)
-    static var feedbackURL: URL {
-        var c = URLComponents()
-        c.scheme = "mailto"
-        c.path = "bilgi@bumbagroup.com"
-        c.queryItems = [
-            URLQueryItem(name: "subject", value: T("support.feedbackSubject", L("app.displayName"))),
-            URLQueryItem(name: "body", value: "\n\n—\n\(L("app.displayName")) \(version) · iOS \(UIDevice.current.systemVersion)"),
-        ]
-        return c.url ?? URL(string: "mailto:bilgi@bumbagroup.com")!
-    }
 }
 
-/// Ayarlar'daki bölüm: puanla, paylaş, QR kod, geri bildirim, Bumba'nın diğer ürünleri, sürüm
+/// Ayarlar'daki bölüm: puanla, paylaş, QR kod, hata bildir, Bumba'nın diğer ürünleri, sürüm
 struct SupportSection: View {
     @Environment(\.requestReview) private var requestReview
 
@@ -50,13 +38,11 @@ struct SupportSection: View {
                 BoxLabel(L("support.share"), duo: "share", tint: Theme.gold)
             }
             NavigationLink { ShareQRView() } label: { BoxLabel(L("support.qr"), duo: "qr", tint: Theme.gold) }
-            Link(destination: Support.feedbackURL) { BoxLabel(L("support.feedback"), duo: "mail", tint: Theme.gold) }
+            NavigationLink { FeedbackView() } label: { BoxLabel(L("account.fbTitle"), duo: "mail", tint: Theme.gold) }
             Link(destination: Support.bumba) { BoxLabel(L("support.moreApps"), duo: "grid", tint: Theme.gold) }
             LabeledContent(L("support.version"), value: Support.version)
         } header: {
             Text(L("support.title"))
-        } footer: {
-            Text(L("support.feedbackNote"))
         }
     }
 }

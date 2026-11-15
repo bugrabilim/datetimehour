@@ -446,6 +446,13 @@
         ]
       },
       {
+        "id": "report-problem",
+        "h": "Mag-ulat ng problema",
+        "p": [
+          "Maaari kang mag-ulat ng problema sa website (hesap.time.bumba.tr/hata-bildir) at sa mga app (Settings › Suporta); hindi kailangan ng account. Ang isinulat mo, ang email address mo (kung inilagay), ang bersyon ng pahina o app, uri ng device at wika ay ipinapadala sa amin sa email (serbisyong email na Resend, US) para lamang suriin ang ulat na ito at sumagot sa iyo. Hindi ito iniimbak saanman at binubura sa loob ng isang taon sa pinakamatagal. Para limitahan ang pang-aabuso, iniimbak ang IP address mo nang hindi hihigit sa isang araw. Batayang legal: ang lehitimong interes naming sagutin ang ulat mo (KVKK art. 5/2-f)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Browser extension",
         "p": [

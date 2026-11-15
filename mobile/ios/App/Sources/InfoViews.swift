@@ -30,7 +30,7 @@ struct SettingsView: View {
         let look = ["settings.color", "settings.appearance", "fontScale.title"]
         let clock = ["look.title", "home.customize", "home.editScreen", "dial.title", "night.title"]
         let backup = ["sync.title", "siri.title"]
-        let support = ["support.title", "support.rate", "support.share", "support.qr", "support.feedback", "support.moreApps",
+        let support = ["support.title", "support.rate", "support.share", "support.qr", "account.fbTitle", "support.moreApps",
                        "support.version", "badges.h1", "settings.about", "onboard.replay"]
         Form {
             // Hesap (üyelik aşama 1, 10 Kasım 2026): isteğe bağlı; satırda e-posta ya da "Giriş yapılmadı"

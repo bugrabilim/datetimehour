@@ -1943,6 +1943,15 @@
     <string name="account_deleteKeptTitle">What is not deleted</string>
     <string name="account_deleteKept">The copy in backups is deleted automatically within 30 days at most (backups are only for restoring after a failure). If you delete your account from Saat Tarih only, your accounts and member number in other Bumba products stay there. Settings and records on your phone stay on your phone.</string>
     <string name="account_myAccount">My account</string>
+    <string name="account_fbTitle">Report a problem</string>
+    <string name="account_fbIntro">Did something go wrong? Briefly describe what happened, what you did and what you expected.</string>
+    <string name="account_fbMessage">What happened?</string>
+    <string name="account_fbEmail">Your email (optional, so we can reply)</string>
+    <string name="account_fbSend">Send</string>
+    <string name="account_fbSent">Thank you, your report has reached us.</string>
+    <string name="account_fbShort">Please add a little more detail (at least 10 characters).</string>
+    <string name="account_fbPrivacy">What you write, your email address (if given), the page or app version, device type and language are sent to us by email (email service Resend, USA) only to look into this report and reply to you. They are not stored anywhere else and are deleted within one year at the latest.</string>
+    <string name="account_fbPrivacyLink">Privacy</string>
     <string name="common_done">Done</string>
     <string name="notify_heading">Prayer time notifications</string>
     <string name="notify_enable">Notify me at prayer times</string>
@@ -3075,9 +3084,6 @@
     <string name="support_shareText">%1$s: clock, calendar, prayer times and tools; free with no ads.</string>
     <string name="support_qr">Share with a QR code</string>
     <string name="support_qrNote">Scan it with a phone camera to open time.bumba.tr.</string>
-    <string name="support_feedback">Send feedback</string>
-    <string name="support_feedbackSubject">%1$s feedback</string>
-    <string name="support_feedbackNote">Your email app opens. Only the app version and system version are added to the message, and you see them before sending.</string>
     <string name="support_moreApps">More from Bumba</string>
     <string name="support_version">Version</string>
     <string name="fontScale_title">Text size</string>

@@ -763,6 +763,7 @@ for (const l of LANGS) {
       check(!read(l === "tr" ? "hesap/sifre" : `${base}account/password`) && !read(l === "tr" ? "hesap/dogrulandi" : `${base}account/verified`), `hesap: eski statik şifre/doğrulama sayfası kaldı (${l})`);
       const home = read(l === "tr" ? "" : base.slice(0, -1));
       check(home.includes(`href="https://hesap.time.bumba.tr/hesap?dil=${l}" data-account-link>`) && home.includes(ACC[l].myAccount), `ayarlar: Hesabım bağlantısı yok (${l})`);
+      check(home.includes(`href="https://hesap.time.bumba.tr/hata-bildir?dil=${l}" data-account-link>`) && home.includes(ACC[l].fbTitle), `ayarlar: Hata bildir bağlantısı yok (${l})`);
       const del = read(l === "tr" ? "hesap-silme" : `${base}account-deletion`);
       check(/name="robots" content="index/.test(del) && /bilgi@bumbagroup\.com/.test(del) && /<ol>/.test(del) && del.includes(ACC[l].deleteScopeAll) && /\b7\b/.test(del) && !/2 (yıl|years)/.test(del), `hesap silme sayfası eksik (${l})`);
       const j = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"));
@@ -771,6 +772,7 @@ for (const l of LANGS) {
       check(sec && !sec.ul && txt.includes(`https://bumbagroup.com/uyelik-aydinlatma${sfx})`) && txt.includes(`https://bumbagroup.com/uyelik-sozlesmesi${sfx})`) && /\{deleteUrl\}/.test(txt), `gizlilik: üyelik bölümü eksik (${l})`);
       const priv = read(l === "tr" ? "gizlilik" : `${base}privacy`);
       check(priv.includes(`href="${l === "tr" ? "/hesap-silme/" : `/${l}/account-deletion/`}"`) && !priv.includes("{deleteUrl}"), `gizlilik: hesap silme bağlantısı yok (${l})`);
+      check(priv.includes(`id="${l === "tr" ? "hata-bildirimi" : "report-problem"}"`) && priv.includes("hesap.time.bumba.tr/hata-bildir"), `gizlilik: hata bildirimi bölümü yok (${l})`);
     }
     check(!sm.includes("/hesap/sifre/") && !sm.includes("/account/password/") && !sm.includes("/account/verified/") && sm.includes("/hesap-silme/</loc>") && sm.includes("/en/account-deletion/</loc>"), "sitemap: hesap sayfaları yanlış");
     check(!/hesap\.time\.bumba\.tr/.test((ng.match(/form-action[^;]*;/g) || []).join(" ")) && ng.includes("location = /hesap/sifre/ { return 301 https://hesap.time.bumba.tr/sifre?dil=tr&$args; }") && /account\/verified\/\$ \{ return 301 https:\/\/hesap\.time\.bumba\.tr\/dogrulandi\?dil=\$1&\$args; \}/.test(ng), "nginx: hesap yönlendirmeleri ya da form-action");

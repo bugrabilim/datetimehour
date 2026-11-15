@@ -91,7 +91,7 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
     val look = arrayOf("settings.color", "settings.appearance", "fontScale.title")
     val clock = arrayOf("look.title", "home.customize", "home.editScreen", "dial.title", "night.title")
     val backup = arrayOf("sync.androidTitle", "android.shortcuts.title")
-    val support = arrayOf("support.title", "support.rate", "support.share", "support.qr", "support.feedback", "support.moreApps",
+    val support = arrayOf("support.title", "support.rate", "support.share", "support.qr", "account.fbTitle", "support.moreApps",
         "support.version", "badges.h1", "settings.about", "onboard.replay")
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         OutlinedTextField(

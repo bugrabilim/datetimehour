@@ -446,6 +446,13 @@
         ]
       },
       {
+        "id": "report-problem",
+        "h": "Informar de un problema",
+        "p": [
+          "Puede informarnos de un problema en el sitio (hesap.time.bumba.tr/hata-bildir) y en las aplicaciones (Ajustes › Soporte); no hace falta cuenta. Lo que escribe, su correo electrónico (si lo indica), la versión de la página o de la aplicación, el tipo de dispositivo y el idioma se nos envían por correo electrónico (servicio de correo Resend, EE. UU.) solo para revisar este informe y responderle. No se guardan en ningún otro lugar y se eliminan en un plazo máximo de un año. Para limitar abusos, su dirección IP se guarda como máximo un día. Base jurídica: nuestro interés legítimo en responder a su informe (KVKK art. 5/2-f)."
+        ]
+      },
+      {
         "id": "eklenti",
         "h": "Extensión del navegador",
         "p": [
