@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">Mga kagustuhan</string>
     <string name="account_tabMembership">Mga membership</string>
     <string name="account_tabData">Data at account</string>
-    <string name="account_unsaved">May mga pagbabago po kayong hindi pa nase-save. Aalis pa rin po ba kayo?</string>
     <string name="account_mergedTitle">Pinagsama na po ang inyong mga account</string>
     <string name="account_mergedText">Pinagsama na po ang inyong mga account sa %1$s na binuksan gamit ang email na ito. Ang inyong member number ay %2$s. Aling password po ang gusto ninyong gamitin?</string>
     <string name="account_mergedChoice">Ang aking password sa %1$s</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">I-download po muna ang inyong data</string>
     <string name="account_deleteKeptTitle">Ang hindi binubura</string>
     <string name="account_deleteKept">Kusang nabubura ang kopya sa mga backup sa loob ng hindi hihigit sa 30 araw (para lang sa pagbabalik pagkatapos ng sira ang mga backup). Kung sa Saat Tarih lang ninyo buburahin ang account, mananatili ang inyong mga account at member number sa ibang produkto ng Bumba. Mananatili sa telepono ang mga setting at talaan sa inyong telepono.</string>
+    <string name="account_myAccount">Aking account</string>
     <string name="common_done">Tapos na</string>
     <string name="notify_heading">Abiso sa oras ng dasal</string>
     <string name="notify_enable">Abisuhan ako sa oras ng dasal</string>

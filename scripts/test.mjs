@@ -762,7 +762,7 @@ for (const l of LANGS) {
       const sfx = l === "tr" ? "" : "?dil=en";
       check(!read(l === "tr" ? "hesap/sifre" : `${base}account/password`) && !read(l === "tr" ? "hesap/dogrulandi" : `${base}account/verified`), `hesap: eski statik şifre/doğrulama sayfası kaldı (${l})`);
       const home = read(l === "tr" ? "" : base.slice(0, -1));
-      check(home.includes(`href="https://hesap.time.bumba.tr/hesap?dil=${l}"`) && home.includes(ACC[l].title), `ayarlar: Hesap bağlantısı yok (${l})`);
+      check(home.includes(`href="https://hesap.time.bumba.tr/hesap?dil=${l}" data-account-link>`) && home.includes(ACC[l].myAccount), `ayarlar: Hesabım bağlantısı yok (${l})`);
       const del = read(l === "tr" ? "hesap-silme" : `${base}account-deletion`);
       check(/name="robots" content="index/.test(del) && /bilgi@bumbagroup\.com/.test(del) && /<ol>/.test(del) && del.includes(ACC[l].deleteScopeAll) && /\b7\b/.test(del) && !/2 (yıl|years)/.test(del), `hesap silme sayfası eksik (${l})`);
       const j = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"));

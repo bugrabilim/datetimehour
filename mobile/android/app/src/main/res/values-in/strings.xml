@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">Preferensi</string>
     <string name="account_tabMembership">Keanggotaan</string>
     <string name="account_tabData">Data dan akun</string>
-    <string name="account_unsaved">Ada perubahan yang belum disimpan. Tetap keluar?</string>
     <string name="account_mergedTitle">Akun Anda telah digabungkan</string>
     <string name="account_mergedText">Akun %1$s Anda yang dibuat dengan email ini telah digabungkan. Nomor anggota Anda %2$s. Kata sandi mana yang ingin Anda gunakan?</string>
     <string name="account_mergedChoice">Kata sandi %1$s saya</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">Unduh data Anda terlebih dahulu</string>
     <string name="account_deleteKeptTitle">Yang tidak dihapus</string>
     <string name="account_deleteKept">Salinan di cadangan terhapus otomatis paling lambat dalam 30 hari (cadangan hanya untuk pemulihan setelah gangguan). Jika Anda menghapus akun hanya dari Saat Tarih, akun dan nomor anggota Anda di produk Bumba lain tetap ada. Pengaturan dan catatan di ponsel Anda tetap di ponsel.</string>
+    <string name="account_myAccount">Akun saya</string>
     <string name="common_done">Selesai</string>
     <string name="notify_heading">Notifikasi waktu salat</string>
     <string name="notify_enable">Beri tahu saya saat waktu salat</string>

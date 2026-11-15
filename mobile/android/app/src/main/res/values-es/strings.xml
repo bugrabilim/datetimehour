@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">Preferencias</string>
     <string name="account_tabMembership">Membresías</string>
     <string name="account_tabData">Datos y cuenta</string>
-    <string name="account_unsaved">Tiene cambios sin guardar. ¿Desea salir de todos modos?</string>
     <string name="account_mergedTitle">Sus cuentas se han unido</string>
     <string name="account_mergedText">Sus cuentas de %1$s abiertas con este correo se han unido. Su número de miembro es %2$s. ¿Con qué contraseña desea continuar?</string>
     <string name="account_mergedChoice">Mi contraseña de %1$s</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">Primero descargue sus datos</string>
     <string name="account_deleteKeptTitle">Lo que no se elimina</string>
     <string name="account_deleteKept">La copia en las copias de seguridad se elimina sola en un plazo máximo de 30 días (las copias de seguridad solo sirven para restaurar tras una avería). Si elimina su cuenta solo de Saat Tarih, sus cuentas y su número de miembro en los demás productos de Bumba se mantienen. Los ajustes y registros de su teléfono se quedan en el teléfono.</string>
+    <string name="account_myAccount">Mi cuenta</string>
     <string name="common_done">Listo</string>
     <string name="notify_heading">Notificaciones de horarios de oración</string>
     <string name="notify_enable">Avisarme a la hora de la oración</string>

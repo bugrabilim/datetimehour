@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.util.Base64
-import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -54,11 +53,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
-import androidx.compose.runtime.key
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -203,29 +199,13 @@ private fun Picker(label: String, value: String, options: List<Pair<String, Stri
 fun AccountScreen(onRoute: (String) -> Unit) {
     LaunchedEffect(Unit) { if (Account.signedIn) Account.refresh() }
     var notice by remember { mutableStateOf<String?>(null) }
-    // Açık bölüm (web'deki sekme): telefonda açılır kapanır, aynı adlar ve sıra; kaydedilmemiş değişiklikle çıkışta uyarı
+    // Açık bölüm (web'deki sekme): telefonda açılır kapanır, aynı adlar ve sıra. Kaydedilmemiş değişiklik uyarısı yok
+    // (sahibin kararı, 15 Kasım 2026: bilgiler isteğe bağlı, çıkarken soru sorulmaz)
     var open by rememberSaveable { mutableStateOf("profil") }
-    var gen by remember { mutableIntStateOf(0) }
-    BackHandler(enabled = AccountLeave.dirty) { AccountLeave.leave { onRoute("settings") } }
-    DisposableEffect(Unit) { onDispose { AccountLeave.dirty = false; AccountLeave.pending = null } }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        if (Account.signedIn) key(gen) { SignedIn(onRoute, open, { open = it }, { AccountLeave.dirty = false; gen++ }) { notice = it } } else SignedOut(notice)
+        if (Account.signedIn) SignedIn(onRoute, open, { open = it }) { notice = it } else SignedOut(notice)
         AccountLinks()
     }
-    AccountLeave.pending?.let { go ->
-        AlertDialog(onDismissRequest = { AccountLeave.pending = null },
-            text = { Text(A("unsaved")) },
-            confirmButton = { TextButton({ AccountLeave.pending = null; AccountLeave.dirty = false; go() }) { Text(A("yes")) } },
-            dismissButton = { TextButton({ AccountLeave.pending = null }) { Text(A("no")) } })
-    }
-}
-
-/** Kaydedilmemiş değişiklikle hesap sayfasından (ya da açık bölümden) çıkılırken uyarı (madde 7); Hesap sayfasının geri
-    düğmesi de buradan sorar */
-object AccountLeave {
-    var dirty by mutableStateOf(false)
-    var pending by mutableStateOf<(() -> Unit)?>(null)
-    fun leave(go: () -> Unit) { if (dirty) pending = go else go() }
 }
 
 /** Hesap sayfasının bölüm grubu (web'deki sekme): başlığa dokununca açılır, altında ortak metinlere bağlantı */
@@ -429,7 +409,7 @@ private fun photoBitmap(dataUrl: String?): androidx.compose.ui.graphics.ImageBit
 
 @OptIn(ExperimentalMaterial3Api::class, androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 @Composable
-private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) -> Unit, discard: () -> Unit, onSignedOut: (String) -> Unit) {
+private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) -> Unit, onSignedOut: (String) -> Unit) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val u = Account.user ?: return
@@ -491,8 +471,7 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
         put("sosyal", JSONArray(sosyal.filter { it.second.isNotBlank() }.map { JSONObject().put("platform", it.first).put("deger", it.second.trim()) }))
         put("gorunurluk", JSONObject().put("acik", acik).put("alanlar", JSONArray(alanlar.toList())))
     }
-    var profileBase by remember { mutableStateOf("") }
-    fun saveProfile(card: String) = run(card, { Account.saveProfile(profileJson()) }, "account.saved") { profileBase = profileJson().toString() }
+    fun saveProfile(card: String) = run(card, { Account.saveProfile(profileJson()) }, "account.saved")
 
     val pickPhoto = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null) scope.launch {
@@ -510,7 +489,6 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
     var current by remember { mutableStateOf("") }
     var next by remember { mutableStateOf("") }
     var celebrate by remember { mutableStateOf(d.optBoolean("kutlama", true)) }
-    var celebrateSaved by remember { mutableStateOf(celebrate) }
     val sessions = remember { mutableStateListOf<JSONObject>() }
     suspend fun loadSessions() {
         val r = Account.sessions()
@@ -534,19 +512,7 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
     var delPw by remember { mutableStateOf("") }
     var confirm by remember { mutableStateOf(false) }
 
-    // Kaydedilmemiş değişiklik: profil ve görünürlük (kayıtlı hâlle), e-posta, şifre ve kutlama alanları
-    LaunchedEffect(Unit) { profileBase = profileJson().toString() }
-    val dirtyOf = mapOf(
-        "profil" to ((profileBase.isNotEmpty() && profileJson().toString() != profileBase) || newEmail.isNotEmpty() || emailPw.isNotEmpty()),
-        "guvenlik" to (current.isNotEmpty() || next.isNotEmpty()),
-        "tercihler" to (celebrate != celebrateSaved),
-    )
-    val anyDirty = dirtyOf.values.any { it }
-    SideEffect { AccountLeave.dirty = anyDirty }
-    fun toggle(id: String) {
-        val target = if (open == id) "" else id
-        if (dirtyOf[open] == true) AccountLeave.pending = { discard(); setOpen(target) } else setOpen(target)
-    }
+    fun toggle(id: String) = setOpen(if (open == id) "" else id)
 
     // Aynı e-postanın ayrı hesapları girişte birleşti ve şifre seçimi bekleniyor: seçim yapılana kadar yalnız seçim ve çıkış
     choice?.takeIf { it.options.isNotEmpty() }?.let { ch ->
@@ -570,11 +536,13 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
         RoundButton(A("signOut"), false, Modifier.fillMaxWidth()) { scope.launch { Account.signOut(); onSignedOut("account.signedOut") } }
     }
 
-    // Beş bölüm grubu web'deki sekmelerle aynı: Profil (1, 2, 3), Güvenlik (4, 7), Tercihler (5, 6), Üyelikler (8),
-    // Veri ve hesap (9, 10); sonra uygulamanın kullanım verisi (rozetler ve kayıtlar)
+    // Beş bölüm grubu web'deki sekmelerle aynı: Profil (1, 2), Güvenlik (3, 4, 7; e-posta değişikliği güvenlikte, sahibin
+    // kararı 15 Kasım 2026), Tercihler (5, 6), Üyelikler (8), Veri ve hesap (9, 10); sonra rozetler ve kayıtlar
     Group(A("tabProfile"), open == "profil", { toggle("profil") }) {
         AppCard {
             Numbered(1, A("profile"))
+            // Alanların hepsi isteğe bağlı: not en başta (sahibin kararı, 15 Kasım 2026)
+            LinkedText(A("optionalNote"))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 val bmp = remember(foto) { photoBitmap(foto) }
                 if (bmp != null) Image(bmp, A("photo"), Modifier.size(80.dp).clip(CircleShape), contentScale = ContentScale.Crop)
@@ -616,7 +584,6 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
                 TextButton({ sosyal.removeAt(i) }) { Text(A("socialRemove"), color = Theme.c.accent) }
             }
             if (sosyal.size < 8) TextButton({ sosyal.add(SOCIAL[0] to "") }) { Text(A("socialAdd"), color = Theme.c.accent) }
-            LinkedText(A("optionalNote"))
             RoundButton(A("save"), true, Modifier.fillMaxWidth()) { saveProfile("profile") }
             CardMessage("profile")
         }
@@ -638,6 +605,8 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
             RoundButton(A("save"), true, Modifier.fillMaxWidth()) { saveProfile("visibility") }
             CardMessage("visibility")
         }
+    }
+    Group(A("tabSecurity"), open == "guvenlik", { toggle("guvenlik") }) {
         AppCard {
             Numbered(3, A("emailSection"))
             Text(d.optString("eposta"), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.Medium)
@@ -647,8 +616,6 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
             RoundButton(A("changeEmail"), true, Modifier.fillMaxWidth()) { run("email", { Account.changeEmail(newEmail, emailPw) }, "account.changeEmailSent") { newEmail = ""; emailPw = "" } }
             CardMessage("email")
         }
-    }
-    Group(A("tabSecurity"), open == "guvenlik", { toggle("guvenlik") }) {
         AppCard {
             Numbered(4, A("passwordSection"))
             Field(current, { current = it }, A("passwordCurrent"), ContentType.Password, password = true)
@@ -690,7 +657,7 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
                 SoftSwitch(celebrate, { celebrate = it })
             }
             Text(A("celebrateNote"), color = Theme.c.muted, fontSize = 13.sp)
-            RoundButton(A("save"), true, Modifier.fillMaxWidth()) { run("emails", { Account.setCelebrate(celebrate) }, "account.saved") { celebrateSaved = celebrate } }
+            RoundButton(A("save"), true, Modifier.fillMaxWidth()) { run("emails", { Account.setCelebrate(celebrate) }, "account.saved") }
             CardMessage("emails")
             Text(A("list"), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.Medium)
             Text(A("listNote"), color = Theme.c.muted, fontSize = 13.sp)

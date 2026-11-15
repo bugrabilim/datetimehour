@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">Tercihler</string>
     <string name="account_tabMembership">Üyelikler</string>
     <string name="account_tabData">Veri ve hesap</string>
-    <string name="account_unsaved">Kaydedilmemiş değişiklikleriniz var. Yine de çıkmak istiyor musunuz?</string>
     <string name="account_mergedTitle">Hesaplarınız birleştirildi</string>
     <string name="account_mergedText">Bu e-postayla açılmış %1$s hesaplarınız birleştirildi. Üye numaranız %2$s. Hangi şifreyle devam etmek istersiniz?</string>
     <string name="account_mergedChoice">%1$s şifrem</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">Önce verilerinizi indirin</string>
     <string name="account_deleteKeptTitle">Silinmeyenler</string>
     <string name="account_deleteKept">Yedeklerdeki kopya en geç 30 gün içinde kendiliğinden silinir (yedekler yalnız bir arızadan sonra geri yüklemek içindir). Hesabınızı yalnız Saat Tarih\'ten silerseniz öbür Bumba ürünlerindeki hesaplarınız ve üye numaranız orada kalır. Telefondaki ayarlarınız ve kayıtlarınız telefonda kalır.</string>
+    <string name="account_myAccount">Hesabım</string>
     <string name="common_done">Bitti</string>
     <string name="notify_heading">Vakit bildirimleri</string>
     <string name="notify_enable">Vakitlerde bildirim al</string>

@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">Preferences</string>
     <string name="account_tabMembership">Memberships</string>
     <string name="account_tabData">Data and account</string>
-    <string name="account_unsaved">You have unsaved changes. Leave anyway?</string>
     <string name="account_mergedTitle">Your accounts have been merged</string>
     <string name="account_mergedText">Your %1$s accounts opened with this email have been merged. Your member number is %2$s. Which password would you like to continue with?</string>
     <string name="account_mergedChoice">My %1$s password</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">Download your data first</string>
     <string name="account_deleteKeptTitle">What is not deleted</string>
     <string name="account_deleteKept">The copy in backups is deleted automatically within 30 days at most (backups are only for restoring after a failure). If you delete your account from Saat Tarih only, your accounts and member number in other Bumba products stay there. Settings and records on your phone stay on your phone.</string>
+    <string name="account_myAccount">My account</string>
     <string name="common_done">Done</string>
     <string name="notify_heading">Prayer time notifications</string>
     <string name="notify_enable">Notify me at prayer times</string>

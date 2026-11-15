@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">Seçimlər</string>
     <string name="account_tabMembership">Üzvlüklər</string>
     <string name="account_tabData">Məlumat və hesab</string>
-    <string name="account_unsaved">Yadda saxlanmamış dəyişiklikləriniz var. Yenə də çıxmaq istəyirsiniz?</string>
     <string name="account_mergedTitle">Hesablarınız birləşdirildi</string>
     <string name="account_mergedText">Bu e-poçtla açılmış %1$s hesablarınız birləşdirildi. Üzv nömrəniz %2$s. Hansı şifrə ilə davam etmək istəyirsiniz?</string>
     <string name="account_mergedChoice">%1$s şifrəm</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">Əvvəlcə məlumatlarınızı endirin</string>
     <string name="account_deleteKeptTitle">Silinməyənlər</string>
     <string name="account_deleteKept">Ehtiyat nüsxələrdəki surət ən gec 30 gün ərzində özü silinir (ehtiyat nüsxələr yalnız nasazlıqdan sonra bərpa üçündür). Hesabınızı yalnız Saat Tarix-dən silsəniz, digər Bumba məhsullarındakı hesablarınız və üzv nömrəniz orada qalır. Telefondakı ayarlarınız və qeydləriniz telefonda qalır.</string>
+    <string name="account_myAccount">Hesabım</string>
     <string name="common_done">Hazır</string>
     <string name="notify_heading">Vaxt bildirişləri</string>
     <string name="notify_enable">Namaz vaxtlarında bildiriş al</string>

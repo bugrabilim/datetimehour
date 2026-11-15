@@ -1,7 +1,8 @@
 /* Üyelik e-postaları (standart madde 7 ve "E-posta gönderimi"): Resend ile bilgi@bumbagroup.com'dan, gönderen adı
    ürünün adı. Yalnız standarttaki liste: doğrulama, şifre sıfırlama, "şifreniz değişti", e-posta değişikliği onayı,
    "hesabınız silindi", yeniden kayıt denemesi, askı, yeniden açılma, kalıcı kapatma, başka üründe üyelik açıldı ya da
-   kapandı, "hesaplarınız birleştirildi" (şifre seçimi bağlantısıyla) ve kutlama. Hoş geldin, tanıtım ya da bülten yok. Metin + HTML; açılma ve tıklama izleme yok (Resend'de alan
+   kapandı, "hesaplarınız birleştirildi" (şifre seçimi bağlantısıyla), kutlama ve "hesabınız açıldı" (e-posta doğrulanınca; sahibin
+   kararı, 15 Kasım 2026, standarda eklenmesi istendi: yalnız işlem bilgisi ve hesap bağlantısı). Hoş geldin, tanıtım ya da bülten yok. Metin + HTML; açılma ve tıklama izleme yok (Resend'de alan
    adı ayarı, kodda izleme parametresi açılmaz). Metinler 19 dilde (i18n/mail.json); İngilizceye düşülmez. */
 import crypto from "node:crypto";
 import { readFileSync } from "node:fs";
@@ -70,6 +71,7 @@ export function render(kind, lang, vars = {}, cfg = {}) {
   const subject = fill(k.subject);
   let body = fill(k.body);
   if (kind === "suspended" && vars.until) body += " " + fill(t.suspendedUntil);
+  if (kind === "opened" && vars.no != null) body += " " + fill(t.openedNo);
   const button = k.button && vars.url ? k.button : "";
   const ignore = ["verify", "reset", "changeOld"].includes(kind) ? t.ignore : "";
   const celebrate = kind === "celebrate";

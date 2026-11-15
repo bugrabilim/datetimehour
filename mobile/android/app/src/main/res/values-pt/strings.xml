@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">Preferências</string>
     <string name="account_tabMembership">Associações</string>
     <string name="account_tabData">Dados e conta</string>
-    <string name="account_unsaved">Você tem alterações não salvas. Deseja sair mesmo assim?</string>
     <string name="account_mergedTitle">Suas contas foram unificadas</string>
     <string name="account_mergedText">Suas contas de %1$s abertas com este e-mail foram unificadas. Seu número de membro é %2$s. Com qual senha você deseja continuar?</string>
     <string name="account_mergedChoice">Minha senha do %1$s</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">Baixe seus dados primeiro</string>
     <string name="account_deleteKeptTitle">O que não é excluído</string>
     <string name="account_deleteKept">A cópia nos backups é excluída automaticamente em no máximo 30 dias (os backups servem só para restaurar depois de uma falha). Se você excluir a conta só do Saat Tarih, suas contas e seu número de membro nos outros produtos Bumba continuam lá. As configurações e os registros no seu celular ficam no celular.</string>
+    <string name="account_myAccount">Minha conta</string>
     <string name="common_done">Pronto</string>
     <string name="notify_heading">Notificações de horários de oração</string>
     <string name="notify_enable">Avisar nos horários de oração</string>

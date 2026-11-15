@@ -81,9 +81,14 @@ test("yönlendirmeler: girişsiz hesap sayfası girişe, girişli giriş sayfas�
   r = await t.req("/hesap", { cookie });
   assert.equal(r.status, 200);
   assert.match(r.text, /<html lang="tr"/);
-  // Beş sekme (Profil 1-3, Güvenlik 4 ve 7, Tercihler 5-6, Üyelikler 8, Veri ve hesap 9-10), sonra rozetler ve kayıtlar
+  // Beş sekme (Profil 1-2, Güvenlik 3, 4 ve 7 [e-posta değişikliği güvenlikte; sahibin kararı, 15 Kasım 2026],
+  // Tercihler 5-6, Üyelikler 8, Veri ve hesap 9-10), sonra rozetler ve kayıtlar
   const sections = [...r.text.matchAll(/<span class="num">(\d+)<\/span>/g)].map((m) => Number(m[1]));
   assert.deepEqual(sections, [1, 2, 3, 4, 7, 5, 6, 8, 9, 10]);
+  const guv = r.text.slice(r.text.indexOf('id="tab-guvenlik"'), r.text.indexOf('id="tab-tercihler"'));
+  assert.match(guv, /data-form="email"/, "e-posta değişikliği Güvenlik sekmesinde");
+  // "İsteğe bağlı" notu profil formunun başında
+  assert.ok(r.text.indexOf("isteğe bağlıdır") < r.text.indexOf('name="ad"'));
   const tabs = [...r.text.matchAll(/data-tab="([a-z]+)"/g)].map((m) => m[1]);
   assert.deepEqual(tabs, ["profil", "guvenlik", "tercihler", "uyelikler", "veri", "rozetler"]);
   assert.match(r.text, /class="tabpanel on" id="tab-profil"/);
@@ -95,6 +100,13 @@ test("yönlendirmeler: girişsiz hesap sayfası girişe, girişli giriş sayfas�
   assert.match(r.text, /class="danger-zone"/);
   const g = await t.req("/hesap?sekme=guvenlik&dil=en", { cookie });
   assert.match(g.text, /class="tabpanel on" id="tab-guvenlik"/);
+  // Kaydedilmemiş değişiklik uyarısı yok (sahibin kararı, 15 Kasım 2026)
+  const js = (await t.req("/varlik/hesap.js")).text;
+  assert.doesNotMatch(js, /beforeunload|t\.unsaved/);
+  // Siteden "Hesabım" ile gelen dönüş yolu girişe taşınır; başka adrese yönlendirme kabul edilmez
+  assert.equal((await t.req("/hesap?dil=tr&donus=%2Fdunya-saatleri%2F")).headers.get("location"), "/giris?dil=tr&donus=%2Fdunya-saatleri%2F");
+  for (const bad of ["//kotu.example", "https://kotu.example/", "/\\kotu", "/a b"]) assert.equal((await t.req("/hesap?dil=tr&donus=" + encodeURIComponent(bad))).headers.get("location"), "/giris?dil=tr", bad);
+  assert.match((await t.req("/giris?dil=tr&donus=%2Fen%2F")).text, /"donus":"\/en\/"/);
   const b = await t.req("/hesap/rozetler?dil=en", { cookie });
   assert.equal(b.status, 301, "rozetler artık sekme");
   assert.equal(b.headers.get("location"), "/hesap?sekme=rozetler&dil=en");

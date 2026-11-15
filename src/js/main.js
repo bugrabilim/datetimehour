@@ -22,6 +22,10 @@
   }
   /* Kazanım rozetleri web'den kaldırıldı (30 Ekim 2026, sahibin kararı: yalnız mobil uygulamalarda); eski kayıt silinir */
   try { localStorage.removeItem("sth-rozet"); } catch (e) {}
+  /* "Hesabım" bağlantısı bulunduğu sayfayı taşır: girişten sonra üyelik sunucusu buraya döner (sahibin kararı, 15 Kasım 2026) */
+  doc.querySelectorAll("a[data-account-link]").forEach(function (a) {
+    try { var u = new URL(a.href); u.searchParams.set("donus", location.pathname + location.search); a.href = u.toString(); } catch (e) {}
+  });
   function tpl(s, vars) {
     return String(s).replace(/\{(\w+)\}/g, function (_, k) { return vars[k] != null ? vars[k] : ""; });
   }

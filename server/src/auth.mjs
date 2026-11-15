@@ -136,7 +136,9 @@ export function authOptions(cfg, pool, mailer, center) {
           result = "eposta";
         } else {
           const r = await center.kayit(user.email);
+          let no = null;
           if (r.ok && Number.isInteger(r.data?.no)) {
+            no = r.data.no;
             await pool.query(`update "user" set "uyeNo" = $1 where id = $2 and "uyeNo" is null`, [r.data.no, user.id]);
           } else if (r.status === 409 || r.status === 403) {
             // Adres başka bir Bumba ürününde kayıtlı (ya da yasaklı): bu hesap açılmaz
@@ -144,6 +146,8 @@ export function authOptions(cfg, pool, mailer, center) {
             result = r.status === 409 ? "bumba" : "kapali";
           }
           // Merkeze ulaşılamadıysa hesap açık kalır, numara temizlik görevinde alınır
+          // "Hesabınız açıldı" (sahibin kararı, 15 Kasım 2026): hesap gerçekten açıldıysa; numara alınamadıysa numarasız
+          if (result === "ok") await send("opened", user.email, user.lang, { url: page("/hesap", user.lang), no }).catch(() => {});
         }
         await pool.query(`update verify_ref set result = $1 where email = lower($2) and result is null`, [result, user.email]);
       },

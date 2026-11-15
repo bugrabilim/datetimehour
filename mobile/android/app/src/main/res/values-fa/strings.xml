@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">ترجیحات</string>
     <string name="account_tabMembership">عضویت‌ها</string>
     <string name="account_tabData">داده‌ها و حساب</string>
-    <string name="account_unsaved">تغییراتی دارید که ذخیره نشده است. باز هم خارج می‌شوید؟</string>
     <string name="account_mergedTitle">حساب‌های شما یکی شد</string>
     <string name="account_mergedText">حساب‌های %1$s شما که با این ایمیل باز شده بودند یکی شدند. شمارهٔ عضویت شما %2$s است. با کدام رمز عبور ادامه می‌دهید؟</string>
     <string name="account_mergedChoice">رمز عبور %1$s من</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">اول داده‌هایتان را بارگیری کنید</string>
     <string name="account_deleteKeptTitle">آنچه پاک نمی‌شود</string>
     <string name="account_deleteKept">نسخهٔ موجود در پشتیبان‌ها حداکثر تا 30 روز خودبه‌خود پاک می‌شود (پشتیبان‌ها فقط برای بازیابی پس از خرابی‌اند). اگر حساب را فقط از Saat Tarih پاک کنید، حساب‌ها و شمارهٔ عضویت شما در دیگر محصولات Bumba باقی می‌ماند. تنظیمات و ثبت‌های روی گوشی شما در گوشی می‌ماند.</string>
+    <string name="account_myAccount">حساب من</string>
     <string name="common_done">تمام</string>
     <string name="notify_heading">اعلان‌های اوقات شرعی</string>
     <string name="notify_enable">اعلان در وقت نماز</string>

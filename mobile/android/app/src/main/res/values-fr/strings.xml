@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">Préférences</string>
     <string name="account_tabMembership">Adhésions</string>
     <string name="account_tabData">Données et compte</string>
-    <string name="account_unsaved">Vous avez des modifications non enregistrées. Quitter quand même ?</string>
     <string name="account_mergedTitle">Vos comptes ont été fusionnés</string>
     <string name="account_mergedText">Vos comptes %1$s ouverts avec cette adresse e-mail ont été fusionnés. Votre numéro de membre est %2$s. Avec quel mot de passe souhaitez-vous continuer ?</string>
     <string name="account_mergedChoice">Mon mot de passe %1$s</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">Téléchargez d’abord vos données</string>
     <string name="account_deleteKeptTitle">Ce qui n’est pas supprimé</string>
     <string name="account_deleteKept">La copie dans les sauvegardes est supprimée automatiquement sous 30 jours au plus (les sauvegardes servent uniquement à restaurer après une panne). Si vous supprimez votre compte de Saat Tarih seulement, vos comptes et votre numéro de membre dans les autres produits Bumba y restent. Les réglages et enregistrements de votre téléphone restent sur le téléphone.</string>
+    <string name="account_myAccount">Mon compte</string>
     <string name="common_done">OK</string>
     <string name="notify_heading">Notifications des heures de prière</string>
     <string name="notify_enable">M’avertir aux heures de prière</string>

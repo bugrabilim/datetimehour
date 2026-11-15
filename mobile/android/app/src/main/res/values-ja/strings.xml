@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">設定</string>
     <string name="account_tabMembership">メンバーシップ</string>
     <string name="account_tabData">データとアカウント</string>
-    <string name="account_unsaved">保存していない変更があります。このまま移動しますか？</string>
     <string name="account_mergedTitle">アカウントが統合されました</string>
     <string name="account_mergedText">このメールアドレスで作成された%1$sのアカウントが統合されました。会員番号は%2$sです。どのパスワードで続けますか？</string>
     <string name="account_mergedChoice">%1$sのパスワード</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">先にデータをダウンロードしてください</string>
     <string name="account_deleteKeptTitle">削除されないもの</string>
     <string name="account_deleteKept">バックアップ内のコピーは最長30日以内に自動で削除されます（バックアップは障害後の復元にのみ使います）。Saat Tarih からのみ削除した場合、ほかの Bumba 製品のアカウントと会員番号はそのまま残ります。スマートフォン上の設定と記録はスマートフォンに残ります。</string>
+    <string name="account_myAccount">マイアカウント</string>
     <string name="common_done">完了</string>
     <string name="notify_heading">礼拝時刻の通知</string>
     <string name="notify_enable">礼拝時刻に通知する</string>

@@ -46,7 +46,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
   function page(res, { lang, title, body, data = {}, stats = true, theme = "system", status = 200 }) {
     const t = UI[lang];
     const dir = RTL.has(lang) ? "rtl" : "ltr";
-    const cfgData = { lang, t, siteUrl: cfg.siteUrl + (lang === "tr" ? "/" : `/${lang}/`), ...data, umami: stats ? { id: UMAMI_ID, host: new URL(cfg.publicUrl).host } : null, langs: LANGS.map((l) => [l, LANG_NAMES[l]]) };
+    const cfgData = { lang, t, siteUrl: cfg.siteUrl + (lang === "tr" ? "/" : `/${lang}/`), siteOrigin: cfg.siteUrl, ...data, umami: stats ? { id: UMAMI_ID, host: new URL(cfg.publicUrl).host } : null, langs: LANGS.map((l) => [l, LANG_NAMES[l]]) };
     const html = `<!doctype html><html lang="${lang}" dir="${dir}" data-theme="${esc(theme)}"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer"><title>${esc(title)} · ${PRODUCT_NAME}</title>
@@ -111,7 +111,10 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
       page(res, { ...base, title: t.title, body: shell(`<h1>${esc(t.title)}</h1>${msg(t.closed)}`), status: 503, stats: false });
       return true;
     }
-    const go = (to) => { res.writeHead(303, { Location: `${to}?dil=${lang}`, "Cache-Control": "no-store" }); res.end(); return true; };
+    // Siteden gelen "Hesabım" bağlantısı dönülecek sayfayı taşır (donus: sitede bir yol); girişten sonra oraya dönülür
+    // (sahibin kararı, 15 Kasım 2026). Yalnız sitenin kendi yolu kabul edilir, başka adrese yönlendirme yapılamaz.
+    const donus = safeReturn(url.searchParams.get("donus"));
+    const go = (to) => { res.writeHead(303, { Location: `${to}?dil=${lang}${donus ? `&donus=${encodeURIComponent(donus)}` : ""}`, "Cache-Control": "no-store" }); res.end(); return true; };
 
     if (p === "/") return go(user ? "/hesap" : "/giris");
     if ((p === "/giris" || p === "/kayit") && user && !url.searchParams.has("adim")) return go("/hesap");
@@ -120,7 +123,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
     const pw = `<div class="pw-rule" data-pw-rule><p>${esc(t.pwRuleTitle)}</p><ul>${["pwLen", "pwDigit", "pwCase", "pwSymbol"].map((k) => `<li data-rule="${k}">${esc(t[k])}</li>`).join("")}</ul></div>`;
 
     if (p === "/giris") {
-      page(res, { ...base, title: t.signIn, body: shell(`<h1>${esc(t.signIn)}</h1><p class="muted">${esc(t.intro)}</p>
+      page(res, { ...base, title: t.signIn, data: { ...base.data, donus }, body: shell(`<h1>${esc(t.signIn)}</h1><p class="muted">${esc(t.intro)}</p>
 <form data-form="signin" novalidate><label>${esc(t.email)}<input type="email" name="email" autocomplete="username" required></label>
 <label>${esc(t.password)}<input type="password" name="password" autocomplete="current-password" required></label>
 <div data-msg></div><button type="submit" class="primary">${esc(t.signIn)}</button></form>
@@ -215,7 +218,7 @@ ${token ? `<form data-form="reset" novalidate><label>${esc(t.newPassword)}<input
 <section class="card" data-choice hidden aria-live="polite"><h2>${esc(t.mergedTitle)}</h2><p data-choice-text></p><div class="choices" data-choice-buttons></div><p class="muted">${esc(t.mergedNote)}</p><div data-msg></div><p><button type="button" data-signout>${esc(t.signOut)}</button></p></section>
 <div data-account><p class="row"><button type="button" data-signout>${esc(t.signOut)}</button></p>
 <nav class="tabs" role="tablist" aria-label="${esc(t.title)}">${TABS.map((id) => `<a role="tab" id="tl-${id}" href="/hesap?sekme=${id}&amp;dil=${lang}" data-tab-link="${id}" aria-controls="tab-${id}" aria-selected="${id === tab}"${id === tab ? "" : ' tabindex="-1"'}>${esc(tabTitle[id])}</a>`).join("")}</nav>
-${panel("profil", `${sec("profil", 1, t.profile, `<form data-form="profile" novalidate>
+${panel("profil", `${sec("profil", 1, t.profile, `<form data-form="profile" novalidate><p class="muted">${linkify(t.optionalNote)}</p>
 <div class="photo"><img data-photo alt="" width="96" height="96" hidden><div><label class="button">${esc(t.photoChoose)}<input type="file" accept="image/*" data-photo-input class="sr"></label> <button type="button" data-photo-remove hidden>${esc(t.photoRemove)}</button><p class="muted">${esc(t.photoNote)}</p></div></div>
 <div class="grid"><label>${esc(t.firstName)}<input name="ad" maxlength="100" autocomplete="given-name"></label><label>${esc(t.lastName)}<input name="soyad" maxlength="100" autocomplete="family-name"></label>
 <label>${esc(t.nickname)}<input name="takmaAd" maxlength="60" autocomplete="nickname"></label>
@@ -226,13 +229,12 @@ ${panel("profil", `${sec("profil", 1, t.profile, `<form data-form="profile" nova
 <label>${esc(t.city)}<input name="sehir" maxlength="100" autocomplete="address-level2"></label><label>${esc(t.job)}<input name="meslek" maxlength="100" autocomplete="organization-title"></label></div>
 <label>${esc(t.about)}<textarea name="hakkimda" maxlength="160" rows="3" aria-describedby="about-h"></textarea></label><p class="muted" id="about-h">${esc(t.aboutHint)}</p>
 <fieldset><legend>${esc(t.social)}</legend><div data-social></div><button type="button" data-social-add>${esc(t.socialAdd)}</button></fieldset>
-<p class="muted">${linkify(t.optionalNote)}</p><div data-msg></div><button type="submit" class="primary">${esc(t.save)}</button></form>`)}
+<div data-msg></div><button type="submit" class="primary">${esc(t.save)}</button></form>`)}
 ${sec("gorunurluk", 2, t.visibility, `<form data-form="visibility" novalidate><label class="check"><input type="checkbox" name="acik"> ${esc(t.showProfile)}</label>
 <fieldset><legend>${esc(t.visibleFields)}</legend><div class="checks">${VISIBLE_FIELDS.map((f) => `<label class="check"><input type="checkbox" name="alan" value="${f}"> ${esc(t[FIELD_LABEL[f]])}</label>`).join("")}</div></fieldset>
 <p class="muted">${esc(t.emailNever)}</p><p data-display-name class="muted"></p><div data-msg></div><button type="submit" class="primary">${esc(t.save)}</button></form>`)}
-${sec("eposta", 3, t.emailSection, `<p data-email class="strong"></p><form data-form="email" novalidate><label>${esc(t.newEmail)}<input type="email" name="email" autocomplete="email" required></label><label>${esc(t.passwordCurrent)}<input type="password" name="current" autocomplete="current-password" required></label><div data-msg></div><button type="submit" class="primary">${esc(t.changeEmail)}</button></form>`)}
 `)}
-${panel("guvenlik", `${sec("sifre", 4, t.passwordSection, `<form data-form="password" novalidate><label>${esc(t.passwordCurrent)}<input type="password" name="current" autocomplete="current-password" required></label>
+${panel("guvenlik", `${sec("eposta", 3, t.emailSection, `<p data-email class="strong"></p><form data-form="email" novalidate><label>${esc(t.newEmail)}<input type="email" name="email" autocomplete="email" required></label><label>${esc(t.passwordCurrent)}<input type="password" name="current" autocomplete="current-password" required></label><div data-msg></div><button type="submit" class="primary">${esc(t.changeEmail)}</button></form>`)}${sec("sifre", 4, t.passwordSection, `<form data-form="password" novalidate><label>${esc(t.passwordCurrent)}<input type="password" name="current" autocomplete="current-password" required></label>
 <label>${esc(t.newPassword)}<input type="password" name="password" autocomplete="new-password" required></label>${pw}<div data-msg></div><button type="submit" class="primary">${esc(t.changePassword)}</button></form>`)}
 ${sec("oturumlar", 7, t.sessions, `<ul class="list" data-sessions></ul><button type="button" data-close-others>${esc(t.closeOthers)}</button>`)}
 `)}
@@ -257,6 +259,14 @@ ${panel("rozetler", `<section class="card" id="rozetler"><h3>${esc(t.badgesTitle
     }
     return false;
   };
+}
+
+/* Girişten sonra dönülecek site yolu: "/" ile başlar, "//" ya da "/\" ile başlamaz, kontrol karakteri ve boşluk yok */
+export function safeReturn(v) {
+  const x = String(v || "");
+  if (!x || x.length > 300 || !x.startsWith("/") || x.startsWith("//") || x.startsWith("/\\")) return null;
+  if (/[\s\\\u0000-\u001f\u007f]/.test(x)) return null;
+  return x;
 }
 
 const FIELD_LABEL = { ad: "firstName", soyad: "lastName", takmaAd: "nickname", foto: "photo", dogumTarihi: "birthDate", cinsiyet: "gender", telefon: "phone", ulke: "country", sehir: "city", meslek: "job", hakkimda: "about", sosyal: "social" };

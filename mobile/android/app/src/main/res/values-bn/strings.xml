@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">পছন্দ</string>
     <string name="account_tabMembership">সদস্যপদ</string>
     <string name="account_tabData">ডেটা ও অ্যাকাউন্ট</string>
-    <string name="account_unsaved">আপনার কিছু পরিবর্তন সংরক্ষণ করা হয়নি। তবুও কি বের হতে চান?</string>
     <string name="account_mergedTitle">আপনার অ্যাকাউন্টগুলো একত্র করা হয়েছে</string>
     <string name="account_mergedText">এই ইমেইল দিয়ে খোলা আপনার %1$s অ্যাকাউন্টগুলো একত্র করা হয়েছে। আপনার সদস্য নম্বর %2$s। কোন পাসওয়ার্ড দিয়ে চালিয়ে যেতে চান?</string>
     <string name="account_mergedChoice">আমার %1$s পাসওয়ার্ড</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">আগে আপনার ডেটা ডাউনলোড করুন</string>
     <string name="account_deleteKeptTitle">যা মুছে ফেলা হয় না</string>
     <string name="account_deleteKept">ব্যাকআপে থাকা কপি সর্বোচ্চ 30 দিনের মধ্যে আপনা-আপনি মুছে যায় (ব্যাকআপ কেবল কোনো ত্রুটির পর পুনরুদ্ধারের জন্য)। আপনি অ্যাকাউন্ট শুধু Saat Tarih থেকে মুছলে অন্যান্য Bumba পণ্যে আপনার অ্যাকাউন্ট ও সদস্য নম্বর সেখানেই থাকে। ফোনে থাকা আপনার সেটিংস ও রেকর্ড ফোনেই থাকে।</string>
+    <string name="account_myAccount">আমার অ্যাকাউন্ট</string>
     <string name="common_done">হয়ে গেছে</string>
     <string name="notify_heading">নামাজের সময়ের নোটিফিকেশন</string>
     <string name="notify_enable">নামাজের সময়ে আমাকে জানান</string>

@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">Einstellungen</string>
     <string name="account_tabMembership">Mitgliedschaften</string>
     <string name="account_tabData">Daten und Konto</string>
-    <string name="account_unsaved">Sie haben nicht gespeicherte Änderungen. Trotzdem verlassen?</string>
     <string name="account_mergedTitle">Ihre Konten wurden zusammengeführt</string>
     <string name="account_mergedText">Ihre mit dieser E-Mail-Adresse eröffneten Konten bei %1$s wurden zusammengeführt. Ihre Mitgliedsnummer ist %2$s. Mit welchem Passwort möchten Sie fortfahren?</string>
     <string name="account_mergedChoice">Mein %1$s-Passwort</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">Laden Sie zuerst Ihre Daten herunter</string>
     <string name="account_deleteKeptTitle">Was nicht gelöscht wird</string>
     <string name="account_deleteKept">Die Kopie in den Sicherungen wird spätestens nach 30 Tagen automatisch gelöscht (Sicherungen dienen nur der Wiederherstellung nach einem Ausfall). Wenn Sie Ihr Konto nur aus Saat Tarih löschen, bleiben Ihre Konten und Ihre Mitgliedsnummer in anderen Bumba-Produkten bestehen. Einstellungen und Einträge auf Ihrem Telefon bleiben auf dem Telefon.</string>
+    <string name="account_myAccount">Mein Konto</string>
     <string name="common_done">Fertig</string>
     <string name="notify_heading">Benachrichtigungen zu Gebetszeiten</string>
     <string name="notify_enable">Bei Gebetszeiten benachrichtigen</string>

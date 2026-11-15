@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">การตั้งค่า</string>
     <string name="account_tabMembership">สมาชิกภาพ</string>
     <string name="account_tabData">ข้อมูลและบัญชี</string>
-    <string name="account_unsaved">คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก ต้องการออกจากหน้านี้หรือไม่</string>
     <string name="account_mergedTitle">บัญชีของคุณถูกรวมแล้ว</string>
     <string name="account_mergedText">บัญชี %1$s ของคุณที่เปิดด้วยอีเมลนี้ถูกรวมกันแล้ว หมายเลขสมาชิกของคุณคือ %2$s คุณต้องการใช้รหัสผ่านใดต่อไป</string>
     <string name="account_mergedChoice">รหัสผ่าน %1$s ของฉัน</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">โปรดดาวน์โหลดข้อมูลของคุณก่อน</string>
     <string name="account_deleteKeptTitle">สิ่งที่ไม่ถูกลบ</string>
     <string name="account_deleteKept">สำเนาในข้อมูลสำรองจะถูกลบเองภายใน 30 วันเป็นอย่างช้า (ข้อมูลสำรองใช้กู้คืนหลังระบบขัดข้องเท่านั้น) หากคุณลบบัญชีจาก Saat Tarih เท่านั้น บัญชีและหมายเลขสมาชิกของคุณในผลิตภัณฑ์อื่นของ Bumba จะยังอยู่ การตั้งค่าและบันทึกบนโทรศัพท์ของคุณจะอยู่ในโทรศัพท์</string>
+    <string name="account_myAccount">บัญชีของฉัน</string>
     <string name="common_done">เสร็จ</string>
     <string name="notify_heading">การแจ้งเตือนเวลาละหมาด</string>
     <string name="notify_enable">แจ้งเตือนเมื่อถึงเวลาละหมาด</string>

@@ -287,12 +287,7 @@ private struct AccountSignedIn: View {
     @State private var choice: Account.Choice?
     /// Açık bölüm grubu (web'deki sekme; telefonda açılır kapanır): profil, guvenlik, tercihler, uyelikler, veri, rozetler
     @State private var open = "profil"
-    @State private var pendingOpen: String?
-    @State private var askLeave = false
-    @State private var profileBase = ""
     @State private var emailPassword = ""
-    @State private var celebrateSaved = true
-    @Environment(\.dismiss) private var dismiss
     @State private var photoItem: PhotosPickerItem?
     @State private var newEmail = ""
     @State private var current = ""
@@ -329,9 +324,7 @@ private struct AccountSignedIn: View {
         if r.ok, let o = Account.json(r.data) {
             data = o
             p = ProfileForm(o["profil"] as? [String: Any] ?? [:])
-            profileBase = Self.key(p.json)
             celebrate = o["kutlama"] as? Bool ?? true
-            celebrateSaved = celebrate
         } else { loadErr = r.err }
     }
 
@@ -339,18 +332,9 @@ private struct AccountSignedIn: View {
         (try? JSONSerialization.data(withJSONObject: o, options: [.sortedKeys])).map { String(decoding: $0, as: UTF8.self) } ?? ""
     }
 
-    /// Kaydedilmemiş değişiklik (madde 7): profil ve görünürlük kayıtlı hâlinden farklı, e-posta, şifre ya da kutlama alanı dolu
-    private var dirtyGroups: Set<String> {
-        var d = Set<String>()
-        if (!profileBase.isEmpty && Self.key(p.json) != profileBase) || !newEmail.isEmpty || !emailPassword.isEmpty { d.insert("profil") }
-        if !current.isEmpty || !next.isEmpty { d.insert("guvenlik") }
-        if celebrate != celebrateSaved { d.insert("tercihler") }
-        return d
-    }
-
+    /// Kaydedilmemiş değişiklik uyarısı yok (sahibin kararı, 15 Kasım 2026: bilgiler isteğe bağlı, çıkarken soru sorulmaz)
     private func toggle(_ id: String) {
-        let target = open == id ? "" : id
-        if dirtyGroups.contains(open) { pendingOpen = target } else { withAnimation { open = target } }
+        withAnimation { open = open == id ? "" : id }
     }
 
     /// Bölüm grubu başlığı; açıkken içerik ve altında ortak metinlere bağlantı
@@ -403,19 +387,6 @@ private struct AccountSignedIn: View {
                 products = await Account.shared.products()
                 await sync.sync()
             }
-            .modifier(leaveGuard)
-            .alert(A("unsaved"), isPresented: $askLeave) {
-                Button(A("yes"), role: .destructive) { dismiss() }
-                Button(A("no"), role: .cancel) {}
-            }
-            .alert(A("unsaved"), isPresented: Binding(get: { pendingOpen != nil }, set: { if !$0 { pendingOpen = nil } })) {
-                Button(A("yes"), role: .destructive) {
-                    let target = pendingOpen ?? ""
-                    newEmail = ""; emailPassword = ""; current = ""; next = ""
-                    Task { await load(); withAnimation { open = target } }
-                }
-                Button(A("no"), role: .cancel) {}
-            }
     }
 
     @ViewBuilder private var content: some View {
@@ -426,10 +397,10 @@ private struct AccountSignedIn: View {
                 choiceSection(ch)
             } else {
                 header(u)
-                // Beş grup web'deki sekmelerle aynı: Profil (1, 2, 3), Güvenlik (4, 7), Tercihler (5, 6), Üyelikler (8),
-                // Veri ve hesap (9, 10); sonra uygulamanın kullanım verisi (rozetler ve kayıtlar)
-                group("profil", A("tabProfile")) { profile; visibility; emailSection }
-                group("guvenlik", A("tabSecurity")) { passwordSection; sessionsSection }
+                // Beş grup web'deki sekmelerle aynı: Profil (1, 2), Güvenlik (3, 4, 7; e-posta değişikliği güvenlikte, sahibin
+                // kararı 15 Kasım 2026), Tercihler (5, 6), Üyelikler (8), Veri ve hesap (9, 10); sonra rozetler ve kayıtlar
+                group("profil", A("tabProfile")) { profile; visibility }
+                group("guvenlik", A("tabSecurity")) { emailSection; passwordSection; sessionsSection }
                 group("tercihler", A("tabPrefs")) { prefs; emails }
                 group("uyelikler", A("tabMembership")) { membership }
                 group("veri", A("tabData")) { downloadSection; deleteSection }
@@ -437,9 +408,6 @@ private struct AccountSignedIn: View {
             }
         }
     }
-
-    /// Kaydedilmemiş değişiklikle çıkış: geri düğmesi yerine soran düğme
-    private var leaveGuard: some ViewModifier { LeaveGuard(dirty: !dirtyGroups.isEmpty, ask: $askLeave) }
 
     @ViewBuilder private func choiceSection(_ ch: Account.Choice) -> some View {
         Section {
@@ -490,6 +458,8 @@ private struct AccountSignedIn: View {
     // 1. Profil
     @ViewBuilder private var profile: some View {
         Section {
+            // Alanların hepsi isteğe bağlı: not en başta (sahibin kararı, 15 Kasım 2026)
+            LinkedText(raw: A("optionalNote"))
             HStack(spacing: 14) {
                 if let img = p.foto.flatMap(Self.photoImage) {
                     Image(uiImage: img).resizable().scaledToFill().frame(width: 80, height: 80).clipShape(Circle())
@@ -557,8 +527,7 @@ private struct AccountSignedIn: View {
                 Button(A("socialRemove"), role: .destructive) { p.sosyal.remove(at: i) }
             }
             if p.sosyal.count < 8 { Button(A("socialAdd")) { p.sosyal.append((socialPlatforms[0], "")) } }
-            LinkedText(raw: A("optionalNote"))
-            Button(A("save")) { run("profile", { await Account.shared.saveProfile(p.json) }, ok: "account.saved") { _ in profileBase = Self.key(p.json) } }
+            Button(A("save")) { run("profile", { await Account.shared.saveProfile(p.json) }, ok: "account.saved") }
             message("profile")
         } header: { Text(A("social")) }
     }
@@ -609,7 +578,7 @@ private struct AccountSignedIn: View {
                     .tint(Theme.accent)
             }
             Text(T("account.displayName", shownName)).font(.footnote).foregroundStyle(Theme.muted)
-            Button(A("save")) { run("visibility", { await Account.shared.saveProfile(p.json) }, ok: "account.saved") { _ in profileBase = Self.key(p.json) } }
+            Button(A("save")) { run("visibility", { await Account.shared.saveProfile(p.json) }, ok: "account.saved") }
             message("visibility")
         } header: { Numbered(n: 2, title: A("visibility")) } footer: { Text(A("visibleFields") + "\n" + A("emailNever")) }
     }
@@ -668,7 +637,7 @@ private struct AccountSignedIn: View {
             Text(A("celebrateNote")).font(.footnote).foregroundStyle(Theme.muted)
             Button(A("save")) {
                 let on = celebrate
-                run("emails", { await Account.shared.setCelebrate(on) }, ok: "account.saved") { _ in celebrateSaved = on }
+                run("emails", { await Account.shared.setCelebrate(on) }, ok: "account.saved")
             }
             message("emails")
             VStack(alignment: .leading, spacing: 4) {
@@ -847,24 +816,6 @@ private struct AccountSignedIn: View {
             }
             Button(A("cancel"), role: .cancel) {}
         }
-    }
-}
-
-/// Kaydedilmemiş değişiklik varken geri düğmesi gizlenir, yerine soran düğme çıkar (kaydırarak geri dönme de kapanır)
-private struct LeaveGuard: ViewModifier {
-    let dirty: Bool
-    @Binding var ask: Bool
-    func body(content: Content) -> some View {
-        content
-            .navigationBarBackButtonHidden(dirty)
-            .toolbar {
-                if dirty {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button { ask = true } label: { Image(systemName: "chevron.backward").font(.headline) }
-                            .accessibilityLabel(A("back"))
-                    }
-                }
-            }
     }
 }
 

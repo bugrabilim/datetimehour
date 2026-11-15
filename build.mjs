@@ -586,7 +586,7 @@ ${(alt ? altLangs : LANGS).filter((l) => l !== lang).map((l) => `<meta property=
           <label class="set-look-row"><span>${esc(u.lookSep)}</span><select class="set-select" data-look="sep">${["colon", "dot"].map((k) => `<option value="${k}">${esc(u.lookSeps[k])}</option>`).join("")}</select></label>
           <label class="set-look-row"><span>${esc(u.lookWeekStart)}</span><select class="set-select" data-look="weekStart">${["mon", "sun", "sat"].map((k) => `<option value="${k}">${esc(u.lookWeekStarts[k])}</option>`).join("")}</select></label>
           <span class="set-sub">${esc(u.lookNote)}</span></div>
-        <a class="set-item" href="${HESAP_ORIGIN}/hesap?dil=${lang}">${ICON_USER}<span>${esc(ACCOUNT_UI[lang].title)}</span></a>
+        <a class="set-item" href="${HESAP_ORIGIN}/hesap?dil=${lang}" data-account-link>${ICON_USER}<span>${esc(ACCOUNT_UI[lang].myAccount)}</span></a>
         <a class="set-item" href="${ROUTES[lang].privacy}">${ICON_LOCK}<span>${esc(t.consent.privacy)}</span></a>
         <button type="button" class="set-item" data-consent-open aria-haspopup="dialog">${ICON_COOKIE}<span>${esc(t.consent.footerLink)}</span></button>
         <div class="set-item set-langrow">${ICON_GLOBE}<label class="sr-only" for="${sid}">${esc(u.langMenu)}</label><select id="${sid}" class="set-select" data-lang-select>${langOpts}</select></div>
@@ -901,7 +901,7 @@ function buildPrivacy(lang) {
 /* ---------- Hesap silme bilgi sayfası (standart 5.15 madde 7; 12 Kasım 2026) ----------
    Giriş, kayıt, şifre sıfırlama ve e-posta doğrulama sayfaları üyelik sunucusundadır (hesap.time.bumba.tr, server/src/web.mjs);
    eski statik /hesap/sifre/ ve /hesap/dogrulandi/ adresleri nginx'te oraya 301. Bu sayfa herkese açık kalır (mağazalar hesap
-   silme adresi ister). Ayarlar menüsündeki "Hesap" bağlantısının adı üyelik sunucusunun metinlerinden (server/i18n/account.json). */
+   silme adresi ister). Ayarlar menüsündeki "Hesabım" bağlantısının adı üyelik sunucusunun metinlerinden (server/i18n/account.json). */
 extendRoutes({
   tr: { accountDelete: "/hesap-silme/" },
   en: { accountDelete: "/en/account-deletion/" },

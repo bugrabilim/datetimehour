@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">ترجیحات</string>
     <string name="account_tabMembership">رکنیتیں</string>
     <string name="account_tabData">ڈیٹا اور اکاؤنٹ</string>
-    <string name="account_unsaved">آپ کی کچھ تبدیلیاں محفوظ نہیں ہوئیں۔ کیا آپ پھر بھی نکلنا چاہتے ہیں؟</string>
     <string name="account_mergedTitle">آپ کے اکاؤنٹ یکجا کر دیے گئے</string>
     <string name="account_mergedText">اس ای میل سے کھولے گئے آپ کے %1$s اکاؤنٹ یکجا کر دیے گئے ہیں۔ آپ کا رکنیت نمبر %2$s ہے۔ آپ کس پاس ورڈ کے ساتھ جاری رکھنا چاہیں گے؟</string>
     <string name="account_mergedChoice">میرا %1$s پاس ورڈ</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">پہلے اپنا ڈیٹا ڈاؤن لوڈ کریں</string>
     <string name="account_deleteKeptTitle">جو حذف نہیں ہوتا</string>
     <string name="account_deleteKept">بیک اپ میں موجود نقل زیادہ سے زیادہ 30 دن میں خود حذف ہو جاتی ہے (بیک اپ صرف خرابی کے بعد بحالی کے لیے ہیں)۔ اگر آپ اکاؤنٹ صرف Saat Tarih سے حذف کریں تو دوسری Bumba مصنوعات میں آپ کے اکاؤنٹ اور رکنیت نمبر وہیں رہتے ہیں۔ فون پر آپ کی ترتیبات اور ریکارڈ فون پر رہتے ہیں۔</string>
+    <string name="account_myAccount">میرا اکاؤنٹ</string>
     <string name="common_done">ہو گیا</string>
     <string name="notify_heading">اوقاتِ نماز کی اطلاعات</string>
     <string name="notify_enable">نماز کے وقت مجھے اطلاع دیں</string>

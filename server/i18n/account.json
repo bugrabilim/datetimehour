@@ -177,7 +177,6 @@
   "tabPrefs": "Tercihler",
   "tabMembership": "Üyelikler",
   "tabData": "Veri ve hesap",
-  "unsaved": "Kaydedilmemiş değişiklikleriniz var. Yine de çıkmak istiyor musunuz?",
   "mergedTitle": "Hesaplarınız birleştirildi",
   "mergedText": "Bu e-postayla açılmış {urunler} hesaplarınız birleştirildi. Üye numaranız {no}. Hangi şifreyle devam etmek istersiniz?",
   "mergedChoice": "{ad} şifrem",
@@ -186,7 +185,8 @@
   "mergedLinkBad": "Bu bağlantı geçersiz ya da süresi dolmuş. Seçimi giriş yaptıktan sonra hesap sayfanızda yapabilirsiniz.",
   "deleteDownloadFirst": "Önce verilerinizi indirin",
   "deleteKeptTitle": "Silinmeyenler",
-  "deleteKept": "Yedeklerdeki kopya en geç 30 gün içinde kendiliğinden silinir (yedekler yalnız bir arızadan sonra geri yüklemek içindir). Hesabınızı yalnız Saat Tarih'ten silerseniz öbür Bumba ürünlerindeki hesaplarınız ve üye numaranız orada kalır. Telefondaki ayarlarınız ve kayıtlarınız telefonda kalır."
+  "deleteKept": "Yedeklerdeki kopya en geç 30 gün içinde kendiliğinden silinir (yedekler yalnız bir arızadan sonra geri yüklemek içindir). Hesabınızı yalnız Saat Tarih'ten silerseniz öbür Bumba ürünlerindeki hesaplarınız ve üye numaranız orada kalır. Telefondaki ayarlarınız ve kayıtlarınız telefonda kalır.",
+  "myAccount": "Hesabım"
  },
  "en": {
   "title": "Account",
@@ -366,7 +366,6 @@
   "tabPrefs": "Preferences",
   "tabMembership": "Memberships",
   "tabData": "Data and account",
-  "unsaved": "You have unsaved changes. Leave anyway?",
   "mergedTitle": "Your accounts have been merged",
   "mergedText": "Your {urunler} accounts opened with this email have been merged. Your member number is {no}. Which password would you like to continue with?",
   "mergedChoice": "My {ad} password",
@@ -375,7 +374,8 @@
   "mergedLinkBad": "This link is invalid or has expired. You can make the choice on your account page after signing in.",
   "deleteDownloadFirst": "Download your data first",
   "deleteKeptTitle": "What is not deleted",
-  "deleteKept": "The copy in backups is deleted automatically within 30 days at most (backups are only for restoring after a failure). If you delete your account from Saat Tarih only, your accounts and member number in other Bumba products stay there. Settings and records on your phone stay on your phone."
+  "deleteKept": "The copy in backups is deleted automatically within 30 days at most (backups are only for restoring after a failure). If you delete your account from Saat Tarih only, your accounts and member number in other Bumba products stay there. Settings and records on your phone stay on your phone.",
+  "myAccount": "My account"
  },
  "de": {
   "title": "Konto",
@@ -555,7 +555,6 @@
   "tabPrefs": "Einstellungen",
   "tabMembership": "Mitgliedschaften",
   "tabData": "Daten und Konto",
-  "unsaved": "Sie haben nicht gespeicherte Änderungen. Trotzdem verlassen?",
   "mergedTitle": "Ihre Konten wurden zusammengeführt",
   "mergedText": "Ihre mit dieser E-Mail-Adresse eröffneten Konten bei {urunler} wurden zusammengeführt. Ihre Mitgliedsnummer ist {no}. Mit welchem Passwort möchten Sie fortfahren?",
   "mergedChoice": "Mein {ad}-Passwort",
@@ -564,7 +563,8 @@
   "mergedLinkBad": "Dieser Link ist ungültig oder abgelaufen. Sie können die Wahl nach der Anmeldung auf Ihrer Kontoseite treffen.",
   "deleteDownloadFirst": "Laden Sie zuerst Ihre Daten herunter",
   "deleteKeptTitle": "Was nicht gelöscht wird",
-  "deleteKept": "Die Kopie in den Sicherungen wird spätestens nach 30 Tagen automatisch gelöscht (Sicherungen dienen nur der Wiederherstellung nach einem Ausfall). Wenn Sie Ihr Konto nur aus Saat Tarih löschen, bleiben Ihre Konten und Ihre Mitgliedsnummer in anderen Bumba-Produkten bestehen. Einstellungen und Einträge auf Ihrem Telefon bleiben auf dem Telefon."
+  "deleteKept": "Die Kopie in den Sicherungen wird spätestens nach 30 Tagen automatisch gelöscht (Sicherungen dienen nur der Wiederherstellung nach einem Ausfall). Wenn Sie Ihr Konto nur aus Saat Tarih löschen, bleiben Ihre Konten und Ihre Mitgliedsnummer in anderen Bumba-Produkten bestehen. Einstellungen und Einträge auf Ihrem Telefon bleiben auf dem Telefon.",
+  "myAccount": "Mein Konto"
  },
  "az": {
   "title": "Hesab",
@@ -744,7 +744,6 @@
   "tabPrefs": "Seçimlər",
   "tabMembership": "Üzvlüklər",
   "tabData": "Məlumat və hesab",
-  "unsaved": "Yadda saxlanmamış dəyişiklikləriniz var. Yenə də çıxmaq istəyirsiniz?",
   "mergedTitle": "Hesablarınız birləşdirildi",
   "mergedText": "Bu e-poçtla açılmış {urunler} hesablarınız birləşdirildi. Üzv nömrəniz {no}. Hansı şifrə ilə davam etmək istəyirsiniz?",
   "mergedChoice": "{ad} şifrəm",
@@ -753,7 +752,8 @@
   "mergedLinkBad": "Bu keçid etibarsızdır və ya müddəti bitib. Seçimi daxil olduqdan sonra hesab səhifənizdə edə bilərsiniz.",
   "deleteDownloadFirst": "Əvvəlcə məlumatlarınızı endirin",
   "deleteKeptTitle": "Silinməyənlər",
-  "deleteKept": "Ehtiyat nüsxələrdəki surət ən gec 30 gün ərzində özü silinir (ehtiyat nüsxələr yalnız nasazlıqdan sonra bərpa üçündür). Hesabınızı yalnız Saat Tarix-dən silsəniz, digər Bumba məhsullarındakı hesablarınız və üzv nömrəniz orada qalır. Telefondakı ayarlarınız və qeydləriniz telefonda qalır."
+  "deleteKept": "Ehtiyat nüsxələrdəki surət ən gec 30 gün ərzində özü silinir (ehtiyat nüsxələr yalnız nasazlıqdan sonra bərpa üçündür). Hesabınızı yalnız Saat Tarix-dən silsəniz, digər Bumba məhsullarındakı hesablarınız və üzv nömrəniz orada qalır. Telefondakı ayarlarınız və qeydləriniz telefonda qalır.",
+  "myAccount": "Hesabım"
  },
  "ar": {
   "title": "الحساب",
@@ -933,7 +933,6 @@
   "tabPrefs": "التفضيلات",
   "tabMembership": "العضويات",
   "tabData": "البيانات والحساب",
-  "unsaved": "لديك تغييرات غير محفوظة. هل تريد المغادرة رغم ذلك؟",
   "mergedTitle": "تم دمج حساباتك",
   "mergedText": "تم دمج حساباتك في {urunler} التي أُنشئت بهذا البريد الإلكتروني. رقم عضويتك {no}. بأي كلمة مرور تريد المتابعة؟",
   "mergedChoice": "كلمة مروري في {ad}",
@@ -942,7 +941,8 @@
   "mergedLinkBad": "هذا الرابط غير صالح أو انتهت صلاحيته. يمكنك الاختيار من صفحة حسابك بعد تسجيل الدخول.",
   "deleteDownloadFirst": "نزّل بياناتك أولًا",
   "deleteKeptTitle": "ما لا يُحذف",
-  "deleteKept": "تُحذف النسخة الموجودة في النسخ الاحتياطية تلقائيًا خلال 30 يومًا على الأكثر (النسخ الاحتياطية للاستعادة بعد عطل فقط). إذا حذفت حسابك من Saat Tarih فقط، تبقى حساباتك ورقم عضويتك في منتجات Bumba الأخرى كما هي. وتبقى إعداداتك وسجلاتك التي على هاتفك في الهاتف."
+  "deleteKept": "تُحذف النسخة الموجودة في النسخ الاحتياطية تلقائيًا خلال 30 يومًا على الأكثر (النسخ الاحتياطية للاستعادة بعد عطل فقط). إذا حذفت حسابك من Saat Tarih فقط، تبقى حساباتك ورقم عضويتك في منتجات Bumba الأخرى كما هي. وتبقى إعداداتك وسجلاتك التي على هاتفك في الهاتف.",
+  "myAccount": "حسابي"
  },
  "id": {
   "title": "Akun",
@@ -1122,7 +1122,6 @@
   "tabPrefs": "Preferensi",
   "tabMembership": "Keanggotaan",
   "tabData": "Data dan akun",
-  "unsaved": "Ada perubahan yang belum disimpan. Tetap keluar?",
   "mergedTitle": "Akun Anda telah digabungkan",
   "mergedText": "Akun {urunler} Anda yang dibuat dengan email ini telah digabungkan. Nomor anggota Anda {no}. Kata sandi mana yang ingin Anda gunakan?",
   "mergedChoice": "Kata sandi {ad} saya",
@@ -1131,7 +1130,8 @@
   "mergedLinkBad": "Tautan ini tidak valid atau sudah kedaluwarsa. Anda dapat memilih di halaman akun setelah masuk.",
   "deleteDownloadFirst": "Unduh data Anda terlebih dahulu",
   "deleteKeptTitle": "Yang tidak dihapus",
-  "deleteKept": "Salinan di cadangan terhapus otomatis paling lambat dalam 30 hari (cadangan hanya untuk pemulihan setelah gangguan). Jika Anda menghapus akun hanya dari Saat Tarih, akun dan nomor anggota Anda di produk Bumba lain tetap ada. Pengaturan dan catatan di ponsel Anda tetap di ponsel."
+  "deleteKept": "Salinan di cadangan terhapus otomatis paling lambat dalam 30 hari (cadangan hanya untuk pemulihan setelah gangguan). Jika Anda menghapus akun hanya dari Saat Tarih, akun dan nomor anggota Anda di produk Bumba lain tetap ada. Pengaturan dan catatan di ponsel Anda tetap di ponsel.",
+  "myAccount": "Akun saya"
  },
  "ur": {
   "title": "اکاؤنٹ",
@@ -1311,7 +1311,6 @@
   "tabPrefs": "ترجیحات",
   "tabMembership": "رکنیتیں",
   "tabData": "ڈیٹا اور اکاؤنٹ",
-  "unsaved": "آپ کی کچھ تبدیلیاں محفوظ نہیں ہوئیں۔ کیا آپ پھر بھی نکلنا چاہتے ہیں؟",
   "mergedTitle": "آپ کے اکاؤنٹ یکجا کر دیے گئے",
   "mergedText": "اس ای میل سے کھولے گئے آپ کے {urunler} اکاؤنٹ یکجا کر دیے گئے ہیں۔ آپ کا رکنیت نمبر {no} ہے۔ آپ کس پاس ورڈ کے ساتھ جاری رکھنا چاہیں گے؟",
   "mergedChoice": "میرا {ad} پاس ورڈ",
@@ -1320,7 +1319,8 @@
   "mergedLinkBad": "یہ لنک درست نہیں یا اس کی مدت ختم ہو چکی ہے۔ آپ سائن ان کے بعد اپنے اکاؤنٹ کے صفحے پر انتخاب کر سکتے ہیں۔",
   "deleteDownloadFirst": "پہلے اپنا ڈیٹا ڈاؤن لوڈ کریں",
   "deleteKeptTitle": "جو حذف نہیں ہوتا",
-  "deleteKept": "بیک اپ میں موجود نقل زیادہ سے زیادہ 30 دن میں خود حذف ہو جاتی ہے (بیک اپ صرف خرابی کے بعد بحالی کے لیے ہیں)۔ اگر آپ اکاؤنٹ صرف Saat Tarih سے حذف کریں تو دوسری Bumba مصنوعات میں آپ کے اکاؤنٹ اور رکنیت نمبر وہیں رہتے ہیں۔ فون پر آپ کی ترتیبات اور ریکارڈ فون پر رہتے ہیں۔"
+  "deleteKept": "بیک اپ میں موجود نقل زیادہ سے زیادہ 30 دن میں خود حذف ہو جاتی ہے (بیک اپ صرف خرابی کے بعد بحالی کے لیے ہیں)۔ اگر آپ اکاؤنٹ صرف Saat Tarih سے حذف کریں تو دوسری Bumba مصنوعات میں آپ کے اکاؤنٹ اور رکنیت نمبر وہیں رہتے ہیں۔ فون پر آپ کی ترتیبات اور ریکارڈ فون پر رہتے ہیں۔",
+  "myAccount": "میرا اکاؤنٹ"
  },
  "fa": {
   "title": "حساب",
@@ -1500,7 +1500,6 @@
   "tabPrefs": "ترجیحات",
   "tabMembership": "عضویت‌ها",
   "tabData": "داده‌ها و حساب",
-  "unsaved": "تغییراتی دارید که ذخیره نشده است. باز هم خارج می‌شوید؟",
   "mergedTitle": "حساب‌های شما یکی شد",
   "mergedText": "حساب‌های {urunler} شما که با این ایمیل باز شده بودند یکی شدند. شمارهٔ عضویت شما {no} است. با کدام رمز عبور ادامه می‌دهید؟",
   "mergedChoice": "رمز عبور {ad} من",
@@ -1509,7 +1508,8 @@
   "mergedLinkBad": "این پیوند نامعتبر است یا مهلتش گذشته است. می‌توانید پس از ورود، در صفحهٔ حسابتان انتخاب کنید.",
   "deleteDownloadFirst": "اول داده‌هایتان را بارگیری کنید",
   "deleteKeptTitle": "آنچه پاک نمی‌شود",
-  "deleteKept": "نسخهٔ موجود در پشتیبان‌ها حداکثر تا 30 روز خودبه‌خود پاک می‌شود (پشتیبان‌ها فقط برای بازیابی پس از خرابی‌اند). اگر حساب را فقط از Saat Tarih پاک کنید، حساب‌ها و شمارهٔ عضویت شما در دیگر محصولات Bumba باقی می‌ماند. تنظیمات و ثبت‌های روی گوشی شما در گوشی می‌ماند."
+  "deleteKept": "نسخهٔ موجود در پشتیبان‌ها حداکثر تا 30 روز خودبه‌خود پاک می‌شود (پشتیبان‌ها فقط برای بازیابی پس از خرابی‌اند). اگر حساب را فقط از Saat Tarih پاک کنید، حساب‌ها و شمارهٔ عضویت شما در دیگر محصولات Bumba باقی می‌ماند. تنظیمات و ثبت‌های روی گوشی شما در گوشی می‌ماند.",
+  "myAccount": "حساب من"
  },
  "fr": {
   "title": "Compte",
@@ -1689,7 +1689,6 @@
   "tabPrefs": "Préférences",
   "tabMembership": "Adhésions",
   "tabData": "Données et compte",
-  "unsaved": "Vous avez des modifications non enregistrées. Quitter quand même ?",
   "mergedTitle": "Vos comptes ont été fusionnés",
   "mergedText": "Vos comptes {urunler} ouverts avec cette adresse e-mail ont été fusionnés. Votre numéro de membre est {no}. Avec quel mot de passe souhaitez-vous continuer ?",
   "mergedChoice": "Mon mot de passe {ad}",
@@ -1698,7 +1697,8 @@
   "mergedLinkBad": "Ce lien n’est pas valide ou a expiré. Vous pouvez faire ce choix sur votre page de compte après vous être connecté.",
   "deleteDownloadFirst": "Téléchargez d’abord vos données",
   "deleteKeptTitle": "Ce qui n’est pas supprimé",
-  "deleteKept": "La copie dans les sauvegardes est supprimée automatiquement sous 30 jours au plus (les sauvegardes servent uniquement à restaurer après une panne). Si vous supprimez votre compte de Saat Tarih seulement, vos comptes et votre numéro de membre dans les autres produits Bumba y restent. Les réglages et enregistrements de votre téléphone restent sur le téléphone."
+  "deleteKept": "La copie dans les sauvegardes est supprimée automatiquement sous 30 jours au plus (les sauvegardes servent uniquement à restaurer après une panne). Si vous supprimez votre compte de Saat Tarih seulement, vos comptes et votre numéro de membre dans les autres produits Bumba y restent. Les réglages et enregistrements de votre téléphone restent sur le téléphone.",
+  "myAccount": "Mon compte"
  },
  "ru": {
   "title": "Аккаунт",
@@ -1878,7 +1878,6 @@
   "tabPrefs": "Настройки",
   "tabMembership": "Членство",
   "tabData": "Данные и аккаунт",
-  "unsaved": "Есть несохранённые изменения. Всё равно выйти?",
   "mergedTitle": "Ваши аккаунты объединены",
   "mergedText": "Ваши аккаунты в {urunler}, открытые с этим адресом, объединены. Ваш номер участника — {no}. С каким паролем вы хотите продолжить?",
   "mergedChoice": "Мой пароль {ad}",
@@ -1887,7 +1886,8 @@
   "mergedLinkBad": "Ссылка недействительна или устарела. Сделать выбор можно на странице аккаунта после входа.",
   "deleteDownloadFirst": "Сначала скачайте свои данные",
   "deleteKeptTitle": "Что не удаляется",
-  "deleteKept": "Копия в резервных копиях удаляется автоматически не позже чем через 30 дней (резервные копии нужны только для восстановления после сбоя). Если вы удалите аккаунт только из Saat Tarih, ваши аккаунты и номер участника в других продуктах Bumba останутся. Настройки и записи на телефоне остаются на телефоне."
+  "deleteKept": "Копия в резервных копиях удаляется автоматически не позже чем через 30 дней (резервные копии нужны только для восстановления после сбоя). Если вы удалите аккаунт только из Saat Tarih, ваши аккаунты и номер участника в других продуктах Bumba останутся. Настройки и записи на телефоне остаются на телефоне.",
+  "myAccount": "Мой аккаунт"
  },
  "ja": {
   "title": "アカウント",
@@ -2067,7 +2067,6 @@
   "tabPrefs": "設定",
   "tabMembership": "メンバーシップ",
   "tabData": "データとアカウント",
-  "unsaved": "保存していない変更があります。このまま移動しますか？",
   "mergedTitle": "アカウントが統合されました",
   "mergedText": "このメールアドレスで作成された{urunler}のアカウントが統合されました。会員番号は{no}です。どのパスワードで続けますか？",
   "mergedChoice": "{ad}のパスワード",
@@ -2076,7 +2075,8 @@
   "mergedLinkBad": "このリンクは無効か、有効期限が切れています。ログイン後にアカウントページで選ぶことができます。",
   "deleteDownloadFirst": "先にデータをダウンロードしてください",
   "deleteKeptTitle": "削除されないもの",
-  "deleteKept": "バックアップ内のコピーは最長30日以内に自動で削除されます（バックアップは障害後の復元にのみ使います）。Saat Tarih からのみ削除した場合、ほかの Bumba 製品のアカウントと会員番号はそのまま残ります。スマートフォン上の設定と記録はスマートフォンに残ります。"
+  "deleteKept": "バックアップ内のコピーは最長30日以内に自動で削除されます（バックアップは障害後の復元にのみ使います）。Saat Tarih からのみ削除した場合、ほかの Bumba 製品のアカウントと会員番号はそのまま残ります。スマートフォン上の設定と記録はスマートフォンに残ります。",
+  "myAccount": "マイアカウント"
  },
  "ko": {
   "title": "계정",
@@ -2256,7 +2256,6 @@
   "tabPrefs": "환경설정",
   "tabMembership": "멤버십",
   "tabData": "데이터 및 계정",
-  "unsaved": "저장하지 않은 변경 사항이 있습니다. 그래도 나가시겠습니까?",
   "mergedTitle": "계정이 통합되었습니다",
   "mergedText": "이 이메일로 만든 {urunler} 계정이 통합되었습니다. 회원 번호는 {no}입니다. 어떤 비밀번호로 계속하시겠습니까?",
   "mergedChoice": "내 {ad} 비밀번호",
@@ -2265,7 +2264,8 @@
   "mergedLinkBad": "이 링크는 유효하지 않거나 만료되었습니다. 로그인한 뒤 계정 페이지에서 선택하실 수 있습니다.",
   "deleteDownloadFirst": "먼저 데이터를 내려받으세요",
   "deleteKeptTitle": "삭제되지 않는 것",
-  "deleteKept": "백업에 있는 사본은 늦어도 30일 안에 자동으로 삭제됩니다(백업은 장애 후 복구에만 쓰입니다). Saat Tarih에서만 계정을 삭제하시면 다른 Bumba 제품의 계정과 회원 번호는 그대로 남습니다. 휴대전화의 설정과 기록은 휴대전화에 남습니다."
+  "deleteKept": "백업에 있는 사본은 늦어도 30일 안에 자동으로 삭제됩니다(백업은 장애 후 복구에만 쓰입니다). Saat Tarih에서만 계정을 삭제하시면 다른 Bumba 제품의 계정과 회원 번호는 그대로 남습니다. 휴대전화의 설정과 기록은 휴대전화에 남습니다.",
+  "myAccount": "내 계정"
  },
  "zh": {
   "title": "账户",
@@ -2445,7 +2445,6 @@
   "tabPrefs": "偏好设置",
   "tabMembership": "会员资格",
   "tabData": "数据与账户",
-  "unsaved": "您有未保存的更改。仍要离开吗？",
   "mergedTitle": "您的账户已合并",
   "mergedText": "您用此邮箱在{urunler}开设的账户已合并。您的会员编号是 {no}。您想使用哪个密码继续？",
   "mergedChoice": "我的{ad}密码",
@@ -2454,7 +2453,8 @@
   "mergedLinkBad": "此链接无效或已过期。您可以在登录后于账户页面进行选择。",
   "deleteDownloadFirst": "请先下载您的数据",
   "deleteKeptTitle": "不会删除的内容",
-  "deleteKept": "备份中的副本最迟在 30 天内自动删除（备份仅用于故障后的恢复）。如果您只从 Saat Tarih 删除账户，您在其他 Bumba 产品中的账户和会员编号仍会保留。手机上的设置和记录留在手机上。"
+  "deleteKept": "备份中的副本最迟在 30 天内自动删除（备份仅用于故障后的恢复）。如果您只从 Saat Tarih 删除账户，您在其他 Bumba 产品中的账户和会员编号仍会保留。手机上的设置和记录留在手机上。",
+  "myAccount": "我的账户"
  },
  "fil": {
   "title": "Account",
@@ -2634,7 +2634,6 @@
   "tabPrefs": "Mga kagustuhan",
   "tabMembership": "Mga membership",
   "tabData": "Data at account",
-  "unsaved": "May mga pagbabago po kayong hindi pa nase-save. Aalis pa rin po ba kayo?",
   "mergedTitle": "Pinagsama na po ang inyong mga account",
   "mergedText": "Pinagsama na po ang inyong mga account sa {urunler} na binuksan gamit ang email na ito. Ang inyong member number ay {no}. Aling password po ang gusto ninyong gamitin?",
   "mergedChoice": "Ang aking password sa {ad}",
@@ -2643,7 +2642,8 @@
   "mergedLinkBad": "Hindi na po wasto o expired na ang link na ito. Makakapili kayo sa inyong account page pagkatapos mag-sign in.",
   "deleteDownloadFirst": "I-download po muna ang inyong data",
   "deleteKeptTitle": "Ang hindi binubura",
-  "deleteKept": "Kusang nabubura ang kopya sa mga backup sa loob ng hindi hihigit sa 30 araw (para lang sa pagbabalik pagkatapos ng sira ang mga backup). Kung sa Saat Tarih lang ninyo buburahin ang account, mananatili ang inyong mga account at member number sa ibang produkto ng Bumba. Mananatili sa telepono ang mga setting at talaan sa inyong telepono."
+  "deleteKept": "Kusang nabubura ang kopya sa mga backup sa loob ng hindi hihigit sa 30 araw (para lang sa pagbabalik pagkatapos ng sira ang mga backup). Kung sa Saat Tarih lang ninyo buburahin ang account, mananatili ang inyong mga account at member number sa ibang produkto ng Bumba. Mananatili sa telepono ang mga setting at talaan sa inyong telepono.",
+  "myAccount": "Aking account"
  },
  "th": {
   "title": "บัญชี",
@@ -2823,7 +2823,6 @@
   "tabPrefs": "การตั้งค่า",
   "tabMembership": "สมาชิกภาพ",
   "tabData": "ข้อมูลและบัญชี",
-  "unsaved": "คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก ต้องการออกจากหน้านี้หรือไม่",
   "mergedTitle": "บัญชีของคุณถูกรวมแล้ว",
   "mergedText": "บัญชี {urunler} ของคุณที่เปิดด้วยอีเมลนี้ถูกรวมกันแล้ว หมายเลขสมาชิกของคุณคือ {no} คุณต้องการใช้รหัสผ่านใดต่อไป",
   "mergedChoice": "รหัสผ่าน {ad} ของฉัน",
@@ -2832,7 +2831,8 @@
   "mergedLinkBad": "ลิงก์นี้ไม่ถูกต้องหรือหมดอายุแล้ว คุณเลือกได้ที่หน้าบัญชีหลังเข้าสู่ระบบ",
   "deleteDownloadFirst": "โปรดดาวน์โหลดข้อมูลของคุณก่อน",
   "deleteKeptTitle": "สิ่งที่ไม่ถูกลบ",
-  "deleteKept": "สำเนาในข้อมูลสำรองจะถูกลบเองภายใน 30 วันเป็นอย่างช้า (ข้อมูลสำรองใช้กู้คืนหลังระบบขัดข้องเท่านั้น) หากคุณลบบัญชีจาก Saat Tarih เท่านั้น บัญชีและหมายเลขสมาชิกของคุณในผลิตภัณฑ์อื่นของ Bumba จะยังอยู่ การตั้งค่าและบันทึกบนโทรศัพท์ของคุณจะอยู่ในโทรศัพท์"
+  "deleteKept": "สำเนาในข้อมูลสำรองจะถูกลบเองภายใน 30 วันเป็นอย่างช้า (ข้อมูลสำรองใช้กู้คืนหลังระบบขัดข้องเท่านั้น) หากคุณลบบัญชีจาก Saat Tarih เท่านั้น บัญชีและหมายเลขสมาชิกของคุณในผลิตภัณฑ์อื่นของ Bumba จะยังอยู่ การตั้งค่าและบันทึกบนโทรศัพท์ของคุณจะอยู่ในโทรศัพท์",
+  "myAccount": "บัญชีของฉัน"
  },
  "es": {
   "title": "Cuenta",
@@ -3012,7 +3012,6 @@
   "tabPrefs": "Preferencias",
   "tabMembership": "Membresías",
   "tabData": "Datos y cuenta",
-  "unsaved": "Tiene cambios sin guardar. ¿Desea salir de todos modos?",
   "mergedTitle": "Sus cuentas se han unido",
   "mergedText": "Sus cuentas de {urunler} abiertas con este correo se han unido. Su número de miembro es {no}. ¿Con qué contraseña desea continuar?",
   "mergedChoice": "Mi contraseña de {ad}",
@@ -3021,7 +3020,8 @@
   "mergedLinkBad": "Este enlace no es válido o ha caducado. Puede elegir en la página de su cuenta después de iniciar sesión.",
   "deleteDownloadFirst": "Primero descargue sus datos",
   "deleteKeptTitle": "Lo que no se elimina",
-  "deleteKept": "La copia en las copias de seguridad se elimina sola en un plazo máximo de 30 días (las copias de seguridad solo sirven para restaurar tras una avería). Si elimina su cuenta solo de Saat Tarih, sus cuentas y su número de miembro en los demás productos de Bumba se mantienen. Los ajustes y registros de su teléfono se quedan en el teléfono."
+  "deleteKept": "La copia en las copias de seguridad se elimina sola en un plazo máximo de 30 días (las copias de seguridad solo sirven para restaurar tras una avería). Si elimina su cuenta solo de Saat Tarih, sus cuentas y su número de miembro en los demás productos de Bumba se mantienen. Los ajustes y registros de su teléfono se quedan en el teléfono.",
+  "myAccount": "Mi cuenta"
  },
  "pt": {
   "title": "Conta",
@@ -3201,7 +3201,6 @@
   "tabPrefs": "Preferências",
   "tabMembership": "Associações",
   "tabData": "Dados e conta",
-  "unsaved": "Você tem alterações não salvas. Deseja sair mesmo assim?",
   "mergedTitle": "Suas contas foram unificadas",
   "mergedText": "Suas contas de {urunler} abertas com este e-mail foram unificadas. Seu número de membro é {no}. Com qual senha você deseja continuar?",
   "mergedChoice": "Minha senha do {ad}",
@@ -3210,7 +3209,8 @@
   "mergedLinkBad": "Este link é inválido ou expirou. Você pode escolher na página da sua conta depois de entrar.",
   "deleteDownloadFirst": "Baixe seus dados primeiro",
   "deleteKeptTitle": "O que não é excluído",
-  "deleteKept": "A cópia nos backups é excluída automaticamente em no máximo 30 dias (os backups servem só para restaurar depois de uma falha). Se você excluir a conta só do Saat Tarih, suas contas e seu número de membro nos outros produtos Bumba continuam lá. As configurações e os registros no seu celular ficam no celular."
+  "deleteKept": "A cópia nos backups é excluída automaticamente em no máximo 30 dias (os backups servem só para restaurar depois de uma falha). Se você excluir a conta só do Saat Tarih, suas contas e seu número de membro nos outros produtos Bumba continuam lá. As configurações e os registros no seu celular ficam no celular.",
+  "myAccount": "Minha conta"
  },
  "hi": {
   "title": "खाता",
@@ -3390,7 +3390,6 @@
   "tabPrefs": "पसंद",
   "tabMembership": "सदस्यताएँ",
   "tabData": "डेटा और खाता",
-  "unsaved": "आपके कुछ बदलाव सहेजे नहीं गए हैं। क्या आप फिर भी बाहर जाना चाहते हैं?",
   "mergedTitle": "आपके खाते जोड़ दिए गए",
   "mergedText": "इस ईमेल से खोले गए आपके {urunler} खाते जोड़ दिए गए हैं। आपका सदस्य नंबर {no} है। आप किस पासवर्ड से आगे बढ़ना चाहेंगे?",
   "mergedChoice": "मेरा {ad} पासवर्ड",
@@ -3399,7 +3398,8 @@
   "mergedLinkBad": "यह लिंक अमान्य है या इसकी अवधि खत्म हो गई है। आप साइन इन के बाद अपने खाते के पेज पर चुन सकते हैं।",
   "deleteDownloadFirst": "पहले अपना डेटा डाउनलोड करें",
   "deleteKeptTitle": "जो हटाया नहीं जाता",
-  "deleteKept": "बैकअप में रखी प्रति अधिकतम 30 दिनों में अपने-आप हट जाती है (बैकअप केवल किसी खराबी के बाद बहाली के लिए हैं)। यदि आप खाता सिर्फ़ Saat Tarih से हटाते हैं, तो दूसरे Bumba उत्पादों में आपके खाते और सदस्य नंबर वहीं रहते हैं। फ़ोन पर आपकी सेटिंग्स और रिकॉर्ड फ़ोन पर रहते हैं।"
+  "deleteKept": "बैकअप में रखी प्रति अधिकतम 30 दिनों में अपने-आप हट जाती है (बैकअप केवल किसी खराबी के बाद बहाली के लिए हैं)। यदि आप खाता सिर्फ़ Saat Tarih से हटाते हैं, तो दूसरे Bumba उत्पादों में आपके खाते और सदस्य नंबर वहीं रहते हैं। फ़ोन पर आपकी सेटिंग्स और रिकॉर्ड फ़ोन पर रहते हैं।",
+  "myAccount": "मेरा खाता"
  },
  "bn": {
   "title": "অ্যাকাউন্ট",
@@ -3579,7 +3579,6 @@
   "tabPrefs": "পছন্দ",
   "tabMembership": "সদস্যপদ",
   "tabData": "ডেটা ও অ্যাকাউন্ট",
-  "unsaved": "আপনার কিছু পরিবর্তন সংরক্ষণ করা হয়নি। তবুও কি বের হতে চান?",
   "mergedTitle": "আপনার অ্যাকাউন্টগুলো একত্র করা হয়েছে",
   "mergedText": "এই ইমেইল দিয়ে খোলা আপনার {urunler} অ্যাকাউন্টগুলো একত্র করা হয়েছে। আপনার সদস্য নম্বর {no}। কোন পাসওয়ার্ড দিয়ে চালিয়ে যেতে চান?",
   "mergedChoice": "আমার {ad} পাসওয়ার্ড",
@@ -3588,6 +3587,7 @@
   "mergedLinkBad": "এই লিংকটি অবৈধ বা মেয়াদ শেষ হয়ে গেছে। সাইন ইন করার পর অ্যাকাউন্ট পাতায় বেছে নিতে পারেন।",
   "deleteDownloadFirst": "আগে আপনার ডেটা ডাউনলোড করুন",
   "deleteKeptTitle": "যা মুছে ফেলা হয় না",
-  "deleteKept": "ব্যাকআপে থাকা কপি সর্বোচ্চ 30 দিনের মধ্যে আপনা-আপনি মুছে যায় (ব্যাকআপ কেবল কোনো ত্রুটির পর পুনরুদ্ধারের জন্য)। আপনি অ্যাকাউন্ট শুধু Saat Tarih থেকে মুছলে অন্যান্য Bumba পণ্যে আপনার অ্যাকাউন্ট ও সদস্য নম্বর সেখানেই থাকে। ফোনে থাকা আপনার সেটিংস ও রেকর্ড ফোনেই থাকে।"
+  "deleteKept": "ব্যাকআপে থাকা কপি সর্বোচ্চ 30 দিনের মধ্যে আপনা-আপনি মুছে যায় (ব্যাকআপ কেবল কোনো ত্রুটির পর পুনরুদ্ধারের জন্য)। আপনি অ্যাকাউন্ট শুধু Saat Tarih থেকে মুছলে অন্যান্য Bumba পণ্যে আপনার অ্যাকাউন্ট ও সদস্য নম্বর সেখানেই থাকে। ফোনে থাকা আপনার সেটিংস ও রেকর্ড ফোনেই থাকে।",
+  "myAccount": "আমার অ্যাকাউন্ট"
  }
 }

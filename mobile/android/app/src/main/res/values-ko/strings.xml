@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">환경설정</string>
     <string name="account_tabMembership">멤버십</string>
     <string name="account_tabData">데이터 및 계정</string>
-    <string name="account_unsaved">저장하지 않은 변경 사항이 있습니다. 그래도 나가시겠습니까?</string>
     <string name="account_mergedTitle">계정이 통합되었습니다</string>
     <string name="account_mergedText">이 이메일로 만든 %1$s 계정이 통합되었습니다. 회원 번호는 %2$s입니다. 어떤 비밀번호로 계속하시겠습니까?</string>
     <string name="account_mergedChoice">내 %1$s 비밀번호</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">먼저 데이터를 내려받으세요</string>
     <string name="account_deleteKeptTitle">삭제되지 않는 것</string>
     <string name="account_deleteKept">백업에 있는 사본은 늦어도 30일 안에 자동으로 삭제됩니다(백업은 장애 후 복구에만 쓰입니다). Saat Tarih에서만 계정을 삭제하시면 다른 Bumba 제품의 계정과 회원 번호는 그대로 남습니다. 휴대전화의 설정과 기록은 휴대전화에 남습니다.</string>
+    <string name="account_myAccount">내 계정</string>
     <string name="common_done">완료</string>
     <string name="notify_heading">기도 시간 알림</string>
     <string name="notify_enable">기도 시간에 알림 받기</string>

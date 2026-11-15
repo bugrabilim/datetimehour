@@ -1933,7 +1933,6 @@
     <string name="account_tabPrefs">Настройки</string>
     <string name="account_tabMembership">Членство</string>
     <string name="account_tabData">Данные и аккаунт</string>
-    <string name="account_unsaved">Есть несохранённые изменения. Всё равно выйти?</string>
     <string name="account_mergedTitle">Ваши аккаунты объединены</string>
     <string name="account_mergedText">Ваши аккаунты в %1$s, открытые с этим адресом, объединены. Ваш номер участника — %2$s. С каким паролем вы хотите продолжить?</string>
     <string name="account_mergedChoice">Мой пароль %1$s</string>
@@ -1943,6 +1942,7 @@
     <string name="account_deleteDownloadFirst">Сначала скачайте свои данные</string>
     <string name="account_deleteKeptTitle">Что не удаляется</string>
     <string name="account_deleteKept">Копия в резервных копиях удаляется автоматически не позже чем через 30 дней (резервные копии нужны только для восстановления после сбоя). Если вы удалите аккаунт только из Saat Tarih, ваши аккаунты и номер участника в других продуктах Bumba останутся. Настройки и записи на телефоне остаются на телефоне.</string>
+    <string name="account_myAccount">Мой аккаунт</string>
     <string name="common_done">Готово</string>
     <string name="notify_heading">Уведомления о времени намаза</string>
     <string name="notify_enable">Уведомлять о времени намаза</string>

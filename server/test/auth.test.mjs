@@ -61,6 +61,13 @@ test("kayıt, doğrulama ve üye numarası; onay kaydı ve sonuç sayfası", asy
   assert.equal(t.center.find("kayit")[0].site, "saat-tarih");
   const ref = (await t.q(`select result from verify_ref where k = $1`, [k])).rows[0];
   assert.equal(ref.result, "ok");
+  // "Hesabınız açıldı" (sahibin kararı, 15 Kasım 2026): üyenin dilinde, numarasıyla, hesap bağlantısıyla
+  const o = t.last("opened", "ali@example.com");
+  assert.ok(o, "hesap açılınca e-posta gider");
+  assert.equal(o.lang, "tr");
+  assert.equal(o.subject, "Saat Tarih hesabınız açıldı");
+  assert.match(o.text, /Bumba üye numaranız: 10458\./);
+  assert.equal(o.vars.url, t.url + "/hesap?dil=tr");
 });
 
 test("oturum: web 30 gün, uygulama 90 gün; oturum kaydında IP yok", async () => {
@@ -108,6 +115,7 @@ test("doğrulama anında adres başka üründe çıkarsa hesap açılmaz, sonuç
   await t.req(vu.pathname + vu.search);
   assert.equal((await t.q(`select count(*)::int n from "user" where email = 'gec@example.com'`)).rows[0].n, 0);
   assert.equal((await t.q(`select result from verify_ref where k = $1`, [k])).rows[0].result, "bumba");
+  assert.equal(t.last("opened", "gec@example.com"), undefined, "hesap açılmadıysa \"açıldı\" e-postası yok");
 });
 
 test("yasaklı adresle kayıt: hesap açılmaz, yanıt sıradan kayıttaki gibi", async () => {
@@ -181,6 +189,7 @@ test("e-posta değiştirme: önce ortak servise sorulur, eski adrese onay, yeni 
   assert.equal(g.json.user.email, "ali.yeni@example.com");
   const last = t.center.find("guncelle").at(-1);
   assert.deepEqual(last.body.degisiklik, { eposta: "ali.yeni@example.com", epostaDogrulandi: true });
+  assert.equal(t.last("opened", "ali.yeni@example.com"), undefined, "e-posta değişikliğinde \"açıldı\" e-postası yok");
 });
 
 test("deneme sınırları: giriş dakikada 5, kayıt 5 dakikada 3", async () => {

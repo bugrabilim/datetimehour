@@ -229909,125 +229909,6 @@
         }
       }
     },
-    "account.unsaved": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaydedilmemiş değişiklikleriniz var. Yine de çıkmak istiyor musunuz?"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You have unsaved changes. Leave anyway?"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sie haben nicht gespeicherte Änderungen. Trotzdem verlassen?"
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yadda saxlanmamış dəyişiklikləriniz var. Yenə də çıxmaq istəyirsiniz?"
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "لديك تغييرات غير محفوظة. هل تريد المغادرة رغم ذلك؟"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ada perubahan yang belum disimpan. Tetap keluar?"
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "آپ کی کچھ تبدیلیاں محفوظ نہیں ہوئیں۔ کیا آپ پھر بھی نکلنا چاہتے ہیں؟"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "تغییراتی دارید که ذخیره نشده است. باز هم خارج می‌شوید؟"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vous avez des modifications non enregistrées. Quitter quand même ?"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Есть несохранённые изменения. Всё равно выйти?"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "保存していない変更があります。このまま移動しますか？"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "저장하지 않은 변경 사항이 있습니다. 그래도 나가시겠습니까?"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "您有未保存的更改。仍要离开吗？"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "May mga pagbabago po kayong hindi pa nase-save. Aalis pa rin po ba kayo?"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก ต้องการออกจากหน้านี้หรือไม่"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tiene cambios sin guardar. ¿Desea salir de todos modos?"
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Você tem alterações não salvas. Deseja sair mesmo assim?"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "आपके कुछ बदलाव सहेजे नहीं गए हैं। क्या आप फिर भी बाहर जाना चाहते हैं?"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "আপনার কিছু পরিবর্তন সংরক্ষণ করা হয়নি। তবুও কি বের হতে চান?"
-          }
-        }
-      }
-    },
     "account.mergedTitle": {
       "extractionState": "manual",
       "localizations": {
@@ -231095,6 +230976,125 @@
           "stringUnit": {
             "state": "translated",
             "value": "ব্যাকআপে থাকা কপি সর্বোচ্চ 30 দিনের মধ্যে আপনা-আপনি মুছে যায় (ব্যাকআপ কেবল কোনো ত্রুটির পর পুনরুদ্ধারের জন্য)। আপনি অ্যাকাউন্ট শুধু Saat Tarih থেকে মুছলে অন্যান্য Bumba পণ্যে আপনার অ্যাকাউন্ট ও সদস্য নম্বর সেখানেই থাকে। ফোনে থাকা আপনার সেটিংস ও রেকর্ড ফোনেই থাকে।"
+          }
+        }
+      }
+    },
+    "account.myAccount": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesabım"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My account"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mein Konto"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesabım"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حسابي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akun saya"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "میرا اکاؤنٹ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حساب من"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mon compte"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мой аккаунт"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "マイアカウント"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "내 계정"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我的账户"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aking account"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บัญชีของฉัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mi cuenta"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minha conta"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मेरा खाता"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আমার অ্যাকাউন্ট"
           }
         }
       }
