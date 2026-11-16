@@ -364,60 +364,75 @@ struct OnboardingView: View {
     }
 
     private var welcome: some View {
-        // Tek ekrana sığar (15 Kasım 2026, sahibin isteği): saat 72, ızgara kareleri 58, alttaki ipucu satırı kalktı
-        ScrollView {
-            VStack(spacing: 10) {
-                TimelineView(.periodic(from: .now, by: 1)) { ctx in
-                    AnalogClock(date: ctx.date, showSeconds: true).frame(width: 72, height: 72)
-                }
-                .accessibilityHidden(true)
-                Text(L("app.displayName")).font(.title.weight(.bold)).foregroundStyle(Theme.text)
-                    .multilineTextAlignment(.center)
-                // Sahibin metni (6 Kasım 2026): vurgulu iki satırlık başlık, ne yaptık, özellikler, "Neden ücretsiz?"
-                Text(L("onboard.welcome.title"))
-                    .font(AppFonts.serif ? .custom("Literata-SemiBold", size: 23, relativeTo: .title2)
-                                         : .system(size: 22, weight: .semibold))
-                    .foregroundStyle(Theme.accent)
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: true)
-                Text(L("onboard.welcome.text"))
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(3)
-                    .foregroundStyle(Theme.muted)
-                    .fixedSize(horizontal: false, vertical: true)
-                // Kareler arası 6, karede simge 36/21 ve yazıyla arası 4, dikey iç boşluk 8
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 3), spacing: 6) {
-                    ForEach(onboardWelcomeFeatures, id: \.key) { f in
-                        VStack(spacing: 4) {
-                            DuoChip(name: f.icon, color: f.color, box: 36, glyph: 21)
-                            Text(f.key == "widgets" ? L("widgets.gallery")
-                                 : f.key == "sleep" ? L("sleep.title") : L("onboard.welcome.f.\(f.key)"))
-                                .font(.footnote.weight(.medium))
-                                .foregroundStyle(Theme.text)
-                                .multilineTextAlignment(.center)
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.8)
-                        }
-                        .frame(maxWidth: .infinity, minHeight: 58)
-                        .card(padding: 6)
-                    }
-                }
-                Text(L("onboard.welcome.whyTitle"))
-                    .font(AppFonts.section)
-                    .foregroundStyle(Theme.text)
-                    .multilineTextAlignment(.center)
-                    .padding(.top, 4)
-                    .accessibilityAddTraits(.isHeader)
-                Text(L("onboard.welcome.why"))
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(3)
-                    .foregroundStyle(Theme.muted)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            .padding(.horizontal, 24)
-            .padding(.vertical, 12)
-            .frame(maxWidth: .infinity)
+        // Tek ekrana sığar (15–16 Kasım 2026, sahibin isteği; ilk düzeltme yetmedi): önce tam düzen, sığmazsa sıkı düzen
+        // (saat adın yanında, küçük kareler ve yazı), o da sığmazsa (çok büyük yazı boyu) sıkı düzen kaydırılır
+        ViewThatFits(in: .vertical) {
+            welcomeContent(compact: false)
+            welcomeContent(compact: true)
+            ScrollView { welcomeContent(compact: true) }
         }
+    }
+
+    private func welcomeContent(compact c: Bool) -> some View {
+        VStack(spacing: c ? 8 : 10) {
+            let clock = TimelineView(.periodic(from: .now, by: 1)) { ctx in
+                AnalogClock(date: ctx.date, showSeconds: true).frame(width: c ? 40 : 72, height: c ? 40 : 72)
+            }
+            .accessibilityHidden(true)
+            let name = Text(L("app.displayName")).font(c ? .title2.weight(.bold) : .title.weight(.bold)).foregroundStyle(Theme.text)
+                .multilineTextAlignment(.center)
+            if c {
+                HStack(spacing: 10) { clock; name }
+            } else {
+                clock
+                name
+            }
+            // Sahibin metni (6 Kasım 2026): vurgulu iki satırlık başlık, ne yaptık, özellikler, "Neden ücretsiz?"
+            Text(L("onboard.welcome.title"))
+                .font(AppFonts.serif ? .custom("Literata-SemiBold", size: c ? 20 : 23, relativeTo: .title2)
+                                     : .system(size: c ? 19 : 22, weight: .semibold))
+                .foregroundStyle(Theme.accent)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+            Text(L("onboard.welcome.text"))
+                .font(c ? .subheadline : .body)
+                .multilineTextAlignment(.center)
+                .lineSpacing(c ? 1 : 3)
+                .foregroundStyle(Theme.muted)
+                .fixedSize(horizontal: false, vertical: true)
+            // Kareler arası 6, karede simge 36/21 (sıkıda 30/18) ve yazıyla arası 4
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 3), spacing: 6) {
+                ForEach(onboardWelcomeFeatures, id: \.key) { f in
+                    VStack(spacing: c ? 3 : 4) {
+                        DuoChip(name: f.icon, color: f.color, box: c ? 30 : 36, glyph: c ? 18 : 21)
+                        Text(f.key == "widgets" ? L("widgets.gallery")
+                             : f.key == "sleep" ? L("sleep.title") : L("onboard.welcome.f.\(f.key)"))
+                            .font(c ? .caption.weight(.medium) : .footnote.weight(.medium))
+                            .foregroundStyle(Theme.text)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.8)
+                    }
+                    .frame(maxWidth: .infinity, minHeight: c ? 48 : 58)
+                    .card(padding: c ? 4 : 6)
+                }
+            }
+            Text(L("onboard.welcome.whyTitle"))
+                .font(c ? .headline : AppFonts.section)
+                .foregroundStyle(Theme.text)
+                .multilineTextAlignment(.center)
+                .padding(.top, c ? 0 : 4)
+                .accessibilityAddTraits(.isHeader)
+            Text(L("onboard.welcome.why"))
+                .font(c ? .subheadline : .body)
+                .multilineTextAlignment(.center)
+                .lineSpacing(c ? 1 : 3)
+                .foregroundStyle(Theme.muted)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(.horizontal, c ? 20 : 24)
+        .padding(.vertical, c ? 6 : 12)
+        .frame(maxWidth: .infinity)
     }
 
     /// Özet: yanıtlara göre oluşan alt çubuk ve açılan bölümler

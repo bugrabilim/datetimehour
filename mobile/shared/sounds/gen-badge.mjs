@@ -1,5 +1,6 @@
 // Rozet kazanınca çalan kısa başarım sesi (sahibin isteği, 15 Kasım 2026): yükselen üç nota + parıltı, 1,1 sn,
-// telifsiz sentez. Kullanım (ffmpeg gerekir): node mobile/shared/sounds/gen-badge.mjs
+// telifsiz sentez. 16 Kasım 2026: sahibin bildirimiyle ("çok yüksek") tepe %85'ten %25'e indi
+// (≈ −11 dB), parıltı ve tiz kısmi tonlar yumuşadı. Kullanım (ffmpeg gerekir): node mobile/shared/sounds/gen-badge.mjs
 //   → mobile/ios/App/Resources/badge-win.caf (IMA4) ve mobile/android/app/src/main/res/raw/badge_win.ogg (Vorbis)
 import { writeFileSync, mkdtempSync, rmSync } from "node:fs";
 import { execFileSync } from "node:child_process";
@@ -17,16 +18,16 @@ function add(start, len, fn) {
 // Do majör üç sesli yükseliş (C6 E6 G6) ve sonda C7; marimba benzeri kısmi tonlar
 [[0, 84], [0.09, 88], [0.18, 91], [0.3, 96]].forEach(([t, m], k) => {
   const f = note(m), amp = k === 3 ? 0.45 : 0.32, dec = k === 3 ? 0.45 : 0.2;
-  add(t, SECONDS - t, (x) => amp * Math.exp(-x / dec) * (Math.sin(TAU * f * x) + 0.3 * Math.sin(TAU * f * 3 * x) * Math.exp(-x / 0.08)));
+  add(t, SECONDS - t, (x) => amp * Math.exp(-x / dec) * (Math.sin(TAU * f * x) + 0.12 * Math.sin(TAU * f * 3 * x) * Math.exp(-x / 0.08)));
 });
 // Parıltı: çok yüksek, kısa çan sesleri
 [[0.34, 103], [0.42, 100], [0.5, 105]].forEach(([t, m]) => {
   const f = note(m);
-  add(t, 0.5, (x) => 0.1 * Math.exp(-x / 0.12) * Math.sin(TAU * f * x));
+  add(t, 0.5, (x) => 0.04 * Math.exp(-x / 0.12) * Math.sin(TAU * f * x));
 });
 let peak = 0;
 for (let i = 0; i < N; i++) { buf[i] *= Math.min(1, (N - i) / (RATE * 0.15)); peak = Math.max(peak, Math.abs(buf[i])); }
-const pcm = Int16Array.from(buf, (v) => Math.round((v * 0.85) / (peak || 1) * 32767));
+const pcm = Int16Array.from(buf, (v) => Math.round((v * 0.25) / (peak || 1) * 32767));
 const h = Buffer.alloc(44);
 h.write("RIFF", 0); h.writeUInt32LE(36 + pcm.length * 2, 4); h.write("WAVE", 8);
 h.write("fmt ", 12); h.writeUInt32LE(16, 16); h.writeUInt16LE(1, 20); h.writeUInt16LE(1, 22);

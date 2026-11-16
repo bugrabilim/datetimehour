@@ -131,9 +131,10 @@ struct DialNewsCard: View {
     @State private var open = false
 
     // Galeri açılınca `seen` true olur; sayfa kartın içinde tutulursa kart kalkınca sayfa da kapanıyordu (TestFlight 31,
-    // sahibin bildirimi 15 Kasım 2026). Sayfa artık kartın dışında, her zaman var olan kaba bağlı.
+    // sahibin bildirimi 15 Kasım 2026). Sayfa her zaman var olan kaba bağlı: `Group` değiştiricileri çocuklarına dağıttığı
+    // için kart kalkınca sayfa yine kapanıyordu (16 Kasım 2026), kap artık VStack.
     var body: some View {
-        Group {
+        VStack(spacing: 0) {
         if !seen {
             HStack(spacing: 12) {
                 TimelineView(.periodic(from: .now, by: 1)) { ctx in

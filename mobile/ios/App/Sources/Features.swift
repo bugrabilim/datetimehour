@@ -85,7 +85,11 @@ enum Features {
             let existing = own.keys.contains { k in !system.contains { k.hasPrefix($0) } }
             defaults.set(existing ? raw(Set(optional)) : "", forKey: key)
             // Yeni kurulum: ilk açılışta kurulum sihirbazı (Onboarding; 2. analiz #4); sorular boş başlar
-            if !existing { defaults.set(true, forKey: Onboarding.key); defaults.set(true, forKey: Onboarding.freshKey) }
+            if !existing {
+                defaults.set(true, forKey: Onboarding.key); defaults.set(true, forKey: Onboarding.freshKey)
+                // Yeni kurulumda her şey yeni: "Yeni kadranlar" kartı çıkmaz (sahibin bildirimi, 16 Kasım 2026)
+                defaults.set(true, forKey: DialFace.seenKey)
+            }
             // Yeni kurulumda "Gün ışığı" atmosferi (doğal tasarım madde 7; önceki kullanıcının seçimi korunur)
             if !existing, defaults.object(forKey: Atmosphere.key) == nil { defaults.set(Atmosphere.daylightID, forKey: Atmosphere.key) }
         }
