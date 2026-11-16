@@ -3,7 +3,7 @@
 Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"). Biten iş silinir; geçmiş git'te.
 
 ## Sahibe sorular
-(Şu an yok.)
+- Tam ekran saatte "havaya göre zemin" seçiliyken üstteki Apple Hava Durumu işareti: WeatherKit verisi gösterildiği için kaldırılamaz (App Review 5.2.5). Öneri: o zemin iOS'ta da Open-Meteo'dan beslenir (Android'deki gibi), Apple işareti kalkar, Open-Meteo atfı yalnız dokununca beliren düğmelerle birlikte görünür. Onay bekliyor. (16 Kasım 2026)
 
 ## Sahipte
 - Hata bildirimi (canlı sırası, bitti): sitede ayarlar › "Hata bildir" (üyelik sunucusundaki `/hata-bildir`) ve uygulamalarda Ayarlar › Destek › Hata bildir; bildirim yalnız e-postayla bilgi@bumbagroup.com'a. Main'e birleştirme siteyi ve hesap sunucusunu yayına alır (sahibin onayıyla); uygulama kısmı sıradaki TestFlight ve Play yayınıyla. (15 Kasım 2026)
