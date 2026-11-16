@@ -94,14 +94,15 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
 /// Saat başı ve sesli saat (16 Kasım 2026, sahibin isteği: "saat başı ya da kullanıcının seçeceği düzende sesli saat, hava
 /// durumu"): sıklık (60/30/15 dk), günler, ses (bildirim sesi, saati söyle, saati ve havayı söyle). Android'de aynı anahtarlar.
 /// Hava yoksa ve 24 kaydı geçmiyorsa yinelenen bildirimle; değilse önümüzdeki anlar tek tek (hava o saatin tahmininden).
+@MainActor
 enum HourlyChime {
-    static let everyKey = "notify.hourly.every"
-    static let daysKey = "notify.hourly.days"
-    static let soundKey = "notify.hourly.sound"
+    nonisolated static let everyKey = "notify.hourly.every"
+    nonisolated static let daysKey = "notify.hourly.days"
+    nonisolated static let soundKey = "notify.hourly.sound"
     /// Ses dosyaları (Library/Sounds): saat "hvt-…" (kalıcı), saat + hava "hvw-…" (iki gün sonra silinir)
-    static let prefix = "hv"
-    static let everyOptions = [60, 30, 15]
-    static let soundOptions = ["system", "voice", "weather"]
+    nonisolated static let prefix = "hv"
+    nonisolated static let everyOptions = [60, 30, 15]
+    nonisolated static let soundOptions = ["system", "voice", "weather"]
 
     static var every: Int {
         let v = UserDefaults.standard.integer(forKey: everyKey)
