@@ -167,4 +167,12 @@ export async function signUpVerified(t, email, password = PW, lang = "tr") {
   return s.json.token;
 }
 
+/* Hesabı sil (5.21 "Silme onayı"): istek + e-postadaki bağlantının sayfasında "Onaylıyorum" */
+export async function deleteAccount(t, token, email, body = {}) {
+  const r = await t.req("/v1/hesap/sil", { method: "POST", token, body });
+  if (r.status !== 200) return r;
+  const u = new URL(t.last("deleteAsk", email).vars.url);
+  return t.req(u.pathname + u.search, { method: "POST", form: { k: u.searchParams.get("k") } });
+}
+
 export const cookieOf = (res) => res.headers.getSetCookie().map((c) => c.split(";")[0]).join("; ");

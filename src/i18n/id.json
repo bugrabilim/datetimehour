@@ -3418,15 +3418,15 @@
     "delTitle": "Hapus akun | Saat Tarih",
     "delDesc": "Cara menghapus akun Saat Tarih Anda di situs atau di aplikasi iPhone dan Android, dan apa yang dihapus.",
     "delH1": "Menghapus akun Anda",
-    "delLead": "Akun di Saat Tarih bersifat opsional dan bisa dihapus kapan saja. Penghapusan dimulai segera dan selesai paling lambat dalam 7 hari.",
+    "delLead": "Akun di Saat Tarih bersifat opsional dan bisa dihapus kapan saja. Anda mengonfirmasi permintaan penghapusan lewat tautan yang dikirim ke email; setelah dikonfirmasi, akun langsung dihapus dan langkah di latar belakang selesai paling lambat 7 hari.",
     "delSections": [
       {
         "h": "Menghapus di situs atau di aplikasi",
         "ul": [
           "Masuk di **hesap.time.bumba.tr**, atau buka **Pengaturan › Akun** di aplikasi.",
-          "Di **Hapus akun**, pilih **Hanya dari Saat Tarih** atau **Dari semua produk Bumba**.",
-          "Masukkan kata sandi (tidak perlu jika Anda masuk dalam 24 jam terakhir) lalu konfirmasi.",
-          "Penghapusan dimulai segera dan selesai paling lambat dalam 7 hari; kami mengirim email kepada Anda. Anda tetap bisa memakai Saat Tarih tanpa akun."
+          "Di bagian **Hapus akun**, masukkan kata sandi (tidak perlu jika Anda masuk dalam 24 jam terakhir) dan kirim permintaannya.",
+          "Buka tautan di email Anda dan ketuk **Saya konfirmasi** di halamannya. Tautan berlaku 7 hari; jika tidak dikonfirmasi dalam waktu itu, permintaan dibatalkan dan akun Anda tetap seperti semula.",
+          "Setelah dikonfirmasi, akun Anda langsung dihapus dan langkah di latar belakang selesai paling lambat 7 hari; kami mengirim email kepada Anda. Anda tetap bisa memakai Saat Tarih tanpa akun."
         ]
       },
       {
@@ -3441,7 +3441,7 @@
         "ul": [
           "Alamat email, profil Anda (termasuk foto) dan hash kata sandi yang tidak bisa dibalik.",
           "Sesi Anda, catatan aplikasi yang disimpan di akun, dan lencana Anda.",
-          "Jika memilih **Dari semua produk Bumba**, keanggotaan Anda di produk Bumba lainnya juga dihapus.",
+          "Hanya akun Saat Tarih Anda yang dihapus. Akun Anda di produk Bumba lain tetap ada; masing-masing Anda hapus dari halaman akun produk itu sendiri.",
           "Salinan di cadangan terhapus otomatis paling lambat dalam 30 hari (cadangan disimpan 30 hari)."
         ]
       },

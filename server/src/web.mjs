@@ -42,7 +42,7 @@ function pickLang(req, url, user) {
   return "en";
 }
 
-export function webRoutes({ cfg, closed, accounts, center, consent }) {
+export function webRoutes({ cfg, closed, accounts, center, consent, deletion }) {
   function page(res, { lang, title, body, data = {}, stats = true, theme = "system", status = 200 }) {
     const t = UI[lang];
     const dir = RTL.has(lang) ? "rtl" : "ltr";
@@ -79,6 +79,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
     for await (const ch of req) { n += ch.length; if (n > 8192) break; chunks.push(ch); }
     return new URLSearchParams(Buffer.concat(chunks).toString("utf8"));
   }
+  const fmtDay = (lang, iso) => { try { return new Intl.DateTimeFormat(`${lang === "zh" ? "zh-CN" : lang}-u-nu-latn`, { dateStyle: "long", timeZone: "UTC" }).format(new Date(iso)); } catch { return String(iso).slice(0, 10); } };
   const shell = (inner) => `<section class="card">${inner}</section>`;
   const msg = (text, kind = "") => `<p class="msg ${kind}" role="status">${esc(text)}</p>`;
 
@@ -90,8 +91,8 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
       res.end(readFileSync(file));
       return true;
     }
-    const pages = ["/", "/giris", "/kayit", "/sifre", "/dogrulandi", "/hesap", "/hesap/rozetler", "/kutlama", "/sifre-sec", "/hata-bildir"];
-    if (!pages.includes(p) || !["GET", "POST"].includes(req.method) || (req.method === "POST" && p !== "/kutlama" && p !== "/sifre-sec")) return false;
+    const pages = ["/", "/giris", "/kayit", "/sifre", "/dogrulandi", "/hesap", "/hesap/rozetler", "/kutlama", "/sifre-sec", "/hata-bildir", "/silme-onay"];
+    if (!pages.includes(p) || !["GET", "POST"].includes(req.method) || (req.method === "POST" && !["/kutlama", "/sifre-sec", "/silme-onay"].includes(p))) return false;
     // Rozetler ve kayıtlar artık hesap sayfasının sekmesi (madde 7: kullanım verisi ayrı sayfaya konmaz)
     if (p === "/hesap/rozetler") {
       const l = url.searchParams.get("dil");
@@ -213,6 +214,24 @@ ${token ? `<form data-form="reset" novalidate><label>${esc(t.newPassword)}<input
 <p class="muted">${esc(t.mergedNote)}</p>`) });
       return true;
     }
+    // Silme onayı (standart 5.21): e-postadaki bağlantı giriş istemez; açmak silmez, "Onaylıyorum" (POST) siler
+    if (p === "/silme-onay") {
+      const k = req.method === "POST" ? String((await readForm(req)).get("k") || "") : String(url.searchParams.get("k") || "");
+      const toSite = `<p><a class="button" href="${esc(cfg.siteUrl)}${lang === "tr" ? "/" : `/${lang}/`}">${esc(t.toSite)}</a></p>`;
+      const out = (inner) => page(res, { ...base, stats: false, title: t.delConfirmTitle, body: shell(`<h1>${esc(t.delConfirmTitle)}</h1>${inner}`) });
+      if (req.method === "POST") {
+        const kind = await deletion.confirm(k);
+        out(kind ? `${msg(kind === "hesap" ? t.deleted : t.delBadgesDone, "ok")}${toSite}` : `${msg(t.delLinkBad, "err")}${toSite}`);
+        return true;
+      }
+      const r = await deletion.peek(k);
+      if (!r) { out(`${msg(t.delLinkBad, "err")}${toSite}`); return true; }
+      const what = r.tur === "hesap" ? t.delConfirmAccount : t.delConfirmBadges;
+      out(`<p>${esc(what)}</p><p class="muted">${esc(fill(t.delConfirmUntil, { tarih: fmtDay(lang, r.sonGun) }))}</p>
+<form method="post" action="/silme-onay?dil=${lang}" class="danger-zone"><input type="hidden" name="k" value="${esc(k)}"><button type="submit" class="danger">${esc(t.delConfirmButton)}</button></form>
+<p class="muted">${esc(t.delConfirmIgnore)}</p>`);
+      return true;
+    }
     if (p === "/hesap") {
       const range = birthDateRange();
       const sec = (id, n, title, inner) => `<section class="card" id="${id}" aria-labelledby="${id}-h"><h3 id="${id}-h"><span class="num">${n}</span> ${esc(title)}</h3>${inner}</section>`;
@@ -257,11 +276,12 @@ ${sec("epostalar", 6, t.emails, `<form data-form="emails" novalidate><label clas
 <h4>${esc(t.list)}</h4><p class="muted">${esc(t.listNote)}</p><p><a href="${esc(cfg.siteUrl)}${lang === "tr" ? "/" : `/${lang}/`}#liste-form">${esc(t.listJoin)}</a></p>`)}
 `)}
 ${panel("uyelikler", `${sec("uyelik", 8, t.membership, `<dl class="facts"><dt>${esc(t.memberNo)}</dt><dd data-no></dd><dt>${esc(t.memberSince)}</dt><dd data-since></dd></dl>
-<h4>${esc(t.products)}</h4><p class="muted">${esc(t.productsNote)}</p><ul class="list" data-products></ul><div class="row"><button type="button" data-open-all>${esc(t.openAll)}</button><button type="button" data-close-all>${esc(t.closeAll)}</button></div><div data-msg-products></div>`)}
+<h4>${esc(t.products)}</h4><p class="muted">${esc(t.productsNote)}</p><ul class="list" data-products></ul><div class="row"><button type="button" data-open-all>${esc(t.openAll)}</button></div><div data-msg-products></div>`)}
 `)}
 ${panel("veri", `${sec("verilerim", 9, t.download, `<p class="muted">${esc(t.downloadNote)}</p><a class="button" href="/v1/verilerim" download>${esc(t.download)}</a>`)}
 ${sec("sil", 10, t.delete, `<p><a href="/hesap?sekme=veri&amp;dil=${lang}#verilerim" data-goto="verilerim">${esc(t.deleteDownloadFirst)}</a></p><h4>${esc(t.deleteKeptTitle)}</h4><p class="muted">${esc(t.deleteKept)}</p>
-<form data-form="delete" class="danger-zone" novalidate><p>${esc(t.deleteLead)}</p><fieldset><label class="check"><input type="radio" name="kapsam" value="urun" checked> ${esc(t.deleteScopeProduct)}</label><label class="check"><input type="radio" name="kapsam" value="hepsi"> ${esc(t.deleteScopeAll)}</label></fieldset>
+<div class="card pending" data-delete-pending hidden><p data-delete-pending-text></p><p class="muted">${esc(t.delPending)}</p><button type="button" data-delete-cancel>${esc(t.delCancel)}</button></div>
+<form data-form="delete" class="danger-zone" novalidate><p>${esc(t.deleteLead)}</p>
 <label>${esc(t.deletePassword)}<input type="password" name="password" autocomplete="current-password"></label><div data-msg></div><button type="submit" class="danger">${esc(t.delete)}</button></form>`)}
 `)}
 ${panel("rozetler", `<section class="card" id="rozetler"><h3>${esc(t.badgesTitle)}</h3><p class="muted">${esc(t.badgesNote)}</p><div data-badges></div></section><section class="card" id="kayitlar"><h3>${esc(t.recordsTitle)}</h3><p class="muted">${esc(t.recordsNote)}</p><div data-records></div></section>`)}

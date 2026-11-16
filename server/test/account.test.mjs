@@ -305,26 +305,62 @@ test("ayrı hesaplar girişte sormadan birleşir; şifre değişmez, seçim ekra
   const ac = await t.req("/v1/uyelik/ac", { method: "POST", token: tk2, body: { hedefler: ["gander"], sifre: PW } });
   assert.deepEqual(ac.json, { sonuclar: { gander: "acildi" } });
   assert.match(t.center.find("ac").at(-1).body.hesap.sifreOzeti, /:/);
-  const kp = await t.req("/v1/uyelik/kapat", { method: "POST", token: tk2, body: { hedefler: ["gander"] } });
-  assert.deepEqual(kp.json, { sonuclar: { gander: "kapandi" } });
+  assert.equal((await t.req("/v1/uyelik/kapat", { method: "POST", token: tk2, body: { hedefler: ["gander"] } })).status, 404, "kapatma yok (5.21)");
 });
 
-test("hesabı sil: şifre ya da taze oturum; yalnız bu üründen ya da bütün Bumba ürünlerinden", async () => {
+test("hesabı sil (5.21 silme onayı): şifre ya da taze oturum, e-postadaki bağlantı, açmak silmez, tek kullanımlık, iptal", async () => {
   const a = await signUpVerified(t, "sil1@example.com");
-  const r1 = await t.req("/v1/hesap/sil", { method: "POST", token: a, body: { kapsam: "urun", sifre: "Yanlis-1a" } });
+  const r1 = await t.req("/v1/hesap/sil", { method: "POST", token: a, body: { sifre: "Yanlis-1a" } });
   assert.equal(r1.status, 401);
-  const ok = await t.req("/v1/hesap/sil", { method: "POST", token: a, body: { kapsam: "urun" } });
+  const ok = await t.req("/v1/hesap/sil", { method: "POST", token: a, body: {} });
   assert.equal(ok.status, 200, "son 24 saatte açılmış oturum yeter");
-  assert.equal(t.center.find("ayril").at(-1).body.uyeNo > 0, true);
+  assert.equal(ok.json.bekliyor, true);
+  assert.equal(ok.json.istek.tur, "hesap");
+  assert.equal((await t.req("/v1/hesap", { token: a })).json.silmeIstegi.tur, "hesap", "hesap sayfasında bekleyen istek");
+  const mail = t.last("deleteAsk", "sil1@example.com");
+  assert.ok(mail && !mail.unsubUrl, "işlem e-postası, kapatma bağlantısı yok");
+  const u = new URL(mail.vars.url);
+  const k = u.searchParams.get("k");
+  assert.equal((await t.q(`select count(*)::int n from delete_request where token_hash = $1`, [k])).rows[0].n, 0, "anahtar düz yazılmaz");
+  const page = await t.req(u.pathname + u.search);
+  assert.equal(page.status, 200);
+  assert.match(page.text, /method="post"/);
+  assert.equal((await t.q(`select count(*)::int n from "user" where email = 'sil1@example.com'`)).rows[0].n, 1, "bağlantıyı açmak silmez");
+  assert.equal(t.center.find("ayril").length, 0);
+  const done = await t.req("/silme-onay?dil=tr", { method: "POST", form: { k } });
+  assert.equal(done.status, 200);
+  assert.ok(t.center.find("ayril").at(-1).body.uyeNo > 0);
+  assert.equal(t.center.find("sil").length, 0, "merkezin sil ucu kullanılmaz");
   assert.ok(t.last("deleted", "sil1@example.com"));
+  assert.equal((await t.q(`select count(*)::int n from "user" where email = 'sil1@example.com'`)).rows[0].n, 0);
+  const again = await t.req("/silme-onay?dil=tr", { method: "POST", form: { k } });
+  assert.match(again.text, /msg err/, "tek kullanımlık");
+
   const b = await signUpVerified(t, "sil2@example.com");
   await t.q(`update session set "createdAt" = now() - interval '2 days' where token is not null`);
-  assert.equal((await t.req("/v1/hesap/sil", { method: "POST", token: b, body: { kapsam: "hepsi" } })).status, 401, "eski oturumda şifre gerekir");
-  const ok2 = await t.req("/v1/hesap/sil", { method: "POST", token: b, body: { kapsam: "hepsi", sifre: PW } });
-  assert.equal(ok2.status, 200);
-  assert.ok(t.center.find("sil").length >= 1);
-  assert.ok(t.last("deletedAll", "sil2@example.com"));
-  assert.equal((await t.q(`select count(*)::int n from "user" where email in ('sil1@example.com','sil2@example.com')`)).rows[0].n, 0);
+  assert.equal((await t.req("/v1/hesap/sil", { method: "POST", token: b, body: {} })).status, 401, "eski oturumda şifre gerekir");
+  assert.equal((await t.req("/v1/hesap/sil", { method: "POST", token: b, body: { sifre: PW } })).status, 200);
+  const k1 = new URL(t.last("deleteAsk", "sil2@example.com").vars.url).searchParams.get("k");
+  assert.equal((await t.req("/v1/hesap/sil", { method: "POST", token: b, body: { sifre: PW } })).status, 200, "yeni istek eskisinin yerine");
+  assert.match((await t.req("/silme-onay?dil=tr", { method: "POST", form: { k: k1 } })).text, /msg err/, "eski bağlantı geçersiz");
+  assert.equal((await t.req("/v1/silme-istegi/iptal", { method: "POST", token: b, body: {} })).json.iptal, true);
+  assert.equal((await t.req("/v1/silme-istegi", { token: b })).json.istek, null);
+  const k2 = new URL(t.last("deleteAsk", "sil2@example.com").vars.url).searchParams.get("k");
+  assert.match((await t.req("/silme-onay?dil=tr", { method: "POST", form: { k: k2 } })).text, /msg err/, "iptalden sonra bağlantı geçersiz");
+  assert.equal((await t.q(`select count(*)::int n from "user" where email = 'sil2@example.com'`)).rows[0].n, 1);
+
+  // Rozetleri silme de onaylı; 7 gün dolunca temizlik isteği siler
+  await t.req("/v1/rozetler", { method: "POST", token: b, body: { rozetler: [{ id: "renk", gun: "2026-11-01" }] } });
+  assert.equal((await t.req("/v1/rozetler/sil", { method: "POST", token: b, body: { sifre: PW } })).json.istek.tur, "rozetler");
+  const rk = new URL(t.last("dataDeleteAsk", "sil2@example.com").vars.url).searchParams.get("k");
+  assert.equal((await t.req("/v1/rozetler", { token: b })).json.rozetler.length, 1, "onaydan önce silinmez");
+  await t.req("/silme-onay?dil=tr", { method: "POST", form: { k: rk } });
+  assert.equal((await t.req("/v1/rozetler", { token: b })).json.rozetler.length, 0);
+  assert.ok(t.last("dataDeleted", "sil2@example.com"));
+  await t.req("/v1/hesap/sil", { method: "POST", token: b, body: { sifre: PW } });
+  await t.q(`update delete_request set expires_at = now() - interval '1 minute'`);
+  const c = await t.req("/gorev/temizlik", { method: "POST", headers: { authorization: `Bearer ${CRON}` } });
+  assert.equal(c.json.silmeIstekleri, 1);
 });
 
 test("temizlik: doğrulanmamış hesap 7 günde, eksik numara alınır, merkeze iletilemeyenler yeniden denenir", async () => {

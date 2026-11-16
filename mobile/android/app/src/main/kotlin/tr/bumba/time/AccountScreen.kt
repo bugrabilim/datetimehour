@@ -28,7 +28,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -46,8 +45,6 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.SelectableDates
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -69,6 +66,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentType
 import androidx.compose.ui.semantics.semantics
@@ -501,15 +499,16 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
     val products = remember { mutableStateListOf<JSONObject>() }
     var productsErr by remember { mutableStateOf(false) }
     var askOpen by remember { mutableStateOf<List<String>?>(null) }
-    var askClose by remember { mutableStateOf<List<String>?>(null) }
     suspend fun loadProducts() {
         val r = Account.products()
         products.clear(); productsErr = !r.ok
         if (r.ok) runCatching { JSONArray(r.data) }.getOrNull()?.let { a -> for (i in 0 until a.length()) a.optJSONObject(i)?.let { if (it.optString("site").isNotEmpty()) products.add(it) } }
     }
     LaunchedEffect(u.id) { loadProducts() }
-    var scopeAll by rememberSaveable { mutableStateOf(false) }
     var delPw by remember { mutableStateOf("") }
+    // Bekleyen silme isteği (5.21): {tur, sonGun}; hesap sayfasında görünür ve iptal edilir
+    var pending by remember(d) { mutableStateOf(d.optJSONObject("silmeIstegi")) }
+    val uri = LocalUriHandler.current
     var confirm by remember { mutableStateOf(false) }
 
     fun toggle(id: String) = setOpen(if (open == id) "" else id)
@@ -677,14 +676,16 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
                 val site = pr.optString("site"); val on = pr.optBoolean("acik"); val self = site == "saat-tarih" || pr.optBoolean("kendisi")
                 Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(pr.optString("ad", site) + if (self) " · " + A("productThis") else "", Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    // Kapatma yok (5.21): açık üründe o ürünün hesap sayfasına bağlantı; hesap orada silinir
+                    val adres = pr.optString("adres")
                     if (self) Text(A("productOn"), color = Theme.c.muted, fontSize = 14.sp)
-                    else SoftSwitch(on, { want -> if (want) askOpen = listOf(site) else askClose = listOf(site) })
+                    else if (on) { if (adres.startsWith("https://")) TextButton({ uri.openUri(adres) }) { Text(A("productAccount"), color = Theme.c.accent) } else Text(A("productOn"), color = Theme.c.muted, fontSize = 14.sp) }
+                    else SoftSwitch(false, { want -> if (want) askOpen = listOf(site) })
                 }
             }
             val others = products.filter { it.optString("site") != "saat-tarih" && !it.optBoolean("kendisi") }
-            if (others.isNotEmpty()) Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                RoundButton(A("openAll"), false, Modifier.weight(1f)) { others.filter { !it.optBoolean("acik") }.map { it.optString("site") }.takeIf { it.isNotEmpty() }?.let { askOpen = it } }
-                RoundButton(A("closeAll"), false, Modifier.weight(1f)) { others.filter { it.optBoolean("acik") }.map { it.optString("site") }.takeIf { it.isNotEmpty() }?.let { askClose = it } }
+            if (others.any { !it.optBoolean("acik") }) RoundButton(A("openAll"), false, Modifier.fillMaxWidth()) {
+                others.filter { !it.optBoolean("acik") }.map { it.optString("site") }.takeIf { it.isNotEmpty() }?.let { askOpen = it }
             }
             CardMessage("products")
         }
@@ -709,13 +710,15 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
         }
         Column(Modifier.fillMaxWidth().border(BorderStroke(2.dp, Theme.c.err), RoundedCornerShape(18.dp)).background(Theme.c.err.copy(alpha = 0.07f), RoundedCornerShape(18.dp))
             .padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(A("deleteLead"), color = Theme.c.text, fontSize = 14.sp)
-            for ((all, label) in listOf(false to A("deleteScopeProduct"), true to A("deleteScopeAll"))) {
-                Row(Modifier.fillMaxWidth().selectable(scopeAll == all, role = Role.RadioButton) { scopeAll = all }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
-                    RadioButton(scopeAll == all, null, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
-                    Text(label, color = Theme.c.text, fontSize = 15.sp)
+            pending?.let { p ->
+                val day = runCatching { Instant.parse(p.optString("sonGun")).atZone(java.time.ZoneId.systemDefault()).toLocalDate().format(dateFmt) }.getOrDefault("")
+                Text(T(if (p.optString("tur") == "hesap") "account.delPendingAccount" else "account.delPendingBadges", day), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.Medium)
+                Text(A("delPending"), color = Theme.c.muted, fontSize = 13.sp)
+                RoundButton(A("delCancel"), false, Modifier.fillMaxWidth()) {
+                    run("delete", { Account.cancelDelete() }, "account.delCancelled") { pending = null }
                 }
             }
+            Text(A("deleteLead"), color = Theme.c.text, fontSize = 14.sp)
             Field(delPw, { delPw = it }, A("deletePassword"), ContentType.Password, password = true)
             Text(A("deviceKeeps"), color = Theme.c.muted, fontSize = 13.sp)
             TextButton({ confirm = true }, Modifier.fillMaxWidth().background(Theme.c.err, RoundedCornerShape(24.dp))) { Text(A("delete"), color = Theme.c.onAccent, fontWeight = FontWeight.SemiBold) }
@@ -745,21 +748,13 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
             confirmButton = { TextButton({ askOpen = null; run("products", { Account.openProducts(sites, pw) }, "account.saved") { scope.launch { loadProducts() } } }) { Text(A("open")) } },
             dismissButton = { TextButton({ askOpen = null }) { Text(A("cancel")) } })
     }
-    askClose?.let { sites ->
-        val names = sites.joinToString(", ") { s -> products.firstOrNull { it.optString("site") == s }?.optString("ad", s) ?: s }
-        AlertDialog(onDismissRequest = { askClose = null },
-            text = { Text(T("account.confirmClose", names)) },
-            confirmButton = { TextButton({ askClose = null; run("products", { Account.closeProducts(sites) }, "account.saved") { scope.launch { loadProducts() } } }) { Text(A("close"), color = Theme.c.err) } },
-            dismissButton = { TextButton({ askClose = null }) { Text(A("cancel")) } })
-    }
-
     if (confirm) AlertDialog(
         onDismissRequest = { confirm = false },
         text = { Text(A("deleteConfirm")) },
         confirmButton = {
             TextButton({
                 confirm = false
-                run("delete", { Account.delete(if (scopeAll) "hepsi" else "urun", delPw) }, null) { delPw = ""; onSignedOut("account.deleted") }
+                run("delete", { Account.delete(delPw) }, "account.delPending") { r -> delPw = ""; pending = r.data?.let { runCatching { JSONObject(it) }.getOrNull() } }
             }) { Text(A("delete"), color = Theme.c.err) }
         },
         dismissButton = { TextButton({ confirm = false }) { Text(A("cancel")) } },

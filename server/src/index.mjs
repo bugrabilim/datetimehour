@@ -26,6 +26,7 @@ import { createConsent } from "./consent.mjs";
 import { validateFeedback, feedbackMail } from "./feedback.mjs";
 import { createCircles } from "./circles.mjs";
 import { createGroups } from "./groups.mjs";
+import { createDeletion } from "./deletion.mjs";
 
 const SEC_HEADERS = {
   "Strict-Transport-Security": "max-age=31536000",
@@ -88,7 +89,20 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
   accounts.hooks.beforeGone = async (userId) => { await circles.onUserGone(userId); await groups.onUserGone(userId); };
   const limit = createLimiter(pool, cfg.rateLimit);
   const linked = linkedRoutes({ cfg, auth, accounts, mailer, json, readJson });
-  const web = webRoutes({ cfg, closed: false, accounts, center, consent });
+  // Silme onayı (standart 5.21): onaydan sonraki asıl işlem ve bilgilendirme e-postası
+  // Silme yalnız Saat Tarih'teki hesabı siler (5.21: bütün ürünlerden birden silme ve merkezin `sil` ucu kalktı)
+  async function performDeletion(user, kind) {
+    if (kind === "rozetler") {
+      await records.clearBadges(user.id);
+      await mailer.send("dataDeleted", user.email, user.lang, {}).catch(() => {});
+      return;
+    }
+    if (user.uyeNo != null) await tell("ayril", { uyeNo: Number(user.uyeNo) });
+    await accounts.deleteLocal(user.id);
+    await mailer.send("deleted", user.email, user.lang, {}).catch(() => {});
+  }
+  const deletion = createDeletion({ pool, mailer, publicUrl: cfg.publicUrl, perform: performDeletion, normLang });
+  const web = webRoutes({ cfg, closed: false, accounts, center, consent, deletion });
   const panel = panelRoutes({ cfg, pool, accounts, records, mailer, metrics, json, readJson });
   const ctxP = auth.$context;
 
@@ -104,6 +118,12 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     const hash = await accounts.passwordHash(userId);
     if (!hash) return false;
     return (await ctxP).password.verify({ hash, password: String(password || "") }).catch(() => false);
+  }
+  /* Silme isteği: şifre ya da son 24 saatte açılmış oturum (şifre yazıldıysa doğru olmalı) */
+  async function deleteAllowed(s, user, sifre) {
+    const fresh = Date.now() - new Date(s.session.createdAt).getTime() < 24 * 3600 * 1000;
+    if (sifre) return verifyPassword(user.id, sifre);
+    return fresh;
   }
   /* Tarayıcıdan çerezle gelen değiştirici isteklerde başka siteden gönderim engellenir (uygulamalar Origin göndermez) */
   const sameOrigin = (req) => {
@@ -122,6 +142,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       dil: user.lang, tema: user.theme || "system", saatDilimi: user.timeZone || null,
       kutlama: user.celebrate !== false,
       profil: await profileView(user),
+      silmeIstegi: await deletion.pending(user.id),
     };
   }
 
@@ -185,7 +206,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       if (!(await limit(`fb:${ipOf(req)}`, 3600, 5)) || !(await limit("fb:hepsi", 86400, 300))) return json(res, 429, { hata: "sinir" });
       const mail = feedbackMail(f, cfg.siteUrl);
       try {
-        await mailer.sendRaw({ to: cfg.adminEmail || "bilgi@bumbagroup.com", ...mail });
+        await mailer.sendRaw({ to: cfg.adminEmail, ...mail });
       } catch {
         return json(res, 503, { hata: "gonderilemedi" });
       }
@@ -286,12 +307,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       if (!r.ok) return json(res, 503, { hata: "merkez" });
       return json(res, 200, r.data);
     }
-    if (p === "/v1/uyelik/kapat" && m === "POST") {
-      const b = await readJson(req);
-      const r = await center.kapat(Number(user.uyeNo), Array.isArray(b.hedefler) ? b.hedefler : []);
-      if (!r.ok) return json(res, 503, { hata: "merkez" });
-      return json(res, 200, r.data);
-    }
+    // "Öbür Bumba ürünlerinde üyeliğim"de kapatma yok (5.21): başka üründeki hesap o ürünün hesap sayfasından silinir
     if (p === "/v1/kayitlar" && m === "GET") return json(res, 200, { kayitlar: await records.list(user.id, url.searchParams.get("since")), simdi: Date.now() });
     if (p === "/v1/kayitlar" && m === "POST") {
       const b = await readJson(req, 6 * 1024 * 1024);
@@ -303,10 +319,15 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       const b = await readJson(req);
       return json(res, 200, { rozetler: await records.addBadges(user.id, b.rozetler) });
     }
+    // Rozetleri silme de onaylıdır (standart 5.21): istek + e-postadaki bağlantı
     if (p === "/v1/rozetler/sil" && m === "POST") {
-      await records.clearBadges(user.id);
-      return json(res, 200, { rozetler: [] });
+      const b = await readJson(req);
+      if (!(await deleteAllowed(s, user, b.sifre))) return json(res, 401, { hata: "sifre" });
+      if (!(await limit(`silme:${user.id}`, 3600, 5))) return json(res, 429, { hata: "sinir" });
+      return json(res, 200, { bekliyor: true, istek: await deletion.request(user, "rozetler") });
     }
+    if (p === "/v1/silme-istegi" && m === "GET") return json(res, 200, { istek: await deletion.pending(user.id) }, { "Cache-Control": "private, no-store" });
+    if (p === "/v1/silme-istegi/iptal" && m === "POST") return json(res, 200, { iptal: await deletion.cancel(user.id) });
     // Verilerimi indir (KVKK md. 11): hesap, profil (fotoğraf dahil), onay kaydı, oturumlar (IP yok), kayıtlar, rozetler
     if (p === "/v1/verilerim" && m === "GET") {
       const ss = await pool.query(`select "createdAt", "updatedAt", "expiresAt", "userAgent", client from session where "userId" = $1 order by "createdAt"`, [user.id]);
@@ -322,17 +343,13 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       };
       return json(res, 200, data, { "Content-Disposition": 'attachment; filename="saat-tarih-hesap.json"' });
     }
-    // Hesabı sil: şifre ya da son 24 saatte açılmış oturum; "urun" yalnız Saat Tarih'ten, "hepsi" bütün Bumba ürünlerinden
+    // Hesabı sil (madde 7, "Silme onayı"): şifre ya da son 24 saatte açılmış oturum; hemen silinmez, e-postadaki
+    // bağlantıyla onaylanınca silinir. Yalnız Saat Tarih'teki hesap silinir; öbür Bumba ürünlerindeki hesaplar kalır.
     if (p === "/v1/hesap/sil" && m === "POST") {
       const b = await readJson(req);
-      const fresh = Date.now() - new Date(s.session.createdAt).getTime() < 24 * 3600 * 1000;
-      if (!fresh && !(await verifyPassword(user.id, b.sifre))) return json(res, 401, { hata: "sifre" });
-      if (b.sifre && !(await verifyPassword(user.id, b.sifre))) return json(res, 401, { hata: "sifre" });
-      const all = b.kapsam === "hepsi";
-      if (user.uyeNo != null) await tell(all ? "sil" : "ayril", { uyeNo: Number(user.uyeNo) });
-      await accounts.deleteLocal(user.id);
-      await mailer.send(all ? "deletedAll" : "deleted", user.email, user.lang, {}).catch(() => {});
-      return json(res, 200, { silindi: true });
+      if (!(await deleteAllowed(s, user, b.sifre))) return json(res, 401, { hata: "sifre" });
+      if (!(await limit(`silme:${user.id}`, 3600, 5))) return json(res, 429, { hata: "sinir" });
+      return json(res, 200, { bekliyor: true, istek: await deletion.request(user, "hesap") });
     }
     // Ortak zikir ve hatim halkaları (üyelik aşama 2; circles.mjs). Kişi başına dakikada 120 istek.
     if (cfg.circles && (p === "/v1/halkalar" || p.startsWith("/v1/halka"))) {
@@ -443,6 +460,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       const out = await runCleanup({ pool, center, adminEmail: cfg.adminEmail });
       out.halkalar = await circles.cleanup();
       out.gruplar = await groups.cleanup();
+      out.silmeIstekleri = await deletion.cleanup();
       return json(res, 200, out);
     }
     if (p === "/gorev/kutlama" && req.method === "POST") {

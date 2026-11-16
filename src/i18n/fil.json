@@ -3484,15 +3484,15 @@
     "delTitle": "Burahin ang account | Saat Tarih",
     "delDesc": "Paano burahin ang inyong Saat Tarih account sa website o sa mga app para sa iPhone at Android, at kung ano ang nabubura.",
     "delH1": "Pagbura ng iyong account",
-    "delLead": "Opsyonal ang account sa Saat Tarih at puwede ninyo itong burahin anumang oras. Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw.",
+    "delLead": "Opsiyonal ang account sa Saat Tarih at mabubura ninyo ito anumang oras. Kinukumpirma ninyo ang kahilingang magbura gamit ang link na darating sa inyong email; pagkakumpirma, agad na mabubura ang account at matatapos ang mga hakbang sa background sa loob ng 7 araw.",
     "delSections": [
       {
         "h": "Pagbura sa website o sa app",
         "ul": [
           "Mag-sign in sa **hesap.time.bumba.tr**, o buksan ang **Settings › Account** sa app.",
-          "Sa **Burahin ang account**, piliin ang **Sa Saat Tarih lang** o **Sa lahat ng produkto ng Bumba**.",
-          "Ilagay ang inyong password (hindi kailangan kung nag-sign in kayo sa nakaraang 24 na oras) at kumpirmahin.",
-          "Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw; padadalhan namin kayo ng email. Puwede pa rin ninyong gamitin ang Saat Tarih nang walang account."
+          "Sa **Burahin ang account**, ilagay ang inyong password (hindi kailangan kung nag-sign in kayo sa nakaraang 24 oras) at ipadala ang kahilingan.",
+          "Buksan ang link sa inyong email at pindutin ang **Kinukumpirma ko** sa pahina. May bisa ang link nang 7 araw; kung hindi makumpirma sa panahong iyon, makakansela ang kahilingan at mananatili ang account.",
+          "Pagkakumpirma, agad na mabubura ang inyong account at matatapos ang mga hakbang sa background sa loob ng 7 araw; padadalhan namin kayo ng email. Magagamit pa rin ninyo ang Saat Tarih nang walang account."
         ]
       },
       {
@@ -3507,7 +3507,7 @@
         "ul": [
           "Ang inyong email address, profile (kasama ang larawan) at ang hindi na maibabalik na hash ng inyong password.",
           "Ang inyong mga session, mga record ng app na nasa account, at mga badge.",
-          "Kung pipiliin ninyo ang **Sa lahat ng produkto ng Bumba**, mabubura rin ang inyong mga membership sa ibang produkto ng Bumba.",
+          "Ang Saat Tarih account lang ninyo ang mabubura. Mananatili roon ang mga account ninyo sa ibang produkto ng Bumba; bawat isa ay binubura sa pahina ng account ng produktong iyon.",
           "Kusang nabubura ang mga kopya sa backup sa loob ng hindi hihigit sa 30 araw (30 araw itinatago ang mga backup)."
         ]
       },

@@ -144,21 +144,25 @@ class AccountTest {
         assertEquals("account.err.password", Account.changePassword("Guclu-sifre1", "kisa").err)
     }
 
-    @Test fun deleteHasTwoScopes() = runBlocking {
+    @Test fun deleteAsksForEmailConfirmation() = runBlocking {
         fake { _, p, _, _ ->
             when (p) {
                 "/api/auth/sign-in/email" -> signInResp()
-                "/v1/hesap/sil" -> if (calls.last().third!!.optString("sifre") == "yanlis") Account.Resp(401, "{\"hata\":\"sifre\"}", null) else Account.Resp(200, "{\"silindi\":true}", null)
+                "/v1/hesap/sil" -> if (calls.last().third!!.optString("sifre") == "yanlis") Account.Resp(401, "{\"hata\":\"sifre\"}", null)
+                    else Account.Resp(200, "{\"bekliyor\":true,\"istek\":{\"tur\":\"hesap\",\"sonGun\":\"2026-11-23T10:00:00.000Z\"}}", null)
+                "/v1/silme-istegi/iptal" -> Account.Resp(200, "{\"iptal\":true}", null)
                 else -> empty
             }
         }
         Account.signIn("ayse@example.com", "Guclu-sifre1")
-        assertEquals("account.err.wrongPassword", Account.delete("urun", "yanlis").err)
-        assertTrue(Account.signedIn)
-        assertTrue(Account.delete("hepsi", "").ok)
-        assertEquals("hepsi", calls.last().third!!.getString("kapsam"))
+        assertEquals("account.err.wrongPassword", Account.delete("yanlis").err)
+        val r = Account.delete("")
+        assertTrue(r.ok)
+        assertFalse(calls.last().third!!.has("kapsam")) // 5.21: yalnız Saat Tarih'teki hesap
         assertFalse(calls.last().third!!.has("sifre")) // son 24 saatte girişte şifre gerekmez
-        assertFalse(Account.signedIn)
+        assertEquals("hesap", JSONObject(r.data!!).getString("tur"))
+        assertTrue(Account.signedIn) // e-postadaki bağlantıyla onaylanana kadar hesap sürer
+        assertTrue(Account.cancelDelete().ok)
     }
 
     @Test fun errorMapping() {

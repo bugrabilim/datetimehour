@@ -3445,15 +3445,15 @@
     "delTitle": "Konto löschen | Saat Tarih",
     "delDesc": "So löschen Sie Ihr Saat-Tarih-Konto auf der Website oder in den Apps für iPhone und Android, und was gelöscht wird.",
     "delH1": "Ihr Konto löschen",
-    "delLead": "Ein Konto ist bei Saat Tarih freiwillig und kann jederzeit gelöscht werden. Die Löschung beginnt sofort und ist spätestens nach 7 Tagen abgeschlossen.",
+    "delLead": "Ein Konto ist bei Saat Tarih freiwillig und kann jederzeit gelöscht werden. Sie bestätigen die Löschanfrage über einen Link, der per E-Mail kommt; nach der Bestätigung wird Ihr Konto sofort gelöscht, Hintergrundschritte sind spätestens nach 7 Tagen abgeschlossen.",
     "delSections": [
       {
         "h": "Auf der Website oder in der App löschen",
         "ul": [
           "Melden Sie sich auf **hesap.time.bumba.tr** an oder öffnen Sie in der App **Einstellungen › Konto**.",
-          "Wählen Sie unter **Konto löschen**: **Nur aus Saat Tarih** oder **Aus allen Bumba-Produkten**.",
-          "Geben Sie Ihr Passwort ein (nicht nötig, wenn Sie sich in den letzten 24 Stunden angemeldet haben) und bestätigen Sie.",
-          "Die Löschung beginnt sofort und ist spätestens nach 7 Tagen abgeschlossen; Sie erhalten eine E-Mail. Sie können Saat Tarih ohne Konto weiter nutzen."
+          "Geben Sie unter **Konto löschen** Ihr Passwort ein (nicht nötig, wenn Sie sich in den letzten 24 Stunden angemeldet haben) und senden Sie die Anfrage.",
+          "Öffnen Sie den Link aus der E-Mail und tippen Sie auf der Seite auf **Ich bestätige**. Der Link gilt 7 Tage; bestätigen Sie in dieser Zeit nicht, verfällt die Anfrage und Ihr Konto bleibt, wie es ist.",
+          "Nach der Bestätigung wird Ihr Konto sofort gelöscht, Hintergrundschritte sind spätestens nach 7 Tagen abgeschlossen; Sie erhalten eine E-Mail. Sie können Saat Tarih ohne Konto weiter nutzen."
         ]
       },
       {
@@ -3468,7 +3468,7 @@
         "ul": [
           "Ihre E-Mail-Adresse, Ihr Profil (einschließlich Foto) und der nicht umkehrbare Hash Ihres Passworts.",
           "Ihre Sitzungen, die im Konto gespeicherten App-Einträge und Ihre Abzeichen.",
-          "Wenn Sie **Aus allen Bumba-Produkten** wählen, werden auch Ihre Mitgliedschaften in den anderen Bumba-Produkten gelöscht.",
+          "Gelöscht wird nur Ihr Saat-Tarih-Konto. Ihre Konten in anderen Bumba-Produkten bleiben dort; Sie löschen jedes über die eigene Kontoseite des Produkts.",
           "Kopien in Sicherungen werden spätestens nach 30 Tagen automatisch gelöscht (Sicherungen werden 30 Tage aufbewahrt)."
         ]
       },

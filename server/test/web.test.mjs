@@ -92,7 +92,7 @@ test("yönlendirmeler: girişsiz hesap sayfası girişe, girişli giriş sayfas�
   const tabs = [...r.text.matchAll(/data-tab="([a-z]+)"/g)].map((m) => m[1]);
   assert.deepEqual(tabs, ["profil", "guvenlik", "tercihler", "uyelikler", "veri", "rozetler"]);
   assert.match(r.text, /class="tabpanel on" id="tab-profil"/);
-  for (const k of ["tabProfile", "tabSecurity", "tabPrefs", "tabMembership", "tabData", "products", "download", "delete", "deleteScopeProduct", "deleteScopeAll", "badgesTitle", "deleteDownloadFirst", "deleteKept"]) assert.ok(has(r.text, UI.tr[k]), k);
+  for (const k of ["tabProfile", "tabSecurity", "tabPrefs", "tabMembership", "tabData", "products", "download", "delete", "delPending", "badgesTitle", "deleteDownloadFirst", "deleteKept"]) assert.ok(has(r.text, UI.tr[k]), k);
   // Her sekmenin altında ortak aydınlatma metni ve sözleşme
   assert.equal(r.text.split('<p class="muted legal">').length - 1, 6);
   // E-posta değişikliği mevcut şifreyi ister; silme düğmesi ayrı kırmızı blokta

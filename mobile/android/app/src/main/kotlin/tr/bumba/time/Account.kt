@@ -294,11 +294,6 @@ object Account {
         val r = call("POST", "/v1/uyelik/ac", JSONObject().put("hedefler", org.json.JSONArray(sites)).put("sifre", password), auth = true)
         return if (r.code == 200) Result() else Result(errorOf(r, wrongPassword = true))
     }
-    suspend fun closeProducts(sites: List<String>): Result {
-        val r = call("POST", "/v1/uyelik/kapat", JSONObject().put("hedefler", org.json.JSONArray(sites)), auth = true)
-        return if (r.code == 200) Result() else Result(errorOf(r))
-    }
-
     /** Verilerimi indir (KVKK md. 11): sunucunun JSON dökümü */
     suspend fun download(): Result {
         val r = call("GET", "/v1/verilerim", auth = true)
@@ -311,15 +306,19 @@ object Account {
         AccountSync.forget()
     }
 
-    /** Hesabı sil: "urun" yalnız Saat Tarih'ten, "hepsi" bütün Bumba ürünlerinden. Şifre son 24 saatte girişte gerekmez. */
-    suspend fun delete(scope: String, password: String): Result {
-        val body = JSONObject().put("kapsam", scope)
+    /** Hesabı sil (standart 5.21, "Silme onayı"): istek gönderilir, hesap e-postadaki bağlantıyla onaylanınca silinir.
+     *  Yalnız Saat Tarih'teki hesap silinir. Şifre son 24 saatte girişte gerekmez. data: bekleyen istek (JSON) */
+    suspend fun delete(password: String): Result {
+        val body = JSONObject()
         if (password.isNotEmpty()) body.put("sifre", password)
         val r = call("POST", "/v1/hesap/sil", body, auth = true)
         if (r.code != 200) return Result(errorOf(r, wrongPassword = true))
-        save(null, null)
-        AccountSync.forget()
-        return Result()
+        return Result(data = runCatching { JSONObject(r.body).optJSONObject("istek")?.toString() }.getOrNull())
+    }
+    /** Bekleyen silme isteğini iptal et */
+    suspend fun cancelDelete(): Result {
+        val r = call("POST", "/v1/silme-istegi/iptal", JSONObject(), auth = true)
+        return if (r.code == 200) Result() else Result(errorOf(r))
     }
 
     /** Testler: bellek dışı kayıt yok sayılır */

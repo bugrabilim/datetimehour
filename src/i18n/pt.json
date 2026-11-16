@@ -3498,15 +3498,15 @@
     "delTitle": "Excluir sua conta | Saat Tarih",
     "delDesc": "Como excluir sua conta do Saat Tarih no site ou nos apps para iPhone e Android, e o que é excluído.",
     "delH1": "Excluir sua conta",
-    "delLead": "A conta é opcional no Saat Tarih e pode ser excluída a qualquer momento. A exclusão começa na hora e termina em no máximo 7 dias.",
+    "delLead": "A conta é opcional no Saat Tarih e você pode excluí-la quando quiser. Você confirma o pedido de exclusão por um link enviado ao seu e-mail; depois da confirmação, a conta é excluída na hora e as etapas em segundo plano terminam em até 7 dias.",
     "delSections": [
       {
         "h": "Excluir no site ou no app",
         "ul": [
           "Entre em **hesap.time.bumba.tr** ou abra **Ajustes › Conta** no app.",
-          "Em **Excluir conta**, escolha **Só do Saat Tarih** ou **De todos os produtos Bumba**.",
-          "Digite sua senha (não precisa se você entrou nas últimas 24 horas) e confirme.",
-          "A exclusão começa na hora e termina em no máximo 7 dias; enviamos um e-mail para você. Você pode continuar usando o Saat Tarih sem conta."
+          "Em **Excluir conta**, digite sua senha (não precisa se você entrou nas últimas 24 horas) e envie o pedido.",
+          "Abra o link do e-mail e toque em **Confirmo** na página. O link vale 7 dias; se não confirmar nesse prazo, o pedido é cancelado e sua conta fica como está.",
+          "Depois da confirmação, sua conta é excluída na hora e as etapas em segundo plano terminam em até 7 dias; enviamos um e-mail para você. Você pode continuar usando o Saat Tarih sem conta."
         ]
       },
       {
@@ -3521,7 +3521,7 @@
         "ul": [
           "Seu e-mail, seu perfil (com a foto) e o resumo irreversível da sua senha.",
           "Suas sessões, os registros do app guardados na conta e suas medalhas.",
-          "Se você escolher **De todos os produtos Bumba**, suas associações nos outros produtos Bumba também são excluídas.",
+          "Só a sua conta do Saat Tarih é excluída. Suas contas em outros produtos Bumba continuam lá; cada uma é excluída na página de conta desse produto.",
           "As cópias nos backups são excluídas automaticamente em no máximo 30 dias (os backups ficam guardados por 30 dias)."
         ]
       },

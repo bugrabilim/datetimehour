@@ -326,11 +326,6 @@ final class Account {
         let r = await call("POST", "/v1/uyelik/ac", ["hedefler": sites, "sifre": password], auth: true)
         return r.code == 200 ? .success : .fail(Self.errorOf(r, wrongPassword: true))
     }
-    func closeProducts(_ sites: [String]) async -> Result {
-        let r = await call("POST", "/v1/uyelik/kapat", ["hedefler": sites], auth: true)
-        return r.code == 200 ? .success : .fail(Self.errorOf(r))
-    }
-
     /// Verilerimi indir (KVKK md. 11): sunucunun JSON dökümü
     func download() async -> Result {
         let r = await call("GET", "/v1/verilerim", auth: true)
@@ -343,15 +338,20 @@ final class Account {
         AccountSync.shared.forget()
     }
 
-    /// Hesabı sil: "urun" yalnız Saat Tarih'ten, "hepsi" bütün Bumba ürünlerinden. Şifre son 24 saatte girişte gerekmez.
-    func delete(scope: String, password: String) async -> Result {
-        var body: [String: Any] = ["kapsam": scope]
+    /// Hesabı sil (standart 5.21, "Silme onayı"): istek gönderilir, hesap e-postadaki bağlantıyla onaylanınca silinir.
+    /// Yalnız Saat Tarih'teki hesap silinir. Şifre son 24 saatte girişte gerekmez. data: bekleyen istek (JSON)
+    func delete(password: String) async -> Result {
+        var body: [String: Any] = [:]
         if !password.isEmpty { body["sifre"] = password }
         let r = await call("POST", "/v1/hesap/sil", body, auth: true)
         guard r.code == 200 else { return .fail(Self.errorOf(r, wrongPassword: true)) }
-        save(nil, nil)
-        AccountSync.shared.forget()
-        return .success
+        let istek = (Self.json(r.body)?["istek"] as? [String: Any]).flatMap { try? JSONSerialization.data(withJSONObject: $0) }
+        return Result(data: istek)
+    }
+    /// Bekleyen silme isteğini iptal et
+    func cancelDelete() async -> Result {
+        let r = await call("POST", "/v1/silme-istegi/iptal", [:], auth: true)
+        return r.code == 200 ? .success : .fail(Self.errorOf(r))
     }
 
     /// Fotoğraf: kare kırpılıp en çok 512 piksele küçültülür, WebP (≤ ~190 KB); yeniden kodlandığı için EXIF ve konum

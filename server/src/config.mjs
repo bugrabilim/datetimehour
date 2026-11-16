@@ -53,7 +53,8 @@ export function loadConfig(env = process.env) {
     centerKey: env.UYELIK_ANAHTARI || "",
     // Ortak üyelik servisinin adresi sabittir; testler sahte merkezi UYELIK_MERKEZ ile verir
     centerUrl: trim(env.UYELIK_MERKEZ || "https://bumbagroup.com/api/uyelik"),
-    adminEmail: String(env.ADMIN_EMAIL || "bilgi@bumbagroup.com").toLowerCase(),
+    // Yönetici adresi kodda sabit (madde 10, 5.21: istisna yok, ortama ADMIN_EMAIL girilmez)
+    adminEmail: "bilgi@bumbagroup.com",
     contactEmail: "bilgi@bumbagroup.com",
     commit: env.SOURCE_COMMIT || env.COMMIT || "",
     // Panelde "sürüm" satırının tarihi: imaj derlenirken yazılan BUILD_DATE dosyası (Dockerfile) ya da COMMIT_DATE

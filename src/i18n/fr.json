@@ -3459,15 +3459,15 @@
     "delTitle": "Supprimer votre compte | Saat Tarih",
     "delDesc": "Comment supprimer votre compte Saat Tarih sur le site ou dans les applications iPhone et Android, et ce qui est supprimé.",
     "delH1": "Supprimer votre compte",
-    "delLead": "Le compte est facultatif dans Saat Tarih et vous pouvez le supprimer à tout moment. La suppression commence immédiatement et se termine au plus tard sous 7 jours.",
+    "delLead": "Le compte est facultatif dans Saat Tarih et vous pouvez le supprimer à tout moment. Vous confirmez la demande de suppression par un lien envoyé à votre adresse e-mail ; après confirmation, votre compte est supprimé aussitôt et les étapes en arrière-plan se terminent au plus tard sous 7 jours.",
     "delSections": [
       {
         "h": "Supprimer sur le site ou dans l'application",
         "ul": [
           "Connectez-vous sur **hesap.time.bumba.tr**, ou ouvrez **Réglages › Compte** dans l'application.",
-          "Dans **Supprimer le compte**, choisissez **De Saat Tarih seulement** ou **De tous les produits Bumba**.",
-          "Saisissez votre mot de passe (inutile si vous vous êtes connecté au cours des dernières 24 heures) et confirmez.",
-          "La suppression commence immédiatement et se termine au plus tard sous 7 jours ; vous recevez un e-mail. Vous pouvez continuer à utiliser Saat Tarih sans compte."
+          "Dans **Supprimer le compte**, saisissez votre mot de passe (inutile si vous vous êtes connecté ces dernières 24 heures) et envoyez la demande.",
+          "Ouvrez le lien reçu par e-mail et touchez **Je confirme** sur la page. Le lien est valable 7 jours ; sans confirmation dans ce délai, la demande est annulée et votre compte reste tel quel.",
+          "Après confirmation, votre compte est supprimé aussitôt et les étapes en arrière-plan se terminent au plus tard sous 7 jours ; nous vous envoyons un e-mail. Vous pouvez continuer à utiliser Saat Tarih sans compte."
         ]
       },
       {
@@ -3482,7 +3482,7 @@
         "ul": [
           "Votre adresse e-mail, votre profil (photo comprise) et l'empreinte irréversible de votre mot de passe.",
           "Vos sessions, les données de l'application conservées dans le compte et vos badges.",
-          "Si vous choisissez **De tous les produits Bumba**, vos adhésions aux autres produits Bumba sont aussi supprimées.",
+          "Seul votre compte Saat Tarih est supprimé. Vos comptes dans les autres produits Bumba y restent ; chacun se supprime depuis la page de compte de ce produit.",
           "Les copies dans les sauvegardes sont supprimées automatiquement sous 30 jours au plus tard (les sauvegardes sont conservées 30 jours)."
         ]
       },

@@ -3418,15 +3418,15 @@
     "delTitle": "Hesabı silmək | Saat Tarih",
     "delDesc": "Saat Tarix hesabınızı saytda və ya iPhone və Android tətbiqlərində necə silmək olar, nələr silinir.",
     "delH1": "Hesabınızı silmək",
-    "delLead": "Saat Tarix-də hesab könüllüdür və istədiyiniz vaxt silinə bilər. Silmə dərhal başlayır, ən gec 7 gün içində tamamlanır.",
+    "delLead": "Saat Tarih-də hesab istəyə bağlıdır və istədiyiniz vaxt silinə bilər. Silmə sorğusunu e-poçtunuza gələn keçidlə təsdiqləyirsiniz; təsdiqdən sonra hesabınız dərhal silinir, arxa plandakı işlər ən gec 7 gün ərzində tamamlanır.",
     "delSections": [
       {
         "h": "Saytda və ya tətbiqdə silmək",
         "ul": [
           "**hesap.time.bumba.tr** ünvanında daxil olun və ya tətbiqdə **Parametrlər › Hesab** bölməsini açın.",
-          "**Hesabı sil** bölməsində seçin: **Yalnız Saat Tarix-dən** və ya **Bütün Bumba məhsullarından**.",
-          "Şifrənizi daxil edin (son 24 saatda daxil olmusunuzsa lazım deyil) və təsdiqləyin.",
-          "Silmə dərhal başlayır, ən gec 7 gün içində tamamlanır; e-poçt ünvanınıza məlumat gedir. Saat Tarix-dən hesabsız istifadəyə davam edə bilərsiniz."
+          "**Hesabı sil** bölməsində şifrənizi daxil edin (son 24 saatda daxil olmusunuzsa, lazım deyil) və sorğunu göndərin.",
+          "E-poçtunuza gələn keçidi açın və səhifədə **Təsdiqləyirəm** düyməsinə toxunun. Keçid 7 gün etibarlıdır; bu müddətdə təsdiqləməsəniz, sorğu ləğv olunur və hesabınız olduğu kimi qalır.",
+          "Təsdiqdən sonra hesabınız dərhal silinir, arxa plandakı işlər ən gec 7 gün ərzində tamamlanır; e-poçt ünvanınıza məlumat gedir. Saat Tarih-dən hesabsız istifadəyə davam edə bilərsiniz."
         ]
       },
       {
@@ -3441,7 +3441,7 @@
         "ul": [
           "E-poçt ünvanınız, profil məlumatlarınız (foto daxil) və şifrənizin geri qaytarılmayan xülasəsi.",
           "Sessiyalarınız, hesabda saxlanan tətbiq qeydləriniz və nişanlarınız.",
-          "**Bütün Bumba məhsullarından** seçsəniz, digər Bumba məhsullarındakı üzvlükləriniz də silinir.",
+          "Yalnız Saat Tarih-dəki hesabınız silinir. Digər Bumba məhsullarındakı hesablarınız orada qalır; hər birini həmin məhsulun öz hesab səhifəsindən silirsiniz.",
           "Ehtiyat nüsxələrdəki kopiyalar ən gec 30 gün içində avtomatik silinir (ehtiyat nüsxələr 30 gün saxlanır)."
         ]
       },

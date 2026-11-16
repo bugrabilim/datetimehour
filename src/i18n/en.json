@@ -3418,15 +3418,15 @@
     "delTitle": "Delete your account | Saat Tarih",
     "delDesc": "How to delete your Saat Tarih account on the website or in the iPhone and Android apps, and what is deleted.",
     "delH1": "Deleting your account",
-    "delLead": "An account is optional in Saat Tarih and you can delete it at any time. Deletion starts immediately and is completed within 7 days at the latest.",
+    "delLead": "An account is optional in Saat Tarih and you can delete it at any time. You confirm the deletion request with a link sent to your email; once you confirm, your account is deleted immediately and background steps are completed within 7 days at the latest.",
     "delSections": [
       {
         "h": "Delete on the website or in the app",
         "ul": [
           "Sign in at **hesap.time.bumba.tr**, or open **Settings › Account** in the app.",
-          "Under **Delete account**, choose **From Saat Tarih only** or **From all Bumba products**.",
-          "Enter your password (not needed if you signed in within the last 24 hours) and confirm.",
-          "Deletion starts immediately and is completed within 7 days at the latest; we email you. You can keep using Saat Tarih without an account."
+          "Under **Delete account**, enter your password (not needed if you signed in within the last 24 hours) and send the request.",
+          "Open the link sent to your email and tap **I confirm** on the page. The link is valid for 7 days; if you don't confirm in that time, the request is cancelled and your account stays as it is.",
+          "Once you confirm, your account is deleted immediately and background steps are completed within 7 days at the latest; we email you. You can keep using Saat Tarih without an account."
         ]
       },
       {
@@ -3441,7 +3441,7 @@
         "ul": [
           "Your email address, your profile (including the photo) and the irreversible hash of your password.",
           "Your sessions, the app records kept in your account and your badges.",
-          "If you choose **From all Bumba products**, your memberships in the other Bumba products are deleted too.",
+          "Only your Saat Tarih account is deleted. Your accounts in other Bumba products stay there; you delete each one from that product's own account page.",
           "Copies in backups are deleted automatically within 30 days at the latest (backups are kept for 30 days)."
         ]
       },

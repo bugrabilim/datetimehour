@@ -767,7 +767,7 @@ for (const l of LANGS) {
       check(home.includes(`href="https://hesap.time.bumba.tr/hesap?dil=${l}" data-account-link>`) && home.includes(ACC[l].myAccount), `ayarlar: Hesabım bağlantısı yok (${l})`);
       check(home.includes(`href="https://hesap.time.bumba.tr/hata-bildir?dil=${l}" data-account-link>`) && home.includes(ACC[l].fbTitle), `ayarlar: Hata bildir bağlantısı yok (${l})`);
       const del = read(l === "tr" ? "hesap-silme" : `${base}account-deletion`);
-      check(/name="robots" content="index/.test(del) && /bilgi@bumbagroup\.com/.test(del) && /<ol>/.test(del) && del.includes(ACC[l].deleteScopeAll) && /\b7\b/.test(del) && !/2 (yıl|years)/.test(del), `hesap silme sayfası eksik (${l})`);
+      check(/name="robots" content="index/.test(del) && /bilgi@bumbagroup\.com/.test(del) && /<ol>/.test(del) && del.includes(ACC[l].delConfirmButton) && /\b7\b/.test(del) && !/2 (yıl|years)/.test(del), `hesap silme sayfası eksik (${l})`);
       const j = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"));
       const sec = j.privacy.sections.find((x) => x.id === (l === "tr" ? "hesap" : "account"));
       const txt = sec ? sec.p.join(" ") : "";
