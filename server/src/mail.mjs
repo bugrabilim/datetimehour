@@ -1,7 +1,8 @@
 /* Üyelik e-postaları (standart madde 7 ve "E-posta gönderimi"): Resend ile bilgi@bumbagroup.com'dan, gönderen adı
    ürünün adı. Yalnız standarttaki liste: doğrulama, şifre sıfırlama, "şifreniz değişti", e-posta değişikliği onayı,
    "hesabınız silindi", yeniden kayıt denemesi, askı, yeniden açılma, kalıcı kapatma, başka üründe üyelik açıldı ya da
-   kapandı, "hesaplarınız birleştirildi" (şifre seçimi bağlantısıyla) ve kutlama. Hoş geldin, tanıtım ya da bülten yok. Metin + HTML; açılma ve tıklama izleme yok (Resend'de alan
+   kapandı, "hesaplarınız birleştirildi" (şifre seçimi bağlantısıyla), kutlama ve "hesabınız açıldı" (e-posta doğrulanınca; sahibin
+   kararı, 15 Kasım 2026, standarda eklenmesi istendi: yalnız işlem bilgisi ve hesap bağlantısı). Hoş geldin, tanıtım ya da bülten yok. Metin + HTML; açılma ve tıklama izleme yok (Resend'de alan
    adı ayarı, kodda izleme parametresi açılmaz). Metinler 19 dilde (i18n/mail.json); İngilizceye düşülmez. */
 import crypto from "node:crypto";
 import { readFileSync } from "node:fs";
@@ -70,6 +71,7 @@ export function render(kind, lang, vars = {}, cfg = {}) {
   const subject = fill(k.subject);
   let body = fill(k.body);
   if (kind === "suspended" && vars.until) body += " " + fill(t.suspendedUntil);
+  if (kind === "opened" && vars.no != null) body += " " + fill(t.openedNo);
   const button = k.button && vars.url ? k.button : "";
   const ignore = ["verify", "reset", "changeOld"].includes(kind) ? t.ignore : "";
   const celebrate = kind === "celebrate";
@@ -128,5 +130,33 @@ export function createMailer(cfg) {
       throw new Error("mail_failed");
     }
   }
-  return { send, outbox, state };
+  /* İçe giden düz metin e-posta (hata bildirimi; sahibin kutusuna). Testlerde kutuya yazılır. */
+  async function sendRaw({ to, subject, text, replyTo }) {
+    state.lastAt = new Date();
+    if (cfg.mailDriver === "memory") {
+      outbox.push({ kind: "raw", to, subject, text, replyTo: replyTo || null });
+      state.lastOk = true;
+      return;
+    }
+    if (cfg.mailDriver !== "resend") {
+      console.log(`[e-posta] ham → ${to.replace(/^(.).*@/, "$1…@")}`);
+      state.lastOk = true;
+      return;
+    }
+    const body = { from: cfg.mailFrom, to: [to], subject, text };
+    if (replyTo) body.reply_to = replyTo;
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${cfg.resendKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      signal: AbortSignal.timeout(15000),
+    }).catch(() => ({ ok: false, status: 0 }));
+    state.lastOk = res.ok;
+    if (!res.ok) {
+      state.lastError = `${res.status}`;
+      console.error(`[e-posta] gönderilemedi (${res.status}) ham`);
+      throw new Error("mail_failed");
+    }
+  }
+  return { send, sendRaw, outbox, state };
 }

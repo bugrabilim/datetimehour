@@ -275,21 +275,19 @@ enum PrayerAlarms {
     }
 }
 
-struct PrayerAlarmSection: View {
+/// Vakitte alarm satırları (bildirim ayarının "Gelişmiş" bölümünde; başlık ve not orada)
+struct PrayerAlarmRows: View {
     @State private var sel = PrayerAlarms.selected
     var body: some View {
-        Section {
-            if PrayerAlarms.supported {
-                ForEach(Prayer.allCases, id: \.self) { p in
-                    Toggle(p.localizedName, isOn: Binding(get: { sel.contains(p) }, set: { on in
-                        if on { sel.insert(p) } else { sel.remove(p) }
-                        PrayerAlarms.setSelected(sel)
-                        Task { await PrayerAlarms.sync() }
-                    }))
-                }
+        if PrayerAlarms.supported {
+            Text(L("prayer.alarm.heading")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.muted)
+            ForEach(Prayer.allCases, id: \.self) { p in
+                Toggle(p.localizedName, isOn: Binding(get: { sel.contains(p) }, set: { on in
+                    if on { sel.insert(p) } else { sel.remove(p) }
+                    PrayerAlarms.setSelected(sel)
+                    Task { await PrayerAlarms.sync() }
+                }))
             }
-        } header: { Text(L("prayer.alarm.heading")) } footer: {
-            Text(L(PrayerAlarms.supported ? "prayer.alarm.note" : "prayer.alarm.unsupported"))
         }
     }
 }

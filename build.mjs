@@ -123,6 +123,7 @@ for (const [name, from] of [
   ["photo.js", "js/photo.js"],
   ["panchang.js", "js/panchang.js"],
   ["globe.js", "js/globe.js"],
+  ["invite.js", "js/invite.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
@@ -228,6 +229,7 @@ function shareUi(lang, url, title, text) {
   return `<details class="share" data-page-share data-url="${esc(url)}" data-title="${esc(title)}" data-text="${esc(text)}"><summary class="share-btn" title="${esc(u.share)}" aria-label="${esc(u.share)}">${ICON_SHARE}<span class="share-label">${esc(u.share)}</span></summary><div class="share-pop">${items}<span class="sr-only" role="status" aria-live="polite" data-share-status></span></div></details>`;
 }
 const ICON_USER = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>`;
+const ICON_BUG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="7" y="7" width="10" height="13" rx="5"/><path d="M9 7a3 3 0 0 1 6 0M12 11v9M4 13h3M17 13h3M5 8l2.5 1.5M19 8l-2.5 1.5M5 19l2.5-1.5M19 19l-2.5-1.5"/></svg>`;
 const ICON_COOKIE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.5A9 9 0 1 1 11.5 3a3 3 0 0 0 4 4 3 3 0 0 0 5.5 5.5z"/><circle cx="8.5" cy="11" r="1"/><circle cx="12" cy="16" r="1"/><circle cx="15.5" cy="13" r="1"/></svg>`;
 const ICON_MENU = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`;
 const ICON_FULL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>`;
@@ -586,7 +588,8 @@ ${(alt ? altLangs : LANGS).filter((l) => l !== lang).map((l) => `<meta property=
           <label class="set-look-row"><span>${esc(u.lookSep)}</span><select class="set-select" data-look="sep">${["colon", "dot"].map((k) => `<option value="${k}">${esc(u.lookSeps[k])}</option>`).join("")}</select></label>
           <label class="set-look-row"><span>${esc(u.lookWeekStart)}</span><select class="set-select" data-look="weekStart">${["mon", "sun", "sat"].map((k) => `<option value="${k}">${esc(u.lookWeekStarts[k])}</option>`).join("")}</select></label>
           <span class="set-sub">${esc(u.lookNote)}</span></div>
-        <a class="set-item" href="${HESAP_ORIGIN}/hesap?dil=${lang}">${ICON_USER}<span>${esc(ACCOUNT_UI[lang].title)}</span></a>
+        <a class="set-item" href="${HESAP_ORIGIN}/hesap?dil=${lang}" data-account-link>${ICON_USER}<span>${esc(ACCOUNT_UI[lang].myAccount)}</span></a>
+        <a class="set-item" href="${HESAP_ORIGIN}/hata-bildir?dil=${lang}" data-account-link>${ICON_BUG}<span>${esc(ACCOUNT_UI[lang].fbTitle)}</span></a>
         <a class="set-item" href="${ROUTES[lang].privacy}">${ICON_LOCK}<span>${esc(t.consent.privacy)}</span></a>
         <button type="button" class="set-item" data-consent-open aria-haspopup="dialog">${ICON_COOKIE}<span>${esc(t.consent.footerLink)}</span></button>
         <div class="set-item set-langrow">${ICON_GLOBE}<label class="sr-only" for="${sid}">${esc(u.langMenu)}</label><select id="${sid}" class="set-select" data-lang-select>${langOpts}</select></div>
@@ -901,7 +904,7 @@ function buildPrivacy(lang) {
 /* ---------- Hesap silme bilgi sayfası (standart 5.15 madde 7; 12 Kasım 2026) ----------
    Giriş, kayıt, şifre sıfırlama ve e-posta doğrulama sayfaları üyelik sunucusundadır (hesap.time.bumba.tr, server/src/web.mjs);
    eski statik /hesap/sifre/ ve /hesap/dogrulandi/ adresleri nginx'te oraya 301. Bu sayfa herkese açık kalır (mağazalar hesap
-   silme adresi ister). Ayarlar menüsündeki "Hesap" bağlantısının adı üyelik sunucusunun metinlerinden (server/i18n/account.json). */
+   silme adresi ister). Ayarlar menüsündeki "Hesabım" bağlantısının adı üyelik sunucusunun metinlerinden (server/i18n/account.json). */
 extendRoutes({
   tr: { accountDelete: "/hesap-silme/" },
   en: { accountDelete: "/en/account-deletion/" },
@@ -1869,9 +1872,9 @@ function buildEmbedGen(lang) {
 /* ---------- Doğa (mevsim çarkı, Güneş, Ay, gün uzunluğu) ve hava durumu ---------- */
 const NATURE = (() => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(SRC, "js/nature-calc.js"), "utf8"))(m, undefined); return m.exports; })();
 
-function trDateTime(lang, ms) { // Türkiye saatiyle (UTC+3) "20 Mart 14:46"
-  const d = new Date(ms + 3 * 3600000);
-  return `${d.getUTCDate()} ${I[lang].calendar.months[d.getUTCMonth()]} ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")}`;
+function utcDateTime(lang, ms) { // "20 Mart 14:46 UTC"; sayfada nature.js seçili yerin saatine çevirir (Global düşün, 15 Kasım 2026)
+  const d = new Date(ms);
+  return `${d.getUTCDate()} ${I[lang].calendar.months[d.getUTCMonth()]} ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")} UTC`;
 }
 
 // Halk takvimi (2. analiz #60): geleneksel tarihler, kaynaklar dosyanın "_" alanında
@@ -1892,7 +1895,7 @@ function buildNature(lang) {
       </div>
     </section>`;
   const head = ["spring", "summer", "autumn", "winter"].map((k) => `<th scope="col">${esc(n.seasons[k])}</th>`).join("");
-  const rows = HOL_YEARS.map((y) => { const q = NATURE.seasons(y); return `<tr><th scope="row">${y}</th>${[q.march, q.june, q.sept, q.dec].map((ms) => `<td>${esc(trDateTime(lang, ms))}</td>`).join("")}</tr>`; }).join("");
+  const rows = HOL_YEARS.map((y) => { const q = NATURE.seasons(y); return `<tr><th scope="row">${y}</th>${[q.march, q.june, q.sept, q.dec].map((ms) => `<td data-n-season-at="${ms}">${esc(utcDateTime(lang, ms))}</td>`).join("")}</tr>`; }).join("");
   const facts = ["spring", "summer", "autumn", "winter"].map((k) => `<article class="season-card sc-${k}"><h3>${esc(n.seasons[k])}</h3><ul>${n.facts[k].map((f) => `<li>${esc(f)}</li>`).join("")}</ul></article>`).join("");
   const cell = (label, attr) => `<div class="fact"><dt>${esc(label)}</dt><dd ${attr}>–</dd></div>`;
   const sections = `<section class="section" aria-labelledby="n-turn-h">
@@ -3381,6 +3384,41 @@ function errorPage(kind) {
     searchVersion: searchVersion.tr,
   });
 }
+/* ---------- halka ve grup daveti (üyelik aşama 2c, 15 Kasım 2026): /davet/#KOD (grup: #g:KOD), bütün diller bir arada, noindex ----------
+   Uygulamadaki "Davet et" bu adresi paylaşır. invite.js tarayıcının diline uyan bölümü gösterir; uygulama kuruluysa
+   "Uygulamada aç" saattarih://davet?kod=KOD açar (Android'de https bağlantısı da uygulamayı önerir). */
+function invitePage() {
+  const block = (lang, s) => `<section class="center-page" data-invite="${lang}" lang="${lang}" dir="${DIR(lang)}"${lang === "en" ? "" : " hidden"}>
+  <div class="wrap">
+    <h1 data-invite-kind="circle">${esc(s.h1)}</h1>
+    <h1 data-invite-kind="group" hidden>${esc(s.h1Group)}</h1>
+    <p class="lead" data-invite-kind="circle">${esc(s.lead)}</p>
+    <p class="lead" data-invite-kind="group" hidden>${esc(s.leadGroup)}</p>
+    <div data-invite-has hidden>
+      <p class="invite-label">${esc(s.code)}</p>
+      <p class="invite-code" dir="ltr" data-invite-code></p>
+      <p><a class="btn" data-invite-open href="saattarih://davet">${esc(s.open)}</a></p>
+      <p data-invite-kind="circle">${esc(s.how)}</p>
+      <p data-invite-kind="group" hidden>${esc(s.howGroup)}</p>
+      <p><a href="https://apps.apple.com/app/id6823767495">${esc(s.get)}</a></p>
+    </div>
+    <p data-invite-none>${esc(s.none)}</p>
+  </div>
+</section>`;
+  return layout({
+    lang: "en",
+    title: I.en.invite.title,
+    description: I.en.invite.lead,
+    body: LANGS.map((l) => block(l, I[l].invite)).join(""),
+    noindex: true,
+    error: true,
+    noStats: true,
+    path: "",
+    scripts: ["invite.js"],
+    searchVersion: searchVersion.en,
+  });
+}
+write("davet/index.html", invitePage());
 write("404.html", errorPage("notFound"));
 write("500.html", errorPage("serverError"));
 

@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import org.json.JSONArray
+import org.json.JSONObject
 import tr.bumba.time.core.Prayer
 import tr.bumba.time.core.PrayerTimes
 import java.time.Instant
@@ -101,12 +102,44 @@ object Wear {
 
     fun province(slug: String) = provinces.firstOrNull { it.slug == slug } ?: provinces.first { it.slug == "istanbul" }
 
-    /** Seçili yer: il ya da otomatik (son bulunan konum; yoksa İstanbul) */
+    /** Verideki eski saat dilimi adları (telefon yeni adı verebilir) */
+    private val zoneAliases = mapOf(
+        "Europe/Kyiv" to "Europe/Kiev", "Asia/Calcutta" to "Asia/Kolkata", "Asia/Saigon" to "Asia/Ho_Chi_Minh",
+        "Asia/Katmandu" to "Asia/Kathmandu", "Asia/Rangoon" to "Asia/Yangon", "Asia/Yangon" to "Asia/Rangoon",
+        "America/Buenos_Aires" to "America/Argentina/Buenos_Aires", "Asia/Dacca" to "Asia/Dhaka",
+    )
+
+    /**
+     * Konum yokken varsayılan yer (Global düşün, 15 Kasım 2026): saatin saat dilimi Türkiye'ninse İstanbul ili (Diyanet),
+     * değilse o dilimin şehri ya da en kalabalık yeri (zone-places.json, gen-strings üretir; telefondaki DefaultPlace
+     * kuralı), dilim tabloda yoksa aynı bölgede şu an aynı UTC farkındaki en kalabalık yer.
+     */
+    fun fallback(zone: ZoneId = ZoneId.systemDefault()): WPlace {
+        val ist = province("istanbul").let { WPlace("auto", it.displayName, it.lat, it.lon, turkey) }
+        val id = zone.id
+        if (id in setOf("Europe/Istanbul", "Asia/Istanbul", "Turkey")) return ist
+        val o = runCatching { JSONObject(app.assets.open("zone-places.json").bufferedReader().use { it.readText() }) }.getOrNull() ?: return ist
+        val langs = o.getJSONArray("l").let { a -> (0 until a.length()).map { a.getString(it) } }
+        val rows = o.getJSONArray("z").let { a -> (0 until a.length()).map { a.getJSONArray(it) } }
+        val ids = setOfNotNull(id, zoneAliases[id])
+        val now = java.time.Instant.now()
+        val row = rows.firstOrNull { it.getString(0) in ids } ?: id.substringBefore('/', "").takeIf { it.isNotEmpty() }?.let { region ->
+            val off = zone.rules.getOffset(now)
+            rows.filter { r -> r.getString(0).startsWith("$region/") && runCatching { ZoneId.of(r.getString(0)).rules.getOffset(now) == off }.getOrDefault(false) }
+                .maxByOrNull { it.getDouble(3) }
+        } ?: return ist
+        val names = row.getJSONArray(4)
+        val i = langs.indexOf(lang).takeIf { it >= 0 } ?: langs.indexOf("en").coerceAtLeast(0)
+        val name = names.optString(i).ifEmpty { names.optString(0) }
+        return WPlace("auto", name, row.getDouble(1), row.getDouble(2), zone)
+    }
+
+    /** Seçili yer: il ya da otomatik (son bulunan konum; yoksa saatin saat diliminin yeri, Türkiye'de İstanbul) */
     fun place(): WPlace {
         val sel = prefs.getString("place", "auto")!!
         if (sel != "auto") return province(sel).let { WPlace(it.slug, it.displayName, it.lat, it.lon, turkey) }
         val sp = prefs
-        if (!sp.contains("auto.lat")) return province("istanbul").let { WPlace("auto", it.displayName, it.lat, it.lon, turkey) }
+        if (!sp.contains("auto.lat")) return fallback()
         return WPlace("auto", sp.getString("auto.name", "")!!, sp.getFloat("auto.lat", 0f).toDouble(), sp.getFloat("auto.lon", 0f).toDouble(),
             runCatching { ZoneId.of(sp.getString("auto.tz", "")!!) }.getOrDefault(ZoneId.systemDefault()))
     }

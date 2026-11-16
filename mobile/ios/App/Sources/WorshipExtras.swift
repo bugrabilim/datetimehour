@@ -369,18 +369,22 @@ struct SkyCountdown: View {
         let left = Int(next.at.timeIntervalSince(now).rounded(.up))
         let sky = skyColors(entries, now, dark: scheme == .dark)
         Button { words.toggle() } label: {
-            VStack(spacing: 6) {
-                LineIcon(name: prayerLineIcon(next.prayer), size: 30, c1: sky.text, c2: sky.text)
+            VStack(spacing: 4) {
                 if words {
+                    LineIcon(name: prayerLineIcon(next.prayer), size: 26, c1: sky.text, c2: sky.text)
                     Text(countdownWords(left, next.prayer.localizedName))
                         .font(AppFonts.serif ? .custom("Literata-Medium", size: 28, relativeTo: .title) : .system(size: 28, weight: .semibold))
                         .multilineTextAlignment(.center)
                 } else {
-                    Text(String(format: String(localized: "prayer.nextIn"), next.prayer.localizedName))
-                        .font(.subheadline).opacity(0.88)
+                    // Simge ve "… vaktine kalan süre" tek satırda (16 Kasım 2026: Vakitler ekranı Yatsı'ya kadar sığsın)
+                    HStack(spacing: 8) {
+                        LineIcon(name: prayerLineIcon(next.prayer), size: 22, c1: sky.text, c2: sky.text)
+                        Text(String(format: String(localized: "prayer.nextIn"), next.prayer.localizedName))
+                            .font(.subheadline).opacity(0.88)
+                    }
                     // Büyük sayaç: ince (300) ve tablo rakamlı (doğal tasarım bölüm 3.2)
                     Text(Fmt.countdown(left))
-                        .font(.system(size: 52, weight: .light))
+                        .font(.system(size: 48, weight: .light))
                         .monospacedDigit()
                         .lineLimit(1).minimumScaleFactor(0.6)
                         .environment(\.layoutDirection, .leftToRight)
@@ -388,7 +392,7 @@ struct SkyCountdown: View {
             }
             .foregroundStyle(sky.text)
             .frame(maxWidth: .infinity)
-            .padding(.top, 16).padding(.bottom, 22).padding(.horizontal, 12)
+            .padding(.top, 14).padding(.bottom, 18).padding(.horizontal, 12)
             .background {
                 // Köşede hatem, altta kubbe-minare silueti (doğal tasarım madde 15; %10 ve %12)
                 ZStack {
@@ -425,13 +429,14 @@ struct PrayedMark: View {
                 Image(systemName: on ? "checkmark.circle.fill" : "circle")
                     .font(.title3)
                     .foregroundStyle(on ? Theme.accent : Theme.muted)
-                    .frame(width: 32, height: 32)
+                    .frame(width: 30, height: 30)
+                    .contentShape(Rectangle().inset(by: -6)) // dokunma alanı küçülmesin
             }
             .buttonStyle(.plain)
             .accessibilityLabel(T("track.markPrayed", entry.prayer.localizedName))
             .accessibilityAddTraits(on ? .isSelected : [])
         } else {
-            Color.clear.frame(width: 32, height: 32)
+            Color.clear.frame(width: 30, height: 30)
         }
     }
 }

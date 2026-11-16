@@ -24,6 +24,10 @@ on:
         description: "Yalnız görselleri üret: App Store Connect'e hiçbir şey yüklenmez (görseller artifact olarak gelir)"
         type: boolean
         default: false
+      urun_sayfalari:
+        description: "Özel ürün sayfaları: yalnız onların görsellerini üret ve sayfaları taslak aç (custom-pages.json; incelemeye gönderilmez)"
+        type: boolean
+        default: false
 
 concurrency:
   group: ios-appstore
@@ -55,21 +59,45 @@ jobs:
             -destination 'generic/platform=iOS Simulator' -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO -quiet build
       - name: Ekran görüntüleri
+        if: ${{ !inputs.urun_sayfalari }}
         run: mobile/ios/scripts/store-screenshots.sh build/Build/Products/Debug-iphonesimulator/SaatTarih.app store-raw
       # Mağaza görselleri (2. analiz #33): çerçeve, kısa başlık (fastlane/captions.json), gece görselinde komodin sahnesi.
       # Sistemdeki Google Chrome'u playwright-core ile kullanır; çıktı deliver'ın yüklediği klasöre gider.
       - name: Mağaza görselleri
+        if: ${{ !inputs.urun_sayfalari }}
         run: |
           npm install --no-save --no-audit --no-fund --prefix "$RUNNER_TEMP/pw" playwright-core@1.56.1
           PW_DIR="$RUNNER_TEMP/pw" node mobile/ios/scripts/frame-screenshots.mjs store-raw mobile/ios/fastlane/screenshots
       - uses: actions/upload-artifact@v4
+        if: ${{ !inputs.urun_sayfalari }}
         with:
           name: app-store-ekran-goruntuleri
           path: mobile/ios/fastlane/screenshots
       - uses: actions/upload-artifact@v4
+        if: ${{ !inputs.urun_sayfalari }}
         with:
           name: app-store-ekran-goruntuleri-ham
           path: store-raw
+      # Özel ürün sayfaları (15 Kasım 2026): görseller sayfa sayfa çekilir ve çerçevelenir, sayfalar taslak açılır
+      - name: Özel ürün sayfası görselleri
+        if: inputs.urun_sayfalari
+        run: |
+          mobile/ios/scripts/cpp-screenshots.sh build/Build/Products/Debug-iphonesimulator/SaatTarih.app cpp-raw
+          npm install --no-save --no-audit --no-fund --prefix "$RUNNER_TEMP/pw" playwright-core@1.56.1
+          for d in cpp-raw/*/; do
+            p=$(basename "$d")
+            PW_DIR="$RUNNER_TEMP/pw" node mobile/ios/scripts/frame-screenshots.mjs "cpp-raw/$p" "cpp/$p"
+          done
+      - uses: actions/upload-artifact@v4
+        if: inputs.urun_sayfalari
+        with:
+          name: ozel-urun-sayfalari
+          path: cpp
+      - name: Özel ürün sayfalarını aç
+        if: ${{ inputs.urun_sayfalari && !inputs.only_images }}
+        run: |
+          pip3 install --quiet --break-system-packages "pyjwt[crypto]==2.10.1" || pip3 install --quiet "pyjwt[crypto]==2.10.1"
+          python3 mobile/ios/scripts/asc_cpp.py olustur cpp
       # Önizleme videosu (dönen dünya) App Store Connect'e elle sürüklenir: sürüm sayfası › iPhone 6,9" önizleme
       - name: Önizleme videosu
         if: inputs.preview
@@ -81,12 +109,12 @@ jobs:
           path: preview
       # Yalnız görsel üretiminde (only_images) yükleme adımları atlanır: mağaza sayfası değişmez
       - name: API anahtarı
-        if: ${{ !inputs.only_images }}
+        if: ${{ !inputs.only_images && !inputs.urun_sayfalari }}
         run: |
           jq -n --arg id "$ASC_KEY_ID" --arg iss "$ASC_ISSUER_ID" --arg key "$ASC_KEY_P8" \
             '{key_id: $id, issuer_id: $iss, key: $key, in_house: false}' > "$RUNNER_TEMP/asc.json"
       - name: Yükle
-        if: ${{ !inputs.only_images }}
+        if: ${{ !inputs.only_images && !inputs.urun_sayfalari }}
         working-directory: mobile/ios
         env:
           SUBMIT: ${{ inputs.submit }}

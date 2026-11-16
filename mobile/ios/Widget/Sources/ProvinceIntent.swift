@@ -41,7 +41,7 @@ struct ProvinceIntent: WidgetConfigurationIntent {
 }
 
 extension ProvinceIntent {
-    /// Seçime göre yer; "Otomatik"te konum (izin yoksa ya da bulunamazsa İstanbul)
+    /// Seçime göre yer; "Otomatik"te konum (izin yoksa ya da bulunamazsa telefonun saat diliminin yeri, Türkiye'de İstanbul)
     func resolvePlace() async -> Place {
         let id = province?.id ?? ProvinceEntity.autoID
         if id != ProvinceEntity.autoID { return Place(province: Province.find(id)) }
@@ -49,6 +49,6 @@ extension ProvinceIntent {
         if let loc = await finder.fetch(requestPermission: false, forWidget: true) {
             return Place(location: loc)
         }
-        return Place(province: Province.find("istanbul"))
+        return Place.fallback()
     }
 }

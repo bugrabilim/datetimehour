@@ -13,6 +13,7 @@ import org.robolectric.annotation.GraphicsMode
 import tr.bumba.time.core.Prayer
 import java.time.Instant
 import java.time.LocalDate
+import java.time.ZoneId
 
 /** Wear OS saati: yer, sıradaki vakit, hicri tarih ve ekran görüntüleri (wear/build/screens) */
 @RunWith(RobolectricTestRunner::class)
@@ -35,6 +36,19 @@ class WearTest {
         assertEquals("İstanbul", Wear.place().name)
         Wear.saveLocation(52.52, 13.40)
         assertEquals(Wear.text("place.myLocation"), Wear.place().name)
+    }
+
+    /** Konum yokken: saat dilimi Türkiye'ninse İstanbul ili, değilse o dilimin yeri (Global düşün, 15 Kasım 2026) */
+    @Test fun zoneFallback() {
+        assertEquals("İstanbul", Wear.fallback(ZoneId.of("Europe/Istanbul")).name)
+        Wear.fallback(ZoneId.of("Europe/Berlin")).let { assertEquals("Berlin", it.name); assertEquals("Europe/Berlin", it.zone.id) }
+        Wear.fallback(ZoneId.of("Asia/Jakarta")).let { assertEquals("Cakarta", it.name); assertEquals(-6.2, it.lat, 0.3) }
+        // Eski ad (Asia/Calcutta → Asia/Kolkata) ve tabloda olmayan dilim (aynı bölge ve UTC farkındaki en kalabalık yer)
+        assertEquals("Mumbai", Wear.fallback(ZoneId.of("Asia/Calcutta")).name)
+        Wear.fallback(ZoneId.of("Europe/Busingen")).let { assertEquals("Europe/Busingen", it.zone.id); assert(it.name.isNotEmpty() && it.name != "İstanbul") }
+        // Otomatik seçili ama konum hiç bulunmadıysa da aynı kural
+        Wear.prefs.edit().clear().putString("place", "auto").commit()
+        assertEquals(Wear.fallback().name, Wear.place().name)
     }
 
     @Test fun hijri() {

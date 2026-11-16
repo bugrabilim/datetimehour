@@ -9,6 +9,8 @@ COPY src ./src
 COPY i18n ./i18n
 COPY data ./data
 COPY web ./web
+# Panelin sürüm tarihi (UTC, derleme anı)
+RUN date -u +%Y-%m-%dT%H:%M:%SZ > BUILD_DATE
 USER node
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s CMD wget -qO- http://127.0.0.1:8080/saglik >/dev/null || exit 1

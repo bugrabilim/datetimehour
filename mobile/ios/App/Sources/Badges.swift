@@ -1,4 +1,5 @@
 import SwiftUI
+import AudioToolbox
 import SaatCore
 
 /// Kazanım rozetleri (Bumba standardı madde 13; Saat Tarih'te yalnız uygulamalarda, 30 Ekim 2026). Her rozet
@@ -101,10 +102,24 @@ final class BadgeStore {
         let (b, first) = queue.removeFirst()
         toastShowsNote = first
         withAnimation { toast = b }
+        BadgeSound.play()
         UIAccessibility.post(notification: .announcement, argument: T("badges.toast", b.name))
+        let id = UUID()
+        toastId = id
         Task { @MainActor in
             try? await Task.sleep(for: .seconds(first ? 7 : 4))
-            withAnimation { self.toast = nil }
+            guard self.toastId == id else { return }
+            self.dismissToast()
+        }
+    }
+
+    @ObservationIgnored private var toastId = UUID()
+    /// Bildirimi kapatır (dokununca ya da süre dolunca), sıradakini gösterir
+    func dismissToast() {
+        guard toast != nil else { return }
+        toastId = UUID()
+        withAnimation { toast = nil }
+        Task { @MainActor in
             try? await Task.sleep(for: .milliseconds(400))
             self.showNext()
         }
@@ -151,6 +166,17 @@ final class BadgeStore {
 }
 
 /// Rozet kazanılınca üstte beliren kısa bildirim; dokununca Rozetler açılır
+/// Rozet kazanınca kısa başarım sesi (`badge-win.caf`, sentez; mobile/shared/sounds/gen-badge.mjs). Sistem sesi olarak
+/// çalar: telefon sessizdeyse çalmaz, müziği kesmez, ses oturumuna dokunmaz.
+enum BadgeSound {
+    private static let id: SystemSoundID? = {
+        guard let url = Bundle.main.url(forResource: "badge-win", withExtension: "caf") else { return nil }
+        var sid: SystemSoundID = 0
+        return AudioServicesCreateSystemSoundID(url as CFURL, &sid) == noErr ? sid : nil
+    }()
+    static func play() { if let id { AudioServicesPlaySystemSound(id) } }
+}
+
 struct BadgeToast: View {
     @State private var store = BadgeStore.shared
 
@@ -171,10 +197,8 @@ struct BadgeToast: View {
             .padding(.horizontal, 16)
             .padding(.top, 6)
             .transition(.move(edge: .top).combined(with: .opacity))
-            .onTapGesture {
-                Router.shared.tab = .tools
-                Router.shared.toolsPath = [.badges]
-            }
+            // Dokununca yalnız kapanır (sahibin isteği, 15 Kasım 2026); rozetler Tümü'nde
+            .onTapGesture { store.dismissToast() }
             .accessibilityElement(children: .combine)
         }
     }

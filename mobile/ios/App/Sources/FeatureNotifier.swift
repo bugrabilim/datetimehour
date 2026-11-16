@@ -91,6 +91,70 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
     static var hourlyTo: Int { UserDefaults.standard.object(forKey: hourlyToKey) as? Int ?? 21 }
 }
 
+/// Saat başı ve sesli saat (16 Kasım 2026, sahibin isteği: "saat başı ya da kullanıcının seçeceği düzende sesli saat, hava
+/// durumu"): sıklık (60/30/15 dk), günler, ses (bildirim sesi, saati söyle, saati ve havayı söyle). Android'de aynı anahtarlar.
+/// Hava yoksa ve 24 kaydı geçmiyorsa yinelenen bildirimle; değilse önümüzdeki anlar tek tek (hava o saatin tahmininden).
+@MainActor
+enum HourlyChime {
+    nonisolated static let everyKey = "notify.hourly.every"
+    nonisolated static let daysKey = "notify.hourly.days"
+    nonisolated static let soundKey = "notify.hourly.sound"
+    /// Ses dosyaları (Library/Sounds): saat "hvt-…" (kalıcı), saat + hava "hvw-…" (iki gün sonra silinir)
+    nonisolated static let prefix = "hv"
+    nonisolated static let everyOptions = [60, 30, 15]
+    nonisolated static let soundOptions = ["system", "voice", "weather"]
+
+    static var every: Int {
+        let v = UserDefaults.standard.integer(forKey: everyKey)
+        return everyOptions.contains(v) ? v : 60
+    }
+    /// ISO günleri (1 pazartesi … 7 pazar); kayıt yoksa her gün
+    static var days: Set<Int> {
+        let s = Set((UserDefaults.standard.string(forKey: daysKey) ?? "").split(separator: ",").compactMap { Int($0) }.filter { (1...7).contains($0) })
+        return s.isEmpty ? Set(1...7) : s
+    }
+    static var sound: String {
+        let s = UserDefaults.standard.string(forKey: soundKey) ?? "system"
+        return soundOptions.contains(s) ? s : "system"
+    }
+
+    /// Gün içindeki anlar: başlangıç saatinden bitiş saatine, bitiş saatinde yalnız tam saat
+    static func slots(from: Int, to: Int, every: Int) -> [(hour: Int, minute: Int)] {
+        let hours = from <= to ? Array(from...to) : Array(from...23) + Array(0...to)
+        return hours.flatMap { h in stride(from: 0, to: 60, by: every).compactMap { m in h == to && m > 0 ? nil : (h, m) } }
+    }
+
+    static var slots: [(hour: Int, minute: Int)] { slots(from: NotifyFeature.hourlyFrom, to: NotifyFeature.hourlyTo, every: every) }
+
+    /// Yinelenen bildirimle kurulur mu (iOS en çok 64 bekleyen bildirim tutar; yer vakitlere kalsın)
+    static var repeating: Bool {
+        sound != "weather" && slots.count * (days.count == 7 ? 1 : days.count) <= 24
+    }
+
+    static func label(_ at: Date) -> String { [Fmt.time(at), Fmt.ampm(at)].filter { !$0.isEmpty }.joined(separator: " ") }
+
+    /// Konuşmalı bildirim sesi (kısa zil + metin, telefonun konuşma sesiyle); üretilemezse telefonun sesi
+    static func sound(text: String, kind: String) async -> UNNotificationSound {
+        // Dosya adı metinden (kararlı FNV-1a; Swift'in hashValue'su her açılışta değişir)
+        var h: UInt64 = 0xcbf29ce484222325
+        for b in (NotificationSounds.voiceKey + text).utf8 { h = (h ^ UInt64(b)) &* 0x100000001b3 }
+        let name = "\(prefix)\(kind)-\(AppLocale.code)-\(String(h, radix: 16)).caf"
+        return await NotificationSounds.make(name: name, text: text) ? UNNotificationSound(named: UNNotificationSoundName(name)) : .default
+    }
+
+    /// İki günden eski saat + hava seslerini siler
+    static func cleanup() {
+        let fm = FileManager.default, dir = NotificationSounds.directory
+        guard let files = try? fm.contentsOfDirectory(atPath: dir.path) else { return }
+        for f in files where f.hasPrefix("\(prefix)w-") {
+            let url = dir.appendingPathComponent(f)
+            if let d = (try? fm.attributesOfItem(atPath: url.path))?[.modificationDate] as? Date, Date().timeIntervalSince(d) > 2 * 86_400 {
+                try? fm.removeItem(at: url)
+            }
+        }
+    }
+}
+
 /// Kurulacak tek seferlik bildirim (vakitler ve özellikler aynı listede zamana göre sıralanır)
 struct PlannedNotification {
     let id: String
@@ -119,6 +183,7 @@ enum FeatureNotifier {
         if NotifyFeature.sun.isOn { out += sun(place: place, now: now, days: days) }
         if NotifyFeature.dst.isOn { out += dst(now: now) + worldDST(now: now) }
         if NotifyFeature.weather.isOn { out += await weather(place: place, now: now) }
+        if NotifyFeature.hourly.isOn && !HourlyChime.repeating { out += await hourlyOnce(place: place, now: now) }
         out += CountdownItem.reminders(now: now) // kişisel geri sayımların hatırlatmaları (her biri kendi ayarıyla)
         if NotifyFeature.bedtime.isOn { out += SleepPlan.reminders(now: now, days: days) } // uyku planı kuruluysa
         out += AlarmItem.preNotifications(now: now) // yaklaşan alarm (her alarm kendi ayarıyla)
@@ -426,21 +491,68 @@ enum FeatureNotifier {
         return out
     }
 
-    /// Saat başı: her saat için günlük yinelenen tek bildirim (iOS sınırında az yer tutsun diye)
-    static func hourlyRequests() -> [UNNotificationRequest] {
-        guard NotifyFeature.hourly.isOn else { return [] }
-        let from = NotifyFeature.hourlyFrom, to = NotifyFeature.hourlyTo
-        let hours = from <= to ? Array(from...to) : Array(from...23) + Array(0...to)
-        return hours.map { h in
-            let at = Calendar.current.date(bySettingHour: h, minute: 0, second: 0, of: Date()) ?? Date()
+    /// Saat başı: her an için yinelenen tek bildirim (iOS sınırında az yer tutsun diye; seçili günlerde gün başına bir kayıt).
+    /// Hava söylenecekse ya da kayıt çok olursa boş döner, anlar `hourlyOnce` ile tek tek kurulur.
+    static func hourlyRequests() async -> [UNNotificationRequest] {
+        HourlyChime.cleanup()
+        guard NotifyFeature.hourly.isOn, HourlyChime.repeating else { return [] }
+        let days = HourlyChime.days
+        var out: [UNNotificationRequest] = []
+        for slot in HourlyChime.slots {
+            let at = Calendar.current.date(bySettingHour: slot.hour, minute: slot.minute, second: 0, of: Date()) ?? Date()
             let content = UNMutableNotificationContent()
-            content.title = T("notify.n.hourly", [Fmt.time(at), Fmt.ampm(at)].filter { !$0.isEmpty }.joined(separator: " "))
-            content.sound = .default
+            content.title = T("notify.n.hourly", HourlyChime.label(at))
+            content.sound = HourlyChime.sound == "voice"
+                ? await HourlyChime.sound(text: T("alarm.speakText", HourlyChime.label(at)), kind: "t") : .default
             content.threadIdentifier = "hourly"
-            return UNNotificationRequest(identifier: "\(hourlyPrefix)\(h)", content: content,
-                                         trigger: UNCalendarNotificationTrigger(dateMatching: DateComponents(hour: h, minute: 0),
-                                                                                repeats: true))
+            if days.count == 7 {
+                out.append(UNNotificationRequest(identifier: "\(hourlyPrefix)\(slot.hour)-\(slot.minute)", content: content,
+                                                 trigger: UNCalendarNotificationTrigger(dateMatching: DateComponents(hour: slot.hour, minute: slot.minute),
+                                                                                        repeats: true)))
+            } else {
+                for d in days.sorted() {
+                    out.append(UNNotificationRequest(identifier: "\(hourlyPrefix)\(slot.hour)-\(slot.minute)-\(d)", content: content,
+                                                     trigger: UNCalendarNotificationTrigger(
+                                                        dateMatching: DateComponents(hour: slot.hour, minute: slot.minute, weekday: d % 7 + 1),
+                                                        repeats: true)))
+                }
+            }
         }
+        return out
+    }
+
+    /// Önümüzdeki 24 saatin anları tek tek (hava söylenecekse en çok 12, değilse 24); hava o saatin tahmininden,
+    /// WeatherKit şartı gereği bildirimde " Weather"
+    private static func hourlyOnce(place: AppPlace, now: Date) async -> [PlannedNotification] {
+        let cal = Calendar.current
+        let days = HourlyChime.days
+        let mode = HourlyChime.sound
+        let weather = mode == "weather" ? try? await WeatherCache.weather(lat: place.lat, lon: place.lon) : nil
+        var times: [Date] = []
+        for offset in 0...1 {
+            guard let day = cal.date(byAdding: .day, value: offset, to: now) else { continue }
+            for slot in HourlyChime.slots {
+                guard let at = cal.date(bySettingHour: slot.hour, minute: slot.minute, second: 0, of: day),
+                      at > now, at < now.addingTimeInterval(86_400) else { continue }
+                let iso = (cal.component(.weekday, from: at) + 5) % 7 + 1
+                if days.contains(iso) { times.append(at) }
+            }
+        }
+        var out: [PlannedNotification] = []
+        for at in times.sorted().prefix(mode == "weather" ? 12 : 24) {
+            let time = T("alarm.speakText", HourlyChime.label(at))
+            var body = "", spoken = time
+            if let w = weather, let h = w.hourlyForecast.last(where: { $0.date <= at.addingTimeInterval(1800) }) {
+                let line = T("notify.n.hourlyWeather", h.condition.description, Units.temp(h.temperature))
+                body = line + "\n\u{F8FF} Weather"
+                spoken = T("notify.spoken.hourlyWeather", time, line)
+            }
+            let sound: UNNotificationSound = mode == "system" ? .default
+                : await HourlyChime.sound(text: spoken, kind: body.isEmpty ? "t" : "w")
+            out.append(PlannedNotification(id: "\(featurePrefix)hourly-\(Int(at.timeIntervalSince1970))", fireAt: at,
+                                           title: T("notify.n.hourly", HourlyChime.label(at)), body: body, thread: "hourly", sound: sound))
+        }
+        return out
     }
 
     /// "30 Ekim 2026 Cuma · 14:25" (yerin saatiyle)

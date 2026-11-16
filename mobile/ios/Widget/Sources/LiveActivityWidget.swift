@@ -5,7 +5,7 @@ import WidgetKit
 
 /// Live Activity görünümü (kilit ekranı ve Dynamic Island): zamanlayıcı, pomodoro, kronometre, sıradaki vakit,
 /// gün doğumu/batımı ve hava durumu. Süre sistemin sayacıyla akar (Text(timerInterval:)), uygulamanın her saniye
-/// güncellemesi gerekmez. Hava durumunda süre yerine sıcaklık durur; × düğmesi etkinliği kapatır (LiveWeatherOffIntent).
+/// güncellemesi gerekmez. Hava durumunda süre yerine sıcaklık durur; kapatmak Hava ekranındaki anahtardan ya da Denetim Merkezi'nden (16 Kasım 2026, sahibin isteği: × kalktı).
 struct SaatLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: SaatActivityAttributes.self) { context in
@@ -59,7 +59,6 @@ struct SaatLiveActivity: Widget {
                                 LiveWeatherStyle.mark
                             }
                             Spacer(minLength: 8)
-                            LiveWeatherStyle.closeButton
                         }
                     } else {
                         VStack(alignment: .leading, spacing: 6) {
@@ -126,22 +125,9 @@ enum LiveWeatherStyle {
         }
         .foregroundStyle(.white.opacity(0.85))
     }
-
-    /// × : hava etkinliğini kapatır (Ayarlardaki anahtar da kapanır)
-    static var closeButton: some View {
-        Button(intent: LiveWeatherOffIntent()) {
-            Image(systemName: "xmark")
-                .font(.footnote.weight(.bold))
-                .foregroundStyle(.white)
-                .frame(width: 30, height: 30)
-                .background(.white.opacity(0.22), in: Circle())
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel(L("live.weather.hide"))
-    }
 }
 
-/// Kilit ekranında hava: simge, durum, yer ve en yüksek/en düşük, büyük sıcaklık; altta işaret ve ×
+/// Kilit ekranında hava: simge, durum, yer ve en yüksek/en düşük, büyük sıcaklık; altta işaret
 private struct LiveWeatherLockScreen: View {
     let state: SaatActivityAttributes.ContentState
     let stale: Bool
@@ -162,11 +148,7 @@ private struct LiveWeatherLockScreen: View {
                     .foregroundStyle(.white)
                     .environment(\.layoutDirection, .leftToRight)
             }
-            HStack {
-                LiveWeatherStyle.mark
-                Spacer(minLength: 8)
-                LiveWeatherStyle.closeButton
-            }
+            LiveWeatherStyle.mark
         }
         .padding(16)
         .opacity(stale ? 0.6 : 1)

@@ -68,11 +68,26 @@ enum PrayerNotifier {
         (try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])) ?? false
     }
 
-    /// İlk açılışta bildirim izni bir kez sorulur (bildirimler varsayılan açık); sonra yalnız Ayarlar'dan
+    /// Bu süreçte açılış sayıldı mı (uygulama her ön plana gelişinde değil, süreç başına bir kez)
+    private static var launchCounted = false
+
+    /// Kurulumda Vakitler'e "Evet" denince: izin hemen (sistem penceresi; açıklamayı kurulum zaten yaptı)
+    static func askNow() async {
+        UserDefaults.standard.set(true, forKey: "notify.asked")
+        if await authorizationStatus() == .notDetermined { _ = await requestAuthorization() }
+        await reschedule()
+    }
+
+    /// Bildirim izni bir kez sorulur (bildirimler varsayılan açık), sonra yalnız Ayarlar'dan. Kurulumda Vakitler'e "Evet"
+    /// denmediyse uygulamanın ikinci açılışında (sahibin isteği, 15 Kasım 2026)
     static func askOnce() async {
         let d = UserDefaults.standard
-        // Kurulum sihirbazı sürerken sorulmaz (izin orada istenir; Onboarding)
-        guard !d.bool(forKey: "notify.asked"), !Onboarding.pending else { return }
+        if !launchCounted {
+            launchCounted = true
+            d.set(d.integer(forKey: "notify.launches") + 1, forKey: "notify.launches")
+        }
+        // Kurulum sihirbazı sürerken ve ilk açılışta sorulmaz
+        guard !d.bool(forKey: "notify.asked"), !Onboarding.pending, d.integer(forKey: "notify.launches") >= 2 else { return }
         d.set(true, forKey: "notify.asked")
         // Önce kısa açıklama (2. analiz #80); "Şimdi değil"de sistem penceresi açılmaz, Ayarlar › Bildirimler'den istenir
         if await authorizationStatus() == .notDetermined, await PermissionPrimer.ask(.notify) { _ = await requestAuthorization() }
@@ -126,7 +141,8 @@ enum PrayerNotifier {
         planned += await FeatureNotifier.planned(place: place, now: now)
         guard mine == generation else { return }
 
-        let hourly = FeatureNotifier.hourlyRequests()
+        let hourly = await FeatureNotifier.hourlyRequests()
+        guard mine == generation else { return }
         let room = max(0, 63 - hourly.count - GeoAlarms.activeCount)
         let kept = Array(planned.sorted { $0.fireAt < $1.fireAt }.prefix(room))
         var requests = hourly + kept.map { p -> UNNotificationRequest in

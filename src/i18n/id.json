@@ -376,7 +376,16 @@
         "h": "Keanggotaan",
         "p": [
           "Anda tidak perlu akun untuk memakai Saat Tarih. Jika mau, Anda bisa membuat keanggotaan Bumba di situs (hesap.time.bumba.tr) dan di aplikasi dengan alamat email dan kata sandi; keanggotaan yang sama juga berlaku di produk Bumba lainnya.",
-          "Informasi apa yang diproses keanggotaan dan untuk apa, di mana disimpan, serta hak Anda tertulis dalam [pemberitahuan privasi keanggotaan Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en) bersama; aturannya ada di [ketentuan keanggotaan](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Anda bisa menghapus akun kapan saja: [Menghapus akun Anda]({deleteUrl})."
+          "Informasi apa yang diproses keanggotaan dan untuk apa, di mana disimpan, serta hak Anda tertulis dalam [pemberitahuan privasi keanggotaan Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en) bersama; aturannya ada di [ketentuan keanggotaan](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Anda bisa menghapus akun kapan saja: [Menghapus akun Anda]({deleteUrl}).",
+          "**Lingkaran** di aplikasi (zikir dan khatam bersama) memerlukan keanggotaan dan, karena dapat mengungkap keyakinan agama Anda, hanya berjalan dengan persetujuan tegas Anda yang terpisah (KVKK pasal 6; UU PDP). Nama lingkaran, keanggotaan Anda, nama tampilan, jumlah zikir yang Anda tambahkan, serta juz yang Anda ambil atau selesaikan hanya terlihat oleh anggota lingkaran itu; tidak publik, tidak dijual, dan tidak dipakai untuk iklan. Jika Anda keluar, kontribusi Anda tetap ada tanpa nama. Anda dapat menarik persetujuan di aplikasi kapan saja; Anda lalu keluar dari semua lingkaran.",
+          "**Grup** (hitung mundur bersama, jam dunia, polling rapat, ruang fokus, usulan alarm, penghitung pengamatan langit) juga memerlukan keanggotaan. Nama grup, keanggotaan Anda, nama tampilan, dan apa yang Anda masukkan ke grup (kota dan zona waktu yang Anda bagikan, suara Anda, sesi fokus, usulan alarm, peristiwa langit yang Anda tandai) hanya terlihat oleh anggota grup. Usulan alarm tidak pernah dipasang di ponsel Anda tanpa persetujuan Anda. **Laporan cuaca** tidak ditampilkan kepada orang lain dengan identitas Anda: lokasi dibulatkan ke sel sekitar 25 km dan laporan dihapus setelah 24 jam. Dasar hukum: pelaksanaan perjanjian keanggotaan (KVKK pasal 5/2-c). Anda dapat keluar dari grup, melaporkan atau memblokir orang; menghapus akun menghapus semuanya."
+        ]
+      },
+      {
+        "id": "report-problem",
+        "h": "Laporkan masalah",
+        "p": [
+          "Anda dapat melaporkan masalah di situs (hesap.time.bumba.tr/hata-bildir) dan di aplikasi (Pengaturan › Dukungan); tidak perlu akun. Tulisan Anda, alamat email Anda (jika diisi), versi halaman atau aplikasi, jenis perangkat, dan bahasa dikirim kepada kami lewat email (layanan email Resend, AS) hanya untuk memeriksa laporan ini dan membalas Anda. Data ini tidak disimpan di tempat lain dan dihapus paling lambat dalam satu tahun. Untuk membatasi penyalahgunaan, alamat IP Anda disimpan paling lama satu hari. Dasar hukum: kepentingan sah kami untuk menjawab laporan Anda (KVKK pasal 5/2-f)."
         ]
       },
       {
@@ -1971,7 +1980,7 @@
     "hoursShort": "j",
     "minutesShort": "mnt",
     "tableHeading": "Tanggal awal musim",
-    "tableLead": "Musim astronomis, yaitu saat terjadinya ekuinoks dan titik balik matahari. Waktu dinyatakan dalam waktu Turki (UTC+3).",
+    "tableLead": "Musim astronomis, yaitu saat terjadinya ekuinoks dan titik balik matahari. Waktu dinyatakan dalam waktu lokasi yang dipilih.",
     "colYear": "Tahun",
     "meteoNote": "Musim meteorologis adalah blok tiga bulan: musim semi mulai 1 Maret, musim panas 1 Juni, musim gugur 1 September, dan musim dingin 1 Desember. Musim ini dipakai untuk kalender dan statistik.",
     "factsHeading": "Alam sepanjang musim",
@@ -3443,5 +3452,18 @@
         ]
       }
     ]
+  },
+  "invite": {
+    "title": "Undangan lingkaran | Saat Tarih",
+    "h1": "Anda diundang ke sebuah lingkaran",
+    "lead": "Anda diundang ke lingkaran zikir atau khatam Al-Qur'an bersama di aplikasi Saat Tarih.",
+    "code": "Kode undangan",
+    "open": "Buka di aplikasi",
+    "how": "Jika aplikasi tidak terbuka, buka Semua › Lingkaran › Gabung dengan kode di Saat Tarih lalu masukkan kode ini. Lingkaran memerlukan akun gratis.",
+    "get": "Unduh di App Store",
+    "none": "Tautan ini tidak berisi kode undangan. Minta orang yang mengundang Anda untuk mengirimkannya lagi.",
+    "howGroup": "Jika aplikasi tidak terbuka, buka Semua › Grup › Gabung dengan kode di Saat Tarih lalu masukkan kode ini. Grup memerlukan akun gratis.",
+    "h1Group": "Anda diundang ke sebuah grup",
+    "leadGroup": "Anda diundang ke grup bersama di aplikasi Saat Tarih: hitung mundur, jam dunia, polling rapat, ruang fokus, alarm, atau pengamatan langit."
   }
 }

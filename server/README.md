@@ -70,6 +70,8 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
 | `POST /api/bumba-panel/ozet\|uyeler\|uye` | Yönetim paneli (`Bearer $UYELIK_ANAHTARI`, `X-Bumba-Site`; `src/panel.mjs`) |
 | `/v1/kayitlar`, `/v1/rozetler`, `/v1/rozetler/sil` | Uygulama kayıtları ve rozetler |
 | `/v1/verilerim`, `/v1/hesap/sil` | Verilerimi indir, hesabı sil (`kapsam: urun\|hepsi`) |
+| `/v1/halkalar`, `/v1/halka…` | Ortak zikir ve hatim halkaları (`src/circles.mjs`; `HALKALAR=acik` değilse 404) |
+| `/v1/gruplar`, `/v1/grup…`, `/v1/hava-bildirim` | Ortak gruplar (geri sayım, dünya saati, toplantı oylaması, odak, alarm isteği, gözlem) ve anonim hava bildirimi (`src/groups.mjs`; `GRUPLAR=acik` değilse 404) |
 | `POST /gorev/temizlik`, `POST /gorev/kutlama` | Zamanlanmış görevler (`Bearer $CRON_SECRET`) |
 | `GET /saglik` | Sağlık denetimi |
 
@@ -85,6 +87,8 @@ açılır: sayfalar "üyelik şu an kapalı" der, uçlar 503 döner.
 | `RESEND_API_KEY` | evet | E-posta |
 | `CRON_SECRET` | evet | En az 32 karakter |
 | `UYELIK_ANAHTARI` | evet | Ortak üyelik servisinin site anahtarı (`saat-tarih`) |
+| `HALKALAR` | hayır | `acik`: halkalar açılır (açık rıza metni ve uygulama yayına hazır olunca, sahibin onayıyla) |
+| `GRUPLAR` | hayır | `acik`: ortak gruplar ve hava bildirimi açılır (sahibin onayıyla) |
 | `ADMIN_EMAIL` | hayır | Varsayılan bilgi@bumbagroup.com |
 | `NODE_ENV` | canlıda `production` | Güvenli çerezler |
 

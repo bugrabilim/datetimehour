@@ -9,7 +9,7 @@ enum DeskPlace {
     static let key = "desk.place"
 
     static func resolve(_ sel: String, auto: Place?) -> Place {
-        if sel == "auto" { return auto ?? Place(province: Province.find("istanbul")) }
+        if sel == "auto" { return auto ?? Place.fallback() }
         return Place(province: Province.find(sel))
     }
 

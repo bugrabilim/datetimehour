@@ -88,9 +88,10 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "features" -> Page(L("features.title"), { onRoute("settings") }) { FeaturesScreen() }
         "permissions" -> Page(L("perms.title"), { onRoute("settings") }) { PermissionsScreen() }
         // Hesap (üyelik aşama 1, 10 Kasım 2026): isteğe bağlı, e-posta + şifre
-        "account" -> Page(L("account.title"), { AccountLeave.leave { onRoute("settings") } }) { AccountScreen { onRoute(it) } }
+        "account" -> Page(L("account.title"), { onRoute("settings") }) { AccountScreen { onRoute(it) } }
         "about" -> Page(L("settings.about"), onRoute) { AboutScreen() }
         "shareQr" -> Page(L("support.qr"), { onRoute("settings") }) { ShareQrScreen() }
+        "reportProblem" -> Page(L("account.fbTitle"), { onRoute("settings") }) { FeedbackScreen() }
         "language" -> Page(L("lang.title"), { onRoute("settings") }) { LanguageScreen() }
         "badges" -> Page(L("badges.h1"), onRoute) { BadgesScreen() }
         "notifications" -> Page(L("settings.notifications"), { onRoute("settings") }) { NotificationsScreen(onRoute) }
@@ -103,6 +104,8 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "quran" -> QuranScreen { onRoute(null) }
         "duas" -> DuasScreen { onRoute(null) }
         "zikir" -> ZikirScreen { onRoute(null) }
+        "circles" -> CirclesScreen({ onRoute(null) }) { onRoute("account") }
+        "groups" -> GroupsScreen({ onRoute(null) }) { onRoute("account") }
         "track" -> TrackerScreen { onRoute(null) }
         "zakat" -> ZakatScreen { onRoute(null) }
         "reldays" -> ReligiousDaysScreen { onRoute(null) }

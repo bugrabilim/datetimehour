@@ -333,6 +333,25 @@ const citiesJson = JSON.stringify(cities) + "\n";
 const placesSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/places.json"), "utf8"));
 const placesJson = JSON.stringify({ tz: placesSrc.tz, p: placesSrc.p, names: placesSrc.names }) + "\n";
 
+/* Konum yokken varsayılan yer (Global düşün, 15 Kasım 2026): saat dilimi başına bir yer; saat uygulamaları, widget ve
+   Mac/TV/Vision telefonun saat dilimiyle buradan seçer (uygulamadaki DefaultPlace kuralı: önce cities.json'daki ilk şehir,
+   yoksa o dilimin en kalabalık yeri; pop, bölge + UTC farkı yedeği için dilimin en kalabalık yerinin nüfusu). Türkiye yok:
+   Türkiye'de İstanbul ili (Diyanet). {"l": [dil], "z": [[dilim, enlem, boylam, nüfus, [ad (l sırasıyla)]]]} */
+const zonePlacesJson = (() => {
+  const L = Object.keys(placesSrc.names), z = new Map();
+  placesSrc.p.forEach((r, i) => {
+    const tz = placesSrc.tz[r[2]], cur = z.get(tz);
+    if (!cur || r[3] > cur.pop) z.set(tz, { lat: r[0], lon: r[1], pop: r[3], n: L.map((l) => placesSrc.names[l][i] || placesSrc.names.en[i]) });
+  });
+  for (const c of JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/cities.json"), "utf8"))) {
+    const cur = z.get(c.tz);
+    if (cur && cur.city) continue;
+    z.set(c.tz, { lat: c.lat, lon: c.lon, pop: cur ? cur.pop : 0, n: L.map((l) => (c[l] || c.en).name), city: true });
+  }
+  for (const t of ["Europe/Istanbul", "Asia/Istanbul", "Turkey"]) z.delete(t);
+  return JSON.stringify({ l: L, z: [...z].sort((a, b) => a[0] < b[0] ? -1 : 1).map(([tz, v]) => [tz, v.lat, v.lon, v.pop, v.n]) }) + "\n";
+})();
+
 /* İlçeler (src/data/districts.json, GeoNames CC BY 4.0): il → [ad, enlem, boylam] (ilçe merkezi) */
 const districtsJson = JSON.stringify(JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/districts.json"), "utf8")).provinces) + "\n";
 
@@ -416,6 +435,7 @@ const files = {
   "mobile/ios/App/Resources/calendar.json": calendarJson,
   "mobile/ios/App/Resources/cities.json": citiesJson,
   "mobile/ios/App/Resources/places.json": placesJson,
+  "mobile/ios/App/Resources/zone-places.json": zonePlacesJson,
   "mobile/ios/App/Resources/eclipses.json": eclipsesJson,
   "mobile/ios/App/Resources/districts.json": districtsJson,
   "mobile/ios/App/Resources/hijri.json": hijriJson,
@@ -436,6 +456,7 @@ const files = {
   ...Object.fromEntries(LANGS.map((l) => [`mobile/android/app/src/main/res/${ANDROID_DIRS[l]}/strings.xml`, androidXml(l)])),
   // Wear OS saati (Wear modülü): il listesi, hicri ay başları ve saat ekranlarının metinleri
   "mobile/android/wear/src/main/assets/provinces.json": provincesJson,
+  "mobile/android/wear/src/main/assets/zone-places.json": zonePlacesJson,
   "mobile/android/wear/src/main/assets/hijri.json": hijriJson,
   "mobile/android/wear/src/main/assets/hijri-id.json": hijriIdJson,
   "mobile/android/wear/src/main/res/xml/locales_config.xml": localesConfig,

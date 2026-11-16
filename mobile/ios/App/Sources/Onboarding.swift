@@ -48,7 +48,7 @@ enum Onboarding {
     /// 8 "başka neler var", 9–10 ipuçları, 11–16 özellik turu, 17 son sayfa "Diğer her şey Tümü'nde"; diğer dillerde 4 soru
     /// ve 5 tur: 2–5 sorular, 6 özet, 7 "başka neler var", 8–9 ipuçları, 10–14 tur, 15 son)
     static let pages: [String] = ["welcome", "setup"] + questions.map { "q:" + $0.key } +
-        ["summary", "more", "tip:swipe", "tip:full"] + tours.map { "tour:" + $0 } + ["tip:all"]
+        ["summary", "tip:swipe", "tip:full"] + tours.map { "tour:" + $0 } + ["tip:all"]
     static let summary = pages.firstIndex(of: "summary")!
 
     static var pending: Bool { UserDefaults.standard.bool(forKey: key) }
@@ -121,7 +121,6 @@ enum Onboarding {
         }
         d.set(false, forKey: key)
         d.set(version, forKey: seenKey)
-        d.set(true, forKey: "notify.asked")
         // Ayarların izi yukarıdaki değişikliklerden sonra alınır (yoksa kendi yazdığımız kapatır)
         if isFresh {
             d.set(signature(), forKey: sigKey)
@@ -135,8 +134,8 @@ enum Onboarding {
     }
 
     /// Bitince: yanıtlar kalıcı olur. "Hayır" denen bölümün bildirimi kapanır; yeni kurulumda Vakitler'e "Evet" denirse
-    /// saatin altında sıradaki vakit görünür. Araçlar (Tümü'ndeki araçlar) her zaman açık kalır. Bildirim izni burada
-    /// sorulduğu için açılıştaki kısa açıklama bir daha çıkmaz.
+    /// saatin altında sıradaki vakit görünür. Araçlar (Tümü'ndeki araçlar) her zaman açık kalır. Bildirim izni Vakitler'e
+    /// "Evet" denince hemen sorulur; denmediyse uygulamanın ikinci açılışında (PrayerNotifier.askOnce).
     static func finish() {
         let d = UserDefaults.standard
         for (t, yes) in answers where !yes {
@@ -154,7 +153,6 @@ enum Onboarding {
         if fresh, !Features.isOn(.tools) { Features.set(.tools, on: true) }
         d.set(false, forKey: key)
         d.set(version, forKey: seenKey)
-        d.set(true, forKey: "notify.asked")
         for k in [freshKey, resumeKey, sigKey] { d.removeObject(forKey: k) }
         answers = [:]
         before = nil
@@ -301,11 +299,14 @@ struct OnboardingView: View {
                 RoundButton(title: (shown == false ? "✓ " : "") + L("onboard.no")) { reply(t, false) }
                 RoundButton(title: (shown == true ? "✓ " : "") + L("onboard.yes"), prominent: true) { reply(t, true) }
             }
-        } else if id == "more" {
-            // Hayır: doğrudan son sayfa ("Diğer her şey Tümü'nde"); Evet: özellikler tek tek
-            HStack(spacing: 12) {
-                RoundButton(title: L("onboard.no")) { go(last) }
-                RoundButton(title: L("onboard.yes"), prominent: true) { go(page + 1) }
+        } else if id == "summary" {
+            // "Uygulamanız hazır" (sahibin isteği, 15 Kasım 2026): Başla ya da tanıtıma devam (ipuçları ve özellik turu)
+            VStack(spacing: 8) {
+                RoundButton(title: L("onboard.start"), prominent: true) {
+                    Onboarding.finish()
+                    done()
+                }
+                RoundButton(title: L("onboard.continueTour")) { go(page + 1) }
             }
         } else {
             let label = id == "welcome" ? "onboard.go" : id == "tip:all" ? "onboard.start" : "onboard.next"
@@ -324,6 +325,8 @@ struct OnboardingView: View {
         Onboarding.answer(t, yes)
         answers[t] = yes
         go(page + 1)
+        // Vakitler'e "Evet": bildirim izni hemen (sahibin isteği, 15 Kasım 2026); "Hayır"da ikinci açılışta
+        if t == .prayer, yes { Task { await PrayerNotifier.askNow() } }
     }
 
     @ViewBuilder private func pageView(_ p: Int) -> some View {
@@ -336,8 +339,6 @@ struct OnboardingView: View {
             OnboardQuestion(tab: Onboarding.questions[i], n: i + 1, total: Onboarding.questions.count)
         } else if pid == "summary" {
             summary
-        } else if pid == "more" {
-            OnboardFeature(icons: ["sparkles", "books", "star"], title: L("onboard.more.title"), text: L("onboard.more.text"))
         } else if pid == "tip:swipe" {
             OnboardTip(key: "onboard.swipe") { SwipeArt() }
         } else if pid == "tip:full" {
@@ -363,19 +364,19 @@ struct OnboardingView: View {
     }
 
     private var welcome: some View {
-        // Sıkı düzen (8 Kasım 2026, Android'deki gibi): iki tonlu ızgarayla sayfa uzamasın diye saat 104, aralıklar 10
+        // Tek ekrana sığar (15 Kasım 2026, sahibin isteği): saat 72, ızgara kareleri 58, alttaki ipucu satırı kalktı
         ScrollView {
             VStack(spacing: 10) {
                 TimelineView(.periodic(from: .now, by: 1)) { ctx in
-                    AnalogClock(date: ctx.date, showSeconds: true).frame(width: 104, height: 104)
+                    AnalogClock(date: ctx.date, showSeconds: true).frame(width: 72, height: 72)
                 }
                 .accessibilityHidden(true)
-                Text(L("app.displayName")).font(.largeTitle.weight(.bold)).foregroundStyle(Theme.text)
+                Text(L("app.displayName")).font(.title.weight(.bold)).foregroundStyle(Theme.text)
                     .multilineTextAlignment(.center)
                 // Sahibin metni (6 Kasım 2026): vurgulu iki satırlık başlık, ne yaptık, özellikler, "Neden ücretsiz?"
                 Text(L("onboard.welcome.title"))
-                    .font(AppFonts.serif ? .custom("Literata-SemiBold", size: 26, relativeTo: .title)
-                                         : .system(size: 25, weight: .semibold))
+                    .font(AppFonts.serif ? .custom("Literata-SemiBold", size: 23, relativeTo: .title2)
+                                         : .system(size: 22, weight: .semibold))
                     .foregroundStyle(Theme.accent)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
@@ -397,8 +398,8 @@ struct OnboardingView: View {
                                 .lineLimit(2)
                                 .minimumScaleFactor(0.8)
                         }
-                        .frame(maxWidth: .infinity, minHeight: 72)
-                        .card(padding: 8)
+                        .frame(maxWidth: .infinity, minHeight: 58)
+                        .card(padding: 6)
                     }
                 }
                 Text(L("onboard.welcome.whyTitle"))
@@ -412,12 +413,6 @@ struct OnboardingView: View {
                     .lineSpacing(3)
                     .foregroundStyle(Theme.muted)
                     .fixedSize(horizontal: false, vertical: true)
-                Text(L(Onboarding.questions.count == 4 ? "onboard.welcome.hint4" : "onboard.welcome.hint"))
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(Theme.muted)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.top, 2)
             }
             .padding(.horizontal, 24)
             .padding(.vertical, 12)
@@ -454,8 +449,6 @@ struct OnboardingView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .card(padding: 16)
                 }
-                Text(L("onboard.q.note")).font(.footnote).foregroundStyle(Theme.muted)
-                    .fixedSize(horizontal: false, vertical: true)
             }
             .padding(24)
         }
@@ -464,9 +457,10 @@ struct OnboardingView: View {
     /// Güven kartı, konum ve bildirim (hoş geldiniz sayfasının hemen ardından)
     private var setup: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 10) {
                 Text(L("onboard.setup.title")).font(.title2.weight(.bold)).foregroundStyle(Theme.text)
-                TrustCard()
+                // Tek ekrana sığsın diye (15 Kasım 2026) servis notu yalnız Ayarlar › İzinler'deki kartta
+                TrustCard(compact: true)
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 10) {
                         DuoChip(name: "pin", color: Theme.sage)
@@ -480,6 +474,7 @@ struct OnboardingView: View {
                 .card(padding: 14)
                 Button {
                     Task {
+                        UserDefaults.standard.set(true, forKey: "notify.asked")
                         if await PrayerNotifier.authorizationStatus() == .notDetermined { _ = await PrayerNotifier.requestAuthorization() }
                         notifyOn = PrayerNotifier.isAllowed(await PrayerNotifier.authorizationStatus())
                     }
@@ -581,6 +576,8 @@ private struct OnboardQuestion: View {
 
 /// Güven kartı: hesap/reklam/takip yok, verileriniz bize gelmez (kurulum sayfası ve Ayarlar › İzinler)
 struct TrustCard: View {
+    var compact = false
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 10) {
@@ -589,11 +586,13 @@ struct TrustCard: View {
             }
             Text(L("onboard.trust.text")).font(.subheadline).foregroundStyle(Theme.text)
                 .fixedSize(horizontal: false, vertical: true)
-            Text(Onboarding.neutral("onboard.trust.services")).font(.footnote).foregroundStyle(Theme.muted)
-                .fixedSize(horizontal: false, vertical: true)
+            if !compact {
+                Text(Onboarding.neutral("onboard.trust.services")).font(.footnote).foregroundStyle(Theme.muted)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .card(padding: 18)
+        .card(padding: compact ? 14 : 18)
     }
 }
 

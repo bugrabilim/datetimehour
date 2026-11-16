@@ -31,7 +31,8 @@ const pagesInfo = [];
 for (const f of htmlFiles) {
   const h = fs.readFileSync(f, "utf8");
   const name = rel(f);
-  const err = name === "/404.html" || name === "/500.html";
+  // Hata sayfaları ve halka daveti (/davet/, üyelik aşama 2c): bütün diller bir arada, noindex
+  const err = name === "/404.html" || name === "/500.html" || name === "/davet/index.html";
   const noidx = /<meta name="robots" content="noindex/.test(h);
   const embed = new RegExp(`^/embed/(${LG})/index\\.html$`).test(name);
   ids[f] = new Set([...h.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
@@ -39,7 +40,7 @@ for (const f of htmlFiles) {
   const desc = (h.match(/<meta name="description" content="([^"]*)"/) || [])[1];
   check(title, `${name}: title yok`);
   check(desc || embed, `${name}: description yok`);
-  check((h.match(/<h1[ >]/g) || []).length === (embed ? 0 : err ? LANGS.length : 1), `${name}: H1 sayısı hatalı`);
+  check((h.match(/<h1[ >]/g) || []).length === (embed ? 0 : err ? LANGS.length * (name === "/davet/index.html" ? 2 : 1) : 1), `${name}: H1 sayısı hatalı`);
   check(new RegExp(`<html lang="(${LG})" dir="(ltr|rtl)"`).test(h), `${name}: html lang/dir yok`);
   const hl = (h.match(/<html lang="(\w+)" dir="(\w+)"/) || []);
   check(hl[2] === (RTL.includes(hl[1]) ? "rtl" : "ltr"), `${name}: dir değeri hatalı`);
@@ -193,6 +194,7 @@ for (const f of htmlFiles) {
   const h = fs.readFileSync(f, "utf8");
   for (const m of h.matchAll(/(?:href|src)="([^"]+)"/g)) {
     let u = m[1];
+    if (u.startsWith("saattarih:")) continue; // uygulamanın kendi adresi (davet sayfası)
     if (/^(https?:|mailto:|data:|webcal:)/.test(u)) {
       if (u.startsWith("webcal:")) u = "https:" + u.slice(7); // takvim aboneliği (.ics) aynı dosyaya gider
       if (u.startsWith(ORIGIN)) u = u.slice(ORIGIN.length) || "/"; else continue;
@@ -762,7 +764,8 @@ for (const l of LANGS) {
       const sfx = l === "tr" ? "" : "?dil=en";
       check(!read(l === "tr" ? "hesap/sifre" : `${base}account/password`) && !read(l === "tr" ? "hesap/dogrulandi" : `${base}account/verified`), `hesap: eski statik şifre/doğrulama sayfası kaldı (${l})`);
       const home = read(l === "tr" ? "" : base.slice(0, -1));
-      check(home.includes(`href="https://hesap.time.bumba.tr/hesap?dil=${l}"`) && home.includes(ACC[l].title), `ayarlar: Hesap bağlantısı yok (${l})`);
+      check(home.includes(`href="https://hesap.time.bumba.tr/hesap?dil=${l}" data-account-link>`) && home.includes(ACC[l].myAccount), `ayarlar: Hesabım bağlantısı yok (${l})`);
+      check(home.includes(`href="https://hesap.time.bumba.tr/hata-bildir?dil=${l}" data-account-link>`) && home.includes(ACC[l].fbTitle), `ayarlar: Hata bildir bağlantısı yok (${l})`);
       const del = read(l === "tr" ? "hesap-silme" : `${base}account-deletion`);
       check(/name="robots" content="index/.test(del) && /bilgi@bumbagroup\.com/.test(del) && /<ol>/.test(del) && del.includes(ACC[l].deleteScopeAll) && /\b7\b/.test(del) && !/2 (yıl|years)/.test(del), `hesap silme sayfası eksik (${l})`);
       const j = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"));
@@ -771,6 +774,7 @@ for (const l of LANGS) {
       check(sec && !sec.ul && txt.includes(`https://bumbagroup.com/uyelik-aydinlatma${sfx})`) && txt.includes(`https://bumbagroup.com/uyelik-sozlesmesi${sfx})`) && /\{deleteUrl\}/.test(txt), `gizlilik: üyelik bölümü eksik (${l})`);
       const priv = read(l === "tr" ? "gizlilik" : `${base}privacy`);
       check(priv.includes(`href="${l === "tr" ? "/hesap-silme/" : `/${l}/account-deletion/`}"`) && !priv.includes("{deleteUrl}"), `gizlilik: hesap silme bağlantısı yok (${l})`);
+      check(priv.includes(`id="${l === "tr" ? "hata-bildirimi" : "report-problem"}"`) && priv.includes("hesap.time.bumba.tr/hata-bildir"), `gizlilik: hata bildirimi bölümü yok (${l})`);
     }
     check(!sm.includes("/hesap/sifre/") && !sm.includes("/account/password/") && !sm.includes("/account/verified/") && sm.includes("/hesap-silme/</loc>") && sm.includes("/en/account-deletion/</loc>"), "sitemap: hesap sayfaları yanlış");
     check(!/hesap\.time\.bumba\.tr/.test((ng.match(/form-action[^;]*;/g) || []).join(" ")) && ng.includes("location = /hesap/sifre/ { return 301 https://hesap.time.bumba.tr/sifre?dil=tr&$args; }") && /account\/verified\/\$ \{ return 301 https:\/\/hesap\.time\.bumba\.tr\/dogrulandi\?dil=\$1&\$args; \}/.test(ng), "nginx: hesap yönlendirmeleri ya da form-action");
@@ -831,6 +835,15 @@ for (const l of LANGS) {
     check(/data-al-snooze/.test(ah) && /data-al-vol/.test(ah) && /data-al-try/.test(ah) && /data-al-ring/.test(ah) && /data-al-history/.test(ah) && /data-al-recent/.test(ah), "alarm: erteleme süresi, ses düzeyi, şimdi dene, halka, geçmiş, son saatler");
   }
   check(/S\.pct\(/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8")) && !/\+ "%"/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8").replace(/toFixed\(1\) \+ "%"/g, "")), "hava sayfasında yüzde dile göre biçimlenmeli");
+}
+
+// Halka daveti (üyelik aşama 2c): /davet/#KOD, 19 dilin bölümü, uygulama adresi, sitemap'te yok
+{
+  const inv = fs.readFileSync(path.join(DIST, "davet", "index.html"), "utf8");
+  check((inv.match(/data-invite="/g) || []).length === LANGS.length && /saattarih:\/\/davet/.test(inv) && /invite\.js/.test(inv) && /noindex/.test(inv), "davet sayfası yanlış");
+  check((inv.match(/data-invite-kind="group"/g) || []).length === LANGS.length * 3, "davet sayfası: grup metinleri eksik");
+  check(/tur=grup/.test(fs.readFileSync(path.join(DIST, "assets", "invite.js"), "utf8")), "davet: grup bağlantısı yok");
+  check(!fs.readFileSync(path.join(DIST, "sitemap.xml"), "utf8").includes("/davet/"), "sitemap: davet sayfası olmamalı");
 }
 
 if (fails.length) {

@@ -403,7 +403,16 @@
         "h": "Adhésion",
         "p": [
           "Aucun compte n'est nécessaire pour utiliser Saat Tarih. Si vous le souhaitez, vous pouvez ouvrir une adhésion Bumba sur le site (hesap.time.bumba.tr) et dans les applications avec votre adresse e-mail et un mot de passe ; la même adhésion fonctionne aussi dans les autres produits Bumba.",
-          "Les informations traitées par l'adhésion, leurs finalités, leur lieu de stockage et vos droits sont décrits dans la [notice de confidentialité commune de l'adhésion Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en) ; les règles figurent dans les [conditions d'adhésion](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Vous pouvez supprimer votre compte à tout moment : [Supprimer votre compte]({deleteUrl})."
+          "Les informations traitées par l'adhésion, leurs finalités, leur lieu de stockage et vos droits sont décrits dans la [notice de confidentialité commune de l'adhésion Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en) ; les règles figurent dans les [conditions d'adhésion](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Vous pouvez supprimer votre compte à tout moment : [Supprimer votre compte]({deleteUrl}).",
+          "Les **cercles** des applications (dhikr et khatm partagés) nécessitent une adhésion et, comme ils peuvent révéler vos convictions religieuses, ne fonctionnent qu'avec votre consentement explicite distinct (KVKK art. 6 ; RGPD art. 9(2)(a)). Le nom du cercle, votre adhésion, votre nom affiché, les nombres de dhikr que vous ajoutez et les juz que vous prenez ou terminez ne sont visibles que des membres de ce cercle ; ils ne sont ni publics, ni vendus, ni utilisés pour la publicité. Si vous quittez un cercle, votre contribution reste sans nom. Vous pouvez retirer votre consentement dans l'application à tout moment ; vous quittez alors tous les cercles.",
+          "Les **groupes** (compte à rebours, horloge mondiale, sondage de réunion, salle de concentration, proposition de réveil, compteur d'observation du ciel) nécessitent aussi une adhésion. Le nom du groupe, votre adhésion, votre nom affiché et ce que vous y ajoutez (ville et fuseau horaire partagés, vos votes, sessions de concentration, propositions de réveil, événements célestes cochés) ne sont visibles que des membres du groupe. Une proposition de réveil n'est jamais réglée sur votre téléphone sans votre accord. Les **signalements météo** ne sont pas montrés aux autres avec votre identité : votre position est arrondie à une cellule d'environ 25 km et le signalement est supprimé après 24 heures. Base légale : exécution du contrat d'adhésion (KVKK art. 5(2)(c) ; RGPD art. 6(1)(b)). Vous pouvez quitter un groupe, signaler ou bloquer des personnes ; supprimer votre compte supprime tout cela."
+        ]
+      },
+      {
+        "id": "report-problem",
+        "h": "Signaler un problème",
+        "p": [
+          "Vous pouvez nous signaler un problème sur le site (hesap.time.bumba.tr/hata-bildir) et dans les applications (Réglages › Assistance) ; aucun compte n'est nécessaire. Votre texte, votre adresse e-mail (si vous l'indiquez), la version de la page ou de l'application, le type d'appareil et la langue nous sont envoyés par e-mail (service d'e-mail Resend, États-Unis) uniquement pour examiner ce signalement et vous répondre. Ils ne sont conservés nulle part ailleurs et sont supprimés au plus tard dans un an. Pour limiter les abus, votre adresse IP est conservée un jour au plus. Base légale : notre intérêt légitime à répondre à votre signalement (KVKK art. 5/2-f)."
         ]
       },
       {
@@ -2012,7 +2021,7 @@
     "hoursShort": "h",
     "minutesShort": "min",
     "tableHeading": "Dates de début des saisons",
-    "tableLead": "Saisons astronomiques, c’est-à-dire les instants des équinoxes et des solstices. Heures exprimées à l’heure de Turquie (UTC+3).",
+    "tableLead": "Saisons astronomiques, c’est-à-dire les instants des équinoxes et des solstices. Heures exprimées à l’heure du lieu choisi.",
     "colYear": "Année",
     "meteoNote": "Les saisons météorologiques sont des blocs de trois mois : le printemps commence le 1er mars, l’été le 1er juin, l’automne le 1er septembre et l’hiver le 1er décembre. Elles servent aux calendriers et aux statistiques.",
     "factsHeading": "La nature au fil des saisons",
@@ -3484,5 +3493,18 @@
         ]
       }
     ]
+  },
+  "invite": {
+    "title": "Invitation à un cercle | Saat Tarih",
+    "h1": "Vous êtes invité à un cercle",
+    "lead": "Vous avez été invité à un cercle de dhikr ou de khatm du Coran partagé dans l'application Saat Tarih.",
+    "code": "Code d'invitation",
+    "open": "Ouvrir dans l'application",
+    "how": "Si l'application ne s'ouvre pas, allez dans Tout › Cercles › Rejoindre avec un code dans Saat Tarih et saisissez ce code. Les cercles nécessitent un compte gratuit.",
+    "get": "Télécharger dans l'App Store",
+    "none": "Ce lien ne contient pas de code d'invitation. Demandez à la personne qui vous a invité de le renvoyer.",
+    "howGroup": "Si l'application ne s'ouvre pas, allez dans Tout › Groupes › Rejoindre avec un code dans Saat Tarih et saisissez ce code. Les groupes nécessitent un compte gratuit.",
+    "h1Group": "Vous êtes invité à un groupe",
+    "leadGroup": "Vous êtes invité dans l'application Saat Tarih à un groupe partagé : compte à rebours, horloge mondiale, sondage de réunion, salle de concentration, réveil ou observation du ciel."
   }
 }

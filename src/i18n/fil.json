@@ -442,7 +442,16 @@
         "h": "Membership",
         "p": [
           "Hindi kailangan ng account para gamitin ang Saat Tarih. Kung gusto ninyo, puwede kayong magbukas ng Bumba membership sa website (hesap.time.bumba.tr) at sa mga app gamit ang inyong email address at password; gumagana rin ang parehong membership sa ibang produkto ng Bumba.",
-          "Kung anong impormasyon ang pinoproseso ng membership at bakit, saan ito iniimbak at ang inyong mga karapatan ay nakasulat sa pinagsasaluhang [abiso sa privacy ng Bumba membership](https://bumbagroup.com/uyelik-aydinlatma?dil=en); ang mga tuntunin ay nasa [mga tuntunin ng membership](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Puwede ninyong burahin ang inyong account anumang oras: [Pagbura ng account]({deleteUrl})."
+          "Kung anong impormasyon ang pinoproseso ng membership at bakit, saan ito iniimbak at ang inyong mga karapatan ay nakasulat sa pinagsasaluhang [abiso sa privacy ng Bumba membership](https://bumbagroup.com/uyelik-aydinlatma?dil=en); ang mga tuntunin ay nasa [mga tuntunin ng membership](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Puwede ninyong burahin ang inyong account anumang oras: [Pagbura ng account]({deleteUrl}).",
+          "Ang **Mga Circle** sa apps (sabayang dhikr at khatm) ay nangangailangan ng membership at, dahil maaari nilang ibunyag ang iyong paniniwalang panrelihiyon, gumagana lamang sa hiwalay mong tahasang pahintulot (KVKK art. 6; Data Privacy Act). Ang pangalan ng circle, ang iyong membership, display name, mga bilang ng dhikr na idinagdag mo at mga juz na kinuha o tinapos mo ay nakikita lamang ng mga miyembro ng circle na iyon; hindi pampubliko, hindi ibinebenta at hindi ginagamit sa advertising. Kapag umalis ka, mananatili ang ambag mo nang walang pangalan. Maaari mong bawiin ang pahintulot sa app anumang oras; aalis ka na sa lahat ng circle.",
+          "Ang **Mga Grupo** (sabayang countdown, world clock, botohan sa pulong, focus room, mungkahing alarm, bilang ng pagmamasid sa langit) ay nangangailangan din ng membership. Ang pangalan ng grupo, membership mo, display name at ang inilalagay mo sa grupo (ibinahaging lungsod at time zone, mga boto, focus session, mungkahing alarm, minarkahang pangyayari sa langit) ay nakikita lamang ng mga miyembro ng grupo. Hindi kailanman itatakda sa telepono mo ang mungkahing alarm nang walang pagsang-ayon mo. Ang **mga ulat ng panahon** ay hindi ipinapakita sa iba kasama ang iyong pagkakakilanlan: ini-round ang lokasyon mo sa cell na mga 25 km at binubura ang ulat pagkalipas ng 24 oras. Batayang legal: pagtupad sa kasunduan sa membership (KVKK art. 5(2)(c)). Maaari kang umalis sa grupo, mag-ulat o mag-block ng tao; binubura lahat ng ito kapag binura mo ang account."
+        ]
+      },
+      {
+        "id": "report-problem",
+        "h": "Mag-ulat ng problema",
+        "p": [
+          "Maaari kang mag-ulat ng problema sa website (hesap.time.bumba.tr/hata-bildir) at sa mga app (Settings › Suporta); hindi kailangan ng account. Ang isinulat mo, ang email address mo (kung inilagay), ang bersyon ng pahina o app, uri ng device at wika ay ipinapadala sa amin sa email (serbisyong email na Resend, US) para lamang suriin ang ulat na ito at sumagot sa iyo. Hindi ito iniimbak saanman at binubura sa loob ng isang taon sa pinakamatagal. Para limitahan ang pang-aabuso, iniimbak ang IP address mo nang hindi hihigit sa isang araw. Batayang legal: ang lehitimong interes naming sagutin ang ulat mo (KVKK art. 5/2-f)."
         ]
       },
       {
@@ -2037,7 +2046,7 @@
     "hoursShort": "oras",
     "minutesShort": "min",
     "tableHeading": "Mga petsa ng simula ng panahon",
-    "tableLead": "Mga astronomikal na panahon, ibig sabihin ang mga sandali ng equinox at solstice. Nasa oras ng Türkiye (UTC+3) ang mga oras.",
+    "tableLead": "Mga astronomikal na panahon, ibig sabihin ang mga sandali ng equinox at solstice. Nasa oras ng napiling lugar ang mga oras.",
     "colYear": "Taon",
     "meteoNote": "Tatlong-buwang bloke ang mga meteorolohikal na panahon: nagsisimula ang tagsibol sa 1 Marso, tag-araw sa 1 Hunyo, taglagas sa 1 Setyembre at taglamig sa 1 Disyembre. Ginagamit ang mga ito sa kalendaryo at statistics.",
     "factsHeading": "Kalikasan sa bawat panahon",
@@ -3509,5 +3518,18 @@
         ]
       }
     ]
+  },
+  "invite": {
+    "title": "Imbitasyon sa circle | Saat Tarih",
+    "h1": "Inimbitahan ka sa isang circle",
+    "lead": "Inimbitahan ka sa isang pinagsasaluhang circle ng dhikr o khatm ng Quran sa app na Saat Tarih.",
+    "code": "Invite code",
+    "open": "Buksan sa app",
+    "how": "Kung hindi bumukas ang app, pumunta sa Lahat › Mga Circle › Sumali gamit ang code sa Saat Tarih at ilagay ang code na ito. Kailangan ng libreng account para sa mga circle.",
+    "get": "I-download sa App Store",
+    "none": "Walang invite code ang link na ito. Hilingin sa nag-imbita sa iyo na ipadala itong muli.",
+    "howGroup": "Kung hindi bumukas ang app, pumunta sa Lahat › Mga Grupo › Sumali gamit ang code sa Saat Tarih at ilagay ang code na ito. Kailangan ng libreng account para sa mga grupo.",
+    "h1Group": "Inimbitahan ka sa isang grupo",
+    "leadGroup": "Inimbitahan ka sa isang shared na grupo sa Saat Tarih app: countdown, world clock, botohan sa pulong, focus room, alarm o pagmamasid sa langit."
   }
 }

@@ -1,0 +1,72 @@
+{
+  "_not": "App Store özel ürün sayfaları (docs/urun-sayfalari-2026-11.md; sahibin onayı 15 Kasım 2026). Her sayfa: App Store Connect'teki adı (yalnız bizim gördüğümüz), dil sürümleri ve tanıtım metni (en çok 170 karakter), atanacak arama kelimeleri (yalnız uygulamanın o dildeki anahtar kelime listesinde olanlar atanabilir; asc_cpp.py olmayanları yazar) ve ekran sırası (cpp-screenshots.sh'taki çekim adları, captions.json başlıkları). Dil sürümleri canlı sürümde bulunanlarla sınırlıdır (1.0'da tr, en-US, de-DE, ar-SA); 1.1 yayımlanınca diğer diller eklenir. Ad, alt başlık ve açıklama varsayılan sayfanınkidir.",
+  "pages": [
+    {
+      "id": "komodin",
+      "name": "Komodin ve masa saati",
+      "shots": ["gece", "saat", "kadranlar", "uyku"],
+      "locales": {
+        "tr": {"promo": "21 saat modeli ve 25 kadran, uykunuzu bölmeyen kısık kırmızı gece modu, gün doğumu ışığıyla uyandıran alarm. Ücretsiz, reklamsız, hesap gerekmez.", "keywords": ["komodin saati", "gece saati", "masa saati", "büyük saat", "yatak başı saati", "alarm"]},
+        "en-US": {"promo": "21 clock styles and 25 dials, a dim red night mode that won't wake you, and alarms with a gentle sunrise light. Free, no ads, no account.", "keywords": ["bedside clock", "night clock", "standby clock", "desk clock", "nightstand", "big clock", "alarm"]},
+        "de-DE": {"promo": "21 Uhrenmodelle und 25 Zifferblätter, ein gedämpfter roter Nachtmodus, der nicht weckt, und Wecker mit sanftem Sonnenaufgangslicht. Kostenlos, ohne Werbung.", "keywords": ["Nachtuhr", "Nachttischuhr", "Tischuhr", "große Uhr", "wecker"]},
+        "ar-SA": {"promo": "21 شكلًا للساعة و25 مينا، ووضع ليلي أحمر خافت لا يوقظك، ومنبّه بضوء شروق لطيف. مجاني، بلا إعلانات ولا حساب.", "keywords": ["ساعة ليلية", "ساعة مكتب", "ساعة كبيرة", "منبه"]}
+      }
+    },
+    {
+      "id": "widget",
+      "name": "Widget'lar",
+      "shots": ["widgetlar", "saat", "dunya"],
+      "locales": {
+        "tr": {"promo": "Ana ekranda ve kilit ekranında saat, dünya saatleri, Ay evresi, hava ve geri sayım; duvar kâğıdına uyan şeffaf widget da var. Ücretsiz, reklamsız, hesap gerekmez.", "keywords": ["widget", "saat widget", "şeffaf widget", "dünya saati widget", "ay evresi widget", "kilit ekranı"]},
+        "en-US": {"promo": "Clocks, world time, Moon phase, weather and countdowns on your Home and Lock Screen, including a see-through widget. Free, no ads, no account.", "keywords": ["widgets", "clock widget", "transparent widget", "world clock widget", "moon widget", "lock screen widget", "widget"]},
+        "de-DE": {"promo": "Uhr, Weltzeit, Mondphase, Wetter und Countdowns auf Home- und Sperrbildschirm, auch ein durchsichtiges Widget. Kostenlos, ohne Werbung, ohne Konto.", "keywords": ["Widget", "Uhr Widget", "transparentes Widget", "Weltzeituhr Widget", "Mond Widget"]},
+        "ar-SA": {"promo": "الساعة وتوقيت العالم وطور القمر والطقس والعد التنازلي على الشاشة الرئيسية وشاشة القفل، مع أداة شفافة. مجاني، بلا إعلانات ولا حساب.", "keywords": ["ودجت", "ودجت ساعة", "ودجت شفاف", "شاشة القفل"]}
+      }
+    },
+    {
+      "id": "vakit",
+      "name": "Namaz vakitleri (nötr diller)",
+      "_not": "Müslüman vitrini dillerinde (tr, ar-SA, id, ms, ur-PK) varsayılan sayfa zaten bu içerikte; bu sayfa nötr dil sürümleri için. Türkçe dil sürümü uygulamanın ana dili olduğu için zorunlu (App Store Connect ana dilsiz sayfa açmıyor, 15 Kasım 2026).",
+      "shots": ["vakitler", "imsakiye", "takvim", "saat"],
+      "locales": {
+        "tr": {"promo": "Şehrinizin namaz vakitleri 14 hesap yöntemiyle; kıble pusulası, imsakiye, Kur'an ve dualar. İnternetsiz çalışır. Ücretsiz, reklamsız, hesap gerekmez.", "keywords": ["imsakiye", "cami", "kuran", "iftar", "dua"]},
+        "en-US": {"promo": "Prayer times for your city with 14 calculation methods, a qibla compass, Ramadan timetable, Quran and duas. Works offline. Free, no ads, no account.", "keywords": ["prayer times", "salah", "azan", "qibla", "ramadan", "quran"]},
+        "de-DE": {"promo": "Gebetszeiten für Ihre Stadt mit 14 Berechnungsmethoden, Qibla-Kompass, Ramadan-Kalender, Koran und Bittgebete. Funktioniert offline. Kostenlos, ohne Werbung.", "keywords": ["Gebetszeiten", "Gebetszeit", "Qibla", "Ramadan", "Koran", "namaz"]}
+      }
+    },
+    {
+      "id": "dunya",
+      "name": "Dünya saatleri ve toplantı",
+      "shots": ["dunya", "planlayici", "saat", "widgetlar"],
+      "locales": {
+        "tr": {"promo": "Dönen dünyada şehir saatleri, ortak mesai saatlerini bulan toplantı planlayıcı ve 8 borsanın seans saatleri. Ücretsiz, reklamsız, hesap gerekmez.", "keywords": ["dünya saatleri", "saat farkı", "saat dilimi", "toplantı planlayıcı", "utc", "dünya saati"]},
+        "en-US": {"promo": "World clocks on a spinning globe, a meeting planner that finds shared working hours, and 8 stock exchange sessions. Free, no ads, no account.", "keywords": ["world clock", "time zone converter", "meeting planner", "time difference", "utc", "stock market hours"]},
+        "de-DE": {"promo": "Weltuhren auf einem drehenden Globus, ein Meeting-Planer, der gemeinsame Arbeitszeiten findet, und 8 Börsenzeiten. Kostenlos, ohne Werbung, ohne Konto.", "keywords": ["Weltuhr", "Zeitzonen", "Zeitverschiebung", "Meeting Planer", "utc"]},
+        "ar-SA": {"promo": "ساعات العالم على كرة أرضية دوّارة، ومخطط اجتماعات يجد ساعات العمل المشتركة، وجلسات 8 بورصات. مجاني، بلا إعلانات ولا حساب.", "keywords": ["ساعة العالم", "فرق التوقيت", "المنطقة الزمنية", "مخطط الاجتماعات", "ساعة عالمية"]}
+      }
+    },
+    {
+      "id": "panchang",
+      "name": "Panchang (Hindistan)",
+      "_not": "Hintçe dil sürümü 1.1 ile gelir; o zaman hi eklenir. Türkçe dil sürümü uygulamanın ana dili olduğu için zorunlu. Çekim Delhi saatiyle (TZ Asia/Kolkata → varsayılan yer Delhi).",
+      "tz": "Asia/Kolkata",
+      "shots": ["panchang", "takvimler", "saat", "dunya"],
+      "locales": {
+        "tr": {"promo": "Seçtiğiniz şehirde bugünün Rahu Kaal, Yamaganda, Gulika ve Abhijit muhurtası; tithi ve nakşatra. İnternetsiz çalışır. Ücretsiz, reklamsız, hesap gerekmez.", "keywords": ["takvim"]},
+        "en-US": {"promo": "Today's Rahu Kaal, Yamaganda, Gulika and Abhijit muhurta for your city, with tithi and nakshatra. Works offline. Free, no ads, no account.", "keywords": ["panchang", "rahu kaal", "hindu calendar", "tithi", "muhurat", "calendar"]}
+      }
+    },
+    {
+      "id": "takvim",
+      "name": "Takvimler ve tatiller",
+      "shots": ["takvimler", "kopru", "saat"],
+      "_not": "Köprü tatil Türkiye'nin tatillerine göre: yalnız tr'de çekilir (cpp-screenshots.sh).",
+      "locales": {
+        "tr": {"promo": "32 ülkenin resmî tatilleri ve Çin'den Yahudi, Hindu ve Ortodoks takvimine 22 takvim yan yana. Ücretsiz, reklamsız, hesap gerekmez.", "keywords": ["resmi tatiller", "köprü tatil", "ay takvimi", "çin takvimi", "hicri takvim", "takvim", "tatil"]},
+        "en-US": {"promo": "Public holidays in 32 countries and 22 calendars, from Chinese and Jewish to Hindu and Orthodox, side by side. Free, no ads, no account.", "keywords": ["holidays", "public holidays", "lunar calendar", "chinese calendar", "jewish calendar", "hijri calendar", "calendar"]},
+        "de-DE": {"promo": "Feiertage in 32 Ländern und 22 Kalender nebeneinander, vom chinesischen und jüdischen bis zum hinduistischen und orthodoxen. Kostenlos, ohne Werbung.", "keywords": ["Feiertage", "Mondkalender", "chinesischer Kalender", "jüdischer Kalender", "kalender"]},
+        "ar-SA": {"promo": "العطل الرسمية في 32 دولة و22 تقويمًا جنبًا إلى جنب، من الصيني واليهودي إلى الهندوسي والأرثوذكسي. مجاني، بلا إعلانات.", "keywords": ["العطل الرسمية", "التقويم القمري", "التقويم الصيني", "التقويم الهجري", "تقويم"]}
+      }
+    }
+  ]
+}

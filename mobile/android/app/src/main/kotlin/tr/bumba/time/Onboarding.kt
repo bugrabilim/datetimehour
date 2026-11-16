@@ -123,9 +123,8 @@ object Onboarding {
      *  1 kurulum, 2–6 sorular, 7 özet, 8 "başka neler var", 9–10 ipuçları, 11–16 özellik turu, 17 son sayfa "Diğer her şey
      *  Tümü'nde"; diğer dillerde 4 soru ve 5 tur: 2–5 sorular, 6 özet, 7 "başka neler var", 8–9 ipuçları, 10–14 tur, 15 son) */
     val PAGES: List<String> get() = listOf("welcome", "setup") + QUESTIONS.map { "q:" + Features.id(it) } +
-        listOf("summary", "more", "tip:swipe", "tip:full") + TOURS.map { "tour:$it" } + listOf("tip:all")
+        listOf("summary", "tip:swipe", "tip:full") + TOURS.map { "tour:$it" } + listOf("tip:all")
     val SUMMARY: Int get() = PAGES.indexOf("summary")
-    val MORE: Int get() = PAGES.indexOf("more")
 
     var pending by mutableStateOf(false)
         private set
@@ -209,7 +208,7 @@ object Onboarding {
             Features.save(emptySet())
             for (t in ASKABLE) for (k in notifyKeys(t)) e.putBoolean(k, false)
         } else before?.let { (on, bar) -> Features.save(on); Features.saveBar(bar) }
-        e.putBoolean(KEY, false).putInt(SEEN_KEY, VERSION).putBoolean("notify.asked", true).remove(RESUME_KEY).remove(SIG_KEY)
+        e.putBoolean(KEY, false).putInt(SEEN_KEY, VERSION).remove(RESUME_KEY).remove(SIG_KEY)
         e.apply()
         // Ayarların izi yukarıdaki değişikliklerden sonra alınır (yoksa kendi yazdığımız kapatır)
         if (fresh) Prefs.store.edit().putBoolean(RESUME_KEY, true).putString(SIG_KEY, signature()).apply()
@@ -221,15 +220,15 @@ object Onboarding {
 
     /**
      * Bitince: yanıtlar kalıcı olur. "Hayır" denen bölümün bildirimi kapanır; yeni kurulumda Vakitler'e "Evet" denirse
-     * saatin altında sıradaki vakit görünür. Araçlar (Tümü'ndeki araçlar) her zaman açık kalır. Bildirim izni burada
-     * sorulduğu için açılıştaki kısa açıklama bir daha çıkmaz.
+     * saatin altında sıradaki vakit görünür. Araçlar (Tümü'ndeki araçlar) her zaman açık kalır. Bildirim izni Vakitler'e
+     * "Evet" denince hemen sorulur; denmediyse uygulamanın ikinci açılışında (AskNotificationsOnce).
      */
     fun finish() {
         val e = Prefs.store.edit()
         for ((t, yes) in answers) if (!yes) for (k in notifyKeys(t)) e.putBoolean(k, false)
         // Yeni kurulumda Vakitler kapalı kaldıysa (sorulmayan dillerde de) vakit bildirimleri kapalı başlar
         if (fresh && !Features.isOn(Tab.PRAYER)) for (k in notifyKeys(Tab.PRAYER)) e.putBoolean(k, false)
-        e.putBoolean(KEY, false).putInt(SEEN_KEY, VERSION).putBoolean("notify.asked", true).remove(RESUME_KEY).remove(SIG_KEY)
+        e.putBoolean(KEY, false).putInt(SEEN_KEY, VERSION).remove(RESUME_KEY).remove(SIG_KEY)
             .remove(FRESH_KEY).apply()
         if (fresh && answers[Tab.PRAYER] == true && !Prefs.store.contains("homeItems")) {
             val layout = HomeLayout(HomeItem.DEFAULT_RAW)
@@ -279,6 +278,15 @@ fun OnboardingScreen(startPage: Int = Onboarding.startPage, onDone: () -> Unit) 
         scope.launch { pager.animateScrollToPage(to.coerceIn(0, last)) }
     }
     BackHandler(enabled = page > 0) { back() }
+    // Vakitler'e "Evet": bildirim izni hemen (sahibin isteği, 15 Kasım 2026); "Hayır"da ikinci açılışta (AskNotificationsOnce)
+    val context = LocalContext.current
+    val notifyLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { PrayerNotifier.reschedule(context) }
+    fun askNotifyNow() {
+        Prefs.store.edit().putBoolean("notify.asked", true).apply()
+        if (Build.VERSION.SDK_INT >= 33 && !PrayerNotifier.notificationsAllowed(context)) {
+            runCatching { notifyLauncher.launch(Manifest.permission.POST_NOTIFICATIONS) }
+        }
+    }
     Column(Modifier.fillMaxSize().appBackdrop(Theme.c).statusBarsPadding().navigationBarsPadding()) {
         Row(Modifier.fillMaxWidth().height(48.dp).padding(horizontal = 4.dp), verticalAlignment = Alignment.CenterVertically) {
             if (page > 0) IconButton(onClick = { back() }) {
@@ -300,7 +308,6 @@ fun OnboardingScreen(startPage: Int = Onboarding.startPage, onDone: () -> Unit) 
                     QuestionPage(Onboarding.QUESTIONS[i], i + 1, Onboarding.QUESTIONS.size)
                 }
                 pid == "summary" -> SummaryPage()
-                pid == "more" -> MorePage()
                 pid == "tip:swipe" -> TipPage("onboard.swipe") { SwipeArt() }
                 pid == "tip:full" -> TipPage("onboard.full") { FullscreenArt() }
                 pid.startsWith("tour:") -> TourPage(pid.removePrefix("tour:"))
@@ -327,13 +334,14 @@ fun OnboardingScreen(startPage: Int = Onboarding.startPage, onDone: () -> Unit) 
                     }
                     RoundButton((if (shown == true) "✓ " else "") + L("onboard.yes"), true, Modifier.weight(1f).heightIn(min = 52.dp)) {
                         Onboarding.answer(t, true); go(page + 1)
+                        if (t == Tab.PRAYER) askNotifyNow()
                     }
                 }
             }
-            id == "more" -> Row(bottom, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                // Hayır: doğrudan son sayfa ("Diğer her şey Tümü'nde"); Evet: özellikler tek tek
-                RoundButton(L("onboard.no"), false, Modifier.weight(1f).heightIn(min = 52.dp)) { go(last) }
-                RoundButton(L("onboard.yes"), true, Modifier.weight(1f).heightIn(min = 52.dp)) { go(page + 1) }
+            // "Uygulamanız hazır" (sahibin isteği, 15 Kasım 2026): Başla ya da tanıtıma devam (ipuçları ve özellik turu)
+            id == "summary" -> Column(bottom, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                RoundButton(L("onboard.start"), true, Modifier.fillMaxWidth().heightIn(min = 52.dp)) { onDone() }
+                RoundButton(L("onboard.continueTour"), false, Modifier.fillMaxWidth().heightIn(min = 52.dp)) { go(page + 1) }
             }
             else -> {
                 val label = when (id) { "welcome" -> "onboard.go"; "tip:all" -> "onboard.start"; else -> "onboard.next" }
@@ -362,13 +370,13 @@ private fun WelcomePage() {
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 24.dp, vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        // Sayfa kaydırmadan sığsın (8 Kasım 2026, iki tonlu ızgarayla): aralıklar 10, saat 104
+        // Tek ekrana sığar (15 Kasım 2026, sahibin isteği): saat 72, ızgara kareleri ince, alttaki ipucu satırı kalktı
         verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
     ) {
-        AnalogClock(rememberNow().atZone(java.time.ZoneId.systemDefault()), Modifier.size(104.dp))
-        Text(L("app.displayName"), color = Theme.c.text, fontSize = 28.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        AnalogClock(rememberNow().atZone(java.time.ZoneId.systemDefault()), Modifier.size(72.dp))
+        Text(L("app.displayName"), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
         // Sahibin metni (6 Kasım 2026): vurgulu iki satırlık başlık, ne yaptık, özellikler, "Neden ücretsiz?"
-        Text(L("onboard.welcome.title"), color = Theme.c.accent, fontSize = 26.sp, lineHeight = 32.sp,
+        Text(L("onboard.welcome.title"), color = Theme.c.accent, fontSize = 23.sp, lineHeight = 29.sp,
             fontFamily = AppFonts.heading, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
         Text(L("onboard.welcome.text"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
         WelcomeFeatures()
@@ -376,8 +384,6 @@ private fun WelcomePage() {
             fontFamily = AppFonts.heading, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 4.dp).semantics { heading() })
         Text(L("onboard.welcome.why"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
-        Text(L(if (Onboarding.QUESTIONS.size == 4) "onboard.welcome.hint4" else "onboard.welcome.hint"), color = Theme.c.muted, fontSize = 14.sp, lineHeight = 20.sp, textAlign = TextAlign.Center,
-            modifier = Modifier.padding(top = 2.dp))
     }
 }
 
@@ -402,7 +408,7 @@ private fun WelcomeFeatures() {
             Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 row.forEach { (key, icon) ->
                     Column(
-                        Modifier.weight(1f).fillMaxHeight().paper(Theme.c.surface, 16).padding(horizontal = 4.dp, vertical = 8.dp),
+                        Modifier.weight(1f).fillMaxHeight().paper(Theme.c.surface, 16).padding(horizontal = 4.dp, vertical = 6.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
                     ) {
@@ -454,21 +460,20 @@ private fun SummaryPage() {
                 Icon(Icons.Filled.CheckCircle, null, tint = Theme.c.accent, modifier = Modifier.size(22.dp))
             }
         }
-        Text(L("onboard.q.note"), color = Theme.c.muted, fontSize = 13.sp)
     }
 }
 
 /** Güven kartı: hesap/reklam/takip yok, verileriniz bize gelmez (kurulum sayfası ve Ayarlar › İzinler) */
 @Composable
-fun TrustCard() {
-    AppCard(padding = 18) {
+fun TrustCard(compact: Boolean = false) {
+    AppCard(padding = if (compact) 14 else 18) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             DuoChip("privacy", Theme.c.sage)
             Spacer(Modifier.width(10.dp))
             Text(L("onboard.trust.title"), color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.Bold)
         }
         Text(L("onboard.trust.text"), color = Theme.c.text, fontSize = 15.sp, lineHeight = 21.sp)
-        Text(Onboarding.neutral("onboard.trust.services"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
+        if (!compact) Text(Onboarding.neutral("onboard.trust.services"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
     }
 }
 
@@ -480,9 +485,10 @@ private fun SetupPage() {
         notifyOn = PrayerNotifier.notificationsAllowed(context)
         PrayerNotifier.reschedule(context)
     }
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+    // Tek ekrana sığsın diye (15 Kasım 2026) servis notu yalnız Ayarlar › İzinler'deki kartta
+    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 24.dp, vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(L("onboard.setup.title"), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
-        TrustCard()
+        TrustCard(compact = true)
         Column(Modifier.fillMaxWidth().paper(Theme.c.surface).padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 DuoChip("pin", Theme.c.sage)
@@ -495,6 +501,7 @@ private fun SetupPage() {
         Column(
             Modifier.fillMaxWidth().paper(Theme.c.surface)
                 .clickable(enabled = !notifyOn) {
+                    Prefs.store.edit().putBoolean("notify.asked", true).apply()
                     if (Build.VERSION.SDK_INT >= 33) launcher.launch(Manifest.permission.POST_NOTIFICATIONS)
                     else notifyOn = PrayerNotifier.notificationsAllowed(context)
                 }
@@ -526,21 +533,6 @@ private fun TipPage(key: String, art: @Composable () -> Unit) {
         Text(L("$key.title"), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
         Text(if (key == "onboard.all") Onboarding.neutral("$key.text") else L("$key.text"), color = Theme.c.muted, fontSize = 16.sp,
             lineHeight = 23.sp, textAlign = TextAlign.Center)
-    }
-}
-
-/** "Başka neler var, öğrenmek ister misiniz?": altta Hayır (son sayfaya) / Evet (özellikler tek tek) */
-@Composable
-private fun MorePage() {
-    Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 28.dp, vertical = 12.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(18.dp, Alignment.CenterVertically),
-    ) {
-        Box(Modifier.semantics { invisibleToUser() }) { IconCluster(listOf("sparkles", "books", "star")) }
-        Text(L("onboard.more.title"), color = Theme.c.text, fontSize = 25.sp, lineHeight = 31.sp, fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center)
-        Text(L("onboard.more.text"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
     }
 }
 

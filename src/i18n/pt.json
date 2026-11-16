@@ -442,7 +442,16 @@
         "h": "Associação",
         "p": [
           "Você não precisa de conta para usar o Saat Tarih. Se quiser, pode abrir uma associação Bumba no site (hesap.time.bumba.tr) e nos apps com seu e-mail e uma senha; a mesma associação também vale nos outros produtos Bumba.",
-          "Quais informações a associação trata e para quê, onde ficam guardadas e quais são os seus direitos está no [aviso de privacidade comum da associação Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en); as regras estão nos [termos de associação](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Você pode excluir sua conta a qualquer momento: [Excluir sua conta]({deleteUrl})."
+          "Quais informações a associação trata e para quê, onde ficam guardadas e quais são os seus direitos está no [aviso de privacidade comum da associação Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en); as regras estão nos [termos de associação](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Você pode excluir sua conta a qualquer momento: [Excluir sua conta]({deleteUrl}).",
+          "Os **círculos** dos apps (dhikr e khatm compartilhados) exigem uma conta e, como podem revelar suas crenças religiosas, só funcionam com seu consentimento explícito à parte (KVKK art. 6; LGPD art. 11). O nome do círculo, sua participação, seu nome de exibição, os dhikr que você adiciona e os juz que você pega ou conclui só são vistos pelos membros daquele círculo; não são públicos, não são vendidos nem usados em publicidade. Se você sair de um círculo, sua contribuição fica sem nome. Você pode retirar o consentimento no app a qualquer momento; então sai de todos os círculos.",
+          "Os **grupos** (contagem regressiva, relógio mundial, votação de reunião, sala de foco, sugestão de alarme, contador de observação do céu) também exigem uma conta. O nome do grupo, sua participação, seu nome de exibição e o que você adiciona ao grupo (cidade e fuso compartilhados, seus votos, sessões de foco, sugestões de alarme, eventos celestes marcados) só são vistos pelos membros do grupo. Uma sugestão de alarme nunca é definida no seu celular sem que você aceite. Os **relatos do tempo** não são mostrados a outras pessoas com sua identidade: a localização é arredondada a uma célula de cerca de 25 km e o relato é apagado após 24 horas. Base legal: execução do contrato de associação (KVKK art. 5/2-c; LGPD art. 7, V). Você pode sair de um grupo e denunciar ou bloquear pessoas; excluir a conta apaga tudo isso."
+        ]
+      },
+      {
+        "id": "report-problem",
+        "h": "Relatar um problema",
+        "p": [
+          "Você pode relatar um problema no site (hesap.time.bumba.tr/hata-bildir) e nos apps (Ajustes › Suporte); não é preciso conta. O que você escreve, seu e-mail (se informado), a versão da página ou do app, o tipo de dispositivo e o idioma são enviados a nós por e-mail (serviço de e-mail Resend, EUA) apenas para analisar este relato e responder a você. Não são guardados em nenhum outro lugar e são excluídos em no máximo um ano. Para limitar abusos, seu endereço IP é guardado por no máximo um dia. Base legal: nosso interesse legítimo em responder ao seu relato (KVKK art. 5/2-f)."
         ]
       },
       {
@@ -2051,7 +2060,7 @@
     "hoursShort": "h",
     "minutesShort": "min",
     "tableHeading": "Datas de início das estações",
-    "tableLead": "Estações astronômicas, ou seja, os momentos dos equinócios e solstícios. Os horários estão na hora da Turquia (UTC+3).",
+    "tableLead": "Estações astronômicas, ou seja, os momentos dos equinócios e solstícios. Os horários estão na hora do local selecionado.",
     "colYear": "Ano",
     "meteoNote": "As estações meteorológicas são blocos de três meses: a primavera começa em 1º de março, o verão em 1º de junho, o outono em 1º de setembro e o inverno em 1º de dezembro. Elas são usadas em calendários e estatísticas.",
     "factsHeading": "A natureza ao longo das estações",
@@ -3523,5 +3532,18 @@
         ]
       }
     ]
+  },
+  "invite": {
+    "title": "Convite para um círculo | Saat Tarih",
+    "h1": "Você foi convidado para um círculo",
+    "lead": "Você foi convidado para um círculo compartilhado de dhikr ou de khatm do Alcorão no app Saat Tarih.",
+    "code": "Código de convite",
+    "open": "Abrir no app",
+    "how": "Se o app não abrir, vá em Tudo › Círculos › Entrar com um código no Saat Tarih e digite este código. Os círculos exigem uma conta gratuita.",
+    "get": "Baixar na App Store",
+    "none": "Este link não tem código de convite. Peça a quem convidou você para enviá-lo novamente.",
+    "howGroup": "Se o app não abrir, vá em Tudo › Grupos › Entrar com um código no Saat Tarih e digite este código. Os grupos exigem uma conta gratuita.",
+    "h1Group": "Você foi convidado para um grupo",
+    "leadGroup": "Você foi convidado no app Saat Tarih para um grupo compartilhado: contagem regressiva, relógio mundial, votação de reunião, sala de foco, alarme ou observação do céu."
   }
 }

@@ -1,5 +1,5 @@
 {
-  "_not": "Mağaza görsellerinin başlıkları (2. analiz #33, 3 Kasım 2026; 9 Kasım 2026'da ülkeye göre vitrin). Anahtar: ekran (dosya adındaki NN- ve ipad- önekinden sonrası), dil: [başlık, alt satır]. frame-screenshots.mjs kullanır; fastlane klasörünün başlık dili oradaki LANG tablosunda (en-GB, en-AU, en-CA → en; fr-CA → fr; es-MX → es; pt-PT → pt; ur-PK → ur; bn-BD → bn). Müslüman vitrini dilleri (tr, ar, id, ms, ur) saat ve takvim başlığında vakitleri ve dini günleri anar; diğer diller nötrdür (store-screenshots.sh'taki görsel içeriğiyle aynı). Rakamlar her dilde Latin.",
+  "_not": "Mağaza görsellerinin başlıkları (2. analiz #33, 3 Kasım 2026; 9 Kasım 2026'da ülkeye göre vitrin). Anahtar: ekran (dosya adındaki NN- ve ipad- önekinden sonrası), dil: [başlık, alt satır]. frame-screenshots.mjs kullanır; fastlane klasörünün başlık dili oradaki LANG tablosunda (en-GB, en-AU, en-CA → en; fr-CA → fr; es-MX → es; pt-PT → pt; ur-PK → ur; bn-BD → bn). Müslüman vitrini dilleri (tr, ar, id, ms, ur) saat ve takvim başlığında vakitleri ve dini günleri anar; diğer diller nötrdür (store-screenshots.sh'taki görsel içeriğiyle aynı). Rakamlar her dilde Latin. Özel ürün sayfalarının ekranları (kadranlar, widgetlar, planlayici, panchang, takvimler, kopru; 15 Kasım 2026) şimdilik tr, en, de, ar'da (custom-pages.json).",
   "saat": {
     "tr": ["Saat, tarih ve vakit", "21 saat modeli, tam ekran ve gece modu"],
     "en": ["Clock and date at a glance", "21 clock styles, 25 dials and widgets"],
@@ -159,5 +159,41 @@
     "ur": ["پُرسکون نیند، نرم بیداری", "سونے کی یاددہانی، نیند کی آوازیں اور اسمارٹ الارم"],
     "bn": ["ভালো ঘুম, আলতো করে জাগা", "ঘুমের সময়ের রিমাইন্ডার, ঘুমের শব্দ ও স্মার্ট অ্যালার্ম"],
     "zh-Hant": ["睡個好覺，輕柔醒來", "就寢提醒、助眠聲音和智慧鬧鐘"]
+  },
+  "kadranlar": {
+    "tr": ["25 kadran", "Klasik, Roma, dalgıç, İznik çini ve fazlası"],
+    "en": ["25 watch dials", "Classic, Roman, diver, Iznik tile and more"],
+    "de": ["25 Zifferblätter", "Klassisch, römisch, Taucher, Iznik-Fliese und mehr"],
+    "ar": ["25 مينا للساعة", "كلاسيكي، أرقام رومانية، غطّاس، خزف إزنيق والمزيد"]
+  },
+  "widgetlar": {
+    "tr": ["Widget'lar", "Ana ekranda ve kilit ekranında saat, hava ve Ay"],
+    "en": ["Widgets", "Clock, weather and Moon on Home and Lock Screen"],
+    "de": ["Widgets", "Uhr, Wetter und Mond auf Home- und Sperrbildschirm"],
+    "ar": ["أدوات الشاشة", "الساعة والطقس والقمر على الشاشة الرئيسية وشاشة القفل"]
+  },
+  "planlayici": {
+    "tr": ["Toplantı planlayıcı", "Şehirler arasında ortak mesai saatleri"],
+    "en": ["Meeting planner", "Shared working hours across cities"],
+    "de": ["Meeting-Planer", "Gemeinsame Arbeitszeiten über Städte hinweg"],
+    "ar": ["مخطط الاجتماعات", "ساعات العمل المشتركة بين المدن"]
+  },
+  "panchang": {
+    "tr": ["Panchang", "Rahu Kaal, Abhijit ve günün tithi'si"],
+    "en": ["Panchang", "Rahu Kaal, Abhijit muhurta and today's tithi"],
+    "de": ["Panchang", "Rahu Kaal, Abhijit und das Tithi des Tages"],
+    "ar": ["بانشانغ", "راهو كال وأبهيجيت وتيثي اليوم"]
+  },
+  "takvimler": {
+    "tr": ["22 takvim yan yana", "Çin, Yahudi, Hindu, Ortodoks ve daha fazlası"],
+    "en": ["22 calendars side by side", "Chinese, Jewish, Hindu, Orthodox and more"],
+    "de": ["22 Kalender nebeneinander", "Chinesisch, jüdisch, hinduistisch, orthodox und mehr"],
+    "ar": ["22 تقويمًا جنبًا إلى جنب", "الصيني واليهودي والهندوسي والأرثوذكسي والمزيد"]
+  },
+  "kopru": {
+    "tr": ["Köprü tatil planlayıcı", "En az izinle en uzun tatil"],
+    "en": ["Long weekend planner", "The longest break for the fewest days off"],
+    "de": ["Brückentage-Planer", "Die längste Auszeit mit den wenigsten Urlaubstagen"],
+    "ar": ["مخطط العطلات الطويلة", "أطول عطلة بأقل أيام إجازة"]
   }
 }

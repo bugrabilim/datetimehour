@@ -220,7 +220,7 @@ enum SeasonTurn {
 }
 
 struct SunProvider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SunEntry { entry(Date(), Place(province: Province.find("istanbul"))) }
+    func placeholder(in context: Context) -> SunEntry { entry(Date(), Place.fallback()) }
     func snapshot(for c: ProvinceIntent, in context: Context) async -> SunEntry { entry(Date(), await c.resolvePlace()) }
     func timeline(for c: ProvinceIntent, in context: Context) async -> Timeline<SunEntry> {
         let place = await c.resolvePlace()

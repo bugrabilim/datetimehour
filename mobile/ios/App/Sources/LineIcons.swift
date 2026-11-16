@@ -257,7 +257,7 @@ enum LineIconMap {
             "leaf": "leafcal", "datecalc": "date", "planner": "people", "journal": "notebook", "bridge": "bridge",
             "retire": "beach", "weather": "sun_cloud", "world": "globe", "seasons": "leaf", "moon": "moon",
             "sky": "telescope", "sunpath": "sunset", "photo": "aperture", "panchang": "sunrise", "greetN": "party", "zodiac": "milkyway", "prayer": "mosque", "qibla": "compass",
-            "quran": "book", "zikir": "beads", "track": "checklist", "duas": "hands", "esma": "sparkles",
+            "quran": "book", "zikir": "beads", "circles": "people", "groups": "people", "track": "checklist", "duas": "hands", "esma": "sparkles",
             "hadith": "scroll", "guide": "guide", "reldays": "star_crescent", "greet": "love_letter", "zakat": "coin",
             "settings": "gear", "badges": "medal",
             // Ayar arama girdileri (`s:` öneki atılır)

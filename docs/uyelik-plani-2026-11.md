@@ -176,3 +176,59 @@ hesabı açılana kadar yalnız kodda.
   PR #60 main'e (site sayfaları canlıya; bu oturum, sahibin onayıyla) → bu oturum ana altyapı oturumuna sunucunun
   hazır olduğunu yazar → sahip ana altyapı oturumunda sunucunun ilk yayınını onaylar, o oturum basar → hesap
   ekranlı uygulama sürümü. Sonra aşama 2 (ortak zikir ve hatim).
+
+## Aşama 2 (sahip 15 Kasım 2026'da "başla" dedi)
+- **2a, sunucu (15 Kasım 2026, yapıldı, yayında değil):** `server/src/circles.mjs`, uçlar `/v1/halkalar`, `/v1/halka`
+  (kur), `/v1/halka/onizle`, `/v1/halka/katil`, `/v1/halka/<id>` ve `/zikir`, `/cuz`, `/ayril`, `/cikar`, `/duzenle`,
+  `/sil`, `/bildir`, `/engelle`, `/v1/halka/riza/geri-al`; testler `server/test/circles.test.mjs`. Yayına hazır olana kadar
+  kapalı (uçlar 404; ortam değişkeni `HALKALAR=acik` ile açılır, ana altyapı girer). Kurallar:
+  - En çok 30 üye, kişi başına 20 halka; davet kodu 8 harf (karışan harf yok), kurucu yeniler.
+  - Zikir halkası: hazır zikir türü (serbest metin yok), hedef 33–10.000.000, isteğe bağlı bitiş günü; her istekte
+    1–10.000 eklenir; üyelerin payı görünür, sıralama yok.
+  - Hatim halkası: 30 cüz; al, bırak, bitir; 30'u bitince hatim sayısı artar, yeni hatim başlar.
+  - Görünen ad standarttaki kural (takma ad / ad / "Üye 10458"); halkaya özel ad yok.
+  - Açık rıza (`circle_consent`, sürüm 2026-11-15) ilk kurma ya da katılmada, kayıt onayından ayrı; geri alınınca kişi
+    bütün halkalardan çıkar.
+  - Kullanıcı içeriği yalnız halka adı ve görünen ad: süzgeç (bağlantı, e-posta, telefon, kısa yasaklı sözcük
+    listesi), Bildir (her bildirim e-postayla sahibe, bildirenin ve yazanın kimliği yazılmaz; üç ayrı kişiden sonra ad
+    kendiliğinden gizlenir), Engelle, kurucu üyeyi çıkarır.
+  - Ayrılan ya da silinen üyenin katkısı kalır ("Eski üye" / "Silinmiş üye"), bitmemiş cüzü serbest kalır; kurucu
+    giderse halka en eski üyeye geçer; hesap silmede üye kalmadıysa 30 gün tutulur (temizlik görevi siler), ayrılmada
+    hemen silinir. Yasaklanan üyede de aynı.
+  - "Verilerimi indir"e halkalar ve onay kaydı eklendi.
+- **2b, uygulamalar (15 Kasım 2026, yapıldı, yayında değil):** Vakitler › İbadet ve Tümü › İbadet'te "Halkalar"
+  (giriş ister): liste, kur, kodla katıl, zikir (+33, +100), 30 cüz ızgarası, üyeler, Bildir/Engelle/Çıkar, onay
+  ekranı, rızayı geri alma; metinler 19 dil (`circle.*`). Android `Circles.kt`, iOS `Circles.swift`; sunucuda kapalıyken
+  "yakında" yazar. Android ekran görüntüleri `tr-halkalar`, `tr-halka-zikir`, `tr-halka-hatim`, `ar-halka-hatim`.
+- **2c, davet bağlantısı (15 Kasım 2026, yapıldı, yayında değil):** `https://time.bumba.tr/davet/#KOD` (grup için
+  `#g:KOD`): statik, noindex, 19 dil bir arada (`invite.js` tarayıcı diline göre gösterir), "Uygulamada aç" düğmesi
+  `saattarih://davet?kod=KOD` (grup `&tur=grup`), App Store bağlantısı. Android `https://time.bumba.tr/davet/` ve
+  `saattarih://davet` bağlantılarını açar (doğrulanmış App Links için `assetlinks.json` Play imzasıyla sonra); iOS
+  `saattarih://davet`. Evrensel bağlantı (Associated Domains + `apple-app-site-association`) sonra, sahibin onayıyla.
+- **2d, yedi ortak özellik (15 Kasım 2026, sahibin onayı "tüm önerilerin uygun"; yapıldı, yayında değil):**
+  `docs/uyelik-ortak-ozellikler-2026-11.md`'deki yedi öneri. Sunucu `server/src/groups.mjs` (uçlar `/v1/gruplar`,
+  `/v1/grup` kur, `/onizle`, `/katil`, `/v1/grup/<id>` ve `/yerim`, `/oy`, `/odak`, `/izledim`, `/alarm`,
+  `/alarm-yanit`, `/ayril`, `/cikar`, `/duzenle`, `/sil`, `/bildir`, `/engelle`; `/v1/hava-bildirim`), testler
+  `server/test/groups.test.mjs`; kapalıyken 404 (`GRUPLAR=acik` ile açılır). Türler: ortak geri sayım (hedef, yıllık,
+  simge; "Geri sayımlarıma ekle"), ortak dünya saati (her üye şehrini, saat dilimini ve isteğe bağlı mesai saatini
+  paylaşır), toplantı oylaması (en çok 12 aday, uygun/olabilir/uygun değil, en iyi saat, kurucu kapatır), odak odası
+  (25/50 dk ortak oturum, katıl ve bitirdim; ses ya da sohbet yok), alarm önerisi (üye bir saat önerir, alan kişi
+  onaylamadan telefonuna kurulmaz; kişi başına günde en çok 5; en çok 30 üye, kişi başına 20 grup), gözlem sayacı (gök olaylarında "izledim" işareti,
+  sayılar). Anonim hava bildirimi (giriş ister ama başkalarına kimlik gösterilmez): konum 0,25° hücreye, 10 dakikada
+  bir, günde en çok 20, 24 saatte silinir; Hava ekranında kart. Kullanıcı metni yalnız grup adı, şehir adı ve alarm
+  etiketi (halkalardaki süzgeç); Bildir, Engelle (halkalarla ortak engel listesi), kurucu Çıkar. Din verisi olmadığı
+  için ayrı rıza yok; hukuki sebep üyelik sözleşmesinin ifası. Uygulamalar Tümü › Gün ve plan › "Gruplar" (Android
+  `Groups.kt`, iOS `Groups.swift`), metinler `group.*`, `wxr.*` (19 dil); Android ekran görüntüleri `tr-gruplar`,
+  `tr-grup-*`, `en-grup-oylama`, `tr-grup-kur`, `tr-hava-bildirimi`. Gizlilik sayfasının "Üyelik" bölümünde halkalar
+  ve gruplar (19 dil).
+- **Yayından önce (sahibin onayıyla):** sunucuda `HALKALAR=acik` ve `GRUPLAR=acik` (ana altyapı girer), App Store yaş
+  derecelendirmesinde kullanıcı içeriği sorusu, Uygulama Gizliliği'ne "Diğer kullanıcı içeriği" ve kaba konum (hava
+  bildirimi), Play veri güvenliği formu, App Review notunda moderasyon akışı ve deneme hesabı.
+
+### Açık rıza metni (sahip 15 Kasım 2026'da onayladı: "tüm önerilerin uygun")
+"Zikir ve hatim halkasına katılmanız dini inancınızla ilgili bilgi (KVKK m. 6, özel nitelikli kişisel veri)
+sayılabilir. Halkada şunlar tutulur: halkanın adı, üyeliğiniz, görünen adınız, eklediğiniz zikir sayısı ve
+aldığınız/bitirdiğiniz cüzler. Bunları yalnız halkanın üyeleri görür; herkese açık değildir, satılmaz, reklam için
+kullanılmaz. Halkadan ayrılınca katkı sayılarınız halkada adsız kalır. Bu onayı dilediğiniz zaman geri alabilirsiniz:
+bütün halkalardan çıkarsınız. Hesabınızı silince üyelikleriniz silinir. Veri sorumlusu Bumba Teknoloji Ltd. Şti.;
+ayrıntılar Gizlilik ve Üyelik Aydınlatma Metni'nde. Okudum, açıkça onaylıyorum."

@@ -145,8 +145,8 @@ enum ToolRoute: Hashable {
     // Panchang ve Rahu Kaal (10 Kasım 2026, Hindistan araştırması #9); kutlama kartları (nötr vesileler)
     case panchang, greetN
     case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
-    // Hesap (üyelik aşama 1, 10 Kasım 2026)
-    case account
+    // Hesap (üyelik aşama 1, 10 Kasım 2026) ve halkalar (aşama 2b, 15 Kasım 2026)
+    case account, circles, groups
     // Sitedeki dokuz araç (4 Kasım 2026)
     case chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom
     case sura(Int)
@@ -201,6 +201,12 @@ final class Router {
         // Sitedeki "Uygulamaya ekle" ya da paylaşılan geri sayım (2. analiz #138)
         case "countdown":
             if CountdownItem.importURL(url) { tab = .tools; toolsPath = [.timer] }
+        // Halka daveti (üyelik aşama 2c): saattarih://davet?kod=KOD; Halkalar › Kodla katıl kodla açılır
+        case "davet":
+            if let code = Circles.code(from: url) {
+                if Circles.isGroup(url) { Groups.pendingCode = code; tab = .tools; toolsPath = [.groups] }
+                else { Circles.pendingCode = code; tab = .tools; toolsPath = [.circles] }
+            }
         default: break
         }
     }
@@ -545,7 +551,7 @@ enum DebugScreen: String, Identifiable {
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
          wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet,
          qr, colors, wall, study, wakegame, language, dials, chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom, permissions,
-         photo, account
+         photo, account, widgets, panchang
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -586,6 +592,9 @@ enum DebugScreen: String, Identifiable {
         case .permissions: PermissionsView()
         case .account: AccountView()
         case .photo: PhotoLightView()
+        // Özel ürün sayfası görselleri (15 Kasım 2026)
+        case .widgets: WidgetGalleryView()
+        case .panchang: PanchangView()
         case .planner: MeetingPlannerView()
         case .world: WorldClockView()
         case .weather: WeatherView()

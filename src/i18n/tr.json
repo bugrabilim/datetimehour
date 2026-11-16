@@ -376,7 +376,16 @@
         "h": "Üyelik",
         "p": [
           "Saat Tarih'i kullanmak için hesap gerekmez. İsterseniz sitede (hesap.time.bumba.tr) ve uygulamalarda e-posta adresiniz ve bir şifreyle Bumba üyeliği açabilirsiniz; aynı üyelikle öbür Bumba ürünlerine de girebilirsiniz.",
-          "Üyelikte hangi bilgilerin neden işlendiği, nerede saklandığı ve haklarınız ortak [Bumba üyelik aydınlatma metninde](https://bumbagroup.com/uyelik-aydinlatma), kurallar [üyelik sözleşmesinde](https://bumbagroup.com/uyelik-sozlesmesi) yazar. Hesabınızı istediğiniz zaman silebilirsiniz: [Hesabınızı silme]({deleteUrl})."
+          "Üyelikte hangi bilgilerin neden işlendiği, nerede saklandığı ve haklarınız ortak [Bumba üyelik aydınlatma metninde](https://bumbagroup.com/uyelik-aydinlatma), kurallar [üyelik sözleşmesinde](https://bumbagroup.com/uyelik-sozlesmesi) yazar. Hesabınızı istediğiniz zaman silebilirsiniz: [Hesabınızı silme]({deleteUrl}).",
+          "Uygulamalardaki **Halkalar** (ortak zikir ve hatim) üyelik ister ve dini inancınıza ilişkin bilgi gösterebileceği için yalnız ayrıca verdiğiniz açık rızayla çalışır (KVKK m. 6). Halka adı, üyeliğiniz, görünen adınız, eklediğiniz zikir sayısı ve aldığınız ya da bitirdiğiniz cüzler yalnız o halkanın üyelerine görünür; herkese açık değildir, satılmaz, reklamda kullanılmaz. Halkadan ayrılırsanız katkınız adsız kalır. Rızanızı uygulamada istediğiniz zaman geri alabilirsiniz; o zaman bütün halkalardan çıkarsınız.",
+          "**Gruplar** (ortak geri sayım, dünya saati, toplantı oylaması, odak odası, alarm önerisi, gözlem sayacı) da üyelik ister. Grup adı, üyeliğiniz, görünen adınız ve gruba girdikleriniz (paylaştığınız şehir ve saat dilimi, oylarınız, odak oturumu, alarm önerileri, işaretlediğiniz gök olayları) yalnız grubun üyelerine görünür. Bir alarm önerisi siz onaylamadan telefonunuza kurulmaz. **Hava bildirimi** başkalarına kimliğinizle gösterilmez: konumunuz yaklaşık 25 km'lik bir hücreye yuvarlanır, bildirim 24 saat sonra silinir. Hukuki sebep: üyelik sözleşmesinin ifası (KVKK m. 5/2-c). Gruptan ayrılabilir, kişileri bildirebilir ya da engelleyebilirsiniz; hesabınızı silince bunların hepsi silinir."
+        ]
+      },
+      {
+        "id": "hata-bildirimi",
+        "h": "Hata bildir",
+        "p": [
+          "Sitede (hesap.time.bumba.tr/hata-bildir) ve uygulamalarda (Ayarlar › Destek) bize sorun bildirebilirsiniz; hesap gerekmez. Yazdıklarınız, yazdıysanız e-posta adresiniz, sayfa ya da uygulama sürümü, cihaz türü ve dil yalnız bu bildirimi incelemek ve size yanıt vermek için e-postayla bize iletilir (e-posta hizmeti Resend, ABD). Başka yerde saklanmaz, en geç bir yıl içinde silinir. Kötüye kullanımı sınırlamak için IP adresiniz en çok bir gün tutulur. Hukuki sebep: bildiriminizi yanıtlamaktaki meşru menfaatimiz (KVKK m. 5/2-f)."
         ]
       },
       {
@@ -1971,7 +1980,7 @@
     "hoursShort": "sa",
     "minutesShort": "dk",
     "tableHeading": "Mevsim başlangıçları",
-    "tableLead": "Astronomik mevsimler, yani ekinoks ve gündönümü anları. Saatler Türkiye saatiyle (UTC+3) verilmiştir.",
+    "tableLead": "Astronomik mevsimler, yani ekinoks ve gündönümü anları. Saatler seçili yerin saatiyledir.",
     "colYear": "Yıl",
     "meteoNote": "Meteorolojik mevsimler üçer aylık bloklardır: ilkbahar 1 Mart'ta, yaz 1 Haziran'da, sonbahar 1 Eylül'de, kış 1 Aralık'ta başlar. Takvim ve istatistik çalışmalarında bunlar kullanılır.",
     "factsHeading": "Mevsimlerde doğa",
@@ -3443,5 +3452,18 @@
         ]
       }
     ]
+  },
+  "invite": {
+    "title": "Halka daveti | Saat Tarih",
+    "h1": "Halkaya davet edildiniz",
+    "lead": "Saat Tarih uygulamasında ortak bir zikir ya da hatim halkasına davet edildiniz.",
+    "code": "Davet kodu",
+    "open": "Uygulamada aç",
+    "how": "Uygulama açılmazsa Saat Tarih'te Tümü › Halkalar › Kodla katıl adımlarına dokunup bu kodu yazın. Halkalar için ücretsiz bir hesap gerekir.",
+    "get": "App Store'dan indirin",
+    "none": "Bu bağlantıda davet kodu yok. Sizi davet edenden bağlantıyı yeniden göndermesini isteyin.",
+    "howGroup": "Uygulama açılmazsa Saat Tarih'te Tümü › Gruplar › Kodla katıl adımlarına dokunup bu kodu yazın. Gruplar için ücretsiz bir hesap gerekir.",
+    "h1Group": "Gruba davet edildiniz",
+    "leadGroup": "Saat Tarih uygulamasında ortak bir geri sayım, dünya saati, toplantı oylaması, odak odası, alarm ya da gözlem grubuna davet edildiniz."
   }
 }

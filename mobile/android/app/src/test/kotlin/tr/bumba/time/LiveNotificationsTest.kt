@@ -38,7 +38,7 @@ class LiveNotificationsTest {
         assertEquals(0, active().size)
     }
 
-    /** Bildirim alanında hava (4 Kasım 2026): son özetten sayaçsız bildirim, "Kapat" düğmesi; kapatınca kalkar */
+    /** Bildirim alanında hava (4 Kasım 2026): son özetten sayaçsız bildirim, düğmesiz (16 Kasım 2026: "Kapat" kalktı); kapatınca kalkar */
     @Test fun weather() {
         val now = System.currentTimeMillis()
         Prefs.saveUnits("metric")
@@ -48,7 +48,7 @@ class LiveNotificationsTest {
         val n = active().single()
         assertTrue(n.extras.getString("android.title")!!.startsWith("18°"))
         assertTrue(n.extras.getString("android.text")!!.contains("Open-Meteo.com"))
-        assertEquals(1, n.actions.size)
+        assertTrue(n.actions.isNullOrEmpty())
         // 12 saatten eski özet gösterilmez
         LiveNotifications.sync(c, now + 13 * 3_600_000L)
         assertEquals(0, active().size)

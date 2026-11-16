@@ -33,6 +33,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInParent
+import androidx.compose.ui.zIndex
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -83,39 +89,24 @@ fun WeatherScreen() {
         when {
             d != null -> {
                 Current(d)
-                // Paylaşım kartı (2. analiz #105)
                 val ctx = LocalContext.current
-                TextButton(onClick = { Share.image(ctx, ShareCards.weather(place, d), "hava.png", L("share.card")) }) {
-                    DuoIcon("share", 18.dp, Theme.c.accent); androidx.compose.foundation.layout.Spacer(Modifier.width(6.dp)); Text(L("share.card"), color = Theme.c.accent)
-                }
-                // Bildirim alanında ve kilit ekranında hava (4 Kasım 2026; iOS'taki Dynamic Island karşılığı, kolay aç/kapa)
-                var liveWeather by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.WEATHER_KEY, false)) }
-                AppCard {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f)) {
-                            Text(L("live.weather.toggleAndroid"), color = Theme.c.text, fontSize = 15.sp)
-                            Text(L("live.weather.noteAndroid"), color = Theme.c.muted, fontSize = 12.sp)
-                        }
-                        SoftSwitch(liveWeather, {
-                            liveWeather = it
-                            LiveNotifications.setWeather(ctx, it)
-                        })
+                var editing by remember { mutableStateOf(false) }
+                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                    // Paylaşım kartı (2. analiz #105)
+                    TextButton(onClick = { Share.image(ctx, ShareCards.weather(place, d), "hava.png", L("share.card")) }) {
+                        DuoIcon("share", 18.dp, Theme.c.accent); Spacer(Modifier.width(6.dp)); Text(L("share.card"), color = Theme.c.accent)
                     }
+                    TextButton(onClick = { editing = true }) { Text(L("weather.cards"), color = Theme.c.accent) }
                 }
-                HourlyChart(d)
-                Hourly(d)
-                // Dışarıdaki işlere uygunluk (2. analiz #113)
-                ActivitiesCard(d)
-                Details(d)
-                // Hava kalitesi ve polen (2. analiz #111)
-                AirCard(place)
-                // Güneş yayı ve Ay (2. analiz #109)
-                SunMoonArc(Instant.now(), place)
-                WeatherMoonCard(place) { moonPage = true }
-                Daily(d)
-                // Meteogram ve model karşılaştırma (2. analiz #114)
-                MeteogramCard(d)
-                ModelsCard(place)
+                // Kartlar kişinin sırasıyla (16 Kasım 2026, sahibin isteği): saatlik ve 10 günlük tahmin varsayılan olarak en
+                // üstte; bir kartı basılı tutup sürükleyerek ya da "Kartları sırala"dan yeri değişir
+                var orderRaw by remember { mutableStateOf(Prefs.store.getString(WeatherCards.KEY, "") ?: "") }
+                ReorderColumn(WeatherCards.order(orderRaw), onOrder = {
+                    orderRaw = it.joinToString(","); Prefs.store.edit().putString(WeatherCards.KEY, orderRaw).apply()
+                }) { id -> WeatherCardContent(id, d, place) { moonPage = true } }
+                if (editing) WeatherCardsDialog(WeatherCards.order(orderRaw), onOrder = {
+                    orderRaw = it.joinToString(","); Prefs.store.edit().putString(WeatherCards.KEY, orderRaw).apply()
+                }, onDismiss = { editing = false })
             }
             failed -> {
                 Text(L("weather.error"), color = Theme.c.muted, textAlign = TextAlign.Center)
@@ -128,6 +119,157 @@ fun WeatherScreen() {
         }
         WeatherAttribution()
     }
+}
+
+/** Hava ekranındaki kartların sırası (16 Kasım 2026, sahibin isteği; iOS'ta aynı kimlikler ve anahtar, iOS'ta ek "alerts").
+ *  Kayıtta olmayan yeni kart sona eklenir. */
+object WeatherCards {
+    const val KEY = "weather.order"
+    val ALL = listOf("hourly", "daily", "now", "chart", "activities", "details", "air", "sun", "moon", "meteogram", "models", "report", "live")
+
+    fun order(raw: String): List<String> {
+        val out = raw.split(",").filter { it in ALL }.distinct().toMutableList()
+        ALL.forEach { if (it !in out) out += it }
+        return out
+    }
+
+    fun title(id: String): String = when (id) {
+        "hourly" -> L("weather.hourlyHeading")
+        "daily" -> L("weather.dailyHeading10")
+        "now" -> L("weather.now")
+        "chart" -> L("weather.card.chart")
+        "activities" -> L("act.title")
+        "details" -> L("weather.details")
+        "air" -> L("aqi.title")
+        "sun" -> L("weather.card.sun")
+        "moon" -> L("nature.moonHeading")
+        "meteogram" -> L("meteo.title")
+        "models" -> L("models.title")
+        "report" -> L("wxr.title")
+        else -> L("live.weather.toggleAndroid")
+    }
+}
+
+@Composable
+private fun WeatherCardContent(id: String, d: WeatherData, place: AppPlace, openMoon: () -> Unit) {
+    when (id) {
+        "hourly" -> Hourly(d)
+        "daily" -> Daily(d)
+        "now" -> NowCard(d)
+        "chart" -> HourlyChart(d)
+        // Dışarıdaki işlere uygunluk (2. analiz #113)
+        "activities" -> ActivitiesCard(d)
+        "details" -> Details(d)
+        // Hava kalitesi ve polen (2. analiz #111)
+        "air" -> AirCard(place)
+        // Güneş yayı ve Ay (2. analiz #109)
+        "sun" -> SunMoonArc(Instant.now(), place)
+        "moon" -> WeatherMoonCard(place, openMoon)
+        // Meteogram ve model karşılaştırma (2. analiz #114)
+        "meteogram" -> MeteogramCard(d)
+        "models" -> ModelsCard(place)
+        // Anonim hava bildirimi (üyelik aşama 2d; girişliyken, sunucuda açıksa)
+        "report" -> WeatherReportCard(place.lat, place.lon)
+        "live" -> LiveWeatherCard()
+    }
+}
+
+/** Bildirim alanında ve kilit ekranında hava (4 Kasım 2026; iOS'taki Dynamic Island karşılığı, kolay aç/kapa) */
+@Composable
+private fun LiveWeatherCard() {
+    val ctx = LocalContext.current
+    var liveWeather by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.WEATHER_KEY, false)) }
+    AppCard {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(L("live.weather.toggleAndroid"), color = Theme.c.text, fontSize = 15.sp)
+                Text(L("live.weather.noteAndroid"), color = Theme.c.muted, fontSize = 12.sp)
+            }
+            SoftSwitch(liveWeather, {
+                liveWeather = it
+                LiveNotifications.setWeather(ctx, it)
+            })
+        }
+    }
+}
+
+/** Kartları basılı tutup sürükleyerek sıralayan sütun. Sürüklenen kartın görünür ortası başka bir kartın üstüne gelince
+ *  sıra değişir; kart parmağın altında kalsın diye kaydırma, kartın yeni yerine göre hesaplanır. */
+@Composable
+fun ReorderColumn(items: List<String>, onOrder: (List<String>) -> Unit, content: @Composable (String) -> Unit) {
+    var list by remember(items) { mutableStateOf(items) }
+    val tops = remember { androidx.compose.runtime.mutableStateMapOf<String, Float>() }
+    val heights = remember { androidx.compose.runtime.mutableStateMapOf<String, Int>() }
+    var dragging by remember { mutableStateOf<String?>(null) }
+    var startTop by remember { mutableStateOf(0f) }
+    var moved by remember { mutableStateOf(0f) }
+    val haptic = androidx.compose.ui.platform.LocalHapticFeedback.current
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        list.forEach { id ->
+            androidx.compose.runtime.key(id) {
+                val isDragged = dragging == id
+                Box(
+                    Modifier
+                        .onGloballyPositioned { tops[id] = it.positionInParent().y; heights[id] = it.size.height }
+                        .zIndex(if (isDragged) 1f else 0f)
+                        .graphicsLayer {
+                            if (isDragged) {
+                                translationY = startTop + moved - (tops[id] ?: startTop)
+                                scaleX = 1.02f; scaleY = 1.02f; alpha = 0.95f
+                            }
+                        }
+                        .pointerInput(id) {
+                            detectDragGesturesAfterLongPress(
+                                onDragStart = {
+                                    dragging = id; startTop = tops[id] ?: 0f; moved = 0f
+                                    haptic.performHapticFeedback(androidx.compose.ui.hapticfeedback.HapticFeedbackType.LongPress)
+                                },
+                                onDrag = { change, amount ->
+                                    change.consume()
+                                    moved += amount.y
+                                    val center = startTop + moved + (heights[id] ?: 0) / 2f
+                                    val target = list.firstOrNull { o ->
+                                        o != id && (tops[o] ?: return@firstOrNull false).let { t -> center >= t && center <= t + (heights[o] ?: 0) }
+                                    }
+                                    if (target != null) {
+                                        val l = list.toMutableList()
+                                        l.remove(id)
+                                        l.add(list.indexOf(target).coerceAtMost(l.size), id)
+                                        list = l
+                                    }
+                                },
+                                onDragEnd = { dragging = null; moved = 0f; onOrder(list) },
+                                onDragCancel = { dragging = null; moved = 0f; onOrder(list) },
+                            )
+                        },
+                ) { content(id) }
+            }
+        }
+    }
+}
+
+/** "Kartları sırala": yukarı/aşağı düğmeleriyle sıralama (ekran okuyucu ve sürüklemeyi sevmeyenler için) */
+@Composable
+private fun WeatherCardsDialog(order: List<String>, onOrder: (List<String>) -> Unit, onDismiss: () -> Unit) {
+    var list by remember { mutableStateOf(order) }
+    androidx.compose.material3.AlertDialog(
+        onDismissRequest = { onOrder(list); onDismiss() },
+        title = { Text(L("weather.cards")) },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                Text(L("weather.cardsHint"), color = Theme.c.muted, fontSize = 13.sp, modifier = Modifier.padding(bottom = 8.dp))
+                list.forEachIndexed { i, id ->
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(WeatherCards.title(id), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                        TextButton(onClick = { list = list.toMutableList().apply { add(i - 1, removeAt(i)) } }, enabled = i > 0) { Text("↑") }
+                        TextButton(onClick = { list = list.toMutableList().apply { add(i + 1, removeAt(i)) } }, enabled = i < list.size - 1) { Text("↓") }
+                    }
+                }
+                TextButton(onClick = { list = WeatherCards.ALL }) { Text(L("world.reset"), color = Theme.c.accent) }
+            }
+        },
+        confirmButton = { TextButton({ onOrder(list); onDismiss() }) { Text(L("common.done"), color = Theme.c.accent) } },
+    )
 }
 
 /** Open-Meteo atfı (CC BY 4.0; sitedeki metin), dokununca open-meteo.com */
@@ -154,16 +296,30 @@ private fun Current(d: WeatherData) {
     val c = d.current
     WeatherHero(if (Prefs.store.getBoolean(WeatherScene.TAB_KEY, true)) WeatherScene.of(c) else null) {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            WeatherIcon(d.condition, c.isDay, 64.dp)
-            Ltr { Text(Units.temp(c.temp), color = Theme.c.text, fontSize = 56.sp, fontFamily = AppFonts.numerals, fontWeight = FontWeight.Medium) }
+            // Simge ve sıcaklık yan yana (16 Kasım 2026): tahminler ilk ekrana sığsın
+            Ltr {
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(14.dp)) {
+                    WeatherIcon(d.condition, c.isDay, 52.dp)
+                    Text(Units.temp(c.temp), color = Theme.c.text, fontSize = 56.sp, fontFamily = AppFonts.numerals, fontWeight = FontWeight.Medium)
+                }
+            }
             Text(d.condition.label, color = Theme.c.text, fontSize = 20.sp)
             d.today?.let { Ltr { Text("↑ ${Units.temp(it.max)}   ↓ ${Units.temp(it.min)}", color = Theme.c.muted) } }
             // Sözlü günlük özet (2. analiz #108)
             val sum = WeatherSpeech.summary(d)
             if (sum.isNotEmpty()) Text(sum, color = Theme.c.text, fontSize = 15.sp, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 4.dp))
         }
+    }
+}
+
+/** Şu anki ölçümler; 16 Kasım 2026'ya kadar üst kartın içindeydi */
+@Composable
+private fun NowCard(d: WeatherData) {
+    val c = d.current
+    AppCard {
+        SectionTitle(L("weather.now"))
         val W = tr.bumba.time.core.WeatherWords
-        Row(Modifier.fillMaxWidth().padding(top = 8.dp)) {
+        Row(Modifier.fillMaxWidth()) {
             Pill(L("weather.feelsLike"), Units.temp(c.feels), Modifier.weight(1f), W.feels(c.temp, c.feels)?.let { L(it) })
             Pill(L("weather.humidity"), Fmt.percent(Math.round(c.humidity).toInt()), Modifier.weight(1f), L(W.humidity(c.humidity)))
         }

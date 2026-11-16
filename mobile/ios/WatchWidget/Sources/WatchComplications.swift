@@ -93,7 +93,8 @@ struct WatchPrayerEntry: TimelineEntry {
 
 struct WatchPrayerProvider: AppIntentTimelineProvider {
     private static var sample: WatchPrayerEntry {
-        WatchPrayerEntry(date: Date(), name: Province.find("istanbul").displayName, schedule: PrayerSchedule(province: Province.find("istanbul")))
+        let p = Place.fallback()
+        return WatchPrayerEntry(date: Date(), name: p.name, schedule: p.schedule)
     }
 
     func placeholder(in context: Context) -> WatchPrayerEntry { Self.sample }
@@ -369,7 +370,7 @@ enum WatchWeather {
 
 struct WatchWeatherProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> WatchWeatherEntry {
-        WatchWeatherEntry(date: Date(), name: Province.find("istanbul").displayName, temp: 18, code: 2)
+        WatchWeatherEntry(date: Date(), name: Place.fallback().name, temp: 18, code: 2)
     }
 
     func snapshot(for configuration: ProvinceIntent, in context: Context) async -> WatchWeatherEntry {

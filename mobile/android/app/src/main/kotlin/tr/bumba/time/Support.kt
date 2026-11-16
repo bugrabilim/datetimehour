@@ -77,7 +77,7 @@ object Support {
 
     fun shareText(): String = T("support.shareText", L("app.displayName")) + " " + SITE
 
-    private fun open(context: Context, url: String) =
+    fun open(context: Context, url: String) =
         runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
 
     /** Play Store'daki sayfa (uygulama kuruluysa Play uygulamasında, değilse tarayıcıda) */
@@ -97,14 +97,6 @@ object Support {
         context.startActivity(Intent.createChooser(send, L("support.share")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
     }
 
-    /** Geri bildirim iletisi: konu ve yalnız uygulama/sistem sürümü (kullanıcı göndermeden önce görür) */
-    fun feedback(context: Context) {
-        val body = "\n\n—\n${L("app.displayName")} ${version(context)} · Android ${Build.VERSION.RELEASE}"
-        val uri = Uri.parse("mailto:bilgi@bumbagroup.com?subject=" + Uri.encode(T("support.feedbackSubject", L("app.displayName"))) +
-            "&body=" + Uri.encode(body))
-        runCatching { context.startActivity(Intent(Intent.ACTION_SENDTO, uri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
-    }
-
     fun moreApps(context: Context) = open(context, BUMBA)
 
     /** QR kod (ZXing, telefonda üretilir): siyah kareler beyaz zemin üstünde */
@@ -116,7 +108,7 @@ object Support {
     }
 }
 
-/** Ayarlar'daki kart: puanla, paylaş, QR kod, geri bildirim, Bumba'nın diğer ürünleri, sürüm */
+/** Ayarlar'daki kart: puanla, paylaş, QR kod, hata bildir, Bumba'nın diğer ürünleri, sürüm */
 @Composable
 fun SupportCard(onRoute: (String) -> Unit) {
     val context = LocalContext.current
@@ -125,14 +117,13 @@ fun SupportCard(onRoute: (String) -> Unit) {
         SupportRow("star", L("support.rate")) { Support.rate(context) }
         SupportRow("share", L("support.share")) { Support.share(context) }
         SupportRow("qr", L("support.qr")) { onRoute("shareQr") }
-        SupportRow("mail", L("support.feedback")) { Support.feedback(context) }
+        SupportRow("mail", L("account.fbTitle")) { onRoute("reportProblem") }
         SupportRow("grid", L("support.moreApps")) { Support.moreApps(context) }
         HorizontalDivider(Modifier.padding(start = 12.dp), color = Theme.c.border.copy(alpha = 0.5f))
         Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 14.dp)) {
             Text(L("support.version"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
             Text(Support.version(context), color = Theme.c.muted, fontSize = 15.sp)
         }
-        Text(L("support.feedbackNote"), Modifier.padding(start = 12.dp, end = 12.dp, bottom = 10.dp), color = Theme.c.muted, fontSize = 12.sp)
     }
 }
 

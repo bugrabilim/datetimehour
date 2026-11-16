@@ -621,17 +621,21 @@ fun SkyCountdown(entries: List<AppPlace.Entry>, next: AppPlace.Entry, now: Insta
     HatemMotif(Modifier.align(Alignment.TopEnd).offset(x = 28.dp, y = (-28).dp).size(110.dp), sky.text, 0.10f)
     SkylineMotif(Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(34.dp), sky.text, 0.12f)
     Column(
-        Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 22.dp, start = 12.dp, end = 12.dp),
+        Modifier.fillMaxWidth().padding(top = 14.dp, bottom = 18.dp, start = 12.dp, end = 12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        LineIcon(LineIconMap.prayer(next.prayer), 30.dp, c1 = sky.text, c2 = sky.text)
         if (words) {
+            LineIcon(LineIconMap.prayer(next.prayer), 26.dp, c1 = sky.text, c2 = sky.text)
             Text(countdownWords(left, next.prayer.title), color = sky.text, fontSize = 30.sp, fontFamily = AppFonts.heading,
                 fontWeight = FontWeight.Medium, textAlign = TextAlign.Center)
         } else {
-            Text(T("prayer.nextIn", next.prayer.title), color = sky.text.copy(alpha = 0.88f), fontSize = 15.sp)
+            // Simge ve "… vaktine kalan süre" tek satırda (16 Kasım 2026: Vakitler ekranı Yatsı'ya kadar sığsın)
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                LineIcon(LineIconMap.prayer(next.prayer), 22.dp, c1 = sky.text, c2 = sky.text)
+                Text(T("prayer.nextIn", next.prayer.title), color = sky.text.copy(alpha = 0.88f), fontSize = 15.sp)
+            }
             // Büyük sayaç: ince (300) ve tablo rakamlı (doğal tasarım bölüm 3.2)
-            Text(Fmt.countdown(left), color = sky.text, fontSize = 56.sp, fontWeight = FontWeight.Light, style = Tnum)
+            Text(Fmt.countdown(left), color = sky.text, fontSize = 52.sp, fontWeight = FontWeight.Light, style = Tnum)
         }
     }
     }

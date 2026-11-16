@@ -51,6 +51,8 @@ sürümü sayfaya ayrı girilir). Tanıtım metinleri reklam dili kullanmaz, "en
 
 - **Kime:** nötr dil sürümlerinde (en, de, fr, es, pt, ja…) namaz vakti arayanlar. Müslüman vitrini dillerinde (tr, ar-SA, id,
   ms, ur-PK) varsayılan sayfa zaten bu içerikte, ayrı sayfa gerekmez.
+- **Türkçe dil sürümü (15 Kasım 2026):** App Store Connect uygulamanın ana dili (tr) olmayan sayfayı açmıyor ("must provide a
+  value for the relationship 'appCustomProductPageLocalizations'"), bu yüzden bu sayfada ve Panchang'da tr dil sürümü de var.
 - **Anahtar kelimeler (en):** prayer times, salah, azan, qibla, ramadan, quran
 - **Anahtar kelimeler (de):** Gebetszeiten, Gebetszeit, Qibla, Ramadan, Koran
 - **Görsel sırası:** `07-vakitler` → `02-vakitler` biçimi (müslüman vitrininin sırası: vakitler, imsakiye, takvim, saat).

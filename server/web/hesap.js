@@ -108,10 +108,34 @@
     input.addEventListener("input", upd); upd();
   });
 
+  /* ---- Hata bildirimi (hesap gerekmez) ---- */
+  const fb = $('[data-form="feedback"]');
+  if (fb) {
+    fb.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const mesaj = fb.mesaj.value.trim(), eposta = fb.eposta.value.trim();
+      if (mesaj.length < 10) return say(fb, t.fbShort, "err");
+      if (eposta && !emailOk(eposta)) return say(fb, t["err.email"], "err");
+      busy(fb, true);
+      const r = await call("/v1/geri-bildirim", { mesaj, eposta, site: fb.site.value, kaynak: "web", sayfa: D.donus || "", cihaz: navigator.userAgent, dil: lang });
+      busy(fb, false);
+      if (r.status === 200) { fb.reset(); say(fb, t.fbSent, "ok"); track("hata-bildirimi"); return; }
+      say(fb, r.data && r.data.hata === "kisa" ? t.fbShort : errText(r), "err");
+    });
+  }
+
   /* ---- Giriş ---- */
   const signin = $('[data-form="signin"]');
-  // Girişten sonra hesap sayfası: ayrı hesap birleşmesi ve şifre seçimi orada (POST /v1/uyelik/durum)
-  const afterSignIn = () => { location.href = "/hesap?dil=" + lang; };
+  // Girişten sonra geldiği site sayfasına döner (sahibin kararı, 15 Kasım 2026; "donus"). Aynı e-postanın ayrı
+  // hesapları birleşmesi önce burada sorulur (POST /v1/uyelik/durum); şifre seçimi bekleniyorsa hesap sayfası açılır.
+  const afterSignIn = async () => {
+    if (D.donus) {
+      const d = await call("/v1/uyelik/durum", {});
+      const wait = d.status === 200 && d.data && Array.isArray(d.data.sifreSecimi) && d.data.sifreSecimi.length;
+      if (!wait) { location.href = D.siteOrigin + D.donus; return; }
+    }
+    location.href = "/hesap?dil=" + lang;
+  };
   if (signin) {
     signin.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -215,26 +239,12 @@
   if ($('[data-form="profile"]')) account().then(() => { const acc = $("[data-account]"); if ($("[data-badges]") && acc && !acc.hidden) badgesPage(); });
 
   /* Sekmeler (geniş ekran) ve açılır kapanır bölümler (telefon): aynı paneller, sekme adreste (?sekme=). Kaydedilmemiş
-     değişiklikle sekmeden ya da sayfadan çıkılırken uyarı (madde 7). */
-  const dirty = new Set();
-  function watchDirty(form) {
-    if (!form) return;
-    const mark = () => dirty.add(form);
-    form.addEventListener("input", mark); form.addEventListener("change", mark);
-  }
-  const clean = (form) => dirty.delete(form);
-  const dirtyIn = (panel) => Array.from(dirty).some((f) => panel && panel.contains(f));
-  window.addEventListener("beforeunload", (e) => { if (dirty.size) { e.preventDefault(); e.returnValue = ""; } });
+     değişiklik uyarısı yok (sahibin kararı, 15 Kasım 2026: bilgiler isteğe bağlıdır, çıkarken soru sorulmaz). */
   function setTab(id, { push = true, toggle = false } = {}) {
     const cur = $(".tabpanel.on");
     if (cur && cur.dataset.tab === id && toggle) {
-      if (dirtyIn(cur) && !window.confirm(t.unsaved)) return;
       cur.classList.remove("on"); $("[data-acc]", cur).setAttribute("aria-expanded", "false");
       return;
-    }
-    if (cur && cur.dataset.tab !== id && dirtyIn(cur)) {
-      if (!window.confirm(t.unsaved)) return;
-      Array.from(dirty).forEach((f) => { if (cur.contains(f)) { if (f.reset) f.reset(); dirty.delete(f); } });
     }
     $$(".tabpanel").forEach((p) => { const on = p.dataset.tab === id; p.classList.toggle("on", on); $("[data-acc]", p).setAttribute("aria-expanded", String(on)); });
     $$("[data-tab-link]").forEach((a) => { const on = a.dataset.tabLink === id; a.setAttribute("aria-selected", String(on)); if (on) a.removeAttribute("tabindex"); else a.tabIndex = -1; });
@@ -287,10 +297,9 @@
     if (r.status === 401) { location.href = "/giris?dil=" + lang; return; }
     if (r.status !== 200) return;
     const A = r.data, P = A.profil || {};
-    $$("[data-signout]").forEach((b) => b.addEventListener("click", async () => { dirty.clear(); await call("/api/auth/sign-out", {}); location.href = "/giris?dil=" + lang; }));
+    $$("[data-signout]").forEach((b) => b.addEventListener("click", async () => { await call("/api/auth/sign-out", {}); location.href = "/giris?dil=" + lang; }));
     if (await choiceGate(A)) return;
     tabs();
-    ["profile", "visibility", "email", "password", "prefs", "emails"].forEach((f) => watchDirty($(`[data-form="${f}"]`)));
 
     // 1. Profil
     const pf = $('[data-form="profile"]');
@@ -370,7 +379,7 @@
       busy(form, true);
       const s = await call("/v1/profil", { profil: collect() });
       busy(form, false);
-      if (s.status === 200) { Object.assign(P, s.data.profil); say(form, t.saved, "ok"); showName(); clean(form); } else say(form, errText(s), "err");
+      if (s.status === 200) { Object.assign(P, s.data.profil); say(form, t.saved, "ok"); showName(); } else say(form, errText(s), "err");
     }
     pf.addEventListener("submit", (e) => { e.preventDefault(); saveProfile(pf); });
 
@@ -401,7 +410,7 @@
       // Önce mevcut şifre, sonra eski adrese onay, en son yeni adrese doğrulama (madde 7)
       const s = await call("/v1/eposta", { eposta: ne, sifre: ef.current.value });
       busy(ef, false);
-      if (s.status === 200) { say(ef, t.changeEmailSent, "ok"); ef.reset(); clean(ef); } else say(ef, errText(s), "err");
+      if (s.status === 200) { say(ef, t.changeEmailSent, "ok"); ef.reset(); } else say(ef, errText(s), "err");
     });
 
     // 4. Şifre
@@ -413,7 +422,7 @@
       // Öbür oturumlar kapanır, bu oturumun kimliği yenilenir (yeni çerez yanıtla gelir)
       const s = await call("/api/auth/change-password", { currentPassword: wf.current.value, newPassword: wf.password.value, revokeOtherSessions: true });
       busy(wf, false);
-      if (s.status === 200) { wf.reset(); clean(wf); say(wf, t.passwordChanged, "ok"); listSessions(); } else say(wf, errText(s), "err");
+      if (s.status === 200) { wf.reset(); say(wf, t.passwordChanged, "ok"); listSessions(); } else say(wf, errText(s), "err");
     });
 
     // 5. Tercihler
@@ -435,7 +444,6 @@
       const s = await call("/api/auth/update-user", body);
       busy(prf, false);
       if (s.status !== 200) return say(prf, errText(s), "err");
-      clean(prf);
       if (body.lang !== lang) { location.href = "/hesap?sekme=tercihler&dil=" + body.lang; return; }
       document.documentElement.dataset.theme = body.theme;
       say(prf, t.saved, "ok");
@@ -449,7 +457,7 @@
       busy(mf, true);
       const s = await call("/v1/kutlama", { acik: mf.kutlama.checked });
       busy(mf, false);
-      if (s.status === 200) { A.kutlama = s.data.kutlama; say(mf, t.saved, "ok"); clean(mf); } else say(mf, errText(s), "err");
+      if (s.status === 200) { A.kutlama = s.data.kutlama; say(mf, t.saved, "ok"); } else say(mf, errText(s), "err");
     });
 
     // 7. Oturumlar
@@ -535,7 +543,6 @@
       const s = await call("/v1/hesap/sil", { kapsam: df.kapsam.value, sifre: df.password.value || undefined });
       busy(df, false);
       if (s.status === 200) {
-        dirty.clear();
         document.querySelector("main").innerHTML = "";
         const sec = document.createElement("section"); sec.className = "card";
         const p = document.createElement("p"); p.className = "msg ok"; p.setAttribute("role", "status"); p.textContent = t.deleted;

@@ -80,7 +80,13 @@
    "subject": "Hesaplarınız birleştirildi",
    "body": "Bu e-posta adresiyle açılmış {urunler} hesaplarınız tek hesapta birleştirildi; Bumba üye numaranız {no}. Şifreniz değişmedi. Hangi ürünün şifresiyle devam etmek istediğinizi aşağıdaki bağlantıdan seçin; bağlantı 7 gün geçerlidir ve oturum açmaz. Seçimi giriş yaptıktan sonra hesap sayfanızda da yapabilirsiniz. Bunu beklemiyorsanız {iletisim} adresine yazın.",
    "button": "Şifremi seç"
-  }
+  },
+  "opened": {
+   "subject": "Saat Tarih hesabınız açıldı",
+   "body": "E-posta adresiniz doğrulandı ve Saat Tarih hesabınız açıldı. Sitede ve uygulamada e-posta adresiniz ve şifrenizle giriş yapabilirsiniz. Bunu siz yapmadıysanız {iletisim} adresine yazın.",
+   "button": "Hesabıma git"
+  },
+  "openedNo": "Bumba üye numaranız: {no}."
  },
  "en": {
   "verify": {
@@ -163,7 +169,13 @@
    "subject": "Your accounts have been merged",
    "body": "Your {urunler} accounts opened with this email address have been merged into one account; your Bumba member number is {no}. Your password has not changed. Use the link below to choose which product's password you want to continue with; the link is valid for 7 days and does not sign you in. You can also make the choice on your account page after signing in. If you did not expect this, write to {iletisim}.",
    "button": "Choose my password"
-  }
+  },
+  "opened": {
+   "subject": "Your Saat Tarih account is open",
+   "body": "Your email address is verified and your Saat Tarih account is open. You can sign in on the website and in the app with your email address and password. If you didn't do this, write to {iletisim}.",
+   "button": "Go to my account"
+  },
+  "openedNo": "Your Bumba member number: {no}."
  },
  "de": {
   "verify": {
@@ -246,7 +258,13 @@
    "subject": "Ihre Konten wurden zusammengeführt",
    "body": "Ihre mit dieser E-Mail-Adresse eröffneten Konten bei {urunler} wurden zu einem Konto zusammengeführt; Ihre Bumba-Mitgliedsnummer ist {no}. Ihr Passwort hat sich nicht geändert. Wählen Sie über den Link unten, mit dem Passwort welches Produkts Sie fortfahren möchten; der Link ist 7 Tage gültig und meldet Sie nicht an. Sie können die Wahl auch nach der Anmeldung auf Ihrer Kontoseite treffen. Falls Sie das nicht erwartet haben, schreiben Sie an {iletisim}.",
    "button": "Passwort wählen"
-  }
+  },
+  "opened": {
+   "subject": "Ihr Saat Tarih-Konto ist eröffnet",
+   "body": "Ihre E-Mail-Adresse ist bestätigt und Ihr Saat Tarih-Konto ist eröffnet. Sie melden sich auf der Website und in der App mit Ihrer E-Mail-Adresse und Ihrem Passwort an. Wenn Sie das nicht waren, schreiben Sie an {iletisim}.",
+   "button": "Zu meinem Konto"
+  },
+  "openedNo": "Ihre Bumba-Mitgliedsnummer: {no}."
  },
  "az": {
   "verify": {
@@ -329,7 +347,13 @@
    "subject": "Hesablarınız birləşdirildi",
    "body": "Bu e-poçt ünvanı ilə açılmış {urunler} hesablarınız bir hesabda birləşdirildi; Bumba üzv nömrəniz {no}. Şifrəniz dəyişməyib. Hansı məhsulun şifrəsi ilə davam etmək istədiyinizi aşağıdakı keçiddən seçin; keçid 7 gün keçərlidir və sessiya açmır. Seçimi daxil olduqdan sonra hesab səhifənizdə də edə bilərsiniz. Bunu gözləmirdinizsə, {iletisim} ünvanına yazın.",
    "button": "Şifrəmi seç"
-  }
+  },
+  "opened": {
+   "subject": "Saat Tarix hesabınız açıldı",
+   "body": "E-poçt ünvanınız təsdiqləndi və Saat Tarix hesabınız açıldı. Saytda və tətbiqdə e-poçt ünvanınız və şifrənizlə daxil ola bilərsiniz. Bunu siz etməmisinizsə, {iletisim} ünvanına yazın.",
+   "button": "Hesabıma keç"
+  },
+  "openedNo": "Bumba üzv nömrəniz: {no}."
  },
  "ar": {
   "verify": {
@@ -412,7 +436,13 @@
    "subject": "تم دمج حساباتك",
    "body": "تم دمج حساباتك في {urunler} التي أُنشئت بعنوان البريد هذا في حساب واحد؛ رقم عضويتك في Bumba هو {no}. لم تتغير كلمة المرور. اختر من الرابط أدناه كلمة مرور أي منتج تريد المتابعة بها؛ الرابط صالح 7 أيام ولا يسجّل دخولك. ويمكنك الاختيار أيضًا من صفحة حسابك بعد تسجيل الدخول. إن لم تكن تتوقع ذلك فاكتب إلى {iletisim}.",
    "button": "اختر كلمة المرور"
-  }
+  },
+  "opened": {
+   "subject": "فُتح حسابك في Saat Tarih",
+   "body": "تم التحقق من بريدك الإلكتروني وفُتح حسابك في Saat Tarih. يمكنك تسجيل الدخول في الموقع والتطبيق ببريدك الإلكتروني وكلمة المرور. إن لم تفعل ذلك فاكتب إلى {iletisim}.",
+   "button": "الذهاب إلى حسابي"
+  },
+  "openedNo": "رقم عضويتك في Bumba: {no}."
  },
  "id": {
   "verify": {
@@ -495,7 +525,13 @@
    "subject": "Akun Anda telah digabungkan",
    "body": "Akun {urunler} Anda yang dibuat dengan alamat email ini telah digabungkan menjadi satu akun; nomor anggota Bumba Anda {no}. Kata sandi Anda tidak berubah. Pilih kata sandi produk mana yang ingin Anda gunakan melalui tautan di bawah; tautan berlaku 7 hari dan tidak membuat Anda masuk. Anda juga dapat memilih di halaman akun setelah masuk. Jika Anda tidak mengharapkan ini, tulis ke {iletisim}.",
    "button": "Pilih kata sandi"
-  }
+  },
+  "opened": {
+   "subject": "Akun Saat Tarih Anda telah dibuka",
+   "body": "Alamat email Anda telah diverifikasi dan akun Saat Tarih Anda telah dibuka. Anda dapat masuk di situs web dan aplikasi dengan alamat email dan kata sandi Anda. Jika bukan Anda yang melakukannya, tulis ke {iletisim}.",
+   "button": "Buka akun saya"
+  },
+  "openedNo": "Nomor anggota Bumba Anda: {no}."
  },
  "ur": {
   "verify": {
@@ -578,7 +614,13 @@
    "subject": "آپ کے اکاؤنٹ یکجا کر دیے گئے",
    "body": "اس ای میل پتے سے کھولے گئے آپ کے {urunler} اکاؤنٹ ایک اکاؤنٹ میں یکجا کر دیے گئے ہیں؛ آپ کا Bumba رکنیت نمبر {no} ہے۔ آپ کا پاس ورڈ نہیں بدلا۔ نیچے دیے گئے لنک سے منتخب کریں کہ آپ کس پروڈکٹ کے پاس ورڈ کے ساتھ جاری رکھنا چاہتے ہیں؛ لنک 7 دن کارآمد ہے اور آپ کو سائن ان نہیں کرتا۔ آپ سائن ان کے بعد اپنے اکاؤنٹ کے صفحے پر بھی انتخاب کر سکتے ہیں۔ اگر آپ کو اس کی توقع نہیں تھی تو {iletisim} پر لکھیں۔",
    "button": "اپنا پاس ورڈ منتخب کریں"
-  }
+  },
+  "opened": {
+   "subject": "Saat Tarih میں آپ کا اکاؤنٹ کھل گیا",
+   "body": "آپ کے ای میل پتے کی تصدیق ہو گئی اور Saat Tarih میں آپ کا اکاؤنٹ کھل گیا۔ آپ ویب سائٹ اور ایپ میں اپنے ای میل پتے اور پاس ورڈ سے سائن ان کر سکتے ہیں۔ اگر یہ آپ نے نہیں کیا تو {iletisim} پر لکھیں۔",
+   "button": "میرے اکاؤنٹ پر جائیں"
+  },
+  "openedNo": "آپ کا Bumba رکنیت نمبر: {no}۔"
  },
  "fa": {
   "verify": {
@@ -661,7 +703,13 @@
    "subject": "حساب‌های شما یکی شد",
    "body": "حساب‌های {urunler} شما که با این نشانی ایمیل باز شده بودند در یک حساب یکی شدند؛ شمارهٔ عضویت Bumba شما {no} است. رمز عبور شما تغییر نکرده است. از پیوند زیر انتخاب کنید با رمز کدام محصول ادامه می‌دهید؛ پیوند 7 روز معتبر است و شما را وارد نمی‌کند. می‌توانید پس از ورود، در صفحهٔ حسابتان هم انتخاب کنید. اگر انتظار این را نداشتید، به {iletisim} بنویسید.",
    "button": "انتخاب رمز عبور"
-  }
+  },
+  "opened": {
+   "subject": "حساب شما در Saat Tarih باز شد",
+   "body": "نشانی ایمیل شما تأیید شد و حساب شما در Saat Tarih باز شد. می‌توانید در وب‌سایت و برنامه با نشانی ایمیل و رمز عبور خود وارد شوید. اگر این کار را شما نکرده‌اید به {iletisim} بنویسید.",
+   "button": "رفتن به حساب من"
+  },
+  "openedNo": "شمارهٔ عضویت Bumba شما: {no}."
  },
  "fr": {
   "verify": {
@@ -744,7 +792,13 @@
    "subject": "Vos comptes ont été fusionnés",
    "body": "Vos comptes {urunler} ouverts avec cette adresse e-mail ont été fusionnés en un seul compte ; votre numéro de membre Bumba est {no}. Votre mot de passe n’a pas changé. Choisissez avec le lien ci-dessous le mot de passe de quel produit vous souhaitez garder ; le lien est valable 7 jours et ne vous connecte pas. Vous pouvez aussi faire ce choix sur votre page de compte après vous être connecté. Si vous ne vous y attendiez pas, écrivez à {iletisim}.",
    "button": "Choisir mon mot de passe"
-  }
+  },
+  "opened": {
+   "subject": "Votre compte Saat Tarih est ouvert",
+   "body": "Votre adresse e-mail est confirmée et votre compte Saat Tarih est ouvert. Vous vous connectez sur le site et dans l'application avec votre adresse e-mail et votre mot de passe. Si ce n'était pas vous, écrivez à {iletisim}.",
+   "button": "Aller à mon compte"
+  },
+  "openedNo": "Votre numéro de membre Bumba : {no}."
  },
  "ru": {
   "verify": {
@@ -827,7 +881,13 @@
    "subject": "Ваши аккаунты объединены",
    "body": "Ваши аккаунты в {urunler}, открытые с этим адресом электронной почты, объединены в один; ваш номер участника Bumba — {no}. Пароль не изменился. По ссылке ниже выберите, с паролем какого продукта вы хотите продолжить; ссылка действует 7 дней и не выполняет вход. Выбрать можно и на странице аккаунта после входа. Если вы этого не ожидали, напишите на {iletisim}.",
    "button": "Выбрать пароль"
-  }
+  },
+  "opened": {
+   "subject": "Ваш аккаунт Saat Tarih открыт",
+   "body": "Ваш адрес электронной почты подтверждён, аккаунт Saat Tarih открыт. Входите на сайте и в приложении с вашим адресом электронной почты и паролем. Если это были не вы, напишите на {iletisim}.",
+   "button": "Перейти в аккаунт"
+  },
+  "openedNo": "Ваш номер участника Bumba: {no}."
  },
  "ja": {
   "verify": {
@@ -910,7 +970,13 @@
    "subject": "アカウントが統合されました",
    "body": "このメールアドレスで作成された{urunler}のアカウントを1つに統合しました。Bumba の会員番号は {no} です。パスワードは変わっていません。どの製品のパスワードで続けるかを下のリンクから選んでください。リンクの有効期限は7日間で、ログインは行いません。ログイン後にアカウントページで選ぶこともできます。心当たりがない場合は {iletisim} までご連絡ください。",
    "button": "パスワードを選ぶ"
-  }
+  },
+  "opened": {
+   "subject": "Saat Tarih のアカウントを開設しました",
+   "body": "メールアドレスの確認が完了し、Saat Tarih のアカウントを開設しました。ウェブサイトとアプリでメールアドレスとパスワードを使ってログインできます。お心当たりがない場合は {iletisim} までご連絡ください。",
+   "button": "マイアカウントへ"
+  },
+  "openedNo": "Bumba 会員番号：{no}"
  },
  "ko": {
   "verify": {
@@ -993,7 +1059,13 @@
    "subject": "계정이 통합되었습니다",
    "body": "이 이메일 주소로 만든 {urunler} 계정을 하나로 통합했습니다. Bumba 회원 번호는 {no}입니다. 비밀번호는 바뀌지 않았습니다. 아래 링크에서 어느 제품의 비밀번호로 계속하실지 선택해 주세요. 링크는 7일 동안 유효하며 로그인하지 않습니다. 로그인한 뒤 계정 페이지에서도 선택하실 수 있습니다. 예상하지 못한 일이라면 {iletisim}로 연락해 주세요.",
    "button": "비밀번호 선택"
-  }
+  },
+  "opened": {
+   "subject": "Saat Tarih 계정이 열렸습니다",
+   "body": "이메일 주소가 인증되어 Saat Tarih 계정이 열렸습니다. 웹사이트와 앱에서 이메일 주소와 비밀번호로 로그인할 수 있습니다. 본인이 하지 않으셨다면 {iletisim}으로 알려 주세요.",
+   "button": "내 계정으로 이동"
+  },
+  "openedNo": "Bumba 회원 번호: {no}"
  },
  "zh": {
   "verify": {
@@ -1076,7 +1148,13 @@
    "subject": "您的账户已合并",
    "body": "您用此邮箱地址在{urunler}开设的账户已合并为一个账户；您的 Bumba 会员编号是 {no}。您的密码没有改变。请通过下面的链接选择继续使用哪个产品的密码；链接 7 天内有效，不会让您登录。您也可以在登录后于账户页面进行选择。如果这不是您预期的，请写信至 {iletisim}。",
    "button": "选择密码"
-  }
+  },
+  "opened": {
+   "subject": "您的 Saat Tarih 账户已开通",
+   "body": "您的电子邮件地址已验证，Saat Tarih 账户已开通。您可以在网站和应用中用电子邮件地址和密码登录。如果不是您本人操作，请写信至 {iletisim}。",
+   "button": "前往我的账户"
+  },
+  "openedNo": "您的 Bumba 会员编号：{no}"
  },
  "fil": {
   "verify": {
@@ -1159,7 +1237,13 @@
    "subject": "Pinagsama na po ang inyong mga account",
    "body": "Pinagsama na po sa iisang account ang inyong mga account sa {urunler} na binuksan gamit ang email address na ito; ang inyong Bumba member number ay {no}. Hindi nagbago ang inyong password. Piliin po sa link sa ibaba kung aling produkto ang password na gagamitin ninyo; may bisa ang link nang 7 araw at hindi kayo nito isa-sign in. Makakapili rin kayo sa inyong account page pagkatapos mag-sign in. Kung hindi po ninyo ito inaasahan, sumulat sa {iletisim}.",
    "button": "Pumili ng password"
-  }
+  },
+  "opened": {
+   "subject": "Bukas na ang inyong Saat Tarih account",
+   "body": "Na-verify na ang inyong email address at bukas na ang inyong Saat Tarih account. Makakapag-sign in kayo sa website at sa app gamit ang inyong email address at password. Kung hindi kayo ang gumawa nito, sumulat sa {iletisim}.",
+   "button": "Pumunta sa aking account"
+  },
+  "openedNo": "Ang inyong numero ng miyembro sa Bumba: {no}."
  },
  "th": {
   "verify": {
@@ -1242,7 +1326,13 @@
    "subject": "บัญชีของคุณถูกรวมแล้ว",
    "body": "บัญชี {urunler} ของคุณที่เปิดด้วยอีเมลนี้ถูกรวมเป็นบัญชีเดียวแล้ว หมายเลขสมาชิก Bumba ของคุณคือ {no} รหัสผ่านของคุณไม่ได้เปลี่ยน โปรดเลือกจากลิงก์ด้านล่างว่าจะใช้รหัสผ่านของผลิตภัณฑ์ใดต่อไป ลิงก์ใช้ได้ 7 วันและจะไม่พาคุณเข้าสู่ระบบ คุณเลือกได้ที่หน้าบัญชีหลังเข้าสู่ระบบด้วย หากคุณไม่ได้คาดว่าจะเกิดเรื่องนี้ โปรดเขียนถึง {iletisim}",
    "button": "เลือกรหัสผ่าน"
-  }
+  },
+  "opened": {
+   "subject": "เปิดบัญชี Saat Tarih ของคุณแล้ว",
+   "body": "ยืนยันอีเมลของคุณแล้ว และเปิดบัญชี Saat Tarih ของคุณแล้ว คุณเข้าสู่ระบบบนเว็บไซต์และในแอปได้ด้วยอีเมลและรหัสผ่านของคุณ หากคุณไม่ได้ทำเช่นนี้ โปรดเขียนถึง {iletisim}",
+   "button": "ไปที่บัญชีของฉัน"
+  },
+  "openedNo": "หมายเลขสมาชิก Bumba ของคุณ: {no}"
  },
  "es": {
   "verify": {
@@ -1325,7 +1415,13 @@
    "subject": "Sus cuentas se han unido",
    "body": "Sus cuentas de {urunler} abiertas con esta dirección de correo se han unido en una sola; su número de miembro de Bumba es {no}. Su contraseña no ha cambiado. Elija con el enlace de abajo con la contraseña de qué producto desea continuar; el enlace es válido 7 días y no inicia sesión. También puede elegir en la página de su cuenta después de iniciar sesión. Si no lo esperaba, escriba a {iletisim}.",
    "button": "Elegir mi contraseña"
-  }
+  },
+  "opened": {
+   "subject": "Su cuenta de Saat Tarih está abierta",
+   "body": "Su dirección de correo está verificada y su cuenta de Saat Tarih está abierta. Puede iniciar sesión en el sitio web y en la aplicación con su correo y su contraseña. Si no fue usted, escriba a {iletisim}.",
+   "button": "Ir a mi cuenta"
+  },
+  "openedNo": "Su número de miembro de Bumba: {no}."
  },
  "pt": {
   "verify": {
@@ -1408,7 +1504,13 @@
    "subject": "Suas contas foram unificadas",
    "body": "Suas contas de {urunler} abertas com este endereço de e-mail foram unificadas em uma só; seu número de membro Bumba é {no}. Sua senha não mudou. Escolha pelo link abaixo com a senha de qual produto você deseja continuar; o link vale por 7 dias e não faz login. Você também pode escolher na página da sua conta depois de entrar. Se não esperava por isso, escreva para {iletisim}.",
    "button": "Escolher minha senha"
-  }
+  },
+  "opened": {
+   "subject": "Sua conta no Saat Tarih foi aberta",
+   "body": "Seu e-mail foi confirmado e sua conta no Saat Tarih foi aberta. Você entra no site e no aplicativo com seu e-mail e sua senha. Se não foi você, escreva para {iletisim}.",
+   "button": "Ir para minha conta"
+  },
+  "openedNo": "Seu número de membro Bumba: {no}."
  },
  "hi": {
   "verify": {
@@ -1491,7 +1593,13 @@
    "subject": "आपके खाते जोड़ दिए गए",
    "body": "इस ईमेल पते से खोले गए आपके {urunler} खाते एक खाते में जोड़ दिए गए हैं; आपका Bumba सदस्य नंबर {no} है। आपका पासवर्ड नहीं बदला है। नीचे दिए लिंक से चुनें कि आप किस उत्पाद के पासवर्ड से आगे बढ़ना चाहते हैं; लिंक 7 दिन मान्य है और आपको साइन इन नहीं करता। आप साइन इन के बाद अपने खाते के पेज पर भी चुन सकते हैं। अगर आपको इसकी उम्मीद नहीं थी, तो {iletisim} पर लिखें।",
    "button": "अपना पासवर्ड चुनें"
-  }
+  },
+  "opened": {
+   "subject": "Saat Tarih में आपका खाता खुल गया",
+   "body": "आपका ईमेल पता सत्यापित हो गया और Saat Tarih में आपका खाता खुल गया। आप वेबसाइट और ऐप में अपने ईमेल पते और पासवर्ड से साइन इन कर सकते हैं। अगर यह आपने नहीं किया, तो {iletisim} पर लिखें।",
+   "button": "मेरे खाते पर जाएँ"
+  },
+  "openedNo": "आपका Bumba सदस्य नंबर: {no}।"
  },
  "bn": {
   "verify": {
@@ -1574,6 +1682,12 @@
    "subject": "আপনার অ্যাকাউন্টগুলো একত্র করা হয়েছে",
    "body": "এই ইমেইল ঠিকানা দিয়ে খোলা আপনার {urunler} অ্যাকাউন্টগুলো একটি অ্যাকাউন্টে একত্র করা হয়েছে; আপনার Bumba সদস্য নম্বর {no}। আপনার পাসওয়ার্ড বদলায়নি। নিচের লিংক থেকে বেছে নিন কোন পণ্যের পাসওয়ার্ড দিয়ে চালিয়ে যাবেন; লিংকটি 7 দিন বৈধ এবং আপনাকে সাইন ইন করায় না। সাইন ইন করার পর অ্যাকাউন্ট পাতাতেও বেছে নিতে পারেন। আপনি এটি আশা না করে থাকলে {iletisim} ঠিকানায় লিখুন।",
    "button": "পাসওয়ার্ড বেছে নিন"
-  }
+  },
+  "opened": {
+   "subject": "Saat Tarih-এ আপনার অ্যাকাউন্ট খোলা হয়েছে",
+   "body": "আপনার ইমেইল ঠিকানা যাচাই হয়েছে এবং Saat Tarih-এ আপনার অ্যাকাউন্ট খোলা হয়েছে। ওয়েবসাইট ও অ্যাপে আপনার ইমেইল ঠিকানা ও পাসওয়ার্ড দিয়ে সাইন ইন করতে পারেন। এটি আপনি না করে থাকলে {iletisim} ঠিকানায় লিখুন।",
+   "button": "আমার অ্যাকাউন্টে যান"
+  },
+  "openedNo": "আপনার Bumba সদস্য নম্বর: {no}।"
  }
 }

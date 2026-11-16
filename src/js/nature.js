@@ -434,8 +434,14 @@
     setText("[data-n-extremes]", T.longest + ": " + dm(iMax) + ", " + dur(hi) + " · " + T.shortest + ": " + dm(iMin) + ", " + dur(lo));
   }
 
+  /* Mevsim başlangıçları tablosu: derlemede UTC yazılır, burada seçili yerin saatine çevrilir (Global düşün, 15 Kasım 2026) */
+  function drawSeasonTable() {
+    var f = S.fmt("turn", place.tz, { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+    doc.querySelectorAll("[data-n-season-at]").forEach(function (td) { td.textContent = f.format(new Date(+td.getAttribute("data-n-season-at"))); });
+  }
   function renderAll() {
     var now = S.nowMs();
+    drawSeasonTable();
     drawWheel(now); drawSun(now); drawMoon(now); drawChart(now); drawMoonCal(now); drawYearMoons(now); drawCrescent(now); drawEclipses(now); markFolk(now);
   }
   window.sthPlace.attach(root, function (p) { place = p; renderAll(); });

@@ -17,6 +17,10 @@ struct WeatherView: View {
     @State private var sharing = false
     /// Gün ayrıntısı (2. analiz #107)
     @State private var openDay: Int?
+    /// Kartların sırası (WeatherCards) ve sürüklerken üstünde durulan kart
+    @AppStorage(WeatherCards.key) private var orderRaw = ""
+    @State private var dropTarget: String?
+    @State private var editingCards = false
     @Environment(\.colorScheme) private var colorScheme
 
     private var zone: TimeZone { PlaceModel.shared.place.zone }
@@ -33,29 +37,25 @@ struct WeatherView: View {
                     current(d)
                     // İşaret verinin hemen altında, kaydırmadan görünür (App Review 5.2.5)
                     AppleWeatherMark()
-                    Button { sharing = true } label: { Label(L("share.card"), systemImage: "square.and.arrow.up") }
-                        .tint(Theme.accent)
-                    // Kilit ekranında ve Dynamic Island'da hava (4 Kasım 2026, sahibin isteği; kolay aç/kapa)
-                    LiveWeatherToggle()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .card()
-                    // Resmî uyarılar (2. analiz #112; WeatherKit, kaynak varsa)
-                    WeatherAlertsCard(alerts: d.weatherAlerts ?? [])
-                    // Saatlik eğri (2. analiz #107)
-                    HourlyChartCard(weather: d, zone: zone)
-                    hourly(d)
-                    // Dışarıdaki işlere uygunluk (2. analiz #113)
-                    ActivitiesCard(weather: d, zone: zone)
-                    details(d)
-                    // Hava kalitesi ve polen (2. analiz #111; Open-Meteo)
-                    AirCard(place: place)
-                    // Güneş yayı ve Ay (2. analiz #109)
-                    SunMoonArc(now: Date(), place: place)
-                    moonCard(place)
-                    daily(d)
-                    // Meteogram (WeatherKit) ve model karşılaştırma (Open-Meteo; 2. analiz #114)
-                    MeteogramCard(weather: d, zone: zone)
-                    ModelsCard(place: place)
+                    // Kartlar kişinin sırasıyla (16 Kasım 2026, sahibin isteği): saatlik ve 10 günlük tahmin varsayılan olarak
+                    // en üstte; bir kartı basılı tutup sürükleyerek ya da "Kartları sırala"dan yeri değişir
+                    ForEach(WeatherCards.order(orderRaw), id: \.self) { id in
+                        card(id, d, place)
+                            .draggable(id) {
+                                Text(WeatherCards.title(id)).font(.headline).padding(12)
+                                    .background(Theme.surface, in: RoundedRectangle(cornerRadius: 14))
+                            }
+                            .dropDestination(for: String.self) { items, _ in
+                                guard let from = items.first else { return false }
+                                orderRaw = WeatherCards.move(orderRaw, from, before: id)
+                                return true
+                            } isTargeted: { on in dropTarget = on ? id : (dropTarget == id ? nil : dropTarget) }
+                            .overlay {
+                                if dropTarget == id {
+                                    RoundedRectangle(cornerRadius: 22).stroke(Theme.accent, lineWidth: 2)
+                                }
+                            }
+                    }
                 } else if failed {
                     Text(L("weather.error")).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
                     Button(L("weather.retry")) { Task { await load(place) } }.tint(Theme.accent)
@@ -82,6 +82,18 @@ struct WeatherView: View {
         .environment(\.colorScheme, pageScene != nil ? .dark : colorScheme)
         .navigationTitle(L("weather.h1"))
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            if data != nil {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        Button { sharing = true } label: { Label(L("share.card"), systemImage: "square.and.arrow.up") }
+                        Button { editingCards = true } label: { Label(L("weather.cards"), systemImage: "arrow.up.arrow.down") }
+                    } label: { Image(systemName: "ellipsis") }
+                    .accessibilityLabel(L("common.more"))
+                }
+            }
+        }
+        .sheet(isPresented: $editingCards) { WeatherCardsEditor(orderRaw: $orderRaw) }
         .task(id: place.key) { await load(place) }
         .sheet(isPresented: Binding(get: { openDay != nil }, set: { if !$0 { openDay = nil } })) {
             if let d = data, let i = openDay, i < d.dailyForecast.count {
@@ -105,12 +117,14 @@ struct WeatherView: View {
 
     private func current(_ d: Weather) -> some View {
         let c = d.currentWeather
-        let rain = d.hourlyForecast.first(where: { $0.date >= Date().addingTimeInterval(-3600) })?.precipitationChance ?? 0
         return VStack(spacing: 6) {
-            icon(c.symbolName, size: 64)
-            Text(temp(c.temperature))
-                .font(AppFonts.numerals(56))
-                .environment(\.layoutDirection, .leftToRight)
+            // Simge ve sıcaklık yan yana (16 Kasım 2026): tahminler ilk ekrana sığsın
+            HStack(spacing: 14) {
+                icon(c.symbolName, size: 52)
+                Text(temp(c.temperature))
+                    .font(AppFonts.numerals(56))
+            }
+            .environment(\.layoutDirection, .leftToRight)
             Text(c.condition.description).font(.title3)
             if let today = d.dailyForecast.first {
                 Text("↑ \(temp(today.highTemperature))   ↓ \(temp(today.lowTemperature))")
@@ -120,6 +134,17 @@ struct WeatherView: View {
             // Sözlü günlük özet (2. analiz #108)
             let sum = WeatherSpeech.summary(d, zone: zone)
             if !sum.isEmpty { Text(sum).font(.subheadline).multilineTextAlignment(.center).padding(.top, 2) }
+        }
+        .frame(maxWidth: .infinity)
+        .modifier(WeatherHero(scene: animate ? WeatherScene(c) : nil))
+    }
+
+    /// Şu anki ölçümler (hissedilen, nem, rüzgâr, UV, yağış ihtimali, basınç); 16 Kasım 2026'ya kadar üst kartın içindeydi
+    private func nowCard(_ d: Weather) -> some View {
+        let c = d.currentWeather
+        let rain = d.hourlyForecast.first(where: { $0.date >= Date().addingTimeInterval(-3600) })?.precipitationChance ?? 0
+        return VStack(alignment: .leading, spacing: 10) {
+            SectionTitle(text: L("weather.now"))
             let tc = c.temperature.converted(to: .celsius).value, fc = c.apparentTemperature.converted(to: .celsius).value
             let wk = c.wind.speed.converted(to: .kilometersPerHour).value
             Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 8) {
@@ -136,10 +161,36 @@ struct WeatherView: View {
                     pill(L("weather.pressure"), Units.pressure(c.pressure))
                 }
             }
-            .padding(.top, 8)
         }
-        .frame(maxWidth: .infinity)
-        .modifier(WeatherHero(scene: animate ? WeatherScene(c) : nil))
+        .card()
+    }
+
+    @ViewBuilder
+    private func card(_ id: String, _ d: Weather, _ place: AppPlace) -> some View {
+        switch id {
+        case "hourly": hourly(d)
+        case "daily": daily(d)
+        case "now": nowCard(d)
+        // Resmî uyarılar (2. analiz #112; WeatherKit, kaynak varsa)
+        case "alerts": WeatherAlertsCard(alerts: d.weatherAlerts ?? [])
+        // Saatlik eğri (2. analiz #107)
+        case "chart": HourlyChartCard(weather: d, zone: zone)
+        // Dışarıdaki işlere uygunluk (2. analiz #113)
+        case "activities": ActivitiesCard(weather: d, zone: zone)
+        case "details": details(d)
+        // Hava kalitesi ve polen (2. analiz #111; Open-Meteo)
+        case "air": AirCard(place: place)
+        // Güneş yayı ve Ay (2. analiz #109)
+        case "sun": SunMoonArc(now: Date(), place: place)
+        case "moon": moonCard(place)
+        // Meteogram (WeatherKit) ve model karşılaştırma (Open-Meteo; 2. analiz #114)
+        case "meteogram": MeteogramCard(weather: d, zone: zone)
+        case "models": ModelsCard(place: place)
+        case "report": WeatherReportCard(lat: place.lat, lon: place.lon)
+        // Kilit ekranında ve Dynamic Island'da hava (4 Kasım 2026, sahibin isteği; kolay aç/kapa)
+        case "live": LiveWeatherToggle().frame(maxWidth: .infinity, alignment: .leading).card()
+        default: EmptyView()
+        }
     }
 
     private func pill(_ title: String, _ value: String, _ note: String? = nil) -> some View {
@@ -294,6 +345,81 @@ struct WeatherView: View {
     }
 }
 
+/// Hava ekranındaki kartların sırası (16 Kasım 2026, sahibin isteği; Android'de aynı kimlikler ve anahtar `weather.order`).
+/// Kayıtta olmayan yeni kart sona eklenir.
+enum WeatherCards {
+    static let key = "weather.order"
+    static let all = ["hourly", "daily", "now", "alerts", "chart", "activities", "details", "air", "sun", "moon",
+                      "meteogram", "models", "report", "live"]
+
+    static func order(_ raw: String) -> [String] {
+        var out: [String] = []
+        for id in raw.split(separator: ",").map(String.init) where all.contains(id) && !out.contains(id) { out.append(id) }
+        for id in all where !out.contains(id) { out.append(id) }
+        return out
+    }
+
+    /// `from` kartını `target` kartının yerine taşır (aşağı taşınınca hedefin altına, yukarı taşınınca üstüne)
+    static func move(_ raw: String, _ from: String, before target: String) -> String {
+        var o = order(raw)
+        guard from != target, let i = o.firstIndex(of: from), let j = o.firstIndex(of: target) else { return raw }
+        o.remove(at: i)
+        o.insert(from, at: j)
+        return o.joined(separator: ",")
+    }
+
+    static func title(_ id: String) -> String {
+        switch id {
+        case "hourly": return L("weather.hourlyHeading")
+        case "daily": return L("weather.dailyHeading10")
+        case "now": return L("weather.now")
+        case "alerts": return L("wx.alerts")
+        case "chart": return L("weather.card.chart")
+        case "activities": return L("act.title")
+        case "details": return L("weather.details")
+        case "air": return L("aqi.title")
+        case "sun": return L("weather.card.sun")
+        case "moon": return L("nature.moonHeading")
+        case "meteogram": return L("meteo.title")
+        case "models": return L("models.title")
+        case "report": return L("wxr.title")
+        default: return L("live.weather.control")
+        }
+    }
+}
+
+/// "Kartları sırala": sürükleyerek sıralama listesi ve varsayılana dönüş
+struct WeatherCardsEditor: View {
+    @Binding var orderRaw: String
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    ForEach(WeatherCards.order(orderRaw), id: \.self) { id in
+                        Text(WeatherCards.title(id))
+                    }
+                    .onMove { from, to in
+                        var o = WeatherCards.order(orderRaw)
+                        o.move(fromOffsets: from, toOffset: to)
+                        orderRaw = o.joined(separator: ",")
+                    }
+                } footer: {
+                    Text(L("weather.cardsHint"))
+                }
+                Section {
+                    Button(L("world.reset")) { orderRaw = "" }.tint(Theme.accent)
+                }
+            }
+            .environment(\.editMode, .constant(.active))
+            .navigationTitle(L("weather.cards"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { dismiss() } } }
+        }
+    }
+}
+
 /// Aynı yer için 15 dakika içinde yeniden sorulmaz; aynı anda gelen istekler tek çağrıda birleşir
 /// (saat modelleri ve ana sayfa kartı birlikte sorabilir; aylık çağrı hakkı idareli kullanılır)
 @MainActor
@@ -321,6 +447,7 @@ struct AppleWeatherMark: View {
     var compact = false
     var onDark = false
     @Environment(\.colorScheme) private var scheme
+    @Environment(\.openURL) private var openURL
     @State private var attribution: WeatherAttribution?
 
     static let fallbackLegalURL = URL(string: "https://weatherkit.apple.com/legal-attribution.html")!
@@ -342,7 +469,10 @@ struct AppleWeatherMark: View {
         }
         .frame(height: height)
         .accessibilityLabel("Apple Weather")
-        let legal = Link(L("weather.legal"), destination: attribution?.legalPageURL ?? Self.fallbackLegalURL)
+        // Link değil düğme (borderless): List satırında Link satırın her yerine dokununca açılıyordu (16 Kasım 2026,
+        // küredeki büyütme düğmesi siteye gidiyordu)
+        let legal = Button(L("weather.legal")) { openURL(attribution?.legalPageURL ?? Self.fallbackLegalURL) }
+            .buttonStyle(.borderless)
             .font(compact ? .caption2 : .caption)
             .tint(onDark ? .white : Theme.muted)
         Group {

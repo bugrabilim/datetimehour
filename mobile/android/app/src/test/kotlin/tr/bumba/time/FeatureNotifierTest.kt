@@ -37,6 +37,24 @@ class FeatureNotifierTest {
         NotifyFeature.entries.forEach { Prefs.store.edit().remove(it.key).commit() }
     }
 
+    /** Saat başı ve sesli saat (16 Kasım 2026): sıklık, bitiş saatinde yalnız tam saat, günler ve konuşma metni */
+    @Test fun hourlyChime() = runBlocking {
+        assertEquals(listOf(9 to 0, 9 to 30, 10 to 0), FeaturePrefs.hourlySlots(9, 10, 30))
+        assertEquals(listOf(23 to 0, 23 to 15, 23 to 30, 23 to 45, 0 to 0), FeaturePrefs.hourlySlots(23, 0, 15))
+        val now = Instant.parse("2026-11-16T05:00:00Z") // pazartesi
+        val place = AppPlace.current()
+        FeaturePrefs.hourlyFrom = 9; FeaturePrefs.hourlyTo = 11; FeaturePrefs.hourlyEvery = 30
+        FeaturePrefs.hourlyDays = setOf(1) // yalnız pazartesi
+        FeaturePrefs.hourlySound = "voice"
+        val plan = FeatureNotifier.hourly(now, place)
+        assertEquals(5, plan.size) // 09:00, 09:30, 10:00, 10:30, 11:00 yalnız bugün (salı seçili değil)
+        assertTrue(plan.all { it.speak != null && it.body.isEmpty() })
+        FeaturePrefs.hourlySound = "system"
+        assertTrue(FeatureNotifier.hourly(now, place).all { it.speak == null })
+        listOf("notify.hourlyFrom", "notify.hourlyTo", "notify.hourly.every", "notify.hourly.days", "notify.hourly.sound")
+            .forEach { Prefs.store.edit().remove(it).commit() }
+    }
+
     /** Hava uyarıları (2. analiz #110): yarın 5° ve fazla soğuk/sıcak akşam 19.00'da, yağmurdan 15 dk önce */
     @Test fun weatherAlerts() {
         val zone = java.time.ZoneId.of("Europe/Istanbul")

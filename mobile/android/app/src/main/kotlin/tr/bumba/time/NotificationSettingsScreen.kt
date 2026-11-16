@@ -19,6 +19,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayCircle
+import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material3.Icon
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
@@ -102,28 +104,15 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
             Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
+            // Düzen (sahibin isteği, 15 Kasım 2026: "geniş yer tutuyor, kafa karıştırıyor"): aç/kapat; her vakit tek satır
+            // (anahtar + dokununca o vaktin süre, ses, günleri); genel süre ve ses açılır listede; "Gelişmiş"te kilit
+            // ekranı, vakitte alarm ve sessize alma. iOS'taki NotificationSettingsView ile aynı düzen.
             AppCard {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("notify.enable"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
                     SoftSwitch(enabled, ::setEnabled, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
-                Text(L("notify.note"), color = Theme.c.muted, fontSize = 13.sp)
             }
-            // Bildirim alanında ve kilit ekranında sıradaki vakit (iOS'taki Live Activity karşılığı; 2. analiz #199 ile Vakitler'den buraya)
-            var liveOn by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.PRAYER_KEY, false)) }
-            AppCard {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(L("live.prayer.toggle"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                    SoftSwitch(liveOn, { on ->
-                        liveOn = on
-                        Prefs.store.edit().putBoolean(LiveNotifications.PRAYER_KEY, on).apply()
-                        LiveNotifications.sync(context)
-                    }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
-                }
-                Text(L("live.prayer.noteAndroid"), color = Theme.c.muted, fontSize = 13.sp)
-            }
-            PrayerAlarmCard()
-            PrayerSilentCard()
             if (denied) {
                 AppCard {
                     Text(L("notify.denied"), color = Theme.c.text, fontSize = 14.sp)
@@ -145,53 +134,24 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
                 }
             }
             if (enabled) {
+                PrayersCard(changed = { changed() })
                 AppCard {
-                    SectionTitle(L("notify.prayers"))
-                    val selected = NotifyPrefs.prayers
-                    for (p in Prayer.entries) {
-                        Row(Modifier.fillMaxWidth().heightIn(min = 44.dp), verticalAlignment = Alignment.CenterVertically) {
-                            Text(p.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                            SoftSwitch(p in selected, { on ->
-                                NotifyPrefs.savePrayers(if (on) selected + p else selected - p)
-                                changed()
-                            }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
-                        }
+                    ChoiceRow(L("notify.lead"), leadLabel(NotifyPrefs.lead), PrayerAlerts.LEAD_CHOICES.mapIndexed { i, m -> i to leadLabel(m) }) { i ->
+                        NotifyPrefs.saveLead(PrayerAlerts.LEAD_CHOICES[i]); changed()
                     }
-                }
-                PerPrayerCard(changed = { changed() })
-                AppCard {
-                    SectionTitle(L("notify.lead"))
-                    for (m in PrayerAlerts.LEAD_CHOICES) {
-                        Choice(if (m == 0) L("notify.lead.zero") else T("notify.lead.minutes", m), NotifyPrefs.lead == m) {
-                            NotifyPrefs.saveLead(m)
-                            changed()
-                        }
-                    }
-                }
-                AppCard {
-                    SectionTitle(L("notify.sound"))
-                    for (s in NotifyPrefs.SOUNDS) {
-                        Choice(L("notify.sound.$s"), NotifyPrefs.sound == s) {
-                            NotifyPrefs.saveSound(s)
-                            changed()
-                        }
+                    ChoiceRow(L("notify.sound"), L("notify.sound.${NotifyPrefs.sound}"), NotifyPrefs.SOUNDS.mapIndexed { i, x -> i to L("notify.sound.$x") }) { i ->
+                        NotifyPrefs.saveSound(NotifyPrefs.SOUNDS[i]); changed()
                     }
                     if (NotifyPrefs.sound == "adhan") {
-                        SectionTitle(L("notify.adhanVoice"))
-                        for (v in NotifyPrefs.ADHAN_VOICES) {
-                            Choice(L("notify.adhan.$v"), NotifyPrefs.adhanVoice == v) {
-                                NotifyPrefs.saveAdhanVoice(v)
-                                changed()
-                            }
+                        ChoiceRow(L("notify.adhanVoice"), L("notify.adhan.${NotifyPrefs.adhanVoice}"), NotifyPrefs.ADHAN_VOICES.mapIndexed { i, v -> i to L("notify.adhan.$v") }) { i ->
+                            NotifyPrefs.saveAdhanVoice(NotifyPrefs.ADHAN_VOICES[i]); changed()
                         }
                     }
                     TextButton(onClick = { scope.launch { NotificationSounds.preview(context, NotifyPrefs.sound, NotifyPrefs.lead) } }) {
                         Icon(Icons.Filled.PlayCircle, null, tint = Theme.c.accent)
                         Text("  " + L("notify.sound.preview"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
                     }
-                    Text(L("notify.sound.note"), color = Theme.c.muted, fontSize = 13.sp)
                     if (NotifyPrefs.sound == "adhan") {
-                        Text(L("notify.sound.adhanNote"), color = Theme.c.muted, fontSize = 13.sp)
                         val credit = if (NotifyPrefs.adhanVoice == "azeez") "notify.sound.adhanCredit" else "notify.adhan.credit.${NotifyPrefs.adhanVoice}"
                         Text(L(credit), color = Theme.c.muted, fontSize = 11.sp)
                     }
@@ -200,38 +160,61 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
                     }
                 }
             }
+            var advanced by remember { mutableStateOf(false) }
+            AppCard {
+                Row(Modifier.fillMaxWidth().heightIn(min = 44.dp).clickable { advanced = !advanced }, verticalAlignment = Alignment.CenterVertically) {
+                    Text(L("alarm.advanced"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                    Icon(if (advanced) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore, null, tint = Theme.c.muted)
+                }
+                if (advanced) {
+                    // Bildirim alanında ve kilit ekranında sıradaki vakit (iOS'taki Live Activity karşılığı)
+                    var liveOn by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.PRAYER_KEY, false)) }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(L("live.prayer.toggle"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                        SoftSwitch(liveOn, { on ->
+                            liveOn = on
+                            Prefs.store.edit().putBoolean(LiveNotifications.PRAYER_KEY, on).apply()
+                            LiveNotifications.sync(context)
+                        }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    }
+                }
+            }
+            if (advanced) {
+                PrayerAlarmCard()
+                PrayerSilentCard()
+            }
         }
     }
 }
 
+/** Vakitler (2. analiz #54 ile birleşik): her vakit tek satır, anahtar; satıra dokununca o vaktin süre, ses ve günleri
+    (boşsa genel ayar) */
 @Composable
-private fun Choice(title: String, on: Boolean, onClick: () -> Unit) {
-    Row(Modifier.fillMaxWidth().clickable(onClick = onClick).heightIn(min = 42.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-        RadioButton(on, onClick, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
-    }
-}
-
-/** Vakte göre ayar (2. analiz #54): her vakit için ayrı önceden bildirim süresi, ses ve günler; boşsa genel ayar */
-@Composable
-private fun PerPrayerCard(changed: () -> Unit) {
+private fun PrayersCard(changed: () -> Unit) {
     @Suppress("UNUSED_VARIABLE") val v = NotifyPrefs.perVersion
     var open by remember { mutableStateOf<Prayer?>(null) }
+    val selected = NotifyPrefs.prayers
     AppCard {
-        SectionTitle(L("notify.perPrayer"))
-        Text(L("notify.perPrayer.note"), color = Theme.c.muted, fontSize = 13.sp)
-        for (p in NotifyPrefs.prayers.sortedBy { it.ordinal }) {
+        SectionTitle(L("notify.prayers"))
+        for (p in Prayer.entries) {
+            val on = p in selected
             val lead = NotifyPrefs.leadFor(p)
             val snd = NotifyPrefs.rawSoundFor(p)
             val days = NotifyPrefs.days(p)
-            val custom = lead >= 0 || snd.isNotEmpty() || days.isNotEmpty()
-            Row(Modifier.fillMaxWidth().heightIn(min = 44.dp).clickable { open = if (open == p) null else p },
+            Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).clickable(enabled = on) { open = if (open == p) null else p },
                 verticalAlignment = Alignment.CenterVertically) {
-                Text(p.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                Text(if (custom) L("notify.perPrayer.custom") else L("notify.perPrayer.general"),
-                    color = if (custom) Theme.c.accent else Theme.c.muted, fontSize = 13.sp)
+                Column(Modifier.weight(1f)) {
+                    Text(p.title, color = Theme.c.text, fontSize = 16.sp)
+                    if (on) Text(leadLabel(if (lead >= 0) lead else NotifyPrefs.lead), color = Theme.c.muted, fontSize = 13.sp)
+                }
+                if (on) Icon(if (open == p) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore, null, tint = Theme.c.muted)
+                SoftSwitch(on, { x ->
+                    NotifyPrefs.savePrayers(if (x) selected + p else selected - p)
+                    if (!x && open == p) open = null
+                    changed()
+                }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
-            if (open == p) {
+            if (on && open == p) {
                 val leads = listOf(-1) + PrayerAlerts.LEAD_CHOICES
                 ChoiceRow(L("notify.lead"), leadLabel(lead), leads.mapIndexed { i, m -> i to leadLabel(m) }) { i ->
                     NotifyPrefs.saveLeadFor(p, leads[i]); changed()
@@ -244,21 +227,22 @@ private fun PerPrayerCard(changed: () -> Unit) {
                 Ltr {
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         for (d in 1..7) {
-                            val on = d in days
+                            val dOn = d in days
                             androidx.compose.foundation.layout.Box(
                                 Modifier.weight(1f).heightIn(min = 34.dp)
-                                    .then(Modifier.clickable { NotifyPrefs.saveDays(p, if (on) days - d else days + d); changed() })
+                                    .then(Modifier.clickable { NotifyPrefs.saveDays(p, if (dOn) days - d else days + d); changed() })
                                     .padding(2.dp),
                                 contentAlignment = Alignment.Center,
                             ) {
-                                Text(L("tools.alarm.dayNames.${d - 1}"), color = if (on) Theme.c.accent else Theme.c.muted,
-                                    fontSize = 12.sp, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, maxLines = 1)
+                                Text(L("tools.alarm.dayNames.${d - 1}"), color = if (dOn) Theme.c.accent else Theme.c.muted,
+                                    fontSize = 12.sp, fontWeight = if (dOn) FontWeight.Bold else FontWeight.Normal, maxLines = 1)
                             }
                         }
                     }
                 }
             }
         }
+        Text(L("notify.perPrayer.note"), color = Theme.c.muted, fontSize = 13.sp)
     }
 }
 

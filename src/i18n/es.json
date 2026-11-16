@@ -442,7 +442,16 @@
         "h": "Membresía",
         "p": [
           "No necesita una cuenta para usar Saat Tarih. Si lo desea, puede abrir una membresía de Bumba en el sitio (hesap.time.bumba.tr) y en las aplicaciones con su correo electrónico y una contraseña; la misma membresía sirve también en otros productos de Bumba.",
-          "Qué información trata la membresía y para qué, dónde se guarda y cuáles son sus derechos se explica en el [aviso de privacidad común de la membresía de Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en); las reglas están en las [condiciones de membresía](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Puede eliminar su cuenta en cualquier momento: [Eliminar su cuenta]({deleteUrl})."
+          "Qué información trata la membresía y para qué, dónde se guarda y cuáles son sus derechos se explica en el [aviso de privacidad común de la membresía de Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en); las reglas están en las [condiciones de membresía](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Puede eliminar su cuenta en cualquier momento: [Eliminar su cuenta]({deleteUrl}).",
+          "Los **círculos** de las aplicaciones (dhikr y jatm compartidos) requieren una cuenta y, como pueden revelar sus creencias religiosas, solo funcionan con su consentimiento explícito aparte (KVKK art. 6; RGPD art. 9.2.a). El nombre del círculo, su membresía, su nombre visible, los dhikr que añade y los yuz que toma o termina solo los ven los miembros de ese círculo; no son públicos, no se venden ni se usan para publicidad. Si sale de un círculo, su aportación queda sin nombre. Puede retirar su consentimiento en la aplicación en cualquier momento; entonces sale de todos los círculos.",
+          "Los **grupos** (cuenta atrás, reloj mundial, votación de reunión, sala de concentración, propuesta de alarma, contador de observación del cielo) también requieren una cuenta. El nombre del grupo, su membresía, su nombre visible y lo que añade al grupo (ciudad y zona horaria compartidas, sus votos, sesiones de concentración, propuestas de alarma, fenómenos celestes marcados) solo los ven los miembros del grupo. Una propuesta de alarma nunca se programa en su teléfono sin que la acepte. Los **avisos del tiempo** no se muestran a otros con su identidad: su ubicación se redondea a una celda de unos 25 km y el aviso se borra a las 24 horas. Base legal: ejecución del contrato de membresía (KVKK art. 5.2.c; RGPD art. 6.1.b). Puede salir de un grupo y denunciar o bloquear a personas; al borrar su cuenta se borra todo esto."
+        ]
+      },
+      {
+        "id": "report-problem",
+        "h": "Informar de un problema",
+        "p": [
+          "Puede informarnos de un problema en el sitio (hesap.time.bumba.tr/hata-bildir) y en las aplicaciones (Ajustes › Soporte); no hace falta cuenta. Lo que escribe, su correo electrónico (si lo indica), la versión de la página o de la aplicación, el tipo de dispositivo y el idioma se nos envían por correo electrónico (servicio de correo Resend, EE. UU.) solo para revisar este informe y responderle. No se guardan en ningún otro lugar y se eliminan en un plazo máximo de un año. Para limitar abusos, su dirección IP se guarda como máximo un día. Base jurídica: nuestro interés legítimo en responder a su informe (KVKK art. 5/2-f)."
         ]
       },
       {
@@ -2051,7 +2060,7 @@
     "hoursShort": "h",
     "minutesShort": "min",
     "tableHeading": "Fechas de inicio de las estaciones",
-    "tableLead": "Estaciones astronómicas, es decir, los momentos de los equinoccios y solsticios. Las horas se indican en hora de Turquía (UTC+3).",
+    "tableLead": "Estaciones astronómicas, es decir, los momentos de los equinoccios y solsticios. Las horas se indican en la hora del lugar seleccionado.",
     "colYear": "Año",
     "meteoNote": "Las estaciones meteorológicas son bloques de tres meses: la primavera empieza el 1 de marzo, el verano el 1 de junio, el otoño el 1 de septiembre y el invierno el 1 de diciembre. Se usan en calendarios y estadísticas.",
     "factsHeading": "La naturaleza a lo largo de las estaciones",
@@ -3523,5 +3532,18 @@
         ]
       }
     ]
+  },
+  "invite": {
+    "title": "Invitación a un círculo | Saat Tarih",
+    "h1": "Le han invitado a un círculo",
+    "lead": "Le han invitado a un círculo compartido de dhikr o de jatm del Corán en la aplicación Saat Tarih.",
+    "code": "Código de invitación",
+    "open": "Abrir en la aplicación",
+    "how": "Si la aplicación no se abre, vaya a Todo › Círculos › Unirse con un código en Saat Tarih e introduzca este código. Los círculos necesitan una cuenta gratuita.",
+    "get": "Descargar en el App Store",
+    "none": "Este enlace no tiene código de invitación. Pida a quien le invitó que lo envíe de nuevo.",
+    "howGroup": "Si la aplicación no se abre, vaya a Todo › Grupos › Unirse con un código en Saat Tarih e introduzca este código. Los grupos necesitan una cuenta gratuita.",
+    "h1Group": "Le han invitado a un grupo",
+    "leadGroup": "Le han invitado en la aplicación Saat Tarih a un grupo compartido: cuenta atrás, reloj mundial, votación de reunión, sala de concentración, alarma u observación del cielo."
   }
 }

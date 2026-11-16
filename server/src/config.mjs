@@ -2,6 +2,17 @@
    Standart madde 7: değişken adları her projede aynı. Zorunlulardan biri eksikse sunucu çökmez, üyelik kapalı açılır
    (giriş ve kayıt sayfaları "üyelik şu an kapalı" der, üyelik ve görev uçları 503); günlüğe yalnız eksik adın adı yazılır. */
 
+import fs from "node:fs";
+
+function buildDate() {
+  try {
+    const d = fs.readFileSync(new URL("../BUILD_DATE", import.meta.url), "utf8").trim();
+    return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/.test(d) ? d : "";
+  } catch {
+    return "";
+  }
+}
+
 export const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th", "es", "pt", "hi", "bn"];
 export const RTL = new Set(["ar", "ur", "fa"]);
 
@@ -45,7 +56,13 @@ export function loadConfig(env = process.env) {
     adminEmail: String(env.ADMIN_EMAIL || "bilgi@bumbagroup.com").toLowerCase(),
     contactEmail: "bilgi@bumbagroup.com",
     commit: env.SOURCE_COMMIT || env.COMMIT || "",
+    // Panelde "sürüm" satırının tarihi: imaj derlenirken yazılan BUILD_DATE dosyası (Dockerfile) ya da COMMIT_DATE
+    commitDate: env.COMMIT_DATE || buildDate(),
     rateLimit: env.RATE_LIMIT !== "off",
+    // Halkalar (aşama 2) açık rıza metni ve uygulama ekranları yayına hazır olana kadar kapalı: HALKALAR=acik
+    circles: env.HALKALAR === "acik",
+    // Ortak gruplar ve anonim hava bildirimi (aşama 2d): yayına hazır olana kadar kapalı, GRUPLAR=acik
+    groups: env.GRUPLAR === "acik",
   };
   const missing = REQUIRED.filter((k) => {
     if (k === "RESEND_API_KEY") return mailDriver === "resend" ? !cfg.resendKey : false;
