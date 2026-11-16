@@ -42,6 +42,7 @@ enum Groups {
         case "alarm-sinir": return "group.a.limit"
         case "engelli": return "group.a.blocked"
         case "suruyor": return "group.f.none"
+        case "uzaklastirildi": return "account.banned"
         case "bitti": return "group.p.closed"
         default: return Account.errorOf(r)
         }
@@ -272,6 +273,7 @@ struct GroupCreateView: View {
                     }
                 }
             }
+            Section { CommunityRules() }.listRowBackground(Color.clear)
             if let err { Text(L(err)).foregroundStyle(Theme.err) }
             Section {
                 RoundButton(title: L("group.create"), prominent: ready) {
@@ -324,6 +326,7 @@ struct GroupJoinView: View {
                     }
                 }
             }
+            Section { CommunityRules() }.listRowBackground(Color.clear)
             if let err { Text(L(err)).foregroundStyle(Theme.err) }
             Section {
                 RoundButton(title: L("circle.joinButton"), prominent: ready) {

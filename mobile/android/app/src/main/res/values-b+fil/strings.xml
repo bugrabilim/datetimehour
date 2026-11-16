@@ -1962,6 +1962,14 @@
     <string name="account_delConfirmIgnore">Kung ayaw ninyong magbura, isara lang ang pahinang ito; walang mabubura at kusang makakansela ang kahilingan pagkalipas ng 7 araw.</string>
     <string name="account_delLinkBad">Hindi wasto, nagamit na, o paso na ang link na ito. Kung gusto ninyong magbura, simulan muli ang kahilingan mula sa pahina ng inyong account.</string>
     <string name="account_delBadgesDone">Nabura na ang inyong mga badge.</string>
+    <string name="account_rulesTitle">Mga patakaran ng komunidad</string>
+    <string name="account_rulesLead">Ang mga circle at grupo ay maliliit na komunidad na sinasalihan sa pamamagitan ng imbitasyon. Walang pagpaparaya sa hindi angkop na nilalaman o sa mga user na nanggugulo sa iba.</string>
+    <string name="account_rules1">Huwag gumamit ng insulto, mapoot na pananalita, panliligalig, sekswal, marahas o ilegal na nilalaman, patalastas, o personal na impormasyon (telepono, address, email, link) sa pangalan ng circle, grupo, lungsod o display name.</string>
+    <string name="account_rules2">Huwag manggulo ng sinuman; magpadala lang ng mungkahing alarm sa taong alam mong gusto ito.</string>
+    <string name="account_rules3">Kung may makita kang hindi angkop na pangalan, i-tap ang “I-report”; itago ang miyembrong nanggugulo sa iyo gamit ang “I-block”.</string>
+    <string name="account_rules4">Sinusuri ang mga report sa loob ng 24 na oras. Inaalis ang nilalamang lumalabag sa patakaran; inaalis ang may-akda sa lahat ng circle at grupo at hindi na siya makakasali sa bago.</string>
+    <string name="account_rulesAgree">Sa paggawa o pagsali sa isang circle o grupo, sumasang-ayon ka sa mga patakarang ito.</string>
+    <string name="account_banned">Hindi ka makakasali sa mga circle o grupo dahil lumabag ka sa mga patakaran ng komunidad. Kung sa tingin mo ay mali ito, sumulat sa amin sa “Mag-ulat ng problema”.</string>
     <string name="common_done">Tapos na</string>
     <string name="notify_heading">Abiso sa oras ng dasal</string>
     <string name="notify_enable">Abisuhan ako sa oras ng dasal</string>

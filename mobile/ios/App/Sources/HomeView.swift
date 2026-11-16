@@ -206,7 +206,6 @@ struct FullscreenClock: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.verticalSizeClass) private var vsc
     @Environment(\.colorScheme) private var colorScheme
-    @AppStorage("clockModel") private var modelID = ClockModel.classic.rawValue
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
     @AppStorage(FullscreenBackground.key) private var bgRaw = ""
@@ -227,7 +226,7 @@ struct FullscreenClock: View {
     @AppStorage("fs.banner") private var banner = false
     /// Gösterilen sayfa: saat modeli ya da iki yandaki araç sayfası (2. analiz #26: ilk saatten geriye pomodoro,
     /// son saatten sonra kronometre). Saat modeline geçilince seçim kaydedilir.
-    @State private var page = UserDefaults.standard.string(forKey: "clockModel") ?? ClockModel.classic.rawValue
+    @State private var page = ClockModel.fullscreenStart.rawValue
     /// Düğmeler dokununca belirir, 4 sn sonra kaybolur (sitedeki tam ekran gibi; 2. analiz #204)
     @State private var controlsShown = true
     @State private var hideTask: Task<Void, Never>?
@@ -422,15 +421,13 @@ struct FullscreenClock: View {
             if v == .regular, closeOnPortrait { dismiss() }
         }
         .overlay(alignment: .top) { BadgeToast() }
-        .onChange(of: page) { _, new in
-            guard ClockModel(rawValue: new) != nil, new != modelID else { return }
-            modelID = new
-        }
-        .onChange(of: modelID) { _, new in
+        .onChange(of: page) { old, new in
+            guard ClockModel(rawValue: new) != nil else { return }
+            UserDefaults.standard.set(new, forKey: ClockModel.fullscreenKey)
             if let i = ClockModel.allCases.firstIndex(where: { $0.rawValue == new }) {
                 BadgeStore.shared.sawModel(i, of: ClockModel.allCases.count)
             }
-            BadgeStore.shared.hit(.ilkModel)
+            if ClockModel(rawValue: old) != nil { BadgeStore.shared.hit(.ilkModel) }
         }
         .statusBarHidden()
         .persistentSystemOverlays(.hidden)

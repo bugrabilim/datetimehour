@@ -14,6 +14,7 @@
 import crypto from "node:crypto";
 import { profileOf } from "./accounts.mjs";
 import { displayName } from "./profile.mjs";
+import { isBanned } from "./moderation.mjs";
 
 export const CIRCLE_CONSENT_VERSION = "2026-11-15";
 export const LIMITS = { members: 30, circlesPerUser: 20, nameMax: 40, targetMin: 33, targetMax: 10_000_000, addMax: 10_000, reportsToHide: 3 };
@@ -91,7 +92,7 @@ const newCode = () => Array.from(crypto.randomBytes(8), (b) => CODE_ABC[b % CODE
 const newId = () => crypto.randomBytes(9).toString("base64url");
 const err = (status, hata) => Object.assign(new Error(hata), { status, hata });
 
-export function createCircles({ pool, mailer, adminEmail }) {
+export function createCircles({ pool, mailer, adminEmail, modLink = () => "" }) {
   async function q(sql, args = []) { return pool.query(sql, args); }
 
   async function hasConsent(userId) {
@@ -102,6 +103,8 @@ export function createCircles({ pool, mailer, adminEmail }) {
   }
   /* Halkaya girmeden önce: onay ya da önceden verilmiş onay; kişi başına en çok 20 halka */
   async function admit(userId, riza) {
+    // Topluluk kurallarını çiğnediği için uzaklaştırılan kişi (moderation.mjs) halka kuramaz, katılamaz
+    if (await isBanned(pool, userId)) throw err(403, "uzaklastirildi");
     if (!(await hasConsent(userId))) {
       if (riza !== true) throw err(400, "riza");
       await giveConsent(userId);
@@ -333,36 +336,55 @@ export function createCircles({ pool, mailer, adminEmail }) {
     await q(`delete from circle where id = $1`, [id]);
   }
 
-  /* Bildir: halka adı ya da bir üyenin görünen adı. Her bildirim e-postayla sahibe gider (yalnız bildirilen metin; kimin
-     bildirdiği ve kimin yazdığı yazılmaz). Üç ayrı kişiden bildirim gelince ad kendiliğinden gizlenir. */
+  /* Bildir: halka adı ya da bir üyenin görünen adı. Her bildirim e-postayla yöneticiye gider (yalnız bildirilen metin;
+     kimin bildirdiği yazılmaz) ve imzalı yönetici bağlantısı taşır (moderation.mjs: gizle, topluluktan uzaklaştır). Üç
+     ayrı kişiden bildirim gelince ad kendiliğinden gizlenir. */
   async function report(user, id, b) {
     const c = await memberOf(id, user.id);
-    let target, text, hideSql, args;
+    let target, text, author;
     if (b.uye != null) {
       const m = (await q(`select m.id, m.user_id, u.profile, u."uyeNo", m.name_hidden from circle_member m join "user" u on u.id = m.user_id where m.circle_id = $1 and m.id = $2`, [id, Number(b.uye)])).rows[0];
       if (!m || m.user_id === user.id) throw err(404, "uye");
       target = `uye:${m.user_id}`;
       text = nameOf({ ...m, name_hidden: false }, "tr");
-      hideSql = `update circle_member set name_hidden = true where circle_id = $1 and user_id = $2`;
-      args = [id, m.user_id];
+      author = m.user_id;
     } else {
       target = "ad";
       text = c.name;
-      hideSql = `update circle set name_hidden = true where id = $1`;
-      args = [id];
+      author = c.owner_id;
     }
     const ins = await q(`insert into circle_report (circle_id, reporter_id, target) values ($1, $2, $3) on conflict do nothing`, [id, user.id, target]);
     if (!ins.rowCount) return { yeni: false };
     const n = (await q(`select count(*)::int n from circle_report where circle_id = $1 and target = $2`, [id, target])).rows[0].n;
     const hidden = n >= LIMITS.reportsToHide;
-    if (hidden) await q(hideSql, args);
+    if (hidden) await hideTarget(id, target);
     const what = target === "ad" ? "halka adı" : "üyenin görünen adı";
+    const link = modLink({ s: "halka", id, h: target, u: author || undefined });
     await mailer.sendRaw({
       to: adminEmail || "bilgi@bumbagroup.com",
       subject: `Saat Tarih halka bildirimi: ${what}${hidden ? " (gizlendi)" : ""}`,
-      text: `Bildirilen ${what}: ${text}\nHalka: ${id} (${c.kind})\nBu içerik için bildirim sayısı: ${n}${hidden ? "\nÜç ayrı bildirimle kendiliğinden gizlendi." : ""}\n\nYanıt süresi: 24–72 saat. Kaldırmak için kurucuya yazılabilir ya da hesap askıya alınabilir.\n`,
+      text: `Bildirilen ${what}: ${text}\nHalka: ${id} (${c.kind})\nBu içerik için bildirim sayısı: ${n}${hidden ? "\nÜç ayrı bildirimle kendiliğinden gizlendi." : ""}\n\nTopluluk kurallarında söz verilen süre: en geç 24 saat içinde incele.${link ? `\nGizlemek ya da yazanı topluluktan uzaklaştırmak için: ${link}` : ""}\n`,
     }).catch(() => {});
     return { yeni: true, gizlendi: hidden };
+  }
+
+  /* Yönetici işlemleri (moderation.mjs) */
+  async function hideTarget(id, target) {
+    if (target === "ad") await q(`update circle set name_hidden = true where id = $1`, [id]);
+    else if (target.startsWith("uye:")) await q(`update circle_member set name_hidden = true where circle_id = $1 and user_id = $2`, [id, target.slice(4)]);
+  }
+  async function modState(id, target) {
+    const c = (await q(`select name, name_hidden from circle where id = $1`, [id])).rows[0];
+    if (!c) return { var: false };
+    if (target === "ad") return { var: true, metin: c.name, gizli: c.name_hidden };
+    const m = (await q(`select m.name_hidden, u.profile, u."uyeNo" from circle_member m join "user" u on u.id = m.user_id where m.circle_id = $1 and m.user_id = $2`, [id, target.slice(4)])).rows[0];
+    if (!m) return { var: false };
+    return { var: true, metin: nameOf({ ...m, name_hidden: false }, "tr"), gizli: m.name_hidden };
+  }
+  /* Topluluktan uzaklaştırma: kişi bütün halkalardan çıkar (katkısı "Eski üye" olarak kalır) */
+  async function expel(userId) {
+    const ids = (await q(`select circle_id from circle_member where user_id = $1`, [userId])).rows.map((x) => x.circle_id);
+    for (const id of ids) await removeMember(id, userId, "ayrildi");
   }
 
   async function block(user, id, mid, on = true) {
@@ -412,5 +434,5 @@ export function createCircles({ pool, mailer, adminEmail }) {
     return { zikir: r.z, hatim: r.h };
   }
 
-  return { hasConsent, create, preview, join, detail, list, addZikir, juz, leave, kick, edit, remove, report, block, withdraw, onUserGone, exportOf, cleanup, counts };
+  return { hasConsent, create, preview, join, detail, list, addZikir, juz, leave, kick, edit, remove, report, block, withdraw, onUserGone, exportOf, cleanup, counts, hideTarget, modState, expel };
 }

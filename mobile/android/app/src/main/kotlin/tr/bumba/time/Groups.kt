@@ -86,6 +86,7 @@ object Groups {
             "alarm-sinir" -> "group.a.limit"
             "engelli" -> "group.a.blocked"
             "suruyor" -> "group.f.none"
+            "uzaklastirildi" -> "account.banned"
             "bitti" -> "group.p.closed"
             else -> Account.errorOf(r)
         }
@@ -284,6 +285,7 @@ internal fun GroupCreate(onBack: () -> Unit, onDone: (String) -> Unit) {
                     }
                 }
             }
+            CommunityRules()
             err?.let { Text(L(it), color = Theme.c.err, fontSize = 14.sp) }
         }
         val ready = name.isNotBlank() && (kind != "oylama" || slots.isNotEmpty())
@@ -328,6 +330,7 @@ private fun GroupJoin(onBack: () -> Unit, onDone: (String) -> Unit) {
                     if (p.optBoolean("dolu")) Text(L("group.full"), color = Theme.c.err, fontSize = 14.sp)
                 }
             }
+            CommunityRules()
             err?.let { Text(L(it), color = Theme.c.err, fontSize = 14.sp) }
         }
         val ready = preview != null && !preview!!.optBoolean("dolu")

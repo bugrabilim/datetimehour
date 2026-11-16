@@ -1962,6 +1962,14 @@
     <string name="account_delConfirmIgnore">削除しない場合はこのページを閉じてください。何も削除されず、リクエストは7日後に自動で取り消されます。</string>
     <string name="account_delLinkBad">このリンクは無効か、使用済みか、期限切れです。削除する場合はアカウントページからもう一度リクエストしてください。</string>
     <string name="account_delBadgesDone">バッジを削除しました。</string>
+    <string name="account_rulesTitle">コミュニティのルール</string>
+    <string name="account_rulesLead">サークルとグループは招待で参加する小さなコミュニティです。不適切なコンテンツや他の人に迷惑をかけるユーザーは一切容認しません。</string>
+    <string name="account_rules1">サークル名、グループ名、都市名、表示名に、侮辱、ヘイトスピーチ、嫌がらせ、性的・暴力的・違法な内容、広告、個人情報（電話番号、住所、メールアドレス、リンク）を使わないでください。</string>
+    <string name="account_rules2">誰にも迷惑をかけないでください。アラームの提案は、望んでいるとわかっている相手にだけ送ってください。</string>
+    <string name="account_rules3">不適切な名前を見つけたら「報告」をタップしてください。迷惑なメンバーは「ブロック」で非表示にできます。</string>
+    <string name="account_rules4">報告は24時間以内に確認します。ルールに違反する内容は削除され、投稿した人はすべてのサークルとグループから外され、新たに参加できなくなります。</string>
+    <string name="account_rulesAgree">サークルやグループを作成または参加すると、このルールに同意したことになります。</string>
+    <string name="account_banned">コミュニティのルールに違反したため、サークルやグループに参加できません。誤りだと思われる場合は「問題を報告」からお知らせください。</string>
     <string name="common_done">完了</string>
     <string name="notify_heading">礼拝時刻の通知</string>
     <string name="notify_enable">礼拝時刻に通知する</string>

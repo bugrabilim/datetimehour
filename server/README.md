@@ -75,6 +75,8 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
 | `/v1/verilerim`, `/v1/hesap/sil`, `/v1/silme-istegi`, `/v1/silme-istegi/iptal` | Verilerimi indir, silme isteği (onay e-postayla), bekleyen istek, iptal |
 | `/v1/halkalar`, `/v1/halka…` | Ortak zikir ve hatim halkaları (`src/circles.mjs`; `HALKALAR=acik` değilse 404) |
 | `/v1/gruplar`, `/v1/grup…`, `/v1/hava-bildirim` | Ortak gruplar (geri sayım, dünya saati, toplantı oylaması, odak, alarm isteği, gözlem) ve anonim hava bildirimi (`src/groups.mjs`; `GRUPLAR=acik` değilse 404) |
+| `/topluluk-kurallari` | Halka ve grupların topluluk kuralları (19 dil; uygulamalardaki kurma ve katılma ekranları bağlanır) |
+| `/moderasyon?k=` | Yönetici sayfası: bildirim e-postasındaki imzalı bağlantı (30 gün); GET bir şey yapmaz, POST ile gizle, topluluktan uzaklaştır ya da uzaklaştırmayı kaldır (`src/moderation.mjs`) |
 | `POST /gorev/temizlik`, `POST /gorev/kutlama` | Zamanlanmış görevler (`Bearer $CRON_SECRET`) |
 | `GET /saglik` | Sağlık denetimi |
 

@@ -1962,6 +1962,14 @@
     <string name="account_delConfirmIgnore">Se não quiser excluir, feche esta página; nada é excluído e o pedido se cancela sozinho após 7 dias.</string>
     <string name="account_delLinkBad">Este link é inválido, já foi usado ou expirou. Se quiser excluir, comece o pedido de novo na página da sua conta.</string>
     <string name="account_delBadgesDone">Seus selos foram excluídos.</string>
+    <string name="account_rulesTitle">Regras da comunidade</string>
+    <string name="account_rulesLead">Círculos e grupos são pequenas comunidades em que se entra por convite. Não há tolerância para conteúdo impróprio nem para usuários que assediam outras pessoas.</string>
+    <string name="account_rules1">Não use insultos, discurso de ódio, assédio, conteúdo sexual, violento ou ilegal, publicidade nem dados pessoais (telefone, endereço, e-mail, links) em nomes de círculo, grupo, cidade ou de exibição.</string>
+    <string name="account_rules2">Não incomode ninguém; envie uma sugestão de alarme só para quem você sabe que quer recebê-la.</string>
+    <string name="account_rules3">Se vir um nome impróprio, toque em “Denunciar”; oculte um membro que incomoda você com “Bloquear”.</string>
+    <string name="account_rules4">As denúncias são analisadas em até 24 horas. O conteúdo que viola as regras é removido; o autor sai de todos os círculos e grupos e não pode entrar em outros.</string>
+    <string name="account_rulesAgree">Ao criar um círculo ou grupo ou entrar em um, você aceita estas regras.</string>
+    <string name="account_banned">Você não pode entrar em círculos nem grupos porque violou as regras da comunidade. Se acha que é um engano, escreva para nós em “Relatar um problema”.</string>
     <string name="common_done">Pronto</string>
     <string name="notify_heading">Notificações de horários de oração</string>
     <string name="notify_enable">Avisar nos horários de oração</string>

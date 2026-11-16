@@ -1962,6 +1962,14 @@
     <string name="account_delConfirmIgnore">如果不想删除，请直接关闭此页面；不会删除任何内容，请求将在 7 天后自动取消。</string>
     <string name="account_delLinkBad">此链接无效、已使用或已过期。如需删除，请在账户页面重新发起请求。</string>
     <string name="account_delBadgesDone">您的徽章已删除。</string>
+    <string name="account_rulesTitle">社区规则</string>
+    <string name="account_rulesLead">圈子和群组是通过邀请加入的小型社区。对不当内容和骚扰他人的用户零容忍。</string>
+    <string name="account_rules1">请勿在圈子名、群组名、城市名和显示名称中使用辱骂、仇恨言论、骚扰、色情、暴力或违法内容、广告以及个人信息（电话、地址、电子邮件、链接）。</string>
+    <string name="account_rules2">请勿打扰他人；只向你确定愿意接收的人发送闹钟建议。</string>
+    <string name="account_rules3">如果看到不当的名称，请点按“举报”；可用“屏蔽”隐藏打扰你的成员。</string>
+    <string name="account_rules4">举报会在24小时内处理。违反规则的内容会被删除，发布者会被移出所有圈子和群组，且不能再加入新的。</string>
+    <string name="account_rulesAgree">创建或加入圈子、群组即表示你同意这些规则。</string>
+    <string name="account_banned">由于你违反了社区规则，无法加入圈子或群组。如果你认为这是误判，请通过“报告问题”联系我们。</string>
     <string name="common_done">完成</string>
     <string name="notify_heading">礼拜时间通知</string>
     <string name="notify_enable">礼拜时间提醒我</string>

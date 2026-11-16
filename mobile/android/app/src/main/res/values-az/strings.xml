@@ -1962,6 +1962,14 @@
     <string name="account_delConfirmIgnore">Silmək istəmirsinizsə, bu səhifəni bağlayın; heç nə silinmir və sorğu 7 gündən sonra öz-özünə ləğv olunur.</string>
     <string name="account_delLinkBad">Bu keçid etibarsızdır, istifadə olunub ya da müddəti bitib. Silmək istəyirsinizsə, sorğunu hesab səhifənizdən yenidən başladın.</string>
     <string name="account_delBadgesDone">Nişanlarınız silindi.</string>
+    <string name="account_rulesTitle">İcma qaydaları</string>
+    <string name="account_rulesLead">Halqalar və qruplar dəvətlə qoşulduğunuz kiçik icmalardır. Yersiz məzmuna və başqalarını narahat edən istifadəçilərə dözümlülük göstərilmir.</string>
+    <string name="account_rules1">Halqa, qrup, şəhər və görünən adlarda təhqir, nifrət nitqi, təqib, cinsi, zorakı və ya qanunsuz məzmun, reklam və şəxsi məlumat (telefon, ünvan, e-poçt, keçid) istifadə etməyin.</string>
+    <string name="account_rules2">Heç kimi narahat etməyin; zəngli saat təklifini yalnız onu istədiyini bildiyiniz şəxsə göndərin.</string>
+    <string name="account_rules3">Yersiz bir ad görsəniz “Bildir” düyməsinə toxunun; sizi narahat edən üzvü “Blokla” ilə gizlədin.</string>
+    <string name="account_rules4">Bildirişlər ən gec 24 saat ərzində yoxlanılır. Qaydaları pozan məzmun silinir; onu yazan şəxs bütün halqa və qruplardan çıxarılır və yenisinə qoşula bilmir.</string>
+    <string name="account_rulesAgree">Halqa və ya qrup quraraq, yaxud ona qoşularaq bu qaydaları qəbul etmiş olursunuz.</string>
+    <string name="account_banned">İcma qaydalarını pozduğunuz üçün halqa və qruplara qoşula bilməzsiniz. Səhv olduğunu düşünürsünüzsə, “Xəta bildir” vasitəsilə bizə yazın.</string>
     <string name="common_done">Hazır</string>
     <string name="notify_heading">Vaxt bildirişləri</string>
     <string name="notify_enable">Namaz vaxtlarında bildiriş al</string>

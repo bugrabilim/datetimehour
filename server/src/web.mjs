@@ -4,6 +4,7 @@
 import { readFileSync } from "node:fs";
 import { LANGS, RTL, normLang, PRODUCT_NAME } from "./config.mjs";
 import { readUnsubscribeToken, readChoiceToken } from "./mail.mjs";
+import { readModToken } from "./moderation.mjs";
 import { COUNTRIES, SOCIAL, VISIBLE_FIELDS, birthDateRange } from "./profile.mjs";
 
 export const UI = JSON.parse(readFileSync(new URL("../i18n/account.json", import.meta.url), "utf8"));
@@ -42,7 +43,7 @@ function pickLang(req, url, user) {
   return "en";
 }
 
-export function webRoutes({ cfg, closed, accounts, center, consent, deletion }) {
+export function webRoutes({ cfg, closed, accounts, center, consent, deletion, moderation }) {
   function page(res, { lang, title, body, data = {}, stats = true, theme = "system", status = 200 }) {
     const t = UI[lang];
     const dir = RTL.has(lang) ? "rtl" : "ltr";
@@ -91,8 +92,8 @@ export function webRoutes({ cfg, closed, accounts, center, consent, deletion }) 
       res.end(readFileSync(file));
       return true;
     }
-    const pages = ["/", "/giris", "/kayit", "/sifre", "/dogrulandi", "/hesap", "/hesap/rozetler", "/kutlama", "/sifre-sec", "/hata-bildir", "/silme-onay"];
-    if (!pages.includes(p) || !["GET", "POST"].includes(req.method) || (req.method === "POST" && !["/kutlama", "/sifre-sec", "/silme-onay"].includes(p))) return false;
+    const pages = ["/", "/giris", "/kayit", "/sifre", "/dogrulandi", "/hesap", "/hesap/rozetler", "/kutlama", "/sifre-sec", "/hata-bildir", "/silme-onay", "/topluluk-kurallari", "/moderasyon"];
+    if (!pages.includes(p) || !["GET", "POST"].includes(req.method) || (req.method === "POST" && !["/kutlama", "/sifre-sec", "/silme-onay", "/moderasyon"].includes(p))) return false;
     // Rozetler ve kayıtlar artık hesap sayfasının sekmesi (madde 7: kullanım verisi ayrı sayfaya konmaz)
     if (p === "/hesap/rozetler") {
       const l = url.searchParams.get("dil");
@@ -215,6 +216,36 @@ ${token ? `<form data-form="reset" novalidate><label>${esc(t.newPassword)}<input
       return true;
     }
     // Silme onayı (standart 5.21): e-postadaki bağlantı giriş istemez; açmak silmez, "Onaylıyorum" (POST) siler
+    // Topluluk kuralları (halkalar ve gruplar; Apple 1.2): uygulamalardaki kurma ve katılma ekranları buraya bağlanır
+    if (p === "/topluluk-kurallari") {
+      const items = ["rules1", "rules2", "rules3", "rules4"].map((k) => `<li>${esc(t[k])}</li>`).join("");
+      page(res, { ...base, title: t.rulesTitle, body: shell(`<h1>${esc(t.rulesTitle)}</h1><p>${esc(t.rulesLead)}</p><ul>${items}</ul><p class="muted">${esc(t.rulesAgree)}</p>`) });
+      return true;
+    }
+    // Yönetici sayfası (moderation.mjs): bildirim e-postasındaki imzalı bağlantı. Türkçe, dizine girmez; açmak bir şey
+    // yapmaz, işlemler POST ile.
+    if (p === "/moderasyon") {
+      const form = req.method === "POST" ? await readForm(req) : null;
+      const k = String((form ? form.get("k") : url.searchParams.get("k")) || "");
+      const spec = readModToken(cfg.secret, k);
+      const out = (inner) => page(res, { ...base, lang: "tr", stats: false, title: "Bildirim", body: shell(`<h1>Bildirim</h1>${inner}`) });
+      if (!spec || !moderation) { out(msg("Bağlantı geçersiz ya da süresi dolmuş.", "err")); return true; }
+      let done = "";
+      if (form) {
+        const op = form.get("islem");
+        if (op === "gizle") { await moderation.hide(spec); done = "İçerik gizlendi."; }
+        else if (op === "uzaklastir") { await moderation.ban(spec); done = "İçerik gizlendi, kişi bütün halka ve gruplardan çıkarıldı ve yenisine katılamaz."; }
+        else if (op === "geri") { await moderation.unban(spec); done = "Uzaklaştırma kaldırıldı."; }
+      }
+      const st = await moderation.look(spec);
+      const what = spec.h === "ad" ? (spec.s === "halka" ? "Halka adı" : "Grup adı") : spec.h.startsWith("istek:") ? "Alarm isteğinin etiketi" : "Üyenin görünen adı";
+      const btn = (op, label, cls = "") => `<form method="post" action="/moderasyon"><input type="hidden" name="k" value="${esc(k)}"><input type="hidden" name="islem" value="${op}"><button type="submit"${cls ? ` class="${cls}"` : ""}>${esc(label)}</button></form>`;
+      const state = st.var ? `<p><strong>${esc(what)}:</strong> ${esc(st.metin)}</p><p class="muted">${st.gizli ? "Şu an gizli." : "Şu an görünüyor."}</p>` : `<p class="muted">İçerik artık yok (silinmiş ya da kişi ayrılmış).</p>`;
+      const banState = spec.u ? `<p class="muted">${st.uzaklastirildi ? "Yazan kişi topluluktan uzaklaştırılmış." : "Yazan kişi uzaklaştırılmamış."}</p>` : "";
+      const actions = [st.var && !st.gizli ? btn("gizle", "İçeriği gizle") : "", spec.u && !st.uzaklastirildi ? btn("uzaklastir", "Gizle ve kişiyi topluluktan uzaklaştır", "danger") : "", st.uzaklastirildi ? btn("geri", "Uzaklaştırmayı kaldır") : ""].join("");
+      out(`${done ? msg(done, "ok") : ""}<p class="muted">${spec.s === "halka" ? "Halka" : "Grup"}: ${esc(spec.id)}</p>${state}${banState}<div class="row">${actions}</div>`);
+      return true;
+    }
     if (p === "/silme-onay") {
       const k = req.method === "POST" ? String((await readForm(req)).get("k") || "") : String(url.searchParams.get("k") || "");
       const toSite = `<p><a class="button" href="${esc(cfg.siteUrl)}${lang === "tr" ? "/" : `/${lang}/`}">${esc(t.toSite)}</a></p>`;

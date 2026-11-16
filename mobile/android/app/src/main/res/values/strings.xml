@@ -1962,6 +1962,14 @@
     <string name="account_delConfirmIgnore">If you don\'t want to delete, just close this page; nothing is deleted and the request is cancelled automatically after 7 days.</string>
     <string name="account_delLinkBad">This link is invalid, already used or expired. If you want to delete, start the request again from your account page.</string>
     <string name="account_delBadgesDone">Your badges have been deleted.</string>
+    <string name="account_rulesTitle">Community rules</string>
+    <string name="account_rulesLead">Circles and groups are small communities you join by invitation. There is no tolerance for objectionable content or for users who harass others.</string>
+    <string name="account_rules1">Do not use insults, hate speech, harassment, sexual, violent or illegal content, advertising or personal information (phone, address, email, links) in circle, group, city or display names.</string>
+    <string name="account_rules2">Do not bother anyone; send an alarm suggestion only to someone you know wants it.</string>
+    <string name="account_rules3">If you see an objectionable name, tap “Report”; hide a member who bothers you with “Block”.</string>
+    <string name="account_rules4">Reports are reviewed within 24 hours. Content that breaks the rules is removed, and its author is removed from all circles and groups and cannot join new ones.</string>
+    <string name="account_rulesAgree">By creating or joining a circle or group, you agree to these rules.</string>
+    <string name="account_banned">You can\'t join circles or groups because you broke the community rules. If you think this is a mistake, write to us via “Report a problem”.</string>
     <string name="common_done">Done</string>
     <string name="notify_heading">Prayer time notifications</string>
     <string name="notify_enable">Notify me at prayer times</string>

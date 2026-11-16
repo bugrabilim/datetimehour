@@ -1962,6 +1962,14 @@
     <string name="account_delConfirmIgnore">삭제하지 않으려면 이 페이지를 닫으세요. 아무것도 삭제되지 않으며 요청은 7일 뒤 자동으로 취소됩니다.</string>
     <string name="account_delLinkBad">이 링크는 유효하지 않거나 이미 사용되었거나 만료되었습니다. 삭제하려면 계정 페이지에서 다시 요청하세요.</string>
     <string name="account_delBadgesDone">배지가 삭제되었습니다.</string>
+    <string name="account_rulesTitle">커뮤니티 규칙</string>
+    <string name="account_rulesLead">서클과 그룹은 초대로 참여하는 작은 커뮤니티입니다. 부적절한 콘텐츠와 다른 사람을 괴롭히는 사용자는 용납하지 않습니다.</string>
+    <string name="account_rules1">서클, 그룹, 도시 이름과 표시 이름에 욕설, 혐오 표현, 괴롭힘, 성적·폭력적·불법적인 내용, 광고, 개인 정보(전화번호, 주소, 이메일, 링크)를 쓰지 마세요.</string>
+    <string name="account_rules2">누구도 괴롭히지 마세요. 알람 제안은 원한다는 것을 아는 사람에게만 보내세요.</string>
+    <string name="account_rules3">부적절한 이름을 보면 ‘신고’을 누르세요. 불편하게 하는 멤버는 ‘차단’으로 숨길 수 있습니다.</string>
+    <string name="account_rules4">신고는 24시간 이내에 검토합니다. 규칙을 어긴 콘텐츠는 삭제되고, 작성자는 모든 서클과 그룹에서 제외되며 새로 참여할 수 없습니다.</string>
+    <string name="account_rulesAgree">서클이나 그룹을 만들거나 참여하면 이 규칙에 동의하는 것입니다.</string>
+    <string name="account_banned">커뮤니티 규칙을 어겨 서클이나 그룹에 참여할 수 없습니다. 잘못되었다고 생각되면 ‘문제 신고’로 알려 주세요.</string>
     <string name="common_done">완료</string>
     <string name="notify_heading">기도 시간 알림</string>
     <string name="notify_enable">기도 시간에 알림 받기</string>

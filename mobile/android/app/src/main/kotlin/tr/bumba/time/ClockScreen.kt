@@ -185,12 +185,13 @@ private fun rememberClockPager(): PagerState {
 /** Tam ekran: saat modelleri + iki yanda araç sayfaları; saat sayfasına geçilince model kaydedilir */
 @Composable
 private fun rememberFullscreenPager(): PagerState {
-    val pager = rememberPagerState(initialPage = Prefs.clockModel.coerceIn(0, ClockModel.count - 1) + 1) { ClockModel.count + 2 }
+    val start = remember { ClockModel.fullscreenStart() }
+    val pager = rememberPagerState(initialPage = start + 1) { ClockModel.count + 2 }
     LaunchedEffect(pager.currentPage) {
         val m = pager.currentPage - 1
         if (m in 0 until ClockModel.count) {
-            if (m != Prefs.clockModel) BadgeStore.hit(Badge.ILK_MODEL)
-            Prefs.saveClockModel(m)
+            if (m != start) BadgeStore.hit(Badge.ILK_MODEL)
+            if (m != start || Prefs.store.contains(ClockModel.FULLSCREEN_KEY)) ClockModel.saveFullscreen(m)
             BadgeStore.sawModel(m, ClockModel.count)
         }
     }

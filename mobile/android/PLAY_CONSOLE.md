@@ -178,8 +178,23 @@ Sitedeki gizlilik sayfasının "Android uygulaması" bölümüyle aynı olmalı:
   "Hesap yönetimi" ve "Uygulama işlevi", paylaşılmaz (Resend ve sunucu barındırma hizmet sağlayıcısıdır, Play'in
   tanımında "paylaşım" sayılmaz), isteğe bağlı, kimlikle bağlantılı. Şifre yalnız özet (hash) olarak saklanır.
   Oturum sırasında IP adresi ve cihaz bilgisi (User-Agent) güvenlik için oturum kaydında tutulur, oturum kapanınca silinir.
+- **Halkalar ve gruplar (üyelik aşama 2; 16 Kasım 2026):** hesapla, sunucuda `HALKALAR`/`GRUPLAR` açılınca. Ek olarak
+  toplanır: **Diğer kullanıcı içeriği** (halka/grup adı, dünya grubundaki şehir adı, alarm önerisinin etiketi; amaç
+  "Uygulama işlevi", grubun öbür üyeleriyle paylaşılır ama Play'in tanımında kullanıcının kendi isteğiyle başka
+  kullanıcılara gösterdiği içerik "paylaşım" sayılmaz), **Dini inançlar** (zikir ve hatim halkasına katılma; ayrı açık
+  rızayla; "Uygulama işlevi"), **Yaklaşık konum** (anonim hava bildirimi: 0,25° ızgaraya yuvarlanır, 24 saatte silinir;
+  "Uygulama işlevi"). Hepsi isteğe bağlı; hesap silinince gider.
+- **Kullanıcı içeriği politikası (UGC):** davetle girilen en çok 30 kişilik gruplar, herkese açık liste, akış ve sohbet
+  yok. Kurma/katılma ekranında topluluk kuralları bağlantısı (https://hesap.time.bumba.tr/topluluk-kurallari) ve "kurarak
+  ya da katılarak kabul edersiniz" cümlesi; adlarda süzgeç (bağlantı, e-posta, telefon, yasaklı sözcükler); her adda
+  Bildir, her üyede Engelle; üç bildirimde ad kendiliğinden gizlenir; her bildirim yöneticiye imzalı bağlantıyla e-posta
+  gider (gizle, yazanı topluluktan uzaklaştır); bildirimler en geç 24 saatte incelenir. Play Console › Uygulama içeriği
+  › İçerik derecelendirmesi anketinde "Kullanıcılar birbirleriyle etkileşebilir mi / içerik paylaşabilir mi" sorusu
+  **Evet** (grup ve görünen adlar); "Kullanıcılar konum paylaşır mı" **Hayır** (hava bildirimi anonim ve kimseye
+  gösterilmez, yalnız sayılar).
 - Veri aktarımı şifreli (HTTPS). Silme: uygulama silinince yerel veriler silinir; e-posta listesinden çıkış
-  e-postadaki bağlantıyla; hesap uygulamada Ayarlar › Hesap › Hesabı sil ile hemen silinir.
+  e-postadaki bağlantıyla; hesap uygulamada Ayarlar › Hesap › Hesabı sil ile, e-postadaki bağlantıyla onaylanınca
+  silinir (standart 5.21).
 - **Hesap silme adresi** (Play Console › Uygulama içeriği › Veri güvenliği › "Hesap silme" alanı; hesap açılabilen
   uygulamalarda zorunlu): https://time.bumba.tr/en/account-deletion/ (Türkçe: https://time.bumba.tr/hesap-silme/).
   Sayfa uygulamayı kurmadan silme yolunu da anlatır (bilgi@bumbagroup.com'a hesabın e-postasından yazmak).

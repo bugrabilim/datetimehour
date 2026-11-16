@@ -5,6 +5,7 @@ import { getMigrations } from "better-auth/db/migration";
 import { SCHEMA as CIRCLES } from "./circles.mjs";
 import { SCHEMA as GROUPS } from "./groups.mjs";
 import { SCHEMA as DELETION } from "./deletion.mjs";
+import { SCHEMA as MODERATION } from "./moderation.mjs";
 
 const OWN = [
   // Toplu istek ölçüleri (tek panel için; kişiye ait bir şey yok)
@@ -64,5 +65,5 @@ const OWN = [
 export async function migrate(options, pool) {
   const { runMigrations } = await getMigrations(options);
   await runMigrations();
-  for (const sql of [...OWN, ...CIRCLES, ...GROUPS, ...DELETION]) await pool.query(sql);
+  for (const sql of [...OWN, ...CIRCLES, ...GROUPS, ...DELETION, ...MODERATION]) await pool.query(sql);
 }

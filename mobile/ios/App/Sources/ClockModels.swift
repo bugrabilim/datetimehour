@@ -18,6 +18,19 @@ enum ClockModel: String, CaseIterable, Identifiable {
     var id: String { rawValue }
     var name: String { self == .dual ? L("dual.model") : L("stage.models.\(rawValue)") }
     var number: Int { (Self.allCases.firstIndex(of: self) ?? 0) + 1 }
+    /// Hava durumu gösteren model (WeatherKit ve Apple Hava Durumu işareti)
+    var showsWeather: Bool { rawValue.contains("wx") }
+
+    /// Tam ekranın kendi model seçimi (16 Kasım 2026, sahibin isteği: "tam ekranda varsayılan olarak hava durumlu model
+    /// gelmesin"): tam ekranda kaydırılan model `fs.model`'e yazılır, saat ekranının seçimini değiştirmez. Kayıt yoksa
+    /// saat ekranındaki model, o hava durumluysa klasik saat.
+    static let fullscreenKey = "fs.model"
+    static var fullscreenStart: ClockModel {
+        let d = UserDefaults.standard
+        if let raw = d.string(forKey: fullscreenKey), let m = ClockModel(rawValue: raw) { return m }
+        let home = ClockModel(rawValue: d.string(forKey: "clockModel") ?? "") ?? .classic
+        return home.showsWeather ? .classic : home
+    }
 }
 
 /// Bir modelin çizimi; verilen alana sığacak şekilde ölçeklenir (sahne ve tam ekran)

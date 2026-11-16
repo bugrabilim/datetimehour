@@ -1962,6 +1962,14 @@
     <string name="account_delConfirmIgnore">Si vous ne voulez pas supprimer, fermez simplement cette page ; rien n\'est supprimé et la demande s\'annule d\'elle-même après 7 jours.</string>
     <string name="account_delLinkBad">Ce lien n\'est pas valide, a déjà servi ou a expiré. Pour supprimer, recommencez la demande depuis votre page de compte.</string>
     <string name="account_delBadgesDone">Vos badges ont été supprimés.</string>
+    <string name="account_rulesTitle">Règles de la communauté</string>
+    <string name="account_rulesLead">Les cercles et les groupes sont de petites communautés que l’on rejoint sur invitation. Aucune tolérance n’est accordée aux contenus inappropriés ni aux utilisateurs qui harcèlent les autres.</string>
+    <string name="account_rules1">N’utilisez pas d’insultes, de discours haineux, de harcèlement, de contenus sexuels, violents ou illégaux, de publicité ni d’informations personnelles (téléphone, adresse, e-mail, liens) dans les noms de cercle, de groupe, de ville ou d’affichage.</string>
+    <string name="account_rules2">Ne dérangez personne ; n’envoyez une suggestion d’alarme qu’à quelqu’un dont vous savez qu’il la souhaite.</string>
+    <string name="account_rules3">Si vous voyez un nom inapproprié, touchez « Signaler » ; masquez un membre qui vous dérange avec « Bloquer ».</string>
+    <string name="account_rules4">Les signalements sont examinés sous 24 heures. Le contenu qui enfreint les règles est supprimé ; son auteur est retiré de tous les cercles et groupes et ne peut plus en rejoindre.</string>
+    <string name="account_rulesAgree">En créant ou en rejoignant un cercle ou un groupe, vous acceptez ces règles.</string>
+    <string name="account_banned">Vous ne pouvez pas rejoindre de cercles ni de groupes, car vous avez enfreint les règles de la communauté. Si vous pensez qu’il s’agit d’une erreur, écrivez-nous via « Signaler un problème ».</string>
     <string name="common_done">OK</string>
     <string name="notify_heading">Notifications des heures de prière</string>
     <string name="notify_enable">M’avertir aux heures de prière</string>

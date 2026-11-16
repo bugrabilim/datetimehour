@@ -70,10 +70,26 @@ enum class ClockModel(val id: String) {
     val title: String get() = if (this == DUAL) L("dual.model") else L("stage.models.$id")
     val number: Int get() = ordinal + 1
     val horizontal: Boolean get() = id.startsWith("h-")
+    /** Hava durumu gösteren model */
+    val showsWeather: Boolean get() = id.contains("wx")
 
     companion object {
         val count: Int get() = entries.size
         fun at(i: Int): ClockModel = entries[i.coerceIn(0, entries.size - 1)]
+
+        /**
+         * Tam ekranın kendi model seçimi (16 Kasım 2026, sahibin isteği: "tam ekranda varsayılan olarak hava durumlu
+         * model gelmesin"): tam ekranda kaydırılan model `fs.model`'e (kimlik, iOS ile aynı) yazılır, saat ekranının
+         * seçimini değiştirmez. Kayıt yoksa saat ekranındaki model, o hava durumluysa klasik saat.
+         */
+        const val FULLSCREEN_KEY = "fs.model"
+        fun fullscreenStart(): Int {
+            val saved = Prefs.store.getString(FULLSCREEN_KEY, null)
+            entries.firstOrNull { it.id == saved }?.let { return it.ordinal }
+            val home = at(Prefs.clockModel)
+            return if (home.showsWeather) CLASSIC.ordinal else home.ordinal
+        }
+        fun saveFullscreen(i: Int) { Prefs.store.edit().putString(FULLSCREEN_KEY, at(i).id).apply() }
     }
 }
 

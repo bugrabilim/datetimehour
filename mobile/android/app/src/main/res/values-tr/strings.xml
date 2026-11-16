@@ -1962,6 +1962,14 @@
     <string name="account_delConfirmIgnore">Silmek istemiyorsanız bu sayfayı kapatın; hiçbir şey silinmez ve istek 7 gün sonra kendiliğinden iptal olur.</string>
     <string name="account_delLinkBad">Bu bağlantı geçersiz, kullanılmış ya da süresi dolmuş. Silmek istiyorsanız isteği hesap sayfanızdan yeniden başlatın.</string>
     <string name="account_delBadgesDone">Rozetleriniz silindi.</string>
+    <string name="account_rulesTitle">Topluluk kuralları</string>
+    <string name="account_rulesLead">Halkalar ve gruplar davetle girilen küçük topluluklardır. Uygunsuz içeriğe ve başkalarını rahatsız eden kullanıcılara hoşgörü gösterilmez.</string>
+    <string name="account_rules1">Halka, grup, şehir ve görünen adlarda hakaret, nefret söylemi, taciz, cinsel ya da şiddet içeren veya yasa dışı içerik, reklam ve kişisel bilgi (telefon, adres, e-posta, bağlantı) kullanmayın.</string>
+    <string name="account_rules2">Kimseyi rahatsız etmeyin; alarm önerisini yalnız isteyeceğini bildiğiniz kişiye gönderin.</string>
+    <string name="account_rules3">Uygunsuz bir ad görürseniz “Bildir”e dokunun; sizi rahatsız eden üyeyi “Engelle” ile gizleyin.</string>
+    <string name="account_rules4">Bildirimler en geç 24 saat içinde incelenir. Kuralları çiğneyen içerik kaldırılır; yazan kişi bütün halka ve gruplardan çıkarılır ve yenisine katılamaz.</string>
+    <string name="account_rulesAgree">Halka ya da grup kurarak veya katılarak bu kuralları kabul etmiş olursunuz.</string>
+    <string name="account_banned">Topluluk kurallarını çiğnediğiniz için halka ve gruplara katılamazsınız. Bir yanlışlık olduğunu düşünüyorsanız “Hata bildir”den bize yazın.</string>
     <string name="common_done">Bitti</string>
     <string name="notify_heading">Vakit bildirimleri</string>
     <string name="notify_enable">Vakitlerde bildirim al</string>

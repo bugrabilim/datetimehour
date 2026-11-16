@@ -1962,6 +1962,14 @@
     <string name="account_delConfirmIgnore">Wenn Sie nicht löschen möchten, schließen Sie diese Seite einfach; nichts wird gelöscht, und die Anfrage verfällt nach 7 Tagen von selbst.</string>
     <string name="account_delLinkBad">Dieser Link ist ungültig, bereits benutzt oder abgelaufen. Wenn Sie löschen möchten, starten Sie die Anfrage erneut auf Ihrer Kontoseite.</string>
     <string name="account_delBadgesDone">Ihre Abzeichen wurden gelöscht.</string>
+    <string name="account_rulesTitle">Gemeinschaftsregeln</string>
+    <string name="account_rulesLead">Kreise und Gruppen sind kleine Gemeinschaften, denen Sie per Einladung beitreten. Anstößige Inhalte und Nutzer, die andere belästigen, werden nicht geduldet.</string>
+    <string name="account_rules1">Verwenden Sie in Kreis-, Gruppen-, Stadt- und Anzeigenamen keine Beleidigungen, Hassrede, Belästigung, sexuellen, gewalttätigen oder rechtswidrigen Inhalte, keine Werbung und keine persönlichen Daten (Telefon, Adresse, E-Mail, Links).</string>
+    <string name="account_rules2">Belästigen Sie niemanden; senden Sie einen Weckervorschlag nur an jemanden, von dem Sie wissen, dass er ihn möchte.</string>
+    <string name="account_rules3">Wenn Sie einen anstößigen Namen sehen, tippen Sie auf „Melden“; ein Mitglied, das Sie stört, blenden Sie mit „Blockieren“ aus.</string>
+    <string name="account_rules4">Meldungen werden innerhalb von 24 Stunden geprüft. Inhalte, die gegen die Regeln verstoßen, werden entfernt; die Person wird aus allen Kreisen und Gruppen entfernt und kann keinen neuen beitreten.</string>
+    <string name="account_rulesAgree">Wenn Sie einen Kreis oder eine Gruppe gründen oder ihr beitreten, stimmen Sie diesen Regeln zu.</string>
+    <string name="account_banned">Sie können keinen Kreisen oder Gruppen beitreten, weil Sie gegen die Gemeinschaftsregeln verstoßen haben. Wenn Sie das für einen Irrtum halten, schreiben Sie uns über „Problem melden“.</string>
     <string name="common_done">Fertig</string>
     <string name="notify_heading">Benachrichtigungen zu Gebetszeiten</string>
     <string name="notify_enable">Bei Gebetszeiten benachrichtigen</string>

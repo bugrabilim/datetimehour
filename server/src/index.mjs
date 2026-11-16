@@ -26,6 +26,7 @@ import { createConsent } from "./consent.mjs";
 import { validateFeedback, feedbackMail } from "./feedback.mjs";
 import { createCircles } from "./circles.mjs";
 import { createGroups } from "./groups.mjs";
+import { createModeration, modToken } from "./moderation.mjs";
 import { createDeletion } from "./deletion.mjs";
 
 const SEC_HEADERS = {
@@ -84,8 +85,11 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
   const authHandler = toNodeHandler(auth);
   const accounts = createAccounts({ pool, auth });
   const records = createRecords(pool);
-  const circles = createCircles({ pool, mailer, adminEmail: cfg.adminEmail });
-  const groups = createGroups({ pool, mailer, adminEmail: cfg.adminEmail });
+  // Bildirim e-postasındaki yönetici bağlantısı (moderation.mjs; Apple 1.2: içeriği kaldırma, yazanı uzaklaştırma)
+  const modLink = (spec) => `${cfg.publicUrl}/moderasyon?k=${modToken(cfg.secret, spec)}`;
+  const circles = createCircles({ pool, mailer, adminEmail: cfg.adminEmail, modLink });
+  const groups = createGroups({ pool, mailer, adminEmail: cfg.adminEmail, modLink });
+  const moderation = createModeration({ pool, circles, groups });
   accounts.hooks.beforeGone = async (userId) => { await circles.onUserGone(userId); await groups.onUserGone(userId); };
   const limit = createLimiter(pool, cfg.rateLimit);
   const linked = linkedRoutes({ cfg, auth, accounts, mailer, json, readJson });
@@ -102,7 +106,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     await mailer.send("deleted", user.email, user.lang, {}).catch(() => {});
   }
   const deletion = createDeletion({ pool, mailer, publicUrl: cfg.publicUrl, perform: performDeletion, normLang });
-  const web = webRoutes({ cfg, closed: false, accounts, center, consent, deletion });
+  const web = webRoutes({ cfg, closed: false, accounts, center, consent, deletion, moderation });
   const panel = panelRoutes({ cfg, pool, accounts, records, mailer, metrics, json, readJson });
   const ctxP = auth.$context;
 
