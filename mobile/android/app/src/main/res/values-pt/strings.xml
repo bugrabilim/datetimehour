@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">A previsão do dia para o local escolhido, toda manhã.</string>
     <string name="notify_cat_weather_time">Horário</string>
     <string name="notify_cat_hourly">Horas cheias</string>
-    <string name="notify_cat_hourly_note">Uma notificação curta a cada hora cheia entre os horários que você escolher.</string>
+    <string name="notify_cat_hourly_note">Uma notificação curta nos horários e dias que você escolher; também pode falar a hora e o tempo.</string>
     <string name="notify_cat_hourly_from">De</string>
     <string name="notify_cat_hourly_to">Até</string>
     <string name="notify_cat_dst">Mudança de horário de verão</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">A luz do dia acompanha o sol no lugar escolhido: tons de amanhecer, manhã, tarde, entardecer ou noite.</string>
     <string name="common_how">Como funciona</string>
     <string name="live_weather_toggle">Mostrar na tela bloqueada e na Dynamic Island</string>
-    <string name="live_weather_note">Aparece ao lado da câmera e na tela bloqueada; desative com × ou na Central de Controle. O iOS o remove após 8 horas; ao abrir o app, ele volta.</string>
+    <string name="live_weather_note">Aparece ao lado da câmera e na tela bloqueada; desative aqui ou na Central de Controle. O iOS o remove após 8 horas; ao abrir o app, ele volta.</string>
     <string name="live_weather_hide">Ocultar o clima</string>
     <string name="live_weather_control">Clima na tela bloqueada</string>
     <string name="live_weather_toggleAndroid">Mostrar na barra de status e na tela de bloqueio</string>
-    <string name="live_weather_noteAndroid">A temperatura aparece na barra de status e na tela de bloqueio; desative com Fechar na notificação, nas Configurações rápidas ou aqui. Atualiza a cada hora.</string>
+    <string name="live_weather_noteAndroid">A temperatura aparece na barra de status e na tela de bloqueio; desative nas Configurações rápidas ou aqui. Atualiza a cada hora.</string>
     <string name="about_credits">Ícones: Microsoft Fluent Emoji e Phosphor Icons (licença MIT). Fontes: Literata e Amiri (SIL Open Font License).</string>
     <string name="about_license">Licença do Fluent Emoji</string>
     <string name="about_licensePhosphor">Licença do Phosphor Icons</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">Nenhum aviso desta área na última hora.</string>
     <string name="wxr_wait">Você pode avisar uma vez a cada 10 minutos.</string>
     <string name="group_a_once">Uma vez</string>
+    <string name="weather_cards">Organizar cartões</string>
+    <string name="weather_cardsHint">Você também pode tocar e segurar um cartão na tela do tempo e arrastá-lo para outro lugar.</string>
+    <string name="weather_card_chart">Gráfico por hora</string>
+    <string name="weather_card_sun">Arco do Sol e da Lua</string>
+    <string name="notify_cat_hourly_every">Frequência</string>
+    <string name="notify_cat_hourly_every_60">A cada hora</string>
+    <string name="notify_cat_hourly_every_30">A cada 30 minutos</string>
+    <string name="notify_cat_hourly_every_15">A cada 15 minutos</string>
+    <string name="notify_cat_hourly_sound">Som</string>
+    <string name="notify_cat_hourly_sound_system">Som de notificação</string>
+    <string name="notify_cat_hourly_sound_voice">Falar a hora</string>
+    <string name="notify_cat_hourly_sound_weather">Falar a hora e o tempo</string>
+    <string name="notify_cat_hourly_speakNote">Falado com a voz do telefone após um toque curto; não é ouvido com o telefone no silencioso. O tempo é a previsão do Apple Tempo para aquela hora.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">Falado com a voz do telefone; nada é falado com o telefone no silencioso ou vibrando. O tempo é a previsão para aquela hora (Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s, %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">Hora e Data</string>
 </resources>

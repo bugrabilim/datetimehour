@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">每天早上所选地点当天的预报。</string>
     <string name="notify_cat_weather_time">时间</string>
     <string name="notify_cat_hourly">整点</string>
-    <string name="notify_cat_hourly_note">在您选择的时段内，每逢整点发一条简短通知。</string>
+    <string name="notify_cat_hourly_note">在您选择的时间和日期发出简短通知，也可以播报时间和天气。</string>
     <string name="notify_cat_hourly_from">从</string>
     <string name="notify_cat_hourly_to">到</string>
     <string name="notify_cat_dst">夏令时切换</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">日光随所选地点的太阳变化：黎明、上午、下午、傍晚或夜晚的色调。</string>
     <string name="common_how">工作原理</string>
     <string name="live_weather_toggle">在锁定屏幕和灵动岛显示</string>
-    <string name="live_weather_note">显示在摄像头旁和锁定屏幕上；可用 × 或在控制中心关闭。iOS 会在 8 小时后移除，打开应用即可恢复。</string>
+    <string name="live_weather_note">显示在摄像头旁和锁定屏幕上；可在此处或控制中心关闭。iOS 会在 8 小时后移除，打开应用即可恢复。</string>
     <string name="live_weather_hide">关闭天气</string>
     <string name="live_weather_control">锁定屏幕天气</string>
     <string name="live_weather_toggleAndroid">在状态栏和锁定屏幕显示</string>
-    <string name="live_weather_noteAndroid">气温显示在状态栏和锁定屏幕上；可用通知中的“关闭”、快捷设置或在此处关闭。每小时更新一次。</string>
+    <string name="live_weather_noteAndroid">气温显示在状态栏和锁定屏幕上；可在快捷设置或此处关闭。每小时更新一次。</string>
     <string name="about_credits">图标：Microsoft Fluent Emoji 和 Phosphor Icons（MIT 许可证）。字体：Literata 和 Amiri（SIL Open Font License）。</string>
     <string name="about_license">Fluent Emoji 许可证</string>
     <string name="about_licensePhosphor">Phosphor Icons 许可证</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">过去一小时此区域没有报告。</string>
     <string name="wxr_wait">每 10 分钟可报告一次。</string>
     <string name="group_a_once">仅一次</string>
+    <string name="weather_cards">调整卡片顺序</string>
+    <string name="weather_cardsHint">也可以在天气页面长按卡片并拖动到新位置。</string>
+    <string name="weather_card_chart">逐小时图表</string>
+    <string name="weather_card_sun">日月弧线</string>
+    <string name="notify_cat_hourly_every">频率</string>
+    <string name="notify_cat_hourly_every_60">每小时</string>
+    <string name="notify_cat_hourly_every_30">每 30 分钟</string>
+    <string name="notify_cat_hourly_every_15">每 15 分钟</string>
+    <string name="notify_cat_hourly_sound">声音</string>
+    <string name="notify_cat_hourly_sound_system">通知提示音</string>
+    <string name="notify_cat_hourly_sound_voice">播报时间</string>
+    <string name="notify_cat_hourly_sound_weather">播报时间和天气</string>
+    <string name="notify_cat_hourly_speakNote">短促提示音后用手机语音播报；静音时听不到。天气为 Apple 天气对该时刻的预报。</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">用手机语音播报；静音或振动时不播报。天气为该时刻的预报（Open-Meteo）。</string>
+    <string name="notify_n_hourlyWeather">%1$s，%2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s。%2$s。</string>
     <string name="app_name">时间与日期</string>
 </resources>

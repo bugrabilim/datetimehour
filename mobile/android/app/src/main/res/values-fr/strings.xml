@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">Les prévisions du jour pour le lieu choisi, chaque matin.</string>
     <string name="notify_cat_weather_time">Heure</string>
     <string name="notify_cat_hourly">Chaque heure</string>
-    <string name="notify_cat_hourly_note">Une courte notification à chaque heure pile, entre les heures choisies.</string>
+    <string name="notify_cat_hourly_note">Une courte notification aux heures et jours choisis ; elle peut aussi annoncer l\'heure et la météo.</string>
     <string name="notify_cat_hourly_from">De</string>
     <string name="notify_cat_hourly_to">À</string>
     <string name="notify_cat_dst">Changement d’heure</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">La lumière du jour suit le soleil à l\'endroit choisi : tons d\'aube, de matin, d\'après-midi, de soir ou de nuit.</string>
     <string name="common_how">Comment ça marche ?</string>
     <string name="live_weather_toggle">Afficher sur l\'écran verrouillé et dans la Dynamic Island</string>
-    <string name="live_weather_note">S\'affiche à côté de la caméra et sur l\'écran verrouillé ; désactivez-la avec × ou depuis le Centre de contrôle. iOS la retire après 8 heures ; ouvrir l\'app la fait revenir.</string>
+    <string name="live_weather_note">S\'affiche à côté de la caméra et sur l\'écran verrouillé ; désactivez-la ici ou depuis le Centre de contrôle. iOS la retire après 8 heures ; ouvrir l\'app la fait revenir.</string>
     <string name="live_weather_hide">Masquer la météo</string>
     <string name="live_weather_control">Météo sur l\'écran verrouillé</string>
     <string name="live_weather_toggleAndroid">Afficher dans la barre d\'état et sur l\'écran de verrouillage</string>
-    <string name="live_weather_noteAndroid">La température s\'affiche dans la barre d\'état et sur l\'écran de verrouillage ; désactivez-la avec Fermer dans la notification, depuis les Réglages rapides ou ici. Actualisée toutes les heures.</string>
+    <string name="live_weather_noteAndroid">La température s\'affiche dans la barre d\'état et sur l\'écran de verrouillage ; désactivez-la depuis les Réglages rapides ou ici. Actualisée toutes les heures.</string>
     <string name="about_credits">Icônes : Microsoft Fluent Emoji et Phosphor Icons (licence MIT). Polices : Literata et Amiri (SIL Open Font License).</string>
     <string name="about_license">Licence de Fluent Emoji</string>
     <string name="about_licensePhosphor">Licence de Phosphor Icons</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">Aucun signalement dans cette zone au cours de la dernière heure.</string>
     <string name="wxr_wait">Vous pouvez signaler une fois toutes les 10 minutes.</string>
     <string name="group_a_once">Une fois</string>
+    <string name="weather_cards">Réorganiser les cartes</string>
+    <string name="weather_cardsHint">Vous pouvez aussi maintenir une carte de l\'écran météo et la faire glisser à un autre endroit.</string>
+    <string name="weather_card_chart">Graphique horaire</string>
+    <string name="weather_card_sun">Course du Soleil et de la Lune</string>
+    <string name="notify_cat_hourly_every">Fréquence</string>
+    <string name="notify_cat_hourly_every_60">Toutes les heures</string>
+    <string name="notify_cat_hourly_every_30">Toutes les 30 minutes</string>
+    <string name="notify_cat_hourly_every_15">Toutes les 15 minutes</string>
+    <string name="notify_cat_hourly_sound">Son</string>
+    <string name="notify_cat_hourly_sound_system">Son de notification</string>
+    <string name="notify_cat_hourly_sound_voice">Annoncer l\'heure</string>
+    <string name="notify_cat_hourly_sound_weather">Annoncer l\'heure et la météo</string>
+    <string name="notify_cat_hourly_speakNote">Annoncé avec la voix du téléphone après un court carillon ; inaudible en mode silencieux. La météo est la prévision d\'Apple Météo pour cette heure.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">Annoncé avec la voix du téléphone ; rien n\'est annoncé en mode silencieux ou vibreur. La météo est la prévision pour cette heure (Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s, %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

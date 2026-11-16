@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">Prakiraan hari itu untuk tempat pilihan setiap pagi.</string>
     <string name="notify_cat_weather_time">Waktu</string>
     <string name="notify_cat_hourly">Setiap jam</string>
-    <string name="notify_cat_hourly_note">Notifikasi singkat setiap jam tepat di antara jam yang Anda pilih.</string>
+    <string name="notify_cat_hourly_note">Notifikasi singkat pada waktu dan hari yang Anda pilih; juga bisa mengucapkan waktu dan cuaca.</string>
     <string name="notify_cat_hourly_from">Dari</string>
     <string name="notify_cat_hourly_to">Sampai</string>
     <string name="notify_cat_dst">Perubahan waktu musim panas</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">Cahaya siang mengikuti matahari di tempat pilihan Anda: nuansa fajar, pagi, sore, petang, atau malam.</string>
     <string name="common_how">Cara kerjanya</string>
     <string name="live_weather_toggle">Tampilkan di Layar Terkunci dan Dynamic Island</string>
-    <string name="live_weather_note">Tampil di samping kamera dan di Layar Terkunci; matikan dengan × atau dari Pusat Kontrol. iOS menghapusnya setelah 8 jam; membuka aplikasi memunculkannya lagi.</string>
+    <string name="live_weather_note">Tampil di samping kamera dan di Layar Terkunci; matikan di sini atau dari Pusat Kontrol. iOS menghapusnya setelah 8 jam; membuka aplikasi memunculkannya lagi.</string>
     <string name="live_weather_hide">Matikan cuaca</string>
     <string name="live_weather_control">Cuaca di Layar Terkunci</string>
     <string name="live_weather_toggleAndroid">Tampilkan di bilah status dan layar kunci</string>
-    <string name="live_weather_noteAndroid">Suhu tampil di bilah status dan layar kunci; matikan dengan Tutup di notifikasi, dari Setelan Cepat, atau di sini. Diperbarui tiap jam.</string>
+    <string name="live_weather_noteAndroid">Suhu tampil di bilah status dan layar kunci; matikan dari Setelan Cepat atau di sini. Diperbarui tiap jam.</string>
     <string name="about_credits">Ikon: Microsoft Fluent Emoji dan Phosphor Icons (Lisensi MIT). Fon: Literata dan Amiri (SIL Open Font License).</string>
     <string name="about_license">Lisensi Fluent Emoji</string>
     <string name="about_licensePhosphor">Lisensi Phosphor Icons</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">Tidak ada laporan dari area ini dalam satu jam terakhir.</string>
     <string name="wxr_wait">Anda bisa melapor sekali setiap 10 menit.</string>
     <string name="group_a_once">Sekali</string>
+    <string name="weather_cards">Urutkan kartu</string>
+    <string name="weather_cardsHint">Anda juga bisa menekan lama sebuah kartu di layar cuaca dan menyeretnya ke tempat baru.</string>
+    <string name="weather_card_chart">Grafik per jam</string>
+    <string name="weather_card_sun">Busur Matahari dan Bulan</string>
+    <string name="notify_cat_hourly_every">Frekuensi</string>
+    <string name="notify_cat_hourly_every_60">Setiap jam</string>
+    <string name="notify_cat_hourly_every_30">Setiap 30 menit</string>
+    <string name="notify_cat_hourly_every_15">Setiap 15 menit</string>
+    <string name="notify_cat_hourly_sound">Suara</string>
+    <string name="notify_cat_hourly_sound_system">Suara notifikasi</string>
+    <string name="notify_cat_hourly_sound_voice">Ucapkan waktu</string>
+    <string name="notify_cat_hourly_sound_weather">Ucapkan waktu dan cuaca</string>
+    <string name="notify_cat_hourly_speakNote">Diucapkan dengan suara ponsel setelah bunyi singkat; tidak terdengar saat ponsel dalam mode senyap. Cuaca adalah prakiraan Apple Weather untuk jam tersebut.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">Diucapkan dengan suara ponsel; tidak ada yang diucapkan saat ponsel senyap atau bergetar. Cuaca adalah prakiraan untuk jam tersebut (Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s, %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

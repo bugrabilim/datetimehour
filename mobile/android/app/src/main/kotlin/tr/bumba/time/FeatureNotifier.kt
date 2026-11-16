@@ -80,6 +80,27 @@ object FeaturePrefs {
     var hourlyTo: Int
         get() = sp.getInt("notify.hourlyTo", 21)
         set(v) = sp.edit().putInt("notify.hourlyTo", v).apply()
+
+    /** Saat başı ve sesli saat (16 Kasım 2026, sahibin isteği; iOS'taki HourlyChime ile aynı anahtarlar): sıklık 60/30/15 dk,
+     *  günler (ISO 1 pazartesi … 7 pazar; boşsa her gün), ses: system (bildirim sesi), voice (saati söyle), weather (saati ve havayı) */
+    val HOURLY_EVERY = listOf(60, 30, 15)
+    val HOURLY_SOUNDS = listOf("system", "voice", "weather")
+    var hourlyEvery: Int
+        get() = sp.getInt("notify.hourly.every", 60).takeIf { it in HOURLY_EVERY } ?: 60
+        set(v) = sp.edit().putInt("notify.hourly.every", v).apply()
+    var hourlyDays: Set<Int>
+        get() = (sp.getString("notify.hourly.days", "") ?: "").split(",").mapNotNull { it.toIntOrNull() }.filter { it in 1..7 }.toSet()
+            .ifEmpty { (1..7).toSet() }
+        set(v) = sp.edit().putString("notify.hourly.days", if (v.size == 7 || v.isEmpty()) "" else v.sorted().joinToString(",")).apply()
+    var hourlySound: String
+        get() = sp.getString("notify.hourly.sound", "system")?.takeIf { it in HOURLY_SOUNDS } ?: "system"
+        set(v) = sp.edit().putString("notify.hourly.sound", v).apply()
+
+    /** Gün içindeki anlar (saat, dakika): başlangıç saatinden bitiş saatine, bitiş saatinde yalnız tam saat (iOS ile aynı) */
+    fun hourlySlots(from: Int = hourlyFrom, to: Int = hourlyTo, every: Int = hourlyEvery): List<Pair<Int, Int>> {
+        val hours = if (from <= to) (from..to).toList() else (from..23).toList() + (0..to).toList()
+        return hours.flatMap { h -> (0 until 60 step every).filter { m -> !(h == to && m > 0) }.map { m -> h to m } }
+    }
 }
 
 object FeatureNotifier {
@@ -89,7 +110,8 @@ object FeatureNotifier {
     private const val BASE = 2000
     private const val ACTION_FIRE = "tr.bumba.time.FEATURE_ALERT"
 
-    data class Planned(val id: String, val at: Instant, val title: String, val body: String, val tab: Tab)
+    /** `speak`: bildirim sessiz gelir, metin telefonun konuşma sesiyle söylenir (sesli saat) */
+    data class Planned(val id: String, val at: Instant, val title: String, val body: String, val tab: Tab, val speak: String? = null)
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private val generation = AtomicInteger(0)
@@ -125,7 +147,7 @@ object FeatureNotifier {
             val pi = PendingIntent.getBroadcast(
                 context, BASE + i,
                 fireIntent(context).putExtra("id", p.id).putExtra("title", p.title).putExtra("body", p.body)
-                    .putExtra("tab", p.tab.ordinal),
+                    .putExtra("tab", p.tab.ordinal).apply { p.speak?.let { putExtra("speak", it) } },
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
             )
             val t = p.at.toEpochMilli()
@@ -145,7 +167,7 @@ object FeatureNotifier {
         if (FeaturePrefs.isOn(NotifyFeature.MOON)) out += moon(context, place, now)
         if (FeaturePrefs.isOn(NotifyFeature.SUN)) out += sun(place, now, days)
         if (FeaturePrefs.isOn(NotifyFeature.DST)) out += dst(now) + worldDst(now)
-        if (FeaturePrefs.isOn(NotifyFeature.HOURLY)) out += hourly(now)
+        if (FeaturePrefs.isOn(NotifyFeature.HOURLY)) out += hourly(now, place)
         if (FeaturePrefs.isOn(NotifyFeature.WEATHER)) out += weather(context, place, now)
         out += CountdownItem.reminders(now) // kişisel geri sayımların hatırlatmaları (her biri kendi ayarıyla)
         if (FeaturePrefs.isOn(NotifyFeature.BEDTIME)) out += SleepPlan.reminders(now, days) // uyku planı kuruluysa
@@ -389,18 +411,31 @@ object FeatureNotifier {
         }
     }
 
-    /** Saat başı: seçili saatler arasında, önümüzdeki iki gün (her bildirimde plan ileri taşınır) */
-    private fun hourly(now: Instant): List<Planned> {
+    /** Saat başı ve sesli saat: seçili saatler ve günlerde, seçilen sıklıkta, önümüzdeki iki gün (her bildirimde plan ileri
+     *  taşınır). Ses "voice"/"weather" ise bildirim sessiz, alıcı saati (ve o saatin havasını) telefonun sesiyle söyler. */
+    internal suspend fun hourly(now: Instant, place: AppPlace): List<Planned> {
         val zone = ZoneId.systemDefault()
-        val from = FeaturePrefs.hourlyFrom
-        val to = FeaturePrefs.hourlyTo
-        val hours = if (from <= to) (from..to).toList() else (from..23).toList() + (0..to).toList()
+        val days = FeaturePrefs.hourlyDays
+        val mode = FeaturePrefs.hourlySound
+        val w = if (mode == "weather") withTimeoutOrNull(6000) { WeatherCache.weather(place.lat, place.lon) } else null
         val today = now.atZone(zone).toLocalDate()
+        val slots = FeaturePrefs.hourlySlots()
         return (0..1).flatMap { d ->
-            hours.map { h ->
-                val at = today.plusDays(d.toLong()).atTime(h, 0).atZone(zone)
+            val day = today.plusDays(d.toLong())
+            if (day.dayOfWeek.value !in days) emptyList()
+            else slots.map { (h, m) ->
+                val at = day.atTime(h, m).atZone(zone)
                 val label = listOf(Fmt.time(at), Fmt.ampm(at)).filter { it.isNotEmpty() }.joinToString(" ")
-                Planned("hourly-${at.toEpochSecond()}", at.toInstant(), T("notify.n.hourly", label), "", NotifyFeature.HOURLY.tab)
+                val time = T("alarm.speakText", label)
+                val hour = w?.hourly?.lastOrNull { !it.at.isAfter(at.toInstant().plusSeconds(1800)) }
+                val line = hour?.let { T("notify.n.hourlyWeather", L("weather.codes.${WeatherCode.of(it.code).key}"), Units.temp(it.temp)) }
+                Planned("hourly-${at.toEpochSecond()}", at.toInstant(), T("notify.n.hourly", label),
+                    line?.let { "$it\nOpen-Meteo.com" } ?: "", NotifyFeature.HOURLY.tab,
+                    speak = when (mode) {
+                        "voice" -> time
+                        "weather" -> line?.let { T("notify.spoken.hourlyWeather", time, it) } ?: time
+                        else -> null
+                    })
             }
         }
     }
@@ -443,7 +478,7 @@ object FeatureNotifier {
     }
 
     /** Bildirimi gösterir; dokununca ilgili sekme açılır */
-    fun deliver(context: Context, id: String, title: String, body: String, tab: Int) {
+    fun deliver(context: Context, id: String, title: String, body: String, tab: Int, silent: Boolean = false) {
         if (!PrayerNotifier.notificationsAllowed(context)) return
         // Fotoğraf ışığı bildirimi kendi ekranını açar (Tümü › Fotoğraf ışığı)
         val photo = id.startsWith("photo-")
@@ -462,6 +497,7 @@ object FeatureNotifier {
             .setAutoCancel(true)
             .setContentIntent(open)
             .setGroup(id.substringBefore('-'))
+            .setSilent(silent)
             .build()
         runCatching { NotificationManagerCompat.from(context).notify("feature", id.hashCode(), n) }
     }
@@ -479,15 +515,47 @@ class FeatureAlarmReceiver : BroadcastReceiver() {
             "sunrise", "sunset" -> NotifyFeature.SUN
             else -> null
         }
-        if (id != null && title != null && (feature == null || FeaturePrefs.isOn(feature))) {
-            FeatureNotifier.deliver(context, id, title, intent.getStringExtra("body").orEmpty(), intent.getIntExtra("tab", 0))
+        val speak = intent.getStringExtra("speak")
+        val show = id != null && title != null && (feature == null || FeaturePrefs.isOn(feature))
+        if (show) {
+            FeatureNotifier.deliver(context, id!!, title!!, intent.getStringExtra("body").orEmpty(), intent.getIntExtra("tab", 0),
+                silent = speak != null)
         }
-        // Alıcının süresi sınırlı: plan bitmese de en geç 9 sn'de kapanır (sonraki açılışta yeniden kurulur)
+        // Alıcının süresi sınırlı: plan ve konuşma bitmese de en geç 9 sn'de kapanır (sonraki açılışta yeniden kurulur)
         val pending = goAsync()
+        val left = java.util.concurrent.atomic.AtomicInteger(if (show && speak != null) 2 else 1)
         val finished = java.util.concurrent.atomic.AtomicBoolean(false)
         val finish = { if (finished.compareAndSet(false, true)) pending.finish() }
+        val oneDone = { if (left.decrementAndGet() <= 0) finish() }
         android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({ finish() }, 9000)
-        FeatureNotifier.reschedule(context) { finish() }
+        if (show && speak != null) HourlySpeech.say(context, speak) { oneDone() }
+        FeatureNotifier.reschedule(context) { oneDone() }
+    }
+}
+
+/** Sesli saat: metni telefonun konuşma sesiyle bildirim ses düzeyinde söyler; telefon sessiz ya da titreşimdeyken söylemez */
+object HourlySpeech {
+    fun say(context: Context, text: String, done: () -> Unit) {
+        val app = context.applicationContext
+        val audio = app.getSystemService(android.media.AudioManager::class.java)
+        if (audio == null || audio.ringerMode != android.media.AudioManager.RINGER_MODE_NORMAL) { done(); return }
+        val tts = arrayOfNulls<android.speech.tts.TextToSpeech>(1)
+        val ended = java.util.concurrent.atomic.AtomicBoolean(false)
+        val end = { if (ended.compareAndSet(false, true)) { tts[0]?.shutdown(); done() } }
+        tts[0] = android.speech.tts.TextToSpeech(app) { status ->
+            val t = tts[0]
+            if (status != android.speech.tts.TextToSpeech.SUCCESS || t == null) { end(); return@TextToSpeech }
+            t.language = Strings.locale
+            t.setAudioAttributes(android.media.AudioAttributes.Builder()
+                .setUsage(android.media.AudioAttributes.USAGE_NOTIFICATION)
+                .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SPEECH).build())
+            t.setOnUtteranceProgressListener(object : android.speech.tts.UtteranceProgressListener() {
+                override fun onStart(utteranceId: String?) {}
+                override fun onDone(utteranceId: String?) { end() }
+                @Deprecated("Deprecated in Java") override fun onError(utteranceId: String?) { end() }
+            })
+            if (t.speak(text, android.speech.tts.TextToSpeech.QUEUE_FLUSH, null, "hourly") != android.speech.tts.TextToSpeech.SUCCESS) end()
+        }
     }
 }
 

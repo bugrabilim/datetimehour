@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">توقعات اليوم للمكان المختار كل صباح.</string>
     <string name="notify_cat_weather_time">الوقت</string>
     <string name="notify_cat_hourly">كل ساعة</string>
-    <string name="notify_cat_hourly_note">إشعار قصير عند بداية كل ساعة بين الساعتين اللتين تختارهما.</string>
+    <string name="notify_cat_hourly_note">إشعار قصير في الأوقات والأيام التي تختارها، ويمكنه أيضًا نطق الوقت والطقس.</string>
     <string name="notify_cat_hourly_from">من</string>
     <string name="notify_cat_hourly_to">إلى</string>
     <string name="notify_cat_dst">تغيير التوقيت الصيفي</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">يتبع ضوء النهار الشمس في المكان المختار: ألوان الفجر أو الصباح أو العصر أو المساء أو الليل.</string>
     <string name="common_how">كيف يعمل؟</string>
     <string name="live_weather_toggle">عرض على شاشة القفل وفي Dynamic Island</string>
-    <string name="live_weather_note">تظهر بجانب الكاميرا وعلى شاشة القفل؛ أوقفها بـ × أو من مركز التحكم. يزيلها iOS بعد 8 ساعات، وتعود عند فتح التطبيق.</string>
+    <string name="live_weather_note">تظهر بجانب الكاميرا وعلى شاشة القفل؛ أوقفها من هنا أو من مركز التحكم. يزيلها iOS بعد 8 ساعات، وتعود عند فتح التطبيق.</string>
     <string name="live_weather_hide">إيقاف الطقس</string>
     <string name="live_weather_control">الطقس على شاشة القفل</string>
     <string name="live_weather_toggleAndroid">عرض في شريط الحالة وعلى شاشة القفل</string>
-    <string name="live_weather_noteAndroid">تظهر درجة الحرارة في شريط الحالة وعلى شاشة القفل؛ أوقفها بزر الإغلاق في الإشعار أو من الإعدادات السريعة أو من هنا. تتجدد كل ساعة.</string>
+    <string name="live_weather_noteAndroid">تظهر درجة الحرارة في شريط الحالة وعلى شاشة القفل؛ أوقفها من الإعدادات السريعة أو من هنا. تتجدد كل ساعة.</string>
     <string name="about_credits">الرموز: Microsoft Fluent Emoji وPhosphor Icons (رخصة MIT). الخطوط: Literata وAmiri (رخصة SIL Open Font License).</string>
     <string name="about_license">رخصة Fluent Emoji</string>
     <string name="about_licensePhosphor">رخصة Phosphor Icons</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">لا بلاغات من هذه المنطقة في الساعة الأخيرة.</string>
     <string name="wxr_wait">يمكنك الإبلاغ مرة كل 10 دقائق.</string>
     <string name="group_a_once">مرة واحدة</string>
+    <string name="weather_cards">ترتيب البطاقات</string>
+    <string name="weather_cardsHint">يمكنك أيضًا الضغط مطولًا على بطاقة في شاشة الطقس وسحبها إلى مكان جديد.</string>
+    <string name="weather_card_chart">الرسم البياني بالساعة</string>
+    <string name="weather_card_sun">قوس الشمس والقمر</string>
+    <string name="notify_cat_hourly_every">التكرار</string>
+    <string name="notify_cat_hourly_every_60">كل ساعة</string>
+    <string name="notify_cat_hourly_every_30">كل 30 دقيقة</string>
+    <string name="notify_cat_hourly_every_15">كل 15 دقيقة</string>
+    <string name="notify_cat_hourly_sound">الصوت</string>
+    <string name="notify_cat_hourly_sound_system">صوت الإشعار</string>
+    <string name="notify_cat_hourly_sound_voice">نطق الوقت</string>
+    <string name="notify_cat_hourly_sound_weather">نطق الوقت والطقس</string>
+    <string name="notify_cat_hourly_speakNote">يُنطق بصوت الهاتف بعد رنين قصير، ولا يُسمع والهاتف في الوضع الصامت. الطقس هو توقع Apple Weather لتلك الساعة.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">يُنطق بصوت الهاتف، ولا يُنطق شيء والهاتف صامت أو على الاهتزاز. الطقس هو توقع تلك الساعة (Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s، %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

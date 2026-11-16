@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">La previsión del día para el lugar elegido, cada mañana.</string>
     <string name="notify_cat_weather_time">Hora</string>
     <string name="notify_cat_hourly">Horas en punto</string>
-    <string name="notify_cat_hourly_note">Una notificación breve a cada hora en punto entre las horas que elija.</string>
+    <string name="notify_cat_hourly_note">Una notificación breve a las horas y los días que elija; también puede decir la hora y el tiempo.</string>
     <string name="notify_cat_hourly_from">Desde</string>
     <string name="notify_cat_hourly_to">Hasta</string>
     <string name="notify_cat_dst">Cambio de horario de verano</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">La luz del día sigue al sol en el lugar elegido: tonos de amanecer, mañana, tarde, atardecer o noche.</string>
     <string name="common_how">Cómo funciona</string>
     <string name="live_weather_toggle">Mostrar en la pantalla bloqueada y en la Dynamic Island</string>
-    <string name="live_weather_note">Aparece junto a la cámara y en la pantalla bloqueada; desactívela con × o desde el Centro de control. iOS la quita tras 8 horas; al abrir la app vuelve.</string>
+    <string name="live_weather_note">Aparece junto a la cámara y en la pantalla bloqueada; desactívela aquí o desde el Centro de control. iOS la quita tras 8 horas; al abrir la app vuelve.</string>
     <string name="live_weather_hide">Ocultar el tiempo</string>
     <string name="live_weather_control">Tiempo en pantalla bloqueada</string>
     <string name="live_weather_toggleAndroid">Mostrar en la barra de estado y en la pantalla de bloqueo</string>
-    <string name="live_weather_noteAndroid">La temperatura aparece en la barra de estado y en la pantalla de bloqueo; desactívela con Cerrar en la notificación, desde Ajustes rápidos o aquí. Se actualiza cada hora.</string>
+    <string name="live_weather_noteAndroid">La temperatura aparece en la barra de estado y en la pantalla de bloqueo; desactívela desde Ajustes rápidos o aquí. Se actualiza cada hora.</string>
     <string name="about_credits">Iconos: Microsoft Fluent Emoji y Phosphor Icons (licencia MIT). Tipografías: Literata y Amiri (SIL Open Font License).</string>
     <string name="about_license">Licencia de Fluent Emoji</string>
     <string name="about_licensePhosphor">Licencia de Phosphor Icons</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">No hay avisos de esta zona en la última hora.</string>
     <string name="wxr_wait">Puede avisar una vez cada 10 minutos.</string>
     <string name="group_a_once">Una vez</string>
+    <string name="weather_cards">Ordenar tarjetas</string>
+    <string name="weather_cardsHint">También puede mantener pulsada una tarjeta en la pantalla del tiempo y arrastrarla a otro lugar.</string>
+    <string name="weather_card_chart">Gráfico por horas</string>
+    <string name="weather_card_sun">Arco del Sol y la Luna</string>
+    <string name="notify_cat_hourly_every">Frecuencia</string>
+    <string name="notify_cat_hourly_every_60">Cada hora</string>
+    <string name="notify_cat_hourly_every_30">Cada 30 minutos</string>
+    <string name="notify_cat_hourly_every_15">Cada 15 minutos</string>
+    <string name="notify_cat_hourly_sound">Sonido</string>
+    <string name="notify_cat_hourly_sound_system">Sonido de notificación</string>
+    <string name="notify_cat_hourly_sound_voice">Decir la hora</string>
+    <string name="notify_cat_hourly_sound_weather">Decir la hora y el tiempo</string>
+    <string name="notify_cat_hourly_speakNote">Se dice con la voz del teléfono tras un breve aviso; no se oye con el teléfono en silencio. El tiempo es la previsión de Apple Tiempo para esa hora.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">Se dice con la voz del teléfono; no se dice nada con el teléfono en silencio o vibración. El tiempo es la previsión para esa hora (Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s, %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">Hora y Fecha</string>
 </resources>

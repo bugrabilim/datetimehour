@@ -76,20 +76,6 @@ enum LiveWeather {
     }
 }
 
-/// Etkinliğin üstündeki × düğmesi. LiveActivityIntent olduğu için iki hedefte de derlenir ve uygulamanın sürecinde
-/// çalışır (etkinliği yalnız uygulama kapatabilir).
-struct LiveWeatherOffIntent: LiveActivityIntent {
-    static let title: LocalizedStringResource = "live.weather.hide"
-    static let isDiscoverable = false
-
-    init() {}
-
-    func perform() async throws -> some IntentResult {
-        await LiveWeather.apply(false)
-        return .result()
-    }
-}
-
 /// Denetim Merkezi'ndeki aç/kapa düğmesi (iOS 18)
 @available(iOS 18.0, *)
 struct LiveWeatherToggleIntent: SetValueIntent, LiveActivityIntent {

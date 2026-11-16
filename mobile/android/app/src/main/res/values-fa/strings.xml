@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">پیش‌بینی روز برای مکان انتخابی، هر صبح.</string>
     <string name="notify_cat_weather_time">ساعت</string>
     <string name="notify_cat_hourly">سر هر ساعت</string>
-    <string name="notify_cat_hourly_note">اعلانی کوتاه سر هر ساعت، میان ساعت‌هایی که برمی‌گزینید.</string>
+    <string name="notify_cat_hourly_note">اعلانی کوتاه در ساعت‌ها و روزهایی که برمی‌گزینید؛ اگر بخواهید ساعت و آب‌وهوا را هم می‌گوید.</string>
     <string name="notify_cat_hourly_from">از</string>
     <string name="notify_cat_hourly_to">تا</string>
     <string name="notify_cat_dst">تغییر ساعت تابستانی</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">نور روز با خورشید در مکان انتخاب‌شده همراه است: رنگ‌های سپیده‌دم، صبح، عصر، شامگاه یا شب.</string>
     <string name="common_how">چگونه کار می‌کند؟</string>
     <string name="live_weather_toggle">نمایش در صفحهٔ قفل و Dynamic Island</string>
-    <string name="live_weather_note">کنار دوربین و روی صفحهٔ قفل دیده می‌شود؛ با × یا از مرکز کنترل خاموشش کنید. iOS پس از 8 ساعت برش می‌دارد؛ با باز کردن برنامه برمی‌گردد.</string>
+    <string name="live_weather_note">کنار دوربین و روی صفحهٔ قفل دیده می‌شود؛ از همین‌جا یا از مرکز کنترل خاموشش کنید. iOS پس از 8 ساعت برش می‌دارد؛ با باز کردن برنامه برمی‌گردد.</string>
     <string name="live_weather_hide">خاموش کردن آب‌وهوا</string>
     <string name="live_weather_control">آب‌وهوا روی صفحهٔ قفل</string>
     <string name="live_weather_toggleAndroid">نمایش در نوار وضعیت و صفحهٔ قفل</string>
-    <string name="live_weather_noteAndroid">دما در نوار وضعیت و صفحهٔ قفل دیده می‌شود؛ با «بستن» در اعلان، از تنظیمات سریع یا همین‌جا خاموشش کنید. هر ساعت به‌روز می‌شود.</string>
+    <string name="live_weather_noteAndroid">دما در نوار وضعیت و صفحهٔ قفل دیده می‌شود؛ از تنظیمات سریع یا همین‌جا خاموشش کنید. هر ساعت به‌روز می‌شود.</string>
     <string name="about_credits">نمادها: Microsoft Fluent Emoji و Phosphor Icons (مجوز MIT). قلم‌ها: Literata و Amiri (SIL Open Font License).</string>
     <string name="about_license">مجوز Fluent Emoji</string>
     <string name="about_licensePhosphor">مجوز Phosphor Icons</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">در یک ساعت گذشته از این منطقه گزارشی نیست.</string>
     <string name="wxr_wait">هر 10 دقیقه یک بار می‌توانید گزارش دهید.</string>
     <string name="group_a_once">یک بار</string>
+    <string name="weather_cards">مرتب‌کردن کارت‌ها</string>
+    <string name="weather_cardsHint">می‌توانید در صفحهٔ آب‌وهوا کارتی را نگه دارید و به جای تازه بکشید.</string>
+    <string name="weather_card_chart">نمودار ساعتی</string>
+    <string name="weather_card_sun">کمان خورشید و ماه</string>
+    <string name="notify_cat_hourly_every">بسامد</string>
+    <string name="notify_cat_hourly_every_60">هر ساعت</string>
+    <string name="notify_cat_hourly_every_30">هر 30 دقیقه</string>
+    <string name="notify_cat_hourly_every_15">هر 15 دقیقه</string>
+    <string name="notify_cat_hourly_sound">صدا</string>
+    <string name="notify_cat_hourly_sound_system">صدای اعلان</string>
+    <string name="notify_cat_hourly_sound_voice">گفتن ساعت</string>
+    <string name="notify_cat_hourly_sound_weather">گفتن ساعت و آب‌وهوا</string>
+    <string name="notify_cat_hourly_speakNote">پس از زنگی کوتاه با صدای گوشی گفته می‌شود؛ وقتی گوشی بی‌صداست شنیده نمی‌شود. آب‌وهوا پیش‌بینی Apple Weather برای همان ساعت است.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">با صدای گوشی گفته می‌شود؛ وقتی گوشی بی‌صدا یا روی لرزش است چیزی گفته نمی‌شود. آب‌وهوا پیش‌بینی همان ساعت است (Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s، %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

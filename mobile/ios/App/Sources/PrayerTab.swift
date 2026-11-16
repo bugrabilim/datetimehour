@@ -18,6 +18,7 @@ struct PrayerTab: View {
                 let place = PlaceModel.shared.place
                 ScrollView {
                     VStack(spacing: 24) {
+                        // Bugünün vakitleri Yatsı'ya kadar kaydırmadan görünsün (16 Kasım 2026, sahibin isteği): panel sıkı
                         PrayerPanel(now: context.date, place: place)
                         PrayerVisual(now: context.date, place: place)
                             // Yer değişince ya da vakit girince kilit ekranındaki sayaç ileri taşınır
@@ -29,7 +30,7 @@ struct PrayerTab: View {
                         PrayerToolRows(place: place, sharing: $sharing, route: $route)
                     }
                     .padding(.horizontal, 20)
-                    .padding(.vertical, 20)
+                    .padding(.top, 6).padding(.bottom, 20)
                     .frame(maxWidth: 560)
                     .frame(maxWidth: .infinity)
                 }
@@ -76,24 +77,25 @@ struct PrayerPanel: View {
     var body: some View {
         let schedule = place.schedule
         let next = schedule.next(after: now)
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 12) {
             PlacePicker()
             SavedPlaceChips()
-            // Bugünün miladi ve hicri tarihi (Diyanet takvimi)
-            if let h = Hijri.date(now, timeZone: place.zone) {
-                Text(Fmt.longDate(now, tz: place.zone) + " · " + h.text)
-                    .font(.footnote)
-                    .foregroundStyle(Theme.muted)
+            VStack(alignment: .leading, spacing: 4) {
+                // Bugünün miladi ve hicri tarihi (Diyanet takvimi)
+                if let h = Hijri.date(now, timeZone: place.zone) {
+                    Text(Fmt.longDate(now, tz: place.zone) + " · " + h.text)
+                        .font(.footnote)
+                        .foregroundStyle(Theme.muted)
+                }
+                UpcomingReligiousLine(today: CalendarDay(now, timeZone: place.zone))
             }
-
-            UpcomingReligiousLine(today: CalendarDay(now, timeZone: place.zone))
             if let next {
                 SkyCountdown(entries: schedule.entries(on: now), next: next, now: now)
             }
 
             VStack(spacing: 0) {
                 SectionTitle(text: String(localized: "prayer.today"))
-                    .padding(.bottom, 8)
+                    .padding(.top, 4).padding(.bottom, 4)
                 // Kemenag'ın ek satırları: ihtiyat imsakı sabahtan önce, duha güneşten sonra (yalnız o yöntemde)
                 let extra = place.extraRows(on: now)
                 ForEach(schedule.entries(on: now)) { entry in
@@ -114,7 +116,7 @@ struct PrayerPanel: View {
                     }
                     .font(.body.weight(isNext ? .bold : .regular))
                     .foregroundStyle(Theme.text)
-                    .padding(.vertical, inline ? 7 : 12)
+                    .padding(.vertical, inline ? 4 : 9)
                     .padding(.horizontal, 14)
                     .background(isNext ? Theme.accentSoft : .clear, in: RoundedRectangle(cornerRadius: 10))
                     if entry.prayer == .sunrise, let at = extra?.duha { PrayerSubRow(label: L("prayer.method.rowDuha"), time: place.hm(at)) }

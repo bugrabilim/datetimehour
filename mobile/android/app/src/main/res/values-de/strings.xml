@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">Jeden Morgen die Tagesvorhersage für den gewählten Ort.</string>
     <string name="notify_cat_weather_time">Uhrzeit</string>
     <string name="notify_cat_hourly">Zur vollen Stunde</string>
-    <string name="notify_cat_hourly_note">Eine kurze Benachrichtigung zu jeder vollen Stunde im gewählten Zeitraum.</string>
+    <string name="notify_cat_hourly_note">Eine kurze Benachrichtigung zu den gewählten Zeiten und Tagen; auf Wunsch mit Ansage von Uhrzeit und Wetter.</string>
     <string name="notify_cat_hourly_from">Von</string>
     <string name="notify_cat_hourly_to">Bis</string>
     <string name="notify_cat_dst">Zeitumstellung</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">Tageslicht folgt der Sonne am gewählten Ort: Töne für Morgendämmerung, Vormittag, Nachmittag, Abend oder Nacht.</string>
     <string name="common_how">So funktioniert es</string>
     <string name="live_weather_toggle">Auf dem Sperrbildschirm und in der Dynamic Island zeigen</string>
-    <string name="live_weather_note">Die Anzeige erscheint neben der Kamera und auf dem Sperrbildschirm; mit × oder im Kontrollzentrum ausschalten. iOS entfernt sie nach 8 Stunden; beim Öffnen der App kommt sie zurück.</string>
+    <string name="live_weather_note">Die Anzeige erscheint neben der Kamera und auf dem Sperrbildschirm; hier oder im Kontrollzentrum ausschalten. iOS entfernt sie nach 8 Stunden; beim Öffnen der App kommt sie zurück.</string>
     <string name="live_weather_hide">Wetter ausblenden</string>
     <string name="live_weather_control">Wetter auf dem Sperrbildschirm</string>
     <string name="live_weather_toggleAndroid">In der Statusleiste und auf dem Sperrbildschirm zeigen</string>
-    <string name="live_weather_noteAndroid">Die Temperatur erscheint in der Statusleiste und auf dem Sperrbildschirm; ausschalten mit „Schließen“ in der Benachrichtigung, in den Schnelleinstellungen oder hier. Stündlich aktualisiert.</string>
+    <string name="live_weather_noteAndroid">Die Temperatur erscheint in der Statusleiste und auf dem Sperrbildschirm; in den Schnelleinstellungen oder hier ausschalten. Stündlich aktualisiert.</string>
     <string name="about_credits">Symbole: Microsoft Fluent Emoji und Phosphor Icons (MIT-Lizenz). Schriften: Literata und Amiri (SIL Open Font License).</string>
     <string name="about_license">Lizenz von Fluent Emoji</string>
     <string name="about_licensePhosphor">Lizenz von Phosphor Icons</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">Keine Meldungen aus diesem Gebiet in der letzten Stunde.</string>
     <string name="wxr_wait">Sie können alle 10 Minuten eine Meldung senden.</string>
     <string name="group_a_once">Einmalig</string>
+    <string name="weather_cards">Karten anordnen</string>
+    <string name="weather_cardsHint">Sie können eine Karte auf dem Wetterbildschirm auch gedrückt halten und an eine neue Stelle ziehen.</string>
+    <string name="weather_card_chart">Stündliches Diagramm</string>
+    <string name="weather_card_sun">Sonnen- und Mondbogen</string>
+    <string name="notify_cat_hourly_every">Häufigkeit</string>
+    <string name="notify_cat_hourly_every_60">Jede volle Stunde</string>
+    <string name="notify_cat_hourly_every_30">Alle 30 Minuten</string>
+    <string name="notify_cat_hourly_every_15">Alle 15 Minuten</string>
+    <string name="notify_cat_hourly_sound">Ton</string>
+    <string name="notify_cat_hourly_sound_system">Mitteilungston</string>
+    <string name="notify_cat_hourly_sound_voice">Uhrzeit ansagen</string>
+    <string name="notify_cat_hourly_sound_weather">Uhrzeit und Wetter ansagen</string>
+    <string name="notify_cat_hourly_speakNote">Nach einem kurzen Gong mit der Stimme des Telefons angesagt; im Stummmodus nicht hörbar. Das Wetter ist die Vorhersage von Apple Wetter für diese Stunde.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">Mit der Stimme des Telefons angesagt; im Stumm- oder Vibrationsmodus wird nichts angesagt. Das Wetter ist die Vorhersage für diese Stunde (Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s, %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

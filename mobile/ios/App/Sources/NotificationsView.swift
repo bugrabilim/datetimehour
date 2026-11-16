@@ -23,6 +23,9 @@ struct NotificationsView: View {
     @AppStorage("notify.weather.alerts") private var weatherAlerts = true
     @AppStorage(NotifyFeature.hourlyFromKey) private var hourlyFrom = 9
     @AppStorage(NotifyFeature.hourlyToKey) private var hourlyTo = 21
+    @AppStorage(HourlyChime.everyKey) private var hourlyEvery = 60
+    @AppStorage(HourlyChime.soundKey) private var hourlySound = "system"
+    @AppStorage(HourlyChime.daysKey) private var hourlyDays = ""
     @State private var showPrayer = false
     @State private var denied = false
 
@@ -90,6 +93,40 @@ struct NotificationsView: View {
                 if hourly {
                     hourPicker(L("notify.cat.hourly.from"), $hourlyFrom)
                     hourPicker(L("notify.cat.hourly.to"), $hourlyTo)
+                    // Sıklık, günler ve sesli saat/hava (16 Kasım 2026, sahibin isteği)
+                    Picker(L("notify.cat.hourly.every"), selection: $hourlyEvery) {
+                        ForEach(HourlyChime.everyOptions, id: \.self) { Text(L("notify.cat.hourly.every.\($0)")).tag($0) }
+                    }
+                    Picker(L("notify.cat.hourly.sound"), selection: $hourlySound) {
+                        ForEach(HourlyChime.soundOptions, id: \.self) { Text(L("notify.cat.hourly.sound.\($0)")).tag($0) }
+                    }
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(L("alarm.days"))
+                        HStack(spacing: 6) {
+                            ForEach(1...7, id: \.self) { d in
+                                let _ = hourlyDays
+                                let on = HourlyChime.days.contains(d)
+                                Button {
+                                    var s = HourlyChime.days
+                                    if on { s.remove(d) } else { s.insert(d) }
+                                    if s.isEmpty { return } // en az bir gün
+                                    hourlyDays = s.count == 7 ? "" : s.sorted().map(String.init).joined(separator: ",")
+                                } label: {
+                                    Text(L("calendar.weekdaysShort.\(d - 1)"))
+                                        .font(.footnote.weight(on ? .semibold : .regular))
+                                        .frame(maxWidth: .infinity, minHeight: 32)
+                                        .background(on ? Theme.accentSoft : Theme.surface2, in: Capsule())
+                                        .foregroundStyle(on ? Theme.accent : Theme.muted)
+                                }
+                                .buttonStyle(.borderless)
+                                .accessibilityLabel(L("tools.alarm.dayNames.\(d - 1)"))
+                                .accessibilityAddTraits(on ? .isSelected : [])
+                            }
+                        }
+                    }
+                    if hourlySound != "system" {
+                        Text(L("notify.cat.hourly.speakNote")).font(.caption).foregroundStyle(Theme.muted)
+                    }
                 }
                 row(.dst, $dst)
             } footer: {
@@ -106,7 +143,8 @@ struct NotificationsView: View {
             Task { await refresh() }
         }
         .onChange(of: [prayer, calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, sky, photo, friday, qibla, fasting]) { reschedule() }
-        .onChange(of: [weatherTime, hourlyFrom, hourlyTo]) { reschedule() }
+        .onChange(of: [weatherTime, hourlyFrom, hourlyTo, hourlyEvery]) { reschedule() }
+        .onChange(of: [hourlySound, hourlyDays]) { reschedule() }
         .onChange(of: weatherAlerts) { reschedule() }
     }
 

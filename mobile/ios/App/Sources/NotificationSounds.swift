@@ -65,8 +65,10 @@ enum NotificationSounds {
     /// Standart (robotik) ses mi kullanılıyor; ayar penceresinde daha iyi ses indirme ipucu gösterilir
     static var hasOnlyBasicVoice: Bool { (bestVoice?.quality ?? .default) == .default }
 
+    /// Kurulu sesin kısa kimliği (dosya adlarında; daha iyi ses indirilince sesler yeniden üretilir)
+    static var voiceKey: String { String((bestVoice?.identifier ?? "none").filter { $0.isLetter || $0.isNumber }.suffix(40)) }
+
     static func fileName(_ prayer: Prayer, lead: Int) -> String {
-        let voiceKey = String((bestVoice?.identifier ?? "none").filter { $0.isLetter || $0.isNumber }.suffix(40))
         return "\(version)-\(language)-\(voiceKey)-\(prayer.rawValue)-\(lead).caf"
     }
 
@@ -127,7 +129,8 @@ enum NotificationSounds {
     static func removeStale(keeping names: Set<String>) {
         let fm = FileManager.default
         guard let files = try? fm.contentsOfDirectory(atPath: directory.path) else { return }
-        for f in files where !names.contains(f) && !f.hasPrefix("\(version)-chime") && !f.hasPrefix(AlarmSpeech.prefix) && !f.hasPrefix(AlarmMusic.prefix) {
+        for f in files where !names.contains(f) && !f.hasPrefix("\(version)-chime") && !f.hasPrefix(AlarmSpeech.prefix) && !f.hasPrefix(AlarmMusic.prefix)
+            && !f.hasPrefix(HourlyChime.prefix) {
             try? fm.removeItem(at: directory.appendingPathComponent(f))
         }
     }

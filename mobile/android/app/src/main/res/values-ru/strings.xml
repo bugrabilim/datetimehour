@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">Прогноз на день для выбранного места каждое утро.</string>
     <string name="notify_cat_weather_time">Время</string>
     <string name="notify_cat_hourly">Каждый час</string>
-    <string name="notify_cat_hourly_note">Короткое уведомление в начале каждого часа в выбранном промежутке.</string>
+    <string name="notify_cat_hourly_note">Короткое уведомление в выбранное время и дни; может также озвучивать время и погоду.</string>
     <string name="notify_cat_hourly_from">С</string>
     <string name="notify_cat_hourly_to">До</string>
     <string name="notify_cat_dst">Перевод часов</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">Дневной свет следует за солнцем в выбранном месте: тона рассвета, утра, дня, вечера или ночи.</string>
     <string name="common_how">Как это работает</string>
     <string name="live_weather_toggle">Показывать на экране блокировки и в Dynamic Island</string>
-    <string name="live_weather_note">Видна рядом с камерой и на экране блокировки; выключается кнопкой × или в Пункте управления. iOS убирает её через 8 часов; при открытии приложения она возвращается.</string>
+    <string name="live_weather_note">Видна рядом с камерой и на экране блокировки; выключается здесь или в Пункте управления. iOS убирает её через 8 часов; при открытии приложения она возвращается.</string>
     <string name="live_weather_hide">Скрыть погоду</string>
     <string name="live_weather_control">Погода на экране блокировки</string>
     <string name="live_weather_toggleAndroid">Показывать в строке состояния и на экране блокировки</string>
-    <string name="live_weather_noteAndroid">Температура видна в строке состояния и на экране блокировки; выключается кнопкой «Закрыть» в уведомлении, в быстрых настройках или здесь. Обновляется раз в час.</string>
+    <string name="live_weather_noteAndroid">Температура видна в строке состояния и на экране блокировки; выключается в быстрых настройках или здесь. Обновляется раз в час.</string>
     <string name="about_credits">Значки: Microsoft Fluent Emoji и Phosphor Icons (лицензия MIT). Шрифты: Literata и Amiri (SIL Open Font License).</string>
     <string name="about_license">Лицензия Fluent Emoji</string>
     <string name="about_licensePhosphor">Лицензия Phosphor Icons</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">За последний час из этой области сообщений нет.</string>
     <string name="wxr_wait">Сообщать можно раз в 10 минут.</string>
     <string name="group_a_once">Один раз</string>
+    <string name="weather_cards">Порядок карточек</string>
+    <string name="weather_cardsHint">Карточку на экране погоды можно также удержать и перетащить на новое место.</string>
+    <string name="weather_card_chart">Почасовой график</string>
+    <string name="weather_card_sun">Дуга Солнца и Луны</string>
+    <string name="notify_cat_hourly_every">Частота</string>
+    <string name="notify_cat_hourly_every_60">Каждый час</string>
+    <string name="notify_cat_hourly_every_30">Каждые 30 минут</string>
+    <string name="notify_cat_hourly_every_15">Каждые 15 минут</string>
+    <string name="notify_cat_hourly_sound">Звук</string>
+    <string name="notify_cat_hourly_sound_system">Звук уведомления</string>
+    <string name="notify_cat_hourly_sound_voice">Озвучивать время</string>
+    <string name="notify_cat_hourly_sound_weather">Озвучивать время и погоду</string>
+    <string name="notify_cat_hourly_speakNote">Произносится голосом телефона после короткого сигнала; в беззвучном режиме не слышно. Погода — прогноз Apple Погоды на этот час.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">Произносится голосом телефона; в беззвучном режиме и режиме вибрации ничего не произносится. Погода — прогноз на этот час (Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s, %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">Время и дата</string>
 </resources>

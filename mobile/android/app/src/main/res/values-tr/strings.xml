@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">Her sabah seçili konumun günlük tahmini.</string>
     <string name="notify_cat_weather_time">Saat</string>
     <string name="notify_cat_hourly">Saat başı</string>
-    <string name="notify_cat_hourly_note">Seçtiğiniz saatler arasında her saat başında kısa bildirim.</string>
+    <string name="notify_cat_hourly_note">Seçtiğiniz saatlerde ve günlerde kısa bildirim; isterseniz saati ve havayı sesli söyler.</string>
     <string name="notify_cat_hourly_from">Başlangıç</string>
     <string name="notify_cat_hourly_to">Bitiş</string>
     <string name="notify_cat_dst">Yaz saati değişimi</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">Gün ışığı, seçili yerde Güneş\'in konumuna göre şafak, sabah, ikindi, akşam ya da gece tonunu alır.</string>
     <string name="common_how">Nasıl çalışır?</string>
     <string name="live_weather_toggle">Kilit ekranında ve Dynamic Island\'da göster</string>
-    <string name="live_weather_note">Kameranın yanında ve kilit ekranında görünür; × ile ya da Denetim Merkezi\'nden kapatılır. iOS 8 saat sonra kaldırır; uygulamayı açınca geri gelir.</string>
+    <string name="live_weather_note">Kameranın yanında ve kilit ekranında görünür; buradan ya da Denetim Merkezi\'nden kapatılır. iOS 8 saat sonra kaldırır; uygulamayı açınca geri gelir.</string>
     <string name="live_weather_hide">Hava durumunu kapat</string>
     <string name="live_weather_control">Kilit ekranında hava</string>
     <string name="live_weather_toggleAndroid">Bildirim alanında ve kilit ekranında göster</string>
-    <string name="live_weather_noteAndroid">Sıcaklık durum çubuğunda ve kilit ekranında görünür; bildirimdeki Kapat ile, Hızlı Ayarlar\'dan ya da buradan kapatılır. Saatte bir yenilenir.</string>
+    <string name="live_weather_noteAndroid">Sıcaklık durum çubuğunda ve kilit ekranında görünür; Hızlı Ayarlar\'dan ya da buradan kapatılır. Saatte bir yenilenir.</string>
     <string name="about_credits">Simgeler: Microsoft Fluent Emoji ve Phosphor Icons (MIT lisansı). Yazı tipleri: Literata ve Amiri (SIL Open Font License).</string>
     <string name="about_license">Fluent Emoji lisansı</string>
     <string name="about_licensePhosphor">Phosphor Icons lisansı</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">Son bir saatte bu bölgeden bildirim yok.</string>
     <string name="wxr_wait">10 dakikada bir bildirebilirsiniz.</string>
     <string name="group_a_once">Bir kez</string>
+    <string name="weather_cards">Kartları sırala</string>
+    <string name="weather_cardsHint">Hava ekranında bir kartı basılı tutup sürükleyerek de yerini değiştirebilirsiniz.</string>
+    <string name="weather_card_chart">Saatlik grafik</string>
+    <string name="weather_card_sun">Güneş ve Ay yayı</string>
+    <string name="notify_cat_hourly_every">Sıklık</string>
+    <string name="notify_cat_hourly_every_60">Her saat başı</string>
+    <string name="notify_cat_hourly_every_30">Yarım saatte bir</string>
+    <string name="notify_cat_hourly_every_15">Çeyrek saatte bir</string>
+    <string name="notify_cat_hourly_sound">Ses</string>
+    <string name="notify_cat_hourly_sound_system">Bildirim sesi</string>
+    <string name="notify_cat_hourly_sound_voice">Saati sesli söyle</string>
+    <string name="notify_cat_hourly_sound_weather">Saati ve havayı sesli söyle</string>
+    <string name="notify_cat_hourly_speakNote">Kısa bir zilden sonra telefonun konuşma sesiyle söylenir; telefon sessizdeyken duyulmaz. Hava, o saatin Apple Hava Durumu tahminidir.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">Telefonun konuşma sesiyle söylenir; telefon sessiz ya da titreşimdeyken söylenmez. Hava, o saatin tahminidir (Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s, %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">The day\'s forecast for the selected place every morning.</string>
     <string name="notify_cat_weather_time">Time</string>
     <string name="notify_cat_hourly">On the hour</string>
-    <string name="notify_cat_hourly_note">A short notification on the hour between the hours you choose.</string>
+    <string name="notify_cat_hourly_note">A short notification at the times and on the days you choose; it can also speak the time and weather.</string>
     <string name="notify_cat_hourly_from">From</string>
     <string name="notify_cat_hourly_to">To</string>
     <string name="notify_cat_dst">Daylight saving change</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">Daylight follows the sun at your chosen place: dawn, morning, afternoon, evening or night tones.</string>
     <string name="common_how">How it works</string>
     <string name="live_weather_toggle">Show on Lock Screen and in the Dynamic Island</string>
-    <string name="live_weather_note">Appears next to the camera and on the Lock Screen; turn it off with × or from Control Center. iOS removes it after 8 hours; opening the app brings it back.</string>
+    <string name="live_weather_note">Appears next to the camera and on the Lock Screen; turn it off here or from Control Center. iOS removes it after 8 hours; opening the app brings it back.</string>
     <string name="live_weather_hide">Turn off weather</string>
     <string name="live_weather_control">Weather on Lock Screen</string>
     <string name="live_weather_toggleAndroid">Show in the notification shade and on the lock screen</string>
-    <string name="live_weather_noteAndroid">The temperature appears in the status bar and on the lock screen; turn it off with Close in the notification, from Quick Settings or here. It refreshes hourly.</string>
+    <string name="live_weather_noteAndroid">The temperature appears in the status bar and on the lock screen; turn it off from Quick Settings or here. It refreshes hourly.</string>
     <string name="about_credits">Icons: Microsoft Fluent Emoji and Phosphor Icons (MIT License). Fonts: Literata and Amiri (SIL Open Font License).</string>
     <string name="about_license">Fluent Emoji license</string>
     <string name="about_licensePhosphor">Phosphor Icons license</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">No reports from this area in the last hour.</string>
     <string name="wxr_wait">You can report once every 10 minutes.</string>
     <string name="group_a_once">Once</string>
+    <string name="weather_cards">Reorder cards</string>
+    <string name="weather_cardsHint">You can also press and hold a card on the weather screen and drag it to a new place.</string>
+    <string name="weather_card_chart">Hourly chart</string>
+    <string name="weather_card_sun">Sun and Moon arc</string>
+    <string name="notify_cat_hourly_every">Frequency</string>
+    <string name="notify_cat_hourly_every_60">Every hour</string>
+    <string name="notify_cat_hourly_every_30">Every 30 minutes</string>
+    <string name="notify_cat_hourly_every_15">Every 15 minutes</string>
+    <string name="notify_cat_hourly_sound">Sound</string>
+    <string name="notify_cat_hourly_sound_system">Notification sound</string>
+    <string name="notify_cat_hourly_sound_voice">Speak the time</string>
+    <string name="notify_cat_hourly_sound_weather">Speak the time and weather</string>
+    <string name="notify_cat_hourly_speakNote">Spoken in the phone\'s voice after a short chime; you won\'t hear it while the phone is on silent. The weather is Apple Weather\'s forecast for that hour.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">Spoken in the phone\'s voice; nothing is spoken while the phone is on silent or vibrate. The weather is the forecast for that hour (Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s, %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

@@ -260855,115 +260855,115 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Seçtiğiniz saatler arasında her saat başında kısa bildirim."
+            "value": "Seçtiğiniz saatlerde ve günlerde kısa bildirim; isterseniz saati ve havayı sesli söyler."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "A short notification on the hour between the hours you choose."
+            "value": "A short notification at the times and on the days you choose; it can also speak the time and weather."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Eine kurze Benachrichtigung zu jeder vollen Stunde im gewählten Zeitraum."
+            "value": "Eine kurze Benachrichtigung zu den gewählten Zeiten und Tagen; auf Wunsch mit Ansage von Uhrzeit und Wetter."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Seçdiyiniz saatlar arasında hər saat başı qısa bildiriş."
+            "value": "Seçdiyiniz saatlarda və günlərdə qısa bildiriş; istəsəniz saatı və havanı səsli deyir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "إشعار قصير عند بداية كل ساعة بين الساعتين اللتين تختارهما."
+            "value": "إشعار قصير في الأوقات والأيام التي تختارها، ويمكنه أيضًا نطق الوقت والطقس."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Notifikasi singkat setiap jam tepat di antara jam yang Anda pilih."
+            "value": "Notifikasi singkat pada waktu dan hari yang Anda pilih; juga bisa mengucapkan waktu dan cuaca."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "آپ کے منتخب اوقات کے درمیان ہر گھنٹے کے آغاز پر مختصر اطلاع۔"
+            "value": "آپ کے منتخب اوقات اور دنوں میں مختصر اطلاع؛ چاہیں تو وقت اور موسم بول کر بھی بتاتی ہے۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "اعلانی کوتاه سر هر ساعت، میان ساعت‌هایی که برمی‌گزینید."
+            "value": "اعلانی کوتاه در ساعت‌ها و روزهایی که برمی‌گزینید؛ اگر بخواهید ساعت و آب‌وهوا را هم می‌گوید."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Une courte notification à chaque heure pile, entre les heures choisies."
+            "value": "Une courte notification aux heures et jours choisis ; elle peut aussi annoncer l'heure et la météo."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Короткое уведомление в начале каждого часа в выбранном промежутке."
+            "value": "Короткое уведомление в выбранное время и дни; может также озвучивать время и погоду."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "選んだ時間帯の毎正時に短い通知。"
+            "value": "選んだ時刻と曜日に短い通知。時刻と天気の読み上げもできます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "고른 시간대에 정각마다 짧은 알림."
+            "value": "고른 시각과 요일에 짧은 알림. 시간과 날씨를 읽어 줄 수도 있습니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在您选择的时段内，每逢整点发一条简短通知。"
+            "value": "在您选择的时间和日期发出简短通知，也可以播报时间和天气。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Maikling abiso tuwing eksaktong oras sa pagitan ng mga oras na pinili mo."
+            "value": "Maikling abiso sa mga oras at araw na pinili mo; puwede ring sabihin ang oras at panahon."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "การแจ้งเตือนสั้น ๆ ทุกต้นชั่วโมงในช่วงเวลาที่คุณเลือก"
+            "value": "การแจ้งเตือนสั้น ๆ ในเวลาและวันที่คุณเลือก และพูดบอกเวลาและสภาพอากาศได้ด้วย"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Una notificación breve a cada hora en punto entre las horas que elija."
+            "value": "Una notificación breve a las horas y los días que elija; también puede decir la hora y el tiempo."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uma notificação curta a cada hora cheia entre os horários que você escolher."
+            "value": "Uma notificação curta nos horários e dias que você escolher; também pode falar a hora e o tempo."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "आपके चुने घंटों के बीच हर घंटे पर एक छोटी सूचना।"
+            "value": "आपके चुने समय और दिनों पर एक छोटी सूचना; चाहें तो समय और मौसम बोलकर भी बताती है।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "আপনার বেছে নেওয়া সময়ের মধ্যে প্রতি ঘণ্টার শুরুতে একটি ছোট নোটিফিকেশন।"
+            "value": "আপনার বেছে নেওয়া সময় ও দিনে একটি ছোট নোটিফিকেশন; চাইলে সময় ও আবহাওয়া বলেও দেয়।"
           }
         }
       }
@@ -460061,115 +460061,115 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kameranın yanında ve kilit ekranında görünür; × ile ya da Denetim Merkezi'nden kapatılır. iOS 8 saat sonra kaldırır; uygulamayı açınca geri gelir."
+            "value": "Kameranın yanında ve kilit ekranında görünür; buradan ya da Denetim Merkezi'nden kapatılır. iOS 8 saat sonra kaldırır; uygulamayı açınca geri gelir."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Appears next to the camera and on the Lock Screen; turn it off with × or from Control Center. iOS removes it after 8 hours; opening the app brings it back."
+            "value": "Appears next to the camera and on the Lock Screen; turn it off here or from Control Center. iOS removes it after 8 hours; opening the app brings it back."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Anzeige erscheint neben der Kamera und auf dem Sperrbildschirm; mit × oder im Kontrollzentrum ausschalten. iOS entfernt sie nach 8 Stunden; beim Öffnen der App kommt sie zurück."
+            "value": "Die Anzeige erscheint neben der Kamera und auf dem Sperrbildschirm; hier oder im Kontrollzentrum ausschalten. iOS entfernt sie nach 8 Stunden; beim Öffnen der App kommt sie zurück."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kameranın yanında və kilid ekranında görünür; × ilə ya da İdarəetmə Mərkəzindən bağlanır. iOS 8 saatdan sonra onu silir; tətbiqi açanda geri gəlir."
+            "value": "Kameranın yanında və kilid ekranında görünür; buradan ya da İdarəetmə Mərkəzindən bağlanır. iOS 8 saatdan sonra onu silir; tətbiqi açanda geri gəlir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تظهر بجانب الكاميرا وعلى شاشة القفل؛ أوقفها بـ × أو من مركز التحكم. يزيلها iOS بعد 8 ساعات، وتعود عند فتح التطبيق."
+            "value": "تظهر بجانب الكاميرا وعلى شاشة القفل؛ أوقفها من هنا أو من مركز التحكم. يزيلها iOS بعد 8 ساعات، وتعود عند فتح التطبيق."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tampil di samping kamera dan di Layar Terkunci; matikan dengan × atau dari Pusat Kontrol. iOS menghapusnya setelah 8 jam; membuka aplikasi memunculkannya lagi."
+            "value": "Tampil di samping kamera dan di Layar Terkunci; matikan di sini atau dari Pusat Kontrol. iOS menghapusnya setelah 8 jam; membuka aplikasi memunculkannya lagi."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "کیمرے کے ساتھ اور لاک اسکرین پر دکھتا ہے؛ × سے یا کنٹرول سینٹر سے بند کریں۔ iOS اسے 8 گھنٹے بعد ہٹا دیتا ہے؛ ایپ کھولنے پر واپس آ جاتا ہے۔"
+            "value": "کیمرے کے ساتھ اور لاک اسکرین پر دکھتا ہے؛ یہاں سے یا کنٹرول سینٹر سے بند کریں۔ iOS اسے 8 گھنٹے بعد ہٹا دیتا ہے؛ ایپ کھولنے پر واپس آ جاتا ہے۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "کنار دوربین و روی صفحهٔ قفل دیده می‌شود؛ با × یا از مرکز کنترل خاموشش کنید. iOS پس از 8 ساعت برش می‌دارد؛ با باز کردن برنامه برمی‌گردد."
+            "value": "کنار دوربین و روی صفحهٔ قفل دیده می‌شود؛ از همین‌جا یا از مرکز کنترل خاموشش کنید. iOS پس از 8 ساعت برش می‌دارد؛ با باز کردن برنامه برمی‌گردد."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "S'affiche à côté de la caméra et sur l'écran verrouillé ; désactivez-la avec × ou depuis le Centre de contrôle. iOS la retire après 8 heures ; ouvrir l'app la fait revenir."
+            "value": "S'affiche à côté de la caméra et sur l'écran verrouillé ; désactivez-la ici ou depuis le Centre de contrôle. iOS la retire après 8 heures ; ouvrir l'app la fait revenir."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Видна рядом с камерой и на экране блокировки; выключается кнопкой × или в Пункте управления. iOS убирает её через 8 часов; при открытии приложения она возвращается."
+            "value": "Видна рядом с камерой и на экране блокировки; выключается здесь или в Пункте управления. iOS убирает её через 8 часов; при открытии приложения она возвращается."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "カメラの横とロック画面に表示されます。×またはコントロールセンターでオフにできます。iOSは8時間後に消去し、アプリを開くと戻ります。"
+            "value": "カメラの横とロック画面に表示されます。ここまたはコントロールセンターでオフにできます。iOSは8時間後に消去し、アプリを開くと戻ります。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "카메라 옆과 잠금 화면에 표시됩니다. × 또는 제어 센터에서 끌 수 있습니다. iOS는 8시간 후 제거하며, 앱을 열면 다시 나타납니다."
+            "value": "카메라 옆과 잠금 화면에 표시됩니다. 여기 또는 제어 센터에서 끌 수 있습니다. iOS는 8시간 후 제거하며, 앱을 열면 다시 나타납니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "显示在摄像头旁和锁定屏幕上；可用 × 或在控制中心关闭。iOS 会在 8 小时后移除，打开应用即可恢复。"
+            "value": "显示在摄像头旁和锁定屏幕上；可在此处或控制中心关闭。iOS 会在 8 小时后移除，打开应用即可恢复。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lumalabas sa tabi ng camera at sa Lock Screen; patayin gamit ang × o sa Control Center. Inaalis ito ng iOS pagkalipas ng 8 oras; babalik kapag binuksan ang app."
+            "value": "Lumalabas sa tabi ng camera at sa Lock Screen; patayin dito o sa Control Center. Inaalis ito ng iOS pagkalipas ng 8 oras; babalik kapag binuksan ang app."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "แสดงข้างกล้องและบนหน้าจอล็อก ปิดได้ด้วย × หรือจากศูนย์ควบคุม iOS จะนำออกหลัง 8 ชั่วโมง เปิดแอปแล้วจะกลับมา"
+            "value": "แสดงข้างกล้องและบนหน้าจอล็อก ปิดได้ที่นี่หรือจากศูนย์ควบคุม iOS จะนำออกหลัง 8 ชั่วโมง เปิดแอปแล้วจะกลับมา"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aparece junto a la cámara y en la pantalla bloqueada; desactívela con × o desde el Centro de control. iOS la quita tras 8 horas; al abrir la app vuelve."
+            "value": "Aparece junto a la cámara y en la pantalla bloqueada; desactívela aquí o desde el Centro de control. iOS la quita tras 8 horas; al abrir la app vuelve."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aparece ao lado da câmera e na tela bloqueada; desative com × ou na Central de Controle. O iOS o remove após 8 horas; ao abrir o app, ele volta."
+            "value": "Aparece ao lado da câmera e na tela bloqueada; desative aqui ou na Central de Controle. O iOS o remove após 8 horas; ao abrir o app, ele volta."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "कैमरे के पास और लॉक स्क्रीन पर दिखता है; × से या कंट्रोल सेंटर से बंद करें। iOS इसे 8 घंटे बाद हटा देता है; ऐप खोलने पर लौट आता है।"
+            "value": "कैमरे के पास और लॉक स्क्रीन पर दिखता है; यहाँ से या कंट्रोल सेंटर से बंद करें। iOS इसे 8 घंटे बाद हटा देता है; ऐप खोलने पर लौट आता है।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "ক্যামেরার পাশে ও লক স্ক্রিনে দেখা যায়; × দিয়ে বা কন্ট্রোল সেন্টার থেকে বন্ধ করুন। iOS 8 ঘণ্টা পর এটি সরিয়ে দেয়; অ্যাপ খুললে আবার আসে।"
+            "value": "ক্যামেরার পাশে ও লক স্ক্রিনে দেখা যায়; এখান থেকে বা কন্ট্রোল সেন্টার থেকে বন্ধ করুন। iOS 8 ঘণ্টা পর এটি সরিয়ে দেয়; অ্যাপ খুললে আবার আসে।"
           }
         }
       }
@@ -460537,115 +460537,115 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sıcaklık durum çubuğunda ve kilit ekranında görünür; bildirimdeki Kapat ile, Hızlı Ayarlar'dan ya da buradan kapatılır. Saatte bir yenilenir."
+            "value": "Sıcaklık durum çubuğunda ve kilit ekranında görünür; Hızlı Ayarlar'dan ya da buradan kapatılır. Saatte bir yenilenir."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The temperature appears in the status bar and on the lock screen; turn it off with Close in the notification, from Quick Settings or here. It refreshes hourly."
+            "value": "The temperature appears in the status bar and on the lock screen; turn it off from Quick Settings or here. It refreshes hourly."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Temperatur erscheint in der Statusleiste und auf dem Sperrbildschirm; ausschalten mit „Schließen“ in der Benachrichtigung, in den Schnelleinstellungen oder hier. Stündlich aktualisiert."
+            "value": "Die Temperatur erscheint in der Statusleiste und auf dem Sperrbildschirm; in den Schnelleinstellungen oder hier ausschalten. Stündlich aktualisiert."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Temperatur status sətrində və kilid ekranında görünür; bildirişdəki Bağla ilə, Sürətli Ayarlardan ya da buradan bağlanır. Saatda bir yenilənir."
+            "value": "Temperatur status sətrində və kilid ekranında görünür; Sürətli Ayarlardan ya da buradan bağlanır. Saatda bir yenilənir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تظهر درجة الحرارة في شريط الحالة وعلى شاشة القفل؛ أوقفها بزر الإغلاق في الإشعار أو من الإعدادات السريعة أو من هنا. تتجدد كل ساعة."
+            "value": "تظهر درجة الحرارة في شريط الحالة وعلى شاشة القفل؛ أوقفها من الإعدادات السريعة أو من هنا. تتجدد كل ساعة."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Suhu tampil di bilah status dan layar kunci; matikan dengan Tutup di notifikasi, dari Setelan Cepat, atau di sini. Diperbarui tiap jam."
+            "value": "Suhu tampil di bilah status dan layar kunci; matikan dari Setelan Cepat atau di sini. Diperbarui tiap jam."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "درجۂ حرارت اسٹیٹس بار اور لاک اسکرین پر دکھتا ہے؛ اطلاع میں بند کریں سے، فوری ترتیبات سے یا یہاں سے بند کریں۔ ہر گھنٹے تازہ ہوتا ہے۔"
+            "value": "درجۂ حرارت اسٹیٹس بار اور لاک اسکرین پر دکھتا ہے؛ فوری ترتیبات سے یا یہاں سے بند کریں۔ ہر گھنٹے تازہ ہوتا ہے۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "دما در نوار وضعیت و صفحهٔ قفل دیده می‌شود؛ با «بستن» در اعلان، از تنظیمات سریع یا همین‌جا خاموشش کنید. هر ساعت به‌روز می‌شود."
+            "value": "دما در نوار وضعیت و صفحهٔ قفل دیده می‌شود؛ از تنظیمات سریع یا همین‌جا خاموشش کنید. هر ساعت به‌روز می‌شود."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La température s'affiche dans la barre d'état et sur l'écran de verrouillage ; désactivez-la avec Fermer dans la notification, depuis les Réglages rapides ou ici. Actualisée toutes les heures."
+            "value": "La température s'affiche dans la barre d'état et sur l'écran de verrouillage ; désactivez-la depuis les Réglages rapides ou ici. Actualisée toutes les heures."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Температура видна в строке состояния и на экране блокировки; выключается кнопкой «Закрыть» в уведомлении, в быстрых настройках или здесь. Обновляется раз в час."
+            "value": "Температура видна в строке состояния и на экране блокировки; выключается в быстрых настройках или здесь. Обновляется раз в час."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "気温がステータスバーとロック画面に表示されます。通知の「閉じる」、クイック設定、またはここでオフにできます。1時間ごとに更新します。"
+            "value": "気温がステータスバーとロック画面に表示されます。クイック設定またはここでオフにできます。1時間ごとに更新します。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "기온이 상태 표시줄과 잠금 화면에 표시됩니다. 알림의 닫기, 빠른 설정 또는 여기에서 끌 수 있습니다. 1시간마다 새로 고칩니다."
+            "value": "기온이 상태 표시줄과 잠금 화면에 표시됩니다. 빠른 설정 또는 여기에서 끌 수 있습니다. 1시간마다 새로 고칩니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "气温显示在状态栏和锁定屏幕上；可用通知中的“关闭”、快捷设置或在此处关闭。每小时更新一次。"
+            "value": "气温显示在状态栏和锁定屏幕上；可在快捷设置或此处关闭。每小时更新一次。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lumalabas ang temperatura sa status bar at lock screen; patayin gamit ang Isara sa notification, sa Quick Settings, o dito. Nire-refresh bawat oras."
+            "value": "Lumalabas ang temperatura sa status bar at lock screen; patayin sa Quick Settings o dito. Nire-refresh bawat oras."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "อุณหภูมิแสดงในแถบสถานะและหน้าจอล็อก ปิดได้ด้วยปุ่มปิดในการแจ้งเตือน จากการตั้งค่าด่วน หรือที่นี่ อัปเดตทุกชั่วโมง"
+            "value": "อุณหภูมิแสดงในแถบสถานะและหน้าจอล็อก ปิดได้จากการตั้งค่าด่วนหรือที่นี่ อัปเดตทุกชั่วโมง"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La temperatura aparece en la barra de estado y en la pantalla de bloqueo; desactívela con Cerrar en la notificación, desde Ajustes rápidos o aquí. Se actualiza cada hora."
+            "value": "La temperatura aparece en la barra de estado y en la pantalla de bloqueo; desactívela desde Ajustes rápidos o aquí. Se actualiza cada hora."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A temperatura aparece na barra de status e na tela de bloqueio; desative com Fechar na notificação, nas Configurações rápidas ou aqui. Atualiza a cada hora."
+            "value": "A temperatura aparece na barra de status e na tela de bloqueio; desative nas Configurações rápidas ou aqui. Atualiza a cada hora."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "तापमान स्टेटस बार और लॉक स्क्रीन पर दिखता है; सूचना के \"बंद करें\" बटन से, क्विक सेटिंग्स से या यहाँ से बंद करें। हर घंटे ताज़ा होता है।"
+            "value": "तापमान स्टेटस बार और लॉक स्क्रीन पर दिखता है; क्विक सेटिंग्स से या यहाँ से बंद करें। हर घंटे ताज़ा होता है।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "তাপমাত্রা স্ট্যাটাস বারে ও লক স্ক্রিনে দেখা যায়; নোটিফিকেশনের বন্ধ করুন দিয়ে, কুইক সেটিংস থেকে বা এখান থেকে বন্ধ করুন। প্রতি ঘণ্টায় হালনাগাদ হয়।"
+            "value": "তাপমাত্রা স্ট্যাটাস বারে ও লক স্ক্রিনে দেখা যায়; কুইক সেটিংস থেকে বা এখান থেকে বন্ধ করুন। প্রতি ঘণ্টায় হালনাগাদ হয়।"
           }
         }
       }
@@ -498726,6 +498726,1910 @@
           "stringUnit": {
             "state": "translated",
             "value": "একবার"
+          }
+        }
+      }
+    },
+    "weather.cards": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartları sırala"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reorder cards"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karten anordnen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartları sırala"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ترتيب البطاقات"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Urutkan kartu"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کارڈز ترتیب دیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مرتب‌کردن کارت‌ها"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réorganiser les cartes"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Порядок карточек"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カードを並べ替え"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "카드 순서 바꾸기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调整卡片顺序"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayusin ang mga card"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "จัดเรียงการ์ด"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordenar tarjetas"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Organizar cartões"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कार्ड का क्रम बदलें"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কার্ড সাজান"
+          }
+        }
+      }
+    },
+    "weather.cardsHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava ekranında bir kartı basılı tutup sürükleyerek de yerini değiştirebilirsiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can also press and hold a card on the weather screen and drag it to a new place."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sie können eine Karte auf dem Wetterbildschirm auch gedrückt halten und an eine neue Stelle ziehen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava ekranında bir kartı basılı saxıb sürüşdürərək də yerini dəyişə bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يمكنك أيضًا الضغط مطولًا على بطاقة في شاشة الطقس وسحبها إلى مكان جديد."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anda juga bisa menekan lama sebuah kartu di layar cuaca dan menyeretnya ke tempat baru."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "موسم کی اسکرین پر کسی کارڈ کو دبائے رکھ کر نئی جگہ گھسیٹ بھی سکتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "می‌توانید در صفحهٔ آب‌وهوا کارتی را نگه دارید و به جای تازه بکشید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vous pouvez aussi maintenir une carte de l'écran météo et la faire glisser à un autre endroit."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Карточку на экране погоды можно также удержать и перетащить на новое место."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天気画面でカードを長押ししてドラッグしても並べ替えられます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날씨 화면에서 카드를 길게 눌러 끌어 옮길 수도 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "也可以在天气页面长按卡片并拖动到新位置。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puwede ring pindutin nang matagal ang card sa screen ng panahon at i-drag ito sa bagong puwesto."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กดการ์ดค้างไว้บนหน้าจอสภาพอากาศแล้วลากไปยังตำแหน่งใหม่ได้เช่นกัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "También puede mantener pulsada una tarjeta en la pantalla del tiempo y arrastrarla a otro lugar."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Você também pode tocar e segurar um cartão na tela do tempo e arrastá-lo para outro lugar."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मौसम स्क्रीन पर किसी कार्ड को दबाकर रखें और नई जगह खींच भी सकते हैं।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আবহাওয়ার স্ক্রিনে কোনো কার্ড চেপে ধরে টেনে নতুন জায়গায় নিতেও পারেন।"
+          }
+        }
+      }
+    },
+    "weather.card.chart": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatlik grafik"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hourly chart"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stündliches Diagramm"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatlıq qrafik"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الرسم البياني بالساعة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grafik per jam"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گھنٹہ وار گراف"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نمودار ساعتی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Graphique horaire"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почасовой график"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1時間ごとのグラフ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시간별 그래프"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "逐小时图表"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oras-oras na tsart"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กราฟรายชั่วโมง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gráfico por horas"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gráfico por hora"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "घंटेवार चार्ट"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ঘণ্টাভিত্তিক চার্ট"
+          }
+        }
+      }
+    },
+    "weather.card.sun": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş ve Ay yayı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sun and Moon arc"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnen- und Mondbogen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günəş və Ay qövsü"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قوس الشمس والقمر"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Busur Matahari dan Bulan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سورج اور چاند کی قوس"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کمان خورشید و ماه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Course du Soleil et de la Lune"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дуга Солнца и Луны"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "太陽と月の軌道"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "해와 달의 궤적"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日月弧线"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arko ng Araw at Buwan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เส้นทางดวงอาทิตย์และดวงจันทร์"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arco del Sol y la Luna"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arco do Sol e da Lua"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सूर्य और चंद्रमा का पथ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সূর্য ও চাঁদের পথ"
+          }
+        }
+      }
+    },
+    "notify.cat.hourly.every": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıklık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frequency"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Häufigkeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tezlik"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التكرار"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frekuensi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقفہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بسامد"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fréquence"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Частота"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "頻度"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "빈도"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "频率"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dalas"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ความถี่"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frecuencia"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frequência"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आवृत्ति"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কতক্ষণ পরপর"
+          }
+        }
+      }
+    },
+    "notify.cat.hourly.every.60": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her saat başı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every hour"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jede volle Stunde"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hər saat başı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كل ساعة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setiap jam"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہر گھنٹے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هر ساعت"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toutes les heures"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Каждый час"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1時間ごと"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1시간마다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每小时"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bawat oras"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทุกชั่วโมง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cada hora"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A cada hora"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हर घंटे"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "প্রতি ঘণ্টায়"
+          }
+        }
+      }
+    },
+    "notify.cat.hourly.every.30": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yarım saatte bir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every 30 minutes"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle 30 Minuten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yarım saatdan bir"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كل 30 دقيقة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setiap 30 menit"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہر 30 منٹ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هر 30 دقیقه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toutes les 30 minutes"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Каждые 30 минут"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30分ごと"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30분마다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每 30 分钟"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bawat 30 minuto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทุก 30 นาที"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cada 30 minutos"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A cada 30 minutos"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हर 30 मिनट"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "প্রতি 30 মিনিটে"
+          }
+        }
+      }
+    },
+    "notify.cat.hourly.every.15": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çeyrek saatte bir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every 15 minutes"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle 15 Minuten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rüb saatdan bir"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كل 15 دقيقة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setiap 15 menit"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہر 15 منٹ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هر 15 دقیقه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toutes les 15 minutes"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Каждые 15 минут"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15分ごと"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15분마다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每 15 分钟"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bawat 15 minuto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทุก 15 นาที"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cada 15 minutos"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A cada 15 minutos"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हर 15 मिनट"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "প্রতি 15 মিনিটে"
+          }
+        }
+      }
+    },
+    "notify.cat.hourly.sound": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ses"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sound"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ton"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səs"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الصوت"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suara"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آواز"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صدا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Звук"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サウンド"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "소리"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "声音"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tunog"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เสียง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonido"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Som"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ध्वनि"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "শব্দ"
+          }
+        }
+      }
+    },
+    "notify.cat.hourly.sound.system": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirim sesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notification sound"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitteilungston"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildiriş səsi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صوت الإشعار"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suara notifikasi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اطلاع کی آواز"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صدای اعلان"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son de notification"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Звук уведомления"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知音"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알림음"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知提示音"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tunog ng notification"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เสียงการแจ้งเตือน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonido de notificación"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Som de notificação"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सूचना की ध्वनि"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "নোটিফিকেশনের শব্দ"
+          }
+        }
+      }
+    },
+    "notify.cat.hourly.sound.voice": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saati sesli söyle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speak the time"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uhrzeit ansagen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatı səsli de"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نطق الوقت"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ucapkan waktu"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقت بول کر بتائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گفتن ساعت"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annoncer l'heure"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Озвучивать время"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "時刻を読み上げる"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시간 읽어 주기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播报时间"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabihin ang oras"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พูดบอกเวลา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decir la hora"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Falar a hora"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "समय बोलकर बताएँ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সময় বলে দিন"
+          }
+        }
+      }
+    },
+    "notify.cat.hourly.sound.weather": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saati ve havayı sesli söyle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speak the time and weather"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uhrzeit und Wetter ansagen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatı və havanı səsli de"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نطق الوقت والطقس"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ucapkan waktu dan cuaca"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقت اور موسم بول کر بتائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گفتن ساعت و آب‌وهوا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annoncer l'heure et la météo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Озвучивать время и погоду"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "時刻と天気を読み上げる"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시간과 날씨 읽어 주기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播报时间和天气"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabihin ang oras at panahon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พูดบอกเวลาและสภาพอากาศ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decir la hora y el tiempo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Falar a hora e o tempo"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "समय और मौसम बोलकर बताएँ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সময় ও আবহাওয়া বলে দিন"
+          }
+        }
+      }
+    },
+    "notify.cat.hourly.speakNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kısa bir zilden sonra telefonun konuşma sesiyle söylenir; telefon sessizdeyken duyulmaz. Hava, o saatin Apple Hava Durumu tahminidir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spoken in the phone's voice after a short chime; you won't hear it while the phone is on silent. The weather is Apple Weather's forecast for that hour."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nach einem kurzen Gong mit der Stimme des Telefons angesagt; im Stummmodus nicht hörbar. Das Wetter ist die Vorhersage von Apple Wetter für diese Stunde."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qısa zəngdən sonra telefonun danışıq səsi ilə deyilir; telefon səssizdə olanda eşidilmir. Hava o saat üçün Apple Hava proqnozudur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُنطق بصوت الهاتف بعد رنين قصير، ولا يُسمع والهاتف في الوضع الصامت. الطقس هو توقع Apple Weather لتلك الساعة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diucapkan dengan suara ponsel setelah bunyi singkat; tidak terdengar saat ponsel dalam mode senyap. Cuaca adalah prakiraan Apple Weather untuk jam tersebut."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مختصر گھنٹی کے بعد فون کی آواز میں بولا جاتا ہے؛ فون خاموش ہو تو سنائی نہیں دیتا۔ موسم اس گھنٹے کی Apple Weather پیشگوئی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پس از زنگی کوتاه با صدای گوشی گفته می‌شود؛ وقتی گوشی بی‌صداست شنیده نمی‌شود. آب‌وهوا پیش‌بینی Apple Weather برای همان ساعت است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annoncé avec la voix du téléphone après un court carillon ; inaudible en mode silencieux. La météo est la prévision d'Apple Météo pour cette heure."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Произносится голосом телефона после короткого сигнала; в беззвучном режиме не слышно. Погода — прогноз Apple Погоды на этот час."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "短いチャイムのあと端末の音声で読み上げます。消音モード中は聞こえません。天気はその時刻のApple天気の予報です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "짧은 알림음 뒤에 휴대폰 음성으로 읽어 줍니다. 무음 모드에서는 들리지 않습니다. 날씨는 그 시각의 Apple 날씨 예보입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "短促提示音后用手机语音播报；静音时听不到。天气为 Apple 天气对该时刻的预报。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sinasabi sa boses ng telepono pagkatapos ng maikling tunog; hindi maririnig kapag naka-silent ang telepono. Ang panahon ay forecast ng Apple Weather para sa oras na iyon."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พูดด้วยเสียงของโทรศัพท์หลังเสียงกริ่งสั้น ๆ ไม่ได้ยินเมื่อโทรศัพท์อยู่ในโหมดเงียบ สภาพอากาศเป็นการพยากรณ์ของ Apple Weather สำหรับชั่วโมงนั้น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se dice con la voz del teléfono tras un breve aviso; no se oye con el teléfono en silencio. El tiempo es la previsión de Apple Tiempo para esa hora."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Falado com a voz do telefone após um toque curto; não é ouvido com o telefone no silencioso. O tempo é a previsão do Apple Tempo para aquela hora."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "छोटी घंटी के बाद फ़ोन की आवाज़ में बोला जाता है; फ़ोन साइलेंट पर हो तो सुनाई नहीं देता। मौसम उस घंटे का Apple Weather पूर्वानुमान है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ছোট একটি ঘণ্টাধ্বনির পর ফোনের কণ্ঠে বলা হয়; ফোন নীরব থাকলে শোনা যায় না। আবহাওয়া হলো সেই ঘণ্টার Apple Weather পূর্বাভাস।"
+          }
+        }
+      }
+    },
+    "notify.cat.hourly.speakNoteAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonun konuşma sesiyle söylenir; telefon sessiz ya da titreşimdeyken söylenmez. Hava, o saatin tahminidir (Open-Meteo)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spoken in the phone's voice; nothing is spoken while the phone is on silent or vibrate. The weather is the forecast for that hour (Open-Meteo)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit der Stimme des Telefons angesagt; im Stumm- oder Vibrationsmodus wird nichts angesagt. Das Wetter ist die Vorhersage für diese Stunde (Open-Meteo)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonun danışıq səsi ilə deyilir; telefon səssizdə ya da vibrasiyada olanda deyilmir. Hava o saatın proqnozudur (Open-Meteo)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُنطق بصوت الهاتف، ولا يُنطق شيء والهاتف صامت أو على الاهتزاز. الطقس هو توقع تلك الساعة (Open-Meteo)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diucapkan dengan suara ponsel; tidak ada yang diucapkan saat ponsel senyap atau bergetar. Cuaca adalah prakiraan untuk jam tersebut (Open-Meteo)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فون کی آواز میں بولا جاتا ہے؛ فون خاموش یا وائبریشن پر ہو تو کچھ نہیں بولا جاتا۔ موسم اس گھنٹے کی پیشگوئی ہے (Open-Meteo)۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "با صدای گوشی گفته می‌شود؛ وقتی گوشی بی‌صدا یا روی لرزش است چیزی گفته نمی‌شود. آب‌وهوا پیش‌بینی همان ساعت است (Open-Meteo)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annoncé avec la voix du téléphone ; rien n'est annoncé en mode silencieux ou vibreur. La météo est la prévision pour cette heure (Open-Meteo)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Произносится голосом телефона; в беззвучном режиме и режиме вибрации ничего не произносится. Погода — прогноз на этот час (Open-Meteo)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "端末の音声で読み上げます。マナーモードやバイブ中は読み上げません。天気はその時刻の予報です（Open-Meteo）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "휴대폰 음성으로 읽어 줍니다. 무음 또는 진동 모드에서는 읽지 않습니다. 날씨는 그 시각의 예보입니다(Open-Meteo)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用手机语音播报；静音或振动时不播报。天气为该时刻的预报（Open-Meteo）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sinasabi sa boses ng telepono; walang sinasabi kapag naka-silent o vibrate ang telepono. Ang panahon ay forecast para sa oras na iyon (Open-Meteo)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พูดด้วยเสียงของโทรศัพท์ จะไม่พูดเมื่อโทรศัพท์อยู่ในโหมดเงียบหรือสั่น สภาพอากาศเป็นการพยากรณ์ของชั่วโมงนั้น (Open-Meteo)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se dice con la voz del teléfono; no se dice nada con el teléfono en silencio o vibración. El tiempo es la previsión para esa hora (Open-Meteo)."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Falado com a voz do telefone; nada é falado com o telefone no silencioso ou vibrando. O tempo é a previsão para aquela hora (Open-Meteo)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ोन की आवाज़ में बोला जाता है; फ़ोन साइलेंट या वाइब्रेट पर हो तो कुछ नहीं बोला जाता। मौसम उस घंटे का पूर्वानुमान है (Open-Meteo)।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ফোনের কণ্ঠে বলা হয়; ফোন নীরব বা ভাইব্রেশনে থাকলে কিছু বলা হয় না। আবহাওয়া হলো সেই ঘণ্টার পূর্বাভাস (Open-Meteo)।"
+          }
+        }
+      }
+    },
+    "notify.n.hourlyWeather": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@، %2$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@، %2$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@، %2$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@、%2$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@，%2$@"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "notify.spoken.hourlyWeather": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@۔ %2$@۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@。%2$@。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@。%2$@。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@. %2$@."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@। %2$@।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@। %2$@।"
           }
         }
       }

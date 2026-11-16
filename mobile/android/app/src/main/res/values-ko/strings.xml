@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">매일 아침 선택한 곳의 그날 예보.</string>
     <string name="notify_cat_weather_time">시간</string>
     <string name="notify_cat_hourly">정각</string>
-    <string name="notify_cat_hourly_note">고른 시간대에 정각마다 짧은 알림.</string>
+    <string name="notify_cat_hourly_note">고른 시각과 요일에 짧은 알림. 시간과 날씨를 읽어 줄 수도 있습니다.</string>
     <string name="notify_cat_hourly_from">시작</string>
     <string name="notify_cat_hourly_to">끝</string>
     <string name="notify_cat_dst">서머타임 전환</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">햇빛은 선택한 곳의 태양을 따라 새벽, 아침, 오후, 저녁, 밤의 색으로 바뀝니다.</string>
     <string name="common_how">작동 방식</string>
     <string name="live_weather_toggle">잠금 화면과 Dynamic Island에 표시</string>
-    <string name="live_weather_note">카메라 옆과 잠금 화면에 표시됩니다. × 또는 제어 센터에서 끌 수 있습니다. iOS는 8시간 후 제거하며, 앱을 열면 다시 나타납니다.</string>
+    <string name="live_weather_note">카메라 옆과 잠금 화면에 표시됩니다. 여기 또는 제어 센터에서 끌 수 있습니다. iOS는 8시간 후 제거하며, 앱을 열면 다시 나타납니다.</string>
     <string name="live_weather_hide">날씨 끄기</string>
     <string name="live_weather_control">잠금 화면 날씨</string>
     <string name="live_weather_toggleAndroid">상태 표시줄과 잠금 화면에 표시</string>
-    <string name="live_weather_noteAndroid">기온이 상태 표시줄과 잠금 화면에 표시됩니다. 알림의 닫기, 빠른 설정 또는 여기에서 끌 수 있습니다. 1시간마다 새로 고칩니다.</string>
+    <string name="live_weather_noteAndroid">기온이 상태 표시줄과 잠금 화면에 표시됩니다. 빠른 설정 또는 여기에서 끌 수 있습니다. 1시간마다 새로 고칩니다.</string>
     <string name="about_credits">아이콘: Microsoft Fluent Emoji, Phosphor Icons (MIT 라이선스). 글꼴: Literata, Amiri (SIL Open Font License).</string>
     <string name="about_license">Fluent Emoji 라이선스</string>
     <string name="about_licensePhosphor">Phosphor Icons 라이선스</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">지난 1시간 동안 이 지역의 제보가 없습니다.</string>
     <string name="wxr_wait">10분에 한 번 제보할 수 있습니다.</string>
     <string name="group_a_once">한 번</string>
+    <string name="weather_cards">카드 순서 바꾸기</string>
+    <string name="weather_cardsHint">날씨 화면에서 카드를 길게 눌러 끌어 옮길 수도 있습니다.</string>
+    <string name="weather_card_chart">시간별 그래프</string>
+    <string name="weather_card_sun">해와 달의 궤적</string>
+    <string name="notify_cat_hourly_every">빈도</string>
+    <string name="notify_cat_hourly_every_60">1시간마다</string>
+    <string name="notify_cat_hourly_every_30">30분마다</string>
+    <string name="notify_cat_hourly_every_15">15분마다</string>
+    <string name="notify_cat_hourly_sound">소리</string>
+    <string name="notify_cat_hourly_sound_system">알림음</string>
+    <string name="notify_cat_hourly_sound_voice">시간 읽어 주기</string>
+    <string name="notify_cat_hourly_sound_weather">시간과 날씨 읽어 주기</string>
+    <string name="notify_cat_hourly_speakNote">짧은 알림음 뒤에 휴대폰 음성으로 읽어 줍니다. 무음 모드에서는 들리지 않습니다. 날씨는 그 시각의 Apple 날씨 예보입니다.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">휴대폰 음성으로 읽어 줍니다. 무음 또는 진동 모드에서는 읽지 않습니다. 날씨는 그 시각의 예보입니다(Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s, %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

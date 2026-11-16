@@ -41,6 +41,7 @@ struct GlobeView: View {
                             .background(.black.opacity(0.55), in: Circle())
                             .foregroundStyle(.white)
                     }
+                    .buttonStyle(.borderless) // List satırında yalnız kendi dokunuşuna yanıt versin
                     .accessibilityLabel(L(fullscreen ? "client.exitFullscreen" : "client.fullscreen"))
                     .padding(fullscreen ? 16 : 10)
                 }
@@ -54,7 +55,7 @@ struct GlobeView: View {
                         Label(L("globe.reset"), systemImage: "globe")
                     }
                     .font(.footnote.weight(.semibold))
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.borderedProminent) // borderedProminent List satırında da yalnız kendi dokunuşuna yanıt verir
                     .tint(.black.opacity(0.55))
                     .padding(10)
                 }

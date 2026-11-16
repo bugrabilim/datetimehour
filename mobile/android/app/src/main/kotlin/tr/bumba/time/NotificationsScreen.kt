@@ -20,6 +20,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -156,6 +162,44 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
                 TimeChoice(L("notify.cat.hourly.to"), FeaturePrefs.hourlyTo, (0..23).toList(), { minutesLabel(it * 60) }) {
                     FeaturePrefs.hourlyTo = it
                     changed()
+                }
+                // Sıklık, günler ve sesli saat/hava (16 Kasım 2026, sahibin isteği)
+                RowDivider()
+                TimeChoice(L("notify.cat.hourly.every"), FeaturePrefs.hourlyEvery, FeaturePrefs.HOURLY_EVERY, { L("notify.cat.hourly.every.$it") }) {
+                    FeaturePrefs.hourlyEvery = it
+                    changed()
+                }
+                RowDivider()
+                var sound by remember { mutableStateOf(FeaturePrefs.hourlySound) }
+                TimeChoice(L("notify.cat.hourly.sound"), FeaturePrefs.HOURLY_SOUNDS.indexOf(sound), FeaturePrefs.HOURLY_SOUNDS.indices.toList(),
+                    { L("notify.cat.hourly.sound.${FeaturePrefs.HOURLY_SOUNDS[it]}") }) {
+                    sound = FeaturePrefs.HOURLY_SOUNDS[it]
+                    FeaturePrefs.hourlySound = sound
+                    changed()
+                }
+                RowDivider()
+                var days by remember { mutableStateOf(FeaturePrefs.hourlyDays) }
+                Column(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(L("alarm.days"), color = Theme.c.text, fontSize = 15.sp)
+                    Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        for (d in 1..7) {
+                            val sel = d in days
+                            Box(
+                                Modifier.weight(1f).height(34.dp).clip(RoundedCornerShape(17.dp))
+                                    .background(if (sel) Theme.c.accentSoft else Theme.c.surface2)
+                                    .clickable {
+                                        val next = if (sel) days - d else days + d
+                                        if (next.isNotEmpty()) { days = next; FeaturePrefs.hourlyDays = next; changed() }
+                                    }
+                                    .semantics { contentDescription = L("tools.alarm.dayNames.${d - 1}"); selected = sel },
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                Text(L("calendar.weekdaysShort.${d - 1}"), color = if (sel) Theme.c.accent else Theme.c.muted, fontSize = 13.sp,
+                                    fontWeight = if (sel) FontWeight.SemiBold else FontWeight.Normal)
+                            }
+                        }
+                    }
+                    if (sound != "system") Text(L("notify.cat.hourly.speakNoteAndroid"), color = Theme.c.muted, fontSize = 12.sp)
                 }
             }
             RowDivider()

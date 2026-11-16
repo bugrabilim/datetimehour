@@ -194,14 +194,8 @@ object LiveNotifications {
         // Android 16 canlı güncelleme (2. analiz #170): durum çubuğunda çip olarak öne çıkar; vakitte çipte vaktin adı
         .setRequestPromotedOngoing(true)
         .apply { if (it.key == "prayer") setShortCriticalText(it.title.take(12)) }
-        // Hava: çipte sıcaklık, bildirimde "Kapat"
-        .apply {
-            it.chip?.let { chip ->
-                setShortCriticalText(chip)
-                addAction(0, L("common.close"), PendingIntent.getBroadcast(c, nid(it.key),
-                    Intent(c, LiveWeatherOffReceiver::class.java), PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
-            }
-        }
+        // Hava: çipte sıcaklık (bildirimdeki "Kapat" 16 Kasım 2026'da sahibin isteğiyle kalktı; kapatmak Hava ekranından ya da kutucuktan)
+        .apply { it.chip?.let { chip -> setShortCriticalText(chip) } }
         .setContentIntent(PendingIntent.getActivity(c, nid(it.key),
             Intent(c, MainActivity::class.java).putExtra("startTab", it.tab.ordinal).apply { it.tool?.let { t -> putExtra("tool", t) } }
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP),
@@ -234,9 +228,4 @@ class LiveRefreshReceiver : BroadcastReceiver() {
             }
         }
     }
-}
-
-/** Hava bildirimindeki "Kapat" */
-class LiveWeatherOffReceiver : BroadcastReceiver() {
-    override fun onReceive(c: Context, intent: Intent) = LiveNotifications.setWeather(c, false)
 }

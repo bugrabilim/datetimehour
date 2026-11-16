@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">Ang forecast ng araw para sa napiling lugar tuwing umaga.</string>
     <string name="notify_cat_weather_time">Oras</string>
     <string name="notify_cat_hourly">Tuwing eksaktong oras</string>
-    <string name="notify_cat_hourly_note">Maikling abiso tuwing eksaktong oras sa pagitan ng mga oras na pinili mo.</string>
+    <string name="notify_cat_hourly_note">Maikling abiso sa mga oras at araw na pinili mo; puwede ring sabihin ang oras at panahon.</string>
     <string name="notify_cat_hourly_from">Mula</string>
     <string name="notify_cat_hourly_to">Hanggang</string>
     <string name="notify_cat_dst">Pagbabago ng daylight saving</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">Sumusunod ang Liwanag ng araw sa araw sa napiling lugar: kulay ng bukang-liwayway, umaga, hapon, gabi o hatinggabi.</string>
     <string name="common_how">Paano ito gumagana</string>
     <string name="live_weather_toggle">Ipakita sa Lock Screen at Dynamic Island</string>
-    <string name="live_weather_note">Lumalabas sa tabi ng camera at sa Lock Screen; patayin gamit ang × o sa Control Center. Inaalis ito ng iOS pagkalipas ng 8 oras; babalik kapag binuksan ang app.</string>
+    <string name="live_weather_note">Lumalabas sa tabi ng camera at sa Lock Screen; patayin dito o sa Control Center. Inaalis ito ng iOS pagkalipas ng 8 oras; babalik kapag binuksan ang app.</string>
     <string name="live_weather_hide">Patayin ang panahon</string>
     <string name="live_weather_control">Panahon sa Lock Screen</string>
     <string name="live_weather_toggleAndroid">Ipakita sa status bar at lock screen</string>
-    <string name="live_weather_noteAndroid">Lumalabas ang temperatura sa status bar at lock screen; patayin gamit ang Isara sa notification, sa Quick Settings, o dito. Nire-refresh bawat oras.</string>
+    <string name="live_weather_noteAndroid">Lumalabas ang temperatura sa status bar at lock screen; patayin sa Quick Settings o dito. Nire-refresh bawat oras.</string>
     <string name="about_credits">Mga icon: Microsoft Fluent Emoji at Phosphor Icons (MIT License). Mga font: Literata at Amiri (SIL Open Font License).</string>
     <string name="about_license">Lisensya ng Fluent Emoji</string>
     <string name="about_licensePhosphor">Lisensya ng Phosphor Icons</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">Walang report mula sa lugar na ito sa nakaraang oras.</string>
     <string name="wxr_wait">Puwede kang mag-report isang beses kada 10 minuto.</string>
     <string name="group_a_once">Isang beses</string>
+    <string name="weather_cards">Ayusin ang mga card</string>
+    <string name="weather_cardsHint">Puwede ring pindutin nang matagal ang card sa screen ng panahon at i-drag ito sa bagong puwesto.</string>
+    <string name="weather_card_chart">Oras-oras na tsart</string>
+    <string name="weather_card_sun">Arko ng Araw at Buwan</string>
+    <string name="notify_cat_hourly_every">Dalas</string>
+    <string name="notify_cat_hourly_every_60">Bawat oras</string>
+    <string name="notify_cat_hourly_every_30">Bawat 30 minuto</string>
+    <string name="notify_cat_hourly_every_15">Bawat 15 minuto</string>
+    <string name="notify_cat_hourly_sound">Tunog</string>
+    <string name="notify_cat_hourly_sound_system">Tunog ng notification</string>
+    <string name="notify_cat_hourly_sound_voice">Sabihin ang oras</string>
+    <string name="notify_cat_hourly_sound_weather">Sabihin ang oras at panahon</string>
+    <string name="notify_cat_hourly_speakNote">Sinasabi sa boses ng telepono pagkatapos ng maikling tunog; hindi maririnig kapag naka-silent ang telepono. Ang panahon ay forecast ng Apple Weather para sa oras na iyon.</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">Sinasabi sa boses ng telepono; walang sinasabi kapag naka-silent o vibrate ang telepono. Ang panahon ay forecast para sa oras na iyon (Open-Meteo).</string>
+    <string name="notify_n_hourlyWeather">%1$s, %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s. %2$s.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

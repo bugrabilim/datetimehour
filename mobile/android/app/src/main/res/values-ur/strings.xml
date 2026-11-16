@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">ہر صبح منتخب جگہ کی دن بھر کی پیش گوئی۔</string>
     <string name="notify_cat_weather_time">وقت</string>
     <string name="notify_cat_hourly">ہر گھنٹے</string>
-    <string name="notify_cat_hourly_note">آپ کے منتخب اوقات کے درمیان ہر گھنٹے کے آغاز پر مختصر اطلاع۔</string>
+    <string name="notify_cat_hourly_note">آپ کے منتخب اوقات اور دنوں میں مختصر اطلاع؛ چاہیں تو وقت اور موسم بول کر بھی بتاتی ہے۔</string>
     <string name="notify_cat_hourly_from">سے</string>
     <string name="notify_cat_hourly_to">تک</string>
     <string name="notify_cat_dst">ڈے لائٹ سیونگ کی تبدیلی</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">دن کی روشنی منتخب جگہ پر سورج کے مطابق بدلتی ہے: فجر، صبح، عصر، شام یا رات کے رنگ۔</string>
     <string name="common_how">یہ کیسے کام کرتا ہے؟</string>
     <string name="live_weather_toggle">لاک اسکرین اور Dynamic Island میں دکھائیں</string>
-    <string name="live_weather_note">کیمرے کے ساتھ اور لاک اسکرین پر دکھتا ہے؛ × سے یا کنٹرول سینٹر سے بند کریں۔ iOS اسے 8 گھنٹے بعد ہٹا دیتا ہے؛ ایپ کھولنے پر واپس آ جاتا ہے۔</string>
+    <string name="live_weather_note">کیمرے کے ساتھ اور لاک اسکرین پر دکھتا ہے؛ یہاں سے یا کنٹرول سینٹر سے بند کریں۔ iOS اسے 8 گھنٹے بعد ہٹا دیتا ہے؛ ایپ کھولنے پر واپس آ جاتا ہے۔</string>
     <string name="live_weather_hide">موسم بند کریں</string>
     <string name="live_weather_control">لاک اسکرین پر موسم</string>
     <string name="live_weather_toggleAndroid">اسٹیٹس بار اور لاک اسکرین پر دکھائیں</string>
-    <string name="live_weather_noteAndroid">درجۂ حرارت اسٹیٹس بار اور لاک اسکرین پر دکھتا ہے؛ اطلاع میں بند کریں سے، فوری ترتیبات سے یا یہاں سے بند کریں۔ ہر گھنٹے تازہ ہوتا ہے۔</string>
+    <string name="live_weather_noteAndroid">درجۂ حرارت اسٹیٹس بار اور لاک اسکرین پر دکھتا ہے؛ فوری ترتیبات سے یا یہاں سے بند کریں۔ ہر گھنٹے تازہ ہوتا ہے۔</string>
     <string name="about_credits">آئیکن: Microsoft Fluent Emoji اور Phosphor Icons (MIT لائسنس)۔ فونٹ: Literata اور Amiri (SIL Open Font License)۔</string>
     <string name="about_license">Fluent Emoji کا لائسنس</string>
     <string name="about_licensePhosphor">Phosphor Icons کا لائسنس</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">پچھلے ایک گھنٹے میں اس علاقے سے کوئی اطلاع نہیں۔</string>
     <string name="wxr_wait">آپ ہر 10 منٹ میں ایک بار اطلاع دے سکتے ہیں۔</string>
     <string name="group_a_once">ایک بار</string>
+    <string name="weather_cards">کارڈز ترتیب دیں</string>
+    <string name="weather_cardsHint">موسم کی اسکرین پر کسی کارڈ کو دبائے رکھ کر نئی جگہ گھسیٹ بھی سکتے ہیں۔</string>
+    <string name="weather_card_chart">گھنٹہ وار گراف</string>
+    <string name="weather_card_sun">سورج اور چاند کی قوس</string>
+    <string name="notify_cat_hourly_every">وقفہ</string>
+    <string name="notify_cat_hourly_every_60">ہر گھنٹے</string>
+    <string name="notify_cat_hourly_every_30">ہر 30 منٹ</string>
+    <string name="notify_cat_hourly_every_15">ہر 15 منٹ</string>
+    <string name="notify_cat_hourly_sound">آواز</string>
+    <string name="notify_cat_hourly_sound_system">اطلاع کی آواز</string>
+    <string name="notify_cat_hourly_sound_voice">وقت بول کر بتائیں</string>
+    <string name="notify_cat_hourly_sound_weather">وقت اور موسم بول کر بتائیں</string>
+    <string name="notify_cat_hourly_speakNote">مختصر گھنٹی کے بعد فون کی آواز میں بولا جاتا ہے؛ فون خاموش ہو تو سنائی نہیں دیتا۔ موسم اس گھنٹے کی Apple Weather پیشگوئی ہے۔</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">فون کی آواز میں بولا جاتا ہے؛ فون خاموش یا وائبریشن پر ہو تو کچھ نہیں بولا جاتا۔ موسم اس گھنٹے کی پیشگوئی ہے (Open-Meteo)۔</string>
+    <string name="notify_n_hourlyWeather">%1$s، %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s۔ %2$s۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

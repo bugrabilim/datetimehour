@@ -2193,7 +2193,7 @@
     <string name="notify_cat_weather_note">चुनी जगह का दिन भर का पूर्वानुमान, हर सुबह।</string>
     <string name="notify_cat_weather_time">समय</string>
     <string name="notify_cat_hourly">हर घंटे</string>
-    <string name="notify_cat_hourly_note">आपके चुने घंटों के बीच हर घंटे पर एक छोटी सूचना।</string>
+    <string name="notify_cat_hourly_note">आपके चुने समय और दिनों पर एक छोटी सूचना; चाहें तो समय और मौसम बोलकर भी बताती है।</string>
     <string name="notify_cat_hourly_from">से</string>
     <string name="notify_cat_hourly_to">तक</string>
     <string name="notify_cat_dst">डेलाइट सेविंग बदलाव</string>
@@ -3867,11 +3867,11 @@
     <string name="atmo_daylightNote">दिन का उजाला चुनी गई जगह पर सूरज के साथ बदलता है: भोर, सुबह, दोपहर बाद, शाम या रात के रंग।</string>
     <string name="common_how">यह कैसे काम करता है</string>
     <string name="live_weather_toggle">लॉक स्क्रीन और डायनेमिक आइलैंड पर दिखाएँ</string>
-    <string name="live_weather_note">कैमरे के पास और लॉक स्क्रीन पर दिखता है; × से या कंट्रोल सेंटर से बंद करें। iOS इसे 8 घंटे बाद हटा देता है; ऐप खोलने पर लौट आता है।</string>
+    <string name="live_weather_note">कैमरे के पास और लॉक स्क्रीन पर दिखता है; यहाँ से या कंट्रोल सेंटर से बंद करें। iOS इसे 8 घंटे बाद हटा देता है; ऐप खोलने पर लौट आता है।</string>
     <string name="live_weather_hide">मौसम बंद करें</string>
     <string name="live_weather_control">लॉक स्क्रीन पर मौसम</string>
     <string name="live_weather_toggleAndroid">स्टेटस बार और लॉक स्क्रीन पर दिखाएँ</string>
-    <string name="live_weather_noteAndroid">तापमान स्टेटस बार और लॉक स्क्रीन पर दिखता है; सूचना के \"बंद करें\" बटन से, क्विक सेटिंग्स से या यहाँ से बंद करें। हर घंटे ताज़ा होता है।</string>
+    <string name="live_weather_noteAndroid">तापमान स्टेटस बार और लॉक स्क्रीन पर दिखता है; क्विक सेटिंग्स से या यहाँ से बंद करें। हर घंटे ताज़ा होता है।</string>
     <string name="about_credits">आइकन: Microsoft Fluent Emoji और Phosphor Icons (MIT लाइसेंस)। फ़ॉन्ट: Literata और Amiri (SIL Open Font License)।</string>
     <string name="about_license">Fluent Emoji का लाइसेंस</string>
     <string name="about_licensePhosphor">Phosphor Icons का लाइसेंस</string>
@@ -4192,5 +4192,21 @@
     <string name="wxr_none">पिछले एक घंटे में इस क्षेत्र से कोई रिपोर्ट नहीं।</string>
     <string name="wxr_wait">आप हर 10 मिनट में एक बार रिपोर्ट कर सकते हैं।</string>
     <string name="group_a_once">एक बार</string>
+    <string name="weather_cards">कार्ड का क्रम बदलें</string>
+    <string name="weather_cardsHint">मौसम स्क्रीन पर किसी कार्ड को दबाकर रखें और नई जगह खींच भी सकते हैं।</string>
+    <string name="weather_card_chart">घंटेवार चार्ट</string>
+    <string name="weather_card_sun">सूर्य और चंद्रमा का पथ</string>
+    <string name="notify_cat_hourly_every">आवृत्ति</string>
+    <string name="notify_cat_hourly_every_60">हर घंटे</string>
+    <string name="notify_cat_hourly_every_30">हर 30 मिनट</string>
+    <string name="notify_cat_hourly_every_15">हर 15 मिनट</string>
+    <string name="notify_cat_hourly_sound">ध्वनि</string>
+    <string name="notify_cat_hourly_sound_system">सूचना की ध्वनि</string>
+    <string name="notify_cat_hourly_sound_voice">समय बोलकर बताएँ</string>
+    <string name="notify_cat_hourly_sound_weather">समय और मौसम बोलकर बताएँ</string>
+    <string name="notify_cat_hourly_speakNote">छोटी घंटी के बाद फ़ोन की आवाज़ में बोला जाता है; फ़ोन साइलेंट पर हो तो सुनाई नहीं देता। मौसम उस घंटे का Apple Weather पूर्वानुमान है।</string>
+    <string name="notify_cat_hourly_speakNoteAndroid">फ़ोन की आवाज़ में बोला जाता है; फ़ोन साइलेंट या वाइब्रेट पर हो तो कुछ नहीं बोला जाता। मौसम उस घंटे का पूर्वानुमान है (Open-Meteo)।</string>
+    <string name="notify_n_hourlyWeather">%1$s, %2$s</string>
+    <string name="notify_spoken_hourlyWeather">%1$s। %2$s।</string>
     <string name="app_name">समय और तारीख</string>
 </resources>
