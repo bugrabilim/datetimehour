@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">계정의 이메일 주소를 입력하면 비밀번호 재설정 링크를 보내 드립니다.</string>
     <string name="account_forgotSend">링크 보내기</string>
     <string name="account_forgotSent">이 주소로 된 계정이 있으면 재설정 링크를 보냈습니다. 링크는 1시간 동안 유효합니다.</string>
+    <string name="account_linkForgotSent">이메일로 링크를 보냈습니다. 열리는 페이지에서 새 비밀번호를 정하세요. 연결된 모든 Bumba 제품에 적용됩니다. 링크는 1시간 동안 유효합니다.</string>
     <string name="account_resetTitle">새 비밀번호 설정</string>
     <string name="account_newPassword">새 비밀번호</string>
     <string name="account_newPassword2">새 비밀번호(다시)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">시도 횟수가 너무 많습니다. 잠시 후 다시 시도하세요.</string>
     <string name="account_err_network">서버에 연결할 수 없습니다. 인터넷 연결을 확인하고 다시 시도하세요.</string>
     <string name="account_err_generic">문제가 발생했습니다. 잠시 후 다시 시도하세요.</string>
+    <string name="account_err_signupDown">지금은 가입할 수 없습니다. 몇 분 후에 다시 시도해 주세요.</string>
     <string name="account_err_email">올바른 이메일 주소를 입력하세요.</string>
     <string name="account_err_password">비밀번호가 위의 조건에 맞지 않습니다.</string>
     <string name="account_err_match">비밀번호가 서로 다릅니다.</string>

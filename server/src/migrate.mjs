@@ -45,7 +45,7 @@ const OWN = [
      day date not null,
      primary key (user_id, badge)
    )`,
-  // Ortak servise ulaşılamayınca yeniden gönderilecek bildirimler (temizlik görevinde)
+  // Ortak servise ulaşılamayınca yeniden gönderilecek bildirimler (relay.mjs, 10 dakikada bir)
   `create table if not exists center_retry (
      id bigserial primary key,
      op text not null,
@@ -53,6 +53,10 @@ const OWN = [
      tries int not null default 0,
      created_at timestamptz not null default now()
    )`,
+  // 5.22: aynı üyenin bekleyenleri birleşir; 1, 2, 4… dakika arayla, en çok günde bir (relay.mjs)
+  `alter table center_retry add column if not exists uye_no bigint`,
+  `alter table center_retry add column if not exists next_at timestamptz not null default now()`,
+  `create index if not exists center_retry_uye on center_retry (uye_no)`,
   // Kendi uçlarımızın deneme sınırı (kayıt sorusu, bağlama): Better Auth'unki gibi veritabanında
   `create table if not exists own_limit (
      key text primary key,

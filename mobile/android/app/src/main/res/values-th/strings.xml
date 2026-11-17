@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">ใส่อีเมลของบัญชี แล้วเราจะส่งลิงก์สำหรับตั้งรหัสผ่านใหม่</string>
     <string name="account_forgotSend">ส่งลิงก์</string>
     <string name="account_forgotSent">หากมีบัญชีของอีเมลนี้ เราได้ส่งลิงก์ตั้งรหัสผ่านใหม่แล้ว ลิงก์ใช้ได้ 1 ชั่วโมง</string>
+    <string name="account_linkForgotSent">เราส่งลิงก์ไปที่อีเมลของคุณแล้ว ตั้งรหัสผ่านใหม่ในหน้าที่เปิดขึ้น รหัสผ่านนี้จะใช้ได้ในผลิตภัณฑ์ Bumba ทั้งหมดที่เชื่อมไว้ ลิงก์ใช้ได้ 1 ชั่วโมง</string>
     <string name="account_resetTitle">ตั้งรหัสผ่านใหม่</string>
     <string name="account_newPassword">รหัสผ่านใหม่</string>
     <string name="account_newPassword2">รหัสผ่านใหม่ (อีกครั้ง)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">ลองหลายครั้งเกินไป โปรดลองใหม่ในอีกสักครู่</string>
     <string name="account_err_network">เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ ตรวจสอบการเชื่อมต่ออินเทอร์เน็ตแล้วลองอีกครั้ง</string>
     <string name="account_err_generic">เกิดข้อผิดพลาด โปรดลองใหม่ในอีกสักครู่</string>
+    <string name="account_err_signupDown">ขณะนี้ยังสมัครสมาชิกไม่ได้ โปรดลองอีกครั้งในอีกไม่กี่นาที</string>
     <string name="account_err_email">ใส่อีเมลที่ถูกต้อง</string>
     <string name="account_err_password">รหัสผ่านไม่ตรงตามเงื่อนไขด้านบน</string>
     <string name="account_err_match">รหัสผ่านไม่ตรงกัน</string>

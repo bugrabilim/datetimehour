@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">Tulis alamat email akun Anda; kami akan mengirim tautan untuk mengatur ulang kata sandi.</string>
     <string name="account_forgotSend">Kirim tautan</string>
     <string name="account_forgotSent">Jika ada akun dengan alamat ini, kami sudah mengirim tautan pengaturan ulang. Tautan berlaku 1 jam.</string>
+    <string name="account_linkForgotSent">Kami sudah mengirim tautannya ke email Anda. Tetapkan kata sandi baru di halaman yang terbuka; kata sandi itu berlaku di semua produk Bumba yang tertaut. Tautan berlaku 1 jam.</string>
     <string name="account_resetTitle">Buat kata sandi baru</string>
     <string name="account_newPassword">Kata sandi baru</string>
     <string name="account_newPassword2">Kata sandi baru (ulangi)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">Terlalu banyak percobaan. Coba lagi sebentar lagi.</string>
     <string name="account_err_network">Server tidak dapat dihubungi. Periksa koneksi internet Anda dan coba lagi.</string>
     <string name="account_err_generic">Terjadi masalah. Coba lagi sebentar lagi.</string>
+    <string name="account_err_signupDown">Pendaftaran tidak dapat dilakukan saat ini. Coba lagi beberapa menit lagi.</string>
     <string name="account_err_email">Tulis alamat email yang valid.</string>
     <string name="account_err_password">Kata sandi tidak memenuhi aturan di atas.</string>
     <string name="account_err_match">Kata sandi tidak sama.</string>

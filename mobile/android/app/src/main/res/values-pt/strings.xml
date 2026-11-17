@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">Digite o e-mail da sua conta e enviaremos um link para redefinir a senha.</string>
     <string name="account_forgotSend">Enviar link</string>
     <string name="account_forgotSent">Se houver uma conta com este endereço, enviamos um link de redefinição. O link vale por 1 hora.</string>
+    <string name="account_linkForgotSent">Enviamos o link para o seu e-mail. Defina a nova senha na página que abrir; ela valerá em todos os seus produtos Bumba vinculados. O link vale por 1 hora.</string>
     <string name="account_resetTitle">Defina uma nova senha</string>
     <string name="account_newPassword">Nova senha</string>
     <string name="account_newPassword2">Nova senha (de novo)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">Muitas tentativas. Tente de novo daqui a pouco.</string>
     <string name="account_err_network">Não foi possível acessar o servidor. Verifique a conexão com a internet e tente de novo.</string>
     <string name="account_err_generic">Algo deu errado. Tente de novo daqui a pouco.</string>
+    <string name="account_err_signupDown">Não é possível se cadastrar agora. Tente de novo em alguns minutos.</string>
     <string name="account_err_email">Digite um e-mail válido.</string>
     <string name="account_err_password">A senha não segue as regras acima.</string>
     <string name="account_err_match">As senhas não são iguais.</string>

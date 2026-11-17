@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">Введите адрес эл. почты вашего аккаунта, и мы пришлём ссылку для сброса пароля.</string>
     <string name="account_forgotSend">Отправить ссылку</string>
     <string name="account_forgotSent">Если аккаунт с таким адресом существует, мы отправили ссылку для сброса. Она действует 1 час.</string>
+    <string name="account_linkForgotSent">Мы отправили ссылку на вашу почту. Задайте новый пароль на открывшейся странице; он будет действовать во всех связанных продуктах Bumba. Ссылка действительна 1 час.</string>
     <string name="account_resetTitle">Задайте новый пароль</string>
     <string name="account_newPassword">Новый пароль</string>
     <string name="account_newPassword2">Новый пароль (ещё раз)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">Слишком много попыток. Повторите немного позже.</string>
     <string name="account_err_network">Не удалось связаться с сервером. Проверьте подключение к интернету и повторите попытку.</string>
     <string name="account_err_generic">Что-то пошло не так. Повторите немного позже.</string>
+    <string name="account_err_signupDown">Сейчас зарегистрироваться нельзя. Попробуйте ещё раз через несколько минут.</string>
     <string name="account_err_email">Введите правильный адрес эл. почты.</string>
     <string name="account_err_password">Пароль не соответствует правилам выше.</string>
     <string name="account_err_match">Пароли не совпадают.</string>

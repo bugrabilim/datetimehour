@@ -218,7 +218,8 @@ private struct AccountSignedOut: View {
                 Button { run({ await Account.shared.link(email: email, password: password) }) { _ in password = "" } } label: {
                     BusyLabel(A("signIn"), busy: busy)
                 }
-                Button(A("forgot")) { mode = "forgot"; err = nil }
+                // Şifremi unuttum (5.22): merkezin sifirla-iste'si; yeni şifre bağlı bütün Bumba ürünlerine geçer
+                Button(A("forgot")) { err = nil; info = nil; run({ await Account.shared.linkForgot(email) }) { _ in info = "account.linkForgotSent" } }
             case "done":
                 AccountMessage(key: "account.signedUp", ok: true)
                 Button(A("signIn")) { mode = "in"; info = nil }
@@ -720,7 +721,7 @@ private struct AccountSignedIn: View {
                     LabeledContent(name + " · " + A("productThis"), value: A("productOn"))
                 } else if pr["acik"] as? Bool ?? false {
                     // Kapatma yok (5.21): açık üründe o ürünün hesap sayfasına bağlantı; hesap orada silinir
-                    if let adres = pr["adres"] as? String, adres.hasPrefix("https://"), let url = URL(string: adres) {
+                    if let adres = pr["hesap"] as? String, adres.hasPrefix("https://"), let url = URL(string: adres) { // merkezden (5.22)
                         LabeledContent(name) {
                             Button(A("productAccount")) { openURL(url) }.buttonStyle(.borderless).tint(Theme.accent)
                         }

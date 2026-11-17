@@ -73,6 +73,7 @@
     if (r.status === 429) return t["err.tooMany"];
     if (c === "INVALID_EMAIL_OR_PASSWORD" || c === "bilgiler") return t["err.credentials"];
     if (c === "EMAIL_NOT_VERIFIED") return t["err.unverified"];
+    if (c === "CENTER_DOWN") return t["err.signupDown"];
     if (c === "BANNED_USER") return t["err.suspended"];
     if (c === "WEAK_PASSWORD" || c === "PASSWORD_TOO_SHORT" || c === "PASSWORD_TOO_LONG") return t["err.password"];
     if (c === "EMAIL_TAKEN" || c === "USER_ALREADY_EXISTS" || c === "eposta-alinmis") return t["err.emailTaken"];
@@ -173,6 +174,8 @@
       const r = await call("/v1/uyelik/sorgula", { eposta: email });
       if (r.status === 200) { checked = email; status = r.data.durum; }
       else if (r.status === 429) { say(signup, t["err.tooMany"], "err"); return null; }
+      // Ortak servis cevap vermezse kayıt açılmaz (5.22)
+      else if (r.status === 503) { say(signup, t["err.signupDown"], "err"); return null; }
       else { status = "yok"; }
       return status;
     }
@@ -212,6 +215,13 @@
       busy(link, false);
       if (r.status === 200) { track("bagla"); location.href = "/hesap?dil=" + lang; return; }
       say(link, errText(r), "err");
+    });
+    // Bağlı üyelik girişinde "Şifremi unuttum" (5.22): bağlantıyı bumbagroup.com gönderir, yeni şifre bağlı bütün ürünlere geçer
+    $("[data-link-forgot]", link).addEventListener("click", async (e) => {
+      e.target.disabled = true;
+      const r = await call("/v1/uyelik/sifirla-iste", { eposta: link.email.value, dil: lang });
+      e.target.disabled = false;
+      if (r.status === 200) say(link, t.linkForgotSent, "ok"); else say(link, errText(r), "err");
     });
     $("[data-resend]").addEventListener("click", async (e) => {
       e.target.disabled = true;
@@ -520,8 +530,9 @@
           const b = document.createElement("button"); b.type = "button"; b.textContent = t.open;
           b.addEventListener("click", () => openProducts([p.site]));
           li.appendChild(b);
-        } else if (p.site !== "saat-tarih" && /^https:\/\//.test(String(p.adres || ""))) {
-          const a = document.createElement("a"); a.href = p.adres; a.rel = "noopener"; a.textContent = t.productAccount;
+        } else if (p.site !== "saat-tarih" && /^https:\/\//.test(String(p.hesap || ""))) {
+          // Ürünün hesap sayfasının tam adresi merkezden (5.22, `hesap`); bağlantı kendimiz kurulmaz
+          const a = document.createElement("a"); a.href = p.hesap; a.rel = "noopener"; a.textContent = t.productAccount;
           li.appendChild(a);
         }
         prodBox.appendChild(li);

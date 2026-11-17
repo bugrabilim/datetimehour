@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">输入账户的电子邮箱地址，我们会发送重置密码的链接。</string>
     <string name="account_forgotSend">发送链接</string>
     <string name="account_forgotSent">如果存在使用此地址的账户，我们已发送重置链接。链接 1 小时内有效。</string>
+    <string name="account_linkForgotSent">我们已将链接发送到您的邮箱。请在打开的页面中设置新密码，它将在所有已关联的 Bumba 产品中生效。链接 1 小时内有效。</string>
     <string name="account_resetTitle">设置新密码</string>
     <string name="account_newPassword">新密码</string>
     <string name="account_newPassword2">新密码（再次输入）</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">尝试次数过多。请稍后再试。</string>
     <string name="account_err_network">无法连接服务器。请检查网络连接后重试。</string>
     <string name="account_err_generic">出现问题。请稍后再试。</string>
+    <string name="account_err_signupDown">目前无法注册，请过几分钟再试。</string>
     <string name="account_err_email">请输入有效的电子邮箱地址。</string>
     <string name="account_err_password">密码不符合上述规则。</string>
     <string name="account_err_match">两次输入的密码不一致。</string>

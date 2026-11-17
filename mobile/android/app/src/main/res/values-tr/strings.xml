@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">Hesabınızın e-posta adresini yazın; şifre sıfırlama bağlantısı gönderelim.</string>
     <string name="account_forgotSend">Bağlantı gönder</string>
     <string name="account_forgotSent">Bu adresle bir hesap varsa şifre sıfırlama bağlantısı gönderdik. Bağlantı 1 saat geçerlidir.</string>
+    <string name="account_linkForgotSent">Bağlantıyı e-postanıza gönderdik. Yeni şifrenizi açılan sayfada belirleyin; bağlı bütün Bumba ürünlerinde geçerli olur. Bağlantı 1 saat geçerlidir.</string>
     <string name="account_resetTitle">Yeni şifre belirleyin</string>
     <string name="account_newPassword">Yeni şifre</string>
     <string name="account_newPassword2">Yeni şifre (tekrar)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">Çok fazla deneme. Biraz sonra yeniden deneyin.</string>
     <string name="account_err_network">Sunucuya ulaşılamadı. İnternet bağlantınızı kontrol edip yeniden deneyin.</string>
     <string name="account_err_generic">Bir sorun oldu. Biraz sonra yeniden deneyin.</string>
+    <string name="account_err_signupDown">Kayıt şu an yapılamıyor, birkaç dakika sonra yeniden deneyin.</string>
     <string name="account_err_email">Geçerli bir e-posta adresi yazın.</string>
     <string name="account_err_password">Şifre yukarıdaki kurallara uymuyor.</string>
     <string name="account_err_match">Şifreler aynı değil.</string>

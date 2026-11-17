@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">আপনার অ্যাকাউন্টের ইমেইল ঠিকানা লিখুন; আমরা পাসওয়ার্ড রিসেটের লিংক পাঠাব।</string>
     <string name="account_forgotSend">লিংক পাঠান</string>
     <string name="account_forgotSent">এই ঠিকানায় কোনো অ্যাকাউন্ট থাকলে আমরা রিসেটের লিংক পাঠিয়েছি। লিংকটি 1 ঘণ্টা কার্যকর।</string>
+    <string name="account_linkForgotSent">আমরা লিংকটি আপনার ইমেইলে পাঠিয়েছি। যে পাতাটি খুলবে সেখানে নতুন পাসওয়ার্ড ঠিক করুন; এটি আপনার যুক্ত সব Bumba পণ্যে চলবে। লিংকটি 1 ঘণ্টা কার্যকর।</string>
     <string name="account_resetTitle">নতুন পাসওয়ার্ড ঠিক করুন</string>
     <string name="account_newPassword">নতুন পাসওয়ার্ড</string>
     <string name="account_newPassword2">নতুন পাসওয়ার্ড (আবার)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">অনেকবার চেষ্টা হয়েছে। একটু পরে আবার চেষ্টা করুন।</string>
     <string name="account_err_network">সার্ভারে পৌঁছানো গেল না। ইন্টারনেট সংযোগ দেখে আবার চেষ্টা করুন।</string>
     <string name="account_err_generic">কিছু ভুল হয়েছে। একটু পরে আবার চেষ্টা করুন।</string>
+    <string name="account_err_signupDown">এই মুহূর্তে নিবন্ধন করা যাচ্ছে না। কয়েক মিনিট পরে আবার চেষ্টা করুন।</string>
     <string name="account_err_email">সঠিক ইমেইল ঠিকানা লিখুন।</string>
     <string name="account_err_password">পাসওয়ার্ড ওপরের নিয়মগুলো মানছে না।</string>
     <string name="account_err_match">পাসওয়ার্ড দুটি এক নয়।</string>

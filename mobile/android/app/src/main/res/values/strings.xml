@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">Enter your account\'s email address and we\'ll send a password reset link.</string>
     <string name="account_forgotSend">Send link</string>
     <string name="account_forgotSent">If there is an account with this address, we sent a password reset link. The link is valid for 1 hour.</string>
+    <string name="account_linkForgotSent">We sent the link to your email. Set your new password on the page it opens; it will apply to all your linked Bumba products. The link is valid for 1 hour.</string>
     <string name="account_resetTitle">Set a new password</string>
     <string name="account_newPassword">New password</string>
     <string name="account_newPassword2">New password (again)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">Too many attempts. Please try again later.</string>
     <string name="account_err_network">Couldn\'t reach the server. Check your internet connection and try again.</string>
     <string name="account_err_generic">Something went wrong. Please try again later.</string>
+    <string name="account_err_signupDown">Sign-up isn\'t possible right now. Please try again in a few minutes.</string>
     <string name="account_err_email">Enter a valid email address.</string>
     <string name="account_err_password">The password doesn\'t meet the rules above.</string>
     <string name="account_err_match">The passwords don\'t match.</string>

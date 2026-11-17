@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">アカウントのメールアドレスを入力してください。パスワード再設定用のリンクをお送りします。</string>
     <string name="account_forgotSend">リンクを送信</string>
     <string name="account_forgotSent">このアドレスのアカウントがあれば、再設定用のリンクを送信しました。リンクの有効期限は1時間です。</string>
+    <string name="account_linkForgotSent">メールにリンクを送信しました。開いたページで新しいパスワードを設定してください。連携しているすべての Bumba 製品で使えます。リンクの有効期限は1時間です。</string>
     <string name="account_resetTitle">新しいパスワードを設定</string>
     <string name="account_newPassword">新しいパスワード</string>
     <string name="account_newPassword2">新しいパスワード（確認）</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">試行回数が多すぎます。しばらくしてからお試しください。</string>
     <string name="account_err_network">サーバーに接続できませんでした。インターネット接続を確認して、もう一度お試しください。</string>
     <string name="account_err_generic">問題が発生しました。しばらくしてからお試しください。</string>
+    <string name="account_err_signupDown">現在、登録できません。数分後にもう一度お試しください。</string>
     <string name="account_err_email">正しいメールアドレスを入力してください。</string>
     <string name="account_err_password">パスワードが上の条件を満たしていません。</string>
     <string name="account_err_match">パスワードが一致しません。</string>

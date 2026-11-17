@@ -154,7 +154,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent, deletion, mo
 <div data-msg></div><button type="submit" class="primary">${esc(t.signUp)}</button><p class="consent">${linkify(consent ? consent.get(lang).metin : t.consent)}</p></div></form>
 <form data-form="link" hidden novalidate><h2>${esc(t.bumbaSignIn)}</h2><p class="muted">${esc(t.bumbaNote)}</p><label>${esc(t.email)}<input type="email" name="email" autocomplete="username" readonly></label>
 <label>${esc(t.password)}<input type="password" name="password" autocomplete="current-password" required></label><div data-msg></div><button type="submit" class="primary">${esc(t.signIn)}</button>
-<p><a href="/giris?dil=${lang}">${esc(t.forgot)}</a></p></form>
+<p><button type="button" class="link" data-link-forgot>${esc(t.forgot)}</button></p></form>
 <div data-done hidden>${msg(t.signedUp, "ok")}<button type="button" data-resend>${esc(t.resend)}</button></div>
 <p class="muted">${esc(t.haveAccount)} <a href="/giris?dil=${lang}">${esc(t.signIn)}</a></p>`) });
       return true;

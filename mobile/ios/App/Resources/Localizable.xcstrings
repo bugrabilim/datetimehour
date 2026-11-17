@@ -212892,6 +212892,125 @@
         }
       }
     },
+    "account.linkForgotSent": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlantıyı e-postanıza gönderdik. Yeni şifrenizi açılan sayfada belirleyin; bağlı bütün Bumba ürünlerinde geçerli olur. Bağlantı 1 saat geçerlidir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We sent the link to your email. Set your new password on the page it opens; it will apply to all your linked Bumba products. The link is valid for 1 hour."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wir haben Ihnen den Link per E-Mail geschickt. Legen Sie auf der geöffneten Seite Ihr neues Passwort fest; es gilt in allen verbundenen Bumba-Produkten. Der Link gilt 1 Stunde."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keçidi e-poçtunuza göndərdik. Yeni şifrənizi açılan səhifədə təyin edin; bağlı bütün Bumba məhsullarında keçərli olacaq. Keçid 1 saat keçərlidir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أرسلنا الرابط إلى بريدك الإلكتروني. عيّن كلمة المرور الجديدة في الصفحة التي يفتحها؛ وستسري في جميع منتجات Bumba المرتبطة. الرابط صالح لمدة ساعة واحدة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kami sudah mengirim tautannya ke email Anda. Tetapkan kata sandi baru di halaman yang terbuka; kata sandi itu berlaku di semua produk Bumba yang tertaut. Tautan berlaku 1 jam."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہم نے لنک آپ کی ای میل پر بھیج دیا ہے۔ کھلنے والے صفحے پر نیا پاس ورڈ مقرر کریں؛ یہ آپ کی تمام منسلک Bumba مصنوعات میں چلے گا۔ لنک 1 گھنٹے تک کارآمد ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیوند را به ایمیلتان فرستادیم. گذرواژهٔ تازه را در صفحه‌ای که باز می‌شود تعیین کنید؛ در همهٔ محصولات پیوستهٔ Bumba معتبر خواهد بود. پیوند 1 ساعت اعتبار دارد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nous avons envoyé le lien à votre adresse e-mail. Choisissez votre nouveau mot de passe sur la page qui s'ouvre ; il s'appliquera à tous vos produits Bumba liés. Le lien est valable 1 heure."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мы отправили ссылку на вашу почту. Задайте новый пароль на открывшейся странице; он будет действовать во всех связанных продуктах Bumba. Ссылка действительна 1 час."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メールにリンクを送信しました。開いたページで新しいパスワードを設定してください。連携しているすべての Bumba 製品で使えます。リンクの有効期限は1時間です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이메일로 링크를 보냈습니다. 열리는 페이지에서 새 비밀번호를 정하세요. 연결된 모든 Bumba 제품에 적용됩니다. 링크는 1시간 동안 유효합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我们已将链接发送到您的邮箱。请在打开的页面中设置新密码，它将在所有已关联的 Bumba 产品中生效。链接 1 小时内有效。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ipinadala namin ang link sa iyong email. Itakda ang bagong password sa pahinang magbubukas; gagana ito sa lahat ng naka-link na produkto ng Bumba. May bisa ang link nang 1 oras."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เราส่งลิงก์ไปที่อีเมลของคุณแล้ว ตั้งรหัสผ่านใหม่ในหน้าที่เปิดขึ้น รหัสผ่านนี้จะใช้ได้ในผลิตภัณฑ์ Bumba ทั้งหมดที่เชื่อมไว้ ลิงก์ใช้ได้ 1 ชั่วโมง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le enviamos el enlace a su correo. Establezca la nueva contraseña en la página que se abre; valdrá en todos sus productos Bumba vinculados. El enlace es válido durante 1 hora."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviamos o link para o seu e-mail. Defina a nova senha na página que abrir; ela valerá em todos os seus produtos Bumba vinculados. O link vale por 1 hora."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हमने लिंक आपके ईमेल पर भेज दिया है। खुलने वाले पेज पर नया पासवर्ड तय करें; यह आपके सभी जुड़े Bumba उत्पादों में चलेगा। लिंक 1 घंटे तक मान्य है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আমরা লিংকটি আপনার ইমেইলে পাঠিয়েছি। যে পাতাটি খুলবে সেখানে নতুন পাসওয়ার্ড ঠিক করুন; এটি আপনার যুক্ত সব Bumba পণ্যে চলবে। লিংকটি 1 ঘণ্টা কার্যকর।"
+          }
+        }
+      }
+    },
     "account.resetTitle": {
       "extractionState": "manual",
       "localizations": {
@@ -214911,6 +215030,125 @@
           "stringUnit": {
             "state": "translated",
             "value": "কিছু ভুল হয়েছে। একটু পরে আবার চেষ্টা করুন।"
+          }
+        }
+      }
+    },
+    "account.err.signupDown": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayıt şu an yapılamıyor, birkaç dakika sonra yeniden deneyin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign-up isn't possible right now. Please try again in a few minutes."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Registrierung ist gerade nicht möglich. Bitte versuchen Sie es in ein paar Minuten erneut."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qeydiyyat hazırda mümkün deyil, bir neçə dəqiqədən sonra yenidən cəhd edin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يمكن التسجيل الآن. أعد المحاولة بعد بضع دقائق."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pendaftaran tidak dapat dilakukan saat ini. Coba lagi beberapa menit lagi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس وقت رکنیت ممکن نہیں۔ چند منٹ بعد دوبارہ کوشش کریں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اکنون ثبت‌نام ممکن نیست. چند دقیقهٔ دیگر دوباره امتحان کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'inscription n'est pas possible pour le moment. Réessayez dans quelques minutes."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сейчас зарегистрироваться нельзя. Попробуйте ещё раз через несколько минут."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在、登録できません。数分後にもう一度お試しください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지금은 가입할 수 없습니다. 몇 분 후에 다시 시도해 주세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前无法注册，请过几分钟再试。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi pa puwedeng mag-sign up ngayon. Subukan muli pagkalipas ng ilang minuto."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขณะนี้ยังสมัครสมาชิกไม่ได้ โปรดลองอีกครั้งในอีกไม่กี่นาที"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El registro no es posible en este momento. Inténtelo de nuevo en unos minutos."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não é possível se cadastrar agora. Tente de novo em alguns minutos."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अभी पंजीकरण नहीं हो सकता। कुछ मिनट बाद फिर से कोशिश करें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই মুহূর্তে নিবন্ধন করা যাচ্ছে না। কয়েক মিনিট পরে আবার চেষ্টা করুন।"
           }
         }
       }

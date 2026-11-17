@@ -318,7 +318,8 @@ private fun SignedOut(initialNotice: String?) {
                 Field(email, {}, A("email"), ContentType.EmailAddress, email = true, readOnly = true)
                 Field(password, { password = it }, A("password"), ContentType.Password, password = true)
                 RoundButton(A("signIn"), true, Modifier.fillMaxWidth().heightIn(min = 48.dp)) { run({ Account.link(email, password) }) { password = "" } }
-                TextButton({ mode = "forgot"; err = null }) { Text(A("forgot"), color = Theme.c.accent) }
+                // Şifremi unuttum (5.22): merkezin sifirla-iste'si; yeni şifre bağlı bütün Bumba ürünlerine geçer
+                TextButton({ err = null; info = null; run({ Account.linkForgot(email) }) { info = "account.linkForgotSent" } }) { Text(A("forgot"), color = Theme.c.accent) }
             }
             "done" -> {
                 Message("account.signedUp", ok = true)
@@ -677,7 +678,8 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
                 Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(pr.optString("ad", site) + if (self) " · " + A("productThis") else "", Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
                     // Kapatma yok (5.21): açık üründe o ürünün hesap sayfasına bağlantı; hesap orada silinir
-                    val adres = pr.optString("adres")
+                    // Ürünün hesap sayfasının tam adresi merkezden (5.22); bağlantı kendimiz kurulmaz
+                    val adres = pr.optString("hesap")
                     if (self) Text(A("productOn"), color = Theme.c.muted, fontSize = 14.sp)
                     else if (on) { if (adres.startsWith("https://")) TextButton({ uri.openUri(adres) }) { Text(A("productAccount"), color = Theme.c.accent) } else Text(A("productOn"), color = Theme.c.muted, fontSize = 14.sp) }
                     else SoftSwitch(false, { want -> if (want) askOpen = listOf(site) })

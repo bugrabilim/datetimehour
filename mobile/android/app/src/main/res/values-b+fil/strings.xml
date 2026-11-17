@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">Ilagay ang email address ng inyong account; magpapadala kami ng link para i-reset ang password.</string>
     <string name="account_forgotSend">Ipadala ang link</string>
     <string name="account_forgotSent">Kung may account sa address na ito, nagpadala kami ng reset link. May bisa ang link nang 1 oras.</string>
+    <string name="account_linkForgotSent">Ipinadala namin ang link sa iyong email. Itakda ang bagong password sa pahinang magbubukas; gagana ito sa lahat ng naka-link na produkto ng Bumba. May bisa ang link nang 1 oras.</string>
     <string name="account_resetTitle">Magtakda ng bagong password</string>
     <string name="account_newPassword">Bagong password</string>
     <string name="account_newPassword2">Bagong password (ulitin)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">Masyadong maraming pagsubok. Subukang muli mamaya.</string>
     <string name="account_err_network">Hindi maabot ang server. Tingnan ang koneksyon sa internet at subukang muli.</string>
     <string name="account_err_generic">May nangyaring mali. Subukang muli mamaya.</string>
+    <string name="account_err_signupDown">Hindi pa puwedeng mag-sign up ngayon. Subukan muli pagkalipas ng ilang minuto.</string>
     <string name="account_err_email">Maglagay ng wastong email address.</string>
     <string name="account_err_password">Hindi tugma ang password sa mga patakaran sa itaas.</string>
     <string name="account_err_match">Hindi magkapareho ang mga password.</string>

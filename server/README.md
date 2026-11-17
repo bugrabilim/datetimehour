@@ -56,7 +56,7 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
   - 7 gün içinde doğrulanmayan hesap silinir;
   - 7 gün içinde onaylanmayan silme isteği silinir (e-posta gitmez);
   - üye numarası eksik hesaplar numarasını alır (yönetici hesabı hariç);
-  - ortak servise ulaşılamayan bildirimler yeniden denenir.
+  - ortak servise ulaşılamayan bildirimlerin zamanı gelenler de denenir. Asıl yeniden deneme `src/relay.mjs`'te, süreç içinde 10 dakikada bir (standart 5.22): `guncelle` ve `ayril` bırakılmaz, 1, 2, 4… dakika arayla, en çok günde bir; aynı üyenin `guncelle`'leri birleşir ve hesabın o anki hâli gider; `ayril` bekleyen `guncelle`'yi siler. Bekleyenler panel özetinde `merkezeBekleyen`.
 
   Kullanılmayan hesap silinmez.
 
@@ -65,7 +65,8 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
 |---|---|
 | `/api/auth/*` | Better Auth (kayıt, giriş, çıkış, oturumlar, şifre, e-posta, doğrulama) |
 | `/api/bumba-uyelik/<işlem>` | Ortak servisin ürün uçları (`dogrula`, `hesap-getir`, `hesap-ac`, `guncelle`, `hesap-sil`, `durum`, `numara-degistir`; `Bearer $UYELIK_ANAHTARI`) |
-| `/v1/uyelik/sorgula`, `/v1/uyelik/bagla` | Kayıt ekranındaki Bumba üyeliği sorusu |
+| `/v1/uyelik/sorgula`, `/v1/uyelik/bagla` | Kayıt ekranındaki Bumba üyeliği sorusu (5.22: ortak servis cevap vermezse `sorgula` 503, kayıt `CENTER_DOWN` ile açılmaz) |
+| `/v1/uyelik/sifirla-iste` | Bağlı üyelik girişinde "Şifremi unuttum" (5.22): merkezin `sifirla-iste`'si; hesap burada varsa kendi sıfırlamamız |
 | `/v1/onay-cumlesi?dil=` | Kayıttaki onay cümlesi (merkezden; `{surum, kod, rtl, metin}`; uygulamalar) |
 | `/v1/hesap`, `/v1/profil`, `/v1/profil/foto`, `/v1/kutlama` | Hesap ve profil |
 | `/v1/eposta` | E-posta değişikliği (`{eposta, sifre}`; Better Auth'un `/change-email` ucu dışarıdan kapalı) |

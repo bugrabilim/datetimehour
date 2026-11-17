@@ -20,7 +20,7 @@ const freePort = () => new Promise((resolve, reject) => {
 /* Sahte merkez: başka üründe kayıtlı adresler (`others`), yasaklı adresler, gelen çağrıların kaydı */
 export async function startCenter() {
   const c = {
-    calls: [], next: 10458, numbers: new Map(), others: new Map(), banned: new Set(), down: false, ayriHesap: new Set(), merge: new Map(), pending: new Map(),
+    calls: [], next: 10458, numbers: new Map(), others: new Map(), banned: new Set(), down: false, ayriHesap: new Set(), merge: new Map(), pending: new Map(), downOps: new Set(),
     find: (op) => c.calls.filter((x) => x.op === op),
   };
   const server = http.createServer(async (req, res) => {
@@ -30,7 +30,7 @@ export async function startCenter() {
     const op = req.url.split("/").pop();
     c.calls.push({ op, body, auth: req.headers.authorization, site: req.headers["x-bumba-site"] });
     const out = (s, o) => { res.writeHead(s, { "Content-Type": "application/json" }); res.end(JSON.stringify(o)); };
-    if (c.down) return out(503, { hata: "kapali" });
+    if (c.down || c.downOps.has(op)) return out(503, { hata: "kapali" });
     // Kayıttaki onay cümlesi (herkese açık uç, anahtar istemez); c.consent verilmediyse yok sayılır
     if (req.url.includes("/onay-cumlesi")) return c.consent ? out(200, c.consent) : out(404, {});
     if (req.headers.authorization !== `Bearer ${CENTER_KEY}` || req.headers["x-bumba-site"] !== "saat-tarih") return out(401, {});
@@ -72,7 +72,9 @@ export async function startCenter() {
       c.pending.delete(no);
       return out(200, { tamam: true });
     }
-    if (op === "urunler") return out(200, { urunler: [{ site: "saat-tarih", ad: "Saat Tarih", adres: "https://time.bumba.tr", acik: true, kendisi: true }, { site: "gander", ad: "Gander", adres: "https://gander.bumba.tr", acik: false, kendisi: false }] });
+    // Bağlı üyelik girişinde şifremi unuttum (5.22): bu üründe açık hesapta 409 `burada-acik`
+    if (op === "sifirla-iste") return c.numbers.has(e) && !c.others.has(e) ? out(409, { hata: "burada-acik" }) : out(200, { tamam: true });
+    if (op === "urunler") return out(200, { urunler: [{ site: "saat-tarih", ad: "Saat Tarih", adres: "https://time.bumba.tr", hesap: "https://hesap.time.bumba.tr/hesap", acik: true, kendisi: true }, { site: "gander", ad: "Gander", adres: "https://gander.bumba.tr", hesap: "https://gander.bumba.tr/hesap", acik: false, kendisi: false }] });
     if (op === "ac") return out(200, { sonuclar: Object.fromEntries((body.hedefler || []).map((h) => [h, "acildi"])) });
     if (op === "kapat") return out(200, { sonuclar: Object.fromEntries((body.hedefler || []).map((h) => [h, "kapandi"])) });
     return out(200, { tamam: true });

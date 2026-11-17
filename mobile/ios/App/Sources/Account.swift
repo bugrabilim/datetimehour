@@ -89,6 +89,7 @@ final class Account {
         if code == "EMAIL_NOT_VERIFIED" { return "account.err.unverified" }
         if code == "BANNED_USER" { return "account.err.suspended" }
         if code == "BUMBA_MEMBER" { return "account.bumba" }
+        if code == "CENTER_DOWN" { return "account.err.signupDown" }
         if code == "EMAIL_TAKEN" || code == "USER_ALREADY_EXISTS" || code == "eposta-alinmis" { return "account.err.emailTaken" }
         if code == "WEAK_PASSWORD" || code.hasPrefix("PASSWORD_TOO") { return "account.err.password" }
         if code == "INVALID_PASSWORD" || code == "sifre" || (wrongPassword && (r.code == 400 || r.code == 401)) { return "account.err.wrongPassword" }
@@ -138,6 +139,8 @@ final class Account {
     func lookup(_ email: String) async -> Result {
         guard Self.validEmail(email) else { return .fail("account.err.email") }
         let r = await call("POST", "/v1/uyelik/sorgula", ["eposta": Self.clean(email)])
+        // Ortak servis cevap vermezse kayıt açılmaz (standart 5.22)
+        if r.code == 503 { return .fail("account.err.signupDown") }
         guard r.code == 200 else { return .fail(Self.errorOf(r)) }
         return Result(data: Data(((Self.json(r.body)?["durum"] as? String) ?? "yok").utf8))
     }
@@ -293,6 +296,14 @@ final class Account {
         return r.code == 200 ? .success : .fail(Self.errorOf(r))
     }
 
+    /// Bağlı üyelik girişinde "Şifremi unuttum" (5.22): üyenin burada hesabı yok; bağlantıyı bumbagroup.com gönderir,
+    /// yeni şifre orada belirlenir ve bağlı bütün ürünlere geçer
+    func linkForgot(_ email: String) async -> Result {
+        guard Self.validEmail(email) else { return .fail("account.err.email") }
+        let r = await call("POST", "/v1/uyelik/sifirla-iste", ["eposta": Self.clean(email), "dil": Self.lang])
+        return r.code == 200 ? .success : .fail(Self.errorOf(r))
+    }
+
     func resendVerification(_ email: String) async -> Result {
         guard Self.validEmail(email) else { return .fail("account.err.email") }
         let r = await call("POST", "/api/auth/send-verification-email", ["email": email.trimmingCharacters(in: .whitespaces)])
@@ -316,7 +327,7 @@ final class Account {
         _ = await call("POST", "/api/auth/revoke-other-sessions", [:], auth: true)
     }
 
-    /// Öbür Bumba ürünlerinde üyeliğim (8. bölüm): [{site, ad, adres, acik, kendisi}]; nil: servise ulaşılamadı
+    /// Öbür Bumba ürünlerinde üyeliğim (8. bölüm): [{site, ad, adres, hesap, acik, kendisi}]; `hesap` ürünün hesap sayfası (5.22); nil: servise ulaşılamadı
     func products() async -> [[String: Any]]? {
         let r = await call("GET", "/v1/uyelik/urunler", auth: true)
         guard r.code == 200 else { return nil }

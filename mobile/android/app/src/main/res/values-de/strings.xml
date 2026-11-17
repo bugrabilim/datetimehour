@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">Geben Sie die E-Mail-Adresse Ihres Kontos ein; wir schicken Ihnen einen Link zum Zurücksetzen.</string>
     <string name="account_forgotSend">Link senden</string>
     <string name="account_forgotSent">Falls es ein Konto mit dieser Adresse gibt, haben wir einen Link zum Zurücksetzen geschickt. Er gilt 1 Stunde.</string>
+    <string name="account_linkForgotSent">Wir haben Ihnen den Link per E-Mail geschickt. Legen Sie auf der geöffneten Seite Ihr neues Passwort fest; es gilt in allen verbundenen Bumba-Produkten. Der Link gilt 1 Stunde.</string>
     <string name="account_resetTitle">Neues Passwort festlegen</string>
     <string name="account_newPassword">Neues Passwort</string>
     <string name="account_newPassword2">Neues Passwort (wiederholen)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">Zu viele Versuche. Versuchen Sie es etwas später erneut.</string>
     <string name="account_err_network">Der Server ist nicht erreichbar. Prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.</string>
     <string name="account_err_generic">Etwas ist schiefgegangen. Versuchen Sie es etwas später erneut.</string>
+    <string name="account_err_signupDown">Die Registrierung ist gerade nicht möglich. Bitte versuchen Sie es in ein paar Minuten erneut.</string>
     <string name="account_err_email">Geben Sie eine gültige E-Mail-Adresse ein.</string>
     <string name="account_err_password">Das Passwort erfüllt die obigen Regeln nicht.</string>
     <string name="account_err_match">Die Passwörter stimmen nicht überein.</string>

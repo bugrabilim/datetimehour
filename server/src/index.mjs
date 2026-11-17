@@ -14,6 +14,7 @@ import { createMetrics } from "./metrics.mjs";
 import { runCleanup } from "./cleanup.mjs";
 import { runCelebrations } from "./celebrate.mjs";
 import { createCenter } from "./center.mjs";
+import { createRelay } from "./relay.mjs";
 import { createAccounts, profileOf } from "./accounts.mjs";
 import { createRecords } from "./records.mjs";
 import { linkedRoutes } from "./linked.mjs";
@@ -75,7 +76,10 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
   // Kayıttaki onay cümlesi merkezden (standart 5.20); testlerde sahte merkez
   const consent = createConsent({ url: `${cfg.centerUrl}/onay-cumlesi`, fetchImpl: fetchImpl || fetch });
   consent.start();
-  const options = authOptions(cfg, pool, mailer, center);
+  // Merkeze iletim; ulaşılamazsa bırakılmaz, 10 dakikada bir yeniden denenir (5.22)
+  let accounts = null;
+  const relay = createRelay({ pool, center, accounts: () => accounts });
+  const options = authOptions(cfg, pool, mailer, center, relay);
   await migrate(options, pool);
   const auth = betterAuth(options);
   // Yönetici hesabı (madde 10): sabit bilgilerdeki adres, görünen adı "admin". Üye değildir: kayıt sayfasından açılamaz,
@@ -83,7 +87,8 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
   await ensureAdmin(auth, pool, cfg.adminEmail);
   const metrics = createMetrics(pool);
   const authHandler = toNodeHandler(auth);
-  const accounts = createAccounts({ pool, auth });
+  accounts = createAccounts({ pool, auth });
+  if (!cfg.noTimers) relay.start();
   const records = createRecords(pool);
   // Bildirim e-postasındaki yönetici bağlantısı (moderation.mjs; Apple 1.2: içeriği kaldırma, yazanı uzaklaştırma)
   const modLink = (spec) => `${cfg.publicUrl}/moderasyon?k=${modToken(cfg.secret, spec)}`;
@@ -107,17 +112,11 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
   }
   const deletion = createDeletion({ pool, mailer, publicUrl: cfg.publicUrl, perform: performDeletion, normLang });
   const web = webRoutes({ cfg, closed: false, accounts, center, consent, deletion, moderation });
-  const panel = panelRoutes({ cfg, pool, accounts, records, mailer, metrics, json, readJson });
+  const panel = panelRoutes({ cfg, pool, accounts, records, mailer, metrics, relay, json, readJson });
   const ctxP = auth.$context;
 
   const session = (req) => auth.api.getSession({ headers: fromNodeHeaders(req.headers) }).catch(() => null);
-  const queue = (op, body) => pool.query(`insert into center_retry (op, body) values ($1, $2)`, [op, JSON.stringify(body)]);
-  /* Ortak servise iletim; ulaşılamazsa temizlik görevinde yeniden denenir */
-  async function tell(op, body) {
-    const r = await center.call(op, body);
-    if (!r.ok && (r.status === 0 || r.status >= 500 || r.status === 429)) await queue(op, body);
-    return r;
-  }
+  const tell = relay.tell;
   async function verifyPassword(userId, password) {
     const hash = await accounts.passwordHash(userId);
     if (!hash) return false;
@@ -172,7 +171,26 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json(res, 400, { hata: "eposta" });
       if (await accounts.userByEmail(email)) return json(res, 200, { durum: "yok" });
       const q = await center.sorgula(email);
+      // Ortak servis cevap vermezse kayıt açılmaz (5.22); ekran "birkaç dakika sonra yeniden deneyin" der
+      if (cfg.centerKey && !q.ok) return json(res, 503, { hata: "merkez" });
       return json(res, 200, { durum: q.ok && q.data?.durum === "var" ? "var" : "yok" });
+    }
+    // Bağlı üyelik sorusundaki giriş ekranında "Şifremi unuttum" (5.22): üyenin burada hesabı yok; bağlantıyı merkez
+    // gönderir, yeni şifre bumbagroup.com'da belirlenir ve bağlı bütün ürünlere geçer. Hesap burada açıksa (409
+    // `burada-acik`) kendi sıfırlamamız. Yanıt hesabın varlığını ele vermez.
+    if (p === "/v1/uyelik/sifirla-iste" && m === "POST") {
+      if (!(await limit(`sifirla-iste:${ipOf(req)}`, 300, 3))) return json(res, 429, { hata: "sinir" });
+      if (!sameOrigin(req)) return json(res, 403, { hata: "kaynak" });
+      const b = await readJson(req);
+      const email = String(b.eposta || "").trim().toLowerCase();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json(res, 400, { hata: "eposta" });
+      const own = () => auth.api.requestPasswordReset({ body: { email } }).catch(() => null);
+      if (await accounts.userByEmail(email)) { await own(); return json(res, 200, { tamam: true }); }
+      const r = await center.call("sifirla-iste", { eposta: email, dil: normLang(b.dil) });
+      if (r.status === 409) { await own(); return json(res, 200, { tamam: true }); }
+      if (r.status === 429) return json(res, 429, { hata: "sinir" });
+      if (!r.ok) return json(res, 503, { hata: "merkez" });
+      return json(res, 200, { tamam: true });
     }
     // "Evet"ten sonra giriş: ortak servis şifreyi doğrular, hesap burada açılır, oturum Better Auth'un girişiyle
     if (p === "/v1/uyelik/bagla" && m === "POST") {
@@ -461,7 +479,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     // Zamanlanmış görevler (CRON_SECRET'la; görevleri ana altyapı oturumu kurar)
     if (p === "/gorev/temizlik" && req.method === "POST") {
       if (!bearerOk(req.headers.authorization, cfg.cronSecret)) return json(res, 401, { hata: "yetki" });
-      const out = await runCleanup({ pool, center, adminEmail: cfg.adminEmail });
+      const out = await runCleanup({ pool, center, relay, adminEmail: cfg.adminEmail });
       out.halkalar = await circles.cleanup();
       out.gruplar = await groups.cleanup();
       out.silmeIstekleri = await deletion.cleanup();
@@ -509,9 +527,10 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     await metrics.flush();
     metrics.stop();
     consent.stop();
+    relay.stop();
     await pool.end();
   }
-  return { server, auth, pool, mailer, center, metrics, accounts, records, consent, circles, groups, close };
+  return { server, auth, pool, mailer, center, relay, metrics, accounts, records, consent, circles, groups, close };
 }
 
 /* Doğrudan çalıştırma */

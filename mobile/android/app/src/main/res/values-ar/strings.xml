@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">اكتب عنوان البريد الإلكتروني لحسابك وسنرسل إليك رابطًا لإعادة تعيين كلمة المرور.</string>
     <string name="account_forgotSend">إرسال الرابط</string>
     <string name="account_forgotSent">إن كان هناك حساب بهذا العنوان فقد أرسلنا رابط إعادة التعيين. الرابط صالح لمدة ساعة.</string>
+    <string name="account_linkForgotSent">أرسلنا الرابط إلى بريدك الإلكتروني. عيّن كلمة المرور الجديدة في الصفحة التي يفتحها؛ وستسري في جميع منتجات Bumba المرتبطة. الرابط صالح لمدة ساعة واحدة.</string>
     <string name="account_resetTitle">عيّن كلمة مرور جديدة</string>
     <string name="account_newPassword">كلمة المرور الجديدة</string>
     <string name="account_newPassword2">كلمة المرور الجديدة (مرة أخرى)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">محاولات كثيرة. حاول بعد قليل.</string>
     <string name="account_err_network">تعذّر الوصول إلى الخادم. تحقّق من اتصالك بالإنترنت وحاول مرة أخرى.</string>
     <string name="account_err_generic">حدث خطأ. حاول بعد قليل.</string>
+    <string name="account_err_signupDown">لا يمكن التسجيل الآن. أعد المحاولة بعد بضع دقائق.</string>
     <string name="account_err_email">اكتب عنوان بريد إلكتروني صحيحًا.</string>
     <string name="account_err_password">كلمة المرور لا تطابق القواعد أعلاه.</string>
     <string name="account_err_match">كلمتا المرور غير متطابقتين.</string>

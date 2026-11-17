@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">اپنے اکاؤنٹ کا ای میل پتا لکھیں؛ ہم پاس ورڈ ری سیٹ کرنے کا لنک بھیجیں گے۔</string>
     <string name="account_forgotSend">لنک بھیجیں</string>
     <string name="account_forgotSent">اگر اس پتے سے کوئی اکاؤنٹ ہے تو ہم نے ری سیٹ کا لنک بھیج دیا ہے۔ لنک 1 گھنٹے تک کارآمد ہے۔</string>
+    <string name="account_linkForgotSent">ہم نے لنک آپ کی ای میل پر بھیج دیا ہے۔ کھلنے والے صفحے پر نیا پاس ورڈ مقرر کریں؛ یہ آپ کی تمام منسلک Bumba مصنوعات میں چلے گا۔ لنک 1 گھنٹے تک کارآمد ہے۔</string>
     <string name="account_resetTitle">نیا پاس ورڈ مقرر کریں</string>
     <string name="account_newPassword">نیا پاس ورڈ</string>
     <string name="account_newPassword2">نیا پاس ورڈ (دوبارہ)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">بہت زیادہ کوششیں ہو گئیں۔ تھوڑی دیر بعد دوبارہ کوشش کریں۔</string>
     <string name="account_err_network">سرور تک رسائی نہیں ہو سکی۔ انٹرنیٹ کنکشن دیکھیں اور دوبارہ کوشش کریں۔</string>
     <string name="account_err_generic">کچھ غلط ہو گیا۔ تھوڑی دیر بعد دوبارہ کوشش کریں۔</string>
+    <string name="account_err_signupDown">اس وقت رکنیت ممکن نہیں۔ چند منٹ بعد دوبارہ کوشش کریں۔</string>
     <string name="account_err_email">درست ای میل پتا لکھیں۔</string>
     <string name="account_err_password">پاس ورڈ اوپر دیے گئے اصولوں پر پورا نہیں اترتا۔</string>
     <string name="account_err_match">پاس ورڈ ایک جیسے نہیں ہیں۔</string>

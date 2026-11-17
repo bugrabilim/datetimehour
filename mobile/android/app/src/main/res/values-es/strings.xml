@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">Escriba el correo electrónico de su cuenta y le enviaremos un enlace para restablecer la contraseña.</string>
     <string name="account_forgotSend">Enviar enlace</string>
     <string name="account_forgotSent">Si existe una cuenta con esta dirección, enviamos un enlace para restablecerla. El enlace es válido durante 1 hora.</string>
+    <string name="account_linkForgotSent">Le enviamos el enlace a su correo. Establezca la nueva contraseña en la página que se abre; valdrá en todos sus productos Bumba vinculados. El enlace es válido durante 1 hora.</string>
     <string name="account_resetTitle">Elija una contraseña nueva</string>
     <string name="account_newPassword">Contraseña nueva</string>
     <string name="account_newPassword2">Contraseña nueva (otra vez)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">Demasiados intentos. Inténtelo de nuevo un poco más tarde.</string>
     <string name="account_err_network">No se pudo conectar con el servidor. Compruebe su conexión a internet e inténtelo de nuevo.</string>
     <string name="account_err_generic">Algo salió mal. Inténtelo de nuevo un poco más tarde.</string>
+    <string name="account_err_signupDown">El registro no es posible en este momento. Inténtelo de nuevo en unos minutos.</string>
     <string name="account_err_email">Escriba un correo electrónico válido.</string>
     <string name="account_err_password">La contraseña no cumple las reglas de arriba.</string>
     <string name="account_err_match">Las contraseñas no coinciden.</string>

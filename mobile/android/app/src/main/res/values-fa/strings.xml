@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">نشانی ایمیل حساب خود را بنویسید تا پیوند بازنشانی رمز عبور را برایتان بفرستیم.</string>
     <string name="account_forgotSend">ارسال پیوند</string>
     <string name="account_forgotSent">اگر حسابی با این نشانی باشد، پیوند بازنشانی را فرستادیم. پیوند 1 ساعت معتبر است.</string>
+    <string name="account_linkForgotSent">پیوند را به ایمیلتان فرستادیم. گذرواژهٔ تازه را در صفحه‌ای که باز می‌شود تعیین کنید؛ در همهٔ محصولات پیوستهٔ Bumba معتبر خواهد بود. پیوند 1 ساعت اعتبار دارد.</string>
     <string name="account_resetTitle">گذرواژهٔ تازه تعیین کنید</string>
     <string name="account_newPassword">رمز عبور جدید</string>
     <string name="account_newPassword2">گذرواژهٔ تازه (تکرار)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">تلاش‌ها زیاد بود. کمی بعد دوباره تلاش کنید.</string>
     <string name="account_err_network">دسترسی به سرور ممکن نشد. اتصال اینترنت را بررسی کنید و دوباره تلاش کنید.</string>
     <string name="account_err_generic">مشکلی پیش آمد. کمی بعد دوباره تلاش کنید.</string>
+    <string name="account_err_signupDown">اکنون ثبت‌نام ممکن نیست. چند دقیقهٔ دیگر دوباره امتحان کنید.</string>
     <string name="account_err_email">یک نشانی ایمیل معتبر بنویسید.</string>
     <string name="account_err_password">گذرواژه با قواعد بالا جور نیست.</string>
     <string name="account_err_match">گذرواژه‌ها یکسان نیستند.</string>

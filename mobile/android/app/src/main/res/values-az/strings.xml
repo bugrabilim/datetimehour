@@ -1790,6 +1790,7 @@
     <string name="account_forgotLead">Hesabınızın e-poçt ünvanını yazın; şifrə sıfırlama keçidi göndərək.</string>
     <string name="account_forgotSend">Keçid göndər</string>
     <string name="account_forgotSent">Bu ünvanla hesab varsa, şifrə sıfırlama keçidi göndərdik. Keçid 1 saat etibarlıdır.</string>
+    <string name="account_linkForgotSent">Keçidi e-poçtunuza göndərdik. Yeni şifrənizi açılan səhifədə təyin edin; bağlı bütün Bumba məhsullarında keçərli olacaq. Keçid 1 saat keçərlidir.</string>
     <string name="account_resetTitle">Yeni şifrə təyin edin</string>
     <string name="account_newPassword">Yeni şifrə</string>
     <string name="account_newPassword2">Yeni şifrə (təkrar)</string>
@@ -1807,6 +1808,7 @@
     <string name="account_err_tooMany">Çox cəhd edildi. Bir az sonra yenidən cəhd edin.</string>
     <string name="account_err_network">Serverə çatmaq olmadı. İnternet bağlantınızı yoxlayıb yenidən cəhd edin.</string>
     <string name="account_err_generic">Problem yarandı. Bir az sonra yenidən cəhd edin.</string>
+    <string name="account_err_signupDown">Qeydiyyat hazırda mümkün deyil, bir neçə dəqiqədən sonra yenidən cəhd edin.</string>
     <string name="account_err_email">Düzgün e-poçt ünvanı yazın.</string>
     <string name="account_err_password">Şifrə yuxarıdakı qaydalara uyğun deyil.</string>
     <string name="account_err_match">Şifrələr eyni deyil.</string>
