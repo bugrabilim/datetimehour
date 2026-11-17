@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">رمز عبور %1$s من</string>
     <string name="account_mergedNote">رمزی که انتخاب می‌کنید در همهٔ محصولات پیوسته معتبر می‌شود. تا زمان انتخاب، هر محصول رمز قدیمی خودش را می‌پذیرد.</string>
     <string name="account_mergedDone">رمز عبور شما انتخاب شد. از این پس در همهٔ محصولات پیوسته با همین رمز وارد شوید.</string>
+    <string name="account_mergedSignIn">گذرواژهٔ شما انتخاب شد. با گذرواژه‌ای که انتخاب کردید دوباره وارد شوید.</string>
     <string name="account_mergedLinkBad">این پیوند نامعتبر است یا مهلتش گذشته است. می‌توانید پس از ورود، در صفحهٔ حسابتان انتخاب کنید.</string>
     <string name="account_deleteDownloadFirst">اول داده‌هایتان را بارگیری کنید</string>
     <string name="account_deleteKeptTitle">آنچه پاک نمی‌شود</string>

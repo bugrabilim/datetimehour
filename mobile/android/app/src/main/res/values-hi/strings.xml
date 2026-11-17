@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">मेरा %1$s पासवर्ड</string>
     <string name="account_mergedNote">आपका चुना हुआ पासवर्ड सभी जुड़े उत्पादों में मान्य होगा। चुनने तक हर उत्पाद अपना पुराना पासवर्ड स्वीकार करता है।</string>
     <string name="account_mergedDone">आपका पासवर्ड चुन लिया गया। अब से सभी जुड़े उत्पादों में इसी से साइन इन करें।</string>
+    <string name="account_mergedSignIn">आपका पासवर्ड चुन लिया गया है। चुने गए पासवर्ड से फिर से साइन इन करें।</string>
     <string name="account_mergedLinkBad">यह लिंक अमान्य है या इसकी अवधि खत्म हो गई है। आप साइन इन के बाद अपने खाते के पेज पर चुन सकते हैं।</string>
     <string name="account_deleteDownloadFirst">पहले अपना डेटा डाउनलोड करें</string>
     <string name="account_deleteKeptTitle">जो हटाया नहीं जाता</string>

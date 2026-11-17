@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">我的%1$s密码</string>
     <string name="account_mergedNote">您选择的密码将在所有关联产品中生效。在您选择之前，各产品仍接受各自原来的密码。</string>
     <string name="account_mergedDone">密码已选定。今后请在所有关联产品中使用此密码登录。</string>
+    <string name="account_mergedSignIn">已选定密码。请使用所选密码重新登录。</string>
     <string name="account_mergedLinkBad">此链接无效或已过期。您可以在登录后于账户页面进行选择。</string>
     <string name="account_deleteDownloadFirst">请先下载您的数据</string>
     <string name="account_deleteKeptTitle">不会删除的内容</string>

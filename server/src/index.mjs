@@ -159,6 +159,8 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     const no = Number(d.yeniNo);
     if (Number.isInteger(no) && no !== Number(user.uyeNo)) await (await accounts.ia()).updateUser(user.id, { uyeNo: no, updatedAt: new Date() });
     if (d.hesap?.profil) await accounts.writeProfile(user.id, d.hesap.profil);
+    // Ana ürün bilgisi yalnız bu yanıttadır (merkez birleşmeyi başlatan ürüne ayrıca guncelle göndermez)
+    if (typeof d.hesap?.anaUrun === "boolean") await accounts.applyChange(user, { anaUrun: d.hesap.anaUrun });
   }
 
   async function api(req, res, p, url) {
@@ -314,7 +316,10 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       const r = await center.sifreSec(Number(user.uyeNo), String(b.site));
       if (r.status === 404) return json(res, 404, { hata: "secim-yok" });
       if (!r.ok) return json(res, 503, { hata: "merkez" });
-      return json(res, 200, { tamam: true });
+      // Başka ürünün şifresi seçildiyse merkezin guncelle'si buradaki özeti değiştirir ve oturumlar kapanır:
+      // istemci hata yerine "seçtiğiniz şifreyle yeniden girin" iletisiyle giriş ekranına gider
+      const still = await session(req);
+      return json(res, 200, still?.user ? { tamam: true } : { tamam: true, yenidenGiris: true });
     }
     if (p === "/v1/uyelik/urunler" && m === "GET") {
       const r = await center.urunler(Number(user.uyeNo));

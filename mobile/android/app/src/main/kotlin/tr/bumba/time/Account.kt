@@ -190,9 +190,14 @@ object Account {
         return Choice(if (o.isNull("uyeNo")) null else o.optLong("uyeNo"), opts)
     }
 
-    /** Seçilen ürünün şifresi bütün bağlı ürünlerde geçerli olur; seçim zaten yapılmışsa (404) de tamam sayılır */
+    /**
+     * Seçilen ürünün şifresi bütün bağlı ürünlerde geçerli olur; seçim zaten yapılmışsa (404) de tamam sayılır.
+     * Başka ürünün şifresi seçildiyse bu oturum sunucuda kapanır (`yenidenGiris`): yerelde de çıkılır, ekran
+     * "seçtiğiniz şifreyle yeniden girin" iletisiyle giriş ekranına döner.
+     */
     suspend fun choosePassword(site: String): Result {
         val r = call("POST", "/v1/uyelik/sifre-sec", JSONObject().put("site", site), auth = true)
+        if (r.code == 200 && runCatching { JSONObject(r.body).optBoolean("yenidenGiris") }.getOrDefault(false)) save(null, null)
         return if (r.code == 200 || r.code == 404) Result() else Result(errorOf(r))
     }
 

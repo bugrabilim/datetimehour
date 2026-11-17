@@ -23,7 +23,10 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
   - Kayıtta e-posta başka bir Bumba ürününde varsa "Burada da kullanmak ister misiniz?" sorusu gelir (`/v1/uyelik/bagla`).
   - Aynı e-postanın ayrı hesapları hesap sayfası açılınca sormadan birleşir (`/v1/uyelik/durum`); "hesaplarınız
     birleştirildi" e-postası 7 gün geçerli şifre seçimi bağlantısıyla gelir (`/sifre-sec`), seçim yapılana kadar hesap
-    sayfasında yalnız seçim görünür.
+    sayfasında yalnız seçim görünür. Birleşme yanıtındaki ve `numara-degistir` gövdesindeki `anaUrun` yerel hesaba yazılır
+    (`guncelle` ile aynı yol). Şifre seçiminde merkezin gönderdiği `guncelle {sifreOzeti}` kayıtlı özetle aynıysa yazılmaz
+    ve oturumlar kalır; özet değiştiyse oturumlar kapanır ve `/v1/uyelik/sifre-sec` `yenidenGiris: true` döner, istemci
+    "Seçtiğiniz şifreyle yeniden girin" iletisiyle girişe gider (`/giris?secildi=1`).
   - Hesap sayfasında "Öbür Bumba ürünlerinde üyeliğim" bölümü vardır.
   - Hesabı silme yalnız Saat Tarih'teki hesabı siler (5.21) ve e-postadaki bağlantıyla onaylanır ("Silme onayı", `src/deletion.mjs`):
     istek 7 gün geçerli, bekleyen istek hesap sayfasında iptal edilir; onay sayfası `/silme-onay?k=` (giriş istemez, POST'la siler).

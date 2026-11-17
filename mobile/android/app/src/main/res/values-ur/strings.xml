@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">میرا %1$s پاس ورڈ</string>
     <string name="account_mergedNote">آپ کا منتخب کردہ پاس ورڈ تمام منسلک مصنوعات میں کارآمد ہوگا۔ انتخاب تک ہر پروڈکٹ اپنا پرانا پاس ورڈ قبول کرتی ہے۔</string>
     <string name="account_mergedDone">آپ کا پاس ورڈ منتخب ہو گیا۔ اب سے تمام منسلک مصنوعات میں اسی سے سائن ان کریں۔</string>
+    <string name="account_mergedSignIn">آپ کا پاس ورڈ منتخب ہو گیا۔ منتخب کردہ پاس ورڈ سے دوبارہ سائن ان کریں۔</string>
     <string name="account_mergedLinkBad">یہ لنک درست نہیں یا اس کی مدت ختم ہو چکی ہے۔ آپ سائن ان کے بعد اپنے اکاؤنٹ کے صفحے پر انتخاب کر سکتے ہیں۔</string>
     <string name="account_deleteDownloadFirst">پہلے اپنا ڈیٹا ڈاؤن لوڈ کریں</string>
     <string name="account_deleteKeptTitle">جو حذف نہیں ہوتا</string>

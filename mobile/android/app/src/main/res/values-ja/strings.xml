@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">%1$sのパスワード</string>
     <string name="account_mergedNote">選んだパスワードは、連携しているすべての製品で使えます。選ぶまでは、各製品でそれぞれの以前のパスワードが使えます。</string>
     <string name="account_mergedDone">パスワードを選びました。今後は連携しているすべての製品で、このパスワードでログインしてください。</string>
+    <string name="account_mergedSignIn">パスワードが選択されました。選んだパスワードでもう一度ログインしてください。</string>
     <string name="account_mergedLinkBad">このリンクは無効か、有効期限が切れています。ログイン後にアカウントページで選ぶことができます。</string>
     <string name="account_deleteDownloadFirst">先にデータをダウンロードしてください</string>
     <string name="account_deleteKeptTitle">削除されないもの</string>

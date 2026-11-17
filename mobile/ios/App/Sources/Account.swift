@@ -220,9 +220,12 @@ final class Account {
         return opts.isEmpty ? nil : Choice(uyeNo: (o["uyeNo"] as? NSNumber)?.intValue, options: opts)
     }
 
-    /// Seçilen ürünün şifresi bütün bağlı ürünlerde geçerli olur; seçim zaten yapılmışsa (404) de tamam sayılır
+    /// Seçilen ürünün şifresi bütün bağlı ürünlerde geçerli olur; seçim zaten yapılmışsa (404) de tamam sayılır.
+    /// Başka ürünün şifresi seçildiyse bu oturum sunucuda kapanır (`yenidenGiris`): yerelde de çıkılır, ekran
+    /// "seçtiğiniz şifreyle yeniden girin" iletisiyle giriş ekranına döner.
     func choosePassword(_ site: String) async -> Result {
         let r = await call("POST", "/v1/uyelik/sifre-sec", ["site": site], auth: true)
+        if r.code == 200, Self.json(r.body)?["yenidenGiris"] as? Bool == true { save(nil, nil); AccountSync.shared.forget() }
         return r.code == 200 || r.code == 404 ? .success : .fail(Self.errorOf(r))
     }
 

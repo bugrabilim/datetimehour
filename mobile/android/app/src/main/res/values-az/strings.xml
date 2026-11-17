@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">%1$s şifrəm</string>
     <string name="account_mergedNote">Seçdiyiniz şifrə bütün bağlı məhsullarda keçərli olur. Seçim edənə qədər hər məhsul öz köhnə şifrəsini qəbul edir.</string>
     <string name="account_mergedDone">Şifrəniz seçildi. Bundan sonra bütün bağlı məhsullara bu şifrə ilə daxil olursunuz.</string>
+    <string name="account_mergedSignIn">Şifrəniz seçildi. Seçdiyiniz şifrə ilə yenidən daxil olun.</string>
     <string name="account_mergedLinkBad">Bu keçid etibarsızdır və ya müddəti bitib. Seçimi daxil olduqdan sonra hesab səhifənizdə edə bilərsiniz.</string>
     <string name="account_deleteDownloadFirst">Əvvəlcə məlumatlarınızı endirin</string>
     <string name="account_deleteKeptTitle">Silinməyənlər</string>

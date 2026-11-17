@@ -416,6 +416,7 @@ private struct AccountSignedIn: View {
                 let o = ch.options[i]
                 Button(T("account.mergedChoice", o.name)) {
                     run("choice", { await Account.shared.choosePassword(o.site) }, ok: "account.mergedDone") { _ in
+                        if !Account.shared.signedIn { onSignedOut("account.mergedSignIn"); return }
                         Task { try? await Task.sleep(nanoseconds: 1_200_000_000); choice = nil }
                     }
                 }

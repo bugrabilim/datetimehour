@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">Kata sandi %1$s saya</string>
     <string name="account_mergedNote">Kata sandi yang Anda pilih berlaku di semua produk yang terhubung. Sampai Anda memilih, setiap produk menerima kata sandi lamanya sendiri.</string>
     <string name="account_mergedDone">Kata sandi Anda telah dipilih. Mulai sekarang, masuklah dengan kata sandi ini di semua produk yang terhubung.</string>
+    <string name="account_mergedSignIn">Kata sandi Anda telah dipilih. Masuk lagi dengan kata sandi yang Anda pilih.</string>
     <string name="account_mergedLinkBad">Tautan ini tidak valid atau sudah kedaluwarsa. Anda dapat memilih di halaman akun setelah masuk.</string>
     <string name="account_deleteDownloadFirst">Unduh data Anda terlebih dahulu</string>
     <string name="account_deleteKeptTitle">Yang tidak dihapus</string>

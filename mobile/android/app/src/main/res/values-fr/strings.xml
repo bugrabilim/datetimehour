@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">Mon mot de passe %1$s</string>
     <string name="account_mergedNote">Le mot de passe choisi sera valable dans tous les produits liés. En attendant votre choix, chaque produit accepte son ancien mot de passe.</string>
     <string name="account_mergedDone">Votre mot de passe a été choisi. Désormais, connectez-vous avec celui-ci dans tous les produits liés.</string>
+    <string name="account_mergedSignIn">Votre mot de passe a été choisi. Reconnectez-vous avec le mot de passe choisi.</string>
     <string name="account_mergedLinkBad">Ce lien n’est pas valide ou a expiré. Vous pouvez faire ce choix sur votre page de compte après vous être connecté.</string>
     <string name="account_deleteDownloadFirst">Téléchargez d’abord vos données</string>
     <string name="account_deleteKeptTitle">Ce qui n’est pas supprimé</string>

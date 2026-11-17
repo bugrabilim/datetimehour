@@ -70,6 +70,8 @@ export async function startCenter() {
       const no = Number(body.uyeNo);
       if (!c.pending.has(no) || !c.pending.get(no).some((x) => x.site === body.site)) return out(404, { hata: "secim-yok" });
       c.pending.delete(no);
+      // Merkez seçimi yapan ürüne de guncelle {sifreOzeti} gönderir (testte isteğe bağlı kanca)
+      if (c.onSifreSec) await c.onSifreSec(body);
       return out(200, { tamam: true });
     }
     // Bağlı üyelik girişinde şifremi unuttum (5.22): bu üründe açık hesapta 409 `burada-acik`

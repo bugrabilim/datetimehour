@@ -293,6 +293,8 @@
       b.addEventListener("click", async () => {
         $$("button", wrap).forEach((x) => { x.disabled = true; });
         const s = await call("/v1/uyelik/sifre-sec", { site: o.site });
+        // Başka ürünün şifresi seçildiyse bu oturum kapanır: hata yerine giriş ekranına, "seçtiğiniz şifreyle girin" iletisiyle
+        if (s.status === 200 && s.data && s.data.yenidenGiris) { location.href = "/giris?dil=" + lang + "&secildi=1"; return; }
         if (s.status === 200 || s.status === 404) { say(box, t.mergedDone, "ok"); setTimeout(() => location.reload(), 1500); return; }
         $$("button", wrap).forEach((x) => { x.disabled = false; });
         say(box, errText(s), "err");

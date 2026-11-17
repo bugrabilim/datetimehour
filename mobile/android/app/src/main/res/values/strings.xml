@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">My %1$s password</string>
     <string name="account_mergedNote">The password you choose will work in all linked products. Until you choose, each product accepts its own old password.</string>
     <string name="account_mergedDone">Your password has been chosen. From now on, sign in with it in all linked products.</string>
+    <string name="account_mergedSignIn">Your password has been chosen. Sign in again with the password you chose.</string>
     <string name="account_mergedLinkBad">This link is invalid or has expired. You can make the choice on your account page after signing in.</string>
     <string name="account_deleteDownloadFirst">Download your data first</string>
     <string name="account_deleteKeptTitle">What is not deleted</string>

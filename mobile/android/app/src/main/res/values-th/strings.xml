@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">รหัสผ่าน %1$s ของฉัน</string>
     <string name="account_mergedNote">รหัสผ่านที่คุณเลือกจะใช้ได้ในทุกผลิตภัณฑ์ที่เชื่อมโยง จนกว่าคุณจะเลือก แต่ละผลิตภัณฑ์ยังรับรหัสผ่านเดิมของตน</string>
     <string name="account_mergedDone">เลือกรหัสผ่านแล้ว ต่อจากนี้โปรดใช้รหัสผ่านนี้เข้าสู่ระบบในทุกผลิตภัณฑ์ที่เชื่อมโยง</string>
+    <string name="account_mergedSignIn">เลือกรหัสผ่านแล้ว โปรดเข้าสู่ระบบอีกครั้งด้วยรหัสผ่านที่คุณเลือก</string>
     <string name="account_mergedLinkBad">ลิงก์นี้ไม่ถูกต้องหรือหมดอายุแล้ว คุณเลือกได้ที่หน้าบัญชีหลังเข้าสู่ระบบ</string>
     <string name="account_deleteDownloadFirst">โปรดดาวน์โหลดข้อมูลของคุณก่อน</string>
     <string name="account_deleteKeptTitle">สิ่งที่ไม่ถูกลบ</string>

@@ -137,7 +137,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent, deletion, mo
       return true;
     }
     if (p === "/giris") {
-      page(res, { ...base, title: t.signIn, data: { ...base.data, donus }, body: shell(`<h1>${esc(t.signIn)}</h1><p class="muted">${esc(t.intro)}</p>
+      page(res, { ...base, title: t.signIn, data: { ...base.data, donus }, body: shell(`<h1>${esc(t.signIn)}</h1><p class="muted">${esc(t.intro)}</p>${url.searchParams.get("secildi") === "1" ? msg(t.mergedSignIn, "ok") : ""}
 <form data-form="signin" novalidate><label>${esc(t.email)}<input type="email" name="email" autocomplete="username" required></label>
 <label>${esc(t.password)}<input type="password" name="password" autocomplete="current-password" required></label>
 <div data-msg></div><button type="submit" class="primary">${esc(t.signIn)}</button></form>

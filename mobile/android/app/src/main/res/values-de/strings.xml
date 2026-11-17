@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">Mein %1$s-Passwort</string>
     <string name="account_mergedNote">Das gewählte Passwort gilt in allen verbundenen Produkten. Bis Sie wählen, akzeptiert jedes Produkt sein bisheriges Passwort.</string>
     <string name="account_mergedDone">Ihr Passwort wurde gewählt. Ab jetzt melden Sie sich damit in allen verbundenen Produkten an.</string>
+    <string name="account_mergedSignIn">Ihr Passwort wurde gewählt. Melden Sie sich mit dem gewählten Passwort erneut an.</string>
     <string name="account_mergedLinkBad">Dieser Link ist ungültig oder abgelaufen. Sie können die Wahl nach der Anmeldung auf Ihrer Kontoseite treffen.</string>
     <string name="account_deleteDownloadFirst">Laden Sie zuerst Ihre Daten herunter</string>
     <string name="account_deleteKeptTitle">Was nicht gelöscht wird</string>

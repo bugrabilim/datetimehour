@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">Ang aking password sa %1$s</string>
     <string name="account_mergedNote">Gagana ang password na pipiliin ninyo sa lahat ng nakakonektang produkto. Hangga\'t hindi pa kayo pumipili, tinatanggap ng bawat produkto ang dati nitong password.</string>
     <string name="account_mergedDone">Napili na po ang inyong password. Mula ngayon, ito na ang gamitin sa pag-sign in sa lahat ng nakakonektang produkto.</string>
+    <string name="account_mergedSignIn">Napili na ang inyong password. Mag-sign in muli gamit ang password na pinili ninyo.</string>
     <string name="account_mergedLinkBad">Hindi na po wasto o expired na ang link na ito. Makakapili kayo sa inyong account page pagkatapos mag-sign in.</string>
     <string name="account_deleteDownloadFirst">I-download po muna ang inyong data</string>
     <string name="account_deleteKeptTitle">Ang hindi binubura</string>

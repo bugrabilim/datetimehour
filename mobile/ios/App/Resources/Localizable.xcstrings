@@ -230147,6 +230147,125 @@
         }
       }
     },
+    "account.mergedSignIn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifreniz seçildi. Seçtiğiniz şifreyle yeniden girin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your password has been chosen. Sign in again with the password you chose."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihr Passwort wurde gewählt. Melden Sie sich mit dem gewählten Passwort erneut an."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifrəniz seçildi. Seçdiyiniz şifrə ilə yenidən daxil olun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم اختيار كلمة المرور. سجّل الدخول مجددًا بكلمة المرور التي اخترتها."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kata sandi Anda telah dipilih. Masuk lagi dengan kata sandi yang Anda pilih."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کا پاس ورڈ منتخب ہو گیا۔ منتخب کردہ پاس ورڈ سے دوبارہ سائن ان کریں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گذرواژهٔ شما انتخاب شد. با گذرواژه‌ای که انتخاب کردید دوباره وارد شوید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre mot de passe a été choisi. Reconnectez-vous avec le mot de passe choisi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пароль выбран. Войдите снова с выбранным паролем."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "パスワードが選択されました。選んだパスワードでもう一度ログインしてください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "비밀번호가 선택되었습니다. 선택한 비밀번호로 다시 로그인하세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已选定密码。请使用所选密码重新登录。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Napili na ang inyong password. Mag-sign in muli gamit ang password na pinili ninyo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เลือกรหัสผ่านแล้ว โปรดเข้าสู่ระบบอีกครั้งด้วยรหัสผ่านที่คุณเลือก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se eligió su contraseña. Vuelva a iniciar sesión con la contraseña elegida."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sua senha foi escolhida. Entre novamente com a senha escolhida."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका पासवर्ड चुन लिया गया है। चुने गए पासवर्ड से फिर से साइन इन करें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার পাসওয়ার্ড বেছে নেওয়া হয়েছে। বেছে নেওয়া পাসওয়ার্ড দিয়ে আবার সাইন ইন করুন।"
+          }
+        }
+      }
+    },
     "account.mergedLinkBad": {
       "extractionState": "manual",
       "localizations": {

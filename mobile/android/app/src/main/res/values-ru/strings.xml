@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">Мой пароль %1$s</string>
     <string name="account_mergedNote">Выбранный пароль будет действовать во всех связанных продуктах. Пока вы не выбрали, каждый продукт принимает свой прежний пароль.</string>
     <string name="account_mergedDone">Пароль выбран. Теперь входите с ним во все связанные продукты.</string>
+    <string name="account_mergedSignIn">Пароль выбран. Войдите снова с выбранным паролем.</string>
     <string name="account_mergedLinkBad">Ссылка недействительна или устарела. Сделать выбор можно на странице аккаунта после входа.</string>
     <string name="account_deleteDownloadFirst">Сначала скачайте свои данные</string>
     <string name="account_deleteKeptTitle">Что не удаляется</string>

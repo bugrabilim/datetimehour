@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">내 %1$s 비밀번호</string>
     <string name="account_mergedNote">선택하신 비밀번호는 연결된 모든 제품에서 사용됩니다. 선택하시기 전까지는 각 제품이 이전 비밀번호를 받습니다.</string>
     <string name="account_mergedDone">비밀번호가 선택되었습니다. 이제 연결된 모든 제품에 이 비밀번호로 로그인하세요.</string>
+    <string name="account_mergedSignIn">비밀번호가 선택되었습니다. 선택한 비밀번호로 다시 로그인하세요.</string>
     <string name="account_mergedLinkBad">이 링크는 유효하지 않거나 만료되었습니다. 로그인한 뒤 계정 페이지에서 선택하실 수 있습니다.</string>
     <string name="account_deleteDownloadFirst">먼저 데이터를 내려받으세요</string>
     <string name="account_deleteKeptTitle">삭제되지 않는 것</string>

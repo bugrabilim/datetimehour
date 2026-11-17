@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">Minha senha do %1$s</string>
     <string name="account_mergedNote">A senha escolhida valerá em todos os produtos vinculados. Até você escolher, cada produto aceita a sua senha antiga.</string>
     <string name="account_mergedDone">Sua senha foi escolhida. A partir de agora, entre com ela em todos os produtos vinculados.</string>
+    <string name="account_mergedSignIn">Sua senha foi escolhida. Entre novamente com a senha escolhida.</string>
     <string name="account_mergedLinkBad">Este link é inválido ou expirou. Você pode escolher na página da sua conta depois de entrar.</string>
     <string name="account_deleteDownloadFirst">Baixe seus dados primeiro</string>
     <string name="account_deleteKeptTitle">O que não é excluído</string>

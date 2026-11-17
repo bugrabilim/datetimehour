@@ -510,7 +510,9 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
             val names = runCatching { android.icu.text.ListFormatter.getInstance(Strings.locale).format(ch.options.map { it.second }) }.getOrDefault(ch.options.joinToString(", ") { it.second })
             Text(T("account.mergedText", names, (ch.uyeNo ?: d.optLong("uyeNo")).toString()), color = Theme.c.text, fontSize = 15.sp)
             for ((site, name) in ch.options) RoundButton(T("account.mergedChoice", name), true, Modifier.fillMaxWidth()) {
-                run("choice", { Account.choosePassword(site) }, "account.mergedDone") { choice = null }
+                run("choice", { Account.choosePassword(site) }, "account.mergedDone") {
+                    if (!Account.signedIn) onSignedOut("account.mergedSignIn") else choice = null
+                }
             }
             Text(A("mergedNote"), color = Theme.c.muted, fontSize = 13.sp)
             CardMessage("choice")

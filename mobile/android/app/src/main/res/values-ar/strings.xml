@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">كلمة مروري في %1$s</string>
     <string name="account_mergedNote">تصبح كلمة المرور التي تختارها صالحة في كل المنتجات المرتبطة. وإلى أن تختار، يقبل كل منتج كلمة مروره القديمة.</string>
     <string name="account_mergedDone">تم اختيار كلمة المرور. من الآن سجّل الدخول بها في كل المنتجات المرتبطة.</string>
+    <string name="account_mergedSignIn">تم اختيار كلمة المرور. سجّل الدخول مجددًا بكلمة المرور التي اخترتها.</string>
     <string name="account_mergedLinkBad">هذا الرابط غير صالح أو انتهت صلاحيته. يمكنك الاختيار من صفحة حسابك بعد تسجيل الدخول.</string>
     <string name="account_deleteDownloadFirst">نزّل بياناتك أولًا</string>
     <string name="account_deleteKeptTitle">ما لا يُحذف</string>

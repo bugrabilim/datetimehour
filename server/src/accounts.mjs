@@ -97,8 +97,10 @@ export function createAccounts({ pool, auth }) {
     if (d.anaUrun !== undefined) sets.anaUrun = !!d.anaUrun;
     if (Object.keys(sets).length) await a.updateUser(user.id, { ...sets, updatedAt: new Date() });
     if (d.profil) await writeProfile(user.id, d.profil);
+    // Şifre özeti: kayıtlıyla aynıysa (ör. şifre seçiminde seçimi yapan ürüne de gelen guncelle) yazılmaz, oturumlar kalır
     if (d.sifreOzeti) {
       const acc = await a.findCredentialAccount(user.id);
+      if (acc?.password === d.sifreOzeti) return;
       if (acc) await a.updateAccount(acc.id, { password: d.sifreOzeti });
       else await a.createAccount({ userId: user.id, providerId: "credential", accountId: user.id, password: d.sifreOzeti });
       await a.deleteUserSessions(user.id);

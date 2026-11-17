@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">%1$s şifrem</string>
     <string name="account_mergedNote">Seçtiğiniz şifre bütün bağlı ürünlerde geçerli olur. Seçim yapana kadar her ürün kendi eski şifresini kabul eder.</string>
     <string name="account_mergedDone">Şifreniz seçildi. Bundan sonra bütün bağlı ürünlere bu şifreyle girersiniz.</string>
+    <string name="account_mergedSignIn">Şifreniz seçildi. Seçtiğiniz şifreyle yeniden girin.</string>
     <string name="account_mergedLinkBad">Bu bağlantı geçersiz ya da süresi dolmuş. Seçimi giriş yaptıktan sonra hesap sayfanızda yapabilirsiniz.</string>
     <string name="account_deleteDownloadFirst">Önce verilerinizi indirin</string>
     <string name="account_deleteKeptTitle">Silinmeyenler</string>

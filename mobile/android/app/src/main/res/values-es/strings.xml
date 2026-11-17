@@ -1935,6 +1935,7 @@
     <string name="account_mergedChoice">Mi contraseña de %1$s</string>
     <string name="account_mergedNote">La contraseña que elija valdrá en todos los productos vinculados. Hasta que elija, cada producto acepta su contraseña anterior.</string>
     <string name="account_mergedDone">Su contraseña se ha elegido. A partir de ahora, inicie sesión con ella en todos los productos vinculados.</string>
+    <string name="account_mergedSignIn">Se eligió su contraseña. Vuelva a iniciar sesión con la contraseña elegida.</string>
     <string name="account_mergedLinkBad">Este enlace no es válido o ha caducado. Puede elegir en la página de su cuenta después de iniciar sesión.</string>
     <string name="account_deleteDownloadFirst">Primero descargue sus datos</string>
     <string name="account_deleteKeptTitle">Lo que no se elimina</string>
