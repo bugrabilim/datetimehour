@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">Имя пользователя или адрес</string>
     <string name="account_socialWeb">Сайт</string>
     <string name="account_none">Не выбрано</string>
-    <string name="account_optionalNote">Эти сведения указываются по желанию; они обрабатываются в соответствии с [Уведомлением о конфиденциальности](https://bumbagroup.com/uyelik-aydinlatma?dil=en).</string>
+    <string name="account_optionalNote">Эти сведения указываются по желанию; они обрабатываются в соответствии с [Уведомлением о конфиденциальности](https://bumbagroup.com/en/uyelik-aydinlatma).</string>
     <string name="account_visibility">Видимость</string>
     <string name="account_showProfile">Показывать мой профиль</string>
     <string name="account_visibleFields">Сведения, которые видят другие участники</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">Настройки и записи на телефоне остаются на телефоне.</string>
     <string name="account_notice">Уведомление о конфиденциальности</string>
     <string name="account_terms">Условия членства</string>
-    <string name="account_deletionInfo">Об удалении аккаунта</string>
     <string name="account_badgesTitle">Мои значки и записи</string>
     <string name="account_badgesNote">Значки хранятся в вашем аккаунте; они удаляются вместе с аккаунтом и исчезают из резервных копий не позднее чем через 30 дней.</string>
     <string name="account_badgesNone">Значков пока нет. Значки зарабатываются в мобильном приложении.</string>

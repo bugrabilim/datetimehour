@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">Telefondaki ayarlarınız ve kayıtlarınız telefonda kalır.</string>
     <string name="account_notice">Aydınlatma Metni</string>
     <string name="account_terms">Üyelik Sözleşmesi</string>
-    <string name="account_deletionInfo">Hesap silme hakkında</string>
     <string name="account_badgesTitle">Rozetlerim ve kayıtlarım</string>
     <string name="account_badgesNote">Rozetleriniz hesabınızda saklanır; hesabınızı silince silinir, yedeklerden en geç 30 gün içinde düşer.</string>
     <string name="account_badgesNone">Henüz rozet yok. Rozetler telefon uygulamasında kazanılır.</string>

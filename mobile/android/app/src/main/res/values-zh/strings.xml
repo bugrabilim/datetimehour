@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">用户名或地址</string>
     <string name="account_socialWeb">网站</string>
     <string name="account_none">未选择</string>
-    <string name="account_optionalNote">填写这些信息是自愿的；它们依据[隐私声明](https://bumbagroup.com/uyelik-aydinlatma?dil=en)处理。</string>
+    <string name="account_optionalNote">填写这些信息是自愿的；它们依据[隐私声明](https://bumbagroup.com/en/uyelik-aydinlatma)处理。</string>
     <string name="account_visibility">可见性</string>
     <string name="account_showProfile">显示我的个人资料</string>
     <string name="account_visibleFields">其他会员可以看到的信息</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">手机上的设置和记录会保留在手机上。</string>
     <string name="account_notice">隐私声明</string>
     <string name="account_terms">会员条款</string>
-    <string name="account_deletionInfo">关于删除账户</string>
     <string name="account_badgesTitle">我的徽章和记录</string>
     <string name="account_badgesNote">徽章保存在您的账户中；删除账户时会一并删除，并最迟在 30 天内从备份中移除。</string>
     <string name="account_badgesNone">还没有徽章。徽章在手机应用中获得。</string>

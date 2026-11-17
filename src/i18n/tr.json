@@ -3414,45 +3414,6 @@
       }
     ]
   },
-  "account": {
-    "delTitle": "Hesabı silme | Saat Tarih",
-    "delDesc": "Saat Tarih hesabınızı sitede ya da iPhone ve Android uygulamalarında nasıl silersiniz, neler silinir.",
-    "delH1": "Hesabınızı silme",
-    "delLead": "Saat Tarih'te hesap isteğe bağlıdır ve istediğiniz zaman silinebilir. Silme isteğini e-postanıza gelen bağlantıyla onaylarsınız; onaydan sonra hesabınız hemen silinir, arkadaki işlemler en geç 7 gün içinde tamamlanır.",
-    "delSections": [
-      {
-        "h": "Sitede ya da uygulamada silme",
-        "ul": [
-          "**hesap.time.bumba.tr** adresinde giriş yapın ya da uygulamada **Ayarlar › Hesap**'ı açın.",
-          "**Hesabı sil** bölümünde şifrenizi girin (son 24 saatte giriş yaptıysanız gerekmez) ve isteği gönderin.",
-          "E-postanıza gelen bağlantıyı açın ve sayfada **Onaylıyorum**'a dokunun. Bağlantı 7 gün geçerlidir; bu sürede onaylamazsanız istek iptal olur ve hesabınız olduğu gibi kalır.",
-          "Onaydan sonra hesabınız hemen silinir, arkadaki işlemler en geç 7 gün içinde tamamlanır; e-posta adresinize bilgi gider. Saat Tarih'i hesapsız kullanmaya devam edebilirsiniz."
-        ]
-      },
-      {
-        "h": "Giriş yapamıyorsanız",
-        "p": [
-          "Şifrenizi unuttuysanız **Giriş yap › Şifremi unuttum** ile yeni şifre belirleyip hesabı silebilirsiniz.",
-          "E-posta adresinize de erişemiyorsanız [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) adresine yazın. Hesabın size ait olduğunu doğruladıktan sonra siler, size haber veririz."
-        ]
-      },
-      {
-        "h": "Neler silinir?",
-        "ul": [
-          "E-posta adresiniz, profil bilgileriniz (fotoğraf dahil) ve şifrenizin geri çevrilemez özeti.",
-          "Oturumlarınız, hesapta tutulan uygulama kayıtlarınız ve rozetleriniz.",
-          "Yalnız Saat Tarih'teki hesabınız silinir. Öbür Bumba ürünlerindeki hesaplarınız orada kalır; her birini o ürünün kendi hesap sayfasından silersiniz.",
-          "Yedeklerdeki kopyalar en geç 30 gün içinde kendiliğinden silinir (yedekler 30 gün tutulur)."
-        ]
-      },
-      {
-        "h": "Telefonunuzda kalanlar",
-        "p": [
-          "Uygulamanın ayarları ve telefondaki kayıtlarınız telefonunuzda (iCloud eşitlemesi açıksa iCloud'unuzda) kalır. Uygulamayı telefondan silince bunlar da silinir."
-        ]
-      }
-    ]
-  },
   "invite": {
     "title": "Halka daveti | Saat Tarih",
     "h1": "Halkaya davet edildiniz",

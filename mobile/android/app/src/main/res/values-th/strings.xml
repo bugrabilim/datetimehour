@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">ชื่อผู้ใช้หรือที่อยู่</string>
     <string name="account_socialWeb">เว็บไซต์</string>
     <string name="account_none">ไม่ได้เลือก</string>
-    <string name="account_optionalNote">การกรอกข้อมูลเหล่านี้เป็นทางเลือก และได้รับการประมวลผลตาม[ประกาศความเป็นส่วนตัว](https://bumbagroup.com/uyelik-aydinlatma?dil=en)</string>
+    <string name="account_optionalNote">การกรอกข้อมูลเหล่านี้เป็นทางเลือก และได้รับการประมวลผลตาม[ประกาศความเป็นส่วนตัว](https://bumbagroup.com/en/uyelik-aydinlatma)</string>
     <string name="account_visibility">การแสดงผล</string>
     <string name="account_showProfile">แสดงโปรไฟล์ของฉัน</string>
     <string name="account_visibleFields">ข้อมูลที่สมาชิกคนอื่นเห็นได้</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">การตั้งค่าและบันทึกบนโทรศัพท์จะยังอยู่บนโทรศัพท์</string>
     <string name="account_notice">ประกาศความเป็นส่วนตัว</string>
     <string name="account_terms">ข้อกำหนดการเป็นสมาชิก</string>
-    <string name="account_deletionInfo">เกี่ยวกับการลบบัญชี</string>
     <string name="account_badgesTitle">เหรียญตราและบันทึกของฉัน</string>
     <string name="account_badgesNote">เหรียญตราเก็บไว้ในบัญชีของคุณ จะถูกลบพร้อมบัญชีและหายจากข้อมูลสำรองภายใน 30 วัน</string>
     <string name="account_badgesNone">ยังไม่มีเหรียญตรา เหรียญตราได้จากแอปบนโทรศัพท์</string>

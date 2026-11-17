@@ -36,7 +36,8 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
   - `/sifre-sec?k=`: birleşmeden sonra şifre seçimi (oturum açmaz).
   - `/kutlama`: kutlama e-postalarını girişsiz kapatma.
   - Metinler `i18n/account.json`. Onay cümlesi arayüzün dilindedir; hukuk bağlantıları Türkçe arayüzden Türkçe metne,
-    öbür dillerden `?dil=en` metnine gider (sahibin kararı, 12 Kasım 2026).
+    öbür dillerden İngilizce metne (`/en/uyelik-…`, standart 5.23) gider (sahibin kararı, 12 Kasım 2026). Kayıt ve giriş
+    sayfasında ayrı bağlantı satırı yok (5.23); hesap silme bilgi sayfası merkezde (`bumbagroup.com/hesap-silme/saat-tarih`).
   - Kendi çerez bandı var (`bumba-cerez`). Umami yalnız istatistik izniyle yüklenir; adresinde anahtar olan sayfalarda
     hiç yüklenmez.
 - **Profil:** ad, soyad, takma ad, fotoğraf (istemci JPEG, PNG ya da WebP gönderir, en çok 2 MB; sunucu `sharp` ile yönü düzeltip 512 piksel kare WebP'ye çevirir, ≤200 KB, bütün üst veri düşer), doğum tarihi, cinsiyet,

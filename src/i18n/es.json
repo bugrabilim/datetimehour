@@ -442,7 +442,7 @@
         "h": "Membresía",
         "p": [
           "No necesita una cuenta para usar Saat Tarih. Si lo desea, puede abrir una membresía de Bumba en el sitio (hesap.time.bumba.tr) y en las aplicaciones con su correo electrónico y una contraseña; la misma membresía sirve también en otros productos de Bumba.",
-          "Qué información trata la membresía y para qué, dónde se guarda y cuáles son sus derechos se explica en el [aviso de privacidad común de la membresía de Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en); las reglas están en las [condiciones de membresía](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Puede eliminar su cuenta en cualquier momento: [Eliminar su cuenta]({deleteUrl}).",
+          "Qué información trata la membresía y para qué, dónde se guarda y cuáles son sus derechos se explica en el [aviso de privacidad común de la membresía de Bumba](https://bumbagroup.com/en/uyelik-aydinlatma); las reglas están en las [condiciones de membresía](https://bumbagroup.com/en/uyelik-sozlesmesi). Puede eliminar su cuenta en cualquier momento: [Eliminar su cuenta]({deleteUrl}).",
           "Los **círculos** de las aplicaciones (dhikr y jatm compartidos) requieren una cuenta y, como pueden revelar sus creencias religiosas, solo funcionan con su consentimiento explícito aparte (KVKK art. 6; RGPD art. 9.2.a). El nombre del círculo, su membresía, su nombre visible, los dhikr que añade y los yuz que toma o termina solo los ven los miembros de ese círculo; no son públicos, no se venden ni se usan para publicidad. Si sale de un círculo, su aportación queda sin nombre. Puede retirar su consentimiento en la aplicación en cualquier momento; entonces sale de todos los círculos.",
           "Los **grupos** (cuenta atrás, reloj mundial, votación de reunión, sala de concentración, propuesta de alarma, contador de observación del cielo) también requieren una cuenta. El nombre del grupo, su membresía, su nombre visible y lo que añade al grupo (ciudad y zona horaria compartidas, sus votos, sesiones de concentración, propuestas de alarma, fenómenos celestes marcados) solo los ven los miembros del grupo. Una propuesta de alarma nunca se programa en su teléfono sin que la acepte. Los **avisos del tiempo** no se muestran a otros con su identidad: su ubicación se redondea a una celda de unos 25 km y el aviso se borra a las 24 horas. Base legal: ejecución del contrato de membresía (KVKK art. 5.2.c; RGPD art. 6.1.b). Puede salir de un grupo y denunciar o bloquear a personas; al borrar su cuenta se borra todo esto."
         ]
@@ -3491,45 +3491,6 @@
       {
         "q": "¿El Rahu Kaal es a la misma hora en todas partes?",
         "a": "No. Se calcula con la salida y la puesta del sol locales, así que cambia de una ciudad a otra y con las estaciones. Esta página lo calcula para el lugar que usted elija."
-      }
-    ]
-  },
-  "account": {
-    "delTitle": "Eliminar su cuenta | Saat Tarih",
-    "delDesc": "Cómo eliminar su cuenta de Saat Tarih en el sitio o en las aplicaciones para iPhone y Android, y qué se elimina.",
-    "delH1": "Eliminar su cuenta",
-    "delLead": "La cuenta es opcional en Saat Tarih y puede eliminarla cuando quiera. Confirma la solicitud de eliminación con un enlace que le llega por correo; tras confirmar, su cuenta se elimina al instante y los pasos en segundo plano terminan como máximo en 7 días.",
-    "delSections": [
-      {
-        "h": "Eliminar en el sitio o en la aplicación",
-        "ul": [
-          "Inicie sesión en **hesap.time.bumba.tr** o abra **Ajustes › Cuenta** en la aplicación.",
-          "En **Eliminar cuenta**, escriba su contraseña (no hace falta si inició sesión en las últimas 24 horas) y envíe la solicitud.",
-          "Abra el enlace del correo y toque **Confirmo** en la página. El enlace es válido 7 días; si no confirma en ese plazo, la solicitud se cancela y su cuenta queda como está.",
-          "Tras confirmar, su cuenta se elimina al instante y los pasos en segundo plano terminan como máximo en 7 días; le enviamos un correo. Puede seguir usando Saat Tarih sin cuenta."
-        ]
-      },
-      {
-        "h": "Si no puede iniciar sesión",
-        "p": [
-          "Si olvidó su contraseña, cree una nueva con **Iniciar sesión › Olvidé mi contraseña** y luego elimine la cuenta.",
-          "Si tampoco puede acceder a su correo, escriba a [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Tras comprobar que la cuenta es suya, la eliminamos y se lo comunicamos."
-        ]
-      },
-      {
-        "h": "¿Qué se elimina?",
-        "ul": [
-          "Su correo electrónico, su perfil (con la foto) y el resumen irreversible de su contraseña.",
-          "Sus sesiones, los registros de la aplicación guardados en la cuenta y sus insignias.",
-          "Solo se elimina su cuenta de Saat Tarih. Sus cuentas en otros productos de Bumba siguen allí; cada una se elimina desde la página de cuenta de ese producto.",
-          "Las copias en las copias de seguridad se eliminan solas en un plazo máximo de 30 días (las copias se guardan 30 días)."
-        ]
-      },
-      {
-        "h": "Lo que queda en su teléfono",
-        "p": [
-          "Los ajustes de la aplicación y sus registros en el teléfono quedan en su teléfono (y en su iCloud si la sincronización con iCloud está activada). Se eliminan al borrar la aplicación del teléfono."
-        ]
       }
     ]
   },

@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">Benutzername oder Adresse</string>
     <string name="account_socialWeb">Website</string>
     <string name="account_none">Nicht gewählt</string>
-    <string name="account_optionalNote">Diese Angaben sind freiwillig; sie werden gemäß der [Datenschutzerklärung](https://bumbagroup.com/uyelik-aydinlatma?dil=en) verarbeitet.</string>
+    <string name="account_optionalNote">Diese Angaben sind freiwillig; sie werden gemäß der [Datenschutzerklärung](https://bumbagroup.com/en/uyelik-aydinlatma) verarbeitet.</string>
     <string name="account_visibility">Sichtbarkeit</string>
     <string name="account_showProfile">Mein Profil zeigen</string>
     <string name="account_visibleFields">Angaben, die andere Mitglieder sehen können</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">Ihre Einstellungen und Einträge auf dem Telefon bleiben auf dem Telefon.</string>
     <string name="account_notice">Datenschutzerklärung</string>
     <string name="account_terms">Mitgliedschaftsbedingungen</string>
-    <string name="account_deletionInfo">Über das Löschen des Kontos</string>
     <string name="account_badgesTitle">Meine Abzeichen und Einträge</string>
     <string name="account_badgesNote">Ihre Abzeichen werden in Ihrem Konto gespeichert; sie werden mit dem Konto gelöscht und fallen spätestens nach 30 Tagen aus den Sicherungen.</string>
     <string name="account_badgesNone">Noch keine Abzeichen. Abzeichen verdienen Sie in der Telefon-App.</string>

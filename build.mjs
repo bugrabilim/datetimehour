@@ -866,7 +866,7 @@ function buildPrivacy(lang) {
   const pagePath = ROUTES[lang].privacy;
   const sections = pr.sections
     .map((s) => {
-      const fill = (x) => x.replaceAll("{deleteUrl}", ROUTES[lang].accountDelete);
+      const fill = (x) => x.replaceAll("{deleteUrl}", accountDeleteUrl(lang));
       const ps = (s.p || []).map((x) => `<p>${md(fill(x))}</p>`).join("");
       const ul = s.ul ? `<ul>${s.ul.map((x) => `<li>${md(fill(x))}</li>`).join("")}</ul>` : "";
       const table = s.table
@@ -896,41 +896,16 @@ function buildPrivacy(lang) {
   const e = searchEntries[lang];
   e.push({ t: pr.h1, u: pagePath, d: pr.description, k: "kvkk çerez cookie gizlilik privacy umami localstorage" });
   pr.sections.forEach((s) =>
-    e.push({ t: s.h, u: `${pagePath}#${s.id}`, d: (s.p && s.p[0] ? s.p[0] : s.ul ? s.ul[0] : "").replaceAll("{deleteUrl}", ROUTES[lang].accountDelete).replace(/\*\*|\[([^\]]+)\]\([^)]+\)/g, "$1"), k: pr.h1 })
+    e.push({ t: s.h, u: `${pagePath}#${s.id}`, d: (s.p && s.p[0] ? s.p[0] : s.ul ? s.ul[0] : "").replaceAll("{deleteUrl}", accountDeleteUrl(lang)).replace(/\*\*|\[([^\]]+)\]\([^)]+\)/g, "$1"), k: pr.h1 })
   );
   return { lang, key: "privacy", path: pagePath, title: pr.title, description: pr.description, body, ld, nav: "privacy" };
 }
 
-/* ---------- Hesap silme bilgi sayfası (standart 5.15 madde 7; 12 Kasım 2026) ----------
-   Giriş, kayıt, şifre sıfırlama ve e-posta doğrulama sayfaları üyelik sunucusundadır (hesap.time.bumba.tr, server/src/web.mjs);
-   eski statik /hesap/sifre/ ve /hesap/dogrulandi/ adresleri nginx'te oraya 301. Bu sayfa herkese açık kalır (mağazalar hesap
-   silme adresi ister). Ayarlar menüsündeki "Hesabım" bağlantısının adı üyelik sunucusunun metinlerinden (server/i18n/account.json). */
-extendRoutes({
-  tr: { accountDelete: "/hesap-silme/" },
-  en: { accountDelete: "/en/account-deletion/" },
-});
-function buildAccountDelete(lang) {
-  const t = I[lang];
-  const a = t.account;
-  const pagePath = ROUTES[lang].accountDelete;
-  const sections = a.delSections
-    .map((s) => `<h2>${esc(s.h)}</h2>${(s.p || []).map((x) => `<p>${md(x)}</p>`).join("")}${s.ul ? `<${s === a.delSections[0] ? "ol" : "ul"}>${s.ul.map((x) => `<li>${md(x)}</li>`).join("")}</${s === a.delSections[0] ? "ol" : "ul"}>` : ""}`)
-    .join("");
-  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: a.delH1, path: pagePath }];
-  const body = `<section class="hero">
-  <div class="wrap">
-    ${crumbs(lang, trail)}
-    <h1>${esc(a.delH1)}</h1>
-    <p class="lead">${esc(a.delLead)}</p>
-  </div>
-</section>
-<section class="section">
-  <div class="wrap prose">${sections}</div>
-</section>`;
-  const ld = [...baseLd(lang), webPageLd(lang, pagePath, a.delTitle, a.delDesc), breadcrumbLd(trail)];
-  searchEntries[lang].push({ t: a.delH1, u: pagePath, d: a.delDesc, k: "hesap account silme delete" });
-  return { lang, key: "accountDelete", path: pagePath, title: a.delTitle, description: a.delDesc, body, ld };
-}
+/* ---------- Hesap silme bilgi sayfası (standart 5.23 madde 7; 17 Kasım 2026) ----------
+   Sayfa merkezdedir: https://bumbagroup.com/hesap-silme/saat-tarih (İngilizcesi /en/…). Sitedeki eski /hesap-silme/ ve
+   /<dil>/account-deletion/ nginx'te oraya 301. Giriş, kayıt, şifre sıfırlama ve doğrulama sayfaları üyelik sunucusundadır
+   (hesap.time.bumba.tr, server/src/web.mjs). */
+const accountDeleteUrl = (lang) => `https://bumbagroup.com${lang === "tr" ? "" : "/en"}/hesap-silme/saat-tarih`;
 
 /* ---------- Takvim: etkinlikler ve yıl sayfaları ---------- */
 const HOL = readJson("src/data/holidays.json");
@@ -3338,7 +3313,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildPhoto(lang), buildPanchang(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), buildAccountDelete(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildPhoto(lang), buildPanchang(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

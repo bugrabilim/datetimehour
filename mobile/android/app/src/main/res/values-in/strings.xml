@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">Nama pengguna atau alamat</string>
     <string name="account_socialWeb">Situs web</string>
     <string name="account_none">Tidak dipilih</string>
-    <string name="account_optionalNote">Mengisi informasi ini bersifat opsional; informasi diproses sesuai [Pemberitahuan Privasi](https://bumbagroup.com/uyelik-aydinlatma?dil=en).</string>
+    <string name="account_optionalNote">Mengisi informasi ini bersifat opsional; informasi diproses sesuai [Pemberitahuan Privasi](https://bumbagroup.com/en/uyelik-aydinlatma).</string>
     <string name="account_visibility">Visibilitas</string>
     <string name="account_showProfile">Tampilkan profil saya</string>
     <string name="account_visibleFields">Informasi yang dapat dilihat anggota lain</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">Pengaturan dan catatan Anda di ponsel tetap di ponsel.</string>
     <string name="account_notice">Pemberitahuan Privasi</string>
     <string name="account_terms">Ketentuan Keanggotaan</string>
-    <string name="account_deletionInfo">Tentang menghapus akun</string>
     <string name="account_badgesTitle">Lencana dan catatan saya</string>
     <string name="account_badgesNote">Lencana Anda disimpan di akun Anda; lencana dihapus saat akun dihapus dan hilang dari cadangan paling lambat dalam 30 hari.</string>
     <string name="account_badgesNone">Belum ada lencana. Lencana diperoleh di aplikasi ponsel.</string>

@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">Nom d\'utilisateur ou adresse</string>
     <string name="account_socialWeb">Site web</string>
     <string name="account_none">Non choisi</string>
-    <string name="account_optionalNote">Ces informations sont facultatives ; elles sont traitées selon la [Notice de confidentialité](https://bumbagroup.com/uyelik-aydinlatma?dil=en).</string>
+    <string name="account_optionalNote">Ces informations sont facultatives ; elles sont traitées selon la [Notice de confidentialité](https://bumbagroup.com/en/uyelik-aydinlatma).</string>
     <string name="account_visibility">Visibilité</string>
     <string name="account_showProfile">Afficher mon profil</string>
     <string name="account_visibleFields">Informations visibles par les autres membres</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">Vos réglages et données sur le téléphone restent sur le téléphone.</string>
     <string name="account_notice">Notice de confidentialité</string>
     <string name="account_terms">Conditions d\'adhésion</string>
-    <string name="account_deletionInfo">À propos de la suppression du compte</string>
     <string name="account_badgesTitle">Mes badges et mes données</string>
     <string name="account_badgesNote">Vos badges sont conservés dans votre compte ; ils sont supprimés avec le compte et disparaissent des sauvegardes en 30 jours au plus.</string>
     <string name="account_badgesNone">Pas encore de badge. Les badges se gagnent dans l\'application mobile.</string>

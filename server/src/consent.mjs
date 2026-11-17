@@ -15,7 +15,7 @@ const REFRESH_MS = 60 * 60 * 1000;
 function safe(metin) {
   if (typeof metin !== "string" || !metin.trim() || metin.length > 2000) return false;
   const links = [...metin.matchAll(/\]\(([^)\s]+)\)/g)].map((m) => m[1]);
-  return links.length > 0 && links.every((u) => /^https:\/\/bumbagroup\.com\/uyelik-(aydinlatma|sozlesmesi)(\?dil=en)?$/.test(u));
+  return links.length > 0 && links.every((u) => /^https:\/\/bumbagroup\.com\/(en\/)?uyelik-(aydinlatma|sozlesmesi)(\?dil=en)?$/.test(u));
 }
 
 export function createConsent({ url, fetchImpl = fetch, log = console } = {}) {

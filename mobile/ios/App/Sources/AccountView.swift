@@ -125,12 +125,8 @@ struct AccountView: View {
             } else {
                 AccountSignedOut(notice: notice)
             }
-            Section {
-                Link(A("notice"), destination: AccountLinks.notice)
-                Link(A("terms"), destination: AccountLinks.terms)
-                Link(A("deletionInfo"), destination: AccountLinks.deletion)
-            }
-            .tint(Theme.accent)
+            // Standart 5.23: girişte ve kayıtta ayrı bağlantı satırı yok (ortak metinler yalnız onay cümlesinin içinde);
+            // hesap sayfasında her bölümün altında ortak metinler
         }
         .navigationTitle(A("title"))
         .themedBackground()

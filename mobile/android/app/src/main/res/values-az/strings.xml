@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">İstifadəçi adı və ya ünvan</string>
     <string name="account_socialWeb">Veb sayt</string>
     <string name="account_none">Seçilməyib</string>
-    <string name="account_optionalNote">Bu məlumatları daxil etmək könüllüdür; [Məlumatlandırma mətni](https://bumbagroup.com/uyelik-aydinlatma?dil=en)nə uyğun işlənir.</string>
+    <string name="account_optionalNote">Bu məlumatları daxil etmək könüllüdür; [Məlumatlandırma mətni](https://bumbagroup.com/en/uyelik-aydinlatma)nə uyğun işlənir.</string>
     <string name="account_visibility">Görünmə</string>
     <string name="account_showProfile">Profilimi göstər</string>
     <string name="account_visibleFields">Digər üzvlərin görə biləcəyi məlumatlar</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">Telefondakı ayarlarınız və qeydləriniz telefonda qalır.</string>
     <string name="account_notice">Məlumatlandırma mətni</string>
     <string name="account_terms">Üzvlük müqaviləsi</string>
-    <string name="account_deletionInfo">Hesabın silinməsi haqqında</string>
     <string name="account_badgesTitle">Nişanlarım və qeydlərim</string>
     <string name="account_badgesNote">Nişanlarınız hesabınızda saxlanılır; hesabı silincə silinir, ehtiyat nüsxələrdən ən gec 30 gün ərzində çıxır.</string>
     <string name="account_badgesNone">Hələ nişan yoxdur. Nişanlar telefon tətbiqində qazanılır.</string>

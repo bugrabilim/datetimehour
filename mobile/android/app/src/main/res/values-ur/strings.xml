@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">صارف نام یا پتہ</string>
     <string name="account_socialWeb">ویب سائٹ</string>
     <string name="account_none">منتخب نہیں</string>
-    <string name="account_optionalNote">یہ معلومات دینا اختیاری ہے؛ یہ [رازداری نوٹس](https://bumbagroup.com/uyelik-aydinlatma?dil=en) کے مطابق پروسیس ہوتی ہیں۔</string>
+    <string name="account_optionalNote">یہ معلومات دینا اختیاری ہے؛ یہ [رازداری نوٹس](https://bumbagroup.com/en/uyelik-aydinlatma) کے مطابق پروسیس ہوتی ہیں۔</string>
     <string name="account_visibility">نمائش</string>
     <string name="account_showProfile">میرا پروفائل دکھائیں</string>
     <string name="account_visibleFields">معلومات جو دوسرے ارکان دیکھ سکتے ہیں</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">فون پر آپ کی ترتیبات اور ریکارڈ فون پر ہی رہتے ہیں۔</string>
     <string name="account_notice">رازداری نوٹس</string>
     <string name="account_terms">رکنیت کی شرائط</string>
-    <string name="account_deletionInfo">اکاؤنٹ حذف کرنے کے بارے میں</string>
     <string name="account_badgesTitle">میرے بیج اور ریکارڈ</string>
     <string name="account_badgesNote">آپ کے بیج آپ کے اکاؤنٹ میں محفوظ ہوتے ہیں؛ اکاؤنٹ حذف کرنے پر حذف ہو جاتے ہیں اور زیادہ سے زیادہ 30 دن میں بیک اپ سے نکل جاتے ہیں۔</string>
     <string name="account_badgesNone">ابھی کوئی بیج نہیں۔ بیج فون ایپ میں حاصل ہوتے ہیں۔</string>

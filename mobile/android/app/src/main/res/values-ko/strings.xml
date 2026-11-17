@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">사용자 이름 또는 주소</string>
     <string name="account_socialWeb">웹사이트</string>
     <string name="account_none">선택 안 함</string>
-    <string name="account_optionalNote">이 정보 입력은 선택입니다. [개인정보 고지](https://bumbagroup.com/uyelik-aydinlatma?dil=en)에 따라 처리됩니다.</string>
+    <string name="account_optionalNote">이 정보 입력은 선택입니다. [개인정보 고지](https://bumbagroup.com/en/uyelik-aydinlatma)에 따라 처리됩니다.</string>
     <string name="account_visibility">공개 설정</string>
     <string name="account_showProfile">내 프로필 공개</string>
     <string name="account_visibleFields">다른 회원이 볼 수 있는 정보</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">휴대전화의 설정과 기록은 휴대전화에 남습니다.</string>
     <string name="account_notice">개인정보 고지</string>
     <string name="account_terms">회원 약관</string>
-    <string name="account_deletionInfo">계정 삭제 안내</string>
     <string name="account_badgesTitle">내 배지와 기록</string>
     <string name="account_badgesNote">배지는 계정에 저장됩니다. 계정을 삭제하면 함께 삭제되고 늦어도 30일 안에 백업에서도 사라집니다.</string>
     <string name="account_badgesNone">아직 배지가 없습니다. 배지는 휴대전화 앱에서 얻습니다.</string>

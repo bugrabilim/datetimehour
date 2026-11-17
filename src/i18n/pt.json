@@ -442,7 +442,7 @@
         "h": "Associação",
         "p": [
           "Você não precisa de conta para usar o Saat Tarih. Se quiser, pode abrir uma associação Bumba no site (hesap.time.bumba.tr) e nos apps com seu e-mail e uma senha; a mesma associação também vale nos outros produtos Bumba.",
-          "Quais informações a associação trata e para quê, onde ficam guardadas e quais são os seus direitos está no [aviso de privacidade comum da associação Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en); as regras estão nos [termos de associação](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Você pode excluir sua conta a qualquer momento: [Excluir sua conta]({deleteUrl}).",
+          "Quais informações a associação trata e para quê, onde ficam guardadas e quais são os seus direitos está no [aviso de privacidade comum da associação Bumba](https://bumbagroup.com/en/uyelik-aydinlatma); as regras estão nos [termos de associação](https://bumbagroup.com/en/uyelik-sozlesmesi). Você pode excluir sua conta a qualquer momento: [Excluir sua conta]({deleteUrl}).",
           "Os **círculos** dos apps (dhikr e khatm compartilhados) exigem uma conta e, como podem revelar suas crenças religiosas, só funcionam com seu consentimento explícito à parte (KVKK art. 6; LGPD art. 11). O nome do círculo, sua participação, seu nome de exibição, os dhikr que você adiciona e os juz que você pega ou conclui só são vistos pelos membros daquele círculo; não são públicos, não são vendidos nem usados em publicidade. Se você sair de um círculo, sua contribuição fica sem nome. Você pode retirar o consentimento no app a qualquer momento; então sai de todos os círculos.",
           "Os **grupos** (contagem regressiva, relógio mundial, votação de reunião, sala de foco, sugestão de alarme, contador de observação do céu) também exigem uma conta. O nome do grupo, sua participação, seu nome de exibição e o que você adiciona ao grupo (cidade e fuso compartilhados, seus votos, sessões de foco, sugestões de alarme, eventos celestes marcados) só são vistos pelos membros do grupo. Uma sugestão de alarme nunca é definida no seu celular sem que você aceite. Os **relatos do tempo** não são mostrados a outras pessoas com sua identidade: a localização é arredondada a uma célula de cerca de 25 km e o relato é apagado após 24 horas. Base legal: execução do contrato de associação (KVKK art. 5/2-c; LGPD art. 7, V). Você pode sair de um grupo e denunciar ou bloquear pessoas; excluir a conta apaga tudo isso."
         ]
@@ -3491,45 +3491,6 @@
       {
         "q": "O Rahu Kaal acontece no mesmo horário em todo lugar?",
         "a": "Não. Ele é calculado pelo nascer e pôr do sol locais, então muda de cidade para cidade e com as estações. Esta página o calcula para o lugar que você escolher."
-      }
-    ]
-  },
-  "account": {
-    "delTitle": "Excluir sua conta | Saat Tarih",
-    "delDesc": "Como excluir sua conta do Saat Tarih no site ou nos apps para iPhone e Android, e o que é excluído.",
-    "delH1": "Excluir sua conta",
-    "delLead": "A conta é opcional no Saat Tarih e você pode excluí-la quando quiser. Você confirma o pedido de exclusão por um link enviado ao seu e-mail; depois da confirmação, a conta é excluída na hora e as etapas em segundo plano terminam em até 7 dias.",
-    "delSections": [
-      {
-        "h": "Excluir no site ou no app",
-        "ul": [
-          "Entre em **hesap.time.bumba.tr** ou abra **Ajustes › Conta** no app.",
-          "Em **Excluir conta**, digite sua senha (não precisa se você entrou nas últimas 24 horas) e envie o pedido.",
-          "Abra o link do e-mail e toque em **Confirmo** na página. O link vale 7 dias; se não confirmar nesse prazo, o pedido é cancelado e sua conta fica como está.",
-          "Depois da confirmação, sua conta é excluída na hora e as etapas em segundo plano terminam em até 7 dias; enviamos um e-mail para você. Você pode continuar usando o Saat Tarih sem conta."
-        ]
-      },
-      {
-        "h": "Se você não consegue entrar",
-        "p": [
-          "Se esqueceu a senha, crie uma nova em **Entrar › Esqueci a senha** e depois exclua a conta.",
-          "Se também não tem acesso ao seu e-mail, escreva para [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Depois de confirmar que a conta é sua, nós a excluímos e avisamos você."
-        ]
-      },
-      {
-        "h": "O que é excluído?",
-        "ul": [
-          "Seu e-mail, seu perfil (com a foto) e o resumo irreversível da sua senha.",
-          "Suas sessões, os registros do app guardados na conta e suas medalhas.",
-          "Só a sua conta do Saat Tarih é excluída. Suas contas em outros produtos Bumba continuam lá; cada uma é excluída na página de conta desse produto.",
-          "As cópias nos backups são excluídas automaticamente em no máximo 30 dias (os backups ficam guardados por 30 dias)."
-        ]
-      },
-      {
-        "h": "O que fica no seu celular",
-        "p": [
-          "Os ajustes do app e os registros no celular ficam no seu celular (e no seu iCloud, se a sincronização com o iCloud estiver ativada). Eles são excluídos quando você apaga o app do celular."
-        ]
       }
     ]
   },

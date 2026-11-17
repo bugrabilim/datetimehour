@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">اسم المستخدم أو العنوان</string>
     <string name="account_socialWeb">الموقع الإلكتروني</string>
     <string name="account_none">غير محدد</string>
-    <string name="account_optionalNote">إدخال هذه المعلومات اختياري؛ وتُعالج وفق [إشعار الخصوصية](https://bumbagroup.com/uyelik-aydinlatma?dil=en).</string>
+    <string name="account_optionalNote">إدخال هذه المعلومات اختياري؛ وتُعالج وفق [إشعار الخصوصية](https://bumbagroup.com/en/uyelik-aydinlatma).</string>
     <string name="account_visibility">الظهور</string>
     <string name="account_showProfile">أظهر ملفي الشخصي</string>
     <string name="account_visibleFields">المعلومات التي يراها الأعضاء الآخرون</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">تبقى إعداداتك وسجلاتك على الهاتف في الهاتف.</string>
     <string name="account_notice">إشعار الخصوصية</string>
     <string name="account_terms">شروط العضوية</string>
-    <string name="account_deletionInfo">عن حذف الحساب</string>
     <string name="account_badgesTitle">شاراتي وسجلاتي</string>
     <string name="account_badgesNote">تُحفظ شاراتك في حسابك؛ تُحذف بحذف الحساب وتخرج من النسخ الاحتياطية خلال 30 يومًا على الأكثر.</string>
     <string name="account_badgesNone">لا شارات بعد. تُكسب الشارات في تطبيق الهاتف.</string>

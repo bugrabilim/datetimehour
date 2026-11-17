@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">ইউজারনেম বা ঠিকানা</string>
     <string name="account_socialWeb">ওয়েবসাইট</string>
     <string name="account_none">বাছা হয়নি</string>
-    <string name="account_optionalNote">এই তথ্য দেওয়া ঐচ্ছিক; এটি [গোপনীয়তা নোটিশ](https://bumbagroup.com/uyelik-aydinlatma?dil=en) অনুযায়ী প্রক্রিয়া করা হয়।</string>
+    <string name="account_optionalNote">এই তথ্য দেওয়া ঐচ্ছিক; এটি [গোপনীয়তা নোটিশ](https://bumbagroup.com/en/uyelik-aydinlatma) অনুযায়ী প্রক্রিয়া করা হয়।</string>
     <string name="account_visibility">দৃশ্যমানতা</string>
     <string name="account_showProfile">আমার প্রোফাইল দেখান</string>
     <string name="account_visibleFields">যে তথ্য অন্য সদস্যরা দেখতে পারেন</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">ফোনে আপনার সেটিং ও রেকর্ড ফোনেই থাকে।</string>
     <string name="account_notice">গোপনীয়তা নোটিশ</string>
     <string name="account_terms">সদস্যপদের শর্তাবলি</string>
-    <string name="account_deletionInfo">অ্যাকাউন্ট মোছা সম্পর্কে</string>
     <string name="account_badgesTitle">আমার ব্যাজ ও রেকর্ড</string>
     <string name="account_badgesNote">আপনার ব্যাজ আপনার অ্যাকাউন্টে রাখা হয়; অ্যাকাউন্ট মুছলে মুছে যায় এবং সর্বোচ্চ 30 দিনের মধ্যে ব্যাকআপ থেকেও সরে যায়।</string>
     <string name="account_badgesNone">এখনো কোনো ব্যাজ নেই। ব্যাজ ফোন অ্যাপে অর্জিত হয়।</string>

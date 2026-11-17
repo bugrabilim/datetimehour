@@ -51,6 +51,14 @@ test("sayfalar: 19 dil, yön, noindex, CSP, satır içi betik yok", async () => 
     for (const m of r.text.matchAll(/<script([^>]*)>/g)) assert.ok(/type="application\/json"|src="\/varlik\/hesap\.js"/.test(m[1]), m[0]);
     assert.ok(!/ style="/.test(r.text), "satır içi stil yok");
   }
+  // Standart 5.23: kayıt ve girişte ayrı bağlantı satırı yok; ortak metinler yalnız onay cümlesinde, hesap silmeye bağlantı yok
+  for (const p of ["/kayit?dil=tr", "/giris?dil=tr", "/kayit?dil=de", "/giris?dil=de"]) {
+    const x = (await t.req(p)).text.replace(/<script type="application\/json"[\s\S]*?<\/script>/, "");
+    assert.ok(!/hesap-silme|account-deletion/.test(x), p);
+    const foot = x.slice(x.indexOf('<footer class="foot">'), x.indexOf("</footer>"));
+    assert.ok(!/uyelik-(aydinlatma|sozlesmesi)/.test(foot), p);
+    if (p.startsWith("/giris")) assert.ok(!/uyelik-(aydinlatma|sozlesmesi)/.test(x), p);
+  }
   // Kayıtta yalnız e-posta ve şifre (görünen ad yok)
   const k = await t.req("/kayit?dil=tr");
   const names = [...k.text.matchAll(/<input[^>]*name="([^"]+)"/g)].map((m) => m[1]);

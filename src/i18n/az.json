@@ -376,7 +376,7 @@
         "h": "Üzvlük",
         "p": [
           "Saat Tarix-dən istifadə üçün hesab lazım deyil. İstəsəniz saytda (hesap.time.bumba.tr) və tətbiqlərdə e-poçt ünvanınız və şifrə ilə Bumba üzvlüyü aça bilərsiniz; eyni üzvlüklə digər Bumba məhsullarına da daxil ola bilərsiniz.",
-          "Üzvlükdə hansı məlumatların nə üçün işləndiyi, harada saxlandığı və hüquqlarınız ümumi [Bumba üzvlük məlumatlandırma mətnində](https://bumbagroup.com/uyelik-aydinlatma?dil=en), qaydalar [üzvlük müqaviləsində](https://bumbagroup.com/uyelik-sozlesmesi?dil=en) yazılıb. Hesabınızı istədiyiniz vaxt silə bilərsiniz: [Hesabınızı silmək]({deleteUrl}).",
+          "Üzvlükdə hansı məlumatların nə üçün işləndiyi, harada saxlandığı və hüquqlarınız ümumi [Bumba üzvlük məlumatlandırma mətnində](https://bumbagroup.com/en/uyelik-aydinlatma), qaydalar [üzvlük müqaviləsində](https://bumbagroup.com/en/uyelik-sozlesmesi) yazılıb. Hesabınızı istədiyiniz vaxt silə bilərsiniz: [Hesabınızı silmək]({deleteUrl}).",
           "Tətbiqlərdəki **Halqalar** (ortaq zikr və xətm) üzvlük tələb edir və dini inancınız barədə məlumat göstərə biləcəyi üçün yalnız ayrıca verdiyiniz açıq razılıqla işləyir (KVKK m. 6). Halqanın adı, üzvlüyünüz, görünən adınız, əlavə etdiyiniz zikr sayı və götürdüyünüz və ya bitirdiyiniz cüzlər yalnız həmin halqanın üzvlərinə görünür; ictimai deyil, satılmır, reklamda istifadə olunmur. Halqadan çıxsanız, töhfəniz adsız qalır. Razılığınızı tətbiqdə istənilən vaxt geri ala bilərsiniz; onda bütün halqalardan çıxırsınız.",
           "**Qruplar** (ortaq geri sayım, dünya saatı, görüş səsverməsi, diqqət otağı, zəngli saat təklifi, müşahidə sayğacı) da üzvlük tələb edir. Qrupun adı, üzvlüyünüz, görünən adınız və qrupa daxil etdikləriniz (paylaşdığınız şəhər və saat qurşağı, səsləriniz, diqqət seansı, zəngli saat təklifləri, qeyd etdiyiniz səma hadisələri) yalnız qrupun üzvlərinə görünür. Zəngli saat təklifi siz təsdiqləmədən telefonunuza qurulmur. **Hava bildirişi** başqalarına kimliyinizlə göstərilmir: məkanınız təxminən 25 km-lik xanaya yuvarlaqlaşdırılır, bildiriş 24 saatdan sonra silinir. Hüquqi əsas: üzvlük müqaviləsinin icrası (KVKK m. 5/2-c). Qrupdan çıxa, şəxsləri bildirə və ya əngəlləyə bilərsiniz; hesabınızı silsəniz, bunların hamısı silinir."
         ]
@@ -3411,45 +3411,6 @@
       {
         "q": "Rahu Kaal hər yerdə eyni saatda olur?",
         "a": "Xeyr. Dilim yerin gün çıxması və batmasına görə hesablandığı üçün şəhərdən şəhərə və fəsillərə görə dəyişir. Bu səhifə seçdiyiniz yerə görə hesablayır."
-      }
-    ]
-  },
-  "account": {
-    "delTitle": "Hesabı silmək | Saat Tarih",
-    "delDesc": "Saat Tarix hesabınızı saytda və ya iPhone və Android tətbiqlərində necə silmək olar, nələr silinir.",
-    "delH1": "Hesabınızı silmək",
-    "delLead": "Saat Tarih-də hesab istəyə bağlıdır və istədiyiniz vaxt silinə bilər. Silmə sorğusunu e-poçtunuza gələn keçidlə təsdiqləyirsiniz; təsdiqdən sonra hesabınız dərhal silinir, arxa plandakı işlər ən gec 7 gün ərzində tamamlanır.",
-    "delSections": [
-      {
-        "h": "Saytda və ya tətbiqdə silmək",
-        "ul": [
-          "**hesap.time.bumba.tr** ünvanında daxil olun və ya tətbiqdə **Parametrlər › Hesab** bölməsini açın.",
-          "**Hesabı sil** bölməsində şifrənizi daxil edin (son 24 saatda daxil olmusunuzsa, lazım deyil) və sorğunu göndərin.",
-          "E-poçtunuza gələn keçidi açın və səhifədə **Təsdiqləyirəm** düyməsinə toxunun. Keçid 7 gün etibarlıdır; bu müddətdə təsdiqləməsəniz, sorğu ləğv olunur və hesabınız olduğu kimi qalır.",
-          "Təsdiqdən sonra hesabınız dərhal silinir, arxa plandakı işlər ən gec 7 gün ərzində tamamlanır; e-poçt ünvanınıza məlumat gedir. Saat Tarih-dən hesabsız istifadəyə davam edə bilərsiniz."
-        ]
-      },
-      {
-        "h": "Daxil ola bilmirsinizsə",
-        "p": [
-          "Şifrənizi unutmusunuzsa **Giriş et › Şifrəni unutmuşam** ilə yeni şifrə təyin edib hesabı silə bilərsiniz.",
-          "E-poçt ünvanınıza da daxil ola bilmirsinizsə [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) ünvanına yazın. Hesabın sizə aid olduğunu təsdiqlədikdən sonra silir, sizə xəbər veririk."
-        ]
-      },
-      {
-        "h": "Nələr silinir?",
-        "ul": [
-          "E-poçt ünvanınız, profil məlumatlarınız (foto daxil) və şifrənizin geri qaytarılmayan xülasəsi.",
-          "Sessiyalarınız, hesabda saxlanan tətbiq qeydləriniz və nişanlarınız.",
-          "Yalnız Saat Tarih-dəki hesabınız silinir. Digər Bumba məhsullarındakı hesablarınız orada qalır; hər birini həmin məhsulun öz hesab səhifəsindən silirsiniz.",
-          "Ehtiyat nüsxələrdəki kopiyalar ən gec 30 gün içində avtomatik silinir (ehtiyat nüsxələr 30 gün saxlanır)."
-        ]
-      },
-      {
-        "h": "Telefonunuzda qalanlar",
-        "p": [
-          "Tətbiqin ayarları və telefondakı qeydləriniz telefonunuzda (iCloud eşitləməsi açıqdırsa iCloud-unuzda) qalır. Tətbiqi telefondan silsəniz, bunlar da silinir."
-        ]
       }
     ]
   },

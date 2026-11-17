@@ -376,7 +376,7 @@
         "h": "Membership",
         "p": [
           "You don't need an account to use Saat Tarih. If you like, you can open a Bumba membership on the website (hesap.time.bumba.tr) and in the apps with your email address and a password; the same membership also works in other Bumba products.",
-          "What information membership processes and why, where it is stored and your rights are set out in the shared [Bumba membership privacy notice](https://bumbagroup.com/uyelik-aydinlatma?dil=en); the rules are in the [membership terms](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). You can delete your account at any time: [Deleting your account]({deleteUrl}).",
+          "What information membership processes and why, where it is stored and your rights are set out in the shared [Bumba membership privacy notice](https://bumbagroup.com/en/uyelik-aydinlatma); the rules are in the [membership terms](https://bumbagroup.com/en/uyelik-sozlesmesi). You can delete your account at any time: [Deleting your account]({deleteUrl}).",
           "**Circles** in the apps (shared dhikr and khatm) need a membership and, because they may reveal information about your religious beliefs, work only with your separate explicit consent (KVKK art. 6; GDPR art. 9(2)(a)). The circle's name, your membership, your display name, the dhikr counts you add and the juz you take or finish are visible only to that circle's members; they are not public, not sold and not used for advertising. If you leave a circle, your contribution stays without your name. You can withdraw your consent in the app at any time; you then leave all circles.",
           "**Groups** (shared countdown, world clock, meeting poll, focus room, alarm suggestion, sky-watching counter) also need a membership. The group's name, your membership, your display name and what you add to the group (the city and time zone you share, your votes, focus sessions, alarm suggestions, the sky events you tick) are visible only to the group's members. An alarm suggestion is never set on your phone unless you accept it. **Weather reports** are not shown to others with your identity: your location is rounded to a cell of about 25 km and the report is deleted after 24 hours. Legal basis: performance of the membership agreement (KVKK art. 5(2)(c); GDPR art. 6(1)(b)). You can leave a group, report or block people; deleting your account deletes all of this."
         ]
@@ -3411,45 +3411,6 @@
       {
         "q": "Is Rahu Kaal at the same time everywhere?",
         "a": "No. It is calculated from the local sunrise and sunset, so it changes from city to city and with the seasons. This page calculates it for the place you choose."
-      }
-    ]
-  },
-  "account": {
-    "delTitle": "Delete your account | Saat Tarih",
-    "delDesc": "How to delete your Saat Tarih account on the website or in the iPhone and Android apps, and what is deleted.",
-    "delH1": "Deleting your account",
-    "delLead": "An account is optional in Saat Tarih and you can delete it at any time. You confirm the deletion request with a link sent to your email; once you confirm, your account is deleted immediately and background steps are completed within 7 days at the latest.",
-    "delSections": [
-      {
-        "h": "Delete on the website or in the app",
-        "ul": [
-          "Sign in at **hesap.time.bumba.tr**, or open **Settings › Account** in the app.",
-          "Under **Delete account**, enter your password (not needed if you signed in within the last 24 hours) and send the request.",
-          "Open the link sent to your email and tap **I confirm** on the page. The link is valid for 7 days; if you don't confirm in that time, the request is cancelled and your account stays as it is.",
-          "Once you confirm, your account is deleted immediately and background steps are completed within 7 days at the latest; we email you. You can keep using Saat Tarih without an account."
-        ]
-      },
-      {
-        "h": "If you can't sign in",
-        "p": [
-          "If you forgot your password, set a new one with **Sign in › Forgot password** and then delete the account.",
-          "If you can't access your email address either, write to [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Once we have confirmed the account is yours, we delete it and let you know."
-        ]
-      },
-      {
-        "h": "What is deleted?",
-        "ul": [
-          "Your email address, your profile (including the photo) and the irreversible hash of your password.",
-          "Your sessions, the app records kept in your account and your badges.",
-          "Only your Saat Tarih account is deleted. Your accounts in other Bumba products stay there; you delete each one from that product's own account page.",
-          "Copies in backups are deleted automatically within 30 days at the latest (backups are kept for 30 days)."
-        ]
-      },
-      {
-        "h": "What stays on your phone",
-        "p": [
-          "The app's settings and the records on your phone stay on your phone (and in your iCloud if iCloud sync is on). They are deleted when you delete the app from your phone."
-        ]
       }
     ]
   },

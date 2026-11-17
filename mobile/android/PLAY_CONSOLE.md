@@ -196,7 +196,7 @@ Sitedeki gizlilik sayfasının "Android uygulaması" bölümüyle aynı olmalı:
   e-postadaki bağlantıyla; hesap uygulamada Ayarlar › Hesap › Hesabı sil ile, e-postadaki bağlantıyla onaylanınca
   silinir (standart 5.21).
 - **Hesap silme adresi** (Play Console › Uygulama içeriği › Veri güvenliği › "Hesap silme" alanı; hesap açılabilen
-  uygulamalarda zorunlu): https://time.bumba.tr/en/account-deletion/ (Türkçe: https://time.bumba.tr/hesap-silme/).
+  uygulamalarda zorunlu): https://bumbagroup.com/en/hesap-silme/saat-tarih (Türkçe: https://bumbagroup.com/hesap-silme/saat-tarih; standart 5.23, merkezde).
   Sayfa uygulamayı kurmadan silme yolunu da anlatır (bilgi@bumbagroup.com'a hesabın e-postasından yazmak).
   Bu alan ve hesap beyanı, hesap ekranları olan sürümle birlikte doldurulur.
 - Reklam yok, izleme yok, istatistik yok.

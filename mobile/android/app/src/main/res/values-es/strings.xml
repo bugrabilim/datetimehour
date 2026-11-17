@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">Usuario o dirección</string>
     <string name="account_socialWeb">Sitio web</string>
     <string name="account_none">Sin elegir</string>
-    <string name="account_optionalNote">Esta información es opcional; se trata según el [Aviso de privacidad](https://bumbagroup.com/uyelik-aydinlatma?dil=en).</string>
+    <string name="account_optionalNote">Esta información es opcional; se trata según el [Aviso de privacidad](https://bumbagroup.com/en/uyelik-aydinlatma).</string>
     <string name="account_visibility">Visibilidad</string>
     <string name="account_showProfile">Mostrar mi perfil</string>
     <string name="account_visibleFields">Información que otros miembros pueden ver</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">Sus ajustes y registros del teléfono se quedan en el teléfono.</string>
     <string name="account_notice">Aviso de privacidad</string>
     <string name="account_terms">Condiciones de membresía</string>
-    <string name="account_deletionInfo">Sobre la eliminación de la cuenta</string>
     <string name="account_badgesTitle">Mis insignias y registros</string>
     <string name="account_badgesNote">Sus insignias se guardan en su cuenta; se borran con la cuenta y desaparecen de las copias de seguridad en 30 días como máximo.</string>
     <string name="account_badgesNone">Aún no hay insignias. Las insignias se ganan en la app del teléfono.</string>

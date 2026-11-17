@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">Username o address</string>
     <string name="account_socialWeb">Website</string>
     <string name="account_none">Walang napili</string>
-    <string name="account_optionalNote">Opsyonal ang paglalagay ng impormasyong ito; pinoproseso ito ayon sa [Abiso sa Privacy](https://bumbagroup.com/uyelik-aydinlatma?dil=en).</string>
+    <string name="account_optionalNote">Opsyonal ang paglalagay ng impormasyong ito; pinoproseso ito ayon sa [Abiso sa Privacy](https://bumbagroup.com/en/uyelik-aydinlatma).</string>
     <string name="account_visibility">Visibility</string>
     <string name="account_showProfile">Ipakita ang profile ko</string>
     <string name="account_visibleFields">Impormasyong makikita ng ibang miyembro</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">Mananatili sa telepono ang inyong mga setting at record sa telepono.</string>
     <string name="account_notice">Abiso sa Privacy</string>
     <string name="account_terms">Mga Tuntunin ng Membership</string>
-    <string name="account_deletionInfo">Tungkol sa pagbura ng account</string>
     <string name="account_badgesTitle">Mga badge at record ko</string>
     <string name="account_badgesNote">Nakatago sa inyong account ang mga badge; nabubura ang mga ito kasabay ng account at naaalis sa mga backup sa loob ng 30 araw.</string>
     <string name="account_badgesNone">Wala pang badge. Nakukuha ang mga badge sa phone app.</string>

@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">यूज़रनेम या पता</string>
     <string name="account_socialWeb">वेबसाइट</string>
     <string name="account_none">नहीं चुना</string>
-    <string name="account_optionalNote">यह जानकारी देना वैकल्पिक है; यह [गोपनीयता सूचना](https://bumbagroup.com/uyelik-aydinlatma?dil=en) के अनुसार प्रोसेस होती है।</string>
+    <string name="account_optionalNote">यह जानकारी देना वैकल्पिक है; यह [गोपनीयता सूचना](https://bumbagroup.com/en/uyelik-aydinlatma) के अनुसार प्रोसेस होती है।</string>
     <string name="account_visibility">दृश्यता</string>
     <string name="account_showProfile">मेरी प्रोफ़ाइल दिखाएँ</string>
     <string name="account_visibleFields">जानकारी जो दूसरे सदस्य देख सकते हैं</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">फ़ोन पर आपकी सेटिंग और रिकॉर्ड फ़ोन पर ही रहते हैं।</string>
     <string name="account_notice">गोपनीयता सूचना</string>
     <string name="account_terms">सदस्यता की शर्तें</string>
-    <string name="account_deletionInfo">खाता हटाने के बारे में</string>
     <string name="account_badgesTitle">मेरे बैज और रिकॉर्ड</string>
     <string name="account_badgesNote">आपके बैज आपके खाते में रखे जाते हैं; खाता मिटाने पर मिट जाते हैं और ज़्यादा से ज़्यादा 30 दिन में बैकअप से भी हट जाते हैं।</string>
     <string name="account_badgesNone">अभी कोई बैज नहीं। बैज फ़ोन ऐप में मिलते हैं।</string>

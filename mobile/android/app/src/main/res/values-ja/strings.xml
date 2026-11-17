@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">ユーザー名またはアドレス</string>
     <string name="account_socialWeb">ウェブサイト</string>
     <string name="account_none">未選択</string>
-    <string name="account_optionalNote">これらの情報の入力は任意です。[プライバシー通知](https://bumbagroup.com/uyelik-aydinlatma?dil=en)に従って処理されます。</string>
+    <string name="account_optionalNote">これらの情報の入力は任意です。[プライバシー通知](https://bumbagroup.com/en/uyelik-aydinlatma)に従って処理されます。</string>
     <string name="account_visibility">公開設定</string>
     <string name="account_showProfile">プロフィールを公開する</string>
     <string name="account_visibleFields">ほかの会員に見える情報</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">スマートフォン上の設定と記録はスマートフォンに残ります。</string>
     <string name="account_notice">プライバシー通知</string>
     <string name="account_terms">会員規約</string>
-    <string name="account_deletionInfo">アカウントの削除について</string>
     <string name="account_badgesTitle">バッジと記録</string>
     <string name="account_badgesNote">バッジはアカウントに保存されます。アカウントを削除すると削除され、遅くとも30日以内にバックアップからも消えます。</string>
     <string name="account_badgesNone">まだバッジはありません。バッジはスマートフォンアプリで獲得します。</string>

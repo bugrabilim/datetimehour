@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">نام کاربری یا نشانی</string>
     <string name="account_socialWeb">وبگاه</string>
     <string name="account_none">انتخاب نشده</string>
-    <string name="account_optionalNote">وارد کردن این اطلاعات اختیاری است؛ طبق [اطلاعیهٔ حریم خصوصی](https://bumbagroup.com/uyelik-aydinlatma?dil=en) پردازش می‌شود.</string>
+    <string name="account_optionalNote">وارد کردن این اطلاعات اختیاری است؛ طبق [اطلاعیهٔ حریم خصوصی](https://bumbagroup.com/en/uyelik-aydinlatma) پردازش می‌شود.</string>
     <string name="account_visibility">نمایش</string>
     <string name="account_showProfile">نمایه‌ام را نشان بده</string>
     <string name="account_visibleFields">اطلاعاتی که اعضای دیگر می‌بینند</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">تنظیمات و ثبت‌های شما روی گوشی در گوشی می‌ماند.</string>
     <string name="account_notice">اطلاعیهٔ حریم خصوصی</string>
     <string name="account_terms">شرایط عضویت</string>
-    <string name="account_deletionInfo">دربارهٔ حذف حساب</string>
     <string name="account_badgesTitle">نشان‌ها و ثبت‌های من</string>
     <string name="account_badgesNote">نشان‌های شما در حسابتان نگه داشته می‌شود؛ با پاک کردن حساب پاک می‌شود و حداکثر ظرف 30 روز از پشتیبان‌ها هم حذف می‌شود.</string>
     <string name="account_badgesNone">هنوز نشانی ندارید. نشان‌ها در برنامهٔ گوشی به دست می‌آیند.</string>

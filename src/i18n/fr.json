@@ -403,7 +403,7 @@
         "h": "Adhésion",
         "p": [
           "Aucun compte n'est nécessaire pour utiliser Saat Tarih. Si vous le souhaitez, vous pouvez ouvrir une adhésion Bumba sur le site (hesap.time.bumba.tr) et dans les applications avec votre adresse e-mail et un mot de passe ; la même adhésion fonctionne aussi dans les autres produits Bumba.",
-          "Les informations traitées par l'adhésion, leurs finalités, leur lieu de stockage et vos droits sont décrits dans la [notice de confidentialité commune de l'adhésion Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en) ; les règles figurent dans les [conditions d'adhésion](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Vous pouvez supprimer votre compte à tout moment : [Supprimer votre compte]({deleteUrl}).",
+          "Les informations traitées par l'adhésion, leurs finalités, leur lieu de stockage et vos droits sont décrits dans la [notice de confidentialité commune de l'adhésion Bumba](https://bumbagroup.com/en/uyelik-aydinlatma) ; les règles figurent dans les [conditions d'adhésion](https://bumbagroup.com/en/uyelik-sozlesmesi). Vous pouvez supprimer votre compte à tout moment : [Supprimer votre compte]({deleteUrl}).",
           "Les **cercles** des applications (dhikr et khatm partagés) nécessitent une adhésion et, comme ils peuvent révéler vos convictions religieuses, ne fonctionnent qu'avec votre consentement explicite distinct (KVKK art. 6 ; RGPD art. 9(2)(a)). Le nom du cercle, votre adhésion, votre nom affiché, les nombres de dhikr que vous ajoutez et les juz que vous prenez ou terminez ne sont visibles que des membres de ce cercle ; ils ne sont ni publics, ni vendus, ni utilisés pour la publicité. Si vous quittez un cercle, votre contribution reste sans nom. Vous pouvez retirer votre consentement dans l'application à tout moment ; vous quittez alors tous les cercles.",
           "Les **groupes** (compte à rebours, horloge mondiale, sondage de réunion, salle de concentration, proposition de réveil, compteur d'observation du ciel) nécessitent aussi une adhésion. Le nom du groupe, votre adhésion, votre nom affiché et ce que vous y ajoutez (ville et fuseau horaire partagés, vos votes, sessions de concentration, propositions de réveil, événements célestes cochés) ne sont visibles que des membres du groupe. Une proposition de réveil n'est jamais réglée sur votre téléphone sans votre accord. Les **signalements météo** ne sont pas montrés aux autres avec votre identité : votre position est arrondie à une cellule d'environ 25 km et le signalement est supprimé après 24 heures. Base légale : exécution du contrat d'adhésion (KVKK art. 5(2)(c) ; RGPD art. 6(1)(b)). Vous pouvez quitter un groupe, signaler ou bloquer des personnes ; supprimer votre compte supprime tout cela."
         ]
@@ -3452,45 +3452,6 @@
       {
         "q": "Le Rahu Kaal a-t-il lieu à la même heure partout ?",
         "a": "Non. Il est calculé à partir du lever et du coucher du soleil locaux ; il change donc d'une ville à l'autre et selon les saisons. Cette page le calcule pour le lieu que vous choisissez."
-      }
-    ]
-  },
-  "account": {
-    "delTitle": "Supprimer votre compte | Saat Tarih",
-    "delDesc": "Comment supprimer votre compte Saat Tarih sur le site ou dans les applications iPhone et Android, et ce qui est supprimé.",
-    "delH1": "Supprimer votre compte",
-    "delLead": "Le compte est facultatif dans Saat Tarih et vous pouvez le supprimer à tout moment. Vous confirmez la demande de suppression par un lien envoyé à votre adresse e-mail ; après confirmation, votre compte est supprimé aussitôt et les étapes en arrière-plan se terminent au plus tard sous 7 jours.",
-    "delSections": [
-      {
-        "h": "Supprimer sur le site ou dans l'application",
-        "ul": [
-          "Connectez-vous sur **hesap.time.bumba.tr**, ou ouvrez **Réglages › Compte** dans l'application.",
-          "Dans **Supprimer le compte**, saisissez votre mot de passe (inutile si vous vous êtes connecté ces dernières 24 heures) et envoyez la demande.",
-          "Ouvrez le lien reçu par e-mail et touchez **Je confirme** sur la page. Le lien est valable 7 jours ; sans confirmation dans ce délai, la demande est annulée et votre compte reste tel quel.",
-          "Après confirmation, votre compte est supprimé aussitôt et les étapes en arrière-plan se terminent au plus tard sous 7 jours ; nous vous envoyons un e-mail. Vous pouvez continuer à utiliser Saat Tarih sans compte."
-        ]
-      },
-      {
-        "h": "Si vous ne pouvez pas vous connecter",
-        "p": [
-          "Si vous avez oublié votre mot de passe, définissez-en un nouveau avec **Se connecter › Mot de passe oublié**, puis supprimez le compte.",
-          "Si vous n'avez plus accès à votre adresse e-mail non plus, écrivez à [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Après avoir vérifié que le compte vous appartient, nous le supprimons et vous prévenons."
-        ]
-      },
-      {
-        "h": "Qu'est-ce qui est supprimé ?",
-        "ul": [
-          "Votre adresse e-mail, votre profil (photo comprise) et l'empreinte irréversible de votre mot de passe.",
-          "Vos sessions, les données de l'application conservées dans le compte et vos badges.",
-          "Seul votre compte Saat Tarih est supprimé. Vos comptes dans les autres produits Bumba y restent ; chacun se supprime depuis la page de compte de ce produit.",
-          "Les copies dans les sauvegardes sont supprimées automatiquement sous 30 jours au plus tard (les sauvegardes sont conservées 30 jours)."
-        ]
-      },
-      {
-        "h": "Ce qui reste sur votre téléphone",
-        "p": [
-          "Les réglages de l'application et vos données sur le téléphone restent sur votre téléphone (et dans votre iCloud si la synchronisation iCloud est activée). Ils sont supprimés lorsque vous supprimez l'application du téléphone."
-        ]
       }
     ]
   },

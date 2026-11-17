@@ -376,7 +376,7 @@
         "h": "Keanggotaan",
         "p": [
           "Anda tidak perlu akun untuk memakai Saat Tarih. Jika mau, Anda bisa membuat keanggotaan Bumba di situs (hesap.time.bumba.tr) dan di aplikasi dengan alamat email dan kata sandi; keanggotaan yang sama juga berlaku di produk Bumba lainnya.",
-          "Informasi apa yang diproses keanggotaan dan untuk apa, di mana disimpan, serta hak Anda tertulis dalam [pemberitahuan privasi keanggotaan Bumba](https://bumbagroup.com/uyelik-aydinlatma?dil=en) bersama; aturannya ada di [ketentuan keanggotaan](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Anda bisa menghapus akun kapan saja: [Menghapus akun Anda]({deleteUrl}).",
+          "Informasi apa yang diproses keanggotaan dan untuk apa, di mana disimpan, serta hak Anda tertulis dalam [pemberitahuan privasi keanggotaan Bumba](https://bumbagroup.com/en/uyelik-aydinlatma) bersama; aturannya ada di [ketentuan keanggotaan](https://bumbagroup.com/en/uyelik-sozlesmesi). Anda bisa menghapus akun kapan saja: [Menghapus akun Anda]({deleteUrl}).",
           "**Lingkaran** di aplikasi (zikir dan khatam bersama) memerlukan keanggotaan dan, karena dapat mengungkap keyakinan agama Anda, hanya berjalan dengan persetujuan tegas Anda yang terpisah (KVKK pasal 6; UU PDP). Nama lingkaran, keanggotaan Anda, nama tampilan, jumlah zikir yang Anda tambahkan, serta juz yang Anda ambil atau selesaikan hanya terlihat oleh anggota lingkaran itu; tidak publik, tidak dijual, dan tidak dipakai untuk iklan. Jika Anda keluar, kontribusi Anda tetap ada tanpa nama. Anda dapat menarik persetujuan di aplikasi kapan saja; Anda lalu keluar dari semua lingkaran.",
           "**Grup** (hitung mundur bersama, jam dunia, polling rapat, ruang fokus, usulan alarm, penghitung pengamatan langit) juga memerlukan keanggotaan. Nama grup, keanggotaan Anda, nama tampilan, dan apa yang Anda masukkan ke grup (kota dan zona waktu yang Anda bagikan, suara Anda, sesi fokus, usulan alarm, peristiwa langit yang Anda tandai) hanya terlihat oleh anggota grup. Usulan alarm tidak pernah dipasang di ponsel Anda tanpa persetujuan Anda. **Laporan cuaca** tidak ditampilkan kepada orang lain dengan identitas Anda: lokasi dibulatkan ke sel sekitar 25 km dan laporan dihapus setelah 24 jam. Dasar hukum: pelaksanaan perjanjian keanggotaan (KVKK pasal 5/2-c). Anda dapat keluar dari grup, melaporkan atau memblokir orang; menghapus akun menghapus semuanya."
         ]
@@ -3411,45 +3411,6 @@
       {
         "q": "Apakah Rahu Kaal sama waktunya di semua tempat?",
         "a": "Tidak. Rahu Kaal dihitung dari matahari terbit dan terbenam setempat, jadi berubah dari kota ke kota dan menurut musim. Halaman ini menghitungnya untuk tempat yang Anda pilih."
-      }
-    ]
-  },
-  "account": {
-    "delTitle": "Hapus akun | Saat Tarih",
-    "delDesc": "Cara menghapus akun Saat Tarih Anda di situs atau di aplikasi iPhone dan Android, dan apa yang dihapus.",
-    "delH1": "Menghapus akun Anda",
-    "delLead": "Akun di Saat Tarih bersifat opsional dan bisa dihapus kapan saja. Anda mengonfirmasi permintaan penghapusan lewat tautan yang dikirim ke email; setelah dikonfirmasi, akun langsung dihapus dan langkah di latar belakang selesai paling lambat 7 hari.",
-    "delSections": [
-      {
-        "h": "Menghapus di situs atau di aplikasi",
-        "ul": [
-          "Masuk di **hesap.time.bumba.tr**, atau buka **Pengaturan › Akun** di aplikasi.",
-          "Di bagian **Hapus akun**, masukkan kata sandi (tidak perlu jika Anda masuk dalam 24 jam terakhir) dan kirim permintaannya.",
-          "Buka tautan di email Anda dan ketuk **Saya konfirmasi** di halamannya. Tautan berlaku 7 hari; jika tidak dikonfirmasi dalam waktu itu, permintaan dibatalkan dan akun Anda tetap seperti semula.",
-          "Setelah dikonfirmasi, akun Anda langsung dihapus dan langkah di latar belakang selesai paling lambat 7 hari; kami mengirim email kepada Anda. Anda tetap bisa memakai Saat Tarih tanpa akun."
-        ]
-      },
-      {
-        "h": "Jika Anda tidak bisa masuk",
-        "p": [
-          "Jika lupa kata sandi, buat kata sandi baru dengan **Masuk › Lupa kata sandi**, lalu hapus akunnya.",
-          "Jika alamat email Anda juga tidak bisa diakses, tulis ke [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Setelah kami memastikan akun itu milik Anda, kami menghapusnya dan memberi tahu Anda."
-        ]
-      },
-      {
-        "h": "Apa yang dihapus?",
-        "ul": [
-          "Alamat email, profil Anda (termasuk foto) dan hash kata sandi yang tidak bisa dibalik.",
-          "Sesi Anda, catatan aplikasi yang disimpan di akun, dan lencana Anda.",
-          "Hanya akun Saat Tarih Anda yang dihapus. Akun Anda di produk Bumba lain tetap ada; masing-masing Anda hapus dari halaman akun produk itu sendiri.",
-          "Salinan di cadangan terhapus otomatis paling lambat dalam 30 hari (cadangan disimpan 30 hari)."
-        ]
-      },
-      {
-        "h": "Yang tetap ada di ponsel Anda",
-        "p": [
-          "Pengaturan aplikasi dan catatan di ponsel tetap ada di ponsel Anda (dan di iCloud Anda jika sinkronisasi iCloud aktif). Semuanya terhapus saat Anda menghapus aplikasi dari ponsel."
-        ]
       }
     ]
   },

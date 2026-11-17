@@ -427,12 +427,9 @@ final class Account {
 }
 
 /// Ortak hukuk metinleri (standart madde 7 "Hukuk"; sahibin kararı S2, 12 Kasım 2026): Türkçe arayüzden Türkçe metne,
-/// öbür dillerden ?dil=en metnine. Hesap silme bilgi sayfası sitededir (herkese açık, mağaza kuralı).
+/// öbür dillerden İngilizcesine (5.23'ten beri /en/…).
 enum AccountLinks {
-    static var suffix: String { AppLocale.code == "tr" ? "" : "?dil=en" }
-    static var notice: URL { URL(string: "https://bumbagroup.com/uyelik-aydinlatma" + suffix)! }
-    static var terms: URL { URL(string: "https://bumbagroup.com/uyelik-sozlesmesi" + suffix)! }
-    static var deletion: URL {
-        URL(string: "https://time.bumba.tr" + (AppLocale.code == "tr" ? "/hesap-silme/" : "/\(AppLocale.code)/account-deletion/"))!
-    }
+    static var prefix: String { AppLocale.code == "tr" ? "" : "/en" }
+    static var notice: URL { URL(string: "https://bumbagroup.com\(prefix)/uyelik-aydinlatma")! }
+    static var terms: URL { URL(string: "https://bumbagroup.com\(prefix)/uyelik-sozlesmesi")! }
 }

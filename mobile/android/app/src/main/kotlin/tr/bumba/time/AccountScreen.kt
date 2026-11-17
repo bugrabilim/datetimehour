@@ -98,11 +98,10 @@ import java.time.format.FormatStyle
 import java.util.Locale
 
 /* Ortak hukuk metinleri (standart madde 7 "Hukuk"; sahibin kararı S2, 12 Kasım 2026): Türkçe arayüzden Türkçe metne,
-   öbür dillerden ?dil=en metnine. Hesap silme bilgi sayfası sitededir (herkese açık, mağaza kuralı). */
-internal fun legalSuffix() = if (Strings.lang == "tr") "" else "?dil=en"
-internal fun accountNoticeUrl(): String = "https://bumbagroup.com/uyelik-aydinlatma" + legalSuffix()
-internal fun accountTermsUrl(): String = "https://bumbagroup.com/uyelik-sozlesmesi" + legalSuffix()
-internal fun accountDeleteUrl(): String = "https://time.bumba.tr" + if (Strings.lang == "tr") "/hesap-silme/" else "/${Strings.lang}/account-deletion/"
+   öbür dillerden İngilizcesine (5.23'ten beri /en/…). */
+internal fun legalPrefix() = if (Strings.lang == "tr") "" else "/en"
+internal fun accountNoticeUrl(): String = "https://bumbagroup.com${legalPrefix()}/uyelik-aydinlatma"
+internal fun accountTermsUrl(): String = "https://bumbagroup.com${legalPrefix()}/uyelik-sozlesmesi"
 
 /** Profil seçenekleri (server/src/profile.mjs ile aynı) */
 private val SOCIAL = listOf("instagram", "x", "facebook", "linkedin", "youtube", "tiktok", "threads", "bluesky", "github", "telegram", "web")
@@ -201,8 +200,9 @@ fun AccountScreen(onRoute: (String) -> Unit) {
     // (sahibin kararı, 15 Kasım 2026: bilgiler isteğe bağlı, çıkarken soru sorulmaz)
     var open by rememberSaveable { mutableStateOf("profil") }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        // Standart 5.23: girişte ve kayıtta ayrı bağlantı satırı yok (ortak metinler yalnız onay cümlesinin içinde);
+        // hesap sayfasında her bölümün altında LegalLine
         if (Account.signedIn) SignedIn(onRoute, open, { open = it }) { notice = it } else SignedOut(notice)
-        AccountLinks()
     }
 }
 
@@ -339,17 +339,6 @@ private fun SignedOut(initialNotice: String?) {
         if (canResend && (mode == "in" || mode == "done")) TextButton({ run({ Account.resendVerification(email) }) { info = "account.resent" } }) {
             Text(A("resend"), color = Theme.c.accent)
         }
-    }
-}
-
-@Composable
-private fun AccountLinks() {
-    val context = LocalContext.current
-    fun open(url: String) = context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
-    FlowRow(Modifier.fillMaxWidth().padding(top = 4.dp), horizontalArrangement = Arrangement.spacedBy(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        Text(A("notice"), Modifier.clickable { open(accountNoticeUrl()) }, color = Theme.c.accent, fontSize = 13.sp)
-        Text(A("terms"), Modifier.clickable { open(accountTermsUrl()) }, color = Theme.c.accent, fontSize = 13.sp)
-        Text(A("deletionInfo"), Modifier.clickable { open(accountDeleteUrl()) }, color = Theme.c.accent, fontSize = 13.sp)
     }
 }
 

@@ -1842,7 +1842,7 @@
     <string name="account_socialValue">Usuário ou endereço</string>
     <string name="account_socialWeb">Site</string>
     <string name="account_none">Não escolhido</string>
-    <string name="account_optionalNote">Estas informações são opcionais; são tratadas conforme o [Aviso de Privacidade](https://bumbagroup.com/uyelik-aydinlatma?dil=en).</string>
+    <string name="account_optionalNote">Estas informações são opcionais; são tratadas conforme o [Aviso de Privacidade](https://bumbagroup.com/en/uyelik-aydinlatma).</string>
     <string name="account_visibility">Visibilidade</string>
     <string name="account_showProfile">Mostrar meu perfil</string>
     <string name="account_visibleFields">Informações que outros membros podem ver</string>
@@ -1903,7 +1903,6 @@
     <string name="account_deviceKeeps">Suas configurações e registros no celular continuam no celular.</string>
     <string name="account_notice">Aviso de Privacidade</string>
     <string name="account_terms">Termos de Associação</string>
-    <string name="account_deletionInfo">Sobre a exclusão da conta</string>
     <string name="account_badgesTitle">Meus selos e registros</string>
     <string name="account_badgesNote">Seus selos ficam guardados na sua conta; são apagados junto com a conta e saem dos backups em até 30 dias.</string>
     <string name="account_badgesNone">Ainda não há selos. Os selos são conquistados no app do celular.</string>

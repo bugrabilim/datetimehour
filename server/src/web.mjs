@@ -2,7 +2,7 @@
    sayfası; statik sitede bunlar üyelik sunucusunda). 19 dilde, iki temada, noindex. Sayfa iskeletini sunucu verir,
    işleri /varlik/hesap.js yapar (aynı kaynaktan JSON istekleri). Satır içi betik ve stil yok. */
 import { readFileSync } from "node:fs";
-import { LANGS, RTL, normLang, PRODUCT_NAME } from "./config.mjs";
+import { LANGS, RTL, normLang, PRODUCT_NAME, legalLinks } from "./config.mjs";
 import { readUnsubscribeToken, readChoiceToken } from "./mail.mjs";
 import { readModToken } from "./moderation.mjs";
 import { COUNTRIES, SOCIAL, VISIBLE_FIELDS, birthDateRange } from "./profile.mjs";
@@ -57,8 +57,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent, deletion, mo
 <body><header class="top"><a class="brand" href="${esc(cfg.siteUrl)}${lang === "tr" ? "/" : `/${lang}/`}"><img src="/varlik/simge.svg" alt="" width="28" height="28"> ${PRODUCT_NAME}</a>
 <label class="lang"><span class="sr">${esc(t.language)}</span><select data-lang>${LANGS.map((l) => `<option value="${l}"${l === lang ? " selected" : ""}>${esc(LANG_NAMES[l])}</option>`).join("")}</select></label></header>
 <main id="main" class="wrap">${body}</main>
-<footer class="foot"><a href="${esc(legal(lang).notice)}" target="_blank" rel="noopener">${esc(t.notice)}</a> · <a href="${esc(legal(lang).terms)}" target="_blank" rel="noopener">${esc(t.terms)}</a> · <a href="${esc(deletionUrl(lang))}">${esc(t.deletionInfo)}</a>
-<a class="badge" href="https://bumbagroup.com/life" rel="noopener" title="${esc(ROZET[lang].title)}"><img class="only-light" src="https://bumbagroup.com/rozet/life.svg" width="164" height="28" alt="${esc(ROZET[lang].alt)}"><img class="only-dark" src="https://bumbagroup.com/rozet/life-koyu.svg" width="164" height="28" alt="${esc(ROZET[lang].alt)}"></a></footer>
+<footer class="foot"><a class="badge" href="https://bumbagroup.com/life" rel="noopener" title="${esc(ROZET[lang].title)}"><img class="only-light" src="https://bumbagroup.com/rozet/life.svg" width="164" height="28" alt="${esc(ROZET[lang].alt)}"><img class="only-dark" src="https://bumbagroup.com/rozet/life-koyu.svg" width="164" height="28" alt="${esc(ROZET[lang].alt)}"></a></footer>
 <div class="cookie" id="cookie-bar" role="region" aria-label="${esc(t.cbLabel)}" hidden><p>${esc(t.cbText)} <a href="https://bumbagroup.com/cerez-politikasi${lang === "tr" ? "" : "?dil=en"}" target="_blank" rel="noopener">${esc(data.cookie?.policy || "")}</a></p>
 <div class="row"><button type="button" data-cookie="accept">${esc(data.cookie?.accept)}</button><button type="button" data-cookie="reject">${esc(data.cookie?.reject)}</button><button type="button" data-cookie="prefs">${esc(data.cookie?.prefs)}</button></div></div>
 <dialog id="cookie-dialog"><h2>${esc(data.cookie?.title)}</h2><h3>${esc(data.cookie?.necessary)}</h3><p>${esc(t.cbNecessaryText)}</p>
@@ -68,8 +67,9 @@ export function webRoutes({ cfg, closed, accounts, center, consent, deletion, mo
     res.writeHead(status, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "private, no-store", "Content-Security-Policy": CSP, "X-Frame-Options": "DENY" });
     res.end(html);
   }
-  const legal = (lang) => ({ notice: `https://bumbagroup.com/uyelik-aydinlatma${lang === "tr" ? "" : "?dil=en"}`, terms: `https://bumbagroup.com/uyelik-sozlesmesi${lang === "tr" ? "" : "?dil=en"}` });
-  const deletionUrl = (lang) => `${cfg.siteUrl}${lang === "tr" ? "/hesap-silme/" : `/${lang}/account-deletion/`}`;
+  /* Standart 5.23: kayıt ve giriş ekranında ortak metinlere ya da hesap silme sayfasına ayrı bağlantı satırı yok
+     (bağlantılar yalnız onay cümlesinin içinde); hesap sayfasında her sekmenin altında ortak metinler (legalP). */
+  const legal = legalLinks;
   const cookieTexts = (lang) => COOKIE[lang] || COOKIE.en;
 
   const fill = (str, v) => String(str).replace(/\{(\w+)\}/g, (_, n) => (v[n] != null ? v[n] : ""));
