@@ -212892,6 +212892,125 @@
         }
       }
     },
+    "account.linkForgotSent": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlantıyı e-postanıza gönderdik. Yeni şifrenizi açılan sayfada belirleyin; bağlı bütün Bumba ürünlerinde geçerli olur. Bağlantı 1 saat geçerlidir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We sent the link to your email. Set your new password on the page it opens; it will apply to all your linked Bumba products. The link is valid for 1 hour."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wir haben Ihnen den Link per E-Mail geschickt. Legen Sie auf der geöffneten Seite Ihr neues Passwort fest; es gilt in allen verbundenen Bumba-Produkten. Der Link gilt 1 Stunde."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keçidi e-poçtunuza göndərdik. Yeni şifrənizi açılan səhifədə təyin edin; bağlı bütün Bumba məhsullarında keçərli olacaq. Keçid 1 saat keçərlidir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أرسلنا الرابط إلى بريدك الإلكتروني. عيّن كلمة المرور الجديدة في الصفحة التي يفتحها؛ وستسري في جميع منتجات Bumba المرتبطة. الرابط صالح لمدة ساعة واحدة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kami sudah mengirim tautannya ke email Anda. Tetapkan kata sandi baru di halaman yang terbuka; kata sandi itu berlaku di semua produk Bumba yang tertaut. Tautan berlaku 1 jam."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہم نے لنک آپ کی ای میل پر بھیج دیا ہے۔ کھلنے والے صفحے پر نیا پاس ورڈ مقرر کریں؛ یہ آپ کی تمام منسلک Bumba مصنوعات میں چلے گا۔ لنک 1 گھنٹے تک کارآمد ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیوند را به ایمیلتان فرستادیم. گذرواژهٔ تازه را در صفحه‌ای که باز می‌شود تعیین کنید؛ در همهٔ محصولات پیوستهٔ Bumba معتبر خواهد بود. پیوند 1 ساعت اعتبار دارد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nous avons envoyé le lien à votre adresse e-mail. Choisissez votre nouveau mot de passe sur la page qui s'ouvre ; il s'appliquera à tous vos produits Bumba liés. Le lien est valable 1 heure."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мы отправили ссылку на вашу почту. Задайте новый пароль на открывшейся странице; он будет действовать во всех связанных продуктах Bumba. Ссылка действительна 1 час."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メールにリンクを送信しました。開いたページで新しいパスワードを設定してください。連携しているすべての Bumba 製品で使えます。リンクの有効期限は1時間です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이메일로 링크를 보냈습니다. 열리는 페이지에서 새 비밀번호를 정하세요. 연결된 모든 Bumba 제품에 적용됩니다. 링크는 1시간 동안 유효합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我们已将链接发送到您的邮箱。请在打开的页面中设置新密码，它将在所有已关联的 Bumba 产品中生效。链接 1 小时内有效。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ipinadala namin ang link sa iyong email. Itakda ang bagong password sa pahinang magbubukas; gagana ito sa lahat ng naka-link na produkto ng Bumba. May bisa ang link nang 1 oras."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เราส่งลิงก์ไปที่อีเมลของคุณแล้ว ตั้งรหัสผ่านใหม่ในหน้าที่เปิดขึ้น รหัสผ่านนี้จะใช้ได้ในผลิตภัณฑ์ Bumba ทั้งหมดที่เชื่อมไว้ ลิงก์ใช้ได้ 1 ชั่วโมง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le enviamos el enlace a su correo. Establezca la nueva contraseña en la página que se abre; valdrá en todos sus productos Bumba vinculados. El enlace es válido durante 1 hora."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviamos o link para o seu e-mail. Defina a nova senha na página que abrir; ela valerá em todos os seus produtos Bumba vinculados. O link vale por 1 hora."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हमने लिंक आपके ईमेल पर भेज दिया है। खुलने वाले पेज पर नया पासवर्ड तय करें; यह आपके सभी जुड़े Bumba उत्पादों में चलेगा। लिंक 1 घंटे तक मान्य है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আমরা লিংকটি আপনার ইমেইলে পাঠিয়েছি। যে পাতাটি খুলবে সেখানে নতুন পাসওয়ার্ড ঠিক করুন; এটি আপনার যুক্ত সব Bumba পণ্যে চলবে। লিংকটি 1 ঘণ্টা কার্যকর।"
+          }
+        }
+      }
+    },
     "account.resetTitle": {
       "extractionState": "manual",
       "localizations": {
@@ -214911,6 +215030,125 @@
           "stringUnit": {
             "state": "translated",
             "value": "কিছু ভুল হয়েছে। একটু পরে আবার চেষ্টা করুন।"
+          }
+        }
+      }
+    },
+    "account.err.signupDown": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayıt şu an yapılamıyor, birkaç dakika sonra yeniden deneyin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign-up isn't possible right now. Please try again in a few minutes."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Registrierung ist gerade nicht möglich. Bitte versuchen Sie es in ein paar Minuten erneut."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qeydiyyat hazırda mümkün deyil, bir neçə dəqiqədən sonra yenidən cəhd edin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يمكن التسجيل الآن. أعد المحاولة بعد بضع دقائق."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pendaftaran tidak dapat dilakukan saat ini. Coba lagi beberapa menit lagi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس وقت رکنیت ممکن نہیں۔ چند منٹ بعد دوبارہ کوشش کریں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اکنون ثبت‌نام ممکن نیست. چند دقیقهٔ دیگر دوباره امتحان کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'inscription n'est pas possible pour le moment. Réessayez dans quelques minutes."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сейчас зарегистрироваться нельзя. Попробуйте ещё раз через несколько минут."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在、登録できません。数分後にもう一度お試しください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지금은 가입할 수 없습니다. 몇 분 후에 다시 시도해 주세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前无法注册，请过几分钟再试。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi pa puwedeng mag-sign up ngayon. Subukan muli pagkalipas ng ilang minuto."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขณะนี้ยังสมัครสมาชิกไม่ได้ โปรดลองอีกครั้งในอีกไม่กี่นาที"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El registro no es posible en este momento. Inténtelo de nuevo en unos minutos."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não é possível se cadastrar agora. Tente de novo em alguns minutos."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अभी पंजीकरण नहीं हो सकता। कुछ मिनट बाद फिर से कोशिश करें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই মুহূর্তে নিবন্ধন করা যাচ্ছে না। কয়েক মিনিট পরে আবার চেষ্টা করুন।"
           }
         }
       }
@@ -218854,109 +219092,109 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Adding this information is optional; it is processed under the [Privacy Notice](https://bumbagroup.com/uyelik-aydinlatma?dil=en)."
+            "value": "Adding this information is optional; it is processed under the [Privacy Notice](https://bumbagroup.com/en/uyelik-aydinlatma)."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Diese Angaben sind freiwillig; sie werden gemäß der [Datenschutzerklärung](https://bumbagroup.com/uyelik-aydinlatma?dil=en) verarbeitet."
+            "value": "Diese Angaben sind freiwillig; sie werden gemäß der [Datenschutzerklärung](https://bumbagroup.com/en/uyelik-aydinlatma) verarbeitet."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu məlumatları daxil etmək könüllüdür; [Məlumatlandırma mətni](https://bumbagroup.com/uyelik-aydinlatma?dil=en)nə uyğun işlənir."
+            "value": "Bu məlumatları daxil etmək könüllüdür; [Məlumatlandırma mətni](https://bumbagroup.com/en/uyelik-aydinlatma)nə uyğun işlənir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "إدخال هذه المعلومات اختياري؛ وتُعالج وفق [إشعار الخصوصية](https://bumbagroup.com/uyelik-aydinlatma?dil=en)."
+            "value": "إدخال هذه المعلومات اختياري؛ وتُعالج وفق [إشعار الخصوصية](https://bumbagroup.com/en/uyelik-aydinlatma)."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mengisi informasi ini bersifat opsional; informasi diproses sesuai [Pemberitahuan Privasi](https://bumbagroup.com/uyelik-aydinlatma?dil=en)."
+            "value": "Mengisi informasi ini bersifat opsional; informasi diproses sesuai [Pemberitahuan Privasi](https://bumbagroup.com/en/uyelik-aydinlatma)."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "یہ معلومات دینا اختیاری ہے؛ یہ [رازداری نوٹس](https://bumbagroup.com/uyelik-aydinlatma?dil=en) کے مطابق پروسیس ہوتی ہیں۔"
+            "value": "یہ معلومات دینا اختیاری ہے؛ یہ [رازداری نوٹس](https://bumbagroup.com/en/uyelik-aydinlatma) کے مطابق پروسیس ہوتی ہیں۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "وارد کردن این اطلاعات اختیاری است؛ طبق [اطلاعیهٔ حریم خصوصی](https://bumbagroup.com/uyelik-aydinlatma?dil=en) پردازش می‌شود."
+            "value": "وارد کردن این اطلاعات اختیاری است؛ طبق [اطلاعیهٔ حریم خصوصی](https://bumbagroup.com/en/uyelik-aydinlatma) پردازش می‌شود."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ces informations sont facultatives ; elles sont traitées selon la [Notice de confidentialité](https://bumbagroup.com/uyelik-aydinlatma?dil=en)."
+            "value": "Ces informations sont facultatives ; elles sont traitées selon la [Notice de confidentialité](https://bumbagroup.com/en/uyelik-aydinlatma)."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Эти сведения указываются по желанию; они обрабатываются в соответствии с [Уведомлением о конфиденциальности](https://bumbagroup.com/uyelik-aydinlatma?dil=en)."
+            "value": "Эти сведения указываются по желанию; они обрабатываются в соответствии с [Уведомлением о конфиденциальности](https://bumbagroup.com/en/uyelik-aydinlatma)."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "これらの情報の入力は任意です。[プライバシー通知](https://bumbagroup.com/uyelik-aydinlatma?dil=en)に従って処理されます。"
+            "value": "これらの情報の入力は任意です。[プライバシー通知](https://bumbagroup.com/en/uyelik-aydinlatma)に従って処理されます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "이 정보 입력은 선택입니다. [개인정보 고지](https://bumbagroup.com/uyelik-aydinlatma?dil=en)에 따라 처리됩니다."
+            "value": "이 정보 입력은 선택입니다. [개인정보 고지](https://bumbagroup.com/en/uyelik-aydinlatma)에 따라 처리됩니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "填写这些信息是自愿的；它们依据[隐私声明](https://bumbagroup.com/uyelik-aydinlatma?dil=en)处理。"
+            "value": "填写这些信息是自愿的；它们依据[隐私声明](https://bumbagroup.com/en/uyelik-aydinlatma)处理。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Opsyonal ang paglalagay ng impormasyong ito; pinoproseso ito ayon sa [Abiso sa Privacy](https://bumbagroup.com/uyelik-aydinlatma?dil=en)."
+            "value": "Opsyonal ang paglalagay ng impormasyong ito; pinoproseso ito ayon sa [Abiso sa Privacy](https://bumbagroup.com/en/uyelik-aydinlatma)."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "การกรอกข้อมูลเหล่านี้เป็นทางเลือก และได้รับการประมวลผลตาม[ประกาศความเป็นส่วนตัว](https://bumbagroup.com/uyelik-aydinlatma?dil=en)"
+            "value": "การกรอกข้อมูลเหล่านี้เป็นทางเลือก และได้รับการประมวลผลตาม[ประกาศความเป็นส่วนตัว](https://bumbagroup.com/en/uyelik-aydinlatma)"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Esta información es opcional; se trata según el [Aviso de privacidad](https://bumbagroup.com/uyelik-aydinlatma?dil=en)."
+            "value": "Esta información es opcional; se trata según el [Aviso de privacidad](https://bumbagroup.com/en/uyelik-aydinlatma)."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Estas informações são opcionais; são tratadas conforme o [Aviso de Privacidade](https://bumbagroup.com/uyelik-aydinlatma?dil=en)."
+            "value": "Estas informações são opcionais; são tratadas conforme o [Aviso de Privacidade](https://bumbagroup.com/en/uyelik-aydinlatma)."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "यह जानकारी देना वैकल्पिक है; यह [गोपनीयता सूचना](https://bumbagroup.com/uyelik-aydinlatma?dil=en) के अनुसार प्रोसेस होती है।"
+            "value": "यह जानकारी देना वैकल्पिक है; यह [गोपनीयता सूचना](https://bumbagroup.com/en/uyelik-aydinlatma) के अनुसार प्रोसेस होती है।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "এই তথ্য দেওয়া ঐচ্ছিক; এটি [গোপনীয়তা নোটিশ](https://bumbagroup.com/uyelik-aydinlatma?dil=en) অনুযায়ী প্রক্রিয়া করা হয়।"
+            "value": "এই তথ্য দেওয়া ঐচ্ছিক; এটি [গোপনীয়তা নোটিশ](https://bumbagroup.com/en/uyelik-aydinlatma) অনুযায়ী প্রক্রিয়া করা হয়।"
           }
         }
       }
@@ -223965,115 +224203,115 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Açtığınız üründe aynı e-posta ve şifreyle hesabınız açılır, profiliniz oraya da gelir. Kapatınca o üründeki hesabınız ve verileri silinir."
+            "value": "Açtığınız üründe aynı e-posta ve şifreyle hesabınız açılır, profiliniz oraya da gelir. Bir üründeki hesabınızı o ürünün kendi hesap sayfasından silersiniz."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "In a product you turn on, an account opens with the same email and password, and your profile goes there too. Turning it off deletes your account and its data in that product."
+            "value": "In a product you turn on, an account opens with the same email and password, and your profile goes there too. You delete your account in a product from that product's own account page."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "In einem Produkt, das Sie einschalten, wird ein Konto mit derselben E-Mail und demselben Passwort eröffnet, und Ihr Profil geht dorthin mit. Beim Ausschalten werden Ihr Konto und seine Daten in jenem Produkt gelöscht."
+            "value": "In einem Produkt, das Sie einschalten, wird ein Konto mit derselben E-Mail und demselben Passwort eröffnet, und Ihr Profil geht dorthin mit. Ihr Konto in einem Produkt löschen Sie über die Kontoseite jenes Produkts."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Açdığınız məhsulda eyni e-poçt və şifrə ilə hesabınız açılır, profiliniz də ora gəlir. Bağladıqda o məhsuldakı hesabınız və məlumatları silinir."
+            "value": "Açdığınız məhsulda eyni e-poçt və şifrə ilə hesabınız açılır, profiliniz də ora gəlir. Bir məhsuldakı hesabınızı həmin məhsulun öz hesab səhifəsindən silirsiniz."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "في المنتج الذي تفعّله يُفتح حساب بنفس البريد وكلمة المرور، وينتقل ملفك الشخصي إليه أيضًا. عند الإيقاف يُحذف حسابك وبياناته في ذلك المنتج."
+            "value": "في المنتج الذي تفعّله يُفتح لك حساب بالبريد وكلمة المرور نفسيهما، وينتقل ملفك الشخصي إليه أيضًا. تحذف حسابك في منتج ما من صفحة الحساب الخاصة بذلك المنتج."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Di produk yang Anda aktifkan, akun dibuka dengan email dan kata sandi yang sama, dan profil Anda ikut ke sana. Menonaktifkannya menghapus akun dan datanya di produk itu."
+            "value": "Di produk yang Anda aktifkan, akun dibuka dengan email dan kata sandi yang sama, dan profil Anda ikut ke sana. Akun di suatu produk Anda hapus dari halaman akun produk itu sendiri."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "جس پروڈکٹ کو آپ آن کریں اس میں اسی ای میل اور پاس ورڈ سے اکاؤنٹ کھلتا ہے اور آپ کا پروفائل بھی وہاں جاتا ہے۔ بند کرنے پر اس پروڈکٹ میں آپ کا اکاؤنٹ اور اس کا ڈیٹا حذف ہو جاتا ہے۔"
+            "value": "جس پروڈکٹ کو آپ کھولیں، اس میں اسی ای میل اور پاس ورڈ سے آپ کا اکاؤنٹ کھل جاتا ہے اور آپ کا پروفائل بھی وہاں چلا جاتا ہے۔ کسی پروڈکٹ میں اپنا اکاؤنٹ آپ اسی پروڈکٹ کے اکاؤنٹ صفحے سے حذف کرتے ہیں۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "در محصولی که روشن می‌کنید، حسابی با همان ایمیل و گذرواژه باز می‌شود و نمایهٔ شما هم به آنجا می‌رود. با خاموش کردن، حساب و داده‌هایتان در آن محصول پاک می‌شود."
+            "value": "در محصولی که روشن می‌کنید، حسابی با همان ایمیل و گذرواژه باز می‌شود و نمایه‌ی شما هم به آن‌جا می‌رود. حساب خود در هر محصول را از صفحه‌ی حساب همان محصول حذف می‌کنید."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dans un produit que vous activez, un compte s'ouvre avec le même e-mail et le même mot de passe, et votre profil y est copié. Le désactiver supprime votre compte et ses données dans ce produit."
+            "value": "Dans un produit que vous activez, un compte s'ouvre avec la même adresse e-mail et le même mot de passe, et votre profil y est aussi copié. Vous supprimez votre compte d'un produit depuis la page de compte de ce produit."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "В продукте, который вы включите, откроется аккаунт с тем же адресом и паролем, туда же перейдёт ваш профиль. При выключении аккаунт и данные в этом продукте удаляются."
+            "value": "В продукте, который вы включите, открывается аккаунт с той же почтой и паролем, и туда же переходит ваш профиль. Аккаунт в продукте удаляется со страницы аккаунта этого продукта."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "オンにした製品では同じメールアドレスとパスワードでアカウントが開かれ、プロフィールもそこに移ります。オフにするとその製品のアカウントとデータは削除されます。"
+            "value": "有効にした製品では、同じメールアドレスとパスワードでアカウントが開かれ、プロフィールも引き継がれます。各製品のアカウントは、その製品のアカウントページから削除します。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "켠 제품에서는 같은 이메일과 비밀번호로 계정이 열리고 프로필도 그곳으로 옮겨집니다. 끄면 그 제품의 계정과 데이터가 삭제됩니다."
+            "value": "켜는 제품에서는 같은 이메일과 비밀번호로 계정이 열리고 프로필도 함께 옮겨집니다. 각 제품의 계정은 그 제품의 계정 페이지에서 삭제합니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在您开启的产品中，会用相同的邮箱和密码开设账户，个人资料也会同步过去。关闭后，该产品中的账户及其数据将被删除。"
+            "value": "在您开启的产品中，会用同一邮箱和密码开设账户，您的资料也会同步过去。各产品的账户请在该产品自己的账户页面删除。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sa produktong bubuksan ninyo, magbubukas ng account gamit ang parehong email at password, at kasama ring mapupunta roon ang inyong profile. Kapag isinara, mabubura ang inyong account at data sa produktong iyon."
+            "value": "Sa produktong bubuksan ninyo, magbubukas ang account gamit ang parehong email at password, at isasama roon ang inyong profile. Binubura ninyo ang account sa isang produkto mula sa pahina ng account ng produktong iyon."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ในผลิตภัณฑ์ที่คุณเปิด จะมีการเปิดบัญชีด้วยอีเมลและรหัสผ่านเดียวกัน และโปรไฟล์จะไปที่นั่นด้วย เมื่อปิด บัญชีและข้อมูลในผลิตภัณฑ์นั้นจะถูกลบ"
+            "value": "ในผลิตภัณฑ์ที่คุณเปิด จะมีบัญชีเปิดด้วยอีเมลและรหัสผ่านเดียวกัน และโปรไฟล์ของคุณจะไปที่นั่นด้วย คุณลบบัญชีในผลิตภัณฑ์ใดได้จากหน้าบัญชีของผลิตภัณฑ์นั้น"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "En el producto que active se abre una cuenta con el mismo correo y contraseña, y su perfil también va allí. Al desactivarlo se borran su cuenta y sus datos en ese producto."
+            "value": "En un producto que active se abre una cuenta con el mismo correo y contraseña, y su perfil también pasa allí. Su cuenta en un producto se elimina desde la página de cuenta de ese producto."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "No produto que você ativar, uma conta é aberta com o mesmo e-mail e senha, e seu perfil vai junto. Ao desativar, sua conta e seus dados naquele produto são apagados."
+            "value": "Num produto que você ativar, uma conta é aberta com o mesmo e-mail e senha, e seu perfil vai junto. Você exclui sua conta num produto pela página de conta desse produto."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "जिस उत्पाद को आप चालू करते हैं, उसमें उसी ईमेल और पासवर्ड से खाता खुलता है और आपकी प्रोफ़ाइल भी वहाँ जाती है। बंद करने पर उस उत्पाद में आपका खाता और उसका डेटा मिट जाता है।"
+            "value": "जिस उत्पाद को आप चालू करते हैं, उसमें उसी ईमेल और पासवर्ड से खाता खुलता है और आपकी प्रोफ़ाइल भी वहाँ जाती है। किसी उत्पाद में अपना खाता आप उसी उत्पाद के खाते के पेज से हटाते हैं।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "যে পণ্যটি চালু করবেন, সেখানে একই ইমেইল ও পাসওয়ার্ডে অ্যাকাউন্ট খোলে এবং আপনার প্রোফাইলও সেখানে যায়। বন্ধ করলে সেই পণ্যে আপনার অ্যাকাউন্ট ও তার তথ্য মুছে যায়।"
+            "value": "যে পণ্য আপনি চালু করেন, সেখানে একই ইমেইল ও পাসওয়ার্ডে অ্যাকাউন্ট খোলে, আর আপনার প্রোফাইলও সেখানে যায়। কোনো পণ্যে আপনার অ্যাকাউন্ট সেই পণ্যের নিজের অ্যাকাউন্ট পাতা থেকে মুছবেন।"
           }
         }
       }
@@ -224193,125 +224431,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "সবগুলোতে চালু করুন"
-          }
-        }
-      }
-    },
-    "account.closeAll": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hepsinde kapat"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Turn off everywhere"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Überall ausschalten"
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hamısında bağla"
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "أوقف في الكل"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nonaktifkan di semua"
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "سب میں بند کریں"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "خاموش در همه"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Désactiver partout"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Выключить везде"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "すべてオフ"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "모두 끄기"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "全部关闭"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Isara sa lahat"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ปิดทั้งหมด"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Desactivar en todos"
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Desativar em todos"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "सब में बंद करें"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "সবগুলোতে বন্ধ করুন"
           }
         }
       }
@@ -224911,125 +225030,6 @@
         }
       }
     },
-    "account.confirmClose": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ hesabınız ve o üründeki verileriniz silinecek. Önce verilerinizi indirebilirsiniz. Kapatılsın mı?"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your %1$@ account and your data in that product will be deleted. You can download your data first. Turn it off?"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ihr Konto bei %1$@ und Ihre Daten dort werden gelöscht. Sie können Ihre Daten vorher herunterladen. Ausschalten?"
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ hesabınız və o məhsuldakı məlumatlarınız silinəcək. Əvvəlcə məlumatlarınızı endirə bilərsiniz. Bağlansın?"
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "سيُحذف حسابك في %1$@ وبياناتك فيه. يمكنك تنزيل بياناتك أولًا. هل نوقفه؟"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Akun %1$@ Anda dan data Anda di produk itu akan dihapus. Anda dapat mengunduh data lebih dulu. Nonaktifkan?"
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ میں آپ کا اکاؤنٹ اور وہاں کا ڈیٹا حذف ہو جائے گا۔ آپ پہلے اپنا ڈیٹا ڈاؤن لوڈ کر سکتے ہیں۔ بند کریں؟"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "حساب شما در %1$@ و داده‌هایتان در آن پاک می‌شود. می‌توانید اول داده‌هایتان را بارگیری کنید. خاموش شود؟"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre compte %1$@ et vos données dans ce produit seront supprimés. Vous pouvez d'abord télécharger vos données. Désactiver ?"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ваш аккаунт в %1$@ и данные в нём будут удалены. Сначала можно скачать данные. Выключить?"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ のアカウントとその製品のデータが削除されます。先にデータをダウンロードできます。オフにしますか？"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ 계정과 그 제품의 데이터가 삭제됩니다. 먼저 데이터를 내려받을 수 있습니다. 끌까요?"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "您在 %1$@ 的账户及该产品中的数据将被删除。您可以先下载数据。要关闭吗？"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mabubura ang inyong account sa %1$@ at ang inyong data roon. Puwede muna ninyong i-download ang inyong data. Isara?"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "บัญชี %1$@ และข้อมูลในผลิตภัณฑ์นั้นจะถูกลบ คุณดาวน์โหลดข้อมูลก่อนได้ ปิดไหม"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se borrarán su cuenta de %1$@ y sus datos en ese producto. Puede descargar sus datos antes. ¿Desactivar?"
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sua conta no %1$@ e seus dados naquele produto serão apagados. Você pode baixar seus dados antes. Desativar?"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ में आपका खाता और वहाँ का डेटा मिटा दिया जाएगा। आप पहले अपना डेटा डाउनलोड कर सकते हैं। बंद करें?"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@-এ আপনার অ্যাকাউন্ট ও সেখানকার তথ্য মুছে যাবে। আগে আপনার তথ্য ডাউনলোড করতে পারেন। বন্ধ করবেন?"
-          }
-        }
-      }
-    },
     "account.productsUnavailable": {
       "extractionState": "manual",
       "localizations": {
@@ -225512,353 +225512,115 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hesabınız hemen ve kalıcı olarak silinir. Arkadaki işlemler (önceden gönderime bırakılmış bir kutlama e-postası gibi) en geç 7 gün içinde tamamlanır."
+            "value": "İstekten sonra e-postanıza bir onay bağlantısı gelir; hesabınız o sayfada onayladığınızda kalıcı olarak silinir. 7 gün içinde onaylamazsanız istek iptal olur. Arkadaki işlemler (önceden gönderime bırakılmış bir kutlama e-postası gibi) onaydan sonra en geç 7 gün içinde tamamlanır."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Your account is deleted immediately and permanently. Background steps (such as a celebration email already scheduled) are completed within 7 days at the latest."
+            "value": "After you ask, a confirmation link is sent to your email; your account is deleted permanently when you confirm on that page. If you don't confirm within 7 days, the request is cancelled. Background steps (such as a celebration email already scheduled) are completed within 7 days of confirming."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ihr Konto wird sofort und endgültig gelöscht. Hintergrundschritte (etwa eine bereits geplante Glückwunsch-E-Mail) sind spätestens nach 7 Tagen abgeschlossen."
+            "value": "Nach der Anfrage erhalten Sie einen Bestätigungslink per E-Mail; Ihr Konto wird endgültig gelöscht, sobald Sie auf jener Seite bestätigen. Bestätigen Sie nicht innerhalb von 7 Tagen, verfällt die Anfrage. Hintergrundschritte (etwa eine bereits geplante Glückwunsch-E-Mail) sind spätestens 7 Tage nach der Bestätigung abgeschlossen."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hesabınız dərhal və birdəfəlik silinir. Arxa plandakı işlər (əvvəlcədən göndərişə qoyulmuş təbrik e-poçtu kimi) ən gec 7 gün ərzində tamamlanır."
+            "value": "Sorğudan sonra e-poçtunuza təsdiq keçidi gəlir; hesabınız o səhifədə təsdiqlədiyiniz zaman birdəfəlik silinir. 7 gün ərzində təsdiqləməsəniz, sorğu ləğv olunur. Arxa plandakı işlər (əvvəlcədən göndərilməyə qoyulmuş təbrik e-poçtu kimi) təsdiqdən sonra ən gec 7 gün ərzində tamamlanır."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "يُحذف حسابك فورًا ونهائيًا. تكتمل الخطوات الخلفية (مثل رسالة تهنئة مجدولة مسبقًا) خلال 7 أيام على الأكثر."
+            "value": "بعد الطلب يصلك رابط تأكيد على بريدك الإلكتروني؛ ويُحذف حسابك نهائيًا عندما تؤكد في تلك الصفحة. إن لم تؤكد خلال 7 أيام يُلغى الطلب. وتكتمل الخطوات الخلفية (مثل رسالة تهنئة مجدولة مسبقًا) خلال 7 أيام على الأكثر من التأكيد."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Akun Anda dihapus segera dan permanen. Langkah di latar belakang (seperti email ucapan yang sudah dijadwalkan) selesai paling lambat dalam 7 hari."
+            "value": "Setelah permintaan, tautan konfirmasi dikirim ke email Anda; akun Anda dihapus permanen saat Anda mengonfirmasi di halaman itu. Jika tidak dikonfirmasi dalam 7 hari, permintaan dibatalkan. Langkah di latar belakang (misalnya email ucapan yang sudah dijadwalkan) selesai paling lambat 7 hari setelah konfirmasi."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "آپ کا اکاؤنٹ فوراً اور مستقل طور پر حذف ہو جاتا ہے۔ پس منظر کے کام (جیسے پہلے سے طے شدہ مبارکباد ای میل) زیادہ سے زیادہ 7 دن میں مکمل ہوتے ہیں۔"
+            "value": "درخواست کے بعد آپ کی ای میل پر تصدیقی لنک آتا ہے؛ اس صفحے پر تصدیق کرتے ہی آپ کا اکاؤنٹ مستقل طور پر حذف ہو جاتا ہے۔ اگر آپ 7 دن میں تصدیق نہ کریں تو درخواست منسوخ ہو جاتی ہے۔ پس منظر کے کام (جیسے پہلے سے طے شدہ مبارک باد کی ای میل) تصدیق کے زیادہ سے زیادہ 7 دن میں مکمل ہوتے ہیں۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "حساب شما بی‌درنگ و برای همیشه پاک می‌شود. کارهای پس‌زمینه (مانند ایمیل تبریکی که از پیش زمان‌بندی شده) حداکثر ظرف 7 روز تمام می‌شود."
+            "value": "پس از درخواست، پیوند تأیید به ایمیل شما فرستاده می‌شود؛ حساب شما وقتی در آن صفحه تأیید کنید برای همیشه حذف می‌شود. اگر تا 7 روز تأیید نکنید، درخواست لغو می‌شود. کارهای پس‌زمینه (مانند ایمیل تبریکی که از پیش زمان‌بندی شده) حداکثر 7 روز پس از تأیید کامل می‌شود."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre compte est supprimé immédiatement et définitivement. Les étapes en arrière-plan (comme un e-mail de vœux déjà programmé) s'achèvent au plus tard en 7 jours."
+            "value": "Après la demande, un lien de confirmation est envoyé à votre adresse e-mail ; votre compte est supprimé définitivement quand vous confirmez sur cette page. Sans confirmation sous 7 jours, la demande est annulée. Les étapes en arrière-plan (comme un e-mail de félicitations déjà programmé) se terminent au plus tard 7 jours après la confirmation."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Аккаунт удаляется сразу и безвозвратно. Фоновые действия (например, уже запланированное поздравительное письмо) завершаются не позднее чем через 7 дней."
+            "value": "После запроса на вашу почту придёт ссылка для подтверждения; аккаунт удаляется навсегда, когда вы подтвердите на той странице. Если не подтвердить за 7 дней, запрос отменяется. Фоновые действия (например, уже запланированное поздравительное письмо) завершаются не позднее чем через 7 дней после подтверждения."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "アカウントはすぐに完全に削除されます。裏側の処理（予約済みのお祝いメールなど）は遅くとも7日以内に終わります。"
+            "value": "リクエストの後、確認リンクがメールで届きます。そのページで確認するとアカウントは完全に削除されます。7日以内に確認しない場合、リクエストは取り消されます。裏側の処理（予約済みのお祝いメールなど）は確認から遅くとも7日以内に終わります。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "계정은 즉시 영구적으로 삭제됩니다. 백그라운드 작업(이미 예약된 축하 이메일 등)은 늦어도 7일 안에 끝납니다."
+            "value": "요청 후 이메일로 확인 링크가 전송되며, 그 페이지에서 확인하면 계정이 영구적으로 삭제됩니다. 7일 안에 확인하지 않으면 요청은 취소됩니다. 백그라운드 작업(이미 예약된 축하 이메일 등)은 확인 후 늦어도 7일 안에 끝납니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "您的账户会立即永久删除。后台步骤（如已预定发送的祝贺邮件）最迟在 7 天内完成。"
+            "value": "提出请求后，确认链接会发送到您的邮箱；在该页面确认后，您的账户会被永久删除。7 天内未确认，请求即取消。后台步骤（如已预定发送的祝贺邮件）在确认后最迟 7 天内完成。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Agad at permanenteng mabubura ang inyong account. Matatapos ang mga hakbang sa background (gaya ng naka-iskedyul nang email ng pagbati) sa loob ng 7 araw."
+            "value": "Pagkatapos ng kahilingan, may darating na link ng kumpirmasyon sa inyong email; permanenteng mabubura ang inyong account kapag kinumpirma ninyo sa pahinang iyon. Kung hindi makumpirma sa loob ng 7 araw, makakansela ang kahilingan. Matatapos ang mga hakbang sa background (gaya ng nakaiskedyul nang email ng pagbati) sa loob ng 7 araw mula sa kumpirmasyon."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "บัญชีของคุณจะถูกลบทันทีและถาวร ขั้นตอนเบื้องหลัง (เช่น อีเมลแสดงความยินดีที่ตั้งเวลาไว้แล้ว) จะเสร็จภายใน 7 วัน"
+            "value": "หลังจากส่งคำขอ ลิงก์ยืนยันจะถูกส่งไปยังอีเมลของคุณ บัญชีจะถูกลบถาวรเมื่อคุณยืนยันในหน้านั้น หากไม่ยืนยันภายใน 7 วัน คำขอจะถูกยกเลิก ขั้นตอนเบื้องหลัง (เช่น อีเมลแสดงความยินดีที่ตั้งเวลาไว้แล้ว) จะเสร็จภายใน 7 วันหลังการยืนยัน"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Su cuenta se borra de inmediato y para siempre. Los pasos en segundo plano (como un correo de felicitación ya programado) terminan en 7 días como máximo."
+            "value": "Tras la solicitud, le llega un enlace de confirmación por correo; su cuenta se elimina para siempre cuando confirma en esa página. Si no confirma en 7 días, la solicitud se cancela. Los pasos en segundo plano (como un correo de felicitación ya programado) terminan como máximo 7 días después de confirmar."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sua conta é apagada na hora e para sempre. As etapas em segundo plano (como um e-mail de felicitação já agendado) terminam em até 7 dias."
+            "value": "Depois do pedido, um link de confirmação chega ao seu e-mail; sua conta é excluída para sempre quando você confirma nessa página. Se não confirmar em 7 dias, o pedido é cancelado. As etapas em segundo plano (como um e-mail de felicitações já agendado) terminam em até 7 dias após a confirmação."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "आपका खाता तुरंत और हमेशा के लिए मिटा दिया जाता है। पृष्ठभूमि के काम (जैसे पहले से तय बधाई ईमेल) ज़्यादा से ज़्यादा 7 दिन में पूरे होते हैं।"
+            "value": "अनुरोध के बाद आपके ईमेल पर पुष्टि लिंक आता है; उस पेज पर पुष्टि करते ही आपका खाता हमेशा के लिए मिट जाता है। 7 दिन में पुष्टि न करने पर अनुरोध रद्द हो जाता है। पृष्ठभूमि के काम (जैसे पहले से तय बधाई ईमेल) पुष्टि के ज़्यादा से ज़्यादा 7 दिन में पूरे होते हैं।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "আপনার অ্যাকাউন্ট সঙ্গে সঙ্গে স্থায়ীভাবে মুছে যায়। পেছনের কাজগুলো (যেমন আগে থেকে নির্ধারিত শুভেচ্ছা ইমেইল) সর্বোচ্চ 7 দিনের মধ্যে শেষ হয়।"
-          }
-        }
-      }
-    },
-    "account.deleteScopeProduct": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yalnız Saat Tarih'ten"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "From Saat Tarih only"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nur aus Saat Tarih"
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yalnız Saat Tarix-dən"
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "من Saat Tarih فقط"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hanya dari Saat Tarih"
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "صرف Saat Tarih سے"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "فقط از Saat Tarih"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "De Saat Tarih seulement"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Только из Saat Tarih"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saat Tarih のみから"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saat Tarih에서만"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "仅从 Saat Tarih"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sa Saat Tarih lang"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "จาก Saat Tarih เท่านั้น"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Solo de Saat Tarih"
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Só do Saat Tarih"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "सिर्फ़ Saat Tarih से"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "শুধু Saat Tarih থেকে"
-          }
-        }
-      }
-    },
-    "account.deleteScopeAll": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bütün Bumba ürünlerinden"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "From all Bumba products"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aus allen Bumba-Produkten"
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bütün Bumba məhsullarından"
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "من جميع منتجات Bumba"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dari semua produk Bumba"
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "تمام Bumba پروڈکٹس سے"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "از همهٔ محصولات Bumba"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "De tous les produits Bumba"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Из всех продуктов Bumba"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "すべての Bumba 製品から"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "모든 Bumba 제품에서"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "从所有 Bumba 产品"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sa lahat ng produkto ng Bumba"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "จากทุกผลิตภัณฑ์ของ Bumba"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "De todos los productos de Bumba"
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "De todos os produtos Bumba"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "सभी Bumba उत्पादों से"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "সব Bumba পণ্য থেকে"
+            "value": "অনুরোধের পর আপনার ইমেইলে একটি নিশ্চিতকরণ লিংক আসে; সেই পাতায় নিশ্চিত করলে আপনার অ্যাকাউন্ট স্থায়ীভাবে মুছে যায়। 7 দিনের মধ্যে নিশ্চিত না করলে অনুরোধ বাতিল হয়। পেছনের কাজগুলো (যেমন আগে থেকে নির্ধারিত অভিনন্দন ইমেইল) নিশ্চিত করার পর সর্বোচ্চ 7 দিনে শেষ হয়।"
           }
         }
       }
@@ -225988,115 +225750,115 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hesabınız silinsin mi? Bu geri alınamaz."
+            "value": "Silme isteği gönderilsin mi? Onay bağlantısı e-postanıza gelecek."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Delete your account? This can't be undone."
+            "value": "Send the deletion request? A confirmation link will be sent to your email."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Konto löschen? Das lässt sich nicht rückgängig machen."
+            "value": "Löschanfrage senden? Ein Bestätigungslink kommt per E-Mail."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hesabınız silinsin? Bunu geri qaytarmaq olmur."
+            "value": "Silmə sorğusu göndərilsin? Təsdiq keçidi e-poçtunuza gələcək."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "هل تريد حذف حسابك؟ لا يمكن التراجع عن ذلك."
+            "value": "هل يُرسل طلب الحذف؟ سيصلك رابط التأكيد على بريدك."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hapus akun Anda? Tindakan ini tidak dapat dibatalkan."
+            "value": "Kirim permintaan penghapusan? Tautan konfirmasi akan dikirim ke email Anda."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "کیا اکاؤنٹ حذف کر دیں؟ یہ واپس نہیں ہو سکتا۔"
+            "value": "حذف کرنے کی درخواست بھیجی جائے؟ تصدیقی لنک آپ کی ای میل پر آئے گا۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "حساب حذف شود؟ این کار برگشت‌پذیر نیست."
+            "value": "درخواست حذف فرستاده شود؟ پیوند تأیید به ایمیل شما می‌آید."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Supprimer votre compte ? C’est irréversible."
+            "value": "Envoyer la demande de suppression ? Un lien de confirmation vous sera envoyé par e-mail."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Удалить аккаунт? Это нельзя отменить."
+            "value": "Отправить запрос на удаление? Ссылка для подтверждения придёт на почту."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "アカウントを削除しますか？元に戻せません。"
+            "value": "削除リクエストを送信しますか？確認リンクがメールで届きます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "계정을 삭제할까요? 되돌릴 수 없습니다."
+            "value": "삭제 요청을 보낼까요? 확인 링크가 이메일로 전송됩니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "要删除账户吗？此操作无法撤销。"
+            "value": "要发送删除请求吗？确认链接将发送到您的邮箱。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Burahin ang inyong account? Hindi na ito maibabalik."
+            "value": "Ipadala ang kahilingang magbura? Darating sa inyong email ang link ng kumpirmasyon."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ลบบัญชีหรือไม่ การลบนี้ย้อนกลับไม่ได้"
+            "value": "ส่งคำขอลบหรือไม่ ลิงก์ยืนยันจะถูกส่งไปยังอีเมลของคุณ"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "¿Eliminar su cuenta? No se puede deshacer."
+            "value": "¿Enviar la solicitud de eliminación? Le llegará un enlace de confirmación por correo."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Excluir sua conta? Não dá para desfazer."
+            "value": "Enviar o pedido de exclusão? Um link de confirmação chegará ao seu e-mail."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "खाता हटाएं? इसे वापस नहीं किया जा सकता।"
+            "value": "हटाने का अनुरोध भेजें? पुष्टि लिंक आपके ईमेल पर आएगा।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "অ্যাকাউন্ট মুছবেন? এটি ফেরানো যাবে না।"
+            "value": "মোছার অনুরোধ পাঠাবেন? নিশ্চিতকরণ লিংক আপনার ইমেইলে আসবে।"
           }
         }
       }
@@ -226573,125 +226335,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "সদস্যপদের শর্তাবলি"
-          }
-        }
-      }
-    },
-    "account.deletionInfo": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hesap silme hakkında"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "About account deletion"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Über das Löschen des Kontos"
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hesabın silinməsi haqqında"
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "عن حذف الحساب"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tentang menghapus akun"
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "اکاؤنٹ حذف کرنے کے بارے میں"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "دربارهٔ حذف حساب"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "À propos de la suppression du compte"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Об удалении аккаунта"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "アカウントの削除について"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "계정 삭제 안내"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "关于删除账户"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tungkol sa pagbura ng account"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "เกี่ยวกับการลบบัญชี"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sobre la eliminación de la cuenta"
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sobre a exclusão da conta"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "खाता हटाने के बारे में"
-          }
-        },
-        "bn": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "অ্যাকাউন্ট মোছা সম্পর্কে"
           }
         }
       }
@@ -230504,6 +230147,125 @@
         }
       }
     },
+    "account.mergedSignIn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifreniz seçildi. Seçtiğiniz şifreyle yeniden girin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your password has been chosen. Sign in again with the password you chose."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihr Passwort wurde gewählt. Melden Sie sich mit dem gewählten Passwort erneut an."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifrəniz seçildi. Seçdiyiniz şifrə ilə yenidən daxil olun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم اختيار كلمة المرور. سجّل الدخول مجددًا بكلمة المرور التي اخترتها."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kata sandi Anda telah dipilih. Masuk lagi dengan kata sandi yang Anda pilih."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کا پاس ورڈ منتخب ہو گیا۔ منتخب کردہ پاس ورڈ سے دوبارہ سائن ان کریں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گذرواژهٔ شما انتخاب شد. با گذرواژه‌ای که انتخاب کردید دوباره وارد شوید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre mot de passe a été choisi. Reconnectez-vous avec le mot de passe choisi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пароль выбран. Войдите снова с выбранным паролем."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "パスワードが選択されました。選んだパスワードでもう一度ログインしてください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "비밀번호가 선택되었습니다. 선택한 비밀번호로 다시 로그인하세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已选定密码。请使用所选密码重新登录。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Napili na ang inyong password. Mag-sign in muli gamit ang password na pinili ninyo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เลือกรหัสผ่านแล้ว โปรดเข้าสู่ระบบอีกครั้งด้วยรหัสผ่านที่คุณเลือก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se eligió su contraseña. Vuelva a iniciar sesión con la contraseña elegida."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sua senha foi escolhida. Entre novamente com a senha escolhida."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका पासवर्ड चुन लिया गया है। चुने गए पासवर्ड से फिर से साइन इन करें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার পাসওয়ার্ড বেছে নেওয়া হয়েছে। বেছে নেওয়া পাসওয়ার্ড দিয়ে আবার সাইন ইন করুন।"
+          }
+        }
+      }
+    },
     "account.mergedLinkBad": {
       "extractionState": "manual",
       "localizations": {
@@ -230867,115 +230629,115 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yedeklerdeki kopya en geç 30 gün içinde kendiliğinden silinir (yedekler yalnız bir arızadan sonra geri yüklemek içindir). Hesabınızı yalnız Saat Tarih'ten silerseniz öbür Bumba ürünlerindeki hesaplarınız ve üye numaranız orada kalır. Telefondaki ayarlarınız ve kayıtlarınız telefonda kalır."
+            "value": "Yedeklerdeki kopya en geç 30 gün içinde kendiliğinden silinir (yedekler yalnız bir arızadan sonra geri yüklemek içindir). Silme yalnız Saat Tarih'teki hesabınızı siler: öbür Bumba ürünlerindeki hesaplarınız ve üye numaranız orada kalır, her biri kendi hesap sayfasından silinir. Telefondaki ayarlarınız ve kayıtlarınız telefonda kalır."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The copy in backups is deleted automatically within 30 days at most (backups are only for restoring after a failure). If you delete your account from Saat Tarih only, your accounts and member number in other Bumba products stay there. Settings and records on your phone stay on your phone."
+            "value": "The copy in backups is deleted automatically within 30 days (backups are only for restoring after a failure). Deleting removes only your Saat Tarih account: your accounts and member number in other Bumba products stay there, and each is deleted from its own account page. Your settings and records on your phone stay on your phone."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Kopie in den Sicherungen wird spätestens nach 30 Tagen automatisch gelöscht (Sicherungen dienen nur der Wiederherstellung nach einem Ausfall). Wenn Sie Ihr Konto nur aus Saat Tarih löschen, bleiben Ihre Konten und Ihre Mitgliedsnummer in anderen Bumba-Produkten bestehen. Einstellungen und Einträge auf Ihrem Telefon bleiben auf dem Telefon."
+            "value": "Die Kopie in Sicherungen wird spätestens nach 30 Tagen automatisch gelöscht (Sicherungen dienen nur der Wiederherstellung nach einem Ausfall). Gelöscht wird nur Ihr Saat-Tarih-Konto: Ihre Konten und Ihre Mitgliedsnummer in anderen Bumba-Produkten bleiben dort und werden jeweils über deren eigene Kontoseite gelöscht. Ihre Einstellungen und Einträge auf dem Telefon bleiben auf dem Telefon."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ehtiyat nüsxələrdəki surət ən gec 30 gün ərzində özü silinir (ehtiyat nüsxələr yalnız nasazlıqdan sonra bərpa üçündür). Hesabınızı yalnız Saat Tarix-dən silsəniz, digər Bumba məhsullarındakı hesablarınız və üzv nömrəniz orada qalır. Telefondakı ayarlarınız və qeydləriniz telefonda qalır."
+            "value": "Ehtiyat nüsxələrdəki surət ən gec 30 gün ərzində öz-özünə silinir (ehtiyat nüsxələr yalnız nasazlıqdan sonra bərpa üçündür). Silmə yalnız Saat Tarih-dəki hesabınızı silir: digər Bumba məhsullarındakı hesablarınız və üzv nömrəniz orada qalır, hər biri öz hesab səhifəsindən silinir. Telefondakı ayarlarınız və qeydləriniz telefonda qalır."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تُحذف النسخة الموجودة في النسخ الاحتياطية تلقائيًا خلال 30 يومًا على الأكثر (النسخ الاحتياطية للاستعادة بعد عطل فقط). إذا حذفت حسابك من Saat Tarih فقط، تبقى حساباتك ورقم عضويتك في منتجات Bumba الأخرى كما هي. وتبقى إعداداتك وسجلاتك التي على هاتفك في الهاتف."
+            "value": "تُحذف النسخة الموجودة في النسخ الاحتياطية تلقائيًا خلال 30 يومًا على الأكثر (النسخ الاحتياطية للاستعادة بعد عطل فقط). الحذف يزيل حسابك في Saat Tarih وحده: حساباتك ورقم عضويتك في منتجات Bumba الأخرى تبقى هناك، ويُحذف كل منها من صفحة حسابه. وتبقى إعداداتك وسجلاتك على هاتفك."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Salinan di cadangan terhapus otomatis paling lambat dalam 30 hari (cadangan hanya untuk pemulihan setelah gangguan). Jika Anda menghapus akun hanya dari Saat Tarih, akun dan nomor anggota Anda di produk Bumba lain tetap ada. Pengaturan dan catatan di ponsel Anda tetap di ponsel."
+            "value": "Salinan di cadangan terhapus otomatis paling lambat 30 hari (cadangan hanya untuk pemulihan setelah gangguan). Penghapusan hanya menghapus akun Saat Tarih Anda: akun dan nomor anggota Anda di produk Bumba lain tetap di sana, dan masing-masing dihapus dari halaman akunnya sendiri. Pengaturan dan catatan di ponsel tetap di ponsel."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "بیک اپ میں موجود نقل زیادہ سے زیادہ 30 دن میں خود حذف ہو جاتی ہے (بیک اپ صرف خرابی کے بعد بحالی کے لیے ہیں)۔ اگر آپ اکاؤنٹ صرف Saat Tarih سے حذف کریں تو دوسری Bumba مصنوعات میں آپ کے اکاؤنٹ اور رکنیت نمبر وہیں رہتے ہیں۔ فون پر آپ کی ترتیبات اور ریکارڈ فون پر رہتے ہیں۔"
+            "value": "بیک اپ میں موجود نقل زیادہ سے زیادہ 30 دن میں خود بخود حذف ہو جاتی ہے (بیک اپ صرف کسی خرابی کے بعد بحالی کے لیے ہیں)۔ حذف کرنا صرف آپ کا Saat Tarih اکاؤنٹ ہٹاتا ہے: دوسرے Bumba پروڈکٹس میں آپ کے اکاؤنٹ اور رکنیت نمبر وہیں رہتے ہیں، اور ہر ایک اپنے اکاؤنٹ صفحے سے حذف ہوتا ہے۔ فون پر آپ کی ترتیبات اور ریکارڈ فون پر رہتے ہیں۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "نسخهٔ موجود در پشتیبان‌ها حداکثر تا 30 روز خودبه‌خود پاک می‌شود (پشتیبان‌ها فقط برای بازیابی پس از خرابی‌اند). اگر حساب را فقط از Saat Tarih پاک کنید، حساب‌ها و شمارهٔ عضویت شما در دیگر محصولات Bumba باقی می‌ماند. تنظیمات و ثبت‌های روی گوشی شما در گوشی می‌ماند."
+            "value": "نسخه‌ی موجود در پشتیبان‌ها حداکثر ظرف 30 روز خودبه‌خود حذف می‌شود (پشتیبان‌ها فقط برای بازگردانی پس از خرابی‌اند). حذف فقط حساب Saat Tarih شما را پاک می‌کند: حساب‌ها و شماره‌ی عضویت شما در دیگر محصولات Bumba همان‌جا می‌مانند و هرکدام از صفحه‌ی حساب خودش حذف می‌شود. تنظیمات و سوابق روی گوشی روی گوشی می‌ماند."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La copie dans les sauvegardes est supprimée automatiquement sous 30 jours au plus (les sauvegardes servent uniquement à restaurer après une panne). Si vous supprimez votre compte de Saat Tarih seulement, vos comptes et votre numéro de membre dans les autres produits Bumba y restent. Les réglages et enregistrements de votre téléphone restent sur le téléphone."
+            "value": "La copie dans les sauvegardes est supprimée automatiquement sous 30 jours (les sauvegardes ne servent qu'à restaurer après une panne). La suppression ne retire que votre compte Saat Tarih : vos comptes et votre numéro de membre dans les autres produits Bumba y restent, et chacun se supprime depuis sa propre page de compte. Vos réglages et données sur le téléphone restent sur le téléphone."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Копия в резервных копиях удаляется автоматически не позже чем через 30 дней (резервные копии нужны только для восстановления после сбоя). Если вы удалите аккаунт только из Saat Tarih, ваши аккаунты и номер участника в других продуктах Bumba останутся. Настройки и записи на телефоне остаются на телефоне."
+            "value": "Копия в резервных копиях удаляется автоматически не позднее чем через 30 дней (резервные копии нужны только для восстановления после сбоя). Удаляется только ваш аккаунт Saat Tarih: ваши аккаунты и номер участника в других продуктах Bumba остаются там, и каждый удаляется со своей страницы аккаунта. Настройки и записи на телефоне остаются на телефоне."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "バックアップ内のコピーは最長30日以内に自動で削除されます（バックアップは障害後の復元にのみ使います）。Saat Tarih からのみ削除した場合、ほかの Bumba 製品のアカウントと会員番号はそのまま残ります。スマートフォン上の設定と記録はスマートフォンに残ります。"
+            "value": "バックアップ内のコピーは遅くとも30日以内に自動で削除されます（バックアップは障害後の復元専用です）。削除されるのは Saat Tarih のアカウントだけです。ほかの Bumba 製品のアカウントと会員番号はそれぞれに残り、各製品のアカウントページから削除します。スマートフォンの設定と記録はスマートフォンに残ります。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "백업에 있는 사본은 늦어도 30일 안에 자동으로 삭제됩니다(백업은 장애 후 복구에만 쓰입니다). Saat Tarih에서만 계정을 삭제하시면 다른 Bumba 제품의 계정과 회원 번호는 그대로 남습니다. 휴대전화의 설정과 기록은 휴대전화에 남습니다."
+            "value": "백업에 있는 사본은 늦어도 30일 안에 자동으로 삭제됩니다(백업은 장애 후 복구에만 쓰입니다). 삭제는 Saat Tarih 계정만 지웁니다. 다른 Bumba 제품의 계정과 회원 번호는 그대로 남으며, 각각 해당 제품의 계정 페이지에서 삭제합니다. 휴대폰의 설정과 기록은 휴대폰에 남습니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "备份中的副本最迟在 30 天内自动删除（备份仅用于故障后的恢复）。如果您只从 Saat Tarih 删除账户，您在其他 Bumba 产品中的账户和会员编号仍会保留。手机上的设置和记录留在手机上。"
+            "value": "备份中的副本最迟在 30 天内自动删除（备份仅用于故障后的恢复）。删除只移除您的 Saat Tarih 账户：您在其他 Bumba 产品中的账户和会员编号保留在那里，各自在其账户页面删除。手机上的设置和记录保留在手机上。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kusang nabubura ang kopya sa mga backup sa loob ng hindi hihigit sa 30 araw (para lang sa pagbabalik pagkatapos ng sira ang mga backup). Kung sa Saat Tarih lang ninyo buburahin ang account, mananatili ang inyong mga account at member number sa ibang produkto ng Bumba. Mananatili sa telepono ang mga setting at talaan sa inyong telepono."
+            "value": "Kusang mabubura ang kopya sa mga backup sa loob ng 30 araw (para lang sa pagbabalik pagkatapos ng aberya ang mga backup). Ang Saat Tarih account lang ninyo ang binubura: mananatili roon ang mga account at member number ninyo sa ibang produkto ng Bumba, at bawat isa ay binubura sa sarili nitong pahina ng account. Mananatili sa telepono ang mga setting at record ninyo sa telepono."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "สำเนาในข้อมูลสำรองจะถูกลบเองภายใน 30 วันเป็นอย่างช้า (ข้อมูลสำรองใช้กู้คืนหลังระบบขัดข้องเท่านั้น) หากคุณลบบัญชีจาก Saat Tarih เท่านั้น บัญชีและหมายเลขสมาชิกของคุณในผลิตภัณฑ์อื่นของ Bumba จะยังอยู่ การตั้งค่าและบันทึกบนโทรศัพท์ของคุณจะอยู่ในโทรศัพท์"
+            "value": "สำเนาในข้อมูลสำรองจะถูกลบเองภายใน 30 วัน (ข้อมูลสำรองใช้กู้คืนหลังเกิดขัดข้องเท่านั้น) การลบจะลบเฉพาะบัญชี Saat Tarih ของคุณ บัญชีและหมายเลขสมาชิกในผลิตภัณฑ์อื่นของ Bumba ยังคงอยู่ และลบได้จากหน้าบัญชีของแต่ละผลิตภัณฑ์ การตั้งค่าและบันทึกในโทรศัพท์ยังอยู่ในโทรศัพท์"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La copia en las copias de seguridad se elimina sola en un plazo máximo de 30 días (las copias de seguridad solo sirven para restaurar tras una avería). Si elimina su cuenta solo de Saat Tarih, sus cuentas y su número de miembro en los demás productos de Bumba se mantienen. Los ajustes y registros de su teléfono se quedan en el teléfono."
+            "value": "La copia en las copias de seguridad se elimina sola en un máximo de 30 días (las copias de seguridad solo sirven para restaurar tras una avería). Se elimina solo su cuenta de Saat Tarih: sus cuentas y su número de miembro en otros productos de Bumba siguen allí, y cada una se elimina desde su propia página de cuenta. Sus ajustes y registros del teléfono quedan en el teléfono."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "A cópia nos backups é excluída automaticamente em no máximo 30 dias (os backups servem só para restaurar depois de uma falha). Se você excluir a conta só do Saat Tarih, suas contas e seu número de membro nos outros produtos Bumba continuam lá. As configurações e os registros no seu celular ficam no celular."
+            "value": "A cópia nos backups é excluída automaticamente em até 30 dias (os backups servem só para restaurar após uma falha). Só a sua conta do Saat Tarih é excluída: suas contas e seu número de membro em outros produtos Bumba continuam lá, e cada uma é excluída na sua própria página de conta. Suas configurações e registros no celular ficam no celular."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "बैकअप में रखी प्रति अधिकतम 30 दिनों में अपने-आप हट जाती है (बैकअप केवल किसी खराबी के बाद बहाली के लिए हैं)। यदि आप खाता सिर्फ़ Saat Tarih से हटाते हैं, तो दूसरे Bumba उत्पादों में आपके खाते और सदस्य नंबर वहीं रहते हैं। फ़ोन पर आपकी सेटिंग्स और रिकॉर्ड फ़ोन पर रहते हैं।"
+            "value": "बैकअप की प्रति ज़्यादा से ज़्यादा 30 दिन में अपने आप मिट जाती है (बैकअप सिर्फ़ किसी खराबी के बाद बहाली के लिए हैं)। हटाने से सिर्फ़ आपका Saat Tarih खाता मिटता है: दूसरे Bumba उत्पादों में आपके खाते और सदस्य संख्या वहीं रहते हैं, और हर एक अपने खाते के पेज से हटाया जाता है। फ़ोन पर आपकी सेटिंग और रिकॉर्ड फ़ोन पर ही रहते हैं।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "ব্যাকআপে থাকা কপি সর্বোচ্চ 30 দিনের মধ্যে আপনা-আপনি মুছে যায় (ব্যাকআপ কেবল কোনো ত্রুটির পর পুনরুদ্ধারের জন্য)। আপনি অ্যাকাউন্ট শুধু Saat Tarih থেকে মুছলে অন্যান্য Bumba পণ্যে আপনার অ্যাকাউন্ট ও সদস্য নম্বর সেখানেই থাকে। ফোনে থাকা আপনার সেটিংস ও রেকর্ড ফোনেই থাকে।"
+            "value": "ব্যাকআপের কপি সর্বোচ্চ 30 দিনের মধ্যে নিজে থেকে মুছে যায় (ব্যাকআপ শুধু কোনো ত্রুটির পর ফিরিয়ে আনার জন্য)। মুছলে শুধু আপনার Saat Tarih অ্যাকাউন্ট মোছে: অন্য Bumba পণ্যে আপনার অ্যাকাউন্ট ও সদস্য নম্বর সেখানেই থাকে, আর প্রতিটি নিজের অ্যাকাউন্ট পাতা থেকে মোছা হয়। ফোনের সেটিংস ও রেকর্ড ফোনেই থাকে।"
           }
         }
       }
@@ -232166,6 +231928,2624 @@
           "stringUnit": {
             "state": "translated",
             "value": "গোপনীয়তা"
+          }
+        }
+      }
+    },
+    "account.productAccount": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap sayfası"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account page"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontoseite"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesab səhifəsi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صفحة الحساب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halaman akun"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اکاؤنٹ صفحہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صفحه‌ی حساب"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Page du compte"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Страница аккаунта"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アカウントページ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "계정 페이지"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "账户页面"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pahina ng account"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "หน้าบัญชี"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Página de la cuenta"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Página da conta"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "खाते का पेज"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "অ্যাকাউন্ট পাতা"
+          }
+        }
+      }
+    },
+    "account.delPending": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onay bağlantısını e-postanıza gönderdik. 7 gün içinde onaylamazsanız istek iptal olur."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We've sent a confirmation link to your email. If you don't confirm within 7 days, the request is cancelled."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wir haben Ihnen einen Bestätigungslink per E-Mail geschickt. Bestätigen Sie nicht innerhalb von 7 Tagen, verfällt die Anfrage."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təsdiq keçidini e-poçtunuza göndərdik. 7 gün ərzində təsdiqləməsəniz, sorğu ləğv olunur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أرسلنا رابط التأكيد إلى بريدك الإلكتروني. إن لم تؤكد خلال 7 أيام يُلغى الطلب."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kami telah mengirim tautan konfirmasi ke email Anda. Jika tidak dikonfirmasi dalam 7 hari, permintaan dibatalkan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہم نے تصدیقی لنک آپ کی ای میل پر بھیج دیا ہے۔ اگر آپ 7 دن میں تصدیق نہ کریں تو درخواست منسوخ ہو جاتی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیوند تأیید را به ایمیل شما فرستادیم. اگر تا 7 روز تأیید نکنید، درخواست لغو می‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nous avons envoyé un lien de confirmation à votre adresse e-mail. Sans confirmation sous 7 jours, la demande est annulée."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мы отправили ссылку для подтверждения на вашу почту. Если не подтвердить за 7 дней, запрос отменяется."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "確認リンクをメールでお送りしました。7日以内に確認しない場合、リクエストは取り消されます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "확인 링크를 이메일로 보냈습니다. 7일 안에 확인하지 않으면 요청은 취소됩니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我们已将确认链接发送到您的邮箱。7 天内未确认，请求即取消。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nagpadala kami ng link ng kumpirmasyon sa inyong email. Kung hindi makumpirma sa loob ng 7 araw, makakansela ang kahilingan."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เราส่งลิงก์ยืนยันไปยังอีเมลของคุณแล้ว หากไม่ยืนยันภายใน 7 วัน คำขอจะถูกยกเลิก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le enviamos un enlace de confirmación por correo. Si no confirma en 7 días, la solicitud se cancela."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviamos um link de confirmação ao seu e-mail. Se não confirmar em 7 dias, o pedido é cancelado."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हमने पुष्टि लिंक आपके ईमेल पर भेज दिया है। 7 दिन में पुष्टि न करने पर अनुरोध रद्द हो जाता है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আমরা নিশ্চিতকরণ লিংক আপনার ইমেইলে পাঠিয়েছি। 7 দিনের মধ্যে নিশ্চিত না করলে অনুরোধ বাতিল হয়।"
+          }
+        }
+      }
+    },
+    "account.delPendingAccount": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesabınızı silme isteği onay bekliyor (son gün: %1$@). Hesabınız bu sürede olduğu gibi çalışır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A request to delete your account is waiting for confirmation (last day: %1$@). Your account keeps working as usual until then."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine Anfrage zum Löschen Ihres Kontos wartet auf Bestätigung (letzter Tag: %1$@). Bis dahin funktioniert Ihr Konto wie gewohnt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesabınızı silmə sorğusu təsdiq gözləyir (son gün: %1$@). Bu müddətdə hesabınız əvvəlki kimi işləyir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طلب حذف حسابك بانتظار التأكيد (آخر يوم: %1$@). يعمل حسابك كالمعتاد حتى ذلك الحين."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permintaan menghapus akun Anda menunggu konfirmasi (hari terakhir: %1$@). Sampai saat itu akun Anda tetap berfungsi seperti biasa."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کا اکاؤنٹ حذف کرنے کی درخواست تصدیق کی منتظر ہے (آخری دن: %1$@)۔ تب تک آپ کا اکاؤنٹ معمول کے مطابق کام کرتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "درخواست حذف حساب شما در انتظار تأیید است (آخرین روز: %1$@). تا آن زمان حساب شما مثل همیشه کار می‌کند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une demande de suppression de votre compte attend votre confirmation (dernier jour : %1$@). D'ici là, votre compte fonctionne normalement."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запрос на удаление аккаунта ждёт подтверждения (последний день: %1$@). До тех пор аккаунт работает как обычно."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アカウント削除のリクエストが確認待ちです（最終日：%1$@）。それまでアカウントは通常どおり使えます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "계정 삭제 요청이 확인을 기다리고 있습니다(마지막 날: %1$@). 그때까지 계정은 평소처럼 작동합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除账户的请求正在等待确认（最后一天：%1$@）。在此之前您的账户照常使用。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naghihintay ng kumpirmasyon ang kahilingang burahin ang inyong account (huling araw: %1$@). Hanggang doon, gumagana ang account gaya ng dati."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คำขอลบบัญชีของคุณกำลังรอการยืนยัน (วันสุดท้าย: %1$@) ระหว่างนี้บัญชียังใช้งานได้ตามปกติ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una solicitud para eliminar su cuenta espera confirmación (último día: %1$@). Hasta entonces su cuenta funciona como siempre."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um pedido para excluir sua conta aguarda confirmação (último dia: %1$@). Até lá sua conta funciona normalmente."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका खाता हटाने का अनुरोध पुष्टि की प्रतीक्षा में है (आख़िरी दिन: %1$@)। तब तक आपका खाता हमेशा की तरह काम करता है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার অ্যাকাউন্ট মোছার অনুরোধ নিশ্চিতকরণের অপেক্ষায় (শেষ দিন: %1$@)। ততদিন অ্যাকাউন্ট আগের মতোই চলে।"
+          }
+        }
+      }
+    },
+    "account.delPendingBadges": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozetlerinizi silme isteği onay bekliyor (son gün: %1$@)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A request to delete your badges is waiting for confirmation (last day: %1$@)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine Anfrage zum Löschen Ihrer Abzeichen wartet auf Bestätigung (letzter Tag: %1$@)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nişanlarınızı silmə sorğusu təsdiq gözləyir (son gün: %1$@)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طلب حذف شاراتك بانتظار التأكيد (آخر يوم: %1$@)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permintaan menghapus lencana Anda menunggu konfirmasi (hari terakhir: %1$@)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کے بیج حذف کرنے کی درخواست تصدیق کی منتظر ہے (آخری دن: %1$@)۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "درخواست حذف نشان‌های شما در انتظار تأیید است (آخرین روز: %1$@)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une demande de suppression de vos badges attend votre confirmation (dernier jour : %1$@)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запрос на удаление ваших значков ждёт подтверждения (последний день: %1$@)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "バッジ削除のリクエストが確認待ちです（最終日：%1$@）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "배지 삭제 요청이 확인을 기다리고 있습니다(마지막 날: %1$@)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除徽章的请求正在等待确认（最后一天：%1$@）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naghihintay ng kumpirmasyon ang kahilingang burahin ang inyong mga badge (huling araw: %1$@)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คำขอลบเหรียญตราของคุณกำลังรอการยืนยัน (วันสุดท้าย: %1$@)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una solicitud para eliminar sus insignias espera confirmación (último día: %1$@)."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um pedido para excluir seus selos aguarda confirmação (último dia: %1$@)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपके बैज हटाने का अनुरोध पुष्टि की प्रतीक्षा में है (आख़िरी दिन: %1$@)।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার ব্যাজ মোছার অনুরোধ নিশ্চিতকরণের অপেক্ষায় (শেষ দিন: %1$@)।"
+          }
+        }
+      }
+    },
+    "account.delCancel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsteği iptal et"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel the request"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anfrage zurückziehen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sorğunu ləğv et"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إلغاء الطلب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batalkan permintaan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "درخواست منسوخ کریں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لغو درخواست"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annuler la demande"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отменить запрос"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "リクエストを取り消す"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "요청 취소"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消请求"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kanselahin ang kahilingan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยกเลิกคำขอ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar la solicitud"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar o pedido"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अनुरोध रद्द करें"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "অনুরোধ বাতিল করুন"
+          }
+        }
+      }
+    },
+    "account.delCancelled": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silme isteği iptal edildi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The deletion request has been cancelled."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Löschanfrage wurde zurückgezogen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silmə sorğusu ləğv edildi."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أُلغي طلب الحذف."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permintaan penghapusan dibatalkan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حذف کرنے کی درخواست منسوخ کر دی گئی۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "درخواست حذف لغو شد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La demande de suppression a été annulée."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запрос на удаление отменён."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "削除リクエストを取り消しました。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "삭제 요청이 취소되었습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除请求已取消。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nakansela ang kahilingang magbura."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยกเลิกคำขอลบแล้ว"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se canceló la solicitud de eliminación."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O pedido de exclusão foi cancelado."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हटाने का अनुरोध रद्द कर दिया गया।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "মোছার অনুরোধ বাতিল হয়েছে।"
+          }
+        }
+      }
+    },
+    "account.delConfirmTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silmeyi onaylayın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirm deletion"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Löschen bestätigen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silməni təsdiqləyin"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تأكيد الحذف"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konfirmasi penghapusan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حذف کرنے کی تصدیق کریں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تأیید حذف"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirmer la suppression"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подтвердите удаление"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "削除の確認"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "삭제 확인"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "确认删除"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kumpirmahin ang pagbura"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยืนยันการลบ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirme la eliminación"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirme a exclusão"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हटाने की पुष्टि करें"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "মোছা নিশ্চিত করুন"
+          }
+        }
+      }
+    },
+    "account.delConfirmAccount": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarih hesabınız ve ona bağlı bilgiler (profiliniz, kayıtlarınız, rozetleriniz, halka ve grup üyelikleriniz) kalıcı olarak silinecek. Öbür Bumba ürünlerindeki hesaplarınız silinmez. Bu işlem geri alınamaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your Saat Tarih account and the information linked to it (your profile, records, badges, circle and group memberships) will be deleted permanently. Your accounts in other Bumba products are not deleted. This can't be undone."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihr Saat-Tarih-Konto und die damit verbundenen Angaben (Profil, Einträge, Abzeichen, Mitgliedschaften in Kreisen und Gruppen) werden endgültig gelöscht. Ihre Konten in anderen Bumba-Produkten werden nicht gelöscht. Das lässt sich nicht rückgängig machen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarih hesabınız və ona bağlı məlumatlar (profiliniz, qeydləriniz, nişanlarınız, halqa və qrup üzvlükləriniz) birdəfəlik silinəcək. Digər Bumba məhsullarındakı hesablarınız silinmir. Bu əməliyyat geri qaytarılmır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سيُحذف حسابك في Saat Tarih والمعلومات المرتبطة به (ملفك الشخصي وسجلاتك وشاراتك وعضوياتك في الحلقات والمجموعات) نهائيًا. لا تُحذف حساباتك في منتجات Bumba الأخرى. لا يمكن التراجع عن ذلك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akun Saat Tarih Anda dan informasi yang terkait dengannya (profil, catatan, lencana, keanggotaan lingkaran dan grup) akan dihapus permanen. Akun Anda di produk Bumba lain tidak dihapus. Ini tidak dapat dibatalkan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کا Saat Tarih اکاؤنٹ اور اس سے منسلک معلومات (پروفائل، ریکارڈ، بیج، حلقوں اور گروپوں کی رکنیت) مستقل طور پر حذف ہو جائیں گی۔ دوسرے Bumba پروڈکٹس میں آپ کے اکاؤنٹ حذف نہیں ہوتے۔ یہ واپس نہیں ہو سکتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حساب Saat Tarih شما و اطلاعات وابسته به آن (نمایه، سوابق، نشان‌ها، عضویت در حلقه‌ها و گروه‌ها) برای همیشه حذف می‌شود. حساب‌های شما در دیگر محصولات Bumba حذف نمی‌شود. این کار برگشت‌پذیر نیست."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre compte Saat Tarih et les informations qui y sont liées (profil, données, badges, adhésions aux cercles et groupes) seront supprimés définitivement. Vos comptes dans les autres produits Bumba ne sont pas supprimés. Cette action est irréversible."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваш аккаунт Saat Tarih и связанные с ним данные (профиль, записи, значки, участие в кругах и группах) будут удалены навсегда. Ваши аккаунты в других продуктах Bumba не удаляются. Это нельзя отменить."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarih のアカウントと、それに結びついた情報（プロフィール、記録、バッジ、サークルとグループの参加）が完全に削除されます。ほかの Bumba 製品のアカウントは削除されません。元に戻すことはできません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarih 계정과 그에 연결된 정보(프로필, 기록, 배지, 서클과 그룹 참여)가 영구적으로 삭제됩니다. 다른 Bumba 제품의 계정은 삭제되지 않습니다. 되돌릴 수 없습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您的 Saat Tarih 账户及其关联信息（资料、记录、徽章、圈子和群组成员身份）将被永久删除。您在其他 Bumba 产品中的账户不会被删除。此操作无法撤销。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permanenteng mabubura ang inyong Saat Tarih account at ang impormasyong kaugnay nito (profile, record, badge, pagiging miyembro sa mga bilog at grupo). Hindi binubura ang mga account ninyo sa ibang produkto ng Bumba. Hindi na ito maibabalik."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บัญชี Saat Tarih ของคุณและข้อมูลที่เชื่อมโยง (โปรไฟล์ บันทึก เหรียญตรา การเป็นสมาชิกวงและกลุ่ม) จะถูกลบถาวร บัญชีในผลิตภัณฑ์อื่นของ Bumba จะไม่ถูกลบ การดำเนินการนี้ย้อนกลับไม่ได้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Su cuenta de Saat Tarih y la información vinculada (perfil, registros, insignias, participación en círculos y grupos) se eliminarán para siempre. Sus cuentas en otros productos de Bumba no se eliminan. Esto no se puede deshacer."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sua conta do Saat Tarih e as informações ligadas a ela (perfil, registros, selos, participação em círculos e grupos) serão excluídas para sempre. Suas contas em outros produtos Bumba não são excluídas. Isso não pode ser desfeito."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका Saat Tarih खाता और उससे जुड़ी जानकारी (प्रोफ़ाइल, रिकॉर्ड, बैज, घेरों और समूहों की सदस्यता) हमेशा के लिए हट जाएगी। दूसरे Bumba उत्पादों में आपके खाते नहीं हटते। इसे वापस नहीं किया जा सकता।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার Saat Tarih অ্যাকাউন্ট ও এর সঙ্গে যুক্ত তথ্য (প্রোফাইল, রেকর্ড, ব্যাজ, চক্র ও দলের সদস্যপদ) স্থায়ীভাবে মুছে যাবে। অন্য Bumba পণ্যে আপনার অ্যাকাউন্ট মোছা হয় না। এটি ফেরানো যায় না।"
+          }
+        }
+      }
+    },
+    "account.delConfirmBadges": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarih hesabınızdaki rozetler kalıcı olarak silinecek. Hesabınız ve öbür bilgileriniz kalır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The badges in your Saat Tarih account will be deleted permanently. Your account and your other information stay."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Abzeichen in Ihrem Saat-Tarih-Konto werden endgültig gelöscht. Ihr Konto und Ihre übrigen Angaben bleiben."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarih hesabınızdakı nişanlar birdəfəlik silinəcək. Hesabınız və digər məlumatlarınız qalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ستُحذف الشارات في حسابك على Saat Tarih نهائيًا. يبقى حسابك ومعلوماتك الأخرى."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lencana di akun Saat Tarih Anda akan dihapus permanen. Akun dan informasi Anda yang lain tetap ada."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کے Saat Tarih اکاؤنٹ کے بیج مستقل طور پر حذف ہو جائیں گے۔ آپ کا اکاؤنٹ اور باقی معلومات رہیں گی۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نشان‌های حساب Saat Tarih شما برای همیشه حذف می‌شود. حساب و دیگر اطلاعات شما می‌ماند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les badges de votre compte Saat Tarih seront supprimés définitivement. Votre compte et vos autres informations restent."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Значки в вашем аккаунте Saat Tarih будут удалены навсегда. Аккаунт и остальные данные останутся."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarih のアカウントにあるバッジが完全に削除されます。アカウントとほかの情報は残ります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarih 계정의 배지가 영구적으로 삭제됩니다. 계정과 다른 정보는 남습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您 Saat Tarih 账户中的徽章将被永久删除。账户和其他信息保留。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permanenteng mabubura ang mga badge sa inyong Saat Tarih account. Mananatili ang account at ang iba pang impormasyon."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เหรียญตราในบัญชี Saat Tarih ของคุณจะถูกลบถาวร บัญชีและข้อมูลอื่นยังคงอยู่"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las insignias de su cuenta de Saat Tarih se eliminarán para siempre. Su cuenta y el resto de su información se mantienen."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os selos da sua conta do Saat Tarih serão excluídos para sempre. Sua conta e suas outras informações continuam."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपके Saat Tarih खाते के बैज हमेशा के लिए हट जाएँगे। आपका खाता और बाकी जानकारी बनी रहेगी।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার Saat Tarih অ্যাকাউন্টের ব্যাজগুলো স্থায়ীভাবে মুছে যাবে। অ্যাকাউন্ট ও অন্য তথ্য থাকবে।"
+          }
+        }
+      }
+    },
+    "account.delConfirmUntil": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu bağlantı %1$@ tarihine kadar geçerlidir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This link is valid until %1$@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieser Link gilt bis %1$@."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu keçid %1$@ tarixinədək etibarlıdır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذا الرابط صالح حتى %1$@."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tautan ini berlaku sampai %1$@."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یہ لنک %1$@ تک کارآمد ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "این پیوند تا %1$@ معتبر است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce lien est valable jusqu'au %1$@."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ссылка действительна до %1$@."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このリンクは %1$@ まで有効です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 링크는 %1$@까지 유효합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此链接有效期至 %1$@。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May bisa ang link na ito hanggang %1$@."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลิงก์นี้ใช้ได้ถึง %1$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este enlace es válido hasta el %1$@."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este link vale até %1$@."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "यह लिंक %1$@ तक मान्य है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই লিংক %1$@ পর্যন্ত বৈধ।"
+          }
+        }
+      }
+    },
+    "account.delConfirmButton": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onaylıyorum"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I confirm"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ich bestätige"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təsdiqləyirəm"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أؤكد"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saya konfirmasi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "میں تصدیق کرتا ہوں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تأیید می‌کنم"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je confirme"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подтверждаю"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "確認します"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "확인합니다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我确认"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kinukumpirma ko"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฉันยืนยัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirmo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirmo"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मैं पुष्टि करता/करती हूँ"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আমি নিশ্চিত করছি"
+          }
+        }
+      }
+    },
+    "account.delConfirmIgnore": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silmek istemiyorsanız bu sayfayı kapatın; hiçbir şey silinmez ve istek 7 gün sonra kendiliğinden iptal olur."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If you don't want to delete, just close this page; nothing is deleted and the request is cancelled automatically after 7 days."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Sie nicht löschen möchten, schließen Sie diese Seite einfach; nichts wird gelöscht, und die Anfrage verfällt nach 7 Tagen von selbst."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silmək istəmirsinizsə, bu səhifəni bağlayın; heç nə silinmir və sorğu 7 gündən sonra öz-özünə ləğv olunur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إن كنت لا تريد الحذف فأغلق هذه الصفحة؛ لن يُحذف شيء، ويُلغى الطلب تلقائيًا بعد 7 أيام."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jika tidak ingin menghapus, tutup saja halaman ini; tidak ada yang dihapus dan permintaan batal sendiri setelah 7 hari."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگر آپ حذف نہیں کرنا چاہتے تو یہ صفحہ بند کر دیں؛ کچھ حذف نہیں ہوگا اور درخواست 7 دن بعد خود منسوخ ہو جائے گی۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگر نمی‌خواهید حذف کنید، این صفحه را ببندید؛ چیزی حذف نمی‌شود و درخواست پس از 7 روز خودبه‌خود لغو می‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si vous ne voulez pas supprimer, fermez simplement cette page ; rien n'est supprimé et la demande s'annule d'elle-même après 7 jours."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если вы не хотите удалять, просто закройте эту страницу: ничего не удалится, а запрос отменится сам через 7 дней."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "削除しない場合はこのページを閉じてください。何も削除されず、リクエストは7日後に自動で取り消されます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "삭제하지 않으려면 이 페이지를 닫으세요. 아무것도 삭제되지 않으며 요청은 7일 뒤 자동으로 취소됩니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果不想删除，请直接关闭此页面；不会删除任何内容，请求将在 7 天后自动取消。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kung ayaw ninyong magbura, isara lang ang pahinang ito; walang mabubura at kusang makakansela ang kahilingan pagkalipas ng 7 araw."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "หากไม่ต้องการลบ ให้ปิดหน้านี้ได้เลย จะไม่มีอะไรถูกลบ และคำขอจะถูกยกเลิกเองหลัง 7 วัน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si no quiere eliminar, cierre esta página; no se elimina nada y la solicitud se cancela sola a los 7 días."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se não quiser excluir, feche esta página; nada é excluído e o pedido se cancela sozinho após 7 dias."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अगर आप हटाना नहीं चाहते तो यह पेज बंद कर दें; कुछ नहीं हटेगा और अनुरोध 7 दिन बाद अपने आप रद्द हो जाएगा।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "মুছতে না চাইলে এই পাতাটি বন্ধ করুন; কিছুই মোছা হবে না, আর অনুরোধ 7 দিন পরে নিজে থেকে বাতিল হবে।"
+          }
+        }
+      }
+    },
+    "account.delLinkBad": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu bağlantı geçersiz, kullanılmış ya da süresi dolmuş. Silmek istiyorsanız isteği hesap sayfanızdan yeniden başlatın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This link is invalid, already used or expired. If you want to delete, start the request again from your account page."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieser Link ist ungültig, bereits benutzt oder abgelaufen. Wenn Sie löschen möchten, starten Sie die Anfrage erneut auf Ihrer Kontoseite."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu keçid etibarsızdır, istifadə olunub ya da müddəti bitib. Silmək istəyirsinizsə, sorğunu hesab səhifənizdən yenidən başladın."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذا الرابط غير صالح أو مستخدم أو منتهي الصلاحية. إن أردت الحذف فابدأ الطلب من جديد من صفحة حسابك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tautan ini tidak valid, sudah dipakai, atau kedaluwarsa. Jika ingin menghapus, mulai lagi permintaannya dari halaman akun Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یہ لنک غلط، استعمال شدہ یا ختم شدہ ہے۔ اگر آپ حذف کرنا چاہتے ہیں تو اپنے اکاؤنٹ صفحے سے دوبارہ درخواست شروع کریں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "این پیوند نامعتبر، استفاده‌شده یا منقضی است. اگر می‌خواهید حذف کنید، درخواست را از صفحه‌ی حساب خود دوباره آغاز کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce lien n'est pas valide, a déjà servi ou a expiré. Pour supprimer, recommencez la demande depuis votre page de compte."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ссылка недействительна, уже использована или устарела. Чтобы удалить, начните запрос заново на странице аккаунта."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このリンクは無効か、使用済みか、期限切れです。削除する場合はアカウントページからもう一度リクエストしてください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 링크는 유효하지 않거나 이미 사용되었거나 만료되었습니다. 삭제하려면 계정 페이지에서 다시 요청하세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此链接无效、已使用或已过期。如需删除，请在账户页面重新发起请求。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi wasto, nagamit na, o paso na ang link na ito. Kung gusto ninyong magbura, simulan muli ang kahilingan mula sa pahina ng inyong account."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลิงก์นี้ไม่ถูกต้อง ใช้ไปแล้ว หรือหมดอายุ หากต้องการลบ ให้เริ่มคำขอใหม่จากหน้าบัญชีของคุณ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este enlace no es válido, ya se usó o caducó. Si quiere eliminar, vuelva a iniciar la solicitud desde la página de su cuenta."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este link é inválido, já foi usado ou expirou. Se quiser excluir, comece o pedido de novo na página da sua conta."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "यह लिंक अमान्य, इस्तेमाल हो चुका या पुराना है। हटाना चाहते हैं तो अपने खाते के पेज से फिर से अनुरोध करें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই লিংকটি অবৈধ, আগে ব্যবহৃত বা মেয়াদোত্তীর্ণ। মুছতে চাইলে আপনার অ্যাকাউন্ট পাতা থেকে আবার অনুরোধ করুন।"
+          }
+        }
+      }
+    },
+    "account.delBadgesDone": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozetleriniz silindi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your badges have been deleted."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihre Abzeichen wurden gelöscht."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nişanlarınız silindi."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حُذفت شاراتك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lencana Anda telah dihapus."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کے بیج حذف کر دیے گئے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نشان‌های شما حذف شد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vos badges ont été supprimés."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваши значки удалены."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "バッジを削除しました。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "배지가 삭제되었습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您的徽章已删除。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nabura na ang inyong mga badge."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลบเหรียญตราของคุณแล้ว"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se eliminaron sus insignias."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seus selos foram excluídos."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपके बैज हटा दिए गए।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনার ব্যাজ মুছে ফেলা হয়েছে।"
+          }
+        }
+      }
+    },
+    "account.rulesTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Topluluk kuralları"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Community rules"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemeinschaftsregeln"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İcma qaydaları"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قواعد المجتمع"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aturan komunitas"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کمیونٹی کے اصول"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قوانین جامعه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Règles de la communauté"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Правила сообщества"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "コミュニティのルール"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "커뮤니티 규칙"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "社区规则"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga patakaran ng komunidad"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กฎของชุมชน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Normas de la comunidad"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regras da comunidade"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "समुदाय के नियम"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কমিউনিটির নিয়ম"
+          }
+        }
+      }
+    },
+    "account.rulesLead": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halkalar ve gruplar davetle girilen küçük topluluklardır. Uygunsuz içeriğe ve başkalarını rahatsız eden kullanıcılara hoşgörü gösterilmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Circles and groups are small communities you join by invitation. There is no tolerance for objectionable content or for users who harass others."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kreise und Gruppen sind kleine Gemeinschaften, denen Sie per Einladung beitreten. Anstößige Inhalte und Nutzer, die andere belästigen, werden nicht geduldet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halqalar və qruplar dəvətlə qoşulduğunuz kiçik icmalardır. Yersiz məzmuna və başqalarını narahat edən istifadəçilərə dözümlülük göstərilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الحلقات والمجموعات مجتمعات صغيرة تنضم إليها بدعوة. لا تسامح مع المحتوى غير اللائق ولا مع المستخدمين الذين يزعجون الآخرين."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lingkaran dan grup adalah komunitas kecil yang Anda ikuti lewat undangan. Tidak ada toleransi untuk konten yang tidak pantas atau pengguna yang mengganggu orang lain."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حلقے اور گروپ چھوٹی برادریاں ہیں جن میں آپ دعوت سے شامل ہوتے ہیں۔ نامناسب مواد اور دوسروں کو تنگ کرنے والے صارفین کو بالکل برداشت نہیں کیا جاتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حلقه‌ها و گروه‌ها جمع‌های کوچکی هستند که با دعوت به آن‌ها می‌پیوندید. با محتوای نامناسب و کاربرانی که دیگران را آزار می‌دهند هیچ مدارایی نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les cercles et les groupes sont de petites communautés que l’on rejoint sur invitation. Aucune tolérance n’est accordée aux contenus inappropriés ni aux utilisateurs qui harcèlent les autres."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Круги и группы — небольшие сообщества, куда вступают по приглашению. Недопустимый контент и пользователи, которые беспокоят других, не допускаются."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サークルとグループは招待で参加する小さなコミュニティです。不適切なコンテンツや他の人に迷惑をかけるユーザーは一切容認しません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "서클과 그룹은 초대로 참여하는 작은 커뮤니티입니다. 부적절한 콘텐츠와 다른 사람을 괴롭히는 사용자는 용납하지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "圈子和群组是通过邀请加入的小型社区。对不当内容和骚扰他人的用户零容忍。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang mga circle at grupo ay maliliit na komunidad na sinasalihan sa pamamagitan ng imbitasyon. Walang pagpaparaya sa hindi angkop na nilalaman o sa mga user na nanggugulo sa iba."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กลุ่มและกลุ่มร่วมกันเป็นชุมชนเล็ก ๆ ที่เข้าร่วมได้ด้วยคำเชิญ เราไม่ยอมรับเนื้อหาที่ไม่เหมาะสมและผู้ใช้ที่รบกวนผู้อื่นโดยเด็ดขาด"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los círculos y grupos son pequeñas comunidades a las que se entra por invitación. No se tolera el contenido inapropiado ni a los usuarios que acosan a otros."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Círculos e grupos são pequenas comunidades em que se entra por convite. Não há tolerância para conteúdo impróprio nem para usuários que assediam outras pessoas."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मंडल और समूह छोटे समुदाय हैं जिनमें आप निमंत्रण से जुड़ते हैं। अनुचित सामग्री और दूसरों को परेशान करने वाले उपयोगकर्ताओं को बिल्कुल बर्दाश्त नहीं किया जाता।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "চক্র ও গ্রুপ আমন্ত্রণের মাধ্যমে যোগ দেওয়া ছোট কমিউনিটি। অনুপযুক্ত কনটেন্ট ও অন্যদের হয়রানি করা ব্যবহারকারীদের প্রতি কোনো সহনশীলতা নেই।"
+          }
+        }
+      }
+    },
+    "account.rules1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halka, grup, şehir ve görünen adlarda hakaret, nefret söylemi, taciz, cinsel ya da şiddet içeren veya yasa dışı içerik, reklam ve kişisel bilgi (telefon, adres, e-posta, bağlantı) kullanmayın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Do not use insults, hate speech, harassment, sexual, violent or illegal content, advertising or personal information (phone, address, email, links) in circle, group, city or display names."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verwenden Sie in Kreis-, Gruppen-, Stadt- und Anzeigenamen keine Beleidigungen, Hassrede, Belästigung, sexuellen, gewalttätigen oder rechtswidrigen Inhalte, keine Werbung und keine persönlichen Daten (Telefon, Adresse, E-Mail, Links)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halqa, qrup, şəhər və görünən adlarda təhqir, nifrət nitqi, təqib, cinsi, zorakı və ya qanunsuz məzmun, reklam və şəxsi məlumat (telefon, ünvan, e-poçt, keçid) istifadə etməyin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا تستخدم في أسماء الحلقات والمجموعات والمدن والأسماء المعروضة الشتائم أو خطاب الكراهية أو التحرش أو المحتوى الجنسي أو العنيف أو غير القانوني أو الإعلانات أو المعلومات الشخصية (الهاتف، العنوان، البريد الإلكتروني، الروابط)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jangan gunakan hinaan, ujaran kebencian, pelecehan, konten seksual, kekerasan atau ilegal, iklan, maupun informasi pribadi (telepon, alamat, email, tautan) pada nama lingkaran, grup, kota, atau nama tampilan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حلقے، گروپ، شہر اور ظاہری ناموں میں گالی، نفرت انگیز بات، ہراسانی، جنسی، پرتشدد یا غیر قانونی مواد، اشتہار اور ذاتی معلومات (فون، پتا، ای میل، لنک) استعمال نہ کریں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در نام حلقه، گروه، شهر و نام نمایشی از توهین، سخن نفرت‌آمیز، آزار، محتوای جنسی، خشونت‌آمیز یا غیرقانونی، تبلیغ و اطلاعات شخصی (تلفن، نشانی، ایمیل، پیوند) استفاده نکنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "N’utilisez pas d’insultes, de discours haineux, de harcèlement, de contenus sexuels, violents ou illégaux, de publicité ni d’informations personnelles (téléphone, adresse, e-mail, liens) dans les noms de cercle, de groupe, de ville ou d’affichage."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не используйте в названиях кругов и групп, городов и отображаемых именах оскорбления, язык вражды, домогательства, сексуальный, жестокий или незаконный контент, рекламу и личные данные (телефон, адрес, эл. почту, ссылки)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サークル名、グループ名、都市名、表示名に、侮辱、ヘイトスピーチ、嫌がらせ、性的・暴力的・違法な内容、広告、個人情報（電話番号、住所、メールアドレス、リンク）を使わないでください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "서클, 그룹, 도시 이름과 표시 이름에 욕설, 혐오 표현, 괴롭힘, 성적·폭력적·불법적인 내용, 광고, 개인 정보(전화번호, 주소, 이메일, 링크)를 쓰지 마세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请勿在圈子名、群组名、城市名和显示名称中使用辱骂、仇恨言论、骚扰、色情、暴力或违法内容、广告以及个人信息（电话、地址、电子邮件、链接）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Huwag gumamit ng insulto, mapoot na pananalita, panliligalig, sekswal, marahas o ilegal na nilalaman, patalastas, o personal na impormasyon (telepono, address, email, link) sa pangalan ng circle, grupo, lungsod o display name."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อย่าใช้คำดูหมิ่น ถ้อยคำแสดงความเกลียดชัง การคุกคาม เนื้อหาทางเพศ ความรุนแรงหรือผิดกฎหมาย โฆษณา หรือข้อมูลส่วนตัว (โทรศัพท์ ที่อยู่ อีเมล ลิงก์) ในชื่อกลุ่ม ชื่อเมือง หรือชื่อที่แสดง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No use insultos, discurso de odio, acoso, contenido sexual, violento o ilegal, publicidad ni datos personales (teléfono, dirección, correo, enlaces) en nombres de círculo, grupo, ciudad o de usuario."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não use insultos, discurso de ódio, assédio, conteúdo sexual, violento ou ilegal, publicidade nem dados pessoais (telefone, endereço, e-mail, links) em nomes de círculo, grupo, cidade ou de exibição."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मंडल, समूह, शहर और दिखने वाले नामों में गाली, नफ़रत भरी बात, उत्पीड़न, यौन, हिंसक या अवैध सामग्री, विज्ञापन और निजी जानकारी (फ़ोन, पता, ईमेल, लिंक) का उपयोग न करें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "চক্র, গ্রুপ, শহর ও প্রদর্শিত নামে গালি, ঘৃণাপূর্ণ কথা, হয়রানি, যৌন, সহিংস বা বেআইনি কনটেন্ট, বিজ্ঞাপন এবং ব্যক্তিগত তথ্য (ফোন, ঠিকানা, ইমেল, লিংক) ব্যবহার করবেন না।"
+          }
+        }
+      }
+    },
+    "account.rules2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kimseyi rahatsız etmeyin; alarm önerisini yalnız isteyeceğini bildiğiniz kişiye gönderin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Do not bother anyone; send an alarm suggestion only to someone you know wants it."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belästigen Sie niemanden; senden Sie einen Weckervorschlag nur an jemanden, von dem Sie wissen, dass er ihn möchte."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heç kimi narahat etməyin; zəngli saat təklifini yalnız onu istədiyini bildiyiniz şəxsə göndərin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا تزعج أحدًا؛ أرسل اقتراح المنبه فقط إلى من تعرف أنه يريده."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jangan mengganggu siapa pun; kirim saran alarm hanya kepada orang yang Anda tahu menginginkannya."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کسی کو تنگ نہ کریں؛ الارم کی تجویز صرف اسی کو بھیجیں جس کے بارے میں آپ جانتے ہوں کہ وہ اسے چاہتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کسی را آزار ندهید؛ پیشنهاد زنگ هشدار را فقط برای کسی بفرستید که می‌دانید آن را می‌خواهد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne dérangez personne ; n’envoyez une suggestion d’alarme qu’à quelqu’un dont vous savez qu’il la souhaite."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Никому не досаждайте; предлагайте будильник только тому, кто, как вы знаете, этого хочет."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "誰にも迷惑をかけないでください。アラームの提案は、望んでいるとわかっている相手にだけ送ってください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "누구도 괴롭히지 마세요. 알람 제안은 원한다는 것을 아는 사람에게만 보내세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请勿打扰他人；只向你确定愿意接收的人发送闹钟建议。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Huwag manggulo ng sinuman; magpadala lang ng mungkahing alarm sa taong alam mong gusto ito."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อย่ารบกวนผู้อื่น ส่งคำแนะนำการปลุกให้เฉพาะคนที่คุณรู้ว่าต้องการเท่านั้น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No moleste a nadie; envíe una sugerencia de alarma solo a quien sepa que la quiere."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não incomode ninguém; envie uma sugestão de alarme só para quem você sabe que quer recebê-la."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "किसी को परेशान न करें; अलार्म का सुझाव केवल उसी को भेजें जिसके बारे में आप जानते हैं कि वह इसे चाहता है।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কাউকে বিরক্ত করবেন না; অ্যালার্মের প্রস্তাব কেবল তাকেই পাঠান যিনি তা চান বলে আপনি জানেন।"
+          }
+        }
+      }
+    },
+    "account.rules3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygunsuz bir ad görürseniz “Bildir”e dokunun; sizi rahatsız eden üyeyi “Engelle” ile gizleyin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If you see an objectionable name, tap “Report”; hide a member who bothers you with “Block”."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Sie einen anstößigen Namen sehen, tippen Sie auf „Melden“; ein Mitglied, das Sie stört, blenden Sie mit „Blockieren“ aus."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yersiz bir ad görsəniz “Bildir” düyməsinə toxunun; sizi narahat edən üzvü “Blokla” ilə gizlədin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إذا رأيت اسمًا غير لائق فاضغط «إبلاغ»؛ وأخفِ العضو الذي يزعجك باستخدام «حظر»."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jika melihat nama yang tidak pantas, ketuk “Laporkan”; sembunyikan anggota yang mengganggu Anda dengan “Blokir”."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگر کوئی نامناسب نام دیکھیں تو «رپورٹ کریں» پر ٹیپ کریں؛ تنگ کرنے والے رکن کو «بلاک کریں» سے چھپا دیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگر نام نامناسبی دیدید، روی «گزارش» بزنید؛ عضوی را که آزارتان می‌دهد با «مسدود کردن» پنهان کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si vous voyez un nom inapproprié, touchez « Signaler » ; masquez un membre qui vous dérange avec « Bloquer »."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если увидите недопустимое название, нажмите «Пожаловаться»; скройте участника, который вам мешает, кнопкой «Заблокировать»."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不適切な名前を見つけたら「報告」をタップしてください。迷惑なメンバーは「ブロック」で非表示にできます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "부적절한 이름을 보면 ‘신고’을 누르세요. 불편하게 하는 멤버는 ‘차단’으로 숨길 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果看到不当的名称，请点按“举报”；可用“屏蔽”隐藏打扰你的成员。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kung may makita kang hindi angkop na pangalan, i-tap ang “I-report”; itago ang miyembrong nanggugulo sa iyo gamit ang “I-block”."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "หากเห็นชื่อที่ไม่เหมาะสม ให้แตะ “รายงาน” และซ่อนสมาชิกที่รบกวนคุณด้วย “บล็อก”"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si ve un nombre inapropiado, toque «Denunciar»; oculte a un miembro que le moleste con «Bloquear»."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se vir um nome impróprio, toque em “Denunciar”; oculte um membro que incomoda você com “Bloquear”."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कोई अनुचित नाम दिखे तो “रिपोर्ट करें” पर टैप करें; परेशान करने वाले सदस्य को “ब्लॉक करें” से छिपाएँ।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "অনুপযুক্ত নাম দেখলে “রিপোর্ট করুন”-এ ট্যাপ করুন; বিরক্ত করা সদস্যকে “ব্লক করুন” দিয়ে লুকান।"
+          }
+        }
+      }
+    },
+    "account.rules4": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimler en geç 24 saat içinde incelenir. Kuralları çiğneyen içerik kaldırılır; yazan kişi bütün halka ve gruplardan çıkarılır ve yenisine katılamaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reports are reviewed within 24 hours. Content that breaks the rules is removed, and its author is removed from all circles and groups and cannot join new ones."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldungen werden innerhalb von 24 Stunden geprüft. Inhalte, die gegen die Regeln verstoßen, werden entfernt; die Person wird aus allen Kreisen und Gruppen entfernt und kann keinen neuen beitreten."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirişlər ən gec 24 saat ərzində yoxlanılır. Qaydaları pozan məzmun silinir; onu yazan şəxs bütün halqa və qruplardan çıxarılır və yenisinə qoşula bilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُراجع البلاغات خلال 24 ساعة. يُزال المحتوى المخالف للقواعد، ويُخرج كاتبه من جميع الحلقات والمجموعات ولا يمكنه الانضمام إلى غيرها."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laporan ditinjau dalam 24 jam. Konten yang melanggar aturan dihapus; penulisnya dikeluarkan dari semua lingkaran dan grup dan tidak dapat bergabung lagi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رپورٹوں کا جائزہ 24 گھنٹوں کے اندر لیا جاتا ہے۔ اصول توڑنے والا مواد ہٹا دیا جاتا ہے؛ لکھنے والے کو تمام حلقوں اور گروپوں سے نکال دیا جاتا ہے اور وہ نئے میں شامل نہیں ہو سکتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گزارش‌ها حداکثر ظرف 24 ساعت بررسی می‌شوند. محتوای ناقض قوانین حذف می‌شود؛ نویسنده‌اش از همه حلقه‌ها و گروه‌ها بیرون می‌رود و نمی‌تواند به گروه تازه‌ای بپیوندد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les signalements sont examinés sous 24 heures. Le contenu qui enfreint les règles est supprimé ; son auteur est retiré de tous les cercles et groupes et ne peut plus en rejoindre."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Жалобы рассматриваются в течение 24 часов. Контент, нарушающий правила, удаляется; его автор исключается из всех кругов и групп и не может вступить в новые."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "報告は24時間以内に確認します。ルールに違反する内容は削除され、投稿した人はすべてのサークルとグループから外され、新たに参加できなくなります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "신고는 24시간 이내에 검토합니다. 규칙을 어긴 콘텐츠는 삭제되고, 작성자는 모든 서클과 그룹에서 제외되며 새로 참여할 수 없습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "举报会在24小时内处理。违反规则的内容会被删除，发布者会被移出所有圈子和群组，且不能再加入新的。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sinusuri ang mga report sa loob ng 24 na oras. Inaalis ang nilalamang lumalabag sa patakaran; inaalis ang may-akda sa lahat ng circle at grupo at hindi na siya makakasali sa bago."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "รายงานจะได้รับการตรวจสอบภายใน 24 ชั่วโมง เนื้อหาที่ละเมิดกฎจะถูกลบ ผู้เขียนจะถูกนำออกจากทุกกลุ่มและเข้าร่วมกลุ่มใหม่ไม่ได้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las denuncias se revisan en 24 horas como máximo. El contenido que incumple las normas se elimina; su autor sale de todos los círculos y grupos y no puede unirse a otros."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As denúncias são analisadas em até 24 horas. O conteúdo que viola as regras é removido; o autor sai de todos os círculos e grupos e não pode entrar em outros."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "रिपोर्टों की समीक्षा 24 घंटे के भीतर होती है। नियम तोड़ने वाली सामग्री हटा दी जाती है; उसे लिखने वाले को सभी मंडलों और समूहों से निकाल दिया जाता है और वह नए में नहीं जुड़ सकता।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "রিপোর্ট সর্বোচ্চ 24 ঘণ্টার মধ্যে পর্যালোচনা করা হয়। নিয়ম ভাঙা কনটেন্ট সরিয়ে দেওয়া হয়; লেখককে সব চক্র ও গ্রুপ থেকে বের করে দেওয়া হয় এবং তিনি নতুন কোনোটিতে যোগ দিতে পারেন না।"
+          }
+        }
+      }
+    },
+    "account.rulesAgree": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halka ya da grup kurarak veya katılarak bu kuralları kabul etmiş olursunuz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By creating or joining a circle or group, you agree to these rules."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Sie einen Kreis oder eine Gruppe gründen oder ihr beitreten, stimmen Sie diesen Regeln zu."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halqa və ya qrup quraraq, yaxud ona qoşularaq bu qaydaları qəbul etmiş olursunuz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بإنشاء حلقة أو مجموعة أو الانضمام إليها فإنك توافق على هذه القواعد."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dengan membuat atau bergabung dengan lingkaran atau grup, Anda menyetujui aturan ini."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حلقہ یا گروپ بنا کر یا اس میں شامل ہو کر آپ ان اصولوں سے اتفاق کرتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "با ساختن یا پیوستن به حلقه یا گروه، این قوانین را می‌پذیرید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En créant ou en rejoignant un cercle ou un groupe, vous acceptez ces règles."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Создавая круг или группу либо вступая в них, вы принимаете эти правила."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サークルやグループを作成または参加すると、このルールに同意したことになります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "서클이나 그룹을 만들거나 참여하면 이 규칙에 동의하는 것입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "创建或加入圈子、群组即表示你同意这些规则。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa paggawa o pagsali sa isang circle o grupo, sumasang-ayon ka sa mga patakarang ito."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เมื่อสร้างหรือเข้าร่วมกลุ่ม ถือว่าคุณยอมรับกฎเหล่านี้"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Al crear un círculo o grupo o unirse a uno, acepta estas normas."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ao criar um círculo ou grupo ou entrar em um, você aceita estas regras."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मंडल या समूह बनाकर या उसमें जुड़कर आप इन नियमों से सहमत होते हैं।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "চক্র বা গ্রুপ তৈরি করে বা তাতে যোগ দিয়ে আপনি এই নিয়মগুলো মেনে নিচ্ছেন।"
+          }
+        }
+      }
+    },
+    "account.banned": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Topluluk kurallarını çiğnediğiniz için halka ve gruplara katılamazsınız. Bir yanlışlık olduğunu düşünüyorsanız “Hata bildir”den bize yazın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can't join circles or groups because you broke the community rules. If you think this is a mistake, write to us via “Report a problem”."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sie können keinen Kreisen oder Gruppen beitreten, weil Sie gegen die Gemeinschaftsregeln verstoßen haben. Wenn Sie das für einen Irrtum halten, schreiben Sie uns über „Problem melden“."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İcma qaydalarını pozduğunuz üçün halqa və qruplara qoşula bilməzsiniz. Səhv olduğunu düşünürsünüzsə, “Xəta bildir” vasitəsilə bizə yazın."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يمكنك الانضمام إلى الحلقات أو المجموعات لأنك خالفت قواعد المجتمع. إذا كنت تظن أن هذا خطأ فاكتب إلينا عبر «الإبلاغ عن مشكلة»."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anda tidak dapat bergabung dengan lingkaran atau grup karena melanggar aturan komunitas. Jika menurut Anda ini keliru, tulis kepada kami melalui “Laporkan masalah”."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کمیونٹی کے اصول توڑنے کی وجہ سے آپ حلقوں یا گروپوں میں شامل نہیں ہو سکتے۔ اگر آپ کے خیال میں یہ غلطی ہے تو «مسئلے کی اطلاع دیں» کے ذریعے ہمیں لکھیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "چون قوانین جامعه را نقض کرده‌اید، نمی‌توانید به حلقه‌ها یا گروه‌ها بپیوندید. اگر فکر می‌کنید اشتباهی رخ داده، از راه «گزارش مشکل» برای ما بنویسید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vous ne pouvez pas rejoindre de cercles ni de groupes, car vous avez enfreint les règles de la communauté. Si vous pensez qu’il s’agit d’une erreur, écrivez-nous via « Signaler un problème »."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вы не можете вступать в круги и группы, так как нарушили правила сообщества. Если считаете, что это ошибка, напишите нам через «Сообщить о проблеме»."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "コミュニティのルールに違反したため、サークルやグループに参加できません。誤りだと思われる場合は「問題を報告」からお知らせください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "커뮤니티 규칙을 어겨 서클이나 그룹에 참여할 수 없습니다. 잘못되었다고 생각되면 ‘문제 신고’로 알려 주세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "由于你违反了社区规则，无法加入圈子或群组。如果你认为这是误判，请通过“报告问题”联系我们。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi ka makakasali sa mga circle o grupo dahil lumabag ka sa mga patakaran ng komunidad. Kung sa tingin mo ay mali ito, sumulat sa amin sa “Mag-ulat ng problema”."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คุณเข้าร่วมกลุ่มไม่ได้เพราะละเมิดกฎของชุมชน หากคิดว่าเป็นความผิดพลาด โปรดเขียนถึงเราผ่าน “แจ้งปัญหา”"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No puede unirse a círculos ni grupos porque incumplió las normas de la comunidad. Si cree que es un error, escríbanos desde «Informar de un problema»."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Você não pode entrar em círculos nem grupos porque violou as regras da comunidade. Se acha que é um engano, escreva para nós em “Relatar um problema”."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "समुदाय के नियम तोड़ने के कारण आप मंडलों या समूहों में नहीं जुड़ सकते। अगर आपको लगता है कि यह गलती है, तो “समस्या बताएँ” से हमें लिखें।"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কমিউনিটির নিয়ম ভাঙার কারণে আপনি চক্র বা গ্রুপে যোগ দিতে পারবেন না। ভুল হয়েছে মনে হলে “সমস্যা জানান” থেকে আমাদের লিখুন।"
           }
         }
       }

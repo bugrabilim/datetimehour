@@ -442,7 +442,7 @@
         "h": "Membership",
         "p": [
           "Hindi kailangan ng account para gamitin ang Saat Tarih. Kung gusto ninyo, puwede kayong magbukas ng Bumba membership sa website (hesap.time.bumba.tr) at sa mga app gamit ang inyong email address at password; gumagana rin ang parehong membership sa ibang produkto ng Bumba.",
-          "Kung anong impormasyon ang pinoproseso ng membership at bakit, saan ito iniimbak at ang inyong mga karapatan ay nakasulat sa pinagsasaluhang [abiso sa privacy ng Bumba membership](https://bumbagroup.com/uyelik-aydinlatma?dil=en); ang mga tuntunin ay nasa [mga tuntunin ng membership](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Puwede ninyong burahin ang inyong account anumang oras: [Pagbura ng account]({deleteUrl}).",
+          "Kung anong impormasyon ang pinoproseso ng membership at bakit, saan ito iniimbak at ang inyong mga karapatan ay nakasulat sa pinagsasaluhang [abiso sa privacy ng Bumba membership](https://bumbagroup.com/en/uyelik-aydinlatma); ang mga tuntunin ay nasa [mga tuntunin ng membership](https://bumbagroup.com/en/uyelik-sozlesmesi). Puwede ninyong burahin ang inyong account anumang oras: [Pagbura ng account]({deleteUrl}).",
           "Ang **Mga Circle** sa apps (sabayang dhikr at khatm) ay nangangailangan ng membership at, dahil maaari nilang ibunyag ang iyong paniniwalang panrelihiyon, gumagana lamang sa hiwalay mong tahasang pahintulot (KVKK art. 6; Data Privacy Act). Ang pangalan ng circle, ang iyong membership, display name, mga bilang ng dhikr na idinagdag mo at mga juz na kinuha o tinapos mo ay nakikita lamang ng mga miyembro ng circle na iyon; hindi pampubliko, hindi ibinebenta at hindi ginagamit sa advertising. Kapag umalis ka, mananatili ang ambag mo nang walang pangalan. Maaari mong bawiin ang pahintulot sa app anumang oras; aalis ka na sa lahat ng circle.",
           "Ang **Mga Grupo** (sabayang countdown, world clock, botohan sa pulong, focus room, mungkahing alarm, bilang ng pagmamasid sa langit) ay nangangailangan din ng membership. Ang pangalan ng grupo, membership mo, display name at ang inilalagay mo sa grupo (ibinahaging lungsod at time zone, mga boto, focus session, mungkahing alarm, minarkahang pangyayari sa langit) ay nakikita lamang ng mga miyembro ng grupo. Hindi kailanman itatakda sa telepono mo ang mungkahing alarm nang walang pagsang-ayon mo. Ang **mga ulat ng panahon** ay hindi ipinapakita sa iba kasama ang iyong pagkakakilanlan: ini-round ang lokasyon mo sa cell na mga 25 km at binubura ang ulat pagkalipas ng 24 oras. Batayang legal: pagtupad sa kasunduan sa membership (KVKK art. 5(2)(c)). Maaari kang umalis sa grupo, mag-ulat o mag-block ng tao; binubura lahat ng ito kapag binura mo ang account."
         ]
@@ -3477,45 +3477,6 @@
       {
         "q": "Pare-pareho ba ang oras ng Rahu Kaal saanman?",
         "a": "Hindi. Kinakalkula ito mula sa lokal na pagsikat at paglubog ng araw, kaya nagbabago ito ayon sa lungsod at panahon. Kinakalkula ito ng pahinang ito para sa lugar na pinili mo."
-      }
-    ]
-  },
-  "account": {
-    "delTitle": "Burahin ang account | Saat Tarih",
-    "delDesc": "Paano burahin ang inyong Saat Tarih account sa website o sa mga app para sa iPhone at Android, at kung ano ang nabubura.",
-    "delH1": "Pagbura ng iyong account",
-    "delLead": "Opsyonal ang account sa Saat Tarih at puwede ninyo itong burahin anumang oras. Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw.",
-    "delSections": [
-      {
-        "h": "Pagbura sa website o sa app",
-        "ul": [
-          "Mag-sign in sa **hesap.time.bumba.tr**, o buksan ang **Settings › Account** sa app.",
-          "Sa **Burahin ang account**, piliin ang **Sa Saat Tarih lang** o **Sa lahat ng produkto ng Bumba**.",
-          "Ilagay ang inyong password (hindi kailangan kung nag-sign in kayo sa nakaraang 24 na oras) at kumpirmahin.",
-          "Nagsisimula agad ang pagbura at natatapos sa loob ng hindi hihigit sa 7 araw; padadalhan namin kayo ng email. Puwede pa rin ninyong gamitin ang Saat Tarih nang walang account."
-        ]
-      },
-      {
-        "h": "Kung hindi kayo makapag-sign in",
-        "p": [
-          "Kung nakalimutan ninyo ang password, magtakda ng bago sa **Mag-sign in › Nakalimutan ang password**, saka burahin ang account.",
-          "Kung hindi rin ninyo ma-access ang inyong email, sumulat sa [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Kapag nakumpirma naming sa inyo ang account, buburahin namin ito at aabisuhan kayo."
-        ]
-      },
-      {
-        "h": "Ano ang nabubura?",
-        "ul": [
-          "Ang inyong email address, profile (kasama ang larawan) at ang hindi na maibabalik na hash ng inyong password.",
-          "Ang inyong mga session, mga record ng app na nasa account, at mga badge.",
-          "Kung pipiliin ninyo ang **Sa lahat ng produkto ng Bumba**, mabubura rin ang inyong mga membership sa ibang produkto ng Bumba.",
-          "Kusang nabubura ang mga kopya sa backup sa loob ng hindi hihigit sa 30 araw (30 araw itinatago ang mga backup)."
-        ]
-      },
-      {
-        "h": "Ang naiiwan sa inyong telepono",
-        "p": [
-          "Naiiwan sa inyong telepono ang mga setting ng app at mga record sa telepono (at sa inyong iCloud kung naka-on ang iCloud sync). Nabubura ang mga ito kapag binura ninyo ang app sa telepono."
-        ]
       }
     ]
   },

@@ -3,7 +3,7 @@
    "Silinmiş üye", verilerimi indir, onayın geri alınması, temizlik. */
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
-import { start, signUpVerified, CRON } from "./helpers.mjs";
+import { start, signUpVerified, deleteAccount, CRON } from "./helpers.mjs";
 import { cleanName } from "../src/circles.mjs";
 
 let t;
@@ -119,7 +119,7 @@ test("kurucu ayrılınca en eski üyeye geçer; hesap silinince 'Silinmiş üye'
   assert.equal(r.json.halkalar.halkalar.find((h) => h.id === id).cuzler.join(), "1,2");
   assert.ok(r.json.halkalar.onay.surum);
   // Ece hesabını siler: Ayşe kurucu olur, biten cüz "silindi", alınmış cüz serbest
-  r = await t.req("/v1/hesap/sil", { method: "POST", token: tok.ece, body: { kapsam: "urun" } });
+  r = await deleteAccount(t, tok.ece, "ece@example.com");
   assert.equal(r.status, 200);
   r = await api("ayse", `/v1/halka/${id}`);
   assert.equal(r.json.sahip, true);

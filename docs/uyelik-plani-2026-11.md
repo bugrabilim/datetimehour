@@ -221,9 +221,21 @@ hesabı açılana kadar yalnız kodda.
   `Groups.kt`, iOS `Groups.swift`), metinler `group.*`, `wxr.*` (19 dil); Android ekran görüntüleri `tr-gruplar`,
   `tr-grup-*`, `en-grup-oylama`, `tr-grup-kur`, `tr-hava-bildirimi`. Gizlilik sayfasının "Üyelik" bölümünde halkalar
   ve gruplar (19 dil).
-- **Yayından önce (sahibin onayıyla):** sunucuda `HALKALAR=acik` ve `GRUPLAR=acik` (ana altyapı girer), App Store yaş
-  derecelendirmesinde kullanıcı içeriği sorusu, Uygulama Gizliliği'ne "Diğer kullanıcı içeriği" ve kaba konum (hava
-  bildirimi), Play veri güvenliği formu, App Review notunda moderasyon akışı ve deneme hesabı.
+- **Moderasyon (16 Kasım 2026, sahibin isteği "ne gerekiyorsa yap"; Apple 1.2 ve Play UGC):** topluluk kuralları
+  sayfası `hesap.time.bumba.tr/topluluk-kurallari` (19 dil, `account.json` `rules*`), kurma ve katılma ekranlarında
+  "kurarak ya da katılarak kabul edersiniz" cümlesi ve bağlantı (Android `CommunityRules`, iOS `CommunityRules`); her
+  bildirim e-postası yöneticiye imzalı bağlantı taşır (`server/src/moderation.mjs`, `/moderasyon?k=`, 30 gün): açmak
+  bir şey yapmaz, "İçeriği gizle", "Gizle ve kişiyi topluluktan uzaklaştır" (bütün halka ve gruplardan çıkar, yenisini
+  kuramaz ve katılamaz: `community_ban`, hata `uzaklastirildi`, metin `account.banned`; hesap çalışmaya devam eder),
+  "Uzaklaştırmayı kaldır". Kurallarda söz: bildirimler en geç 24 saat içinde incelenir. Test `moderation.test.mjs`.
+- **Yayından önce (sahibin onayıyla), sıra:** (1) moderasyonu taşıyan main birleştirmesi (sunucu yayını); (2) ana
+  altyapı sunucuda `HALKALAR=acik` ve `GRUPLAR=acik` girer; (3) TestFlight'ta deneme; (4) 1.1 gönderiminde App Store
+  Connect: **Yaş derecelendirmesi** › User-Generated Content **Yes**, Messaging and Chat **No** (sohbet yok), diğerleri
+  aynı (sonuç derece App Store Connect'in hesabıdır); **Uygulama Gizliliği**'ne eklenecekler: Other User Content
+  (App Functionality, kimlikle bağlantılı), Sensitive Info (dini inanç: zikir/hatim halkası; App Functionality,
+  bağlantılı), Coarse Location (anonim hava bildirimi; App Functionality, bağlantılı: kayıt 24 saat hesapla tutulur),
+  izleme yok; **App Review notu** 8. bölüm (`APP_REVIEW_NOTES.md`) ve Sign-In Information'da deneme hesabı; (5) Play:
+  veri güvenliği ve içerik derecelendirmesi (`PLAY_CONSOLE.md` 4).
 
 ### Açık rıza metni (sahip 15 Kasım 2026'da onayladı: "tüm önerilerin uygun")
 "Zikir ve hatim halkasına katılmanız dini inancınızla ilgili bilgi (KVKK m. 6, özel nitelikli kişisel veri)

@@ -634,6 +634,8 @@ class MoreScreensTest {
         shot("tr-kurulum") { OnboardingScreen(0) {} }
         shot("de-kurulum", qualifiers = "de") { OnboardingScreen(0) {} }
         shot("ar-kurulum", qualifiers = "ar") { OnboardingScreen(0) {} }
+        // Kısa telefonda sıkı düzen tek ekrana sığar (sahibin bildirimi, 16 Kasım 2026)
+        shot("tr-kurulum-kisa", qualifiers = "tr-w360dp-h640dp") { OnboardingScreen(0) {} }
         // Sorulu akış (5 Kasım 2026): 0 hoş geldiniz, 1 güven + konum ve bildirim, 2–6 sorular, 7 özet, 8 "başka neler var",
         // 9–10 ipuçları, 11–16 özellik turu, 17 "Diğer her şey Tümü'nde"
         shot("tr-kurulum-guven") { OnboardingScreen(1) {} }

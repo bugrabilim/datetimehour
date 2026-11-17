@@ -75,6 +75,7 @@ enum Circles {
         case "bitti": return "circle.err.ended"
         case "dolu": return "circle.full"
         case "riza": return "riza"
+        case "uzaklastirildi": return "account.banned"
         default: return Account.errorOf(r)
         }
     }
@@ -307,6 +308,7 @@ struct CircleCreateView: View {
                 }
             }
             if !hasConsent { Section { ConsentBlock(agree: $agree) }.listRowBackground(Color.clear).listRowInsets(EdgeInsets()) }
+            Section { CommunityRules() }.listRowBackground(Color.clear)
             if let err { Text(L(err)).foregroundStyle(Theme.err) }
             Section {
                 RoundButton(title: L("circle.create"), prominent: true) {
@@ -361,6 +363,7 @@ struct CircleJoinView: View {
                 }
                 if !hasConsent { Section { ConsentBlock(agree: $agree) }.listRowBackground(Color.clear).listRowInsets(EdgeInsets()) }
             }
+            Section { CommunityRules() }.listRowBackground(Color.clear)
             if let err { Text(L(err)).foregroundStyle(Theme.err) }
             Section {
                 RoundButton(title: L("circle.joinButton"), prominent: ready) {
@@ -622,6 +625,20 @@ private struct MemberRow: View {
                 if c.owner { Button(L("circle.kick"), role: .destructive) { onAction("kick") } }
             } label: { row }
             .buttonStyle(.plain)
+        }
+    }
+}
+
+/// Topluluk kuralları (Apple 1.2: kullanıcı içeriğinde kurallar kabul edilir); halka ve grup kurma/katılma ekranlarında
+struct CommunityRules: View {
+    @Environment(\.openURL) private var openURL
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(L("account.rulesAgree")).font(.footnote).foregroundStyle(Theme.muted)
+            Button(L("account.rulesTitle")) {
+                if let u = URL(string: "\(Account.base)/topluluk-kurallari?dil=\(AppLocale.code)") { openURL(u) }
+            }
+            .font(.subheadline.weight(.semibold)).buttonStyle(.borderless)
         }
     }
 }

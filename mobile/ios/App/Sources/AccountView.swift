@@ -125,12 +125,8 @@ struct AccountView: View {
             } else {
                 AccountSignedOut(notice: notice)
             }
-            Section {
-                Link(A("notice"), destination: AccountLinks.notice)
-                Link(A("terms"), destination: AccountLinks.terms)
-                Link(A("deletionInfo"), destination: AccountLinks.deletion)
-            }
-            .tint(Theme.accent)
+            // Standart 5.23: girişte ve kayıtta ayrı bağlantı satırı yok (ortak metinler yalnız onay cümlesinin içinde);
+            // hesap sayfasında her bölümün altında ortak metinler
         }
         .navigationTitle(A("title"))
         .themedBackground()
@@ -218,7 +214,8 @@ private struct AccountSignedOut: View {
                 Button { run({ await Account.shared.link(email: email, password: password) }) { _ in password = "" } } label: {
                     BusyLabel(A("signIn"), busy: busy)
                 }
-                Button(A("forgot")) { mode = "forgot"; err = nil }
+                // Şifremi unuttum (5.22): merkezin sifirla-iste'si; yeni şifre bağlı bütün Bumba ürünlerine geçer
+                Button(A("forgot")) { err = nil; info = nil; run({ await Account.shared.linkForgot(email) }) { _ in info = "account.linkForgotSent" } }
             case "done":
                 AccountMessage(key: "account.signedUp", ok: true)
                 Button(A("signIn")) { mode = "in"; info = nil }
@@ -296,9 +293,10 @@ private struct AccountSignedIn: View {
     @State private var sessions: [[String: Any]] = []
     @State private var products: [[String: Any]]?
     @State private var askOpen: [String]?
-    @State private var askClose: [String]?
     @State private var openPassword = ""
-    @State private var scopeAll = false
+    /// Bekleyen silme isteği (5.21): {tur, sonGun}; hesap sayfasında görünür ve iptal edilir
+    @State private var pending: [String: Any]?
+    @Environment(\.openURL) private var openURL
     @State private var deletePassword = ""
     @State private var confirmDelete = false
     @State private var export: URL?
@@ -325,6 +323,7 @@ private struct AccountSignedIn: View {
             data = o
             p = ProfileForm(o["profil"] as? [String: Any] ?? [:])
             celebrate = o["kutlama"] as? Bool ?? true
+            pending = o["silmeIstegi"] as? [String: Any]
         } else { loadErr = r.err }
     }
 
@@ -417,6 +416,7 @@ private struct AccountSignedIn: View {
                 let o = ch.options[i]
                 Button(T("account.mergedChoice", o.name)) {
                     run("choice", { await Account.shared.choosePassword(o.site) }, ok: "account.mergedDone") { _ in
+                        if !Account.shared.signedIn { onSignedOut("account.mergedSignIn"); return }
                         Task { try? await Task.sleep(nanoseconds: 1_200_000_000); choice = nil }
                     }
                 }
@@ -716,20 +716,23 @@ private struct AccountSignedIn: View {
                 let site = pr["site"] as? String ?? "", name = pr["ad"] as? String ?? site
                 if Self.isSelf(pr) {
                     LabeledContent(name + " · " + A("productThis"), value: A("productOn"))
+                } else if pr["acik"] as? Bool ?? false {
+                    // Kapatma yok (5.21): açık üründe o ürünün hesap sayfasına bağlantı; hesap orada silinir
+                    if let adres = pr["hesap"] as? String, adres.hasPrefix("https://"), let url = URL(string: adres) { // merkezden (5.22)
+                        LabeledContent(name) {
+                            Button(A("productAccount")) { openURL(url) }.buttonStyle(.borderless).tint(Theme.accent)
+                        }
+                    } else {
+                        LabeledContent(name, value: A("productOn"))
+                    }
                 } else {
-                    Toggle(name, isOn: Binding(get: { pr["acik"] as? Bool ?? false }, set: { want in
-                        if want { askOpen = [site] } else { askClose = [site] }
-                    })).tint(Theme.accent)
+                    Toggle(name, isOn: Binding(get: { false }, set: { want in if want { askOpen = [site] } })).tint(Theme.accent)
                 }
             }
-            if !others.isEmpty {
+            if others.contains(where: { !($0["acik"] as? Bool ?? false) }) {
                 Button(A("openAll")) {
                     let s = others.filter { !($0["acik"] as? Bool ?? false) }.compactMap { $0["site"] as? String }
                     if !s.isEmpty { askOpen = s }
-                }
-                Button(A("closeAll")) {
-                    let s = others.filter { $0["acik"] as? Bool ?? false }.compactMap { $0["site"] as? String }
-                    if !s.isEmpty { askClose = s }
                 }
             }
             message("products")
@@ -744,16 +747,6 @@ private struct AccountSignedIn: View {
                 }
             }
             Button(A("cancel"), role: .cancel) { openPassword = "" }
-        }
-        .alert(T("account.confirmClose", (askClose ?? []).map { s in (products ?? []).first { $0["site"] as? String == s }?["ad"] as? String ?? s }
-            .joined(separator: ", ")), isPresented: Binding(get: { askClose != nil }, set: { if !$0 { askClose = nil } })) {
-            Button(A("close"), role: .destructive) {
-                let sites = askClose ?? []
-                run("products", { await Account.shared.closeProducts(sites) }, ok: "account.saved") { _ in
-                    Task { products = await Account.shared.products() }
-                }
-            }
-            Button(A("cancel"), role: .cancel) {}
         }
     }
 
@@ -792,14 +785,19 @@ private struct AccountSignedIn: View {
                 Text(A("deleteKept")).font(.footnote).foregroundStyle(Theme.muted)
             }
         } header: { Numbered(n: 10, title: A("delete")) }
+        if let pd = pending {
+            Section {
+                Text(T(pd["tur"] as? String == "hesap" ? "account.delPendingAccount" : "account.delPendingBadges", Self.longDate(pd["sonGun"])))
+                    .font(.subheadline.weight(.medium))
+                Text(A("delPending")).font(.footnote).foregroundStyle(Theme.muted)
+                Button(A("delCancel")) {
+                    run("delete", { await Account.shared.cancelDelete() }, ok: "account.delCancelled") { _ in pending = nil }
+                }
+                .tint(Theme.accent)
+            }
+        }
         Section {
             Text(A("deleteLead")).font(.subheadline)
-            Picker("", selection: $scopeAll) {
-                Text(A("deleteScopeProduct")).tag(false)
-                Text(A("deleteScopeAll")).tag(true)
-            }
-            .pickerStyle(.inline)
-            .labelsHidden()
             SecureField(A("deletePassword"), text: $deletePassword).textContentType(.password)
             Button { confirmDelete = true } label: {
                 Text(A("delete")).font(.headline).foregroundStyle(.white).frame(maxWidth: .infinity)
@@ -809,9 +807,10 @@ private struct AccountSignedIn: View {
         } footer: { Text(A("deviceKeeps")) }
         .confirmationDialog(A("deleteConfirm"), isPresented: $confirmDelete, titleVisibility: .visible) {
             Button(A("delete"), role: .destructive) {
-                let scope = scopeAll ? "hepsi" : "urun", pw = deletePassword
-                run("delete", { await Account.shared.delete(scope: scope, password: pw) }, ok: nil) { _ in
-                    deletePassword = ""; onSignedOut("account.deleted")
+                let pw = deletePassword
+                run("delete", { await Account.shared.delete(password: pw) }, ok: "account.delPending") { r in
+                    deletePassword = ""
+                    pending = Account.json(r.data)
                 }
             }
             Button(A("cancel"), role: .cancel) {}

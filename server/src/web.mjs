@@ -2,8 +2,9 @@
    sayfası; statik sitede bunlar üyelik sunucusunda). 19 dilde, iki temada, noindex. Sayfa iskeletini sunucu verir,
    işleri /varlik/hesap.js yapar (aynı kaynaktan JSON istekleri). Satır içi betik ve stil yok. */
 import { readFileSync } from "node:fs";
-import { LANGS, RTL, normLang, PRODUCT_NAME } from "./config.mjs";
+import { LANGS, RTL, normLang, PRODUCT_NAME, legalLinks } from "./config.mjs";
 import { readUnsubscribeToken, readChoiceToken } from "./mail.mjs";
+import { readModToken } from "./moderation.mjs";
 import { COUNTRIES, SOCIAL, VISIBLE_FIELDS, birthDateRange } from "./profile.mjs";
 
 export const UI = JSON.parse(readFileSync(new URL("../i18n/account.json", import.meta.url), "utf8"));
@@ -42,7 +43,7 @@ function pickLang(req, url, user) {
   return "en";
 }
 
-export function webRoutes({ cfg, closed, accounts, center, consent }) {
+export function webRoutes({ cfg, closed, accounts, center, consent, deletion, moderation }) {
   function page(res, { lang, title, body, data = {}, stats = true, theme = "system", status = 200 }) {
     const t = UI[lang];
     const dir = RTL.has(lang) ? "rtl" : "ltr";
@@ -56,8 +57,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
 <body><header class="top"><a class="brand" href="${esc(cfg.siteUrl)}${lang === "tr" ? "/" : `/${lang}/`}"><img src="/varlik/simge.svg" alt="" width="28" height="28"> ${PRODUCT_NAME}</a>
 <label class="lang"><span class="sr">${esc(t.language)}</span><select data-lang>${LANGS.map((l) => `<option value="${l}"${l === lang ? " selected" : ""}>${esc(LANG_NAMES[l])}</option>`).join("")}</select></label></header>
 <main id="main" class="wrap">${body}</main>
-<footer class="foot"><a href="${esc(legal(lang).notice)}" target="_blank" rel="noopener">${esc(t.notice)}</a> · <a href="${esc(legal(lang).terms)}" target="_blank" rel="noopener">${esc(t.terms)}</a> · <a href="${esc(deletionUrl(lang))}">${esc(t.deletionInfo)}</a>
-<a class="badge" href="https://bumbagroup.com/life" rel="noopener" title="${esc(ROZET[lang].title)}"><img class="only-light" src="https://bumbagroup.com/rozet/life.svg" width="164" height="28" alt="${esc(ROZET[lang].alt)}"><img class="only-dark" src="https://bumbagroup.com/rozet/life-koyu.svg" width="164" height="28" alt="${esc(ROZET[lang].alt)}"></a></footer>
+<footer class="foot"><a class="badge" href="https://bumbagroup.com/life" rel="noopener" title="${esc(ROZET[lang].title)}"><img class="only-light" src="https://bumbagroup.com/rozet/life.svg" width="164" height="28" alt="${esc(ROZET[lang].alt)}"><img class="only-dark" src="https://bumbagroup.com/rozet/life-koyu.svg" width="164" height="28" alt="${esc(ROZET[lang].alt)}"></a></footer>
 <div class="cookie" id="cookie-bar" role="region" aria-label="${esc(t.cbLabel)}" hidden><p>${esc(t.cbText)} <a href="https://bumbagroup.com/cerez-politikasi${lang === "tr" ? "" : "?dil=en"}" target="_blank" rel="noopener">${esc(data.cookie?.policy || "")}</a></p>
 <div class="row"><button type="button" data-cookie="accept">${esc(data.cookie?.accept)}</button><button type="button" data-cookie="reject">${esc(data.cookie?.reject)}</button><button type="button" data-cookie="prefs">${esc(data.cookie?.prefs)}</button></div></div>
 <dialog id="cookie-dialog"><h2>${esc(data.cookie?.title)}</h2><h3>${esc(data.cookie?.necessary)}</h3><p>${esc(t.cbNecessaryText)}</p>
@@ -67,8 +67,9 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
     res.writeHead(status, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "private, no-store", "Content-Security-Policy": CSP, "X-Frame-Options": "DENY" });
     res.end(html);
   }
-  const legal = (lang) => ({ notice: `https://bumbagroup.com/uyelik-aydinlatma${lang === "tr" ? "" : "?dil=en"}`, terms: `https://bumbagroup.com/uyelik-sozlesmesi${lang === "tr" ? "" : "?dil=en"}` });
-  const deletionUrl = (lang) => `${cfg.siteUrl}${lang === "tr" ? "/hesap-silme/" : `/${lang}/account-deletion/`}`;
+  /* Standart 5.23: kayıt ve giriş ekranında ortak metinlere ya da hesap silme sayfasına ayrı bağlantı satırı yok
+     (bağlantılar yalnız onay cümlesinin içinde); hesap sayfasında her sekmenin altında ortak metinler (legalP). */
+  const legal = legalLinks;
   const cookieTexts = (lang) => COOKIE[lang] || COOKIE.en;
 
   const fill = (str, v) => String(str).replace(/\{(\w+)\}/g, (_, n) => (v[n] != null ? v[n] : ""));
@@ -79,6 +80,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
     for await (const ch of req) { n += ch.length; if (n > 8192) break; chunks.push(ch); }
     return new URLSearchParams(Buffer.concat(chunks).toString("utf8"));
   }
+  const fmtDay = (lang, iso) => { try { return new Intl.DateTimeFormat(`${lang === "zh" ? "zh-CN" : lang}-u-nu-latn`, { dateStyle: "long", timeZone: "UTC" }).format(new Date(iso)); } catch { return String(iso).slice(0, 10); } };
   const shell = (inner) => `<section class="card">${inner}</section>`;
   const msg = (text, kind = "") => `<p class="msg ${kind}" role="status">${esc(text)}</p>`;
 
@@ -90,8 +92,8 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
       res.end(readFileSync(file));
       return true;
     }
-    const pages = ["/", "/giris", "/kayit", "/sifre", "/dogrulandi", "/hesap", "/hesap/rozetler", "/kutlama", "/sifre-sec", "/hata-bildir"];
-    if (!pages.includes(p) || !["GET", "POST"].includes(req.method) || (req.method === "POST" && p !== "/kutlama" && p !== "/sifre-sec")) return false;
+    const pages = ["/", "/giris", "/kayit", "/sifre", "/dogrulandi", "/hesap", "/hesap/rozetler", "/kutlama", "/sifre-sec", "/hata-bildir", "/silme-onay", "/topluluk-kurallari", "/moderasyon"];
+    if (!pages.includes(p) || !["GET", "POST"].includes(req.method) || (req.method === "POST" && !["/kutlama", "/sifre-sec", "/silme-onay", "/moderasyon"].includes(p))) return false;
     // Rozetler ve kayıtlar artık hesap sayfasının sekmesi (madde 7: kullanım verisi ayrı sayfaya konmaz)
     if (p === "/hesap/rozetler") {
       const l = url.searchParams.get("dil");
@@ -135,7 +137,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
       return true;
     }
     if (p === "/giris") {
-      page(res, { ...base, title: t.signIn, data: { ...base.data, donus }, body: shell(`<h1>${esc(t.signIn)}</h1><p class="muted">${esc(t.intro)}</p>
+      page(res, { ...base, title: t.signIn, data: { ...base.data, donus }, body: shell(`<h1>${esc(t.signIn)}</h1><p class="muted">${esc(t.intro)}</p>${url.searchParams.get("secildi") === "1" ? msg(t.mergedSignIn, "ok") : ""}
 <form data-form="signin" novalidate><label>${esc(t.email)}<input type="email" name="email" autocomplete="username" required></label>
 <label>${esc(t.password)}<input type="password" name="password" autocomplete="current-password" required></label>
 <div data-msg></div><button type="submit" class="primary">${esc(t.signIn)}</button></form>
@@ -152,7 +154,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent }) {
 <div data-msg></div><button type="submit" class="primary">${esc(t.signUp)}</button><p class="consent">${linkify(consent ? consent.get(lang).metin : t.consent)}</p></div></form>
 <form data-form="link" hidden novalidate><h2>${esc(t.bumbaSignIn)}</h2><p class="muted">${esc(t.bumbaNote)}</p><label>${esc(t.email)}<input type="email" name="email" autocomplete="username" readonly></label>
 <label>${esc(t.password)}<input type="password" name="password" autocomplete="current-password" required></label><div data-msg></div><button type="submit" class="primary">${esc(t.signIn)}</button>
-<p><a href="/giris?dil=${lang}">${esc(t.forgot)}</a></p></form>
+<p><button type="button" class="link" data-link-forgot>${esc(t.forgot)}</button></p></form>
 <div data-done hidden>${msg(t.signedUp, "ok")}<button type="button" data-resend>${esc(t.resend)}</button></div>
 <p class="muted">${esc(t.haveAccount)} <a href="/giris?dil=${lang}">${esc(t.signIn)}</a></p>`) });
       return true;
@@ -213,6 +215,54 @@ ${token ? `<form data-form="reset" novalidate><label>${esc(t.newPassword)}<input
 <p class="muted">${esc(t.mergedNote)}</p>`) });
       return true;
     }
+    // Silme onayı (standart 5.21): e-postadaki bağlantı giriş istemez; açmak silmez, "Onaylıyorum" (POST) siler
+    // Topluluk kuralları (halkalar ve gruplar; Apple 1.2): uygulamalardaki kurma ve katılma ekranları buraya bağlanır
+    if (p === "/topluluk-kurallari") {
+      const items = ["rules1", "rules2", "rules3", "rules4"].map((k) => `<li>${esc(t[k])}</li>`).join("");
+      page(res, { ...base, title: t.rulesTitle, body: shell(`<h1>${esc(t.rulesTitle)}</h1><p>${esc(t.rulesLead)}</p><ul>${items}</ul><p class="muted">${esc(t.rulesAgree)}</p>`) });
+      return true;
+    }
+    // Yönetici sayfası (moderation.mjs): bildirim e-postasındaki imzalı bağlantı. Türkçe, dizine girmez; açmak bir şey
+    // yapmaz, işlemler POST ile.
+    if (p === "/moderasyon") {
+      const form = req.method === "POST" ? await readForm(req) : null;
+      const k = String((form ? form.get("k") : url.searchParams.get("k")) || "");
+      const spec = readModToken(cfg.secret, k);
+      const out = (inner) => page(res, { ...base, lang: "tr", stats: false, title: "Bildirim", body: shell(`<h1>Bildirim</h1>${inner}`) });
+      if (!spec || !moderation) { out(msg("Bağlantı geçersiz ya da süresi dolmuş.", "err")); return true; }
+      let done = "";
+      if (form) {
+        const op = form.get("islem");
+        if (op === "gizle") { await moderation.hide(spec); done = "İçerik gizlendi."; }
+        else if (op === "uzaklastir") { await moderation.ban(spec); done = "İçerik gizlendi, kişi bütün halka ve gruplardan çıkarıldı ve yenisine katılamaz."; }
+        else if (op === "geri") { await moderation.unban(spec); done = "Uzaklaştırma kaldırıldı."; }
+      }
+      const st = await moderation.look(spec);
+      const what = spec.h === "ad" ? (spec.s === "halka" ? "Halka adı" : "Grup adı") : spec.h.startsWith("istek:") ? "Alarm isteğinin etiketi" : "Üyenin görünen adı";
+      const btn = (op, label, cls = "") => `<form method="post" action="/moderasyon"><input type="hidden" name="k" value="${esc(k)}"><input type="hidden" name="islem" value="${op}"><button type="submit"${cls ? ` class="${cls}"` : ""}>${esc(label)}</button></form>`;
+      const state = st.var ? `<p><strong>${esc(what)}:</strong> ${esc(st.metin)}</p><p class="muted">${st.gizli ? "Şu an gizli." : "Şu an görünüyor."}</p>` : `<p class="muted">İçerik artık yok (silinmiş ya da kişi ayrılmış).</p>`;
+      const banState = spec.u ? `<p class="muted">${st.uzaklastirildi ? "Yazan kişi topluluktan uzaklaştırılmış." : "Yazan kişi uzaklaştırılmamış."}</p>` : "";
+      const actions = [st.var && !st.gizli ? btn("gizle", "İçeriği gizle") : "", spec.u && !st.uzaklastirildi ? btn("uzaklastir", "Gizle ve kişiyi topluluktan uzaklaştır", "danger") : "", st.uzaklastirildi ? btn("geri", "Uzaklaştırmayı kaldır") : ""].join("");
+      out(`${done ? msg(done, "ok") : ""}<p class="muted">${spec.s === "halka" ? "Halka" : "Grup"}: ${esc(spec.id)}</p>${state}${banState}<div class="row">${actions}</div>`);
+      return true;
+    }
+    if (p === "/silme-onay") {
+      const k = req.method === "POST" ? String((await readForm(req)).get("k") || "") : String(url.searchParams.get("k") || "");
+      const toSite = `<p><a class="button" href="${esc(cfg.siteUrl)}${lang === "tr" ? "/" : `/${lang}/`}">${esc(t.toSite)}</a></p>`;
+      const out = (inner) => page(res, { ...base, stats: false, title: t.delConfirmTitle, body: shell(`<h1>${esc(t.delConfirmTitle)}</h1>${inner}`) });
+      if (req.method === "POST") {
+        const kind = await deletion.confirm(k);
+        out(kind ? `${msg(kind === "hesap" ? t.deleted : t.delBadgesDone, "ok")}${toSite}` : `${msg(t.delLinkBad, "err")}${toSite}`);
+        return true;
+      }
+      const r = await deletion.peek(k);
+      if (!r) { out(`${msg(t.delLinkBad, "err")}${toSite}`); return true; }
+      const what = r.tur === "hesap" ? t.delConfirmAccount : t.delConfirmBadges;
+      out(`<p>${esc(what)}</p><p class="muted">${esc(fill(t.delConfirmUntil, { tarih: fmtDay(lang, r.sonGun) }))}</p>
+<form method="post" action="/silme-onay?dil=${lang}" class="danger-zone"><input type="hidden" name="k" value="${esc(k)}"><button type="submit" class="danger">${esc(t.delConfirmButton)}</button></form>
+<p class="muted">${esc(t.delConfirmIgnore)}</p>`);
+      return true;
+    }
     if (p === "/hesap") {
       const range = birthDateRange();
       const sec = (id, n, title, inner) => `<section class="card" id="${id}" aria-labelledby="${id}-h"><h3 id="${id}-h"><span class="num">${n}</span> ${esc(title)}</h3>${inner}</section>`;
@@ -257,11 +307,12 @@ ${sec("epostalar", 6, t.emails, `<form data-form="emails" novalidate><label clas
 <h4>${esc(t.list)}</h4><p class="muted">${esc(t.listNote)}</p><p><a href="${esc(cfg.siteUrl)}${lang === "tr" ? "/" : `/${lang}/`}#liste-form">${esc(t.listJoin)}</a></p>`)}
 `)}
 ${panel("uyelikler", `${sec("uyelik", 8, t.membership, `<dl class="facts"><dt>${esc(t.memberNo)}</dt><dd data-no></dd><dt>${esc(t.memberSince)}</dt><dd data-since></dd></dl>
-<h4>${esc(t.products)}</h4><p class="muted">${esc(t.productsNote)}</p><ul class="list" data-products></ul><div class="row"><button type="button" data-open-all>${esc(t.openAll)}</button><button type="button" data-close-all>${esc(t.closeAll)}</button></div><div data-msg-products></div>`)}
+<h4>${esc(t.products)}</h4><p class="muted">${esc(t.productsNote)}</p><ul class="list" data-products></ul><div class="row"><button type="button" data-open-all>${esc(t.openAll)}</button></div><div data-msg-products></div>`)}
 `)}
 ${panel("veri", `${sec("verilerim", 9, t.download, `<p class="muted">${esc(t.downloadNote)}</p><a class="button" href="/v1/verilerim" download>${esc(t.download)}</a>`)}
 ${sec("sil", 10, t.delete, `<p><a href="/hesap?sekme=veri&amp;dil=${lang}#verilerim" data-goto="verilerim">${esc(t.deleteDownloadFirst)}</a></p><h4>${esc(t.deleteKeptTitle)}</h4><p class="muted">${esc(t.deleteKept)}</p>
-<form data-form="delete" class="danger-zone" novalidate><p>${esc(t.deleteLead)}</p><fieldset><label class="check"><input type="radio" name="kapsam" value="urun" checked> ${esc(t.deleteScopeProduct)}</label><label class="check"><input type="radio" name="kapsam" value="hepsi"> ${esc(t.deleteScopeAll)}</label></fieldset>
+<div class="card pending" data-delete-pending hidden><p data-delete-pending-text></p><p class="muted">${esc(t.delPending)}</p><button type="button" data-delete-cancel>${esc(t.delCancel)}</button></div>
+<form data-form="delete" class="danger-zone" novalidate><p>${esc(t.deleteLead)}</p>
 <label>${esc(t.deletePassword)}<input type="password" name="password" autocomplete="current-password"></label><div data-msg></div><button type="submit" class="danger">${esc(t.delete)}</button></form>`)}
 `)}
 ${panel("rozetler", `<section class="card" id="rozetler"><h3>${esc(t.badgesTitle)}</h3><p class="muted">${esc(t.badgesNote)}</p><div data-badges></div></section><section class="card" id="kayitlar"><h3>${esc(t.recordsTitle)}</h3><p class="muted">${esc(t.recordsNote)}</p><div data-records></div></section>`)}

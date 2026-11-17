@@ -14,6 +14,7 @@ import { createMetrics } from "./metrics.mjs";
 import { runCleanup } from "./cleanup.mjs";
 import { runCelebrations } from "./celebrate.mjs";
 import { createCenter } from "./center.mjs";
+import { createRelay } from "./relay.mjs";
 import { createAccounts, profileOf } from "./accounts.mjs";
 import { createRecords } from "./records.mjs";
 import { linkedRoutes } from "./linked.mjs";
@@ -26,6 +27,8 @@ import { createConsent } from "./consent.mjs";
 import { validateFeedback, feedbackMail } from "./feedback.mjs";
 import { createCircles } from "./circles.mjs";
 import { createGroups } from "./groups.mjs";
+import { createModeration, modToken } from "./moderation.mjs";
+import { createDeletion } from "./deletion.mjs";
 
 const SEC_HEADERS = {
   "Strict-Transport-Security": "max-age=31536000",
@@ -73,7 +76,10 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
   // Kayıttaki onay cümlesi merkezden (standart 5.20); testlerde sahte merkez
   const consent = createConsent({ url: `${cfg.centerUrl}/onay-cumlesi`, fetchImpl: fetchImpl || fetch });
   consent.start();
-  const options = authOptions(cfg, pool, mailer, center);
+  // Merkeze iletim; ulaşılamazsa bırakılmaz, 10 dakikada bir yeniden denenir (5.22)
+  let accounts = null;
+  const relay = createRelay({ pool, center, accounts: () => accounts });
+  const options = authOptions(cfg, pool, mailer, center, relay);
   await migrate(options, pool);
   const auth = betterAuth(options);
   // Yönetici hesabı (madde 10): sabit bilgilerdeki adres, görünen adı "admin". Üye değildir: kayıt sayfasından açılamaz,
@@ -81,29 +87,46 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
   await ensureAdmin(auth, pool, cfg.adminEmail);
   const metrics = createMetrics(pool);
   const authHandler = toNodeHandler(auth);
-  const accounts = createAccounts({ pool, auth });
+  accounts = createAccounts({ pool, auth });
+  if (!cfg.noTimers) relay.start();
   const records = createRecords(pool);
-  const circles = createCircles({ pool, mailer, adminEmail: cfg.adminEmail });
-  const groups = createGroups({ pool, mailer, adminEmail: cfg.adminEmail });
+  // Bildirim e-postasındaki yönetici bağlantısı (moderation.mjs; Apple 1.2: içeriği kaldırma, yazanı uzaklaştırma)
+  const modLink = (spec) => `${cfg.publicUrl}/moderasyon?k=${modToken(cfg.secret, spec)}`;
+  const circles = createCircles({ pool, mailer, adminEmail: cfg.adminEmail, modLink });
+  const groups = createGroups({ pool, mailer, adminEmail: cfg.adminEmail, modLink });
+  const moderation = createModeration({ pool, circles, groups });
   accounts.hooks.beforeGone = async (userId) => { await circles.onUserGone(userId); await groups.onUserGone(userId); };
   const limit = createLimiter(pool, cfg.rateLimit);
   const linked = linkedRoutes({ cfg, auth, accounts, mailer, json, readJson });
-  const web = webRoutes({ cfg, closed: false, accounts, center, consent });
-  const panel = panelRoutes({ cfg, pool, accounts, records, mailer, metrics, json, readJson });
+  // Silme onayı (standart 5.21): onaydan sonraki asıl işlem ve bilgilendirme e-postası
+  // Silme yalnız Saat Tarih'teki hesabı siler (5.21: bütün ürünlerden birden silme ve merkezin `sil` ucu kalktı)
+  async function performDeletion(user, kind) {
+    if (kind === "rozetler") {
+      await records.clearBadges(user.id);
+      await mailer.send("dataDeleted", user.email, user.lang, {}).catch(() => {});
+      return;
+    }
+    if (user.uyeNo != null) await tell("ayril", { uyeNo: Number(user.uyeNo) });
+    await accounts.deleteLocal(user.id);
+    await mailer.send("deleted", user.email, user.lang, {}).catch(() => {});
+  }
+  const deletion = createDeletion({ pool, mailer, publicUrl: cfg.publicUrl, perform: performDeletion, normLang });
+  const web = webRoutes({ cfg, closed: false, accounts, center, consent, deletion, moderation });
+  const panel = panelRoutes({ cfg, pool, accounts, records, mailer, metrics, relay, json, readJson });
   const ctxP = auth.$context;
 
   const session = (req) => auth.api.getSession({ headers: fromNodeHeaders(req.headers) }).catch(() => null);
-  const queue = (op, body) => pool.query(`insert into center_retry (op, body) values ($1, $2)`, [op, JSON.stringify(body)]);
-  /* Ortak servise iletim; ulaşılamazsa temizlik görevinde yeniden denenir */
-  async function tell(op, body) {
-    const r = await center.call(op, body);
-    if (!r.ok && (r.status === 0 || r.status >= 500 || r.status === 429)) await queue(op, body);
-    return r;
-  }
+  const tell = relay.tell;
   async function verifyPassword(userId, password) {
     const hash = await accounts.passwordHash(userId);
     if (!hash) return false;
     return (await ctxP).password.verify({ hash, password: String(password || "") }).catch(() => false);
+  }
+  /* Silme isteği: şifre ya da son 24 saatte açılmış oturum (şifre yazıldıysa doğru olmalı) */
+  async function deleteAllowed(s, user, sifre) {
+    const fresh = Date.now() - new Date(s.session.createdAt).getTime() < 24 * 3600 * 1000;
+    if (sifre) return verifyPassword(user.id, sifre);
+    return fresh;
   }
   /* Tarayıcıdan çerezle gelen değiştirici isteklerde başka siteden gönderim engellenir (uygulamalar Origin göndermez) */
   const sameOrigin = (req) => {
@@ -122,6 +145,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       dil: user.lang, tema: user.theme || "system", saatDilimi: user.timeZone || null,
       kutlama: user.celebrate !== false,
       profil: await profileView(user),
+      silmeIstegi: await deletion.pending(user.id),
     };
   }
 
@@ -135,6 +159,8 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     const no = Number(d.yeniNo);
     if (Number.isInteger(no) && no !== Number(user.uyeNo)) await (await accounts.ia()).updateUser(user.id, { uyeNo: no, updatedAt: new Date() });
     if (d.hesap?.profil) await accounts.writeProfile(user.id, d.hesap.profil);
+    // Ana ürün bilgisi yalnız bu yanıttadır (merkez birleşmeyi başlatan ürüne ayrıca guncelle göndermez)
+    if (typeof d.hesap?.anaUrun === "boolean") await accounts.applyChange(user, { anaUrun: d.hesap.anaUrun });
   }
 
   async function api(req, res, p, url) {
@@ -147,7 +173,26 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json(res, 400, { hata: "eposta" });
       if (await accounts.userByEmail(email)) return json(res, 200, { durum: "yok" });
       const q = await center.sorgula(email);
+      // Ortak servis cevap vermezse kayıt açılmaz (5.22); ekran "birkaç dakika sonra yeniden deneyin" der
+      if (cfg.centerKey && !q.ok) return json(res, 503, { hata: "merkez" });
       return json(res, 200, { durum: q.ok && q.data?.durum === "var" ? "var" : "yok" });
+    }
+    // Bağlı üyelik sorusundaki giriş ekranında "Şifremi unuttum" (5.22): üyenin burada hesabı yok; bağlantıyı merkez
+    // gönderir, yeni şifre bumbagroup.com'da belirlenir ve bağlı bütün ürünlere geçer. Hesap burada açıksa (409
+    // `burada-acik`) kendi sıfırlamamız. Yanıt hesabın varlığını ele vermez.
+    if (p === "/v1/uyelik/sifirla-iste" && m === "POST") {
+      if (!(await limit(`sifirla-iste:${ipOf(req)}`, 300, 3))) return json(res, 429, { hata: "sinir" });
+      if (!sameOrigin(req)) return json(res, 403, { hata: "kaynak" });
+      const b = await readJson(req);
+      const email = String(b.eposta || "").trim().toLowerCase();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json(res, 400, { hata: "eposta" });
+      const own = () => auth.api.requestPasswordReset({ body: { email } }).catch(() => null);
+      if (await accounts.userByEmail(email)) { await own(); return json(res, 200, { tamam: true }); }
+      const r = await center.call("sifirla-iste", { eposta: email, dil: normLang(b.dil) });
+      if (r.status === 409) { await own(); return json(res, 200, { tamam: true }); }
+      if (r.status === 429) return json(res, 429, { hata: "sinir" });
+      if (!r.ok) return json(res, 503, { hata: "merkez" });
+      return json(res, 200, { tamam: true });
     }
     // "Evet"ten sonra giriş: ortak servis şifreyi doğrular, hesap burada açılır, oturum Better Auth'un girişiyle
     if (p === "/v1/uyelik/bagla" && m === "POST") {
@@ -185,7 +230,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       if (!(await limit(`fb:${ipOf(req)}`, 3600, 5)) || !(await limit("fb:hepsi", 86400, 300))) return json(res, 429, { hata: "sinir" });
       const mail = feedbackMail(f, cfg.siteUrl);
       try {
-        await mailer.sendRaw({ to: cfg.adminEmail || "bilgi@bumbagroup.com", ...mail });
+        await mailer.sendRaw({ to: cfg.adminEmail, ...mail });
       } catch {
         return json(res, 503, { hata: "gonderilemedi" });
       }
@@ -271,7 +316,10 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       const r = await center.sifreSec(Number(user.uyeNo), String(b.site));
       if (r.status === 404) return json(res, 404, { hata: "secim-yok" });
       if (!r.ok) return json(res, 503, { hata: "merkez" });
-      return json(res, 200, { tamam: true });
+      // Başka ürünün şifresi seçildiyse merkezin guncelle'si buradaki özeti değiştirir ve oturumlar kapanır:
+      // istemci hata yerine "seçtiğiniz şifreyle yeniden girin" iletisiyle giriş ekranına gider
+      const still = await session(req);
+      return json(res, 200, still?.user ? { tamam: true } : { tamam: true, yenidenGiris: true });
     }
     if (p === "/v1/uyelik/urunler" && m === "GET") {
       const r = await center.urunler(Number(user.uyeNo));
@@ -286,12 +334,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       if (!r.ok) return json(res, 503, { hata: "merkez" });
       return json(res, 200, r.data);
     }
-    if (p === "/v1/uyelik/kapat" && m === "POST") {
-      const b = await readJson(req);
-      const r = await center.kapat(Number(user.uyeNo), Array.isArray(b.hedefler) ? b.hedefler : []);
-      if (!r.ok) return json(res, 503, { hata: "merkez" });
-      return json(res, 200, r.data);
-    }
+    // "Öbür Bumba ürünlerinde üyeliğim"de kapatma yok (5.21): başka üründeki hesap o ürünün hesap sayfasından silinir
     if (p === "/v1/kayitlar" && m === "GET") return json(res, 200, { kayitlar: await records.list(user.id, url.searchParams.get("since")), simdi: Date.now() });
     if (p === "/v1/kayitlar" && m === "POST") {
       const b = await readJson(req, 6 * 1024 * 1024);
@@ -303,10 +346,15 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       const b = await readJson(req);
       return json(res, 200, { rozetler: await records.addBadges(user.id, b.rozetler) });
     }
+    // Rozetleri silme de onaylıdır (standart 5.21): istek + e-postadaki bağlantı
     if (p === "/v1/rozetler/sil" && m === "POST") {
-      await records.clearBadges(user.id);
-      return json(res, 200, { rozetler: [] });
+      const b = await readJson(req);
+      if (!(await deleteAllowed(s, user, b.sifre))) return json(res, 401, { hata: "sifre" });
+      if (!(await limit(`silme:${user.id}`, 3600, 5))) return json(res, 429, { hata: "sinir" });
+      return json(res, 200, { bekliyor: true, istek: await deletion.request(user, "rozetler") });
     }
+    if (p === "/v1/silme-istegi" && m === "GET") return json(res, 200, { istek: await deletion.pending(user.id) }, { "Cache-Control": "private, no-store" });
+    if (p === "/v1/silme-istegi/iptal" && m === "POST") return json(res, 200, { iptal: await deletion.cancel(user.id) });
     // Verilerimi indir (KVKK md. 11): hesap, profil (fotoğraf dahil), onay kaydı, oturumlar (IP yok), kayıtlar, rozetler
     if (p === "/v1/verilerim" && m === "GET") {
       const ss = await pool.query(`select "createdAt", "updatedAt", "expiresAt", "userAgent", client from session where "userId" = $1 order by "createdAt"`, [user.id]);
@@ -322,17 +370,13 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       };
       return json(res, 200, data, { "Content-Disposition": 'attachment; filename="saat-tarih-hesap.json"' });
     }
-    // Hesabı sil: şifre ya da son 24 saatte açılmış oturum; "urun" yalnız Saat Tarih'ten, "hepsi" bütün Bumba ürünlerinden
+    // Hesabı sil (madde 7, "Silme onayı"): şifre ya da son 24 saatte açılmış oturum; hemen silinmez, e-postadaki
+    // bağlantıyla onaylanınca silinir. Yalnız Saat Tarih'teki hesap silinir; öbür Bumba ürünlerindeki hesaplar kalır.
     if (p === "/v1/hesap/sil" && m === "POST") {
       const b = await readJson(req);
-      const fresh = Date.now() - new Date(s.session.createdAt).getTime() < 24 * 3600 * 1000;
-      if (!fresh && !(await verifyPassword(user.id, b.sifre))) return json(res, 401, { hata: "sifre" });
-      if (b.sifre && !(await verifyPassword(user.id, b.sifre))) return json(res, 401, { hata: "sifre" });
-      const all = b.kapsam === "hepsi";
-      if (user.uyeNo != null) await tell(all ? "sil" : "ayril", { uyeNo: Number(user.uyeNo) });
-      await accounts.deleteLocal(user.id);
-      await mailer.send(all ? "deletedAll" : "deleted", user.email, user.lang, {}).catch(() => {});
-      return json(res, 200, { silindi: true });
+      if (!(await deleteAllowed(s, user, b.sifre))) return json(res, 401, { hata: "sifre" });
+      if (!(await limit(`silme:${user.id}`, 3600, 5))) return json(res, 429, { hata: "sinir" });
+      return json(res, 200, { bekliyor: true, istek: await deletion.request(user, "hesap") });
     }
     // Ortak zikir ve hatim halkaları (üyelik aşama 2; circles.mjs). Kişi başına dakikada 120 istek.
     if (cfg.circles && (p === "/v1/halkalar" || p.startsWith("/v1/halka"))) {
@@ -440,9 +484,10 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     // Zamanlanmış görevler (CRON_SECRET'la; görevleri ana altyapı oturumu kurar)
     if (p === "/gorev/temizlik" && req.method === "POST") {
       if (!bearerOk(req.headers.authorization, cfg.cronSecret)) return json(res, 401, { hata: "yetki" });
-      const out = await runCleanup({ pool, center, adminEmail: cfg.adminEmail });
+      const out = await runCleanup({ pool, center, relay, adminEmail: cfg.adminEmail });
       out.halkalar = await circles.cleanup();
       out.gruplar = await groups.cleanup();
+      out.silmeIstekleri = await deletion.cleanup();
       return json(res, 200, out);
     }
     if (p === "/gorev/kutlama" && req.method === "POST") {
@@ -487,9 +532,10 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     await metrics.flush();
     metrics.stop();
     consent.stop();
+    relay.stop();
     await pool.end();
   }
-  return { server, auth, pool, mailer, center, metrics, accounts, records, consent, circles, groups, close };
+  return { server, auth, pool, mailer, center, relay, metrics, accounts, records, consent, circles, groups, close };
 }
 
 /* Doğrudan çalıştırma */

@@ -3,11 +3,11 @@
    - 7 gün içinde doğrulanmayan hesap silinir (ortak servise `ayril`; e-posta gönderilmez);
    - e-postası doğrulanmış ama Bumba üye numarası eksik hesaplar numarasını `kayit`'tan alır (yönetici hesabı hariç:
      üye değildir, merkez çağrılmaz);
-   - ortak servise ulaşılamadığı için bekleyen bildirimler yeniden gönderilir.
+   - ortak servise ulaşılamadığı için bekleyen bildirimlerin zamanı gelenler de denenir (asıl görev relay.mjs, 10 dakikada bir).
    Kullanılmayan hesap silinmez. */
 export const RETENTION = { unverifiedDays: 7 };
 
-export async function runCleanup({ pool, center, adminEmail = "", now = new Date() }) {
+export async function runCleanup({ pool, center, relay, adminEmail = "", now = new Date() }) {
   const out = { sessions: 0, verifications: 0, rateLimits: 0, unverified: 0, numbers: 0, retried: 0 };
   out.sessions = (await pool.query(`delete from session where "expiresAt" < $1`, [now])).rowCount;
   out.verifications = (await pool.query(`delete from verification where "expiresAt" < $1`, [now])).rowCount;
@@ -20,7 +20,7 @@ export async function runCleanup({ pool, center, adminEmail = "", now = new Date
     [now, RETENTION.unverifiedDays],
   );
   for (const u of old.rows) {
-    if (u.uyeNo != null) await center.ayril(Number(u.uyeNo));
+    if (u.uyeNo != null) await relay.tell("ayril", { uyeNo: Number(u.uyeNo) });
     await pool.query(`delete from "user" where id = $1`, [u.id]);
     out.unverified++;
   }
@@ -34,18 +34,6 @@ export async function runCleanup({ pool, center, adminEmail = "", now = new Date
     }
   }
 
-  const retry = await pool.query(`select id, op, body, tries from center_retry order by id limit 500`);
-  for (const r of retry.rows) {
-    const res = await center.call(r.op, r.body);
-    if (res.ok || (res.status >= 400 && res.status < 500 && res.status !== 429)) {
-      await pool.query(`delete from center_retry where id = $1`, [r.id]);
-      if (res.ok) out.retried++;
-    } else if (r.tries >= 30) {
-      console.error(`[merkez] ${r.op}: 30 denemede iletilemedi`);
-      await pool.query(`delete from center_retry where id = $1`, [r.id]);
-    } else {
-      await pool.query(`update center_retry set tries = tries + 1 where id = $1`, [r.id]);
-    }
-  }
+  out.retried = (await relay.run(now)).sent;
   return out;
 }

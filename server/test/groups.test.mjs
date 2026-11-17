@@ -3,7 +3,7 @@
    verilerimi indir, temizlik. */
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
-import { start, signUpVerified, CRON } from "./helpers.mjs";
+import { start, signUpVerified, deleteAccount, CRON } from "./helpers.mjs";
 import { cellOf, validTz } from "../src/groups.mjs";
 
 let t;
@@ -159,7 +159,7 @@ test("bildir üç kişide adı gizler; hesap silinince kurucu devri; tek başın
   assert.match(t.outbox.filter((m) => m.kind === "raw").at(-1).subject, /grup bildirimi/);
   r = await api("ali", `/v1/grup/${g.id}`);
   assert.equal(r.json.ad, null);
-  r = await t.req("/v1/hesap/sil", { method: "POST", token: tok.deniz, body: { kapsam: "urun" } });
+  r = await deleteAccount(t, tok.deniz, "deniz@example.com");
   assert.equal(r.status, 200);
   r = await api("ayse", `/v1/grup/${g.id}`);
   assert.equal(r.json.sahip, true);

@@ -403,7 +403,7 @@
         "h": "Mitgliedschaft",
         "p": [
           "Für Saat Tarih brauchen Sie kein Konto. Wenn Sie möchten, können Sie auf der Website (hesap.time.bumba.tr) und in den Apps mit Ihrer E-Mail-Adresse und einem Passwort eine Bumba-Mitgliedschaft anlegen; dieselbe Mitgliedschaft gilt auch in anderen Bumba-Produkten.",
-          "Welche Daten die Mitgliedschaft wofür verarbeitet, wo sie gespeichert werden und welche Rechte Sie haben, steht in der gemeinsamen [Datenschutzerklärung zur Bumba-Mitgliedschaft](https://bumbagroup.com/uyelik-aydinlatma?dil=en); die Regeln stehen in den [Mitgliedschaftsbedingungen](https://bumbagroup.com/uyelik-sozlesmesi?dil=en). Sie können Ihr Konto jederzeit löschen: [Konto löschen]({deleteUrl}).",
+          "Welche Daten die Mitgliedschaft wofür verarbeitet, wo sie gespeichert werden und welche Rechte Sie haben, steht in der gemeinsamen [Datenschutzerklärung zur Bumba-Mitgliedschaft](https://bumbagroup.com/en/uyelik-aydinlatma); die Regeln stehen in den [Mitgliedschaftsbedingungen](https://bumbagroup.com/en/uyelik-sozlesmesi). Sie können Ihr Konto jederzeit löschen: [Konto löschen]({deleteUrl}).",
           "**Kreise** in den Apps (gemeinsamer Dhikr und Khatm) erfordern eine Mitgliedschaft und funktionieren, da sie Rückschlüsse auf Ihre religiöse Überzeugung zulassen können, nur mit Ihrer gesonderten ausdrücklichen Einwilligung (KVKK Art. 6; DSGVO Art. 9 Abs. 2 lit. a). Name des Kreises, Ihre Mitgliedschaft, Ihr Anzeigename, die von Ihnen hinzugefügten Dhikr-Zahlen und die übernommenen oder beendeten Dschuz sind nur für die Mitglieder dieses Kreises sichtbar; sie sind nicht öffentlich, werden nicht verkauft und nicht für Werbung genutzt. Wenn Sie einen Kreis verlassen, bleibt Ihr Beitrag ohne Namen erhalten. Sie können Ihre Einwilligung in der App jederzeit widerrufen; dann verlassen Sie alle Kreise.",
           "**Gruppen** (gemeinsamer Countdown, Weltuhr, Terminumfrage, Fokusraum, Weckervorschlag, Himmelsbeobachtung) erfordern ebenfalls eine Mitgliedschaft. Gruppenname, Ihre Mitgliedschaft, Ihr Anzeigename und was Sie in der Gruppe eintragen (geteilte Stadt und Zeitzone, Ihre Stimmen, Fokussitzungen, Weckervorschläge, abgehakte Himmelsereignisse) sind nur für die Mitglieder der Gruppe sichtbar. Ein Weckervorschlag wird nie ohne Ihre Zustimmung auf Ihrem Telefon gestellt. **Wettermeldungen** werden anderen nicht mit Ihrer Identität gezeigt: Ihr Standort wird auf eine Zelle von etwa 25 km gerundet, die Meldung nach 24 Stunden gelöscht. Rechtsgrundlage: Erfüllung des Mitgliedschaftsvertrags (KVKK Art. 5 Abs. 2 lit. c; DSGVO Art. 6 Abs. 1 lit. b). Sie können eine Gruppe verlassen und Personen melden oder blockieren; mit dem Löschen Ihres Kontos wird all dies gelöscht."
         ]
@@ -3438,45 +3438,6 @@
       {
         "q": "Ist Rahu Kaal überall zur selben Zeit?",
         "a": "Nein. Er wird aus dem örtlichen Sonnenauf- und -untergang berechnet und ändert sich daher von Stadt zu Stadt und mit den Jahreszeiten. Diese Seite rechnet für den gewählten Ort."
-      }
-    ]
-  },
-  "account": {
-    "delTitle": "Konto löschen | Saat Tarih",
-    "delDesc": "So löschen Sie Ihr Saat-Tarih-Konto auf der Website oder in den Apps für iPhone und Android, und was gelöscht wird.",
-    "delH1": "Ihr Konto löschen",
-    "delLead": "Ein Konto ist bei Saat Tarih freiwillig und kann jederzeit gelöscht werden. Die Löschung beginnt sofort und ist spätestens nach 7 Tagen abgeschlossen.",
-    "delSections": [
-      {
-        "h": "Auf der Website oder in der App löschen",
-        "ul": [
-          "Melden Sie sich auf **hesap.time.bumba.tr** an oder öffnen Sie in der App **Einstellungen › Konto**.",
-          "Wählen Sie unter **Konto löschen**: **Nur aus Saat Tarih** oder **Aus allen Bumba-Produkten**.",
-          "Geben Sie Ihr Passwort ein (nicht nötig, wenn Sie sich in den letzten 24 Stunden angemeldet haben) und bestätigen Sie.",
-          "Die Löschung beginnt sofort und ist spätestens nach 7 Tagen abgeschlossen; Sie erhalten eine E-Mail. Sie können Saat Tarih ohne Konto weiter nutzen."
-        ]
-      },
-      {
-        "h": "Wenn Sie sich nicht anmelden können",
-        "p": [
-          "Wenn Sie Ihr Passwort vergessen haben, legen Sie mit **Anmelden › Passwort vergessen** ein neues fest und löschen dann das Konto.",
-          "Wenn Sie auch keinen Zugriff auf Ihre E-Mail-Adresse haben, schreiben Sie an [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Nachdem wir bestätigt haben, dass das Konto Ihnen gehört, löschen wir es und benachrichtigen Sie."
-        ]
-      },
-      {
-        "h": "Was wird gelöscht?",
-        "ul": [
-          "Ihre E-Mail-Adresse, Ihr Profil (einschließlich Foto) und der nicht umkehrbare Hash Ihres Passworts.",
-          "Ihre Sitzungen, die im Konto gespeicherten App-Einträge und Ihre Abzeichen.",
-          "Wenn Sie **Aus allen Bumba-Produkten** wählen, werden auch Ihre Mitgliedschaften in den anderen Bumba-Produkten gelöscht.",
-          "Kopien in Sicherungen werden spätestens nach 30 Tagen automatisch gelöscht (Sicherungen werden 30 Tage aufbewahrt)."
-        ]
-      },
-      {
-        "h": "Was auf Ihrem Telefon bleibt",
-        "p": [
-          "Die Einstellungen der App und Ihre Einträge auf dem Telefon bleiben auf Ihrem Telefon (und in Ihrer iCloud, wenn die iCloud-Synchronisierung an ist). Sie werden gelöscht, wenn Sie die App vom Telefon löschen."
-        ]
       }
     ]
   },

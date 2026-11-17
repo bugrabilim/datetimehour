@@ -17,7 +17,7 @@ export const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"
 export const RTL = new Set(["ar", "ur", "fa"]);
 
 /* Ortak üyelik metinlerinin sürümü (standart, Sabit bilgiler: "Üyelik metinleri sürümü"); kayıttaki onay kaydına yazılır */
-export const TERMS_VERSION = "2026-11-11";
+export const TERMS_VERSION = "2026-11-17";
 /* Ortak üyelik servisindeki ürün kimliği (standart madde 7, "Ortak üyelik servisi") */
 export const SITE_KEY = "saat-tarih";
 export const PRODUCT_NAME = "Saat Tarih";
@@ -53,7 +53,8 @@ export function loadConfig(env = process.env) {
     centerKey: env.UYELIK_ANAHTARI || "",
     // Ortak üyelik servisinin adresi sabittir; testler sahte merkezi UYELIK_MERKEZ ile verir
     centerUrl: trim(env.UYELIK_MERKEZ || "https://bumbagroup.com/api/uyelik"),
-    adminEmail: String(env.ADMIN_EMAIL || "bilgi@bumbagroup.com").toLowerCase(),
+    // Yönetici adresi kodda sabit (madde 10, 5.21: istisna yok, ortama ADMIN_EMAIL girilmez)
+    adminEmail: "bilgi@bumbagroup.com",
     contactEmail: "bilgi@bumbagroup.com",
     commit: env.SOURCE_COMMIT || env.COMMIT || "",
     // Panelde "sürüm" satırının tarihi: imaj derlenirken yazılan BUILD_DATE dosyası (Dockerfile) ya da COMMIT_DATE
@@ -78,11 +79,12 @@ export function loadConfig(env = process.env) {
 }
 
 /* Ortak hukuki metinler (standart, Sabit bilgiler). Türkçe arayüzden Türkçesi, öbür dillerden İngilizcesi açılır
-   (12 Kasım 2026, sahibin kararı). */
+   (12 Kasım 2026, sahibin kararı; 5.23'ten beri İngilizcesi `/en/…`, eski `?dil=en` oraya yönlenir). */
 export function legalLinks(lang) {
-  const q = normLang(lang) === "tr" ? "" : "?dil=en";
+  const p = normLang(lang) === "tr" ? "" : "/en";
   return {
-    notice: `https://bumbagroup.com/uyelik-aydinlatma${q}`,
-    terms: `https://bumbagroup.com/uyelik-sozlesmesi${q}`,
+    notice: `https://bumbagroup.com${p}/uyelik-aydinlatma`,
+    terms: `https://bumbagroup.com${p}/uyelik-sozlesmesi`,
   };
 }
+

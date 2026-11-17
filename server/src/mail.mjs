@@ -1,6 +1,6 @@
 /* Üyelik e-postaları (standart madde 7 ve "E-posta gönderimi"): Resend ile bilgi@bumbagroup.com'dan, gönderen adı
    ürünün adı. Yalnız standarttaki liste: doğrulama, şifre sıfırlama, "şifreniz değişti", e-posta değişikliği onayı,
-   "hesabınız silindi", yeniden kayıt denemesi, askı, yeniden açılma, kalıcı kapatma, başka üründe üyelik açıldı ya da
+   "hesabınız silindi", silme onayı ve "rozetleriniz silindi" (5.21), yeniden kayıt denemesi, askı, yeniden açılma, kalıcı kapatma, başka üründe üyelik açıldı ya da
    kapandı, "hesaplarınız birleştirildi" (şifre seçimi bağlantısıyla), kutlama ve "hesabınız açıldı" (e-posta doğrulanınca; sahibin
    kararı, 15 Kasım 2026, standarda eklenmesi istendi: yalnız işlem bilgisi ve hesap bağlantısı). Hoş geldin, tanıtım ya da bülten yok. Metin + HTML; açılma ve tıklama izleme yok (Resend'de alan
    adı ayarı, kodda izleme parametresi açılmaz). Metinler 19 dilde (i18n/mail.json); İngilizceye düşülmez. */
@@ -73,7 +73,7 @@ export function render(kind, lang, vars = {}, cfg = {}) {
   if (kind === "suspended" && vars.until) body += " " + fill(t.suspendedUntil);
   if (kind === "opened" && vars.no != null) body += " " + fill(t.openedNo);
   const button = k.button && vars.url ? k.button : "";
-  const ignore = ["verify", "reset", "changeOld"].includes(kind) ? t.ignore : "";
+  const ignore = ["verify", "reset", "changeOld", "deleteAsk", "dataDeleteAsk"].includes(kind) ? t.ignore : "";
   const celebrate = kind === "celebrate";
   const unsubUrl = celebrate && cfg.publicUrl && vars.userId
     ? `${cfg.publicUrl}/kutlama?dil=${l}&k=${unsubscribeToken(cfg.secret, vars.userId)}` : "";

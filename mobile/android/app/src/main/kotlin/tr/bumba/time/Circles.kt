@@ -104,6 +104,7 @@ object Circles {
             "bitti" -> "circle.err.ended"
             "dolu" -> "circle.full"
             "riza" -> "riza"
+            "uzaklastirildi" -> "account.banned"
             else -> Account.errorOf(r)
         }
     }
@@ -268,6 +269,17 @@ private fun CircleCard(c: Circles.Circle, onClick: () -> Unit) {
 }
 
 /** Açık rıza: metin + onay kutusu (sunucu ilk kurma/katılmada ister) */
+/** Topluluk kuralları (Apple 1.2: kullanıcı içeriğinde kurallar kabul edilir): kurma ve katılma ekranlarının altında */
+@Composable
+internal fun CommunityRules() {
+    val uri = androidx.compose.ui.platform.LocalUriHandler.current
+    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+        Text(L("account.rulesAgree"), color = Theme.c.muted, fontSize = 13.sp, lineHeight = 18.sp)
+        Text(L("account.rulesTitle"), color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.clickable { uri.openUri("${Account.BASE}/topluluk-kurallari?dil=${Strings.lang}") }.padding(vertical = 6.dp))
+    }
+}
+
 @Composable
 private fun ConsentBlock(checked: Boolean, onChange: (Boolean) -> Unit) {
     AppCard(background = Theme.c.surface2) {
@@ -307,6 +319,7 @@ internal fun CircleCreate(hasConsent: Boolean, onBack: () -> Unit, onDone: (Circ
                     colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = Theme.c.accent, unfocusedBorderColor = Theme.c.border))
             }
             if (!hasConsent) ConsentBlock(agree) { agree = it }
+            CommunityRules()
             err?.let { Text(L(it), color = Theme.c.err, fontSize = 14.sp) }
         }
         RoundButton(L("circle.create"), true, Modifier.fillMaxWidth().padding(16.dp)) {
@@ -355,6 +368,7 @@ private fun CircleJoin(hasConsent: Boolean, onBack: () -> Unit, onDone: (Circles
                 }
                 if (!hasConsent) ConsentBlock(agree) { agree = it }
             }
+            CommunityRules()
             err?.let { Text(L(it), color = Theme.c.err, fontSize = 14.sp) }
         }
         val ready = preview != null && !preview!!.optBoolean("dolu") && agree

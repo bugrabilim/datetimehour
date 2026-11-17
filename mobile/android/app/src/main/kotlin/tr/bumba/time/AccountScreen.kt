@@ -28,7 +28,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -46,8 +45,6 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.SelectableDates
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -69,6 +66,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentType
 import androidx.compose.ui.semantics.semantics
@@ -100,11 +98,10 @@ import java.time.format.FormatStyle
 import java.util.Locale
 
 /* Ortak hukuk metinleri (standart madde 7 "Hukuk"; sahibin kararı S2, 12 Kasım 2026): Türkçe arayüzden Türkçe metne,
-   öbür dillerden ?dil=en metnine. Hesap silme bilgi sayfası sitededir (herkese açık, mağaza kuralı). */
-internal fun legalSuffix() = if (Strings.lang == "tr") "" else "?dil=en"
-internal fun accountNoticeUrl(): String = "https://bumbagroup.com/uyelik-aydinlatma" + legalSuffix()
-internal fun accountTermsUrl(): String = "https://bumbagroup.com/uyelik-sozlesmesi" + legalSuffix()
-internal fun accountDeleteUrl(): String = "https://time.bumba.tr" + if (Strings.lang == "tr") "/hesap-silme/" else "/${Strings.lang}/account-deletion/"
+   öbür dillerden İngilizcesine (5.23'ten beri /en/…). */
+internal fun legalPrefix() = if (Strings.lang == "tr") "" else "/en"
+internal fun accountNoticeUrl(): String = "https://bumbagroup.com${legalPrefix()}/uyelik-aydinlatma"
+internal fun accountTermsUrl(): String = "https://bumbagroup.com${legalPrefix()}/uyelik-sozlesmesi"
 
 /** Profil seçenekleri (server/src/profile.mjs ile aynı) */
 private val SOCIAL = listOf("instagram", "x", "facebook", "linkedin", "youtube", "tiktok", "threads", "bluesky", "github", "telegram", "web")
@@ -203,8 +200,9 @@ fun AccountScreen(onRoute: (String) -> Unit) {
     // (sahibin kararı, 15 Kasım 2026: bilgiler isteğe bağlı, çıkarken soru sorulmaz)
     var open by rememberSaveable { mutableStateOf("profil") }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        // Standart 5.23: girişte ve kayıtta ayrı bağlantı satırı yok (ortak metinler yalnız onay cümlesinin içinde);
+        // hesap sayfasında her bölümün altında LegalLine
         if (Account.signedIn) SignedIn(onRoute, open, { open = it }) { notice = it } else SignedOut(notice)
-        AccountLinks()
     }
 }
 
@@ -320,7 +318,8 @@ private fun SignedOut(initialNotice: String?) {
                 Field(email, {}, A("email"), ContentType.EmailAddress, email = true, readOnly = true)
                 Field(password, { password = it }, A("password"), ContentType.Password, password = true)
                 RoundButton(A("signIn"), true, Modifier.fillMaxWidth().heightIn(min = 48.dp)) { run({ Account.link(email, password) }) { password = "" } }
-                TextButton({ mode = "forgot"; err = null }) { Text(A("forgot"), color = Theme.c.accent) }
+                // Şifremi unuttum (5.22): merkezin sifirla-iste'si; yeni şifre bağlı bütün Bumba ürünlerine geçer
+                TextButton({ err = null; info = null; run({ Account.linkForgot(email) }) { info = "account.linkForgotSent" } }) { Text(A("forgot"), color = Theme.c.accent) }
             }
             "done" -> {
                 Message("account.signedUp", ok = true)
@@ -340,17 +339,6 @@ private fun SignedOut(initialNotice: String?) {
         if (canResend && (mode == "in" || mode == "done")) TextButton({ run({ Account.resendVerification(email) }) { info = "account.resent" } }) {
             Text(A("resend"), color = Theme.c.accent)
         }
-    }
-}
-
-@Composable
-private fun AccountLinks() {
-    val context = LocalContext.current
-    fun open(url: String) = context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
-    FlowRow(Modifier.fillMaxWidth().padding(top = 4.dp), horizontalArrangement = Arrangement.spacedBy(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        Text(A("notice"), Modifier.clickable { open(accountNoticeUrl()) }, color = Theme.c.accent, fontSize = 13.sp)
-        Text(A("terms"), Modifier.clickable { open(accountTermsUrl()) }, color = Theme.c.accent, fontSize = 13.sp)
-        Text(A("deletionInfo"), Modifier.clickable { open(accountDeleteUrl()) }, color = Theme.c.accent, fontSize = 13.sp)
     }
 }
 
@@ -501,15 +489,16 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
     val products = remember { mutableStateListOf<JSONObject>() }
     var productsErr by remember { mutableStateOf(false) }
     var askOpen by remember { mutableStateOf<List<String>?>(null) }
-    var askClose by remember { mutableStateOf<List<String>?>(null) }
     suspend fun loadProducts() {
         val r = Account.products()
         products.clear(); productsErr = !r.ok
         if (r.ok) runCatching { JSONArray(r.data) }.getOrNull()?.let { a -> for (i in 0 until a.length()) a.optJSONObject(i)?.let { if (it.optString("site").isNotEmpty()) products.add(it) } }
     }
     LaunchedEffect(u.id) { loadProducts() }
-    var scopeAll by rememberSaveable { mutableStateOf(false) }
     var delPw by remember { mutableStateOf("") }
+    // Bekleyen silme isteği (5.21): {tur, sonGun}; hesap sayfasında görünür ve iptal edilir
+    var pending by remember(d) { mutableStateOf(d.optJSONObject("silmeIstegi")) }
+    val uri = LocalUriHandler.current
     var confirm by remember { mutableStateOf(false) }
 
     fun toggle(id: String) = setOpen(if (open == id) "" else id)
@@ -521,7 +510,9 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
             val names = runCatching { android.icu.text.ListFormatter.getInstance(Strings.locale).format(ch.options.map { it.second }) }.getOrDefault(ch.options.joinToString(", ") { it.second })
             Text(T("account.mergedText", names, (ch.uyeNo ?: d.optLong("uyeNo")).toString()), color = Theme.c.text, fontSize = 15.sp)
             for ((site, name) in ch.options) RoundButton(T("account.mergedChoice", name), true, Modifier.fillMaxWidth()) {
-                run("choice", { Account.choosePassword(site) }, "account.mergedDone") { choice = null }
+                run("choice", { Account.choosePassword(site) }, "account.mergedDone") {
+                    if (!Account.signedIn) onSignedOut("account.mergedSignIn") else choice = null
+                }
             }
             Text(A("mergedNote"), color = Theme.c.muted, fontSize = 13.sp)
             CardMessage("choice")
@@ -677,14 +668,17 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
                 val site = pr.optString("site"); val on = pr.optBoolean("acik"); val self = site == "saat-tarih" || pr.optBoolean("kendisi")
                 Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(pr.optString("ad", site) + if (self) " · " + A("productThis") else "", Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    // Kapatma yok (5.21): açık üründe o ürünün hesap sayfasına bağlantı; hesap orada silinir
+                    // Ürünün hesap sayfasının tam adresi merkezden (5.22); bağlantı kendimiz kurulmaz
+                    val adres = pr.optString("hesap")
                     if (self) Text(A("productOn"), color = Theme.c.muted, fontSize = 14.sp)
-                    else SoftSwitch(on, { want -> if (want) askOpen = listOf(site) else askClose = listOf(site) })
+                    else if (on) { if (adres.startsWith("https://")) TextButton({ uri.openUri(adres) }) { Text(A("productAccount"), color = Theme.c.accent) } else Text(A("productOn"), color = Theme.c.muted, fontSize = 14.sp) }
+                    else SoftSwitch(false, { want -> if (want) askOpen = listOf(site) })
                 }
             }
             val others = products.filter { it.optString("site") != "saat-tarih" && !it.optBoolean("kendisi") }
-            if (others.isNotEmpty()) Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                RoundButton(A("openAll"), false, Modifier.weight(1f)) { others.filter { !it.optBoolean("acik") }.map { it.optString("site") }.takeIf { it.isNotEmpty() }?.let { askOpen = it } }
-                RoundButton(A("closeAll"), false, Modifier.weight(1f)) { others.filter { it.optBoolean("acik") }.map { it.optString("site") }.takeIf { it.isNotEmpty() }?.let { askClose = it } }
+            if (others.any { !it.optBoolean("acik") }) RoundButton(A("openAll"), false, Modifier.fillMaxWidth()) {
+                others.filter { !it.optBoolean("acik") }.map { it.optString("site") }.takeIf { it.isNotEmpty() }?.let { askOpen = it }
             }
             CardMessage("products")
         }
@@ -709,13 +703,15 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
         }
         Column(Modifier.fillMaxWidth().border(BorderStroke(2.dp, Theme.c.err), RoundedCornerShape(18.dp)).background(Theme.c.err.copy(alpha = 0.07f), RoundedCornerShape(18.dp))
             .padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(A("deleteLead"), color = Theme.c.text, fontSize = 14.sp)
-            for ((all, label) in listOf(false to A("deleteScopeProduct"), true to A("deleteScopeAll"))) {
-                Row(Modifier.fillMaxWidth().selectable(scopeAll == all, role = Role.RadioButton) { scopeAll = all }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
-                    RadioButton(scopeAll == all, null, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
-                    Text(label, color = Theme.c.text, fontSize = 15.sp)
+            pending?.let { p ->
+                val day = runCatching { Instant.parse(p.optString("sonGun")).atZone(java.time.ZoneId.systemDefault()).toLocalDate().format(dateFmt) }.getOrDefault("")
+                Text(T(if (p.optString("tur") == "hesap") "account.delPendingAccount" else "account.delPendingBadges", day), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.Medium)
+                Text(A("delPending"), color = Theme.c.muted, fontSize = 13.sp)
+                RoundButton(A("delCancel"), false, Modifier.fillMaxWidth()) {
+                    run("delete", { Account.cancelDelete() }, "account.delCancelled") { pending = null }
                 }
             }
+            Text(A("deleteLead"), color = Theme.c.text, fontSize = 14.sp)
             Field(delPw, { delPw = it }, A("deletePassword"), ContentType.Password, password = true)
             Text(A("deviceKeeps"), color = Theme.c.muted, fontSize = 13.sp)
             TextButton({ confirm = true }, Modifier.fillMaxWidth().background(Theme.c.err, RoundedCornerShape(24.dp))) { Text(A("delete"), color = Theme.c.onAccent, fontWeight = FontWeight.SemiBold) }
@@ -745,21 +741,13 @@ private fun SignedIn(onRoute: (String) -> Unit, open: String, setOpen: (String) 
             confirmButton = { TextButton({ askOpen = null; run("products", { Account.openProducts(sites, pw) }, "account.saved") { scope.launch { loadProducts() } } }) { Text(A("open")) } },
             dismissButton = { TextButton({ askOpen = null }) { Text(A("cancel")) } })
     }
-    askClose?.let { sites ->
-        val names = sites.joinToString(", ") { s -> products.firstOrNull { it.optString("site") == s }?.optString("ad", s) ?: s }
-        AlertDialog(onDismissRequest = { askClose = null },
-            text = { Text(T("account.confirmClose", names)) },
-            confirmButton = { TextButton({ askClose = null; run("products", { Account.closeProducts(sites) }, "account.saved") { scope.launch { loadProducts() } } }) { Text(A("close"), color = Theme.c.err) } },
-            dismissButton = { TextButton({ askClose = null }) { Text(A("cancel")) } })
-    }
-
     if (confirm) AlertDialog(
         onDismissRequest = { confirm = false },
         text = { Text(A("deleteConfirm")) },
         confirmButton = {
             TextButton({
                 confirm = false
-                run("delete", { Account.delete(if (scopeAll) "hepsi" else "urun", delPw) }, null) { delPw = ""; onSignedOut("account.deleted") }
+                run("delete", { Account.delete(delPw) }, "account.delPending") { r -> delPw = ""; pending = r.data?.let { runCatching { JSONObject(it) }.getOrNull() } }
             }) { Text(A("delete"), color = Theme.c.err) }
         },
         dismissButton = { TextButton({ confirm = false }) { Text(A("cancel")) } },

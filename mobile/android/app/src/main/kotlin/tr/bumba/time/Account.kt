@@ -89,6 +89,7 @@ object Account {
             code == "EMAIL_NOT_VERIFIED" -> "account.err.unverified"
             code == "BANNED_USER" -> "account.err.suspended"
             code == "BUMBA_MEMBER" -> "account.bumba"
+            code == "CENTER_DOWN" -> "account.err.signupDown"
             code == "EMAIL_TAKEN" || code == "USER_ALREADY_EXISTS" || code == "eposta-alinmis" -> "account.err.emailTaken"
             code == "WEAK_PASSWORD" || code.startsWith("PASSWORD_TOO") -> "account.err.password"
             code == "INVALID_PASSWORD" || code == "sifre" || wrongPassword && (r.code == 400 || r.code == 401) -> "account.err.wrongPassword"
@@ -117,6 +118,8 @@ object Account {
     suspend fun lookup(email: String): Result {
         if (!validEmail(email)) return Result("account.err.email")
         val r = call("POST", "/v1/uyelik/sorgula", JSONObject().put("eposta", email.trim().lowercase()))
+        // Ortak servis cevap vermezse kayıt açılmaz (standart 5.22)
+        if (r.code == 503) return Result("account.err.signupDown")
         return if (r.code == 200) Result(data = JSONObject(r.body).optString("durum", "yok")) else Result(errorOf(r))
     }
 
@@ -187,9 +190,14 @@ object Account {
         return Choice(if (o.isNull("uyeNo")) null else o.optLong("uyeNo"), opts)
     }
 
-    /** Seçilen ürünün şifresi bütün bağlı ürünlerde geçerli olur; seçim zaten yapılmışsa (404) de tamam sayılır */
+    /**
+     * Seçilen ürünün şifresi bütün bağlı ürünlerde geçerli olur; seçim zaten yapılmışsa (404) de tamam sayılır.
+     * Başka ürünün şifresi seçildiyse bu oturum sunucuda kapanır (`yenidenGiris`): yerelde de çıkılır, ekran
+     * "seçtiğiniz şifreyle yeniden girin" iletisiyle giriş ekranına döner.
+     */
     suspend fun choosePassword(site: String): Result {
         val r = call("POST", "/v1/uyelik/sifre-sec", JSONObject().put("site", site), auth = true)
+        if (r.code == 200 && runCatching { JSONObject(r.body).optBoolean("yenidenGiris") }.getOrDefault(false)) save(null, null)
         return if (r.code == 200 || r.code == 404) Result() else Result(errorOf(r))
     }
 
@@ -264,6 +272,14 @@ object Account {
         return if (r.code == 200) Result() else Result(errorOf(r))
     }
 
+    /** Bağlı üyelik girişinde "Şifremi unuttum" (5.22): üyenin burada hesabı yok; bağlantıyı bumbagroup.com gönderir,
+        yeni şifre orada belirlenir ve bağlı bütün ürünlere geçer */
+    suspend fun linkForgot(email: String): Result {
+        if (!validEmail(email)) return Result("account.err.email")
+        val r = call("POST", "/v1/uyelik/sifirla-iste", JSONObject().put("eposta", email.trim().lowercase()).put("dil", Strings.lang))
+        return if (r.code == 200) Result() else Result(errorOf(r))
+    }
+
     suspend fun resendVerification(email: String): Result {
         if (!validEmail(email)) return Result("account.err.email")
         val r = call("POST", "/api/auth/send-verification-email", JSONObject().put("email", email.trim()))
@@ -285,7 +301,7 @@ object Account {
         return if (r.code == 200) Result() else Result(errorOf(r))
     }
 
-    /** Öbür Bumba ürünlerinde üyeliğim (8. bölüm): [{site, ad, adres, acik, kendisi}] */
+    /** Öbür Bumba ürünlerinde üyeliğim (8. bölüm): [{site, ad, adres, hesap, acik, kendisi}]; `hesap` ürünün hesap sayfası (5.22) */
     suspend fun products(): Result {
         val r = call("GET", "/v1/uyelik/urunler", auth = true)
         return if (r.code == 200) Result(data = JSONObject(r.body).optJSONArray("urunler")?.toString() ?: "[]") else Result(errorOf(r))
@@ -294,11 +310,6 @@ object Account {
         val r = call("POST", "/v1/uyelik/ac", JSONObject().put("hedefler", org.json.JSONArray(sites)).put("sifre", password), auth = true)
         return if (r.code == 200) Result() else Result(errorOf(r, wrongPassword = true))
     }
-    suspend fun closeProducts(sites: List<String>): Result {
-        val r = call("POST", "/v1/uyelik/kapat", JSONObject().put("hedefler", org.json.JSONArray(sites)), auth = true)
-        return if (r.code == 200) Result() else Result(errorOf(r))
-    }
-
     /** Verilerimi indir (KVKK md. 11): sunucunun JSON dökümü */
     suspend fun download(): Result {
         val r = call("GET", "/v1/verilerim", auth = true)
@@ -311,15 +322,19 @@ object Account {
         AccountSync.forget()
     }
 
-    /** Hesabı sil: "urun" yalnız Saat Tarih'ten, "hepsi" bütün Bumba ürünlerinden. Şifre son 24 saatte girişte gerekmez. */
-    suspend fun delete(scope: String, password: String): Result {
-        val body = JSONObject().put("kapsam", scope)
+    /** Hesabı sil (standart 5.21, "Silme onayı"): istek gönderilir, hesap e-postadaki bağlantıyla onaylanınca silinir.
+     *  Yalnız Saat Tarih'teki hesap silinir. Şifre son 24 saatte girişte gerekmez. data: bekleyen istek (JSON) */
+    suspend fun delete(password: String): Result {
+        val body = JSONObject()
         if (password.isNotEmpty()) body.put("sifre", password)
         val r = call("POST", "/v1/hesap/sil", body, auth = true)
         if (r.code != 200) return Result(errorOf(r, wrongPassword = true))
-        save(null, null)
-        AccountSync.forget()
-        return Result()
+        return Result(data = runCatching { JSONObject(r.body).optJSONObject("istek")?.toString() }.getOrNull())
+    }
+    /** Bekleyen silme isteğini iptal et */
+    suspend fun cancelDelete(): Result {
+        val r = call("POST", "/v1/silme-istegi/iptal", JSONObject(), auth = true)
+        return if (r.code == 200) Result() else Result(errorOf(r))
     }
 
     /** Testler: bellek dışı kayıt yok sayılır */

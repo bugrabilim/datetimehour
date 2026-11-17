@@ -23,9 +23,14 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
   - Kayıtta e-posta başka bir Bumba ürününde varsa "Burada da kullanmak ister misiniz?" sorusu gelir (`/v1/uyelik/bagla`).
   - Aynı e-postanın ayrı hesapları hesap sayfası açılınca sormadan birleşir (`/v1/uyelik/durum`); "hesaplarınız
     birleştirildi" e-postası 7 gün geçerli şifre seçimi bağlantısıyla gelir (`/sifre-sec`), seçim yapılana kadar hesap
-    sayfasında yalnız seçim görünür.
+    sayfasında yalnız seçim görünür. Birleşme yanıtındaki ve `numara-degistir` gövdesindeki `anaUrun` yerel hesaba yazılır
+    (`guncelle` ile aynı yol). Şifre seçiminde merkezin gönderdiği `guncelle {sifreOzeti}` kayıtlı özetle aynıysa yazılmaz
+    ve oturumlar kalır; özet değiştiyse oturumlar kapanır ve `/v1/uyelik/sifre-sec` `yenidenGiris: true` döner, istemci
+    "Seçtiğiniz şifreyle yeniden girin" iletisiyle girişe gider (`/giris?secildi=1`).
   - Hesap sayfasında "Öbür Bumba ürünlerinde üyeliğim" bölümü vardır.
-  - Hesabı silme iki seçenekli: yalnız Saat Tarih'ten ya da bütün Bumba ürünlerinden.
+  - Hesabı silme yalnız Saat Tarih'teki hesabı siler (5.21) ve e-postadaki bağlantıyla onaylanır ("Silme onayı", `src/deletion.mjs`):
+    istek 7 gün geçerli, bekleyen istek hesap sayfasında iptal edilir; onay sayfası `/silme-onay?k=` (giriş istemez, POST'la siler).
+    "Öbür Bumba ürünlerinde üyeliğim"de kapatma yok, her ürünün yanında o ürünün hesap sayfasına bağlantı.
 - **Web sayfaları** (`src/web.mjs`, `web/hesap.js`, `web/hesap.css`; 19 dil, iki tema, noindex):
   - `/giris`, `/kayit`, `/sifre?token=`, `/dogrulandi`.
   - `/hesap`: 10 bölüm beş sekmede (`?sekme=profil|guvenlik|tercihler|uyelikler|veri`; Profil 1-2-3, Güvenlik 4-7,
@@ -34,7 +39,8 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
   - `/sifre-sec?k=`: birleşmeden sonra şifre seçimi (oturum açmaz).
   - `/kutlama`: kutlama e-postalarını girişsiz kapatma.
   - Metinler `i18n/account.json`. Onay cümlesi arayüzün dilindedir; hukuk bağlantıları Türkçe arayüzden Türkçe metne,
-    öbür dillerden `?dil=en` metnine gider (sahibin kararı, 12 Kasım 2026).
+    öbür dillerden İngilizce metne (`/en/uyelik-…`, standart 5.23) gider (sahibin kararı, 12 Kasım 2026). Kayıt ve giriş
+    sayfasında ayrı bağlantı satırı yok (5.23); hesap silme bilgi sayfası merkezde (`bumbagroup.com/hesap-silme/saat-tarih`).
   - Kendi çerez bandı var (`bumba-cerez`). Umami yalnız istatistik izniyle yüklenir; adresinde anahtar olan sayfalarda
     hiç yüklenmez.
 - **Profil:** ad, soyad, takma ad, fotoğraf (istemci JPEG, PNG ya da WebP gönderir, en çok 2 MB; sunucu `sharp` ile yönü düzeltip 512 piksel kare WebP'ye çevirir, ≤200 KB, bütün üst veri düşer), doğum tarihi, cinsiyet,
@@ -52,8 +58,9 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
 - **Saklama** (`src/cleanup.mjs`, günlük `POST /gorev/temizlik`):
   - süresi geçen oturum, doğrulama ve sınır kayıtları silinir;
   - 7 gün içinde doğrulanmayan hesap silinir;
+  - 7 gün içinde onaylanmayan silme isteği silinir (e-posta gitmez);
   - üye numarası eksik hesaplar numarasını alır (yönetici hesabı hariç);
-  - ortak servise ulaşılamayan bildirimler yeniden denenir.
+  - ortak servise ulaşılamayan bildirimlerin zamanı gelenler de denenir. Asıl yeniden deneme `src/relay.mjs`'te, süreç içinde 10 dakikada bir (standart 5.22): `guncelle` ve `ayril` bırakılmaz, 1, 2, 4… dakika arayla, en çok günde bir; aynı üyenin `guncelle`'leri birleşir ve hesabın o anki hâli gider; `ayril` bekleyen `guncelle`'yi siler. Bekleyenler panel özetinde `merkezeBekleyen`.
 
   Kullanılmayan hesap silinmez.
 
@@ -62,16 +69,19 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
 |---|---|
 | `/api/auth/*` | Better Auth (kayıt, giriş, çıkış, oturumlar, şifre, e-posta, doğrulama) |
 | `/api/bumba-uyelik/<işlem>` | Ortak servisin ürün uçları (`dogrula`, `hesap-getir`, `hesap-ac`, `guncelle`, `hesap-sil`, `durum`, `numara-degistir`; `Bearer $UYELIK_ANAHTARI`) |
-| `/v1/uyelik/sorgula`, `/v1/uyelik/bagla` | Kayıt ekranındaki Bumba üyeliği sorusu |
+| `/v1/uyelik/sorgula`, `/v1/uyelik/bagla` | Kayıt ekranındaki Bumba üyeliği sorusu (5.22: ortak servis cevap vermezse `sorgula` 503, kayıt `CENTER_DOWN` ile açılmaz) |
+| `/v1/uyelik/sifirla-iste` | Bağlı üyelik girişinde "Şifremi unuttum" (5.22): merkezin `sifirla-iste`'si; hesap burada varsa kendi sıfırlamamız |
 | `/v1/onay-cumlesi?dil=` | Kayıttaki onay cümlesi (merkezden; `{surum, kod, rtl, metin}`; uygulamalar) |
 | `/v1/hesap`, `/v1/profil`, `/v1/profil/foto`, `/v1/kutlama` | Hesap ve profil |
 | `/v1/eposta` | E-posta değişikliği (`{eposta, sifre}`; Better Auth'un `/change-email` ucu dışarıdan kapalı) |
-| `/v1/uyelik/durum`, `sifre-sec`, `urunler`, `ac`, `kapat` | Bağlı üyelik (birleşme, şifre seçimi) |
+| `/v1/uyelik/durum`, `sifre-sec`, `urunler`, `ac` | Bağlı üyelik (birleşme, şifre seçimi) |
 | `POST /api/bumba-panel/ozet\|uyeler\|uye` | Yönetim paneli (`Bearer $UYELIK_ANAHTARI`, `X-Bumba-Site`; `src/panel.mjs`) |
-| `/v1/kayitlar`, `/v1/rozetler`, `/v1/rozetler/sil` | Uygulama kayıtları ve rozetler |
-| `/v1/verilerim`, `/v1/hesap/sil` | Verilerimi indir, hesabı sil (`kapsam: urun\|hepsi`) |
+| `/v1/kayitlar`, `/v1/rozetler`, `/v1/rozetler/sil` | Uygulama kayıtları ve rozetler (silme onaylı) |
+| `/v1/verilerim`, `/v1/hesap/sil`, `/v1/silme-istegi`, `/v1/silme-istegi/iptal` | Verilerimi indir, silme isteği (onay e-postayla), bekleyen istek, iptal |
 | `/v1/halkalar`, `/v1/halka…` | Ortak zikir ve hatim halkaları (`src/circles.mjs`; `HALKALAR=acik` değilse 404) |
 | `/v1/gruplar`, `/v1/grup…`, `/v1/hava-bildirim` | Ortak gruplar (geri sayım, dünya saati, toplantı oylaması, odak, alarm isteği, gözlem) ve anonim hava bildirimi (`src/groups.mjs`; `GRUPLAR=acik` değilse 404) |
+| `/topluluk-kurallari` | Halka ve grupların topluluk kuralları (19 dil; uygulamalardaki kurma ve katılma ekranları bağlanır) |
+| `/moderasyon?k=` | Yönetici sayfası: bildirim e-postasındaki imzalı bağlantı (30 gün); GET bir şey yapmaz, POST ile gizle, topluluktan uzaklaştır ya da uzaklaştırmayı kaldır (`src/moderation.mjs`) |
 | `POST /gorev/temizlik`, `POST /gorev/kutlama` | Zamanlanmış görevler (`Bearer $CRON_SECRET`) |
 | `GET /saglik` | Sağlık denetimi |
 
@@ -89,7 +99,6 @@ açılır: sayfalar "üyelik şu an kapalı" der, uçlar 503 döner.
 | `UYELIK_ANAHTARI` | evet | Ortak üyelik servisinin site anahtarı (`saat-tarih`) |
 | `HALKALAR` | hayır | `acik`: halkalar açılır (açık rıza metni ve uygulama yayına hazır olunca, sahibin onayıyla) |
 | `GRUPLAR` | hayır | `acik`: ortak gruplar ve hava bildirimi açılır (sahibin onayıyla) |
-| `ADMIN_EMAIL` | hayır | Varsayılan bilgi@bumbagroup.com |
 | `NODE_ENV` | canlıda `production` | Güvenli çerezler |
 
 ## Komutlar

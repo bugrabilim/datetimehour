@@ -3,6 +3,7 @@
    karşılaştırılır, tutmazsa 401) ve `X-Bumba-Site`. Yalnız POST, JSON, CORS yok, en geç 8 saniye. Ölçülemeyen alan
    `null` döner (panel "bu ortamda ölçülemiyor" yazar). Yönetici hesabı üye değildir, sayılara ve listelere girmez.
    Askı ve yasak buradan değil, ortak servisin `durum` işlemiyle uygulanır. */
+import { readFileSync } from "node:fs";
 import { keyOk } from "./linked.mjs";
 import { SITE_KEY, TERMS_VERSION } from "./config.mjs";
 import { profileOf } from "./accounts.mjs";
@@ -44,7 +45,11 @@ function deviceOf(s) {
   return [br, os].filter(Boolean).join(" · ") || null;
 }
 
-export function panelRoutes({ cfg, pool, accounts, records, mailer, metrics, json, readJson }) {
+/* Rozet adları (5.22, isteğe bağlı): panel tr ve en gösterir; kaynak uygulamalardaki badges.items.*.name */
+const WEB = JSON.parse(readFileSync(new URL("../data/web-texts.json", import.meta.url), "utf8"));
+const badgeName = (id) => (WEB.badges.tr?.[id] || WEB.badges.en?.[id] ? { tr: WEB.badges.tr?.[id] || WEB.badges.en[id], en: WEB.badges.en?.[id] || WEB.badges.tr[id] } : null);
+
+export function panelRoutes({ cfg, pool, accounts, records, mailer, metrics, relay, json, readJson }) {
   const admin = String(cfg.adminEmail || "").toLowerCase();
   const members = `"emailVerified" = true and lower(email) <> $1`;
 
@@ -81,6 +86,13 @@ export function panelRoutes({ cfg, pool, accounts, records, mailer, metrics, jso
         depolamaBayt: null, // ayrı dosya deposu yok; fotoğraflar veritabanında
       },
       servisler: { veritabani: db !== null, eposta: mailer.state?.lastOk ?? null },
+      // Merkeze gönderilemeyen guncelle ve ayril (5.22; panel enEski 7 günü geçince uyarır)
+      merkezeBekleyen: relay ? await relay.pending() : { sayi: 0, enEski: null },
+      // Üyelere en çok verilen rozetler (5.22, isteğe bağlı; en çok 20)
+      rozetler: (await pool.query(
+        `select b.badge, count(*)::int n from user_badge b join "user" u on u.id = b.user_id where u."emailVerified" = true and lower(u.email) <> $1 group by b.badge order by n desc, b.badge limit 20`,
+        [admin],
+      )).rows.map((r) => ({ kimlik: r.badge, ad: badgeName(r.badge), sayi: r.n })).map((r) => (r.ad ? r : { kimlik: r.kimlik, sayi: r.sayi })),
       surum: { commit: cfg.commit || null, tarih: cfg.commitDate || null },
     };
   }
@@ -128,7 +140,7 @@ export function panelRoutes({ cfg, pool, accounts, records, mailer, metrics, jso
       hesap: await accounts.toHesap(user, { withPassword: false }),
       sonGiris: iso(last),
       oturumlar: ss.map((s) => ({ cihaz: deviceOf(s), acilis: iso(s.createdAt), sonKullanim: iso(s.updatedAt) })),
-      rozetler: (await records.badges(user.id)).map((r) => ({ kimlik: r.id, gun: r.gun })),
+      rozetler: (await records.badges(user.id)).map((r) => { const ad = badgeName(r.id); return ad ? { kimlik: r.id, ad, gun: r.gun } : { kimlik: r.id, gun: r.gun }; }),
       kullanim: { kayitSayisi: Object.keys(kayit).length, dil: user.lang, kutlama: user.celebrate !== false },
       onay: { zaman: iso(user.consentAt), surum: user.consentVersion || TERMS_VERSION },
     };

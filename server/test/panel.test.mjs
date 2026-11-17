@@ -90,7 +90,7 @@ test("uyeler ve uye: arama, süzme, sayfalama; ayrıntıda hesap (şifre özeti 
   assert.equal(u.json.hesap.sifreOzeti, null);
   assert.ok(u.json.oturumlar.length >= 1);
   assert.equal(u.json.oturumlar[0].cihaz, "iOS");
-  assert.deepEqual(u.json.rozetler, [{ kimlik: "renk", gun: "2026-11-10" }]);
+  assert.deepEqual(u.json.rozetler, [{ kimlik: "renk", ad: { tr: "Renk ustası", en: "Colorist" }, gun: "2026-11-10" }]);
   assert.ok(u.json.onay.zaman && u.json.onay.surum);
   assert.ok(u.json.sonGiris);
   assert.equal((await panel("uye", { uyeNo: 99999 })).status, 404);

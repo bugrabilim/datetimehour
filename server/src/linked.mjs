@@ -70,7 +70,8 @@ export function linkedRoutes({ cfg, auth, accounts, mailer, json, readJson }) {
       if (!Number.isInteger(yeni)) return json(res, 400, { hata: "yeniNo" });
       await accounts.ia().then((a) => a.updateUser(user.id, { uyeNo: yeni, updatedAt: new Date() }));
       const h = b.hesap || {};
-      await accounts.applyChange({ ...user, uyeNo: yeni }, { sifreOzeti: h.sifreOzeti || undefined, profil: h.profil || undefined });
+      // Ana ürün bilgisi de uygulanır (birleşmede kaybolan ürün için her zaman false; guncelle {anaUrun} ile aynı yol)
+      await accounts.applyChange({ ...user, uyeNo: yeni }, { sifreOzeti: h.sifreOzeti || undefined, profil: h.profil || undefined, anaUrun: typeof h.anaUrun === "boolean" ? h.anaUrun : undefined });
       return json(res, 200, { sonuc: "degisti" });
     }
     return json(res, 404, { hata: "yok" });

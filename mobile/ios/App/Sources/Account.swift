@@ -89,6 +89,7 @@ final class Account {
         if code == "EMAIL_NOT_VERIFIED" { return "account.err.unverified" }
         if code == "BANNED_USER" { return "account.err.suspended" }
         if code == "BUMBA_MEMBER" { return "account.bumba" }
+        if code == "CENTER_DOWN" { return "account.err.signupDown" }
         if code == "EMAIL_TAKEN" || code == "USER_ALREADY_EXISTS" || code == "eposta-alinmis" { return "account.err.emailTaken" }
         if code == "WEAK_PASSWORD" || code.hasPrefix("PASSWORD_TOO") { return "account.err.password" }
         if code == "INVALID_PASSWORD" || code == "sifre" || (wrongPassword && (r.code == 400 || r.code == 401)) { return "account.err.wrongPassword" }
@@ -138,6 +139,8 @@ final class Account {
     func lookup(_ email: String) async -> Result {
         guard Self.validEmail(email) else { return .fail("account.err.email") }
         let r = await call("POST", "/v1/uyelik/sorgula", ["eposta": Self.clean(email)])
+        // Ortak servis cevap vermezse kayıt açılmaz (standart 5.22)
+        if r.code == 503 { return .fail("account.err.signupDown") }
         guard r.code == 200 else { return .fail(Self.errorOf(r)) }
         return Result(data: Data(((Self.json(r.body)?["durum"] as? String) ?? "yok").utf8))
     }
@@ -217,9 +220,12 @@ final class Account {
         return opts.isEmpty ? nil : Choice(uyeNo: (o["uyeNo"] as? NSNumber)?.intValue, options: opts)
     }
 
-    /// Seçilen ürünün şifresi bütün bağlı ürünlerde geçerli olur; seçim zaten yapılmışsa (404) de tamam sayılır
+    /// Seçilen ürünün şifresi bütün bağlı ürünlerde geçerli olur; seçim zaten yapılmışsa (404) de tamam sayılır.
+    /// Başka ürünün şifresi seçildiyse bu oturum sunucuda kapanır (`yenidenGiris`): yerelde de çıkılır, ekran
+    /// "seçtiğiniz şifreyle yeniden girin" iletisiyle giriş ekranına döner.
     func choosePassword(_ site: String) async -> Result {
         let r = await call("POST", "/v1/uyelik/sifre-sec", ["site": site], auth: true)
+        if r.code == 200, Self.json(r.body)?["yenidenGiris"] as? Bool == true { save(nil, nil); AccountSync.shared.forget() }
         return r.code == 200 || r.code == 404 ? .success : .fail(Self.errorOf(r))
     }
 
@@ -293,6 +299,14 @@ final class Account {
         return r.code == 200 ? .success : .fail(Self.errorOf(r))
     }
 
+    /// Bağlı üyelik girişinde "Şifremi unuttum" (5.22): üyenin burada hesabı yok; bağlantıyı bumbagroup.com gönderir,
+    /// yeni şifre orada belirlenir ve bağlı bütün ürünlere geçer
+    func linkForgot(_ email: String) async -> Result {
+        guard Self.validEmail(email) else { return .fail("account.err.email") }
+        let r = await call("POST", "/v1/uyelik/sifirla-iste", ["eposta": Self.clean(email), "dil": Self.lang])
+        return r.code == 200 ? .success : .fail(Self.errorOf(r))
+    }
+
     func resendVerification(_ email: String) async -> Result {
         guard Self.validEmail(email) else { return .fail("account.err.email") }
         let r = await call("POST", "/api/auth/send-verification-email", ["email": email.trimmingCharacters(in: .whitespaces)])
@@ -316,7 +330,7 @@ final class Account {
         _ = await call("POST", "/api/auth/revoke-other-sessions", [:], auth: true)
     }
 
-    /// Öbür Bumba ürünlerinde üyeliğim (8. bölüm): [{site, ad, adres, acik, kendisi}]; nil: servise ulaşılamadı
+    /// Öbür Bumba ürünlerinde üyeliğim (8. bölüm): [{site, ad, adres, hesap, acik, kendisi}]; `hesap` ürünün hesap sayfası (5.22); nil: servise ulaşılamadı
     func products() async -> [[String: Any]]? {
         let r = await call("GET", "/v1/uyelik/urunler", auth: true)
         guard r.code == 200 else { return nil }
@@ -326,11 +340,6 @@ final class Account {
         let r = await call("POST", "/v1/uyelik/ac", ["hedefler": sites, "sifre": password], auth: true)
         return r.code == 200 ? .success : .fail(Self.errorOf(r, wrongPassword: true))
     }
-    func closeProducts(_ sites: [String]) async -> Result {
-        let r = await call("POST", "/v1/uyelik/kapat", ["hedefler": sites], auth: true)
-        return r.code == 200 ? .success : .fail(Self.errorOf(r))
-    }
-
     /// Verilerimi indir (KVKK md. 11): sunucunun JSON dökümü
     func download() async -> Result {
         let r = await call("GET", "/v1/verilerim", auth: true)
@@ -343,15 +352,20 @@ final class Account {
         AccountSync.shared.forget()
     }
 
-    /// Hesabı sil: "urun" yalnız Saat Tarih'ten, "hepsi" bütün Bumba ürünlerinden. Şifre son 24 saatte girişte gerekmez.
-    func delete(scope: String, password: String) async -> Result {
-        var body: [String: Any] = ["kapsam": scope]
+    /// Hesabı sil (standart 5.21, "Silme onayı"): istek gönderilir, hesap e-postadaki bağlantıyla onaylanınca silinir.
+    /// Yalnız Saat Tarih'teki hesap silinir. Şifre son 24 saatte girişte gerekmez. data: bekleyen istek (JSON)
+    func delete(password: String) async -> Result {
+        var body: [String: Any] = [:]
         if !password.isEmpty { body["sifre"] = password }
         let r = await call("POST", "/v1/hesap/sil", body, auth: true)
         guard r.code == 200 else { return .fail(Self.errorOf(r, wrongPassword: true)) }
-        save(nil, nil)
-        AccountSync.shared.forget()
-        return .success
+        let istek = (Self.json(r.body)?["istek"] as? [String: Any]).flatMap { try? JSONSerialization.data(withJSONObject: $0) }
+        return Result(data: istek)
+    }
+    /// Bekleyen silme isteğini iptal et
+    func cancelDelete() async -> Result {
+        let r = await call("POST", "/v1/silme-istegi/iptal", [:], auth: true)
+        return r.code == 200 ? .success : .fail(Self.errorOf(r))
     }
 
     /// Fotoğraf: kare kırpılıp en çok 512 piksele küçültülür, WebP (≤ ~190 KB); yeniden kodlandığı için EXIF ve konum
@@ -416,12 +430,9 @@ final class Account {
 }
 
 /// Ortak hukuk metinleri (standart madde 7 "Hukuk"; sahibin kararı S2, 12 Kasım 2026): Türkçe arayüzden Türkçe metne,
-/// öbür dillerden ?dil=en metnine. Hesap silme bilgi sayfası sitededir (herkese açık, mağaza kuralı).
+/// öbür dillerden İngilizcesine (5.23'ten beri /en/…).
 enum AccountLinks {
-    static var suffix: String { AppLocale.code == "tr" ? "" : "?dil=en" }
-    static var notice: URL { URL(string: "https://bumbagroup.com/uyelik-aydinlatma" + suffix)! }
-    static var terms: URL { URL(string: "https://bumbagroup.com/uyelik-sozlesmesi" + suffix)! }
-    static var deletion: URL {
-        URL(string: "https://time.bumba.tr" + (AppLocale.code == "tr" ? "/hesap-silme/" : "/\(AppLocale.code)/account-deletion/"))!
-    }
+    static var prefix: String { AppLocale.code == "tr" ? "" : "/en" }
+    static var notice: URL { URL(string: "https://bumbagroup.com\(prefix)/uyelik-aydinlatma")! }
+    static var terms: URL { URL(string: "https://bumbagroup.com\(prefix)/uyelik-sozlesmesi")! }
 }

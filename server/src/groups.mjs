@@ -16,6 +16,7 @@ import crypto from "node:crypto";
 import { profileOf } from "./accounts.mjs";
 import { displayName } from "./profile.mjs";
 import { cleanName } from "./circles.mjs";
+import { isBanned } from "./moderation.mjs";
 
 export const KINDS = ["geri-sayim", "dunya", "oylama", "odak", "alarm", "gozlem"];
 export const LIMITS = { members: 30, groupsPerUser: 20, reportsToHide: 3, slots: 12, alarmsPerDay: 5, watched: 300, weatherPer10m: 1, weatherPerDay: 20 };
@@ -125,10 +126,12 @@ function groupData(kind, b, old = {}) {
   return d;
 }
 
-export function createGroups({ pool, mailer, adminEmail }) {
+export function createGroups({ pool, mailer, adminEmail, modLink = () => "" }) {
   const q = (sql, args = []) => pool.query(sql, args);
 
   async function admit(userId) {
+    // Topluluk kurallarını çiğnediği için uzaklaştırılan kişi (moderation.mjs) grup kuramaz, katılamaz
+    if (await isBanned(pool, userId)) throw err(403, "uzaklastirildi");
     const n = (await q(`select count(*)::int n from grp_member where user_id = $1`, [userId])).rows[0].n;
     if (n >= LIMITS.groupsPerUser) throw err(400, "grup-sinir");
   }
@@ -398,41 +401,64 @@ export function createGroups({ pool, mailer, adminEmail }) {
     await q(`delete from grp where id = $1`, [id]);
   }
 
-  /* Bildir: grup adı, üyenin görünen adı, dünya grubundaki şehir adı ya da alarm isteğinin etiketi */
+  /* Bildir: grup adı, üyenin görünen adı, dünya grubundaki şehir adı ya da alarm isteğinin etiketi. E-posta imzalı
+     yönetici bağlantısı taşır (moderation.mjs). */
   async function report(user, id, b) {
     const g = await memberOf(id, user.id);
-    let target, text, hide;
+    let target, text, author;
     if (b.istek != null) {
-      const a = (await q(`select id, label from grp_alarm where grp_id = $1 and id = $2 and to_id = $3`, [id, int(b.istek), user.id])).rows[0];
+      const a = (await q(`select id, label, from_id from grp_alarm where grp_id = $1 and id = $2 and to_id = $3`, [id, int(b.istek), user.id])).rows[0];
       if (!a) throw err(404, "istek");
-      target = `istek:${a.id}`; text = a.label || "";
-      hide = () => q(`update grp_alarm set label = null where id = $1`, [a.id]);
+      target = `istek:${a.id}`; text = a.label || ""; author = a.from_id;
     } else if (b.uye != null) {
       const m = (await q(`select m.id, m.user_id, m.data, u.profile, u."uyeNo" from grp_member m join "user" u on u.id = m.user_id where m.grp_id = $1 and m.id = $2`, [id, int(b.uye)])).rows[0];
       if (!m || m.user_id === user.id) throw err(404, "uye");
       target = `uye:${m.user_id}`;
       text = nameOf({ ...m, name_hidden: false }, "tr") + (m.data?.sehir ? ` (şehir: ${m.data.sehir})` : "");
-      hide = async () => {
-        await q(`update grp_member set name_hidden = true where grp_id = $1 and user_id = $2`, [id, m.user_id]);
-        if (m.data?.sehir) await q(`update grp_member set data = data - 'sehir' where grp_id = $1 and user_id = $2`, [id, m.user_id]);
-      };
+      author = m.user_id;
     } else {
-      target = "ad"; text = g.name;
-      hide = () => q(`update grp set name_hidden = true where id = $1`, [id]);
+      target = "ad"; text = g.name; author = g.owner_id;
     }
     const ins = await q(`insert into grp_report (grp_id, reporter_id, target) values ($1, $2, $3) on conflict do nothing`, [id, user.id, target]);
     if (!ins.rowCount) return { yeni: false };
     const n = (await q(`select count(*)::int n from grp_report where grp_id = $1 and target = $2`, [id, target])).rows[0].n;
     // Alarm isteğinin etiketi yalnız alıcıya görünür: tek bildirimde kalkar
     const hidden = target.startsWith("istek:") || n >= LIMITS.reportsToHide;
-    if (hidden) await hide();
+    if (hidden) await hideTarget(id, target);
     const what = target === "ad" ? "grup adı" : target.startsWith("istek:") ? "alarm isteğinin etiketi" : "üyenin görünen adı";
+    const link = modLink({ s: "grup", id, h: target, u: author || undefined });
     await mailer.sendRaw({
       to: adminEmail || "bilgi@bumbagroup.com",
       subject: `Saat Tarih grup bildirimi: ${what}${hidden ? " (gizlendi)" : ""}`,
-      text: `Bildirilen ${what}: ${text}\nGrup: ${id} (${g.kind})\nBu içerik için bildirim sayısı: ${n}${hidden ? "\nKendiliğinden gizlendi." : ""}\n\nYanıt süresi: 24–72 saat.\n`,
+      text: `Bildirilen ${what}: ${text}\nGrup: ${id} (${g.kind})\nBu içerik için bildirim sayısı: ${n}${hidden ? "\nKendiliğinden gizlendi." : ""}\n\nTopluluk kurallarında söz verilen süre: en geç 24 saat içinde incele.${link ? `\nGizlemek ya da yazanı topluluktan uzaklaştırmak için: ${link}` : ""}\n`,
     }).catch(() => {});
     return { yeni: true, gizlendi: hidden };
+  }
+
+  /* Yönetici işlemleri (moderation.mjs) */
+  async function hideTarget(id, target) {
+    if (target === "ad") await q(`update grp set name_hidden = true where id = $1`, [id]);
+    else if (target.startsWith("istek:")) await q(`update grp_alarm set label = null where grp_id = $1 and id = $2`, [id, int(target.slice(6))]);
+    else if (target.startsWith("uye:")) {
+      await q(`update grp_member set name_hidden = true, data = data - 'sehir' where grp_id = $1 and user_id = $2`, [id, target.slice(4)]);
+    }
+  }
+  async function modState(id, target) {
+    const g = (await q(`select name, name_hidden from grp where id = $1`, [id])).rows[0];
+    if (!g) return { var: false };
+    if (target === "ad") return { var: true, metin: g.name, gizli: g.name_hidden };
+    if (target.startsWith("istek:")) {
+      const a = (await q(`select label from grp_alarm where grp_id = $1 and id = $2`, [id, int(target.slice(6))])).rows[0];
+      return a ? { var: true, metin: a.label || "", gizli: !a.label } : { var: false };
+    }
+    const m = (await q(`select m.name_hidden, m.data, u.profile, u."uyeNo" from grp_member m join "user" u on u.id = m.user_id where m.grp_id = $1 and m.user_id = $2`, [id, target.slice(4)])).rows[0];
+    if (!m) return { var: false };
+    return { var: true, metin: nameOf({ ...m, name_hidden: false }, "tr") + (m.data?.sehir ? ` (şehir: ${m.data.sehir})` : ""), gizli: m.name_hidden };
+  }
+  /* Topluluktan uzaklaştırma: kişi bütün gruplardan çıkar, bekleyen alarm istekleri silinir */
+  async function expel(userId) {
+    const ids = (await q(`select grp_id from grp_member where user_id = $1`, [userId])).rows.map((x) => x.grp_id);
+    for (const id of ids) await removeMember(id, userId);
   }
 
   async function block(user, id, mid, on = true) {
@@ -495,5 +521,5 @@ export function createGroups({ pool, mailer, adminEmail }) {
     return Object.fromEntries(r.map((x) => [x.kind, x.n]));
   }
 
-  return { create, preview, join, detail, list, setPlace, vote, focus, watched, alarmRequest, alarmAnswer, leave, kick, edit, remove, report, block, weatherReport, weatherNear, onUserGone, exportOf, cleanup, counts };
+  return { create, preview, join, detail, list, setPlace, vote, focus, watched, alarmRequest, alarmAnswer, leave, kick, edit, remove, report, block, weatherReport, weatherNear, onUserGone, exportOf, cleanup, counts, hideTarget, modState, expel };
 }

@@ -25,10 +25,6 @@
   },
   "ignore": "Bu isteği siz yapmadıysanız bu e-postayı yok sayabilirsiniz; hesabınızda bir şey değişmez.",
   "footer": "Bu e-postayı Saat Tarih hesabınızla ilgili bir işlem nedeniyle aldınız. Saat Tarih bir Bumba Life ürünüdür.",
-  "deletedAll": {
-   "subject": "Bumba üyeliğiniz silindi",
-   "body": "Saat Tarih hesabınız ve bütün Bumba ürünlerindeki üyeliğiniz silindi. Önceden gönderime bırakılmış bir kutlama e-postası varsa en geç 7 gün içinde gelebilir."
-  },
   "passwordChanged": {
    "subject": "Şifreniz değişti",
    "body": "Saat Tarih hesabınızın şifresi değişti; açık oturumlar kapatıldı. Bu değişikliği siz yapmadıysanız giriş ekranındaki \"Şifremi unuttum\" ile hemen yeni şifre belirleyin ve {iletisim} adresine yazın."
@@ -86,7 +82,21 @@
    "body": "E-posta adresiniz doğrulandı ve Saat Tarih hesabınız açıldı. Sitede ve uygulamada e-posta adresiniz ve şifrenizle giriş yapabilirsiniz. Bunu siz yapmadıysanız {iletisim} adresine yazın.",
    "button": "Hesabıma git"
   },
-  "openedNo": "Bumba üye numaranız: {no}."
+  "openedNo": "Bumba üye numaranız: {no}.",
+  "deleteAsk": {
+   "subject": "Hesabınızı silme isteği",
+   "body": "Saat Tarih hesabınızı silme isteği geldi. Silmek için aşağıdaki düğmeye dokunun ve açılan sayfada onaylayın. Bağlantı {tarih} tarihine kadar geçerlidir; bu sürede onaylamazsanız istek iptal olur ve hesabınızda bir şey değişmez.",
+   "button": "Silme sayfasını aç"
+  },
+  "dataDeleteAsk": {
+   "subject": "Rozetlerinizi silme isteği",
+   "body": "Saat Tarih hesabınızdaki rozetleri silme isteği geldi. Silmek için aşağıdaki düğmeye dokunun ve açılan sayfada onaylayın. Bağlantı {tarih} tarihine kadar geçerlidir; bu sürede onaylamazsanız istek iptal olur.",
+   "button": "Silme sayfasını aç"
+  },
+  "dataDeleted": {
+   "subject": "Rozetleriniz silindi",
+   "body": "Saat Tarih hesabınızdaki rozetler silindi. Hesabınız ve öbür bilgileriniz duruyor."
+  }
  },
  "en": {
   "verify": {
@@ -114,10 +124,6 @@
   },
   "ignore": "If you didn't make this request, you can ignore this email; nothing changes in your account.",
   "footer": "You received this email because of an action on your Time & Date account. Time & Date is a Bumba Life product.",
-  "deletedAll": {
-   "subject": "Your Bumba membership has been deleted",
-   "body": "Your Saat Tarih account and your membership in all Bumba products have been deleted. A celebration email already scheduled may still arrive within 7 days."
-  },
   "passwordChanged": {
    "subject": "Your password has changed",
    "body": "The password of your Saat Tarih account has changed and your open sessions were signed out. If you didn't make this change, set a new password right away with \"Forgot password\" on the sign-in screen and write to {iletisim}."
@@ -175,7 +181,21 @@
    "body": "Your email address is verified and your Saat Tarih account is open. You can sign in on the website and in the app with your email address and password. If you didn't do this, write to {iletisim}.",
    "button": "Go to my account"
   },
-  "openedNo": "Your Bumba member number: {no}."
+  "openedNo": "Your Bumba member number: {no}.",
+  "deleteAsk": {
+   "subject": "Request to delete your account",
+   "body": "We received a request to delete your Saat Tarih account. To delete it, tap the button below and confirm on the page that opens. The link is valid until {tarih}; if you don't confirm by then, the request is cancelled and nothing changes in your account.",
+   "button": "Open the deletion page"
+  },
+  "dataDeleteAsk": {
+   "subject": "Request to delete your badges",
+   "body": "We received a request to delete the badges in your Saat Tarih account. To delete them, tap the button below and confirm on the page that opens. The link is valid until {tarih}; if you don't confirm by then, the request is cancelled.",
+   "button": "Open the deletion page"
+  },
+  "dataDeleted": {
+   "subject": "Your badges have been deleted",
+   "body": "The badges in your Saat Tarih account have been deleted. Your account and your other information remain."
+  }
  },
  "de": {
   "verify": {
@@ -203,10 +223,6 @@
   },
   "ignore": "Wenn die Anfrage nicht von Ihnen stammt, können Sie diese E-Mail ignorieren; an Ihrem Konto ändert sich nichts.",
   "footer": "Sie erhalten diese E-Mail wegen einer Aktion in Ihrem Uhr-&-Datum-Konto. Uhr & Datum ist ein Produkt von Bumba Life.",
-  "deletedAll": {
-   "subject": "Ihre Bumba-Mitgliedschaft wurde gelöscht",
-   "body": "Ihr Saat-Tarih-Konto und Ihre Mitgliedschaft in allen Bumba-Produkten wurden gelöscht. Eine bereits eingeplante Glückwunsch-E-Mail kann noch innerhalb von 7 Tagen eintreffen."
-  },
   "passwordChanged": {
    "subject": "Ihr Passwort wurde geändert",
    "body": "Das Passwort Ihres Saat-Tarih-Kontos wurde geändert; offene Sitzungen wurden beendet. Wenn Sie das nicht waren, legen Sie sofort mit „Passwort vergessen“ ein neues Passwort fest und schreiben Sie an {iletisim}."
@@ -264,7 +280,21 @@
    "body": "Ihre E-Mail-Adresse ist bestätigt und Ihr Saat Tarih-Konto ist eröffnet. Sie melden sich auf der Website und in der App mit Ihrer E-Mail-Adresse und Ihrem Passwort an. Wenn Sie das nicht waren, schreiben Sie an {iletisim}.",
    "button": "Zu meinem Konto"
   },
-  "openedNo": "Ihre Bumba-Mitgliedsnummer: {no}."
+  "openedNo": "Ihre Bumba-Mitgliedsnummer: {no}.",
+  "deleteAsk": {
+   "subject": "Anfrage zum Löschen Ihres Kontos",
+   "body": "Wir haben eine Anfrage zum Löschen Ihres Saat-Tarih-Kontos erhalten. Tippen Sie zum Löschen auf die Schaltfläche unten und bestätigen Sie auf der Seite, die sich öffnet. Der Link gilt bis {tarih}; bestätigen Sie bis dahin nicht, verfällt die Anfrage und an Ihrem Konto ändert sich nichts.",
+   "button": "Löschseite öffnen"
+  },
+  "dataDeleteAsk": {
+   "subject": "Anfrage zum Löschen Ihrer Abzeichen",
+   "body": "Wir haben eine Anfrage zum Löschen der Abzeichen in Ihrem Saat-Tarih-Konto erhalten. Tippen Sie zum Löschen auf die Schaltfläche unten und bestätigen Sie auf der Seite, die sich öffnet. Der Link gilt bis {tarih}; bestätigen Sie bis dahin nicht, verfällt die Anfrage.",
+   "button": "Löschseite öffnen"
+  },
+  "dataDeleted": {
+   "subject": "Ihre Abzeichen wurden gelöscht",
+   "body": "Die Abzeichen in Ihrem Saat-Tarih-Konto wurden gelöscht. Ihr Konto und Ihre übrigen Angaben bleiben bestehen."
+  }
  },
  "az": {
   "verify": {
@@ -292,10 +322,6 @@
   },
   "ignore": "Bu istəyi siz etməmisinizsə, bu e-poçtu nəzərə almaya bilərsiniz; hesabınızda heç nə dəyişmir.",
   "footer": "Bu e-poçtu Saat Tarix hesabınızla bağlı bir əməliyyat səbəbindən aldınız. Saat Tarix Bumba Life məhsuludur.",
-  "deletedAll": {
-   "subject": "Bumba üzvlüyünüz silindi",
-   "body": "Saat Tarix hesabınız və bütün Bumba məhsullarındakı üzvlüyünüz silindi. Əvvəlcədən göndərilməyə qoyulmuş təbrik məktubu varsa, ən gec 7 gün ərzində gələ bilər."
-  },
   "passwordChanged": {
    "subject": "Şifrəniz dəyişdi",
    "body": "Saat Tarix hesabınızın şifrəsi dəyişdi; açıq sessiyalar bağlandı. Bu dəyişikliyi siz etməmisinizsə, giriş ekranındakı \"Şifrəmi unutmuşam\" ilə dərhal yeni şifrə təyin edin və {iletisim} ünvanına yazın."
@@ -353,7 +379,21 @@
    "body": "E-poçt ünvanınız təsdiqləndi və Saat Tarix hesabınız açıldı. Saytda və tətbiqdə e-poçt ünvanınız və şifrənizlə daxil ola bilərsiniz. Bunu siz etməmisinizsə, {iletisim} ünvanına yazın.",
    "button": "Hesabıma keç"
   },
-  "openedNo": "Bumba üzv nömrəniz: {no}."
+  "openedNo": "Bumba üzv nömrəniz: {no}.",
+  "deleteAsk": {
+   "subject": "Hesabınızı silmə sorğusu",
+   "body": "Saat Tarih hesabınızı silmə sorğusu gəldi. Silmək üçün aşağıdakı düyməyə toxunun və açılan səhifədə təsdiqləyin. Keçid {tarih} tarixinədək etibarlıdır; bu müddətdə təsdiqləməsəniz, sorğu ləğv olunur və hesabınızda heç nə dəyişmir.",
+   "button": "Silmə səhifəsini aç"
+  },
+  "dataDeleteAsk": {
+   "subject": "Nişanlarınızı silmə sorğusu",
+   "body": "Saat Tarih hesabınızdakı nişanları silmə sorğusu gəldi. Silmək üçün aşağıdakı düyməyə toxunun və açılan səhifədə təsdiqləyin. Keçid {tarih} tarixinədək etibarlıdır; bu müddətdə təsdiqləməsəniz, sorğu ləğv olunur.",
+   "button": "Silmə səhifəsini aç"
+  },
+  "dataDeleted": {
+   "subject": "Nişanlarınız silindi",
+   "body": "Saat Tarih hesabınızdakı nişanlar silindi. Hesabınız və digər məlumatlarınız qalır."
+  }
  },
  "ar": {
   "verify": {
@@ -381,10 +421,6 @@
   },
   "ignore": "إذا لم تطلب ذلك فيمكنك تجاهل هذه الرسالة؛ لن يتغيّر شيء في حسابك.",
   "footer": "وصلتك هذه الرسالة بسبب إجراء على حسابك في «الوقت والتاريخ». «الوقت والتاريخ» منتج من Bumba Life.",
-  "deletedAll": {
-   "subject": "تم حذف عضويتك في Bumba",
-   "body": "تم حذف حسابك في Saat Tarih وعضويتك في جميع منتجات Bumba. إن كانت هناك رسالة تهنئة مجدولة مسبقًا فقد تصل خلال 7 أيام على الأكثر."
-  },
   "passwordChanged": {
    "subject": "تم تغيير كلمة المرور",
    "body": "تم تغيير كلمة مرور حسابك في Saat Tarih وأُغلقت الجلسات المفتوحة. إن لم تقم بهذا التغيير فعيّن كلمة مرور جديدة فورًا عبر «نسيت كلمة المرور» واكتب إلى {iletisim}."
@@ -442,7 +478,21 @@
    "body": "تم التحقق من بريدك الإلكتروني وفُتح حسابك في Saat Tarih. يمكنك تسجيل الدخول في الموقع والتطبيق ببريدك الإلكتروني وكلمة المرور. إن لم تفعل ذلك فاكتب إلى {iletisim}.",
    "button": "الذهاب إلى حسابي"
   },
-  "openedNo": "رقم عضويتك في Bumba: {no}."
+  "openedNo": "رقم عضويتك في Bumba: {no}.",
+  "deleteAsk": {
+   "subject": "طلب حذف حسابك",
+   "body": "وصلنا طلب لحذف حسابك في Saat Tarih. للحذف اضغط الزر أدناه وأكّد في الصفحة التي تُفتح. الرابط صالح حتى {tarih}؛ وإن لم تؤكد حتى ذلك الحين يُلغى الطلب ولا يتغير شيء في حسابك.",
+   "button": "افتح صفحة الحذف"
+  },
+  "dataDeleteAsk": {
+   "subject": "طلب حذف شاراتك",
+   "body": "وصلنا طلب لحذف الشارات في حسابك على Saat Tarih. للحذف اضغط الزر أدناه وأكّد في الصفحة التي تُفتح. الرابط صالح حتى {tarih}؛ وإن لم تؤكد حتى ذلك الحين يُلغى الطلب.",
+   "button": "افتح صفحة الحذف"
+  },
+  "dataDeleted": {
+   "subject": "حُذفت شاراتك",
+   "body": "حُذفت الشارات في حسابك على Saat Tarih. يبقى حسابك ومعلوماتك الأخرى."
+  }
  },
  "id": {
   "verify": {
@@ -470,10 +520,6 @@
   },
   "ignore": "Jika Anda tidak membuat permintaan ini, abaikan email ini; tidak ada yang berubah di akun Anda.",
   "footer": "Anda menerima email ini karena ada tindakan pada akun Jam & Tanggal Anda. Jam & Tanggal adalah produk Bumba Life.",
-  "deletedAll": {
-   "subject": "Keanggotaan Bumba Anda telah dihapus",
-   "body": "Akun Saat Tarih Anda dan keanggotaan Anda di semua produk Bumba telah dihapus. Email ucapan yang sudah terjadwal masih dapat tiba paling lambat dalam 7 hari."
-  },
   "passwordChanged": {
    "subject": "Kata sandi Anda telah diubah",
    "body": "Kata sandi akun Saat Tarih Anda telah diubah dan sesi yang terbuka telah ditutup. Jika bukan Anda yang mengubahnya, segera buat kata sandi baru lewat \"Lupa kata sandi\" dan tulis ke {iletisim}."
@@ -531,7 +577,21 @@
    "body": "Alamat email Anda telah diverifikasi dan akun Saat Tarih Anda telah dibuka. Anda dapat masuk di situs web dan aplikasi dengan alamat email dan kata sandi Anda. Jika bukan Anda yang melakukannya, tulis ke {iletisim}.",
    "button": "Buka akun saya"
   },
-  "openedNo": "Nomor anggota Bumba Anda: {no}."
+  "openedNo": "Nomor anggota Bumba Anda: {no}.",
+  "deleteAsk": {
+   "subject": "Permintaan menghapus akun Anda",
+   "body": "Kami menerima permintaan untuk menghapus akun Saat Tarih Anda. Untuk menghapusnya, ketuk tombol di bawah dan konfirmasi di halaman yang terbuka. Tautan berlaku sampai {tarih}; jika tidak dikonfirmasi sampai saat itu, permintaan dibatalkan dan akun Anda tidak berubah.",
+   "button": "Buka halaman penghapusan"
+  },
+  "dataDeleteAsk": {
+   "subject": "Permintaan menghapus lencana Anda",
+   "body": "Kami menerima permintaan untuk menghapus lencana di akun Saat Tarih Anda. Untuk menghapusnya, ketuk tombol di bawah dan konfirmasi di halaman yang terbuka. Tautan berlaku sampai {tarih}; jika tidak dikonfirmasi sampai saat itu, permintaan dibatalkan.",
+   "button": "Buka halaman penghapusan"
+  },
+  "dataDeleted": {
+   "subject": "Lencana Anda telah dihapus",
+   "body": "Lencana di akun Saat Tarih Anda telah dihapus. Akun dan informasi Anda yang lain tetap ada."
+  }
  },
  "ur": {
   "verify": {
@@ -559,10 +619,6 @@
   },
   "ignore": "اگر یہ درخواست آپ نے نہیں کی تو اس ای میل کو نظر انداز کر دیں؛ آپ کے اکاؤنٹ میں کچھ نہیں بدلے گا۔",
   "footer": "یہ ای میل آپ کو آپ کے وقت اور تاریخ اکاؤنٹ پر کسی کارروائی کی وجہ سے ملی ہے۔ وقت اور تاریخ Bumba Life کی پیشکش ہے۔",
-  "deletedAll": {
-   "subject": "آپ کی Bumba رکنیت حذف کر دی گئی",
-   "body": "آپ کا Saat Tarih اکاؤنٹ اور تمام Bumba مصنوعات میں آپ کی رکنیت حذف کر دی گئی۔ پہلے سے طے شدہ مبارکباد کی ای میل زیادہ سے زیادہ 7 دن میں پہنچ سکتی ہے۔"
-  },
   "passwordChanged": {
    "subject": "آپ کا پاس ورڈ بدل گیا",
    "body": "آپ کے Saat Tarih اکاؤنٹ کا پاس ورڈ بدل گیا اور کھلے سیشن بند کر دیے گئے۔ اگر یہ تبدیلی آپ نے نہیں کی تو فوراً «پاس ورڈ بھول گئے» سے نیا پاس ورڈ بنائیں اور {iletisim} پر لکھیں۔"
@@ -620,7 +676,21 @@
    "body": "آپ کے ای میل پتے کی تصدیق ہو گئی اور Saat Tarih میں آپ کا اکاؤنٹ کھل گیا۔ آپ ویب سائٹ اور ایپ میں اپنے ای میل پتے اور پاس ورڈ سے سائن ان کر سکتے ہیں۔ اگر یہ آپ نے نہیں کیا تو {iletisim} پر لکھیں۔",
    "button": "میرے اکاؤنٹ پر جائیں"
   },
-  "openedNo": "آپ کا Bumba رکنیت نمبر: {no}۔"
+  "openedNo": "آپ کا Bumba رکنیت نمبر: {no}۔",
+  "deleteAsk": {
+   "subject": "آپ کا اکاؤنٹ حذف کرنے کی درخواست",
+   "body": "آپ کا Saat Tarih اکاؤنٹ حذف کرنے کی درخواست آئی ہے۔ حذف کرنے کے لیے نیچے والا بٹن دبائیں اور کھلنے والے صفحے پر تصدیق کریں۔ لنک {tarih} تک کارآمد ہے؛ تب تک تصدیق نہ کریں تو درخواست منسوخ ہو جاتی ہے اور آپ کے اکاؤنٹ میں کچھ نہیں بدلتا۔",
+   "button": "حذف کرنے کا صفحہ کھولیں"
+  },
+  "dataDeleteAsk": {
+   "subject": "آپ کے بیج حذف کرنے کی درخواست",
+   "body": "آپ کے Saat Tarih اکاؤنٹ کے بیج حذف کرنے کی درخواست آئی ہے۔ حذف کرنے کے لیے نیچے والا بٹن دبائیں اور کھلنے والے صفحے پر تصدیق کریں۔ لنک {tarih} تک کارآمد ہے؛ تب تک تصدیق نہ کریں تو درخواست منسوخ ہو جاتی ہے۔",
+   "button": "حذف کرنے کا صفحہ کھولیں"
+  },
+  "dataDeleted": {
+   "subject": "آپ کے بیج حذف کر دیے گئے",
+   "body": "آپ کے Saat Tarih اکاؤنٹ کے بیج حذف کر دیے گئے۔ آپ کا اکاؤنٹ اور باقی معلومات موجود ہیں۔"
+  }
  },
  "fa": {
   "verify": {
@@ -648,10 +718,6 @@
   },
   "ignore": "اگر این درخواست از شما نبوده، این ایمیل را نادیده بگیرید؛ چیزی در حساب شما تغییر نمی‌کند.",
   "footer": "این ایمیل به‌سبب کاری روی حساب «ساعت و تاریخ» شما فرستاده شد. «ساعت و تاریخ» محصولی از Bumba Life است.",
-  "deletedAll": {
-   "subject": "عضویت Bumba شما حذف شد",
-   "body": "حساب Saat Tarih شما و عضویتتان در همهٔ محصولات Bumba حذف شد. اگر ایمیل تبریکی از قبل زمان‌بندی شده باشد، ممکن است حداکثر تا ۷ روز برسد."
-  },
   "passwordChanged": {
    "subject": "رمز عبور شما تغییر کرد",
    "body": "رمز عبور حساب Saat Tarih شما تغییر کرد و نشست‌های باز بسته شد. اگر این تغییر کار شما نبود، فوراً با «رمز را فراموش کرده‌ام» رمز تازه بگذارید و به {iletisim} بنویسید."
@@ -709,7 +775,21 @@
    "body": "نشانی ایمیل شما تأیید شد و حساب شما در Saat Tarih باز شد. می‌توانید در وب‌سایت و برنامه با نشانی ایمیل و رمز عبور خود وارد شوید. اگر این کار را شما نکرده‌اید به {iletisim} بنویسید.",
    "button": "رفتن به حساب من"
   },
-  "openedNo": "شمارهٔ عضویت Bumba شما: {no}."
+  "openedNo": "شمارهٔ عضویت Bumba شما: {no}.",
+  "deleteAsk": {
+   "subject": "درخواست حذف حساب شما",
+   "body": "درخواستی برای حذف حساب Saat Tarih شما رسید. برای حذف، دکمه‌ی زیر را بزنید و در صفحه‌ای که باز می‌شود تأیید کنید. پیوند تا {tarih} معتبر است؛ اگر تا آن زمان تأیید نکنید، درخواست لغو می‌شود و چیزی در حساب شما تغییر نمی‌کند.",
+   "button": "باز کردن صفحه‌ی حذف"
+  },
+  "dataDeleteAsk": {
+   "subject": "درخواست حذف نشان‌های شما",
+   "body": "درخواستی برای حذف نشان‌های حساب Saat Tarih شما رسید. برای حذف، دکمه‌ی زیر را بزنید و در صفحه‌ای که باز می‌شود تأیید کنید. پیوند تا {tarih} معتبر است؛ اگر تا آن زمان تأیید نکنید، درخواست لغو می‌شود.",
+   "button": "باز کردن صفحه‌ی حذف"
+  },
+  "dataDeleted": {
+   "subject": "نشان‌های شما حذف شد",
+   "body": "نشان‌های حساب Saat Tarih شما حذف شد. حساب و دیگر اطلاعات شما سر جایش است."
+  }
  },
  "fr": {
   "verify": {
@@ -737,10 +817,6 @@
   },
   "ignore": "Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail ; rien ne change dans votre compte.",
   "footer": "Vous recevez cet e-mail à la suite d'une action sur votre compte Heure & Date. Heure & Date est un produit Bumba Life.",
-  "deletedAll": {
-   "subject": "Votre adhésion Bumba a été supprimée",
-   "body": "Votre compte Saat Tarih et votre adhésion à tous les produits Bumba ont été supprimés. Un e-mail de félicitations déjà programmé peut encore arriver dans un délai de 7 jours."
-  },
   "passwordChanged": {
    "subject": "Votre mot de passe a changé",
    "body": "Le mot de passe de votre compte Saat Tarih a changé et vos sessions ouvertes ont été fermées. Si ce n'était pas vous, définissez tout de suite un nouveau mot de passe avec « Mot de passe oublié » et écrivez à {iletisim}."
@@ -798,7 +874,21 @@
    "body": "Votre adresse e-mail est confirmée et votre compte Saat Tarih est ouvert. Vous vous connectez sur le site et dans l'application avec votre adresse e-mail et votre mot de passe. Si ce n'était pas vous, écrivez à {iletisim}.",
    "button": "Aller à mon compte"
   },
-  "openedNo": "Votre numéro de membre Bumba : {no}."
+  "openedNo": "Votre numéro de membre Bumba : {no}.",
+  "deleteAsk": {
+   "subject": "Demande de suppression de votre compte",
+   "body": "Nous avons reçu une demande de suppression de votre compte Saat Tarih. Pour le supprimer, touchez le bouton ci-dessous et confirmez sur la page qui s'ouvre. Le lien est valable jusqu'au {tarih} ; sans confirmation d'ici là, la demande est annulée et rien ne change dans votre compte.",
+   "button": "Ouvrir la page de suppression"
+  },
+  "dataDeleteAsk": {
+   "subject": "Demande de suppression de vos badges",
+   "body": "Nous avons reçu une demande de suppression des badges de votre compte Saat Tarih. Pour les supprimer, touchez le bouton ci-dessous et confirmez sur la page qui s'ouvre. Le lien est valable jusqu'au {tarih} ; sans confirmation d'ici là, la demande est annulée.",
+   "button": "Ouvrir la page de suppression"
+  },
+  "dataDeleted": {
+   "subject": "Vos badges ont été supprimés",
+   "body": "Les badges de votre compte Saat Tarih ont été supprimés. Votre compte et vos autres informations restent."
+  }
  },
  "ru": {
   "verify": {
@@ -826,10 +916,6 @@
   },
   "ignore": "Если вы этого не запрашивали, просто проигнорируйте письмо: в аккаунте ничего не изменится.",
   "footer": "Вы получили это письмо из-за действия в вашем аккаунте «Время и дата». «Время и дата» — продукт Bumba Life.",
-  "deletedAll": {
-   "subject": "Ваше членство в Bumba удалено",
-   "body": "Ваш аккаунт Saat Tarih и членство во всех продуктах Bumba удалены. Уже запланированное поздравительное письмо может прийти в течение 7 дней."
-  },
   "passwordChanged": {
    "subject": "Ваш пароль изменён",
    "body": "Пароль вашего аккаунта Saat Tarih изменён, открытые сеансы завершены. Если это были не вы, сразу задайте новый пароль через «Забыли пароль?» и напишите на {iletisim}."
@@ -887,7 +973,21 @@
    "body": "Ваш адрес электронной почты подтверждён, аккаунт Saat Tarih открыт. Входите на сайте и в приложении с вашим адресом электронной почты и паролем. Если это были не вы, напишите на {iletisim}.",
    "button": "Перейти в аккаунт"
   },
-  "openedNo": "Ваш номер участника Bumba: {no}."
+  "openedNo": "Ваш номер участника Bumba: {no}.",
+  "deleteAsk": {
+   "subject": "Запрос на удаление аккаунта",
+   "body": "Мы получили запрос на удаление вашего аккаунта Saat Tarih. Чтобы удалить его, нажмите кнопку ниже и подтвердите на открывшейся странице. Ссылка действительна до {tarih}; если не подтвердить до этого времени, запрос отменится и в аккаунте ничего не изменится.",
+   "button": "Открыть страницу удаления"
+  },
+  "dataDeleteAsk": {
+   "subject": "Запрос на удаление значков",
+   "body": "Мы получили запрос на удаление значков в вашем аккаунте Saat Tarih. Чтобы удалить их, нажмите кнопку ниже и подтвердите на открывшейся странице. Ссылка действительна до {tarih}; если не подтвердить до этого времени, запрос отменится.",
+   "button": "Открыть страницу удаления"
+  },
+  "dataDeleted": {
+   "subject": "Ваши значки удалены",
+   "body": "Значки в вашем аккаунте Saat Tarih удалены. Аккаунт и остальные данные сохранены."
+  }
  },
  "ja": {
   "verify": {
@@ -915,10 +1015,6 @@
   },
   "ignore": "この操作に心当たりがない場合は、このメールを無視してください。アカウントは変更されません。",
   "footer": "このメールは「時刻と日付」アカウントでの操作により送信されました。「時刻と日付」は Bumba Life の製品です。",
-  "deletedAll": {
-   "subject": "Bumba の会員登録を削除しました",
-   "body": "Saat Tarih のアカウントと、すべての Bumba 製品での会員登録を削除しました。すでに予約済みのお祝いメールは最長 7 日以内に届く場合があります。"
-  },
   "passwordChanged": {
    "subject": "パスワードが変更されました",
    "body": "Saat Tarih アカウントのパスワードが変更され、開いていたセッションは終了しました。心当たりがない場合は、すぐに「パスワードをお忘れですか」で新しいパスワードを設定し、{iletisim} までご連絡ください。"
@@ -976,7 +1072,21 @@
    "body": "メールアドレスの確認が完了し、Saat Tarih のアカウントを開設しました。ウェブサイトとアプリでメールアドレスとパスワードを使ってログインできます。お心当たりがない場合は {iletisim} までご連絡ください。",
    "button": "マイアカウントへ"
   },
-  "openedNo": "Bumba 会員番号：{no}"
+  "openedNo": "Bumba 会員番号：{no}",
+  "deleteAsk": {
+   "subject": "アカウント削除のリクエスト",
+   "body": "Saat Tarih アカウントの削除リクエストを受け付けました。削除するには下のボタンを押し、開いたページで確認してください。リンクは {tarih} まで有効です。それまでに確認しない場合、リクエストは取り消され、アカウントは何も変わりません。",
+   "button": "削除ページを開く"
+  },
+  "dataDeleteAsk": {
+   "subject": "バッジ削除のリクエスト",
+   "body": "Saat Tarih アカウントのバッジ削除リクエストを受け付けました。削除するには下のボタンを押し、開いたページで確認してください。リンクは {tarih} まで有効です。それまでに確認しない場合、リクエストは取り消されます。",
+   "button": "削除ページを開く"
+  },
+  "dataDeleted": {
+   "subject": "バッジを削除しました",
+   "body": "Saat Tarih アカウントのバッジを削除しました。アカウントとほかの情報はそのまま残っています。"
+  }
  },
  "ko": {
   "verify": {
@@ -1004,10 +1114,6 @@
   },
   "ignore": "요청하지 않으셨다면 이 메일을 무시하세요. 계정에는 아무 변화가 없습니다.",
   "footer": "'시간과 날짜' 계정에서 일어난 작업 때문에 이 메일을 받으셨습니다. '시간과 날짜'는 Bumba Life의 제품입니다.",
-  "deletedAll": {
-   "subject": "Bumba 회원 자격이 삭제되었습니다",
-   "body": "Saat Tarih 계정과 모든 Bumba 제품의 회원 자격이 삭제되었습니다. 이미 예약된 축하 이메일은 최대 7일 안에 도착할 수 있습니다."
-  },
   "passwordChanged": {
    "subject": "비밀번호가 변경되었습니다",
    "body": "Saat Tarih 계정의 비밀번호가 변경되었고 열려 있던 세션은 종료되었습니다. 본인이 변경하지 않았다면 즉시 \"비밀번호 찾기\"로 새 비밀번호를 설정하고 {iletisim}으로 알려 주세요."
@@ -1065,7 +1171,21 @@
    "body": "이메일 주소가 인증되어 Saat Tarih 계정이 열렸습니다. 웹사이트와 앱에서 이메일 주소와 비밀번호로 로그인할 수 있습니다. 본인이 하지 않으셨다면 {iletisim}으로 알려 주세요.",
    "button": "내 계정으로 이동"
   },
-  "openedNo": "Bumba 회원 번호: {no}"
+  "openedNo": "Bumba 회원 번호: {no}",
+  "deleteAsk": {
+   "subject": "계정 삭제 요청",
+   "body": "Saat Tarih 계정 삭제 요청을 받았습니다. 삭제하려면 아래 버튼을 누르고 열리는 페이지에서 확인하세요. 링크는 {tarih}까지 유효하며, 그때까지 확인하지 않으면 요청은 취소되고 계정은 그대로 유지됩니다.",
+   "button": "삭제 페이지 열기"
+  },
+  "dataDeleteAsk": {
+   "subject": "배지 삭제 요청",
+   "body": "Saat Tarih 계정의 배지 삭제 요청을 받았습니다. 삭제하려면 아래 버튼을 누르고 열리는 페이지에서 확인하세요. 링크는 {tarih}까지 유효하며, 그때까지 확인하지 않으면 요청은 취소됩니다.",
+   "button": "삭제 페이지 열기"
+  },
+  "dataDeleted": {
+   "subject": "배지가 삭제되었습니다",
+   "body": "Saat Tarih 계정의 배지가 삭제되었습니다. 계정과 다른 정보는 그대로 남아 있습니다."
+  }
  },
  "zh": {
   "verify": {
@@ -1093,10 +1213,6 @@
   },
   "ignore": "如果这不是你发出的请求，请忽略此邮件；你的账户不会有任何变化。",
   "footer": "你收到此邮件是因为你的“时间与日期”账户有操作。“时间与日期”是 Bumba Life 的产品。",
-  "deletedAll": {
-   "subject": "您的 Bumba 会员资格已删除",
-   "body": "您的 Saat Tarih 账户以及在所有 Bumba 产品中的会员资格已删除。已预定发送的祝贺邮件最迟可能在 7 天内送达。"
-  },
   "passwordChanged": {
    "subject": "您的密码已更改",
    "body": "您的 Saat Tarih 账户密码已更改，已打开的会话均已退出。如果不是您本人操作，请立即通过“忘记密码”设置新密码，并写信至 {iletisim}。"
@@ -1154,7 +1270,21 @@
    "body": "您的电子邮件地址已验证，Saat Tarih 账户已开通。您可以在网站和应用中用电子邮件地址和密码登录。如果不是您本人操作，请写信至 {iletisim}。",
    "button": "前往我的账户"
   },
-  "openedNo": "您的 Bumba 会员编号：{no}"
+  "openedNo": "您的 Bumba 会员编号：{no}",
+  "deleteAsk": {
+   "subject": "删除账户的请求",
+   "body": "我们收到了删除您 Saat Tarih 账户的请求。如需删除，请点按下方按钮，并在打开的页面上确认。链接有效期至 {tarih}；届时仍未确认，请求将取消，您的账户不会有任何变化。",
+   "button": "打开删除页面"
+  },
+  "dataDeleteAsk": {
+   "subject": "删除徽章的请求",
+   "body": "我们收到了删除您 Saat Tarih 账户中徽章的请求。如需删除，请点按下方按钮，并在打开的页面上确认。链接有效期至 {tarih}；届时仍未确认，请求将取消。",
+   "button": "打开删除页面"
+  },
+  "dataDeleted": {
+   "subject": "您的徽章已删除",
+   "body": "您 Saat Tarih 账户中的徽章已删除。账户和其他信息保留。"
+  }
  },
  "fil": {
   "verify": {
@@ -1182,10 +1312,6 @@
   },
   "ignore": "Kung hindi kayo ang humiling nito, huwag pansinin ang email na ito; walang magbabago sa inyong account.",
   "footer": "Natanggap ninyo ang email na ito dahil sa isang aksyon sa inyong Saat Tarih account. Ang Saat Tarih ay produkto ng Bumba Life.",
-  "deletedAll": {
-   "subject": "Nabura na ang inyong Bumba membership",
-   "body": "Nabura na ang inyong Saat Tarih account at ang inyong membership sa lahat ng produkto ng Bumba. Maaaring dumating pa sa loob ng 7 araw ang email ng pagbati na naka-iskedyul na."
-  },
   "passwordChanged": {
    "subject": "Napalitan ang inyong password",
    "body": "Napalitan ang password ng inyong Saat Tarih account at naisara ang mga bukas na session. Kung hindi kayo ito, magtakda agad ng bagong password gamit ang \"Nakalimutan ang password\" at sumulat sa {iletisim}."
@@ -1243,7 +1369,21 @@
    "body": "Na-verify na ang inyong email address at bukas na ang inyong Saat Tarih account. Makakapag-sign in kayo sa website at sa app gamit ang inyong email address at password. Kung hindi kayo ang gumawa nito, sumulat sa {iletisim}.",
    "button": "Pumunta sa aking account"
   },
-  "openedNo": "Ang inyong numero ng miyembro sa Bumba: {no}."
+  "openedNo": "Ang inyong numero ng miyembro sa Bumba: {no}.",
+  "deleteAsk": {
+   "subject": "Kahilingang burahin ang inyong account",
+   "body": "Nakatanggap kami ng kahilingang burahin ang inyong Saat Tarih account. Para burahin ito, pindutin ang button sa ibaba at kumpirmahin sa pahinang magbubukas. May bisa ang link hanggang {tarih}; kung hindi makumpirma hanggang doon, makakansela ang kahilingan at walang magbabago sa inyong account.",
+   "button": "Buksan ang pahina ng pagbura"
+  },
+  "dataDeleteAsk": {
+   "subject": "Kahilingang burahin ang inyong mga badge",
+   "body": "Nakatanggap kami ng kahilingang burahin ang mga badge sa inyong Saat Tarih account. Para burahin ang mga ito, pindutin ang button sa ibaba at kumpirmahin sa pahinang magbubukas. May bisa ang link hanggang {tarih}; kung hindi makumpirma hanggang doon, makakansela ang kahilingan.",
+   "button": "Buksan ang pahina ng pagbura"
+  },
+  "dataDeleted": {
+   "subject": "Nabura na ang inyong mga badge",
+   "body": "Nabura na ang mga badge sa inyong Saat Tarih account. Nananatili ang inyong account at iba pang impormasyon."
+  }
  },
  "th": {
   "verify": {
@@ -1271,10 +1411,6 @@
   },
   "ignore": "หากคุณไม่ได้ขอ ไม่ต้องสนใจอีเมลนี้ บัญชีของคุณจะไม่เปลี่ยนแปลง",
   "footer": "คุณได้รับอีเมลนี้เพราะมีการดำเนินการกับบัญชี เวลาและวันที่ ของคุณ เวลาและวันที่ เป็นผลิตภัณฑ์ของ Bumba Life",
-  "deletedAll": {
-   "subject": "ลบการเป็นสมาชิก Bumba ของคุณแล้ว",
-   "body": "ลบบัญชี Saat Tarih ของคุณและการเป็นสมาชิกในผลิตภัณฑ์ Bumba ทั้งหมดแล้ว อีเมลอวยพรที่ตั้งเวลาไว้ก่อนหน้าอาจยังส่งถึงภายใน 7 วัน"
-  },
   "passwordChanged": {
    "subject": "เปลี่ยนรหัสผ่านของคุณแล้ว",
    "body": "รหัสผ่านบัญชี Saat Tarih ของคุณถูกเปลี่ยน และเซสชันที่เปิดอยู่ถูกปิดแล้ว หากคุณไม่ได้เปลี่ยนเอง ให้ตั้งรหัสผ่านใหม่ทันทีด้วย \"ลืมรหัสผ่าน\" และเขียนถึง {iletisim}"
@@ -1332,7 +1468,21 @@
    "body": "ยืนยันอีเมลของคุณแล้ว และเปิดบัญชี Saat Tarih ของคุณแล้ว คุณเข้าสู่ระบบบนเว็บไซต์และในแอปได้ด้วยอีเมลและรหัสผ่านของคุณ หากคุณไม่ได้ทำเช่นนี้ โปรดเขียนถึง {iletisim}",
    "button": "ไปที่บัญชีของฉัน"
   },
-  "openedNo": "หมายเลขสมาชิก Bumba ของคุณ: {no}"
+  "openedNo": "หมายเลขสมาชิก Bumba ของคุณ: {no}",
+  "deleteAsk": {
+   "subject": "คำขอลบบัญชีของคุณ",
+   "body": "เราได้รับคำขอลบบัญชี Saat Tarih ของคุณ หากต้องการลบ ให้แตะปุ่มด้านล่างและยืนยันในหน้าที่เปิดขึ้น ลิงก์ใช้ได้ถึง {tarih} หากไม่ยืนยันภายในเวลานั้น คำขอจะถูกยกเลิกและบัญชีของคุณจะไม่เปลี่ยนแปลง",
+   "button": "เปิดหน้าการลบ"
+  },
+  "dataDeleteAsk": {
+   "subject": "คำขอลบเหรียญตราของคุณ",
+   "body": "เราได้รับคำขอลบเหรียญตราในบัญชี Saat Tarih ของคุณ หากต้องการลบ ให้แตะปุ่มด้านล่างและยืนยันในหน้าที่เปิดขึ้น ลิงก์ใช้ได้ถึง {tarih} หากไม่ยืนยันภายในเวลานั้น คำขอจะถูกยกเลิก",
+   "button": "เปิดหน้าการลบ"
+  },
+  "dataDeleted": {
+   "subject": "ลบเหรียญตราของคุณแล้ว",
+   "body": "ลบเหรียญตราในบัญชี Saat Tarih ของคุณแล้ว บัญชีและข้อมูลอื่นยังคงอยู่"
+  }
  },
  "es": {
   "verify": {
@@ -1360,10 +1510,6 @@
   },
   "ignore": "Si usted no hizo esta solicitud, ignore este correo; no cambia nada en su cuenta.",
   "footer": "Recibió este correo por una acción en su cuenta de Hora y Fecha. Hora y Fecha es un producto de Bumba Life.",
-  "deletedAll": {
-   "subject": "Su membresía de Bumba se ha eliminado",
-   "body": "Su cuenta de Saat Tarih y su membresía en todos los productos de Bumba se han eliminado. Un correo de felicitación ya programado aún puede llegar en un plazo de 7 días."
-  },
   "passwordChanged": {
    "subject": "Su contraseña ha cambiado",
    "body": "La contraseña de su cuenta de Saat Tarih ha cambiado y se han cerrado las sesiones abiertas. Si no fue usted, establezca de inmediato una nueva contraseña con «Olvidé mi contraseña» y escriba a {iletisim}."
@@ -1421,7 +1567,21 @@
    "body": "Su dirección de correo está verificada y su cuenta de Saat Tarih está abierta. Puede iniciar sesión en el sitio web y en la aplicación con su correo y su contraseña. Si no fue usted, escriba a {iletisim}.",
    "button": "Ir a mi cuenta"
   },
-  "openedNo": "Su número de miembro de Bumba: {no}."
+  "openedNo": "Su número de miembro de Bumba: {no}.",
+  "deleteAsk": {
+   "subject": "Solicitud para eliminar su cuenta",
+   "body": "Recibimos una solicitud para eliminar su cuenta de Saat Tarih. Para eliminarla, toque el botón de abajo y confirme en la página que se abre. El enlace es válido hasta el {tarih}; si no confirma para entonces, la solicitud se cancela y nada cambia en su cuenta.",
+   "button": "Abrir la página de eliminación"
+  },
+  "dataDeleteAsk": {
+   "subject": "Solicitud para eliminar sus insignias",
+   "body": "Recibimos una solicitud para eliminar las insignias de su cuenta de Saat Tarih. Para eliminarlas, toque el botón de abajo y confirme en la página que se abre. El enlace es válido hasta el {tarih}; si no confirma para entonces, la solicitud se cancela.",
+   "button": "Abrir la página de eliminación"
+  },
+  "dataDeleted": {
+   "subject": "Se eliminaron sus insignias",
+   "body": "Se eliminaron las insignias de su cuenta de Saat Tarih. Su cuenta y el resto de su información se mantienen."
+  }
  },
  "pt": {
   "verify": {
@@ -1449,10 +1609,6 @@
   },
   "ignore": "Se você não fez este pedido, ignore este e-mail; nada muda na sua conta.",
   "footer": "Você recebeu este e-mail por causa de uma ação na sua conta do Hora e Data. Hora e Data é um produto da Bumba Life.",
-  "deletedAll": {
-   "subject": "Sua associação Bumba foi excluída",
-   "body": "Sua conta do Saat Tarih e sua associação em todos os produtos Bumba foram excluídas. Um e-mail de parabéns já agendado ainda pode chegar em até 7 dias."
-  },
   "passwordChanged": {
    "subject": "Sua senha foi alterada",
    "body": "A senha da sua conta do Saat Tarih foi alterada e as sessões abertas foram encerradas. Se não foi você, defina agora uma nova senha com \"Esqueci a senha\" e escreva para {iletisim}."
@@ -1510,7 +1666,21 @@
    "body": "Seu e-mail foi confirmado e sua conta no Saat Tarih foi aberta. Você entra no site e no aplicativo com seu e-mail e sua senha. Se não foi você, escreva para {iletisim}.",
    "button": "Ir para minha conta"
   },
-  "openedNo": "Seu número de membro Bumba: {no}."
+  "openedNo": "Seu número de membro Bumba: {no}.",
+  "deleteAsk": {
+   "subject": "Pedido para excluir sua conta",
+   "body": "Recebemos um pedido para excluir sua conta do Saat Tarih. Para excluí-la, toque no botão abaixo e confirme na página que abrir. O link vale até {tarih}; se não confirmar até lá, o pedido é cancelado e nada muda na sua conta.",
+   "button": "Abrir a página de exclusão"
+  },
+  "dataDeleteAsk": {
+   "subject": "Pedido para excluir seus selos",
+   "body": "Recebemos um pedido para excluir os selos da sua conta do Saat Tarih. Para excluí-los, toque no botão abaixo e confirme na página que abrir. O link vale até {tarih}; se não confirmar até lá, o pedido é cancelado.",
+   "button": "Abrir a página de exclusão"
+  },
+  "dataDeleted": {
+   "subject": "Seus selos foram excluídos",
+   "body": "Os selos da sua conta do Saat Tarih foram excluídos. Sua conta e suas outras informações continuam."
+  }
  },
  "hi": {
   "verify": {
@@ -1538,10 +1708,6 @@
   },
   "ignore": "अगर यह अनुरोध आपने नहीं किया, तो इस ईमेल को अनदेखा करें; आपके खाते में कुछ नहीं बदलेगा।",
   "footer": "आपको यह ईमेल आपके समय और तारीख खाते पर हुई किसी कार्रवाई की वजह से मिला है। समय और तारीख Bumba Life का उत्पाद है।",
-  "deletedAll": {
-   "subject": "आपकी Bumba सदस्यता हटा दी गई",
-   "body": "आपका Saat Tarih खाता और सभी Bumba उत्पादों में आपकी सदस्यता हटा दी गई है। पहले से तय किया गया शुभकामना ईमेल अधिकतम 7 दिनों में आ सकता है।"
-  },
   "passwordChanged": {
    "subject": "आपका पासवर्ड बदल गया",
    "body": "आपके Saat Tarih खाते का पासवर्ड बदल गया है और खुले सत्र बंद कर दिए गए हैं। अगर यह बदलाव आपने नहीं किया, तो तुरंत \"पासवर्ड भूल गए\" से नया पासवर्ड बनाएँ और {iletisim} पर लिखें।"
@@ -1599,7 +1765,21 @@
    "body": "आपका ईमेल पता सत्यापित हो गया और Saat Tarih में आपका खाता खुल गया। आप वेबसाइट और ऐप में अपने ईमेल पते और पासवर्ड से साइन इन कर सकते हैं। अगर यह आपने नहीं किया, तो {iletisim} पर लिखें।",
    "button": "मेरे खाते पर जाएँ"
   },
-  "openedNo": "आपका Bumba सदस्य नंबर: {no}।"
+  "openedNo": "आपका Bumba सदस्य नंबर: {no}।",
+  "deleteAsk": {
+   "subject": "आपका खाता हटाने का अनुरोध",
+   "body": "आपका Saat Tarih खाता हटाने का अनुरोध मिला है। हटाने के लिए नीचे का बटन दबाएँ और खुलने वाले पेज पर पुष्टि करें। लिंक {tarih} तक मान्य है; तब तक पुष्टि न करने पर अनुरोध रद्द हो जाता है और आपके खाते में कुछ नहीं बदलता।",
+   "button": "हटाने का पेज खोलें"
+  },
+  "dataDeleteAsk": {
+   "subject": "आपके बैज हटाने का अनुरोध",
+   "body": "आपके Saat Tarih खाते के बैज हटाने का अनुरोध मिला है। हटाने के लिए नीचे का बटन दबाएँ और खुलने वाले पेज पर पुष्टि करें। लिंक {tarih} तक मान्य है; तब तक पुष्टि न करने पर अनुरोध रद्द हो जाता है।",
+   "button": "हटाने का पेज खोलें"
+  },
+  "dataDeleted": {
+   "subject": "आपके बैज हटा दिए गए",
+   "body": "आपके Saat Tarih खाते के बैज हटा दिए गए। आपका खाता और बाकी जानकारी बनी हुई है।"
+  }
  },
  "bn": {
   "verify": {
@@ -1627,10 +1807,6 @@
   },
   "ignore": "অনুরোধটি আপনি না করে থাকলে এই ইমেইল উপেক্ষা করুন; আপনার অ্যাকাউন্টে কিছুই বদলাবে না।",
   "footer": "আপনার সময় ও তারিখ অ্যাকাউন্টে একটি কাজের কারণে আপনি এই ইমেইল পেয়েছেন। সময় ও তারিখ Bumba Life-এর একটি পণ্য।",
-  "deletedAll": {
-   "subject": "আপনার Bumba সদস্যপদ মুছে ফেলা হয়েছে",
-   "body": "আপনার Saat Tarih অ্যাকাউন্ট এবং সব Bumba পণ্যে আপনার সদস্যপদ মুছে ফেলা হয়েছে। আগে থেকে নির্ধারিত শুভেচ্ছা ইমেইল সর্বোচ্চ ৭ দিনের মধ্যে আসতে পারে।"
-  },
   "passwordChanged": {
    "subject": "আপনার পাসওয়ার্ড বদলেছে",
    "body": "আপনার Saat Tarih অ্যাকাউন্টের পাসওয়ার্ড বদলেছে এবং খোলা সেশনগুলো বন্ধ করা হয়েছে। এই পরিবর্তন আপনি না করে থাকলে এখনই \"পাসওয়ার্ড ভুলে গেছি\" দিয়ে নতুন পাসওয়ার্ড দিন এবং {iletisim} ঠিকানায় লিখুন।"
@@ -1688,6 +1864,20 @@
    "body": "আপনার ইমেইল ঠিকানা যাচাই হয়েছে এবং Saat Tarih-এ আপনার অ্যাকাউন্ট খোলা হয়েছে। ওয়েবসাইট ও অ্যাপে আপনার ইমেইল ঠিকানা ও পাসওয়ার্ড দিয়ে সাইন ইন করতে পারেন। এটি আপনি না করে থাকলে {iletisim} ঠিকানায় লিখুন।",
    "button": "আমার অ্যাকাউন্টে যান"
   },
-  "openedNo": "আপনার Bumba সদস্য নম্বর: {no}।"
+  "openedNo": "আপনার Bumba সদস্য নম্বর: {no}।",
+  "deleteAsk": {
+   "subject": "আপনার অ্যাকাউন্ট মোছার অনুরোধ",
+   "body": "আপনার Saat Tarih অ্যাকাউন্ট মোছার একটি অনুরোধ পেয়েছি। মুছতে নিচের বোতামে চাপুন এবং যে পাতা খোলে সেখানে নিশ্চিত করুন। লিংকটি {tarih} পর্যন্ত বৈধ; এর মধ্যে নিশ্চিত না করলে অনুরোধ বাতিল হয় এবং আপনার অ্যাকাউন্টে কিছু বদলায় না।",
+   "button": "মোছার পাতা খুলুন"
+  },
+  "dataDeleteAsk": {
+   "subject": "আপনার ব্যাজ মোছার অনুরোধ",
+   "body": "আপনার Saat Tarih অ্যাকাউন্টের ব্যাজ মোছার একটি অনুরোধ পেয়েছি। মুছতে নিচের বোতামে চাপুন এবং যে পাতা খোলে সেখানে নিশ্চিত করুন। লিংকটি {tarih} পর্যন্ত বৈধ; এর মধ্যে নিশ্চিত না করলে অনুরোধ বাতিল হয়।",
+   "button": "মোছার পাতা খুলুন"
+  },
+  "dataDeleted": {
+   "subject": "আপনার ব্যাজ মুছে ফেলা হয়েছে",
+   "body": "আপনার Saat Tarih অ্যাকাউন্টের ব্যাজ মুছে ফেলা হয়েছে। অ্যাকাউন্ট ও অন্য তথ্য রয়ে গেছে।"
+  }
  }
 }

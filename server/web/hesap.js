@@ -73,6 +73,7 @@
     if (r.status === 429) return t["err.tooMany"];
     if (c === "INVALID_EMAIL_OR_PASSWORD" || c === "bilgiler") return t["err.credentials"];
     if (c === "EMAIL_NOT_VERIFIED") return t["err.unverified"];
+    if (c === "CENTER_DOWN") return t["err.signupDown"];
     if (c === "BANNED_USER") return t["err.suspended"];
     if (c === "WEAK_PASSWORD" || c === "PASSWORD_TOO_SHORT" || c === "PASSWORD_TOO_LONG") return t["err.password"];
     if (c === "EMAIL_TAKEN" || c === "USER_ALREADY_EXISTS" || c === "eposta-alinmis") return t["err.emailTaken"];
@@ -173,6 +174,8 @@
       const r = await call("/v1/uyelik/sorgula", { eposta: email });
       if (r.status === 200) { checked = email; status = r.data.durum; }
       else if (r.status === 429) { say(signup, t["err.tooMany"], "err"); return null; }
+      // Ortak servis cevap vermezse kayıt açılmaz (5.22)
+      else if (r.status === 503) { say(signup, t["err.signupDown"], "err"); return null; }
       else { status = "yok"; }
       return status;
     }
@@ -212,6 +215,13 @@
       busy(link, false);
       if (r.status === 200) { track("bagla"); location.href = "/hesap?dil=" + lang; return; }
       say(link, errText(r), "err");
+    });
+    // Bağlı üyelik girişinde "Şifremi unuttum" (5.22): bağlantıyı bumbagroup.com gönderir, yeni şifre bağlı bütün ürünlere geçer
+    $("[data-link-forgot]", link).addEventListener("click", async (e) => {
+      e.target.disabled = true;
+      const r = await call("/v1/uyelik/sifirla-iste", { eposta: link.email.value, dil: lang });
+      e.target.disabled = false;
+      if (r.status === 200) say(link, t.linkForgotSent, "ok"); else say(link, errText(r), "err");
     });
     $("[data-resend]").addEventListener("click", async (e) => {
       e.target.disabled = true;
@@ -283,6 +293,8 @@
       b.addEventListener("click", async () => {
         $$("button", wrap).forEach((x) => { x.disabled = true; });
         const s = await call("/v1/uyelik/sifre-sec", { site: o.site });
+        // Başka ürünün şifresi seçildiyse bu oturum kapanır: hata yerine giriş ekranına, "seçtiğiniz şifreyle girin" iletisiyle
+        if (s.status === 200 && s.data && s.data.yenidenGiris) { location.href = "/giris?dil=" + lang + "&secildi=1"; return; }
         if (s.status === 200 || s.status === 404) { say(box, t.mergedDone, "ok"); setTimeout(() => location.reload(), 1500); return; }
         $$("button", wrap).forEach((x) => { x.disabled = false; });
         say(box, errText(s), "err");
@@ -497,18 +509,12 @@
       const pw = window.prompt(t.confirmOpen);
       return pw == null ? null : pw;
     }
-    async function setProducts(keys, on) {
+    // Açma burada; kapatma yok (5.21): başka üründeki hesap o ürünün kendi hesap sayfasından silinir
+    async function openProducts(keys) {
       if (!keys.length) return;
-      if (on) {
-        const pw = await askPassword(); if (pw == null) return;
-        const s = await call("/v1/uyelik/ac", { hedefler: keys, sifre: pw });
-        if (s.status !== 200) return pSay(errText(s), "err");
-      } else {
-        const name = keys.length === 1 ? (products.find((p) => p.site === keys[0]) || {}).ad || keys[0] : keys.map((k) => (products.find((p) => p.site === k) || {}).ad || k).join(", ");
-        if (!window.confirm(fill(t.confirmClose, { urun: name }))) return;
-        const s = await call("/v1/uyelik/kapat", { hedefler: keys });
-        if (s.status !== 200) return pSay(errText(s), "err");
-      }
+      const pw = await askPassword(); if (pw == null) return;
+      const s = await call("/v1/uyelik/ac", { hedefler: keys, sifre: pw });
+      if (s.status !== 200) return pSay(errText(s), "err");
       pSay(t.saved, "ok"); loadProducts();
     }
     async function loadProducts() {
@@ -522,32 +528,45 @@
         const name = document.createElement("span"); name.textContent = (p.ad || p.site) + (p.site === "saat-tarih" ? " · " + t.productThis : "");
         const st = document.createElement("span"); st.className = "muted"; st.textContent = p.acik ? t.productOn : t.productOff;
         li.append(name, st);
-        if (p.site !== "saat-tarih") {
-          const b = document.createElement("button"); b.type = "button"; b.textContent = p.acik ? t.close : t.open;
-          b.addEventListener("click", () => setProducts([p.site], !p.acik));
+        if (p.site !== "saat-tarih" && !p.acik) {
+          const b = document.createElement("button"); b.type = "button"; b.textContent = t.open;
+          b.addEventListener("click", () => openProducts([p.site]));
           li.appendChild(b);
+        } else if (p.site !== "saat-tarih" && /^https:\/\//.test(String(p.hesap || ""))) {
+          // Ürünün hesap sayfasının tam adresi merkezden (5.22, `hesap`); bağlantı kendimiz kurulmaz
+          const a = document.createElement("a"); a.href = p.hesap; a.rel = "noopener"; a.textContent = t.productAccount;
+          li.appendChild(a);
         }
         prodBox.appendChild(li);
       }
     }
     loadProducts();
-    $("[data-open-all]").addEventListener("click", () => setProducts(products.filter((p) => !p.acik && p.site !== "saat-tarih").map((p) => p.site), true));
-    $("[data-close-all]").addEventListener("click", () => setProducts(products.filter((p) => p.acik && p.site !== "saat-tarih").map((p) => p.site), false));
+    $("[data-open-all]").addEventListener("click", () => openProducts(products.filter((p) => !p.acik && p.site !== "saat-tarih").map((p) => p.site)));
 
-    // 10. Hesabı sil
+    // 10. Hesabı sil (standart 5.21, "Silme onayı"): istek e-postadaki bağlantıyla onaylanınca yapılır; bekleyen istek
+    // bu bölümde görünür ve iptal edilebilir
     const df = $('[data-form="delete"]');
+    const pend = $("[data-delete-pending]");
+    function showPending(r) {
+      pend.hidden = !r;
+      if (!r) return;
+      $("[data-delete-pending-text]").textContent = fill(r.tur === "hesap" ? t.delPendingAccount : t.delPendingBadges, { tarih: fmtDate(r.sonGun) });
+    }
+    showPending(A.silmeIstegi);
+    $("[data-delete-cancel]").addEventListener("click", async () => {
+      const s = await call("/v1/silme-istegi/iptal", {});
+      if (s.status === 200) { showPending(null); say(df, t.delCancelled, "ok"); } else say(df, errText(s), "err");
+    });
     df.addEventListener("submit", async (e) => {
       e.preventDefault();
       if (!window.confirm(t.deleteConfirm)) return;
       busy(df, true);
-      const s = await call("/v1/hesap/sil", { kapsam: df.kapsam.value, sifre: df.password.value || undefined });
+      const s = await call("/v1/hesap/sil", { sifre: df.password.value || undefined });
       busy(df, false);
       if (s.status === 200) {
-        document.querySelector("main").innerHTML = "";
-        const sec = document.createElement("section"); sec.className = "card";
-        const p = document.createElement("p"); p.className = "msg ok"; p.setAttribute("role", "status"); p.textContent = t.deleted;
-        const a = document.createElement("a"); a.className = "button"; a.href = D.siteUrl; a.textContent = t.toSite;
-        sec.append(p, a); document.querySelector("main").appendChild(sec);
+        showPending(s.data.istek);
+        df.password.value = "";
+        say(df, t.delPending, "ok");
         return;
       }
       say(df, errText(s), "err");

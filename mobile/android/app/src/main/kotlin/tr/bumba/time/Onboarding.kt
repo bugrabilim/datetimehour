@@ -148,7 +148,8 @@ object Onboarding {
     /** Features.load'dan: yeni kurulumsa ya da tanıtımın bu sürümü görülmediyse işaretler */
     fun load(fresh: Boolean) {
         val sp = Prefs.store
-        if (fresh) sp.edit().putBoolean(FRESH_KEY, true).apply()
+        // Yeni kurulumda her şey yeni: "Yeni kadranlar" kartı çıkmaz (sahibin bildirimi, 16 Kasım 2026)
+        if (fresh) sp.edit().putBoolean(FRESH_KEY, true).putBoolean(DialFace.SEEN_KEY, true).apply()
         this.fresh = sp.getBoolean(FRESH_KEY, false)
         if (fresh || sp.getInt(SEEN_KEY, 0) < VERSION) sp.edit().putBoolean(KEY, true).apply()
         pending = sp.getBoolean(KEY, false)
@@ -366,24 +367,36 @@ private fun welcomeLabel(key: String) = when (key) {
 }
 
 @Composable
-private fun WelcomePage() {
+private fun WelcomePage() = BoxWithConstraints(Modifier.fillMaxSize()) {
+    // Tek ekrana sığar (15–16 Kasım 2026, sahibin isteği; ilk düzeltme yetmedi): sayfa 660 dp'den kısaysa sıkı düzen (saat adın
+    // yanında, küçük kareler ve yazı); çok büyük yazı boyunda yine kayar
+    val c = maxHeight < 660.dp
     Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 24.dp, vertical = 8.dp),
+        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = if (c) 20.dp else 24.dp, vertical = if (c) 4.dp else 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        // Tek ekrana sığar (15 Kasım 2026, sahibin isteği): saat 72, ızgara kareleri ince, alttaki ipucu satırı kalktı
-        verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
+        verticalArrangement = Arrangement.spacedBy(if (c) 8.dp else 10.dp, Alignment.CenterVertically),
     ) {
-        AnalogClock(rememberNow().atZone(java.time.ZoneId.systemDefault()), Modifier.size(72.dp))
-        Text(L("app.displayName"), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        val now = rememberNow().atZone(java.time.ZoneId.systemDefault())
+        if (c) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                AnalogClock(now, Modifier.size(40.dp))
+                Text(L("app.displayName"), color = Theme.c.text, fontSize = 21.sp, fontWeight = FontWeight.Bold)
+            }
+        } else {
+            AnalogClock(now, Modifier.size(72.dp))
+            Text(L("app.displayName"), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        }
         // Sahibin metni (6 Kasım 2026): vurgulu iki satırlık başlık, ne yaptık, özellikler, "Neden ücretsiz?"
-        Text(L("onboard.welcome.title"), color = Theme.c.accent, fontSize = 23.sp, lineHeight = 29.sp,
+        Text(L("onboard.welcome.title"), color = Theme.c.accent, fontSize = if (c) 20.sp else 23.sp, lineHeight = if (c) 25.sp else 29.sp,
             fontFamily = AppFonts.heading, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
-        Text(L("onboard.welcome.text"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
-        WelcomeFeatures()
-        Text(L("onboard.welcome.whyTitle"), color = Theme.c.text, fontSize = 20.sp, lineHeight = 26.sp,
+        val body = if (c) 14.sp else 16.sp
+        val bodyLine = if (c) 19.sp else 23.sp
+        Text(L("onboard.welcome.text"), color = Theme.c.muted, fontSize = body, lineHeight = bodyLine, textAlign = TextAlign.Center)
+        WelcomeFeatures(c)
+        Text(L("onboard.welcome.whyTitle"), color = Theme.c.text, fontSize = if (c) 17.sp else 20.sp, lineHeight = if (c) 22.sp else 26.sp,
             fontFamily = AppFonts.heading, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center,
-            modifier = Modifier.padding(top = 4.dp).semantics { heading() })
-        Text(L("onboard.welcome.why"), color = Theme.c.muted, fontSize = 16.sp, lineHeight = 23.sp, textAlign = TextAlign.Center)
+            modifier = Modifier.padding(top = if (c) 0.dp else 4.dp).semantics { heading() })
+        Text(L("onboard.welcome.why"), color = Theme.c.muted, fontSize = body, lineHeight = bodyLine, textAlign = TextAlign.Center)
     }
 }
 
@@ -402,18 +415,18 @@ private fun welcomeColor(key: String): Color = when (key) {
  * sayfa kaydırmadan sığsın: daire 36, glif 21, karede dikey boşluk 8, simgeyle ad arası 4, kareler arası 6.
  */
 @Composable
-private fun WelcomeFeatures() {
+private fun WelcomeFeatures(compact: Boolean = false) {
     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
         WELCOME_FEATURES.chunked(3).forEach { row ->
             Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 row.forEach { (key, icon) ->
                     Column(
-                        Modifier.weight(1f).fillMaxHeight().paper(Theme.c.surface, 16).padding(horizontal = 4.dp, vertical = 6.dp),
+                        Modifier.weight(1f).fillMaxHeight().paper(Theme.c.surface, 16).padding(horizontal = 4.dp, vertical = if (compact) 4.dp else 6.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
+                        verticalArrangement = Arrangement.spacedBy(if (compact) 3.dp else 4.dp, Alignment.CenterVertically),
                     ) {
-                        DuoChip(icon, welcomeColor(key), box = 36.dp, glyph = 21.dp)
-                        Text(welcomeLabel(key), color = Theme.c.text, fontSize = 13.sp, lineHeight = 16.sp,
+                        DuoChip(icon, welcomeColor(key), box = if (compact) 30.dp else 36.dp, glyph = if (compact) 18.dp else 21.dp)
+                        Text(welcomeLabel(key), color = Theme.c.text, fontSize = if (compact) 12.sp else 13.sp, lineHeight = if (compact) 15.sp else 16.sp,
                             fontWeight = FontWeight.Medium, textAlign = TextAlign.Center, maxLines = 2)
                     }
                 }

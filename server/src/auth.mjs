@@ -26,7 +26,7 @@ const validTz = (tz) => {
   try { new Intl.DateTimeFormat("en", { timeZone: tz }); return true; } catch { return false; }
 };
 
-export function authOptions(cfg, pool, mailer, center) {
+export function authOptions(cfg, pool, mailer, center, relay = { tell: (op, body) => center.call(op, body) }) {
   const send = (kind, to, lang, vars) => mailer.send(kind, to, lang, vars);
   const isAdminEmail = (email) => String(email || "").toLowerCase() === cfg.adminEmail;
   const page = (path, lang, extra = "") => `${cfg.publicUrl}${path}?dil=${normLang(lang)}${extra}`;
@@ -38,7 +38,7 @@ export function authOptions(cfg, pool, mailer, center) {
     await send("passwordChanged", user.email, user.lang, {}).catch(() => {});
     if (user.uyeNo != null) {
       const h = await hashOf(user.id);
-      if (h) await center.guncelle(Number(user.uyeNo), { sifreOzeti: h });
+      if (h) await relay.tell("guncelle", { uyeNo: Number(user.uyeNo), degisiklik: { sifreOzeti: h } });
     }
   }
 
@@ -54,6 +54,8 @@ export function authOptions(cfg, pool, mailer, center) {
       // Bu üründe zaten kayıtlıysa Better Auth'un sıradan akışı (yanıt aynı, sahibine haber); hesabın varlığı ele verilmez
       const local = (await pool.query(`select 1 from "user" where lower(email) = $1`, [email])).rowCount > 0;
       const q = local ? { ok: false } : await center.sorgula(email);
+      // Ortak servis cevap vermezse kayıt açılmaz (5.22): ayrı hesap hiç oluşmasın; ekranda "birkaç dakika sonra"
+      if (!local && cfg.centerKey && !q.ok) throw new APIError("SERVICE_UNAVAILABLE", { code: "CENTER_DOWN", message: "center down" });
       if (q.ok && q.data?.durum === "var" && !q.data?.buradaAcik) throw new APIError("BAD_REQUEST", { code: "BUMBA_MEMBER", message: "bumba member" });
       // Yasaklı adres: hesap açılmaz, yanıt sıradan kayıttaki gibi
       if (q.ok && q.data?.durum === "yasakli") return ctx.json({ token: null, user: null });
@@ -132,7 +134,7 @@ export function authOptions(cfg, pool, mailer, center) {
         }
         if (user.uyeNo != null) {
           // E-posta değişikliği tamamlandı: bağlı ürünlere yeni adres
-          await center.guncelle(Number(user.uyeNo), { eposta: user.email, epostaDogrulandi: true });
+          await relay.tell("guncelle", { uyeNo: Number(user.uyeNo), degisiklik: { eposta: user.email, epostaDogrulandi: true } });
           result = "eposta";
         } else {
           const r = await center.kayit(user.email);
