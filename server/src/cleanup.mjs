@@ -4,7 +4,9 @@
    - e-postası doğrulanmış ama Bumba üye numarası eksik hesaplar numarasını `kayit`'tan alır (yönetici hesabı hariç:
      üye değildir, merkez çağrılmaz);
    - ortak servise ulaşılamadığı için bekleyen bildirimlerin zamanı gelenler de denenir (asıl görev relay.mjs, 10 dakikada bir).
-   Kullanılmayan hesap silinmez. */
+   Kullanılmayan hesabı ürün silmez (5.28: 3 yıl hiçbir Bumba ürününde girilmeyen hesabı merkez sayar, uyarır ve `hesap-sil`
+   ile siler; ürün her başarılı girişte `sorgula`'yı `uyeNo`'yla çağırır, panel `uye` son girişi ve oturumların son
+   kullanımını verir). */
 export const RETENTION = { unverifiedDays: 7 };
 
 export async function runCleanup({ pool, center, relay, adminEmail = "", now = new Date() }) {
@@ -20,7 +22,7 @@ export async function runCleanup({ pool, center, relay, adminEmail = "", now = n
     [now, RETENTION.unverifiedDays],
   );
   for (const u of old.rows) {
-    if (u.uyeNo != null) await relay.tell("ayril", { uyeNo: Number(u.uyeNo) });
+    if (u.uyeNo != null) await relay.tell("ayril", { uyeNo: Number(u.uyeNo), neden: "dogrulanmamis" });
     await pool.query(`delete from "user" where id = $1`, [u.id]);
     out.unverified++;
   }

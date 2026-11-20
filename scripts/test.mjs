@@ -46,7 +46,10 @@ for (const f of htmlFiles) {
   check(hl[2] === (RTL.includes(hl[1]) ? "rtl" : "ltr"), `${name}: dir değeri hatalı`);
   check(!/\sstyle="/.test(h), `${name}: satır içi style (CSP)`);
   check(!/http:\/\/(?!www\.w3\.org)/.test(h), `${name}: http:// bağlantı`);
-  check(/class="rozet"/.test(h) && /width="164" height="28"/.test(h), `${name}: Bumba rozeti yok`);
+  // madde 1 (5.27): Türkçe sayfada Türkçe rozet, öbür dillerde İngilizce rozet (`life-en.svg`, 170, /en/life)
+  check(/class="rozet"/.test(h) && (hl[1] === "tr"
+    ? /href="https:\/\/bumbagroup\.com\/life"/.test(h) && /rozet\/life\.svg" width="164" height="28"/.test(h) && /rozet\/life-koyu\.svg"/.test(h)
+    : /href="https:\/\/bumbagroup\.com\/en\/life"/.test(h) && /rozet\/life-en\.svg" width="170" height="28"/.test(h) && /rozet\/life-en-koyu\.svg"/.test(h)), `${name}: Bumba rozeti yok ya da dili yanlış`);
   check(embed || (/data-theme-toggle/.test(h) && /data-search-open/.test(h)), `${name}: tema ya da arama düğmesi yok`);
   // madde 14 ve 9: çerez bandı; Umami betiği HTML'de yok (consent.js istatistik izniyle ekler)
   check(!/istatistik\.bumba\.tr\/script\.js/.test(h), `${name}: Umami betiği izinsiz yükleniyor`);

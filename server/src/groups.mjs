@@ -492,6 +492,8 @@ export function createGroups({ pool, mailer, adminEmail, modLink = () => "" }) {
   async function onUserGone(userId) {
     const ids = (await q(`select grp_id from grp_member where user_id = $1`, [userId])).rows.map((x) => x.grp_id);
     for (const id of ids) await removeMember(id, userId, "silindi");
+    // 5.28 "Hukuk", silinen hesabın izi: üyeyi hedef alan bildirim satırları da o anda silinir
+    await q(`delete from grp_report where target = $1`, [`uye:${userId}`]);
   }
 
   async function exportOf(userId) {

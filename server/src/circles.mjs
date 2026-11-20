@@ -407,6 +407,8 @@ export function createCircles({ pool, mailer, adminEmail, modLink = () => "" }) 
     const ids = (await q(`select circle_id from circle_member where user_id = $1`, [userId])).rows.map((x) => x.circle_id);
     for (const id of ids) await removeMember(id, userId, "silindi");
     await q(`update circle_juz set user_id = null, gone = 'silindi' where user_id = $1`, [userId]);
+    // 5.28 "Hukuk", silinen hesabın izi: üyeyi hedef alan bildirim satırları da o anda silinir
+    await q(`delete from circle_report where target = $1`, [`uye:${userId}`]);
   }
 
   /* Verilerimi indir */

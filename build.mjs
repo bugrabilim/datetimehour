@@ -46,7 +46,9 @@ const extendRoutes = (table) => {
 };
 
 const arm = cfg.arm;
+// Rozet genişlikleri (madde 1): Türkçe rozet ve İngilizce rozet (5.27; Türkçe dışındaki bütün dillerde İngilizcesi)
 const BADGE_W = { games: 185, suites: 177, life: 164, ventures: 205 }[arm];
+const BADGE_W_EN = { games: 176, suites: 182, life: 170, ventures: 201 }[arm];
 
 /* "2026-01-13" → dilin uzun tarih biçiminde ("13 Ocak 2026") */
 const fmtDate = (lang, isoDate) => { const [y, m, d] = isoDate.split("-").map(Number); return tpl(I[lang].calendar.dateFmt, { day: d, month: I[lang].calendar.months[m - 1], year: y }); };
@@ -474,9 +476,12 @@ function cookieUi(lang) {
 
 function badge(lang) {
   const t = I[lang].badge;
+  const tr = lang === "tr";
+  const w = tr ? BADGE_W : BADGE_W_EN;
+  const base = tr ? arm : `${arm}-en`;
   const img = (cls, file) =>
-    `<img class="${cls}" src="https://bumbagroup.com/rozet/${file}" width="${BADGE_W}" height="28" alt="${esc(t.alt)}" loading="lazy">`;
-  return `<a class="rozet" href="https://bumbagroup.com/${arm}" rel="noopener" title="${esc(t.title)}">${img("only-light", `${arm}.svg`)}${img("only-dark", `${arm}-koyu.svg`)}</a>`;
+    `<img class="${cls}" src="https://bumbagroup.com/rozet/${file}" width="${w}" height="28" alt="${esc(t.alt)}" loading="lazy">`;
+  return `<a class="rozet" href="https://bumbagroup.com/${tr ? "" : "en/"}${arm}" rel="noopener" title="${esc(t.title)}">${img("only-light", `${base}.svg`)}${img("only-dark", `${base}-koyu.svg`)}</a>`;
 }
 
 function searchDialog(lang) {
