@@ -39,7 +39,7 @@ test("kayıt, doğrulama ve üye numarası; onay kaydı ve sonuç sayfası", asy
   assert.equal(r.json.token, null, "doğrulanmadan oturum açılmaz");
   let u = (await t.q(`select * from "user" where email = 'ali@example.com'`)).rows[0];
   assert.equal(u.name, "", "kayıtta ad alınmaz");
-  assert.equal(u.consentVersion, "2026-11-17");
+  assert.equal(u.consentVersion, "2026-11-20");
   assert.ok(Date.now() - new Date(u.consentAt).getTime() < 60_000);
   assert.equal(u.uyeNo, null, "numara doğrulanmadan alınmaz");
   assert.equal(t.center.find("kayit").length, 0);

@@ -187,3 +187,15 @@ test("onay cümlesi merkezden: kayıt sayfası ve /v1/onay-cumlesi; bozuk bağla
   assert.ok(page.text.includes(`<a href="https://bumbagroup.com/uyelik-aydinlatma?dil=en" target="_blank" rel="noopener">Datenschutz</a>`));
   t.center.consent = null;
 });
+
+test("Bumba rozeti (madde 1, 5.27): Türkçe sayfada Türkçe, öbür dillerde İngilizce rozet", async () => {
+  const tr = await t.req("/giris?dil=tr");
+  assert.match(tr.text, /href="https:\/\/bumbagroup\.com\/life"/);
+  assert.match(tr.text, /rozet\/life\.svg" width="164"/);
+  for (const dil of ["en", "de", "ar"]) {
+    const r = await t.req(`/giris?dil=${dil}`);
+    assert.match(r.text, /href="https:\/\/bumbagroup\.com\/en\/life"/, dil);
+    assert.match(r.text, /rozet\/life-en\.svg" width="170"/, dil);
+    assert.match(r.text, /rozet\/life-en-koyu\.svg" width="170"/, dil);
+  }
+});

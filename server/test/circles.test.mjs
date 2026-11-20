@@ -118,9 +118,15 @@ test("kurucu ayrılınca en eski üyeye geçer; hesap silinince 'Silinmiş üye'
   r = await t.req("/v1/verilerim", { token: tok.ece });
   assert.equal(r.json.halkalar.halkalar.find((h) => h.id === id).cuzler.join(), "1,2");
   assert.ok(r.json.halkalar.onay.surum);
+  // Ayşe Ece'yi bildirir; hesap silinince bu bildirim satırı da gider (5.28 "Hukuk", silinen hesabın izi)
+  const eceMid = (await api("ayse", `/v1/halka/${id}`)).json.uyeler.find((u) => u.sahip).id;
+  assert.equal((await api("ayse", `/v1/halka/${id}/bildir`, { uye: eceMid })).status, 200);
+  const eceId = (await t.q(`select id from "user" where email = 'ece@example.com'`)).rows[0].id;
+  assert.equal((await t.q(`select 1 from circle_report where target = $1`, [`uye:${eceId}`])).rowCount, 1);
   // Ece hesabını siler: Ayşe kurucu olur, biten cüz "silindi", alınmış cüz serbest
   r = await deleteAccount(t, tok.ece, "ece@example.com");
   assert.equal(r.status, 200);
+  assert.equal((await t.q(`select 1 from circle_report where target = $1`, [`uye:${eceId}`])).rowCount, 0, "silinen üyeyi hedef alan bildirim kalmaz");
   r = await api("ayse", `/v1/halka/${id}`);
   assert.equal(r.json.sahip, true);
   assert.equal(r.json.cuzler[0].eski, "silindi");

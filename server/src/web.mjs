@@ -57,7 +57,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent, deletion, mo
 <body><header class="top"><a class="brand" href="${esc(cfg.siteUrl)}${lang === "tr" ? "/" : `/${lang}/`}"><img src="/varlik/simge.svg" alt="" width="28" height="28"> ${PRODUCT_NAME}</a>
 <label class="lang"><span class="sr">${esc(t.language)}</span><select data-lang>${LANGS.map((l) => `<option value="${l}"${l === lang ? " selected" : ""}>${esc(LANG_NAMES[l])}</option>`).join("")}</select></label></header>
 <main id="main" class="wrap">${body}</main>
-<footer class="foot"><a class="badge" href="https://bumbagroup.com/life" rel="noopener" title="${esc(ROZET[lang].title)}"><img class="only-light" src="https://bumbagroup.com/rozet/life.svg" width="164" height="28" alt="${esc(ROZET[lang].alt)}"><img class="only-dark" src="https://bumbagroup.com/rozet/life-koyu.svg" width="164" height="28" alt="${esc(ROZET[lang].alt)}"></a></footer>
+<footer class="foot">${badge(lang)}</footer>
 <div class="cookie" id="cookie-bar" role="region" aria-label="${esc(t.cbLabel)}" hidden><p>${esc(t.cbText)} <a href="https://bumbagroup.com/cerez-politikasi${lang === "tr" ? "" : "?dil=en"}" target="_blank" rel="noopener">${esc(data.cookie?.policy || "")}</a></p>
 <div class="row"><button type="button" data-cookie="accept">${esc(data.cookie?.accept)}</button><button type="button" data-cookie="reject">${esc(data.cookie?.reject)}</button><button type="button" data-cookie="prefs">${esc(data.cookie?.prefs)}</button></div></div>
 <dialog id="cookie-dialog"><h2>${esc(data.cookie?.title)}</h2><h3>${esc(data.cookie?.necessary)}</h3><p>${esc(t.cbNecessaryText)}</p>
@@ -337,3 +337,11 @@ const DATA = JSON.parse(readFileSync(new URL("../data/web-texts.json", import.me
 const COOKIE = DATA.cookie;
 const BADGE_NAMES = DATA.badges;
 const ROZET = DATA.rozet;
+/* Bumba rozeti (madde 1; 5.27): Türkçe sayfada Türkçe rozet, öbür dillerde İngilizce rozet ve /en/life */
+function badge(lang) {
+  const tr = lang === "tr";
+  const f = tr ? "life" : "life-en";
+  const w = tr ? 164 : 170;
+  const img = (cls, file) => `<img class="${cls}" src="https://bumbagroup.com/rozet/${file}.svg" width="${w}" height="28" alt="${esc(ROZET[lang].alt)}">`;
+  return `<a class="badge" href="https://bumbagroup.com/${tr ? "" : "en/"}life" rel="noopener" title="${esc(ROZET[lang].title)}">${img("only-light", f)}${img("only-dark", `${f}-koyu`)}</a>`;
+}
