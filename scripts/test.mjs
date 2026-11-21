@@ -51,6 +51,8 @@ for (const f of htmlFiles) {
     ? /href="https:\/\/bumbagroup\.com\/life"/.test(h) && /rozet\/life\.svg" width="164" height="28"/.test(h) && /rozet\/life-koyu\.svg"/.test(h)
     : /href="https:\/\/bumbagroup\.com\/en\/life"/.test(h) && /rozet\/life-en\.svg" width="170" height="28"/.test(h) && /rozet\/life-en-koyu\.svg"/.test(h)), `${name}: Bumba rozeti yok ya da dili yanlış`);
   check(embed || (/data-theme-toggle/.test(h) && /data-search-open/.test(h)), `${name}: tema ya da arama düğmesi yok`);
+  // Telif (marka kiti, 20 Kasım 2026): her dilde "© 1998 Bumba Group"; eski şirket unvanlı satır kalmadı
+  check(embed || err || (/© 1998 Bumba Group/.test(h) && !/© 2026 Bumba Teknoloji/.test(h)), `${name}: telif satırı eski`);
   // madde 14 ve 9: çerez bandı; Umami betiği HTML'de yok (consent.js istatistik izniyle ekler)
   check(!/istatistik\.bumba\.tr\/script\.js/.test(h), `${name}: Umami betiği izinsiz yükleniyor`);
   if (!embed) {

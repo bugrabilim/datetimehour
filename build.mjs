@@ -680,6 +680,17 @@ function withShare(p, canonical, body) {
 }
 
 /* ---------- JSON-LD ---------- */
+// Bumba Group'un sosyal hesapları (bumbagroup.com ve marka kitiyle aynı; standart 2 "Marka bilgileri … şemada (sameAs) aynı")
+const BUMBA_SOCIAL = [
+  "https://www.instagram.com/thebumbagroup",
+  "https://www.facebook.com/thebumbagroup",
+  "https://www.youtube.com/@thebumbagroup",
+  "https://www.tiktok.com/@thebumbagroup",
+  "https://x.com/thebumbagroup",
+  "https://www.pinterest.com/thebumbagroup",
+  "https://www.reddit.com/user/thebumbagroup",
+  "https://www.linkedin.com/company/thebumbagroup",
+];
 function baseLd(lang) {
   return [
     {
@@ -689,7 +700,7 @@ function baseLd(lang) {
       url: ORIGIN + "/",
       logo: abs("/icon-512.png"),
       email: cfg.email,
-      parentOrganization: { "@type": "Organization", name: "Bumba Group", url: "https://bumbagroup.com" },
+      parentOrganization: { "@type": "Organization", name: "Bumba Group", url: "https://bumbagroup.com", sameAs: BUMBA_SOCIAL },
     },
     {
       "@type": "WebSite",
