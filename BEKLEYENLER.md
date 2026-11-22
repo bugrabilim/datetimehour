@@ -18,6 +18,7 @@ Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"
 - App Store 1.1 ve ilk Play gönderiminden önce standart "Mobil yayın" kontrol listesini sahibe raporla. (14 Kasım 2026)
 
 ## Başkasında
+- Ana altyapı: ürün marka kiti (`marka/kit.json` ve dosyaları; pazarlamanın kararı, DENETIM K45, MARKA §4). §4'teki alanlar ve dosya adları `bugrabilim/bumbamarka` deposunda; bu oturumun o depoya erişimi yok, alanlar ana altyapıdan istendi. Gelince kit sitedeki mevcut dosyalardan (`favicon.svg`, `icon-512.png`, `apple-touch-icon.png`, `og.png`, `styles.css` renkleri, Literata) kurulur, dal ve commit ana altyapıya bildirilir, ana dala birleştirme patrona sorulur. Sıra Soylus, İlandan Önce ve Spora Başla'dan sonra. (22 Kasım 2026)
 - Ana altyapı oturumu: yönetim paneli denemesi 15 Kasım 2026'da bitti, uyumsuzluk yok (sürüm tarihi eklendi, 16 Kasım 2026'dan beri canlıda). Sırada merkezle uçtan uca üyelik denemesi (bağlama, güncelleme) ve `etkin: true`; bumbagroup.com'un sonraki yayınıyla (sahibin onayıyla). (15 Kasım 2026)
 - MEB 2027-2028 çalışma takvimi: yayımlanınca `src/data/school.json`. (6 Kasım 2026)
 - Fitre 2027: Diyanet Ocak 2027'de açıklayınca `src/data/fitre.json`; BAZNAS 2027 kararları (zekât fitrah, fidye). Bakılacak tarih: Ocak 2027. (6 Kasım 2026)
