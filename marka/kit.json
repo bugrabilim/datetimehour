@@ -1,0 +1,27 @@
+{
+  "id": "saat-tarih",
+  "ad": {
+    "tr": "Saat Tarih",
+    "en": "Saat Tarih",
+    "yanlis": ["SaatTarih", "Saat-Tarih", "Saat ve Tarih"]
+  },
+  "renkler": [
+    { "ad": "Kiremit", "rol": "ana renk (işaret, bağlantı, düğme)", "acik": "#9a3f00", "koyu": "#f2a65a", "css": "--accent" },
+    { "ad": "Mürekkep", "rol": "metin", "acik": "#2b2520", "koyu": "#f1eadf", "css": "--text" },
+    { "ad": "Kül", "rol": "ikincil metin", "acik": "#6a5f55", "koyu": "#b4aa9b", "css": "--muted" },
+    { "ad": "Kâğıt", "rol": "zemin", "acik": "#f6f0e4", "koyu": "#14151c", "css": "--bg" },
+    { "ad": "Yüzey", "rol": "kart zemini", "acik": "#fffbf4", "koyu": "#1d1e27", "css": "--surface" }
+  ],
+  "yaziTipleri": [
+    { "ad": "Literata", "rol": "başlık (h1, h2; Latin ve Kiril yazılı dillerde)", "agirliklar": [500, 600], "lisans": "SIL Open Font License 1.1", "kaynak": "https://fonts.google.com/specimen/Literata" }
+  ],
+  "kullanim": {
+    "bosluk": "Sitede tanımlı bir boşluk kuralı yok; üst çubukta işaretle ad arasında 0,5 rem.",
+    "enKucuk": "İşaret sitede en küçük 16 px (favicon); üst çubukta 1,7 rem."
+  },
+  "notlar": {
+    "tr": "Logo yok: sitedeki ad (Saat Tarih) cihazın sistem yazı tipiyle (system-ui, 700) yazılıyor, site bir yazı tipi dosyası yüklemediği için yola çevrilmiş bir logo kurulamadı; logo.svg ve logo-koyu.svg yok. isaret.svg ve isaret-koyu.svg sitenin üst çubuğundaki saat işaretidir (build.mjs LOGO), renkler sitedeki --accent değerleri. ikon.svg sitenin favicon.svg'si; ikon-512.png ve ikon-180.png ondan üretildi (sitedeki eski PNG'lerin alt kısmı kesikti, aynı çizimle yeniden üretildi). paylasim.png sitenin og.png'si (tek görsel, iki dilli yazı); paylasim-en.png yok. Uygulamaların ana ekran adı dile göre değişir (en \"Time & Date\"), sitenin adı her dilde \"Saat Tarih\". Metin renkleri kâğıt ve yüzey zemininde en az 4.9:1.",
+    "en": "No logo: the site writes its name (Saat Tarih) in the device's system font (system-ui, 700) and loads no font file for it, so no outlined logo could be made; logo.svg and logo-koyu.svg are absent. isaret.svg and isaret-koyu.svg are the clock mark in the site's top bar (build.mjs LOGO), colours are the site's --accent values. ikon.svg is the site's favicon.svg; ikon-512.png and ikon-180.png are rendered from it (the site's old PNGs were cut off at the bottom and were re-rendered from the same drawing). paylasim.png is the site's og.png (one image with both languages); there is no paylasim-en.png. The app's home-screen name changes by language (en \"Time & Date\"); the site's name is \"Saat Tarih\" in every language. Text colours reach at least 4.9:1 on the paper and surface backgrounds."
+  },
+  "guncelleme": "2026-11-22"
+}
