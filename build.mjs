@@ -3319,7 +3319,8 @@ function buildFaq(lang) {
 </section>
 ${sections}
 <section class="section faq-privacy">
-  <div class="wrap"><p><a href="${ROUTES[lang].privacy}">${esc(t.ui.privacy)}</a></p></div>
+  <div class="wrap"><p><a href="${ROUTES[lang].privacy}">${esc(t.ui.privacy)}</a></p>
+  <p><a href="/assets/fonts/OFL-Literata.txt">${esc(t.ui.fontLicense)}</a></p></div>
 </section>`;
   const all = groups.flatMap((g) => g.items);
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, f.title, f.description), breadcrumbLd(trail), faqLd(all)];

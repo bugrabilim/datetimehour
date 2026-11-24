@@ -3895,6 +3895,7 @@
     <string name="about_credits">アイコン：Microsoft Fluent Emoji、Phosphor Icons（MITライセンス）。フォント：Literata、Amiri（SIL Open Font License）。</string>
     <string name="about_license">Fluent Emoji のライセンス</string>
     <string name="about_licensePhosphor">Phosphor Icons のライセンス</string>
+    <string name="about_licenseFonts">フォントのライセンス（SIL OFL）</string>
     <string name="onboard_go">はじめましょう</string>
     <string name="onboard_back">戻る</string>
     <string name="onboard_yes">はい</string>

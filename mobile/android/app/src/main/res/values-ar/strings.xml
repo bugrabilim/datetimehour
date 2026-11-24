@@ -3895,6 +3895,7 @@
     <string name="about_credits">الرموز: Microsoft Fluent Emoji وPhosphor Icons (رخصة MIT). الخطوط: Literata وAmiri (رخصة SIL Open Font License).</string>
     <string name="about_license">رخصة Fluent Emoji</string>
     <string name="about_licensePhosphor">رخصة Phosphor Icons</string>
+    <string name="about_licenseFonts">رخصة الخطوط (SIL OFL)</string>
     <string name="onboard_go">لنبدأ</string>
     <string name="onboard_back">رجوع</string>
     <string name="onboard_yes">نعم</string>

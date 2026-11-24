@@ -3895,6 +3895,7 @@
     <string name="about_credits">Значки: Microsoft Fluent Emoji и Phosphor Icons (лицензия MIT). Шрифты: Literata и Amiri (SIL Open Font License).</string>
     <string name="about_license">Лицензия Fluent Emoji</string>
     <string name="about_licensePhosphor">Лицензия Phosphor Icons</string>
+    <string name="about_licenseFonts">Лицензия шрифтов (SIL OFL)</string>
     <string name="onboard_go">Начнём</string>
     <string name="onboard_back">Назад</string>
     <string name="onboard_yes">Да</string>

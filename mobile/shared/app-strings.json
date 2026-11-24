@@ -40782,6 +40782,27 @@
     "hi": "Phosphor Icons का लाइसेंस",
     "bn": "Phosphor Icons লাইসেন্স"
   },
+  "about.licenseFonts": {
+    "tr": "Yazı tipi lisansı (SIL OFL)",
+    "en": "Font license (SIL OFL)",
+    "de": "Schriftlizenz (SIL OFL)",
+    "az": "Şrift lisenziyası (SIL OFL)",
+    "ar": "رخصة الخطوط (SIL OFL)",
+    "id": "Lisensi fon (SIL OFL)",
+    "ur": "فونٹ کا لائسنس (SIL OFL)",
+    "fa": "مجوز قلم‌ها (SIL OFL)",
+    "fr": "Licence des polices (SIL OFL)",
+    "ru": "Лицензия шрифтов (SIL OFL)",
+    "ja": "フォントのライセンス（SIL OFL）",
+    "ko": "글꼴 라이선스 (SIL OFL)",
+    "zh": "字体许可证（SIL OFL）",
+    "fil": "Lisensya ng mga font (SIL OFL)",
+    "th": "สัญญาอนุญาตแบบอักษร (SIL OFL)",
+    "es": "Licencia de las tipografías (SIL OFL)",
+    "pt": "Licença das fontes (SIL OFL)",
+    "hi": "फ़ॉन्ट का लाइसेंस (SIL OFL)",
+    "bn": "ফন্ট লাইসেন্স (SIL OFL)"
+  },
   "onboard.go": {
     "tr": "Başlayalım",
     "en": "Let's begin",

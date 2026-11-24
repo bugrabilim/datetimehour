@@ -3895,6 +3895,7 @@
     <string name="about_credits">আইকন: Microsoft Fluent Emoji ও Phosphor Icons (MIT লাইসেন্স)। ফন্ট: Literata ও Amiri (SIL Open Font License)।</string>
     <string name="about_license">Fluent Emoji লাইসেন্স</string>
     <string name="about_licensePhosphor">Phosphor Icons লাইসেন্স</string>
+    <string name="about_licenseFonts">ফন্ট লাইসেন্স (SIL OFL)</string>
     <string name="onboard_go">চলুন শুরু করি</string>
     <string name="onboard_back">পেছনে</string>
     <string name="onboard_yes">হ্যাঁ</string>

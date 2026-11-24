@@ -3895,6 +3895,7 @@
     <string name="about_credits">ไอคอน: Microsoft Fluent Emoji และ Phosphor Icons (สัญญาอนุญาต MIT) แบบอักษร: Literata และ Amiri (SIL Open Font License)</string>
     <string name="about_license">สัญญาอนุญาตของ Fluent Emoji</string>
     <string name="about_licensePhosphor">สัญญาอนุญาตของ Phosphor Icons</string>
+    <string name="about_licenseFonts">สัญญาอนุญาตแบบอักษร (SIL OFL)</string>
     <string name="onboard_go">เริ่มกันเลย</string>
     <string name="onboard_back">ย้อนกลับ</string>
     <string name="onboard_yes">ใช่</string>

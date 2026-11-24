@@ -3895,6 +3895,7 @@
     <string name="about_credits">Ícones: Microsoft Fluent Emoji e Phosphor Icons (licença MIT). Fontes: Literata e Amiri (SIL Open Font License).</string>
     <string name="about_license">Licença do Fluent Emoji</string>
     <string name="about_licensePhosphor">Licença do Phosphor Icons</string>
+    <string name="about_licenseFonts">Licença das fontes (SIL OFL)</string>
     <string name="onboard_go">Vamos começar</string>
     <string name="onboard_back">Voltar</string>
     <string name="onboard_yes">Sim</string>

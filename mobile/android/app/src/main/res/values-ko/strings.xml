@@ -3895,6 +3895,7 @@
     <string name="about_credits">아이콘: Microsoft Fluent Emoji, Phosphor Icons (MIT 라이선스). 글꼴: Literata, Amiri (SIL Open Font License).</string>
     <string name="about_license">Fluent Emoji 라이선스</string>
     <string name="about_licensePhosphor">Phosphor Icons 라이선스</string>
+    <string name="about_licenseFonts">글꼴 라이선스 (SIL OFL)</string>
     <string name="onboard_go">시작해요</string>
     <string name="onboard_back">뒤로</string>
     <string name="onboard_yes">예</string>

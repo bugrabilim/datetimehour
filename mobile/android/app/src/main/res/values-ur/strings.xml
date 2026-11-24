@@ -3895,6 +3895,7 @@
     <string name="about_credits">آئیکن: Microsoft Fluent Emoji اور Phosphor Icons (MIT لائسنس)۔ فونٹ: Literata اور Amiri (SIL Open Font License)۔</string>
     <string name="about_license">Fluent Emoji کا لائسنس</string>
     <string name="about_licensePhosphor">Phosphor Icons کا لائسنس</string>
+    <string name="about_licenseFonts">فونٹ کا لائسنس (SIL OFL)</string>
     <string name="onboard_go">شروع کرتے ہیں</string>
     <string name="onboard_back">واپس</string>
     <string name="onboard_yes">ہاں</string>

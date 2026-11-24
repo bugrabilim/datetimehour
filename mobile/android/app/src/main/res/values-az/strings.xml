@@ -3895,6 +3895,7 @@
     <string name="about_credits">İkonlar: Microsoft Fluent Emoji və Phosphor Icons (MIT lisenziyası). Şriftlər: Literata və Amiri (SIL Open Font License).</string>
     <string name="about_license">Fluent Emoji lisenziyası</string>
     <string name="about_licensePhosphor">Phosphor Icons lisenziyası</string>
+    <string name="about_licenseFonts">Şrift lisenziyası (SIL OFL)</string>
     <string name="onboard_go">Başlayaq</string>
     <string name="onboard_back">Geri</string>
     <string name="onboard_yes">Bəli</string>

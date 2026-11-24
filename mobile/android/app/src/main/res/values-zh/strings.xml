@@ -3895,6 +3895,7 @@
     <string name="about_credits">图标：Microsoft Fluent Emoji 和 Phosphor Icons（MIT 许可证）。字体：Literata 和 Amiri（SIL Open Font License）。</string>
     <string name="about_license">Fluent Emoji 许可证</string>
     <string name="about_licensePhosphor">Phosphor Icons 许可证</string>
+    <string name="about_licenseFonts">字体许可证（SIL OFL）</string>
     <string name="onboard_go">开始吧</string>
     <string name="onboard_back">返回</string>
     <string name="onboard_yes">是</string>

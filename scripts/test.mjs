@@ -800,6 +800,8 @@ for (const l of LANGS) {
     if (cfg.updated === "2026-10-30") check(tr.includes('data-ph="goldenAm" dir="ltr">07:15–08:11<') && tr.includes('data-ph="bluePm" dir="ltr">18:20–18:31<') && /data-ph="riseAz">10\d° DGD</.test(tr), "fotoğraf ışığı: İstanbul 30.10.2026 değerleri beklenen değil");
     check(/href="\/altin-saat\/"/.test(fs.readFileSync(path.join(DIST, "araclar/index.html"), "utf8")) && /href="\/en\/golden-hour\/"/.test(fs.readFileSync(path.join(DIST, "en/tools/index.html"), "utf8")), "araçlar merkezi: fotoğraf ışığı kartı yok");
     check(/id="photo"/.test(fs.readFileSync(path.join(DIST, "sss/index.html"), "utf8")), "SSS: fotoğraf ışığı grubu yok");
+    // Başlık yazı tipinin lisansı (MARKA §4): SSS'in altında bağlantı, dosya kendi sunucumuzda, Google yazı tipi yok
+    check(/href="\/assets\/fonts\/OFL-Literata\.txt"/.test(fs.readFileSync(path.join(DIST, "sss/index.html"), "utf8")) && fs.existsSync(path.join(DIST, "assets/fonts/OFL-Literata.txt")), "SSS: yazı tipi lisansı bağlantısı ya da dosyası yok");
     for (const l of LANGS) check(dict[l].get("photo.dirs").length === 16 && /Open-Meteo/.test(dict[l].get("photo.attribution")), `fotoğraf ışığı: ${l} yönler ya da atıf`);
     // Gizlilik: web, iPhone ve Android maddelerinde fotoğraf ışığının bulut tahmini (Open-Meteo, yaklaşık konum)
     for (const l of LANGS) {

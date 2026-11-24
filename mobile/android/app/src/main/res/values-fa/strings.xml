@@ -3895,6 +3895,7 @@
     <string name="about_credits">نمادها: Microsoft Fluent Emoji و Phosphor Icons (مجوز MIT). قلم‌ها: Literata و Amiri (SIL Open Font License).</string>
     <string name="about_license">مجوز Fluent Emoji</string>
     <string name="about_licensePhosphor">مجوز Phosphor Icons</string>
+    <string name="about_licenseFonts">مجوز قلم‌ها (SIL OFL)</string>
     <string name="onboard_go">شروع کنیم</string>
     <string name="onboard_back">بازگشت</string>
     <string name="onboard_yes">بله</string>

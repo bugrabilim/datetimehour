@@ -3895,6 +3895,7 @@
     <string name="about_credits">Ikon: Microsoft Fluent Emoji dan Phosphor Icons (Lisensi MIT). Fon: Literata dan Amiri (SIL Open Font License).</string>
     <string name="about_license">Lisensi Fluent Emoji</string>
     <string name="about_licensePhosphor">Lisensi Phosphor Icons</string>
+    <string name="about_licenseFonts">Lisensi fon (SIL OFL)</string>
     <string name="onboard_go">Ayo mulai</string>
     <string name="onboard_back">Kembali</string>
     <string name="onboard_yes">Ya</string>

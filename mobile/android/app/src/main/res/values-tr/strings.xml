@@ -3895,6 +3895,7 @@
     <string name="about_credits">Simgeler: Microsoft Fluent Emoji ve Phosphor Icons (MIT lisansı). Yazı tipleri: Literata ve Amiri (SIL Open Font License).</string>
     <string name="about_license">Fluent Emoji lisansı</string>
     <string name="about_licensePhosphor">Phosphor Icons lisansı</string>
+    <string name="about_licenseFonts">Yazı tipi lisansı (SIL OFL)</string>
     <string name="onboard_go">Başlayalım</string>
     <string name="onboard_back">Geri</string>
     <string name="onboard_yes">Evet</string>

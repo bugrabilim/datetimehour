@@ -3895,6 +3895,7 @@
     <string name="about_credits">Mga icon: Microsoft Fluent Emoji at Phosphor Icons (MIT License). Mga font: Literata at Amiri (SIL Open Font License).</string>
     <string name="about_license">Lisensya ng Fluent Emoji</string>
     <string name="about_licensePhosphor">Lisensya ng Phosphor Icons</string>
+    <string name="about_licenseFonts">Lisensya ng mga font (SIL OFL)</string>
     <string name="onboard_go">Simulan natin</string>
     <string name="onboard_back">Bumalik</string>
     <string name="onboard_yes">Oo</string>

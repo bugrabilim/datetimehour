@@ -3895,6 +3895,7 @@
     <string name="about_credits">Icônes : Microsoft Fluent Emoji et Phosphor Icons (licence MIT). Polices : Literata et Amiri (SIL Open Font License).</string>
     <string name="about_license">Licence de Fluent Emoji</string>
     <string name="about_licensePhosphor">Licence de Phosphor Icons</string>
+    <string name="about_licenseFonts">Licence des polices (SIL OFL)</string>
     <string name="onboard_go">C\'est parti</string>
     <string name="onboard_back">Retour</string>
     <string name="onboard_yes">Oui</string>
