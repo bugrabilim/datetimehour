@@ -1,5 +1,0 @@
-{
-  "permissions": {
-    "ask": ["Agent", "Workflow", "mcp__*__create_session"]
-  }
-}
