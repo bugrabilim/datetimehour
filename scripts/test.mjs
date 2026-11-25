@@ -386,6 +386,14 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
 
 // kontrast (WCAG AA)
 const css = fs.readFileSync(path.join(ROOT, "src/styles.css"), "utf8");
+// Geçici logo (25 Kasım 2026, patronun onayı; MARKA §4, K45): üst çubukta ad Literata 600; kitte logo.svg ve logo-koyu.svg (yola çevrilmiş, betiksiz, dış bağlantısız)
+check(/\.brand span \{ font-family: "Literata"[^}]*font-weight: 600/.test(css), "üst çubuk: ad Literata 600 değil");
+for (const f of ["logo.svg", "logo-koyu.svg"]) {
+  const svg = fs.readFileSync(path.join(ROOT, "marka", f), "utf8");
+  check(/^<svg /.test(svg) && !/<script|<text|href=|url\(/i.test(svg) && (svg.match(/https?:\/\//g) || []).length === 1, `marka/${f}: yazı yola çevrilmemiş ya da betik/dış bağlantı var`);
+}
+const kit = JSON.parse(fs.readFileSync(path.join(ROOT, "marka/kit.json"), "utf8"));
+check(/Geçici logo/.test(kit.notlar.tr) && /logodaki ad/.test(kit.yaziTipleri[0].rol.tr), "marka/kit.json: logo notu ya da Literata rolü eski");
 const block = (re) => Object.fromEntries([...css.match(re)[1].matchAll(/--([\w-]+):\s*(#[0-9a-f]{6})/g)].map((m) => [m[1], m[2]]));
 const lum = (hex) => {
   const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
