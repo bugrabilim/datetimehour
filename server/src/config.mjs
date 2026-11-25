@@ -17,7 +17,7 @@ export const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"
 export const RTL = new Set(["ar", "ur", "fa"]);
 
 /* Ortak üyelik metinlerinin sürümü (standart, Sabit bilgiler: "Üyelik metinleri sürümü"); kayıttaki onay kaydına yazılır */
-export const TERMS_VERSION = "2026-11-20";
+export const TERMS_VERSION = "2026-11-22";
 /* Ortak üyelik servisindeki ürün kimliği (standart madde 7, "Ortak üyelik servisi") */
 export const SITE_KEY = "saat-tarih";
 export const PRODUCT_NAME = "Saat Tarih";

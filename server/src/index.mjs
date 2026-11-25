@@ -484,7 +484,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     // Zamanlanmış görevler (CRON_SECRET'la; görevleri ana altyapı oturumu kurar)
     if (p === "/gorev/temizlik" && req.method === "POST") {
       if (!bearerOk(req.headers.authorization, cfg.cronSecret)) return json(res, 401, { hata: "yetki" });
-      const out = await runCleanup({ pool, center, relay, adminEmail: cfg.adminEmail });
+      const out = await runCleanup({ pool, center, relay, mailer, adminEmail: cfg.adminEmail });
       out.halkalar = await circles.cleanup();
       out.gruplar = await groups.cleanup();
       out.silmeIstekleri = await deletion.cleanup();

@@ -1,7 +1,7 @@
 /* Standart 5.28 (madde 7 "Saklama", "Hukuk"): kullanılmayan hesabı merkez sayar ve siler; ürün her başarılı girişte
    `sorgula`'yı `uyeNo`'yla çağırır, son girişi kalıcı yazar (panel `uye`/`uyeler` `sonGiris`, oturumlar silinse de),
    doğrulanmamış hesabın silinmesinde merkeze `ayril {neden: "dogrulanmamis"}` gönderir ve kullanılmayan hesabı kendisi
-   silmez. Üyelik metinleri sürümü 2026-11-20. */
+   silmez. Üyelik metinleri sürümü 2026-11-22. */
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { start, signUpVerified, CENTER_KEY, CRON, PW } from "./helpers.mjs";
@@ -14,8 +14,8 @@ after(async () => { await t.stop(); });
 const panel = (op, body) => t.req(`/api/bumba-panel/${op}`, { method: "POST", headers: { authorization: `Bearer ${CENTER_KEY}`, "x-bumba-site": "saat-tarih" }, body });
 const until = async (fn, ms = 3000) => { const end = Date.now() + ms; while (Date.now() < end) { if (await fn()) return true; await new Promise((r) => setTimeout(r, 25)); } return false; };
 
-test("üyelik metinleri sürümü 2026-11-20", () => {
-  assert.equal(TERMS_VERSION, "2026-11-20");
+test("üyelik metinleri sürümü 2026-11-22", () => {
+  assert.equal(TERMS_VERSION, "2026-11-22");
 });
 
 test("her başarılı girişte sorgula uyeNo'yla gider; son giriş kalıcıdır, oturumlar silinse de panelde görünür", async () => {
@@ -62,4 +62,32 @@ test("doğrulanmamış hesap 7 günde silinir, merkeze ayril {neden: dogrulanmam
   assert.deepEqual(a?.body, { uyeNo: 77001, neden: "dogrulanmamis" });
   assert.equal((await t.q(`select 1 from "user" where email = 'dogrulanmadi@example.com'`)).rowCount, 0);
   assert.equal((await t.q(`select 1 from "user" where email = 'eski@example.com'`)).rowCount, 1, "kullanılmayan hesabı ürün silmez");
+});
+
+test("5.33: aydınlatma güncellemesi e-postası her üyeye bir kez; dile göre TR/EN; askıdaki, yasaklı, doğrulanmamış ve yönetici almaz", async () => {
+  await signUpVerified(t, "bildirim-tr@example.com", PW, "tr");
+  await signUpVerified(t, "bildirim-de@example.com", PW, "de");
+  await signUpVerified(t, "bildirim-aski@example.com", PW, "tr");
+  await t.q(`update "user" set banned = true where email = 'bildirim-aski@example.com'`);
+  await t.req("/api/auth/sign-up/email", { method: "POST", body: { email: "bildirim-dogrulanmadi@example.com", password: PW, name: "", lang: "tr" } });
+  const run = () => t.req("/gorev/temizlik", { method: "POST", headers: { authorization: `Bearer ${CRON}` } });
+  assert.equal((await run()).status, 200);
+  const tr = t.last("notice", "bildirim-tr@example.com");
+  assert.ok(tr, "Türkçe üye aldı");
+  assert.equal(tr.subject, "Üyelik aydınlatma metni güncellendi");
+  assert.match(tr.text, /Saat Tarih üyeliğiniz/);
+  assert.match(tr.text, /https:\/\/bumbagroup\.com\/uyelik-aydinlatma/);
+  assert.match(tr.html, /<a href="https:\/\/bumbagroup\.com\/uyelik-aydinlatma"/);
+  assert.doesNotMatch(tr.text + tr.html, /kutlama|unsubscribe|List-Unsubscribe/i, "kapatma bağlantısı yok");
+  const de = t.last("notice", "bildirim-de@example.com");
+  assert.equal(de.subject, "Membership privacy notice updated");
+  assert.match(de.text, /your Time & Date membership/);
+  assert.match(de.text, /https:\/\/bumbagroup\.com\/en\/uyelik-aydinlatma/);
+  assert.equal(t.last("notice", "bildirim-aski@example.com"), undefined);
+  assert.equal(t.last("notice", "bildirim-dogrulanmadi@example.com"), undefined);
+  assert.equal(t.last("notice", t.cfg.adminEmail), undefined);
+  // İkinci çalıştırma kimseye yeniden göndermez
+  const n = t.outbox.filter((m) => m.kind === "notice").length;
+  assert.equal((await run()).status, 200);
+  assert.equal(t.outbox.filter((m) => m.kind === "notice").length, n);
 });

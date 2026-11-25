@@ -153,7 +153,7 @@ test("verilerimi indir: profil, fotoğraf, onay, oturumlar (IP yok), kayıtlar, 
   assert.match(r.headers.get("content-disposition"), /attachment/);
   assert.equal(r.json.hesap.eposta, "profil@example.com");
   assert.equal(r.json.hesap.profil.foto, foto);
-  assert.equal(r.json.onay.surum, "2026-11-20");
+  assert.equal(r.json.onay.surum, "2026-11-22");
   assert.ok(r.json.oturumlar.length >= 1);
   assert.equal(r.json.oturumlar[0].ipAddress, undefined);
   assert.equal(r.json.kayitlar["zikir.total"].v, "33");
@@ -173,7 +173,7 @@ test("ortak servisin ürün uçları: anahtar, dogrula, hesap-getir, guncelle", 
   assert.match(h.sifreOzeti, /^[0-9a-f]+:[0-9a-f]+$/);
   assert.match(h.profil.foto, /^data:image\/webp;base64,/);
   assert.equal(h.kutlama, true);
-  assert.equal(h.onay.surum, "2026-11-20");
+  assert.equal(h.onay.surum, "2026-11-22");
   assert.equal(h.anaUrun, true);
   assert.deepEqual((await center("dogrula", { uyeNo: 10458, eposta: "profil@example.com", sifre: "Yanlis-1a" })).json, { gecerli: false });
   const ok = await center("dogrula", { uyeNo: 10458, eposta: "profil@example.com", sifre: PW });
