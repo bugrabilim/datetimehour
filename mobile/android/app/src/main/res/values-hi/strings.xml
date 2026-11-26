@@ -627,6 +627,10 @@
     <string name="list_fullText">पूरा पाठ</string>
     <string name="list_label">ईमेल सूची</string>
     <string name="list_formErr">हम आपको नहीं जोड़ सके। अपना ईमेल पता जाँचें और थोड़ी देर बाद फिर कोशिश करें।</string>
+    <string name="list_placeholder">हमारी ईमेल सूची से जुड़ें</string>
+    <string name="list_received">आपका अनुरोध मिल गया है</string>
+    <string name="list_badEmail">मान्य ईमेल पता लिखें।</string>
+    <string name="list_sendFail">भेजा नहीं जा सका, थोड़ी देर बाद फिर कोशिश करें।</string>
     <string name="prayer_kerahatHeading">मकरूह समय (लगभग)</string>
     <string name="prayer_kerahatNames_israk">सूर्योदय (इशराक़)</string>
     <string name="prayer_kerahatNames_istiva">दोपहर से पहले (इस्तिवा)</string>

@@ -627,6 +627,10 @@
     <string name="list_fullText">متن کامل</string>
     <string name="list_label">فهرست ایمیل</string>
     <string name="list_formErr">عضویت انجام نشد. نشانی ایمیل خود را بررسی کنید و کمی بعد دوباره امتحان کنید.</string>
+    <string name="list_placeholder">به فهرست ایمیل ما بپیوندید</string>
+    <string name="list_received">درخواست شما دریافت شد</string>
+    <string name="list_badEmail">یک نشانی ایمیل معتبر بنویسید.</string>
+    <string name="list_sendFail">ارسال نشد، کمی بعد دوباره امتحان کنید.</string>
     <string name="prayer_kerahatHeading">اوقات مکروه نماز (تقریبی)</string>
     <string name="prayer_kerahatNames_israk">طلوع آفتاب (اشراق)</string>
     <string name="prayer_kerahatNames_istiva">پیش از ظهر (استوا)</string>

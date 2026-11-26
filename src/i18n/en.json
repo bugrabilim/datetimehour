@@ -32,7 +32,6 @@
     "breadcrumb": "Breadcrumb",
     "updated": "Last updated",
     "noscript": "JavaScript must be enabled in your browser to see the live clock.",
-    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Saat Tarih home",
     "calendar": "Calendar",
     "tools": "Tools",
@@ -588,7 +587,11 @@
     "loadFail": "The text could not be loaded. You can read the full text from the link below and try again a little later.",
     "fullText": "Full text",
     "label": "Email list",
-    "formErr": "We could not sign you up. Check your email address and try again a little later."
+    "formErr": "We could not sign you up. Check your email address and try again a little later.",
+    "placeholder": "Join our mailing list",
+    "received": "Your request has been received",
+    "badEmail": "Enter a valid email address.",
+    "sendFail": "Couldn't send it, please try again shortly."
   },
   "badge": {
     "title": "Bumba Life, part of Bumba Group",
@@ -3427,5 +3430,13 @@
     "howGroup": "If the app doesn't open, go to All › Groups › Join with a code in Saat Tarih and enter this code. Groups need a free account.",
     "h1Group": "You're invited to a group",
     "leadGroup": "You've been invited to a shared countdown, world clock, meeting poll, focus room, alarm or sky-watching group in the Saat Tarih app."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "memberNotice": "Membership Privacy Notice",
+    "deletion": "Account Deletion",
+    "legal": "Legal",
+    "terms": "Membership Terms"
   }
 }

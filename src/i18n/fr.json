@@ -32,7 +32,6 @@
     "breadcrumb": "Fil d’Ariane",
     "updated": "Dernière mise à jour",
     "noscript": "JavaScript doit être activé dans votre navigateur pour afficher l’horloge en direct.",
-    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Accueil de Saat Tarih",
     "calendar": "Calendrier",
     "tools": "Outils",
@@ -615,7 +614,11 @@
     "loadFail": "Le texte n’a pas pu être chargé. Vous pouvez lire le texte complet via le lien ci-dessous et réessayer un peu plus tard.",
     "fullText": "Texte complet",
     "label": "Liste de diffusion",
-    "formErr": "Votre inscription a échoué. Vérifiez votre adresse e-mail et réessayez un peu plus tard."
+    "formErr": "Votre inscription a échoué. Vérifiez votre adresse e-mail et réessayez un peu plus tard.",
+    "placeholder": "Rejoignez notre liste de diffusion",
+    "received": "Votre demande a bien été reçue",
+    "badEmail": "Saisissez une adresse e-mail valide.",
+    "sendFail": "Envoi impossible, réessayez dans un instant."
   },
   "badge": {
     "title": "Bumba Life, membre de Bumba Group",
@@ -3468,5 +3471,13 @@
     "howGroup": "Si l'application ne s'ouvre pas, allez dans Tout › Groupes › Rejoindre avec un code dans Saat Tarih et saisissez ce code. Les groupes nécessitent un compte gratuit.",
     "h1Group": "Vous êtes invité à un groupe",
     "leadGroup": "Vous êtes invité dans l'application Saat Tarih à un groupe partagé : compte à rebours, horloge mondiale, sondage de réunion, salle de concentration, réveil ou observation du ciel."
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "memberNotice": "Notice de confidentialité de l’adhésion",
+    "deletion": "Suppression du compte",
+    "legal": "Mentions légales",
+    "terms": "Conditions d'adhésion"
   }
 }

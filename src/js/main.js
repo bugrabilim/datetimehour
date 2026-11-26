@@ -868,59 +868,55 @@ function sunTimes(y, m, d, lat, lon) {
     setTimeout(function () { ready = true; }, 400);
   }
 
-  /* ---------- E-posta listesi (standart madde 6): sonuç iletisi ve Umami olayı ---------- */
-  (function listResult() {
+  /* ---------- E-posta listesi (standart madde 6, 5.43): yalnız katılım talebi. Adres geçerliyse istek gider ve cevap
+     beklenmeden alanın yerinde "Katılım talebiniz alındı" görünür (10 sn ya da dokununca kalkar). Cevap hata gelirse
+     yazı kalkar, adres geri yazılır ve hata söylenir. Betiksizde form gider, donus#liste-tamam ile döner. ---------- */
+  (function listForm() {
+    var form = doc.getElementById("liste-form");
+    if (!form) return;
+    var input = doc.getElementById("liste-eposta"), done = doc.getElementById("liste-tamam"), errEl = doc.getElementById("liste-hata");
+    var RE = /^[^\s@<>"',;]+@[^\s@<>"',;]+\.[^\s@<>"',;]{2,}$/;
+    var timer = null;
+    function hideDone(focus) {
+      clearTimeout(timer); done.hidden = true;
+      if (focus) { try { input.focus(); } catch (e) {} }
+    }
+    function showDone() {
+      done.hidden = false; clearTimeout(timer);
+      timer = setTimeout(function () { hideDone(false); }, 10000);
+    }
+    done.addEventListener("click", function () { hideDone(true); });
     var id = location.hash.replace("#", "");
-    var out = doc.getElementById("liste-sonuc");
-    if ((id !== "liste-tamam" && id !== "liste-hata") || !out) return;
-    out.textContent = out.getAttribute(id === "liste-tamam" ? "data-ok" : "data-err") || "";
-    out.className = "liste-sonuc " + (id === "liste-tamam" ? "is-ok" : "is-err");
-    out.setAttribute("tabindex", "-1");
-    try { out.focus({ preventScroll: false }); } catch (e) {}
-    if (id === "liste-tamam") track("liste-katil");
-    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
-  })();
-
-  /* ---------- E-posta listesi: Katıl → aydınlatma penceresi → "Kabul ediyorum" formu gönderir ---------- */
-  (function listConsent() {
-    var form = doc.getElementById("liste-form"), win = doc.getElementById("liste-pencere");
-    if (!form || !win || typeof win.showModal !== "function") return; // betiksiz/eskide noscript onay kutusu çalışır
-    var accept = doc.getElementById("liste-kabul"), body = doc.getElementById("liste-metin"), title = doc.getElementById("liste-baslik");
-    var loaded = false, loading = false, lastBtn = null;
-    form.addEventListener("click", function (e) { var b = e.target.closest && e.target.closest("button"); if (b) lastBtn = b; });
-    function fill(j) {
-      title.textContent = j.baslik || title.textContent;
-      body.textContent = "";
-      if (j.giris) { var p0 = doc.createElement("p"); p0.textContent = j.giris; body.appendChild(p0); }
-      (j.bolumler || []).forEach(function (b) {
-        var h = doc.createElement("h3"); h.textContent = b.baslik || "";
-        var p = doc.createElement("p"); p.textContent = b.metin || "";
-        body.appendChild(h); body.appendChild(p);
-      });
-      loaded = true; accept.disabled = false;
-    }
-    function load() {
-      if (loaded || loading) return;
-      loading = true;
-      body.textContent = body.getAttribute("data-loading") || "";
-      fetch(form.getAttribute("data-aydinlatma"), { credentials: "omit" })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function (j) { loading = false; fill(j); })
-        .catch(function () { loading = false; body.textContent = body.getAttribute("data-fail") || ""; accept.disabled = true; });
-    }
+    if (id === "liste-tamam") { showDone(); track("liste-katil"); }
+    else if (id === "liste-hata") errEl.textContent = form.getAttribute("data-fail") || "";
+    if (id === "liste-tamam" || id === "liste-hata") { try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {} }
+    if (typeof fetch !== "function" || typeof FormData !== "function") return; // betiksiz gibi: tarayıcı denetler, form gider
+    form.noValidate = true;
+    input.addEventListener("input", function () { errEl.textContent = ""; });
     form.addEventListener("submit", function (e) {
-      var sub = e.submitter || lastBtn;
-      if (sub && sub.id === "liste-kabul" && loaded) return; // rıza yalnız bu düğmeyle: riza=on gönderilir
       e.preventDefault();
-      if (!form.reportValidity()) return;
-      win.showModal();
-      load();
-    });
-    doc.getElementById("liste-vazgec").addEventListener("click", function () { win.close(); });
-    win.addEventListener("click", function (e) { // karartılmış alana basmak kapatır
-      if (e.target !== win) return;
-      var r = win.getBoundingClientRect();
-      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) win.close();
+      var v = (input.value || "").trim();
+      if (!RE.test(v) || v.length > 254) {
+        errEl.textContent = form.getAttribute("data-bad") || "";
+        try { input.focus(); } catch (er) {}
+        return;
+      }
+      input.value = v;
+      errEl.textContent = "";
+      var body = new FormData(form);
+      input.value = "";
+      showDone();
+      fetch(form.action, { method: "POST", body: body, headers: { Accept: "application/json" }, keepalive: true, credentials: "omit" })
+        .then(function (r) { return r.json().catch(function () { return { durum: r.ok ? "tamam" : "hata" }; }); })
+        .then(function (j) {
+          if (j && j.durum === "tamam") { track("liste-katil"); return; }
+          throw j && j.durum;
+        })
+        .catch(function (code) {
+          hideDone(false);
+          input.value = v;
+          errEl.textContent = form.getAttribute(code === "gecersiz-eposta" ? "data-bad" : "data-fail") || "";
+        });
     });
   })();
 

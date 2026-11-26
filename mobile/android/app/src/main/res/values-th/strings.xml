@@ -627,6 +627,10 @@
     <string name="list_fullText">ข้อความฉบับเต็ม</string>
     <string name="list_label">รายชื่ออีเมล</string>
     <string name="list_formErr">บันทึกการสมัครไม่ได้ โปรดตรวจสอบอีเมลของคุณแล้วลองอีกครั้งในอีกสักครู่</string>
+    <string name="list_placeholder">เข้าร่วมรายชื่ออีเมลของเรา</string>
+    <string name="list_received">ได้รับคำขอของคุณแล้ว</string>
+    <string name="list_badEmail">กรอกอีเมลที่ถูกต้อง</string>
+    <string name="list_sendFail">ส่งไม่สำเร็จ โปรดลองอีกครั้งในอีกสักครู่</string>
     <string name="prayer_kerahatHeading">ช่วงเวลาที่ไม่ควรละหมาด (โดยประมาณ)</string>
     <string name="prayer_kerahatNames_israk">ดวงอาทิตย์ขึ้น (อิชร็อก)</string>
     <string name="prayer_kerahatNames_istiva">ก่อนเที่ยง (อิสติวาอ์)</string>

@@ -627,6 +627,10 @@
     <string name="list_fullText">Vollständiger Text</string>
     <string name="list_label">E-Mail-Liste</string>
     <string name="list_formErr">Die Anmeldung hat nicht geklappt. Prüfen Sie Ihre E-Mail-Adresse und versuchen Sie es etwas später erneut.</string>
+    <string name="list_placeholder">Unserer E-Mail-Liste beitreten</string>
+    <string name="list_received">Ihre Anfrage ist eingegangen</string>
+    <string name="list_badEmail">Geben Sie eine gültige E-Mail-Adresse ein.</string>
+    <string name="list_sendFail">Senden fehlgeschlagen, bitte versuchen Sie es gleich noch einmal.</string>
     <string name="prayer_kerahatHeading">Makruh-Zeiten (ungefähr)</string>
     <string name="prayer_kerahatNames_israk">Sonnenaufgang (Ischraq)</string>
     <string name="prayer_kerahatNames_istiva">Vor Mittag (Istiwa)</string>

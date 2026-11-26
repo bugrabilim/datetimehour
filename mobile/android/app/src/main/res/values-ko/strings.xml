@@ -627,6 +627,10 @@
     <string name="list_fullText">전문</string>
     <string name="list_label">이메일 목록</string>
     <string name="list_formErr">구독하지 못했습니다. 이메일 주소를 확인하고 잠시 후 다시 시도해 주세요.</string>
+    <string name="list_placeholder">이메일 목록에 가입하세요</string>
+    <string name="list_received">신청이 접수되었습니다</string>
+    <string name="list_badEmail">올바른 이메일 주소를 입력하세요.</string>
+    <string name="list_sendFail">보내지 못했습니다. 잠시 후 다시 시도하세요.</string>
     <string name="prayer_kerahatHeading">기도가 권장되지 않는 시간(대략)</string>
     <string name="prayer_kerahatNames_israk">해돋이(이슈라크)</string>
     <string name="prayer_kerahatNames_istiva">정오 전(이스티와)</string>

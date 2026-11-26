@@ -51,17 +51,26 @@ for (const f of htmlFiles) {
     ? /href="https:\/\/bumbagroup\.com\/life"/.test(h) && /rozet\/life\.svg" width="164" height="28"/.test(h) && /rozet\/life-koyu\.svg"/.test(h)
     : /href="https:\/\/bumbagroup\.com\/en\/life"/.test(h) && /rozet\/life-en\.svg" width="170" height="28"/.test(h) && /rozet\/life-en-koyu\.svg"/.test(h)), `${name}: Bumba rozeti yok ya da dili yanlış`);
   check(embed || (/data-theme-toggle/.test(h) && /data-search-open/.test(h)), `${name}: tema ya da arama düğmesi yok`);
-  // Telif (marka kiti, 20 Kasım 2026): her dilde "© 1998 Bumba Group"; eski şirket unvanlı satır kalmadı
-  check(embed || err || (/© 1998 Bumba Group/.test(h) && !/© 2026 Bumba Teknoloji/.test(h)), `${name}: telif satırı eski`);
+  // Telif (standart madde 1, 5.44): görünür 2. satırda "© 2023 Saat Tarih. <Tüm hakları saklıdır.>"; eski satırlar kalmadı
+  check(embed || (/<p class="footer-copy"><bdi>© 2023 Saat Tarih\.<\/bdi> [^<]+<\/p>/.test(h) && !/© 1998 Bumba Group|© 2026 Bumba Teknoloji/.test(h)), `${name}: telif satırı eski`);
   // madde 14 ve 9: çerez bandı; Umami betiği HTML'de yok (consent.js istatistik izniyle ekler)
   check(!/istatistik\.bumba\.tr\/script\.js/.test(h), `${name}: Umami betiği izinsiz yükleniyor`);
   if (!embed) {
     check(/id="cookie-bar"[^>]* hidden/.test(h) && /data-consent-accept/.test(h) && /data-consent-reject/.test(h) && /data-consent-open/.test(h) && /bumbagroup\.com\/cerez-politikasi/.test(h) && /id="cookie-dialog"/.test(h) && /data-consent-stats/.test(h) && /data-consent-ext/.test(h), `${name}: çerez bandı ya da tercihler eksik`);
     const ci = h.indexOf("consent.js"), mi = h.indexOf("/assets/main.js");
     check(ci > 0 && ci < mi && !/badges\.js|data-badge/.test(h), `${name}: consent.js/main.js sırası hatalı ya da web'de rozet kalmış`);
-    // Bu siteye özel (30 Ekim 2026, sahibin kararı): gizlilik ve çerez tercihleri altbilgide değil ayarlarda (masaüstü dişli + mobil menü)
-    const pops = [...h.matchAll(/class="set-item" href="([^"]+)">/g)].map((m) => m[1]);
-    check((h.match(/class="set-item" data-consent-open/g) || []).length === 2 && pops.some((u) => /\/(gizlilik|privacy)\/$/.test(u)) && !/footer-links/.test(h) && (h.match(/<ul class="footer-social">(.*?)<\/ul>/)?.[1].match(/<li>/g) || []).length === 8, `${name}: ayarlarda gizlilik/çerez tercihleri yok, altbilgide bağlantı satırı kalmış ya da 8 sosyal bağlantı yok`);
+    // Altbilgi iki satır (standart madde 1, 5.44): 1. satırda liste formu, 8 sosyal bağlantı (tablodaki sırayla), rozet;
+    // 2. satırda telif ve hukuki bağlantılar standarttaki sırayla, sonunda "Çerez tercihleri"
+    const social = [...(h.match(/<ul class="footer-social">(.*?)<\/ul>/)?.[1] || "").matchAll(/href="([^"]+)"/g)].map((m) => m[1].replace(/^https:\/\/(www\.)?/, "").split(/[./]/)[0]);
+    check(social.join(",") === "linkedin,youtube,instagram,facebook,x,tiktok,pinterest,reddit", `${name}: altbilgide 8 sosyal bağlantı tablodaki sırayla değil (${social.join(",")})`);
+    const fi = h.indexOf('id="liste-form"'), si = h.indexOf('class="footer-social"'), bi = h.indexOf('class="rozet"'), ci2 = h.indexOf('class="footer-copy"');
+    check(fi > 0 && fi < si && si < bi && bi < ci2, `${name}: altbilgi sırası (form, sosyal, imza, telif) hatalı`);
+    const legal = [...(h.match(/<ul class="footer-links"[^>]*>(.*?)<\/ul>/)?.[1] || "").matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+    const enL = !/^<html lang="tr"/.test(h.match(/<html[^>]*>/)?.[0] || "");
+    const want = [/\/(gizlilik|[a-z]+\/privacy)\/$/, enL ? /^https:\/\/bumbagroup\.com\/en\/uyelik-sozlesmesi$/ : /^https:\/\/bumbagroup\.com\/uyelik-sozlesmesi$/,
+      enL ? /^https:\/\/bumbagroup\.com\/en\/uyelik-aydinlatma$/ : /^https:\/\/bumbagroup\.com\/uyelik-aydinlatma$/, /^https:\/\/bumbagroup\.com\/liste\/aydinlatma(\?dil=en)?$/,
+      enL ? /^https:\/\/bumbagroup\.com\/en\/hesap-silme\/saat-tarih$/ : /^https:\/\/bumbagroup\.com\/hesap-silme\/saat-tarih$/, /^https:\/\/bumbagroup\.com\/cerez-politikasi(\?dil=en)?$/];
+    check(legal.length === want.length && want.every((re, i) => re.test(legal[i])) && /<ul class="footer-links"[^>]*>.*<button type="button" class="link-btn" data-consent-open>[^<]+<\/button><\/li><\/ul>/.test(h), `${name}: hukuki bağlantılar eksik ya da sırası yanlış (${legal.join(" ")})`);
   }
   check(/Content-Security-Policy/.test(h), `${name}: CSP yok`);
   if (embed) {
@@ -158,9 +167,10 @@ for (const f of htmlFiles) {
       // Takvimin giriş sayfaları yıl sayfasına canonical verir
       check(/rel="alternate" hreflang/.test(h) === false && /rel="canonical" href="https:\/\/[^"]+\/\d{4}\/"/.test(h), `${name}: noindex giriş sayfası yıl sayfasına canonical vermeli`);
     }
-    check(/action="https:\/\/bumbagroup\.com\/api\/liste\/katil"/.test(h) && /name="riza" value="on" required/.test(h) && !/name="riza"[^>]*checked/.test(h), `${name}: liste formu hatalı`);
-    // madde 6: Katıl penceresi ortak aydınlatma metnini yükler; rıza yalnız "Kabul ediyorum" (submit, riza=on, başta pasif)
-    check(/data-aydinlatma="https:\/\/bumbagroup\.com\/api\/liste\/aydinlatma\?dil=(tr|en)"/.test(h) && /<dialog[^>]+id="liste-pencere"/.test(h) && /<button type="submit" class="btn" id="liste-kabul" name="riza" value="on" disabled>/.test(h) && /id="liste-vazgec"/.test(h) && /id="liste-sonuc"/.test(h), `${name}: liste penceresi standart iskelete uymuyor`);
+    // madde 6 (5.43–5.44): yalnız katılım talebi; pencere, onay kutusu, aydınlatma bağlantısı ve riza yok; gizlilik alanı var
+    check(/action="https:\/\/bumbagroup\.com\/api\/liste\/katil"/.test(h) && !/name="riza"|liste-pencere|data-aydinlatma|liste-kabul/.test(h) && /name="gizlilik" value="https:\/\/time\.bumba\.tr\/[^"]*(gizlilik|privacy)\/"/.test(h) && /id="liste-tamam" role="status" hidden>/.test(h) && /id="liste-hata" role="alert"/.test(h) && /<input id="liste-eposta" type="email"[^>]* maxlength="254"[^>]* pattern="[^"]+" placeholder="[^"]+">/.test(h), `${name}: liste formu standart iskelete uymuyor`);
+    if (/^<html lang="tr"/.test(h.match(/<html[^>]*>/)?.[0] || "")) check(/placeholder="E-posta listesine katılın">/.test(h) && />Katıl<\/button>/.test(h), `${name}: liste formu metinleri (tr)`);
+    if (/^<html lang="en"/.test(h.match(/<html[^>]*>/)?.[0] || "")) check(/placeholder="Join our mailing list">/.test(h) && />Join<\/button>/.test(h), `${name}: liste formu metinleri (en)`);
     check(/name="site" value="[a-z-]+"/.test(h) && /name="web_sitesi"/.test(h), `${name}: liste formu alanları eksik`);
     check(/name="dil" value="(tr|en|de|az|ar)"/.test(h), `${name}: liste dil alanı yok`);
     check(/datetime="\d{4}-\d{2}-\d{2}"/.test(h), `${name}: güncelleme tarihi yok`);
