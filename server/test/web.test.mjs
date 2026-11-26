@@ -51,17 +51,40 @@ test("sayfalar: 19 dil, yön, noindex, CSP, satır içi betik yok", async () => 
     for (const m of r.text.matchAll(/<script([^>]*)>/g)) assert.ok(/type="application\/json"|src="\/varlik\/hesap\.js"/.test(m[1]), m[0]);
     assert.ok(!/ style="/.test(r.text), "satır içi stil yok");
   }
-  // Standart 5.23: kayıt ve girişte ayrı bağlantı satırı yok; ortak metinler yalnız onay cümlesinde, hesap silmeye bağlantı yok
+  // Standart 5.23: kayıt ve giriş ekranında (sayfanın ana alanında) ayrı bağlantı satırı yok; ortak metinler yalnız onay
+  // cümlesinde, hesap silmeye bağlantı yok. Altbilgi ise her sayfadaki gibi iki satır (madde 1, 5.44; VPS 26 Kasım 2026).
   for (const p of ["/kayit?dil=tr", "/giris?dil=tr", "/kayit?dil=de", "/giris?dil=de"]) {
-    const x = (await t.req(p)).text.replace(/<script type="application\/json"[\s\S]*?<\/script>/, "");
-    assert.ok(!/hesap-silme|account-deletion/.test(x), p);
-    const foot = x.slice(x.indexOf('<footer class="foot">'), x.indexOf("</footer>"));
-    assert.ok(!/uyelik-(aydinlatma|sozlesmesi)/.test(foot), p);
-    if (p.startsWith("/giris")) assert.ok(!/uyelik-(aydinlatma|sozlesmesi)/.test(x), p);
+    const x = (await t.req(p)).text;
+    const main = x.slice(x.indexOf('<main'), x.indexOf("</main>"));
+    assert.ok(!/hesap-silme|account-deletion/.test(main), p);
+    if (p.startsWith("/giris")) assert.ok(!/uyelik-(aydinlatma|sozlesmesi)/.test(main), p);
+  }
+  // Altbilgi (standart madde 1, 5.44): liste formu (yalnız katılım talebi), sekiz hesap sırayla, rozet, telif, hukuki bağlantılar
+  {
+    const SOC = ["linkedin.com", "youtube.com", "instagram.com", "facebook.com", "x.com", "tiktok.com", "pinterest.com", "reddit.com"];
+    for (const [p, tr] of [["/giris?dil=tr", true], ["/kayit?dil=en", false], ["/hata-bildir?dil=ar", false]]) {
+      const x = (await t.req(p)).text;
+      const foot = x.slice(x.indexOf('<footer class="foot">'), x.indexOf("</footer>"));
+      assert.match(foot, /<form class="liste-form" id="liste-form" action="https:\/\/bumbagroup\.com\/api\/liste\/katil" method="post"/, p);
+      assert.match(foot, /name="gizlilik" value="https:\/\/time\.bumba\.tr\//, p);
+      assert.ok(!/name="riza"|liste-pencere/.test(foot), p);
+      const at = SOC.map((d) => foot.indexOf(`www.${d}`) >= 0 ? foot.indexOf(`www.${d}`) : foot.indexOf(`//${d}`));
+      assert.ok(at.every((v, i) => v > 0 && (i === 0 || v > at[i - 1])), `${p} sosyal sıra`);
+      assert.match(foot, /<p class="foot-copy"><bdi>© 2023 Saat Tarih\.<\/bdi> [^<]+<\/p>/, p);
+      const want = tr ? ["/gizlilik/", "bumbagroup.com/uyelik-sozlesmesi", "bumbagroup.com/uyelik-aydinlatma", "/liste/aydinlatma\"", "bumbagroup.com/hesap-silme/saat-tarih", "/cerez-politikasi\""]
+        : ["/privacy/", "/en/uyelik-sozlesmesi", "/en/uyelik-aydinlatma", "/liste/aydinlatma?dil=en", "/en/hesap-silme/saat-tarih", "/cerez-politikasi?dil=en"];
+      const pos = want.map((w) => foot.indexOf(w));
+      assert.ok(pos.every((v, i) => v > 0 && (i === 0 || v > pos[i - 1])), `${p} hukuki bağlantılar`);
+      assert.match(foot, /class="link-btn" data-cookie="prefs"/, p);
+      assert.ok(foot.indexOf("liste-form") < foot.indexOf("linkedin") && foot.indexOf("linkedin") < foot.indexOf('class="badge"') && foot.indexOf('class="badge"') < foot.indexOf("foot-copy"), `${p} sıra`);
+    }
+    const csp = (await t.req("/giris")).headers.get("content-security-policy");
+    assert.match(csp, /connect-src [^;]*https:\/\/bumbagroup\.com/);
+    assert.match(csp, /form-action 'self' https:\/\/bumbagroup\.com/);
   }
   // Kayıtta yalnız e-posta ve şifre (görünen ad yok)
   const k = await t.req("/kayit?dil=tr");
-  const names = [...k.text.matchAll(/<input[^>]*name="([^"]+)"/g)].map((m) => m[1]);
+  const names = [...k.text.slice(0, k.text.indexOf('<footer class="foot">')).matchAll(/<input[^>]*name="([^"]+)"/g)].map((m) => m[1]);
   assert.deepEqual([...new Set(names)], ["email", "password"]);
   // Dil: ?dil yoksa tarayıcının dili, desteklenmiyorsa İngilizce
   assert.match((await t.req("/giris", { headers: { "accept-language": "de-DE,de;q=0.9" } })).text, /<html lang="de"/);

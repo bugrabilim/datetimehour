@@ -2,10 +2,12 @@
    (src/data/holidays.json), 23 Nisan, 1 Mayıs, 19 Mayıs, 30 Ağustos, 29 Ekim sabit; adlar sitenin 19 dilinden.
    Sunucu yalnız server/ klasörüyle derlendiği için çıktı depoya yazılır: server/data/tr-days.json.
    2) Web hesap sayfalarının çerez bandı metinleri (sitedeki consent.*) ve rozet adları (uygulamalardaki badges.items.*.name):
-   server/data/web-texts.json.
+   server/data/web-texts.json. 3) Altbilginin (standart madde 1, 5.44) liste formu, telif, hukuki bağlantı metinleri
+   (sitedeki list.*, footer.*, consent.policy/footerLink) ve Bumba Group'un sekiz hesabı (simgeleriyle).
    Kullanım: node server/scripts/gen-data.mjs [--check] */
 import { readFileSync, writeFileSync } from "node:fs";
 import { LANGS } from "../src/config.mjs";
+import { SHARE_ICON_PATHS, SOCIAL_ICON_PATHS } from "../../lib/share-icons.mjs";
 
 const root = new URL("../../", import.meta.url);
 const read = (p) => JSON.parse(readFileSync(new URL(p, root), "utf8"));
@@ -31,6 +33,25 @@ for (const l of LANGS) {
   web.rozet[l] = read(`src/i18n/${l}.json`).badge;
   web.badges[l] = Object.fromEntries(BADGE_IDS.map((id) => [id, app[`badges.items.${id}.name`][l]]));
 }
+web.foot = {};
+for (const l of LANGS) {
+  const t = read(`src/i18n/${l}.json`);
+  web.foot[l] = {
+    list: Object.fromEntries(["label", "placeholder", "submit", "received", "badEmail", "sendFail", "popupTitle"].map((k) => [k, t.list[k]])),
+    footer: t.footer, policy: t.consent.policy, prefs: t.consent.footerLink,
+  };
+}
+const SOCIAL = [ // build.mjs BUMBA_SOCIAL ile aynı sıra (standart madde 1 tablosu)
+  ["https://www.linkedin.com/company/thebumbagroup", "LinkedIn", "linkedin"],
+  ["https://www.youtube.com/@thebumbagroup", "YouTube", "youtube"],
+  ["https://www.instagram.com/thebumbagroup", "Instagram", "instagram"],
+  ["https://www.facebook.com/thebumbagroup", "Facebook", "facebook"],
+  ["https://x.com/thebumbagroup", "X", "x"],
+  ["https://www.tiktok.com/@thebumbagroup", "TikTok", "tiktok"],
+  ["https://www.pinterest.com/thebumbagroup", "Pinterest", "pinterest"],
+  ["https://www.reddit.com/user/thebumbagroup", "Reddit", "reddit"],
+];
+web.social = SOCIAL.map(([u, n, k]) => [u, n, SOCIAL_ICON_PATHS[k] || SHARE_ICON_PATHS[k]]);
 const files = [["tr-days.json", JSON.stringify(out) + "\n"], ["web-texts.json", JSON.stringify(web) + "\n"]];
 const check = process.argv.includes("--check");
 let stale = false;

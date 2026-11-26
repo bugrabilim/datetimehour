@@ -298,7 +298,7 @@ test("ayrı hesaplar girişte sormadan birleşir; şifre değişmez, seçim ekra
   assert.deepEqual((await t.req("/v1/uyelik/durum", { method: "POST", token: tk2, body: {} })).json.sifreSecimi, []);
   // Seçim yapıldıktan sonra bağlantı geçersiz
   const after = await t.req(link.pathname + link.search);
-  assert.doesNotMatch(after.text, /name="site"/);
+  assert.doesNotMatch(after.text.slice(0, after.text.indexOf('<footer class="foot">')), /name="site"/);
   const list = await t.req("/v1/uyelik/urunler", { token: tk2 });
   assert.equal(list.json.urunler.length, 2);
   assert.equal((await t.req("/v1/uyelik/ac", { method: "POST", token: tk2, body: { hedefler: ["gander"], sifre: "Yanlis-1a" } })).status, 401, "açmadan önce şifre");
