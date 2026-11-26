@@ -227,7 +227,7 @@ hesabı açılana kadar yalnız kodda.
   bildirim e-postası yöneticiye imzalı bağlantı taşır (`server/src/moderation.mjs`, `/moderasyon?k=`, 30 gün): açmak
   bir şey yapmaz, "İçeriği gizle", "Gizle ve kişiyi topluluktan uzaklaştır" (bütün halka ve gruplardan çıkar, yenisini
   kuramaz ve katılamaz: `community_ban`, hata `uzaklastirildi`, metin `account.banned`; hesap çalışmaya devam eder),
-  "Uzaklaştırmayı kaldır". Kurallarda söz: bildirimler en geç 24 saat içinde incelenir. Test `moderation.test.mjs`.
+  "Uzaklaştırmayı kaldır". Kurallarda söz: bildirimler mümkün olan en kısa sürede incelenir (26 Kasım 2026, patronun kararı: süre belirtilmez). Test `moderation.test.mjs`.
 - **Yayından önce (sahibin onayıyla), sıra:** (1) moderasyonu taşıyan main birleştirmesi (sunucu yayını); (2) ana
   altyapı sunucuda `HALKALAR=acik` ve `GRUPLAR=acik` girer; (3) TestFlight'ta deneme; (4) 1.1 gönderiminde App Store
   Connect: **Yaş derecelendirmesi** › User-Generated Content **Yes**, Messaging and Chat **No** (sohbet yok), diğerleri

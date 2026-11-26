@@ -1969,7 +1969,7 @@
     <string name="account_rules1">حلقے، گروپ، شہر اور ظاہری ناموں میں گالی، نفرت انگیز بات، ہراسانی، جنسی، پرتشدد یا غیر قانونی مواد، اشتہار اور ذاتی معلومات (فون، پتا، ای میل، لنک) استعمال نہ کریں۔</string>
     <string name="account_rules2">کسی کو تنگ نہ کریں؛ الارم کی تجویز صرف اسی کو بھیجیں جس کے بارے میں آپ جانتے ہوں کہ وہ اسے چاہتا ہے۔</string>
     <string name="account_rules3">اگر کوئی نامناسب نام دیکھیں تو «رپورٹ کریں» پر ٹیپ کریں؛ تنگ کرنے والے رکن کو «بلاک کریں» سے چھپا دیں۔</string>
-    <string name="account_rules4">رپورٹوں کا جائزہ 24 گھنٹوں کے اندر لیا جاتا ہے۔ اصول توڑنے والا مواد ہٹا دیا جاتا ہے؛ لکھنے والے کو تمام حلقوں اور گروپوں سے نکال دیا جاتا ہے اور وہ نئے میں شامل نہیں ہو سکتا۔</string>
+    <string name="account_rules4">رپورٹوں کا جائزہ جلد از جلد لیا جاتا ہے۔ اصول توڑنے والا مواد ہٹا دیا جاتا ہے؛ لکھنے والے کو تمام حلقوں اور گروپوں سے نکال دیا جاتا ہے اور وہ نئے میں شامل نہیں ہو سکتا۔</string>
     <string name="account_rulesAgree">حلقہ یا گروپ بنا کر یا اس میں شامل ہو کر آپ ان اصولوں سے اتفاق کرتے ہیں۔</string>
     <string name="account_banned">کمیونٹی کے اصول توڑنے کی وجہ سے آپ حلقوں یا گروپوں میں شامل نہیں ہو سکتے۔ اگر آپ کے خیال میں یہ غلطی ہے تو «مسئلے کی اطلاع دیں» کے ذریعے ہمیں لکھیں۔</string>
     <string name="common_done">ہو گیا</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">آئیکن: Microsoft Fluent Emoji اور Phosphor Icons (MIT لائسنس)۔ فونٹ: Literata اور Amiri (SIL Open Font License)۔</string>
     <string name="about_license">Fluent Emoji کا لائسنس</string>
     <string name="about_licensePhosphor">Phosphor Icons کا لائسنس</string>
+    <string name="about_licenseFonts">فونٹ کا لائسنس (SIL OFL)</string>
     <string name="onboard_go">شروع کرتے ہیں</string>
     <string name="onboard_back">واپس</string>
     <string name="onboard_yes">ہاں</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">حذف شدہ رکن</string>
     <string name="circle_report">رپورٹ کریں</string>
     <string name="circle_reportName">حلقے کا نام رپورٹ کریں</string>
-    <string name="circle_reported">رپورٹ موصول ہو گئی؛ 24–72 گھنٹوں میں دیکھی جائے گی۔</string>
+    <string name="circle_reported">رپورٹ موصول ہو گئی؛ جلد از جلد دیکھی جائے گی۔</string>
     <string name="circle_block">بلاک کریں</string>
     <string name="circle_unblock">بلاک ختم کریں</string>
     <string name="circle_kick">حلقے سے نکالیں</string>

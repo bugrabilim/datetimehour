@@ -213,7 +213,7 @@
   "rules1": "Halka, grup, şehir ve görünen adlarda hakaret, nefret söylemi, taciz, cinsel ya da şiddet içeren veya yasa dışı içerik, reklam ve kişisel bilgi (telefon, adres, e-posta, bağlantı) kullanmayın.",
   "rules2": "Kimseyi rahatsız etmeyin; alarm önerisini yalnız isteyeceğini bildiğiniz kişiye gönderin.",
   "rules3": "Uygunsuz bir ad görürseniz “Bildir”e dokunun; sizi rahatsız eden üyeyi “Engelle” ile gizleyin.",
-  "rules4": "Bildirimler en geç 24 saat içinde incelenir. Kuralları çiğneyen içerik kaldırılır; yazan kişi bütün halka ve gruplardan çıkarılır ve yenisine katılamaz.",
+  "rules4": "Bildirimler mümkün olan en kısa sürede incelenir. Kuralları çiğneyen içerik kaldırılır; yazan kişi bütün halka ve gruplardan çıkarılır ve yenisine katılamaz.",
   "rulesAgree": "Halka ya da grup kurarak veya katılarak bu kuralları kabul etmiş olursunuz.",
   "banned": "Topluluk kurallarını çiğnediğiniz için halka ve gruplara katılamazsınız. Bir yanlışlık olduğunu düşünüyorsanız “Hata bildir”den bize yazın."
  },
@@ -431,7 +431,7 @@
   "rules1": "Do not use insults, hate speech, harassment, sexual, violent or illegal content, advertising or personal information (phone, address, email, links) in circle, group, city or display names.",
   "rules2": "Do not bother anyone; send an alarm suggestion only to someone you know wants it.",
   "rules3": "If you see an objectionable name, tap “Report”; hide a member who bothers you with “Block”.",
-  "rules4": "Reports are reviewed within 24 hours. Content that breaks the rules is removed, and its author is removed from all circles and groups and cannot join new ones.",
+  "rules4": "Reports are reviewed as soon as possible. Content that breaks the rules is removed, and its author is removed from all circles and groups and cannot join new ones.",
   "rulesAgree": "By creating or joining a circle or group, you agree to these rules.",
   "banned": "You can't join circles or groups because you broke the community rules. If you think this is a mistake, write to us via “Report a problem”."
  },
@@ -649,7 +649,7 @@
   "rules1": "Verwenden Sie in Kreis-, Gruppen-, Stadt- und Anzeigenamen keine Beleidigungen, Hassrede, Belästigung, sexuellen, gewalttätigen oder rechtswidrigen Inhalte, keine Werbung und keine persönlichen Daten (Telefon, Adresse, E-Mail, Links).",
   "rules2": "Belästigen Sie niemanden; senden Sie einen Weckervorschlag nur an jemanden, von dem Sie wissen, dass er ihn möchte.",
   "rules3": "Wenn Sie einen anstößigen Namen sehen, tippen Sie auf „Melden“; ein Mitglied, das Sie stört, blenden Sie mit „Blockieren“ aus.",
-  "rules4": "Meldungen werden innerhalb von 24 Stunden geprüft. Inhalte, die gegen die Regeln verstoßen, werden entfernt; die Person wird aus allen Kreisen und Gruppen entfernt und kann keinen neuen beitreten.",
+  "rules4": "Meldungen werden so schnell wie möglich geprüft. Inhalte, die gegen die Regeln verstoßen, werden entfernt; die Person wird aus allen Kreisen und Gruppen entfernt und kann keinen neuen beitreten.",
   "rulesAgree": "Wenn Sie einen Kreis oder eine Gruppe gründen oder ihr beitreten, stimmen Sie diesen Regeln zu.",
   "banned": "Sie können keinen Kreisen oder Gruppen beitreten, weil Sie gegen die Gemeinschaftsregeln verstoßen haben. Wenn Sie das für einen Irrtum halten, schreiben Sie uns über „Problem melden“."
  },
@@ -867,7 +867,7 @@
   "rules1": "Halqa, qrup, şəhər və görünən adlarda təhqir, nifrət nitqi, təqib, cinsi, zorakı və ya qanunsuz məzmun, reklam və şəxsi məlumat (telefon, ünvan, e-poçt, keçid) istifadə etməyin.",
   "rules2": "Heç kimi narahat etməyin; zəngli saat təklifini yalnız onu istədiyini bildiyiniz şəxsə göndərin.",
   "rules3": "Yersiz bir ad görsəniz “Bildir” düyməsinə toxunun; sizi narahat edən üzvü “Blokla” ilə gizlədin.",
-  "rules4": "Bildirişlər ən gec 24 saat ərzində yoxlanılır. Qaydaları pozan məzmun silinir; onu yazan şəxs bütün halqa və qruplardan çıxarılır və yenisinə qoşula bilmir.",
+  "rules4": "Bildirişlər mümkün qədər tez yoxlanılır. Qaydaları pozan məzmun silinir; onu yazan şəxs bütün halqa və qruplardan çıxarılır və yenisinə qoşula bilmir.",
   "rulesAgree": "Halqa və ya qrup quraraq, yaxud ona qoşularaq bu qaydaları qəbul etmiş olursunuz.",
   "banned": "İcma qaydalarını pozduğunuz üçün halqa və qruplara qoşula bilməzsiniz. Səhv olduğunu düşünürsünüzsə, “Xəta bildir” vasitəsilə bizə yazın."
  },
@@ -1085,7 +1085,7 @@
   "rules1": "لا تستخدم في أسماء الحلقات والمجموعات والمدن والأسماء المعروضة الشتائم أو خطاب الكراهية أو التحرش أو المحتوى الجنسي أو العنيف أو غير القانوني أو الإعلانات أو المعلومات الشخصية (الهاتف، العنوان، البريد الإلكتروني، الروابط).",
   "rules2": "لا تزعج أحدًا؛ أرسل اقتراح المنبه فقط إلى من تعرف أنه يريده.",
   "rules3": "إذا رأيت اسمًا غير لائق فاضغط «إبلاغ»؛ وأخفِ العضو الذي يزعجك باستخدام «حظر».",
-  "rules4": "تُراجع البلاغات خلال 24 ساعة. يُزال المحتوى المخالف للقواعد، ويُخرج كاتبه من جميع الحلقات والمجموعات ولا يمكنه الانضمام إلى غيرها.",
+  "rules4": "تُراجع البلاغات في أقرب وقت ممكن. يُزال المحتوى المخالف للقواعد، ويُخرج كاتبه من جميع الحلقات والمجموعات ولا يمكنه الانضمام إلى غيرها.",
   "rulesAgree": "بإنشاء حلقة أو مجموعة أو الانضمام إليها فإنك توافق على هذه القواعد.",
   "banned": "لا يمكنك الانضمام إلى الحلقات أو المجموعات لأنك خالفت قواعد المجتمع. إذا كنت تظن أن هذا خطأ فاكتب إلينا عبر «الإبلاغ عن مشكلة»."
  },
@@ -1303,7 +1303,7 @@
   "rules1": "Jangan gunakan hinaan, ujaran kebencian, pelecehan, konten seksual, kekerasan atau ilegal, iklan, maupun informasi pribadi (telepon, alamat, email, tautan) pada nama lingkaran, grup, kota, atau nama tampilan.",
   "rules2": "Jangan mengganggu siapa pun; kirim saran alarm hanya kepada orang yang Anda tahu menginginkannya.",
   "rules3": "Jika melihat nama yang tidak pantas, ketuk “Laporkan”; sembunyikan anggota yang mengganggu Anda dengan “Blokir”.",
-  "rules4": "Laporan ditinjau dalam 24 jam. Konten yang melanggar aturan dihapus; penulisnya dikeluarkan dari semua lingkaran dan grup dan tidak dapat bergabung lagi.",
+  "rules4": "Laporan ditinjau secepat mungkin. Konten yang melanggar aturan dihapus; penulisnya dikeluarkan dari semua lingkaran dan grup dan tidak dapat bergabung lagi.",
   "rulesAgree": "Dengan membuat atau bergabung dengan lingkaran atau grup, Anda menyetujui aturan ini.",
   "banned": "Anda tidak dapat bergabung dengan lingkaran atau grup karena melanggar aturan komunitas. Jika menurut Anda ini keliru, tulis kepada kami melalui “Laporkan masalah”."
  },
@@ -1521,7 +1521,7 @@
   "rules1": "حلقے، گروپ، شہر اور ظاہری ناموں میں گالی، نفرت انگیز بات، ہراسانی، جنسی، پرتشدد یا غیر قانونی مواد، اشتہار اور ذاتی معلومات (فون، پتا، ای میل، لنک) استعمال نہ کریں۔",
   "rules2": "کسی کو تنگ نہ کریں؛ الارم کی تجویز صرف اسی کو بھیجیں جس کے بارے میں آپ جانتے ہوں کہ وہ اسے چاہتا ہے۔",
   "rules3": "اگر کوئی نامناسب نام دیکھیں تو «رپورٹ کریں» پر ٹیپ کریں؛ تنگ کرنے والے رکن کو «بلاک کریں» سے چھپا دیں۔",
-  "rules4": "رپورٹوں کا جائزہ 24 گھنٹوں کے اندر لیا جاتا ہے۔ اصول توڑنے والا مواد ہٹا دیا جاتا ہے؛ لکھنے والے کو تمام حلقوں اور گروپوں سے نکال دیا جاتا ہے اور وہ نئے میں شامل نہیں ہو سکتا۔",
+  "rules4": "رپورٹوں کا جائزہ جلد از جلد لیا جاتا ہے۔ اصول توڑنے والا مواد ہٹا دیا جاتا ہے؛ لکھنے والے کو تمام حلقوں اور گروپوں سے نکال دیا جاتا ہے اور وہ نئے میں شامل نہیں ہو سکتا۔",
   "rulesAgree": "حلقہ یا گروپ بنا کر یا اس میں شامل ہو کر آپ ان اصولوں سے اتفاق کرتے ہیں۔",
   "banned": "کمیونٹی کے اصول توڑنے کی وجہ سے آپ حلقوں یا گروپوں میں شامل نہیں ہو سکتے۔ اگر آپ کے خیال میں یہ غلطی ہے تو «مسئلے کی اطلاع دیں» کے ذریعے ہمیں لکھیں۔"
  },
@@ -1739,7 +1739,7 @@
   "rules1": "در نام حلقه، گروه، شهر و نام نمایشی از توهین، سخن نفرت‌آمیز، آزار، محتوای جنسی، خشونت‌آمیز یا غیرقانونی، تبلیغ و اطلاعات شخصی (تلفن، نشانی، ایمیل، پیوند) استفاده نکنید.",
   "rules2": "کسی را آزار ندهید؛ پیشنهاد زنگ هشدار را فقط برای کسی بفرستید که می‌دانید آن را می‌خواهد.",
   "rules3": "اگر نام نامناسبی دیدید، روی «گزارش» بزنید؛ عضوی را که آزارتان می‌دهد با «مسدود کردن» پنهان کنید.",
-  "rules4": "گزارش‌ها حداکثر ظرف 24 ساعت بررسی می‌شوند. محتوای ناقض قوانین حذف می‌شود؛ نویسنده‌اش از همه حلقه‌ها و گروه‌ها بیرون می‌رود و نمی‌تواند به گروه تازه‌ای بپیوندد.",
+  "rules4": "گزارش‌ها در کوتاه‌ترین زمان ممکن بررسی می‌شوند. محتوای ناقض قوانین حذف می‌شود؛ نویسنده‌اش از همه حلقه‌ها و گروه‌ها بیرون می‌رود و نمی‌تواند به گروه تازه‌ای بپیوندد.",
   "rulesAgree": "با ساختن یا پیوستن به حلقه یا گروه، این قوانین را می‌پذیرید.",
   "banned": "چون قوانین جامعه را نقض کرده‌اید، نمی‌توانید به حلقه‌ها یا گروه‌ها بپیوندید. اگر فکر می‌کنید اشتباهی رخ داده، از راه «گزارش مشکل» برای ما بنویسید."
  },
@@ -1957,7 +1957,7 @@
   "rules1": "N’utilisez pas d’insultes, de discours haineux, de harcèlement, de contenus sexuels, violents ou illégaux, de publicité ni d’informations personnelles (téléphone, adresse, e-mail, liens) dans les noms de cercle, de groupe, de ville ou d’affichage.",
   "rules2": "Ne dérangez personne ; n’envoyez une suggestion d’alarme qu’à quelqu’un dont vous savez qu’il la souhaite.",
   "rules3": "Si vous voyez un nom inapproprié, touchez « Signaler » ; masquez un membre qui vous dérange avec « Bloquer ».",
-  "rules4": "Les signalements sont examinés sous 24 heures. Le contenu qui enfreint les règles est supprimé ; son auteur est retiré de tous les cercles et groupes et ne peut plus en rejoindre.",
+  "rules4": "Les signalements sont examinés dans les meilleurs délais. Le contenu qui enfreint les règles est supprimé ; son auteur est retiré de tous les cercles et groupes et ne peut plus en rejoindre.",
   "rulesAgree": "En créant ou en rejoignant un cercle ou un groupe, vous acceptez ces règles.",
   "banned": "Vous ne pouvez pas rejoindre de cercles ni de groupes, car vous avez enfreint les règles de la communauté. Si vous pensez qu’il s’agit d’une erreur, écrivez-nous via « Signaler un problème »."
  },
@@ -2175,7 +2175,7 @@
   "rules1": "Не используйте в названиях кругов и групп, городов и отображаемых именах оскорбления, язык вражды, домогательства, сексуальный, жестокий или незаконный контент, рекламу и личные данные (телефон, адрес, эл. почту, ссылки).",
   "rules2": "Никому не досаждайте; предлагайте будильник только тому, кто, как вы знаете, этого хочет.",
   "rules3": "Если увидите недопустимое название, нажмите «Пожаловаться»; скройте участника, который вам мешает, кнопкой «Заблокировать».",
-  "rules4": "Жалобы рассматриваются в течение 24 часов. Контент, нарушающий правила, удаляется; его автор исключается из всех кругов и групп и не может вступить в новые.",
+  "rules4": "Жалобы рассматриваются в кратчайшие сроки. Контент, нарушающий правила, удаляется; его автор исключается из всех кругов и групп и не может вступить в новые.",
   "rulesAgree": "Создавая круг или группу либо вступая в них, вы принимаете эти правила.",
   "banned": "Вы не можете вступать в круги и группы, так как нарушили правила сообщества. Если считаете, что это ошибка, напишите нам через «Сообщить о проблеме»."
  },
@@ -2393,7 +2393,7 @@
   "rules1": "サークル名、グループ名、都市名、表示名に、侮辱、ヘイトスピーチ、嫌がらせ、性的・暴力的・違法な内容、広告、個人情報（電話番号、住所、メールアドレス、リンク）を使わないでください。",
   "rules2": "誰にも迷惑をかけないでください。アラームの提案は、望んでいるとわかっている相手にだけ送ってください。",
   "rules3": "不適切な名前を見つけたら「報告」をタップしてください。迷惑なメンバーは「ブロック」で非表示にできます。",
-  "rules4": "報告は24時間以内に確認します。ルールに違反する内容は削除され、投稿した人はすべてのサークルとグループから外され、新たに参加できなくなります。",
+  "rules4": "報告はできるだけ早く確認します。ルールに違反する内容は削除され、投稿した人はすべてのサークルとグループから外され、新たに参加できなくなります。",
   "rulesAgree": "サークルやグループを作成または参加すると、このルールに同意したことになります。",
   "banned": "コミュニティのルールに違反したため、サークルやグループに参加できません。誤りだと思われる場合は「問題を報告」からお知らせください。"
  },
@@ -2611,7 +2611,7 @@
   "rules1": "서클, 그룹, 도시 이름과 표시 이름에 욕설, 혐오 표현, 괴롭힘, 성적·폭력적·불법적인 내용, 광고, 개인 정보(전화번호, 주소, 이메일, 링크)를 쓰지 마세요.",
   "rules2": "누구도 괴롭히지 마세요. 알람 제안은 원한다는 것을 아는 사람에게만 보내세요.",
   "rules3": "부적절한 이름을 보면 ‘신고’을 누르세요. 불편하게 하는 멤버는 ‘차단’으로 숨길 수 있습니다.",
-  "rules4": "신고는 24시간 이내에 검토합니다. 규칙을 어긴 콘텐츠는 삭제되고, 작성자는 모든 서클과 그룹에서 제외되며 새로 참여할 수 없습니다.",
+  "rules4": "신고는 최대한 빨리 검토합니다. 규칙을 어긴 콘텐츠는 삭제되고, 작성자는 모든 서클과 그룹에서 제외되며 새로 참여할 수 없습니다.",
   "rulesAgree": "서클이나 그룹을 만들거나 참여하면 이 규칙에 동의하는 것입니다.",
   "banned": "커뮤니티 규칙을 어겨 서클이나 그룹에 참여할 수 없습니다. 잘못되었다고 생각되면 ‘문제 신고’로 알려 주세요."
  },
@@ -2829,7 +2829,7 @@
   "rules1": "请勿在圈子名、群组名、城市名和显示名称中使用辱骂、仇恨言论、骚扰、色情、暴力或违法内容、广告以及个人信息（电话、地址、电子邮件、链接）。",
   "rules2": "请勿打扰他人；只向你确定愿意接收的人发送闹钟建议。",
   "rules3": "如果看到不当的名称，请点按“举报”；可用“屏蔽”隐藏打扰你的成员。",
-  "rules4": "举报会在24小时内处理。违反规则的内容会被删除，发布者会被移出所有圈子和群组，且不能再加入新的。",
+  "rules4": "举报会尽快处理。违反规则的内容会被删除，发布者会被移出所有圈子和群组，且不能再加入新的。",
   "rulesAgree": "创建或加入圈子、群组即表示你同意这些规则。",
   "banned": "由于你违反了社区规则，无法加入圈子或群组。如果你认为这是误判，请通过“报告问题”联系我们。"
  },
@@ -3047,7 +3047,7 @@
   "rules1": "Huwag gumamit ng insulto, mapoot na pananalita, panliligalig, sekswal, marahas o ilegal na nilalaman, patalastas, o personal na impormasyon (telepono, address, email, link) sa pangalan ng circle, grupo, lungsod o display name.",
   "rules2": "Huwag manggulo ng sinuman; magpadala lang ng mungkahing alarm sa taong alam mong gusto ito.",
   "rules3": "Kung may makita kang hindi angkop na pangalan, i-tap ang “I-report”; itago ang miyembrong nanggugulo sa iyo gamit ang “I-block”.",
-  "rules4": "Sinusuri ang mga report sa loob ng 24 na oras. Inaalis ang nilalamang lumalabag sa patakaran; inaalis ang may-akda sa lahat ng circle at grupo at hindi na siya makakasali sa bago.",
+  "rules4": "Sinusuri ang mga report sa lalong madaling panahon. Inaalis ang nilalamang lumalabag sa patakaran; inaalis ang may-akda sa lahat ng circle at grupo at hindi na siya makakasali sa bago.",
   "rulesAgree": "Sa paggawa o pagsali sa isang circle o grupo, sumasang-ayon ka sa mga patakarang ito.",
   "banned": "Hindi ka makakasali sa mga circle o grupo dahil lumabag ka sa mga patakaran ng komunidad. Kung sa tingin mo ay mali ito, sumulat sa amin sa “Mag-ulat ng problema”."
  },
@@ -3265,7 +3265,7 @@
   "rules1": "อย่าใช้คำดูหมิ่น ถ้อยคำแสดงความเกลียดชัง การคุกคาม เนื้อหาทางเพศ ความรุนแรงหรือผิดกฎหมาย โฆษณา หรือข้อมูลส่วนตัว (โทรศัพท์ ที่อยู่ อีเมล ลิงก์) ในชื่อกลุ่ม ชื่อเมือง หรือชื่อที่แสดง",
   "rules2": "อย่ารบกวนผู้อื่น ส่งคำแนะนำการปลุกให้เฉพาะคนที่คุณรู้ว่าต้องการเท่านั้น",
   "rules3": "หากเห็นชื่อที่ไม่เหมาะสม ให้แตะ “รายงาน” และซ่อนสมาชิกที่รบกวนคุณด้วย “บล็อก”",
-  "rules4": "รายงานจะได้รับการตรวจสอบภายใน 24 ชั่วโมง เนื้อหาที่ละเมิดกฎจะถูกลบ ผู้เขียนจะถูกนำออกจากทุกกลุ่มและเข้าร่วมกลุ่มใหม่ไม่ได้",
+  "rules4": "รายงานจะได้รับการตรวจสอบโดยเร็วที่สุด เนื้อหาที่ละเมิดกฎจะถูกลบ ผู้เขียนจะถูกนำออกจากทุกกลุ่มและเข้าร่วมกลุ่มใหม่ไม่ได้",
   "rulesAgree": "เมื่อสร้างหรือเข้าร่วมกลุ่ม ถือว่าคุณยอมรับกฎเหล่านี้",
   "banned": "คุณเข้าร่วมกลุ่มไม่ได้เพราะละเมิดกฎของชุมชน หากคิดว่าเป็นความผิดพลาด โปรดเขียนถึงเราผ่าน “แจ้งปัญหา”"
  },
@@ -3483,7 +3483,7 @@
   "rules1": "No use insultos, discurso de odio, acoso, contenido sexual, violento o ilegal, publicidad ni datos personales (teléfono, dirección, correo, enlaces) en nombres de círculo, grupo, ciudad o de usuario.",
   "rules2": "No moleste a nadie; envíe una sugerencia de alarma solo a quien sepa que la quiere.",
   "rules3": "Si ve un nombre inapropiado, toque «Denunciar»; oculte a un miembro que le moleste con «Bloquear».",
-  "rules4": "Las denuncias se revisan en 24 horas como máximo. El contenido que incumple las normas se elimina; su autor sale de todos los círculos y grupos y no puede unirse a otros.",
+  "rules4": "Las denuncias se revisan lo antes posible. El contenido que incumple las normas se elimina; su autor sale de todos los círculos y grupos y no puede unirse a otros.",
   "rulesAgree": "Al crear un círculo o grupo o unirse a uno, acepta estas normas.",
   "banned": "No puede unirse a círculos ni grupos porque incumplió las normas de la comunidad. Si cree que es un error, escríbanos desde «Informar de un problema»."
  },
@@ -3701,7 +3701,7 @@
   "rules1": "Não use insultos, discurso de ódio, assédio, conteúdo sexual, violento ou ilegal, publicidade nem dados pessoais (telefone, endereço, e-mail, links) em nomes de círculo, grupo, cidade ou de exibição.",
   "rules2": "Não incomode ninguém; envie uma sugestão de alarme só para quem você sabe que quer recebê-la.",
   "rules3": "Se vir um nome impróprio, toque em “Denunciar”; oculte um membro que incomoda você com “Bloquear”.",
-  "rules4": "As denúncias são analisadas em até 24 horas. O conteúdo que viola as regras é removido; o autor sai de todos os círculos e grupos e não pode entrar em outros.",
+  "rules4": "As denúncias são analisadas o mais rápido possível. O conteúdo que viola as regras é removido; o autor sai de todos os círculos e grupos e não pode entrar em outros.",
   "rulesAgree": "Ao criar um círculo ou grupo ou entrar em um, você aceita estas regras.",
   "banned": "Você não pode entrar em círculos nem grupos porque violou as regras da comunidade. Se acha que é um engano, escreva para nós em “Relatar um problema”."
  },
@@ -3919,7 +3919,7 @@
   "rules1": "मंडल, समूह, शहर और दिखने वाले नामों में गाली, नफ़रत भरी बात, उत्पीड़न, यौन, हिंसक या अवैध सामग्री, विज्ञापन और निजी जानकारी (फ़ोन, पता, ईमेल, लिंक) का उपयोग न करें।",
   "rules2": "किसी को परेशान न करें; अलार्म का सुझाव केवल उसी को भेजें जिसके बारे में आप जानते हैं कि वह इसे चाहता है।",
   "rules3": "कोई अनुचित नाम दिखे तो “रिपोर्ट करें” पर टैप करें; परेशान करने वाले सदस्य को “ब्लॉक करें” से छिपाएँ।",
-  "rules4": "रिपोर्टों की समीक्षा 24 घंटे के भीतर होती है। नियम तोड़ने वाली सामग्री हटा दी जाती है; उसे लिखने वाले को सभी मंडलों और समूहों से निकाल दिया जाता है और वह नए में नहीं जुड़ सकता।",
+  "rules4": "रिपोर्टों की समीक्षा जल्द से जल्द होती है। नियम तोड़ने वाली सामग्री हटा दी जाती है; उसे लिखने वाले को सभी मंडलों और समूहों से निकाल दिया जाता है और वह नए में नहीं जुड़ सकता।",
   "rulesAgree": "मंडल या समूह बनाकर या उसमें जुड़कर आप इन नियमों से सहमत होते हैं।",
   "banned": "समुदाय के नियम तोड़ने के कारण आप मंडलों या समूहों में नहीं जुड़ सकते। अगर आपको लगता है कि यह गलती है, तो “समस्या बताएँ” से हमें लिखें।"
  },
@@ -4137,7 +4137,7 @@
   "rules1": "চক্র, গ্রুপ, শহর ও প্রদর্শিত নামে গালি, ঘৃণাপূর্ণ কথা, হয়রানি, যৌন, সহিংস বা বেআইনি কনটেন্ট, বিজ্ঞাপন এবং ব্যক্তিগত তথ্য (ফোন, ঠিকানা, ইমেল, লিংক) ব্যবহার করবেন না।",
   "rules2": "কাউকে বিরক্ত করবেন না; অ্যালার্মের প্রস্তাব কেবল তাকেই পাঠান যিনি তা চান বলে আপনি জানেন।",
   "rules3": "অনুপযুক্ত নাম দেখলে “রিপোর্ট করুন”-এ ট্যাপ করুন; বিরক্ত করা সদস্যকে “ব্লক করুন” দিয়ে লুকান।",
-  "rules4": "রিপোর্ট সর্বোচ্চ 24 ঘণ্টার মধ্যে পর্যালোচনা করা হয়। নিয়ম ভাঙা কনটেন্ট সরিয়ে দেওয়া হয়; লেখককে সব চক্র ও গ্রুপ থেকে বের করে দেওয়া হয় এবং তিনি নতুন কোনোটিতে যোগ দিতে পারেন না।",
+  "rules4": "রিপোর্ট যত দ্রুত সম্ভব পর্যালোচনা করা হয়। নিয়ম ভাঙা কনটেন্ট সরিয়ে দেওয়া হয়; লেখককে সব চক্র ও গ্রুপ থেকে বের করে দেওয়া হয় এবং তিনি নতুন কোনোটিতে যোগ দিতে পারেন না।",
   "rulesAgree": "চক্র বা গ্রুপ তৈরি করে বা তাতে যোগ দিয়ে আপনি এই নিয়মগুলো মেনে নিচ্ছেন।",
   "banned": "কমিউনিটির নিয়ম ভাঙার কারণে আপনি চক্র বা গ্রুপে যোগ দিতে পারবেন না। ভুল হয়েছে মনে হলে “সমস্যা জানান” থেকে আমাদের লিখুন।"
  }

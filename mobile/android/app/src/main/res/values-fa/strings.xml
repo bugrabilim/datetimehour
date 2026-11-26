@@ -1969,7 +1969,7 @@
     <string name="account_rules1">در نام حلقه، گروه، شهر و نام نمایشی از توهین، سخن نفرت‌آمیز، آزار، محتوای جنسی، خشونت‌آمیز یا غیرقانونی، تبلیغ و اطلاعات شخصی (تلفن، نشانی، ایمیل، پیوند) استفاده نکنید.</string>
     <string name="account_rules2">کسی را آزار ندهید؛ پیشنهاد زنگ هشدار را فقط برای کسی بفرستید که می‌دانید آن را می‌خواهد.</string>
     <string name="account_rules3">اگر نام نامناسبی دیدید، روی «گزارش» بزنید؛ عضوی را که آزارتان می‌دهد با «مسدود کردن» پنهان کنید.</string>
-    <string name="account_rules4">گزارش‌ها حداکثر ظرف 24 ساعت بررسی می‌شوند. محتوای ناقض قوانین حذف می‌شود؛ نویسنده‌اش از همه حلقه‌ها و گروه‌ها بیرون می‌رود و نمی‌تواند به گروه تازه‌ای بپیوندد.</string>
+    <string name="account_rules4">گزارش‌ها در کوتاه‌ترین زمان ممکن بررسی می‌شوند. محتوای ناقض قوانین حذف می‌شود؛ نویسنده‌اش از همه حلقه‌ها و گروه‌ها بیرون می‌رود و نمی‌تواند به گروه تازه‌ای بپیوندد.</string>
     <string name="account_rulesAgree">با ساختن یا پیوستن به حلقه یا گروه، این قوانین را می‌پذیرید.</string>
     <string name="account_banned">چون قوانین جامعه را نقض کرده‌اید، نمی‌توانید به حلقه‌ها یا گروه‌ها بپیوندید. اگر فکر می‌کنید اشتباهی رخ داده، از راه «گزارش مشکل» برای ما بنویسید.</string>
     <string name="common_done">تمام</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">نمادها: Microsoft Fluent Emoji و Phosphor Icons (مجوز MIT). قلم‌ها: Literata و Amiri (SIL Open Font License).</string>
     <string name="about_license">مجوز Fluent Emoji</string>
     <string name="about_licensePhosphor">مجوز Phosphor Icons</string>
+    <string name="about_licenseFonts">مجوز قلم‌ها (SIL OFL)</string>
     <string name="onboard_go">شروع کنیم</string>
     <string name="onboard_back">بازگشت</string>
     <string name="onboard_yes">بله</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">عضو حذف‌شده</string>
     <string name="circle_report">گزارش</string>
     <string name="circle_reportName">گزارش نام حلقه</string>
-    <string name="circle_reported">گزارش دریافت شد؛ ظرف 24 تا 72 ساعت بررسی می‌شود.</string>
+    <string name="circle_reported">گزارش دریافت شد؛ در کوتاه‌ترین زمان ممکن بررسی می‌شود.</string>
     <string name="circle_block">مسدود کردن</string>
     <string name="circle_unblock">رفع مسدودیت</string>
     <string name="circle_kick">حذف از حلقه</string>

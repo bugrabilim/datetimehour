@@ -1969,7 +1969,7 @@
     <string name="account_rules1">Verwenden Sie in Kreis-, Gruppen-, Stadt- und Anzeigenamen keine Beleidigungen, Hassrede, Belästigung, sexuellen, gewalttätigen oder rechtswidrigen Inhalte, keine Werbung und keine persönlichen Daten (Telefon, Adresse, E-Mail, Links).</string>
     <string name="account_rules2">Belästigen Sie niemanden; senden Sie einen Weckervorschlag nur an jemanden, von dem Sie wissen, dass er ihn möchte.</string>
     <string name="account_rules3">Wenn Sie einen anstößigen Namen sehen, tippen Sie auf „Melden“; ein Mitglied, das Sie stört, blenden Sie mit „Blockieren“ aus.</string>
-    <string name="account_rules4">Meldungen werden innerhalb von 24 Stunden geprüft. Inhalte, die gegen die Regeln verstoßen, werden entfernt; die Person wird aus allen Kreisen und Gruppen entfernt und kann keinen neuen beitreten.</string>
+    <string name="account_rules4">Meldungen werden so schnell wie möglich geprüft. Inhalte, die gegen die Regeln verstoßen, werden entfernt; die Person wird aus allen Kreisen und Gruppen entfernt und kann keinen neuen beitreten.</string>
     <string name="account_rulesAgree">Wenn Sie einen Kreis oder eine Gruppe gründen oder ihr beitreten, stimmen Sie diesen Regeln zu.</string>
     <string name="account_banned">Sie können keinen Kreisen oder Gruppen beitreten, weil Sie gegen die Gemeinschaftsregeln verstoßen haben. Wenn Sie das für einen Irrtum halten, schreiben Sie uns über „Problem melden“.</string>
     <string name="common_done">Fertig</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">Symbole: Microsoft Fluent Emoji und Phosphor Icons (MIT-Lizenz). Schriften: Literata und Amiri (SIL Open Font License).</string>
     <string name="about_license">Lizenz von Fluent Emoji</string>
     <string name="about_licensePhosphor">Lizenz von Phosphor Icons</string>
+    <string name="about_licenseFonts">Schriftlizenz (SIL OFL)</string>
     <string name="onboard_go">Los geht\'s</string>
     <string name="onboard_back">Zurück</string>
     <string name="onboard_yes">Ja</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">Gelöschtes Mitglied</string>
     <string name="circle_report">Melden</string>
     <string name="circle_reportName">Kreisnamen melden</string>
-    <string name="circle_reported">Danke, wir prüfen es innerhalb von 24–72 Stunden.</string>
+    <string name="circle_reported">Danke, wir prüfen es so schnell wie möglich.</string>
     <string name="circle_block">Blockieren</string>
     <string name="circle_unblock">Blockierung aufheben</string>
     <string name="circle_kick">Aus dem Kreis entfernen</string>

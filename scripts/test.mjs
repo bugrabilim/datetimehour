@@ -46,8 +46,13 @@ for (const f of htmlFiles) {
   check(hl[2] === (RTL.includes(hl[1]) ? "rtl" : "ltr"), `${name}: dir değeri hatalı`);
   check(!/\sstyle="/.test(h), `${name}: satır içi style (CSP)`);
   check(!/http:\/\/(?!www\.w3\.org)/.test(h), `${name}: http:// bağlantı`);
-  check(/class="rozet"/.test(h) && /width="164" height="28"/.test(h), `${name}: Bumba rozeti yok`);
+  // madde 1 (5.27): Türkçe sayfada Türkçe rozet, öbür dillerde İngilizce rozet (`life-en.svg`, 170, /en/life)
+  check(/class="rozet"/.test(h) && (hl[1] === "tr"
+    ? /href="https:\/\/bumbagroup\.com\/life"/.test(h) && /rozet\/life\.svg" width="164" height="28"/.test(h) && /rozet\/life-koyu\.svg"/.test(h)
+    : /href="https:\/\/bumbagroup\.com\/en\/life"/.test(h) && /rozet\/life-en\.svg" width="170" height="28"/.test(h) && /rozet\/life-en-koyu\.svg"/.test(h)), `${name}: Bumba rozeti yok ya da dili yanlış`);
   check(embed || (/data-theme-toggle/.test(h) && /data-search-open/.test(h)), `${name}: tema ya da arama düğmesi yok`);
+  // Telif (marka kiti, 20 Kasım 2026): her dilde "© 1998 Bumba Group"; eski şirket unvanlı satır kalmadı
+  check(embed || err || (/© 1998 Bumba Group/.test(h) && !/© 2026 Bumba Teknoloji/.test(h)), `${name}: telif satırı eski`);
   // madde 14 ve 9: çerez bandı; Umami betiği HTML'de yok (consent.js istatistik izniyle ekler)
   check(!/istatistik\.bumba\.tr\/script\.js/.test(h), `${name}: Umami betiği izinsiz yükleniyor`);
   if (!embed) {
@@ -56,7 +61,7 @@ for (const f of htmlFiles) {
     check(ci > 0 && ci < mi && !/badges\.js|data-badge/.test(h), `${name}: consent.js/main.js sırası hatalı ya da web'de rozet kalmış`);
     // Bu siteye özel (30 Ekim 2026, sahibin kararı): gizlilik ve çerez tercihleri altbilgide değil ayarlarda (masaüstü dişli + mobil menü)
     const pops = [...h.matchAll(/class="set-item" href="([^"]+)">/g)].map((m) => m[1]);
-    check((h.match(/class="set-item" data-consent-open/g) || []).length === 2 && pops.some((u) => /\/(gizlilik|privacy)\/$/.test(u)) && !/footer-links/.test(h), `${name}: ayarlarda gizlilik/çerez tercihleri yok ya da altbilgide bağlantı satırı kalmış`);
+    check((h.match(/class="set-item" data-consent-open/g) || []).length === 2 && pops.some((u) => /\/(gizlilik|privacy)\/$/.test(u)) && !/footer-links/.test(h) && (h.match(/<ul class="footer-social">(.*?)<\/ul>/)?.[1].match(/<li>/g) || []).length === 8, `${name}: ayarlarda gizlilik/çerez tercihleri yok, altbilgide bağlantı satırı kalmış ya da 8 sosyal bağlantı yok`);
   }
   check(/Content-Security-Policy/.test(h), `${name}: CSP yok`);
   if (embed) {
@@ -381,6 +386,14 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
 
 // kontrast (WCAG AA)
 const css = fs.readFileSync(path.join(ROOT, "src/styles.css"), "utf8");
+// Geçici logo (25 Kasım 2026, patronun onayı; MARKA §4, K45): üst çubukta ad Literata 600; kitte logo.svg ve logo-koyu.svg (yola çevrilmiş, betiksiz, dış bağlantısız)
+check(/\.brand span \{ font-family: "Literata"[^}]*font-weight: 600/.test(css), "üst çubuk: ad Literata 600 değil");
+for (const f of ["logo.svg", "logo-koyu.svg"]) {
+  const svg = fs.readFileSync(path.join(ROOT, "marka", f), "utf8");
+  check(/^<svg /.test(svg) && !/<script|<text|href=|url\(/i.test(svg) && (svg.match(/https?:\/\//g) || []).length === 1, `marka/${f}: yazı yola çevrilmemiş ya da betik/dış bağlantı var`);
+}
+const kit = JSON.parse(fs.readFileSync(path.join(ROOT, "marka/kit.json"), "utf8"));
+check(/Geçici logo/.test(kit.notlar.tr) && /logodaki ad/.test(kit.yaziTipleri[0].rol.tr), "marka/kit.json: logo notu ya da Literata rolü eski");
 const block = (re) => Object.fromEntries([...css.match(re)[1].matchAll(/--([\w-]+):\s*(#[0-9a-f]{6})/g)].map((m) => [m[1], m[2]]));
 const lum = (hex) => {
   const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
@@ -795,6 +808,8 @@ for (const l of LANGS) {
     if (cfg.updated === "2026-10-30") check(tr.includes('data-ph="goldenAm" dir="ltr">07:15–08:11<') && tr.includes('data-ph="bluePm" dir="ltr">18:20–18:31<') && /data-ph="riseAz">10\d° DGD</.test(tr), "fotoğraf ışığı: İstanbul 30.10.2026 değerleri beklenen değil");
     check(/href="\/altin-saat\/"/.test(fs.readFileSync(path.join(DIST, "araclar/index.html"), "utf8")) && /href="\/en\/golden-hour\/"/.test(fs.readFileSync(path.join(DIST, "en/tools/index.html"), "utf8")), "araçlar merkezi: fotoğraf ışığı kartı yok");
     check(/id="photo"/.test(fs.readFileSync(path.join(DIST, "sss/index.html"), "utf8")), "SSS: fotoğraf ışığı grubu yok");
+    // Başlık yazı tipinin lisansı (MARKA §4): SSS'in altında bağlantı, dosya kendi sunucumuzda, Google yazı tipi yok
+    check(/href="\/assets\/fonts\/OFL-Literata\.txt"/.test(fs.readFileSync(path.join(DIST, "sss/index.html"), "utf8")) && fs.existsSync(path.join(DIST, "assets/fonts/OFL-Literata.txt")), "SSS: yazı tipi lisansı bağlantısı ya da dosyası yok");
     for (const l of LANGS) check(dict[l].get("photo.dirs").length === 16 && /Open-Meteo/.test(dict[l].get("photo.attribution")), `fotoğraf ışığı: ${l} yönler ya da atıf`);
     // Gizlilik: web, iPhone ve Android maddelerinde fotoğraf ışığının bulut tahmini (Open-Meteo, yaklaşık konum)
     for (const l of LANGS) {

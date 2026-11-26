@@ -13,6 +13,7 @@
     "home": "Accueil",
     "world": "Horloge mondiale",
     "privacy": "Confidentialité et cookies",
+    "fontLicense": "Police des titres : Literata (SIL Open Font License)",
     "mainNav": "Navigation principale",
     "footerNav": "Navigation du pied de page",
     "langSwitch": "Français",
@@ -31,7 +32,7 @@
     "breadcrumb": "Fil d’Ariane",
     "updated": "Dernière mise à jour",
     "noscript": "JavaScript doit être activé dans votre navigateur pour afficher l’horloge en direct.",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Accueil de Saat Tarih",
     "calendar": "Calendrier",
     "tools": "Outils",
@@ -327,7 +328,7 @@
         "id": "controller",
         "h": "Responsable du traitement",
         "p": [
-          "Le responsable du traitement est Bumba Teknoloji Limited Şirketi (Ataşehir / Istanbul, Turquie). Pour toute question ou demande au titre de la KVKK : [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "Le responsable du traitement est Bumba Teknoloji Limited Şirketi (Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, Turquie). Pour toute question ou demande au titre de la KVKK : [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Téléphone : +90 546 237 13 55."
         ]
       },
       {

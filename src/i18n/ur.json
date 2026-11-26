@@ -13,6 +13,7 @@
     "home": "ہوم",
     "world": "عالمی گھڑی",
     "privacy": "رازداری اور کوکیز",
+    "fontLicense": "سرخیوں کا فونٹ: Literata (SIL Open Font License)",
     "mainNav": "مرکزی نیویگیشن",
     "footerNav": "فوٹر نیویگیشن",
     "langSwitch": "اردو",
@@ -31,7 +32,7 @@
     "breadcrumb": "صفحے کا راستہ",
     "updated": "آخری تازہ کاری",
     "noscript": "براہِ راست گھڑی دیکھنے کے لیے براؤزر میں JavaScript فعال ہونا ضروری ہے۔",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Saat Tarih ہوم",
     "calendar": "کیلنڈر",
     "tools": "ٹولز",
@@ -340,7 +341,7 @@
         "id": "controller",
         "h": "ڈیٹا کنٹرولر",
         "p": [
-          "ڈیٹا کنٹرولر Bumba Teknoloji Limited Şirketi (Ataşehir / استنبول، ترکی) ہے۔ کسی بھی سوال یا ڈیٹا تحفظ کی درخواست کے لیے: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)۔"
+          "ڈیٹا کنٹرولر Bumba Teknoloji Limited Şirketi (Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, ترکی) ہے۔ کسی بھی سوال یا ڈیٹا تحفظ کی درخواست کے لیے: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)۔ فون: +90 546 237 13 55۔"
         ]
       },
       {

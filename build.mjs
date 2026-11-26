@@ -6,7 +6,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 import { bridges } from "./lib/bridges.mjs";
-import { SHARE_ICON_PATHS } from "./lib/share-icons.mjs";
+import { SHARE_ICON_PATHS, SOCIAL_ICON_PATHS } from "./lib/share-icons.mjs";
 import { hijriTable, hijriTableId } from "./lib/hijri.mjs";
 import { loadWorldHolidays, publicDays } from "./lib/world-holidays.mjs";
 import { skyEvents } from "./lib/sky-events.mjs";
@@ -46,7 +46,9 @@ const extendRoutes = (table) => {
 };
 
 const arm = cfg.arm;
+// Rozet genişlikleri (madde 1): Türkçe rozet ve İngilizce rozet (5.27; Türkçe dışındaki bütün dillerde İngilizcesi)
 const BADGE_W = { games: 185, suites: 177, life: 164, ventures: 205 }[arm];
+const BADGE_W_EN = { games: 176, suites: 182, life: 170, ventures: 201 }[arm];
 
 /* "2026-01-13" → dilin uzun tarih biçiminde ("13 Ocak 2026") */
 const fmtDate = (lang, isoDate) => { const [y, m, d] = isoDate.split("-").map(Number); return tpl(I[lang].calendar.dateFmt, { day: d, month: I[lang].calendar.months[m - 1], year: y }); };
@@ -474,9 +476,12 @@ function cookieUi(lang) {
 
 function badge(lang) {
   const t = I[lang].badge;
+  const tr = lang === "tr";
+  const w = tr ? BADGE_W : BADGE_W_EN;
+  const base = tr ? arm : `${arm}-en`;
   const img = (cls, file) =>
-    `<img class="${cls}" src="https://bumbagroup.com/rozet/${file}" width="${BADGE_W}" height="28" alt="${esc(t.alt)}" loading="lazy">`;
-  return `<a class="rozet" href="https://bumbagroup.com/${arm}" rel="noopener" title="${esc(t.title)}">${img("only-light", `${arm}.svg`)}${img("only-dark", `${arm}-koyu.svg`)}</a>`;
+    `<img class="${cls}" src="https://bumbagroup.com/rozet/${file}" width="${w}" height="28" alt="${esc(t.alt)}" loading="lazy">`;
+  return `<a class="rozet" href="https://bumbagroup.com/${tr ? "" : "en/"}${arm}" rel="noopener" title="${esc(t.title)}">${img("only-light", `${base}.svg`)}${img("only-dark", `${base}-koyu.svg`)}</a>`;
 }
 
 function searchDialog(lang) {
@@ -644,6 +649,7 @@ ${isError ? p.body : withShare(p, canonical, p.body.replace(/<p class="lead"/g, 
   <div class="wrap footer-row">
 ${listForm(lang, p.path || ROUTES[lang].home)}
     <div class="footer-sign">
+      ${socialRow()}
       ${badge(lang)}
       <p class="sr-only">${esc(u.copyright)}</p>
       ${isError ? "" : `<p class="sr-only">${esc(u.updated)}: <time datetime="${cfg.updated}">${esc(updatedText(lang))}</time></p>`}
@@ -675,6 +681,28 @@ function withShare(p, canonical, body) {
 }
 
 /* ---------- JSON-LD ---------- */
+// Bumba Group'un sosyal hesapları (bumbagroup.com ve marka kitiyle aynı; standart 2 "Marka bilgileri … şemada (sameAs) aynı")
+const BUMBA_SOCIAL = [
+  "https://www.instagram.com/thebumbagroup",
+  "https://www.facebook.com/thebumbagroup",
+  "https://www.youtube.com/@thebumbagroup",
+  "https://www.tiktok.com/@thebumbagroup",
+  "https://x.com/thebumbagroup",
+  "https://www.pinterest.com/thebumbagroup",
+  "https://www.reddit.com/user/thebumbagroup",
+  "https://www.linkedin.com/company/thebumbagroup",
+];
+/* Altbilgide Bumba Group'un sosyal hesapları (26 Kasım 2026, patronun kararı: "tek satır olacak şekilde ekleyebilirsin";
+   onaylı tek satırlık altbilgi korunur). Simgeler sitenin renginde, yanında yazı yok; ad ekran okuyucuya. */
+const SOCIAL_NAMES = { instagram: "Instagram", facebook: "Facebook", youtube: "YouTube", tiktok: "TikTok", x: "X", pinterest: "Pinterest", reddit: "Reddit", linkedin: "LinkedIn" };
+function socialRow() {
+  const icon = (k) => SOCIAL_ICON_PATHS[k] || SHARE_ICON_PATHS[k];
+  const items = BUMBA_SOCIAL.map((url) => {
+    const k = Object.keys(SOCIAL_NAMES).find((n) => url.includes(n === "x" ? "//x.com" : n));
+    return `<li><a href="${url}" rel="noopener" aria-label="Bumba Group ${SOCIAL_NAMES[k]}"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="${icon(k)}"/></svg></a></li>`;
+  });
+  return `<ul class="footer-social">${items.join("")}</ul>`;
+}
 function baseLd(lang) {
   return [
     {
@@ -684,7 +712,7 @@ function baseLd(lang) {
       url: ORIGIN + "/",
       logo: abs("/icon-512.png"),
       email: cfg.email,
-      parentOrganization: { "@type": "Organization", name: "Bumba Group", url: "https://bumbagroup.com" },
+      parentOrganization: { "@type": "Organization", name: "Bumba Group", url: "https://bumbagroup.com", sameAs: BUMBA_SOCIAL },
     },
     {
       "@type": "WebSite",
@@ -3303,7 +3331,8 @@ function buildFaq(lang) {
 </section>
 ${sections}
 <section class="section faq-privacy">
-  <div class="wrap"><p><a href="${ROUTES[lang].privacy}">${esc(t.ui.privacy)}</a></p></div>
+  <div class="wrap"><p><a href="${ROUTES[lang].privacy}">${esc(t.ui.privacy)}</a></p>
+  <p><a href="/assets/fonts/OFL-Literata.txt">${esc(t.ui.fontLicense)}</a></p></div>
 </section>`;
   const all = groups.flatMap((g) => g.items);
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, f.title, f.description), breadcrumbLd(trail), faqLd(all)];

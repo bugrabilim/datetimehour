@@ -131,6 +131,8 @@ a:hover { text-decoration-thickness: 2px; }
 .site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem; padding-block: 0.45rem; }
 .brand { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.1rem; letter-spacing: -0.01em; margin-inline-end: auto; min-width: 0; }
 .brand span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Geçici logo (25 Kasım 2026, patronun onayı; marka/logo.svg): ad Literata 600 ile, her dilde ("Saat Tarih" Latin harfli) */
+.brand span { font-family: "Literata", Georgia, "Times New Roman", serif; font-weight: 600; letter-spacing: 0; }
 .brand svg { width: 1.7rem; height: 1.7rem; color: var(--accent); flex: none; }
 .menu { display: flex; align-items: center; gap: 0.5rem 1rem; flex-wrap: wrap; }
 .nav { display: flex; gap: 0.25rem; flex-wrap: wrap; }
@@ -558,6 +560,10 @@ dialog.search::backdrop { background: rgb(10 12 16 / 0.55); }
 .footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
 .footer-sign { display: flex; align-items: center; margin-inline-start: auto; }
 .footer-sign p { margin: 0; }
+.footer-social { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.15rem; list-style: none; margin: 0; margin-inline-end: 1rem; padding: 0; }
+.footer-social a { display: grid; place-items: center; inline-size: 2rem; block-size: 2rem; border-radius: 999px; color: var(--muted); }
+.footer-social a:hover, .footer-social a:focus-visible { color: var(--text); background: var(--surface); }
+@media (max-width: 30rem) { .footer-sign { flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; } .footer-social { margin-inline-end: 0; } }
 .rozet { display: inline-block; line-height: 0; }
 .rozet img { height: 28px; width: auto; }
 

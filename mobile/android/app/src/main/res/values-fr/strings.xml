@@ -1969,7 +1969,7 @@
     <string name="account_rules1">N’utilisez pas d’insultes, de discours haineux, de harcèlement, de contenus sexuels, violents ou illégaux, de publicité ni d’informations personnelles (téléphone, adresse, e-mail, liens) dans les noms de cercle, de groupe, de ville ou d’affichage.</string>
     <string name="account_rules2">Ne dérangez personne ; n’envoyez une suggestion d’alarme qu’à quelqu’un dont vous savez qu’il la souhaite.</string>
     <string name="account_rules3">Si vous voyez un nom inapproprié, touchez « Signaler » ; masquez un membre qui vous dérange avec « Bloquer ».</string>
-    <string name="account_rules4">Les signalements sont examinés sous 24 heures. Le contenu qui enfreint les règles est supprimé ; son auteur est retiré de tous les cercles et groupes et ne peut plus en rejoindre.</string>
+    <string name="account_rules4">Les signalements sont examinés dans les meilleurs délais. Le contenu qui enfreint les règles est supprimé ; son auteur est retiré de tous les cercles et groupes et ne peut plus en rejoindre.</string>
     <string name="account_rulesAgree">En créant ou en rejoignant un cercle ou un groupe, vous acceptez ces règles.</string>
     <string name="account_banned">Vous ne pouvez pas rejoindre de cercles ni de groupes, car vous avez enfreint les règles de la communauté. Si vous pensez qu’il s’agit d’une erreur, écrivez-nous via « Signaler un problème ».</string>
     <string name="common_done">OK</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">Icônes : Microsoft Fluent Emoji et Phosphor Icons (licence MIT). Polices : Literata et Amiri (SIL Open Font License).</string>
     <string name="about_license">Licence de Fluent Emoji</string>
     <string name="about_licensePhosphor">Licence de Phosphor Icons</string>
+    <string name="about_licenseFonts">Licence des polices (SIL OFL)</string>
     <string name="onboard_go">C\'est parti</string>
     <string name="onboard_back">Retour</string>
     <string name="onboard_yes">Oui</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">Membre supprimé</string>
     <string name="circle_report">Signaler</string>
     <string name="circle_reportName">Signaler le nom du cercle</string>
-    <string name="circle_reported">Merci, nous l\'examinerons sous 24 à 72 heures.</string>
+    <string name="circle_reported">Merci, nous l\'examinerons dans les meilleurs délais.</string>
     <string name="circle_block">Bloquer</string>
     <string name="circle_unblock">Débloquer</string>
     <string name="circle_kick">Retirer du cercle</string>

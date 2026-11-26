@@ -13,6 +13,7 @@
     "home": "Startseite",
     "world": "Weltzeituhr",
     "privacy": "Datenschutz und Cookies",
+    "fontLicense": "Überschriftenschrift: Literata (SIL Open Font License)",
     "mainNav": "Hauptnavigation",
     "footerNav": "Fußzeilennavigation",
     "langSwitch": "Deutsch",
@@ -31,7 +32,7 @@
     "breadcrumb": "Brotkrümelnavigation",
     "updated": "Zuletzt aktualisiert",
     "noscript": "Für die Live-Uhr muss JavaScript in Ihrem Browser aktiviert sein.",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Startseite von Saat Tarih",
     "calendar": "Kalender",
     "tools": "Tools",
@@ -327,7 +328,7 @@
         "id": "controller",
         "h": "Verantwortlicher",
         "p": [
-          "Verantwortlicher ist die Bumba Teknoloji Limited Şirketi (Ataşehir / Istanbul, Türkei). Für Fragen und Anfragen zum Datenschutz: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "Verantwortlicher ist die Bumba Teknoloji Limited Şirketi (Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, Türkei). Für Fragen und Anfragen zum Datenschutz: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Telefon: +90 546 237 13 55."
         ]
       },
       {

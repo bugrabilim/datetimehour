@@ -13,6 +13,7 @@
     "home": "Ana səhifə",
     "world": "Dünya saatları",
     "privacy": "Məxfilik və kukilər",
+    "fontLicense": "Başlıq şrifti: Literata (SIL Open Font License)",
     "mainNav": "Əsas naviqasiya",
     "footerNav": "Alt naviqasiya",
     "langSwitch": "Azərbaycanca",
@@ -31,7 +32,7 @@
     "breadcrumb": "Naviqasiya zənciri",
     "updated": "Son yenilənmə",
     "noscript": "Canlı saatı görmək üçün brauzerinizdə JavaScript aktiv olmalıdır.",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Saat Tarih ana səhifəsi",
     "calendar": "Təqvim",
     "tools": "Alətlər",
@@ -300,7 +301,7 @@
         "id": "controller",
         "h": "Məlumat nəzarətçisi",
         "p": [
-          "Məlumat nəzarətçisi (şəxsi məlumatların emalına cavabdeh şəxs) Bumba Teknoloji Limited Şirketi-dir (Ataşehir / İstanbul, Türkiyə). İstənilən sual və ya şəxsi məlumatlarla bağlı müraciət üçün: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "Məlumat nəzarətçisi (şəxsi məlumatların emalına cavabdeh şəxs) Bumba Teknoloji Limited Şirketi-dir (Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, Türkiyə). İstənilən sual və ya şəxsi məlumatlarla bağlı müraciət üçün: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Telefon: +90 546 237 13 55."
         ]
       },
       {

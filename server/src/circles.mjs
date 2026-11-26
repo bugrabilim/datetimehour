@@ -363,7 +363,7 @@ export function createCircles({ pool, mailer, adminEmail, modLink = () => "" }) 
     await mailer.sendRaw({
       to: adminEmail || "bilgi@bumbagroup.com",
       subject: `Saat Tarih halka bildirimi: ${what}${hidden ? " (gizlendi)" : ""}`,
-      text: `Bildirilen ${what}: ${text}\nHalka: ${id} (${c.kind})\nBu içerik için bildirim sayısı: ${n}${hidden ? "\nÜç ayrı bildirimle kendiliğinden gizlendi." : ""}\n\nTopluluk kurallarında söz verilen süre: en geç 24 saat içinde incele.${link ? `\nGizlemek ya da yazanı topluluktan uzaklaştırmak için: ${link}` : ""}\n`,
+      text: `Bildirilen ${what}: ${text}\nHalka: ${id} (${c.kind})\nBu içerik için bildirim sayısı: ${n}${hidden ? "\nÜç ayrı bildirimle kendiliğinden gizlendi." : ""}\n\nTopluluk kurallarındaki söz: mümkün olan en kısa sürede incele.${link ? `\nGizlemek ya da yazanı topluluktan uzaklaştırmak için: ${link}` : ""}\n`,
     }).catch(() => {});
     return { yeni: true, gizlendi: hidden };
   }
@@ -407,6 +407,8 @@ export function createCircles({ pool, mailer, adminEmail, modLink = () => "" }) 
     const ids = (await q(`select circle_id from circle_member where user_id = $1`, [userId])).rows.map((x) => x.circle_id);
     for (const id of ids) await removeMember(id, userId, "silindi");
     await q(`update circle_juz set user_id = null, gone = 'silindi' where user_id = $1`, [userId]);
+    // 5.28 "Hukuk", silinen hesabın izi: üyeyi hedef alan bildirim satırları da o anda silinir
+    await q(`delete from circle_report where target = $1`, [`uye:${userId}`]);
   }
 
   /* Verilerimi indir */

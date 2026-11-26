@@ -1969,7 +1969,7 @@
     <string name="account_rules1">No use insultos, discurso de odio, acoso, contenido sexual, violento o ilegal, publicidad ni datos personales (teléfono, dirección, correo, enlaces) en nombres de círculo, grupo, ciudad o de usuario.</string>
     <string name="account_rules2">No moleste a nadie; envíe una sugerencia de alarma solo a quien sepa que la quiere.</string>
     <string name="account_rules3">Si ve un nombre inapropiado, toque «Denunciar»; oculte a un miembro que le moleste con «Bloquear».</string>
-    <string name="account_rules4">Las denuncias se revisan en 24 horas como máximo. El contenido que incumple las normas se elimina; su autor sale de todos los círculos y grupos y no puede unirse a otros.</string>
+    <string name="account_rules4">Las denuncias se revisan lo antes posible. El contenido que incumple las normas se elimina; su autor sale de todos los círculos y grupos y no puede unirse a otros.</string>
     <string name="account_rulesAgree">Al crear un círculo o grupo o unirse a uno, acepta estas normas.</string>
     <string name="account_banned">No puede unirse a círculos ni grupos porque incumplió las normas de la comunidad. Si cree que es un error, escríbanos desde «Informar de un problema».</string>
     <string name="common_done">Listo</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">Iconos: Microsoft Fluent Emoji y Phosphor Icons (licencia MIT). Tipografías: Literata y Amiri (SIL Open Font License).</string>
     <string name="about_license">Licencia de Fluent Emoji</string>
     <string name="about_licensePhosphor">Licencia de Phosphor Icons</string>
+    <string name="about_licenseFonts">Licencia de las tipografías (SIL OFL)</string>
     <string name="onboard_go">Empecemos</string>
     <string name="onboard_back">Atrás</string>
     <string name="onboard_yes">Sí</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">Miembro eliminado</string>
     <string name="circle_report">Denunciar</string>
     <string name="circle_reportName">Denunciar el nombre del círculo</string>
-    <string name="circle_reported">Gracias, lo revisaremos en 24–72 horas.</string>
+    <string name="circle_reported">Gracias, lo revisaremos lo antes posible.</string>
     <string name="circle_block">Bloquear</string>
     <string name="circle_unblock">Desbloquear</string>
     <string name="circle_kick">Quitar del círculo</string>

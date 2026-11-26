@@ -234199,115 +234199,115 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bildirimler en geç 24 saat içinde incelenir. Kuralları çiğneyen içerik kaldırılır; yazan kişi bütün halka ve gruplardan çıkarılır ve yenisine katılamaz."
+            "value": "Bildirimler mümkün olan en kısa sürede incelenir. Kuralları çiğneyen içerik kaldırılır; yazan kişi bütün halka ve gruplardan çıkarılır ve yenisine katılamaz."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reports are reviewed within 24 hours. Content that breaks the rules is removed, and its author is removed from all circles and groups and cannot join new ones."
+            "value": "Reports are reviewed as soon as possible. Content that breaks the rules is removed, and its author is removed from all circles and groups and cannot join new ones."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Meldungen werden innerhalb von 24 Stunden geprüft. Inhalte, die gegen die Regeln verstoßen, werden entfernt; die Person wird aus allen Kreisen und Gruppen entfernt und kann keinen neuen beitreten."
+            "value": "Meldungen werden so schnell wie möglich geprüft. Inhalte, die gegen die Regeln verstoßen, werden entfernt; die Person wird aus allen Kreisen und Gruppen entfernt und kann keinen neuen beitreten."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bildirişlər ən gec 24 saat ərzində yoxlanılır. Qaydaları pozan məzmun silinir; onu yazan şəxs bütün halqa və qruplardan çıxarılır və yenisinə qoşula bilmir."
+            "value": "Bildirişlər mümkün qədər tez yoxlanılır. Qaydaları pozan məzmun silinir; onu yazan şəxs bütün halqa və qruplardan çıxarılır və yenisinə qoşula bilmir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تُراجع البلاغات خلال 24 ساعة. يُزال المحتوى المخالف للقواعد، ويُخرج كاتبه من جميع الحلقات والمجموعات ولا يمكنه الانضمام إلى غيرها."
+            "value": "تُراجع البلاغات في أقرب وقت ممكن. يُزال المحتوى المخالف للقواعد، ويُخرج كاتبه من جميع الحلقات والمجموعات ولا يمكنه الانضمام إلى غيرها."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Laporan ditinjau dalam 24 jam. Konten yang melanggar aturan dihapus; penulisnya dikeluarkan dari semua lingkaran dan grup dan tidak dapat bergabung lagi."
+            "value": "Laporan ditinjau secepat mungkin. Konten yang melanggar aturan dihapus; penulisnya dikeluarkan dari semua lingkaran dan grup dan tidak dapat bergabung lagi."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "رپورٹوں کا جائزہ 24 گھنٹوں کے اندر لیا جاتا ہے۔ اصول توڑنے والا مواد ہٹا دیا جاتا ہے؛ لکھنے والے کو تمام حلقوں اور گروپوں سے نکال دیا جاتا ہے اور وہ نئے میں شامل نہیں ہو سکتا۔"
+            "value": "رپورٹوں کا جائزہ جلد از جلد لیا جاتا ہے۔ اصول توڑنے والا مواد ہٹا دیا جاتا ہے؛ لکھنے والے کو تمام حلقوں اور گروپوں سے نکال دیا جاتا ہے اور وہ نئے میں شامل نہیں ہو سکتا۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "گزارش‌ها حداکثر ظرف 24 ساعت بررسی می‌شوند. محتوای ناقض قوانین حذف می‌شود؛ نویسنده‌اش از همه حلقه‌ها و گروه‌ها بیرون می‌رود و نمی‌تواند به گروه تازه‌ای بپیوندد."
+            "value": "گزارش‌ها در کوتاه‌ترین زمان ممکن بررسی می‌شوند. محتوای ناقض قوانین حذف می‌شود؛ نویسنده‌اش از همه حلقه‌ها و گروه‌ها بیرون می‌رود و نمی‌تواند به گروه تازه‌ای بپیوندد."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les signalements sont examinés sous 24 heures. Le contenu qui enfreint les règles est supprimé ; son auteur est retiré de tous les cercles et groupes et ne peut plus en rejoindre."
+            "value": "Les signalements sont examinés dans les meilleurs délais. Le contenu qui enfreint les règles est supprimé ; son auteur est retiré de tous les cercles et groupes et ne peut plus en rejoindre."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Жалобы рассматриваются в течение 24 часов. Контент, нарушающий правила, удаляется; его автор исключается из всех кругов и групп и не может вступить в новые."
+            "value": "Жалобы рассматриваются в кратчайшие сроки. Контент, нарушающий правила, удаляется; его автор исключается из всех кругов и групп и не может вступить в новые."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "報告は24時間以内に確認します。ルールに違反する内容は削除され、投稿した人はすべてのサークルとグループから外され、新たに参加できなくなります。"
+            "value": "報告はできるだけ早く確認します。ルールに違反する内容は削除され、投稿した人はすべてのサークルとグループから外され、新たに参加できなくなります。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "신고는 24시간 이내에 검토합니다. 규칙을 어긴 콘텐츠는 삭제되고, 작성자는 모든 서클과 그룹에서 제외되며 새로 참여할 수 없습니다."
+            "value": "신고는 최대한 빨리 검토합니다. 규칙을 어긴 콘텐츠는 삭제되고, 작성자는 모든 서클과 그룹에서 제외되며 새로 참여할 수 없습니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "举报会在24小时内处理。违反规则的内容会被删除，发布者会被移出所有圈子和群组，且不能再加入新的。"
+            "value": "举报会尽快处理。违反规则的内容会被删除，发布者会被移出所有圈子和群组，且不能再加入新的。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sinusuri ang mga report sa loob ng 24 na oras. Inaalis ang nilalamang lumalabag sa patakaran; inaalis ang may-akda sa lahat ng circle at grupo at hindi na siya makakasali sa bago."
+            "value": "Sinusuri ang mga report sa lalong madaling panahon. Inaalis ang nilalamang lumalabag sa patakaran; inaalis ang may-akda sa lahat ng circle at grupo at hindi na siya makakasali sa bago."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "รายงานจะได้รับการตรวจสอบภายใน 24 ชั่วโมง เนื้อหาที่ละเมิดกฎจะถูกลบ ผู้เขียนจะถูกนำออกจากทุกกลุ่มและเข้าร่วมกลุ่มใหม่ไม่ได้"
+            "value": "รายงานจะได้รับการตรวจสอบโดยเร็วที่สุด เนื้อหาที่ละเมิดกฎจะถูกลบ ผู้เขียนจะถูกนำออกจากทุกกลุ่มและเข้าร่วมกลุ่มใหม่ไม่ได้"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Las denuncias se revisan en 24 horas como máximo. El contenido que incumple las normas se elimina; su autor sale de todos los círculos y grupos y no puede unirse a otros."
+            "value": "Las denuncias se revisan lo antes posible. El contenido que incumple las normas se elimina; su autor sale de todos los círculos y grupos y no puede unirse a otros."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "As denúncias são analisadas em até 24 horas. O conteúdo que viola as regras é removido; o autor sai de todos os círculos e grupos e não pode entrar em outros."
+            "value": "As denúncias são analisadas o mais rápido possível. O conteúdo que viola as regras é removido; o autor sai de todos os círculos e grupos e não pode entrar em outros."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "रिपोर्टों की समीक्षा 24 घंटे के भीतर होती है। नियम तोड़ने वाली सामग्री हटा दी जाती है; उसे लिखने वाले को सभी मंडलों और समूहों से निकाल दिया जाता है और वह नए में नहीं जुड़ सकता।"
+            "value": "रिपोर्टों की समीक्षा जल्द से जल्द होती है। नियम तोड़ने वाली सामग्री हटा दी जाती है; उसे लिखने वाले को सभी मंडलों और समूहों से निकाल दिया जाता है और वह नए में नहीं जुड़ सकता।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "রিপোর্ট সর্বোচ্চ 24 ঘণ্টার মধ্যে পর্যালোচনা করা হয়। নিয়ম ভাঙা কনটেন্ট সরিয়ে দেওয়া হয়; লেখককে সব চক্র ও গ্রুপ থেকে বের করে দেওয়া হয় এবং তিনি নতুন কোনোটিতে যোগ দিতে পারেন না।"
+            "value": "রিপোর্ট যত দ্রুত সম্ভব পর্যালোচনা করা হয়। নিয়ম ভাঙা কনটেন্ট সরিয়ে দেওয়া হয়; লেখককে সব চক্র ও গ্রুপ থেকে বের করে দেওয়া হয় এবং তিনি নতুন কোনোটিতে যোগ দিতে পারেন না।"
           }
         }
       }
@@ -463387,6 +463387,125 @@
         }
       }
     },
+    "about.licenseFonts": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazı tipi lisansı (SIL OFL)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Font license (SIL OFL)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schriftlizenz (SIL OFL)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şrift lisenziyası (SIL OFL)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رخصة الخطوط (SIL OFL)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lisensi fon (SIL OFL)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فونٹ کا لائسنس (SIL OFL)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مجوز قلم‌ها (SIL OFL)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Licence des polices (SIL OFL)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лицензия шрифтов (SIL OFL)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "フォントのライセンス（SIL OFL）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "글꼴 라이선스 (SIL OFL)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "字体许可证（SIL OFL）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lisensya ng mga font (SIL OFL)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สัญญาอนุญาตแบบอักษร (SIL OFL)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Licencia de las tipografías (SIL OFL)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Licença das fontes (SIL OFL)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ॉन्ट का लाइसेंस (SIL OFL)"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ফন্ট লাইসেন্স (SIL OFL)"
+          }
+        }
+      }
+    },
     "onboard.go": {
       "extractionState": "manual",
       "localizations": {
@@ -486479,115 +486598,115 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bildiriminiz alındı; 24–72 saat içinde bakılır."
+            "value": "Bildiriminiz alındı; mümkün olan en kısa sürede bakılır."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Thanks, we'll review it within 24–72 hours."
+            "value": "Thanks, we'll review it as soon as possible."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Danke, wir prüfen es innerhalb von 24–72 Stunden."
+            "value": "Danke, wir prüfen es so schnell wie möglich."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bildiriş alındı; 24–72 saat ərzində baxılır."
+            "value": "Bildiriş alındı; mümkün qədər tez baxılır."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تم استلام البلاغ، وسنراجعه خلال 24–72 ساعة."
+            "value": "تم استلام البلاغ، وسنراجعه في أقرب وقت ممكن."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Laporan diterima; akan ditinjau dalam 24–72 jam."
+            "value": "Laporan diterima; akan ditinjau secepat mungkin."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "رپورٹ موصول ہو گئی؛ 24–72 گھنٹوں میں دیکھی جائے گی۔"
+            "value": "رپورٹ موصول ہو گئی؛ جلد از جلد دیکھی جائے گی۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "گزارش دریافت شد؛ ظرف 24 تا 72 ساعت بررسی می‌شود."
+            "value": "گزارش دریافت شد؛ در کوتاه‌ترین زمان ممکن بررسی می‌شود."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Merci, nous l'examinerons sous 24 à 72 heures."
+            "value": "Merci, nous l'examinerons dans les meilleurs délais."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Спасибо, мы рассмотрим жалобу в течение 24–72 часов."
+            "value": "Спасибо, мы рассмотрим жалобу в кратчайшие сроки."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "報告を受け付けました。24〜72 時間以内に確認します。"
+            "value": "報告を受け付けました。できるだけ早く確認します。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "신고가 접수되었습니다. 24~72시간 안에 검토합니다."
+            "value": "신고가 접수되었습니다. 최대한 빨리 검토합니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已收到举报，我们会在 24–72 小时内处理。"
+            "value": "已收到举报，我们会尽快处理。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Natanggap ang report; susuriin sa loob ng 24–72 oras."
+            "value": "Natanggap ang report; susuriin sa lalong madaling panahon."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ได้รับรายงานแล้ว จะตรวจสอบภายใน 24–72 ชั่วโมง"
+            "value": "ได้รับรายงานแล้ว จะตรวจสอบโดยเร็วที่สุด"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gracias, lo revisaremos en 24–72 horas."
+            "value": "Gracias, lo revisaremos lo antes posible."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Obrigado, vamos analisar em 24–72 horas."
+            "value": "Obrigado, vamos analisar o mais rápido possível."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "रिपोर्ट मिल गई; 24–72 घंटों में देखी जाएगी।"
+            "value": "रिपोर्ट मिल गई; जल्द से जल्द देखी जाएगी।"
           }
         },
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "রিপোর্ট পাওয়া গেছে; 24–72 ঘণ্টার মধ্যে দেখা হবে।"
+            "value": "রিপোর্ট পাওয়া গেছে; যত দ্রুত সম্ভব দেখা হবে।"
           }
         }
       }

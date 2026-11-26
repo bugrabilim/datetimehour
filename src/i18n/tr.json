@@ -13,6 +13,7 @@
     "home": "Ana sayfa",
     "world": "Dünya saatleri",
     "privacy": "Gizlilik ve çerezler",
+    "fontLicense": "Başlık yazı tipi: Literata (SIL Open Font License)",
     "mainNav": "Ana gezinti",
     "footerNav": "Alt bilgi gezintisi",
     "langSwitch": "English",
@@ -31,7 +32,7 @@
     "breadcrumb": "Sayfa yolu",
     "updated": "Son güncelleme",
     "noscript": "Canlı saati görmek için tarayıcınızda JavaScript açık olmalıdır.",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Saat Tarih ana sayfa",
     "calendar": "Takvim",
     "tools": "Araçlar",
@@ -300,7 +301,7 @@
         "id": "veri-sorumlusu",
         "h": "Veri sorumlusu",
         "p": [
-          "Veri sorumlusu Bumba Teknoloji Limited Şirketi'dir (Ataşehir / İstanbul). Her türlü soru ve KVKK başvurusu için: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "Veri sorumlusu Bumba Teknoloji Limited Şirketi'dir (Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul). Her türlü soru ve KVKK başvurusu için: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Telefon: +90 546 237 13 55."
         ]
       },
       {

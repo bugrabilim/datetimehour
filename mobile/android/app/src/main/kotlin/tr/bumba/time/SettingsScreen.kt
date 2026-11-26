@@ -389,6 +389,9 @@ fun AboutScreen() {
             color = Theme.c.accent, fontSize = 12.sp)
         Text(L("about.licensePhosphor"), Modifier.clickable { open("https://github.com/phosphor-icons/core/blob/main/LICENSE") },
             color = Theme.c.accent, fontSize = 12.sp)
+        // Yazı tipi lisansı bağlantısı (24 Kasım 2026, MARKA §4 başlık yazı tipi kuralı)
+        Text(L("about.licenseFonts"), Modifier.clickable { open("https://openfontlicense.org/open-font-license-official-text/") },
+            color = Theme.c.accent, fontSize = 12.sp)
     }
 }
 

@@ -13,6 +13,7 @@
     "home": "Home",
     "world": "World clock",
     "privacy": "Privacy and cookies",
+    "fontLicense": "Heading font: Literata (SIL Open Font License)",
     "mainNav": "Main navigation",
     "footerNav": "Footer navigation",
     "langSwitch": "Türkçe",
@@ -31,7 +32,7 @@
     "breadcrumb": "Breadcrumb",
     "updated": "Last updated",
     "noscript": "JavaScript must be enabled in your browser to see the live clock.",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Saat Tarih home",
     "calendar": "Calendar",
     "tools": "Tools",
@@ -300,7 +301,7 @@
         "id": "controller",
         "h": "Data controller",
         "p": [
-          "The data controller is Bumba Teknoloji Limited Şirketi (Ataşehir / Istanbul, Türkiye). For any question or data protection request: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "The data controller is Bumba Teknoloji Limited Şirketi (Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, Türkiye). For any question or data protection request: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Phone: +90 546 237 13 55."
         ]
       },
       {

@@ -13,6 +13,7 @@
     "home": "หน้าแรก",
     "world": "นาฬิกาโลก",
     "privacy": "ความเป็นส่วนตัวและคุกกี้",
+    "fontLicense": "แบบอักษรหัวเรื่อง: Literata (SIL Open Font License)",
     "mainNav": "เมนูหลัก",
     "footerNav": "เมนูส่วนท้าย",
     "langSwitch": "ไทย",
@@ -31,7 +32,7 @@
     "breadcrumb": "เส้นทางนำทาง",
     "updated": "อัปเดตล่าสุด",
     "noscript": "ต้องเปิดใช้ JavaScript ในเบราว์เซอร์เพื่อดูนาฬิกาสด",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "หน้าแรก Saat Tarih",
     "calendar": "ปฏิทิน",
     "tools": "เครื่องมือ",
@@ -340,7 +341,7 @@
         "id": "controller",
         "h": "ผู้ควบคุมข้อมูล",
         "p": [
-          "ผู้ควบคุมข้อมูลคือ Bumba Teknoloji Limited Şirketi (อาตาเชฮีร์ อิสตันบูล ตุรกี) หากมีคำถามใด ๆ หรือคำขอตาม KVKK ติดต่อได้ที่ [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)"
+          "ผู้ควบคุมข้อมูลคือ Bumba Teknoloji Limited Şirketi (Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, ตุรกี) หากมีคำถามใด ๆ หรือคำขอตาม KVKK ติดต่อได้ที่ [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) โทรศัพท์: +90 546 237 13 55"
         ]
       },
       {

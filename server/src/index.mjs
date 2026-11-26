@@ -220,14 +220,14 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
       return json(res, 200, { surum: c.surum, kod: c.kod, rtl: c.rtl, metin: c.metin }, { "Cache-Control": "public, max-age=300" });
     }
 
-    // Hata bildirimi (hesap gerekmez): yalnız e-postayla sahibe; IP başına saatte 5, günde toplam 300
+    // Hata bildirimi (hesap gerekmez): yalnız e-postayla sahibe; IP başına saatte 5 (günlük toplam sınır yok: standart 5.33, kota merkezde izlenir; 25 Kasım 2026 patronun kararı)
     if (p === "/v1/geri-bildirim" && m === "POST") {
       if (!sameOrigin(req)) return json(res, 403, { hata: "kaynak" });
       const b = await readJson(req, 32 * 1024);
       if (b.site) return json(res, 200, { tamam: true }); // tuzak alan: botlar doldurur, sessizce atılır
       const f = validateFeedback(b);
       if (f.hata) return json(res, 400, { hata: f.hata });
-      if (!(await limit(`fb:${ipOf(req)}`, 3600, 5)) || !(await limit("fb:hepsi", 86400, 300))) return json(res, 429, { hata: "sinir" });
+      if (!(await limit(`fb:${ipOf(req)}`, 3600, 5))) return json(res, 429, { hata: "sinir" });
       const mail = feedbackMail(f, cfg.siteUrl);
       try {
         await mailer.sendRaw({ to: cfg.adminEmail, ...mail });
@@ -484,7 +484,7 @@ export async function createApp(cfg, { pool, mailer, center, fetchImpl } = {}) {
     // Zamanlanmış görevler (CRON_SECRET'la; görevleri ana altyapı oturumu kurar)
     if (p === "/gorev/temizlik" && req.method === "POST") {
       if (!bearerOk(req.headers.authorization, cfg.cronSecret)) return json(res, 401, { hata: "yetki" });
-      const out = await runCleanup({ pool, center, relay, adminEmail: cfg.adminEmail });
+      const out = await runCleanup({ pool, center, relay, mailer, adminEmail: cfg.adminEmail });
       out.halkalar = await circles.cleanup();
       out.gruplar = await groups.cleanup();
       out.silmeIstekleri = await deletion.cleanup();

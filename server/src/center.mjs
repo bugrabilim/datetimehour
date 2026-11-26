@@ -29,7 +29,8 @@ export function createCenter(cfg, fetchImpl = fetch) {
     urunler: (uyeNo) => call("urunler", { uyeNo }),
     ac: (uyeNo, hedefler, hesap) => call("ac", { uyeNo, hedefler, hesap }),
     guncelle: (uyeNo, degisiklik) => call("guncelle", { uyeNo, degisiklik }),
-    ayril: (uyeNo) => call("ayril", { uyeNo }),
+    // neden (5.28): yönetici silmesinde "yonetici", doğrulanmamış hesapta "dogrulanmamis"; üyenin kendi isteğinde verilmez
+    ayril: (uyeNo, neden) => call("ayril", neden ? { uyeNo, neden } : { uyeNo }),
     bildir: (hesaplar) => call("bildir", { hesaplar }),
     // Aynı e-postanın ayrı hesapları girişte sormadan birleşir; şifre değişmez, üye sonra hangi şifreyle süreceğini seçer
     birlestir: (uyeNo, eposta) => call("birlestir", { uyeNo, eposta }),

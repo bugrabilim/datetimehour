@@ -1969,7 +1969,7 @@
     <string name="account_rules1">Halqa, qrup, şəhər və görünən adlarda təhqir, nifrət nitqi, təqib, cinsi, zorakı və ya qanunsuz məzmun, reklam və şəxsi məlumat (telefon, ünvan, e-poçt, keçid) istifadə etməyin.</string>
     <string name="account_rules2">Heç kimi narahat etməyin; zəngli saat təklifini yalnız onu istədiyini bildiyiniz şəxsə göndərin.</string>
     <string name="account_rules3">Yersiz bir ad görsəniz “Bildir” düyməsinə toxunun; sizi narahat edən üzvü “Blokla” ilə gizlədin.</string>
-    <string name="account_rules4">Bildirişlər ən gec 24 saat ərzində yoxlanılır. Qaydaları pozan məzmun silinir; onu yazan şəxs bütün halqa və qruplardan çıxarılır və yenisinə qoşula bilmir.</string>
+    <string name="account_rules4">Bildirişlər mümkün qədər tez yoxlanılır. Qaydaları pozan məzmun silinir; onu yazan şəxs bütün halqa və qruplardan çıxarılır və yenisinə qoşula bilmir.</string>
     <string name="account_rulesAgree">Halqa və ya qrup quraraq, yaxud ona qoşularaq bu qaydaları qəbul etmiş olursunuz.</string>
     <string name="account_banned">İcma qaydalarını pozduğunuz üçün halqa və qruplara qoşula bilməzsiniz. Səhv olduğunu düşünürsünüzsə, “Xəta bildir” vasitəsilə bizə yazın.</string>
     <string name="common_done">Hazır</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">İkonlar: Microsoft Fluent Emoji və Phosphor Icons (MIT lisenziyası). Şriftlər: Literata və Amiri (SIL Open Font License).</string>
     <string name="about_license">Fluent Emoji lisenziyası</string>
     <string name="about_licensePhosphor">Phosphor Icons lisenziyası</string>
+    <string name="about_licenseFonts">Şrift lisenziyası (SIL OFL)</string>
     <string name="onboard_go">Başlayaq</string>
     <string name="onboard_back">Geri</string>
     <string name="onboard_yes">Bəli</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">Silinmiş üzv</string>
     <string name="circle_report">Bildir</string>
     <string name="circle_reportName">Halqanın adını bildir</string>
-    <string name="circle_reported">Bildiriş alındı; 24–72 saat ərzində baxılır.</string>
+    <string name="circle_reported">Bildiriş alındı; mümkün qədər tez baxılır.</string>
     <string name="circle_block">Blokla</string>
     <string name="circle_unblock">Bloku götür</string>
     <string name="circle_kick">Halqadan çıxar</string>

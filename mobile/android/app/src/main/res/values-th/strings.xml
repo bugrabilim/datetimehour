@@ -1969,7 +1969,7 @@
     <string name="account_rules1">อย่าใช้คำดูหมิ่น ถ้อยคำแสดงความเกลียดชัง การคุกคาม เนื้อหาทางเพศ ความรุนแรงหรือผิดกฎหมาย โฆษณา หรือข้อมูลส่วนตัว (โทรศัพท์ ที่อยู่ อีเมล ลิงก์) ในชื่อกลุ่ม ชื่อเมือง หรือชื่อที่แสดง</string>
     <string name="account_rules2">อย่ารบกวนผู้อื่น ส่งคำแนะนำการปลุกให้เฉพาะคนที่คุณรู้ว่าต้องการเท่านั้น</string>
     <string name="account_rules3">หากเห็นชื่อที่ไม่เหมาะสม ให้แตะ “รายงาน” และซ่อนสมาชิกที่รบกวนคุณด้วย “บล็อก”</string>
-    <string name="account_rules4">รายงานจะได้รับการตรวจสอบภายใน 24 ชั่วโมง เนื้อหาที่ละเมิดกฎจะถูกลบ ผู้เขียนจะถูกนำออกจากทุกกลุ่มและเข้าร่วมกลุ่มใหม่ไม่ได้</string>
+    <string name="account_rules4">รายงานจะได้รับการตรวจสอบโดยเร็วที่สุด เนื้อหาที่ละเมิดกฎจะถูกลบ ผู้เขียนจะถูกนำออกจากทุกกลุ่มและเข้าร่วมกลุ่มใหม่ไม่ได้</string>
     <string name="account_rulesAgree">เมื่อสร้างหรือเข้าร่วมกลุ่ม ถือว่าคุณยอมรับกฎเหล่านี้</string>
     <string name="account_banned">คุณเข้าร่วมกลุ่มไม่ได้เพราะละเมิดกฎของชุมชน หากคิดว่าเป็นความผิดพลาด โปรดเขียนถึงเราผ่าน “แจ้งปัญหา”</string>
     <string name="common_done">เสร็จ</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">ไอคอน: Microsoft Fluent Emoji และ Phosphor Icons (สัญญาอนุญาต MIT) แบบอักษร: Literata และ Amiri (SIL Open Font License)</string>
     <string name="about_license">สัญญาอนุญาตของ Fluent Emoji</string>
     <string name="about_licensePhosphor">สัญญาอนุญาตของ Phosphor Icons</string>
+    <string name="about_licenseFonts">สัญญาอนุญาตแบบอักษร (SIL OFL)</string>
     <string name="onboard_go">เริ่มกันเลย</string>
     <string name="onboard_back">ย้อนกลับ</string>
     <string name="onboard_yes">ใช่</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">สมาชิกที่ถูกลบ</string>
     <string name="circle_report">รายงาน</string>
     <string name="circle_reportName">รายงานชื่อกลุ่ม</string>
-    <string name="circle_reported">ได้รับรายงานแล้ว จะตรวจสอบภายใน 24–72 ชั่วโมง</string>
+    <string name="circle_reported">ได้รับรายงานแล้ว จะตรวจสอบโดยเร็วที่สุด</string>
     <string name="circle_block">บล็อก</string>
     <string name="circle_unblock">เลิกบล็อก</string>
     <string name="circle_kick">นำออกจากกลุ่ม</string>

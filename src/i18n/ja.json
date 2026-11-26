@@ -13,6 +13,7 @@
     "home": "ホーム",
     "world": "世界時計",
     "privacy": "プライバシーと Cookie",
+    "fontLicense": "見出しのフォント：Literata（SIL Open Font License）",
     "mainNav": "メインナビゲーション",
     "footerNav": "フッターナビゲーション",
     "langSwitch": "日本語",
@@ -31,7 +32,7 @@
     "breadcrumb": "パンくずリスト",
     "updated": "最終更新",
     "noscript": "ライブ時計を表示するには、ブラウザで JavaScript を有効にしてください。",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Saat Tarih ホーム",
     "calendar": "カレンダー",
     "tools": "ツール",
@@ -300,7 +301,7 @@
         "id": "controller",
         "h": "データ管理者",
         "p": [
-          "データ管理者は Bumba Teknoloji Limited Şirketi（トルコ・イスタンブール、アタシェヒル）です。ご質問や KVKK に基づく申請は、いずれも [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) までお寄せください。"
+          "データ管理者は Bumba Teknoloji Limited Şirketi（Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, トルコ）です。ご質問や KVKK に基づく申請は、いずれも [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) までお寄せください。電話：+90 546 237 13 55。"
         ]
       },
       {

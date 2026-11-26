@@ -23,6 +23,13 @@ const OWN = [
      created_at timestamptz not null default now()
    )`,
   // Kutlama e-postası: aynı üye ve gün için ikinci kez bırakılmaz
+  // 5.33: tek seferlik hukuki bilgilendirme e-postası (notice.mjs); üye başına bir kez
+  `create table if not exists notice_sent (
+     user_id text not null references "user"(id) on delete cascade,
+     notice text not null,
+     sent_at timestamptz not null default now(),
+     primary key (user_id, notice)
+   )`,
   `create table if not exists celebration_sent (
      user_id text not null references "user"(id) on delete cascade,
      day date not null,

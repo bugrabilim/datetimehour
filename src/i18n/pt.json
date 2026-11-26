@@ -13,6 +13,7 @@
     "home": "Início",
     "world": "Relógio mundial",
     "privacy": "Privacidade e cookies",
+    "fontLicense": "Fonte dos títulos: Literata (SIL Open Font License)",
     "mainNav": "Navegação principal",
     "footerNav": "Navegação do rodapé",
     "langSwitch": "Português",
@@ -31,7 +32,7 @@
     "breadcrumb": "Trilha de navegação",
     "updated": "Última atualização",
     "noscript": "Para ver o relógio ao vivo, o JavaScript precisa estar ativado no seu navegador.",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Página inicial do Saat Tarih",
     "calendar": "Calendário",
     "tools": "Ferramentas",
@@ -366,7 +367,7 @@
         "id": "controller",
         "h": "Controlador dos dados",
         "p": [
-          "O controlador dos dados é a Bumba Teknoloji Limited Şirketi (Ataşehir / Istambul, Turquia). Para qualquer dúvida ou solicitação sobre proteção de dados: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "O controlador dos dados é a Bumba Teknoloji Limited Şirketi (Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, Turquia). Para qualquer dúvida ou solicitação sobre proteção de dados: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Telefone: +90 546 237 13 55."
         ]
       },
       {

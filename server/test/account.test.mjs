@@ -153,7 +153,7 @@ test("verilerimi indir: profil, fotoğraf, onay, oturumlar (IP yok), kayıtlar, 
   assert.match(r.headers.get("content-disposition"), /attachment/);
   assert.equal(r.json.hesap.eposta, "profil@example.com");
   assert.equal(r.json.hesap.profil.foto, foto);
-  assert.equal(r.json.onay.surum, "2026-11-17");
+  assert.equal(r.json.onay.surum, "2026-11-22");
   assert.ok(r.json.oturumlar.length >= 1);
   assert.equal(r.json.oturumlar[0].ipAddress, undefined);
   assert.equal(r.json.kayitlar["zikir.total"].v, "33");
@@ -173,7 +173,7 @@ test("ortak servisin ürün uçları: anahtar, dogrula, hesap-getir, guncelle", 
   assert.match(h.sifreOzeti, /^[0-9a-f]+:[0-9a-f]+$/);
   assert.match(h.profil.foto, /^data:image\/webp;base64,/);
   assert.equal(h.kutlama, true);
-  assert.equal(h.onay.surum, "2026-11-17");
+  assert.equal(h.onay.surum, "2026-11-22");
   assert.equal(h.anaUrun, true);
   assert.deepEqual((await center("dogrula", { uyeNo: 10458, eposta: "profil@example.com", sifre: "Yanlis-1a" })).json, { gecerli: false });
   const ok = await center("dogrula", { uyeNo: 10458, eposta: "profil@example.com", sifre: PW });
@@ -330,6 +330,7 @@ test("hesabı sil (5.21 silme onayı): şifre ya da taze oturum, e-postadaki ba�
   const done = await t.req("/silme-onay?dil=tr", { method: "POST", form: { k } });
   assert.equal(done.status, 200);
   assert.ok(t.center.find("ayril").at(-1).body.uyeNo > 0);
+  assert.equal(t.center.find("ayril").at(-1).body.neden, undefined, "üyenin kendi isteğinde neden gönderilmez (5.28)");
   assert.equal(t.center.find("sil").length, 0, "merkezin sil ucu kullanılmaz");
   assert.ok(t.last("deleted", "sil1@example.com"));
   assert.equal((await t.q(`select count(*)::int n from "user" where email = 'sil1@example.com'`)).rows[0].n, 0);

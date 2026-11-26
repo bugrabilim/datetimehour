@@ -1969,7 +1969,7 @@
     <string name="account_rules1">Huwag gumamit ng insulto, mapoot na pananalita, panliligalig, sekswal, marahas o ilegal na nilalaman, patalastas, o personal na impormasyon (telepono, address, email, link) sa pangalan ng circle, grupo, lungsod o display name.</string>
     <string name="account_rules2">Huwag manggulo ng sinuman; magpadala lang ng mungkahing alarm sa taong alam mong gusto ito.</string>
     <string name="account_rules3">Kung may makita kang hindi angkop na pangalan, i-tap ang “I-report”; itago ang miyembrong nanggugulo sa iyo gamit ang “I-block”.</string>
-    <string name="account_rules4">Sinusuri ang mga report sa loob ng 24 na oras. Inaalis ang nilalamang lumalabag sa patakaran; inaalis ang may-akda sa lahat ng circle at grupo at hindi na siya makakasali sa bago.</string>
+    <string name="account_rules4">Sinusuri ang mga report sa lalong madaling panahon. Inaalis ang nilalamang lumalabag sa patakaran; inaalis ang may-akda sa lahat ng circle at grupo at hindi na siya makakasali sa bago.</string>
     <string name="account_rulesAgree">Sa paggawa o pagsali sa isang circle o grupo, sumasang-ayon ka sa mga patakarang ito.</string>
     <string name="account_banned">Hindi ka makakasali sa mga circle o grupo dahil lumabag ka sa mga patakaran ng komunidad. Kung sa tingin mo ay mali ito, sumulat sa amin sa “Mag-ulat ng problema”.</string>
     <string name="common_done">Tapos na</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">Mga icon: Microsoft Fluent Emoji at Phosphor Icons (MIT License). Mga font: Literata at Amiri (SIL Open Font License).</string>
     <string name="about_license">Lisensya ng Fluent Emoji</string>
     <string name="about_licensePhosphor">Lisensya ng Phosphor Icons</string>
+    <string name="about_licenseFonts">Lisensya ng mga font (SIL OFL)</string>
     <string name="onboard_go">Simulan natin</string>
     <string name="onboard_back">Bumalik</string>
     <string name="onboard_yes">Oo</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">Binurang miyembro</string>
     <string name="circle_report">I-report</string>
     <string name="circle_reportName">I-report ang pangalan ng circle</string>
-    <string name="circle_reported">Natanggap ang report; susuriin sa loob ng 24–72 oras.</string>
+    <string name="circle_reported">Natanggap ang report; susuriin sa lalong madaling panahon.</string>
     <string name="circle_block">I-block</string>
     <string name="circle_unblock">I-unblock</string>
     <string name="circle_kick">Alisin sa circle</string>

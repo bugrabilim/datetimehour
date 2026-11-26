@@ -111,7 +111,8 @@ export function panelRoutes({ cfg, pool, accounts, records, mailer, metrics, rel
     if (b.durum === "askida") where.push(`banned = true and "banKind" = 'aski'`);
     if (b.durum === "yasakli") where.push(`banned = true and coalesce("banKind", 'yasak') <> 'aski'`);
     if (/^[A-Z]{2}$/.test(String(b.ulke || ""))) { args.push(b.ulke); where.push(`(profile::jsonb ->> 'ulke') = $${args.length}`); }
-    const last = `(select max("createdAt") from session s where s."userId" = u.id)`;
+    // Son giriş (5.28): girişte yazılan zaman; ondan önce açılmış hesaplarda en yeni oturumun açılışı
+    const last = `coalesce(u."lastLoginAt", (select max("createdAt") from session s where s."userId" = u.id))`;
     const order = b.siralama === "eski" ? `u."createdAt" asc` : b.siralama === "sonGiris" ? `${last} desc nulls last` : `u."createdAt" desc`;
     const w = where.join(" and ");
     const total = (await pool.query(`select count(*)::int n from "user" u where ${w}`, args)).rows[0].n;
@@ -134,7 +135,7 @@ export function panelRoutes({ cfg, pool, accounts, records, mailer, metrics, rel
     const user = Number.isInteger(Number(b.uyeNo)) ? await accounts.userByNo(Number(b.uyeNo)) : null;
     if (!user || String(user.email).toLowerCase() === admin) return null;
     const ss = (await pool.query(`select "createdAt", "updatedAt", "userAgent", client from session where "userId" = $1 and "expiresAt" > now() order by "createdAt" desc`, [user.id])).rows;
-    const last = (await pool.query(`select max("createdAt") m from session where "userId" = $1`, [user.id])).rows[0]?.m;
+    const last = (await pool.query(`select coalesce(u."lastLoginAt", (select max("createdAt") from session s where s."userId" = u.id)) m from "user" u where u.id = $1`, [user.id])).rows[0]?.m;
     const kayit = await records.list(user.id);
     return {
       hesap: await accounts.toHesap(user, { withPassword: false }),

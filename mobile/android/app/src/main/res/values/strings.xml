@@ -1969,7 +1969,7 @@
     <string name="account_rules1">Do not use insults, hate speech, harassment, sexual, violent or illegal content, advertising or personal information (phone, address, email, links) in circle, group, city or display names.</string>
     <string name="account_rules2">Do not bother anyone; send an alarm suggestion only to someone you know wants it.</string>
     <string name="account_rules3">If you see an objectionable name, tap “Report”; hide a member who bothers you with “Block”.</string>
-    <string name="account_rules4">Reports are reviewed within 24 hours. Content that breaks the rules is removed, and its author is removed from all circles and groups and cannot join new ones.</string>
+    <string name="account_rules4">Reports are reviewed as soon as possible. Content that breaks the rules is removed, and its author is removed from all circles and groups and cannot join new ones.</string>
     <string name="account_rulesAgree">By creating or joining a circle or group, you agree to these rules.</string>
     <string name="account_banned">You can\'t join circles or groups because you broke the community rules. If you think this is a mistake, write to us via “Report a problem”.</string>
     <string name="common_done">Done</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">Icons: Microsoft Fluent Emoji and Phosphor Icons (MIT License). Fonts: Literata and Amiri (SIL Open Font License).</string>
     <string name="about_license">Fluent Emoji license</string>
     <string name="about_licensePhosphor">Phosphor Icons license</string>
+    <string name="about_licenseFonts">Font license (SIL OFL)</string>
     <string name="onboard_go">Let\'s begin</string>
     <string name="onboard_back">Back</string>
     <string name="onboard_yes">Yes</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">Deleted member</string>
     <string name="circle_report">Report</string>
     <string name="circle_reportName">Report circle name</string>
-    <string name="circle_reported">Thanks, we\'ll review it within 24–72 hours.</string>
+    <string name="circle_reported">Thanks, we\'ll review it as soon as possible.</string>
     <string name="circle_block">Block</string>
     <string name="circle_unblock">Unblock</string>
     <string name="circle_kick">Remove from circle</string>

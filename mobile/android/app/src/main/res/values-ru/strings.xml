@@ -1969,7 +1969,7 @@
     <string name="account_rules1">Не используйте в названиях кругов и групп, городов и отображаемых именах оскорбления, язык вражды, домогательства, сексуальный, жестокий или незаконный контент, рекламу и личные данные (телефон, адрес, эл. почту, ссылки).</string>
     <string name="account_rules2">Никому не досаждайте; предлагайте будильник только тому, кто, как вы знаете, этого хочет.</string>
     <string name="account_rules3">Если увидите недопустимое название, нажмите «Пожаловаться»; скройте участника, который вам мешает, кнопкой «Заблокировать».</string>
-    <string name="account_rules4">Жалобы рассматриваются в течение 24 часов. Контент, нарушающий правила, удаляется; его автор исключается из всех кругов и групп и не может вступить в новые.</string>
+    <string name="account_rules4">Жалобы рассматриваются в кратчайшие сроки. Контент, нарушающий правила, удаляется; его автор исключается из всех кругов и групп и не может вступить в новые.</string>
     <string name="account_rulesAgree">Создавая круг или группу либо вступая в них, вы принимаете эти правила.</string>
     <string name="account_banned">Вы не можете вступать в круги и группы, так как нарушили правила сообщества. Если считаете, что это ошибка, напишите нам через «Сообщить о проблеме».</string>
     <string name="common_done">Готово</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">Значки: Microsoft Fluent Emoji и Phosphor Icons (лицензия MIT). Шрифты: Literata и Amiri (SIL Open Font License).</string>
     <string name="about_license">Лицензия Fluent Emoji</string>
     <string name="about_licensePhosphor">Лицензия Phosphor Icons</string>
+    <string name="about_licenseFonts">Лицензия шрифтов (SIL OFL)</string>
     <string name="onboard_go">Начнём</string>
     <string name="onboard_back">Назад</string>
     <string name="onboard_yes">Да</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">Удалённый участник</string>
     <string name="circle_report">Пожаловаться</string>
     <string name="circle_reportName">Пожаловаться на название</string>
-    <string name="circle_reported">Спасибо, мы рассмотрим жалобу в течение 24–72 часов.</string>
+    <string name="circle_reported">Спасибо, мы рассмотрим жалобу в кратчайшие сроки.</string>
     <string name="circle_block">Заблокировать</string>
     <string name="circle_unblock">Разблокировать</string>
     <string name="circle_kick">Исключить из круга</string>

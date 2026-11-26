@@ -1969,7 +1969,7 @@
     <string name="account_rules1">لا تستخدم في أسماء الحلقات والمجموعات والمدن والأسماء المعروضة الشتائم أو خطاب الكراهية أو التحرش أو المحتوى الجنسي أو العنيف أو غير القانوني أو الإعلانات أو المعلومات الشخصية (الهاتف، العنوان، البريد الإلكتروني، الروابط).</string>
     <string name="account_rules2">لا تزعج أحدًا؛ أرسل اقتراح المنبه فقط إلى من تعرف أنه يريده.</string>
     <string name="account_rules3">إذا رأيت اسمًا غير لائق فاضغط «إبلاغ»؛ وأخفِ العضو الذي يزعجك باستخدام «حظر».</string>
-    <string name="account_rules4">تُراجع البلاغات خلال 24 ساعة. يُزال المحتوى المخالف للقواعد، ويُخرج كاتبه من جميع الحلقات والمجموعات ولا يمكنه الانضمام إلى غيرها.</string>
+    <string name="account_rules4">تُراجع البلاغات في أقرب وقت ممكن. يُزال المحتوى المخالف للقواعد، ويُخرج كاتبه من جميع الحلقات والمجموعات ولا يمكنه الانضمام إلى غيرها.</string>
     <string name="account_rulesAgree">بإنشاء حلقة أو مجموعة أو الانضمام إليها فإنك توافق على هذه القواعد.</string>
     <string name="account_banned">لا يمكنك الانضمام إلى الحلقات أو المجموعات لأنك خالفت قواعد المجتمع. إذا كنت تظن أن هذا خطأ فاكتب إلينا عبر «الإبلاغ عن مشكلة».</string>
     <string name="common_done">تم</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">الرموز: Microsoft Fluent Emoji وPhosphor Icons (رخصة MIT). الخطوط: Literata وAmiri (رخصة SIL Open Font License).</string>
     <string name="about_license">رخصة Fluent Emoji</string>
     <string name="about_licensePhosphor">رخصة Phosphor Icons</string>
+    <string name="about_licenseFonts">رخصة الخطوط (SIL OFL)</string>
     <string name="onboard_go">لنبدأ</string>
     <string name="onboard_back">رجوع</string>
     <string name="onboard_yes">نعم</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">عضو محذوف</string>
     <string name="circle_report">إبلاغ</string>
     <string name="circle_reportName">الإبلاغ عن اسم الحلقة</string>
-    <string name="circle_reported">تم استلام البلاغ، وسنراجعه خلال 24–72 ساعة.</string>
+    <string name="circle_reported">تم استلام البلاغ، وسنراجعه في أقرب وقت ممكن.</string>
     <string name="circle_block">حظر</string>
     <string name="circle_unblock">إلغاء الحظر</string>
     <string name="circle_kick">إزالة من الحلقة</string>

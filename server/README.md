@@ -57,12 +57,17 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
     günde bir; Türkiye günleri `data/tr-days.json`).
 - **Saklama** (`src/cleanup.mjs`, günlük `POST /gorev/temizlik`):
   - süresi geçen oturum, doğrulama ve sınır kayıtları silinir;
-  - 7 gün içinde doğrulanmayan hesap silinir;
+  - 7 gün içinde doğrulanmayan hesap silinir (numarası varsa merkeze `ayril {neden: "dogrulanmamis"}`, standart 5.28);
   - 7 gün içinde onaylanmayan silme isteği silinir (e-posta gitmez);
   - üye numarası eksik hesaplar numarasını alır (yönetici hesabı hariç);
   - ortak servise ulaşılamayan bildirimlerin zamanı gelenler de denenir. Asıl yeniden deneme `src/relay.mjs`'te, süreç içinde 10 dakikada bir (standart 5.22): `guncelle` ve `ayril` bırakılmaz, 1, 2, 4… dakika arayla, en çok günde bir; aynı üyenin `guncelle`'leri birleşir ve hesabın o anki hâli gider; `ayril` bekleyen `guncelle`'yi siler. Bekleyenler panel özetinde `merkezeBekleyen`.
 
-  Kullanılmayan hesap silinmez.
+  Kullanılmayan hesabı ürün silmez (standart 5.28): 3 yıl hiçbir Bumba ürününde girilmeyen hesabı merkez sayar, 30 gün
+  önce uyarır ve `hesap-sil` ile siler. Bunun için her başarılı girişte son giriş `user.lastLoginAt`'e yazılır ve merkeze
+  `sorgula {eposta, uyeNo}` gider (`src/auth.mjs`, girişi bekletmez); panel `uye`/`uyeler` `sonGiris`'i oradan verir
+  (eski hesaplarda en yeni oturumun açılışı), oturumların `sonKullanim`'ı oturumun günlük yenilenmesinden. Hesap silinince
+  üyeyi hedef alan halka ve grup bildirimleri de silinir ("Hukuk", silinen hesabın izi; başka işlem kaydı tutmuyoruz).
+  Testler `test/retention.test.mjs`.
 
 ## Uçlar
 | Yol | Ne |

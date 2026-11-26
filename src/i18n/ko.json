@@ -13,6 +13,7 @@
     "home": "홈",
     "world": "세계 시계",
     "privacy": "개인정보 및 쿠키",
+    "fontLicense": "제목 글꼴: Literata (SIL Open Font License)",
     "mainNav": "주 메뉴",
     "footerNav": "하단 메뉴",
     "langSwitch": "한국어",
@@ -31,7 +32,7 @@
     "breadcrumb": "현재 위치",
     "updated": "최종 업데이트",
     "noscript": "실시간 시계를 보려면 브라우저에서 JavaScript를 켜야 합니다.",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Saat Tarih 홈",
     "calendar": "달력",
     "tools": "도구",
@@ -326,7 +327,7 @@
         "id": "controller",
         "h": "개인정보 처리자",
         "p": [
-          "개인정보 처리자는 Bumba Teknoloji Limited Şirketi(튀르키예 이스탄불 아타셰히르)입니다. 모든 질문과 KVKK에 따른 요청은 [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)으로 보내 주세요."
+          "개인정보 처리자는 Bumba Teknoloji Limited Şirketi(Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, 튀르키예)입니다. 모든 질문과 KVKK에 따른 요청은 [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)으로 보내 주세요. 전화: +90 546 237 13 55."
         ]
       },
       {

@@ -188,7 +188,7 @@ Sitedeki gizlilik sayfasının "Android uygulaması" bölümüyle aynı olmalı:
   yok. Kurma/katılma ekranında topluluk kuralları bağlantısı (https://hesap.time.bumba.tr/topluluk-kurallari) ve "kurarak
   ya da katılarak kabul edersiniz" cümlesi; adlarda süzgeç (bağlantı, e-posta, telefon, yasaklı sözcükler); her adda
   Bildir, her üyede Engelle; üç bildirimde ad kendiliğinden gizlenir; her bildirim yöneticiye imzalı bağlantıyla e-posta
-  gider (gizle, yazanı topluluktan uzaklaştır); bildirimler en geç 24 saatte incelenir. Play Console › Uygulama içeriği
+  gider (gizle, yazanı topluluktan uzaklaştır); bildirimler mümkün olan en kısa sürede incelenir. Play Console › Uygulama içeriği
   › İçerik derecelendirmesi anketinde "Kullanıcılar birbirleriyle etkileşebilir mi / içerik paylaşabilir mi" sorusu
   **Evet** (grup ve görünen adlar); "Kullanıcılar konum paylaşır mı" **Hayır** (hava bildirimi anonim ve kimseye
   gösterilmez, yalnız sayılar).

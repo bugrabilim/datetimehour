@@ -22,7 +22,7 @@ JS hesabı değişirse:
 node mobile/shared/gen-vectors.mjs        # test verisini yeniden üret (ya da npm run mobile:vectors)
 ```
 
-sonra Swift ve Kotlin kodu da aynı değişikliği almalı; CI (`.github/workflows/mobile.yml`) verinin güncel olduğunu ve iki dildeki testleri denetler.
+sonra Swift ve Kotlin kodu da aynı değişikliği almalı; CI (`.github/workflows/mobile-checks.yml`, kendiliğinden) verinin güncel olduğunu ve iki dildeki çekirdek testleri denetler; uygulama derlemeleri `.github/workflows/mobile.yml`'de yalnız elle, patronun onayıyla.
 
 ## Komutlar
 

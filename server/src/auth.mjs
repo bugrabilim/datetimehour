@@ -82,6 +82,15 @@ export function authOptions(cfg, pool, mailer, center, relay = { tell: (op, body
   });
 
   const after = createAuthMiddleware(async (ctx) => {
+    // Her başarılı girişte (5.28, madde 7 "Saklama"): son giriş yazılır ve merkeze `sorgula` `uyeNo`'yla gider
+    // (merkez kullanılmayan hesabın süresini buradan sayar). Girişi bekletmez; merkeze ulaşılamazsa sonraki girişte.
+    if (ctx.path === "/sign-in/email" && ctx.context.returned && !(ctx.context.returned instanceof Error)) {
+      const u = ctx.context.newSession?.user;
+      if (u?.id) {
+        await pool.query(`update "user" set "lastLoginAt" = now() where id = $1`, [u.id]);
+        if (u.uyeNo != null && !isAdminEmail(u.email)) center.sorgula(String(u.email).toLowerCase(), Number(u.uyeNo)).catch(() => {});
+      }
+    }
     if (ctx.path === "/change-password" && ctx.context.returned && !(ctx.context.returned instanceof Error)) {
       const s = ctx.context.session;
       if (s?.user) await passwordChanged(s.user);
@@ -167,6 +176,8 @@ export function authOptions(cfg, pool, mailer, center, relay = { tell: (op, body
         profile: { type: "json", required: false, input: false },
         photo: { type: "string", required: false, input: false, returned: false },
         banKind: { type: "string", required: false, input: false },
+        // Son başarılı giriş (5.28; panel `uye`/`uyeler` `sonGiris`): oturumlar silinse de kalır
+        lastLoginAt: { type: "date", required: false, input: false },
       },
       changeEmail: {
         enabled: true,

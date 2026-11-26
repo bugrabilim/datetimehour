@@ -1,0 +1,27 @@
+{
+  "id": "saat-tarih",
+  "ad": {
+    "tr": "Saat Tarih",
+    "en": "Saat Tarih",
+    "yanlis": ["SaatTarih", "Saat-Tarih", "Saat ve Tarih"]
+  },
+  "renkler": [
+    { "ad": "Kiremit", "rol": { "tr": "ana renk (işaret, bağlantı, düğme)", "en": "accent (mark, links, buttons)" }, "acik": "#9a3f00", "koyu": "#f2a65a", "css": "--accent" },
+    { "ad": "Mürekkep", "rol": { "tr": "metin", "en": "text" }, "acik": "#2b2520", "koyu": "#f1eadf", "css": "--text" },
+    { "ad": "Kül", "rol": { "tr": "ikincil metin", "en": "secondary text" }, "acik": "#6a5f55", "koyu": "#b4aa9b", "css": "--muted" },
+    { "ad": "Kâğıt", "rol": { "tr": "zemin", "en": "background" }, "acik": "#f6f0e4", "koyu": "#14151c", "css": "--bg" },
+    { "ad": "Yüzey", "rol": { "tr": "kart zemini", "en": "card background" }, "acik": "#fffbf4", "koyu": "#1d1e27", "css": "--surface" }
+  ],
+  "yaziTipleri": [
+    { "ad": "Literata", "rol": { "tr": "başlık (h1, h2; Latin ve Kiril yazılı dillerde) ve logodaki ad (her dilde; üst çubukta ve logo.svg'de)", "en": "headings (h1, h2; languages written in Latin and Cyrillic script) and the name in the logo (every language; top bar and logo.svg)" }, "agirliklar": [500, 600], "lisans": "SIL Open Font License 1.1", "kaynak": "https://fonts.google.com/specimen/Literata" }
+  ],
+  "kullanim": {
+    "bosluk": { "tr": "Sitede tanımlı bir boşluk kuralı yok; üst çubukta işaretle ad arasında 0,5 rem.", "en": "The site defines no clear-space rule; in the top bar the mark and the name are 0.5 rem apart." },
+    "enKucuk": { "tr": "İşaret sitede en küçük 16 px (favicon); üst çubukta 1,7 rem.", "en": "The mark appears at 16 px at the smallest (favicon); 1.7 rem in the top bar." }
+  },
+  "notlar": {
+    "tr": "Geçici logo (25 Kasım 2026, patronun onayı, pazarlamanın K45 turunda A seçeneği; kalıcı logo kararına kadar): logo.svg ve logo-koyu.svg = üst çubuktaki saat işareti + \"Saat Tarih\" adı Literata 600 ile, yazı yola çevrilmiş (kaynak sitenin literata-600.woff2 dosyası, yazı tipinin kendi aralık değerleriyle); oranlar üst çubuktan: işaret 1,7 rem, ad 1,1 rem, ara 0,5 rem. Sitenin üst çubuğu adı aynı yazı tipiyle (Literata 600) yazar. isaret.svg ve isaret-koyu.svg sitenin üst çubuğundaki saat işaretidir (build.mjs LOGO), renkler sitedeki --accent değerleri. ikon.svg sitenin favicon.svg'si; ikon-512.png ve ikon-180.png ondan üretildi (sitedeki eski PNG'lerin alt kısmı kesikti, aynı çizimle yeniden üretildi). paylasim.png sitenin og.png'si (tek görsel, iki dilli yazı); paylasim-en.png yok. Uygulamaların ana ekran adı dile göre değişir (en \"Time & Date\"), sitenin adı her dilde \"Saat Tarih\". Metin renkleri kâğıt ve yüzey zemininde en az 4.9:1.",
+    "en": "Temporary logo (25 November 2026, approved by the owner, option A of marketing's K45 round; in use until the permanent logo decision): logo.svg and logo-koyu.svg = the clock mark from the top bar + the name \"Saat Tarih\" in Literata 600, text converted to outlines (source: the site's literata-600.woff2, with the font's own spacing); proportions from the top bar: mark 1.7 rem, name 1.1 rem, gap 0.5 rem. The site's top bar writes the name in the same font (Literata 600). isaret.svg and isaret-koyu.svg are the clock mark in the site's top bar (build.mjs LOGO), colours are the site's --accent values. ikon.svg is the site's favicon.svg; ikon-512.png and ikon-180.png are rendered from it (the site's old PNGs were cut off at the bottom and were re-rendered from the same drawing). paylasim.png is the site's og.png (one image with both languages); there is no paylasim-en.png. The app's home-screen name changes by language (en \"Time & Date\"); the site's name is \"Saat Tarih\" in every language. Text colours reach at least 4.9:1 on the paper and surface backgrounds."
+  },
+  "guncelleme": "2026-11-25"
+}

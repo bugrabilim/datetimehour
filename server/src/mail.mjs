@@ -130,20 +130,22 @@ export function createMailer(cfg) {
       throw new Error("mail_failed");
     }
   }
-  /* İçe giden düz metin e-posta (hata bildirimi; sahibin kutusuna). Testlerde kutuya yazılır. */
-  async function sendRaw({ to, subject, text, replyTo }) {
+  /* Hazır metinli e-posta: hata bildirimi (düz metin, sahibin kutusuna) ve tek seferlik hukuki bilgilendirme
+     (notice.mjs; metin + HTML). Testlerde kutuya yazılır. */
+  async function sendRaw({ to, subject, text, html, replyTo, kind = "raw" }) {
     state.lastAt = new Date();
     if (cfg.mailDriver === "memory") {
-      outbox.push({ kind: "raw", to, subject, text, replyTo: replyTo || null });
+      outbox.push({ kind, to, subject, text, html: html || null, replyTo: replyTo || null });
       state.lastOk = true;
       return;
     }
     if (cfg.mailDriver !== "resend") {
-      console.log(`[e-posta] ham → ${to.replace(/^(.).*@/, "$1…@")}`);
+      console.log(`[e-posta] ${kind === "raw" ? "ham" : kind} → ${to.replace(/^(.).*@/, "$1…@")}`);
       state.lastOk = true;
       return;
     }
     const body = { from: cfg.mailFrom, to: [to], subject, text };
+    if (html) body.html = html;
     if (replyTo) body.reply_to = replyTo;
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",

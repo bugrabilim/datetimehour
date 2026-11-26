@@ -2,7 +2,7 @@
 
 `node mobile/shared/gen-religion.mjs` bu klasördeki kaynaklardan uygulamalara dört dosya yazar
 (`mobile/ios/App/Resources` ve `mobile/android/app/src/main/assets`): `quran-ar.txt`, `quran-en.txt`,
-`quran-meta.json`, `duas.json`. CI (`.github/workflows/mobile.yml`) `--check` ile güncel mi diye denetler.
+`quran-meta.json`, `duas.json`. CI (`.github/workflows/mobile-checks.yml`) `--check` ile güncel mi diye denetler.
 
 ## Kaynaklar ve lisanslar (30 Ekim 2026)
 

@@ -1,34 +1,15 @@
 name: Mobil
-# Mobil uygulamaların ortak hesap çekirdeği: Swift (iOS, iPadOS, watchOS) ve Kotlin (Android, Wear OS).
-# İki dildeki hesaplar, sitedeki JS hesaplarından üretilen ortak test verisiyle birebir karşılaştırılır.
+# Mobil derlemeler (standart 5.35, mobil derleme onayı; 25 Kasım 2026 patronun kararı "kalksın"): yalnız elle başlar,
+# PR'da, push'ta ya da zamanlanmış olarak kendiliğinden çalışmaz. Her çalıştırma için iş, neden, makine türü ve tahmini
+# dakika patrona ayrı bir soruyla sorulur. Linux'taki test ve denetimler mobile-checks.yml'de, kendiliğinden.
 on:
-  pull_request:
-    paths:
-      - "mobile/**"
-      - "src/js/prayer-calc.js"
-      - "src/js/nature-calc.js"
-      - "src/data/**"
-      - "lib/**"
-      - "src/i18n/**"
-      - "src/i18n-cal/**"
-      # Hesap ekranı metinleri ve ülke listesi (üyelik sunucusuyla ortak; gen-strings uygulamalara kopyalar)
-      - "server/i18n/account.json"
-      - "server/data/countries.json"
-      - ".github/workflows/mobile.yml"
-  push:
-    branches: [main]
-    paths:
-      - "mobile/**"
-      - "src/js/prayer-calc.js"
-      - "src/js/nature-calc.js"
-      - "src/data/**"
-      - "lib/**"
-      - "src/i18n/**"
-      - "src/i18n-cal/**"
-      # Hesap ekranı metinleri ve ülke listesi (üyelik sunucusuyla ortak; gen-strings uygulamalara kopyalar)
-      - "server/i18n/account.json"
-      - "server/data/countries.json"
-      - ".github/workflows/mobile.yml"
+  workflow_dispatch:
+    inputs:
+      is:
+        description: "Çalışacak iş"
+        type: choice
+        options: [hepsi, swift-apple, android-app, ios-app, apple-desk]
+        default: hepsi
 
 # Aynı PR'a (ya da dala) yeni commit gelince eski çalışma iptal edilir: üst üste gönderimlerde eski commit'lerin
 # sonuçları gereksiz "Run failed" bildirimi göndermesin (3 Kasım 2026).
@@ -37,54 +18,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test-data:
-    name: Ortak test verisi güncel
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: node mobile/shared/gen-vectors.mjs --check
-      - run: node mobile/shared/gen-strings.mjs --check
-      - run: node mobile/shared/gen-religion.mjs --check
-      - run: python3 -I mobile/shared/icons3d/gen-icons3d.py --check
-      # İki tonlu simgeler (Phosphor, sabit sürüm): npm pack ile paketi indirip yeniden üretir, depodakiyle karşılaştırır
-      - run: node mobile/shared/icons/gen-duotone.mjs --check
-      - run: node mobile/ios/scripts/check-swift.mjs
-
-  swift-linux:
-    name: Swift çekirdek (Linux)
-    runs-on: ubuntu-latest
-    container: swift:6.3-noble
-    steps:
-      - uses: actions/checkout@v4
-      - run: swift test --package-path mobile/ios/SaatCore
-
   swift-apple:
     name: Swift çekirdek (macOS, Xcode)
+    if: inputs.is == 'hepsi' || inputs.is == 'swift-apple'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - run: xcodebuild -version && swift --version
       - run: swift test --package-path mobile/ios/SaatCore
 
-  kotlin:
-    name: Kotlin çekirdek
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 21
-      - uses: gradle/actions/setup-gradle@v4
-      - name: Testler
-        working-directory: mobile/android
-        run: ./gradlew :core:test
-
   android-app:
     name: Android uygulaması
+    if: inputs.is == 'hepsi' || inputs.is == 'android-app'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -116,6 +61,7 @@ jobs:
 
   ios-app:
     name: iOS uygulaması (simülatör)
+    if: inputs.is == 'hepsi' || inputs.is == 'ios-app'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
@@ -140,6 +86,7 @@ jobs:
   # Koşucuda tvOS ya da visionOS platformu kurulu değilse önce indirilir.
   apple-desk:
     name: Mac, Apple TV ve Vision Pro uygulamaları
+    if: inputs.is == 'hepsi' || inputs.is == 'apple-desk'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4

@@ -13,6 +13,7 @@
     "home": "Inicio",
     "world": "Reloj mundial",
     "privacy": "Privacidad y cookies",
+    "fontLicense": "Tipografía de los títulos: Literata (SIL Open Font License)",
     "mainNav": "Navegación principal",
     "footerNav": "Navegación del pie de página",
     "langSwitch": "Español",
@@ -31,7 +32,7 @@
     "breadcrumb": "Ruta de navegación",
     "updated": "Última actualización",
     "noscript": "Para ver el reloj en vivo, JavaScript debe estar activado en su navegador.",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Inicio de Saat Tarih",
     "calendar": "Calendario",
     "tools": "Herramientas",
@@ -366,7 +367,7 @@
         "id": "controller",
         "h": "Responsable del tratamiento",
         "p": [
-          "El responsable del tratamiento es Bumba Teknoloji Limited Şirketi (Ataşehir / Estambul, Turquía). Para cualquier pregunta o solicitud sobre protección de datos: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "El responsable del tratamiento es Bumba Teknoloji Limited Şirketi (Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, Turquía). Para cualquier pregunta o solicitud sobre protección de datos: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Teléfono: +90 546 237 13 55."
         ]
       },
       {

@@ -13,6 +13,7 @@
     "home": "Beranda",
     "world": "Jam dunia",
     "privacy": "Privasi dan cookie",
+    "fontLicense": "Fon judul: Literata (SIL Open Font License)",
     "mainNav": "Navigasi utama",
     "footerNav": "Navigasi kaki halaman",
     "langSwitch": "Bahasa Indonesia",
@@ -31,7 +32,7 @@
     "breadcrumb": "Jejak navigasi",
     "updated": "Terakhir diperbarui",
     "noscript": "JavaScript harus diaktifkan di peramban Anda untuk melihat jam langsung.",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Beranda Saat Tarih",
     "calendar": "Kalender",
     "tools": "Alat",
@@ -300,7 +301,7 @@
         "id": "controller",
         "h": "Pengendali data",
         "p": [
-          "Pengendali data adalah Bumba Teknoloji Limited Şirketi (Ataşehir / Istanbul, Turki). Untuk pertanyaan apa pun atau permintaan terkait perlindungan data: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+          "Pengendali data adalah Bumba Teknoloji Limited Şirketi (Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, Turki). Untuk pertanyaan apa pun atau permintaan terkait perlindungan data: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com). Telepon: +90 546 237 13 55."
         ]
       },
       {

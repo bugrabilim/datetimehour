@@ -1969,7 +1969,7 @@
     <string name="account_rules1">请勿在圈子名、群组名、城市名和显示名称中使用辱骂、仇恨言论、骚扰、色情、暴力或违法内容、广告以及个人信息（电话、地址、电子邮件、链接）。</string>
     <string name="account_rules2">请勿打扰他人；只向你确定愿意接收的人发送闹钟建议。</string>
     <string name="account_rules3">如果看到不当的名称，请点按“举报”；可用“屏蔽”隐藏打扰你的成员。</string>
-    <string name="account_rules4">举报会在24小时内处理。违反规则的内容会被删除，发布者会被移出所有圈子和群组，且不能再加入新的。</string>
+    <string name="account_rules4">举报会尽快处理。违反规则的内容会被删除，发布者会被移出所有圈子和群组，且不能再加入新的。</string>
     <string name="account_rulesAgree">创建或加入圈子、群组即表示你同意这些规则。</string>
     <string name="account_banned">由于你违反了社区规则，无法加入圈子或群组。如果你认为这是误判，请通过“报告问题”联系我们。</string>
     <string name="common_done">完成</string>
@@ -3895,6 +3895,7 @@
     <string name="about_credits">图标：Microsoft Fluent Emoji 和 Phosphor Icons（MIT 许可证）。字体：Literata 和 Amiri（SIL Open Font License）。</string>
     <string name="about_license">Fluent Emoji 许可证</string>
     <string name="about_licensePhosphor">Phosphor Icons 许可证</string>
+    <string name="about_licenseFonts">字体许可证（SIL OFL）</string>
     <string name="onboard_go">开始吧</string>
     <string name="onboard_back">返回</string>
     <string name="onboard_yes">是</string>
@@ -4089,7 +4090,7 @@
     <string name="circle_deletedMember">已删除的成员</string>
     <string name="circle_report">举报</string>
     <string name="circle_reportName">举报圈子名称</string>
-    <string name="circle_reported">已收到举报，我们会在 24–72 小时内处理。</string>
+    <string name="circle_reported">已收到举报，我们会尽快处理。</string>
     <string name="circle_block">屏蔽</string>
     <string name="circle_unblock">取消屏蔽</string>
     <string name="circle_kick">移出圈子</string>

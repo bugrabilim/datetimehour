@@ -13,6 +13,7 @@
     "home": "होम",
     "world": "विश्व घड़ी",
     "privacy": "गोपनीयता और कुकीज़",
+    "fontLicense": "शीर्षकों का फ़ॉन्ट: Literata (SIL Open Font License)",
     "mainNav": "मुख्य नेविगेशन",
     "footerNav": "फ़ुटर नेविगेशन",
     "langSwitch": "हिन्दी",
@@ -31,7 +32,7 @@
     "breadcrumb": "ब्रेडक्रम्ब",
     "updated": "अंतिम अपडेट",
     "noscript": "लाइव घड़ी देखने के लिए आपके ब्राउज़र में JavaScript चालू होना चाहिए।",
-    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Saat Tarih होम",
     "calendar": "कैलेंडर",
     "tools": "टूल",
@@ -340,7 +341,7 @@
         "id": "controller",
         "h": "डेटा नियंत्रक",
         "p": [
-          "डेटा नियंत्रक Bumba Teknoloji Limited Şirketi (अताशेहिर / इस्तांबुल, तुर्किये) है। किसी भी प्रश्न या डेटा सुरक्षा अनुरोध के लिए: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)।"
+          "डेटा नियंत्रक Bumba Teknoloji Limited Şirketi (Quick Tower, E-5 Yanyolu, Umut Sk. D:10-12, 34752 İçerenköy-Ataşehir/İstanbul, तुर्किये) है। किसी भी प्रश्न या डेटा सुरक्षा अनुरोध के लिए: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)। फ़ोन: +90 546 237 13 55।"
         ]
       },
       {

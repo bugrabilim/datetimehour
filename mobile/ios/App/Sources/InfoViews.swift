@@ -376,6 +376,9 @@ struct AboutView: View {
                 Link(L("about.licensePhosphor"), destination: URL(string: "https://github.com/phosphor-icons/core/blob/main/LICENSE")!)
                     .font(.footnote)
                     .tint(Theme.accent)
+                Link(L("about.licenseFonts"), destination: URL(string: "https://openfontlicense.org/open-font-license-official-text/")!)
+                    .font(.footnote)
+                    .tint(Theme.accent)
             }
         }
         .themedBackground()
