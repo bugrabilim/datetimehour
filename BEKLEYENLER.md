@@ -3,7 +3,7 @@
 Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"). Biten iş silinir; geçmiş git'te.
 
 ## Sahibe sorular
-- (Şu an yok.)
+- - İngilizce (ve fr, es, pt, de) üyelik e-postalarında ürün adı karışık: çoğu yerde "Saat Tarih", doğrulama, şifre sıfırlama, e-posta değiştirme, altbilgi ve bir kezlik aydınlatma e-postasında dilin uygulama adı ("Time & Date" …). Tek ada indirilsin mi, hangisine? (26 Kasım 2026, ana altyapının uçtan uca denemesinde görüldü)
 
 ## Sahipte
 - TestFlight yapı 33 (1.1; main `be0ab19`, 17 Kasım 2026 patronun onayıyla yüklendi; denemesi patronda): standart 5.21–5.23, bağlı üyelik düzeltmeleri, yapı 32 düzeltmeleri, tam ekranın hava durumsuz açılması, halka/grup moderasyonu; site ve hesap sunucusu 17 Kasım 2026'da canlıda. App Store 1.1 gönderimi bu yapıyla. (17 Kasım 2026)
@@ -17,7 +17,7 @@ Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"
 - App Store 1.1 ve ilk Play gönderiminden önce standart "Mobil yayın" kontrol listesini sahibe raporla. Mobil derlemeler patronun kararıyla bekliyor (26 Kasım 2026). (14 Kasım 2026)
 
 ## Başkasında
-- Ana altyapı oturumu: merkezle bağlı üyelik 17 Kasım 2026'dan beri etkin (`etkin: true`, bumbagroup.com #101); 26 Kasım 2026'da doğrulandı, bizden beklenen yok. Canlıda deneme hesabıyla uçtan uca deneme (kayıt, doğrulama, giriş, merkezde şifre doğrulama, güncelleme, silme) patronun 26 Kasım 2026 onayıyla ana altyapıda; sonucu bekleniyor. (26 Kasım 2026)
+- Ana altyapı oturumu: merkezle bağlı üyelik 17 Kasım 2026'dan beri etkin (`etkin: true`, bumbagroup.com #101); 26 Kasım 2026'da doğrulandı, bizden beklenen yok. Canlıda deneme hesabıyla uçtan uca deneme (patronun 26 Kasım 2026 onayıyla, ana altyapı) geçti: kayıt, doğrulama, merkezden numara ve "hesabınız açıldı" e-postası, giriş, ürün listesi, profil güncellemesi merkezde görünür, merkezde şifre doğrulama, silme onayı; silmeden sonra giriş 401, merkezde adres yok. Merkezin `urunler` yanıtı standarttaki düz diziye düzeltiliyor; bizim kod iki biçimi de okuyor, iş yok. (26 Kasım 2026)
 - MEB 2027-2028 çalışma takvimi: yayımlanınca `src/data/school.json`. (6 Kasım 2026)
 - Fitre 2027: Diyanet Ocak 2027'de açıklayınca `src/data/fitre.json`; BAZNAS 2027 kararları (zekât fitrah, fidye). Bakılacak tarih: Ocak 2027. (6 Kasım 2026)
 - Diyanet 2027 takvimi ve vakit tablosu: yayımlanınca `holidays.json` ve `node scripts/fetch-hijri.mjs`. (8 Kasım 2026)
