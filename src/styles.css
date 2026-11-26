@@ -560,6 +560,10 @@ dialog.search::backdrop { background: rgb(10 12 16 / 0.55); }
 .footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
 .footer-sign { display: flex; align-items: center; margin-inline-start: auto; }
 .footer-sign p { margin: 0; }
+.footer-social { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.15rem; list-style: none; margin: 0; margin-inline-end: 1rem; padding: 0; }
+.footer-social a { display: grid; place-items: center; inline-size: 2rem; block-size: 2rem; border-radius: 999px; color: var(--muted); }
+.footer-social a:hover, .footer-social a:focus-visible { color: var(--text); background: var(--surface); }
+@media (max-width: 30rem) { .footer-sign { flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; } .footer-social { margin-inline-end: 0; } }
 .rozet { display: inline-block; line-height: 0; }
 .rozet img { height: 28px; width: auto; }
 

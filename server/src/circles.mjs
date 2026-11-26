@@ -363,7 +363,7 @@ export function createCircles({ pool, mailer, adminEmail, modLink = () => "" }) 
     await mailer.sendRaw({
       to: adminEmail || "bilgi@bumbagroup.com",
       subject: `Saat Tarih halka bildirimi: ${what}${hidden ? " (gizlendi)" : ""}`,
-      text: `Bildirilen ${what}: ${text}\nHalka: ${id} (${c.kind})\nBu içerik için bildirim sayısı: ${n}${hidden ? "\nÜç ayrı bildirimle kendiliğinden gizlendi." : ""}\n\nTopluluk kurallarında söz verilen süre: en geç 24 saat içinde incele.${link ? `\nGizlemek ya da yazanı topluluktan uzaklaştırmak için: ${link}` : ""}\n`,
+      text: `Bildirilen ${what}: ${text}\nHalka: ${id} (${c.kind})\nBu içerik için bildirim sayısı: ${n}${hidden ? "\nÜç ayrı bildirimle kendiliğinden gizlendi." : ""}\n\nTopluluk kurallarındaki söz: mümkün olan en kısa sürede incele.${link ? `\nGizlemek ya da yazanı topluluktan uzaklaştırmak için: ${link}` : ""}\n`,
     }).catch(() => {});
     return { yeni: true, gizlendi: hidden };
   }

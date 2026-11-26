@@ -1969,7 +1969,7 @@
     <string name="account_rules1">Halka, grup, şehir ve görünen adlarda hakaret, nefret söylemi, taciz, cinsel ya da şiddet içeren veya yasa dışı içerik, reklam ve kişisel bilgi (telefon, adres, e-posta, bağlantı) kullanmayın.</string>
     <string name="account_rules2">Kimseyi rahatsız etmeyin; alarm önerisini yalnız isteyeceğini bildiğiniz kişiye gönderin.</string>
     <string name="account_rules3">Uygunsuz bir ad görürseniz “Bildir”e dokunun; sizi rahatsız eden üyeyi “Engelle” ile gizleyin.</string>
-    <string name="account_rules4">Bildirimler en geç 24 saat içinde incelenir. Kuralları çiğneyen içerik kaldırılır; yazan kişi bütün halka ve gruplardan çıkarılır ve yenisine katılamaz.</string>
+    <string name="account_rules4">Bildirimler mümkün olan en kısa sürede incelenir. Kuralları çiğneyen içerik kaldırılır; yazan kişi bütün halka ve gruplardan çıkarılır ve yenisine katılamaz.</string>
     <string name="account_rulesAgree">Halka ya da grup kurarak veya katılarak bu kuralları kabul etmiş olursunuz.</string>
     <string name="account_banned">Topluluk kurallarını çiğnediğiniz için halka ve gruplara katılamazsınız. Bir yanlışlık olduğunu düşünüyorsanız “Hata bildir”den bize yazın.</string>
     <string name="common_done">Bitti</string>
@@ -4090,7 +4090,7 @@
     <string name="circle_deletedMember">Silinmiş üye</string>
     <string name="circle_report">Bildir</string>
     <string name="circle_reportName">Halka adını bildir</string>
-    <string name="circle_reported">Bildiriminiz alındı; 24–72 saat içinde bakılır.</string>
+    <string name="circle_reported">Bildiriminiz alındı; mümkün olan en kısa sürede bakılır.</string>
     <string name="circle_block">Engelle</string>
     <string name="circle_unblock">Engeli kaldır</string>
     <string name="circle_kick">Halkadan çıkar</string>

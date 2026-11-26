@@ -60,6 +60,6 @@ Same everywhere; holidays: Turkey plus 32 selectable countries; weather depends 
 No regulated services. Prayer times are informational; the app says official times are the authority's. Adhan sounds: Wikimedia Commons (CC BY-SA 4.0, CC BY 3.0); district coordinates: GeoNames (CC BY 4.0); Quran text: Tanzil Project (CC BY 3.0); Pickthall translation (public domain); all credited in the app.
 
 8. SHARED CIRCLES AND GROUPS (account required)
-Invite-only (code or link), up to 30 people; no public list, feed or chat. User text is only group, city and display names and alarm labels. Creating or joining means accepting the community rules (linked there). Names are filtered (links, emails, phones, word list); Report on every name, Block on every member; 3 reports hide a name; each report emails us a link to hide it and remove its author from all circles and groups. Reports are reviewed within 24 hours. Try them with the demo account.
+Invite-only (code or link), up to 30 people; no public list, feed or chat. User text is only group, city and display names and alarm labels. Creating or joining means accepting the community rules (linked there). Names are filtered (links, emails, phones, word list); Report on every name, Block on every member; 3 reports hide a name; each report emails us a link to hide it and remove its author from all circles and groups. Reports are reviewed as soon as possible. Try them with the demo account.
 
 Developer: Bugra Bilim - bilgi@bumbagroup.com - https://time.bumba.tr

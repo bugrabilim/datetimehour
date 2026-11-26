@@ -1969,7 +1969,7 @@
     <string name="account_rules1">サークル名、グループ名、都市名、表示名に、侮辱、ヘイトスピーチ、嫌がらせ、性的・暴力的・違法な内容、広告、個人情報（電話番号、住所、メールアドレス、リンク）を使わないでください。</string>
     <string name="account_rules2">誰にも迷惑をかけないでください。アラームの提案は、望んでいるとわかっている相手にだけ送ってください。</string>
     <string name="account_rules3">不適切な名前を見つけたら「報告」をタップしてください。迷惑なメンバーは「ブロック」で非表示にできます。</string>
-    <string name="account_rules4">報告は24時間以内に確認します。ルールに違反する内容は削除され、投稿した人はすべてのサークルとグループから外され、新たに参加できなくなります。</string>
+    <string name="account_rules4">報告はできるだけ早く確認します。ルールに違反する内容は削除され、投稿した人はすべてのサークルとグループから外され、新たに参加できなくなります。</string>
     <string name="account_rulesAgree">サークルやグループを作成または参加すると、このルールに同意したことになります。</string>
     <string name="account_banned">コミュニティのルールに違反したため、サークルやグループに参加できません。誤りだと思われる場合は「問題を報告」からお知らせください。</string>
     <string name="common_done">完了</string>
@@ -4090,7 +4090,7 @@
     <string name="circle_deletedMember">削除されたメンバー</string>
     <string name="circle_report">報告</string>
     <string name="circle_reportName">サークル名を報告</string>
-    <string name="circle_reported">報告を受け付けました。24〜72 時間以内に確認します。</string>
+    <string name="circle_reported">報告を受け付けました。できるだけ早く確認します。</string>
     <string name="circle_block">ブロック</string>
     <string name="circle_unblock">ブロック解除</string>
     <string name="circle_kick">サークルから外す</string>

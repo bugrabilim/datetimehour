@@ -1969,7 +1969,7 @@
     <string name="account_rules1">मंडल, समूह, शहर और दिखने वाले नामों में गाली, नफ़रत भरी बात, उत्पीड़न, यौन, हिंसक या अवैध सामग्री, विज्ञापन और निजी जानकारी (फ़ोन, पता, ईमेल, लिंक) का उपयोग न करें।</string>
     <string name="account_rules2">किसी को परेशान न करें; अलार्म का सुझाव केवल उसी को भेजें जिसके बारे में आप जानते हैं कि वह इसे चाहता है।</string>
     <string name="account_rules3">कोई अनुचित नाम दिखे तो “रिपोर्ट करें” पर टैप करें; परेशान करने वाले सदस्य को “ब्लॉक करें” से छिपाएँ।</string>
-    <string name="account_rules4">रिपोर्टों की समीक्षा 24 घंटे के भीतर होती है। नियम तोड़ने वाली सामग्री हटा दी जाती है; उसे लिखने वाले को सभी मंडलों और समूहों से निकाल दिया जाता है और वह नए में नहीं जुड़ सकता।</string>
+    <string name="account_rules4">रिपोर्टों की समीक्षा जल्द से जल्द होती है। नियम तोड़ने वाली सामग्री हटा दी जाती है; उसे लिखने वाले को सभी मंडलों और समूहों से निकाल दिया जाता है और वह नए में नहीं जुड़ सकता।</string>
     <string name="account_rulesAgree">मंडल या समूह बनाकर या उसमें जुड़कर आप इन नियमों से सहमत होते हैं।</string>
     <string name="account_banned">समुदाय के नियम तोड़ने के कारण आप मंडलों या समूहों में नहीं जुड़ सकते। अगर आपको लगता है कि यह गलती है, तो “समस्या बताएँ” से हमें लिखें।</string>
     <string name="common_done">हो गया</string>
@@ -4090,7 +4090,7 @@
     <string name="circle_deletedMember">हटाया गया सदस्य</string>
     <string name="circle_report">रिपोर्ट करें</string>
     <string name="circle_reportName">मंडल का नाम रिपोर्ट करें</string>
-    <string name="circle_reported">रिपोर्ट मिल गई; 24–72 घंटों में देखी जाएगी।</string>
+    <string name="circle_reported">रिपोर्ट मिल गई; जल्द से जल्द देखी जाएगी।</string>
     <string name="circle_block">ब्लॉक करें</string>
     <string name="circle_unblock">अनब्लॉक करें</string>
     <string name="circle_kick">मंडल से हटाएँ</string>

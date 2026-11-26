@@ -1969,7 +1969,7 @@
     <string name="account_rules1">Jangan gunakan hinaan, ujaran kebencian, pelecehan, konten seksual, kekerasan atau ilegal, iklan, maupun informasi pribadi (telepon, alamat, email, tautan) pada nama lingkaran, grup, kota, atau nama tampilan.</string>
     <string name="account_rules2">Jangan mengganggu siapa pun; kirim saran alarm hanya kepada orang yang Anda tahu menginginkannya.</string>
     <string name="account_rules3">Jika melihat nama yang tidak pantas, ketuk “Laporkan”; sembunyikan anggota yang mengganggu Anda dengan “Blokir”.</string>
-    <string name="account_rules4">Laporan ditinjau dalam 24 jam. Konten yang melanggar aturan dihapus; penulisnya dikeluarkan dari semua lingkaran dan grup dan tidak dapat bergabung lagi.</string>
+    <string name="account_rules4">Laporan ditinjau secepat mungkin. Konten yang melanggar aturan dihapus; penulisnya dikeluarkan dari semua lingkaran dan grup dan tidak dapat bergabung lagi.</string>
     <string name="account_rulesAgree">Dengan membuat atau bergabung dengan lingkaran atau grup, Anda menyetujui aturan ini.</string>
     <string name="account_banned">Anda tidak dapat bergabung dengan lingkaran atau grup karena melanggar aturan komunitas. Jika menurut Anda ini keliru, tulis kepada kami melalui “Laporkan masalah”.</string>
     <string name="common_done">Selesai</string>
@@ -4090,7 +4090,7 @@
     <string name="circle_deletedMember">Anggota terhapus</string>
     <string name="circle_report">Laporkan</string>
     <string name="circle_reportName">Laporkan nama lingkaran</string>
-    <string name="circle_reported">Laporan diterima; akan ditinjau dalam 24–72 jam.</string>
+    <string name="circle_reported">Laporan diterima; akan ditinjau secepat mungkin.</string>
     <string name="circle_block">Blokir</string>
     <string name="circle_unblock">Buka blokir</string>
     <string name="circle_kick">Keluarkan dari lingkaran</string>

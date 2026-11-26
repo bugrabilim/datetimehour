@@ -61,7 +61,7 @@ for (const f of htmlFiles) {
     check(ci > 0 && ci < mi && !/badges\.js|data-badge/.test(h), `${name}: consent.js/main.js sırası hatalı ya da web'de rozet kalmış`);
     // Bu siteye özel (30 Ekim 2026, sahibin kararı): gizlilik ve çerez tercihleri altbilgide değil ayarlarda (masaüstü dişli + mobil menü)
     const pops = [...h.matchAll(/class="set-item" href="([^"]+)">/g)].map((m) => m[1]);
-    check((h.match(/class="set-item" data-consent-open/g) || []).length === 2 && pops.some((u) => /\/(gizlilik|privacy)\/$/.test(u)) && !/footer-links/.test(h), `${name}: ayarlarda gizlilik/çerez tercihleri yok ya da altbilgide bağlantı satırı kalmış`);
+    check((h.match(/class="set-item" data-consent-open/g) || []).length === 2 && pops.some((u) => /\/(gizlilik|privacy)\/$/.test(u)) && !/footer-links/.test(h) && (h.match(/<ul class="footer-social">(.*?)<\/ul>/)?.[1].match(/<li>/g) || []).length === 8, `${name}: ayarlarda gizlilik/çerez tercihleri yok, altbilgide bağlantı satırı kalmış ya da 8 sosyal bağlantı yok`);
   }
   check(/Content-Security-Policy/.test(h), `${name}: CSP yok`);
   if (embed) {

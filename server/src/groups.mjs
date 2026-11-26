@@ -430,7 +430,7 @@ export function createGroups({ pool, mailer, adminEmail, modLink = () => "" }) {
     await mailer.sendRaw({
       to: adminEmail || "bilgi@bumbagroup.com",
       subject: `Saat Tarih grup bildirimi: ${what}${hidden ? " (gizlendi)" : ""}`,
-      text: `Bildirilen ${what}: ${text}\nGrup: ${id} (${g.kind})\nBu içerik için bildirim sayısı: ${n}${hidden ? "\nKendiliğinden gizlendi." : ""}\n\nTopluluk kurallarında söz verilen süre: en geç 24 saat içinde incele.${link ? `\nGizlemek ya da yazanı topluluktan uzaklaştırmak için: ${link}` : ""}\n`,
+      text: `Bildirilen ${what}: ${text}\nGrup: ${id} (${g.kind})\nBu içerik için bildirim sayısı: ${n}${hidden ? "\nKendiliğinden gizlendi." : ""}\n\nTopluluk kurallarındaki söz: mümkün olan en kısa sürede incele.${link ? `\nGizlemek ya da yazanı topluluktan uzaklaştırmak için: ${link}` : ""}\n`,
     }).catch(() => {});
     return { yeni: true, gizlendi: hidden };
   }

@@ -6,7 +6,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 import { bridges } from "./lib/bridges.mjs";
-import { SHARE_ICON_PATHS } from "./lib/share-icons.mjs";
+import { SHARE_ICON_PATHS, SOCIAL_ICON_PATHS } from "./lib/share-icons.mjs";
 import { hijriTable, hijriTableId } from "./lib/hijri.mjs";
 import { loadWorldHolidays, publicDays } from "./lib/world-holidays.mjs";
 import { skyEvents } from "./lib/sky-events.mjs";
@@ -649,6 +649,7 @@ ${isError ? p.body : withShare(p, canonical, p.body.replace(/<p class="lead"/g, 
   <div class="wrap footer-row">
 ${listForm(lang, p.path || ROUTES[lang].home)}
     <div class="footer-sign">
+      ${socialRow()}
       ${badge(lang)}
       <p class="sr-only">${esc(u.copyright)}</p>
       ${isError ? "" : `<p class="sr-only">${esc(u.updated)}: <time datetime="${cfg.updated}">${esc(updatedText(lang))}</time></p>`}
@@ -691,6 +692,17 @@ const BUMBA_SOCIAL = [
   "https://www.reddit.com/user/thebumbagroup",
   "https://www.linkedin.com/company/thebumbagroup",
 ];
+/* Altbilgide Bumba Group'un sosyal hesapları (26 Kasım 2026, patronun kararı: "tek satır olacak şekilde ekleyebilirsin";
+   onaylı tek satırlık altbilgi korunur). Simgeler sitenin renginde, yanında yazı yok; ad ekran okuyucuya. */
+const SOCIAL_NAMES = { instagram: "Instagram", facebook: "Facebook", youtube: "YouTube", tiktok: "TikTok", x: "X", pinterest: "Pinterest", reddit: "Reddit", linkedin: "LinkedIn" };
+function socialRow() {
+  const icon = (k) => SOCIAL_ICON_PATHS[k] || SHARE_ICON_PATHS[k];
+  const items = BUMBA_SOCIAL.map((url) => {
+    const k = Object.keys(SOCIAL_NAMES).find((n) => url.includes(n === "x" ? "//x.com" : n));
+    return `<li><a href="${url}" rel="noopener" aria-label="Bumba Group ${SOCIAL_NAMES[k]}"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="${icon(k)}"/></svg></a></li>`;
+  });
+  return `<ul class="footer-social">${items.join("")}</ul>`;
+}
 function baseLd(lang) {
   return [
     {

@@ -1969,7 +1969,7 @@
     <string name="account_rules1">Não use insultos, discurso de ódio, assédio, conteúdo sexual, violento ou ilegal, publicidade nem dados pessoais (telefone, endereço, e-mail, links) em nomes de círculo, grupo, cidade ou de exibição.</string>
     <string name="account_rules2">Não incomode ninguém; envie uma sugestão de alarme só para quem você sabe que quer recebê-la.</string>
     <string name="account_rules3">Se vir um nome impróprio, toque em “Denunciar”; oculte um membro que incomoda você com “Bloquear”.</string>
-    <string name="account_rules4">As denúncias são analisadas em até 24 horas. O conteúdo que viola as regras é removido; o autor sai de todos os círculos e grupos e não pode entrar em outros.</string>
+    <string name="account_rules4">As denúncias são analisadas o mais rápido possível. O conteúdo que viola as regras é removido; o autor sai de todos os círculos e grupos e não pode entrar em outros.</string>
     <string name="account_rulesAgree">Ao criar um círculo ou grupo ou entrar em um, você aceita estas regras.</string>
     <string name="account_banned">Você não pode entrar em círculos nem grupos porque violou as regras da comunidade. Se acha que é um engano, escreva para nós em “Relatar um problema”.</string>
     <string name="common_done">Pronto</string>
@@ -4090,7 +4090,7 @@
     <string name="circle_deletedMember">Membro excluído</string>
     <string name="circle_report">Denunciar</string>
     <string name="circle_reportName">Denunciar o nome do círculo</string>
-    <string name="circle_reported">Obrigado, vamos analisar em 24–72 horas.</string>
+    <string name="circle_reported">Obrigado, vamos analisar o mais rápido possível.</string>
     <string name="circle_block">Bloquear</string>
     <string name="circle_unblock">Desbloquear</string>
     <string name="circle_kick">Remover do círculo</string>
