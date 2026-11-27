@@ -19,7 +19,6 @@ Saat Tarih'in sonraya kalan bütün işleri (standart "Bekleyen işler dosyası"
 - Uygulamalardaki e-posta listesi formu (Hakkında; onay anahtarı ve `riza` duruyor) standart 5.43'e göre yalnız katılım talebine çevrilecek: sonraki mobil sürümde, mobil derlemeler beklediği için. (26 Kasım 2026)
 
 ## Başkasında
-- Ana altyapı oturumu: ortak liste servisine `saat-tarih` için https://hesap.time.bumba.tr kökeni eklendi (bumba#130); bumbagroup.com'un sonraki basımıyla canlıya çıkınca hesap sayfalarındaki liste formu çalışır, VPS basılınca bildirecek. (26 Kasım 2026)
 - MEB 2027-2028 çalışma takvimi: yayımlanınca `src/data/school.json`. (6 Kasım 2026)
 - Fitre 2027: Diyanet Ocak 2027'de açıklayınca `src/data/fitre.json`; BAZNAS 2027 kararları (zekât fitrah, fidye). Bakılacak tarih: Ocak 2027. (6 Kasım 2026)
 - Diyanet 2027 takvimi ve vakit tablosu: yayımlanınca `holidays.json` ve `node scripts/fetch-hijri.mjs`. (8 Kasım 2026)
