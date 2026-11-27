@@ -101,12 +101,12 @@
  "en": {
   "verify": {
    "subject": "Verify your email address",
-   "body": "Tap the button below to finish creating your Time & Date account. The link is valid for 24 hours.",
+   "body": "Tap the button below to finish creating your Saat Tarih account. The link is valid for 24 hours.",
    "button": "Verify my address"
   },
   "reset": {
    "subject": "Reset your password",
-   "body": "A password reset was requested for your Time & Date account. Tap the button below to choose a new password. The link is valid for 1 hour.",
+   "body": "A password reset was requested for your Saat Tarih account. Tap the button below to choose a new password. The link is valid for 1 hour.",
    "button": "Choose a new password"
   },
   "exists": {
@@ -115,7 +115,7 @@
   },
   "changeOld": {
    "subject": "Your email address is changing",
-   "body": "We received a request to change the email address of your Time & Date account to {email}. If you made this request, confirm it with the button below.",
+   "body": "We received a request to change the email address of your Saat Tarih account to {email}. If you made this request, confirm it with the button below.",
    "button": "Confirm the change"
   },
   "deleted": {
@@ -123,7 +123,7 @@
    "body": "Your Saat Tarih account and the information linked to it have been deleted. A celebration email already scheduled may still arrive within 7 days. You can keep using the app and the website without an account."
   },
   "ignore": "If you didn't make this request, you can ignore this email; nothing changes in your account.",
-  "footer": "You received this email because of an action on your Time & Date account. Time & Date is a Bumba Life product.",
+  "footer": "You received this email because of an action on your Saat Tarih account. Saat Tarih is a Bumba Life product.",
   "passwordChanged": {
    "subject": "Your password has changed",
    "body": "The password of your Saat Tarih account has changed and your open sessions were signed out. If you didn't make this change, set a new password right away with \"Forgot password\" on the sign-in screen and write to {iletisim}."
@@ -200,12 +200,12 @@
  "de": {
   "verify": {
    "subject": "Bestätigen Sie Ihre E-Mail-Adresse",
-   "body": "Tippen Sie auf die Schaltfläche unten, um Ihr Uhr-&-Datum-Konto fertig einzurichten. Der Link ist 24 Stunden gültig.",
+   "body": "Tippen Sie auf die Schaltfläche unten, um Ihr Saat-Tarih-Konto fertig einzurichten. Der Link ist 24 Stunden gültig.",
    "button": "Adresse bestätigen"
   },
   "reset": {
    "subject": "Passwort zurücksetzen",
-   "body": "Für Ihr Uhr-&-Datum-Konto wurde das Zurücksetzen des Passworts angefordert. Tippen Sie auf die Schaltfläche unten, um ein neues Passwort festzulegen. Der Link ist 1 Stunde gültig.",
+   "body": "Für Ihr Saat-Tarih-Konto wurde das Zurücksetzen des Passworts angefordert. Tippen Sie auf die Schaltfläche unten, um ein neues Passwort festzulegen. Der Link ist 1 Stunde gültig.",
    "button": "Neues Passwort festlegen"
   },
   "exists": {
@@ -214,7 +214,7 @@
   },
   "changeOld": {
    "subject": "Ihre E-Mail-Adresse wird geändert",
-   "body": "Wir haben eine Anfrage erhalten, die E-Mail-Adresse Ihres Uhr-&-Datum-Kontos in {email} zu ändern. Wenn die Anfrage von Ihnen stammt, bestätigen Sie sie mit der Schaltfläche unten.",
+   "body": "Wir haben eine Anfrage erhalten, die E-Mail-Adresse Ihres Saat-Tarih-Kontos in {email} zu ändern. Wenn die Anfrage von Ihnen stammt, bestätigen Sie sie mit der Schaltfläche unten.",
    "button": "Änderung bestätigen"
   },
   "deleted": {
@@ -222,7 +222,7 @@
    "body": "Ihr Saat-Tarih-Konto und die damit verbundenen Daten wurden gelöscht. Eine bereits eingeplante Glückwunsch-E-Mail kann noch innerhalb von 7 Tagen eintreffen. Sie können die App und die Website weiterhin ohne Konto nutzen."
   },
   "ignore": "Wenn die Anfrage nicht von Ihnen stammt, können Sie diese E-Mail ignorieren; an Ihrem Konto ändert sich nichts.",
-  "footer": "Sie erhalten diese E-Mail wegen einer Aktion in Ihrem Uhr-&-Datum-Konto. Uhr & Datum ist ein Produkt von Bumba Life.",
+  "footer": "Sie erhalten diese E-Mail wegen einer Aktion in Ihrem Saat-Tarih-Konto. Saat Tarih ist ein Produkt von Bumba Life.",
   "passwordChanged": {
    "subject": "Ihr Passwort wurde geändert",
    "body": "Das Passwort Ihres Saat-Tarih-Kontos wurde geändert; offene Sitzungen wurden beendet. Wenn Sie das nicht waren, legen Sie sofort mit „Passwort vergessen“ ein neues Passwort fest und schreiben Sie an {iletisim}."
@@ -299,52 +299,52 @@
  "az": {
   "verify": {
    "subject": "E-poçt ünvanınızı təsdiqləyin",
-   "body": "Saat Tarix hesabınızı yaratmağı tamamlamaq üçün aşağıdakı düyməyə toxunun. Keçid 24 saat etibarlıdır.",
+   "body": "Saat Tarih hesabınızı yaratmağı tamamlamaq üçün aşağıdakı düyməyə toxunun. Keçid 24 saat etibarlıdır.",
    "button": "Ünvanımı təsdiqlə"
   },
   "reset": {
    "subject": "Şifrənin sıfırlanması",
-   "body": "Saat Tarix hesabınız üçün şifrənin sıfırlanması istəndi. Yeni şifrə təyin etmək üçün aşağıdakı düyməyə toxunun. Keçid 1 saat etibarlıdır.",
+   "body": "Saat Tarih hesabınız üçün şifrənin sıfırlanması istəndi. Yeni şifrə təyin etmək üçün aşağıdakı düyməyə toxunun. Keçid 1 saat etibarlıdır.",
    "button": "Yeni şifrə təyin et"
   },
   "exists": {
    "subject": "Bu ünvanla artıq hesabınız var",
-   "body": "Kimsə bu e-poçt ünvanı ilə yeni Saat Tarix hesabı açmağa çalışdı, lakin bu ünvanla artıq hesabınız var. Şifrənizi xatırlamırsınızsa, giriş ekranında \"Şifrəmi unutmuşam\"dan istifadə edin."
+   "body": "Kimsə bu e-poçt ünvanı ilə yeni Saat Tarih hesabı açmağa çalışdı, lakin bu ünvanla artıq hesabınız var. Şifrənizi xatırlamırsınızsa, giriş ekranında \"Şifrəmi unutmuşam\"dan istifadə edin."
   },
   "changeOld": {
    "subject": "E-poçt ünvanınız dəyişir",
-   "body": "Saat Tarix hesabınızın e-poçt ünvanını {email} ilə dəyişmək istəyi gəldi. Bu istəyi siz etmisinizsə, aşağıdakı düymə ilə təsdiqləyin.",
+   "body": "Saat Tarih hesabınızın e-poçt ünvanını {email} ilə dəyişmək istəyi gəldi. Bu istəyi siz etmisinizsə, aşağıdakı düymə ilə təsdiqləyin.",
    "button": "Dəyişikliyi təsdiqlə"
   },
   "deleted": {
    "subject": "Hesabınız silindi",
-   "body": "Saat Tarix hesabınız və ona bağlı məlumatlar silindi. Əvvəlcədən göndərilməyə qoyulmuş təbrik məktubu varsa, ən gec 7 gün ərzində gələ bilər. Tətbiqdən və saytdan hesabsız istifadə etməyə davam edə bilərsiniz."
+   "body": "Saat Tarih hesabınız və ona bağlı məlumatlar silindi. Əvvəlcədən göndərilməyə qoyulmuş təbrik məktubu varsa, ən gec 7 gün ərzində gələ bilər. Tətbiqdən və saytdan hesabsız istifadə etməyə davam edə bilərsiniz."
   },
   "ignore": "Bu istəyi siz etməmisinizsə, bu e-poçtu nəzərə almaya bilərsiniz; hesabınızda heç nə dəyişmir.",
-  "footer": "Bu e-poçtu Saat Tarix hesabınızla bağlı bir əməliyyat səbəbindən aldınız. Saat Tarix Bumba Life məhsuludur.",
+  "footer": "Bu e-poçtu Saat Tarih hesabınızla bağlı bir əməliyyat səbəbindən aldınız. Saat Tarih Bumba Life məhsuludur.",
   "passwordChanged": {
    "subject": "Şifrəniz dəyişdi",
-   "body": "Saat Tarix hesabınızın şifrəsi dəyişdi; açıq sessiyalar bağlandı. Bu dəyişikliyi siz etməmisinizsə, giriş ekranındakı \"Şifrəmi unutmuşam\" ilə dərhal yeni şifrə təyin edin və {iletisim} ünvanına yazın."
+   "body": "Saat Tarih hesabınızın şifrəsi dəyişdi; açıq sessiyalar bağlandı. Bu dəyişikliyi siz etməmisinizsə, giriş ekranındakı \"Şifrəmi unutmuşam\" ilə dərhal yeni şifrə təyin edin və {iletisim} ünvanına yazın."
   },
   "suspended": {
    "subject": "Hesabınız dayandırıldı",
-   "body": "Saat Tarix hesabınız müvəqqəti dayandırıldı. Səbəb: {sebep}. Dayandırma davam etdikcə giriş mümkün deyil; məlumatlarınız silinmir. Suallarınız, silmə və ya məlumatlarınızın surəti üçün {iletisim} ünvanına yazın."
+   "body": "Saat Tarih hesabınız müvəqqəti dayandırıldı. Səbəb: {sebep}. Dayandırma davam etdikcə giriş mümkün deyil; məlumatlarınız silinmir. Suallarınız, silmə və ya məlumatlarınızın surəti üçün {iletisim} ünvanına yazın."
   },
   "reopened": {
    "subject": "Hesabınız yenidən açıldı",
-   "body": "Saat Tarix hesabınızdakı dayandırma qaldırıldı. E-poçt ünvanınız və şifrənizlə yenidən daxil ola bilərsiniz."
+   "body": "Saat Tarih hesabınızdakı dayandırma qaldırıldı. E-poçt ünvanınız və şifrənizlə yenidən daxil ola bilərsiniz."
   },
   "banned": {
    "subject": "Hesabınız birdəfəlik bağlandı",
-   "body": "Saat Tarix hesabınız və bütün Bumba məhsullarındakı üzvlüyünüz birdəfəlik bağlandı. Səbəb: {sebep}. Profiliniz və istifadə məlumatlarınız silindi; bu e-poçt ünvanı ilə Bumba məhsullarına yenidən üzv olmaq mümkün deyil. Suallarınız üçün {iletisim} ünvanına yazın."
+   "body": "Saat Tarih hesabınız və bütün Bumba məhsullarındakı üzvlüyünüz birdəfəlik bağlandı. Səbəb: {sebep}. Profiliniz və istifadə məlumatlarınız silindi; bu e-poçt ünvanı ilə Bumba məhsullarına yenidən üzv olmaq mümkün deyil. Suallarınız üçün {iletisim} ünvanına yazın."
   },
   "linkedOpened": {
-   "subject": "Saat Tarix-də üzvlüyünüz açıldı",
-   "body": "Bumba üzvlüyünüzlə Saat Tarix-də də hesabınız açıldı. Eyni e-poçt ünvanı və şifrə ilə daxil ola bilərsiniz. Bunu siz istəməmisinizsə, {iletisim} ünvanına yazın."
+   "subject": "Saat Tarih-də üzvlüyünüz açıldı",
+   "body": "Bumba üzvlüyünüzlə Saat Tarih-də də hesabınız açıldı. Eyni e-poçt ünvanı və şifrə ilə daxil ola bilərsiniz. Bunu siz istəməmisinizsə, {iletisim} ünvanına yazın."
   },
   "linkedClosed": {
-   "subject": "Saat Tarix-dəki hesabınız bağlandı",
-   "body": "Saat Tarix-dəki hesabınız və bu məhsuldakı məlumatlarınız silindi. Digər Bumba məhsullarındakı üzvlüyünüz davam edir."
+   "subject": "Saat Tarih-dəki hesabınız bağlandı",
+   "body": "Saat Tarih-dəki hesabınız və bu məhsuldakı məlumatlarınız silindi. Digər Bumba məhsullarındakı üzvlüyünüz davam edir."
   },
   "suspendedUntil": "Dayandırma {tarih} tarixində öz-özünə qalxacaq.",
   "hello": "Salam {ad},",
@@ -352,11 +352,11 @@
   "celebrate": {
    "birthday": {
     "subject": "Ad gününüz mübarək!",
-    "body": "{selam} Saat Tarix olaraq ad gününüzü təbrik edirik. Neçə-neçə sağlam, xoşbəxt illərə!"
+    "body": "{selam} Saat Tarih olaraq ad gününüzü təbrik edirik. Neçə-neçə sağlam, xoşbəxt illərə!"
    },
    "anniversary": {
     "subject": "Üzvlüyünüzün {n} yaşı tamam oldu",
-    "body": "{selam} Saat Tarix üzvlüyünüz bu gün {n} yaşındadır. Bizimlə olduğunuz üçün təşəkkür edirik."
+    "body": "{selam} Saat Tarih üzvlüyünüz bu gün {n} yaşındadır. Bizimlə olduğunuz üçün təşəkkür edirik."
    },
    "newyear": {
     "subject": "Yeni iliniz mübarək!",
@@ -364,10 +364,10 @@
    },
    "holiday": {
     "subject": "{gun} mübarək",
-    "body": "{selam} {gun} mübarək olsun. Saat Tarix olaraq sevdiklərinizlə gözəl bir gün keçirməyinizi arzulayırıq."
+    "body": "{selam} {gun} mübarək olsun. Saat Tarih olaraq sevdiklərinizlə gözəl bir gün keçirməyinizi arzulayırıq."
    }
   },
-  "footerCelebrate": "Bu təbrik məktubunu Saat Tarix üzvlüyünüzə görə aldınız; reklam yoxdur. Saat Tarix Bumba Life məhsuludur.",
+  "footerCelebrate": "Bu təbrik məktubunu Saat Tarih üzvlüyünüzə görə aldınız; reklam yoxdur. Saat Tarih Bumba Life məhsuludur.",
   "unsubscribe": "Təbrik məktublarını söndür",
   "merged": {
    "subject": "Hesablarınız birləşdirildi",
@@ -375,8 +375,8 @@
    "button": "Şifrəmi seç"
   },
   "opened": {
-   "subject": "Saat Tarix hesabınız açıldı",
-   "body": "E-poçt ünvanınız təsdiqləndi və Saat Tarix hesabınız açıldı. Saytda və tətbiqdə e-poçt ünvanınız və şifrənizlə daxil ola bilərsiniz. Bunu siz etməmisinizsə, {iletisim} ünvanına yazın.",
+   "subject": "Saat Tarih hesabınız açıldı",
+   "body": "E-poçt ünvanınız təsdiqləndi və Saat Tarih hesabınız açıldı. Saytda və tətbiqdə e-poçt ünvanınız və şifrənizlə daxil ola bilərsiniz. Bunu siz etməmisinizsə, {iletisim} ünvanına yazın.",
    "button": "Hesabıma keç"
   },
   "openedNo": "Bumba üzv nömrəniz: {no}.",
@@ -794,12 +794,12 @@
  "fr": {
   "verify": {
    "subject": "Confirmez votre adresse e-mail",
-   "body": "Touchez le bouton ci-dessous pour terminer la création de votre compte Heure & Date. Le lien est valable 24 heures.",
+   "body": "Touchez le bouton ci-dessous pour terminer la création de votre compte Saat Tarih. Le lien est valable 24 heures.",
    "button": "Confirmer mon adresse"
   },
   "reset": {
    "subject": "Réinitialiser votre mot de passe",
-   "body": "Une réinitialisation du mot de passe a été demandée pour votre compte Heure & Date. Touchez le bouton ci-dessous pour choisir un nouveau mot de passe. Le lien est valable 1 heure.",
+   "body": "Une réinitialisation du mot de passe a été demandée pour votre compte Saat Tarih. Touchez le bouton ci-dessous pour choisir un nouveau mot de passe. Le lien est valable 1 heure.",
    "button": "Choisir un nouveau mot de passe"
   },
   "exists": {
@@ -808,7 +808,7 @@
   },
   "changeOld": {
    "subject": "Votre adresse e-mail va changer",
-   "body": "Nous avons reçu une demande pour remplacer l'adresse e-mail de votre compte Heure & Date par {email}. Si cette demande vient de vous, confirmez-la avec le bouton ci-dessous.",
+   "body": "Nous avons reçu une demande pour remplacer l'adresse e-mail de votre compte Saat Tarih par {email}. Si cette demande vient de vous, confirmez-la avec le bouton ci-dessous.",
    "button": "Confirmer le changement"
   },
   "deleted": {
@@ -816,7 +816,7 @@
    "body": "Votre compte Saat Tarih et les informations qui y sont liées ont été supprimés. Un e-mail de félicitations déjà programmé peut encore arriver dans un délai de 7 jours. Vous pouvez continuer à utiliser l'application et le site sans compte."
   },
   "ignore": "Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail ; rien ne change dans votre compte.",
-  "footer": "Vous recevez cet e-mail à la suite d'une action sur votre compte Heure & Date. Heure & Date est un produit Bumba Life.",
+  "footer": "Vous recevez cet e-mail à la suite d'une action sur votre compte Saat Tarih. Saat Tarih est un produit Bumba Life.",
   "passwordChanged": {
    "subject": "Votre mot de passe a changé",
    "body": "Le mot de passe de votre compte Saat Tarih a changé et vos sessions ouvertes ont été fermées. Si ce n'était pas vous, définissez tout de suite un nouveau mot de passe avec « Mot de passe oublié » et écrivez à {iletisim}."
@@ -1487,12 +1487,12 @@
  "es": {
   "verify": {
    "subject": "Confirme su dirección de correo",
-   "body": "Toque el botón de abajo para terminar de crear su cuenta de Hora y Fecha. El enlace es válido durante 24 horas.",
+   "body": "Toque el botón de abajo para terminar de crear su cuenta de Saat Tarih. El enlace es válido durante 24 horas.",
    "button": "Confirmar mi dirección"
   },
   "reset": {
    "subject": "Restablecer la contraseña",
-   "body": "Se solicitó restablecer la contraseña de su cuenta de Hora y Fecha. Toque el botón de abajo para elegir una contraseña nueva. El enlace es válido durante 1 hora.",
+   "body": "Se solicitó restablecer la contraseña de su cuenta de Saat Tarih. Toque el botón de abajo para elegir una contraseña nueva. El enlace es válido durante 1 hora.",
    "button": "Elegir una contraseña nueva"
   },
   "exists": {
@@ -1501,7 +1501,7 @@
   },
   "changeOld": {
    "subject": "Su dirección de correo va a cambiar",
-   "body": "Recibimos una solicitud para cambiar la dirección de correo de su cuenta de Hora y Fecha a {email}. Si la solicitud es suya, confírmela con el botón de abajo.",
+   "body": "Recibimos una solicitud para cambiar la dirección de correo de su cuenta de Saat Tarih a {email}. Si la solicitud es suya, confírmela con el botón de abajo.",
    "button": "Confirmar el cambio"
   },
   "deleted": {
@@ -1509,7 +1509,7 @@
    "body": "Su cuenta de Saat Tarih y la información vinculada a ella se han eliminado. Un correo de felicitación ya programado aún puede llegar en un plazo de 7 días. Puede seguir usando la aplicación y el sitio sin cuenta."
   },
   "ignore": "Si usted no hizo esta solicitud, ignore este correo; no cambia nada en su cuenta.",
-  "footer": "Recibió este correo por una acción en su cuenta de Hora y Fecha. Hora y Fecha es un producto de Bumba Life.",
+  "footer": "Recibió este correo por una acción en su cuenta de Saat Tarih. Saat Tarih es un producto de Bumba Life.",
   "passwordChanged": {
    "subject": "Su contraseña ha cambiado",
    "body": "La contraseña de su cuenta de Saat Tarih ha cambiado y se han cerrado las sesiones abiertas. Si no fue usted, establezca de inmediato una nueva contraseña con «Olvidé mi contraseña» y escriba a {iletisim}."
@@ -1586,12 +1586,12 @@
  "pt": {
   "verify": {
    "subject": "Confirme seu endereço de e-mail",
-   "body": "Toque no botão abaixo para terminar de criar sua conta no Hora e Data. O link vale por 24 horas.",
+   "body": "Toque no botão abaixo para terminar de criar sua conta no Saat Tarih. O link vale por 24 horas.",
    "button": "Confirmar meu endereço"
   },
   "reset": {
    "subject": "Redefinir a senha",
-   "body": "Foi pedida a redefinição da senha da sua conta no Hora e Data. Toque no botão abaixo para escolher uma senha nova. O link vale por 1 hora.",
+   "body": "Foi pedida a redefinição da senha da sua conta no Saat Tarih. Toque no botão abaixo para escolher uma senha nova. O link vale por 1 hora.",
    "button": "Escolher uma senha nova"
   },
   "exists": {
@@ -1600,7 +1600,7 @@
   },
   "changeOld": {
    "subject": "Seu endereço de e-mail vai mudar",
-   "body": "Recebemos um pedido para mudar o endereço de e-mail da sua conta no Hora e Data para {email}. Se o pedido foi seu, confirme com o botão abaixo.",
+   "body": "Recebemos um pedido para mudar o endereço de e-mail da sua conta no Saat Tarih para {email}. Se o pedido foi seu, confirme com o botão abaixo.",
    "button": "Confirmar a mudança"
   },
   "deleted": {
@@ -1608,7 +1608,7 @@
    "body": "Sua conta do Saat Tarih e as informações ligadas a ela foram excluídas. Um e-mail de parabéns já agendado ainda pode chegar em até 7 dias. Você pode continuar usando o app e o site sem conta."
   },
   "ignore": "Se você não fez este pedido, ignore este e-mail; nada muda na sua conta.",
-  "footer": "Você recebeu este e-mail por causa de uma ação na sua conta do Hora e Data. Hora e Data é um produto da Bumba Life.",
+  "footer": "Você recebeu este e-mail por causa de uma ação na sua conta do Saat Tarih. Saat Tarih é um produto da Bumba Life.",
   "passwordChanged": {
    "subject": "Sua senha foi alterada",
    "body": "A senha da sua conta do Saat Tarih foi alterada e as sessões abertas foram encerradas. Se não foi você, defina agora uma nova senha com \"Esqueci a senha\" e escreva para {iletisim}."

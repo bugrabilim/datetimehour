@@ -627,6 +627,10 @@
     <string name="list_fullText">পুরো লেখা</string>
     <string name="list_label">ইমেইল তালিকা</string>
     <string name="list_formErr">আপনাকে যুক্ত করা যায়নি। ইমেইল ঠিকানা দেখে একটু পরে আবার চেষ্টা করুন।</string>
+    <string name="list_placeholder">আমাদের ইমেইল তালিকায় যোগ দিন</string>
+    <string name="list_received">আপনার অনুরোধ পাওয়া গেছে</string>
+    <string name="list_badEmail">একটি সঠিক ইমেইল ঠিকানা লিখুন।</string>
+    <string name="list_sendFail">পাঠানো যায়নি, একটু পরে আবার চেষ্টা করুন।</string>
     <string name="prayer_kerahatHeading">মাকরুহ ওয়াক্ত (আনুমানিক)</string>
     <string name="prayer_kerahatNames_israk">সূর্যোদয় (ইশরাক)</string>
     <string name="prayer_kerahatNames_istiva">দুপুরের আগে (ইস্তিওয়া)</string>

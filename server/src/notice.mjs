@@ -1,7 +1,7 @@
 /* Tek seferlik hukuki bilgilendirme (standart 5.33, 22 Kasım 2026): ortak üyelik aydınlatma metnine "7. Ürün
    bildirimleri" bölümü eklendi; her üyeye bir kez kısa e-posta gider. Metin standartta verilen metindir: Türkçe
    arayüzdeki üyeye Türkçe, öbür dillerdekilere İngilizce (standart yalnız bu iki dilin metnini verir), ürün adı
-   İngilizcede "Time & Date". Doğrulanmamış, askıdaki ve yasaklı hesaplara ve yönetici hesabına gitmez. Hukuki
+   her dilde "Saat Tarih" (26 Kasım 2026, patronun kararı). Doğrulanmamış, askıdaki ve yasaklı hesaplara ve yönetici hesabına gitmez. Hukuki
    bilgilendirmedir: kapatma bağlantısı yoktur. Günlük temizlik görevi gönderir (cleanup.mjs); gönderilen üye
    `notice_sent`'e yazılır, gönderilemeyen ertesi gün yeniden denenir. Yeni bir bilgilendirme gerekirse yeni bir
    `NOTICE` kimliğiyle eklenir. */
@@ -21,7 +21,7 @@ const T = {
     footer: ["Bu e-postayı {Ürün} üyesi olduğunuz için aldınız.", "Bumba Group"],
   },
   en: {
-    product: "Time & Date",
+    product: "Saat Tarih",
     subject: "Membership privacy notice updated",
     paras: [
       "Hello,",

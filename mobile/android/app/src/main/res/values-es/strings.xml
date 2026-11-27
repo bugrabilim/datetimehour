@@ -627,6 +627,10 @@
     <string name="list_fullText">Texto completo</string>
     <string name="list_label">Lista de correo</string>
     <string name="list_formErr">No pudimos suscribirle. Revise su dirección de correo y vuelva a intentarlo un poco más tarde.</string>
+    <string name="list_placeholder">Únase a nuestra lista de correo</string>
+    <string name="list_received">Hemos recibido su solicitud</string>
+    <string name="list_badEmail">Escriba una dirección de correo válida.</string>
+    <string name="list_sendFail">No se pudo enviar, inténtelo de nuevo en un momento.</string>
     <string name="prayer_kerahatHeading">Horas en que se desaconseja rezar (aprox.)</string>
     <string name="prayer_kerahatNames_israk">Salida del sol (ishraq)</string>
     <string name="prayer_kerahatNames_istiva">Antes del mediodía (istiwa)</string>

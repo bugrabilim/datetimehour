@@ -56,6 +56,38 @@
   }));
   const track = (name) => { try { if (window.umami) window.umami.track(name); } catch {} };
 
+  /* ---- Altbilgideki e-posta listesi formu (standart madde 6, 5.43; sitedeki main.js listForm ile aynı) ---- */
+  (function listForm() {
+    const form = $("#liste-form");
+    if (!form) return;
+    const input = $("#liste-eposta"), done = $("#liste-tamam"), errEl = $("#liste-hata");
+    const RE = /^[^\s@<>"',;]+@[^\s@<>"',;]+\.[^\s@<>"',;]{2,}$/;
+    let timer = null;
+    const hideDone = (focus) => { clearTimeout(timer); done.hidden = true; if (focus) { try { input.focus(); } catch {} } };
+    const showDone = () => { done.hidden = false; clearTimeout(timer); timer = setTimeout(() => hideDone(false), 10000); };
+    done.addEventListener("click", () => hideDone(true));
+    const id = location.hash.replace("#", "");
+    if (id === "liste-tamam") { showDone(); track("liste-katil"); }
+    else if (id === "liste-hata") errEl.textContent = form.dataset.fail || "";
+    if (id === "liste-tamam" || id === "liste-hata") { try { history.replaceState(null, "", location.pathname + location.search); } catch {} }
+    form.noValidate = true;
+    input.addEventListener("input", () => { errEl.textContent = ""; });
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const v = (input.value || "").trim();
+      if (!RE.test(v) || v.length > 254) { errEl.textContent = form.dataset.bad || ""; try { input.focus(); } catch {} return; }
+      input.value = v;
+      errEl.textContent = "";
+      const body = new FormData(form);
+      input.value = "";
+      showDone();
+      fetch(form.action, { method: "POST", body, headers: { Accept: "application/json" }, keepalive: true, credentials: "omit" })
+        .then((r) => r.json().catch(() => ({ durum: r.ok ? "tamam" : "hata" })))
+        .then((j) => { if (j && j.durum === "tamam") { track("liste-katil"); return; } throw j && j.durum; })
+        .catch((code) => { hideDone(false); input.value = v; errEl.textContent = (code === "gecersiz-eposta" ? form.dataset.bad : form.dataset.fail) || ""; });
+    });
+  })();
+
   /* ---- İstekler ---- */
   async function call(path, body, method = "POST") {
     let r;

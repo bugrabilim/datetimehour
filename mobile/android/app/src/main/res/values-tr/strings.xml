@@ -627,6 +627,10 @@
     <string name="list_fullText">Tam metin</string>
     <string name="list_label">E-posta listesi</string>
     <string name="list_formErr">Kaydınız alınamadı. E-posta adresinizi kontrol edip biraz sonra tekrar deneyin.</string>
+    <string name="list_placeholder">E-posta listesine katılın</string>
+    <string name="list_received">Katılım talebiniz alındı</string>
+    <string name="list_badEmail">Geçerli bir e-posta adresi yazın.</string>
+    <string name="list_sendFail">Gönderilemedi, biraz sonra tekrar deneyin.</string>
     <string name="prayer_kerahatHeading">Kerahat vakitleri (yaklaşık)</string>
     <string name="prayer_kerahatNames_israk">Güneş doğarken (işrak)</string>
     <string name="prayer_kerahatNames_istiva">Öğle öncesi (istiva)</string>

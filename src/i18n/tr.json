@@ -32,7 +32,6 @@
     "breadcrumb": "Sayfa yolu",
     "updated": "Son güncelleme",
     "noscript": "Canlı saati görmek için tarayıcınızda JavaScript açık olmalıdır.",
-    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Saat Tarih ana sayfa",
     "calendar": "Takvim",
     "tools": "Araçlar",
@@ -588,7 +587,11 @@
     "loadFail": "Metin yüklenemedi. Tam metni aşağıdaki bağlantıdan okuyabilir, biraz sonra tekrar deneyebilirsiniz.",
     "fullText": "Tam metin",
     "label": "E-posta listesi",
-    "formErr": "Kaydınız alınamadı. E-posta adresinizi kontrol edip biraz sonra tekrar deneyin."
+    "formErr": "Kaydınız alınamadı. E-posta adresinizi kontrol edip biraz sonra tekrar deneyin.",
+    "placeholder": "E-posta listesine katılın",
+    "received": "Katılım talebiniz alındı",
+    "badEmail": "Geçerli bir e-posta adresi yazın.",
+    "sendFail": "Gönderilemedi, biraz sonra tekrar deneyin."
   },
   "badge": {
     "title": "Bumba Life, bir Bumba Group kolu",
@@ -3427,5 +3430,13 @@
     "howGroup": "Uygulama açılmazsa Saat Tarih'te Tümü › Gruplar › Kodla katıl adımlarına dokunup bu kodu yazın. Gruplar için ücretsiz bir hesap gerekir.",
     "h1Group": "Gruba davet edildiniz",
     "leadGroup": "Saat Tarih uygulamasında ortak bir geri sayım, dünya saati, toplantı oylaması, odak odası, alarm ya da gözlem grubuna davet edildiniz."
+  },
+  "footer": {
+    "rights": "Tüm hakları saklıdır.",
+    "privacy": "Gizlilik Politikası",
+    "memberNotice": "Üyelik Aydınlatma Metni",
+    "deletion": "Hesap Silme",
+    "legal": "Hukuki metinler",
+    "terms": "Üyelik Sözleşmesi"
   }
 }

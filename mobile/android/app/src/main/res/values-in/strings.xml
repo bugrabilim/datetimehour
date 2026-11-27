@@ -627,6 +627,10 @@
     <string name="list_fullText">Teks lengkap</string>
     <string name="list_label">Daftar email</string>
     <string name="list_formErr">Pendaftaran gagal. Periksa alamat email Anda lalu coba lagi nanti.</string>
+    <string name="list_placeholder">Gabung ke daftar email kami</string>
+    <string name="list_received">Permintaan Anda telah diterima</string>
+    <string name="list_badEmail">Masukkan alamat email yang valid.</string>
+    <string name="list_sendFail">Gagal dikirim, coba lagi sebentar lagi.</string>
     <string name="prayer_kerahatHeading">Waktu makruh salat (perkiraan)</string>
     <string name="prayer_kerahatNames_israk">Matahari terbit (isyraq)</string>
     <string name="prayer_kerahatNames_istiva">Menjelang tengah hari (istiwa)</string>

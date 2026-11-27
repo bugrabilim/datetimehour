@@ -32,7 +32,6 @@
     "breadcrumb": "Naviqasiya zənciri",
     "updated": "Son yenilənmə",
     "noscript": "Canlı saatı görmək üçün brauzerinizdə JavaScript aktiv olmalıdır.",
-    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Saat Tarih ana səhifəsi",
     "calendar": "Təqvim",
     "tools": "Alətlər",
@@ -588,7 +587,11 @@
     "loadFail": "Mətn yüklənmədi. Tam mətni aşağıdakı keçiddən oxuya və bir az sonra yenidən cəhd edə bilərsiniz.",
     "fullText": "Tam mətn",
     "label": "E-poçt siyahısı",
-    "formErr": "Qeydiyyatınızı tamamlamaq mümkün olmadı. E-poçt ünvanınızı yoxlayıb bir az sonra yenidən cəhd edin."
+    "formErr": "Qeydiyyatınızı tamamlamaq mümkün olmadı. E-poçt ünvanınızı yoxlayıb bir az sonra yenidən cəhd edin.",
+    "placeholder": "E-poçt siyahısına qoşulun",
+    "received": "Qoşulma sorğunuz alındı",
+    "badEmail": "Etibarlı e-poçt ünvanı yazın.",
+    "sendFail": "Göndərilmədi, bir az sonra yenidən cəhd edin."
   },
   "badge": {
     "title": "Bumba Life, Bumba Group-un bir qolu",
@@ -3427,5 +3430,13 @@
     "howGroup": "Tətbiq açılmasa, Saat Tarih-də Hamısı › Qruplar › Kodla qoşul addımlarına toxunub bu kodu yazın. Qruplar üçün pulsuz hesab lazımdır.",
     "h1Group": "Qrupa dəvət olunmusunuz",
     "leadGroup": "Saat Tarix tətbiqində ortaq geri sayım, dünya saatı, görüş səsverməsi, diqqət otağı, zəngli saat və ya müşahidə qrupuna dəvət olunmusunuz."
+  },
+  "footer": {
+    "rights": "Bütün hüquqlar qorunur.",
+    "privacy": "Məxfilik siyasəti",
+    "memberNotice": "Üzvlük üzrə məlumatlandırma mətni",
+    "deletion": "Hesabın silinməsi",
+    "legal": "Hüquqi mətnlər",
+    "terms": "Üzvlük müqaviləsi"
   }
 }

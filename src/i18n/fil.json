@@ -32,7 +32,6 @@
     "breadcrumb": "Breadcrumb",
     "updated": "Huling na-update",
     "noscript": "Kailangang naka-on ang JavaScript sa iyong browser para makita ang live na orasan.",
-    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Home ng Saat Tarih",
     "calendar": "Kalendaryo",
     "tools": "Mga tool",
@@ -654,7 +653,11 @@
     "loadFail": "Hindi ma-load ang teksto. Mababasa mo ang buong teksto sa link sa ibaba; subukan muli mamaya.",
     "fullText": "Buong teksto",
     "label": "Email list",
-    "formErr": "Hindi ka namin maisali. Tingnan ang iyong email address at subukan muli mamaya."
+    "formErr": "Hindi ka namin maisali. Tingnan ang iyong email address at subukan muli mamaya.",
+    "placeholder": "Sumali sa aming email list",
+    "received": "Natanggap na ang iyong kahilingan",
+    "badEmail": "Maglagay ng wastong email address.",
+    "sendFail": "Hindi naipadala, subukang muli maya-maya."
   },
   "badge": {
     "title": "Bumba Life, bahagi ng Bumba Group",
@@ -3493,5 +3496,13 @@
     "howGroup": "Kung hindi bumukas ang app, pumunta sa Lahat › Mga Grupo › Sumali gamit ang code sa Saat Tarih at ilagay ang code na ito. Kailangan ng libreng account para sa mga grupo.",
     "h1Group": "Inimbitahan ka sa isang grupo",
     "leadGroup": "Inimbitahan ka sa isang shared na grupo sa Saat Tarih app: countdown, world clock, botohan sa pulong, focus room, alarm o pagmamasid sa langit."
+  },
+  "footer": {
+    "rights": "Nakalaan ang lahat ng karapatan.",
+    "privacy": "Patakaran sa Privacy",
+    "memberNotice": "Abiso sa Privacy ng Membership",
+    "deletion": "Pagbura ng Account",
+    "legal": "Mga legal na dokumento",
+    "terms": "Mga Tuntunin ng Membership"
   }
 }

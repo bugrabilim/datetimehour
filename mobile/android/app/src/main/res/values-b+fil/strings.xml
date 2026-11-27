@@ -627,6 +627,10 @@
     <string name="list_fullText">Buong teksto</string>
     <string name="list_label">Email list</string>
     <string name="list_formErr">Hindi ka namin maisali. Tingnan ang iyong email address at subukan muli mamaya.</string>
+    <string name="list_placeholder">Sumali sa aming email list</string>
+    <string name="list_received">Natanggap na ang iyong kahilingan</string>
+    <string name="list_badEmail">Maglagay ng wastong email address.</string>
+    <string name="list_sendFail">Hindi naipadala, subukang muli maya-maya.</string>
     <string name="prayer_kerahatHeading">Mga oras na hindi kanais-nais ang pagdarasal (tantiya)</string>
     <string name="prayer_kerahatNames_israk">Pagsikat ng araw (ishraq)</string>
     <string name="prayer_kerahatNames_istiva">Bago magtanghali (istiwa)</string>

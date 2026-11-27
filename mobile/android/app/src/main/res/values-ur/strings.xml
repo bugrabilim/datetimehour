@@ -627,6 +627,10 @@
     <string name="list_fullText">پورا متن</string>
     <string name="list_label">ای میل فہرست</string>
     <string name="list_formErr">رکنیت نہیں ہو سکی۔ اپنا ای میل پتہ چیک کریں اور کچھ دیر بعد دوبارہ کوشش کریں۔</string>
+    <string name="list_placeholder">ہماری ای میل فہرست میں شامل ہوں</string>
+    <string name="list_received">آپ کی درخواست موصول ہو گئی</string>
+    <string name="list_badEmail">درست ای میل پتہ لکھیں۔</string>
+    <string name="list_sendFail">بھیجا نہ جا سکا، تھوڑی دیر بعد دوبارہ کوشش کریں۔</string>
     <string name="prayer_kerahatHeading">نماز کے مکروہ اوقات (تخمینی)</string>
     <string name="prayer_kerahatNames_israk">طلوعِ آفتاب (اشراق)</string>
     <string name="prayer_kerahatNames_istiva">زوال سے پہلے (استواء)</string>

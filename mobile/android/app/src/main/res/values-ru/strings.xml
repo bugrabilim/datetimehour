@@ -627,6 +627,10 @@
     <string name="list_fullText">Полный текст</string>
     <string name="list_label">Рассылка</string>
     <string name="list_formErr">Не удалось оформить подписку. Проверьте адрес электронной почты и попробуйте чуть позже.</string>
+    <string name="list_placeholder">Подпишитесь на нашу рассылку</string>
+    <string name="list_received">Ваша заявка получена</string>
+    <string name="list_badEmail">Введите действительный адрес электронной почты.</string>
+    <string name="list_sendFail">Не удалось отправить, попробуйте чуть позже.</string>
     <string name="prayer_kerahatHeading">Нежелательное время для намаза (приблиз.)</string>
     <string name="prayer_kerahatNames_israk">Восход (ишрак)</string>
     <string name="prayer_kerahatNames_istiva">Перед полуднем (истива)</string>

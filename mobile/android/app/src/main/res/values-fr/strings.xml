@@ -627,6 +627,10 @@
     <string name="list_fullText">Texte complet</string>
     <string name="list_label">Liste de diffusion</string>
     <string name="list_formErr">Votre inscription a échoué. Vérifiez votre adresse e-mail et réessayez un peu plus tard.</string>
+    <string name="list_placeholder">Rejoignez notre liste de diffusion</string>
+    <string name="list_received">Votre demande a bien été reçue</string>
+    <string name="list_badEmail">Saisissez une adresse e-mail valide.</string>
+    <string name="list_sendFail">Envoi impossible, réessayez dans un instant.</string>
     <string name="prayer_kerahatHeading">Moments où la prière est déconseillée (approx.)</string>
     <string name="prayer_kerahatNames_israk">Lever du soleil (ishraq)</string>
     <string name="prayer_kerahatNames_istiva">Avant midi (istiwa)</string>

@@ -32,7 +32,6 @@
     "breadcrumb": "面包屑导航",
     "updated": "最后更新",
     "noscript": "要查看实时时钟，请在浏览器中启用 JavaScript。",
-    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Saat Tarih 首页",
     "calendar": "日历",
     "tools": "工具",
@@ -614,7 +613,11 @@
     "loadFail": "无法加载文本。您可以通过下面的链接阅读全文，稍后再试。",
     "fullText": "全文",
     "label": "邮件列表",
-    "formErr": "无法为您订阅。请检查电子邮箱，稍后再试。"
+    "formErr": "无法为您订阅。请检查电子邮箱，稍后再试。",
+    "placeholder": "加入我们的邮件列表",
+    "received": "已收到您的申请",
+    "badEmail": "请输入有效的电子邮件地址。",
+    "sendFail": "发送失败，请稍后再试。"
   },
   "badge": {
     "title": "Bumba Life，Bumba Group 旗下品牌",
@@ -3453,5 +3456,13 @@
     "howGroup": "如果应用没有打开，请在 Saat Tarih 中依次点按 全部 › 群组 › 用邀请码加入，然后输入此邀请码。使用群组需要免费账户。",
     "h1Group": "您被邀请加入群组",
     "leadGroup": "您被邀请加入 Saat Tarih 应用中的共享群组：倒计时、世界时钟、会议投票、专注室、闹钟或观星。"
+  },
+  "footer": {
+    "rights": "保留所有权利。",
+    "privacy": "隐私政策",
+    "memberNotice": "会员隐私声明",
+    "deletion": "删除账户",
+    "legal": "法律文本",
+    "terms": "会员条款"
   }
 }

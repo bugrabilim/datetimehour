@@ -627,6 +627,10 @@
     <string name="list_fullText">Tam mətn</string>
     <string name="list_label">E-poçt siyahısı</string>
     <string name="list_formErr">Qeydiyyatınızı tamamlamaq mümkün olmadı. E-poçt ünvanınızı yoxlayıb bir az sonra yenidən cəhd edin.</string>
+    <string name="list_placeholder">E-poçt siyahısına qoşulun</string>
+    <string name="list_received">Qoşulma sorğunuz alındı</string>
+    <string name="list_badEmail">Etibarlı e-poçt ünvanı yazın.</string>
+    <string name="list_sendFail">Göndərilmədi, bir az sonra yenidən cəhd edin.</string>
     <string name="prayer_kerahatHeading">Kərahət vaxtları (təxmini)</string>
     <string name="prayer_kerahatNames_israk">Günəş doğarkən (işraq)</string>
     <string name="prayer_kerahatNames_istiva">Günorta öncəsi (istiva)</string>

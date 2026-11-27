@@ -32,7 +32,6 @@
     "breadcrumb": "Brotkrümelnavigation",
     "updated": "Zuletzt aktualisiert",
     "noscript": "Für die Live-Uhr muss JavaScript in Ihrem Browser aktiviert sein.",
-    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Startseite von Saat Tarih",
     "calendar": "Kalender",
     "tools": "Tools",
@@ -615,7 +614,11 @@
     "loadFail": "Der Text konnte nicht geladen werden. Sie können den vollständigen Text über den Link unten lesen und es etwas später erneut versuchen.",
     "fullText": "Vollständiger Text",
     "label": "E-Mail-Liste",
-    "formErr": "Die Anmeldung hat nicht geklappt. Prüfen Sie Ihre E-Mail-Adresse und versuchen Sie es etwas später erneut."
+    "formErr": "Die Anmeldung hat nicht geklappt. Prüfen Sie Ihre E-Mail-Adresse und versuchen Sie es etwas später erneut.",
+    "placeholder": "Unserer E-Mail-Liste beitreten",
+    "received": "Ihre Anfrage ist eingegangen",
+    "badEmail": "Geben Sie eine gültige E-Mail-Adresse ein.",
+    "sendFail": "Senden fehlgeschlagen, bitte versuchen Sie es gleich noch einmal."
   },
   "badge": {
     "title": "Bumba Life, ein Geschäftsbereich der Bumba Group",
@@ -3454,5 +3457,13 @@
     "howGroup": "Falls sich die App nicht öffnet: In Saat Tarih Alle › Gruppen › Mit Code beitreten antippen und diesen Code eingeben. Für Gruppen ist ein kostenloses Konto nötig.",
     "h1Group": "Sie wurden in eine Gruppe eingeladen",
     "leadGroup": "Sie wurden in der App Saat Tarih in eine gemeinsame Gruppe eingeladen: Countdown, Weltuhr, Terminumfrage, Fokusraum, Wecker oder Himmelsbeobachtung."
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "privacy": "Datenschutzerklärung",
+    "memberNotice": "Datenschutzhinweis zur Mitgliedschaft",
+    "deletion": "Konto löschen",
+    "legal": "Rechtliches",
+    "terms": "Mitgliedschaftsbedingungen"
   }
 }

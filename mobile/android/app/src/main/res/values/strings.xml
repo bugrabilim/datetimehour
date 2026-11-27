@@ -627,6 +627,10 @@
     <string name="list_fullText">Full text</string>
     <string name="list_label">Email list</string>
     <string name="list_formErr">We could not sign you up. Check your email address and try again a little later.</string>
+    <string name="list_placeholder">Join our mailing list</string>
+    <string name="list_received">Your request has been received</string>
+    <string name="list_badEmail">Enter a valid email address.</string>
+    <string name="list_sendFail">Couldn\'t send it, please try again shortly.</string>
     <string name="prayer_kerahatHeading">Disliked prayer times (approx.)</string>
     <string name="prayer_kerahatNames_israk">Sunrise (ishraq)</string>
     <string name="prayer_kerahatNames_istiva">Before noon (istiwa)</string>

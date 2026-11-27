@@ -32,7 +32,6 @@
     "breadcrumb": "Jejak navigasi",
     "updated": "Terakhir diperbarui",
     "noscript": "JavaScript harus diaktifkan di peramban Anda untuk melihat jam langsung.",
-    "copyright": "© 1998 Bumba Group",
     "logoAlt": "Beranda Saat Tarih",
     "calendar": "Kalender",
     "tools": "Alat",
@@ -588,7 +587,11 @@
     "loadFail": "Teks tidak dapat dimuat. Anda dapat membaca teks lengkap melalui tautan di bawah dan mencoba lagi nanti.",
     "fullText": "Teks lengkap",
     "label": "Daftar email",
-    "formErr": "Pendaftaran gagal. Periksa alamat email Anda lalu coba lagi nanti."
+    "formErr": "Pendaftaran gagal. Periksa alamat email Anda lalu coba lagi nanti.",
+    "placeholder": "Gabung ke daftar email kami",
+    "received": "Permintaan Anda telah diterima",
+    "badEmail": "Masukkan alamat email yang valid.",
+    "sendFail": "Gagal dikirim, coba lagi sebentar lagi."
   },
   "badge": {
     "title": "Bumba Life, bagian dari Bumba Group",
@@ -3427,5 +3430,13 @@
     "howGroup": "Jika aplikasi tidak terbuka, buka Semua › Grup › Gabung dengan kode di Saat Tarih lalu masukkan kode ini. Grup memerlukan akun gratis.",
     "h1Group": "Anda diundang ke sebuah grup",
     "leadGroup": "Anda diundang ke grup bersama di aplikasi Saat Tarih: hitung mundur, jam dunia, polling rapat, ruang fokus, alarm, atau pengamatan langit."
+  },
+  "footer": {
+    "rights": "Hak cipta dilindungi.",
+    "privacy": "Kebijakan Privasi",
+    "memberNotice": "Pemberitahuan Privasi Keanggotaan",
+    "deletion": "Penghapusan Akun",
+    "legal": "Dokumen hukum",
+    "terms": "Ketentuan Keanggotaan"
   }
 }

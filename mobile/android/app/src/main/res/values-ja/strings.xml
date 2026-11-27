@@ -627,6 +627,10 @@
     <string name="list_fullText">全文</string>
     <string name="list_label">メールリスト</string>
     <string name="list_formErr">登録できませんでした。メールアドレスを確認し、少し後にもう一度お試しください。</string>
+    <string name="list_placeholder">メールリストに登録</string>
+    <string name="list_received">お申し込みを受け付けました</string>
+    <string name="list_badEmail">有効なメールアドレスを入力してください。</string>
+    <string name="list_sendFail">送信できませんでした。しばらくしてからもう一度お試しください。</string>
     <string name="prayer_kerahatHeading">礼拝が好ましくない時間（目安）</string>
     <string name="prayer_kerahatNames_israk">日の出（イシュラーク）</string>
     <string name="prayer_kerahatNames_istiva">正午前（イスティワー）</string>

@@ -30,8 +30,8 @@ export function linkify(s) {
 }
 
 const CSP = [
-  "default-src 'self'", "script-src 'self' https://istatistik.bumba.tr", "connect-src 'self' https://istatistik.bumba.tr",
-  "img-src 'self' data: blob: https://bumbagroup.com", "style-src 'self'", "font-src 'self'", "form-action 'self'", "frame-ancestors 'none'", "base-uri 'none'", "object-src 'none'",
+  "default-src 'self'", "script-src 'self' https://istatistik.bumba.tr", "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com",
+  "img-src 'self' data: blob: https://bumbagroup.com", "style-src 'self'", "font-src 'self'", "form-action 'self' https://bumbagroup.com", "frame-ancestors 'none'", "base-uri 'none'", "object-src 'none'",
 ].join("; ");
 
 function pickLang(req, url, user) {
@@ -57,7 +57,7 @@ export function webRoutes({ cfg, closed, accounts, center, consent, deletion, mo
 <body><header class="top"><a class="brand" href="${esc(cfg.siteUrl)}${lang === "tr" ? "/" : `/${lang}/`}"><img src="/varlik/simge.svg" alt="" width="28" height="28"> ${PRODUCT_NAME}</a>
 <label class="lang"><span class="sr">${esc(t.language)}</span><select data-lang>${LANGS.map((l) => `<option value="${l}"${l === lang ? " selected" : ""}>${esc(LANG_NAMES[l])}</option>`).join("")}</select></label></header>
 <main id="main" class="wrap">${body}</main>
-<footer class="foot">${badge(lang)}</footer>
+${footer(lang, cfg, res.req?.url)}
 <div class="cookie" id="cookie-bar" role="region" aria-label="${esc(t.cbLabel)}" hidden><p>${esc(t.cbText)} <a href="https://bumbagroup.com/cerez-politikasi${lang === "tr" ? "" : "?dil=en"}" target="_blank" rel="noopener">${esc(data.cookie?.policy || "")}</a></p>
 <div class="row"><button type="button" data-cookie="accept">${esc(data.cookie?.accept)}</button><button type="button" data-cookie="reject">${esc(data.cookie?.reject)}</button><button type="button" data-cookie="prefs">${esc(data.cookie?.prefs)}</button></div></div>
 <dialog id="cookie-dialog"><h2>${esc(data.cookie?.title)}</h2><h3>${esc(data.cookie?.necessary)}</h3><p>${esc(t.cbNecessaryText)}</p>
@@ -337,6 +337,32 @@ const DATA = JSON.parse(readFileSync(new URL("../data/web-texts.json", import.me
 const COOKIE = DATA.cookie;
 const BADGE_NAMES = DATA.badges;
 const ROZET = DATA.rozet;
+/* Altbilgi (standart madde 1, 5.44; sitedeki build.mjs listForm/socialRow/legalRow ile aynı iskelet): 1. satırda liste
+   formu (yalnız katılım talebi, 5.43), Bumba Group'un sekiz hesabı ve Life rozeti; 2. satırda telif ve hukuki bağlantılar.
+   Liste formunun betiği hesap.js'te; betiksizde form doğrudan gönderilir, sonuç #liste-tamam / #liste-hata ile döner. */
+const FOUNDED = 2023;
+const LIST_LANGS = ["tr", "en"];
+function footer(lang, cfg, path) {
+  const F = DATA.foot[lang] || DATA.foot.en, l = F.list, f = F.footer, tr = lang === "tr";
+  const here = cfg.publicUrl + (String(path || "/").split("#")[0].split("?")[0] || "/") + (tr ? "" : `?dil=${lang}`);
+  const privacy = cfg.siteUrl + (tr ? "/gizlilik/" : `/${lang}/privacy/`);
+  const form = `<form class="liste-form" id="liste-form" action="https://bumbagroup.com/api/liste/katil" method="post" data-bad="${esc(l.badEmail)}" data-fail="${esc(l.sendFail)}">
+<input type="hidden" name="site" value="saat-tarih"><input type="hidden" name="dil" value="${LIST_LANGS.includes(lang) ? lang : "en"}">
+<input type="hidden" name="gizlilik" value="${esc(privacy)}"><input type="hidden" name="kaynak" value="${esc(here)}"><input type="hidden" name="donus" value="${esc(here)}">
+<input class="bot-tuzagi" type="text" name="web_sitesi" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label for="liste-eposta" class="sr">${esc(l.label)}</label>
+<div class="liste-row"><span class="liste-alan"><input id="liste-eposta" type="email" name="eposta" required maxlength="254" autocomplete="email" inputmode="email" pattern="[^@\\s]+@[^@\\s]+\\.[^@\\s]{2,}" placeholder="${esc(l.placeholder)}">
+<span class="liste-tamam" id="liste-tamam" role="status" hidden>${esc(l.received)}</span></span><button type="submit" id="liste-katil">${esc(l.submit)}</button></div>
+<span class="liste-hata" id="liste-hata" role="alert"></span></form>`;
+  const social = `<ul class="foot-social">${DATA.social.map(([u, n, d]) => `<li><a href="${u}" rel="noopener" aria-label="Bumba Group ${n}"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="${d}"/></svg></a></li>`).join("")}</ul>`;
+  const B = "https://bumbagroup.com";
+  const links = [
+    [privacy, f.privacy], [`${B}${tr ? "" : "/en"}/uyelik-sozlesmesi`, f.terms], [`${B}${tr ? "" : "/en"}/uyelik-aydinlatma`, f.memberNotice],
+    [`${B}/liste/aydinlatma${tr ? "" : "?dil=en"}`, l.popupTitle], [`${B}${tr ? "" : "/en"}/hesap-silme/saat-tarih`, f.deletion], [`${B}/cerez-politikasi${tr ? "" : "?dil=en"}`, F.policy],
+  ].map(([u, n]) => `<li><a href="${esc(u)}" rel="noopener">${esc(n)}</a></li>`).join("");
+  return `<footer class="foot"><div class="foot-row">${form}${social}<div class="foot-sign">${badge(lang)}</div></div>
+<div class="foot-legal"><p class="foot-copy"><bdi>© ${FOUNDED} ${PRODUCT_NAME}.</bdi> ${esc(f.rights)}</p><ul class="foot-links" aria-label="${esc(f.legal)}">${links}<li><button type="button" class="link-btn" data-cookie="prefs">${esc(F.prefs)}</button></li></ul></div></footer>`;
+}
 /* Bumba rozeti (madde 1; 5.27): Türkçe sayfada Türkçe rozet, öbür dillerde İngilizce rozet ve /en/life */
 function badge(lang) {
   const tr = lang === "tr";

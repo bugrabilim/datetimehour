@@ -424,33 +424,51 @@ function crumbs() {
   return "";
 }
 
-/* E-posta listesi (standart madde 1 ve 6): altbilgide çerçevesiz form; "Katıl" aydınlatma penceresini açar, metin ortak
-   servisten gelir (data-aydinlatma), "Kabul ediyorum" düğmesi riza=on ile formu gönderir. Betiksizde noscript onay kutusu. */
+/* E-posta listesi (standart madde 6, 5.43–5.44): altbilgide çerçevesiz tek satır; yalnız katılım talebi (pencere, onay
+   kutusu ve aydınlatma bağlantısı yok; rıza ve hukuki metinler servisin ilk e-postasında). Betik cevabı beklemeden
+   "Katılım talebiniz alındı" gösterir (main.js); betiksizde form gider ve donus#liste-tamam ile döner. */
 function listForm(lang, pagePath) {
   const l = I[lang].list;
   const url = abs(pagePath);
   const dil = LIST_LANGS.includes(lang) ? lang : "en";
-  const q = dil === "tr" ? "" : "?dil=en";
-  return `<form class="liste-form" id="liste-form" action="https://bumbagroup.com/api/liste/katil" method="post" data-aydinlatma="https://bumbagroup.com/api/liste/aydinlatma?dil=${dil}">
+  return `<form class="liste-form" id="liste-form" action="https://bumbagroup.com/api/liste/katil" method="post" data-bad="${esc(l.badEmail)}" data-fail="${esc(l.sendFail)}">
     <input type="hidden" name="site" value="${esc(cfg.listKey)}">
     <input type="hidden" name="dil" value="${dil}">
+    <input type="hidden" name="gizlilik" value="${esc(abs(ROUTES[lang].privacy))}">
     <input type="hidden" name="kaynak" value="${esc(url)}">
     <input type="hidden" name="donus" value="${esc(url)}">
     <input class="bot-tuzagi" type="text" name="web_sitesi" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label for="liste-eposta" class="sr-only">${esc(l.label)}</label>
     <div class="liste-row">
-      <input id="liste-eposta" type="email" name="eposta" required autocomplete="email" placeholder="${esc(l.emailLabel)}">
+      <span class="liste-alan">
+        <input id="liste-eposta" type="email" name="eposta" required maxlength="254" autocomplete="email" inputmode="email" pattern="[^@\\s]+@[^@\\s]+\\.[^@\\s]{2,}" placeholder="${esc(l.placeholder)}">
+        <span class="liste-tamam" id="liste-tamam" role="status" hidden>${esc(l.received)}</span>
+      </span>
       <button class="btn" type="submit" id="liste-katil">${esc(l.submit)}</button>
     </div>
-    <noscript><label class="check"><input type="checkbox" name="riza" value="on" required> ${esc(l.consentText)} <a href="${esc(l.noteLink + q)}" rel="noopener">${esc(l.readNote)}</a></label></noscript>
-    <dialog class="info-dialog list-dialog" id="liste-pencere" aria-labelledby="liste-baslik">
-      <h2 id="liste-baslik">${esc(l.popupTitle)}</h2>
-      <div class="liste-metin" id="liste-metin" tabindex="0" data-loading="${esc(l.loading)}" data-fail="${esc(l.loadFail)}"></div>
-      <p><a href="${esc(l.noteLink + q)}" target="_blank" rel="noopener">${esc(l.fullText)}</a></p>
-      <div class="im-actions"><button type="submit" class="btn" id="liste-kabul" name="riza" value="on" disabled>${esc(l.accept)}</button><button type="button" class="btn btn-ghost" id="liste-vazgec">${esc(l.cancel)}</button></div>
-    </dialog>
-    <p class="liste-sonuc" id="liste-sonuc" role="status" data-ok="${esc(l.ok)}" data-err="${esc(l.formErr)}"></p>
+    <span class="liste-hata" id="liste-hata" role="alert"></span>
   </form>`;
+}
+
+/* Altbilginin 2. satırı (standart madde 1, 5.44): solda telif, sağa yaslı hukuki metinler standarttaki sırayla ve
+   "Çerez tercihleri". Türkçe sayfadan merkezdeki Türkçe metinlere, öbür dillerden İngilizcelerine bağlanır. */
+const FOUNDED = 2023; // standart madde 1, "Sitelerin sosyal medya hesapları ve kuruluş yılları"
+function legalRow(lang) {
+  const t = I[lang], f = t.footer, tr = lang === "tr";
+  const B = "https://bumbagroup.com";
+  const links = [
+    [ROUTES[lang].privacy, f.privacy],
+    [`${B}${tr ? "" : "/en"}/uyelik-sozlesmesi`, f.terms],
+    [`${B}${tr ? "" : "/en"}/uyelik-aydinlatma`, f.memberNotice],
+    [`${B}/liste/aydinlatma${tr ? "" : "?dil=en"}`, t.list.popupTitle],
+    [`${B}${tr ? "" : "/en"}/hesap-silme/saat-tarih`, f.deletion],
+    [`${B}/cerez-politikasi${tr ? "" : "?dil=en"}`, t.consent.policy],
+  ];
+  const li = links.map(([u, n]) => `<li><a href="${esc(u)}"${u.startsWith("http") ? ' rel="noopener"' : ""}>${esc(n)}</a></li>`).join("");
+  return `<div class="wrap footer-legal">
+    <p class="footer-copy"><bdi>© ${FOUNDED} ${esc(cfg.name)}.</bdi> ${esc(f.rights)}</p>
+    <ul class="footer-links" aria-label="${esc(f.legal)}">${li}<li><button type="button" class="link-btn" data-consent-open>${esc(t.consent.footerLink)}</button></li></ul>
+  </div>`;
 }
 
 /* Çerez onayı (standart madde 14): ilk ziyarette bant, tercihler penceresi; seçim consent.js'te */
@@ -648,13 +666,13 @@ ${isError ? p.body : withShare(p, canonical, p.body.replace(/<p class="lead"/g, 
 <footer class="site-footer">
   <div class="wrap footer-row">
 ${listForm(lang, p.path || ROUTES[lang].home)}
+    ${socialRow()}
     <div class="footer-sign">
-      ${socialRow()}
       ${badge(lang)}
-      <p class="sr-only">${esc(u.copyright)}</p>
       ${isError ? "" : `<p class="sr-only">${esc(u.updated)}: <time datetime="${cfg.updated}">${esc(updatedText(lang))}</time></p>`}
     </div>
   </div>
+  ${legalRow(lang)}
 </footer>
 ${cookieUi(lang)}
 ${searchDialog(lang)}
@@ -682,18 +700,18 @@ function withShare(p, canonical, body) {
 
 /* ---------- JSON-LD ---------- */
 // Bumba Group'un sosyal hesapları (bumbagroup.com ve marka kitiyle aynı; standart 2 "Marka bilgileri … şemada (sameAs) aynı")
-const BUMBA_SOCIAL = [
+const BUMBA_SOCIAL = [ // standart madde 1 tablosundaki sıra
+  "https://www.linkedin.com/company/thebumbagroup",
+  "https://www.youtube.com/@thebumbagroup",
   "https://www.instagram.com/thebumbagroup",
   "https://www.facebook.com/thebumbagroup",
-  "https://www.youtube.com/@thebumbagroup",
-  "https://www.tiktok.com/@thebumbagroup",
   "https://x.com/thebumbagroup",
+  "https://www.tiktok.com/@thebumbagroup",
   "https://www.pinterest.com/thebumbagroup",
   "https://www.reddit.com/user/thebumbagroup",
-  "https://www.linkedin.com/company/thebumbagroup",
 ];
-/* Altbilgide Bumba Group'un sosyal hesapları (26 Kasım 2026, patronun kararı: "tek satır olacak şekilde ekleyebilirsin";
-   onaylı tek satırlık altbilgi korunur). Simgeler sitenin renginde, yanında yazı yok; ad ekran okuyucuya. */
+/* Altbilgi 1. satırın ortasında Bumba Group'un sekiz hesabı (standart madde 1, 5.44; Saat Tarih'in kendi hesabı yok).
+   Simgeler sitenin renginde, yanında yazı yok; ad ekran okuyucuya. */
 const SOCIAL_NAMES = { instagram: "Instagram", facebook: "Facebook", youtube: "YouTube", tiktok: "TikTok", x: "X", pinterest: "Pinterest", reddit: "Reddit", linkedin: "LinkedIn" };
 function socialRow() {
   const icon = (k) => SOCIAL_ICON_PATHS[k] || SHARE_ICON_PATHS[k];

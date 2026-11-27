@@ -627,6 +627,10 @@
     <string name="list_fullText">全文</string>
     <string name="list_label">邮件列表</string>
     <string name="list_formErr">无法为您订阅。请检查电子邮箱，稍后再试。</string>
+    <string name="list_placeholder">加入我们的邮件列表</string>
+    <string name="list_received">已收到您的申请</string>
+    <string name="list_badEmail">请输入有效的电子邮件地址。</string>
+    <string name="list_sendFail">发送失败，请稍后再试。</string>
     <string name="prayer_kerahatHeading">不宜礼拜的时间（约）</string>
     <string name="prayer_kerahatNames_israk">日出时（ishraq）</string>
     <string name="prayer_kerahatNames_istiva">正午前（istiwa）</string>

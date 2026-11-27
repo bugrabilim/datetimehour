@@ -501,22 +501,17 @@ tbody th a { color: var(--text); }
 .prose li { margin-bottom: 0.6rem; }
 .prose h2 { margin-top: 2rem; }
 
-/* E-posta listesi formu (altbilgide, çerçevesiz; standart madde 1 ve 6) */
-.liste-form { flex: 1 1 18rem; max-width: 26rem; margin: 0; }
-.liste-row { display: flex; gap: 0.5rem; align-items: center; }
-.liste-row input[type="email"] { flex: 1; min-width: 0; min-height: 2.25rem; padding-block: 0.2rem; font-size: 0.9rem; }
-.liste-row .btn { min-height: 2.25rem; padding: 0 0.9rem; font-size: 0.9rem; flex: none; }
-.liste-form .check { margin: 0.4rem 0 0; font-size: 0.78rem; color: var(--muted); }
-.liste-form .check input { width: 1.1rem; height: 1.1rem; margin-top: 0.1rem; }
-.liste-sonuc { margin: 0.5rem 0 0; font-size: 0.9rem; font-weight: 600; }
-.liste-sonuc:empty { display: none; }
-.liste-sonuc.is-ok { color: var(--ok); }
-.liste-sonuc.is-err { color: var(--err); }
-.list-dialog { width: min(36rem, calc(100vw - 2rem)); }
-.liste-metin { max-height: min(50vh, 26rem); overflow-y: auto; margin: 0 0 0.6rem; padding-inline-end: 0.3rem; font-size: 0.92rem; }
-.liste-metin h3 { font-size: 0.95rem; margin: 0.8rem 0 0.2rem; }
-.liste-metin p { margin: 0 0 0.5rem; }
-.list-dialog p { margin: 0 0 0.6rem; }
+/* E-posta listesi formu (altbilgide, çerçevesiz tek satır; standart madde 1 ve 6, 5.43–5.44) */
+.liste-form { flex: 1 1 16rem; max-width: 24rem; margin: 0; }
+.liste-row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: nowrap; }
+.liste-alan { position: relative; flex: 1; min-width: 0; display: flex; }
+.liste-alan input[type="email"] { flex: 1; min-width: 0; min-height: 2.25rem; padding-block: 0.2rem; font-size: 0.9rem; }
+.liste-row .btn { min-height: 2.25rem; padding: 0 0.9rem; font-size: 0.9rem; flex: none; white-space: nowrap; }
+.liste-tamam { position: absolute; inset: 0; display: flex; align-items: center; padding-inline: 0.9rem; border: 1px solid var(--muted); border-radius: 10px; background: var(--bg); color: var(--ok); font-size: 0.9rem; font-weight: 600; cursor: pointer; }
+.liste-tamam[hidden] { display: none; }
+.liste-tamam:target { display: flex; }
+.liste-hata { display: block; margin-top: 0.35rem; font-size: 0.85rem; font-weight: 600; color: var(--err); }
+.liste-hata:empty { display: none; }
 .field { display: grid; gap: 0.35rem; margin-bottom: 0.9rem; }
 .field label { font-weight: 600; }
 input[type="email"], input[type="search"], input[type="url"], input[type="number"], input[type="time"], input[type="text"], input[type="password"], input[type="datetime-local"], input[type="date"], select {
@@ -558,12 +553,26 @@ dialog.search::backdrop { background: rgb(10 12 16 / 0.55); }
 .footer-nav { display: flex; gap: 0.5rem 1.25rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
 .footer-nav a { color: var(--text); }
 .footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
-.footer-sign { display: flex; align-items: center; margin-inline-start: auto; }
+.footer-sign { display: flex; align-items: center; }
 .footer-sign p { margin: 0; }
-.footer-social { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.15rem; list-style: none; margin: 0; margin-inline-end: 1rem; padding: 0; }
+.footer-social { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.15rem; list-style: none; margin: 0; padding: 0; }
 .footer-social a { display: grid; place-items: center; inline-size: 2rem; block-size: 2rem; border-radius: 999px; color: var(--muted); }
 .footer-social a:hover, .footer-social a:focus-visible { color: var(--text); background: var(--surface); }
-@media (max-width: 30rem) { .footer-sign { flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; } .footer-social { margin-inline-end: 0; } }
+/* 2. satır: solda telif, sağa yaslı hukuki bağlantılar (standart madde 1, 5.44) */
+.footer-legal { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 1.5rem; margin-top: 0.8rem; padding-top: 0.7rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--muted); }
+.footer-copy { margin: 0; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.3rem 0.9rem; list-style: none; margin: 0; margin-inline-start: auto; padding: 0; }
+.footer-links a, .footer-links .link-btn { color: var(--muted); text-decoration: none; }
+.footer-links a:hover, .footer-links a:focus-visible, .footer-links .link-btn:hover, .footer-links .link-btn:focus-visible { color: var(--text); text-decoration: underline; }
+.link-btn { appearance: none; background: none; border: 0; padding: 0; margin: 0; font: inherit; cursor: pointer; }
+/* Telefonda alt alta: kayıt, sosyal simgeler, imza; sonra telif ve hukuki bağlantılar */
+@media (max-width: 40rem) {
+  .footer-row { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+  .liste-form { flex: none; max-width: none; }
+  .footer-sign { justify-content: center; }
+  .footer-legal { flex-direction: column; align-items: flex-start; }
+  .footer-links { justify-content: flex-start; margin-inline-start: 0; }
+}
 .rozet { display: inline-block; line-height: 0; }
 .rozet img { height: 28px; width: auto; }
 

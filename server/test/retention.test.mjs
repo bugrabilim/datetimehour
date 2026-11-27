@@ -81,7 +81,7 @@ test("5.33: aydınlatma güncellemesi e-postası her üyeye bir kez; dile göre 
   assert.doesNotMatch(tr.text + tr.html, /kutlama|unsubscribe|List-Unsubscribe/i, "kapatma bağlantısı yok");
   const de = t.last("notice", "bildirim-de@example.com");
   assert.equal(de.subject, "Membership privacy notice updated");
-  assert.match(de.text, /your Time & Date membership/);
+  assert.match(de.text, /your Saat Tarih membership/);
   assert.match(de.text, /https:\/\/bumbagroup\.com\/en\/uyelik-aydinlatma/);
   assert.equal(t.last("notice", "bildirim-aski@example.com"), undefined);
   assert.equal(t.last("notice", "bildirim-dogrulanmadi@example.com"), undefined);
