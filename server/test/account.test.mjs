@@ -136,6 +136,10 @@ test("kutlama günleri: Türkiye bayramları, öbür ülkede anma ve yas günü 
   const de = { ...base, profile: { ulke: "DE" } };
   assert.equal(occasionFor(de, "2026-04-03", "de"), null, "Karfreitag");
   assert.equal(occasionFor({ ...base, profile: {} }, "2026-07-04", "en"), null, "ülke yoksa bayram yok");
+  // Önbellekteki date-holidays örneğinde dil kaymaz: aynı ülke başka dilde istendikten sonra da adlar doğru dilde
+  assert.equal(occasionFor(de, "2027-10-03", "de").name, "Tag der Deutschen Einheit");
+  assert.equal(occasionFor(de, "2027-10-03", "en").name, "National Holiday");
+  assert.equal(occasionFor(de, "2028-10-03", "de").name, "Tag der Deutschen Einheit");
   const leap = { ...base, profile: { dogumTarihi: "2004-02-29" } };
   assert.deepEqual(occasionFor(leap, "2027-02-28", "tr"), { kind: "birthday" });
 });

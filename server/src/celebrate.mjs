@@ -63,9 +63,14 @@ function holidaysFor(country) {
   if (!hdInstances.has(country)) {
     let h = null;
     try { h = new (holidaysLib())(country); } catch {}
-    hdInstances.set(country, h);
+    hdInstances.set(country, h && { h, langs: h.getLanguages() });
   }
   return hdInstances.get(country);
+}
+/* getHolidays(yıl, dil) örneğin dil listesinin başına dili ekler ve listeyi büyütür; örnek önbellekte durduğu için her
+   çağrıdan sonra ilk liste geri yazılır (yoksa liste her gün uzar ve varsayılan dil kayar) */
+function holidaysIn(entry, year, lang) {
+  try { return entry.h.getHolidays(year, lang) || []; } finally { entry.h.setLanguages(entry.langs); }
 }
 const hdCache = new Map();
 function countryHolidays(country, year, lang) {
@@ -74,8 +79,8 @@ function countryHolidays(country, year, lang) {
     let list = [];
     try {
       const h = holidaysFor(country);
-      const en = (h.getHolidays(year, "en") || []).filter((x) => x.type === "public");
-      const local = lang === "en" ? en : h.getHolidays(year, lang) || [];
+      const en = holidaysIn(h, year, "en").filter((x) => x.type === "public");
+      const local = lang === "en" ? en : holidaysIn(h, year, lang);
       list = en
         .filter((x) => !SOMBER.test(x.name) && !x.date.startsWith(`${year}-01-01`))
         .map((x) => ({ day: x.date.slice(0, 10), name: (local.find((y) => y.date === x.date && y.rule === x.rule) || x).name }));
