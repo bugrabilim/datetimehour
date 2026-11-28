@@ -54,7 +54,9 @@ API'si, ortak üyelik servisinin ürün uçları ve zamanlanmış görev uçlar�
   - askıya alma, yeniden açma ve yasak;
   - bağlı ürünün açılması ya da kapanması;
   - kutlama (`src/celebrate.mjs`: doğum günü, üyelik yıl dönümü, yılbaşı, ülkenin bayramları; yerel saatle 09.00,
-    günde bir; Türkiye günleri `data/tr-days.json`).
+    günde bir; Türkiye günleri `data/tr-days.json`; üyeler 500'lük partilerle ve yalnız ad, doğum tarihi, ülke alanlarıyla
+    okunur, fotoğraf okunmaz; saat dilimi başına bir biçimleyici, ülke başına bir date-holidays örneği; 5.000 fotoğraflı
+    üyede en yüksek RSS 178 MB, önce 269 MB).
 - **Saklama** (`src/cleanup.mjs`, günlük `POST /gorev/temizlik`):
   - süresi geçen oturum, doğrulama ve sınır kayıtları silinir;
   - 7 gün içinde doğrulanmayan hesap silinir (numarası varsa merkeze `ayril {neden: "dogrulanmamis"}`, standart 5.28);

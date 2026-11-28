@@ -8,7 +8,7 @@ import { start, signUpVerified, PW, testPhoto, CENTER_KEY, CRON } from "./helper
 import { createApp } from "../src/index.mjs";
 import { loadConfig } from "../src/config.mjs";
 import { birthDateRange } from "../src/profile.mjs";
-import { occasionFor, nextNine, runCelebrations } from "../src/celebrate.mjs";
+import { occasionFor, nextNine, runCelebrations, BATCH } from "../src/celebrate.mjs";
 import { runCleanup } from "../src/cleanup.mjs";
 
 let t;
@@ -103,6 +103,25 @@ test("kutlama tercihi ve girişsiz kapatma bağlantısı", async () => {
   assert.equal((await t.q(`select celebrate from "user" where id = $1`, [u.id])).rows[0].celebrate, true, "sahte anahtar işe yaramaz");
 });
 
+test("kutlama görevi üyeleri 500'lük partilerle okur, partinin sonundaki üye de kutlanır", async () => {
+  const now = new Date();
+  const md = nextNine(now, "UTC").day.slice(5);
+  const ids = Array.from({ length: BATCH * 2 + 1 }, (_, i) => `zzpart-${String(i).padStart(5, "0")}`);
+  const prof = (i) => JSON.stringify(i === ids.length - 1 ? { ad: "Son", dogumTarihi: "1990-" + md } : { ad: "Üye" });
+  await t.q(
+    `insert into "user" (id, name, email, "emailVerified", "createdAt", "updatedAt", lang, "timeZone", profile, photo, celebrate, "anaUrun")
+     select x, 'Üye', x || '@example.com', true, now(), now(), 'tr', 'UTC', p::json, 'data:image/webp;base64,AAAA', true, true
+     from unnest($1::text[], $2::text[]) as v(x, p)`,
+    [ids, ids.map((_, i) => prof(i))],
+  );
+  const r = await runCelebrations({ pool: t.app.pool, mailer: t.app.mailer, now });
+  assert.ok(r.candidates >= ids.length, "bütün partiler okunur");
+  const m = t.last("celebrate", ids.at(-1) + "@example.com");
+  assert.equal(m?.vars.kind, "birthday");
+  assert.equal(m.vars.ad, "Son");
+  await t.q(`delete from "user" where id like 'zzpart-%'`);
+});
+
 test("kutlama günleri: Türkiye bayramları, öbür ülkede anma ve yas günü yok, yılbaşı, yıl dönümü", () => {
   const base = { createdAt: "2025-03-10T12:00:00Z", timeZone: "Europe/Istanbul" };
   const tr = { ...base, profile: { ulke: "TR" } };
@@ -117,6 +136,10 @@ test("kutlama günleri: Türkiye bayramları, öbür ülkede anma ve yas günü 
   const de = { ...base, profile: { ulke: "DE" } };
   assert.equal(occasionFor(de, "2026-04-03", "de"), null, "Karfreitag");
   assert.equal(occasionFor({ ...base, profile: {} }, "2026-07-04", "en"), null, "ülke yoksa bayram yok");
+  // Önbellekteki date-holidays örneğinde dil kaymaz: aynı ülke başka dilde istendikten sonra da adlar doğru dilde
+  assert.equal(occasionFor(de, "2027-10-03", "de").name, "Tag der Deutschen Einheit");
+  assert.equal(occasionFor(de, "2027-10-03", "en").name, "National Holiday");
+  assert.equal(occasionFor(de, "2028-10-03", "de").name, "Tag der Deutschen Einheit");
   const leap = { ...base, profile: { dogumTarihi: "2004-02-29" } };
   assert.deepEqual(occasionFor(leap, "2027-02-28", "tr"), { kind: "birthday" });
 });
