@@ -8,7 +8,7 @@ import { start, signUpVerified, PW, testPhoto, CENTER_KEY, CRON } from "./helper
 import { createApp } from "../src/index.mjs";
 import { loadConfig } from "../src/config.mjs";
 import { birthDateRange } from "../src/profile.mjs";
-import { occasionFor, nextNine, runCelebrations } from "../src/celebrate.mjs";
+import { occasionFor, nextNine, runCelebrations, BATCH } from "../src/celebrate.mjs";
 import { runCleanup } from "../src/cleanup.mjs";
 
 let t;
@@ -101,6 +101,25 @@ test("kutlama tercihi ve girişsiz kapatma bağlantısı", async () => {
   await t.q(`update "user" set celebrate = true where id = $1`, [u.id]);
   await t.req(url.pathname + forged, { method: "POST" });
   assert.equal((await t.q(`select celebrate from "user" where id = $1`, [u.id])).rows[0].celebrate, true, "sahte anahtar işe yaramaz");
+});
+
+test("kutlama görevi üyeleri 500'lük partilerle okur, partinin sonundaki üye de kutlanır", async () => {
+  const now = new Date();
+  const md = nextNine(now, "UTC").day.slice(5);
+  const ids = Array.from({ length: BATCH * 2 + 1 }, (_, i) => `zzpart-${String(i).padStart(5, "0")}`);
+  const prof = (i) => JSON.stringify(i === ids.length - 1 ? { ad: "Son", dogumTarihi: "1990-" + md } : { ad: "Üye" });
+  await t.q(
+    `insert into "user" (id, name, email, "emailVerified", "createdAt", "updatedAt", lang, "timeZone", profile, photo, celebrate, "anaUrun")
+     select x, 'Üye', x || '@example.com', true, now(), now(), 'tr', 'UTC', p::json, 'data:image/webp;base64,AAAA', true, true
+     from unnest($1::text[], $2::text[]) as v(x, p)`,
+    [ids, ids.map((_, i) => prof(i))],
+  );
+  const r = await runCelebrations({ pool: t.app.pool, mailer: t.app.mailer, now });
+  assert.ok(r.candidates >= ids.length, "bütün partiler okunur");
+  const m = t.last("celebrate", ids.at(-1) + "@example.com");
+  assert.equal(m?.vars.kind, "birthday");
+  assert.equal(m.vars.ad, "Son");
+  await t.q(`delete from "user" where id like 'zzpart-%'`);
 });
 
 test("kutlama günleri: Türkiye bayramları, öbür ülkede anma ve yas günü yok, yılbaşı, yıl dönümü", () => {

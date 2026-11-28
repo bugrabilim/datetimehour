@@ -3,20 +3,35 @@
    kutlamasını Resend'e zamanlanmış gönderimle (scheduled_at) bırakır; aynı üye ve gün için ikinci kez bırakmaz.
    Türkiye: Ramazan ve Kurban Bayramı (Diyanet takvimi), 23 Nisan, 1 Mayıs, 19 Mayıs, 30 Ağustos, 29 Ekim.
    Öbür ülkeler: date-holidays, `public` türü; anma ve yas günleri adına bakılarak ayıklanır, şüpheli gün gönderilmez.
-   Yalnız ana ürün (anaUrun) gönderir; kapatılmış tercihte ve askıdaki hesapta gönderilmez. */
+   Yalnız ana ürün (anaUrun) gönderir; kapatılmış tercihte ve askıdaki hesapta gönderilmez.
+   Bellek (28 Kasım 2026, ana altyapının ölçümü): saat dilimi başına bir biçimleyici, ülke başına bir date-holidays
+   örneği (kitaplık yalnız ilk gerektiğinde yüklenir), üyeler 500'lük partilerle ve yalnız gereken alanlarla okunur
+   (fotoğraf okunmaz). */
 import { readFileSync } from "node:fs";
-import Holidays from "date-holidays";
+import { createRequire } from "node:module";
 import { profileOf } from "./accounts.mjs";
+
+const require = createRequire(import.meta.url);
+let HolidaysLib = null;
+const holidaysLib = () => (HolidaysLib ||= require("date-holidays"));
 
 const TR = JSON.parse(readFileSync(new URL("../data/tr-days.json", import.meta.url), "utf8"));
 
 /* İngilizce adlarda anma, yas, şehit ve ölüm günleri (şüpheli günde kutlama gönderilmez) */
 export const SOMBER = /good friday|memor|mourn|remembr|martyr|victim|genocide|death|tragedy|ashura|fallen|hero|massacre|commemor|souls|\bdead\b|deceased|assassinat|disappear|veteran|day of memory|truth and justice|moncada|nkrumah|independence struggle/i;
 
-/* Saat dilimindeki yerel tarih ve saat */
+/* Saat dilimindeki yerel tarih ve saat (saat dilimi başına bir biçimleyici; geçersiz dilim burada hata verir) */
+const fmtCache = new Map();
+function formatter(tz) {
+  let f = fmtCache.get(tz);
+  if (!f) {
+    f = new Intl.DateTimeFormat("en-CA", { timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+    fmtCache.set(tz, f);
+  }
+  return f;
+}
 function localParts(date, tz) {
-  const f = new Intl.DateTimeFormat("en-CA", { timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
-  const p = Object.fromEntries(f.formatToParts(date).map((x) => [x.type, x.value]));
+  const p = Object.fromEntries(formatter(tz).formatToParts(date).map((x) => [x.type, x.value]));
   return { day: `${p.year}-${p.month}-${p.day}`, hour: Number(p.hour), minute: Number(p.minute) };
 }
 
@@ -43,13 +58,22 @@ export function nextNine(now, tz) {
   return { day, at: localNineUtc(day, tz) };
 }
 
+const hdInstances = new Map();
+function holidaysFor(country) {
+  if (!hdInstances.has(country)) {
+    let h = null;
+    try { h = new (holidaysLib())(country); } catch {}
+    hdInstances.set(country, h);
+  }
+  return hdInstances.get(country);
+}
 const hdCache = new Map();
 function countryHolidays(country, year, lang) {
   const key = `${country}:${year}:${lang}`;
   if (!hdCache.has(key)) {
     let list = [];
     try {
-      const h = new Holidays(country);
+      const h = holidaysFor(country);
       const en = (h.getHolidays(year, "en") || []).filter((x) => x.type === "public");
       const local = lang === "en" ? en : h.getHolidays(year, lang) || [];
       list = en
@@ -89,13 +113,33 @@ export function occasionFor(user, day, lang) {
   return null;
 }
 
+export const BATCH = 500;
+
+/* Kutlama adayları id sırasıyla 500'lük partilerle; profilden yalnız ad, doğum tarihi ve ülke (fotoğraf okunmaz) */
+async function* candidates(pool) {
+  let after = "";
+  for (;;) {
+    const r = await pool.query(
+      `select id, email, lang, "timeZone", "createdAt",
+              json_build_object('ad', profile->>'ad', 'dogumTarihi', profile->>'dogumTarihi', 'ulke', profile->>'ulke') as profile
+       from "user"
+       where "emailVerified" = true and celebrate = true and "anaUrun" = true and coalesce(banned, false) = false and id > $1
+       order by id limit ${BATCH}`,
+      [after],
+    );
+    if (!r.rows.length) return;
+    for (const u of r.rows) {
+      for (const k of Object.keys(u.profile)) if (u.profile[k] == null) delete u.profile[k];
+      yield u;
+    }
+    if (r.rows.length < BATCH) return;
+    after = r.rows.at(-1).id;
+  }
+}
+
 export async function runCelebrations({ pool, mailer, now = new Date() }) {
   const out = { candidates: 0, scheduled: 0, failed: 0 };
-  const r = await pool.query(
-    `select id, email, lang, "timeZone", "createdAt", profile from "user"
-     where "emailVerified" = true and celebrate = true and "anaUrun" = true and coalesce(banned, false) = false`,
-  );
-  for (const u of r.rows) {
+  for await (const u of candidates(pool)) {
     out.candidates++;
     const tz = u.timeZone || "UTC";
     let next;
